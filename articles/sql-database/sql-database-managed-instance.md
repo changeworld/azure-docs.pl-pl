@@ -1,6 +1,6 @@
 ---
-title: "Baza danych Azure SQL zarządzane wystąpienia omówienie | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano wystąpienia zarządzane bazy danych SQL Azure oraz wyjaśniono, jak działa i jak różni się od pojedynczej bazy danych w bazie danych SQL Azure."
+title: Baza danych Azure SQL zarządzane wystąpienia omówienie | Dokumentacja firmy Microsoft
+description: W tym temacie opisano wystąpienia zarządzane bazy danych SQL Azure oraz wyjaśniono, jak działa i jak różni się od pojedynczej bazy danych w bazie danych SQL Azure.
 services: sql-database
 author: bonova
 ms.reviewer: carlrab
@@ -8,17 +8,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/21/2018
 ms.author: bonova
-ms.openlocfilehash: bc9c16462f28d129efa8c47183c6325e69bb64f3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: e13583e0364b01c3a4560d88882eb1dcf82b8c99
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
-Azure wystąpienia bazy danych SQL zarządzane (wersja zapoznawcza) jest nową funkcją bazy danych SQL Azure, zapewniając bliskie 100% zgodności z programu SQL Server w infrastrukturze lokalnej, zapewniając natywny [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md) implementacji, którego dotyczy typowe problemy z zabezpieczeniami i [modelu biznesowego](https://azure.microsoft.com/pricing/details/sql-database/) korzystna dla lokalnego programu SQL Server klientów. Zarządzane wystąpienia umożliwia istniejących klientów programu SQL Server do podnoszenia i przesunięcia ich aplikacji lokalnych do chmury przy minimalnych zmianach aplikacji i baz danych. W tym samym czasie wystąpienia zarządzane zachowuje wszystkie funkcje PaaS (Aktualizacje automatyczne stosowanie poprawek i wersja, kopia zapasowa, wysokiej dostępności), które znacząco zmniejsza nakład pracy i całkowitego kosztu posiadania.
+Azure wystąpienia bazy danych SQL zarządzane (wersja zapoznawcza) jest nową funkcją bazy danych SQL Azure, zapewniając niemal zgodności 100% z programu SQL Server lokalne (Enterprise Edition), zapewniając natywny [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md) wdrożenia, którego dotyczy typowe problemy z zabezpieczeniami i [modelu biznesowego](https://azure.microsoft.com/pricing/details/sql-database/) korzystna dla lokalnego programu SQL Server klientów. Zarządzane wystąpienia umożliwia istniejących klientów programu SQL Server do podnoszenia i przesunięcia ich aplikacji lokalnych do chmury przy minimalnych zmianach aplikacji i baz danych. W tym samym czasie wystąpienia zarządzane zachowuje wszystkie funkcje PaaS (Aktualizacje automatyczne stosowanie poprawek i wersja, kopia zapasowa, wysokiej dostępności), które znacząco zmniejsza nakład pracy i całkowitego kosztu posiadania.
 
 > [!IMPORTANT]
 > Lista regionów, w których jest obecnie dostępna zarządzane wystąpienia, zobacz [migracji baz danych do pełni zarządzanej usługi za pomocą wystąpienia zarządzane bazy danych SQL Azure](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
@@ -58,6 +58,9 @@ W poniższej tabeli przedstawiono kilka właściwości dostępne za pośrednictw
 
 ## <a name="key-features-and-capabilities-of-a-managed-instance"></a>Najważniejsze funkcje i możliwości wystąpienia zarządzane 
 
+> [!IMPORTANT]
+> Wystąpienie usługi zarządzania jest uruchamiany z wszystkich funkcji najnowszej wersji programu SQL Server, w tym operacje online, automatyczne plan korekty i inne rozszerzenia wydajności enterprise. 
+
 | **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
 | --- | --- |
 |Zakup sprzętu i zarządzania <br>Nie zarządzania nakładów pracy związanych z zarządzaniem podstawowej infrastruktury <br>Szybkie inicjowania i skalowania usługi <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |czas działania 99,99% umowy SLA  <br>Wbudowane wysokiej dostępności <br>Dane chronione przy użyciu automatycznego tworzenia kopii zapasowych <br>Okres przechowywania kopii zapasowych można skonfigurować klienta (ustalona na 7 dni w publicznej wersji zapoznawczej) <br>Tworzenie kopii zapasowych zainicjowane przez użytkownika <br>Możliwość przywrócenia punktu w czasie w bazie danych |
@@ -90,6 +93,7 @@ Poniżej opisano najważniejsze funkcje ogólnego przeznaczenia warstwy usług:
 | Wersja programu SQL Server / kompilacji | SQL Server najnowszych (dostępne) |
 | Minimalny rozmiar magazynu | 32 GB |
 | Maksymalny rozmiar magazynu | 8 TB |
+| Maksymalna liczba magazyn na bazę danych | 4 TB |
 | Oczekiwano magazynu IOPS | 500-7500 IOPS dla pliku danych (w zależności od danych plików). Zobacz [magazyn w warstwie Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | Liczba plików danych (wiersze) na bazie danych | Wiele | 
 | Liczba plików dziennika (dziennik) na bazę danych | 1 | 
@@ -120,7 +124,7 @@ Poniższy diagram przedstawia izolacji projektu:
 
 ### <a name="auditing-for-compliance-and-security"></a>Inspekcja zgodności i zabezpieczeń 
 
-Zarządzane wystąpienia [inspekcji](sql-database-auditing.md) śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure. Inspekcja pomaga zachować zgodność z przepisami, analizować aktywność bazy danych oraz uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń. 
+[Zarządzane wystąpienia inspekcji](sql-database-managed-instance-auditing.md) śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure. Inspekcja pomaga zachować zgodność z przepisami, analizować aktywność bazy danych oraz uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń. 
 
 ### <a name="data-encryption-in-motion"></a>Szyfrowanie danych w ruchu 
 
@@ -138,7 +142,7 @@ Baza danych SQL [maskowania danych dynamicznych](/sql/relational-databases/secur
 
 ### <a name="threat-detection"></a>Wykrywanie zagrożeń 
 
-Baza danych SQL Azure [wykrywanie zagrożeń](sql-database-threat-detection.md) uzupełnia inspekcji, zapewniając dodatkową warstwę zabezpieczeń analizy wbudowanych w usługę, która wykrywa nietypowe i potencjalnie szkodliwe próby dostępu lub wykorzystać baz danych. Alerty o podejrzanych działań, potencjalnych luk i ataków iniekcja kodu SQL, a także bazy danych nietypowe wzorce dostępu. Można wyświetlić alertów wykrywania zagrożeń z [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) zawierają szczegółowe informacje o podejrzanych działaniach i zalecane działania dotyczące sposobu badania i ograniczyć zagrożenie.  
+[Wykrywanie zagrożeń wystąpienia zarządzane](sql-database-managed-instance-threat-detection.md) uzupełnia [inspekcji zarządzane wystąpienia](sql-database-managed-instance-auditing.md) zapewniając dodatkową warstwę zabezpieczeń analizy wbudowanych w usługę, która wykrywa nietypowe i potencjalnie szkodliwe próby dostęp i wykorzystać baz danych. Alerty o podejrzanych działań, potencjalnych luk i ataków iniekcja kodu SQL, a także bazy danych nietypowe wzorce dostępu. Można wyświetlić alertów wykrywania zagrożeń z [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) zawierają szczegółowe informacje o podejrzanych działaniach i zalecane działania dotyczące sposobu badania i ograniczyć zagrożenie.  
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integracja usługi Azure Active Directory z uwierzytelnianiem wieloskładnikowym 
 
@@ -197,4 +201,4 @@ Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co jes
 
 - Dla funkcji i listy porównanie, zobacz [wspólne funkcje SQL](sql-database-features.md).
 - Samouczek, która tworzy wystąpienie zarządzane i przywrócenie bazy danych z pliku kopii zapasowej, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-tutorial-portal.md).
-- Samouczek przy użyciu usługi migracji bazy danych Azure (DMS) do migracji, zobacz [migracji wystąpienia zarządzane przy użyciu DMS](../dms/tutorial-sql-server-to-managed-instance.md).
+- Aby skorzystać z samouczka w zakresie używania usługi Azure Database Migration Service (DMS) do celów migracji, zobacz [Migracja wystąpień zarządzanych przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).

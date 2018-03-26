@@ -1,11 +1,10 @@
 ---
-title: "Przenoszenia danych z lokalnego systemu plików HDFS | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu przenoszenia danych z lokalnego systemu plików HDFS przy użyciu fabryki danych Azure."
+title: Przenoszenia danych z lokalnego systemu plików HDFS | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu przenoszenia danych z lokalnego systemu plików HDFS przy użyciu fabryki danych Azure.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 87acbe81d20e0f2b209565eace16de1b979b1d96
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 62a1052c0b2674e3292d5f89c0b8863439dd3928
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Przenoszenia danych z lokalnego systemu plików HDFS przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -119,7 +118,7 @@ Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania ze
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Ścieżka do folderu. Przykład:`myfolder`<br/><br/>Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Na przykład: folder\subfolder, określ folder\\\\podfolderów i dla d:\samplefolder, określ d:\\\\folder_przykładowy.<br/><br/>Możesz łączyć tej właściwości z **partitionBy** do folderu ścieżki oparte na wycinku rozpoczęcia/zakończenia daty i godziny. |Yes |
+| folderPath |Ścieżka do folderu. Przykład: `myfolder`<br/><br/>Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Na przykład: folder\subfolder, określ folder\\\\podfolderów i dla d:\samplefolder, określ d:\\\\folder_przykładowy.<br/><br/>Możesz łączyć tej właściwości z **partitionBy** do folderu ścieżki oparte na wycinku rozpoczęcia/zakończenia daty i godziny. |Yes |
 | fileName |Określ nazwę pliku w **folderPath** aby tabela do odwoływania się do określonego pliku w folderze. Jeśli nie określono żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku będzie poniżej tego formatu: <br/><br/>Dane. <Guid>.txt (na przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwę pliku dla czasu serii danych. Przykład: folderPath sparametryzowana dla każdej godziny danych. |Nie |
 | Format | Obsługiwane są następujące typy format: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w formacie do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [formacie tekstowym](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki jako — jest** między opartych na plikach magazynów (kopia binarnego), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
@@ -434,7 +433,7 @@ Dostępne są dwie opcje do skonfigurowania środowiska lokalnego tak, aby korzy
 
   **Uruchom ponownie** Usługa Centrum dystrybucji KLUCZY po konfiguracji.
 
-2.  Przygotowanie podmiot zabezpieczeń o nazwie  **krbtgt/REALM.COM@AD.COM**  w Centrum dystrybucji KLUCZY serwera przy użyciu następującego polecenia:
+2.  Przygotowanie podmiot zabezpieczeń o nazwie **krbtgt/REALM.COM@AD.COM** w Centrum dystrybucji KLUCZY serwera przy użyciu następującego polecenia:
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
@@ -447,7 +446,7 @@ Dostępne są dwie opcje do skonfigurowania środowiska lokalnego tak, aby korzy
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Ustanowienia zaufania z domeny systemu Windows do obszaru protokołu Kerberos. [hasło] jest hasłem dla podmiotu zabezpieczeń  **krbtgt/REALM.COM@AD.COM** .
+2.  Ustanowienia zaufania z domeny systemu Windows do obszaru protokołu Kerberos. [hasło] jest hasłem dla podmiotu zabezpieczeń **krbtgt/REALM.COM@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
