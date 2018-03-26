@@ -1,0 +1,21 @@
+- name: Dokumentacja platformy OpenShift
+  href: index.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: 'OpenShift: szablon społeczności'
+      href: 'https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/'
+- name: Samouczki
+  items:
+    - name: Wdrażanie na maszynach wirtualnych platformy Azure
+      href: /azure/virtual-machines/linux/openshift-get-started
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Szablon kontenera OpenShift
+      href: 'https://github.com/Microsoft/openshift-container-platform'
+    - name: OpenShift Origin
+      href: 'https://docs.openshift.org/latest/getting_started/index.html'
+    - name: Witryna platformy OpenShift
+      href: 'https://docs.openshift.org/latest/welcome/index.html'

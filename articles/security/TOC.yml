@@ -2,7 +2,7 @@
   href: index.md
 - name: Architektura i projekt
   href: azure-security.md
-  expanded: true
+  expanded: false
   items:
     - name: Zaawansowane wykrywanie zagrożeń
       href: azure-threat-detection.md
@@ -67,6 +67,8 @@
       items:
         - name: Najlepsze praktyki
           href: azure-security-identity-management-best-practices.md
+        - name: Wymuszanie uwierzytelniania wieloskładnikowego dla administratorów subskrypcji
+          href: azure-security-global-admin.md
     - name: Bezpieczeństwo sieci
       href: security-network-overview.md
       items:
@@ -145,7 +147,7 @@
           href: protect-personal-data-azure.md
         - name: Ochrona danych osobowych za pomocą usługi Security Center
           href: protect-personal-data-azure-security-center.md
-        - name: Ochrona danych osobowych za pomocą bramy Application Gateway
+        - name: Ochrona danych osobowych za pomocą usługi Application Gateway
           href: protect-personal-data-network-security.md
         - name: Ochrona danych osobowych poprzez kontrole tożsamości i dostępu
           href: protect-personal-data-identity-access-controls.md

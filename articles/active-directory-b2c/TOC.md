@@ -91,7 +91,8 @@
 #### [Złożoność hasła](active-directory-b2c-reference-password-complexity-custom.md)
 #### [Zmiana hasła](active-directory-b2c-reference-password-change-custom.md)
 #### [Włączanie opcji Nie wylogowuj mnie](active-directory-b2c-reference-kmsi-custom.md)
-### Rozwiązywanie problemów
+### Rozwiązywanie problemów i dzienniki zdarzeń
+#### [Tworzenie zdarzeń niestandardowych za pomocą usługi Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md)
 #### [Zbieranie dzienników przy użyciu usługi Application Insights](active-directory-b2c-troubleshoot-custom.md)
 ## Dokumentacja
 ### [Informacje o wersji](active-directory-b2c-developer-notes-custom.md)

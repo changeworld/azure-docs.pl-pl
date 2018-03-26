@@ -1,16 +1,16 @@
 ---
 layout: HubPage
-hide_bc: 
+hide_bc: ''
 title: Dokumentacja platformy Microsoft Azure
-description: "Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nimi przy użyciu usług w chmurze platformy Microsoft Azure. Pobierz dokumentację, przykładowy kod, samouczki i wiele więcej."
+description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nimi przy użyciu usług w chmurze platformy Microsoft Azure. Pobierz dokumentację, przykładowy kod, samouczki i wiele więcej.
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 6d188cc25d858cc2d07fc49450d6b2d4a4a04c09
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f344bf3062add621dc7d0a4cb6f7ed37e6d28d57
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -142,23 +142,28 @@ ms.lasthandoff: 03/16/2018
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/dotnet/azure/?view=azure-dotnet">
-                                                            <img src="media/index/logo_NET.svg" alt=""> .NET</a>
+                                                            <img src="media/index/logo_NET.svg" alt="">
+.NET</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/python/azure/">
-                                                            <img src="media/index/logo_python.svg" alt=""> Python</a>
+                                                            <img src="media/index/logo_python.svg" alt="">
+Python</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/java/azure/">
-                                                            <img src="media/index/logo_java.svg" alt=""> Java</a>
+                                                            <img src="media/index/logo_java.svg" alt="">
+Java</a>
                                                     </li></ul></td><td style="border-top-color:transparent!important;padding-left:0;"><ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/azure/app-service-web/app-service-web-get-started-php">
-                                                            <img src="media/index/logo_PHP.svg" alt=""> PHP</a>
+                                                            <img src="media/index/logo_PHP.svg" alt="">
+PHP</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/javascript/azure/">
-                                                            <img src="media/index/logo_nodejs.svg" alt=""> Node.js</a>
+                                                            <img src="media/index/logo_nodejs.svg" alt="">
+Node.js</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/go/azure/"> Go</a>
@@ -202,6 +207,8 @@ ms.lasthandoff: 03/16/2018
                                                     <li><a class="barLink" href="/azure/machine-learning/">Uczenie maszynowe </a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">Interfejs API przetwarzania obrazów</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/face/">Interfejs API rozpoznawania twarzy</a></li>
+                                                    <li><a class="barLink" href="/bot-framework/">Azure Bot Service</a></li>
+                                                    <li><a class="barLink" href="/azure/cognitive-services/luis/">LUIS</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -217,11 +224,13 @@ ms.lasthandoff: 03/16/2018
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/cli/azure">
-                                                            <img src="media/index/azure_dev-7.svg" alt=""> Interfejs wiersza polecenia platformy Azure </a>
+                                                            <img src="media/index/azure_dev-7.svg" alt="">
+Interfejs wiersza polecenia platformy Azure </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/powershell/azure/overview">
-                                                            <img src="media/index/azure_dev-8.svg" alt=""> Azure PowerShell </a>
+                                                            <img src="media/index/azure_dev-8.svg" alt="">
+Azure PowerShell </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -238,15 +247,18 @@ ms.lasthandoff: 03/16/2018
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt=""> Wdrażanie na platformie Azure </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+Wdrażanie na platformie Azure </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/jenkins">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_jenkins.svg" alt=""> Jenkins </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_jenkins.svg" alt="">
+Jenkins </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/terraform">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_terraform.svg" alt=""> Terraform </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_terraform.svg" alt="">
+Terraform </a>
                                                     </li>
                                                 </ul>
                                             </div>

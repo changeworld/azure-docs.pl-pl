@@ -1,27 +1,53 @@
 ---
-title: "Azure Resource Health — samouczki | Microsoft Docs"
-description: "Usługa Azure Service Health zapewnia spersonalizowane wskazówki oraz pomoc techniczną, gdy wystąpią problemy z usługami platformy Azure, z których korzystasz. Pomaga również przygotować się na nadchodzącą zaplanowaną konserwację. Usługa Azure Service Health przesyła alerty do Ciebie i Twoich zespołów w postaci ukierunkowanych i elastycznych powiadomień."
-services: Resource health
+title: Azure Service Health | Microsoft Docs
+description: Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy napotkasz problemy z usługami platformy Azure.
+services: Azure Service Health
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 07/07/2017
 ms.author: carolz
-ms.openlocfilehash: 17f7d334380032eec4be7d0ce3071a62b04fdc62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f362acf85af392253fe556ed9b97a325f22ca7b0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-service-health-documentation"></a>Dokumentacja usługi Azure Service Health
 
-Usługa Azure Service Health zapewnia spersonalizowane wskazówki oraz pomoc techniczną, gdy wystąpią problemy z usługami platformy Azure, z których korzystasz. Pomaga również przygotować się na nadchodzącą zaplanowaną konserwację. Usługa Azure Service Health przesyła alerty do Ciebie i Twoich zespołów w postaci ukierunkowanych i elastycznych powiadomień.
+Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy napotkasz problemy z usługami platformy Azure. Może ona generować powiadomienia, pomagać zrozumieć znaczenie problemów i informować na bieżąco o rozwiązywaniu problemów. Może też ułatwić przygotowanie się do zaplanowanej konserwacji i zmian, które mogą wpłynąć na dostępność zasobów.
+
+Usługa Azure Service Health składa się z następujących elementów:
+ 1. **Stan platformy Azure** — globalny widok kondycji usług platformy Azure
+ 2. **Service Health** — spersonalizowany widok kondycji usług platformy Azure
+ 3. **Resource Health** — dokładniejszy widok kondycji poszczególnych zasobów aprowizowanych przez usługi platformy Azure
+
+Razem te środowiska umożliwiają kompleksowy wgląd w kondycję platformy Azure, na poziomie szczegółowości najbardziej odpowiednim dla Ciebie.
+
 <ul class="panelContent cardsFTitle">
+    <li>
+        <a href="/azure/service-health/azure-status-overview">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/GlobeSuccess.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Dowiedz się więcej o stanie platformy Azure</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
         <a href="/azure/service-health/service-health-overview">
         <div class="cardSize">
@@ -33,7 +59,7 @@ Usługa Azure Service Health zapewnia spersonalizowane wskazówki oraz pomoc tec
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Dowiedz się więcej o usłudze Azure Service Health</h3>
+                        <h3>Dowiedz się więcej o usłudze Service Health</h3>
                     </div>
                 </div>
             </div>
@@ -41,17 +67,17 @@ Usługa Azure Service Health zapewnia spersonalizowane wskazówki oraz pomoc tec
         </a>
     </li>
     <li>
-        <a href="/azure/service-health/resource-health-checks-resource-types">
+        <a href="/azure/service-health/resource-health-overview">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/ResourceDefault.svg" alt="" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Więcej informacji na temat typów zasobów i kontroli kondycji w usłudze Resource Health</h3>
+                        <h3>Dowiedz się więcej o usłudze Resource Health</h3>
                     </div>
                 </div>
             </div>

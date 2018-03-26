@@ -56,7 +56,10 @@
 #### [Different deployment models - same subscription (Różne modele wdrażania — ta sama subskrypcja)](create-peering-different-deployment-models.md)
 #### [Different deployment models - different subscriptions (Różne modele wdrażania — różne subskrypcje)](create-peering-different-deployment-models-subscriptions.md)
 
-### [Punkty końcowe usługi sieci wirtualnej](virtual-network-service-endpoints-configure.md)
+### Punkty końcowe usługi sieci wirtualnej
+#### [Azure Portal](tutorial-restrict-network-access-to-resources.md)
+#### [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md)
+#### [Interfejs wiersza polecenia platformy Azure](tutorial-restrict-network-access-to-resources-cli.md)
 
 ### Maszyny wirtualne
 #### [Przepustowość sieci maszyny wirtualnej](virtual-machine-network-throughput.md)
@@ -176,8 +179,12 @@
 ### [Problemy z łącznością między maszynami wirtualnymi](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 ### [Konfigurowanie rekordu PTR na potrzeby kontroli baneru SMTP](create-ptr-for-smtp-service.md)
 
+## Przykładowe skrypty
+### [Interfejs wiersza polecenia platformy Azure](cli-samples.md)
+### [Azure PowerShell](powershell-samples.md)
+
 # Dokumentacja
-## [Przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
+## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=virtual-network)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [Azure PowerShell (wersja klasyczna)](/powershell/module/azure/)
 ## [Interfejs wiersza polecenia platformy Azure](/cli/azure/network)
