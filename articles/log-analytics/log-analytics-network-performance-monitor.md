@@ -1,11 +1,11 @@
 ---
-title: "Sieci monitora wydajności rozwiązania na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Monitor wydajności na platformie Azure sieci pomaga monitorować wydajność Twojej sieci w pobliżu rzeczywistych czas do wykrywania i zlokalizuj wąskich gardeł wydajności sieci."
+title: Sieci monitora wydajności rozwiązania na platformie Azure | Dokumentacja firmy Microsoft
+description: Monitor wydajności na platformie Azure sieci pomaga monitorować wydajność Twojej sieci w pobliżu rzeczywistych czas do wykrywania i zlokalizuj wąskich gardeł wydajności sieci.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: abshamsft
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 399fe552d5c7d9a96cdabc2a1dfafe99635d4a61
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 90fd9b09f90d5b209e0eb8cc6996ef7fb1e7e0b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Sieci monitora wydajności rozwiązania na platformie Azure
 
@@ -38,6 +38,8 @@ NPM oferuje trzy szerokie możliwości:
 Funkcja ta ułatwia wykonywanie http, HTTPS, TCP i ICMP na podstawie testów monitorowania w niemal w czasie rzeczywistym lub w przeszłości dostępności i czas odpowiedzi usługi i udział utraty pakietów i opóźnienie sieci. Z mapy topologii sieci można odizolować spowolnienie sieci, identyfikując miejsc problem, pojawiające się na ścieżce sieciowej z węzła do usługi, z danymi czas oczekiwania na każdym przeskoku. Testy wbudowane monitorowanie połączenie sieciowe z usługi Office 365 i Dynamics CRM bez przeprowadzania wstępnej konfiguracji. Dzięki tej możliwości, można monitorować łączność sieciową takie jak witryny sieci Web, SaaS, PaaS aplikacje, bazy danych SQL, obsługuje punktu końcowego żadnych TCP itp.  
 
 [Monitor usługi ExpressRoute](log-analytics-network-performance-monitor-expressroute.md): monitorować wydajność między oddziałach i Azure i na trasie łączności za pośrednictwem usługi Azure ExpressRoute.  
+
+Więcej informacji o różnych funkcjach obsługiwanych przez [monitora wydajności sieci](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jest dostępna w trybie online.
  
 
 ## <a name="set-up-and-configure"></a>Instalowanie i konfigurowanie

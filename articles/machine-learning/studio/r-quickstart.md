@@ -1,11 +1,12 @@
 ---
-title: "Samouczek Szybki Start dla języka R Machine Learning | Dokumentacja firmy Microsoft"
-description: "Użyj tego samouczka programowania R, aby rozpocząć, szybko przy użyciu języka R w usłudze Azure Machine Learning Studio tworzenie rozwiązań prognozowania."
-keywords: "Szybki Start, języka r, r język programowania, samouczek programowania r"
+title: Samouczek Szybki Start dla języka R Machine Learning | Dokumentacja firmy Microsoft
+description: Użyj tego samouczka programowania R, aby rozpocząć, szybko przy użyciu języka R w usłudze Azure Machine Learning Studio tworzenie rozwiązań prognozowania.
+keywords: Szybki Start, języka r, r język programowania, samouczek programowania r
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: garye
-ms.openlocfilehash: 40cc3728d1361b9304896bf0cc4ceed439291d45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning
 
@@ -123,13 +123,13 @@ Jeśli nie znasz ostatniego wiersza kodu w tej chwili, poniżej. W pozostałej c
 ### <a name="introduction-to-rstudio"></a>Wprowadzenie do programu RStudio
 Programu RStudio jest powszechnie używaną IDE dla R. Użyję programu RStudio edycji, testowanie i debugowanie części kodu języka R używanych w tym przewodniku Szybki start. Po kodzie R przetestowane i gotowe, po prostu wyciąć i wkleić w edytorze programu RStudio do Machine Learning Studio [wykonanie skryptu języka R] [ execute-r-script] modułu.  
 
-Jeśli nie masz język programowania R zainstalowana na tym komputerze pulpitu, zaleca się, że możesz to zrobić teraz. Bezpłatne materiały do pobrania języka typu open source R są dostępne w kompleksowe R archiwum sieci (sieci CRAN) na [http://www.r-project.org/](http://www.r-project.org/). Brak dostępnych pliki do pobrania dla systemu Windows, Mac OS i Linux/UNIX. Wybierz pobliskich dublowania i postępuj zgodnie z instrukcjami pobierania. Ponadto sieci CRAN zawiera wiele pakietów manipulowania przydatne analizy i danych.
+Jeśli nie masz język programowania R zainstalowana na tym komputerze pulpitu, zaleca się, że możesz to zrobić teraz. Bezpłatne materiały do pobrania języka typu open source R są dostępne w kompleksowe R archiwum sieci (sieci CRAN) na [ http://www.r-project.org/ ](http://www.r-project.org/). Brak dostępnych pliki do pobrania dla systemu Windows, Mac OS i Linux/UNIX. Wybierz pobliskich dublowania i postępuj zgodnie z instrukcjami pobierania. Ponadto sieci CRAN zawiera wiele pakietów manipulowania przydatne analizy i danych.
 
-Jeśli jesteś nowym użytkownikiem programu RStudio, należy pobrać i zainstalować wersję pulpitu. Można okaże się, że w http://www.rstudio.com/products/RStudio/ programu RStudio pobiera systemu Windows, Mac OS i Linux/UNIX. Wykonaj instrukcje podane do zainstalowania programu RStudio na komputera stacjonarnego.  
+Jeśli jesteś nowym użytkownikiem programu RStudio, należy pobrać i zainstalować wersję pulpitu. Można znaleźć programu RStudio pliki do pobrania dla systemu Windows, Mac OS i Linux/UNIX w http://www.rstudio.com/products/RStudio/. Wykonaj instrukcje podane do zainstalowania programu RStudio na komputera stacjonarnego.  
 
-Samouczek Wprowadzenie do programu RStudio jest dostępny na https://support.rstudio.com/hc/sections/200107586-Using-RStudio.
+Samouczek Wprowadzenie do programu RStudio znajduje się w temacie https://support.rstudio.com/hc/sections/200107586-Using-RStudio.
 
-I Podaj dodatkowe informacje na temat używania programu RStudio w [dodatek a][appendixa].  
+I Podaj dodatkowe informacje na temat używania programu RStudio w [dodatek a.][appendixa].  
 
 ## <a id="scriptmodule"></a>Pobieranie danych i modułu wykonania skryptu języka R
 W tej sekcji omówimy, jak pobrać dane do i z [wykonanie skryptu języka R] [ execute-r-script] modułu. Zapoznamy się sposób obsługi różnych typów danych do odczytu do i z [wykonanie skryptu języka R] [ execute-r-script] modułu.
@@ -463,7 +463,7 @@ Uruchom ten kod w eksperymencie i sprawdź wynik z dziennikiem wyjścia. Wyniki 
 
 *Rysunek 11. Podsumowanie dataframe z dwóch kolumn będących jej usunąć.*
 
-Dobre wieści! Uzyskujemy oczekiwanych rezultatów.
+Dobra wiadomość! Uzyskujemy oczekiwanych rezultatów.
 
 ### <a name="add-a-new-column"></a>Dodaj nową kolumnę
 Do tworzenia modeli szeregów czasowych należy przygotować ma kolumnę zawierającą miesięcy od rozpoczęcia szeregów czasowych. Utworzymy nową kolumnę "Month.Count".
@@ -521,7 +521,7 @@ Jeśli przyjrzymy się wartości podsumowań naszych dataframe powinny zostać w
 
 Dla modelu prognozowania używamy mnożenia modelu trendu i okresach dostosowania tych danych. Transformacja dziennika pozwala używać model liniowy, co upraszcza ten proces. Transformacja dziennika w tej samej funkcji, w których jest stosowane Mnożnik można zastosować.
 
-W poniższym kodzie można zdefiniować nową funkcję, `log.transform()`i zastosować je do wierszy zawierających wartości liczbowe. R `Map()` funkcja służy do stosowania `log.transform()` funkcji do wybranych kolumn dataframe. `Map()`przypomina `apply()` , ale zezwala na więcej niż jeden lista argumentów do funkcji. Należy pamiętać, że lista mnożników dostarcza drugi argument `log.transform()` funkcji. `na.omit()` Funkcja jest używana jako nieco oczyszczania zapewnienie w dataframe nie ma wartości Brak lub niezdefiniowany.
+W poniższym kodzie można zdefiniować nową funkcję, `log.transform()`i zastosować je do wierszy zawierających wartości liczbowe. R `Map()` funkcja służy do stosowania `log.transform()` funkcji do wybranych kolumn dataframe. `Map()` przypomina `apply()` , ale zezwala na więcej niż jeden lista argumentów do funkcji. Należy pamiętać, że lista mnożników dostarcza drugi argument `log.transform()` funkcji. `na.omit()` Funkcja jest używana jako nieco oczyszczania zapewnienie w dataframe nie ma wartości Brak lub niezdefiniowany.
 
     log.transform <- function(invec, multiplier = 1) {
       ## Function for the transformation, which is the log
@@ -682,7 +682,7 @@ Teraz zajrzyj do dziennika. Powinien on wyglądać rys. 15.
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*Rysunek 15. Podsumowanie dataframe z obiektem serii czasu.*
+*Figure 15. Podsumowanie dataframe z obiektem serii czasu.*
 
 Możemy stwierdzić Podsumowanie nowej kolumny, która jest w rzeczywistości klasy POSIXct.
 
@@ -1213,23 +1213,23 @@ Programu RStudio jest bardzo dobrze udokumentowane, dlatego w tym dodatku I poda
 
 1. Tworzenie projektów
    
-   Można porządkować i zarządzać kodem R do projektów przy użyciu programu RStudio. Dokumentacji, który używa projektów znajduje się w temacie https://support.rstudio.com/hc/articles/200526207-Using-Projects.
+   Można porządkować i zarządzać kodem R do projektów przy użyciu programu RStudio. Dokumentacji, który używa projekty można znaleźć w folderze https://support.rstudio.com/hc/articles/200526207-Using-Projects.
    
    Najlepiej wykonać te kroki, a następnie utwórz projekt R przykłady kodu w tym dokumencie.  
 2. Edytowanie i wykonywanie kodu języka R
    
-   Programu RStudio zapewnia zintegrowane środowisko umożliwiające edytowanie i wykonywanie kodu języka R. Dokumentację można znaleźć w https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code.
+   Programu RStudio zapewnia zintegrowane środowisko umożliwiające edytowanie i wykonywanie kodu języka R. Dokumentację można znaleźć w folderze https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code.
 3. Debugowanie
    
    Programu RStudio obejmuje zaawansowane możliwości debugowania. Dokumentacja dla tych funkcji jest na https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio.
    
-   Funkcje rozwiązywania punktu przerwania jest udokumentowany na https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
+   Punkt przerwania funkcji rozwiązywania problemów są udokumentowane w https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
 
 ## <a id="appendixb"></a>Dodatek B: Dalsze informacje.
 Ten samouczek programowania R obejmuje podstawy muszą używać języka R w usłudze Azure Machine Learning Studio. Jeśli nie masz doświadczenia w obsłudze R, dwie instrukcje są dostępne w sieci CRAN:
 
 * R dla początkujących przez Emmanuel Paradis jest dobrym miejscem do rozpoczęli http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
-* Wprowadzenie do języka R przez W. N. Venables et. Al. Przechodzi nieco bardziej szczegółowo w http://cran.r-project.org/doc/manuals/R-intro.html.
+* Wprowadzenie do języka R przez W. N. Venables et. al. Przechodzi do nieco bardziej szczegółowo w http://cran.r-project.org/doc/manuals/R-intro.html.
 
 Istnieje wiele — książki na R, które mogą pomóc Ci rozpocząć. Poniżej przedstawiono kilka, które mogę być przydatne:
 
@@ -1237,7 +1237,7 @@ Istnieje wiele — książki na R, które mogą pomóc Ci rozpocząć. Poniżej 
 * R Cookbook przez Teetor Pawła dostarcza rozwiązanie problemu i rozwiązanie przy użyciu R.  
 * R w akcji Robert Kabacoff jest innym przydatne książki wstępne. Szybkie R pomocnika witryny sieci Web jest zasobem przydatne w http://www.statmethods.net/.
 * R Inferno przez oparzenia Patrick jest zaskakująco żartobliwy książki, która zajmuje się liczbę trudnych i trudne tematy, które mogą wystąpić podczas programowania w języku R. Książce jest dostępny bezpłatnie na http://www.burns-stat.com/documents/books/the-r-inferno/.
-* Jeśli chcesz nowości w zaawansowanych tematów w R mają wygląd książki zaawansowane R przez Hadley Wickham. Ten podręcznik wersji online jest dostępny bezpłatnie na http://adv-r.had.co.nz/.
+* Jeśli chcesz nowości w zaawansowanych tematów w R mają wygląd książki zaawansowane R przez Hadley Wickham. Wersję online tego podręcznika jest dostępny bezpłatnie na http://adv-r.had.co.nz/.
 
 Katalog R czasu serii pakietów można znaleźć w widoku zadań sieci CRAN do analizy serii czasowych: http://cran.r-project.org/web/views/TimeSeries.html. Informacje w określonym czasie serii obiekt pakietów należy się z dokumentacją tego pakietu.
 
@@ -1245,9 +1245,9 @@ Podręcznik wprowadzające szeregu czasowego z R Cowpertwait Pawła i Andrew Met
 
 Niektóre dużą zasobów internetowych:
 
-* DataCamp: DataCamp szkoleniowcem R wygodna przeglądarki z lekcje wideo i kodowania ćwiczeń. Brak interaktywnych samouczków najnowsze techniki R i pakietów. Podjęcie wolnego interaktywnego samouczka R na https://www.datacamp.com/courses/introduction-to-r
-* Przewodnik po uzyskiwanie uruchomiony z R z Programiz https://www.programiz.com/r-programming
-* Zawiera krótki samouczek R przez czarne Kelly z http://www.cyclismo.org/tutorial/R/ Clarkson University
+* DataCamp: DataCamp szkoleniowcem R wygodna przeglądarki z lekcje wideo i kodowania ćwiczeń. Brak interaktywnych samouczków najnowsze techniki R i pakietów. Podejmij wolnego interaktywnego samouczka R w https://www.datacamp.com/courses/introduction-to-r
+* Przewodnik po uzyskiwanie wprowadzenie do języka R z Programiz https://www.programiz.com/r-programming
+* Zawiera krótki samouczek R przez czarne Kelly uniwersytet Clarkson http://www.cyclismo.org/tutorial/R/
 * R zasobów 60 + wymienionych w http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 
 <!--Image references-->
