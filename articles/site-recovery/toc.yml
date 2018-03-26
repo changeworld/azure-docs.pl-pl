@@ -103,6 +103,8 @@
               href: hyper-v-vmm-architecture.md
     - name: Odzyskiwanie po awarii dla aplikacji
       href: site-recovery-workload.md
+    - name: Informacje o planach odzyskiwania
+      href: recovery-plan-overview.md
     - name: Informacje o migracji
       href: migrate-overview.md
     - name: Informacje o kontroli dostępu opartej na rolach przy użyciu usługi Site Recovery
@@ -273,6 +275,12 @@
           items:
             - name: Uruchamianie próbnego odzyskiwania na platformie Azure
               href: site-recovery-test-failover-to-azure.md
+            - name: Konfigurowanie planów odzyskiwania
+              href: site-recovery-create-recovery-plans.md
+            - name: Dodawanie skryptów programu VMM do planów odzyskiwania
+              href: hyper-v-vmm-recovery-script.md
+            - name: Dodawanie elementów Runbook platformy Azure do planów odzyskiwania
+              href: site-recovery-runbook-automation.md
             - name: Przełączanie do trybu failover na platformie Azure
               href: site-recovery-failover.md
             - name: Powrót po awarii z platformy Azure do programu Hyper-V

@@ -40,6 +40,7 @@
 #### [System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [System Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-high-availability-infrastructure-wsfc-file-share.md)
 #### [System SUSE Linux z systemem plików NFS na potrzeby wystąpienia (A)SCS](high-availability-guide-suse.md)
+#### [Program Pacemaker w systemie SLES](high-availability-guide-suse-pacemaker.md)
 ### Instalacja programu SAP
 #### [System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [System Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-high-availability-installation-wsfc-file-share.md)

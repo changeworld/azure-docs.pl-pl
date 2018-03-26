@@ -237,8 +237,6 @@
                   href: sql-api-python-samples.md
             - name: Zasoby
               items:
-                - name: Gramatyka języka SQL — ściągawka
-                  href: sql-api-sql-query-cheat-sheet.md
                 - name: Filmy wideo
                   href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: Aktualizacje usług
@@ -435,6 +433,8 @@
           href: graph-sdk-dotnet.md
 - name: Zasoby
   items:
+    - name: Ściągawka dotycząca zapytań
+      href: query-cheat-sheet.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Wypróbuj usługę Azure Cosmos DB bezpłatnie

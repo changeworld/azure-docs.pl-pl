@@ -3,47 +3,41 @@
 # Omówienie
 ## [Co to jest moduł równoważenia obciążenia?](load-balancer-overview.md)
 ## [Co to jest usługa Load Balancer w warstwie Standardowa?](load-balancer-standard-overview.md)
-## [Publiczny moduł równoważenia obciążenia](load-balancer-internet-overview.md)
-## [Wewnętrzny moduł równoważenia obciążenia](load-balancer-internal-overview.md)
-## [Opis sond modułu równoważenia obciążenia](load-balancer-custom-probe-overview.md)
-## [Opis portów wysokiej dostępności](load-balancer-ha-ports-overview.md)
-## [Obsługa usługi Azure Resource Manager](load-balancer-arm.md)
+## [Sondy modułu równoważenia obciążenia](load-balancer-custom-probe-overview.md)
+## [Porty wysokiej dostępności](load-balancer-ha-ports-overview.md)
 ## [Obsługa protokołu IPv6](load-balancer-ipv6-overview.md)
-## [Wiele adresów VIP](load-balancer-multivip-overview.md)
-## [Informacje o połączeniach wychodzących](load-balancer-outbound-connections.md)
+## [Wiele frontonów](load-balancer-multivip-overview.md)
+## [Połączenia wychodzące](load-balancer-outbound-connections.md)
 ## [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](load-balancer-standard-availability-zones.md)
+## [Metryki i diagnostyka usługi Load Balancer w warstwie Standardowa](load-balancer-standard-diagnostics.md)
 
 # Rozpoczęcie pracy
+## [Tworzenie usługi Load Balancer warstwie Podstawowa](load-balancer-get-started-internet-portal.md)
+### [Tworzenie usługi Load Balancer w warstwie Podstawowa (interfejs wiersza polecenia)](load-balancer-get-started-internet-arm-cli.md)
+### [Tworzenie usługi Load Balancer w warstwie Podstawowa (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
+## [Tworzenie usługi Load Balancer w warstwie Standardowa](load-balancer-standard-public-portal.md)
+### [Tworzenie usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](load-balancer-standard-public-cli.md)
 
-## [Konfigurowanie wewnętrznego modułu równoważenia obciążenia](load-balancer-get-started-ilb-arm-portal.md)
-### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
-### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (interfejs wiersza polecenia)](load-balancer-get-started-ilb-arm-cli.md)
-### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (szablon)](load-balancer-get-started-ilb-arm-template.md)
-
-## [Konfigurowanie publicznego modułu równoważenia obciążenia](load-balancer-get-started-internet-portal.md)
-### [Konfigurowanie publicznego modułu równoważenia obciążenia (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-### [Konfigurowanie publicznego modułu równoważenia obciążenia (interfejs wiersza polecenia)](load-balancer-get-started-internet-arm-cli.md)
-### [Konfigurowanie publicznego modułu równoważenia obciążenia (szablon)](load-balancer-get-started-internet-arm-template.md)
+# Instrukcje
 
 ## [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6](load-balancer-ipv6-internet-ps.md)
 ### [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (interfejs wiersza polecenia)](load-balancer-ipv6-internet-cli.md)
 ### [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (szablon)](load-balancer-ipv6-internet-template.md)
-
 ## [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa](load-balancer-get-started-internet-az-portal.md)
 ### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](load-balancer-get-started-internet-az-cli.md)
-
-# Instrukcje
+## [Tworzenie usługi Load Balancer w warstwie Podstawowa (szablon)](load-balancer-get-started-internet-arm-template.md)
+## [Konfigurowanie wewnętrznego modułu równoważenia obciążenia](load-balancer-get-started-ilb-arm-portal.md)
+### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
+### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (interfejs wiersza polecenia)](load-balancer-get-started-ilb-arm-cli.md)
+### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (szablon)](load-balancer-get-started-ilb-arm-template.md)
 ## [Konfigurowanie limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia](load-balancer-tcp-idle-timeout.md)
-## [Konfigurowanie trybu dystrybucji dla modułu równoważenia obciążenia](load-balancer-distribution-mode.md)
-## [Konfigurowanie wewnętrznego modułu równoważenia obciążenia dla funkcji SQL AlwaysOn](load-balancer-configure-sqlao.md)
-## [Konfigurowanie wielu adresów VIP dla usługi w chmurze](load-balancer-multivip.md)
+## [Konfigurowanie trybu dystrybucji dla usługi Load Balancer](load-balancer-distribution-mode.md)
 ## [Łączenie usług równoważenia obciążenia](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [Używanie wielu konfiguracji adresu IP](load-balancer-multiple-ip.md)
 ### [Używanie wielu konfiguracji adresu IP (interfejs wiersza polecenia)](load-balancer-multiple-ip-cli.md)
 ### [Używanie wielu konfiguracji adresu IP — PowerShell](load-balancer-multiple-ip-powershell.md)
 ## [Analiza dzienników dotyczących usługi Azure Load Balancer](load-balancer-monitor-log.md)
-## [Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych z systemem Linux](load-balancer-ipv6-for-linux.md)
 ## [Konfigurowanie portów wysokiej dostępności dla wewnętrznego modułu równoważenia obciążenia](load-balancer-configure-ha-ports.md)
 
 ## Rozwiązywanie problemów
@@ -51,6 +45,7 @@
 
 ## Artykuły dotyczące klasycznego modelu wdrażania
 ### [Połączenia wychodzące (klasyczne)](load-balancer-outbound-connections-classic.md)
+## [Konfigurowanie wielu adresów VIP dla usługi w chmurze](load-balancer-multivip.md)
 ### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia dla usług Cloud Services](load-balancer-get-started-ilb-classic-cloud.md)
 #### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia dla usług Cloud Services (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 #### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia dla usług Cloud Services (interfejs wiersza polecenia)](load-balancer-get-started-ilb-classic-cli.md)

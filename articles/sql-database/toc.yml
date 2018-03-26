@@ -19,6 +19,8 @@
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md
+        - name: SQL Operations Studio
+          href: 'https://docs.microsoft.com/sql/sql-operations-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
         - name: Azure Portal
           href: sql-database-connect-query-portal.md
         - name: VS Code
@@ -101,8 +103,10 @@
           href: sql-database-manage-logins.md
         - name: Uwierzytelnianie wieloskładnikowe
           href: sql-database-ssms-mfa-authentication.md
-        - name: Inspekcja
+        - name: Inspekcja — SQL Database
           href: sql-database-auditing.md
+        - name: Inspekcja — wystąpienie zarządzane
+          href: sql-database-managed-instance-auditing.md
         - name: Wykrywanie zagrożeń — usługa SQL Database
           href: sql-database-threat-detection.md
         - name: Wykrywanie zagrożeń — wystąpienie zarządzane

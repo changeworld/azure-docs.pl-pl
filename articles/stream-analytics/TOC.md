@@ -41,6 +41,7 @@
 ### [Analiza tonacji w usłudze Twitter](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Wykrywanie oszustw w czasie rzeczywistym](stream-analytics-real-time-fraud-detection.md)
 ### [Uruchamianie zadań na brzegowych urządzeniach IoT](stream-analytics-edge.md) 
+### [Analizowanie danych z czujników punktu poboru opłat](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [Uruchamianie agregacji zdefiniowanej przez użytkownika w języku JavaScript](stream-analytics-javascript-user-defined-aggregates.md)
 ### [Transakcje o wysokiej częstotliwości](stream-analytics-high-frequency-trading.md)
 ### [Uruchamianie funkcji usługi Azure Functions](stream-analytics-with-azure-functions.md)

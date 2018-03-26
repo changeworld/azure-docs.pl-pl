@@ -1,0 +1,25 @@
+- name: Dokumentacja programu Chef
+  href: index.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: 'Automatyzowanie: szablon Szybki start'
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview'
+- name: Samouczki
+  items:
+    - name: Automatyzowanie maszyn wirtualnych
+      href: /azure/virtual-machines/windows/chef-automation
+- name: Zasoby
+  items:
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 'Blog: usługa VSTS i program Chef'
+      href: 'https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/'
+    - name: Program Chef i usługa Azure PS
+      href: 'https://docs.microsoft.com/powershell/module/azure/get-azurevmchefextension?view=azuresmps-4.0.0'
+    - name: Program Chef i usługa VSTS
+      href: 'https://github.com/chef-partners/vsts-chef/wiki/Getting-Started'
+    - name: Witryna programu Chef
+      href: 'https://www.chef.io'
+    - name: 'Wideo: program Chef i usługa VSTS'
+      href: 'https://channel9.msdn.com/Events/TechDaysOnline/UK-TechDays-Online-2016/Release-Management-with-VSTS--integration-with-Azure--Chef-Deployment'

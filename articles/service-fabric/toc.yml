@@ -27,7 +27,7 @@
           href: service-fabric-tutorial-create-dotnet-app.md
         - name: 2 — Wdrażanie aplikacji
           href: service-fabric-tutorial-deploy-app-to-party-cluster.md
-        - name: 3 — Konfigurowanie ciągłej integracji/ciągłego dostarczania
+        - name: 3 — Konfigurowanie ciągłej integracji/ciągłego wdrażania
           href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
         - name: 4 — Monitorowanie i diagnozowanie
           href: service-fabric-tutorial-monitoring-aspnet.md
@@ -131,6 +131,8 @@
           items:
             - name: Architektura
               href: service-fabric-reliable-actors-platform.md
+            - name: Implementowanie funkcji na poziomie usługi
+              href: service-fabric-reliable-actors-using.md
             - name: Cykl życia i odzyskiwanie pamięci
               href: service-fabric-reliable-actors-lifecycle.md
             - name: Zarządzanie stanem
@@ -389,7 +391,15 @@
               href: service-fabric-reliable-services-backup-restore.md
         - name: Tworzenie usługi Reliable Actors
           items:
-            - name: Wysyłanie powiadomień
+            - name: Uzyskiwanie dostępu do stanu aktora oraz zapisywanie i usuwanie go
+              href: service-fabric-reliable-actors-access-save-remove-state.md
+            - name: Wyliczanie aktorów
+              href: service-fabric-reliable-actors-enumerate.md
+            - name: Usuwanie aktorów i ich stanu
+              href: service-fabric-reliable-actors-delete-actors.md
+            - name: Tworzenie kopii zapasowej i przywracanie aktorów
+              href: service-fabric-reliable-actors-backup-and-restore.md
+            - name: Wysyłanie powiadomień aktora
               href: service-fabric-reliable-actors-events.md
             - name: Ustawianie czasomierzy i przypomnień
               href: service-fabric-reliable-actors-timers-reminders.md
