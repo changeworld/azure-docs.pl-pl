@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: Tworzenie aplikacji internetowej za pomocą platformy .NET i interfejsu API SQL | Microsoft Docs'
-description: Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń z interfejsem API SQL usługi Azure Cosmos DB i wykonywania względem niego zapytań
+title: Tworzenie aplikacji internetowej platformy .NET w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL | Microsoft Docs
+description: W tym przewodniku Szybki start utworzysz aplikację internetową platformy .NET przy użyciu interfejsu API SQL usługi Azure Cosmos DB i witryny Azure Portal
 services: cosmos-db
 documentationcenter: ''
 author: mimig1
@@ -15,13 +15,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/15/2017
 ms.author: mimig
-ms.openlocfilehash: b5ab66371b47bdd0f3bd7a4c9e86e419efebe902
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: eb361ce596cbb95e01e7dbd82001bd089d51d70e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-build-a-sql-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji internetowej interfejsu API SQL za pomocą platformy .NET i witryny Azure Portal
+# <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Szybki start: Tworzenie aplikacji internetowej platformy .NET w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL i witryny Azure Portal
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 

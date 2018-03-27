@@ -1,33 +1,36 @@
 ---
-title: "Azure Cosmos DB: Budowanie aplikacji sieci Web za pomocą oprogramowania Xamarin z uwierzytelnianiem serwisu Facebook | Microsoft Docs"
-description: "Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań"
+title: 'Azure Cosmos DB: Budowanie aplikacji sieci Web za pomocą oprogramowania Xamarin z uwierzytelnianiem serwisu Facebook | Microsoft Docs'
+description: Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: dfaa8d05d999f5528daff875d89e38d4fc442992
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5074034b18bdf842c34b1208e6cc6312d7a3e6b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: Budowanie aplikacji sieci Web za pomocą oprogramowania .NET, Xamarin i uwierzytelniania serwisu Facebook
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację internetową z listą zadań do wykonania bazującą na [interfejsie API SQL platformy .NET](sql-api-sdk-dotnet.md), oprogramowaniu [Xamarin](https://www.xamarin.com/) oraz aparacie uwierzytelniania usługi Azure Cosmos DB. Aplikacja sieci Web z listą zadań do wykonania implementuje wzorzec danych dla poszczególnych użytkowników, który umożliwia użytkownikom zalogowanie się przy użyciu uwierzytelniania serwisu Facebook i zarządzanie własnymi zadaniami do wykonania.
+> [!NOTE]
+> Przykładowy kod dla całej kanonicznej przykładowej aplikacji platformy Xamarin z wieloma ofertami platformy Azure, w tym usługą CosmosDB, można znaleźć w witrynie GitHub [tutaj](https://github.com/xamarinhq/app-geocontacts). Ta aplikacja demonstruje wyświetlanie geograficznie rozproszonych kontaktów i umożliwianie tym kontaktom zaktualizowanie ich lokalizacji.
+
+Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację internetową z listą zadań do wykonania bazującą na [interfejsie API SQL platformy .NET](sql-api-sdk-dotnet.md), oprogramowaniu [Xamarin](https://www.xamarin.com/) oraz aparacie uwierzytelniania usługi Azure Cosmos DB. Aplikacja internetowa z listą zadań do wykonania implementuje wzorzec danych dla poszczególnych użytkowników, który umożliwia użytkownikom zalogowanie się przy użyciu uwierzytelniania serwisu Facebook i zarządzanie własnymi zadaniami do wykonania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +51,7 @@ Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pob
 
 Teraz sklonujemy aplikację interfejsu API SQL z serwisu GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
 
-1. Otwórz okno terminalu usługi Git, na przykład git bash, i za pomocą polecenia `cd` przejdź do katalogu roboczego.  
+1. Otwórz okno terminalu usługi Git, na przykład git bash, i za pomocą polecenia `cd` przejdź do katalogu roboczego.
 
 2. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. 
 
@@ -56,7 +59,7 @@ Teraz sklonujemy aplikację interfejsu API SQL z serwisu GitHub, ustawimy parame
     git clone https://github.com/Azure/azure-documentdb-dotnet.git
     ```
 
-3. Następnie w programie Visual Studio otwórz plik DocumentDBTodo.sln z folderu samples/xamarin/UserItems/xamarin.forms. 
+3. Następnie w programie Visual Studio otwórz plik DocumentDBTodo.sln z folderu samples/xamarin/UserItems/xamarin.forms.
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
@@ -75,7 +78,7 @@ Proces uwierzytelniania i przepływu danych zilustrowano na poniższym diagramie
 * Aplikacja uzyskuje dostęp do zadań do wykonania użytkownika przy użyciu tokenu zasobów.
 
 ![Aplikacja z listą zadań do wykonania z przykładowymi danymi](./media/create-sql-api-xamarin-dotnet/tokenbroker.png)
-    
+
 ## <a name="update-your-connection-string"></a>Aktualizowanie parametrów połączenia
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji.
@@ -90,7 +93,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     `<add key="accountUrl" value="{Azure Cosmos DB account URL}"/>`
 
-4. Następnie skopiuj wartość klucza podstawowego z portalu i przypisz ją do klucza accountKey w pliku Web.config. 
+4. Następnie skopiuj wartość klucza podstawowego z portalu i przypisz ją do klucza accountKey w pliku Web.config.
 
     `<add key="accountKey" value="{Azure Cosmos DB secret}"/>`
 
@@ -109,7 +112,7 @@ Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne
 
 4. Otwórz projekt Xamarin i przejdź do pliku TodoItemManager.cs. Podaj wartości dla właściwości accountURL, collectionId i databaseId, a także dla właściwości resourceTokenBrokerURL będącej podstawowym adresem URL HTTPS witryny sieci Web brokera tokenu zasobów.
 
-5. Ukończ samouczek [Jak skonfigurować aplikację App Service, aby używała logowania do usługi Facebook](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md), aby skonfigurować uwierzytelnianie serwisu Facebook i witrynę sieci Web ResourceTokenBroker.
+5. Ukończ samouczek [Jak skonfigurować aplikację App Service, aby używała logowania do usługi Facebook](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md), aby skonfigurować uwierzytelnianie serwisu Facebook i witrynę internetową ResourceTokenBroker.
 
     Uruchom aplikację platformy Xamarin.
 
@@ -119,14 +122,14 @@ Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego przewodnika Szybki start: 
+Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego przewodnika Szybki start:
 
-1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij nazwę utworzonego właśnie zasobu. 
+1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij nazwę utworzonego zasobu.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę zasobu do usunięcia, a następnie kliknij pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, tworzenia kolekcji za pomocą Eksploratora danych i budowania oraz wdrażania aplikacji platformy Xamarin. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Cosmos DB. 
+W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, tworzenia kolekcji za pomocą Eksploratora danych i budowania oraz wdrażania aplikacji platformy Xamarin. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Cosmos DB.
 
 > [!div class="nextstepaction"]
 > [Importowanie danych do usługi Azure Cosmos DB](import-data.md)

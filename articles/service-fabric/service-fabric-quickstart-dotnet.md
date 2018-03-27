@@ -1,12 +1,12 @@
 ---
-title: "Tworzenie aplikacji platformy .NET w usłudze Service Fabric na platformie Azure | Microsoft Docs"
-description: "W ramach tego przewodnika Szybki start utworzysz aplikację .NET dla platformy Azure za pomocą aplikacji przykładowej niezawodnych usług usługi Service Fabric."
+title: Tworzenie aplikacji platformy .NET w usłudze Service Fabric na platformie Azure | Microsoft Docs
+description: W ramach tego przewodnika Szybki start utworzysz aplikację .NET dla platformy Azure za pomocą aplikacji przykładowej niezawodnych usług usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: quickstart
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5187aadf686a49f6d78fc4f5c2b2c42487e56c13
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4c81baec0c047b551e1bdac2152b330f010baa18
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Szybki start: tworzenie aplikacji platformy .NET w usłudze Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -125,15 +125,19 @@ Aby wdrożyć aplikację na platformie Azure, potrzebny jest klaster usługi Ser
 ### <a name="join-a-party-cluster"></a>Dołączanie do klastra testowego
 Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i uruchamiane przez zespół usługi Service Fabric, w których każdy może wdrażać aplikacje i poznawać platformę. Klaster używa jednego certyfikatu z podpisem własnym w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem. 
 
-Zaloguj się i [dołącz do klastra z systemem Windows](http://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Certyfikat i wartość **Punkt końcowy połączenia** będą używane w kolejnych krokach.
+Zaloguj się i [dołącz do klastra z systemem Windows](http://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Kliknij link **Jak nawiązać połączenie z zabezpieczonym klastrem testowym?** i skopiuj hasło certyfikatu. Certyfikat, hasło certyfikatu oraz wartość pola **Punkt końcowy połączenia** będą używane w kolejnych krokach.
 
 ![Plik PFX i punkt końcowy połączenia](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 
-Na maszynie z systemem Windows zainstaluj plik PFX w magazynie certyfikatów *CurrentUser\My*.
+> [!Note]
+> Liczba klastrów testowych dostępnych przez godzinę jest ograniczona. Jeśli wystąpi błąd podczas próby tworzenia konta umożliwiającego korzystanie z klastra testowego, możesz poczekać, a następnie spróbować ponownie. Możesz też wykonać kroki opisane w samouczku [Wdrażanie aplikacji .NET](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application), aby utworzyć klaster usługi Service Fabric w subskrypcji platformy Azure i wdrożyć w nim aplikację. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Po wdrożeniu i zweryfikowaniu aplikacji w klastrze możesz przejść do sekcji [Skalowanie aplikacji i usług w klastrze](#scale-applications-and-services-in-a-cluster) tego przewodnika Szybki Start.
+>
+
+
+Na komputerze z systemem Windows zainstaluj plik PFX w magazynie certyfikatów *CurrentUser\My*.
 
 ```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
-\CurrentUser\My
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
 
 
    PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
@@ -155,7 +159,7 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze bezpośrednio z pro
 1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Voting (Głosowanie)** i wybierz polecenie **Publikuj**. Zostanie wyświetlone okno dialogowe Publikowanie.
 
 
-2. Skopiuj **punkt końcowy połączenia** ze strony klastra testowego do pola **Punkt końcowy połączenia**. Na przykład `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Kliknij pozycję **Zaawansowane parametry połączenia** i wprowadź poniższe informacje.  Wartości *FindValue* i *ServerCertThumbprint* muszą być zgodne z odciskiem palca certyfikatu zainstalowanego w poprzednim kroku. 
+2. Skopiuj **punkt końcowy połączenia** ze strony klastra testowego do pola **Punkt końcowy połączenia**. Na przykład `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Kliknij pozycję **Zaawansowane parametry połączenia** i upewnij się, że wartości *FindValue* i *ServerCertThumbprint* są zgodne z odciskiem palca certyfikatu zainstalowanego w poprzednim kroku. 
 
     ![Okno dialogowe Publikowanie](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
@@ -165,7 +169,7 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze bezpośrednio z pro
 
 4. Otwórz przeglądarkę i wpisz adres klastra, a po nim ciąg „:8080”, aby uzyskać dostęp do aplikacji w klastrze — na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`. Aplikacja powinna zostać teraz wyświetlona jako uruchomiona w klastrze na platformie Azure.
 
-![Fronton aplikacji](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
+    ![Fronton aplikacji](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalowanie aplikacji i usług w klastrze
 Usługi Service Fabric można łatwo skalować w klastrze w celu dostosowania do zmiany obciążenia w usługach. Skalowanie usługi odbywa się przez zmienianie liczby wystąpień uruchomionych w klastrze. Istnieje wiele sposobów skalowania usług. Można użyć skryptów lub poleceń programu PowerShell lub interfejsu wiersza polecenia usługi Service Fabric (sfctl). W tym przykładzie używane jest narzędzie Service Fabric Explorer.

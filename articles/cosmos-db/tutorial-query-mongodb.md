@@ -1,39 +1,39 @@
 ---
-title: "Azure DB rozwiązania Cosmos: Jak wykonać zapytanie, za pomocą interfejsu API bazy danych MongoDB? | Microsoft Docs"
-description: "Dowiedz się zbadać za pomocą interfejsu API bazy danych MongoDB dla bazy danych Azure rozwiązania Cosmos"
+title: 'Azure Cosmos DB: Jak wykonywać zapytania za pomocą interfejsu MongoDB API? | Microsoft Docs'
+description: Dowiedz się, jak za pomocą interfejsu MongoDB API wykonywać zapytania w usłudze Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 05/10/2017
+ms.workload: ''
+ms.date: 03/16/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 1818476a95ddf373701ad93860b02ea4c2ad761d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure DB rozwiązania Cosmos: Jak zbadać za pomocą interfejsu API dla bazy danych MongoDB?
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu MongoDB API
 
-Azure DB rozwiązania Cosmos [interfejsu API dla bazy danych MongoDB](mongodb-introduction.md) obsługuje [zapytania powłoki MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+Interfejs [API dla bazy danych MongoDB](mongodb-introduction.md) w usłudze Azure Cosmos DB obsługuje [zapytania powłoki MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
-> * Wykonywanie zapytania na danych z bazy danych MongoDB
+> * Wykonywanie zapytania o dane za pomocą bazy danych MongoDB
 
 ## <a name="sample-document"></a>Przykładowy dokument
 
-Zapytania w tym artykule, użyj następujących przykładowy dokument.
+Zapytania w tym artykule korzystają z następującego przykładowego dokumentu.
 
 ```json
 {
@@ -63,9 +63,9 @@ Zapytania w tym artykule, użyj następujących przykładowy dokument.
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a>Przykładowe Zapytanie 1 
+## <a id="examplequery1"></a> Przykładowe zapytanie 1 
 
-Podana dokument rodziny próbki powyżej, następujące zapytanie zwraca dokumenty Jeśli w polu identyfikatora odpowiada `WakefieldFamily`.
+Bazując na powyższym przykładowym dokumencie dotyczącym rodziny, następujące zapytanie zwraca dokumenty, dla których pole id ma wartość `WakefieldFamily`.
 
 **Zapytanie**
     
@@ -113,13 +113,13 @@ Podana dokument rodziny próbki powyżej, następujące zapytanie zwraca dokumen
     "isRegistered": false
     }
 
-## <a id="examplequery2"></a>Przykładowe zapytanie 2 
+## <a id="examplequery2"></a> Przykładowe zapytanie 2 
 
-Dalej zapytanie zwraca wszystkie elementy podrzędne w rodzinie. 
+Następne zapytanie zwraca wszystkie dzieci w rodzinie. 
 
 **Zapytanie**
     
-    db.familes.find( { id: “WakefieldFamily” }, { children: true } )
+    db.families.find( { id: “WakefieldFamily” }, { children: true } )
 
 **Wyniki**
 
@@ -146,18 +146,18 @@ Dalej zapytanie zwraca wszystkie elementy podrzędne w rodzinie.
     }
 
 
-## <a id="examplequery3"></a>Przykładowe zapytanie 3 
+## <a id="examplequery3"></a> Przykładowe zapytanie 3 
 
-Dalej zapytanie zwraca wszystkie rodziny, które zostały zarejestrowane. 
+Następne zapytanie zwraca wszystkie zarejestrowane rodziny. 
 
 **Zapytanie**
     
     db.families.find( { "isRegistered" : true })
-**Wyniki** zostanie zwrócony żaden dokument. 
+**Wyniki** Nie zostanie zwrócony żaden dokument. 
 
-## <a id="examplequery4"></a>Przykładowe zapytanie 4
+## <a id="examplequery4"></a> Przykładowe zapytanie 4
 
-Dalej zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane. 
+Następne zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane. 
 
 **Zapytanie**
     
@@ -199,9 +199,9 @@ Dalej zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane.
     "isRegistered": false
 }
 
-## <a id="examplequery5"></a>Przykładowe zapytanie 5
+## <a id="examplequery5"></a> Przykładowe zapytanie 5
 
-Dalej zapytanie zwraca rodziny, które nie są zarejestrowane i stan jest NY. 
+Następne zapytanie zwraca wszystkie rodziny, które nie są zarejestrowane i dla których stan to NY. 
 
 **Zapytanie**
     
@@ -245,9 +245,9 @@ Dalej zapytanie zwraca rodziny, które nie są zarejestrowane i stan jest NY.
 }
 
 
-## <a id="examplequery6"></a>Przykładowe zapytanie 6
+## <a id="examplequery6"></a> Przykładowe zapytanie 6
 
-Dalej zapytanie zwraca wszystkich rodzin, w których 8 klas podrzędnych.
+Następne zapytanie zwraca wszystkie rodziny, w których dzieci chodzą do 8 klasy.
 
 **Zapytanie**
   
@@ -290,9 +290,9 @@ Dalej zapytanie zwraca wszystkich rodzin, w których 8 klas podrzędnych.
     "isRegistered": false
 }
 
-## <a id="examplequery7"></a>Przykładowe zapytanie 7
+## <a id="examplequery7"></a> Przykładowe zapytanie 7
 
-Dalej zapytanie zwraca wszystkich rodzin, których rozmiar tablicy elementów podrzędnych to 3.
+Następne zapytanie zwraca wszystkie rodziny, w których rozmiar tablicy z dziećmi to 3.
 
 **Zapytanie**
   
@@ -300,17 +300,17 @@ Dalej zapytanie zwraca wszystkich rodzin, których rozmiar tablicy elementów po
 
 **Wyniki**
 
-Nie będzie można zwrócić wyników, ponieważ nie ma więcej niż 2 elementów podrzędnych. Tylko wtedy, gdy parametr 2 to zapytanie powiodło się i zwróć pełnego dokumentu.
+Nie zostaną zwrócone żadne wyniki, ponieważ nigdzie nie ma więcej niż 2 dzieci. To zapytanie powiedzie się i zwróci pełny dokument tylko wtedy, gdy parametr będzie równy 2.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Przedstawiono sposób zapytań przy użyciu bazy danych MongoDB 
+> * Przedstawiono sposób wykonywania zapytań przy użyciu bazy danych MongoDB 
 
-Możesz teraz przejść do następnym samouczku informacje na temat dystrybucji danych globalnie.
+Możesz teraz przejść do następnego samouczka, aby dowiedzieć się, jak dystrybuować swoje dane globalnie.
 
 > [!div class="nextstepaction"]
-> [Globalny dystrybucji danych](tutorial-global-distribution-sql-api.md)
+> [Globalna dystrybucja danych](tutorial-global-distribution-sql-api.md)
 

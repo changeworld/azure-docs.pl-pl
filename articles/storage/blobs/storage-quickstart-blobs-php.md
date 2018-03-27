@@ -8,13 +8,13 @@ ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 03/09/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 474c03921369035cd7334fdddd9806f8f90b7d58
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4adad6fe3da16653bbd654a3e93e14f9e68b7c90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Transferowanie obiektów do i z usługi Azure Blob Storage za pomocą języka PHP
 Dzięki tej skróconej instrukcji dowiesz się, w jaki sposób za pomocą języka PHP przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. 
@@ -23,7 +23,7 @@ Dzięki tej skróconej instrukcji dowiesz się, w jaki sposób za pomocą język
 
 Aby ukończyć ten przewodnik Szybki start: 
 * Zainstaluj [środowisko PHP](http://php.net/downloads.php).
-* Zainstaluj [zestaw Azure SDK dla języka PHP](https://github.com/Azure/azure-storage-php).
+* Zainstaluj [zestaw SDK usługi Azure Storage dla języka PHP](https://github.com/Azure/azure-storage-php).
 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -196,6 +196,13 @@ Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym prz
     echo "<br />";
     unlink($fileToUpload);   
 ```
+
+## <a name="resources-for-developing-php-applications-with-blobs"></a>Zasoby używane do tworzenia aplikacji PHP z obiektami blob
+
+Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji PHP z magazynem obiektów blob:
+
+- W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta PHP](https://github.com/Azure/azure-storage-php) dla usługi Azure Storage, a następnie pobierz i zainstaluj go.
+- Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob) napisanymi przy użyciu biblioteki klienta PHP.
 
 ## <a name="next-steps"></a>Następne kroki
  

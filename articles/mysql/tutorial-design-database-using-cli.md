@@ -1,6 +1,6 @@
 ---
-title: "Projektowanie pierwszej bazy danych Azure Database for MySQL — interfejs wiersza polecenia platformy Azure"
-description: "W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MySQL i zarządzać nimi przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0."
+title: 'Samouczek: projektowanie bazy danych usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure'
+description: W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MySQL i zarządzać nimi przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -11,13 +11,13 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: a609bbdf70599d0cceaf988a9a0bef51bc28716d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6f77b24092a80708ba82c6d42b947c00d6a69b6d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="design-your-first-azure-database-for-mysql-database"></a>Projektowanie pierwszej bazy danych usługi Azure Database for MySQL
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 
 Usługa Azure Database for MySQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft opartą na aparacie bazy danych MySQL Community Edition. W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
 

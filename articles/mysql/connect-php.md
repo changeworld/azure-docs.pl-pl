@@ -1,6 +1,6 @@
 ---
-title: "Nawiązywanie połączeń z usługą Azure Database for MySQL za pomocą języka PHP"
-description: "Ten przewodnik Szybki start zawiera kilka przykładów kodu PHP, których można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich."
+title: Nawiązywanie połączeń z usługą Azure Database for MySQL za pomocą języka PHP
+description: Ten przewodnik Szybki start zawiera kilka przykładów kodu PHP, których można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich.
 services: mysql
 author: mswutao
 ms.author: wuta
@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: d20aaf8a4cabd4e013e7ff43010c0f463eaccb79
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 581d3f181f5237d2cb3e469295b06eacd31b784f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Usługa Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań za pomocą języka PHP
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL przy użyciu aplikacji języka [PHP](http://php.net/manual/intro-whatis.php). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym temacie założono, że wiesz już, jak opracowywać zawartość za pomocą języka PHP, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -230,4 +230,4 @@ mysqli_close($conn);
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Łączenie z usługą Azure Database for MySQL za pomocą protokołu SSL] (howto-configure-ssl.md)
+> [Łączenie z usługą Azure Database for MySQL za pomocą protokołu SSL](howto-configure-ssl.md)

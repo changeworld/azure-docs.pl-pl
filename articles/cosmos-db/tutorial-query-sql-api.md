@@ -1,41 +1,41 @@
 ---
-title: "Jak zapytania SQL w usłudze Azure DB rozwiązania Cosmos? | Microsoft Docs"
-description: "Dowiedz się zbadać za pomocą programu SQL w usłudze Azure DB rozwiązania Cosmos"
+title: Jak wykonywać zapytania przy użyciu języka SQL w usłudze Azure Cosmos DB? | Microsoft Docs
+description: Dowiedz się, jak wykonywać zapytania za pomocą usługi SQL w usłudze Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: ffef6ec2120a80d907449470efb7b4ab6dca8037
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 60910b602f9386738f9d8895fd151d15f3ebf058
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure DB rozwiązania Cosmos: Jak wykonać zapytanie, przy użyciu programu SQL?
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Azure DB rozwiązania Cosmos [interfejsu API SQL](documentdb-introduction.md) obsługiwanych badania dokumentów za pomocą programu SQL. Ten artykuł zawiera przykładowy dokument i dwa przykładowe zapytania SQL oraz wyniki.
+[Interfejs API SQL](documentdb-introduction.md) usługi Azure Cosmos DB obsługuje wykonywanie zapytań względem dokumentów przy użyciu języka SQL. Ten artykuł zawiera przykładowy dokument i dwa przykładowe zapytania SQL oraz ich wyniki.
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
-> * Wykonywanie zapytania na danych z programu SQL
+> * Wykonywanie zapytań o dane za pomocą usługi SQL
 
 ## <a name="sample-document"></a>Przykładowy dokument
 
-Zapytania SQL, w tym artykule Użyj następujących przykładowy dokument.
+Zapytania SQL w tym artykule korzystają z następującego przykładowego dokumentu.
 
 ```json
 {
@@ -65,20 +65,20 @@ Zapytania SQL, w tym artykule Użyj następujących przykładowy dokument.
   "isRegistered": false
 }
 ```
-## <a name="where-can-i-run-sql-queries"></a>Gdzie można uruchomić zapytania SQL
+## <a name="where-can-i-run-sql-queries"></a>Gdzie można uruchomić zapytania SQL?
 
-Zapytań za pomocą Eksploratora danych w portalu Azure za pośrednictwem [interfejsu API REST i zestawy SDK](sql-api-sdk-dotnet.md), a nawet [Plac zabaw dla zapytań](https://www.documentdb.com/sql/demo), która działa na podstawie istniejącego zestawu danych przykładowych zapytań.
+Zapytania można uruchamiać przy użyciu Eksploratora danych w witrynie Azure Portal, za pomocą [interfejsu API REST i zestawów SDK](sql-api-sdk-dotnet.md), a nawet [placu zabaw dla zapytań](https://www.documentdb.com/sql/demo), który uruchamia zapytania na istniejącym zestawie danych przykładowych.
 
-Aby uzyskać więcej informacji na temat kwerend SQL zobacz:
-* [Zapytanie SQL i składni SQL](sql-api-sql-query.md)
+Aby uzyskać więcej informacji na temat zapytań SQL zobacz:
+* [Zapytanie SQL i składnia SQL](sql-api-sql-query.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku założono, że masz konto bazy danych Azure rozwiązania Cosmos i kolekcji. Nie masz żadnego z tych? Zakończenie [szybkiego startu 5-minutowy](create-mongodb-nodejs.md) lub [samouczek developer](tutorial-develop-mongodb.md) Aby utworzyć konto i kolekcji.
+W tym samouczku założono, że masz konto usługi Azure Cosmos DB i kolekcję. Nie spełniasz tych warunków? Ukończ [5-minutowy przewodnik Szybki start](create-mongodb-nodejs.md) lub [samouczek dewelopera](tutorial-develop-mongodb.md), aby utworzyć konto i kolekcję.
 
-## <a name="example-query-1"></a>Przykładowe Zapytanie 1
+## <a name="example-query-1"></a>Przykładowe zapytanie 1
 
-Podana dokument rodziny próbki powyżej, następujące zapytanie SQL zwraca dokumenty Jeśli w polu identyfikatora odpowiada `WakefieldFamily`. Ponieważ chodzi o `SELECT *` instrukcji, wyniki kwerendy jest cały dokument JSON:
+Bazując na powyższym przykładowym dokumencie dotyczącym rodziny, następujące zapytanie SQL zwraca dokumenty, dla których pole id ma wartość `WakefieldFamily`. Ponieważ jest to instrukcja `SELECT *`, dane wyjściowe zapytania są kompletnym dokumentem JSON:
 
 **Zapytanie**
 
@@ -119,7 +119,7 @@ Podana dokument rodziny próbki powyżej, następujące zapytanie SQL zwraca dok
 
 ## <a name="example-query-2"></a>Przykładowe zapytanie 2
 
-Dalej zapytania zwraca wszystkie nazwy podanej dzieci w rodzinie odpowiada o identyfikatorze `WakefieldFamily` uporządkowanych według ich klasy.
+Następne zapytanie zwraca imiona wszystkich dzieci w rodzinie o identyfikatorze zgodnym z `WakefieldFamily`, uporządkowane według klasy.
 
 **Zapytanie**
 
@@ -129,7 +129,7 @@ Dalej zapytania zwraca wszystkie nazwy podanej dzieci w rodzinie odpowiada o ide
     WHERE f.id = 'WakefieldFamily'
     ORDER BY f.children.grade ASC
 
-**Wyniki**
+**Results**
 
     [
       { "givenName": "Jesse" }, 
@@ -139,13 +139,13 @@ Dalej zapytania zwraca wszystkie nazwy podanej dzieci w rodzinie odpowiada o ide
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Przedstawiono sposób zapytań przy użyciu programu SQL  
+> * Przedstawiono sposób wykonywania zapytań przy użyciu języka SQL  
 
-Możesz teraz przejść do następnym samouczku informacje na temat dystrybucji danych globalnie.
+Możesz teraz przejść do następnego samouczka, aby dowiedzieć się, jak dystrybuować swoje dane globalnie.
 
 > [!div class="nextstepaction"]
-> [Globalny dystrybucji danych](tutorial-global-distribution-sql-api.md)
+> [Globalna dystrybucja danych](tutorial-global-distribution-sql-api.md)
 

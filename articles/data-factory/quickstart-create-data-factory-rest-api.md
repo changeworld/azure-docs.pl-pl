@@ -1,23 +1,23 @@
 ---
-title: "Tworzenie usługi Azure Data Factory przy użyciu interfejsu API REST | Microsoft Docs"
-description: "Tworzenie usługi Azure Data Factory w celu skopiowania danych z jednej lokalizacji w usłudze Azure Blob Storage do innej lokalizacji w tej samej usłudze Blob Storage."
+title: Tworzenie usługi Azure Data Factory przy użyciu interfejsu API REST | Microsoft Docs
+description: Tworzenie fabryki danych platformy Azure w celu skopiowania danych między lokalizacjami w usłudze Azure Blob Storage.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 9c12c5e016e6bfa5dceab6dc77086fe018c43f59
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: efd1450e59aa2ec0e20de3c9bee53b7cf278df76
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Tworzenie usługi Azure Data Factory i potoku przy użyciu interfejsu API REST
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

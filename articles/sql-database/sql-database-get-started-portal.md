@@ -1,26 +1,20 @@
 ---
 title: 'Witryna Azure Portal: tworzenie bazy danych SQL | Microsoft Docs'
-description: "Utwórz serwer logiczny, regułę zapory na poziomie serwera i bazę danych usługi SQL Database w witrynie Azure Portal, a następnie wykonuj w niej zapytania."
-keywords: "samouczek usługi sql database, tworzenie bazy danych sql"
+description: Utwórz serwer logiczny, regułę zapory na poziomie serwera i bazę danych usługi SQL Database w witrynie Azure Portal, a następnie wykonuj w niej zapytania.
+keywords: samouczek usługi sql database, tworzenie bazy danych sql
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/16/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 56fb52cb2dbca1939aac2eb9dd4971a93bf8c0dc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2c1e8d8f59e42e75a5895b58e4e7500a2fa2c9a2
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Tworzenia bazy danych SQL platformy Azure w witrynie Azure Portal
 
@@ -93,7 +87,7 @@ Wykonaj te kroki, aby utworzyć bazę danych SQL zawierającą przykładowe dane
    > [!IMPORTANT]
    > \* Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
    >
-   >\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Środkowe stany USA, Francja Środkowa, Niemcy Środkowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Wschodnie stany USA 2, Zachodnie stany USA, Administracja USA — Wirginia i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Administracja USA — Wirginia, Azja Południowo-Wschodnia, Brazylia Południowa, Europa Północna, Europa Zachodnia, Francja Środkowa, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Środkowa, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, Wschodnie stany USA 2, Zachodnie stany USA i Zachodnie Zjednoczone Królestwo. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    >
 
 9. Po wybraniu warstwy serwera, liczby jednostek DTU i ilości miejsca do magazynowania kliknij przycisk **Zastosuj**.  

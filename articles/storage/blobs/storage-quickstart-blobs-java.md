@@ -1,19 +1,19 @@
 ---
-title: "Azure Quickstart — przekazywanie, pobieranie i wyświetlanie listy obiektów blob w usłudze Azure Storage przy użyciu języka Java | Microsoft Docs"
-description: "W tym przewodniku Szybki start utworzysz konto magazynu i kontener. Następnie przy użyciu biblioteki klienta języka Java przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze."
+title: Azure Quickstart — przekazywanie, pobieranie i wyświetlanie listy obiektów blob w usłudze Azure Storage przy użyciu języka Java | Microsoft Docs
+description: W tym przewodniku Szybki start utworzysz konto magazynu i kontener. Następnie przy użyciu biblioteki klienta języka Java przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
 author: roygara
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: cde366e75e4111a911be67795a2ad4dfa73778ea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44e5f921ca9303e680c76d439ab7503ea3c39680
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą języka Java
 
@@ -202,6 +202,19 @@ downloadedFile.deleteOnExit();
 if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
+
+## <a name="resources-for-developing-java-applications-with-blobs"></a>Zasoby używane do tworzenia aplikacji Java z obiektami blob
+
+Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji Java z magazynem obiektów blob:
+
+### <a name="binaries-and-source-code"></a>Pliki binarne i kod źródłowy
+
+- W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta Java](https://github.com/Azure/azure-storage-java) dla usługi Azure Storage i pobierz go.
+
+### <a name="client-library-reference-and-samples"></a>Dokumentacja i przykłady dotyczące biblioteka klienta
+
+- Aby uzyskać więcej informacji na temat biblioteki klienta Java, zobacz [dokumentację interfejsu API platformy Java](https://docs.microsoft.com/en-us/java/api/overview/azure/storage).
+- Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob) napisanymi przy użyciu biblioteki klienta Java.
 
 ## <a name="next-steps"></a>Następne kroki
 

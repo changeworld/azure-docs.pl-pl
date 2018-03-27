@@ -1,21 +1,21 @@
 ---
-title: "Szybki start — Tworzenie pierwszego kontenera usługi Azure Container Instances w witrynie Azure Portal"
-description: "Wdrażaj i rozpocznij pracę z usługą Azure Container Instances"
+title: Szybki start — Tworzenie pierwszego kontenera usługi Azure Container Instances w witrynie Azure Portal
+description: W tym przewodniku Szybki start witryna Azure Portal zostanie użyta do wdrożenia kontenera w usłudze Azure Container Instances
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 18238c94ba9acff15497a666a63b65b95779d4ac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Tworzenie pierwszego kontenera w usłudze Azure Container Instances
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Szybki start: Tworzenie pierwszego kontenera w usłudze Azure Container Instances
 
 Usługa Azure Container Instances ułatwia tworzenie kontenerów i zarządzanie nimi na platformie Azure. Podczas pracy z tym przewodnikiem Szybki start utworzysz kontener na platformie Azure i ujawnisz go w Internecie przy użyciu publicznego adresu IP. Te czynności wykonywane są w witrynie Azure Portal. Wystarczy kilka kliknięć, a w przeglądarce zobaczysz następujący wynik:
 
@@ -23,7 +23,7 @@ Usługa Azure Container Instances ułatwia tworzenie kontenerów i zarządzanie 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
 ## <a name="create-a-container-instance"></a>Tworzenie wystąpienia kontenera
 

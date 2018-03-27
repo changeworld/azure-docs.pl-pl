@@ -1,8 +1,8 @@
 ---
-title: "Rozgałęzianie w potoku usługi Azure Data Factory | Microsoft Docs"
-description: "W tym artykule przedstawiono sposób sterowania przepływem danych w usłudze Azure Data Factory przez rozgałęzianie działań i tworzenie łańcuchów działań."
+title: Rozgałęzianie w potoku usługi Azure Data Factory | Microsoft Docs
+description: W tym artykule przedstawiono sposób sterowania przepływem danych w usłudze Azure Data Factory przez rozgałęzianie działań i tworzenie łańcuchów działań.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 2b1e3fa7fa57d92dbc3a33af20ed258d674e1625
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 00b377b8ed7454c64d146a2de1867eca8ab1fb67
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 W tym samouczku pokazano, jak utworzyć potok usługi Data Factory przedstawiający niektóre funkcje przepływu sterowania. Ten potok tworzy prostą kopię z kontenera w usłudze Azure Blob Storage w innym kontenerze na tym samym koncie magazynu. Jeśli działanie kopiowania zakończy się powodzeniem, potok wysyła szczegóły zakończonej pomyślnie operacji kopiowania (takie jak ilość zapisanych danych) w wiadomości e-mail z informacją o powodzeniu. W przypadku niepowodzenia działania kopiowania potok wysyła szczegóły błędu kopiowania (np. komunikat o błędzie) w wiadomości e-mail z informacją o niepowodzeniu. W samouczku pokazano, jak przekazać parametry.
@@ -309,7 +309,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
 3. W oknie **Uruchomienie potoku** wykonaj następujące czynności: 
 
     1. Wprowadź wartość **adftutorial/dummy/input** dla parametru **sourceBlobContainer**. Upewnij się, że folder „dummy” nie istnieje w kontenerze adftutorial. 
-    2. Wprowadź wartość **adftutorial/dummy/input** dla parametru **sinkBlobContainer**. 
+    2. Wprowadź wartość **adftutorial/dummy/output** dla parametru **sinkBlobContainer**. 
     3. Wprowadź **adres e-mail** dla parametru **receiver**. 
     4. Kliknij przycisk **Zakończ**.
 

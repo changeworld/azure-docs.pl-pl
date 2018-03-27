@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/09/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 6a0e69e1ab2c52586b447d8a249b52b09bbff705
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9eff06934eefa44db94de3d01be470ca69a2d88c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 
@@ -40,17 +40,21 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 2. W obszarze **Azure Databricks (wersja zapoznawcza)** kliknij pozycję **Utwórz**.
 
-3. W obszarze **Usługa Azure Databricks** podaj następujące wartości:
+3. W obszarze **Usługa Azure Databricks** podaj wartości umożliwiające utworzenie obszaru roboczego usługi Databricks.
 
     ![Tworzenie obszaru roboczego usługi Azure Databricks](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
 
-    * W polu **Nazwa obszaru roboczego** podaj nazwę obszaru roboczego usługi Databricks.
-    * W polu **Subskrypcja** wybierz z listy rozwijanej subskrypcję platformy Azure.
-    * W obszarze **Grupa zasobów** określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-    * W polu **Lokalizacja** wybierz pozycję **Wschodnie stany USA 2**. Inne dostępne regiony podano na stronie [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/).
-    * W obszarze **Warstwa cenowa** wybierz pozycję **Standardowa** lub **Premium**. Aby uzyskać więcej informacji o tych warstwach, zobacz [stronę usługi Databricks](https://azure.microsoft.com/pricing/details/databricks/).
+    Podaj następujące wartości: 
+     
+    |Właściwość  |Opis  |
+    |---------|---------|
+    |**Nazwa obszaru roboczego**     | Podaj nazwę obszaru roboczego usługi Databricks.        |
+    |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
+    |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). |
+    |**Lokalizacja**     | Wybierz pozycję **East US 2** (Wschodnie stany USA 2). Inne dostępne regiony podano na stronie [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/).        |
+    |**Warstwa cenowa**     |  Wybierz warstwę **Standardowa** lub **Premium**. Aby uzyskać więcej informacji o tych warstwach, zobacz [stronę usługi Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    Kliknij przycisk **Utwórz**.
+    Zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**.
 
 4. Tworzenie konta potrwa kilka minut. Podczas tworzenia po prawej stronie portalu jest wyświetlany kafelek **Przesyłanie wdrożenia dla usługi Azure Databricks**. Aby go zobaczyć, być może trzeba będzie przesunąć pulpit nawigacyjny w prawo. W górnej części ekranu jest również wyświetlany pasek postępu. Postęp można obserwować w dowolnym z tych obszarów.
 
@@ -84,7 +88,7 @@ Przed przystąpieniem do pracy z tą sekcją musisz zapewnić spełnienie nastę
 * Pobierz przykładowy plik JSON [z usługi GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). 
 * Przekaż ten przykładowy plik JSON na utworzone konto usługi Azure Storage. Do przekazywania plików możesz używać [Eksploratora usługi Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
-Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurować odczytywanie za jego pomocą danych z konta usługi Azure Blob Storage, a następnie uruchomić zadanie Spark SQL dotyczące danych.
+Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurować odczytywanie za jego pomocą danych z konta usługi Azure Blob Storage, a następnie uruchomić zadanie Spark SQL na tych danych.
 
 1. W okienku po lewej stronie kliknij pozycję **Obszar roboczy**. Na liście rozwijanej **Obszar roboczy** kliknij pozycję **Utwórz**, a następnie kliknij pozycję **Notes**.
 
@@ -171,15 +175,15 @@ Wykonaj poniższe kroki, aby utworzyć notes w usłudze Databricks, skonfigurowa
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli podczas tworzenia klastra Spark zostało zaznaczone pole wyboru **Zakończ po __ min aktywności**, działanie klastra zostanie automatycznie zakończone po określonym czasie nieaktywności.
+Gdy skończysz korzystać z tego artykułu, możesz zakończyć działanie klastra. Aby to zrobić, w obszarze roboczym usługi Azure Databricks wybierz pozycję **Klastry** w lewym okienku. W obszarze klastra, którego działanie chcesz zakończyć, przesuń kursor na wielokropek w kolumnie **Akcje**, a następnie wybierz ikonę **Zakończ**.
 
-Jeśli to pole wyboru nie zostało zaznaczone, musisz ręcznie zakończyć działanie klastra. Aby to zrobić, w obszarze roboczym usługi Azure Databricks w lewym okienku kliknij pozycję **Klastry**. W obszarze klastra, którego działanie chcesz zakończyć, przesuń kursor na wielokropek w kolumnie **Akcje**, a następnie kliknij ikonę **Zakończ**.
+![Zatrzymywanie klastra usługi Databricks](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Zatrzymywanie klastra usługi Databricks")
 
-![Kończenie działania klastra usługi Databricks](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Kończenie działania klastra usługi Databricks")
+Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po __ min aktywności**. W takim przypadku nieaktywny klaster zostanie automatycznie zatrzymany po określonym czasie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule został utworzony klaster Spark w usłudze Azure Databricks i przy użyciu danych w usłudze Azure Storage zostało uruchomione zadanie Spark. Aby dowiedzieć się, jak zaimportować dane z innych źródeł danych do usługi Azure Databricks, zobacz [Spark data sources](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) (Źródła danych platformy Spark). Przejdź do następnego artykułu, aby dowiedzieć się, jak używać usługi Azure Data Lake Store z usługą Azure Databricks.
+W tym artykule został utworzony klaster Spark w usłudze Azure Databricks i przy użyciu danych w usłudze Azure Storage zostało uruchomione zadanie Spark. Aby dowiedzieć się, jak zaimportować dane z innych źródeł danych do usługi Azure Databricks, zobacz [Spark data sources](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) (Źródła danych platformy Spark). Przejdź do następnego artykułu, aby dowiedzieć się, jak przesłać strumień danych do usługi Azure Databricks za pomocą usługi Event Hubs.
 
 > [!div class="nextstepaction"]
->[Use Data Lake Store with Azure Databricks](https://go.microsoft.com/fwlink/?linkid=864084) (Używanie usługi Data Lake Store z usługą Azure Databricks)
+>[Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs](databricks-stream-from-eventhubs.md)

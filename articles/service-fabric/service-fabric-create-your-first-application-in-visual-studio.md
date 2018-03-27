@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie niezawodnej usługi Azure Service Fabric w języku C#"
-description: "Twórz, wdrażaj i debuguj aplikację usług Reliable Services skompilowaną w usłudze Azure Service Fabric przy użyciu programu Visual Studio."
+title: Tworzenie niezawodnej usługi Azure Service Fabric w języku C#
+description: Twórz, wdrażaj i debuguj aplikację usług Reliable Services skompilowaną w usłudze Azure Service Fabric przy użyciu programu Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/19/2018
+ms.date: 03/14/2018
 ms.author: ryanwi
-ms.openlocfilehash: 43f77a1a2e1bbe28bb646aa23c28c253c20e8dda
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 858e322fd7e516f756aa209be92745efa6cf75f7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Tworzenie pierwszej aplikacji stanowych usług Reliable Services w usłudze Service Fabric w języku C#
 
@@ -40,7 +40,7 @@ Przed rozpoczęciem upewnij się, że masz [skonfigurowane środowisko programow
 
    ![Okno dialogowe nowego projektu w programie Visual Studio][1]
 
-5. W następnym oknie dialogowym można utworzyć aplikację usługi Service Fabric dowolnego typu. Na potrzeby tego przewodnika Szybki start wybierz pozycję **Usługa stanowa**.
+5. W następnym oknie dialogowym można utworzyć aplikację usługi Service Fabric dowolnego typu. W przypadku tego przewodnika Szybki start wybierz pozycję **.Net Core 2.0** > **Usługa stanowa**.
 
 6. Nazwij usługę **MyStatefulService**. Następnie wybierz przycisk **OK**.
 

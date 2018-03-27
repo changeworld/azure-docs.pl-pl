@@ -1,6 +1,6 @@
 ---
-title: "Limity przydziałów i dostępność regionów dla usługi Azure Container Instances"
-description: "Domyślne limity przydziałów i dostępność regionów dla usługi Azure Container Instances."
+title: Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
+description: Domyślne limity przydziałów i dostępność regionów dla usługi Azure Container Instances.
 services: container-instances
 author: mmacy
 manager: timlt
@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: 008b07402cb0b937174488982cac64811baa5d5d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 28177e17a15c5e3b92b9af52e05fa2f8e95db95f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
 
@@ -29,9 +29,9 @@ Usługa Azure Container Instances jest dostępna w następujących regionach z o
 | Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
 | -------- | -- | :---: | :-----------: |
 | Europa Zachodnia, Zachodnie stany USA, Wschodnie stany USA | Linux | 4 | 14 |
-| Azja Południowo-Wschodnia  | Linux | 1 | 1.5 |
+| Zachodnie stany USA 2, Azja Południowo-Wschodnia | Linux | 2 | 7 |
 | Europa Zachodnia, Zachodnie stany USA, Wschodnie stany USA | Windows | 4 | 14 |
-| Azja Południowo-Wschodnia  | Windows | 2 | 3,5 |
+| Zachodnie stany USA 2, Azja Południowo-Wschodnia | Windows | 2 | 3,5 |
 
 Wystąpienia kontenerów utworzone w ramach tych limitów zasobów podlegają dostępności w obrębie regionu wdrożenia. Gdy region jest mocno obciążony, wdrażanie wystąpień może zakończyć się niepowodzeniem. Aby uniknąć niepowodzenia wdrażania, spróbuj wdrożyć wystąpienia z niższymi ustawieniami procesora CPU i pamięci lub spróbuj przeprowadzić wdrożenie w późniejszym terminie.
 

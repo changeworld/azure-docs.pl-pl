@@ -1,6 +1,6 @@
 ---
-title: "Projektowanie pierwszej bazy danych usługi Azure Database for MySQL — witryna Azure Portal"
-description: "W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MySQL i zarządzać nimi przy użyciu witryny Azure Portal."
+title: 'Samouczek: projektowanie usługi Azure Database for MySQL za pomocą witryny Azure Portal'
+description: W tym samouczku wyjaśniono, jak utworzyć serwer oraz bazę danych usługi Azure Database for MySQL i zarządzać nimi przy użyciu witryny Azure Portal.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -10,13 +10,13 @@ ms.service: mysql-database
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 272c1ba67fb1a907d739d23ce1d965f57c3a1074
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 67f1a1ced8e36adf5d391415aae9b16df43950bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="design-your-first-azure-database-for-mysql-database"></a>Projektowanie pierwszej bazy danych usługi Azure Database for MySQL
+# <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Samouczek: projektowanie bazy danych usługi Azure Database for MySQL za pomocą witryny Azure Portal
 Azure Database for MySQL to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych MySQL o wysokiej dostępności, a także zarządzanie nimi. Za pomocą witryny Azure Portal możesz łatwo zarządzać serwerem i zaprojektować bazę danych.
 
 W tym samouczku nauczysz się wykonywać następujące czynności, używając witryny Azure Portal:

@@ -3,25 +3,17 @@ title: Co to jest usługa Azure SQL Database? | Microsoft Docs
 description: 'Wprowadzenie do usługi SQL Database: szczegóły techniczne i możliwości systemu zarządzania relacyjnymi bazami danych (RDBMS) w chmurze firmy Microsoft.'
 keywords: wprowadzenie do usługi sql, co to jest sql database
 services: sql-database
-documentationcenter: ''
 author: CarlRabeler
-manager: jhubbard
-editor: ''
-ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
+manager: craigg
 ms.service: sql-database
-ms.custom: overview
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.date: 03/07/2018
-ms.workload: Active
 ms.author: carlrab
-ms.reviewer: carlrab
-ms.openlocfilehash: a1c4426acec8e9e006c2349b886297f45cc8ecb2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a06ed8433ebcf728c7b090f5e984d4e3ebeb846
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database? 
 
@@ -37,7 +29,8 @@ Usługa SQL Database współdzieli swój kod podstawowy z [aparatem bazy danych 
 
 Usługa SQL Database oferuje przewidywalną wydajność na różnych poziomach usługi, która zapewnia dynamiczną skalowalność bez przestojów, wbudowany mechanizm inteligentnej optymalizacji, globalną skalowalność i dostępność oraz zaawansowane opcje zabezpieczeń — wszystko przy bliskich zeru nakładach administracyjnych. Te możliwości pozwalają Ci skoncentrować się na szybkim tworzeniu aplikacji i skracaniu czasu wejścia na rynek, a nie na poświęcaniu cennego czasu i cennych zasobów na zarządzanie maszynami wirtualnymi i infrastrukturą. Usługa SQL Database jest obecnie dostępna w 38 centrach danych na całym świecie z coraz większą liczbą centrów danych regularnie dołączanych, dzięki czemu możesz uruchomić swoją bazę danych w centrum danych położonym w pobliżu.
 
-> [WAŻNE!] Wystąpienie zarządzane usługi SQL Database jest obecnie w wersji zapoznawczej i jest dostępne tylko na poziomie jednej usługi. Aby uzyskać więcej informacji, zobacz [Wystąpienie zarządzane usługi SQL Database](sql-database-managed-instance.md).
+> [!IMPORTANT]
+> Wystąpienie zarządzane usługi SQL Database jest obecnie w wersji zapoznawczej i jest dostępne tylko na poziomie jednej usługi. Aby uzyskać więcej informacji, zobacz [Wystąpienie zarządzane usługi SQL Database](sql-database-managed-instance.md).
 >
 
 ## <a name="scalable-performance-and-pools"></a>Skalowalna wydajność i pule
