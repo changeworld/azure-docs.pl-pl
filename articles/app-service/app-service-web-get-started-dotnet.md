@@ -1,35 +1,35 @@
 ---
 title: Tworzenie aplikacji internetowej ASP.NET Core na platformie Azure | Microsoft Docs
-description: "Dowiedz się, jak uruchamiać aplikacje internetowe w usłudze Azure App Service, wdrażając przykładową aplikację internetową ASP.NET Core."
+description: Dowiedz się, jak uruchamiać aplikacje internetowe w usłudze Azure App Service, wdrażając przykładową aplikację internetową ASP.NET Core.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/05/2018
+ms.date: 03/18/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f098b6c66109cb5cafbcb19e463daa15a65b59
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4b7dbf7609b6ca7fb11391e01a1ac0ce2bc2e897
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Tworzenie aplikacji internetowej ASP.NET Core na platformie Azure
 
 > [!NOTE]
-> W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Tworzenie aplikacji internetowej platformy .NET Core w usłudze App Service w systemie Linux](./containers/quickstart-dotnetcore.md).
+> W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Tworzenie aplikacji internetowej platformy .NET Core w usłudze App Service w systemie Linux](./containers/quickstart-dotnetcore.md). 
 >
 > Jeśli szukasz czynności do wykonania w przypadku aplikacji ASP.NET Framework, zobacz [Tworzenie aplikacji internetowej środowiska ASP.NET Framework na platformie Azure](app-service-web-get-started-dotnet-framework.md). 
 >
 
-Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie.  Ten przewodnik Szybki start zawiera informacje dotyczące sposobu wdrożenia pierwszej aplikacji internetowej ASP.NET Core w usłudze Azure Web Apps. Po zakończeniu będzie istnieć grupa zasobów składająca się z planu usługi App Service i aplikacji internetowej platformy Azure wraz z wdrożoną aplikacją internetową.
+Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie.  Ten przewodnik Szybki start zawiera informacje dotyczące sposobu wdrożenia pierwszej aplikacji internetowej ASP.NET Core w usłudze Azure Web Apps. Po zakończeniu będzie istnieć grupa zasobów składająca się z planu usługi App Service i aplikacji internetowej platformy Azure wraz z wdrożoną aplikacją internetową. Możesz [obejrzeć wideo](#video), które pokazuje, jak wykonać te kroki całkowicie w programie Visual Studio 2017 r.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -186,6 +186,10 @@ Zostanie wyświetlona strona Omówienie aplikacji internetowej. Tutaj możesz wy
 Menu po lewej stronie zawiera różne strony służące do konfigurowania aplikacji. 
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
+
+## <a name="video"></a>Połączenia wideo
+
+> [!VIDEO https://www.youtube-nocookie.com/embed/AEfG9PWPAxg]
 
 ## <a name="next-steps"></a>Następne kroki
 

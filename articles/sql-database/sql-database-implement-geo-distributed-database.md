@@ -1,68 +1,61 @@
 ---
-title: "Wdrożenia rozwiązania bazy danych SQL Azure rozproszona geograficznie | Dokumentacja firmy Microsoft"
-description: "Dowiedz się do konfigurowania bazy danych SQL Azure i aplikacji dla trybu failover z bazą danych replikowanych i testowanie trybu failover."
+title: Implementacja rozproszonego geograficznie rozwiązania usługi Azure SQL Database | Microsoft Docs
+description: Dowiedz się, jak skonfigurować usługę Azure SQL Database i aplikację pod kątem przechodzenia w tryb failover do zreplikowanej bazy danych i jak testować tryb failover.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,business continuity
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.openlocfilehash: 910be8ff5f9a882c7bb8ae875b8bf5fc74d1fb9a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: MT
+ms.openlocfilehash: ea94a311d409d8c5d6142746dc1009ff67ef3a82
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="implement-a-geo-distributed-database"></a>Wdrożenie rozproszone geograficznie bazy danych
+# <a name="implement-a-geo-distributed-database"></a>Implementowanie rozproszonej geograficznie bazy danych
 
-W tym samouczku skonfiguruj bazy danych Azure SQL i aplikacji dla trybu failover w regionie zdalnego, a następnie testować tryb failover planu. Omawiane kwestie: 
+W ramach tego samouczka usługa Azure SQL Database i aplikacja zostaną skonfigurowane pod kątem przechodzenia w tryb failover do zdalnego regionu, a następnie zostanie przetestowany plan trybu failover. Omawiane kwestie: 
 
 > [!div class="checklist"]
-> * Tworzenie bazy danych użytkowników i udzielić im uprawnień
-> * Skonfiguruj regułę zapory poziomu bazy danych
-> * Utwórz [— replikacja geograficzna trybu failover grupy](sql-database-geo-replication-overview.md)
-> * Tworzenie i kompilacja aplikacji Java kwerendy bazy danych Azure SQL
-> * Wykonaj wyszczególniania odzyskiwania po awarii
+> * Tworzenie użytkowników bazy danych i udzielanie im uprawnień
+> * Konfigurowanie reguły zapory na poziomie bazy danych
+> * Tworzenie [grupy trybu failover replikacji geograficznej](sql-database-geo-replication-overview.md)
+> * Tworzenie i kompilowanie aplikacji w języku Java na potrzeby odpytywania usługi Azure SQL Database
+> * Wykonywanie próbnego odzyskiwania po awarii
 
-Jeśli nie masz subskrypcji platformy Azure, [utworzyć bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
 
-- Zainstalowana najnowsza wersja [programu Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
-- Zainstalowana baza danych Azure SQL. W tym samouczku używana przykładową bazę danych AdventureWorksLT o nazwie **mySampleDatabase** z jednego z tych Szybki Start:
+- Zainstalowano najnowszą wersję programu [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
+- Zainstalowano usługę Azure SQL Database. W tym samouczku jest używana przykładowa baza danych AdventureWorksLT o nazwie **mySampleDatabase** z jednego z następujących przewodników Szybki start:
 
    - [Tworzenie bazy danych — portal](sql-database-get-started-portal.md)
    - [Tworzenie bazy danych — interfejs wiersza polecenia](sql-database-get-started-cli.md)
    - [Tworzenie bazy danych — PowerShell](sql-database-get-started-powershell.md)
 
-- Zidentyfikowano metodę wykonywanie skryptów SQL bazy danych, można użyć jednej z następujących narzędzi zapytania:
-   - Edytor zapytań w [portalu Azure](https://portal.azure.com). Aby uzyskać więcej informacji na temat używania edytora zapytań w portalu Azure, zobacz [Connect i zapytania za pomocą edytora zapytań](sql-database-get-started-portal.md#query-the-sql-database).
-   - Najnowsza wersja [programu SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), która jest zintegrowane środowisko umożliwiające zarządzanie dowolnej infrastruktury SQL z programu SQL Server z bazą danych SQL systemu Microsoft Windows.
-   - Najnowsza wersja [Visual Studio Code](https://code.visualstudio.com/docs), czyli edytorze graficznego kodu dla systemu Linux, macOS, i systemu Windows, który obsługuje rozszerzenia, w tym [rozszerzenia mssql](https://aka.ms/mssql-marketplace) do wykonywania zapytań programu Microsoft SQL Server Baza danych Azure SQL i usługi SQL Data Warehouse. Aby uzyskać więcej informacji o usłudze Azure SQL Database za pomocą tego narzędzia, zobacz [Connect i zapytanie z kodem VS](sql-database-connect-query-vscode.md). 
+- Zidentyfikowano metodę wykonywania skryptów SQL względem bazy danych. Możesz użyć jednego z następujących narzędzi do obsługi zapytań:
+   - Edytor zapytań w [witrynie Azure Portal](https://portal.azure.com). Aby uzyskać więcej informacji na temat używania edytora zapytań w witrynie Azure Portal, zobacz [Nawiązywanie połączenia i odpytywanie za pomocą edytora zapytań](sql-database-get-started-portal.md#query-the-sql-database).
+   - Najnowsza wersja programu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), który jest zintegrowanym środowiskiem do zarządzania dowolną infrastrukturą SQL — od programu SQL Server po usługę SQL Database dla systemu Microsoft Windows.
+   - Najnowsza wersja programu [Visual Studio Code](https://code.visualstudio.com/docs), który jest graficznym edytorem kodu dla systemów Linux, macOS i Windows obsługującym rozszerzenia, w tym [rozszerzenie mssql](https://aka.ms/mssql-marketplace) na potrzeby wysyłania zapytań do programu Microsoft SQL Server oraz usług Azure SQL Database i SQL Data Warehouse. Aby uzyskać więcej informacji na temat użycia tego narzędzia pod kątem usługi Azure SQL Database, zobacz [Nawiązywanie połączenia i odpytywanie za pomocą programu VS Code](sql-database-connect-query-vscode.md). 
 
-## <a name="create-database-users-and-grant-permissions"></a>Tworzenie bazy danych użytkowników i udzielanie uprawnień
+## <a name="create-database-users-and-grant-permissions"></a>Tworzenie użytkowników bazy danych i udzielanie uprawnień
 
-Połączenia z bazą danych i tworzenie kont użytkowników przy użyciu jednej z następujących narzędzi zapytania:
+Nawiąż połączenie z bazą danych i utwórz konta użytkowników przy użyciu jednego z następujących narzędzi do obsługi zapytań:
 
-- Edytor zapytań w portalu Azure
+- Edytor zapytań w witrynie Azure Portal
 - SQL Server Management Studio
 - Visual Studio Code
 
-Te konta użytkowników automatycznie replikowane na serwerze pomocniczym (i być utrzymywane w synchronizacji). Aby użyć programu SQL Server Management Studio lub Visual Studio Code, może być konieczne skonfigurowanie reguły zapory, jeśli łączysz się z adresem IP, dla którego nie została jeszcze skonfigurowana zapora klienta. Aby uzyskać szczegółowe instrukcje, zobacz [utworzyć regułę zapory poziomu serwera](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Te konta użytkowników są automatycznie replikowane na serwer pomocniczy (i synchronizowane). Aby można było użyć programu SQL Server Management Studio lub Visual Studio Code, może być konieczne skonfigurowanie reguły zapory w przypadku łączenia się z klienta pod adresem, dla którego nie skonfigurowano jeszcze zapory. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie reguły zapory na poziomie serwera](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
-- W oknie zapytania wykonaj następujące zapytanie, aby utworzyć dwa konta użytkownika w bazie danych. Ten skrypt przyznaje **db_owner** uprawnień do **app_admin** konto i przyznaje **wybierz** i **aktualizacji** uprawnień do **app_user** konta. 
+- W oknie zapytania wykonaj następujące zapytanie, aby utworzyć dwa konta użytkownika w bazie danych. Ten skrypt umożliwia udzielenie uprawnień **db_owner** dla konta **app_admin** oraz uprawnień **SELECT** i **UPDATE** dla konta **app_user**. 
 
    ```sql
    CREATE USER app_admin WITH PASSWORD = 'ChangeYourPassword1';
@@ -74,26 +67,26 @@ Te konta użytkowników automatycznie replikowane na serwerze pomocniczym (i by�
    GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product TO app_user;
    ```
 
-## <a name="create-database-level-firewall"></a>Utwórz zapory poziomu bazy danych
+## <a name="create-database-level-firewall"></a>Tworzenie zapory na poziomie bazy danych
 
-Utwórz [reguły zapory poziomu bazy danych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) bazy danych SQL. Tę regułę zapory poziomu bazy danych automatycznie replikuje dane na serwerze pomocniczym, utworzone w tym samouczku. Dla uproszczenia (w tym samouczku) Użyj publiczny adres IP komputera, na którym wykonywana kroki opisane w tym samouczku. Aby określić adres IP używany dla reguły zapory poziomu serwera dla bieżącego komputera, zobacz [utworzenie zapory poziomu serwera](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
+Utwórz [regułę zapory na poziomie bazy danych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) dla bazy danych SQL. Ta reguła zapory na poziomie bazy danych jest automatycznie replikowana na serwer pomocniczy utworzony w tym samouczku. Dla uproszczenia (na potrzeby tego samouczka) użyj publicznego adresu IP komputera, na którym są wykonywane kroki opisane w tym samouczku. Aby określić adres IP używany na potrzeby reguły zapory na poziomie serwera dla bieżącego komputera, zobacz [Tworzenie zapory na poziomie serwera](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
 
-- W oknie zapytania otwarte należy zastąpić poprzednie zapytanie następującej kwerendy, zastępując adresy IP odpowiednie adresy IP dla danego środowiska.  
+- W otwartym oknie zapytania zastąp poprzednie zapytanie następującym zapytaniem, zamieniając adresy IP na adresy IP odpowiednie dla używanego środowiska.  
 
    ```sql
    -- Create database-level firewall setting for your public IP address
    EXECUTE sp_set_database_firewall_rule @name = N'myGeoReplicationFirewallRule',@start_ip_address = '0.0.0.0', @end_ip_address = '0.0.0.0';
    ```
 
-## <a name="create-an-active-geo-replication-auto-failover-group"></a>Utwórz grupę aktywna replikacja geograficzna automatycznej pracy awaryjnej 
+## <a name="create-an-active-geo-replication-auto-failover-group"></a>Tworzenie grupy automatycznego trybu failover aktywnej replikacji geograficznej 
 
-Przy użyciu programu Azure PowerShell utworzyć [aktywna replikacja geograficzna automatycznej pracy awaryjnej grupy](sql-database-geo-replication-overview.md) między istniejącego serwera Azure SQL i nowy pusty serwera Azure SQL w regionie Azure, a następnie dodaj przykładowej bazie danych do trybu failover grupy.
+Przy użyciu programu Azure PowerShell utwórz [grupę automatycznego trybu failover aktywnej replikacji geograficznej](sql-database-geo-replication-overview.md) między istniejącym serwerem usługi Azure SQL i nowym pustym serwerem usługi Azure SQL w regionie platformy Azure. Następnie dodaj przykładową bazę danych do grupy trybu failover.
 
 > [!IMPORTANT]
 > Te polecenia cmdlet wymagają programu Azure PowerShell 4.0. [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 >
 
-1. Wypełnić zmienne dla skryptów PowerShell przy użyciu wartości dla istniejącego serwera i przykładową bazę danych i podaj globalnie unikatowa wartość nazwy grupy pracy awaryjnej.
+1. Wypełnij zmienne dla skryptów programu PowerShell przy użyciu wartości dotyczących istniejącego serwera i przykładowej bazy danych oraz określ globalnie unikatową nazwę grupy trybu failover.
 
    ```powershell
    $adminlogin = "ServerAdmin"
@@ -107,7 +100,7 @@ Przy użyciu programu Azure PowerShell utworzyć [aktywna replikacja geograficzn
    $myfailovergroupname = "<your unique failover group name>"
    ```
 
-2. W danym regionie trybu failover, należy utworzyć pusty serwer kopii zapasowej.
+2. Utwórz pusty serwer zapasowy w regionie trybu failover.
 
    ```powershell
    $mydrserver = New-AzureRmSqlServer -ResourceGroupName $myresourcegroupname `
@@ -130,7 +123,7 @@ Przy użyciu programu Azure PowerShell utworzyć [aktywna replikacja geograficzn
    $myfailovergroup   
    ```
 
-4. Dodaj bazę danych do grupy pracy awaryjnej.
+4. Dodaj bazę danych do grupy trybu failover.
 
    ```powershell
    $myfailovergroup = Get-AzureRmSqlDatabase `
@@ -157,7 +150,7 @@ brew update
 brew install maven
 ```
 
-Aby uzyskać szczegółowe instrukcje dotyczące instalowania i konfigurowania środowiska Java i Maven, przejdź [tworzenie aplikacji za pomocą programu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wybierz pozycję **Java**, wybierz pozycję **MacOS**i postępuj szczegółowe instrukcje dotyczące konfigurowania Java i Maven w kroku 1.2 i 1.3.
+Aby uzyskać szczegółowe instrukcje dotyczące instalowania i konfigurowania środowisk Java i Maven, przejdź do artykułu [Tworzenie aplikacji za pomocą programu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wybierz pozycję **Java** i pozycję **MacOS**, a następnie wykonaj szczegółowe instrukcje dotyczące konfigurowania środowisk Java i Maven w krokach 1.2 i 1.3.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 Otwórz terminal i przejdź do katalogu, w którym planujesz utworzyć projekt języka Java. Zainstaluj rozwiązanie **Maven** przez wprowadzenie następujących poleceń:
@@ -166,27 +159,27 @@ Otwórz terminal i przejdź do katalogu, w którym planujesz utworzyć projekt j
 sudo apt-get install maven
 ```
 
-Aby uzyskać szczegółowe instrukcje dotyczące instalowania i konfigurowania środowiska Java i Maven, przejdź [tworzenie aplikacji za pomocą programu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wybierz pozycję **Java**, wybierz pozycję **Ubuntu**i postępuj szczegółowe instrukcje dotyczące konfigurowania Java i Maven w kroku 1.2, 1.3 i 1.4.
+Aby uzyskać szczegółowe instrukcje dotyczące instalowania i konfigurowania środowisk Java i Maven, przejdź do artykułu [Tworzenie aplikacji za pomocą programu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wybierz pozycję **Java** i pozycję **Ubuntu**, a następnie wykonaj szczegółowe instrukcje dotyczące konfigurowania środowisk Java i Maven w krokach 1.2, 1.3 i 1.4.
 
 ### <a name="windows"></a>**Windows**
-Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomocą oficjalnego instalatora. Użyj Maven, aby ułatwić zarządzanie zależności, tworzenia, testowania i uruchom projekt języka Java. Aby uzyskać szczegółowe instrukcje dotyczące instalowania i konfigurowania środowiska Java i Maven, przejdź [tworzenie aplikacji za pomocą programu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wybierz pozycję **Java**wybierz systemu Windows, a następnie postępuj zgodnie z instrukcjami szczegółowe Konfigurowanie języka Java i Maven w kroku 1.2 i 1.3.
+Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomocą oficjalnego instalatora. Narzędzie Maven ułatwia zarządzanie zależnościami oraz kompilowanie, testowanie i uruchamianie projektu języka Java. Aby uzyskać szczegółowe instrukcje dotyczące instalowania i konfigurowania środowisk Java i Maven, przejdź do artykułu [Tworzenie aplikacji za pomocą programu SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), wybierz pozycję **Java** i pozycję Windows, a następnie wykonaj szczegółowe instrukcje dotyczące konfigurowania środowisk Java i Maven w krokach 1.2 i 1.3.
 
-## <a name="create-sqldbsample-project"></a>Utwórz projekt SqlDbSample
+## <a name="create-sqldbsample-project"></a>Tworzenie projektu SqlDbSample
 
-1. W konsoli poleceń (na przykład Bash) Utwórz projekt Maven. 
+1. W konsoli poleceń (na przykład Bash) utwórz projekt narzędzia Maven. 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
-2. Typ **Y** i kliknij przycisk **Enter**.
-3. Przejdź do nowo utworzonego projektu.
+2. Wpisz znak **Y** i naciśnij klawisz **Enter**.
+3. Przejdź do katalogu nowo utworzonego projektu.
 
    ```bash
    cd SqlDbSamples
    ```
 
-4. Za pomocą ulubionego edytora, otwórz plik pom.xml w folderze projektu. 
+4. Za pomocą dowolnego edytora otwórz plik pom.xml w folderze projektu. 
 
-5. Dodaj sterownik JDBC firmy Microsoft dla programu SQL Server zależności na projekt Maven przez otwarcie w ulubionym edytorze tekstów i kopiowanie i wklejanie następujące wiersze w pliku pom.xml. Nie zastępuj istniejącego wartości wstępnie w pliku. Zależności JDBC należy wkleić w większych () sekcji "zależności".   
+5. Dodaj sterownik JDBC firmy Microsoft dla programu SQL Server do projektu narzędzia Maven, otwierając wybrany edytor tekstu, a następnie kopiując i wklejając następujące wiersze do pliku pom.xml. Nie zastępuj istniejących wartości wstępnie określonych w pliku. Zależność od sterownika JDBC należy wkleić w większej sekcji „dependencies”.   
 
    ```xml
    <dependency>
@@ -196,7 +189,7 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
    </dependency>
    ```
 
-6. Określ wersję Java do skompilowania projektu w odniesieniu do, dodając w poniższej sekcji "właściwości" w pliku pom.xml po sekcji "zależności". 
+6. Określ wersję języka Java na potrzeby kompilowania projektu, dodając następującą sekcję „properties” do pliku pom.xml po sekcji „dependencies”. 
 
    ```xml
    <properties>
@@ -204,7 +197,7 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
      <maven.compiler.target>1.8</maven.compiler.target>
    </properties>
    ```
-7. Dodaj poniższą sekcję "kompilacji" w pliku pom.xml po sekcji "właściwości" do obsługi plików manifestu w słoików.       
+7. Dodaj następującą sekcję „build” do pliku pom.xml po sekcji „properties” na potrzeby obsługi plików manifestu w plikach jar.       
 
    ```xml
    <build>
@@ -225,7 +218,7 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
    </build>
    ```
 8. Zapisz i zamknij plik pom.xml.
-9. Otwórz plik App.java (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) i Zastąp zawartość następującą zawartość. Nazwa grupy pracy awaryjnej należy zastąpić nazwę grupy pracy awaryjnej. Zmiana wartości dla nazwy bazy danych użytkownika lub hasło, należy zmienić również tych wartości.
+9. Otwórz plik App.java (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) i zastąp jego zawartość następującą zawartością. Zastąp nazwę grupy trybu failover nazwą Twojej grupy trybu failover. Jeśli zmieniono wartości dla nazwy bazy danych, użytkownika lub hasła, zmień także te wartości.
 
    ```java
    package com.sqldbsamples;
@@ -326,12 +319,12 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
 
 ## <a name="compile-and-run-the-sqldbsample-project"></a>Kompilowanie i uruchamianie projektu SqlDbSample
 
-1. W konsoli polecenie należy wykonać następujące polecenie.
+1. W konsoli poleceń wykonaj następujące polecenie.
 
    ```bash
    mvn package
    ```
-2. Po zakończeniu uruchom następujące polecenie do uruchomienia aplikacji (działa na godzinę, chyba że zostanie zatrzymana ręcznie):
+2. Po zakończeniu uruchom następujące polecenie, aby uruchomić aplikację (działa ona przez około godzinę, chyba że zostanie zatrzymana ręcznie):
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -345,9 +338,9 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
    3. insert on primary successful, read from secondary successful
    ```
 
-## <a name="perform-disaster-recovery-drill"></a>Wykonaj wyszczególniania odzyskiwania po awarii
+## <a name="perform-disaster-recovery-drill"></a>Wykonanie próbnego odzyskiwania po awarii
 
-1. Wywołanie ręcznego przełączania trybu failover grupy pracy awaryjnej. 
+1. Wywołaj ręczne przełączenie grupy trybu failover w tryb failover. 
 
    ```powershell
    Switch-AzureRMSqlDatabaseFailoverGroup `
@@ -356,9 +349,9 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
    -FailoverGroupName $myfailovergroupname
    ```
 
-2. Obserwować wyniki aplikacji podczas pracy awaryjnej. Niektóre wstawia się niepowodzeniem podczas odświeżania pamięci podręcznej DNS.     
+2. Obserwuj wyniki aplikacji podczas pracy w trybie failover. Niektóre operacje wstawiania nie powiodą się podczas odświeżania pamięci podręcznej usługi DNS.     
 
-3. Dowiedz się od roli działa serwer odzyskiwania po awarii.
+3. Dowiedz się, jaką rolę pełni serwer odzyskiwania po awarii.
 
    ```powershell
    $mydrserver.ReplicationRole
@@ -373,9 +366,9 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
    -FailoverGroupName $myfailovergroupname
    ```
 
-5. Obserwować wyniki aplikacji podczas powrotu po awarii. Niektóre wstawia się niepowodzeniem podczas odświeżania pamięci podręcznej DNS.     
+5. Obserwuj wyniki aplikacji podczas powrotu po awarii. Niektóre operacje wstawiania nie powiodą się podczas odświeżania pamięci podręcznej usługi DNS.     
 
-6. Dowiedz się od roli działa serwer odzyskiwania po awarii.
+6. Dowiedz się, jaką rolę pełni serwer odzyskiwania po awarii.
 
    ```powershell
    $fileovergroup = Get-AzureRMSqlDatabaseFailoverGroup `
@@ -387,4 +380,4 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji, zobacz [aktywnych grup — replikacja geograficzna i pracy awaryjnej](sql-database-geo-replication-overview.md).
+Aby uzyskać więcej informacji, zobacz [Aktywna replikacja geograficzna i grupy trybu failover](sql-database-geo-replication-overview.md).

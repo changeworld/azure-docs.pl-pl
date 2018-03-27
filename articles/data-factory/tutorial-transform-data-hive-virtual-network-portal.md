@@ -1,8 +1,8 @@
 ---
-title: "Przekształcanie danych za pomocą programu Hive w usłudze Azure Virtual Network | Microsoft Docs"
-description: "Ten samouczek zawiera instrukcje krok po kroku przekształcania danych przy użyciu działania programu Hive w usłudze Azure Data Factory."
+title: Przekształcanie danych za pomocą programu Hive w usłudze Azure Virtual Network | Microsoft Docs
+description: Ten samouczek zawiera instrukcje krok po kroku przekształcania danych przy użyciu działania programu Hive w usłudze Azure Data Factory.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: a7575549225d47e5266ca7e1778c3e61835de1cc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8711d7ed1d02f0960ef00c1cf5053e97aa00ad5c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Factory przekształcającego dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
@@ -114,7 +114,7 @@ Ponieważ klaster usługi Hadoop znajduje się wewnątrz sieci wirtualnej, nale�
 2. W oknie **Konfiguracja środowiska Integration Runtime** wybierz opcję **Wykonuj przenoszenie danych i wysyłaj działania do obliczeń zewnętrznych**, a następnie kliknij pozycję **Dalej**. 
 
    ![Wybieranie opcji Wykonuj przenoszenie danych i wysyłaj działania](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. Wybierz pozycję **Sieć publiczna** i kliknij pozycję **Dalej**.
+3. Wybierz pozycję **Sieć prywatna** i kliknij pozycję **Dalej**.
     
    ![Wybór sieci prywatnej](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
 4. Wprowadź ciąg **MySelfHostedIR** w polu **Nazwa** i kliknij pozycję **Dalej**. 

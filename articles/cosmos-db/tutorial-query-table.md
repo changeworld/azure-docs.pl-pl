@@ -1,54 +1,54 @@
 ---
-title: "Jak wykonać zapytanie dotyczące tabeli danych w usłudze Azure DB rozwiązania Cosmos? | Microsoft Docs"
-description: "Dowiedz się, jak dane tabeli zapytania w usłudze Azure DB rozwiązania Cosmos"
+title: Jak wykonywać zapytania względem danych tabeli w usłudze Azure Cosmos DB? | Microsoft Docs
+description: Dowiedz się, jak wykonywać zapytania względem danych tabeli w usłudze Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: kanshiG
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 80fed91c45ae19193f6b8dfcaef747f8c4253dee
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: 969b16457b32cedb7140bb032c1830e95ebed9be
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure DB rozwiązania Cosmos: Jak wykonać zapytanie tabeli danych przy użyciu interfejsu API tabeli
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu API tabel
 
-Azure DB rozwiązania Cosmos [API tabeli](table-introduction.md) obsługuje OData i [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) zapytań dotyczących danych klucz wartość (tabeli).  
+[Interfejs API tabel](table-introduction.md) usługi Azure Cosmos DB obsługuje zapytania OData i [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) dla danych klucz-wartość (tabeli).  
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
-> * Wykonywanie zapytania na danych przy użyciu interfejsu API tabeli
+> * Wykonywanie zapytania o dane przy użyciu interfejsu API tabel
 
-Zapytania w tym artykule, skorzystaj z poniższego przykładu `People` tabeli:
+Zapytania w tym artykule korzystają z następującej przykładowej tabeli `People`:
 
-| PartitionKey | RowKey | Adres e-mail | Numer telefonu |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jan | Jeff@contoso.com| 425-555-0104 | 
 
-Zobacz [badania tabel i jednostek](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) szczegółowe informacje na temat sposobu zapytania przy użyciu interfejsu API tabeli. 
+Zobacz [Wykonywanie zapytań względem tabel i jednostek](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities), aby uzyskać szczegółowe informacje na temat wykonywania zapytań przy użyciu interfejsu API tabel. 
 
-Aby uzyskać więcej informacji na możliwości premium, które oferuje bazy danych rozwiązania Cosmos Azure, zobacz [interfejsu API Azure rozwiązania Cosmos DB tabeli](table-introduction.md) i [opracowanie przy użyciu interfejsu API tabeli w programie .NET](tutorial-develop-table-dotnet.md). 
+Aby uzyskać więcej informacji na temat funkcji premium oferowanych przez usługę Azure Cosmos DB, zobacz [Interfejs API tabel usługi Azure Cosmos DB](table-introduction.md) i [Opracowywanie zawartości przy użyciu interfejsu API tabel na platformie .NET](tutorial-develop-table-dotnet.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dla tych zapytań do pracy musi mieć konto bazy danych Azure rozwiązania Cosmos i danych jednostki w kontenerze. Nie masz żadnego z tych? Zakończenie [szybkiego startu 5 minutową](create-table-dotnet.md) lub [samouczek developer](tutorial-develop-table-dotnet.md) Tworzenie konta usługi i umieścić w bazie danych.
+Aby te zapytania działały, musisz mieć konto usługi Azure Cosmos DB i mieć dane jednostki w kontenerze. Nie spełniasz tych warunków? Ukończ [pięciominutowy przewodnik Szybki start](create-table-dotnet.md) lub [samouczek dewelopera](tutorial-develop-table-dotnet.md), aby utworzyć konto i wypełnić bazę danych.
 
-## <a name="query-on-partitionkey-and-rowkey"></a>Zapytanie dotyczące PartitionKey i RowKey
-Ponieważ właściwości PartitionKey i RowKey tworzą klucza podstawowego jednostki, aby zidentyfikować jednostki można użyć następującej składni specjalne: 
+## <a name="query-on-partitionkey-and-rowkey"></a>Zapytanie dotyczące właściwości PartitionKey i RowKey
+Ponieważ właściwości PartitionKey i RowKey tworzą klucz podstawowy jednostki, do zidentyfikowania jednostki można użyć następującej specjalnej składni: 
 
 **Zapytanie**
 
@@ -57,21 +57,21 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **Wyniki**
 
-| PartitionKey | RowKey | Adres e-mail | Numer telefonu |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
-Alternatywnie można określić właściwości jako część `$filter` opcji, jak pokazano w poniższej sekcji. Należy pamiętać, że nazw właściwości kluczy i wartości stałe jest rozróżniana wielkość liter. Właściwości PartitionKey i RowKey są typu ciąg. 
+Można także określić te właściwości jako część opcji `$filter`, jak pokazano w poniższej sekcji. Należy pamiętać, że w nazwach właściwości kluczy i wartościach stałych jest rozróżniana wielkość liter. Właściwości PartitionKey i RowKey są typu String. 
 
-## <a name="query-by-using-an-odata-filter"></a>Zapytanie za pomocą filtru OData
-Gdy w przypadku tworzenia ciąg filtru, pamiętać o tych reguł: 
+## <a name="query-by-using-an-odata-filter"></a>Wykonywanie zapytań przy użyciu filtru OData
+Podczas tworzenia ciągu filtru należy pamiętać o następujących regułach: 
 
-* Aby porównać właściwości na wartość, należy użyć operatorów logicznych w specyfikacji protokołu OData. Należy pamiętać, że nie można porównać właściwości na wartość dynamiczną. Po jednej stronie wyrażenia musi być stałą. 
-* Nazwa właściwości, operator i wartość stała muszą być oddzielone spacjami zakodowane w adresie URL. Odstęp jest zakodowane w adresie URL jako `%20`. 
-* Wszystkie części ciąg filtru jest rozróżniana wielkość liter. 
-* Stała wartość musi być tego samego typu danych jako wartość właściwości w kolejności filtru do zwrócenia prawidłowe wyniki. Aby uzyskać więcej informacji na temat typów obsługiwanych właściwości zobacz [opis modelu danych usługi tabel](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
+* Aby porównać właściwość z wartością, użyj operatorów logicznych określonych w specyfikacji protokołu OData. Pamiętaj, że nie można porównać właściwości z wartością dynamiczną. Jedna strona wyrażenia musi być stałą. 
+* Nazwa właściwości, operator i wartość stała muszą być oddzielone spacjami zakodowanymi w adresie URL. Spacja jest zakodowana w adresie URL jako `%20`. 
+* We wszystkich częściach ciągu filtru jest rozróżniana wielkość liter. 
+* Wartość stała musi mieć ten sam typ danych co właściwość, aby filtr zwracał prawidłowe wyniki. Aby uzyskać szczegółowe informacje na temat obsługiwanych typów właściwości, zobacz [Omówienie modelu danych usługi Table service](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
 
-Poniżej przedstawiono przykładowe zapytanie, które pokazuje, jak do filtrowania według właściwości PartitionKey i poczty E-mail przy użyciu OData `$filter`.
+Poniżej przedstawiono przykładowe zapytanie, które pokazuje sposób filtrowania według właściwości PartitionKey i Email przy użyciu elementu `$filter` OData.
 
 **Zapytanie**
 
@@ -79,16 +79,16 @@ Poniżej przedstawiono przykładowe zapytanie, które pokazuje, jak do filtrowan
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-Aby uzyskać więcej informacji dotyczących sposobu tworzenia wyrażenia filtru dla różnych typów danych, zobacz [badania tabel i jednostek](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
+Aby uzyskać więcej informacji na temat sposobu tworzenia wyrażenia filtru dla różnych typów danych, zobacz [Wykonywanie zapytań względem tabel i jednostek](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
 
-**Wyniki**
+**Results**
 
-| PartitionKey | RowKey | Adres e-mail | Numer telefonu |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Ben |Smith | Ben@contoso.com| 425-555-0102 |
 
-## <a name="query-by-using-linq"></a>Zapytanie za pomocą LINQ 
-Możesz także zbadać za pomocą LINQ, co oznacza odpowiedniego wyrażenia zapytania OData. Oto przykład sposobu tworzenia zapytań przy użyciu zestawu .NET SDK:
+## <a name="query-by-using-linq"></a>Wykonywanie zapytań za pomocą wyrażenia LINQ 
+Możesz także wykonywać zapytania za pomocą wyrażenia LINQ, co oznacza odpowiednie wyrażenia zapytań OData. Oto przykład sposobu tworzenia zapytań przy użyciu zestawu .NET SDK:
 
 ```csharp
 CloudTableClient tableClient = account.CreateCloudTableClient();
@@ -107,12 +107,12 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Przedstawiono sposób tworzenia zapytań przy użyciu interfejsu API tabeli
+> * Przedstawiono sposób wykonywania zapytań przy użyciu interfejsu API tabel
 
-Możesz teraz przejść do następnym samouczku informacje na temat dystrybucji danych globalnie.
+Możesz teraz przejść do następnego samouczka, aby dowiedzieć się, jak dystrybuować swoje dane globalnie.
 
 > [!div class="nextstepaction"]
-> [Globalny dystrybucji danych](tutorial-global-distribution-table.md)
+> [Globalna dystrybucja danych](tutorial-global-distribution-table.md)

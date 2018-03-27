@@ -1,12 +1,12 @@
 ---
-title: "Tworzenie aplikacji Ruby i wdrażanie jej w usłudze App Service w systemie Linux | Microsoft Docs"
-description: "Informacje na temat tworzenia aplikacji Ruby w usłudze App Service w systemie Linux."
+title: Tworzenie aplikacji Ruby i wdrażanie jej w usłudze App Service w systemie Linux | Microsoft Docs
+description: Informacje na temat tworzenia aplikacji Ruby w usłudze App Service w systemie Linux.
 keywords: azure app service, linux, oss, ruby
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: SyntaxC4
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: db3086724c22e485e2a9a69c36a990fc5b8016a9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Tworzenie aplikacji Ruby w usłudze App Service w systemie Linux
 
@@ -58,7 +58,7 @@ Przy użyciu przeglądarki internetowej przejdź pod adres `http://localhost:300
 
 ## <a name="modify-app-to-display-welcome-message"></a>Modyfikowanie aplikacji w celu wyświetlania komunikatu powitalnego
 
-Zmodyfikuj aplikację, aby wyświetlała komunikat powitalny. Najpierw musisz skonfigurować trasę, modyfikując plik *~/workspace/ruby-docs-hello-world/config/routes.rb*, tak aby zawierał trasę o nazwie `hello`.
+Zmodyfikuj aplikację, aby wyświetlała komunikat powitalny. Najpierw musisz skonfigurować trasę, modyfikując plik *~/workspace/ruby-docs-hello-world/config/routes.rb*, aby zawierał trasę o nazwie `hello`.
 
   ```ruby
   Rails.application.routes.draw do
@@ -88,37 +88,23 @@ Aplikacja jest teraz skonfigurowana. Przy użyciu przeglądarki internetowej prz
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-## <a name="create-a-ruby-web-app-on-azure"></a>Tworzenie aplikacji internetowej Ruby na platformie Azure
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
-Wymagana jest grupa zasobów, która zawiera zasoby wymagane przez aplikację internetową. Aby utworzyć grupę zasobów, użyj polecenia [`az group create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create).
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-```azurecli-interactive
-az group create --location westeurope --name myResourceGroup
-```
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci Web
 
-Użyj polecenia [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create), aby utworzyć plan usługi App Service dla swojej aplikacji internetowej.
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
-```
-
-Następnie wydaj polecenie [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create), aby utworzyć aplikację internetową korzystającą z nowo utworzonego planu usługi. Zauważ, że środowisko uruchomieniowe ma ustawioną wartość `ruby|2.3`. Nie zapomnij zastąpić elementu `<app name>` unikatową nazwą aplikacji.
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
---runtime "ruby|2.3" --deployment-local-git
-```
-
-Dane wyjściowe polecenia ujawniają informacje o nowo utworzonej aplikacji internetowej, a także adres URL wdrożenia. Powinny one wyglądać podobnie do poniższego przykładu. Skopiuj adres URL do późniejszego użycia w tym samouczku.
+Przejdź do witryny, aby zobaczyć nowo utworzoną aplikację internetową z wbudowanym obrazem. Zastąp ciąg _&lt;nazwa aplikacji>_ nazwą swojej aplikacji internetowej.
 
 ```bash
-https://<deployment user name>@<app name>.scm.azurewebsites.net/<app name>.git
+http://<app_name>.azurewebsites.net
 ```
 
-Po utworzeniu aplikacji internetowej można wyświetlić stronę **Omówienie**. Przejdź do tej strony. Wyświetlana jest następująca strona powitalna:
+Tak powinna wyglądać nowa aplikacja internetowa:
 
 ![Strona powitalna](./media/quickstart-ruby/splash-page.png)
-
 
 ## <a name="deploy-your-application"></a>Wdrażanie aplikacji
 

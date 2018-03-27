@@ -1,25 +1,24 @@
 ---
-title: "Najlepsze praktyki dotyczące usługi Azure SQL Data Warehouse | Microsoft Docs"
-description: "Zalecenia i najlepsze praktyki, których stosowanie zaleca się podczas tworzenia rozwiązań dla usługi Azure SQL Data Warehouse. Dzięki nim łatwiej jest odnieść sukces."
+title: Najlepsze praktyki dotyczące usługi Azure SQL Data Warehouse | Microsoft Docs
+description: Zalecenia i najlepsze praktyki, których stosowanie zaleca się podczas tworzenia rozwiązań dla usługi Azure SQL Data Warehouse. Dzięki nim łatwiej jest odnieść sukces.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
-ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 50d02b657ec3063b0ca4078844563b4ba7932f37
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 53ad9f654c498f562d66de461a2a489895d0a46b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Najlepsze praktyki dotyczące korzystania z usługi Azure SQL Data Warehouse
 W tym artykule zebrano szereg najlepszych praktyk, które pomogą optymalnie wykorzystać możliwości usługi Azure SQL Data Warehouse.  Niektóre kwestie poruszane w tym artykule mają charakter podstawowy i są łatwe do wyjaśnienia. Inne są bardziej zaawansowane i zostaną tu omówione jedynie powierzchownie.  Celem tego artykułu jest dostarczenie podstawowych wskazówek oraz zwiększenie wiedzy w zakresie ważnych obszarów, na których należy skupić się, tworząc magazyn danych.  Każda sekcja wprowadza konkretną koncepcję i prowadzi do bardziej szczegółowych artykułów, w których dana koncepcja została omówiona bardziej szczegółowo.
@@ -89,12 +88,12 @@ Zobacz także artykuły [Indeksy tabel][Table indexes], [Przewodnik po indeksach
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Użycie większej klasy zasobów w celu poprawy wydajność przesyłania zapytań
 Usługa SQL Data Warehouse korzysta z grup zasobów w celu przydzielania pamięci zapytaniom.  Każdemu z użytkowników zostaje natychmiastowo przypisana mała klasa zasobów, w ramach której zostaje przyznane 100 MB pamięci na dystrybucję.  Jako że zawsze jest 60 dystrybucji i każda z nich ma przydzielone co najmniej 100 MB, całkowita alokacji pamięci w systemie wynosi 6000 MB lub nieco poniżej 6 GB.  Stosowanie wybranych kwerend, takich jak duże sprzężenia lub obciążenia odnoszące się do klastrowanych tabel magazynu kolumn, pozwolą korzystać z większych alokacji pamięci.  W przypadku innych kwerend, takich jak czyste skanowanie, korzyść z ich zastosowania będzie niezauważalna.  Z drugiej strony, użycie większych klas zasobów ma wpływ na współbieżność, co należy wziąć pod uwagę przed przeniesieniem wszystkich użytkowników do większej klasy zasobów.
 
-Zobacz także artykuł [Współbieżność i zarządzanie obciążeniami][Concurrency and workload management]
+Zobacz też [Resource classes for workload management (Klasy zasobów do zarządzania obciążeniem)](resource-classes-for-workload-management.md).
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Użycie mniejszej klasy zasobów w celu zwiększenia współbieżności
 Jeśli wykonywanie kwerend użytkowników wiąże się z dużymi opóźnieniami, być może użytkownicy działają w większych klasach zasobów i wykorzystują dużo gniazd współbieżności, co z kolei powoduje, że inne kwerendy nawarstwiają się, tworząc kolejki.  Uruchom polecenie `SELECT * FROM sys.dm_pdw_waits`, aby to sprawdzić i zobaczyć, czy żadne wiersze nie są zwracane.
 
-Zobacz także artykuł [Współbieżność i zarządzanie obciążeniami][Concurrency and workload management] i [sys.dm_pdw_waits][sys.dm_pdw_waits]
+Zobacz też [Resource classes for workload management (Klasy zasobów do zarządzania obciążeniem)](resource-classes-for-workload-management.md), [sys.dm_pdw_waits][sys.dm_pdw_waits]
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Korzystanie z widoków DMV do monitorowania i optymalizowania zapytań
 Usługa SQL Data Warehouse oferuje kilka widoków DMV, których można używać do monitorowania wykonywanych zapytań.  W poniższym artykule o monitorowaniu podano instrukcje krok po kroku na temat przeglądania szczegółowych informacji dotyczących wykonywanych zapytań.  Aby szybko wyszukać zapytania w tych widokach DMV, z zapytaniami można użyć opcji LABEL.
@@ -112,7 +111,6 @@ Zachęcamy do korzystania ze strony [opinii na temat usługi Azure SQL Data Ware
 
 <!--Article references-->
 [Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Create table as select (CTAS)]: ./sql-data-warehouse-develop-ctas.md
 [Table overview]: ./sql-data-warehouse-tables-overview.md
 [Table data types]: ./sql-data-warehouse-tables-data-types.md

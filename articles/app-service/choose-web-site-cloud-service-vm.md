@@ -1,8 +1,8 @@
 ---
-title: "Porównanie usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services | Microsoft Docs"
-description: "Dowiedz się, jak wybrać spośród usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services na potrzeby hostowania aplikacji internetowych."
+title: Porównanie usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services | Microsoft Docs
+description: Dowiedz się, jak wybrać spośród usług Azure App Service, Virtual Machines, Service Fabric i Cloud Services na potrzeby hostowania aplikacji internetowych.
 services: app-service\web, virtual-machines, cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: erikre
 editor: jimbe
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 627782d3d6dd9f2eeff1b79e9cf721f9a4eb4ac2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porównanie usług App Service, Virtual Machines, Service Fabric i Cloud Services
 ## <a name="overview"></a>Omówienie
@@ -49,7 +49,7 @@ W poniższej tabeli porównano możliwości usług App Service, Cloud Services, 
 | Hostowanie warstwy internetowej lub usług internetowych na potrzeby architektury wielowarstwowej |X |X |X |X | |
 | Hostowanie warstwy środkowej na potrzeby architektury wielowarstwowej |X |X |X |X |Aplikacje internetowe usługi App Service mogą bezproblemowo hostować warstwę środkową interfejsu API REST, a zadania [WebJob](http://go.microsoft.com/fwlink/?linkid=390226) umożliwiają hostowanie zadań przetwarzania w tle. Zadania WebJob możesz uruchamiać w ramach dedykowanej witryny internetowej, aby osiągnąć niezależną skalowalność warstwy. |
 | Zintegrowana obsługa programu MySQL jako usługi |X |X | | | |
-| Obsługa technologii ASP.NET, klasycznych stron ASP, Node.js, PHP, Python |X |X |X |X |Usługa Service Fabric obsługuje tworzenie frontonu internetowego za pomocą programu [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md). Możesz także wdrożyć aplikację dowolnego typu (Node.js, Java itp.) jako [plik wykonywalny gościa](../service-fabric/service-fabric-deploy-existing-app.md). |
+| Obsługa technologii ASP.NET, klasycznych stron ASP, Node.js, PHP, Python |X |X |X |X |Usługa Service Fabric obsługuje tworzenie frontonu internetowego za pomocą programu [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md). Możesz także wdrożyć aplikację dowolnego typu (Node.js, Java itp.) jako [plik wykonywalny gościa](../service-fabric/service-fabric-guest-executables-introduction.md). |
 | Skalowanie w poziomie do wielu wystąpień bez konieczności ponownego wdrażania |X |X |X |X |Usługa Virtual Machines umożliwia skalowanie w poziomie do wielu wystąpień, lecz usługi działające w niej muszą być napisane pod kątem obsługi takiego skalowania. Musisz skonfigurować równoważenie obciążenia, tak aby kierować żądania do tych maszyn, i utworzyć grupę koligacji, aby zapobiec jednoczesnemu ponownemu uruchamianiu wszystkich wystąpień z powodu konserwacji lub awarii sprzętu. |
 | Obsługa protokołu SSL |X |X |X |X |W przypadku aplikacji internetowych usługi App Service protokół SSL dla niestandardowych nazw domeny jest obsługiwany tylko w trybach Podstawowy i Standardowy. Informacje na temat używania protokołu SSL z aplikacjami internetowymi zawiera temat [Konfigurowanie certyfikatu SSL dla witryny internetowej platformy Azure](app-service-web-tutorial-custom-ssl.md). |
 | Integracja z programem Visual Studio |X |X |X |X | |
@@ -59,7 +59,7 @@ W poniższej tabeli porównano możliwości usług App Service, Cloud Services, 
 | Obsługa usługi [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |X | |
 | Zintegrowane monitorowanie punktów końcowych |X |X |X | | |
 | Dostęp do serwerów za pomocą pulpitu zdalnego | |X |X |X | |
-| Instalowanie dowolnego niestandardowego pakietu MSI | |X |X |X |Usługa Service Fabric umożliwia hostowanie dowolnego pliku wykonywalnego jako [pliku wykonywalnego gościa](../service-fabric/service-fabric-deploy-existing-app.md). Na maszynach wirtualnych możesz zainstalować dowolną aplikację. |
+| Instalowanie dowolnego niestandardowego pakietu MSI | |X |X |X |Usługa Service Fabric umożliwia hostowanie dowolnego pliku wykonywalnego jako [pliku wykonywalnego gościa](../service-fabric/service-fabric-guest-executables-introduction.md). Na maszynach wirtualnych możesz zainstalować dowolną aplikację. |
 | Możliwość definiowania i wykonywania zadań uruchamiania | |X |X |X | |
 | Może nasłuchiwać zdarzeń ETW | |X |X |X | |
 

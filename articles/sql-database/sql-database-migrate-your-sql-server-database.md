@@ -1,26 +1,19 @@
 ---
-title: "Migracja bazy danych SQL Server do usługi Azure SQL Database | Microsoft Docs"
-description: "Dowiedz się, jak przeprowadzić migrację bazy danych SQL Server do usługi Azure SQL Database."
+title: Migracja bazy danych SQL Server do usługi Azure SQL Database | Microsoft Docs
+description: Dowiedz się, jak przeprowadzić migrację bazy danych SQL Server do usługi Azure SQL Database.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 01/29/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: acba1aff0af8d54fca44af62ab46e1fd1a9d607e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c333fd4f87f30d9aa1ace755c7414423ab348e03
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>Migracja bazy danych SQL Server do usługi Azure SQL Database
 
@@ -91,7 +84,7 @@ Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
    > [!IMPORTANT]
    > \* Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Środkowe stany USA, Francja Środkowa, Niemcy Środkowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Wschodnie stany USA 2, Zachodnie stany USA, Administracja USA — Wirginia i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   >\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Administracja USA — Wirginia, Azja Południowo-Wschodnia, Brazylia Południowa, Europa Północna, Europa Zachodnia, Francja Środkowa, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Środkowa, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, Wschodnie stany USA 2, Zachodnie stany USA i Zachodnie Zjednoczone Królestwo. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. Po wybraniu warstwy serwera, liczby jednostek DTU i ilości miejsca do magazynowania kliknij przycisk **Zastosuj**.  

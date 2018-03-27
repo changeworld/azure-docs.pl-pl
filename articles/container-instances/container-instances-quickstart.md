@@ -1,21 +1,22 @@
 ---
-title: "Szybki start — Tworzenie pierwszego kontenera usługi Azure Container Instances"
-description: "Wdrażaj i rozpocznij pracę z usługą Azure Container Instances"
+title: Szybki start — Tworzenie pierwszego kontenera usługi Azure Container Instances
+description: W tym przewodniku Szybki start interfejs wiersza polecenia platformy Azure zostanie użyty do wdrożenia kontenera w usłudze Azure Container Instances
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 02/22/2018
-ms.author: seanmck
+ms.date: 03/19/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: f8fe53f834e4fcf7f16174222cb51d89e40305ec
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b85c38bb561e4f1dc9a0545595590719ce1883e4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Tworzenie pierwszego kontenera w usłudze Azure Container Instances
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Szybki start: Tworzenie pierwszego kontenera w usłudze Azure Container Instances
+
 Usługa Azure Container Instances ułatwia tworzenie kontenerów Docker na platformie Azure oraz zarządzanie nimi bez konieczności inicjowania obsługi maszyn wirtualnych czy adoptowania usługi wyższego poziomu. Podczas pracy z tym przewodnikiem Szybki start utworzysz kontener na platformie Azure i ujawnisz go w Internecie przy użyciu w pełni kwalifikowanej nazwy domeny. Ta operacja jest wykonywana za pomocą jednego polecenia. W ciągu kilku sekund w przeglądarce zobaczysz następujący wynik:
 
 ![Widziana w przeglądarce aplikacja wdrożona za pomocą usługi Azure Container Instances][aci-app-browser]
@@ -28,7 +29,7 @@ Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Clou
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Wystąpienia Azure Container Instances są zasobami platformy Azure i należy je umieścić w grupie zasobów platformy Azure, czyli logicznej kolekcji, w której zasoby platformy Azure są wdrażane i zarządzane.
+Wystąpienia kontenerów platformy Azure, jak wszystkie zasoby platformy Azure, muszą być umieszczone w grupie zasobów, czyli logicznej kolekcji, w której zasoby platformy Azure są wdrażane i zarządzane.
 
 Utwórz grupę zasobów za pomocą polecenia [az group create][az-group-create].
 
@@ -75,12 +76,41 @@ Dzienniki dla utworzonego kontenera możesz ściągnąć przy użyciu polecenia 
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-Dane wyjściowe:
+Powinny zostać wyświetlone dane wyjściowe podobne do następujących:
 
-```bash
+```console
+$ az container logs --resource-group myResourceGroup -n mycontainer
 listening on port 80
-::ffff:10.240.255.107 - - [29/Nov/2017:20:48:50 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
-::ffff:10.240.255.107 - - [29/Nov/2017:20:48:50 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://52.224.178.107/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+```
+
+## <a name="attach-output-streams"></a>Dołączanie strumieni wyjściowych
+
+Oprócz dołączania dzienników można dołączyć lokalne strumienie Standardowe wyjście i Błąd standardowy do ich odpowiedników należących do kontenera.
+
+Najpierw wykonaj polecenie [az container attach][az-container-attach], aby dołączyć konsolę lokalną do strumieni danych wyjściowych kontenera:
+
+```azurecli-interactive
+az container attach --resource-group myResourceGroup -n mycontainer
+```
+
+Po jej dołączeniu odśwież kilka razy przeglądarkę, aby wygenerować trochę dodatkowych danych wyjściowych. Na koniec odłącz swoją konsolę kombinacją klawiszy `Control+C`. Powinny zostać wyświetlone dane wyjściowe podobne do następujących:
+
+```console
+$ az container attach --resource-group myResourceGroup -n mycontainer
+Container 'mycontainer' is in state 'Running'...
+(count: 1) (last timestamp: 2018-03-15 21:17:59+00:00) pulling image "microsoft/aci-helloworld"
+(count: 1) (last timestamp: 2018-03-15 21:18:05+00:00) Successfully pulled image "microsoft/aci-helloworld"
+(count: 1) (last timestamp: 2018-03-15 21:18:05+00:00) Created container with id 3534a1e2ee392d6f47b2c158ce8c1808d1686fc54f17de3a953d356cf5f26a45
+(count: 1) (last timestamp: 2018-03-15 21:18:06+00:00) Started container with id 3534a1e2ee392d6f47b2c158ce8c1808d1686fc54f17de3a953d356cf5f26a45
+
+Start streaming logs:
+listening on port 80
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.107 - - [15/Mar/2018:21:18:44 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+::ffff:10.240.255.107 - - [15/Mar/2018:21:18:47 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
 ```
 
 ## <a name="delete-the-container"></a>Usuwanie kontenera
@@ -117,12 +147,13 @@ Aby wypróbować opcje uruchamiania kontenerów w systemie aranżacji na platfor
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->
-[az-group-create]: /cli/azure/group?view=azure-cli-latest#az_group_create
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
-[az-container-delete]: /cli/azure/container?view=azure-cli-latest#az_container_delete
-[az-container-list]: /cli/azure/container?view=azure-cli-latest#az_container_list
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[az-container-attach]: /cli/azure/container#az_container_attach
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-delete]: /cli/azure/container#az_container_delete
+[az-container-list]: /cli/azure/container#az_container_list
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-create]: /cli/azure/group#az_group_create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-service]: ../aks/kubernetes-walkthrough.md
 [service-fabric]: ../service-fabric/service-fabric-quickstart-containers.md

@@ -1,12 +1,12 @@
 ---
-title: "Tworzenie pierwszego zautomatyzowanego przepływu pracy — Azure Logic Apps | Microsoft Docs"
-description: "W tym przewodniku Szybki start pokazano, jak zautomatyzować pierwszy przepływ pracy za pomocą usługi Azure Logic Apps na potrzeby scenariuszy integracji systemów i usług Enterprise Application Integration (EAI), które integrują systemy i usługi w chmurze."
+title: Tworzenie pierwszego zautomatyzowanego przepływu pracy — Azure Logic Apps | Microsoft Docs
+description: W tym przewodniku Szybki start pokazano, jak zautomatyzować pierwszy przepływ pracy za pomocą usługi Azure Logic Apps na potrzeby scenariuszy integracji systemów i usług Enterprise Application Integration (EAI), które integrują systemy i usługi w chmurze.
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
 keywords: workflows, cloud services, system integration, enterprise application integration, EAI
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Szybki start: Tworzenie pierwszego przepływu pracy aplikacji logiki — Azure Portal
 
@@ -60,6 +60,8 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
    ![Wybieranie szablonu pustej aplikacji logiki](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
 Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-concepts), który będzie aktywowany po pojawieniu się nowego elementu w kanale informacyjnym RSS. Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywowany w momencie wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Po każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki uruchamiającej i wykonującej przepływ pracy.
+
+<a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Sprawdzanie kanału informacyjnego RSS za pomocą wyzwalacza
 
@@ -144,7 +146,7 @@ Teraz dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts), k
       ![Dodawanie treści wiadomości e-mail](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | Ustawienie | Opis | 
-      | ----- | ----------- | 
+      | ------- | ----------- | 
       | **Tytuł źródła danych** | Tytuł elementu | 
       | **Data opublikowania kanału informacyjnego** | Data i godzina opublikowania elementu | 
       | **Link podstawowego źródła danych** | Adres URL elementu | 
@@ -156,15 +158,16 @@ Następnie przeprowadź testowanie aplikacji logiki.
 
 ## <a name="run-your-logic-app"></a>Uruchamianie aplikacji logiki
 
-Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi projektanta wybierz pozycję **Uruchom**. Możesz też poczekać, aż aplikacja logiki zostanie uruchomiona zgodnie z określonym harmonogramem (co minutę). Jeśli źródło danych RSS będzie zawierać nowe elementy, aplikacja logiki wyśle wiadomość e-mail dla każdego nowego elementu. Jednak jeśli źródło danych nie będzie zawierać żadnych nowych elementów, aplikacja logiki pominie aktywowanie wyzwalacza i przeczeka kolejny odstęp czasu przed ponownym sprawdzeniem. 
+Aby ręcznie uruchomić swoją aplikację logiki, na pasku narzędzi projektanta wybierz pozycję **Uruchom**. Możesz też zaczekać, aż aplikacja logiki sprawdzi źródło danych RSS zgodnie z określonym harmonogramem (co minutę). Jeśli źródło danych RSS będzie zawierać nowe elementy, aplikacja logiki wyśle wiadomość e-mail dla każdego nowego elementu. W przeciwnym razie aplikacja logiki będzie czekać z ponownym sprawdzeniem do następnego interwału. 
 
-Oto przykładowa wiadomość e-mail wysłana przez tę aplikację logiki:
+Oto przykładowa wiadomość e-mail wysyłana przez tę aplikację logiki. Jeśli nie dostaniesz żadnych wiadomości e-mail, sprawdź folder wiadomości-śmieci.
 
 ![Wysyłanie wiadomości e-mail dla nowego elementu źródła danych RSS](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Jeśli nie dostaniesz żadnych wiadomości e-mail, sprawdź folder wiadomości-śmieci. Filtr wiadomości-śmieci Twojej poczty e-mail może przekierowywać tego rodzaju wiadomości. 
+Z technicznego punktu widzenia, gdy wyzwalacz sprawdza źródło danych RSS i znajduje nowe elementy, jest on wyzwalany, a aparat usługi Logic Apps tworzy wystąpienie przepływu pracy aplikacji logiki, które uruchamia akcje w ramach przepływu pracy.
+Jeśli wyzwalacz nie znajdzie nowych elementów, to nie zostanie wyzwolony i pominie tworzenie wystąpienia przepływu pracy.
 
-Gratulacje, udało Ci się utworzyć i uruchomić pierwszą aplikację logiki.
+Gratulacje, Twoja pierwsza aplikacja logiki została już pomyślnie skompilowana i uruchomiona za pomocą witryny Azure Portal!
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

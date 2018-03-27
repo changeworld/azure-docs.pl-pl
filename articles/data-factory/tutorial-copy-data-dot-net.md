@@ -1,8 +1,8 @@
 ---
-title: "Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL Database | Microsoft Docs"
-description: "Ten samouczek zawiera instrukcje krok po kroku dotyczące kopiowania danych z usługi Azure Blob Storage do bazy danych Azure SQL Database."
+title: Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL Database | Microsoft Docs
+description: Ten samouczek zawiera instrukcje krok po kroku dotyczące kopiowania danych z usługi Azure Blob Storage do bazy danych Azure SQL Database.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0747ba79529bc2f12f1c5d74cbfcb7b62a62baa8
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 86ceb395a6605b77b1f8594dbf153ac800b501b9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych z obiektu blob platformy Azure do bazy danych Azure SQL Database przy użyciu usługi Azure Data Factory
 W tym samouczku utworzysz potok fabryki danych, który kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL Database. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -120,8 +120,9 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
     using Microsoft.Azure.Management.DataFactory;
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
-
-2. Add the following code to the **Main** method that sets variables. Replace place-holders with your own values. Currently, Data Factory V2 allows you to create data factories only in the East US, East US2, and West Europe regions. The data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions.
+    ```
+    
+2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Obecnie usługa Data Factory w wersji 2 umożliwia tworzenie fabryk danych tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     ```csharp
     // Set variables

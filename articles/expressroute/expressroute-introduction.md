@@ -1,24 +1,24 @@
 ---
-title: "Omówienie usługi ExpressRoute: rozszerzanie sieci lokalnej na platformę Azure za pośrednictwem połączenia prywatnego | Microsoft Docs"
-description: "W tym opisie technicznym usługi ExpressRoute omówiono sposób działania połączenia usługi ExpressRoute podczas rozszerzania sieci lokalnej na platformę Azure przez połączenie prywatne."
+title: 'Omówienie usługi ExpressRoute: rozszerzanie sieci lokalnej na platformę Azure za pośrednictwem połączenia prywatnego | Microsoft Docs'
+description: W tym opisie technicznym usługi ExpressRoute omówiono sposób działania połączenia usługi ExpressRoute podczas rozszerzania sieci lokalnej na platformę Azure przez połączenie prywatne.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fd95dcd5-df1d-41d6-85dd-e91d0091af05
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: e5584eee07121fa4644e09e23e3ba6b59fdd5a6e
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 75d69669945d31fbc9876d0c1e709b37f96aee6d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="expressroute-overview"></a>Omówienie usługi ExpressRoute
 Usługa Microsoft Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft za pośrednictwem połączenia prywatnego obsługiwanego przez dostawcę połączenia. Dzięki usłudze ExpressRoute można ustanowić połączenia z usługami Microsoft w chmurze, np. Microsoft Azure, Office 365 i Dynamics 365.
@@ -48,7 +48,6 @@ Firma Microsoft używa standardowego protokołu routingu dynamicznego (BGP) do w
 Każdy obwód usługi ExpressRoute składa się z dwóch połączeń z dwoma routerami granicznymi Microsoft Enterprise (MSEE) od dostawcy połączenia/z granicy sieci. Firma Microsoft wymaga podwójnego połączenia BGP od dostawcy połączenia/ze strony użytkownika — po jednym do każdego MSEE. Można zdecydować o niewdrażaniu nadmiarowych urządzeń/obwodów sieci Ethernet po swojej stronie. Dostawcy połączenia używają jednak urządzeń nadmiarowych, aby zagwarantować, że połączenia będą przekazywane do firmy Microsoft w sposób nadmiarowy. Konfiguracja łączności nadmiarowej w warstwie 3 jest wymaganiem, które musi być spełnione, aby umowa [SLA](https://azure.microsoft.com/support/legal/sla/) była ważna.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Łączność z usługami w chmurze firmy Microsoft
-[!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 Połączenia ExpressRoute umożliwiają dostęp do następujących usług:
 
@@ -56,7 +55,11 @@ Połączenia ExpressRoute umożliwiają dostęp do następujących usług:
 * Usługi Microsoft Office 365
 * Microsoft Dynamics 365
 
-Szczegółowa lista usług obsługiwanych za pośrednictwem usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
+> [!NOTE]
+> [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+> 
+
+Szczegółowa lista usług obsługiwanych za pośrednictwem usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania). 
 
 ### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>Łączność z wszystkimi regionami w regionie geopolitycznym
 Możesz połączyć się z firmą Microsoft w jednej z naszych [lokalizacji komunikacji równorzędnej](expressroute-locations.md) i mieć dostęp do wszystkich regionów w regionie geopolitycznym. 

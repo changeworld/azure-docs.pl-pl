@@ -1,11 +1,11 @@
 ---
-title: "Usługa VPN Gateway — omówienie: Tworzenie połączeń VPN obejmujących wiele lokalizacji z sieciami wirtualnymi platformy Azure | Microsoft Docs"
-description: "W tym artykule wyjaśniono czym jest usługa VPN Gateway oraz przedstawiono sposoby nawiązywania połączenia z sieciami wirtualnymi platformy Azure przez Internet przy użyciu połączenia VPN. Omówienie zawiera diagramy podstawowych konfiguracji połączeń."
+title: 'Usługa VPN Gateway — omówienie: Tworzenie połączeń VPN obejmujących wiele lokalizacji z sieciami wirtualnymi platformy Azure | Microsoft Docs'
+description: W tym artykule wyjaśniono czym jest usługa VPN Gateway oraz przedstawiono sposoby nawiązywania połączenia z sieciami wirtualnymi platformy Azure przez Internet przy użyciu połączenia VPN. Omówienie zawiera diagramy podstawowych konfiguracji połączeń.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/16/2018
+ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: dadddeaac2a7856f8e249db981b018de070e1f3f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ef6d61e9dfc7c30910d897478f07dabc14136b48
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="about-vpn-gateway"></a>VPN Gateway — informacje
 
@@ -53,12 +53,15 @@ Czynności wykonywane podczas konfigurowania bramy sieci VPN zależą od modelu 
 
 W poniższej tabeli znajdują się informacje pomocne podczas podejmowania decyzji co do najlepszej opcji łączności dla rozwiązania.
 
-[!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
-
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gwsku"></a>Jednostki SKU bramy
 
-[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+Podczas tworzenia bramy sieci wirtualnej określa się jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. Aby uzyskać więcej informacji o jednostkach SKU bramy, w tym obsługiwanych funkcjach, środowiskach produkcyjnych i do tworzenia/testowania oraz kroków konfiguracji, zobacz [Jednostki SKU bramy](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+
+### <a name="benchmark"></a>Jednostki SKU bramy według tunelowania, połączenia i przepływności
+
+[!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ## <a name="diagrams"></a>Diagramy topologii połączeń
 
@@ -86,7 +89,7 @@ Ten typ połączenia jest odmianą połączenia typu lokacja-lokacja. W tym przy
 
 ### <a name="deployment-models-and-methods-for-site-to-site-and-multi-site"></a>Modele wdrażania i metody nawiązywania połączeń typu lokacja-lokacja i połączeń obejmujących wiele lokacji
 
-[!INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
+[!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
 ## <a name="P2S"></a>Punkt-lokacja (sieć VPN przez protokół IKEv2 lub SSTP)
 

@@ -1,25 +1,25 @@
 ---
-title: "Wprowadzenie do platformy Apache Kafka — usługa Azure HDInsight | Microsoft Docs"
-description: "Dowiedz się, jak utworzyć klaster Apache Kafka w usłudze Azure HDInsight. Dowiedz się, jak utworzyć tematy, subskrybentów i użytkowników."
+title: Wprowadzenie do platformy Apache Kafka — usługa Azure HDInsight | Microsoft Docs
+description: Dowiedz się, jak utworzyć klaster Apache Kafka w usłudze Azure HDInsight. Dowiedz się, jak utworzyć tematy, subskrybentów i użytkowników.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: e00ab06a26d60dd5beca11362df58f35812491d9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 27e6472480dac104de799ebf0e7579a7987f6c4c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Wprowadzenie do platformy Apache Kafka w usłudze HDInsight
 
@@ -39,6 +39,15 @@ Aby utworzyć klaster platformy Kafka w usłudze HDInsight, wykonaj następując
 
     * **Nazwa klastra**: nazwa klastra usługi HDInsight. Ta nazwa musi być unikatowa.
     * **Subskrypcja**: wybierz subskrypcję, której chcesz użyć.
+    * **Typ klastra**: wybierz tę pozycję, a następnie ustaw następujące wartości z bloku **Konfiguracja klastra**:
+
+        * **Typ klastra**: Kafka
+        * **Wersja**: Kafka 0.10.0 (HDI 3.6)
+
+        Użyj przycisku **Wybierz**, aby zapisać ustawienia typu klastra.
+
+        ![Wybieranie typu klastra](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
+
     * **Nazwa użytkownika logowania klastra** i **Hasło logowania klastra**: dane logowania podczas uzyskiwania dostępu do klastra przy użyciu protokołu HTTPS. Te poświadczenia umożliwiają dostęp do takich usług jak interfejs użytkownika sieci Web Ambari lub interfejs API REST.
     * **Nazwa użytkownika SSH (Secure Shell)**: nazwa logowania używana podczas uzyskiwania dostępu do klastra za pośrednictwem protokołu SSH. Domyślnie hasło jest takie samo jak hasło logowania klastra.
     * **Grupa zasobów**: grupa zasobów, w której ma zostać utworzony klaster.
@@ -49,24 +58,15 @@ Aby utworzyć klaster platformy Kafka w usłudze HDInsight, wykonaj następując
    
  ![Wybieranie subskrypcji](./media/apache-kafka-get-started/hdinsight-basic-configuration.png)
 
-3. Wybierz pozycję **Typ klastra**, a następnie ustaw następujące wartości z bloku **Konfiguracja klastra**:
-   
-    * **Typ klastra**: Kafka
-    * **Wersja**: Kafka 0.10.0 (HDI 3.6)
+3. Zakończ konfigurację podstawową za pomocą przycisku __Dalej__.
 
-    Zapisz ustawienia przy użyciu przycisku **Wybierz**.
-     
- ![Wybieranie typu klastra](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
-
-4. Po wybraniu typu klastra ustaw typ klastra przy użyciu przycisku __Wybierz__. Następnie zakończ konfigurację podstawową za pomocą przycisku __Dalej__.
-
-5. W bloku **Magazyn** wybierz lub utwórz konto magazynu. Na potrzeby procedury w tym dokumencie pozostaw wartości domyślne w pozostałych polach. Zapisz konfigurację magazynu za pomocą przycisku __Dalej__.
+4. W bloku **Magazyn** wybierz lub utwórz konto magazynu. Na potrzeby procedury w tym dokumencie pozostaw wartości domyślne w pozostałych polach. Zapisz konfigurację magazynu za pomocą przycisku __Dalej__.
 
     ![Konfigurowanie ustawień konta magazynu dla usługi HDInsight](./media/apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. Opcjonalnie w bloku __Aplikacje__ wybierz przycisk __Dalej__, aby kontynuować. W tym przykładzie nie są wymagane żadne aplikacje.
+5. Opcjonalnie w bloku __Aplikacje__ wybierz przycisk __Dalej__, aby kontynuować. W tym przykładzie nie są wymagane żadne aplikacje.
 
-7. W bloku __Rozmiar klastra__ wybierz przycisk __Dalej__, aby kontynuować.
+6. W bloku __Rozmiar klastra__ wybierz przycisk __Dalej__, aby kontynuować.
 
     > [!WARNING]
     > Aby zapewnić dostępność platformy Kafka w usłudze HDInsight, klaster musi zawierać co najmniej trzy węzły procesu roboczego. Aby uzyskać więcej informacji, zobacz sekcję [Wysoka dostępność danych](#data-high-availability).
@@ -76,9 +76,9 @@ Aby utworzyć klaster platformy Kafka w usłudze HDInsight, wykonaj następując
     > [!IMPORTANT]
     > Parametr **liczby dysków na węzeł procesu roboczego** pozwala konfigurować skalowalność platformy Kafka w usłudze HDInsight. Platforma Kafka w usłudze HDInsight używa dysku lokalnego maszyn wirtualnych w klastrze. Ze względu na duże obciążenie we/wy platformy Kafka używana jest usługa [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md), która zapewnia wysoką przepływność i więcej miejsca do magazynowania w każdym węźle. Można wybrać typ dysku zarządzanego __Standardowy__ (HDD) lub __Premium__ (SSD). Dyski w warstwie Premium są używane przez maszyny wirtualne serii DS i GS. Wszystkie pozostałe typy maszyn wirtualnych korzystają z dysków standardowych.
 
-8. W bloku __Ustawienia zaawansowane__ wybierz przycisk __Dalej__, aby kontynuować.
+7. W bloku __Ustawienia zaawansowane__ wybierz przycisk __Dalej__, aby kontynuować.
 
-9. W bloku **Podsumowanie** przejrzyj konfigurację klastra. Zmień niepoprawne ustawienia przy użyciu linków __Edytuj__. Utwórz klaster przy użyciu przycisku __Utwórz__.
+8. W bloku **Podsumowanie** przejrzyj konfigurację klastra. Zmień niepoprawne ustawienia przy użyciu linków __Edytuj__. Utwórz klaster przy użyciu przycisku __Utwórz__.
    
     ![Podsumowanie konfiguracji klastra](./media/apache-kafka-get-started/hdinsight-configuration-summary.png)
    

@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: projektowanie pierwszej bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure"
-description: "W tym samouczku przedstawiono, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć i skonfigurować pierwszy serwer usługi Azure Database for PostgreSQL oraz wykonywać względem niego zapytania."
+title: 'Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure'
+description: W tym samouczku przedstawiono, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć i skonfigurować pierwszy serwer usługi Azure Database for PostgreSQL oraz wykonywać względem niego zapytania.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -11,13 +11,13 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: 7eeb3b01ddaea56b1e11fc37bbeba7d3f328772d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 56425ec7ccb1d6629b82db6683a02a57ab9999b4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Samouczek: projektowanie pierwszej bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure 
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure 
 W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for PostgreSQL
@@ -32,7 +32,7 @@ Aby uruchamiać polecenia z tego samouczka, możesz użyć usługi Azure Cloud S
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
 
 Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zasób istnieje lub dla której są za niego naliczane opłaty. Wybierz określony identyfikator subskrypcji na Twoim koncie za pomocą polecenia [az account set](/cli/azure/account#az_account_set).
 ```azurecli-interactive
@@ -79,7 +79,7 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver -
 ```
 
 > [!IMPORTANT]
-> Login i hasło administratora serwera określone w tym miejscu będą wymagane do logowania do serwera i jego baz danych w późniejszej części tego przewodnika Szybki start. Zapamiętaj lub zapisz te informacje do wykorzystania w przyszłości.
+> Nazwa logowania i hasło administratora serwera określone w tym miejscu będą wymagane do logowania do serwera i jego baz danych w późniejszej części tego przewodnika Szybki start. Zapamiętaj lub zapisz te informacje do wykorzystania w przyszłości.
 
 Domyślnie baza danych **postgres** zostanie utworzona na Twoim serwerze. Baza danych [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) to domyślna baza danych przeznaczona do użycia dla użytkowników oraz na potrzeby narzędzi i aplikacji innych firm. 
 
@@ -163,9 +163,9 @@ CREATE DATABASE mypgsqldb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Tworzenie tabel w bazie danych
-Teraz, gdy wiesz jak nawiązać połączenie z usługą Azure Database for PostgreSQL, możemy przedstawić sposób wykonania niektórych podstawowych zadań.
+Teraz, gdy wiesz, jak nawiązać połączenie z usługą Azure Database for PostgreSQL, możesz wykonać niektóre podstawowe zadania:
 
-Najpierw możesz utworzyć tabelę i załadować do niej dane. Utwórz tabelę służącą do śledzenia informacji o spisie:
+Najpierw utwórz tabelę i załaduj do niej dane. Na przykład utwórz tabelę służącą do śledzenia informacji o spisie:
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -180,7 +180,7 @@ Teraz możesz wyświetlić nowo utworzoną tabelę na liście tabel, wpisując:
 ```
 
 ## <a name="load-data-into-the-table"></a>Ładowanie danych do tabel
-Teraz, gdy masz tabelę, wstaw do niej dane. W otwartym oknie wiersza polecenia uruchom następujące zapytanie, aby wstawić wiersze danych:
+Teraz, po utworzeniu tabeli, wstaw do niej trochę danych. W otwartym oknie wiersza polecenia uruchom następujące zapytanie, aby wstawić wiersze danych:
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

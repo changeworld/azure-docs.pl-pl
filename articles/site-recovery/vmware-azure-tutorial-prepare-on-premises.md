@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure
 
@@ -59,34 +59,16 @@ Usługa Mobility musi być zainstalowana na każdej maszynie wirtualnej, która 
 3. Aby zainstalować na maszynach wirtualnych z systemem Linux, przygotuj konto superużytkownika na serwerze źródłowym z systemem Linux.
 
 
-## <a name="check-vmware-server-requirements"></a>Sprawdzanie wymagań dotyczących serwerów VMware
+## <a name="check-vmware-requirements"></a>Sprawdzanie wymagań dotyczących programu VMware
 
-Upewnij się, że serwery VMware spełniają następujące wymagania.
+Upewnij się, że serwery VMware i maszyny wirtualne spełniają wymagania.
 
-**Składnik** | **Wymaganie**
---- | ---
-**Serwer vCenter** | vCenter 6.5, 6.0 lub 5.5
-**Host vSphere** | vSphere 6.5, 6.0, 5.5
+1. [Zweryfikuj](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers) wymagania dotyczące serwerów VMware.
+2. W przypadku systemu Linux [sprawdź](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) wymagania dotyczące systemu plików i magazynu. 
+3. Sprawdź obsługę lokalnej [sieci](vmware-physical-azure-support-matrix.md#network) i [magazynu](vmware-physical-azure-support-matrix.md#storage). 
+4. Sprawdź obsługę [sieci](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [magazynu](vmware-physical-azure-support-matrix.md#azure-storage) i [usług obliczeniowych](vmware-physical-azure-support-matrix.md#azure-compute) platformy Azure po przejściu do trybu failover.
+5. Lokalne maszyny wirtualne replikowane na platformę Azure muszą spełniać [wymagania dotyczące maszyn wirtualnych platformy Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
 
-## <a name="check-vmware-vm-requirements"></a>Sprawdzanie wymagań dotyczących maszyn wirtualnych VMware
-
-Upewnij się, że maszyna wirtualna spełnia wymagania platformy Azure podsumowane w poniższej tabeli.
-
-**Wymaganie dotyczące maszyny wirtualnej** | **Szczegóły**
---- | ---
-**Rozmiar dysku systemu operacyjnego** | Do 2048 GB.
-**Liczba dysków systemu operacyjnego** | 1
-**Liczba dysków danych** | 64 lub mniej
-**Rozmiar wirtualnego dysku twardego dysku danych** | Do 4095 GB
-**Karty sieciowe** | Obsługiwana jest konfiguracja z wieloma kartami sieciowymi
-**Udostępniony wirtualny dysk twardy** | Nieobsługiwane
-**Dysk FC** | Nieobsługiwane
-**Format dysku twardego** | Plik VHD lub VHDX.<br/><br/> Chociaż pliki VHDX nie są obecnie obsługiwane na platformie Azure, usługa Site Recovery automatycznie konwertuje pliki VHDX na wirtualne dyski twarde w przypadku trybu failover na platformie Azure. Po powrocie po awarii do środowiska lokalnego maszyny wirtualne nadal używają formatu VHDX.
-**Bitlocker** | Nieobsługiwane. Wyłącz przed włączeniem replikacji dla maszyny wirtualnej.
-**Nazwa maszyny wirtualnej** | Od 1 do 63 znaków.<br/><br/> Ograniczone do liter, cyfr i łączników. Nazwa maszyny wirtualnej musi zaczynać się i kończyć literą lub cyfrą.
-**Typ maszyny wirtualnej** | Generacja 1 — Linux lub Windows<br/><br/>Generacja 2 — tylko Windows
-
-Na maszynie wirtualnej musi również działać obsługiwany system operacyjny. Aby zapoznać się z pełną listą obsługiwanych wersji, zobacz [VMware and physical server support matrix](vmware-physical-azure-support-matrix.md#replicated-machines) (Tabela obsługi systemu VMware i serwera fizycznego).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 

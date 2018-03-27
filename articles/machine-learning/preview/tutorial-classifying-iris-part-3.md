@@ -1,23 +1,23 @@
 ---
-title: Samouczek wdrażania modelu na potrzeby usługi Azure Machine Learning (wersja zapoznawcza) | Microsoft Docs
-description: W całej serii tego samouczka kompleksowo przedstawiono sposób korzystania z usługi Azure Machine Learning (wersja zapoznawcza). W części trzeciej omówiono wdrażanie modelu.
+title: Samouczek wdrażania modelu na potrzeby usługi Azure Machine Learning
+description: W całej serii tego samouczka kompleksowo przedstawiono sposób korzystania z usługi Azure Machine Learning. W części trzeciej omówiono wdrażanie modelu.
 services: machine-learning
-author: raymondl
-ms.author: raymondl, j-martens, aashishb
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
+ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
-ms.openlocfilehash: 13ddc0ef8c7eac86e6cd7abb684ce35ae18fba84
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.date: 3/13/2018
+ms.openlocfilehash: 87d1e605bfd7603e4e07f6b427033fe2c1d2b83e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>Samouczek: klasyfikowanie irysów, część 3: wdrażanie modelu
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Samouczek 3: klasyfikowanie irysów: wdrażanie modelu
 Usługa Azure Machine Learning (wersja zapoznawcza) to zintegrowane, kompleksowe rozwiązanie do nauki o danych i do analiz zaawansowanych przeznaczone dla profesjonalnych analityków. Pozwala ono analitykom przygotowywać dane, opracowywać eksperymenty i wdrażać modele na skalę chmury.
 
 Niniejszy samouczek jest **trzecią częścią trzyczęściowej serii**. W tej części samouczka użyjesz usługi Machine Learning (wersja zapoznawcza) do wykonywania następujących czynności:
@@ -30,17 +30,15 @@ Niniejszy samouczek jest **trzecią częścią trzyczęściowej serii**. W tej c
 > * Uruchamianie usługi internetowej czasu rzeczywistego.
 > * Sprawdzanie danych wyjściowych obiektu blob. 
 
-W tym samouczku wykorzystywany jest ponadczasowy [zbiór danych na temat irysów](https://en.wikipedia.org/wiki/iris_flower_data_set). Zrzuty ekranu dotyczą systemu Windows, ale działanie na komputerach z systemem operacyjnym Mac OS jest niemal identyczne.
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+W tym samouczku wykorzystywany jest ponadczasowy [zbiór danych na temat irysów](https://en.wikipedia.org/wiki/Iris_flower_data_set). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ukończ najpierw dwie pierwsze części z tej serii samouczków:
 
-   * Zapoznaj się z [samouczkiem dotyczącym przygotowywania danych](tutorial-classifying-iris-part-1.md), aby utworzyć zasoby usługi Azure Machine Learning i zainstalować aplikację Azure Machine Learning Workbench.
-   * Zapoznaj się z [samouczkiem dotyczącym budowania modelu](tutorial-classifying-iris-part-2.md), aby utworzyć model regresji logistycznej w usłudze Machine Learning.
-
-Aparat platformy Docker musisz zainstalować i uruchomić lokalnie. Alternatywnie możesz przeprowadzić wdrożenie w klastrze usługi Azure Container Service na platformie Azure.
+Do ukończenia tego samouczka niezbędne są następujące elementy:
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Konto eksperymentowania i aplikacja Azure Machine Learning Workbench zainstalowana zgodnie z opisem w tym [przewodniku Szybki start](quickstart-installation.md)
+- Model klasyfikacji z [części 2. samouczka](tutorial-classifying-iris-part-2.md)
+- Aparat platformy Docker zainstalowany i uruchomiony lokalnie
 
 ## <a name="download-the-model-pickle-file"></a>Pobieranie pliku modelu utworzonego w pakiecie pickle
 W poprzedniej części samouczka skrypt **iris_sklearn.py** został uruchomiony lokalnie w programie Machine Learning Workbench. Ta akcja spowodowała serializowanie modelu regresji logistycznej przy użyciu popularnego pakietu [pickle](https://docs.python.org/3/library/pickle.html) do serializacji obiektów w języku Python. 
@@ -91,7 +89,7 @@ Do wdrożenia usługi internetowej z plikiem modelu potrzebny jest również skr
 
 4. Aby uzyskać plik schematu, uruchom skrypt. Na pasku poleceń wybierz środowisko **local** i skrypt **score_iris.py**, a następnie wybierz pozycję **Przebieg**. 
 
-5. Ten skrypt utworzy w sekcji **Dane wyjściowe** plik JSON, który będzie przechwytywał wejściowy schemat danych wymagany przez model.
+   Ten skrypt utworzy w sekcji **Dane wyjściowe** plik JSON, który będzie przechwytywał wejściowy schemat danych wymagany przez model.
 
 6. Zwróć uwagę na okienko **Zadania** po prawej stronie okienka **Pulpit nawigacyjny projektu**. Poczekaj, aż stan najnowszego zadania **score_iris.py** zmieni się na zielony wskaźnik **Ukończono**. Następnie wybierz hiperlink **score_iris.py** dla najnowszego uruchomienia zadania, aby wyświetlić szczegóły dotyczące uruchomienia. 
 
@@ -128,7 +126,10 @@ Użyj wdrożenia w _trybie lokalnym_, które będzie działać w kontenerach Doc
 _Trybu lokalnego_ można użyć do tworzenia i testowania. Aparat platformy Docker musi być uruchomiony lokalnie, aby możliwe było wykonanie poniższych kroków w celu rozpoczęcia obsługi operacji modelu. Możesz użyć flagi `-h` na końcu każdego polecenia w celu wyświetlenia odpowiedniego komunikatu pomocy.
 
 >[!NOTE]
->Jeśli nie masz lokalnego aparatu platformy Docker, możesz kontynuować, tworząc dla wdrożenia klaster na platformie Azure. Pamiętaj tylko o usunięciu klastra po ukończeniu korzystania z samouczka, aby nie spowodować stałego naliczania opłat.
+>Jeśli nie masz lokalnego aparatu platformy Docker, możesz kontynuować, tworząc dla wdrożenia klaster na platformie Azure. Możesz zachować klaster do ponownego użycia lub usunąć go po ukończeniu korzystania z samouczka, aby nie spowodować stałego naliczania opłat.
+
+>[!NOTE]
+>Wdrożone lokalnie usług internetowe nie są pokazywane na liście usług w witrynie Azure Portal. Są one uruchamiane na platformie Docker na maszynie lokalnej.
 
 1. Otwórz interfejs wiersza polecenia.
    W aplikacji Machine Learning Workbench w menu **Plik** wybierz polecenie **Otwórz wiersz polecenia**.

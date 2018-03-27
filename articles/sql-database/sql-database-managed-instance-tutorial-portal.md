@@ -7,18 +7,15 @@ author: bonova
 ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: ''
 ms.topic: tutorial
-ms.date: 03/07/2018
+ms.date: 03/14/2018
 ms.author: bonova
-manager: cguyer
-ms.openlocfilehash: 0d6261392dfdab0d48cb0c524d1fcf416c85d72c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: craigg
+ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Tworzenie wystąpienia zarządzanego usługi Azure SQL Database w witrynie Azure Portal
 
@@ -26,6 +23,9 @@ Ten samouczek przedstawia sposób tworzenia wystąpienia zarządzanego usługi A
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
+> [!IMPORTANT]
+> Listę regionów, w których jest obecnie dostępne wystąpienie zarządzane, można znaleźć w temacie [Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Migrowanie baz danych do w pełni zarządzanej usługi za pomocą wystąpienia zarządzanego usługi Azure SQL Database)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+ 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
@@ -284,7 +284,7 @@ Poniższe kroki pokazują, jak pobrać i zainstalować narzędzie SSMS, a nastę
     ![konfiguracja zwiększonych zabezpieczeń programu Internet Explorer](./media/sql-database-managed-instance-tutorial/internet-explorer-security-configuration.png)  
 4. Otwórz program **Internet Explorer** z paska zadań.
 5. Wybierz pozycję **Użyj zalecanych ustawień zabezpieczeń i zgodności**, a następnie kliknij przycisk **OK**, aby zakończyć konfigurację programu Internet Explorer 11.
-6. Wprowadź https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms w polu adresu URL i kliknij klawisz **Enter**. 
+6. Wprowadź ciąg https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms w polu adresu URL i naciśnij klawisz **Enter**. 
 7. Pobierz najnowszą wersję programu SQL Server Management Studio i kliknij pozycję **Uruchom** po wyświetleniu monitu.
 8. Po wyświetleniu monitu kliknij przycisk **Zainstaluj**, aby rozpocząć.
 9. Po zakończeniu instalacji kliknij przycisk **Zamknij**.
@@ -299,7 +299,7 @@ Po nawiązaniu połączenia możesz wyświetlić systemowe bazy danych oraz bazy
 
 Wykonaj następujące kroki, aby pobrać plik kopii zapasowej Wide World Importers — Standard.
 
-W programie Internet Explorer wprowadź adres https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak w polu adresu URL i po otrzymaniu monitu kliknij przycisk **Zapisz**, aby zapisać ten plik w folderze **Pobieranie**.
+W programie Internet Explorer wprowadź ciąg https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak w polu adresu URL, a następnie po wyświetleniu monitu kliknij pozycję **Zapisz**, aby zapisać ten plik w folderze **Pobrane**.
 
 ## <a name="create-azure-storage-account-and-upload-backup-file"></a>Tworzenie konta magazynu platformy Azure oraz przekazywanie pliku kopii zapasowej
 

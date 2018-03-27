@@ -1,43 +1,43 @@
 ---
-title: "Jak wykonać zapytanie dotyczące danych wykresu w usłudze Azure DB rozwiązania Cosmos? | Microsoft Docs"
-description: "Dowiedz się, jak dane wykresu zapytania w usłudze Azure DB rozwiązania Cosmos"
+title: Jak wykonywać zapytania względem danych grafu w usłudze Azure Cosmos DB? | Microsoft Docs
+description: Dowiedz się, jak wykonywać zapytania względem danych grafu w usłudze Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
-ms.translationtype: MT
+ms.openlocfilehash: eb1da11c8b27a429ffcf9ea8fb50b6c7cee26ec0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure DB rozwiązania Cosmos: Jak wykonać zapytanie z interfejsu API programu Graph?
+# <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Samouczek: Wykonywanie zapytań w interfejsie API programu Graph w usłudze Azure Cosmos DB przy użyciu języka Gremlin
 
-Azure DB rozwiązania Cosmos [interfejsu API programu Graph](graph-introduction.md) obsługuje [Gremlin](https://github.com/tinkerpop/gremlin/wiki) zapytania. W tym artykule przedstawiono przykładowe dokumentach i zapytaniach ułatwiających rozpoczęcie pracy. A szczegółowe Gremlin odwołanie znajduje się w [Obsługa Gremlin](gremlin-support.md) artykułu.
+[Interfejs API programu Graph](graph-introduction.md) w usłudze Azure Cosmos DB obsługuje zapytania w języku [Gremlin](https://github.com/tinkerpop/gremlin/wiki). W tym artykule udostępniono przykładowe dokumenty i zapytania ułatwiające rozpoczęcie pracy. Szczegółowa dokumentacja dotycząca języka Gremlin została podana w artykule [Obsługa języka Gremlin](gremlin-support.md).
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
-> * Wykonywanie zapytania na danych z Gremlin
+> * Wykonywanie zapytań na danych przy użyciu języka Gremlin
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dla tych zapytań do pracy musi mieć konto bazy danych Azure rozwiązania Cosmos i danych wykresu w kontenerze. Nie masz żadnego z tych? Zakończenie [szybkiego startu 5-minutowy](create-graph-dotnet.md) lub [samouczek developer](tutorial-query-graph.md) Tworzenie konta usługi i umieścić w bazie danych. Można uruchomić następujące kwerendy przy użyciu [Azure rozwiązania Cosmos DB .NET wykresu biblioteki](graph-sdk-dotnet.md), [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), lub sterownika Gremlin ulubionych.
+Aby te zapytania działały, musisz mieć konto usługi Azure Cosmos DB i mieć dane grafu w kontenerze. Nie spełniasz tych warunków? Ukończ [5-minutowy przewodnik Szybki start](create-graph-dotnet.md) lub [samouczek dewelopera](tutorial-query-graph.md), aby utworzyć konto i wypełnić bazę danych. Poniższe zapytania możesz uruchomić przy użyciu [biblioteki programu Graph na platformie .NET w usłudze Azure Cosmos DB](graph-sdk-dotnet.md), [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) lub ulubionego sterownika Gremlin.
 
-## <a name="count-vertices-in-the-graph"></a>Liczba wierzchołki na wykresie
+## <a name="count-vertices-in-the-graph"></a>Liczba wierzchołków grafu
 
-Poniższy fragment kodu przedstawia sposób liczbę wierzchołki na wykresie:
+Poniższy fragment kodu pokazuje sposób obliczania liczby wierzchołków grafu:
 
 ```
 g.V().count()
@@ -45,44 +45,44 @@ g.V().count()
 
 ## <a name="filters"></a>Filtry
 
-Można wykonywać przy użyciu jego Gremlin filtry `has` i `hasLabel` kroki i połączenie ich za pomocą `and`, `or`, i `not` do tworzenia bardziej złożonych filtrów. Azure DB rozwiązania Cosmos zapewnia niezależny od schematu indeksowania wszystkich właściwości w danej wierzchołki i stopni szybkiego zapytań:
+Filtry można wykonywać przy użyciu kroków `has` i `hasLabel`, a także łączyć je przy użyciu operatorów `and`, `or` i `not` w celu utworzenia bardziej złożonych filtrów. Usługa Azure Cosmos DB zapewnia niezależne od schematów indeksowanie wszystkich zależności w wierzchołkach i stopniach na potrzeby szybkich zapytań:
 
 ```
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
-## <a name="projection"></a>Projekcji
+## <a name="projection"></a>Projekcja
 
-Niektóre właściwości wyników zapytania za pomocą można projektu `values` krok:
+Pewne właściwości wyników zapytania można poddawać projekcji za pomocą kroku `values`:
 
 ```
 g.V().hasLabel('person').values('firstName')
 ```
 
-## <a name="find-related-edges-and-vertices"></a>Znajdź krawędzi pokrewne i wierzchołków
+## <a name="find-related-edges-and-vertices"></a>Znajdowanie powiązanych krawędzi i wierzchołków
 
-Firma Microsoft do tej pory tylko przedstawiono operatorów zapytań, które działają w dowolnej bazy danych. Wykresy są szybkie i wydajne dla operacji przechodzenia, gdy musisz przejść do krawędzi pokrewne i wierzchołków. Spróbujmy wszystkich znajomych blogu Thomasa. Firma Microsoft to zrobić przy użyciu jego Gremlin `outE` krok, aby znaleźć wszystkie wyjściowego krawędzi blogu Thomasa, a następnie przechodzenie do wierzchołków w z tych krawędzi przy użyciu jego Gremlin `inV` krok:
+Jak dotąd przedstawiono tylko operatory zapytań, które działają w dowolnej bazie danych. Grafy są szybkie i wydajne dla operacji przechodzenia, gdy trzeba przejść do powiązanych krawędzi i wierzchołków. Znajdźmy wszystkich znajomych Thomasa. Możemy to zrobić, używając kroku `outE` języka Gremlin w celu znalezienia wszystkich krawędzi wychodzących od Thomasa, a następnie przechodząc do wierzchołków z tych krawędzi przy użyciu kroku `inV` języka Gremlin:
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person')
 ```
 
-Zapytanie dalej wykonuje dwie przeskoków w celu znalezienia wszystkich blogu Thomasa "znajomych przyjaciół", wywołując `outE` i `inV` dwa razy. 
+Następne zapytanie wykonuje dwa przeskoki w celu znalezienia wszystkich „znajomych znajomych” Thomasa, wywołując `outE` i `inV` dwa razy. 
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 
-Można tworzyć bardziej złożone kwerendy i wdrożyć logikę przechodzenie zaawansowanych wykresu przy użyciu Gremlin, tym wyrażeniach filtru mieszanie wykonywania pętli przy użyciu `loop` krok i wykonawcze przy użyciu warunkowego nawigacji `choose` kroku. Dowiedz się więcej o co można zrobić z [Obsługa Gremlin](gremlin-support.md)!
+Możesz tworzyć bardziej złożone zapytania i implementować zaawansowaną logikę przechodzenia grafu za pomocą języka Gremlin, w tym mieszanie wyrażeń filtrowania, wykonywanie zapętlenia przy użyciu kroku `loop` i implementowanie nawigacji warunkowej przy użyciu kroku `choose`. Dowiedz się więcej o tym, co można zrobić dzięki [obsłudze języka Gremlin](gremlin-support.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Przedstawiono sposób zapytań przy użyciu wykresu 
+> * Przedstawiono sposób wykonywania zapytań przy użyciu programu Graph 
 
-Możesz teraz przejść do następnym samouczku informacje na temat dystrybucji danych globalnie.
+Możesz teraz przejść do następnego samouczka, aby dowiedzieć się, jak dystrybuować swoje dane globalnie.
 
 > [!div class="nextstepaction"]
-> [Globalny dystrybucji danych](tutorial-global-distribution-sql-api.md)
+> [Globalna dystrybucja danych](tutorial-global-distribution-sql-api.md)

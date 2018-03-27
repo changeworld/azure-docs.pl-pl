@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie środowiska projektowego w systemie Mac OS X do pracy z usługą Azure Service Fabric | Microsoft Docs"
-description: "Zainstaluj środowisko uruchomieniowe, zestaw SDK i narzędzia oraz utwórz lokalny klaster projektowy. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji w systemie Mac OS X."
+title: Konfigurowanie środowiska projektowego w systemie Mac OS X do pracy z usługą Azure Service Fabric | Microsoft Docs
+description: Zainstaluj środowisko uruchomieniowe, zestaw SDK i narzędzia oraz utwórz lokalny klaster projektowy. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji w systemie Mac OS X.
 services: service-fabric
 documentationcenter: java
 author: sayantancs
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: 4ac26c02e1893097c858380c07f520e6570fd3db
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: bf0a03ace2f6b6e6b1c845785a452d0b75f35de8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Konfigurowanie środowiska projektowego w systemie Mac OS X
 > [!div class="op_single_selector"]
@@ -99,6 +99,12 @@ Aby skonfigurować lokalny kontener platformy Docker i uruchomić w nim klaster 
 
 Postępuj zgodnie z instrukcjami w temacie [Interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md#cli-mac), aby zainstalować interfejs wiersza polecenia usługi Service Fabric (`sfctl`) na komputerze Mac.
 Polecenia interfejsu wiersza polecenia obsługują interakcję z jednostkami usługi Service Fabric, w tym klastrami, aplikacjami i usługami.
+
+1. Aby połączyć się z klastrem przed wdrożeniem aplikacji, uruchom poniższe polecenie. 
+
+```bash
+sfctl cluster select --endpoint http://localhost:19080
+```
 
 ## <a name="create-your-application-on-your-mac-by-using-yeoman"></a>Tworzenie aplikacji na komputerze Mac przy użyciu narzędzia Yeoman
 

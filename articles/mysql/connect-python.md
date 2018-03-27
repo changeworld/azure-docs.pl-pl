@@ -1,6 +1,6 @@
 ---
-title: "Nawiązywanie połączeń z usługą Azure Database for MySQL za pomocą języka Python"
-description: "Ten przewodnik Szybki start zawiera kilka przykładów kodu w języku Python, których można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich."
+title: Nawiązywanie połączeń z usługą Azure Database for MySQL za pomocą języka Python
+description: Ten przewodnik Szybki start zawiera kilka przykładów kodu w języku Python, których można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 4003c1258fcc0a6d04c4ae8d234eba4d0224b8a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 08725493f9d050da762a6527363b77af6eeed6e6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Usługa Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań za pomocą języka Python
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL za pomocą języka [Python](https://python.org). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych na platformach Mac OS, Ubuntu Linux i Windows. W tym temacie założono, że wiesz już, jak opracowywać zawartość za pomocą języka Python, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -37,7 +37,7 @@ Zainstaluj język [Python](https://www.python.org/downloads/) i [łącznik progr
 1. W systemie Linux (Ubuntu) język Python jest zwykle instalowany w ramach instalacji domyślnej.
 2. Sprawdź instalację języka Python, uruchamiając powłokę bash. Uruchom polecenie `python -V`, używając przełącznika V, aby wyświetlić numer wersji.
 3. Sprawdź instalację narzędzia PIP, uruchamiając `pip show pip -V` polecenie, aby sprawdzić numer wersji. 
-4. Narzędzie PIP może być dołączone w niektórych wersjach środowiska Python. Jeśli nie zainstalowano narzędzia PIP, możesz zainstalować pakiet [PIP] (https://pip.pypa.io/en/stable/installing/), uruchamiając polecenie `sudo apt-get install python-pip`.
+4. Narzędzie PIP może być dołączone w niektórych wersjach środowiska Python. Jeśli nie zainstalowano narzędzia PIP, możesz zainstalować pakiet [PIP](https://pip.pypa.io/en/stable/installing/), uruchamiając polecenie `sudo apt-get install python-pip`.
 5. Zaktualizuj narzędzie PIP do najnowszej wersji, uruchamiając polecenie `pip install -U pip`.
 6. Zainstaluj łącznik programu MySQL dla języka Python oraz jego zależności za pomocą polecenia PIP:
 

@@ -1,23 +1,23 @@
 ---
-title: "Tworzenie usługi Azure Data Factory przy użyciu platformy .NET | Microsoft Docs"
-description: "Tworzenie usługi Azure Data Factory w celu skopiowania danych z jednej lokalizacji w usłudze Azure Blob Storage do innej lokalizacji w tej samej usłudze Blob Storage."
+title: Tworzenie usługi Azure Data Factory przy użyciu platformy .NET | Microsoft Docs
+description: Tworzenie fabryki danych platformy Azure w celu skopiowania danych między lokalizacjami w usłudze Azure Blob Storage.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b430f5932bcd54d5e2ab787fb6c4491b48dbc416
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4829fde008516aff70652cff337838a162582c24
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Tworzenie fabryki danych i potoku przy użyciu zestawu SDK .NET
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

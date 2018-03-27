@@ -7,13 +7,13 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/01/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 8d1f09a39e865500aa8e4d093473d4989f134c3d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą platformy .NET
 
@@ -253,13 +253,13 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji .NET przy użyciu m
 
 ### <a name="binaries-and-source-code"></a>Pliki binarne i kod źródłowy
 
-- Pobierz pakiet NuGet dla najnowszej wersji [biblioteki klienta .NET magazynu](https://www.nuget.org/packages/WindowsAzure.Storage/). 
-- Wyświetl [kod źródłowy biblioteki klienta .NET magazynu](https://github.com/Azure/azure-storage-net) w usłudze GitHub.
+- Pobierz pakiet NuGet dla najnowszej wersji [biblioteki klienta .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) dla usługi Azure Storage. 
+- Wyświetl [kod źródłowy biblioteki klienta .NET](https://github.com/Azure/azure-storage-net) w usłudze GitHub.
 
 ### <a name="client-library-reference-and-samples"></a>Dokumentacja i przykłady dotyczące biblioteka klienta
 
-- Aby uzyskać więcej informacji na temat biblioteki klienta, zobacz [dokumentację interfejsu API platformy .NET magazynu](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
-- Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob) napisanymi przy użyciu biblioteki klienta .NET magazynu.
+- Aby uzyskać więcej informacji na temat biblioteki klienta .NET, zobacz [dokumentację interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
+- Zapoznaj się z [przykładami magazynu Blob Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob) napisanymi przy użyciu biblioteki klienta .NET.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem Azure App Service Environment"
-description: "Szczegółowe informacje na temat tworzenia i używania środowiska Azure App Service Environment odizolowanego od Internetu"
+title: Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem Azure App Service Environment
+description: Szczegółowe informacje na temat tworzenia i używania środowiska Azure App Service Environment odizolowanego od Internetu
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -139,7 +139,7 @@ Przekonwertuj lub zapisz certyfikat SSL jako plik pfx. Plik pfx musi zawierać w
 
 Jeśli chcesz utworzyć certyfikat z podpisem własnym, możesz użyć tu poleceń programu PowerShell. Pamiętaj, aby użyć nazwy domeny środowiska ASE z wewnętrznym modułem równoważenia obciążenia, a nie domeny *wewnętrzna.contoso.com*: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "\*.internal-contoso.com","\*.scm.internal-contoso.com"
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
     
     $certThumbprint = "cert:\localMachine\my\" +$certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
@@ -174,9 +174,9 @@ Aby przekazać własne certyfikaty i przetestować dostęp:
 
     b. Aby przetestować publikowanie wdrażania w Internecie lub dostęp do konsoli zaawansowanej, utwórz rekord dla _mojaaplikacja.scm.aseilb.com_.
 
-7. Za pomocą przeglądarki na tej maszynie wirtualnej przejdź do strony http://mojaaplikacjatestowa.aseilb.com. (Lub przejdź do strony z nazwą dowolnej aplikacji w używanej domenie).
+7. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę http://mytestapp.ilbase.com. (Lub przejdź do strony z nazwą dowolnej aplikacji w używanej domenie).
 
-8. Za pomocą przeglądarki na tej maszynie wirtualnej przejdź do strony https://mojaaplikacjatestowa.aseilb.com. Jeśli używasz certyfikatu z podpisem własnym, zaakceptuj brak zabezpieczeń.
+8. Skorzystaj z przeglądarki na tej maszynie wirtualnej i przejdź na stronę https://mytestapp.ilbase.com. Jeśli używasz certyfikatu z podpisem własnym, zaakceptuj brak zabezpieczeń.
 
     Adres IP wewnętrznego modułu równoważenia obciążenia znajduje się w obszarze **Adresy IP**. Ta lista zawiera również adresy IP używane przez zewnętrzne wirtualne adresy IP oraz do obsługi ruchu przychodzącego zarządzania.
 

@@ -1,19 +1,19 @@
 ---
-title: "Szybki start — klaster Azure Kubernetes dla systemu Linux"
-description: "Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Linux w usłudze AKS za pomocą interfejsu wiersza polecenia platformy Azure."
+title: Szybki start — klaster Azure Kubernetes dla systemu Linux
+description: Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Linux w usłudze AKS za pomocą interfejsu wiersza polecenia platformy Azure.
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 02/26/2018
+ms.date: 03/14/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 817b204cde8708ff06507c30e1725c0e46185877
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3005023e45bc6516732f077f152aed93564be38b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Wdrażanie klastra usługi Azure Container Service (AKS)
 
@@ -27,10 +27,14 @@ Na potrzeby tego przewodnika Szybki start założono, że masz podstawową wiedz
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
-## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Włączanie wersji zapoznawczej usługi AKS dla subskrypcji platformy Azure
-W przypadku usługi AKS w wersji zapoznawczej tworzenie nowych klastrów wymaga flagi funkcji w ramach subskrypcji. Możesz zażądać tej funkcji dla dowolnej liczby subskrypcji, z których chcesz skorzystać. Użyj polecenia `az provider register`, aby zarejestrować dostawcę usług AKS:
+## <a name="enabling-aks-preview"></a>Włączanie podglądu usługi AKS
+
+Upewnij się, że włączono wymaganych dostawców usług Azure za pomocą polecenia `az provider register`. 
 
 ```azurecli-interactive
+az provider register -n Microsoft.Network
+az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Compute
 az provider register -n Microsoft.ContainerService
 ```
 
@@ -64,7 +68,7 @@ Dane wyjściowe:
 
 ## <a name="create-aks-cluster"></a>Tworzenie klastra AKS
 
-W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem.
+Utwórz klaster AKS za pomocą polecenia [az aks create][az-aks-create]. W poniższym przykładzie pokazano tworzenie klastra o nazwie *myAKSCluster* z jednym węzłem.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -76,14 +80,14 @@ Po kilku minutach polecenie zostanie zakończone i zwróci informacje o klastrze
 
 Aby zarządzać klastrem Kubernetes, należy użyć klienta wiersza polecenia usługi Kubernetes, narzędzia [kubectl][kubectl].
 
-Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie kubectl jest już zainstalowane. Jeśli chcesz zainstalować je lokalnie, uruchom następujące polecenie.
+Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie kubectl jest już zainstalowane. Jeśli chcesz zainstalować je lokalnie, użyj polecenia [az aks install-cli][az-aks-install-cli].
 
 
 ```azurecli
 az aks install-cli
 ```
 
-Aby skonfigurować narzędzie kubectl w celu łączenia się z klastrem Kubernetes, uruchom następujące polecenie. Ten krok umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
+Za pomocą polecenia [az aks get-credentials][az-aks-get-credentials] skonfiguruj narzędzie kubectl w celu nawiązania połączenia z klastrem Kubernetes. Ten krok umożliwia pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -244,7 +248,9 @@ Aby dowiedzieć się więcej o usłudze AKS i poznać dokładnie proces od kompl
 
 <!-- LINKS - internal -->
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az_aks_browse
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
+[az aks install-cli]: /cli/azure/aks?view=azure-cli-latest#az_aks_install_cli
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli

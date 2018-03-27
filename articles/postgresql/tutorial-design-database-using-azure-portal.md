@@ -1,6 +1,6 @@
 ---
-title: "Samouczek — projektowanie pierwszej bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal"
-description: "Ten samouczek pokazuje, jak zaprojektować pierwszą bazę danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal."
+title: 'Samouczek: Projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal'
+description: Ten samouczek pokazuje, jak zaprojektować pierwszą bazę danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -10,13 +10,13 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: df8f308b17879d7fd22d033fb535b59bd8a85086
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f4d886bbbf2b9111d736e291e420b822de9766a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Samouczek: projektowanie pierwszej bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Samouczek: Projektowanie bazy danych usługi Azure Database for PostgreSQL przy użyciu witryny Azure Portal
 
 Azure Database for PostgreSQL to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych PostgreSQL o wysokiej dostępności, a także zarządzanie nimi. Za pomocą witryny Azure Portal możesz łatwo zarządzać serwerem i zaprojektować bazę danych.
 
