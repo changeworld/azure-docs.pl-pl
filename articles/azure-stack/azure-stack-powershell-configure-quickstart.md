@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7725c5a9a7b6359257efadcc46366a7a360ec69c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2b306cc9dc9bbf435eb70315cc46e7faf4268b47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Rozpocząć pracę z programu PowerShell w programie Azure stosu
 
@@ -174,6 +174,9 @@ Teraz, gdy skonfigurowano programu PowerShell, można przetestować konfiguracj�
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
+> [!note]  
+> Aby określić grupę zasobów, należy mieć grupę zasobów w ramach subskrypcji. Aby uzyskać więcej informacji o subskrypcjach, zobacz [omówienie planu, oferty, przydziału i subskrypcji](azure-stack-plan-offer-quota-overview.md)
+
 Po utworzeniu grupy zasobów, **stan inicjowania obsługi** właściwość jest ustawiona na **zakończyło się pomyślnie**.
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -181,10 +184,3 @@ Po utworzeniu grupy zasobów, **stan inicjowania obsługi** właściwość jest 
 * [Instalowanie i Konfigurowanie interfejsu wiersza polecenia](azure-stack-connect-cli.md)
 
 * [Tworzenie szablonów](user/azure-stack-develop-templates.md)
-
-
-
-
-
-
-

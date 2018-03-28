@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z Microsoft Azure stosu | Dokumentacja firmy Microsoft"
-description: "Azure stosu dotyczących rozwiązywania problemów."
+title: Rozwiązywanie problemów z Microsoft Azure stosu | Dokumentacja firmy Microsoft
+description: Azure stosu dotyczących rozwiązywania problemów.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: a20bea32-3705-45e8-9168-f198cfac51af
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 799a7f7ed7e2373e4cf819a34d5deb362c9e6a3f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b63fdd630647cc970a2d935619b4d3f16b8c0375
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Rozwiązywanie problemów z Microsoft Azure stosu
 
@@ -44,7 +44,7 @@ To zachowanie jest prawdopodobnie tylko wynik domyślne zachowanie okno poleceń
 Przed wdrożeniem maszyn wirtualnych w stosie Azure należy dodać element obrazu i galerii systemu Windows Server.
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Po ponownym uruchomieniu hosta Moje stosu Azure, niektóre maszyny wirtualne nie może automatycznie uruchomić.
-Po jego ponownym uruchomieniu hosta, można zauważyć, że usługi Azure stosu nie są natychmiast dostępne.  Jest to spowodowane stosu Azure [infrastruktury maszyn wirtualnych](azure-stack-architecture.md#virtual-machine-roles) i RPs małego nieco potrwać do sprawdzania spójności, ale ostatecznie rozpocznie się automatycznie.
+Po jego ponownym uruchomieniu hosta, można zauważyć, że usługi Azure stosu nie są natychmiast dostępne.  Jest to spowodowane stosu Azure [infrastruktury maszyn wirtualnych](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) i RPs małego nieco potrwać do sprawdzania spójności, ale ostatecznie rozpocznie się automatycznie.
 
 Ponadto tej dzierżawy maszyn wirtualnych nie automatycznie uruchomić po ponownym uruchomieniu hosta zestawu programowanie stosu Azure. Jest to znany problem i wymaga kilku ręczne czynności w celu ich Przełącz do trybu online:
 

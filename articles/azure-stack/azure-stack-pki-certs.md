@@ -1,25 +1,25 @@
 ---
-title: "Azure wymagania dotyczące certyfikatów infrastruktury kluczy publicznych stosu dla stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano wymagania dotyczące wdrażania certyfikatu PKI stosu Azure stosu Azure zintegrowanych systemów."
+title: Azure wymagania dotyczące certyfikatów infrastruktury kluczy publicznych stosu dla stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft
+description: W tym artykule opisano wymagania dotyczące wdrażania certyfikatu PKI stosu Azure stosu Azure zintegrowanych systemów.
 services: azure-stack
-documentationcenter: 
-author: jeffgilb
+documentationcenter: ''
+author: mabriggs
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f2f71372211dcc9db34beb3fa3fd788920f8bd45
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące certyfikatów infrastruktury kluczy publicznych stosu Azure
 Azure stos nie zawiera publicznych infrastruktury sieci przy użyciu dostępne z zewnątrz publiczne adresy IP przypisane do niewielki zestaw usług Azure stosu i prawdopodobnie maszyny wirtualne dzierżawców. Certyfikaty PKI z odpowiedniej nazwy DNS dla tych punktów końcowych infrastruktury publicznych stosu Azure są wymagane podczas wdrażania usługi Azure stosu. Ten artykuł zawiera informacje na temat:
@@ -39,6 +39,7 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Format certyfikatu musi być PFX, jak klucze publiczne i prywatne są wymagane do zainstalowania stosu Azure. 
 - Pliki pfx certyfikatu musi mieć wartość "Podpis cyfrowy" i "KeyEncipherment" w polu "Użycie klucza".
 - Pliki pfx certyfikatu musi mieć wartości "Uwierzytelnianie serwera (1.3.6.1.5.5.7.3.1)" i "Uwierzytelnianie klienta (1.3.6.1.5.5.7.3.2)" w polu "Ulepszone użycie klucza".
+- Certyfikatu "wydany dla:" pole nie może być taka sama jak jego "wystawiony przez:" pola.
 - Hasła do wszystkich plików pfx certyfikatów muszą być takie same w czasie wdrażania
 - Upewnij się, że nazwy podmiotu i alternatywnej nazwy podmiotu wszystkie certyfikaty są zgodne ze specyfikacjami opisane w tym artykule, aby uniknąć wdrożenia nie powiodło się.
 
@@ -50,7 +51,7 @@ W tabeli w tej sekcji opisano certyfikatów PKI publiczny punkt końcowy stosu A
 
 Certyfikaty z odpowiedniej nazwy DNS dla każdego punktu końcowego infrastruktury publicznych stosu Azure są wymagane. Nazwa DNS każdego punktu końcowego jest wyrażona w formacie:  *&lt;prefiks >.&lt; region >. &lt;fqdn >*. 
 
-Dla danego wdrożenia [region] i [externalfqdn] wartości muszą być zgodne, regionu i nazwy domen zewnętrznych, które wybrano systemu Azure stosu. Na przykład jeśli nazwa regionu *Redmond* i nazwa domeny zewnętrznej *contoso.com*, nazwy DNS musi format  *&lt;prefiks >. redmond.contoso.com* .  *&lt;Prefiks >* wartości są ustalonym przez firmę Microsoft do opisywania zabezpieczone przez certyfikatu punktu końcowego. Ponadto  *&lt;prefiks >* wartości infrastruktury zewnętrznych punktów końcowych, które są zależne od usługi Azure stosu, który korzysta z określonego punktu końcowego. 
+Dla danego wdrożenia [region] i [externalfqdn] wartości muszą być zgodne, regionu i nazwy domen zewnętrznych, które wybrano systemu Azure stosu. Na przykład jeśli nazwa regionu *Redmond* i nazwa domeny zewnętrznej *contoso.com*, nazwy DNS musi format *&lt;prefiks >. redmond.contoso.com*.  *&lt;Prefiks >* wartości są ustalonym przez firmę Microsoft do opisywania zabezpieczone przez certyfikatu punktu końcowego. Ponadto  *&lt;prefiks >* wartości infrastruktury zewnętrznych punktów końcowych, które są zależne od usługi Azure stosu, który korzysta z określonego punktu końcowego. 
 
 |Folder wdrożenia|Wymaganego certyfikatu podmiotu i alternatywnej nazwy podmiotu (SAN)|Zakres (dla regionu)|Przestrzeń nazw poddomeny|
 |-----|-----|-----|-----|
@@ -93,7 +94,7 @@ W poniższej tabeli opisano punktów końcowych i certyfikatów wymaganych dla k
 
 <sup>1</sup> wymaga jednego certyfikatu z wielu symboli wieloznacznych alternatywne nazwy podmiotu. Wiele symboli wieloznacznych sieci SAN na jeden certyfikat może nie być obsługiwany przez wszystkich publicznych urzędów certyfikacji 
 
-<sup>2</sup> A &#42;. usługi aplikacji.  *&lt;region >.&lt; Nazwa FQDN >* certyfikatu przy użyciu symboli wieloznacznych nie można użyć zamiast te trzy certyfikaty (api.appservice. *&lt;region >. &lt;fqdn >*, ftp.appservice. *&lt;region >. &lt;fqdn >*i sso.appservice. *&lt;region >. &lt;fqdn >*. Appservice jawnie wymaga użycia osobnych certyfikatów dla tych punktów końcowych. 
+<sup>2</sup> A &#42;.appservice. *&lt;region >. &lt;fqdn >* certyfikatu przy użyciu symboli wieloznacznych nie można użyć zamiast te trzy certyfikaty (api.appservice. *&lt;region >. &lt;fqdn >*, ftp.appservice. *&lt;region >. &lt;fqdn >*i sso.appservice. *&lt;region >. &lt;fqdn >*. Appservice jawnie wymaga użycia osobnych certyfikatów dla tych punktów końcowych. 
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 Dowiedz się, jak [generowania certyfikatów PKI dla wdrożenia stosu Azure](azure-stack-get-pki-certs.md). 
