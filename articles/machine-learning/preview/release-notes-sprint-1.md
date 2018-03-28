@@ -1,6 +1,6 @@
 ---
 title: Azure ML Workbench informacje o wersji dla przebiegu 1 listopada 2017 r.
-description: "Ten dokument zawiera szczegóły aktualizacje dla wersji przebiegu 1 uczenie Maszynowe Azure"
+description: Ten dokument zawiera szczegóły aktualizacje dla wersji przebiegu 1 uczenie Maszynowe Azure
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
 ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-1---november-2017"></a>Przebieg 1 — listopad 2017 
 
@@ -96,14 +96,14 @@ Poniżej znajduje się lista szczegółowe aktualizacji w obszarze każdego skł
 - Trwa przerywanie działania aplikacji już nie zakłóca zadania rozpoczęte w interfejsu wiersza polecenia.
 - Zadania rozpoczęte CLI teraz w dalszym ciągu Podziel się poza standardowe nawet po godzinie wykonania.
 - Lepsze komunikaty o błędach są wyświetlane, gdy pakiet przygotowanie bazy danych uruchom nie powiedzie się w języku Python/PySpark.
-- `az ml experiment clean`teraz czyści obrazy usługi Docker również zdalnej maszynie wirtualnej.
-- `az ml experiment clean`teraz działa poprawnie dla lokalnych docelowego na macOS.
+- `az ml experiment clean` teraz czyści obrazy usługi Docker również zdalnej maszynie wirtualnej.
+- `az ml experiment clean` teraz działa poprawnie dla lokalnych docelowego na macOS.
 - Komunikaty o błędach po uruchomieniu przeznaczonych dla lokalnego lub zdalnego Docker oczyszczeniem w górę i bardziej czytelne.
 - Lepsze komunikat o błędzie jest wyświetlane, gdy nazwa węzła głównego klastra usługi HDInsight nie jest prawidłowo sformatowana, gdy dołączony jako obiekt docelowy wykonywania.
 - Lepsze komunikat o błędzie jest wyświetlany, jeśli klucz tajny nie znajdują się w usłudze poświadczeń. 
 - Biblioteka MMLSpark jest uaktualniany do obsługi Apache Spark 2.2.
 - MMLSpark zawierają teraz podmiotu kodowania transformacji (kodowanie siatki) medyczne dokumentów.
-- `matplotlib`wersja 2.1.0 jest obecnie dostarczana pole poza z Workbench.
+- `matplotlib` wersja 2.1.0 jest obecnie dostarczana pole poza z Workbench.
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 - W widoku notesów wyszukiwania nazwy notesu teraz działa prawidłowo.
@@ -128,10 +128,10 @@ Poniżej znajduje się lista szczegółowe aktualizacji w obszarze każdego skł
 
 ### <a name="sample-projects"></a>Przykładowych projektach
 - [_Klasyfikowanie Iris_ ](./tutorial-classifying-iris-part-1.md) przykładowy projekt:
-    - `iris_pyspark.py`została zmieniona na `iris_spark.py`.
-    - `iris_score.py`została zmieniona na `score_iris.py`.
-    - `iris.dprep`i `iris.dsource` są aktualizowane w celu uwzględnienia najnowszych aktualizacji aparatu przygotowanie bazy danych.
-    - `iris.ipynb`Notesu wprowadza się do pracy w klastrze usługi HDInsight.
+    - `iris_pyspark.py` została zmieniona na `iris_spark.py`.
+    - `iris_score.py` została zmieniona na `score_iris.py`.
+    - `iris.dprep` i `iris.dsource` są aktualizowane w celu uwzględnienia najnowszych aktualizacji aparatu przygotowanie bazy danych.
+    - `iris.ipynb` Notesu wprowadza się do pracy w klastrze usługi HDInsight.
     - Historia uruchomień jest włączona w programie `iris.ipynb` komórki notesu.
 - [_Zaawansowane przygotowanie bazy danych przy użyciu danych udziału roweru_ ](./tutorial-bikeshare-dataprep.md) przykładowy projekt "Obsługi błędu wartość" krok stałej.
 - [_MMLSpark na dane spisu dla dorosłych_ ](https://github.com/Azure/MachineLearningSamples-mmlspark) przykładowy projekt `docker.runconfig` format zaktualizowany z JSON do yaml programu.
