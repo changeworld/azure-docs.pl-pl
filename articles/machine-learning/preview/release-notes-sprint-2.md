@@ -1,6 +1,6 @@
 ---
 title: Azure ML Workbench informacje o wersji dla przebiegu 2 grudnia 2017 r.
-description: "Ten dokument zawiera szczegóły aktualizacje dla wersji przebiegu 2 uczenie Maszynowe Azure"
+description: Ten dokument zawiera szczegóły aktualizacje dla wersji przebiegu 2 uczenie Maszynowe Azure
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2017
 ms.openlocfilehash: cb620040f8c82fd2015f93963d99739d38ec6db3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-2---december-2017"></a>Przebieg 2 — grudzień 2017 
 

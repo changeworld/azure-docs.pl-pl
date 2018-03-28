@@ -1,11 +1,11 @@
 ---
 title: Zestawy skalowania automatycznego skalowania maszyny wirtualnej z programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: "Ustawia sposobu tworzenia reguł skalowania automatycznego skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell"
+description: Ustawia sposobu tworzenia reguł skalowania automatycznego skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Automatycznie skalować skali maszyny wirtualnej ustawić przy użyciu programu Azure PowerShell
 Podczas tworzenia zestawu skalowania, należy zdefiniować liczba wystąpień maszyn wirtualnych, które chcesz uruchomić. Twoje żądanie aplikacji zmian, można automatycznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych. Możliwość skalowania automatycznego umożliwia nadąża z popyt lub reagowania na zmiany wydajności aplikacji w całym cyklu życia aplikacji.
@@ -50,13 +50,13 @@ Dla tej reguły są używane następujące parametry:
 | Parametr               | Wyjaśnienie                                                                                                         | Wartość          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | Metryki wydajności do monitorowania i zastosować skali ustawić akcje.                                                   | Procentowe użycie procesora CPU |
-| *-Ziarnem czasu*            | Jak często metryki są zbierane dla analizy.                                                                   | 1 minuta       |
+| *-TimeGrain*            | Jak często metryki są zbierane dla analizy.                                                                   | 1 min       |
 | *-MetricStatistic*      | Określa, jak zebranych metryk powinny być agregowane dla celów analizy.                                                | Średnia        |
 | *-TimeWindow*           | Ilość czasu monitorowane przed wartości metryki i próg są porównywane.                                   | 10 minut      |
-| *-— Operator*             | Operator użyty do porównania danych metryki wartość progową.                                                     | Większa niż   |
+| *-Operator*             | Operator użyty do porównania danych metryki wartość progową.                                                     | Większa niż   |
 | *— Próg*            | Wartość, która powoduje, że reguły automatycznego skalowania akcja wyzwalacza.                                                      | 70%            |
 | *-ScaleActionDirection* | Określa, czy zestaw skalowania należy skalować w górę lub w dół gdy ta reguła ma zastosowanie.                                             | Zwiększ       |
-| *— ScaleActionScaleType* | Wskazuje, czy liczba wystąpień maszyn wirtualnych powinny być zmieniane przez wartość procentowa.                                 | Procent zmiany |
+| *–ScaleActionScaleType* | Wskazuje, czy liczba wystąpień maszyn wirtualnych powinny być zmieniane przez wartość procentowa.                                 | Procent zmiany |
 | *-ScaleActionValue*     | Gdy zasada wyzwala, należy zmienić wartości procentowej wystąpień maszyny Wirtualnej.                                            | 20             |
 | *-ScaleActionCooldown*  | Ilość czasu oczekiwania przed reguła została zastosowana ponownie, aby akcji skalowania automatycznego ma czas zaczęły obowiązywać. | 5 minut      |
 
