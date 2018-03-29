@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 733a396117a58d8dc51e55614e503853f13141c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c43973a7e5070676fc0f32a4c8923d57a479f884
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności działania i dostrajania przewodnik
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -91,7 +91,7 @@ A **jednostki przepływu danych w chmurze (DMU)** miary, która odzwierciedla wy
 | Kopiowanie danych między magazynów opartych na plikach | Od 4 do 32 w zależności od liczby i rozmiaru plików. |
 | Inne scenariusze kopiowania | 4 |
 
-Aby zastąpić to ustawienie domyślne, należy określić wartość dla **cloudDataMovementUnits** właściwości w następujący sposób. **Dozwolone wartości** dla **cloudDataMovementUnits** to 2, 4, 8, 16, 32. **Rzeczywistą liczbę chmury DMUs** używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od tego wzorca sieci danych. Uzyskać informacje na temat poziomu są bardziej wydajne, można uzyskać po skonfigurowaniu więcej jednostek dla konkretnej kopii źródłowy i odbiorczy, zobacz [dotyczące wydajności](#performance-reference).
+Aby zastąpić to ustawienie domyślne, należy określić wartość dla **cloudDataMovementUnits** właściwości w następujący sposób. **Dozwolone wartości** dla **cloudDataMovementUnits** właściwość jest **256**. **Rzeczywistą liczbę chmury DMUs** używany w czasie wykonywania operacji kopiowania jest równa lub mniejsza niż skonfigurowana wartość, w zależności od tego wzorca sieci danych. Uzyskać informacje na temat poziomu są bardziej wydajne, można uzyskać po skonfigurowaniu więcej jednostek dla konkretnej kopii źródłowy i odbiorczy, zobacz [dotyczące wydajności](#performance-reference).
 
 Widać jednostki przepływu danych chmury faktycznie używana dla poszczególnych kopii uruchamiania w przypadku działania kopiowania danych wyjściowych podczas uruchamiania działania monitorowania. Dowiedz się więcej szczegółów z [skopiuj Monitorowanie działania](copy-activity-overview.md#monitoring).
 
@@ -133,11 +133,14 @@ Dla każdego działania kopiowania Uruchom fabryki danych określa liczbę równ
 
 | Skopiuj scenariusza | Liczba równoległych kopii domyślne określone przez usługę |
 | --- | --- |
-| Kopiowanie danych między magazynów opartych na plikach |Od 1 do 64. Zależy od rozmiaru plików i liczby jednostek chmury danych przepływu (DMUs) umożliwia kopiowanie danych między dwa magazyny danych w chmurze lub fizyczną konfigurację środowiska uruchomieniowego integracji Self-hosted maszyny. |
+| Kopiowanie danych między magazynów opartych na plikach |Zależy od rozmiaru plików i liczby jednostek chmury danych przepływu (DMUs) umożliwia kopiowanie danych między dwa magazyny danych w chmurze lub fizyczną konfigurację środowiska uruchomieniowego integracji Self-hosted maszyny. |
 | Kopiowanie danych z dowolnego źródła danych magazynu do magazynu tabel Azure |4 |
 | Inne scenariusze kopiowania |1 |
 
-Zazwyczaj domyślne zachowanie powinien zapewnić najlepszą wydajność. Jednak do kontrolowania obciążenia na maszynach hostujących dane są przechowywane lub do dopasowywania wydajności kopii, możesz zastąpić wartość domyślną i określ wartość **parallelCopies** właściwości. Wartość musi być liczbą całkowitą większą niż lub równa 1. W czasie wykonywania Aby uzyskać najlepszą wydajność, działanie kopiowania używa wartość, która jest mniejsza lub równa wartości zostanie ustawiona.
+[!TIP]
+> Podczas kopiowania danych między magazynów opartych na plikach, domyślne zachowanie (automatycznie określoną) zwykle zapewniają najlepszą wydajność. 
+
+Aby kontrolować obciążenia na maszynach hostujących dane są przechowywane lub do dopasowywania wydajności kopii, możesz zastąpić wartość domyślną i określ wartość **parallelCopies** właściwości. Wartość musi być liczbą całkowitą większą niż lub równa 1. W czasie wykonywania Aby uzyskać najlepszą wydajność, działanie kopiowania używa wartość, która jest mniejsza lub równa wartości zostanie ustawiona.
 
 ```json
 "activities":[

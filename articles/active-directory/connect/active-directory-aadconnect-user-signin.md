@@ -1,8 +1,8 @@
 ---
-title: "Usługi Azure AD Connect: Logowanie użytkownika | Dokumentacja firmy Microsoft"
-description: "Azure AD Connect logowania użytkownika dla ustawień niestandardowych."
+title: 'Usługi Azure AD Connect: Logowanie użytkownika | Dokumentacja firmy Microsoft'
+description: Azure AD Connect logowania użytkownika dla ustawień niestandardowych.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 4670ec3cacd8d69a4ed59aa2bbbeb2e5c893f173
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect użytkownika opcje logowania
 Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logowania się do zasobów w chmurze, jak i dla lokalnego przy użyciu takich samych haseł. W tym artykule opisano podstawowe pojęcia dla każdego modelu tożsamości pomaga wybrać tożsamości, która ma być używany dla logowania do usługi Azure AD.
 
 Jeśli znasz już modelu tożsamości usługi Azure AD i chcesz dowiedzieć się więcej na temat określonej metody, zobacz odpowiednie łącze:
 
-* [Synchronizacja skrótów haseł](#password-synchronization) z [bezproblemowe logowanie jednokrotne (SSO)](active-directory-aadconnect-sso.md)
+* [Synchronizacja skrótów haseł](#password-hash-synchronization) z [bezproblemowe logowanie jednokrotne (SSO)](active-directory-aadconnect-sso.md)
 * [Uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) z [bezproblemowe logowanie jednokrotne (SSO)](active-directory-aadconnect-sso.md)
 * [Federacyjną rejestracją Jednokrotną (z usługi Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 
@@ -36,13 +36,13 @@ Jeśli znasz już modelu tożsamości usługi Azure AD i chcesz dowiedzieć się
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>Wybieranie metody logowania użytkownika w Twojej organizacji
 W przypadku większości organizacji, które po prostu chcesz włączyć logowanie użytkowników do usługi Office 365, aplikacji SaaS i innych zasobów platformy Azure na podstawie usługi AD zalecamy domyślną opcją synchronizacji skrótu hasła. Jednak niektóre organizacje mają określonej przyczyny nie są możliwe do użycia tej opcji. Wybiera on albo federacyjnych opcji logowania, takie jak usługi AD FS lub uwierzytelnianie przekazywane. Poniższa tabela umożliwia podejmowanie właściwie.
 
-Muszę | PHS, który z logowania jednokrotnego| PTA z logowania jednokrotnego| ADFS |
+Muszę | PHS, który z logowania jednokrotnego| PTA z logowania jednokrotnego| AD FS |
  --- | --- | --- | --- |
 Synchronizuj automatycznie nowe, skontaktuj się z pomocą, kont użytkowników i grup w lokalnej usłudze Active Directory do chmury.|x|x|x|
 Skonfiguruj moje dzierżawy w scenariuszach hybrydowych usługi Office 365.|x|x|x|
 Włącz użytkowników do logowania się oraz dostęp do usługi w chmurze przy użyciu swoich haseł lokalnych.|x|x|x|
 Implementowanie logowania jednokrotnego przy użyciu poświadczeń firmowych.|x|x|x|
-Upewnij się, że hasła nie są przechowywane w chmurze.||x *|x|
+Upewnij się, że hasła nie są przechowywane w chmurze.||x*|x|
 Włącz lokalnymi rozwiązaniami usługi Multi-Factor authentication.|||x|
 
 * Za pomocą uproszczonego agenta.
@@ -54,7 +54,7 @@ Ponadto można włączyć [bezproblemowe logowanie Jednokrotne](active-directory
 
 ![Synchronizacja skrótów haseł](./media/active-directory-aadconnect-user-signin/passwordhash.png)
 
-Aby uzyskać więcej informacji, zobacz [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-synchronization.md) artykułu.
+Aby uzyskać więcej informacji, zobacz [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-hash-synchronization.md) artykułu.
 
 ### <a name="pass-through-authentication"></a>Uwierzytelnianie przekazywane
 Przy użyciu przekazywanego uwierzytelniania hasła została sprawdzona na kontrolerze lokalnej usługi Active Directory. Hasło nie musi znajdować się w usłudze Azure AD w jakimkolwiek formularzu. Dzięki temu zasady lokalne, takie jak ograniczeń logowania godzina ma zostać obliczone podczas uwierzytelniania w chmurze usługi.
@@ -176,6 +176,6 @@ Na **logowania użytkownika** wybierz żądany logowania użytkownika.
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).
 - Dowiedz się więcej o [zagadnienia dotyczące projektowania usługi Azure AD Connect](active-directory-aadconnect-design-concepts.md).

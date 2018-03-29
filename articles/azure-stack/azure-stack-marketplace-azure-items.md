@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 39a82486b485a761f03244cf8d49f9c79ed9b2f7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cdce5ad971e345971aa5de9a9bb79379fb1ead48
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure stosu
 
@@ -217,7 +217,7 @@ Microsoft Azure stosu obsługuje następujące maszyny wirtualne Azure Marketpla
 | ![Hortonworks Data Platform (HDP) piaskownicy](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) piaskownicy](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Wyłączyć przez HDP 2,5 100% open source platformy Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![Przełącznik usługi równoważenia obciążenia KEMP LoadMaster w ADC zawartości](media/azure-stack-marketplace-azure-items/kemp.png) | [Przełącznik usługi równoważenia obciążenia KEMP LoadMaster w ADC zawartości](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Moduł równoważenia obciążenia kontrolera (ADC) warstwy 4-7 aplikacji dostarczania zawartości przełącznika i Menedżera ruchu. | KEMP Technologies Inc. |
 | ![S3 usług AWS hybrydowego NooBaa zgodny - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [S3 usług AWS hybrydowego NooBaa compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Usługa magazynu zgodnego S3 obejmuje publicznego i pojemności zasobów lokalnych. | NooBaa |
-| ![Zapora aplikacji PT](media/azure-stack-marketplace-azure-items/pt.png) | [Zapora aplikacji PT](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.pta) | Zapora aplikacji PT wykrywa znane & nieznany luk w zabezpieczeniach i pozwala zapobiec atakom, aplikacji sieci web. <b>Pobierz oba elementy PT Marketplace.</b> | Technologie dodatnią |
+| ![Zapora aplikacji PT](media/azure-stack-marketplace-azure-items/pt.png) | [Zapora aplikacji PT](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Zapora aplikacji PT wykrywa znane & nieznany luk w zabezpieczeniach i pozwala zapobiec atakom, aplikacji sieci web. <b>Pobierz oba elementy PT Marketplace.</b> | Technologie dodatnią |
 | ![Puppet przedsiębiorstwa](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet przedsiębiorstwa](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise pozwala zautomatyzować w całym cyklu ich życia infrastruktury Azure stosu. <b>Pobierz oba elementy Puppet Marketplace.</b> | Puppet |
 | ![Serwer Proxy Menedżera 3.0 SUSE (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [Serwer Proxy Menedżera 3.0 SUSE (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Zarządzanie infrastrukturą open source najlepsze w klasie. | SUSE |
 | ![Narzędzie ZeroDown oprogramowania](media/azure-stack-marketplace-azure-items/zerodown.png) | [Narzędzie ZeroDown oprogramowania ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | V7.1 Narzędzie oprogramowania ZeroDown - migracji + wysokiej dostępności. | ZeroDown oprogramowania |

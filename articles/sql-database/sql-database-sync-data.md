@@ -1,6 +1,6 @@
 ---
 title: Synchronizacja danych Azure SQL (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: "W tym omówieniu przedstawiono synchronizacji danych SQL Azure (wersja zapoznawcza)"
+description: W tym omówieniu przedstawiono synchronizacji danych SQL Azure (wersja zapoznawcza)
 services: sql-database
 author: douglaslms
 manager: craigg
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5abe3e5a56dfca263f109b86f473ac490da3eac7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e0b8a999cf38cbef37498d4ee0fb2bceae8f292
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z opcją synchronizacji danych SQL (wersja zapoznawcza)
 
@@ -92,6 +92,8 @@ Używa synchronizacji danych wstawiania, aktualizowania i usuwania wyzwalaczy do
 
 -   Tabela nie może mieć kolumnę tożsamości, która nie jest kluczem podstawowym.
 
+-   Klucz podstawowy nie może mieć typ danych daty i godziny.
+
 -   Nazwy obiektów (baz danych, tabel i kolumn) nie może zawierać znaków drukowalnych kropki (.), lewego nawiasu kwadratowego ([) lub prawo kwadratowa nawiasu (]).
 
 -   Azure uwierzytelniania usługi Active Directory nie jest obsługiwane.
@@ -160,20 +162,20 @@ Główna baza danych Federacji może służyć usługi synchronizacji danych SQL
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat synchronizacji danych SQL zobacz:
+Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
--   [Konfigurowanie synchronizacji danych SQL Azure](sql-database-get-started-sql-data-sync.md)
--   [Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure](sql-database-best-practices-data-sync.md)
--   [Monitor synchronizacji danych Azure SQL z OMS analizy dzienników](sql-database-sync-monitor-oms.md)
--   [Rozwiązywanie problemów z synchronizacją danych SQL Azure](sql-database-troubleshoot-data-sync.md)
+-   [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](sql-database-get-started-sql-data-sync.md)
+-   [Best practices for Azure SQL Data Sync (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)](sql-database-best-practices-data-sync.md)
+-   [Monitor Azure SQL Data Sync with OMS Log Analytics (Monitorowanie usługi Azure SQL Data Sync za pomocą usługi OMS Log Analytics)](sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](sql-database-troubleshoot-data-sync.md)
 
--   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL:
+-   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:
     -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)
-    -   [Synchronizacja między bazą danych SQL Azure i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)
+    -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 
--   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-Aby uzyskać więcej informacji na temat bazy danych SQL zobacz:
+Aby uzyskać więcej informacji na temat usługi SQL Database, zobacz:
 
--   [Omówienie bazy danych SQL](sql-database-technical-overview.md)
--   [Zarządzanie cyklem życia bazy danych](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Omówienie usługi SQL Database](sql-database-technical-overview.md)
+-   [Database Lifecycle Management (Zarządzanie cyklem życia bazy danych)](https://msdn.microsoft.com/library/jj907294.aspx)

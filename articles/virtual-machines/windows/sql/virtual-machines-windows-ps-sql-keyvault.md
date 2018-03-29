@@ -1,11 +1,11 @@
 ---
 title: Integracja magazynu kluczy z programem SQL Server na maszynach wirtualnych systemu Windows na platformie Azure (Resource Manager) | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak zautomatyzować konfigurację programu SQL Server szyfrowania do użycia z usługą Azure Key Vault. W tym temacie opisano sposób integracji magazynu kluczy Azure za pomocą programu SQL Server maszyn wirtualnych utworzonych za pomocą Menedżera zasobów."
+description: Dowiedz się, jak zautomatyzować konfigurację programu SQL Server szyfrowania do użycia z usługą Azure Key Vault. W tym temacie opisano sposób integracji magazynu kluczy Azure za pomocą programu SQL Server maszyn wirtualnych utworzonych za pomocą Menedżera zasobów.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: cd66dfb1-0e9b-4fb0-a471-9deaf4ab4ab8
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/23/2017
 ms.author: jroth
-ms.openlocfilehash: 2d24bb839368b4f7fff61f0696c79a00c03af917
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7df0bc4b74694baa6b1c8a30d0c126b248e51168
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurowanie integracji magazynu kluczy Azure dla programu SQL Server na maszynach wirtualnych Azure (Resource Manager)
 > [!div class="op_single_selector"]
@@ -55,6 +55,11 @@ W **konfigurację programu SQL Server** bloku, kliknij przycisk **Edytuj** przyc
 ![Konfigurowanie integracja SQL dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
 
 Gdy skończysz, kliknij przycisk **OK** przycisk w dolnej części **konfigurację programu SQL Server** bloku, aby zapisać zmiany.
+
+> [!NOTE]
+> Nazwa poświadczenia, tworzone w tym miejscu zostaną zmapowane do logowania SQL później. Dzięki temu logowania SQL można uzyskać dostępu do magazynu kluczy. 
+>
+>
 
 > [!NOTE]
 > Można również skonfigurować integracja przy użyciu szablonu. Aby uzyskać więcej informacji, zobacz [szablonu Azure Szybki Start dla usługi Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).

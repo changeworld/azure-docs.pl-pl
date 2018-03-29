@@ -1,28 +1,28 @@
 ---
-title: "Omówienie tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano tablicy wirtualnego StorSimple, zintegrowane pamięci masowej zarządzanego zadań magazynu między lokalnymi tablicy wirtualnych i magazynu w chmurze Microsoft Azure."
+title: Omówienie tablicy wirtualne Microsoft Azure StorSimple | Dokumentacja firmy Microsoft
+description: W tym artykule opisano tablicy wirtualnego StorSimple, zintegrowane pamięci masowej zarządzanego zadań magazynu między lokalnymi tablicy wirtualnych i magazynu w chmurze Microsoft Azure.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/16/2017
+ms.date: 03/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b9a5797751fa970c569c93e5efe300d4d74319ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Wprowadzenie do tablicy wirtualnego StorSimple
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Tablicy wirtualne Microsoft Azure StorSimple to rozwiązanie zintegrowanego magazynu zarządzanego zadań magazynu między lokalnymi tablicy wirtualny działający w funkcji hypervisor i magazynu w chmurze Microsoft Azure. Tablica wirtualnego jest serwera plików wydajne, ekonomiczne i łatwe do zarządzania lub rozwiązania z serwerem iSCSI, która eliminuje wiele problemów i koszty związane z ochroną magazyn i dane przedsiębiorstwa. Tablica wirtualnego jest szczególnie dobrze nadaje się do przechowywania rzadziej używanych danych archiwalnych.
 
@@ -36,7 +36,7 @@ Tablica wirtualny obsługuje protokołu bloku komunikatów serwera (SMB) lub iSC
 
 W poniższej tabeli przedstawiono ważne funkcje tablicy wirtualne StorSimple.
 
-| Funkcja | Macierz wirtualna usługi StorSimple |
+| Cecha | Macierz wirtualna usługi StorSimple |
 | --- | --- |
 | Wymagania dotyczące instalacji |Używa infrastruktury wirtualizacji (funkcja Hyper-V lub programu VMware) |
 | Dostępność |Jeden węzeł |
@@ -61,7 +61,7 @@ Użytkownicy i serwery do magazynu Azure StorSimple łączy w minutach, bez żad
 
 W poniższej tabeli opisano niektóre kluczowe korzyści, które rozwiązanie StorSimple tablicy wirtualnych zapewnia.
 
-| Funkcja | Korzyść |
+| Cecha | Korzyść |
 | --- | --- |
 | Integracja przezroczyste |Tablica wirtualny obsługuje protokołu SMB lub iSCSI. Przenoszenie danych między lokalnym warstwy i warstwy chmury jest łatwego i niezauważalne dla użytkownika. |
 | Magazyn zmniejszenie kosztów |StorSimple należy zapewnić obsługę administracyjną wystarczającej ilości miejsca lokalnego do zaspokojenia potrzeb bieżącego najczęściej używanych gorących danych. Potrzeb magazynu powiększania, StorSimple warstw zimnych danych do ekonomicznego chmury magazynu. Dane są deduplikowane, a skompresowane przed wysłaniem do chmury w celu dalszego ograniczenia wymagania dotyczące magazynu i kosztów. |
@@ -75,8 +75,8 @@ Podsumowanie obsługiwanych obciążeniach StorSimple jest przedstawione w poni�
 
 |Scenariusz     |Obciążenie     |Obsługiwane      |Ograniczenia               |
 |-------------|-------------|---------------|---------------------------|
-|ROBO  |Udostępnianie plików     |Tak      |Zobacz [maksymalnych dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
-|Archiwizowanie w chmurze  |Udostępnianie plików archiwizacji     |Tak      |Zobacz [maksymalnych dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
+|ROBO  |Udostępnianie plików     |Yes      |Zobacz [maksymalnych dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
+|Archiwizowanie w chmurze  |Udostępnianie plików archiwizacji     |Yes      |Zobacz [maksymalnych dla serwera plików](storsimple-ova-limits.md).<br></br>Zobacz [wymagania systemowe dotyczące obsługiwanych wersji protokołu SMB](storsimple-ova-system-requirements.md).| Wszystkie wersje     |
 
 Tablica wirtualne StorSimple jest najbardziej odpowiednie dla rzadziej używanych danych. Podczas wirtualnego tablicy ma lokalnej pamięci podręcznej w celu zwiększania wydajności, użytkowników powinny założono, że urządzenie usług plików w najniższej warstwy magazynu (w chmurze). Każdy wirtualny tablicy można zapisu i odczytu do magazynu Azure około 100 MB/s. Łącze jest współużytkowana przez wszystkie żądania do urządzenia i może stać się wąskiego gardła, jak pokazano na poniższym diagramie.
 
@@ -136,7 +136,7 @@ Wirtualne tablica zawiera następujące funkcje:
 > [!NOTE]
 > Nie można rozwijać wirtualnego tablicy. W związku z tym należy udostępnić odpowiednie magazynu podczas tworzenia wirtualnej tablicy.
 
-### <a name="storsimple-device-manager-service"></a>Usługa menedżera urządzenia StorSimple
+### <a name="storsimple-device-manager-service"></a>Usługa menedżera urządzeń StorSimple
 
 Microsoft Azure StorSimple udostępnia interfejs użytkownika sieci web, usługi Menedżera urządzeń StorSimple, która umożliwia centralne zarządzanie magazynu StorSimple. Usługę Menedżer StorSimple urządzenia umożliwia wykonywanie następujących zadań:
 
@@ -206,6 +206,15 @@ StorSimple używa kompresji danych i deduplikacji w celu dalszego ograniczenia w
 
 Funkcje ochrony danych StorSimple pozwalają na tworzenie kopii zapasowych na żądanie. Ponadto domyślny harmonogram tworzenia kopii zapasowej zapewnia, że jest wykonywana kopia zapasowa codziennie danych. Kopie zapasowe są pobierane w postaci migawki przyrostowe, które są przechowywane w chmurze. Migawki, w których rejestrowane tylko zmiany od ostatniej kopii zapasowej, można tworzyć i szybko przywrócić. Te migawki może być bardzo ważny w scenariuszach odzyskiwania po awarii, ponieważ zastąpić systemy dodatkowej magazynu (na przykład kopii zapasowej na taśmie) i umożliwiają przywrócenie danych do centrum danych lub alternatywnej witryn, w razie potrzeby.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="gdpr-compliance"></a>GDPR zgodności
+[Rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) jest prawo ochrona i prywatność danych Unii Europejskiej (UE). GDPR zawiera wiele wymagań dotyczących sposobu zbierania, przechowywania i Użyj informacji osobistych. Reguły GDPR nakłada się na firm, agencji rządowych i innych organizacji, które działają w UE i zbierać, Analizuj dane powiązane mieszkańców Unii Europejskiej.
+
+Menedżer urządzeń StorSimple serii wirtualnego jest GDPR zgodne. Istnieją dwa wystąpienia klucza, gdzie informacje osobiste są zbierane i wyświetlane w usłudze:
+ - Alert, gdy adresy e-mail użytkowników są skonfigurowane ustawienia użytkownika. Te informacje można wyczyścić przez administratora. 
+ - Użytkownicy, którzy mają dostęp do danych znajdujących się w akcji. Listę użytkowników, którzy mogą uzyskiwać dostęp do danych udziałów jest wyświetlana i mogą być eksportowane. Ta lista również zostanie usunięta po usunięciu akcji.
+
+Aby uzyskać więcej informacji, przejrzyj [zasad Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter).
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak [przygotowanie portalu wirtualnego tablicy](storsimple-virtual-array-deploy1-portal-prep.md).

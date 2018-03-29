@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e203787bffa80b324508f7df8f8e7a8c62355695
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Często zadawane pytania dotyczące usługi pliki Azure
 [Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (znanej także jako Common Internet File System, lub CIFS). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
@@ -232,7 +232,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak wykonywanie kopii zapasowych pliku Azure udostępnić?**  
-    Można użyć okresowe [udostępnić migawki](storage-how-to-use-files-snapshots.md) ochrony przed przypadkowym usunięciu. Ponadto można AzCopy, Robocopy lub narzędzie kopii zapasowych innych firm, które można wykonać kopię zapasową udziału zainstalowanego pliku. 
+    Można użyć okresowe [udostępnić migawki](storage-snapshots-files.md) ochrony przed przypadkowym usunięciu. Ponadto można AzCopy, Robocopy lub narzędzie kopii zapasowych innych firm, które można wykonać kopię zapasową udziału zainstalowanego pliku. 
 
 ## <a name="share-snapshots"></a>Udostępnianie migawki
 ### <a name="share-snapshots-general"></a>Udostępnianie migawki: Ogólne

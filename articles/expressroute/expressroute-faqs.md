@@ -1,24 +1,24 @@
 ---
-title: "Usługa Azure ExpressRoute — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania usługi ExpressRoute zawiera informacje o obsługiwanych usług Azure, kosztów, danych i połączeń, umowy SLA, dostawców i lokalizacje, przepustowości i dodatkowe szczegóły techniczne."
+title: Usługa Azure ExpressRoute — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania usługi ExpressRoute zawiera informacje o obsługiwanych usług Azure, kosztów, danych i połączeń, umowy SLA, dostawców i lokalizacje, przepustowości i dodatkowe szczegóły techniczne.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 62e532f3750adf8f4defe3e8f8aabe5b9f0446a0
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 3f33703ec86f131d18c89cf4b29514c5002349d1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -340,7 +340,10 @@ Zobacz [ExpressRoute partnerów i lokalizacje](expressroute-locations.md) inform
 
 ### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>Można uzyskać dostęp do usługi Office 365 przez Internet, nawet jeśli ExpressRoute został skonfigurowany dla mojej organizacji?
 
-Tak. Punkty końcowe usługi Office 365 są dostępne za pośrednictwem Internetu, nawet jeśli skonfigurowano usługi ExpressRoute w sieci. Jeśli w lokalizacji, która jest skonfigurowana do nawiązania połączenia usługi Office 365 za pomocą usługi ExpressRoute, będzie łączyć się za pośrednictwem usługi ExpressRoute.
+Tak. Punkty końcowe usługi Office 365 są dostępne za pośrednictwem Internetu, nawet jeśli skonfigurowano usługi ExpressRoute w sieci. Sprawdź, czy z zespołem sieci organizacji skonfigurowanie sieci w danej lokalizacji do nawiązania połączenia usługi Office 365 za pomocą usługi ExpressRoute.
+
+### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Można planie wysokiej dostępności dla ruchu sieciowego usługi Office 365 na platformie Azure ExpressRoute?
+Zobacz zalecenia dotyczące [wysokiej dostępności i pracy awaryjnej z Azure ExpressRoute](https://aka.ms/erhighavailability)
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Można uzyskać dostęp do usług Office 365 instytucji rządowych Stanów Zjednoczonych społeczności (GCC) za pośrednictwem usługi Azure instytucji rządowych USA obwodu usługi ExpressRoute?
 

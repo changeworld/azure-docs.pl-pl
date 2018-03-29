@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 33e0d1d54a533d68ac08f223e1a41e65c7b301a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kodery-dekodery kompresji w fabryce danych Azure
 
@@ -444,6 +444,30 @@ Pamiętaj o następujących kwestiach:
 * Złożone typy danych nie są obsługiwane (struktura, mapa, lista, unia)
 * Plik ORC ma trzy [opcje związane z kompresją](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku ORC usługa Data Factory wybiera natomiast opcję ZLIB, która jest domyślna dla formatu ORC. Obecnie nie ma możliwości zastąpienia tego zachowania.
 
+### <a name="data-type-mapping-for-orc-files"></a>Mapowanie plików ORC typu danych
+
+| Typ danych tymczasowych fabryki danych | Typy ORC |
+|:--- |:--- |
+| Wartość logiczna | Wartość logiczna |
+| Sbyte — | Bajtów |
+| Bajtów | Krótkie |
+| Int16 | Krótkie |
+| UInt16 | Int |
+| Int32 | Int |
+| UInt32 | Długie |
+| Int64 | Długie |
+| UInt64 | Ciąg |
+| Kawaler/panna | Float |
+| Podwójnej precyzji | Podwójnej precyzji |
+| Decimal | Decimal |
+| Ciąg | Ciąg |
+| DateTime | Sygnatura czasowa |
+| DateTimeOffset | Sygnatura czasowa |
+| TimeSpan | Sygnatura czasowa |
+| ByteArray | Binarny |
+| Identyfikator GUID | Ciąg |
+| char | Char(1) |
+
 ## <a name="parquet-format"></a>Parquet format
 
 Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na wartość **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
@@ -463,6 +487,31 @@ Pamiętaj o następujących kwestiach:
 
 * Złożone typy danych nie są obsługiwane (mapa, lista)
 * Plik Parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
+
+### <a name="data-type-mapping-for-parquet-files"></a>Mapowanie plików Parquet typu danych
+
+| Typ danych tymczasowych fabryki danych | Typ pierwotny parquet | Oryginalny typ parquet (deserializacji) | Oryginalny typ parquet (serializować) |
+|:--- |:--- |:--- |:--- |
+| Wartość logiczna | Wartość logiczna | ND | ND |
+| Sbyte — | Int32 | Int8 | Int8 |
+| Bajtów | Int32 | UInt8 | Int16 |
+| Int16 | Int32 | Int16 | Int16 |
+| UInt16 | Int32 | UInt16 | Int32 |
+| Int32 | Int32 | Int32 | Int32 |
+| UInt32 | Int64 | UInt32 | Int64 |
+| Int64 | Int64 | Int64 | Int64 |
+| UInt64 | Int64/danych binarnych | UInt64 | Decimal |
+| Kawaler/panna | Float | ND | ND |
+| Podwójnej precyzji | Podwójnej precyzji | ND | ND |
+| Decimal | Binarny | Decimal | Decimal |
+| Ciąg | Binarny | Utf8 | Utf8 |
+| DateTime | Int96 | ND | ND |
+| TimeSpan | Int96 | ND | ND |
+| DateTimeOffset | Int96 | ND | ND |
+| ByteArray | Binarny | ND | ND |
+| Identyfikator GUID | Binarny | Utf8 | Utf8 |
+| char | Binarny | Utf8 | Utf8 |
+| CharArray | Nieobsługiwane | ND | ND |
 
 ## <a name="compression-support"></a>Obsługa kompresji
 

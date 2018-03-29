@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5aae5057cccdf8dfbe2a42a39da5b9e70b9166f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorowanie i zarządzanie nimi potoki fabryki danych Azure przy użyciu aplikacji monitorowanie i zarządzanie
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [monitorować i zarządzać nimi potoki fabryki danych w wersji 2](../monitor-visually.md).
 
-W tym artykule opisano sposób użycia aplikacji zarządzania i monitorowania do monitorowania, zarządzania i debugowania potoki z fabryki danych. Zawiera również informacje dotyczące sposobu tworzenia alerty, Otrzymuj powiadomienia dotyczące niepowodzeń. Możesz rozpocząć pracę z przy użyciu aplikacji od obejrzenia poniższego klipu wideo:
+W tym artykule opisano sposób użycia aplikacji zarządzania i monitorowania do monitorowania, zarządzania i debugowania potoki z fabryki danych. Możesz rozpocząć pracę z przy użyciu aplikacji od obejrzenia poniższego klipu wideo:
 
 > [!NOTE]
 > Interfejs użytkownika pokazano wideo może nie pasować zobaczyć w portalu. Jest nieco starszy, ale pojęcia pozostają takie same. 
@@ -296,42 +296,3 @@ Można również wybrać wiele okien działania na liście i uruchom je ponownie
 Możesz multiselect potoki dwóch lub więcej za pomocą klawisza Ctrl. Przyciski paska poleceń (które są wyróżnione kolorem czerwonym prostokątem na poniższej ilustracji) służy do wstrzymanie/wznowienie je.
 
 ![Wstrzymanie/wznowienie na pasku poleceń](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
-
-## <a name="create-alerts"></a>Tworzenie alertów
-**Alerty** strony pozwala na tworzenie alertów i wyświetlanie/edytowanie/usuwanie istniejące alerty. Użytkownik może również Włącz/Wyłącz alert. Aby wyświetlić stronę alertów, kliknij przycisk **alerty** kartę.
-
-![Karta alerty](./media/data-factory-monitor-manage-app/AlertsTab.png)
-
-### <a name="to-create-an-alert"></a>Aby utworzyć alert
-1. Kliknij przycisk **dodać Alert** można dodać alert. Zostanie wyświetlony **szczegóły** strony.
-
-    ![Utwórz alerty — strona szczegółów](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-2. Określ **nazwa** i **opis** alert, a następnie kliknij przycisk **dalej**. Powinny pojawić się **filtry** strony.
-
-    ![Utwórz alerty — filtry strony](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
-3. Wybierz **zdarzeń**, **stan**, i **podstanu** (opcjonalnie) mają Utwórz alert usługi fabryka danych dla, a następnie kliknij przycisk **dalej**. Powinny pojawić się **adresatów** strony.
-
-    ![Utwórz alerty — strona adresatów](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
-4. Wybierz **poczty E-mail Administratorzy subskrypcji** opcji lub wprowadź **e-mail administratora dodatkowe**i kliknij przycisk **Zakończ**. Powinien zostać wyświetlony alert na liście.
-
-    ![Lista alertów](./media/data-factory-monitor-manage-app/AlertsList.png)
-
-Na liście alertów użyj przycisków, które są skojarzone z alertem do edycji/delete/Włącz/Wyłącz alert.
-
-### <a name="eventstatussubstatus"></a>Podstan zdarzeń/stanu
-Poniższa tabela zawiera listę dostępnych zdarzeń oraz Stany (i podstany).
-
-| Nazwa zdarzenia | Stan | Podstan |
-| --- | --- | --- |
-| Działanie Uruchom wprowadzenie |Uruchomiono |Uruchamianie |
-| Działanie Uruchom Zakończono |Powodzenie |Powodzenie |
-| Działanie Uruchom Zakończono |Niepowodzenie |Alokacja zasobów nie powiodło się<br/><br/>Wykonanie nie powiodło się<br/><br/>Przekroczenie limitu czasu<br/><br/>Sprawdzanie poprawności nie powiodło się<br/><br/>porzucone |
-| Rozpoczęto tworzenie klastra HDI na żądanie |Uruchomiono |-|
-| Pomyślnie utworzono klaster HDI na żądanie |Powodzenie |-|
-| Usunąć klaster HDI na żądanie |Powodzenie |-|
-
-### <a name="to-edit-delete-or-disable-an-alert"></a>Aby edytować, usunąć lub wyłączyć alertu
-
-Użyj przycisków następujące (wyróżnionych kolorem czerwonym), aby edytować, usuwać lub Wyłącz alert.
-
-![Przyciski alertów](./media/data-factory-monitor-manage-app/AlertButtons.png)

@@ -1,8 +1,8 @@
 ---
-title: "Najlepsze rozwiązania dotyczące zabezpieczania dostępu administracyjnego w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "Upewnij się, że w organizacji administrator i dostępu do konta z uprawnieniami administracyjnymi są bezpieczne. Dla architektów systemów i specjalistów IT, którzy Konfigurowanie usługi Azure AD Azure i usługi Online firmy Microsoft."
+title: Najlepsze rozwiązania dotyczące zabezpieczania dostępu administracyjnego w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: Upewnij się, że w organizacji administrator i dostępu do konta z uprawnieniami administracyjnymi są bezpieczne. Dla architektów systemów i specjalistów IT, którzy Konfigurowanie usługi Azure AD Azure i usługi Online firmy Microsoft.
 services: active-directory
-keywords: 
+keywords: ''
 author: curtand
 ms.author: curtand
 ms.date: 03/09/2018
@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 166171dc8d8d694ef253ed6809c53b54577535e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu w przypadku wdrożeń hybrydowymi i w chmurze w usłudze Azure AD
 
@@ -156,7 +156,7 @@ Upewnij się, że wszyscy użytkownicy zalogowaniem się do swojego konta z upra
 
 #### <a name="turn-on-password-synchronization"></a>Włączanie synchronizacji haseł
 
-Synchronizacja haseł to funkcja używane do synchronizowania skrótów skrótów haseł użytkowników z lokalnego wystąpienia usługi Active Directory na platformie Azure opartej na chmurze wystąpienia usługi AD. Nawet jeśli zdecydujesz się używać federacyjnego z usługi Active Directory Federation Services (AD FS) lub innych dostawców tożsamości, możesz opcjonalnie skonfigurować synchronizacji haseł na nazwę kopii zapasowej w przypadku infrastruktury lokalnej, takich jak usługi AD lub serwerów usług ADFS nie powieść lub staje się tymczasowo niedostępna. Dzięki temu użytkownicy mogą logować się do usługi przy użyciu tego samego hasła, używanego do logowania się w ich lokalnym wystąpieniem usługi AD. Ponadto umożliwia ochronę tożsamości do wykrywania przejęcie poświadczeń przez porównanie tych skrótów haseł z hasłami znane naruszenia, jeśli użytkownik ma wykorzystać ich tego samego adresu e-mail i hasło na inne usługi nie jest połączony z usługą Azure AD.  Aby uzyskać więcej informacji, zobacz [Implementowanie synchronizacji haseł z synchronizacji Azure AD Connect](./connect/active-directory-aadconnectsync-implement-password-synchronization.md).
+Synchronizacja haseł to funkcja używane do synchronizowania skrótów skrótów haseł użytkowników z lokalnego wystąpienia usługi Active Directory na platformie Azure opartej na chmurze wystąpienia usługi AD. Nawet jeśli zdecydujesz się używać federacyjnego z usługi Active Directory Federation Services (AD FS) lub innych dostawców tożsamości, możesz opcjonalnie skonfigurować synchronizacji haseł na nazwę kopii zapasowej w przypadku infrastruktury lokalnej, takich jak usługi AD lub serwerów usług ADFS nie powieść lub staje się tymczasowo niedostępna. Dzięki temu użytkownicy mogą logować się do usługi przy użyciu tego samego hasła, używanego do logowania się w ich lokalnym wystąpieniem usługi AD. Ponadto umożliwia ochronę tożsamości do wykrywania przejęcie poświadczeń przez porównanie tych skrótów haseł z hasłami znane naruszenia, jeśli użytkownik ma wykorzystać ich tego samego adresu e-mail i hasło na inne usługi nie jest połączony z usługą Azure AD.  Aby uzyskać więcej informacji, zobacz [Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Wymagane uwierzytelnianie wieloskładnikowe (MFA) dla użytkowników w wszystkich ról uprzywilejowanych, a także narażonych użytkowników
 

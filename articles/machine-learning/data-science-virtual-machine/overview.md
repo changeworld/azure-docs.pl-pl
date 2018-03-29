@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: f62f6c4b2679457e8aaddb81e8a37622ca878ffc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8ee4af162ddaa64d4dbe83bebbb93e22409f041d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Wprowadzenie do maszyny wirtualnej nauki danych platformy Azure dla systemów Linux i Windows
 
@@ -29,7 +29,7 @@ W tym temacie opisano, co można zrobić z maszyną Wirtualną analizy danych, o
 
 
 ## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>Co można zrobić z maszyny wirtualnej nauki danych?
-Celem maszyny wirtualnej nauki danych jest zapewnienie specjalistów danych na wszystkich poziomach umiejętności oraz role ze środowiskiem nauki tarcia dane. Ta maszyna wirtualna jest zapisywany wiele czasu, który poświęcić Jeśli samodzielnie miał wdrażana środowisku można porównywać pod względem. Zamiast tego uruchomić projektu nauki danych bezpośrednio w nowo utworzone wystąpienie maszyny Wirtualnej. 
+Celem z maszyny wirtualnej nauki danych (DSVM) jest zapewnienie specjalistów danych na wszystkich poziomach umiejętności i we wszystkich rolach środowiska nauki danych bez tarcia, wstępnie skonfigurowane i pełni zintegrowana z. Zamiast zetknie porównywalne obszaru roboczego na własną, można udostępnić DSVM — dni lub nawet co pozwala zaoszczędzić _tygodni_ w instalacji, konfiguracji i procesów zarządzania pakietu. Po przydzieleniu DSVM Twojego można natychmiast rozpocząć pracę nad projektem analizy danych.
 
 Maszyna wirtualna nauki danych został zaprojektowany i skonfigurowane do pracy z szeroką gamę scenariusze użycia. Środowiska można skalować w górę lub w dół zgodnie z projektu zmieniających się potrzeb. Mogą używać preferowany język do zadania analizy danych program. Można zainstalować inne narzędzia i Dostosuj system na potrzeby użytkowników.
 

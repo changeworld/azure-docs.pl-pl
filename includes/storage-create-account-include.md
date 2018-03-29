@@ -10,7 +10,7 @@ ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: 544c40d65e84a3bef1a4e933b4d8cf72cfc88d59
 ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/28/2018
 ---

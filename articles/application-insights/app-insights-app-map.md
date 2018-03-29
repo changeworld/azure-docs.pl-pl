@@ -1,8 +1,8 @@
 ---
-title: "Mapowanie aplikacji w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Monitorowanie topologii złożonych aplikacji z planem aplikacji"
+title: Mapowanie aplikacji w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Monitorowanie topologii złożonych aplikacji z planem aplikacji
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapowanie aplikacji: Aplikacje rozproszone klasyfikowanie
 Mapowanie aplikacji ułatwia wąskich gardeł wydajności dodatkowych lub błąd hotspotami dotyczące wszystkich składników aplikacji rozproszonej. Każdy węzeł na mapie reprezentuje składnika aplikacji lub jego zależności; ma kondycji kluczowy wskaźnik wydajności i alerty stanu. Możesz kliknąć za pośrednictwem z każdego składnika, do bardziej szczegółowych diagnostyki, takich jak zdarzenia usługi Application Insights. Jeśli aplikacja korzysta z usług Azure, możesz również kliknąć za pośrednictwem do diagnostyki Azure, takich jak zalecenia doradcy bazy danych SQL.
@@ -37,7 +37,7 @@ Włącz "Złożonych aplikacji mapy" z [listy wersji zapoznawczych](app-insights
 ![Włącz podgląd mapy](media/app-insights-app-map/preview-from-classic.png)
 
 >[!Note]
-Ta wersja zapoznawcza zastępuje wcześniejszych wersji zapoznawczej "mapowanie iloczyn roli aplikacji". W tej chwili służy do wyświetlenia całego topologii na wielu poziomach zależności składnika aplikacji. Prześlij nam opinię, dodamy więcej funkcje podobne do obsługuje klasyczny mapy.
+Ta wersja zapoznawcza zastępuje wcześniejszych wersji zapoznawczej "Mapowanie wielu roli aplikacji". W tej chwili służy do wyświetlenia całego topologii na wielu poziomach zależności składnika aplikacji. Prześlij nam opinię, dodamy więcej funkcje podobne do obsługuje klasyczny mapy.
 
 Topologia pełnej aplikacji jest widoczny na wielu poziomach składników aplikacji powiązanych. Składniki wynikać z różnych zasobów usługi Application Insights lub różnych ról w pojedynczym zasobie. Mapa aplikacji znajduje składniki według następujących wywołania zależności HTTP między serwerami z zestawem SDK Insights aplikacji, które zostały zainstalowane. 
 
@@ -142,4 +142,4 @@ Prześlij opinię za pośrednictwem portalu opinie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Azure portal](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)

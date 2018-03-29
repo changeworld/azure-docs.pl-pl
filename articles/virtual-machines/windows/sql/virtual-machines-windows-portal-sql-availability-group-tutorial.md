@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności w maszynie Wirtualnej platformy Azure ręcznie
 
@@ -374,22 +374,14 @@ Aby skonfigurować usługę równoważenia obciążenia, musisz utworzyć puli w
 
    ![Znajdź moduł równoważenia obciążenia w grupie zasobów](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. Kliknij usługę równoważenia obciążenia, kliknij przycisk **pul zaplecza**i kliknij przycisk **+ Dodaj**. Ustaw puli zaplecza w następujący sposób:
+1. Kliknij usługę równoważenia obciążenia, kliknij przycisk **pul zaplecza**i kliknij przycisk **+ Dodaj**. 
 
-   | Ustawienie | Opis | Przykład
-   | --- | --- |---
-   | **Nazwa** | Wpisz nazwę tekstu | SQLLBBE
-   | **Skojarzony z** | Wybierz z listy | Zestaw dostępności
-   | **Zestaw dostępności** | Użyj nazwy maszyn wirtualnych programu SQL Server znajdują się w zestawie dostępności | sqlAvailabilitySet |
-   | **Maszyny wirtualne** |Obie nazwy maszyny Wirtualnej Azure SQL Server | sqlserver-0, sqlserver-1
+1. Skojarz puli wewnętrznej bazy danych z zestawu dostępności, która zawiera maszyn wirtualnych.
 
-1. Wpisz nazwę puli zaplecza.
+1. W obszarze **Target konfiguracje adresów IP sieci**, sprawdź **maszyny WIRTUALNEJ** i obie maszyny wirtualne, które będą obsługiwać repliki grupy dostępności. Nie dołączaj serwera monitora udziału plików.
 
-1. Kliknij przycisk **+ Dodaj maszynę wirtualną**.
-
-1. Dla zestawu dostępności wybierz zestawu dostępności serwerów SQL znajdują się w.
-
-1. W przypadku maszyn wirtualnych zawiera zarówno serwerów SQL. Nie dołączaj serwera monitora udziału plików.
+   >[!NOTE]
+   >Jeśli obie maszyny wirtualne nie są określone, połączenia powiedzie się tylko do repliki podstawowej.
 
 1. Kliknij przycisk **OK** do utworzenia puli wewnętrznej bazy danych.
 

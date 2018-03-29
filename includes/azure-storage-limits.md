@@ -4,9 +4,9 @@
 | Maksymalna pojemność konta | 500 TiB<sup>2</sup> |
 | Maksymalna liczba kontenerów obiektów blob, obiekty BLOB, udziałów plików, tabel, kolejek, jednostki lub wiadomości dla konta magazynu | Bez ograniczeń |
 | Żądanie maksymalną szybkością konta magazynu | 20 000 żądań na sekundę<sup>2</sup> |
-| Maksymalna liczba wejściowych<sup>3</sup> na konto magazynu (nam regiony) | 10 GB/s Jeśli GRS/ZRS<sup>4</sup> włączone, 20 GB/s dla LRS<sup>2</sup> |
+| Maksymalna liczba wejściowych<sup>3</sup> na konto magazynu (nam regiony) | 10 GB/s Jeśli RA-GRS/ZRS<sup>4</sup> włączone, 20 GB/s dla LRS<sup>2</sup> |
 | Maksymalna liczba wyjście<sup>3</sup> na konto magazynu (nam regiony) | 20 GB, jeśli RA-GRS/GRS/ZRS<sup>4</sup> włączone 30 GB/s dla LRS<sup>2</sup> |
-| Maksymalna liczba wejściowych<sup>3</sup> na konto magazynu (regiony Non-US) | 5 GB/s Jeśli GRS/ZRS<sup>4</sup> włączone 10 GB/s dla LRS<sup>2</sup> |
+| Maksymalna liczba wejściowych<sup>3</sup> na konto magazynu (regiony Non-US) | 5 GB/s Jeśli RA-GRS/ZRS<sup>4</sup> włączone 10 GB/s dla LRS<sup>2</sup> |
 | Maksymalna liczba wyjście<sup>3</sup> na konto magazynu (regiony Non-US) | 10 GB/s Jeśli RA-GRS/GRS/ZRS<sup>4</sup> włączone, 15 GB/s dla LRS<sup>2</sup> |
 
 <sup>1</sup>obejmuje zarówno standardowa i Premium konta magazynu. Jeśli potrzebujesz więcej niż 200 kont magazynu, wyślij żądanie za pośrednictwem [Pomocy technicznej platformy Azure](https://azure.microsoft.com/support/faq/). Zespół usługi Azure Storage przejrzy Twój przypadek biznesowy i może zatwierdzić do 250 kont magazynu. 

@@ -1,6 +1,6 @@
 ---
-title: "Omówienie wewnętrzny moduł równoważenia obciążenia Azure | Dokumentacja firmy Microsoft"
-description: "Jak wewnętrznego modułu równoważenia obciążenia działa w Azure i scenariuszy dotyczących konfigurowania wewnętrznych punktów końcowych."
+title: Omówienie wewnętrzny moduł równoważenia obciążenia Azure | Dokumentacja firmy Microsoft
+description: Jak wewnętrznego modułu równoważenia obciążenia działa w Azure i scenariuszy dotyczących konfigurowania wewnętrznych punktów końcowych.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 54e390dbdb07cb4c45c801b638099aa0dcc6db1a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 0511165225f5a336291e86e0c504e60989933f3c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-azure-internal-load-balancer"></a>Omówienie usługi Azure wewnętrznego modułu równoważenia obciążenia
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Azure usługi równoważenia obciążenia wewnętrznego (ILB) tylko kieruje ruch do zasobów, które znajdują się wewnątrz usługi w chmurze lub z sieci VPN uzyskiwać dostęp do infrastruktury platformy Azure. W związku z tym ILB różni się od modułu równoważenia obciążenia skierowane do Internetu. Infrastruktury platformy Azure ogranicza dostęp do równoważenia obciążenia wirtualne adresy IP (VIP) usługi w chmurze lub sieci wirtualnej. Adresy VIP i sieci wirtualne są nigdy nie bezpośrednio widoczne dla punktu końcowego internet. Wewnętrznych aplikacji biznesowych — Uruchom na platformie Azure i są dostępne z platformy Azure lub z lokalnymi zasobami.
 
@@ -74,7 +74,7 @@ Inny scenariusz dla aplikacji biznesowych z jest siecią wirtualną, której sko
 
 Wewnętrzny moduł równoważenia obciążenia konfiguracje nie obsługują SNAT. W tym artykule SNAT odwołuje się do scenariusze obejmujące maskaradę portu translatora adresów sieciowych źródła. Adres IP frontonu modułu równoważenia obciążenia wewnętrznego odpowiednich maszyn wirtualnych w puli usługi równoważenia obciążenia muszą być dostarczone. Po przepływ równoważeniem obciążenia do maszyny Wirtualnej, które powstały przepływ wystąpią jakieś awarie połączenia. Te scenariusze nie są obsługiwane dla ILB. Zamiast tego należy użyć modułu równoważenia obciążenia serwera proxy stylu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Pomocy technicznej platformy Azure Resource Manager dla usługi równoważenia obciążenia Azure](load-balancer-arm.md)
 * [Wprowadzenie do konfigurowania usługi równoważenia obciążenia połączonych z Internetem](load-balancer-get-started-internet-arm-ps.md)

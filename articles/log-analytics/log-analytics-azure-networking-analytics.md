@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: richrund
-ms.openlocfilehash: 17dadd784d59a2cc0cab6ffbae144010f896b296
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sieć platformy Azure monitorowanie rozwiązań w analizy dzienników
 
@@ -28,18 +28,19 @@ Analiza dzienników oferuje następujące rozwiązania do monitorowania sieci:
 * Azure analytics bramy aplikacji, aby przejrzeć
  * Dzienniki bramy aplikacji Azure
  * Azure metryki bramy aplikacji
-* Analiza Azure sieciowej grupy zabezpieczeń do przeglądania
- * Dzienniki grupy zabezpieczeń sieci platformy Azure
+* Rozwiązania do monitorowania i inspekcji sieci działania w sieci w chmurze
+* [Analiza ruchu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+* Grupy zabezpieczeń sieci Azure analityka
 
 ## <a name="network-performance-monitor-npm"></a>Monitor wydajności sieci (NPM)
 
-[Monitora wydajności sieci](log-analytics-network-performance-monitor.md) rozwiązanie do zarządzania jest rozwiązania, który monitoruje kondycję, dostępności i uzyskiwanie sieci do monitorowania sieci.  Służy do monitorowania łączność między:
+[Monitora wydajności sieci](https://docs.microsoft.com/azure/networking/network-monitoring-overview) rozwiązanie do zarządzania jest rozwiązania, który monitoruje kondycję, dostępności i uzyskiwanie sieci do monitorowania sieci.  Służy do monitorowania łączność między:
 
 * Chmura publiczna i lokalnych
 * centra danych i lokalizacje użytkownika (biurach oddziałów)
 * podsieci hosting różnych warstw aplikacji wielowarstwowych.
 
-Aby uzyskać więcej informacji, zobacz [monitora wydajności sieci](log-analytics-network-performance-monitor.md).
+Aby uzyskać więcej informacji, zobacz [monitora wydajności sieci](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure analytics bramy aplikacji i grupy zabezpieczeń sieci
 Aby użyć rozwiązania:

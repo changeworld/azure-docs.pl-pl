@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące certyfikatów infrastruktury kluczy publicznych stosu Azure
 Azure stos nie zawiera publicznych infrastruktury sieci przy użyciu dostępne z zewnątrz publiczne adresy IP przypisane do niewielki zestaw usług Azure stosu i prawdopodobnie maszyny wirtualne dzierżawców. Certyfikaty PKI z odpowiedniej nazwy DNS dla tych punktów końcowych infrastruktury publicznych stosu Azure są wymagane podczas wdrażania usługi Azure stosu. Ten artykuł zawiera informacje na temat:
@@ -34,6 +34,9 @@ Azure stos nie zawiera publicznych infrastruktury sieci przy użyciu dostępne z
 ## <a name="certificate-requirements"></a>Wymagania dotyczące certyfikatów
 Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wymagane do wdrożenia usługi Azure stosu: 
 - Certyfikaty muszą być wystawiane z wewnętrznego urzędu certyfikacji lub publicznego urzędu certyfikacji. Jeśli jest używany publiczny urząd certyfikacji, musi być uwzględniona w obrazu podstawowego systemu operacyjnego w ramach programu Microsoft zaufanego głównego urzędu. Pełną listę można znaleźć: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- Infrastruktury Azure stos musi mieć dostęp do certyfikatu urzędu certyfikacji używanego do podpisywania certyfikatów
+- Gdy obracanie certyfikatów, certyfikaty musi być albo wystawiony na podstawie tego samego certyfikatu wewnętrznego urzędu certyfikacji używanego do podpisywania certyfikatów dostępnych na wdrożenie lub dowolnego publicznego urzędu certyfikacji z powyższych
+- Korzystanie z certyfikatów z podpisem własnym nie są obsługiwane.
 - Certyfikat może być obejmujące wszystkie przestrzenie nazw w pole alternatywnej nazwy podmiotu (SAN) certyfikatu jeden symbol wieloznaczny. Alternatywnie można użyć poszczególnych certyfikatów dla punktów końcowych, takie jak usługi acs oraz gdy wymagane są usługi Key Vault za pomocą symbole wieloznaczne. 
 - Algorytm podpisu certyfikatu nie może być SHA1, muszą być silniejsze. 
 - Format certyfikatu musi być PFX, jak klucze publiczne i prywatne są wymagane do zainstalowania stosu Azure. 
@@ -42,6 +45,9 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Certyfikatu "wydany dla:" pole nie może być taka sama jak jego "wystawiony przez:" pola.
 - Hasła do wszystkich plików pfx certyfikatów muszą być takie same w czasie wdrażania
 - Upewnij się, że nazwy podmiotu i alternatywnej nazwy podmiotu wszystkie certyfikaty są zgodne ze specyfikacjami opisane w tym artykule, aby uniknąć wdrożenia nie powiodło się.
+
+> [!NOTE]
+> Samodzielna podpisana certyfikaty nie są obsługiwane.
 
 > [!NOTE]
 > Obecność pośrednik urzędy certyfikacji w IS łańcucha z zaufania certyfikatów jest obsługiwane. 

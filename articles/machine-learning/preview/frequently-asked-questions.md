@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning Podgląd 2017 — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera często zadawane pytania i odpowiedzi dla funkcji w wersji zapoznawczej usługi Azure Machine Learning"
+title: Azure Machine Learning Podgląd 2017 — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera często zadawane pytania i odpowiedzi dla funkcji w wersji zapoznawczej usługi Azure Machine Learning
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 864e9ff5551637a93b957e5011a8857072c6eaaf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Usługa Azure Machine Learning — często zadawane pytania
 
+Azure Machine Learning jest pełni zarządzaną usługę platformy Azure, która służy do tworzenia, testowania, zarządzania i wdrażania uczenia maszynowego i modele AI. Naszych usług i aplikacji do pobrania oferują podejście pierwszy kod, który korzysta z chmury, lokalne i krawędzi Podaj pociąg, wdrażania, zarządzania i monitorowania modeli z zasilania, szybkość i elastyczność. Alternatywnie Azure Machine Learning Studio oferuje przeglądarki, visual przeciągania i upuszczania tworzenia środowisko których kodowanie nie jest wymagane. 
+
 ## <a name="general-product-questions"></a>Pytania ogólne produktu
-
-**Co to jest Azure Machine Learning?**
-
-Azure Machine Learning jest pełni zarządzaną usługę platformy Azure, która służy do tworzenia, testowania, zarządzania i wdrażania uczenia maszynowego i modele AI. Naszych nowych usług i aplikacji do pobrania oferują podejście pierwszy kod, który korzysta z chmury, lokalne i krawędzi Podaj pociąg, wdrażania, zarządzania i monitorowania modeli z zasilania, szybkość i elastyczność. Alternatywnie Azure Machine Learning Studio oferuje przeglądarki, visual przeciągania i upuszczania tworzenia środowisko których kodowanie nie jest wymagane. 
-
-**W którym regiony są dostępne jest nowe usługi?**
-
-Wyszukaj obsługiwane regiony platformy Azure dla eksperymenty i model usługi zarządzania w ramach usługi Azure Machine Learning [produkty Azure według regionu](https://azure.microsoft.com/regions/services/) strony.
-
-Będzie można dodać kolejnych regionach, ponieważ opracowywania produktu.  Możesz pomóc nam priorytety regiony do wdrożenia na naszych [Azure Machine Learning opinii](https://feedback.azure.com/forums/257792-machine-learning) lokacji. 
 
 **Jakie innymi usługami platformy Azure są potrzebne?**
 

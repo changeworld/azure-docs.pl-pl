@@ -1,6 +1,6 @@
 ---
-title: "Pomocy technicznej platformy Azure Resource Manager dla usługi równoważenia obciążenia | Dokumentacja firmy Microsoft"
-description: "Przy użyciu programu powershell dla usługi równoważenia obciążenia z usługi Azure Resource Manager. Za pomocą szablonów usługi równoważenia obciążenia"
+title: Pomocy technicznej platformy Azure Resource Manager dla usługi równoważenia obciążenia | Dokumentacja firmy Microsoft
+description: Przy użyciu programu powershell dla usługi równoważenia obciążenia z usługi Azure Resource Manager. Za pomocą szablonów usługi równoważenia obciążenia
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 6ba329e55f03cf984ae795c1d3a509e196064e2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1d098f45c391363523b6a56ec0c6fdb40e64d68
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Za pomocą techniczną platformy Azure Resource Manager z usługą równoważenia obciążenia Azure
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Usługa Azure Resource Manager to struktura preferowane dla usług Azure. Moduł równoważenia obciążenia Azure mogą być zarządzane przy użyciu usługi Azure Resource Manager na podstawie interfejsów API i narzędzia.
 
@@ -65,7 +65,7 @@ Wprowadzenie do poleceń cmdlet, narzędzi wiersza polecenia i interfejsów API 
 * [Przy użyciu interfejsu wiersza polecenia platformy Azure w usłudze zarządzania zasobami Azure](../xplat-cli-azure-resource-manager.md)
 * [Interfejsy API REST usługi równoważenia obciążenia](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Możesz również [rozpocząć tworzenie internetowy modułu równoważenia obciążenia](load-balancer-get-started-internet-arm-ps.md) i skonfigurować typ [trybu rozkładu](load-balancer-distribution-mode.md) dla zachowania ruchu sieci usługi równoważenia obciążenia określonego.
 

@@ -1,8 +1,8 @@
 ---
-title: "Połączenie analiz danych z danych nauki maszyny wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Jak wykonać kilka typowych zadań nauki danych z maszyny Wirtualnej systemu Linux danych nauki."
+title: Połączenie analiz danych z danych nauki maszyny wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak wykonać kilka typowych zadań nauki danych z maszyny Wirtualnej systemu Linux danych nauki.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
-ms.author: bradsev;paulsh
-ms.openlocfilehash: 9b8a9b9bba242fd7c86dc285a77317a5821948df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: bradsev
+ms.openlocfilehash: aff0dd17baa72b3f58ed5effbedb3a4c630f22c6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Połączenie analiz danych z danych nauki maszyny wirtualnej systemu Linux na platformie Azure
 W tym przewodniku przedstawiono sposób wykonywania kilka typowych zadań nauki danych z maszyny Wirtualnej systemu Linux danych nauki. Linux danych nauki maszyny wirtualnej (DSVM) jest obrazu maszyny wirtualnej na platformie Azure, który jest wstępnie zainstalowane z kolekcją narzędzi powszechnie używany do analizy danych i uczenia maszynowego. Składniki oprogramowania są wyszczególnione w [Aprowizowanie maszyny wirtualnej systemu Linux danych nauki](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy podczas nauki danych (w minutach), bez konieczności instalowania i konfigurowania poszczególnych narzędzi pojedynczo. Można łatwo skalowanie w górę maszynę Wirtualną, jeśli to konieczne i zatrzymaj ją nieużywane. Dlatego ten zasób jest zarówno elastyczne i ekonomiczne.
@@ -473,7 +473,7 @@ Aby rozpocząć, uruchom program Squirrel SQL z menu aplikacji. Aby skonfigurowa
 Aby skonfigurować połączenie z serwerem lokalnym:
 
 * Wybierz **Windows**, następnie **wyświetlić aliasy.**
-* Wybierz  **+**  przycisk, aby nowy alias.
+* Wybierz **+** przycisk, aby nowy alias.
 * Nadaj mu nazwę *bazy danych spamu*, wybierz **PostgreSQL** w **sterownika** listy rozwijanej.
 * Ustaw adres URL *jdbc:postgresql://localhost/spam*.
 * Wprowadź użytkownika *username* i *hasło*.

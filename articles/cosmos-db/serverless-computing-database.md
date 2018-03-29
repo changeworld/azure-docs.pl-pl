@@ -1,24 +1,24 @@
 ---
-title: "Obliczanie bez serwera bazy danych — usługi Azure Functions i bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, bazy danych rozwiązania Cosmos Azure i usługi Azure Functions możliwości korzystania ze sobą do tworzenia sterowane zdarzeniami niekorzystającą przetwarzania danych aplikacji."
+title: Obliczanie bez serwera bazy danych — usługi Azure Functions i bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Dowiedz się, bazy danych rozwiązania Cosmos Azure i usługi Azure Functions możliwości korzystania ze sobą do tworzenia sterowane zdarzeniami niekorzystającą przetwarzania danych aplikacji.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 297f8929ec11b37a2cbbfb79bb442da75b4368a8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 39155a2407efa0cc13236a1bbbbcd292daac86b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure rozwiązania Cosmos bazy danych: Za pomocą usługi Azure Functions obliczeniowych bez serwera bazy danych
 
@@ -113,12 +113,16 @@ We wszystkich tych zastosowań, ponieważ funkcja jest całkowicie niezależna a
 
 ## <a name="tooling"></a>Narzędzia
 
-Natywna integracja pomiędzy usługą Azure DB rozwiązania Cosmos i funkcji platformy Azure są dostępne w portalu Azure.
+Natywna integracja pomiędzy usługą bazy danych rozwiązania Cosmos Azure i usługi Azure Functions jest dostępne w portalu Azure i programu Visual Studio 2017 r.
 * W portalu Azure Functions można utworzyć wyzwalacza bazy danych Azure rozwiązania Cosmos. Szybki Start instrukcje, zobacz [utworzyć wyzwalacza bazy danych Azure rozwiązania Cosmos w portalu Azure](https://aka.ms/cosmosdbtriggerportalfunc) ![utworzyć wyzwalacza bazy danych Azure rozwiązania Cosmos w portalu Azure Functions](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
 * W portalu Azure Functions można również dodać do innych typów wyzwalaczy powiązania wejściowe bazy danych Azure rozwiązania Cosmos i powiązania danych wyjściowych. Szybki Start instrukcje, zobacz [przechowywania danych niestrukturalnych przy użyciu usługi Azure Functions i DB rozwiązania Cosmos](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md).
     ![Utwórz wyzwalacz bazy danych Azure rozwiązania Cosmos w portalu Azure Functions](./media/serverless-computing-database/function-portal-input-binding.png)
 *   W portalu Azure DB rozwiązania Cosmos wyzwalacz bazy danych Azure rozwiązania Cosmos można dodać do istniejącej aplikacji funkcji platformy Azure w tej samej grupie zasobów.
     ![Utwórz wyzwalacz bazy danych Azure rozwiązania Cosmos w portalu Azure Functions](./media/serverless-computing-database/cosmos-db-portal.png)
+* W programie Visual Studio 2017 r można utworzyć wyzwalacza bazy danych rozwiązania Cosmos Azure przy użyciu zintegrowanego szablonu:
+
+    >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
+
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Dlaczego integracji usługi Azure Functions dla przetwarzania niekorzystającą?
 

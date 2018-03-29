@@ -14,12 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/20/2017
-ms.openlocfilehash: 17a95ab00ed7bbda85a8fba5456c758f3ee9f116
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 03/28/2018
+ms.openlocfilehash: e7fb545b985968b4d9e5a516c812cbf594352e08
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co to jest usługa Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio to narzędzie do współpracy, obsługiwane metodą „przeciągnij i upuść”, które służy do budowania, testowania i wdrażania rozwiązań z zakresu analizy predykcyjnej na podstawie posiadanych danych. Usługa Machine Learning Studio publikuje modele jako usługi sieci Web, które mogą być łatwo używane w niestandardowych aplikacjach albo narzędziach do analiz biznesowych, takich jak program Excel.
@@ -50,7 +50,7 @@ Kliknij lewe górne menu, ![Menu](./media/what-is-ml-studio/menu.png) a zostanie
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
 Kliknij pozycję **Cortana Intelligence**. Nastąpi przekierowanie na stronę główną [pakietu Cortana Intelligence](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite). Pakiet Cortana Intelligence to w pełni zarządzane rozwiązanie obsługujące dane big data i służące do przeprowadzania zaawansowanych analiz ułatwiających przekształcanie danych w inteligentne działanie. Zobacz stronę główną pakietu, aby uzyskać pełną dokumentację, w tym historie klientów.
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning
+### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 Są tu dostępne dwie opcje: **Home** (Strona główna), pierwsza wyświetlona strona, oraz **Studio**.
 
 Kliknij pozycję **Studio**, a nastąpi przekierowanie do usługi **Azure Machine Learning Studio**. Na początek pojawi się prośba o zalogowanie się z użyciem konta Microsoft albo konta służbowego. Po zalogowaniu po lewej stronie zostaną wyświetlone następujące karty:
@@ -112,6 +112,56 @@ Aby uzyskać pomoc w nawigowaniu po dużej bibliotece algorytmów uczenia maszyn
 Gdy model analizy predykcyjnej jest gotowy, można go wdrożyć jako usługę sieci Web bezpośrednio z usługi Machine Learning Studio. Dodatkowe szczegóły dotyczące tego procesu zawiera temat [Wdrażanie usługi sieci Web Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
 [ml-studio-overview]:./media/what-is-ml-studio/azure-ml-studio-diagram.jpg
+
+
+
+## <a name="key-machine-learning-terms-and-concepts"></a>Kluczowe terminy i pojęcia dotyczące uczenia maszynowego
+Terminy dotyczące uczenia maszynowego mogą być mylące. Poniżej znajdują się pomocne definicje kluczowych terminów. Skorzystaj z możliwości przekazania komentarzy na końcu artykułu, aby poinformować nas o dowolnym terminie, który powinien zostać zdefiniowany.
+
+### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>Eksploracja danych, analiza opisowa i analiza predykcyjna
+
+**Eksploracja danych** to proces zbierania informacji o dużych i często nieustrukturyzowanych zestawach danych w celu znalezienia właściwości na potrzeby ukierunkowanej analizy.
+
+**Wyszukiwanie danych** oznacza zautomatyzowaną eksplorację danych.
+
+**Analiza opisowa** to proces polegający na analizowaniu zestawu danych, aby podsumować, co się stało. Analizy biznesowe — takie jak raporty ze sprzedaży, metryki sieci Web i analizy sieci społecznościowych — są w większości opisowe.
+
+**Analiza predykcyjna** to proces tworzenia modeli z danych historycznych lub bieżących w celu przewidywania przyszłych rezultatów.
+
+### <a name="supervised-and-unsupervised-learning"></a>Uczenie nadzorowane i nienadzorowane
+ Algorytmy **uczenia nadzorowanego** są uczone z użyciem danych oznaczonych — innymi słowy, danych złożonych z przykładów żądanych odpowiedzi. Na przykład model, który identyfikuje użycie karty kredytowej w celu oszustwa, może być uczony z użyciem zestawu danych zawierającego oznaczone etykietą punkty danych dotyczące znanych oszustw i poprawnego użycia karty. Większość uczenia maszynowego jest nadzorowana.
+
+ **Uczenie nienadzorowane** jest stosowane w przypadku danych bez oznaczeń, a celem jest znalezienie relacji w danych. Na przykład celem może być znalezienie grup demograficznych klientów o podobnych nawykach zakupowych.
+
+### <a name="model-training-and-evaluation"></a>Uczenie i ewaluacja modelu
+Model uczenia maszynowego to abstrakcja pytania, na które chcesz znaleźć odpowiedź, lub wyniku, który chcesz przewidzieć. Modele są uczone i ewaluowane na podstawie istniejących danych.
+
+#### <a name="training-data"></a>Dane szkoleniowe
+Ucząc model za pomocą danych, używasz znanego zestawu danych i wprowadzasz zmiany w modelu na podstawie właściwości danych, aby uzyskać najdokładniejszą odpowiedź. W usłudze Azure Machine Learning model jest budowany na podstawie modułu algorytmu, który przetwarza dane szkoleniowe i moduły funkcjonalne, takie jak moduł oceny.
+
+Jeśli model wykrywania oszustw jest uczony w trybie uczenia nadzorowanego, użyj zestawu transakcji, które są oznaczone jako oszustwa lub prawidłowe transakcje. Podziel zestaw danych losowo i użyj części danych w celu nauczenia modelu, a drugiej części w celu przetestowania lub ewaluacji modelu.
+
+#### <a name="evaluation-data"></a>Dane do ewaluacji
+Po uzyskaniu nauczonego modelu należy go poddać ewaluacji, wykorzystując pozostałe dane testowe. W tym celu używane są dane, dla których znane są już wyniki, dlatego można ustalić, czy model przewiduje dokładnie.
+
+## <a name="other-common-machine-learning-terms"></a>Inne typowe terminy dotyczące uczenia maszynowego
+* **algorytm**: autonomiczny zestaw reguł przeznaczony do rozwiązywania problemów poprzez przetwarzanie danych, matematykę lub automatyczną logikę.
+* **wykrywanie anomalii**: model, który oznacza flagami nietypowe zdarzenia lub wartości, ułatwiając znalezienie problemów. Na przykład wykrywanie oszustw dotyczących karty kredytowej polega na wyszukiwaniu nietypowych zakupów.
+* **dane podzielone na kategorie**: dane uporządkowane według kategorii, które mogą zostać podzielone na grupy. Na przykład zestaw danych podzielonych na kategorie dotyczący samochodów może określać rok produkcji, markę, model i cenę.
+* **klasyfikacja**: model organizacji punktów danych w kategorie na podstawie zestawu danych, dla którego grupy kategorii są już znane.
+* **inżynieria cech**: proces wyodrębniania lub wybierania cech związanych z zestawem danych w celu ulepszenia zestawu danych i poprawienia wyników. Na przykład dane dotyczące opłat lotniczych można wzbogacić o dni tygodnia i daty świąt. Zobacz [Feature selection and engineering in Azure Machine Learning](../team-data-science-process/create-features.md) (Wybór i inżynieria cech w usłudze Azure Machine Learning).
+* **moduł**: część funkcjonalna w modelu usługi Machine Learning Studio, na przykład moduł Enter Data (Wprowadź dane), który umożliwia wprowadzanie i edycję niewielkich zestawów danych. Algorytm również jest typem modułu w usłudze Machine Learning Studio.
+* **model**: model uczenia nadzorowanego jest wynikiem eksperymentu uczenia maszynowego, który obejmuje dane szkoleniowe, moduł algorytmu i moduły funkcjonalne, np. moduł Score Model (Oceń model).
+* **dane liczbowe**: dane, które mają znaczenie jako pomiary (dane ciągłe) lub liczniki (dane dyskretne). Nazywane również *danymi ilościowymi*.
+* **partycja**: metoda, która służy do dzielenia danych na próbki. Aby uzyskać więcej informacji, zobacz [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) (Partycja i próbka).
+* **przewidywanie**: prognoza wartości z modelu uczenia maszynowego. Widoczny może być również termin „przewidywany wynik”. Jednak przewidywane wyniki nie są ostatecznym modelem wyjściowym. Po uzyskaniu wyniku jest wykonywana ewaluacja modelu.
+* **regresja**: model do przewidywania wartości w oparciu o zmienne niezależne, na przykład przewidywanie ceny samochodu na podstawie jego marki i roku produkcji.
+* **wynik**: wartość przewidziana wygenerowana z klasyfikacji uzyskanej w wyniku uczenia lub z modelu regresji przy użyciu [modułu Score Model (Oceń model)](https://msdn.microsoft.com/library/azure/dn905995.aspx) w usłudze Machine Learning Studio. Modele klasyfikacji zwracają również wynik prawdopodobieństwa wystąpienia przewidzianej wartości. Po wygenerowaniu wyniku z modelu można dokonać ewaluacji dokładności modelu przy użyciu [modułu Evaluate Model (Ewaluuj model)](https://msdn.microsoft.com/library/azure/dn905915.aspx).
+* **próbka**: część zestawu danych reprezentująca cały zestaw. Próbki mogą być wybierane losowo lub na podstawie konkretnych cech zestawu danych.
+
+## <a name="next-steps"></a>Następne kroki
+Podstaw analizy predykcyjnej i uczenia maszynowego możesz się nauczyć, korzystając z [samouczka krok po kroku](create-experiment.md), a także [rozwijając przykłady](sample-experiments.md).  
+
 
 <!-- Module References -->
 [convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/

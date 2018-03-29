@@ -1,24 +1,24 @@
 ---
 title: Zabezpieczenia serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: "Opisuje funkcje zabezpieczeń i prywatności, które zapewniają ochronę usługi StorSimple, urządzenia i danych lokalnie i w chmurze."
+description: Opisuje funkcje zabezpieczeń i prywatności, które zapewniają ochronę usługi StorSimple, urządzenia i danych lokalnie i w chmurze.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/23/2018
+ms.date: 03/27/2018
 ms.author: alkohli
-ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple zabezpieczeń i ochrony danych
 
@@ -267,6 +267,20 @@ Poniżej przedstawiono niektóre pytania i odpowiedzi dotyczące zabezpieczeń i
 **Pytanie:** co się stanie w przypadku jednostki rządowe zapyta firmy Microsoft dla danych?
 
 **Odpowiedź:** , dlatego wszystkie dane są szyfrowane na usługi i klucz prywatny jest przechowywany z urządzeniem, jednostki rządowe musi uzyskać klienta danych.
+
+## <a name="gdpr-compliance"></a>GDPR zgodności
+
+[Rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) jest prawo ochrona i prywatność danych Unii Europejskiej (UE). GDPR zawiera wiele wymagań dotyczących sposobu zbierania, przechowywania i Użyj informacji osobistych. Reguły GDPR nakłada się na firm, agencji rządowych i innych organizacji, które działają w UE i zbierać, Analizuj dane powiązane mieszkańców Unii Europejskiej. 
+
+Menedżer urządzeń StorSimple serii fizycznych i wirtualnych jest GDPR zgodne. Istnieją dwa wystąpienia klucza, gdzie informacje osobiste są zbierane i wyświetlane w usłudze:
+
+- Alert ustawienia użytkownika, gdy skonfigurowano adres e-mail użytkowników. Te informacje można wyświetlać i usunięte przez administratora. Dotyczy to urządzeń z serii StorSimple 8000 i tablice wirtualne StorSimple.
+ * Aby wyświetlić i wyczyść ustawienia z serii StorSimple 8000, postępuj zgodnie z instrukcjami [widoku StorSimple alerty i zarządzaj nimi](storsimple-8000-manage-alerts.md#configure-alert-settings)
+ * Aby wyświetlić i wyczyść ustawienia dla tablicy wirtualnego StorSimple, postępuj zgodnie z instrukcjami [widoku StorSimple alerty i zarządzaj nimi](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+- Użytkownicy, którzy mają dostęp do danych znajdujących się w akcji. Listę użytkowników, którzy mogą uzyskiwać dostęp do danych udziałów jest wyświetlane i można go wyświetlić. Ta lista również zostanie usunięta po usunięciu akcji. Dotyczy to tylko tablice wirtualne StorSimple.
+ * Aby wyświetlić listę użytkowników, którzy mogą dostępu lub aby usunąć udział, wykonaj czynności opisane w [Zarządzanie udziałami w macierzy wirtualnego StorSimple](storsimple-virtual-array-manage-shares.md)
+
+Aby uzyskać więcej informacji, przejrzyj zasady Privacy firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

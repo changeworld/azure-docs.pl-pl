@@ -1,13 +1,13 @@
 ---
-title: "Usługa Azure Stream Analytics: Zrozumienie i dostosować jednostek przesyłania strumieniowego | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jakie czynniki wpłynąć na wydajność w Azure Stream Analytics."
-keywords: "Jednostka, wydajność zapytań"
+title: 'Usługa Azure Stream Analytics: Zrozumienie i dostosować jednostek przesyłania strumieniowego | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jakie czynniki wpłynąć na wydajność w Azure Stream Analytics.
+keywords: Jednostka, wydajność zapytań
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5c60b1808959c73759a78141566c5c49f0350e2f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Informacje o i dostosować jednostek przesyłania strumieniowego
 
@@ -88,18 +88,18 @@ Rozmiar stanu sprzężenia danych czasowych jest proporcjonalna do liczby zdarze
 
 Liczba zdarzeń niedopasowane sprzężenia mają wpływ na wykorzystanie pamięci dla zapytania. Następujące zapytanie służy do znajdowania wyświetleń reklam, które generują kliknięcia:
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks 
-    INNER JOIN, impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
+    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
 
 W tym przykładzie jest możliwe, że są wyświetlane partii reklam i kliknij kilka osób i jest wymagany do zachowania wszystkich zdarzeń w przedziale czasu. Używana pamięć jest proporcjonalna do wielkości okna i szybkości zdarzeń. 
 
 Aby to skorygować, wysyłania zdarzeń do Centrum zdarzeń partycjonowanego klucze sprzężenia (identyfikator: w tym przypadku) i skalowania w poziomie zapytania przez system do przetworzenia każdej partycji wejściowych oddzielnie za pomocą **PARTITION BY** pokazany:
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks PARTITION BY PartitionId
     INNER JOIN impressions PARTITION BY PartitionId 
-    ON impression.PartitionId = clocks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
+    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
 </code>
 
 Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W związku z tym liczbę zdarzeń wchodzących w każdym węźle, zostanie zmniejszona co zmniejsza rozmiar danych stanu znajdującej się w oknie sprzężenia. 
@@ -124,7 +124,7 @@ Po dodaniu funkcji UDF Azure Stream Analytics ładuje środowiska wykonawczego j
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie zapytań działania równoległego w Azure Stream Analytics](stream-analytics-parallelization.md)
 * [Skalowanie zadania usługi analiza strumienia Azure w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
 

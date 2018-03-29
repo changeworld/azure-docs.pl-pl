@@ -1,6 +1,6 @@
 ---
-title: "Szyfrowanie usługi Magazyn Azure dla danych magazynowanych | Dokumentacja firmy Microsoft"
-description: "Szyfrowanie magazynu obiektów Blob platformy Azure na stronie usługi, gdy dane są przechowywane przy użyciu funkcji szyfrowanie usługi Magazyn Azure, a go odszyfrować podczas pobierania danych."
+title: Szyfrowanie usługi Magazyn Azure dla danych magazynowanych | Dokumentacja firmy Microsoft
+description: Szyfrowanie magazynu obiektów Blob platformy Azure na stronie usługi, gdy dane są przechowywane przy użyciu funkcji szyfrowanie usługi Magazyn Azure, a go odszyfrować podczas pobierania danych.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: d9df2218acc218a796e502fa4e3b94573af86ca8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych magazynowanych
 
@@ -52,7 +52,7 @@ A: szyfrowanie usługi Magazyn jest włączona domyślnie na wszystkich istniej�
 
 **Pytanie: jak szyfrowania danych na koncie magazynu Resource Manager?**
 
-Szyfrowanie usługi Magazyn A: jest domyślnie włączona dla wszystkich kont magazynu — klasycznego i Menedżera zasobów. Istniejące dane nie są szyfrowane. Aby zaszyfrować dane, można skopiować go do innej nazwy lub innego kontenera, a następnie usuń niezaszyfrowane wersji. 
+Szyfrowanie usługi Magazyn A: jest domyślnie włączona dla wszystkich kont magazynu — klasycznego i Resource Manager wszystkie istniejące pliki w ramach konta magazynu utworzone przed włączeniem szyfrowania będzie wstecznie uzyskać szyfrowane przez proces szyfrowania w tle.
 
 **Pytanie: czy można utworzyć konta magazynu przy użyciu szyfrowania usługi magazynu przy użyciu programu Azure PowerShell i interfejsu wiersza polecenia Azure?**
 

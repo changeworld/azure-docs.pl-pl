@@ -1,23 +1,23 @@
 ---
-title: "Uwierzytelnianie usługi Azure AD na dostęp do interfejsu API usługi multimediów Azure z platformą .NET | Dokumentacja firmy Microsoft"
-description: "W tym temacie przedstawiono sposób uzyskać dostępu do interfejsu API usługi Azure Media Services (AMS) z platformą .NET za pomocą uwierzytelniania usługi Azure Active Directory (Azure AD)."
+title: Uwierzytelnianie usługi Azure AD na dostęp do interfejsu API usługi multimediów Azure z platformą .NET | Dokumentacja firmy Microsoft
+description: W tym temacie przedstawiono sposób uzyskać dostępu do interfejsu API usługi Azure Media Services (AMS) z platformą .NET za pomocą uwierzytelniania usługi Azure Active Directory (Azure AD).
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: a9355200a05a3aa1b494b76977d38ddc42bfe179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8817bb0da526769470e96b63b9c80620309757bf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Azure Media Services API z platformą .NET dostęp za pomocą uwierzytelniania usługi Azure AD
 
@@ -36,7 +36,7 @@ Podczas korzystania z uwierzytelniania usługi Azure AD z usługi Azure Media Se
 - **Uwierzytelnianie głównej usługi** uwierzytelnia usługi. Aplikacje, które zazwyczaj używają tej metody uwierzytelniania są aplikacji uruchamianych demon usługi, usługi warstwy środkowej lub zaplanowanych zadań, takich jak aplikacje sieci web funkcji aplikacji, aplikacji logiki, interfejsów API albo mikrousług.
 
 >[!IMPORTANT]
->Usługa Azure Media obecnie obsługuje model uwierzytelniania w usłudze kontroli dostępu platformy Azure. Jednak autoryzacji kontroli dostępu ma być zastąpiona na 1 czerwca 2018. Zaleca się, jak najszybciej migracji z modelem uwierzytelniania usługi Azure Active Directory.
+>Usługa Azure Media obecnie obsługuje model uwierzytelniania w usłudze kontroli dostępu platformy Azure. Jednak autoryzacji kontroli dostępu ma być zastąpiona na 22 czerwca 2018. Zaleca się, jak najszybciej migracji z modelem uwierzytelniania usługi Azure Active Directory.
 
 ## <a name="get-an-azure-ad-access-token"></a>Uzyskaj token dostępu usługi Azure AD
 
@@ -185,6 +185,6 @@ Poniższy przykład przedstawia sposób tworzenia tokenu usługi Azure AD i kont
         }
     }
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Rozpoczynanie pracy z [przekazywanie plików do konta](media-services-dotnet-upload-files.md).

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 8bae1140d4a3ac4762bdcbabb16851d29415a8fe
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 5308803bb36024ee2373cf07ec46f798eb7192c5
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect z nowych funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich grup odbiorców.
@@ -49,6 +49,7 @@ Stan 2018-3/22: wydane dla automatycznego uaktualnienia i pobierania.
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 
 * Polecenia cmdlet Set-ADSyncAutoUpgrade wcześniej uniemożliwiają Autoupgrade, jeśli ustawiono stan automatycznej aktualizacji na zawieszone. To teraz zostanie zmieniona, więc nie blokuje AutoUpgrade kompilacji w przyszłości.
+* Zmienione **logowania użytkownika** strony opcji "Synchronizację haseł" do "Synchronizacji skrótu hasła".  Azure AD Connect synchronizuje skrótów haseł, nie hasła, tak że to rzeczywiście występuje wyrównane.  Aby uzyskać więcej informacji, zobacz [Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 
 ## <a name="117490"></a>1.1.749.0
 Stan: Wydane do wybranych klientów
@@ -558,7 +559,7 @@ Synchronizacja programu Azure AD Connect
   * Dodaje **userType** schematu Metaverse i schematu łącznika usługi AAD. Klienci, którzy do zaktualizowania obu atrybutów w usłudze Azure AD można zaimplementować zasady niestandardowe synchronizacji w tym celu.
 
 * Azure AD Connect teraz automatycznie umożliwia korzystanie z atrybutu ConsistencyGuid jako atrybut zakotwiczenia źródła dla lokalnych obiektów usługi AD. Ponadto, Azure AD Connect wypełnia atrybutu ConsistencyGuid o wartości atrybut objectGuid, jeśli jest pusty. Ta funkcja ma zastosowanie do tylko nowe wdrożenie. Aby dowiedzieć się więcej o tej funkcji, zapoznaj się z rozdziałem artykułu [Azure AD Connect: zagadnienia dotyczące — przy użyciu msDS-ConsistencyGuid jako sourceAnchor projektowania](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor).
-* Nowe Rozwiązywanie problemów z polecenia cmdlet Invoke-ADSyncDiagnostics został dodany do zdiagnozowania synchronizacji skrótu hasła problemy związane z. Aby dowiedzieć się, jak za pomocą polecenia cmdlet, można znaleźć w artykule [Rozwiązywanie problemów z synchronizacją hasła z synchronizacji Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-synchronization).
+* Nowe Rozwiązywanie problemów z polecenia cmdlet Invoke-ADSyncDiagnostics został dodany do zdiagnozowania synchronizacji skrótu hasła problemy związane z. Aby dowiedzieć się, jak za pomocą polecenia cmdlet, można znaleźć w artykule [Rozwiązywanie problemów z synchronizacją skrótów haseł z synchronizacji Azure AD Connect](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 * Azure AD Connect teraz obsługuje Synchronizowanie folderu publicznego Mail-Enabled obiektów z lokalnej usługi AD do usługi Azure AD. Można włączyć funkcję Kreator Azure AD Connect w funkcji opcjonalnych. Aby dowiedzieć się więcej o tej funkcji, można znaleźć w artykule [Office 365 katalogu na podstawie krawędzi blokuje obsługę lokalnej poczty włączone folderów publicznych](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Azure AD Connect wymaga przy użyciu usług AD DS konta do synchronizacji z lokalnej usługi AD. Wcześniej Jeśli zainstalowano w trybie Express Azure AD Connect, musisz podać poświadczenia konta administratora przedsiębiorstwa i Azure AD Connect będzie utworzyć wymagane konto usługi AD DS produktów. Jednak do niestandardowej instalacji i dodawania lasów do istniejącego wdrożenia, konieczne jest zamiast tego Podaj konto usług AD DS. Teraz masz również opcję, aby podać poświadczenia konta administratora przedsiębiorstwa podczas instalacji niestandardowej i pozwól Azure AD Connect, utworzyć wymagane konta usług AD DS.
 * Azure AD Connect obsługuje teraz SQL AOA. Przed zainstalowaniem usługi Azure AD Connect, należy włączyć SQL AOA. Podczas instalacji Azure AD Connect wykrywa, czy podane wystąpienie programu SQL jest włączone dla SQL AOA. Po włączeniu SQL AOA Azure dalsze AD Connect danych liczbowych Jeśli SQL AOA jest skonfigurowana do używania synchronicznego lub asynchronicznego replikacji. Podczas ustawiania odbiornika grupy dostępności, zalecane jest, ustaw właściwość RegisterAllProvidersIP na 0. Jest to spowodowane Azure AD Connect aktualnie używa programu SQL Native Client do połączenia z serwerem SQL i programu SQL Native Client nie obsługuje użycie właściwości MultiSubNetFailover.
@@ -748,7 +749,7 @@ Wydanie: Czerwca 2016 r.
 **Rozwiązane problemy i ulepszenia:**
 
 * Teraz można zainstalować na serwerze zgodne ze standardem FIPS Azure AD Connect.
-  * Aby synchronizować hasła, zobacz [synchronizacji haseł i FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips).
+  * Aby synchronizować hasła, zobacz [synchronizacji skrótów haseł i FIPS](active-directory-aadconnectsync-implement-password-hash-synchronization.md#password-hash-synchronization-and-fips).
 * Rozwiązano problem, w którym nazwa NetBIOS nie można rozpoznać do nazwy FQDN w łącznika usługi Active Directory.
 
 ## <a name="111800"></a>1.1.180.0

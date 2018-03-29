@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planowanie wdrożenia synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -96,6 +96,19 @@ Przyszłych wersji systemu Windows Server zostanie dodana po ich wydaniu. Wcześ
 
 > [!Note]  
 > Obsługiwane są tylko woluminy NTFS. System plików reFS, systemie plików FAT, FAT32 i innych systemów plików nie są obsługiwane.
+
+### <a name="files-skipped"></a>Zostały pominięte
+| Plik lub Folder | Uwaga |
+|-|-|
+| Desktop.ini | Specyficzne dla systemu plików |
+| ethumbs.db$ | Plik tymczasowy miniatur |
+| ~$\*.\* | Plik tymczasowy pakietu Office |
+| \*.tmp | Plik tymczasowy |
+| \*.laccdb | Pliku blokowania dostępu do bazy danych|
+| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| \\Informacji o woluminie systemowym | Folder specyficzne dla woluminu |
+| $RECYCLE. BIN| Folder |
+| \\SyncShareState | Folder do synchronizacji |
 
 ### <a name="failover-clustering"></a>Klaster trybu failover
 Windows Server Failover Clustering jest obsługiwany przez synchronizacji plików Azure w opcji wdrażania "Serwer plików do użytku ogólnego". Klaster trybu failover nie jest obsługiwana w "Serwer plików skalowalny w poziomie dla danych aplikacji" (SOFS) lub na udostępnionych woluminów klastra (CSV).

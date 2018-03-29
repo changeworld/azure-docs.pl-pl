@@ -1,24 +1,24 @@
 ---
-title: "Odbiorcy akceptacji etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft"
-description: "Cele, zadań i elementów dostarczanych w etapie akceptacji klienta projektów analizy danych"
+title: Odbiorcy akceptacji etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
+description: Cele, zadań i elementów dostarczanych w etapie akceptacji klienta projektów analizy danych
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: e150b3e7c7e98443264dd5b8aaeda1bfe6047b2c
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 0030698bafc3d92a1c6daf944ba496421080912c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="customer-acceptance"></a>Akceptacja klienta
 
@@ -50,7 +50,7 @@ Klienta należy zweryfikować, że system spełnia ich potrzeb biznesowych i odp
 Głównym artefaktu wygenerowane w tym ostatnim krokiem jest **zamknąć raport projektu klienta**. Ten raport techniczne zawiera wszystkie szczegóły projektu, które są przydatne podczas nauki o sposobie pracy systemu. Udostępnia TDSP [zamknąć raport](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) szablonu. Można użyć szablonu, ponieważ jest lub dostosować go na potrzeby określonego klienta. 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto łącza do każdego kroku w cyklu TDSP:
 

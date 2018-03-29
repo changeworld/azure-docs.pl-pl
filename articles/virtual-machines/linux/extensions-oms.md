@@ -1,11 +1,11 @@
 ---
 title: Rozszerzenie maszyny wirtualnej OMS Azure dla systemu Linux | Dokumentacja firmy Microsoft
-description: "Wdróż agenta pakietu OMS na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej."
+description: Wdróż agenta pakietu OMS na maszynie wirtualnej systemu Linux przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/27/2018
 ms.author: danis
-ms.openlocfilehash: 5174e599f12314a657d142304ffec18fbff847b1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c0b7224d0f534661950117813e1a4f348810853
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej OMS dla systemu Linux
 
@@ -195,10 +195,11 @@ Dane wyjściowe wykonania rozszerzenie jest zarejestrowane w następującym plik
 
 | Kod błędu | Znaczenie | Możliwe działania |
 | :---: | --- | --- |
+| 9 | Włącz o nazwie przedwcześnie | [Zaktualizuj agenta systemu Linux Azure](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) do najnowszej dostępnej wersji. |
 | 10 | Maszyna wirtualna jest już połączona z obszaru roboczego analizy dzienników | Aby połączyć maszynę Wirtualną do obszaru roboczego określonej w schemacie rozszerzenia, stopOnMultipleConnections ma wartość false w publicznych Ustawienia tej właściwości lub Usuń. Tej maszyny Wirtualnej pobiera rozliczane po dla każdego obszaru roboczego jest połączony. |
 | 11 | Nieprawidłowy konfiguracji do rozszerzenia | Postępuj zgodnie z powyższych przykładach można ustawić wartości wszystkich właściwości niezbędne do wdrożenia. |
 | 12 | Menedżer pakietów dpkg jest zablokowany. | Upewnij się, wszystkie dpkg operacje aktualizacji na komputerze zostało ukończone, a następnie spróbuj ponownie. |
-| 20 | Włącz o nazwie przedwcześnie | [Zaktualizuj agenta systemu Linux Azure](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) do najnowszej dostępnej wersji. |
+| 20 | Błąd instalacji pakietu SCX |
 | 51 | To rozszerzenie nie jest obsługiwana w systemie operacyjnym maszyny Wirtualnej | |
 | 55 | Nie można nawiązać połączenia z usługą Microsoft Operations Management Suite | Sprawdź, czy system ma dostęp do Internetu lub że podano prawidłowy serwer proxy HTTP. Ponadto sprawdź poprawność identyfikator obszaru roboczego. |
 

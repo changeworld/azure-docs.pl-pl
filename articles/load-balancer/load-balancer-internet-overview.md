@@ -14,15 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 14375dc7777a4f24db9f7246e6e99f26bd0eb858
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 33a63538e3b96c5a37ddda6be31a0d972884b9b7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="internet-facing-load-balancer-overview"></a>Omówienie usługi równoważenia obciążenia połączonej Internet
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Moduł równoważenia obciążenia Azure mapuje publiczny adres IP i port numer ruchu przychodzącego do prywatnego adresu IP adres i numer portu maszyny wirtualnej i odwrotnie dla ruchu odpowiedzi z maszyny wirtualnej. Reguły równoważenia obciążenia umożliwiają dystrybucji określonych rodzajów ruchu sieciowego między wiele maszyn wirtualnych lub usług. Na przykład mogą rozprzestrzeniać się obciążenie ruchu w sieci web żądania wielu serwerów sieci web lub role sieci web.
 

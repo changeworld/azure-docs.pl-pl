@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1b8a6079a68c50f80b593a1f56bc5256047ef31c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3d3a271bcdd5c507125b8b1a5482f833607a5a78
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Wdrażanie usługi Azure Machine Learning jako moduł krawędzi IoT — w wersji preview
 
@@ -35,6 +35,8 @@ Moduł usługi Azure Machine Learning, który można utworzyć w tym samouczku o
 * Parametry połączenia Centrum IoT Centrum IoT, która łączy się z urządzenia IoT krawędzi.
 * Konto usługi Azure Machine Learning. Aby utworzyć konto, postępuj zgodnie z instrukcjami [Tworzenie usługi Azure Machine Learning kont i zainstaluj usługi Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nie trzeba zainstalować aplikację workbench w tym samouczku. 
 * Moduł zarządzania dla usługi Azure ML na tym komputerze. Aby skonfigurować środowisko i utworzyć konto, postępuj zgodnie z instrukcjami [konfiguracji zarządzania modelu](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration).
+
+Moduł usługi Azure Machine Learning nie obsługuje procesorów ARM. 
 
 ## <a name="create-the-azure-ml-container"></a>Tworzenie kontenera uczenie Maszynowe Azure
 W tej sekcji pobierania plików uczonego modelu i przekonwertować je na kontenera usługi uczenie Maszynowe Azure.  

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Przy użyciu punktu końcowego uprzywilejowanych w stosie Azure
 
@@ -76,6 +76,8 @@ Zaleca się, że należy połączyć program ten tylko od sprzętu hosta cyklu �
 
       - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny stosu Azure*&gt;\accountname**. (ASDK, nazwa użytkownika jest **azurestack\accountname**.) 
       - **Hasło**: wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+    > [!NOTE]
+    > Jeśli nie można nawiązać połączenia z punktem końcowym ERCS, spróbuj wykonać kroki 1 i 2 ponownie przy użyciu adresu IP ERCS maszyny wirtualnej, do którego nie można już próbujesz się połączyć.
     
 3.  Po nawiązaniu połączenia wiersza zmieni się na **[*nazwa adresu IP lub wirtualna ERCS*]: PS >** lub **[azs ercs01]: PS >**, w zależności od środowiska. W tym miejscu, należy uruchomić `Get-Command` Aby wyświetlić listę dostępnych poleceń cmdlet.
 

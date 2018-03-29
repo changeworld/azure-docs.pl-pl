@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z aplikacji sieci web w usłudze Azure App Service przy użyciu programu Visual Studio"
-description: "Dowiedz się, jak rozwiązywanie problemów z aplikacją sieci web platformy Azure przy użyciu zdalnego debugowania i śledzenia i narzędzia rejestrowania, które są wbudowane w programie Visual Studio 2013."
+title: Rozwiązywanie problemów z aplikacji sieci web w usłudze Azure App Service przy użyciu programu Visual Studio
+description: Dowiedz się, jak rozwiązywanie problemów z aplikacją sieci web platformy Azure przy użyciu zdalnego debugowania i śledzenia i narzędzia rejestrowania, które są wbudowane w programie Visual Studio 2013.
 services: app-service
 documentationcenter: .net
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7973f4311095b7c87ccd2394b048ec92c50f32a9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Rozwiązywanie problemów z aplikacji sieci web w usłudze Azure App Service przy użyciu programu Visual Studio
 ## <a name="overview"></a>Przegląd
@@ -125,12 +125,14 @@ W tej sekcji pokazano, jak można debugować zdalnie przy użyciu projektu, nale
 
 3. Usuń `About()` — metoda i wstaw poniższy kod w jego miejscu.
 
-        public ActionResult About()
-        {
-            string currentTime = DateTime.Now.ToLongTimeString();
-            ViewBag.Message = "The current time is " + currentTime;
-            return View();
-        }
+``` c#
+public ActionResult About()
+{
+    string currentTime = DateTime.Now.ToLongTimeString();
+    ViewBag.Message = "The current time is " + currentTime;
+    return View();
+}
+```
 4. [Ustaw punkt przerwania](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) na `ViewBag.Message` wiersza.
 
 5. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt i kliknij przycisk **publikowania**.
@@ -171,7 +173,7 @@ W tej sekcji pokazano, jak można debugować zdalnie przy użyciu projektu, nale
 
      ![Strona z nową wartością — informacje](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remotedebugwj"></a>Zdalne debugowanie zadań Webjob
+## <a name="remotedebugwj"></a> Zdalne debugowanie zadań Webjob
 W tej sekcji pokazano, jak można debugować zdalnie za pomocą aplikacji sieci web i projektu, możesz utworzyć w [wprowadzenie do zestawu SDK zadań Webjob Azure](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 Funkcje w tej sekcji są dostępne tylko w programie Visual Studio 2013 z aktualizacją Update 4 lub nowszym.
@@ -241,10 +243,12 @@ Jeśli funkcja [zapisano dzienniki](https://github.com/Azure/azure-webjobs-sdk/w
 * Podczas debugowania kodu, serwer wysyła dane do programu Visual Studio, które mogą mieć wpływ na koszty przepustowości. Informacje o szybkości przepustowości, zobacz [cennik usługi Azure](https://azure.microsoft.com/pricing/calculator/).
 * Upewnij się, że `debug` atrybutu `compilation` element *Web.config* plik jest ustawiony na wartość true. Ma ustawioną wartość true, domyślnie po opublikowaniu konfiguracji kompilacji debugowania.
 
-        <system.web>
-          <compilation debug="true" targetFramework="4.5" />
-          <httpRuntime targetFramework="4.5" />
-        </system.web>
+``` xml
+<system.web>
+  <compilation debug="true" targetFramework="4.5" />
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+```
 * Jeśli okaże się, że debuger nie wkroczyć do kodu, który chcesz debugować, trzeba będzie zmienić ustawienie tylko mój kod.  Aby uzyskać więcej informacji, zobacz [Ogranicz wykonywanie krok po kroku, aby tylko mój kod](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code).
 * Po włączeniu funkcji debugowania zdalnego, oraz po 48 godzin funkcji jest automatycznie wyłączane czasomierz rozpoczyna się na serwerze. Ze względów bezpieczeństwa i wydajności odbywa się to ograniczenie 48 godzin. Można łatwo włączyć funkcję ponownie dowolną liczbę razy. Zaleca się pozostawienie ją wyłączoną, gdy nie są aktywnie debugowania.
 * Można ręcznie dołączyć debuger do dowolnego procesu, nie tylko procesu sieci web app (w3wp.exe). Aby uzyskać więcej informacji o sposobie używania tryb debugowania w programie Visual Studio, zobacz [debugowania w programie Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
@@ -277,32 +281,35 @@ Rejestruje informacje o sposobie tworzenia aplikacji w zadań Webjob, można zna
 ### <a name="add-tracing-statements-to-the-application"></a>Dodawanie instrukcji śledzenia do aplikacji
 1. Otwórz *Controllers\HomeController.cs*i Zastąp `Index`, `About`, i `Contact` metody z następującym kodem, aby można było dodać `Trace` instrukcje i `using` instrukcji dla `System.Diagnostics`:
 
-        public ActionResult Index()
-        {
-            Trace.WriteLine("Entering Index method");
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Index method");
-            return View();
-        }
+```c#
+public ActionResult Index()
+{
+    Trace.WriteLine("Entering Index method");
+    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Index method");
+    return View();
+}
 
-        public ActionResult About()
-        {
-            Trace.WriteLine("Entering About method");
-            ViewBag.Message = "Your app description page.";
-            Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-            Trace.WriteLine("Leaving About method");
-            return View();
-        }
+public ActionResult About()
+{
+    Trace.WriteLine("Entering About method");
+    ViewBag.Message = "Your app description page.";
+    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+    Trace.WriteLine("Leaving About method");
+    return View();
+}
 
-        public ActionResult Contact()
-        {
-            Trace.WriteLine("Entering Contact method");
-            ViewBag.Message = "Your contact page.";
-            Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Contact method");
-            return View();
-        }        
+public ActionResult Contact()
+{
+    Trace.WriteLine("Entering Contact method");
+    ViewBag.Message = "Your contact page.";
+    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Contact method");
+    return View();
+}        
+```
+
 2. Dodaj `using System.Diagnostics;` instrukcji na początku pliku.
 
 ### <a name="view-the-tracing-output-locally"></a>Wyświetl dane wyjściowe śledzenia lokalnie
@@ -315,23 +322,28 @@ Rejestruje informacje o sposobie tworzenia aplikacji w zadań Webjob, można zna
     Poniższe kroki przedstawiają sposób wyświetlania danych wyjściowych śledzenia na stronie sieci web bez kompilowania kodu w trybie debugowania.
 2. Otwórz plik Web.config (znajdujący się w folderze projektu) i Dodaj `<system.diagnostics>` element na końcu pliku, bezpośrednio przed zamknięciem `</configuration>` elementu:
 
-          <system.diagnostics>
-            <trace>
-              <listeners>
-                <add name="WebPageTraceListener"
-                    type="System.Web.WebPageTraceListener,
-                    System.Web,
-                    Version=4.0.0.0,
-                    Culture=neutral,
-                    PublicKeyToken=b03f5f7f11d50a3a" />
-              </listeners>
-            </trace>
-          </system.diagnostics>
+``` xml
+<system.diagnostics>
+<trace>
+  <listeners>
+    <add name="WebPageTraceListener"
+        type="System.Web.WebPageTraceListener,
+        System.Web,
+        Version=4.0.0.0,
+        Culture=neutral,
+        PublicKeyToken=b03f5f7f11d50a3a" />
+  </listeners>
+</trace>
+</system.diagnostics>
+```
 
-    `WebPageTraceListener` Umożliwiają wyświetlanie dane wyjściowe śledzenia, przechodząc do `/trace.axd`.
+`WebPageTraceListener` Umożliwiają wyświetlanie dane wyjściowe śledzenia, przechodząc do `/trace.axd`.
 3. Dodaj <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">element śledzenia</a> w obszarze `<system.web>` w pliku Web.config, takie jak na poniższym przykładzie:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+``` xml
+<trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+```       
+
 4. Naciśnij klawisze CTRL+F5, aby uruchomić aplikację.
 5. Na pasku adresu w oknie przeglądarki Dodaj *trace.axd* do adresu URL, a następnie naciśnij klawisz Enter (adres URL jest podobny do http://localhost:53370/trace.axd).
 6. Na **śledzenia aplikacji** kliknij przycisk **Wyświetl szczegóły** w pierwszym wierszu (nie linia BrowserLink).
@@ -646,15 +658,18 @@ Nie dostępnych nie szczegółowe i aktualne wprowadzeń do śledzenia ASP.NET w
 * [Śledzenie w widoki ASP.NET MVC Razor](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Oprócz śledzenia w widokach Razor, post wyjaśniono również, jak utworzyć filtr błędu w celu rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji MVC. Aby uzyskać informacje na temat rejestrowania wszystkich nieobsługiwanych wyjątków w aplikacji formularzy sieci Web, zobacz przykład Global.asax w [pełny przykład dla programów obsługi błędu](http://msdn.microsoft.com/library/bb397417.aspx) w witrynie MSDN. W MVC i formularzy sieci Web Jeśli chcesz rejestrować pewne wyjątki, ale pozwól framework domyślne obsługi zaczęły obowiązywać, można przechwycić i rethrow jak w poniższym przykładzie:
 
-        try
-        {
-           // Your code that might cause an exception to be thrown.
-        }
-        catch (Exception ex)
-        {
-            Trace.TraceError("Exception: " + ex.ToString());
-            throw;
-        }
+``` c#
+try
+{
+   // Your code that might cause an exception to be thrown.
+}
+catch (Exception ex)
+{
+    Trace.TraceError("Exception: " + ex.ToString());
+    throw;
+}
+```
+
 * [Przesyłania strumieniowego śledzenia diagnostyki logowania z wiersza polecenia platformy Azure (oraz Glimpse!)](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   Jak za pomocą wiersza polecenia wykonywać jakie w tym samouczku przedstawiono sposób wykonywania w programie Visual Studio. [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) to narzędzie do debugowania aplikacji ASP.NET.
 * [Przy użyciu aplikacji sieci Web, rejestrowania i diagnostyki — z Ebbo Dominik](/documentation/videos/azure-web-site-logging-and-diagnostics/) i [przesyłania strumieniowego dzienników z aplikacji sieci Web — za pomocą Ebbo Dominik](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
@@ -669,7 +684,7 @@ Aby uzyskać więcej informacji na temat analizowania dzienniki serwera sieci we
 
 * [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Narzędzia do wyświetlania danych w dzienniki serwera sieci web (*log* plików).
-* [Rozwiązywanie problemów z wydajnością usług IIS lub błędy aplikacji przy użyciu LogParser](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [Rozwiązywanie problemów z wydajnością usług IIS lub błędy aplikacji przy użyciu LogParser ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Wprowadzenie do narzędzia Log Parser, która służy do analizowania dzienniki serwera sieci web.
 * [Blog ogłoszenia przy Roberta Mcmurraya przy użyciu LogParser](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Kod stanu HTTP w usługach IIS 7.0, IIS 7.5 i IIS 8.0](http://support.microsoft.com/kb/943891)

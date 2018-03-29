@@ -1,6 +1,6 @@
 ---
-title: "Omówienie delegowania DNS na platformie Azure | Microsoft Docs"
-description: "Dowiedz się, jak zmienić delegowanie domeny i korzystać z serwerów nazw usługi Azure DNS do zapewniania hostingu domeny."
+title: Omówienie delegowania DNS na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak zmienić delegowanie domeny i korzystać z serwerów nazw usługi Azure DNS do zapewniania hostingu domeny.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: kumud
-ms.openlocfilehash: 4ba615a1fc607392fa1a2a910b4674cfbcf51da1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: fc79999d240baf18ccf5923908c98791c4e7e7bb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegowanie stref DNS za pomocą usługi Azure DNS
 
@@ -42,7 +42,7 @@ Istnieją dwa typy serwerów DNS:
 * *Autorytatywny* serwer DNS hostuje strefy DNS. Odpowiada na zapytania DNS dotyczące rekordów tylko w tych strefach.
 * *Cykliczny* serwer DNS nie hostuje stref DNS. Odpowiada na zapytania DNS, wywołując autorytatywne serwery DNS w celu zebrania danych, których potrzebuje.
 
-Usługa Azure DNS zapewnia autorytatywną usługę DNS.  Nie zapewnia cyklicznej usługi DNS. Usługa Cloud Services i maszyny wirtualne na platformie Azure są automatycznie skonfigurowane do korzystania z rekursywnych usług DNS udostępnianych oddzielnie w ramach infrastruktury platformy Azure. Aby uzyskać informacje na temat zmiany tych ustawień DNS, zobacz [Name Resolution in Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) (Rozpoznawanie nazw na platformie Azure).
+Usługa Azure DNS zapewnia autorytatywną usługę DNS.  Nie zapewnia cyklicznej usługi DNS. Usługa Cloud Services i maszyny wirtualne na platformie Azure są automatycznie skonfigurowane do korzystania z rekursywnych usług DNS udostępnianych oddzielnie w ramach infrastruktury platformy Azure. Aby uzyskać informacje na temat zmiany tych ustawień DNS, zobacz [Name Resolution in Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) (Rozpoznawanie nazw na platformie Azure).
 
 Klienci DNS na komputerach i urządzeniach przenośnych zwykle wywołują cykliczny serwer DNS w celu wykonywania wszelkich zapytań DNS potrzebnych aplikacjom klienckim.
 

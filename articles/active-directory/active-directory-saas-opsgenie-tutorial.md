@@ -1,23 +1,23 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z OpsGenie | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i OpsGenie."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i OpsGenie.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: b0d8fa13c13ad8d4a85cb482bcd7e440006f0437
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Samouczek: Integracji Azure Active Directory z OpsGenie
 
@@ -110,19 +110,35 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_url.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL:`https://app.opsgenie.com/auth/login`
+    W **adres URL logowania** tekstowym, wpisz adres URL: `https://app.opsgenie.com/auth/login`
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png) 
-
-5. Kliknij przycisk **zapisać** przycisku.
+4. Kliknij przycisk **zapisać** przycisku.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji OpsGenie** , kliknij przycisk **skonfigurować OpsGenie** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+5. Na **konfiguracji OpsGenie** , kliknij przycisk **skonfigurować OpsGenie** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z sekcji krótkimi opisami.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
+
+6. Aby wygenerować **adres URL metadanych**, wykonaj następujące czynności:
+
+    a. Kliknij przycisk **rejestracji aplikacji**.
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
+   
+    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
+
+    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
+     
+    d. Teraz przejdź do strony właściwości **OpsGenie** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
+ 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
+
+    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. Otwórz inne wystąpienie przeglądarki, a następnie zaloguj się do OpsGenie jako administrator.
 
@@ -142,9 +158,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     ![Ustawienia OpsGenie](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a. Wklej **pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure do **SAML 2.0 Endpoint** pola tekstowego.
+    a. W **SAML 2.0 Endpoint** pole tekstowe, Wklej **pojedynczy znak na adres URL usługi**wartość, która została skopiowana z portalu Azure.
     
-    b. Otwórz w Notatniku pobrany zakodowanego certyfikatu base-64, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu X.500** pola tekstowego.
+    b. W **adres Url metadanych:** pole tekstowe, Wklej **adres URL metadanych**wartość, która została skopiowana z portalu Azure.
     
     c. Kliknij przycisk **zapisać zmiany**.
 
@@ -244,7 +260,7 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka OpsGenie w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji OpsGenie.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

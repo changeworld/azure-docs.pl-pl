@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: f55e85bb424f4f5973fd6d633b6adf9fbca4d0ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działania wyszukiwania w fabryce danych Azure
 Działania wyszukiwania służy do odczytywania lub wyszukania rekordu, nazwę tabeli lub wartość z dowolnego źródła zewnętrznego. Do tych danych wyjściowych mogą także odwoływać się kolejne działania. 
@@ -30,12 +30,23 @@ Wyszukiwanie działanie jest przydatne, gdy chcesz dynamicznie pobrać listy pli
 ## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Następujące źródła danych są obecnie obsługiwane dla wyszukiwania:
-- Plik JSON w magazynie obiektów Blob platformy Azure
-- Plik JSON w systemie plików
-- Baza danych SQL Azure (JSON dane skonwertowane z zapytania)
-- Usługa Azure SQL Data Warehouse (JSON dane skonwertowane z zapytania)
-- SQL Server (JSON dane skonwertowane z zapytania)
-- Magazyn tabel Azure (JSON dane skonwertowane z zapytania)
+
+- Amazon Redshift
+- Azure Blob Storage
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Magazyn plików Azure
+- Azure SQL Database
+- Azure SQL Data Warehouse
+- Azure Table Storage
+- Dynamics 365
+- Dynamics CRM
+- System plików
+- PostgreSQL
+- SalesForce
+- Salesforce Service Cloud
+- SFTP
+- Oprogramowanie SQL Server
 
 Maksymalna liczba wierszy zwracanych przez działanie wyszukiwania to **5000**, aż do **10MB** rozmiar.
 
@@ -62,9 +73,14 @@ Maksymalna liczba wierszy zwracanych przez działanie wyszukiwania to **5000**, 
 ## <a name="type-properties"></a>Właściwości typu
 Name (Nazwa) | Opis | Typ | Wymagana?
 ---- | ----------- | ---- | --------
-Zestaw danych | Zawiera odwołania do zestawu danych do wyszukiwania. Obecnie typy obsługiwanych zestawu danych to:<ul><li>`AzureBlobDataset` Aby uzyskać [magazynu obiektów Blob Azure](connector-azure-blob-storage.md#dataset-properties) jako źródło</li><li>`FileShareDataset` Aby uzyskać [systemu plików](connector-file-system.md#dataset-properties) jako źródło</li><li>`AzureSqlTableDataset` Aby uzyskać [bazy danych SQL Azure](connector-azure-sql-database.md#dataset-properties) lub [magazyn danych SQL Azure](connector-azure-sql-data-warehouse.md#dataset-properties) jako źródło</li><li>`SqlServerTable` Aby uzyskać [programu SQL Server](connector-sql-server.md#dataset-properties) jako źródło</li><li>`AzureTableDataset` Aby uzyskać [magazynu tabel Azure](connector-azure-table-storage.md#dataset-properties) jako źródło</li> | Para klucza i wartości | Yes
+Zestaw danych | Zawiera odwołania do zestawu danych do wyszukiwania. Uzyskiwanie szczegółowych informacji w sekcji "Właściwości zestawu danych" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
 źródło | Zawiera właściwości specyficzne dla zestawu danych źródła, taki sam jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji w sekcji "Kopiuj właściwości działania" w każdym artykule odpowiedni łącznik. | Para klucza i wartości | Yes
 firstRowOnly | Wskazuje, czy mają być zwracane tylko pierwszy wiersz lub wszystkie wiersze. | Wartość logiczna | Nie. Wartość domyślna to `true`.
+
+Pamiętaj o następujących kwestiach:
+
+1. Kolumna źródłowa ByteArray typu nie jest obsługiwane.
+2. Struktura nie jest obsługiwana w definicji zestawu danych. W przypadku plików tekstowych format w szczególności służy wiersz nagłówka do określenia nazwy kolumny.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Użyj wyniku działania wyszukiwania w następnych działań
 

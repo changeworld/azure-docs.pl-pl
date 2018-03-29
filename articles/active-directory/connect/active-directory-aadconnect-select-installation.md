@@ -1,12 +1,12 @@
 ---
 title: 'Azure AD Connect: Wybierz typ instalacji | Dokumentacja firmy Microsoft'
-description: "W tym temacie przedstawiono sposób Wybieranie typu instalacji do użycia programu Azure AD Connect"
+description: W tym temacie przedstawiono sposób Wybieranie typu instalacji do użycia programu Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9b7bcd5856ec94367edd586c28c781ac9569a792
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 76f1ce12ab149f57ec6e995d132de83105c5e0ca
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Wybierz typ instalacji, które można użyć programu Azure AD Connect
 Azure AD Connect ma dwa typy instalacji nowej instalacji: Express i niestandardowych. Ten temat ułatwia podjęcie decyzji, którą opcję do użycia podczas instalacji.
@@ -34,7 +34,7 @@ Zakłada się:
 
 Pobierz:
 
-- [Synchronizacja haseł](active-directory-aadconnectsync-implement-password-synchronization.md) z lokalnego do usługi Azure AD dla logowania jednokrotnego.
+- [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md) z lokalnego do usługi Azure AD dla logowania jednokrotnego.
 - Konfiguracja, która synchronizuje [użytkowników, grup, kontaktów i komputerach z systemem Windows 10](active-directory-aadconnectsync-understanding-default-configuration.md).
 - Synchronizacja wszystkich kwalifikujących się obiekty w wszystkie domeny i wszystkich jednostkach organizacyjnych.
 - [Automatyczne uaktualnianie](active-directory-aadconnect-feature-automatic-upgrade.md) jest włączona, upewnij się, że należy zawsze używać najnowszej dostępnej wersji.

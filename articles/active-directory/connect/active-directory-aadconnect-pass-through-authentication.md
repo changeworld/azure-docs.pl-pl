@@ -1,9 +1,9 @@
 ---
 title: 'Azure AD Connect: Uwierzytelniania przekazywanego | Dokumentacja firmy Microsoft'
-description: "W tym artykule opisano uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD) i jak umożliwia logowania usługi Azure AD przez sprawdzanie poprawności hasła użytkowników z lokalnej usługi Active Directory."
+description: W tym artykule opisano uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD) i jak umożliwia logowania usługi Azure AD przez sprawdzanie poprawności hasła użytkowników z lokalnej usługi Active Directory.
 services: active-directory
-keywords: "Co to jest Azure AD Connect przekazywanego uwierzytelniania, należy zainstalować usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Co to jest Azure AD Connect przekazywanego uwierzytelniania, należy zainstalować usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 5a559c749bc7ba3cabbbb1a171605b8baf601eef
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Logowanie użytkownika do uwierzytelniania przekazywanego Azure Active Directory
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) przekazywanego uwierzytelniania umożliwia uż
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Ta funkcja stanowi alternatywę dla [synchronizacji skrótu hasła programu Azure AD](active-directory-aadconnectsync-implement-password-synchronization.md), którym znajdują się takie same korzyści uwierzytelniania w chmurze dla organizacji. Jednak zasady zabezpieczeń i zgodności w niektórych organizacjach nie zezwolić na te organizacje do wysłania hasła użytkowników, nawet w formie skrótu, poza ich granice wewnętrznego. Uwierzytelniania przekazywanego to odpowiednie rozwiązanie dla tych organizacji.
+Ta funkcja stanowi alternatywę dla [synchronizacji skrótu hasła programu Azure AD](active-directory-aadconnectsync-implement-password-hash-synchronization.md), którym znajdują się takie same korzyści uwierzytelniania w chmurze dla organizacji. Jednak zasady zabezpieczeń i zgodności w niektórych organizacjach nie zezwolić na te organizacje do wysłania hasła użytkowników, nawet w formie skrótu, poza ich granice wewnętrznego. Uwierzytelniania przekazywanego to odpowiednie rozwiązanie dla tych organizacji.
 
 ![Azure AD przekazywanego uwierzytelniania](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 

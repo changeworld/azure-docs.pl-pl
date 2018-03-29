@@ -1,8 +1,8 @@
 ---
-title: "Monitorowanie i zarządzanie nimi za pomocą interfejsu użytkownika sieci Web Ambari w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać narzędzia Ambari do monitorowania i zarządzania klastrami usługi HDInsight opartej na systemie Linux. W tym dokumencie Dowiedz się jak używać Interfejsu sieci Web Ambari, które są dołączone do klastrów usługi HDInsight."
+title: Monitorowanie i zarządzanie nimi za pomocą interfejsu użytkownika sieci Web Ambari w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać narzędzia Ambari do monitorowania i zarządzania klastrami usługi HDInsight opartej na systemie Linux. W tym dokumencie Dowiedz się jak używać Interfejsu sieci Web Ambari, które są dołączone do klastrów usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/04/2018
+ms.date: 03/23/2018
 ms.author: larryfr
-ms.openlocfilehash: dc1265c7af011b92a9f862cf2e91b47c3998b2e4
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 922dfd475f27f182d8958887087fc2f4945cc43a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Ambari
 
@@ -41,7 +41,7 @@ Interfejs sieci Web Ambari jest udostępniana domyślnie z klastrami usługi HDI
 
 ## <a name="connectivity"></a>Łączność
 
-Interfejs sieci Web Ambari jest dostępna w klastrze usługi HDInsight w HTTPS://CLUSTERNAME.azurehdidnsight.net, gdzie **CLUSTERNAME** jest nazwą klastra.
+Interfejs sieci Web Ambari jest dostępna w klastrze usługi HDInsight w HTTPS://CLUSTERNAME.azurehdinsight.net, gdzie **CLUSTERNAME** jest nazwą klastra.
 
 > [!IMPORTANT]
 > Połączenie z Ambari w usłudze HDInsight wymaga protokołu HTTPS. Po wyświetleniu monitu na potrzeby uwierzytelniania, użyj nazwy konta administratora i hasło podane podczas tworzenia klastra.
@@ -88,7 +88,7 @@ Poniższa lista zawiera typowe stany alertów używana przez narzędzia Ambari:
 * **OK**
 * **Ostrzeżenie**
 * **KRYTYCZNE**
-* **NIEZNANY**
+* **UNKNOWN**
 
 Alerty innych niż **OK** spowodować **alerty #** wpis w górnej części strony, aby wyświetlić liczbę alertów. Wybranie tego wpisu powoduje wyświetlenie alertów i ich stan.
 
@@ -140,7 +140,7 @@ Wyświetlanie niektórych usług **szybkie linki** łącze w górnej części st
 * **Historia zadań** -historii zadań MapReduce.
 * **Menedżer zasobów** -YARN ResourceManager UI.
 * **NameNode** -Hadoop Distributed Interfejsu NameNode (HDFS) systemu plików.
-* **Interfejs użytkownika sieci Web Oozie** -Oozie interfejsu użytkownika.
+* **Oozie Web UI** - Oozie UI.
 
 Wybranie dowolnego z tych łączy otwiera nową kartę w przeglądarce, która wyświetla wybranej strony.
 

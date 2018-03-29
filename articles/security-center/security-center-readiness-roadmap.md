@@ -1,11 +1,11 @@
 ---
-title: "Mapa gotowości usługi Azure Security Center | Microsoft Docs"
-description: "Ten dokument zawiera mapę gotowości umożliwiającą zwiększenie możliwości usługi Azure Security Center."
+title: Mapa gotowości usługi Azure Security Center | Microsoft Docs
+description: Ten dokument zawiera mapę gotowości umożliwiającą zwiększenie możliwości usługi Azure Security Center.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: ndicola
-editor: 
+editor: ''
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: 7a6717f4a9ec0594ccd6b326520d0e0ab620739a
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 0de8dda6f88f31208c3fe7d560a461fea46a67e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Mapa gotowości usługi Azure Security Center
 Ten dokument zapewnia mapę gotowości, która będzie pomocna w rozpoczynaniu pracy z usługą Azure Security Center.
@@ -116,7 +116,7 @@ Artykuły
 * [Zalecenia PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Zgodność](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist)
 
-##<a name="community-resources"></a>Zasoby społeczności
+## <a name="community-resources"></a>Zasoby społeczności
 
 * [Usługa Security Center UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
 * [Forum społeczności usługi Security Center](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSecurityCenter)

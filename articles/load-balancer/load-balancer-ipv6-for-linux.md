@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować DHCPv6 dla maszyn wirtualnych systemu Linux."
+title: Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft
+description: Jak skonfigurować DHCPv6 dla maszyn wirtualnych systemu Linux.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-keywords: "Protokół IPv6, usługi równoważenia obciążenia azure, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, mobile, iot"
+editor: ''
+keywords: Protokół IPv6, usługi równoważenia obciążenia azure, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, mobile, iot
 ms.assetid: b32719b6-00e8-4cd0-ba7f-e60e8146084b
 ms.service: load-balancer
 ms.devlang: na
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: b46c2107dcfda5f02407e08daf08bd42d722dfda
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 6248ed2f55fb5bbcc2061af6ce1dedf2bd31ccad
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych systemu Linux
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Niektóre obrazy maszyn wirtualnych systemu Linux w portalu Azure Marketplace nie mają Dynamic Host Configuration Protocol w wersji 6 (DHCPv6) konfiguracja domyślna. Aby obsługiwać protokół IPv6, DHCPv6 musi być skonfigurowany w dystrybucji systemu operacyjnego Linux, którego używasz. Różne dystrybucje systemu Linux skonfigurować DHCPv6 na różne sposoby, ponieważ korzystają z różnych pakietów.
 

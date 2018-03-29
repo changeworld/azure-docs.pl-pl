@@ -1,7 +1,7 @@
 ---
-title: "Migrowanie wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przeprowadzić migrację wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure."
-keywords: "migracja bazy danych,migracja bazy danych programu sql server,narzędzia migracji bazy danych,migracja bazy danych,migracja bazy danych sql"
+title: Migrowanie wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić migrację wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure.
+keywords: migracja bazy danych,migracja bazy danych programu sql server,narzędzia migracji bazy danych,migracja bazy danych,migracja bazy danych sql
 services: sql-database
 author: bonova
 ms.reviewer: carlrab
@@ -11,11 +11,11 @@ ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: fd8225b2c5c4f897bbf3d7e1b2ba7659f564409d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4546f03294ea8ab01ecb2b2777c5b92dbc5a7f4a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure
 

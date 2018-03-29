@@ -10,11 +10,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 338520f273a88866834e43e17da1f8b131ca38f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d213a3f8bed5af526efba39868855b6f6727a7c0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Sprawdzanie wstecz do aktualizacji.
@@ -28,7 +28,9 @@ Azure AD B2C nie może być używany do uwierzytelniania użytkowników dla usł
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co to są lokalne konta w usłudze Azure AD B2C? Jak różnią się one od kont służbowych w usłudze Azure AD?
 W dzierżawie usługi Azure AD, użytkownicy, którzy należą do dzierżawy logowania przy użyciu adresu e-mail w postaci `<xyz>@<tenant domain>`.  `<tenant domain>` Jest jednym z zweryfikowanych domen w dzierżawie lub początkowej `<...>.onmicrosoft.com` domeny. Ten typ konta jest konta firmowego lub szkolnego.
 
-W dzierżawie usługi Azure AD B2C większości aplikacji ma użytkownikowi na logowanie z dowolnego adresu e-mail dowolnego (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.com, lub jim@live.com). Ten typ konta jest kontem lokalnym.  Obsługujemy również nazwy dowolnego użytkownika jako kont lokalnych (na przykład Jan, Roberta, Anetą lub jim). Skonfigurowanie usługi Azure AD B2C w portalu Azure, można wybrać jedną z tych dwóch typów kont lokalnych.
+W dzierżawie usługi Azure AD B2C większości aplikacji ma użytkownikowi na logowanie z dowolnego adresu e-mail dowolnego (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.com, lub jim@live.com). Ten typ konta jest kontem lokalnym.  Obsługujemy również nazwy dowolnego użytkownika jako kont lokalnych (na przykład Jan, Roberta, Anetą lub jim). Podczas konfigurowania dostawców tożsamości dla usługi Azure AD B2C w portalu Azure można wybrać jedną z tych dwóch typów kont lokalnych. W dzierżawie usługi Azure AD B2C, kliknij przycisk **dostawców tożsamości** , a następnie wybierz **Username** w obszarze kont lokalnych. 
+
+Zawsze należy utworzyć konta użytkowników dla aplikacji za pośrednictwem zasad rejestracji rejestracji lub znak — w zasadach lub przy użyciu interfejsu API Azure AD Graph. Konta użytkowników utworzone w portalu Azure są używane tylko do administrowania dzierżawcy.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Które dostawców tożsamości społecznościowych możesz obsługują teraz? Te, które zamierzasz obsługiwać w przyszłości?
 Firma Microsoft obsługuje obecnie Facebook, Google + LinkedIn, Amazon, usługi Twitter (wersja zapoznawcza), WeChat (wersja zapoznawcza), Weibo (wersja zapoznawcza) i q (wersja zapoznawcza). Dodamy obsługę innych dostawców tożsamości społecznościowych popularnych na życzenie klientów.

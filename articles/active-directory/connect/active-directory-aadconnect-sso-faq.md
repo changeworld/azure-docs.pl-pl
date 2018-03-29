@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: c34293796860e0ab72eecedab9cd8b023237050d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 819d8ce9793f785726f55a89d49d08d818401b33
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
@@ -26,7 +26,7 @@ W tym artykule można rozwiązać często zadawane pytania o Azure Active Direct
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>Jakie metody logowania SSO bezproblemowe działają z?
 
-Bezproblemowe logowanie Jednokrotne można łączyć z jedną [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) metody logowania. Jednak ta funkcja nie można używać z Active Directory Federation Services (ADFS).
+Bezproblemowe logowanie Jednokrotne można łączyć z jedną [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-hash-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) metody logowania. Jednak ta funkcja nie można używać z Active Directory Federation Services (ADFS).
 
 ## <a name="is-seamless-sso-a-free-feature"></a>Jest funkcją wolnego bezproblemowe logowanie Jednokrotne?
 

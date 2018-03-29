@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 285f4540c7f9be19cde0aafeff67ce2b39abe957
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z monitorem Azure
 Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy je w portalu, dostępu do nich za pośrednictwem interfejsu API REST lub zapytań je przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej przedstawiono pełną listę wszystkich metryki obecnie z potoku metryki Azure monitora.
 
 > [!NOTE]
-> Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista zawiera tylko metryk dostępnych za pośrednictwem potoku metryki skonsolidowanych Azure Monitor. Wykonanie kwerendy i dostępu do metryki z wymiarów, użyj [wersja interfejsu api 2017-05-01-preview](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+> Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista zawiera tylko metryk dostępnych za pośrednictwem potoku metryki skonsolidowanych Azure Monitor. Wykonanie kwerendy i dostępu do metryki z wymiarów, użyj [wersja interfejsu api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 >
 >
 

@@ -1,14 +1,14 @@
 ---
 title: Certyfikaty programu Microsoft Azure dla programu SAP | Dokumentacja firmy Microsoft
-description: "Zaktualizowaną listę bieżącej konfiguracji i certyfikatów SAP na platformie Azure."
+description: Zaktualizowaną listę bieżącej konfiguracji i certyfikatów SAP na platformie Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
-ms.assetid: 
+keywords: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2017
 ms.author: rclaus
-ms.custom: 
-ms.openlocfilehash: 865fa54c908481b3f4c211f12293538c617b6129
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.custom: ''
+ms.openlocfilehash: 96a3b6f8f8a03019f0446aa7ba42f53298e21009
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certyfikaty SAP i konfiguracje uruchomiony w systemie Microsoft Azure
 
@@ -35,12 +35,12 @@ Odwołania:
 
 | Produkt SAP | Obsługiwane systemy operacyjne | Oferty platformy Azure |
 | --- | --- | --- |
-| SAP HANA Developer Edition (włącznie z oprogramowaniem klienta HANA obejmuje SQLODBC, ODBO — Windows, ODBC, sterowniki JDBC, HANA studio i HANA bazy danych) | Red Hat Enterprise Linux SUSE Linux Enterprise | Maszyna wirtualna D-Series rodziny |
+| SAP HANA Developer Edition (włącznie z oprogramowaniem klienta HANA obejmuje SQLODBC, ODBO — Windows, ODBC, sterowniki JDBC, HANA studio i HANA bazy danych) | Red Hat Enterprise Linux, SUSE Linux Enterprise | Maszyna wirtualna D-Series rodziny |
 | Jeden na HANA biznesowa | SUSE Linux Enterprise | DS14_v2 |
-| SAP HANA S/4 |Red Hat Enterprise Linux SUSE Linux Enterprise | Dostępność kontrolowane GS5, SAP HANA na platformie Azure (wystąpienia duże) |
-| Pakiet dla oprogramowania HANA, OLTP | Red Hat Enterprise Linux SUSE Linux Enterprise | GS5 wdrożeń jednego węzła w scenariuszach nieprodukcyjnych SAP HANA na platformie Azure (wystąpienia duże) |
-| Oprogramowanie HANA Enterprise dla rozwiązań BW, OLAP | Red Hat Enterprise Linux SUSE Linux Enterprise | GS5 wdrożeń jednowęzłowy SAP HANA na platformie Azure (wystąpienia duże) |
-| SAP HANA BW/4 | Red Hat Enterprise Linux SUSE Linux Enterprise | GS5 wdrożeń jednowęzłowy SAP HANA na platformie Azure (wystąpienia duże) |
+| SAP HANA S/4 |Red Hat Enterprise Linux, SUSE Linux Enterprise | Dostępność kontrolowane GS5, SAP HANA na platformie Azure (wystąpienia duże) |
+| Pakiet dla oprogramowania HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 wdrożeń jednego węzła w scenariuszach nieprodukcyjnych SAP HANA na platformie Azure (wystąpienia duże) |
+| Oprogramowanie HANA Enterprise dla rozwiązań BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 wdrożeń jednowęzłowy SAP HANA na platformie Azure (wystąpienia duże) |
+| SAP HANA BW/4 | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5 wdrożeń jednowęzłowy SAP HANA na platformie Azure (wystąpienia duże) |
 
 ## <a name="sap-netweaver-certifications"></a>Certyfikaty na oprogramowanie SAP NetWeaver
 System Microsoft Azure posiada certyfikaty dla następujących produktów SAP z pełnym wsparciem firm Microsoft i SAP.
@@ -51,17 +51,17 @@ Odwołania:
 
 | Produkt SAP | System operacyjny gościa | RDBMS | Rodzaje maszyn wirtualnych |
 | --- | --- | --- | --- |
-| SAP Business Suite Software |Systemu Windows, SUSE Linux Enterprise Red Hat Enterprise Linux, Oracle Linux |Program SQL Server, Oracle (z systemem Windows i Oracle Linux), bazy danych DB2, SAP ASE |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, M serii |
-| SAP Business All-in-One |Systemu Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |Program SQL Server, Oracle (z systemem Windows i Oracle Linux), bazy danych DB2, SAP ASE |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, M serii |
-| SAP BusinessObjects BI |Windows |Nie dotyczy |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, M serii |
-| SAP NetWeaver |Systemu Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |Program SQL Server, Oracle (z systemem Windows i Oracle Linux), bazy danych DB2, SAP ASE |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, M serii |
+| SAP Business Suite Software |Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |Program SQL Server, Oracle (z systemem Windows i Oracle Linux), bazy danych DB2, SAP ASE |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, D2s_v3 do D64s_v3, E2s_v3 do E64s_v3, M64s do M128ms |
+| SAP Business All-in-One |Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux |Program SQL Server, Oracle (z systemem Windows i Oracle Linux), bazy danych DB2, SAP ASE |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, D2s_v3 do D64s_v3, E2s_v3 do E64s_v3, M64s do M128ms |
+| SAP BusinessObjects BI |Windows |ND |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, D2s_v3 do D64s_v3, E2s_v3 do E64s_v3, M64s do M128ms |
+| SAP NetWeaver |Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux |Program SQL Server, Oracle (z systemem Windows i Oracle Linux), bazy danych DB2, SAP ASE |A5 do A11, D11 do D14, DS11 do DS14, DS11_v2 do DS15_v2, GS1 do GS5, D2s_v3 do D64s_v3, E2s_v3 do E64s_v3, M64s do M128ms |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Inne obciążenia SAP obsługiwane na platformie Azure
 
 | Produkt SAP | System operacyjny gościa | RDBMS | Rodzaje maszyn wirtualnych |
 | --- | --- | --- | --- |
 | SAP Business jeden na serwer SQL Server | Windows  | Oprogramowanie SQL Server | Wszystkie NetWeaver certyfikowane typów maszyny Wirtualnej |
-| SP08 10.01 MS BITÓW/KANAŁ SAP | Windows | | Wszystkie typy NetWeaver certyfikowane VM<br /> Uwaga SAP #2451795 |
+| SAP BPC 10.01 MS SP08 | Windows | | Wszystkie typy NetWeaver certyfikowane VM<br /> Uwaga SAP #2451795 |
 | SAP Business obiektów BI platformy | Windows | | Uwaga SAP #2145537 |
 | Usługi danych SAP 4.2 | | | Uwaga SAP #2288344 |
 | Platforma handlowa Hybris SAP 5.x i 6.x | Windows | SQL Server, Oracle | Wszystkie NetWeaver certyfikowane typów maszyny Wirtualnej<br /> [Witryna typu Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
