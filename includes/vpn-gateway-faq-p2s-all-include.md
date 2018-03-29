@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 735d6f51dee8e88bec2210717a11d6707686415f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 072c16a0e50a4922d44dd354b632f39b33d23cdd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 ### <a name="supportedclientos"></a>Których systemów operacyjnych klienta można używać z połączeniami typu punkt-lokacja?
 
@@ -26,8 +26,8 @@ Obsługiwane są następujące systemy operacyjne klientów:
 * Windows Server 2012 R2 (tylko 64-bitowy)
 * Windows Server 2016 (tylko 64-bitowy)
 * Windows 10
-* OSX 10.11 dla komputerów Mac (El Capitan)
-* macOS 10.12 dla komputerów Mac (Sierra)
+* Wersja systemu Mac OS X 10.11 (El Capitan)
+* Mac OS X w wersji 10.12 (Sierra)
 
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 

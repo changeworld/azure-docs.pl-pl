@@ -1,25 +1,25 @@
 ---
-title: "Narzędzia deweloperskie maszyny wirtualnej nauki danych - Azure | Dokumentacja firmy Microsoft"
-description: "Dane nauki wirtualnego narzędzia deweloperskie maszyny."
-keywords: "narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux"
+title: Narzędzia deweloperskie maszyny wirtualnej nauki danych - Azure | Dokumentacja firmy Microsoft
+description: Dane nauki wirtualnego narzędzia deweloperskie maszyny.
+keywords: narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 0d7ee9a54c2c11f814ce041c5c7e5bd9f2e605e5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: 6f141fc03b64d0ca922d003f6352b7751ab9967d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia deweloperskie na maszynie wirtualnej nauki danych
 
@@ -59,7 +59,7 @@ Maszyna wirtualna nauki danych (DSVM) zapewnia wydajne środowisko do programowa
 | Co to jest?   | IDE opartych na sieci Web dla języka R    |
 | DSVM obsługiwane wersje      | Linux      |
 | Typowe zastosowania      |  Programowanie R     |
-| Jak używać / uruchom go?      | Włącz usługę z _systemctl włączenia serwera programu rstudio_, następnie uruchom usługę za pomocą _systemctl start serwera programu rstudio_. Użytkownik może następnie zaloguj się do serwera programu RStudio w http://your-vm-ip:8787.       |
+| Jak używać / uruchom go?      | Włącz usługę z _systemctl włączenia serwera programu rstudio_, następnie uruchom usługę za pomocą _systemctl start serwera programu rstudio_. Możesz następnie zalogować się do serwera programu RStudio na http://your-vm-ip:8787.       |
 | Pokrewne narzędzia na DSVM      |   Visual Studio 2017, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

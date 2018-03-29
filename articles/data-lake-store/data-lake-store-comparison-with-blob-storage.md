@@ -1,8 +1,8 @@
 ---
-title: "Porównanie usługi Azure Data Lake Store z obiektu Blob magazynu Azure | Dokumentacja firmy Microsoft"
-description: "Porównanie usługi Azure Data Lake Store z obiektu Blob magazynu Azure"
+title: Porównanie usługi Azure Data Lake Store z obiektu Blob magazynu Azure | Dokumentacja firmy Microsoft
+description: Porównanie usługi Azure Data Lake Store z obiektu Blob magazynu Azure
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a8831278ef0e83571bf05d48e5d671f8dee92850
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: acdd829785c44f6683c356c135587be183cce392
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Store i magazynu obiektów Blob platformy Azure
 W tabeli w tym artykule przedstawiono różnice między Azure Data Lake Store i magazynu obiektów Blob Azure wzdłuż niektóre kluczowe aspekty przetwarzania danych big. Magazyn obiektów Blob Azure jest ogólnego przeznaczenia, magazynu skalowalne obiektów, które jest przeznaczone do szerokiej gamy scenariuszy magazynu. Azure Data Lake Store to repozytorium hiperskali, zoptymalizowana pod kątem obciążeń analizy danych big data.
@@ -34,7 +34,7 @@ W tabeli w tym artykule przedstawiono różnice między Azure Data Lake Store i 
 | Klient systemu plików usługi Hadoop |Yes |Yes |
 | Operacje na danych - uwierzytelniania |Na podstawie [tożsamości usługi Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md) |Oparte na wspólne klucze tajne - [klucze dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account) i [kluczy współużytkowanych podpisu dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Operacje na danych — protokół uwierzytelniania |OAuth 2.0. Wywołania musi zawierać prawidłowy token JWT (JSON Web Token) wydanego przez usługę Azure Active Directory |Kod uwierzytelniania wiadomości na podstawie skrótu (HMAC). Wywołania musi zawierać skrótu SHA-256 algorytmem Base64 częścią żądania HTTP. |
-| Operacje na danych - autoryzacji |Listy kontroli dostępu POSIX (ACL).  Listy ACL oparte na Azure Active Directory tożsamości można ustawić poziomu plików i folderów. |Na poziomie konta autoryzacji — użyj [klucze dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>Dla konta, kontenera lub obiektu blob autoryzacji - użyj [udostępnionych kluczy podpisów dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| Operacje na danych - autoryzacji |Listy kontroli dostępu POSIX (ACL).  Listy ACL oparte na Azure Active Directory tożsamości można ustawić na poziomie plików i folderów. |Na poziomie konta autoryzacji — użyj [klucze dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>Dla konta, kontenera lub obiektu blob autoryzacji - użyj [udostępnionych kluczy podpisów dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Operacje na danych - inspekcji |Dostępne. Zobacz [tutaj](data-lake-store-diagnostic-logs.md) informacji. |Dostępna |
 | Szyfrowanie danych magazynowanych |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Z usługami zarządzać kluczami</li><li>Z zarządzanego przez klienta kluczy w Azure KeyVault</li></ul></ul> |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Z usługami zarządzać kluczami</li><li>Z zarządzanego przez klienta kluczy w KeyVault Azure (wersja zapoznawcza)</li></ul><li>Szyfrowania po stronie klienta</li></ul> |
 | Operacje zarządzania (np. Utwórz konto) |[Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |[Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |
@@ -46,7 +46,4 @@ W tabeli w tym artykule przedstawiono różnice między Azure Data Lake Store i 
 | Dostępność regionalna |Zobacz [tutaj](https://azure.microsoft.com/regions/#services) |Dostępna we wszystkich regionach platformy Azure |
 | Cena |Zobacz [ceny](https://azure.microsoft.com/pricing/details/data-lake-store/) |Zobacz [ceny](https://azure.microsoft.com/pricing/details/storage/) |
 
-### <a name="next-steps"></a>Kolejne kroki
-* [Omówienie usługi Azure Data Lake Store](data-lake-store-overview.md)
-* [Rozpoczynanie pracy z usługą Data Lake Store](data-lake-store-get-started-portal.md)
 

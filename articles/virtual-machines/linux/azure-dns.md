@@ -1,6 +1,6 @@
 ---
 title: Opcje rozpoznawania nazw DNS dla maszyn wirtualnych systemu Linux na platformie Azure
-description: "Nazwa usługi DNS dla maszyn wirtualnych systemu Linux IaaS platformy Azure, w tym scenariuszy, pod warunkiem rozpoznawania, hybrydowego zewnętrznego serwera DNS i Przenieś swój własny DNS."
+description: Nazwa usługi DNS dla maszyn wirtualnych systemu Linux IaaS platformy Azure, w tym scenariuszy, pod warunkiem rozpoznawania, hybrydowego zewnętrznego serwera DNS i Przenieś swój własny DNS.
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a445de3e1bfbeb2cd2e5674418688d6bb610a3c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opcje rozpoznawania nazw DNS dla maszyn wirtualnych systemu Linux na platformie Azure
 Platforma Azure udostępnia rozpoznawanie nazw DNS domyślnie dla wszystkich maszyn wirtualnych, które znajdują się w jednej sieci wirtualnej. Można zaimplementować własne rozwiązania rozpoznawania nazw DNS przez skonfigurowanie usługi DNS na maszynach wirtualnych obsługującego platformy Azure. Następujące scenariusze powinna ułatwić wybierz jedną, która działa w danej sytuacji.
@@ -30,7 +30,7 @@ Rodzaj rozpoznawania nazw, którego używasz, zależy od tego, jak sieci maszyn 
 
 W poniższej tabeli przedstawiono scenariusze i odpowiedniego rozwiązania rozpoznawania nazwy:
 
-| **Scenariusz** | **Rozwiązania** | **Sufiks** |
+| **Scenariusz** | **Rozwiązania** | **Suffix** |
 | --- | --- | --- |
 | Rozpoznawanie nazw między wystąpień roli lub maszyn wirtualnych w tej samej sieci wirtualnej |[Rozpoznawanie nazw, która udostępnia usługi Azure](#azure-provided-name-resolution) |Nazwa hosta lub w pełni kwalifikowaną nazwę domeny (FQDN) |
 | Rozpoznawanie nazw między wystąpień roli lub maszyn wirtualnych w różnych sieciach wirtualnych |Zarządzany przez klienta serwerów DNS, które przekazywania kwerend między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
@@ -112,7 +112,7 @@ Plik resolv.conf został wygenerowany automatycznie i nie można edytować. Wyko
 2. Uruchom "netconfig update" do aktualizacji.
 
 **CentOS przez nieautoryzowanego oprogramowania Wave (dawniej OpenLogic)** (używa NetworkManager)
-1. Dodaj "echo"Opcje timeout:1 prób: 5"" do "/ etc/NetworkManager/dispatcher.d/11-dhclient".
+1. Dodaj "RES_OPTIONS"timeout:1 prób: 5"=" do "/ etc/sysconfig/sieci".
 2. Uruchom "sieci po ponownym uruchomieniu usługi" do aktualizacji.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Rozpoznawanie nazw przy użyciu serwera DNS

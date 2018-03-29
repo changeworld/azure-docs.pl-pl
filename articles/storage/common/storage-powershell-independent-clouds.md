@@ -1,23 +1,23 @@
 ---
-title: "Zarządzanie magazynem w niezależnych Azure chmur przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Zarządzanie magazynem w chmurze Chin, chmury dla instytucji rządowych i niemieckim chmurze przy użyciu programu Azure PowerShell"
+title: Zarządzanie magazynem w niezależnych Azure chmur przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Zarządzanie magazynem w chmurze Chin, chmury dla instytucji rządowych i niemieckim chmurze przy użyciu programu Azure PowerShell
 services: storage
 documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: 
+author: roygara
+manager: jeconnoc
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: robinsh
-ms.openlocfilehash: 08e1af929d7ddc30c7dc149f6305ca1ca0bc22ae
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.author: rogarana
+ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Zarządzanie magazynem w Azure niezależne chmur przy użyciu programu PowerShell
 
@@ -25,7 +25,7 @@ Większość użytkowników użyj chmury publicznej Azure globalne wdrożenia us
 
 * [Chmury Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/)
 * [Chmury Azure Chin przez 21Vianet w Chinach](http://www.windowsazure.cn/)
-* [Niemiecki chmury Azure](../../germany/germany-welcome.md)
+* [Azure German Cloud](../../germany/germany-welcome.md)
 
 ## <a name="using-an-independent-cloud"></a>Przy użyciu niezależne chmury 
 
@@ -83,12 +83,12 @@ Get-AzureRmEnvironment | select Name, StorageEndpointSuffix
 
 To polecenie zwraca następujące wyniki.
 
-| Nazwa| StorageEndpointSuffix|
+| Name (Nazwa)| StorageEndpointSuffix|
 |----|----|
-|AzureChinaCloud | Core.chinacloudapi.CN|
-| AzureCloud | Core.Windows.NET |
-| AzureGermanCloud | Core.cloudapi.de|
-| AzureUSGovernment | Core.usgov.cloudapi.NET |
+|AzureChinaCloud | core.chinacloudapi.cn|
+| AzureCloud | core.windows.net |
+| AzureGermanCloud | core.cloudapi.de|
+| AzureUSGovernment | core.usgov.cloudapi.net |
 
 
 Aby pobrać wszystkie właściwości dla określonego środowiska, należy wywołać **Get-AzureRmEnvironment** i podaj nazwę chmury. Następujący fragment kodu zwraca listę właściwości; Wyszukaj **StorageEndpointSuffix** na liście. Poniższy przykład jest niemiecki chmury.
@@ -101,16 +101,16 @@ Wyniki są podobne do następujących:
 
 |Nazwa właściwości|Wartość|
 |----|----|
-| Nazwa | AzureGermanCloud |
+| Name (Nazwa) | AzureGermanCloud |
 | EnableAdfsAuthentication | False |
-| ActiveDirectoryServiceEndpointResourceI | http://Management.Core.cloudapi.de/ |
-| GalleryURL | https://Gallery.cloudapi.de/ |
-| ManagementPortalUrl | https://Portal.microsoftazure.de/ | 
-| ServiceManagementUrl | https://Manage.Core.cloudapi.de/ |
-| PublishSettingsFileUrl| https://Manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl | http://Management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix | . database.cloudapi.de |
-| **StorageEndpointSuffix** | Core.cloudapi.de |
+| ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
+| GalleryURL | https://gallery.cloudapi.de/ |
+| ManagementPortalUrl | https://portal.microsoftazure.de/ | 
+| ServiceManagementUrl | https://manage.core.cloudapi.de/ |
+| PublishSettingsFileUrl| https://manage.microsoftazure.de/publishsettings/index |
+| ResourceManagerUrl | http://management.microsoftazure.de/ |
+| SqlDatabaseDnsSuffix | .database.cloudapi.de |
+| **StorageEndpointSuffix** | core.cloudapi.de |
 | Przyciski ... | Przyciski ... | 
 
 Do pobierania tylko właściwości sufiks punktu końcowego magazynu, należy pobrać określonej chmury i poproś o tylko jednej właściwości.
@@ -159,13 +159,13 @@ W tym miejscu przyszłości, można użyć tego samego środowiska PowerShell um
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli utworzono nową grupę zasobów i konto magazynu dla tego ćwiczenia, należy usunąć wszystkie zasoby przez usunięcie grupy zasobów. Spowoduje to również usunięcie wszystkie zasoby zawarte w obrębie grupy. W takim przypadku usuwa utworzono konto magazynu i grupy zasobów, do samej siebie.
+Jeśli utworzono nową grupę zasobów i konto magazynu dla tego ćwiczenia, należy usunąć wszystkie zasoby przez usunięcie grupy zasobów. Spowoduje to również usunięcie wszystkich zasobów znajdujących się w grupie. W takim przypadku usuwa utworzono konto magazynu i grupy zasobów, do samej siebie.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Utrwalanie identyfikatory logowania użytkownika między sesjami programu PowerShell](/powershell/azure/context-persistence)
 * [Magazyn Azure dla instytucji rządowych](../../azure-government/documentation-government-services-storage.md)

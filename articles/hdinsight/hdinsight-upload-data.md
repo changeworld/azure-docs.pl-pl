@@ -1,9 +1,9 @@
 ---
-title: "Przekazywanie danych dotyczących zadań Hadoop w usłudze HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przekazywanie i uzyskać dostęp do danych dotyczących zadań Hadoop w usłudze HDInsight przy użyciu wiersza polecenia platformy Azure, Eksploratora usługi Storage platformy Azure, programu Azure PowerShell, wiersz polecenia Hadoop lub Sqoop."
-keywords: "etl hadoop, pobieranie danych do platformy hadoop, hadoop ładowanie danych"
+title: Przekazywanie danych dotyczących zadań Hadoop w usłudze HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przekazywanie i uzyskać dostęp do danych dotyczących zadań Hadoop w usłudze HDInsight przy użyciu wiersza polecenia platformy Azure, Eksploratora usługi Storage platformy Azure, programu Azure PowerShell, wiersz polecenia Hadoop lub Sqoop.
+keywords: etl hadoop, pobieranie danych do platformy hadoop, hadoop ładowanie danych
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: cfe1b6bee9bc1f093b239f8f4acc523e47ad5d1a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ddb6291cdff7e2b65f54e89196c2b07dd6e4aaff
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Przekazywanie danych dla zadań Hadoop w usłudze HDInsight
 
@@ -31,7 +31,7 @@ Usługa Azure HDInsight udostępnia kompletne rozproszonego systemu plików usł
 
 Przed rozpoczęciem należy uwzględnić następujące wymagania:
 
-* Klaster Azure HDInsight. Aby uzyskać instrukcje, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight] [ hdinsight-get-started] lub [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* Klaster usługi Azure HDInsight. Aby uzyskać instrukcje, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight] [ hdinsight-get-started] lub [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 * Wiedza dwa następujące artykuły:
 
     - [Użyj magazynu platformy Azure z usługą HDInsight][hdinsight-storage]
@@ -45,8 +45,8 @@ Firma Microsoft udostępnia następujące narzędzia do pracy z usługą Azure S
 | Narzędzie | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Interfejs wiersza polecenia platformy Azure][azurecli] |✔ |✔ |✔ |
-| [Program Azure PowerShell][azure-powershell] | | |✔ |
-| [Narzędzie AzCopy][azure-azcopy] |✔ | |✔ |
+| [Azure PowerShell][azure-powershell] | | |✔ |
+| [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Polecenie Hadoop](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Interfejsu wiersza polecenia Azure to narzędzie i platform, które umożliwia z
 >
 >
 
-#### <a id="powershell"></a>Program Azure PowerShell
+#### <a id="powershell"></a>Azure PowerShell
 Program Azure PowerShell jest środowiskiem skryptów, które umożliwia kontrolowanie i automatyzowania wdrażania i zarządzania obciążeń na platformie Azure. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchomienia programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
@@ -139,7 +139,7 @@ Program Azure PowerShell jest środowiskiem skryptów, które umożliwia kontrol
 
 Na przykład skrypty programu PowerShell utworzone do pracy z usługą HDInsight, zobacz [narzędzi HDInsight tools](https://github.com/blackmist/hdinsight-tools).
 
-#### <a id="azcopy"></a>Narzędzie AzCopy
+#### <a id="azcopy"></a>AzCopy
 Narzędzie AzCopy to narzędzie wiersza polecenia, które jest przeznaczona do upraszcza zadanie transferu danych do i z konta usługi Azure Storage. Można używać jej jako autonomicznego narzędzia lub włączyć to narzędzie w istniejącej aplikacji. [Pobierz narzędzia AzCopy][azure-azcopy-download].
 
 Składnia narzędzia AzCopy jest następująca:
@@ -176,7 +176,7 @@ lub
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-Aby uzyskać listę innych Hadoop polecenia pracy z plikami, zobacz [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Aby uzyskać listę innych poleceń Hadoop, które współpracują z plików Zobacz [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
 > Na klastrów HBase domyślnie bloku rozmiar używany podczas zapisywania danych to 256 KB. Gdy nie ma problemów podczas korzystania z interfejsów API HBase lub interfejsów API REST, za pomocą `hadoop` lub `hdfs dfs` polecenia do zapisania danych większych niż ~ 12 GB powoduje wystąpienie błędu. Aby uzyskać więcej informacji, zobacz [wyjątek magazynu do zapisu dla obiektu blob](#storageexception) w tym artykule.
@@ -188,18 +188,18 @@ Istnieje kilka aplikacji, które zapewniają interfejs graficzny służący do p
 
 | Klient | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Microsoft Visual Studio Tools dla usługi HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) |✔ |✔ |✔ |
+| [Microsoft Visual Studio Tools dla usługi HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure Storage Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
-| [Chmura magazynu Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
+| [Cloud Storage Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Eksplorator systemu Azure](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Azure Explorer](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 #### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools dla usługi HDInsight
-Aby uzyskać więcej informacji, zobacz [Przejdź połączonych zasobów](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
+Aby uzyskać więcej informacji, zobacz [Przejdź połączonych zasobów](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
-#### <a id="storageexplorer"></a>Eksplorator usługi Storage platformy Azure
-*Eksplorator usługi Storage Azure* stanowi przydatne narzędzie do sprawdzania i zmiany danych w obiektach blob. To narzędzie wolnego typu open source, który można pobrać z [http://storageexplorer.com/](http://storageexplorer.com/). Kod źródłowy jest dostępny z tego łącza, a także.
+#### <a id="storageexplorer"></a>Azure Storage Explorer
+*Eksplorator usługi Storage Azure* stanowi przydatne narzędzie do sprawdzania i zmiany danych w obiektach blob. To narzędzie wolnego typu open source, który można pobrać z [ http://storageexplorer.com/ ](http://storageexplorer.com/). Kod źródłowy jest dostępny z tego łącza, a także.
 
 Przed użyciem tego narzędzia, musisz znać Azure klucz konta magazynu nazwy i konta. Instrukcje dotyczące pobierania tych informacji, zobacz temat "porady: wyświetlanie, kopiowanie i regenerate magazynu, klucze dostępu" sekcji [tworzenia, zarządzania i usuwania konta magazynu][azure-create-storage-account].
 
@@ -207,7 +207,7 @@ Przed użyciem tego narzędzia, musisz znać Azure klucz konta magazynu nazwy i 
 
     Wprowadź nazwę i klucza konta magazynu używane przez klaster usługi HDInsight, a następnie wybierz **Otwórz z & APISZ**.
 
-    ![HDI. AzureStorageExplorer][image-azure-storage-explorer]
+    ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
 2. Na liście kontenerów do lewej strony interfejsu kliknij nazwę kontenera, w którym jest skojarzony z klastrem usługi HDInsight. Domyślnie ten jest nazwą klastra usługi HDInsight, ale mogą być inne, jeśli określona nazwa wprowadzona podczas tworzenia klastra.
 3. Na pasku narzędzi wybierz ikonę przekazywania.
 

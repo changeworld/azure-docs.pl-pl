@@ -1,10 +1,32 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: api-management
+author: vladvino
+ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
+ms.service: api-management
+ms.topic: include
+ms.date: 03/22/2018
+ms.author: vlvinogr
+ms.custom: include file
+ms.openlocfilehash: bee289da3f18edd0cb425f3d9acde084567a3b13
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/28/2018
+---
 | Zasób | Limit |
 | --- | --- |
-| Wywołania interfejsu API (na jednostkę skalowania) |32 milionów dziennie<sup>1</sup> |
-| Transfer danych (na jednostkę skalowania) |161 GB dziennie<sup>1</sup> |
-| Pamięć podręczna |5 GB<sup>1</sup> |
-| Jednostki skalowania |Nieograniczone<sup>1</sup> |
-| Integracja z usługą Azure Active Directory |Konta użytkowników nieograniczone<sup>1</sup> |
+| Jednostki skalowania | 10 dla regionu<sup>1</sup> |
+| Pamięć podręczna | 5 GB na jednostkę<sup>1</sup> |
+| Zaplecza równoczesnych połączeń<sup>2</sup> na urzędu HTTP | 2048 na jednostkę<sup>3</sup> |
+| Rozmiar maksymalny buforowanej odpowiedzi | 10MB |
+| Maksymalna bram domen | 20 dla każdego wystąpienia usługi<sup>4</sup> |
 
-<sup>1</sup>limity interfejsu API zarządzania są różne dla każdej warstwy cenowej. Aby poznać ceny warstw i limity ich skojarzone i opcje skalowania, zobacz [interfejsu API zarządzania cennik](https://azure.microsoft.com/pricing/details/api-management/).
+
+<sup>1</sup>limity interfejsu API zarządzania są różne dla każdej warstwy cenowej. Aby wyświetlić ceny warstw i limity ich skalowania przejdź do [interfejsu API zarządzania cennik](https://azure.microsoft.com/pricing/details/api-management/).
+<sup>2</sup> połączenia są w puli i ponownego użycia, chyba że jawnie zamknięte przez wewnętrznej bazy danych.
+<sup>3</sup> na jednostkę warstw podstawowa, standardowa i Premium. Warstwa dewelopera jest ograniczony do 1024.
+<sup>4</sup> dostępne tylko w warstwie Premium.
+
 

@@ -1,8 +1,8 @@
 ---
-title: "Użyj przeglądarki zadania i widoku zadania dla zadań usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać przeglądarki zadania i widoku zadania dla zadań usługi Azure Data Lake Analytics. "
+title: Użyj przeglądarki zadania i widoku zadania dla zadań usługi Azure Data Lake Analytics | Dokumentacja firmy Microsoft
+description: 'Dowiedz się, jak używać przeglądarki zadania i widoku zadania dla zadań usługi Azure Data Lake Analytics. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: jgao
-ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Użyj przeglądarki zadania i widoku zadania dla zadań usługi Azure Data lake Analytics
 Usługa Azure Data Lake Analytics archiwa przesłanych zadania w [magazyn zapytań](#query-store). W tym artykule Dowiedz się jak używać przeglądarki zadania i widoku zadania w Azure Data Lake Tools dla programu Visual Studio można znaleźć informacje o zadaniu historycznych. 
@@ -31,7 +31,7 @@ Zobacz [narzędzi Data Lake Tools dla Visual Studio wymagania wstępne](data-lak
 ## <a name="open-the-job-browser"></a>Otwórz przeglądarkę z zadania
 Dostęp przeglądarki zadania za pomocą **Eksploratora serwera > Azure > usługi Data Lake Analytics > zadań** w programie Visual Studio.  Za pomocą przeglądarki zadania, można uzyskać dostępu do magazynu zapytań konta usługi Data Lake Analytics. Przeglądarka zadania są magazynu zapytań po lewej stronie, wyświetlane informacje podstawowe zadania, a widoku zadania w prawo Wyświetlanie szczegółowych informacji zadania.
 
-## <a name="job-view"></a>Zadania widoku
+## <a name="job-view"></a>Widok zadania
 Zadania widoku przedstawia szczegółowe informacje o zadaniu. Aby otworzyć zadania, kliknij dwukrotnie pozycję zadania w przeglądarce zadania lub otworzyć z menu usługi Data Lake, klikając widoku zadania. Powinny zostać wyświetlone okno dialogowe wypełniane przy użyciu adresu URL zadania.
 
 ![Data Lake Tools przeglądarki zadania programu Visual Studio](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
@@ -49,7 +49,7 @@ Zadania widoku zawiera:
       ![Fazy stan zadania usługi Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * Przygotowanie: Prześlij skrypt do chmury, kompilowania i optymalizowanie skryptu, za pomocą usługi kompilacji.
-    * W kolejce: Zadania są serwatki umieszczonych w kolejce, które czekają za mało zasobów lub zadania przekracza maksymalną zadań jednoczesnych na ograniczenie konta. Ustawienia priorytetu określa sekwencji zadań w kolejce - im niższy numer, tym wyższy priorytet.
+    * W kolejce: Są kolejkowane zadania podczas oczekiwania na za mało zasobów lub zadania przekracza maksymalną zadań jednoczesnych na ograniczenie konta. Ustawienia priorytetu określa sekwencji zadań w kolejce - im niższy numer, tym wyższy priorytet.
     * Uruchomiona: Zadanie rzeczywiście jest uruchomiona na koncie usługi Data Lake Analytics.
     * Finalizowanie: Kończy zadanie (na przykład: Trwa kończenie pliku).
       
@@ -73,7 +73,7 @@ Zadania widoku zawiera:
     * Odczyt/zapisanych bajtów: bajtów, które zostały odczytana/zapisana od uruchomienia zadania.
     * Łącznie wierzchołków: zadanie jest podzielony na wiele elementów pracy, każdy element pracy jest nazywany wierzchołka. Ta wartość opisuje liczbę fragmentów zadań zadanie składa się z. Należy rozważyć wierzchołek jako jednostka podstawowy proces alias Azure Data Lake Analytics jednostki (ADLAU), i wierzchołków mogą być uruchamiane w równoległości. 
     * Ukończono/uruchomiona/nie powiodło się: Liczba wierzchołków zakończone lub uruchomiona/nie powiodła się. Wierzchołki może zakończyć się niepowodzeniem z powodu błędów kodu i systemu zarówno użytkowników, ale ponownych prób systemu nie wierzchołków automatycznie kilka razy. Jeśli wierzchołka nadal nie powiodło się po ponowieniu próby, całą pracę zakończy się niepowodzeniem.
-* Wykres zadania
+* Graf zadania
   
     Skrypt U-SQL reprezentuje logiki przekształcania danych wejściowych w danych wyjściowych. Skrypt jest kompilowane i optymalizowane w ramach planu wykonywania fizycznych w fazie Preparing. Wykres zadania jest Pokaż plan wykonania fizycznego.  Na poniższym diagramie przedstawiono proces:
   
@@ -135,7 +135,7 @@ Zadania widoku zawiera:
     * Godziny obliczeniowe: Mapa cieplna SUM (co czas wykonania wierzchołka), można rozważyć to jak długo zajmie, jeśli wszystkie prace w fazie jest wykonywane z tylko 1 wierzchołka.
     * Średni czas wykonania węzła: Mapa cieplna sum (co czas wykonania wierzchołka) / (liczba wierzchołków). Co oznacza, jeżeli można przypisać wszystkich wierzchołków wykonywane w równoległości, całe etapie zostaną wykonane w tym przedziale czasu.
     * Przepływność wejścia/wyjścia: Mapa cieplna przepustowość operacji We/Wy każdego etapu, można potwierdzić, jeśli zadanie jest powiązane zadanie we/wy przez to.
-* Operacji na metadanych
+* Operacje dotyczące metadanych
   
     Można wykonać operacji na metadanych za pomocą skryptu U-SQL, takich jak tworzenie bazy danych, drop table itd. Te operacje są wyświetlane w metadanych operacji po kompilacji. Może znaleźć potwierdzeń, Utwórz jednostki, w tym miejscu upuść jednostek.
   

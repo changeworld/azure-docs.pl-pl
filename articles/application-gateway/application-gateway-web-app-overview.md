@@ -1,11 +1,11 @@
 ---
-title: "Omówienie wielodostępnych zapleczy w usłudze Azure Application Gateway | Microsoft Docs"
-description: "Ta strona zawiera omówienie obsługi wielodostępnych zapleczy w usłudze Application Gateway."
+title: Omówienie wielodostępnych zapleczy w usłudze Azure Application Gateway | Microsoft Docs
+description: Ta strona zawiera omówienie obsługi wielodostępnych zapleczy w usłudze Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
-ms.openlocfilehash: d093af064bca46aa1f454b61b1099f47f61ccd33
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f5ec916fcf45734ab85751e749bd6bb312f05b1a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Obsługa wielodostępnych zapleczy w usłudze Application Gateway
 
@@ -32,7 +32,7 @@ Możliwość określenia przesłonięcia hosta jest definiowana w ustawieniach H
 2. Możliwość uzyskiwania nazwy hosta na podstawie adresu IP lub nazwy FQDN składowych puli zaplecza. Ustawienia HTTP udostępniają również możliwość wyboru nazwy hosta z nazwy FQDN składowej puli zaplecza, jeśli jest skonfigurowana z opcją pobierania nazwy hosta na podstawie poszczególnych składowych puli zaplecza. W przypadku korzystania z kompleksowej usługi SSL ta nazwa hosta jest określana na podstawie nazwy FQDN i używana w rozszerzeniu SNI. Ta funkcja umożliwia obsługę scenariuszy, w których pula zaplecza może mieć dwie lub więcej wielodostępnych usług PaaS, takich jak usługa Azure Web Apps, a nagłówek hosta żądania do każdego członka zawiera nazwę hosta pochodzącą od jego nazwy FQDN.
 
 > [!NOTE]
-> W obu powyższych przypadkach ustawienia mają wpływ tylko na aktywny ruch sieciowy, a nie na zachowanie sondy kondycji. Niestandardowe sondy już obsługują możliwość określenia nagłówka hosta w konfiguracji sondowania. Niestandardowe sondy obecnie obsługują również możliwość określania zachowania nagłówka hosta na podstawie aktualnie skonfigurowanych ustawień HTTP. Tę konfigurację można określić za pomocą parametru `PickHostNameFromback endAddress` w konfiguracji sondowania. Aby kompleksowa funkcja działała, ustawienia sondowania i ustawienia HTTP muszą zostać zmodyfikowane w celu odzwierciedlenia prawidłowej konfiguracji.
+> W obu powyższych przypadkach ustawienia mają wpływ tylko na aktywny ruch sieciowy, a nie na zachowanie sondy kondycji. Niestandardowe sondy już obsługują możliwość określenia nagłówka hosta w konfiguracji sondowania. Niestandardowe sondy obecnie obsługują również możliwość określania zachowania nagłówka hosta na podstawie aktualnie skonfigurowanych ustawień HTTP. Tę konfigurację można określić za pomocą parametru `PickHostNameFromBackendHttpSettings` w konfiguracji sondowania. Aby kompleksowa funkcja działała, ustawienia sondowania i ustawienia HTTP muszą zostać zmodyfikowane w celu odzwierciedlenia prawidłowej konfiguracji.
 
 Korzystając z tej funkcji, klienci mogą określić opcje w ustawieniach HTTP i niestandardowe sondy na potrzeby prawidłowej konfiguracji. To ustawienie jest następnie wiązane z odbiornikiem i pulą zaplecza przy użyciu reguły.
 

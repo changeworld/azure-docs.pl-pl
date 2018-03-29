@@ -1,6 +1,6 @@
 ---
-title: "Hybrydowy proces roboczy elementu runbook usługi Azure Automation (Windows)"
-description: "Ten artykuł zawiera informacje na temat instalowania Azure hybrydowego procesu roboczego Runbook automatyzacji, który służy do uruchamiania elementów runbook na komputerach z systemem Windows w lokalnym centrum danych lub w środowisku chmury."
+title: Hybrydowy proces roboczy elementu runbook usługi Azure Automation (Windows)
+description: Ten artykuł zawiera informacje na temat instalowania Azure hybrydowego procesu roboczego Runbook automatyzacji, który służy do uruchamiania elementów runbook na komputerach z systemem Windows w lokalnym centrum danych lub w środowisku chmury.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c03b124e21603056219a6ff6458469b4ecd60969
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fa74f2e2d8fb9fc9f11810a4af4978fb4b443bcc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie systemu Windows hybrydowego Runbook Worker
 
@@ -68,7 +68,7 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
         -ResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
         -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfOMSWorkspace>
 
-4. Zostanie wyświetlony monit o zgodę na instalowanie **NuGet** i zostanie wyświetlony monit o uwierzytelniania przy użyciu poświadczeń platformy Azure.<br><br> ![Wykonanie skryptu OnPremiseHybridWorker nowy](media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
+4. Zostanie wyświetlony monit o zgodę na instalowanie **NuGet** i zostanie wyświetlony monit o uwierzytelniania przy użyciu poświadczeń platformy Azure.<br><br>![Wykonanie skryptu OnPremiseHybridWorker nowy](/media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
 5. Po zakończeniu skrypt strony hybrydowego procesu roboczego grup wyświetli nową grupę i liczby elementów członkowskich lub jeśli istniejącą grupę, do liczby elementów członkowskich jest zwiększany.  Można zaznaczyć grupę z listy na **hybrydowego procesu roboczego grupy** i wybrać opcję **hybrydowych procesów roboczych** kafelka.  Na **hybrydowych procesów roboczych** strony, zobacz każdego członka grupy na liście.  
 

@@ -1,24 +1,24 @@
 ---
-title: "Za pomocą usługi Azure CLI 2.0 z usługą Azure Storage | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) 2.0, z usługą Azure Storage, aby utworzyć i zarządzać kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure. Azure CLI 2.0 to narzędzie i platform napisanych w języku Python."
+title: Za pomocą usługi Azure CLI 2.0 z usługą Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) 2.0, z usługą Azure Storage, aby utworzyć i zarządzać kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure. Azure CLI 2.0 to narzędzie i platform napisanych w języku Python.
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: tamram
-ms.openlocfilehash: 509c702054961c9d9fa525242ce0542059e32d81
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: rogarana
+ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Za pomocą usługi Azure CLI 2.0 z usługą Azure Storage
 
@@ -95,10 +95,10 @@ Subgroups:
 
 Do pracy z zasobami w Twojej subskrypcji platformy Azure, musi najpierw logujesz się do konta platformy Azure z `az login`. Istnieje kilka metod, które możesz zalogować się:
 
-* **Logowanie interakcyjne**:`az login`
-* **Zaloguj się przy użyciu nazwy użytkownika i hasła**:`az login -u johndoe@contoso.com -p VerySecret`
+* **Logowanie interakcyjne**: `az login`
+* **Zaloguj się przy użyciu nazwy użytkownika i hasła**: `az login -u johndoe@contoso.com -p VerySecret`
   * To nie działa z konta Microsoft lub konta, które korzystają z uwierzytelniania wieloskładnikowego.
-* **Zaloguj się przy użyciu nazwy głównej usługi**:`az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+* **Zaloguj się przy użyciu nazwy głównej usługi**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
 ## <a name="azure-cli-20-sample-script"></a>Azure CLI 2.0 przykładowy skrypt
 
@@ -146,11 +146,11 @@ echo "Done"
 
 3. Po zaktualizowaniu niezbędne zmienne zapisać skrypt, a następnie zamknij Edytor. Następnych krokach założono nazwanego skryptu **my_storage_sample.sh**.
 
-4. Należy oznaczyć skrypt jako plik wykonywalny, w razie potrzeby:`chmod +x my_storage_sample.sh`
+4. Należy oznaczyć skrypt jako plik wykonywalny, w razie potrzeby: `chmod +x my_storage_sample.sh`
 
-5. Uruchom skrypt. Na przykład w Bash:`./my_storage_sample.sh`
+5. Uruchom skrypt. Na przykład w Bash: `./my_storage_sample.sh`
 
-Powinny pojawić się dane wyjściowe podobne do następujących i  **\<destination_file\>**  podana w skrypcie powinien zostać wyświetlony na komputerze lokalnym.
+Powinny pojawić się dane wyjściowe podobne do następujących i **\<destination_file\>** podana w skrypcie powinien zostać wyświetlony na komputerze lokalnym.
 
 ```
 Creating the container...
@@ -187,10 +187,10 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location`[Wymagane]: lokalizacji. Na przykład "zachodnie stany USA".
-* `--name`[Wymagane]: Nazwa konta magazynu. Nazwa musi składać się z 3 do 24 znaków i zawierać tylko małe znaki alfanumeryczne.
-* `--resource-group`[Wymagane]: Nazwa grupy zasobów.
-* `--sku`[Wymagane]: Konto magazynu wersji. Dozwolone wartości:
+* `--location` [Wymagane]: lokalizacji. Na przykład "zachodnie stany USA".
+* `--name` [Wymagane]: Nazwa konta magazynu. Nazwa musi składać się z 3 do 24 znaków i zawierać tylko małe znaki alfanumeryczne.
+* `--resource-group` [Wymagane]: Nazwa grupy zasobów.
+* `--sku` [Wymagane]: Konto magazynu wersji. Dozwolone wartości:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
@@ -236,7 +236,7 @@ az storage container create --name <container_name>
 
 Można ustawić jedną z trzech poziomów dostępu do odczytu dla nowego kontenera, określając opcjonalny `--public-access` argumentu:
 
-* `off`(domyślnie): dane w kontenerze są prywatne dla właściciela konta.
+* `off` (domyślnie): dane w kontenerze są prywatne dla właściciela konta.
 * `blob`: Publiczny dostęp do odczytu obiektów blob.
 * `container`: Publiczny dostęp do odczytu i listy do całego kontenera.
 
@@ -396,7 +396,7 @@ Przykładowe dane wyjściowe
 
 ### <a name="list-share-snapshots"></a>Lista udziału migawki
 
-Możesz podać migawek udział w udziale określonym za pomocą`az storage share list --include-snapshots`
+Możesz podać migawek udział w udziale określonym za pomocą `az storage share list --include-snapshots`
 
 ```cli
 az storage share list --include-snapshots
@@ -439,7 +439,7 @@ az storage share list --include-snapshots
 ```
 
 ### <a name="browse-share-snapshots"></a>Przeglądaj migawki udziału
-Może również przeglądania do migawki, aby wyświetlić jego zawartości przy użyciu akcji `az storage file list`. Trzeba określić nazwę udziału `--share-name <snare name>` i znacznik czasu`--snapshot '2017-10-04T19:45:18.0000000Z'`
+Może również przeglądania do migawki, aby wyświetlić jego zawartości przy użyciu akcji `az storage file list`. Trzeba określić nazwę udziału `--share-name <snare name>` i znacznik czasu `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive
 az storage file list --share-name sharesnapshotdefs --snapshot '2017-10-04T19:45:18.0000000Z' -otable

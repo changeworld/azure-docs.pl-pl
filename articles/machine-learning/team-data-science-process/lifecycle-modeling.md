@@ -1,24 +1,24 @@
 ---
-title: "Modelowanie etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft"
-description: "Cele, zadań i elementów dostarczanych w etapie modelowania projektów analizy danych"
+title: Modelowanie etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
+description: Cele, zadań i elementów dostarczanych w etapie modelowania projektów analizy danych
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: a7fc5f2128e9c13182ca5bd7a6bd61ae41ef775c
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 8ef76e32e0a78f4ca492e6ac6d5755fdf19e734c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="modeling"></a>Modelowanie
 
@@ -80,7 +80,7 @@ Artefakty utworzone na tym etapie obejmują:
      * Modelu odpowiedzi na pytanie, bez obaw wystarczające podanych danych testowych 
      * Czy Wypróbuj żadnych alternatywnych metod? Należy zbierać dodatkowe dane, czy więcej engineering funkcji lub wypróbować inne algorytmy?
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto łącza do każdego kroku w cyklu TDSP:
 

@@ -1,6 +1,6 @@
 ---
 title: Importuj dane usługi Analiza dzienników Azure do usługi Power BI | Dokumentacja firmy Microsoft
-description: Usługa Power BI jest oparte na chmurze usługi analizy biznesowej firmy Microsoft, który udostępnia zaawansowane wizualizacje i raporty do analizy różne zestawy danych.  W tym artykule opisano sposób konfigurowania importowania analizy dzienników danych do usługi Power BI i skonfigurować go do automatycznego odświeżania.
+description: Usługa Power BI jest oparte na chmurze usługi analizy biznesowej firmy Microsoft, który udostępnia zaawansowane wizualizacje i raporty do analizy różne zestawy danych.  W tym artykule opisano sposób konfigurowania i zaimportuj dane analizy dzienników do usługi Power BI i skonfigurować jej automatyczne odświeżenie.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 6d7f8f89f90223dc5dd186a63b3912a13910cb34
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 725828c2acc5ac4bb53c5e6af14d20578a3d3652
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Importuj dane usługi Analiza dzienników Azure do usługi Power BI
 
 
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest oparte na chmurze usługi analizy biznesowej firmy Microsoft, który udostępnia zaawansowane wizualizacje i raporty do analizy różne zestawy danych.  Wyniki wyszukiwania dziennika analizy dzienników można importować do zestawu danych usługi Power BI dzięki można korzystać z jego suchas funkcje w procesie łączenia danych z różnych źródeł i udostępnianie raportów w sieci web i urządzeń przenośnych.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) jest oparte na chmurze usługi analizy biznesowej firmy Microsoft, który udostępnia zaawansowane wizualizacje i raporty do analizy różne zestawy danych.  Wyniki wyszukiwania dziennika analizy dzienników można zaimportować do usługi Power BI zestawu danych, można wykorzystać jej funkcje, takie jak udostępnianie raportów w sieci web i urządzeń przenośnych i łączenie danych z różnych źródeł.
 
 ## <a name="overview"></a>Przegląd
 Aby zaimportować dane z obszaru roboczego analizy dzienników do usługi Power BI, należy utworzyć zestawu danych w usłudze Power BI na podstawie zapytania wyszukiwania dziennika w analizy dzienników.  Zapytanie jest uruchamiane na każdym odświeżeniu zestawu danych.  Następnie można tworzyć raporty usługi Power BI, które używają danych z zestawu danych.  Można utworzyć zestawu danych w usłudze Power BI, możesz wyeksportować zapytania z analizy dzienników do [języka Power Query (M)](https://msdn.microsoft.com/library/mt807488.aspx).  Następnie wykorzystać te informacje, aby utworzyć zapytanie w programie Power BI Desktop, a następnie opublikować go do usługi Power BI jako zestawu danych.  Szczegóły tego procesu są opisane poniżej.

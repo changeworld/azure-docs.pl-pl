@@ -1,23 +1,23 @@
 ---
-title: "Projekty - Azure zespołowe platform i narzędzia do analizy danych | Dokumentacja firmy Microsoft"
-description: "Itemizes i omówiono dostępnych dla przedsiębiorstw standaryzacji na proces nauki danych zespołu zasobów danych i ich analiza."
-documentationcenter: 
+title: Projekty - Azure zespołowe platform i narzędzia do analizy danych | Dokumentacja firmy Microsoft
+description: Itemizes i omówiono dostępnych dla przedsiębiorstw standaryzacji na proces nauki danych zespołu zasobów danych i ich analiza.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 404e3dd106edf82f4f22e4c6a17987bd0bc51f65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Projekty zespołowe platform i narzędzia do analizy danych
 
@@ -30,8 +30,8 @@ Usługi danych i ich analiza, które muszą być dostępne dla zespołów nauki 
 - SQL Data Warehouse
 - Azure Data Lake
 - Klastry HDInsight Hive
-- Magazyn plików Azure
-- Usług SQL Server 2016 R
+- Azure File Storage
+- SQL Server 2016 R Services
 
 W tym dokumencie możemy krótko opisano zasobów i udostępniają linki do samouczki i wskazówki dotyczące zespołów TDSP zostały opublikowane. Ułatwiają one informacje o sposobie korzystania z nich krok po kroku i Rozpocznij korzystanie z nich do tworzenia aplikacji inteligentnego. Więcej informacji na temat tych zasobów jest dostępna na swoich stronach produktu. 
 
@@ -89,14 +89,14 @@ Dla analityków danych Hive można uruchomić Python User-Defined funkcjom defin
 Aby uzyskać więcej informacji dotyczących klastrów Hive HDInsight Azure, zobacz [używanie Hive i HiveQL z usługą Hadoop w usłudze HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md). Aby dowiedzieć się, jak zbudować rozwiązanie nauki skalowalne danych na trasie o Azure Hive w usłudze Hdinsight, zobacz [zespołu danych nauki procesu w działaniu: z użyciem klastrów usługi HDInsight Hadoop](hive-walkthrough.md).
 
 
-## <a name="azure-file-storage"></a>Magazyn plików Azure 
+## <a name="azure-file-storage"></a>Azure File Storage 
 
 Magazyn plików Azure to usługa, która oferuje udziały plików w chmurze przy użyciu standardowego protokołu bloku komunikatów serwera (SMB). Obsługiwane są wersje 2.1 i 3.0 protokołu SMB. W usłudze Magazyn plików Azure można migrować starsze aplikacje korzystające z udziałów plików na platformę Azure szybko i bez kosztownych modyfikacji oprogramowania. Aplikacje uruchomione na maszynach wirtualnych lub w ramach usług w chmurze platformy Azure, a także na klientach lokalnych mogą instalować udziały plików w chmurze tak samo jak aplikacja na komputerze instalująca typowy udział SMB. Dowolna liczba składników aplikacji może następnie równocześnie zainstalować udział Magazynu plików i uzyskiwać do niego dostęp.
 
 Szczególnie przydatna w przypadku projektów analizy danych jest możliwość tworzenia magazyn plików Azure na potrzeby udostępniania danych projektu członkowie zespołu projektu. Następnie każdego z nich ma dostęp do tej samej kopii danych w usłudze magazyn plików Azure. Ten magazyn plików mogą również wykorzystać do udostępniania funkcji zestawów wygenerowanych podczas realizacji projektu. Jeśli projekt jest zaangażowania klientów, klientów można utworzyć magazyn plików Azure w ramach własnej subskrypcji Azure o udostępnienie danych projektu i funkcje. W ten sposób klient ma pełną kontrolę nad zasobów danych projektu. Aby uzyskać więcej informacji na magazyn plików Azure, zobacz [Rozpoczynanie pracy z magazynem plików Azure w systemie Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) i [jak używać magazynu plików Azure z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 
-## <a name="sql-server-2016-r-services"></a>Usług SQL Server 2016 R
+## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
 
 R usługi (w database) udostępniają platformę do projektowania i wdrażania aplikacji inteligentnego, które można ujawnić nowych danych. Języka R bogaty i zaawansowane, w tym wiele pakietów udostępniane przez społeczność R służy do tworzenia modeli i generować prognoz na podstawie danych programu SQL Server. R usług (w database) języka R są zintegrowane z programem SQL Server, analytics są przechowywane w pobliżu danych, co eliminuje koszty i zagrożenia bezpieczeństwa związane z przenoszenia danych.
 
@@ -146,7 +146,7 @@ Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania polecenia git,
 - Wklej ssh klucza skopiowany w polu tekstowym, a następnie zapisz.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Pełne end-to-end wskazówki, które pokazują wszystkie kroki procesu **określonych scenariuszy** podawane są również. Wymieniono i połączone z opisami miniatur w [wskazówki przykład](walkthroughs.md) tematu. Pokazują one sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
 

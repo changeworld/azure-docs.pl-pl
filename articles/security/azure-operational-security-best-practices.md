@@ -1,12 +1,12 @@
 ---
-title: "Usługa Azure Operational najlepsze rozwiązania | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw najlepszych rozwiązań dla usługi Azure Operational zabezpieczeń."
+title: Usługa Azure Operational najlepsze rozwiązania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw najlepszych rozwiązań dla usługi Azure Operational zabezpieczeń.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb7e0df046ecc2ffcd3fa59ac53edf36095933c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-operational-security-best-practices"></a>Usługa Azure Operational najlepsze rozwiązania
 Azure bezpieczeństwa operacyjnego odwołuje się do usług, formanty i funkcje dostępne dla użytkowników do ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. Operacyjne zabezpieczeń platformy Azure w oparciu o strukturę, która zawiera wiedzę za pośrednictwem różnych funkcji, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development Lifecycle (SDL), program Microsoft Security Response Center i głębokie pogłębianie wiedzy na temat zagrożeń bezpieczeństwa.
@@ -167,12 +167,12 @@ Aby dowiedzieć się więcej na temat sposobu konfigurowania obserwatora sieciow
 Są to listy z Azure DevOps praktyk w tym miejscu Microsoft Cloud, co pozwala firmom i zespołom produktywności i wydajne.
 
 -   **Infrastruktura jako kodu (IaC):** infrastruktury jako kod to zestaw metod i rozwiązań, które pomagają specjalistom IT Usuń obciążeń związanych z dnia na dzień kompilacji i zarządzanie infrastrukturą moduły. Pozwala specjalistom IT do tworzenia i utrzymywania środowisku nowoczesnych serwera w sposób przypominający ten sposób deweloperzy oprogramowania tworzenia i obsługi kodu aplikacji. Dla platformy Azure, mamy [usługi Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) umożliwia inicjowanie obsługi aplikacji przy użyciu szablonu deklaracyjnego. Pojedynczy szablon umożliwia wdrożenie wielu usług wraz z ich zależnościami. Za pomocą tego samego szablonu możesz wdrażać aplikację na każdym etapie jej cyklu życia.
--   **Ciągłej integracji i wdrażania:** można skonfigurować programu Visual Studio Online projektów zespołowych [automatycznie twórz i wdrażaj](https://www.visualstudio.com/docs/build/overview) do aplikacji sieci web platformy Azure lub usługi w chmurze. Usługi VSO automatycznie wdraża pliki binarne po wykonaniu tej kompilacji do platformy Azure po każdym ewidencjonowania kodu. Proces kompilacji pakietu opisane w tym miejscu jest odpowiednikiem polecenia pakietu w programie Visual Studio i kroki publikowania są równoważne polecenia Opublikuj w programie Visual Studio.
+-   **Ciągłej integracji i wdrażania:** projektów zespołowych Visual Studio Team Services (VSTS) można skonfigurować [automatycznie twórz i wdrażaj](https://www.visualstudio.com/docs/build/overview) do aplikacji sieci web platformy Azure lub usługi w chmurze. VSTS automatycznie wdraża pliki binarne po wykonaniu tej kompilacji do platformy Azure po każdym ewidencjonowania kodu. Proces kompilacji pakietu opisane w tym miejscu jest odpowiednikiem polecenia pakietu w programie Visual Studio i kroki publikowania są równoważne polecenia Opublikuj w programie Visual Studio.
 -   **Zarządzanie zleceniami:** programu Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) to doskonałe rozwiązanie do automatyzacji wdrażania wieloetapowym i zarządzanie procesem wersji. Utwórz potoki zarządzanych ciągłe wdrażanie zwolnienia szybkie, łatwe i często. Możemy znacznie automatyzacji procesu wersji Release Management i firma Microsoft może wstępnie zdefiniowanych przepływów pracy. Wdrażanie lokalnej i w chmurze, należy rozszerzyć i dostosować zgodnie z wymaganiami.
 -   **Monitorowanie wydajności aplikacji:** wykrywania problemów, rozwiązywania problemów i stale poprawiaj swoje aplikacje. Szybko diagnozuj problemy w działającej aplikacji. Dowiedz się, do czego używają jej użytkownicy. Konfiguracja polega łatwe dodawanie kodu Javascript i wpis webconfig i wyświetlić wyniki w ciągu minut w portalu ze wszystkimi szczegółami. [App insights](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) pomaga firmom dla szybsze wykrywanie problemów i korygowanie.
--   **Ładowanie testowanie & skalowania automatycznego:** znaleźliśmy problemy z wydajnością w naszej aplikacji w celu poprawy jakości wdrożenia i upewnij się, że aplikacji jest zawsze tworzona lub dostępne w celu zaspokojenia biznesową potrzeb. Upewnij się, że aplikacja może obsługiwać ruch kampanii następnego uruchomienia lub marketing. Uruchamianie oparte na chmurze [testy obciążenia](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) prawie czas z programu Visual Studio Online.
+-   **Ładowanie testowanie & skalowania automatycznego:** znaleźliśmy problemy z wydajnością w naszej aplikacji w celu poprawy jakości wdrożenia i upewnij się, że aplikacji jest zawsze tworzona lub dostępne w celu zaspokojenia biznesową potrzeb. Upewnij się, że aplikacja może obsługiwać ruch kampanii następnego uruchomienia lub marketing. Uruchamianie oparte na chmurze [testy obciążenia](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) prawie czas z usługi VSTS.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [bezpieczeństwa operacyjnego Azure](https://docs.microsoft.com/azure/security/azure-operational-security).
 - Aby dowiedzieć się więcej [Operations Management Suite | Bezpieczeństwo i zgodność](https://www.microsoft.com/cloud-platform/security-and-compliance).
 - [Wprowadzenie do programu Operations Management Suite zabezpieczeń i rozwiązanie inspekcji](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started).
