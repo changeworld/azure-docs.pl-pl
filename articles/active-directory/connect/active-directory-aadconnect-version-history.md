@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 0fd653b1a4058ce4284bf87b0b9152a264581e5c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 8bae1140d4a3ac4762bdcbabb16851d29415a8fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect z nowych funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich grup odbiorców.
@@ -37,12 +37,12 @@ Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz
 Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="117500"></a>1.1.750.0
-Stan: Wydane do wybranych klientów, które tej wersji jest obecnie dystrybuowane do zaznaczonych małych i losowe dzierżawcy programu AADConnect została włączona automatycznej aktualizacji. Firma Microsoft będzie Rozwiń tę grupę, dzierżawców w najbliższych tygodniach aż do 100% automatycznego uaktualnienia klientów otrzymali tej wersji. Po tym będzie ogłoszeniem kompilacji do pobrania ogólne powyżej łącze pobierania.
+Stan 2018-3/22: wydane dla automatycznego uaktualnienia i pobierania.
 >[!NOTE]
 >Po zakończeniu uaktualniania do tej nowej wersji automatycznie spowodują uruchomienie pełnej synchronizacji i pełny import dla łącznika usługi Azure AD i pełnej synchronizacji dla łącznika usługi AD. Ponieważ to może zająć trochę czasu, w zależności od wielkości środowiska Azure AD Connect upewnij się, czy wykonano czynności niezbędnych do obsługi to lub Wstrzymaj się na temat uaktualniania, aby znaleźć dogodnym momencie Aby to zrobić.
 
 >[!NOTE]
->"AutoUpgrade funkcja została niepoprawnie wyłączona dla niektórzy dzierżawcy przez kompilacje później niż 1.1.524.0. Aby upewnić się, że Twoje wystąpienie usługi Azure AD Connect jest nadal uprawnia do skorzystania z AutoUpgrade, uruchom następujące polecenie cmdlet programu PowerShell: "Set ADSyncAutoUpgrade - AutoupGradeState AutoUpgradeConfigurationState.Enabled"?
+>"Funkcji AutoUpgrade niepoprawnie zostało wyłączone dla niektórych dzierżawców, którzy później niż 1.1.524.0 wdrożone kompilacji. Aby upewnić się, że Twoje wystąpienie usługi Azure AD Connect jest nadal uprawnia do skorzystania z AutoUpgrade, uruchom następujące polecenie cmdlet programu PowerShell: "Set ADSyncAutoUpgrade - AutoupGradeState Enabled"
 
 
 ### <a name="azure-ad-connect"></a>Program Azure AD Connect

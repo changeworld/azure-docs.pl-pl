@@ -1,6 +1,6 @@
 ---
-title: "Samouczek środowiska node.js dla interfejsu API SQL dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Samouczek środowiska Node.js, która tworzy DB rozwiązania Cosmos przy użyciu interfejsu API SQL."
+title: Samouczek środowiska node.js dla interfejsu API SQL dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Samouczek środowiska Node.js, która tworzy DB rozwiązania Cosmos przy użyciu interfejsu API SQL.
 keywords: samouczek node.js, baza danych node
 services: cosmos-db
 documentationcenter: node.js
@@ -15,11 +15,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: anhoh
-ms.openlocfilehash: 3cfea11e70309c56f991f5d563649741c675c907
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: de1ac7cb11f3e0d9c2de6dd3e5f635a9c508b2d2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nodejs-tutorial-use-the-sql-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Samouczek środowiska node.js: tworzenie aplikacji konsoli Node.js za pomocą interfejsu API SQL w usłudze Azure DB rozwiązania Cosmos
 > [!div class="op_single_selector"]
@@ -31,8 +31,6 @@ ms.lasthandoff: 01/23/2018
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Witamy w samouczku środowiska Node.js dla zestawu SDK środowiska Node.js usługi Azure Cosmos DB! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.
 
@@ -64,7 +62,7 @@ Upewnij się, że masz:
 * [Node.js](https://nodejs.org/) w wersji 0.10.29 lub nowszej.
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Krok 1. Tworzenie konta usługi Azure Cosmos DB
-Utwórzmy konto usługi Azure Cosmos DB. Jeśli masz już konto, którego chcesz użyć, możesz przejść od razu do [skonfigurować aplikację Node.js](#SetupNode). Jeśli używasz emulatora usługi Azure rozwiązania Cosmos bazy danych, wykonaj kroki opisane w temacie [Azure rozwiązania Cosmos DB emulatora](local-emulator.md) skonfigurować emulatora i przejść od razu do [skonfigurować aplikację Node.js](#SetupNode).
+Utwórzmy konto usługi Azure Cosmos DB. Jeśli masz już konto, którego chcesz użyć, możesz przejść od razu do kroku [Konfigurowanie aplikacji Node.js](#SetupNode). Jeśli używasz emulatora usługi Azure rozwiązania Cosmos bazy danych, wykonaj kroki opisane w temacie [Azure rozwiązania Cosmos DB emulatora](local-emulator.md) skonfigurować emulatora i przejść od razu do [skonfigurować aplikację Node.js](#SetupNode).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 

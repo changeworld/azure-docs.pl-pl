@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: cfc789b3768c21efc7a03c11370b17ac6c3985cd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie usługi Azure Standard modułu równoważenia obciążenia
 
@@ -39,7 +39,7 @@ Jeden z kluczowych aspektów jest zakresem sieci wirtualnej dla zasobu.  Podstaw
 Zasoby usługi równoważenia obciążenia to obiekty w ramach których mogą express, jak program jego wielodostępnej infrastrukturze do osiągnięcia scenariusza, który chcesz utworzyć w usłudze Azure.  Nie ma żadnej bezpośredniej zależności między zasobami usługi równoważenia obciążenia i rzeczywistego infrastruktury. Tworzenie modułu równoważenia obciążenia nie tworzy wystąpienie, jest zawsze dostępna pojemność i istnieją nie uruchamiania lub skalowanie opóźnienia wziąć pod uwagę. 
 
 >[!NOTE]
-> Platforma Azure udostępnia mechanizm równoważenia rozwiązań dla scenariuszy pełni zarządzana obciążenia.  Jeśli szukasz rozwiązania TLS ("odciążanie protokołu SSL") lub przetwarzania warstwy aplikacji HTTP i HTTPS, przejrzyj [brama aplikacji w](../application-gateway/application-gateway-introduction.md).  Jeśli szukasz DNS globalnego równoważenia obciążenia, przejrzyj [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Scenariuszy end-to-end mogą korzystać z łączenia tych rozwiązań, zgodnie z potrzebami.
+> Platforma Azure udostępnia mechanizm równoważenia rozwiązań dla scenariuszy pełni zarządzana obciążenia.  Jeśli szukasz dla zakończenia połączenia TLS ("odciążanie protokołu SSL") lub na przetwarzanie warstwy aplikacji żądań HTTP i HTTPS, przejrzyj [brama aplikacji w](../application-gateway/application-gateway-introduction.md).  Jeśli szukasz DNS globalnego równoważenia obciążenia, przejrzyj [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Scenariuszy end-to-end mogą korzystać z łączenia tych rozwiązań, zgodnie z potrzebami.
 
 ## <a name="why-use-standard-load-balancer"></a>Dlaczego warto używać usługi równoważenia obciążenia standardowego?
 
@@ -58,7 +58,7 @@ Przejrzyj tabelę poniżej, aby zapoznać się z omówieniem różnice między s
 | Diagnostyka | Azure Monitor wielowymiarowych metryk, takich jak bajt i liczniki pakietów, kondycji sondowania stanu, próby połączenia (TCP SYN), kondycja połączenia wychodzącego (SNAT udane i nieudane przepływy), pomiarów płaszczyzny aktywnych danych | Azure Log Analytics publicznego równoważenia obciążenia, alert wyczerpania SNAT, liczba kondycji puli wewnętrznej bazy danych |
 | HA portów | Wewnętrzny moduł równoważenia obciążenia | / |
 | Bezpieczeństwo domyślne | domyślne zamknięty dla publicznych adresów IP i usługi równoważenia obciążenia punktów końcowych i grupy zabezpieczeń sieci musi być używany do jawnie dozwolone w przypadku ruchu przepływu | domyślny otwarty, grupy zabezpieczeń sieci opcjonalne |
-| Połączenia wychodzące | Wiele frontends z każdej reguły zrezygnować. Scenariusz wychodzących _musi_ jawnie można utworzyć maszyny wirtualnej można było użyć łączność wychodząca.  [Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) bez połączenia wychodzącego jest osiągalna, a nie wchodzą w skład dane przetworzone.  Publicznych adresów IP, takich jak usługi Azure PaaS nie jest dostępna jako punktów końcowych usługi sieci wirtualnej, musi być osiągnięta poprzez łączność wychodząca i count do przetwarzania danych. Połączenia wychodzące przez domyślny SNAT wyłącznie do wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, nie są dostępne. | Fronton jeden losowo wybrany, gdy istnieją frontends wiele.  Gdy tylko wewnętrzny moduł równoważenia obciążenia działa jako maszynę wirtualną, używana jest domyślna SNAT.  Wychodzący SNAT programowania w języku jest specyficzna dla protokołu transportu. |
+| Połączenia wychodzące | Wiele frontends z każdej reguły zrezygnować. Scenariusz wychodzących _musi_ jawnie można utworzyć maszyny wirtualnej można było użyć łączność wychodząca.  [Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) bez połączenia wychodzącego jest osiągalna, a nie wchodzą w skład dane przetworzone.  Publicznych adresów IP, takich jak usługi Azure PaaS nie jest dostępna jako punktów końcowych usługi sieci wirtualnej, musi być osiągnięta poprzez łączność wychodząca i count do przetwarzania danych. Połączenia wychodzące przez domyślny SNAT wyłącznie do wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, nie są dostępne. Wychodzące programowania SNAT jest protokołu transportowego określonej na podstawie protokołu reguły równoważenia obciążenia dla ruchu przychodzącego. | Fronton jeden losowo wybrany, gdy istnieją frontends wiele.  Gdy tylko wewnętrzny moduł równoważenia obciążenia działa jako maszynę wirtualną, używana jest domyślna SNAT. |
 | Wiele frontends | Przychodzące i wychodzące | Tylko transfer przychodzący |
 | Operacje zarządzania | Większość operacji < 30 sekund | 60-90 sekund typowe |
 | Umowa SLA | 99,99% dla ścieżki danych z maszynami wirtualnymi na dwóch dobrej kondycji | Niejawne w umowie SLA maszyny Wirtualnej | 
@@ -218,13 +218,9 @@ Standardowy moduł równoważenia obciążenia jest produktem obciążona, na po
 
 ## <a name="limitations"></a>Ograniczenia
 
-Następujące ograniczenia obowiązują w czasie Podgląd i mogą ulec zmianie:
-
 - W połączyć za pomocą sieci wirtualne w tej chwili nie można zlokalizować wystąpienia zaplecza modułu równoważenia obciążenia. Wszystkie wystąpienia zaplecza muszą być w tym samym regionie.
 - Jednostki SKU nie jest modyfikowalna. Nie możesz zmienić numer istniejącego zasobu.
 - Zasób autonomicznej maszyny wirtualnej zestawu dostępności zasobów lub zasobu zestawu skali maszyny wirtualnej może się odwoływać jednego identyfikatora jednostki Magazynowej, nigdy nie oba.
-- Włączenie ochrony przed atakami DDoS Azure w sieci wirtualnej ma wpływ na czas trwania operacji zarządzania.
-- Protokół IPv6 nie jest obsługiwany.
 - [Alerty monitora Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) nie są obsługiwane w tej chwili.
 - [Subskrypcja operacje są przenoszone](../azure-resource-manager/resource-group-move-resources.md) nie są obsługiwane dla standardowych LB jednostki SKU i PIP zasobów.
 

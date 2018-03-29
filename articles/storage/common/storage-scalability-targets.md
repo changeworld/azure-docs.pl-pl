@@ -1,10 +1,10 @@
 ---
-title: "Cele dotyczące wydajności i skalowalności magazynu platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o obiekty docelowe skalowalności i wydajności usługi Azure Storage, w tym pojemności, współczynnik żądań i przepustowości ruchu przychodzącego i wychodzącego dla obu kont magazynu standard i premium. Zrozumienie celów wydajności dla partycji w ramach każdej z usług Azure Storage."
+title: Cele dotyczące wydajności i skalowalności magazynu platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o obiekty docelowe skalowalności i wydajności usługi Azure Storage, w tym pojemności, współczynnik żądań i przepustowości ruchu przychodzącego i wychodzącego dla obu kont magazynu standard i premium. Zrozumienie celów wydajności dla partycji w ramach każdej z usług Azure Storage.
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/24/2017
-ms.author: tamram
-ms.openlocfilehash: f62f2020d40e473886cb679cdfe1c164b95f7114
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: rogarana
+ms.openlocfilehash: e393bb9e7615b893699caf5a931ede5803046892
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Cele usługi Azure Storage dotyczące skalowalności i wydajności
 ## <a name="overview"></a>Przegląd
@@ -63,6 +63,6 @@ Aby uzyskać więcej informacji na skalowalność i wydajność elementy docelow
 * [Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/storage/)
 * [Subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md)
 * [Replikacja usługi Azure Storage](../storage-redundancy.md)
-* [Wydajność magazynu Microsoft Azure i listę kontrolną skalowalności](../storage-performance-checklist.md)
+* [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../storage-performance-checklist.md)
 * [Microsoft Azure Storage: Wysokiej dostępności magazynu usługi w chmurze o wysoki poziom spójności](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

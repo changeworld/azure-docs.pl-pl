@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie funkcji dla danych magazynu obiektów blob platformy Azure przy użyciu Panda | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć funkcje dla danych przechowywanych w kontenerze obiektów blob platformy Azure z pakietem Panda Python."
+title: Tworzenie funkcji dla danych magazynu obiektów blob platformy Azure przy użyciu Panda | Dokumentacja firmy Microsoft
+description: Jak utworzyć funkcje dla danych przechowywanych w kontenerze obiektów blob platformy Azure z pakietem Panda Python.
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 7a2e64927f4afca87642fb4829166c5ec60dbc09
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: a5a4b92f04fcb4683f792263f3477ecea4d7239e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Tworzenie funkcji dla danych usługi Azure Blob Storage za pomocą usługi Panda
 Ten dokument przedstawia sposób tworzenia funkcji dla danych przechowywanych w użyciu kontenera obiektów blob platformy Azure [Pandas](http://pandas.pydata.org/) pakiet języka Python. Po zwijania jak załadować dane do ramki danych Panda, widoczny jest sposób generowania podzielone na kategorie funkcji za pomocą skryptów języka Python z wartościami wskaźnik i binning funkcji.

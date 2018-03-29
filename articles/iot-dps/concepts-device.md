@@ -1,26 +1,26 @@
 ---
-title: "Inicjowanie obsługi administracyjnej urządzeń Azure pojęcia dotyczące urządzenia | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano pojęcia specyficzne dla urządzeń z usługi udostępniania urządzenia i Centrum IoT aprowizacji urządzeń"
+title: Inicjowanie obsługi administracyjnej urządzeń Azure pojęcia dotyczące urządzenia | Dokumentacja firmy Microsoft
+description: W tym artykule opisano pojęcia specyficzne dla urządzeń z usługi udostępniania urządzenia i Centrum IoT aprowizacji urządzeń
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 09/05/2017
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5297bc57729d9e983d63244c71eb21995cf73f0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5482801461e2afea33d65d559723116f37a35d1f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Pojęcia dotyczące urządzenia inicjowania obsługi usługi IoT Hub urządzeń
 
-Usługa inicjowania obsługi urządzeń Centrum IoT to usługa pomocnika do Centrum IoT, które są używane do konfigurowania urządzenia bezobsługową alokacji dla określonego Centrum IoT. Przy użyciu usługi inicjowania obsługi urządzeń można udostępnić milionów urządzeń w sposób bezpieczny i skalowalności.
+Usługa inicjowania obsługi urządzeń Centrum IoT to usługa pomocnika do Centrum IoT, które są używane do konfigurowania urządzenia bezobsługową alokacji dla określonego Centrum IoT. Usługa Device Provisioning umożliwia udostępnianie milionów urządzeń w bezpieczny i skalowalny sposób.
 
 Ten artykuł zawiera omówienie *urządzenia* pojęcia związane z w Inicjowanie obsługi administracyjnej urządzeń. W tym artykule jest najodpowiedniejsze do osoby objętego [krok produkcyjnym](about-iot-dps.md#manufacturing-step) pobierania urządzenie jest gotowe do wdrożenia.
 
@@ -33,7 +33,7 @@ Mechanizm zaświadczania jest metoda stosowana do potwierdzenia tożsamości urz
 
 Usługa udostępniania urządzeń obsługuje dwa rodzaje poświadczenie:
 * **Certyfikaty X.509** oparte na przepływie standardowe uwierzytelnianie certyfikatu X.509.
-* **Tokeny sygnatury dostępu Współdzielonego** oparte na żądanie nonce kluczy przy użyciu standardowego modułu TPM. Ta sytuacja nie wymaga fizycznej modułu TPM na urządzeniu, ale usługa oczekuje, że poświadczenia przy użyciu klucza poręczenia na [specyfikacji modułu TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Zaufane TPM (Trusted Platform Module)** oparte na żądanie nonce, przy użyciu standardowego modułu TPM kluczy do prezentowania podpisany token dostępu sygnatury dostępu Współdzielonego. Ta sytuacja nie wymaga fizycznej modułu TPM na urządzeniu, ale usługa oczekuje, że poświadczenia przy użyciu klucza poręczenia na [specyfikacji modułu TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
 
 ## <a name="hardware-security-module"></a>Sprzętowy moduł zabezpieczeń
 

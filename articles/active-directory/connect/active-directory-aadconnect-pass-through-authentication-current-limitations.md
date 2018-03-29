@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Przekazywanego uwierzytelniania - bieżące ograniczenia | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano bieżące ograniczenia uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD)"
+title: 'Azure AD Connect: Przekazywanego uwierzytelniania - bieżące ograniczenia | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano bieżące ograniczenia uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD)
 services: active-directory
-keywords: "Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 680e9967010771b8e3651c6f4eed81237f8fb4c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Usługi Azure Active Directory przekazywanego uwierzytelniania: Bieżące ograniczenia
 
@@ -50,7 +50,7 @@ Poniższe scenariusze są _nie_ obsługiwane:
 - Program rejestracji urządzeń firmy Apple (DEP firmy Apple) przy użyciu Asystenta ustawień systemu iOS nie obsługuje nowoczesnego uwierzytelniania. To nie będzie można zarejestrować urządzeń DEP firmy Apple do usługi Intune dla domen zarządzanych przy użyciu przekazywanego uwierzytelniania. Należy rozważyć użycie [aplikacji Portal firmy](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/) jako alternatywę.
 
 >[!IMPORTANT]
->Jako obejścia nieobsługiwane scenariusze _tylko_, włączanie synchronizacji skrótów haseł na [funkcje opcjonalne](active-directory-aadconnect-get-started-custom.md#optional-features) strony kreatora programu Azure AD Connect.
+>Jako obejścia nieobsługiwane scenariusze _tylko_, włączanie synchronizacji skrótów haseł na [funkcje opcjonalne](active-directory-aadconnect-get-started-custom.md#optional-features) strony kreatora programu Azure AD Connect. Podczas logowania użytkowników do aplikacji na liście w "nieobsługiwanych scenariuszy" sekcji, te określone żądania logowania są _nie_ obsługiwany przez agentów uwierzytelniania przekazywanego i dlatego nie będą rejestrowane w [ Rejestruje uwierzytelniania przekazywanego](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs).
 
 >[!NOTE]
 Włączanie synchronizacji skrótów haseł umożliwia uwierzytelnianie trybu failover, jeśli jest zakłócona infrastruktury lokalnej. Ten tryb failover z uwierzytelniania przekazywanego synchronizacji skrótu hasła usługi Active Directory nie jest automatyczna. Musisz przełączyć metoda logowania ręcznie za pomocą usługi Azure AD Connect. Jeśli serwer z systemem Azure AD Connect ulegnie awarii, potrzebna pomoc od firmy Microsoft Support wyłączyć uwierzytelniania przekazywanego.

@@ -1,19 +1,20 @@
 ---
-title: "Samouczek dotyczący chronienia internetowego interfejsu API platformy ASP.NET za pomocą usługi Azure Active Directory B2C"
-description: "Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy ASP.NET i wywoływania go z aplikacji internetowej platformy ASP.NET."
+title: Samouczek dotyczący chronienia internetowego interfejsu API platformy ASP.NET za pomocą usługi Azure Active Directory B2C
+description: Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy ASP.NET i wywoływania go z aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
-author: PatAltimore
-ms.author: patricka
-ms.reviewer: saraford
+author: davidmu1
+manager: mtillman
+editor: ''
+ms.author: davidmu
 ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9f324cec0d242c013a461d8580abd4faa97c8d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>Samouczek: Chronienie internetowego interfejsu API platformy ASP.NET za pomocą usługi Azure Active Directory B2C
 

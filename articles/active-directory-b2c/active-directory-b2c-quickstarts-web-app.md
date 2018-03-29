@@ -1,23 +1,20 @@
 ---
-title: "Testowanie aplikacji internetowej z obsługą usługi Azure AD B2C"
-description: "Podręcznik Szybki start umożliwiający wypróbowanie przykładowej aplikacji internetowej platformy ASP.NET korzystającej z usługi Azure Active Directory B2C do udostępniania funkcji logowania użytkownika."
+title: Testowanie aplikacji internetowej z obsługą usługi Azure AD B2C
+description: Podręcznik Szybki start umożliwiający wypróbowanie przykładowej aplikacji internetowej platformy ASP.NET korzystającej z usługi Azure Active Directory B2C do udostępniania funkcji logowania użytkownika.
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
-ms.reviewer: saraford
+editor: ''
 ms.service: active-directory-b2c
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
-ms.author: patricka
-ms.openlocfilehash: 87c180445038b1205e2f6aab1ce721765ecb35c9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: davidmu
+ms.openlocfilehash: 7d6744fe7ef82a6a4f54291cedd15d5b3d4ee242
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-web-app"></a>Szybki start: testowanie aplikacji internetowej z obsługą usługi Azure AD B2C
 

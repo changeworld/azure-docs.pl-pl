@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2018
+ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 16ca821f7cae252148e8901c2ccb8539a25d1d59
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5c5c3dc20996fbbdee9f9ed61eb3b09e4b274d92
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Uproszczenie pisanie aplikacji i zarządzanie nimi z sieci szkieletowej usług za pomocą programu Visual Studio
 Można zarządzać sieć szkieletowa usług Azure, aplikacji i usług za pomocą programu Visual Studio. Po wprowadzeniu [Konfigurowanie środowiska deweloperskiego](service-fabric-get-started.md), można użyć programu Visual Studio do tworzenia aplikacji usługi Service Fabric, Dodaj rejestru usług lub pakietu i wdrażania aplikacji w klastrze lokalnym programowanie.
@@ -32,7 +32,7 @@ Domyślnie wdrażania aplikacji zawierają następujące kroki w jednej operacji
 4. Usunąć wszystkie uruchomione wystąpienia aplikacji
 5. Tworzenie wystąpienia aplikacji
 
-W programie Visual Studio naciskając klawisz **F5** wdraża aplikację i Dołącz debuger do wszystkich wystąpień aplikacji. Można użyć **Ctrl + F5** do wdrożenia aplikacji bez debugowania, lub można opublikować do klastra lokalnego lub zdalnego za pomocą profilu publikowania. 
+W programie Visual Studio naciskając klawisz **F5** wdraża aplikację i Dołącz debuger do wszystkich wystąpień aplikacji. Można użyć **Ctrl + F5** do wdrożenia aplikacji bez debugowania, lub można opublikować do klastra lokalnego lub zdalnego za pomocą profilu publikowania.
 
 ### <a name="application-debug-mode"></a>Tryb debugowania aplikacji
 Visual Studio Udostępnij właściwość o nazwie **tryb debugowania aplikacji**, która kontroluje sposób Visual Studio do obsługi wdrażania aplikacji w ramach debugowania.
@@ -45,7 +45,7 @@ Visual Studio Udostępnij właściwość o nazwie **tryb debugowania aplikacji**
 
 #### <a name="application-debug-modes"></a>Tryb debugowania aplikacji
 
-1. **Odświeżanie aplikacji** ten tryb pozwala na szybkie zmiany i debugować kod i obsługuje edycję plików statycznych sieci web podczas debugowania. W tym trybie działa tylko, jeśli klaster lokalny rozwój jest w [tryb węzła 1](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Jest to domyślny tryb debugowania aplikacji.
+1. **Odświeżanie aplikacji** ten tryb pozwala na szybkie zmiany i debugować kod i obsługuje edycję plików statycznych sieci web podczas debugowania. W tym trybie działa tylko wtedy, jeśli klaster lokalny rozwój jest w trybie [węzła 1]. Jest to domyślny tryb debugowania aplikacji. (/ service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
 2. **Usuń aplikację** powoduje, że aplikacja ma zostać usunięty podczas kończenia sesji debugowania.
 3. **Automatyczne uaktualnienie** aplikacji będzie kontynuował działanie podczas kończenia sesji debugowania. Następnej sesji debugowania, będą traktować jako uaktualnienia wdrożenia. Proces uaktualniania zachowuje dane, które wprowadzono w poprzedniej sesji debugowania.
 4. **Zachowaj aplikacji** aplikacja przechowuje uruchomiona w klastrze podczas kończenia sesji debugowania. Na początku następnej sesji debugowania aplikacji zostaną usunięte.

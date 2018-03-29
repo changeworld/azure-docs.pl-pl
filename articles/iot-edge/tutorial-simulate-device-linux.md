@@ -1,8 +1,8 @@
 ---
 title: Symulowanie Azure IoT Edge w systemie Linux | Dokumentacja firmy Microsoft
-description: "Instalowanie środowiska uruchomieniowego Azure IoT Edge na symulowane urządzenie w systemie Linux i wdrażanie pierwszego modułu"
+description: Instalowanie środowiska uruchomieniowego Azure IoT Edge na symulowane urządzenie w systemie Linux i wdrażanie pierwszego modułu
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 65a3f6d71c0c0d92f703a5d48760dd348c726ba4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Wdrażanie usługi Azure IoT krawędzi na symulowane urządzenie w systemie Linux lub MacOS — podglądu
 
@@ -37,7 +37,12 @@ W tym samouczku korzysta z komputera lub maszyny wirtualnej, takie jak urządzen
 
 * Python pip, aby zainstalować środowisko uruchomieniowe IoT krawędzi.
    * Linux: `sudo apt-get install python-pip`.
-   * System MacOS: `sudo easy_install pip`.
+     * _Należy pamiętać, że w niektórych dystrybucji (np. Raspbian), może być również konieczne uaktualnienie niektórych pakietów pip i zainstalować dodatkowe zależności:_
+     ```
+     sudo pip install --upgrade setuptools pip
+     sudo apt-get install python2.7-dev libffi-dev libssl-dev
+     ```
+   * MacOS: `sudo easy_install pip`.
 * Docker do uruchamiania krawędzi IoT modułów
    * [Zainstaluj dla systemu Linux Docker] [ lnk-docker-ubuntu] i upewnij się, że jest uruchomiona. 
    * [Zainstaluj Docker dla komputerów Mac] [ lnk-docker-mac] i upewnij się, że jest uruchomiona. 
@@ -70,7 +75,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 Skonfiguruj środowisko uruchomieniowe za pomocą parametrów połączenia urządzenia IoT krawędzi z poprzedniej sekcji:
 ```cmd
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Uruchom środowisko uruchomieniowe:

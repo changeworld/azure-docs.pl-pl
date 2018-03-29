@@ -1,13 +1,13 @@
 ---
-title: "Zarządzanie zestawy skalowania maszyny wirtualnej z platformy Azure CLI 2.0 | Dokumentacja firmy Microsoft"
-description: "Pojemność zestawu Typowe polecenia 2.0 interfejsu wiersza polecenia platformy Azure do zarządzania zestawy skalowania maszyny wirtualnej, takie jak jak uruchamianie i zatrzymywanie wystąpienie lub zmień skali."
+title: Zarządzanie zestawy skalowania maszyny wirtualnej z platformy Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: Pojemność zestawu Typowe polecenia 2.0 interfejsu wiersza polecenia platformy Azure do zarządzania zestawy skalowania maszyny wirtualnej, takie jak jak uruchamianie i zatrzymywanie wystąpienie lub zmień skali.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: a484cf6734ff663a852be1a46e2b2ca2f75bb17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1afb43b65203406a7d49b0e3f641bc22d164a4a9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Zarządzaj skalowania maszyny wirtualnej, ustaw 2.0 interfejsu wiersza polecenia platformy Azure
-W całym cyklu życia zestawu skali maszyny wirtualnej może być konieczne uruchomienie jednego lub więcej zadań zarządzania. Ponadto można tworzenia skryptów automatyzujących różnych zadań cyklu życia. Ten artykuł zawiera szczegóły dotyczące niektórych typowych poleceń Azure CLI 2.0, które umożliwiają wykonywanie tych zadań.
+W całym cyklu życia zestawu skali maszyny wirtualnej może być konieczne uruchomienie jednego lub więcej zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Ten artykuł zawiera szczegóły dotyczące niektórych typowych poleceń Azure CLI 2.0, które umożliwiają wykonywanie tych zadań.
 
-Aby wykonać te zadania zarządzania, należy ostatniej kompilacji Azure CLI 2.0. Aby uzyskać informacje na temat instalacji i korzystać z najnowszej wersji, zobacz [zainstalować 2.0 interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli). Jeśli musisz utworzyć zestaw skali maszyny wirtualnej, możesz [tworzenia skali w portalu Azure](virtual-machine-scale-sets-create-portal.md).
+Aby wykonać te zadania zarządzania, należy najnowsze 2.0 interfejsu wiersza polecenia platformy Azure. Aby uzyskać informacje, zobacz [zainstalować 2.0 interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli). Jeśli musisz utworzyć zestaw skali maszyny wirtualnej, możesz [tworzenia skali ustawić 2.0 interfejsu wiersza polecenia Azure](quick-create-cli.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>Wyświetl informacje o zestawie skali
@@ -35,7 +35,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 ```
 
 
-## <a name="view-vms-in-a-scale-set"></a>Maszyny wirtualne widoku w zestawie skalowania
+## <a name="view-vms-in-a-scale-set"></a>Wyświetlanie maszyn wirtualnych w zestawie skalowania
 Aby wyświetlić listę wystąpienia maszyny Wirtualnej w zestawie skalowania, użyj [wystąpienia listy az vmss](/cli/azure/vmss#list-instances). Poniższy przykład listy wszystkich wystąpień maszyn wirtualnych w zestaw o nazwie skalowania *myScaleSet* w *myResourceGroup* grupy zasobów. Należy podać własne wartości dla następujących nazw:
 
 ```azurecli
@@ -68,7 +68,7 @@ az vmss list-instance-connection-info \
 ## <a name="change-the-capacity-of-a-scale-set"></a>Zmień pojemność zestawu skalowania
 Powyższych poleceń pokazano informacji o zestawie skali i wystąpień maszyny Wirtualnej. Aby zwiększyć lub zmniejszyć liczbę wystąpień w zestawie skalowania, można zmienić pojemność. Zestaw skali tworzy lub usuwa wymaganej liczby maszyn wirtualnych, a następnie konfiguruje maszyn wirtualnych na odbieranie ruchu w ramach aplikacji.
 
-Aby wyświetlić liczbę wystąpień aktualnie zainstalowana w zestawie skalowania, użyj [Pokaż vmss az](/cli/azure/vmss#az_vmss_show) i wykonywać zapytania na *sku.capacity*:
+Aby wyświetlić liczbę bieżących wystąpień w zestawie skalowania, użyj polecenia [az vmss show](/cli/azure/vmss#az_vmss_show) i zapytania *sku.capacity*:
 
 ```azurecli
 az vmss show \
@@ -78,7 +78,7 @@ az vmss show \
     --output table
 ```
 
-Możesz ręcznie zwiększyć lub zmniejszyć liczbę maszyn wirtualnych w skali ustawiony za pomocą [skali vmss az](/cli/azure/vmss#az_vmss_scale). Poniższy przykład ustawia liczbę maszyn wirtualnych w skali, z ustawioną *5*:
+Następnie możesz ręcznie zwiększyć lub zmniejszyć liczbę maszyn wirtualnych w zestawie skalowania za pomocą polecenia [az vmss scale](/cli/azure/vmss#az_vmss_scale). Poniższy przykład ustawia liczbę maszyn wirtualnych w skali, z ustawioną *5*:
 
 ```azurecli
 az vmss scale \

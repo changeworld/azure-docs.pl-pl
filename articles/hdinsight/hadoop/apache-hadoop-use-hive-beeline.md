@@ -1,13 +1,13 @@
 ---
-title: "Beeline za pomocą Apache Hive — usługa Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak użyć klienta Beeline do uruchamiania zapytań Hive z usługą Hadoop w usłudze HDInsight. Narzędzie do pracy z serwera HiveServer2 za pośrednictwem JDBC jest beeline."
+title: Beeline za pomocą Apache Hive — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć klienta Beeline do uruchamiania zapytań Hive z usługą Hadoop w usłudze HDInsight. Narzędzie do pracy z serwera HiveServer2 za pośrednictwem JDBC jest beeline.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-keywords: "gałąź beeline, beeline gałęzi"
+keywords: gałąź beeline, beeline gałęzi
 ms.assetid: 3adfb1ba-8924-4a13-98db-10a67ab24fca
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/02/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 5d4e9d6ffb7fa0c2e4b69c5b534f0078aec5f68c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2beb42f51bbbf65abe7bb6d95579106cdf1857a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Apache Hive za pomocą klienta Beeline
 
@@ -110,7 +110,7 @@ Beeline jest klientem Hive, który znajduje się na head węzłów w klastrze us
         | sessionpagevieworder  | bigint     |          |
         +-----------------------+------------+----------+--+
 
-    Te informacje w tym artykule opisano kolumn w tabeli. Gdy można wykonać niektóre zapytań dotyczących tych danych, zamiast tego Utwórzmy nowy tabeli do pokazują, jak załadować dane do gałęzi i stosowanie schematu.
+    Te informacje w tym artykule opisano kolumn w tabeli.
 
 4. Wprowadź poniższe instrukcje, aby utworzyć tabelę o nazwie **log4jLogs** przy użyciu przykładowych danych dostarczone z klastrem usługi HDInsight:
 
@@ -143,7 +143,7 @@ Beeline jest klientem Hive, który znajduje się na head węzłów w klastrze us
 
     * `SELECT` -Wybiera liczbę wszystkich wierszy gdzie kolumna **t4** zawiera wartość **[Błąd]**. To zapytanie zwraca wartość **3** są trzy wiersze, które zawierają tę wartość.
 
-    * `INPUT__FILE__NAME LIKE '%.log'` -Hive próbuje stosowane do wszystkich plików w katalogu schematu. W takim przypadku katalog zawiera pliki, które nie pasuje do schematu. Aby zapobiec odzyskiwanie danych w wynikach, tej instrukcji informuje Hive, czy firma Microsoft powinno zwrócić dane tylko z plików w. dziennika.
+    * `INPUT__FILE__NAME LIKE '%.log'` -Hive próbuje stosowane do wszystkich plików w katalogu schematu. W takim przypadku katalog zawiera pliki, które nie pasuje do schematu. Aby zapobiec odzyskiwanie danych w wynikach, tej instrukcji informuje Hive, czy go powinno zwrócić dane tylko z plików w. dziennika.
 
   > [!NOTE]
   > Jeśli oczekujesz zaktualizowania za pomocą zewnętrznego źródła danych, należy użyć tabel zewnętrznych. Na przykład procesu przekazywania danych lub operacja MapReduce.

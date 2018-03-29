@@ -1,6 +1,6 @@
 ---
-title: "Użyj plików na platformę Azure z AKS"
-description: "Używać dysków Azure AKS"
+title: Użyj plików na platformę Azure z AKS
+description: Używać dysków Azure AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a5126bc4c5e7c9cd9832f33fc908e6c8b9e02b91
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 78f447c96afe7955f115de4bbd28015cd231bb53
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Woluminy trwałe pliki Azure
 
@@ -133,6 +133,37 @@ kubectl create -f azure-pvc-files.yaml
 ```
 
 Masz teraz pod uruchomiona z dysku platformy Azure, zamontowane w `/mnt/azure` katalogu. Widać instalacji podczas sprawdzania z pod za pośrednictwem woluminu `kubectl describe pod mypod`.
+
+## <a name="mount-options"></a>Opcje instalacji
+ 
+Domyślną wartością parametru fileMode i dirMode wartości różnią się między wersjami Kubernetes zgodnie z opisem w poniższej tabeli.
+ 
+| wersja | wartość |
+| ---- | ---- |
+| v1.6.x, v1.7.x | 0777 |
+| v1.8.0-v1.8.5 | 0700 |
+| V1.8.6 lub nowszy | 0755 |
+| v1.9.0 | 0700 |
+| V1.9.1 lub nowszy | 0755 |
+ 
+Jeśli przy użyciu klastra wersji 1.8.5 lub nowszego instalacji można określić opcji dla obiekt klasy magazynu. W poniższym przykładzie `0777`.
+ 
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azurefile
+provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+parameters:
+  skuName: Standard_LRS
+```
+ 
+Jeśli przy użyciu klastra wersji 1.8.0 - 1.8.4, za pomocą można określić kontekstu zabezpieczeń `runAsUser` wartość `0`. Aby uzyskać więcej informacji na Pod kontekstu zabezpieczeń, zobacz [skonfigurować kontekstu zabezpieczeń][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Kolejne kroki
 

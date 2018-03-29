@@ -1,11 +1,11 @@
 ---
-title: "Często zadawane pytania dotyczące konfiguracji dla aplikacji sieci web platformy Azure | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące problemów dotyczących konfiguracji i zarządzania dla funkcji aplikacji sieci Web w usłudze Azure App Service."
+title: Często zadawane pytania dotyczące konfiguracji dla aplikacji sieci web platformy Azure | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące problemów dotyczących konfiguracji i zarządzania dla funkcji aplikacji sieci Web w usłudze Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 92cbc36ac2a566cf5dfbb2f7b3347973bab5ee8c
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurowanie i zarządzanie często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -251,7 +251,7 @@ Aby uzyskać więcej informacji na temat zaplanowane zadania Webjob, zobacz [utw
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Jak wykonać penetracji testowania dla mojej aplikacji usługi app Service?
 
-Aby przeprowadzić testy penetracji, [Prześlij żądanie](https://security-forms.azure.com/penetration-testing/terms).
+Aby przeprowadzić testy penetracji, [Prześlij żądanie](https://portal.msrc.microsoft.com/en-us/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Jak skonfigurować niestandardową nazwę domeny dla aplikacji sieci web usługi aplikacji, który używa Menedżera ruchu?
 

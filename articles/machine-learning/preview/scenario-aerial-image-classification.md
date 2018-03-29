@@ -1,6 +1,6 @@
 ---
 title: Klasyfikacja satelitarnej obrazu | Dokumentacja firmy Microsoft
-description: "Instrukcje w świecie rzeczywistym scenariuszu po klasyfikacji satelitarnej obrazu"
+description: Instrukcje w świecie rzeczywistym scenariuszu po klasyfikacji satelitarnej obrazu
 author: mawah
 ms.author: mawah
 manager: mwinkle
@@ -10,11 +10,11 @@ ms.service: machine-learning
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: 76c706496b3bcdbc1604661be85dc31000873ad3
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 42ebb7dc3abf8fdb6049f1114dc8604a7b810a7e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="aerial-image-classification"></a>Klasyfikacja satelitarnej obrazu
 
@@ -58,7 +58,7 @@ Poniższe instrukcje pomagają konfigurowania środowiska wykonawczego w tym prz
     - Spowoduje utworzenie klastra Spark w usłudze HDInsight z 40 węzłów procesu roboczego (całkowita liczba rdzeni 168). Upewnij się, że konto użytkownika ma za mało dostępnych rdzeni, przeglądając "użycia + przydziały" kartę dla Twojej subskrypcji w portalu Azure.
        - Jeśli masz mniej dostępne rdzenie może zmodyfikować szablon klastra HDInsight zmniejszyć liczbę procesów roboczych udostępnione. Odpowiednie instrukcje są wyświetlane w sekcji "Tworzenie klastra Spark w usłudze HDInsight".
     - W tym przykładzie jest tworzony klaster szkolenia AI partii z dwóch NC6 (1 procesora GPU, 6 vCPU) maszyn wirtualnych. Upewnij się, że konto użytkownika ma za mało dostępnych rdzeni w regionie wschodnie stany USA, przeglądając "użycia + przydziały" kartę dla Twojej subskrypcji w portalu Azure.
-- [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md)
+- [Środowisko robocze usługi Azure Machine Learning](./overview-what-is-azure-ml.md)
     - Postępuj zgodnie z [zainstalować i utworzyć szybkiego startu](quickstart-installation.md) zainstalować Azure Machine Learning Workbench i utworzyć eksperymentowania oraz konta zarządzania w modelu.
 - [Partii AI](https://github.com/Azure/BatchAI) Python SDK i Azure CLI 2.0
     - Wypełnij następujące sekcje w [partii AI przepisami README](https://github.com/Azure/BatchAI/tree/master/recipes):
@@ -83,7 +83,7 @@ W tym przykładzie wymaga klastra Spark w usłudze HDInsight i konto magazynu Az
 
 Utwórz nowy projekt za pomocą tego przykładu jako szablon:
 1.  Otwórz Azure Machine Learning Workbench
-2.  Na **projekty** kliknij przycisk  **+**  podpisywania i wybierz **nowy projekt**
+2.  Na **projekty** kliknij przycisk **+** podpisywania i wybierz **nowy projekt**
 3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu
 4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz "Satelitarnej Klasyfikacja obrazu" i wybierz szablon
 5.  Kliknij przycisk **Utwórz**
@@ -222,7 +222,7 @@ Klaster AI partii uzyskuje dostęp do danych szkoleniowych na sieciowym serwerze
 1. Należy wydać następujące polecenie, aby utworzyć serwer plików sieciowych:
 
     ```
-    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
+    az batchai file-server create -n landuseclassifier -u demoUser -p "Dem0Pa$$w0rd" --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
     ```
 
 1. Sprawdź stan inicjowania obsługi administracyjnej sieci serwera plików za pomocą następującego polecenia:
@@ -253,7 +253,7 @@ W razie potrzeby można potwierdzić, że transfer danych podjęła zgodnie z pl
 1. Tworzenia klastra, wykonując następujące polecenie:
 
     ```
-    az batchai cluster create -n landuseclassifier2 -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
+    az batchai cluster create -n landuseclassifier2 -u demoUser -p "Dem0Pa$$w0rd" --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
     ```
 
 1. Użyj następującego polecenia w celu sprawdzenia, czy stanu do udostępniania klastra:
@@ -267,12 +267,12 @@ W razie potrzeby można potwierdzić, że transfer danych podjęła zgodnie z pl
 #### <a name="record-batch-ai-training-credentials"></a>Poświadczenia szkolenia AI partii rekordów
 
 Podczas oczekiwania alokacji klastra zakończyć, otwórz `settings.cfg` pliku z podkatalogu 'Code' tego projektu w wybranym w edytorze tekstu. Zaktualizuj następujące zmienne przy użyciu własnych poświadczeń:
-- `bait_subscription_id`(36 znaków identyfikator subskrypcji platformy Azure)
-- `bait_aad_client_id`(identyfikator aplikacji/klienta usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
-- `bait_aad_secret`(tajny aplikacji usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
-- `bait_aad_tenant`(identyfikator dzierżawy usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
-- `bait_region`(opracowywania tego tekstu jest jedyną opcją: eastus)
-- `bait_resource_group_name`(grupę zasobów, które wcześniej wybrano)
+- `bait_subscription_id` (36 znaków identyfikator subskrypcji platformy Azure)
+- `bait_aad_client_id` (identyfikator aplikacji/klienta usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
+- `bait_aad_secret` (tajny aplikacji usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
+- `bait_aad_tenant` (identyfikator dzierżawy usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
+- `bait_region` (opracowywania tego tekstu jest jedyną opcją: eastus)
+- `bait_resource_group_name` (grupę zasobów, które wcześniej wybrano)
 
 Po przypisaniu te wartości zmodyfikowanych wierszy pliku settings.cfg powinien przypominać następujący tekst:
 

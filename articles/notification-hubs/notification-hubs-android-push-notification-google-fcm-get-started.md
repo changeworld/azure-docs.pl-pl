@@ -1,12 +1,12 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure Notification Hubs dla aplikacji systemu Android i usługi Firebase Cloud Messaging | Microsoft Docs"
-description: "Korzystając z tego samouczka, dowiesz się, jak za pomocą usług Azure Notification Hubs i Firebase Cloud Messaging wysyłać powiadomienia wypychane do urządzeń z systemem Android."
+title: Rozpoczynanie pracy z usługą Azure Notification Hubs dla aplikacji systemu Android i usługi Firebase Cloud Messaging | Microsoft Docs
+description: Korzystając z tego samouczka, dowiesz się, jak za pomocą usług Azure Notification Hubs i Firebase Cloud Messaging wysyłać powiadomienia wypychane do urządzeń z systemem Android.
 services: notification-hubs
 documentationcenter: android
 keywords: powiadomienia wypychane, powiadomienie wypychane, powiadomienia wypychane w systemie android, firebase cloud messaging
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 ms.assetid: 02298560-da61-4bbb-b07c-e79bd520e420
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: 2cac554be145c3bb9ec2c71ef893bba947104a2d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 0f4c766bd68227a85e2438bc68b2d61c69ce706c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-android-apps-and-firebase-cloud-messaging"></a>Rozpoczynanie pracy z usługą Azure Notification Hubs dla aplikacji systemu Android i usługi Firebase Cloud Messaging
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -38,7 +38,7 @@ Kompletny kod dla tego samouczka można pobrać z witryny GitHub [tutaj](https:/
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 > [!IMPORTANT]
-> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started).
+> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started).
 > 
 > 
 
@@ -285,9 +285,8 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą Firebas
         import android.util.Log;
         import android.widget.TextView;
         import android.widget.Toast;
-    ```
 
-3. Dodaj następujące prywatne składowe u góry klasy. Służą do [sprawdzania dostępności usług Google Play zgodnie z zaleceniami firmy Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
+3. Add the following private members at the top of the class. You use these to [check the availability of Google Play Services as recommended by Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
    
     ```java
         public static MainActivity mainActivity;

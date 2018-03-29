@@ -1,8 +1,8 @@
 ---
-title: "Omówienie programu SQL Server na maszynach wirtualnych platformy Azure z systemem Linux | Microsoft Docs"
-description: "Dowiedz się, jak uruchomić pełne wersje programu SQL Server na maszynach wirtualnych platformy Azure z systemem Linux. Uzyskaj bezpośrednie linki do wszystkich obrazów maszyn wirtualnych programu SQL Server z systemem Linux i powiązanej zawartości."
+title: Omówienie programu SQL Server na maszynach wirtualnych platformy Azure z systemem Linux | Microsoft Docs
+description: Dowiedz się, jak uruchomić pełne wersje programu SQL Server na maszynach wirtualnych platformy Azure z systemem Linux. Uzyskaj bezpośrednie linki do wszystkich obrazów maszyn wirtualnych programu SQL Server z systemem Linux i powiązanej zawartości.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 10/02/2017
+ms.date: 03/22/2018
 ms.author: jroth
-ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Omówienie programu SQL Server na maszynach wirtualnych platformy Azure (system Linux)
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 12/18/2017
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-W tym temacie opisano opcje uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure z systemem Linux oraz zamieszczono [linki do obrazów portalu](#option-1-create-a-sql-vm-with-per-minute-licensing).
+W tym temacie opisano opcje uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure z systemem Linux oraz zamieszczono [linki do obrazów portalu](#create).
 
 > [!NOTE]
 > Jeśli znasz już program SQL Server i chcesz tylko zobaczyć, jak wdrożyć maszynę wirtualną programu SQL Server z systemem Linux, zobacz temat [Provision a Linux SQL Server VM in Azure (Aprowizowanie maszyny wirtualnej z programem SQL Server i systemem Linux na platformie Azure](provision-sql-server-linux-virtual-machine.md). Jeśli natomiast chcesz utworzyć maszynę wirtualną z systemem Windows i programem SQL Server, zobacz [Provision a Windows SQL Server VM in Azure (Aprowizowanie maszyny wirtualnej z programem SQL Server i systemem Windows na platformie Azure)](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md).

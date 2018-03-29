@@ -1,13 +1,13 @@
 ---
-title: "Tworzenie zestawu skalowania maszyn wirtualnych z systemem Linux przy użyciu szablonu platformy Azure | Microsoft Docs"
-description: "Dowiedz się, jak szybko utworzyć skalę maszyny wirtualnej z systemem Linux za pomocą szablonu usługi Azure Resource Manager, który wdraża przykładową aplikację i konfiguruje reguły automatycznego skalowania"
+title: Tworzenie zestawu skalowania maszyn wirtualnych z systemem Linux przy użyciu szablonu platformy Azure | Microsoft Docs
+description: Dowiedz się, jak szybko utworzyć skalę maszyny wirtualnej z systemem Linux za pomocą szablonu usługi Azure Resource Manager, który wdraża przykładową aplikację i konfiguruje reguły automatycznego skalowania
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 16e9c0b30710d711ef2789f7781b17e72889d4da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Tworzenie zestawu skalowania maszyn wirtualnych z systemem Linux przy użyciu szablonu platformy Azure
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania można skalować ręcznie lub można zdefiniować reguły skalowania automatycznego na podstawie użycia zasobów, takich jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. W tym artykule wprowadzającym opisano tworzenie zestawu skalowania maszyn wirtualnych z systemem Linux za pomocą szablonu usługi Azure Resource Manager. Zestaw skalowania można również utworzyć przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 2.0](virtual-machine-scale-sets-create-cli.md), [programu Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) lub [witryny Azure Portal](virtual-machine-scale-sets-create-portal.md).

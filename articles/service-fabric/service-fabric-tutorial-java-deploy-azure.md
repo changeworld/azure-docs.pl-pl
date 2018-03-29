@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5245e53429278f2a346077cdb70426aaca339488
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 92445ffa7954d42ec1a864264fbfc7555986ad58
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji Java w klastrze usługi Service Fabric na platformie Azure
 Niniejszy samouczek jest trzecią częścią serii. Przedstawiono w nim sposób wdrażania aplikacji usługi Service Fabric w klastrze na platformie Azure.
@@ -106,7 +106,7 @@ Poniższe kroki powodują utworzenie niezbędnych zasobów wymaganych do wdroże
 8. Skopiuj adres URL sygnatury dostępu współdzielonego konta i pozostaw go do użycia podczas tworzenia klastra usługi Service Fabric. Jest on podobny do następującego adresu URL:
 
     ```
-    https://teststorageaccount.table.core.windows.net/?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
+    ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. Utwórz grupę zasobów, która zawiera zasoby usługi Event Hubs. Usługa Event Hubs służy do wysyłania komunikatów z usługi Service Fabric do serwera z uruchomionymi zasobami ELK.
@@ -163,10 +163,10 @@ Poniższe kroki powodują utworzenie niezbędnych zasobów wymaganych do wdroże
     Skopiuj wartość pola **sr** pole do zwróconego kodu JSON. Wartość pola **sr** tokenu sygnatury dostępu współdzielonego dla usługi EventHubs. Następujący adres URL jest przykładem pola **sr**:
 
     ```bash
-    https%3A%2F%2Ftesteventhubs.servicebus.windows.net%2Ftesteventhubs&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=<policy_name>
+    https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Adres URL sygnatury dostępu współdzielonego dla usługi EventHubs jest zgodny z następującą strukturą: https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>. Na przykład: https://testeventhubs.servicebus.windows.net/testeventhubs?sr=https%3A%2F%2Ftesteventhubs.servicebus.windows.net%2Ftesteventhubs&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
+    Adres URL sygnatury dostępu współdzielonego dla usługi EventHubs jest zgodny z następującą strukturą: https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>. Na przykład: https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
 
 12. Otwórz plik *sfdeploy.parameters.json* i zastąp następującą zawartość z poprzednich kroków 
 

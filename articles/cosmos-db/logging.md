@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mimig
-ms.openlocfilehash: b1921820b5a1d94c6f5d6413204ee7814cc25c74
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b7c9f1acd79a2f170ecead9dedd200ad37d9388
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure DB rozwiązania Cosmos rejestrowania diagnostycznego
 
-Po uruchomieniu używać co najmniej jeden bazy danych Azure rozwiązania Cosmos baz danych, można monitorować, kiedy baz danych są dostępne. Ten artykuł zawiera omówienie dzienników, które są dostępne na platformie Azure. Sposób włączania rejestrowania diagnostycznego do celów, aby wysłać dzienniki monitorowania [usługi Azure Storage](https://azure.microsoft.com/services/storage/), jak strumienia dzienniki, aby [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i jak dzienniki, aby wyeksportować [Analiza dzienników Azure ](https://azure.microsoft.com/services/log-analytics/), który jest częścią [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite).
+Po uruchomieniu używać co najmniej jeden bazy danych Azure rozwiązania Cosmos baz danych, można monitorować, kiedy baz danych są dostępne. Ten artykuł zawiera omówienie dzienników, które są dostępne na platformie Azure. Sposób włączania rejestrowania diagnostycznego do celów, aby wysłać dzienniki monitorowania [usługi Azure Storage](https://azure.microsoft.com/services/storage/), jak strumienia dzienniki, aby [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)i jak dzienniki, aby wyeksportować [Analiza dzienników Azure ](https://azure.microsoft.com/services/log-analytics/).
 
 ## <a name="logs-available-in-azure"></a>Dzienniki dostępnej na platformie Azure
 
@@ -57,7 +57,7 @@ Dzienniki aktywności (operacji kontroli płaszczyzny) może być bardziej rozbu
 
 Azure dzienników diagnostycznych są emitowane przez zasób i podaj rozbudowane, często danych o działaniu tego zasobu. Zawartość tych dzienników zależy od typu zasobu. Dzienniki diagnostyczne poziom zasobów również różnią się od dzienników diagnostycznych z poziomu systemu operacyjnego gościa. Dzienniki diagnostyczne systemu operacyjnego gościa są zbierane przez agenta, który działa wewnątrz maszyny wirtualnej lub inne obsługiwane typu zasobu. Poziom zasobów dzienników diagnostycznych wymagają żadne dane specyficzne dla zasobów agenta do przechwycenia z platformą Azure. Dzienniki diagnostyczne poziomu systemu operacyjnego gościa przechwycenia danych z systemu operacyjnego i aplikacji, które są uruchomione na maszynie wirtualnej.
 
-![Rejestrowania diagnostycznego do magazynu, usługa Event Hubs lub Operations Management Suite za pomocą analizy dzienników](./media/logging/azure-cosmos-db-logging-overview.png)
+![Rejestrowania diagnostycznego do magazynu usługi Event Hubs i analizy dzienników](./media/logging/azure-cosmos-db-logging-overview.png)
 
 ### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Co to jest rejestrowane przez dzienników diagnostycznych platformy Azure?
 

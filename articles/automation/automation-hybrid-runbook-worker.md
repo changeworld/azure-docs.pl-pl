@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/21/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b5dbc4cfd884538c8435371aa353b22cabef7400
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 157db4a9de41c9895d39469d3d42a45c1a929649
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatyzację zasobów w centrum danych lub w chmurze chronionej za pomocą hybrydowy proces roboczy elementu Runbook
 
@@ -73,7 +73,7 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
      > Obecnie są tylko regiony automatyzacji obsługiwane integracji z usługą analizy dzienników - **południowo-wschodnia Australia**, **wschodnie stany USA 2**, **Azja południowo-wschodnia**, i  **Europa Zachodnia**. Jeśli Twoje konto usługi Automatyzacja nie jest w jednym z tych regionów, skrypt tworzy obszaru roboczego analizy dzienników, ale jego ostrzega, że go nie może połączyć je razem.
 
 2. Na komputerze, należy uruchomić **programu Windows PowerShell** z **Start** ekranu w trybie administratora.
-3. Z poziomu wiersza polecenia powłoki PowerShell, przejdź do folderu, który zawiera skrypt pobrany i wykonaj go zmiana wartości parametrów *- AutomationAccountName*, *- ResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *- WorkspaceName*.
+3. Z poziomu wiersza polecenia powłoki PowerShell, przejdź do folderu, który zawiera skrypt pobrany i wykonaj go zmiana wartości parametrów *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *- WorkspaceName*.
 
      > [!NOTE]
      > Zostanie wyświetlony monit uwierzytelniania w usłudze Azure po wykonaniu skryptu. Możesz **musi** Zaloguj się przy użyciu konta należącego do roli Administratorzy subskrypcji i współadministratora subskrypcji.

@@ -2,18 +2,18 @@
 title: Azure Quickstart — przekazywanie, pobieranie i wyświetlanie listy obiektów blob w usłudze Azure Storage przy użyciu języka Python | Microsoft Docs
 description: W tym przewodniku Szybki start utworzysz konto magazynu i kontener. Następnie przy użyciu biblioteki klienta języka Python przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
-ms.author: tamram
-ms.openlocfilehash: d4c489bc41a9c04b15e2ee28b944edc1f15ef81c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: cshoe
+ms.openlocfilehash: 9ea8fdcd2d21729117101748e20e52029c315e15
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu języka Python
 
@@ -23,7 +23,7 @@ Dzięki temu przewodnikowi Szybki start dowiesz się, w jaki sposób za pomocą 
 
 Aby ukończyć ten przewodnik Szybki start: 
 * Zainstaluj język [Python](https://www.python.org/downloads/)
-* Pobierz i zainstaluj [zestaw SDK usługi Azure Storage dla języka Python](storage-python-how-to-use-blob-storage.md) 
+* Pobierz i zainstaluj [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-sdk-for-python) 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

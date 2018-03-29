@@ -1,6 +1,6 @@
 ---
-title: "Samouczek platformy ASP.NET MVC dla usługi Azure Cosmos DB: opracowywanie aplikacji internetowych | Microsoft Docs"
-description: "Samouczek platformy ASP.NET MVC, który umożliwia utworzenie aplikacji internetowych MVC za pomocą usługi Azure Cosmos DB. Zapiszesz dane w postaci kodu JSON i uzyskasz do nich dostęp za pomocą aplikacji listy rzeczy do zrobienia hostowanej w usłudze Azure Websites — szczegółowy samouczek dla platformy ASP.NET MVC."
+title: 'Samouczek platformy ASP.NET MVC dla usługi Azure Cosmos DB: opracowywanie aplikacji internetowych | Microsoft Docs'
+description: Samouczek platformy ASP.NET MVC, który umożliwia utworzenie aplikacji internetowych MVC za pomocą usługi Azure Cosmos DB. Zapiszesz dane w postaci kodu JSON i uzyskasz do nich dostęp za pomocą aplikacji listy rzeczy do zrobienia hostowanej w usłudze Azure Websites — szczegółowy samouczek dla platformy ASP.NET MVC.
 keywords: samouczek asp.net mvc, programowanie aplikacji sieci web, aplikacja sieci web mvc, samouczek krok po kroku asp.net mvc
 services: cosmos-db
 documentationcenter: .net
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.custom: devcenter
-ms.openlocfilehash: a403af0f31823f89cdc79d6769dff61aeaefc4ad
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e4f9360bfde5f3212f0bbf184c52f59b2dd43d0b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395809351"></a>Samouczek platformy ASP.NET MVC: Opracowywanie aplikacji internetowych za pomocą usługi Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -30,8 +30,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Aby podkreślić, jak możesz efektywnie wykorzystać usługę Azure Cosmos DB do zapisywania i odpytywania dokumentów JSON, ten artykuł przedstawia kompletny przewodnik tworzenia aplikacji listy rzeczy do zrobienia używającej usługi Azure Cosmos DB. Zadania będą przechowywane jako dokumenty JSON w usłudze Azure Cosmos DB.
 
@@ -205,7 +203,7 @@ Podobnie jak w przypadku **indeksu elementów** teraz utworzymy nowy widok na po
    * W polu **Szablon** wybierz pozycję ***Tworzenie***.
    * W polu **Klasa modelu** wybierz pozycję ***Item (todo.Models)***.
    * W polu strony układu wpisz wartość ***~/Views/Shared/_Layout.cshtml***.
-   * Kliknij pozycję **Dodaj**.
+   * Kliknij pozycję **Add** (Dodaj).
    
 #### <a name="_Toc395888515"></a>Dodawanie widoku edycji elementu
 I w końcu dodaj ostatni widok — na potrzeby edytowania elementu **Item** — w taki sam sposób jak wcześniej.
@@ -217,7 +215,7 @@ I w końcu dodaj ostatni widok — na potrzeby edytowania elementu **Item** — 
    * W polu **Szablon** wybierz pozycję ***Edycja***.
    * W polu **Klasa modelu** wybierz pozycję ***Item (todo.Models)***.
    * W polu strony układu wpisz wartość ***~/Views/Shared/_Layout.cshtml***.
-   * Kliknij pozycję **Dodaj**.
+   * Kliknij pozycję **Add** (Dodaj).
 
 Po zakończeniu zamknij wszystkie dokumenty cshtml w programie Visual Studio. Wrócimy do tych widoków później.
 

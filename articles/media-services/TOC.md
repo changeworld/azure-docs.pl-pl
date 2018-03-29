@@ -237,7 +237,7 @@
 ## Specyfikacje
 ### [Pozyskiwanie na żywo — specyfikacja pozyskiwania na żywo podzielonej zawartości w formacie MP4](media-services-fmp4-live-ingest-overview.md)
 ### [Pozyskiwanie na żywo — sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo](media-services-specifications-live-timed-metadata.md)
-### [Smooth Streaming — HEVC](media-services-specifications-ms-sstr-ammendment-hevc.md)
+### [Smooth Streaming — HEVC](media-services-specifications-ms-sstr-amendment-hevc.md)
 
 # Zasoby
 ## [Społeczność usługi Azure Media Services](media-services-community.md)

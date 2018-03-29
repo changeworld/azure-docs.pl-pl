@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 097c1719ffc493539276cd98edc761eba20f3751
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planowanie wdrożenia synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -177,6 +177,7 @@ W wersji zapoznawczej firma Microsoft obsługuje synchronizację tylko z udział
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
+* [Należy wziąć pod uwagę ustawienia zapory i serwera proxy](storage-sync-files-firewall-and-proxy.md)
 * [Planowanie wdrożenia usługi pliki Azure](storage-files-planning.md)
 * [Wdrażanie plików platformy Azure](storage-files-deployment-guide.md)
 * [Wdrażanie synchronizacji plików na platformę Azure](storage-sync-files-deployment-guide.md)

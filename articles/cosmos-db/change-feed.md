@@ -1,25 +1,25 @@
 ---
-title: "Praca z zmiany źródła pomocy technicznej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Obsługa kanału informacyjnego zmiany bazy danych Azure rozwiązania Cosmos umożliwia śledzenie zmian w dokumentach i wykonywać oparty na zdarzeniach przetwarzania, takich jak wyzwalaczy i aktualizowanie systemów pamięci podręcznych i analiza."
-keywords: "Zmiana źródła danych"
+title: Praca z zmiany źródła pomocy technicznej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Obsługa kanału informacyjnego zmiany bazy danych Azure rozwiązania Cosmos umożliwia śledzenie zmian w dokumentach i wykonywać oparty na zdarzeniach przetwarzania, takich jak wyzwalaczy i aktualizowanie systemów pamięci podręcznych i analiza.
+keywords: Zmiana źródła danych
 services: cosmos-db
 author: rafats
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 2d7798db-857f-431a-b10f-3ccbc7d93b50
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: e0940ab11f8840ffa2dbdbfd739340f8af5caf51
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 16f339540767246ef82bce020aacf9846c8d2e0b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Praca z zmiany źródła pomocy technicznej w usłudze Azure DB rozwiązania Cosmos
 
@@ -34,7 +34,13 @@ ms.lasthandoff: 02/24/2018
 ![Przy użyciu bazy danych Azure rozwiązania Cosmos zmiany źródła danych do analizy w czasie rzeczywistym zasilania i scenariuszach obliczeniowych o sterowane zdarzeniami](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> Zmiana źródła pomocy technicznej jest dostępna dla wszystkich modeli danych i kontenerów w usłudze Azure DB rozwiązania Cosmos. Jednak zmiany źródła danych jest do odczytu za pomocą klienta programu SQL i serializuje elementów do formatu JSON. Z powodu JSON formatowania, bazy danych MongoDB, klienci będą występować niezgodność między dokumenty sformatowane formatu BSON i JSON w formacie zmiany źródła danych. 
+> Zmiana źródła pomocy technicznej jest dostępna dla wszystkich modeli danych i kontenerów w usłudze Azure DB rozwiązania Cosmos. Jednak zmiany źródła danych jest do odczytu za pomocą klienta programu SQL i serializuje elementów do formatu JSON. Z powodu JSON formatowania, bazy danych MongoDB, klienci będą występować niezgodność między dokumenty sformatowane formatu BSON i JSON w formacie zmiany źródła danych.
+
+Poniższego klipu wideo Azure Menedżera programów DB rozwiązania Cosmos Andrew Liu pokazuje, jak zmiany bazy danych Azure rozwiązania Cosmos źródła działania.
+
+> [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
+>
+>
 
 ## <a name="how-does-change-feed-work"></a>Jak zmiany źródła pracy?
 

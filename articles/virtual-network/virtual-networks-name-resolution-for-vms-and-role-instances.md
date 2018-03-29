@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: jdial
-ms.openlocfilehash: 6ad001158a8babfb5178916813ee789b7ff7594b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e46f6617b1a6d73ace00d4eafa1410785315a8c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="name-resolution-for-virtual-machines-and-role-instances"></a>Rozpoznawanie nazwy dla maszyn wirtualnych i wystąpień roli
 
@@ -27,7 +27,7 @@ W zależności od tego, jak używasz usługi Azure do hostowania IaaS i PaaS, hy
 Jeśli wystąpień roli maszyn wirtualnych hostowanych na platformie Azure wymagane i rozpoznawanie nazw domen do adresów IP, można użyć jednej z dwóch metod:
 
 * [Rozpoznawanie nazw platformy Azure](#azure-provided-name-resolution)
-* [Nazwa rozwiązania, który używa serwera DNS](#name-resolution-using-your-own-dns-server) (która może przesłać kwerendy do serwerów DNS platformy Azure) 
+* [Nazwa rozwiązania, który używa serwera DNS](#name-resolution-that-uses-your-own-dns-server) (która może przesłać kwerendy do serwerów DNS platformy Azure) 
 
 Rodzaj rozpoznawania nazw, których używasz, zależy od tego, jak maszyn wirtualnych i wystąpień roli muszą komunikować się ze sobą. W poniższej tabeli przedstawiono scenariusze i odpowiedniego rozwiązania rozpoznawania nazwy:
 
@@ -38,13 +38,13 @@ Rodzaj rozpoznawania nazw, których używasz, zależy od tego, jak maszyn wirtua
 | **Scenariusz** | **Rozwiązania** | **Suffix** |
 | --- | --- | --- |
 | Nazwa rozwiązania między wystąpień roli lub maszyn wirtualnych znajdujących się w tej samej usługi w chmurze lub sieci wirtualnej. | [Strefy DNS prywatnego Azure](../dns/private-dns-overview.md) lub [rozpoznawania nazw platformy Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
-| Rozpoznawanie nazw między wystąpień roli lub maszyn wirtualnych znajdujących się w różnych sieciach wirtualnych. |[Strefy DNS prywatnego Azure](../dns/private-dns-overview.md) lub serwery zarządzane przez klienta DNS przesyłania zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
-| Rozpoznawanie nazw w usłudze Azure App Service (aplikacja sieci Web, funkcji lub Bot) przy użyciu integracji sieci wirtualnej do wystąpień roli lub maszyn wirtualnych znajdujących się w tej samej sieci wirtualnej. |Zarządzany przez klienta DNS serwerów przekazujących zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
-| Rozpoznawanie nazw z aplikacji sieci Web usługi aplikacji do maszyn wirtualnych znajdujących się w tej samej sieci wirtualnej. |Zarządzany przez klienta DNS serwerów przekazujących zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
-| Rozpoznawanie nazw z aplikacji sieci Web usługi aplikacji do maszyn wirtualnych znajdujących się w innej sieci wirtualnej. |Zarządzany przez klienta DNS serwerów przekazujących zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server-for-web-apps). |Tylko nazwa FQDN |
-| Rozpoznawanie nazwy komputerów i usług lokalnych z wystąpień roli lub maszyn wirtualnych na platformie Azure. |Zarządzany przez klienta z serwerów DNS (lokalnego kontrolera domeny, kontrolera domeny tylko do odczytu lokalnej lub zsynchronizowane, na przykład przy użyciu transferów stref DNS dodatkowej). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
-| Rozpoznawanie nazwy Azure hostów z komputerów lokalnych. |Do przodu zapytań do serwera proxy DNS zarządzany przez klienta w odpowiedniej sieci wirtualnej, serwer proxy przekazuje zapytania na platformie Azure do rozpoznania. Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
-| Reverse DNS wewnętrznych adresów IP. |[Rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-using-your-own-dns-server). |Nie dotyczy |
+| Rozpoznawanie nazw między wystąpień roli lub maszyn wirtualnych znajdujących się w różnych sieciach wirtualnych. |[Strefy DNS prywatnego Azure](../dns/private-dns-overview.md) lub serwery zarządzane przez klienta DNS przesyłania zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
+| Rozpoznawanie nazw w usłudze Azure App Service (aplikacja sieci Web, funkcji lub Bot) przy użyciu integracji sieci wirtualnej do wystąpień roli lub maszyn wirtualnych znajdujących się w tej samej sieci wirtualnej. |Zarządzany przez klienta DNS serwerów przekazujących zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
+| Rozpoznawanie nazw z aplikacji sieci Web usługi aplikacji do maszyn wirtualnych znajdujących się w tej samej sieci wirtualnej. |Zarządzany przez klienta DNS serwerów przekazujących zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
+| Rozpoznawanie nazw z aplikacji sieci Web usługi aplikacji do maszyn wirtualnych znajdujących się w innej sieci wirtualnej. |Zarządzany przez klienta DNS serwerów przekazujących zapytań między sieciami wirtualnymi rozpoznanie przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-that-uses-your-own-dns-server-for-web-apps). |Tylko nazwa FQDN |
+| Rozpoznawanie nazwy komputerów i usług lokalnych z wystąpień roli lub maszyn wirtualnych na platformie Azure. |Zarządzany przez klienta z serwerów DNS (lokalnego kontrolera domeny, kontrolera domeny tylko do odczytu lokalnej lub zsynchronizowane, na przykład przy użyciu transferów stref DNS dodatkowej). Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
+| Rozpoznawanie nazwy Azure hostów z komputerów lokalnych. |Do przodu zapytań do serwera proxy DNS zarządzany przez klienta w odpowiedniej sieci wirtualnej, serwer proxy przekazuje zapytania na platformie Azure do rozpoznania. Zobacz [rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
+| Reverse DNS wewnętrznych adresów IP. |[Rozpoznawanie nazw przy użyciu serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Nie dotyczy |
 | Rozpoznawanie nazw między maszynami wirtualnymi lub wystąpień roli znajduje się w różnych usług w chmurze, nie znajduje się w sieci wirtualnej. |Nie dotyczy. Łączność między maszyn wirtualnych i wystąpień roli w innej chmurze usługi nie jest obsługiwana poza siecią wirtualną. |Nie dotyczy|
 
 ## <a name="azure-provided-name-resolution"></a>Rozpoznawanie nazw platformy Azure
@@ -73,7 +73,7 @@ Poniżej przedstawiono kwestie do rozważenia podczas, używania rozpoznawania n
 * Nie można ręcznie zarejestrować własnych.
 * Usługa WINS i NetBIOS nie są obsługiwane (nie widać maszyn wirtualnych w Eksploratorze Windows).
 * Nazwy hostów musi być zgodny z DNS. Nazwach muszą mieć tylko 0-9, a-z i "-" i nie może zaczynać się ani kończyć "-".
-* Ruch zapytanie DNS jest ograniczenie dla każdej maszyny Wirtualnej. Ograniczanie nie powinny mieć wpływ na większości aplikacji. Ograniczanie żądań zaobserwowano, upewnij się, że włączone jest buforowanie po stronie klienta. Aby uzyskać więcej informacji, zobacz [wprowadzenie w pełni wykorzystać możliwości rozpoznawania nazw platformy Azure](#Getting-the-most-from-Azure-provided-name-resolution).
+* Ruch zapytanie DNS jest ograniczenie dla każdej maszyny Wirtualnej. Ograniczanie nie powinny mieć wpływ na większości aplikacji. Ograniczanie żądań zaobserwowano, upewnij się, że włączone jest buforowanie po stronie klienta. Aby uzyskać więcej informacji, zobacz [Konfiguracja klienta DNS](#dns-client-configuration).
 * W pierwszej usługi w chmurze 180 tylko maszyny wirtualne są zarejestrowane dla każdej sieci wirtualnej w klasycznym modelu wdrażania. To ograniczenie nie ma zastosowania do sieci wirtualnych w usłudze Azure Resource Manager.
 
 ## <a name="dns-client-configuration"></a>Konfiguracja klienta DNS
@@ -158,7 +158,7 @@ Korzystając z rozpoznawania nazw platformy Azure, Azure konfiguracji protokołu
 
 Jeśli to konieczne, można określić wewnętrzny sufiks DNS przy użyciu programu PowerShell lub interfejsu API:
 
-* Dla sieci wirtualnych w modelach wdrażania usługi Azure Resource Manager, jest dostępny za pośrednictwem sufiks [karty interfejsu sieciowego](virtual-network-network-interface.md) zasobów lub [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) polecenia cmdlet.
+* Dla sieci wirtualnych w modelach wdrażania usługi Azure Resource Manager, jest dostępny za pośrednictwem sufiks [interfejsu sieciowego interfejsu API REST](/rest/api/virtualnetwork/networkinterfaces/get), [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) polecenia cmdlet programu PowerShell, a [Pokaż kart sieciowych az](/cli/azure/network/nic#az-network-nic-show) polecenia wiersza polecenia platformy Azure.
 * W klasycznych modeli wdrażania, jest dostępna za pośrednictwem sufiks [uzyskać interfejsu API wdrożenia](https://msdn.microsoft.com/library/azure/ee460804.aspx) wywołania lub [Get AzureVM-debugowania](/powershell/module/azure/get-azurevm) polecenia cmdlet.
 
 Jeśli przekazywanie zapytań na platformie Azure nie własnych potrzeb, należy podać rozwiązania DNS. Rozwiązania DNS musi:

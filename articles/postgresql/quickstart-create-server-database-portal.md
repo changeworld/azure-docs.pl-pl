@@ -1,6 +1,6 @@
 ---
-title: "Szybki start — tworzenie serwera usługi Azure Database for PostgreSQL za pomocą witryny Azure Portal"
-description: "Przewodnik Szybki start dotyczący tworzenia serwera usługi Azure Database for PostgreSQL i zarządzania nim przy użyciu interfejsu użytkownika witryny Azure Portal."
+title: Szybki start — tworzenie serwera usługi Azure Database for PostgreSQL za pomocą witryny Azure Portal
+description: Przewodnik Szybki start dotyczący tworzenia serwera usługi Azure Database for PostgreSQL i zarządzania nim przy użyciu interfejsu użytkownika witryny Azure Portal.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 83bdc6eba35f0deaaf541f2042854764ae513fb9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: c1acb568598184974b65d666075032e74aa49eb3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Szybki start: tworzenie serwera usługi Azure Database for PostgreSQL w witrynie Azure Portal
 
@@ -174,11 +174,11 @@ Nawiązano połączenie z serwerem usługi Azure Database for PostgreSQL za poś
 
 ## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>Nawiązywanie połączenia z serwerem PostgreSQL za pomocą narzędzia pgAdmin
 
-pgAdmin to narzędzie open source używane z rozwiązaniami PostgreSQL. Aplikację pgAdmin można zainstalować z [witryny internetowej pgAdmin](http://www.pgadmin.org/). Wersja narzędzia pgAdmin, której używasz, może różnić się od narzędzia używanego w tym poradniku Szybki start. Przeczytaj dokumentację narzędzia pgAdmin, jeśli potrzebujesz dodatkowych wskazówek.
+pgAdmin to narzędzie open source używane z bazą danych PostgreSQL. Aplikację pgAdmin można zainstalować z [witryny internetowej pgAdmin](http://www.pgadmin.org/). Wersja narzędzia pgAdmin, której używasz, może różnić się od narzędzia używanego w tym poradniku Szybki start. Przeczytaj dokumentację narzędzia pgAdmin, jeśli potrzebujesz dodatkowych wskazówek.
 
 1. Otwórz aplikację pgAdmin na swoim komputerze klienckim.
 
-2. Na pasku narzędzi wybierz pozycję **Object** (Obiekt), umieść wskaźnik myszy nad opcją **Create** (Utwórz) i wybierz opcję **Server** (Serwer).
+2. Na pasku narzędzi wybierz pozycję **Object** (Obiekt), umieść wskaźnik myszy nad opcją **Create** (Utwórz), a następnie wybierz pozycję **Server** (Serwer).
 
 3. W oknie dialogowym **Create — Server** (Tworzenie — Serwer) na karcie **General** (Ogólne) wprowadź unikatową przyjazną nazwę serwera, np. **mydemoserver**.
 
@@ -206,7 +206,7 @@ pgAdmin to narzędzie open source używane z rozwiązaniami PostgreSQL. Aplikacj
 
 8. Kliknij prawym przyciskiem myszy pozycję **Bazy danych**, wybierz menu **Utwórz**, a następnie wybierz pozycję **Baza danych**.
 
-9. W polu **Baza danych** wpisz nazwę bazy danych, np. **mypgsqldb2**.
+9. W polu **Database** (Baza danych) wpisz wybraną nazwę bazy danych, np. **mypgsqldb2**.
 
 10. Z listy rozwijanej wybierz pozycję **Właściciel** dla bazy danych. Wybierz nazwę logowania administratora serwera, np. przykładową nazwę **my admin**.
 
@@ -214,7 +214,7 @@ pgAdmin to narzędzie open source używane z rozwiązaniami PostgreSQL. Aplikacj
 
 11. Wybierz pozycję **Zapisz**, aby utworzyć nową pustą bazę danych.
 
-12. W okienku **Przeglądarka** na liście baz danych utworzona baza danych zostanie wyświetlona w ramach pozycji nazwy serwera.
+12. W okienku **Browser** (Przeglądarka) utworzona baza danych zostanie wyświetlona na liście baz danych w ramach pozycji nazwy serwera.
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

@@ -1,8 +1,8 @@
 ---
-title: "Umożliwia dostęp do usługi Azure SQL MSI maszyny Wirtualnej systemu Windows"
-description: "Samouczek, który przeprowadzi Cię przez proces otwieranie Azure SQL za pomocą systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)."
+title: Umożliwia dostęp do usługi Azure SQL MSI maszyny Wirtualnej systemu Windows
+description: Samouczek, który przeprowadzi Cię przez proces otwieranie Azure SQL za pomocą systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b5bab684a7b188d1dc2e1f1f29a772aab8955e43
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ac3c341f7ffc1911fc063202c043351e412843f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Umożliwia dostęp do usługi Azure SQL systemu Windows maszyny Wirtualnej zarządzane usługi tożsamości (MSI)
 
@@ -39,7 +39,7 @@ Ten samouczek pokazuje, jak używać zarządzane tożsamości usługi (MSI) dla 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do portalu Azure pod adresem [ https://portal.azure.com ](https://portal.azure.com).
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Utwórz maszynę wirtualną systemu Windows w nowej grupy zasobów
 
@@ -137,7 +137,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 
 ### <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Włącz uwierzytelnianie usługi Azure AD dla programu SQL server
 
-Po utworzeniu grupy i dodać MSI maszyny Wirtualnej do członkostwa, możesz [Konfigurowanie uwierzytelniania usługi Azure AD dla programu SQL server](~/articles/sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-server) wykonując następujące czynności:
+Po utworzeniu grupy i dodać MSI maszyny Wirtualnej do członkostwa, możesz [Konfigurowanie uwierzytelniania usługi Azure AD dla programu SQL server](~/articles/sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) wykonując następujące czynności:
 
 1.  W portalu Azure wybierz **serwerów SQL** z nawigacji po lewej stronie.
 2.  Kliknij przycisk programu SQL server należy włączyć funkcję uwierzytelniania usługi Azure AD.
@@ -183,7 +183,7 @@ Kodu uruchomionego na maszynie wirtualnej można teraz uzyskać token z pliku MS
 
 Azure SQL natywnie obsługuje usługi Azure AD uwierzytelnianie, więc bezpośrednio może akceptować tokeny dostępu uzyskany przy użyciu Instalatora MSI.  Możesz użyć **token dostępu** metody tworzenia połączenia SQL.  To jest częścią usługi Azure SQL integracji z usługą Azure AD i różni się od podawania poświadczeń w parametrach połączenia.
 
-Oto przykład kodu .net otwarcia połączenia SQL przy użyciu tokenu dostępu.  Ten kod należy uruchomić na maszynie Wirtualnej, aby można było uzyskać dostępu do punktu końcowego maszyny Wirtualnej MSI.  **.NET framework 4.6** lub nowszego jest wymagany przy użyciu metody tokenu dostępu.  Zastąp wartości AZURE-SQL-SERVERNAME i bazy danych w związku z tym.  Należy pamiętać, że identyfikator zasobu dla bazy danych SQL Azure jest "https://database.windows.net/".
+Oto przykład kodu .net otwarcia połączenia SQL przy użyciu tokenu dostępu.  Ten kod należy uruchomić na maszynie Wirtualnej, aby można było uzyskać dostępu do punktu końcowego maszyny Wirtualnej MSI.  **.NET framework 4.6** lub nowszego jest wymagany przy użyciu metody tokenu dostępu.  Zastąp wartości AZURE-SQL-SERVERNAME i bazy danych w związku z tym.  Należy zwrócić uwagę identyfikator zasobu Azure SQL jest "https://database.windows.net/".
 
 ```csharp
 using System.Net;

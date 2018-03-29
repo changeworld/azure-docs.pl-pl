@@ -1,8 +1,8 @@
 ---
-title: "Wyświetlanie dzienników diagnostycznych dla usługi Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Zrozumienie, jak skonfigurować i dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store "
+title: Wyświetlanie dzienników diagnostycznych dla usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: 'Zrozumienie, jak skonfigurować i dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store '
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Uzyskiwanie dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store
 Dowiedz się włączyć diagnostyczne dla konta usługi Data Lake Store i sposób wyświetlania dzienników zbierane dla Twojego konta.
@@ -31,7 +31,7 @@ Organizacje mogą włączyć rejestrowanie diagnostyczne dla swojego konta usłu
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Włączanie rejestrowania diagnostyki dla konta usługi Data Lake Store
 1. Zaloguj się w nowej witrynie [Azure Portal](https://portal.azure.com).
-2. Otwórz konto usługi Data Lake Store, a w bloku konta usługi z usługą Data Lake Store, kliknij przycisk **ustawienia**, a następnie kliknij przycisk **dzienniki diagnostyczne**.
+2. Otwórz konto usługi Data Lake Store, a w bloku konta usługi z usługą Data Lake Store, kliknij przycisk **dzienniki diagnostyczne**.
 3. W **dzienników diagnostycznych** bloku, kliknij przycisk **Włącz diagnostykę**.
 
     ![Włączanie rejestrowania diagnostyki](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Włączanie dzienników diagnostycznych")
@@ -150,6 +150,7 @@ Oto przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob 
              "category": "Audit",
              "operationName": "SeOpenStream",
              "resultType": "0",
+             "resultSignature": "0",
              "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
              "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
              "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
@@ -167,6 +168,7 @@ Oto przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob 
 | category |Ciąg |Kategoria dziennika. Na przykład **inspekcji**. |
 | operationName |Ciąg |Nazwa operacji, które są rejestrowane. Na przykład getfilestatus. |
 | resultType |Ciąg |Stan operacji, na przykład 200. |
+| resultSignature |Ciąg |Więcej informacji na temat operacji. |
 | correlationId |Ciąg |Identyfikator dziennika, który można używane do grupowania zbiór wpisów dziennika pokrewne |
 | identity |Obiekt |Tożsamości, który wygenerował dziennika |
 | properties |JSON |Wymienione poniżej, aby uzyskać więcej informacji |
@@ -186,7 +188,7 @@ search *
 ```
 
 
-Azure Data Lake Store zapewnia próbkę na temat przetwarzanie i analizowanie danych dziennika. Na przykład można znaleźć [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
+Azure Data Lake Store zapewnia próbkę na temat przetwarzanie i analizowanie danych dziennika. Na przykład można znaleźć [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
 ## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Azure Data Lake Store](data-lake-store-overview.md)

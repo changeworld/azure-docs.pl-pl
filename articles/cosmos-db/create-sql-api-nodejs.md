@@ -1,29 +1,27 @@
 ---
-title: "Azure Cosmos DB: Tworzenie aplikacji za pomocą platformy Node.js i interfejsu API SQL | Microsoft Docs"
-description: "Przykładowy kod platformy Node.js, którego można używać do nawiązywania połączeń z interfejsem API SQL usługi Azure Cosmos DB i wykonywania względem niego zapytań"
+title: 'Azure Cosmos DB: Tworzenie aplikacji za pomocą platformy Node.js i interfejsu API SQL | Microsoft Docs'
+description: Przykładowy kod platformy Node.js, którego można używać do nawiązywania połączeń z interfejsem API SQL usługi Azure Cosmos DB i wykonywania względem niego zapytań
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 9c0f033c-240e-4fee-8421-08907231087f
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 4e411ead0456abd4728dcae2c204a424ff09b195
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 9aa603c438b267064c2238192669126847f953ef
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji interfejsu API SQL za pomocą platformy Node.js i witryny Azure Portal
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
@@ -132,7 +130,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     `config.primaryKey "FILLME"`
     
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 1. Uruchom polecenie `npm install` w terminalu, aby zainstalować wymagane moduły npm.
 
 2. Uruchom polecenie `node app.js` w terminalu, aby uruchomić aplikację Node.

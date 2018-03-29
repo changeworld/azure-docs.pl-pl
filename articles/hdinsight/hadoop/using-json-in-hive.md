@@ -1,8 +1,8 @@
 ---
-title: "Analizowanie i przetwarzania dokumentów JSON z Apache Hive w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać dokumentów JSON i analizować je przy użyciu apache Hive w usłudze Azure HDInsight"
+title: Analizowanie i przetwarzania dokumentów JSON z Apache Hive w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać dokumentów JSON i analizować je przy użyciu apache Hive w usłudze Azure HDInsight
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -15,75 +15,80 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 62b21db5c52287c1d0d058cba3a433434c364777
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 04c3a8262e52a630012a0a70e4b1ccb0ade76449
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Przetwarzanie i analizowanie dokumentów JSON przy użyciu Apache Hive w usłudze Azure HDInsight
 
 Dowiedz się, jak przetwarzanie i analizowanie plików JavaScript Object Notation (JSON) za pomocą Apache Hive w usłudze Azure HDInsight. W tym samouczku używana następujący dokument JSON:
 
+```json
+{
+  "StudentId": "trgfg-5454-fdfdg-4346",
+  "Grade": 7,
+  "StudentDetails": [
     {
-        "StudentId": "trgfg-5454-fdfdg-4346",
-        "Grade": 7,
-        "StudentDetails": [
-            {
-                "FirstName": "Peggy",
-                "LastName": "Williams",
-                "YearJoined": 2012
-            }
-        ],
-        "StudentClassCollection": [
-            {
-                "ClassId": "89084343",
-                "ClassParticipation": "Satisfied",
-                "ClassParticipationRank": "High",
-                "Score": 93,
-                "PerformedActivity": false
-            },
-            {
-                "ClassId": "78547522",
-                "ClassParticipation": "NotSatisfied",
-                "ClassParticipationRank": "None",
-                "Score": 74,
-                "PerformedActivity": false
-            },
-            {
-                "ClassId": "78675563",
-                "ClassParticipation": "Satisfied",
-                "ClassParticipationRank": "Low",
-                "Score": 83,
-                "PerformedActivity": true
-                    ]
+      "FirstName": "Peggy",
+      "LastName": "Williams",
+      "YearJoined": 2012
     }
+  ],
+  "StudentClassCollection": [
+    {
+      "ClassId": "89084343",
+      "ClassParticipation": "Satisfied",
+      "ClassParticipationRank": "High",
+      "Score": 93,
+      "PerformedActivity": false
+    },
+    {
+      "ClassId": "78547522",
+      "ClassParticipation": "NotSatisfied",
+      "ClassParticipationRank": "None",
+      "Score": 74,
+      "PerformedActivity": false
+    },
+    {
+      "ClassId": "78675563",
+      "ClassParticipation": "Satisfied",
+      "ClassParticipationRank": "Low",
+      "Score": 83,
+      "PerformedActivity": true
+    }
+  ]
+}
+```
 
-Plik znajduje się w temacie  **wasb://processjson@hditutorialdata.blob.core.windows.net/** . Aby uzyskać więcej informacji o tym, jak używać magazynu obiektów Blob platformy Azure z usługą HDInsight, zobacz [magazynu obiektów Blob Azure użycia systemu plików HDFS zgodnych z platformą Hadoop w usłudze HDInsight](../hdinsight-hadoop-use-blob-storage.md). Plik ten można skopiować do domyślnego kontenera klastra.
+Plik znajduje się w temacie **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Aby uzyskać więcej informacji o tym, jak używać magazynu obiektów Blob platformy Azure z usługą HDInsight, zobacz [magazynu obiektów Blob Azure użycia systemu plików HDFS zgodnych z platformą Hadoop w usłudze HDInsight](../hdinsight-hadoop-use-blob-storage.md). Plik ten można skopiować do domyślnego kontenera klastra.
 
 W tym samouczku używasz konsoli programu Hive. Aby uzyskać instrukcje dotyczące sposobu otwierania konsoli programu Hive, zobacz [używanie Hive z usługą Hadoop w usłudze HDInsight przy użyciu pulpitu zdalnego](apache-hadoop-use-hive-remote-desktop.md).
 
 ## <a name="flatten-json-documents"></a>Spłaszczanie dokumentów JSON
 Z metod opisanych w następnej sekcji wymagają, że dokument JSON składać się z jednym wierszu. Dlatego musi spłaszczanie dokumentu JSON na ciąg. Jeśli już właściwości jest spłaszczona dokumentu JSON, możesz pominąć ten krok i przejść bezpośrednio do następnej sekcji na analizowanie danych JSON. Do spłaszczenia dokumentów JSON, uruchom następujący skrypt:
 
-    DROP TABLE IF EXISTS StudentsRaw;
-    CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
+```sql
+DROP TABLE IF EXISTS StudentsRaw;
+CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
 
-    DROP TABLE IF EXISTS StudentsOneLine;
-    CREATE EXTERNAL TABLE StudentsOneLine
-    (
-      json_body string
-    )
-    STORED AS TEXTFILE LOCATION '/json/students';
+DROP TABLE IF EXISTS StudentsOneLine;
+CREATE EXTERNAL TABLE StudentsOneLine
+(
+  json_body string
+)
+STORED AS TEXTFILE LOCATION '/json/students';
 
-    INSERT OVERWRITE TABLE StudentsOneLine
-    SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
-          FROM (SELECT INPUT__FILE__NAME,BLOCK__OFFSET__INSIDE__FILE, textcol FROM StudentsRaw DISTRIBUTE BY INPUT__FILE__NAME SORT BY BLOCK__OFFSET__INSIDE__FILE) x
-          GROUP BY INPUT__FILE__NAME;
+INSERT OVERWRITE TABLE StudentsOneLine
+SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
+      FROM (SELECT INPUT__FILE__NAME,BLOCK__OFFSET__INSIDE__FILE, textcol FROM StudentsRaw DISTRIBUTE BY INPUT__FILE__NAME SORT BY BLOCK__OFFSET__INSIDE__FILE) x
+      GROUP BY INPUT__FILE__NAME;
 
-    SELECT * FROM StudentsOneLine
+SELECT * FROM StudentsOneLine
+```
 
-Plik JSON raw znajduje się w  **wasb://processjson@hditutorialdata.blob.core.windows.net/** . **StudentsRaw** Hive punktów tabeli pierwotnych dokumentu JSON, który nie jest spłaszczona.
+Plik JSON raw znajduje się w **wasb://processjson@hditutorialdata.blob.core.windows.net/**. **StudentsRaw** Hive punktów tabeli pierwotnych dokumentu JSON, który nie jest spłaszczona.
 
 **StudentsOneLine** tabelę programu Hive przechowuje dane w usłudze HDInsight domyślnego systemu plików w obszarze **/json/uczniów lubstudentów/** ścieżki.
 
@@ -108,10 +113,12 @@ Gałąź zapewnia wbudowanej funkcji zdefiniowanej przez użytkownika o nazwie [
 
 Następujące zapytanie zwraca imię i nazwisko dla użytkowników:
 
-    SELECT
-      GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'),
-      GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName')
-    FROM StudentsOneLine;
+```sql
+SELECT
+  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'),
+  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName')
+FROM StudentsOneLine;
+```
 
 Poniżej przedstawiono dane wyjściowe po uruchomieniu tego zapytania w oknie konsoli:
 
@@ -127,10 +134,12 @@ Jest to, dlaczego Hive wiki zaleca użycie json_tuple.
 ### <a name="use-the-jsontuple-udf"></a>Użyj json_tuple funkcji zdefiniowanej przez użytkownika
 Inny UDF udostępniane przez Hive jest wywoływana [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple), który wykonuje lepszym rozwiązaniem niż [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Ta metoda przyjmuje zestaw kluczy i ciągu JSON i zwraca spójną kolekcję wartości za pomocą jednej funkcji. Następujące zapytanie zwraca identyfikator dla użytkowników domowych i kategorii z dokumentu JSON:
 
-    SELECT q1.StudentId, q1.Grade
-      FROM StudentsOneLine jt
-      LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
-        AS StudentId, Grade;
+```sql
+SELECT q1.StudentId, q1.Grade
+FROM StudentsOneLine jt
+LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
+  AS StudentId, Grade;
+```
 
 Dane wyjściowe tego skryptu w konsoli programu Hive:
 

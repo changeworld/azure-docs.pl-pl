@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/15/2017
-ms.topic: tutorial
+ms.date: 03/23/2018
+ms.topic: article
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4d6dd0d46d909acfbfc04a23be74a571953ce660
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
+ms.openlocfilehash: b03ece52c4ff77c9e0abbc794325cd7e9a20c915
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -104,7 +104,8 @@ Agent usługi Edge nie ma uprawnień dostępu do obrazu modułu.
 Spróbuj uruchomić ponownie polecenie `iotedgectl login`.
 
 ## <a name="iotedgectl-cant-find-docker"></a>Polecenie iotedgectl nie może znaleźć platformy Docker
-Polecenie iotedgectl nie może uruchomić instalatora lub polecenia uruchomienia i zapisuje w dziennikach następujący komunikat:
+
+Polecenia `iotedgectl setup` lub `iotedgectl start` zakończyć się niepowodzeniem i Drukuj komunikat do dzienników:
 ```output
 File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
   info = self._client.info()
@@ -120,5 +121,32 @@ Polecenie iotedgectl nie może znaleźć platformy Docker, która jest wymaganie
 ### <a name="resolution"></a>Rozwiązanie
 Zainstaluj platformę Docker, upewnij się, że jest uruchomiona, i spróbuj ponownie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>iotedgectl instalacja zakończy się niepowodzeniem z nieprawidłową nazwą hosta
+
+Polecenie `iotedgectl setup` nie powiedzie się i wyświetla następujący komunikat: 
+
+```output
+Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
+```
+
+### <a name="root-cause"></a>Główna przyczyna
+Środowisko uruchomieniowe krawędzi IoT może obsługiwać tylko nazwy hostów, które są krótsze niż 64 znaki. To zwykle nie jest problemem w przypadku komputerów fizycznych, ale może wystąpić podczas konfigurowania środowiska uruchomieniowego na maszynie wirtualnej. Automatycznie generowane nazwy hostów dla maszyn wirtualnych systemu Windows hostowana na platformie Azure, w szczególności, zwykle za długa. 
+
+### <a name="resolution"></a>Rozwiązanie
+Gdy zostanie wyświetlony ten błąd, można rozwiązać, konfigurowanie nazwę DNS maszyny wirtualnej, a następnie ustawić nazwę DNS jako nazwa hosta polecenia Instalatora.
+
+1. W portalu Azure przejdź do strony Przegląd maszyny wirtualnej. 
+2. Wybierz **skonfigurować** pod nazwą DNS. Maszyna wirtualna ma już skonfigurowaną nazwę DNS, nie trzeba skonfigurować nowy. 
+
+   ![Konfigurowanie nazwy DNS](./media/troubleshoot/configure-dns.png)
+
+3. Podaj wartość dla **etykieta nazwy DNS** i wybierz **zapisać**.
+4. Skopiuj nowej nazwy DNS, która powinna być w formacie  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
+5. Na maszynie wirtualnej Użyj następującego polecenia, aby skonfigurować środowisko uruchomieniowe krawędzi IoT z nazwą DNS:
+
+   ```input
+   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
+   ```
+
+## <a name="next-steps"></a>Kolejne kroki
 Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iot-edge/issues), aby umożliwić nam naprawę. 

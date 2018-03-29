@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z ADP | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ADP."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ADP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 1e0a35fd76f9eb6335685f05b8936b0b5105f6b2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 038b2337ea49b769c6b19e9d50a5f0f2edd13d56
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Samouczek: Integracji Azure Active Directory z ADP
 
@@ -122,7 +122,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny ADP pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_url.png)
 
-    W **identyfikator** tekstowym, wpisz adres URL: `https://fed.adp.com/` 
+    W **identyfikator** tekstowym, wpisz adres URL: `https://fed.adp.com` 
     
 5. Aplikacja ADP oczekuje potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do konfiguracji atrybuty tokenu SAML. Poniższy zrzut ekranu przedstawia przykład tego. Nazwa oświadczenia będą zawsze miały **"PersonImmutableID"** i których wartość możemy mapować do **identyfikator pracownika**. 
 
@@ -238,10 +238,6 @@ Po otrzymaniu potwierdzenia z przedstawicielem ADP skonfigurować użytkowników
  
 11. Na potwierdzenie pomyślnego testu należy przypisać usługi federacyjnej ADP do indywidualnych użytkowników lub grup użytkowników, które znajduje się w dalszej części tego samouczka i wdrażanie jej do pracowników. 
 
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -319,6 +315,8 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 

@@ -1,11 +1,11 @@
 ---
 title: Analiza ruchu Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak i analizować dzienniki przepływu grupy zabezpieczeń sieci platformy Azure z analizy ruchu."
+description: Dowiedz się, jak i analizować dzienniki przepływu grupy zabezpieczeń sieci platformy Azure z analizy ruchu.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: 9fc44fdd6ce01452ffc2506c599e3d05aa0803e1
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -28,19 +28,19 @@ Analiza ruchu jest oparta na chmurze rozwiązaniem, które zapewnia wgląd w dzi
 - Zrozumieć wzorce przepływu ruchu w różnych regionach platformy Azure i internet w celu zoptymalizowania wdrożenia sieci wydajność i pojemność.
 - Wskazanie błędów konfiguracji sieci, co może prowadzić do połączenia nie powiodło się w sieci.
 
-## <a name="why-traffic-analytics"></a>Dlaczego ruchu Analytics?
+## <a name="why-traffic-analytics"></a>Dlaczego ruchu analytics?
 
 Jest to niezbędne do monitorowania, zarządzania i wiedzieć własnej sieci, który nie został naruszony zabezpieczeń, zgodności i wydajności. Znajomość własnego środowiska jest najważniejsze do ochrony i zoptymalizować go. Często muszą znać bieżący stan sieci, który nawiązuje połączenie, where, które porty są otwarte z Internetem, oczekiwane zachowanie sieci, zachowanie nieregularne sieci i nagłego wzrostu ruchu.
 
 Sieciach w chmurze są inne niż lokalnej sieci przedsiębiorstwa, gdzie masz Netflow lub routery obsługujące protokół równoważne i przełączników, które zapewniają możliwość zbierania ruchu sieciowego IP wprowadza lub kończy działanie interfejsu sieciowego. Analizując ruch przepływu danych, można tworzyć analizy ruchu sieciowego i wolumin.
 
-Dzienniki przepływu NSG, zapewniających informacji na temat ruch przychodzący ma sieci wirtualnych platformy Azure i ruch wychodzący ruch pakietów IP za pośrednictwem grupy zabezpieczeń sieci skojarzonych z interfejsów sieciowych poszczególnych maszyn wirtualnych i podsieci. Analizując raw NSG przepływu dzienniki i wstawianie analizy zabezpieczeń, topologii i geograficzne, analizy ruchu zapewnia wgląd w ruchu w danym środowisku. Analiza ruchu udostępnia takie informacje jak najbardziej komunikacji hostów, najbardziej komunikacji protokołów aplikacji, najbardziej konwersację pary hosta, dozwolone/blokowane ruchu, ruchu przychodzącego/wychodzącego, otwartych portów internetowych, reguły blokowania najbardziej, ruch dystrybucji na centrum danych Azure, sieci wirtualnej, podsieci, lub nieautoryzowane sieci.
+Dzienniki przepływu NSG, zapewniających informacji na temat ruch przychodzący ma sieci wirtualnych platformy Azure i ruch wychodzący ruch pakietów IP za pośrednictwem grupy zabezpieczeń sieci skojarzonych z interfejsów sieciowych poszczególnych maszyn wirtualnych i podsieci. Analizowanie danych pierwotnych dzienniki przepływu NSG, a następnie wstawianie analizy ruchu zabezpieczeń, topologii i lokalizacji geograficznej, analytics może udostępnić wgląd w ruchu w danym środowisku. Analiza ruchu udostępnia takie informacje jak najbardziej komunikacji hostów, najbardziej komunikacji protokołów aplikacji, najbardziej konwersację pary hosta, dozwolone/blokowane ruchu, ruchu przychodzącego/wychodzącego, otwartych portów internetowych, reguły blokowania najbardziej, ruch dystrybucji na centrum danych Azure, sieci wirtualnej, podsieci, lub nieautoryzowane sieci.
 
 ## <a name="key-components"></a>Główne składniki 
 
 - **Grupy zabezpieczeń sieci (NSG)**: zawiera listę reguł zabezpieczeń, które akceptować lub odrzucać ruch sieciowy do zasoby podłączone do sieci wirtualnej platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [omówienie grupy zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Sieciowe grupy zabezpieczeń (NSG) przepływu dzienniki**: umożliwia wyświetlanie informacji o przychodzące i wychodzące ruchu IP za pośrednictwem grupy zabezpieczeń sieci. Grupy NSG przepływu dzienniki są zapisywane w formacie json i Pokaż wychodzących i przepływów przychodzących na podstawie reguł na, przepływ karty interfejsu Sieciowego dotyczy, 5-elementowej informacji na temat przepływu (źródłowego i docelowego adresu IP, portu źródłowego i docelowego i protocol), a jeśli ruch jest dozwolone, lub Odmowa dostępu. Aby uzyskać więcej informacji o dziennikach przepływu NSG, zobacz [dzienniki przepływu NSG](network-watcher-nsg-flow-logging-overview.md).
-- **Zaloguj się Analytics**: Usługa Azure, która służy do zbierania danych monitorowania i przechowuje dane w centralnym repozytorium. Dane te mogą obejmować zdarzeń, danych wydajności lub niestandardowe dane przekazane za pośrednictwem interfejsu API platformy Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Monitorowanie aplikacji, takich jak Monitor wydajności sieci i analiza ruchu są tworzone przy użyciu analizy dzienników jako podstawę. Aby uzyskać więcej informacji, zobacz [dziennika analizy](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Dzienniki przepływu grupa zabezpieczeń sieci**: umożliwia wyświetlanie informacji o przychodzące i wychodzące ruchu IP za pośrednictwem grupy zabezpieczeń sieci. Grupy NSG przepływu dzienniki są zapisywane w formacie json i Pokaż wychodzących i przepływów przychodzących na podstawie reguł na, przepływ karty interfejsu Sieciowego dotyczy, 5-elementowej informacji na temat przepływu (źródłowego i docelowego adresu IP, portu źródłowego i docelowego i protocol), a jeśli ruch jest dozwolone, lub Odmowa dostępu. Aby uzyskać więcej informacji o dziennikach przepływu NSG, zobacz [dzienniki przepływu NSG](network-watcher-nsg-flow-logging-overview.md).
+- **Zaloguj się Analytics**: Usługa Azure, która służy do zbierania danych monitorowania i przechowuje dane w centralnym repozytorium. Dane te mogą obejmować zdarzeń, danych wydajności lub niestandardowe dane przekazane za pośrednictwem interfejsu API platformy Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Monitorowanie aplikacji, takich jak analizy ruchu i monitor wydajności sieci są tworzone przy użyciu analizy dzienników jako podstawę. Aby uzyskać więcej informacji, zobacz [dziennika analizy](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Obszar roboczy analizy dziennika**: wystąpienie analizy dzienników, w którym są przechowywane dane dotyczące konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych usługi Analiza dzienników, zobacz [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Monitor sieci**: regionalnych usługa, która umożliwia monitorowanie i diagnozowanie warunki na poziomie scenariusz sieci na platformie Azure. Można włączyć NSG przepływu dzienniki włączać i wyłączać z obserwatora sieciowego. Aby uzyskać więcej informacji, zobacz [obserwatora sieciowego](network-watcher-monitoring-overview.md#network-watcher).
 
@@ -58,7 +58,7 @@ Analiza ruchu jest dostępna w wersji zapoznawczej. Funkcje w wersji zapoznawcze
 
 ### <a name="enable-network-watcher"></a>Włącz obserwatora sieciowego 
 
-Analiza ruchu, musisz mieć istniejących obserwatora sieciowego lub [włączyć obserwatora sieciowego Azure](network-watcher-create.md) w poszczególnych regionach, czy masz grup NSG, które mają być analizowane ruch związany. Analiza ruchu mogą być włączone dla grupy NSG hostowanej w żadnym z [obsługiwane regiony](#supported-regions).
+Analiza ruchu, musisz mieć istniejących obserwatora sieciowego lub [włączyć obserwatora sieciowego](network-watcher-create.md) w poszczególnych regionach, czy masz grup NSG, które mają być analizowane ruch związany. Analiza ruchu mogą być włączone dla grupy NSG hostowanej w żadnym z [obsługiwane regiony](#supported-regions).
 
 ### <a name="re-register-the-network-resource-provider"></a>Ponowne zarejestrowanie dostawcy zasobów sieciowych 
 
@@ -107,7 +107,7 @@ Wybierz poniższe opcje, jak pokazano na rysunku:
 4. Wybierz *na* dla **ruchu Analytics stanie**.
 5. Wybierz istniejący obszar roboczy analizy dzienników (OMS) lub **Utwórz nowy obszar roboczy** Aby utworzyć nowy. Obszar roboczy analizy dzienników jest używany przez analityka ruchu do przechowywania danych zagregowane i indeksowanych, który jest następnie używany do generowania do analizy. Jeśli wybierzesz istniejący obszar roboczy, musi istnieć w jednym z [obsługiwane regiony](#traffic-analytics-supported-regions) i nie zostaną uaktualnione do nowego języka zapytań. Jeśli nie chcesz, aby uaktualnić istniejący obszar roboczy lub nie masz obszaru roboczego w obsługiwanym regionie, Utwórz nową. Aby uzyskać więcej informacji o językach zapytania, zobacz [Analiza dzienników Azure uaktualnienia do nowego wyszukiwania dziennika](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Nie masz obszaru roboczego analizy dzienników (OMS) hosting rozwiązania analizy ruchu i grup NSG w tym samym regionie. Na przykład może być analizy ruchu w obszarze roboczym w regionie Europa Zachodnia, gdy masz grup NSG wschodnie stany USA i zachodnie stany USA. W tym samym obszarze roboczym można skonfigurować wiele grup NSG.
+    Nie masz obszaru roboczego analizy dzienników hosting rozwiązania analizy ruchu i grup NSG w tym samym regionie. Na przykład może być analizy ruchu w obszarze roboczym w regionie Europa Zachodnia, gdy masz grup NSG wschodnie stany USA i zachodnie stany USA. W tym samym obszarze roboczym można skonfigurować wiele grup NSG.
 6. Wybierz pozycję **Zapisz**.
 
     ![Wybór konta magazynu, obszar roboczy analizy dzienników i włączanie analizy ruchu](media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
@@ -276,4 +276,4 @@ Czy masz szkodliwy ruch w danym środowisku? Gdzie jest pochodzące z? Gdzie jes
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [analizy ruchu — często zadawane pytania](traffic-analytics-faq.md).
+Aby uzyskać odpowiedzi na często zadawane pytania, zobacz [ruchu analytics — często zadawane pytania](traffic-analytics-faq.md).

@@ -1,12 +1,12 @@
 ---
-title: "Punkty końcowe usługi sieci wirtualnej platformy Azure | Microsoft Docs"
-description: "Dowiedz się, jak włączyć bezpośredni dostęp do zasobów platformy Azure z sieci wirtualnej przy użyciu punktów końcowych usługi."
+title: Punkty końcowe usługi sieci wirtualnej platformy Azure | Microsoft Docs
+description: Dowiedz się, jak włączyć bezpośredni dostęp do zasobów platformy Azure z sieci wirtualnej przy użyciu punktów końcowych usługi.
 services: virtual-network
 documentationcenter: na
 author: anithaa
 manager: narayan
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2018
 ms.author: anithaa
-ms.custom: 
-ms.openlocfilehash: aa1ac804c9cd623e5fb03c97a38f9352ac8a42ad
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.custom: ''
+ms.openlocfilehash: dbcb1d87fafe085d6232fa621fbd9e211fa4174d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -119,7 +119,7 @@ W przypadku zasobów usług platformy Azure (np. konta usługi Azure Storage) us
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [skonfigurować punkty końcowe usługi sieci wirtualnej](virtual-network-service-endpoints-configure.md)
+- Dowiedz się, jak [skonfigurować punkty końcowe usługi sieci wirtualnej](tutorial-restrict-network-access-to-resources.md)
 - Dowiedz się, jak [zabezpieczyć konto usługi Azure Storage w sieci wirtualnej](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - Dowiedz się, jak [zabezpieczyć usługę Azure SQL Database w sieci wirtualnej](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - Dowiedz się więcej o [integracji usług platformy Azure w sieciach wirtualnych](virtual-network-for-azure-services.md)

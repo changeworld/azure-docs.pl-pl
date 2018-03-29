@@ -1,12 +1,12 @@
 ---
-title: "Nie można połączyć z protokołem RDP do maszyny Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów, gdy nie można połączyć się z maszyną wirtualną systemu Windows na platformie Azure przy użyciu pulpitu zdalnego"
-keywords: "Błąd pulpitu zdalnego, błąd połączeń usług pulpitu zdalnego, nie można połączyć z maszyną wirtualną, rozwiązywania problemów pulpitu zdalnego"
+title: Nie można połączyć z protokołem RDP do maszyny Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów, gdy nie można połączyć się z maszyną wirtualną systemu Windows na platformie Azure przy użyciu pulpitu zdalnego
+keywords: Błąd pulpitu zdalnego, błąd połączeń usług pulpitu zdalnego, nie można połączyć z maszyną wirtualną, rozwiązywania problemów pulpitu zdalnego
 services: virtual-machines-windows
-documentationcenter: 
-author: genlin
+documentationcenter: ''
+author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
-ms.author: genli
-ms.openlocfilehash: 4731a34d143d402372aaff7c03f95dbf0bb508a4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.date: 03/23/2018
+ms.author: danis
+ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Rozwiązywanie problemów z połączeniami pulpitu zdalnego do maszyny wirtualnej platformy Azure
 Połączenia protokołu RDP (Remote Desktop) do systemu Windows Azure maszyny wirtualnej (VM) może zakończyć się niepowodzeniem z różnych powodów, pozostawiając użytkownik mógł uzyskać dostępu do maszyny Wirtualnej. Problem może być usługą pulpitu zdalnego na Maszynie wirtualnej, połączenie sieciowe lub klienta pulpitu zdalnego na komputerze hosta. W tym artykule przedstawiono niektóre z najczęściej metod, aby rozwiązać problemy z połączeniami RDP. 
@@ -77,7 +77,7 @@ Każdy krok rozwiązywania problemów a następnie spróbuj ponownie nawiązać 
     Wybierz maszyny Wirtualnej w portalu Azure. Przewiń w dół okienko ustawienia, aby **pomocy technicznej i rozwiązywania problemów** sekcji w dolnej części listy. Kliknij przycisk **kondycja zasobów** przycisku. Raporty dobrej kondycji maszyny Wirtualnej jako **dostępne**:
    
     ![Sprawdź kondycję zasobu maszyny Wirtualnej w portalu Azure](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **Resetowanie poświadczeń użytkownika**. Ten krok rozwiązywania problemów resetuje hasło konta administratora lokalnego nie wiesz lub zapomniał poświadczenia.
+6. **Resetowanie poświadczeń użytkownika**. Ten krok rozwiązywania problemów resetuje hasło konta administratora lokalnego nie wiesz lub zapomniał poświadczenia.  Gdy użytkownik zalogował się do maszyny Wirtualnej, należy zresetować hasło dla tego użytkownika.
    
     Wybierz maszyny Wirtualnej w portalu Azure. Przewiń w dół okienko ustawienia, aby **pomocy technicznej i rozwiązywania problemów** sekcji w dolnej części listy. Kliknij przycisk **resetowania hasła** przycisku. Upewnij się, że **tryb** ustawiono **resetowania hasła** , a następnie wprowadź nazwy użytkownika i nowe hasło. Na koniec kliknij **aktualizacji** przycisk:
    
@@ -207,7 +207,7 @@ Po wykonaniu każdego kroku rozwiązywania problemów spróbuj połączyć się 
     Wybierz maszyny Wirtualnej w portalu Azure. Przewiń w dół okienko ustawienia, aby **pomocy technicznej i rozwiązywania problemów** sekcji w dolnej części listy. Kliknij przycisk **kondycja zasobów** przycisku. Raporty dobrej kondycji maszyny Wirtualnej jako **dostępne**:
    
     ![Sprawdź kondycję zasobu maszyny Wirtualnej w portalu Azure](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **Resetowanie poświadczeń użytkownika**. Ten krok rozwiązywania problemów resetuje hasło konta administratora lokalnego, określona podczas pewności lub pamiętasz poświadczenia.
+5. **Resetowanie poświadczeń użytkownika**. Ten krok rozwiązywania problemów resetuje hasło konta administratora lokalnego, określona podczas pewności lub pamiętasz poświadczenia.  Gdy użytkownik zalogował się do maszyny Wirtualnej, należy zresetować hasło dla tego użytkownika.
    
     Wybierz maszyny Wirtualnej w portalu Azure. Przewiń w dół okienko ustawienia, aby **pomocy technicznej i rozwiązywania problemów** sekcji w dolnej części listy. Kliknij przycisk **resetowania hasła** przycisku. Wprowadź nazwy użytkownika i nowe hasło. Na koniec kliknij **zapisać** przycisk:
    

@@ -1,22 +1,22 @@
 ---
-title: "Zapytania na danych z środowiska Azure czas serii Insights przy użyciu kodu C# | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób wysyłania kwerend danych ze środowiska Azure czas serii Insights przez kodowania niestandardowych aplikacji w języku C# (C sharp) .NET."
+title: Zapytania na danych z środowiska Azure czas serii Insights przy użyciu kodu C# | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób wysyłania kwerend danych ze środowiska Azure czas serii Insights przez kodowania niestandardowych aplikacji w języku C# (C sharp) .NET.
 services: time-series-insights
 ms.service: time-series-insights
 author: ankryach
 ms.author: ankryach
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
-reviewer: v-mamcge, jasonwhowell, kfile, tsidocs
+reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 561ad848e7bddc6bf9d71328db4ddbba9bc5d2b4
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.date: 03/23/2018
+ms.openlocfilehash: 2cbdf4a5c7272e88430b1db7b853f8b6d441c893
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Pobiera dane ze środowiska Azure czas serii Insights przy użyciu języka C#
 
@@ -26,6 +26,11 @@ Przykładowy kod zawiera kilka podstawowych przykładów użycia interfejsu API 
 2. Uzyskać listy środowisk, w których użytkownik ma dostęp. Jeden z tych środowisk zostaje pobrana jako nazwa środowiska zainteresowań i dalsze danych jest poddawany kwerendzie dla tego środowiska.
 3. Przykładem żądania HTTPS może być żądanie danych dostępności dla odpowiedniego środowiska.
 4. Przykładem żądania gniazda sieci Web może być żądanie danych agregowania zdarzeń dla odpowiedniego środowiska. Żądanie danych obejmuje cały zakres czasu dostępności.
+
+Ten przykładowy kod jest również dostępna w [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+
+## <a name="project-references"></a>Odwołania do projektu
+Dodawanie pakietów NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json` w tym przykładzie. 
 
 ## <a name="c-example"></a>Przykład C#
 

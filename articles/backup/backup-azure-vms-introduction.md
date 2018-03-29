@@ -1,44 +1,44 @@
 ---
 title: Planowanie infrastruktury kopii zapasowych maszyn wirtualnych na platformie Azure | Dokumentacja firmy Microsoft
-description: "Ważne uwagi dotyczące planowania kopii zapasowych maszyn wirtualnych na platformie Azure"
+description: Ważne uwagi dotyczące planowania kopii zapasowych maszyn wirtualnych na platformie Azure
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "Wykonaj kopię zapasową maszyn wirtualnych, kopii zapasowych maszyn wirtualnych"
+editor: ''
+keywords: Wykonaj kopię zapasową maszyn wirtualnych, kopii zapasowych maszyn wirtualnych
 ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/18/2017
+ms.date: 3/23/2018
 ms.author: markgal;trinadhk
-ms.openlocfilehash: 66b64c803dfea6a1e4c7795d10e4b4ba064f1cf7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planowanie infrastruktury kopii zapasowych maszyny wirtualnej na platformie Azure
 Ten artykuł zawiera wydajności i sugestie zasobów ułatwiają planowanie infrastruktury kopii zapasowych maszyn wirtualnych. Definiuje również kluczowych aspektów usługi tworzenia kopii zapasowej; te aspekty może mieć decydujące znaczenie dla określenia architektury, planowanie pojemności i planowania. Jeśli znasz [przygotować środowisko](backup-azure-arm-vms-prepare.md), następnym krokiem planowania jest przed rozpoczęciem [do tworzenia kopii zapasowych maszyn wirtualnych](backup-azure-arm-vms.md). Aby uzyskać więcej informacji o maszynach wirtualnych platformy Azure, zobacz [dokumentacji maszyn wirtualnych](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Jak Azure wykonywanie kopii zapasowych maszyn wirtualnych?
-Gdy usługa Azure Backup Inicjuje zadania tworzenia kopii zapasowej w zaplanowanym terminie, wyzwala zapasowy numer wewnętrzny do tworzenia migawki punktu w czasie. Używa usługi Azure Backup _VMSnapshot_ rozszerzenia w systemie Windows i _VMSnapshotLinux_ rozszerzenia w systemie Linux. Rozszerzenie jest zainstalowany podczas pierwszego tworzenia kopii zapasowej maszyny Wirtualnej. Aby zainstalować to rozszerzenie, musi być uruchomiona maszyna wirtualna. Jeśli maszyna wirtualna nie działa, usługa Kopia zapasowa tworzy migawkę powiązany magazyn (ponieważ nie zapisy aplikacji są wykonywane, gdy maszyna wirtualna zostanie zatrzymana).
+Gdy usługa Azure Backup Inicjuje zadania tworzenia kopii zapasowej w zaplanowanym terminie, wyzwalaczy usługi zapasowy numer wewnętrzny do tworzenia migawki w chwili. Używa usługi Azure Backup _VMSnapshot_ rozszerzenia w systemie Windows i _VMSnapshotLinux_ rozszerzenia w systemie Linux. Rozszerzenie jest zainstalowany podczas pierwszego tworzenia kopii zapasowej maszyny Wirtualnej. Aby zainstalować to rozszerzenie, musi być uruchomiona maszyna wirtualna. Jeśli maszyna wirtualna nie jest uruchomiona, usługa Backup utworzy migawkę powiązanego magazynu (ponieważ gdy maszyna wirtualna jest zatrzymana, nie występują zapisy aplikacji).
 
 Podczas wykonywania migawki maszyn wirtualnych systemu Windows, usługi Kopia zapasowa koordynuje z woluminów w tle kopii Service (VSS) do uzyskania migawki spójne z dysków maszyny wirtualnej. Jeśli tworzysz kopię zapasową maszyn wirtualnych systemu Linux, napisania własnych skryptów niestandardowych w celu zapewnienia spójności podczas wykonywania migawki maszyny Wirtualnej. Szczegółowe informacje na temat wywoływania tych skryptów znajdują się w dalszej części tego artykułu.
 
-Gdy usługa Kopia zapasowa Azure przyjmuje migawki, dane są przesyłane do magazynu. Aby zmaksymalizować wydajność, usługa identyfikuje i transferuje tylko bloki danych, które uległy zmianie od czasu poprzedniej kopii zapasowej.
+Po utworzeniu migawki w usłudze Azure Backup dane są przesyłane do magazynu. Aby zmaksymalizować wydajność, usługa rozpoznaje i przesyła jedynie te bloki danych, które uległy zmianie od czasu utworzenia poprzedniej kopii zapasowej.
 
 ![Architektura kopii zapasowych maszyny wirtualnej platformy Azure](./media/backup-azure-vms-introduction/vmbackup-architecture.png)
 
-Po ukończeniu transferu danych migawki zostaną usunięte i utworzenia punktu odzyskiwania.
+Po ukończeniu przesyłania danych migawka jest usuwana, a utworzony zostaje punkt odzyskiwania.
 
 > [!NOTE]
 > 1. Podczas procesu tworzenia kopii zapasowej Azure Backup nie uwzględnia dysku tymczasowym dołączony do maszyny wirtualnej. Aby uzyskać więcej informacji znajduje się we wpisie na [magazyn tymczasowy](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
-> 2. Ponieważ kopia zapasowa Azure tworzy migawkę poziom miejsca do magazynowania i transferuje ją do magazynu, nie należy zmieniać klucze konta magazynu zakończenie zadania tworzenia kopii zapasowej.
-> 3. Dla maszyn wirtualnych w warstwie premium możemy skopiować migawki do konta magazynu. To, aby upewnić się, że usługa Kopia zapasowa Azure pobiera IOPS wystarczające do przesyłania danych do magazynu. To dodatkowe kopię magazynu jest pobierana zgodnie z harmonogramem przydzielony rozmiar maszyny Wirtualnej. 
+> 2. Azure ma kopii zapasowej poziom miejsca do magazynowania migawki i transferuje ją do magazynu, nie należy zmieniać klucze konta magazynu, zakończenie zadania tworzenia kopii zapasowej.
+> 3. Dla maszyn wirtualnych w warstwie premium Azure Backup kopiuje migawki do konta magazynu. To upewnij się, że usługa kopii zapasowej używa IOPS wystarczające do przesyłania danych do magazynu. To dodatkowe kopię magazynu jest pobierana zgodnie z harmonogramem przydzielony rozmiar maszyny Wirtualnej. 
 >
 
 ### <a name="data-consistency"></a>Spójność danych
@@ -64,7 +64,7 @@ W następującej tabeli opisano typy spójności i warunki, które występują w
 | --- | --- | --- |
 | Spójność aplikacji |Tak dla systemu Windows|Spójność aplikacji jest idealne dla obciążeń, zapewnia, że:<ol><li> Maszyna wirtualna *rozruch*. <li>Brak *nie uszkodzenie*. <li>Brak *bez utraty danych*.<li> Dane są spójne do aplikacji, która korzysta z danych poprzez włączenie aplikacji w czasie wykonywania kopii zapasowej — za pomocą usługi VSS lub poprzedzającego utworzenie kopii zapasowej lub używanego po skryptu.</ol> <li>*Maszyny wirtualne systemu Windows*-obciążeń najbardziej firmy Microsoft ma składniki zapisywania usługi VSS, które wykonują akcje specyficznego dla obciążenia związane z spójności danych. Na przykład Microsoft SQL Server ma składnik zapisywania usługi VSS, które powodują, że zapis do pliku dziennika transakcji i baza danych są wykonywane prawidłowo. Kopii zapasowych maszyny Wirtualnej systemu Windows Azure Tworzenie punktu odzyskiwania zapewniających spójność aplikacji zapasowy numer wewnętrzny należy wywołać przepływu pracy usługi VSS i Zakończ ją przed wykonaniem migawki maszyny Wirtualnej. Dla migawki maszyny Wirtualnej platformy Azure jako dokładne należy wykonać również składniki zapisywania usługi VSS wszystkich aplikacji w maszynie Wirtualnej platformy Azure. (Dowiedz się [podstawy VSS](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx) i Poznaj głębokość szczegóły [jej działania](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)). </li> <li> *Maszyny wirtualne systemu Linux*— klienci mogą wykonywać [niestandardowego skryptu przed i po skryptu w celu zapewnienia spójności aplikacji](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). </li> |
 | Spójności systemu plików |Tak — w przypadku komputerów z systemem Windows |Istnieją dwa scenariusze, w której punkt odzyskiwania może być *systemu plików spójne*:<ul><li>Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure, bez wstępnie przygotowany-script/po-script lub jeśli wstępnie przygotowany-script/po-script nie powiodło się. <li>Błąd VSS podczas tworzenia kopii zapasowej dla maszyn wirtualnych systemu Windows na platformie Azure.</li></ul> W obu przypadkach najlepiej, którą można wykonać jest upewnij się, że: <ol><li> Maszyna wirtualna *rozruch*. <li>Brak *nie uszkodzenie*.<li>Brak *bez utraty danych*.</ol> Aplikacje muszą implementować własnych "Napraw" mechanizm na przywróconych danych. |
-| Spójność awarii |Nie |Taka sytuacja jest odpowiednikiem maszyny wirtualnej występuje "awarii" (za pośrednictwem zmiennego lub stałego reset). Spójność awarii zwykle odbywa się podczas zamykania maszyny wirtualnej platformy Azure w czasie wykonywania kopii zapasowej. Punkt odzyskiwania spójna w razie awarii zapewnia żadnych gwarancji wokół spójności danych na nośniku — albo z punktu widzenia systemu operacyjnego lub aplikacji. Tylko dane, które już istnieje na dysku w momencie tworzenia kopii zapasowej zostaną zebrane i kopii zapasowej. <br/> <br/> Gdy są zazwyczaj żadnych gwarancji, uruchomieniem systemu operacyjnego, następuje sprawdzenie dysku procedury, takich jak narzędzia chkdsk, aby naprawić błędy uszkodzenia. Wszystkie dane w pamięci lub operacji zapisu, które nie zostały przeniesione na dysku zostaną utracone. Aplikacji zazwyczaj wynika z mechanizm weryfikacji w przypadku wycofywania danych musi być przeprowadzane. <br><br>Na przykład jeśli dziennik transakcji ma wpisów, które nie są dostępne w bazie danych, następnie oprogramowania bazy danych nie wycofanie dopóki dane są spójne. W przypadku danych zostanie rozmieszczona na wielu dyskach wirtualnych (takich jak woluminy łączone), punkt odzyskiwania spójna w razie awarii zapewnia żadnych gwarancji pod kątem poprawności danych. |
+| Spójność awarii |Nie |Taka sytuacja jest odpowiednikiem maszyny wirtualnej występuje "awarii" (za pośrednictwem zmiennego lub stałego reset). Spójność awarii zwykle odbywa się podczas zamykania maszyny wirtualnej platformy Azure w czasie wykonywania kopii zapasowej. Punkt odzyskiwania spójna w razie awarii zapewnia żadnych gwarancji wokół spójności danych na nośniku — albo z punktu widzenia systemu operacyjnego lub aplikacji. Tylko dane, które już istnieje na dysku w momencie tworzenia kopii zapasowej zostaną zebrane i kopii zapasowej. <br/> <br/> Gdy są zazwyczaj żadnych gwarancji, uruchomieniem systemu operacyjnego, następuje sprawdzenie dysku procedury, takich jak narzędzia chkdsk, aby naprawić błędy uszkodzenia. Wszystkie dane w pamięci lub operacji zapisu, które nie zostały przeniesione na dysku zostaną utracone. Aplikacji zazwyczaj wynika z mechanizm weryfikacji w przypadku wycofywania danych musi być przeprowadzane. <br><br>Na przykład jeśli dziennik transakcji ma wpisy nie znajduje się w bazie danych, bazy danych oprogramowania przedstawia ponownie, dopóki dane są spójne. W przypadku danych zostanie rozmieszczona na wielu dyskach wirtualnych (takich jak woluminy łączone), punkt odzyskiwania spójna w razie awarii zapewnia żadnych gwarancji pod kątem poprawności danych. |
 
 ## <a name="performance-and-resource-utilization"></a>Wydajności i użycia zasobów
 Podobnie jak oprogramowanie kopii zapasowej jest wdrożony lokalnymi należy zaplanować pojemności i wykorzystania zasobów potrzeby podczas tworzenia kopii zapasowych maszyn wirtualnych na platformie Azure. [Magazyn Azure ogranicza](../azure-subscription-service-limits.md#storage-limits) definiowania struktury wdrażania maszyny Wirtualnej, aby uzyskać maksymalną wydajność z minimalny wpływ na obciążeniami.
@@ -125,24 +125,24 @@ Sugerujemy następujące te wskazówki podczas konfigurowania kopii zapasowych m
 Kopia zapasowa Azure nie szyfruje danych jako część procesu tworzenia kopii zapasowej. Jednak szyfrowanie danych w ramach maszyny Wirtualnej i łatwe tworzenie kopii zapasowej chronionych danych (więcej informacji o [tworzenie kopii zapasowych danych zaszyfrowanych](backup-azure-vms-encryption.md)).
 
 ## <a name="calculating-the-cost-of-protected-instances"></a>Obliczanie kosztu wystąpienia chronione
-Podlegają maszyn wirtualnych platformy Azure, których kopie zapasowe są tworzone za pomocą usługi Kopia zapasowa Azure [cennikiem usługi Kopia zapasowa Azure](https://azure.microsoft.com/pricing/details/backup/). Obliczenia chronione wystąpienia są oparte na *rzeczywiste* rozmiar maszyny wirtualnej, która jest sumą wszystkich danych na maszynie wirtualnej — z wyjątkiem "dysk zasobów".
+Podlegają maszyn wirtualnych platformy Azure, których kopie zapasowe są tworzone za pomocą usługi Kopia zapasowa Azure [cennikiem usługi Kopia zapasowa Azure](https://azure.microsoft.com/pricing/details/backup/). Obliczenia chronione wystąpienia są oparte na *rzeczywiste* rozmiar maszyny wirtualnej, który jest sumą wszystkich danych w maszynę wirtualną — bez magazynu tymczasowego.
 
-Cennik wykonywanie kopii zapasowych maszyn wirtualnych jest *nie* na podstawie maksymalnego rozmiaru obsługiwanych dla każdego dysku danych dołączonych do maszyny wirtualnej. Cennik jest oparta na dane przechowywane na dysku danych. Podobnie rachunku magazynu kopii zapasowej jest oparta na ilość danych przechowywanych w kopia zapasowa Azure, który jest sumą rzeczywistymi danymi każdego punktu odzyskiwania.
+Cennik tworzenia kopii zapasowych maszyn wirtualnych nie jest oparty na maksymalny rozmiar obsługiwany dla każdego dysku danych dołączonych do maszyny wirtualnej. Cennik jest oparta na dane przechowywane na dysku danych. Podobnie rachunku magazynu kopii zapasowej jest oparta na ilość danych przechowywanych w kopia zapasowa Azure, który jest sumą rzeczywistymi danymi każdego punktu odzyskiwania.
 
 Na przykład zająć A2 standardowy rozmiar maszyny wirtualnej, która ma dwa dyski dodatkowe dane o maksymalnym rozmiarze 1 TB. W poniższej tabeli przedstawiono rzeczywistymi danymi przechowywanymi na każdym z tych dysków:
 
 | Typ dysku | Maks. rozmiar | Rzeczywiste dane. |
-| --- | --- | --- |
+| --------- | -------- | ----------- |
 | Dysk systemu operacyjnego |1023 GB |17 GB |
-| Dysk lokalny / zasobu dysku |135 GB |5 GB (nie uwzględniony w kopii zapasowej) |
+| Dysk lokalny / tymczasowego dysku |135 GB |5 GB (nie uwzględniony w kopii zapasowej) |
 | Dysk danych 1 |1023 GB |30 GB |
 | Dysk z danymi 2 |1023 GB |0 GB |
 
-*Rzeczywiste* rozmiar maszyny wirtualnej jest w tym przypadku 17 GB + 30 GB + 0 GB = 47 GB. Ten rozmiar chronione wystąpienia (47 GB) staje się podstawę rachunek miesięczny. Wraz z rozwojem ilości danych na maszynie wirtualnej, rozmiar chronione wystąpienia odpowiednio używane przy zmianach rozliczeń.
+Rzeczywisty rozmiar maszyny wirtualnej jest w tym przypadku 17 GB + 30 GB + 0 GB = 47 GB. Ten rozmiar chronione wystąpienia (47 GB) staje się podstawę rachunek miesięczny. Wraz z rozwojem ilości danych na maszynie wirtualnej, rozmiar chronione wystąpienia odpowiednio używane przy zmianach rozliczeń.
 
-Nie można uruchomić rozliczeń, aż zostanie ukończone pomyślnie pierwszej kopii zapasowej. W tym momencie rozpoczyna się rozliczeń dla magazynu i chronione wystąpienia. Karta będzie kontynuowane tak długo, jak istnieje *dowolnej kopii zapasowej danych przechowywanych w magazynie* dla maszyny wirtualnej. Jeśli użytkownik zaprzestanie ochrony na maszynie wirtualnej, ale dane kopii zapasowej maszyny wirtualnej istnieje w magazynie, nadal rozliczeń.
+Nie można uruchomić rozliczeń, aż zostanie ukończone pomyślnie pierwszej kopii zapasowej. W tym momencie rozpoczyna się rozliczeń dla magazynu i chronione wystąpienia. Karta będzie kontynuowane tak długo, jak dowolne dane kopii zapasowej są przechowywane w magazynie dla maszyny wirtualnej. Jeśli użytkownik zaprzestanie ochrony na maszynie wirtualnej, ale dane kopii zapasowej maszyny wirtualnej istnieje w magazynie, nadal rozliczeń.
 
-Rozliczeń dla określonej maszyny wirtualnej zatrzymuje tylko wtedy, gdy ochrona jest zatrzymana *i* wszystkie dane kopii zapasowej zostaną usunięte. Po zatrzymaniu ochrony i nie istnieją aktywne zadania tworzenia kopii zapasowej, rozmiar chronione wystąpienia używany do rachunek miesięczny staje się rozmiar ostatniej pomyślnej kopii zapasowej maszyny Wirtualnej.
+Rozliczeń dla określonej maszyny wirtualnej zatrzymuje tylko wtedy, gdy ochrona jest zatrzymana i zostaną usunięte wszystkie dane kopii zapasowej. Po zatrzymaniu ochrony i nie istnieją aktywne zadania tworzenia kopii zapasowej, rozmiar chronione wystąpienia używany do rachunek miesięczny staje się rozmiar ostatniej pomyślnej kopii zapasowej maszyny Wirtualnej.
 
 ## <a name="questions"></a>Pytania?
 Jeśli masz pytania lub jeśli brakuje Ci jakiejś funkcji, [prześlij nam opinię](http://aka.ms/azurebackup_feedback).

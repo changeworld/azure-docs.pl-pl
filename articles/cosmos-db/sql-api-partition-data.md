@@ -1,10 +1,10 @@
 ---
-title: "Partycjonowanie i skalowania w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat działa jak partycjonowania bazy danych rozwiązania Cosmos Azure, jak skonfigurować partycje i kluczy partycji i Wybieranie klucza prawego partycji aplikacji."
+title: Partycjonowanie i skalowania w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat działa jak partycjonowania bazy danych rozwiązania Cosmos Azure, jak skonfigurować partycje i kluczy partycji i Wybieranie klucza prawego partycji aplikacji.
 services: cosmos-db
 author: rafats
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 702c39b4-1798-48dd-9993-4493a2f6df9e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,15 +14,13 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfed50eef02c237ce0ea4480e2e208f2e61ccbef
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Podział na partycje w usłudze Azure DB rozwiązania Cosmos przy użyciu interfejsu API SQL
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 [Bazy danych programu Microsoft Azure rozwiązania Cosmos](../cosmos-db/introduction.md) jest usługą bazy danych globalnych, rozproszone i wiele modeli pomaga osiągnąć szybkie, przewidywalną wydajność i skalę bezproblemowo wraz z aplikacji jako ich przyrostu. 
 
@@ -223,7 +221,7 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
    
 W następnej sekcji opisano, jak można przenieść do kontenerów podzielonym na partycje z jedną partycją kontenerów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule podaliśmy omówienie sposobu pracy z partycji bazy danych Azure rozwiązania Cosmos kontenerów przy użyciu interfejsu API SQL. Zobacz też [partycjonowania i skalowanie w poziomie](../cosmos-db/partition-data.md) omówienie pojęć i najlepsze rozwiązania dotyczące partycjonowania z jakiegokolwiek interfejsu API Azure rozwiązania Cosmos bazy danych. 
 
 * Należy przeprowadzić testowanie z bazy danych Azure rozwiązania Cosmos wydajności i skalowania. Zobacz [wydajności i skalowania testowania z bazy danych Azure rozwiązania Cosmos](performance-testing.md) przykładowe.

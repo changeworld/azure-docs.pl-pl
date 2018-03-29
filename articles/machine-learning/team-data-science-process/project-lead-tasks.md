@@ -1,23 +1,23 @@
 ---
-title: "Zespół prowadzić do projektu zestawu danych nauki proces zadania — Azure | Dokumentacja firmy Microsoft"
-description: "Konspekt zadań dla projektu prowadzić na projektu zespołowego analizy danych."
-documentationcenter: 
+title: Zespół prowadzić do projektu zestawu danych nauki proces zadania — Azure | Dokumentacja firmy Microsoft
+description: Konspekt zadań dla projektu prowadzić na projektu zespołowego analizy danych.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: fe7cf1e6167de7d0dfaa5ed75c0b7f5ec23b18cf
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5c769fda09e70cfb0a43e0305ffab4923fbe3307
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="project-lead-tasks"></a>Zadania realizacji projektu
 
@@ -115,7 +115,7 @@ Jeśli używasz programu VSTS jako platformy obsługi kodu zazwyczaj *HTTPS URL 
 
 W tym przykładzie mamy:
 
-***https://mysamplegroup.VisualStudio.com/MyTeam/_git/MyTeamProjectTemplate***. 
+***https://mysamplegroup.visualstudio.com/MyTeam/_git/MyTeamProjectTemplate***. 
 
 ![7](./media/project-lead-tasks/project-leads-7-clone-team-project-template.png)
             
@@ -127,7 +127,7 @@ W tym przykładzie mamy:
 
 Jeśli używasz programu VSTS jako platformy obsługi kodu zazwyczaj *SSH adres URL repozytorium szablonu projektu zespołowego* jest:
 
-***SSH: / /\<nazwa serwera programu VSTS\>@\<nazwa serwera programu VSTS\>.visualstudio.com:22/\<Your Nazwa projektu zespołowego > /_git/\<repozytorium szablonu projektu zespołowego Nazwa\>.*** 
+***SSH: / /\<nazwa serwera programu VSTS\>@\<nazwa serwera programu VSTS\>.visualstudio.com:22/\<Your Nazwa projektu zespołowego > /_git/\<nazwę repozytorium szablonu projektu zespołowego \>.*** 
 
 W tym przykładzie mamy:
 
@@ -151,7 +151,7 @@ Jeśli używasz programu VSTS jako platformy obsługi kodu zazwyczaj _HTTPS URL 
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-Jeśli używasz programu VSTS jako platformy obsługi kodu zazwyczaj _SSH adres URL repozytorium projektu_ jest _ssh: / / < nazwa serwera programu VSTS\>@< nazwa serwera programu VSTS\>.visualstudio.com:22/<Your Team Project Name> / \_git / < nazwę repozytorium projektu\>. W tym przykładzie mamy  ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1*** .
+Jeśli używasz programu VSTS jako platformy obsługi kodu zazwyczaj _SSH adres URL repozytorium projektu_ jest _ssh: / / < nazwa serwera programu VSTS\>@< nazwa serwera programu VSTS\>.visualstudio.com:22/<Your Team Project Name> / \_git / < nazwę repozytorium projektu\>. W tym przykładzie mamy ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
 
 ### <a name="copy-contents-of-d3-to-d5"></a>Skopiuj zawartość D3 do D5 
 
@@ -186,7 +186,7 @@ Jeśli projekt wymaga niektórych określonych katalogów lub dokumenty, innych 
 
 ### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-vsts-server"></a>Dodaj zawartość DSProject1 w D5 do R5 na serwerze programu VSTS grupy
 
-Teraz musisz wypychania zawartości  **_DSProject1_**  do _R5_ repozytorium w projekcie zespołowym na serwerze programu VSTS tej grupy. 
+Teraz musisz wypychania zawartości **_DSProject1_** do _R5_ repozytorium w projekcie zespołowym na serwerze programu VSTS tej grupy. 
 
 
 - Przejdź do katalogu **D5**. 
@@ -212,7 +212,7 @@ Teraz musisz wypychania zawartości  **_DSProject1_**  do _R5_ repozytorium w pr
 Jeśli chcesz utworzyć magazyn plików Azure udostępniania danych, takich jak projekt danych pierwotnych lub funkcje generowane dla projektu, tak aby wszystkie członkowie projektu mają dostęp do tej samej zestawów danych z wielu DSVMs postępuj zgodnie z instrukcjami w sekcji 3 i 4 [ Zespół realizacji zadań dla zespołu nauki danych](team-lead-tasks.md). 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto łącza do bardziej szczegółowe opisy ról i zadań zdefiniowanych przez proces nauki danych zespołu:
 

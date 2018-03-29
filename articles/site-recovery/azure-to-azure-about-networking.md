@@ -1,18 +1,18 @@
 ---
-title: "O technologiach sieciowych w odzyskiwania po awarii z platformy Azure do platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Omówienie sieci w przypadku replikacji maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery."
+title: O technologiach sieciowych w odzyskiwania po awarii z platformy Azure do platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Omówienie sieci w przypadku replikacji maszyn wirtualnych platformy Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 5ce85761df4e0ad62c22a829f67464a3145fd827
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure do platformy Azure
 
@@ -41,7 +41,7 @@ Zazwyczaj sieci są chronione za pomocą zapory i grup zabezpieczeń sieci (NSG)
 > Przy użyciu z uwierzytelnionego serwera proxy do łączności sieciowej sterowania nie jest obsługiwany przez usługę Site Recovery i nie można włączyć replikacji.
 
 
-## <a name="outbound-connectivity-for-urls"></a>Łączność wychodząca dla adresu URL
+## <a name="outbound-connectivity-for-urls"></a>Połączenia ruchu wychodzącego dla adresów URL
 
 Jeśli używasz serwera proxy zapora oparta na adres URL do kontrolowania łączność wychodząca, Zezwalaj na te adresy URL odzyskiwania lokacji:
 
@@ -53,7 +53,7 @@ login.microsoftonline.com | Wymagane w celu autoryzacji i uwierzytelnianie adres
 *.hypervrecoverymanager.windowsazure.com | Wymagane, aby komunikacja usługi Site Recovery może wystąpić z maszyny Wirtualnej.
 *.servicebus.windows.net | Wymagane, dzięki czemu można będzie można zapisywać danych monitorowania i diagnostyki usługi Site Recovery z maszyny Wirtualnej.
 
-## <a name="outbound-connectivity-for-ip-address-ranges"></a>Łączność wychodząca dla zakresów adresów IP
+## <a name="outbound-connectivity-for-ip-address-ranges"></a>Połączenia ruchu wychodzącego dla zakresów adresów IP
 
 Jeśli używasz serwera proxy oparte na protokole IP zapory lub reguły NSG do kontrolowania łączność wychodząca te zakresy IP, musisz zezwolić.
 
@@ -70,7 +70,7 @@ Jeśli używasz serwera proxy oparte na protokole IP zapory lub reguły NSG do k
 Zakresy adresów IP są następujące:
 
 >
-   docelowy | **Odzyskiwanie lokacji IP** |  **Usługa Site Recovery monitorowania IP**
+   **docelowy** | **Odzyskiwanie lokacji IP** |  **Usługa Site Recovery monitorowania IP**
    --- | --- | ---
    Azja Wschodnia | 52.175.17.132 | 13.94.47.61
    Azja Południowo-Wschodnia | 52.187.58.193 | 13.76.179.223
@@ -154,9 +154,10 @@ Wykonaj te wytyczne dotyczące połączeń między lokalizacji docelowej i lokal
 ### <a name="expressroute-configuration"></a>Konfiguracji usługi ExpressRoute
 Wykonaj następujące najlepsze rozwiązania dla konfiguracji usługi ExpressRoute:
 
-- Należy utworzyć obwodu usługi ExpressRoute w regionach źródłowych i docelowych. Następnie musisz utworzyć połączenie między usługą:
-  - Sieć wirtualna źródła i obwodem usługi ExpressRoute.
-  - Sieć wirtualna docelowych i obwodem usługi ExpressRoute.
+- Utworzyć obwodu usługi ExpressRoute w regionach źródłowych i docelowych. Następnie musisz utworzyć połączenie między usługą:
+    - Sieć wirtualna źródła i z sieci lokalnej, za pośrednictwem obwodu usługi expressroute w regionie źródła.
+    - Docelowy sieci wirtualnej i sieci lokalnej, za pośrednictwem obwodu usługi expressroute w docelowym regionie.
+
 
 - W ramach standardowego ExpressRoute możesz utworzyć obwody w tym samym regionie geograficznymi. Aby utworzyć obwody usługi ExpressRoute w różnych regionach geograficznymi, Azure ExpressRoute — wersja Premium jest wymagana, która obejmuje przyrostowe kosztów. (Jeśli już używasz usługi ExpressRoute — wersja Premium, jest nie żadnymi dodatkowymi kosztami.) Aby uzyskać więcej informacji, zobacz [dokumentu lokalizacje ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) i [cennik usługi ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 

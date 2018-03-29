@@ -1,18 +1,18 @@
 ---
 title: Przewodnik po zabezpieczeniach magazynu platformy Azure | Dokumentacja firmy Microsoft
-description: "Szczegóły wiele metod zabezpieczania usługi Azure Storage, w tym między innymi RBAC, szyfrowanie usługi Magazyn szyfrowania po stronie klienta, SMB 3.0 i szyfrowania dysków Azure."
+description: Szczegóły wiele metod zabezpieczania usługi Azure Storage, w tym między innymi RBAC, szyfrowanie usługi Magazyn szyfrowania po stronie klienta, SMB 3.0 i szyfrowania dysków Azure.
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
-ms.author: tamram
-ms.openlocfilehash: d1a81a9029f2e9b8a36ecebdcc4be44984e82515
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: cshoe
+ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu Azure
 
@@ -296,7 +296,7 @@ Nie można wyłączyć SSE, jest włączona dla wszystkich kont magazynu. SSE au
 
 Klucze używane dla SSE są zarządzane przez firmę Microsoft. Firma Microsoft generuje klucze pierwotnie i zarządza ich bezpiecznego magazynu, a także regularne obracanie zdefiniowane przez wewnętrznych zasad firmy Microsoft. Zarządzany przez klienta klucze ostatecznie będą dostępne, wraz ze ścieżki migracji z kluczy zarządzany przez firmę Microsoft do kluczy zarządzany przez klienta.
 
-SSE automatycznie szyfruje dane w wszystkie warstwy wydajności (Standard i Premium), wszystkie modele wdrażania (usługi Azure Resource Manager i model klasyczny) i wszystkich usług Azure Storage (obiektu Blob, kolejki, tabel i plików). 
+Usługa SSE automatycznie szyfruje dane we wszystkich warstwach wydajności (Standardowa i Premium), wszystkich modelach wdrażania (model usługi Azure Resource Manager i model klasyczny) oraz wszystkich usługach Azure Storage (Blob, Queue, Table i File). 
 
 ### <a name="client-side-encryption"></a>Szyfrowanie po stronie klienta
 Wspomniano szyfrowania po stronie klienta przy omawianiu szyfrowanie danych podczas przesyłania. Ta funkcja umożliwia programowo szyfrowania danych w aplikacji klienta przed wysłaniem przez sieć do zapisania do magazynu Azure i programowo odszyfrować danych po pobraniu go z magazynu Azure.
@@ -376,7 +376,7 @@ Szyfrowanie po stronie klienta jest większe obciążenie na kliencie, a muszą 
 
 #### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Magazyn (SSE)
 
-SSE jest zarządzana przez usługi Azure Storage. SSE nie zapewniają bezpieczeństwo danych podczas przesyłania, ale szyfrowania danych, ponieważ jest ona zapisywana w usłudze Azure Storage. SSE nie wpływa na wydajność magazynu Azure.
+SSE jest zarządzana przez usługi Azure Storage. SSE nie zapewniają bezpieczeństwo danych podczas przesyłania, ale szyfrowania danych, ponieważ jest ona zapisywana w usłudze Azure Storage. Usługa SSE nie wpływa na wydajność usługi Azure Storage.
 
 Można zaszyfrować każdego typu danych konta magazynu przy użyciu SSE (blokowe obiekty BLOB, Dołącz obiektów blob, stronicowe obiekty BLOB, tabeli danych, kolejki danych i plików).
 

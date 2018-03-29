@@ -1,11 +1,11 @@
 ---
-title: "Zestawach skali maszyny wirtualnej platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące zestawy skalowania maszyny wirtualnej."
+title: Zestawach skali maszyny wirtualnej platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące zestawy skalowania maszyny wirtualnej.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -16,15 +16,55 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Zestawach skali maszyny wirtualnej platformy Azure — często zadawane pytania
 
 Odpowiedzi na często zadawane pytania dotyczące zestawy skalowania maszyny wirtualnej na platformie Azure.
+
+## <a name="top-frequently-asked-questions-for-scale-sets"></a>TOP — często zadawane pytania dla zestawów skalowania
+**PYTANIE** Ile maszyn wirtualnych może się znajdować w zestawie skalowania?
+
+**ODPOWIEDŹ** Zestaw skalowania może zawierać od 0 do 1000 maszyn wirtualnych opartych na obrazach platformy lub od 0 do 300 maszyn wirtualnych opartych na obrazach niestandardowych. 
+
+**PYTANIE** Czy zestawy skalowania obsługują dyski danych?
+
+**ODPOWIEDŹ** Tak. Zestaw skalowania może definiować konfigurację dołączonych dysków danych, która jest stosowana do wszystkich maszyn wirtualnych w zestawie. Aby uzyskać więcej informacji, zobacz [Zestawy skalowania na platformie Azure i dołączone dyski danych](virtual-machine-scale-sets-attached-disks.md). Oto przykłady innych opcji magazynowania danych:
+
+* Pliki platformy Azure (dyski udostępnione za pośrednictwem protokołu SMB)
+* Dysk systemu operacyjnego
+* Dysk tymczasowy (lokalny, bez kopii zapasowej w usłudze Azure Storage)
+* Usługa danych platformy Azure (na przykład tabele platformy Azure, obiekty blob platformy Azure)
+* Zewnętrzne usługi danych (na przykład zdalna baza danych)
+
+**PYTANIE** Które regiony świadczenia usługi Azure obsługują zestawy skalowania?
+
+**ODPOWIEDŹ** Wszystkie regiony obsługują zestawy skalowania.
+
+**PYTANIE** Jak utworzyć zestaw skalowania za pomocą obrazu niestandardowego?
+
+**ODPOWIEDŹ** Utwórz dysk zarządzany na podstawie wirtualnego dysku twardego z obrazem niestandardowym i odwołaj się do niego w szablonie zestawu skalowania. [Oto przykład](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os).
+
+**PYTANIE** Jeśli zmniejszę pojemność zestawu skalowania z 20 do 15, które maszyny wirtualne zostaną usunięte?
+
+**ODPOWIEDŹ** W celu zapewnienia maksymalnej dostępności maszyny wirtualne są usuwane z zestawu skalowania równomiernie w domenach błędów i domenach aktualizacji. Najpierw są usuwane maszyny wirtualne o najwyższym identyfikatorze.
+
+**PYTANIE** Co się stanie, jeśli następnie zwiększę pojemność z 15 do 18?
+
+**ODPOWIEDŹ** Zwiększenie pojemności do 18 spowoduje utworzenie 3 nowych maszyn wirtualnych. Za każdym razem następuje zwiększenie identyfikatora wystąpienia maszyny wirtualnej względem poprzedniej najwyższej wartości (na przykład 20, 21, 22). Maszyny wirtualne są równoważone w domenach błędów i domenach aktualizacji.
+
+**PYTANIE** Czy mogę wymusić sekwencję wykonywania w przypadku korzystania z wielu rozszerzeń w zestawie skalowania?
+
+**ODPOWIEDŹ** Nie można tego zrobić bezpośrednio, ale w przypadku rozszerzenia customScript skrypt może poczekać na ukończenie działania innego rozszerzenia. Dodatkowe wytyczne dotyczące sekwencjonowania rozszerzeń można znaleźć we wpisie w blogu: [Extension Sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Sekwencjonowanie rozszerzeń w zestawach skalowania maszyn wirtualnych platformy Azure).
+
+**PYTANIE** Czy zestawy skalowania współdziałają z zestawami dostępności platformy Azure?
+
+**ODPOWIEDŹ** Tak. Zestaw skalowania to niejawny zestaw dostępności z pięcioma domenami błędów i pięcioma domenami aktualizacji. Zestawy skalowania składające się z ponad 100 maszyn wirtualnych obejmują wiele *grup umieszczania*, które są równoważne wielu zestawom dostępności. Aby uzyskać więcej informacji na temat grup umieszczania, zobacz [Praca z dużymi zestawami skalowania maszyn wirtualnych](virtual-machine-scale-sets-placement-groups.md). Zestaw dostępności maszyn wirtualnych może znajdować się w tej samej sieci wirtualnej co zestaw skalowania maszyn wirtualnych. Typowa konfiguracja polega na umieszczeniu maszyn wirtualnych węzła kontrolnego (często wymagających unikatowej konfiguracji) w zestawie dostępności, a węzłów danych w zestawie skalowania.
+
 
 ## <a name="autoscale"></a>Automatyczne skalowanie
 
@@ -558,7 +598,7 @@ Aby utworzyć ustawiony za pomocą niestandardowej konfiguracji DNS skali maszyn
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>Jak można skonfigurować skali wartość do przypisania do publicznego adresu IP do każdej maszyny Wirtualnej?
 
-Aby utworzyć zestaw skali maszyny wirtualnej, która przypisuje publicznego adresu IP do każdej maszyny Wirtualnej, upewnij się, że wersja interfejsu API zasobów Microsoft.Compute/virtualMAchineScaleSets jest 2017-03-30, a następnie dodaj _publicipaddressconfiguration_ JSON pakiet do skali ustawić sekcji elementów Ipconfiguration. Przykład:
+Aby utworzyć zestaw skali maszyny wirtualnej, która przypisuje publicznego adresu IP do każdej maszyny Wirtualnej, upewnij się, że wersja interfejsu API zasobów Microsoft.Compute/virtualMachineScaleSets jest 2017-03-30, a następnie dodaj _publicipaddressconfiguration_ JSON pakiet do skali ustawić sekcji elementów Ipconfiguration. Przykład:
 
 ```json
     "publicipaddressconfiguration": {
@@ -694,7 +734,7 @@ Aby uzyskać informacje dotyczące właściwości dla każdej maszyny Wirtualnej
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Do różnych maszyn wirtualnych w zestawie skalowania maszyn wirtualnych można przekazać argumenty inne rozszerzenie?
 
-Nie, nie można przekazać argumenty inne rozszerzenie do różnych maszyn wirtualnych w zestawie skalowania maszyn wirtualnych. Jednak rozszerzenia może działać na unikatowy właściwości maszyny wirtualnej jest uruchomiona w taki sposób jak nazwa komputera. Rozszerzenia mogą również zapytanie metadanych wystąpienia na http://169.254.169.254 Aby uzyskać więcej informacji o maszynie Wirtualnej.
+Nie, nie można przekazać argumenty inne rozszerzenie do różnych maszyn wirtualnych w zestawie skalowania maszyn wirtualnych. Jednak rozszerzenia może działać na unikatowy właściwości maszyny wirtualnej jest uruchomiona w taki sposób jak nazwa komputera. Rozszerzenia także można zbadać metadanych wystąpienia na http://169.254.169.254 Aby uzyskać więcej informacji o maszynie Wirtualnej.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Dlaczego są luki pomiędzy Moje nazw maszyn maszyny Wirtualnej zestawu skali maszyny wirtualnej i identyfikatory maszyny Wirtualnej Na przykład: 0, 1, 3...
 

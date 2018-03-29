@@ -1,6 +1,6 @@
 ---
-title: "Włącz replikację do platformy Azure dla maszyn wirtualnych VMware z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób skonfigurowania replikacji maszyn wirtualnych VMware do platformy Azure, za pomocą usługi Azure Site Recovery."
+title: Włącz replikację do platformy Azure dla maszyn wirtualnych VMware z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób skonfigurowania replikacji maszyn wirtualnych VMware do platformy Azure, za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: asgang
-ms.openlocfilehash: 17cd6a931563c7d33576749453d742aca253526b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację maszyn wirtualnych VMware do platformy Azure
 
@@ -112,15 +112,15 @@ Następnie możesz sprawdzić właściwości maszyny źródłowej. Należy pami�
     Na przykład jeśli maszyna źródłowa ma dwie karty sieciowe, a rozmiar maszyny docelowej obsługuje cztery, komputer docelowy ma dwie karty sieciowe. Jeśli maszyna źródłowa ma dwie karty sieciowe, ale rozmiar docelowy obsługiwanych obsługuje tylko jedną, maszyna docelowa ma tylko jedną kartę.
     - Jeśli maszyna wirtualna ma wiele kart sieciowych, wszystkie łączą się z tej samej sieci. Ponadto staje się pierwszą wyświetlane na liście *domyślne* karty sieciowej na maszynie wirtualnej platformy Azure.
 
-### <a name="azure-hybrid-use-benefit"></a>Korzyść użycia hybrydowego platformy Azure
+### <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 
-Microsoft Software Assurance klienci mogą użyć korzyści Użyj hybrydowe platformy Azure, do zapisania na licencjonowania kosztów maszyn systemu Windows Server, które są migrowane do platformy Azure lub do użycia podczas odzyskiwania systemu Azure. Jeśli masz prawo do korzystania z Azure hybrydowego Użyj korzyści, można określić przypisane świadczenie maszyny wirtualnej jest tą, która tworzy usługi Azure Site Recovery po przejściu w tryb failover. W tym celu:
+Microsoft Software Assurance klienci mogą użyć korzyści hybrydowe platformy Azure, do zapisania na licencjonowania kosztów maszyn systemu Windows Server, które są migrowane do platformy Azure lub do użycia podczas odzyskiwania systemu Azure. Jeśli prawo do korzystania z korzystać hybrydowe platformy Azure, można określić, że przypisane świadczenie maszyny wirtualnej jest tworzonych przez usługi Azure Site Recovery po przejściu w tryb failover. W tym celu:
 - Przejdź do sekcji właściwości obliczania i sieci zreplikowanej maszyny wirtualnej.
-- Odpowiedz na pytanie, z pytaniem, czy masz dzięki możesz uprawnia do skorzystania z usługi Azure hybrydowego użycia licencji serwera systemu Windows.
-- Zaznacz pole wyboru, aby upewnić się, że masz uprawniających licencji systemu Windows Server z Software Assurance, w którym można zastosować na komputerze, który zostanie utworzony w tryb failover korzyści użyć hybrydowego.
+- Odpowiedz na pytanie, z pytaniem, czy masz licencji systemu Windows Server dzięki możesz uprawnia do skorzystania z usługi Azure hybrydowego.
+- Zaznacz pole wyboru, aby upewnić się, że masz uprawniających licencji systemu Windows Server z Software Assurance, w którym można zastosować korzyści hybrydowe platformy Azure na komputerze, który zostanie utworzony w tryb failover.
 - Zapisz ustawienia dla zreplikowanej maszyny.
 
-Dowiedz się więcej o [Azure hybrydowego Użyj korzyści](https://aka.ms/azure-hybrid-use-benefit-pricing).
+Dowiedz się więcej o [korzyści hybrydowego Azure](https://aka.ms/azure-hybrid-benefit-pricing).
 
 ## <a name="common-issues"></a>Typowe problemy
 

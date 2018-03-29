@@ -42,7 +42,7 @@ Nie.
 
 **Czy istnieją jakiekolwiek ograniczenia skali dla klientów korzystających z zarządzanego dyski?**
 
-Dyski zarządzane eliminuje limity skojarzonego z kontami magazynu. Jednak liczbę zarządzanych dysków dla subskrypcji jest ograniczona do 2000 domyślnie. Możesz wywołać pomocy technicznej, aby zwiększyć ten numer.
+Dyski zarządzane eliminuje limity skojarzonego z kontami magazynu. Jednak maksymalny limit, a domyślny limit, jest 10 000 dysków zarządzanych według regionu i typ dysku dla subskrypcji.
 
 **Czy można wykonać przyrostowej migawki dysków zarządzanych?**
 

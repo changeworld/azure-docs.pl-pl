@@ -1,5 +1,5 @@
 ---
-title: "Sieci pojęcia dotyczące zabezpieczeń i wymagania dotyczące platformy Azure | Dokumentacja firmy Microsoft"
+title: Sieci pojęcia dotyczące zabezpieczeń i wymagania dotyczące platformy Azure | Dokumentacja firmy Microsoft
 description: " Ten artykuł ułatwia zrozumienie Microsoft Azure ma oferować w zakresie zabezpieczeń sieci. Udostępniamy wyjaśnienia podstawowe pojęcia dotyczące zabezpieczeń sieci podstawowej i wymagania i informacje na platforma Azure ma oferować w każdym z tych obszarów. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e477ce9a5f9f35d88a6faeb68ee4e0403f64c030
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e32cd1f4267b9ae0825fbb34ed00e25dd1b63b5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-network-security-overview"></a>Przegląd zabezpieczeń sieci platformy Azure
 Microsoft Azure obejmuje to niezawodna infrastruktura sieci do obsługi aplikacji i wymaganiami dotyczącymi łączności usługi. Łączność sieciowa będzie możliwe między zasobami znajdującymi się na platformie Azure, między lokalnymi i Azure hostowanych zasobów oraz do i z Internetu i Azure.
@@ -252,11 +252,11 @@ Platforma Azure udostępnia funkcje ułatwiające w tym obszarze klucza z wczesn
 ### <a name="azure-network-watcher"></a>Azure Network Watcher
 Azure obserwatora sieciowego zawiera wiele funkcji, które pomóc w rozwiązywaniu problemów, a także zapewnić zupełnie nowy zestaw narzędzi ułatwiających identyfikację problemów z zabezpieczeniami.
 
-[Widok grupy zabezpieczeń ](/network-watcher/network-watcher-security-group-view-overview.md) ułatwia utrzymanie zgodności inspekcji i zabezpieczeń maszyn wirtualnych i może służyć do wykonywania inspekcji programowe porównanie zasad linii bazowych zdefiniowanych przez organizację do wprowadzenia reguł dla poszczególnych maszyn wirtualnych. Może to pomóc w identyfikacji dowolnego odejście konfiguracji.
+[Widok grupy zabezpieczeń ](../network-watcher/network-watcher-security-group-view-overview.md) ułatwia utrzymanie zgodności inspekcji i zabezpieczeń maszyn wirtualnych i może służyć do wykonywania inspekcji programowe porównanie zasad linii bazowych zdefiniowanych przez organizację do wprowadzenia reguł dla poszczególnych maszyn wirtualnych. Może to pomóc w identyfikacji dowolnego odejście konfiguracji.
 
-[Przechwytywania pakietów](/network-watcher/network-watcher-packet-capture-overview.md) służy do przechwytywania ruchu sieciowego do i z maszyny wirtualnej. Oprócz myśl, umożliwiając zbieranie statystyk sieci oraz rozwiązywanie problemów aplikacji przechwytywania pakietów mogą być cenne w badaniu wtargnięcia sieci. Umożliwia także tę funkcję, wraz z usługi Azure Functions można uruchomić przechwytywanie sieci w odpowiedzi na konkretnych alertów platformy Azure.
+[Przechwytywania pakietów](../network-watcher/network-watcher-packet-capture-overview.md) służy do przechwytywania ruchu sieciowego do i z maszyny wirtualnej. Oprócz myśl, umożliwiając zbieranie statystyk sieci oraz rozwiązywanie problemów aplikacji przechwytywania pakietów mogą być cenne w badaniu wtargnięcia sieci. Umożliwia także tę funkcję, wraz z usługi Azure Functions można uruchomić przechwytywanie sieci w odpowiedzi na konkretnych alertów platformy Azure.
 
-Aby uzyskać więcej informacji na obserwatora sieciowego Azure i uruchamiania testów niektórych funkcji w Twojej labs Spójrz na [obserwatora sieciowego Azure monitorowania — omówienie](/network-watcher/network-watcher-monitoring-overview.md)
+Aby uzyskać więcej informacji na obserwatora sieciowego Azure i uruchamiania testów niektórych funkcji w Twojej labs Spójrz na [obserwatora sieciowego Azure monitorowania — omówienie](../network-watcher/network-watcher-monitoring-overview.md)
 
 >[!NOTE]
 Azure obserwatora sieciowego jest nadal w publicznej wersji zapoznawczej, więc może nie dysponować taki sam poziom dostępności i niezawodności jako wersji usług, które są zwykle dostępności. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości i mogą nie być dostępne we wszystkich lokalizacjach Azure. Najbardziej aktualne powiadomień o dostępności i stan tej usługi, sprawdź [strony aktualizacji platformy Azure](https://azure.microsoft.com/updates/?product=network-watcher)

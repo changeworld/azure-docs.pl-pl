@@ -1,10 +1,10 @@
 ---
-title: "Utrwalanie i zadań dane wyjściowe do magazynu Azure przy użyciu interfejsu API usługi partia zadań Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utrwalić partii zadań i zadania dane wyjściowe do usługi Azure Storage za pomocą interfejsu API usługi partii."
+title: Utrwalanie i zadań dane wyjściowe do magazynu Azure przy użyciu interfejsu API usługi partia zadań Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utrwalić partii zadań i zadania dane wyjściowe do usługi Azure Storage za pomocą interfejsu API usługi partii.
 services: batch
 author: tamram
 manager: timlt
-editor: 
+editor: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
-ms.openlocfilehash: 2530b7c20347b9fb58aee4dfe693847cf3911741
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa124109bfc9d333469c255c50df0af96a26bebf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalenia danych zadań do magazynu Azure przy użyciu interfejsu API usługi partii
 
@@ -142,7 +142,7 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Aby uzyskać więcej informacji na temat katalogów wirtualnych w usłudze Azure Storage, zobacz [listę obiektów blob w kontenerze](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container).
+Aby uzyskać więcej informacji na temat katalogów wirtualnych w usłudze Azure Storage, zobacz [listę obiektów blob w kontenerze](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
 
 
 ## <a name="diagnose-file-upload-errors"></a>Diagnozowanie błędów przekazywania plików
@@ -187,7 +187,7 @@ Jeśli tworzysz w języku innym niż C#, należy zaimplementować standardowej k
 6. Po wyświetleniu monitu wybierz technologię trwałości tak, aby użyć do uruchomienia przykładu, wprowadź **2** Aby uruchomić przykład, aby zachować dane wyjściowe zadania przy użyciu interfejsu API usługi partii.
 7. W razie potrzeby można uruchomić przykładowy ponownie, wprowadzając **3** do utrwalenia danych wyjściowych z interfejsem API usługi partii, a także nazwę ścieżki docelowej i kontener obiektów blob według standardu konwencje plików.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać więcej informacji na trwałych danych wyjściowych zadania z biblioteką konwencje plików dla platformy .NET, zobacz [utrwalenia danych i zadań do magazynu Azure z biblioteką konwencje pliku wsadowego dla platformy .NET utrwalić ](batch-task-output-file-conventions.md).
 - Aby uzyskać informacje na inne podejścia trwałych danych wyjściowych w partii zadań Azure, zobacz [utrwalić danych wyjściowych i zadań do magazynu Azure](batch-task-output.md).

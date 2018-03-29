@@ -1,11 +1,11 @@
 ---
-title: "Instalacja sterownika N-series usługi Azure dla systemu Linux | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować wersji sterowników procesora GPU NVIDIA dla maszyn wirtualnych N-series systemem Linux na platformie Azure"
+title: Instalacja sterownika N-series usługi Azure dla systemu Linux | Dokumentacja firmy Microsoft
+description: Jak skonfigurować wersji sterowników procesora GPU NVIDIA dla maszyn wirtualnych N-series systemem Linux na platformie Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
 ms.service: virtual-machines-linux
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d353adcafed02832243277118da8480e54544ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d97afd2b5dccca64db2df7cb0d4f110987642cfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych N-series systemem Linux
 
-Aby skorzystać z możliwości procesora GPU N-series maszyny wirtualne platformy Azure systemem Linux, zainstalować obsługiwanych NVIDIA grafiki sterowników. Ten artykuł zawiera kroki konfiguracji sterownika po wdrożeniu maszyny Wirtualnej N serii. Informacje o instalacji sterowników jest również dostępny do [maszyn wirtualnych systemu Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Aby skorzystać z możliwości procesora GPU N-series maszyny wirtualne platformy Azure systemem Linux, muszą zostać zainstalowane sterowniki grafiki NVIDIA. Ten artykuł zawiera kroki konfiguracji sterownika po wdrożeniu maszyny Wirtualnej N serii. Informacje o instalacji sterowników jest również dostępny do [maszyn wirtualnych systemu Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Dane techniczne, wielkości magazynu i dysku szczegóły wirtualna N-series, zobacz [rozmiarów maszyn wirtualnych systemu Linux GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
@@ -32,15 +32,12 @@ Dane techniczne, wielkości magazynu i dysku szczegóły wirtualna N-series, zob
 
 ## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>Zainstaluj sterowniki CUDA dla NC, NCv2 NCv3 i ND serii maszyn wirtualnych
 
-Poniżej przedstawiono kroki, aby zainstalować sterowniki NVIDIA z zestawu narzędzi CUDA NVIDIA na maszynach wirtualnych N serii. 
+Poniżej przedstawiono kroki, aby zainstalować sterowniki CUDA z zestawu narzędzi CUDA NVIDIA na maszynach wirtualnych N serii. 
+
 
 Deweloperzy C i C++ może opcjonalnie zainstalować pełny zestaw narzędzi do tworzenia aplikacji przyspieszony procesora GPU. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-> [!NOTE]
-> Łącza pobierania sterowników CUDA podane w tym miejscu są aktualne w momencie publikacji. Najnowsze sterowniki CUDA, odwiedź stronę [NVIDIA](https://developer.nvidia.com/cuda-zone) witryny sieci Web.
->
-
-Aby zainstalować zestaw narzędzi CUDA, należy utworzyć połączenie SSH na każdej maszynie Wirtualnej. Aby zweryfikować, że system ma obsługą CUDA procesora GPU, uruchom następujące polecenie:
+Aby zainstalować sterowniki CUDA, należy utworzyć połączenie SSH na każdej maszynie Wirtualnej. Aby zweryfikować, że system ma obsługą CUDA procesora GPU, uruchom następujące polecenie:
 
 ```bash
 lspci | grep -i NVIDIA
@@ -162,16 +159,13 @@ Połączenie sieciowe RDMA można włączyć na maszynach wirtualnych z funkcją
 
 ### <a name="distributions"></a>Dystrybucje
 
-Wdrożenie funkcją RDMA N serii maszyn wirtualnych z obrazu w portalu Azure Marketplace, obsługująca łączność RDMA na maszynach wirtualnych N-series:
+Wdrożenie funkcją RDMA N serii maszyn wirtualnych z jednego z obrazów w portalu Azure Marketplace, obsługująca łączność RDMA na maszynach wirtualnych N-series:
   
 * **Ubuntu 16.04 LTS** — Konfigurowanie sterowniki RDMA na maszynie Wirtualnej i rejestrowanie z Intel, aby pobrać Intel MPI:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-> [!NOTE]
-> Na podstawie centOS HPC nie zaleca się obrazów obecnie połączeń RDMA na maszynach wirtualnych N serii. Dostęp RDMA nie jest obsługiwana na najnowszej jądra CentOS 7.4, która obsługuje NVIDIA GPU.
-> 
-
+* **Na podstawie centOS 7.4 HPC** -sterowniki RDMA i Intel MPI 5.1 są zainstalowane na maszynie Wirtualnej.
 
 ## <a name="install-grid-drivers-for-nv-series-vms"></a>Zainstaluj sterowniki siatki dla maszyn wirtualnych z wirtualizacją sieci serii
 
@@ -321,10 +315,10 @@ EndSection
  
 Ponadto aktualizacji z `"Screen"` sekcji, aby korzystać z tego urządzenia.
  
-BusID znajduje się przez uruchomienie
+Dziesiętnego BusID znajduje się przez uruchomienie
 
 ```bash
-/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
+echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
 ```
  
 BusID można zmienić, gdy maszyny Wirtualnej pobiera przydzielić lub ponownego uruchomienia. W związku z tym warto użyć skryptu, aby zaktualizować BusID w X11 konfiguracji po ponownym uruchomieniu maszyny Wirtualnej. Na przykład:

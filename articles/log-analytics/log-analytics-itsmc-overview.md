@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: a51b96641c80a6575c64f58fa09e0bf6078e4185
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c39cf464a7e838fecf7ebd4a3cbb08612388a5fa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Połącz Azure narzędzia Zarządzanie usługami IT — za pomocą łącznika zarządzania usługi IT
 
@@ -342,7 +342,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 2.  Jeśli dane z usługi ServiceNow jest wprowadzenie nie zostały zsynchronizowane z analizy dzienników, upewnij się, że usługi ServiceNow, wystąpienie nie jest uśpiony. Wystąpień deweloperów usługi ServiceNow czasami Przejdź w stan uśpienia podczas bezczynności przez dłuższy okres. W przeciwnym wypadku zgłosić problem.
 3.  Jeśli alerty OMS wyzwalać, ale działa elementy nie są tworzone w produkcie Zarządzanie usługami IT — lub elementy konfiguracji nie są utworzone/połączone elementy robocze lub inne informacje ogólne, można znaleźć w następujących miejscach:
  -  ITSMC: Rozwiązanie zawiera podsumowanie połączeń/pracy elementów/komputerów itp. Kliknij przycisk przedstawiający Kafelek **stan łącznika**, która powoduje przejście do **wyszukiwania dziennika** z odpowiednimi zapytania. Przyjrzyj się rekordy dziennika z LogType_S jako błąd Aby uzyskać więcej informacji.
- - **Zaloguj się wyszukiwania** strony: umożliwia wyświetlanie informacji powiązanych z/błędy bezpośrednio za pomocą zapytania *typu = ServiceDeskLog_CL*.
+ - **Zaloguj się wyszukiwania** strony: umożliwia wyświetlanie informacji powiązanych z/błędy bezpośrednio za pomocą zapytania `*`ServiceDeskLog_CL`*`.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Rozwiązywanie problemów z wdrażaniem aplikacji sieci Web programu Service Manager
 1.  W przypadku wystąpienia jakichkolwiek problemów z wdrażania aplikacji sieci web upewnij się, że masz wystarczające uprawnienia w wymienionych do tworzenia/wdrożenie zasobów subskrypcji.

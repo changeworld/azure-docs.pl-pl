@@ -1,8 +1,8 @@
 ---
-title: "Skalowalna nauki danych z usługi Azure Data Lake: wskazówki end-to-end | Dokumentacja firmy Microsoft"
-description: "Jak używać usługi Azure Data Lake do wykonywania zadań danych binarnego i eksploracja klasyfikacji w zestawie danych."
+title: 'Skalowalna nauki danych z usługi Azure Data Lake: wskazówki end-to-end | Dokumentacja firmy Microsoft'
+description: Jak używać usługi Azure Data Lake do wykonywania zadań danych binarnego i eksploracja klasyfikacji w zestawie danych.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev; weig
-ms.openlocfilehash: b18b454d1fcdfb2b6e8ea77508f779aeabdc87a0
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 6d0f889e1cc76eced172d66755a0a9275e6b7bdf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalowalna nauki danych z usługi Azure Data Lake: wskazówki end-to-end
 Ten przewodnik przedstawia sposób użycia usługi Azure Data Lake zadania klasyfikacji binarnej na próbkę podróży taksówki NYC i eksploracja danych i taryfy zestawu danych do prognozowania, czy etykietki otrzymuje klasie. Przeprowadzi Cię przez kroki [proces nauki danych zespołu](http://aka.ms/datascienceprocess)end-to- end, od pozyskiwania danych do uczenia modelu, a następnie do wdrożenia usługi sieci web, która publikuje modelu.
@@ -39,7 +39,7 @@ Ten przewodnik zawiera również sekcja, która przedstawia sposób tworzenia i 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Azure Machine Learning Studio jest używany do tworzenia i wdrażania modeli predykcyjnych. Jest to realizowane przy użyciu dwóch metod: najpierw ze skryptami języka Python, a następnie tabele programu Hive w klastrze usługi HDInsight (Hadoop).
 
-### <a name="scripts"></a>Skrypty
+### <a name="scripts"></a>Scripts
 Główne kroki zostały opisane w tym przewodniku. Możesz pobrać pełny **skrypt U-SQL** i **notesu Jupyter** z [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -149,7 +149,7 @@ Do wykonania skryptu U-SQL, Otwórz program Visual Studio, kliknij przycisk **Pl
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Wprowadzanie danych: Odczyt danych z obiektu blob publiczny
-Lokalizacja danych obiektów blob platformy Azure jest określany jako  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**  i wyodrębniona przy użyciu **Extractors.Csv()**. Podstawić własną nazwę kontenera i nazwy konta magazynu w następujących skryptów dla container_name@blob_storage_account_name adres wasb. Ponieważ nazwy plików są w tym samym formacie, możliwe jest **podróży\_data_ {\*\}CSV** do odczytu we wszystkich plikach 12 podróży. 
+Lokalizacja danych obiektów blob platformy Azure jest określany jako **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** i wyodrębniona przy użyciu **Extractors.Csv()**. Podstawić własną nazwę kontenera i nazwy konta magazynu w następujących skryptów dla container_name@blob_storage_account_name adres wasb. Ponieważ nazwy plików są w tym samym formacie, możliwe jest **podróży\_data_ {\*\}CSV** do odczytu we wszystkich plikach 12 podróży. 
 
     ///Read in Trip data
     @trip0 =
@@ -562,7 +562,7 @@ Chcesz operacjonalizacji uczenia modelu po został skompilowany. Binarny logisty
 
 * Znajdź poświadczenia obszar roboczy z usługi Azure ML studio ustawień. W usłudze Azure Machine Learning Studio, kliknij przycisk **ustawienia** --> **nazwa** --> **tokeny autoryzacji**. 
   
-    ![C3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
+    ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
         workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
         auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'

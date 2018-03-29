@@ -1,11 +1,11 @@
 ---
 title: Zestawy skalowania automatycznego skalowania maszyny wirtualnej w portalu Azure | Dokumentacja firmy Microsoft
-description: "Ustawia sposobu tworzenia reguł skalowania automatycznego skalowania maszyny wirtualnej w portalu Azure"
+description: Ustawia sposobu tworzenia reguł skalowania automatycznego skalowania maszyny wirtualnej w portalu Azure
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: e43be53817e7fa65c3d7a95cab9821126ed88831
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 984b16dae26fb6d9d33ef68ac3e8c8b658e82e08
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatycznie skalować skali maszyny wirtualnej w portalu Azure
 Podczas tworzenia zestawu skalowania, należy zdefiniować liczba wystąpień maszyn wirtualnych, które chcesz uruchomić. Twoje żądanie aplikacji zmian, można automatycznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych. Możliwość skalowania automatycznego umożliwia nadąża z popyt lub reagowania na zmiany wydajności aplikacji w całym cyklu życia aplikacji.
@@ -28,7 +28,7 @@ W tym artykule przedstawiono sposób tworzenia reguł automatycznego skalowania 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby utworzyć zasady automatycznego skalowania, należy istniejącej maszyny wirtualnej zestawu skali. Możesz utworzyć zestaw o skali [portalu Azure](virtual-machine-scale-sets-create-portal.md), [programu Azure PowerShell](virtual-machine-scale-sets-create-powershell.md), lub [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md).
+Aby utworzyć zasady automatycznego skalowania, należy istniejącej maszyny wirtualnej zestawu skali. Możesz utworzyć zestaw o skali [portalu Azure](quick-create-portal.md), [programu Azure PowerShell](quick-create-powershell.md), lub [Azure CLI 2.0](quick-create-cli.md).
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Tworzenie reguły automatycznie skalować w poziomie

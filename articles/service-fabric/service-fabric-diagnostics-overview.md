@@ -1,12 +1,12 @@
 ---
-title: "Omówienie diagnostyki i monitorowanie sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat monitorowania i diagnostyki dla klastrów, aplikacje i usługi sieć szkieletowa usług Azure."
+title: Omówienie diagnostyki i monitorowanie sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat monitorowania i diagnostyki dla klastrów, aplikacje i usługi sieć szkieletowa usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2018
 ms.author: dekapur
-ms.openlocfilehash: 1da2fab92c6fd51c5fc18589da5f8bbec2929503
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f784576547f0d85a825ad9dd107c6c84cd261092
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowania i diagnostyki dla sieci szkieletowej usług Azure
 
@@ -86,7 +86,7 @@ Platformy Service Fabric zawiera model kondycji, co zapewnia rozszerzonego rapor
 
 ![Pulpit nawigacyjny kondycji SFX](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
-Oprócz wyświetlać najnowsze raportów o kondycji w SFX, każdy raport jest również dostępny jako zdarzenie. Zdarzenia kondycji mogą być zbierane przez kanał operacyjne (zobacz [agregacji zdarzenia z diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md#collect-health-and-load-events)) i przechowywane w OMS analizy dzienników dla alertów i wykonywaniu zapytań w przyszłości. Dzięki temu można wykrywać problemy, które mogą mieć wpływ na jego dostępność aplikacji, tak więc zaleca się Konfigurowanie alertów dla scenariuszy awarii odpowiednie (niestandardowe alerty za pomocą pakietu OMS).
+Oprócz wyświetlać najnowsze raportów o kondycji w SFX, każdy raport jest również dostępny jako zdarzenie. Zdarzenia kondycji mogą być zbierane przez kanał operacyjne (zobacz [agregacji zdarzenia z diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)) i przechowywane w OMS analizy dzienników dla alertów i wykonywaniu zapytań w przyszłości. Dzięki temu można wykrywać problemy, które mogą mieć wpływ na jego dostępność aplikacji, tak więc zaleca się Konfigurowanie alertów dla scenariuszy awarii odpowiednie (niestandardowe alerty za pomocą pakietu OMS).
 
 ## <a name="monitoring-workflow"></a>Monitorowanie przepływu pracy 
 

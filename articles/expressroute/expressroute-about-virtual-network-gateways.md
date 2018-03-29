@@ -1,11 +1,11 @@
 ---
 title: Temat bram sieci wirtualnej ExpressRoute | Dokumentacja firmy Microsoft
-description: "Informacje na temat bram sieci wirtualnej dla usługi ExpressRoute."
+description: Informacje na temat bram sieci wirtualnej dla usługi ExpressRoute.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2018
+ms.date: 03/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0517caed3a7d6632c1a5650147f4db240dbe0a17
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ae971e7743d6dd3269c0a4f976bd2a5316300f58
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Informacje o bramach sieci wirtualnej dla usługi ExpressRoute
 Brama sieci wirtualnej służy do wysyłania ruchu sieciowego między sieciami wirtualnymi platformy Azure i lokalnymi lokalizacji. Po skonfigurowaniu połączenia ExpressRoute, należy utworzyć i skonfigurować bramę sieci wirtualnej i połączenia bramy sieci wirtualnej.
@@ -35,13 +35,13 @@ Każda sieć wirtualna może mieć tylko jedną bramę sieci wirtualnej na typ b
 
 Jeśli chcesz uaktualnić bramę do bardziej zaawansowanych jednostka SKU bramy, w większości przypadków służy polecenie cmdlet programu PowerShell "Zmiany rozmiaru AzureRmVirtualNetworkGateway". Będzie działać, dotyczy uaktualnień do standardowej i wysokowydajnej jednostki SKU. Jednak aby uaktualnić do wersji UltraPerformance, należy ponownie utworzyć bramę.
 
-### <a name="aggthroughput"></a>Szacowany łącznej przepływności według jednostka SKU bramy
-W poniższej tabeli przedstawiono typy bram i szacowaną agregowaną przepływność. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym.
+### <a name="aggthroughput"></a>Szacowany parametrów przez jednostka SKU bramy
+W poniższej tabeli przedstawiono typy bramy i szacowany parametrów. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Przepływność aplikacji zależy od wielu czynników, takich jak czas oczekiwania na trasie, a liczba przepływów ruchu sieciowego, który otwiera aplikację. Numery w tabeli reprezentuje górny limit, który aplikacja teoretycznie można uzyskać w środowisku idealne. 
+> Wydajność aplikacji zależy od wielu czynników, takich jak czas oczekiwania na trasie, a liczba przepływów ruchu sieciowego, który otwiera aplikację. Numery w tabeli reprezentuje górny limit, który aplikacja teoretycznie można uzyskać w środowisku idealne. 
 > 
 >
 

@@ -1,10 +1,10 @@
 ---
-title: "Włączanie metryk magazynu w portalu Azure | Dokumentacja firmy Microsoft"
-description: "Jak włączyć metryki magazynu dla usługi obiektów Blob, kolejki, tabel i plików"
+title: Włączanie metryk magazynu w portalu Azure | Dokumentacja firmy Microsoft
+description: Jak włączyć metryki magazynu dla usługi obiektów Blob, kolejki, tabel i plików
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
-ms.author: tamram
-ms.openlocfilehash: 8abb4f968c1fa84e03c8cc807826d3684713847a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Włączanie metryk usługi Azure Storage i wyświetlanie danych metryk
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Metryki magazynu jest domyślnie włączona, podczas tworzenia nowego konta magazynu. Można skonfigurować monitorowanie za pomocą [portalu Azure](https://portal.azure.com) lub środowiska Windows PowerShell lub programowo przy użyciu jednej z bibliotek klienckich magazynu.
 
 Można skonfigurować okres przechowywania danych metryki: tego okresu określa, jak długo magazynu usługi śledzi metryki i opłat dla miejsca trzeba je przechowywać. Zwykle należy używać krótszy okres przechowywania dla metryki minuty niż co godzinę metryki ze względu na dodatkowe miejsce znaczące wymagane dla metryki minuty. Wybierz okres przechowywania w taki sposób, że masz wystarczającą ilość czasu do analizowania danych i pobierania wszystkie metryki, które chcesz zachować dla celów raportowania analizy offline lub. Należy pamiętać, możesz również są rozliczane pobierania danych metryki z konta magazynu.
@@ -135,12 +135,12 @@ Aby uzyskać dostęp do tabel analytics programowo, należy pamiętać, że tabe
 
 Dla tych tabel w można znaleźć szczegółowe informacje dotyczące schematów [schemat tabeli metryki analityka magazynu](https://msdn.microsoft.com/library/azure/hh343264.aspx). Poniższe wiersze próbki Pokaż tylko podzbiór dostępnych kolumn, ale zilustrować niektóre ważne funkcje sposób metryki magazynu zapisuje te metryki:
 
-| PartitionKey | RowKey | Znacznik czasu | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostępność | AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | RowKey | Sygnatura czasowa | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostępność | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
-| 20140522T1100 |Użytkownik; Wszystkie |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
+| 20140522T1100 |user;All |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
 | 20140522T1100 |Użytkownik; QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |
-| 20140522T1100 |Użytkownik; QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
-| 20140522T1100 |Użytkownik; UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
+| 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
+| 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
 W przykładowe dane metryk minuty klucza partycji jest używany czas rozdzielczością minuty. Klucz wiersza określa typ informacji przechowywanych w wierszu. Klucz wiersza składa się z dwóch części informacji, typ dostępu i typ żądania:
 
@@ -212,5 +212,5 @@ Używane przez metryki tabel jest również rozliczeniowy: następujące umożli
 * Jeśli co godzinę usługa korzysta z każdego interfejsu API w każdej usługi, następnie 12KB danych jest przechowywana co godzinę w tabelach transakcji metryk po włączeniu tylko poziom usługi podsumowania.
 * Tabela pojemności dla obiektów blob ma dwa wiersze dodane każdego dnia (zakładając, że użytkownik wybrał w dzienników): oznacza to, że codziennie rozmiar tej tabeli zwiększa o około 300 bajtów.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Włączanie magazynu, rejestrowania i uzyskiwanie dostępu do danych dziennika](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

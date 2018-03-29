@@ -1,25 +1,25 @@
 ---
-title: "Przykłady i wskazówki dla danych nauki maszyny wirtualnej - Azure | Dokumentacja firmy Microsoft"
-description: "Przykłady i wskazówki dla maszyny wirtualnej analizy danych."
-keywords: "narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux"
+title: Przykłady i wskazówki dla danych nauki maszyny wirtualnej - Azure | Dokumentacja firmy Microsoft
+description: Przykłady i wskazówki dla maszyny wirtualnej analizy danych.
+keywords: narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: gokuma
+ms.openlocfilehash: 6c5b5c8c9dbb03a2189eb5f1539499ace55e7dfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Przykłady na maszynach wirtualnych nauki danych (DSVM)
 
@@ -47,22 +47,22 @@ DSVMs mają załączone przykłady pełni działał w poziomie w formie notesów
 
 ## <a name="access-jupyter"></a>Dostęp do aplikacji Jupyter 
 
-Odwiedź stronę główną Jupyter, przechodząc do  **`https://localhost:9999`**  w systemie Windows lub  **`https://localhost:8000`**  na Ubuntu.
+Odwiedź stronę główną Jupyter, przechodząc do **`https://localhost:9999`** w systemie Windows lub **`https://localhost:8000`** na Ubuntu.
 
 
 ### <a name="enabling-jupyter-access-from-browser"></a>Włączanie dostępu Jupyter z przeglądarki
 
 **Windows DSVM**
 
-Uruchom  **`Jupyter SetPassword`**  ze skrótu na pulpicie i wykonaj przetworzyć wiersza do zestawu/resetowania hasła dla Jupyter i uruchamiania Jupyter. 
+Uruchom **`Jupyter SetPassword`** ze skrótu na pulpicie i wykonaj przetworzyć wiersza do zestawu/resetowania hasła dla Jupyter i uruchamiania Jupyter. 
 <br/>![Włącz wyjątek Jupyter](./media/jupyter-setpassword.png)<br/>
-Po procesie Jupyter została pomyślnie uruchomiona na maszynie Wirtualnej, odwiedzając jest dostępne główną Jupyter  **`https://localhost:9999`**  w przeglądarce. Zrzut ekranu, aby dodać wyjątek i włączyć Jupyter dostęp za pośrednictwem przeglądarki w temacie
+Po procesie Jupyter została pomyślnie uruchomiona na maszynie Wirtualnej, odwiedzając jest dostępne główną Jupyter **`https://localhost:9999`** w przeglądarce. Zrzut ekranu, aby dodać wyjątek i włączyć Jupyter dostęp za pośrednictwem przeglądarki w temacie
 <br/>![Włącz wyjątek Jupyter](./media/windows-jupyter-exception.png)<br/>
 Zaloguj się przy użyciu nowego hasła, które zostały ustawione.
 <br/>
 **Linux DSVM**
 
-Dostępne główną Jupyter na maszynie Wirtualnej, odwiedzając  **`https://localhost:8000`**  w przeglądarce. Zobacz zrzut ekranu, aby dodać wyjątek i włączyć Jupyter dostęp za pośrednictwem przeglądarki.
+Dostępne główną Jupyter na maszynie Wirtualnej, odwiedzając **`https://localhost:8000`** w przeglądarce. Zobacz zrzut ekranu, aby dodać wyjątek i włączyć Jupyter dostęp za pośrednictwem przeglądarki.
 <br/>![Włącz wyjątek Jupyter](./media/ubuntu-jupyter-exception.png)<br/>
 Zaloguj się przy użyciu tego samego hasła jak logowanie do DSVM.
 <br/>

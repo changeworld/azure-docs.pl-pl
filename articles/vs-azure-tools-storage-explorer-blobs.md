@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie zasobami magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Zarządzanie kontenerów obiektów Blob platformy Azure i obiektów blob z Eksploratora usługi Storage (wersja zapoznawcza)"
+title: Zarządzanie zasobami magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Zarządzanie kontenerów obiektów Blob platformy Azure i obiektów blob z Eksploratora usługi Storage (wersja zapoznawcza)
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
 ms.devlang: multiple
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: c23b87cca66df0834a31494be7d8657ff9f2a865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Zarządzanie zasobami magazynu obiektów Blob Azure za pomocą Eksploratora usługi Storage (wersja zapoznawcza)
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 [Magazyn obiektów Blob Azure](storage/blobs/storage-dotnet-how-to-use-blobs.md) to usługa do przechowywania dużych ilości danych bez struktury, takich jak dane tekstowe lub binarne, którego mogą uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS.
 Magazyn obiektów Blob może być użyty do udostępniania danych publicznie lub do przechowywania danych aplikacji prywatnie. W tym artykule dowiesz się, jak używać Eksploratora usługi Storage (wersja zapoznawcza) do pracy z kontenerów obiektów blob i obiektów blob.
 
@@ -41,7 +41,7 @@ Poniższe kroki przedstawiają sposób tworzenia kontenera obiektów blob w rama
 3. Kliknij prawym przyciskiem myszy **kontenerów obiektów Blob**i z menu kontekstowego — wybierz pozycję **Tworzenie kontenera obiektów Blob**.
 
    ![Tworzenie menu kontekstowe kontenerów obiektów blob][0]
-4. Pole tekstowe pojawi się pod **kontenerów obiektów Blob** folderu. Wprowadź nazwę dla kontenerze obiektu blob. Zobacz [reguły nazewnictwa kontenera](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) sekcja zawiera listę reguł i ograniczenia dotyczące nazewnictwa kontenerów obiektów blob.
+4. Pole tekstowe pojawi się pod **kontenerów obiektów Blob** folderu. Wprowadź nazwę kontenera obiektów blob. Zobacz [utworzyć kontener i ustawić uprawnienia](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) informacji na temat reguły i ograniczenia dotyczące nazewnictwa kontenerów obiektów blob.
 
    ![Tworzenie pola tekstowego kontenerów obiektów Blob][1]
 5. Naciśnij klawisz **Enter** po zakończeniu, aby utworzyć kontener obiektów blob lub **Esc** Aby anulować. Po pomyślnym utworzeniu kontenera obiektów blob będzie wyświetlana w obszarze **kontenerów obiektów Blob** folder dla wybranego konta magazynu.
@@ -170,11 +170,11 @@ Poniższe kroki przedstawiają sposób zarządzania obiektów blob (i foldery) w
 
      1. Na pasku narzędzi okienka głównego wybierz pozycję **Przekaż**, a następnie z menu rozwijanego wybierz pozycję **Przekaż pliki**.
 
-        ![Przekazywanie plików menu][15]
+        ![Menu Przekaż pliki][15]
      2. W oknie dialogowym **Przekazywanie plików** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Pliki**, aby wybrać pliki do przekazania.
 
         ![Przekazywanie plików opcje][16]
-     3. Określ typ **typu obiektu Blob**. Artykuł [Rozpoczynanie pracy z magazynem obiektów Blob platformy Azure przy użyciu platformy .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) wyjaśniono różnice między różnymi rodzajami obiektów blob.
+     3. Określ typ **typu obiektu Blob**. Zobacz [utworzyć kontener i ustawić uprawnienia](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Aby uzyskać więcej informacji.
      4. Opcjonalnie określ folder docelowy, do którego zostanie przekazany wybranych plików. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
      5. Wybierz pozycję **Przekaż**.
    * **Przekaż folder do kontenera obiektów blob**
@@ -185,7 +185,7 @@ Poniższe kroki przedstawiają sposób zarządzania obiektów blob (i foldery) w
      2. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
 
         ![Przekaż Opcje folderów][18]
-     3. Określ typ **typu obiektu Blob**. Artykuł [Rozpoczynanie pracy z magazynem obiektów Blob platformy Azure przy użyciu platformy .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) wyjaśniono różnice między różnymi rodzajami obiektów blob.
+     3. Określ typ **typu obiektu Blob**. Zobacz [utworzyć kontener i ustawić uprawnienia](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Aby uzyskać więcej informacji.
      4. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
      5. Wybierz pozycję **Przekaż**.
    * **Pobieranie obiektu blob na komputerze lokalnym**
@@ -211,7 +211,7 @@ Poniższe kroki przedstawiają sposób zarządzania obiektów blob (i foldery) w
      2. Na pasku narzędzi okienka głównego wybierz pozycję **Usuń**.
      3. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [najnowsze informacje o wersji i filmy wideo dotyczące programu Storage Explorer (wersja zapoznawcza)](http://www.storageexplorer.com).
 * Dowiedz się, jak [tworzyć aplikacje przy użyciu obiektów Blob, tabel, kolejek i plików platformy Azure](https://azure.microsoft.com/documentation/services/storage/).
 

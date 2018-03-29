@@ -1,23 +1,23 @@
 ---
-title: "Często zadawane pytania dotyczące usługi pliki Azure | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące usługi pliki Azure."
+title: Często zadawane pytania dotyczące usługi pliki Azure | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące usługi pliki Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Często zadawane pytania dotyczące usługi pliki Azure
 [Usługa pliki Azure](storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem standardu branżowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (znanej także jako Common Internet File System, lub CIFS). Udziały plików platformy Azure można zainstalować w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS jednocześnie. Możesz również buforować udziały plików platformy Azure na komputerach z systemem Windows Server przy użyciu synchronizacji plików Azure (wersja zapoznawcza) zapewniania szybkiego dostępu bliski gdzie dane są używane.
@@ -232,7 +232,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak wykonywanie kopii zapasowych pliku Azure udostępnić?**  
-    Można użyć okresowe [udostępnić migawki (wersja zapoznawcza)](storage-how-to-use-files-snapshots.md) ochrony przed przypadkowym usunięciu. Ponadto można AzCopy, Robocopy lub narzędzie kopii zapasowych innych firm, które można wykonać kopię zapasową udziału zainstalowanego pliku. 
+    Można użyć okresowe [udostępnić migawki](storage-how-to-use-files-snapshots.md) ochrony przed przypadkowym usunięciu. Ponadto można AzCopy, Robocopy lub narzędzie kopii zapasowych innych firm, które można wykonać kopię zapasową udziału zainstalowanego pliku. 
 
 ## <a name="share-snapshots"></a>Udostępnianie migawki
 ### <a name="share-snapshots-general"></a>Udostępnianie migawki: Ogólne
@@ -255,6 +255,10 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat funkcji us�
 * <a id="snapshot-limits"></a>
 **Czy istnieją ograniczenia dotyczące liczby migawek udziału, których można użyć?**  
     Tak. Usługa pliki Azure można zachować maksymalnie 200 udziału migawki. Migawki udziału nie są traktowane kierunku przydziału udziału więc ma żadnego limitu poszczególnych udziałów całkowita ilość miejsca, który jest używany przez wszystkie migawki udziału. Limity konta magazynu jest nadal mają zastosowanie. Po 200 udziału migawki należy usunąć starsze migawek do tworzenia nowego udziału migawek.
+* <a id="snapshot-cost"></a>
+**Jaka udostępnić migawki kosztów?**  
+    Standardowa transakcji i koszty magazynu w warstwie standardowa dotyczą migawki. Migawki są przyrostowe charakter. Podstawowy migawka jest udziału. Wszystkie kolejne migawki są przyrostowych i zapisze tylko różnic z wcześniejszej migawki. Oznacza to, że zmiany różnicowe, które będą widoczne w zestawieniu będzie minimalny, jeśli użytkownika zmian obciążenia jest minimalny. Zobacz [strony cennik](https://azure.microsoft.com/en-us/pricing/details/storage/files/) dla standardowe informacje o cenach usługi pliki Azure. Obecnie jest sposób, aby przyjrzeć się rozmiar używane przez migawki udziału porównując pojemność rachunku z używane pojemności. Pracujemy nad narzędzi, aby poprawić raportowania.
+
 
 ### <a name="create-share-snapshots"></a>Tworzenie migawek udziału
 * <a id="file-snaphsots"></a>

@@ -1,6 +1,6 @@
 ---
-title: "Architektura replikacji Azure do platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie składników i architektury używane podczas replikowania maszyn wirtualnych platformy Azure między regiony platformy Azure przy użyciu usługi Azure Site Recovery."
+title: Architektura replikacji Azure do platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie składników i architektury używane podczas replikowania maszyn wirtualnych platformy Azure między regiony platformy Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 126f5c4db355af19a7151a267115127757b17599
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Architektura replikacji Azure do platformy Azure
 
@@ -28,7 +28,7 @@ W tym artykule opisano architekturę używane podczas replikacji, pracy awaryjne
 ## <a name="architectural-components"></a>Składniki architektury
 
 Poniższa ilustracja przedstawia ogólny widok środowiska maszyny Wirtualnej platformy Azure w określonym regionie (w tym przykładzie lokalizacji wschodnie stany USA). W środowisku maszyny Wirtualnej platformy Azure:
-- Aplikacje mogą działać na maszynach wirtualnych z dyskami rozmieszczenie do kont magazynu.
+- Aplikacje mogą działać na maszynach wirtualnych z dyskami zarządzanych lub niezarządzanych dysków rozmieszczenie do kont magazynu.
 - Maszyny wirtualne mogą zostać włączone w co najmniej jednej podsieci sieci wirtualnej.
 
 
@@ -49,7 +49,8 @@ Po włączeniu replikacji maszyny Wirtualnej Azure następujące zasoby są twor
 **Docelowa grupa zasobów** | Grupa zasobów replikowane maszyny wirtualne należą po pracy awaryjnej.
 **Docelowy sieci wirtualnej** | Sieć wirtualna, w którym replikowanych maszyn wirtualnych znajdują się po pracy awaryjnej. Mapowanie sieci jest tworzony między sieciami wirtualnymi źródłowym i docelowym i na odwrót.
 **Konta magazynu pamięci podręcznej** | Replikacja zmian maszyny Wirtualnej źródłowego na docelowe konto magazynu, są śledzone i wysyłane do konta magazynu pamięci podręcznej w lokalizacji źródłowej. Ten krok zapewnia minimalny wpływ na aplikacje produkcyjne uruchomione na maszynie Wirtualnej.
-**Konta magazynu docelowego**  | Konta magazynu w lokalizacji docelowej, do którego dane są replikowane.
+**Docelowa kont magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z zarządzanego dysków)**  | Konta magazynu w lokalizacji docelowej, do którego dane są replikowane.
+** Repliki dyskach zarządzanych (Jeśli źródło maszyny Wirtualnej znajduje się na dyskach zarządzanych) **  | Zarządzane dysków w lokalizacji docelowej, do którego dane są replikowane.
 **Docelowy zestawów dostępności**  | Zestawy dostępności, której replikowanych maszyn wirtualnych znajdują się po pracy awaryjnej.
 
 ### <a name="step-2"></a>Krok 2
@@ -76,7 +77,7 @@ Jeśli do grupy replikacji chcesz dodać maszyny wirtualne z systemem Linux, mus
 
 ### <a name="step-3"></a>Krok 3
 
-Po ciągłej replikacji jest w toku, dysku operacje zapisu są natychmiast przenoszone do konta magazynu pamięci podręcznej. Usługa Site Recovery przetwarza dane i wysyła go do docelowe konto magazynu. Po przetworzeniu danych punkty odzyskiwania są generowane w docelowe konto magazynu, co kilka minut.
+Po ciągłej replikacji jest w toku, dysku operacje zapisu są natychmiast przenoszone do konta magazynu pamięci podręcznej. Usługa Site Recovery przetwarza dane i wysyła je do obiektu docelowego konta magazynu lub repliki dyskach zarządzanych. Po przetworzeniu danych punkty odzyskiwania są generowane w docelowe konto magazynu, co kilka minut.
 
 ## <a name="failover-process"></a>Proces trybu failover
 

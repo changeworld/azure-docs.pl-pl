@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 3fc9810f2f7f86b4c795a7f008e8e1bd174a84db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 990abc5c4e546d72d093bcd9e8f37932e93cbeb4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Połączeń wychodzących na platformie Azure
-
->[!NOTE]
-> Standardowy SKU usługi równoważenia obciążenia jest obecnie w przeglądzie. Podczas udostępniania wersji zapoznawczej funkcja może nie mieć taki sam poziom dostępności i niezawodności jako funkcje, które są zwykle dostępności wersji. Aby uzyskać więcej informacji, zobacz [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Użyj ogólnie dostępna [podstawowy SKU usługi równoważenia obciążenia](load-balancer-overview.md) dla usług produkcji. Do użycia [Podgląd stref dostępności](https://aka.ms/availabilityzones) w tej wersji zapoznawczej wymaga [oddzielne rejestracji](https://aka.ms/availabilityzones), oprócz skorzystania z usługi równoważenia obciążenia [standardowe Podgląd](#preview-sign-up).
 
 Platforma Azure udostępnia łączność wychodząca wdrożeń klienta za pomocą kilku różnych mechanizmów. W tym artykule opisano scenariusze są, gdy mają one zastosowanie, jak działają i jak nimi zarządzać.
 
@@ -55,7 +52,7 @@ Jeśli nie chcesz maszyny Wirtualnej do komunikowania się z punktami końcowymi
 
 W tym scenariuszu maszyna wirtualna ma wystąpienie poziomu publicznego adresu IP (ILPIP) przypisane do niej. Jeśli chodzi o połączeń wychodzących, nie ma znaczenia, czy maszyna wirtualna jest równoważone, czy nie. Ten scenariusz ma pierwszeństwo przed jej innym osobom. W przypadku ILPIP maszyna wirtualna używa ILPIP dla wszystkich przepływów wychodzących.  
 
-Port zamaskowana (PAWEŁ) nie jest używany, a maszyna wirtualna ma wszystkie porty efemeryczne dostępne do użycia.
+Publiczny IP przypisane do maszyny Wirtualnej jest 1:1 relacji (zamiast 1: duży zakres) oraz implementowany jako bezstanowych translatora adresów sieciowych. 1:1  Port zamaskowana (PAWEŁ) nie jest używany, a maszyna wirtualna ma wszystkie porty efemeryczne dostępne do użycia.
 
 Aplikacja inicjuje wiele przepływów wychodzących i występują wyczerpania portu SNAT, warto rozważyć przypisywanie [ILPIP złagodzić ograniczenia SNAT](#assignilpip). Przegląd [wyczerpania Zarządzanie SNAT](#snatexhaust) w całości.
 

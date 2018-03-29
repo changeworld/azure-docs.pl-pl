@@ -1,6 +1,6 @@
 ---
-title: "Skonfigurować replikację dla maszyn wirtualnych platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania replikację dla maszyn wirtualnych platformy Azure z jednego regionu Azure, do drugiego za pomocą usługi Site Recovery."
+title: Skonfigurować replikację dla maszyn wirtualnych platformy Azure w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania replikację dla maszyn wirtualnych platformy Azure z jednego regionu Azure, do drugiego za pomocą usługi Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: 39d81ed6408e5f2c434a4fbaa681efc4c0b19a63
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e5947242295a9c57b1c73e202c061d222cd0842f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych platformy Azure do innego regionu systemu Azure
 
@@ -50,7 +50,8 @@ Włącz replikację. Tej procedurze przyjęto założenie, że podstawowy region
     - **Lokalizacja docelowa**: lokalizacja, gdzie będą replikowane dane źródłowe maszyny wirtualnej. W zależności od lokalizacji wybranych maszyn Site Recovery zapewnia listę regionów odpowiedniego elementu docelowego. Firma Microsoft zaleca zachowanie lokalizacji docelowej takie same jak lokalizacja magazynu usług odzyskiwania.
     - **Docelowa grupa zasobów**: grupy zasobów, aby wszystkie zreplikowanej maszyny wirtualne należą. Domyślnie usługi Azure Site Recovery tworzy nową grupę zasobów w regionie docelowych z nazwą składającą się z sufiksem "asr". W przypadku grupy zasobów utworzonej za pomocą usługi Azure Site Recovery już istnieje, zostanie on użyty ponownie. Można również dostosować go, jak pokazano w poniższej sekcji.
     - **Docelowa sieci wirtualnej**: domyślnie Site Recovery tworzy nową sieć wirtualną w regionie docelowych z nazwą składającą się z sufiksem "asr". To jest zamapowana na sieć źródła, a następnie używane do wszelkich przyszłych ochrony. [Dowiedz się więcej](site-recovery-network-mapping-azure-to-azure.md) o mapowania sieci.
-    - **Docelowa kont magazynu**: Domyślnie, Usługa Site Recovery tworzy nowe konto magazynu docelowego mimicking konfigurację magazynu maszyny Wirtualnej źródłowego. W przypadku, gdy konto magazynu już istnieje, zostanie on użyty ponownie.
+    - **Docelowa kont magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z zarządzanego dysków)**: Domyślnie, Usługa Site Recovery tworzy nowe konto magazynu docelowego mimicking konfigurację magazynu maszyny Wirtualnej źródłowego. W przypadku, gdy konto magazynu już istnieje, zostanie on użyty ponownie.
+    - **Repliki dyskach zarządzanych (Jeśli źródło maszyny Wirtualnej używa dysków zarządzanych)**: Usługa Site Recovery tworzy nowe dyski replik zarządzanych w region docelowy dublowanego zarządzanych dysków maszyny Wirtualnej źródłowego tego samego typu magazynu (standardowa lub premium) jako źródłowej maszyny Wirtualnej na zarządzany dysku.
     - **Buforowanie kont magazynu**: Usługa Site Recovery wymaga konta dodatkowego magazynu o nazwie magazynu pamięci podręcznej w regionie źródła. Wszystkie zmiany, które są wykonywane na maszynach wirtualnych źródła są śledzone i wysyłane do konta magazynu pamięci podręcznej przed replikowanie tych do lokalizacji docelowej.
     - **Zestaw dostępności**: Domyślnie program Azure Site Recovery tworzy dostępność nowych ustawiony w regionie docelowych z nazwą składającą się z sufiksem "asr". W przypadku, gdy zestaw dostępności utworzone przez usługę Azure Site Recovery już istnieje, zostanie on użyty ponownie.
     - **Zasady replikacji**: definiuje ustawienia odzyskiwania punktu przechowywania historii i aplikacji migawki dotyczącej spójności częstotliwości. Domyślnie program Azure Site Recovery tworzy nowe zasady replikacji z ustawieniami domyślnymi 24 godzin przechowywania punktu odzyskiwania i "60 minut częstotliwości migawki dotyczącej spójności aplikacji.

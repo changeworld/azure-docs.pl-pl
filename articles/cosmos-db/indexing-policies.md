@@ -1,10 +1,10 @@
 ---
-title: "Azure DB rozwiązania Cosmos indeksowania zasad | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak indeksowania działa w usłudze Azure DB rozwiązania Cosmos. Dowiedz się, jak skonfigurować i zmienić zasady indeksowania dla automatycznego indeksowania i zwiększyć wydajność."
-keywords: "Indeksowanie działania, automatycznego indeksowania, indeksowania bazy danych"
+title: Azure DB rozwiązania Cosmos indeksowania zasad | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak indeksowania działa w usłudze Azure DB rozwiązania Cosmos. Dowiedz się, jak skonfigurować i zmienić zasady indeksowania dla automatycznego indeksowania i zwiększyć wydajność.
+keywords: Indeksowanie działania, automatycznego indeksowania, indeksowania bazy danych
 services: cosmos-db
-documentationcenter: 
-author: arramac
+documentationcenter: ''
+author: rafats
 manager: jhubbard
 editor: monicar
 ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/17/2017
-ms.author: arramac
-ms.openlocfilehash: b09f5323f0378721412baade9be9926ebd0c171e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 03/26/2018
+ms.author: rafats
+ms.openlocfilehash: 5610c5fdc6a04f9ef13d2e4592f0d7e5d8eba30c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jak dane indeksu bazy danych rozwiązania Cosmos Azure?
 
 Domyślnie wszystkie dane z bazy danych Azure rozwiązania Cosmos jest indeksowany. Choć wielu klientów chętnie let DB rozwiązania Cosmos Azure automatycznie obsługiwać wszystkie aspekty indeksowania, można określić niestandardowego *indeksowania zasad* kolekcji podczas tworzenia w usłudze Azure DB rozwiązania Cosmos. Zasady indeksowania w usłudze Azure DB rozwiązania Cosmos są bardziej elastyczne i wydajne niż indeksów pomocniczych, które są oferowane na innych platformach, bazy danych. W usłudze Azure DB rozwiązania Cosmos można projektować i dostosować kształt indeksu bez ograniczania elastyczność schematu. 
 
 Aby dowiedzieć się, jak indeksowania działa w usłudze Azure DB rozwiązania Cosmos, jest wziąć pod uwagę podczas zarządzania zasady indeksowania, można oznaczyć szczegółowych kompromis między narzut na przechowywanie indeksu, zapisu i przepływności zapytania i spójności zapytania.  
+
+Poniższe wideo Andrew Liu Menedżera programów DB rozwiązania Cosmos Azure pokazuje DB rozwiązania Cosmos Azure automatycznego indeksowania możliwości i sposobu dostrojenie i skonfigurować zasady indeksowania w kontenerze Twojej bazy danych Azure rozwiązania Cosmos. 
+
+>[!VIDEO https://www.youtube.com/embed/uFu2D-GscG0]
 
 W tym artykule firma Microsoft Przyjrzyjmy się zamknięcia bazy danych Azure rozwiązania Cosmos indeksowania zasad, jak dostosować zasady indeksowania i skojarzone kompromisy. 
 
@@ -37,7 +41,7 @@ Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na na
 * Jak dokonać zmiany do zbioru zasady indeksowania
 * Jak porównać magazynu i wydajności różnych zasad indeksowania
 
-## Dostosuj zasady indeksowania w kolekcji<a id="CustomizingIndexingPolicy"></a>  
+## Dostosuj zasady indeksowania w kolekcji <a id="CustomizingIndexingPolicy"></a>  
 Zastępowanie domyślnego indeksowania zasad w kolekcji usługi Azure DB rozwiązania Cosmos można dostosować kompromis między magazynu, zapisu i wydajność zapytań i spójności zapytania. Można skonfigurować następujące aspekty:
 
 * **Dołącz lub Wyklucz dokumentów i ścieżki z indeksem i**. Można wyłączyć lub włączyć określonych dokumentów w indeksie, gdy Wstawianie lub zastępowanie dokumentów w kolekcji. Można również uwzględnić lub wykluczyć określone właściwości JSON, nazywany również *ścieżki*, zostać pomyślnie zindeksowane wszystkich dokumentów, które znajdują się w indeksie. Ścieżki obejmują wzorców symboli wieloznacznych.
@@ -69,7 +73,7 @@ Można zmienić zasady indeksowania w kolekcji w portalu Azure:
 2. W menu nawigacji po lewej stronie wybierz **ustawienia**, a następnie wybierz **zasady indeksowania**. 
 3. W obszarze **zasady indeksowania**, zmienić zasady indeksowania, a następnie wybierz **OK**. 
 
-### Tryby indeksowania bazy danych<a id="indexing-modes"></a>  
+### Tryby indeksowania bazy danych <a id="indexing-modes"></a>  
 Azure DB rozwiązania Cosmos obsługuje trzy tryby indeksowania, które można skonfigurować za pomocą zasady indeksowania w kolekcji usługi Azure DB rozwiązania Cosmos: spójny, opóźnieniem i brak.
 
 **Spójne**: zasady zbierania bazy danych Azure rozwiązania Cosmos jest spójne, zapytania w określonej kolekcji bazy danych Azure rozwiązania Cosmos wykonaj poziomu spójności określone dla odczytów punktu (silne, nieaktualność, sesji lub ostatecznego). Indeks jest aktualizowana synchronicznie, w ramach aktualizacji dokumentu (insert, replace, update i delete dokumentów w kolekcji usługi Azure DB rozwiązania Cosmos).
@@ -365,7 +369,7 @@ Następujące zmiany zostały wprowadzone w specyfikacji JSON:
 * Każda ścieżka może mieć wiele definicji indeksu. Może mieć jeden dla każdego typu danych.
 * Indeksowanie dokładności obsługuje od 1 do 8 dla liczb, od 1 do 100 dla ciągów i -1 (maksymalna dozwolona dokładność).
 * Segmenty ścieżki nie wymagają cudzysłowu ucieczki poszczególnych ścieżek. Na przykład można dodać ścieżki dla   **/tytuł /?** zamiast **/ "title" /?**.
-* Ścieżka katalogu głównego, który reprezentuje "wszystkie ścieżki" może być reprezentowana jako  **/ \***  (oprócz  **/** ).
+* Ścieżka katalogu głównego, który reprezentuje "wszystkie ścieżki" może być reprezentowana jako **/ \*** (oprócz **/**).
 
 Jeśli masz kod tej kolekcji przepisy z niestandardowe zasady indeksowania napisany za pomocą zestawu .NET SDK w wersji 1.1.0 lub starszej wersji, aby przejść do zestawu SDK w wersji 1.2.0, należy zmienić kod aplikacji w celu obsługi tych zmian. Jeśli nie masz kod, który konfiguruje zasady indeksowania, lub jeśli zamierzasz nadal używać starszej wersji zestawu SDK, zmiany nie są wymagane.
 

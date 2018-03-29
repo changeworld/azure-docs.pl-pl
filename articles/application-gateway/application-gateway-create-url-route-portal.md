@@ -1,21 +1,20 @@
 ---
-title: "Utwórz bramę aplikacji z adresu URL na podstawie ścieżki reguły routingu - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć adres URL na podstawie ścieżki reguły routingu dla bramy aplikacji i skalowania maszyny wirtualnej ustawić za pomocą portalu Azure."
+title: Utwórz bramę aplikacji z adresu URL na podstawie ścieżki reguły routingu - portalu Azure
+description: Dowiedz się, jak utworzyć adres URL na podstawie ścieżki reguły routingu dla bramy aplikacji i skalowania maszyny wirtualnej ustawić za pomocą portalu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 62063c42ab15a071a4500417a5d8adf6bfeac97f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.date: 3/26/2018
+ms.author: victorh
+ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Utwórz bramę aplikacji przy użyciu ścieżki na podstawie reguł routingu przy użyciu portalu Azure
 
@@ -154,11 +153,11 @@ W tym przykładzie należy utworzyć trzy maszyny wirtualne do użycia jako serw
 
     ![Zarejestruj publiczny adres IP bramy aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki. Przykład http://http: / / 40.121.222.19.
+2. Skopiuj publicznego adresu IP, a następnie wklej go w pasku adresu przeglądarki. Takie jak http://http://40.121.222.19.
 
     ![Podstawowy adres URL testu bramy aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-3. Zmień adres URL do http://&lt;adres ip&gt;: 8080/video/test.htm, zastępując &lt;adres ip&gt; z IP adresów, a powinien zostać wyświetlony ekran podobny do następującego:
+3. Zmień adres URL do http://&lt;adres ip&gt;: 8080/images/test.htm, zastępując &lt;adres ip&gt; z IP adresów, a powinien zostać wyświetlony ekran podobny do następującego:
 
     ![Adres URL obrazów testu w bramy aplikacji](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 

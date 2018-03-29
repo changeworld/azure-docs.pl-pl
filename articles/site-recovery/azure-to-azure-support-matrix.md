@@ -1,21 +1,21 @@
 ---
-title: "Azure Site Recovery macierz obsługi replikacji z platformy Azure na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Zawiera podsumowanie obsługiwanych systemów operacyjnych i konfiguracji dla usługi Azure Site Recovery replikacji maszyn wirtualnych platformy Azure (maszyn wirtualnych) z jednego regionu do innego na potrzeby odzyskiwania (DR) po awarii."
+title: Azure Site Recovery macierz obsługi replikacji z platformy Azure na platformie Azure | Dokumentacja firmy Microsoft
+description: Zawiera podsumowanie obsługiwanych systemów operacyjnych i konfiguracji dla usługi Azure Site Recovery replikacji maszyn wirtualnych platformy Azure (maszyn wirtualnych) z jednego regionu do innego na potrzeby odzyskiwania (DR) po awarii.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/24/2018
 ms.author: sujayt
-ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 30ee269b3f484256001af211181a517821d79617
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery macierz obsługi replikacji z platformy Azure na platformie Azure
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji z jednego regionu Azure do innego
 
 
 >[!NOTE]
@@ -28,7 +28,7 @@ W tym artykule przedstawiono obsługiwane konfiguracje oraz składniki usługi A
 
 **Interfejs użytkownika** |  **Obsługiwane / nieobsługiwane**
 --- | ---
-**Azure portal** | Obsługiwane
+**Azure Portal** | Obsługiwane
 **Portal klasyczny** | Nieobsługiwane
 **Program PowerShell** | Nie są obecnie obsługiwane
 **Interfejs API REST** | Nie są obecnie obsługiwane
@@ -148,8 +148,8 @@ Migracja maszyn wirtualnych przy użyciu usługi Site Recovery | Obsługiwane | 
 --- | --- | ---
 Maksymalny rozmiar dysku systemu operacyjnego | 2048 GB | Zapoznaj się [dysków używanych przez maszyny wirtualne.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Rozmiar dysku danych maksymalna | 4095 GB | Zapoznaj się [dysków używanych przez maszyny wirtualne.](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
-Liczba dysków z danymi | Maksymalnie 64 obsługiwana przez określony rozmiar maszyny Wirtualnej Azure | Zapoznaj się [rozmiary maszyny wirtualnej platformy Azure](../virtual-machines/windows/sizes.md)
-Tymczasowe dysku | Zawsze wyłączone z replikacji | Dysku tymczasowym został wykluczony z replikacji zawsze. Nie należy umieszczać żadnych danych na dysku tymczasowym zgodnie z harmonogramem nce guida platformy Azure. Zapoznaj się [dysku tymczasowym na maszynach wirtualnych Azure](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) więcej szczegółów.
+Liczba dysków z danymi | Maksymalnie 64 jako obsługiwana przez określony rozmiar maszyny Wirtualnej Azure | Zapoznaj się [rozmiary maszyny wirtualnej platformy Azure](../virtual-machines/windows/sizes.md)
+Tymczasowe dysku | Zawsze wyłączone z replikacji | Dysku tymczasowym został wykluczony z replikacji zawsze. Nie należy umieszczać żadnych danych na dysku tymczasowym zgodnie z harmonogramem wskazówki platformy Azure. Zapoznaj się [dysku tymczasowym na maszynach wirtualnych Azure](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk) więcej szczegółów.
 Częstotliwość zmian danych na dysku | Maksymalnie 10 MB/s na dysku dla usługi Premium storage i 2 MB/s dla każdego dysku do magazynu w warstwie standardowa | Częstotliwość zmian uśrednianie danych na dysku jest ponad 10 MB/s (dla Premium) i 2 MB/s (standardu) stale, replikacji nie będzie przechwytywać. Jeśli jest serii danych okazjonalne i częstotliwości zmian danych jest większa niż 10 MB/s (w przypadku Premium) i 2 MB/s (standardu) przez pewien czas i zawiera, replikacja będzie przechwytywać. W takim przypadku można napotkać punktów odzyskiwania nieco opóźnione.
 Dyski na kontach magazynu w warstwie standardowa | Obsługiwane |
 Dyski na kontach magazynu w warstwie premium | Obsługiwane | Jeśli maszyna wirtualna zawiera dyski rozmieszczenie do konta magazynu w warstwie standardowa i premium, możesz wybrać inny element docelowy konta magazynu dla każdego dysku upewnić się, czy masz taką samą konfigurację magazynu w docelowym regionie
@@ -179,7 +179,7 @@ Internetowy moduł równoważenia obciążenia | Obsługiwane | Musisz skojarzy�
 Wewnętrzny moduł równoważenia obciążenia | Obsługiwane | Musisz skojarzyć usługi równoważenia obciążenia wstępnie skonfigurowane przy użyciu skryptu automatyzacji azure w planie odzyskiwania.
 Publiczny adres IP| Obsługiwane | Musisz skojarzyć już istniejącego publicznego adresu IP do karty Sieciowej lub utworzyć i skojarzyć z kartą sieciową w planie odzyskiwania przy użyciu skryptu automatyzacji azure.
 Grupa NSG w karcie Sieciowej (Resource Manager)| Obsługiwane | Musisz skojarzyć grupę NSG z kartą sieciową w planie odzyskiwania przy użyciu skryptu automatyzacji azure.  
-NSG podsieci (Resource Manager i model klasyczny)| Obsługiwane | Musisz skojarzyć grupę NSG z kartą sieciową w planie odzyskiwania przy użyciu skryptu automatyzacji azure.
+NSG podsieci (Resource Manager i model klasyczny)| Obsługiwane | Musisz skojarzyć grupę NSG do podsieci za pomocą skryptu automatyzacji azure w planie odzyskiwania.
 Grupy NSG na maszynie Wirtualnej (klasyczne)| Obsługiwane | Musisz skojarzyć grupę NSG z kartą sieciową w planie odzyskiwania przy użyciu skryptu automatyzacji azure.
 Zastrzeżony adres IP (statyczny adres IP) / zachować źródłowy adres IP | Obsługiwane | Jeśli karty interfejsu Sieciowego na źródłowej maszyny Wirtualnej ma konfiguracji statycznych adresów IP i podsieci docelowej ma tego samego adresu IP dostępne, jest przypisany do trybu failover maszyny Wirtualnej. Jeśli w podsieci docelowej nie ma tego samego adresu IP dostępne, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla tej maszyny Wirtualnej. Można określić stałego adresu IP w wybranym "elementu zreplikowane > Ustawienia > obliczenia i sieć > interfejsów sieciowych. Można wybrać kartę Sieciową i podaj podsieć lub adres IP wybranego.
 Dynamic IP| Obsługiwane | Jeśli karta sieciowa na źródłowej maszyny Wirtualnej ma dynamicznej konfiguracji IP, karty Sieciowej w tryb failover maszyny Wirtualnej jest również dynamiczne domyślnie. Można określić stałego adresu IP w wybranym "elementu zreplikowane > Ustawienia > obliczenia i sieć > interfejsów sieciowych. Można wybrać kartę Sieciową i podaj podsieć lub adres IP wybranego.

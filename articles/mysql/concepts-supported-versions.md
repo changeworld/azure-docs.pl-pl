@@ -1,6 +1,6 @@
 ---
-title: "Obsługiwane wersje w bazie danych Azure dla programu MySQL"
-description: "W tym artykule opisano obsługiwane wersje w bazie danych Azure dla programu MySQL."
+title: Obsługiwane wersje w bazie danych Azure dla programu MySQL
+description: W tym artykule opisano obsługiwane wersje w bazie danych Azure dla programu MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,24 +8,27 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 8b16545bd1a3afa138c22ac6ab01b139a9e636a8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 03/22/2018
+ms.openlocfilehash: cfebdbe7485f0ffaa15828803d72c2a3f97c118d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Obsługiwane platformy Azure bazy danych MySQL wersji serwera
 Bazy danych platformy Azure dla programu MySQL został opracowany z [MySQL Community Edition](https://www.mysql.com/products/community/), przy użyciu aparatu InnoDB.  Bazy danych platformy Azure dla programu MySQL obecnie obsługuje następujące wersje:
 
-## <a name="mysql-version-5635"></a>Wersja MySQL 5.6.35
-Zapoznaj się MySQL [dokumentacji](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w MySQL 5.6.35.
+## <a name="mysql-version-5638"></a>Wersja MySQL 5.6.38
+Zapoznaj się MySQL [dokumentacji](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-38.html) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w MySQL 5.6.38.
 
-## <a name="mysql-version-5718"></a>Wersja MySQL 5.7.18
-Zapoznaj się MySQL [dokumentacji](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-18.html) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w MySQL 5.7.18.
+## <a name="mysql-version-5720"></a>Wersja MySQL 5.7.20
+Zapoznaj się MySQL [dokumentacji](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-20.htmll) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w MySQL 5.7.20.
+
+> [!NOTE]
+> W usłudze brama służy do przekierowywania połączenia do wystąpienia serwera. Po nawiązaniu połączenia klienta MySQL Wyświetla wersję MySQL w bramie nie tylko wersja uruchomione w wystąpieniu serwera MySQL. Można ustalić wersji wystąpienia serwera MySQL, użyj `SELECT VERSION();` polecenie w wierszu polecenia programu MySQL. 
 
 ## <a name="managing-updates-and-upgrades"></a>Zarządzanie aktualizacjami i uaktualnieniami
-Bazy danych platformy Azure dla programu MySQL automatycznie zarządza poprawki aktualizacji wersji pomocniczej. Nie są obsługiwane uaktualnienia wersji głównej, na przykład uaktualniania do MySQL 5.7, MySQL 5.6.
+Usługa automatycznie zarządza poprawki aktualizacji wersji pomocniczej. Nie są obsługiwane uaktualnienia wersji głównej (np. Uaktualnianie z MySQL 5.6 do MySQL 5.7).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

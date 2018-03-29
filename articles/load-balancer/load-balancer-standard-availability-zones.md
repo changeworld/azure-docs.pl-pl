@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 70b39b854a3b7cb28716d3cb290998690dbeb549
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Moduł równoważenia obciążenia standardowego i dostępności stref
 
 Standardowy SKU Azure równoważenia obciążenia obsługuje [stref dostępności](../availability-zones/az-overview.md) scenariuszy. Kilku nowych pojęć są dostępne standardowe usługi równoważenia obciążenia, które pozwalają zoptymalizować dostępność w danym scenariuszu end-to-end ustawiając zasobów przy użyciu stref, a także rozpowszechniają strefy.  Przegląd [stref dostępności](../availability-zones/az-overview.md) wskazówki dotyczące dostępności strefy są, regiony obsługuje obecnie stref dostępności i inne powiązane pojęcia i produktów. Dostępność stref w połączeniu z modułem równoważenia obciążenia standardowego to zestaw funkcji rozszerzania i elastyczne, który może tworzyć wiele różnych scenariuszy.  Przejrzyj tego dokumentu, aby zrozumieć [pojęcia](#concepts) oraz scenariusz podstawowych [wskazówki dotyczące projektowania](#design).
 
 >[!NOTE]
-> Standardowy SKU usługi równoważenia obciążenia jest obecnie w przeglądzie. Podczas udostępniania wersji zapoznawczej funkcja może nie mieć taki sam poziom dostępności i niezawodności jako funkcje, które są zwykle dostępności wersji. Aby uzyskać więcej informacji, zobacz [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Użyj ogólnie dostępna [podstawowy SKU usługi równoważenia obciążenia](load-balancer-overview.md) dla usług produkcji. Do użycia [Podgląd stref dostępności](https://aka.ms/availabilityzones) w tej wersji zapoznawczej wymaga [oddzielne rejestracji](https://aka.ms/availabilityzones), oprócz skorzystania z usługi równoważenia obciążenia [standardowe Podgląd](#preview-sign-up).
+>Przegląd [Podgląd stref dostępności](https://aka.ms/availabilityzones) dla innych powiązanych tematów. 
 
 ## <a name="concepts"></a> Pojęcia dotyczące dostępności stref stosowane do modułu równoważenia obciążenia
 

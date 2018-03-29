@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie funkcji danych klastra platformy Hadoop za pomocą zapytań Hive | Dokumentacja firmy Microsoft"
-description: "Przykłady zapytań Hive, które generują funkcje w danych przechowywanych w klastrze usługi Azure HDInsight Hadoop."
+title: Tworzenie funkcji danych klastra platformy Hadoop za pomocą zapytań Hive | Dokumentacja firmy Microsoft
+description: Przykłady zapytań Hive, które generują funkcje w danych przechowywanych w klastrze usługi Azure HDInsight Hadoop.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: hangzh;bradsev
-ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: bradsev
+ms.openlocfilehash: f49eeee2dd26d54674b4619e6c986952718caa47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji danych klastra usługi Hadoop przy użyciu zapytań programu Hive
 Ten dokument przedstawia sposób tworzenia funkcji danych przechowywanych w klastrze usługi Azure HDInsight Hadoop za pomocą zapytań Hive. Te zapytania Hive funkcji osadzonych Hive User-Defined (UDF), skryptów, dla której są dostarczane.
@@ -93,14 +93,14 @@ Gałąź jest dostarczany z zestawem funkcji UDF przetwarzania pól daty i godzi
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-To zapytanie Hive przy założeniu, że  *<datetime field>*  jest w formacie daty/godziny domyślne.
+To zapytanie Hive przy założeniu, że *<datetime field>* jest w formacie daty/godziny domyślne.
 
 Pole daty i godziny nie ma domyślnego formatu, należy najpierw przekonwertuj pole daty/godziny na sygnatury czasowej systemu Unix, a następnie wykonać konwersję sygnaturę czasową Unix ciąg daty i godziny w formacie domyślne. W przypadku datę i godzinę w domyślnym formacie, użytkownicy mogą stosować osadzonych funkcji UDF, aby wyodrębnić funkcji daty/godziny.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-W tym zapytaniu Jeśli  *<datetime field>*  ma wzorzec, takich jak *2015-03-26 12:04:39*,  *<pattern of the datetime field>"* powinien być `'MM/dd/yyyy HH:mm:ss'`. Aby ją przetestować, użytkownicy mogą uruchamiać
+W tym zapytaniu Jeśli *<datetime field>* ma wzorzec, takich jak *2015-03-26 12:04:39*,  *<pattern of the datetime field>"* powinien być `'MM/dd/yyyy HH:mm:ss'`. Aby ją przetestować, użytkownicy mogą uruchamiać
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

@@ -1,24 +1,24 @@
 ---
-title: "Wdrożenia etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft"
-description: "Cele, zadań i elementów dostarczanych w etapie wdrażania projektów analizy danych"
+title: Wdrożenia etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
+description: Cele, zadań i elementów dostarczanych w etapie wdrażania projektów analizy danych
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 45d801bf0096879143f91feb230445625559379f
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 5cb6361ed674ffaaf776adafd6f3ff87272c73eb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deployment"></a>Wdrożenie
 
@@ -43,7 +43,7 @@ Zadania główne zostały omówione w tym etapie:
 
 **Operacjonalizuj modelu**: wdrażania modelu i potoku na środowisko produkcyjne lub środowiska przypominającej środowisko produkcyjne korzystania z aplikacji.
 
-### <a name="operationalize-a-model"></a>Operacjonalizuj modelu
+### <a name="operationalize-a-model"></a>Operacjonalizowanie modelu
 Po utworzeniu zestaw modeli, które również wykonywać, aby operacjonalizować je dla innych aplikacji do pracy. W zależności od wymagań biznesowych prognoz są wykonywane w czasie rzeczywistym lub na podstawie partii. Aby wdrożyć modeli, naraża je z interfejsem API otwarty. Interfejs umożliwia modelu można łatwo korzystać z różnych aplikacji, takich jak:
 
    * Witryny sieci Web w trybie online
@@ -61,7 +61,7 @@ Przykłady operationalization modelu z usługą sieci web uczenie maszynowe Azur
 * Architektura dokument ostateczne rozwiązanie
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto łącza do każdego kroku w cyklu TDSP:
 

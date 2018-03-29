@@ -1,25 +1,25 @@
 ---
-title: "Wdrażanie aplikacji usługi Azure Service Fabric w klastrze z poziomu programu Visual Studio | Microsoft Docs"
-description: "Dowiedz się, jak wdrożyć aplikację w klastrze z poziomu programu Visual Studio"
+title: Wdrażanie aplikacji usługi Azure Service Fabric w klastrze z poziomu programu Visual Studio | Microsoft Docs
+description: Dowiedz się, jak wdrożyć aplikację w klastrze z poziomu programu Visual Studio
 services: service-fabric
 documentationcenter: .net
 -author: mikkelhegn
 -manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/21/2018
-ms.author: mikkelhegn
+ms.date: 02/23/2018
+ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 21c991a4e3f9ae19a4ad4a96427fdc1c91c55a1c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 1d8f8d903046f1d471f7abbe08a957b81522e391
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji w klastrze usługi Service Fabric na platformie Azure
 Ten samouczek to druga część serii. Przedstawiono w nim sposób wdrażania aplikacji usługi Azure Service Fabric w nowym klastrze na platformie Azure bezpośrednio z poziomu programu Visual Studio.
@@ -65,7 +65,6 @@ Ten samouczek zawiera kroki, które należy wykonać, aby utworzyć klaster z po
 > Wiele usług korzysta ze zwrotnego serwera proxy, aby się ze sobą komunikować. Klastry utworzone z poziomu programu Visual Studio i klastry testowe mają domyślnie włączoną opcję korzystania ze zwrotnego serwera proxy.  Jeśli używasz istniejącego klastra, musisz najpierw [włączyć zwrotny serwer proxy w klastrze](service-fabric-reverseproxy.md#setup-and-configuration).
 
 ### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>Wdrażanie aplikacji w klastrze usługi Service Fabric
-
 1. Kliknij prawym przyciskiem myszy projekt aplikacji w Eksploratorze rozwiązań i wybierz polecenie **Publikuj**.
 
 2. Zaloguj się przy użyciu konta platformy Azure, aby uzyskać dostęp do subskrypcji. Ten krok jest opcjonalny, jeśli używasz klastra testowego.

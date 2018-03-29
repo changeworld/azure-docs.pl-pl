@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 7567ce516e6d08a458ff96f4554d9e92934408f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj narzędzia Azure HDInsight dla kodu programu Visual Studio
 
@@ -69,9 +69,9 @@ Tworzenie obszaru roboczego w kodzie VS przed podłączeniem do platformy Azure.
 
 4. Otwórz **XXXX_hdi_settings.json** z **EXPLORER**, lub kliknij prawym przyciskiem myszy edytora skryptów, aby wybrać **ustawić konfiguracji**. Można skonfigurować zapisu logowania, klastra domyślnego i parametry przesyłania zadania, jak pokazano w przykładzie w pliku. Można także pozostawić pozostałe parametry puste.
 
-## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
+## <a name="connect-to-hdinsight-cluster"></a>Łączenie z klastrem usługi HDInsight
 
-W kodzie VS, aby móc przesłać skryptów do klastrów usługi HDInsight, należy nawiązać konta platformy Azure.
+Przed skryptów można przesłać do klastrów usługi HDInsight w kodzie VS, należy połączyć z kontem platformy Azure albo link klastra (przy użyciu Ambari nazwy użytkownika i hasła lub domeny połączone konta).
 
 **Do nawiązania połączenia platformy Azure**
 

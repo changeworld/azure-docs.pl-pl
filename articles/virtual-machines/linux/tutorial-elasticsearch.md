@@ -1,6 +1,6 @@
 ---
-title: "Wdrażanie programu ElasticSearch na deweloperskiej maszynie wirtualnej na platformie Azure"
-description: "Samouczek — Instalowanie programu Elastic Stack na deweloperskiej maszynie wirtualnej z systemem Linux na platformie Azure"
+title: Wdrażanie programu ElasticSearch na deweloperskiej maszynie wirtualnej na platformie Azure
+description: Samouczek — Instalowanie programu Elastic Stack na deweloperskiej maszynie wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rloutlaw
@@ -13,11 +13,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 7941e557dfbb71df7c2d55608c4a14c026535db8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: eeb1b8b9105e055339cb31fa4b9d4b411cb06c54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Instalowanie programu Elastic Stack na maszynie wirtualnej platformy Azure
 
@@ -128,7 +128,7 @@ sudo systemctl start elasticsearch.service
 To polecenie nie daje żadnych danych wyjściowych, dlatego sprawdź, czy program Elasticsearch działa na maszynie wirtualnej, używając tego polecenia `curl`:
 
 ```bash
-curl -XGET 'localhost:9200/'
+sudo curl -XGET 'localhost:9200/'
 ```
 
 Jeśli program Elasticsearch działa, zobaczysz dane wyjściowe zbliżone do następujących:

@@ -1,10 +1,10 @@
 ---
-title: "Użyj analityka magazynu Azure do zbierania danych dzienników i metryki | Dokumentacja firmy Microsoft"
-description: "Analityka magazynu umożliwia śledzenie danych metryki dla wszystkich usług magazynu i zbierania dzienników dla magazynu obiektów Blob, kolejki i tabeli."
+title: Użyj analityka magazynu Azure do zbierania danych dzienników i metryki | Dokumentacja firmy Microsoft
+description: Analityka magazynu umożliwia śledzenie danych metryki dla wszystkich usług magazynu i zbierania dzienników dla magazynu obiektów Blob, kolejki i tabeli.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: tamram
-ms.openlocfilehash: 9ae9dd0b078911a695d441cd3891be720dc204ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: edda01cbfe1b53d934f9f4a7bb01c645fa680873
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-analytics"></a>Analityka magazynu
 
@@ -79,7 +79,7 @@ W poniższej tabeli opisano każdego atrybutu w parametrze nazwę dziennika.
 
 | Atrybut | Opis |
 | --- | --- |
-| < nazwa usługi > |Nazwa usługi magazynu. Na przykład: obiektów blob, tabel lub kolejek. |
+| <service-name> |Nazwa usługi magazynu. Na przykład: obiektów blob, tabel lub kolejek. |
 | RRRR |Czterocyfrowy rok dziennika. Na przykład: 2011. |
 | MM |Miesiąc dwucyfrowe dziennika. Na przykład: 07. |
 | DD |Miesiąc dwucyfrowe dziennika. Na przykład: 07. |
@@ -95,7 +95,7 @@ Poniżej przedstawiono przykładowy identyfikator URI, który może być używan
 
     https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log
 
-Podczas rejestrowania żądania magazynu wynikowa nazwa dziennika są powiązane z godzina zakończenia żądanej operacji. Na przykład, jeśli żądanie GetBlob zostało ukończone w 6:00. na 2011-7-31 będzie zapisany dziennik z prefiksem następujące:`blob/2011/07/31/1800/`
+Podczas rejestrowania żądania magazynu wynikowa nazwa dziennika są powiązane z godzina zakończenia żądanej operacji. Na przykład, jeśli żądanie GetBlob zostało ukończone w 6:00. na 2011-7-31 będzie zapisany dziennik z prefiksem następujące: `blob/2011/07/31/1800/`
 
 ### <a name="log-metadata"></a>Metadane dziennika
 Wszystkie obiekty BLOB dziennika są przechowywane metadane, który może służyć do identyfikowania co rejestrowanie zawiera obiektu blob. W poniższej tabeli opisano każdego atrybutu metadanych.
@@ -103,15 +103,15 @@ Wszystkie obiekty BLOB dziennika są przechowywane metadane, który może służ
 | Atrybut | Opis |
 | --- | --- |
 | LogType |Opisuje, czy dziennik zawiera informacje dotyczące odczytu, zapisu albo usuwania operacji. Ta wartość może zawierać jeden typ lub kombinację wszystkich trzech rozdzielonych przecinkami. Przykład 1: zapisu; Przykład 2: Odczyt, zapis; Przykład 3: Odczyt, zapis, Usuń. |
-| Czas rozpoczęcia |Najwcześniejsza godzina wpisu w dzienniku w postaci RRRR-MM-Ddtgg. Na przykład: 2011-07-31T18:21:46Z. |
-| wartość endTime |Najpóźniejsza godzina wpisu w dzienniku w postaci RRRR-MM-Ddtgg. Na przykład: 2011-07-31T18:22:09Z. |
+| Godzina rozpoczęcia |Najwcześniejsza godzina wpisu w dzienniku w postaci RRRR-MM-Ddtgg. Na przykład: 2011-07-31T18:21:46Z. |
+| Godzina zakończenia |Najpóźniejsza godzina wpisu w dzienniku w postaci RRRR-MM-Ddtgg. Na przykład: 2011-07-31T18:22:09Z. |
 | LogVersion |Wersja formatu dziennika. Obecnie jedyna obsługiwana wartość to 1.0. |
 
 Poniższa lista zawiera kompletnego przykładu metadanych za pomocą w poprzednich przykładach.
 
-* LogType = zapisu
-* Wartość StartTime = 2011-07-31T18:21:46Z
-* Wartość EndTime = 2011-07-31T18:22:09Z
+* LogType=write
+* StartTime=2011-07-31T18:21:46Z
+* EndTime=2011-07-31T18:22:09Z
 * LogVersion = 1.0
 
 ### <a name="accessing-logging-data"></a>Uzyskiwanie dostępu do danych rejestrowania
@@ -157,7 +157,7 @@ Wszystkie dane metryki dla każdej z usług magazynu są przechowywane w trzy ta
 | Minuta metryki, dodatkowej lokalizacji |$MetricsMinuteSecondaryTransactionsBlob <br/>$MetricsMinuteSecondaryTransactionsTable <br/>$MetricsMinuteSecondaryTransactionsQueue |Wszystkie wersje, w tym 2013-08-15. Musi być włączona replikacja geograficznie nadmiarowa dostęp do odczytu. |
 | Wydajność (tylko usługa Blob) |$MetricsCapacityBlob |Wszystkie wersje, w tym 2013-08-15. |
 
-Te tabele są tworzone automatycznie, gdy analityka magazynu jest włączona dla konta magazynu. Są one używane za pośrednictwem przestrzeni nazw konta magazynu, na przykład:`https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
+Te tabele są tworzone automatycznie, gdy analityka magazynu jest włączona dla konta magazynu. Są one używane za pośrednictwem przestrzeni nazw konta magazynu, na przykład: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`
 
 ### <a name="accessing-metrics-data"></a>Uzyskiwanie dostępu do danych metryk
 Wszystkie dane w tabelach metryki jest możliwy za pomocą interfejsów API usługi tabel, łącznie z interfejsów API architektury .NET dostarczany przez platformę Azure biblioteki zarządzanej. Administratorem konta magazynu można odczytać i usuwania jednostek tabeli, ale nie można utworzyć lub zaktualizować je.
@@ -177,7 +177,7 @@ Wszystkie żądania skierowane do konta usługi storage jest rozliczana lub niep
 
 Podczas przeglądania danych analizy magazynu, można użyć w tabelach w [operacje rejestrowane analityka magazynu i komunikaty o stanie](https://msdn.microsoft.com/library/azure/hh343260.aspx) tematu, aby ustalić, które żądania są rozliczeniowy. Następnie możesz porównać danych dzienników i metryki komunikatów o stanie aby zobaczyć, czy naliczono dla określonego żądania. Umożliwia także tabel w poprzedniej części tematu do badania dostępności usługi magazynu lub poszczególnych operacji interfejsu API.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 ### <a name="setting-up-storage-analytics"></a>Konfigurowanie magazynu analityka
 * [Monitor konta magazynu w portalu Azure](storage-monitor-storage-account.md)
 * [Włączanie i konfigurowanie analityka magazynu](https://msdn.microsoft.com/library/hh360996.aspx)

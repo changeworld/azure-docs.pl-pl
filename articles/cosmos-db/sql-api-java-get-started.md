@@ -1,6 +1,6 @@
 ---
-title: "Samouczek NoSQL: interfejsu API SQL dla usługi Azure rozwiązania Cosmos DB Java SDK | Dokumentacja firmy Microsoft"
-description: "Samouczek NoSQL, który powoduje utworzenie bazy danych w trybie online i aplikacji konsoli w języku Java za pomocą interfejsu API SQL dla bazy danych Azure rozwiązania Cosmos. Azure SQL jest bazą danych NoSQL dla formatu JSON."
+title: 'Samouczek NoSQL: interfejsu API SQL dla usługi Azure rozwiązania Cosmos DB Java SDK | Dokumentacja firmy Microsoft'
+description: Samouczek NoSQL, który powoduje utworzenie bazy danych w trybie online i aplikacji konsoli w języku Java za pomocą interfejsu API SQL dla bazy danych Azure rozwiązania Cosmos. Azure SQL jest bazą danych NoSQL dla formatu JSON.
 keywords: nosql tutorial, online database, java console application
 services: cosmos-db
 documentationcenter: Java
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.openlocfilehash: 9714234411e96074daae17b4711a52991768bd7b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 5052c3cdeabd5001c6d0144dc77401a9495ba887
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: tworzenie aplikacji konsoli Java interfejsu API SQL
 > [!div class="op_single_selector"]
@@ -31,8 +31,6 @@ ms.lasthandoff: 12/18/2017
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Samouczek NoSQL dla interfejsu API SQL dla Zapraszamy Azure rozwiązania Cosmos DB Java SDK! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.
 
@@ -190,7 +188,7 @@ Uruchomienie polecenia `mvn package` spowoduje pobranie najnowszej biblioteki Az
 
 Gratulacje! Pomyślnie ukończono ten samouczek NoSQL i utworzono działającą aplikację konsolową Java!
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Czy chcesz samouczek aplikacji sieci Web w języku Java? Zobacz [Build a web application with Java using Azure Cosmos DB](sql-api-java-application.md) (Tworzenie aplikacji internetowej w języku Java przy użyciu usługi Azure Cosmos DB).
 * Dowiedz się, jak [monitorować konto usługi Azure Cosmos DB](monitor-accounts.md).
 * Uruchom zapytania względem naszego przykładowego zestawu danych na [placu zabaw dla zapytań](https://www.documentdb.com/sql/demo).

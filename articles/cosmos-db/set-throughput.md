@@ -1,24 +1,24 @@
 ---
-title: "Przepływność udostępniania dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak ustawić udostępnionej przepływności dla containsers bazy danych Azure rozwiązania Cosmos, kolekcje, wykresów i tabel."
+title: Przepływność udostępniania dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ustawić udostępnionej przepływności dla containsers bazy danych Azure rozwiązania Cosmos, kolekcje, wykresów i tabel.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: f98def7f-f012-4592-be03-f6fa185e1b1e
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: afbb3392a4726ea067bf19c117792b866d9e79f3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b9ad94276287a5e46a9d3b3b9332547fba5627e9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Ustaw przepustowość dla kontenerów bazy danych Azure rozwiązania Cosmos
 
@@ -59,6 +59,8 @@ W poniższej tabeli wymieniono dostępne dla kontenerów przepływności:
 
 ## <a name="to-set-the-throughput-by-using-the-sql-api-for-net"></a>Aby ustawić przepływność przy użyciu interfejsu API SQL dla platformy .NET
 
+Poniższy fragment kodu pobiera bieżący przepływności i zmieni 500 RU/s. Dla przykładu kompletny kod, zobacz [CollectionManagement](https://github.com/Azure/azure-documentdb-dotnet/blob/95521ff51ade486bb899d6913880995beaff58ce/samples/code-samples/CollectionManagement/Program.cs#L188-L216) projektu w witrynie GitHub.
+
 ```csharp
 // Fetch the offer of the collection whose throughput needs to be updated
 Offer offer = client.CreateOfferQuery()
@@ -66,8 +68,8 @@ Offer offer = client.CreateOfferQuery()
     .AsEnumerable()
     .SingleOrDefault();
 
-// Set the throughput to the new value, for example 12,000 request units per second
-offer = new OfferV2(offer, 12000);
+// Set the throughput to the new value, for example 500 request units per second
+offer = new OfferV2(offer, 500);
 
 // Now persist these changes to the collection by replacing the original offer resource
 await client.ReplaceOfferAsync(offer);
@@ -77,7 +79,7 @@ await client.ReplaceOfferAsync(offer);
 
 ## <a name="to-set-the-throughput-by-using-the-sql-api-for-java"></a>Aby ustawić przepływność przy użyciu interfejsu API SQL dla języka Java
 
-Ta Wstawka kodu jest pobierana z pliku OfferCrudSamples.java w [azure-documentdb-java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) repozytorium. 
+Poniższy fragment kodu pobiera bieżący przepływności i zmieni 500 RU/s. Kompletny kod przykładowy, [OfferCrudSamples.java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) pliku w witrynie GitHub. 
 
 ```Java
 // find offer associated with this collection
@@ -90,7 +92,7 @@ assertThat(offer.getString("offerResourceId"), equalTo(collectionResourceId));
 assertThat(offer.getContent().getInt("offerThroughput"), equalTo(throughput));
 
 // update the offer
-int newThroughput = 10300;
+int newThroughput = 500;
 offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```

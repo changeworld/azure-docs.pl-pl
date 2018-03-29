@@ -1,11 +1,11 @@
 ---
-title: "Magazyn danych SQL języka Transact-SQL | Dokumentacja firmy Microsoft"
-description: "Łącza do zawartości referencyjnej dla tematy języka Transact-SQL używane przez usługi SQL Data Warehouse."
+title: Magazyn danych SQL języka Transact-SQL | Dokumentacja firmy Microsoft
+description: Łącza do zawartości referencyjnej dla tematy języka Transact-SQL używane przez usługi SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 10/31/2016
+ms.date: 03/22/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2148f6087a43f9cec252df4ef2b97b4a7afcb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="transact-sql-topics"></a>Tematy dotyczące języka Transact-SQL
 ## <a name="data-definition-language-ddl-statements"></a>Instrukcje danych Definition Language (DDL)
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
 * [UTWÓRZ INDEKS MAGAZYNU KOLUMN](https://msdn.microsoft.com/library/gg492153.aspx)
 * [CREATE DATABASE](https://msdn.microsoft.com/library/mt204021.aspx)
-* [UTWÓRZ BAZĘ DANYCH O ZAKRESIE POŚWIADCZEŃ](https://msdn.microsoft.com/library/mt270260.aspx)
+* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 * [TWORZENIE ZEWNĘTRZNEGO ŹRÓDŁA DANYCH](https://msdn.microsoft.com/library/dn935022.aspx)
 * [CREATE EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/dn935026.aspx)
 * [TWORZENIE TABELI ZEWNĘTRZNEJ](https://msdn.microsoft.com/library/dn935021.aspx)
@@ -51,26 +51,26 @@ ms.lasthandoff: 10/11/2017
 * [TABELĘ](https://msdn.microsoft.com/library/ms173790.aspx)
 * [USUNĄĆ SCHEMATU](https://msdn.microsoft.com/library/ms186751.aspx)
 * [WIDOK LISTY](https://msdn.microsoft.com/library/ms173492.aspx)
-* [ZMIEŃ NAZWĘ](https://msdn.microsoft.com/library/mt631611.aspx)
+* [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
 ## <a name="data-manipulation-language-dml-statements"></a>Instrukcji języka DML (Manipulation) danych
-* [USUŃ](https://msdn.microsoft.com/library/ms189835.aspx)
+* [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
 * [AKTUALIZACJA](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Poleceń konsoli bazy danych
-* [POLECENIE DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
+* [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [POLECENIE DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
-* [POLECENIE DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [POLECENIE DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [POLECENIE DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
+* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Instrukcje zapytania
-* [WYBIERZ](https://msdn.microsoft.com/library/ms189499.aspx)
+* [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
 * [Z common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [Z wyjątkiem i INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 * [WYJAŚNIĆ](https://msdn.microsoft.com/library/mt631615.aspx)
@@ -112,13 +112,13 @@ ms.lasthandoff: 10/11/2017
 * [USUŃ UŻYTKOWNIKA](https://msdn.microsoft.com/library/ms189438.aspx)
 * [OTWÓRZ KLUCZ GŁÓWNY](https://msdn.microsoft.com/library/ms174433.aspx)
 
-## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej przykładów TSQL, zobacz [Omówienie usługi SQL Data Warehouse][SQL Data Warehouse reference overview].
+## <a name="next-steps"></a>Kolejne kroki
+Aby więcej TSQL informacje, zobacz [elementy języka T-SQL SQL magazynu danych](sql-data-warehouse-reference-tsql-language-elements.md).
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
+
 
 <!--MSDN references-->
 

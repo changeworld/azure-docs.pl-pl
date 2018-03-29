@@ -1,11 +1,11 @@
 ---
-title: "Zaktualizuj agenta systemu Linux platformy Azure z usługi GitHub | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zaktualizować agenta systemu Linux platformy Azure dla maszyny Wirtualnej systemu Linux na platformie Azure"
+title: Zaktualizuj agenta systemu Linux platformy Azure z usługi GitHub | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zaktualizować agenta systemu Linux platformy Azure dla maszyny Wirtualnej systemu Linux na platformie Azure
 services: virtual-machines-linux
-documentationcenter: 
-author: SuperScottz
-manager: timlt
-editor: 
+documentationcenter: ''
+author: danielsollondon
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: mingzhan
-ms.openlocfilehash: 62e365c46d48285b2c03493debff86508b94348a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: danis
+ms.openlocfilehash: ed5bea98bc9b4849436ff5fafc90f85c99d582aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Jak zaktualizować agenta systemu Linux platformy Azure na maszynie Wirtualnej
 
@@ -120,7 +120,7 @@ Ta wersja Debian nie ma wersji > = 2.0.16, dlatego aktualizacje automatyczne jes
 #### <a name="check-your-current-package-version"></a>Sprawdź bieżącą wersję pakietu
 
 ```bash
-apt list --installed | grep walinuxagent
+apt list --installed | grep waagent
 ```
 
 #### <a name="update-package-cache"></a>Pamięć podręczną pakietów aktualizacji
@@ -389,7 +389,7 @@ Następnie wpisz:
 sudo yum update WALinuxAgent
 ```
 
-Zazwyczaj jest to wszystkie wymagane, ale jeśli jakiegoś powodu musisz zainstalować go z https://github.com bezpośrednio, wykonaj następujące kroki.
+Zazwyczaj jest to wszystko, czego potrzebujesz, ale jeśli niektóre przyczyny, należy zainstalować go z https://github.com bezpośrednio, wykonaj następujące kroki.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Zaktualizuj agenta systemu Linux, gdy pakiet agenta, nie istnieje dla dystrybucji

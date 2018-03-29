@@ -1,11 +1,11 @@
 ---
-title: "Azure awarii usługi Service Bus geograficznie | Dokumentacja firmy Microsoft"
-description: "Jak używać regionów geograficznych do trybu failover i odzyskiwania po awarii w Azure Service Bus"
+title: Azure awarii usługi Service Bus geograficznie | Dokumentacja firmy Microsoft
+description: Jak używać regionów geograficznych do trybu failover i odzyskiwania po awarii w Azure Service Bus
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: christianwolf42
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 9cbeff82f7a237c813ea91cd83e9273cad934991
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure awarii usługi Service Bus Geo
 
@@ -86,12 +86,13 @@ Jeśli masz scenariusz, w którym nie można zmienić połączeń producenci i k
 
 ## <a name="samples"></a>Przykłady
 
-[Przykłady z witryny GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2) pokazują, jak skonfigurować i zainicjuj tryb failover. Te przykłady pokazują następujące kwestie:
+[Przykłady z witryny GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) pokazują, jak skonfigurować i zainicjuj tryb failover. Te przykłady pokazują następujące kwestie:
 
-- Ustawienia wymagane w usłudze Azure Active Directory do użycia usługi Azure Resource Manager z usługą Service Bus. 
-- Kroki wymagane do wykonania w przykładowym kodzie. 
-- Wysyłanie i odbieranie od bieżącej podstawowej przestrzeni nazw. 
+- Przykładowe .net i ustawienia wymagane w usłudze Azure Active Directory do użycia usługi Azure Resource Manager z usługą Service Bus można skonfigurować i włączyć odzyskiwanie po awarii z magazynu geograficznie.
+- Kroki wymagane do wykonania w przykładowym kodzie.
 - Jak używać istniejącej przestrzeni nazw jako alias.
+- Kroki, aby można również włączyć odzyskiwania po awarii geograficznie za pomocą programu PowerShell lub interfejsu wiersza polecenia.
+- [Wysyłanie i odbieranie](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) z bieżącej podstawowej lub dodatkowej przestrzeni nazw za pomocą aliasu.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 

@@ -1,19 +1,19 @@
 ---
-title: "Budowy modułu w usłudze Azure IoT krawędzi | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, co jest umieszczane w modułach Azure IoT krawędzi i jak można ponownie"
+title: Budowy modułu w usłudze Azure IoT krawędzi | Dokumentacja firmy Microsoft
+description: Dowiedz się, co jest umieszczane w modułach Azure IoT krawędzi i jak można ponownie
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4b59a715919e38e68c3b7518932617e9950940e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Skonfigurowane, zrozumieć, jak moduły krawędzi IoT mogą być używane i ponownie - preview
 
@@ -134,32 +134,21 @@ Każdy wymaga źródłowy i odbiorczy, ale ten warunek jest opcjonalny fragment,
 ### <a name="condition"></a>Warunek
 Warunek jest opcjonalne w deklaracji trasy. Jeśli chcesz przekazać wszystkie komunikaty z sink do źródła, po prostu Opuść **gdzie** klauzuli całkowicie. Lub użyć [język zapytań Centrum IoT] [ lnk-iothub-query] do filtrowania niektórych komunikatów lub typów komunikatów, które spełniają warunek.
 
-Azure IoT wiadomości są w formacie JSON i zawsze mieć co najmniej **treści** parametru. Na przykład:
+Komunikaty, które upłynąć między modułami w programie IoT Edge sformatowane taki sam, jak komunikaty, które są przekazywane między urządzeniami a Centrum IoT Azure. Wszystkie komunikaty są w formacie JSON i mieć **systemProperties**, **parametr appProperties**, i **treści** parametrów. 
 
-```json
-"message": {
-    "body":{
-        "ambient":{
-            "temperature": 54.3421,
-            "humidity": 25
-        },
-        "machine":{
-            "status": "running",
-            "temperature": 62.2214
-        }
-    },
-    "appProperties":{
-        ...
-    }
-}
+Może tworzyć kwerendy wokół wszystkie trzy parametry przy użyciu następującej składni: 
+
+* Właściwości systemu: `$<propertyName>` lub `{$<propertyName>}`
+* Właściwości aplikacji: `<propertyName>`
+* Właściwości treści: `$body.<propertyName>` 
+
+Przykłady dotyczące tworzenia zapytań dotyczących właściwości wiadomości, zobacz [komunikat urządzenia do chmury wyrażenia zapytań tras](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+
+Przykładem jest specyficzna dla krawędzi IoT jest można filtrować komunikaty, które dotarły urządzenie bramy z urządzenia typu liść. Komunikaty, które pochodzą z modułów zawiera właściwość systemu o nazwie **connectionModuleId**. Dlatego do przesyłania wiadomości z urządzeń liścia bezpośrednio do Centrum IoT, użyć Następująca trasa wykluczyć modułu:
+
+```sql
+FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
-
-Biorąc pod uwagę tego przykładowego komunikatu, istnieje wiele warunków, które mogą być definiowane, takich jak:
-* `WHERE $body.machine.status != "running"`
-* `WHERE $body.ambient.temperature <= 60 AND $body.machine.temperature >= 60`
-
-Warunek można również posortować typów komunikatów, na przykład bramy, która chce trasy wiadomości, które pochodzą urządzenia typu liść. Komunikaty, które pochodzą z modułów zawierać określoną właściwość o nazwie **connectionModuleId**. Dlatego do przesyłania wiadomości z urządzeń liścia bezpośrednio do Centrum IoT, użyć Następująca trasa wykluczyć modułu:
-* `FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream`
 
 ### <a name="sink"></a>Ujście
 Obiekt sink definiuje, którego wysyłane są komunikaty. Może być jedną z następujących wartości:

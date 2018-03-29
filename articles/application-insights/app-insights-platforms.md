@@ -1,8 +1,8 @@
 ---
-title: "Application Insights: języki, platformy i integracje | Microsoft Docs"
-description: "Języki, platformy i integracje dostępne dla usługi Application Insights"
+title: 'Application Insights: języki, platformy i integracje | Microsoft Docs'
+description: Języki, platformy i integracje dostępne dla usługi Application Insights
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: OlegAnaniev-MSFT
 manager: carmonm
 ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: mbullwin
-ms.openlocfilehash: fe8f826ca3e0f44cba3d0b246afb01b262dc330b
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: e172b04144afec04579de92b2393587635d3fecf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Rozszerzenie Developer Analytics: języki, platformy i integracje
 Poniższe elementy to znane implementacje usługi [Application Insights](app-insights-overview.md), w tym niektóre innych firm.
@@ -62,9 +62,9 @@ Poniższe elementy to znane implementacje usługi [Application Insights](app-ins
 * [Log4Net, NLog lub System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 * [Java, Log4J lub Logback](app-insights-java-trace-logs.md)
 * [Semantic Logging (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) — integruje się z usługą [Semantic Logging Application Block](https://msdn.microsoft.com/library/dn440729.aspx)
-* [Testowanie obciążenia w chmurze](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
+* [Testowanie obciążeniowe w chmurze](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [Dodatek LogStash](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [OMS Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
+* [Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 * [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
 
 ## <a name="content-management-systems"></a>Systemy zarządzania zawartością

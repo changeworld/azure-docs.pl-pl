@@ -1,8 +1,8 @@
 ---
-title: "Przykładowe dane w programie SQL Server na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Przykładowe dane w programie SQL Server na platformie Azure"
+title: Przykładowe dane w programie SQL Server na platformie Azure | Dokumentacja firmy Microsoft
+description: Przykładowe dane w programie SQL Server na platformie Azure
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgeonlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: garye;bradsev
-ms.openlocfilehash: a82e4703f68271d6d10719e6be8465efa9b71a79
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: bradsev
+ms.openlocfilehash: e854f35cb68ddf0bc93e7c7959d14ef79a346c6e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="heading"></a>Przykładowe dane w programie SQL Server na platformie Azure
 W tym artykule pokazano, jak przykładowe dane przechowywane w programie SQL Server na platformie Azure przy użyciu SQL lub języka programowania Python. Ponadto jak przenieść próbki danych do usługi Azure Machine Learning przez zapisanie go w pliku, przekazać go do obiektów blob platformy Azure i odczytywania go do usługi Azure Machine Learning Studio.

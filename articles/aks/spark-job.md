@@ -1,6 +1,6 @@
 ---
-title: "Uruchom zadanie Apache Spark z usługi kontenera platformy Azure (AKS)"
-description: "Uruchom zadanie Apache Spark za pomocą usługi kontenera platformy Azure (AKS)"
+title: Uruchom zadanie Apache Spark z usługi kontenera platformy Azure (AKS)
+description: Uruchom zadanie Apache Spark za pomocą usługi kontenera platformy Azure (AKS)
 services: container-service
 author: lenadroid
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 9d57f572ba159191f5b634b5ea604563ac2f7801
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3991312d7f7609bb0a206ccc0ecc67123ebec469
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Uruchomionych zadań Apache Spark na AKS
 
@@ -33,7 +33,7 @@ Aby wykonać kroki opisane w tym artykule, potrzebne są następujące elementy.
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
 Platforma Spark służy do przetwarzania danych na dużą skalę i wymaga się, że węzły Kubernetes mają rozmiar w celu spełnienia wymagań zasobów Spark. Firma Microsoft zaleca minimalny rozmiar `Standard_D3_v2` dla usługi kontenera platformy Azure (AKS) węzły.
- 
+
 Jeśli potrzebujesz AKS klastra, który spełnia minimalne zalecenie, uruchom następujące polecenia.
 
 Utwórz grupę zasobów klastra.
@@ -58,12 +58,12 @@ Jeśli używasz rejestru kontenera platformy Azure (ACR) do przechowywania obraz
 
 ## <a name="build-the-spark-source"></a>Tworzenie źródła Spark
 
-Przed uruchomieniem Spark zadań w klastrze AKS, należy skompilować Spark kodu źródłowego i pakiet go w obrazie kontenera. Źródło Spark zawiera skryptów, które mogą służyć do ukończenia tego procesu. 
+Przed uruchomieniem Spark zadań w klastrze AKS, należy skompilować Spark kodu źródłowego i pakiet go w obrazie kontenera. Źródło Spark zawiera skryptów, które mogą służyć do ukończenia tego procesu.
 
 Klonowanie repozytorium Spark projektu na platformie programistycznej.
 
 ```bash
-git clone https://github.com/apache/spark
+git clone -b branch-2.3 https://github.com/apache/spark
 ```
 
 Zmień do katalogu sklonowanego repozytorium i Zapisz ścieżki źródła Spark do zmiennej.
@@ -73,7 +73,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Jeśli masz wiele zainstalowanych wersji JDK, ustaw `JAVA_HOME` do użycia w wersji 8 dla bieżącej sesji. 
+Jeśli masz wiele zainstalowanych wersji JDK, ustaw `JAVA_HOME` do użycia w wersji 8 dla bieżącej sesji.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -85,16 +85,21 @@ Uruchom następujące polecenie, aby kompilacji kodu źródłowego z obsługą K
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Poniższe polecenie tworzy Spark kontener obrazów i wypchnięcia jej do rejestru obrazu kontenera. Zastąp wartość `registry.example.com` nazwą rejestru kontenerów. Jeśli przy użyciu Centrum Docker, ta wartość jest nazwa rejestru. Jeśli za pomocą rejestru kontenera platformy Azure (ACR), ta wartość jest nazwa ACR logowania serwera.
+Następujące polecenia Utwórz obraz kontenera Spark i wypchnąć go do rejestru obrazu kontenera. Zastąp `registry.example.com` o nazwie rejestru kontenera i `v1` znacznikiem wolisz korzystać. Jeśli przy użyciu Centrum Docker, ta wartość jest nazwa rejestru. Jeśli za pomocą rejestru kontenera platformy Azure (ACR), ta wartość jest nazwa ACR logowania serwera.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 build
+REGISTRY_NAME=registry.example.com
+REGISTRY_TAG=v1
+```
+
+```bash
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
 Wypchnij obrazu kontenera do rejestru obrazu kontenera.
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 push
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 ```
 
 ## <a name="prepare-a-spark-job"></a>Przygotowanie zadania Spark
@@ -196,18 +201,10 @@ Zmienna `jarUrl` zawiera teraz publicznie dostępnej ścieżki do pliku jar.
 
 ## <a name="submit-a-spark-job"></a>Prześlij zadanie Spark
 
-Przed przesłaniem zadania Spark, należy adres serwera Kubernetes interfejsu API. Użyj `kubectl cluster-info` polecenie, aby pobrać ten adres.
-
-Wykrywania adresu URL, w którym działa serwer Kubernetes interfejsu API w.
+Uruchom serwer proxy kube w oddzielnej wiersza polecenia z następującym kodem.
 
 ```bash
-kubectl cluster-info
-```
-
-Zanotuj adres i port.
-
-```bash
-Kubernetes master is running at https://<your api server>:443
+kubectl proxy
 ```
 
 Przejdź z powrotem do katalogu głównego repozytorium Spark.
@@ -216,18 +213,16 @@ Przejdź z powrotem do katalogu głównego repozytorium Spark.
 cd $sparkdir
 ```
 
-Przedstawia zadania za pomocą polecenia `spark-submit`. 
-
-Zastąp wartość `<kubernetes-api-server>` Twojego adresu serwera interfejsu API i numer portu. Zastąp `<spark-image>` o nazwie obrazu kontenera w formacie `<your container registry name>/spark:<tag>`.
+Przedstawia zadania za pomocą polecenia `spark-submit`.
 
 ```bash
 ./bin/spark-submit \
-  --master k8s://https://<k8s-apiserver-host>:<k8s-apiserver-port> \
+  --master k8s://http://127.0.0.1:8001 \
   --deploy-mode cluster \
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
-  --conf spark.kubernetes.container.image=<spark-image> \
+  --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
 
@@ -315,6 +310,9 @@ Podczas wykonywania zadania, zamiast wskazujący jar zdalnego adresu URL, `local
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
+
+> [!WARNING]
+> Z Spark [dokumentacji][spark-docs]: "harmonogramu Kubernetes jest obecnie eksperymentalne. W przyszłych wersjach mogą istnieć behawioralnej zmian dotyczących konfiguracji, kontener obrazów i punkty wejścia".
 
 ## <a name="next-steps"></a>Kolejne kroki
 

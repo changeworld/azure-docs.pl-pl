@@ -1,8 +1,8 @@
 ---
-title: "Co to jest proces nauki danych zespołu? | Microsoft Docs"
-description: "Udostępnia metodologii nauki danych w celu tworzenia rozwiązań analizy predykcyjnej i inteligentnego aplikacji."
+title: Co to jest zespołowe przetwarzanie danych dla celów naukowych? | Microsoft Docs
+description: Udostępnia metodologii nauki danych w celu tworzenia rozwiązań analizy predykcyjnej i inteligentnego aplikacji.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: bradsev;
-ms.openlocfilehash: 75e170f29f9a6abeeb3393e43e6a4c355749044d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: bradsev
+ms.openlocfilehash: f7c081dcd74164f4b1f054f5a65f2ff6aaabebd7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="what-is-the-team-data-science-process"></a>Co to jest proces nauki danych zespołu?
+# <a name="what-is-the-team-data-science-process"></a>Co to jest zespołowe przetwarzanie danych dla celów naukowych?
 
-Proces nauki danych zespołu (TDSP) jest metodologia nauki agile, iteracji danych do tworzenia rozwiązań analizy predykcyjnej i inteligentnego aplikacji wydajnie. TDSP pomaga w zwiększeniu współpraca z zespołem i learning. Zawiera ona destylacji najlepszych rozwiązań i struktury firmy Microsoft i innych użytkowników w branży ułatwiające pomyślne zaimplementowanie inicjatyw nauki danych. Celem jest pomoc firmy, w pełni wykorzystać zalety programu analytics.
+Proces nauki danych zespołu (TDSP) jest metodologia nauki agile, iteracji danych do tworzenia rozwiązań analizy predykcyjnej i inteligentnego aplikacji wydajnie. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.
 
 Ten artykuł zawiera omówienie TDSP oraz jej główne składniki. Udostępniamy ogólny opis tutaj procesu, który może być zaimplementowany przy użyciu różnych narzędzi. Bardziej szczegółowy opis zadania projektu i role związane z cyklem życia procesu znajduje się w dodatkowych powiązanych tematach. Dostępne są również wskazówki dotyczące implementowania TDSP przy użyciu określonego zestawu narzędzi firmy Microsoft i infrastruktury, używaną do zaimplementowania TDSP w naszymi zespołami.
 
@@ -96,7 +96,7 @@ Infrastruktura analizy i Magazyn może być w chmurze lub lokalnie. Jest to, gdz
 
 Oto przykład zespołu działa na wielu projektów i udostępniania różnych składników infrastruktury analytics chmury.
 
-![TDSP infrastruktury](./media/overview/tdsp-analytics-infra.png)
+![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Narzędzia i narzędzia umożliwiające wykonanie projektu
@@ -104,6 +104,6 @@ Oto przykład zespołu działa na wielu projektów i udostępniania różnych sk
 Wprowadzenie do procesów w większości organizacji jest trudne. Implementowanie pomocy proces i cyklem życia analizy danych niższych bariery w i zwiększyć zgodność przyjęcia narzędzia. TDSP zapewnia początkowego zestawu narzędzi i skryptów, aby szybko rozpocząć przyjęcia TDSP w zespole. Pomaga również zautomatyzować niektóre typowe zadania w cyklu życia analizy danych, takich jak Eksploracja danych i modelowanie linii bazowej. Brak dobrze zdefiniowanej strukturze podane dla użytkowników indywidualnych do ich współtworzenia z udostępnionego narzędzi do ich zespołu udostępnionego kodu repozytorium. Następnie można użyć tych zasobów przez inne projekty, w obrębie zespołu lub organizacji. TDSP plany włączyć udział narzędzi całej społeczności. Narzędzia TDSP można sklonować z [Github](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [W procesie nauki danych zespołu: Ról i zadań](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) opisano role klucza pracowników i ich skojarzonych zadań dla zespołu nauki danych, która normalizuje w tym procesie. 
