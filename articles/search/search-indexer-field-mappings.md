@@ -1,11 +1,11 @@
 ---
-title: "Mapowania pól w indeksatory usługi Azure Search"
-description: "Konfigurowanie usługi Azure Search mapowań pól indeksatora na różnice w nazwy pól i reprezentacji danych"
+title: Mapowania pól w indeksatory usługi Azure Search
+description: Konfigurowanie usługi Azure Search mapowań pól indeksatora na różnice w nazwy pól i reprezentacji danych
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 0325a4de-0190-4dd5-a64d-4e56601d973b
 ms.service: search
 ms.devlang: rest-api
@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4d6960e540641405b879064a8064d45521dc04f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mapowania pól w indeksatory usługi Azure Search
 Podczas korzystania z usługi Azure Search indeksatorów, czasami znajduje się samodzielnie w sytuacji, gdy dane wejściowe dość nie pasuje do schematu indeksu docelowego. W takich przypadkach można użyć **mapowań pól** do przekształcenia danych do żądanego kształtu.
@@ -60,7 +60,7 @@ Indeksator może mieć wiele mapowań pól. Na przykład, w tym jak użytkownik 
 
 "fieldMappings" : [
     { "sourceFieldName" : "text", "targetFieldName" : "textStandardEnglishAnalyzer" },
-    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" },
+    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" }
 ]
 ```
 
@@ -151,7 +151,7 @@ W poniższej tabeli porównano kodowania base64 różnych ciągu `00>00?00`. Aby
 | Base64 z dopełnienia | `MDA+MDA/MDA=` | Znaki bezpieczny adres URL, a następnie usuń dopełnienia | Znaki standardowe base64, a następnie dodaj dopełnienia |
 | Base64 bez dopełnienia | `MDA+MDA/MDA` | Znaki bezpiecznego adresu URL | Użyj standardowych base64 znaków |
 | Bezpieczny adres URL base64 z dopełnienia | `MDA-MDA_MDA=` | Usuń dopełnienia | Dodaj dopełnienia |
-| Bezpieczny adres URL base64 bez dopełnienia | `MDA-MDA_MDA` | Brak | Brak |
+| Bezpieczny adres URL base64 bez dopełnienia | `MDA-MDA_MDA` | Brak | None |
 
 <a name="extractTokenAtPositionFunction"></a>
 

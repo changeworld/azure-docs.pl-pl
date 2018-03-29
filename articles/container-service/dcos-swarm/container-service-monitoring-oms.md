@@ -1,6 +1,6 @@
 ---
-title: "Monitor klastra Azure DC/OS - operacji zarządzania"
-description: "Monitorowanie klastra usługi kontenera platformy Azure DC/OS z programu Microsoft Operations Management Suite."
+title: Monitor klastra Azure DC/OS - operacji zarządzania
+description: Monitorowanie klastra usługi kontenera platformy Azure DC/OS z analizy dzienników.
 services: container-service
 author: keikhara
 manager: timlt
@@ -9,45 +9,46 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: a675f0b57ed9e5d515cfa79a3a841e0f133fff6f
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: ba76f8480dedb37326505f7ed756eb51a41ee0fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>Monitor klastra usługi kontenera platformy Azure DC/OS w usłudze Operations Management Suite
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Monitor klastra usługi kontenera platformy Azure DC/OS z analizy dzienników
 
-Pakiet Microsoft Operations Management Suite (OMS) to oparte na chmurze rozwiązanie firmy Microsoft do zarządzania systemami IT, które ułatwia zarządzanie infrastrukturą lokalną i chmurową oraz jej ochronę. Kontener rozwiązanie to rozwiązanie w OMS analizy dzienników, które ułatwia przeglądanie spisu kontenera, wydajności i dzienniki w jednej lokalizacji. Można inspekcji, rozwiązywanie problemów z kontenerów, wyświetlając dzienniki w centralnej lokalizacji oraz znaleźć zakłócenia, wykorzystywanie nadmiarowe kontenera na hoście.
+Analiza dzienników jest firmy Microsoft w chmurze IT rozwiązania do zarządzania ułatwiające zarządzanie i ochrona lokalnej infrastruktury w chmurze. Kontener rozwiązanie to rozwiązanie w analizy dzienników, które ułatwia przeglądanie spisu kontenera, wydajności i dzienniki w jednej lokalizacji. Można inspekcji, rozwiązywanie problemów z kontenerów, wyświetlając dzienniki w centralnej lokalizacji oraz znaleźć zakłócenia, wykorzystywanie nadmiarowe kontenera na hoście.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
 Aby uzyskać więcej informacji o rozwiązaniu kontenera, zapoznaj się [analizy dzienników rozwiązania kontenera](../../log-analytics/log-analytics-containers.md).
 
-## <a name="setting-up-oms-from-the-dcos-universe"></a>Konfigurowanie OMS z universe DC/OS
+## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Konfigurowanie analizy dzienników z universe DC/OS
 
 
 W tym artykule założono, że skonfigurowano DC/OS i wdrożeniu aplikacji kontenera sieci web proste w klastrze.
 
 ### <a name="pre-requisite"></a>Wymagania wstępne
 - [Subskrypcja usługi Microsoft Azure](https://azure.microsoft.com/free/) — można uzyskać tę bezpłatnie.  
-- Instalator obszar roboczy Microsoft OMS — zobacz "Krok 3" poniżej
+- Analiza obszaru roboczego ustawienia dziennika — zobacz "Krok 3" poniżej
 - [Interfejs wiersza polecenia DC/OS](https://dcos.io/docs/1.8/usage/cli/install/) zainstalowane.
 
 1. Na pulpicie nawigacyjnym DC/OS kliknij Universe i wyszukaj "OMS", jak pokazano poniżej.
 
 ![](media/container-service-monitoring-oms/image2.png)
 
-2. Kliknij pozycję **Zainstaluj**. Zobaczysz punktu obecności się z informacjami o wersji OMS i **zainstaluj pakiet** lub **instalacji zaawansowanym** przycisku. Po kliknięciu **zaawansowane instalacji**, która prowadzi do **OMS określonej konfiguracji właściwości** strony.
+2. Kliknij pozycję **Zainstaluj**. Zobaczysz punktu obecności się z informacjami o wersji i **zainstaluj pakiet** lub **instalacji zaawansowanym** przycisku. Po kliknięciu **zaawansowane instalacji**, która prowadzi do **OMS określonej konfiguracji właściwości** strony.
 
 ![](media/container-service-monitoring-oms/image3.png)
 
 ![](media/container-service-monitoring-oms/image4.png)
 
-3. W tym miejscu, użytkownik zostanie poproszony o podanie `wsid` (identyfikator obszaru roboczego OMS) i `wskey` (OMS klucz podstawowy identyfikator obszaru roboczego). Uzyskanie zarówno `wsid` i `wskey` musisz utworzyć konto OMS w <https://mms.microsoft.com>. Wykonaj kroki, aby utworzyć konto. Po zakończeniu tworzenia konta, musisz uzyskać Twoje `wsid` i `wskey` , klikając **ustawienia**, następnie **połączonych źródeł**, a następnie **serwerówzsystememLinux**, jak pokazano poniżej.
+3. W tym miejscu, użytkownik zostanie poproszony o podanie `wsid` (identyfikator obszaru roboczego analizy dzienników) i `wskey` (klucz podstawowy identyfikator obszaru roboczego). Uzyskanie zarówno `wsid` i `wskey` musisz utworzyć konto w <https://mms.microsoft.com>.
+Wykonaj kroki, aby utworzyć konto. Po zakończeniu tworzenia konta, musisz uzyskać Twoje `wsid` i `wskey` , klikając **ustawienia**, następnie **połączonych źródeł**, a następnie **serwerówzsystememLinux**, jak pokazano poniżej.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-4. Wybierz numer możesz OMS wystąpienia mają, a następnie kliknij przycisk "Przejrzyj i zainstaluj". Zwykle ma mieć liczbę wystąpień OMS równa liczbie maszyny Wirtualnej w klastrze agenta. Agent pakietu OMS dla systemu Linux jest instaluje poszczególnych kontenerów na każdej maszynie Wirtualnej, które chcą zebrać informacje dotyczące monitorowania i rejestrowania informacji.
+4. Wybierz liczbę wystąpień mają, a następnie kliknij przycisk "Przejrzyj i zainstaluj". Zwykle ma mieć liczbą wystąpień równą liczbie maszyny Wirtualnej w klastrze agenta. Agent pakietu OMS dla systemu Linux jest instalowany jako poszczególnych kontenerów na każdej maszynie Wirtualnej, które chcą zebrać informacje dotyczące monitorowania i rejestrowania informacji.
 
 ## <a name="setting-up-a-simple-oms-dashboard"></a>Skonfigurowanie prostego pulpit nawigacyjny OMS
 
@@ -81,7 +82,7 @@ Po wybraniu obszaru roboczego kliknij **Utwórz**.
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-Aby uzyskać więcej informacji o rozwiązaniu kontenera OMS, zapoznaj się [analizy dzienników rozwiązania kontenera](../../log-analytics/log-analytics-containers.md).
+Aby uzyskać więcej informacji na temat rozwiązania kontenera analizy dziennika można znaleźć [analizy dzienników rozwiązania kontenera](../../log-analytics/log-analytics-containers.md).
 
 ### <a name="how-to-scale-oms-agent-with-acs-dcos"></a>Jak skalować Agent pakietu OMS z ACS DC/OS 
 
@@ -104,6 +105,6 @@ $ dcos package uninstall msoms
 ## <a name="let-us-know"></a>Daj nam znać!
 Co to działa? Czego brakuje? Co należy to być przydatne dla Ciebie? Daj nam znać w <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
- Teraz, kiedy OMS zostały skonfigurowane do monitorowania kontenerów,[Zobacz Pulpit nawigacyjny kontenera](../../log-analytics/log-analytics-containers.md).
+ Teraz, gdy zdefiniowano analizy dzienników do monitorowania kontenerów,[Zobacz Pulpit nawigacyjny kontenera](../../log-analytics/log-analytics-containers.md).

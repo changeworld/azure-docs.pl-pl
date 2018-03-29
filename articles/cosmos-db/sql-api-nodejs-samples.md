@@ -1,7 +1,7 @@
 ---
-title: "Przykłady środowiska node.js dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Znajdź przykłady Node.js w usłudze github dla typowych zadań w usłudze Azure DB rozwiązania Cosmos, w tym operacji CRUD."
-keywords: "Przykłady środowiska node.js"
+title: Przykłady środowiska node.js dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Znajdź przykłady Node.js w usłudze github dla typowych zadań w usłudze Azure DB rozwiązania Cosmos, w tym operacji CRUD.
+keywords: Przykłady środowiska node.js
 services: cosmos-db
 author: moderakh
 manager: jhubbard
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.openlocfilehash: 1df7008b1b8bf8bac116fd41b61c6bc954cf3254
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 2c9e623c5e99834bba6cc6ccd34e7c6993e1dc94
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Przykłady rozwiązania Cosmos Node.js bazy danych Azure
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 12/18/2017
 > * [Galeria próbki kodu platformy Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Przykładowe rozwiązania, wykonujących operacje CRUD i innymi typowymi operacjami zasobów bazy danych Azure rozwiązania Cosmos znajdują się w [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) repozytorium GitHub. Ten artykuł zawiera:
 

@@ -1,6 +1,6 @@
 ---
-title: "Omówienie usługi równoważenia obciążenia internetowy | Dokumentacja firmy Microsoft"
-description: "Omówienie internetowy modułu równoważenia obciążenia i ich funkcje. Jak usługi równoważenia obciążenia działa na platformie Azure przy użyciu maszyn wirtualnych i usług w chmurze."
+title: Omówienie usługi równoważenia obciążenia internetowy | Dokumentacja firmy Microsoft
+description: Omówienie internetowy modułu równoważenia obciążenia i ich funkcje. Jak usługi równoważenia obciążenia działa na platformie Azure przy użyciu maszyn wirtualnych i usług w chmurze.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5b9ffeadf6b1ffc4eaf4f49b85ba752c27da0e46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 14375dc7777a4f24db9f7246e6e99f26bd0eb858
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="internet-facing-load-balancer-overview"></a>Omówienie usługi równoważenia obciążenia połączonej Internet
 
@@ -38,11 +38,11 @@ Na poniższej ilustracji przedstawiono punktu końcowego równoważeniem obcią�
 
 Rysunek 1 — równoważeniem obciążenia punktu końcowego dla ruchu w sieci web
 
-Gdy klienci internetowi wysyłać żądania strony sieci web do publicznego adresu IP na porcie TCP 80 usługi w chmurze, usługi równoważenia obciążenia Azure dystrybuuje żądania między trzy maszyny wirtualne w zestawie równoważeniem obciążenia. Aby uzyskać więcej informacji dotyczących algorytmów równoważenia obciążenia, zobacz [strony Przegląd usługi równoważenia obciążenia](load-balancer-overview.md#load-balancer-features).
+Gdy klienci internetowi wysyłać żądania strony sieci web do publicznego adresu IP na porcie TCP 80 usługi w chmurze, usługi równoważenia obciążenia Azure dystrybuuje żądania między trzy maszyny wirtualne w zestawie równoważeniem obciążenia. Aby uzyskać więcej informacji dotyczących algorytmów równoważenia obciążenia, zobacz [strony Przegląd usługi równoważenia obciążenia podstawowych](load-balancer-overview.md#fundamental-load-balancer-features).
 
 Domyślnie usługa równoważenia obciążenia Azure dystrybuuje ruch sieciowy równomiernie wielu wystąpień maszyny wirtualnej. Można również skonfigurować koligację sesji, aby uzyskać więcej informacji, zobacz [tryb dystrybucji modułu równoważenia obciążenia](load-balancer-distribution-mode.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o [wewnętrznego modułu równoważenia obciążenia](load-balancer-internal-overview.md) aby lepiej zrozumieć, w których usługi równoważenia obciążenia jest lepszym rozwiązaniem dla danego wdrożenia w chmurze.
 

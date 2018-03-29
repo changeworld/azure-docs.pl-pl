@@ -1,8 +1,8 @@
 ---
 title: Azure Machine Learning wykrywania anomalii interfejsu API | Dokumentacja firmy Microsoft
-description: "Interfejs API wykrywania anomalii to przykład skompilowanej za pomocą programu Microsoft Azure Machine Learning wykrycia anomalii w czasie danych serii za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie."
+description: Interfejs API wykrywania anomalii to przykład skompilowanej za pomocą programu Microsoft Azure Machine Learning wykrycia anomalii w czasie danych serii za pomocą wartości liczbowe, które są równomiernie rozłożone w czasie.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: alokkirpal
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
-ms.author: alok;rotimpe
-ms.openlocfilehash: e2adfffa00a726fe2c452c25dd777ef054319b04
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.author: alok
+ms.openlocfilehash: e3f6f0de16fcb84872fe7b420eb0d54e86682f23
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Wykrywanie anomalii interfejsu API uczenia maszynowego
 ## <a name="overview"></a>Przegląd
@@ -120,13 +120,13 @@ Bardziej szczegółowe informacje dotyczące tych parametrów wejściowych jest 
 
 | Parametry wejściowe | Opis | Ustawienie domyślne | Typ | Prawidłowy zakres | Sugerowany zakres |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |liczba całkowita |10-2000 |Zależne od szeregu czasowego |
+| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |integer |10-2000 |Zależne od szeregu czasowego |
 | detectors.spikesdips | Czy można wykryć tylko wzrósł, tylko DIP i/lub |Oba |Wyliczenie |Oba nagłego, DIP |Oba |
-| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |liczba podwójnej precyzji |None |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| trenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |liczba podwójnej precyzji |None |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
+| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| trenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |integer |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
 
 ### <a name="output"></a>Dane wyjściowe
 Interfejs API uruchamia wszystkie detektory na podstawie czasu serii danych i zwraca wyniki anomalii i wskaźniki kolekcji binarne dla każdego punktu w czasie. W poniższej tabeli przedstawiono dane wyjściowe z interfejsu API. 
@@ -156,20 +156,20 @@ Bardziej szczegółowe informacje dotyczące tych parametrów wejściowych jest 
 
 | Parametry wejściowe | Opis | Ustawienie domyślne | Typ | Prawidłowy zakres | Sugerowany zakres |
 | --- | --- | --- | --- | --- | --- |
-| preprocess.aggregationInterval |Interwał agregacji w sekundach do agregowania danych wejściowych szeregów czasowych |0 (nie agregacji jest wykonywane) |liczba całkowita |0: w przeciwnym razie Pomiń agregacji, > 0 |5 minut do 1 dnia, zależne od szeregu czasowego |
+| preprocess.aggregationInterval |Interwał agregacji w sekundach do agregowania danych wejściowych szeregów czasowych |0 (nie agregacji jest wykonywane) |integer |0: w przeciwnym razie Pomiń agregacji, > 0 |5 minut do 1 dnia, zależne od szeregu czasowego |
 | preprocess.aggregationFunc |Funkcja używana do agregowania danych w określonym AggregationInterval |Średnia |Wyliczenie |Średnia, sum, długość |ND |
 | preprocess.replaceMissing |Wartości używane do przypisują brakujących danych |lkv (Ostatnia znana wartość) |Wyliczenie |zero, lkv, średnia |ND |
-| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |liczba całkowita |10-2000 |Zależne od szeregu czasowego |
+| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |integer |10-2000 |Zależne od szeregu czasowego |
 | detectors.spikesdips | Czy można wykryć tylko wzrósł, tylko DIP i/lub |Oba |Wyliczenie |Oba nagłego, DIP |Oba |
-| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |liczba podwójnej precyzji |None |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| postrenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |liczba podwójnej precyzji |None |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| negtrenddetector.sensitivity |Czułość dla detektora trend ujemna. |3.25 |liczba podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| seasonality.enable |Określa, czy ma być wykonywane sezonowości analizy |prawda |wartość logiczna |wartość true, false |Zależne od szeregu czasowego |
-| seasonality.numSeasonality |Maksymalna liczba cykli okresowe wykrycie |1 |liczba całkowita |1, 2 |1-2 |
+| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |O podwójnej precyzji |None |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| postrenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| negtrenddetector.sensitivity |Czułość dla detektora trend ujemna. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| seasonality.enable |Określa, czy ma być wykonywane sezonowości analizy |true |wartość logiczna |wartość true, false |Zależne od szeregu czasowego |
+| seasonality.numSeasonality |Maksymalna liczba cykli okresowe wykrycie |1 |integer |1, 2 |1-2 |
 | seasonality.transform |Czy okresach trend części należy usunąć przed zastosowaniem wykrywania anomalii (i) |deseason |Wyliczenie |Brak, deseason deseasontrend |ND |
-| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
+| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |integer |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
 
 ### <a name="output"></a>Dane wyjściowe
 Interfejs API uruchamia wszystkie detektory na podstawie czasu serii danych i zwraca wyniki anomalii i wskaźniki kolekcji binarne dla każdego punktu w czasie. W poniższej tabeli przedstawiono dane wyjściowe z interfejsu API. 

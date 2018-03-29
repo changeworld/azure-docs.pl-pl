@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/23/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 22fdb448dda1c824ae5e1fee6f9b2e7377680d6b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Utwórz zasady na podstawie atrybutów dynamiczne członkostwo w grupie w usłudze Azure Active Directory
 W usłudze Azure Active Directory (Azure AD) można utworzyć reguł zaawansowanych, aby włączyć złożonych opartych na atrybutach dynamiczne zarządzanie członkostwem w grupach. W tym artykule szczegółowo atrybuty i składni, aby utworzyć reguły członkostwa dynamicznych dla użytkowników lub urządzeń.
@@ -74,7 +74,7 @@ Pełna lista obsługiwanych parametrów i operatorami reguł wyrażenia znajduje
 Całkowita długość treści zaawansowane reguły nie może przekraczać 2048 znaków.
 
 > [!NOTE]
-> Operacje ciągu i wyrażeń regularnych nie jest uwzględniana. Można także przeprowadzić sprawdzenia wartości Null przy użyciu *null* jako stała, na przykład user.department - eq *null*.
+> Operacje ciągu i wyrażeń regularnych nie jest uwzględniana. Można także przeprowadzić sprawdzenia wartości null przy użyciu *null* jako stała, na przykład user.department - eq *$null*.
 > Ciągi zawierające oferty "powinny być zmienione znaczenie przy użyciu ' znaków, na przykład user.department - eq \`"Sprzedaż".
 
 ## <a name="supported-expression-rule-operators"></a>Obsługiwane wyrażenie operatorami reguł
@@ -160,32 +160,32 @@ Dozwolonych operatorów
 
 | Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
-| city |Dowolną wartość ciągu lub *wartości null* |(user.city - eq "value") |
-| Kraju |Dowolną wartość ciągu lub *wartości null* |(user.country - eq "value") |
-| companyName | Dowolną wartość ciągu lub *wartości null* | (user.companyName - eq "value") |
-| Dział |Dowolną wartość ciągu lub *wartości null* |(user.department - eq "value") |
+| city |Dowolną wartość ciągu lub *$null* |(user.city - eq "value") |
+| Kraju |Dowolną wartość ciągu lub *$null* |(user.country - eq "value") |
+| companyName | Dowolną wartość ciągu lub *$null* | (user.companyName - eq "value") |
+| Dział |Dowolną wartość ciągu lub *$null* |(user.department - eq "value") |
 | Nazwa wyświetlana |Dowolną wartością ciągu |(user.displayName - eq "value") |
-| Identyfikator pracownika |Dowolną wartością ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
-| facsimileTelephoneNumber |Dowolną wartość ciągu lub *wartości null* |(user.facsimileTelephoneNumber - eq "value") |
-| givenName |Dowolną wartość ciągu lub *wartości null* |(user.givenName - eq "value") |
-| jobTitle |Dowolną wartość ciągu lub *wartości null* |(user.jobTitle - eq "value") |
-| Poczty |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
+| Identyfikator pracownika |Dowolną wartością ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *$null*) |
+| facsimileTelephoneNumber |Dowolną wartość ciągu lub *$null* |(user.facsimileTelephoneNumber - eq "value") |
+| givenName |Dowolną wartość ciągu lub *$null* |(user.givenName - eq "value") |
+| jobTitle |Dowolną wartość ciągu lub *$null* |(user.jobTitle - eq "value") |
+| Poczty |Dowolną wartość ciągu lub *$null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
 | mailNickName |Dowolną wartość ciągu (poczty alias użytkownika) |(user.mailNickName - eq "value") |
-| Telefon komórkowy |Dowolną wartość ciągu lub *wartości null* |(user.mobile - eq "value") |
+| Telefon komórkowy |Dowolną wartość ciągu lub *$null* |(user.mobile - eq "value") |
 | Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokalny identyfikator zabezpieczeń (SID) dla użytkowników, którzy zostały zsynchronizowane z lokalnymi do chmury. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Brak DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Dowolną wartość ciągu lub *wartości null* |(user.physicalDeliveryOfficeName - eq "value") |
-| postalCode |Dowolną wartość ciągu lub *wartości null* |(user.postalCode - eq "value") |
+| physicalDeliveryOfficeName |Dowolną wartość ciągu lub *$null* |(user.physicalDeliveryOfficeName - eq "value") |
+| postalCode |Dowolną wartość ciągu lub *$null* |(user.postalCode - eq "value") |
 | preferredLanguage |Kod ISO 639-1 |(user.preferredLanguage - eq "pl pl") |
-| sipProxyAddress |Dowolną wartość ciągu lub *wartości null* |(user.sipProxyAddress - eq "value") |
-| state |Dowolną wartość ciągu lub *wartości null* |(user.state - eq "value") |
-| streetAddress |Dowolną wartość ciągu lub *wartości null* |(user.streetAddress - eq "value") |
-| surname |Dowolną wartość ciągu lub *wartości null* |(user.surname - eq "value") |
-| TelephoneNumber |Dowolną wartość ciągu lub *wartości null* |(user.telephoneNumber - eq "value") |
+| sipProxyAddress |Dowolną wartość ciągu lub *$null* |(user.sipProxyAddress - eq "value") |
+| state |Dowolną wartość ciągu lub *$null* |(user.state - eq "value") |
+| streetAddress |Dowolną wartość ciągu lub *$null* |(user.streetAddress - eq "value") |
+| surname |Dowolną wartość ciągu lub *$null* |(user.surname - eq "value") |
+| TelephoneNumber |Dowolną wartość ciągu lub *$null* |(user.telephoneNumber - eq "value") |
 | usageLocation |Kod kraju własną literą dwóch |(user.usageLocation - eq "PL") |
 | userPrincipalName |Dowolną wartością ciągu |(user.userPrincipalName - eq "alias@domain") |
-| UserType |element członkowski gościa *wartości null* |(user.userType - eq "Elementu członkowskiego") |
+| UserType |element członkowski gościa *$null* |(user.userType - eq "Elementu członkowskiego") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości typu kolekcji ciągów
 Dozwolonych operatorów
@@ -226,11 +226,11 @@ Poniższe wyrażenie będzie wybierz wszystkich użytkowników, którzy mają ws
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-## <a name="use-of-null-values"></a>Użyj wartości Null
+## <a name="use-of-null-values"></a>Użyj wartości null
 
 Aby określić wartości null w regule, można użyć *null* wartość. Nie można więc użyć cudzysłowów wokół wyraz *null* — Jeśli to zrobisz, zostanie potraktowany jako wartość literału ciągu. Prawidłowy sposób odwoływać się do wartości null, jest następujący:
 ```
-   user.mail –ne null
+   user.mail –ne $null
 ```
 
 ## <a name="extension-attributes-and-custom-attributes"></a>Atrybuty rozszerzenia oraz atrybuty niestandardowe

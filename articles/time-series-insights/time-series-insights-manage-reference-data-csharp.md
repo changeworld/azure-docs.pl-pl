@@ -1,27 +1,28 @@
 ---
-title: "Zarządzanie danymi odwołania w środowisku Azure czas serii Insights przy użyciu języka C# | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób zarządzania danych referencyjnych do środowiska Azure czas serii Insights przez tworzenie niestandardowych aplikacji napisanych w języku C# (c sharp) platformy .NET."
+title: Zarządzanie danymi odwołania w środowisku Azure czas serii Insights przy użyciu języka C# | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób zarządzania danych referencyjnych do środowiska Azure czas serii Insights przez tworzenie niestandardowych aplikacji napisanych w języku C# (c sharp) platformy .NET.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/21/2017
-ms.openlocfilehash: b08b6af7abccb550884adc6cc90d180cfcadb2af
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.date: 03/23/2018
+ms.openlocfilehash: 61375ae3b304959d5cda37c4ce0364d566d576a5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi odwołania dla środowiska Azure czas serii Insights przy użyciu języka C#
 
-W tym temacie opisano w C# przykładowym kodzie można skompilować do zarządzania danymi odwołanie do użytku w środowisku Azure czas serii Insights.
+W tym artykule opisano przykład projektu C# można skompilować do zarządzania danymi odwołanie do użytku w środowisku Azure czas serii Insights.
 
+## <a name="prerequistes"></a>Wymagania wstępne
 Wykonaj następujące kroki, aby skompilować i uruchomić przykładowy kod:
 1. [Utwórz zestaw danych odwołania](time-series-insights-add-reference-data-set.md).
 
@@ -30,6 +31,11 @@ Wykonaj następujące kroki, aby skompilować i uruchomić przykładowy kod:
    Aby uzyskać informacje dotyczące sposobu konfigurowania nieinterakcyjnych aplikacji, zobacz [uwierzytelniania i autoryzacji](time-series-insights-authentication-and-authorization.md).
 
 3. Edytuj przykładowy kod zastąpić stałe przykład, wyznaczoną na **DUMMY #**, pobliżu początku kodu. 
+
+Ten przykładowy kod jest również dostępna w [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+
+## <a name="project-references"></a>Odwołania do projektu
+Dodawanie pakietów NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json` w tym przykładzie. 
 
 ## <a name="c-sample-code"></a>Przykładowy kod C# 
 ```csharp
@@ -233,5 +239,5 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Dane referencyjne interfejsu API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)

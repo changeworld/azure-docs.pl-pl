@@ -1,8 +1,8 @@
 ---
-title: "Omówienie nauki danych przy użyciu platformy Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Zestaw narzędzi platformy Spark MLlib łączy uczenia maszynowego znaczne modelowanie się środowisku rozproszonym usługi HDInsight."
+title: Omówienie nauki danych przy użyciu platformy Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Zestaw narzędzi platformy Spark MLlib łączy uczenia maszynowego znaczne modelowanie się środowisku rozproszonym usługi HDInsight.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: e1c4a507214b9686154fc8311121b56f42f5cd40
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: bradsev
+ms.openlocfilehash: a12e2f1af945c8186067b791c4e96a52eb23f52f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Omówienie nauki danych przy użyciu platformy Spark w usłudze Azure HDInsight
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -28,7 +28,7 @@ Ten pakiet tematy przedstawia sposób użycia Spark w usłudze HDInsight do wyko
 ## <a name="spark-and-mllib"></a>Platforma Spark i MLlib
 [Platforma Spark](http://spark.apache.org/) jest przetwarzanie platforma przetwarzania równoległego open source, który obsługuje w pamięci w celu zwiększania wydajności aplikacji do analizy danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości rozproszone obliczenia w pamięci platforma Spark stanowić dobry wybór w przypadku algorytmów iteracyjnych w machine learning i obliczeniach na grafach. [MLlib](http://spark.apache.org/mllib/) jest platforma Spark skalowalne maszyny learning biblioteki wprowadzający algorytmicznego modelowanie tej środowisku rozproszonym. 
 
-## <a name="hdinsight-spark"></a>Spark w usłudze HDInsight
+## <a name="hdinsight-spark"></a>HDInsight Spark
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) jest platformy Azure hostowanej oferty open source platformy Spark. Obejmuje również obsługę **notesów Jupyter PySpark** w klastrze Spark, który można uruchomić interakcyjnych zapytań Spark SQL Przekształcanie, filtrowania i wizualizacja danych przechowywanych w obiektach blob Azure (WASB). PySpark to interfejs API języka Python dla platformy Spark. Wstawki kodu dostarczające rozwiązań i Pokaż odpowiednich powierzchni do wizualizacji danych w tym miejscu Uruchom w notesach Jupyter zainstalowany w klastrze Spark. Kroki modelowania w tych tematach zawiera kod, który pokazuje, jak uczenia, ocenić, zapisywania i korzystać z każdego typu modelu. 
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Instalatora: Klastry Spark i notesów Jupyter
@@ -44,9 +44,9 @@ Te komputery przenośne są uruchamiane w jądra pySpark serwera notesu Jupyter.
 ### <a name="spark-20-notebooks"></a>Notesów Spark 2.0
 Te komputery przenośne są uruchamiane w pySpark3 jądra serwera notesu Jupyter.
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat sposobu wykonywania Eksploracja danych, modelowania, i oceniania w Spark 2.0 klastrów za pomocą taksówki NYC podróży i taryfy zestawu danych opisane [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do eksplorowania szybko kod, który firma Microsoft umieściła 2.0 Spark. Dla bardziej szczegółowe notesu analizuje dane taksówki NYC, zobacz notesu dalej na tej liście. Zobacz uwagi na końcu tej listy pozwalające porównać te komputery przenośne. 
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): ten plik pokazano, jak wykonać danych wrangling (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówki NYC podróży i taryfy zestawu danych opisane [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): ten plik pokazano, jak wykonać danych wrangling (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu znanych linii lotniczych na czas wyjścia zestawu danych z 2011 i 2012. Zintegrowane firma Microsoft linii lotniczych zestawu danych z danymi pogody lotniska (np. prędkość wiatru, temperatury, wysokość itp.) przed modelowania, więc te funkcje pogody można dołączyć do modelu.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat sposobu wykonywania Eksploracja danych, modelowania, i oceniania w Spark 2.0 klastrów za pomocą taksówki NYC podróży i zestaw danych taryfy opisane [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do eksplorowania szybko kod, który firma Microsoft umieściła 2.0 Spark. Dla bardziej szczegółowe notesu analizuje dane taksówki NYC, zobacz notesu dalej na tej liście. Zobacz uwagi na końcu tej listy pozwalające porównać te komputery przenośne. 
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): ten plik pokazano, jak wykonać danych wrangling (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówki NYC podróży i taryfy zestawu danych opisane [tutaj ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): ten plik pokazano, jak wykonać danych wrangling (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu znanych wyjścia w czasie linii lotniczych zestaw danych z 2011 i 2012. Zintegrowane firma Microsoft linii lotniczych zestawu danych z danymi pogody lotniska (np. prędkość wiatru, temperatury, wysokość itp.) przed modelowania, więc te funkcje pogody można dołączyć do modelu.
 
 <!-- -->
 
@@ -131,8 +131,8 @@ Firma Microsoft ma próbkę 0,1% tych plików i połączonych podróż\_danych i
 | trip_distance |Dystans podróży w milach |
 | pickup_longitude |Wybierz długość geograficzna |
 | pickup_latitude |Podnieś współrzędnych |
-| dropoff_longitude |Długość geograficzna Dropoff |
-| dropoff_latitude |Współrzędne Dropoff |
+| dropoff_longitude |Dropoff longitude |
+| dropoff_latitude |Dropoff latitude |
 | direct_distance |Bezpośrednie odległość między pobrania w górę i lokalizacje dropoff |
 | payment_type |Typ płatności (urzędów certyfikacji, karta kredytowa itp.) |
 | fare_amount |Kwota taryfy w |
@@ -147,7 +147,7 @@ Firma Microsoft ma próbkę 0,1% tych plików i połączonych podróż\_danych i
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Wykonanie kodu z notesu Jupyter w klastrze Spark
 Można uruchomić notesu Jupyter z portalu Azure. Znajdź klastra Spark na pulpicie nawigacyjnym i kliknij go, aby wprowadzić strony zarządzania dla klastra. Aby otworzyć notesu skojarzony z klastrem Spark, kliknij przycisk **pulpitów nawigacyjnych klastrów** -> **notesu Jupyter** .
 
-![Pulpitów nawigacyjnych klastrów](./media/spark-overview/spark-jupyter-on-portal.png)
+![Pulpity nawigacyjne klastra](./media/spark-overview/spark-jupyter-on-portal.png)
 
 Możesz również przejść do ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** do notesów Jupyter. Zamień na nazwę własnego klastra NAZWAKLASTRA częścią tego adresu URL. Potrzebne hasło do konta administratora dostęp do notesów.
 
@@ -181,7 +181,7 @@ Teraz możesz:
 ## <a name="whats-next"></a>Co dalej?
 Teraz, gdy są skonfigurowane z klastra Spark w usłudze HDInsight i zostały przekazane z notesów Jupyter, można przystąpić do pracy z tematami, które odpowiadają w notesach trzy PySpark. Przedstawiają sposób eksplorować dane, a następnie tworzenie i korzystanie z modeli. Zaawansowane danych notesu eksploracji i modelowanie pokazuje, jak do uwzględnienia krzyżowego sprawdzania poprawności, funkcji hyper parametr profilach, a model oceny. 
 
-**Eksploracja danych i modelowanie z Spark:** Eksploruj zestawu danych i tworzenie, wynik i ocenić maszyny modeli uczenia przez pracy nad [Tworzenie binarnego klasyfikacji i regresji modeli danych narzędzi Spark MLlib](spark-data-exploration-modeling.md) tematu.
+**Eksploracja danych i modelowanie z Spark:** Eksploruj zestawu danych i tworzenie, wynik i ocenić maszyny modeli uczenia przez pracy nad [utworzyć binarne klasyfikacji i regresji modeli danych z Spark MLlib zestaw narzędzi](spark-data-exploration-modeling.md) tematu.
 
 **Model zużycia:** informacje na temat wynik modele klasyfikacji i regresji, utworzone w tym temacie, zobacz [wynik i ocena modele uczenia wbudowane Spark maszyny](spark-model-consumption.md).
 

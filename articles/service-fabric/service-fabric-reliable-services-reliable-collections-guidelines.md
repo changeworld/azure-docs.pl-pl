@@ -1,6 +1,6 @@
 ---
-title: "Wskazówki i zalecenia dotyczące niezawodnej kolekcje w programie Azure Usługa sieci szkieletowej | Dokumentacja firmy Microsoft"
-description: "Wskazówki i zalecenia dotyczące używania kolekcji niezawodnej sieci szkieletowej usług"
+title: Wskazówki i zalecenia dotyczące niezawodnej kolekcje w programie Azure Usługa sieci szkieletowej | Dokumentacja firmy Microsoft
+description: Wskazówki i zalecenia dotyczące używania kolekcji niezawodnej sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: 27ea71bcc378100e613a8edd1c57a93f3c9ed925
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0eb6a5aab5e71c0a8ac8263e177c493a07dafc0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Wskazówki i zalecenia dotyczące niezawodnej kolekcji w sieci szkieletowej usług Azure
 Ta sekcja zawiera wskazówki dotyczące korzystania niezawodnej Menedżer stanu i niezawodne kolekcji. Celem jest ułatwienie użytkownikom uniknąć typowych problemów.
@@ -52,7 +52,6 @@ Poniżej przedstawiono niektóre czynności, które należy wziąć pod uwagę:
 ### <a name="next-steps"></a>Kolejne kroki
 * [Praca z elementami Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transakcje i blokad](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [Menedżer stanu niezawodnych i wewnętrzne kolekcji](service-fabric-reliable-services-reliable-collections-internals.md)
 * Zarządzanie danymi
   * [Tworzenie kopii zapasowej i przywracanie](service-fabric-reliable-services-backup-restore.md)
   * [Powiadomienia](service-fabric-reliable-services-notifications.md)

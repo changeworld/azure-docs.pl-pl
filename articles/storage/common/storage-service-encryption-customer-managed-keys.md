@@ -1,6 +1,6 @@
 ---
-title: "Szyfrowanie usługi Magazyn Azure przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault | Dokumentacja firmy Microsoft"
-description: "Szyfrowanie usługi magazynu obiektów Blob Azure na stronie usługi, gdy dane są przechowywane przy użyciu funkcji szyfrowanie usługi Magazyn Azure, a go odszyfrować podczas pobierania danych przy użyciu kluczy zarządzany przez klienta."
+title: Szyfrowanie usługi Magazyn Azure przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault | Dokumentacja firmy Microsoft
+description: Szyfrowanie usługi magazynu obiektów Blob Azure na stronie usługi, gdy dane są przechowywane przy użyciu funkcji szyfrowanie usługi Magazyn Azure, a go odszyfrować podczas pobierania danych przy użyciu kluczy zarządzany przez klienta.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: 1360d8bb0911c424747209c69b830fc1ee461798
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 04688f943ac9eba27ca193aa2054c69b6a94547d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Magazyn przy użyciu kluczy zarządzany przez klienta w usłudze Azure Key Vault
 
@@ -111,11 +111,11 @@ Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Krok 5: Kopiowanie danych do konta magazynu
 
-Aby przenieść dane do nowego konta magazynu, dzięki czemu jest on zaszyfrowany, należy zapoznać się z kroku 3 [wprowadzenie w szyfrowanie usługi Magazyn danych magazynowanych](storage-service-encryption.md#step-3-copy-data-to-storage-account).
+Aby przenieść dane do nowego konta magazynu, dzięki czemu jest on zaszyfrowany. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące szyfrowanie usługi Magazyn](storage-service-encryption.md#faq-for-storage-service-encryption).
 
 ### <a name="step-6-query-the-status-of-the-encrypted-data"></a>Krok 6: Zapytać o stan zaszyfrowanych danych
 
-Aby zbadać stan zaszyfrowanych danych, należy zapoznać się z kroku 4 [wprowadzenie w szyfrowanie usługi Magazyn danych magazynowanych](storage-service-encryption.md#step-4-query-the-status-of-the-encrypted-data).
+Zapytać o stan zaszyfrowanych danych.
 
 ## <a name="faq-for-sse-with-customer-managed-keys"></a>Często zadawane pytania dotyczące SSE z klientów zarządzanych — klawisze
 
@@ -125,7 +125,7 @@ A: tak SSE z kluczami zarządzany przez firmę Microsoft i zarządzany przez kli
 
 **Pytanie: czy można utworzyć nowego konta magazynu z SSE z kluczami zarządzany przez klienta, włączyć za pomocą programu Azure PowerShell i interfejsu wiersza polecenia Azure?**
 
-Odpowiedź: tak.
+Odp. Tak.
 
 **Pytanie: jak bardziej usługi Azure Storage kosztów korzystania z kluczy zarządzany przez klienta z SSE?**
 

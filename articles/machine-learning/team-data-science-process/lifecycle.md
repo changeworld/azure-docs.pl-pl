@@ -1,8 +1,8 @@
 ---
-title: "Cykl życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft"
-description: "Kroki niezbędne do wykonania projektów analizy danych"
+title: Cykl życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
+description: Kroki niezbędne do wykonania projektów analizy danych
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 5d69d4d2371b42b3595cf3dc71d99d913e225c59
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: a971e40bc4338f187991eeae991044248844d8b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Cykl życia procesu nauki danych zespołu
 
@@ -47,7 +47,7 @@ Na każdym etapie firma Microsoft Podaj następujące informacje:
    * **Jak to zrobić**: zarys określonych zadań i wskazówki dotyczące sposobu ich ukończenia.
    * **Artefakty**: elementy dostarczane i pomocy technicznej, aby je utworzyć.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Firma Microsoft udostępnia pełnej end-to-end wskazówki, które pokazują wszystkie kroki w procesie w określonych scenariuszach. [Wskazówki przykład](walkthroughs.md) artykuł zawiera listę scenariuszy łącza i opisy miniatur. Wskazówki dotyczące ilustrują sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 
 

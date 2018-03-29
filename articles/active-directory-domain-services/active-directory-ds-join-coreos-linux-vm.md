@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Dołącz Maszynę wirtualną systemu Linux CoreOS do domeny zarządzanej | Dokumentacja firmy Microsoft"
-description: "Dołącz maszynę wirtualną systemu CoreOS Linux do usług domenowych Azure AD"
+title: 'Azure Active Directory Domain Services: Dołącz Maszynę wirtualną systemu Linux CoreOS do domeny zarządzanej | Dokumentacja firmy Microsoft'
+description: Dołącz maszynę wirtualną systemu CoreOS Linux do usług domenowych Azure AD
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 790ad85df0dbf68674e2b9c6254858100ddfd0fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c7290db73645a4e1e745142f266aabc6df735df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Dołącz maszynę wirtualną systemu CoreOS Linux do domeny zarządzanej
 W tym artykule przedstawiono sposób przyłączyć maszyny wirtualnej systemu CoreOS Linux na platformie Azure do domeny zarządzanej usług domenowych Azure AD.
@@ -34,7 +34,7 @@ Aby wykonać zadania opisane w tym artykule, należy:
 
 ## <a name="provision-a-coreos-linux-virtual-machine"></a>Aprowizowanie maszyny wirtualnej systemu CoreOS Linux
 Zapewnij CoreOS maszyny wirtualnej na platformie Azure przy użyciu dowolnej z następujących metod:
-* [Witryna Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -140,7 +140,7 @@ Sprawdź, czy maszyna została pomyślnie dołączona do domeny zarządzanej. Po
 
 
 ## <a name="troubleshooting-domain-join"></a>Rozwiązywanie problemów z przyłączania do domeny
-Zapoznaj się [przyłączenie do domeny Rozwiązywanie problemów](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) artykułu.
+Zapoznaj się [przyłączenie do domeny Rozwiązywanie problemów](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) artykułu.
 
 ## <a name="related-content"></a>Powiązana zawartość
 * [Usługi domenowe AD Azure - Przewodnik wprowadzający](active-directory-ds-getting-started.md)

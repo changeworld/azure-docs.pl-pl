@@ -1,12 +1,28 @@
-| Zasób | Podstawowa | Standardowa | Premium |
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: container-registry
+author: mmacy
+ms.service: container-registry
+ms.topic: include
+ms.date: 03/23/2018
+ms.author: marsma
+ms.custom: include file
+ms.openlocfilehash: 575483192954f4e05db50e701e223829e041cffc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/28/2018
+---
+| Zasób | Podstawowa | Standardowa (Standard) | Premium |
 |---|---|---|---|---|
-| Magazyn | 10 giB | 100 giB| 500 giB |
-| ReadOps na minutę<sup>1, 2</sup> | 1 KB | 300k | 10 000 k |
-| WriteOps na minutę<sup>1, 3</sup> | 100 | 500 | 2k |
+| Magazyn | 10 GiB | 100 GiB| 500 GiB |
+| ReadOps na minutę<sup>1, 2</sup> | 1000 | 3000 | 10 000 |
+| WriteOps na minutę<sup>1, 3</sup> | 100 | 500 | 2000 |
 | Pobierz MB/s przepustowości<sup>1</sup> | 30 | 60 | 100 |
 | Przekaż MB/s przepustowości<sup>1</sup> | 10 | 20 | 50 |
-| elementów webhook | 2 | 10 | 100 |
-| Replikacja geograficzna | Nie dotyczy | Nie dotyczy | [Obsługiwane *(wersja zapoznawcza)*](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication) |
+| Elementy webhook | 2 | 10 | 100 |
+| Replikacja geograficzna | ND | ND | [Obsługiwane *(wersja zapoznawcza)*](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication) |
 
 <sup>1</sup> *ReadOps*, *WriteOps*, i *przepustowości* są szacowane wartości minimalnej. ACR dokłada starań zwiększyć wydajność, ponieważ wymaga użycia.
 

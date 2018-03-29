@@ -1,24 +1,24 @@
 ---
-title: "Azure rozwiązania analizy sieci w Log Analytics | Dokumentacja firmy Microsoft"
-description: "Rozwiązania Azure Networking analizy w analizy dzienników umożliwia Przejrzyj dzienniki grupy zabezpieczeń sieci platformy Azure i dzienniki bramy aplikacji Azure."
+title: Azure rozwiązania analizy sieci w Log Analytics | Dokumentacja firmy Microsoft
+description: Rozwiązania Azure Networking analizy w analizy dzienników umożliwia Przejrzyj dzienniki grupy zabezpieczeń sieci platformy Azure i dzienniki bramy aplikacji Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: ewinner
-editor: 
+editor: ''
 ms.assetid: 66a3b8a1-6c55-4533-9538-cad60c18f28b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 03/20/2018
 ms.author: richrund
-ms.openlocfilehash: 06b67322b3812a668a515ecc357171ede1d85441
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17dadd784d59a2cc0cab6ffbae144010f896b296
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sieć platformy Azure monitorowanie rozwiązań w analizy dzienników
 
@@ -211,19 +211,19 @@ Aby użyć zaktualizowane rozwiązań:
 
     | Zamiast: | Za pomocą: |
     | --- | --- |
-    |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayAccess`| `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayAccess` |
-    |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayPerformance` | `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayPerformance` |
-    | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
+    | NetworkApplicationgateways &#124; gdzie OperationName == "ApplicationGatewayAccess" | AzureDiagnostics &#124; gdzie ResourceType = "APPLICATIONGATEWAYS" i OperationName == "ApplicationGatewayAccess" |
+    | NetworkApplicationgateways &#124; gdzie OperationName == "ApplicationGatewayPerformance" | AzureDiagnostics &#124; gdzie ResourceType == "APPLICATIONGATEWAYS" i OperationName = ApplicationGatewayPerformance |
+    | NetworkSecuritygroups | AzureDiagnostics &#124; gdzie ResourceType == "NETWORKSECURITYGROUP" |
 
    + Dla dowolnego pola, które sufiks \_s, \_d, lub \_g w nazwie, Zmień pierwszy znak na małe litery
    + Dla dowolnego pola, które sufiks \_o w polu Nazwa danych jest podzielony na poszczególnych pól na podstawie nazw pól zagnieżdżonych.
 4. Usuń *Azure Networking Analytics (przestarzały)* rozwiązania.
-  + Jeśli używasz programu PowerShell, użyj`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+  + Jeśli używasz programu PowerShell, użyj `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Dane zbierane przed zmiany nie jest widoczny w nowego rozwiązania. Można nadal wysyłać zapytania dotyczące tych danych za pomocą starego typu i nazwy pola.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Użyj [Zaloguj wyszukiwania analizy dzienników](log-analytics-log-searches.md) Aby wyświetlić szczegółowe dane diagnostyczne platformy Azure.

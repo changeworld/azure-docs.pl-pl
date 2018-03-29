@@ -1,24 +1,24 @@
 ---
-title: "Dystrybucja danych globalnie z bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat skali planety — replikacja geograficzna, trybu failover i odzyskiwanie danych za pomocą globalnej bazy danych z bazy danych z rozwiązania Cosmos platformy Azure, usługa globalnie rozproszone, mutli modelu bazy danych."
+title: Dystrybucja danych globalnie z bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat skali planety — replikacja geograficzna, trybu failover i odzyskiwanie danych za pomocą globalnej bazy danych z bazy danych z rozwiązania Cosmos platformy Azure, usługa globalnie rozproszone, mutli modelu bazy danych.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Sposób rozpowszechniania danych globalnie z bazy danych Azure rozwiązania Cosmos
 Azure to powszechny — ma wpływu globalnych w regionach geograficznych 30 + i jest stale rozszerzanie. Z jego obecność na całym świecie jeden zróżnicowanych funkcji, które platforma Azure oferuje deweloperom jego jest możliwość tworzenia, wdrażania i łatwo Zarządzaj aplikacjami globalnie rozproszone. 
@@ -37,6 +37,11 @@ W tym artykule udostępniamy omówienie funkcji globalnych dystrybucji Azure roz
 
 ## <a id="EnableGlobalDistribution"></a>Włączanie gotowe dystrybucji globalne
 Azure DB rozwiązania Cosmos udostępnia następujące funkcje do tworzenia aplikacji w skali planety. Te funkcje są dostępne za pośrednictwem opartej na dostawcy zasobów Azure DB rozwiązania Cosmos [interfejsów API REST](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) oraz portalu Azure.
+
+W poniższego klipu wideo Andrew Liu Menedżera programów DB rozwiązania Cosmos Azure przedstawiono funkcje gotowe dystrybucji globalnego.
+
+> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ### <a id="RegionalPresence"></a>Wszechobecne regionalne 
 Azure stale rośnie jego obecność geograficzne przełączając [nowych regionów](https://azure.microsoft.com/regions/) online. Azure DB rozwiązania Cosmos jest dostępna we wszystkich regionach platformy Azure nowe domyślnie. Dzięki temu można skojarzyć z konta bazy danych Azure DB rozwiązania Cosmos region geograficzny, jak Azure zostanie otwarty nowy region dla firm.
@@ -226,8 +231,8 @@ Azure DB rozwiązania Cosmos niewidocznie przedstawia metryki przepływności, o
 ## <a id="References"></a>Odwołania
 1. Marek Brewera. [Kierunku niezawodne systemów rozproszonych](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf)
 2. Marek Brewera. [Zakończenie dwunastu lat później — jak zostały zmienione reguły](http://informatik.unibas.ch/fileadmin/Lectures/HS2012/CS341/workshops/reportsAndSlides/PresentationKevinUrban.pdf)
-3. Gilbert, Lynch. - [Brewera &#39; s przypuszczeń i możliwości spójny, dostępne, usług sieci Web na uszkodzenia partycji](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)
-4. Abadi Danielowi. [Wady i zalety spójności w Modern rozproszonych projektu systemów bazy danych](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)
+3. Gilbert, Lynch. - [Brewera&#39;przypuszczeń s oraz możliwości spójny, dostępnych usług sieci Web na uszkodzenia partycji](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf)
+4. Daniel Abadi. [Wady i zalety spójności w Modern rozproszonych projektu systemów bazy danych](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf)
 5. Pole Kleppmann. [Zatrzymaj wywoływanie bazy danych CP lub region](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html)
 6. Peterowi Bailis i wsp. [Spójność powiązanej nieaktualności prawdopodobieństwa (PBS) do praktycznych częściowe kworum](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 7. Naor i wełny. [Obciążenia, wydajności i dostępności w systemach kworum](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)

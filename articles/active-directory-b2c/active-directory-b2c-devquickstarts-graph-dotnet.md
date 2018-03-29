@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: 2f95df26abcd2c0d5b62c395f92c359170d6d701
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Usługa Azure AD B2C: Użyj Azure interfejs API Graph usługi AD
 
@@ -45,7 +45,7 @@ Po umieszczeniu dzierżawy B2C, należy zarejestrować aplikację za pośrednict
 3. W okienku nawigacji po lewej stronie wybierz **wszystkie usługi**, kliknij przycisk **rejestracji aplikacji**i kliknij przycisk **Dodaj**.
 4. Postępuj zgodnie z monitami i utwórz nową aplikację. 
     1. Wybierz **aplikacji w sieci Web / interfejs API** jako typ aplikacji.    
-    2. Podaj **żadnego identyfikator URI przekierowania** (np. https://B2CGraphAPI), ponieważ nie jest to potrzebne w tym przykładzie.  
+    2. Podaj **żadnych adres URL logowania** (np. https://B2CGraphAPI) jako nie jest to potrzebne w tym przykładzie.  
 5. Aplikacja zostanie teraz zostanie wyświetlona lista aplikacji, kliknij przycisk w celu uzyskania **identyfikator aplikacji** (znanej także jako identyfikator klienta). Skopiuj go, ponieważ będzie on potrzebny w dalszej części artykułu.
 6. W menu Ustawienia kliknij **klucze** i Dodaj nowy klucz (znanej także jako klucz tajny klienta). Jest on również kopiowany do użycia w dalszej części artykułu.
 

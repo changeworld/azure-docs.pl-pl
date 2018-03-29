@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: a6b80c134351429ec85a20f7ab83b7674b8b7352
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 671e3737a620d85c732a091d5a62f35f35c1d515
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="overview-of-share-snapshots-for-azure-files-preview"></a>Omówienie migawek udział plików Azure (wersja zapoznawcza)
-Usługa pliki Azure oferuje możliwość migawek udziału udziałów plików. Udostępnianie przechwytywania migawek (wersja zapoznawcza) stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie Podaj migawki udziału i jak można korzystać z nich w Twoim przypadku wykorzystania niestandardowego.
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Omówienie migawek udział plików Azure 
+Usługa pliki Azure oferuje możliwość migawek udziału udziałów plików. Udostępnianie przechwytywania migawek stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie Podaj migawki udziału i jak można korzystać z nich w Twoim przypadku wykorzystania niestandardowego.
 
 
 ## <a name="when-to-use-share-snapshots"></a>Kiedy należy używać udziału migawki

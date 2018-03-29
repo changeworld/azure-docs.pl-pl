@@ -1,26 +1,26 @@
 ---
-title: "Pojęcia dotyczące zabezpieczeń w usłudze Azure IoT Hub urządzenia inicjowania obsługi administracyjnej | Dokumentacja firmy Microsoft"
-description: "Opisuje zabezpieczenia, inicjowanie obsługi administracyjnej pojęcia specyficzne dla urządzeń z usługi udostępniania urządzenia i Centrum IoT"
+title: Pojęcia dotyczące zabezpieczeń w usłudze Azure IoT Hub urządzenia inicjowania obsługi administracyjnej | Dokumentacja firmy Microsoft
+description: Opisuje zabezpieczenia, inicjowanie obsługi administracyjnej pojęcia specyficzne dla urządzeń z usługi udostępniania urządzenia i Centrum IoT
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 03/27/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Pojęcia dotyczące zabezpieczeń inicjowania obsługi usługi IoT Hub urządzeń 
 
-Usługa inicjowania obsługi urządzeń Centrum IoT to usługa pomocnika do Centrum IoT, które są używane do konfigurowania urządzenia bezobsługową alokacji dla określonego Centrum IoT. Przy użyciu usługi inicjowania obsługi urządzeń można udostępnić milionów urządzeń w sposób bezpieczny i skalowalności. Ten artykuł zawiera omówienie *zabezpieczeń* pojęcia związane z w Inicjowanie obsługi administracyjnej urządzeń. W tym artykule ma zastosowanie do wszystkich osoby objętego przygotowanie do wdrożenia urządzenia.
+Usługa inicjowania obsługi urządzeń Centrum IoT to usługa pomocnika do Centrum IoT, które są używane do konfigurowania urządzenia bezobsługową alokacji dla określonego Centrum IoT. Usługa Device Provisioning umożliwia udostępnianie milionów urządzeń w bezpieczny i skalowalny sposób. Ten artykuł zawiera omówienie *zabezpieczeń* pojęcia związane z w Inicjowanie obsługi administracyjnej urządzeń. W tym artykule ma zastosowanie do wszystkich osoby objętego przygotowanie do wdrożenia urządzenia.
 
 ## <a name="attestation-mechanism"></a>Mechanizm zaświadczania
 
@@ -31,7 +31,7 @@ Mechanizm zaświadczania jest metoda stosowana do potwierdzenia tożsamości urz
 
 Usługa inicjowania obsługi urządzeń obsługuje dwa rodzaje poświadczenie:
 * **Certyfikaty X.509** oparte na przepływie standardowe uwierzytelnianie certyfikatu X.509.
-* **Tokeny sygnatury dostępu Współdzielonego** oparte na żądanie nonce kluczy przy użyciu standardowego modułu TPM. Ta sytuacja nie wymaga fizycznej modułu TPM na urządzeniu, ale usługa oczekuje, że poświadczenia przy użyciu klucza poręczenia na [specyfikacji modułu TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Zaufane TPM (Trusted Platform Module)** oparte na żądanie nonce, przy użyciu standardowego modułu TPM kluczy do prezentowania podpisany token dostępu sygnatury dostępu Współdzielonego. Ta sytuacja nie wymaga fizycznej modułu TPM na urządzeniu, ale usługa oczekuje, że poświadczenia przy użyciu klucza poręczenia na [specyfikacji modułu TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
 
 ## <a name="hardware-security-module"></a>Sprzętowy moduł zabezpieczeń
 
@@ -42,7 +42,7 @@ Sprzętowego modułu zabezpieczeń lub modułu HSM, służy do bezpieczny, sprz�
 
 Klucze tajne urządzenia mogą być również przechowywane w oprogramowaniu (pamięci), ale jest mniej bezpieczne formularz magazynu niż modułu HSM.
 
-## <a name="trusted-platform-module-tpm"></a>Moduł TPM (TPM)
+## <a name="trusted-platform-module"></a>Moduł TPM
 
 Moduł TPM może odwoływać się do standardowego bezpiecznie przechowywane klucze służące do uwierzytelniania platformy lub może się odnosić do interfejsu we/wy służy do interakcji z modułami implementowania standardowego. Moduły TPM może istnieć jako odrębny sprzętu, sprzęt zintegrowane, oparte na oprogramowania sprzętowego lub programowego. Dowiedz się więcej o [moduły TPM i modułu TPM zaświadczania](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Usługa inicjowania obsługi urządzeń obsługuje tylko modułu TPM 2.0.
 
@@ -79,7 +79,7 @@ Inicjowania obsługi usługi udostępnia dwa typy wpisu rejestracji, który słu
 - [Poszczególne rejestracji](./concepts-service.md#individual-enrollment) wpisy są skonfigurowane przy użyciu certyfikatu urządzenia skojarzone z określonym urządzeniem. Te wpisy kontroli rejestracji dla określonych urządzeń.
 - [Grupa rejestracji](./concepts-service.md#enrollment-group) wpisy są skojarzone z określonym pośredniego lub certyfikatu głównego urzędu certyfikacji. Te wpisy kontroli rejestracji dla wszystkich urządzeń mających pośredniego lub głównego certyfikatu w łańcuchu swoich certyfikatów. 
 
-Gdy urządzenie łączy się z usługą inicjowania obsługi administracyjnej, usługa priorytetem bardziej szczegółowe rejestrowanie wpisów za pośrednictwem mniej określonych wpisów rejestracji. Oznacza to jeśli istnieje poszczególnych rejestracji dla urządzenia, inicjowania obsługi usługi dotyczy tego wpisu. Jeśli istnieje grupa rejestracji dla pierwszego certyfikatu pośredniego w łańcuchu certyfikatów urządzenia nie istnieje żadne poszczególnych rejestracji dla urządzenia, usługa ma zastosowanie tego wpisu, i tak dalej zapasowej łańcucha do katalogu głównego. Usługa dotyczy pierwszego wpisu dotyczy, zostaną znalezione, tak, aby:
+Gdy urządzenie łączy się z usługą inicjowania obsługi administracyjnej, usługa priorytetem bardziej szczegółowe rejestrowanie wpisów za pośrednictwem mniej określonych wpisów rejestracji. Oznacza to jeśli istnieje poszczególnych rejestracji dla urządzenia, inicjowania obsługi usługi dotyczy tego wpisu. Jeśli nie istnieje żadne poszczególnych rejestracji urządzenia i rejestracji dla pierwszego certyfikatu pośredniego w łańcuchu certyfikatów urządzenia istnieje, usługa dotyczy tego wpisu i tak dalej, zapasowej łańcucha do katalogu głównego. Usługa dotyczy pierwszego wpisu dotyczy, zostaną znalezione, tak, aby:
 
 - Jeśli pierwszy znaleziono wpisu rejestracji jest włączone, usługa aprowizuje dla urządzenia.
 - Jeśli pierwszy znaleziono wpisu rejestracji jest wyłączona, usługa nie udostępnić urządzenia.  

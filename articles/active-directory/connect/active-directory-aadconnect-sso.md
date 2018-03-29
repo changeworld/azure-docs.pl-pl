@@ -1,9 +1,9 @@
 ---
 title: 'Azure AD Connect: Bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft'
-description: "W tym temacie opisano usługi Azure Active Directory (Azure AD) bezproblemowe logowanie jednokrotne i jak umożliwia podania true logowania jednokrotnego do firmowych pulpitów użytkowników w sieci firmowej."
+description: W tym temacie opisano usługi Azure Active Directory (Azure AD) bezproblemowe logowanie jednokrotne i jak umożliwia podania true logowania jednokrotnego do firmowych pulpitów użytkowników w sieci firmowej.
 services: active-directory
-keywords: "Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 14018db3cbe34c9eca9048ceaf376ff3a06a4353
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b1c82727e97b85fae5f315ceb1cd79cfdd111b45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne
 
@@ -50,7 +50,8 @@ Bezproblemowe logowanie Jednokrotne można łączyć z jedną [synchronizacji sk
 
 - Nazwa logowania użytkownika może być albo lokalnymi domyślna nazwa użytkownika (`userPrincipalName`) lub inny atrybut skonfigurowane w programie Azure AD Connect (`Alternate ID`). Użyć obu przypadkach pracy, ponieważ używa bezproblemowe logowania jednokrotnego `securityIdentifier` oświadczeń w bilecie protokołu Kerberos w celu wyszukania odpowiedniego obiektu użytkownika w usłudze Azure AD.
 - Bezproblemowe rejestracji Jednokrotnej jest funkcją oportunistyczne. Jeśli go nie powiedzie się z jakiegokolwiek powodu, środowisko logowania użytkownika Przechodzi wstecz na nim - tj, użytkownik musi wprowadzić swoje hasło na stronie logowania.
-- Jeśli aplikacja przekazuje `domain_hint` (OpenID Connect) lub `whr` parametr (SAML) - identyfikujący dzierżawy, lub `login_hint` parametru - identyfikacji użytkownika, w jego usługi Azure AD żądania logowania, użytkownicy zostaną automatycznie wylogowani bez ich wprowadzania nazwy użytkownika i hasła.
+- Jeśli aplikacja (na przykład https://myapps.microsoft.com/contoso.com) przekazuje `domain_hint` (OpenID Connect) lub `whr` parametr (SAML) - identyfikowania Twojej dzierżawy lub `login_hint` parametru - identyfikacji użytkownika, w jego usługi Azure AD żądania logowania, użytkownicy są zostanie automatycznie zalogowany bez ich wprowadzania nazwy użytkownika i hasła.
+- Użytkownicy także uzyskać dyskretnej środowisko logowania, jeśli aplikacja (na przykład https://contoso.sharepoint.com) oznacza to, wysyła żądań logowania do usługi Azure AD dzierżawcza punkty końcowe — https://login.microsoftonline.com/contoso.com/<..> lub https://login.microsoftonline.com/<tenant_ID>/<..> — zamiast usługi Azure AD wspólnego punktu końcowego — to znaczy https://login.microsoftonline.com/common/<...>.
 - Wyloguj jest obsługiwana. Dzięki temu użytkownicy mogą wybrać inne konto usługi Azure AD do zalogowania, zamiast automatycznie podpisywana przy użyciu logowania jednokrotnego bezproblemowe automatycznie.
 - Klienci Office 365 (16.0.8730.xxxx i nowsze) są obsługiwane przy użyciu podejścia nieinterakcyjnego przepływu.
 - Można ją włączyć za pomocą usługi Azure AD Connect.

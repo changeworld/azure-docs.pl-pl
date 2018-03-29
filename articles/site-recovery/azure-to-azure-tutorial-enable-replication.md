@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery (wersja zapoznawcza)"
-description: "Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w innym regionie świadczenia usługi Azure za pomocą usługi Azure Site Recovery."
+title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure za pomocą usługi Azure Site Recovery (wersja zapoznawcza)
+description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w innym regionie świadczenia usługi Azure za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 03/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 47d9a1e8aecde8ba0f01034f1d172c3fbd87ccfe
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure (wersja zapoznawcza)
 
@@ -144,7 +144,9 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
 
 - **Konta magazynu pamięci podręcznej**: usługa Site Recovery używa konta magazynu w regionie źródłowym. Do tego konta są wysyłane zmiany źródłowych maszyn wirtualnych przed uruchomieniem replikacji do lokalizacji docelowej.
 
-- **Docelowe konta magazynu**: domyślnie usługa Site Recovery tworzy nowe konto magazynu w regionie docelowym, które jest duplikatem źródłowego konta magazynu maszyn wirtualnych.
+- **Docelowa kont magazynu (Jeśli źródło maszyny Wirtualnej nie korzysta z zarządzanego dysków)**: Domyślnie, Usługa Site Recovery tworzy nowe konto magazynu w regionie docelowym dublowanego źródła konta magazynu maszyny Wirtualnej.
+
+- **Repliki dyskach zarządzanych (Jeśli źródło maszyny Wirtualnej używa dysków zarządzanych)**: domyślnie Site Recovery tworzy dyski replik zarządzanych w region docelowy dublowanego zarządzanych dysków maszyny Wirtualnej źródłowego tego samego typu magazynu (standardowa lub premium) jako zarządzany źródłowej maszyny Wirtualnej w dysk.
 
 - **Docelowe zestawy dostępności**: domyślnie usługa Site Recovery dodaje sufiks „asr” do zestawu dostępności utworzonego w regionie docelowym. Zestawy dostępności można dodawać tylko wtedy, gdy maszyny wirtualne są częścią zestawu w regionie źródłowym.
 

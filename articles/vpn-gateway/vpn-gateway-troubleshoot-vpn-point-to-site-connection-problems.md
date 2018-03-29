@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z połączeniem punkt lokacja Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązać problemy z połączeniem punkt lokacja."
+title: Rozwiązywanie problemów z połączeniem punkt lokacja Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązać problemy z połączeniem punkt lokacja.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemów Azure połączenie punkt lokacja
 
@@ -289,7 +289,7 @@ Klient sieci VPN punkt lokacja używa serwerów usługi Azure DNS, które są sk
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, upewnij się, że serwery DNS platformy Azure, które używane w sieci wirtualnej platformy Azure można rozwiązać rekordy DNS dla zasobów lokalnych. Aby to zrobić, można użyć usług przesyłania dalej DNS lub usług warunkowego przesyłania dalej. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw przy użyciu serwera DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)
+Aby rozwiązać ten problem, upewnij się, że serwery DNS platformy Azure, które używane w sieci wirtualnej platformy Azure można rozwiązać rekordy DNS dla zasobów lokalnych. Aby to zrobić, można użyć usług przesyłania dalej DNS lub usług warunkowego przesyłania dalej. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw przy użyciu serwera DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
 
 ## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>Ustanowieniu połączenia sieci VPN punkt lokacja, ale nadal nie można połączyć zasobów platformy Azure 
 
@@ -308,7 +308,7 @@ Ten błąd występuje, jeśli klient nie może uzyskać dostępu do http://crl3.
 
 ### <a name="solution"></a>Rozwiązanie
 
-Sprawdź ustawienia serwera proxy, upewnij się, że klient ma dostęp do http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.cr.
+Sprawdź ustawienia serwera proxy, należy upewnić się, że klient ma dostęp do http://crl3.digicert.com/ssca-sha2-g1.crl i http://crl4.digicert.com/ssca-sha2-g1.cr.
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>Błąd klienta sieci VPN: Połączenie nie mógł ze względu na zasady skonfigurowane na serwerze RAS lub sieć VPN. (Błąd 812)
 

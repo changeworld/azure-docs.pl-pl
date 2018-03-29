@@ -1,9 +1,9 @@
 ---
-title: "Metryki kwerendy SQL dla interfejsu API Azure rozwiązania Cosmos bazy danych SQL | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu Instrumentacja i debugowania wydajność kwerend SQL żądań bazy danych Azure rozwiązania Cosmos."
-keywords: "Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, koncepcje bazy danych i zapytania sql, funkcje agregujące"
+title: Metryki kwerendy SQL dla interfejsu API Azure rozwiązania Cosmos bazy danych SQL | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu Instrumentacja i debugowania wydajność kwerend SQL żądań bazy danych Azure rozwiązania Cosmos.
+keywords: Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, koncepcje bazy danych i zapytania sql, funkcje agregujące
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a2a42fd65ba4344f703ca423dc451802f3f0ac76
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Dostrajanie wydajności kwerend z bazy danych Azure rozwiązania Cosmos
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Udostępnia bazę danych systemu Azure rozwiązania Cosmos [interfejsu API SQL na potrzeby zapytań o dane](sql-api-sql-query.md), bez konieczności schematu lub indeksów pomocniczych. Ten artykuł zawiera następujące informacje dla deweloperów:
 
@@ -177,7 +175,7 @@ Aby dowiedzieć się więcej na temat partycjonowania i kluczy partycji, zobacz 
 Zobacz [porady dotyczące wydajności](performance-tips.md) i [testowania wydajności](performance-testing.md) instrukcje uzyskać najlepszą wydajność klienta z bazy danych Azure rozwiązania Cosmos. W tym przy użyciu najnowszych zestawów SDK, konfigurowanie konfiguracje specyficzne dla platformy, takich jak domyślną liczbę połączeń, częstotliwość operacji wyrzucania elementów bezużytecznych i opcji łączności lekkie, takich jak bezpośrednio/TCP. 
 
 
-#### <a name="max-item-count"></a>Maksymalna liczba elementów
+#### <a name="max-item-count"></a>Liczba maksymalna liczba elementów.
 Dla zapytań, wartość `MaxItemCount` może mieć znaczący wpływ na czas kwerendy end-to-end. Zwraca większa niż liczba elementów w każdej obiegu do serwera `MaxItemCount` (domyślnie: 100 elementów). To ustawienie wyższej wartości (wartość -1 jest maksymalną i zalecane) poprawia ogólną czasu trwania kwerendy poprzez ograniczenie liczby rund między serwerem a klientem, szczególnie w przypadku zapytań dotyczących dużych zestawów wyników.
 
 ```cs
@@ -191,7 +189,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Maksymalny stopień równoległości
-Dla zapytań, dostroić `MaxDegreeOfParallelism` Aby zidentyfikować najlepsze konfiguracje dla aplikacji, zwłaszcza, jeśli wykonywania zapytań między partycji (bez filtr na wartość klucza partycji). `MaxDegreeOfParallelism`Określa maksymalną liczbę równoległych zadań, tj., maksymalną liczbę partycji odwiedzin równolegle. 
+Dla zapytań, dostroić `MaxDegreeOfParallelism` Aby zidentyfikować najlepsze konfiguracje dla aplikacji, zwłaszcza, jeśli wykonywania zapytań między partycji (bez filtr na wartość klucza partycji). `MaxDegreeOfParallelism`  Określa maksymalną liczbę równoległych zadań, tj., maksymalną liczbę partycji odwiedzin równolegle. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -278,7 +276,7 @@ Poniżej przedstawiono niektóre przykładowe zapytania i jak interpretować nie
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Ponieważ jest on używany jako skanowania jest przeprowadzana kwerenda `LOWER`, a 500 poza 2491 pobrane dokumenty zostaną zwrócone. |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Informacje na temat obsługiwanych operatorów zapytań SQL i słów kluczowych, zobacz [zapytania SQL](sql-api-sql-query.md). 
 * Aby dowiedzieć się więcej na temat jednostek żądania, zobacz [jednostek żądania](request-units.md).
 * Aby uzyskać informacje dotyczące zasady indeksowania, zobacz [indeksowania zasad](indexing-policies.md) 

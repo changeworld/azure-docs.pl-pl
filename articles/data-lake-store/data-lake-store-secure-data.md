@@ -1,8 +1,8 @@
 ---
-title: "Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zabezpieczyć dane w usłudze Azure Data Lake Store przy użyciu grup i listy kontroli dostępu"
+title: Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zabezpieczyć dane w usłudze Azure Data Lake Store przy użyciu grup i listy kontroli dostępu
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: aa71a1cc48449c6ef48365b301bf9e297c0597ae
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake Store
-Zabezpieczanie danych w usłudze Azure Data Lake Store jest podejście trzech etapów.
+Zabezpieczanie danych w usłudze Azure Data Lake Store jest podejście trzech etapów.  Zarówno opartej na rolach kontrola (RBAC) dostępu i listy kontroli dostępu (ACL) musi być ustawiona do pełnego włączenia dostępu do danych użytkowników i grup zabezpieczeń.
 
 1. Rozpocznij od utworzenia grupy zabezpieczeń w usłudze Azure Active Directory (AAD). Te grupy zabezpieczeń są używane do implementowania kontroli dostępu opartej na rolach (RBAC) w portalu Azure. Aby uzyskać więcej informacji, zobacz [opartej na rolach kontroli dostępu w systemie Microsoft Azure](../active-directory/role-based-access-control-configure.md).
 2. Grup zabezpieczeń usługi AAD przypisane do konta usługi Azure Data Lake Store. Kontroluje dostęp do konta usługi Data Lake Store z portalu i zarządzanie operacjami z portalu lub interfejsów API.
@@ -54,67 +54,66 @@ Aby uzyskać instrukcje dotyczące sposobu tworzenia grup zabezpieczeń usługi 
 ## <a name="assign-users-or-security-groups-to-azure-data-lake-store-accounts"></a>Przypisywanie użytkowników lub grup zabezpieczeń do kont usługi Azure Data Lake Store
 Po przypisaniu do usługi Azure Data Lake Store kont użytkowników lub grup zabezpieczeń, możesz kontrolować dostęp do operacji zarządzania na koncie przy użyciu portalu Azure i interfejsów API usługi Azure Resource Manager. 
 
-1. Otwieranie konta usługi Azure Data Lake Store. W okienku po lewej stronie kliknij **Przeglądaj**, kliknij przycisk **usługi Data Lake Store**, a następnie w bloku Data Lake Store kliknij nazwę konta, do którego chcesz przypisać użytkownikowi lub grupie zabezpieczeń.
+1. Otwieranie konta usługi Azure Data Lake Store. W okienku po lewej stronie kliknij **wszystkie zasoby**, a następnie w bloku wszystkich zasobów, kliknij nazwę konta, do którego chcesz przypisać użytkownikowi lub grupie zabezpieczeń.
 
-2. W bloku ustawienia konta usługi Data Lake Store, kliknij przycisk **kontroli dostępu (IAM)**. Blok przez domyślne listy **Administratorzy subskrypcji** grupy jako właściciela.
+2. W bloku konta usługi Data Lake Store, kliknij przycisk **kontroli dostępu (IAM)**. Blok domyślnie wyświetla właściciele subskrypcji jako właściciel.
    
     ![Przypisz grupę zabezpieczeń do konta usługi Azure Data Lake Store](./media/data-lake-store-secure-data/adl.select.user.icon.png "grupy zabezpieczeń Przypisz do konta usługi Azure Data Lake Store")
 
-    Istnieją dwa sposoby, aby dodać grupę i przypisać odpowiednie role.
-   
-    * Dodaj użytkownika/grupy do konta, a następnie przypisz rolę, lub
-    * Dodaj rolę, a następnie Przypisz użytkowników i grupy do roli.
-     
-    W tej sekcji opisano pierwszego podejścia, dodawanie grupy, a następnie przypisywanie ról. Można wykonać podobne kroki w celu najpierw wybierz rolę, a następnie przypisz grupy do tej roli.
-4. W **użytkowników** bloku, kliknij przycisk **Dodaj** otworzyć **Dodawanie dostępu** bloku. W **Dodawanie dostępu** bloku, kliknij przycisk **wybierz rolę**, a następnie wybierz rolę użytkownika/grupy.
+3. W **kontroli dostępu (IAM)** bloku, kliknij przycisk **Dodaj** otworzyć **dodać uprawnienia** bloku. W **dodać uprawnienia** bloku, wybierz opcję **roli** grupy/użytkownika. Wyszukaj grupy zabezpieczeń, który został utworzony wcześniej w usłudze Azure Active Directory i zaznacz go. Jeśli masz wiele użytkowników i grup, aby wyszukać od użyj **wybierz** pole tekstowe służące do filtrowania nazwę grupy. 
    
     ![Dodaj rolę dla użytkownika](./media/data-lake-store-secure-data/adl.add.user.1.png "Dodaj rolę dla użytkownika")
    
-    **Właściciela** i **współautora** roli zapewniają dostęp do różnych funkcji administracyjnych na konta usługi data lake. Dla użytkowników, którzy będą interakcji z danymi w usłudze data lake, możesz dodać je do ** czytnika ** roli. Zakres tych ról jest ograniczona do operacji zarządzania związane z konta usługi Azure Data Lake Store.
+    **Właściciela** i **współautora** roli zapewniają dostęp do różnych funkcji administracyjnych na konta usługi data lake. Dla użytkowników, którzy będą interakcji z danymi w usłudze data lake, ale nadal potrzeba, aby wyświetlić informacje o zarządzaniu kontem, należy dodać je do **czytnika** roli. Zakres tych ról jest ograniczona do operacji zarządzania związane z konta usługi Azure Data Lake Store.
    
-    Dla danych uprawnienia systemu plików poszczególnych działań zdefiniować, co mogą zrobić użytkownicy. W związku z tym użytkownika mającego rolę czytelnika mogą jedynie wyświetlać ustawienia administracyjne skojarzone z kontem, ale może potencjalnie odczytywania i zapisywania danych oparte na przypisane im uprawnienia systemu plików. Uprawnienia systemu plików usługi Data Lake Store są opisane w [przypisanie grupy zabezpieczeń jako listy kontroli dostępu w systemie plików usługi Azure Data Lake Store](#filepermissions).
-5. W **Dodawanie dostępu** bloku, kliknij przycisk **dodawania użytkowników** otworzyć **dodawania użytkowników** bloku. W tym bloku Wyszukaj grupę zabezpieczeń, który został utworzony wcześniej w usłudze Azure Active Directory. Jeśli masz dużą liczbę grup objętych wyszukiwaniem z, użyj pola tekstowego u góry, aby odfiltrować nazwę grupy. Kliknij pozycję **Wybierz**.
+    Dla operacji danych poszczególnych plików zdefiniować, co mogą zrobić użytkownicy. W związku z tym użytkownika mającego rolę czytelnika mogą jedynie wyświetlać ustawienia administracyjne skojarzone z kontem, ale może potencjalnie odczytywania i zapisywania danych oparte na przypisane im uprawnienia systemu plików. Uprawnienia systemu plików usługi Data Lake Store są opisane w [przypisanie grupy zabezpieczeń jako listy kontroli dostępu w systemie plików usługi Azure Data Lake Store](#filepermissions).
+
+    > [!IMPORTANT]
+    > Tylko **właściciela** roli automatycznie włącza dostępu do systemu plików. **Współautora**, **czytnika**, i innych ról wymaga listy kontroli dostępu włączyć dowolny poziom dostępu do plików i folderów.  **Właściciela** roli zawiera plik administratora i uprawnień do folderu, których nie można zastąpić za pomocą listy kontroli dostępu. Aby uzyskać więcej informacji dotyczących sposobu mapowania RBAC zasady dostępu do danych, zobacz [RBAC dla zarządzania kontem](data-lake-store-security-overview.md#rbac-for-account-management).
+
+4. Jeśli chcesz dodać grupy/użytkownika, który nie znajduje się w **dodać uprawnienia** bloku, możesz poprosić ich, wpisując adres e-mail użytkownika w **wybierz** pola tekstowego, a następnie wybierając je z listy.
    
     ![Dodaj grupę zabezpieczeń](./media/data-lake-store-secure-data/adl.add.user.2.png "Dodaj grupę zabezpieczeń")
    
-    Jeśli chcesz dodać grupy/użytkownika, który nie ma na liście, możesz poprosić ich przy użyciu **zaprosić** ikony, jak i określenie adresu e-mail użytkownika/grupy.
-6. Kliknij przycisk **OK**. Powinny pojawić się do grupy zabezpieczeń dodaje, jak pokazano poniżej.
+5. Kliknij pozycję **Zapisz**. Powinny pojawić się do grupy zabezpieczeń dodaje, jak pokazano poniżej.
    
     ![Dodaje grupę zabezpieczeń](./media/data-lake-store-secure-data/adl.add.user.3.png "dodać grupę zabezpieczeń")
 
-7. Grupy zabezpieczeń użytkowników/ma teraz dostęp do konta usługi Azure Data Lake Store. Jeśli chcesz zapewnić dostęp do określonych użytkowników, możesz je dodać do grupy zabezpieczeń. Podobnie jeśli chcesz odwołać prawa dostępu dla użytkownika, można je usunąć z grupy zabezpieczeń. Można także przypisać wiele grup zabezpieczeń do konta. 
+6. Grupy zabezpieczeń użytkowników/ma teraz dostęp do konta usługi Azure Data Lake Store. Jeśli chcesz zapewnić dostęp do określonych użytkowników, możesz je dodać do grupy zabezpieczeń. Podobnie jeśli chcesz odwołać prawa dostępu dla użytkownika, można je usunąć z grupy zabezpieczeń. Można także przypisać wiele grup zabezpieczeń do konta. 
 
-## <a name="filepermissions"></a>Przypisywanie użytkowników lub grupy zabezpieczeń jako listy kontroli dostępu w systemie plików usługi Azure Data Lake Store
+## <a name="filepermissions"></a>Przypisywanie użytkowników lub grup zabezpieczeń jako listy kontroli dostępu w systemie plików usługi Azure Data Lake Store
 Przypisując użytkownika/zabezpieczeń w systemie plików usługi Azure Data Lake, należy ustawić kontrolę dostępu do danych przechowywanych w usłudze Azure Data Lake Store.
 
 1. W bloku konta usługi Data Lake Store kliknij pozycję **Eksplorator danych**.
    
-    ![Tworzenie katalogów w ramach konta usługi Data Lake Store](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Tworzenie katalogów w ramach konta usługi Data Lake")
-2. W **Eksploratora danych** bloku, kliknij plik lub folder, dla której chcesz skonfigurować listy ACL, a następnie kliknij przycisk **dostępu**. Aby przypisać listę kontroli dostępu do pliku, należy kliknąć opcję **dostępu** z **podglądu pliku** bloku.
+    ![Wyświetlanie danych za pomocą Eksploratora danych](./media/data-lake-store-secure-data/adl.start.data.explorer.png "wyświetlać dane za pomocą Eksploratora danych")
+2. W **Eksploratora danych** bloku, kliknij folder, dla której chcesz skonfigurować listy ACL, a następnie kliknij przycisk **dostępu**. Aby przypisać listy kontroli dostępu do pliku, należy najpierw kliknąć plik w celu wyświetlania podglądu, a następnie kliknij przycisk **dostępu** z **podglądu pliku** bloku.
    
     ![Ustaw listy kontroli dostępu w systemie plików usługi Data Lake](./media/data-lake-store-secure-data/adl.acl.1.png "Ustaw listy kontroli dostępu w systemie plików usługi Data Lake")
-3. **Dostępu** bloku wymieniono dostępu standardowego i niestandardowego dostępu już przypisany do katalogu głównego. Kliknij przycisk **Dodaj** ikonę, aby dodać poziom niestandardowy listy kontroli dostępu.
+3. **Dostępu** bloku wymieniono właściciele i przypisać uprawnienia już przypisany do katalogu głównego. Kliknij przycisk **Dodaj** ikonę, aby dodać dodatkowe dostęp do listy kontroli dostępu.
+    > [!IMPORTANT]
+    > Ustawiania uprawnień dostępu do jednego pliku nie zawsze udziela dostępu użytkownika/grupy do tego pliku. Ścieżka do pliku muszą być dostępne dla przypisanych użytkowników/grupy. Aby uzyskać dodatkowe informacje i przykłady, zobacz [typowe scenariusze dotyczące uprawnień](data-lake-store-access-control.md#common-scenarios-related-to-permissions).
    
     ![Lista dostępu standardowe i niestandardowe](./media/data-lake-store-secure-data/adl.acl.2.png "listy dostępu standardowe i niestandardowe")
    
-   * **Standardowy dostęp** jest dostęp typu UNIX, której możesz określić odczytu, zapisu, należy wykonać trzy klasy unikatowych użytkowników (rwx): właściciela, grupy i inne.
-   * **Niestandardowe dostępu** odpowiada POSIX listy kontroli dostępu, umożliwiający Ustawianie uprawnień dla określonych użytkowników o nazwie lub grupy, a nie tylko właściciela pliku lub grupy. 
+   * **Właścicieli** i **inne osoby** dostęp typu UNIX, której możesz określić Odczyt, zapis, wykonać trzy klasy unikatowych użytkowników (rwx): właściciela, grupy i inne.
+   * **Uprawnienia** odpowiada POSIX listy kontroli dostępu, które umożliwiają skonfigurowanie uprawnień dla określonych użytkowników o nazwie lub grup poza właściciela pliku lub grupy. 
      
      Aby uzyskać więcej informacji, zobacz [listy ACL systemu plików HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Aby uzyskać więcej informacji dotyczących sposobu implementacji listy kontroli dostępu w usłudze Data Lake Store, zobacz [kontroli dostępu w usłudze Data Lake Store](data-lake-store-access-control.md).
-4. Kliknij przycisk **Dodaj** ikonę, aby otworzyć **dodać niestandardowe dostępu** bloku. W tym bloku, kliknij przycisk **Wybieranie użytkownika lub grupy**, a następnie w **Wybieranie użytkownika lub grupy** bloku, wyszukaj grupę zabezpieczeń został utworzony wcześniej w usłudze Azure Active Directory. Jeśli masz dużą liczbę grup objętych wyszukiwaniem z, użyj pola tekstowego u góry, aby odfiltrować nazwę grupy. Kliknij grupę, w której chcesz dodać, a następnie kliknij przycisk **wybierz**.
+4. Kliknij przycisk **Dodaj** ikonę, aby otworzyć **przypisać uprawnienia** bloku. W tym bloku, kliknij przycisk **wybierz użytkownika lub grupę**, a następnie w **wybierz użytkownika lub grupę** bloku, wyszukaj grupę zabezpieczeń został utworzony wcześniej w usłudze Azure Active Directory. Jeśli masz dużą liczbę grup objętych wyszukiwaniem z, użyj pola tekstowego u góry, aby odfiltrować nazwę grupy. Kliknij grupę, w której chcesz dodać, a następnie kliknij przycisk **wybierz**.
    
     ![Dodaj grupę](./media/data-lake-store-secure-data/adl.acl.3.png "Dodaj grupę")
-5. Kliknij przycisk **wybierz uprawnienia**, wybierz uprawnienia i czy chcesz przypisać uprawnienia domyślnie listy ACL, dostępu do listy ACL, lub obie. Kliknij przycisk **OK**.
+5. Kliknij przycisk **wybierz uprawnienia**, wybierz uprawnienia, czy uprawnienia powinien być zastosowany rekursywnie i określa, czy chcesz przypisać uprawnienia jako listy ACL, access domyślne listy ACL, lub obie. Kliknij przycisk **OK**.
    
     ![Przypisywanie uprawnień do grupy](./media/data-lake-store-secure-data/adl.acl.4.png "przypisywanie uprawnień do grupy")
    
     Aby uzyskać więcej informacji na temat uprawnień w usłudze Data Lake Store i dostęp do i domyślnej listy kontroli dostępu, zobacz [kontroli dostępu w usłudze Data Lake Store](data-lake-store-access-control.md).
-6. W **dodać niestandardowe dostępu** bloku, kliknij przycisk **OK**. Nowo dodana grupa, z skojarzone uprawnienia będzie teraz wyświetlany w **dostępu** bloku.
+6. Po kliknięciu przycisku **Ok** w **wybierz uprawnienia** bloku, nowo dodanego grupę oraz skojarzone uprawnienia będzie teraz wyświetlany w **dostępu** bloku.
    
     ![Przypisywanie uprawnień do grupy](./media/data-lake-store-secure-data/adl.acl.5.png "przypisywanie uprawnień do grupy")
    
    > [!IMPORTANT]
-   > W bieżącej wersji może być tylko 9 wpisy w **dostępu niestandardowe**. Jeśli chcesz dodać więcej niż 9 użytkowników, należy utworzyć grupy zabezpieczeń, dodawanie użytkowników do grup zabezpieczeń, Dodaj zapewnianie dostępu do tych grup zabezpieczeń dla konta usługi Data Lake Store.
+   > W bieżącej wersji może mieć maksymalnie 28 wpisy w **przypisane uprawnienia**. Jeśli chcesz dodać więcej niż 28 użytkowników, należy utworzyć grupy zabezpieczeń, dodawanie użytkowników do grup zabezpieczeń, Dodaj zapewnianie dostępu do tych grup zabezpieczeń dla konta usługi Data Lake Store.
    > 
    > 
 7. W razie potrzeby można również zmodyfikować uprawnienia dostępu, po dodaniu grupy. Usuń zaznaczenie lub zaznacz pole wyboru dla każdego typu uprawnienia (Odczyt, zapis, wykonywanie) oparte na czy chcesz usunąć lub przypisać te uprawnienia do grupy zabezpieczeń. Kliknij przycisk **zapisać** można zapisać zmian, lub **odrzucić** cofnięcie zmian.
@@ -125,28 +124,27 @@ Azure Data Lake Store umożliwia dalsze blokowania dostępu do magazynu danych n
 ![Ustawienia zapory i IP dostępu](./media/data-lake-store-secure-data/firewall-ip-access.png "ustawienia i adres IP zapory")
 
 ## <a name="remove-security-groups-for-an-azure-data-lake-store-account"></a>Usuwanie grupy zabezpieczeń dla konta usługi Azure Data Lake Store
-Po usunięciu grupy zabezpieczeń z konta usługi Azure Data Lake Store tylko zmienić dostęp do operacji zarządzania na koncie przy użyciu portalu Azure i interfejsów API usługi Azure Resource Manager.
+Po usunięciu grupy zabezpieczeń z konta usługi Azure Data Lake Store tylko zmienić dostęp do operacji zarządzania na koncie przy użyciu portalu Azure i interfejsów API usługi Azure Resource Manager.  
 
-1. W bloku konta usługi Data Lake Store, kliknij przycisk **ustawienia**. Z **ustawienia** bloku, kliknij przycisk **użytkowników**.
+Dostęp do danych jest bez zmian i jest nadal zarządzana przez dostęp do listy kontroli dostępu.  Wyjątkiem są użytkownicy/grupy do roli właścicieli.  Użytkownicy/grupy usunięty z roli właścicieli nie są już superużytkowników i ich dostęp powraca do ustawienia listy ACL dostępu. 
+
+1. W bloku konta usługi Data Lake Store, kliknij przycisk **kontroli dostępu (IAM)**. 
    
     ![Przypisz grupę zabezpieczeń do konta usługi Azure Data Lake](./media/data-lake-store-secure-data/adl.select.user.icon.png "grupy zabezpieczeń Przypisz do konta usługi Azure Data Lake")
-2. W **użytkowników** bloku kliknij grupę zabezpieczeń, aby usunąć.
-   
-    ![Grupy zabezpieczeń, aby usunąć](./media/data-lake-store-secure-data/adl.add.user.3.png "grupy zabezpieczeń do usunięcia")
-3. W bloku dla grupy zabezpieczeń, kliknij **Usuń**.
+2. W **kontroli dostępu (IAM)** bloku, kliknij przycisk grup zabezpieczeń do usunięcia. Kliknij przycisk **Usuń**.
    
     ![Grupa zabezpieczeń usunięte](./media/data-lake-store-secure-data/adl.remove.group.png "usunięta grupa zabezpieczeń")
 
 ## <a name="remove-security-group-acls-from-azure-data-lake-store-file-system"></a>Usuń grupę zabezpieczeń listy kontroli dostępu w systemie plików usługi Azure Data Lake Store
-Po usunięciu grupy zabezpieczeń listy kontroli dostępu w systemie plików usługi Azure Data Lake Store możesz zmienić dostępu do danych w usłudze Data Lake Store.
+Podczas usuwania grupy zabezpieczeń listy kontroli dostępu w systemie plików usługi Azure Data Lake Store, możesz zmienić dostępu do danych w usłudze Data Lake Store.
 
 1. W bloku konta usługi Data Lake Store kliknij pozycję **Eksplorator danych**.
    
     ![Tworzenie katalogów w ramach konta usługi Data Lake](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Tworzenie katalogów w ramach konta usługi Data Lake")
-2. W **Eksploratora danych** bloku, kliknij plik lub folder, dla którego chcesz usunąć listy ACL, a następnie w bloku konta, kliknij przycisk **dostępu** ikony. Aby usunąć listy ACL dla pliku, należy kliknąć opcję **dostępu** z **podglądu pliku** bloku.
+2. W **Eksploratora danych** bloku, kliknij folder, dla którego chcesz usunąć listy ACL, a następnie kliknij przycisk **dostępu**. Aby usunąć listy ACL dla pliku, należy najpierw kliknąć plik w celu wyświetlania podglądu, a następnie kliknij przycisk **dostępu** z **podglądu pliku** bloku. 
    
     ![Ustaw listy kontroli dostępu w systemie plików usługi Data Lake](./media/data-lake-store-secure-data/adl.acl.1.png "Ustaw listy kontroli dostępu w systemie plików usługi Data Lake")
-3. W **dostępu** bloku z **dostępu niestandardowe** kliknij opcję grupy zabezpieczeń, które chcesz usunąć. W **dostępu niestandardowe** bloku, kliknij przycisk **Usuń** , a następnie kliknij przycisk **OK**.
+3. W **dostępu** bloku, kliknij grupę zabezpieczeń, które chcesz usunąć. W **dostęp do szczegółów** bloku, kliknij przycisk **Usuń**.
    
     ![Przypisywanie uprawnień do grupy](./media/data-lake-store-secure-data/adl.remove.acl.png "przypisywanie uprawnień do grupy")
 

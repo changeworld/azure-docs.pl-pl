@@ -1,24 +1,24 @@
 ---
-title: "Biznesowe opis etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft"
-description: "Cele, zadań i elementów dostarczanych na etapie opis firm projektów analizy danych"
+title: Biznesowe opis etapie cyklu życia procesu nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
+description: Cele, zadań i elementów dostarczanych na etapie opis firm projektów analizy danych
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 82784cbfd5f12297c376a395b54a817a2ae915a5
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: daaaccaeac196b5f4651183173c8e83085d5184d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="business-understanding"></a>Poznawanie firmy
 
@@ -80,10 +80,10 @@ Na przykład znaleźć, że istniejące systemy należy zbierać i rejestrować 
 Poniżej przedstawiono elementy dostarczane na tym etapie:
 
    * [Dokument karty](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardowy szablon znajduje się w definicji struktury TDSP projektu. Dokument karty jest życia. Należy zaktualizować szablon w projekcie wprowadzeniu nowych odnajdywania i zmiany wymagań biznesowych. Należy przejść na ten dokument, dodając więcej szczegółów, w czasie wykonywania w procesie odnajdowania. Zachowaj klienta i inni uczestnicy projektu w wprowadzania zmian i dokładniej informują powody zmiany do nich.  
-   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): **źródeł danych pierwotnych** sekcji **definicje danych** raport, który znajduje się w projekcie TDSP **raport danych** folder zawiera źródła danych. Ta sekcja określa oryginał i miejsce docelowe lokalizacje nieprzetworzone dane. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty w celu przenoszenia danych do środowiska analitycznych.  
+   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): **źródeł danych pierwotnych** sekcji **definicje danych** raport, który znajduje się w projekcie TDSP **raport danych** folder zawiera dane źródeł. Ta sekcja określa oryginał i miejsce docelowe lokalizacje nieprzetworzone dane. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty w celu przenoszenia danych do środowiska analitycznych.  
    * [Słowniki danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): ten dokument zawiera opis danych, które są udostępniane przez klienta. Opisy te zawierają informacje o schematu (typy danych i informacji na temat reguł sprawdzania poprawności, jeśli istnieje) i diagramy jednostki relacji, jeśli jest dostępna.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto łącza do każdego kroku w cyklu TDSP:
 

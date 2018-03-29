@@ -1,24 +1,24 @@
 ---
-title: "Rozwiązania analizy DNS w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie i korzystanie z rozwiązania analizy DNS w analizy dzienników można zebrać informacje dotyczące infrastruktury DNS dotyczące zabezpieczeń, wydajności i operacji."
+title: Rozwiązania analizy DNS w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Konfigurowanie i korzystanie z rozwiązania analizy DNS w analizy dzienników można zebrać informacje dotyczące infrastruktury DNS dotyczące zabezpieczeń, wydajności i operacji.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbieranie informacji na temat infrastruktury DNS z rozwiązaniem Podgląd Analytics DNS
 
@@ -145,7 +145,6 @@ Informacje ułatwiające identyfikację:
 
 **Przykładowe zapytania analityczne Interfejsu**. Zawiera listę typowych zapytania wyszukiwania, które pobierają dane pierwotne analytics bezpośrednio.
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Przykładowe zapytania](./media/log-analytics-dns/queries.png)
 
@@ -166,7 +165,7 @@ Te zapytania można użyć jako punktu wyjścia do tworzenia zapytań niestandar
 
 Na stronie dziennik wyszukiwania można utworzyć kwerendę. Wyniki wyszukiwania można filtrować za pomocą formantów zestawu reguł. Można też utworzyć zaawansowanych zapytań przekształcenia filtru i raportu na wyniki. Uruchom przy użyciu następujące zapytania:
 
-1. W **pola zapytania wyszukiwania**, typ `Type=DnsEvents` do wyświetlenia wszystkich zdarzeń DNS generowane przez serwery DNS są zarządzane przez rozwiązanie. Wyniki listy dane dziennika dla wszystkich zdarzeń związanych z zapytania wyszukiwania, dynamicznej rejestracji i zmiany konfiguracji.
+1. W **pola zapytania wyszukiwania**, typ `DnsEvents` do wyświetlenia wszystkich zdarzeń DNS generowane przez serwery DNS są zarządzane przez rozwiązanie. Wyniki listy dane dziennika dla wszystkich zdarzeń związanych z zapytania wyszukiwania, dynamicznej rejestracji i zmiany konfiguracji.
 
     ![DnsEvents dziennik wyszukiwania](./media/log-analytics-dns/log-search-dnsevents.png)  
 
@@ -176,7 +175,7 @@ Na stronie dziennik wyszukiwania można utworzyć kwerendę. Wyniki wyszukiwania
 
     c. Aby wyświetlić dane dziennika dla zmian konfiguracji, wybierz **Zmianakonfiguracji** jako **podtypu** filtr z kontroli aspektu po lewej stronie. Listę wszystkich zdarzeń zmian konfiguracji dla wybranego okresu zostanie wyświetlony.
 
-2. W **pola zapytania wyszukiwania**, typ `Type=DnsInventory` do wyświetlania wszystkich DNS związane z magazynu danych do serwerów DNS, które są zarządzane przez rozwiązanie. Wyniki listy dane dziennika dla serwerów DNS strefy DNS i rekordów zasobów.
+2. W **pola zapytania wyszukiwania**, typ `DnsInventory` do wyświetlania wszystkich DNS związane z magazynu danych do serwerów DNS, które są zarządzane przez rozwiązanie. Wyniki listy dane dziennika dla serwerów DNS strefy DNS i rekordów zasobów.
 
     ![DnsInventory dziennik wyszukiwania](./media/log-analytics-dns/log-search-dnsinventory.png)
 

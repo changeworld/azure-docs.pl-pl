@@ -1,8 +1,8 @@
 ---
-title: "Narzędzia oceny rozwiązania Cortana Intelligence | Dokumentacja firmy Microsoft"
-description: "Partnerzy firmy Microsoft poniżej przedstawiono kroki, które należy wykonać, aby opublikować rozwiązania Cortana Intelligence AppSource."
+title: Narzędzia oceny rozwiązania Cortana Intelligence | Dokumentacja firmy Microsoft
+description: Partnerzy firmy Microsoft poniżej przedstawiono kroki, które należy wykonać, aby opublikować rozwiązania Cortana Intelligence AppSource.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: anupams
+ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Narzędzie oceny rozwiązania Cortana Intelligence
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Można użyć narzędzia oceny rozwiązania Cortana Intelligence do oceny dla zgodności z zalecanymi przez firmę Microsoft najlepsze rozwiązania w zakresie rozwiązań zaawansowana analityka. Jest chcesz pracować z naszych partnerów firmy Microsoft (niezależnym dostawcom oprogramowania / SIs) do tworzenia wysokiej jakości rozwiązań dla klientów, odsprzedawców i wdrażania. Ten przewodnik przeprowadzenie procesu za pomocą narzędzia oceny rozwiązania z rozwiązania i opisz określonych najlepsze rozwiązania w sprawdza, czy.
 
 ## <a name="getting-started"></a>Wprowadzenie
@@ -46,7 +46,7 @@ Połącz z subskrypcją platformy Azure i podaj grupę zasobów, zawierającą a
 Po załadowaniu grupy zasobów wybierz zasoby, które znajdują się w rozwiązaniu i zidentyfikować dostępność zasobów danych jako:
 - Wprowadzanie
 - Zużycie
-- Wewnętrzne
+- Wewnętrzny
 
 Używamy tych informacji, aby lepiej zrozumieć sposób rozwiązania jest przy użyciu różnych składników i zapewnienie składników dla użytkownika są zgodne z najlepszymi rozwiązaniami.
 
@@ -61,7 +61,7 @@ Użycie w takim przypadku oznacza, że wszystkie zestawy danych, które są uży
 >[!NOTE]
 Użycie zasobów specyficznych dla wprowadzanie i zużycia wybierz **zużycie**.
 
-### <a name="internal"></a>Wewnętrzne
+### <a name="internal"></a>Wewnętrzny
 Użyj wewnętrznego dla wszystkich zasobów danych, które są używane tylko podczas przetwarzania aplikacji wewnętrznych.
 
 Następnie możesz wyświetli monit o podanie prawidłowych poświadczeń żadnych baz danych określonej w poprzednich kroku:

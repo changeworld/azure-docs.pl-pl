@@ -1,12 +1,12 @@
 ---
-title: "Azure porady dotyczące wydajności rozwiązania Cosmos DB dla programu .NET | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure DB rozwiązania Cosmos"
-keywords: "jak poprawić wydajność bazy danych"
+title: Azure porady dotyczące wydajności rozwiązania Cosmos DB dla programu .NET | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure DB rozwiązania Cosmos
+keywords: jak poprawić wydajność bazy danych
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mimig
-ms.openlocfilehash: 2b822794cbafa037d4ab3cb23d2a885914c83607
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6b8ff8d2efd2039e7b71f4e8f25b2756d324940f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -28,8 +28,6 @@ ms.lasthandoff: 02/28/2018
 > 
 
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności bazy danych Azure rozwiązania Cosmos i .NET
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure DB rozwiązania Cosmos jest szybkie i elastyczne rozproszoną bazę danych, która skaluje bezproblemowo gwarantowane opóźnienia i przepływności. Nie trzeba zmieniać architektura głównych ani pisania złożonego kodu można skalować bazy danych z bazy danych Azure rozwiązania Cosmos. Skalowanie w górę i w dół sprowadza się do jednego wywołania interfejsu API lub [zestawu SDK wywołania metody](set-throughput.md#set-throughput-sdk). Jednak ponieważ bazy danych Azure rozwiązania Cosmos jest dostępny za pośrednictwem połączeń sieci istnieją optymalizacje po stronie klienta, możesz wprowadzić, aby osiągnąć najwyższą wydajność przy użyciu [zestawu .NET SDK SQL](documentdb-sdk-dotnet.md).
 

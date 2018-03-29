@@ -1,6 +1,6 @@
 ---
-title: "Azure rozwiązania Cosmos bazy danych: Interfejsu API SQL Python, zestaw SDK & zasobów | Dokumentacja firmy Microsoft"
-description: "Dowiedz się wszystkiego o interfejsu API języka Python SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji zestawu SDK Python platformy Azure rozwiązania Cosmos bazy danych."
+title: 'Azure rozwiązania Cosmos bazy danych: Interfejsu API SQL Python, zestaw SDK & zasobów | Dokumentacja firmy Microsoft'
+description: Dowiedz się wszystkiego o interfejsu API języka Python SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji zestawu SDK Python platformy Azure rozwiązania Cosmos bazy danych.
 services: cosmos-db
 documentationcenter: python
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e1eeb93ad066d3c5e8f33a945c24c4bd9db3a05
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0be360b5fdc6b562dc7aa6af2b8395b0f910c2d0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure SDK Python DB rozwiązania Cosmos dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/02/2018
 > * [Źródła danych zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Asynchroniczne Java](sql-api-sdk-async-java.md)
+> * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
@@ -35,8 +35,6 @@ ms.lasthandoff: 03/02/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 

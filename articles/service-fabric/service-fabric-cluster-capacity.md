@@ -1,11 +1,11 @@
 ---
-title: "Planowanie pojemności klastra usługi sieć szkieletowa | Dokumentacja firmy Microsoft"
-description: "Zagadnienia związane z planowaniem pojemności klastra sieci szkieletowej usług. Elementów NodeType, operacje, trwałości i niezawodności warstw"
+title: Planowanie pojemności klastra usługi sieć szkieletowa | Dokumentacja firmy Microsoft
+description: Zagadnienia związane z planowaniem pojemności klastra sieci szkieletowej usług. Elementów NodeType, operacje, trwałości i niezawodności warstw
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b39c22fb45b0e20a3aa7a6dcf59619a87df32ca1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Zagadnienia związane z planowaniem pojemności klastra sieci szkieletowej usług
 Wszystkie wdrożenia produkcyjnego planowania pojemności jest ważnym krokiem. Poniżej przedstawiono niektóre elementy, które należy wziąć pod uwagę w ramach tego procesu.
@@ -69,7 +69,7 @@ Warstwa trwałości jest służy do wskazania systemowi uprawnienia, które maj�
 
 To uprawnienie jest wyrażona w następujących wartości:
 
-* Czas trwania dwóch godzin na UD można wstrzymywać złota - infrastruktury zadań. Złoty trwałości można włączyć tylko w węźle pełne jednostki SKU maszyny Wirtualnej, takie jak L32s, GS5, G5, DS15_v2 itp D15_v2 (ogólnie wszystkich rozmiarów maszyn wirtualnych wymienione w http://aka.ms/vmspecs, które są oznaczone jako "Wystąpienia jest izolowane sprzętu przeznaczonego do jednego odbiorcy" z uwagi maszyn wirtualnych węzła pełna)
+* Czas trwania dwóch godzin na UD można wstrzymywać złota - infrastruktury zadań. Złoty trwałości można włączyć tylko w węźle pełne jednostki SKU maszyny Wirtualnej, takie jak L32s GS5, G5, DS15_v2, D15_v2 itp (ogólnie wszystkich rozmiarów maszyn wirtualnych wymienione na http://aka.ms/vmspecs, które są oznaczone jako "Wystąpienia jest izolowane sprzętu przeznaczonego do jednego odbiorcy" z uwagi, pełny węzła maszyn wirtualnych)
 * Srebrny - zadania infrastruktury może być wstrzymana na okres 10 minut na każdą UD i jest dostępny na wszystkich standardowych maszyn wirtualnych z pojedynczego rdzenia i powyżej.
 * Brązowy - żadnych uprawnień. Jest to wartość domyślna. Ten poziom trwałości należy używać tylko dla typów węzłów, które uruchamiane _tylko_ bezstanowe. 
 
@@ -87,7 +87,7 @@ Otrzymasz wybierz poziom trwałości dla każdego z typów węzłów. Można wyb
 **Wady używania Silver lub złota poziom trwałości**
  
 1. Wdrożenia do zestawu skalowania maszyn wirtualnych i inne powiązane zasoby Azure) mogą być opóźnione, można przekroczyło limit czasu lub mogą zostać zablokowane całkowicie przez problemy w klastrze lub na poziomie infrastruktury. 
-2. Zwiększa liczbę [zdarzenia cyklu życia repliki](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (na przykład podstawowego zamiany) ze względu na automatyczne deactivations węzła podczas operacji infrastruktury platformy Azure.
+2. Zwiększa liczbę [zdarzenia cyklu życia repliki](service-fabric-reliable-services-lifecycle.md) (na przykład podstawowego zamiany) ze względu na automatyczne deactivations węzła podczas operacji infrastruktury platformy Azure.
 3. Pobiera węzły poza usługi dla okresów podczas aktualizacji oprogramowania platformy Azure lub konserwacji sprzętu, które są wykonywane działania. Węzły o stanie wyłączona lub wyłączenie może pojawić się podczas tych czynności. Tymczasowo zmniejsza pojemność klastra, ale nie powinny mieć wpływ na dostępność klastra lub aplikacji.
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>Zalecenia dotyczące użycie Silver lub złota poziom trwałości
@@ -101,10 +101,10 @@ Użyj trwałości Silver lub Gold dla wszystkich typów węzłów zawierających
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Operacyjne zalecenia dla węzła typu, że wybrano trwałości silver lub gold poziomu.
 
-1. Zachowaj klastra, a aplikacje dobrej kondycji przez cały czas i upewnij się, że aplikacje odpowiadanie na wszystkie [usługi zdarzenia cyklu życia repliki](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (np. repliki w kompilacji jest zablokowana) w odpowiednim czasie.
+1. Zachowaj klastra, a aplikacje dobrej kondycji przez cały czas i upewnij się, że aplikacje odpowiadanie na wszystkie [usługi zdarzenia cyklu życia repliki](service-fabric-reliable-services-lifecycle.md) (np. repliki w kompilacji jest zablokowana) w odpowiednim czasie.
 2. Przyjmuje bezpieczniejsze sposoby zmiany jednostki SKU maszyny Wirtualnej (skalowanie w górę/dół): zmiana SKU maszyny Wirtualnej zestawu skali maszyny wirtualnej jest z założenia niebezpieczna operacja i dlatego należy unikać Jeśli to możliwe. Oto proces można wykonać w celu uniknięcia typowych problemów.
     - **Dla elementów innych niż podstawowe NodeType:** zalecane jest, Utwórz nowy zestaw skali maszyny wirtualnej, zmodyfikuj ograniczenia umieszczania usług do uwzględnienia nowego typu węzeł zestaw skalowania maszyny wirtualnej, a następnie zmniejsz starego wystąpienia zestawu skalowania maszyn wirtualnych liczba 0, w jednym węźle naraz (jest to aby upewnić się, że usuwania węzłów nie wpływają na niezawodność klastra).
-    - **Dla podstawowy typ nodetype:** firma Microsoft zaleca, nie należy zmieniać SKU wirtualna tego typu węzła podstawowego. Zmiana typu węzła podstawowego, jednostka SKU nie jest obsługiwane. Jeśli przyczyna dla nowej jednostki SKU pojemności, zaleca się dodawania więcej wystąpień. Jeśli nie jest możliwe, Utwórz nowy klaster i [Przywróć stan aplikacji](service-fabric-reliable-services-backup-restore.md) (jeśli dotyczy) ze starego klastra. Nie należy przywrócić wszystkie stanu usługi systemu, zostaną ponownie utworzone podczas wdrażania aplikacji do nowego klastra. Jeśli właśnie uruchomionych aplikacji bezstanowych w klastrze, a następnie wszystko, co możesz zrobić to wdrażanie aplikacji do nowego klastra, nie niczego do przywrócenia. Jeśli zdecydujesz się przejść nieobsługiwany trasy i chcesz zmienić jednostki SKU maszyny Wirtualnej, następnie wprowadzić modyfikacje definicję modelu ustawić skali maszyny wirtualnej w celu odzwierciedlenia nowej jednostki SKU. Jeśli klaster ma tylko jeden typ nodetype, następnie upewnij się, że wszystkie aplikacje stanowe odpowiadanie na wszystkie [usługi zdarzenia cyklu życia repliki](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (np. repliki w kompilacji jest zablokowana) w odpowiednim czasie, który repliki usługi odbudować czas trwania jest mniej niż pięć minut (poziom trwałości srebrny). 
+    - **Dla podstawowy typ nodetype:** firma Microsoft zaleca, nie należy zmieniać SKU wirtualna tego typu węzła podstawowego. Zmiana typu węzła podstawowego, jednostka SKU nie jest obsługiwane. Jeśli przyczyna dla nowej jednostki SKU pojemności, zaleca się dodawania więcej wystąpień. Jeśli nie jest możliwe, Utwórz nowy klaster i [Przywróć stan aplikacji](service-fabric-reliable-services-backup-restore.md) (jeśli dotyczy) ze starego klastra. Nie należy przywrócić wszystkie stanu usługi systemu, zostaną ponownie utworzone podczas wdrażania aplikacji do nowego klastra. Jeśli właśnie uruchomionych aplikacji bezstanowych w klastrze, a następnie wszystko, co możesz zrobić to wdrażanie aplikacji do nowego klastra, nie niczego do przywrócenia. Jeśli zdecydujesz się przejść nieobsługiwany trasy i chcesz zmienić jednostki SKU maszyny Wirtualnej, następnie wprowadzić modyfikacje definicję modelu ustawić skali maszyny wirtualnej w celu odzwierciedlenia nowej jednostki SKU. Jeśli klaster ma tylko jeden typ nodetype, następnie upewnij się, że wszystkie aplikacje stanowe odpowiadanie na wszystkie [usługi zdarzenia cyklu życia repliki](service-fabric-reliable-services-lifecycle.md) (np. repliki w kompilacji jest zablokowana) w odpowiednim czasie, który repliki usługi odbudować czas trwania jest mniej niż pięć minut (poziom trwałości srebrny). 
 
 
 > [!WARNING]

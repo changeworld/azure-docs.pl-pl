@@ -1,11 +1,11 @@
 ---
-title: "Dokumentacja dla deweloperów języka Java dla usługi Azure Functions | Dokumentacja firmy Microsoft"
-description: "Zrozumienie sposobu tworzenia funkcje za pomocą języka Java."
+title: Dokumentacja dla deweloperów języka Java dla usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Zrozumienie sposobu tworzenia funkcje za pomocą języka Java.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "Azure funkcji, funkcji, przetwarzania elementów webhook, dynamiczne obliczeń, architektura niekorzystającą, java zdarzeń"
+keywords: Azure funkcji, funkcji, przetwarzania elementów webhook, dynamiczne obliczeń, architektura niekorzystającą, java zdarzeń
 ms.service: functions
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 71576e65d20d7e8cb7f5ff1c5f19c82439bb6807
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dewelopera usługi Azure Java funkcji
 > [!div class="op_single_selector"]
@@ -270,7 +270,7 @@ które należy zdefiniować powiązania danych wyjściowych w `function.json`:
 
 Czasami funkcję musi dokładną kontrolę nad wejścia i wyjścia. Specjalizowany typów w `azure-functions-java-core` pakietu znajdują się manipulować informacjami żądania i dostosować to wyzwalacza HTTP:
 
-| Specjalistyczną odmianą      |       Cel        | Typowy sposób                  |
+| Specjalistyczną odmianą      |       Środowisko docelowe        | Typowy sposób                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    Wyzwalacz protokołu HTTP     | Pobierz — metoda, nagłówkach lub zapytania |
 | `HttpResponseMessage<T>` | Powiązanie wyniku HTTP | Zwrotny stan innych niż 200   |
@@ -325,9 +325,33 @@ public class Function {
 }
 ```
 
+## <a name="environment-variables"></a>Zmienne środowiskowe
+
+Często jest to pożądane do wyodrębnienia tajnych informacji z kodu źródłowego ze względów bezpieczeństwa. Dzięki temu kod publikowane do repozytoriów kodu źródłowego bez przypadkowo podawania poświadczeń innych deweloperów. Można to osiągnąć, po prostu, używając zmiennych środowiskowych podczas uruchamiania usługi Azure Functions lokalnego i w przypadku wdrażania funkcji Azure.
+
+Można łatwo ustawić zmienne środowiskowe podczas uruchamiania usługi Azure Functions lokalnie, można dodać do pliku local.settings.json tych zmiennych. Jeśli jedno nie jest obecny w katalogu głównym projektu funkcji, możesz go utworzyć. Oto, jak powinna wyglądać pliku:
+
+```xml
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "AzureWebJobsDashboard": ""
+  }
+}
+```
+
+Każdy klucz-wartość mapowanie w `values` mapy zostanie udostępniona w czasie wykonywania jako zmienną środowiskową, dostępny przez wywołanie metody `System.getenv("<keyname>")`, na przykład `System.getenv("AzureWebJobsStorage")`. Dodawanie dodatkowych klucz / wartość pary i akceptowany jest zalecana praktyka.
+
+> [!NOTE]
+> Jeśli takie podejście jest zajęty, można się, że wziąć pod uwagę, czy dodawanie local.settings.json pliku do repozytorium, zignorować pliku, tak, aby nie została przekazana.
+
+Swoim własnym kodem teraz w zależności od tych zmiennych środowiskowych możesz zalogować się w portalu Azure, aby ustawić taki sam klucz / wartość pary w ustawieniach aplikacji funkcji, aby kod ekwiwalentnie podczas testowania lokalnie, jak i po wdrożeniu na platformie Azure.
+
 ## <a name="next-steps"></a>Kolejne kroki
 Więcej informacji zawierają następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
 * [Azure funkcje wyzwalaczy i powiązań](functions-triggers-bindings.md)
+* [Funkcje zdalnego debugowania języka Java Azure z kodem Visual Studio](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

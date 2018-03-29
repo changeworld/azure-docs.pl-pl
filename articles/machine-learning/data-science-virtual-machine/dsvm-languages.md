@@ -1,25 +1,25 @@
 ---
-title: "Języki maszyny wirtualnej nauki danych na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Języki maszyny wirtualnej nauki danych na platformie Azure"
-keywords: "narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux"
+title: Języki maszyny wirtualnej nauki danych na platformie Azure | Dokumentacja firmy Microsoft
+description: Języki maszyny wirtualnej nauki danych na platformie Azure
+keywords: narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: bb36f79d6af66dfaceb63730d59713ab9da7c89e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: 0c780b822e80bb8fce9ef4b1d85b445ee73ae7db
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Języki obsługiwane na maszynie wirtualnej nauki danych 
 

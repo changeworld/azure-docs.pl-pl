@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: d4022a89b8e0e08679e1c593dc1b691a23d21471
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Monitorowanie za pomocą monitora Azure fabryki danych  
 Aplikacje w chmurze są złożonych z wielu części ruchu. Monitorowanie zawiera danych, aby upewnić się, że aplikacja pozostaje w górę i działa w dobrej kondycji. Pomaga również umożliwia stave potencjalne problemy i rozwiązywanie problemów w przeszłości te. Ponadto można użyć danych monitorowania w celu uzyskania szczegółowych informacji o aplikacji. Wiedzy może pomóc zwiększyć wydajność aplikacji lub utrzymania lub automatyzować czynności, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -381,7 +381,7 @@ Aby dowiedzieć się więcej tutaj] ()https://msdn.microsoft.com/en-us/library/a
 |rozpoczynanie| Ciąg | Początek uruchomić wyzwalacz w zakres czasu, w formacie UTC | `2017-06-26T20:55:29.5007959Z`|
 |status| Ciąg | Stan końcowy czy wyzwalacz pomyślnie uruchamiany (powodzenie lub niepowodzenie) | `Succeeded`|
 
-### <a name="metrics"></a>Metryki
+## <a name="metrics"></a>Metryki
 
 Azure Monitor umożliwia korzystanie z telemetrię, aby uzyskać wgląd w wydajności i kondycji obciążeń na platformie Azure. Typ najważniejszych danych telemetrycznych platformy Azure jest metryki (nazywanych również liczniki wydajności) emitowane przez zasoby najbardziej platformy Azure. Azure Monitor udostępnia kilka sposobów konfigurowania i korzystać z tych metryk do monitorowania i rozwiązywania problemów.
 
@@ -397,6 +397,51 @@ ADFV2 emituje następujące metryki
 | TriggerFailedRuns    | Nie powiodło się wyzwalacz uruchamia metryk     | Licznik    | Łącznie                | Całkowita wyzwalacz uruchamia nie powiodło się w ciągu minuty okna      |
 
 Aby uzyskać dostęp do metryk, postępuj zgodnie z instrukcjami w artykule- https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+
+## <a name="alerts"></a>Alerty
+
+Może zgłaszać alerty w przypadku obsługiwanych metryki w fabryce danych. Kliknij przycisk **alerty** przycisk w fabryce danych **Monitor** strony.
+
+![Opcja alertów](media/monitor-using-azure-monitor/alerts_image1.png)
+
+Powoduje to przejście do **alerty** strony.
+
+![Strona alertów](media/monitor-using-azure-monitor/alerts_image2.png)
+
+Możesz również zalogować się do portalu Azure i kliknij przycisk **Monitor —&gt; alerty** nawiązać **alerty** strony bezpośrednio.
+
+![Alerty w menu portalu](media/monitor-using-azure-monitor/alerts_image3.png)
+
+### <a name="create-alerts"></a>Tworzenie alertów
+
+1.  Kliknij przycisk **+ nową regułę alertu** do utworzenia nowego alertu.
+
+    ![nowe reguły alertu](media/monitor-using-azure-monitor/alerts_image4.png)
+
+2.  Zdefiniuj **alertów warunku**.
+
+    > [!NOTE]
+    > Upewnij się wybrać **wszystkie** w **Filtruj według typu zasobu**.
+
+    ![Warunek alertu, ekranu 1 z 3](media/monitor-using-azure-monitor/alerts_image5.png)
+
+    ![Warunek alertu, ekranu 2 z 3](media/monitor-using-azure-monitor/alerts_image6.png)
+
+    ![Warunek alertu, ekranu 3 z 3](media/monitor-using-azure-monitor/alerts_image7.png)
+
+3.  Zdefiniuj **szczegóły alertu**.
+
+    ![Szczegóły alertu](media/monitor-using-azure-monitor/alerts_image8.png)
+
+4.  Zdefiniuj **grupy akcji**.
+
+    ![Grupy akcji, ekran 1 z 4](media/monitor-using-azure-monitor/alerts_image9.png)
+
+    ![Grupy akcji, ekran 2 z 4](media/monitor-using-azure-monitor/alerts_image10.png)
+
+    ![Grupy akcji, ekran 3 z 4](media/monitor-using-azure-monitor/alerts_image11.png)
+
+    ![Grupy akcji, ekranu 4 z 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz [monitora i programowe zarządzanie potoki](monitor-programmatically.md) artykułu, aby uzyskać informacje o monitorowaniu i zarządzaniu nimi potoki, uruchamiając. 

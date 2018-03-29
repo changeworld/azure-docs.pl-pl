@@ -1,8 +1,8 @@
 ---
-title: "Skrypt programowanie akcji z usługą HDInsight opartą na systemie Linux - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skrypty powłoki systemowej umożliwia dostosowywanie klastrów usługi HDInsight opartych na systemie Linux. Funkcja Akcja skryptu HDInsight pozwala na uruchamianie skryptów podczas lub po utworzeniu klastra. Skrypty można zmienić ustawienia konfiguracji klastra lub zainstalować dodatkowe oprogramowanie."
+title: Skrypt programowanie akcji z usługą HDInsight opartą na systemie Linux - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skrypty powłoki systemowej umożliwia dostosowywanie klastrów usługi HDInsight opartych na systemie Linux. Funkcja Akcja skryptu HDInsight pozwala na uruchamianie skryptów podczas lub po utworzeniu klastra. Skrypty można zmienić ustawienia konfiguracji klastra lub zainstalować dodatkowe oprogramowanie.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5074345533f0fdb0c72bf319646ad614632d1940
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>Tworzenie akcji skryptu za pomocą usługi HDInsight
 
@@ -66,7 +66,7 @@ Podczas opracowywania niestandardowego skryptu dla klastra usługi HDInsight, is
 
 Różne wersje HDInsight korzystają z różnych wersji usług Hadoop i zainstalowanych składników. Jeśli skrypt oczekuje określoną wersję usługi lub składnika, skrypt należy używać tylko z wersją HDInsight, która zawiera wymagane składniki. Można znaleźć informacje o wersji składników uwzględnionych w usłudze HDInsight przy użyciu [przechowywanie wersji składnika usługi HDInsight](hdinsight-component-versioning.md) dokumentu.
 
-### <a name="bps10"></a>Docelowa wersja systemu operacyjnego
+### <a name="bps10"></a> Docelowa wersja systemu operacyjnego
 
 HDInsight opartych na systemie Linux jest oparta na dystrybucji Ubuntu Linux. Różnych wersji usługi hdinsight korzystają z różnych wersji systemu Ubuntu, która może zmienić sposób działania skryptu. Na przykład HDInsight 3.4 i starsze wersje są oparte na wersji Ubuntu, które używają Upstart. W wersji 3.5 lub nowszej są oparte na 16.04 Ubuntu, który używa Systemd. Systemd i Upstart zależne inne polecenia, aby skrypt powinien być zapisywany do pracy z programem.
 
@@ -118,7 +118,7 @@ Najlepszym rozwiązaniem jest, aby pobrać i zarchiwizowanie wszystkich na konci
 > [!IMPORTANT]
 > Konto magazynu używane musi być domyślne konto magazynu dla klastra lub kontener publiczne, tylko do odczytu na inne konto magazynu.
 
-Na przykład przykłady obsługiwane przez firmę Microsoft są przechowywane w [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) konta magazynu. Ta lokalizacja jest publiczny, tylko do odczytu kontenera obsługiwanego przez zespół usługi HDInsight.
+Na przykład przykłady obsługiwane przez firmę Microsoft są przechowywane w [ https://hdiconfigactions.blob.core.windows.net/ ](https://hdiconfigactions.blob.core.windows.net/) konta magazynu. Ta lokalizacja jest publiczny, tylko do odczytu kontenera obsługiwanego przez zespół usługi HDInsight.
 
 ### <a name="bPS4"></a>Użyj wstępnie skompilowanym zasobów
 
@@ -168,11 +168,11 @@ Domyślnie `echo` wysyła ciąg do STDOUT. Aby skierować ją stderr, Dodaj `>&2
 >&2 echo "An error occurred installing Foo"
 ```
 
-To przekierowuje informacje zapisane zamiast tego do STDOUT stderr (2). Aby uzyskać więcej informacji dotyczących przekierowania we/wy, zobacz [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html).
+To przekierowuje informacje zapisane zamiast tego do STDOUT stderr (2). Aby uzyskać więcej informacji dotyczących przekierowania we/wy, zobacz [ http://www.tldp.org/LDP/abs/html/io-redirection.html ](http://www.tldp.org/LDP/abs/html/io-redirection.html).
 
 Aby uzyskać więcej informacji o wyświetlaniu informacji zarejestrowanych przez akcje skryptu, zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="bps8"></a>Zapisz pliki jako ASCII z końców LF
+### <a name="bps8"></a> Zapisz pliki jako ASCII z końców LF
 
 Skrypty powłoki systemowej powinny być przechowywane w formacie ASCII, liniami został przerwany przez wysuwu wiersza. Pliki, które są przechowywane w formacie UTF-8, lub użyj CRLF jako zakończenie wiersza może zakończyć się niepowodzeniem z powodu następującego błędu:
 
@@ -181,7 +181,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="bps9"></a>Logika ponawiania umożliwia odzyskanie w przypadku błędów przejściowych
+### <a name="bps9"></a> Logika ponawiania umożliwia odzyskanie w przypadku błędów przejściowych
 
 Pobieranie plików, instalowanie pakietów przy użyciu stanie get lub innych działań, których dane są przesyłane za pośrednictwem Internetu, akcja może zakończyć się niepowodzeniem z powodu przejściowych błędów sieci. Na przykład zasób zdalny, które komunikują się z może być w trakcie awarii węzła kopii zapasowej.
 
@@ -221,7 +221,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>Metody pomocnicze dla niestandardowych skryptów
 
-Metody pomocnicze akcji skryptu są narzędzia, które można użyć podczas pisania skryptów niestandardowych. Te metody są zawarte w[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skryptu. Pobranie i użycie ich jako część skryptu należy wykonać następujące kroki:
+Metody pomocnicze akcji skryptu są narzędzia, które można użyć podczas pisania skryptów niestandardowych. Te metody są zawarte w[ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skryptu. Pobranie i użycie ich jako część skryptu należy wykonać następujące kroki:
 
 ```bash
 # Import the helper method module.
@@ -251,7 +251,7 @@ Ta sekcja zawiera wskazówki dotyczące implementowania niektóre typowe wzorce 
 
 W niektórych przypadkach skrypt może wymagać parametrów. Na przykład mogą być potrzebne hasło administratora klastra, korzystając z interfejsu API REST Ambari.
 
-Parametry przekazywane do skryptu są określane jako *parametrów pozycyjnych*i są przypisane do `$1` jako pierwszy parametr `$2` sekundy i dlatego w przypadku. `$0`zawiera nazwę sam skrypt.
+Parametry przekazywane do skryptu są określane jako *parametrów pozycyjnych*i są przypisane do `$1` jako pierwszy parametr `$2` sekundy i dlatego w przypadku. `$0` zawiera nazwę sam skrypt.
 
 Wartości przekazywane do skryptu jako parametry powinna zostać ujęta w apostrofy ('). Daje to gwarancję, że przekazana wartość jest traktowany jako literału.
 
@@ -317,7 +317,7 @@ fi
 Oto wykonaj kroki podczas przygotowywania wdrożenia skryptu:
 
 * Umieścić pliki, które zawierają niestandardowe skrypty w miejscu, który jest dostępny dla węzłów klastra podczas wdrażania. Na przykład domyślny magazyn dla klastra. Pliki mogą być również przechowywane w publicznie do odczytu usług hostingu.
-* Sprawdź, czy skrypt impotent. Dzięki temu skryptu do wykonania wiele razy w tym samym węźle.
+* Sprawdź, czy skrypt idempotentności. Dzięki temu skryptu do wykonania wiele razy w tym samym węźle.
 * Użyj /tmp katalogu plików tymczasowych, aby zachować pobrane pliki używane przez skrypty i następnie wyczyść je po wykonaniu skryptów.
 * Ustawienia na poziomie systemu operacyjnego lub plików konfiguracyjnych usługi Hadoop są zmieniane, można ponownie uruchomić usługi HDInsight.
 
@@ -371,7 +371,7 @@ Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 
-Zastąp `INFILE` z pliku zawierającego BOM. `OUTFILE`powinien być nową nazwę pliku, który zawiera skrypt bez BOM.
+Zastąp `INFILE` z pliku zawierającego BOM. `OUTFILE` powinien być nową nazwę pliku, który zawiera skrypt bez BOM.
 
 ## <a name="seeAlso"></a>Następne kroki
 

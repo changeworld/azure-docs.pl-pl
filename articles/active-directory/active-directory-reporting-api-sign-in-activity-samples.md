@@ -1,11 +1,11 @@
 ---
-title: "Przykłady interfejsu API raport aktywności logowania w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Jak rozpocząć pracę z usługi Azure Active Directory raportowania interfejsu API"
+title: Przykłady interfejsu API raport aktywności logowania w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak rozpocząć pracę z usługi Azure Active Directory raportowania interfejsu API
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 158f121880dbc1fc1495c8599367502ffd93ce20
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: c76ac75acdb1645ee6cc5b496aadccbd1daf2d79
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Przykłady interfejsu API raport aktywności logowania w usłudze Azure Active Directory
 Ten temat jest częścią zbiór tematów dotyczących usługi Azure Active Directory raportowania interfejsu API.  
@@ -41,7 +41,7 @@ Zanim użyjesz przykłady w tym temacie, trzeba wykonać [wymagania wstępne dot
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
     $loginURL       = "https://login.microsoftonline.com/"
     $tenantdomain   = "<tenantDomain>"
-    $ daterange            # For example, contoso.onmicrosoft.com
+    $daterange            # For example, contoso.onmicrosoft.com
 
     $7daysago = "{0:s}" -f (get-date).AddDays(-7) + "Z"
     # or, AddMinutes(-5)

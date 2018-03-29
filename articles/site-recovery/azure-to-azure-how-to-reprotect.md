@@ -1,6 +1,6 @@
 ---
-title: "Ponownej ochrony nie powiodła się na maszynach wirtualnych platformy Azure, do regionu podstawowego Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób Włącz ponownie ochronę maszyn wirtualnych Azure w regionie pomocniczym, po przejściu w tryb failover regionu podstawowego, za pomocą usługi Azure Site Recovery."
+title: Ponownej ochrony nie powiodła się na maszynach wirtualnych platformy Azure, do regionu podstawowego Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Opisuje sposób Włącz ponownie ochronę maszyn wirtualnych Azure w regionie pomocniczym, po przejściu w tryb failover regionu podstawowego, za pomocą usługi Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4171a904626d3b624b39b8a3a261df0d342012df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponownej ochrony nie powiodła się na maszynach wirtualnych platformy Azure, w regionie podstawowym
 
@@ -57,7 +57,8 @@ Można dostosować następujące właściwości elementu docelowego VMe podczas 
 |---------|---------|
 |Docelowa grupa zasobów     | Zmodyfikuj docelowa grupa zasobów, w którym utworzono maszynę Wirtualną. W ramach przełączonej docelowej maszyny Wirtualnej został usunięty. Można wybrać nową grupę zasobów, w którym chcesz utworzyć maszynę Wirtualną po pracy awaryjnej.        |
 |Docelowy sieci wirtualnej     | Nie można zmienić sieci docelowej podczas wykonywania zadania ponownej ochrony. Aby zmienić sieci, ponów mapowania sieci.         |
-|Magazyn docelowy     | Można zmienić konta magazynu, które korzysta z maszyny Wirtualnej po pracy awaryjnej.         |
+|Docelowy magazyn (dodatkowej maszyny Wirtualnej nie używać dysków zarządzane)     | Można zmienić konta magazynu, które korzysta z maszyny Wirtualnej po pracy awaryjnej.         |
+|Repliki zarządzane dysków (dodatkowej maszyna wirtualna używa dysków zarządzane)    | Usługa Site Recovery tworzy dyski replik zarządzanych w regionie podstawowym dublowanego dysków zarządzanych dodatkowej maszyny Wirtualnej.         | 
 |Cache Storage     | Można określić konto magazynu pamięci podręcznej do użycia podczas replikacji. Domyślnie nowe konto magazynu pamięci podręcznej jest możliwe, jeśli nie istnieje.         |
 |Zestaw dostępności     |Jeśli maszyna wirtualna w regionie pomocniczym jest częścią zestawu dostępności, możesz wybrać zbiór dostępności dla docelowej maszyny Wirtualnej w regionie podstawowym. Domyślnie usługi Site Recovery podejmie próbę odnalezienia istniejącego zestawu w regionie podstawowym dostępności i użyć go. Podczas dostosowywania można określić nowego zestawu dostępności.         |
 
@@ -68,7 +69,8 @@ Domyślnie są następujące operacje:
 
 1. Konto magazynu pamięci podręcznej jest tworzony w regionie podstawowym
 2. Jeśli docelowe konto magazynu (oryginalnego konta magazynu w regionie podstawowym) nie istnieje, zostanie utworzony nowy. Nazwa konta magazynu przypisany jest nazwa konta magazynu używanego przez dodatkowej maszynę Wirtualną z "asr" sufiksem.
-3. Jeśli zestaw dostępności docelowy nie istnieje, nowy jest tworzony jako część zadania ponownej ochrony, w razie potrzeby. Jeśli dostosowano ustawienia przełączonej wybrany zestaw jest używany.
+3. Jeśli maszyna wirtualna używa dysków zarządzanych, zarządzać repliki dyski są tworzone w regionie podstawowym do przechowywania danych replikowane z dysków dodatkowej maszyny Wirtualnej. 
+4. Jeśli zestaw dostępności docelowy nie istnieje, nowy jest tworzony jako część zadania ponownej ochrony, w razie potrzeby. Jeśli dostosowano ustawienia przełączonej wybrany zestaw jest używany.
 
 Gdy użytkownik zainicjuje zadanie ponownej ochrony i obiekt docelowy, który istnieje maszyna wirtualna, są następujące operacje:
 

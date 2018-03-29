@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect Health — często zadawane pytania - Azure | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania odpowiedzi na pytania dotyczące usługi Azure AD Connect Health. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej."
+title: Azure Active Directory Connect Health — często zadawane pytania - Azure | Dokumentacja firmy Microsoft
+description: Często zadawane pytania odpowiedzi na pytania dotyczące usługi Azure AD Connect Health. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczące usługi Azure Active Directory (Azure AD) Connect Health. Te często zadawane pytania dotyczące pokrycia pytania dotyczące sposobu korzystania z usługi, w tym modelu rozliczeń możliwości, ograniczeń i pomocy technicznej.
@@ -175,6 +175,9 @@ CheckForMS17-010
 
 ```
 
+**Pytanie: Dlaczego polecenia cmdlet programu PowerShell <i>Get MsolDirSyncProvisioningError</i> Pokaż mniej błędy synchronizacji w wyniku?**
+
+<i>Get-MsolDirSyncProvisioningError</i> zwróci tylko te narzędzia DirSync, inicjowanie obsługi błędów. Oprócz, portal Connect Health pokazuje też inne synchronizacji typy błędów, takich jak błędy eksportu. Jest to zgodne z wynikiem delta Azure AD Connect. Przeczytaj więcej na temat [błędy synchronizacji Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
 
 
 ## <a name="related-links"></a>Powiązane linki

@@ -1,6 +1,6 @@
 ---
-title: "Wprowadzenie do kolekcji niezawodnej w stanowe usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "Usługi sieć szkieletowa usług stanowych zapewniają niezawodne kolekcje, które pozwalają na zapis aplikacji w chmurze wysoko dostępnych, skalowalnych i małe opóźnienia."
+title: Wprowadzenie do kolekcji niezawodnej w stanowe usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: Usługi sieć szkieletowa usług stanowych zapewniają niezawodne kolekcje, które pozwalają na zapis aplikacji w chmurze wysoko dostępnych, skalowalnych i małe opóźnienia.
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: 0e89df79d2ff619343f914ce3a5ffe87b7bf25de
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: c6425f7642d9dbecafc6779184a2a5b0cc1a2cab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Wprowadzenie do kolekcji niezawodnej w stanowe usługi sieć szkieletowa usług Azure
 Niezawodne kolekcje umożliwiają pisanie aplikacji w chmurze wysoko dostępnych, skalowalnych i małych opóźnieniach tak, jakby podczas pisania aplikacji pojedynczego komputera. Klasy w **Microsoft.ServiceFabric.Data.Collections** przestrzeni nazw udostępniają zestaw kolekcji, które automatycznie swój stan wysokiej dostępności. Deweloperzy muszą program tylko dla niezawodnego interfejsów API kolekcji i pozwól niezawodnej kolekcje Zarządzanie stanem replikowane i lokalnej.
@@ -44,7 +44,7 @@ W celu osiągnięcia słabszych spójności, aplikacje można potwierdzić powr�
 Niezawodne interfejsów API kolekcje są zmiany kolekcji współbieżnych interfejsów API (w **System.Collections.Concurrent** przestrzeni nazw):
 
 * Asynchroniczne: Zwraca klasę task, ponieważ w przeciwieństwie do kolekcji współbieżnych operacji są replikowane i utrwalone.
-* Parametry wyjściowe nie: używa `ConditionalValue<T>` aby zwrócić wartość logiczną i wartość zamiast parametrów wyjściowych. `ConditionalValue<T>`przypomina `Nullable<T>` , ale nie wymaga T, aby być strukturą.
+* Parametry wyjściowe nie: używa `ConditionalValue<T>` aby zwrócić wartość logiczną i wartość zamiast parametrów wyjściowych. `ConditionalValue<T>` przypomina `Nullable<T>` , ale nie wymaga T, aby być strukturą.
 * Transakcje: Używa obiekt transakcji, aby umożliwić użytkownikowi grupy działań w wielu kolekcjach niezawodnej w transakcji.
 
 Obecnie **Microsoft.ServiceFabric.Data.Collections** zawiera trzy kolekcje:
@@ -53,11 +53,10 @@ Obecnie **Microsoft.ServiceFabric.Data.Collections** zawiera trzy kolekcje:
 * [Kolejka niezawodnych](https://msdn.microsoft.com/library/azure/dn971527.aspx): reprezentuje replikowane, transakcyjne i asynchroniczne strict pierwszy w, FIFO (FIFO) kolejki. Podobnie jak **ConcurrentQueue**, wartość może być dowolnego typu.
 * [Niezawodne kolejki równoczesnych](service-fabric-reliable-services-reliable-concurrent-queue.md): reprezentuje replikowane, transakcyjne i asynchroniczne optymalnego porządkowanie kolejki wysokiej przepływności. Podobnie jak **ConcurrentQueue**, wartość może być dowolnego typu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Niezawodnej kolekcji wskazówki i zalecenia](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [Praca z elementami Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transakcje i blokad](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [Menedżer stanu niezawodnych i wewnętrzne kolekcji](service-fabric-reliable-services-reliable-collections-internals.md)
 * Zarządzanie danymi
   * [Tworzenie kopii zapasowej i przywracanie](service-fabric-reliable-services-backup-restore.md)
   * [Powiadomienia](service-fabric-reliable-services-notifications.md)

@@ -1,11 +1,11 @@
 ---
-title: "Typy adresów IP na platformie Azure | Microsoft Docs"
-description: "Dowiedz się więcej na temat publicznych i prywatnych adresów IP na platformie Azure."
+title: Typy adresów IP na platformie Azure | Microsoft Docs
+description: Dowiedz się więcej na temat publicznych i prywatnych adresów IP na platformie Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 610b911c-f358-4cfe-ad82-8b61b87c3b7e
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: e3baedba814cf6ac19df72c49e1c95ea2cd5cf73
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: a5cda1b5ecb686c9b03da27bdbca42ddc1a74f54
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -62,19 +62,16 @@ Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są pu
 - Mogą być przypisywane do określonej strefy.
 - Nie są strefowo nadmiarowe. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-#### <a name="standard"></a>Standardowa
+#### <a name="standard"></a>Standardowa (Standard)
 
 Standardowe publiczne adresy IP jednostek SKU:
 
 - Są przypisywane tylko przy użyciu metody alokacji statycznej.
 - Są przypisywane do interfejsów sieciowych lub standardowych modułów równoważenia obciążenia dostępnych z Internetu. Aby uzyskać więcej informacji na temat jednostek SKU usługi Azure Load Balancer, zobacz [Azure load balancer standard SKU (Usługa Azure Load Balancer — standardowa jednostka SKU)](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Są domyślnie strefowo nadmiarowe. Mogą być tworzone strefowo i być gwarantowane w określonej strefie dostępności.  Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Są domyślnie strefowo nadmiarowe. Mogą być tworzone strefowo i być gwarantowane w określonej strefie dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Po przypisaniu standardowego publicznego adresu IP jednostki SKU do interfejsu sieciowego maszyny wirtualnej musisz jawnie zezwolić na ruch do miejsca przeznaczenia przy użyciu [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups).  Próba komunikacji z zasobem będzie kończyć się niepowodzeniem do momentu utworzenia i skojarzenia sieciowej grupy zabezpieczeń, a następnie jawnego zezwolenia na żądany ruch.
-
-Standardowa jednostka SKU jest dostępna w wersji zapoznawczej. Przed utworzeniem standardowego publicznego adresu IP jednostki SKU musisz zarejestrować się do korzystania z wersji zapoznawczej i utworzyć adres w obsługiwanej lokalizacji. Aby zarejestrować się do korzystania z wersji zapoznawczej, zobacz część [Register for the standard SKU preview (Rejestrowanie się do korzystania ze standardowej jednostki SKU w wersji zapoznawczej)](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview). Aby dowiedzieć się więcej na temat obsługi dodatkowych regionów, zapoznaj się z listą obsługiwanych lokalizacji (regionów) w sekcji [Region availability (Dostępność w regionach)](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) i monitoruj stronę [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
-
+> Po przypisaniu standardowego publicznego adresu IP jednostki SKU do interfejsu sieciowego maszyny wirtualnej musisz jawnie zezwolić na ruch do miejsca przeznaczenia przy użyciu [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups). Próba komunikacji z zasobem będzie kończyć się niepowodzeniem do momentu utworzenia i skojarzenia sieciowej grupy zabezpieczeń, a następnie jawnego zezwolenia na żądany ruch.
 
 ### <a name="allocation-method"></a>Metoda alokacji
 
@@ -125,10 +122,10 @@ W poniższej tabeli przedstawiono określone właściwości, za pomocą których
 
 | Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczny | Statyczny |
 | --- | --- | --- | --- |
-| Maszyna wirtualna |Interfejs sieciowy |Tak |Tak |
-| Moduł równoważenia obciążenia dostępny z Internetu |Konfiguracja frontonu |Tak |Tak |
-| Brama sieci VPN |Konfiguracja adresu IP bramy |Tak |Nie |
-| Brama aplikacji |Konfiguracja frontonu |Tak |Nie |
+| Maszyna wirtualna |Interfejs sieciowy |Yes |Yes |
+| Moduł równoważenia obciążenia dostępny z Internetu |Konfiguracja frontonu |Yes |Yes |
+| Brama sieci VPN |Konfiguracja adresu IP bramy |Yes |Nie |
+| Brama aplikacji |Konfiguracja frontonu |Yes |Nie |
 
 ## <a name="private-ip-addresses"></a>Prywatne adresy IP
 Prywatne adresy IP umożliwiają zasobom platformy Azure komunikację z innymi zasobami w [sieci wirtualnej](virtual-networks-overview.md) lub sieci lokalnej za pomocą bramy sieci VPN lub obwodu ExpressRoute bez użycia adresu IP dostępnego w Internecie.
@@ -173,9 +170,9 @@ W poniższej tabeli przedstawiono określone właściwości, za pomocą których
 
 | Zasób najwyższego poziomu | Skojarzenie adresu IP | Dynamiczny | Statyczny |
 | --- | --- | --- | --- |
-| Maszyna wirtualna |Interfejs sieciowy |Tak |Tak |
-| Moduł równoważenia obciążenia |Konfiguracja frontonu |Tak |Tak |
-| Brama aplikacji |Konfiguracja frontonu |Tak |Tak |
+| Maszyna wirtualna |Interfejs sieciowy |Yes |Yes |
+| Moduł równoważenia obciążenia |Konfiguracja frontonu |Yes |Yes |
+| Brama aplikacji |Konfiguracja frontonu |Yes |Yes |
 
 ## <a name="limits"></a>Limity
 Ograniczenia nakładane na adresowanie IP zostały wymienione w pełnym zestawieniu [ograniczeń dla sieci](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) na platformie Azure. Ograniczenia są podzielone według regionu i subskrypcji. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.

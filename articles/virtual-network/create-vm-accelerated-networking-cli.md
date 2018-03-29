@@ -1,13 +1,13 @@
 ---
-title: "Utwórz maszynę wirtualną platformy Azure za pomocą sieci przyspieszony | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia maszyny wirtualnej systemu Linux za pomocą przyspieszony sieci."
+title: Utwórz maszynę wirtualną platformy Azure za pomocą sieci przyspieszony | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia maszyny wirtualnej systemu Linux za pomocą przyspieszony sieci.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 5c09ffe6867972e772334ae7ae1dd655cdac431f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: aa74596906206ba4460e80af9015955c0b848cd4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Linux za pomocą przyspieszony sieci
 
@@ -57,7 +57,7 @@ Przyspieszone sieci jest obsługiwana w najbardziej ogólnego przeznaczenia i ro
 Aby uzyskać więcej informacji na wystąpień maszyn wirtualnych, zobacz [rozmiarów maszyn wirtualnych systemu Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="regions"></a>Regiony
-Dostępna we wszystkich regionach platformy Azure publiczne z wyjątkiem Azja Wschodnia.   Chmury Azure dla instytucji rządowych nie jest jeszcze obsługiwany.
+Dostępna we wszystkich publicznych regiony platformy Azure, a także chmur Azure dla instytucji rządowych.
 
 ## <a name="limitations"></a>Ograniczenia
 Podczas przy użyciu tej możliwości istnieją następujące ograniczenia:

@@ -16,6 +16,7 @@
     - name: Tworzenie bazy danych — program Azure PowerShell
       href: sql-database-get-started-powershell.md
     - name: Nawiązywanie połączeń i wykonywanie zapytań
+      href: sql-database-connect-query.md
       items:
         - name: SSMS
           href: sql-database-connect-query-ssms.md

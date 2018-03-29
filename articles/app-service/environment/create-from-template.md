@@ -1,6 +1,6 @@
 ---
-title: "Utwórz środowisko usługi Azure App Service przy użyciu szablonu usługi Resource Manager"
-description: "Wyjaśniono, jak utworzyć środowisko zewnętrznego lub ILB usłudze Azure App Service przy użyciu szablonu usługi Resource Manager"
+title: Utwórz środowisko usługi Azure App Service przy użyciu szablonu usługi Resource Manager
+description: Wyjaśniono, jak utworzyć środowisko zewnętrznego lub ILB usłudze Azure App Service przy użyciu szablonu usługi Resource Manager
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 015bf031aea6b79fcca0a416253e9aa47bb245b6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d85384620b2e4c7ba0de84e0fe82ef3e83376dd8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Utwórz ASE za pomocą szablonu usługi Azure Resource Manager
 
@@ -54,10 +54,12 @@ Jeśli chcesz ASE ILB, użyj tych szablonu usługi Resource Manager [przykłady]
 
 Po *azuredeploy.parameters.json* plik zostanie wypełnione, Utwórz ASE przy użyciu programu PowerShell fragmentu kodu. Zmienianie ścieżki pliku do dopasowania lokalizacji pliku szablonu usługi Resource Manager na tym komputerze. Pamiętaj, aby podać własne wartości dla nazwy wdrożenia usługi Resource Manager i nazwę grupy zasobów:
 
-    $templatePath="PATH\azuredeploy.json"
-    $parameterPath="PATH\azuredeploy.parameters.json"
+```powershell
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 Trwa około godziny ASE ma zostać utworzony. Następnie ASE zostaną wyświetlone w portalu na liście ASEs subskrypcji, która wyzwoliła wdrożenia.
 
@@ -82,17 +84,19 @@ Użyj następującego fragmentu kodu programu PowerShell do:
 
 Ten kod programu PowerShell dla kodowania base64 pochodzi z [blogu skrypty programu PowerShell][examplebase64encoding]:
 
-        $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```powershell
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-        $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-        $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-        $fileName = "exportedcert.pfx"
-        Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
 
-        $fileContentBytes = get-content -encoding byte $fileName
-        $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
-        $fileContentEncoded | set-content ($fileName + ".b64")
+$fileContentBytes = get-content -encoding byte $fileName
+$fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+$fileContentEncoded | set-content ($fileName + ".b64")
+```
 
 Po certyfikat SSL jest pomyślnie wygenerowany i konwertowana na ciąg kodowany w formacie base64, użyj szablonu usługi Resource Manager przykład [skonfigurować certyfikat SSL domyślne] [ quickstartconfiguressl] w witrynie GitHub. 
 
@@ -107,41 +111,45 @@ Parametry w *azuredeploy.parameters.json* plików są wyświetlane tutaj:
 
 Przykład skróconej *azuredeploy.parameters.json* jest następujący:
 
-    {
-         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-              "appServiceEnvironmentName": {
-                   "value": "yourASENameHere"
-              },
-              "existingAseLocation": {
-                   "value": "East US 2"
-              },
-              "pfxBlobString": {
-                   "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
-              },
-              "password": {
-                   "value": "PASSWORDGOESHERE"
-              },
-              "certificateThumbprint": {
-                   "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
-              },
-              "certificateName": {
-                   "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
-              }
-         }
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appServiceEnvironmentName": {
+      "value": "yourASENameHere"
+    },
+    "existingAseLocation": {
+      "value": "East US 2"
+    },
+    "pfxBlobString": {
+      "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
+    },
+    "password": {
+      "value": "PASSWORDGOESHERE"
+    },
+    "certificateThumbprint": {
+      "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
+    },
+    "certificateName": {
+      "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
     }
+  }
+}
+```
 
 Po *azuredeploy.parameters.json* plik zostanie wypełnione, skonfigurować domyślnego certyfikatu SSL za pomocą programu PowerShell fragmentu kodu. Zmienianie ścieżki pliku do dopasowania, gdy pliki szablonu usługi Resource Manager znajdują się na tym komputerze. Pamiętaj, aby podać własne wartości dla nazwy wdrożenia usługi Resource Manager i nazwę grupy zasobów:
 
-     $templatePath="PATH\azuredeploy.json"
-     $parameterPath="PATH\azuredeploy.parameters.json"
+```powershell
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-     New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 Trwa około 40 minut na ASE frontonu do zastosowania zmiany. Na przykład dla ASE o rozmiarze domyślnym wykorzystuje dwa końce frontonu, szablon zajmie około jednej godziny i 20 minut do wykonania. Szablon jest uruchomiona, nie można skalować ASE.  
 
-Po zakończeniu szablonu aplikacji w ILB ASE są dostępne za pośrednictwem protokołu HTTPS. Połączenia są zabezpieczone za pomocą domyślnego certyfikatu SSL. Domyślny certyfikat SSL służy do aplikacji w ILB ASE dotyczą przy użyciu kombinacji nazwy aplikacji oraz nazwa hosta domyślnego. Na przykład https://mycustomapp.internal-contoso.com używa domyślnego certyfikatu SSL dla **.internal contoso.com*.
+Po zakończeniu szablonu aplikacji w ILB ASE są dostępne za pośrednictwem protokołu HTTPS. Połączenia są zabezpieczone za pomocą domyślnego certyfikatu SSL. Domyślny certyfikat SSL służy do aplikacji w ILB ASE dotyczą przy użyciu kombinacji nazwy aplikacji oraz nazwa hosta domyślnego. Na przykład https://mycustomapp.internal-contoso.com korzysta z domyślnego certyfikatu SSL dla **.internal contoso.com*.
 
 Jednak podobnie jak aplikacji uruchamianych w publicznej usługi wielodostępnym, deweloperzy mogą konfigurować nazwy hosta niestandardowego dla poszczególnych aplikacji. Może również skonfigurować unikatowe powiązania certyfikatu SNI SSL dla poszczególnych aplikacji.
 

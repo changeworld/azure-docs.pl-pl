@@ -1,12 +1,12 @@
 ---
-title: "Wprowadzenie do usługi Advisor Azure | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do usługi Advisor Azure."
+title: Wprowadzenie do usługi Advisor Azure | Dokumentacja firmy Microsoft
+description: Wprowadzenie do usługi Advisor Azure.
 services: advisor
 documentationcenter: NA
 author: manbeenkohli
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: 5a7864597e50294c8e1227cbab7a3be73dde0a7f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: cd64515beabec43a5209d62dccf2b55b21702c16
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Wprowadzenie do usługi Azure Advisor
 
@@ -35,10 +35,7 @@ Dowiedz się, jak uzyskać dostępu do usługi Advisor za pośrednictwem portalu
 
 4. Pulpit nawigacyjny usługi Advisor wyświetli podsumowanie zalecenia dla wszystkich wybranych subskrypcji.  Możesz wybrać subskrypcje, które mają zalecenia, który będzie wyświetlany dla korzystanie z subskrypcji filtrowanie listy rozwijanej.
 
-5. Aby uzyskać zalecenia dotyczące określonej kategorii, kliknij jedną z kart: **wysokiej dostępności**, **zabezpieczeń**, **wydajności**, lub **koszt**.
- 
-> [!NOTE]
-> Aby użyć klasyfikatora Azure z subskrypcją, subskrypcji *właściciela* wymaga uruchomienia pulpitu nawigacyjnego usługi Advisor.  Ta akcja rejestruje subskrypcji w usłudze Advisor.  Od tego momentu na żadną subskrypcję *właściciela*, *współautora*, lub *czytnika* mogą uzyskiwać dostęp do zalecenia doradcy w zakresie dla subskrypcji.  
+5. Aby uzyskać zalecenia dotyczące określonej kategorii, kliknij jedną z kart: **wysokiej dostępności**, **zabezpieczeń**, **wydajności**, lub **koszt**. 
 
   ![Azure Advisor pulpitu nawigacyjnego](./media/advisor-overview/advisor-dashboard.png)
 

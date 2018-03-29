@@ -1,19 +1,19 @@
 ---
-title: "Ciągłe wdrażanie Wpięć z Kubernetes usługi kontenera platformy Azure"
-description: "Jak zautomatyzować proces ciągłego wdrażania z Wpięć do wdrożenia i uaktualnienia konteneryzowanych aplikacji na Kubernetes usługi kontenera platformy Azure"
+title: Ciągłe wdrażanie Wpięć z Kubernetes usługi kontenera platformy Azure
+description: Jak zautomatyzować proces ciągłego wdrażania z Wpięć do wdrożenia i uaktualnienia konteneryzowanych aplikacji na Kubernetes usługi kontenera platformy Azure
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1293fda45602203570a0f7f75481f67bdcb6edf3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Ciągłe wdrażanie w środowisku z Wpięć usługi kontenera platformy Azure
 
@@ -57,7 +57,7 @@ Po utworzeniu rozwidlenia ją sklonować systemie deweloperskim. Upewnij się, �
 git clone https://github.com/<your-github-account>/azure-voting-app-redis.git
 ```
 
-Zmień katalogi, dzięki czemu użytkownik pracuje z katalogu sklonowany.
+Zmień katalogi, aby pracować w sklonowanym katalogu.
 
 ```bash
 cd azure-voting-app-redis
@@ -71,7 +71,7 @@ docker-compose up -d
 
 Po zakończeniu użyj [obrazy usługi docker] [ docker-images] polecenie, aby wyświetlić utworzony obraz.
 
-Zwróć uwagę, że zostały pobrane lub utworzone trzy obrazy. `azure-vote-front` Obraz zawiera aplikację i używa `nginx-flask` obrazu jako podstawy. `redis` Obrazu są używane do uruchamiania wystąpienia pamięci podręcznej Redis.
+Zwróć uwagę, że zostały pobrane lub utworzone trzy obrazy. Obraz `azure-vote-front` zawiera aplikację i używa obrazu `nginx-flask` jako podstawy. Obraz `redis` jest używany do uruchomienia wystąpienia usługi Redis.
 
 ```console
 $ docker images
@@ -160,6 +160,20 @@ Open a browser to http://52.166.118.64:8080
 Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
+
+Jeśli występują problemy dotyczące logowania się do Wpięć, tworzenia sesji SSH z maszyną Wirtualną Wpięć i uruchom ponownie usługę Wpięć. Adres IP maszyny wirtualnej jest tego samego adresu, który został dostarczony przez skrypt kompilacji. Nazwa użytkownika administratora maszyny Wirtualnej jest `azureuser`.
+
+```bash
+ssh azureuser@52.166.118.64
+```
+
+Uruchom ponownie usługę Wpięć.
+
+```bash
+sudo service jenkins restart
+```
+
+Odśwież przeglądarkę i Wpięć formularz logowania będzie wyświetlany.
 
 ## <a name="jenkins-environment-variables"></a>Zmienne środowiskowe Wpięć
 

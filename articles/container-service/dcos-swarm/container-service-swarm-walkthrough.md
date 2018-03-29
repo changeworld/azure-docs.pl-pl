@@ -1,6 +1,6 @@
 ---
-title: "Szybki start — klaster Azure Docker Swarm dla systemu Linux"
-description: "Szybka nauka tworzenia klastra Docker Swarm dla kontenerów systemu Linux w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure."
+title: Szybki start — klaster Azure Docker Swarm dla systemu Linux
+description: Szybka nauka tworzenia klastra Docker Swarm dla kontenerów systemu Linux w usłudze Azure Container Service za pomocą interfejsu wiersza polecenia platformy Azure.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 691c09c8dfb5335aabb431d06bd687963fe4c488
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7bd781d2fd71c6075cb458b222a93953a22892b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Wdrażanie klastra Docker Swarm
 
-W tym przewodniku Szybki start klaster Docker Swarm jest wdrażany za pomocą interfejsu wiersza polecenia platformy Azure. Następnie w klastrze jest wdrażana i uruchamiana aplikacja obsługująca wiele kontenerów, która składa się z frontonu internetowego i wystąpienia usługi Redis. Po ukończeniu aplikacja będzie dostępna w Internecie.
+W tym przewodniku Szybki start klaster Docker Swarm jest wdrażany za pomocą interfejsu wiersza polecenia platformy Azure. Następnie w klastrze jest wdrażana i uruchamiana aplikacja obsługująca wiele kontenerów, która składa się z frontonu internetowego i wystąpienia pamięci podręcznej Redis. Po ukończeniu aplikacja będzie dostępna w Internecie.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -1,11 +1,11 @@
 ---
-title: "Menedżer ruchu Azure - metody routingu ruchu | Dokumentacja firmy Microsoft"
-description: "Ten artykuł pomaga zrozumieć metody routingu ruchu innego użyty przez Menedżera ruchu"
+title: Menedżer ruchu Azure - metody routingu ruchu | Dokumentacja firmy Microsoft
+description: Ten artykuł pomaga zrozumieć metody routingu ruchu innego użyty przez Menedżera ruchu
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
 ms.service: traffic-manager
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: kumud
-ms.openlocfilehash: fe776e24a4f78b389c6096694055b38befa3c419
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9bd9b4913e38ed5c1f7f4ec8ee7e3210fa3be8f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 
@@ -50,7 +50,7 @@ Usługi Azure Resource Manager można skonfigurować priorytet punktu końcowego
 
 ![Azure Traffic Manager "Ważoną" routingu ruchu — metoda][2]
 
-W przypadku ważoną metody routingu ruchu wagi przypisane do każdego punktu końcowego w konfiguracji profilu Menedżera ruchu. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Ten parametr jest opcjonalny. Pominięcie menedżerów ruchu korzysta z domyślną wagę "1".
+W przypadku ważoną metody routingu ruchu wagi przypisane do każdego punktu końcowego w konfiguracji profilu Menedżera ruchu. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Ten parametr jest opcjonalny. Pominięcie menedżerów ruchu korzysta z domyślną wagę "1". Wyższe wagi, tym wyższy priorytet.
 
 Dla każdego zapytania DNS Odebrano Traffic Manager losowo wybiera dostępnego punktu końcowego. Prawdopodobieństwo wybrać punkt końcowy jest oparta na wag przypisane do wszystkich dostępnych punktów końcowych. Wszystkie punkty końcowe wyniki w Dystrybucja ruchu nawet przy użyciu tymi samymi wagami. Za pomocą wag wyższe lub niższe w określonych punktach końcowych sprawia, że te punkty końcowe zwracaną częściej lub rzadziej w odpowiedzi DNS.
 
@@ -124,7 +124,7 @@ Menedżer ruchu odczytuje źródłowy adres IP zapytanie DNS i decyduje o tym, k
 Zgodnie z objaśnieniem w [sposób działania usługi Traffic Manager](traffic-manager-how-traffic-manager-works.md), Menedżera ruchu nie odbiera zapytania DNS bezpośrednio od klientów. Zamiast zapytania DNS pochodzą z usługi DNS cykliczne że klienci są skonfigurowane do używania. W związku z tym adres IP używany do określenia region nie jest adres IP klienta, ale jest to adres IP cykliczne usługi DNS. W praktyce ten adres IP jest dobrym serwera proxy klienta.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak tworzyć aplikacje wysokiej dostępności przy użyciu [monitorowania punktu końcowego Menedżera ruchu](traffic-manager-monitoring.md)
 

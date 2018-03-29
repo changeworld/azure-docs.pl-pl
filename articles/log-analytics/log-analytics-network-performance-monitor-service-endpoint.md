@@ -1,11 +1,11 @@
 ---
-title: "Sieci monitora wydajności rozwiązania Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Możliwości usługi Menedżer punktu końcowego w Monitorze wydajności sieci umożliwia monitorowanie łączność sieciową z dowolnego punktu końcowego, który został otwarty port TCP."
+title: Sieci monitora wydajności rozwiązania Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Użyj możliwości Menedżer punktu końcowego usługi w Monitorze wydajności w sieci, aby monitorować łączność sieciową z dowolnego punktu końcowego, który został otwarty port TCP.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: abshamsft
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: ba19a4fc24668bff27c961b5b415f840d1132a34
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b21d711e59ddc762eaf72f49e501d9f324d75105
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-endpoint-monitor"></a>Monitor punktu końcowego usługi
 
-Funkcja Monitor punktu końcowego usługi w [monitora wydajności sieci](log-analytics-network-performance-monitor.md) umożliwia monitorowanie łączność sieciową z dowolnego punktu końcowego, który został otwarty port TCP. Takie punkty końcowe obejmują witryn sieci Web, aplikacji SaaS PaaS aplikacji i baz danych. 
+Korzystając z możliwości Monitor punktu końcowego usługi w [monitora wydajności sieci](log-analytics-network-performance-monitor.md) monitorować łączność sieciową z dowolnego punktu końcowego, który został otwarty port TCP. Takie punkty końcowe obejmują witryn sieci Web, aplikacji SaaS PaaS aplikacji i baz danych. 
 
-Można wykonywać następujące funkcje związane z **Monitor punktu końcowego usługi**: 
+Można wykonywać następujące funkcje związane z monitorem punktu końcowego usługi: 
 
-- Monitoruje łączność sieciową do aplikacji i usług sieciowych (takich jak Office 365, Dynamics CRM, wiersz wewnętrznych aplikacji biznesowych, bazy danych SQL, itp.) z wielu gałęzi oddziałów lokalizacji 
-- Testy wbudowane monitorować łączność sieciową z punktów końcowych usługi Office 365 i Dynamics365 
-- Określają czas odpowiedzi, opóźnienia sieci, utraty pakietów wystąpił podczas nawiązywania połączenia z punktem końcowym 
-- Określ, czy niską wydajnością znajduje się z powodu sieci lub z powodu problemu z niektórych na końcu dostawcy aplikacji 
-- Zidentyfikuj punkty aktywne w sieci, który może powodować niską wydajnością wyświetlając opóźnienia przekazanych przez każdego przeskoku w formie mapy topologii. 
+- Monitoruje łączność sieciową z wielu oddziałów lub lokalizacje aplikacji i usług sieciowych. Aplikacje i usługi sieciowe obejmują usługi Office 365, Dynamics CRM, wewnętrznych aplikacji biznesowych z i baz danych.
+- Użyj wbudowanego testów monitorowania punktów końcowych usługi Office 365 i Dynamics 365 łączność sieciową. 
+- Określ czas odpowiedzi, opóźnienie sieci i doświadczeni utraty pakietów, podczas nawiązywania połączenia z punktem końcowym.
+- Określić, czy niską wydajnością jest z powodu sieci lub z powodu problemu z niektórych na końcu dostawcy aplikacji.
+- Zidentyfikuj punkty aktywne w sieci, które mogą być przyczyną niską wydajnością wyświetlając opóźnienia przekazanych przez każdego przeskoku w formie mapy topologii.
 
 
 ![Monitor punktu końcowego usługi](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfigurowanie 
-Aby otworzyć konfigurację monitora wydajności w sieci, otwórz [rozwiązania monitora wydajności sieci](log-analytics-network-performance-monitor.md) i kliknij przycisk **Konfiguruj** przycisku.
+Aby otworzyć konfigurację monitora wydajności w sieci, otwórz [rozwiązania monitora wydajności sieci](log-analytics-network-performance-monitor.md) i wybierz **Konfiguruj**.
 
 ![Konfigurowanie monitora wydajności sieci](media/log-analytics-network-performance-monitor/npm-configure-button.png)
 
 
-### <a name="configure-oms-agents-for-the-monitoring"></a>Konfigurowanie agentów OMS monitorowania.  
+### <a name="configure-operations-management-suite-agents-for-monitoring"></a>Konfigurowanie usługi Operations Management Suite agentów do monitorowania
 Włącz następujące reguły zapory w węzłach służący do monitorowania, aby rozwiązanie umożliwia odnalezienie topologii z węzłów z punktem końcowym usługi: 
 
 ```
@@ -56,72 +56,77 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 ### <a name="create-service-endpoint-monitor-tests"></a>Tworzenie testów Monitor punktu końcowego usługi 
 
-Rozpocznij tworzenie testów monitorowania łączność sieciową z punktów końcowych usługi 
+Rozpocznij tworzenie testów monitorowania punktów końcowych usługi łączność sieciową.
 
-1. Polecenie **Monitor punktu końcowego usługi** kartę.
-2. Kliknij przycisk **Dodaj Test** , a następnie wprowadź nazwę testu i opis. 
-3. Wybierz typ testu:<br>Wybierz **testu sieci Web** Jeśli monitorowanych połączenia z usługą, która odpowiada na żądania HTTP/S, takich jak outlook.office365.com, bing.com.<br>Wybierz **test sieci** Jeśli monitorowanych połączenia z usługą, która odpowiada na żądanie protokołu TCP, ale nie odpowiada na żądania HTTP/S, takich jak SQL server, serwer FTP, SSH portu itp. 
-4. Jeśli nie chcesz, aby wykonać pomiarów sieci (opóźnienia sieci, utraty pakietów, odnajdowanie topologii), a następnie wyczyść pole tekstowe. Firma Microsoft zaleca, aby zachować sprawdzany w celu pobrania maksymalnych korzyści z możliwości. 
-5. Wprowadź adres IP-adresu URL/nazwa FQDN docelowego, do którego chcesz monitorować łączność sieciową.  
-6. Wprowadź numer portu z usług docelowych. 
-7. Wprowadź częstotliwość ma testów do uruchomienia. 
+1. Wybierz **Monitor punktu końcowego usługi** kartę.
+2. Wybierz **Dodaj Test**, a następnie wprowadź nazwę testu i opis. 
+3. Wybierz typ testu:<br>
+
+    * Wybierz **Web** monitorować łączność z usługą, która odpowiada na żądania HTTP/S, takie jak outlook.office365.com lub bing.com.<br>
+    * Wybierz **sieci** monitorować łączność z usługą, która odpowiada na żądania protokołu TCP, ale nie odpowiada na żądania HTTP/S, takich jak SQL server, serwer FTP lub portu SSH. 
+4. Jeśli nie chcesz przeprowadzać pomiarów sieci, takich jak opóźnienie sieci, utraty pakietów i topologii odnajdowania, wyczyść **wykonać pomiarów sieci** pole wyboru. Zachowaj on wybrany do pobrania maksymalnych korzyści z możliwości. 
+5. W **docelowego**, wprowadź adres IP/nazwa FQDN/adres URL, do którego chcesz monitorować łączność sieciową.
+6. W **numer portu**, wprowadź numer portu z usług docelowych. 
+7. W **częstotliwość testów**, wprowadź wartość dla jak często mają testów do uruchomienia. 
 8. Wybierz węzeł, z których chcesz monitorować łączność sieciową usługi. 
 
     >[!NOTE]
-    > Dla węzłów na serwerze z systemem Windows możliwość używa żądań TCP do przeprowadzania pomiarów sieci. Dla węzłów opartą na kliencie systemu Windows możliwość używa żądań protokołu ICMP do przeprowadzania pomiarów sieci. W niektórych przypadkach w aplikacji docelowej blokuje przychodzące żądanie protokołu ICMP na podstawie z powodu którego gdy węzły są oparte na kliencie systemu Windows rozwiązanie jest w stanie wykonać pomiarów sieci. W związku z tym zaleca się, że używasz węzły na serwerze z systemem Windows w takich przypadkach. 
+    > Dla węzłów na serwerze z systemem Windows możliwość używa żądań TCP do przeprowadzania pomiarów sieci. Dla węzłów opartą na kliencie systemu Windows możliwość używa żądań protokołu ICMP do przeprowadzania pomiarów sieci. W niektórych przypadkach aplikacji docelowej blokuje przychodzące żądania na podstawie protokołu ICMP, czy węzły są oparte na kliencie systemu Windows. Rozwiązanie jest w stanie wykonać pomiarów sieci. Zalecane jest użycie węzły na serwerze z systemem Windows w takich przypadkach. 
 
-9. Jeśli nie chcesz utworzyć zdarzenia kondycji dla elementów jest zaznaczony, następnie wyczyść **Włącz monitorowanie kondycji dla elementów docelowych, jest objęty przez ten test**. 
-10. Wybierz warunki monitorowania. Można ustawić progami niestandardowymi kondycji zdarzenie generacji, wpisując wartości progowe. Zawsze, gdy wartość warunku wykraczają poza jego próg dla pary wybranego sieć/podsieć, jest generowane zdarzenie kondycji. 
-11. Kliknij przycisk **zapisać** Aby zapisać konfigurację. 
+9. Jeśli nie chcesz utworzyć zdarzenia kondycji dla elementów zostanie wybrana, wyczyść **Włącz monitorowanie kondycji w elementy docelowe objętych ten test**. 
+10. Wybierz warunki monitorowania. Można ustawić progami niestandardowymi generacji kondycji zdarzenie, wprowadzając wartości progowe. Zawsze, gdy wartość warunku wykraczają poza jego próg dla wybranej sieci lub parę podsieć, jest generowane zdarzenie kondycji. 
+11. Wybierz **zapisać** Aby zapisać konfigurację. 
 
- ![Konfiguracja Monitora punktu końcowego usługi](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![Monitor punktu końcowego usługi konfiguracji testów](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
 
 
 
 ## <a name="walkthrough"></a>Przewodnik 
 
-Przejdź do widoku pulpitu nawigacyjnego monitorowania wydajności sieci i obserwować **Monitor punktu końcowego usługi** stronę, aby uzyskać podsumowanie informacji o kondycji inne testy, które zostały utworzone.  
+Przejdź do widoku pulpitu nawigacyjnego monitora wydajności sieci. Aby uzyskać podsumowanie kondycji inne testy został utworzony, obejrzyj **Monitor punktu końcowego usługi** strony. 
 
-![Strona Monitor punktu końcowego usługi](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![Monitor punktu końcowego usługi strony](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 
-Kliknij Kafelek, aby przejść i wyświetlania szczegółów testy na **testy** strony. W tabeli LHS można wyświetlić kondycji w momencie i wartość czas odpowiedzi usługi, opóźnienie sieci i utraty pakietów, do wszystkich testów. Formant Rejestrator stanu sieci umożliwia wyświetlanie migawki sieci w innej czas w przeszłości. Polecenie testu w tabeli, które chcesz zbadać. W okienku RHS można wyświetlić trendów historycznych utraty, opóźnienia i wartości czas odpowiedzi z wykresy. Kliknij łącze Szczegóły testu, aby wyświetlić dane wydajności z każdego węzła. 
+Wybierz Kafelek, aby wyświetlić szczegóły testów na **testy** strony. W tabeli po lewej stronie można wyświetlić w momencie kondycji i wartość czas odpowiedzi usługi, opóźnienie sieci i utraty pakietów, do wszystkich testów. Formant Rejestrator stanu sieci umożliwia wyświetlanie migawki sieci w późniejszym terminie w przeszłości. Wybierz test w tabeli, która ma być badany. Na wykresach w okienku po prawej stronie można wyświetlić trendów historycznych utraty, opóźnienia i wartości czas odpowiedzi. Wybierz **Szczegóły testu** łącze, aby wyświetlić dane wydajności z każdego węzła.
 
-![Testy Monitor punktu końcowego usługi](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![Monitor punktu końcowego usługi testów](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
 
-Na **węzły testowego** widoku można obserwować łączność sieciową z każdego węzła. Kliknij węzeł o spadek wydajności.  To jest węzeł, z którym zaobserwowano aplikacja działa wolno. 
+W **węzły testowego** widoku można obserwować łączność sieciową z każdego węzła. Wybierz węzeł, który ma spadek wydajności. To jest węzeł, w którym zaobserwowano aplikacja działa wolno.
 
-Określić, czy niską wydajnością jest obserwując korelacji między czas odpowiedzi aplikacji i opóźnienie sieci — z powodu sieci lub z powodu problemu z niektórych na końcu dostawcy aplikacji 
+Określić, czy niską wydajnością jest ze względu na problem po stronie dostawcy aplikacji lub sieci, obserwując korelacji między czas odpowiedzi aplikacji i opóźnienie sieci. 
 
-**Problem aplikacji:** Jeśli brak kolekcji w czasie odpowiedzi, ale opóźnienie w sieci jest spójne, a następnie sugeruje to, że sieć działa prawidłowo i jest problem z powodu problemu z końcem aplikacji.  
+* **Problem aplikacji:** kolekcji w czasie odpowiedzi, ale spójności opóźnienia sieci sugeruje, że sieć działa prawidłowo i problem może być spowodowane problemem po stronie aplikacji. 
 
-![Problem dotyczący aplikacji Monitor punktu końcowego usługi](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![Monitor punktu końcowego usługi problemu z aplikacją](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
 
-**Sieci problem:** kolekcji czas odpowiedzi jest powiązany z odpowiedniej kolekcji opóźnienia sieci, a następnie sugeruje to, że czas odpowiedzi jest z powodu wzrost opóźnienia sieci.  
+* **Sieci problem:** kolekcji czas odpowiedzi wraz z odpowiedniej kolekcji opóźnienia sieci sugeruje, że wzrost opóźnienia sieci mogą wynikać z wzrost czasu odpowiedzi. 
 
-![Problem dotyczący usługi punktu końcowego Monitor sieci](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![Monitor punktu końcowego usługi problem z siecią](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
 
-Po określeniu, że problem dotyczy z powodu sieci, możesz kliknąć **topologii** link do wyświetlenia do identyfikowania powodującymi przeskoku na mapy topologii. Na przykład obraz poniżej przedstawiono poza opóźnienie całkowite 105 ms między węzłem a punkt końcowy aplikacji 96 ms jest z powodu przeskoku oznaczone na czerwono. Po wyłaniają powodującymi przeskoku, można podjąć działania naprawcze.  
+Po ustaleniu, że problem dotyczy z powodu sieci, wybierz **topologii** link do wyświetlenia do identyfikowania powodującymi przeskoku na mapy topologii. Przykład przedstawiono na poniższej ilustracji. Poza opóźnienie całkowite 105 ms między węzłem a punkt końcowy aplikacji 96 ms z powodu jest przeskoku oznaczone na czerwono. Po zidentyfikowaniu powodującymi przeskoku można podjąć działania naprawcze. 
 
-![Testy Monitor punktu końcowego usługi](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![Monitor punktu końcowego usługi testów](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnostyka 
 
-Jeśli zauważysz nieprawidłowości, wykonaj następujące czynności:
+Jeśli zauważysz nieprawidłowości, wykonaj następujące kroki:
 
-Jeśli czasu odpowiedzi usługi, utratę połączenia sieciowego i opóźnienia są pokazywane jako NA, a następnie można go z powodu co najmniej jednego z następujących powodów:
-- Aplikacja jest wyłączony.
-- Węzeł używany do sprawdzania łączności z usługą jest wyłączony.
-- Element docelowy w konfiguracji testu jest niepoprawny.
-- Węzeł nie ma łączności sieciowej.
+* Jeśli czas odpowiedzi usługi, utratę sieci lub opóźnienia są wyświetlane jako NA, co najmniej jeden z następujących powodów przyczyną może być:
 
-Jeśli jest wyświetlany czas odpowiedzi usługi prawidłowy, ale utraty sieci, a także opóźnienia są wyświetlane jako NA, może być z powodu co najmniej jednego z następujących powodów:
-- Jeśli węzeł używany do sprawdzania łączności z usługą jest komputer kliencki z systemem Windows, Usługa docelowa blokuje żądania protokołu ICMP lub sieci, Zapora blokuje żądania protokołu ICMP pochodzące z węzła.
-- Pole wyboru **wykonać pomiarów sieci** została wyłączona w konfiguracji testu. 
+    - Aplikacja jest wyłączony.
+    - Węzeł używany do sprawdzania łączności z usługą jest wyłączony.
+    - Element docelowy w konfiguracji testu jest niepoprawny.
+    - Węzeł nie ma łączności sieciowej.
 
-Jeśli NA to czasu odpowiedzi usługi, ale utraty sieci, a także opóźnienia są prawidłowe, następnie go sugeruje, że Usługa docelowa nie jest aplikacją sieci web. Zmień konfigurację testu i wybierz typ testu jako test sieci zamiast testu sieci Web. 
+* Jeśli jest wyświetlany czas odpowiedzi prawidłową usługę, ale utraty sieci, a także opóźnienia są wyświetlane jako NA co najmniej jeden z następujących powodów przyczyną może być:
 
-Jeśli aplikacja działa wolno, należy określić, czy niską wydajnością z powodu sieci lub z powodu problemu z niektórych na końcu dostawcy aplikacji.
+    - Jeśli węzeł używany do sprawdzania łączności z usługą jest komputer kliencki z systemem Windows, Usługa docelowa blokuje żądania protokołu ICMP lub sieci, Zapora blokuje żądania protokołu ICMP, które pochodzą z węzła.
+    - **Wykonać pomiarów sieci** zaznaczenie jest puste w konfiguracji testu. 
+
+* Jeśli NA to czasu odpowiedzi usługi, ale utraty sieci, a także opóźnienia są prawidłowe, Usługa docelowa może nie być aplikacji sieci web. Zmień konfigurację testu i wybierz typ testu jako **sieci** zamiast **Web**. 
+
+* Jeśli aplikacja działa wolno, należy określić, czy niską wydajnością, ze względu na problem po stronie dostawcy aplikacji lub sieci.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Wyszukaj dzienniki](log-analytics-log-searches.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.
+[Wyszukaj dzienniki](log-analytics-log-searches.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.

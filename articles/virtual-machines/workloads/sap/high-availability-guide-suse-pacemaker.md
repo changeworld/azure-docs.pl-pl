@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/05/2018
+ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 27fa58042b1d3dbed111d6ec7f3b3e96a9161180
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 75615de523f1fba808f44fb1a1015138fb190edc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie rozrusznik w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -28,14 +28,13 @@ ms.lasthandoff: 03/23/2018
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
 
-![Rozrusznik na SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
-
-
 Dostępne są dwie opcje do skonfigurowania klastra rozrusznik na platformie Azure. Możesz użyć agenta ogrodzenia, która zajmuje się ponownym uruchomieniu węzła nie powiodło się za pośrednictwem interfejsów API usługi Azure lub urządzenia interwencja można użyć.
 
 Urządzenie interwencja wymaga jednego dodatkowe maszyny wirtualnej, która pełni funkcję serwera obiektów docelowych iSCSI i udostępnia interwencja urządzenia. Ten serwer obiektów docelowych iSCSI może jednak być współużytkowane z innymi klastrami rozrusznik. Zaletą korzystania z urządzenia interwencja jest krótszy czas pracy awaryjnej i, jeśli używasz interwencja urządzeniami lokalnymi, nie wymaga żadnych zmian w sposób działania klastra rozrusznik. Ogrodzenia interwencja można nadal używać agent odgradzający Azure jako kopia zapasowa ogrodzeń mechanizmu w przypadku, gdy serwer obiektów docelowych iSCSI nie jest dostępna.
 
 Jeśli nie chcesz zainwestować w dodatkowe maszyny wirtualne, również służy agent Odgradzający Azure. Wadą podwyższonego jest, że trybu failover może zająć od 10 do 15 minut, jeśli stop zasobu nie powiedzie się lub węzłów klastra nie może komunikować się który wzajemnie już.
+
+![Rozrusznik na SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 ## <a name="sbd-fencing"></a>Interwencja ogrodzenia
 
@@ -61,12 +60,11 @@ Najpierw należy utworzyć iSCSI docelowej maszyny wirtualnej, jeśli nie masz j
 
 1. Włącz usługę obiektu docelowego iSCSI
 
-   <pre><code>
-   # This will make sure that targetcli was called at least once and the initial configuration was done.
-   sudo targetcli --help
-   
+   <pre><code>   
    sudo systemctl enable target
+   sudo systemctl enable targetcli
    sudo systemctl start target
+   sudo systemctl start targetcli
    </code></pre>
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>Utwórz urządzenie iSCSI na serwerze docelowym iSCSI
@@ -79,15 +77,28 @@ Uruchom następujące polecenie **obiektów docelowych iSCSI maszyny Wirtualnej*
 # List all data disks with the following command
 sudo ls -al /dev/disk/azure/scsi1/
 
+# total 0
+# drwxr-xr-x 2 root root  80 Mar 26 14:42 .
+# drwxr-xr-x 3 root root 160 Mar 26 14:42 ..
+# lrwxrwxrwx 1 root root  12 Mar 26 14:42 lun0 -> ../../../<b>sdc</b>
+# lrwxrwxrwx 1 root root  12 Mar 26 14:42 lun1 -> ../../../sdd
+
+# Then use the disk name to list the disk id
+sudo ls -l /dev/disk/by-id/scsi-* | grep sdc
+
+# lrwxrwxrwx 1 root root  9 Mar 26 14:42 /dev/disk/by-id/scsi-14d53465420202020a50923c92babda40974bef49ae8828f0 -> ../../sdc
+# lrwxrwxrwx 1 root root  9 Mar 26 14:42 <b>/dev/disk/by-id/scsi-360022480a50923c92babef49ae8828f0 -> ../../sdc</b>
+
 # Use the data disk that you attached for this cluster to create a new backstore
-sudo targetcli backstores/block create <b>cl1</b> /dev/disk/azure/scsi1/<b>lun0</b>
+sudo targetcli backstores/block create <b>cl1</b> <b>/dev/disk/by-id/scsi-360022480a50923c92babef49ae8828f0</b>
 
 sudo targetcli iscsi/ create iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>
 sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/luns/ create /backstores/block/<b>cl1</b>
 sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/acls/ create iqn.2006-04.<b>prod-cl1-0.local:prod-cl1-0</b>
 sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/acls/ create iqn.2006-04.<b>prod-cl1-1.local:prod-cl1-1</b>
 
-# restart the iSCSI target service to persist the changes
+# save the targetcli changes
+sudo targetcli saveconfig
 sudo systemctl restart target
 </code></pre>
 
@@ -370,7 +381,7 @@ Urządzenie STONITH używa nazwy głównej usługi do autoryzacji przed Microsof
    Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **Identyfikatorem dzierżawy**.
 1. Kliknij przycisk rejestracji aplikacji
 1. Kliknij pozycję Dodaj.
-1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejs API sieci Web", wprowadź adres URL logowania (np. http://localhost) i kliknij przycisk Utwórz
+1. Wprowadź nazwę, wybierz typ aplikacji "Aplikacja/interfejs API sieci Web", wprowadź adres URL logowania (na przykład http://localhost) i kliknij przycisk Utwórz
 1. Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
 1. Wybierz nową aplikację i kliknij na karcie Ustawienia
 1. Wprowadź opis nowego klucza, wybierz pozycję "Nigdy nie wygasa" i kliknij przycisk Zapisz
@@ -436,7 +447,7 @@ sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
 Jeśli chcesz użyć urządzenia interwencja nadal zaleca się używanie agenta odgradzania Azure jako zapasowy, w przypadku, gdy serwer obiektów docelowych iSCSI nie jest dostępna.
 
 <pre><code>
-fencing_topology \
+sudo crm configure fencing_topology \
   stonith-sbd rsc_st_azure
 
 </code></pre>

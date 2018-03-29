@@ -1,8 +1,8 @@
 ---
 title: Funkcja zaznaczenia w procesie nauki danych Team | Dokumentacja firmy Microsoft
-description: "Objaśnienie jego przeznaczenia wybór funkcji i przykłady ich roli w procesie rozszerzenie danych usługi machine learning."
+description: Objaśnienie jego przeznaczenia wybór funkcji i przykłady ich roli w procesie rozszerzenie danych usługi machine learning.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: zhangya;bradsev
-ms.openlocfilehash: c69e7a7e86ccea2073209eabe123049e59a2b8e3
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: 44159516a1785f5d65357935000eccc42a7458aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Wybór funkcji w zespołowym przetwarzaniu danych dla celów naukowych
 W tym artykule opisano na potrzeby funkcji wyboru oraz przykłady swoją rolę w procesie rozszerzenie danych usługi machine learning. Przykłady te są pobierane z usługi Azure Machine Learning Studio. 

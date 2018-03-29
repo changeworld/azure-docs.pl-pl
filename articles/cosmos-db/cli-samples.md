@@ -1,12 +1,12 @@
 ---
-title: "Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB | Microsoft Docs"
-description: "Przykłady interfejsu wiersza polecenia platformy Azure — tworzenie kont, baz danych, kontenerów, regionów i zapór usługi Azure Cosmos DB oraz zarządzanie nimi."
+title: Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB | Microsoft Docs
+description: Przykłady interfejsu wiersza polecenia platformy Azure — tworzenie kont, baz danych, kontenerów, regionów i zapór usługi Azure Cosmos DB oraz zarządzanie nimi.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: azurecli
@@ -15,15 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: database
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 75199225509554a96168eda7993f0340b75e5493
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 5a649279385da882687c50edd53e16f5ebaed163
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza polecenia platformy Azure dla usługi Azure Cosmos DB. Strony referencyjne dla wszystkich poleceń dostępnych w interfejsie wiersza polecenia usługi Azure Cosmos DB są dostępne w [dokumentacji dotyczącej interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/cosmosdb).
 

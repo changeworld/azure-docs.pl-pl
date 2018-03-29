@@ -1,13 +1,13 @@
 ---
-title: "Autoryzowanie użytkowników dla widoków Ambari - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Jak zarządzać uprawnień użytkowników i grup Ambari w klastrach HDInsight przyłączonych do domeny."
+title: Autoryzowanie użytkowników dla widoków Ambari - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Jak zarządzać uprawnień użytkowników i grup Ambari w klastrach HDInsight przyłączonych do domeny.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: e8c1ff23ee00e15325a82e1df0f4643ec429b119
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: f4dfb51cf344d1ec51363ef3a9f74c1ca59119a6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Ambari
 
@@ -35,7 +35,7 @@ Jeśli nie zostało to jeszcze zrobione, wykonaj [tych instrukcji](./domain-join
 
 ## <a name="access-the-ambari-management-page"></a>Dostęp do strony zarządzania Ambari
 
-Aby uzyskać dostęp do **strony Zarządzanie Ambari** na [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), przejdź do  **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Wprowadź nazwę użytkownika administratora klastra i hasło, zdefiniowanym przez użytkownika podczas tworzenia klastra. Następnie z poziomu pulpitu nawigacyjnego Ambari, wybierz pozycję **Zarządzanie Ambari** pod **admin** menu:
+Aby uzyskać dostęp do **strony Zarządzanie Ambari** na [Interfejsu sieci Web Ambari](hdinsight-hadoop-manage-ambari.md), przejdź do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Wprowadź nazwę użytkownika administratora klastra i hasło, zdefiniowanym przez użytkownika podczas tworzenia klastra. Następnie z poziomu pulpitu nawigacyjnego Ambari, wybierz pozycję **Zarządzanie Ambari** pod **admin** menu:
 
 ![Zarządzanie Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
@@ -122,7 +122,7 @@ Widok listy zapewnia szybkie możliwości edycji w dwóch różnych kategoriach:
 
     ![Widok - Użytkownicy listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* Kategoria grupy widoku listy wyświetla wszystkie grupy, a także od roli przypisanej do każdej grupy. W naszym przykładzie lista grup jest zsynchronizowany z grup usługi Azure AD, określona w **grupy użytkowników dostępu** właściwości klastra ustawienia domeny. Zobacz [HDInsight tworzenia klastra](./domain-joined/apache-domain-joined-configure.md#create-an-hdinsight-cluster-in-the-vnet).
+* Kategoria grupy widoku listy wyświetla wszystkie grupy, a także od roli przypisanej do każdej grupy. W naszym przykładzie lista grup jest zsynchronizowany z grup usługi Azure AD, określona w **grupy użytkowników dostępu** właściwości klastra ustawienia domeny. Zobacz [utworzyć klaster HDInsight przyłączonych do domeny](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
 
     ![Widok - grup listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

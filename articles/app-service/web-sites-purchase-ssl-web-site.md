@@ -1,6 +1,6 @@
 ---
-title: "Kupowanie i konfigurowanie certyfikatu SSL dla usługi aplikacji Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak kupić certyfikat usługi aplikacji i powiązać aplikację usługi aplikacji"
+title: Kupowanie i konfigurowanie certyfikatu SSL dla usługi aplikacji Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kupić certyfikat usługi aplikacji i powiązać aplikację usługi aplikacji
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -42,8 +42,8 @@ Wprowadź przyjazną nazwę w polu **nazwa** certyfikatów dla ustawienia zabezp
 
 Wybierz użytkownika **subskrypcji**, **grupy zasobów**, i **certyfikatu jednostki SKU**
 
-> [!WARNING]
-> Certyfikaty usługi aplikacji można używać tylko w innych usługach aplikacji w ramach tej samej subskrypcji.  
+> [!TIP]
+> Certyfikaty usługi aplikacji można używać dla dowolnej platformy Azure lub usługi Azure i nie jest ograniczona do usługi aplikacji. Aby to zrobić, należy utworzyć kopię lokalną PFX certyfikatu usługi aplikacji czy używania go w dowolnej lokalizacji. Aby uzyskać więcej informacji, przeczytaj [tworzenie lokalnych kopii PFX certyfikat usługi aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 >
 
 ## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>Krok 3 — magazyn certyfikatów w usłudze Azure Key Vault
@@ -107,7 +107,7 @@ Kliknij przycisk **Importowanie certyfikatu usługi aplikacji** i wybierz certyf
 
 ![Wstaw obraz Importowanie certyfikatu](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-W **powiązania ssl** sekcji kliknij na **dodać powiązania**i wybierz nazwę domeny, aby zabezpieczyć za pomocą protokołu SSL i certyfikatu do użycia przy użyciu list rozwijanych. Można również wybrać opcję korzystania  **[oznaczenia nazwy serwera (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)**  lub adresu IP na podstawie protokołu SSL.
+W **powiązania ssl** sekcji kliknij na **dodać powiązania**i wybierz nazwę domeny, aby zabezpieczyć za pomocą protokołu SSL i certyfikatu do użycia przy użyciu list rozwijanych. Można również wybrać opcję korzystania **[oznaczenia nazwy serwera (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** lub adresu IP na podstawie protokołu SSL.
 
 ![Wstaw obraz z wiązaniami SSL](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 

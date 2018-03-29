@@ -1,7 +1,7 @@
 ---
-title: "Azure rozwiązania Cosmos bazy danych: Przykłady Java interfejsu API SQL | Dokumentacja firmy Microsoft"
-description: "Znajdź przykładów w języku Java w usłudze GitHub dla typowych zadań przy użyciu rozwiązania Cosmos bazy danych SQL interfejsu API Azure, w tym operacji CRUD."
-keywords: "Przykład NoSQL"
+title: 'Azure rozwiązania Cosmos bazy danych: Przykłady Java interfejsu API SQL | Dokumentacja firmy Microsoft'
+description: Znajdź przykładów w języku Java w usłudze GitHub dla typowych zadań przy użyciu rozwiązania Cosmos bazy danych SQL interfejsu API Azure, w tym operacji CRUD.
+keywords: Przykład NoSQL
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mimig
-ms.openlocfilehash: a46b6e4d64b44c07fe7a2aa63bc49bea59ad5b53
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 992451018baeea15bf63906c71ad72faccb0dbe4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure rozwiązania Cosmos bazy danych: Przykłady Java interfejsu API SQL
 
@@ -30,8 +30,6 @@ ms.lasthandoff: 02/11/2018
 > * [Galeria próbki kodu platformy Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Najnowsze przykładowe aplikacje, które wykonują operacje CRUD i innymi typowymi operacjami zasobów bazy danych Azure rozwiązania Cosmos znajdują się w [azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) repozytorium GitHub. Ten artykuł zawiera:
 
@@ -143,7 +141,7 @@ Aby uzyskać więcej informacji o pisaniu zapytań, zobacz [zapytanie SQL w rama
 
 | Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
-| [Tworzenie kolekcji i ustaw przepustowość](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L76-L102) | [DocumentClient.createCollection](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._document_client.createcollection)<br>[RequestOptions.setOfferThroughput](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._request_options.setofferthroughput) |
+| [Tworzenie kolekcji i ustaw przepustowość](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L76-L102) | [DocumentClient.createCollection](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._document_client.createcollection)<br>[RequestOptions.setOfferThroughput ](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._request_options.setofferthroughput) |
 | [Odczytać kolekcji można znaleźć skojarzonego oferty](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L108-L132) | [Offer.getContent](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._offer.getcontent)<br>[DocumentClient.replaceOffer](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._document_client.replaceoffer)<br>[DocumentClient.readCollection](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._document_client.readcollection)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._document_client.queryoffers) |
 
 ## <a name="partition-key-examples"></a>Przykłady klucza partycji

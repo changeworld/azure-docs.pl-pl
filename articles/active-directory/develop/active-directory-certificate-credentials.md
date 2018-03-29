@@ -1,33 +1,33 @@
 ---
-title: "Certyfikat poświadczeń w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym artykule omówiono rejestracji i stosowania certyfikatu poświadczeń dla uwierzytelniania aplikacji"
+title: Certyfikat poświadczeń w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono rejestracji i stosowania certyfikatu poświadczeń dla uwierzytelniania aplikacji
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 03/15/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7c58b4ebd840aca555b52a03cf44ace311b64e3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certyfikat poświadczeń do uwierzytelniania aplikacji
 
-Azure Active Directory umożliwia aplikacji do własne poświadczenia uwierzytelniania, na przykład przepływu OAuth 2.0 klienta poświadczenia Grant ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)), a przepływ w imieniu-z ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
+Azure Active Directory umożliwia aplikacji korzystanie z własnych poświadczeń do uwierzytelniania. Na przykład w przepływ udzielania poświadczeń klienta OAuth w 2.0 ([v1](active-directory-protocols-oauth-service-to-service.md), [v2](active-directory-v2-protocols-oauth-client-creds.md)), a przepływ w imieniu-z ([v1](active-directory-protocols-oauth-on-behalf-of.md), [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
 Jeden formularz poświadczeniami, które mogą być używane jest potwierdzenie Token(JWT) sieci Web JSON, podpisanego przy użyciu certyfikatu, który jest właścicielem aplikacji.
 
 ## <a name="format-of-the-assertion"></a>Format potwierdzenia
-Do obliczenia potwierdzenia, prawdopodobnie chcesz skorzystać z jednej z wielu [JSON Web Token](https://jwt.io/) bibliotek w wybranym języku. Informacje przez token jest:
+Do obliczenia potwierdzenia, prawdopodobnie chcesz skorzystać z jednej z wielu [JSON Web Token](https://jwt.ms/) bibliotek w wybranym języku. Informacje przez token jest:
 
 #### <a name="header"></a>Nagłówek
 
@@ -85,7 +85,14 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Zarejestruj certyfikat z usługą Azure AD
 
-Aby skojarzyć poświadczenia certyfikatu z aplikacji klienckiej w usłudze Azure AD, należy edytować manifest aplikacji.
+Certyfikat poświadczeń można skojarzyć z aplikacji klienckiej w usłudze Azure AD za pomocą portalu Azure przy użyciu dowolnej z następujących metod:
+
+**Przekazywanie pliku certyfikatu**
+
+W aplikacji Azure rejestracji aplikacji klienckiej, kliknij polecenie **ustawienia**, kliknij przycisk **klucze** , a następnie kliknij przycisk **przekazać klucza publicznego**. Wybierz plik certyfikatu, aby przekazać i kliknij przycisk **zapisać**. Po zapisaniu, certyfikat zostanie przesłany i odcisku palca, Data rozpoczęcia i wygaśnięcia wartości są wyświetlane. 
+
+**Aktualizowanie manifestu aplikacji**
+
 O wstrzymywania certyfikatu, należy obliczyć:
 
 - `$base64Thumbprint`, która jest base64 kodowanie skrót certyfikatu

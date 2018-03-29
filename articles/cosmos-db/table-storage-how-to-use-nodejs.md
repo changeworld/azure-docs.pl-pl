@@ -1,6 +1,6 @@
 ---
-title: "Jak używać magazynu tabel Azure lub Azure DB rozwiązania Cosmos w oprogramowaniu Node.js | Dokumentacja firmy Microsoft"
-description: "Przechowywanie danych strukturalnych w chmurze przy użyciu magazynu tabel Azure lub bazy danych Azure rozwiązania Cosmos."
+title: Jak używać magazynu tabel Azure lub Azure DB rozwiązania Cosmos w oprogramowaniu Node.js | Dokumentacja firmy Microsoft
+description: Przechowywanie danych strukturalnych w chmurze przy użyciu magazynu tabel Azure lub bazy danych Azure rozwiązania Cosmos.
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: dcd729da0b9e913046da1ad5619594f5ce485bdb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc6e3ca079b4d1edefa82e06dbe63b393ab2fbb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Jak używać magazynu tabel Azure w oprogramowaniu Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -361,8 +361,6 @@ dc.table.queryEntities(tableName,
 ```
 
 Jeśli sprawdzenie `continuationToken` obiektu, można znaleźć właściwości takich jak `nextPartitionKey`, `nextRowKey` i `targetLocation`, które mogą służyć do iterowania po wszystkich wyników.
-
-Istnieje również próbkę kontynuacji (continuationsample.js) w [repozytorium azure magazynu węzła](https://github.com/Azure/azure-storage-node/tree/master/examples/samples) w witrynie GitHub. 
 
 ## <a name="work-with-shared-access-signatures"></a>Praca z sygnatury dostępu współdzielonego
 Sygnatury dostępu współdzielonego (SAS) to bezpieczny sposób zapewnienia szczegółowej dostępu do tabel bez podawania Twojej nazwy konta magazynu i klucze. Skojarzenia zabezpieczeń są często używane do udzielany ograniczony dostęp do danych, na przykład pozwala aplikacji mobilnej, aby w rekordach zapytań.

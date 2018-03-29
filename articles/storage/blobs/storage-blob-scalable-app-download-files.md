@@ -1,22 +1,22 @@
 ---
-title: "Pobieranie dużych ilości danych losowych z usługi Azure Storage | Microsoft Docs"
-description: "Dowiedz się, jak przy użyciu zestawu Azure SDK pobierać duże ilości danych losowych z konta usługi Azure Storage"
+title: Pobieranie dużych ilości danych losowych z usługi Azure Storage | Microsoft Docs
+description: Dowiedz się, jak przy użyciu zestawu Azure SDK pobierać duże ilości danych losowych z konta usługi Azure Storage
 services: storage
-documentationcenter: 
-author: tamram
+documentationcenter: ''
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.workload: web
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/20/2018
-ms.author: tamram
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 673dc8fc7fd5d08f9541595af16078d44c7f8308
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 21186d3a2fd7d33cd78db3c3e45ff69240e7310d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Pobieranie dużych ilości danych losowych z usługi Azure Storage
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 9361c2a0a4854f463eb2d679c3884f84f6858997
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76b7481223566f16a5da8c08d9d76f2bdb6b542a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="initiate-extending-alerts-from-oms-into-azure"></a>Inicjowanie rozszerzanie alerty z usługą OMS na platformie Azure
 Począwszy od **23 kwietnia 2018**, wszystkich klientów przy użyciu alertów, które są skonfigurowane w [programu Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), zostanie rozszerzony na platformie Azure. Alerty, które zostały rozszerzone na platformie Azure zachowują się tak samo jak OMS. Możliwości monitorowania pozostaną nienaruszone. Rozszerzające alertach tworzonych w OMS Azure oferuje wiele korzyści. Aby uzyskać więcej informacji o zaletach i proces rozszerzenia alerty z usługą OMS na platformie Azure, zobacz [rozszerzyć alerty z OMS Azure](monitoring-alerts-extend.md).
@@ -40,16 +40,14 @@ Przykład ekranu poniżej.
 
     ![Rozszerzanie alerty z usługą OMS na platformie Azure — krok 2](./media/monitor-alerts-extend/ExtendStep2.png)
 
-    > [!NOTE]
-    > Jeśli Edycja alertów opcji przedstawionych powyżej, jest używany; użytkownik nie będzie wróć do kreatora. I będzie konieczne ponowne uruchomienie procesu rozszerzenia alerty z usługą OMS na platformie Azure, w kroku 1. Również lista przedstawia proponowanej zmiany podsumowania rzeczywisty wynik może się różnić w oparciu wszelkie zmiany są wykonywane równolegle.
 
-4. W ostatnim kroku kreatora możesz poprosić OMS można zaplanować rozszerzanie wszystkie alerty na platformie Azure — tworzenie nowych grup akcji i kojarzenie ich z alertami, jak pokazano wcześniej ekranu. Aby kontynuować "mieć OMS automatycznie wszystkie alerty w obszarze roboczym do platformy Azure", kliknij przycisk Zakończ i upewnij się, w wierszu polecenia, aby zainicjować proces. Alternatywnie klienci mogą użyć nowy dziennik analizy interfejs API -, aby ręcznie uruchomić rozszerzanie alerty, wybierając inną opcję. 
+4. W ostatnim kroku kreatora możesz poprosić OMS można zaplanować rozszerzanie wszystkie alerty na platformie Azure — tworzenie nowych grup akcji i kojarzenie ich z alertami, jak pokazano wcześniej ekranu. Aby kontynuować wybierz kliknij przycisk Zakończ i upewnij się, w wierszu polecenia, aby zainicjować proces. Opcjonalnie klientów można też podać adresy e-mail, które chciałby OMS o wysłanie raportu na zakończenie przetwarzania.
 
     ![Rozszerzanie alerty z usługą OMS na platformie Azure — krok 3](./media/monitor-alerts-extend/ExtendStep3.png)
 
-5. Po zakończeniu pracy Kreatora kontroli powróci do strony Ustawienia alertu, a opcja "Rozszerzyć do platformy Azure" zostanie usunięta. W tle OMS zaplanowane alerty w OMS na platformie Azure; to może zająć trochę czasu i po rozpoczęciu operacji krótki okres alertów w OMS nie będą dostępne do modyfikacji. Po zakończeniu proces w tle zostanie wysłana wiadomość e-mail do wszystkich użytkowników z rolą administratora lub współautora; szczegółowe informacje o utworzone grupy akcji i odpowiednie alerty mieć zostały skojarzone z. 
+5. Po zakończeniu pracy Kreatora kontroli powróci do strony Ustawienia alertu, a opcja "Rozszerzyć do platformy Azure" zostanie usunięta. W tle OMS zaplanowane alerty w OMS na platformie Azure; to może zająć trochę czasu i po rozpoczęciu operacji krótki okres alertów w OMS nie będą dostępne do modyfikacji. Bieżący stan zostanie wyświetlony za pośrednictwem transparent i jeśli adresów e-mail miejsce pod warunkiem podczas wykonywania kroku 4, następnie zostaną one informację, gdy proces w tle pomyślnie rozszerza wszystkie alerty na platformie Azure. 
 
-6. Alerty będą nadal wyświetlane w OMS, nawet po ich pobrać rozszerzony na platformie Azure.
+6. Alerty będą nadal wyświetlane w OMS, nawet po ich pomyślnie pobrać rozszerzony na platformie Azure.
 
     ![Po rozszerzeniu alerty w OMS na platformie Azure](./media/monitor-alerts-extend/PostExtendList.png)
 
@@ -141,10 +139,11 @@ Jeśli wszystkie alerty w obszarze roboczym określonego zostały rozszerzone na
 }
 ```
 
-Aby rozpocząć planowanie rozszerzania alertów w OMS na platformie Azure, zainicjować POST do interfejsu API. Wykonanie tego polecenia/call potwierdza użytkownika zamiaru jak również akceptacji alerty w OMS rozszerzony do platformy Azure i wprowadzić zmiany, jak wskazano w odpowiedzi GET wywołanie interfejsu API.
+Aby rozpocząć planowanie rozszerzania alertów w OMS na platformie Azure, zainicjować POST do interfejsu API. Wykonanie tego polecenia/call potwierdza użytkownika zamiaru jak również akceptacji alerty w OMS rozszerzony do platformy Azure i wprowadzić zmiany, jak wskazano w odpowiedzi GET wywołanie interfejsu API. Użytkownik może opcjonalnie możesz podać listę adresów e-mail, do których OMS będzie poczty raportów, pomyślnie zakończenie procesu zaplanowane tła rozszerzania alertów w OMS na platformie Azure.
 
 ```
-armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+$emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
+armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $emailJSON
 ```
 
 > [!NOTE]

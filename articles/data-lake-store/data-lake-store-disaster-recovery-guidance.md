@@ -1,8 +1,8 @@
 ---
-title: "Wskazówki dotyczące odzyskiwania po awarii dla usługi Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące odzyskiwania po awarii dla usługi Azure Data Lake Store"
+title: Wskazówki dotyczące odzyskiwania po awarii dla usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące odzyskiwania po awarii dla usługi Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9a2705a2372ea4f2fbea1e27bf675679dfda28f8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Wskazówki dotyczące odzyskiwania po awarii dla danych w usłudze Data Lake Store
 
-Dane na koncie Azure Data Lake Store są odporne na przejściowe awarie sprzętowe w regionie dzięki zautomatyzowanym replikom. Zapewniają one trwałość i wysoką dostępność usługi Azure Data Lake Store oraz zgodność z warunkami jej umowy SLA. Ten artykuł zawiera wskazówki dotyczące sposobu dalszej ochronę danych przed rzadkich awarii całej region lub przypadkowym usunięciu.
+Azure Data Lake Store udostępnia magazyn lokalnie nadmiarowy (LRS). W związku z tym dane na koncie usługi Azure Data Lake Store jest odporność na awarie sprzętowe przejściowej w obrębie regionu poprzez automatyczne replik. Zapewniają one trwałość i wysoką dostępność usługi Azure Data Lake Store oraz zgodność z warunkami jej umowy SLA. Ten artykuł zawiera wskazówki dotyczące sposobu dalszej ochronę danych przed rzadkich awarii całej region lub przypadkowym usunięciu.
 
 ## <a name="disaster-recovery-guidance"></a>Wskazówki dotyczące odzyskiwania po awarii
-Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. W celu utworzenia planu odzyskiwania danych po awarii zapoznaj się z dokumentacją Azure poniżej. Poniżej przedstawiono niektóre zasoby, które mogą pomóc w tworzeniu własnego planu.
+Jest to bardzo ważne, aby każdy klient przygotował własny plan odzyskiwania po awarii. Przeczytaj informacje w tym artykule, aby utworzyć plan odzyskiwania po awarii. Poniżej przedstawiono niektóre zasoby, które mogą pomóc w tworzeniu własnego planu.
 
 * [Odzyskiwanie aplikacji platformy Azure po awarii i ich wysoka dostępność](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Odporność platformy Azure — wskazówki techniczne](../resiliency/resiliency-technical-guidance.md)

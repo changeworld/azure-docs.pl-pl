@@ -1,11 +1,11 @@
 ---
-title: "Dziennika modułów zbierających dane HTTP analizy interfejsu API | Dokumentacja firmy Microsoft"
-description: "Interfejs API modułów zbierających dane HTTP Analytics dziennika umożliwia dodawanie danych POST JSON do repozytorium analizy dzienników za pomocą dowolnego klienta, który można wywołać interfejsu API REST. W tym artykule opisano sposób użycia interfejsu API i zawiera przykłady publikowania danych przy użyciu różnych języków programowania."
+title: Dziennika modułów zbierających dane HTTP analizy interfejsu API | Dokumentacja firmy Microsoft
+description: Interfejs API modułów zbierających dane HTTP Analytics dziennika umożliwia dodawanie danych POST JSON do repozytorium analizy dzienników za pomocą dowolnego klienta, który można wywołać interfejsu API REST. W tym artykule opisano sposób użycia interfejsu API i zawiera przykłady publikowania danych przy użyciu różnych języków programowania.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 5c6f2b35b48988af533612cb48da8fe79a838cf6
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 167c36d2fa9bc182b6e37c0f47f838fde1ba01df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych do analizy dzienników przy użyciu protokołu HTTP danych modułu zbierającego interfejsu API (w publicznej wersji zapoznawczej)
 W tym artykule przedstawiono sposób wysyłania danych do analizy dzienników z klienta interfejsu API REST za pomocą interfejsu API modułów zbierających dane HTTP.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, dołączyć go w żądaniu i mieć tego żądania uprawnień przez analizy dzienników.  Przykłady są dostępne dla programu PowerShell, C# i Python.
@@ -328,7 +328,7 @@ namespace OIAPIExample
         {
             // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
-            var jsonBytes = Encoding.UTF8.GetBytes(message);
+            var jsonBytes = Encoding.UTF8.GetBytes(json);
             string stringToHash = "POST\n" + jsonBytes.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;

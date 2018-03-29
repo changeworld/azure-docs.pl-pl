@@ -1,11 +1,11 @@
 ---
-title: "Omówienie maszyn wirtualnych z systemem Windows | Microsoft Docs"
-description: "Dowiedz się więcej na temat tworzenia maszyn wirtualnych z systemem Windows na platformie Azure oraz zarządzania nimi."
+title: Omówienie maszyn wirtualnych z systemem Windows | Microsoft Docs
+description: Dowiedz się więcej na temat tworzenia maszyn wirtualnych z systemem Windows na platformie Azure oraz zarządzania nimi.
 services: virtual-machines-windows
-documentationcenter: 
-author: davidmu1
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e33186b189394172cba6cf550c01954db941c19
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6ab964760ea06c2e82d0c9f69f89fe62dec8ceac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -145,7 +145,7 @@ Korzystając z przycisku Połącz w witrynie Azure, można [uruchomić sesję pu
 ### <a name="manage-availability"></a>Zarządzanie dostępnością
 Ważne jest zrozumienie, jak można [zapewnić wysoką dostępność](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) aplikacji. Ta konfiguracja obejmuje utworzenie wielu maszyn wirtualnych w celu zagwarantowania, że przynajmniej jednak z nich na pewno działa.
 
-Aby wdrożenie kwalifikowało się do naszej Umowy dotyczącej poziomu usług (SLA) uwzględniającej dostępność maszyn wirtualnych na poziomie 99,95%, wymagane jest wdrożenie co najmniej dwóch maszyn wirtualnych z uruchomionym obciążeniem w obrębie [zestawu dostępności](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ta konfiguracja daje gwarancję, że maszyny wirtualne są rozproszone w wielu domenach błędów i wdrożone na hostach z różnymi okresami konserwacji. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
+Aby wdrożenie kwalifikowało się do naszej Umowy dotyczącej poziomu usług (SLA) uwzględniającej dostępność maszyn wirtualnych na poziomie 99,95%, wymagane jest wdrożenie co najmniej dwóch maszyn wirtualnych z uruchomionym obciążeniem w obrębie [zestawu dostępności](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ta konfiguracja daje gwarancję, że maszyny wirtualne są rozproszone w wielu domenach błędów i wdrożone na hostach z różnymi okresami konserwacji. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
 
 ### <a name="back-up-the-vm"></a>Tworzenie kopii zapasowych maszyn wirtualnych
 [Magazyn usługi Recovery Services](../../backup/backup-introduction-to-azure-backup.md) służy do ochrony danych i zasobów w usługach Azure Backup i Azure Site Recovery. Magazynu usługi Recovery Services można użyć do [wdrażania kopii zapasowych maszyn wirtualnych wdrożonych przy użyciu usługi Resource Manager oraz zarządzania nimi przy użyciu programu PowerShell](../../backup/backup-azure-vms-automation.md). 

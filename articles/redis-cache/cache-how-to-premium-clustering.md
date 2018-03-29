@@ -1,24 +1,24 @@
 ---
-title: "Jak skonfigurować Redis klastrowania podręczna Redis Azure Premium | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia i zarządzania nimi Redis klastrowania warstwę Premium wystąpienia pamięci podręcznej Redis Azure"
+title: Jak skonfigurować Redis klastrowania podręczna Redis Azure Premium | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia i zarządzania nimi Redis klastrowania warstwę Premium wystąpienia pamięci podręcznej Redis Azure
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: wesmc
-ms.openlocfilehash: 16281cca4e4bc95e145317365d42382ab11fde93
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 4af6545058ab0031d7cd1b38618b6d80204f83b9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Jak skonfigurować Redis klastrowania podręczna Redis Azure Premium
 Pamięć podręczna Redis Azure ma inną pamięci podręcznej oferty, które zapewniają elastyczność w wyborze rozmiar pamięci podręcznej i funkcji, łącznie z funkcji warstwy Premium, takich jak klastrowanie, trwałości i obsługi sieci wirtualnej. W tym artykule opisano sposób konfigurowania klastra w wystąpieniu usługi pamięć podręczna Redis Azure premium.
@@ -33,7 +33,7 @@ Pamięć podręczna Redis Azure oferuje klaster Redis jako [zaimplementowana w p
 * Więcej przepustowości: przepływności zwiększa liniowo zwiększyć liczbę fragmentów. 
 * Więcej rozmiar pamięci: liniowo zwiększa zwiększyć liczbę fragmentów.  
 
-Aby uzyskać więcej informacji o rozmiarze, przepływności i przepustowości z pamięci podręcznych premium, zobacz [jakie oferty pamięć podręczna Redis i rozmiar należy używać?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+Klaster nie zwiększa liczbę połączeń dostępnych dla klastra pamięci podręcznej. Aby uzyskać więcej informacji o rozmiarze, przepływności i przepustowości z pamięci podręcznych premium, zobacz [jakie oferty pamięć podręczna Redis i rozmiar należy używać?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
 Na platformie Azure Redis klastra jest oferowany jako model podstawowy/repliki, gdzie każdy identyfikator niezależnego fragmentu ma parę podstawowy/repliki replikacji, gdy replikacja jest zarządzane przez usługę pamięć podręczna Redis Azure. 
 
@@ -75,6 +75,8 @@ Aby zmienić rozmiar klastra w uruchomionej usługi pamięć podręczna premium 
 ![Rozmiar klastra redis][redis-cache-redis-cluster-size]
 
 Aby zmienić rozmiar klastra, za pomocą suwaka, lub wpisz liczbę z zakresu od 1 do 10 w **liczby niezależnych** polu tekstowym i kliknij przycisk **OK** do zapisania.
+
+Rozmiar klastra po zwiększeniu maksymalnej przepływności i rozmiaru pamięci podręcznej. Zwiększyć rozmiar klastra nie zwiększenia maksymalnej liczby. połączenia dostępne dla klientów.
 
 > [!NOTE]
 > Skalowanie klastra działa [migracji](https://redis.io/commands/migrate) polecenia, która jest kosztowna polecenia, dlatego dla minimalny wpływ, należy rozważyć uruchomieniem tej operacji podczas godziny poza szczytem. Podczas procesu migracji zobaczysz kolekcji w obciążenia serwera. Skalowanie klastra długi działa procesu i czas poświęcony na zależy od liczby kluczy i rozmiaru wartości skojarzone z tych kluczy.
@@ -132,7 +134,7 @@ Obecnie nie wszystkie obsługują klientów pamięci podręcznej Redis klastra. 
 Możesz połączyć się z pamięci podręcznej korzystającej z tego samego [punkty końcowe](cache-configure.md#properties), [porty](cache-configure.md#properties), i [klucze](cache-configure.md#access-keys) używanego podczas nawiązywania połączenia z pamięcią podręczną, która nie ma włączoną funkcją klastrowania. Redis zarządza usługi klastrowania na wewnętrznej bazy danych, więc nie trzeba zarządzać nim z klienta.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Może bezpośrednio podłączyć do poszczególnych odłamków Moje pamięci podręcznej?
-To nie jest oficjalnie obsługiwana. Z tym powiedział każdy identyfikator niezależnego fragmentu składa się z pary pamięci podręcznej podstawowy/repliki, nazywanych zbiorczo wystąpienia pamięci podręcznej. Możesz połączyć się te wystąpienia pamięci podręcznej za pomocą narzędzia interfejsu wiersza polecenia redis w [niestabilny](http://redis.io/download) gałęzi repozytorium Redis w witrynie GitHub. Ta wersja implementuje podstawowa pomoc techniczna podczas pracy z `-c` przełącznika. Aby uzyskać więcej informacji, zobacz [odtwarzanie z klastrem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [http://redis.io](http://redis.io) w [samouczek klaster Redis](http://redis.io/topics/cluster-tutorial).
+To nie jest oficjalnie obsługiwana. Z tym powiedział każdy identyfikator niezależnego fragmentu składa się z pary pamięci podręcznej podstawowy/repliki, nazywanych zbiorczo wystąpienia pamięci podręcznej. Możesz połączyć się te wystąpienia pamięci podręcznej za pomocą narzędzia interfejsu wiersza polecenia redis w [niestabilny](http://redis.io/download) gałęzi repozytorium Redis w witrynie GitHub. Ta wersja implementuje podstawowa pomoc techniczna podczas pracy z `-c` przełącznika. Aby uzyskać więcej informacji, zobacz [odtwarzanie z klastrem](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) na [ http://redis.io ](http://redis.io) w [samouczek klaster Redis](http://redis.io/topics/cluster-tutorial).
 
 Dla bez użycia protokołu ssl należy użyć następujących poleceń.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: 4b0831173212d3324c851ad1bd04ec443a9face5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Szybki Start dla środowiska PowerShell w powłoce chmury Azure (wersja zapoznawcza)
 
@@ -182,7 +182,7 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 #### <a name="invoke-powershell-script-across-remote-vms"></a>Wywołanie skryptu programu PowerShell na maszynach wirtualnych zdalnego
 
  > [!WARNING]
- > Zapoznaj się z [Rozwiązywanie problemów z zdalne zarządzanie maszynami wirtualnymi Azure](troubleshooting.md#powershell-resolutions).
+ > Zapoznaj się z [Rozwiązywanie problemów z zdalne zarządzanie maszynami wirtualnymi Azure](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
 
   Zakładając, że maszyny wirtualnej, MyVM1, można użyć `Invoke-AzureRmVMCommand` do wywołania blok skryptu programu PowerShell na komputerze zdalnym.
 

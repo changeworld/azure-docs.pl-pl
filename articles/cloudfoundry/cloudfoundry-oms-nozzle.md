@@ -1,11 +1,11 @@
 ---
-title: "Wdrażanie końcówki Analiza dzienników Azure do monitorowania chmury Foundry | Dokumentacja firmy Microsoft"
-description: "Wskazówki krok po kroku dotyczące wdrażania loggregator Foundry chmury końcówki dla usługi Analiza dzienników Azure. Za pomocą końcówkę monitorować metryki kondycji i wydajności systemu Foundry chmury."
+title: Wdrażanie końcówki Analiza dzienników Azure do monitorowania chmury Foundry | Dokumentacja firmy Microsoft
+description: Wskazówki krok po kroku dotyczące wdrażania loggregator Foundry chmury końcówki dla usługi Analiza dzienników Azure. Za pomocą końcówkę monitorować metryki kondycji i wydajności systemu Foundry chmury.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ningk
 manager: timlt
-editor: 
+editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0d13d39d2921c51c537534a5b000564a9df91880
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Wdrażanie końcówki Analiza dzienników Azure do monitorowania systemu chmury Foundry
 
-[Analiza dzienników Azure](https://azure.microsoft.com/services/log-analytics/) jest usługą w programie Microsoft [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/) (OMS). Pomaga zbierania i analizowania danych, które są generowane na podstawie danych z chmury i lokalnych środowiskach.
+[Analiza dzienników Azure](https://azure.microsoft.com/services/log-analytics/) jest usługą platformy Azure. Pomaga zbierania i analizowania danych, które są generowane na podstawie danych z chmury i lokalnych środowiskach.
 
 Końcówkę analizy dziennika (końcówkę) to składnik chmury Foundry (CF), który przesyła dalej metryki z [loggregator Foundry chmury](https://docs.cloudfoundry.org/loggregator/architecture.html) pilnym do analizy dzienników. Z końcówkę można zbieranie, wyświetlanie i analizowanie Twojej CF systemu kondycji i wydajności metryki, w wielu wdrożeń.
 
-W tym dokumencie Dowiedz się jak wdrożyć końcówkę do środowiska CF, a następnie uzyskać dostęp do danych z poziomu konsoli Analiza dzienników OMS.
+W tym dokumencie Dowiedz się jak wdrożyć końcówkę do środowiska CF, a następnie uzyskać dostęp do danych z poziomu konsoli analizy dzienników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -53,9 +53,9 @@ Końcówkę musi też mieć uprawnienia dostępu do pilnym loggregator i kontrol
 
 Przed skonfigurowaniem UAA klient wiersza polecenia, upewnij się, że zainstalowano Rubygems.
 
-### <a name="3-create-an-oms-workspace-in-azure"></a>3. Utwórz obszar roboczy OMS na platformie Azure
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Tworzenie obszaru roboczego analizy dzienników na platformie Azure
 
-Obszar roboczy OMS można utworzyć ręcznie lub za pomocą szablonu. Po zakończeniu wdrażania końcówki załadować wstępnie skonfigurowane widoki OMS i alerty.
+Można utworzyć obszaru roboczego analizy dzienników, ręcznie lub za pomocą szablonu. Po zakończeniu wdrażania końcówki załadować wstępnie skonfigurowane widoki OMS i alerty.
 
 Aby ręcznie utworzyć obszaru roboczego:
 
@@ -70,7 +70,7 @@ Aby ręcznie utworzyć obszaru roboczego:
 
 Aby uzyskać więcej informacji, zobacz [wprowadzenie do analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-Można również utworzyć obszar roboczy OMS z szablonu OMS. Ta metoda szablonu ładuje wstępnie skonfigurowane widoki OMS i alerty automatycznie. Aby uzyskać więcej informacji, zobacz [Analiza dzienników Azure OMS rozwiązanie chmury Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution).
+Alternatywnie można utworzyć obszaru roboczego analizy dzienników przy użyciu szablonu OMS. Ta metoda szablonu ładuje wstępnie skonfigurowane widoki OMS i alerty automatycznie. Aby uzyskać więcej informacji, zobacz [rozwiązania Azure Log Analytics dla chmury Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution).
 
 ## <a name="deploy-the-nozzle"></a>Wdrażanie końcówkę
 
@@ -116,16 +116,16 @@ git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
 ```
 
-#### <a name="set-environment-variables"></a>Ustaw zmienne środowiskowe
+#### <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
 
-Można teraz ustawić zmienne środowiskowe w pliku manifest.yml w bieżącym katalogu. Poniżej przedstawiono końcówkę manifest aplikacji. Zastąp wartości konkretnych informacji obszar roboczy OMS.
+Można teraz ustawić zmienne środowiskowe w pliku manifest.yml w bieżącym katalogu. Poniżej przedstawiono końcówkę manifest aplikacji. Zastąp wartości konkretnych informacji obszaru roboczego analizy dzienników.
 
 ```
-OMS_WORKSPACE             : OMS workspace ID: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_POST_TIMEOUT          : HTTP post timeout for sending events to OMS Log Analytics. The default is 10 seconds.
-OMS_BATCH_TIME            : Interval for posting a batch to OMS Log Analytics. The default is 10 seconds.
-OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to OMS Log Analytics. The default is 1000.
+OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
+OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
+OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
 API_ADDR                  : The API URL of the CF environment. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 DOPPLER_ADDR              : Loggregator's traffic controller URL. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 FIREHOSE_USER             : CF user you created in the preceding section, "Create a CF user and grant required privileges." This user has firehose and Cloud Controller admin access.
@@ -135,8 +135,8 @@ SKIP_SSL_VALIDATION       : If true, allows insecure connections to the UAA and 
 CF_ENVIRONMENT            : Enter any string value for identifying logs and metrics from different CF environments.
 IDLE_TIMEOUT              : The Keep Alive duration for the firehose consumer. The default is 60 seconds.
 LOG_LEVEL                 : The logging level of the Nozzle. Valid levels are DEBUG, INFO, and ERROR.
-LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to OMS Log Analytics as CounterEvents.
-LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to OMS Log Analytics. The default is 60 seconds.
+LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Log Analytics as CounterEvents.
+LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Log Analytics. The default is 60 seconds.
 ```
 
 ### <a name="push-the-application-from-your-development-computer"></a>Wypychanie aplikacji na komputerze projektowym
@@ -165,7 +165,7 @@ Upewnij się, że jest uruchomiona aplikacja końcówki OMS.
 
 ### <a name="1-import-the-oms-view"></a>1. Zaimportuj widok OMS
 
-W portalu OMS, przejdź do **Widok projektanta** > **importu** > **Przeglądaj**i wybierz jeden z plików omsview. Na przykład wybierz *Foundry.omsview chmury*i Zapisz widoku. Teraz kafelka jest wyświetlany na OMS **omówienie** strony. Wybierz, aby wyświetlić wizualizowanego metryki.
+W portalu OMS, przejdź do **Widok projektanta** > **importu** > **Przeglądaj**i wybierz jeden z plików omsview. Na przykład wybierz *Foundry.omsview chmury*i Zapisz widoku. Teraz kafelka jest wyświetlany na **omówienie** strony. Wybierz, aby wyświetlić wizualizowanego metryki.
 
 Można dostosować te widoki lub tworzenia nowych widoków przez **Widok projektanta**.
 
@@ -175,16 +175,16 @@ Można dostosować te widoki lub tworzenia nowych widoków przez **Widok projekt
 
 Możesz [tworzyć alerty](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)i dostosowywać zapytania i wartości progowe, zgodnie z potrzebami. Zalecane są następujące alerty:
 
-| Zapytania wyszukiwania                                                                  | Generuj alert, na podstawie | Opis                                                                       |
+| Zapytanie wyszukiwania                                                                  | Generuj alert w oparciu o | Opis                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
-| Typ = CF_ValueMetric_CL Origin_s = bbs Name_s = "Domain.cf aplikacje"                   | Liczba wyników < 1   | **BBS. Aplikacje Domain.cf** wskazuje, czy domena aplikacji cf jest aktualny. Oznacza to, że żądania aplikacji CF z kontrolerem chmury są synchronizowane z bbs. LRPsDesired (AIs potrzeby Diego) do wykonania. Żadne dane otrzymane oznacza, że aplikacje cf domeny nie jest aktualny w określone okno czasu. |
+| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Liczba wyników < 1   | **BBS. Aplikacje Domain.cf** wskazuje, czy domena aplikacji cf jest aktualny. Oznacza to, że żądania aplikacji CF z kontrolerem chmury są synchronizowane z bbs. LRPsDesired (AIs potrzeby Diego) do wykonania. Żadne dane otrzymane oznacza, że aplikacje cf domeny nie jest aktualny w określone okno czasu. |
 | Typ = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d > 1            | Liczba wyników > 0   | Dla komórek Diego 0 oznacza, że działa prawidłowo, a 1 oznacza złej kondycji. Wykrycie wielu komórek Diego złej kondycji w określone okno czasu, należy ustawić alert. |
-| Typ = CF_ValueMetric_CL Origin_s = "bosh-hm — usługa przesyłania dalej" Name_s="system.healthy" Value_d = 0 | Liczba wyników > 0 | 1 oznacza, że system jest w dobrej kondycji, a wartość 0 oznacza, że system nie jest w dobrej kondycji. |
-| Typ = CF_ValueMetric_CL Origin_s = route_emitter Name_s = ConsulDownMode Value_d > 0 | Liczba wyników > 0   | Konsul emituje okresowo jej stan kondycji. 0 oznacza, że system jest w dobrej kondycji i 1 oznacza nadajnika trasy wykryje, że Konsul jest wyłączony. |
-| Typ = CF_CounterEvent_CL Origin_s Delta_d DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" lub Name_s="doppler.shedEnvelopes") = > 0 | Liczba wyników > 0 | Delta liczba komunikatów porzuconych celowo przez Doppler'a z powodu braku Wstecz. |
+| Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Liczba wyników > 0 | 1 oznacza, że system jest w dobrej kondycji, a wartość 0 oznacza, że system nie jest w dobrej kondycji. |
+| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Liczba wyników > 0   | Konsul emituje okresowo jej stan kondycji. 0 oznacza, że system jest w dobrej kondycji i 1 oznacza nadajnika trasy wykryje, że Konsul jest wyłączony. |
+| Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Liczba wyników > 0 | Delta liczba komunikatów porzuconych celowo przez Doppler'a z powodu braku Wstecz. |
 | Typ = CF_LogMessage_CL SourceType_s = LGR MessageType_s = błąd                      | Liczba wyników > 0   | Emituje Loggregator **LGR** wskazująca problemy podczas procesu rejestracji. Przykładem takiego problemu jest dane wyjściowe komunikatu dziennika jest za duża. |
-| Typ = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Liczba wyników > 0   | Gdy końcówkę odbiera alert konsumenta wolne od loggregator, wysyła **slowConsumerAlert** ValueMetric z usługą OMS. |
-| Typ = CF_CounterEvent_CL Job_s = końcówki Name_s = zdarzenia utracone Delta_d > 0              | Liczba wyników > 0   | Jeśli delta liczby zdarzeń utracone osiągnie próg, oznacza to, że końcówkę może być problem z uruchomieniem. |
+| Typ = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Liczba wyników > 0   | Gdy końcówkę odbiera alert konsumenta wolne od loggregator, wysyła **slowConsumerAlert** ValueMetric do analizy dzienników. |
+| Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Liczba wyników > 0   | Jeśli delta liczby zdarzeń utracone osiągnie próg, oznacza to, że końcówkę może być problem z uruchomieniem. |
 
 ## <a name="scale"></a>Skalowanie
 
@@ -218,7 +218,7 @@ W oknie CF interfejsu wiersza polecenia wpisz:
 cf delete <App Name> -r
 ```
 
-Jeśli usuniesz końcówkę danych w portalu OMS nie będzie automatycznie usuwane. Jego wygaśnięciem w zależności od ustawienia przechowywania pakietu OMS Log Analytics.
+Jeśli usuniesz końcówkę danych w portalu OMS nie będzie automatycznie usuwane. Wygasa ona zgodnie z ustawieniem przechowywania analizy dzienników.
 
 ## <a name="support-and-feedback"></a>Pomoc techniczna i opinie
 

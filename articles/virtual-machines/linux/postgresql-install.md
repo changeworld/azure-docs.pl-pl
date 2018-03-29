@@ -1,11 +1,11 @@
 ---
 title: Konfigurowanie PostgreSQL na maszynie Wirtualnej systemu Linux | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak zainstalować i skonfigurować PostgreSQL na maszynie wirtualnej systemu Linux na platformie Azure"
+description: Dowiedz się, jak zainstalować i skonfigurować PostgreSQL na maszynie wirtualnej systemu Linux na platformie Azure
 services: virtual-machines-linux
-documentationcenter: 
-author: SuperScottz
-manager: timlt
-editor: 
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
-ms.author: mingzhan
-ms.openlocfilehash: 0bccdc1cfdbda06b57da8cd662373ef137768672
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: iainfou
+ms.openlocfilehash: 7741f861c5697da1e453c0d613b4b762511cf555
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalowanie i konfigurowanie rozwiązania PostgreSQL na platformie Azure
 PostgreSQL jest zaawansowane open source bazy danych podobny do Oracle i bazy danych DB2. Zawiera on funkcje gotowe enterprise, takie jak ACID pełnej zgodności, niezawodne przetwarzania transakcyjnego i sterowania współbieżnością wielu wersji. Obsługuje ona również standardy, takie jak ANSI SQL i SQL/MED (w tym otoki obcego danych Oracle, MySQL, MongoDB i wielu innych). Jest to rozszerzalna o obsługę ponad 12 procedurach języków, indeksy GIN i GiST obsługę danych przestrzennych i wiele funkcji NoSQL dla formatu JSON lub aplikacji opartych na protokole klucz wartość.

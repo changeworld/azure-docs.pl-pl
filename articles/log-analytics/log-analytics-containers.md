@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: 0041a58c8da58785ebc3ead6c8128316b153728c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Kontener rozwiązania monitorowanie analizy dzienników
 
@@ -547,15 +547,15 @@ W poniższej tabeli przedstawiono przykłady rekordów zebrane przez rozwiązani
 
 | Typ danych | Typ danych w dzienniku wyszukiwania | Pola |
 | --- | --- | --- |
-| Wydajność dla hostów i kontenerów | `Type=Perf` | Komputer, nazwa obiektu, CounterName &#40;czas procesora (%), dysk odczytuje MB, dysku zapisuje MB, użycie pamięć (MB), sieci odbieranie bajtów, sieci wysyłania w bajtach, procesor s użycia, sieć&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem |
-| Kontener magazynu | `Type=ContainerInventory` | TimeGenerated, komputera, nazwę kontenera, ContainerHostname, obraz, ImageTag, ContainerState, ExitCode, EnvironmentVar, polecenia, CreatedTime, StartedTime, FinishedTime, SourceSystem, identyfikatora kontenera, ImageID |
-| Kontener magazynu obrazu | `Type=ContainerImageInventory` | TimeGenerated, Computer, Image, ImageTag, ImageSize, VirtualSize, Running, Paused, Stopped, Failed, SourceSystem, ImageID, TotalContainer |
-| Kontener dziennika | `Type=ContainerLog` | TimeGenerated, komputer, identyfikator obrazu, nazwy kontenera, LogEntrySource, LogEntry, SourceSystem, identyfikatora kontenera |
-| Dziennik usługi kontenera | `Type=ContainerServiceLog`  | TimeGenerated, Computer, TimeOfCommand, Image, Command, SourceSystem, ContainerID |
-| Kontener węzła magazynu | `Type=ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Kubernetes spisu | `Type=KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
-| Proces kontenera | `Type=ContainerProcess_CL` | TimeGenerated, Computer, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Zdarzenia Kubernetes | `Type=KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
+| Wydajność dla hostów i kontenerów | `Perf` | Komputer, nazwa obiektu, CounterName &#40;czas procesora (%), dysk odczytuje MB, dysku zapisuje MB, użycie pamięć (MB), sieci odbieranie bajtów, sieci wysyłania w bajtach, procesor s użycia, sieć&#41;, równowartości, TimeGenerated, Ścieżka_licznika, SourceSystem |
+| Kontener magazynu | `ContainerInventory` | TimeGenerated, komputera, nazwę kontenera, ContainerHostname, obraz, ImageTag, ContainerState, ExitCode, EnvironmentVar, polecenia, CreatedTime, StartedTime, FinishedTime, SourceSystem, identyfikatora kontenera, ImageID |
+| Kontener magazynu obrazu | `ContainerImageInventory` | TimeGenerated, Computer, Image, ImageTag, ImageSize, VirtualSize, Running, Paused, Stopped, Failed, SourceSystem, ImageID, TotalContainer |
+| Kontener dziennika | `ContainerLog` | TimeGenerated, komputer, identyfikator obrazu, nazwy kontenera, LogEntrySource, LogEntry, SourceSystem, identyfikatora kontenera |
+| Dziennik usługi kontenera | `ContainerServiceLog`  | TimeGenerated, Computer, TimeOfCommand, Image, Command, SourceSystem, ContainerID |
+| Kontener węzła magazynu | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Kubernetes spisu | `KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
+| Proces kontenera | `ContainerProcess_CL` | TimeGenerated, Computer, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
+| Zdarzenia Kubernetes | `KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
 
 Etykiety dołączany do *PodLabel* typy danych są etykiet niestandardowych. Dołączany etykiety PodLabel przedstawione w tabeli przedstawiono przykłady. Tak `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` różnią się w zestawie danych w danym środowisku, a objęty przypominać `PodLabel_yourlabel_s`.
 
@@ -610,7 +610,7 @@ Analiza dzienników oznacza kontener jako **nie powiodło się** Jeśli został 
    ![Stan kontenerów](./media/log-analytics-containers/containers-log-search.png)
 3. Następnie kliknij przycisk zagregowane wartości kontenery nie powiodło się, aby wyświetlić dodatkowe informacje. Rozwiń węzeł **Pokaż więcej** Aby wyświetlić identyfikator obrazu.  
    ![kontenery nie powiodło się](./media/log-analytics-containers/containers-state-failed.png)  
-4. Następnie wpisz następujące polecenie w zapytaniu wyszukiwania. `Type=ContainerInventory <ImageID>` Aby wyświetlić szczegóły dotyczące obrazu, takich jak rozmiar obrazu i Liczba obrazów zatrzymane, a nie powiodło się.  
+4. Następnie wpisz następujące polecenie w zapytaniu wyszukiwania. `ContainerInventory <ImageID>` Aby wyświetlić szczegóły dotyczące obrazu, takich jak rozmiar obrazu i Liczba obrazów zatrzymane, a nie powiodło się.  
    ![kontenery nie powiodło się](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>Dzienniki wyszukiwania danych kontenera
@@ -628,17 +628,17 @@ W przypadku Rozwiązywanie problemów z określonego błędu, ułatwia Zobacz, g
 
 
 ### <a name="to-search-logs-for-container-data"></a>Do wyszukania w dziennikach dane w kontenerze
-* Wybierz obraz, który ostatnio nie powiodło się i znaleźć w dziennikach błędów. Uruchom znajdując nazwę kontenera, która działa obrazu z **ContainerInventory** wyszukiwania. Na przykład wyszukaj `Type=ContainerInventory ubuntu Failed`  
+* Wybierz obraz, który ostatnio nie powiodło się i znaleźć w dziennikach błędów. Uruchom znajdując nazwę kontenera, która działa obrazu z **ContainerInventory** wyszukiwania. Na przykład wyszukaj `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Wyszukaj kontenery Ubuntu](./media/log-analytics-containers/search-ubuntu.png)
 
-  Nazwa kontenera dalej, aby **nazwa**i poszukaj tych dzienników. W tym przykładzie jest to `Type=ContainerLog cranky_stonebreaker`.
+  Nazwa kontenera dalej, aby **nazwa**i poszukaj tych dzienników. W tym przykładzie jest to `ContainerLog | where Name == "cranky_stonebreaker"`.
 
 **Wyświetlanie informacji o wydajności**
 
 W przypadku od tworzyć zapytania, ułatwia Zobacz, co jest możliwe najpierw. Na przykład aby wyświetlić wszystkie dane dotyczące wydajności, spróbuj szerokie zapytania, wpisując następujące zapytanie wyszukiwania.
 
 ```
-Type=Perf
+Perf
 ```
 
 ![kontenery wydajności](./media/log-analytics-containers/containers-perf01.png)
@@ -646,7 +646,7 @@ Type=Perf
 Można określić zakres dane wydajności, które widać do określonego kontenera przez wpisanie nazwy tego zapytania z prawej strony.
 
 ```
-Type=Perf <containerName>
+Perf <containerName>
 ```
 
 Które z listą metryki wydajności, które są zbierane dla poszczególnych kontenera.
@@ -655,8 +655,6 @@ Które z listą metryki wydajności, które są zbierane dla poszczególnych kon
 
 ## <a name="example-log-search-queries"></a>Przykładowe zapytania wyszukiwania dziennika
 Często jest przydatne do tworzenia zapytań w programie przykład lub dwóch, a następnie modyfikując je do środowiska. Jako punkt początkowy, możesz eksperymentować z **przykładowe zapytania** obszaru do tworzenia bardziej zaawansowanych zapytań.
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Kontenery zapytań](./media/log-analytics-containers/containers-queries.png)
 

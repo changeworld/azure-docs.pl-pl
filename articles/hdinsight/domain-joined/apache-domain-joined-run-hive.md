@@ -1,8 +1,8 @@
 ---
-title: "Konfigurowanie zasad Hive w usłudze HDInsight przyłączonych do domeny - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się..."
+title: Konfigurowanie zasad Hive w usłudze HDInsight przyłączonych do domeny - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się...
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: saurinsh
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 919a0a45c4c8c94b19ed1d602ed20df0afabd09a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Konfigurowanie zasad Hive w usłudze HDInsight z przyłączonych do domeny
 Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla usługi Hive. Korzystając z tego artykułu, utworzysz dwie zasady platformy Ranger, aby ograniczyć dostęp do tabeli hivesampletable. Tabela hivesampletable jest dołączana do klastrów usługi HDInsight. Po skonfigurowaniu zasad łączysz się z tabelami usługi Hive w usłudze HDInsight przy użyciu sterownika ODBC i programu Excel.
@@ -45,10 +45,10 @@ Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla usługi Hive
     Obecnie platforma Ranger współpracuje tylko z usługami Yarn i Hive.
 
 ## <a name="create-domain-users"></a>Tworzenie użytkowników domeny
-W temacie [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) (Konfigurowanie przyłączonych do domeny klastrów usługi HDInsight) utworzono użytkowników hiveuser1 i hiveuser2. Używasz konta użytkownika dwóch w tym samouczku.
+Zobacz [utworzyć klaster HDInsight przyłączonych do domeny](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster), aby uzyskać informacje dotyczące sposobu tworzenia hiveruser1 i hiveuser2. Używasz dwóch kont w tym samouczku.
 
 ## <a name="create-ranger-policies"></a>Tworzenie zasad platformy Ranger
-W tej sekcji utworzysz dwie zasady zakres do uzyskiwania dostępu do hivesampletable. Możesz przydzielić uprawnienie select (wybór) do innego zestawu kolumn. Obydwaj użytkownicy zostali utworzeni przy użyciu instrukcji podanych w temacie [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) (Konfigurowanie przyłączonych do domeny klastrów usługi HDInsight).  W następnej sekcji przetestujesz dwie zasady w programie Excel.
+W tej sekcji utworzysz dwie zasady zakres do uzyskiwania dostępu do hivesampletable. Możesz przydzielić uprawnienie select (wybór) do innego zestawu kolumn. Użytkownicy zostały utworzone przy użyciu [utworzyć klaster HDInsight przyłączonych do domeny](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster). W następnej sekcji przetestujesz dwie zasady w programie Excel.
 
 **Aby utworzyć zasady platformy Ranger**
 

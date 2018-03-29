@@ -1,25 +1,25 @@
 ---
-title: "Azure powiązania HTTP funkcje i elementu webhook"
-description: "Zrozumienie, jak używać protokołu HTTP i elementu webhook wyzwalaczy i powiązań w usługi Azure Functions."
+title: Azure powiązania HTTP funkcje i elementu webhook
+description: Zrozumienie, jak używać protokołu HTTP i elementu webhook wyzwalaczy i powiązań w usługi Azure Functions.
 services: functions
 documentationcenter: na
-author: mattchenderson
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "funkcje platformy Azure, funkcje, zdarzenia przetwarzania elementów webhook, dynamicznych zasobów obliczeniowych, API niekorzystającą architektury, protokołu HTTP, REST"
+editor: ''
+tags: ''
+keywords: funkcje platformy Azure, funkcje, zdarzenia przetwarzania elementów webhook, dynamicznych zasobów obliczeniowych, API niekorzystającą architektury, protokołu HTTP, REST
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: mahender
-ms.openlocfilehash: a46177183035a53128c5341a3ce4c63dbc3a7497
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: tdykstra
+ms.openlocfilehash: 94a039ab1973cbd4112ddd0cd7548baa69924d26
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure powiązania HTTP funkcje i elementu webhook
 
@@ -536,7 +536,7 @@ Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika 
 
 ## <a name="trigger---limits"></a>Wyzwalacz - limity
 
-Długość żądania HTTP jest ograniczona do 100 KB (102400), a długość adresu URL jest ograniczony do 4 k (4096) bajtów. Ograniczenia te są określane przez `httpRuntime` elementu środowiska uruchomieniowego [pliku Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+Długość żądania HTTP jest ograniczona do 100MB (w bajtach 104,857,600), a długość adresu URL jest ograniczony do 4KB (4096 bajtów). Ograniczenia te są określane przez `httpRuntime` elementu środowiska uruchomieniowego [pliku Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
 Jeśli funkcja, która używa wyzwalacza HTTP nie zakończyła się w ciągu około 2,5 minut, upływu limitu czasu bramy spowoduje i zwróci błąd HTTP 502. Funkcja będzie nadal działać, ale nie będzie można zwracać odpowiedzi HTTP. Do funkcji długotrwałe zaleca się, wykonaj wzorców asynchronicznych i zwrócenie lokalizacji, w którym można zbadać poleceniem ping stan żądania. Aby uzyskać informacje, jak długo można uruchomić funkcję, zobacz [skali i hostingu — planowanie zużycie](functions-scale.md#consumption-plan). 
 

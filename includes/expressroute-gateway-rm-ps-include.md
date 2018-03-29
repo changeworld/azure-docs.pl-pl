@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17edbef03f1e2882bd85f5a58e2a32a1541b50c8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d9eaab359d76afce61cfcc72e3fa125b08856e32
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 Kroki dla tego zadania użyć sieci wirtualnej na podstawie wartości na poniższej liście odwołania konfiguracji. Nazwy i dodatkowe ustawienia są także opisane w tej listy. Nie używamy tej listy bezpośrednio w krokach, mimo że dodamy zmienne na podstawie wartości na tej liście. Możesz skopiować listę i użyj go jako odwołanie, zastąpionymi wartościami z własnego.
 
@@ -63,7 +63,7 @@ Kroki dla tego zadania użyć sieci wirtualnej na podstawie wartości na poniżs
 5. Ustaw konfigurację.
 
   ```powershell
-  Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+  $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
 6. Przechowywanie podsieci bramy jako zmienną.
 

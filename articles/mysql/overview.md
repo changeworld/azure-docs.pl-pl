@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 2689befc6a686d0ffc25d1fccbacb66cc6e10725
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b7ae08446e672c218e7278cff4f77739286fead
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co to jest Azure bazy danych MySQL?
 Bazy danych platformy Azure dla programu MySQL to usługa relacyjnej bazy danych w chmurze firmy Microsoft, na podstawie [MySQL Community Edition](https://www.mysql.com/products/community/) aparatu bazy danych. Bazy danych platformy Azure dla programu MySQL zapewnia:
@@ -47,7 +47,7 @@ Jak podjąć decyzję o tym, kiedy należy regulować w górę i w dół? Możes
 Azure w branży 99,99% dostępności Umowa dotycząca poziomu usług (SLA), obsługiwane przez usługę globalnej sieci centrów danych zarządzany przez firmę Microsoft, pomaga zapewnić działanie aplikacji 24/7. Z każdym Azure bazy danych MySQL serwera możesz korzystać z zabezpieczeń, odporność na uszkodzenia i ochrony danych, w przeciwnym razie należy kupić lub projektowanie, tworzenie i zarządzanie. Z bazy danych Azure dla programu MySQL w momencie przywracania służy do odzyskania serwera do wcześniejszego stanu, nawet sprzed 35 dni.
 
 ## <a name="secure-your-data"></a>Zabezpieczanie danych
-Usługi Azure bazy danych ma tradycję zabezpieczeń danych, który podtrzymuje bazy danych Azure dla programu MySQL, dzięki funkcjom ograniczania dostępu, ochrony danych na rest i w ruchu, które ułatwiają monitorowanie aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/TrustCenter/Security/default.aspx), aby uzyskać informacje o zabezpieczeniach platformy Azure.
+Usługi Azure bazy danych ma tradycję zabezpieczeń danych, który podtrzymuje bazy danych Azure dla programu MySQL, dzięki funkcjom ograniczania dostępu, ochrony danych na rest i w ruchu, które ułatwiają monitorowanie aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure.
 
 Bazy danych Azure dla usługi MySQL używa szyfrowania magazynu dla danych na rest. Dane, w tym kopie zapasowe, są szyfrowane na dysku (z wyjątkiem plików tymczasowych, które są tworzone przez aparat podczas uruchamiania zapytań). Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
 

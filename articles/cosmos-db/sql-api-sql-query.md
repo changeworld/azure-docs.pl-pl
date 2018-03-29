@@ -1,9 +1,9 @@
 ---
-title: "Zapytania SQL dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o składni SQL, pojęcia bazy danych i zapytania SQL dla bazy danych Azure rozwiązania Cosmos. SQL może być używany jako język kwerendy JSON w usłudze Azure DB rozwiązania Cosmos."
-keywords: "Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, koncepcje bazy danych i zapytania sql, funkcje agregujące"
+title: Zapytania SQL dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o składni SQL, pojęcia bazy danych i zapytania SQL dla bazy danych Azure rozwiązania Cosmos. SQL może być używany jako język kwerendy JSON w usłudze Azure DB rozwiązania Cosmos.
+keywords: Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, koncepcje bazy danych i zapytania sql, funkcje agregujące
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: LalithaMV
 manager: jhubbard
 editor: monicar
@@ -13,17 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Zapytania SQL dla bazy danych Azure rozwiązania Cosmos
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Bazy danych programu Microsoft Azure rozwiązania Cosmos obsługuje tworzenie zapytań dla dokumentów przy użyciu programu SQL (Structured Query Language) jako język kwerendy JSON na kontach interfejsu API SQL. Azure DB rozwiązania Cosmos jest rzeczywiście bez schematu. Ze względu na jego zobowiązania do modelu danych JSON bezpośrednio wewnątrz aparatu bazy danych zapewnia automatycznego indeksowania dokumentów JSON bez konieczności jawnego schematu lub tworzenia indeksów pomocniczych.
 
@@ -34,11 +32,17 @@ Podczas projektowania rozwiązania Cosmos DB język zapytań, było dwóch celó
 
 Mamy nadzieję, że te możliwości są kluczem do zmniejszenia tarcia pomiędzy aplikacją i bazy danych i decydują o produktywność deweloperów.
 
-Zalecamy rozpoczęcie pracy od obejrzenia poniższego klipu wideo, w którym Aravind Ramachandran wyświetlana, możliwości rozwiązania Cosmos bazy danych do zapytań, i przechodząc naszych [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo), gdzie można wypróbować rozwiązania Cosmos bazy danych i wykonywania kwerend SQL do naszego zestawu danych.
+Zalecamy rozpoczęcie pracy od obejrzenia poniższego klipu wideo, gdzie Azure Menedżera programów DB rozwiązania Cosmos Andrew Liu pokazuje możliwości podczas badania DB rozwiązania Cosmos Azure i prezentuje online [Plac zabaw dla zapytań](http://www.documentdb.com/sql/demo), gdzie można wypróbować Azure Rozwiązania cosmos bazy danych oraz wykonywania kwerendy SQL naszym zestawie danych, jak pokazano w wideo.
 
-> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
-> 
-> 
+> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
+>
+>
+
+Bardziej zaawansowane techniki podczas badania ilustrują ta flaga monitująca wideo:
+
+> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
+>
+>
 
 Następnie wróć do tego artykułu, gdzie Możemy zaczynać się samouczek zapytania SQL, który przeprowadzi Cię przez niektóre prostych dokumentów JSON i polecenia SQL.
 
@@ -2258,9 +2262,9 @@ Poniższy przykład przedstawia użycie queryDocuments na serwerze JavaScript AP
 4. [Poziomy spójności bazy danych Azure rozwiązania Cosmos][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
-7. Javascript Specification [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+7. Specyfikacja języka JavaScript [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. Zapytanie techniki oceny dla dużych baz danych [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+9. Techniki oceny zapytania dla dużych baz danych [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. Przetwarzania zapytań w systemach równoległych relacyjnych baz danych, naciśnij społeczeństwa IEEE komputera, 1994 r.
 11. Tan lu, Ooi, Wyślij zapytanie do przetwarzania w systemach równoległych relacyjnej bazy danych, naciśnij klawisz społeczeństwa IEEE komputera, 1994.
 12. Christopher Olston, Reed Benjaminowi Utkarsh Srivastava, Kumar Ravi, Andrew Tomkins: Pig Latin: nie tak obcego języka do przetwarzania danych, SIGMOD 2008.

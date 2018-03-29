@@ -1,19 +1,19 @@
 ---
 title: Struktura definicji zasad Azure | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano, jak definicji zasad zasobów jest używany przez zasady usługi Azure do ustanawiania konwencje dla zasobów w organizacji przez opisujące, gdy zasady są wymuszane i jaka akcja ma być."
+description: W tym artykule opisano, jak definicji zasad zasobów jest używany przez zasady usługi Azure do ustanawiania konwencje dla zasobów w organizacji przez opisujące, gdy zasady są wymuszane i jaka akcja ma być.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
-ms.custom: 
-ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: ''
+ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -70,7 +70,9 @@ Wszystkie próbki szablonu zasad Azure są [szablony zasad Azure](json-samples.m
 * `all`: ocena grup zasobów i wszystkie typy zasobów 
 * `indexed`: tylko ocenić typy zasobów, które obsługują tagów i lokalizacja
 
-Firma Microsoft zaleca, aby ustawić **tryb** do `all`. Wszystkie definicje zasady utworzone za pomocą portalu `all` tryb. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia Azure, należy określić **tryb** parametru i wartości `all`. 
+Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasady utworzone za pomocą portalu `all` tryb. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia Azure, należy określić **tryb** parametru ręcznie.
+
+`indexed` powinien być używany podczas tworzenia zasad, który będzie wymuszać znaczników lub lokalizacji. Nie jest to wymagane, ale uniemożliwi zasoby, które nie obsługują znaczniki i lokalizacje wyświetlane jako niezgodne w wyniki oceny zgodności. Jedynym wyjątkiem jest **grup zasobów**. Należy ustawić zasady, które próbują wymusić lokalizacji lub tagi dla grupy zasobów **tryb** do `all` , a w szczególności docelowej `Microsoft.Resources/subscriptions/resourceGroup` typu. Na przykład zobacz [wymusić tagi grupy zasobów](scripts/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Parametry
 
@@ -126,7 +128,7 @@ W **następnie** bloku, zdefiniuj efekt, która jest wywoływana po **Jeśli** w
     <condition> | <logical operator>
   },
   "then": {
-    "effect": "deny | audit | append"
+    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
   }
 }
 ```
@@ -165,16 +167,22 @@ Operatory logiczne można zagnieżdżać. W poniższym przykładzie przedstawion
 Wynikiem warunku jest czy **pola** spełnia określone kryteria. Są obsługiwane warunki:
 
 * `"equals": "value"`
+* `"notEquals": "value"`
 * `"like": "value"`
+* `"notLike": "value"`
 * `"match": "value"`
+* `"notMatch": "value"`
 * `"contains": "value"`
+* `"notContains": "value"`
 * `"in": ["value1","value2"]`
+* `"notIn": ["value1","value2"]`
 * `"containsKey": "keyName"`
+* `"notContainsKey": "keyName"`
 * `"exists": "bool"`
 
-Korzystając z **jak** warunku, możesz podać symbol wieloznaczny (*) w wartości.
+Korzystając z **jak** i **notLike** warunki, można podać symbol wieloznaczny (*) w wartości.
 
-Korzystając z **odpowiada** warunku, podaj `#` do reprezentowania cyfrę, `?` literę i znak reprezentują rzeczywiste znaku. Aby uzyskać przykłady, zobacz [obrazy zatwierdzone wirtualna](scripts/allowed-custom-images.md).
+Korzystając z **odpowiada** i **notMatch** warunki `#` do reprezentowania cyfrę, `?` literę i znak reprezentują rzeczywiste znaku. Aby uzyskać przykłady, zobacz [obrazy zatwierdzone wirtualna](scripts/allowed-custom-images.md).
 
 ### <a name="fields"></a>Pola
 Warunki są utworzone za pomocą pola. Pole reprezentuje właściwości w ładunku żądania zasobu, który jest używany do opisu stanu typu zasobu.  
@@ -182,12 +190,28 @@ Warunki są utworzone za pomocą pola. Pole reprezentuje właściwości w ładun
 Obsługiwane są następujące pola:
 
 * `name`
+* `fullName`
+  * Zwraca pełną nazwę zasobu, włącznie z elementów nadrzędnych (np. "MójSerwer/mojabazadanych")
 * `kind`
 * `type`
 * `location`
 * `tags`
-* `tags.*`
+* `tags.tagName`
+* `tags[tagName]`
+  * Ta składnia nawiasu obsługuje nazwy tagu, zawierające kropki
 * Aliasy właściwości — Aby uzyskać listę, zobacz [aliasy](#aliases).
+
+### <a name="alternative-accessors"></a>Alternatywne metody dostępu
+**Pole** jest akcesor głównej, używane w regułach zasad. Sprawdza on bezpośrednio zasób, który jest oceniane. Jednak zasady obsługuje jeden innych akcesor **źródła**.
+
+```json
+"source": "action",
+"equals": "Microsoft.Compute/virtualMachines/write"
+```
+
+**Źródło** obsługuje tylko jedną wartość, **akcji**. Akcja zwraca działanie autoryzacji żądania, które jest oceniane. Akcje autoryzacji są widoczne w sekcji autoryzacji [dziennik aktywności](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
+
+Gdy zasad dokonuje oceny istniejących zasobów w tle ustawia **akcji** do `/write` akcji autoryzacji dla typu zasobu.
 
 ### <a name="effect"></a>Efekt
 Zasady obsługuje następujące typy wpływu:
@@ -212,7 +236,7 @@ Aby uzyskać **Dołącz**, należy podać następujące informacje:
 
 Wartość może być ciągiem lub obiekt do formatu JSON.
 
-Z **AuditIfNotExists** i **DeployIfNotExists** można ocenić istnienia zasobu podrzędnego i Zastosuj regułę i ich wpływ, gdy ten zasób nie istnieje. Można na przykład wymagać, że dla wszystkich sieci wirtualnych jest wdrażany obserwatora sieciowego.
+Z **AuditIfNotExists** i **DeployIfNotExists** można ocenić istnienie powiązanych zasobów i Zastosuj regułę i ich wpływ, gdy ten zasób nie istnieje. Można na przykład wymagać, że dla wszystkich sieci wirtualnych jest wdrażany obserwatora sieciowego.
 Przykład inspekcję, gdy rozszerzenie maszyny wirtualnej nie została wdrożona, zobacz [inspekcji, jeśli rozszerzenie nie istnieje](scripts/audit-ext-not-exist.md).
 
 

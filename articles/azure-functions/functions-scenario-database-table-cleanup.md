@@ -1,12 +1,12 @@
 ---
-title: "Użyj usługi Azure Functions do wykonania zadania oczyszczania bazy danych | Dokumentacja firmy Microsoft"
-description: "Użyj usługi Azure Functions można zaplanować zadanie, które łączy się z bazą danych SQL Azure, aby okresowo wyczyszczenia wierszy."
+title: Użyj usługi Azure Functions do wykonania zadania oczyszczania bazy danych | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Functions można zaplanować zadanie, które łączy się z bazą danych SQL Azure, aby okresowo wyczyszczenia wierszy.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Nawiązywanie połączenia z bazy danych SQL Azure za pomocą usługi Azure Functions
-W tym temacie przedstawiono sposób użycia usługi Azure Functions można utworzyć zaplanowane zadanie, które utraciły wierszy w tabeli w bazie danych SQL Azure. Nowa funkcja C# jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowane w portalu Azure. Aby zapewnić obsługę tego scenariusza, należy także ustawić parametry połączenia bazy danych jako ustawienie aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 
+W tym temacie przedstawiono sposób użycia usługi Azure Functions można utworzyć zaplanowane zadanie, które utraciły wierszy w tabeli w bazie danych SQL Azure. Nowa funkcja skryptu C# jest tworzony na podstawie szablonu wyzwalacza czasomierza wstępnie zdefiniowane w portalu Azure. Aby zapewnić obsługę tego scenariusza, należy także ustawić parametry połączenia bazy danych jako ustawienie aplikacji w aplikacji funkcji. W tym scenariuszu operacja zbiorcza w bazie danych. 
 
 Aby z funkcji poszczególnych procesu tworzenia, odczytu, aktualizacji i operacji usuwania (CRUD) w tabeli Mobile Apps, zamiast tego należy używać [powiązania Mobile Apps](functions-bindings-mobile-apps.md).
 
@@ -40,7 +40,7 @@ Należy pobrać parametry połączenia dla bazy danych utworzonej po wykonaniu [
  
 3. Wybierz **baz danych SQL** z menu po lewej stronie i wybierz bazę danych na **baz danych SQL** strony.
 
-4. Wybierz **Pokaż parametry połączenia bazy danych** i skopiować pełną **ADO.NET** parametry połączenia.
+4. Wybierz **Pokaż parametry połączenia bazy danych** i skopiować pełną **ADO.NET** parametry połączenia. 
 
     ![Skopiuj parametry połączenia ADO.NET.](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -70,14 +70,16 @@ Teraz można dodać kod funkcji języka C#, który nawiązuje połączenie z baz
 
 ## <a name="update-your-function-code"></a>Zaktualizuj kod — funkcja
 
-1. W funkcji aplikacji wybierz funkcję wyzwalany przez czasomierz.
+1. W funkcji aplikacji w portalu wybierz funkcję wyzwalany przez czasomierz.
  
-3. Dodaj następujące odwołania do zestawów w górnej części istniejącego kodu funkcji:
+3. Dodaj następujące odwołania do zestawów w górnej części istniejący kod C# skrypt funkcji:
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
+    >[!NOTE]
+    >Kod w tym przykładzie są skryptu C# z portalu. Podczas tworzenia prekompilowanego C# funkcję lokalnie, należy zamiast tego dodać odwołania do tych składana w projekcie lokalnego.  
 
 3. Dodaj następujące `using` instrukcje funkcji:
     ```cs
@@ -113,7 +115,7 @@ Teraz można dodać kod funkcji języka C#, który nawiązuje połączenie z baz
 
     ![Wyświetlać dzienniki funkcji.](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Następnie Dowiedz się, jak za pomocą funkcji aplikacji logiki do integracji z innymi usługami.
 

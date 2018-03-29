@@ -1,6 +1,6 @@
 ---
-title: "Azure rozwiązania Cosmos bazy danych: Interfejsu API języka Java Async SQL, zestaw SDK & zasobów | Dokumentacja firmy Microsoft"
-description: "Dowiedz się wszystkiego o interfejsu API języka Java Async SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami rozwiązania Cosmos bazy danych SQL Async Java zestawu SDK platformy Azure."
+title: 'Azure rozwiązania Cosmos bazy danych: Interfejsu API języka Java Async SQL, zestaw SDK & zasobów | Dokumentacja firmy Microsoft'
+description: Dowiedz się wszystkiego o interfejsu API języka Java Async SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami rozwiązania Cosmos bazy danych SQL Async Java zestawu SDK platformy Azure.
 services: cosmos-db
 documentationcenter: java
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: 408080fd7d9788d13b13e2769e59946a81e6742c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d117f0571bef8f8a2ec48a067d7796f03c0e535a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Async Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/02/2018
 > * [Źródła danych zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Asynchroniczne Java](sql-api-sdk-async-java.md)
+> * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
@@ -34,8 +34,6 @@ ms.lasthandoff: 03/02/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 SDK Java asynchronicznego interfejsu API SQL różni się od zestawu SDK Java interfejsu API SQL zapewniając operacji asynchronicznych z obsługą programu [Netty biblioteki](http://netty.io/). Istniejących wcześniej [zestawu SDK Java interfejsu API SQL](sql-api-sdk-java.md) nie obsługuje operacji asynchronicznych. 
 
@@ -72,7 +70,7 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 
 | Wersja | Data wydania | Dacie wycofania |
 | --- | --- | --- |
-| [1.0.0](#1.0.0) |27 lutego 2018|--- |
+| [1.0.0](#1.0.0) |27 lutego 2018 r.|--- |
 
 ## <a name="faq"></a>Często zadawane pytania
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

@@ -1,8 +1,8 @@
 ---
-title: "Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu - Azure | Dokumentacja firmy Microsoft"
-description: "Dodawanie niestandardowych składników do opartych na systemie Linux klastrów usługi HDInsight za pomocą akcji skryptu. Akcje skryptu to skrypty Bash, które mogą służyć do dostosowywania konfiguracji klastra lub dodawania dodatkowych usług i narzędzi, takich jak Hue, Solr lub R."
+title: Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu - Azure | Dokumentacja firmy Microsoft
+description: Dodawanie niestandardowych składników do opartych na systemie Linux klastrów usługi HDInsight za pomocą akcji skryptu. Akcje skryptu to skrypty Bash, które mogą służyć do dostosowywania konfiguracji klastra lub dodawania dodatkowych usług i narzędzi, takich jak Hue, Solr lub R.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 42bf760b793f3c035a766c4d39524e03c1cbe6ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów usługi HDInsight opartej na systemie Linux za pomocą akcji skryptu
 
@@ -210,17 +210,19 @@ Ta sekcja zawiera przykłady na różne sposoby, można użyć akcji skryptu, po
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Użyć akcji skryptu z szablonów usługi Azure Resource Manager
 
-Akcje skryptu mogą być używane z szablonów usługi Azure Resource Manager. Na przykład zobacz [https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
+Akcje skryptu mogą być używane z szablonów usługi Azure Resource Manager. Na przykład zobacz [ https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/ ](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
 
 W tym przykładzie akcji skryptu został dodany, używając następującego kodu:
 
-    "scriptActions": [
-        {
-            "name": "setenvironmentvariable",
-            "uri": "[parameters('scriptActionUri')]",
-            "parameters": "headnode"
-        }
-    ]
+```json
+"scriptActions": [
+    {
+        "name": "setenvironmentvariable",
+        "uri": "[parameters('scriptActionUri')]",
+        "parameters": "headnode"
+    }
+]
+```
 
 Aby uzyskać informacje na temat sposobu wdrażania szablonu można znaleźć w następujących dokumentach:
 
@@ -305,15 +307,21 @@ Przed kontynuowaniem upewnij się, zostanie zainstalowany i skonfigurowany inter
 
 1. Aby włączyć tryb usługi Azure Resource Manager, wpisz następujące polecenie w wierszu polecenia:
 
-        azure config mode arm
+    ```bash
+    azure config mode arm
+    ```
 
 2. Użyj następującego polecenia do uwierzytelniania do subskrypcji platformy Azure.
 
-        azure login
+    ```bash
+    azure login
+    ```
 
 3. Użyj następującego polecenia do zastosowania akcji skryptu do uruchomionej klastra
 
-        azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```bash
+    azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
+    ```
 
     W przypadku pominięcia parametrów dla tego polecenia, zostanie wyświetlony monit o ich. Jeśli skrypt zostanie określona z `-u` akceptuje parametry, można określić za pomocą `-p` parametru.
 
@@ -337,7 +345,7 @@ Zobacz [wykonanie akcji skryptu w klastrze uruchomione](https://msdn.microsoft.c
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-hdinsight-net-sdk"></a>Zastosuj akcji skryptu do klastra uruchomione z zestawu .NET SDK usługi HDInsight
 
-Na przykład zastosować skryptów do klastra przy użyciu zestawu .NET SDK, zobacz [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+Na przykład zastosować skryptów do klastra przy użyciu zestawu .NET SDK, zobacz [ https://github.com/Azure-Samples/hdinsight-dotnet-script-action ](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 ## <a name="view-history-promote-and-demote-script-actions"></a>Wyświetlanie historii, wspierania i obniżyć poziom akcji skryptu
 
@@ -396,7 +404,7 @@ Następujący skrypt pokazuje, za pomocą poleceń cmdlet do promowania, a nast�
 
 ### <a name="using-the-hdinsight-net-sdk"></a>Przy użyciu zestawu SDK .NET usługi HDInsight
 
-Na przykład przy użyciu zestawu .NET SDK można pobrać historii skryptu z klastra, podwyższyć poziom lub obniżyć poziom skryptów, zobacz [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
+Na przykład przy użyciu zestawu .NET SDK można pobrać historii skryptu z klastra, podwyższyć poziom lub obniżyć poziom skryptów, zobacz [ https://github.com/Azure-Samples/hdinsight-dotnet-script-action ](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
 > [!NOTE]
 > Również w tym przykładzie pokazano, jak instalowanie aplikacji usługi HDInsight przy użyciu zestawu .NET SDK.
@@ -413,7 +421,7 @@ Istnieją dwa typy składników open source, które są dostępne w usłudze HDI
 > [!WARNING]
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane. Microsoft Support pomaga wyizolować i rozwiązać problemy związane z tych składników.
 >
-> Niestandardowe składniki otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Pomocy technicznej firmy Microsoft może być możliwe do rozwiązania problemu lub ich może poprosić o Uwzględnij dostępnych kanałów dla technologiach typu open source wykryto głębokie doświadczenia z tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [http://apache.org](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Niestandardowe składniki otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Pomocy technicznej firmy Microsoft może być możliwe do rozwiązania problemu lub ich może poprosić o Uwzględnij dostępnych kanałów dla technologiach typu open source wykryto głębokie doświadczenia z tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
 
 Usługa HDInsight zapewnia kilka sposobów użycia niestandardowych składników. Taki sam poziom obsługi ma zastosowanie, niezależnie od tego, jak składnik jest używany lub zainstalować w klastrze. Na poniższej liście opisano najbardziej typowe sposoby, że niestandardowe składniki mogą być używane w klastrach HDInsight:
 
@@ -493,7 +501,7 @@ __Przyczyna__: ten błąd występuje podczas uaktualniania klienta Python usług
 
 __Rozdzielczość__: Aby rozwiązać ten problem, ręcznie połączyć każdy węzeł klastra używa `ssh` i użyj następującego polecenia, aby ponownie zainstalować wersję klienta poprawne magazynu:
 
-```
+```bash
 sudo pip install azure-storage==0.20.0
 ```
 

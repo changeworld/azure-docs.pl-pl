@@ -1,8 +1,8 @@
 ---
-title: "Przenoszenie zasobów platformy Azure do nowej grupy zasobów lub subskrypcji | Dokumentacja firmy Microsoft"
-description: "Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskrypcji usługi Azure Resource Manager."
+title: Przenoszenie zasobów platformy Azure do nowej grupy zasobów lub subskrypcji | Dokumentacja firmy Microsoft
+description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskrypcji usługi Azure Resource Manager.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 94f11504597c127d505d103a417c3d78744d99d1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -87,6 +87,11 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych kroków. Dzięki spr
   az provider register --namespace Microsoft.Batch
   ```
 
+4. Konto przenoszenia zasobów musi mieć co najmniej następujące uprawnienia:
+
+   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** dla źródłowej grupy zasobów.
+   * **Microsoft.Resources/subscriptions/resourceGroups/write** w docelowej grupie zasobów.
+
 ## <a name="when-to-call-support"></a>Kiedy Zadzwoń do pomocy technicznej
 
 Można przenieść najwięcej zasobów za pomocą operacji samoobsługi wyświetlany w tym artykule. Użyj operacje samoobsługi:
@@ -105,6 +110,7 @@ Usługi umożliwiające przeniesienie do nowej grupy zasobów i subskrypcji są:
 
 * API Management
 * Usługi aplikacji — aplikacje (aplikacje sieci web) — zobacz [ograniczenia usługi aplikacji](#app-service-limitations)
+* Certyfikaty usługi App Service
 * Application Insights
 * Automatyzacja
 * Azure Cosmos DB
@@ -193,7 +199,9 @@ Nie można przenieść sieć wirtualną do innej subskrypcji, jeśli sieć wirtu
 
 ## <a name="app-service-limitations"></a>Ograniczenia usługi aplikacji
 
-Ograniczenia dotyczące przenoszenia zasobów usługi aplikacji — różnią się w zależności od tego, czy są przenoszenia zasobów w ramach subskrypcji lub do nowej subskrypcji.
+Ograniczenia dotyczące przenoszenia zasobów usługi aplikacji — różnią się w zależności od tego, czy są przenoszenia zasobów w ramach subskrypcji lub do nowej subskrypcji. 
+
+Ograniczenia opisane w tych sekcjach dotyczą certyfikaty przekazane, nie certyfikaty usługi aplikacji. Certyfikaty usługi aplikacji można przenieść do nowej grupy zasobów lub subskrypcji bez ograniczeń. Jeśli masz wiele aplikacji sieci web, które używają tego samego certyfikatu usługi aplikacji, najpierw przenieść wszystkie aplikacje sieci web, następnie przenieść certyfikat.
 
 ### <a name="moving-within-the-same-subscription"></a>Przenoszenie w ramach tej samej subskrypcji
 

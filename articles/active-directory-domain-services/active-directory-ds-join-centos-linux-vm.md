@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Dołącz maszyny Wirtualnej CentOS do domeny zarządzanej | Dokumentacja firmy Microsoft"
-description: "Dołącz maszynę wirtualną systemu CentOS Linux do usług domenowych Azure AD"
+title: 'Azure Active Directory Domain Services: Dołącz maszyny Wirtualnej CentOS do domeny zarządzanej | Dokumentacja firmy Microsoft'
+description: Dołącz maszynę wirtualną systemu CentOS Linux do usług domenowych Azure AD
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f7095e82605d12221ba7beb0c48fd3eda75a2e7b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Dołącz do maszyny wirtualnej CentOS Linux do domeny zarządzanej
 W tym artykule przedstawiono sposób przyłączyć maszyny wirtualnej CentOS Linux na platformie Azure do domeny zarządzanej usług domenowych Azure AD.
@@ -34,7 +34,7 @@ Aby wykonać zadania opisane w tym artykule, należy:
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>Aprowizowanie maszyny wirtualnej CentOS Linux
 Zapewnij maszyny wirtualnej CentOS na platformie Azure przy użyciu dowolnej z następujących metod:
-* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -133,7 +133,7 @@ Sprawdź, czy maszyna została pomyślnie dołączona do domeny zarządzanej. Na
 
 
 ## <a name="troubleshooting-domain-join"></a>Rozwiązywanie problemów z przyłączania do domeny
-Zapoznaj się [przyłączenie do domeny Rozwiązywanie problemów](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) artykułu.
+Zapoznaj się [przyłączenie do domeny Rozwiązywanie problemów](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) artykułu.
 
 ## <a name="related-content"></a>Powiązana zawartość
 * [Usługi domenowe AD Azure - Przewodnik wprowadzający](active-directory-ds-getting-started.md)

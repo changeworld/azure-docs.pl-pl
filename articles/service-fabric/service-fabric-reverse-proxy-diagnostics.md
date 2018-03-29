@@ -1,11 +1,11 @@
 ---
-title: "Sieć szkieletowa usług Azure odwrotna diagnostyki serwera proxy | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak monitorowanie i diagnozowanie przetwarzania żądania na zwrotnego serwera proxy."
+title: Sieć szkieletowa usług Azure odwrotna diagnostyki serwera proxy | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorowanie i diagnozowanie przetwarzania żądania na zwrotnego serwera proxy.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e645d86e4527cab1e650575c4d9a10dbd4b9de4e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Monitorowanie i diagnozowanie przetwarzania żądania na zwrotnego serwera proxy
 
 Począwszy od wersji 5.7 wersji platformy Service Fabric, zdarzenia zwrotnego serwera proxy są dostępne dla kolekcji. Zdarzenia są dostępne w dwóch kanałów, jeden z tylko zdarzenia błędów związanych z niepowodzenia przetwarzania żądania na zwrotnego serwera proxy i drugi kanał zawierający zdarzenia pełne wpisy dla żądań pomyślnie i niepomyślnie.
 
-Zapoznaj się [zbierania zdarzeń zwrotnego serwera proxy](service-fabric-diagnostics-event-aggregation-wad.md#collect-reverse-proxy-events) umożliwia zbieranie zdarzeń z tych kanałów w klastrach sieć szkieletowa usług Azure i lokalnego.
+Zapoznaj się [zbierania zdarzeń zwrotnego serwera proxy](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) umożliwia zbieranie zdarzeń z tych kanałów w klastrach sieć szkieletowa usług Azure i lokalnego.
 
 ## <a name="troubleshoot-using-diagnostics-logs"></a>Rozwiązywanie problemów przy użyciu dzienników diagnostycznych
 Oto kilka przykładów na temat sposobu interpretacji Wspólnej dzienniki awarii napotykane przez jedną:
@@ -195,7 +195,7 @@ Pierwsze zdarzenie poniżej dzienniki szczegóły żądania odebraniu zwrotnego 
 > [!NOTE]
 > Zdarzenia związane z przetwarzania żądania websocket nie jest aktualnie zalogowany. Zostanie ona dodana w następnej wersji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Agregacja zdarzeń i kolekcji przy użyciu systemu Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) umożliwiający zbieranie danych dziennika w klastrach platformy Azure.
 * Aby wyświetlić zdarzenia platformy Service Fabric w programie Visual Studio, zobacz [monitorowanie i diagnozowanie lokalnie](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 * Zapoznaj się [Konfiguruj zwrotnego serwera proxy do nawiązania bezpiecznego usług](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) dla usługi Azure Resource Manager przykłady szablonu, aby skonfigurować zabezpieczenia zwrotny serwer proxy przy użyciu certyfikatu innej usługi opcji weryfikacji.

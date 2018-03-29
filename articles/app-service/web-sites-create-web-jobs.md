@@ -1,8 +1,8 @@
 ---
-title: "Uruchom zadania w tle z zadań Webjob w usłudze Azure App Service"
-description: "Dowiedz się, jak użyć zadania Webjob do uruchomienia zadania w tle w aplikacji sieci web w usłudze Azure App Service, aplikacje interfejsu API lub aplikacji mobilnych."
+title: Uruchom zadania w tle z zadań Webjob w usłudze Azure App Service
+description: Dowiedz się, jak użyć zadania Webjob do uruchomienia zadania w tle w aplikacji sieci web w usłudze Azure App Service, aplikacje interfejsu API lub aplikacji mobilnych.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: tdykstra
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 3652e0171e0c6a53c16fb5b5fde20df9ed2ab7c7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f41cc83bfb18146e46e7d8501318acd68ce9c421
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchom zadania w tle z zadań Webjob w usłudze Azure App Service
 
@@ -170,15 +170,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="cron-expressions"></a>Wyrażenia usługi CRON
 
-A [wyrażenie CRON](https://en.wikipedia.org/wiki/Cron) składa się z sześciu pola: `{second} {minute} {hour} {day} {month} {day of the week}`.  Oto kilka przykładów:
-
-* Co 15 minut: `0 */15 * * * *`
-* Co godzinę (gdy liczba minut wynosi 0): `0 0 * * * *` 
-* Co godzinę z 9 AM do 17: 00: `0 0 9-17 * * *` 
-* W 9:30 AM codziennie: `0 30 9 * * *`
-* W 9:30 AM każdy dzień tygodnia: `0 30 9 * * 1-5`
-
-Można wprowadzić wyrażenie CRON w portalu lub zawierać `settings.job` pliku w katalogu głównym WebJob *.zip* plików, jak w poniższym przykładzie:
+Możesz wprowadzić [wyrażenie CRON](../azure-functions/functions-bindings-timer.md#cron-expressions) w portalu lub obejmują `settings.job` pliku w katalogu głównym WebJob *.zip* plików, jak w poniższym przykładzie:
 
 ```json
 {

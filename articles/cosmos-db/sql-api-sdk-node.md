@@ -1,6 +1,6 @@
 ---
-title: "Azure DB rozwiązania Cosmos: SQL interfejsu API środowiska Node.js SDK & zasobów | Dokumentacja firmy Microsoft"
-description: "Dowiedz się wszystkiego o interfejsu API środowiska Node.js SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji zestawu SDK platformy Azure rozwiązania Cosmos DB Node.js."
+title: 'Azure DB rozwiązania Cosmos: SQL interfejsu API środowiska Node.js SDK & zasobów | Dokumentacja firmy Microsoft'
+description: Dowiedz się wszystkiego o interfejsu API środowiska Node.js SQL i zestawu SDK, w tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji zestawu SDK platformy Azure rozwiązania Cosmos DB Node.js.
 services: cosmos-db
 documentationcenter: nodejs
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8869d8a8eead8bdaeda5dc1d6eeb2f81b16928e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 58d043ac7037567d37321cb874804ad0e6cb5ed8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB Node.js SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/02/2018
 > * [Źródła danych zmian .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Asynchroniczne Java](sql-api-sdk-async-java.md)
+> * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
@@ -35,8 +35,6 @@ ms.lasthandoff: 03/02/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 <table>
 
@@ -164,7 +162,7 @@ ms.lasthandoff: 03/02/2018
 
 ### <a name="1.2.0"/>1.2.0</a>
 * Dodano obsługę dla indeksu dane geograficzne.
-* Weryfikuje właściwość identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, # &#47; &#47; znaków ani kończyć spacją.
+* Weryfikuje właściwość identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, #, &#47; &#47;, znaków ani kończyć spacją.
 * Dodaje nowego nagłówka "indeksu przekształcania toku" do ResourceResponse.
 
 ### <a name="1.1.0"/>1.1.0</a>

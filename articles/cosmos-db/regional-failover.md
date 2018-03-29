@@ -1,25 +1,25 @@
 ---
-title: "Regionalnej pracy awaryjnej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o sposobie ręcznego i automatycznego działania trybu failover z bazy danych Azure rozwiązania Cosmos."
+title: Regionalnej pracy awaryjnej w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o sposobie ręcznego i automatycznego działania trybu failover z bazy danych Azure rozwiązania Cosmos.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatyczne regionalnej pracy w trybie failover ciągłość prowadzenia działalności biznesowej w usłudze Azure DB rozwiązania Cosmos
 Azure DB rozwiązania Cosmos upraszcza globalne rozkład danych oferując do pełnego zarządzania, [konta bazy danych w przypadku](distribute-data-globally.md) zawierających wyczyść wady i zalety między spójności, dostępność i wydajność, wszystkie z odpowiednimi gwarancje. Rozwiązania cosmos DB kont oferują wysoką dostępność, opóźnienia ms w pojedynczą cyfrą [dobrze zdefiniowane poziomy spójności](consistency-levels.md), przezroczysty regionalnej pracy awaryjnej z wielu interfejsów API oraz możliwość elastycznie skalować przepływność i Magazyn między globu. 
@@ -30,9 +30,10 @@ Rozwiązania cosmos bazy danych obsługuje zarówno jawnego i zasad zmiennych pr
 * Jak pracy automatycznego przechodzenia w tryb failover do rozwiązania Cosmos bazy danych i co się dzieje, gdy dane Centrum umieszczane w dół?
 * Jak można użyć ręcznej pracy awaryjnej w architekturach aplikacji?
 
-Można również zapoznać się regionalnej pracy w trybie Failover w tym Azure piątek wideo Scott Hanselman i Ramana Karthik główny Menedżer zespołu inżynieryjnego.
+Można także zapoznać się regionalnej pracy w trybie Failover w tym wideo według Andrew Liu Menedżera programów rozwiązania Cosmos bazy danych Azure, której przedstawiono funkcje globalne dystrybucji regionalnej pracy awaryjnej w tym.
 
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
+>[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ## <a id="ConfigureMultiRegionApplications"></a>Konfigurowanie aplikacji w przypadku
 Zanim firma Microsoft Poznaj tryby pracy awaryjnej przyjrzymy się jak konfigurować aplikacji skorzystać w przypadku dostępności i zapewnienie odporności w wypadku regionalnej pracy w trybie Failover.

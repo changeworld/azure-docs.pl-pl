@@ -1,7 +1,7 @@
 ---
-title: "Przykłady Python interfejsu API SQL dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Znaleźć przykłady Python w usłudze github dla typowych zadań w usłudze Azure DB rozwiązania Cosmos, w tym operacji CRUD."
-keywords: "Przykłady dla języka Python"
+title: Przykłady Python interfejsu API SQL dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Znaleźć przykłady Python w usłudze github dla typowych zadań w usłudze Azure DB rozwiązania Cosmos, w tym operacji CRUD.
+keywords: Przykłady dla języka Python
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 869c38c1f3dbdb21c3ecc21141341b1ae9dbaad6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ce9a7d071575b30e0150b23291292bddd0c65f1f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Przykłady rozwiązania Cosmos DB Python platformy Azure
 
@@ -30,8 +30,6 @@ ms.lasthandoff: 03/16/2018
 > * [Galeria próbki kodu platformy Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Przykładowe rozwiązania, wykonujących operacje CRUD i innymi typowymi operacjami zasobów bazy danych Azure rozwiązania Cosmos znajdują się w [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python) repozytorium GitHub. Ten artykuł zawiera:
 

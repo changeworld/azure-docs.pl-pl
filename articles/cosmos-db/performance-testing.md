@@ -1,12 +1,12 @@
 ---
-title: "Azure DB rozwiązania Cosmos skali i testowania wydajności | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać testowanie z bazy danych Azure rozwiązania Cosmos wydajności i skalowania"
-keywords: "Testowanie wydajności"
+title: Azure DB rozwiązania Cosmos skali i testowania wydajności | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wykonać testowanie z bazy danych Azure rozwiązania Cosmos wydajności i skalowania
+keywords: Testowanie wydajności
 services: cosmos-db
 author: arramac
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: f72a75f2750d4838566815bece5c2221359ece29
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 36665c0c26dad4e3b667b341b63c5859ece7605b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Wydajność i skalę testowania z bazy danych Azure rozwiązania Cosmos
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Skala testowanie wydajności i jest klucza krok w rozwoju aplikacji. Dla wielu aplikacji warstwy bazy danych ma znaczący wpływ na ogólną wydajność i skalowalność. W związku z tym jest składnikiem krytycznym testowania wydajności. [Azure DB rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) jest dedykowanym elastyczne skalowanie i przewidywalną wydajność. Te możliwości stanowić stanowi doskonałe dopasowanie dla aplikacji, które wymagają warstwy wysokiej wydajności bazy danych. 
 
@@ -102,7 +100,7 @@ Aby skompilować i uruchomić przykładowe .NET jest najszybszym sposobem na roz
 
 Po utworzeniu aplikacji możesz spróbować innego [zasady indeksowania](indexing-policies.md) i [poziomy spójności](consistency-levels.md) zrozumienie ich wpływ na przepustowości i opóźnień. Można również przejrzeć kod źródłowy i wdrożenia podobnych konfiguracji własne zestawy testów lub aplikacje produkcyjne.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule analizujemy sposobu wykonywania wydajności i skalowania testowanie z bazy danych rozwiązania Cosmos Azure za pomocą aplikacji konsoli .NET. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 * [Testowanie próbki Azure wydajności bazy danych rozwiązania Cosmos](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)

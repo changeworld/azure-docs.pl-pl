@@ -1,12 +1,12 @@
 ---
-title: "Wprowadzenie do usługi Advisor Azure | Dokumentacja firmy Microsoft"
-description: "Optymalizowanie wdrożeń platformy Azure przy użyciu klasyfikatora Azure."
+title: Wprowadzenie do usługi Advisor Azure | Dokumentacja firmy Microsoft
+description: Optymalizowanie wdrożeń platformy Azure przy użyciu klasyfikatora Azure.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0aa97a7557706f0b704d4e31a84e9d356d1ad087
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Wprowadzenie do usługi Advisor Azure
 
@@ -43,9 +43,6 @@ Pulpit nawigacyjny usługi Advisor wyświetla spersonalizowane zalecenia dotycz�
 
   ![Typy zalecenia usługi Advisor](./media/advisor-overview/advisor-dashboard.png)
 
-> [!NOTE]
-> Aby użyć klasyfikatora Azure z subskrypcją, subskrypcji *właściciela* wymaga uruchomienia pulpitu nawigacyjnego usługi Advisor.  Ta akcja rejestruje subskrypcji w usłudze Advisor.  Od tego momentu na żadną subskrypcję *właściciela*, *współautora*, lub *czytnika* mogą uzyskiwać dostęp do zalecenia doradcy w zakresie dla subskrypcji. 
-
 Kliknij kategorię, aby wyświetlić listę zaleceń w ramach tej kategorii i wybierz zalecenie, aby uzyskać więcej informacji na ten temat.  Możesz też dowiedzieć się o akcjach, które można wykonać w celu rozwiązania problemu lub korzystać z możliwości.
 
 ![Kategoria zalecenia usługi Advisor](./media/advisor-overview/advisor-ha-category-example.png) 
@@ -62,12 +59,12 @@ Dostęp można uzyskać Advisor za pomocą [portalu Azure](https://aka.ms/azurea
 Można również wyświetlić zalecenia doradcy w zakresie za pomocą interfejsu zasobu maszyny wirtualnej. Wybierz maszynę wirtualną, a następnie przewiń do zalecenia doradcy w zakresie w menu. 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Jakie uprawnienia należy uzyskać dostępu do usługi Advisor?
-
-Aby uzyskiwać zalecenia doradcy w zakresie subskrypcji, najpierw należy zarejestrować subskrypcji z usługi Advisor. Subskrypcja jest rejestrowane podczas subskrypcji *właściciela* uruchamia pulpitu nawigacyjnego usługi Advisor. Jest to jednorazowa operacja. Po zarejestrowaniu subskrypcji są dostępne zalecenia doradcy w zakresie jako *właściciela*, *współautora*, lub *czytnika* subskrypcji.
+ 
+Dostęp można uzyskać zalecenia doradcy w zakresie jako *właściciela*, *współautora*, lub *czytnika* subskrypcji.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Jakie zasoby Advisor oferuje zalecenia dotyczące?
 
-Klasyfikator zawiera zalecenia dotyczące maszyny wirtualnej, zestawów dostępności bramy aplikacji, usług aplikacji, serwerów SQL, baz danych i pamięci podręcznej Redis.
+Klasyfikator zawiera zalecenia dotyczące maszyny wirtualnej, zestawów dostępności bramy aplikacji, usług aplikacji, serwerów SQL i pamięci podręcznej Redis.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Można odłożyć lub zignorować zalecenie?
 

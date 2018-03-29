@@ -1,28 +1,26 @@
 ---
-title: "Konfigurowanie protokołu SSL na trasie z bramy aplikacji Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania protokołu SSL na trasie z bramy aplikacji Azure przy użyciu programu PowerShell"
+title: Konfigurowanie protokołu SSL na trasie z bramy aplikacji Azure
+description: W tym artykule opisano sposób konfigurowania protokołu SSL na trasie z bramy aplikacji Azure przy użyciu programu PowerShell
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e6d80a33-4047-4538-8c83-e88876c8834e
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: df14d5c4572a250f9f8951ee3b86e87e6f652782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 3/27/2018
+ms.author: victorh
+ms.openlocfilehash: 2de7086d7c26d5a655ad5998678f392126ea7e1d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurowanie protokołu SSL na trasie przy użyciu bramy aplikacji przy użyciu programu PowerShell
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Brama aplikacji Azure obsługuje end-to-end szyfrowania ruchu. Brama aplikacji w zakończenie połączenia SSL na bramie aplikacji. Następnie brama dotyczy reguły routingu ruchu, ponowne zaszyfrowanie pakiet i przekazuje pakiet do odpowiedniego serwera zaplecza, zgodnie z regułami routingu zdefiniowane. Każda odpowiedź z serwera sieci Web przechodzi przez ten sam proces z powrotem do użytkownika końcowego.
 
@@ -160,7 +158,8 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    5. Konfigurowanie certyfikatu dla bramy aplikacji. Ten certyfikat służy do odszyfrowania i reencrypt ruchu dla bramy aplikacji.
 
    ```powershell
-   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+   $password = ConvertTo-SecureString  <password for certificate file> -AsPlainText -Force 
+   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $password 
    ```
 
    > [!NOTE]
@@ -177,7 +176,7 @@ Wszystkie elementy konfiguracji są ustawiane przed utworzeniem bramy aplikacji.
    > [!NOTE]
    > Domyślnego badania pobiera klucza publicznego z *domyślne* powiązanie SSL na adres IP zaplecza na i porównuje wartość klucza publicznego odbiera wartość klucza publicznego zostanie podana tutaj. 
    
-   > Jeśli używasz nagłówków hosta i wskazanie nazwy serwera (SNI) na wewnętrznej pobrane klucz publiczny nie może być planowanej lokacji, do których ruch. Jeśli masz wątpliwości, odwiedź witrynę https://127.0.0.1/ na serwerach wewnętrznych, aby potwierdzić certyfikat, który jest używany dla *domyślne* powiązania SSL. W tej sekcji, Użyj klucza publicznego z tym żądaniem. Jeśli korzystasz z nagłówkami hosta i SNI na powiązania HTTPS i nie otrzymasz odpowiedź i certyfikatu z żądania ręczne przeglądarki do https://127.0.0.1/ na serwerach wewnętrznych, należy skonfigurować domyślne powiązanie SSL na nich. Jeśli nie zrobisz, sondy i wewnętrznej nie jest białej.
+   > Jeśli używasz nagłówków hosta i wskazanie nazwy serwera (SNI) na wewnętrznej pobrane klucz publiczny nie może być planowanej lokacji, do których ruch. Jeśli masz wątpliwości, odwiedź witrynę https://127.0.0.1/ na serwerach wewnętrznych, aby potwierdzić certyfikat, który jest używany dla *domyślne* powiązania SSL. W tej sekcji, Użyj klucza publicznego z tym żądaniem. Jeśli korzystasz z nagłówkami hosta i SNI na powiązania HTTPS i nie pojawi się odpowiedzi i certyfikatu z żądanie przeglądarki ręczne https://127.0.0.1/ na serwerach wewnętrznych, należy skonfigurować domyślne powiązanie SSL na nich. Jeśli nie zrobisz, sondy i wewnętrznej nie jest białej.
 
    ```powershell
    $authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
@@ -283,7 +282,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat wzmacniania zabezpieczeń aplikacji sieci web z zapory aplikacji sieci Web za pośrednictwem bramy aplikacji, zobacz [Omówienie zapory aplikacji sieci Web](application-gateway-webapplicationfirewall-overview.md).
 

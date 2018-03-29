@@ -1,10 +1,10 @@
 ---
-title: "Używanie udostępnionego sygnatur dostępu (SAS) w usłudze Azure Storage | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, Użyj sygnatur dostępu współdzielonego (SAS), aby delegować dostęp do zasobów usługi Azure Storage, w tym obiekty BLOB, kolejek, tabel i plików."
+title: Używanie udostępnionego sygnatur dostępu (SAS) w usłudze Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, Użyj sygnatur dostępu współdzielonego (SAS), aby delegować dostęp do zasobów usługi Azure Storage, w tym obiekty BLOB, kolejek, tabel i plików.
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: tamram
-ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-shared-access-signatures-sas"></a>Przy użyciu sygnatury dostępu współdzielonego (SAS)
 
@@ -27,7 +27,7 @@ Sygnatury dostępu współdzielonego (SAS) zapewnia sposób, aby przyznać ogran
 Dla dodatkowych przykładów kodu poza tymi przedstawionych w tym miejscu przy użyciu sygnatury dostępu Współdzielonego, zobacz [wprowadzenie do magazynu obiektów Blob Azure w programie .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) i inne przykłady, które są dostępne w [przykłady kodu Azure](https://azure.microsoft.com/documentation/samples/?service=storage) biblioteki. Możesz Pobierz przykładowe aplikacje i uruchom je lub Przeglądaj kodu w witrynie GitHub.
 
 ## <a name="what-is-a-shared-access-signature"></a>Co to jest sygnatury dostępu współdzielonego?
-Sygnatury dostępu współdzielonego umożliwiają dostęp delegowany do zasobów na koncie magazynu. Z sygnatury dostępu Współdzielonego można przyznać klientom dostęp do zasobów na koncie magazynu bez udostępniania kluczy konta. To jest punkt klucza przy użyciu sygnatury dostępu współdzielonego w aplikacjach — sygnatury dostępu Współdzielonego jest bezpiecznym sposobem udostępnianie zasobów magazynu bez naruszania klucze Twojego konta.
+Sygnatury dostępu współdzielonego umożliwiają dostęp delegowany do zasobów na koncie magazynu. Z sygnatury dostępu Współdzielonego można przyznać klientom dostęp do zasobów na koncie magazynu bez udostępniania kluczy konta. Jest to najbardziej istotna kwestia związana z używaniem sygnatur dostępu współdzielonego w aplikacjach — są one bezpiecznym sposobem udostępniania zasobów magazynu bez narażania kluczy konta.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -85,7 +85,7 @@ Sygnatura dostępu Współdzielonego konta i tokeny sygnatury dostępu Współdz
 * **Godzina rozpoczęcia.** Jest to czas, w którym zaczyna obowiązywać sygnatury dostępu Współdzielonego. Czas rozpoczęcia sygnatury dostępu współdzielonego jest opcjonalne. W przypadku pominięcia czas rozpoczęcia sygnatury dostępu Współdzielonego obowiązuje natychmiast. Czas rozpoczęcia musi być wyrażony w formacie UTC (Coordinated Universal Time) z specjalne oznaczeniem UTC ("Z"), na przykład `1994-11-05T13:15:30Z`.
 * **Czas wygaśnięcia.** Jest to czas, po którym skojarzenia zabezpieczeń nie jest już prawidłowy. Najlepszym rozwiązaniem jest Określ czas wygaśnięcia dla sygnatury dostępu Współdzielonego lub powiązać ją z zasadami dostępu przechowywane. Czas wygaśnięcia musi być wyrażony w formacie UTC (Coordinated Universal Time) z specjalne oznaczeniem UTC ("Z"), na przykład `1994-11-05T13:15:30Z` (Zobacz więcej poniżej).
 * **Uprawnienia.** Uprawnienia określone na sygnatury dostępu Współdzielonego wskazują, jakie operacje klienta można wykonywać względem zasobów pamięci masowej przy użyciu sygnatury dostępu Współdzielonego. Uprawnienia dostępne są różne dla konta sygnatury dostępu Współdzielonego i sygnatury dostępu Współdzielonego usługi.
-* **ADRES IP.** Opcjonalny parametr określający adres IP lub zakres adresów IP poza platformą Azure (zobacz sekcję [stan konfiguracji sesji Routing](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) dla Express Route) służąca do akceptowania żądań.
+* **IP.** Opcjonalny parametr określający adres IP lub zakres adresów IP poza platformą Azure (zobacz sekcję [stan konfiguracji sesji Routing](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) dla Express Route) służąca do akceptowania żądań.
 * **Protokół.** Opcjonalny parametr, który określa protokół, który jest dozwolony dla żądania. Możliwe wartości to zarówno protokołu HTTPS i HTTP (`https,http`), czyli tylko wartości domyślnej lub HTTPS (`https`). Należy pamiętać, że HTTP tylko nie jest dozwoloną wartość.
 * **Podpis.** Podpis jest tworzony z innych parametrów, określony jako część tokenu i ponownie szyfrowane. Jest on używany do uwierzytelniania sygnatury dostępu Współdzielonego.
 
@@ -113,7 +113,7 @@ Oto przykład usługi identyfikatora URI połączenia SAS, która zapewnia upraw
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| Nazwa | Część SAS | Opis |
+| Name (Nazwa) | Część SAS | Opis |
 | --- | --- | --- |
 | Identyfikator URI obiektu blob |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Adres obiektu blob. Należy pamiętać, że przy użyciu protokołu HTTPS jest zdecydowanie zalecane. |
 | Wersja usługi magazynu |`sv=2015-04-05` |Magazyn usługi wersji 2012-02-12, a później, ten parametr wskazuje wersję do użycia. |
@@ -133,7 +133,7 @@ Oto przykład konta sygnatury dostępu Współdzielonego, który używa tej same
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| Nazwa | Część SAS | Opis |
+| Name (Nazwa) | Część SAS | Opis |
 | --- | --- | --- |
 | Identyfikator URI zasobu |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Punkt końcowy usługi Blob, wraz z parametrami pobierania właściwości usługi (jeśli jest wywoływana z GET) lub właściwości usługi (jeśli jest wywoływana z ZESTAWEM). |
 | Usługi |`ss=bf` |Sygnatury dostępu Współdzielonego ma zastosowanie do usług obiektów Blob i plików |

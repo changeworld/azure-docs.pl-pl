@@ -1,9 +1,9 @@
 ---
-title: "Archiwizowanie dziennika aktywności platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak archiwum dziennik aktywności platformy Azure w celu przechowywania długoterminowego na koncie magazynu."
+title: Archiwizowanie dziennika aktywności platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak archiwum dziennik aktywności platformy Azure w celu przechowywania długoterminowego na koncie magazynu.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 0b041cc6a986c6f7a11d213f03294c9716c20d04
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwum dziennik aktywności platformy Azure
 W tym artykule zostanie przedstawiony sposób można użyć portalu Azure, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia i Platform do archiwizacji Twojej [ **dziennika aktywności platformy Azure** ](monitoring-overview-activity-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dłużej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzeń przez 90 dni lub mniej nie trzeba skonfigurować archiwizacji na konto magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
@@ -164,7 +164,7 @@ W pliku PT1H.json każdego zdarzenia są przechowywane w tablicy "rekordy", po t
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Pobierać obiekty BLOB do analizy](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
+* [Pobierać obiekty BLOB do analizy](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Strumień dziennik aktywności do usługi Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
 * [Więcej informacji na temat dziennika aktywności](monitoring-overview-activity-logs.md)
 

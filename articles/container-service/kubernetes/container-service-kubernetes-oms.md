@@ -1,6 +1,6 @@
 ---
-title: "Monitorowanie Azure Kubernetes klaster - operacji zarządzania"
-description: "Monitorowanie Kubernetes klastra usługi kontenera platformy Azure przy użyciu programu Microsoft Operations Management Suite"
+title: Monitorowanie Azure Kubernetes klaster - operacji zarządzania
+description: Monitorowanie Kubernetes klastra usługi kontenera platformy Azure przy użyciu analizy dzienników
 services: container-service
 author: bburns
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: e8a68896c923d785fea84cef60f8d2015906f342
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: efe4b3a1a63fa1986682a2fdde1a20221dc5d93a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>Monitor klastra usługi kontenera platformy Azure z Microsoft Operations Management Suite (OMS)
+# <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Monitor klastra usługi kontenera platformy Azure z analizy dzienników
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
@@ -56,18 +56,19 @@ CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
-## <a name="monitoring-containers-with-operations-management-suite-oms"></a>Monitorowanie kontenerów w usłudze Operations Management Suite (OMS)
+## <a name="monitoring-containers-with-log-analytics"></a>Kontenery monitorowania z analizy dzienników
 
-Microsoft Operations Management (OMS) jest firmy Microsoft w chmurze IT rozwiązania do zarządzania ułatwiające zarządzanie i ochrona lokalnej infrastruktury w chmurze. Kontener rozwiązanie to rozwiązanie w OMS analizy dzienników, które ułatwia przeglądanie spisu kontenera, wydajności i dzienniki w jednej lokalizacji. Można inspekcji, rozwiązywanie problemów z kontenerów, wyświetlając dzienniki w centralnej lokalizacji oraz znaleźć zakłócenia, wykorzystywanie nadmiarowe kontenera na hoście.
+Analiza dzienników jest firmy Microsoft w chmurze IT rozwiązania do zarządzania ułatwiające zarządzanie i ochrona lokalnej infrastruktury w chmurze. Kontener rozwiązanie to rozwiązanie w analizy dzienników, które ułatwia przeglądanie spisu kontenera, wydajności i dzienniki w jednej lokalizacji. Można inspekcji, rozwiązywanie problemów z kontenerów, wyświetlając dzienniki w centralnej lokalizacji oraz znaleźć zakłócenia, wykorzystywanie nadmiarowe kontenera na hoście.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
 Aby uzyskać więcej informacji o rozwiązaniu kontenera, zapoznaj się [analizy dzienników rozwiązania kontenera](../../log-analytics/log-analytics-containers.md).
 
-## <a name="installing-oms-on-kubernetes"></a>Instalowanie pakietu OMS na Kubernetes
+## <a name="installing-log-analytics-on-kubernetes"></a>Instalowanie na Kubernetes analizy dzienników
 
 ### <a name="obtain-your-workspace-id-and-key"></a>Uzyskaj identyfikator i klucz
-Do OMS agentowi komunikować z usługą musi mieć skonfigurowaną identyfikator obszaru roboczego i klucz obszaru roboczego. Aby uzyskać identyfikator i klucz, musisz utworzyć konto OMS w <https://mms.microsoft.com>. Wykonaj kroki, aby utworzyć konto. Po zakończeniu tworzenia konta, należy uzyskać klucz i identyfikator klikając **ustawienia**, następnie **połączonych źródeł**, a następnie **serwerów z systemem Linux**, jak pokazano poniżej.
+Do OMS agentowi komunikować z usługą musi mieć skonfigurowaną identyfikator obszaru roboczego i klucz obszaru roboczego. Aby uzyskać identyfikator i klucz, musisz utworzyć konto w <https://mms.microsoft.com>.
+Wykonaj kroki, aby utworzyć konto. Po zakończeniu tworzenia konta, należy uzyskać klucz i identyfikator klikając **ustawienia**, następnie **połączonych źródeł**, a następnie **serwerów z systemem Linux**, jak pokazano poniżej.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -84,18 +85,18 @@ $ kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Instalowanie przy użyciu klucza tajnego Kubernetes agent pakietu OMS
-Ochrona Identyfikatora obszar roboczy OMS i klawisz można użyć klucza tajnego Kubernetes jako część pliku DaemonSet yaml programu.
+Do ochrony klucza i identyfikator obszaru roboczego analizy dzienników klucz tajny Kubernetes służy jako część pliku DaemonSet yaml programu.
 
  - Skopiuj skrypt, plik tajny szablon i plik yaml programu DaemonSet (z [repozytorium](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) i upewnij się, że znajdują się w tym samym katalogu. 
       - Generowanie skryptu - gen.sh klucz tajny klucz tajny
       - Szablon tajne — template.yaml klucz tajny
    - Plik yaml programu DaemonSet — omsagent — ds-secrets.yaml
- - Uruchom skrypt. Skrypt poprosi o OMS identyfikator i klucz podstawowy. Włóż który i skrypt zostanie utworzony plik tajny yaml programu, dlatego może być uruchomiony.   
+ - Uruchom skrypt. Skrypt poprosi o identyfikator obszaru roboczego analizy dzienników i klucz podstawowy. Włóż który i skrypt zostanie utworzony plik tajny yaml programu, dlatego może być uruchomiony.   
    ```
    #> sudo bash ./secret-gen.sh 
    ```
 
-   - Utwórz pod kluczy tajnych, uruchamiając następujące czynności:``` kubectl create -f omsagentsecret.yaml ```
+   - Utwórz pod kluczy tajnych, uruchamiając następujące czynności: ``` kubectl create -f omsagentsecret.yaml ```
  
    - Aby sprawdzić, uruchom następujące polecenie: 
 
@@ -118,7 +119,7 @@ Ochrona Identyfikatora obszar roboczy OMS i klawisz można użyć klucza tajnego
    KEY:    88 bytes 
    ```
  
-  - Tworzenie sieci omsagent demon set, uruchamiając``` kubectl create -f omsagent-ds-secrets.yaml ```
+  - Tworzenie sieci omsagent demon set, uruchamiając ``` kubectl create -f omsagent-ds-secrets.yaml ```
 
 ### <a name="conclusion"></a>Podsumowanie
 Gotowe. Po kilku minutach można wyświetlić dane przepływające do pulpitu nawigacyjnego OMS.

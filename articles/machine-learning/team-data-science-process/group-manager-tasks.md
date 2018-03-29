@@ -1,23 +1,23 @@
 ---
-title: "Menedżera grupy Team danych nauki proces zadania — Azure | Dokumentacja firmy Microsoft"
-description: "Konspekt zadania z kierownikiem projektu zespołowego analizy danych."
-documentationcenter: 
+title: Menedżera grupy Team danych nauki proces zadania — Azure | Dokumentacja firmy Microsoft
+description: Konspekt zadania z kierownikiem projektu zespołowego analizy danych.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 58cea8b0288469a76dd8c4eb967caa8e87cd3dd7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 3c39ae865ec26567f70706b042dab2aa8e4939d3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="group-manager-tasks"></a>Menedżer grupy zadań
 
@@ -101,7 +101,7 @@ Wprowadź informacje dla serwera programu VSTS, który ma zostać utworzony w **
 
 Kliknij przycisk **kontynuować**. 
 
-## <a name="2-groupcommon-team-project"></a>2. GroupCommon zespołu projektu
+## <a name="2-groupcommon-team-project"></a>2. GroupCommon Team Project
 
 **GroupCommon** strony (*https://\<servername\>.visualstudio.com/GroupCommon*) zostanie otwarty po utworzeniu serwera usługi VSTS.
                             
@@ -311,7 +311,7 @@ Na serwerze programu VSTS grupy strony głównej, kliknij **koło zębate ikonę
 ![24](./media/group-manager-tasks/add_member_to_group.PNG) 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto łącza do bardziej szczegółowe opisy ról i zadań zdefiniowanych przez proces nauki danych zespołu:
 

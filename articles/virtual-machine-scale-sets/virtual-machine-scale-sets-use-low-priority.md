@@ -1,13 +1,13 @@
 ---
-title: "Tworzenie zestawu Azure skali, który używa niskiego priorytetu maszyny wirtualne (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć zestawy skalowania maszyny wirtualnej platformy Azure, które umożliwia kosztów maszyn wirtualnych o niskim priorytecie"
+title: Tworzenie zestawu Azure skali, który używa niskiego priorytetu maszyny wirtualne (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć zestawy skalowania maszyny wirtualnej platformy Azure, które umożliwia kosztów maszyn wirtualnych o niskim priorytecie
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: rajraj
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: memccror
-ms.openlocfilehash: 9e4970ecc538caab537281931b89bfd57d994cfa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f25e4d1e3906a610e7c60e348f872a78d7db8fd3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>Maszyny wirtualne niskiego priorytetu na zestawy skalowania (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Aby wdrożyć niskiego priorytetu maszyny wirtualne na zestawy skalowania, możn
 
 ## <a name="use-the-azure-cli-20"></a>Użyj Azure CLI 2.0
 
-Proces tworzenia skali Ustawianie niskiego priorytetu maszyn wirtualnych jest taka sama, jak określono w [wprowadzenie artykułu](virtual-machine-scale-sets-create-cli.md). Po prostu Dodaj "--priorytet" Parametr interfejsu wiersza polecenia wywołania i ustaw ją na *małej* jak pokazano w poniższym przykładzie:
+Proces tworzenia skali Ustawianie niskiego priorytetu maszyn wirtualnych jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-cli.md). Po prostu Dodaj "--priorytet" Parametr interfejsu wiersza polecenia wywołania i ustaw ją na *małej* jak pokazano w poniższym przykładzie:
 
 ```azurecli
 az vmss create \
@@ -63,7 +63,7 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 
-Proces tworzenia skali Ustawianie niskiego priorytetu maszyn wirtualnych jest taka sama, jak określono w [wprowadzenie artykułu](virtual-machine-scale-sets-create-powershell.md).
+Proces tworzenia skali Ustawianie niskiego priorytetu maszyn wirtualnych jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-powershell.md).
 Po prostu Dodaj "-priorytet" parametr [AzureRmVmssConfig nowy](/powershell/module/azurerm.compute/new-azurermvmssconfig) i ustaw ją na *małej* jak pokazano w poniższym przykładzie:
 
 ```powershell
@@ -77,7 +77,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>Użyj szablonów usługi Azure Resource Manager
 
-Proces tworzenia zestawu skali, który używa niskiego priorytetu maszyn wirtualnych jest taka sama, zgodnie z opisem w artykule Rozpoczęto pobieranie dla [Linux](virtual-machine-scale-sets-create-template-linux.md) lub [Windows](virtual-machine-scale-sets-create-template-windows.md). Dodaj właściwość 'priority' do *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* zasobów, wpisz w szablonie i określ *małej* jako wartość. Należy użyć *2017-10-30-preview* wersja interfejsu API lub nowszej. 
+Proces tworzenia zestawu skali, który używa niskiego priorytetu maszyn wirtualnych jest taka sama, zgodnie z opisem w artykule Rozpoczęto pobieranie dla [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). Dodaj właściwość 'priority' do *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* zasobów, wpisz w szablonie i określ *małej* jako wartość. Należy użyć *2017-10-30-preview* wersja interfejsu API lub nowszej. 
 
 Aby skonfigurować zasady wykluczania do usunięcia, Dodaj parametr "evictionPolicy" i ustaw ją na *usunąć*.
 

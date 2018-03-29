@@ -1,8 +1,8 @@
 ---
-title: "Opis alertów w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Alerty w analizy dzienników zidentyfikować ważne informacje zawarte w repozytorium OMS i aktywne powiadamia użytkownika o problemy lub akcji, aby je poprawić.  W tym artykule opisano różne rodzaje reguły alertów i jak są zdefiniowane."
+title: Opis alertów w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Alerty w analizy dzienników zidentyfikować ważne informacje zawarte w repozytorium OMS i aktywne powiadamia użytkownika o problemy lub akcji, aby je poprawić.  W tym artykule opisano różne rodzaje reguły alertów i jak są zdefiniowane.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: ece2e7eeb53aebbb18bce4bb34e03307b0aea74c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Opis alertów w analizy dzienników
 
-Alerty w analizy dzienników zidentyfikować ważne informacje zawarte w repozytorium analizy dzienników.  W tym artykule omówiono niektóre decyzji projektowych, które należy podjąć takie decyzje na podstawie częstotliwości zbierania danych jest kwerendy, losowego opóźnienia z wprowadzanie danych prawdopodobnie spowodowane opóźnieniem sieci lub wydajności przetwarzania i zatwierdzania danych w Dzienniku Repozytorium Analytics.  Również szczegółowe reguły jak alertów w pracach analizy dzienników i opisano różnice między różnych typów reguł alertów.
+Alerty w usłudze Log Analytics identyfikują ważne informacje w repozytorium usługi Log Analytics.  W tym artykule omówiono niektóre decyzji projektowych, które należy podjąć takie decyzje na podstawie częstotliwości zbierania danych jest kwerendy, losowego opóźnienia z wprowadzanie danych prawdopodobnie spowodowane opóźnieniem sieci lub wydajności przetwarzania i zatwierdzania danych w Dzienniku Repozytorium Analytics.  Również szczegółowe reguły jak alertów w pracach analizy dzienników i opisano różnice między różnych typów reguł alertów.
 
 W procesie tworzenia reguły alertów zobacz następujące artykuły:
 
@@ -41,7 +41,7 @@ Szczegółowe informacje o częstotliwości zbierania danych dla różnych rozwi
 
 ## <a name="alert-rules"></a>Reguły alertów
 
-Alerty są tworzone przez reguły alertów, które automatycznie uruchamiać dziennik wyszukiwania w regularnych odstępach czasu.  Jeśli wyniki wyszukiwania dziennika spełniających kryteria określonego tworzony jest rekord alertu.  Reguła następnie automatycznie uruchomić co najmniej jednej akcji do aktywnego powiadomienia o alercie lub wywołać inny proces.  Różnych typów reguł alertów używać różnych logikę do wykonywania tej analizy.
+Alerty są tworzone przez reguły alertów, które automatycznie uruchamiają przeszukiwanie dzienników w regularnych odstępach czasu.  Jeśli wyniki wyszukiwania dziennika spełniających kryteria określonego tworzony jest rekord alertu.  Następnie reguła może automatycznie uruchomić jedną lub kilka akcji, aby aktywnie powiadomić użytkownika o alercie lub wywołać inny proces.  Różnych typów reguł alertów używać różnych logikę do wykonywania tej analizy.
 
 ![Alerty usługi Log Analytics](media/log-analytics-alerts/overview.png)
 
@@ -52,7 +52,7 @@ Istnieje zależność między niezawodności alertów i elastyczność alertów.
 Reguły alertów są określone przez następujące informacje:
 
 - **Dziennik wyszukiwania**.  Zapytanie, do którego jest uruchamiany za każdym razem, gdy generowane reguły alertów.  Rekordów zwróconych przez to zapytanie jest używany do określenia, czy alert jest tworzony.
-- **Przedział czasu**.  Określa przedział czasu dla zapytania.  Zapytanie zwraca tylko te rekordy, które zostały utworzone w ramach tego zakresu bieżącego czasu.  Może to być dowolna wartość od 5 minut do 24 godzin. Zakres musi być dostatecznie szerokie, aby pomieścić uzasadnione opóźnienia w wprowadzanie. Przedział czasu musi mieć dwa razy długość najdłuższego opóźnienia, które mają być w stanie obsłużyć.<br> Na przykład jeśli chcesz otrzymywać alerty są wiarygodne opóźnienia 30 minut, następnie zakres musi być jedną godzinę.  
+- **Przedział czasu**.  Określa przedział czasu dla zapytania.  Zapytanie zwraca tylko rekordy utworzone w tym zakresie czasu bieżącego.  Może to być dowolna wartość od 5 minut do 24 godzin. Zakres musi być dostatecznie szerokie, aby pomieścić uzasadnione opóźnienia w wprowadzanie. Przedział czasu musi mieć dwa razy długość najdłuższego opóźnienia, które mają być w stanie obsłużyć.<br> Na przykład jeśli chcesz otrzymywać alerty są wiarygodne opóźnienia 30 minut, następnie zakres musi być jedną godzinę.  
 
     Istnieją dwa objawy, które mogą wystąpić, jeśli przedział czasu jest za mały.
 
@@ -102,12 +102,12 @@ Na przykład, jeśli chcesz alertów po uruchomieniu procesor ponad 90%, można 
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-Jeśli chcesz alert, gdy procesor średnio ponad 90% okna określony czas, należy użyć zapytania za pomocą [miar polecenia](log-analytics-search-reference.md#commands) podobnie do następującego z progiem dla reguły alertu **większa niż 0**.
+Jeśli chcesz alert, gdy procesor średnio ponad 90% okna określony czas, należy użyć zapytania za pomocą `measure` polecenia podobnie do następującej z progiem dla reguły alertu **większa niż 0**.
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
 >[!NOTE]
-> Jeśli obszaru roboczego został uaktualniony do [języka zapytań nowe analizy dzienników](log-analytics-log-search-upgrade.md), następnie zmieniłby powyżej zapytania do następującego:`Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> Jeśli obszaru roboczego został uaktualniony do [języka zapytań nowe analizy dzienników](log-analytics-log-search-upgrade.md), następnie zmieniłby powyżej zapytania do następującego: `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
 > `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
 
 
@@ -119,7 +119,7 @@ Jeśli chcesz alert, gdy procesor średnio ponad 90% okna określony czas, nale�
 **Metryki pomiaru** reguły alertów tworzyć alert dla każdego obiektu w zapytaniu z wartością, która przekracza określoną wartość progową.  Mają one następujące różnice różne **liczba wyników** reguły alertów.
 
 #### <a name="log-search"></a>Wyszukiwanie w dzienniku
-Za pomocą dowolnego zapytania dla **liczba wyników** reguły alertu, istnieją wymagania zapytania dla metryki pomiaru reguły alertu.  Musi on zawierać [miar polecenia](log-analytics-search-reference.md#commands) do grupowania wyników w określonym polu. To polecenie musi zawierać następujące elementy.
+Za pomocą dowolnego zapytania dla **liczba wyników** reguły alertu, istnieją wymagania zapytania dla metryki pomiaru reguły alertu.  Musi on zawierać `measure` polecenia do grupowania wyników w określonym polu. To polecenie musi zawierać następujące elementy.
 
 - **Funkcję agregacji**.  Określa obliczeń, który jest wykonywane i potencjalnie liczbową pole do zagregowania.  Na przykład **count()** zwróci liczbę rekordów w zapytaniu, **avg(CounterValue)** zwróci średnią pole równowartości dla interwału.
 - **Pole grupy**.  Zostaje utworzony rekord z zagregowane wartości dla poszczególnych wystąpień tego pola, a alert jest generowany dla każdego.  Na przykład, jeśli chcesz generować alert dla każdego komputera, możesz użyć **przez komputer**.   
@@ -150,7 +150,7 @@ Rekordy alertu przez reguły alertów w analizy dzienników mają **typu** z **A
 |:--- |:--- |
 | Typ |*Alert* |
 | SourceSystem |*OMS* |
-| *Obiekt*  | [Alerty metryki pomiaru](#metric-measurement-alert-rules) ma właściwość dla pola grupy.  Na przykład jeśli wyszukiwanie dziennika grupy na komputerze, alertów rekord z ma pole komputera o nazwie komputera jako wartość.
+| *Object*  | [Alerty metryki pomiaru](#metric-measurement-alert-rules) ma właściwość dla pola grupy.  Na przykład jeśli wyszukiwanie dziennika grupy na komputerze, alertów rekord z ma pole komputera o nazwie komputera jako wartość.
 | AlertName |Nazwa alertu. |
 | AlertSeverity |Poziom ważności alertu. |
 | LinkToSearchResults |Link do wyszukiwania dziennika analizy dzienników, która zwraca odpowiednie rekordy z kwerendy utworzony alert. |

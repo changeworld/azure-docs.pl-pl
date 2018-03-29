@@ -1,12 +1,12 @@
 ---
-title: "Azure zalecenia usługi Advisor koszt | Dokumentacja firmy Microsoft"
-description: "Optymalizowanie koszt wdrożeń platformy Azure przy użyciu klasyfikatora Azure."
+title: Azure zalecenia usługi Advisor koszt | Dokumentacja firmy Microsoft
+description: Optymalizowanie koszt wdrożeń platformy Azure przy użyciu klasyfikatora Azure.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advisor-cost-recommendations"></a>Zalecenia doradcy w zakresie koszt
 
@@ -31,9 +31,6 @@ Klasyfikator pokazuje szacowany koszt kontynuowania działania maszyny wirtualne
 
 Jeśli chcesz mieć bardziej agresywną na określenie niedostatecznie maszyn wirtualnych, można dostosować średni reguły wykorzystanie Procesora na podstawie subskrypcji na.
 
-## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>Używanie ekonomiczne rozwiązanie do zarządzania cele dotyczące wydajności wielu baz danych serwera SQL
-Klasyfikator identyfikuje wystąpienia programu SQL server, które mogą korzystać z tworzenie elastycznych pul baz danych. Elastyczne pule baz danych zapewniają proste i ekonomiczne rozwiązanie do zarządzania cele wydajności wielu baz danych, które mają różnych wzorców użycia. Aby uzyskać więcej informacji na temat Azure pule elastyczne, zobacz [co to jest pula elastyczna Azure?](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/).
-
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Obniżenie kosztów przez wyeliminowanie nieudostępniany obwody usługi ExpressRoute
 Klasyfikator identyfikuje obwody usługi ExpressRoute, które zostały w widoku stanu dostawcy *nieudostępniane* więcej niż jeden miesiąc i zaleca usunięcie obwodu, jeśli nie planuje udostępnić obwodu łączność Dostawca.
 
@@ -43,7 +40,7 @@ Klasyfikator identyfikuje obwody usługi ExpressRoute, które zostały w widoku 
 
 2.  Na pulpicie nawigacyjnym usługi Advisor, kliknij przycisk **koszt** kartę.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat zalecenia doradcy w zakresie, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)

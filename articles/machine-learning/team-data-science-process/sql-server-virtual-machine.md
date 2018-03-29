@@ -2,10 +2,10 @@
 title: Eksplorowanie danych maszyny wirtualnej programu SQL Server na platformie Azure | Dokumentacja firmy Microsoft
 description: Eksploruj dane i generowania funkcje w maszyny wirtualnej programu SQL Server na platformie Azure
 services: machine-learning
-documentationcenter: 
-author: garyericson
+documentationcenter: ''
+author: bradsev
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 3949fb2c-ffab-49fb-908d-27d5e42f743b
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: garye;bradsev
-ms.openlocfilehash: 6a97e1afb761191874b7a54b1951cb6ef9c4b07e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: bradsev
+ms.openlocfilehash: 69ee0657479430abf4ad039efc82d85a9501c7c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="heading"></a>Dane procesu w maszynie wirtualnej serwera SQL na platformie Azure
 W tym dokumencie opisano sposób eksplorować dane i generowanie funkcji danych przechowywanych na maszynie Wirtualnej z programu SQL Server na platformie Azure. Można to zrobić przy użyciu języka programowania, takich jak Python lub wrangling danych przy użyciu programu SQL.

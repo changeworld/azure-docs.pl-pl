@@ -13,19 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/27/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa95cae5d62ebe23d6822232c4a5ab872e1f2c6a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b0e46eb001e0b100ad1e181b02c18cfe67648f9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności danych dostosowywalne w usłudze Azure DB rozwiązania Cosmos
 Azure DB rozwiązania Cosmos jest zaprojektowany od podstaw się z globalnego dystrybucji pamiętać dla każdego modelu danych. Zaprojektowano go do zapewnienia gwarancje przewidywalną małe opóźnienia i wielu modeli dobrze zdefiniowany swobodna spójności. Obecnie bazy danych Azure rozwiązania Cosmos zawiera pięć poziomów spójności: silne, nieaktualność, sesji, prefiks spójne i "ostateczna". Nieaktualność, sesji prefiks spójne i ostatecznego są nazywane "swobodna spójności modeli" świadczą one mniej spójności niż silne, czyli większości wysokiej spójny model dostępne. 
 
 Oprócz **silne** i **spójność ostateczna** modeli często oferowane przez rozproszonych baz danych, bazy danych rozwiązania Cosmos Azure udostępnia trzy modele więcej starannie wersja i operationalized spójności:  **ograniczone nieaktualności**, **sesji**, i **spójne prefiks**. Przydatność każdego z tych poziomów spójności została zweryfikowana względem rzeczywistych przypadków użycia. Zbiorczo te poziomy spójności pięć umożliwiają należy dobrze uzasadnione kompromis między spójności, dostępnością i opóźnieniem. 
+
+W poniższego klipu wideo Andrew Liu Menedżera programów DB rozwiązania Cosmos Azure przedstawiono funkcje gotowe dystrybucji globalnego.
+
+>[!VIDEO https://www.youtube.com/embed/-4FsGysVD14]
 
 ## <a name="distributed-databases-and-consistency"></a>Rozproszone baz danych i spójności
 Komercyjnych rozproszonej bazy danych można podzielić na dwie kategorie: baz danych, które nie oferują opcji dobrze zdefiniowany możliwością ich kontrolowania spójności na wszystkich i baz danych, które oferują dwie możliwości programowania extreme (silne a spójność ostateczna). 
@@ -118,7 +122,7 @@ Domyślnie dla użytkownika zasobów poziomu spójności dla zapytań jest taka 
 | --- | --- | --- |
 | Spójność (ustawienie domyślne) |Wybierz jedną z nieaktualności silne, ograniczone, sesji, spójne prefiksu lub ostatecznego |Wybierz jedną z nieaktualności silne, ograniczone, sesji lub ostatecznego |
 | Lazy |Wybierz jedną z nieaktualności silne, ograniczone, sesji, spójne prefiksu lub ostatecznego |Ostateczna |
-| None |Wybierz jedną z nieaktualności silne, ograniczone, sesji, spójne prefiksu lub ostatecznego |Nie dotyczy |
+| Brak |Wybierz jedną z nieaktualności silne, ograniczone, sesji, spójne prefiksu lub ostatecznego |Nie dotyczy |
 
 Jako z żądaniami odczytu, możesz obniżyć poziom spójności żądania określonej kwerendy w każdym interfejsu API.
 

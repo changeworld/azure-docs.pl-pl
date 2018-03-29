@@ -1,8 +1,8 @@
 ---
-title: "Nauki danych przy użyciu języka Scala i Spark na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Jak używać języka Scala dla zadania uczenia nadzorowanego maszyny z Spark skalowalne MLlib i Spark ML pakiety w klastrze usługi Azure HDInsight Spark."
+title: Nauki danych przy użyciu języka Scala i Spark na platformie Azure | Dokumentacja firmy Microsoft
+description: Jak używać języka Scala dla zadania uczenia nadzorowanego maszyny z Spark skalowalne MLlib i Spark ML pakiety w klastrze usługi Azure HDInsight Spark.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;deguhath
-ms.openlocfilehash: 940911144993f30723ad395722742c81a4b0a71c
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: dbd68508d83936964d213d94d5a30c15548cbdfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Analiza danych przy użyciu języka Scala i platformy Spark na platformie Azure
 W tym artykule przedstawiono sposób użycia Scala dla zadania uczenia nadzorowanego maszyny z Spark skalowalne MLlib i Spark ML pakiety w klastrze usługi Azure HDInsight Spark. Przeprowadza użytkownika przez zadania, które stanowią [procesu nauki danych](http://aka.ms/datascienceprocess): wprowadzanie danych i eksploracja, wizualizacji engineering funkcji, modelowania i zużycia modelu. Modele w artykule obejmują Regresja logistyczna i liniowych, losowe lasów i boosted gradientu drzew (GBTs), oprócz dwie typowe zadania uczenia nadzorowanego maszyny:
@@ -42,7 +42,7 @@ Kroki instalacji i kodu w tym artykule dotyczą Azure HDInsight 3.4 Spark 1.6. J
 > 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Musi mieć subskrypcję platformy Azure. Jeśli użytkownik nie ma jeszcze jeden, [uzyskać Azure bezpłatnej wersji próbnej](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Wymagana jest subskrypcja platformy Azure. Jeśli użytkownik nie ma jeszcze jeden, [uzyskać Azure bezpłatnej wersji próbnej](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Należy Azure HDInsight 3.4 Spark 1.6 klastra wykonaj następujące procedury. Aby utworzyć klaster, zobacz instrukcje w [wprowadzenie: tworzenie Apache Spark w usłudze Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Ustaw typ klastra i wersji na **wybierz typ klastra** menu.
 
 ![Konfiguracja typu klastra usługi HDInsight](./media/scala-walkthrough/spark-cluster-on-portal.png)
@@ -77,14 +77,14 @@ Możesz przekazać notesu bezpośrednio z serwisu GitHub do serwera notesu Jupyt
 
 Jądra Spark, które są dostarczane z notesów Jupyter mają wstępnie kontekstach. Nie musisz jawnie ustawić Spark lub tworzenia kontekstów gałęzi, przed rozpoczęciem pracy z aplikacją. Predefiniowanych kontekstach są:
 
-* `sc`dla SparkContext
-* `sqlContext`dla HiveContext
+* `sc` dla SparkContext
+* `sqlContext` dla HiveContext
 
 ### <a name="spark-magics"></a>Platforma Spark poleceń magicznych
 Jądra Spark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać z `%%`. Dwa z tych poleceń są używane w następujących przykładach kodu.
 
-* `%%local`Określa lokalnie wykonać kod w kolejnych wierszach. Kod musi być prawidłowy kod języka Scala.
-* `%%sql -o <variable name>`wykonuje zapytanie Hive względem `sqlContext`. Jeśli `-o` parametr jest przekazywany, w wyniku zapytania jest trwały `%%local` kontekstu Scala jako ramki danych platformy Spark.
+* `%%local` Określa lokalnie wykonać kod w kolejnych wierszach. Kod musi być prawidłowy kod języka Scala.
+* `%%sql -o <variable name>` wykonuje zapytanie Hive względem `sqlContext`. Jeśli `-o` parametr jest przekazywany, w wyniku zapytania jest trwały `%%local` kontekstu Scala jako ramki danych platformy Spark.
 
 Dla więcej informacji na temat jądra notesów Jupyter i ich wstępnie zdefiniowanych "magics" która zostanie wywołana za pomocą `%%` (na przykład `%%local`), zobacz [jądra dostępne dla notesu Jupyter klastrze HDInsight Spark w systemie Linux klastrów HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -262,7 +262,7 @@ Po przywróceniu danych do platformy Spark następnym krokiem w procesie nauki d
 Domyślnie dane wyjściowe wszelkie fragmenty kodu, które można uruchomić z notesu Jupyter jest dostępna w kontekście sesji, która jest utrwalony na węzłów procesu roboczego. Jeśli chcesz zapisać podróży z węzłami procesu roboczego do każdego obliczeń, a jeśli wszystkie dane potrzebne do Twojej obliczeń jest dostępny lokalnie na węźle serwera Jupyter (który jest węzłem głównym), możesz użyć `%%local` magic do uruchomienia fragmentu kodu na Jupyter serwer.
 
 * **Magiczna SQL** (`%%sql`). Jądro Spark w usłudze HDInsight obsługuje łatwe wbudowanego HiveQL zapytań dotyczących element SQLContext. (`-o VARIABLE_NAME`) Argument będzie się powtarzał wyniki kwerendy SQL jako Pandas ramki danych na serwerze Jupyter. Oznacza to, że będzie on dostępny w trybie lokalnym.
-* `%%local`**magic**. `%%local` Magic uruchamia kod lokalnie na serwerze Jupyter, który jest węzłem głównym klastra usługi HDInsight. Zazwyczaj `%%local` magic w połączeniu z `%%sql` magic z `-o` parametru. `-o` Parametru czy zachować dane wyjściowe kwerendy SQL lokalnie, a następnie `%%local` magic spowoduje wywołanie następnego zestawu fragment kodu w celu uruchomienia lokalnie wynik zapytania SQL jest trwały lokalnie.
+* `%%local` **Magiczna**. `%%local` Magic uruchamia kod lokalnie na serwerze Jupyter, który jest węzłem głównym klastra usługi HDInsight. Zazwyczaj `%%local` magic w połączeniu z `%%sql` magic z `-o` parametru. `-o` Parametru czy zachować dane wyjściowe kwerendy SQL lokalnie, a następnie `%%local` magic spowoduje wywołanie następnego zestawu fragment kodu w celu uruchomienia lokalnie wynik zapytania SQL jest trwały lokalnie.
 
 ### <a name="query-the-data-by-using-sql"></a>Zapytanie danych przy użyciu języka SQL
 To zapytanie pobiera rund taksówki kwota taryfy, liczba osób i wielkość poradę.

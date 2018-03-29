@@ -27,6 +27,10 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: Wyzwalanie elementu Runbook usługi Automation
       href: ensure-tags-exists-on-new-virtual-machines.md
+- name: Przykłady
+  items:
+    - name: Szablony usługi Resource Manager
+      href: template-samples.md
 - name: Pojęcia
   items:
     - name: Event Grid — pojęcia
@@ -47,8 +51,6 @@
       href: publish-iot-hub-events-to-logic-apps.md
     - name: Nasłuchiwanie zdarzeń usługi Service Bus przy użyciu usług Functions i Logic Apps
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Szablony subskrypcji zdarzeń
-      href: event-subscription-template.md
     - name: Monitorowanie dostarczania zdarzeń
       href: monitor-event-delivery.md
 - name: Dokumentacja

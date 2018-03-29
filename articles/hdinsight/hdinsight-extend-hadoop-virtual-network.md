@@ -1,8 +1,8 @@
 ---
-title: "Rozszerzenie usługi HDInsight za pomocą sieci wirtualnej - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać sieci wirtualnej platformy Azure do łączenia usługi HDInsight do innych zasobów w chmurze lub zasobów w centrum danych."
+title: Rozszerzenie usługi HDInsight za pomocą sieci wirtualnej - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać sieci wirtualnej platformy Azure do łączenia usługi HDInsight do innych zasobów w chmurze lub zasobów w centrum danych.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: ea686ea5dd6166d6e4e4055cb4a2cdd70af81ab4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b02a4625e3973ca7679d1d2018bd37ff1d2ae2ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -173,11 +173,11 @@ Aby włączyć rozpoznawanie nazw między zasobami w przyłączone do sieci i si
 
     Na przykład każdej konfiguracji zobacz [przykład: niestandardowe DNS](#example-dns) sekcji.
 
-Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazwy dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) dokumentu.
+Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazwy dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 ## <a name="directly-connect-to-hadoop-services"></a>Bezpośrednio z usługi Hadoop
 
-Większość dokumentacji w usłudze HDInsight założono, że dostęp do klastra za pośrednictwem Internetu. Na przykład czy możesz połączyć się z klastrem w https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego brama nie jest dostępna w przypadku użycia grup NSG lub Udr ograniczyć dostęp z Internetu.
+Większość dokumentacji w usłudze HDInsight założono, że dostęp do klastra za pośrednictwem Internetu. Na przykład możesz połączyć się z klastrem pod adresem https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego brama nie jest dostępna w przypadku użycia grup NSG lub Udr ograniczyć dostęp z Internetu.
 
 Aby połączyć się Ambari i stron sieci web za pośrednictwem sieci wirtualnej, użyj następujące czynności:
 
@@ -242,7 +242,7 @@ Jeśli planujesz używanie **sieciowej grupy zabezpieczeń** lub **trasy zdefini
 
 Aby uzyskać więcej informacji na sieciowych grup zabezpieczeń lub trasy zdefiniowane przez użytkownika Zobacz następującą dokumentację:
 
-* [Grupy zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md)
+* [Sieciowa grupa zabezpieczeń](../virtual-network/virtual-networks-nsg.md)
 
 * [Trasy zdefiniowane przez użytkownika](../virtual-network/virtual-networks-udr-overview.md)
 

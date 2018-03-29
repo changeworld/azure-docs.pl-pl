@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6278583c288a9a28bda53748e2f9f6fd83ed6c7f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b4559afa9294111eaa1f20fdf295d1fb26dcc994
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Jak wdrożyć procesu roboczego elementu Runbook dla hybrydowych w systemie Linux
 
@@ -45,7 +45,7 @@ Przed kontynuowaniem należy pamiętać obszaru roboczego analizy dzienników, z
 
 2.  Uruchom następujące polecenie, zmiana wartości parametrów *-w*, *-k*, *-g*, i *-e*. Aby uzyskać *-g* parametru Zamień wartość nazwę grupy hybrydowego procesu roboczego elementu Runbook, w której powinien dołączyć nowy Linux hybrydowy proces roboczy. Jeśli nazwa nie istnieje już na Twoim koncie automatyzacji, nowej grupy hybrydowego procesu roboczego elementu Runbook jest nawiązywane o tej nazwie.
     
-    ```
+    ```python
     sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
     ```
 3. Po zakończeniu polecenia bloku hybrydowego procesu roboczego grupy w portalu Azure zostaną wyświetlone nowe grupy i liczby elementów członkowskich lub jeśli istniejącą grupę, do liczby elementów członkowskich jest zwiększany. Można zaznaczyć grupę z listy na **hybrydowego procesu roboczego grupy** bloku, a następnie wybierz **hybrydowych procesów roboczych** kafelka. Na **hybrydowych procesów roboczych** bloku, zobacz każdego członka grupy na liście.  
@@ -54,9 +54,9 @@ Przed kontynuowaniem należy pamiętać obszaru roboczego analizy dzienników, z
 ## <a name="turning-off-signature-validation"></a>Wyłączenie sprawdzania poprawności podpisu 
 Domyślnie Linux hybrydowymi elementami roboczymi Runbook wymaga weryfikacji podpisu. Jeśli pracownik wykonywane bez znaku elementu runbook, zostanie wyświetlony błąd zawierający "Walidacja podpisu nie powiodła się". Aby wyłączyć sprawdzanie poprawności podpisu, uruchom następujące polecenie, zastępując drugi parametr swój identyfikator obszaru roboczego analizy dzienników:
 
-    ```
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
-    ```
+ ```python
+ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
+ ```
 
 ## <a name="supported-runbook-types"></a>Typy obsługiwane elementu runbook
 

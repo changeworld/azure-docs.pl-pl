@@ -1,6 +1,6 @@
 ---
-title: "Azure DB rozwiązania Cosmos: Interfejsu API SQL Wprowadzenie — samouczek | Dokumentacja firmy Microsoft"
-description: "Samouczek, który powoduje utworzenie bazy danych w trybie online i aplikacji konsolowej C# przy użyciu interfejsu API SQL."
+title: 'Azure DB rozwiązania Cosmos: Interfejsu API SQL Wprowadzenie — samouczek | Dokumentacja firmy Microsoft'
+description: Samouczek, który powoduje utworzenie bazy danych w trybie online i aplikacji konsolowej C# przy użyciu interfejsu API SQL.
 keywords: samouczek nosql, baza danych online, aplikacja konsolowa c#
 services: cosmos-db
 documentationcenter: .net
@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.openlocfilehash: 28714106a6228b5bdaa1933d6e8ea89105eb4b30
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 870bdce0b909a882b99de92bbe5ad1e51db11a39
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure DB rozwiązania Cosmos: Interfejsu API SQL Wprowadzenie — samouczek
 > [!div class="op_single_selector"]
@@ -31,8 +31,6 @@ ms.lasthandoff: 12/18/2017
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Interfejsu API Azure rozwiązania Cosmos bazy danych SQL samouczku — Zapraszamy! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.
 
@@ -542,7 +540,7 @@ Aby przywrócić odwołania do zestawu SDK .NET usługi Azure rozwiązania Cosmo
 To wszystko — skompiluj projekt i gotowe!
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Potrzebujesz bardziej złożonego samouczka platformy ASP.NET MVC? Zobacz [samouczek programu ASP.NET MVC: opracowywanie aplikacji z bazy danych Azure rozwiązania Cosmos sieci Web](sql-api-dotnet-application.md).
 * Czy chcesz wykonać testowanie wydajnościowe i skalowania przy użyciu usługi Azure Cosmos DB? Zobacz [wydajności i skalowania testowania z bazy danych Azure rozwiązania Cosmos](performance-testing.md)
 * Dowiedz się, jak [monitorowanie żądań, użycia i magazynu bazy danych Azure rozwiązania Cosmos](monitor-accounts.md).

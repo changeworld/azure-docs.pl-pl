@@ -1,8 +1,8 @@
 ---
-title: "Inżynieria w nauce danych | Dokumentacja firmy Microsoft"
-description: "Zawiera opis na potrzeby funkcji inżynierii oraz przykłady swoją rolę w procesie rozszerzenie danych usługi machine learning."
+title: Inżynieria w nauce danych | Dokumentacja firmy Microsoft
+description: Zawiera opis na potrzeby funkcji inżynierii oraz przykłady swoją rolę w procesie rozszerzenie danych usługi machine learning.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: zhangya;bradsev
-ms.openlocfilehash: 72a412c08e57491a306f405f400665e2b0d25a3c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: 70a78659bc14ce5ff9358ed11ad0af68be31bd17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="feature-engineering-in-data-science"></a>Inżynieria w nauce danych
 W tym artykule opisano na potrzeby funkcji inżynieryjne i zawiera przykłady swoją rolę w procesie rozszerzenie danych usługi machine learning. Przykłady użyta w celu przedstawienia tego procesu są pobierane z usługi Azure Machine Learning Studio. 
@@ -70,7 +70,7 @@ Porównanie wyników wydajności cztery modele podsumowano w poniższej tabeli:
 
 Najlepsze wyniki są wyświetlane przez funkcje A + B + C. Współczynnik błędów zmniejsza, kiedy Uwaga zestaw dodatkowych funkcji znajdują się w danych szkoleniowych. Sprawdza założenie, że zestaw funkcji B, C zapewniają dodatkowe istotne informacje o zadaniu regresji. Ale dodawanie funkcji D nie wydaje się Podaj wszelkie dodatkowe zmniejszenie współczynnik błędów.
 
-## <a name="example2"></a>Przykład 2: Tworzenie funkcji wyszukiwania tekstu
+## <a name="example2"></a> Przykład 2: Tworzenie funkcji wyszukiwania tekstu
 Funkcja engineering jest powszechnie stosowane w zadania związane z wyszukiwania tekstu, takich jak analiza dokumentu klasyfikacji i wskaźniki nastrojów klientów. Na przykład można klasyfikować dokumenty na kilka kategorii, typowe założeń jest możliwość word fraz zawarte w jednej kategorii doc mniej prawdopodobne w innej kategorii dokumentu. Innymi słowy częstotliwość dystrybucji słowa/fraz jest w stanie scharakteryzowania kategoriami innego dokumentu. W aplikacjach wyszukiwania tekstu ponieważ pojedynczych zawartość tekstową zwykle służą jako dane wejściowe funkcji inżynierii procesu jest potrzebne do utworzenia funkcje dotyczące częstotliwości word/frazę.
 
 Do wykonania tego zadania, nazywany technika **Tworzenie skrótu funkcji** jest stosowany do wydajnie Włączanie funkcji dowolnego tekstu do indeksów. Zamiast kojarzenie każdej funkcji tekst (słowa/wyrażenia) do konkretnego indeksu, to funkcje — metoda stosowania funkcji skrótu do funkcji i używając ich wartości skrótu jako indeksy bezpośrednio.

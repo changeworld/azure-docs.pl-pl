@@ -1,11 +1,11 @@
 ---
-title: "Skonfiguruj odbiornik ILB dla zawsze włączonych grup dostępności na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Ten samouczek używa zasobów utworzone za pomocą klasycznym modelu wdrożenia, i tworzy zawsze na odbiornik grupy dostępności na platformie Azure, która używa wewnętrznego modułu równoważenia obciążenia."
+title: Skonfiguruj odbiornik ILB dla zawsze włączonych grup dostępności na platformie Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek używa zasobów utworzone za pomocą klasycznym modelu wdrożenia, i tworzy zawsze na odbiornik grupy dostępności na platformie Azure, która używa wewnętrznego modułu równoważenia obciążenia.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 418920899612cac7336af14baff75c58a1cd8bef
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Skonfiguruj odbiornik ILB dla zawsze włączonych grup dostępności w systemie Azure
 > [!div class="op_single_selector"]
@@ -104,7 +104,7 @@ Tworzenie punktu końcowego z równoważeniem obciążenia dla każdej maszyny W
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Po ustawieniu zmienne, skopiuj skrypt w edytorze tekstu do sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit  **>>** , naciśnij klawisz Enter ponownie, aby upewnić się, uruchomienie skryptu.
+13. Po ustawieniu zmienne, skopiuj skrypt w edytorze tekstu do sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter ponownie, aby upewnić się, uruchomienie skryptu.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Sprawdź, czy KB2854082 jest zainstalowana w razie potrzeby
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -133,7 +133,7 @@ Tworzenie odbiornika grupy dostępności w dwóch krokach. Najpierw należy utwo
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = “<X.X.X.X>” # the IP address of the ILB
+        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
         Import-Module FailoverClusters
 
@@ -144,13 +144,13 @@ Tworzenie odbiornika grupy dostępności w dwóch krokach. Najpierw należy utwo
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
         $IPResourceName = "<IPResourceName>" # the IP address resource name
-        $ILBIP = “<X.X.X.X>” # the IP address of the ILB
+        $ILBIP = "<X.X.X.X>" # the IP address of the ILB
 
         Import-Module FailoverClusters
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Po ustawieniu zmienne, Otwórz okno programu Windows PowerShell z podwyższonym poziomem uprawnień, wklej skrypt w edytorze tekstowym w sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit  **>>** , naciśnij klawisz Enter, ponownie, aby upewnić się, że skrypt zacznie działać.
+3. Po ustawieniu zmienne, Otwórz okno programu Windows PowerShell z podwyższonym poziomem uprawnień, wklej skrypt w edytorze tekstowym w sesji programu PowerShell, aby go uruchomić. Jeśli nadal wyświetlany jest monit **>>**, naciśnij klawisz Enter, ponownie, aby upewnić się, że skrypt zacznie działać.
 
 4. Powtórz te czynności dla każdej maszyny Wirtualnej.  
     Ten skrypt konfiguruje zasobu adresów IP przy użyciu adresu IP usługi w chmurze i ustawia innych parametrów, takich jak port sondy. Gdy zasób adresu IP w tryb online, mogą odpowiadać na sondowanie na port sondy z równoważeniem obciążenia punktu końcowego, który został utworzony wcześniej.

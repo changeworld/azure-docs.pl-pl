@@ -1,19 +1,19 @@
 ---
-title: "Moduł Azure IoT krawędzi C# | Dokumentacja firmy Microsoft"
-description: "Utwórz moduł krawędzi IoT z kodem C# i wdróż je do urządzenia"
+title: Moduł Azure IoT krawędzi C# | Dokumentacja firmy Microsoft
+description: Utwórz moduł krawędzi IoT z kodem C# i wdróż je do urządzenia
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 605f0cfe34e4fda14030bb38686095882846c7c0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 95ca66f34548f86e25c1e7af331fa88797847906
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Tworzenie i wdrażanie modułu krawędzi IoT C# w symulowane urządzenie — w wersji preview
 
@@ -53,25 +53,25 @@ W tym samouczku, można użyć dowolnego rejestru zgodnego Docker. Są dwa popul
 ## <a name="create-an-iot-edge-module-project"></a>Tworzenie projektu modułu krawędzi IoT
 Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstawie .NET core 2.0 przy użyciu programu Visual Studio Code i rozszerzenie Azure IoT krawędzi.
 1. W programie Visual Studio Code, wybierz **widoku** > **zintegrowane terminali** otworzyć terminal zintegrowane kodzie VS.
-3. W terminalu zintegrowanego, wprowadź następujące polecenie, aby zainstalować (lub zaktualizować) **AzureIoTEdgeModule** szablonu w dotnet:
+2. W terminalu zintegrowanego, wprowadź następujące polecenie, aby zainstalować (lub zaktualizować) **AzureIoTEdgeModule** szablonu w dotnet:
 
     ```cmd/sh
     dotnet new -i Microsoft.Azure.IoT.Edge.Module
     ```
 
-2. Tworzenie projektu dla nowego modułu. Poniższe polecenie tworzy folder projektu **FilterModule**, w bieżącym folderze roboczych:
+3. Tworzenie projektu dla nowego modułu. Poniższe polecenie tworzy folder projektu **FilterModule**, z Twoim repozytorium kontenera. Drugi parametr powinien być w formie `<your container registry name>.azurecr.io` Jeśli używasz rejestru kontenera platformy Azure. W bieżącym folderze pracy, wprowadź następujące polecenie:
 
     ```cmd/sh
-    dotnet new aziotedgemodule -n FilterModule
+    dotnet new aziotedgemodule -n FilterModule -r <your container registry address>/filtermodule
     ```
  
-3. Wybierz **pliku** > **Otwórz Folder**.
-4. Przejdź do **FilterModule** folder i kliknij przycisk **wybierz Folder** otworzyć projektu w kodzie VS.
-5. W kodzie VS explorer, kliknij przycisk **Program.cs** go otworzyć.
+4. Wybierz **pliku** > **Otwórz Folder**.
+5. Przejdź do **FilterModule** folder i kliknij przycisk **wybierz Folder** otworzyć projektu w kodzie VS.
+6. W kodzie VS explorer, kliknij przycisk **Program.cs** go otworzyć.
 
    ![Otwórz plik Program.cs][1]
 
-6. W górnej części **FilterModule** przestrzeni nazw, Dodaj trzy `using` instrukcje dla typów używanych w późniejszym czasie na:
+7. W górnej części **FilterModule** przestrzeni nazw, Dodaj trzy `using` instrukcje dla typów używanych w późniejszym czasie na:
 
     ```csharp
     using System.Collections.Generic;     // for KeyValuePair<>
@@ -79,13 +79,13 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
     using Newtonsoft.Json;                // for JsonConvert
     ```
 
-6. Dodaj `temperatureThreshold` zmienną **Program** klasy. Ta zmienna Określa wartość, której może przekraczać zmierzone temperatury dane do wysłania do Centrum IoT. 
+8. Dodaj `temperatureThreshold` zmienną **Program** klasy. Ta zmienna Określa wartość, której może przekraczać zmierzone temperatury dane do wysłania do Centrum IoT. 
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-7. Dodaj `MessageBody`, `Machine`, i `Ambient` klasy do **Program** klasy. Te klasy definiują oczekiwano elementu schema dla treści wiadomości przychodzących.
+9. Dodaj `MessageBody`, `Machine`, i `Ambient` klasy do **Program** klasy. Te klasy definiują oczekiwano elementu schema dla treści wiadomości przychodzących.
 
     ```csharp
     class MessageBody
@@ -106,7 +106,7 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
     }
     ```
 
-8. W **Init** metoda, kod tworzy i konfiguruje **DeviceClient** obiektu. Ten obiekt umożliwia modułu do nawiązania połączenia lokalnego środowiska uruchomieniowego Azure IoT krawędzi do wysyłania i odbierania wiadomości. Parametry połączenia używane w **Init** metody został dostarczony do modułu przez środowisko uruchomieniowe IoT krawędzi. Po utworzeniu **DeviceClient**, kod odczytuje TemperatureThreshold dwie modułu odpowiednie właściwości i rejestruje wywołanie zwrotne do odbierania wiadomości z Centrum IoT krawędzi za pośrednictwem **input1**punktu końcowego. Zastąp `SetInputMessageHandlerAsync` metody z nową i Dodaj `SetDesiredPropertyUpdateCallbackAsync` metodę dla żądanej właściwości aktualizacji. Aby to zrobić, Zamień ostatni wiersz **Init** metodę z następującym kodem:
+10. W **Init** metoda, kod tworzy i konfiguruje **DeviceClient** obiektu. Ten obiekt umożliwia modułu do nawiązania połączenia lokalnego środowiska uruchomieniowego Azure IoT krawędzi do wysyłania i odbierania wiadomości. Parametry połączenia używane w **Init** metody został dostarczony do modułu przez środowisko uruchomieniowe IoT krawędzi. Po utworzeniu **DeviceClient**, kod odczytuje TemperatureThreshold dwie modułu odpowiednie właściwości i rejestruje wywołanie zwrotne do odbierania wiadomości z Centrum IoT krawędzi za pośrednictwem **input1**punktu końcowego. Zastąp `SetInputMessageHandlerAsync` metody z nową i Dodaj `SetDesiredPropertyUpdateCallbackAsync` metodę dla żądanej właściwości aktualizacji. Aby to zrobić, Zamień ostatni wiersz **Init** metodę z następującym kodem:
 
     ```csharp
     // Register callback to be called when a message is received by the module
@@ -127,7 +127,7 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
     await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
     ```
 
-9. Dodaj `onDesiredPropertiesUpdate` metodę **Program** klasy. Ta metoda odbiera aktualizacje na odpowiednie właściwości z dwie modułu i aktualizuje **temperatureThreshold** ze zmienną. Wszystkie moduły mają własne dwie moduł, który umożliwia skonfigurowanie z kodem uruchomionym wewnątrz modułu bezpośrednio z chmury.
+11. Dodaj `onDesiredPropertiesUpdate` metodę **Program** klasy. Ta metoda odbiera aktualizacje na odpowiednie właściwości z dwie modułu i aktualizuje **temperatureThreshold** ze zmienną. Wszystkie moduły mają własne dwie moduł, który umożliwia skonfigurowanie z kodem uruchomionym wewnątrz modułu bezpośrednio z chmury.
 
     ```csharp
     static Task onDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -158,7 +158,7 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
     }
     ```
 
-10. Zastąp `PipeMessage` metody z `FilterMessages` metody. Ta metoda jest wywoływana, gdy moduł odbiera komunikat z Centrum IoT krawędzi. Odfiltrowuje wiadomości, które zgłosiły temperatury poniżej progu temperatura określonego przez dwie modułu. Dodano również **MessageType** właściwości komunikat z wartością ustawioną na **alertu**. 
+12. Zastąp `PipeMessage` metody z `FilterMessages` metody. Ta metoda jest wywoływana, gdy moduł odbiera komunikat z Centrum IoT krawędzi. Odfiltrowuje wiadomości, które zgłosiły temperatury poniżej progu temperatura określonego przez dwie modułu. Dodano również **MessageType** właściwości komunikat z wartością ustawioną na **alertu**. 
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -214,27 +214,20 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
     }
     ```
 
-11. Aby skompilować projekt, kliknij prawym przyciskiem myszy **FilterModule.csproj** plików w Eksploratorze i kliknij przycisk **krawędzi IoT Tworzenie modułu**. Ten proces kompiluje modułu i eksportuje dane binarne i jego zależności w folderze, który jest używany do tworzenia obrazu Docker.
-
-   ![Utworzenie modułu krawędzi IoT][2]
+13. Zapisz ten plik.
 
 ## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Tworzenie obrazu Docker i publikowanie go do rejestru
 
-1. W Eksploratorze kodzie VS rozwiń **Docker** folderu. Następnie rozwiń folder dla danej platformy kontenera albo **linux x64** lub **windows nano**.
-
-   ![Wybierz platformę kontenera Docker][3]
-
-2. Kliknij prawym przyciskiem myszy **plik Dockerfile** plik i kliknij przycisk **krawędzi IoT Tworzenie modułu Docker obrazu**. 
-3. W **wybierz Folder** okna, przejdź do albo wprowadź `./bin/Debug/netcoreapp2.0/publish`. Kliknij przycisk **wybierz Folder jako EXE_DIR**.
-4. W polu tekstowym wyskakujących w górnej części okna kodu programu VS wprowadź nazwę obrazu. Na przykład: `<your container registry address>/filtermodule:latest`. Adres rejestru kontenera jest taki sam jak serwer logowania, które zostały skopiowane z rejestru. Powinna być w formie `<your container registry name>.azurecr.io`.
-5. Zaloguj się przy użyciu nazwy użytkownika, hasło i serwer logowania, skopiowany z rejestru kontenera platformy Azure podczas jego tworzenia Docker. W kodzie VS terminal zintegrowanego, wprowadź następujące polecenie: 
+1. Zaloguj się do Docker, wprowadzając następujące polecenie w kodzie VS terminal zintegrowane: 
      
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-6. Wypchnij obrazu do rejestru kontenera. Wybierz **widoku** > **palety polecenia** i wyszukaj **krawędzi: Push krawędzi IoT modułu Docker obrazu** polecenia menu. Wprowadź nazwę obrazu w polu tekstowym wyskakujących w górnej części okna kodu programu VS. Użyj takiej samej nazwy obraz, którego użyto w kroku 4.
-7. Aby wyświetlić obraz w portalu Azure, przejdź do rejestru kontenera platformy Azure i wybierz **repozytoria**. Powinny pojawić się **filtermodule** na liście.
+2. W kodzie VS explorer, kliknij prawym przyciskiem myszy **module.json** plik i kliknij przycisk **kompilacji i Push IoT krawędzi obrazu Docker modułu**. W polu listy rozwijanej wyskakujących w górnej części okna kodu VS wybierz platformy kontenera albo **amd64** dla kontenera systemu Linux lub **windows amd64** kontenera systemu Windows. Kod VS potem kompiluje kod, containerize `FilterModule.dll` i wypchnąć go do określonego rejestru kontenera.
+
+
+3. Możesz uzyskać adres pełne kontenera obrazu znacznika w kodzie VS zintegrowane terminala. Aby uzyskać więcej informacji na temat definicji kompilacji i wypychania mogą odwoływać się do `module.json` pliku.
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>Dodawanie poświadczeń rejestru do środowiska wykonawczego krawędzi
 Dodaj poświadczenia do rejestru do środowiska wykonawczego Edge na komputerze, na którym są uruchomione Twoje urządzenie brzegowe. Te poświadczenia zapewniają dostęp środowiska uruchomieniowego do ściągnięcia kontenera. 
@@ -256,15 +249,15 @@ Dodaj poświadczenia do rejestru do środowiska wykonawczego Edge na komputerze,
 1. W [portalu Azure](https://portal.azure.com), przejdź do Centrum IoT.
 2. Przejdź do pozycji **IoT Edge (wersja zapoznawcza)** i wybierz urządzenie usługi IoT Edge.
 3. Wybierz **ustawić modułów**. 
-2. Sprawdź, czy **tempSensor** modułu jest wypełniane automatycznie. Jeśli nie, należy dodać ją za pomocą następujących czynności:
+4. Sprawdź, czy **tempSensor** modułu jest wypełniane automatycznie. Jeśli nie, należy dodać ją za pomocą następujących czynności:
     1. Wybierz **Dodaj moduł krawędzi IoT**.
     2. W **nazwa** wprowadź `tempSensor`.
     3. W **identyfikatora URI obrazu** wprowadź `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
     4. Pozostaw innych ustawień bez zmian i kliknij przycisk **zapisać**.
-9. Dodaj **filterModule** moduł, który został utworzony w poprzednich sekcjach. 
+5. Dodaj **filterModule** moduł, który został utworzony w poprzednich sekcjach. 
     1. Wybierz **Dodaj moduł krawędzi IoT**.
     2. W **nazwa** wprowadź `filterModule`.
-    3. W **identyfikatora URI obrazu** wprowadź swój adres obrazu, na przykład `<your container registry address>/filtermodule:latest`.
+    3. W **identyfikatora URI obrazu** wprowadź swój adres obrazu, na przykład `<your container registry address>/filtermodule:0.0.1-amd64`. Adres pełnego obrazu można znaleźć w poprzedniej sekcji.
     4. Sprawdź **włączyć** , dzięki czemu można edytować dwie modułu. 
     5. Zastąp dane JSON w polu tekstowym dla modułu dwie następujące JSON: 
 
@@ -277,8 +270,8 @@ Dodaj poświadczenia do rejestru do środowiska wykonawczego Edge na komputerze,
         ```
  
     6. Kliknij pozycję **Zapisz**.
-12. Kliknij przycisk **Dalej**.
-13. W **Określ tras** kroku, skopiuj kod JSON poniżej w polu tekstowym. Moduły opublikować wszystkie komunikaty do środowiska wykonawczego krawędzi. Deklaracyjne reguły w środowisku uruchomieniowym definiują, do których przepływu wiadomości. W tym samouczku należy na dwa sposoby. Pierwszy trasy transportu wiadomości z czujnika temperatury w module filtru za pośrednictwem punktu końcowego "input1", który jest punkt końcowy, który został skonfigurowany z **FilterMessages** programu obsługi. Drugi trasy transportu wiadomości z modułem filtru do Centrum IoT. W tej trasy `upstream` jest specjalne lokalizacji docelowej, która informuje krawędzi koncentratora do wysyłania komunikatów do Centrum IoT. 
+6. Kliknij przycisk **Dalej**.
+7. W **Określ tras** kroku, skopiuj kod JSON poniżej w polu tekstowym. Moduły opublikować wszystkie komunikaty do środowiska wykonawczego krawędzi. Deklaracyjne reguły w środowisku uruchomieniowym definiują, do których przepływu wiadomości. W tym samouczku należy na dwa sposoby. Pierwszy trasy transportu wiadomości z czujnika temperatury w module filtru za pośrednictwem punktu końcowego "input1", który jest punkt końcowy, który został skonfigurowany z **FilterMessages** programu obsługi. Drugi trasy transportu wiadomości z modułem filtru do Centrum IoT. W tej trasy `upstream` jest specjalne lokalizacji docelowej, która informuje krawędzi koncentratora do wysyłania komunikatów do Centrum IoT. 
 
     ```json
     {
@@ -289,21 +282,21 @@ Dodaj poświadczenia do rejestru do środowiska wykonawczego Edge na komputerze,
     }
     ```
 
-4. Kliknij przycisk **Dalej**.
-5. W **szablon przeglądu** kroku, kliknij przycisk **przesyłania**. 
-6. Wróć do strony szczegółów urządzenia IoT krawędzi, a następnie kliknij przycisk **Odśwież**. Powinien zostać wyświetlony nowy **filtermodule** uruchomiona wraz z **tempSensor** modułu i **środowiska uruchomieniowego krawędzi IoT**. 
+8. Kliknij przycisk **Dalej**.
+9. W **szablon przeglądu** kroku, kliknij przycisk **przesyłania**. 
+10. Wróć do strony szczegółów urządzenia IoT krawędzi, a następnie kliknij przycisk **Odśwież**. Powinien zostać wyświetlony nowy **filtermodule** uruchomiona wraz z **tempSensor** modułu i **środowiska uruchomieniowego krawędzi IoT**. 
 
 ## <a name="view-generated-data"></a>Widok wygenerowany danych
 
 Aby monitorować urządzenia do chmury wiadomości wysyłane z urządzenia IoT krawędzi do Centrum IoT:
 1. Rozszerzenia Azure IoT Toolkit należy skonfigurować parametry połączenia Centrum IoT: 
     1. Otwórz Eksploratora kodzie VS wybierając **widoku** > **Explorer**. 
-    3. W Eksploratorze kliknij **urządzenia IOT HUB** , a następnie kliknij przycisk **...** . Kliknij przycisk **ustawić parametry połączenia Centrum IoT** , a następnie wprowadź parametry połączenia dla Centrum IoT, które urządzenia IoT krawędzi łączy w wyskakującym oknie. 
+    2. W Eksploratorze kliknij **urządzenia IOT HUB** , a następnie kliknij przycisk **...** . Kliknij przycisk **ustawić parametry połączenia Centrum IoT** , a następnie wprowadź parametry połączenia dla Centrum IoT, które urządzenia IoT krawędzi łączy w wyskakującym oknie. 
 
         Aby znaleźć ciąg połączenia, kliknij Kafelek Centrum IoT w portalu Azure, a następnie kliknij przycisk **zasady dostępu współużytkowanego**. W **zasady dostępu współużytkowanego**, kliknij przycisk **iothubowner** zasad i skopiuj połączenia Centrum IoT ciąg w **iothubowner** okna.   
 
-1. Do monitorowania danych otrzymywanych przez Centrum IoT, wybierz **widoku** > **palety polecenia** i wyszukaj **IoT: rozpocząć monitorowanie komunikat D2C** polecenia menu. 
-2. Aby zatrzymać monitorowanie danych, należy użyć **IoT: zatrzymać monitorowanie komunikat D2C** polecenia menu. 
+2. Do monitorowania danych otrzymywanych przez Centrum IoT, wybierz **widoku** > **palety polecenia** i wyszukaj **IoT: rozpocząć monitorowanie komunikat D2C** polecenia menu. 
+3. Aby zatrzymać monitorowanie danych, należy użyć **IoT: zatrzymać monitorowanie komunikat D2C** polecenia menu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

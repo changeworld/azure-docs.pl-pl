@@ -1,12 +1,12 @@
 ---
-title: "Włącz szyfrowanie dla konta magazynu w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure ** włączenie szyfrowania dla usługi Azure magazynu konta **."
+title: Włącz szyfrowanie dla konta magazynu w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera implementowania zaleceń Centrum zabezpieczeń Azure **Włącz szyfrowanie dla konta magazynu Azure**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82bb201c0b518d0b45e06a1eb25d54f60cb3e028
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Włącz szyfrowanie dla konta magazynu Azure w Centrum zabezpieczeń Azure
 Centrum zabezpieczeń Azure może zalecić Włącz szyfrowanie usługi Magazyn Azure dla przechowywanych danych.
@@ -27,7 +27,7 @@ Szyfrowanie usługi Magazyn (SSE) polega na szyfrowaniu danych podczas ich zapis
 
 
 > [!Note]
-> Po włączeniu szyfrowania, tylko nowe dane są szyfrowane. Wszystkie istniejące obiekty BLOB na koncie magazynu pozostać niezaszyfrowana. Aby zaszyfrować istniejące obiekty BLOB, zobacz [często zadawane pytania dotyczące magazynu usługi szyfrowania](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+> Po włączeniu szyfrowania, tylko nowe dane są szyfrowane. Wszystkie istniejące obiekty BLOB na koncie magazynu pozostać niezaszyfrowana. Aby zaszyfrować istniejące obiekty BLOB, zobacz [często zadawane pytania dotyczące magazynu usługi szyfrowania](../storage/common/storage-service-encryption.md#faq-for-storage-service-encryption).
 >
 >
 
@@ -50,7 +50,7 @@ Szyfrowanie usługi Magazyn jest obsługiwana tylko na kontach magazynu Menedże
 Teraz ma włączone szyfrowanie magazynu dla **storageacct1**.
 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 Ten dokument pokazano sposób wykonania zalecenia Centrum zabezpieczeń "Włącz szyfrowanie dla konta magazynu Azure". Aby dowiedzieć się więcej na temat szyfrowanie usługi Magazyn Azure, zobacz następujące tematy:
 
 * [Szyfrowanie usługi Magazyn Azure dla przechowywanych danych](../storage/common/storage-service-encryption.md)

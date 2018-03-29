@@ -1,8 +1,8 @@
 ---
 title: Operacjonalizuj modele uczenia wbudowane Spark maszyny | Dokumentacja firmy Microsoft
-description: "Jak obciążenia i przechowywane w usłudze Azure Blob Storage (WASB) z języka Python modeli uczenia wynik."
+description: Jak obciążenia i przechowywane w usłudze Azure Blob Storage (WASB) z języka Python modeli uczenia wynik.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 9ff633b4543fbc537ffdb721756706e8de5e8e88
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3a586d40a9d195fe5ec3fa456d450cb3d86f2e9d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operacjonalizuj modele uczenia wbudowane Spark maszyny
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -85,7 +85,7 @@ Oto kod, aby ustawić ścieżki katalogu:
 
 **DANE WYJŚCIOWE:**
 
-DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)
+datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 ### <a name="import-libraries"></a>Importuj biblioteki
 Ustaw kontekst spark i zaimportuj wymagane biblioteki z następującym kodem
@@ -115,7 +115,7 @@ Jądra PySpark, które są dostarczane z notesów Jupyter ma wstępnie zdefiniow
 Jądro PySpark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać z %%. Istnieją dwa polecenia, które są używane w tych przykładach kodu.
 
 * **%% lokalnego** określono, że kod w kolejnych wierszy jest wykonywane lokalnie. Kod musi być prawidłowy kod języka Python.
-* **%% sql -o<variable name>** 
+* **%% sql -o <variable name>** 
 * Wykonuje zapytanie Hive względem element sqlContext. Jeśli parametr -o zostanie przekazany, wynik kwerendy jest utrwalona w %% lokalny kontekst Python jako Pandas dataframe.
 
 Dla więcej informacji na temat jądra notesów Jupyter i wstępnie zdefiniowane "magics" który zapewniają, zobacz [jądra dostępne dla notesu Jupyter klastrze HDInsight Spark w systemie Linux klastrów HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
@@ -587,7 +587,7 @@ Można również dodać ten kod języka Python, aby [usługi Azure Functions](ht
 * Aby wyświetlić **projektanta aplikacji logiki**, wprowadź nazwę aplikacji logiki i Plan usługi App Service.
 * Wybierz akcję, HTTP i wprowadź parametry pokazano na poniższej ilustracji:
 
-![Projektant aplikacji logiki](./media/spark-model-consumption/spark-logica-app-client.png)
+![Projektant aplikacji usługi Logic Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Co dalej?
 **Krzyżowe sprawdzanie poprawności i kominów hyperparameter**: zobacz [zaawansowane Eksploracja danych i modelowania z Spark](spark-advanced-data-exploration-modeling.md) na jak modeli można uczony przy użyciu kominów krzyżowego sprawdzania poprawności i parametru funkcji hyper.
