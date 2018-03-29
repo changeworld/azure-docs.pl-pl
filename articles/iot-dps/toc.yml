@@ -13,9 +13,9 @@
       href: quick-setup-auto-provision.md
     - name: Konfigurowanie automatycznego aprowizowania — szablon
       href: quick-setup-auto-provision-rm.md
-    - name: Tworzenie symulowanego urządzenia
+    - name: Automatyczne aprowizowanie symulowanego urządzenia
       items:
-        - name: Moduł TPM
+        - name: Poświadczanie za pomocą modułu TPM
           items:
             - name: C
               href: quick-create-simulated-device.md
@@ -27,7 +27,7 @@
               href: quick-create-simulated-device-tpm-node.md
             - name: Python
               href: quick-create-simulated-device-tpm-python.md
-        - name: X.509
+        - name: Poświadczanie za pomocą certyfikatu X.509
           items:
             - name: C
               href: quick-create-simulated-device-x509.md
@@ -39,9 +39,9 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-    - name: Rejestrowanie urządzenia
+    - name: Rejestrowanie urządzenia przy użyciu interfejsów API usług aprowizowania
       items:
-        - name: Moduł TPM
+        - name: Poświadczanie za pomocą modułu TPM
           items:
             - name: Java
               href: quick-enroll-device-tpm-java.md
@@ -51,7 +51,7 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-        - name: X.509
+        - name: Poświadczanie za pomocą certyfikatu X.509
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -79,12 +79,14 @@
       href: tutorial-group-enrollments.md
 - name: Pojęcia
   items:
-    - name: Pojęcia dotyczące urządzeń
+    - name: Automatyczne aprowizowanie
+      href: concepts-auto-provisioning.md
+    - name: Urządzenia
       href: concepts-device.md
-    - name: Pojęcia dotyczące usługi
-      href: concepts-service.md
-    - name: Pojęcia dotyczące zabezpieczeń
+    - name: Bezpieczeństwo
       href: concepts-security.md
+    - name: Usługa
+      href: concepts-service.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Zarządzanie rejestracjami urządzeń

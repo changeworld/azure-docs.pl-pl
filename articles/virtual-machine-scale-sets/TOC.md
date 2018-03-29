@@ -1,15 +1,38 @@
-# [Dokumentacja usługi Virtual Machine Scale Sets](index.md)
+# [Dokumentacja usługi Virtual Machine Scale Sets](index.yml)
 
 # Omówienie
-## [Co to są zestawy skalowania maszyn wirtualnych?](virtual-machine-scale-sets-overview.md)
+## [Co to są zestawy skalowania maszyn wirtualnych?](overview.md)
 
-# Rozpoczęcie pracy
-## [Tworzenie w witrynie Azure Portal](virtual-machine-scale-sets-create-portal.md)
-## [Tworzenie przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](virtual-machine-scale-sets-create-cli.md)
-## [Tworzenie przy użyciu programu Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)
+# Przewodniki Szybki start
+## [Tworzenie w witrynie Azure Portal](quick-create-portal.md)
+## [Tworzenie przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](quick-create-cli.md)
+## [Tworzenie przy użyciu programu Azure PowerShell](quick-create-powershell.md)
 ## Tworzenie przy użyciu szablonu
-### [Zestaw skalowania dla systemu Linux](virtual-machine-scale-sets-create-template-linux.md)
-### [Zestaw skalowania dla systemu Windows](virtual-machine-scale-sets-create-template-windows.md)
+### [Zestaw skalowania dla systemu Linux](quick-create-template-linux.md)
+### [Zestaw skalowania dla systemu Windows](quick-create-template-windows.md)
+
+# Samouczki
+## 1 — Tworzenie zestawów skalowania i zarządzanie nimi
+### [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-create-and-manage-cli.md)
+### [Azure PowerShell](tutorial-create-and-manage-powershell.md)
+## 2 — Korzystanie z dysków danych
+### [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-use-disks-cli.md)
+### [Azure PowerShell](tutorial-use-disks-powershell.md)
+## 3 — Korzystanie z niestandardowego obrazu maszyny wirtualnej
+### [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-use-custom-image-cli.md)
+### [Azure PowerShell](tutorial-use-custom-image-powershell.md)
+## 4 — Wdrażanie aplikacji w zestawie skalowania
+### [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-install-apps-cli.md)
+### [Azure PowerShell](tutorial-install-apps-powershell.md)
+### [Szablon](tutorial-install-apps-template.md)
+## 5 — Automatyczne skalowanie zestawu skalowania
+### [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-autoscale-cli.md)
+### [Azure PowerShell](tutorial-autoscale-powershell.md)
+### [Szablon](tutorial-autoscale-template.md)
+
+# Przykłady
+## [Interfejs wiersza polecenia platformy Azure 2.0](cli-samples.md)
+## [Program PowerShell](powershell-samples.md)
 
 # Instrukcje
 ## Planowanie i projektowanie
@@ -24,12 +47,9 @@
 
 ## Wdrażanie
 ### [Tworzenie przy użyciu programu Visual Studio](virtual-machine-scale-sets-vs-create.md)
-### [Zestaw skalowania z dyskami zarządzanymi](virtual-machine-scale-sets-managed-disks.md)
 ### [Use Availability Zones (Korzystanie ze stref dostępności)](virtual-machine-scale-sets-use-availability-zones.md)
 ### [Automatyczne skalowanie zestawu skalowania](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Korzystanie z witryny Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
-#### [Korzystanie z interfejsu wiersza polecenia platformy Azure 2.0](virtual-machine-scale-sets-autoscale-cli.md)
-#### [Korzystanie z programu Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
 #### [Zaawansowane automatyczne skalowanie](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Aplikacje w zestawach skalowania](virtual-machine-scale-sets-deploy-app.md)
 ### [Korzystanie z dysków danych z zestawami skalowania](virtual-machine-scale-sets-attached-disks.md)

@@ -21,6 +21,10 @@
   items:
     - name: Korzystanie z programu R Server
       items:
+        - name: Zarządzanie klastrem R Server
+          href: r-server-hdinsight-manage.md
+        - name: Operacjonalizowanie klastra R Server
+          href: r-server-operationalize.md
         - name: Opcje magazynu
           href: r-server-storage.md
         - name: Kontekst obliczeniowy

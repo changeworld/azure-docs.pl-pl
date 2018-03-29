@@ -26,14 +26,20 @@
       items:
         - name: Opcje konta magazynu
           href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Planowanie wdrażania usługi Pliki Azure
-          href: storage-files-planning.md
-        - name: Jak wdrożyć usługę Pliki Azure
-          href: storage-files-deployment-guide.md
-        - name: Planowanie wdrażania usługi Azure File Sync
-          href: storage-sync-files-planning.md
-        - name: Jak wdrożyć usługę Azure File Sync
-          href: storage-sync-files-deployment-guide.md
+        - name: Wdrażanie usługi Pliki Azure
+          items:
+            - name: Planowanie wdrażania usługi Pliki Azure
+              href: storage-files-planning.md
+            - name: Jak wdrożyć usługę Pliki Azure
+              href: storage-files-deployment-guide.md
+        - name: Wdrażanie usługi Azure File Sync
+          items:
+            - name: Planowanie wdrażania usługi Azure File Sync
+              href: storage-sync-files-planning.md
+            - name: Jak wdrożyć usługę Azure File Sync
+              href: storage-sync-files-deployment-guide.md
+            - name: Ustawienia serwera proxy i zapory usługi Azure File Sync
+              href: storage-sync-files-firewall-and-proxy.md
         - name: Informacje o migawkach udziału plików
           href: storage-snapshots-files.md
         - name: Jak pracować z migawkami udziału plików

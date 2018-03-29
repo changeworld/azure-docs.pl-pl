@@ -27,6 +27,8 @@
   items:
     - name: Korzystanie z portalu usługi Azure Stack
       href: azure-stack-use-portal.md
+    - name: Użyj interfejsu API Azure stosu
+      href: azure-stack-rest-api-use.md
     - name: Zabezpieczenia i zgodność
       items:
         - name: Zarządzanie kontrolą dostępu opartą na rolach
