@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/09/2017
+ms.date: 03/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: d74c8f568a21168ebe7a34b6bb6296ae5d85fcbe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6c440acc68583860bc01fdb249833c4c4c6148d8
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-status"></a>Stan platformy Azure
 [Stan Azure](https://azure.microsoft.com/en-us/status/) oferuje globalne widok kondycji usług platformy Azure. O stanie Azure możesz uzyskać najbardziej aktualnych informacji o dostępności usługi. Wszyscy ma dostęp do stanu platformy Azure i widok wszystkich usług zgłosić ich kondycję usługi. 

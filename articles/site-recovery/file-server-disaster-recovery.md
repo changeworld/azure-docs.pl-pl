@@ -1,6 +1,6 @@
 ---
-title: "Ochrona serwera plików za pomocą usługi Azure Site Recovery"
-description: "W tym artykule opisano, jak chronić serwer plików przy użyciu usługi Azure Site Recovery"
+title: Ochrona serwera plików za pomocą usługi Azure Site Recovery
+description: W tym artykule opisano, jak chronić serwer plików przy użyciu usługi Azure Site Recovery
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/06/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: f53a8641a50a6c968a6ba7b841e0e8f938b5d9f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 830f9c76d9d1bf11692fa9f2f5c49cbecdb69f25
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrona serwera plików za pomocą usługi Azure Site Recovery 
 
@@ -48,7 +48,7 @@ W poprzedni diagram wieloma serwerami plików o nazwie członków aktywnie uczes
 
     * Tej metody można użyć, jeśli maszyny wirtualne mają konfiguracje, które nie są obsługiwane przez usługę Site Recovery. Przykładem jest dysku udostępnionego klastra, który jest czasami powszechnie używany w środowisku serwerów plików. DFSR również działa dobrze w środowiskach niskiej przepustowości przy użyciu zmian średnia. Należy wziąć pod uwagę dodatkowych kosztów o maszynie Wirtualnej platformy Azure w i uruchomione przez cały czas. 
 
-* **Użyj synchronizacji plików Azure w celu zreplikowania plików**: Jeśli planujesz użyć chmury lub już maszyny Wirtualnej platformy Azure, możesz użyć synchronizacji plików. Plik synchronizacji oferuje synchronizowanie udziałów plików pełni zarządzane w chmurze, które są dostępne za pośrednictwem standardu branżowego [bloku komunikatów serwera](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) protokołu (SMB). Udziały plików platformy Azure następnie można zainstalować równolegle w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS. 
+* **Użyj synchronizacji plików Azure w celu zreplikowania plików**: Jeśli planujesz użyć chmury lub już maszyny Wirtualnej platformy Azure, możesz użyć synchronizacji plików Azure. Synchronizacja programu Azure plików oferuje synchronizowanie udziałów plików pełni zarządzane w chmurze, które są dostępne za pośrednictwem standardu branżowego [bloku komunikatów serwera](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) protokołu (SMB). Udziały plików platformy Azure mogą zainstalować jednocześnie w chmurze lub lokalnie wdrożeń systemu Windows, Linux i macOS. 
 
 Poniższy diagram ułatwia określenie, jakie strategii dla danego środowiska serwera plików.
 

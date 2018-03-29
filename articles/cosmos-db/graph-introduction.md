@@ -1,9 +1,9 @@
 ---
-title: "Wprowadzenie do platformy Azure rozwiązania Cosmos DB Graph API | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można użyć bazy danych rozwiązania Cosmos Azure do przechowywania, kwerendy i przechodzenia ogromną wykresów z niskim opóźnieniem przy użyciu języka zapytań wykres Gremlin Apache TinkerPop."
+title: Wprowadzenie do platformy Azure rozwiązania Cosmos DB Graph API | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można użyć bazy danych rozwiązania Cosmos Azure do przechowywania, kwerendy i przechodzenia ogromną wykresów z niskim opóźnieniem przy użyciu języka zapytań wykres Gremlin Apache TinkerPop.
 services: cosmos-db
-author: luisbosquez
-documentationcenter: 
+author: LuisBosquez
+documentationcenter: ''
 ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: ba58377614326a10405be4a64d4b39f116b75bfe
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 50030434f3b2e59ba97efca2946be1a5115bc145
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Wprowadzenie do platformy Azure rozwiązania Cosmos DB: interfejs API programu Graph
 
@@ -111,8 +111,8 @@ W poniższej tabeli przedstawiono popularne sterowniki Gremlin korzystających z
 | --- | --- | --- |
 | [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Utwórz wykres przy użyciu platformy .NET](create-graph-dotnet.md) |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Utwórz wykres przy użyciu języka Java](create-graph-java.md) |
-| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin języka JavaScript w witrynie Github](https://github.com/jbmusso/gremlin-javascript) | [Utwórz wykres przy użyciu środowiska Node.js](create-graph-nodejs.md) |
-| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin języka Python w witrynie Github](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Utwórz wykres używany język Python](create-graph-python.md) |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin języka JavaScript w witrynie GitHub](https://github.com/jbmusso/gremlin-javascript) | [Utwórz wykres przy użyciu środowiska Node.js](create-graph-nodejs.md) |
+| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin języka Python w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Utwórz wykres używany język Python](create-graph-python.md) |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP w witrynie GitHub](https://github.com/PommeVerte/gremlin-php) | [Tworzenie za pomocą języka PHP](create-graph-php.md) |
 | [Gremlin konsoli](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentów](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Utwórz wykres przy użyciu konsoli Gremlin](create-graph-gremlin-console.md) |
 
@@ -123,7 +123,7 @@ Poniżej przedstawiono kilka scenariuszy, w której wykres obsługę bazy danych
 
  Łącząc dane dotyczące klientów i ich interakcji z innymi osobami, można utworzyć spersonalizowanego doświadczenia, przewidzieć zachowania klienta lub uzyskuj osobom podobne zainteresowań osoby. Azure DB rozwiązania Cosmos może służyć do zarządzania sieci społecznościowych i śledzenia preferencji klienta i dane.
 
-* Aparaty zalecenia
+* Aparaty rekomendacji
 
  Ten scenariusz jest często stosowany w sprzedaży detalicznej. Łącząc informacji o produktach, użytkownikach i interakcji użytkownika, takich jak zakupu, przeglądanie lub klasyfikacji elementu, można tworzyć niestandardowe zalecenia. Małe opóźnienia, elastyczne skalowanie i native wykres obsługę bazy danych Azure rozwiązania Cosmos jest idealny dla modelowania tych interakcji.
 

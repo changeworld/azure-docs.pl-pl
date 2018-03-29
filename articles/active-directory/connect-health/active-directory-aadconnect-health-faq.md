@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczące usługi Azure Active Directory (Azure AD) Connect Health. Te często zadawane pytania dotyczące pokrycia pytania dotyczące sposobu korzystania z usługi, w tym modelu rozliczeń możliwości, ograniczeń i pomocy technicznej.
@@ -178,6 +178,10 @@ CheckForMS17-010
 **Pytanie: Dlaczego polecenia cmdlet programu PowerShell <i>Get MsolDirSyncProvisioningError</i> Pokaż mniej błędy synchronizacji w wyniku?**
 
 <i>Get-MsolDirSyncProvisioningError</i> zwróci tylko te narzędzia DirSync, inicjowanie obsługi błędów. Oprócz, portal Connect Health pokazuje też inne synchronizacji typy błędów, takich jak błędy eksportu. Jest to zgodne z wynikiem delta Azure AD Connect. Przeczytaj więcej na temat [błędy synchronizacji Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+
+**Pytanie: Dlaczego są moje usług AD FS Inspekcja nie wygenerowany?**
+
+Użyj polecenia cmdlet programu PowerShell <i>Get-AdfsProperties - AuditLevel</i> zapewnienie dzienników inspekcji nie znajduje się w stanu wyłączonego. Przeczytaj więcej na temat [dzienniki inspekcji usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)
 
 
 ## <a name="related-links"></a>Powiązane linki

@@ -1,26 +1,26 @@
 ---
-title: "Azure AD SSPR z zapisywaniem zwrotnym haseł | Dokumentacja firmy Microsoft"
-description: "Użyj usługi Azure AD i Azure AD Connect do zapisywania zwrotnego haseł do katalogu lokalnego"
+title: Azure AD SSPR z zapisywaniem zwrotnym haseł | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure AD i Azure AD Connect do zapisywania zwrotnego haseł do katalogu lokalnego
 services: active-directory
-keywords: "Zarządzanie hasłami w usłudze Active directory, zarządzanie hasłami, usługi Azure AD samodzielnego resetowania hasła usługi"
-documentationcenter: 
+keywords: Zarządzanie hasłami w usłudze Active directory, zarządzanie hasłami, usługi Azure AD samodzielnego resetowania hasła usługi
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: bcb7074a6d590a08ad683c8746156245bc60c5e8
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7a81f51e0873da38f25deb687e4d03ccf67e11a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="password-writeback-overview"></a>Omówienie funkcji zapisywania zwrotnego haseł
 
@@ -30,7 +30,7 @@ Zapisywanie zwrotne haseł oferuje następujące funkcje:
 
 * **Udostępnia opinii opóźnienie zero**: zapisywanie zwrotne haseł jest operacja synchroniczna. Użytkownicy są niezwłocznie powiadomiona, jeśli hasło nie spełnia warunków zasady lub nie można zresetować lub zmianie dowolnej przyczyny.
 * **Resetowania haseł obsługuje dla użytkowników korzystających z usługi Active Directory Federation Services (AD FS) ani innych technologii federacyjnego**: Z funkcji zapisywania zwrotnego haseł, jak długo są synchronizowane konta użytkowników federacyjnych dzierżawy usługi Azure AD są w stanie Zarządzanie lokalnymi haseł usługi Active Directory z chmury.
-* **Resetowania haseł obsługuje dla użytkowników korzystających z** [synchronizacji skrótów haseł](./connect/active-directory-aadconnectsync-implement-password-synchronization.md): gdy usługi resetowania hasła wykryje, że konto użytkownika synchronizowanego jest włączona obsługa synchronizacji skrótów haseł, aż przywrócone zostaną zarówno tego konta lokalnego i hasło w chmurze jednocześnie.
+* **Resetowania haseł obsługuje dla użytkowników korzystających z** [synchronizacji skrótów haseł](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md): gdy usługi resetowania hasła wykryje, że konto użytkownika synchronizowanego jest włączona obsługa synchronizacji skrótów haseł, aż przywrócone zostaną zarówno tego konta lokalnego i hasło w chmurze jednocześnie.
 * **Resetowania haseł obsługuje dla użytkowników korzystających z uwierzytelniania przekazywanego**: Z funkcji zapisywania zwrotnego haseł, tak długo, jak konta uwierzytelniania przekazywanego są synchronizowane w dzierżawie usługi Azure AD są można zarządzać ich aktywnym lokalnej Hasła katalogu w chmurze.
 * **Zmiany hasła obsługuje z panelu dostępu i usługi Office 365**: gdy Sfederowane lub synchronizacji haseł użytkowników się zmieniać swoje hasła wygasły lub nie wygasły, możemy zapisywać te hasła zwrotnie do lokalnego środowiska usługi Active Directory.
 * **Obsługuje funkcję zapisywania zwrotnego haseł, gdy administrator resetuje je w portalu Azure**: zawsze, gdy administrator resetuje hasło użytkownika w [portalu Azure](https://portal.azure.com), jeśli tego użytkownika jest Sfederowane lub synchronizacji haseł, zaplanujemy hasło wybiera administrator w lokalnej usługi Active Directory oraz. Ta funkcja nie jest obecnie obsługiwane w portalu administracyjnym pakietu Office.

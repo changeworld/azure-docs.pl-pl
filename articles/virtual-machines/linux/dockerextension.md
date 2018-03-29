@@ -1,11 +1,11 @@
 ---
-title: "Użyj rozszerzenia maszyny Wirtualnej Azure Docker | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie rozszerzenia maszyny Wirtualnej platformy Docker umożliwia szybkie i bezpieczne wdrażanie środowisku Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i 2.0 interfejsu wiersza polecenia platformy Azure"
+title: Użyj rozszerzenia maszyny Wirtualnej Azure Docker | Dokumentacja firmy Microsoft
+description: Informacje o sposobie rozszerzenia maszyny Wirtualnej platformy Docker umożliwia szybkie i bezpieczne wdrażanie środowisku Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: fe4013eefc0a7a896d6e8eb737ee8e2bc26ecf61
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1e5a4fcfd758c12213d6de7d0f5cfcc78531ee97
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Tworzenie środowiska Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker
 Docker jest popularnych kontenera zarządzania i tworzenia obrazu platformy, która pozwala na szybkie pracować z kontenerami w systemie Linux. Na platformie Azure istnieją różne sposoby Docker można wdrożyć zgodnie z potrzebami. Ten artykuł dotyczy przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker i szablony usługi Azure Resource Manager 2.0 interfejsu wiersza polecenia platformy Azure. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](dockerextension-nodejs.md).
+
+> [!WARNING]
+> Rozszerzenie maszyny Wirtualnej platformy Docker Azure dla systemu Linux jest przestarzałe i zostaną wycofane 2018 listopad.
+> Rozszerzenie jedynie instaluje Docker, dlatego lepszym sposobem zainstalowania wersji Docker wybór są rozwiązań alternatywnych, takich jak chmury init lub niestandardowe rozszerzenie skryptu. Aby uzyskać więcej informacji na temat korzystania z chmury init, zobacz [dostosować Maszynę wirtualną systemu Linux z chmury init](tutorial-automate-vm-deployment.md).
 
 ## <a name="azure-docker-vm-extension-overview"></a>Omówienie rozszerzenia Docker maszyny Wirtualnej platformy Azure
 Rozszerzenie maszyny Wirtualnej Azure Docker instaluje i konfiguruje demon Docker, klient Docker i rozwiązania Docker Compose na maszynie wirtualnej systemu Linux (VM). Przy użyciu rozszerzenia maszyny Wirtualnej platformy Docker Azure, masz więcej funkcje kontroli i niż po prostu przy użyciu rozwiązania Docker maszyny lub tworzenie hostów Docker samodzielnie. Te dodatkowe funkcje, takie jak [rozwiązania Docker Compose](https://docs.docker.com/compose/overview/), marka rozszerzenia maszyny Wirtualnej Azure Docker nadaje się do bardziej niezawodne środowiska dewelopera lub produkcji.

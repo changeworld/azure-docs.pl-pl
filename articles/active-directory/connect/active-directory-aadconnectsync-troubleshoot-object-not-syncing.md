@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z obiektu, której nie można zsynchronizować z usługą Azure AD | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów z powodu obiektu nie można zsynchronizować z usługą Azure AD."
+title: Rozwiązywanie problemów z obiektu, której nie można zsynchronizować z usługą Azure AD | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z powodu obiektu nie można zsynchronizować z usługą Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 05b60b091fe87620c88ad9eb761f1028c24d5730
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Rozwiązywanie problemów z obiektu, której nie można zsynchronizować z usługą Azure AD
 
@@ -110,7 +110,7 @@ Możesz sprawdzić obiekt i reguły, które zostały zastosowane do przepływu o
 ![Menedżera usługi synchronizacji](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Log
-Strona dziennika jest używana aby zobaczyć stan synchronizacji haseł i historii. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z synchronizacją hasła](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
+Strona dziennika jest używana aby zobaczyć stan synchronizacji haseł i historii. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z synchronizacją skrótów haseł](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>Właściwości obiektu Metaverse
 Zazwyczaj lepiej się rozpocząć wyszukiwanie źródła usługi Active Directory [przestrzeni łącznika](#connector-space). Ale można również uruchomić wyszukiwanie od metaverse.

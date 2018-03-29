@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0092564dce9424b445240ebd2c3247e763a237e9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3aca66d6922273e78b5100948f1b868c6c9b56af
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,6 +40,9 @@ W szczególności ten łącznik HTTP obsługuje:
 - Kopiowanie odpowiedzi HTTP jako — jest lub za pomocą analizy [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
 
 Różnica między tego łącznika i [łącznika sieci Web w tabeli](connector-web-table.md) jest, że jego służy do wyodrębniania zawartości tabeli ze strony sieci web w formacie HTML.
+
+>[!TIP]
+>Aby przetestować żądania HTTP dla pobierania przed skonfigurowaniem łącznika HTTP w ADF danych, Dowiedz się od specyfikacji interfejsu API, nagłówek i wymagania dotyczące treści i użyj narzędzi, takich jak Postman lub przeglądarki sieci web do sprawdzania poprawności.
 
 ## <a name="getting-started"></a>Wprowadzenie
 

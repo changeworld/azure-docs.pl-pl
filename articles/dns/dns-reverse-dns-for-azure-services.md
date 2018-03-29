@@ -1,6 +1,6 @@
 ---
-title: "Reverse DNS dla usługi Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować wstecznego wyszukiwania DNS dla usługi hostowanej na platformie Azure"
+title: Reverse DNS dla usługi Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować wstecznego wyszukiwania DNS dla usługi hostowanej na platformie Azure
 services: dns
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: kumud
-ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: bba2d75ed760a6e4eef2caacb0bb5924680b1f4b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Skonfiguruj wstecznego DNS dla usługi hostowanej na platformie Azure
 
@@ -40,7 +40,7 @@ Innych firm nie będą już mogli tworzenia wstecznego rekordów DNS, aby ich ma
 To tylko weryfikacji wstecznego rekord DNS jest ustawiona lub modyfikacji. Okresowe ponowne sprawdzanie poprawności nie jest wykonywane.
 
 Na przykład: Załóżmy, że zasób publicznego adresu IP ma contosoapp1.northus.cloudapp.azure.com nazwę DNS i adres IP 23.96.52.53. ReverseFqdn dla publicznego adresu IP może być określona jako:
-* Nazwy DNS dla publicznego adresu IP, contosoapp1.northus.cloudapp.azure.com
+* The DNS name for the PublicIpAddress, contosoapp1.northus.cloudapp.azure.com
 * Nazwy DNS dla różnych publicznego adresu IP w tej samej subskrypcji, takie jak contosoapp2.westus.cloudapp.azure.com
 * Niestandardowych nazw DNS, takich jak app1.contoso.com, tak długo, jak ta nazwa jest *pierwszy* skonfigurowany jako rekord CNAME contosoapp1.northus.cloudapp.azure.com lub innego publicznego adresu IP w tej samej subskrypcji.
 * Niestandardowych nazw DNS, takich jak app1.contoso.com, tak długo, jak ta nazwa jest *pierwszy* skonfigurowany jako rekord A z adresem IP 23.96.52.53 lub adres IP innego publicznego adresu IP w tej samej subskrypcji.
@@ -245,9 +245,9 @@ Nie. Azure obecnie obsługuje reverse DNS tylko dla zasobów IPv4 publicznego ad
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Można wysyłać wiadomości e-mail do domen zewnętrznych z mojej usług rozwiązań usługi obliczenia Azure?
 
-Nie. [Usługi obliczeniowe systemu Azure nie obsługują wysyłania wiadomości e-mail do domen zewnętrznych](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)
+Techniczne możliwość wysyłania wiadomości e-mail bezpośrednio z wdrożenia usługi Azure zależy od typu subskrypcji. Niezależnie od tego typu subskrypcji firma Microsoft zaleca używanie usług przekazywania zaufanych poczty wysyłanie poczty wychodzącej. Aby uzyskać szczegółowe informacje, zobacz [zwiększonych zabezpieczeń platformy Azure do wysyłania wiadomości E-mail — listopad 2017 aktualizacji](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji dotyczących wstecznego DNS, zobacz [istnienia wstecznego wyszukiwania DNS dla Wikipedia](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>

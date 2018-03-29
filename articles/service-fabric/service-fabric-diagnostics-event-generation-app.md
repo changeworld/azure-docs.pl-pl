@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 258aac722aa1c94ecf2cbf0524a3e4b53b8a788c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-and-service-level-logging"></a>Rejestrowanie poziomu usług i aplikacji
 
 Kod Instrumentacji stanowi podstawę do większości innych aspektów monitorowania usług. Instrumentacja jest jedynym sposobem wiesz, czy jest coś niewłaściwego i diagnozowania, co wymaga naprawy. Chociaż jest technicznie można połączyć z usługą produkcji debugera, nie jest typowym rozwiązaniem. Tak o szczegółowe dane Instrumentacji jest ważna.
 
 Niektóre produkty automatyczną Instrumentację kodu. Mimo że te rozwiązania mogą również działać, ręczne Instrumentacja prawie zawsze jest wymagana. W końcu musi mieć wystarczającej ilości informacji do całkowitego debugowania aplikacji. W tym dokumencie opisano różne podejścia do Instrumentacji kodu i kiedy należy wybrać jeden z nich zamiast innego.
+
+Przykłady dotyczące używania tych sugestii, zobacz [Dodaj logowanie do aplikacji sieci szkieletowej usług](service-fabric-how-to-diagnostics-log.md).
 
 ## <a name="eventsource"></a>EventSource
 

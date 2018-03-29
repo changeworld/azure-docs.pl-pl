@@ -1,10 +1,10 @@
 ---
-title: "Wprowadzenie do platformy Azure rozwiązania Cosmos DB Cassandra interfejsu API | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać bazy danych Azure rozwiązania Cosmos do istniejących aplikacji \"przyrostu i shift\" i tworzyć nowe aplikacje przy użyciu interfejsu API Cassandra sterowniki Cassandra i CQL znasz już."
+title: Wprowadzenie do platformy Azure rozwiązania Cosmos DB Cassandra interfejsu API | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać bazy danych Azure rozwiązania Cosmos do istniejących aplikacji "przyrostu i shift" i tworzyć nowe aplikacje przy użyciu interfejsu API Cassandra sterowniki Cassandra i CQL znasz już.
 services: cosmos-db
 author: govindk
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 62e56a611d3f720172ace83a4b407a962ec69ea8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 88364cecc1fa1ad7318cb28c9708a42e6a807347
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Wprowadzenie do Apache Cassandra interfejsu API dla rozwiązania Cosmos Azure DB
+# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Wprowadzenie do platformy Azure rozwiązania Cosmos DB: Apache Cassandra interfejsu API
 
 Azure DB rozwiązania Cosmos udostępnia interfejs API Cassandra (wersja zapoznawcza) dla aplikacji, które są przeznaczone dla Apache Cassandra czy wymagają możliwości premium, takich jak:
 

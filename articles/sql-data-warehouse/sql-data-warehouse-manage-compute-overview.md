@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat skalowania wydajności możliwości w usłudze Azure SQL Data Warehouse. Skalowanie w poziomie przez dostosowanie wartości dwu lub niższe koszty wstrzymując hurtowni danych."
+title: Zarządzanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat skalowania wydajności możliwości w usłudze Azure SQL Data Warehouse. Skalowanie w poziomie przez dostosowanie wartości dwu lub niższe koszty wstrzymując hurtowni danych.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: johnmac
-editor: 
+editor: ''
 ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: 7e6ae6e59b53dd79dab5e2504cf7a43a30e55353
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Zarządzanie obliczeniowych w magazynie danych SQL Azure
 Informacje o zarządzaniu zasobów obliczeniowych w magazynie danych SQL Azure. Niższe koszty wstrzymując hurtowni danych albo skalować w hurtowni danych w celu spełnienia wymagań dotyczących wydajności. 
@@ -110,7 +110,7 @@ Aby zautomatyzować operacje zarządzania obliczeniowe, zobacz [Zarządzaj oblic
 
 Każdego skalowalnego w poziomie, Wstrzymaj i operacje wznawiania może potrwać kilka minut. Czy możesz skalowania, wstrzymywanie, wznawianie automatycznie, zaleca się wdrożenie logiki, aby upewnić się, że niektóre operacje została ukończona przed wykonaniem innej akcji. Sprawdzanie stanu magazynu danych przy użyciu różnych punktów końcowych umożliwia prawidłowo zaimplementować automatyzacji takich operacji. 
 
-Aby sprawdzić stan magazynu danych, zobacz [PowerShell](quickstart-scale-compute-powershell.md#check-database-state) lub [T-SQL](quickstart-scale-compute-tsql.md#check-database-state) Szybki Start. Możesz również sprawdzić stan magazynu danych z [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Aby sprawdzić stan magazynu danych, se [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) lub [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) Szybki Start. Możesz również sprawdzić stan magazynu danych z [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 
 ## <a name="permissions"></a>Uprawnienia

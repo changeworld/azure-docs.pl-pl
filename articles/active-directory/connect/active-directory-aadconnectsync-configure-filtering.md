@@ -1,11 +1,11 @@
 ---
 title: 'Synchronizacja programu Azure AD Connect: Konfigurowanie filtrowania | Dokumentacja firmy Microsoft'
-description: "Wyjaśniono, jak skonfigurować filtrowanie synchronizacji Azure AD Connect."
+description: Wyjaśniono, jak skonfigurować filtrowanie synchronizacji Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 5af82e889a80994dd47d4fc3b89f8eece2201355
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania
 Za pomocą filtrowania, można kontrolować obiekty, które są wyświetlane w usłudze Azure Active Directory (Azure AD) z katalogu lokalnego. Domyślna konfiguracja pobiera wszystkie obiekty we wszystkich domenach w lesie skonfigurowanym. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkowników przy użyciu usługi Office 365 obciążeń, takich jak Exchange Online i Skype dla firm, korzystać z pełną globalnej listy adresowej, wysyłać wiadomości e-mail i wywołać Wszyscy. W konfiguracji domyślnej zostałyby to samo środowisko korzystania, które zostałyby implementacja lokalnego programu Exchange lub Lync.
@@ -44,7 +44,7 @@ Ponieważ filtrowanie można usunąć wiele obiektów w tym samym czasie, chcesz
 
 W celu zabezpieczenia przed usuwanie wielu obiektów przypadkowo, funkcję "[Zapobieganie przypadkowemu usuwaniu](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)" jest domyślnie włączone. Jeśli usuniesz wiele obiektów z powodu filtrowania (500 domyślnie), musisz wykonaj kroki opisane w tym artykule, aby umożliwić usuwa podąża do usługi Azure AD.
 
-Jeśli używasz kompilacji zanim listopad 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), wprowadzić zmiany w konfiguracji filtru i użyj synchronizacji haseł, należy wywołać pełnej synchronizacji haseł wszystkich po zakończeniu konfiguracji. Kroki do wyzwolenia pełnej synchronizacji haseł, zobacz [wyzwolenia pełnej synchronizacji haseł wszystkich](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Jeśli podczas kompilacji 1.0.9125 lub nowszym, następnie regular **pełnej synchronizacji** akcji oblicza również, czy hasła powinny być synchronizowane, a jeśli ten dodatkowy krok nie jest już wymagane.
+Jeśli używasz kompilacji zanim listopad 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), wprowadzić zmiany w konfiguracji filtru i użyj synchronizacji skrótu hasła, należy wywołać pełnej synchronizacji haseł wszystkich po zakończeniu konfiguracji. Kroki do wyzwolenia pełnej synchronizacji haseł, zobacz [wyzwolenia pełnej synchronizacji haseł wszystkich](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Jeśli podczas kompilacji 1.0.9125 lub nowszym, następnie regular **pełnej synchronizacji** akcji oblicza również, czy hasła powinny być synchronizowane, a jeśli ten dodatkowy krok nie jest już wymagane.
 
 Jeśli **użytkownika** obiekty przypadkowo zostały usunięte w usłudze Azure AD z powodu błędu filtrowania, można ponownie utworzyć obiekty użytkownika w usłudze Azure AD przez usunięcie konfiguracji filtrowania. Następnie można ponownie zsynchronizuj swoje katalogi. Ta akcja przywraca użytkowników z Kosza w usłudze Azure AD. Jednak można cofnąć usunięcia innych obiektów. Na przykład jeśli przypadkowo usunąć grupę zabezpieczeń i została użyta do listy ACL zasobu, grupy i jego listy kontroli dostępu nie można odzyskać.
 
@@ -255,7 +255,7 @@ W tym przykładzie zmienisz filtrowania, tak aby tylko dla użytkowników, któr
 4. W zależności od wersji programu Connect używasz, albo znaleźć reguły o nazwie **Out do usługi AAD — użytkownik przyłączyć** lub **się do usługi AAD — użytkownik przyłączyć SOAInAD**i kliknij przycisk **Edytuj**.
 5. W oknie podręcznym odpowiedzi **tak** można utworzyć kopii reguły.
 6. Na **opis** Zmień **pierwszeństwo** do nieużywanych wartość, na przykład 50.
-7. Kliknij przycisk **filtru Scoping** na nawigacji po lewej stronie, a następnie kliknij **Dodaj klauzulę**. W **atrybutu**, wybierz pozycję **poczty**. W **Operator**, wybierz pozycję **ENDSWITH**. W **wartość**, typ  **@contoso.com** , a następnie kliknij przycisk **Dodaj klauzulę**. W **atrybutu**, wybierz pozycję **userPrincipalName**. W **Operator**, wybierz pozycję **ENDSWITH**. W **wartość**, typ  **@contoso.com** .
+7. Kliknij przycisk **filtru Scoping** na nawigacji po lewej stronie, a następnie kliknij **Dodaj klauzulę**. W **atrybutu**, wybierz pozycję **poczty**. W **Operator**, wybierz pozycję **ENDSWITH**. W **wartość**, typ **@contoso.com**, a następnie kliknij przycisk **Dodaj klauzulę**. W **atrybutu**, wybierz pozycję **userPrincipalName**. W **Operator**, wybierz pozycję **ENDSWITH**. W **wartość**, typ **@contoso.com**.
 8. Kliknij pozycję **Zapisz**.
 9. Aby zakończyć konfigurację, należy uruchomić **pełnej synchronizacji**. Kontynuuj czytanie sekcji [Zastosuj i Sprawdź zmiany](#apply-and-verify-changes).
 

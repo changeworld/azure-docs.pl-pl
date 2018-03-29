@@ -1,23 +1,23 @@
 ---
-title: "Zespół ról w procesie nauki danych oraz zadania - Azure | Dokumentacja firmy Microsoft"
-description: "Zarys najważniejsze składniki, role pracownikami i skojarzonych zadań dla projektu zespołowego analizy danych."
-documentationcenter: 
+title: Zespół ról w procesie nauki danych oraz zadania - Azure | Dokumentacja firmy Microsoft
+description: Zarys najważniejsze składniki, role pracownikami i skojarzonych zadań dla projektu zespołowego analizy danych.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: b502a586cdb7351d5b22c6b0db966723b8ebb7b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: bradsev
+ms.openlocfilehash: b92bb8e633aa859324f2ff46f5d76a5934007ccf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Zespół proces nauki danych ról i zadań
 
@@ -45,7 +45,7 @@ Przy założeniu powyżej cztery różne role została określona dla personel f
 
 3. ***Realizacji projektu***. Realizacji projektu zarządza codzienne działania analityków danych poszczególnych projektu nauki określonych danych.
 
-4. ***Projekt poszczególnych współautora***. Naukowca danych Analityczka biznesowa, inżynier danych, architektów, itp. Poszczególne współautorem projektu wykonuje projektu analizy danych. 
+4. ***Projekt poszczególnych współautora***. Data Scientist, Business Analyst, Data Engineer, Architect, etc. Poszczególne współautorem projektu wykonuje projektu analizy danych. 
 
 
 **[AZURE.NOTE]**: W zależności od struktury w przedsiębiorstwie jedna osoba może odtworzyć więcej niż jedna rola lub może być więcej niż jedna osoba, pracy w roli. Może to być często w przypadku małych przedsiębiorstw lub przedsiębiorstwa z mniejszą liczbą personelu w organizacji analizy danych.
@@ -82,7 +82,7 @@ Następujące zadania są wykonywane przez prowadzić zespołu (lub administrato
 - Jeśli VSTS jest wybrany jako Platforma macierzysta kodu dla wersji i współpracy, Utwórz **projektu zespołowego** na serwerze programu VSTS grupy. W przeciwnym razie to zadanie można pominięte.
 - Utwórz **repozytorium szablonu projektu zespołowego** w ramach projektu zespołowego i inicjatora z repozytorium szablonu projektu grupy Konfigurowanie przez menedżera grupy lub obiektu delegowanego menedżera. 
 - Utwórz **repozytorium narzędzia team**i Dodaj do repozytorium narzędzia specyficzne dla zespołu. 
-- (Opcjonalnie) Utwórz  **[usługi Azure file storage](https://azure.microsoft.com/services/storage/files/)**  ma być używany do przechowywania zasobów danych, które mogą być przydatne dla całego zespołu. Innych członków zespołu można zainstalować tej udostępnionej chmury magazyn plików na komputerach stacjonarnych analytics.
+- (Opcjonalnie) Utwórz **[usługi Azure file storage](https://azure.microsoft.com/services/storage/files/)** ma być używany do przechowywania zasobów danych, które mogą być przydatne dla całego zespołu. Innych członków zespołu można zainstalować tej udostępnionej chmury magazyn plików na komputerach stacjonarnych analytics.
 - (Opcjonalnie) Zainstaluj usługi Azure file storage do **maszyny wirtualnej nauki danych** (DSVM) zespołu prowadzić i dodać zasobów danych.
 - Konfigurowanie **zabezpieczeniem** przez dodawanie członków zespołu i skonfiguruj swoje uprawnienia. 
 
@@ -130,7 +130,7 @@ Przepływ pracy zawiera kroki, które można podzielić na trzy czynności:
 
 Aby uzyskać szczegółowe instrukcje krok po kroku na przepływ wykonania projektu, zobacz [wykonywania projektów analizy danych](project-execution.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Oto łącza do bardziej szczegółowe opisy ról i zadań zdefiniowanych przez proces nauki danych zespołu:
 

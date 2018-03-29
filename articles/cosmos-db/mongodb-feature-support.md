@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 470ad2fe458c47392b8f55a8f46c75e54ccf87a3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 22ae56d9ebb2ea39acbd9f4536ef9ea5508b9867
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Obsługa interfejsu API bazy danych MongoDB funkcji bazy danych MongoDB i składni
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Użytkownik może komunikować się z bazy danych MongoDB API za pomocą dowolnego klienta bazy danych MongoDB typu open source [sterowniki](https://docs.mongodb.org/ecosystem/drivers). Interfejs API bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta przez do bazy danych MongoDB [okablować protokołu](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Za pomocą interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB, można korzystać z zalet interfejsów API bazy danych MongoDB użyto, biorąc pod uwagę możliwości przedsiębiorstwa Azure rozwiązania Cosmos DB: [globalne dystrybucji](distribute-data-globally.md), [automatycznego dzielenia na fragmenty](partition-data.md), dostępność i opóźnienia gwarancji, automatycznego indeksowania każdego pola, szyfrowanie w rest, kopie zapasowe i o wiele więcej.
+Za pomocą interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB, można korzystać z zalet interfejsów API bazy danych MongoDB użyto, biorąc pod uwagę możliwości przedsiębiorstwa zawiera bazy danych Azure rozwiązania Cosmos: [globalne dystrybucji](distribute-data-globally.md), [automatycznego dzielenia na fragmenty](partition-data.md), gwarancje dostępności i czas oczekiwania, automatycznego indeksowania każdego pola, szyfrowanie w rest, kopie zapasowe i o wiele więcej.
 
 ## <a name="mongodb-query-language-support"></a>Obsługa języków kwerendy bazy danych MongoDB
 

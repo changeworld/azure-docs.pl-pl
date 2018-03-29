@@ -1,13 +1,13 @@
 ---
-title: "Wdrażanie internetowy równoważenia obciążenia w przypadku adresu IPv6 - szablonu Azure | Dokumentacja firmy Microsoft"
-description: "Jak wdrożyć obsługi protokołu IPv6 dla modułu równoważenia obciążenia w Azure i maszyn wirtualnych z równoważeniem obciążenia."
+title: Wdrażanie internetowy równoważenia obciążenia w przypadku adresu IPv6 - szablonu Azure | Dokumentacja firmy Microsoft
+description: Jak wdrożyć obsługi protokołu IPv6 dla modułu równoważenia obciążenia w Azure i maszyn wirtualnych z równoważeniem obciążenia.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: "Protokół IPv6, usługi równoważenia obciążenia azure, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, mobile, iot"
+keywords: Protokół IPv6, usługi równoważenia obciążenia azure, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, mobile, iot
 ms.assetid: 2998e943-13fc-4ea9-a68c-875e53a08db3
 ms.service: load-balancer
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 90439d792eac618671a9de9938302d8930c986d8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 431b43979ac364d943c58c40b4199b7f30f9acf6
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Wdróż internetowy modułu równoważenia obciążenia rozwiązanie w przypadku adresu IPv6 przy użyciu szablonu
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 > * [Interfejs wiersza polecenia platformy Azure](load-balancer-ipv6-internet-cli.md)
 > * [Szablon](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Usługa Azure Load Balancer to moduł równoważenia obciążenia w warstwie 4 (TCP, UDP). Moduł równoważenia obciążenia zapewnia wysoką dostępność, dystrybuując ruch przychodzący w wystąpieniach usług o dobrej kondycji w usługach w chmurze lub na maszynach wirtualnych w zestawie modułu równoważenia obciążenia. Usługa Azure Load Balancer może także prezentować te usługi na wielu portach i/lub wielu adresach IP.
 
@@ -54,26 +54,26 @@ W tym artykule odwołuje się do szablonu, który jest opublikowany w [szablonó
 1. Otwórz Azure portal i zaloguj się przy użyciu konta, które ma uprawnienia do tworzenia maszyn wirtualnych i zasobów sieciowych w ramach subskrypcji platformy Azure. Ponadto jeśli korzystasz z istniejących zasobów, konto musi uprawnień do utworzenia grupy zasobów i konto magazynu.
 2. Kliknij przycisk "+ New" z menu, a następnie wpisz "szablon" w polu wyszukiwania. Wybierz "Wdrożenie szablonu" w wynikach wyszukiwania.
 
-    ![lb-ipv6 — portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. W obszarze wszystko bloku, kliknij przycisk "Wdrażania szablonu."
 
-    ![lb-ipv6 — portal — krok 3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. Kliknij przycisk "Utwórz".
 
-    ![lb-ipv6 — portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. Kliknij pozycję "Edytuj szablon". Usuń istniejącą zawartość i kopiowania/wklejania w całą zawartość pliku szablonu (Aby dołączyć rozpoczęcia i zakończenia {}), a następnie kliknij przycisk Zapisz.
 
     > [!NOTE]
     > Jeśli używasz programu Microsoft Internet Explorer możesz wkleić wyświetlane okno dialogowe z pytaniem o zezwolenie na dostęp do Schowka systemu Windows. Kliknij pozycję "Zezwalaj na dostęp."
 
-    ![lb-ipv6 — portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. Kliknij pozycję "Edytuj parametry". W bloku parametry określ wartości zgodnie ze wskazówkami w sekcji parametrów szablonu, a następnie kliknij przycisk Zapisz, aby zamknąć bloku parametrów. W bloku wdrożenie niestandardowe wybierz subskrypcję, istniejącą grupę zasobów lub utwórz je. Jeśli tworzysz grupę zasobów, następnie wybierz lokalizację dla grupy zasobów. Następnie kliknij przycisk **postanowienia prawne**, następnie kliknij przycisk **zakupu** dla postanowienia prawne. Azure rozpoczyna wdrażanie zasobów. Trwa kilka minut, aby wdrożyć wszystkie zasoby.
 
-    ![lb-ipv6 — portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Aby uzyskać więcej informacji na temat tych parametrów, zobacz [szablonu parametry i zmienne](#template-parameters-and-variables) sekcji w dalszej części tego artykułu.
 
@@ -83,14 +83,14 @@ W tym artykule odwołuje się do szablonu, który jest opublikowany w [szablonó
 
 8. W bloku grupy zasobów kliknij nazwę grupy zasobów określonej w kroku 6. Możesz wyświetlić listę wszystkich zasobów, które zostały wdrożone. Jeśli wszystkie poszło dobrze, powinien powiedzieć "Powodzenie" w obszarze "Ostatniego wdrożenia". Jeśli nie, upewnij się, że konto, którego używasz, ma uprawnienia do tworzenia niezbędne zasoby.
 
-    ![lb-ipv6 — portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Jeśli natychmiast po ukończeniu kroku 6 możesz przeglądać grup zasobów, "Ostatniego wdrożenia" będzie wyświetlany stan "Wdrażanie" podczas wdrażania zasobów.
 
 9. Kliknij przycisk "myIPv6PublicIP" na liście zasobów. Zostanie wyświetlony, ma adres IPv6 z adresu IP i że jego nazwa DNS jest wartość, która została określona dla parametru dnsNameforIPv6LbIP w kroku 6. Ten zasób jest publiczny IPv6 adresu i nazwy hosta, który jest dostępny dla klientów internetowych.
 
-    ![lb-ipv6 — portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Sprawdzanie poprawności łączności
 

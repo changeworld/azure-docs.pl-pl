@@ -1,6 +1,6 @@
 ---
-title: "Monitorowanie wydajności aplikacji sieci web Java w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Rozszerzone wydajności monitorowania użycia witryny sieci Web Java z usługą Application Insights."
+title: Monitorowanie wydajności aplikacji sieci web Java w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Rozszerzone wydajności monitorowania użycia witryny sieci Web Java z usługą Application Insights.
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: ecfcf7a3b3698435f98b74474d0ca7223ab2b46c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b327e7f062cdf3e6b1b34a9540461dcb18caf21c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>Monitor zależności, wyjątków i czasu wykonywania w aplikacji sieci web Java
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorowanie zależności, wyjątki zgłoszony i metody wykonywania razy w aplikacji sieci web Java
 
 
 Jeśli masz [instrumentacji aplikacji sieci web Java za pomocą usługi Application Insights][java], agenta programu Java można użyć, aby uzyskać bardziej szczegółowe bez wprowadzania żadnych zmian kodu:
 
 * **Zależności:** dane dotyczące wywołania, które umożliwia aplikacji do innych składników, w tym:
-  * **Wywołania REST** wprowadzone za pośrednictwem HttpClient, OkHttp i RestTemplate (Spring).
-  * **Redis** wywołań za pomocą klienta Jedis. Jeśli wywołanie trwa dłużej niż 10s, agent również pobiera argumenty wywołania.
-  * **[Wywołania JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, SQL Server, PostgreSQL, SQLite, bazy danych Oracle lub Apache DOM DB. wywołania "executeBatch" są obsługiwane. MySQL i PostgreSQL Jeśli wywołanie trwa dłużej niż 10s, agenci będą raportować planu zapytania.
-* **Przechwycono wyjątkami:** dane dotyczące wyjątków, które są obsługiwane w kodzie.
-* **Czas wykonania metody:** dane dotyczące czas potrzebny do wykonywania określonych metod.
+  * **Wywołania REST** wprowadzane za pośrednictwem HttpClient, OkHttp i RestTemplate (Spring) są przechwytywane.
+  * **Redis** wywołań za pomocą klienta Jedis są przechwytywane.
+  * **[Wywołania JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -polecenia MySQL, SQL Server i bazy danych Oracle automatycznie są przechwytywane. Dla programu MySQL Jeśli wywołanie trwa dłużej niż 10s, agenci będą raportować planu zapytania.
+* **Przechwycono wyjątkami:** informacji na temat wyjątki, które są obsługiwane w kodzie.
+* **Czas wykonania metody:** informacji na temat czas potrzebny do wykonywania określonych metod.
 
 Aby użyć agenta programu Java, należy ją zainstalować na serwerze. Aplikacje sieci web musi być instrumentowane przy użyciu [zestaw SDK Java usługi Application Insights][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Zainstaluj agenta usługi Application Insights dla języka Java
-1. Na komputerze z serwerem Java [Pobierz agenta](https://aka.ms/aijavasdk).
+1. Na komputerze z serwerem Java [Pobierz agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Sprawdź, czy do pobrania tego samego verson agenta Java jako zestaw SDK Java usługi Application Insights pakietów rdzeni i sieci web.
 2. Edytowanie skryptu uruchamiania serwera aplikacji, a następnie dodaj poniższe JVM:
    
     `javaagent:`*Pełna ścieżka do pliku JAR agenta*

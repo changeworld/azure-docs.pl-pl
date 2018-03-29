@@ -1,25 +1,25 @@
 ---
-title: "Połączenie do bazy danych rozwiązania Cosmos Azure przy użyciu narzędzi do analizy Biznesowej analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystać ze sterownika ODBC DB rozwiązania Cosmos Azure utworzyć tabele i widoki, tak aby znormalizowane danych mogą być wyświetlane w oprogramowania analizy danych i analizy Biznesowej."
+title: Połączenie do bazy danych rozwiązania Cosmos Azure przy użyciu narzędzi do analizy Biznesowej analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać ze sterownika ODBC DB rozwiązania Cosmos Azure utworzyć tabele i widoki, tak aby znormalizowane danych mogą być wyświetlane w oprogramowania analizy danych i analizy Biznesowej.
 keywords: ODBC i sterownik odbc
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 03/22/2018
 ms.author: mimig
-ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 445acafeef67027712826f644afaa1784569b30d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Łączenie do bazy danych rozwiązania Cosmos Azure przy użyciu narzędzia do analizy BI ze sterownikiem ODBC
 
@@ -30,7 +30,7 @@ Sterownik ODBC DB rozwiązania Cosmos Azure jest zgodny z 3.8 ODBC i obsługuje 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>Dlaczego muszę normalizacji danych?
 Azure DB rozwiązania Cosmos jest bezschematową bazą danych, więc umożliwia szybkie opracowywanie aplikacji, umożliwiając aplikacjom iteracji modelu danych, ich na bieżąco i nie ograniczają ich strict schematu. Pojedyncza baza danych bazy danych Azure rozwiązania Cosmos może zawierać dokumentów JSON różnych struktur. Jest to doskonałe rozwiązanie dla szybkie programowanie aplikacji, ale do analizowania i tworzenia raportów, korzystając z analizy danych i narzędzi do analizy Biznesowej danych, należy dane często muszą być spłaszczane i być zgodne z określonym schematem.
 
-Jest to, gdzie sterownik ODBC jest dostarczany. Za pomocą sterownika ODBC, można teraz renormalized dane w usłudze Azure DB rozwiązania Cosmos w tabelach i widokach dopasowania do potrzeb danych analitycznych i raportowania. Schematy renormalized nie mają wpływu na dane, a nie ograniczają deweloperom stosować się do nich, po prostu umożliwiają one korzystać ze standardem ODBC narzędzia dostępu do danych. Dlatego teraz bazy danych Azure DB rozwiązania Cosmos nie tylko będzie element ulubiony dla zespołu deweloperów, ale analityków danych będzie pokochasz je za.
+Jest to, gdzie sterownik ODBC jest dostarczany. Za pomocą sterownika ODBC, można teraz renormalize danych w usłudze Azure DB rozwiązania Cosmos w tabelach i widokach dopasowania do potrzeb danych analitycznych i raportowania. Schematy renormalized nie mają wpływu na dane, a nie ograniczają deweloperom stosować się do nich, umożliwiają one korzystać ze standardem ODBC narzędzia dostępu do danych. Dlatego teraz bazy danych Azure DB rozwiązania Cosmos nie tylko będzie element ulubiony dla zespołu deweloperów, ale analityków danych będzie pokochasz je za.
 
 Teraz umożliwia wprowadzenie sterownik ODBC.
 
@@ -53,7 +53,7 @@ Teraz umożliwia wprowadzenie sterownik ODBC.
 
 ## <a id="connect"></a>Krok 2: Łączenie się z bazą danych Azure DB rozwiązania Cosmos
 
-1. Po [instalowania sterownika ODBC DB rozwiązania Cosmos Azure](#install)w **Administrator źródła danych ODBC** okna, kliknij przycisk **Dodaj**. Można utworzyć użytkownika lub nazwy DSN systemu. W tym przykładzie tworzymy DSN użytkownika.
+1. Po [instalowania sterownika ODBC DB rozwiązania Cosmos Azure](#install)w **Administrator źródła danych ODBC** okna, kliknij przycisk **Dodaj**. Można utworzyć użytkownika lub nazwy DSN systemu. W tym przykładzie jest tworzony DSN użytkownika.
 2. W **Utwórz nowe źródło danych** wybierz **sterownika ODBC usługi Microsoft Azure rozwiązania Cosmos DB**, a następnie kliknij przycisk **Zakończ**.
 3. W **ustawienia SDN sterownika ODBC Azure rozwiązania Cosmos DB** okna, wypełnij następujące czynności: 
 
@@ -71,7 +71,7 @@ Teraz umożliwia wprowadzenie sterownik ODBC.
     - **Plik schematu**: w tym miejscu masz kilka opcji.
         - Domyślnie ten wpis jest (pusty), pozostawiając sterownika skanuje pierwsze dane strony dla wszystkich kolekcji w celu określenia schematu każdej kolekcji. Jest to nazywane mapowania kolekcji. Bez pliku schematu zdefiniowane sterownik musi wykonać skanowania dla każdej sesji sterowników i może skutkować wyższej czas uruchamiania aplikacji przy użyciu nazwy DSN. Firma Microsoft zaleca zawsze skojarzenia pliku schematu dla nazwy DSN.
         - Jeśli masz już plik schematu (prawdopodobnie jedną, które zostały utworzone za pomocą [Edytor schematów](#schema-editor)), możesz kliknąć **Przeglądaj**, przejdź do pliku, kliknij przycisk **zapisać**, a następnie kliknij przycisk **OK**.
-        - Jeśli chcesz utworzyć nowy schemat, kliknij przycisk **OK**, a następnie kliknij przycisk **Edytor schematów** w oknie głównym. Następnie przejdź do [Edytor schematów](#schema-editor) informacji. Podczas tworzenia nowego pliku schematu, pamiętaj powrócić do **zaawansowane opcje** okno, aby uwzględnić schematu nowo utworzony plik.
+        - Jeśli chcesz utworzyć nowy schemat, kliknij przycisk **OK**, a następnie kliknij przycisk **Edytor schematów** w oknie głównym. Następnie przejdź do [Edytor schematów](#schema-editor) informacji. Po utworzeniu nowego pliku schematu, pamiętaj powrócić do **zaawansowane opcje** okno, aby uwzględnić schematu nowo utworzony plik.
 
 6. Po zakończeniu i zamknąć **ustawienia DSN sterownika ODBC Azure rozwiązania Cosmos DB** okna, nowej nazwy DSN użytkownika zostanie dodany do karty DSN użytkownika.
 
@@ -114,10 +114,60 @@ Poniższe kroki tworzenia schematu dla danych w co najmniej jednej kolekcji przy
 4. Kliknij przycisk **OK**. 
 5. Po zakończeniu definicji mapowanie dla kolekcji mają zostać pobrane w **Edytor schematów** okna, kliknij przycisk **próbki**.
      Dla każdej kolumny, możesz zmodyfikować nazwę kolumny SQL, typ SQL, długość SQL (jeśli dotyczy), skali (jeśli dotyczy), Precision (jeśli dotyczy) oraz Nullable.
-    - Można ustawić **Ukryj kolumnę** do **true** Aby wykluczyć tę kolumnę z wyników zapytania. Kolumny oznaczone jako Ukryj kolumnę = true nie są zwracane do wyboru i projekcji, mimo że nadal są częścią schematu. Na przykład można ukryć wszystkie właściwości wymagane systemu bazy danych Azure rozwiązania Cosmos począwszy od "_".
+    - Można ustawić **Ukryj kolumnę** do **true** Aby wykluczyć tę kolumnę z wyników zapytania. Kolumny oznaczone jako Ukryj kolumnę = true nie są zwracane do wyboru i projekcji, mimo że nadal są częścią schematu. Na przykład można ukryć wszystkie właściwości wymagane systemu bazy danych Azure rozwiązania Cosmos począwszy `_`.
     - **Identyfikator** kolumna jest tylko pola, które nie mogą być ukryte, ponieważ jest używany jako klucz podstawowy w schemacie znormalizowana. 
 6. Po określeniu schematu kliknij **pliku** | **zapisać**, przejdź do katalogu, aby zapisać schematu, a następnie kliknij przycisk **zapisać**.
-7. W **ustawienia DSN sterownika ODBC Azure rozwiązania Cosmos DB** okna, kliknij przycisk ** Zaawansowane opcje **. Następnie w **pliku schematu** polu, przejdź do pliku zapisanego schematu i kliknij przycisk **OK**. Kliknij przycisk **OK** ponownie, aby zapisać pliku DSN. Nazwa DSN to zapisuje schematu, który został utworzony. 
+7. W **ustawienia DSN sterownika ODBC Azure rozwiązania Cosmos DB** okna, kliknij przycisk **zaawansowane opcje**. Następnie w **pliku schematu** polu, przejdź do pliku zapisanego schematu i kliknij przycisk **OK**. Kliknij przycisk **OK** ponownie, aby zapisać pliku DSN. Nazwa DSN to zapisuje schematu, który został utworzony. 
+
+## <a name="optional-set-up-linked-server-connection"></a>(Opcjonalnie) Skonfiguruj połączenie z serwerem połączonym
+
+Bazy danych z programu SQL Server Management Studio (SSMS) rozwiązania Cosmos Azure można badać przy konfigurowaniu połączenia połączonego serwera.
+
+1. Utwórz źródło danych systemu, zgodnie z opisem w [krok 2](#connect), na przykład nazwane `SDS Name`.
+2. [Instalowanie programu SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+3. W edytorze zapytań SSMS, Utwórz obiekt połączonego serwera `DEMOCOSMOS` dla źródła danych za pomocą następujących poleceń. Zastąp `DEMOCOSMOS` o nazwie dla połączonego serwera, a `SDS Name` nazwą źródła danych systemu.
+
+    ```sql
+    USE [master]
+    GO
+    
+    EXEC master.dbo.sp_addlinkedserver @server = N'DEMOCOSMOS', @srvproduct=N'', @provider=N'MSDASQL', @datasrc=N'SDS Name'
+    
+    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DEMOCOSMOS', @useself=N'False', @locallogin=NULL, @rmtuser=NULL, @rmtpassword=NULL
+    
+    GO
+    ```
+    
+Aby wyświetlić nową nazwę połączonego serwera, Odśwież listę serwerów połączonych.
+
+![Serwer połączony w programie SSMS](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+
+### <a name="query-linked-database"></a>Zapytanie połączonej bazy danych
+
+Aby odpytać połączonej bazy danych, należy wprowadzić kwerendę SSMS. W tym przykładzie zapytanie wybiera z tabeli w kolekcji o nazwie `customers`:
+
+```sql
+SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
+```
+
+Wykonanie kwerendy. Wynik powinien być podobny do poniższego:
+
+```
+attachments/  1507476156    521 Bassett Avenue, Wikieup, Missouri, 5422   "2602bc56-0000-0000-0000-59da42bc0000"   2015-02-06T05:32:32 +05:00 f1ca3044f17149f3bc61f7b9c78a26df
+attachments/  1507476156    167 Nassau Street, Tuskahoma, Illinois, 5998   "2602bd56-0000-0000-0000-59da42bc0000"   2015-06-16T08:54:17 +04:00 f75f949ea8de466a9ef2bdb7ce065ac8
+attachments/  1507476156    885 Strong Place, Cassel, Montana, 2069       "2602be56-0000-0000-0000-59da42bc0000"   2015-03-20T07:21:47 +04:00 ef0365fb40c04bb6a3ffc4bc77c905fd
+attachments/  1507476156    515 Barwell Terrace, Defiance, Tennessee, 6439     "2602c056-0000-0000-0000-59da42bc0000"   2014-10-16T06:49:04 +04:00      e913fe543490432f871bc42019663518
+attachments/  1507476156    570 Ruby Street, Spokane, Idaho, 9025       "2602c156-0000-0000-0000-59da42bc0000"   2014-10-30T05:49:33 +04:00 e53072057d314bc9b36c89a8350048f3
+```
+
+> [!NOTE]
+> Połączonego serwera rozwiązania Cosmos bazy danych nie obsługuje nazewnictwa czteroczęściową. Jest to komunikat o błędzie podobny do następującego:
+
+```
+Msg 7312, Level 16, State 1, Line 44
+
+Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server "DEMOCOSMOS". A four-part name was supplied, but the provider does not expose the necessary interfaces to use a catalog or schema.
+``` 
 
 ## <a name="optional-creating-views"></a>(Opcjonalnie) Tworzenie widoków
 Można zdefiniować i tworzyć widoki w ramach procesu pobierania próbek. Widoki te są równoważne widoki SQL. Są tylko do odczytu i są opcje zakresu i zdefiniowane projekcje Azure rozwiązania Cosmos bazy danych SQL. 
@@ -148,6 +198,6 @@ Jeśli zostanie wyświetlony następujący błąd, upewnij się, **hosta** i **k
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat bazy danych rozwiązania Cosmos Azure, zobacz [Zapraszamy do bazy danych Azure rozwiązania Cosmos](introduction.md).

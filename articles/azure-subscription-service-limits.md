@@ -1,11 +1,11 @@
 ---
-title: "Limity subskrypcji platformy Azure i przydziały | Dokumentacja firmy Microsoft"
-description: "Zawiera listę typowych subskrypcji platformy Azure i ograniczenia usługi, przydziały i ograniczenia. W tym informacje na temat zwiększania limitów wraz z wartości maksymalnej."
-services: 
-documentationcenter: 
+title: Limity subskrypcji platformy Azure i przydziały | Dokumentacja firmy Microsoft
+description: Zawiera listę typowych subskrypcji platformy Azure i ograniczenia usługi, przydziały i ograniczenia. W tym informacje na temat zwiększania limitów wraz z wartości maksymalnej.
+services: ''
+documentationcenter: ''
 author: rothja
 manager: jeffreyg
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/27/2018
 ms.author: byvinyal
-ms.openlocfilehash: f2c747f29d1e35b430b30d9aa4ca0bff2e78476f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3218778640acc5d08cef94849e25323650c42c6c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 Ten dokument przedstawia niektóre z najczęściej limity Microsoft Azure, nazywane również przydziałów. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu listy zostanie rozwinięty, a zaktualizowane, aby pokrywał się z platformy.
@@ -46,7 +46,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedlają różnice
 
 ## <a name="service-specific-limits"></a>Limity specyficzne dla usługi
 * [Usługa Active Directory](#active-directory-limits)
-* [Zarządzanie interfejsami API](#api-management-limits)
+* [API Management](#api-management-limits)
 * [App Service](#app-service-limits)
 * [Application Gateway](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)

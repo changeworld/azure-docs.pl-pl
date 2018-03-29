@@ -1,11 +1,11 @@
 ---
-title: "Jak używać usługi Azure API Management z wewnętrzne sieci wirtualne | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak instalowanie i konfigurowanie usługi Azure API Management w wewnętrznej sieci wirtualnej"
+title: Jak używać usługi Azure API Management z wewnętrzne sieci wirtualne | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak instalowanie i konfigurowanie usługi Azure API Management w wewnętrznej sieci wirtualnej
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: kjoshi
-editor: 
+editor: ''
 ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: cf062cfcbbb2454adf20a06c31c81a60f6f5719f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: be4aa45c919f579355c6ac6c5682c1537e9cc0cb
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrznej sieci wirtualnej
 Sieci wirtualne platformy Azure Azure API Management umożliwiają zarządzanie interfejsów API nie jest dostępny w Internecie. Liczba technologii sieci VPN są dostępne do nawiązania połączenia. Zarządzanie interfejsami API można wdrożyć w dwóch trybach głównego w sieci wirtualnej:
@@ -44,7 +44,7 @@ Aby wykonać kroki opisane w tym artykule, musi mieć:
 
 + **Wystąpienie usługi Azure API Management**. Aby uzyskać więcej informacji, zobacz [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 
-## <a name="enable-vpn"></a>Tworzenie zarządzanie interfejsami API w wewnętrznej sieci wirtualnej
+## <a name="enable-vpn"> </a>Tworzenie interfejsu API zarządzania w wewnętrznej sieci wirtualnej
 Usługi interfejsu API Management w wewnętrznej sieci wirtualnej jest hostowany za wewnętrznego modułu równoważenia obciążenia (ILB).
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Włącz połączenie wirtualnej sieci przy użyciu portalu Azure
@@ -72,7 +72,7 @@ Można również włączyć łączność w sieci wirtualnej przy użyciu polece�
 W przypadku interfejsu API zarządzania w trybie zewnętrzną sieć wirtualną, DNS jest zarządzana przez Azure. Dla trybu wewnętrznej sieci wirtualnej trzeba zarządzać własną routingu.
 
 > [!NOTE]
-> Zarządzanie interfejsami API usługi nie nasłuchuje na żądania pochodzące z adresów IP. Tylko odpowiadały na żądania na nazwę hosta skonfigurowane na jego punktów końcowych usługi. Te punkty końcowe obejmują bramy, portalu dla deweloperów, Azurethe portalu, bezpośrednie zarządzanie punktu końcowego i Git.
+> Zarządzanie interfejsami API usługi nie nasłuchuje na żądania pochodzące z adresów IP. Tylko odpowiadały na żądania na nazwę hosta skonfigurowane na jego punktów końcowych usługi. Te punkty końcowe obejmują bramy, portalu Azure i portalu dla deweloperów, bezpośrednie zarządzanie punktu końcowego i Git.
 
 ### <a name="access-on-default-host-names"></a>Dostęp do domyślnej nazwy hosta
 Podczas tworzenia usługi Zarządzanie interfejsami API o nazwie "contoso", na przykład następujące punkty końcowe usługi są domyślnie skonfigurowane:
@@ -105,13 +105,13 @@ Wszystkie punkty końcowe usługi można następnie uzyskać dostęp z poziomu m
 
    2. Następnie można utworzyć rekordy w punkty końcowe, które są tylko dostępny w obrębie sieci wirtualnej dostępu do serwera DNS.
 
-## <a name="routing"></a> Routingu
+## <a name="routing"> </a> Routing
 + Ze zrównoważonym obciążeniem prywatnej wirtualny adres IP z zakresu podsieci zostanie zarezerwowane i umożliwiają dostęp do punktów końcowych usługi Zarządzanie interfejsami API od w sieci wirtualnej.
 + Aby zapewnić dostęp do punktu końcowego usługi zarządzania tylko za pośrednictwem portu 3443 rezerwowane również ze zrównoważonym obciążeniem publiczny adres IP (VIP).
 + Adres IP z zakresu podsieci IP (DIP) będzie umożliwiać dostęp do zasobów w sieci wirtualnej, a publicznego adresu IP (VIP) będzie używany do dostępu do zasobów poza siecią wirtualną.
 + O zrównoważonym obciążeniu publicznych i prywatnych adresów IP można znaleźć w bloku Przegląd/Essentials w portalu Azure.
 
-## <a name="related-content"></a>Związane z zawartością
+## <a name="related-content"> </a>Zawartość pokrewna
 Aby dowiedzieć się więcej, zobacz następujące artykuły:
 * [Typowe problemy z konfiguracją sieci podczas konfigurowania usługi Azure API Management w sieci wirtualnej][Common network configuration problems]
 * [Sieć wirtualna — często zadawane pytania](../virtual-network/virtual-networks-faq.md)

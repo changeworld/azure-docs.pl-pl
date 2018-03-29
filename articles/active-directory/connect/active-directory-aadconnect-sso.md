@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: b1c82727e97b85fae5f315ceb1cd79cfdd111b45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6a106ba59f09ffc20f8461c5267ae06695df4cd0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne
 
@@ -28,7 +28,7 @@ Azure Active Directory bezproblemowe logowanie jednokrotne (Azure AD bezproblemo
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Bezproblemowe logowanie Jednokrotne można łączyć z jedną [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) metody logowania.
+Bezproblemowe logowanie Jednokrotne można łączyć z jedną [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-hash-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) metody logowania.
 
 ![Bezproblemowe logowanie jednokrotne](./media/active-directory-aadconnect-sso/sso1.png)
 
@@ -42,7 +42,7 @@ Bezproblemowe logowanie Jednokrotne można łączyć z jedną [synchronizacji sk
   - Użytkownicy nie muszą wprowadzać haseł wielokrotnie.
 - *Łatwe wdrażanie i administrowanie*
   - Żadne dodatkowe składniki niezbędne dane lokalne na działało.
-  - Działa przy użyciu dowolnej metody uwierzytelniania w chmurze — [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md).
+  - Działa przy użyciu dowolnej metody uwierzytelniania w chmurze — [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-hash-synchronization.md) lub [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md).
   - Mogą być wprowadzanie do niektórych lub wszystkich użytkowników za pomocą zasad grupy.
   - Rejestrowanie urządzeń z systemem innym niż Windows 10 z usługą Azure AD bez konieczności dla dowolnej infrastruktury usług AD FS. Ta funkcja wymaga użycia wersji 2.1 lub nowszej [Dołącz do miejsca pracy klienta](https://www.microsoft.com/download/details.aspx?id=53554).
 

@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Bezproblemowe logowanie jednokrotne — szybki start | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak rozpocząć pracę z usługi Azure Active Directory bezproblemowe logowanie jednokrotne"
+title: 'Azure AD Connect: Bezproblemowe logowanie jednokrotne — szybki start | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano, jak rozpocząć pracę z usługi Azure Active Directory bezproblemowe logowanie jednokrotne
 services: active-directory
-keywords: "Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 67f6ca36c334a60b634094f07e5d9696a6961eb8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d026009151f85a01f14ce4dd8a510f60ff407da1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -32,7 +32,7 @@ Aby wdrożyć bezproblemowe logowanie Jednokrotne, wykonaj następujące kroki.
 
 Upewnij się, że zostały spełnione następujące wymagania wstępne:
 
-* **Konfigurowanie serwera usługi Azure AD Connect**: Jeśli używasz [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) jako metody logowania, jest wymagane nie dodatkowe wymagania wstępne. Jeśli używasz [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-synchronization.md) jako metody logowania, a w przypadku zapory między Azure AD Connect i Azure AD, upewnij się, że:
+* **Konfigurowanie serwera usługi Azure AD Connect**: Jeśli używasz [uwierzytelniania przekazywanego](active-directory-aadconnect-pass-through-authentication.md) jako metody logowania, jest wymagane nie dodatkowe wymagania wstępne. Jeśli używasz [synchronizacji skrótu hasła](active-directory-aadconnectsync-implement-password-hash-synchronization.md) jako metody logowania, a w przypadku zapory między Azure AD Connect i Azure AD, upewnij się, że:
    - Użyj wersji 1.1.644.0 lub nowszej programu Azure AD Connect. 
    - Jeśli zapora lub serwer proxy zezwala listę dozwolonych podobnej DNS, dozwolonych połączeń z  **\*. msappproxy.net** adresów URL za pośrednictwem portu 443. Jeśli nie, Zezwalaj na dostęp do [zakresy IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653), która jest aktualizowana co tydzień. To wymaganie wstępne ma zastosowanie tylko wtedy, gdy zostanie włączona funkcja. Nie jest wymagane do rzeczywistego użytkownika logowania.
 
@@ -87,7 +87,7 @@ Ponadto należy włączyć zasadę strefy Intranet nosi nazwę **Zezwalaj na pas
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Dlaczego należy zmodyfikować ustawienia strefy Intranet użytkowników?
 
-Domyślnie przeglądarka automatycznie oblicza poprawnej strefy Internecie lub intranecie, z określonym adresem URL. Na przykład "http://contoso/" mapy do strefy Intranet, podczas gdy "http://intranet.contoso.com/" mapuje strefie Internet (ponieważ adres URL zawiera kropkę). Przeglądarki nie wyśle biletów Kerberos do punktu końcowego w chmurze, takich jak Azure AD adresu URL, chyba że dodasz do strefy Intranet w przeglądarce adres URL.
+Domyślnie przeglądarka automatycznie oblicza poprawnej strefy Internecie lub intranecie, z określonym adresem URL. Na przykład "http://contoso/"mapy do strefy Intranet, podczas gdy"http://intranet.contoso.com/" mapuje strefie Internet (ponieważ adres URL zawiera kropkę). Przeglądarki nie wyśle biletów Kerberos do punktu końcowego w chmurze, takich jak Azure AD adresu URL, chyba że dodasz do strefy Intranet w przeglądarce adres URL.
 
 ### <a name="detailed-steps"></a>Szczegółowe procedury
 

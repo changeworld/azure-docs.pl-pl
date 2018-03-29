@@ -1,21 +1,21 @@
 ---
-title: "Przegląd wymagań wstępnych dotyczących używania usługi migracji bazy danych Azure | Dokumentacja firmy Microsoft"
-description: "Zapoznaj się z omówieniem wymagań wstępnych do przeprowadzania migracji bazy danych przy użyciu usługi Azure bazy danych migracji."
+title: Przegląd wymagań wstępnych dotyczących używania usługi migracji bazy danych Azure | Dokumentacja firmy Microsoft
+description: Zapoznaj się z omówieniem wymagań wstępnych do przeprowadzania migracji bazy danych przy użyciu usługi Azure bazy danych migracji.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/25/2018
-ms.openlocfilehash: 883e71c871f3d1f279aa4adc2c0cec7c610333ba
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 03/29/2018
+ms.openlocfilehash: 536a75118e1005ddc0bb5814e2367e1ced808305
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Przegląd wymagań wstępnych dotyczących używania usługi Azure bazy danych migracji
 Istnieje kilka wymagań wstępnych dotyczących upewnić, że usługa migracji bazy danych Azure przeprowadzane bezproblemowego podczas przeprowadzania migracji bazy danych. Niektóre wymagania wstępne są stosowane we wszystkich scenariuszach (pary źródłowy i docelowy), obsługiwane przez usługę, podczas gdy inne wymagania wstępne są unikatowe dla danego scenariusza.
@@ -37,6 +37,8 @@ Podczas korzystania z usługi migracji bazy danych Azure do wykonania programu S
 
 - Utwórz wystąpienie wystąpienia bazy danych SQL Azure, co zrobić, wykonując szczegółowo w artykule C[Utwórz bazę danych Azure SQL w portalu Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 - Pobierz i zainstaluj [Asystenta migracji danych](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 lub nowszym.
+- Otwórz Zaporę systemu Windows, aby umożliwić usłudze migracji bazy danych Azure dostępu do źródła SQL Server, która domyślnie jest TCP port 1433.
+- Jeśli używasz wielu wystąpień programu SQL Server o nazwie przy użyciu portów dynamicznych, możesz włączyć usługę Przeglądarka SQL i umożliwiają dostęp do portu UDP 1434 na zaporach, dzięki czemu usługa migracji bazy danych Azure mogą łączyć się nazwanego wystąpienia w źródle serwer.
 - Tworzenie z poziomu serwera [reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) dla serwera bazy danych SQL Azure, aby umożliwić dostęp z migracji bazy danych Azure do docelowymi bazami danych. Podaj zakres podsieci sieci wirtualnej używane przez usługę Azure migracji bazy danych.
 - Upewnij się, że poświadczenia użyte do nawiązania połączenia źródła wystąpienia programu SQL Server [serwera kontroli](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) uprawnienia.
 - Sprawdź, czy poświadczenia użyte do nawiązania połączenia docelowego wystąpienia bazy danych SQL Azure mają uprawnienia bazy danych kontroli na docelowymi bazami danych Azure SQL.
@@ -48,11 +50,13 @@ Podczas korzystania z usługi migracji bazy danych Azure do wykonania programu S
 ## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-database-managed-instance"></a>Wymagania wstępne dotyczące migracji programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure
 - Utwórz wystąpienie wystąpienia zarządzane bazy danych SQL Azure, wykonując szczegółowo w artykule [utworzyć wystąpienia zarządzanego bazy danych SQL Azure w portalu Azure](https://aka.ms/sqldbmi).
 - Otwórz z zapory do zezwalania na ruch związany z protokołem SMB przez port 445 w zakresie adresu lub podsieci IP usługi migracji bazy danych Azure.
+- Otwórz Zaporę systemu Windows, aby umożliwić usłudze migracji bazy danych Azure dostępu do źródła SQL Server, która domyślnie jest TCP port 1433.
+- Jeśli używasz wielu wystąpień programu SQL Server o nazwie przy użyciu portów dynamicznych, możesz włączyć usługę Przeglądarka SQL i umożliwiają dostęp do portu UDP 1434 na zaporach, dzięki czemu usługa migracji bazy danych Azure mogą łączyć się nazwanego wystąpienia w źródle serwer.
 - Sprawdź, czy dane logowania umożliwiający połączenie źródła programu SQL Server i zarządzane wystąpienia docelowego są członkowie roli serwera sysadmin.
 - Utwórz udział sieciowy, który usługa migracji bazy danych Azure umożliwia tworzenie kopii zapasowej źródłowej bazy danych.
 - Upewnij się, że konto usługi uruchomione wystąpienie programu SQL Server źródła ma uprawnienia zapisu w udziale sieciowym, który został utworzony.
 - Zwróć uwagę użytkownika systemu Windows (i hasło), które ma uprawnienia pełnej kontroli w udziale sieciowym, utworzoną wcześniej. Usługa Azure bazy danych migracji personifikuje poświadczenia użytkownika, aby przekazać pliki kopii zapasowej do kontenera magazynu systemu Azure dla operacji przywracania.
-- Tworzenie kontenera obiektów blob i pobrać jego identyfikatora URI połączenia SAS, wykonując kroki opisane w artykule [zasobów Zarządzanie magazynu obiektów Blob Azure przy użyciu Eksploratora usługi Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).  Należy wybrać wszystkie uprawnienia (do odczytu, zapisu i usuwania, listy) w oknie zasad podczas tworzenia identyfikatora URI połączenia SAS.
+- Tworzenie kontenera obiektów blob i pobrać jego identyfikatora URI połączenia SAS, wykonując kroki opisane w artykule [zasobów Zarządzanie magazynu obiektów Blob Azure przy użyciu Eksploratora usługi Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Należy wybrać wszystkie uprawnienia (do odczytu, zapisu i usuwania, listy) w oknie zasad podczas tworzenia identyfikatora URI połączenia SAS.
 
    > [!NOTE]
    > Aby uzyskać pełną listę wymagań wstępnych dotyczących korzystania z usługi migracji bazy danych Azure do przeprowadzenia migracji z programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure, zobacz samouczek [migracji programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure ](https://aka.ms/migratetomiusingdms).

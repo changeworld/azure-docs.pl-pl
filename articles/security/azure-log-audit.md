@@ -1,12 +1,12 @@
 ---
 title: Azure rejestrowanie i inspekcja | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat sposób rejestrowania danych można użyć w celu uzyskania szczegółowych informacji o aplikacji."
+description: Więcej informacji na temat sposób rejestrowania danych można użyć w celu uzyskania szczegółowych informacji o aplikacji.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie platformy Azure i inspekcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -134,14 +134,14 @@ Dzienniki diagnostyczne Azure oferują wiele opcji konfiguracji, które jest, po
 |Data Lake Analytics|[Accessing diagnostic logs for Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs) (Dostęp do dzienników diagnostycznych usługi Azure Data Lake Analytics)|Microsoft.DataLakeAnalytics/accounts|Inspekcja|
 |||Microsoft.DataLakeAnalytics/accounts|Żądania|
 |||Microsoft.DataLakeStore/accounts|Żądania|
-|Logic Apps|[Logic Apps — niestandardowy schemat śledzenia B2B](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|Obiekt WorkflowRuntime|
+|Logic Apps|[Logic Apps — niestandardowy schemat śledzenia B2B](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
 |||Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|
 |Azure Batch|[Azure rejestrowania diagnostycznego partii](https://docs.microsoft.com/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
 |Azure Automation|[Analizy dzienników dla usługi Automatyzacja Azure](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|Microsoft.Automation/automationAccounts|JobLogs|
 |||Microsoft.Automation/automationAccounts|JobStreams|
 |Event Hubs|[Azure Event Hubs dzienników diagnostycznych](https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs)|Microsoft.EventHub/namespaces|ArchiveLogs|
 |||Microsoft.EventHub/namespaces|OperationalLogs|
-|Stream Analytics|[Dzienniki diagnostyczne zadania](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|Wykonywanie|
+|Stream Analytics|[Dzienniki diagnostyczne zadania](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|Wykonanie|
 |||Microsoft.StreamAnalytics/streamingjobs|Tworzenie|
 |Service Bus|[Azure Service Bus dzienników diagnostycznych](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
@@ -313,7 +313,7 @@ Usługa Application Insights jest przeznaczona dla zespołu deweloperów po to, 
 |[Eksport ciągły](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry)|Zbiorcze eksportu nieprzetworzone dane do magazynu po dostarczeniu.||
 
 ### <a name="azure-security-center-alerts"></a>Alerty Centrum zabezpieczeń Azure
-[Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro) automatycznie gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure, sieci i połączonych rozwiązań partnerskich, takich jak zapory i punktu końcowego rozwiązań do ochrony, aby wykrywać prawdziwe zagrożenia i redukować liczbę fałszywych alarmów. W usłudze Security Center jest wyświetlana lista alertów zabezpieczeń uporządkowanych według priorytetu oraz informacje potrzebne do szybkiego analizowania problemu i zalecenia dotyczące postępowania w razie ataku.
+[Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro) automatycznie gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure, sieci i połączonych rozwiązań partnerskich, takich jak zapory i punktu końcowego rozwiązań do ochrony, aby wykrywać prawdziwe zagrożenia i zmniejszyć wartość false alarmów. W usłudze Security Center jest wyświetlana lista alertów zabezpieczeń uporządkowanych według priorytetu oraz informacje potrzebne do szybkiego analizowania problemu i zalecenia dotyczące postępowania w razie ataku.
 
 Wykrywanie zagrożeń za pomocą usługi Security Center polega na automatycznym zbieraniu informacji o zabezpieczeniach uzyskanych z zasobów platformy Azure, sieci i powiązanych rozwiązań partnerskich. Analizuje ona te informacje, często zestawiając informacje z wielu źródeł, aby zidentyfikować zagrożenia. Alerty zabezpieczeń wraz z zaleceniami dotyczącymi usuwania zagrożeń są traktowane przez usługę Security Center priorytetowo.
 
@@ -355,7 +355,7 @@ Istnieją cztery różne sposoby [zbieranie dzienników i metryki dla usług Azu
 | Usługa | Typ zasobu | Dzienniki | Metryki | Rozwiązanie |
 | :------ | :------------ | :--- | :------ | :------- |
 |Bramy aplikacji|  Microsoft.Network/<br>applicationGateways|  Diagnostyka|Diagnostyka|    [Aplikacja Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Gateway Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
-|Usługa Application insights||     Łącznik|  Łącznik|  [Usługa Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connector (wersja zapoznawcza)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
+|Application Insights||     Łącznik|  Łącznik|  [Usługa Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connector (wersja zapoznawcza)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Konta usługi Automation|   Microsoft.Automation/<br>AutomationAccounts|    Diagnostyka||       [Więcej informacji](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Konta usługi Batch|    Microsoft.Batch/<br>batchAccounts|  Diagnostyka|    Diagnostyka||
 |Usługi w chmurze klasycznego||       Magazyn||       [Więcej informacji](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
@@ -364,22 +364,22 @@ Istnieją cztery różne sposoby [zbieranie dzienników i metryki dla usług Azu
 |Data Lake store|   Microsoft.DataLakeStore/<br>accounts|   Diagnostyka|||
 |Przestrzeń nazw centrum zdarzeń|   Microsoft.EventHub/<br>Przestrzenie nazw|  Diagnostyka|    Diagnostyka||
 |Centra IoT Hub|  Microsoft.Devices/<br>IotHubs||     Diagnostyka||
-|Usługa Key Vault| Microsoft.KeyVault/<br>magazynów|  Diagnostyka  || [KeyVault analityka](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
+|Usługa Key Vault| Microsoft.KeyVault/<br>magazynów|  Diagnostyka  || [KeyVault Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |Moduły równoważenia obciążenia|    Microsoft.Network/<br>loadBalancers|    Diagnostyka|||
 |Logic Apps|    Microsoft.Logic/<br>Przepływy pracy|  Diagnostyka|    Diagnostyka||
 ||Microsoft.Logic/<br>integrationAccounts||||
 |Grupy zabezpieczeń sieci|   Microsoft.Network/<br>networksecuritygroups|Diagnostyka||   [Grupy zabezpieczeń sieci Azure analityka](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
 |Magazyny odzyskiwania|   Microsoft.RecoveryServices/<br>magazynów|||[Usługa Azure Recovery usługi Analytics (wersja zapoznawcza)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Usługi wyszukiwania|   Microsoft.Search/<br>searchServices|    Diagnostyka|    Diagnostyka||
-|Przestrzeń nazw Service Bus | Microsoft.ServiceBus/<br>Przestrzenie nazw|    Diagnostyka|Diagnostyka|    [Analiza magistrali usług (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+|Przestrzeń nazw magistrali usług| Microsoft.ServiceBus/<br>Przestrzenie nazw|    Diagnostyka|Diagnostyka|    [Analiza magistrali usług (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Magazyn||    [Usługa sieci szkieletowej Analytics (wersja zapoznawcza)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>serwery /<br>bazy danych||       Diagnostyka||
 ||Microsoft.Sql/<br>serwery /<br>elasticPools||||
 |Magazyn|||         Skrypt| [Usługa Azure Storage Analytics (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Maszyny wirtualne|  Microsoft.Compute/<br>maszyn wirtualnych|  Wewnętrzny|  Wewnętrzny||
+|Maszyny wirtualne|  Microsoft.Compute/<br>virtualMachines|  Wewnętrzny|  Wewnętrzny||
 ||||Diagnostyka||
-|Zestawy skalowania maszyn wirtualnych|   Microsoft.Compute/<br>maszyn wirtualnych    ||Diagnostyka||
-||Microsoft.Compute/<br>virtualMachineScaleSets /<br>maszyn wirtualnych||||
+|Zestawy skalowania maszyn wirtualnych|   Microsoft.Compute/<br>virtualMachines    ||Diagnostyka||
+||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||
 |Farmach serwerów sieci Web|Microsoft.Web/<br>serverfarms||   Diagnostyka
 |Witryny sieci Web| Microsoft.Web/<br>Lokacje ||      Diagnostyka|    [Więcej informacji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>Lokacje /<br>gniazda|||||
@@ -415,7 +415,7 @@ Scenariusze integracji
 
 -   [Dzienników Azure — często zadawane pytania (FAQ) integracji](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq) — to często zadawane pytania dotyczące odpowiedzi na pytania dotyczące integracji dzienników Azure.
 
--   [Integrowanie Centrum zabezpieczeń alertów z usługi Azure dziennika integracji](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) — tym dokumencie przedstawiono sposób synchronizować alerty Centrum zabezpieczeń, wraz z zebrane przez diagnostyki Azure i dzienników inspekcji platformy Azure, z rozwiązania SIEM lub analizy dzienników zdarzeń zabezpieczeń maszyny wirtualnej.
+-   [Integrowanie Centrum zabezpieczeń alertów z usługi Azure dziennika integracji](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) — tym dokumencie przedstawiono sposób synchronizować alerty Centrum zabezpieczeń, wraz z zebrane przez diagnostyki Azure i dzienników inspekcji platformy Azure, z Twojego analizy dzienników zdarzeń zabezpieczeń maszyny wirtualnej lub Rozwiązania SIEM.
 
 ## <a name="next-steps"></a>Następne kroki
 

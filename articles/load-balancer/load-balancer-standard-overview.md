@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie usługi Azure Standard modułu równoważenia obciążenia
 
@@ -30,7 +30,7 @@ Ten artykuł koncentruje się na standardowy moduł równoważenia obciążenia.
 
 Standardowa usługa równoważenia obciążenia jest nowym produktem modułu równoważenia obciążenia dla aplikacji, wszystkie protokoły TCP i UDP z funkcji rozszerzonej i bardziej szczegółowego ustawić przez podstawowe usługi równoważenia obciążenia.  Gdy istnieje wiele podobieństw, należy zapoznać się z różnicami w sposób opisany w tym artykule.
 
-Można użyć standardowego modułu równoważenia obciążenia standardowego jako publiczny lub wewnętrzny moduł równoważenia obciążenia. I maszyny wirtualnej można podłączyć do publicznego i jednego zasobu wewnętrznego modułu równoważenia obciążenia.
+Standardowa usługa równoważenia obciążenia można użyć jako publiczny lub wewnętrzny moduł równoważenia obciążenia. I maszyny wirtualnej można podłączyć do publicznego i jednego zasobu wewnętrznego modułu równoważenia obciążenia.
 
 Funkcje zasobów usługi równoważenia obciążenia zawsze są wyrażane jako frontonu, regułę, sondy kondycji i definicji puli wewnętrznej bazy danych.  Zasób może zawierać wiele reguł. Maszyny wirtualne można umieścić w puli zaplecza, określając puli wewnętrznej bazy danych z maszyny wirtualnej karty Sieciowej zasobu.  W przypadku zestawu skali maszyny wirtualnej ten parametr jest przekazywany przez profil sieci i rozwinięty.
 
@@ -175,6 +175,9 @@ Można modyfikować zasobów standardowe usługi równoważenia obciążenia i p
 ## <a name="migration-between-skus"></a>Migracja między jednostki SKU
 
 Jednostki SKU nie jest modyfikowalna. Wykonaj kroki opisane w tej sekcji, aby przenieść od jednego zasobu jednostki SKU.
+
+>[!IMPORTANT]
+>Przejrzyj ten dokument w całości, aby poznać różnice między jednostki SKU i należy dokładnie zbadać danego scenariusza.  Należy wprowadzić dodatkowe zmiany, aby były wyrównane danego scenariusza.
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>Migracja z podstawowego do wersji Standard
 

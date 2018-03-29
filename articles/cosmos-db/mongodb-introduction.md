@@ -1,12 +1,12 @@
 ---
-title: "Wprowadzenie do platformy Azure rozwiązania Cosmos DB: interfejs API dla bazy danych MongoDB | Dokumentacja firmy Microsoft"
-description: "Poznaj wykorzystania bazy danych rozwiązania Cosmos Azure do przechowywania i bardzo dużych woluminów dokumentów JSON zapytania z niskim opóźnieniem, korzystając z popularnych interfejsów API bazy danych MongoDB OSS."
+title: 'Wprowadzenie do platformy Azure rozwiązania Cosmos bazy danych: baza danych MongoDB interfejsu API | Dokumentacja firmy Microsoft'
+description: Poznaj wykorzystania bazy danych rozwiązania Cosmos Azure do przechowywania i bardzo dużych woluminów dokumentów JSON zapytania z niskim opóźnieniem, korzystając z popularnych interfejsów API bazy danych MongoDB OSS.
 keywords: Co to jest MongoDB
 services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 4afaf40d-c560-42e0-83b4-a64d94671f0a
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: ffca8f4518361e8c5447d7bb7ed6022eb0e96a4a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: cdf1404d0070b74faeaca4dab7838167e2821323
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Wprowadzenie do platformy Azure rozwiązania Cosmos DB: interfejs API dla bazy danych MongoDB
+# <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Wprowadzenie do platformy Azure rozwiązania Cosmos bazy danych: baza danych MongoDB interfejsu API
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft do aplikacji o krytycznym znaczeniu. Udostępnia bazę danych systemu Azure rozwiązania Cosmos [dystrybucji globalne gotowe](distribute-data-globally.md), [elastyczne skalowanie przepływność i magazyn](partition-data.md) na całym świecie, jednocyfrowej milisekundy opóźnienia 99-ty percentyl i wysokiej gwarantowane dostępność, wszystkie kopie przez [SLA branży](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Usługa Azure Cosmos DB [automatycznie indeksuje dane](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez konieczności zarządzania schematami i indeksami. To usługa wielomodelowa, obsługująca modele dokumentowe, klucz-wartość, wykresy i kolumny. 
 
 ![Azure rozwiązania Cosmos bazy danych: Baza danych MongoDB interfejsu API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
-Azure DB rozwiązania Cosmos baz danych może służyć do przechowywania danych dla aplikacji napisanych dla [MongoDB](https://docs.mongodb.com/manual/introduction/). Ta funkcja oznacza, że przy użyciu istniejących [sterowniki](https://docs.mongodb.org/ecosystem/drivers/), aplikacji tworzonych na potrzeby bazy danych MongoDB mogą teraz komunikować się z bazy danych Azure rozwiązania Cosmos i użyć bazy danych DB rozwiązania Cosmos Azure zamiast bazy danych MongoDB. W wielu przypadkach można przełączać z przy użyciu bazy danych MongoDB do bazy danych Azure rozwiązania Cosmos, zmieniając po prostu ciąg połączenia. Z tej funkcji, umożliwia łatwe tworzenie i uruchamianie aplikacji bazy danych MongoDB na platformie Azure w chmurze z dystrybucji globalne DB rozwiązania Cosmos Azure i [kompleksowe SLA branży](https://azure.microsoft.com/support/legal/sla/cosmos-db), kontynuując używanie znanych umiejętności Narzędzia i bazy danych mongodb.
+Azure DB rozwiązania Cosmos baz danych może służyć do przechowywania danych dla aplikacji napisanych dla [MongoDB](https://docs.mongodb.com/manual/introduction/). Ta funkcja oznacza, że przy użyciu istniejących [sterowniki](https://docs.mongodb.org/ecosystem/drivers/), aplikacji tworzonych na potrzeby bazy danych MongoDB mogą teraz komunikować się z bazy danych Azure rozwiązania Cosmos i użyć bazy danych DB rozwiązania Cosmos Azure zamiast bazy danych MongoDB. W wielu przypadkach można przełączać z przy użyciu bazy danych MongoDB do bazy danych Azure rozwiązania Cosmos, zmieniając po prostu ciąg połączenia. Korzystanie z tej funkcji umożliwia łatwe tworzenie i uruchamianie aplikacji bazy danych MongoDB globalnie rozproszone na platformie Azure w chmurze z bazy danych Azure rozwiązania Cosmos i jej [kompleksowe SLA branży](https://azure.microsoft.com/support/legal/sla/cosmos-db), przy użyciu znanych umiejętności i narzędzia bazy danych mongodb.
 
 **Zgodność z bazy danych MongoDB**: korzystania z istniejącej bazy danych MongoDB wiedzy, kod aplikacji i narzędziami bazy danych Azure rozwiązania Cosmos implementuje ten protokół przewodowy 3.4 bazy danych MongoDB (wersja 5) i obsługuje [potoku agregacji bazy danych MongoDB](mongodb-feature-support.md#aggregation-pipeline). Można tworzyć aplikacje przy użyciu bazy danych MongoDB i wdrożyć je do produkcji, używając w pełni zarządzana i globalnie rozproszone usługi bazy danych Azure rozwiązania Cosmos.
 
@@ -68,7 +68,7 @@ Wykonaj poradniki Szybki Start bazy danych MongoDB, aby utworzyć konto bazy dan
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Informacji na temat interfejsu API bazy danych MongoDB DB rozwiązania Cosmos Azure została zintegrowana z ogólną dokumentację bazy danych rozwiązania Cosmos platformy Azure, ale poniżej przedstawiono kilka wskazówek, które ułatwią rozpoczęcie pracy:
+Informacje o interfejsie API Azure rozwiązania Cosmos bazy danych MongoDB jest zintegrowany z ogólną dokumentację bazy danych rozwiązania Cosmos Azure, ale poniżej przedstawiono kilka wskazówek, które ułatwią rozpoczęcie pracy:
 
 * Postępuj zgodnie z [Połącz z kontem bazy danych MongoDB](connect-mongodb-account.md) samouczkiem, aby dowiedzieć się, jak uzyskać informacje o parametrach połączenia konta.
 * Postępuj zgodnie z [3T Użyj Studio (MongoChef) z bazy danych Azure rozwiązania Cosmos](mongodb-mongochef.md) samouczkiem, aby dowiedzieć się, jak utworzyć połączenie między usługą Azure DB rozwiązania Cosmos bazy danych i aplikacji bazy danych MongoDB w Studio 3 T.

@@ -1,11 +1,11 @@
 ---
-title: "Jak pracować z zestawem SDK serwera zaplecza Node.js dla aplikacji mobilnych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak pracować z zestawem SDK serwera zaplecza Node.js dla usługi Azure App Service Mobile Apps."
+title: Jak pracować z zestawem SDK serwera zaplecza Node.js dla aplikacji mobilnych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pracować z zestawem SDK serwera zaplecza Node.js dla usługi Azure App Service Mobile Apps.
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: elamalani
 manager: elamalani
-editor: 
+editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bd423d6fb62b2ace16832f665c8834b4aea7e26f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu Mobile Apps Node.js SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -119,7 +119,7 @@ Visual Studio 2015 wymaga rozszerzenia do tworzenia aplikacji Node.js w środowi
         app.use(mobile);
 
    Zapisz plik.
-10. Uruchom aplikację lokalnie (interfejs API jest obsługiwana na http://localhost: 3000) lub publikowanie na platformie Azure.
+10. Albo uruchamianie aplikacji lokalnie (interfejs API jest obsługiwana na http://localhost:3000) lub publikowanie na platformie Azure.
 
 ### <a name="create-node-backend-portal"></a>Tworzenie zaplecza Node.js przy użyciu portalu Azure
 Można tworzyć aplikacje mobilne zaplecze bezpośrednio w [portalu Azure]. Możesz wykonać następujące czynności lub utworzyć klienta i serwera razem [tworzenie aplikacji mobilnej](app-service-mobile-ios-get-started.md) samouczka. Samouczek zawiera uproszczonej wersji tych instrukcji i najlepiej w projektach z koncepcji.
@@ -135,7 +135,7 @@ Podczas tworzenia zaplecza Node.js Mobile Apps, korzystając z portalu **szybki 
 Poniższa procedura wykorzystuje repozytorium Git do pobierania kodu projektu Szybki Start:
 
 1. Zainstaluj usługę Git, jeśli jeszcze tego nie zrobiono. Kroki wymagane do zainstalowania Git się różnić między systemami operacyjnymi. Dystrybucje systemu operacyjnego i wskazówki dotyczące instalacji, zobacz [instalowanie Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
-2. Postępuj zgodnie z instrukcjami [włączyć repozytorium aplikacji usługi App Service](../app-service/app-service-deploy-local-git.md#Step3) umożliwiające repozytorium Git dla witryny sieci wewnętrznej. Zanotuj wdrożenia nazwy użytkownika i hasła.
+2. Zobacz [przygotowanie repozytorium](../app-service/app-service-deploy-local-git.md#prepare-your-repository) umożliwiające repozytorium Git dla witryny sieci wewnętrznej. Zanotuj wdrożenia nazwy użytkownika i hasła.
 3. W okienku dla zaplecza aplikacji mobilnej Zanotuj **adres URL klonowania Git** ustawienie.
 4. Wykonanie `git clone` polecenia przy użyciu adresu URL klonowania Git. Wprowadź hasło, gdy jest to wymagane, jak w poniższym przykładzie:
 

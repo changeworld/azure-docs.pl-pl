@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory dowód bloków konstrukcyjnych podręcznika dotyczącego koncepcji | Dokumentacja firmy Microsoft"
-description: "Eksploruj i szybkie rozpoczęcie scenariusze Zarządzanie tożsamościami i dostępem"
+title: Azure Active Directory dowód bloków konstrukcyjnych podręcznika dotyczącego koncepcji | Dokumentacja firmy Microsoft
+description: Eksploruj i szybkie rozpoczęcie scenariusze Zarządzanie tożsamościami i dostępem
 services: active-directory
-keywords: "Usługa Azure active directory, podręcznika dotyczącego koncepcji, aby zapewnić"
-documentationcenter: 
+keywords: Usługa Azure active directory, podręcznika dotyczącego koncepcji, aby zapewnić
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: b37ca3c6ca528551ef09a90159e92fd31e0fabf2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 1efb8d89b0a78dcf88c60c2e8cd3b968a725e8b9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory dowód podręcznikowym koncepcji: bloki konstrukcyjne
 
@@ -41,7 +41,7 @@ Poniżej przedstawiono niektóre wymagań wstępnych dla dowolnego fazy weryfika
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Zdefiniowane za pomocą ważnej subskrypcji platformy Azure dzierżawą platformy Azure AD | [Jak uzyskać dzierżawę usługi Azure Active Directory](active-directory-howto-tenant.md)<br/>**Uwaga:** Jeśli istnieje już środowisko o licencji Azure AD Premium, możesz uzyskać zero zakończenia subskrypcji, przechodząc do https://aka.ms/accessaad <br/>Dowiedz się więcej, zobacz: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ i https://technet.microsoft.com/library/dn832618.aspx |
-| Domen zdefiniowany i weryfikacji | [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Uwaga:** niektórych obciążeń, takich jak usługi Power BI można elastycznie dzierżawy usługi azure AD w tle. Aby sprawdzić, czy skojarzony z dzierżawą danej domeny, przejdź do https://login.microsoftonline.com/ {domain}/v2.0/.well-known/openid-configuration. Jeśli uzyskać pomyślnej odpowiedzi, a następnie domena jest już przypisany do dzierżawy i przejęcia mogą być wymagane. Jeśli tak, aby uzyskać dalsze informacje kontakt z firmą Microsoft. Dowiedz się więcej na temat opcji przejęcia na: [czym jest rejestracja samoobsługowa na platformie Azure?](active-directory-self-service-signup.md) |
+| Domen zdefiniowany i weryfikacji | [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Uwaga:** niektórych obciążeń, takich jak usługi Power BI można elastycznie dzierżawy usługi azure AD w tle. Aby sprawdzić, czy skojarzony z dzierżawą danej domeny, przejdź do https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Jeśli uzyskać pomyślnej odpowiedzi, a następnie domena jest już przypisany do dzierżawy i przejęcia mogą być wymagane. Jeśli tak, aby uzyskać dalsze informacje kontakt z firmą Microsoft. Dowiedz się więcej na temat opcji przejęcia na: [czym jest rejestracja samoobsługowa na platformie Azure?](active-directory-self-service-signup.md) |
 | Azure AD Premium lub pakietu EMS włączone wersji próbnej | [Azure Active Directory Premium wolnego przez jeden miesiąc](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Aby zapewnić użytkownikom przypisano licencji pakietu EMS lub Azure AD Premium | [Licencja użytkownika, jak i użytkowników w usłudze Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
 | Poświadczenia usługi Azure AD administratora globalnego | [Przypisywanie ról administratorów w usłudze Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md) |
@@ -71,7 +71,7 @@ Przybliżona godzina ukończone: dopiero po godzinie mniej niż 1000 użytkownik
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-1. Przyjrzyj się zagadnienia dotyczące zabezpieczeń z synchronizacji skrótów haseł [tutaj](./connect/active-directory-aadconnectsync-implement-password-synchronization.md).  Jeśli synchronizacja skrótów haseł dla użytkowników pilotażowych produkcji nie jest ostatecznie opcji, należy rozważyć następujących alternatyw:
+1. Przyjrzyj się zagadnienia dotyczące zabezpieczeń z synchronizacji skrótów haseł [tutaj](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).  Jeśli synchronizacja skrótów haseł dla użytkowników pilotażowych produkcji nie jest ostatecznie opcji, należy rozważyć następujących alternatyw:
    * Tworzenie użytkowników testowych w domenie produkcji. Upewnij się, że nie Synchronizuj innego konta
    * Przenieś do środowiska UAT
 2.  Jeśli chcesz wykonywać federacyjnych, warto poznać koszty związane federacyjnych rozwiązania z dostawcy tożsamości lokalnych poza fazy weryfikacji Koncepcji i miary, która przed korzyści, które użytkownik chce się dowiedzieć:
@@ -209,7 +209,7 @@ Przybliżona godzina ukończone: 30 minut
 | Wymagania wstępne | Zasoby |
 | --- | --- |
 | Lista aplikacji docelowej i dokładne logowania adresy URL wcześniejsze. Na przykład można użyć usługi Twitter. | [Na platformie Microsoft Azure Marketplace w usłudze Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Załóż konto usługi Twitter](https://twitter.com/signup?lang=en) |
-| Udostępnione poświadczenia dla tej aplikacji SaaS. | [Udostępnianie kont za pomocą usługi Azure AD](active-directory-sharing-accounts.md)<br/>[Hasło przerzucania dla usługi Facebook, Twitter i LinkedIn dostępna w wersji zapoznawczej usługi azure AD automatycznego! -Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
+| Udostępnione poświadczenia dla tej aplikacji SaaS. | [Udostępnianie kont za pomocą usługi Azure AD](active-directory-sharing-accounts.md)<br/>[Hasło przerzucania dla usługi Facebook, Twitter i LinkedIn dostępna w wersji zapoznawczej usługi azure AD automatycznego! -Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | Poświadczenia dla co najmniej dwóch członków zespołu, którzy będą uzyskiwać dostęp do tego samego konta. Należy do grupy zabezpieczeń. | [Przypisanie użytkownika lub grupę do aplikacji przedsiębiorstwa w usłudze Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
 | Prawa dostępu lokalnego administratora na komputerze, aby wdrożyć rozszerzenie Panel dostępu dla programu Internet Explorer, Chrome lub Firefox | [Rozszerzenia Panel dostępu dla programu Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozszerzenia Panel dostępu dla programu Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozszerzenia Panel dostępu dla przeglądarki Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
@@ -478,8 +478,8 @@ Przybliżona godzina ukończone: 15 minut
 | --- | --- |
 | Zaloguj się do https://portal.azure.com jako administrator globalny (GA) i ładowania początkowego bloku PIM. Administrator globalny, który wykonuje ten krok jest obsługiwany jako administratora zabezpieczeń.  Umożliwia wywołanie tego aktora GA1 | [Za pomocą Kreatora zabezpieczeń w usłudze Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
 | Zidentyfikuj administratora globalnego i przenieś je z stałe kwalifikujących się. Powinno to być oddzielne admin niż tego używanego w kroku 1 dla uzyskania przejrzystości. Umożliwia wywołanie tego aktora GA2 | [Azure AD Privileged Identity Management: Jak dodać lub usunąć rolę użytkownika](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Co to jest usługa Azure AD Privileged Identity Management?: Konfigurowanie ustawień roli aktywacji](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
-| Teraz Zaloguj się jako GA2 do https://portal.azure.com i spróbuj zmienić "Ustawienia użytkownika". Zwróć uwagę, że niektóre opcje są wygaszone. | |
-| Na nowej karcie w tej samej sesji w kroku 3, teraz przejdź do https://portal.azure.com i Dodaj blok PIM do pulpitu nawigacyjnego. | [Jak aktywować lub dezaktywować role w programie Azure AD Privileged Identity Management: Dodawanie aplikacji Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| Teraz, zaloguj się jako GA2 do https://portal.azure.com i spróbuj zmienić "Ustawienia użytkownika". Zwróć uwagę, że niektóre opcje są wygaszone. | |
+| Na nowej karcie i w tej samej sesji w kroku 3, teraz przejdź do https://portal.azure.com i Dodaj blok PIM do pulpitu nawigacyjnego. | [Jak aktywować lub dezaktywować role w programie Azure AD Privileged Identity Management: Dodawanie aplikacji Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
 | Żądanie aktywacji do roli administratora globalnego | [Jak aktywować lub dezaktywować role w programie Azure AD Privileged Identity Management: aktywować rolę](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
 | Należy pamiętać, że GA2 nigdy nie zarejestrowała się w usłudze MFA, rejestracji dla usługi Azure MFA będzie to konieczne |  |
 | Przejdź wstecz do oryginalnego karty w kroku 3, a następnie kliknij przycisk Odśwież w przeglądarce. Należy pamiętać, że masz teraz dostęp do ustawień "użytkownika" | |
@@ -508,7 +508,7 @@ Przybliżona godzina ukończone: 20 minut
 | Otwórz tor przeglądarki | [Pobierz Tor przeglądarki](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Zaloguj się do https://myapps.microsoft.com przy użyciu konta użytkownika w fazie weryfikacji Koncepcji | [Azure Active Directory Identity Protection podręcznika dotyczącego: Symulowanie zdarzeń o podwyższonym ryzyku](active-directory-identityprotection-playbook.md#simulating-risk-events) |
 | Zaczekaj 5-7 minut |  |
-| Zaloguj się jako administrator globalny do https://portal.azure.com i otwarcie bloku Identity Protection | https://aka.ms/aadipgetstarted |
+| Zaloguj się jako administrator globalny do https://portal.azure.com i otwórz blok Identity Protection | https://aka.ms/aadipgetstarted |
 | Otwiera blok zdarzenia ryzyka. Powinien zostać wyświetlony w obszarze "Logowania z anonimowych adresów IP"  | [Azure Active Directory Identity Protection podręcznika dotyczącego: Symulowanie zdarzeń o podwyższonym ryzyku](active-directory-identityprotection-playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia

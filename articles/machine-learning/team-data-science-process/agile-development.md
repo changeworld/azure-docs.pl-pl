@@ -1,23 +1,23 @@
 ---
-title: "Elastyczne rozwoju projektów nauki danych - Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Jak deweloperzy mogą wykonywać projektu analizy danych w wersji systematyczne, kontrolowane i sposób współpracy w zespole projektu przy użyciu procesu nauki danych zespołu."
-documentationcenter: 
+title: Elastyczne rozwoju projektów nauki danych - Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Jak deweloperzy mogą wykonywać projektu analizy danych w wersji systematyczne, kontrolowane i sposób współpracy w zespole projektu przy użyciu procesu nauki danych zespołu.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: 686f751b241d49d116948711c683f4b504d5d5f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: dbaf2df0f5572c9b269000c741f1d736a7521d73
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="agile-development-of-data-science-projects"></a>Elastyczne programowanie projektów analizy danych
 
@@ -89,7 +89,7 @@ Ta funkcja może także połączyć z repozytorium projektu. Kliknij przycisk **
 
 ## 4. <a name='AddStoryunderfeature-4'></a>Dodaj wątku w funkcji 
 
-W funkcji można dodać wątków do opisano najważniejsze czynności wymagane do zakończenia projektu (funkcja). Aby dodać nowy artykuł, kliknij przycisk  **+**  Zaloguj się na lewo od funkcji w widoku listy prac.  
+W funkcji można dodać wątków do opisano najważniejsze czynności wymagane do zakończenia projektu (funkcja). Aby dodać nowy artykuł, kliknij przycisk **+** Zaloguj się na lewo od funkcji w widoku listy prac.  
 
 ![4](./media/agile-development/4-sprint-add-story.png)
 
@@ -106,7 +106,7 @@ Ten artykuł można połączyć istniejące repozytorium, klikając **+ Dodaj** 
 
 Zadania są określone szczegółowy opis kroków, które są niezbędne do ukończenia każdego scenariusza. Po zakończeniu wszystkich zadań wątku zbyt należy wypełnić wątku. 
 
-Można dodać zadania do artykułu, kliknij przycisk  **+**  znak obok elementu scenariusza, wybierz opcję **zadań**, a następnie wypełnij szczegółowe informacje tego zadania w wyskakującym oknie.
+Można dodać zadania do artykułu, kliknij przycisk **+** znak obok elementu scenariusza, wybierz opcję **zadań**, a następnie wypełnij szczegółowe informacje tego zadania w wyskakującym oknie.
 
 ![7](./media/agile-development/7-sprint-add-task.png)
 
@@ -117,7 +117,7 @@ Po utworzeniu funkcji, scenariuszy i zadań, można wyświetlić je w **zaległo
 ![9](./media/agile-development/9-link-to-a-new-branch.png)
 
 
-## 6. <a name='set-up-agile-dsp-6'></a>Przygotuj szablon pracy Agile TDSP w Visual Studio Online
+## 6. <a name='set-up-agile-dsp-6'></a> Przygotuj szablon pracy Agile TDSP w Visual Studio Online
 
 W tym artykule opisano sposób konfigurowania nauki szablonu procesu zwinnego danych, który używa etapy cyklu życia analizy danych TDSP i śledzenie elementów pracy za pomocą programu Visual Studio Online (vso). Szablonu procesu czynności krokach związanych z przykładem konfigurowania danych nauki specyficzne dla agile *AgileDataScienceProcess* i pokazują, jak tworzyć elementy pracy nauki danych na podstawie szablonu.
 
@@ -178,14 +178,14 @@ Po utworzeniu szablonu procesu nauki danych można tworzyć i śledzenia element
     ![18](./media/agile-development/18-workitems.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Kodowanie współpracy z usługą Git](collaborative-coding-with-git.md) opisuje czy programowanie zespołowe kodu dla projektów analizy danych przy użyciu narzędzia Git jako platforma programistyczna udostępnionego kodu oraz połączyć działań do pracy planowane z procesu zwinnego programowania.
 
 Poniżej przedstawiono dodatkowe linki do zasobów na elastyczne procesów.
 
-- Procesu zwinnego [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- Typy elementów roboczych procesu agile i przepływ pracy [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- Procesu agile   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
+- Typy elementów roboczych procesu agile i przepływ pracy   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
 
 
 Wskazówki, które pokazują wszystkie kroki procesu **określonych scenariuszy** podawane są również. Wymieniono i połączone z opisami miniatur w [wskazówki przykład](walkthroughs.md) artykułu. Pokazują one sposób łączenia chmury, narzędzia lokalnych i usług w przepływie pracy lub potoku, aby utworzyć aplikację inteligentnego. 

@@ -1,8 +1,8 @@
 ---
-title: "Użyj Apache Spark do odczytywania i zapisywania danych do usługi Azure SQL database | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować połączenie między klastrem Spark w usłudze HDInsight i bazy danych Azure SQL można odczytać danych, zapis danych i strumienia danych do bazy danych SQL"
+title: Użyj Apache Spark do odczytywania i zapisywania danych do usługi Azure SQL database | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować połączenie między klastrem Spark w usłudze HDInsight i bazy danych Azure SQL można odczytać danych, zapis danych i strumienia danych do bazy danych SQL
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/29/2018
+ms.date: 03/28/2018
 ms.author: nitinme
-ms.openlocfilehash: 28ed6b9774bb85c7ec806c7775c34f8bc3d66bde
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011471224d79ae326ccc33fc23fd6fada347497b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Używanie klastra Spark w usłudze HDInsight do odczytywania i zapisywania danych do bazy danych Azure SQL
 
@@ -234,7 +234,7 @@ W tej sekcji możemy strumienia danych do **hvactable** już utworzony w bazie d
         
          var streamingQuery = WriteToSQLQuery.start()
 
-6. Sprawdź, czy dane są przesyłane strumieniowo do **hvactable** , uruchamiając następujące zapytanie. Zawsze, gdy uruchom zapytanie, pokazuje liczbę wierszy w zwiększenie tabeli.
+6. Sprawdź, czy dane są przesyłane strumieniowo do **hvactable** , uruchamiając następujące zapytanie w programu SQL Server Management Studio (SSMS). Zawsze, gdy uruchom zapytanie, pokazuje liczbę wierszy w zwiększenie tabeli.
 
         SELECT COUNT(*) FROM hvactable
 

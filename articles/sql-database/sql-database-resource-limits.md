@@ -1,6 +1,6 @@
 ---
-title: "Limity zasobów bazy danych Azure SQL | Dokumentacja firmy Microsoft"
-description: "Na tej stronie opisano niektóre typowe limity zasobów bazy danych SQL Azure."
+title: Limity zasobów bazy danych Azure SQL | Dokumentacja firmy Microsoft
+description: Na tej stronie opisano niektóre typowe limity zasobów bazy danych SQL Azure.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: ba192b6dba68f01af796a1099b064d6ec0bd3f1b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fb9cb15e96c4098151d220c2bd47fbb7f299687c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Limitom zasobów bazy danych SQL Azure
 
@@ -113,7 +113,7 @@ Można zwiększyć lub zmniejszyć zasoby dostępne dla puli elastycznej oparte 
 | Maksimum | Wartość |
 | :--- | :--- |
 | Baz danych na serwerze | 5000 |
-| Liczba serwerów na subskrypcję dla regionu | 21 |
+| Liczba serwerów na subskrypcję dla regionu | 20 |
 |||
 
 > [!IMPORTANT]

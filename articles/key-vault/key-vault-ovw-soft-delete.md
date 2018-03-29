@@ -1,16 +1,16 @@
 ---
-ms.assetid: 
-title: "Usługa Azure Key Vault usuwania nietrwałego | Dokumentacja firmy Microsoft"
+ms.assetid: ''
+title: Usługa Azure Key Vault usuwania nietrwałego | Dokumentacja firmy Microsoft
 ms.service: key-vault
 author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 01357e4fdb9b6f27e9baf5f5c8e4c7d6b582ad35
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6a3573cf31418309a31126b2a0c6a43ea2e0c745
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Omówienie usługi Azure Key Vault soft-delete
 
@@ -68,7 +68,14 @@ Trwałe usuwanie, usuwanie, magazyn kluczy jest możliwe za pośrednictwem opera
 
 Wyjątek ma miejsce w przypadku subskrypcji platformy Azure została oznaczona jako *nieusuwalnej*. W takim przypadku tylko usługa może następnie wykonaj rzeczywiste usunięcie i wykonuje zaplanowane proces. 
 
-## <a name="next-steps"></a>Następne kroki
+### <a name="billing-implications"></a>Implikacje rozliczeń
+
+Ogólnie rzecz biorąc, gdy obiekt (magazynu kluczy lub klucz lub klucz tajny) jest w stanie usunięty, istnieją tylko dwa operacje możliwe: "przeczyścić" i "Odzyskiwanie". Wszystkie inne operacje zakończy się niepowodzeniem. W związku z tym mimo, że obiekt nie istnieje, nie może być wykonane i dlatego nie użycia nastąpi, więc nie ma rachunku. Jednak są następujące wyjątki:
+
+- "przeczyścić" i "odzyskać" działania są zliczane operacje normalne magazynu kluczy i będą naliczane.
+- Obiekt jest klucza HSM, opłata "Klucza chronionego przez moduł HSM" według klucza wersji na miesiąc opłat zostanie zastosowana Jeśli użyto klucza wersji w ciągu ostatnich 30 dni. Po tym ponieważ obiekt jest w stanie usunięty, może być wykonywane żadne operacje na nim, więc bez dodatkowych opłat zostaną zastosowane.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 Następujące dwa przewodniki oferują scenariuszy użycia głównej dla używanie opcji usuwania nietrwałego.
 

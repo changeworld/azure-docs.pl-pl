@@ -1,12 +1,12 @@
 ---
-title: "Utwórz publiczny moduł równoważenia obciążenia w przypadku adresu IPv6 - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia w przypadku adresu IPv6 w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure."
+title: Utwórz publiczny moduł równoważenia obciążenia w przypadku adresu IPv6 - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć publiczny moduł równoważenia obciążenia w przypadku adresu IPv6 w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "Protokół IPv6, usługi równoważenia obciążenia azure, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, mobile, iot"
+keywords: Protokół IPv6, usługi równoważenia obciążenia azure, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, mobile, iot
 ms.assetid: a1957c9c-9c1d-423e-9d5c-d71449bc1f37
 ms.service: load-balancer
 ms.devlang: na
@@ -15,20 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3abd47460999f7b059469a58a59a3e297e88effb
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 62f22ccadfabd2f3d6906beb3c241703d4e6383f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Utwórz publiczny moduł równoważenia obciążenia w przypadku adresu IPv6 w usłudze Azure Resource Manager przy użyciu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
-> * [PowerShell](load-balancer-ipv6-internet-ps.md)
+> * [Program PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [Interfejs wiersza polecenia platformy Azure](load-balancer-ipv6-internet-cli.md)
 > * [Szablon](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Usługa Azure Load Balancer to moduł równoważenia obciążenia w warstwie 4 (TCP, UDP). Moduły równoważenia obciążenia zapewnia wysoką dostępność, przekazując przychodzący ruch między wystąpienie usługi działa prawidłowo usług w chmurze lub maszyn wirtualnych w zestawie usługi równoważenia obciążenia. Moduły równoważenia obciążenia można także przedstawić tych usług w wielu portów lub wiele adresów IP lub oba.
 
@@ -187,7 +186,7 @@ W tym przykładzie opisano tworzenie następujących elementów:
 * Regułę NAT do tłumaczenia cały ruch przychodzący na porcie 3391 do portu 3389 dla protokołu remote desktop protocol (RDP).\*
 * reguły modułu równoważenia obciążenia do zrównoważenia cały ruch przychodzący na porcie 80 dla portu 80 adresy w puli zaplecza.
 
-\*Reguły NAT są skojarzone z konkretnym wystąpieniem maszyny wirtualnej związanej z modułem równoważenia obciążenia. Ruch sieciowy przychodzący do portu 3389 są wysyłane do określonej maszyny wirtualnej i port, który jest skojarzony z regułą translatora adresów Sieciowych. Musisz określić protokół (UDP lub TCP) dla reguły NAT. Nie można przypisać obu tych protokołów do tego samego portu.
+\* Reguły NAT są skojarzone z konkretnym wystąpieniem maszyny wirtualnej związanej z modułem równoważenia obciążenia. Ruch sieciowy przychodzący do portu 3389 są wysyłane do określonej maszyny wirtualnej i port, który jest skojarzony z regułą translatora adresów Sieciowych. Musisz określić protokół (UDP lub TCP) dla reguły NAT. Nie można przypisać obu tych protokołów do tego samego portu.
 
 1. Skonfiguruj zmienne środowiska PowerShell:
 
@@ -341,7 +340,7 @@ Aby utworzyć maszyny wirtualne, musi mieć konto magazynu. W przypadku równowa
     $vm2 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm2Name --nic-id $nic2Id --os-disk-vhd $osDisk2Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Get started configuring an internal load balancer](load-balancer-get-started-ilb-arm-cli.md) (Wprowadzenie do konfigurowania wewnętrznego modułu równoważenia obciążenia)  
 [Configure a load balancer distribution mode](load-balancer-distribution-mode.md) (Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia)  

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 75615de523f1fba808f44fb1a1015138fb190edc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie rozrusznik w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -280,7 +280,7 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
 1. **[A]**  Instalatora rozpoznawania nazwy hosta   
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład przedstawia sposób użycia pliku/etc/hosts.
-   Zastąp adres IP i nazwy hosta w poniższych poleceniach
+   Zastąp adres IP i nazwy hosta w następujących poleceń. Zaletą używania/etc/hosts jest niezależna od DNS, który może być zbyt pojedynczego punktu awarii klastra.
 
    <pre><code>
    sudo vi /etc/hosts
@@ -329,10 +329,16 @@ Następujące elementy są poprzedzane prefiksem albo **[A]** — mające zastos
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Dodaj następującą zawartość pogrubienie do pliku.
+   Dodaj następującą zawartość bold do pliku, jeśli wartości nie są występują lub innych.
    
    <pre><code> 
    [...]
+     <b>token:          5000
+     token_retransmits_before_loss_const: 10
+     join:           60
+     consensus:      6000
+     max_messages:   20</b>
+     
      interface { 
         [...] 
      }

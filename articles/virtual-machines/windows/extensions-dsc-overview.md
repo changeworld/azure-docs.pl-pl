@@ -1,11 +1,11 @@
 ---
-title: "Żądany stan konfiguracji dla platformy Azure — omówienie | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać programu obsługi rozszerzenia Microsoft Azure dla programu PowerShell żądanego stanu konfiguracji (DSC). Artykuł zawiera wymagania wstępne, architektura i polecenia cmdlet."
+title: Żądany stan konfiguracji dla platformy Azure — omówienie | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać programu obsługi rozszerzenia Microsoft Azure dla programu PowerShell żądanego stanu konfiguracji (DSC). Artykuł zawiera wymagania wstępne, architektura i polecenia cmdlet.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: DSC
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: 14d29223435e9a133b112a61f2ecdde0aad581a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b16261c9a9f046b7bc55a06dd71aa154a0cec27
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do obsługi rozszerzenia konfiguracji żądanego stanu usługi Azure
 
@@ -71,7 +71,7 @@ W większości przypadków szablony wdrażania Menedżera zasobów są oczekiwan
 
 Polecenia cmdlet programu PowerShell, które są używane do zarządzania rozszerzenia DSC najlepiej są używane w interakcyjne Rozwiązywanie problemów i scenariusze zbierania informacji. Poleceń cmdlet służy do pakietu, publikowanie i monitorować wdrożenia rozszerzenia usługi Konfiguracja DSC. Należy pamiętać, że polecenia cmdlet dla rozszerzenia DSC nie są jeszcze zaktualizowany do pracy z [domyślne skryptu konfiguracji](#default-configuration-script).
 
-**AzureRMVMDscConfiguration publikowania** polecenie cmdlet ma w pliku konfiguracji, szuka zasoby zależne DSC, a następnie tworzy plik zip. Plik zip zawiera konfigurację i zasoby niezbędne wprowadzenie konfiguracji DSC. Polecenia cmdlet można również utworzyć pakiet lokalnie, używając *- ConfigurationArchivePath* parametru. W przeciwnym razie polecenie cmdlet publikuje plik zip do magazynu obiektów blob, a następnie zabezpiecza z tokenem sygnatury dostępu Współdzielonego.
+**AzureRMVMDscConfiguration publikowania** polecenie cmdlet ma w pliku konfiguracji, szuka zasoby zależne DSC, a następnie tworzy plik zip. Plik zip zawiera konfigurację i zasoby niezbędne wprowadzenie konfiguracji DSC. Polecenia cmdlet można również utworzyć pakiet lokalnie, używając *- OutputArchivePath* parametru. W przeciwnym razie polecenie cmdlet publikuje plik zip do magazynu obiektów blob, a następnie zabezpiecza z tokenem sygnatury dostępu Współdzielonego.
 
 Skrypt konfiguracji .ps1, który tworzy polecenia cmdlet znajduje się w pliku zip w katalogu głównym folderu archiwum. Folder moduł znajduje się w folderze archiwum w zasobach.
 
@@ -133,7 +133,7 @@ Aby skonfigurować usługi Konfiguracja DSC w portalu:
 
 Portal wymaga następujące dane wejściowe:
 
-* **Moduły konfiguracji lub skryptu**: to pole jest obowiązkowe (formularza nie został jeszcze zaktualizowany do [domyślne skryptu konfiguracji](#default-configuration-script)). Moduły konfiguracji i skrypty wymagają pliku .ps1, który zawiera skrypt konfiguracji lub przy użyciu skryptu konfiguracji .ps1 w katalogu głównym pliku zip. Jeśli plik zip, wszystkimi zasobami zależnymi musi być uwzględniona w folderach modułu w zip. Można utworzyć pliku zip, używając **Publish AzureVMDscConfiguration - ConfigurationArchivePath** polecenia cmdlet, który znajduje się w zestawie SDK Azure PowerShell. Plik zip jest przekazywane do usługi magazynu obiektów blob użytkownika i zabezpieczone przez tokenu sygnatury dostępu Współdzielonego.
+* **Moduły konfiguracji lub skryptu**: to pole jest obowiązkowe (formularza nie został jeszcze zaktualizowany do [domyślne skryptu konfiguracji](#default-configuration-script)). Moduły konfiguracji i skrypty wymagają pliku .ps1, który zawiera skrypt konfiguracji lub przy użyciu skryptu konfiguracji .ps1 w katalogu głównym pliku zip. Jeśli plik zip, wszystkimi zasobami zależnymi musi być uwzględniona w folderach modułu w zip. Można utworzyć pliku zip, używając **Publish AzureVMDscConfiguration - OutputArchivePath** polecenia cmdlet, który znajduje się w zestawie SDK Azure PowerShell. Plik zip jest przekazywane do usługi magazynu obiektów blob użytkownika i zabezpieczone przez tokenu sygnatury dostępu Współdzielonego.
 
 * **Plik PSD1 danych konfiguracji**: to pole jest opcjonalne. Jeśli konfiguracja wymaga plik danych konfiguracji w psd1, użyj tego pola, aby wybrać pola danych i przekaż go do magazynu obiektów blob użytkownika. Plik danych konfiguracji jest zabezpieczony przez tokenu sygnatury dostępu Współdzielonego w magazynie obiektów blob.
 

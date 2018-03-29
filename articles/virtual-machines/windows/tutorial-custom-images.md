@@ -1,45 +1,48 @@
 ---
-title: "Tworzenie niestandardowych obrazów maszyn wirtualnych przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Samouczek — Tworzenie niestandardowego obrazu maszyny Wirtualnej przy użyciu programu Azure PowerShell."
+title: Tworzenie niestandardowych obrazów maszyn wirtualnych przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Samouczek — Tworzenie niestandardowego obrazu maszyny Wirtualnej przy użyciu programu Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/07/2017
+ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7001e5df235d65c531b9102f879bde9693c4f853
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 443f47b98ea063c6fe1f0b3517c00b6cf3692161
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>Tworzenie niestandardowego obrazu maszyny Wirtualnej platformy Azure przy użyciu programu PowerShell
 
-Niestandardowe obrazy są takie jak obrazy marketplace, ale można je utworzyć samodzielnie. Niestandardowe obrazy może służyć do ładowania początkowego konfiguracje, takie jak wstępnego ładowania aplikacji, konfiguracji aplikacji i inne konfiguracje systemu operacyjnego. W tym samouczku utworzysz własnego niestandardowego obrazu maszyny wirtualnej platformy Azure. Omawiane kwestie:
+Obrazy niestandardowe są podobne do obrazów z platformy handlowej, ale tworzy się je samodzielnie. Obrazy niestandardowe mogą służyć do ładowania początkowego konfiguracji, na przykład do wstępnego ładowania aplikacji, konfiguracji aplikacji i innych konfiguracji systemu operacyjnego. W tym samouczku utworzysz własny niestandardowy obraz maszyny wirtualnej platformy Azure. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Narzędzie Sysprep i generalize maszyny wirtualne
 > * Tworzenie obrazu niestandardowego
-> * Utwórz maszynę Wirtualną z obrazu niestandardowego
-> * Wyświetlanie listy wszystkich obrazów w ramach subskrypcji
-> * Usuń obraz
+> * Tworzenie maszyny wirtualnej na podstawie obrazu niestandardowego
+> * Wyświetlanie listy wszystkich obrazów w subskrypcji
+> * Usuwanie obrazu
 
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 3.6 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Poniższe kroki szczegółowo sposób pobrać istniejącej maszyny Wirtualnej i przekształcić ją do ponownego użycia niestandardowego obrazu używanego do utworzenia nowego wystąpienia maszyny Wirtualnej.
+W poniższych krokach wyjaśniono szczegółowo, jak na podstawie istniejącej maszyny wirtualnej utworzyć obraz niestandardowy do ponownego użycia, za pomocą którego można utworzyć nowe wystąpienia maszyn wirtualnych.
 
-Aby ukończyć przykład, w tym samouczku, musi mieć istniejącej maszyny wirtualnej. Jeśli to konieczne, to [przykładowym skrypcie](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) można utworzyć. Podczas pracy nad samouczek, Zastąp maszyny Wirtualnej i grupy zasobów nazwy w razie potrzeby.
+Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna. W razie potrzeby [ten przykładowy skrypt](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) pomoże Ci go utworzyć. Podczas pracy z tym samouczkiem zamień w odpowiednich przypadkach nazwy maszyn wirtualnych i grup zasobów.
+
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Jeśli do zainstalowania i używania programu PowerShell lokalnie, w tym samouczku, wymaga AzureRM wersji modułu 5.6.0 lub nowszym. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="prepare-vm"></a>Przygotowywanie maszyny Wirtualnej
 
@@ -56,123 +59,64 @@ Program Sysprep usuwa wszystkie informacje osobiste konto, między innymi i przy
 4. W **opcje zamykania**, wybierz pozycję *zamknięcia* , a następnie kliknij przycisk **OK**.
 5. Po zakończeniu działania programu Sysprep, zamyka maszyny wirtualnej. **Nie uruchamiaj ponownie maszynę Wirtualną**.
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>Cofnięcie przydziału i zostać oznaczone jako uogólniona maszyna wirtualna
+### <a name="deallocate-and-mark-the-vm-as-generalized"></a>Cofanie przydziału i oznaczanie maszyny wirtualnej jako uogólnionej
 
 Aby utworzyć obraz, maszyna wirtualna musi być alokację oraz oznaczony jako uogólniony na platformie Azure.
 
 Cofnięcie przydziału maszynę Wirtualną przy użyciu [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm).
 
-```powershell
+```azurepowershell-interactive
 Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Force
 ```
 
 Ustaw stan maszyny wirtualnej na `-Generalized` przy użyciu [AzureRmVm zestawu](/powershell/module/azurerm.compute/set-azurermvm). 
    
-```powershell
+```azurepowershell-interactive
 Set-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Generalized
 ```
 
 
 ## <a name="create-the-image"></a>Tworzenie obrazu
 
-Teraz można utworzyć obrazu maszyny wirtualnej za pomocą [AzureRmImageConfig nowy](/powershell/module/azurerm.compute/new-azurermimageconfig) i [AzureRmImage nowy](/powershell/module/azurerm.compute/new-azurermimage). Poniższy przykład tworzy obraz o nazwie *myImage* z maszyny Wirtualnej o nazwie *myVM*.
+Teraz można utworzyć obrazu maszyny wirtualnej za pomocą [AzureRmImageConfig nowy](/powershell/module/azurerm.compute/new-azurermimageconfig) i [AzureRmImage nowy](/powershell/module/azurerm.compute/new-azurermimage). W poniższym przykładzie utworzono obraz o nazwie *myImage* za pomocą maszyny wirtualnej o nazwie *myVM*.
 
 Przełącz maszynę wirtualną. 
 
-```powershell
+```azurepowershell-interactive
 $vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
 ```
 
 Utwórz konfigurację obrazu.
 
-```powershell
+```azurepowershell-interactive
 $image = New-AzureRmImageConfig -Location EastUS -SourceVirtualMachineId $vm.ID 
 ```
 
 Tworzenie obrazu.
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceGroup
 ``` 
 
  
 ## <a name="create-vms-from-the-image"></a>Tworzenie maszyn wirtualnych z obrazu
 
-Teraz, gdy masz obrazu można utworzyć jeden lub więcej nowych maszyn wirtualnych z obrazu. Tworzenie maszyny Wirtualnej z obrazu niestandardowego jest bardzo podobny do tworzenia maszyny Wirtualnej przy użyciu obrazu z witryny Marketplace. Korzystając z obrazu z witryny Marketplace, musisz podać informacje dotyczące obrazu, dostawca obrazu, oferty, jednostki SKU i wersji. Z niestandardowego obrazu wystarczy podać identyfikator zasobu obrazu niestandardowego. 
+Teraz, gdy masz obrazu można utworzyć jeden lub więcej nowych maszyn wirtualnych z obrazu. Tworzenie maszyny Wirtualnej z obrazu niestandardowego jest bardzo podobny do tworzenia maszyny Wirtualnej przy użyciu obrazu z witryny Marketplace. Korzystając z obrazu z witryny Marketplace, musisz podać informacje dotyczące obrazu, dostawca obrazu, oferty, jednostki SKU i wersji. Za pomocą parametru uproszczony ustawiony dla [AzureRMVM nowy]() polecenia cmdlet, wystarczy podać nazwę niestandardowego obrazu tak długo, jak jest w tej samej grupie zasobów. 
 
-W poniższym skrypcie, możemy utworzyć zmienną *$image* do przechowywania informacji na temat używania niestandardowego obrazu [Get-AzureRmImage](/powershell/module/azurerm.compute/get-azurermimage) , a następnie używamy [AzureRmVMSourceImage zestaw](/powershell/module/azurerm.compute/set-azurermvmsourceimage) i określić za pomocą Identyfikatora *$image* zmiennej właśnie utworzyliśmy. 
-
-Skrypt tworzy Maszynę wirtualną o nazwie *myVMfromImage* z naszych obraz niestandardowy w nowej grupy zasobów o nazwie *myResourceGroupFromImage* w *zachodnie stany USA* lokalizacji.
+To przykładowe polecenie tworzy Maszynę wirtualną o nazwie *myVMfromImage* z *myImage*w *myResourceGroup*.
 
 
-```powershell
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-New-AzureRmResourceGroup -Name myResourceGroupFromImage -Location EastUS
-
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
-    -Name mySubnet `
-    -AddressPrefix 192.168.1.0/24
-
-$vnet = New-AzureRmVirtualNetwork `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -Name MYvNET `
-    -AddressPrefix 192.168.0.0/16 `
-    -Subnet $subnetConfig
-
-$pip = New-AzureRmPublicIpAddress `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -Name "mypublicdns$(Get-Random)" `
-    -AllocationMethod Static `
-    -IdleTimeoutInMinutes 4
-
-  $nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
-    -Name myNetworkSecurityGroupRuleRDP `
-    -Protocol Tcp `
-    -Direction Inbound `
-    -Priority 1000 `
-    -SourceAddressPrefix * `
-    -SourcePortRange * `
-    -DestinationAddressPrefix * `
-    -DestinationPortRange 3389 `
-    -Access Allow
-
-  $nsg = New-AzureRmNetworkSecurityGroup `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -Name myNetworkSecurityGroup `
-    -SecurityRules $nsgRuleRDP
-
-$nic = New-AzureRmNetworkInterface `
-    -Name myNic `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -SubnetId $vnet.Subnets[0].Id `
-    -PublicIpAddressId $pip.Id `
-    -NetworkSecurityGroupId $nsg.Id
-
-$vmConfig = New-AzureRmVMConfig `
-    -VMName myVMfromImage `
-    -VMSize Standard_D1 | Set-AzureRmVMOperatingSystem -Windows `
-        -ComputerName myComputer `
-        -Credential $cred 
-
-# Here is where we create a variable to store information about the image 
-$image = Get-AzureRmImage `
-    -ImageName myImage `
-    -ResourceGroupName myResourceGroup
-
-# Here is where we specify that we want to create the VM from and image and provide the image ID
-$vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -Id $image.Id
-
-$vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
-
-New-AzureRmVM `
-    -ResourceGroupName myResourceGroupFromImage `
-    -Location EastUS `
-    -VM $vmConfig
+```azurepowershell-interactive
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myVMfromImage" `
+    -ImageName "myImage" `
+    -Location "East US" `
+    -VirtualNetworkName "myImageVnet" `
+    -SubnetName "myImageSubnet" `
+    -SecurityGroupName "myImageNSG" `
+    -PublicIpAddressName "myImagePIP" `
+    -OpenPorts 3389
 ```
 
 ## <a name="image-management"></a>Zarządzanie obrazami 
@@ -181,29 +125,29 @@ Oto kilka przykładów typowych zadań zarządzania dla obrazu i sposobu ich uko
 
 Wyświetl listę wszystkich obrazów według nazwy.
 
-```powershell
+```azurepowershell-interactive
 $images = Find-AzureRMResource -ResourceType Microsoft.Compute/images 
 $images.name
 ```
 
-Usuń obraz. W tym przykładzie usuwa obraz o nazwie *myOldImage* z *myResourceGroup*.
+Usuwanie obrazu. W tym przykładzie obraz o nazwie *myOldImage* jest usuwany z grupy *myResourceGroup*.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmImage `
     -ImageName myOldImage `
     -ResourceGroupName myResourceGroup
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku utworzony niestandardowy obraz maszyny Wirtualnej. W tym samouczku omówiono:
+W tym samouczku został utworzony obraz niestandardowy maszyny wirtualnej. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Narzędzie Sysprep i generalize maszyny wirtualne
 > * Tworzenie obrazu niestandardowego
-> * Utwórz maszynę Wirtualną z obrazu niestandardowego
-> * Wyświetlanie listy wszystkich obrazów w ramach subskrypcji
-> * Usuń obraz
+> * Tworzenie maszyny wirtualnej na podstawie obrazu niestandardowego
+> * Wyświetlanie listy wszystkich obrazów w subskrypcji
+> * Usuwanie obrazu
 
 Przejdź do następnego samouczkiem, aby poznać sposób wysokiej dostępności maszyny wirtualnej.
 

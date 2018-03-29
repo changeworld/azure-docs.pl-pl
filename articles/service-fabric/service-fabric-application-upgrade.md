@@ -1,11 +1,11 @@
 ---
-title: "Uaktualnianie aplikacji sieci szkieletowej usług | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera wprowadzenie do uaktualniania aplikacji usługi Service Fabric, w tym wyboru między trybami uaktualniania i zostanie wykonana kontroli kondycji."
+title: Uaktualnianie aplikacji sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera wprowadzenie do uaktualniania aplikacji usługi Service Fabric, w tym wyboru między trybami uaktualniania i zostanie wykonana kontroli kondycji.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 765931d8a888432e0cc77ff86d597b6e2a029a2a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60bbd75496b6e835a76edb4251aac6ea249187b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Uaktualnianie aplikacji usługi Service Fabric
 Aplikacja Azure Service Fabric jest kolekcja usług. Podczas uaktualniania usługi sieć szkieletowa porównuje nowe [manifest aplikacji](service-fabric-application-and-service-manifests.md) z poprzedniej wersji i określa usług w aplikacji wymagają aktualizacji. Sieć szkieletowa usług porównuje wersji numery w usłudze manifesty numery wersji w poprzedniej wersji. Jeśli usługa nie została zmieniona, czy usługa nie jest uaktualniony.
@@ -57,6 +57,13 @@ Podczas uaktualniania aplikacji zostanie wycofana, domyślne parametry usługi s
 
 > [!TIP]
 > [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) ustawienia konfiguracji klastra musi być *true* Aby włączyć reguły 2) i 3) powyżej (domyślna usługa aktualizacji i usuwania). Ta funkcja jest obsługiwana, począwszy od platformy Service Fabric w wersji 5.5.
+
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Uaktualnianie wielu aplikacji z punktów końcowych HTTPS
+Należy zachować ostrożność, aby nie używać **tego samego portu** dla różnych wystąpień tej samej aplikacji przy użyciu protokołu HTTP**S**. Przyczyną jest to usługa sieci szkieletowej nie można uaktualnić certyfikatu dla jednego wystąpienia aplikacji. Na przykład, jeśli aplikacja 1 lub aplikacji 2 zarówno chcesz uaktualnić ich cert 1 do 2 certyfikatu. W przypadku uaktualnienia sieci szkieletowej usług może mieć wyczyścić rejestracji certyfikatu 1 przy użyciu składnika http.sys, nawet jeśli jest nadal używa jej inna aplikacja. Aby tego uniknąć, usługi Service Fabric wykrywa, że nie jest już inne wystąpienie aplikacji zarejestrowanych na porcie z certyfikatem (z powodu http.sys), a nie operacji.
+
+Dlatego usługi sieć szkieletowa nie obsługuje uaktualnienia z dwóch różnych usług za pomocą **tego samego portu** w innej aplikacji wystąpień. Innymi słowy nie można użyć tego samego certyfikatu w różnych usługach w tym samym porcie. Jeśli musisz mieć certyfikat udostępnione w tym samym porcie, należy się upewnić, czy usługi są umieszczane na kilka różnych maszyn z ograniczeń umieszczania. Lub należy wziąć pod uwagę przy użyciu portów dynamicznych sieci szkieletowej usług, jeśli to możliwe dla każdej usługi w każdego wystąpienia aplikacji. 
+
+Jeśli widzisz uaktualnienia kończy się niepowodzeniem z protokołu https, wystąpił błąd, ostrzeżenie, informujący o tym "Interfejsu API serwera HTTP systemu Windows nie obsługuje wielu certyfikatów dla aplikacji, które współużytkują port".
 
 ## <a name="application-upgrade-flowchart"></a>Schemat blokowy uaktualniania aplikacji
 Schemat blokowy dalej w tym temacie mogą pomóc zrozumieć proces uaktualniania aplikacji sieci szkieletowej usług. W szczególności przepływ w tym artykule opisano sposób limity czasu, w tym *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, i *UpgradeHealthCheckInterval*, pomoc Formant podczas uaktualniania w domenie jedna aktualizacja jest uznawany za powodzenie lub niepowodzenie.

@@ -7,4 +7,4 @@
 | Czas uruchomienia zadania — warstwa bezpłatna |500 minut na subskrypcję na miesiąc kalendarzowy |
 | Maksymalna ilość pamięci do zadania |400 MB |
 | Maksymalna liczba dozwolonych dla jednego zadania gniazda sieci |1000 |
-
+| Maksymalna liczba kont automatyzacji w ramach subskrypcji |Bez ograniczeń |

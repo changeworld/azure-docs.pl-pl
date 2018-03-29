@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 03/15/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0cfa79b9c44953c613eaec8d701f351c6f2ce212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Opcjonalne oświadczenia w usłudze Azure AD (wersja zapoznawcza)
 
@@ -69,9 +69,7 @@ Zestaw oświadczeń opcjonalne domyślnie dostępne do użycia przez aplikacje s
 | `is_device_managed`        | Określa, czy urządzenie ma zainstalowany zarządzania urządzeniami Przenośnymi. Związane z zasad dostępu warunkowego.                                                                                                                  | SAML       |           | Dla tokenów Jwt zbieżność do signin_state                                                                                                                                                                                                                                                   |
 | `is_device_compliant`      | Oznacza, że zarządzanie urządzeniami Przenośnymi wykrył, że urządzenie jest zgodne z zasadami zabezpieczeń urządzeń w organizacji.                                                                                  | SAML       |           | Dla tokenów Jwt zbieżność do signin_state                                                                                                                                                                                                                                                   |
 | `kmsi`                     | Określa, czy użytkownik wybrał opcję zachowania mnie podpisany w.                                                                                                                                    | SAML       |           | Dla tokenów Jwt zbieżność do signin_state                                                                                                                                                                                                                                                   |
-| `upn`                      | Oświadczenie UserPrincipalName.  Mimo że tego oświadczenia jest uwzględniana automatycznie, należy określić go jako opcjonalnego roszczenia można dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa. | JWT, SAML  |           | Dodatkowe właściwości: <br> include_externally_authenticated_upn <br> include_externally_authenticated_upn_without_hash                                                                                                                                                                 |
-| `groups`                   | Grupy, do których należy użytkownik.                                                                                                                                                               | JWT, SAML  |           | Dodatkowe właściwości: <br> Sam_account_name<br> Dns_domain_and_sam_account_name<br> Netbios_domain_and_sam_account<br> Max_size_limit<br> Emit_as_roles<br>                                                                                                                            |
-
+| `upn`                      | Oświadczenie UserPrincipalName.  Mimo że tego oświadczenia jest uwzględniana automatycznie, należy określić go jako opcjonalnego roszczenia można dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa. | JWT, SAML  |           | Dodatkowe właściwości: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
 ### <a name="v20-optional-claims"></a>Opcjonalne oświadczeń w wersji 2.0
 Te oświadczenia zawsze znajdują się w wersji 1.0 tokenów, ale są usuwane z tokenów w wersji 2.0, o ile nie jest wymagane.  Oświadczenia te dotyczą tylko tokenów Jwt (tokeny Identyfikatora i tokenów dostępu).  
 
@@ -90,26 +88,19 @@ Te oświadczenia zawsze znajdują się w wersji 1.0 tokenów, ale są usuwane z 
 
 ### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości opcjonalnych oświadczeń
 
-Niektóre opcjonalnych oświadczeń można skonfigurować zmienić sposób zwracane są oświadczenia.  Te dodatkowe właściwości może się wahać od zmiany formatowania (na przykład `include_externally_authenticated_upn_without_hash`) na zmieniające się zestaw danych zwrócił (`Dns_domain_and_sam_account_name`).
+Niektóre opcjonalnych oświadczeń można skonfigurować zmienić sposób zwracane są oświadczenia.  Te dodatkowe właściwości przede wszystkim służą do migracji aplikacji lokalnej za pomocą oczekiwań różnych danych (na przykład `include_externally_authenticated_upn_without_hash` ułatwia klientów, którzy nie może obsłużyć hashmarks (`#`) w nazwy UPN)
 
 **Tabela 4: Wartości związane z konfigurowaniem standardowe opcjonalnych oświadczeń**
 
 | Nazwa właściwości                                     | Nazwa właściwości dodatkowe                                                                                                             | Opis |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `Upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |             |
 | | `include_externally_authenticated_upn`              | Obejmuje gościa UPN przechowywanej w dzierżawie zasobów.  Na przykład: `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
 | | `include_externally_authenticated_upn_without_hash` | Jak wyżej, z wyjątkiem, że hashmarks (`#`) są zastępowane znakami podkreślenia (`_`), na przykład `foo_hometenant.com_EXT_@resourcetenant.com` |             
-| `groups`                                              |                                                                                                                                      |             |
-| | `sam_account_name`                                  |                                                                                                                                      |             
-| | `dns_domain_and_sam_account_name`                   |                                                                                                                                      |             
-| | `netbios_domain_and_sam_account_name`               |                                                                                                                                      |             
-| | `max_size_limit`                                    | Podnosi liczbę grup zwracanych do grupy maksymalny limit rozmiaru (w 1000).                                                            |             
-| | `emit_as_roles`                                     | Emituje oświadczenie "role" zamiast "grupy" roszczenie, przy użyciu tej samej wartości.  Przeznaczone do migracji ze środowiska lokalnego aplikacji, w której RBAC tradycyjnie była kontrolowane za pośrednictwem członkostwa w grupie.   |             
 
 > [!Note]
 >Określanie nazwy upn opcjonalnego roszczenia bez dodatkowych właściwości nie zmienia żadnych zachowanie — aby zobaczyć nowe oświadczenie wydanych w tokenie, co najmniej jeden z dodatkowych właściwości muszą zostać dodane. 
->
->`account_name` Dodatkowe właściwości dla grup nie są interoperacyjne i kolejność dodatkowych właściwości sprawach — tylko pierwsze konto nazwa właściwości dodatkowe na liście będzie używany. 
+
 
 #### <a name="additional-properties-example"></a>Przykład dodatkowe właściwości:
 
@@ -118,15 +109,15 @@ Niektóre opcjonalnych oświadczeń można skonfigurować zmienić sposób zwrac
    {
        "idToken": [ 
              { 
-                "name": "groups", 
+                "name": "upn", 
             "essential": false,
-                "additionalProperties": [ "netbios_domain_and_sam_account_name", "sam_account_name" , "emit_as_roles"]  
+                "additionalProperties": [ "include_externally_authenticated_upn"]  
               }
         ]
 }
 ```
 
-Ten obiekt OptionalClaims, którą będzie zwracać taki sam `groups` oświadczenie tak, jakby `sam_account_name` nie były dołączane —, ponieważ jest on po `netbios_domain_and_sam_account_name`, zostanie zignorowany. 
+Ten obiekt OptionalClaims powoduje, że token Identyfikatora zwracana do klienta, aby uwzględnić innej nazwy upn z dodatkowe dzierżawy macierzystego i informacje o zasobie dzierżawy.  
 
 ## <a name="configuring-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń
 
