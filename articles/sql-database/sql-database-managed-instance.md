@@ -8,20 +8,20 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/22/2018
 ms.author: bonova
-ms.openlocfilehash: e13583e0364b01c3a4560d88882eb1dcf82b8c99
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
 Azure wystąpienia bazy danych SQL zarządzane (wersja zapoznawcza) jest nową funkcją bazy danych SQL Azure, zapewniając niemal zgodności 100% z programu SQL Server lokalne (Enterprise Edition), zapewniając natywny [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md) wdrożenia, którego dotyczy typowe problemy z zabezpieczeniami i [modelu biznesowego](https://azure.microsoft.com/pricing/details/sql-database/) korzystna dla lokalnego programu SQL Server klientów. Zarządzane wystąpienia umożliwia istniejących klientów programu SQL Server do podnoszenia i przesunięcia ich aplikacji lokalnych do chmury przy minimalnych zmianach aplikacji i baz danych. W tym samym czasie wystąpienia zarządzane zachowuje wszystkie funkcje PaaS (Aktualizacje automatyczne stosowanie poprawek i wersja, kopia zapasowa, wysokiej dostępności), które znacząco zmniejsza nakład pracy i całkowitego kosztu posiadania.
 
 > [!IMPORTANT]
-> Lista regionów, w których jest obecnie dostępna zarządzane wystąpienia, zobacz [migracji baz danych do pełni zarządzanej usługi za pomocą wystąpienia zarządzane bazy danych SQL Azure](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+> Listę regionów, w których jest obecnie dostępne wystąpienie zarządzane, można znaleźć w temacie [Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Migrowanie baz danych do w pełni zarządzanej usługi za pomocą wystąpienia zarządzanego usługi Azure SQL Database)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
 Poniższy diagram przedstawia główne funkcje wystąpienia zarządzane:
 
@@ -34,16 +34,16 @@ Zarządzane wystąpienia jest Zaplanowaliśmy jako preferowaną platformę w nas
 
 Zarządzane wystąpienia przez ogólnej dostępności ma na celu dostarczenia blisko powierzchni 100% zgodności z najnowszą wersją programu SQL Server lokalnej za pośrednictwem planu przemieszczanego wersji. 
 
-Wytyczne tabeli klucza różnice i Zaplanowaliśmy scenariusze użycia między SQL IaaS, baza danych SQL Azure i wystąpienia zarządzane:
+Wytyczne tabeli klucza różnice i Zaplanowaliśmy scenariusze użycia między SQL IaaS, baza danych SQL Azure i zarządzane wystąpienia bazy danych SQL:
 
 | | Scenariusz użycia | 
 | --- | --- | 
-|Wystąpienie zarządzane |Dla klientów chcących migracji duża liczba aplikacji z lokalnymi lub IaaS własnym utworzony lub niezależnego dostawcy oprogramowania, pod warunkiem z jako niskie migracji nakładu pracy, jak to możliwe, zaproponować zarządzane wystąpienia. Przy użyciu w pełni zautomatyzowanego [usługi migracji danych (DMS)](/sql/dma/dma-overview) na platformie Azure, klientom przyrostu i przesunięcia ich lokalnego programu SQL Server do wystąpienia zarządzane, który zapewnia zgodność z lokalnej instalacji programu SQL Server i pełne izolacji wystąpienia klienta macierzystą obsługę sieci Wirtualnej.  Pakiet Software Assurance należy wymienić ich istniejących licencji dla rabaty na zarządzane wystąpienia bazy danych SQL za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Zarządzane wystąpienia bazy danych SQL jest najlepsze miejsce docelowe migracji w chmurze dla wystąpień programu SQL Server, które wymagają wysokiego poziomu zabezpieczeń i powierzchni programowalności sformatowanego. |
-|Azure SQL Database |**Pule elastyczne**: dla klientów, tworzenie nowych aplikacji z wieloma dzierżawcami SaaS lub celowo Przekształcanie istniejącej lokalnej aplikacji do wielodostępnych aplikacji SaaS, zaproponować elastyczne pule. Zalety tego modelu to: <br><ul><li>Konwersja modelu biznesowego, ze sprzedaży licencji sprzedaży subskrypcji usługi (dla ISV)</li></ul><ul><li>Łatwe i dowód punktor dzierżawy izolacji</li></ul><ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul><ul><li>Możliwość skalowania bez naciśnięcie twardych limitu</li></ul>**Pojedyncze bazy danych**: dla klientów, tworzenie nowych aplikacji innych niż wielodostępne SaaS, której obciążenie jest stabilne i przewidywalne, zaproponować pojedynczych baz danych. Zalety tego modelu to:<ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul>  <ul><li>Przewidywalna wydajność dla każdej bazy danych</li></ul>|
-|SQL IaaS |W przypadku konieczności dostosowywania systemu operacyjnego lub serwer bazy danych, jak również klientów mających określone wymagania w zakresie uruchamianie aplikacji innych firm siebie z programem SQL Server (w tej samej maszyny Wirtualnej), klienci zaproponować maszyn wirtualnych SQL / IaaS jako najlepszego rozwiązania|
+|Wystąpienie zarządzane usługi SQL Database |Dla klientów chcących migracji duża liczba aplikacji z lokalnymi lub IaaS własnym utworzony lub niezależnego dostawcy oprogramowania, pod warunkiem z jako niskie migracji nakładu pracy, jak to możliwe, zaproponować zarządzane wystąpienia. Przy użyciu w pełni zautomatyzowanego [usługi migracji danych (DMS)](/sql/dma/dma-overview) na platformie Azure, klientom przyrostu i przesunięcia ich lokalnego programu SQL Server do wystąpienia zarządzane, który zapewnia zgodność z lokalnej instalacji programu SQL Server i pełne izolacji wystąpienia klienta macierzystą obsługę sieci Wirtualnej.  Pakiet Software Assurance należy wymienić ich istniejących licencji dla rabaty na zarządzane wystąpienia bazy danych SQL za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Zarządzane wystąpienia bazy danych SQL jest najlepsze miejsce docelowe migracji w chmurze dla wystąpień programu SQL Server, które wymagają wysokiego poziomu zabezpieczeń i powierzchni programowalności sformatowanego. |
+|Baza danych SQL Azure (pojedyncza lub puli) |**Pule elastyczne**: dla klientów, tworzenie nowych aplikacji z wieloma dzierżawcami SaaS lub celowo Przekształcanie istniejącej lokalnej aplikacji do wielodostępnych aplikacji SaaS, zaproponować elastyczne pule. Zalety tego modelu to: <br><ul><li>Konwersja modelu biznesowego, ze sprzedaży licencji sprzedaży subskrypcji usługi (dla ISV)</li></ul><ul><li>Łatwe i dowód punktor dzierżawy izolacji</li></ul><ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul><ul><li>Możliwość skalowania bez naciśnięcie twardych limitu</li></ul>**Pojedyncze bazy danych**: dla klientów, tworzenie nowych aplikacji innych niż wielodostępne SaaS, której obciążenie jest stabilne i przewidywalne, zaproponować pojedynczych baz danych. Zalety tego modelu to:<ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul>  <ul><li>Przewidywalna wydajność dla każdej bazy danych</li></ul>|
+|Maszyny wirtualne SQL IaaS|W przypadku konieczności dostosowywania systemu operacyjnego lub serwer bazy danych, jak również klientów mających określone wymagania w zakresie uruchamianie aplikacji innych firm siebie z programem SQL Server (w tej samej maszyny Wirtualnej), klienci zaproponować maszyn wirtualnych SQL / IaaS jako najlepszego rozwiązania|
 |||
 
-![Pozycjonowanie](./media/sql-database-managed-instance/positioning.png)
+<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>Jak zidentyfikować programowo wystąpienie usługi zarządzania
 
