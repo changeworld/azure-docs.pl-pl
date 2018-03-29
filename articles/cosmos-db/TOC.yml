@@ -445,3 +445,5 @@
       href: faq.md
     - name: Wyjaśnienie pojęcia spójności danych na podstawie baseballu
       href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+    - name: Rozwiązywanie problemów dotyczących usługi Cosmos Azure DB
+      href: troubleshoot-azure-cosmosdb.md

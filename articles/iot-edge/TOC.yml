@@ -19,12 +19,16 @@
       href: tutorial-simulate-device-windows.md
     - name: 'Tworzenie modułu C#'
       href: tutorial-csharp-module.md
+    - name: Tworzenie modułu Python
+      href: tutorial-python-module.md
     - name: Wdrażanie usługi Azure Stream Analytics
       href: tutorial-deploy-stream-analytics.md
     - name: Wdrażanie usługi Azure Machine Learning
       href: tutorial-deploy-machine-learning.md
     - name: Wdrażanie usługi Azure Functions
       href: tutorial-deploy-function.md
+    - name: Praca z wieloma modułami w programie VS Code
+      href: tutorial-multiple-modules-in-vscode.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie bram
