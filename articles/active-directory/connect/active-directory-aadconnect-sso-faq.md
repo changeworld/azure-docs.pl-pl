@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Bezproblemowe logowanie jednokrotne — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące Azure Active Directory bezproblemowe rejestracji jednokrotnej."
+title: 'Azure AD Connect: Bezproblemowe logowanie jednokrotne — często zadawane pytania | Dokumentacja firmy Microsoft'
+description: Odpowiedzi na często zadawane pytania dotyczące Azure Active Directory bezproblemowe rejestracji jednokrotnej.
 services: active-directory
-keywords: "Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: c34293796860e0ab72eecedab9cd8b023237050d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblemowe logowanie jednokrotne: często zadawane pytania
 
@@ -38,16 +38,23 @@ Nie. Bezproblemowe rejestracji Jednokrotnej jest dostępna tylko w wystąpieniu 
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Jakie aplikacje korzystać z `domain_hint` lub `login_hint` parametru możliwości łatwego logowania jednokrotnego?
 
-Wymienione poniżej jest niepełny listę aplikacji, które wysyłanie tych parametrów do usługi Azure AD i w związku z tym zapewnia użytkownikom dyskretnej środowisko logowania przy użyciu łatwego logowania jednokrotnego:
+Wymienione poniżej jest niepełny listę aplikacji, które wysyłanie tych parametrów do usługi Azure AD i w związku z tym zapewnia użytkownikom dyskretnej środowisko logowania przy użyciu łatwego logowania jednokrotnego (tj. nie jest konieczne użytkownikom wprowadzanie ich nazw użytkowników):
 
 | Nazwa aplikacji | Adres URL aplikacji do użycia |
 | -- | -- |
 | Panel dostępu | myapps.microsoft.com/contoso.com |
 | Program Outlook w sieci Web | outlook.office365.com/contoso.com |
 
-W powyższej tabeli zastąpić nazwę domeny, aby przejść do adresu URL prawego aplikacji dla dzierżawy "contoso.com".
+Ponadto użytkownicy uzyskują dyskretnej obsługi logowania jednokrotnego, jeśli aplikacja wyśle żądań logowania do usługi Azure AD dzierżawcza punkty końcowe — oznacza to, https://login.microsoftonline.com/contoso.com/<..> lub https://login.microsoftonline.com/<tenant_ID>/<..> — zamiast usługi Azure AD wspólnego punktu końcowego — to znaczy https://login.microsoftonline.com/common/<...>. Wymienione poniżej jest niepełny listę aplikacji, które tych typów żądań logowania.
 
-Jeśli masz inne aplikacje, które planuje się Daj nam znać w sekcji uwag.
+| Nazwa aplikacji | Adres URL aplikacji do użycia |
+| -- | -- |
+| SharePoint Online | contoso.sharepoint.com |
+| Azure Portal | portal.azure.com/contoso.com |
+
+W tabelach powyżej Zastąp nazwę domeny, aby przejść do adresu URL prawego aplikacji dla dzierżawy "contoso.com".
+
+Jeśli chcesz, aby inne aplikacje korzystające z naszych dyskretnej jednokrotnego, Daj nam znać w sekcji opinii.
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Obsługuje rejestracji Jednokrotnej bezproblemowe `Alternate ID` jako nazwa użytkownika, a nie `userPrincipalName`?
 

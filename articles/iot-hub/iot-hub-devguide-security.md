@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: 9de332324ba853d3df0aacce2db4bbc3d4d9d62d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e7e45a6af0857520eec27263281a0f0a43b30013
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -338,13 +338,17 @@ Wynik, którym przyznano dostęp do odczytu wszystkich tożsamości urządzenia,
 
 ## <a name="supported-x509-certificates"></a>Obsługiwane certyfikaty X.509
 
-Każdy certyfikat X.509 służy do uwierzytelniania urządzenia z Centrum IoT. Certyfikaty obejmują:
+Każdy certyfikat X.509 służy do uwierzytelniania urządzenia z Centrum IoT, przekazując odcisku palca certyfikatu lub urząd certyfikacji (CA) do Centrum IoT Azure. Uwierzytelnianie przy użyciu tylko odciski palców certyfikatów sprawdza, czy przedstawioną odcisk palca odpowiada skonfigurowanym odciskiem palca. Uwierzytelnianie przy użyciu urzędu certyfikacji sprawdza łańcuch certyfikatów. 
 
-* **Istniejący certyfikat X.509**. Urządzenie może już być skojarzone z nim certyfikatu X.509. Urządzenie może używać tego certyfikatu do uwierzytelniania za pomocą Centrum IoT.
-* **A własnym wygenerowany i X-509 certyfikat z podpisem własnym**. Producenta urządzenia lub wewnętrznych narzędzia wdrażania można wygenerować tych certyfikatów i przechowywać odpowiadające im klucze prywatne (i certyfikatu) na urządzeniu. Można użyć narzędzia, takie jak [OpenSSL] [ lnk-openssl] i [Windows SelfSignedCertificate] [ lnk-selfsigned] narzędzie do tego celu.
-* **Podpisany przez urząd certyfikacji certyfikatu X.509**. Aby zidentyfikować urządzenia i uwierzytelniania go z Centrum IoT, można użyć certyfikatu X.509 wygenerowany i podpisany przez urząd certyfikacji (CA). Centrum IoT tylko sprawdza, czy odcisk palca przedstawione odpowiada skonfigurowanym odciskiem palca. Centrum IotHub nie można zweryfikować łańcucha certyfikatów.
+Certyfikaty obsługiwanych obejmują:
+
+* **Istniejący certyfikat X.509**. Urządzenie może już być skojarzone z nim certyfikatu X.509. Urządzenie może używać tego certyfikatu do uwierzytelniania za pomocą Centrum IoT. Współdziała z odciskiem palca lub uwierzytelniania urzędu certyfikacji. 
+* **Podpisany przez urząd certyfikacji certyfikatu X.509**. Aby zidentyfikować urządzenia i uwierzytelniania go z Centrum IoT, można użyć certyfikatu X.509 wygenerowany i podpisany przez urząd certyfikacji (CA). Współdziała z odciskiem palca lub uwierzytelniania urzędu certyfikacji.
+* **A własnym wygenerowany i X-509 certyfikat z podpisem własnym**. Producenta urządzenia lub wewnętrznych narzędzia wdrażania można wygenerować tych certyfikatów i przechowywać odpowiadające im klucze prywatne (i certyfikatu) na urządzeniu. Można użyć narzędzia, takie jak [OpenSSL] [ lnk-openssl] i [Windows SelfSignedCertificate] [ lnk-selfsigned] narzędzie do tego celu. Działa tylko z odciskiem palca uwierzytelniania. 
 
 Urządzenie może użyć certyfikatu X.509 lub tokenu zabezpieczającego dla uwierzytelniania, ale nie oba.
+
+Aby uzyskać więcej informacji na temat uwierzytelniania przy użyciu urzędu certyfikacji, zobacz [pojęć związanych z certyfikatami X.509 urzędu certyfikacji](iot-hub-x509ca-concept.md).
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Zarejestruj certyfikat X.509 dla urządzenia
 
@@ -354,10 +358,7 @@ Urządzenie może użyć certyfikatu X.509 lub tokenu zabezpieczającego dla uwi
 
 **RegistryManager** klasy zapewnia programowy sposób zarejestrować urządzenie. W szczególności **AddDeviceAsync** i **UpdateDeviceAsync** metody umożliwiają rejestrowanie i aktualizowanie urządzenia w rejestrze tożsamości Centrum IoT. Te dwie metody przyjmują **urządzenia** wystąpienia jako dane wejściowe. **Urządzenia** klasa zawiera **uwierzytelniania** właściwość, która pozwala na określenie odciski palców certyfikatów X.509 podstawowego i pomocniczego. Odcisk palca reprezentuje wartości skrótu SHA-1 (przechowywane przy użyciu kodowania binarnego DER) certyfikatu X.509. Istnieje możliwość określenia podstawowego odcisk palca lub dodatkowej odcisk palca lub oba. Podstawowe i pomocnicze odciski palców są obsługiwane do obsługi scenariuszy przerzucania certyfikatu.
 
-> [!NOTE]
-> Centrum IoT nie wymagają lub zapisać całą certyfikatu X.509, tylko odcisk palca.
-
-Poniżej przedstawiono przykładowe C\# fragment kodu do zarejestrowania urządzenia przy użyciu certyfikatu X.509:
+Poniżej przedstawiono przykładowe C\# fragment kodu do zarejestrowania urządzenia przy użyciu odcisku palca certyfikatu X.509:
 
 ```csharp
 var device = new Device(deviceId)

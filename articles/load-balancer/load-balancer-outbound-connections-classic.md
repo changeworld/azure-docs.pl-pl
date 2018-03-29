@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 8a24987ae3423a02647b1dd246b40179be100c06
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="outbound-connections-classic"></a>Połączenia wychodzące (klasyczne)
 
@@ -60,7 +60,7 @@ Różnych wdrożeń w klasycznym mają różne funkcje:
 
 W tym scenariuszu maszyna wirtualna ma wystąpienie poziomu publicznego adresu IP (ILPIP) przypisane do niej. Jeśli chodzi o połączeń wychodzących, nie ma znaczenia, czy maszyna wirtualna ma punkt końcowy ze zrównoważonym obciążeniem, czy nie. Ten scenariusz ma pierwszeństwo przed jej innym osobom. W przypadku ILPIP maszyna wirtualna używa ILPIP dla wszystkich przepływów wychodzących.  
 
-Port zamaskowana (PAWEŁ) nie jest używany, a maszyna wirtualna ma wszystkie porty efemeryczne dostępne do użycia.
+Publiczny IP przypisane do maszyny Wirtualnej jest 1:1 relacji (zamiast 1: duży zakres) oraz implementowany jako bezstanowych translatora adresów sieciowych. 1:1  Port zamaskowana (PAWEŁ) nie jest używany, a maszyna wirtualna ma wszystkie porty efemeryczne dostępne do użycia.
 
 Aplikacja inicjuje wiele przepływów wychodzących i występują wyczerpania portu SNAT, warto rozważyć przypisywanie [ILPIP złagodzić ograniczenia SNAT](#assignilpip). Przegląd [wyczerpania Zarządzanie SNAT](#snatexhaust) w całości.
 

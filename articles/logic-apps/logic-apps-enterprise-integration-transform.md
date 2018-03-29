@@ -1,6 +1,6 @@
 ---
-title: "Konwertowanie danych XML przy użyciu transformacji - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Utwórz transformacje lub mapps do konwersji danych XML między formatami w aplikacjach logiki przy użyciu zestawu SDK integracji przedsiębiorstwa"
+title: Konwertowanie danych XML przy użyciu transformacji - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Utwórz transformacje lub mapps do konwersji danych XML między formatami w aplikacjach logiki przy użyciu zestawu SDK integracji przedsiębiorstwa
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: fd59b6b3f51adb538e774bc5bb089880ca22e97e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>Integracja przedsiębiorstwa z transformacji XML
 ## <a name="overview"></a>Przegląd
@@ -64,6 +64,7 @@ W tym momencie po zakończeniu konfigurowania mapy. W przypadku aplikacji rzeczy
 
 Teraz możesz przetestować z transformacji, wysyłając żądania do punktu końcowego HTTP.  
 
+
 ## <a name="features-and-use-cases"></a>Funkcje i przypadki użycia
 * Transformacja utworzone na mapie może być prosty, takich jak kopiowanie nazwy i adresu z jednego dokumentu do innego. Alternatywnie można tworzyć bardziej złożone przekształcenia przy użyciu operacji poza pole mapy.  
 * Wiele operacji mapy lub funkcje są łatwo dostępne, w tym ciągów, dat funkcje związane z czasem i tak dalej.  
@@ -73,11 +74,49 @@ Teraz możesz przetestować z transformacji, wysyłając żądania do punktu ko�
 * Przekazywanie istniejącej mapy  
 * Obsługuje XML format.
 
-## <a name="adanced-features"></a>Funkcje Adanced
-Następujące funkcje są dostępne tylko w widoku kodu.
+## <a name="advanced-features"></a>Funkcje zaawansowane
+
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Odwołanie do zestawu lub niestandardowy kod z mapy 
+Akcja przekształcenia również obsługuje mapy lub przekształca odwołaniem do zestawu zewnętrznych. Ta funkcja umożliwia wywołań niestandardowego kodu platformy .NET bezpośrednio z mapy XSLT. Poniżej przedstawiono wymagania wstępne, aby użyć zestawu w społeczności maps.
+
+* Mapy i zestawu odwołanie z mapy musi być [konta integracji przesłany](./logic-apps-enterprise-integration-maps.md). 
+
+  > [!NOTE]
+  > Mapa i zestaw są wymagane do przekazania w określonej kolejności. Należy przekazać zestawu przed przekazaniem mapy, który odwołuje się do zestawu.
+
+* Te atrybuty i sekcja CDATA, która zawiera wywołanie kodu zestawu mapy musi mieć również:
+
+    * **Nazwa** jest nazwą zestawu niestandardowych.
+    * **przestrzeń nazw** jest przestrzeń nazw w sieci zestawu, który zawiera kod niestandardowy.
+
+  W tym przykładzie pokazano mapy, który odwołuje się do zestawu o nazwie "XslUtilitiesLib" i wywołania `circumreference` metody z zestawu.
+
+  ````xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+  <msxsl:script language="C#" implements-prefix="user">
+    <msxsl:assembly name="XsltHelperLib"/>
+    <msxsl:using namespace="XsltHelpers"/>
+    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
+  </msxsl:script>
+  <xsl:template match="data">
+     <circles>
+        <xsl:for-each select="circle">
+            <circle>
+                <xsl:copy-of select="node()"/>
+                    <circumference>
+                        <xsl:value-of select="user:circumference(radius)"/>
+                    </circumference>
+            </circle>
+        </xsl:for-each>
+     </circles>
+    </xsl:template>
+    </xsl:stylesheet>
+  ````
+
 
 ### <a name="byte-order-mark"></a>Znacznik porządku bajtów
-Domyślnie odpowiedzi z transformacja rozpocznie się o znacznik kolejności bajtów (BOM). Aby wyłączyć tę funkcję, podaj `disableByteOrderMark` dla `transformOptions` właściwości:
+Domyślnie odpowiedzi z transformacja uruchamia z znacznik kolejności bajtów (BOM). Ta funkcja są dostępne tylko podczas pracy w edytorze widoku kodu. Aby wyłączyć tę funkcję, podaj `disableByteOrderMark` dla `transformOptions` właściwości:
 
 ````json
 "Transform_XML": {
@@ -94,6 +133,10 @@ Domyślnie odpowiedzi z transformacja rozpocznie się o znacznik kolejności baj
     "type": "Xslt"
 }
 ````
+
+
+
+
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 * [Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej na temat pakiet integracyjny dla przedsiębiorstw")  

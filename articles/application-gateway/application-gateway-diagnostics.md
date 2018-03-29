@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: c739d98f81bafb6474995b141cab3400bcb4dc33
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: dfa451a06fbadbb63c83f800ac164db399efd583
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycji zaplecza, dzienniki diagnostyczne i metryki bramy aplikacji
 
@@ -176,7 +176,7 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono na każde wystąpi
 |clientPort     | Port źródłowy dla żądania.       |
 |HttpMethod     | Metoda HTTP używana przez żądanie.       |
 |requestUri     | Identyfikator URI odebrane żądanie.        |
-|RequestQuery     | **Serwer routingu**: wystąpienie puli zaplecza, którego wysłano żądanie. </br> **X-AzureApplicationGateway-dziennika-ID**: Identyfikator korelacji użytej w żądaniu. Może służyć do rozwiązywania problemów ruchu na serwerach wewnętrznych. </br>**Stan serwera**: kod odpowiedzi HTTP o bramy aplikacji otrzymanych od wewnętrznej.       |
+|RequestQuery     | **Serwer routingu**: wystąpienie puli zaplecza, którego wysłano żądanie.</br>**X-AzureApplicationGateway-dziennika-ID**: Identyfikator korelacji użytej w żądaniu. Może służyć do rozwiązywania problemów ruchu na serwerach wewnętrznych. </br>**Stan serwera**: kod odpowiedzi HTTP o bramy aplikacji otrzymanych od wewnętrznej.       |
 |UserAgent     | Agent użytkownika z nagłówka żądania HTTP.        |
 |httpStatus     | Kod stanu HTTP zwrócona do klienta z bramy aplikacji.       |
 |Wersja_http     | Wersja protokołu HTTP żądania.        |
@@ -316,9 +316,21 @@ Można również nawiązać połączenia z kontem magazynu i pobrać JSON wpisó
 
 ## <a name="metrics"></a>Metryki
 
-Metryki są funkcją dla niektórych zasobów platformy Azure, w którym liczniki wydajności można przeglądać w portalu. Bramy aplikacji jedna metryka jest teraz dostępna. Ta metryka jest przepływność i widoczny w portalu. Przejdź do bramy aplikacji, a następnie kliknij przycisk **metryki**. Aby wyświetlić wartości, wybierz przepływność w **dostępne metryki** sekcji. Na poniższej ilustracji widać przykład filtry, które służą do wyświetlania danych w innym czasie zakresów.
+Metryki są funkcją dla niektórych zasobów platformy Azure, w którym liczniki wydajności można przeglądać w portalu. Brama aplikacji dostępne są następujące metryki:
 
-![Widoku metryki z filtrami][5]
+- Bieżąca liczba połączeń
+- Żądania zakończone niepowodzeniem
+- Liczba hosta dobrej kondycji
+- Stan odpowiedzi
+- Przepływność
+- Łączna liczba żądań
+- Zła liczba hosta
+
+Przejdź do bramy aplikacji w obszarze **monitorowanie** kliknij **metryki**. Zaznacz, aby wyświetlić dostępne wartości **METRYKA** listy rozwijanej.
+
+Na poniższej ilustracji Zobacz przykład z trzech metryki wyświetlane w ciągu ostatnich 30 minut:
+
+[![](media/application-gateway-diagnostics/figure5.png "Metryki widoku")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 Aby wyświetlić bieżącą listę metryki, zobacz [obsługiwane metryki z monitorem Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
@@ -336,7 +348,7 @@ Poniższy przykład przeprowadzi Cię przez proces tworzenia reguły alertu, kt�
 
    * W **warunku** selektora, wybierz jedną z czterech wartości: **większe**, **większy lub równy**, **mniej niż**, lub **Mniejsze niż lub równe**.
 
-   * W **okres** selektora, wybierz okres od 5 minut do 6 godzin.
+   * W **okres** selektora, wybierz okres od 5 do sześciu godzin.
 
    * W przypadku wybrania **E-mail właściciele, współautorzy i czytelnicy**, wiadomości e-mail może być dynamiczny oparta na użytkownikach, którzy mają dostęp do tego zasobu. W przeciwnym razie możesz podać rozdzielana przecinkami lista użytkowników w **email(s) dodatkowe administratora** pole.
 

@@ -1,8 +1,8 @@
 ---
 title: Symulowanie Azure IoT Edge w systemie Windows | Dokumentacja firmy Microsoft
-description: "Instalowanie środowiska uruchomieniowego Azure IoT Edge na symulowane urządzenie w systemie Windows i wdrażanie pierwszego modułu"
+description: Instalowanie środowiska uruchomieniowego Azure IoT Edge na symulowane urządzenie w systemie Windows i wdrażanie pierwszego modułu
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0207418cf71902ce9bc9d2911124d1d46889d893
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>Wdrażanie usługi Azure IoT krawędzi na symulowane urządzenie w systemie Windows — podglądu
 
@@ -86,7 +86,7 @@ Zainstaluj i uruchom środowiska uruchomieniowego Azure IoT Edge na urządzeniu.
 Konfigurowanie środowiska uruchomieniowego z parametrów połączenia urządzenia IoT krawędzi z poprzedniej sekcji.
 
 ```cmd
-iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 Uruchom środowisko uruchomieniowe.
@@ -133,7 +133,7 @@ docker logs -f tempSensor
 
 Można również wyświetlić dane telemetryczne, wysyła urządzenia przy użyciu [narzędzia explorer Centrum IoT][lnk-iothub-explorer]. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku został utworzony nowe urządzenie brzegowe IoT i interfejs chmury Azure IoT krawędzi można wdrożyć kod na urządzeniu. Pojawiły się symulowane urządzenie generowania nieprzetworzone dane o jego środowisku. 
 

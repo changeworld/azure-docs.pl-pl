@@ -1,25 +1,25 @@
 ---
-title: "Struktury głębokie uczenie i AI - Azure | Dokumentacja firmy Microsoft"
-description: "Platformy sztucznej inteligencji i uczenia głębokiego"
-keywords: "narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux"
+title: Struktury głębokie uczenie i AI - Azure | Dokumentacja firmy Microsoft
+description: Platformy sztucznej inteligencji i uczenia głębokiego
+keywords: narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 89a8cde0dbb7fe7ccfbb6d068411aaf5488c532f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.author: gokuma
+ms.openlocfilehash: 829095c7f9b92f64fd6204481e68b2594a3a0017
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
 [Maszyny wirtualnej nauki danych](http://aka.ms/dsvm) (DSVM) i [głębokie wirtualna Learning](http://aka.ms/dsvm/deeplearning) obsługuje wiele platform głębokie learning ułatwia tworzenie aplikacji analizy sztucznego (AI) z analizy predykcyjnej i kognitywnych możliwości, takich jak obraz i zrozumienia języka. 
@@ -55,7 +55,7 @@ Poniżej przedstawiono szczegóły na wszystkich bezpośrednich uczenia struktur
 | Co to jest?   | Głębokie learning framework      |
 | DSVM obsługiwane wersje      | Windows, Linux     |
 | Jak jest on skonfigurowany / zainstalowanym DSVM?  | Keras jest zainstalowany w Python 2.7 (_głównego_), a także Python 3.5 (_py35_) środowiska.   |
-| Łącza do próbek      | https://github.com/fchollet/keras/Tree/Master/Examples      |
+| Łącza do próbek      | https://github.com/fchollet/keras/tree/master/examples      |
 | Pokrewne narzędzia na DSVM      | Theano kognitywnych zestawu narzędzi, TensorFlow, Microsoft      |
 | Jak używać / uruchom go?    | Pobierz przykłady z lokalizacji Github, skopiuj go do katalogu, w obszarze ~/notebooks i otwórz go w aplikacji Jupyter   |
 

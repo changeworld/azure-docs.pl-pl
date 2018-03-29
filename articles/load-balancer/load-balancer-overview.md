@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 4f46e796ff1ab85c0061c70ff9a725a6945a4f5d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Omówienie usługi Azure Load Balancer
 
@@ -41,7 +41,7 @@ Moduł równoważenia obciążenia Azure można używać do:
 
 
 >[!NOTE]
-> Platforma Azure udostępnia mechanizm równoważenia rozwiązań dla scenariuszy pełni zarządzana obciążenia.  Jeśli szukasz rozwiązania TLS ("odciążanie protokołu SSL") lub przetwarzania warstwy aplikacji HTTP i HTTPS, przejrzyj [brama aplikacji w](../application-gateway/application-gateway-introduction.md).  Jeśli szukasz DNS globalnego równoważenia obciążenia, przejrzyj [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Scenariuszy end-to-end mogą korzystać z łączenia tych rozwiązań, zgodnie z potrzebami.
+> Platforma Azure udostępnia mechanizm równoważenia rozwiązań dla scenariuszy pełni zarządzana obciążenia.  Jeśli szukasz dla zakończenia połączenia TLS ("odciążanie protokołu SSL") lub na przetwarzanie warstwy aplikacji żądań HTTP i HTTPS, przejrzyj [brama aplikacji w](../application-gateway/application-gateway-introduction.md).  Jeśli szukasz DNS globalnego równoważenia obciążenia, przejrzyj [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Scenariuszy end-to-end mogą korzystać z łączenia tych rozwiązań, zgodnie z potrzebami.
 
 ## <a name="what-is-load-balancer"></a>Co to jest moduł równoważenia obciążenia?
 
@@ -107,7 +107,7 @@ Moduł równoważenia obciążenia Azure obsługuje dwa różne jednostki magazy
 Jednak w zależności od tego, którego jednostka SKU jest wybrana, szczegóły konfiguracji całego scenariusza mogą być nieco inne. Dokumentacja usługi równoważenia obciążenia wywołuje, gdy artykułu ma zastosowanie do określonej jednostki SKU tylko. Należy przejrzeć poniższą tabelę poniżej, aby porównać i poznać różnice.  Przegląd [standardowe Omówienie usługi równoważenia obciążenia](load-balancer-standard-overview.md) uzyskać więcej szczegółowych informacji.
 
 >[!NOTE]
-> Nowe projekty, należy użyć standardowego modułu równoważenia obciążenia. 
+> Nowe projekty należy rozważyć użycie standardowego modułu równoważenia obciążenia. 
 
 Autonomicznych maszyn wirtualnych, zestawów dostępności i zestawy skalowania maszyny wirtualnej można połączenie tylko jednego identyfikatora jednostki Magazynowej, nigdy nie oba. W przypadku użycia z publicznych adresów IP, zarówno usługi równoważenia obciążenia i publiczny adres IP SKU muszą być zgodne. Usługi równoważenia obciążenia i publicznego adresu IP jednostki SKU nie jest modyfikowalna.
 
@@ -118,15 +118,15 @@ _Mimo że nie jest jeszcze obowiązkowe jest najlepszym rozwiązaniem jest jawni
 
 | | [Standardowy SKU](load-balancer-standard-overview.md) | Podstawowy SKU |
 | --- | --- | --- |
-| Rozmiar puli wewnętrznej bazy danych | maksymalnie 1000 wystąpień | do 100 wystąpień|
+| Rozmiar puli wewnętrznej bazy danych | maksymalnie 1000 wystąpień | do 100 wystąpień |
 | Punkty końcowe puli wewnętrznej bazy danych | Żadnej maszyny wirtualnej w jednej sieci wirtualnej, tym blend maszyn wirtualnych, zestawów dostępności zestawach skali maszyn wirtualnych. | Ustaw maszyn wirtualnych w skali dostępności pojedynczy zestaw lub maszyny wirtualnej |
 | Strefy dostępności | Nadmiarowe strefy i zonal frontends dla ruchu przychodzącego i awarie strefy, równoważenie obciążenia sieciowego stref między mapowania przepływów wychodzących, wychodzący | / |
-| Diagnostyka | Azure Monitor wielowymiarowych metryk, takich jak bajt i liczniki pakietów, kondycji sondowania stanu, próby połączenia (TCP SYN), kondycja połączenia wychodzącego (SNAT udane i nieudane przepływy), pomiarów płaszczyzny aktywnych danych | Azure Log analytics publicznego równoważenia obciążenia, alert wyczerpania SNAT, liczba kondycji puli wewnętrznej bazy danych |
+| Diagnostyka | Azure Monitor wielowymiarowych metryk, takich jak bajt i liczniki pakietów, kondycji sondowania stanu, próby połączenia (TCP SYN), kondycja połączenia wychodzącego (SNAT udane i nieudane przepływy), pomiarów płaszczyzny aktywnych danych | Azure Log Analytics publicznego równoważenia obciążenia, alert wyczerpania SNAT, liczba kondycji puli wewnętrznej bazy danych |
 | HA portów | Wewnętrzny moduł równoważenia obciążenia | / |
-| Bezpieczeństwo domyślne | punkty końcowe publicznych adresów IP i usługi równoważenia obciążenia zawsze domyślnej zamknięty, grupy zabezpieczeń sieci używana jawnie listą dozwolonych adresów IP | Otwórz ustawienia domyślne, opcjonalne grupy zabezpieczeń sieci |
-| Połączenia wychodzące | Wiele frontends na Wypisz reguły. Skojarzenie maszyny wirtualnej przy użyciu adresu wychodzącego _musi_ można jawnie utworzyć.  Dotyczy to również łączności z innymi usługami Azure PaaS lub [punktów końcowych usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) musi być używany. Połączenia wychodzące przez domyślny SNAT nie są dostępne, gdy tylko do wewnętrznego modułu równoważenia obciążenia działa jako maszynę wirtualną. | Pojedynczego serwera sieci Web. Używana jest domyślna SNAT, gdy tylko wewnętrzny moduł równoważenia obciążenia działa jako maszynę wirtualną |
+| Bezpieczeństwo domyślne | domyślne zamknięty dla publicznych adresów IP i usługi równoważenia obciążenia punktów końcowych i grupy zabezpieczeń sieci musi być używany do jawnie dozwolone w przypadku ruchu przepływu | domyślny otwarty, grupy zabezpieczeń sieci opcjonalne |
+| Połączenia wychodzące | Wiele frontends z każdej reguły zrezygnować. Scenariusz wychodzących _musi_ jawnie można utworzyć maszyny wirtualnej można było użyć łączność wychodząca.  [Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) bez połączenia wychodzącego jest osiągalna, a nie wchodzą w skład dane przetworzone.  Publicznych adresów IP, takich jak usługi Azure PaaS nie jest dostępna jako punktów końcowych usługi sieci wirtualnej, musi być osiągnięta poprzez łączność wychodząca i count do przetwarzania danych. Połączenia wychodzące przez domyślny SNAT wyłącznie do wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, nie są dostępne. Wychodzące programowania SNAT jest protokołu transportowego określonej na podstawie protokołu reguły równoważenia obciążenia dla ruchu przychodzącego. | Fronton jeden losowo wybrany, gdy istnieją frontends wiele.  Gdy tylko wewnętrzny moduł równoważenia obciążenia działa jako maszynę wirtualną, używana jest domyślna SNAT. |
 | Wiele frontends | Przychodzące i wychodzące | Tylko transfer przychodzący |
-| Operacje | Większość operacji < 30 sekund | 60-90 sekund typowe |
+| Operacje zarządzania | Większość operacji < 30 sekund | 60-90 sekund typowe |
 | Umowa SLA | 99,99% dla ścieżki danych z maszynami wirtualnymi na dwóch dobrej kondycji | Niejawne w umowie SLA maszyny Wirtualnej | 
 | Cennik | Na podstawie liczby reguł, dane przetworzone ruchu przychodzącego lub wychodzącego skojarzony z zasobem  | Bez dodatkowych opłat |
 

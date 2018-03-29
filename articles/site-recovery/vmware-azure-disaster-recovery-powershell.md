@@ -1,6 +1,6 @@
 ---
-title: "Replikacja i pracy awaryjnej maszyn wirtualnych VMware do platformy Azure przy użyciu programu PowerShell w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować replikacji i trybu failover do platformy Azure dla maszyn wirtualnych VMware przy użyciu programu PowerShell w usłudze Azure Site Recovery."
+title: Replikacja i pracy awaryjnej maszyn wirtualnych VMware do platformy Azure przy użyciu programu PowerShell w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować replikacji i trybu failover do platformy Azure dla maszyn wirtualnych VMware przy użyciu programu PowerShell w usłudze Azure Site Recovery.
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: bsiva
-ms.openlocfilehash: 9a2edb874ca969813a4f826cd80ef855e391dc4b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: cbb76aafe97e9e9b45c48a2b13bd1a6566b51fa5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikacja i pracy awaryjnej maszyn wirtualnych VMware do platformy Azure przy użyciu programu PowerShell
 
@@ -115,6 +115,18 @@ ResourceName      ResourceGroupName ResourceNamespace          ResouceType
 ------------      ----------------- -----------------          -----------
 VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
 ```
+
+> [!TIP]
+> Jako alternatywę do polecenia cmdlet Set-ASRVaultContext co umożliwia także polecenia cmdlet Import-AzureRmRecoveryServicesAsrVaultSettingsFile Ustaw kontekst magazynu. Określ ścieżkę, w której znajduje się jako parametr - path, do polecenia cmdlet Import-AzureRmRecoveryServicesAsrVaultSettingsFile się plik klucza rejestracji magazynu.
+>
+>Na przykład:
+>
+>```azurepowershell
+>Get-AzureRmRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
+>
+>Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
+>```
+>
 
 Kolejne sekcje w tym artykule przyjęto założenie, czy kontekst magazynu dla operacji usługi Azure Site Recovery został ustawiony.
 

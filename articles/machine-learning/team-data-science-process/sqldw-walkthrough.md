@@ -1,8 +1,8 @@
 ---
-title: "Proces nauki danych zespołu w działaniu: przy użyciu usługi SQL Data Warehouse | Dokumentacja firmy Microsoft"
+title: 'Proces nauki danych zespołu w działaniu: przy użyciu usługi SQL Data Warehouse | Dokumentacja firmy Microsoft'
 description: Proces zaawansowane metody analizy i technologii w akcji
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev;weig
-ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Proces nauki danych zespołu w działaniu: przy użyciu magazynu danych SQL
 W tym samouczku, możemy opisano tworzenie i wdrażanie modelu uczenia maszynowego przy użyciu magazynu danych SQL (SQL DW) dla elementu dataset publicznie dostępnych — [rund taksówki NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany prognozuje czy poradę ma być stosowany w podróży i modele wieloklasowej klasyfikacji i regresji omówiono także które prognozowania dystrybucji dla kwoty Porada płatnej.
@@ -319,7 +319,7 @@ Lokalizacja geograficzna kont magazynu ma wpływ na czas ładowania.
 Należy podjąć decyzję czego, jeśli masz zduplikowane pliki źródłowe i docelowe.
 
 > [!NOTE]
-> Jeśli pliki CSV do skopiowania z magazynu publicznego obiektu blob na koncie magazynu prywatnego obiektu blob już istnieją w konto magazynu obiektów blob prywatne, AzCopy zapyta, czy chcesz je zastąpić. Jeśli nie chcesz je zastąpić, wprowadź  **n**  po wyświetleniu monitu. Jeśli chcesz zastąpić **wszystkie** z nich, wprowadź po wyświetleniu monitu. Możesz również wpisać **y** indywidualnie zastąpić pliki CSV.
+> Jeśli pliki CSV do skopiowania z magazynu publicznego obiektu blob na koncie magazynu prywatnego obiektu blob już istnieją w konto magazynu obiektów blob prywatne, AzCopy zapyta, czy chcesz je zastąpić. Jeśli nie chcesz je zastąpić, wprowadź **n** po wyświetleniu monitu. Jeśli chcesz zastąpić **wszystkie** z nich, wprowadź po wyświetleniu monitu. Możesz również wpisać **y** indywidualnie zastąpić pliki CSV.
 > 
 > 
 
@@ -836,7 +836,7 @@ W tym ćwiczeniu firma Microsoft ma już przedstawione odtwarzane danych w usłu
    
     ![Uczenie Maszynowe Azure i zaimportuj dane][17]
 2. Wybierz **bazy danych SQL Azure** jako **źródła danych** w **właściwości** panelu.
-3. Wprowadź nazwę DNS bazy danych w **nazwę serwera bazy danych** pola. Format:`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Wprowadź nazwę DNS bazy danych w **nazwę serwera bazy danych** pola. Format: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Wprowadź **Nazwa bazy danych** w odpowiednie pole.
 5. Wprowadź *nazwa użytkownika SQL* w **nazwę konta użytkownika serwera**i *hasło* w **hasło konta użytkownika serwera**.
 7. W **zapytanie bazy danych** edytowania obszaru tekstu, Wklej zapytanie, które zwraca pola niezbędne bazy danych (w tym wszystkie pola obliczanej, takich jak etykiety) i w dół próbek danych do żądanego próbkowania.
@@ -874,7 +874,7 @@ Podczas tworzenia eksperymentu oceniania, zapoznaj się z nim i upewnij się, Do
 
 Przykładowe oceniania eksperymentu znajduje się na poniższej ilustracji. Gdy będzie gotowy do wdrożenia, kliknij przycisk **OPUBLIKOWAĆ usługi sieci WEB** na dolnym pasku akcji.
 
-![Publikowanie Azure ML][11]
+![Azure ML Publish][11]
 
 ## <a name="summary"></a>Podsumowanie
 Aby recap, co możemy to zostało zrobione w tym samouczku wskazówki, utworzono środowisku nauki danych Azure doświadczenie z dużego zestawu danych publicznych, dostarczanej przez proces nauki zespołu danych od pozyskiwania danych do uczenia modelu, a następnie do Wdrażanie usługi sieci web uczenie maszynowe Azure.

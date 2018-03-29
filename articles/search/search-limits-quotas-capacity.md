@@ -1,11 +1,11 @@
 ---
-title: "Usługa limity w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Ograniczenia usługi używane do planowania pojemności i maksymalna limity żądań i odpowiedzi dla usługi Azure Search."
+title: Usługa limity w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Ograniczenia usługi używane do planowania pojemności i maksymalna limity żądań i odpowiedzi dla usługi Azure Search.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
 ms.service: search
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/09/2017
+ms.date: 03/26/2018
 ms.author: heidist
-ms.openlocfilehash: 3deb0ff81114c840798c5927ad7311d7e603813d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fb2234e79e8deb98a94068f31a40c8f0b415d7ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Ograniczenia usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążenia i ilości indeksów, dokumentów, a inne obiekty są zależne od tego, czy możesz [udostępnić usługi Azure Search](search-create-service-portal.md) w **wolne**, **podstawowe**, lub **standardowe** warstwy cenowej.
@@ -32,35 +32,40 @@ Maksymalne zawartości w pamięci masowej, obciążenia i ilości indeksów, dok
 > Usługa jest zainicjowana dla określonej warstwy. Przeskakiwanie warstw w celu uzyskania pojemności obejmuje Inicjowanie obsługi administracyjnej nowej usługi (uaktualnienie w miejscu, nie istnieje). Aby uzyskać więcej informacji, zobacz [wybierz jednostki SKU lub warstwy](search-sku-tier.md). Aby dowiedzieć się więcej na temat dostosowywania wydajności w ramach usługi została już przydzielona, zobacz [skalowania zasobu poziomy kwerendy i indeksowania obciążeń](search-capacity-planning.md).
 >
 
-## <a name="per-subscription-limits"></a>Na limity subskrypcji
+## <a name="subscription-limits"></a>Limity subskrypcji
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="per-service-limits"></a>Limity dla usług
+## <a name="service-limits"></a>Limity usługi
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
-## <a name="per-index-limits"></a>Na granicach indeksu
-Brak odpowiednika między ograniczenia dotyczące indeksów i limity indeksatorów. Biorąc pod uwagę limit 200 indeksów, maksymalny limit dla indeksatorów jest również 200 dla tej samej usługi.
+## <a name="index-limits"></a>Limity indeksu
 
 | Zasób | Bezpłatna | Podstawowa | S1 | S2 | S3 | S3 (wysoka gęstość) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Indeks: maksymalna pól w indeksie |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
-| Indeks: maksymalny oceniania profil dla każdej z indeksu |100 |100 |100 |100 |100 |100 |
-| Indeks: maksymalna funkcje dla profilu |8 |8 |8 |8 |8 |8 |
-| Indeksatory: maksymalne obciążenie indeksowania dla wywołania |10 000 dokumentów |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |N/D <sup>2</sup> |
-| Indeksatory: maksymalny czas działania | 1 – 3 minuty <sup>3</sup> |24 godziny |24 godziny |24 godziny |24 godziny |N/D <sup>2</sup> |
-| Indeksator obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |N/D <sup>2</sup> |
-| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębniony z obiektu blob |32,000 |64,000 |4 miliony |4 miliony |4 miliony |N/D <sup>2</sup> |
+| Maksymalna pól w indeksie |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
+| Maksymalna profil oceniania dla każdej indeksu |100 |100 |100 |100 |100 |100 |
+| Maksymalna funkcje dla profilu |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> warstwa podstawowa jest tylko jednostki SKU z dolny limit 100 pól w indeksie.
 
-<sup>2</sup> S3 HD nie obsługuje obecnie indeksatorów. Jeśli masz pilną potrzebę dla tej funkcji, skontaktuj się z pomocą techniczną platformy Azure.
+## <a name="indexer-limits"></a>Limity indeksatora
 
-<sup>3</sup> indeksatora maksymalny czas wykonywania warstwę bezpłatna to 3 minuty źródła obiektów blob i 1 minuty dla wszystkich źródeł danych.
+| Zasób | Bezpłatna | Podstawowa | S1 | S2 | S3 | S3 (wysoka gęstość) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Maksymalne obciążenie indeksowania dla wywołania |10 000 dokumentów |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |Ograniczone tylko dokumenty maksymalna |N/D <sup>1</sup> |
+| Maksymalny czas działania | 1 – 3 minuty <sup>2</sup> |24 godziny |24 godziny |24 godziny |24 godziny |N/D <sup>1</sup> |
+| Indeksator obiektów blob: rozmiar maksymalny obiektu blob, MB |16 |16 |128 |256 |256 |N/D <sup>1</sup> |
+| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębniony z obiektu blob |32,000 |64,000 |4 miliony |4 miliony |4 miliony |N/D <sup>1</sup> |
+
+<sup>1</sup> S3 HD nie obsługuje obecnie indeksatorów. Jeśli masz pilną potrzebę dla tej funkcji, skontaktuj się z pomocą techniczną platformy Azure.
+
+<sup>2</sup> indeksatora maksymalny czas wykonywania warstwę bezpłatna to 3 minuty źródła obiektów blob i 1 minuty dla wszystkich źródeł danych.
+
 
 ## <a name="document-size-limits"></a>Limity rozmiaru dokumentu
 | Zasób | Bezpłatna | Podstawowa | S1 | S2 | S3 | S3 (wysoka gęstość) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Rozmiar poszczególnych dokumentu na indeks interfejsu API |< 16 MB |< 16 MB |< 16 MB |< 16 MB |< 16 MB |< 16 MB |
+| Rozmiar poszczególnych dokumentu na indeks interfejsu API |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |
 
 Odwołuje się do rozmiar maksymalny dokumentu podczas wywoływania indeksu interfejsu API. Rozmiar dokumentu jest rzeczywiście limit rozmiaru treści żądania interfejsu API indeksu. Ponieważ jednocześnie można przekazać partii wielu dokumentów do interfejsu API indeksu, limit rozmiaru faktycznie zależy liczby dokumentów w partii. Dla partii z pojedynczego dokumentu rozmiar maksymalny dokumentu jest 16 MB JSON.
 
@@ -79,7 +84,7 @@ Szacuje są bardziej przewidywalne podczas obliczania na usługi działające na
 * Maksymalny 32 pola w klauzuli $orderby
 * Rozmiar termin wyszukiwania maksymalna to 32 766 bajtów (32 KB minus 2 bajty) tekstu kodowany w formacie UTF-8
 
-<sup>1</sup> w usłudze Azure Search treści żądania podlega górny limit 16 MB, nakładające praktyczne limit na zawartość poszczególnych pól lub kolekcje, które w przeciwnym razie nie są ograniczone przez teoretycznego limity (zobacz [obsługiwane typy danych](https://msdn.microsoft.com/library/azure/dn798938.aspx) uzyskać więcej informacji dotyczących ograniczenia i pola kompozycji).
+<sup>1</sup> w usłudze Azure Search treści żądania podlega górny limit 16 MB, nakładające praktyczne limit na zawartość poszczególnych pól lub kolekcje, które w przeciwnym razie nie są ograniczone przez teoretycznego limity (zobacz [obsługiwane danych typy](https://msdn.microsoft.com/library/azure/dn798938.aspx) uzyskać więcej informacji dotyczących ograniczenia i pola kompozycji).
 
 ## <a name="api-response-limits"></a>Limity odpowiedzi interfejsu API
 * Maksymalna 1000 zwrócone na stronę wyników wyszukiwania

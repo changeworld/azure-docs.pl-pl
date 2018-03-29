@@ -1,8 +1,8 @@
 ---
 title: Zaawansowane Eksploracja danych i modelowania z Spark | Dokumentacja firmy Microsoft
-description: "Eksploracja danych i uczenia binarne modele klasyfikacji i regresji przy użyciu optymalizacji krzyżowego sprawdzania poprawności i hyperparameter, należy użyć HDInsight Spark."
+description: Eksploracja danych i uczenia binarne modele klasyfikacji i regresji przy użyciu optymalizacji krzyżowego sprawdzania poprawności i hyperparameter, należy użyć HDInsight Spark.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 016d7760895e9b8cca082bac4e14388680fbbc05
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3d4cd29596b14e6de07fdf06191f7d69c2d39641
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Zaawansowane eksplorowanie i modelowanie danych za pomocą platformy Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -87,7 +87,7 @@ Poniższy przykład kodu Określa lokalizację danych do odczytu i ścieżkę do
 
 **DANE WYJŚCIOWE**
 
-DateTime.DateTime (2016, 4, 18, 17, 36, 27, 832799)
+datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
 ### <a name="import-libraries"></a>Importuj biblioteki
 Importuj biblioteki niezbędne następującym kodem:
@@ -199,7 +199,7 @@ Po wprowadzeniu danych w Spark, następnym krokiem w procesie nauki danych jest 
 Ten kod i kolejne wstawki umożliwia SQL magic próbki oraz lokalnego magic danych zapytania.
 
 * **Magiczna SQL (`%%sql`)** jądra HDInsight PySpark obsługuje zapytania HiveQL łatwe wbudowanego przed element sqlContext. (-O nazwa_zmiennej) argument będzie się powtarzał wyniki kwerendy SQL jako DataFrame Pandas, na serwerze Jupyter. Oznacza to, że jest on dostępny w trybie lokalnym.
-* **`%%local` Magic** służy do uruchomienia kodu lokalnie na serwerze Jupyter jest headnode klastra usługi HDInsight. Zazwyczaj `%%local` magic po `%%sql -o` magic jest używany do uruchamiania kwerendy. Parametru -o czy zachować dane wyjściowe lokalnie zapytania SQL. Następnie przy użyciu `%%local` magic wyzwala następnego zestawu fragmentów kodu w celu uruchomienia lokalnie wynik zapytania SQL utrwaleniu lokalnie. Dane wyjściowe automatyczna wizualizacja po uruchomieniu kodu.
+*  **`%%local` Magic** służy do uruchomienia kodu lokalnie na serwerze Jupyter jest headnode klastra usługi HDInsight. Zazwyczaj `%%local` magic po `%%sql -o` magic jest używany do uruchamiania kwerendy. Parametru -o czy zachować dane wyjściowe lokalnie zapytania SQL. Następnie przy użyciu `%%local` magic wyzwala następnego zestawu fragmentów kodu w celu uruchomienia lokalnie wynik zapytania SQL utrwaleniu lokalnie. Dane wyjściowe automatyczna wizualizacja po uruchomieniu kodu.
 
 To zapytanie pobiera rund według liczby osób. 
 
@@ -666,7 +666,7 @@ Kod w tej sekcji przedstawiono sposób uczenia, oceny i Zapisz model Regresja lo
 
 **DANE WYJŚCIOWE**
 
-Współczynniki: [0.0082065285375,-0.0223675576104,-0.0183812028036, - 3.48124578069e-05,-0.00247646947233,-0.00165897881503, 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921,-0.664263411392,-1.00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
+Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
 Intercept:-0.0111216486893
 
@@ -1055,13 +1055,13 @@ Kod w tej sekcji pokazano, jak używać funkcji skalowany w celu przeszkolenia r
 
 **DANE WYJŚCIOWE**
 
-Współczynniki: [0.0141707753435,-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,-0.00791124681938, 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
+Coefficients: [0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
 Przechwycić: 0.854507624459
 
 RMSE = 1.23485131376
 
-R sqr = 0.597963951127
+R-sqr = 0.597963951127
 
 Czas wykonywania nad komórką: 38.62 sekund
 
@@ -1117,7 +1117,7 @@ Kod w tej sekcji przedstawiono sposób uczenia, oceny i zapisać modelu losowe l
 
 RMSE = 0.931981967875
 
-R sqr = 0.733445485802
+R-sqr = 0.733445485802
 
 Czas wykonywania nad komórką: 25.98 sekund
 
@@ -1168,7 +1168,7 @@ Kod w tej sekcji przedstawiono sposób uczenia, oceny i Zapisz gradientu zwięks
 
 RMSE = 0.928172197114
 
-R sqr = 0.732680354389
+R-sqr = 0.732680354389
 
 Czas wykonywania nad komórką: 20.9 sekund
 
@@ -1288,7 +1288,7 @@ Oto kod służący do obliczania R sqr.
 
 **DANE WYJŚCIOWE**
 
-R sqr = 0.619184907088
+R-sqr = 0.619184907088
 
 ### <a name="cross-validation-with-parameter-sweep-using-custom-code-for-random-forest-regression"></a>Krzyżowe sprawdzanie poprawności z odchylenia parametr dla lasu losowe regresji przy użyciu kodu niestandardowego
 Kod w tej sekcji przedstawiono sposób krzyżowe sprawdzanie poprawności z odchylenia parametr dla lasu losowe regresji przy użyciu kodu niestandardowego i ocena modelu dla danych testowych.
@@ -1411,7 +1411,7 @@ Użyj `unpersist()` można usunąć obiektów w pamięci podręcznej.
 
 **DANE WYJŚCIOWE**
 
-PythonRDD [122] w RDD w PythonRDD.scala: 43
+PythonRDD[122] at RDD at PythonRDD.scala: 43
 
 ** Wydruku ścieżka do plików modelu używanego w notesie zużycia. ** Do zużywają i wyniku niezależnego zestawu danych, należy do kopiowania i wklejania te nazwy pliku w "notesu zużycie".
 

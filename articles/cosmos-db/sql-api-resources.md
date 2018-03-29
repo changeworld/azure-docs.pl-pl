@@ -1,9 +1,9 @@
 ---
-title: "Pojęcia i model zasobów w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat modelu hierarchiczna Azure rozwiązania Cosmos DB baz danych, kolekcji, funkcji zdefiniowanych przez użytkownika (UDF), dokumentów, uprawnienia do zarządzania zasobami i inne."
-keywords: Hierarchiczny model, cosmosdb azure, programu Microsoft azure
+title: Pojęcia i model zasobów w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat modelu hierarchiczna Azure rozwiązania Cosmos DB baz danych, kolekcji, funkcji zdefiniowanych przez użytkownika (UDF), dokumentów, uprawnienia do zarządzania zasobami i inne.
+keywords: Hierarchical model, cosmosdb, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
@@ -12,18 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a88f17a658987e1ff3ae0e0f38d6551c3acee1da
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Podstawowe pojęcia i hierarchiczny model zasobów usługi Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Jednostki bazy danych, które bazy danych Azure rozwiązania Cosmos zarządza są określane jako **zasobów**. Każdy zasób jest unikatowo identyfikowana przez logiczny identyfikator URI. Użytkownik może interakcyjnie przeprowadzić zasobów przy użyciu standardowych poleceń HTTP, nagłówki żądań i odpowiedzi i kodów stanu. 
 
@@ -34,6 +32,12 @@ Ten artykuł zawiera odpowiedzi na następujące pytania:
 * Jak rozwiązać zasobu?
 * Jak pracować z kolekcjami
 * Jak pracować z procedur składowanych, wyzwalaczy i funkcje zdefiniowane przez użytkownika (UDF)
+
+W następujących wideo Azure Menedżera programów DB rozwiązania Cosmos Andrew Liu przeprowadzi Cię przez model zasobów bazy danych Azure rozwiązania Cosmos. 
+
+> [!VIDEO https://www.youtube.com/embed/luWFgTP0IL4]
+>
+>
 
 ## <a name="hierarchical-resource-model"></a>Model hierarchiczna zasobów
 Jak na poniższym diagramie przedstawiono rozwiązania Cosmos bazy danych Azure hierarchiczna **model zasobów** składa się z zestawów zasobów w ramach konta bazy danych, każda mogą być adresowane za pomocą logicznych i stabilny identyfikator URI. Zestaw zasobów są nazywane **źródła danych** w tym artykule. 
@@ -57,7 +61,7 @@ Aby rozpocząć pracę z zasobami, należy najpierw [Tworzenie konta bazy danych
 | Collection |Kolekcja jest kontenerem dokumentów JSON i skojarzonej logiki aplikacji JavaScript. Kolekcja to płatna jednostka, której [koszt](performance-levels.md) zależy od poziomu wydajności skojarzonego z tą kolekcją. Kolekcje mogą znajdować się na jednej lub wielu partycjach/serwerach i mogą być skalowane do obsługi praktycznie nieograniczonej ilości magazynu lub przepływności. |
 | Procedura składowana |Logika aplikacji napisane w języku JavaScript, który jest zarejestrowany w kolekcji i transakcyjnie wykonywane w ramach aparatu bazy danych. |
 | Wyzwalacz |Logiki aplikacji napisane w języku JavaScript wykonane przed lub po każdej operacji insert, Zamień lub operacji usuwania. |
-| FUNKCJI ZDEFINIOWANEJ PRZEZ UŻYTKOWNIKA |Logika aplikacji napisane w języku JavaScript. Funkcje UDF umożliwiają modelu operator niestandardowe zapytania i tym samym rozszerzać język zapytań SQL interfejsu API. |
+| UDF |Logika aplikacji napisane w języku JavaScript. Funkcje UDF umożliwiają modelu operator niestandardowe zapytania i tym samym rozszerzać język zapytań SQL interfejsu API. |
 | Dokument |Zdefiniowane przez użytkownika (dowolną) zawartość JSON. Domyślnie Brak schematu musi być zdefiniowany ani indeksów pomocniczych, trzeba podać dla wszystkich dokumentów dodany do kolekcji. |
 | Załącznik |Załącznik jest specjalny dokument zawierający odniesienia i skojarzone metadane dla obiekt blob/nośnika zewnętrznego. Deweloper można wybrać obiektu blob zarządza DB rozwiązania Cosmos lub zapisz go z dostawcą usług zewnętrznych obiektów blob, np. OneDrive, Dropbox. |
 
@@ -113,15 +117,15 @@ Wszystkie zasoby są adresowanego identyfikatora URI. Wartość **_self** właś
 | Wartość _self | Opis |
 | --- | --- |
 | /DBS |Źródło danych bazy danych w ramach konta bazy danych |
-| /DBS/ {dbName} |Baza danych o identyfikatorze odpowiadającym wartości {dbName} |
-| /colls/ /DBS/ {dbName} |Źródło danych kolekcji w bazie danych |
-| /colls/ /DBS/ {dbName} {collName} |Kolekcja o identyfikatorze odpowiadającym wartości {collName} |
-| /colls/ /DBS/ {dbName} {collName} / docs |Źródła danych dokumentów w kolekcji |
-| /docs/ /colls/ {collName} /DBS/ {dbName} {identyfikator} |Dokument o identyfikatorze odpowiadającym wartości {doc} |
-| /users/ /DBS/ {dbName} |Źródło danych użytkowników w bazie danych |
-| /users/ /DBS/ {dbName} {userId} |Użytkownik o identyfikatorze odpowiadającym wartości {użytkownika} |
-| /users/ /DBS/ {dbName} {userId} / uprawnień |Źródło danych uprawnienia użytkownika |
-| /permissions/ /users/ {userId} /DBS/ {dbName} {permissionId} |Uprawnienie o identyfikatorze odpowiadającym wartości {uprawnienie} |
+| /dbs/{dbName} |Baza danych o identyfikatorze odpowiadającym wartości {dbName} |
+| /dbs/{dbName}/colls/ |Źródło danych kolekcji w bazie danych |
+| /dbs/{dbName}/colls/{collName} |Kolekcja o identyfikatorze odpowiadającym wartości {collName} |
+| /dbs/{dbName}/colls/{collName}/docs |Źródła danych dokumentów w kolekcji |
+| /dbs/{dbName}/colls/{collName}/docs/{docId} |Dokument o identyfikatorze odpowiadającym wartości {doc} |
+| /dbs/{dbName}/users/ |Źródło danych użytkowników w bazie danych |
+| /dbs/{dbName}/users/{userId} |Użytkownik o identyfikatorze odpowiadającym wartości {użytkownika} |
+| /dbs/{dbName}/users/{userId}/permissions |Źródło danych uprawnienia użytkownika |
+| /dbs/{dbName}/users/{userId}/permissions/{permissionId} |Uprawnienie o identyfikatorze odpowiadającym wartości {uprawnienie} |
 
 Każdy zasób ma unikatową nazwę użytkownika udostępniane za pośrednictwem funkcji właściwość identyfikatora. Uwaga: w przypadku dokumentów, jeśli użytkownik nie określono identyfikatora, zestawy SDK automatycznie generować Unikatowy identyfikator dla dokumentu. Identyfikator jest zdefiniowane przez użytkownika ciąg, maksymalnie 256 znaków, które jest unikatowa w ramach zasobu określonego nadrzędnej. 
 
@@ -132,7 +136,7 @@ Interfejsy API REST obsługują adresowania zasobów i routingu żądań przez z
 ## <a name="database-accounts"></a>Konta bazy danych
 Można udostępnić co najmniej jednego rozwiązania Cosmos DB bazy danych konta przy użyciu subskrypcji platformy Azure.
 
-Możesz utworzyć i zarządzać kontami bazy danych DB rozwiązania Cosmos za pośrednictwem portalu Azure pod adresem [http://portal.azure.com/](https://portal.azure.com/). Tworzenie i zarządzanie nimi konta bazy danych wymaga dostępu administracyjnego i może zostać wykonane tylko w ramach Twojej subskrypcji platformy Azure. 
+Możesz utworzyć i zarządzać kontami bazy danych DB rozwiązania Cosmos za pośrednictwem portalu Azure pod adresem [ http://portal.azure.com/ ](https://portal.azure.com/). Tworzenie i zarządzanie nimi konta bazy danych wymaga dostępu administracyjnego i może zostać wykonane tylko w ramach Twojej subskrypcji platformy Azure. 
 
 ### <a name="database-account-properties"></a>Właściwości konta bazy danych
 W ramach inicjowania obsługi i zarządzania nimi konta bazy danych można skonfigurować i przeczytaj następujące właściwości:  
@@ -457,7 +461,7 @@ Jedynym sposobem na uzyskanie klucza zasobu jest tworzenie zasobu uprawnień dan
 
 Zgodnie z wszystkimi innymi zasobami, można utworzyć uprawnienia w usłudze Azure DB rozwiązania Cosmos, zastąpione, usunięty, odczytać lub wyliczyć za pomocą interfejsów API REST lub w dowolnej z zestawów SDK klienta. Azure DB rozwiązania Cosmos zawsze zapewnia wysoki poziom spójności odczytu lub zapytanie dotyczące metadanych uprawnienia. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o pracy z zasobami przy użyciu poleceń HTTP w [RESTful interakcji z zasobami Azure DB rozwiązania Cosmos](https://msdn.microsoft.com/library/azure/mt622086.aspx).
 
 [1]: media/sql-api-resources/resources1.png

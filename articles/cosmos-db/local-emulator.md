@@ -1,12 +1,12 @@
 ---
-title: "Opracowywanie lokalnie w emulatorze DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft"
-description: "Przy użyciu emulatora usługi Azure DB rozwiązania Cosmos, mogą tworzyć i testować aplikację lokalnie darmo, bez tworzenia subskrypcji platformy Azure."
+title: Opracowywanie lokalnie w emulatorze DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft
+description: Przy użyciu emulatora usługi Azure DB rozwiązania Cosmos, mogą tworzyć i testować aplikację lokalnie darmo, bez tworzenia subskrypcji platformy Azure.
 services: cosmos-db
-documentationcenter: 
-keywords: "Emulator usługi Azure rozwiązania Cosmos bazy danych"
+documentationcenter: ''
+keywords: Emulator usługi Azure rozwiązania Cosmos bazy danych
 author: David-Noble-at-work
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 1991157330f6607efcf42ad42694c6b4d19fe609
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4a393887d8e82e833b0c956666bf36e5adb19e70
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Użyj emulatora usługi Azure rozwiązania Cosmos bazy danych dla lokalnych projektowania i testowania
 
@@ -105,7 +105,7 @@ Emulatora usługi Azure DB rozwiązania Cosmos jest instalowana domyślnie `C:\P
 
 ## <a name="start-data-explorer"></a>Uruchom Eksploratora danych
 
-Po uruchomieniu emulatora bazy danych rozwiązania Cosmos Azure automatycznie otwiera Eksploratora danych bazy danych Azure rozwiązania Cosmos w przeglądarce. Ten adres jest wyświetlany jako [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html). Zamknij Eksploratora, aby otworzyć go ponownie później możesz otworzyć adresu URL w przeglądarce lub uruchomić go z emulatora usługi Azure rozwiązania Cosmos bazy danych w ikonie na pasku zadań systemu Windows, jak pokazano poniżej.
+Po uruchomieniu emulatora bazy danych rozwiązania Cosmos Azure automatycznie otwiera Eksploratora danych bazy danych Azure rozwiązania Cosmos w przeglądarce. Ten adres jest wyświetlany jako [ https://localhost:8081/_explorer/index.html ](https://localhost:8081/_explorer/index.html). Zamknij Eksploratora, aby otworzyć go ponownie później możesz otworzyć adresu URL w przeglądarce lub uruchomić go z emulatora usługi Azure rozwiązania Cosmos bazy danych w ikonie na pasku zadań systemu Windows, jak pokazano poniżej.
 
 ![Azure uruchamiania Eksploratora danych lokalnych emulatora DB rozwiązania Cosmos](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
 
@@ -312,7 +312,7 @@ Jeśli próbujesz utworzyć kolekcję po bieżąca liczba partycji została prze
     Sorry, we are currently experiencing high demand in this region, 
     and cannot fulfill your request at this time. We work continuously 
     to bring more and more capacity online, and encourage you to try again. 
-    Please do not hesitate to email docdbswat@microsoft.com at any time or 
+    Please do not hesitate to email askcosmosdb@microsoft.com at any time or
     for any reason. ActivityId: 29da65cc-fba1-45f9-b82c-bf01d78a1f91
 
 Aby zmienić liczby kolekcji dostępne emulatora usługi Azure rozwiązania Cosmos bazy danych, wykonaj następujące czynności:
@@ -483,7 +483,7 @@ Wielu klientów wspomnieliśmy do dostęp: byłoby nieuprzywilejowany Emulator z
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
 > * Zainstalowane lokalne emulatora

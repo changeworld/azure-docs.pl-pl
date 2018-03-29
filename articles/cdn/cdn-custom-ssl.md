@@ -1,24 +1,24 @@
 ---
-title: "Skonfiguruj protokół HTTPS na domeny niestandardowej Azure Content Delivery Network | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak włączyć lub wyłączyć HTTPS na punkt końcowy usługi Azure CDN z domeny niestandardowej."
+title: Skonfiguruj protokół HTTPS na domeny niestandardowej Azure Content Delivery Network | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć lub wyłączyć HTTPS na punkt końcowy usługi Azure CDN z domeny niestandardowej.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 03/22/2018
 ms.author: casoper
-ms.openlocfilehash: 82de79cde208cdce1ed7cbd600f1e804ff1d45ff
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: fea7121fc67944b20b8f39007edb0c0aad86aeaa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Skonfiguruj protokół HTTPS na Azure Content Delivery Network domeny niestandardowej
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/14/2017
 
 Firma Microsoft obsługuje protokół HTTPS dla domen niestandardowych na platformie Azure sieci dostarczania zawartości (CDN). Z obsługą domeny niestandardowej HTTPS może zapewnić bezpieczne zawartości za pomocą protokołu SSL przy użyciu nazwy domeny w celu zwiększenia bezpieczeństwa danych podczas przesyłania. Przepływ pracy, aby włączyć protokół HTTPS dla domeny niestandardowej jest uproszczone, za pomocą jednego kliknięcia aktywacji i pełnego zarządzania certyfikatami, wszystkie bez dodatkowych kosztów.
 
-Jest krytyczne, aby zapewnić prywatność i integralność danych poufnych danych aplikacji sieci web podczas przesyłania. Przy użyciu protokołu HTTPS, należy zapewnić, że poufne dane są szyfrowane, gdy są wysyłane przez internet. Zapewnia zaufania, uwierzytelniania i chroni przed atakami aplikacji sieci web. Domyślnie usługi Azure CDN obsługuje protokół HTTPS na punktu końcowego usługi CDN. Na przykład w przypadku utworzenia punktu końcowego usługi CDN z usługi Azure CDN (takie jak `https://contoso.azureedge.net`), protokół HTTPS jest automatycznie włączone. Ponadto z obsługą protokołu HTTPS domeny niestandardowej, można również włączyć bezpieczne dostarczanie dla domeny niestandardowej (na przykład `https://www.contoso.com`). 
+Jest krytyczne, aby zapewnić prywatność i integralność danych poufnych danych aplikacji sieci web podczas przesyłania. Przy użyciu protokołu HTTPS, należy zapewnić, że poufne dane są szyfrowane, gdy są wysyłane przez internet. Zapewnia zaufania, uwierzytelniania i chroni przed atakami aplikacji sieci web. Domyślnie usługi Azure CDN obsługuje protokół HTTPS na punktu końcowego usługi CDN. Na przykład w przypadku utworzenia punktu końcowego usługi CDN z usługi Azure CDN (taki jak https:\//contoso.azureedge.net), protokół HTTPS jest automatycznie włączone. Ponadto z obsługą protokołu HTTPS domeny niestandardowej, można również włączyć bezpieczne dostarczanie dla domeny niestandardowej (na przykład https:\//www.contoso.com). 
 
 Niektóre z kluczowych atrybutów funkcję HTTPS są:
 
@@ -60,23 +60,38 @@ Aby włączyć protokół HTTPS na domenę niestandardową, wykonaj następując
 
 ### <a name="step-2-validate-domain"></a>Krok 2: Weryfikowanie domeny
 
->[!IMPORTANT] 
->Należy ukończyć weryfikacji domeny na domenę niestandardową HTTPS będzie aktywny. Należy zatwierdzić domeny sześć dni roboczych. Żądania, które nie zostały zatwierdzone w ciągu sześciu dni roboczych, zostaną automatycznie anulowane. 
-
-Po włączeniu HTTPS na domenę niestandardową, urząd certyfikacji (CA) firmy DigiCert weryfikuje prawo własności do domeny kontaktując się z jego rejestratorem zgodnie z domeny [WHOIS](http://whois.domaintools.com/) rejestratorem informacji. Skontaktuj się z zostało utworzone za pomocą adresu e-mail (przez ustawienie domyślne) lub numer telefonu wymienionych w rejestracji WHOIS. 
-
 >[!NOTE]
 >Jeśli u swojego dostawcy DNS rekord certyfikatu urzędu autoryzacji (CAA), musi on zawierać DigiCert jako prawidłowego urzędu certyfikacji. Rekord CAA umożliwia właścicieli domeny z ich dostawców DNS, które urzędów certyfikacji są upoważnione do wystawiania certyfikatów dla danej domeny. Jeśli urząd certyfikacji otrzyma aby certyfikat dla domeny, która zawiera rekord CAA i urzędu certyfikacji nie jest wymieniony jako autoryzowanego wystawcę, jest zabronione wystawi certyfikat do tej domeny lub poddomeny. Informacje o zarządzaniu CAA rekordów, zobacz [rekordów Zarządzanie CAA](https://support.dnsimple.com/articles/manage-caa-record/). Narzędzia rekordu CAA, zobacz [pomocnika rekordu CAA](https://sslmate.com/caa/).
+
+#### <a name="custom-domain-is-mapped-to-cdn-endpoint"></a>Domena niestandardowa jest mapowany na punkt końcowy CDN
+
+Po dodaniu niestandardową domenę do punktu końcowego utworzony rekord CNAME w tabeli DNS rejestratora domen do mapowania sieci hosta punktu końcowego CDN. Jeśli tego rekordu CNAME nadal istnieje i nie zawiera poddomeny cdnverify, urząd certyfikacji (CA) firmy DigiCert używa go zweryfikować prawo własności do domeny niestandardowej. 
+
+Rekordu CNAME powinna być w następującym formacie, gdzie *nazwa* jest niestandardową nazwę domeny i *wartość* jest Twoje hosta punktu końcowego CDN:
+
+| Name (Nazwa)            | Typ  | Wartość                 |
+|-----------------|-------|-----------------------|
+| www.contoso.com | CNAME | contoso.azureedge.net |
+
+Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [utworzyć rekord CNAME DNS](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#step-2-create-the-cname-dns-records).
+
+Jeśli Twoje rekord CNAME jest w nieprawidłowym formacie, DigiCert automatycznie sprawdza niestandardową nazwę domeny i dodaje go do nazwy alternatywnej podmiotu (SAN) certyfikatu. DigitCert nie będzie wysyłać wiadomość e-mail z weryfikacji i nie musisz zatwierdzić Twoje żądanie. Certyfikat jest ważny przez jeden rok i był auto odnawiany przed jego wygaśnięciem. Przejdź do [krok 3: Poczekaj, aż propagacji](#step-3-wait-for-propagation). 
+
+#### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>Rekord CNAME nie jest zamapowany na punkt końcowy CDN
+
+Jeśli wpis rekord CNAME dla punktu końcowego już nie istnieje lub zawiera on poddomeny cdnverify, postępuj zgodnie z dalszymi instrukcjami, w tym kroku.
+
+Po włączeniu HTTPS na domenę niestandardową, urząd certyfikacji (CA) firmy DigiCert weryfikuje prawo własności do domeny kontaktując się z jego rejestratorem zgodnie z domeny [WHOIS](http://whois.domaintools.com/) rejestratorem informacji. Skontaktuj się z zostało utworzone za pomocą adresu e-mail (przez ustawienie domyślne) lub numer telefonu wymienionych w rejestracji WHOIS. Należy ukończyć weryfikacji domeny na domenę niestandardową HTTPS będzie aktywny. Należy zatwierdzić domeny sześć dni roboczych. Żądania, które nie zostały zatwierdzone w ciągu sześciu dni roboczych, zostaną automatycznie anulowane. 
 
 ![Rekord WHOIS](./media/cdn-custom-ssl/whois-record.png)
 
 DigiCert również wysyła wiadomość e-mail z weryfikacji na adresy e-mail dodatkowych. Informacji rejestratorem WHOIS jest prywatny, sprawdź, czy możesz zatwierdzić bezpośrednio z jednego z następujących adresów:
 
-Administrator @&lt;your name.com domeny&gt;  
-Administrator @&lt;your name.com domeny&gt;  
-webmaster @&lt;your name.com domeny&gt;  
-hostmaster @&lt;your name.com domeny&gt;  
-Postmaster @&lt;your name.com domeny&gt;  
+admin@&lt;your-domain-name.com&gt;  
+administrator@&lt;your-domain-name.com&gt;  
+webmaster@&lt;your-domain-name.com&gt;  
+hostmaster@&lt;your-domain-name.com&gt;  
+postmaster@&lt;your-domain-name.com&gt;  
 
 Powinien zostać wyświetlony wiadomości e-mail za kilka minut, podobnie do poniższego przykładu prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj admin@digicert.com jego listą dozwolonych adresów IP. Jeśli w ciągu 24 godzin nie otrzymasz wiadomość e-mail, skontaktuj się z pomocą techniczną firmy Microsoft.
     
@@ -88,11 +103,11 @@ Po kliknięciu łącza zatwierdzenia są kierowane do następującej postaci onl
 
 Postępuj zgodnie z instrukcjami na formularzu. dostępne są dwie opcje weryfikacji:
 
-- Możesz zatwierdzać wszystkie przyszłe zamówień za pomocą tego samego konta dla tej samej domeny głównej; na przykład `contoso.com`. Takie podejście jest zalecane, jeśli zamierzasz dodać dodatkowe domeny niestandardowej dla tej samej domeny głównej.
+- Możesz zatwierdzać wszystkie przyszłe zamówień za pomocą tego samego konta dla tej samej domeny głównej; na przykład contoso.com. Takie podejście jest zalecane, jeśli zamierzasz dodać dodatkowe domeny niestandardowej dla tej samej domeny głównej.
 
 - Możesz zatwierdzać tylko nazwę określonego hosta, używany w tym żądaniu. Dodatkowe zatwierdzenia jest wymagana dla kolejnych żądań.
 
-Po zatwierdzeniu żądania DigiCert dodaje niestandardową nazwę domeny do nazwy alternatywnej podmiotu (SAN) certyfikatu. Certyfikat jest ważny przez jeden rok i był auto odnawiany przed wygasła.
+Po zatwierdzeniu żądania DigiCert dodaje certyfikat SAN z niestandardowej nazwy domeny. Certyfikat jest ważny przez jeden rok i był auto odnawiany przed wygasła.
 
 ### <a name="step-3-wait-for-propagation"></a>Krok 3: Poczekaj, aż propagacji
 
@@ -102,23 +117,25 @@ Po zweryfikowaniu nazwy domeny może potrwać do 6-8 godzin dla domeny niestanda
 
 ### <a name="operation-progress"></a>Postęp operacji
 
-W poniższej tabeli przedstawiono postęp operacji, gdy włączyć protokół HTTPS. Po włączeniu HTTPS cztery kroki operacji są wyświetlane w oknie dialogowym domeny niestandardowej. Ponieważ każdy krok staje się aktywny, dodatkowe szczegóły są wyświetlane w polu krok zgodnie z jego postępów. Po pomyślnym zakończeniu kroku, zostanie wyświetlony zielony znacznik wyboru obok niej. 
+W poniższej tabeli przedstawiono postęp operacji, gdy włączyć protokół HTTPS. Po włączeniu HTTPS cztery kroki operacji są wyświetlane w oknie dialogowym domeny niestandardowej. Ponieważ każdy krok staje się aktywny, punkcie dodatkowe szczegóły są wyświetlane w polu krok zgodnie z jego postępów. Nie wszystkie te podetapów zostanie przeprowadzona. Po pomyślnym zakończeniu kroku, zostanie wyświetlony zielony znacznik wyboru obok niej. 
 
-| Operacja kroku | Szczegóły kroku operacji | 
+| Operacja kroku | Szczegóły punkcie operacji | 
 | --- | --- |
 | Żądanie Submitting 1 | Przesyłanie żądania |
-| | Twoje żądanie HTTPS jest przesyłane. |
-| | Pomyślnie przesłano żądanie HTTPS. |
-| 2 weryfikacji domeny | Ma Ci Wysłaliśmy wiadomość e-mail z pytaniem, aby zweryfikować własność domeny. Oczekiwanie na potwierdzenie. |
-| | Prawa własności domeny został zweryfikowany pomyślnie. |
+| | Trwa przesyłanie żądania HTTPS. |
+| | Żądanie HTTPS zostało pomyślnie przesłane. |
+| 2 weryfikacji domeny | Ma Ci Wysłaliśmy wiadomość e-mail z pytaniem, aby zweryfikować własność domeny. Oczekiwanie na potwierdzenie. ** |
+| | Własność domeny została pomyślnie zweryfikowana. |
 | | Żądanie sprawdzania poprawności własność domeny wygasło (klienta, prawdopodobnie nie odpowiedział w ciągu 6 dni). Protokół HTTPS nie zostaną włączone w domenie. * |
 | | Domeny własność weryfikacji żądanie zostało odrzucone przez klienta. Protokół HTTPS nie zostaną włączone w domenie. * |
-| Inicjowanie obsługi certyfikatów 3 | Urząd certyfikacji jest obecnie wystawiający certyfikaty wymagane do włączenia protokołu HTTPS w domenie. |
+| Inicjowanie obsługi certyfikatów 3 | Trwa wystawianie przez urząd certyfikacji certyfikatu wymaganego do włączenia obsługi protokołu HTTPS w domenie. |
 | | Certyfikat został wystawiony i jest aktualnie wdrażany do sieci CDN. Może to potrwać do 6 godzin. |
-| | Certyfikat została pomyślnie wdrożona w sieci CDN. |
-| Zakończ 4 | Pomyślnie włączono HTTPS w domenie. |
+| | Certyfikat został pomyślnie wdrożony w sieci CDN. |
+| Zakończ 4 | Obsługa protokołu HTTPS została pomyślnie włączona w domenie. |
 
-\*Ten komunikat jest wyświetlany tylko wystąpił błąd. 
+\* Ten komunikat jest wyświetlany tylko wystąpił błąd. 
+
+\** Ten komunikat nie jest widoczna, jeśli wpis CNAME dla domeny niestandardowej wskazujące bezpośrednio z hosta punktu końcowego CDN.
 
 Jeśli wystąpi błąd przed przesłaniem żądania, zostanie wyświetlony następujący komunikat o błędzie:
 
@@ -156,9 +173,9 @@ W poniższej tabeli przedstawiono postęp operacji, gdy wyłączenie protokołu 
 
 | Postęp operacji | Szczegóły operacji | 
 | --- | --- |
-| Żądanie Submitting 1 | Przesyłanie żądania |
-| 2 anulowania obsługi certyfikatów | Trwa usuwanie certyfikatu |
-| Zakończ 3 | Usunąć certyfikatu |
+| Żądanie Submitting 1 | Przesyłanie Twojego żądania |
+| 2 anulowania obsługi certyfikatów | Usuwanie certyfikatu |
+| Zakończ 3 | Certyfikat został usunięty |
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -172,7 +189,7 @@ W poniższej tabeli przedstawiono postęp operacji, gdy wyłączenie protokołu 
 
 3. *Co zrobić, jeśli I nie otrzymywać wiadomości e-mail weryfikacji domeny firmy DigiCert?*
 
-    Jeśli użytkownik nie otrzyma wiadomość e-mail w ciągu 24 godzin, skontaktuj się z pomocy technicznej firmy Microsoft.
+    Jeśli użytkownik nie otrzyma wiadomość e-mail w ciągu 24 godzin, skontaktuj się z pomocy technicznej firmy Microsoft. Jeśli masz wpis CNAME dla domeny niestandardowej wskazujące bezpośrednio z hosta punktu końcowego (i nie jest używana nazwa poddomeny cdnverify), nie będziesz otrzymywać wiadomość e-mail z domeny weryfikacji. Sprawdzanie poprawności jest wykonywane automatycznie.
 
 4. *Używa mniej bezpieczna niż certyfikat dedykowanych certyfikat SAN?*
     
@@ -183,10 +200,11 @@ W poniższej tabeli przedstawiono postęp operacji, gdy wyłączenie protokołu 
     Obecnie ta funkcja jest dostępna tylko z usługą Azure CDN from Verizon. Firma Microsoft pracuje Obsługa tej funkcji w programie Azure CDN from Akamai w najbliższych miesiącach.
 
 6. *Należy rekord certyfikatu urzędu autoryzacji z mojego dostawcy DNS?*
-   Nie, rekord certyfikatu urzędu autoryzacji nie jest obecnie wymagane. Jednak jeśli istnieje, musi on zawierać DigiCert jako prawidłowego urzędu certyfikacji.
+
+    Nie, rekord certyfikatu urzędu autoryzacji nie jest obecnie wymagane. Jednak jeśli istnieje, musi on zawierać DigiCert jako prawidłowego urzędu certyfikacji.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak skonfigurować [niestandardową domenę na punkt końcowy usługi Azure CDN](./cdn-map-content-to-custom-domain.md)
 

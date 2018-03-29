@@ -1,8 +1,8 @@
 ---
-title: "Azure Toolkit for IntelliJ: tworzenie aplikacji Spark dla klastra usługi HDInsight | Dokumentacja firmy Microsoft"
-description: "Zestaw narzędzi platformy Azure dla IntelliJ umożliwia tworzenie aplikacji Spark napisanych w języku Scala i przesyłanie ich do klastra Spark w usłudze HDInsight."
+title: 'Azure Toolkit for IntelliJ: tworzenie aplikacji Spark dla klastra usługi HDInsight | Dokumentacja firmy Microsoft'
+description: Zestaw narzędzi platformy Azure dla IntelliJ umożliwia tworzenie aplikacji Spark napisanych w języku Scala i przesyłanie ich do klastra Spark w usłudze HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 69f5857f89271b3e4865b93e42e5233ead572715
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2ebf87b0436dbc5ee12a1c41d33ff3d17af1f043
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Zestaw narzędzi platformy Azure dla IntelliJ umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight
 
@@ -44,6 +44,10 @@ Aby utworzyć projekt, Wyświetl [tworzenie aplikacji Spark narzędzi Azure dla 
 
 ## <a name="install-azure-toolkit-for-intellij"></a>Zainstaluj zestaw narzędzi platformy Azure dla IntelliJ
 Aby uzyskać instrukcje instalacji, zobacz [zainstalować zestaw narzędzi platformy Azure dla IntelliJ](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation).
+
+## <a name="get-started"></a>Rozpoczęcie pracy
+Użytkownik może albo [Zaloguj się do subskrypcji platformy Azure](#sign-in-to-your-azure-subscription), lub [Połącz z klastrem usługi HDInsight](#link-a-cluster) przy użyciu Ambari nazwy użytkownika i hasła lub domeny przyłączone poświadczenie, aby rozpocząć.
+
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do Twojej subskrypcji platformy Azure.
 
@@ -75,12 +79,14 @@ Można połączyć normalne klastra przy użyciu Ambari zarządzane username, ta
 
    ![menu kontekstowe klastra łącza](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-2. Wprowadź **nazwy klastra**, **konta magazynu**, **klucza magazynu**, następnie wybierz kontener z **kontenera magazynu**, ostatnio, wprowadź nazwę użytkownika i hasło. Należy sprawdzić nazwę użytkownika i hasło, jeśli awaria uwierzytelniania.
+2. Wprowadź **nazwy klastra**, **nazwy użytkownika** i **hasło**. Należy sprawdzić nazwę użytkownika i hasło, jeśli wystąpił błąd uwierzytelniania. Opcjonalnie dodaj konto magazynu, klucz magazynu, a następnie wybierz kontener z kontenera magazynu. Informacje o magazynu jest przeznaczony dla Eksploratora usługi storage w drzewie po lewej stronie
    
    ![okno dialogowe klastra łącza](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
 
    > [!NOTE]
-   > Używamy klucza magazynu połączone, nazwę użytkownika i hasło, jeśli klaster rejestrowane w subskrypcji platformy Azure i połączone klastra. 
+   > Używamy klucza magazynu połączone, nazwę użytkownika i hasło, jeśli klaster rejestrowane w subskrypcji platformy Azure i połączone klastra.
+   > ![Eksplorator usługi Storage w IntelliJ](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
+
    
 3. Widać klastra połączone w **HDInsight** węzła, jeśli dane wejściowe są prawidłowe. Teraz można przesłać do tego klastra połączonych aplikacji.
 

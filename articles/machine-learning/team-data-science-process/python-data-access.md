@@ -1,6 +1,6 @@
 ---
-title: "Dostęp do zestawów danych z biblioteki klienta usługi Machine Learning Python | Dokumentacja firmy Microsoft"
-description: "Zainstaluj i Python biblioteki klienta umożliwiają dostęp do danych i zarządzać nimi usługi Azure Machine Learning bezpiecznie z lokalnego środowiska Python."
+title: Dostęp do zestawów danych z biblioteki klienta usługi Machine Learning Python | Dokumentacja firmy Microsoft
+description: Zainstaluj i Python biblioteki klienta umożliwiają dostęp do danych i zarządzać nimi usługi Azure Machine Learning bezpiecznie z lokalnego środowiska Python.
 services: machine-learning
 documentationcenter: python
 author: bradsev
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: huvalo;bradsev
-ms.openlocfilehash: 3cffb90baadef570bbb7e4e2d96741cc0420b0a2
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5f0823e07f0e583e32829b664a1d3d463092169e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Dostęp do zestawów danych z językiem Python za pomocą biblioteki klienta Python usługi Azure Machine Learning
 Biblioteka klienta usługi Microsoft Azure Machine Learning Python w wersji zapoznawczej można włączyć bezpieczny dostęp do usługi Azure Machine Learning zestawów danych z lokalnego środowiska Python i umożliwia tworzenie i Zarządzanie zestawami danych w obszarze roboczym.

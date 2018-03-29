@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Konfigurowanie produktu Workday do obsługi użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie użycia produktu Workday jako źródło danych tożsamości dla usługi Active Directory i Azure Active Directory."
+title: 'Samouczek: Konfigurowanie produktu Workday do obsługi użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie użycia produktu Workday jako źródło danych tożsamości dla usługi Active Directory i Azure Active Directory.
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi użytkowników
 
@@ -397,9 +397,9 @@ Po zainstalowaniu agenta, uruchom poniższe polecenia programu Powershell do kon
 
 **Polecenie #1**
 
-> CD C:\\pliki programów\\Agent synchronizacji usługi Microsoft Azure Active Directory\\modułów\\AADSyncAgent
+> CD "C:\Program Files\Microsoft Azure AD Connect, inicjowania obsługi administracyjnej Agent\Modules\AADSyncAgent" Agent\\modułów\\AADSyncAgent
 
-> Import-module AADSyncAgent.psd1
+> Import-Module "C:\Program Files\Microsoft Azure AD Connect inicjowania obsługi administracyjnej Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 
 **Polecenie #2**
 
@@ -416,6 +416,9 @@ Po zainstalowaniu agenta, uruchom poniższe polecenia programu Powershell do kon
 
 >[!IMPORTANT]
 >Obecnie jest to znany problem z poświadczeniami administratora globalnego nie działa, jeśli używają one niestandardową domenę (przykład: admin@contoso.com). Jako obejście, Utwórz i korzystać z domeny onmicrosoft.com konta administratora globalnego (przykład: admin@contoso.onmicrosoft.com)
+
+>[!IMPORTANT]
+>Obecnie jest to znany problem z poświadczeniami administratora globalnego nie działa, jeśli mają włączone uwierzytelnianie wieloskładnikowe. Jako obejście Wyłącz uwierzytelnianie wieloskładnikowe dla administratora globalnego.
 
 
 **Polecenie #4**
