@@ -33,7 +33,7 @@
 ### [Ochrona interfejsu API platformy ASP.NET](active-directory-b2c-tutorials-web-api.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
-### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+### [Node.js](active-directory-b2c-devquickstarts-api-node.md)
 ### [Wywoływanie interfejsu API sieci Web platformy .NET](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # Przewodniki
@@ -67,6 +67,7 @@
 ## [Zasady niestandardowe](active-directory-b2c-overview-custom.md)
 ## Przewodniki
 ### [Wprowadzenie](active-directory-b2c-get-started-custom.md)
+### [Pakiet początkowy](active-directory-b2c-reference-custom-policies-understanding-contents.md)
 ### Konfigurowanie dostawców OIDC/OAUTH
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Konto Microsoft](active-directory-b2c-custom-setup-msa-idp.md)

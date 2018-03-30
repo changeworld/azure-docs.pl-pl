@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.reviewer: fiseraci
+ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Przy użyciu punktu końcowego uprzywilejowanych w stosie Azure
 
@@ -43,18 +44,20 @@ Program ten jest dostępny za pośrednictwem sesji zdalnej programu PowerShell n
 
 Przed rozpoczęciem tej procedury dla zintegrowany system, upewnij się, że można uzyskać dostępu do program ten, za pomocą adresu IP lub przy użyciu systemu DNS. Po początkowym wdrożeniu stosu Azure program ten są dostępne tylko za pomocą adresu IP ponieważ integracja protokołu DNS nie jest jeszcze skonfigurowany. Dostawca sprzętu OEM zapewnia plik JSON o nazwie **AzureStackStampDeploymentInfo** zawierający adresy IP program ten.
 
-Zaleca się, że należy połączyć program ten tylko od sprzętu hosta cyklu życia lub z komputera z dedykowanym, bezpieczne, takich jak [uprzywilejowanego dostępu do stacji roboczej](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
-1. Dostęp do stacji roboczej do uprzywilejowanego dostępu.
+> [!NOTE]
+> Ze względów bezpieczeństwa wymagamy, że łączysz się program ten tylko z uruchomionej maszyny wirtualnej ze wzmocnionymi zabezpieczeniami na hoście cyklu życia sprzętu lub dedykowanych, bezpieczne komputera, takich jak [uprzywilejowanego dostępu do stacji roboczej](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations). Nie można modyfikować oryginalną konfigurację sprzętu hosta cyklu życia z oryginalną konfiguracją, takie jak instalowanie nowego oprogramowania, nie powinny być używane do nawiązania połączenia program ten.
 
-    - W systemie zintegrowanego, uruchom następujące polecenie, aby dodać program ten jako zaufanego hosta na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej.
+1. Ustanowienie relacji zaufania.
+
+    - W systemie zintegrowanego, uruchom następujące polecenie w sesji środowiska Windows PowerShell z podwyższonym poziomem uprawnień do dodania program ten jako zaufanego hosta na uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej ze wzmocnionymi zabezpieczeniami maszyny wirtualnej.
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - Jeśli korzystasz z ADSK, zaloguj się do rozwoju hosta zestawu.
 
-2. Na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
+2. Na uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej ze wzmocnionymi zabezpieczeniami maszynie wirtualnej Otwórz sesję programu Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
     - Na zintegrowany system:
       ````PowerShell
@@ -74,11 +77,12 @@ Zaleca się, że należy połączyć program ten tylko od sprzętu hosta cyklu �
       ```` 
    Po wyświetleniu monitu użyj następujących poświadczeń:
 
-      - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny stosu Azure*&gt;\accountname**. (ASDK, nazwa użytkownika jest **azurestack\accountname**.) 
+      - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny stosu Azure*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
       - **Hasło**: wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+
     > [!NOTE]
     > Jeśli nie można nawiązać połączenia z punktem końcowym ERCS, spróbuj wykonać kroki 1 i 2 ponownie przy użyciu adresu IP ERCS maszyny wirtualnej, do którego nie można już próbujesz się połączyć.
-    
+
 3.  Po nawiązaniu połączenia wiersza zmieni się na **[*nazwa adresu IP lub wirtualna ERCS*]: PS >** lub **[azs ercs01]: PS >**, w zależności od środowiska. W tym miejscu, należy uruchomić `Get-Command` Aby wyświetlić listę dostępnych poleceń cmdlet.
 
     Wiele z tych poleceń cmdlet są przeznaczone tylko dla środowisk zintegrowany system (takich jak polecenia cmdlet związane z integracji centrum danych). W ASDK zostały zatwierdzone następujące polecenia cmdlet:
@@ -116,16 +120,16 @@ Alternatywnie można użyć [Import-PSSession](https://docs.microsoft.com/en-us/
 
 Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następujące czynności:
 
-1. Dostęp do stacji roboczej do uprzywilejowanego dostępu.
+1. Ustanowienie relacji zaufania.
 
-    - W systemie zintegrowanego, uruchom następujące polecenie, aby dodać program ten jako zaufanego hosta na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej.
+    — W systemie zintegrowane, uruchom następujące polecenie w sesji środowiska Windows PowerShell z podwyższonym poziomem uprawnień do dodania program ten jako zaufanego hosta na uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej ze wzmocnionymi zabezpieczeniami maszyny wirtualnej.
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - Jeśli korzystasz z ADSK, zaloguj się do rozwoju hosta zestawu.
 
-2. Na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
+2. Na uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego dostępu do stacji roboczej ze wzmocnionymi zabezpieczeniami maszynie wirtualnej Otwórz sesję programu Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
     - Na zintegrowany system:
       ````PowerShell
@@ -145,7 +149,7 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
       ```` 
    Po wyświetleniu monitu użyj następujących poświadczeń:
 
-      - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny stosu Azure*&gt;\accountname**. (ASDK, nazwa użytkownika jest **azurestack\accountname**.) 
+      - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny stosu Azure*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
       - **Hasło**: wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
 3. Zaimportuj program ten sesji do komputera lokalnego
@@ -167,7 +171,11 @@ Aby zamknąć sesji punktu końcowego:
 
     ![Dane wyjściowe polecenia cmdlet PrivilegedEndpoint Zamknij pokazujący, gdzie Określ ścieżkę docelową, zapis](media/azure-stack-privileged-endpoint/closeendpoint.png)
 
-Po pomyślnie przesyłania plików dziennika zapis do udziału plików, są one automatycznie usunięte z program ten. Jeśli za pomocą poleceń cmdlet programu Zamknij sesję program ten `Exit-PSSession` lub `Exit`, lub zamknij konsolę programu PowerShell, dzienniki wykaz nie transferu do udziału plików. Pozostają one w program ten. Przy następnym uruchomieniu `Close-PrivilegedEndpoint` i obejmują udziału plików, dzienniki zapis z poprzedniej sesji również zostaną przeniesione.
+Po pomyślnie przesyłania plików dziennika zapis do udziału plików, są one automatycznie usunięte z program ten. 
+
+> [!NOTE]
+> Jeśli za pomocą poleceń cmdlet programu Zamknij sesję program ten `Exit-PSSession` lub `Exit`, lub zamknij konsolę programu PowerShell, dzienniki wykaz nie transferu do udziału plików. Pozostają one w program ten. Przy następnym uruchomieniu `Close-PrivilegedEndpoint` i obejmują udziału plików, dzienniki zapis z poprzedniej sesji również zostaną przeniesione. Nie używaj `Exit-PSSession` lub `Exit` zamknąć sesję program ten; użyj `Close-PrivilegedEndpoint` zamiast tego.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Azure stosu narzędzia diagnostyczne](azure-stack-diagnostics.md)

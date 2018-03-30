@@ -6,6 +6,10 @@
 ## [Limity usług i subskrypcji](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Rozpoczęcie pracy
+## [Tworzenie bramy sieci VPN opartej na trasie — witryna Azure Portal](create-routebased-vpn-gateway-portal.md)
+## [Tworzenie bramy sieci VPN opartej na trasie — program PowerShell](create-routebased-vpn-gateway-powershell.md)
+
+# Pojęcia
 ## [Planowanie i projektowanie dla usługi VPN Gateway](vpn-gateway-plan-design.md)
 ## [Informacje na temat ustawień usługi VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md)
 ## [Informacje o urządzeniach sieci VPN](vpn-gateway-about-vpn-devices.md)
