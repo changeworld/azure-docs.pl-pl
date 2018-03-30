@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b29429e1efe46aef8263bed5edb3daeffdf41122
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 32d1330b60de139a1ac16c4d8d70f76873dbd4c2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 Rozmiary maszyn wirtualnych ogólnego przeznaczenia Podaj zrównoważonym stosunek pamięć Procesora. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. Ten artykuł zawiera informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 
@@ -95,14 +95,13 @@ ACU: 210–250
 
 ACU: 210–250
 
-| Rozmiar              | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
-|-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standardowa_D1_v2    | 1         | 3,5         | 50             | 3000 / 46 / 23                                           | 4 / 4 x 500                         | 2 / 750                 |
-| Standardowa_D2_v2    | 2         | 7           | 100            | 6000 / 93 / 46                                           | 8 / 8 x 500                         | 2 / 1500                     |
-| Standardowa_D3_v2    | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16 x 500                         | 4 / 3000                     |
-| Standardowa_D4_v2    | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32 x 500                       | 8 / 6000                     |
-| Standardowa_D5_v2    | 16        | 56          | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000  |
-
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Standardowa_D1_v2 |1 |3,5 |4 |50 |3000 / 46 / 23 |4 / 4 x 500 |2 / 750 |
+| Standardowa_D2_v2 |2 |7 |8 |100 |6000 / 93 / 46 |8 / 8 x 500 |2 / 1500 |
+| Standardowa_D3_v2 |4 |14 |16 |200 |12000 / 187 / 93 |16 / 16 x 500 |4 / 3000 |
+| Standardowa_D4_v2 |8 |28 |32 |400 |24000 / 375 / 187  |32 / 32 x 500 |8 / 6000 |
+| Standardowa_D5_v2 |16 |56 |64 |800 |48000 / 750 / 375 |64 / 64x500 |8 / 12000 |
 
 <br>
 
@@ -136,6 +135,8 @@ ACU: 160
 ## <a name="av2-series"></a>Seria Av2
 
 ACU: 100
+
+
 
 | Rozmiar            | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych / oczekiwano przepustowości sieci (MB/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -185,3 +186,6 @@ W klasycznym modelu wdrażania niektóre nazwy rozmiarów maszyny wirtualnej są
 |A2\Podstawowa_A2|2|3,5 GB|2| 60 GB|4|4x300|
 |A3\Podstawowa_A3|4|7 GB|2| 120 GB |8|8x300|
 |A4\Podstawowa_A4|8|14 GB|2| 240 GB |16|16x300|
+
+
+Należy pamiętać, że liczba dysków danych w przypadku klasycznych maszyn wirtualnych może być mniejszy niż liczba dysków danych w maszynach wirtualnych Azure Resource Manager.
