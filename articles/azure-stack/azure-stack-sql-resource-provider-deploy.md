@@ -1,11 +1,11 @@
 ---
-title: "Przy użyciu bazy danych SQL Azure stosu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można wdrożyć baz danych jako usługa na stosie Azure i Szybkie kroki wdrażania karty dostawcy zasobów programu SQL Server."
+title: Przy użyciu bazy danych SQL Azure stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można wdrożyć baz danych jako usługa na stosie Azure i Szybkie kroki wdrażania karty dostawcy zasobów programu SQL Server.
 services: azure-stack
-documentationCenter: 
+documentationCenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1754d4b121fdaf4f7b8e4c1954dfd4202ba344b1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Użyj bazy danych SQL Microsoft Azure stosu
 
@@ -71,7 +71,7 @@ Należy utworzyć jedną (lub więcej) wystąpienia programu SQL Server i zapewn
     | 1710: 1.0.171028.1 | [RP SQL w wersji 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Certyfikat główny stos Azure są pobierane z punktu końcowego uprzywilejowanych. Dla tego zestawu SDK stosu Azure certyfikatu z podpisem własnym jest tworzony w ramach tego procesu. Dla zintegrowanych systemów należy podać odpowiedni certyfikat.
+4. Podaj wymagany certyfikat. Dla tego zestawu SDK stosu Azure certyfikatu z podpisem własnym jest tworzone w ramach tego procesu, dodatkowy certyfikat nie jest wymagane. Dla zintegrowanych systemów należy podać odpowiedni certyfikat.
 
    Aby dostarczyć własny certyfikat, należy umieścić plik pfx w **DependencyFilesLocalPath** w następujący sposób:
 
@@ -307,7 +307,7 @@ Wykonaj następujące kroki w celu aktualizacji definicji programu Defender:
 
     Na tej stronie w obszarze "Ręcznie pobrać i zainstalować definicje" Pobierz "Windows Defender Antivirus systemu Windows 10 i Windows 8.1" 64-bitowy plik. 
     
-    Direct link: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+    Bezpośredniego łącza: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
 
 2. Tworzenie sesji programu PowerShell do punktu końcowego obsługi maszyny wirtualnej karty SQL RP
 3. Skopiuj plik aktualizacji definicji maszynie karty bazy danych za pomocą sesji punktu końcowego konserwacji
