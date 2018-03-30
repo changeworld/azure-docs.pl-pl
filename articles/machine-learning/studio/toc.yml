@@ -3,8 +3,6 @@
 - name: Omówienie
   expanded: true
   items:
-    - name: Co to jest usługa Machine Learning?
-      href: what-is-machine-learning.md
     - name: Machine Learning Studio
       href: what-is-ml-studio.md
     - name: Możliwości usługi ML Studio

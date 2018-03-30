@@ -197,7 +197,7 @@
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cennik
-      href: aml-services-pricing.md
+      href: aml-pricing.md
     - name: Dostępność w danym regionie
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Zespołowe przetwarzanie danych dla celów naukowych
