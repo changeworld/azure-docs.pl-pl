@@ -1,18 +1,18 @@
 ---
-title: "Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu | Microsoft Docs"
-description: "Zarządzanie maszyną wirtualną z wykorzystaniem zbierania spisu"
+title: Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu | Microsoft Docs
+description: Zarządzanie maszyną wirtualną z wykorzystaniem zbierania spisu
 services: automation
-keywords: "spis, automatyzacja, zmiana, śledzenie"
+keywords: spis, automatyzacja, zmiana, śledzenie
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7b0e39e98a81231b68414f36ac5c1fc0897304a1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b23132f6e5693f5d731bf044ac5c2544a9308ee1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu
 
@@ -66,4 +66,4 @@ Aby usunąć maszynę wirtualną z zarządzania spisem:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej o zarządzaniu zmianami w plikach i ustawieniach rejestru na maszynach wirtualnych, zobacz [Track software changes in your environment with the Change Tracking solution](../log-analytics/log-analytics-change-tracking.md) (Śledzenie zmian oprogramowania w środowisku za pomocą rozwiązania do śledzenia zmian).
-* Aby dowiedzieć się więcej o zarządzaniu aktualizacjami systemu Windows i aktualizacjami pakietów na maszynach wirtualnych, zobacz [Rozwiązanie do zarządzania aktualizacjami w usłudze OMS](../operations-management-suite/oms-solution-update-management.md).
+* Aby dowiedzieć się więcej o zarządzaniu systemem Windows i pakietu aktualizacji na maszynach wirtualnych, zobacz [rozwiązania do zarządzania aktualizacji w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).

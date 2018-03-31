@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 62917a1d342158ec2114a9204ee1ca9e447284fa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3df5374911ee6381f25d08d23d565cdf8a7cd12f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Uruchamianie usługi jako konto użytkownika lokalnego lub lokalnego konta systemowego
-Za pomocą usługi Azure Service Fabric, można zabezpieczyć aplikacji uruchomionych w klastrze, w obszarze konta innego użytkownika. Domyślnie aplikacje sieci szkieletowej usług są uruchamiane na koncie, działającą proces Fabric.exe. Usługi sieć szkieletowa dostępne są także możliwość uruchamiania aplikacji w ramach konta użytkownika lokalnego lub konta system lokalny, które jest realizowane za pośrednictwem zasad RunAs w manifeście aplikacji. Obsługiwany system lokalny typy kont to **LocalUser**, **NetworkService**, **Usługa lokalna**, i **LocalSystem**.
+Za pomocą usługi Azure Service Fabric, można zabezpieczyć aplikacji uruchomionych w klastrze, w obszarze konta innego użytkownika. Domyślnie aplikacje sieci szkieletowej usług są uruchamiane na koncie, działającą proces Fabric.exe. Usługi sieć szkieletowa dostępne są także możliwość uruchamiania aplikacji w ramach konta użytkownika lokalnego lub konta system lokalny, które jest realizowane za pośrednictwem zasad RunAs w manifeście aplikacji. Obsługiwany system lokalny typy kont to **LocalUser**, **NetworkService**, **Usługa lokalna**, i **LocalSystem**.  Jeśli korzystasz z usługi Service Fabric w klastrze autonomicznego Windows, można uruchomić usługi w ramach [kont domen usługi Active Directory](service-fabric-run-service-as-ad-user-or-group.md) lub [konta usług zarządzane przez grupę](service-fabric-run-service-as-gmsa.md).
 
 Można również zdefiniować i Utwórz grupy użytkowników, dzięki czemu można dodać co najmniej jednego użytkownika do każdej grupy do wspólnego zarządzania. Jest to przydatne, jeśli jest wielu użytkowników do innej usługi, punkty wejścia i muszą mieć niektórych typowych uprawnień, które są dostępne na poziomie grupy.
 

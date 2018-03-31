@@ -1,24 +1,24 @@
 ---
-title: "Zbieranie i analizowanie dzienników Azure aktywności w Log Analytics | Dokumentacja firmy Microsoft"
-description: "Rozwiązania Azure Dzienniki aktywności służy do analizowania i przeszukiwać dziennik aktywności platformy Azure Twojej subskrypcji platformy Azure."
+title: Zbieranie i analizowanie dzienników Azure aktywności w Log Analytics | Dokumentacja firmy Microsoft
+description: Rozwiązania Azure Dzienniki aktywności służy do analizowania i przeszukiwać dziennik aktywności platformy Azure Twojej subskrypcji platformy Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c13890862c058701268c07d032d6d990c659287a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b6e823d9338d76a350569091d6794e3ac4a2eae9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure w analizy dzienników
 
@@ -40,7 +40,7 @@ Podczas nawiązywania połączenia dzienników działanie Azure Log Analytics, m
 - Określenie awarii lub usługa zagadnień dotyczących kondycji wpływu na zasoby
 - Użyj dziennika wyszukiwania służące do skorelowania aktywności użytkowników, wykonanie operacji skalowania automatycznego zmiany autoryzacji i usługi kondycji do innych dzienników lub metryk ze środowiska
 
-<sup>1</sup>domyślnie analizy dzienników zachowuje Dzienniki aktywności platformy Azure przez 90 dni, nawet jeśli znajdują się na warstwę bezpłatna. Lub, jeśli masz obszar roboczy ustawienia przechowywania mniej niż 90 dni. Jeśli obszar roboczy ma przechowywania, która jest dłuższa niż 90 dni, dzienniki aktywności są przechowywane przez okres przechowywania obszaru roboczego.
+<sup>1</sup>domyślnie analizy dzienników zachowuje Dzienniki aktywności platformy Azure przez 90 dni, nawet jeśli znajdują się na warstwę bezpłatna. Lub, jeśli masz obszar roboczy ustawienia przechowywania mniej niż 90 dni. Jeśli obszar roboczy ma przechowywania, która jest dłuższa niż 90 dni, dzienniki aktywności są przechowywane na podstawie na okres przechowywania obszaru roboczego.
 
 Analiza dzienników zbiera Dzienniki aktywności bezpłatnie i przechowuje dzienniki bezpłatne 90 dni. Jeśli przechowujesz dzienniki przez czas dłuższy niż 90 dni spowoduje naliczenie opłaty przechowywania danych na dane przechowywane dłużej niż 90 dni.
 

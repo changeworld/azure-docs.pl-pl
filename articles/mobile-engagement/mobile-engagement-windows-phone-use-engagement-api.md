@@ -1,11 +1,11 @@
 ---
-title: "Jak zaangażowania interfejsu API w systemie Windows Phone Silverlight"
-description: "Jak zaangażowania interfejsu API w systemie Windows Phone Silverlight"
+title: Jak zaangażowania interfejsu API w systemie Windows Phone Silverlight
+description: Jak zaangażowania interfejsu API w systemie Windows Phone Silverlight
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ae2ba2e8-f75b-4dee-a164-a7dd65d35a23
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03673924ee7734fcf6f1f4f7c744616844fdc87a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>Jak zaangażowania interfejsu API w systemie Windows Phone Silverlight
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Ten dokument jest dodatkiem do dokumentu [jak zintegrowana usługa Mobile Engagement w aplikacji Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md). Zapewnia on głębokość szczegółowe informacje dotyczące raportu statystyk aplikacji za pomocą interfejsu API usługi Engagement.
 
 Jeśli mają zaangażowania do raportów aplikacji sesji, działania, awarii (Crash) i informacje techniczne, a następnie Najłatwiejszą metodą jest zapewnienie wszystkie Twoje `PhoneApplicationPage` klasy podrzędne dziedziczą `EngagementPage` klasy.
@@ -41,7 +45,7 @@ Ale *działania* mogą również być kontrolowane ręcznie przy użyciu interfe
 
 ## <a name="reporting-activities"></a>Działania raportowania
 ### <a name="user-starts-a-new-activity"></a>Użytkownik uruchamia nowe działanie
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void StartActivity(string name, Dictionary<object, object> extras = null)
 
 Należy wywołać `StartActivity()` każdej zmianie działania użytkownika. W pierwszym wywołaniu tej funkcji uruchamia nową sesję użytkownika.
@@ -55,7 +59,7 @@ Należy wywołać `StartActivity()` każdej zmianie działania użytkownika. W p
             EngagementAgent.Instance.StartActivity("main", new Dictionary<object, object>() {{"example", "data"}});
 
 ### <a name="user-ends-his-current-activity"></a>Użytkownik kończy swoje bieżące działanie
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void EndActivity()
 
 Należy wywołać `EndActivity()` co najmniej raz, gdy użytkownik kończy swoje ostatnie działanie. Informuje Engagement SDK, że użytkownik jest obecnie w stanie bezczynności i sesji użytkownika muszą być zamknięte raz limit czasu sesji wygaśnie (jeśli wywołujesz `StartActivity()` przed upłynięciem limitu czasu sesji, sesja jest kontynuowane po prostu).
@@ -65,7 +69,7 @@ Należy wywołać `EndActivity()` co najmniej raz, gdy użytkownik kończy swoje
 
 ## <a name="reporting-jobs"></a>Zadania raportowania
 ### <a name="start-a-job"></a>Uruchom zadanie
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void StartJob(string name, Dictionary<object, object> extras = null)
 
 To zadanie służy do śledzenia zadań podaje w danym okresie czasu.
@@ -81,7 +85,7 @@ To zadanie służy do śledzenia zadań podaje w danym okresie czasu.
             EngagementAgent.Instance.StartJob("uploadData", extras);
 
 ### <a name="end-a-job"></a>Zakończenia zadania
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void EndJob(string name)
 
 Jak zadanie śledzone przez zadanie zostało zakończone, należy wywołać metodę EndJob dla tego zadania, podając nazwę zadania.
@@ -100,7 +104,7 @@ Brak trzy typy zdarzeń:
 * Zdarzenia zadań
 
 ### <a name="standalone-events"></a>Autonomiczny zdarzenia
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendEvent(string name, Dictionary<object, object> extras = null)
 
 Autonomiczny zdarzeń może wystąpić poza kontekstem sesji.
@@ -109,7 +113,7 @@ Autonomiczny zdarzeń może wystąpić poza kontekstem sesji.
             EngagementAgent.Instance.SendEvent("event", extra);
 
 ### <a name="session-events"></a>Zdarzenia sesji
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
 Zdarzenia sesji są zwykle używane do zgłaszania akcji wykonywanych przez użytkownika podczas jego sesji.
@@ -130,7 +134,7 @@ Zdarzenia sesji są zwykle używane do zgłaszania akcji wykonywanych przez uży
             EngagementAgent.Instance.SendSessionEvent("sessionEvent", extras);
 
 ### <a name="job-events"></a>Zdarzenia zadań
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
 Zdarzenia zadania są zazwyczaj używane do zgłaszania akcji wykonywanych przez użytkownika podczas wykonywania zadania.
@@ -146,7 +150,7 @@ Brak trzy typy błędów:
 * Błędy zadań
 
 ### <a name="standalone-errors"></a>Błędy autonomiczny
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendError(string name, Dictionary<object, object> extras = null)
 
 Sprzecznie błędy sesji mogą wystąpić błędy autonomiczny poza kontekstem sesji.
@@ -155,7 +159,7 @@ Sprzecznie błędy sesji mogą wystąpić błędy autonomiczny poza kontekstem s
             EngagementAgent.Instance.SendError("errorName", extras);
 
 ### <a name="session-errors"></a>Błędy sesji
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendSessionError(string name, Dictionary<object, object> extras = null)
 
 Błędy sesji są zwykle używane do raportów o błędach podczas sesji jego wpływu na użytkownika.
@@ -164,7 +168,7 @@ Błędy sesji są zwykle używane do raportów o błędach podczas sesji jego wp
             EngagementAgent.Instance.SendSessionError("errorName", extra);
 
 ### <a name="job-errors"></a>Błędy zadań
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
 Błędy może być powiązane z uruchomionym zadaniem zamiast związany z bieżącą sesją użytkownika.
@@ -176,7 +180,7 @@ Błędy może być powiązane z uruchomionym zadaniem zamiast związany z bież�
 Agent udostępnia dwie metody na wypadek awarii.
 
 ### <a name="send-an-exception"></a>Wyślij Wystąpił wyjątek
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendCrash(Exception e, bool terminateSession = false)
 
 #### <a name="example"></a>Przykład
@@ -191,7 +195,7 @@ Opcjonalny parametr umożliwia również zakończyć sesję zaangażowania w tym
 Jeśli możesz to zrobić, zadania i sesji zostanie zamknięte zaraz po awarii wysyłania.
 
 ### <a name="send-an-unhandled-exception"></a>Wyślij nieobsługiwany wyjątek
-#### <a name="reference"></a>Dokumentacja
+#### <a name="reference"></a>Informacje ogólne
             void SendCrash(ApplicationUnhandledExceptionEventArgs e)
 
 Engagement udostępnia również metody do wysyłania nieobsługiwanych wyjątków. Jest to szczególnie przydatne, gdy jest używany wewnątrz obsługi zdarzeń UnhandledException silverlight.
@@ -212,7 +216,7 @@ Służy on do implementowania obsługi własnych UnhandledException (zwłaszcza,
             }
 
 ## <a name="onactivated"></a>OnActivated
-### <a name="reference"></a>Dokumentacja
+### <a name="reference"></a>Informacje ogólne
             void OnActivated(ActivatedEventArgs e)
 
 Gdy użytkownik przechodzi do przodu, od aplikacji, po wywołaniu zdarzenia dezaktywowane, system operacyjny spróbuje ponownie przełączyć aplikację do stanu nieaktywni. Następnie aplikacja jest chowanie. W tym procesie aplikacja zostanie zakończona, ale niektóre dane o stanie aplikacji i poszczególnych stron w aplikacji zostaną zachowane.
@@ -298,7 +302,7 @@ Oznacza to, że klucze musi rozpoczynać się od co najmniej jedną literą, nas
 Dodatki są ograniczone do **1024** znaków w wywołaniu.
 
 ## <a name="reporting-application-information"></a>Raportowanie informacji o aplikacji
-### <a name="reference"></a>Dokumentacja
+### <a name="reference"></a>Informacje ogólne
             void SendAppInfo(Dictionary<object, object> appInfos)
 
 Funkcja śledzenia informacji (lub innych aplikacji szczegółowych informacji) przy użyciu SendAppInfo() ręcznie może raportować.

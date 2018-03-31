@@ -1,6 +1,6 @@
 ---
-title: "Pliki konfiguracji w usłudze Azure Machine Learning eksperymenty usługi"
-description: "Ten dokument zawiera szczegóły dotyczące ustawień konfiguracji usługi Azure ML eksperymenty."
+title: Pliki konfiguracji w usłudze Azure Machine Learning eksperymenty usługi
+description: Ten dokument zawiera szczegóły dotyczące ustawień konfiguracji usługi Azure ML eksperymenty.
 services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Pliki konfiguracji w usłudze Azure Machine Learning eksperymenty usługi
 
@@ -149,6 +149,8 @@ _\<Nazwa docelowego obliczeniowe > .compute_ plik Określa połączenia i inform
 **nativeSharedDirectory**: Ta właściwość określa podstawowego katalogu (na przykład: _~/.azureml/share/_) w celu udostępnienia w którym można zapisać plików działa na tej samej wartości docelowej obliczeń. Jeśli to ustawienie jest używane, gdy uruchomione w kontenerze Docker _sharedVolumes_ musi być ustawiona na wartość true. W przeciwnym razie wykonanie nie powiedzie się.
 
 **userManagedEnvironment**: Ta właściwość określa, czy ten element docelowy obliczeniowe jest zarządzane bezpośrednio przez użytkownika lub zarządzanych za pomocą usługi eksperymenty.  
+
+**pythonLocation**: Ta właściwość określa lokalizację środowiska uruchomieniowego języka python do użycia w celu obliczeń do wykonania programu użytkownika. 
 
 ### <a name="run-configuration-namerunconfig"></a>\<Uruchom Nazwa konfiguracji > .runconfig
 _\<Uruchom Nazwa konfiguracji > .runconfig_ określa sposób wykonywania eksperymentu uczenia Maszynowego Azure. Można skonfigurować sposób wykonywania takich jak Historia uruchomień śledzenia lub co obliczeniowe docelowych do użycia oraz wiele innych. Nazwy plików konfiguracji uruchamiania są używane do wypełnienia listy rozwijanej kontekstu wykonywania w aplikacji pulpitu Workbench uczenia Maszynowego Azure.

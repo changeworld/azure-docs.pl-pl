@@ -1,12 +1,12 @@
 ---
-title: "Azure porady dotyczące wydajności rozwiązania Cosmos DB Java | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure DB rozwiązania Cosmos"
-keywords: "jak poprawić wydajność bazy danych"
+title: Azure porady dotyczące wydajności rozwiązania Cosmos DB Java | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure DB rozwiązania Cosmos
+keywords: jak poprawić wydajność bazy danych
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: dfe8f426-3c98-4edc-8094-092d41f2795e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: fef5ed126575727c23cdff496c6684b9bf3192cf
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3a6c7c51810375574895643cea2e0e24508fa382
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/30/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -110,7 +110,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Podczas wykonywania masowego odczytu dokumentów za pomocą odczytu źródła funkcji (na przykład [readDocuments]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.readdocuments#com_microsoft_azure_documentdb__document_client_readDocuments_String_FeedOptions_c) lub podczas wystawiania zapytanie SQL, wyniki są zwracane w sposób segmentu, jeśli zestaw wyników jest zbyt duży. Domyślnie są zwracane w fragmentów 100 elementów lub 1 MB, jednego z tych limitów trafień pierwszej.
 
-    Aby zmniejszyć liczbę sieci przekazywanych wymagany do pobrania wszystkich odpowiednich wyników, można zwiększyć za pomocą rozmiar strony [x-ms-max elementu count](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-request-headers) nagłówek żądania do maksymalnie 1000. W przypadkach, gdy konieczne jest wyświetlenie tylko kilka wyniki, na przykład jeśli użytkownik interfejsu lub aplikacji interfejsu API zwraca tylko 10 powoduje przez czas, można także zmniejszyć rozmiar strony do 10 do zmniejszenia przepustowości używane dla operacji odczytu i zapytań.
+    Aby zmniejszyć liczbę sieci przekazywanych wymagany do pobrania wszystkich odpowiednich wyników, można zwiększyć za pomocą rozmiar strony [x-ms-max elementu count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) nagłówek żądania do maksymalnie 1000. W przypadkach, gdy konieczne jest wyświetlenie tylko kilka wyniki, na przykład jeśli użytkownik interfejsu lub aplikacji interfejsu API zwraca tylko 10 powoduje przez czas, można także zmniejszyć rozmiar strony do 10 do zmniejszenia przepustowości używane dla operacji odczytu i zapytań.
 
     Można również ustawić przy użyciu rozmiaru strony [metody setPageSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options_base.setpagesize#com_microsoft_azure_documentdb__feed_options_base_setPageSize_Integer).
 
@@ -143,7 +143,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Złożoność kwerendy wpływa na liczbę jednostek żądania są używane dla operacji. Liczba predykatów, rodzaj predykaty, liczba funkcji UDF i rozmiaru zestawu danych źródła wszystkich wpływ kosztów operacji zapytania.
 
-    Do mierzenia obciążenie wszelkie operacje (Tworzenie, aktualizowanie lub usuwanie), sprawdzić [x-ms żądania — opłata](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) nagłówka (lub równoważne właściwości RequestCharge w [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) lub [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) do mierzenia liczby jednostek żądania używanych przez te operacje.
+    Do mierzenia obciążenie wszelkie operacje (Tworzenie, aktualizowanie lub usuwanie), sprawdzić [x-ms żądania — opłata](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) nagłówka (lub równoważne właściwości RequestCharge w [ResourceResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._resource_response) lub [FeedResponse<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response) do mierzenia liczby jednostek żądania używanych przez te operacje.
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);
@@ -155,7 +155,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 <a id="429"></a>
 2. **Współczynnik ograniczanie żądań szybkość dojścia za duży**
 
-    Klient próbuje przekracza zarezerwowaną przepływnością dla konta, nie ma bez spadku wydajności na serwerze i nie stosowania przepływności poza poziomem zastrzeżone. Serwer zostanie preemptively zakończyć żądania z RequestRateTooLarge (kod stanu HTTP 429) i zwraca [x-ms ponawiania — po ms](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) nagłówek wskazujący ilość czasu (w milisekundach), które użytkownik musi czekać przed ponowną próbą wykonania żądanie.
+    Klient próbuje przekracza zarezerwowaną przepływnością dla konta, nie ma bez spadku wydajności na serwerze i nie stosowania przepływności poza poziomem zastrzeżone. Serwer zostanie preemptively zakończyć żądania z RequestRateTooLarge (kod stanu HTTP 429) i zwraca [x-ms ponawiania — po ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) nagłówek wskazujący ilość czasu (w milisekundach), które użytkownik musi czekać przed ponowną próbą wykonania żądanie.
 
         HTTP Status 429,
         Status Line: RequestRateTooLarge

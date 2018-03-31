@@ -1,12 +1,11 @@
 ---
-title: "Azure Stream Analytics JavaScript agregacje zdefiniowane przez użytkownika | Dokumentacja firmy Microsoft"
-description: "Wykonaj mechanika zaawansowanych zapytań z języka JavaScript agregacje zdefiniowane przez użytkownika"
-keywords: "JavaScript, agregacje, uda zdefiniowane przez użytkownika"
+title: Azure Stream Analytics JavaScript agregacje zdefiniowane przez użytkownika | Dokumentacja firmy Microsoft
+description: Wykonaj mechanika zaawansowanych zapytań z języka JavaScript agregacje zdefiniowane przez użytkownika
+keywords: JavaScript, agregacje, uda zdefiniowane przez użytkownika
 services: stream-analytics
 author: minhe-msft
 manager: santoshb
-editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 10/28/2017
 ms.author: minhe
-ms.openlocfilehash: b3863a34ed146e54c6d60e035957b942a1976ff9
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9f9a2e33f97fc90265933ee9941f2d02a92cbc4c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics JavaScript zdefiniowane przez użytkownika agregatów (wersja zapoznawcza)
 
@@ -82,7 +81,7 @@ function main() {
 
 Każdy UDA JavaScript jest zdefiniowana przez deklarację funkcji obiektu. Poniżej przedstawiono główne elementy w definicji UDA.
 
-### <a name="function-alias"></a>Alias — funkcja
+### <a name="function-alias"></a>Alias funkcji
 
 Funkcja alias jest identyfikatorem UDA. Wywołanego w zapytaniu Stream Analytics, zawsze używaj alias UDA wraz z "uda". prefiks.
 
@@ -90,7 +89,7 @@ Funkcja alias jest identyfikatorem UDA. Wywołanego w zapytaniu Stream Analytics
 
 Dla UDA, powinien być typu funkcji **Javascript UDA**.
 
-### <a name="output-type"></a>Typ danych wyjściowych
+### <a name="output-type"></a>Typ wyjścia
 
 Określony typ zadania usługi analiza strumienia obsługiwane lub "Wszystkie" Jeśli chcesz obsługiwać typ w zapytaniu.
 
@@ -233,7 +232,7 @@ Utwórz lokalny plik JSON o poniżej zawartości, przekazać pliku do zadania us
 
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

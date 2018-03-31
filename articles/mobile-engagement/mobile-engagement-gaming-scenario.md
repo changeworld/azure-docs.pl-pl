@@ -1,11 +1,11 @@
 ---
-title: "Azure implementacji usługi Mobile Engagement dla aplikacji do grania"
-description: "Gry scenariusz aplikacji do wdrożenia usługi Azure Mobile Engagement"
+title: Azure implementacji usługi Mobile Engagement dla aplikacji do grania
+description: Gry scenariusz aplikacji do wdrożenia usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e827b57e804cc91798859bc906e49046decede
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>Wdrożenie usługi Mobile Engagement z aplikacji do grania
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Uruchamiania gier uruchomiła nową aplikację gier role play/strategii połowy na podstawie. Gry została uruchomiona przez 6 miesięcy. Gry jest ogromny sukces i ma miliony pliki do pobrania i przechowywania w porównaniu do innych aplikacji gry rozruchu jest bardzo duże. Na zgromadzeniu co kwartał przeglądu uczestników zgodę potrzebnych do zwiększenia Średni przychód na użytkownika. Premium w grze pakiety są dostępne jako ofertach specjalnych. Te pakiety gier Zezwalaj użytkownikom na wygląd i wydajności ich linii połowy i przynętą lub tackles w grze uaktualniania. Jednak sprzedaży pakietu są bardzo niskie. Tak zdecydują najpierw przeanalizować obsługi klienta za pomocą narzędzia analizy, a następnie do opracowywania konsultacje segmentacji Zaawansowane na zwiększenie sprzedaży przy użyciu programu.
 
 Na podstawie [usługi Azure Mobile Engagement - Getting Started Guide z najlepszymi rozwiązaniami](mobile-engagement-getting-started-best-practices.md) tworzenia strategia zaangażowania.
@@ -61,7 +65,7 @@ Po 3 miesiące Dyrektor projektu Mobile zebrał wystarczającej ilości danych w
 * Użytkownicy, którzy przekazanego poziom 20, uruchom poświęcić więcej niż 10/ tydzień.
 * Użytkownicy często kupić pakiety premium na poziomie 16, 24 i 32.
 
-Dzięki tej analizy Dyrektor projektu Mobile decyduje się na utworzenie konkretnych sekwencji powiadomień, zwiększenie sprzedaży aplikacji. Tworzy trzy sekwencji powiadomień wypychanych, które wywołuje on: powitalny programu, Program sprzedaży i Program nieaktywne. Więcej informacji można znaleźć w [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]
+Dzięki tej analizy Dyrektor projektu Mobile decyduje się na utworzenie konkretnych sekwencji powiadomień, zwiększenie sprzedaży aplikacji. Tworzy trzy sekwencji powiadomień wypychanych, które wywołuje on: powitalny programu, Program sprzedaży i Program nieaktywne. Więcej informacji można znaleźć w [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks) ![][1]
 
 <!--Image references-->
 

@@ -2,7 +2,7 @@
 title: Zapewnij maszyny wirtualnej nauki danych CentOS Linux na platformie Azure | Dokumentacja firmy Microsoft
 description: Konfigurowanie i tworzenie maszyny wirtualnej systemu Linux nauki danych na platformie Azure analytics i uczenia maszynowego.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 550d49e3d6007c6b494deec95b785ea9bc214f3a
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7f683fff142a3654249560ed5299ed3cd7cb9cce
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zapewnij maszyny wirtualnej nauki danych CentOS Linux na platformie Azure
 
@@ -153,14 +153,16 @@ Aby wywołać sesja interaktywna Python, wystarczy wpisać **python** w powłoce
 
 Aby zainstalować dodatkowych bibliotek języka Python, należy uruchomić ```conda``` lub ````pip```` polecenia w obszarze sudo i podaj pełną ścieżkę (conda lub pip), aby zainstalować poprawną środowiska Python Menedżera pakietów języka Python. Na przykład:
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install <package> #pip for Python 2.7
+    sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
+    sudo /anaconda/bin/conda install [-n py27] <package> #conda for Python 2.7, default behavior
+    sudo /anaconda/bin/conda install -n py35 <package> #conda for Python 3.5
 
 
 ### <a name="jupyter-notebook"></a>Notesu Jupyter
 Rozkład Anaconda zawiera również notesu Jupyter, środowisko, aby udostępnić kodu i analizy. Notesu Jupyter jest dostępny za pośrednictwem JupyterHub. Zaloguj się przy użyciu lokalnego nazwę użytkownika systemu Linux i hasło.
 
-Wstępnie skonfigurowano serwer notesu Jupyter z języka Python, 2, Python 3 i jądra R. Brak ikony pulpitu o nazwie "Notesu Jupyter" można uruchomić przeglądarki do uzyskiwania dostępu do serwera notesu. Jeśli na maszynie Wirtualnej za pośrednictwem protokołu SSH lub X2Go klienta, możesz również odwiedzić [https://localhost:8000 /](https://localhost:8000/) dostęp do serwera notesu Jupyter.
+Wstępnie skonfigurowano serwer notesu Jupyter z języka Python, 2, Python 3 i jądra R. Brak ikony pulpitu o nazwie "Notesu Jupyter" można uruchomić przeglądarki do uzyskiwania dostępu do serwera notesu. Jeśli na maszynie Wirtualnej za pośrednictwem protokołu SSH lub X2Go klienta, możesz również odwiedzić [ https://localhost:8000/ ](https://localhost:8000/) dostęp do serwera notesu Jupyter.
 
 > [!NOTE]
 > Kontynuuj, jeśli możesz uzyskać wyświetlania ostrzeżeń dotyczących certyfikatów.
@@ -361,7 +363,7 @@ Teraz interfejsu graficznego otwartej z zestawu kart. Poniżej przedstawiono kro
 7. Kliknij przycisk **Evaluate** kartę.
 8. Kliknij przycisk **ryzyka** przycisk radiowy, a następnie kliknij przycisk **Execute** do wyświetlenia dwa wykresy wydajności ryzyka (skumulowany).
 9. Kliknij przycisk **dziennika** kartę, aby wyświetlić kod Generuj R poprzedniej operacji.
-   (Z powodu błędów w bieżącej wersji Rattle, należy wstawić  *#*  znak przed *wyeksportować ten dziennik...*  w tekście dziennika.)
+   (Z powodu błędów w bieżącej wersji Rattle, należy wstawić *#* znak przed *wyeksportować ten dziennik...*  w tekście dziennika.)
 10. Kliknij przycisk **wyeksportować** przycisk, aby zapisać plik skryptu języka R o nazwie *weather_script. R* do folderu macierzystego.
 
 Można zamknąć Rattle i R. Teraz możesz zmodyfikować wygenerowany skrypt języka R lub go użyć, ponieważ jest go w każdej chwili uruchomić ponownie wszystkie czynności, które zostało zrobione w Interfejsie użytkownika Rattle. Szczególnie dla początkujących użytkowników w R to prosty sposób na szybkie czy analizy i komputera learning prostego interfejsu graficznego, podczas automatycznego generowania kodu w R, aby zmodyfikować i/lub Dowiedz się więcej.

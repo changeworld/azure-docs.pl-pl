@@ -1,6 +1,6 @@
 ---
 title: Wywoływanie elementu runbook usługi Azure Automation z alertu usługi Log Analytics
-description: Ten artykuł zawiera omówienie sposobu wywoływania elementu runbook usługi Automation z alertu usługi Log Analytics w pakiecie Operations Management Suite.
+description: Ten artykuł zawiera omówienie sposobu Wywołaj element runbook usługi Automatyzacja z analizy dzienników alertu na platformie Azure.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3f95d6b9385b252bce05f19b38ae38f11e88a88c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2a0e497535f783cbffc21004331ccd2a50ab8eef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Wywoływanie elementu runbook usługi Azure Automation z alertu usługi Log Analytics
 
@@ -23,11 +23,11 @@ Alert może na przykład wskazywać długotrwały wzrost użycia procesora. Moż
 Podczas konfigurowania alertu dostępne są dwie opcje wywołania elementu runbook:
 
 * Skorzystanie z elementu webhook.
-   * To jedyna dostępna opcja w przypadku, gdy obszar roboczy pakietu Operations Management Suite nie jest połączony z kontem usługi Automation.
-   * Jeśli masz już konto usługi Automation połączone z obszarem roboczym pakietu Operations Management Suite, ta opcja będzie nadal dostępna.  
+   * Jeśli obszaru roboczego analizy dzienników nie jest połączony z konto automatyzacji jest jedyną dostępną opcją.
+   * Jeśli masz już konto automatyzacji połączone z obszaru roboczego analizy dzienników, ta opcja jest nadal dostępny.  
 
 * Bezpośrednie wybranie elementu runbook.
-   * Ta opcja jest dostępna tylko po połączeniu obszaru roboczego pakietu Operations Management Suite z kontem usługi Automation.
+   * Ta opcja jest dostępna tylko wtedy, gdy obszar roboczy analizy dzienników jest połączone z innym kontem automatyzacji.
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>Wywoływanie elementu runbook przy użyciu elementu webhook
 
@@ -35,7 +35,7 @@ Elementu webhook można użyć do uruchomienia określonego elementu runbook w u
 
 ## <a name="calling-a-runbook-directly"></a>Bezpośrednie uruchamianie elementu runbook
 
-W obszarze roboczym usługi Operations Management Suite można zainstalować i skonfigurować usługę Automation and Control. Podczas konfigurowania opcji akcji elementu runbook dla alertu możesz wyświetlić wszystkie elementy runbook na liście rozwijanej **Wybierz element runbook** i wybrać konkretny element runbook, który ma być uruchamiany w odpowiedzi na alert. Wybrany element runbook można uruchomić w obszarze roboczym platformy Azure lub w hybrydowym procesie roboczym elementu runbook. 
+Można zainstalować i skonfigurować Automatyzacja i kontrola oferty w obszarze roboczym analizy dzienników. Podczas konfigurowania opcji akcji elementu runbook dla alertu możesz wyświetlić wszystkie elementy runbook na liście rozwijanej **Wybierz element runbook** i wybrać konkretny element runbook, który ma być uruchamiany w odpowiedzi na alert. Wybrany element runbook można uruchomić w obszarze roboczym platformy Azure lub w hybrydowym procesie roboczym elementu runbook. 
 
 Po utworzeniu alertu przy użyciu opcji elementu runbook dla elementu runbook jest tworzony element webhook. Element webhook można wyświetlić po przejściu do konta usługi Automation i otworzeniu okienka elementu webhook wybranego elementu runbook. 
 
@@ -90,7 +90,7 @@ $SearchResult.SvcDisplayName_CF
 
 Po zatrzymaniu usługi reguła alertu w usłudze Log Analytics wykrywa dopasowanie, wyzwala element runbook i wysyła kontekst alertu do tego elementu. Element runbook podejmuje próbę sprawdzenia, czy usługa została zatrzymana. Jeśli tak, element runbook próbuje ponownie uruchomić usługę, sprawdzić, czy usługa została uruchomiona prawidłowo, i wyświetlić wyniki.     
 
-Alternatywnie, jeśli nie masz konta usługi Automation połączonego z przestrzenią roboczą pakietu Operations Management Suite, możesz skonfigurować regułę alertu z akcją elementu webhook. Ta akcja elementu webhook wyzwala element runbook. Konfiguruje również element runbook do konwertowania ciągu w formacie JSON oraz filtrowania elementu **SearchResult** zgodnie z podanymi wcześniej wskazówkami.    
+Alternatywnie Jeśli nie masz konta automatyzacji połączone z obszaru roboczego analizy dzienników można skonfigurować regułę alertu przy użyciu akcji elementu webhook. Ta akcja elementu webhook wyzwala element runbook. Konfiguruje również element runbook do konwertowania ciągu w formacie JSON oraz filtrowania elementu **SearchResult** zgodnie z podanymi wcześniej wskazówkami.    
 
 >[!NOTE]
 > Jeśli Twój obszar roboczy został uaktualniony do [nowego języka zapytań usługi Log Analytics](../log-analytics/log-analytics-log-search-upgrade.md), ładunek elementu webhook uległ zmianie. Szczegółowe informacje na temat tego formatu zawiera artykuł [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) (Interfejs API REST usługi Azure Log Analytics).

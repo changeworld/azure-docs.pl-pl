@@ -1,11 +1,11 @@
 ---
-title: "Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement"
-description: "Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement"
+title: Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement
+description: Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a7d719ec-67b3-4be3-9d7f-0b61a57fe978
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 43987962ea2b7b825b88643d18b4db65f1f1670e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c3b8f60333e6096411aad8499bb4bfc36e53f3c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-adm-with-engagement"></a>Integrowanie usługi ADM z zaangażowania
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!IMPORTANT]
 > Musi występować po integracji procedury opisane w sekcji sposobu integracji usługi Engagement Android dokumentu przed wykonaniem tego przewodnika.
 > 
@@ -41,7 +45,7 @@ Integrowanie usługi ADM pozwala aplikacji naciśnięty, gdy przeznaczonych dla 
 ## <a name="sign-up-to-adm"></a>Zarejestruj się, aby usługi ADM
 Jeśli nie zostało już przeprowadzone, należy włączyć ADM na Twoje konto Amazon.
 
-Procedura została szczegółowo opisana w: [ <https://developer.amazon.com/sdk/adm/credentials.html>].
+Procedura została szczegółowo opisana w: [ <https://developer.amazon.com/sdk/adm/credentials.html> ].
 
 Po zakończeniu procedury, można uzyskać:
 
@@ -104,7 +108,7 @@ Upewnij się, masz następujące uprawnienia Twojej `AndroidManifest.xml` (przed
 ## <a name="grant-engagement-oauth-credentials"></a>Poświadczenia GRANT zaangażowania OAuth
 Przedstawia poświadczeń OAuth (identyfikator klienta i klucz tajny klienta) w portalu Engagement.
 
-[< https://developer.amazon.com/sdk/adm/credentials.html>]:https://developer.amazon.com/sdk/adm/credentials.html
+[<https://developer.amazon.com/sdk/adm/credentials.html>]:https://developer.amazon.com/sdk/adm/credentials.html
 [biblioteki klienta usługi ADM]:https://developer.amazon.com/sdk/adm/setup.html
 [zintegrowane usługi ADM]:https://developer.amazon.com/sdk/adm/integrating-app.html
 [tej procedury]:https://developer.amazon.com/sdk/adm/integrating-app.html#Asset

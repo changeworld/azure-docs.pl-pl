@@ -1,11 +1,11 @@
 ---
-title: "Sposób użycia interfejsu API programu zaangażowania w systemie iOS"
-description: "Najnowsze iOS SDK — sposób użycia interfejsu API programu zaangażowania w systemie iOS"
+title: Sposób użycia interfejsu API programu zaangażowania w systemie iOS
+description: Najnowsze iOS SDK — sposób użycia interfejsu API programu zaangażowania w systemie iOS
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1fb4509e-3804-46c1-949f-1cf727f91f9f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 189a3029449a3161da2a20f940b77a5bb63bd1ef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>Sposób użycia interfejsu API programu zaangażowania w systemie iOS
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Ten dokument jest dodatkiem do dokumentu jak zintegrować zaangażowania w systemie iOS: dostarcza w głębokość szczegółowe informacje dotyczące raportu statystyk aplikacji za pomocą interfejsu API usługi Engagement.
 
 Należy pamiętać, że jeśli chcesz tylko zaangażowania do raportów aplikacji sesji, działania, awarii (Crash) i informacje techniczne, następnie Najłatwiejszą metodą jest zapewnienie wszystkie niestandardowe `UIViewController` obiekty dziedziczyć odpowiadającego `EngagementViewController` klasy.
@@ -29,7 +33,7 @@ Jeśli chcesz zrobić więcej, na przykład, jeśli zachodzi konieczność rapor
 
 Interfejsu API programu zaangażowania jest zapewniana przez `EngagementAgent` klasy. Wystąpienie tej klasy można pobrać przez wywołanie metody `[EngagementAgent shared]` metody statycznej (należy pamiętać, że `EngagementAgent` obiektu zwróconego jest pojedyncza).
 
-Przed wszystkie wywołania interfejsu API `EngagementAgent` obiekt musi zostać zainicjowany przez wywołanie metody`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
+Przed wszystkie wywołania interfejsu API `EngagementAgent` obiekt musi zostać zainicjowany przez wywołanie metody `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
 
 ## <a name="engagement-concepts"></a>Pojęcia dotyczące usługi Engagement
 Następujące części uściślić typowe [Mobile Engagement pojęcia](mobile-engagement-concepts.md) dla platformy iOS.
@@ -212,7 +216,7 @@ Należy pamiętać, że może zawierać dodatkowe `arrays(NSArray, NSMutableArra
 > [!NOTE]
 > Dodatkowy parametr jest serializowany w formacie JSON. Jeśli chcesz przekazać różnych obiektów niż opisane powyżej, musisz zaimplementować następującą metodę w klasie:
 > 
-> -(NSString*) JSONRepresentation;
+> -(NSString*)JSONRepresentation;
 > 
 > Metoda powinna zwracać reprezentację obiektu w formacie JSON.
 > 

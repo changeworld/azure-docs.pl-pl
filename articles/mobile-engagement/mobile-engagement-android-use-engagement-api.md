@@ -1,11 +1,11 @@
 ---
-title: "Jak używać Engagement interfejsu API w systemie Android"
-description: "Najnowszy zestaw SDK systemu Android — jak używać Engagement interfejsu API w systemie Android"
+title: Jak używać Engagement interfejsu API w systemie Android
+description: Najnowszy zestaw SDK systemu Android — jak używać Engagement interfejsu API w systemie Android
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 09b62659-82ae-4a55-8784-fca0b6b22eaf
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79d0652be227dd6703a35d31409cf8e0d9c59519
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-android"></a>Jak używać Engagement interfejsu API w systemie Android
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Ten dokument jest dodatkiem do dokumentu [opcje zaawansowane raportowanie dla systemu Android zestaw SDK usługi Mobile Engagement](mobile-engagement-android-advanced-reporting.md). Zapewnia on głębokość szczegółowe informacje dotyczące raportu statystyk aplikacji za pomocą interfejsu API usługi Engagement.
 
 Należy pamiętać, że jeśli chcesz tylko zaangażowania do raportów aplikacji sesji, działania, awarii (Crash) i informacje techniczne, następnie Najłatwiejszą metodą jest zapewnienie wszystkie Twoje `Activity` klasy podrzędne dziedziczą odpowiadającego `EngagementActivity` klasy.
@@ -224,7 +228,7 @@ Dowolne dane, może zostać dołączona do zdarzeń, błędów, działań i zada
 Te dane mogą być elementami struktury, używa klasy pakietu dla systemu Android (w rzeczywistości działa jak dodatkowe parametry w lokalizacji docelowych z systemem Android). Należy pamiętać, że pakiet może zawierać tablic lub innego wystąpienia pakietu.
 
 > [!IMPORTANT]
-> Jeśli umieścisz w parcelable lub które można serializować parametrów, upewnij się, ich `toString()` zaimplementowano metoda zwraca ciąg zrozumiałą dla użytkownika. Klas możliwych do serializacji, zawierające pola z systemem innym niż przejściowy, które nie są serializacji spowoduje awarii systemu Android, gdy będzie wywoływać`bundle.putSerializable("key",value);`
+> Jeśli umieścisz w parcelable lub które można serializować parametrów, upewnij się, ich `toString()` zaimplementowano metoda zwraca ciąg zrozumiałą dla użytkownika. Klas możliwych do serializacji, zawierające pola z systemem innym niż przejściowy, które nie są serializacji spowoduje awarii systemu Android, gdy będzie wywoływać `bundle.putSerializable("key",value);`
 > 
 > [!WARNING]
 > Tablice rozrzedzonych w dodatkowe parametry nie są obsługiwane, oznacza to, że nie można serializować jako tablica. Należy przekonwertować je na standardowe tablice przed jego użyciem w dodatkowe parametry.

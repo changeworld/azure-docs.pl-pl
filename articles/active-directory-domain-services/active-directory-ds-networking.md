@@ -1,8 +1,8 @@
 ---
-title: "Usługi domenowe Azure AD: Wskazówki dotyczące sieci | Dokumentacja firmy Microsoft"
-description: "Zagadnienia dotyczące sieci dla usług domenowych Azure Active Directory"
+title: 'Usługi domenowe Azure AD: Wskazówki dotyczące sieci | Dokumentacja firmy Microsoft'
+description: Zagadnienia dotyczące sieci dla usług domenowych Azure Active Directory
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Zagadnienia dotyczące sieci dla usług domenowych Azure AD
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak wybrać sieć wirtualną platformy Azure
@@ -73,7 +73,7 @@ Następujące porty są wymagane dla usług domenowych Azure AD do usługi i obs
 **Port 443 (synchronizacji z usługą Azure AD)**
 * Służy do synchronizacji katalogu usługi Azure AD z domeny zarządzanej.
 * Jest to konieczne, aby umożliwić dostęp do tego portu w Twojej NSG. Bez dostępu do tego portu domeny zarządzanej nie jest zsynchronizowana z katalogiem Azure AD. Użytkownicy nie można zalogować się jako zmiany hasła nie są synchronizowane z domeny zarządzanej.
-* Do tego portu do adresów IP należących do zakresu adresów IP platformy Azure, można ograniczyć dostęp dla ruchu przychodzącego.
+* Do tego portu do adresów IP należących do zakresu adresów IP platformy Azure, można ograniczyć dostęp dla ruchu przychodzącego. Należy pamiętać, że zakres adresów Azure IP inny zakres niż zakres programu PowerShell pokazano w poniższej reguły.
 
 **Portu 5986 (obsługę zdalną środowiska PowerShell)**
 * Służy do wykonywania zadań zarządzania w domenie zarządzanej przy użyciu komunikacji zdalnej programu PowerShell.

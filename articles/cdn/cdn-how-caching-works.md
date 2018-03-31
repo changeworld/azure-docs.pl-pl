@@ -1,12 +1,12 @@
 ---
-title: "Jak działa buforowanie | Dokumentacja firmy Microsoft"
-description: "Buforowanie jest procesem przechowywania danych lokalnie, tak aby przyszłych żądań dotyczących szybciej dostępne dane."
+title: Jak działa buforowanie | Dokumentacja firmy Microsoft
+description: Buforowanie jest procesem przechowywania danych lokalnie, tak aby przyszłych żądań dotyczących szybciej dostępne dane.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 284b4bcbeafc422a2ed91cec00a5b5b83bb37b7b
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: da43e122c3e7d5e852107d4e4cca237ce4824267
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-caching-works"></a>Jak działa buforowanie
 
@@ -59,51 +59,50 @@ Buforowanie jest integralną częścią CDN funkcjonowania przyspieszenia dostar
 
 Podobnie jak buforowanie jest zaimplementowana w przeglądarce sieci web można kontrolować jak buforowanie odbywa się w sieci CDN przez wysyłanie nagłówków pamięci podręcznej dyrektywy. Dyrektywa pamięci podręcznej nagłówki są nagłówków HTTP, które zwykle są dodawane przez serwer pochodzenia. Mimo że większość tych nagłówków pierwotnie zostały zaprojektowane do adresów pamięci podręcznej w przeglądarkach klientów, teraz również są używane przez wszystkie pośrednie pamięci podręcznych, takich jak CDN. 
 
-Dwa nagłówki mogą być używane do definiowania świeżości pamięci podręcznej: `Cache-Control` i `Expires`. `Cache-Control`jest bardziej aktualny i ma pierwszeństwo przed `Expires`, jeśli istnieją. Istnieją również dwa typy nagłówków używany do sprawdzania poprawności (nazywane moduły weryfikacji): `ETag` i `Last-Modified`. `ETag`jest bardziej aktualny i ma pierwszeństwo przed `Last-Modified`, jeśli są określone oba.  
+Dwa nagłówki mogą być używane do definiowania świeżości pamięci podręcznej: `Cache-Control` i `Expires`. `Cache-Control` jest bardziej aktualny i ma pierwszeństwo przed `Expires`, jeśli istnieją. Istnieją również dwa typy nagłówków używany do sprawdzania poprawności (nazywane moduły weryfikacji): `ETag` i `Last-Modified`. `ETag` jest bardziej aktualny i ma pierwszeństwo przed `Last-Modified`, jeśli są określone oba.  
 
 ## <a name="cache-directive-headers"></a>Nagłówki pamięci podręcznej — dyrektywa
 
 > [!IMPORTANT]
-> Domyślnie usługi Azure CDN punktu końcowego, który jest zoptymalizowana pod kątem DSA ignoruje nagłówków pamięci podręcznej dyrektywy i pomija buforowania. Można dostosować, jak punkt końcowy usługi Azure CDN traktuje te nagłówki przy użyciu CDN buforowanie zasady można włączyć buforowanie. Aby uzyskać więcej informacji, zobacz [kontroli usługi Azure CDN zachowanie buforowania z buforowaniem reguły](cdn-caching-rules.md).
+> Domyślnie usługi Azure CDN punktu końcowego, który jest zoptymalizowana pod kątem DSA ignoruje nagłówków pamięci podręcznej dyrektywy i pomija buforowania. Dla **Azure CDN from Verizon Standard** i **Azure CDN from Akamai Standard** profile, można dostosować sposób punktu końcowego usługi Azure CDN traktuje te nagłówki przy użyciu [reguły buforowania CDN](cdn-caching-rules.md)Aby włączyć buforowanie. Dla **Azure CDN from Verizon** tylko profile, użyj [aparatu reguł](cdn-rules-engine.md) Aby włączyć buforowanie.
 
-Usługi Azure CDN obsługuje następujące dyrektywy pamięci podręcznej nagłówki HTTP, które definiują czas trwania pamięci podręcznej i współużytkowania pamięci podręcznej: 
+Usługi Azure CDN obsługuje następujące dyrektywy pamięci podręcznej nagłówki HTTP, które definiują czas trwania pamięci podręcznej i współużytkowania pamięci podręcznej.
 
-`Cache-Control`
+**Cache-Control:**
 - Wprowadzone w protokołu HTTP 1.1, zapewniają większą kontrolę nad swoją zawartość sieci web wydawcy i adresu ograniczenia `Expires` nagłówka.
 - Zastępuje `Expires` nagłówka, jeśli obie go i `Cache-Control` są zdefiniowane.
-- Gdy jest używany w nagłówku żądania, `Cache-Control` jest ignorowana przez usługi Azure CDN domyślnie.
-- W przypadku nagłówka odpowiedzi usługi Azure CDN obsługuje następujące `Cache-Control` dyrektywy zgodnie z produktu: 
-   - **Usługi Azure CDN from Verizon**: obsługuje wszystkie `Cache-Control` dyrektywy. 
-   - **Azure CDN from Akamai**: obsługuje tylko następujące `Cache-Control` dyrektywy; wszystkie inne są ignorowane: 
-      - `max-age`: Liczby sekund określonej pamięć podręczna może przechowywać zawartość. Na przykład `Cache-Control: max-age=5`. Ta dyrektywa określa maksymalną ilość czasu, w których zawartość została uznana za świeże.
-      - `no-cache`: Zawartość pamięci podręcznej, ale sprawdzenie poprawności zawartości każdorazowym przed dostarczeniem go z pamięci podręcznej. Odpowiednikiem `Cache-Control: max-age=0`.
-      - `no-store`: Nigdy nie pamięci podręcznej zawartości. Usuwanie zawartości, jeśli zostały wcześniej zapisane.
+- Gdy jest używany w żądaniu HTTP `Cache-Control` jest ignorowana przez usługi Azure CDN domyślnie.
+- **Usługi Azure CDN from Verizon** profile obsługuje wszystkie `Cache-Control` dyrektywy, gdy są używane w odpowiedzi HTTP.
+- **Azure CDN from Akamai** profile obsługuje tylko następujące dyrektywy, gdy są używane w odpowiedzi HTTP; pozostałe są ignorowane:
+   - `max-age`: Liczby sekund określonej pamięć podręczna może przechowywać zawartość. Na przykład `Cache-Control: max-age=5`. Ta dyrektywa określa maksymalną ilość czasu, w których zawartość została uznana za świeże.
+   - `no-cache`: Zawartość pamięci podręcznej, ale sprawdzenie poprawności zawartości każdorazowym przed dostarczeniem go z pamięci podręcznej. Odpowiednikiem `Cache-Control: max-age=0`.
+   - `no-store`: Nigdy nie pamięci podręcznej zawartości. Usuwanie zawartości, jeśli zostały wcześniej zapisane.
 
-`Expires`
+**Wygasa:**
 - Nagłówek starszych wprowadzone w HTTP 1.0; obsługiwane w przypadku zapewnienia zgodności.
 - Używa czas na podstawie daty wygaśnięcia z dokładnością do drugiego. 
 - Podobnie jak `Cache-Control: max-age`.
 - Używane podczas `Cache-Control` nie istnieje.
 
-`Pragma`
+**Pragma:**
    - Nie honorowane przez usługi Azure CDN domyślnie.
    - Nagłówek starszych wprowadzone w HTTP 1.0; obsługiwane w przypadku zapewnienia zgodności.
    - Używane jako nagłówek żądania klientów o następujące dyrektywy: `no-cache`. Ta dyrektywa nakazuje serwerowi dostarczania nową wersję tego zasobu.
-   - `Pragma: no-cache`jest odpowiednikiem `Cache-Control: no-cache`.
+   - `Pragma: no-cache` jest odpowiednikiem `Cache-Control: no-cache`.
 
 ## <a name="validators"></a>Moduły weryfikacji
 
-Gdy pamięci podręcznej jest przestarzała, modułów sprawdzania poprawności HTTP pamięci podręcznej są używane do porównania buforowanej wersji pliku z wersją na serwerze źródłowym. **Usługi Azure CDN from Verizon** obsługuje ETag i moduły Last-Modified domyślnie, gdy **Azure CDN from Akamai** obsługuje tylko Last-Modified domyślnie.
+Gdy pamięci podręcznej jest przestarzała, modułów sprawdzania poprawności HTTP pamięci podręcznej są używane do porównania buforowanej wersji pliku z wersją na serwerze źródłowym. **Usługi Azure CDN from Verizon** obsługuje zarówno `ETag` i `Last-Modified` modułów sprawdzania poprawności, domyślnie podczas **Azure CDN from Akamai** obsługuje tylko `Last-Modified` domyślnie.
 
-`ETag`
+**ETag:**
 - **Usługi Azure CDN from Verizon** używa `ETag` domyślnie podczas **Azure CDN from Akamai** nie.
-- `ETag`definiuje ciąg, który jest unikatowy dla każdego pliku i wersja pliku. Na przykład `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
+- `ETag` definiuje ciąg, który jest unikatowy dla każdego pliku i wersja pliku. Na przykład `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - Wprowadzona w protokołu HTTP 1.1 i jest nowszy niż `Last-Modified`. Przydatne w przypadku daty ostatniej modyfikacji trudno jest określić.
 - Obsługuje zarówno silnej weryfikacji i sprawdzania poprawności słaby; Jednak usługi Azure CDN obsługuje tylko silnej weryfikacji. Do weryfikacji silnej reprezentacji dwóch zasobów musi być bajtów dla bajtu identyczne. 
 - Pamięć podręczna sprawdza poprawność pliku, która używa `ETag` wysyłając `If-None-Match` nagłówek z co najmniej jednego `ETag` modułów sprawdzania poprawności w żądaniu. Na przykład `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Jeśli wersja serwera jest zgodna `ETag` modułu sprawdzania poprawności na liście, wysyła kod stanu 304 (nie jest modyfikowany) w odpowiedzi. W przypadku różnych wersji, serwer odpowiada z kodem stanu 200 (OK) i zaktualizowanego zasobu.
 
-`Last-Modified`
-- Aby uzyskać **Azure CDN from Verizon tylko**, Last-Modified jest używana, gdy element ETag nie jest częścią odpowiedzi HTTP. 
+**Last-Modified:**
+- Aby uzyskać **Azure CDN from Verizon tylko**, `Last-Modified` jest używana, gdy `ETag` nie jest częścią odpowiedzi HTTP. 
 - Określa datę i godzinę serwera pochodzenia wykrył, że zasób ostatniej modyfikacji. Na przykład `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
 - Weryfikuje pamięci podręcznej plików przy użyciu `Last-Modified` wysyłając `If-Modified-Since` nagłówek o datę i godzinę w żądaniu. Serwer pochodzenia porównuje tą datą `Last-Modified` nagłówka najnowszych zasobów. Jeśli zasób nie został zmodyfikowany od określonego czasu, serwer zwraca kod stanu 304 (nie jest modyfikowany) w odpowiedzi. Jeśli zasób został zmodyfikowany, serwer zwraca stanu 200 (OK) i zaktualizowanego zasobu kodu.
 
@@ -121,10 +120,10 @@ Nie wszystkie zasoby mogą być buforowane. W poniższej tabeli przedstawiono, j
 
 W poniższej tabeli opisano domyślne zachowanie dla produkty Azure CDN i ich optymalizacje buforowania.
 
-|                    | Verizon - dostarczania ogólne sieci web | Verizon — DSA | Akamai — dostarczania ogólne sieci web | Akamai - DSA | Akamai — pobierania dużych plików | Akamai — ogólne lub przesyłania strumieniowego multimediów VOD |
+|                    | Verizon: dostarczanie ogólne web | Verizon: DSA | Akamai: dostarczanie ogólne web | Akamai: DSA | Akamai: pobieranie plików o dużym | Akamai: ogólne lub przesyłania strumieniowego multimediów VOD |
 |--------------------|--------|------|-----|----|-----|-----|
 | **Honoruj źródła**   | Yes    | Nie   | Yes | Nie | Yes | Yes |
-| **Czas trwania pamięci podręcznej CDN** | 7 dni | None | 7 dni | None | 1 dzień | 1 rok |
+| **Czas trwania pamięci podręcznej CDN** | 7 dni | None | 7 dni | Brak | 1 dzień | 1 rok |
 
 **Uznawać pochodzenia**: Określa, czy należy przestrzegać [obsługiwanych nagłówków pamięci podręcznej dyrektywy](#http-cache-directive-headers) Jeśli istnieją w odpowiedzi HTTP z serwera pochodzenia.
 

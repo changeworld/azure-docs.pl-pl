@@ -1,12 +1,12 @@
 ---
-title: "Kontrolowanie Azure Content Delivery Network zachowanie buforowania z buforowaniem reguły | Dokumentacja firmy Microsoft"
-description: "Korzystanie z sieci CDN, buforowanie reguł, można ustawić lub zmodyfikować domyślne zachowanie wygaśnięcia pamięci podręcznej globalnie i warunków, takich jak rozszerzeń adresów URL i ścieżka pliku."
+title: Kontrolowanie Azure CDN zachowanie buforowania z buforowaniem reguły | Dokumentacja firmy Microsoft
+description: Korzystanie z sieci CDN, buforowanie reguł, można ustawić lub zmodyfikować domyślne zachowanie wygaśnięcia pamięci podręcznej globalnie i warunków, takich jak rozszerzeń adresów URL i ścieżka pliku.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 2a94ba5cb9f026f66bc1f3b379f00b291a2299c9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 735978a0986b2b16b4f96faca78c06d798915002
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="control-azure-content-delivery-network-caching-behavior-with-caching-rules"></a>Formant Azure Content Delivery Network zachowanie buforowania z buforowaniem reguły
+# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Formant Azure CDN zachowanie buforowania z buforowaniem reguły
 
 > [!NOTE] 
 > Reguły buforowania są dostępne tylko dla **Azure CDN from Verizon Standard** i **Azure CDN from Akamai Standard**. Dla **Azure CDN from Verizon Premium**, można użyć [aparatu reguł Azure CDN](cdn-rules-engine.md) w **Zarządzaj** portalu dla podobnych możliwościach.
  
-Usługa Azure Content Delivery Network udostępnia dwa sposoby kontrolowania, jak są buforowane pliki: 
+Azure sieci dostarczania zawartości (CDN) oferuje dwa sposoby kontrolowania, jak są buforowane pliki: 
 
 - Buforowanie reguł: w tym artykule opisano, jak można użyć sieci dostarczania zawartości (CDN) buforowanie reguły można ustawić lub zmodyfikować domyślne zachowanie wygaśnięcia pamięci podręcznej globalnie i z warunkami niestandardowych, takich jak ścieżki i rozszerzenia adresu URL. Usługi Azure CDN oferuje dwa typy zasad buforowania:
    - Globalny buforowanie reguł: jedną globalnego regułę buforowania dla każdego punktu końcowego można ustawić w Twoim profilu, który ma wpływ na wszystkie żądania do punktu końcowego. Globalna reguła buforowania zastępuje wszelkie nagłówki dyrektywy pamięci podręcznej HTTP, jeśli ustawiona.
@@ -40,11 +40,11 @@ Informacje domyślne zachowanie buforowania i buforowanie dyrektywy nagłówków
 Jak ustawić CDN buforowanie reguł:
 
 1. Otwórz Azure portal, wybierz profil CDN, a następnie wybierz punkt końcowy.
-2. W lewym okienku w obszarze Ustawienia, kliknij przycisk **buforowanie reguły**.
+2. W lewym okienku w obszarze Ustawienia zaznacz **buforowanie reguły**.
 
    ![Przycisk reguły buforowania CDN](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-1. Utwórz regułę buforowania globalne w następujący sposób:
+3. Utwórz regułę buforowania globalne w następujący sposób:
    1. W obszarze **globalnej pamięci podręcznej zasad**ustaw **zachowanie buforowania ciągu kwerendy** do **ignorować ciągi kwerendy**.
    2. Ustaw **zachowanie buforowania** do **Jeśli brak**.
        
@@ -62,10 +62,11 @@ Jak ustawić CDN buforowanie reguł:
 
     ![Niestandardowe reguły buforowania](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
+    
 > [!NOTE] 
 > Pliki, które są buforowane przed zmianą reguły Obsługa ustawienie czasu trwania pamięci podręcznej ich źródła. Aby zresetować ich czas trwania pamięci podręcznej, należy najpierw [przeczyścić pliku](cdn-purge-endpoint.md). Aby uzyskać **Azure CDN from Verizon** punktów końcowych, może potrwać do 90 minut buforowanie zasady zaczęły obowiązywać.
 
-## <a name="reference"></a>Dokumentacja
+## <a name="reference"></a>Informacje ogólne
 
 ### <a name="caching-behavior-settings"></a>Ustawienia zachowania buforowania
 Globalne i niestandardowych reguł buforowania, można określić następujące **zachowanie buforowania** ustawienia:
@@ -102,13 +103,13 @@ Reguły buforowania globalne i niestandardowe są przetwarzane w następującej 
 
 - Niestandardowe reguły #1 buforowania:
    - Zgodne warunkiem: **ścieżki**
-   - Dopasuj wartości:`/home/*`
+   - Dopasuj wartości: `/home/*`
    - Zachowanie buforowania: **zastąpienia**
    - Buforuj czas wygaśnięcia: 2 dni
 
 - Niestandardowe reguły #2 buforowania:
    - Zgodne warunkiem: **rozszerzenia**
-   - Dopasuj wartości:`.html`
+   - Dopasuj wartości: `.html`
    - Zachowanie buforowania: **Jeśli brak**
    - Buforuj czas wygaśnięcia: 3 dni
 

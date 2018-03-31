@@ -1,24 +1,19 @@
 ---
-title: Często zadawane pytania dotyczące usługi Azure Application Gateway | Dokumentacja firmy Microsoft
+title: Często zadawane pytania dotyczące bramy aplikacji Azure
 description: Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące bramy aplikacji Azure
-documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: d54ee7ec-4d6b-4db7-8a17-6513fda7e392
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 3/29/2018
+ms.author: victorh
+ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące bramy aplikacji
 
@@ -38,7 +33,19 @@ Brama aplikacji jest modułem równoważenia obciążenia warstwy 7, co oznacza,
 
 **Q. Jakie protokoły obsługuje bramy aplikacji?**
 
-Brama aplikacji w obsługuje HTTP, HTTPS i protokołu WebSocket.
+Brama aplikacji w obsługuje HTTP, HTTPS HTTP/2 i protokołu WebSocket.
+
+**Q. W jaki sposób Application Gateway obsługuje HTTP/2**
+
+Obsługa protokołu HTTP/2 jest dostępny dla klientów łączących się tylko odbiorników bramy aplikacji. Komunikacja z pul serwerów wewnętrznej bazy danych jest za pośrednictwem protokołu HTTP/1.1. 
+
+Domyślnie obsługa HTTP/2 jest wyłączona. W poniższym przykładzie wstawki kodu programu Azure PowerShell pokazuje, jak możesz ją włączyć:
+
+```
+$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+$gw.EnableHttp2 = $true
+Set-AzureRmApplicationGateway -ApplicationGateway $gw
+```
 
 **Q. Jakie zasoby są obsługiwane obecnie częścią puli wewnętrznej bazy danych?**
 
@@ -104,7 +111,7 @@ Grup zabezpieczeń sieci są obsługiwane w tej podsieci bramy aplikacji z nast�
 
 * Wyjątki musi być włączony dla ruchu przychodzącego na portach 65503-65534 wewnętrznej bazy danych kondycji działał prawidłowo.
 
-* Wychodzące połączenie z Internetem nie mogą zostać zablokowane.
+* Nie można zablokować wychodzące połączenie z Internetem.
 
 * Wymagane jest zezwolenie ruch z znacznik AzureLoadBalancer.
 
@@ -314,7 +321,7 @@ Dzienniki inspekcji są dostępne dla bramy aplikacji. W portalu kliknij **dzien
 
 **Q. Można ustawić alerty z bramy aplikacji?**
 
-Tak, bramy aplikacji obsługi alertów, alerty są konfigurowane poza metryki.  Brama aplikacji w aktualnie ma metrykę "przepływności", która może być skonfigurowana do alertu. Aby dowiedzieć się więcej o alertach, odwiedź stronę [otrzymywać powiadomienia o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Tak, bramy aplikacji obsługi alertów, alerty są konfigurowane poza metryki. Brama aplikacji w aktualnie ma metrykę "przepływności", która może być skonfigurowana do alertu. Aby dowiedzieć się więcej o alertach, odwiedź stronę [otrzymywać powiadomienia o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 **Q. Kondycja wewnętrznej bazy danych zwraca nieznany stan, w poznaniu przyczyny tego stanu?**
 

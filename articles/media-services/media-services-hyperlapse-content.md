@@ -1,36 +1,34 @@
 ---
-title: "Plikach multimedialnych przyspieszonych ujęć poklatkowych za pomocą usługi Azure Media Hyperlapse | Dokumentacja firmy Microsoft"
-description: "Azure Media Hyperlapse tworzy smooth czas, jaki upłynął wideo z pierwszą osobą lub akcji aparatu zawartości. W tym temacie pokazano, jak używać nośnika indeksatora."
+title: Plikach multimedialnych przyspieszonych ujęć poklatkowych za pomocą usługi Azure Media Hyperlapse | Dokumentacja firmy Microsoft
+description: Azure Media Hyperlapse tworzy smooth czas, jaki upłynął wideo z pierwszą osobą lub akcji aparatu zawartości. W tym temacie pokazano, jak używać nośnika indeksatora.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: asolanki
 manager: johndeu
-editor: 
+editor: ''
 ms.assetid: 37d54db6-9cf3-4ae9-b3c6-0d29c744e965
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: b3163454213db0afb94e668e4c56924d7833d769
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 86a9d44a93d7717d2ed949db2b1d1e94963781d0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Plikach multimedialnych przyspieszonych ujęć poklatkowych za pomocą usługi Azure Media Hyperlapse
 Azure Media Hyperlapse jest nośnik procesora (MP) tworzącą smooth czas, jaki upłynął wideo z pierwszą osobą lub akcji aparatu zawartości.  Element równorzędny oparte na chmurze do [desktop Pro przyspieszonych ujęć poklatkowych i opartych na telefon komórkowy przyspieszonych ujęć poklatkowych Microsoft Research](http://aka.ms/hyperlapse), Hyperlapse firmy Microsoft dla usługi Azure Media Services używa bardzo dużej skali przetwarzania Media Services multimediów Azure Platforma na poziomie skalowanie i parallelize zbiorcze przyspieszonych ujęć poklatkowych przetwarzania.
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse jest zaprojektowana by najlepiej pracować na pierwszą osobą zawartości za pomocą przenoszenia aparatu.  Mimo że nadal kamery może nadal działać, wydajności i jakości procesor multimediów Azure Media przyspieszonych ujęć poklatkowych nie można zagwarantować dla innych typów zawartości.  Aby dowiedzieć się więcej o Hyperlapse firmy Microsoft dla usługi Azure Media Services i wyświetlić niektóre przykładowe filmy, zapoznaj się [wprowadzające wpis w blogu](http://aka.ms/azurehyperlapseblog) z publicznej wersji zapoznawczej.
+> Microsoft Hyperlapse jest zaprojektowana by najlepiej pracować na pierwszą osobą zawartości za pomocą przenoszenia aparatu. Mimo że nadal kamery może nadal działać, wydajności i jakości procesor multimediów Azure Media przyspieszonych ujęć poklatkowych nie można zagwarantować dla innych typów zawartości.
 > 
 > 
 
 Azure Media Hyperlapse zadania przyjmuje jako plik wejściowy elementu MP4, MOV lub WMV zasobów wraz z plikiem konfiguracji, który określa, które ramki wideo powinna być czas, jaki upłynął i jakie szybkości (np. pierwszych 10 000 ramek, x 2).  Dane wyjściowe są stabilnych i czas, jaki upłynął dobór wejściowego pliku wideo.
-
-Najnowsze aktualizacje usługi Azure Media Hyperlapse, zobacz [blogi Media Services](https://azure.microsoft.com/blog/topics/media-services/).
 
 ## <a name="hyperlapse-an-asset"></a>Przyspieszonych ujęć poklatkowych zasobów
 Najpierw należy przesłać żądany plik wejściowy do usługi Azure Media Services.  Aby dowiedzieć się więcej na temat pojęć związanych z przekazywanie i zarządzania zawartością, przeczytaj [zarządzania zawartością artykułu](media-services-portal-vod-get-started.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: d1a605ae5c0ea598ba507de0b21a841333df79ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7cd16d64d18b4cdcb710f68c55a8251904acda86
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłową konfigurację nazwy głównej usługi dla domeny zarządzanej
 
@@ -93,7 +93,7 @@ Wykonaj następujące kroki, jeśli nazwy głównej usługi o identyfikatorze ``
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Alert AADDS105: Aplikacja synchronizacji haseł jest nieaktualny
 
-**Komunikat alertu:** nazwy głównej usługi z Identyfikatorem aplikacji "d87dcbc6-a371-462e-88e3-28ad15ec4e64" został usunięty i następnie utworzony ponownie. Nazwy głównej usługi zarządza innej nazwy głównej usługi i aplikacji, które są używane do synchronizacji haseł. Nazwy głównej usługi zarządzanych i/lub aplikacji nie ma autoryzacji w obszarze nazwy głównej usługi nowo utworzony, nie mogą być zarządzane przez naszej usługi. Oznacza to, że główną nowo utworzony usługi będzie mógł zaktualizować starego zarządzanych aplikacji i będzie mieć wpływ na synchronizację haseł.
+**Komunikat alertu:** nazwy głównej usługi z Identyfikatorem aplikacji "d87dcbc6-a371-462e-88e3-28ad15ec4e64" został usunięty i następnie utworzony ponownie. Odtworzenie pozostawia za niezgodne uprawnienia potrzebne do domeny zarządzanej usługi zasobów usługi domenowe Azure AD. Synchronizacja haseł dla domeny zarządzanej może to mieć wpływ.
 
 
 **Rozwiązanie:** należy wykonać te kroki programu Azure AD PowerShell. Aby uzyskać informacje na temat instalowania programu Azure AD PowerShell, zobacz [w tym artykule](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).

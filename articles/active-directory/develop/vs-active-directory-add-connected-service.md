@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie usługi Azure Active Directory przy użyciu usług połączonych w programie Visual Studio | Dokumentacja firmy Microsoft"
-description: "Dodawanie przy użyciu okna dialogowego programu Visual Studio Dodaj połączone usługi Azure Active Directory"
+title: Dodawanie usługi Azure Active Directory przy użyciu usług połączonych w programie Visual Studio | Dokumentacja firmy Microsoft
+description: Dodawanie przy użyciu okna dialogowego programu Visual Studio Dodaj połączone usługi Azure Active Directory
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.service: active-directory
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2018
-ms.author: kraigb
-ms.openlocfilehash: b21761b6fc166ecbb2fec9c13e5e207481fa9a39
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: ghogen
+ms.openlocfilehash: 882ba1c7ea8ef6889bc9ad20031070cd54100026
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie usługi Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
 
@@ -61,7 +61,7 @@ Obecnie w usłudze Active Directory połączone nie obsługuje aplikacje platfor
 1. Po zakończeniu procesu Visual Studio otworzy w przeglądarce jednego z poniższych artykułów, odpowiednio do typu projektu:
 
     - [Rozpoczynanie pracy z projektami .NET MVC](vs-active-directory-dotnet-getting-started.md)
-    - [Rozpoczynanie pracy z projektami WebAPI](vs-active-directory-webapi-getting-started.md)
+    - [Wprowadzenie do projektów WebAPI](vs-active-directory-webapi-getting-started.md)
 
 1. Można również wyświetlić domeny usługi Active Directory na [portalu Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
@@ -69,7 +69,7 @@ Obecnie w usłudze Active Directory połączone nie obsługuje aplikacje platfor
 
 Podczas dodawania podłączonej usługi kreatora programu Visual Studio dodaje usługi Azure Active Directory i skojarzone odwołania do projektu. Pliki konfiguracji i plików kodu w projekcie są również zmodyfikowany w celu dodania pomocy technicznej dla usługi Azure AD. Określone zmiany, które powoduje, że program Visual Studio są zależne od typu projektu. Zobacz następujące artykuły, aby uzyskać szczegółowe informacje:
 
-- [Co się stało z projektu .NET MVC?](vs-active-directory-dotnet-what-happened.md)
+- [Co się stało z moim projektem .NET MVC?](vs-active-directory-dotnet-what-happened.md)
 - [Co się stało z projektu interfejsu API sieci Web?](vs-active-directory-webapi-what-happened.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
