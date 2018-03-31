@@ -1,5 +1,5 @@
 - name: Dokumentacja monitorowania na platformie Azure
-  href: management-overview-monitoring.md
+  href: index.md
 - name: Omówienie
   items:
     - name: Monitorowanie na platformie Azure

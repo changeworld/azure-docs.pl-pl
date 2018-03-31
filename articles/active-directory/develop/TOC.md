@@ -45,7 +45,7 @@
 ### [Debugowanie rejestracji jednokrotnej opartej na SAML](active-directory-saml-debugging.md)
 ### [Protokół SAML logowania jednokrotnego](active-directory-single-sign-on-protocol-reference.md)
 ### [Protokół SAML wylogowania jednokrotnego](active-directory-single-sign-out-protocol-reference.md)
-### [Tworzenie dzierżawy](active-directory-howto-tenant.md)
+## [Tworzenie dzierżawy](active-directory-howto-tenant.md)
 ## [Wytyczne dotyczące oznaczania marką](active-directory-branding-guidelines.md)
 ## Logowane jednokrotne dla aplikacji mobilnych i klasycznych
 ### [Włączanie logowania jednokrotnego w systemie Android](active-directory-sso-android.md)
