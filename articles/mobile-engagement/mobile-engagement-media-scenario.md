@@ -1,11 +1,11 @@
 ---
-title: "Azure implementacji usługi Mobile Engagement dla aplikacji z nośnika"
-description: "Nośnik scenariusz aplikacji do wdrożenia usługi Azure Mobile Engagement"
+title: Azure implementacji usługi Mobile Engagement dla aplikacji z nośnika
+description: Nośnik scenariusz aplikacji do wdrożenia usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48201cc8-4e04-485c-a8dc-d6406d23f3ed
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e5d4585b47a4ca26b81b7168aa499f25722415a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>Wdrożenie usługi Mobile Engagement z aplikacji z nośnika
-## <a name="overview"></a>Omówienie
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
+## <a name="overview"></a>Przegląd
 Jan jest kierownikiem przenośnych projektu firmy big nośnika. Niedawno on uruchomiony nowej aplikacji, która ma liczbę bardzo duże pobierania. On osiągnęła jego cele do pobrania, ale nadal jego wrócić na Investment(ROI) dla każdego użytkownika spełnia jego wymagania. 
 
 Jan zidentyfikował już dlaczego jego ROI jest zbyt niski. Użytkownicy często Zatrzymaj przy użyciu jego aplikacji po tylko 2 tygodnie, a większość z nich nie wrócić. Chce zwiększyć przechowywanie swoich aplikacji.
@@ -56,7 +60,7 @@ Na podstawie zaleceń IT przez zespół, następujące kluczowe wskaźniki wydaj
 Dla poszczególnych wskaźników on klasyfikuje dane wymagane i on rejestruje w jego podręcznika dotyczącego właściwego położenia.
 
 ## <a name="engagement-program-and-integration"></a>Program zaangażowania i integracja
-Teraz tego Jan zakończył określenie jego wskaźników KPI, przechodzi jego fazy strategia zaangażowania przez definiowanie 4 zaangażowania i ich cele:![][1]
+Teraz tego Jan zakończył określenie jego wskaźników KPI, przechodzi jego fazy strategia zaangażowania przez definiowanie 4 zaangażowania i ich cele: ![][1]
 
 Jan przejdzie głębiej przez wyszczególnieniem powiadomień wypychanych dla każdego programu. Powiadomienia wypychane są definiowane przez pięć elementów:
 

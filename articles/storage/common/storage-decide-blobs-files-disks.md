@@ -1,24 +1,18 @@
 ---
-title: "Kiedy należy użyć obiektów blob Azure, Azure plików lub dysków Azure"
-description: "Dowiedz się o różnych sposobach do przechowywania i udostępniania danych na platformie Azure, aby pomóc zdecydować technologii."
+title: Kiedy należy użyć obiektów blob Azure, Azure plików lub dysków Azure
+description: Dowiedz się o różnych sposobach do przechowywania i udostępniania danych na platformie Azure, aby pomóc zdecydować technologii.
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: b9c7913d1e95693a5ec72b24cf020928d67f0133
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy należy użyć obiektów blob Azure, Azure plików lub dysków Azure
 
@@ -46,10 +40,10 @@ W poniższej tabeli porównano plików Azure z obiektami blob Azure.
 |Łączność|Interfejsy API REST — na całym świecie|Interfejsy API REST - na całym świecie<br /><br /> Protokół SMB 2.1--w obrębie regionu<br /><br /> Protokół SMB 3.0 — na całym świecie|  
 |Punkty końcowe|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Katalogi|Prosty obszar nazw|Obiekty katalogu true|  
-|Uwzględniana wielkość liter nazwy|Uwzględnij wielkość liter|Bez uwzględniania wielkości liter, ale w przypadku zachowania|  
-|Pojemność|Do 500 TB kontenerów|Udziały plików 5 TB|  
-|Przepływność|Do 60 MB/s dla blokowych obiektów blob|Do 60 MB/s dla każdej udziału|  
-|Rozmiar obiektu|Maksymalnie 200 GB/blokowych obiektów blob|Maksymalnie 1 TB/pliku|  
+|Uwzględniana wielkość liter nazwy|Uwzględnianie wielkości liter|Bez uwzględniania wielkości liter, ale w przypadku zachowania|  
+|Pojemność|Do 500 TiB kontenerów|Udziały plików TiB 5|  
+|Przepływność|Do 60 MiB/s dla blokowych obiektów blob|Do 60 MiB/s na jedną akcję|  
+|Rozmiar obiektu|Do około 4,75 TiB dla blokowych obiektów blob|Maksymalnie 1 TiB dla każdego pliku|  
 |Pojemność rachunku|Oparte na zapisanych bajtów|Na podstawie rozmiaru plików|  
 |Biblioteki klienckie|Wiele języków|Wiele języków|  
   
@@ -68,9 +62,9 @@ W poniższej tabeli porównano plików Azure w przypadku dysków Azure.
 |Authentication|Wbudowane|Skonfiguruj za pomocą polecenie net use|  
 |Czyszczenie|Automatyczny|Ręczne|  
 |Dostęp za pomocą usługi REST|Nie można uzyskać dostępu do plików w ramach dysku VHD|Możliwy jest przechowywana w udziale plików|  
-|Maksymalny rozmiar|4 TB dysku|5 TB udostępnianie plików i 1 TB, w udziale pliku|  
+|Maksymalny rozmiar|4 TiB dysku|Udział plików TiB 5 i 1 TiB plik w udziale|  
 |Maksymalna liczba IOps 8KB|500 IOps|1000 IOps|  
-|Przepływność|Do 60 MB/s dla każdego dysku|Do 60 MB/s dla każdej udziału plików|  
+|Przepływność|Do 60 MiB/s na dysk|Do 60 MiB/s dla udziału plików|  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

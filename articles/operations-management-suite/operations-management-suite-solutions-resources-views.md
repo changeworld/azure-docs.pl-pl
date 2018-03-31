@@ -1,8 +1,8 @@
 ---
-title: "Widoki w rozwiązaniach do zarządzania Operations Management Suite (OMS) | Dokumentacja firmy Microsoft"
-description: "Zwykle zawiera co najmniej jeden widok do wizualizacji danych rozwiązania do zarządzania w Operations Management Suite (OMS).  W tym artykule opisano sposób eksportowania widoku utworzone przez projektanta widoku i dołączyć go w rozwiązaniu do zarządzania. "
+title: Widoki w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
+description: 'Rozwiązania do zarządzania zwykle zawiera co najmniej jeden widok do wizualizacji danych.  W tym artykule opisano sposób eksportowania widoku utworzone przez projektanta widoku i dołączyć go w rozwiązaniu do zarządzania. '
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b44763fe67b1c70c0b6ecdff73c32d8bb4fab3a4
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Widoki w rozwiązaniach do zarządzania Operations Management Suite (OMS) (wersja zapoznawcza)
+# <a name="views-in-management-solutions-preview"></a>Widoki w rozwiązaniach do zarządzania (wersja zapoznawcza)
 > [!NOTE]
-> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania w OMS, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.    
->
->
+> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.    
 
-[Rozwiązania do zarządzania w Operations Management Suite (OMS)](operations-management-suite-solutions.md) zwykle zawiera co najmniej jeden widok do wizualizacji danych.  W tym artykule opisano sposób eksportowania Widok utworzony przez [Widok projektanta](../log-analytics/log-analytics-view-designer.md) i uwzględnić go w rozwiązaniu do zarządzania.  
+
+[Rozwiązania do zarządzania](operations-management-suite-solutions.md) zwykle zawiera co najmniej jeden widok do wizualizacji danych.  W tym artykule opisano sposób eksportowania Widok utworzony przez [Widok projektanta](../log-analytics/log-analytics-view-designer.md) i uwzględnić go w rozwiązaniu do zarządzania.  
 
 > [!NOTE]
-> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [tworzenia rozwiązań do zarządzania w Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)
+> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](operations-management-suite-solutions-creating.md)
 >
 >
 
@@ -48,7 +47,7 @@ Poniżej znajdują się podstawowe kroki, aby dodać widok do rozwiązania.  Ka�
 ## <a name="export-the-view-to-a-file"></a>Wyeksportuj do pliku widoku
 Postępuj zgodnie z instrukcjami w [Projektant widoków analizy dziennika](../log-analytics/log-analytics-view-designer.md) można wyeksportować do pliku widoku.  Wyeksportowany plik zostanie w formacie JSON o takim samym [elementów jako plik rozwiązania](operations-management-suite-solutions-solution-file.md).  
 
-**Zasobów** element pliku widoku będzie miał zasobu o typie **Microsoft.OperationalInsights/workspaces** który reprezentuje obszar roboczy OMS.  Ten element będzie mieć podelement typu **widoków** który reprezentuje widok i zawiera szczegółowe konfiguracji.  Zostanie Kopiuj szczegóły tego elementu, a następnie skopiować go do rozwiązania.
+**Zasobów** element pliku widoku będzie miał zasobu o typie **Microsoft.OperationalInsights/workspaces** reprezentujący obszaru roboczego analizy dzienników.  Ten element będzie mieć podelement typu **widoków** który reprezentuje widok i zawiera szczegółowe konfiguracji.  Zostanie Kopiuj szczegóły tego elementu, a następnie skopiować go do rozwiązania.
 
 ## <a name="create-the-view-resource-in-the-solution"></a>Utwórz zasób widoku w rozwiązaniu
 Dodaj następujący zasób widoku do **zasobów** element pliku rozwiązania.  Używa zmiennych, które są opisane poniżej, że należy również dodać.  Należy pamiętać, że **pulpitu nawigacyjnego** i **OverviewTile** właściwości symboli zastępczych, które spowoduje zastąpienie odpowiednie właściwości z widoku eksportowanego pliku.
@@ -97,7 +96,7 @@ Wszystkie zasoby analizy dzienników zdefiniowane w szablonie usługi Resource M
 | Wersją z obszaru roboczego | Wersja interfejsu API | Zapytanie |
 |:---|:---|:---|
 | V1 (starsze)   | 2015-11-01-preview | Format starszej wersji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =  |
-| v2 (uaktualnienia) | 2015-11-01-preview | Format starszej wersji.  Konwertowana na format uaktualniony podczas instalacji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =<br>Przekonwertować: Zdarzenie &#124; gdzie EventLevelName == "Error"  |
+| v2 (uaktualnienia) | 2015-11-01-preview | Format starszej wersji.  Konwertowana na format uaktualniony podczas instalacji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =<br>Przekonwertować: zdarzenie &#124; gdzie EventLevelName == "Error"  |
 | v2 (uaktualnienia) | 2017-03-03-preview | Uaktualnij format. <br>Przykład: Zdarzenie &#124; gdzie EventLevelName == "Error"  |
 
 

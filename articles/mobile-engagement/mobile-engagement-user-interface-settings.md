@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement — ustawienia"
-description: "Dowiedz się, jak zarządzać globalne ustawienia aplikacji przy użyciu usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement — ustawienia
+description: Dowiedz się, jak zarządzać globalne ustawienia aplikacji przy użyciu usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31df9f151febcb7e5f0f2cd4a83053b3aac416a3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>Jak zarządzać globalne ustawienia aplikacji
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 **Ustawienia** menu opcji dostępnych dla aplikacji mogą być różne, w zależności od platformy aplikacji i uprawnienia można przyznać aplikacji. Ustawienia obejmują następujące elementy: szczegóły, projektów natywnych powiadomień wypychanych, szybkość wypychania, Tag (app-info) i nacisku komercyjnego. Opcji menu Tag (app-info) w sekcji Ustawienia można zarządzać przez aplikację (przy użyciu zestawu SDK) lub serwera (przy użyciu interfejsu API urządzenia). 
 
 > [!NOTE]
@@ -44,7 +48,7 @@ Aby uzyskać więcej informacji, zobacz: [dokumentacji interfejsu użytkownika �
 
   ![settings3][48]
 
-## <a name="native-push"></a>Natywnych powiadomień wypychanych
+## <a name="native-push"></a>Wypychanie natywne
 Można zarejestrować nowego certyfikatu lub Usuń, a istniejący certyfikat do użycia z natywnych powiadomień wypychanych. Natywnych powiadomień wypychanych umożliwia usługi Azure Mobile Engagement do aplikacji w dowolnym momencie, nawet gdy nie jest uruchomiona. 
 
 Po podaniu poświadczeń lub certyfikaty dla co najmniej jedną usługę natywnych powiadomień wypychanych, możesz wybrać "W dowolnym momencie" podczas tworzenia osiągnąć kampanii i użyj parametru "zgłaszający" w interfejsie API PUSH.
@@ -90,7 +94,7 @@ Pokazuje bieżący szybkość wypychania dla aplikacji i pozwala definiować szy
 ## <a name="commercial-pressure"></a>Nacisku komercyjnego
 ![settings12][57]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Pojęcia][Link 6]
 * [Usługa Przewodnik rozwiązywania problemów][Link 24]
 

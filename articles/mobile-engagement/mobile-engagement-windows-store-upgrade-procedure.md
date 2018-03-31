@@ -1,11 +1,11 @@
 ---
 title: Procedury uaktualniania uniwersalnych aplikacji systemu Windows SDK
-description: "Procedury uaktualniania systemu Windows Universal SDK aplikacji dla usługi Azure Mobile Engagement"
+description: Procedury uaktualniania systemu Windows Universal SDK aplikacji dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4c898175-2cd6-43db-b350-bb408332f24d
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 2bd2329026057a4a23295880d0d304e4e8effd1c
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a9d6cbcdf353f7eea991c344c3efe65378abe336
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Procedury uaktualniania uniwersalnych aplikacji systemu Windows SDK
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Jeśli już jest zintegrowany starszą wersję programu zaangażowania do aplikacji, należy wziąć pod uwagę następujące kwestie, podczas uaktualniania zestawu SDK.
 
 Należy wykonać kilka procedur, jeśli pominięte kilka wersji zestawu SDK. Na przykład w przypadku migrowania z 0.10.1 do 0.11.0, należy najpierw wykonać procedurę "od 0.9.0 do 0.10.1" następnie procedury "od 0.10.1 do 0.11.0".
@@ -185,7 +189,7 @@ W przypadku migracji z wcześniejszej wersji, przejrzyj witrynę sieci web Cappt
 ### <a name="nuget-package"></a>Pakiet Nuget
 Zastąp **Capptain.WindowsPhone** przez **MicrosoftAzure.MobileEngagement** pakietu Nuget.
 
-### <a name="applying-mobile-engagement"></a>Stosowanie usługi Mobile Engagement
+### <a name="applying-mobile-engagement"></a>Applying Mobile Engagement
 Zestaw SDK używany jest termin `Engagement`. Musisz zaktualizować projektu do dopasowania tej zmiany.
 
 Konieczne jest odinstalowanie bieżącego Capptain pakietu nuget. Należy wziąć pod uwagę, że wszystkie zmiany w folderze Capptain zasoby zostaną usunięte. Jeśli chcesz zachować te pliki, a następnie utworzyć ich kopię.

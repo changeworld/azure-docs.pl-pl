@@ -1,10 +1,10 @@
 ---
-title: "Wykrywanie anomalii w przewodniku użytkowania platformy Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Za pomocą usługi stream analytics i wykrywania anomalii uczenia maszynowego."
+title: Wykrywanie anomalii w przewodniku użytkowania platformy Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Za pomocą usługi stream analytics i wykrywania anomalii uczenia maszynowego.
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: dubansal
-manager: jhubbard
+manager: katicad
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/12/2018
 ms.author: dubansal
-ms.openlocfilehash: d8762ea608afed707d41a3c0a1a8725457a0e4dc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9d301f8586038f635ee97a3acdc9c4dc8a2bbcc6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w Azure Stream Analytics
 
@@ -45,7 +45,7 @@ Przy użyciu operatora AnomalyDetection, należy określić **Limit Duration** k
 
 ### <a name="arguments"></a>Argumenty
 
-* **scalar_expression** — wyrażenie skalarne, w którym odbywa się wykrywania anomalii. Dozwolone wartości dla tego parametru to Float lub typy danych Bigint to zwracany pojedynczą wartość (skalarną). Wyrażenia z symbolami wieloznacznymi  **\***  jest niedozwolone. Wyrażenie skalarne nie może zawierać inne funkcje analityczne lub funkcji zewnętrznych. 
+* **scalar_expression** — wyrażenie skalarne, w którym odbywa się wykrywania anomalii. Dozwolone wartości dla tego parametru to Float lub typy danych Bigint to zwracany pojedynczą wartość (skalarną). Wyrażenia z symbolami wieloznacznymi **\*** jest niedozwolone. Wyrażenie skalarne nie może zawierać inne funkcje analityczne lub funkcji zewnętrznych. 
 
 * **partition_by_clause** — `PARTITION BY <partition key>` klauzuli dzieli uczenie i szkolenia w osobnych partycji. Innymi słowy, oddzielne modelu będzie służyć za wartości `<partition key>` i tylko zdarzenia z daną wartością mają być używane do nauki i szkolenia w tym modelu. Na przykład następujące pociągu zapytania i wyniki a odczytu względem innych odczyty tylko tej samej czujnika:
 

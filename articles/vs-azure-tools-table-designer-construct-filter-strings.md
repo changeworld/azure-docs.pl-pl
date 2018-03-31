@@ -1,11 +1,11 @@
 ---
-title: "Konstruowanie ciągach filtru dla projektanta tabel | Dokumentacja firmy Microsoft"
-description: "Konstruowanie ciągach filtru dla projektanta tabel"
+title: Konstruowanie ciągach filtru dla projektanta tabel | Dokumentacja firmy Microsoft
+description: Konstruowanie ciągach filtru dla projektanta tabel
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.service: storage
 ms.devlang: multiple
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 722052e351062efba85eb143b2ea7bd0136002a0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>Konstruowanie ciągach filtru dla projektanta tabel
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Można filtrować dane w tabeli platformy Azure, która jest wyświetlana w programie Visual Studio **projektanta tabel**, utworzyć ciąg filtru i wprowadzić go w polu filtru. Składnia ciągu filtru jest definiowana za pomocą usługi danych WCF i jest podobna do klauzuli SQL WHERE, ale są wysyłane do usługi tabel za pomocą żądania HTTP. **Projektanta tabel** obsługują kodowanie odpowiednie dla Ciebie, tak aby filtrować wartość żądanej właściwości, należy tylko wprowadź nazwę właściwości, operator porównania wartości kryteriów i opcjonalnie Boolean operatora w polu filtru. Nie należy do uwzględnienia opcji zapytania $filter, jak w przypadku, jeśli zostały konstruuje adres URL do badania tabeli za pomocą [dokumentacja interfejsu API REST usług magazynu](http://go.microsoft.com/fwlink/p/?LinkId=400447).
 
 Usługi danych WCF są oparte na [Open Data Protocol](http://go.microsoft.com/fwlink/p/?LinkId=214805) (OData). Szczegółowe informacje na temat opcji zapytania filtru systemu (**$filter**), zobacz [specyfikacji Konwencji identyfikatora URI OData](http://go.microsoft.com/fwlink/p/?LinkId=214806).
@@ -31,9 +31,9 @@ Obsługiwane są następujące operatory logiczne dla wszystkich typów właści
 
 | Operator logiczny | Opis | Przykład ciąg filtru |
 | --- | --- | --- |
-| EQ |Równości |Eq Miasto "Redmond" |
+| eq |Równości |Eq Miasto "Redmond" |
 | gt |Więcej niż |Cena gt 20 |
-| GE |Większe lub równe |Cena ge 10 |
+| GE |Większe niż lub równe |Cena ge 10 |
 | lt |Mniej niż |Cena lt 20 |
 | le |Mniejsze niż lub równe |Cena le 100 |
 | ne |Nie ma wartości |Ne Miasto "Londyn" |
@@ -44,8 +44,8 @@ Obsługiwane są następujące operatory logiczne dla wszystkich typów właści
 Podczas konstruowania ciąg filtru, ważne są następujące reguły:
 
 * Operatory logiczne umożliwia porównanie właściwości na wartość. Należy pamiętać, że nie jest możliwe do porównania właściwości na wartość dynamiczną; po jednej stronie wyrażenia musi być stałą.
-* Wszystkie części ciąg filtru jest rozróżniana wielkość liter.
-* Stała wartość musi być tego samego typu danych jako wartość właściwości w kolejności filtru do zwrócenia prawidłowe wyniki. Aby uzyskać więcej informacji na temat typów obsługiwanych właściwości zobacz [opis modelu danych usługi tabel](http://go.microsoft.com/fwlink/p/?LinkId=400448).
+* We wszystkich częściach ciągu filtru jest rozróżniana wielkość liter.
+* Wartość stała musi mieć ten sam typ danych co właściwość, aby filtr zwracał prawidłowe wyniki. Aby uzyskać szczegółowe informacje na temat obsługiwanych typów właściwości, zobacz [Omówienie modelu danych usługi Table service](http://go.microsoft.com/fwlink/p/?LinkId=400448).
 
 ## <a name="filtering-on-string-properties"></a>Filtrowanie właściwości ciągu
 Podczas filtrowania na właściwości ciągów, ujmij stała ciągu w pojedynczy cudzysłów.

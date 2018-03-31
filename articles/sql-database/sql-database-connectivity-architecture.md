@@ -1,6 +1,6 @@
 ---
-title: "Architektura bazy danych SQL Azure w łączności | Dokumentacja firmy Microsoft"
-description: "W tym dokumencie opisano Azure SQLDB łączności architekturę z platformy Azure lub z poza platformą Azure."
+title: Architektura bazy danych SQL Azure w łączności | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano Azure SQLDB łączności architekturę z platformy Azure lub z poza platformą Azure.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 98784b2d1ede5354c965e483b34b5fcb323394aa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7dc584c8fa9f4452b2bd9288df86492399c036c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura połączenia bazy danych Azure SQL 
 
@@ -91,7 +91,7 @@ W poniższej tabeli wymieniono głównych i dodatkowych adresów IP bramy bazy d
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Zmień zasady połączenia bazy danych SQL Azure
 
-Aby zmienić zasady połączenia bazy danych SQL Azure dla serwera bazy danych SQL Azure, użyj [interfejsu API REST](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+Aby zmienić zasady połączenia bazy danych SQL Azure dla serwera bazy danych SQL Azure, użyj [zasad Poł](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) polecenia.
 
 - Jeśli ustawiono zasady połączenia **Proxy**, wszystkich sieci przepływu pakietów za pośrednictwem bramy bazy danych SQL Azure. Dla tego ustawienia, należy zezwolić na ruch wychodzący do IP bramy bazy danych SQL Azure. Przy użyciu ustawienie **Proxy** ma opóźnienia więcej niż ustawienie **przekierowania**.
 - Jeśli to ustawienie zasad połączenia **przekierowania**, wszystkich sieci przepływu pakietów bezpośrednio do serwera proxy oprogramowania pośredniczącego. Dla tego ustawienia, należy zezwolić na ruch wychodzący do wielu adresów IP.
@@ -181,6 +181,6 @@ az resource update --ids $id --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać informacje dotyczące zmieniania bazy danych SQL Azure zasady połączenia dla serwera bazy danych SQL Azure, zobacz [tworzenia lub aktualizacji zasady połączenia dla serwera za pomocą interfejsu API REST](https://msdn.microsoft.com/library/azure/mt604439.aspx).
+- Aby uzyskać informacje dotyczące zmieniania bazy danych SQL Azure zasady połączenia dla serwera bazy danych SQL Azure, zobacz [Poł zasad](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
 - Uzyskać informacji dotyczących zachowania połączenia bazy danych SQL Azure dla klientów używających ADO.NET 4.5 lub nowszej wersji, zobacz [porty inne niż 1433 dla ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Informacje ogólne programowanie ogólne aplikacji, zobacz [Omówienie projektowania aplikacji bazy danych SQL](sql-database-develop-overview.md).

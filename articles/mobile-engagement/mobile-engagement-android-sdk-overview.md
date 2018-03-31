@@ -1,11 +1,11 @@
 ---
-title: "Integracja zestawu SDK systemu android dla usługi Azure Mobile Engagement"
-description: "Opisuje sposób integrowania zestawu SDK usługi Azure Mobile Engagement w aplikacji systemu Android"
+title: Integracja zestawu SDK systemu android dla usługi Azure Mobile Engagement
+description: Opisuje sposób integrowania zestawu SDK usługi Azure Mobile Engagement w aplikacji systemu Android
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a91ed04f-f3ce-4692-a6dd-b56a28d7dee8
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 35935e911f1f17989beb71978396c6d1b7d601d6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d02bcfc7521df9c18edc534e679e597ad2328e6f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="android-sdk-integration-for-azure-mobile-engagement"></a>Integracja zestawu SDK systemu android dla usługi Azure Mobile Engagement
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Platforma uniwersalna systemu Windows](mobile-engagement-windows-store-sdk-overview.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-sdk-overview.md)

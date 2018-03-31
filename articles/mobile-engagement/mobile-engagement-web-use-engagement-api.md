@@ -1,11 +1,11 @@
 ---
-title: "Interfejsy API zestawu SDK sieci Web usługi Azure Mobile Engagement | Dokumentacja firmy Microsoft"
-description: "Najnowsze aktualizacje i procedury dotyczące zestawu SDK sieci Web dla usługi Azure Mobile Engagement"
+title: Interfejsy API zestawu SDK sieci Web usługi Azure Mobile Engagement | Dokumentacja firmy Microsoft
+description: Najnowsze aktualizacje i procedury dotyczące zestawu SDK sieci Web dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8a87d5ac-d8b7-4a0d-bdee-414dbcc561b2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d2ae75b384b60d0383c1682a00a4fc0d19d0f43
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Użyj interfejsu API Azure Mobile Engagement w aplikacji sieci web
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Ten dokument jest dodaną do dokumentu, który informuje o sposobie do [zintegrowana usługa Mobile Engagement w aplikacji sieci web](mobile-engagement-web-integrate-engagement.md). Zapewnia on szczegółowe informacje o raport statystyk aplikacji przy użyciu interfejsu API Azure Mobile Engagement.
 
 Interfejs API Mobile Engagement jest zapewniana przez `engagement.agent` obiektu. Domyślny zestaw SDK usługi Azure Mobile Engagement Web alias jest `engagement`. Można zmienić ten alias z konfiguracji zestawu SDK.

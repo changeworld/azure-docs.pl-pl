@@ -1,11 +1,11 @@
 ---
-title: "Za pomocą skryptów programu Windows PowerShell do opublikowania dla deweloperów i środowisk testowych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak za pomocą skryptów środowiska Windows PowerShell z programu Visual Studio do publikowania do programowania i testowania środowisk."
+title: Za pomocą skryptów programu Windows PowerShell do opublikowania dla deweloperów i środowisk testowych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak za pomocą skryptów środowiska Windows PowerShell z programu Visual Studio do publikowania do programowania i testowania środowisk.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5fff1301-5469-4d97-be88-c85c30f837c1
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 4e9409aac836a60e7ea01261840c084ff09e954e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 58d1c8398e626544a7b02198ec0431203aedcc81
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Używanie skryptów programu Windows PowerShell w celu publikowania w środowisku deweloperskim i testowym
 
@@ -251,7 +251,7 @@ Aby zautomatyzować tworzenie projektu, Dodaj kod, który wywołuje MSBuild, aby
         #Write a function to build and package your web application
     ```
 
-    Aby utworzyć aplikację sieci web, należy użyć MsBuild.exe. Aby uzyskać pomoc, zobacz MSBuild wiersza polecenia pod adresem: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
+    Aby utworzyć aplikację sieci web, należy użyć MsBuild.exe. Aby uzyskać Pomoc Zobacz MSBuild wiersza polecenia pod adresem: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
 
     ```powershell
     Write-VerboseWithTime 'Build-WebDeployPackage: Start'
@@ -313,40 +313,40 @@ Aby uzyskać pomoc dotyczącą funkcje, których można użyć w wierszu polecen
 
 | Nazwa funkcji | Opis |
 | --- | --- |
-| Dodaj AzureSQLDatabase |Tworzy nową bazę danych Azure SQL. |
-| Dodaj AzureSQLDatabases |Tworzy baz danych Azure SQL z wartości w pliku konfiguracji JSON, który generuje Visual Studio. |
-| Dodaj AzureVM |Tworzy maszynę wirtualną platformy Azure i zwraca adres URL wdrożonej maszyny wirtualnej. Funkcja konfiguruje wymagania wstępne, a następnie wywołuje **AzureVM nowy** funkcji (moduł Azure), aby utworzyć nową maszynę wirtualną. |
-| Dodaj AzureVMEndpoints |Dodaje nowe wejściowych punktów końcowych do maszyny wirtualnej i przywraca maszynę wirtualną z nowego punktu końcowego. |
-| Dodaj AzureVMStorage |Tworzy nowe konto magazynu Azure w bieżącej subskrypcji. Nazwa konta zaczyna się od "devtest", po której następują unikatowy ciąg alfanumeryczny. Funkcja zwraca nazwę nowego konta magazynu. Określ lokalizację lub grupę koligacji dla nowego konta magazynu. |
-| Dodaj AzureWebsite |Tworzy witrynę sieci Web o określonej nazwie i lokalizacji. Ta funkcja wymaga **AzureWebsite nowy** funkcji w module usługi Azure. Jeśli subskrypcja nie zawiera już witryna sieci Web o określonej nazwie, ta funkcja tworzy witryny sieci Web i zwraca obiekt witryny sieci Web. W przeciwnym razie zwraca `$null`. |
+| Add-AzureSQLDatabase |Tworzy nową bazę danych Azure SQL. |
+| Add-AzureSQLDatabases |Tworzy baz danych Azure SQL z wartości w pliku konfiguracji JSON, który generuje Visual Studio. |
+| Add-AzureVM |Tworzy maszynę wirtualną platformy Azure i zwraca adres URL wdrożonej maszyny wirtualnej. Funkcja konfiguruje wymagania wstępne, a następnie wywołuje **AzureVM nowy** funkcji (moduł Azure), aby utworzyć nową maszynę wirtualną. |
+| Add-AzureVMEndpoints |Dodaje nowe wejściowych punktów końcowych do maszyny wirtualnej i przywraca maszynę wirtualną z nowego punktu końcowego. |
+| Add-AzureVMStorage |Tworzy nowe konto magazynu Azure w bieżącej subskrypcji. Nazwa konta zaczyna się od "devtest", po której następują unikatowy ciąg alfanumeryczny. Funkcja zwraca nazwę nowego konta magazynu. Określ lokalizację lub grupę koligacji dla nowego konta magazynu. |
+| Add-AzureWebsite |Tworzy witrynę sieci Web o określonej nazwie i lokalizacji. Ta funkcja wymaga **AzureWebsite nowy** funkcji w module usługi Azure. Jeśli subskrypcja nie zawiera już witryna sieci Web o określonej nazwie, ta funkcja tworzy witryny sieci Web i zwraca obiekt witryny sieci Web. W przeciwnym razie zwraca `$null`. |
 | Subskrypcji kopii zapasowej |Zapisuje bieżący subskrypcji platformy Azure w `$Script:originalSubscription` zmiennej w zakresie skryptu. Ta funkcja jest zapisywany bieżącej subskrypcji platformy Azure (uzyskanych przez `Get-AzureSubscription -Current`) i jego konta magazynu i subskrypcji, która zostanie zmieniona przez ten skrypt (przechowywana w zmiennej `$UserSpecifiedSubscription`), a jego konto magazynu w zakresie skryptu. Po zapisaniu wartości, można użyć funkcji, takich jak `Restore-Subscription`, aby przywrócić oryginalne bieżącego konta subskrypcji i magazynu bieżący stan, jeśli bieżący stan został zmieniony. |
-| Znajdź AzureVM |Pobiera określonej maszyny wirtualnej platformy Azure. |
-| Format DevTestMessageWithTime |Dołącza datę i godzinę do wiadomości. Ta funkcja jest przeznaczona dla komunikatów zapisywanych strumienie błąd i pełne. |
+| Find-AzureVM |Pobiera określonej maszyny wirtualnej platformy Azure. |
+| Format-DevTestMessageWithTime |Dołącza datę i godzinę do wiadomości. Ta funkcja jest przeznaczona dla komunikatów zapisywanych strumienie błąd i pełne. |
 | Get-AzureSQLDatabaseConnectionString |Zbierane parametry połączenia do łączenia z bazą danych Azure SQL. |
 | Get-AzureVMStorage |Zwraca nazwę pierwsze konto magazynu przy użyciu wzorca nazwy "devtest*" (bez uwzględniania wielkości liter) w określonej lokalizacji lub grupie koligacji. Jeśli "devtest*" konta magazynu jest niezgodne lokalizacja lub grupa koligacji, funkcja ignoruje go. Określ lokalizację lub grupę koligacji. |
 | Get-MSDeployCmd |Zwraca polecenie do uruchomienia narzędzia MsDeploy.exe. |
-| Nowe AzureVMEnvironment |Wyszukuje lub tworzy maszynę wirtualną w subskrypcji, która odpowiada wartości w pliku konfiguracji JSON. |
-| Publikowanie WebPackage |Używa MsDeploy.exe i sieci web publikowania pakietu. Plik zip do wdrażania zasobów do witryny sieci Web. Ta funkcja nie generuje żadnego wyniku. Jeśli wywołanie MSDeploy.exe zakończy się niepowodzeniem, funkcja zwraca wyjątek. Aby uzyskać bardziej szczegółowe dane wyjściowe, należy użyć **-Verbose** opcji. |
-| Publikowanie WebPackageToVM |Sprawdza, czy wartości parametrów, a następnie wywołuje **WebPackage publikowania** funkcji. |
-| ConfigFile odczytu |Sprawdza poprawność pliku konfiguracji JSON i zwraca tablicy skrótów, wybranych wartości. |
+| New-AzureVMEnvironment |Wyszukuje lub tworzy maszynę wirtualną w subskrypcji, która odpowiada wartości w pliku konfiguracji JSON. |
+| Publish-WebPackage |Używa MsDeploy.exe i sieci web publikowania pakietu. Plik zip do wdrażania zasobów do witryny sieci Web. Ta funkcja nie generuje żadnego wyniku. Jeśli wywołanie MSDeploy.exe zakończy się niepowodzeniem, funkcja zwraca wyjątek. Aby uzyskać bardziej szczegółowe dane wyjściowe, należy użyć **-Verbose** opcji. |
+| Publish-WebPackageToVM |Sprawdza, czy wartości parametrów, a następnie wywołuje **WebPackage publikowania** funkcji. |
+| Read-ConfigFile |Sprawdza poprawność pliku konfiguracji JSON i zwraca tablicy skrótów, wybranych wartości. |
 | Przywracanie subskrypcji |Resetuje bieżącej subskrypcji do pierwotnej subskrypcji. |
-| AzureModule testu |Zwraca `$true` Jeśli wersja zainstalowanego modułu Azure jest 0.7.4 lub nowszym. Zwraca `$false` Jeśli moduł nie jest zainstalowany lub jest starsza wersja. Ta funkcja nie ma parametrów. |
-| AzureModuleVersion testu |Zwraca `$true` w przypadku wersji modułu Azure 0.7.4 lub nowszym. Zwraca `$false` Jeśli moduł nie jest zainstalowany lub jest starsza wersja. Ta funkcja nie ma parametrów. |
-| HttpsUrl testu |Konwertuje wejściowy adres URL do obiektu System.Uri. Zwraca `$True` jest bezwzględny adres URL, jeśli jego schemat jest typu https. Zwraca `$false` adres URL jest względny, jego schematu nie HTTPS, czy ciąg wejściowy nie można przekonwertować na adres URL. |
-| Element członkowski testu |Zwraca `$true` Jeśli właściwość lub metoda jest elementem członkowskim obiektu. W przeciwnym razie zwraca `$false`. |
+| Test-AzureModule |Zwraca `$true` Jeśli wersja zainstalowanego modułu Azure jest 0.7.4 lub nowszym. Zwraca `$false` Jeśli moduł nie jest zainstalowany lub jest starsza wersja. Ta funkcja nie ma parametrów. |
+| Test-AzureModuleVersion |Zwraca `$true` w przypadku wersji modułu Azure 0.7.4 lub nowszym. Zwraca `$false` Jeśli moduł nie jest zainstalowany lub jest starsza wersja. Ta funkcja nie ma parametrów. |
+| Test-HttpsUrl |Konwertuje wejściowy adres URL do obiektu System.Uri. Zwraca `$True` jest bezwzględny adres URL, jeśli jego schemat jest typu https. Zwraca `$false` adres URL jest względny, jego schematu nie HTTPS, czy ciąg wejściowy nie można przekonwertować na adres URL. |
+| Test-Member |Zwraca `$true` Jeśli właściwość lub metoda jest elementem członkowskim obiektu. W przeciwnym razie zwraca `$false`. |
 | ErrorWithTime zapisu |Zapisuje komunikat o błędzie z prefiksem bieżącego czasu. Ta funkcja wymaga **Format DevTestMessageWithTime** funkcji dołączy czasu przed zapisaniem komunikat do strumienia błędów. |
-| HostWithTime zapisu |Zapisuje komunikat w programie hosta (**Write-Host**) i jest poprzedzony prefiksem bieżącego czasu. Efekt zapisywanie w programie hosta może być różna. Większość programów obsługujących środowiska Windows PowerShell zapisu te komunikaty do wyjścia standardowego. |
-| VerboseWithTime zapisu |Zapisuje komunikat trybu informacji pełnej prefiksem bieżącego czasu. Ponieważ wywołuje **Write-Verbose**, komunikat jest wyświetlany tylko wtedy, gdy skrypt jest uruchamiany z **pełne** parametru lub gdy **VerbosePreference** ma ustawioną wartość preferencji **Kontynuuj**. |
+| Write-HostWithTime |Zapisuje komunikat w programie hosta (**Write-Host**) i jest poprzedzony prefiksem bieżącego czasu. Efekt zapisywanie w programie hosta może być różna. Większość programów obsługujących środowiska Windows PowerShell zapisu te komunikaty do wyjścia standardowego. |
+| Write-VerboseWithTime |Zapisuje komunikat trybu informacji pełnej prefiksem bieżącego czasu. Ponieważ wywołuje **Write-Verbose**, komunikat jest wyświetlany tylko wtedy, gdy skrypt jest uruchamiany z **pełne** parametru lub gdy **VerbosePreference** ma ustawioną wartość preferencji **Kontynuuj**. |
 
-**Publikowanie aplikacji sieci Web**
+**Publish-WebApplication**
 
 | Nazwa funkcji | Opis |
 | --- | --- |
-| Nowe AzureWebApplicationEnvironment |Tworzy zasobów platformy Azure, takich jak witryny sieci Web lub maszyny wirtualnej. |
-| Nowe WebDeployPackage |Ta funkcja nie jest zaimplementowana. Można dodać polecenia w tej funkcji, aby skompilować projekt. |
-| Publikowanie AzureWebApplication |Publikowanie aplikacji sieci web na platformie Azure. |
-| Publikowanie aplikacji sieci Web |Tworzy i wdraża aplikacje sieci Web, maszyn wirtualnych, baz danych i konta magazynu dla projektu sieci web programu Visual Studio. |
+| New-AzureWebApplicationEnvironment |Tworzy zasobów platformy Azure, takich jak witryny sieci Web lub maszyny wirtualnej. |
+| New-WebDeployPackage |Ta funkcja nie jest zaimplementowana. Można dodać polecenia w tej funkcji, aby skompilować projekt. |
+| Publish-AzureWebApplication |Publikowanie aplikacji sieci web na platformie Azure. |
+| Publish-WebApplication |Tworzy i wdraża aplikacje sieci Web, maszyn wirtualnych, baz danych i konta magazynu dla projektu sieci web programu Visual Studio. |
 | Test-WebApplication |Ta funkcja nie jest zaimplementowana. W tej funkcji, aby przetestować aplikację, można dodać polecenia. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat skryptów środowiska PowerShell, odczytując [skryptów programu Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx) zobaczyć inne skrypty programu PowerShell systemu Azure w [Centrum skryptów](https://azure.microsoft.com/documentation/scripts/).

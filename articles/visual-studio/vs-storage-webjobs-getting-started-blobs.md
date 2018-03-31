@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z obiektu blob magazynu i Visual Studio połączone usługi (projekty zadania WebJob) | Dokumentacja firmy Microsoft"
-description: "Jak rozpocząć korzystanie z magazynu obiektów Blob projektu zadania WebJob, po nawiązaniu połączenia z magazynem platformy Azure przy użyciu programu Visual Studio połączone usługi."
+title: Rozpoczynanie pracy z obiektu blob magazynu i Visual Studio połączone usługi (projekty zadania WebJob) | Dokumentacja firmy Microsoft
+description: Jak rozpocząć korzystanie z magazynu obiektów Blob projektu zadania WebJob, po nawiązaniu połączenia z magazynem platformy Azure przy użyciu programu Visual Studio połączone usługi.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.service: storage
 ms.workload: web
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: 7d683f950e8847a18f38158a8f8727b1274fc711
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 60b25dd987e1b959a850614bf375ae434f2c0815
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Wprowadzenie do obiektów Blob platformy Azure magazynu i Visual Studio połączone usługi (zadania WebJob projekty)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Ten artykuł zawiera C# przykłady kodu, których pokazano, jak do wyzwalania procesu podczas tworzenia lub aktualizowania obiektów blob platformy Azure. Kod przykłady użycia [zestaw SDK zadań Webjob](https://github.com/Azure/azure-webjobs-sdk/wiki) wersja 1.x. Podczas dodawania konta magazynu do projektu zadania WebJob za pomocą programu Visual Studio **dodać usług połączonych** okna dialogowego, odpowiedniego pakietu NuGet usługi Magazyn Azure jest zainstalowany, odpowiednie odwołania .NET są dodawane do projektu i parametry połączenia dla konta magazynu są aktualizowane w pliku App.config.
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Sposób włączania funkcji podczas tworzenia lub aktualizowania obiektu blob
@@ -79,9 +79,9 @@ Poniższy przykładowy kod powoduje zmianę rozszerzenia pliku jako kopiowania o
 ## <a name="types-that-you-can-bind-to-blobs"></a>Typy, które można powiązać obiekty BLOB
 Można użyć **BlobTrigger** atrybutu w następujących typów:
 
-* **ciąg**
+* **Ciąg**
 * **TextReader**
-* **Strumień**
+* **Stream**
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
@@ -147,8 +147,8 @@ Komunikat z kolejki skażone obiektów blob jest obiekt JSON, który zawiera nas
 
 * FunctionId (w formacie *{Nazwa zadania WebJob}*. Funkcje. *{Nazwa funkcji}*, na przykład: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" lub "PageBlob")
-* Właściwość ContainerName
-* Element BlobName
+* ContainerName
+* BlobName
 * Element ETag (identyfikator wersji obiektów blob, na przykład: "0x8D1DC6E70A277EF")
 
 W poniższym przykładzie kodu **CopyBlob** funkcja ma kod powodujący niepowodzenie za każdym razem, gdy jest ona wywoływana. Po zestaw SDK wymaga on maksymalnej liczby ponownych prób, wiadomość jest tworzony w kolejce skażone obiektów blob, a ten komunikat jest przetwarzany przez **LogPoisonBlob** funkcji.
@@ -217,6 +217,6 @@ Tematy pokrewne omówione w tym artykule są następujące:
 * Wyzwalanie funkcji ręcznie
 * Zapisywanie dzienników
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule udostępnił przykłady kodu, które przedstawiają sposób obsługi typowe scenariusze dotyczące pracy z obiektami blob Azure. Aby uzyskać więcej informacji o sposobie używania zadań Webjob Azure i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji zadań Webjob Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 

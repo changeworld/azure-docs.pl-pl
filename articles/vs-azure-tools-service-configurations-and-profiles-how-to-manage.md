@@ -1,11 +1,11 @@
 ---
-title: "Jak zarządzać konfiguracje usług i profile | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak pracować z plikami konfiguracji usługi konfiguracji i profile | które ustawienia w środowiskach wdrożenia są przechowywane i ustawienia publikowania dla usługi w chmurze."
+title: Jak zarządzać konfiguracje usług i profile | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pracować z plikami konfiguracji usługi konfiguracji i profile | które ustawienia w środowiskach wdrożenia są przechowywane i ustawienia publikowania dla usługi w chmurze.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 7da8c551-fb06-4057-b5c7-c77f4b39d803
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/11/2017
-ms.author: kraigb
-ms.openlocfilehash: af1205f8c3e477d123d4835c80a68b3afd6ee5ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 411daa8892bee1858c6930dfd8b2b811f164ec5d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>Jak zarządzać konfiguracje usług i profili
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Po opublikowaniu usługi w chmurze programu Visual Studio przechowuje informacje o konfiguracji w dwa rodzaje pliki konfiguracji: usługa konfiguracji i profilów. Konfiguracja usługi (.cscfg pliki) przechowywania ustawień dla środowisk wdrażania dla usługi w chmurze Azure. Azure korzysta z tych plików konfiguracji podczas zarządzania usługi w chmurze. Z drugiej strony profile (pliki .azurePubxml) magazynu ustawienia publikowania dla usługi w chmurze. Te ustawienia są rekord wybierz po Kreator publikowania i są używane lokalnie przez program Visual Studio. W tym temacie wyjaśniono, jak pracować z obu typów plików konfiguracyjnych.
 
 ## <a name="service-configurations"></a>Konfiguracja usługi
@@ -99,6 +99,6 @@ Po uruchomieniu kreatora po raz pierwszy, tworzony jest profil domyślny. Visual
 4. Po zakończeniu zmiany ustawień, wybierz **dalej** aby powrócić do **ustawienia** strony.
 5. (Opcjonalnie) zaznacz **publikowania** publikowania usługi w chmurze przy użyciu nowych ustawień. Jeśli nie chcesz publikować w tej chwili usługi w chmurze, a następnie zamknij Kreatora publikacji, Visual Studio zapyta, czy chcesz zapisać zmiany w profilu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej o konfigurowaniu innych części projektu platformy Azure w programie Visual Studio, zobacz [Konfigurowanie projektu platformy Azure](http://go.microsoft.com/fwlink/p/?LinkID=623075)
 

@@ -1,12 +1,12 @@
 ---
-title: "Dodawanie danych wejściowych do zadań usługi Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak podłączenie do zadania usługi analiza strumienia jako dane wejściowe z usługi Event Hubs lub odwołanie do danych z magazynu blogu strumieniowe źródła danych."
-keywords: "danych wejściowych, przesyłanie strumieniowe danych"
-documentationcenter: 
+title: Dodawanie danych wejściowych do zadań usługi Stream Analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak podłączenie do zadania usługi analiza strumienia jako dane wejściowe z usługi Event Hubs lub odwołanie do danych z magazynu blogu strumieniowe źródła danych.
+keywords: danych wejściowych, przesyłanie strumieniowe danych
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: 
+author: jseb225
+manager: ryanw
+editor: ''
 ms.assetid: 9e59bd24-2a80-4ecb-b6b2-309a07c70bcd
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 7a4eb8642a0496e126b79724b4048bae7cc15a68
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: jeanb
+ms.openlocfilehash: 441cc2d1c6d2cdc6ce4bbd14306ec8ae71c38c55
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Dodaj dane przesyłane strumieniowo danych wejściowych lub odwołanie do zadania usługi analiza strumienia
 Dowiedz się, jak podłączenie do zadania usługi analiza strumienia jako dane wejściowe z usługi Event Hubs lub odwołanie do danych z magazynu obiektów Blob strumieniowe źródła danych.
@@ -75,7 +75,7 @@ Aby dodać dane wejściowe do zadania usługi analiza strumienia:
 ## <a name="get-help-with-streaming-data-inputs"></a>Uzyskaj pomoc dotyczącą strumienia danych wejściowych danych
 Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

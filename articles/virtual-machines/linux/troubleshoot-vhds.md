@@ -1,21 +1,21 @@
 ---
-title: "Rozwiązywanie problemów z dołączonych dysków VHD na maszynach wirtualnych systemu Linux platformy Azure | Dokumentacja firmy Microsoft"
-description: "Jak rozwiązywać problemy, takie jak wirtualne dyski twarde dołączonych nieoczekiwane ponowne uruchomienie maszyn wirtualnych systemu Linux lub problemy podczas usuwania konta magazynu zawierającego."
-keywords: "SSH połączenia zostało odrzucone, ssh błędu, platforma azure ssh, połączenia SSH nie powiodło się"
+title: Rozwiązywanie problemów z dołączonych dysków VHD na maszynach wirtualnych systemu Linux platformy Azure | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać problemy, takie jak wirtualne dyski twarde dołączonych nieoczekiwane ponowne uruchomienie maszyn wirtualnych systemu Linux lub problemy podczas usuwania konta magazynu zawierającego.
+keywords: SSH połączenia zostało odrzucone, ssh błędu, platforma azure ssh, połączenia SSH nie powiodło się
 services: virtual-machines-linux
-author: iainfoulds
+author: roygara
 manager: jeconnoc
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: iainfou
-ms.openlocfilehash: 10f5e2f4a48d335c6b7d05b5eb5b577765675c0e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: rogarana
+ms.openlocfilehash: 3e1bac226a75ace3efdbc9886d152da055075920
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-attached-vhds-on-azure-linux-virtual-machines"></a>Rozwiązywanie problemów z dołączonych dysków VHD na maszynach wirtualnych systemu Linux platformy Azure
 
@@ -24,7 +24,7 @@ Maszyny wirtualne platformy Azure polegają na wirtualne dyski twarde (VHD) dla 
   * [Nieoczekiwane ponowne uruchomienie maszyn wirtualnych z dołączonych dysków VHD]
   * [Magazyn usuwaniem we wdrożeniu usługi Resource Manager]
 
-## <a name="you-are-experiencing-unexpected-reboots">Nieoczekiwane ponowne uruchomienie maszyn wirtualnych z dołączonych dysków VHD</a>
+## <a name="you-are-experiencing-unexpected-reboots"></a>Nieoczekiwane ponowne uruchomienie maszyn wirtualnych z dołączonych dysków VHD
 
 Jeśli maszyna wirtualna Azure (VM) jest duża liczba dołączonych dysków VHD, które znajdują się w tym samym koncie magazynu, może przekroczyć wartości docelowe skalowalności konta magazynu powoduje maszyna wirtualna może się nie powieść. Sprawdź minuty metryki dla konta magazynu (**TotalRequests**/**TotalIngress**/**TotalEgress**) maksymalnej, które przekraczają wartości docelowe skalowalności konta magazynu. Zobacz sekcję "[metryki pokazywanie wzrost PercentThrottlingError]" Aby uzyskać pomoc w określeniu, czy ograniczania wystąpił na koncie magazynu.
 
@@ -32,7 +32,7 @@ Ogólnie rzecz biorąc, każdej poszczególnych danych wejściowych lub wyjścio
 
 Jeśli doszło do przekroczenia wartości docelowe skalowalności konta magazynu, należy umieścić dyski VHD w wielu kont magazynu w celu ograniczenia działania w poszczególnych poszczególnych kont.
 
-## <a name="storage-delete-errors-in-rm">Magazyn usuwaniem we wdrożeniu usługi Resource Manager</a>
+## <a name="storage-delete-errors-in-rm"></a>Magazyn usuwaniem we wdrożeniu usługi Resource Manager
 
 Ta sekcja zawiera wskazówki dotyczące rozwiązywania problemów, gdy jeden z następujących błędów podczas próby usunięcia konta magazynu platformy Azure, kontenera lub obiektu blob we wdrożeniu usługi Azure Resource Manager.
 

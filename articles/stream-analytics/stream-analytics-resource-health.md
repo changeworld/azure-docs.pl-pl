@@ -1,25 +1,24 @@
 ---
-title: "Użyj bloku kondycji zasobów w usłudze Azure Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Jak zidentyfikować problemy podczas rozwiązywania problemów z zadania usługi analiza strumienia."
-keywords: "Rozwiązywanie problemów z blokowym bloku zasobów"
-documentationcenter: 
+title: Użyj bloku kondycji zasobów w usłudze Azure Stream Analytics | Dokumentacja firmy Microsoft
+description: Jak zidentyfikować problemy podczas rozwiązywania problemów z zadania usługi analiza strumienia.
+keywords: Rozwiązywanie problemów z blokowym bloku zasobów
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: samacha
-ms.openlocfilehash: 554dec5fbbe5c98585f8be58f5d4e8203d788a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 598f858c22494bc511ef0e2f04f3c3a6baad1ae8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-resource-health-blade"></a>Blok kondycji zasobów usługi analiza strumienia
 
@@ -40,7 +39,7 @@ Poniższy schemat ułatwia podejmowanie decyzji o co do wyszukania i kiedy nale�
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi analiza strumienia](stream-analytics-introduction.md)
 * [Wprowadzenie do usługi analiza strumienia](stream-analytics-real-time-fraud-detection.md)
 * [Zadania usługi analiza strumienia skali](stream-analytics-scale-jobs.md)

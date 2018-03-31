@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement — segmenty"
-description: "Dowiedz się, jak utworzyć i zarządzanie segmentami użytkowników w celu identyfikowania wzorców użycia za pomocą usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement — segmenty
+description: Dowiedz się, jak utworzyć i zarządzanie segmentami użytkowników w celu identyfikowania wzorców użycia za pomocą usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6a4f2205-4a3c-406e-a04f-5e6f2a36653f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53c5b1b672a0d7212a3d298c3e411a9cc6ac0807
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>Tworzenie i zarządzanie segmentami użytkowników w celu identyfikowania wzorców użycia
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 W tym artykule opisano **segmentów** karcie **Mobile Engagement** portalu. Możesz użyć **Mobile Engagement** portalu do monitorowania i zarządzania aplikacjami mobilnymi.
 
 Sekcja segmentów interfejsu użytkownika umożliwia pracę na podzielenie na podstawie inaczej i analizy, który można uzyskać z aplikacji i można również uzyskać dostęp za pośrednictwem interfejsu API segmentów użytkowników. Segmenty najpierw są obliczane 24 godziny po ich tworzenia i są one przeliczane co 24 godziny na podstawie najnowszych informacji analizy. Po obliczeniu segment on wyświetla "Od dnia na dzień historii" wykres każdego dnia.
@@ -107,7 +111,7 @@ Jeśli ukończono konfigurowanie kryterium, pojawi się w segmencie lejka.
 Ponieważ segment jest oparta na dane analityczne, segmentów są obliczane raz dziennie.
 W tym przykładzie 47,7% całkowitej użytkownicy końcowi zgodny z kryterium. Powinny one być użytkowników, którzy miały dobrej środowisko i będzie może zapewnić wyższy klasyfikacji, jeśli wypychanie ich powiadomienie z prośbą do klasyfikowania aplikacji w sklepie.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Pojęcia][Link 6]
 * [Usługa Przewodnik rozwiązywania problemów][Link 24]
 

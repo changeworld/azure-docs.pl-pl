@@ -1,11 +1,11 @@
 ---
-title: "Usługi Azure Mobile Engagement przewodnik - API rozwiązywania problemów"
-description: "Rozwiązywanie problemów z przewodniki dotyczące usługi Azure Mobile Engagement — interfejsów API"
+title: Usługi Azure Mobile Engagement przewodnik - API rozwiązywania problemów
+description: Rozwiązywanie problemów z przewodniki dotyczące usługi Azure Mobile Engagement — interfejsów API
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3efc8a52-2b74-4917-b887-815ae8277474
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cda11c8d2f1d147a807083c5479d2b2cda65462c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>Przewodnik rozwiązywania problemów interfejsu API
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób administratorzy interakcji z usługi Azure Mobile Engagement za pośrednictwem interfejsów API.
 
 ## <a name="syntax-issues"></a>Składnia problemów
@@ -34,7 +38,7 @@ Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób a
   * Inny typowe problemy z integracji zestawu SDK i użycie interfejsu API jest mylenie klucza zestawu SDK i klucz interfejsu API.
   * Skrypty łączących się za pośrednictwem interfejsów API należy wysyłać dane co najmniej 10 minut lub połączenie zostanie limit czasu (typowe szczególnie w przypadku skryptów Monitor API nasłuchu danych). Aby zapobiec przekroczeń limitu czasu, mieć skrypt wysłać polecenie ping protokołu XMPP co 10 minut do podtrzymywania sesji na serwerze.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Dokumentacja interfejsu API][Link 4]
 * [Informacje o protokołem XMPP](http://xmpp.org/extensions/xep-0199.html)
 
@@ -45,7 +49,7 @@ Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób a
 ### <a name="causes"></a>Powoduje, że
 * Potwierdzenie, że tę samą akcję można wykonać w interfejsie użytkownika usługi Azure Mobile Engagement pokazuje poprawnie zintegrowane tej funkcji usługi Azure Mobile Engagement przy użyciu zestawu SDK.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Dokumentacja interfejsu użytkownika][Link 1]
 
 ## <a name="error-messages"></a>Komunikaty o błędach
@@ -75,7 +79,7 @@ Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób a
         503        Analytics not available yet (the requested information is not computed yet for an application).
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Dokumentacja interfejsu API — szczegóły błędów w każdej interfejsu API][Link 4]
 
 ## <a name="silent-failures"></a>Błędy w trybie dyskretnym
@@ -86,7 +90,7 @@ Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób a
 * Wiele elementów zostanie wyłączona w Interfejsie użytkownika usługi Azure Mobile Engagement, jeśli nie są poprawnie, zintegrowane, ale spowoduje niepowodzenie w trybie dyskretnym z interfejsu API, więc Pamiętaj, aby przetestować funkcji z interfejsu użytkownika, aby sprawdzić, czy działa.
 * Usługa Azure Mobile Engagement i wiele zaawansowanych funkcji usługi Azure Mobile Engagement, którego próbujesz użyć, muszą być indywidualnie zintegrowane aplikacji przy użyciu zestawu SDK jako oddzielne kroki przed ich użyciem.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Przewodnik rozwiązywania problemów - SDK][Link 25]
 
 <!--Link references-->

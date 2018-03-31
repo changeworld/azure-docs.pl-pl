@@ -1,12 +1,11 @@
 ---
-title: "Analytics Platform: porównanie systemu Apache Storm Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Uzyskaj wskazówki dotyczące wybierania platforma do analiz chmury za pomocą porównania Apache Storm Stream Analytics. Zrozumieć funkcje i różnice."
-keywords: "Platforma do analiz, analytics platform, platforma do analiz chmury, porównanie storm"
+title: 'Analytics Platform: porównanie systemu Apache Storm Stream Analytics | Dokumentacja firmy Microsoft'
+description: Uzyskaj wskazówki dotyczące wybierania platforma do analiz chmury za pomocą porównania Apache Storm Stream Analytics. Zrozumieć funkcje i różnice.
+keywords: Platforma do analiz, analytics platform, platforma do analiz chmury, porównanie storm
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: b9aac017-9866-4d0a-b98f-6f03881e9339
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 48599c362c5db50ebec3acd0aaa4359439edb00b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Wybieranie przesyłania strumieniowego platforma do analiz: porównanie systemu Apache Storm i usługi Azure Stream Analytics
 Platforma Azure oferuje wiele rozwiązań do analizowania danych przesyłania strumieniowego: [analiza strumienia Azure](https://docs.microsoft.com/azure/stream-analytics/) i [Apache Storm w usłudze Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-storm/). Obu platform analytics zapewnia korzyści rozwiązania typu PaaS. Ale platformy niektóre istotne różnice w ich możliwości, jak również w sposób konfigurowania i zarządzania nimi. 
@@ -72,11 +71,11 @@ Tak. Apache Storm to technologia Apache licencji.
             </td>
             <td width="204" valign="top">
                 <p>
-Tak </p>
+Yes </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Tak </p>
+Yes </p>
             </td>
         </tr>
         <tr>
@@ -292,7 +291,7 @@ Tak. Użytkownicy mogą pisanie kodu niestandardowego w C#, Java lub dowolnego i
             </td>
             <td width="204" valign="top">
                 <p>
-Avro JSON, CSV </p>
+Avro, JSON, CSV </p>
             </td>
             <td width="246" valign="top">
                 <p>
@@ -303,7 +302,7 @@ Użytkownicy mogą zaimplementować dowolnym formacie przy użyciu kodu niestand
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>Dane wyjściowe</strong>
+                    <strong>dane wyjściowe</strong>
                 </p>
             </td>
             <td width="204" valign="top">

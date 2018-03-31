@@ -1,12 +1,11 @@
 ---
-title: "Ustawianie alertów dla zapytania w Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Opis usługi Stream Analytics alertów"
-keywords: "Konfigurowanie alertów"
+title: Ustawianie alertów dla zapytania w Stream Analytics | Dokumentacja firmy Microsoft
+description: Opis usługi Stream Analytics alertów
+keywords: Konfigurowanie alertów
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/26/2017
-ms.author: samacha
-ms.openlocfilehash: cdbd7da36f3eb2795fc4548915ebbf18200ca44d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: b88d7e82ffcd2fab1845faf92f6d7a53b72cb54d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Ustawianie alertów dla zadania usługi analiza strumienia Azure
 ## <a name="introduction-monitor-page"></a>Wprowadzenie: Strona Monitor
@@ -52,7 +51,7 @@ Aby uzyskać więcej szczegółów na temat konfigurowania alertów w portalu Az
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-get-started.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

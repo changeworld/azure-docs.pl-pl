@@ -1,12 +1,12 @@
 ---
-title: "przydziały vCPU dla platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o vCPU przydziały dla platformy Azure."
-keywords: 
+title: przydziały vCPU dla platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o vCPU przydziały dla platformy Azure.
+keywords: ''
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: drewm
-ms.openlocfilehash: b481299b62d452bc306c1f9c1fa2cdccd49b818e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 05d84e4b8c0ac84db5d0784e64071931408ec1d6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Przydziały vCPU maszyny wirtualnej
 
@@ -81,8 +81,8 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>Wystąpienia zarezerwowane maszyn wirtualnych
 Ograniczone do jednego subskrypcji, wystąpień maszyny Wirtualnej zarezerwowana doda aspekt nowe do przydziały vCPU. Te wartości opisano liczbę wystąpień podane rozmiar, który musi być możliwy do wdrożenia w ramach subskrypcji. Funkcje te działają jako element zastępczy w systemie przydziału, aby upewnić się, że ten przydział jest zarezerwowana do upewnij się, że można wdrożyć w ramach subskrypcji są zastrzeżone wystąpień. Na przykład jeśli określonej subskrypcji ma 10 Standard_D1 zastrzeżone wystąpień ograniczenie użycia dla wystąpień zastrzeżone Standard_D1 będzie 10. Spowoduje to Azure upewnić się, że zawsze są dostępne w całkowita regionalnych Vcpu przydział do zastosowania w przypadku wystąpienia Standard_D1 Vcpu co najmniej 10 i są dostępne w standardowe rodziny D vCPU przydział do zastosowania w przypadku wystąpienia Standard_D1 Vcpu co najmniej 10.
 
-Jeśli zwiększenia limitu przydziału jest wymagana, aby zakupić pojedynczego RI subskrypcji, możesz [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) w ramach subskrypcji.
+Jeśli zwiększenia limitu przydziału jest wymagane, aby kupić pojedynczego RI subskrypcji, możesz [zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) w ramach subskrypcji.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji dotyczących rozliczeń i przydziały, zobacz [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

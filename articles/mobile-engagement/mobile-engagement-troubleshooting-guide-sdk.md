@@ -1,11 +1,11 @@
 ---
-title: "Usługi Azure Mobile Engagement przewodnik - SDK rozwiązywania problemów"
-description: "Rozwiązywanie problemów integracji zestawu SDK usługi Azure Mobile Engagement"
+title: Usługi Azure Mobile Engagement przewodnik - SDK rozwiązywania problemów
+description: Rozwiązywanie problemów integracji zestawu SDK usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: de265cf1-2f88-43ef-8616-156ada5be7b6
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4d9d6165deb4bd0c65f1841aa7c457363a1f2865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f617b3c3b221a38b63be6f61f7553b390cf2f7c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-sdk-integration-issues"></a>Przewodnik rozwiązywania problemów integracji zestawu SDK
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób integruje aplikacji usługi Azure Mobile Engagement.
 
 ## <a name="sdk-issues-discovered-by-a-failure-in-another-area-of-your-application"></a>Problemy z zestawu SDK odnalezione awaria w innym miejscu aplikacji
@@ -78,7 +82,7 @@ Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób i
 * Istnieją pewne ograniczenia wbudowane w platformę Azure Mobile Engagement nie może kontrolować (tak jak wypycha działania programu system center dla aplikacji w systemach Android i iOS).
 * Usługa Azure Mobile Engagement publikuje pełną listę pakietów wewnętrzny używany przez usługi Azure Mobile Engagement dla systemów iOS i Android odwołania. Należy pamiętać, że niektóre funkcje usługi Azure Mobile Engagement są specyficzne dla platformy (Android, iOS, sieci Web, Windows i Windows Phone).
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Przewodnik rozwiązywania problemów - wypychania][Link 23] 
 * [Dokumentacja zestawu SDK — informacje o wersji][Link 5]
 * [Dokumentacja zestawu SDK — przewodniki uaktualnienia][Link 5]
@@ -92,7 +96,7 @@ Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób i
 * Można znaleźć Identyfikatora urządzenia urządzenia testu i wykonać tę samą akcję, który spowodował awarię aplikacji dla użytkownika końcowego ułatwić identyfikację przyczyny awarii sieci.
 * Znane problemy z zestawem Azure Mobile Engagement SDK, które aplikacje awarii są czasami rozwiązać przez uaktualnienie do najnowszej wersji zestawu SDK. Upewnij się, że podczas badania awarii (Crash), sprawdź informacje o wersji dotyczące platformy.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Dokumentacja zestawu SDK — informacje o wersji][Link 5]
 * [Dokumentacja zestawu SDK — przewodniki uaktualnienia][Link 5]
 

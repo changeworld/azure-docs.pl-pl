@@ -1,11 +1,11 @@
 ---
-title: "Debugowanie publikowania usługi z programu Visual Studio i IntelliTrace w chmurze platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można debugować usługi chmury za pomocą programu Visual Studio i IntelliTrace"
+title: Debugowanie publikowania usługi z programu Visual Studio i IntelliTrace w chmurze platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można debugować usługi chmury za pomocą programu Visual Studio i IntelliTrace
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 5e6662fc-b917-43ea-bf2b-4f2fc3d213dc
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/21/2017
 ms.author: mikejo
-ms.openlocfilehash: d33a8338b37f7479196449238388c7dbf391bbb6
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 2ca15bd5ffa88d2e8053decf5b81c265b1d9c6e1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>Debugowanie usługi opublikowana chmura Azure za pomocą programu Visual Studio i IntelliTrace
 Przy użyciu funkcji IntelliTrace można rejestrować szeroką gamę informacji o debugowaniu dla wystąpienia roli, po uruchomieniu na platformie Azure. Jeśli potrzebujesz ustalić przyczynę problemu, można użyć dzienniki IntelliTrace do wykonania kroków opisanych kodu w programie Visual Studio, tak jakby były uruchomione w systemie Azure. W efekcie rekordów funkcji IntelliTrace klawisz wykonanie kodu i danych środowiska aplikacji platformy Azure działa jako usługa w chmurze na platformie Azure i pozwala odtwarzać zarejestrowanych danych z programu Visual Studio. 
@@ -78,6 +78,6 @@ Można kontynuować pracę w programie Visual Studio podczas pobierania dziennik
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Opcje debugowania usług w chmurze Azure](vs-azure-tools-debugging-cloud-services-overview.md)
 - [Publikowanie usługi w chmurze platformy Azure przy użyciu programu Visual Studio](vs-azure-tools-publishing-a-cloud-service.md)

@@ -1,11 +1,11 @@
 ---
-title: "Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement"
-description: "Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement"
+title: Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement
+description: Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9ec3fab3-35ec-458e-bf41-6cdd69e3fa44
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: piyushjo
-ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15e71d8aeb8c8060161ade4262e0be0a093b5650
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-android"></a>Integrowanie Reach usługi Engagement w systemie Android
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!IMPORTANT]
 > Musi występować po integracji procedury opisane w sekcji sposobu integracji usługi Engagement Android dokumentu przed wykonaniem tego przewodnika.
 > 
@@ -102,7 +106,7 @@ Edytowanie użytkownika `AndroidManifest.xml` pliku:
   
   Bez tego uprawnienia Android uniemożliwia powiadomień systemowych jest wyświetlany, jeśli zaznaczono pierścienia lub opcji vibrate w Menedżerze osiągnąć kampanii.
 
-## <a name="native-push"></a>Natywnych powiadomień wypychanych
+## <a name="native-push"></a>Wypychanie natywne
 Teraz, możesz skonfigurować moduł Reach, należy skonfigurować natywnych powiadomień wypychanych, aby móc odbierać kampanii na urządzeniu.
 
 W systemie Android firma Microsoft obsługuje dwie usługi:
@@ -160,8 +164,8 @@ Poniżej przedstawiono kilka wskazówek, aby poprawnie obsługiwać parametr zwr
 
 Zwracany typ jest używany tylko dla statystyki zasięgu:
 
-* `Replied`jest zwiększany, jeśli jeden z odbiorców emisji albo zwrócony `true` lub `false`.
-* `Actioned`zwiększany jest tylko wtedy, gdy jeden z odbiorców emisji zwrócił `true`.
+* `Replied` jest zwiększany, jeśli jeden z odbiorców emisji albo zwrócony `true` lub `false`.
+* `Actioned` zwiększany jest tylko wtedy, gdy jeden z odbiorców emisji zwrócił `true`.
 
 ## <a name="how-to-customize-campaigns"></a>Dostosowywanie kampanii
 Aby dostosować kampanii, można zmodyfikować układy określone w zestawie SDK Reach.
@@ -233,7 +237,7 @@ Jeśli nie chcesz, aby nakładki ma zostać dodany do Twoich działaniach i ukł
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="categories"></a>Kategorie
+#### <a name="categories"></a> Kategorie
 Po zmodyfikowaniu podana układów możesz zmodyfikować wygląd wszystkich powiadomień. Kategorie umożliwiają definiowanie różnych wygląda docelowej (prawdopodobnie zachowania) dla powiadomień. Po utworzeniu kampanii Reach można określić kategorię. Należy pamiętać, że kategorie pozwalają również dostosować anonsów i sond, opisane w dalszej części tego dokumentu.
 
 Aby zarejestrować kategorii Obsługa powiadomienia, należy dodać wywołanie po zainicjowaniu aplikacji.

@@ -1,11 +1,11 @@
 ---
-title: "Uwierzytelniania za pomocą interfejsów API REST usługi Engagement Mobile: instalacji ręcznej"
-description: "Opisuje, jak ręcznie skonfigurować uwierzytelnianie dla interfejsów API REST usługi Engagement Mobile"
+title: 'Uwierzytelniania za pomocą interfejsów API REST usługi Engagement Mobile: instalacji ręcznej'
+description: Opisuje, jak ręcznie skonfigurować uwierzytelnianie dla interfejsów API REST usługi Engagement Mobile
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2e79f9c9-41e4-45ac-b427-3b8338675163
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0b4a999c6778040e71f862d3a010b6635e84b26e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0d71908b34ddf8313aa45014420c9e63a00078c9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="authenticate-with-mobile-engagement-rest-apis-manual-setup"></a>Uwierzytelniania za pomocą interfejsów API REST usługi Engagement Mobile: instalacji ręcznej
+# <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Uwierzytelniania w usłudze Mobile Engagement REST API - instalacji ręcznej
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Niniejsza dokumentacja jest dodatek do [Uwierzytelnij z interfejsów API REST usługi Engagement Mobile](mobile-engagement-api-authentication.md). Upewnij się, że przeczytaniu tego artykułu, aby najpierw zrozumieć kontekstu. Omówiono także alternatywny sposób celu ustawienia uwierzytelniania jednorazowe dla interfejsów API REST Mobile Engagement przy użyciu portalu Azure.
 
 > [!NOTE]
@@ -67,7 +71,7 @@ Niniejsza dokumentacja jest dodatek do [Uwierzytelnij z interfejsów API REST us
 
     ![Skopiuj punktu końcowego][14]
 
-16. Ten punkt końcowy jest w następującym formacie, gdzie jest identyfikator GUID w adresie URL Twojego **TENANT_ID**:`https://login.microsoftonline.com/<GUID>/oauth2/token`
+16. Ten punkt końcowy jest w następującym formacie, gdzie jest identyfikator GUID w adresie URL Twojego **TENANT_ID**: `https://login.microsoftonline.com/<GUID>/oauth2/token`
 
 17. Następnie należy skonfigurować uprawnienia w tej aplikacji. Aby uruchomić proces, przejdź do [portalu Azure](https://portal.azure.com).
 

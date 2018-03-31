@@ -1,11 +1,11 @@
 ---
-title: "Uwierzytelniania za pomocą interfejsów API REST usługi Mobile Engagement"
-description: "Opisuje sposób uwierzytelniania za pomocą interfejsów API REST usługi Azure Mobile Engagement"
+title: Uwierzytelniania za pomocą interfejsów API REST usługi Mobile Engagement
+description: Opisuje sposób uwierzytelniania za pomocą interfejsów API REST usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: da82cb36-957a-4e19-a805-b44733cf6597
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 574e699a1cfca2caef0cf20872570bbb8650117b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Uwierzytelniania za pomocą interfejsów API REST usługi Mobile Engagement
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
 
 ## <a name="overview"></a>Przegląd
 
@@ -102,11 +105,11 @@ Opcjonalnie można również wykonać instrukcje w [instalacji ręcznej](mobile-
 
 1. Wywołanie interfejsu API z następującymi parametrami. Upewnij się zastąpić **dzierżawy\_identyfikator**, **klienta\_identyfikator**, i **klienta\_klucz TAJNY**:
    
-   * **Adres URL żądania** jako`https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
+   * **Adres URL żądania** jako `https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
 
-   * **Nagłówek HTTP Content-Type** jako`application/x-www-form-urlencoded`
+   * **Nagłówek HTTP Content-Type** jako `application/x-www-form-urlencoded`
    
-   * **Treść żądania HTTP** jako`grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
+   * **Treść żądania HTTP** jako `grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
      
     Poniżej zamieszczono przykładowe żądanie:
     ```

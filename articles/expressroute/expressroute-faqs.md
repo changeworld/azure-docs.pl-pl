@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3f33703ec86f131d18c89cf4b29514c5002349d1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 1893601f9fe9018cb51e6e31b6f9c397a0da38da
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -214,7 +214,7 @@ Tak. Należy utworzyć bramę usługi ExpressRoute w ramach sieci wirtualnej. Br
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Dlaczego jest publiczny adres IP skojarzone z bramą usługi ExpressRoute w sieci wirtualnej
 
-Publiczny adres IP jest używana tylko wewnętrzny zarządzania. Ten publiczny adres IP nie jest połączenie z Internetem i nie stanowi zagrożenie bezpieczeństwa, sieci wirtualnych.
+Publiczny adres IP jest używana do zarządzania wewnętrzny tylko i nie stanowi zagrożenie bezpieczeństwa, sieci wirtualnych.
 
 ### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>Co potrzebne do połączenia z magazynem Azure za pośrednictwem usługi ExpressRoute?
 

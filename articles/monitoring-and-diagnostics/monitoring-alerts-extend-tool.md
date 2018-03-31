@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 76b7481223566f16a5da8c08d9d76f2bdb6b542a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5e8a66214efc27e8e59da354e54d68bb48d274cc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="initiate-extending-alerts-from-oms-into-azure"></a>Inicjowanie rozszerzanie alerty z usługą OMS na platformie Azure
 Począwszy od **23 kwietnia 2018**, wszystkich klientów przy użyciu alertów, które są skonfigurowane w [programu Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), zostanie rozszerzony na platformie Azure. Alerty, które zostały rozszerzone na platformie Azure zachowują się tak samo jak OMS. Możliwości monitorowania pozostaną nienaruszone. Rozszerzające alertach tworzonych w OMS Azure oferuje wiele korzyści. Aby uzyskać więcej informacji o zaletach i proces rozszerzenia alerty z usługą OMS na platformie Azure, zobacz [rozszerzyć alerty z OMS Azure](monitoring-alerts-extend.md).
@@ -155,7 +155,7 @@ Jeśli WPIS zakończy się pomyślnie, zwraca odpowiedź 200 OK wraz z programem
     "version": 2
 }
 ```
-Wskazującą, czy alerty zostały rozszerzone na platformie Azure, jak wskazano w wersji 2. Ta wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone na platformie Azure i nie ma wpływu wykorzystania z [interfejsu API Search analizy dziennika](../log-analytics/log-analytics-api-alerts.md). Po alerty zostały rozszerzone pomyślnie na platformie Azure, wszyscy użytkownicy skojarzone z rolami administratora i współautor w obszarze roboczym otrzyma wiadomość e-mail z szczegółowe informacje o zmianach gotowe.
+Wskazującą, czy alerty zostały rozszerzone na platformie Azure, jak wskazano w wersji 2. Ta wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone na platformie Azure i nie ma wpływu wykorzystania z [interfejsu API Search analizy dziennika](../log-analytics/log-analytics-api-alerts.md). Po alerty zostały rozszerzone pomyślnie na platformie Azure, wszystkie e-mail adresy podane podczas GET będą wysyłane raport zawierający szczegółowe informacje o zmianach gotowe.
 
 
 I na koniec, jeśli wszystkie alerty w obszarze roboczym określony wcześniej zaplanowane na platformie Azure — odpowiedź POST będzie 403 Zabroniony.

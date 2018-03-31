@@ -1,11 +1,11 @@
 ---
 title: Windows Phone Silverlight dotarcia do integracji zestawu SDK
-description: "Integrowanie dotarcia do usługi Azure Mobile Engagement z aplikacji Silverlight Windows Phone"
+description: Integrowanie dotarcia do usługi Azure Mobile Engagement z aplikacji Silverlight Windows Phone
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d3516a6b-db9f-4cdb-a475-4148edf81af1
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0738f33df94d14fbb393bfaaf09e94c6560213cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34e5ce414ebf72fbecef6c921e57128e2658c921
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-phone-silverlight-reach-sdk-integration"></a>Windows Phone Silverlight dotarcia do integracji zestawu SDK
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Wykonaj procedury integracji opisane w sekcji [integracji zestawu SDK usługi Engagement Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) przed wykonaniem tego przewodnika.
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-phone-silverlight-project"></a>Osadzanie SDK Reach usługi Engagement w projekcie systemu Windows Phone Silverlight
-Nie ma nic do dodania. `EngagementReach`referencje i zasoby są już w projekcie.
+Nie ma nic do dodania. `EngagementReach` referencje i zasoby są już w projekcie.
 
 > [!TIP]
 > Można dostosować obrazy znajdujące się w `Resources` folderu projektu, szczególnie ikona marki (domyślnie tej ikony Engagement).

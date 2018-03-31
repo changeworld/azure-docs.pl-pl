@@ -1,24 +1,24 @@
 ---
-title: "Rozwiązywanie problemów z Azure połączenia sieci VPN lokacja lokacja nie może połączyć | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy z połączeniem sieci VPN lokacja lokacja, nagle przestanie działać i nie można ponownie."
+title: Rozwiązywanie problemów z Azure połączenia sieci VPN lokacja lokacja nie może połączyć | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z połączeniem sieci VPN lokacja lokacja, nagle przestanie działać i nie można ponownie.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2017
+ms.date: 03/29/2018
 ms.author: genli
-ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Rozwiązywanie problemów: Nie można połączyć z połączenia sieci VPN typu lokacja lokacja Azure oraz przestaje działać
 
@@ -26,7 +26,7 @@ Po skonfigurowaniu połączenia VPN lokacja lokacja między siecią lokalną i s
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="troubleshooting-steps"></a>Rozwiązywanie problemów
+## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów
 
 Aby rozwiązać ten problem, najpierw spróbuj [zresetowanie bramy sieci VPN platformy Azure](vpn-gateway-resetgw-classic.md) i zresetuj tunelu z lokalnego urządzenia sieci VPN. Jeśli problem będzie nadal występował, wykonaj następujące kroki, aby zidentyfikować przyczynę problemu.
 
@@ -52,7 +52,7 @@ Porównaj udostępniony klucz do lokalnego urządzenia sieci VPN do wirtualnej A
 
 Aby wyświetlić klucza wspólnego dla połączenia sieci VPN platformy Azure, użyj jednej z następujących metod:
 
-**Azure portal**
+**Azure Portal**
 
 1. Przejdź do utworzonego połączenia lokacja lokacja bramy sieci VPN.
 
@@ -92,7 +92,9 @@ Sprawdź, czy i Usuń użytkownika routingu (przez) lub grupy zabezpieczeń siec
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>Krok 7. Sprawdź sondy kondycji Azure bramy
 
-1. Przejdź do badania kondycji.
+1. Sondy kondycji otwarte, przechodząc pod następujący adres URL:
+
+    `https://<YourVirtualNetworkGatewayIP>:8081/healthprobe`
 
 2. Kliknij przycisk za pomocą ostrzeżenie o certyfikacie.
 3. Jeśli otrzymasz odpowiedź bramy sieci VPN jest uznawany za dobrej kondycji. Jeśli nie otrzymasz odpowiedź bramy może nie być w dobrej kondycji lub grupy NSG podsieci bramy jest przyczyną problemu. Przykładowa odpowiedź brzmi:

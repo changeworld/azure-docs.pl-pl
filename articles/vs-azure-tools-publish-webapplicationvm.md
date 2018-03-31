@@ -1,11 +1,11 @@
 ---
 title: Publikowanie WebApplicationVM | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak wdrożyć aplikację sieci web do maszyny wirtualnej. Ten skrypt tworzy wymaganych zasobów w Twojej subskrypcji platformy Azure, jeśli nie istnieją."
+description: Dowiedz się, jak wdrożyć aplikację sieci web do maszyny wirtualnej. Ten skrypt tworzy wymaganych zasobów w Twojej subskrypcji platformy Azure, jeśli nie istnieją.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: de4cec95-f73f-44d9-babd-9f47f2633cdb
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 49778b00dc9b1f6a8a11de5e3575599957b753fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publikowanie WebApplicationVM (skrypt programu Windows PowerShell)
 Wdraża aplikację sieci web do maszyny wirtualnej. Skrypt tworzy wymaganych zasobów w Twojej subskrypcji platformy Azure, jeśli nie istnieją.
@@ -34,82 +34,82 @@ Publish-WebApplicationVM
 -Verbose
 ```
 
-### <a name="configuration"></a>Konfiguracja
+### <a name="configuration"></a>Konfigurowanie
 Ścieżka do pliku konfiguracji JSON, który opisuje szczegóły wdrożenia.
 
-| Aliasy | Brak |
+| Aliasy | brak |
 | --- | --- |
-| Wymagana? |Wartość true |
-| Stanowisko |o nazwie |
-| Wartość domyślna |Brak |
-| Akceptowanie danych wejściowych potoku? |wartość false |
-| Akceptowanie symboli wieloznacznych? |wartość false |
+| Wymagana? |true |
+| Położenie |o nazwie |
+| Wartość domyślna |brak |
+| Akceptowanie danych wejściowych potoku? |false |
+| Akceptowanie symboli wieloznacznych? |false |
 
 ### <a name="subscriptionname"></a>Nazwa subskrypcji
 Nazwa subskrypcji platformy Azure, w którym chcesz utworzyć maszynę wirtualną.
 
-| Aliasy | Brak |
+| Aliasy | brak |
 | --- | --- |
-| Wymagana? |wartość false |
-| Stanowisko |o nazwie |
+| Wymagana? |false |
+| Położenie |o nazwie |
 | Wartość domyślna |Używa pierwszej subskrypcji w pliku subskrypcji |
-| Akceptowanie danych wejściowych potoku? |wartość false |
-| Akceptowanie symboli wieloznacznych? |wartość false |
+| Akceptowanie danych wejściowych potoku? |false |
+| Akceptowanie symboli wieloznacznych? |false |
 
 ### <a name="webdeploypackage"></a>WebDeployPackage
 Ścieżka do pakietu wdrożeniowego sieci web do publikowania do maszyny wirtualnej. Ten pakiet można utworzyć za pomocą kreatora Publikowanie w sieci Web w programie Visual Studio. Zobacz [jak: utworzyć pakiet wdrożeniowy sieci Web w programie Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
 
-| Aliasy | Brak |
+| Aliasy | brak |
 | --- | --- |
-| Wymagana? |wartość false |
-| Stanowisko |o nazwie |
-| Wartość domyślna |Brak |
-| Akceptowanie danych wejściowych potoku? |wartość false |
-| Akceptowanie symboli wieloznacznych? |wartość false |
+| Wymagana? |false |
+| Położenie |o nazwie |
+| Wartość domyślna |brak |
+| Akceptowanie danych wejściowych potoku? |false |
+| Akceptowanie symboli wieloznacznych? |false |
 
 ### <a name="allowuntrusted"></a>AllowUntrusted
 Jeśli PRAWDA, Zezwalaj na korzystanie z certyfikatów, które nie są podpisane przez zaufanego głównego urzędu.
 
-| Aliasy | Brak |
+| Aliasy | brak |
 | --- | --- |
-| Wymagana? |wartość false |
-| Stanowisko |o nazwie |
-| Wartość domyślna |wartość false |
-| Akceptowanie danych wejściowych potoku? |wartość false |
-| Akceptowanie symboli wieloznacznych? |wartość false |
+| Wymagana? |false |
+| Położenie |o nazwie |
+| Wartość domyślna |false |
+| Akceptowanie danych wejściowych potoku? |false |
+| Akceptowanie symboli wieloznacznych? |false |
 
 ### <a name="vmpassword"></a>VMPassword
 Poświadczenia dla konta maszyny wirtualnej. Przykład: - VMPassword @{nazwa = "admin"; Hasło = "password"}
 
-| Aliasy | Brak |
+| Aliasy | brak |
 | --- | --- |
-| Wymagana? |wartość false |
-| Stanowisko |o nazwie |
-| Wartość domyślna |Brak |
-| Akceptowanie danych wejściowych potoku? |wartość false |
-| Akceptowanie symboli wieloznacznych? |wartość false |
+| Wymagana? |false |
+| Położenie |o nazwie |
+| Wartość domyślna |brak |
+| Akceptowanie danych wejściowych potoku? |false |
+| Akceptowanie symboli wieloznacznych? |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
 Poświadczenia bazy danych SQL platformy Azure. Przykład: - DatabaseServerPassword @{nazwa = "admin"; Hasło = "password"}
 
-| Aliasy | Brak |
+| Aliasy | brak |
 | --- | --- |
-| Wymagana? |wartość false |
-| Stanowisko |o nazwie |
-| Wartość domyślna |Brak |
-| Akceptowanie danych wejściowych potoku? |wartość false |
-| Akceptowanie symboli wieloznacznych? |wartość false |
+| Wymagana? |false |
+| Położenie |o nazwie |
+| Wartość domyślna |brak |
+| Akceptowanie danych wejściowych potoku? |false |
+| Akceptowanie symboli wieloznacznych? |false |
 
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 Jeśli PRAWDA, Drukuj komunikaty z skrypt do strumienia wyjściowego.
 
-| Aliasy | Brak |
+| Aliasy | brak |
 | --- | --- |
-| Wymagana? |wartość false |
-| Stanowisko |o nazwie |
-| Wartość domyślna |wartość false |
-| Akceptowanie danych wejściowych potoku? |wartość false |
-| Akceptowanie symboli wieloznacznych? |wartość false |
+| Wymagana? |false |
+| Położenie |o nazwie |
+| Wartość domyślna |false |
+| Akceptowanie danych wejściowych potoku? |false |
+| Akceptowanie symboli wieloznacznych? |false |
 
 ## <a name="remarks"></a>Uwagi
 Pełny opis sposobów użycia skryptu do tworzenia środowisk do tworzenia i testowania, zobacz [za pomocą skryptów programu PowerShell systemu Windows do opublikowania deweloperów i środowisk testowych](vs-azure-tools-publishing-using-powershell-scripts.md).

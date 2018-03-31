@@ -1,11 +1,11 @@
 ---
-title: "Integracja z usługą Azure Mobile Engagement Web SDK | Dokumentacja firmy Microsoft"
-description: "Najnowsze aktualizacje i procedury dotyczące zestawu SDK usługi Azure Mobile Engagement sieci Web"
+title: Integracja z usługą Azure Mobile Engagement Web SDK | Dokumentacja firmy Microsoft
+description: Najnowsze aktualizacje i procedury dotyczące zestawu SDK usługi Azure Mobile Engagement sieci Web
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b5daa2a2-942b-489d-aa1d-568c3b25e56f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7d8eaa180e277741a583522ee62d68f5247b92bb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bccfbdfe9d99900f58d5dbfa44183146c79b9c88
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Integrowanie usługi Azure Mobile Engagement w aplikacji sieci web
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Aplikacje uniwersalne systemu Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -45,8 +49,8 @@ Zestaw SDK usługi Mobile Engagement w sieci Web jest dostarczana jako pojedyncz
 ## <a name="browser-compatibility"></a>Zgodność przeglądarek
 Zestaw SDK usługi Mobile Engagement w sieci Web używa natywnego JSON, kodowania i dekodowania oprócz żądania AJAX między domenami (oparte na specyfikacji W3C CORS). Jest on zgodny z poniższych przeglądarek:
 
-* Przeglądarka Microsoft Edge 12 +
-* Program Internet Explorer 10 +
+* Microsoft Edge 12+
+* Internet Explorer 10+
 * Firefox 3.5 +
 * Chrome 4 +
 * Safari 6 +
@@ -64,7 +68,7 @@ Napisać skrypt, który tworzy globalnym `azureEngagement` obiektu JavaScript, j
 `connectionString` Wartość dla aplikacji jest wyświetlana w portalu Azure.
 
 > [!NOTE]
-> `appVersionName`i `appVersionCode` są opcjonalne. Jednak zaleca się je skonfigurować tak, aby analiza może przetworzyć informacji o wersji.
+> `appVersionName` i `appVersionCode` są opcjonalne. Jednak zaleca się je skonfigurować tak, aby analiza może przetworzyć informacji o wersji.
 > 
 > 
 
@@ -99,7 +103,7 @@ Należy pamiętać, że jeśli domyślny alias powoduje konflikt z innym zmienne
       alias:'anotherAlias'
     };
 
-## <a name="basic-reporting"></a>Podstawowym raportowaniem
+## <a name="basic-reporting"></a>Podstawowe raportowanie
 Podstawowym raportowaniem w usłudze Mobile Engagement obejmuje statystyki poziomu sesji, takie jak statystyki dotyczące użytkowników, sesji, działaniami i awariami.
 
 ### <a name="session-tracking"></a>Śledzenie sesji

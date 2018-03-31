@@ -1,12 +1,11 @@
 ---
-title: "W czasie rzeczywistym analizy wskaźniki nastrojów klientów Twitter z usługą Azure Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać usługi Stream Analytics w czasie rzeczywistym analizy wskaźniki nastrojów klientów usługi Twitter. Wskazówki krok po kroku od wygenerowania zdarzenia do danych na żywo pulpitu nawigacyjnego."
-keywords: "Analiza trendu w czasie rzeczywistym usługi twitter, analizy wskaźniki nastrojów klientów, analizy mediów społecznościowych, przykład analizy trendów"
+title: W czasie rzeczywistym analizy wskaźniki nastrojów klientów Twitter z usługą Azure Stream Analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Stream Analytics w czasie rzeczywistym analizy wskaźniki nastrojów klientów usługi Twitter. Wskazówki krok po kroku od wygenerowania zdarzenia do danych na żywo pulpitu nawigacyjnego.
+keywords: Analiza trendu w czasie rzeczywistym usługi twitter, analizy wskaźniki nastrojów klientów, analizy mediów społecznościowych, przykład analizy trendów
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 42068691-074b-4c3b-a527-acafa484fda2
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
-ms.author: samacha
-ms.openlocfilehash: 96a169343481f1cdf43af82a7768cfe08cbd4886
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: jeanb
+ms.openlocfilehash: 87a9ecc5984075d700ddc64a1377342d5fe7e494
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>W czasie rzeczywistym analizy usługi Azure Stream Analytics wskaźniki nastrojów klientów usługi Twitter
 
@@ -114,7 +113,7 @@ Aby proces może wysyłać dane do Centrum zdarzeń, Centrum zdarzeń muszą mie
 ## <a name="configure-and-start-the-twitter-client-application"></a>Skonfiguruj i uruchom aplikację klienta usługi Twitter
 Aplikacja kliencka pobiera zdarzenia tweet bezpośrednio z usługą Twitter. Aby to zrobić, wymaga uprawnienia do wywoływania usługi Twitter API przesyłania strumieniowego. Aby skonfigurować te uprawnienia, utworzyć aplikację w serwisie Twitter, generowany unikatowy poświadczeń (takich jak token OAuth). Następnie można skonfigurować aplikacji klienckiej, aby używać tych poświadczeń podczas wykonywania wywołań interfejsu API. 
 
-### <a name="create-a-twitter-application"></a>Utwórz aplikację usługi Twitter
+### <a name="create-a-twitter-application"></a>Tworzenie aplikacji usługi Twitter
 Jeśli nie masz już aplikację usługi Twitter, która służy do celów tego samouczka, można go utworzyć. Musi już konta w usłudze Twitter.
 
 > [!NOTE]

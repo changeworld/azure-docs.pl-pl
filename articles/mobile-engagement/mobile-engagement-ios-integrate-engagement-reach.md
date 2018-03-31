@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS SDK Integration osiągnąć | Dokumentacja firmy Microsoft"
-description: "Najnowsze aktualizacje i procedury dla systemu iOS SDK dla usługi Azure Mobile Engagement"
+title: Azure Mobile Engagement iOS SDK Integration osiągnąć | Dokumentacja firmy Microsoft
+description: Najnowsze aktualizacje i procedury dla systemu iOS SDK dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f5f5857-867c-40c5-9d76-675a343a0296
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d531f5850e8f7f352774f5894285402bd4cc53e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>Jak zintegrować Reach usługi Engagement w systemie iOS
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Należy wykonać procedury integracji opisane w sekcji [jak zintegrować zaangażowania w dokumencie iOS](mobile-engagement-ios-integrate-engagement.md) przed wykonaniem tego przewodnika.
 
 Ta dokumentacja wymaga XCode 8. Jeśli naprawdę są zależne od XCode 7, możesz użyć [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). Jest znaną usterką w poprzedniej podczas uruchamiania na urządzeniach z systemem iOS 10: powiadomień systemowych nie są których wykonano akcje. Rozwiązać problem, należy zaimplementować przestarzałe interfejsu API `application:didReceiveRemoteNotification:` w aplikacji delegowanie w następujący sposób:
@@ -267,7 +271,7 @@ Aby zarejestrować kategorii Obsługa powiadomienia, należy dodać wywołanie p
     [reach registerNotifier:myNotifier forCategory:@"my_category"];
     ...
 
-`myNotifier`musi być wystąpieniem obiektu, który jest zgodny z protokołem `AENotifier`.
+`myNotifier` musi być wystąpieniem obiektu, który jest zgodny z protokołem `AENotifier`.
 
 Można zaimplementować metody protokołu przez siebie lub mogą być reimplement istniejącej klasy `AEDefaultNotifier` który już wykonuje większość pracy.
 
@@ -292,8 +296,8 @@ Ten prosty przykład kategorii założono, że istnieje plik o nazwie `MyNotific
 Nib podanego pliku powinna przestrzegać następujących reguł:
 
 * Powinna ona zawierać tylko jeden widok.
-* Widoków podrzędnych powinny być tego samego typu, jak te w nib podany plik o nazwie`AENotificationView.xib`
-* Widoków podrzędnych powinny mieć te same znaczniki, jak te w dostarczonych nib plik o nazwie`AENotificationView.xib`
+* Widoków podrzędnych powinny być tego samego typu, jak te w nib podany plik o nazwie `AENotificationView.xib`
+* Widoków podrzędnych powinny mieć te same znaczniki, jak te w dostarczonych nib plik o nazwie `AENotificationView.xib`
 
 > [!TIP]
 > Po prostu skopiuj plik nib udostępnionego o nazwie `AENotificationView.xib`i rozpocząć pracę z tego miejsca. Jednak należy zachować ostrożność, widok wewnątrz tego pliku nib jest skojarzony z klasy `AENotificationView`. Ta klasa ponownie definiować metodę `layoutSubViews` na przenoszenie i zmienianie rozmiaru jego widoków podrzędnych zgodnie z kontekstu. Chcesz go zastąpić `UIView` lub klasy widok niestandardowy.
@@ -344,7 +348,7 @@ Można zdecydować objąć naszych układu powiadomień istniejących widoków. 
        notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
        [self.view addSubview:notificationView];
 
-`NOTIFICATION_AREA_VIEW_TAG`Makro można znaleźć w `AEDefaultNotifier.h`.
+`NOTIFICATION_AREA_VIEW_TAG` Makro można znaleźć w `AEDefaultNotifier.h`.
 
 > [!NOTE]
 > Zgłaszający domyślne automatycznie wykrywa, czy układ powiadomień znajduje się w tym widoku i nie dodają nakładki dla niego.

@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement - Reach porady"
-description: "Przegląd interfejsu użytkownika dla usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement - Reach porady
+description: Przegląd interfejsu użytkownika dla usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 30af87e6-c816-4cce-8609-6cbd3e83de14
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c536d378023ee4a9675bb2d67262fb485c8052b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>Jak rozpocząć pracę przy użyciu i zarządzanie wypchnięcia dotrzeć do użytkowników końcowych
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Po użyciu zestawu SDK jest w pełni zintegrowana w swojej aplikacji, możesz rozpocząć pracę przy użyciu sekcji Reach interfejsu użytkownika powiadomień wypychanych do użytkowników aplikacji.  
 
 ## <a name="do-your-first-push-notification-campaign"></a>Czy pierwszy kampanię powiadomień wypychanych
@@ -68,7 +72,7 @@ Po użyciu zestawu SDK jest w pełni zintegrowana w swojej aplikacji, możesz ro
 
 * Aktywowania kampanii
 
-![test3][10]
+![Test3][10]
 
 * Teraz, po utworzeniu kampanii wystarczy aktywować go w celu powiadomienia, aby zostać przeniesiony do użytkowników.
 
@@ -83,7 +87,7 @@ Jak widać powyżej zawartości powiadomienia wypychanego obejmuje $ znacznika {
 > [!WARNING]
 > Tag informacje o aplikacji nie jest zdefiniowany dla użytkownika, użytkownik nie będą otrzymywać powiadomienia wypychanego.
 
-* wynik
+* Wynik
 
 ![Personalize2][12]
 
@@ -114,7 +118,7 @@ Jak widać powyżej zawartości powiadomienia wypychanego obejmuje $ znacznika {
 "Tylko poza aplikacją" dostawy zapewnia powiadomień wypychanych, gdy aplikacja zostanie zamknięta. To powiadomienie wypychane standardowa.
 Po wybraniu "tylko poza aplikacją", musi już podano certyfikatów od platformy, która tworzy aplikację na (APN lub GCM).
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Certyfikatów Apple Push Notification Service —](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging — certyfikat](http://developer.android.com/google/gcm/index.html) 
 
 ### <a name="in-app-only-delivery-mode"></a>"w aplikacji tylko" dostawy
@@ -192,7 +196,7 @@ Widok tekstu umożliwia prezentowanie więcej zawartości do użytkownika końco
 
 ![TextView6][26]
 
-* wynik
+* Wynik
 
 ![TextView7][27]
 
@@ -235,7 +239,7 @@ Dotyczy to również możliwość przedstawienia wywołanie akcji, takich jak pr
 * Kliknij źródło edycji przycisk Tryb przełącznika edition i zobacz, jak wygląda.
 * Zapisu zawartości, który będzie wyświetlany na przycisku akcji (przycisku akcji umożliwia aplikacji, aby wprowadzić określonej akcji, takich jak otwieranie stron aplikacji, przekierowanie do sklepu lub dowolny rodzaj źródeł, które można podać).
 * Zapisu zawartości, który będzie wyświetlany na przycisku zakończenia (klikając przycisk Zakończ, widoku sieci web zostanie usunięty).
-* wynik
+* Wynik
 
 ![WebView5][32]
 

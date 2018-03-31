@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement - Reach kampanii"
-description: "Laern sposób tworzenia i zarządzania nimi powiadomień wypychanych kampanie, za pomocą usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement - Reach kampanii
+description: Laern sposób tworzenia i zarządzania nimi powiadomień wypychanych kampanie, za pomocą usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fe124a2-a86f-4136-81ba-a9d298ec798a
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: fc88db8db11d1ed12fa95c2087c9a32b21bf4de5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d457a8d5f68f70f6bf7a5f086b5e1d65bd1ea95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-push-notification-campaigns"></a>Jak utworzyć i zarządzać kampanii obejmujących wysyłanie powiadomień wypychanych
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Utwórz nową kampanię wypychania formułą złożonych, podając wszystkie informacje potrzebne do wysyłania powiadomień wypychanych umożliwia Reach część interfejsu użytkownika. Opcje kampanii wypychania się nieco różnić w zależności od typów cztery kampanii: anonsów, ankiety, dane wypychane i Kafelki (tylko Windows Phone).
 
 ### <a name="option-applies-to"></a>Opcja ma zastosowanie do:
@@ -32,12 +36,12 @@ Utwórz nową kampanię wypychania formułą złożonych, podając wszystkie inf
 * Przedział czasu: Kafelki anonse, ankiety,
 * Testowanie: Wszystkie (anonse, ankiety, wypychania danych, Kafelki)
 
-![Reach Campaign1][20]
+![Reach-Campaign1][20]
 
 ## <a name="languages"></a>Języki
 Menu rozwijane języków umożliwia wysyłanie inna wersja programu wypychania do urządzenia, które są skonfigurowane do korzystania z różnych języków. Domyślnie wszystkie urządzenia będą otrzymywać tego samego wypychania niezależnie od języka, jakie są one skonfigurowane do korzystania. Użytkownicy ze swoimi urządzeniami, ustawić inny język otrzymają wersję językową domyślne powiadomienia Wypychanego. Wiele opcji kampanii wypychania zezwala na określanie alternatywnej zawartości dla każdego z dodatkowych języków, którą wybierzesz. 
 
-![Reach Campaign2][21]
+![Reach-Campaign2][21]
 
 ### <a name="language-differences-apply-to"></a>Różnice języka dotyczą:
 * Języki: Unikatowy języków można zaznaczyć oprócz język domyślny
@@ -63,7 +67,7 @@ Menu rozwijane języków umożliwia wysyłanie inna wersja programu wypychania d
 * Niemiecki (de) 
 * Grecki (el) 
 * Hebrajski (osoba) 
-* Hindi (cześć) 
+* Hindi (hi) 
 * Węgierski (hu) 
 * Indonezyjski (id) 
 * Włoski (go) 
@@ -72,7 +76,7 @@ Menu rozwijane języków umożliwia wysyłanie inna wersja programu wypychania d
 * Łotewski (lv) 
 * Litewski (lt) 
 * Malajski (macrolanguage) (ms) 
-* Norweski, Bokmål (nb) 
+* Norwegian Bokmål (nb) 
 * Polski (pl) 
 * Portugalski (pt) 
 * Rumuński (ro) 
@@ -94,7 +98,7 @@ Sekcja kampanii można ustawić nazwą i kategorią kampanii również tak, jakb
 > [!WARNING]
 > Jeśli używasz opcji "Ignoruj odbiorców, wypychane będą wysyłane do użytkowników za pośrednictwem interfejsu API" w sekcji "Kampanii" kampanii Reach kampanii nie będzie automatycznie wysyłać, należy wysłać go ręcznie za pośrednictwem interfejsu API Reach.
 
-![Reach Campaign3][22]
+![Reach-Campaign3][22]
 
 ### <a name="option-applies-to"></a>Opcja ma zastosowanie do:
 * Nazwa: wszystkie
@@ -111,7 +115,7 @@ Sekcja powiadomienia podstawowe ustawienia dla Twojego tym wypychania: tytuł po
 * Powiadomienia używa systemu dostarczania Capptain do nawiązania kontaktu z użytkownikiem. Można dostosować pełni visual układu/wyświetlania Twojego wypychania.
 * Zawsze: Ta opcja zapewnia wysyłanie powiadomień, które każda aplikacja jest uruchomiona lub nie.
 
-![Reach Campaign4][23]
+![Reach-Campaign4][23]
 
 ### <a name="option-applies-to"></a>Opcja ma zastosowanie do:
 * Powiadomienie: Anonse, ankiety
@@ -119,10 +123,10 @@ Sekcja powiadomienia podstawowe ustawienia dla Twojego tym wypychania: tytuł po
 ## <a name="content"></a>Zawartość
 Sekcja zawartości można użyć do zmiany zawartości anonse, ankiety, dane wypychane i Kafelki (tylko Windows Phone). Ustawienie zawartości kampanie wypychania jest specyficzne dla typu kampanii. 
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Dokumentacja interfejsu użytkownika — osiągnąć — wypychania zawartości][Link 29]
 
-![Reach Campaign5][24]
+![Reach-Campaign5][24]
 
 ## <a name="audience"></a>Grupy odbiorców
 W sekcji odbiorców umożliwia definiowanie standardowe listę elementów, aby ograniczyć kampanii limity kampanii na podstawie niestandardowych kryteriów. Standardowy zestaw opcji, aby ograniczyć odbiorców umożliwia Wypychanie do nowej lub starej użytkowników czy tylko użytkowników natywnych powiadomień wypychanych. Można również ustawić limit przydziału, aby ograniczyć liczbę użytkowników, którzy będą otrzymywać powiadomienia wypychanego. Można ręcznie edytować wyrażenie filtrowania kampanii uwzględnienie co najmniej jednego kryterium użytkowników docelowych. Można ręcznie wpisz wyrażenie odbiorców. Takie wyrażenie musi jawnie zdefiniować relację między kryteriami. Kryterium jest opisane przez identyfikator, który musi rozpoczynać się wielką literą i nie może zawierać spacji. Relacja między kryteriami może być oznaczone przy użyciu "i", "lub" operatory "nie", a także "(",")". Przykład: "Criterion1 lub (Criterion1 i nie Criterion2)".
@@ -135,13 +139,13 @@ W sekcji odbiorców umożliwia definiowanie standardowe listę elementów, aby o
 * Wypychanie tylko do aktywnych użytkowników (pole wyboru "Uwzględnij tylko użytkowników osiągalnych przy użyciu natywnych powiadomień wypychanych" i "Uwzględnij tylko aktywnych użytkowników"), aby tylko użytkownikom, którzy nadal mieć zainstalowanej aplikacji i korzystać z niego będzie musiał skanowania.
   Po zdefiniowaniu odbiorców służy przycisk Symulacja Aby dowiedzieć się, ile użytkownicy otrzymają ten wypychania. Spowoduje to obliczanie liczby znanych użytkowników potencjalnie docelowe w ramach tych odbiorców (jest to wartość szacowana na podstawie losowej próbki użytkowników). Należy pamiętać, że użytkownicy, którzy odinstalowali aplikację będą również należeli do tych odbiorców, ale nie można nawiązać połączenia.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Nowe kryterium wypychania - Reach — dokumentacja interfejsu użytkownika][Link 28]
 
-![Reach Campaign6][25]
+![Reach-Campaign6][25]
 
 ### <a name="edit-expression"></a>Edytowanie wyrażeń
-![Reach Campaign7][26]
+![Reach-Campaign7][26]
 
 ### <a name="limit-your-audience-option-applies-to"></a>Limit Twojego odbiorców opcja ma zastosowanie do:
 * Uwzględnij tylko podzestaw użytkowników: wszystkie (anonse, ankiety, wypycha dane, Kafelki)
@@ -157,10 +161,10 @@ Sekcja okresie gdy powiadomienia wypychane będą wysyłane lub przedział czasu
 > [!NOTE]
 > Kampanie, bez daty zakończenia może buforować wypchnięć lokalnie i nadal wyświetlane po ręcznie pełną kampanii. Aby uniknąć tego zachowania, określonej godziny zakończenia kampanii.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Osiągnąć — jak Tos — Planowanie][Link 3] 
 
-![Reach Campaign8][27]
+![Reach-Campaign8][27]
 
 ### <a name="settings-apply-to"></a>Ustawienia mają zastosowanie do:
 * Przedział czasu: Kafelki anonse, ankiety,
@@ -171,10 +175,10 @@ Sekcja testu służy do wysyłania tego wypychania do urządzenia test przed zap
 > [!NOTE]
 > Wypchnięcia nie po stronie serwera, które dane są rejestrowane, korzystając z przycisku do "test", tylko rejestrowane są dane dla kampanie wypychania prawdziwe.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Dokumentacja interfejsu użytkownika — Moje konto][Link 14]
 
-![Reach Campaign9][28]
+![Reach-Campaign9][28]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png

@@ -1,11 +1,11 @@
 ---
-title: "Przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera | Dokumentacja firmy Microsoft"
-description: "Przeglądanie i zarządzanie zasobami magazynowania za pomocą Eksploratora serwera"
+title: Przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera | Dokumentacja firmy Microsoft
+description: Przeglądanie i zarządzanie zasobami magazynowania za pomocą Eksploratora serwera
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 658dc064-4a4e-414b-ae5a-a977a34c930d
 ms.service: storage
 ms.devlang: multiple
@@ -13,18 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/24/2017
-ms.author: kraigb
-ms.openlocfilehash: ee91ca168acf2fa0d248e18cce64ac546740a2bd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: ghogen
+ms.openlocfilehash: 59e26082845b5934a5918ccfb3dc8b971bba7d54
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Przeglądanie i zarządzanie zasobami magazynu za pomocą Eksploratora serwera
 
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Jeśli po zainstalowaniu narzędzi Azure dla programu Microsoft Visual Studio można wyświetlić obiektów blob, kolejki i danych z tabeli z kont magazynu dla platformy Azure. Azure **magazynu** węzeł w Eksploratorze serwera zawiera dane konta emulatora magazynu lokalnego i innymi kontami magazynu Azure.
 
@@ -295,6 +295,6 @@ Usunięcie konta magazynu, zostaną również usunięte wszystkie zapisane infor
 
 Jeśli usuniesz konto magazynu z poziomu Eksploratora serwera nie wpływa na koncie magazynu lub dane, które zawiera. Po prostu usuwa odwołanie z Eksploratora serwera. Aby trwale usunąć konto magazynu, należy użyć [portalu Azure](https://portal.azure.com/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat sposobu korzystania z usług Azure storage, zobacz [dostęp do usług magazynu Azure](https://msdn.microsoft.com/library/azure/ee405490.aspx).

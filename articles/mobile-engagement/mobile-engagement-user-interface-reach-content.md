@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement - Reach zawartości"
-description: "Informacje o sposobie zarządzania zawartością unikatowy różnych typów kampanii obejmujących wysyłanie powiadomień wypychanych w usłudze Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement - Reach zawartości
+description: Informacje o sposobie zarządzania zawartością unikatowy różnych typów kampanii obejmujących wysyłanie powiadomień wypychanych w usłudze Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 982cc66ffe98aa6dff8fe290cc1c2d4bad03c9ac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>Jak zarządzać unikatową zawartość różnych typów kampanii obejmujących wysyłanie powiadomień wypychanych
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Sekcji zawartości nową kampanię reach służy do zmiany zawartości anonse, ankiety, dane wypychane i Kafelki (tylko Windows Phone). Ustawienie zawartości kampanie wypychania jest specyficzne dla typu kampanii. 
 
 ### <a name="content-types"></a>Typy zawartości:
@@ -30,14 +34,14 @@ Sekcji zawartości nową kampanię reach służy do zmiany zawartości anonse, a
 * Kafelki (tylko Windows Phone)
 
 ## <a name="content-of-announcements"></a>Zawartość anonsów
- ![Reach Content1][30] 
+ ![Reach-Content1][30] 
 
 ### <a name="choose-the-type-of-your-announcement"></a>Wybierz typ anonsu:
 * Tylko powiadomienie: jest proste powiadomień w wersji standard. Oznacza to, że jeśli użytkownik go kliknie, bez dodatkowego widoku będą wyświetlane, ale zostanie przeprowadzona tylko akcję skojarzoną do niego.
 * Tekst anonsu: to powiadomienie, które angażujący użytkownikowi przyjrzeć widoku tekstu.
 * Sieci Web anonsu: to powiadomienie, które angażujący użytkownikowi przyjrzeć widoku sieci web.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Osiągnąć — jak OT - anonsów][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>O anonsach widoku sieci Web:
@@ -49,17 +53,17 @@ Jeśli chcesz utworzyć pełnoekranowy widok sieci Web (bez domyślnych przycisk
 
 ### <a name="choose-your-action"></a>Wybierz akcję:
 ### <a name="about-action-urls"></a>O adresach URL akcji:
-Każdy adres URL, który może zostać zinterpretowany przez system operacyjny urządzenia docelowego, może być używany jako adres URL akcji.
-Każdy dedykowany adres URL obsługiwany przez aplikację (np. umożliwiający użytkownikowi przejście do konkretnego ekranu) również może być używany jako adres URL akcji.
+Każdy adres URL, który może zostać zinterpretowany przez system operacyjny urządzenia docelowego może służyć jako adres URL akcji.
+Każdy dedykowany adres URL obsługiwany przez aplikację (np. umożliwiający użytkownikowi przejście do konkretnego ekranu) również może służyć jako adres URL akcji.
 Każde wystąpienie wzorca {deviceid} jest automatycznie zastępowane identyfikatorem urządzenia wykonującego akcję. To można łatwo pobierać identyfikatory urządzeń usługi Azure Mobile Engagement za pomocą zewnętrznej usługi sieci web hostowanej na zapleczu biura.
 
 * **Android i iOS akcje**
   * Otwórz stronę sieci web
-  * http://\[domeny w przypadku witryny sieci web\] 
-  * Przykład: http://www.azure.com
+  * http://\[web-site-domain\] 
+  * Przykład:http://www.azure.com
   * Wyślij wiadomość e-mail
   * mailto:\[e-mail poczty e-mail odbiorcy\]? podmiotu =\[podmiotu\]& body =\[wiadomości\] 
-  * Example:mailto:foo@example.com? podmiotu = pozdrowienia % 20from % 20Azure % 20Mobile % 20Engagement! & body = 20stuff dobrej %!
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
   * Wyślij wiadomość SMS
   * SMS:\[numer telefonu\] 
   * Przykład: sms:2125551212
@@ -69,31 +73,31 @@ Każde wystąpienie wzorca {deviceid} jest automatycznie zastępowane identyfika
 * **Android tylko akcje**
   * Pobierz aplikację ze sklepu Play
   * Market://details?ID=\[pakiet aplikacji\] 
-  * Przykład: market://details?id=com.microsoft.office.word
-  * Rozpocznij wyszukiwanie z określoną lokalizacją geograficzną
+  * Example:market://details?id=com.microsoft.office.word
+  * Rozpocznij wyszukiwanie lokalizacją geograficzną
   * Geo:0, 0? q =\[zapytania wyszukiwania\] 
   * Przykład: geo:0, 0? q = starbucks, Paryża
 * **tylko akcje dla systemu iOS**
-  * Pobierz aplikację ze sklepu App Store
-  * http://iTunes.Apple.com/ [Kraj] /app/ [Nazwa aplikacji] /id [identyfikator aplikacji]? mt = 8 
-  * Przykład: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * Pobierz aplikację ze sklepu z aplikacjami
+  * http://itunes.apple.com/[Kraj] /app/ [Nazwa aplikacji] /id [identyfikator aplikacji]? mt = 8 
+  * Przykład:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Akcje systemu Windows
   * Otwórz stronę sieci web
-  * http://\[domeny w przypadku witryny sieci web\] 
-  * Przykład: http://www.azure.com
+  * http://\[web-site-domain\] 
+  * Przykład:http://www.azure.com
   * Wyślij wiadomość e-mail
   * mailto:\[e-mail poczty e-mail odbiorcy\]? podmiotu =\[podmiotu\]& body =\[wiadomości\] 
-  * Example:mailto:foo@example.com? podmiotu = pozdrowienia % 20from % 20Azure % 20Mobile % 20Engagement! & body = 20stuff dobrej %!
-  * Wyślij wiadomość SMS (wymagana jest aplikacja Skype ze Sklepu)
+  * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+  * Wyślij wiadomość SMS (aplikacja Skype ze sklepu wymagany)
   * SMS:\[numer telefonu\] 
   * Przykład: sms:2125551212
-  * Wybierz numer telefonu (wymagana jest aplikacja Skype ze Sklepu)
+  * Wybierz numer telefonu (aplikacja Skype ze sklepu wymagany)
   * Tel.:\[numer telefonu\] 
   * Przykład: tel:2125551212
   * Pobierz aplikację ze sklepu Play
   * MS-windows-magazynu: strony szczegółów projektu? PFN =\[identyfikator pakietu aplikacji\] 
-  * Przykład: ms-windows-magazynu: strony szczegółów projektu? PFN = 4d91298a-07cb-40fb-aecc-4cb5615d53c1
-  * Rozpocznij wyszukiwanie na mapach Bing
+  * Example:ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
+  * Rozpocznij wyszukiwanie bingmaps
   * bingmaps:? q =\[zapytania wyszukiwania\] 
   * Przykład: bingmaps:? q = starbucks, Paryża
   * Użyj schematu niestandardowego
@@ -109,20 +113,20 @@ Każde wystąpienie wzorca {deviceid} jest automatycznie zastępowane identyfika
 ### <a name="define-the-texts-of-your-announcement"></a>Zdefiniuj teksty anonsu
 Wprowadź tytuł, zawartość i przycisk teksty anonsu. Możesz zastosować odbiorców przyszłych kampanii na podstawie opinii reach o jak użytkownicy odpowiedzi kampanii. Określenie grupy docelowej odbiorców może bazować na informacji zwrotnych dotyczących czy ta kampania została właśnie wypychana, odpowiedzi, akcje lub Zakończono.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Nowe kryterium wypychania - Reach — dokumentacja interfejsu użytkownika][Link 28]
 
 ## <a name="content-of-polls"></a>Zawartość sond
-![Reach Content2][31] 
+![Reach-Content2][31] 
 
 Wprowadź tytuł, opis i przycisk teksty anonsu. Następnie należy dodać pytania i dostępnych wyborów w odpowiedzi na pytania.
 Możesz zastosować odbiorców przyszłych kampanii na podstawie opinii reach o jak użytkownicy odpowiedzi kampanii. Określenie grupy docelowej odbiorców może bazować na czy ta kampania została właśnie wypychana, odpowiedzi, akcje lub Zakończono. Określenie grupy docelowej odbiorców mogą być również oparte na opinii odpowiedzi sondowania, w którym pytanie i odpowiedź wyboru są użyte jako kryteria.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Nowe kryterium wypychania - Reach — dokumentacja interfejsu użytkownika][Link 28]
 
 ## <a name="content-of-data-pushes"></a>Zawartość wypychania danych
-![Reach Content3][32] 
+![Reach-Content3][32] 
 
 ### <a name="choose-the-type-of-your-data"></a>Wybierz typ danych:
 * Tekst
@@ -134,17 +138,17 @@ Możesz zastosować odbiorców przyszłych kampanii na podstawie opinii reach o 
 * W przypadku wybrania do dystrybuowania danych binarnych lub base64, użyj przycisku "przesłać plik" Aby przesłać plik.
 * Możesz zastosować odbiorców przyszłych kampanii na podstawie opinii reach o jak użytkownicy odpowiedzi kampanii. Określenie grupy docelowej odbiorców może bazować na czy ta kampania została właśnie wypychana, odpowiedzi, akcje lub Zakończono.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Nowe kryterium wypychania - Reach — dokumentacja interfejsu użytkownika][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>Zawartość Kafelki (tylko Windows Phone)
-![Reach Content4][33]
+![Reach-Content4][33]
 
 ### <a name="define-the-content-of-your-tile"></a>Zdefiniuj zawartość kafelka
 Ładunek kafelka jest tekst, który ma być wyświetlane na kafelku aplikacji na urządzeniach Windows Phone.
 Wypychania kafelka jest wersja usługi powiadomień wypychanych firmy Microsoft (MPNS) natywnych powiadomień wypychanych dla Windows Phone. Typu kafelka wypychania jest jedynym typem wypychania, który nie ma odpowiedzi i tak odbiorców przyszłych kampanii nie może być oparty na wyniki kampanii wypychania kafelka. 
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Natywnych powiadomień wypychanych - API Reach — dokumentacja interfejsu API][Link 4]
 
 <!--Image references-->

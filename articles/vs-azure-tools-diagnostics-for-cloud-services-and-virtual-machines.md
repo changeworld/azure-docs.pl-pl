@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie diagnostyki dla usług Azure Cloud Services i maszyn wirtualnych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować diagnostykę dla debugowania Azure cloude usług i maszyn wirtualnych (VM) w programie Visual Studio."
+title: Konfigurowanie diagnostyki dla usług Azure Cloud Services i maszyn wirtualnych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować diagnostykę dla debugowania Azure cloude usług i maszyn wirtualnych (VM) w programie Visual Studio.
 services: visual-studio-online
 documentationcenter: na
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: e70cd7b4-6298-43aa-adea-6fd618414c26
 ms.service: multiple
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: f00771d89749e7507d7f303f366fe63f537900ff
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Ustaw diagnostyki dla usług Azure Cloud Services i maszyny wirtualne
 Gdy konieczne jest rozwiązywanie problemów z usługą w chmurze platformy Azure lub maszyny wirtualnej, można użyć programu Visual Studio aby łatwiej skonfigurować diagnostyki Azure. Diagnostyka przechwytuje dane systemu i rejestrowanie danych na maszynach wirtualnych i wystąpień maszyn wirtualnych, które są uruchamiane usługi w chmurze. Dane diagnostyczne jest przekazywane do wybranego konta magazynu. Aby uzyskać więcej informacji o diagnostyce rejestrowania na platformie Azure, zobacz [Włączanie rejestrowania diagnostyki dla aplikacji sieci Web w usłudze Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
@@ -145,7 +145,7 @@ Aby przechwycić dzienniki zdarzeń systemu Windows, zaznacz **włączyć transf
 
 ![Dzienniki zdarzeń](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796664.png)
 
-Jeśli używasz Azure SDK Version 2.6 lub nowszej i chcesz określić niestandardowe źródło danych, wprowadź go w  **\<nazwa źródła danych\>**  pola tekstowego, a następnie wybierz **Dodaj**. Źródło danych jest dodawane do pliku diagnostics.cfcfg.
+Jeśli używasz Azure SDK Version 2.6 lub nowszej i chcesz określić niestandardowe źródło danych, wprowadź go w **\<nazwa źródła danych\>** pola tekstowego, a następnie wybierz **Dodaj**. Źródło danych jest dodawane do pliku diagnostics.cfcfg.
 
 Jeśli używasz 2.5 zestawu SDK platformy Azure i chcesz określić niestandardowe źródło danych, należy dodać go do `WindowsEventLog` sekcji diagnostics.wadcfgx plików tak samo, jak w poniższym przykładzie:
 
@@ -301,6 +301,6 @@ Metody **RoleEntryPoint** są nazywane w kontekście WAIISHost.exe nie w usługa
 
 W **właściwości** ustaw **Kopiuj do katalogu wyjściowego** właściwości **skopiuj zawsze**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej o diagnostyce rejestrowania na platformie Azure, zobacz [Włącz diagnostykę w usług Azure Cloud Services i maszyn wirtualnych](cloud-services/cloud-services-dotnet-diagnostics.md) i [Włączanie rejestrowania diagnostyki dla aplikacji sieci Web w usłudze Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
 

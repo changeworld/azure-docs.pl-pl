@@ -1,9 +1,9 @@
 ---
-title: "Utwórz, Wyświetl alerty i zarządzaj nimi alerty za pomocą usługi Azure Monitor — (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Nowe środowisko unified alerty Azure umożliwia tworzyć, wyświetlać i zarządzać metryki i zaloguj reguły alertów z jednego miejsca."
+title: Utwórz, Wyświetl alerty i zarządzaj nimi alerty za pomocą usługi Azure Monitor — (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Nowe środowisko unified alerty Azure umożliwia tworzyć, wyświetlać i zarządzać metryki i zaloguj reguły alertów z jednego miejsca.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 6bd2c452059950f714de304cc30c7b4bd023fd86
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Utwórz, Wyświetl i alertami można zarządzać za pomocą monitora Azure - alerty (wersja zapoznawcza)
 
@@ -136,7 +136,7 @@ Aby uzyskać **alerty dziennika** alerty mogą być oparte na:
 
 1. W [portal](https://portal.azure.com/), wybierz pozycję **Monitor** i w sekcji monitorowanie — wybierz **alertów (wersja zapoznawcza)**.  
 
-2. **Alerty pulpitu nawigacyjnego (wersja zapoznawcza)** wyświetleniem - którym unified i wyświetlane w liczbie pojedynczej tablicy wszystkie alerty Azure ![alertu pulpitu nawigacyjnego](./media/monitoring-overview-unified/alerts-preview-overview.png)
+2. **Alerty pulpitu nawigacyjnego (wersja zapoznawcza)** wyświetleniem - którym unified i wyświetlane w liczbie pojedynczej tablicy wszystkie alerty Azure ![alertu pulpitu nawigacyjnego](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
 3. Z góry od lewej do prawej pulpit nawigacyjny zawiera jeden rzut oka, następujące — które można kliknąć, aby wyświetlić listę szczegółowe:
     - *Alerty generowane*: Liczba aktualnie, alerty, które zostały spełnione logiki i w uruchamiany stanu
     - *Łączna liczba reguł alertów*: liczba alertów reguł utworzonych i w subtext, liczba, która jest włączona
@@ -147,7 +147,7 @@ Aby uzyskać **alerty dziennika** alerty mogą być oparte na:
 1. W [portal](https://portal.azure.com/), wybierz pozycję **Monitor** i w sekcji monitorowanie — wybierz **alertów (wersja zapoznawcza)**.  
 2. Wybierz **zarządzanie regułami** znajdującego się na górnym pasku, aby przejść do sekcji zarządzania reguły — w którym są wyświetlane wszystkie reguły alertu utworzone; tym alerty, które zostały wyłączone.
 3. Aby znaleźć określone reguły alertu, jeden albo użyć filtrów listy rozwijanej w górnej części, która zezwala na lista reguł alertów określonych *subskrypcji, grupy zasobów i/lub zasób*. Można również w używając przycisku Wyszukaj powyżej listy reguły alertów w okienku oznaczenie *filtrowania alertów*, jeden zapewniają — słowo kluczowe, które jest dopasowywana *nazwa alertu, stan i zasobu docelowego*; aby zobaczyć tylko reguł dopasowywania.
-   ![Alert zarządzanie regułami](./media/monitoring-overview-unified/alerts-preview-rules.png)
+   ![Alert zarządzanie regułami](./media/monitoring-alerts-unified-usage/alerts-preview-rules.png)
 4. Aby wyświetlić lub zmodyfikować określonej reguły alertu, kliknij jego nazwę, który będzie wyświetlany jako łącze.
 5. Zdefiniowane wyświetlany jest alert - w strukturze trzy etap: Grupa 3) akcji szczegółów alertu 2) warunku alertu 1). **Docelowa kryteria** można kliknąć, aby zmodyfikować logiki alertu lub nowy kryteria można dodać po użyciu ikonę Kosza do usunięcia starszych logiki. Podobnie, w sekcji szczegółów alertu - **opis** i **ważność** może być modyfikowany. Można zmienić grupy akcji i nowy, może co do łączenia z alertów za pomocą **nową grupę akcji** przycisku.
 
