@@ -59,6 +59,8 @@
       items:
         - name: Statyczny adres IP
           href: static-ip.md
+        - name: Wewnętrzny moduł równoważenia obciążenia
+          href: internal-lb.md
         - name: Ruch przychodzący i protokół TLS
           href: ingress.md
     - name: Zabezpieczenia i uwierzytelnianie
