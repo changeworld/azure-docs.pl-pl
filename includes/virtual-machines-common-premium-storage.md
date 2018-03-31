@@ -45,11 +45,11 @@ Oto niektóre z funkcji Premium Storage:
 
 * **Konto magazynu w warstwie Premium**
 
-    Aby rozpocząć korzystanie z magazyn w warstwie Premium, Utwórz konto magazynu premium dla niezarządzanego dysków. W [portalu Azure](https://portal.azure.com), aby utworzyć konto magazynu premium, wybierz **Premium** warstwę wydajności. Wybierz **magazyn lokalnie nadmiarowy (LRS)** opcji replikacji. Można również tworzyć konta magazynu premium ustawiając typ **Premium_LRS** w jednym z następujących lokalizacji:
-    * [Interfejs API REST magazynu](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) (wersji 2014-02-14 lub nowszy)
-    * [Interfejs API REST zarządzania usługami](http://msdn.microsoft.com/library/azure/ee460799.aspx) (w wersji 2014-10-01 lub nowszej wersji dla platformy Azure w przypadku wdrożeń klasycznych)
-    * [Azure API REST dostawcy zasobów magazynu](https://docs.microsoft.com/rest/api/storagerp) (w przypadku wdrożenia usługi Azure Resource Manager)
-    * [Program Azure PowerShell](/powershell/azureps-cmdlets-docs.md) (wersja 0.8.10 lub nowszy)
+    Aby rozpocząć korzystanie z magazyn w warstwie Premium, Utwórz konto magazynu premium dla niezarządzanego dysków. W [portalu Azure](https://portal.azure.com), aby utworzyć konto magazynu premium, wybierz **Premium** warstwę wydajności. Wybierz **magazyn lokalnie nadmiarowy (LRS)** opcji replikacji. Można również tworzyć konta magazynu premium ustawiając warstwę wydajności **Premium_LRS**. Aby zmienić warstwę wydajności, użyj jednej z następujących metod:
+     
+    - [Programu PowerShell dla usługi Azure Storage](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+    - [Azure CLI magazynem systemu Azure](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+    - [Azure API REST dostawcy zasobów magazynu](https://docs.microsoft.com/rest/api/storagerp) (w przypadku wdrożenia usługi Azure Resource Manager) lub jednej z bibliotek klienta dostawcy zasobów usługi Azure Storage
 
     Aby dowiedzieć się więcej na temat limitów konta magazynu premium, zobacz [magazyn w warstwie Premium cele wydajności i skalowalności](#premium-storage-scalability-and-performance-targets).
 

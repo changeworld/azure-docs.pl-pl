@@ -1,11 +1,11 @@
 ---
-title: "Integracja zestawu SDK osiągnąć uniwersalnych aplikacji systemu Windows"
-description: "Integrowanie dotarcia do usługi Azure Mobile Engagement z uniwersalnych aplikacji systemu Windows"
+title: Integracja zestawu SDK osiągnąć uniwersalnych aplikacji systemu Windows
+description: Integrowanie dotarcia do usługi Azure Mobile Engagement z uniwersalnych aplikacji systemu Windows
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a31ca1d6-856f-4aec-898a-07969ae5f7ec
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8472af2ac72a1976871970963851be775b19859b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Integracja zestawu SDK osiągnąć uniwersalnych aplikacji systemu Windows
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Wykonaj procedury integracji opisane w sekcji [Windows Universal integracji zestawu SDK usługi Engagement](mobile-engagement-windows-store-integrate-engagement.md) przed wykonaniem tego przewodnika.
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-universal-project"></a>Osadzanie SDK Reach usługi Engagement w projekcie uniwersalnych systemu Windows
-Nie ma nic do dodania. `EngagementReach`referencje i zasoby są już w projekcie.
+Nie ma nic do dodania. `EngagementReach` referencje i zasoby są już w projekcie.
 
 > [!TIP]
 > Można dostosować obrazy znajdujące się w `Resources` folderu projektu, szczególnie ikona marki (domyślnie tej ikony Engagement). W aplikacjach uniwersalnych można również przenosić `Resources` folder dla projektu udostępnionego, aby udostępnić jego zawartość między aplikacjami, ale będą musieli zachować `Resources\EngagementConfiguration.xml` pliku w domyślnej lokalizacji, ponieważ jest on zależny platformy.
@@ -67,7 +71,7 @@ Wybór między dwoma integracji można podsumować w ten sposób:
 ### <a name="overlay-integration"></a>Integracja z nakładką
 Nakładka zaangażowania dynamicznie dodaje elementy interfejsu użytkownika używana do wyświetlania kampanie Zasięgowe na stronie. Jeśli nakładki nie własnych układu należy rozważyć widoki sieci web integracji ręczne zamiast tego.
 
-W przypadku zmiany pliku .xaml `EngagementPage` odwołanie do`EngagementPageOverlay`
+W przypadku zmiany pliku .xaml `EngagementPage` odwołanie do `EngagementPageOverlay`
 
 * Dodaj deklaracje przestrzeni nazw:
   
@@ -82,7 +86,7 @@ W przypadku zmiany pliku .xaml `EngagementPage` odwołanie do`EngagementPageOver
             <!-- Your layout -->
         </engagement:EngagementPage>
 
-**Z EngagementPageOverlay:**
+**With EngagementPageOverlay:**
 
         <engagement:EngagementPageOverlay 
             xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay">
@@ -108,7 +112,7 @@ Następnie w pliku .cs tag strony w `EngagementPageOverlay` zamiast `EngagementP
               }
             }
 
-**Z EngagementPageOverlay:**
+**With EngagementPageOverlay:**
 
             using Microsoft.Azure.Engagement.Overlay;
 
@@ -279,7 +283,7 @@ Wywołania zwrotnego można ustawić w metodzie "Publicznego App() {}" z `App.xa
 > 
 > 
 
-## <a id="push-channel-sharing"></a>Wypychanie do udostępniania kanału
+## <a id="push-channel-sharing"></a> Wypychanie do udostępniania kanału
 Jeśli używane są powiadomienia wypychane do innych celów w aplikacji następnie należy użyć kanału wypychanych udostępniania funkcji zestawu SDK usługi Engagement. Pozwoli to uniknąć brakujących wypychania.
 
 * Możesz podać własne kanału wypychania do inicjowania Reach usługi Engagement. Zestaw SDK będą używać go zamiast nowego żądania.

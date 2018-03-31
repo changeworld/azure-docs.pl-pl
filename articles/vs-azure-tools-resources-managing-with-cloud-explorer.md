@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie zasobami Azure za pomocą Eksplorator chmury | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać Eksploratora chmury do przeglądania i zarządzania zasobami Azure w programie Visual Studio."
+title: Zarządzanie zasobami Azure za pomocą Eksplorator chmury | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać Eksploratora chmury do przeglądania i zarządzania zasobami Azure w programie Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 6347dc53-f497-49d5-b29b-e8b9f0e939d7
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
-ms.author: kraigb
-ms.openlocfilehash: 6e6d8d559f0251b71bfa6d529ead82a246cb3235
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 676feb0b01ec5622feff4351ade54e9856e54b13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>Zarządzanie zasobami skojarzone z konta platformy Azure w Visual Studio Cloud Explorer
 Eksplorator chmury umożliwia wyświetlanie Twoich zasobów platformy Azure i grup zasobów, sprawdzić ich właściwości i akcje developer klucza diagnostycznych z poziomu programu Visual Studio. 

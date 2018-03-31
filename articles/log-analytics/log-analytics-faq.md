@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące analizy dzienników platformy Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące analizy dzienników, przejdź do [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i opublikuj swoje pytania. Po zadawane pytania możemy dodać ją do tego artykułu, aby można je znaleźć szybkie i łatwe.
@@ -51,7 +51,7 @@ Odpowiedź: nie. Analiza dzienników to usługa w chmurze skalowalne, przetwarza
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Q. Jak rozwiązywać Jeśli analizy dzienników nie zbiera danych?
 
-A. Jeśli są na wolnych warstwy cenowej i zostały wysłane więcej niż 500 MB danych w ciągu dnia, gromadzenie danych zatrzymuje się do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną analizy dzienników zatrzymuje zbieranie danych lub dane są prawdopodobnie brakuje.  
+Odpowiedź: dla subskrypcji i obszar roboczy utworzony przed 2 kwietnia 2018, który znajduje się na *wolne* cenowym, jeśli więcej niż 500 MB danych są wysyłane w ciągu dnia, zatrzymuje zbieranie danych do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną analizy dzienników zatrzymuje zbieranie danych lub dane są prawdopodobnie brakuje.  
 
 Analiza dzienników tworzy zdarzenie typu *pulsu* i może służyć do określenia, czy zatrzymania zbierania danych. 
 
@@ -68,7 +68,7 @@ W poniższej tabeli opisano przyczyn, które zatrzymania zbierania danych i zale
 | Osiągnięto limit dane w warstwie bezpłatna<sup>1</sup>       | Poczekaj, aż do następnego miesiąca dla kolekcji do automatycznego ponownego uruchamiania lub<br> Zmień na płatną warstwy cenowej |
 | Subskrypcja platformy Azure jest w stanie wstrzymania ze względu na: <br> Bezpłatna wersja próbna została zakończona <br> Ważność Azure — dostęp próbny <br> Osiągnięto limit wydatków co miesiąc (na przykład na subskrypcję MSDN lub Visual Studio)                          | Konwertuj na płatną subskrypcję <br> Konwertuj na płatną subskrypcję <br> Usuń limit lub poczekaj na zresetowanie limitu |
 
-<sup>1</sup> czy obszaru roboczego znajduje się na warstwę cenową bezpłatna, jest ograniczona do wysyłania do usługi 500 MB danych na dzień. Po osiągnięciu dzienny limit gromadzenie danych zatrzymuje się do następnego dnia. Dane wysyłane podczas zatrzymania zbierania danych nie jest indeksowana i nie jest dostępny do wyszukiwania. Po wznowieniu pracy zbierania danych, przetwarzanie odbywa się tylko w przypadku nowych danych wysyłane. 
+<sup>1</sup> jeśli znajduje się w obszarze roboczym *wolne* warstwy cenowej, jest ograniczona do wysyłania do usługi 500 MB danych na dzień. Po osiągnięciu dzienny limit gromadzenie danych zatrzymuje się do następnego dnia. Dane wysyłane podczas zatrzymania zbierania danych nie jest indeksowana i nie jest dostępny do wyszukiwania. Po wznowieniu pracy zbierania danych, przetwarzanie odbywa się tylko w przypadku nowych danych wysyłane. 
 
 Analiza dzienników używa czas UTC i uruchamia każdego dnia o północy czasu UTC. Jeśli obszar roboczy osiągnie limit dzienny, przetwarzania wznawia podczas pierwszej godziny następnego dnia UTC.
 
@@ -96,7 +96,7 @@ A. Nie, nie jest obecnie możliwa do odczytu z dowolnego tabel lub kontenerów w
 
 A. Usługi analizy dzienników jest oparty na platformie Azure. Adresy IP analizy dziennika znajdują się w [zakresów IP centrum danych Microsoft Azure](http://www.microsoft.com/download/details.aspx?id=41653).
 
-Podczas wdrożenia usługi zostały wprowadzone, zmieniać rzeczywiste adresów IP usługi analizy dzienników. Nazwy DNS, aby zezwolić za pośrednictwem zapory są udokumentowane w [skonfigurować ustawienia serwera proxy i zapory w analizy dzienników](log-analytics-proxy-firewall.md).
+Podczas wdrożenia usługi zostały wprowadzone, zmieniać rzeczywiste adresów IP usługi analizy dzienników. Nazwy DNS, aby zezwolić za pośrednictwem zapory są udokumentowane w artykule [wymagania systemowe](log-analytics-concept-hybrid.md#prerequisites).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Q. ExpressRoute można używać do nawiązywania połączenia z platformy Azure. Moje analizy dzienników ruchu używa połączenie ExpressRoute?
 
@@ -144,7 +144,7 @@ A. Planu free Ustawia dzienny limit 500 MB na obszar roboczy. Plany warstwy stan
 
 Agent Log Analytics została zaprojektowana w celu upewnij się, że ma ona niewielkie rozmiary. Ilość danych w zależności od rozwiązania, które można włączyć. Można znaleźć szczegółowe informacje na temat ilość danych i zobaczyć podział przez rozwiązanie w [użycia](log-analytics-usage.md) strony.
 
-Aby uzyskać więcej informacji można znaleźć [blogu klienta](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) o niewielkie rozmiary OMS agenta.
+Aby uzyskać więcej informacji można znaleźć [blogu klienta](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) przedstawiający ich wyników po przeprowadzeniu oceny wykorzystania zasobów (miejsca) agent pakietu OMS.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Q. Jaka przepustowość sieci jest używany przez program Microsoft Management Agent (MMA) podczas wysyłania danych do analizy dzienników?
 

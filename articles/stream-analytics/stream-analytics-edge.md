@@ -1,12 +1,12 @@
 ---
-title: "Usługa Azure Stream Analytics na krawędzi IoT (wersja zapoznawcza)"
-description: "Tworzenie zadań krawędzi w Azure Stream Analytics i wdrażać je dla urządzenia uruchomiona Azure IoT krawędzi."
-keywords: "strumień danych, iot, krawędzi"
+title: Usługa Azure Stream Analytics na krawędzi IoT (wersja zapoznawcza)
+description: Tworzenie zadań krawędzi w Azure Stream Analytics i wdrażać je dla urządzenia uruchomiona Azure IoT krawędzi.
+keywords: strumień danych, iot, krawędzi
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: f1ff8d6f64a04ab03c8170fd2b6a7c881227da2e
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 475ca357c8445e8a7c672406f919af1d99a0933b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Usługa Azure Stream Analytics na krawędzi IoT (wersja zapoznawcza)
 
@@ -108,7 +108,7 @@ Te kroki opisano w dokumentacji krawędzi IoT [Windows](https://docs.microsoft.c
 ##### <a name="add-asa-to-your-deployment"></a>Dodaj ASA do wdrożenia
 - W portalu Azure Otwórz Centrum IoT, przejdź do Eksploratora krawędzi IoT i otwarcie bloku z urządzenia.
 - Wybierz **ustawić modułów**, a następnie wybierz pozycję **Import Azure usługi IoT krawędzi Module**.
-- Wybierz subskrypcję i zadania krawędzi ASA, utworzony. Następnie wybierz konta magazynu. Kliknij przycisk Zapisz.
+- Wybierz subskrypcję i zadania krawędzi ASA, utworzony. Następnie wybierz swoje konto magazynu. Kliknij przycisk Zapisz.
 ![Dodaj moduł ASA we wdrożeniu](media/stream-analytics-edge/set_module.png)
 
 
@@ -210,7 +210,7 @@ Aby uzyskać więcej informacji, zobacz [Docker w dokumentacji systemu Windows w
 Aby uzyskać dodatkową pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Więcej informacji na temat krawędzi Iot Azure](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA na krawędzi IoT — samouczek](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

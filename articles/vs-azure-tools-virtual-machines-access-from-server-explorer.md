@@ -1,11 +1,11 @@
 ---
-title: "Uzyskiwanie dostępu do maszyn wirtualnych platformy Azure z poziomu Eksploratora serwera | Dokumentacja firmy Microsoft"
-description: "GET, omówienie sposobu wyświetlania tworzenie i zarządzanie nimi Azure maszynach wirtualnych (VM) w Eksploratorze serwera w programie Visual Studio."
+title: Uzyskiwanie dostępu do maszyn wirtualnych platformy Azure z poziomu Eksploratora serwera | Dokumentacja firmy Microsoft
+description: GET, omówienie sposobu wyświetlania tworzenie i zarządzanie nimi Azure maszynach wirtualnych (VM) w Eksploratorze serwera w programie Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: eb3afde6-ba90-4308-9ac1-3cc29da4ede0
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/31/2017
-ms.author: kraigb
-ms.openlocfilehash: fbd11777c86a19d2b6b8e5125e467d2413b5d736
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: ghogen
+ms.openlocfilehash: bbb52b07994ca796683bbcfe5a77ebb78df3bade
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>Uzyskiwanie dostępu do maszyn wirtualnych platformy Azure z poziomu Eksploratora serwera
 

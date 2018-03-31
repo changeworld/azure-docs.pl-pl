@@ -1,8 +1,8 @@
 ---
-title: "Zapisane wyszukiwania i alertów w rozwiązaniach pakietu OMS | Dokumentacja firmy Microsoft"
-description: "Rozwiązania w OMS zwykle zawierają zapisane wyszukiwania w analizy dzienników do analizowania danych zebranych przez rozwiązanie.  Mogą również definiować alertów umożliwiających powiadamianie użytkownika lub automatyczne wykonywanie akcji w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania analizy dzienników zapisane wyszukiwania i alertów w szablonie usługi Resource Manager, aby mogły one zostać uwzględnione w rozwiązaniach do zarządzania."
+title: Zapisane wyszukiwania i alertów w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
+description: Rozwiązania do zarządzania zwykle zawierają zapisane wyszukiwania w analizy dzienników do analizowania danych zebranych przez rozwiązanie.  Mogą również definiować alertów umożliwiających powiadamianie użytkownika lub automatyczne wykonywanie akcji w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania analizy dzienników zapisane wyszukiwania i alertów w szablonie usługi Resource Manager, aby mogły one zostać uwzględnione w rozwiązaniach do zarządzania.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Dodawanie analizy dzienników zapisane wyszukiwania i alerty OMS rozwiązania do zarządzania (wersja zapoznawcza)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie analizy dzienników zapisane wyszukiwania i alerty rozwiązania do zarządzania (wersja zapoznawcza)
 
 > [!NOTE]
-> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania w OMS, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.   
+> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.   
 
 
-[Rozwiązania do zarządzania w OMS](operations-management-suite-solutions.md) zazwyczaj uwzględnia [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w analizy dzienników do analizowania danych zebranych przez rozwiązanie.  Mogą również określić [alerty](../log-analytics/log-analytics-alerts.md) powiadamia użytkownika lub automatyczne wykonywanie akcji w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania analizy dzienników zapisane wyszukiwania i alertów w [szablonu zarządzanie zasobami](../resource-manager-template-walkthrough.md) aby mogły one zostać uwzględnione w [rozwiązań do zarządzania](operations-management-suite-solutions-creating.md).
+[Rozwiązania do zarządzania](operations-management-suite-solutions.md) zazwyczaj uwzględnia [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w analizy dzienników do analizowania danych zebranych przez rozwiązanie.  Mogą również określić [alerty](../log-analytics/log-analytics-alerts.md) powiadamia użytkownika lub automatyczne wykonywanie akcji w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania analizy dzienników zapisane wyszukiwania i alertów w [szablonu zarządzanie zasobami](../resource-manager-template-walkthrough.md) aby mogły one zostać uwzględnione w [rozwiązań do zarządzania](operations-management-suite-solutions-creating.md).
 
 > [!NOTE]
-> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [tworzenia rozwiązań do zarządzania w Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)  
+> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](operations-management-suite-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule przyjęto założenie, że znasz już jak [tworzenie rozwiązania do zarządzania](operations-management-suite-solutions-creating.md) i struktura [szablonu usługi Resource Manager](../resource-group-authoring-templates.md) i plik rozwiązania.
 
 
 ## <a name="log-analytics-workspace"></a>Obszar roboczy analizy dzienników
-Wszystkie zasoby w analizy dzienników znajdują się w [obszaru roboczego](../log-analytics/log-analytics-manage-access.md).  Zgodnie z opisem w [OMS obszaru roboczego i konto automatyzacji](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), obszar roboczy nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, zainstaluj rozwiązania nie powiedzie się.
+Wszystkie zasoby w analizy dzienników znajdują się w [obszaru roboczego](../log-analytics/log-analytics-manage-access.md).  Zgodnie z opisem w [obszaru roboczego analizy dzienników i konto automatyzacji](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), obszar roboczy nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, zainstaluj rozwiązania nie powiedzie się.
 
 Nazwa obszaru roboczego jest nazwy każdego zasobu analizy dzienników.  Ma to rozwiązanie z **obszaru roboczego** parametru, jak w poniższym przykładzie savedsearch zasobu.
 
@@ -50,7 +50,7 @@ Wszystkie zasoby analizy dzienników zdefiniowane w szablonie usługi Resource M
 | Wersją z obszaru roboczego | Wersja interfejsu API | Zapytanie |
 |:---|:---|:---|
 | V1 (starsze)   | 2015-11-01-preview | Format starszej wersji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =  |
-| v2 (uaktualnienia) | 2015-11-01-preview | Format starszej wersji.  Konwertowana na format uaktualniony podczas instalacji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =<br>Przekonwertować: Zdarzenie &#124; gdzie EventLevelName == "Error"  |
+| v2 (uaktualnienia) | 2015-11-01-preview | Format starszej wersji.  Konwertowana na format uaktualniony podczas instalacji.<br> Przykład: Wpisz = EventLevelName zdarzenie błędu =<br>Przekonwertować: zdarzenie &#124; gdzie EventLevelName == "Error"  |
 | v2 (uaktualnienia) | 2017-03-03-preview | Uaktualnij format. <br>Przykład: Zdarzenie &#124; gdzie EventLevelName == "Error"  |
 
 

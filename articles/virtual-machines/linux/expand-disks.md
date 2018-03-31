@@ -1,24 +1,24 @@
 ---
-title: "Rozwiń węzeł wirtualne dyski twarde na Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozszerzyć wirtualne dyski twarde na Maszynę wirtualną systemu Linux 2.0 interfejsu wiersza polecenia platformy Azure"
+title: Rozwiń węzeł wirtualne dyski twarde na Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozszerzyć wirtualne dyski twarde na Maszynę wirtualną systemu Linux 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
-author: iainfoulds
+documentationcenter: ''
+author: roygara
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
-ms.author: iainfou
-ms.openlocfilehash: f717aca4f68811b5973fcee8791ac7db3a66e74a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: rogarana
+ms.openlocfilehash: c3dcd2f9c71b64ac48c2c7b6f51d2694d649c15e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Jak rozszerzyć wirtualne dyski twarde na maszynę Wirtualną systemu Linux za pomocą wiersza polecenia platformy Azure
 Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zwykle 30 GB na maszynie wirtualnej systemu Linux (VM) na platformie Azure. Możesz [Dodaj dyski danych](add-disk.md) zapewnienie dodatkowego miejsca, ale mogą też chcieć rozwiń istniejącego dysku danych. Ten artykuł zawiera szczegóły dotyczące sposobu rozszerzania zarządzanych dysków dla maszyny Wirtualnej systemu Linux 2.0 interfejsu wiersza polecenia platformy Azure. Można również rozwinąć niezarządzane dysk systemu operacyjnego z [Azure CLI 1.0](expand-disks-nodejs.md).

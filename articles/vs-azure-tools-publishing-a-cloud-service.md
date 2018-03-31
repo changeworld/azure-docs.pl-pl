@@ -1,11 +1,11 @@
 ---
-title: "Publikowanie za pomocą narzędzia Azure usługa w chmurze | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu publikowania projektów usług w chmurze platformy Azure przy użyciu programu Visual Studio."
+title: Publikowanie za pomocą narzędzia Azure usługa w chmurze | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu publikowania projektów usług w chmurze platformy Azure przy użyciu programu Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: e854c46329f092388531a73ada50829c4579806d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: ghogen
+ms.openlocfilehash: 59a34f92937136079d8c693a1747b2d54f37e6d8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publishing-a-cloud-service-using-visual-studio"></a>Publikowanie usługi w chmurze przy użyciu programu Visual Studio
 

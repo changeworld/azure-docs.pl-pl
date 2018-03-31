@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS SDK omówienie | Dokumentacja firmy Microsoft"
-description: "Najnowsze aktualizacje i procedury dla systemu iOS SDK dla usługi Azure Mobile Engagement"
+title: Azure Mobile Engagement iOS SDK omówienie | Dokumentacja firmy Microsoft
+description: Najnowsze aktualizacje i procedury dla systemu iOS SDK dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3a03bbd6-bcf8-436c-9775-5a8188629252
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 6acd343782a3ee07750e27ec3022ff81cedfadee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c9d2ddeacd1d05142019f22eedf4eb3bb4f06cd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="ios-sdk-for-azure-mobile-engagement"></a>Zestaw iOS SDK dla usługi Azure Mobile Engagement
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Zacznij tutaj uzyskać szczegółowe informacje na temat integracji Azure Mobile Engagement w aplikacji systemu iOS. Jeśli chcesz go wypróbować najpierw, upewnij się, jak naszym [samouczek 15 minut](mobile-engagement-ios-get-started.md).
 
 Kliknij, aby wyświetlić [zawartość zestawu SDK](mobile-engagement-ios-sdk-content.md)
@@ -69,7 +73,7 @@ XCode 8 jest obowiązkowy, począwszy od wersji 4.0.0 zestawu SDK.
 #### <a name="usernotifications-framework"></a>UserNotifications framework
 Konieczne jest dodanie `UserNotifications` framework w poszczególnych faz kompilacji.
 
-w obszarze Eksplorator projektów Otwórz okienko z projektu i wybierz docelowy o poprawnej. Następnie otwórz **"Fazy kompilacji"** kartę i w **"Binarny z bibliotekami"** menu Dodaj framework `UserNotifications.framework` -łącze jako`Optional`
+w obszarze Eksplorator projektów Otwórz okienko z projektu i wybierz docelowy o poprawnej. Następnie otwórz **"Fazy kompilacji"** kartę i w **"Binarny z bibliotekami"** menu Dodaj framework `UserNotifications.framework` -łącze jako `Optional`
 
 #### <a name="application-push-capability"></a>Możliwości wypychania aplikacji
 XCode 8 może zresetować aplikacji push możliwości, dokładnie Sprawdź ten `capability` kartę wybranych docelowych.

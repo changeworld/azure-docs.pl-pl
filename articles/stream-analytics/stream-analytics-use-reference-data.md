@@ -1,12 +1,11 @@
 ---
-title: "Użyj tabel danych i wyszukiwania odwołań w Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Użycie danych referencyjnych w kwerendzie analiza strumienia"
-keywords: "Tabela odnośnika, dane referencyjne"
+title: Użyj tabel danych i wyszukiwania odwołań w Stream Analytics | Dokumentacja firmy Microsoft
+description: Użycie danych referencyjnych w kwerendzie analiza strumienia
+keywords: Tabela odnośnika, dane referencyjne
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 06103be5-553a-4da1-8a8d-3be9ca2aff54
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: f7366b4b7d78add47ebab4a6fc72717107814f1f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 77a4a9a28060206a30c658216156d7339bddc398
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-reference-data-or-lookup-tables-in-a-stream-analytics-input-stream"></a>Przy użyciu tabel danych lub wyszukiwanie odwołań w Stream Analytics strumienia wejściowego
 Dane referencyjne (znanej także jako tabela odnośnika) jest ograniczone zestawu danych, który jest statyczny lub spowalniając zmianę charakteru, używany do wyszukiwania lub do skorelowania ze strumienia danych. Aby użyć danych odwołanie do zadania usługi analiza strumienia Azure, zwykle użyje [dołączenia danych odwołania](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. Stream Analytics korzysta z magazynu obiektów Blob platformy Azure jako warstwy magazynu danych referencyjnych i z odwołaniem do fabryki danych Azure danych można przekształcone lub kopiowane do magazynu obiektów Blob platformy Azure, do użycia jako dane odwołanie z [dowolnej liczby oparte na chmurze i lokalnych magazynów danych](../data-factory/copy-activity-overview.md). Dane referencyjne ma formę sekwencji obiektów blob (zdefiniowany w konfiguracji wejściowych) w rosnącej kolejności Data/Godzina podana w nazwie obiektu blob. On **tylko** obsługuje dodawanie na końcu sekwencji za pomocą daty/godziny **większa** niż określona przez ostatnich obiektów blob w sekwencji.

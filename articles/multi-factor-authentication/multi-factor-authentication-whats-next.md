@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4259715fbb062bfb170509c928b5a1ad898ea394
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -228,11 +228,7 @@ Niezależnie od tego, czy jest włączona funkcja zaufanych adresów IP Weryfika
 
 Niektóre aplikacje, takie jak pakiet Office 2010 lub starszy i Apple Mail nie obsługują weryfikacji dwuetapowej. Aplikacje nie są skonfigurowane do akceptowania drugi weryfikacji. Aby korzystać z tych aplikacji, korzystać z _hasła aplikacji_ funkcji. Hasło aplikacji zamiast hasła tradycyjnych umożliwia Zezwalaj aplikacji na pominięcie weryfikacji dwuetapowej i kontynuować pracę.
 
->[!NOTE]
->Nowoczesne uwierzytelnianie dla klientów programu Microsoft Office 2013 i nowsze
-> 
->Klienci Office 2013 i później (w tym Outlook) obsługuje protokoły nowoczesnego uwierzytelniania i można ją włączyć do pracy z weryfikacji dwuetapowej. Po włączeniu klienta hasła aplikacji nie są wymagane dla klienta. Aby uzyskać więcej informacji, zobacz [anonsowania publicznej wersji zapoznawczej nowoczesnego uwierzytelniania pakietu Office 2013](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
->
+Nowoczesne uwierzytelnianie jest obsługiwana dla klientów programu Microsoft Office 2013 lub nowszym. Pakiet Office 2013 klientów, w tym programu Outlook, obsługuje protokoły nowoczesnego uwierzytelniania i można ją włączyć do pracy z weryfikacji dwuetapowej. Po włączeniu klienta hasła aplikacji nie są wymagane dla klienta.
 
 ### <a name="considerations-about-app-passwords"></a>Zagadnienia dotyczące haseł aplikacji
 

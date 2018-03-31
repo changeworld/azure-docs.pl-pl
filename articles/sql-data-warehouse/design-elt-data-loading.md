@@ -1,29 +1,24 @@
 ---
-title: "Projektowanie ELT dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Łączenie technologie przenoszenie danych do platformy Azure i ładowanie danych do usługi SQL Data Warehouse można zaprojektować proces wyodrębniania, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse."
+title: Zamiast ETL, projektowanie ELT do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zamiast ETL zaprojektować wyodrębniania, obciążenia i przekształcenie (ELT) proces ładowania danych lub magazyn danych SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
-ms.assetid: 2253bf46-cf72-4de7-85ce-f267494d55fa
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 12/12/2017
-ms.author: cakarst;barbkess
-ms.openlocfilehash: e94dca69c77c46034e318205279be5188e1371f5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.component: design
+ms.date: 03/28/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Projektowanie wyodrębniania, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse
 
-Łączenie technologii dla docelowej danych w magazynie Azure i ładowanie danych do usługi SQL Data Warehouse można zaprojektować proces wyodrębniania, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse. W tym artykule przedstawiono technologie, które obsługuje ładowania przy użyciu programu Polybase, a następnie koncentruje się na projektowanie procesu ELT z użyciem aparatu PolyBase z T-SQL, aby załadować dane do magazynu danych SQL z usługi Magazyn Azure.
+Zamiast wyodrębniania, przekształcania i ładowania (ETL) należy zaprojektować wyodrębniania, obciążenia i przekształcenie (ELT) proces ładowania danych do usługi Azure SQL Data Warehouse. W tym artykule przedstawiono sposoby projektowania ELT procesu, który przenosi dane do magazynu danych Azure.
 
 ## <a name="what-is-elt"></a>Co to jest ELT?
 
@@ -63,7 +58,7 @@ Program PolyBase ładuje dane z UTF-8 i UTF-16 zakodowane rozdzielane pliki teks
 Jeśli dane nie jest zgodny z PolyBase, możesz użyć [bcp](sql-data-warehouse-load-with-bcp.md) lub [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP ładuje bezpośrednio do usługi SQL Data Warehouse bez pośrednictwa magazynu obiektów Blob platformy Azure i jest przeznaczona tylko w przypadku małych obciążeń. Uwaga: wydajność obciążenia tych opcji jest znacznie mniejsza niż PolyBase. 
 
 
-## <a name="extract-source-data"></a>Wyodrębnij źródła danych
+## <a name="extract-source-data"></a>Wyodrębnianie danych źródłowych
 
 Pobieranie danych z systemu źródłowego zależy od źródła.  Celem jest przenoszenia danych do rozdzielane pliki tekstowe. Jeśli używasz programu SQL Server, możesz użyć [narzędzia wiersza polecenia bcp](/sql/tools/bcp-utility) do eksportowania danych.  
 
@@ -104,7 +99,7 @@ Aby sformatować pliki tekstowe:
 - Formatowanie danych w pliku tekstowym, aby były wyrównane z typami danych i kolumn w tabeli docelowej usługi SQL Data Warehouse. Niespójność między typami danych w plikach tekstowych zewnętrznych i tabeli magazynu danych powoduje, że wierszy, które mają zostać odrzucone podczas ładowania.
 - Oddzielne pola w pliku tekstowym z terminator.  Należy użyć znaku lub sekwencji znaków, które nie zostało odnalezione w źródle danych. Użyj terminator określono [utworzyć EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
-## <a name="load-to-a-staging-table"></a>Ładowanie do tabeli tymczasowej
+## <a name="load-to-a-staging-table"></a>Ładowanie do tabeli przejściowej
 Aby pobrać dane do magazynu danych, jej sprawdza się dobrze w pierwszym załadowaniu danych do tabeli tymczasowej. Za pomocą tabeli przemieszczania, może obsługiwać błędy bez zakłócania tabele produkcji, a nie jest uruchomiona wycofywania operacji względem tabeli produkcji. Tabeli przemieszczania daje również uruchomić przekształcenia przed Wstawianie danych do tabel w środowisku produkcyjnym za pomocą usługi SQL Data Warehouse.
 
 Aby załadować T-SQL, uruchom [Tworzenie tabeli jako wybierz (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) instrukcji T-SQL. To polecenie wstawia wyniki instrukcję select do nowej tabeli. Po wybraniu instrukcji z tabeli zewnętrznej, importuje dane zewnętrzne. 
@@ -124,7 +119,7 @@ AS SELECT * FROM [ext].[Date]
 ## <a name="transform-the-data"></a>Przekształcanie danych
 Gdy dane znajdują się w tabeli przemieszczania, wykonaj transformacje, których wymaga obciążenie. Następnie przenieść dane do tabeli produkcji.
 
-## <a name="insert-data-into-production-table"></a>Wstawianie danych do tabeli produkcji
+## <a name="insert-data-into-production-table"></a>Wstawianie danych do tabeli produkcyjnej
 
 INSERT INTO... Instrukcja SELECT przenosi dane z tabeli tymczasowej do tabeli trwałych. 
 
@@ -133,7 +128,7 @@ Podczas projektowania proces ETL, spróbuj uruchomiony proces na niewielką ilo�
 ## <a name="partner-loading-solutions"></a>Rozwiązań partnerskich ładowania
 Wiele naszych partnerów ma ładowania rozwiązania. Aby dowiedzieć się więcej, zobacz listę naszych [rozwiązania partnerów](sql-data-warehouse-partner-business-intelligence.md). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Ładowania wskazówki, zobacz [wskazówki dotyczące ładowania danych](guidance-for-loading-data.md).
 
 

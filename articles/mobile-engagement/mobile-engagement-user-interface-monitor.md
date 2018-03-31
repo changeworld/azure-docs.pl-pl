@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement — Monitor"
-description: "Informacje o sposobie monitorowania w czasie rzeczywistym danych aplikacji przy użyciu usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement — Monitor
+description: Informacje o sposobie monitorowania w czasie rzeczywistym danych aplikacji przy użyciu usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b370a5db1acee37ce234f5ec3f004be20719cfea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-monitor-real-time-data-about-your-application"></a>Jak monitorować dane w czasie rzeczywistym dotyczące Twojej aplikacji
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 W tym artykule opisano **MONITOR** karcie **Mobile Engagement** portalu. Możesz użyć **Mobile Engagement** portalu do monitorowania i zarządzania aplikacjami mobilnymi. Należy pamiętać, że można uruchomić przy użyciu portalu należy najpierw utworzyć **usługi Azure Mobile Engagement** konta. 
 
 Monitor część interfejsu użytkownika analiz w czasie rzeczywistym informacje i pozwala ustawić alerty po osiągnięciu progów większość tych samych informacji, która jest dostępna w przeszłości [ANALYTICS](mobile-engagement-user-interface-analytics.md) część interfejsu użytkownika. Zobacz **słownik** w sekcji [pojęcia](http://go.microsoft.com/fwlink/?LinkId=525555) tematu definicje terminów i skrótów, analizy i monitorowanie (takie jak następujące: aktywnego użytkownika, nowy użytkownik zachowane użytkowników, sesji, ścieżki użytkownika Wykres, mapy użytkowników, adresy URL śledzenia, trendów, działania, zdarzenie, zadania, błąd, dodatkowe informacje, awarii i App-info).
@@ -56,7 +60,7 @@ Można również określić minimalna częstotliwość wykrywania, który jest m
 
 ![Monitor4][17]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Pojęcia][Link 6]
 * [Usługa Przewodnik rozwiązywania problemów][Link 24]
 

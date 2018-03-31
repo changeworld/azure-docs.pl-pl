@@ -1,11 +1,11 @@
 ---
-title: "Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement"
-description: "Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement"
+title: Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement
+description: Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a5487793-1a12-4f6c-a1cf-587c5a671e6b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 35bd92e52b7a02f58620a03156902f9f91be57ae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fffff6de996b8295639b3d595c5f778de8a0f74f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-on-android"></a>Integrowanie usługi Engagement w systemie Android
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Aplikacje uniwersalne systemu Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -44,7 +48,7 @@ Pobierz zestaw SDK systemu Android z [tutaj](https://aka.ms/vq9mfn) uzyskać `mo
 > [!IMPORTANT]
 > W przypadku tworzenia pakietu aplikacji z narzędzia ProGuard, należy zachować niektóre klasy. Możesz użyć następującego fragmentu kodu konfiguracji:
 > 
-> -zachować Klasa publiczna * rozszerza android.os.IInterface — Zachowaj {com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS — klasa
+> -keep public class * extends android.os.IInterface -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
 > 
 > <methods>; }
 > 
@@ -97,7 +101,7 @@ Tak samo postąpić w `Application.onTerminate()`, `Application.onLowMemory()` i
 
 Można rozszerzać `EngagementApplication` zamiast rozszerzanie `Application`: wywołanie zwrotne `Application.onCreate()` jest wyboru procesu i wywołania `Application.onApplicationProcessCreate()` tylko jeśli bieżący proces nie jest obsługującym usługę zaangażowania, te same zasady poprosić o innych wywołań zwrotnych.
 
-## <a name="basic-reporting"></a>Podstawowym raportowaniem
+## <a name="basic-reporting"></a>Podstawowe raportowanie
 ### <a name="recommended-method-overload-your-activity-classes"></a>Zalecana metoda: przeciążenia sieci `Activity` klas
 Aby aktywować raportu wszystkie dzienniki wymagane przez zaangażowania można obliczyć użytkowników, sesji, działania, awarii (Crash) i statystyki technicznych, po prostu należy wszystkie Twoje `*Activity` klasy podrzędne dziedziczą odpowiadającego `Engagement*Activity` klasy (np. Jeśli zwiększa działanie starszej wersji `ListActivity`, rozszerza upewnij `EngagementListActivity`).
 
@@ -267,7 +271,7 @@ W kontekście usługi Mobile Engagement dostępne są następujące uprawnienia,
 
 * `ACCESS_COARSE_LOCATION`
 * `ACCESS_FINE_LOCATION`
-* `WRITE_EXTERNAL_STORAGE`(tylko wtedy, gdy przeznaczonych dla interfejsu API systemu Android na poziomie 23 tej)
+* `WRITE_EXTERNAL_STORAGE` (tylko wtedy, gdy przeznaczonych dla interfejsu API systemu Android na poziomie 23 tej)
 
 Zewnętrzna pamięć masowa jest używany tylko dla funkcji szerszej Reach. Jeśli okaże się, prosząc użytkowników o uprawnienie to można problem, można go usunąć Jeśli używane tylko w przypadku usługi Mobile Engagement, ale kosztem wyłączenie funkcji Duży obraz.
 
@@ -352,7 +356,7 @@ Jeśli zaangażowania jest aktywny, gdy wywołanie tej funkcji, może potrwać m
 
 Możesz włączyć ponownie raportowania przez wywołanie tej samej funkcji z dziennika `true`.
 
-### <a name="integration-in-your-own-preferenceactivity"></a>Integracja z własną`PreferenceActivity`
+### <a name="integration-in-your-own-preferenceactivity"></a>Integracja z własną `PreferenceActivity`
 Zamiast wywoływania tej funkcji, to ustawienie można również zintegrować bezpośrednio w istniejącą `PreferenceActivity`.
 
 Zaangażowania, aby użyć pliku preferencji (z odpowiednią tryb) można skonfigurować w `AndroidManifest.xml` pliku z `application meta-data`:

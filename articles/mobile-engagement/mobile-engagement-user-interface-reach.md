@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement - Reach"
-description: "Dowiedz się, jak dotrzeć do użytkowników aplikacji z powiadomień wypychanych przy użyciu usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement - Reach
+description: Dowiedz się, jak dotrzeć do użytkowników aplikacji z powiadomień wypychanych przy użyciu usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d96e2590-08dd-4481-a352-2c18f26a1643
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d999b83df7d9d467f08ce8ec72468c738e8acfa5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>Jak dotrzeć do użytkowników aplikacji przy użyciu powiadomień wypychanych
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 W tym artykule opisano **OSIĄGNĄĆ** karcie **Mobile Engagement** portalu. Możesz użyć **Mobile Engagement** portalu do monitorowania i zarządzania aplikacjami mobilnymi. Należy pamiętać, że można uruchomić przy użyciu portalu należy najpierw utworzyć **usługi Azure Mobile Engagement** konta. Aby uzyskać więcej informacji, zobacz [utworzyć konto usługi Azure Mobile Engagement](mobile-engagement-create.md).
 
 Sekcja Reach interfejsu użytkownika jest wypychane kampanii narzędzie do zarządzania można utworzyć/edytowanie/aktywować/Zakończ/monitor i uzyskać statystyki kampanii obejmujących wysyłanie powiadomień wypychanych i funkcji, które są dostępne za pośrednictwem interfejsu API Reach (i niektóre elementy niski poziom Push interfejsu API) . Należy pamiętać, czy używane są interfejsy API lub interfejsu użytkownika, konieczne będzie zintegrować zarówno usługi Azure Mobile Engagement i Reach do aplikacji dla poszczególnych platform przy użyciu zestawu SDK można osiągnąć kampanii.
@@ -80,7 +84,7 @@ Polecenie **statystyki** Aby wyświetlić szczegóły kampanii Reach. **Proste**
 
 ![Reach2][19]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Pojęcia][Link 6]
 * [Usługa Przewodnik rozwiązywania problemów][Link 24]
 

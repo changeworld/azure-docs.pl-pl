@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie ról dla usługi w chmurze Azure z programem Visual Studio | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie instalowania i konfigurowania ról dla usług w chmurze Azure przy użyciu programu Visual Studio."
+title: Konfigurowanie ról dla usługi w chmurze Azure z programem Visual Studio | Dokumentacja firmy Microsoft
+description: Informacje o sposobie instalowania i konfigurowania ról dla usług w chmurze Azure przy użyciu programu Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: d397ef87-64e5-401a-aad5-7f83f1022e16
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 17da71ac0c5ab9330b9244c0354e4d161d98229e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 8a1eb75e9f38aae29cbb0012e5f15404299d011d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>Skonfigurować role usługi w chmurze Azure z programem Visual Studio
 Usługi w chmurze Azure może mieć co najmniej jednego procesu roboczego lub role sieci web. Dla każdej roli należy zdefiniować sposób konfigurowania tej roli, a także skonfigurować sposób uruchamiania tej roli. Aby dowiedzieć się więcej na temat ról usług w chmurze, zobacz wideo [wprowadzenie do usługi w chmurze Azure](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
@@ -120,7 +120,7 @@ Za pomocą innej wartości dla każdej konfiguracji usługi, nie trzeba w usłud
 
     - **Emulator magazynu Microsoft Azure** — Jeśli wybierzesz tę opcję, pozostałe ustawienia w oknie dialogowym są wyłączone, ponieważ mają one zastosowanie tylko do platformy Azure. Kliknij przycisk **OK**.
     - **Subskrypcja** — po wybraniu tej opcji, za pomocą listy rozwijanej można wybrać i zaloguj się do konta Microsoft lub dodać konta Microsoft. Wybierz konto platformy Azure subskrypcji i magazynu. Kliknij przycisk **OK**.
-    - **Ręcznie wprowadzić poświadczenia** — wprowadź nazwę konta magazynu i klucz podstawowy lub drugiego. Wybierz opcję wyznaczenia **połączenia** (HTTPS jest zalecane dla większości scenariuszy). Kliknij przycisk **OK**.
+    - **Ręcznie wprowadzić poświadczenia** — wprowadź nazwę konta magazynu i klucz podstawowy lub drugiego. Wybierz opcję wyznaczenia **połączenia** (HTTPS jest zalecane dla większości scenariuszy). Wybierz **OK**.
 
 1. Aby usunąć ciąg połączenia, wybierz parametry połączenia, a następnie wybierz **Usuń ustawienie**.
 
@@ -275,6 +275,6 @@ Aby wyświetlić plik utworzony przez kod w poprzedniej sekcji, wykonaj następu
 
 1. Po otwarciu okna Eksploratora Windows, wprowadź "MyLocalStorageTest.txt" do **wyszukiwania** pola tekstowego, a następnie wybierz **Enter** ma się rozpocząć wyszukiwanie. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o Azure projekty w programie Visual Studio, odczytując [Konfigurowanie projektu platformy Azure](vs-azure-tools-configuring-an-azure-project.md). Dowiedz się więcej o schematu usługi chmury, odczytując [odwołanie do schematu](https://msdn.microsoft.com/library/azure/dd179398).
 

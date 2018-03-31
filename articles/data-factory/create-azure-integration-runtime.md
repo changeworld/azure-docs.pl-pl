@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: e2ebb3db4d51bf4ec1dea4f2f5cc4cc9dcb2ad70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db757c5a8a1b51278ada24a5ff50a2da1b357397
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak utworzyć i skonfigurować środowiska uruchomieniowego integracji Azure
 Integracja środowiska uruchomieniowego (IR) jest używany przez fabryki danych Azure zapewnienie możliwości integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Aby uzyskać więcej informacji na temat IR, zobacz [integrację środowiska uruchomieniowego](concepts-integration-runtime.md).
@@ -29,7 +29,7 @@ Azure IR udostępnia zasoby obliczeniowe pełni zarządzana natywnie wykonywania
 Tym dokumencie przedstawiono sposób tworzenia i konfigurowania środowiska uruchomieniowego integracji Azure. 
 
 ## <a name="default-azure-ir"></a>Domyślna Azure IR.
-Domyślnie każdy fabryki danych ma IR Azure w wewnętrznej bazy danych, która obsługuje operacje w chmurze, dane są przechowywane i obliczeniowe usług w sieci publicznej. Lokalizacja tej IR Azure jest automatyczne rozwiązanie. Jeśli **connectVia** właściwość nie została określona w definicji połączonej usługi określonego IR Azure jest używana. Musisz jawnie tworzyć IR Azure, gdy ma zostać jawnie zdefiniuj lokalizację IR, lub jeśli chcesz praktycznie grupy wykonania działania na różnych amerykańskim w celu zarządzania. 
+Domyślnie każdy fabryki danych ma IR Azure w wewnętrznej bazy danych, która obsługuje operacje w chmurze, dane są przechowywane i obliczeniowe usług w sieci publicznej. Lokalizacja tej IR Azure jest automatyczne rozwiązanie. Jeśli **connectVia** właściwość nie została określona w definicji połączonej usługi, domyślne Azure IR jest używana. Musisz jawnie tworzyć IR Azure, gdy ma zostać jawnie zdefiniuj lokalizację IR, lub jeśli chcesz praktycznie grupy wykonania działania na różnych amerykańskim w celu zarządzania. 
 
 ## <a name="create-azure-ir"></a>Utwórz Azure IR.
 Integracja środowiska uruchomieniowego można tworzyć przy użyciu **AzureRmDataFactoryV2IntegrationRuntime zestaw** polecenia cmdlet programu PowerShell. Aby utworzyć IR Azure, należy określić nazwę, lokalizację i typ polecenia. Oto przykład polecenia do utworzenia IR Azure z lokalizacją ustawioną wartość "Europa Zachodnia":

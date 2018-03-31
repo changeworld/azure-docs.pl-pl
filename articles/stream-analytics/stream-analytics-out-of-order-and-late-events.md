@@ -1,13 +1,12 @@
 ---
-title: "Obsługa kolejność zdarzeń i opóźnienie z usługą Azure Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej na temat działania usługi analiza strumienia poza kolejnością lub opóźnione zdarzenia w strumieniach danych."
-keywords: "zdarzenia poza kolejnością, późne,"
-documentationcenter: 
+title: Obsługa kolejność zdarzeń i opóźnienie z usługą Azure Stream Analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat działania usługi analiza strumienia poza kolejnością lub opóźnione zdarzenia w strumieniach danych.
+keywords: zdarzenia poza kolejnością, późne,
+documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 6478d577c52ffa23c3149c8213f182eaa1e466bd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3c1924ad87715f7a44c3666991e792adc3a20af9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Zagadnienia dotyczące usługi Azure Stream Analytics zdarzeń kolejności
 

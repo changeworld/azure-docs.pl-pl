@@ -1,11 +1,11 @@
 ---
-title: "Integracja zestawu SDK zaangażowania uniwersalnych aplikacji systemu Windows"
-description: "Integrowanie usługi Azure Mobile Engagement z uniwersalnych aplikacji systemu Windows"
+title: Integracja zestawu SDK zaangażowania uniwersalnych aplikacji systemu Windows
+description: Integrowanie usługi Azure Mobile Engagement z uniwersalnych aplikacji systemu Windows
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 71236b68-5ebd-44aa-8c82-c7ca8098ea05
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 56a382a348609df1d1d308aeac39f47ca82ac4c8
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: dc075ffe6565b4ef60e77f74ba4f065629c99952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-engagement-sdk-integration"></a>Integracja zestawu SDK zaangażowania uniwersalnych aplikacji systemu Windows
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Platforma uniwersalna systemu Windows](mobile-engagement-windows-store-integrate-engagement.md) 
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
@@ -57,7 +61,7 @@ NuGet automatycznie wdraża zasobów zestawu SDK w `Resources` folder w katalogu
 NuGet nie automatycznie wdrażać zasobów zestawu SDK w jeszcze aplikacji platformy uniwersalnej systemu Windows. Należy to zrobić ręcznie do momentu powraca wdrażania zasobów w NuGet:
 
 1. Otwieranie Eksploratora plików w sieci.
-2. Przejdź do następującej lokalizacji (**x.x.x** jest wersją w przypadku instalowania usługi Engagement): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\*  *x.x.x**\\content\win81*
+2. Przejdź do następującej lokalizacji (**x.x.x** jest wersją w przypadku instalowania usługi Engagement): *% USERPROFILE %\\.nuget\packages\MicrosoftAzure.MobileEngagement\\  **x.x.x**\\content\win81*
 3. Przeciągnij i upuść **zasobów** folder w Eksploratorze plików w katalogu głównym projektu programu Visual Studio.
 4. W programie Visual Studio wybierz projektu i Aktywuj **Pokaż wszystkie pliki** ikonę nad **Eksploratora rozwiązań**.
 5. Niektóre pliki nie znajdują się w projekcie. Aby zaimportować je jednocześnie kliknij prawym przyciskiem myszy **zasobów** folderu, **wykluczyć z projektu** innego kliknij prawym przyciskiem myszy, a następnie **zasobów** folderu, **uwzględnione w Projekt** ponownie uwzględnienie całego folderu. Wszystkie pliki z **zasobów** folderze znajdują się teraz w projekcie.
@@ -126,7 +130,7 @@ Modyfikowanie `App.xaml.cs`:
 > 
 > 
 
-## <a name="basic-reporting"></a>Podstawowym raportowaniem
+## <a name="basic-reporting"></a>Podstawowe raportowanie
 ### <a name="recommended-method-overload-your-page-classes"></a>Zalecana metoda: przeciążenia sieci `Page` klas
 Aby aktywować raportu wszystkie dzienniki wymagane przez zaangażowania można obliczyć użytkowników, sesji, działania, awarii (Crash) i statystyki technicznych, możesz po prostu wprowadzić wszystkie Twoje `Page` klasy podrzędne dziedziczą `EngagementPage` klasy.
 

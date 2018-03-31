@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: fa74f2e2d8fb9fc9f11810a4af4978fb4b443bcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e0d9d164a85a73dd05456e005cf35ce3f33c408f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie systemu Windows hybrydowego Runbook Worker
 
@@ -36,7 +36,7 @@ Aby zainstalować i skonfigurować Windows hybrydowego Runbook Worker, istnieją
 
 > [!NOTE]
 > Aby zarządzać konfiguracji serwerów pomocniczych roli hybrydowy proces roboczy elementu Runbook z konfiguracji żądanego stanu (DSC), należy je dodać jako węzły DSC.  Aby uzyskać więcej informacji na temat dołączania ich do zarządzania za pomocą usługi Konfiguracja DSC, zobacz [dołączania komputerów do zarządzania przez Konfiguracja DSC automatyzacji Azure](automation-dsc-onboarding.md).        
-Po włączeniu [rozwiązania do zarządzania aktualizacjami](../operations-management-suite/oms-solution-update-management.md), dowolnego komputera z systemem Windows podłączonego do obszaru roboczego OMS zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook do obsługi elementy runbook zawarte w tym rozwiązaniu.  Jednak nie jest zarejestrowany z wszystkich grup hybrydowy proces roboczy już zdefiniowane na Twoim koncie automatyzacji.  Komputer można dodać do grupy hybrydowego procesu roboczego elementu Runbook do Twojego konta automatyzacji do obsługi elementów runbook automatyzacji, tak długo, jak używasz tego samego konta dla rozwiązania i członkostwa w grupie hybrydowy proces roboczy elementu Runbook.  Ta funkcjonalność została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.  
+Po włączeniu [rozwiązania do zarządzania aktualizacjami](../operations-management-suite/oms-solution-update-management.md), dowolnego komputera z systemem Windows, podłączonego do obszaru roboczego analizy dzienników jest automatycznie konfigurowany jako hybrydowy proces roboczy elementu Runbook do obsługi elementy runbook zawarte w tym rozwiązaniu.  Jednak nie jest zarejestrowany z wszystkich grup hybrydowy proces roboczy już zdefiniowane na Twoim koncie automatyzacji.  Komputer można dodać do grupy hybrydowego procesu roboczego elementu Runbook do Twojego konta automatyzacji do obsługi elementów runbook automatyzacji, tak długo, jak używasz tego samego konta dla rozwiązania i członkostwa w grupie hybrydowy proces roboczy elementu Runbook.  Ta funkcjonalność została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.  
 
 Przejrzyj następujące informacje dotyczące [wymagania sprzętowe i programowe](automation-offering-get-started.md#hybrid-runbook-worker) i [informacji do przygotowania sieci](automation-offering-get-started.md#network-planning) przed rozpoczęciem wdrażania hybrydowego procesu roboczego elementu Runbook.  Po pomyślnym wdrożeniu runbook worker, przejrzyj [uruchamiania elementów runbook na hybrydowy proces roboczy elementu Runbook](automation-hrw-run-runbooks.md) Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury.  
  
@@ -52,10 +52,10 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
   * *ResourceGroupName* (wymagane) — Nazwa grupy zasobów skojarzonych z Twoim kontem automatyzacji.  
   * *HybridGroupName* (wymagane) — Nazwa grupy hybrydowego procesu roboczego elementu Runbook, określony jako element docelowy dla elementów runbook, obsługa tego scenariusza. 
   *  *Identyfikator subskrypcji* (wymagane) — identyfikator subskrypcji Azure, do których należy konto automatyzacji.
-  *  *WorkspaceName* (opcjonalnie) — nazwa obszaru roboczego OMS.  Jeśli nie masz obszar roboczy OMS, skrypt tworzy i konfiguruje jeden.  
+  *  *WorkspaceName* (opcjonalnie) — nazwa obszaru roboczego analizy dzienników.  Jeśli nie masz obszaru roboczego analizy dzienników, skrypt tworzy i konfiguruje jeden.  
 
      > [!NOTE]
-     > Obecnie są obsługiwane w przypadku integracji z usługą OMS tylko regionów automatyzacji - **południowo-wschodnia Australia**, **wschodnie stany USA 2**, **Azja południowo-wschodnia**, i **Europa**.  Jeśli Twoje konto usługi Automatyzacja nie jest w jednym z tych regionów, skrypt tworzy obszarem roboczym pakietu OMS, ale go ostrzega, że jej nie może połączyć je razem.
+     > Obecnie są tylko regiony automatyzacji obsługiwane integracji z usługą analizy dzienników - **południowo-wschodnia Australia**, **wschodnie stany USA 2**, **Azja południowo-wschodnia**, i  **Europa Zachodnia**.  Jeśli Twoje konto usługi Automatyzacja nie jest w jednym z tych regionów, skrypt tworzy obszaru roboczego analizy dzienników, ale jego ostrzega, że go nie może połączyć je razem.
      >
 2. Na komputerze, należy uruchomić **programu Windows PowerShell** z **Start** ekranu w trybie administratora.  
 3. Z poziomu wiersza polecenia powłoki PowerShell, przejdź do folderu, który zawiera skrypt pobrany i wykonaj go zmiana wartości parametrów *- AutomationAccountName*, *- ResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *- WorkspaceName*.
@@ -66,7 +66,7 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
     
         .\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> `
         -ResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
-        -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfOMSWorkspace>
+        -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
 
 4. Zostanie wyświetlony monit o zgodę na instalowanie **NuGet** i zostanie wyświetlony monit o uwierzytelniania przy użyciu poświadczeń platformy Azure.<br><br>![Wykonanie skryptu OnPremiseHybridWorker nowy](/media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
@@ -76,27 +76,27 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
 
 Raz wykonać pierwsze dwa kroki dla danego środowiska automatyzacji, a następnie powtórz pozostałe kroki na każdym komputerze pracownika.
 
-#### <a name="1-create-operations-management-suite-workspace"></a>1. Utwórz obszar roboczy usługi Operations Management Suite
+#### <a name="1-create-log-analytics-workspace"></a>1. Tworzenie obszaru roboczego usługi Log Analytics
 
-Jeśli nie masz już obszar roboczy usługi Operations Management Suite, następnie utwórz ją przy użyciu instrukcji w [Zarządzanie obszaru roboczego](../log-analytics/log-analytics-manage-access.md). Istniejący obszar roboczy można użyć, jeśli już istnieje.
+Jeśli nie masz już obszar roboczy analizy dzienników, następnie utwórz ją przy użyciu instrukcji w [Zarządzanie obszaru roboczego](../log-analytics/log-analytics-manage-access.md). Istniejący obszar roboczy można użyć, jeśli już istnieje.
 
-#### <a name="2-add-automation-solution-to-operations-management-suite-workspace"></a>2. Dodaj rozwiązanie do automatyzacji do obszaru roboczego usługi Operations Management Suite
+#### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2. Dodaj rozwiązanie do automatyzacji do obszaru roboczego analizy dzienników
 
-Rozwiązania Dodawanie funkcji do usługi Operations Management Suite.  Rozwiązanie Automatyzacja dodaje funkcje na tym obsługę hybrydowy proces roboczy elementu Runbook usługi Automatyzacja Azure.  Po dodaniu rozwiązania do swojego obszaru roboczego on automatycznie wypycha dół składników procesu roboczego na komputerze agenta, który zostanie zainstalowany w następnym kroku.
+Rozwiązania powodują dodawanie funkcji do usługi Log Analytics.  Rozwiązanie Automatyzacja dodaje funkcje na tym obsługę hybrydowy proces roboczy elementu Runbook usługi Automatyzacja Azure.  Po dodaniu rozwiązania do swojego obszaru roboczego on automatycznie wypycha dół składników procesu roboczego na komputerze agenta, który zostanie zainstalowany w następnym kroku.
 
-Postępuj zgodnie z instrukcjami w [można dodać za pomocą galerii rozwiązań rozwiązania](../log-analytics/log-analytics-add-solutions.md) można dodać **automatyzacji** rozwiązania do swojego obszaru roboczego usługi Operations Management Suite.
+Postępuj zgodnie z instrukcjami w [można dodać za pomocą galerii rozwiązań rozwiązania](../log-analytics/log-analytics-add-solutions.md) można dodać **automatyzacji** rozwiązania do swojego obszaru roboczego analizy dzienników.
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3. Zainstaluj program Microsoft Monitoring Agent
 
-Microsoft Monitoring Agent łączy komputery do usługi Operations Management Suite.  Po zainstalowaniu agenta na komputerze lokalnym i podłącz go do swojego obszaru roboczego, będzie automatycznie pobierał składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
+Microsoft Monitoring Agent łączy się analizy dzienników z komputerów.  Po zainstalowaniu agenta na komputerze lokalnym i podłącz go do swojego obszaru roboczego, będzie automatycznie pobierał składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
 
 Postępuj zgodnie z instrukcjami w [połączyć komputery do analizy dzienników](../log-analytics/log-analytics-windows-agent.md) do zainstalowania agenta na komputerze lokalnym.  Można powtórzyć ten proces dla wielu komputerów do dodania wielu pracowników w danym środowisku.
 
-Gdy agent połączył się pomyślnie Operations Management Suite, będzie wymieniony na **połączonych źródeł** kartę Operations Management Suite **ustawienia** okienka.  Możesz sprawdzić, czy agent poprawnie pobrał rozwiązania Automatyzacja po folder o nazwie **AzureAutomationFiles** w C:\Program Files\Microsoft Monitoring Agent\Agent.  Aby sprawdzić wersję hybrydowy proces roboczy elementu Runbook, można przejść do C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ i zanotuj \\ *wersji* podfolderu.   
+Gdy agent połączył się pomyślnie analizy dzienników, będzie wymieniony na **połączonych źródeł** kartę analizy dzienników **ustawienia** okienka.  Możesz sprawdzić, czy agent poprawnie pobrał rozwiązania Automatyzacja po folder o nazwie **AzureAutomationFiles** w C:\Program Files\Microsoft Monitoring Agent\Agent.  Aby sprawdzić wersję hybrydowy proces roboczy elementu Runbook, można przejść do C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ i zanotuj \\ *wersji* podfolderu.   
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Zainstalowania środowiska elementu runbook i nawiązania połączenia usługi Automatyzacja Azure
 
-Po dodaniu agenta do usługi Operations Management Suite rozwiązania Automatyzacja umieszcza w dół **HybridRegistration** moduł programu PowerShell, który zawiera **Add-HybridRunbookWorker** polecenia cmdlet.  To polecenie cmdlet służy do zainstalowania środowiska elementu runbook na komputerze i zarejestrowania go w usłudze Automatyzacja Azure.
+Po dodaniu agenta do analizy dzienników rozwiązania Automatyzacja umieszcza w dół **HybridRegistration** moduł programu PowerShell, który zawiera **Add-HybridRunbookWorker** polecenia cmdlet.  To polecenie cmdlet służy do zainstalowania środowiska elementu runbook na komputerze i zarejestrowania go w usłudze Automatyzacja Azure.
 
 Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenia, aby zaimportować moduł.
 

@@ -1,12 +1,11 @@
 ---
-title: "Jak skonfigurować dane wyjściowe do zadania usługi analiza strumienia | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie danych wyjściowych do zadania usługi analiza strumienia | Learning segmentu ścieżki."
-keywords: "dane wyjściowe, przenoszenie danych"
-documentationcenter: 
+title: Jak skonfigurować dane wyjściowe do zadania usługi analiza strumienia | Dokumentacja firmy Microsoft
+description: Konfigurowanie danych wyjściowych do zadania usługi analiza strumienia | Learning segmentu ścieżki.
+keywords: dane wyjściowe, przenoszenie danych
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 3bbea3da-bfce-4af1-a15e-d4b23874034f
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/26/2017
-ms.author: samacha
-ms.openlocfilehash: 1ffa517469da1a8d79917b9747abc97ca3bef463
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 9e1a8640421c4232cf4abc09794ca584995906f9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-configure-data-outputs-for-stream-analytics-jobs"></a>Jak skonfigurować dane wyjściowe do zadania usługi analiza strumienia
 
@@ -52,7 +51,7 @@ Można dodać danych wyjściowych do zadania usługi analiza strumienia:
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

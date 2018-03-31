@@ -1,11 +1,11 @@
 ---
 title: Azure Mobile Engagement iOS SDK Integration | Dokumentacja firmy Microsoft
-description: "Najnowsze aktualizacje i procedury dla systemu iOS SDK dla usługi Azure Mobile Engagement"
+description: Najnowsze aktualizacje i procedury dla systemu iOS SDK dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 947ea44b-00c1-450f-9a3b-74437954dc56
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 01fdbb43c21ac6932e8462f4a6507fc63e50542d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f0d650205ca86205ad857003f892c1a60b3831bf
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-on-ios"></a>Jak zintegrować zaangażowania w systemie iOS
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Aplikacje uniwersalne systemu Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -45,8 +49,8 @@ Poniższe kroki są wystarczająco aktywować raport dzienniki wymagane do oblic
 * Dodaj zestaw SDK usługi Engagement do projektu systemu iOS: w środowisku Xcode, kliknij prawym przyciskiem myszy projekt i wybierz **"Dodaj pliki do..."** i wybierz polecenie `EngagementSDK` folderu.
 * Engagement wymaga dodatkowych platform pracę: w Eksploratorze projektu otwórz okienko z projektu i wybierz poprawny docelowy. Następnie otwórz **"Fazy kompilacji"** kartę i **"Binarny z bibliotekami"** menu Dodaj następujące struktury:
 
-  * `UserNotifications.framework`-łącze jako`Optional`
-  * `AdSupport.framework`-łącze jako`Optional`
+  * `UserNotifications.framework` -łącze jako `Optional`
+  * `AdSupport.framework` -łącze jako `Optional`
   * `SystemConfiguration.framework`
   * `CoreTelephony.framework`
   * `CFNetwork.framework`
@@ -74,7 +78,7 @@ Należy zmodyfikować delegata aplikacji:
         [...]
       }
 
-## <a name="basic-reporting"></a>Podstawowym raportowaniem
+## <a name="basic-reporting"></a>Podstawowe raportowanie
 ### <a name="recommended-method-overload-your-uiviewcontroller-classes"></a>Zalecana metoda: przeciążenia sieci `UIViewController` klas
 Aby aktywować raportu wszystkie dzienniki wymagane przez zaangażowania można obliczyć użytkowników, sesji, działania, awarii (Crash) i statystyki technicznych, możesz po prostu wprowadzić wszystkie Twoje `UIViewController` klasy podrzędne dziedziczą `EngagementViewController` klasy (takie same reguły dla `UITableViewController`  - \> `EngagementTableViewController`).
 

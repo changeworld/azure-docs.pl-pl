@@ -1,8 +1,8 @@
 ---
-title: "Zasobów usługi Automatyzacja Azure w rozwiązaniach pakietu OMS | Dokumentacja firmy Microsoft"
-description: "Rozwiązania w OMS zazwyczaj uwzględnia elementy runbook automatyzacji Azure można zautomatyzować procesy, takie jak zbierania i przetwarzania danych monitorowania.  W tym artykule opisano, jak dołączyć elementy runbook i ich powiązane zasoby w rozwiązaniu."
+title: Zasobów usługi Automatyzacja Azure w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
+description: Rozwiązania do zarządzania zwykle zawiera elementy runbook automatyzacji Azure można zautomatyzować procesy, takie jak zbierania i przetwarzania danych monitorowania.  W tym artykule opisano, jak dołączyć elementy runbook i ich powiązane zasoby w rozwiązaniu.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5750cd1147ec861ea38ff2ebc9ce481d256c1959
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>Dodawanie zasobów usługi Automatyzacja Azure OMS rozwiązania do zarządzania (wersja zapoznawcza)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Dodawanie zasobów usługi Automatyzacja Azure do rozwiązania do zarządzania (wersja zapoznawcza)
 > [!NOTE]
-> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania w OMS, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.   
+> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.   
 
 
-[Rozwiązania do zarządzania w OMS](operations-management-suite-solutions.md) zazwyczaj uwzględnia elementy runbook automatyzacji Azure można zautomatyzować procesy, takie jak zbierania i przetwarzania danych monitorowania.  Oprócz elementów runbook kont automatyzacji zawiera zasoby, takie jak zmienne i harmonogramy, obsługujących elementy runbook używane w rozwiązaniu.  W tym artykule opisano, jak dołączyć elementy runbook i ich powiązane zasoby w rozwiązaniu.
+[Rozwiązania do zarządzania](operations-management-suite-solutions.md) zazwyczaj uwzględnia elementy runbook automatyzacji Azure można zautomatyzować procesy, takie jak zbierania i przetwarzania danych monitorowania.  Oprócz elementów runbook kont automatyzacji zawiera zasoby, takie jak zmienne i harmonogramy, obsługujących elementy runbook używane w rozwiązaniu.  W tym artykule opisano, jak dołączyć elementy runbook i ich powiązane zasoby w rozwiązaniu.
 
 > [!NOTE]
-> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [tworzenia rozwiązań do zarządzania w Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md) 
+> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure ](operations-management-suite-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -40,7 +40,7 @@ W tym artykule przyjęto założenie, że znasz już następujące informacje.
 - Jak [Tworzenie szablonów usługi Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Konto usługi Automation
-Wszystkie zasoby w automatyzacji Azure są zawarte w [konto automatyzacji](../automation/automation-security-overview.md#automation-account-overview).  Zgodnie z opisem w [OMS obszaru roboczego i konto automatyzacji](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) konta automatyzacji nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, nie będą instalacji rozwiązania.
+Wszystkie zasoby w automatyzacji Azure są zawarte w [konto automatyzacji](../automation/automation-security-overview.md#automation-account-overview).  Zgodnie z opisem w [og obszaru roboczego analizy i konto automatyzacji](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) konta automatyzacji nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, nie będą instalacji rozwiązania.
 
 Nazwa każdego zasobu automatyzacji zawiera nazwę swojego konta automatyzacji.  Jest to rozwiązanie z **accountName** parametru, jak w poniższym przykładzie zasobu elementu runbook.
 
@@ -118,7 +118,7 @@ Właściwości automatyzacji zadań są opisane w poniższej tabeli.
 
 Zadanie zawiera nazwę elementu runbook i wartości parametrów do wysłania do elementu runbook.  Zadanie powinno [są zależne od](operations-management-suite-solutions-solution-file.md#resources) elementu runbook, który jest uruchamiany od elementu runbook musi zostać utworzone przed zadania.  Jeśli masz wiele elementów runbook, który ma być uruchamiany przez zadanie, które są zależne od innych zadań, które powinny być uruchamiane w pierwszy można zdefiniować ich kolejność.
 
-Nazwa zasobu zadania musi zawierać identyfikator GUID, który zazwyczaj jest przypisywany przez parametr.  Więcej o parametrach identyfikatora GUID w [tworzenie rozwiązań w Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters).  
+Nazwa zasobu zadania musi zawierać identyfikator GUID, który zazwyczaj jest przypisywany przez parametr.  Więcej o parametrach identyfikatora GUID w [utworzenia pliku rozwiązania zarządzania na platformie Azure](operations-management-suite-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Certyfikaty
@@ -283,7 +283,7 @@ Jeśli ustawisz wartość początkowa zmiennej musi być skonfigurowany jako pra
 |:--|:--|:--|:--|
 | ciąg   | Wartość należy ująć w cudzysłów.  | "\"Hello world\"" | "Hello world" |
 | numeryczne  | Wartość liczbowa z apostrofy.| "64" | 64 |
-| wartość logiczna  | **wartość true,** lub **false** w cudzysłowy.  Należy pamiętać, że ta wartość musi być litera. | wartość "prawda" | prawda |
+| wartość logiczna  | **wartość true,** lub **false** w cudzysłowy.  Należy pamiętać, że ta wartość musi być litera. | wartość "prawda" | true |
 | datetime | Serializacji wartości typu date.<br>Polecenia cmdlet ConvertTo-Json w programie PowerShell służy do generowania wartości dla określonej daty.<br>Przykład: get data "2017-5/24 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduły

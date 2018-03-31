@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie magazynu Azure za pomocą usług połączonych w programie Visual Studio | Dokumentacja firmy Microsoft"
-description: "Dodawanie magazynu Azure do aplikacji przy użyciu okna dialogowego programu Visual Studio Dodaj połączone usługi"
+title: Dodawanie magazynu Azure za pomocą usług połączonych w programie Visual Studio | Dokumentacja firmy Microsoft
+description: Dodawanie magazynu Azure do aplikacji przy użyciu okna dialogowego programu Visual Studio Dodaj połączone usługi
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 521ec044-ad4b-4828-8864-01decde2e758
 ms.service: storage
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2017
-ms.author: kraigb
-ms.openlocfilehash: 35638083cd75e1b751d00a9c8163a3bc7480f0cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 3252d022222e1c31491a6b111e5e96f8c62ca915
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Dodawanie magazynu platformy Azure przy użyciu programu Visual Studio usługami
 Przy użyciu programu Visual Studio możesz można nawiązać żadnego z następujących usługi Azure Storage za pomocą **dodać usług połączonych** okna dialogowego:
@@ -70,7 +70,7 @@ Po zakończeniu okna dialogowego programu Visual Studio dodaje odwołania i mody
 - Projekt usługi w chmurze (role sieci web i proces roboczy) - [co się stało — projekty usługi w chmurze](http://go.microsoft.com/fwlink/p/?LinkId=516965)
 - Projekt zadania WebJob — [co się stało — projekty zadania WebJob](visual-studio/vs-storage-webjobs-what-happened.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [MSDN Forum: Usługa Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 - [Blog zespołu usługi Magazyn Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/)
 - [Dokumentację magazynu platformy Azure](https://docs.microsoft.com/azure/storage/)

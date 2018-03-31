@@ -1,12 +1,11 @@
 ---
-title: "Połączenie danych: dane wejściowe ze strumienia zdarzeń strumienia danych | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat konfigurowania połączenia danych do usługi Stream Analytics o nazwie \"dane wejściowe\". Dane wejściowe zawierają strumień danych zdarzeń i również danych referencyjnych."
-keywords: "strumień danych, połączenie danych strumienia zdarzeń"
+title: 'Połączenie danych: dane wejściowe ze strumienia zdarzeń strumienia danych | Dokumentacja firmy Microsoft'
+description: Więcej informacji na temat konfigurowania połączenia danych do usługi Stream Analytics o nazwie "dane wejściowe". Dane wejściowe zawierają strumień danych zdarzeń i również danych referencyjnych.
+keywords: strumień danych, połączenie danych strumienia zdarzeń
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/11/2017
 ms.author: sngun
-ms.openlocfilehash: e8b55269e861dc010c911491d52973b674dd50ca
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 0ddc3187e9fc0664838dd07f781f4d7e2e4a7fe0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Połączenie danych: Dowiedz się więcej o danych strumienia danych wejściowych ze zdarzeń w celu usługi analiza strumienia
 Połączenie danych do zadania usługi Stream Analytics jest strumienia zdarzeń źródła danych, które są określone jako zadanie *wejściowych*. Analiza strumienia ma najwyższej jakości integracji z źródeł strumienia danych Azure, w tym [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Centrum IoT Azure](https://azure.microsoft.com/services/iot-hub/), i [magazynu obiektów Blob Azure](https://azure.microsoft.com/services/storage/blobs/). Tych źródeł danych wejściowych można z tej samej subskrypcji platformy Azure jako zadanie analizy lub innej subskrypcji.
@@ -70,7 +69,7 @@ Gdy dane pochodzą z Centrum zdarzeń, masz dostęp do następujących pól meta
 | --- | --- |
 | **EventProcessedUtcTime** |Data i czas przetwarzania zdarzenia przez usługę Stream Analytics. |
 | **EventEnqueuedUtcTime** |Data i godzina zdarzenia otrzymała centrów zdarzeń. |
-| **PartitionId** |Identyfikator liczony od zera partycję adapter wejścia. |
+| **partitionId** |Identyfikator liczony od zera partycję adapter wejścia. |
 
 Na przykład przy użyciu tych pól, można napisać zapytanie, jak w następującym przykładzie:
 
@@ -106,7 +105,7 @@ W poniższej tabeli opisano każdej właściwości w **wprowadzania nowych** blo
 | --- | --- |
 | **Alias wejściowy** |Przyjazna nazwa umożliwia w zapytaniu zadanie odwoływać danych wejściowych.|
 | **Centrum IoT** |Nazwa centrum IoT można użyć jako danych wejściowych. |
-| **Punkt końcowy** |Punktu końcowego Centrum IoT.|
+| **punkt końcowy** |Punktu końcowego Centrum IoT.|
 | **Nazwa zasady dostępu współdzielonego** |Zasady dostępu współdzielonego, który zapewnia dostęp do Centrum IoT. Wszystkie zasady dostępu współdzielonego ma nazwę uprawnienia ustawić i klucze dostępu. |
 | **Klucz zasady dostępu współdzielonego** |Klucz dostępu współdzielonego, używany do autoryzacji dostępu do Centrum IoT. |
 | **Grupy odbiorców** (opcjonalnie) |Grupy odbiorców do użycia na potrzeby wysyłania danych z Centrum IoT. Jeśli zostanie określona żadna grupa odbiorców, zadanie usługi Stream Analytics korzysta domyślna grupa odbiorców. Zalecane jest użycie grupy odbiorców różne dla każdego zadania usługi analiza strumienia. |
@@ -120,7 +119,7 @@ Gdy dane pochodzą z Centrum IoT, masz dostęp do następujących pól metadanyc
 | --- | --- |
 | **EventProcessedUtcTime** |Data i godzina, który był przetwarzany zdarzenia. |
 | **EventEnqueuedUtcTime** |Data i godzina, które zdarzenie zostało odebrane przez Centrum IoT. |
-| **PartitionId** |Identyfikator liczony od zera partycję adapter wejścia. |
+| **partitionId** |Identyfikator liczony od zera partycję adapter wejścia. |
 | **IoTHub.MessageId** | Identyfikator, który służy do skorelowania dwukierunkowej komunikacji w Centrum IoT. |
 | **IoTHub.CorrelationId** |Identyfikator, który jest używany w odpowiedzi komunikat i opinie w Centrum IoT. |
 | **IoTHub.ConnectionDeviceId** |Identyfikator uwierzytelniania używany do wysłania tej wiadomości. Ta wartość jest dołączana do komunikatów servicebound przez Centrum IoT. |
@@ -150,8 +149,8 @@ W poniższej tabeli opisano każdej właściwości w **wprowadzania nowych** blo
 | **Konto magazynu** | Nazwa konta magazynu, w którym znajdują się pliki obiektu blob. |
 | **Klucz konta magazynu** | Klucz tajny, skojarzone z kontem magazynu. |
 | **Kontener** | Kontener obiektu blob danych wejściowych. Kontenery umożliwiają logiczne grupowanie dla obiektów blob przechowywanych w usłudze Microsoft Azure Blob. Przekazywanie obiektu blob do usługi magazynu obiektów Blob platformy Azure, należy określić kontener dla tego obiektu blob. |
-| **Wzorzec ścieżki** (opcjonalnie) | Ścieżka plików używana do lokalizowania obiektów blob w określonym kontenerze. W ścieżce można określić co najmniej jedno wystąpienie następujących trzech zmiennych: `{date}`, `{time}`, lub`{partition}`<br/><br/>Przykład 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Przykład 2:`cluster1/logs/{date}`<br/><br/>`*` Znak nie jest dozwolona wartość prefiksu ścieżki. Jedyne prawidłowe <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaków obiektów blob platformy Azure</a> są dozwolone. |
-| **Format daty** (opcjonalnie) | Jeśli użyjesz zmiennej daty w ścieżce, format daty, w którym pliki są organizowane. Przykład:`YYYY/MM/DD` |
+| **Wzorzec ścieżki** (opcjonalnie) | Ścieżka plików używana do lokalizowania obiektów blob w określonym kontenerze. W ścieżce można określić co najmniej jedno wystąpienie następujących trzech zmiennych: `{date}`, `{time}`, lub `{partition}`<br/><br/>Przykład 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Przykład 2: `cluster1/logs/{date}`<br/><br/>`*` Znak nie jest dozwolona wartość prefiksu ścieżki. Jedyne prawidłowe <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaków obiektów blob platformy Azure</a> są dozwolone. |
+| **Format daty** (opcjonalnie) | Jeśli użyjesz zmiennej daty w ścieżce, format daty, w którym pliki są organizowane. Przykład: `YYYY/MM/DD` |
 | **Format czasu** (opcjonalnie) |  Jeśli użyjesz zmiennej czasu w ścieżce, format czasu, w którym pliki są organizowane. Obecnie jest to jedyna obsługiwana wartość `HH`. |
 | **Format serializacji zdarzeń** | Format serializacji (JSON, CSV lub Avro) dla przychodzących strumieni danych. |
 | **Kodowanie** | Dla woluminu CSV i JSON UTF-8 jest obecnie obsługiwany tylko format kodowania. |
@@ -161,10 +160,10 @@ Gdy dane pochodzą ze źródła magazynu obiektów Blob, masz dostęp do następ
 
 | Właściwość | Opis |
 | --- | --- |
-| **Element BlobName** |Nazwa zdarzenia dostarczone z blob danych wejściowych. |
+| **BlobName** |Nazwa zdarzenia dostarczone z blob danych wejściowych. |
 | **EventProcessedUtcTime** |Data i czas przetwarzania zdarzenia przez usługę Stream Analytics. |
 | **BlobLastModifiedUtcTime** |Data i godzina ostatniej modyfikacji obiektu blob. |
-| **PartitionId** |Identyfikator liczony od zera partycję adapter wejścia. |
+| **partitionId** |Identyfikator liczony od zera partycję adapter wejścia. |
 
 Na przykład przy użyciu tych pól, można napisać zapytanie, jak w następującym przykładzie:
 
@@ -179,7 +178,7 @@ FROM Input
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Znasz opcji połączenia danych na platformie Azure dla Twojego zadania usługi analiza strumienia. Aby dowiedzieć się więcej na temat usługi Stream Analytics, zobacz:
 
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

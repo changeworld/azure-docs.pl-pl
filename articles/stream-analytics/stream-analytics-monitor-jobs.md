@@ -1,12 +1,11 @@
 ---
-title: "Programowo monitorować zadania Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak programowo monitorować zadania Stream Analytics utworzone za pośrednictwem interfejsów API REST, zestawu SDK platformy Azure lub programu PowerShell."
+title: Programowo monitorować zadania Stream Analytics | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak programowo monitorować zadania Stream Analytics utworzone za pośrednictwem interfejsów API REST, zestawu SDK platformy Azure lub programu PowerShell.
 keywords: .NET monitor, zadanie monitora, monitorowanie aplikacji
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 2ec02cc9-4ca5-4a25-ae60-c44be9ad4835
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: 7e9d2f6f03fd539c59b105108fb46697bcd60f1c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: a619120b2d30284633ba5248edd0b82bb1bf656b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programowe tworzenie monitor zadania usługi analiza strumienia
 
@@ -144,7 +143,7 @@ Poniższy kod skonfiguruje niezbędne zmiennych i zarządzania klientami.
 Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi analiza strumienia. Pierwsza część kod wykonuje żądanie GET względem usługi Stream Analytics można pobrać informacji o konkretnym zadaniu Stream Analytics. Używa *identyfikator* właściwości (pobierane z żądania GET) jako parametru metody Put w drugiej połowie kod, który wysyła PUT żądania usługi Insights Aby włączyć monitorowanie zadania usługi analiza strumienia.
 
 >[!WARNING]
->Jeśli uprzednio włączono monitorowania dla różnych zadania Stream Analytics, za pośrednictwem portalu Azure lub programistycznie za pomocą poniższego kodu, **zalecamy podanie tego samego nazwa konta magazynu, które zostało użyte wcześniej włączony monitorowania.**
+>Jeśli uprzednio włączono monitorowania dla różnych zadania Stream Analytics, za pośrednictwem portalu Azure lub programistycznie za pomocą poniższego kodu, **zalecamy podanie tego samego nazwa konta magazynu, który został użyty podczas był wcześniej włączone monitorowanie.**
 > 
 > Konto magazynu jest połączony w regionie utworzonego zadania usługi analiza strumienia, nie jest przeznaczony do samego zadania.
 > 
@@ -177,7 +176,7 @@ Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi analiza
 
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

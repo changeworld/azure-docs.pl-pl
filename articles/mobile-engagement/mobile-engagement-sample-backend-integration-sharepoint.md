@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement — integracja wewnętrznej bazy danych"
-description: "Łączenie usługi Azure Mobile Engagement z zapleczem programu SharePoint, aby utworzyć kampanie z programu SharePoint"
+title: Azure Mobile Engagement — integracja wewnętrznej bazy danych
+description: Łączenie usługi Azure Mobile Engagement z zapleczem programu SharePoint, aby utworzyć kampanie z programu SharePoint
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 06297b43-579f-46e6-8a58-961a68f9aa09
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf530ca6dce32050487f367aa80b10bf7f20b7e7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---api-integration"></a>Azure Mobile Engagement — Integracja z interfejsem API
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 W systemie marketing automatyczne tworzenie i aktywowanie kampanii marketingowych również automatycznie są wykonywane. W tym celu — usługi Azure Mobile Engagement umożliwia tworzenie takich automatycznych kampanii marketingowych, jak również za pomocą interfejsów API. 
 
 Zwykle klientów umożliwia utworzenie anonsów/sond itp jako część ich kampanii marketingowych interfejs frontonu usługi Mobile Engagement. Jednak ponieważ dojrzałe zaczynają kampanii marketingowych, istnieje potrzeba wykorzystanie danych zablokowane w systemach wewnętrznej bazy danych (na przykład systemu CRM lub system CMS, takich jak SharePoint), aby w pełni zautomatyzowanego procesu mogą być tworzone, co powoduje kampanii w dynamicznie na podstawie danych przesyłane w od systemów zaplecza usługi Mobile Engagement. 
@@ -155,7 +159,7 @@ W tym samouczku przechodzi przez takiej sytuacji, gdy użytkowników biznesowych
 4. Po utworzeniu, aby utworzyć anons, zobaczysz ekran podobny do następujących w portalu Mobile Engagement (należy pamiętać, że stan = roboczą i Activated = Brak)
    
     ![][3]
-5. `CreateAzMECampaign`Tworzy kampanii anons i zwraca jego identyfikator do obiektu wywołującego. `ActivateAzMECampaign`wymaga to identyfikator jako parametru, aby aktywować kampanię. 
+5. `CreateAzMECampaign` Tworzy kampanii anons i zwraca jego identyfikator do obiektu wywołującego. `ActivateAzMECampaign` wymaga to identyfikator jako parametru, aby aktywować kampanię. 
    
         static async Task<bool> ActivateAzMECampaign(int campaignId)
         {

@@ -1,11 +1,11 @@
 ---
-title: "Usługi Azure Mobile Engagement przewodnik - wypychanych/dotarcia do rozwiązywania problemów"
-description: "Rozwiązywanie problemów interakcji i powiadomienie użytkownika w usłudze Azure Mobile Engagement"
+title: Usługi Azure Mobile Engagement przewodnik - wypychanych/dotarcia do rozwiązywania problemów
+description: Rozwiązywanie problemów interakcji i powiadomienie użytkownika w usłudze Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3f1886b7-1fdd-47f4-b6b0-d79f158d5ef3
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ef6f34404b97a6972fc136262920a1bdbc4117b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc94353e60288ba1acfb1855b3a7b416a03e73bc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-push-and-reach-issues"></a>Podręcznik rozwiązywania problemów dotyczących wypychania i dostarczania
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Poniżej przedstawiono możliwe problemy, które mogą się pojawić w sposób usługi Azure Mobile Engagement wysyła informacje do użytkowników.
 
 ## <a name="push-failures"></a>Błędy wypychania

@@ -1,12 +1,11 @@
 ---
-title: "Korzystanie z punktów końcowych usługi Azure Machine Learning w Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Funkcje zdefiniowane przez użytkownika język maszyny w analiza strumienia"
-keywords: 
-documentationcenter: 
+title: Korzystanie z punktów końcowych usługi Azure Machine Learning w Stream Analytics | Dokumentacja firmy Microsoft
+description: Funkcje zdefiniowane przez użytkownika język maszyny w analiza strumienia
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 406b258f-b8c2-4e55-953c-b7f84e8e5354
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: ca656ce11f267340872f4b8566d0ee21791f29d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 5638071e667c5777138f7c25add8b5f60bee21fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Maszyny Learning integracji usługi analiza strumienia
 Analiza strumienia obsługuje funkcje zdefiniowane przez użytkownika, które wyróżnienia do punktów końcowych usługi Azure Machine Learning. Obsługa interfejsu API REST dla tej funkcji została szczegółowo opisana w [biblioteki interfejsu API REST usługi analiza strumienia](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ten artykuł zawiera dodatkowe informacje potrzebne do pomyślnego wykonania tej funkcji w Stream Analytics. Samouczek również została opublikowana i jest dostępny [tutaj](stream-analytics-machine-learning-integration-tutorial.md).
@@ -197,7 +196,7 @@ Teraz zapytanie UDF (w tym miejscu o nazwie scoreTweet) dla każdego zdarzenia w
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

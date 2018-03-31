@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement — strona główna"
-description: "Dowiedz się, jak zarządzać istniejącej aplikacji i projektów przy użyciu usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement — strona główna
+description: Dowiedz się, jak zarządzać istniejącej aplikacji i projektów przy użyciu usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aff578d2-40f6-43e4-b0ea-7d2674cb28a1
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0379e51a30927af88367fc687d8f8ce66eb827f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-your-existing-application-and-projects"></a>Jak zarządzać istniejącej aplikacji i projekty
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 W tym artykule opisano **Home** strony **Mobile Engagement** portalu. Możesz użyć **Mobile Engagement** portalu do monitorowania i zarządzania aplikacjami mobilnymi. Należy pamiętać, że można uruchomić przy użyciu portalu należy najpierw utworzyć **usługi Azure Mobile Engagement** konta. 
 
 Aby uzyskać dostęp do strony głównej, kliknij przycisk **macierzystego** w lewym górnym rogu strony. Zawiera listę wszystkich aplikacji, które są częścią wybranej kolekcji. Na tej stronie tylko Zobacz szybki przegląd aplikacji.
@@ -31,7 +35,7 @@ Można również wyświetlić Wykres porównawczy dla wybranych aplikacji. Lub w
 
 ![Home1][0]
 
-## <a name="my-applications"></a>Aplikacje
+## <a name="my-applications"></a>Moje aplikacje
 Szybki przegląd aplikacji służy do wybierania aplikacji, które chcesz otworzyć, aby wyświetlić opcje szczegółowe wstążki. Kliknij nazwę aplikacji, aby powrócić do ostatnio odwiedzonych lokalizacji wstążki w aplikacji lub kliknij ikonę narzędzi, aby przejść bezpośrednio do strony "Ustawienia" aplikacji. Możesz wyszukiwania, filtrować i sortować informacji wyświetlanych w tabelach aplikacji. Można również przeciągnij i upuść nagłówki kolumn, aby zmienić kolejność.
 
 Między innymi zawiera omówienie aplikacji:
@@ -64,7 +68,7 @@ Kliknij projekt, aby wyświetlić wszystkie aplikacje, które są częścią teg
 
 ![Home2][3]
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Pojęcia][Link 6]
 * [Usługa Przewodnik rozwiązywania problemów][Link 24]
 

@@ -1,12 +1,11 @@
 ---
-title: "Integracja usługi analiza strumienia i uczenia maszynowego Azure | Dokumentacja firmy Microsoft"
-description: "Jak używać funkcji zdefiniowanej przez użytkownika i uczenia maszynowego w zadaniu Stream Analytics"
-keywords: 
-documentationcenter: 
+title: Integracja usługi analiza strumienia i uczenia maszynowego Azure | Dokumentacja firmy Microsoft
+description: Jak używać funkcji zdefiniowanej przez użytkownika i uczenia maszynowego w zadaniu Stream Analytics
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
-manager: jhubbard
-editor: cgronlun
+manager: kfile
 ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/01/2018
 ms.author: sngun
-ms.openlocfilehash: 10d514aeb50dcd24f28ed879875b23b25578cebb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e5661f9f3871619201ff9106e87785de802e8933
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Wykonywanie analiz wskaźniki nastrojów klientów przy użyciu usługi Azure Stream Analytics i usługi Azure Machine Learning
 W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi analiza strumienia Azure, której zintegrowano usługi Azure Machine Learning. Umożliwia modelu uczenia maszynowego analytics wskaźniki nastrojów klientów z Cortana Intelligence Gallery analizować dane przesyłane strumieniowo tekstu i określić wynik wskaźniki nastrojów klientów w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence Suite pozwala wykonać to zadanie, nie martwiąc się o mogli dokładnie zapoznać się tworzenia modelu analizy wskaźniki nastrojów klientów.

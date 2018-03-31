@@ -1,12 +1,11 @@
 ---
-title: "Skalowanie zadania usługi analiza strumienia w celu zwiększenia przepływności | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skalować zadania usługi analiza strumienia Konfigurowanie partycji wejściowych, dostosowywanie definicji zapytania i ustawiając zadania jednostki przesyłania strumieniowego."
-keywords: "przesyłanie strumieniowe, danych przesyłania strumieniowego przetwarzania danych, dostroić analityka"
+title: Skalowanie zadania usługi analiza strumienia w celu zwiększenia przepływności | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skalować zadania usługi analiza strumienia Konfigurowanie partycji wejściowych, dostosowywanie definicji zapytania i ustawiając zadania jednostki przesyłania strumieniowego.
+keywords: przesyłanie strumieniowe, danych przesyłania strumieniowego przetwarzania danych, dostroić analityka
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 781a3b71c35cb48e40202e3b1acc8edbbaf865c4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Skalowanie zadania usługi analiza strumienia Azure w celu zwiększenia przepływności
 W tym artykule przedstawiono sposób dostrajania Stream Analytics zapytanie w celu zwiększenia przepływności zadań przesyłania strumieniowego usługi Analytics. Następujący Przewodnik umożliwia skalowanie zadania obsługi większych obciążeń i wykorzystać więcej zasobów systemowych (np. większą przepustowość, więcej zasobów procesora CPU, więcej pamięci).
@@ -148,12 +147,12 @@ W poniższej tabeli przedstawiono wyniki, którą widzieliśmy, gdy firma Micros
 
 I Wykres ukazuje wizualizacji relacji między usługami SUs i przepływności.
 
-![img.stream.Analytics.perfgraph][img.stream.analytics.perfgraph]
+![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn834998.aspx)

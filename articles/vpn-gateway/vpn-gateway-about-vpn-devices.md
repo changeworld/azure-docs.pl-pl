@@ -1,25 +1,25 @@
 ---
-title: "Informacje na temat urządzeń sieci VPN | Microsoft Docs"
-description: "W tym artykule omówiono urządzenia sieci VPN i parametry protokołu IPsec dla połączeń obejmujących wiele lokalizacji usługi S2S VPN Gateway. Zamieszczono linki do przykładów i instrukcji konfigurowania."
+title: Informacje na temat urządzeń sieci VPN | Microsoft Docs
+description: W tym artykule omówiono urządzenia sieci VPN i parametry protokołu IPsec dla połączeń obejmujących wiele lokalizacji usługi S2S VPN Gateway. Zamieszczono linki do przykładów i instrukcji konfigurowania.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: ba449333-2716-4b7f-9889-ecc521e4d616
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: f75732761cefd7706fe1555484148efe6cdc0e56
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 7f69b5268adc857c6e45f8fa11fbcca42f64b71f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -57,7 +57,7 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[Przewodnik po konfiguracji*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Przykłady konfiguracji\*\*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
-| Cisco |Meraki |Nie dotyczy |Niezgodne |Niezgodne |
+| Cisco |Meraki |ND |Niezgodne |Niezgodne |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 lub nowsze |[Przewodnik po konfiguracji](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Niezgodne |
 | F5 |Seria BIG-IP |12.0 |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Przewodnik po konfiguracji](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[Przewodnik po konfiguracji](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
@@ -67,11 +67,12 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 | Juniper |ISG |ScreenOS 6.3 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
 | Juniper |SSG |ScreenOS 6.2 |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Przykłady konfiguracji](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft |Routing and Remote Access Service |Windows Server 2012 |Niezgodne |[Przykłady konfiguracji](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
-| Open Systems AG |Mission Control Security Gateway |Nie dotyczy |[Przewodnik po konfiguracji](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Niezgodne |
+| Open Systems AG |Mission Control Security Gateway |ND |[Przewodnik po konfiguracji](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Niezgodne |
 | Palo Alto Networks |Wszystkie urządzenia z systemem PAN-OS |PAN-OS<br>PolicyBased: wersja 6.1.5 lub nowsza<br>RouteBased: 7.1.4 |[Przewodnik po konfiguracji](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Przewodnik po konfiguracji](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
 | ShareTech | UTM następnej generacji (seria NU) | 9.0.1.3 | Niezgodne | [Przewodnik po konfiguracji](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |Seria TZ, seria NSA<br>Seria SuperMassive<br>Seria E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Niezgodne |[Przewodnik po konfiguracji](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | | [Przewodnik po konfiguracji](https://community.sophos.com/kb/127546) |
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Protokół BGP za pośrednictwem IKEv2 i IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012374708&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=2EF5KFljZwtAGQDSm8%2FF2f6DqI2bkmA2qKG4u0rPgbQ%3D&reserved=0)<br><br>[VTI za pośrednictwem IKEv2 i IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012305347&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=ycgiDJCOQYTPN7sAEBSigphzC6mBaADz%2FgdCOm7TsXA%3D&reserved=0)
 | WatchGuard |Wszyscy |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Przewodnik po konfiguracji](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 > [!NOTE]
@@ -79,6 +80,10 @@ Aby łatwiej skonfigurować urządzenie sieci VPN, zapoznaj się z linkami odpow
 > (*) Produkt Cisco ASA w wersji 8.4 i nowszych ma obsługę protokołu IKEv2 i może łączyć się z bramą Azure VPN Gateway za pomocą zasad IPsec/IKE z opcją „UsePolicyBasedTrafficSelectors”. Zapoznaj się z tym [artykułem z instrukcjami](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 >
 > (\*\*) Routery z serii ISR 7200 obsługują tylko sieci VPN oparte na zasadach.
+
+## <a name="Download VPN device configuration scripts from Azure"></a>Pobierz skrypty do konfiguracji urządzenia sieci VPN z platformy Azure
+
+Dla niektórych urządzeń, możesz pobrać skryptów konfiguracyjnych bezpośrednio z platformy Azure. Aby uzyskać więcej informacje i instrukcje pobierania, zobacz [VPN Pobierz skrypty do konfiguracji urządzeń](vpn-gateway-download-vpndevicescript.md).
 
 ## <a name="additionaldevices"></a>Niezweryfikowane urządzenia sieci VPN
 
@@ -153,21 +158,21 @@ W poniższej tabeli znajduje się lista ofert skojarzeń zabezpieczeń protokoł
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |None         |
 | 2 |AES256        |SHA1              |Brak         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |Brak         |
-| 5 |AES128        |SHA1              |None         |
+| 3 |3DES          |SHA1              |Brak         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |Brak         |
 | 6 |3DES          |SHA256            |None         |
 
 #### <a name="azure-gateway-as-responder"></a>Brama Azure jako obiekt odpowiadający
 
 |-  |**Szyfrowanie**|**Uwierzytelnianie**|**Grupa PFS**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 1 |GCM AES256    |GCM (AES256)      |Brak         |
 | 2 |AES256        |SHA1              |Brak         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
-| 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
+| 3 |3DES          |SHA1              |Brak         |
+| 4 |AES256        |SHA256            |Brak         |
+| 5 |AES128        |SHA1              |Brak         |
+| 6 |3DES          |SHA256            |Brak         |
 | 7 |DES           |SHA1              |None         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
@@ -183,7 +188,7 @@ W poniższej tabeli znajduje się lista ofert skojarzeń zabezpieczeń protokoł
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |None         |
+| 22|AES128        |SHA256            |Brak         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

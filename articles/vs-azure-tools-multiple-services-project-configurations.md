@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie projektu platformy Azure przy użyciu konfiguracji z wieloma usługi | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować projekt usługi w chmurze platformy Azure, zmieniając pliki ServiceDefinition.csdef, ServiceConfiguration.Local.cscfg i ServiceConfiguration.Cloud.cscfg."
+title: Konfigurowanie projektu platformy Azure przy użyciu konfiguracji z wieloma usługi | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować projekt usługi w chmurze platformy Azure, zmieniając pliki ServiceDefinition.csdef, ServiceConfiguration.Local.cscfg i ServiceConfiguration.Cloud.cscfg.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
 ms.service: multiple
 ms.devlang: multiple
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: 8125ef36f730b745d63c39493f48d14a5a33d76c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: ghogen
+ms.openlocfilehash: 919568922ada2d842233ade029a54d474b4a1a0e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurowanie projektu platformy Azure w programie Visual Studio do wykorzystania wielu konfiguracji usługi
 
 Projekt usługi w chmurze platformy Azure w programie Visual Studio zawiera trzy pliki konfiguracji: `ServiceDefinition.csdef`, `ServiceConfiguration.Local.cscfg`, i `ServiceConfiguration.Cloud.cscfg`:
 
-- `ServiceDefinition.csdef`zostanie wdrożona na platformie Azure opisano wymagania dotyczące usługi w chmurze i jej role i podaj ustawienia, które są stosowane do wszystkich wystąpień. Ustawienia mogą być odczytywane w czasie wykonywania za pomocą usługi hostingu środowisko uruchomieniowe interfejsu API Azure. Ten plik może zostać zaktualizowana na platformie Azure, tylko po zatrzymaniu usługa w chmurze.
-- `ServiceConfiguration.Local.cscfg`i `ServiceConfiguration.Cloud.cscfg` Podaj wartości dla ustawień w definicji pliku i określ liczbę wystąpień, aby uruchomić dla każdej roli. Plik "Lokalnie" zawiera wartości używana podczas debugowania lokalnego. Plik "W chmurze" jest wdrażana na platformie Azure jako `ServiceConfiguration.cscfg` i udostępnia ustawienia w środowisku serwera. Ten plik może zostać zaktualizowana uruchomionej usługi w chmurze na platformie Azure.
+- `ServiceDefinition.csdef` zostanie wdrożona na platformie Azure opisano wymagania dotyczące usługi w chmurze i jej role i podaj ustawienia, które są stosowane do wszystkich wystąpień. Ustawienia mogą być odczytywane w czasie wykonywania za pomocą usługi hostingu środowisko uruchomieniowe interfejsu API Azure. Ten plik może zostać zaktualizowana na platformie Azure, tylko po zatrzymaniu usługa w chmurze.
+- `ServiceConfiguration.Local.cscfg` i `ServiceConfiguration.Cloud.cscfg` Podaj wartości dla ustawień w definicji pliku i określ liczbę wystąpień, aby uruchomić dla każdej roli. Plik "Lokalnie" zawiera wartości używana podczas debugowania lokalnego. Plik "W chmurze" jest wdrażana na platformie Azure jako `ServiceConfiguration.cscfg` i udostępnia ustawienia w środowisku serwera. Ten plik może zostać zaktualizowana uruchomionej usługi w chmurze na platformie Azure.
 
 Ustawienia konfiguracji są zarządzane i modyfikować w programie Visual Studio za pomocą stron właściwości dla odpowiednich roli (kliknij prawym przyciskiem myszy rolę i wybierz **właściwości**, lub kliknij dwukrotnie roli). Zakres zmiany niezależnie od konfiguracji jest wybierany w **konfiguracji usługi** listy rozwijanej. Właściwości role sieci web i proces roboczy są podobne, chyba że w przypadku, gdy opisane w poniższych sekcjach.
 
@@ -58,7 +58,7 @@ Jeśli masz już dodany punkt końcowy HTTPS, opcja punkt końcowy HTTPS jest do
 
 Domyślnie diagnostycznych są włączone dla roli sieci Web. Konto projektu i magazynu usługi chmury Azure są skonfigurowane do korzystania z emulatora magazynu lokalnego. Gdy wszystko będzie gotowe do wdrożenia na platformie Azure, można wybrać przycisk konstruktora (**...** ) zamiast tego użyć usługi Azure storage. Można przenieść danych diagnostycznych na konto magazynu na żądanie lub automatycznie zaplanowanymi interwałami. Aby uzyskać więcej informacji na temat diagnostycznych platformy Azure, zobacz [Włączanie diagnostyki w usług Azure Cloud Services i maszyn wirtualnych](cloud-services/cloud-services-dotnet-diagnostics.md).
 
-## <a name="settings-page"></a>Ustawienia strony
+## <a name="settings-page"></a>Strona Ustawienia
 
 Na **ustawienia** strony, można dodać ustawień do konfiguracji jako pary nazwa wartość. Kodu działającego w roli można odczytać wartości ustawień konfiguracji w czasie wykonywania za pomocą klasy udostępniane przez [biblioteki zarządzane Azure](http://go.microsoft.com/fwlink?LinkID=171026), w szczególności [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) metody.
 

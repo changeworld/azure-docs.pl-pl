@@ -1,11 +1,11 @@
 ---
-title: "Testowanie wydajności usługi w chmurze | Dokumentacja firmy Microsoft"
-description: "Testowanie wydajności usługi w chmurze przy użyciu profilera Visual Studio"
+title: Testowanie wydajności usługi w chmurze | Dokumentacja firmy Microsoft
+description: Testowanie wydajności usługi w chmurze przy użyciu profilera Visual Studio
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 7a5501aa-f92c-457c-af9b-92ea50914e24
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: 483b8b1c7c75c407cb55a1b3b027ae043c506ebb
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 74ffd70bdb204cee75b86a1e922ac67873a88758
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>Testowanie wydajności usługi w chmurze
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Należy przetestować wydajność usługi w chmurze, w następujący sposób:
 
 * Użyj diagnostyki Azure zbierać informacje dotyczące żądania i połączenia i przejrzyj statystyki witryny, które pokazują, jak usługa wykonuje z punktu widzenia klienta. Aby rozpocząć, zobacz [Konfigurowanie diagnostyki dla usług Azure Cloud Services i maszyn wirtualnych](http://go.microsoft.com/fwlink/p/?LinkId=623009).
@@ -106,10 +106,10 @@ Sesja profilowania jest tworzony dla każdego wystąpienia roli w usłudze w chm
 2. Wybierz węzeł rozwiązań usługi obliczenia Azure, a następnie wybierz węzeł wdrożenia usługi Azure dla wybranego profilu po opublikowaniu w programie Visual Studio usługi w chmurze.
 3. Aby wyświetlić raporty profilowania dla wystąpienia, wybierz rolę usługi, otwórz menu skrótów dla określonego wystąpienia, a następnie wybierz **Wyświetl raport profilowania**.
    
-    Raport o nazwie pliku Vsp jest teraz pobierane z usługi Azure, a stan pobierania zostanie wyświetlony w dzienniku aktywności platformy Azure. Po zakończeniu pobierania raportu profilowania jest wyświetlany na karcie w edytorze programu Visual Studio o nazwie <Role name>  *<Instance Number>*  <identifier>pliku Vsp. Zostanie wyświetlone podsumowanie danych dla raportu.
+    Raport o nazwie pliku Vsp jest teraz pobierane z usługi Azure, a stan pobierania zostanie wyświetlony w dzienniku aktywności platformy Azure. Po zakończeniu pobierania raportu profilowania jest wyświetlany na karcie w edytorze programu Visual Studio o nazwie <Role name> *<Instance Number>* <identifier>pliku Vsp. Zostanie wyświetlone podsumowanie danych dla raportu.
 4. Aby wyświetlić różne widoki raportu, na liście bieżący widok, wybierz typ widoku, który ma. Aby uzyskać więcej informacji, zobacz [widoku raportu narzędzi profilowania](https://msdn.microsoft.com/library/azure/bb385755.aspx).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Debugowanie usług w chmurze](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
 [Publikowanie do usługi w chmurze Azure w programie Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)

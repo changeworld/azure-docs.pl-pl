@@ -1,11 +1,11 @@
 ---
 title: Konfiguracja zaawansowana dla zestawem Azure Mobile Engagement Android SDK
-description: "W tym artykule opisano opcje konfiguracji zaawansowanej, łącznie z manifestu systemu Android z zestawem Azure Mobile Engagement Android SDK"
+description: W tym artykule opisano opcje konfiguracji zaawansowanej, łącznie z manifestu systemu Android z zestawem Azure Mobile Engagement Android SDK
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 37d2c09a-86fa-473d-8987-c7e35a0eb3e8
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 0301f71c76872714aa1bf727a6c21dd7a63db036
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 29a7bb7daae59e2034504ce27c9ba66755b11e4b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Konfiguracja zaawansowana dla zestawem Azure Mobile Engagement Android SDK
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Platforma uniwersalna systemu Windows](mobile-engagement-windows-store-advanced-configuration.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -88,7 +92,7 @@ Jeśli zaangażowania jest aktywny, gdy wywołanie tej funkcji, może zająć je
 
 Możesz włączyć ponownie raportowania przez wywołanie tej samej funkcji z dziennika `true`.
 
-### <a name="integration-in-your-own-preferenceactivity"></a>Integracja z własną`PreferenceActivity`
+### <a name="integration-in-your-own-preferenceactivity"></a>Integracja z własną `PreferenceActivity`
 Zamiast wywoływania tej funkcji, to ustawienie można również zintegrować bezpośrednio w istniejącą `PreferenceActivity`.
 
 Zaangażowania, aby użyć pliku preferencji (z odpowiednią tryb) można skonfigurować w `AndroidManifest.xml` pliku z `application meta-data`:

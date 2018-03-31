@@ -1,12 +1,11 @@
 ---
-title: "Power BI pulpitu nawigacyjnego usługi Azure Stream Analytics | Dokumentacja firmy Microsoft"
-description: "W czasie rzeczywistym przesyłania strumieniowego pulpit nawigacyjny usługi Power BI umożliwia zebranie analizy biznesowej i przeanalizowanie duże ilości danych z zadania usługi analiza strumienia."
+title: Power BI pulpitu nawigacyjnego usługi Azure Stream Analytics | Dokumentacja firmy Microsoft
+description: W czasie rzeczywistym przesyłania strumieniowego pulpit nawigacyjny usługi Power BI umożliwia zebranie analizy biznesowej i przeanalizowanie duże ilości danych z zadania usługi analiza strumienia.
 keywords: pulpitu nawigacyjnego Analytics, pulpit nawigacyjny w czasie rzeczywistym
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: b446e2296f2747012849936b994c4a4a2044869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Strumienia analizy i usługi Power BI: pulpitu nawigacyjnego analytics w czasie rzeczywistym do strumieniowego przesyłania danych
 Usługa Azure Stream Analytics pozwala korzystać z jednego z początku narzędzi analizy biznesowej, [Microsoft Power BI](https://powerbi.com/). W tym artykule dowiesz się, jak utworzyć przy użyciu usługi Power BI jako dane wyjściowe dla Twojego zadania usługi analiza strumienia Azure narzędzia do analizy biznesowej. Możesz również sposób tworzenia i używania w czasie rzeczywistym pulpitu nawigacyjnego.
@@ -134,7 +133,7 @@ Ta sekcja jest opcjonalna, ale zalecana.
 4. Kliknij przycisk **testu** i upewnij się, że otrzymywanie wyników.
 
 
-## <a name="run-the-job"></a>Uruchamianie zadania
+## <a name="run-the-job"></a>Uruchom zadanie
 
 1. Upewnij się, że aplikacja TelcoStreaming działa.
 
@@ -242,7 +241,7 @@ W takiej konfiguracji można zmienić oryginalne zapytanie do następującego:
         dspl
 
 
-### <a name="renew-authorization"></a>Odnów autoryzacji
+### <a name="renew-authorization"></a>Odnów autoryzację
 Jeśli hasło uległ zmianie od czasu utworzenia lub ostatniej uwierzytelniony zadania, należy ponownie uwierzytelniać konta usługi Power BI. Jeśli uwierzytelnianie wieloskładnikowe Azure został skonfigurowany w dzierżawie usługi Azure Active Directory (Azure AD), należy odnowić autoryzacji usługi Power BI co dwa tygodnie. Jeśli nie odnowisz, można zauważyć objawy, takich jak brakujące dane wyjściowe zadania lub `Authenticate user error` w dzienników operacji.
 
 Podobnie jeśli zadanie rozpoczyna się po wygaśnięciu tokenu, występuje błąd, a zadanie nie powiedzie się. Aby rozwiązać ten problem, zatrzymać zadanie, które jest uruchomiona i przejdź do usługi Power BI dane wyjściowe. Aby uniknąć utraty danych, wybierz **odnowić autoryzacji** połączyć, a następnie uruchom ponownie zadanie z **czas ostatniego zatrzymania**.
@@ -252,7 +251,7 @@ Po odświeżeniu autoryzację przy użyciu usługi Power BI, zielony alert zosta
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

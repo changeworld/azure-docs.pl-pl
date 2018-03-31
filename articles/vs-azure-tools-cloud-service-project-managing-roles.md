@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie rolami w usług w chmurze Azure z programem Visual Studio | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie dodawania i usuwania ról w usług w chmurze Azure z programem Visual Studio."
+title: Zarządzanie rolami w usług w chmurze Azure z programem Visual Studio | Dokumentacja firmy Microsoft
+description: Informacje o sposobie dodawania i usuwania ról w usług w chmurze Azure z programem Visual Studio.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5ec9ae2e-8579-4e5d-999e-8ae05b629bd1
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 6ed857b857cf8c14506ca39725c214a7fea4fc95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: fb49eaa69f2265f6b312ecbdab1435e7c50236b8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="managing-roles-in-azure-cloud-services-with-visual-studio"></a>Zarządzanie rolami w usług w chmurze Azure z programem Visual Studio
 Po utworzeniu usługi w chmurze platformy Azure, można dodać do niego nowych ról lub usuwać istniejących ról. Możesz także zaimportować istniejący projekt i przekształcić ją do roli. Można na przykład zaimportować aplikację sieci web platformy ASP.NET i wyznaczanie roli sieci web.
@@ -50,7 +50,7 @@ Poniższe kroki prowadzące przez usunięcie roli sieci web lub procesu roboczeg
 ## <a name="readding-a-role-to-an-azure-cloud-service-project"></a>Ponowne Dodawanie roli do projektu usługi w chmurze Azure
 Jeśli usunąć rolę z projektu usługi w chmurze, ale później zdecyduje się Dodaj rolę projektu, tylko deklaracji roli i Podstawowe atrybuty, takie jak punkty końcowe i informacje diagnostyczne, zostaną dodane. Nie dodatkowe zasoby lub odwołania zostały dodane do `ServiceDefinition.csdef` pliku lub `ServiceConfiguration.cscfg` pliku. Jeśli chcesz dodać te informacje, należy ręcznie dodać do tych plików.
 
-Na przykład można usunąć roli usługi sieci web, a później zdecydujesz się dodać tej roli do rozwiązania. Jeśli to zrobisz, występuje błąd. Aby uniknąć tego błędu, należy dodać `<LocalResources>` pokazano w poniższych XML do elementu `ServiceDefinition.csdef` pliku. Użyj nazwy roli usługi sieci web, który został dodany do projektu jako część atrybutu nazwy dla  **<LocalStorage>**  elementu. W tym przykładzie nazwa roli usługi sieci web jest **WCFServiceWebRole1**.
+Na przykład można usunąć roli usługi sieci web, a później zdecydujesz się dodać tej roli do rozwiązania. Jeśli to zrobisz, występuje błąd. Aby uniknąć tego błędu, należy dodać `<LocalResources>` pokazano w poniższych XML do elementu `ServiceDefinition.csdef` pliku. Użyj nazwy roli usługi sieci web, który został dodany do projektu jako część atrybutu nazwy dla **<LocalStorage>** elementu. W tym przykładzie nazwa roli usługi sieci web jest **WCFServiceWebRole1**.
 
     <WebRole name="WCFServiceWebRole1">
         <Sites>
@@ -71,5 +71,5 @@ Na przykład można usunąć roli usługi sieci web, a później zdecydujesz si�
        </LocalResources>
     </WebRole>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - [Konfigurowanie ról dla usługi w chmurze Azure z programem Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md)

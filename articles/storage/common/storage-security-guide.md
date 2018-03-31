@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu Azure
 
@@ -357,7 +357,7 @@ Ta funkcja zapewnia, że wszystkie dane na dyskach maszyny wirtualnej jest szyfr
 
 #### <a name="iaas-vms-and-their-vhd-files"></a>Maszyny wirtualne IaaS i swoich plików wirtualnego dysku twardego
 
-W przypadku dysków danych używany przez maszyny wirtualne IaaS szyfrowania dysków Azure jest zalecane. Jeśli tworzysz Maszynę wirtualną przy użyciu obrazu z portalu Azure Marketplace, platforma Azure stosuje [skrócona kopiowania](https://en.wikipedia.org/wiki/Object_copying) obrazu do magazynu konta w usłudze Azure Storage, a nie są szyfrowane, nawet jeśli masz SSE włączone. Po tworzy maszynę Wirtualną i uruchamia aktualizacji obrazu, SSE rozpocznie się zaszyfrowanie danych. Z tego powodu najlepiej jest używać szyfrowania dysków Azure na maszyny wirtualne utworzone z obrazów w portalu Azure Marketplace, jeśli chcesz, w pełni szyfrowane.
+W przypadku dysków danych używany przez maszyny wirtualne IaaS szyfrowania dysków Azure jest zalecane. Jeśli tworzysz Maszynę wirtualną z dyskami niezarządzanych przy użyciu obrazu z portalu Azure Marketplace, platforma Azure stosuje [skrócona kopiowania](https://en.wikipedia.org/wiki/Object_copying) obrazu do magazynu konta w usłudze Azure Storage, a nie są szyfrowane, nawet jeśli masz SSE włączone. Po tworzy maszynę Wirtualną i uruchamia aktualizacji obrazu, SSE rozpocznie się zaszyfrowanie danych. Z tego powodu najlepiej jest używać szyfrowania dysków Azure na maszynach wirtualnych z dyskami niezarządzane utworzone z obrazów w portalu Azure Marketplace, jeśli chcesz, w pełni szyfrowane. Po utworzeniu maszyny Wirtualnej z dysków zarządzanych SSE szyfruje wszystkie dane domyślnie przy użyciu platformy zarządzanych kluczy. 
 
 W przypadku przeniesienia zaszyfrowane wstępnie maszyny Wirtualnej na platformie Azure z lokalnymi, można przekazać do usługi Azure Key Vault kluczy szyfrowania i kontynuować korzystanie z szyfrowania dla tej maszyny Wirtualnej, aby były używane lokalnie. Szyfrowanie dysków Azure jest włączona do obsługi tego scenariusza.
 

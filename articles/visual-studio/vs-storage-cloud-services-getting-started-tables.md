@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z magazynem tabel i Visual Studio połączone usługi (usługi w chmurze) | Dokumentacja firmy Microsoft"
-description: "Jak rozpocząć korzystanie z magazynu tabel Azure projektu usługi w chmurze w programie Visual Studio, po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi"
+title: Rozpoczynanie pracy z magazynem tabel i Visual Studio połączone usługi (usługi w chmurze) | Dokumentacja firmy Microsoft
+description: Jak rozpocząć korzystanie z magazynu tabel Azure projektu usługi w chmurze w programie Visual Studio, po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a3a11ed8-ba7f-4193-912b-e555f5b72184
 ms.service: storage
 ms.workload: web
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: 51b71d783806d9b0d58d4473b8c07f77441dadd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 68ce9630c5224bd7d9bc4b093ce54dd94140f9e7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Wprowadzenie do korzystania z magazynu tabel platformy Azure i programu Visual Studio połączone usługi (usług w chmurze projekty)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym artykule opisano, jak rozpocząć pracę przy użyciu magazynu tabel platformy Azure w programie Visual Studio po utworzony lub odwołanie do konta magazynu Azure w projekcie usługi w chmurze przy użyciu programu Visual Studio **dodać usług połączonych** okna dialogowego. **Dodać usług połączonych** operacji instaluje odpowiednie pakiety NuGet dostęp do magazynu Azure do projektu i dodaje ten ciąg połączenia dla konta magazynu do plików konfiguracji projektu.
 
 Usługa Azure Table storage umożliwia przechowywania dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz lub na zewnątrz w chmurze Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.
@@ -191,6 +191,6 @@ Po możesz znaleźć, można usunąć jednostki. Poniższy kod szuka jednostki k
     else
        Console.WriteLine("Couldn't delete the entity.");
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 

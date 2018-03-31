@@ -1,32 +1,32 @@
 ---
-title: "Nazwa ustawienia zasad grupy dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować wygaśnięcia dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)"
+title: Nazwa ustawienia zasad grupy dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Jak skonfigurować wygaśnięcia dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: michael.tillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 
 Aby wymusić spójne konwencji nazewnictwa grup usługi Office 365 utworzonych lub edytowanych przez użytkowników, należy skonfigurować grupę nazewnictwa zasad dla dzierżawców w usłudze Azure Active Directory (Azure AD). Na przykład można użyć zasad nazewnictwa do komunikowania się funkcji grupy członkostwa, regionu geograficznego lub twórca grupy. Zasady nazewnictwa mogą również wykorzystać do skategoryzowania grup w książce adresowej. Zasady służy do blokowania słów z użycia grupy nazw i aliasów.
 
 > [!IMPORTANT]
-> Za pomocą zasad nazewnictwa grup Office 365 w wersji zapoznawczej wymaga licencji usługi Azure Active Directory Premium P1 dla każdego unikatowego użytkownika należącego do jednej lub więcej grup usługi Office 365.
+> Przy użyciu zasad nazewnictwa grup Office 365 w wersji zapoznawczej wymaga licencji usługi Azure Active Directory Premium P1 i Azure AD podstawowa Education licencji dla każdego unikatowego użytkownika należącego do jednej lub więcej grup usługi Office 365.
 
 Zasady nazewnictwa są stosowane do tworzenia lub edytowania grup utworzonych przez obciążenia (na przykład, Outlook, Teams firmy Microsoft, SharePoint, Exchange lub planowania). Jest stosowana do nazwy grupy i aliasu grupy. Jeśli istnieje już grupa wymiany zasad nazewnictwa skonfigurować zasady nazewnictwa w usłudze Azure AD, Azure AD nazewnictwa zasad została zastosowana.
 

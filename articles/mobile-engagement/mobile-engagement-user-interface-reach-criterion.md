@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement — kryterium Reach"
-description: "Dowiedz się, jak używać kryteriów strategicznych do wysyłania kampanie wypychania do wybranego podzbioru użytkowników przy użyciu usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement — kryterium Reach
+description: Dowiedz się, jak używać kryteriów strategicznych do wysyłania kampanie wypychania do wybranego podzbioru użytkowników przy użyciu usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a4ed03a0-55b1-4dd8-b0bd-c475005afb66
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2adf473c6acea0f128eb14e2616748ff29d5d762
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>Jak używać kryteriów strategicznych do wysyłania kampanie wypychania do wybranego podzbioru użytkowników
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Elementów docelowych odbiorców według określonych kryteriów przy użyciu przycisku "Nowe kryterium" jest jednym z najbardziej zaawansowanych pojęcia związane z usługi Azure Mobile Engagement pomaga odpowiednich wysyłania powiadomień wypychanych że klienci będą odpowiadać zamiast wszyscy spamem. Można ograniczyć na podstawie standardowego kryteriów odbiorców i symulować wypchnięciu do określenia, ile osób będą otrzymywać powiadomienia.
 
 **Zobacz też:**
@@ -48,7 +52,7 @@ Jeśli chcesz wypychać powiadomienia tylko do podzbioru użytkownicy wykonali a
 > [!NOTE]
 > Docelowy, na podstawie kryteriów innych niż tagi informacje o aplikacji wymaga usługi Azure Mobile Engagement zebrać informacje z urządzeń użytkowników przed wysłaniem powiadomienia wypychanego w związku z czym może powodować opóźnienia. Wypycha konfigurację złożonych wypychania opcje (np. aktualizowanie identyfikatory) również może opóźniać. Korzystanie z interfejsu API wypychania kampanii "zrzut jeden" jest bezwzględnym najszybszy sposób wypychania w usłudze Azure Mobile Engagement. Przy użyciu tylko tagi informacje o aplikacji jako kryterium wypychanej kampanii Reach (niezależnie od interfejsu API Reach lub interfejsu użytkownika) jest najszybszy sposób dalej, ponieważ tagi informacje o aplikacji są przechowywane po stronie serwera. Przy użyciu innych kryteriów określania wartości docelowej w ramach kampanii wypychania jest metoda push najbardziej elastycznego, ale najwolniejsze, ponieważ usługi Azure Mobile Engagement ma zapytanie urządzenia w celu wysyłania kampanii.
 
-![Reach Criterion1][29] 
+![Reach-Criterion1][29] 
 
 ## <a name="criterion-options-apply-to"></a>Opcje kryterium mają zastosowanie do:
 * **Technicals**     

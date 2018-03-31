@@ -1,11 +1,11 @@
 ---
-title: "Jak migrować i publikowanie aplikacji sieci Web do usługi w chmurze platformy Azure w programie Visual Studio | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak migracji i publikowanie aplikacji sieci web do usługi w chmurze platformy Azure przy użyciu programu Visual Studio"
+title: Jak migrować i publikowanie aplikacji sieci Web do usługi w chmurze platformy Azure w programie Visual Studio | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak migracji i publikowanie aplikacji sieci web do usługi w chmurze platformy Azure przy użyciu programu Visual Studio
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 9394adfd-a645-4664-9354-dd5df08e8c91
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
-ms.author: kraigb
-ms.openlocfilehash: 1ced364bed821a9391f8ffd049f61ac236d98309
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: ghogen
+ms.openlocfilehash: 682be267bbb1cf495d85af5786309a98f885fc23
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>Porady: migracja i publikowanie aplikacji sieci Web do usługi w chmurze platformy Azure w programie Visual Studio
 
@@ -82,9 +82,9 @@ W poniższej tabeli przedstawiono szczegółowe informacje dotyczące uruchamian
    | Typ aplikacji sieci Web | działające na platformie Azure |
    | --- | --- | --- |
    | Aplikacja sieci Web ASP.NET<br/>(w tym MVC 2, MVC 3, MVC 4) | Wybierz adres URL w **wdrożenia** karcie **dziennik aktywności platformy Azure**. |
-   | ASP.NET pusta aplikacja sieci Web | Jeśli masz domyślne `.aspx` strony w aplikacji, wybierz adres URL w **wdrożenia** karcie **dziennik aktywności platformy Azure**. Aby przejść do innej strony, wprowadź następujący adres URL w przeglądarce:`<deployment_url>/<page_name>.aspx` |
-   | Aplikacji Silverlight<br/>Aplikacja biznesowa Silverlight<br/>Aplikacja nawigacji Silverlight | Przejdź do odpowiedniej strony aplikacji przy użyciu następujących postać adresu URL:`<deployment_url>/<page_name>.aspx` |
-    Aplikacja usługi WCF<br/>Aplikacja usługi przepływu pracy WCF | Ustaw `.svc` pliku jako strony początkowej w projekcie usługi WCF. Następnie przejdź do`<deployment_url>/<service_file>.svc` |
+   | ASP.NET pusta aplikacja sieci Web | Jeśli masz domyślne `.aspx` strony w aplikacji, wybierz adres URL w **wdrożenia** karcie **dziennik aktywności platformy Azure**. Aby przejść do innej strony, wprowadź następujący adres URL w przeglądarce: `<deployment_url>/<page_name>.aspx` |
+   | Aplikacji Silverlight<br/>Aplikacja biznesowa Silverlight<br/>Aplikacja nawigacji Silverlight | Przejdź do odpowiedniej strony aplikacji przy użyciu następujących postać adresu URL: `<deployment_url>/<page_name>.aspx` |
+    Aplikacja usługi WCF<br/>Aplikacja usługi przepływu pracy WCF | Ustaw `.svc` pliku jako strony początkowej w projekcie usługi WCF. Następnie przejdź do `<deployment_url>/<service_file>.svc` |
    | ASP.NET Dynamic jednostek<br/>ASP.NET Dynamic Data Linq do SQL | Zaktualizuj parametry połączenia, zgodnie z opisem w następnej sekcji. Następnie przejdź do `<deployment_url>/<page_name>.aspx`. Linq do SQL należy użyć bazy danych Azure SQL. |
 
 ## <a name="update-a-connection-string-for-aspnet-dynamic-entities"></a>Zaktualizuj parametry połączenia dla jednostek ASP.NET Dynamic
@@ -112,7 +112,7 @@ Aplikacje, które mogą być migrowane i publikowane w usługach w chmurze musi 
 | Sieć Web | Aplikacja sieci Web platformy ASP.NET (.NET Framework) |
 | Sieć Web | Aplikacja sieci Web platformy ASP.NET MVC 2 |
 | Sieć Web | Aplikacja sieci Web platformy ASP.NET MVC 3 |
-| Sieć Web | Aplikacja sieci Web platformy ASP.NET MVC 4 |
+| Sieć Web | ASP.NET MVC4 Web Application |
 | Sieć Web | Aplikacja sieci Web ASP.NET pusty (lub lokacji) |
 | Sieć Web | Aplikacja pusty sieci Web platformy ASP.NET MVC 2 |
 | Sieć Web | Aplikacja sieci Web ASP.NET Dynamic Data Entities |

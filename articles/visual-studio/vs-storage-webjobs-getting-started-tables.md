@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do magazynu Azure i programu Visual Studio połączone usługi (zadania WebJob projekty)"
-description: "Jak rozpocząć pracę przy użyciu magazynu tabel Azure w projekcie zadań Webjob Azure w programie Visual Studio po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi"
+title: Wprowadzenie do magazynu Azure i programu Visual Studio połączone usługi (zadania WebJob projekty)
+description: Jak rozpocząć pracę przy użyciu magazynu tabel Azure w projekcie zadań Webjob Azure w programie Visual Studio po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 061a6c46-0592-4e5d-aced-ab7498481cde
 ms.service: storage
 ms.workload: web
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: 4e0c77e08bff971277a09d6066f259db84617616
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 75ca4914fe60ec6f5c50e4942ad6d5cc7a6fe98b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Wprowadzenie do korzystania z usługi Azure magazynu (projekty zadanie WebJob platformy Azure)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Ten artykuł zawiera C# przykłady pokazujące pokazują, jak korzystać z wersji zestawu Azure WebJobs SDK 1.x z usługi Magazyn tabel Azure. Kod przykłady użycia [zestaw SDK zadań Webjob](https://github.com/Azure/azure-webjobs-sdk/wiki) wersja 1.x.
 
 Usługa Azure Table storage umożliwia przechowywania dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z wewnątrz lub na zewnątrz w chmurze Azure. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.  Zobacz [Rozpoczynanie pracy z magazynem tabel Azure przy użyciu platformy .NET](../cosmos-db/table-storage-how-to-use-dotnet.md#create-a-table) Aby uzyskać więcej informacji.
@@ -145,6 +145,6 @@ Aby uzyskać więcej informacji o sposobie używania **CloudTable** obiektów, z
 ## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Tematy pokrewne objętych artykule kolejek
 Informacje o sposobie obsługi przetwarzania tabeli wyzwalane przez komunikatu w kolejce, lub zestaw SDK zadań Webjob scenariusze nie są typowe dla przetwarzania tabeli, zobacz [Rozpoczynanie pracy z magazynem kolejek Azure i programu Visual Studio połączone usługi (projekty zadania WebJob)](../storage/vs-storage-webjobs-getting-started-queues.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule udostępnił przykłady kodu, które przedstawiają sposób obsługi typowe scenariusze dotyczące pracy z tabel Azure. Aby uzyskać więcej informacji o sposobie używania zadań Webjob Azure i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji zadań Webjob Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 

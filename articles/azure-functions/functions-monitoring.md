@@ -1,12 +1,12 @@
 ---
-title: "Monitorowanie usługi Azure Functions"
-description: "Dowiedz się, jak używać usługi Azure Application Insights w środowisku Azure Functions do wykonywania funkcji monitorowania."
+title: Monitorowanie usługi Azure Functions
+description: Dowiedz się, jak używać usługi Azure Application Insights w środowisku Azure Functions do wykonywania funkcji monitorowania.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bez serwera"
+editor: ''
+tags: ''
+keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bez serwera
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -161,7 +161,7 @@ Zawiera również usługę Azure functions rejestratora *poziom dziennika* przy 
 |Ostrzeżenie     | 3 |
 |Błąd       | 4 |
 |Krytyczne    | 5 |
-|None        | 6 |
+|Brak        | 6 |
 
 Poziom dziennika `None` znajduje się w następnej sekcji. 
 
@@ -493,7 +493,7 @@ Zalecamy usługi Application Insights dla funkcji monitorowania, ponieważ oferu
 
 ### <a name="logging-to-storage"></a>Rejestrowanie w magazynie
 
-Rejestrowanie wbudowanych używa konta magazynu określony w ciągu połączenia w `AzureWebJobsDashboard` ustawienia aplikacji. Jeśli danego ustawienia aplikacji jest skonfigurowana, zostaną wyświetlone dane rejestrowania w portalu Azure. Na stronie aplikacji funkcji wybierz funkcję, a następnie wybierz **Monitor** kartę i uzyskać listę wykonaniami funkcji. Wybierz wykonywania funkcji, aby sprawdzić czas trwania, danych wejściowych, błędy i skojarzone pliki dziennika.
+Rejestrowanie wbudowanych używa konta magazynu określony w ciągu połączenia w `AzureWebJobsDashboard` ustawienia aplikacji. Jeśli danego ustawienia aplikacji jest skonfigurowana, zostaną wyświetlone dane rejestrowania w portalu Azure. W zasobie magazynu, przejdź do plików, wybierz usługę plików dla funkcji, a następnie przejdź do `LogFiles > Application > Functions > Function > your_function` do znajduje się w pliku dziennika. Na stronie aplikacji funkcji wybierz funkcję, a następnie wybierz **Monitor** kartę i uzyskać listę wykonaniami funkcji. Wybierz wykonywania funkcji, aby sprawdzić czas trwania, danych wejściowych, błędy i skojarzone pliki dziennika.
 
 Jeśli używasz usługi Application Insights i mieć [wbudowanych rejestrowanie wyłączone](#disable-built-in-logging), **Monitor** kartę przejście do usługi Application Insights.
 

@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z magazynem kolejek i Visual Studio połączone usługi (projekty zadania WebJob) | Dokumentacja firmy Microsoft"
-description: "Jak rozpocząć korzystanie z magazynu kolejek Azure projektu zadania WebJob, po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi."
+title: Rozpoczynanie pracy z magazynem kolejek i Visual Studio połączone usługi (projekty zadania WebJob) | Dokumentacja firmy Microsoft
+description: Jak rozpocząć korzystanie z magazynu kolejek Azure projektu zadania WebJob, po połączeniu z kontem magazynu za pomocą programu Visual Studio połączone usługi.
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.service: storage
 ms.workload: web
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: kraigb
-ms.openlocfilehash: efd2f1e471f67396d35f11f2eb1044a8afa469af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 52c089d2657d61ee42730a00def060dec74439fc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Rozpoczynanie pracy z magazynem kolejek Azure i programu Visual Studio połączone usługi (zadania WebJob projekty)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym artykule opisano sposób rozpoczęcie pracy z magazynem kolejek Azure w projekcie zadania programu Visual Studio Azure WebJob po utworzony lub odwołanie do konta magazynu platformy Azure przy użyciu programu Visual Studio **dodać usług połączonych** okno dialogowe. Podczas dodawania konta magazynu do projektu zadania WebJob za pomocą programu Visual Studio **dodać usług połączonych** okna dialogowego, są zainstalowane odpowiednie pakiety NuGet magazynu Azure, odpowiednie odwołania .NET są dodawane do projektu i parametry połączenia dla konta magazynu są aktualizowane w pliku App.config.  
 
 Ten artykuł zawiera C# przykłady kodu, których pokazano, jak korzystać z wersji zestawu Azure WebJobs SDK 1.x z usługą magazyn kolejek platformy Azure.
@@ -79,9 +79,9 @@ Funkcje asynchroniczne może potrwać [token anulowania](http://www.asp.net/mvc/
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy atrybutu QueueTrigger współpracuje z
 Można użyć **QueueTrigger** z następujących typów:
 
-* **ciąg**
+* **Ciąg**
 * Typ POCO zserializowanym w formacie JSON
-* **Byte]**
+* **byte[]**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Algorytm sondowania
@@ -297,12 +297,12 @@ Jeśli potrzebujesz wykonania dodatkowych czynności w funkcji przed powiązania
 
 * **Strumień** (Odczyt lub zapis, określony za pomocą parametru konstruktora FileAccess)
 * **TextReader**
-* **Element TextWriter**
+* **TextWriter**
 * **ciąg** (odczyt)
 * **limit ciąg** (zapisu; tworzy obiektu blob tylko wtedy, gdy parametr ciągu jest różna od null, gdy funkcja zwraca)
 * POCO (odczyt)
 * limit POCO (zapisu; zawsze tworzy obiektu blob, tworzy jako obiekt null, jeśli parametr POCO ma wartość null, gdy funkcja zwraca)
-* **CloudBlobStream** (zapis)
+* **CloudBlobStream** (write)
 * **ICloudBlob** (odczytu i zapisu)
 * **CloudBlockBlob** (odczytu i zapisu)
 * **CloudPageBlob** (odczytu i zapisu)
@@ -511,6 +511,6 @@ W tabeli platformy Azure **Console.Out** i **Console.Error** dzienniki wygląda�
 
 ![Dziennik błędów w tabeli](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule udostępnił przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze dotyczące pracy z kolejek platformy Azure. Aby uzyskać więcej informacji o sposobie używania zadań Webjob Azure i zestaw SDK zadań Webjob, zobacz [zasoby dokumentacji zadań Webjob Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 

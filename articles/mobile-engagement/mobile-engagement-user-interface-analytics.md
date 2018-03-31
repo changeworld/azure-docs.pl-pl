@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement — analiza"
-description: "Dowiedz się, jak i analizowanie danych historycznych dotyczących aplikacji za pomocą usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement — analiza
+description: Dowiedz się, jak i analizowanie danych historycznych dotyczących aplikacji za pomocą usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6b2533ac-b8ec-4e35-872c-d563895bdc0c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fceae1ffff40fc525170121181e21726fe2bd3f7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-analyze-historical-data-about-your-application"></a>Jak analizować dane historyczne dotyczące aplikacji
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 W tym artykule opisano **ANALYTICS** karcie **Mobile Engagement** portalu. Możesz użyć **Mobile Engagement** portalu do monitorowania i zarządzania aplikacjami mobilnymi. Należy pamiętać, że można uruchomić przy użyciu portalu należy najpierw utworzyć **usługi Azure Mobile Engagement** konta.
 
 Sekcja analizy interfejsu użytkownika zawiera zagregowane informacje na temat aplikacji na podstawie danych historycznych, która jest aktualizowana co 24 godziny. Informacje są wyświetlane na różnych pulpity nawigacyjne składa się z wykresy kołowe/paska/linii siatki i mapy. Dane można również pobrać jako pliki CSV. Większość tych informacji jest dostępnych w czasie rzeczywistym w sekcji monitorowanie interfejsu użytkownika i mogą również uzyskiwać z interfejsu API usługi Analytics.
@@ -41,7 +45,7 @@ Usługa Azure Mobile Engagement udostępnia zestaw podstawowa, standardowa anali
 * Przechowywania: Użytkownik jest uznawany za zachowanego w danym przedziale czasu, jeśli wykonał swoją pierwszą sesję w tym przedziale czasu. Przedziały czasu, w których zliczane są zachowani użytkownicy (i nowi użytkownicy) można zmienić na godziny, dni, tygodnie lub miesiące. Analizowanie przechowywania użytkowników jest oparty na stado. Kohorty to zbiór wszyscy nowi użytkownicy wykryto dla danego okresu (tj., zbiór użytkowników wykonywania ich pierwszej sesji podczas tego okresu). Używamy stado 1-dniowego, 2-dniowego, 4-dniowego, 7-dniowe lub 1-miesięcznego. Biorąc pod uwagę kohorty, każdego dnia 1, 2-dniowego, 4-dniowego, 7-dniowe, lub 1-miesięcznego, Azure Mobile Engagement oblicza zbiór wszystkich użytkowników, którzy należą do kohorty i są nadal aktywne (tj., zbiór użytkowników, którzy wykonali co najmniej jedną sesję w okresie). Ten zbiór użytkowników, nosi nazwę wersji kohorty. (Usługa azure Mobile Engagement można stwierdzić, ile użytkownicy nadal używają aplikacji, ale tylko magazynu określonych platform pomagają stwierdzić, ile użytkowników odinstalowywania programu iTunes app — na przykład GooglePlay, Sklep Windows, itp.).
 * Sesje: Jedno użycie aplikacji przez użytkownika. Sesje są generowane na podstawie sekwencji działań wykonywanych przez użytkowników (działanie jest zwykle skojarzone z użyciem jednego ekranu aplikacji, a to może się różnić w zależności od sposobu został zintegrowany zestaw SDK aplikacji). Użytkownik naraz może wykonywać tylko jedno działanie: sesja rozpoczyna się, gdy użytkownik rozpoczyna swoje pierwsze działanie i zatrzymywana, gdy użytkownik kończy swoje ostatnie działanie. Jeśli użytkownik pozostaje więcej niż kilka sekund, bez wykonywania żadnych działań, sekwencja działań jest podzielony na dwie różne sesje.
 * Działania: Nazwy każdego ekranu w aplikacji oraz długość czasu użytkownicy spędzają na każdym ekranie. Działania są niestandardowych opcji analityczne odpowiadające tagi "app-info" skonfigurowanych dla aplikacji:
-* Ścieżka użytkownika: Pokazuje, jak użytkownicy nawigują między działaniami aplikacji (ekranami). Poruszając suwakiem, możesz dostosować poziom szczegółów. Niebieskie węzły reprezentują działania aplikacji. Ich rozmiar jest proporcjonalny do czasu, jaki użytkownik poświęcił na ich. Białe węzły reprezentują rozpoczęcie i zakończenie sesji. Czerwone węzły reprezentują awarie. Połączenia reprezentują przejścia między działaniami aplikacji (lub między działaniami i awariami). Kliknij węzeł lub połączenie, aby wyświetlić etykietkę zawierającą więcej informacji na temat danych: czas spędzony na konkretnym ekranie, liczbę przejść i procent przejść z działania źródłowego do działania docelowego. (---60%---> B oznacza, że użytkownicy z działania A przechodzą do działania B 60% czasu.) Wykres można reorganizować dowolnie wyjaśnienia jego położenie jest zapisywane po każdej dokonanej zmianie. Możesz wyświetlić lub ukryć awarie (crash), aby rozjaśnić wykres.
+* Ścieżka użytkownika: Pokazuje, jak użytkownicy nawigują między działaniami aplikacji (ekranami). Poruszając suwakiem, możesz dostosować poziom szczegółów. Niebieskie węzły reprezentują działania aplikacji. Ich rozmiar jest proporcjonalny do czasu, jaki użytkownik poświęcił na ich. Białe węzły reprezentują rozpoczęcie i zakończenie sesji. Czerwone węzły reprezentują awarie (crash). Połączenia reprezentują przejścia między działaniami aplikacji (lub między działaniami i awariami). Kliknij węzeł lub połączenie, aby wyświetlić etykietkę zawierającą więcej informacji na temat danych: czas spędzony na konkretnym ekranie, liczbę przejść i procent przejść z działania źródłowego do działania docelowego. (---60%---> B oznacza, że użytkownicy z działania A przechodzą do działania B 60% czasu.) Wykres można reorganizować dowolnie wyjaśnienia jego położenie jest zapisywane po każdej dokonanej zmianie. Możesz wyświetlić lub ukryć awarie (crash), aby rozjaśnić wykres.
 * Zdarzenia: Określone akcje wykonywane przez użytkownika w aplikacji. Rozkład zdarzeń jest wyświetlany jako liczba zdarzeń na użytkownika na sesji. Zdarzenie reprezentuje natychmiastową akcję, na przykład kliknięcie przycisku lub odebranie powiadomienia. (Znaczenie zdarzeń jest zależna od jak zestaw SDK został zintegrowany z aplikacją). Zdarzenie może wystąpić podczas sesji, zadania lub być autonomiczne.
 * Zadania: Podobne do zdarzeń, z wyjątkiem skupić się na długość akcji. Na przykład zadania można zorientować się informacje techniczne na temat jak długo trwa zawartości obciążenia lub wywołanie usługi sieci web. Można także wyświetlać, jak długo trwa użytkownika do wypełniania formularza, Utwórz konto lub dokonać zakupu. Zadanie reprezentuje czas trwania zadania, na przykład, czas trwania zadania pobierania lub czas wyświetlania banera na ekranie. (Znaczenie zadania Job jest zależna od jak zestaw SDK został zintegrowany z aplikacją). Zadania są zwykle skojarzone z zadaniami w tle, które są wykonywane poza zakresem sesji (tzn. bez żadnego działania użytkownika).
 * Technicals: Informacji technicznych o urządzeniach użytkowników aplikacji można śledzić, takich jak ustawienia regionalne, operatora, sieci, urządzenia, oprogramowania układowego i ekranu rozmiar urządzeń użytkowników i wersji aplikacji i wersja zestawu SDK programu używana w aplikacji.
@@ -70,7 +74,7 @@ Omówienie przechowywania dzieli się na środku w kilka kart, każdy przeglądu
 4. To ustawienie określa wartości używane do obliczania.
 5. Jest to wykres przebiegu w czasie historii wartości przechowywania. Umożliwia on zobaczyć wartości w przeszłości, aby jak ewoluował szerokie widok.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Pojęcia][Link 6]
 * [Usługa Przewodnik rozwiązywania problemów][Link 24]
 

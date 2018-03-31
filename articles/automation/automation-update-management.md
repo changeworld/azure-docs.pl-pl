@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e426f2b90e3ac3ac6bcb9825c7848c76e52a1021
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -119,7 +119,7 @@ Heartbeat
 
 Na komputerze z systemem Windows możesz przejrzeć następujące polecenie, aby sprawdzić połączenie agenta z analizy dzienników:
 
-1.  Otwórz program Microsoft Monitoring Agent w Panelu sterowania. Na karcie **Azure Log Analytics (OMS)** agent wyświetla komunikat z następującą informacją: **Program Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.   
+1.  Otwórz program Microsoft Monitoring Agent w Panelu sterowania, a na **Azure Log Analytics** kartę, agent wyświetla komunikat z informacją: **programu Microsoft Monitoring Agent została pomyślnie połączono z analizy dzienników** .   
 2.  Otwórz Dziennik zdarzeń systemu Windows, przejdź do pozycji **Dzienniki aplikacji i usług\Operacje** i wyszukaj identyfikatory zdarzeń 3000 i 5002 ze źródła Service Connector. Te zdarzenia wskazują komputer został zarejestrowany za pomocą obszaru roboczego analizy dzienników i odbiera konfiguracji.  
 
 Jeśli agent nie jest w stanie nawiązać połączenia z analizy dzienników i został on skonfigurowany do komunikowania się z Internetem za pośrednictwem zapory lub serwera proxy, upewnij się, serwer zapory lub serwera proxy jest poprawnie skonfigurowany, przeglądając [konfiguracji sieci Windows agent](../log-analytics/log-analytics-agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
@@ -131,7 +131,7 @@ Jeśli agent nie jest w stanie nawiązać połączenia z analizy dzienników i z
 
 Po przeprowadzeniu oceny nowo dodani agenci systemu Linux będą mieć stan **Zaktualizowane**. Ten proces może potrwać do 6 godzin.
 
-Aby potwierdzić, grupy zarządzania programu Operations Manager komunikuje się z analizy dzienników, zobacz [zweryfikować integracji programu Operations Manager z usługą OMS](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
+Aby potwierdzić, grupy zarządzania programu Operations Manager komunikuje się z analizy dzienników, zobacz [zweryfikować integracji programu Operations Manager z analizy dzienników](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
 
 ## <a name="data-collection"></a>Zbieranie danych
 
@@ -173,7 +173,7 @@ Kliknij przycisk **brakujących aktualizacji** Aby wyświetlić listę aktualiza
 
 ## <a name="viewing-update-deployments"></a>Wyświetlanie wdrożeń aktualizacji
 
-Kliknij przycisk **wdrożenia aktualizacji** w celu wyświetlenia listy istniejących wdrożeń aktualizacji. Kliknięcie dowolnej z wdrożenia aktualizacji na liście otwiera **wdrożenie aktualizacji uruchomione** strony dla tego wdrożenia aktualizacji.
+Kliknij przycisk **wdrożenia aktualizacji** kartę, aby wyświetlić listę istniejących wdrożeń aktualizacji. Kliknięcie dowolnej z wdrożenia aktualizacji w tabeli otwiera **wdrożenie aktualizacji uruchomione** strony dla tego wdrożenia aktualizacji.
 
 ![Przegląd wyników wdrożenia aktualizacji](./media/automation-update-management/update-deployment-run.png)
 
@@ -186,7 +186,7 @@ Utwórz nowe wdrożenie aktualizacji, klikając **harmonogram wdrożenia aktuali
 | Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Linux lub Windows|
 | Komputery do zaktualizowania |Wybierz wyszukiwanie, Saved lub wybierz komputer z listy rozwijanej i wybierz poszczególne maszyny |
-|Klasyfikacja aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Klasyfikacje aktualizacji|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
 |Aktualizacje, które mają zostać wykluczone|Wprowadź wszystkie KB/s do wykluczenia bez prefiksu "KB."|
 |Ustawienia harmonogramu|Wybierz czas uruchomienia, a następnie wybierz jednorazowo lub cykliczne cyklu|
 | Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
@@ -213,7 +213,7 @@ W poniższej tabeli przedstawiono przykładowy dziennik wyszukuje zebrane przez 
 
 Klienci, którzy zainwestowali w program System Center Configuration Manager do zarządzania komputerami, serwerami i urządzeniami przenośnymi polegają również na ich sile i dojrzałości w zarządzania aktualizacjami oprogramowania w ramach cyklu zarządzania aktualizacjami oprogramowania (SUM).
 
-Aby dowiedzieć się, jak zintegrować rozwiązania zarządzania aktualizacjami pakietu OMS z System Center Configuration Manager, zobacz [integracji System Center Configuration Manager z zarządzania aktualizacjami pakietu OMS](oms-solution-updatemgmt-sccmintegration.md).
+Aby dowiedzieć się, jak zintegrować rozwiązania do zarządzania w programie System Center Configuration Manager, zobacz [integracji System Center Configuration Manager z zarządzania aktualizacjami](oms-solution-updatemgmt-sccmintegration.md).
 
 ## <a name="patching-linux-machines"></a>Stosowanie poprawek maszyny z systemem Linux
 

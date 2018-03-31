@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mimig
-ms.openlocfilehash: 6b8ff8d2efd2039e7b71f4e8f25b2756d324940f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 374d333517301db6cf44f6c00da52202ef5150e1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -136,7 +136,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Podczas wykonywania masowego odczytać dokumentów za pomocą funkcji (na przykład ReadDocumentFeedAsync) źródło odczytu lub, jeśli zapytania SQL, wyniki są zwracane w sposób segmentu, jeśli zestaw wyników jest zbyt duży. Domyślnie są zwracane w fragmentów 100 elementów lub 1 MB, jednego z tych limitów trafień pierwszej.
 
-    Aby zmniejszyć liczbę sieci przekazywanych wymagany do pobrania wszystkich odpowiednich wyników, można zwiększyć za pomocą rozmiar strony [x-ms-max elementu count](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-request-headers) nagłówek żądania do maksymalnie 1000. W przypadkach, gdy konieczne jest wyświetlenie tylko kilka wyniki, na przykład jeśli użytkownik interfejsu lub aplikacji interfejsu API zwraca tylko 10 powoduje przez czas, można także zmniejszyć rozmiar strony do 10 do zmniejszenia przepustowości używane dla operacji odczytu i zapytań.
+    Aby zmniejszyć liczbę sieci przekazywanych wymagany do pobrania wszystkich odpowiednich wyników, można zwiększyć za pomocą rozmiar strony [x-ms-max elementu count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) nagłówek żądania do maksymalnie 1000. W przypadkach, gdy konieczne jest wyświetlenie tylko kilka wyniki, na przykład jeśli użytkownik interfejsu lub aplikacji interfejsu API zwraca tylko 10 powoduje przez czas, można także zmniejszyć rozmiar strony do 10 do zmniejszenia przepustowości używane dla operacji odczytu i zapytań.
 
     Mogą również ustawić za pomocą dostępnych zestawów SDK DB rozwiązania Cosmos Azure rozmiar strony.  Na przykład:
 
@@ -183,7 +183,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
     Złożoność kwerendy wpływa na liczbę jednostek żądania są używane dla operacji. Liczba predykatów, rodzaj predykaty, liczba funkcji UDF i rozmiaru zestawu danych źródła wszystkich wpływ kosztów operacji zapytania.
 
-    Do mierzenia obciążenie wszelkie operacje (Tworzenie, aktualizowanie lub usuwanie), sprawdzić [x-ms żądania — opłata](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) nagłówka (lub równoważne właściwości RequestCharge w ResourceResponse<T> lub FeedResponse<T> w. SDK NET) w celu mierzenia liczby jednostek żądania używanych przez te operacje.
+    Do mierzenia obciążenie wszelkie operacje (Tworzenie, aktualizowanie lub usuwanie), sprawdzić [x-ms żądania — opłata](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) nagłówka (lub równoważne właściwości RequestCharge w ResourceResponse<T> lub FeedResponse<T> w. SDK NET) w celu mierzenia liczby jednostek żądania używanych przez te operacje.
 
     ```csharp
     // Measure the performance (request units) of writes
@@ -202,7 +202,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 <a id="429"></a>
 2. **Współczynnik ograniczanie żądań szybkość dojścia za duży**
 
-    Klient próbuje przekracza zarezerwowaną przepływnością dla konta, nie ma bez spadku wydajności na serwerze i nie stosowania przepływności poza poziomem zastrzeżone. Serwer zostanie preemptively zakończyć żądania z RequestRateTooLarge (kod stanu HTTP 429) i zwraca [x-ms ponawiania — po ms](https://docs.microsoft.com/rest/api/documentdb/common-documentdb-rest-response-headers) nagłówek wskazujący ilość czasu (w milisekundach), które użytkownik musi czekać przed ponowną próbą wykonania żądanie.
+    Klient próbuje przekracza zarezerwowaną przepływnością dla konta, nie ma bez spadku wydajności na serwerze i nie stosowania przepływności poza poziomem zastrzeżone. Serwer zostanie preemptively zakończyć żądania z RequestRateTooLarge (kod stanu HTTP 429) i zwraca [x-ms ponawiania — po ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) nagłówek wskazujący ilość czasu (w milisekundach), które użytkownik musi czekać przed ponowną próbą wykonania żądanie.
 
         HTTP Status 429,
         Status Line: RequestRateTooLarge

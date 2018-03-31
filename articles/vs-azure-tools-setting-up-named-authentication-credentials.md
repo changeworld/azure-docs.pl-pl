@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie poświadczeń uwierzytelniania o nazwie | Dokumentacja firmy Microsoft"
-description: "Informacje o podanie poświadczeń, które Visual Studio można użyć do uwierzytelniania żądań do usługi Azure, co umożliwia publikowanie aplikacji na platformie Azure w programie Visual Studio lub monitorować istniejącą usługę w chmurze."
+title: Konfigurowanie poświadczeń uwierzytelniania o nazwie | Dokumentacja firmy Microsoft
+description: Informacje o podanie poświadczeń, które Visual Studio można użyć do uwierzytelniania żądań do usługi Azure, co umożliwia publikowanie aplikacji na platformie Azure w programie Visual Studio lub monitorować istniejącą usługę w chmurze.
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 61570907-42a1-40e8-bcd6-952b21a55786
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: fc6f88ee3b808e46e693de7c31b836be86728cd5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: ghogen
+ms.openlocfilehash: d63da89d3842b7fd6bc320ff4eedd2a0132cee71
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-named-authentication-credentials"></a>Konfigurowanie poświadczeń uwierzytelniania o nazwie
 
@@ -39,7 +39,7 @@ W Eksploratorze serwera, kliknij prawym przyciskiem myszy **Azure** a następnie
 
 Jeśli chcesz samodzielnie utworzyć certyfikat mogą odwoływać się do instrukcji w [tworzenie i przekazywanie certyfikatu zarządzania platformy Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx) , a następnie ręcznie przekazać certyfikat do [portalu Azure](https://portal.azure.com/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Ogólne omówienie aplikacji sieci Web](https://docs.microsoft.com/azure/app-service/)
 - [Wdrażanie aplikacji w usłudze Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-deploy-local-git) 

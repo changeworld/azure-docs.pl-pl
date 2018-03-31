@@ -1,12 +1,11 @@
 ---
-title: "Monitorowanie i zarządzanie nimi zadania usługi analiza strumienia przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać programu Azure PowerShell i polecenia cmdlet można monitorować i zarządzać nimi zadania usługi analiza strumienia."
-keywords: "Program Azure powershell, poleceń cmdlet programu azure powershell, polecenia programu powershell skryptów środowiska powershell"
+title: Monitorowanie i zarządzanie nimi zadania usługi analiza strumienia przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać programu Azure PowerShell i polecenia cmdlet można monitorować i zarządzać nimi zadania usługi analiza strumienia.
+keywords: Program Azure powershell, poleceń cmdlet programu azure powershell, polecenia programu powershell skryptów środowiska powershell
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: b8d362a2789c4e1f5594baa2b86a16e523757037
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 1dcb6f8fe9f2f26ea0bd6970134b0bec67a50aa5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorowanie i zarządzanie nimi zadania usługi analiza strumienia za pomocą poleceń cmdlet programu Azure PowerShell
 Dowiedz się, jak monitorowanie i zarządzanie zasobami usługi Stream Analytics za pomocą poleceń cmdlet programu Azure PowerShell i skryptów programu powershell, które wykonywać podstawowe zadania usługi analiza strumienia.
@@ -189,7 +188,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell zwraca informacje o transformacji o nazwie StreamingJob w zadaniu StreamingJob.
 
-### <a name="new-azurestreamanalyticsinput--new-azurermstreamanalyticsinput"></a>Nowe AzureStreamAnalyticsInput | Nowe AzureRMStreamAnalyticsInput
+### <a name="new-azurestreamanalyticsinput--new-azurermstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzureRMStreamAnalyticsInput
 Tworzy nowe dane wejściowe w zadaniu Stream Analytics, lub aktualizuje istniejące określone dane wejściowe.
 
 W pliku JSON lub w wierszu polecenia można określić nazwę danych wejściowych. Jeśli określono oba nazwy w wierszu polecenia musi być taka sama jak w pliku.
@@ -236,7 +235,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell zastępuje istniejące źródło danych wejściowych o nazwie EntryStream z definicją z pliku definicji.
 
-### <a name="new-azurestreamanalyticsjob--new-azurermstreamanalyticsjob"></a>Nowe AzureStreamAnalyticsJob | Nowe AzureRMStreamAnalyticsJob
+### <a name="new-azurestreamanalyticsjob--new-azurermstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzureRMStreamAnalyticsJob
 Tworzy nowe zadanie usługi analiza strumienia w Microsoft Azure lub aktualizacji definicji istniejących określonego zadania.
 
 Nazwa zadania można określić w pliku JSON lub w wierszu polecenia. Jeśli określono oba nazwy w wierszu polecenia musi być taka sama jak w pliku.
@@ -271,7 +270,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell zastępuje StreamingJob definicji zadania.
 
-### <a name="new-azurestreamanalyticsoutput--new-azurermstreamanalyticsoutput"></a>Nowe AzureStreamAnalyticsOutput | Nowe AzureRMStreamAnalyticsOutput
+### <a name="new-azurestreamanalyticsoutput--new-azurermstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzureRMStreamAnalyticsOutput
 Tworzy nowe dane wyjściowe w zadaniu Stream Analytics, lub aktualizuje istniejące dane wyjściowe.  
 
 Nazwa danych wyjściowych można określić w pliku JSON lub w wierszu polecenia. Jeśli określono oba nazwy w wierszu polecenia musi być taka sama jak w pliku.
@@ -306,7 +305,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell zastępuje definicji "wyjściowej" w zadaniu StreamingJob.
 
-### <a name="new-azurestreamanalyticstransformation--new-azurermstreamanalyticstransformation"></a>Nowe AzureStreamAnalyticsTransformation | Nowe AzureRMStreamAnalyticsTransformation
+### <a name="new-azurestreamanalyticstransformation--new-azurermstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzureRMStreamAnalyticsTransformation
 Tworzy nowy transformacji w zadaniu Stream Analytics lub aktualizuje istniejące transformacji.
 
 Można określić nazwę transformacji w pliku JSON lub w wierszu polecenia. Jeśli określono oba nazwy w wierszu polecenia musi być taka sama jak w pliku.
@@ -341,7 +340,7 @@ Program Azure PowerShell 1.0:
 
  To polecenie programu PowerShell zastępuje definicji StreamingJobTransform w zadaniu StreamingJob.
 
-### <a name="remove-azurestreamanalyticsinput--remove-azurermstreamanalyticsinput"></a>Usuń AzureStreamAnalyticsInput | Usuń AzureRMStreamAnalyticsInput
+### <a name="remove-azurestreamanalyticsinput--remove-azurermstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzureRMStreamAnalyticsInput
 Asynchronicznie usuwa określone dane wejściowe z zadania usługi analiza strumienia w Microsoft Azure.  
 Jeśli określono parametr-Force, zostaną usunięte dane wejściowe bez potwierdzenia.
 
@@ -357,7 +356,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell usuwa EventStream wejściowego w zadaniu StreamingJob.  
 
-### <a name="remove-azurestreamanalyticsjob--remove-azurermstreamanalyticsjob"></a>Usuń AzureStreamAnalyticsJob | Usuń AzureRMStreamAnalyticsJob
+### <a name="remove-azurestreamanalyticsjob--remove-azurermstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzureRMStreamAnalyticsJob
 Asynchronicznie usuwa określonego zadania usługi analiza strumienia w Microsoft Azure.  
 Jeśli określono parametr-Force, zadania zostaną usunięte bez potwierdzenia.
 
@@ -373,7 +372,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell usuwa zadanie StreamingJob.  
 
-### <a name="remove-azurestreamanalyticsoutput--remove-azurermstreamanalyticsoutput"></a>Usuń AzureStreamAnalyticsOutput | Usuń AzureRMStreamAnalyticsOutput
+### <a name="remove-azurestreamanalyticsoutput--remove-azurermstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzureRMStreamAnalyticsOutput
 Asynchronicznie usuwa określone dane wyjściowe z zadania usługi analiza strumienia w Microsoft Azure.  
 Jeśli określono parametr-Force, dane wyjściowe zostaną usunięte bez potwierdzenia.
 
@@ -389,7 +388,7 @@ Program Azure PowerShell 1.0:
 
 Tego polecenia programu PowerShell usuwa dane wyjściowe dane wyjściowe zadania StreamingJob.  
 
-### <a name="start-azurestreamanalyticsjob--start-azurermstreamanalyticsjob"></a>Start AzureStreamAnalyticsJob | Start AzureRMStreamAnalyticsJob
+### <a name="start-azurestreamanalyticsjob--start-azurermstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzureRMStreamAnalyticsJob
 Asynchronicznie wdraża i uruchamia zadanie usługi analiza strumienia w Microsoft Azure.
 
 **Przykład 1**
@@ -419,7 +418,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell Zatrzymuje zadanie StreamingJob.  
 
-### <a name="test-azurestreamanalyticsinput--test-azurermstreamanalyticsinput"></a>Test AzureStreamAnalyticsInput | AzureRMStreamAnalyticsInput testu
+### <a name="test-azurestreamanalyticsinput--test-azurermstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzureRMStreamAnalyticsInput
 Testy Stream Analytics możliwość łączenia z określonych danych wejściowych.
 
 **Przykład 1**
@@ -434,7 +433,7 @@ Program Azure PowerShell 1.0:
 
 To polecenie programu PowerShell testów stan połączenia EntryStream wejściowego w StreamingJob.  
 
-### <a name="test-azurestreamanalyticsoutput--test-azurermstreamanalyticsoutput"></a>Test AzureStreamAnalyticsOutput | AzureRMStreamAnalyticsOutput testu
+### <a name="test-azurestreamanalyticsoutput--test-azurermstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzureRMStreamAnalyticsOutput
 Testy Stream Analytics możliwość łączenia z określonym produktem wyjściowym.
 
 **Przykład 1**
@@ -452,7 +451,7 @@ Ten stan połączenia danych wyjściowych danych wyjściowych w StreamingJob tes
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

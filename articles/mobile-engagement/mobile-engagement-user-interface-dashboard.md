@@ -1,11 +1,11 @@
 ---
-title: "Interfejs użytkownika usługi Azure Mobile Engagement - pulpit nawigacyjny"
-description: "Dowiedz się, jak wyświetlać i zarządzać nimi wykresy danych aplikacji przy użyciu usługi Azure Mobile Engagement"
+title: Interfejs użytkownika usługi Azure Mobile Engagement - pulpit nawigacyjny
+description: Dowiedz się, jak wyświetlać i zarządzać nimi wykresy danych aplikacji przy użyciu usługi Azure Mobile Engagement
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 72d5965e-8e79-48a3-9e63-0b66b7457d3c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d941b9858b964e11308061bae9e6dbc5e2fda767
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>Jak wyświetlać i zarządzać nimi wykresy dane dotyczące aplikacji
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Sekcja pulpit nawigacyjny interfejsu użytkownika nie umożliwia klientom Utwórz dostosowane wykresy, aby zmaksymalizować czas zapewniając dokładną informacje, które chcą zamiast wyszukiwanie w sekcji analytics. Pulpit nawigacyjny zawiera trendów Active liczby użytkowników dla różnych wersji aplikacji w danym czasie i aplikacji (godziny/dzień/tydzień/miesiąc/dostosowywać). Trendy wyświetlane są oparte na ostatnich 7 dni.
 
-### <a name="see-also"></a>Zobacz też
+### <a name="see-also"></a>Zobacz także
 * [Przewodnik rozwiązywania problemów — analiza][Link 21]
 
 ## <a name="dashboard"></a>Pulpit nawigacyjny

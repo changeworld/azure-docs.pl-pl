@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 567f035bdb293353090ee107f8d24da845e15154
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Sposób rozpowszechniania danych globalnie z bazy danych Azure rozwiązania Cosmos
 Azure to powszechny — ma wpływu globalnych w regionach geograficznych 30 + i jest stale rozszerzanie. Z jego obecność na całym świecie jeden zróżnicowanych funkcji, które platforma Azure oferuje deweloperom jego jest możliwość tworzenia, wdrażania i łatwo Zarządzaj aplikacjami globalnie rozproszone. 
@@ -36,7 +36,7 @@ Z rozkładem globalne gotowe Azure rozwiązania Cosmos DB, programiści nie musz
 W tym artykule udostępniamy omówienie funkcji globalnych dystrybucji Azure rozwiązania Cosmos DB. Opisano również Azure rozwiązania Cosmos DB unikatowy podejście do zapewnienia kompleksowej umów SLA. 
 
 ## <a id="EnableGlobalDistribution"></a>Włączanie gotowe dystrybucji globalne
-Azure DB rozwiązania Cosmos udostępnia następujące funkcje do tworzenia aplikacji w skali planety. Te funkcje są dostępne za pośrednictwem opartej na dostawcy zasobów Azure DB rozwiązania Cosmos [interfejsów API REST](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) oraz portalu Azure.
+Azure DB rozwiązania Cosmos udostępnia następujące funkcje do tworzenia aplikacji w skali planety. Te funkcje są dostępne za pośrednictwem opartej na dostawcy zasobów Azure DB rozwiązania Cosmos [interfejsów API REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) oraz portalu Azure.
 
 W poniższego klipu wideo Andrew Liu Menedżera programów DB rozwiązania Cosmos Azure przedstawiono funkcje gotowe dystrybucji globalnego.
 
