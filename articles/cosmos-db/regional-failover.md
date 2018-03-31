@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8da3e2c970ab1e60e3396cb0aaeaba64dba1713c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5a4bdc49c5ab36a5026095b5d7b6f9856b020e1b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatyczne regionalnej pracy w trybie failover ciągłość prowadzenia działalności biznesowej w usłudze Azure DB rozwiązania Cosmos
 Azure DB rozwiązania Cosmos upraszcza globalne rozkład danych oferując do pełnego zarządzania, [konta bazy danych w przypadku](distribute-data-globally.md) zawierających wyczyść wady i zalety między spójności, dostępność i wydajność, wszystkie z odpowiednimi gwarancje. Rozwiązania cosmos DB kont oferują wysoką dostępność, opóźnienia ms w pojedynczą cyfrą [dobrze zdefiniowane poziomy spójności](consistency-levels.md), przezroczysty regionalnej pracy awaryjnej z wielu interfejsów API oraz możliwość elastycznie skalować przepływność i Magazyn między globu. 
@@ -86,7 +86,7 @@ Po awarii wznawia działanie dotyczy regionu, wszystkich odpowiednich kont DB ro
 
 **Co się stanie, jeśli region zapisu ma awarii?**
 
-Dotyczy region jest bieżący obszar zapisu automatycznej pracy awaryjnej jest włączone dla tego konta bazy danych rozwiązania Cosmos platformy Azure, region automatycznie zaznaczono w trybie offline. Następnie alternatywne region jest podwyższany jako region zapisu dotyczy konta bazy danych Azure rozwiązania Cosmos. Można włączyć automatycznej pracy awaryjnej i w pełni kontrolować kolejność zaznaczania region dla konta bazy danych rozwiązania Cosmos Azure za pośrednictwem portalu Azure lub [programowo](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
+Dotyczy region jest bieżący obszar zapisu automatycznej pracy awaryjnej jest włączone dla tego konta bazy danych rozwiązania Cosmos platformy Azure, region automatycznie zaznaczono w trybie offline. Następnie alternatywne region jest podwyższany jako region zapisu dotyczy konta bazy danych Azure rozwiązania Cosmos. Można włączyć automatycznej pracy awaryjnej i w pełni kontrolować kolejność zaznaczania region dla konta bazy danych rozwiązania Cosmos Azure za pośrednictwem portalu Azure lub [programowo](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange). 
 
 ![Priorytetów trybu failover dla bazy danych Azure rozwiązania Cosmos](./media/regional-failover/failover-priorities.png)
 
@@ -98,7 +98,7 @@ Po awarii wznawia działanie dotyczy regionu, wszystkich odpowiednich kont DB ro
 
 * Opublikowane dane występujące w regionie zapisu poprzedniej, który nie został zreplikowany do odczytu regionów podczas awarii jako konflikt źródła danych. Aplikacji może odczytywać źródło konfliktu, rozwiąż konflikty oparte na konkretnej logiki aplikacji i zapisywać zaktualizowane dane na koncie Azure DB rozwiązania Cosmos zależnie od potrzeb. 
 * Poprzednie region zapisu jest tworzony ponownie jako odczytu regionu i automatycznie przywrócony do trybu online. 
-* Można ponownie skonfigurować odczytu region, który został przywrócony do trybu online automatycznie jako region zapisu, wykonując ręcznego przełączania trybu failover za pośrednictwem portalu Azure lub [programowo](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
+* Można ponownie skonfigurować odczytu region, który został przywrócony do trybu online automatycznie jako region zapisu, wykonując ręcznego przełączania trybu failover za pośrednictwem portalu Azure lub [programowo](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate).
 
 Poniższy fragment kodu ilustruje sposób przetwarzania konflikty po odpowiednim region odzyskiwania z awarii.
 
@@ -123,7 +123,7 @@ do
 
 ## <a id="ManualFailovers"></a>Ręczne praca awaryjna
 
-Oprócz automatycznej pracy awaryjnej bieżącego obszaru zapisu danego konta rozwiązania Cosmos bazy danych może być zmieniony ręcznie dynamicznie do jednego z istniejących regionów odczytu. Ręczne przechodzenia w tryb failover może być inicjowane za pośrednictwem portalu Azure lub [programowo](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
+Oprócz automatycznej pracy awaryjnej bieżącego obszaru zapisu danego konta rozwiązania Cosmos bazy danych może być zmieniony ręcznie dynamicznie do jednego z istniejących regionów odczytu. Ręczne przechodzenia w tryb failover może być inicjowane za pośrednictwem portalu Azure lub [programowo](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/databaseaccounts#DatabaseAccounts_CreateOrUpdate). 
 
 Zapewnienia ręcznej pracy awaryjnej **zero utraty danych** i **zero dostępności** utratą i bezpiecznie stanu zapisu transferu ze starego zapisu region na nową dla określonego konta DB rozwiązania Cosmos. Podobnie jak automatycznego przechodzenia w tryb failover SDK DB rozwiązania Cosmos automatycznie obsługuje zapisu region zmiany podczas ręcznej pracy awaryjnej i zapewnia, że wywołania są automatycznie przekierowywane do nowego regionu zapisu. W aplikacji do zarządzania trybu failover nie są konieczne nie zmiany kodu lub konfiguracji. 
 

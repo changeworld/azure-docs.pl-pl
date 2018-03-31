@@ -1,13 +1,13 @@
 ---
-title: "Monitorowanie i debugowanie za pomocą metryki w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Metryki w usłudze Azure DB rozwiązania Cosmos do debugowania typowe problemy i monitorowania bazy danych."
+title: Monitorowanie i debugowanie za pomocą metryki w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Metryki w usłudze Azure DB rozwiązania Cosmos do debugowania typowe problemy i monitorowania bazy danych.
 keywords: metrics
 services: cosmos-db
 author: gnot
 manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 
+editor: ''
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 3b3de91c3850071d7c3fbff1faccde6c17a606e3
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 37ef1bc01bd3679e664e71e6a6e3bede84615305
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Monitorowanie i debugowanie za pomocą metryki w usłudze Azure DB rozwiązania Cosmos
 
@@ -34,7 +34,7 @@ W tym artykule przedstawiono typowe przypadki użycia i jak bazy danych Azure ro
 
 ## <a name="understanding-how-many-requests-are-succeeding-or-causing-errors"></a>Opis, ile żądań są pomyślne lub powoduje błędy
 
-Aby rozpocząć, przejdź do [portalu Azure](https://portal.azure.com) i przejdź do **metryki** bloku. W bloku, Znajdź **liczba żądań przekroczyła pojemności na 1 minutę** wykresu. Ten wykres pokazuje minutę za minutę całkowita liczba żądań segmentowanych przez kod stanu. Aby uzyskać więcej informacji o kodach stanu HTTP, zobacz [kodów stanu HTTP dla bazy danych Azure rozwiązania Cosmos](https://docs.microsoft.com/rest/api/documentdb/http-status-codes-for-documentdb).
+Aby rozpocząć, przejdź do [portalu Azure](https://portal.azure.com) i przejdź do **metryki** bloku. W bloku, Znajdź **liczba żądań przekroczyła pojemności na 1 minutę** wykresu. Ten wykres pokazuje minutę za minutę całkowita liczba żądań segmentowanych przez kod stanu. Aby uzyskać więcej informacji o kodach stanu HTTP, zobacz [kodów stanu HTTP dla bazy danych Azure rozwiązania Cosmos](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 Najbardziej typowe kod stanu błędu jest 429 (ograniczanie), co oznacza, że żądania do bazy danych Azure rozwiązania Cosmos mają przekraczającą udostępnionej przepływności. Najbardziej typowe rozwiązaniem jest [skalowanie w górę RUs](./set-throughput.md) dla danej kolekcji.
 
@@ -93,7 +93,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* zawiera szczegółowe informacje na jak długo trwało każdego składnika zapytania do wykonania. Najczęstszą przyczyną głównego długo działa zapytania są skanowania (zapytania nie może korzystać z indeksów), które mogą zostać rozwiązane lepsze warunek filtru.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, kiedy znasz już jak monitorować i debugowaniu problemów przy użyciu metryk dostępnych w portalu Azure, możesz dowiedzieć się więcej na temat zwiększania wydajności bazy danych, przeczytaj następujące artykuły:
 

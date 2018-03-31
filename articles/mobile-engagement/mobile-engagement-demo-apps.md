@@ -1,11 +1,11 @@
 ---
-title: "Aplikacja demonstracyjna usługi Azure Mobile Engagement | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, skąd pobrać, jak używać i korzyści wynikające ze stosowania aplikacji demonstracyjnej usługi Azure Mobile Engagement"
+title: Aplikacja demonstracyjna usługi Azure Mobile Engagement | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, skąd pobrać, jak używać i korzyści wynikające ze stosowania aplikacji demonstracyjnej usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f624d5aa-254b-4ad0-96a3-f00e6c3a2c97
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 8381edb569e19a85c1259f7791b477cfa6e51ea3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b74afcadc52973a4d824afddc0abff6ac9f71d17
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-demo-app"></a>Aplikacja demonstracyjna usługi Azure Mobile Engagement
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 Firma Microsoft już opublikowana aplikacja demonstracyjna usługi Azure Mobile Engagement dla **iOS**, **Android**, i **Windows** platformy, aby ułatwić znajdowanie przydatne zasoby i Dowiedz się więcej o Mobile Zaangażowania.
 
 Aplikacja ułatwia:
@@ -110,7 +114,7 @@ Możesz użyć tej aplikacji, w następujący sposób:
   
     ![Powiadomienia w aplikacji w systemie iOS][17]  ![Powiadomienia w aplikacji w systemie Android][18]
   
-    **iOS**, **systemu Android**
+    **iOS**, **Android**
 * Można również użyć **kategorii** funkcji usługi Mobile Engagement, aby dostosować ten domyślny. W aplikacji demonstracyjnej firma Microsoft została przedstawiona dwa podstawowe sposoby zmienić obsługi powiadomień. Należy pamiętać, że funkcja kategorii nie jest jeszcze obsługiwana w zestawie Windows SDK.
   
     **Pełnoekranowy międzysegmentowe:**
@@ -125,7 +129,7 @@ Możesz użyć tej aplikacji, w następujący sposób:
   
     ![Wyskakujące powiadomienia w systemie iOS][19]    ![Wyskakujące powiadomienia w systemie Android][20]
 
-**iOS**, **systemu Android**
+**iOS**, **Android**
 
 * Usługa Mobile Engagement obsługuje również specjalistyczną odmianą powiadomienie w aplikacji o nazwie **sond**. Dzięki temu można wysyłać do użytkowników aplikacji segmentu szybkie ankiet. Możesz dodać pytania i opcje dla każdego pytania, tak jak na poniższym zrzucie ekranu. Będzie to następnie Pobierz wyświetlany jako powiadomienie w aplikacji użytkownika aplikacji.   
   
@@ -135,7 +139,7 @@ Możesz użyć tej aplikacji, w następujący sposób:
   
     ![Badanie w systemie iOS][27]   ![Ankieta w systemie Android][28]
 
-**iOS**, **systemu Android**
+**iOS**, **Android**
 
 * Usługa Mobile Engagement obsługuje również wysyłanie dyskretnej **wypychania danych** powiadomienia. Z te powiadomienia można wysyłać dane z usługą (np. danych JSON w poniższym przykładzie), który może obsługiwać w aplikacji i niektóre reakcję. Przykładem jest sposób Zmieniamy cen elementu selektywnie przy użyciu powiadomień wypychanych danych.
   
@@ -145,7 +149,7 @@ Możesz użyć tej aplikacji, w następujący sposób:
   
     ![Powiadomienia wypychane danych w systemie iOS][24]  ![Powiadomienia wypychane danych w systemie Android][25]
 
-**iOS**, **systemu Android**
+**iOS**, **Android**
 
 > [!NOTE]
 > Szczegółowe instrukcje krok po kroku dla każdego powiadomienia te można wyświetlić, klikając **kliknij tutaj, aby uzyskać instrukcje dotyczące sposobu wysyłania powiadomień z platformy Mobile Engagement** na wszystkie próbki powiadomienia ekranu.

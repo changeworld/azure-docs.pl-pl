@@ -1,23 +1,23 @@
 ---
-title: "Włącz podczas tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zobacz kroki, aby włączyć w trakcie procesu tworzenia kopii zapasowej maszyny wirtualnej platformy Azure."
+title: Włącz podczas tworzenia kopii zapasowej maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Zobacz kroki, aby włączyć w trakcie procesu tworzenia kopii zapasowej maszyny wirtualnej platformy Azure.
 services: backup, virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4041fc555fe4b61d10f84236dcae5156c6282fd3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e16714eee697d9dc8102b5f29d9639d650517562
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Włączenia kopii zapasowej podczas tworzenia maszyny wirtualnej platformy Azure 
 
@@ -58,6 +58,10 @@ Jeśli nie jesteś już w zalogowany do konta, zaloguj się do [portalu Azure](h
 
 Chociaż zasady tworzenia kopii zapasowej został utworzony, jest dobrym rozwiązaniem, aby utworzyć początkową kopię zapasową. Aby wyświetlić szczegóły kopii zapasowej dla wirtualnego komputera po zakończeniu szablonu tworzenia maszyny Wirtualnej, z **operacji** ustawienie w menu po lewej stronie, kliknij przycisk **kopii zapasowej**. Umożliwia to Wyzwól kopię zapasową na żądanie, Przywróć pełną maszyny Wirtualnej lub wszystkie dyski, przywracania plików z kopii zapasowej maszyny Wirtualnej lub zmienić zasady tworzenia kopii zapasowej skojarzonego z maszyną wirtualną.  
 
+## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Aby wdrożyć Maszynę wirtualną chronionych przy użyciu szablonu usługi Resource Manager
+
+Poprzednie kroki wyjaśniono, jak korzystać z portalu Azure do utworzenia maszyny wirtualnej i chronić go do magazynu usług odzyskiwania. Jeśli chcesz szybko wdrożyć co najmniej jednej maszyny wirtualnej i chronić je w magazynie usług odzyskiwania, zobacz szablonu, [wdrożyć maszynę Wirtualną systemu Windows i włączenia kopii zapasowej](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
+
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania 
 
 ### <a name="which-vm-images-enable-backup-at-the-time-of-vm-creation"></a>Obrazów maszyn wirtualnych, które włączenia kopii zapasowej w czasie tworzenia maszyny Wirtualnej? 
@@ -92,7 +96,7 @@ Jeśli użytkownik jest współautorem maszyny wirtualnej, możesz włączyć ko
  
 Jeśli maszyn wirtualnych i magazynu usług odzyskiwania różnych grup zasobów, upewnij się, że masz uprawnienia do zapisu w grupie zasobów magazynu usług odzyskiwania.  
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 
 Teraz, ochrony maszyny Wirtualnej, zobacz następujące artykuły, aby dowiedzieć się więcej o zadaniach zarządzania maszyny Wirtualnej i przywracanie maszyn wirtualnych. 
 

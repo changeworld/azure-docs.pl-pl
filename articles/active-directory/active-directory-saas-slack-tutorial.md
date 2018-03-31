@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z zapas czasu | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i zapas czasu."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i zapas czasu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: cd0cecde7f98e73911e7dec734cffeeee6f09a72
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6a4c64fb8400eaf2e09be049b032535e09969fb8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Samouczek: Integracji Azure Active Directory z zapas czasu
 
@@ -44,7 +44,7 @@ Aby skonfigurować integrację usługi Azure AD z zapas czasu, potrzebne są nas
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
@@ -115,14 +115,14 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     b. W **identyfikator** tekstowym, wpisz adres URL: `https://slack.com`
 
     > [!NOTE] 
-    > Wartość nie jest prawdziwe. Należy zaktualizować wartości rzeczywistych logowania na adres URL. Skontaktuj się z [zespołem pomocy technicznej Slack](https://slack.com/help/contact) można uzyskać wartość
+    > Wartość nie jest prawdziwe. Należy zaktualizować wartości rzeczywistych logowania na adres URL. Skontaktuj się z [zespołem pomocy technicznej Slack](https://slack.com/help/contact) można uzyskać wartość.
      
 4. Slack aplikacji oczekuje potwierdzenia języka SAML w określonym formacie. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z "**atrybuty użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
     
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute.png)
 
     > [!NOTE] 
-    > Jeśli użytkownik ma **adres e-mail** przypisane przy użyciu usługi Office 365, a następnie tylko jego zostaną wypełnione, w przeciwnym razie **adres e-mail** oświadczenia nie będą widoczne w tokenu SAML.
+    > Jeśli masz użytkowników, którzy są przypisani **adres e-mail** nie znajduje się na licencji usługi Office 365, **User.Email** oświadczenia nie będą widoczne w tokenu SAML. W takich przypadkach zaleca się przy użyciu **user.userprincipalname** jako **User.Email** atrybutu wartość do zamapowania jako **Unikatowy identyfikator** zamiast tego.
 
 5. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, wybierz opcję **user.mail** jako **identyfikator użytkownika** i dla każdego wiersza w tabeli poniżej, wykonaj następujące czynności:
     
@@ -180,12 +180,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     d. Skonfiguruj powyżej trzy ustawienia odpowiednie dla swojego zespołu Slack. Aby uzyskać więcej informacji na temat ustawień znaleźć **Przewodnik po konfiguracji logowania jednokrotnego zapas czasu jego** tutaj. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
     e.  Kliknij przycisk **Zapisz konfigurację**.
-     
-    <!-- Deselect **Allow users to change their email address**.
-
-    e.  Select **Allow users to choose their own username**.
-
-    f.  As **Authentication for your team must be used by**, select **It’s optional**. -->
 
 > [!TIP]
 > Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -229,7 +223,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Slack. Za
 Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony podczas próby dostępu zapas czasu, jeśli go jeszcze nie istnieje.
 
 > [!NOTE]
-> Jeśli trzeba ręcznie utworzyć użytkownika, należy nawiązać [zespołem pomocy technicznej Slack](https://slack.com/help/contact).
+> Jeśli trzeba ręcznie utworzyć użytkownika, należy skontaktować się [zespołem pomocy technicznej Slack](https://slack.com/help/contact).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
 
@@ -271,8 +265,6 @@ Po kliknięciu kafelka Slack w panelu dostępu użytkownik powinien pobrać auto
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

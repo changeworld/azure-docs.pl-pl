@@ -1,11 +1,11 @@
 ---
-title: "Zmiany wprowadzone do projektu WebAPI podczas łączenia z usługą Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, co się dzieje z projektu WebAPI podczas łączenia z usługą Azure AD za pomocą programu Visual Studio"
+title: Zmiany wprowadzone do projektu WebAPI podczas łączenia z usługą Azure AD | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, co się dzieje z projektu WebAPI podczas łączenia z usługą Azure AD za pomocą programu Visual Studio
 services: active-directory
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.service: active-directory
 ms.workload: web
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: kraigb
+ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 140f555d28c4d5a923b9c255d8e61d7aea9bb23f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fc6506ccb7b4c9b7fa43a378df47094de92c73b6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z projektu WebAPI (Visual Studio usługi Azure Active Directory połączenia usługi)
 

@@ -1,12 +1,12 @@
 ---
-title: "Wzorzec projektowy w usłudze Azure DB rozwiązania Cosmos: aplikacje mediów społecznościowych | Dokumentacja firmy Microsoft"
-description: "Informacje na temat wzorzec projektowania dla sieci społecznościowych dzięki wykorzystaniu elastyczność magazynu bazy danych Azure rozwiązania Cosmos i innymi usługami Azure."
-keywords: "Aplikacje mediów społecznościowych"
+title: 'Wzorzec projektowy w usłudze Azure DB rozwiązania Cosmos: aplikacje mediów społecznościowych | Dokumentacja firmy Microsoft'
+description: Informacje na temat wzorzec projektowania dla sieci społecznościowych dzięki wykorzystaniu elastyczność magazynu bazy danych Azure rozwiązania Cosmos i innymi usługami Azure.
+keywords: Aplikacje mediów społecznościowych
 services: cosmos-db
 author: ealsur
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: c89b2db6d5a80f184ca98ef757605272d385a81c
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: d223187ab1f8338c57e6aa32903ea9b762393ab5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Przechodzenie społecznościowych z bazy danych Azure rozwiązania Cosmos
 Życia społeczeństwa ogromną skalę połączenia oznacza, że w pewnym momencie życia staje się częścią **sieci społecznościowych**. Korzystamy z sieciami społecznościowymi Utrzymuj znajomych, współpracowników, rodziny, lub czasami udostępniać naszym męczennicy osobom wspólnych zainteresowań.
@@ -216,7 +216,7 @@ Ale co możemy informacje? Kilka łatwe przykładów [analizy wskaźniki nastroj
 
 Teraz, możesz argumentów podłączono otrzymano, prawdopodobnie będzie traktować należy niektórych Praca nauki matematyczne, aby wyodrębnić te wzorce i informacje o proste baz danych i plików, ale może być nieprawidłowy.
 
-[Usługa Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), część z [pakietu Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), jest usługi chmury pełni zarządzana, która pozwala na tworzenie przepływów pracy za pomocą prostego interfejsu przeciągania i upuszczania za pomocą algorytmów kodu algorytmy w [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) lub korzystać z niektórych już utworzone i gotowe do użycia interfejsów API, takich jak: [Analiza tekstu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [zawartości moderatora](https://www.microsoft.com/moderator) lub [zalecenia](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
+[Usługa Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), część z [pakietu Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), jest usługą w chmurze pełni zarządzana, umożliwiający tworzenie przepływów pracy za pomocą prostego interfejsu przeciągania i upuszczania za pomocą algorytmów kodu algorytmy w [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) lub korzystać z niektórych już utworzone i gotowe do użycia interfejsów API, takich jak: [Analiza tekstu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [zawartości moderatora](https://www.microsoft.com/moderator) lub [zalecenia](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
 
 Aby osiągnąć dowolnego z tych scenariuszy uczenia maszynowego, możemy użyć [usługi Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) pozyskiwania danych z różnych źródeł, a następnie użyć [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) do przetwarzania danych i generowanie danych wyjściowych, które mogą być przetwarzane przez usługi Azure Machine Learning.
 
@@ -229,7 +229,7 @@ Obsługuje rozwiązania cosmos DB [dynamiczne partycjonowanie](https://azure.mic
 
 Jedną jest interesujące punktu warto zauważyć, które DB rozwiązania Cosmos wykona zapytania (w tym [agreguje](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) we wszystkich partycji przejrzysty, nie trzeba dodać wszelka logika wraz z rozwojem danych.
 
-Z upływem czasu, należy po pewnym czasie wzrośnie w ruchu i użycia zasobów (mierzony w [RUs](request-units.md), albo w jednostkach żądań) wzrośnie. Zostanie odczytu i zapisu w częściej, Twoje userbase rozwoju lub rozpocznie tworzenie i odczytywanie więcej zawartości; zdolność **skalowanie sieci przepływności** jest ważna. Zwiększenie naszych RUs jest bardzo proste, możemy go za pomocą kilku kliknięć w portalu Azure lub przez [wydawania polecenia przy użyciu interfejsu API](https://docs.microsoft.com/rest/api/documentdb/replace-an-offer).
+Z upływem czasu, należy po pewnym czasie wzrośnie w ruchu i użycia zasobów (mierzony w [RUs](request-units.md), albo w jednostkach żądań) wzrośnie. Zostanie odczytu i zapisu w częściej, Twoje userbase rozwoju lub rozpocznie tworzenie i odczytywanie więcej zawartości; zdolność **skalowanie sieci przepływności** jest ważna. Zwiększenie naszych RUs jest bardzo proste, możemy go za pomocą kilku kliknięć w portalu Azure lub przez [wydawania polecenia przy użyciu interfejsu API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
 
 ![Skalowanie w i definiowanie klucza partycji](./media/social-media-apps/social-media-apps-scaling.png)
 
@@ -250,5 +250,5 @@ W tym artykule próbuje pozostawia światło do alternatyw całkowicie tworzenie
 
 W rzeczywistości jest czy bez srebrny punktora dla tego rodzaju scenariusze nie istnieje, jest współdziałanie utworzone przez kombinację niezwykłych usług, które umożliwiają tworzyć wspaniałe środowiska: szybkości i swobody bazy danych Azure rozwiązania Cosmos zapewniają dużą społecznego aplikacji, Analiza za rozwiązania wyszukiwania najwyższej jakości, takie jak usługi Azure Search, elastyczność usługi aplikacji Azure do hostowania aplikacji nie nawet języka niezwiązane z żadnym, ale procesów w tle wydajne i rozwijania usługi Azure Storage i bazy danych SQL Azure do przechowywania olbrzymich ilości danych i możliwości analityczne uczenie maszynowe Azure do utworzenia wiedzy i analizy, które można wyrazić swoją opinię do naszej procesów i pomóc nam dostarczania odpowiedniej zawartości do odpowiednich użytkowników.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej o przypadkach użycia rozwiązania Cosmos bazy danych, zobacz [DB rozwiązania Cosmos typowych zastosowań](use-cases.md).

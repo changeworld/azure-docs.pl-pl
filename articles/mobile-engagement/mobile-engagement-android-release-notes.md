@@ -1,11 +1,11 @@
 ---
-title: "Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement"
-description: "Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement"
+title: Integracja zestawu SDK systemu Android z usługi Azure Mobile Engagement
+description: Najnowsze aktualizacje i procedury dotyczące zestawu SDK systemu Android dla usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 585341f9-3f39-459a-af42-864e400a0128
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: c179c39a43da0aa35e945acceacbf27fe8e328f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a01bd74649fa28e0d86cea4ed03da80326c06234
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="release-notes"></a>Informacje o wersji
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 
 ## <a name="431-07172017"></a>4.3.1 (07/17/2017)
 * Usuń awarii rzadko może się zdarzyć podczas wywoływania metody `EngagementAgentUtils.isInDedicatedEngagementProcess`, która jest już używana przez `EngagementApplication` klasy.
@@ -79,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 * Naprawa błędów w widoku sieci web: kliknięcie łącza powodowała również domyślny adres URL akcji.
 * Napraw rzadkich awarii związanych z zarządzaniem lokalnej pamięci masowej.
 * Napraw zarządzania ciągu konfiguracji dynamicznej.
-* Zaktualizuj umowy licencyjnej.
+* Update EULA.
 
 ## <a name="300-02172015"></a>3.0.0 (02/17/2015)
 * Początkowa wersja usługi Azure Mobile Engagement

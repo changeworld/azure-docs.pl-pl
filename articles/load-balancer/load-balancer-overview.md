@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f4410932f00f8505ae5a894caa002e1223196d95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Omówienie usługi Azure Load Balancer
 
@@ -142,7 +142,7 @@ Na poniższej ilustracji przedstawiono punktu końcowego równoważeniem obcią�
 
 ![przykład modułu równoważenia obciążenia publiczny](./media/load-balancer-overview/IC727496.png)
 
-**Rysunek 1: Ruchu w sieci web przy użyciu publiczny moduł równoważenia obciążenia równoważenia obciążenia**
+*Rysunek: Obciążenia równoważenie ruchu w sieci web przy użyciu publiczny moduł równoważenia obciążenia*
 
 Gdy klienci internetowi wysyłać żądania strony sieci web do publicznego adresu IP aplikacji sieci web na porcie TCP 80, moduł równoważenia obciążenia Azure rozdziela żądania między trzy maszyny wirtualne w zestawie równoważeniem obciążenia. Aby uzyskać więcej informacji dotyczących algorytmów równoważenia obciążenia, zobacz [strony Przegląd usługi równoważenia obciążenia](load-balancer-overview.md#load-balancer-features).
 
@@ -161,7 +161,7 @@ Wewnętrzny moduł równoważenia obciążenia zapewnia następujące typy równ
 
 ![przykład modułu równoważenia obciążenia wewnętrznego](./media/load-balancer-overview/IC744147.png)
 
-**Rysunek 2 — aplikacje wielowarstwowe przy użyciu obu usług równoważenia obciążenia publicznych oraz wewnętrznych równoważenia obciążenia**
+*Rysunek - wielowarstwowe aplikacje przy użyciu obu usług równoważenia obciążenia publicznych oraz wewnętrznych równoważenia obciążenia*
 
 ## <a name="pricing"></a>Cennik
 Standardowy moduł równoważenia obciążenia jest produktem obciążona, na podstawie liczby reguł równoważenia obciążenia skonfigurowane i wszystkie dane przychodzące i wychodzące przetworzone. Standardowe informacje o cenach równoważenia obciążenia, można znaleźć [cennik usługi równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/) strony.

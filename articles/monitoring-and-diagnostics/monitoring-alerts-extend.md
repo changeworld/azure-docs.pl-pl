@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vinagara
-ms.openlocfilehash: 045a7f97d9c4d380e83325c04c209a6afcc761a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: abab73a047fb923fa2cd57a1c7194e440697bf64
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="extend-alerts-from-oms-into-azure"></a>Rozszerzanie alerty z usługą OMS na platformie Azure
 Nowe środowisko alertów ma teraz zintegrowane środowisko alertów w różnych usług i części na platformie Microsoft Azure. Nowe środowisko dostępna jako **alerty** w obszarze Monitor Azure w portalu ma zebrane w spójne - alertów dotyczących działań w dzienniku, metryki alertów i dziennika alertów dotyczących analizy dzienników, jak również usługi Application Insights. 
@@ -28,8 +28,8 @@ Ale dla niektórych użytkowników, użyj analizy dzienników i allied funkcji, 
 Oprócz korzyści naliczone w nie ma potrzeby przejść z portalu Azure istnieją inne istotne zalety w rozszerzeniu alerty z usługą OMS do platformy Azure
 
 - W odróżnieniu od w OMS, gdzie można utworzyć i wyświetlić; tylko 250 alerty w alertach Azure to ograniczenie nie jest obecny
-- Azure alertów wszystkich alertów typy mogą być zarządzane, wyliczyć i wyświetlane; nie tylko analizy dzienników alerty, tak jak w przypadku OMS
-- Korzystanie z alertów Azure [grupy akcji](monitoring-action-groups.md), co pozwala użytkownikowi ma dla każdego alertu więcej niż jedna akcja w tym programu SMS, wywołać głosu, elementu Runbook automatyzacji, elementu Webhook, zarządzanie usługami IT — łącznika i więcej. Gdy w OMS alerty są ograniczone w zarówno numer oraz typ akcji możliwych
+- Azure alertów wszystkie typy alertów mogą być zarządzane, wyliczyć i wyświetlane; nie tylko analizy dzienników alertów, jak w przypadku OMS
+- Korzystanie z alertów Azure [grupy akcji](monitoring-action-groups.md), które umożliwiają używanie więcej niż jedną akcję dla każdego alertu, w tym programu SMS, wywołać głosu, elementu Runbook automatyzacji, elementu Webhook, zarządzanie usługami IT — łącznika i więcej. Alerty OMS są ograniczone w obu numer również jako typ możliwych działań
 
 ## <a name="process-of-extending-your-alerts"></a>Proces rozszerzania alerty
 Proces rozszerzania alerty z usługą OMS na platformie Azure, nie **nie** wymaga zmian w definicji alertu, w zapytania lub w konfiguracji w dowolny sposób. Tylko zmiany wymagane jest, że na platformie Azure, wszystkie akcje, takie jak powiadomienia e-mail wywołanie elementu webhook i uruchamiania elementu runbook automatyzacji lub nawiązywania Zarządzanie usługami IT — tool są wykonywane za pośrednictwem grupy działań. Dlatego jeśli grupa odpowiednich akcji skojarzonych z alertu - one zostaną stają się rozszerzone na platformie Azure.

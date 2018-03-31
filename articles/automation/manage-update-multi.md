@@ -1,6 +1,6 @@
 ---
-title: "Zarządzanie aktualizacjami dla wielu maszyn wirtualnych platformy Azure"
-description: "W tym temacie przedstawiono sposób zarządzania aktualizacjami dla maszyn wirtualnych platformy Azure."
+title: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych platformy Azure
+description: W tym temacie przedstawiono sposób zarządzania aktualizacjami dla maszyn wirtualnych platformy Azure.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 29ab87b6afe31b7bbb40ef7d743e209f86811c9d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -61,7 +61,7 @@ Agenci dla systemu Windows muszą być skonfigurowani do komunikowania się z se
 
 Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.
 
-To rozwiązanie nie obsługuje agenta pakietu OMS dla systemu Linux skonfigurowanego do wysyłania raportów do wielu obszarów roboczych pakietu Operations Management Suite.
+To rozwiązanie nie obsługuje agenta pakietu OMS Linux skonfigurowany pod kątem raportowania do wielu obszarów roboczych analizy dzienników.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Włączanie rozwiązania Update Management dla maszyn wirtualnych platformy Azure
 
@@ -176,5 +176,5 @@ Aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem,
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat zarządzania aktualizacjami — w tym o dziennikach, danych wyjściowych i o błędach — zobacz [Rozwiązanie Update Management w pakiecie OMS](../operations-management-suite/oms-solution-update-management.md).
+* Aby dowiedzieć się więcej na temat zarządzania aktualizacjami — takie jak dzienniki, dane wyjściowe i komunikaty o błędach, zobacz [rozwiązania do zarządzania aktualizacji w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).
 

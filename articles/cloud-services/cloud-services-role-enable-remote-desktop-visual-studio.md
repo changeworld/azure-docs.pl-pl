@@ -1,11 +1,11 @@
 ---
-title: "Włączanie połączeń usług pulpitu zdalnego dla roli usług w chmurze platformy Azure | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować aplikację usługi chmury Azure, aby umożliwić połączenia pulpitu zdalnego"
+title: Włączanie połączeń usług pulpitu zdalnego dla roli usług w chmurze platformy Azure | Dokumentacja firmy Microsoft
+description: Jak skonfigurować aplikację usługi chmury Azure, aby umożliwić połączenia pulpitu zdalnego
 services: cloud-services
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
 ms.service: multiple
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
-ms.author: kraigb
-ms.openlocfilehash: bcb7d24a302b57a1739c9c98763cd658c29b17bd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: ghogen
+ms.openlocfilehash: ebe536cc5838e3e6f0a2c15950ec766c1fd44bfe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Włącz połączenia pulpitu zdalnego dla roli w usług Azure Cloud Services przy użyciu programu Visual Studio
 

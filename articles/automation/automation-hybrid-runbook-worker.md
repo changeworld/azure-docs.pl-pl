@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/21/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 157db4a9de41c9895d39469d3d42a45c1a929649
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b317a2d9241016b66651af4659c7daf2e8d8f2cc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatyzację zasobów w centrum danych lub w chmurze chronionej za pomocą hybrydowy proces roboczy elementu Runbook
 
@@ -38,7 +38,7 @@ W przypadku istniejącego użytkownika SMA można przenosić elementy runbook au
 
 Następujące kryteria służy do ustalenia, czy usługi Automatyzacja Azure z hybrydowy proces roboczy elementu Runbook lub Service Management Automation jest bardziej odpowiednie dla wymagań.
 
-* SMA wymaga instalacji lokalnej jego podstawowych składników, które są podłączone do systemu Windows Azure Pack, jeśli wymagany jest interfejs zarządzania w trybie graficznym. Wyższe koszty utrzymania niż Automatyzacja Azure, w którym agent został zainstalowany na lokalnym programów runbook Worker musi tylko są potrzeby więcej zasobów lokalnych. Agenci są zarządzane przez usługi Operations Management Suite, dalsze zmniejszenie kosztów obsługi.
+* SMA wymaga instalacji lokalnej jego podstawowych składników, które są podłączone do systemu Windows Azure Pack, jeśli wymagany jest interfejs zarządzania w trybie graficznym. Wyższe koszty utrzymania niż Automatyzacja Azure, w którym agent został zainstalowany na lokalnym programów runbook Worker musi tylko są potrzeby więcej zasobów lokalnych. Agenci są zarządzane przez platformę Azure, dalsze zmniejszenie kosztów obsługi.
 * Automatyzacja Azure w chmurze są przechowywane jego elementy runbook i dostarcza je do lokalnej hybrydowymi elementami roboczymi Runbook. Zasady zabezpieczeń nie zezwalają na to zachowanie, należy użyć SMA.
 * SMA jest dołączony do programu System Center; i dlatego wymaga licencji programu System Center 2012 R2. Automatyzacja Azure jest oparta na modelu warstwowych subskrypcji.
 * Automatyzacja Azure udostępnia zaawansowane funkcje, takie jak graficznych elementów runbook, które nie są dostępne w programie SMA.
@@ -92,27 +92,25 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
 
 Raz wykonać pierwsze dwa kroki dla danego środowiska automatyzacji, a następnie powtórz pozostałe kroki na każdym komputerze pracownika.
 
-#### <a name="1-create-operations-management-suite-workspace"></a>1. Utwórz obszar roboczy usługi Operations Management Suite
+#### <a name="1-create-log-analytics-workspace"></a>1. Tworzenie obszaru roboczego usługi Log Analytics
+Jeśli nie masz już obszaru roboczego analizy dzienników, następnie utwórz ją przy użyciu instrukcji w [Zarządzanie obszaru roboczego](../log-analytics/log-analytics-manage-access.md). Istniejący obszar roboczy można użyć, jeśli już istnieje.
 
-Jeśli nie masz już obszar roboczy usługi Operations Management Suite, następnie utwórz ją przy użyciu instrukcji w [Zarządzanie obszaru roboczego](../log-analytics/log-analytics-manage-access.md). Istniejący obszar roboczy można użyć, jeśli już istnieje.
+#### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2. Dodaj rozwiązanie do automatyzacji do obszaru roboczego analizy dzienników
 
-#### <a name="2-add-automation-solution-to-operations-management-suite-workspace"></a>2. Dodaj rozwiązanie do automatyzacji do obszaru roboczego usługi Operations Management Suite
+Rozwiązania powodują dodawanie funkcji do usługi Log Analytics. Rozwiązanie Automatyzacja dodaje funkcje na tym obsługę hybrydowy proces roboczy elementu Runbook usługi Automatyzacja Azure. Po dodaniu rozwiązania do swojego obszaru roboczego on automatycznie wypycha dół składników procesu roboczego na komputerze agenta, który zostanie zainstalowany w następnym kroku.
 
-Rozwiązania Dodawanie funkcji do usługi Operations Management Suite. Rozwiązanie Automatyzacja dodaje funkcje na tym obsługę hybrydowy proces roboczy elementu Runbook usługi Automatyzacja Azure. Po dodaniu rozwiązania do swojego obszaru roboczego on automatycznie wypycha dół składników procesu roboczego na komputerze agenta, który zostanie zainstalowany w następnym kroku.
-
-Postępuj zgodnie z instrukcjami w [można dodać za pomocą galerii rozwiązań rozwiązania](../log-analytics/log-analytics-add-solutions.md) można dodać **automatyzacji** rozwiązania do swojego obszaru roboczego usługi Operations Management Suite.
+Postępuj zgodnie z instrukcjami w [można dodać za pomocą galerii rozwiązań rozwiązania](../log-analytics/log-analytics-add-solutions.md) można dodać **automatyzacji** rozwiązania do swojego obszaru roboczego analizy dzienników.
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3. Zainstaluj program Microsoft Monitoring Agent
-
-Microsoft Monitoring Agent łączy komputery do usługi Operations Management Suite. Po zainstalowaniu agenta na komputerze lokalnym i podłącz go do swojego obszaru roboczego, pobiera składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
+Microsoft Monitoring Agent łączy się analizy dzienników z komputerów. Po zainstalowaniu agenta na komputerze lokalnym i podłącz go do swojego obszaru roboczego, będzie automatycznie pobierał składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
 
 Postępuj zgodnie z instrukcjami w [połączyć komputery do analizy dzienników](../log-analytics/log-analytics-windows-agent.md) do zainstalowania agenta na komputerze lokalnym. Można powtórzyć ten proces dla wielu komputerów do dodania wielu pracowników w danym środowisku.
 
-Gdy agent połączył się pomyślnie Operations Management Suite, jest wyświetlana na **połączonych źródeł** kartę Operations Management Suite **ustawienia** okienka. Możesz sprawdzić, czy agent poprawnie pobrał rozwiązania Automatyzacja po folder o nazwie **AzureAutomationFiles** w C:\Program Files\Microsoft Monitoring Agent\Agent. Aby sprawdzić wersję hybrydowy proces roboczy elementu Runbook, można przejść do C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ i zanotuj \\ *wersji* podfolderu.
+Możesz sprawdzić, czy agent poprawnie pobrał rozwiązania Automatyzacja po folder o nazwie **AzureAutomationFiles** w C:\Program Files\Microsoft Monitoring Agent\Agent. Aby sprawdzić wersję hybrydowy proces roboczy elementu Runbook, można przejść do C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ i zanotuj \\ *wersji* podfolderu.  
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Zainstalowania środowiska elementu runbook i nawiązania połączenia usługi Automatyzacja Azure
 
-Po dodaniu agenta do usługi Operations Management Suite rozwiązania Automatyzacja umieszcza w dół **HybridRegistration** moduł programu PowerShell, który zawiera **Add-HybridRunbookWorker** polecenia cmdlet. To polecenie cmdlet służy do zainstalowania środowiska elementu runbook na komputerze i zarejestrowania go w usłudze Automatyzacja Azure.
+Po dodaniu agenta do analizy dzienników rozwiązania Automatyzacja umieszcza w dół **HybridRegistration** moduł programu PowerShell, który zawiera **Add-HybridRunbookWorker** polecenia cmdlet. To polecenie cmdlet służy do zainstalowania środowiska elementu runbook na komputerze i zarejestrowania go w usłudze Automatyzacja Azure.
 
 Aby zaimportować moduł, otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenia:
 

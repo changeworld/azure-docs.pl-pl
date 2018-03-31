@@ -1,12 +1,12 @@
 ---
-title: "Akceleracja dynamiczne witryny za pomocą usługi Azure CDN"
-description: "Dynamiczne witryny przyspieszenie nowości"
+title: Akceleracja dynamiczne witryny za pomocą usługi Azure CDN
+description: Usługi Azure CDN obsługuje lokacji dynamicznej optymalizacji acceleration (DSA) dla plików z dynamiczną zawartością.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli
-ms.openlocfilehash: 713f00f432095b7a8a19996fb7bdb7e5f8d79b63
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akceleracja dynamiczne witryny za pomocą usługi Azure CDN
 
@@ -29,9 +29,9 @@ Standardowa dostarczania zawartości (CDN) do sieci obejmuje możliwość przysp
 **Azure CDN from Akamai** i **Azure CDN from Verizon** zawierają DSA optymalizacji za pośrednictwem **zoptymalizowane pod kątem** menu podczas tworzenia punktu końcowego.
 
 > [!Important]
-> Aby uzyskać **Azure CDN from Akamai** tylko profile, możesz zmianę optymalizacji punktu końcowego usługi CDN, po jego utworzeniu.
+> Aby uzyskać **Azure CDN from Akamai** profile, możesz zmienić optymalizacji punktu końcowego usługi CDN, po jego utworzeniu.
 >   
-> **Usługi Azure CDN from Verizon** profile, nie jest możliwe do zmiany optymalizacji punktu końcowego usługi CDN, po jego utworzeniu.
+> Aby uzyskać **Azure CDN from Verizon** profile, nie można zmienić optymalizacji punktu końcowego usługi CDN po jego utworzeniu.
 
 ## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>Konfigurowanie punktu końcowego CDN w celu przyspieszenia dostarczania plików dynamicznych
 
@@ -104,7 +104,7 @@ Transmission Control Protocol (TCP) jest standardem zestawu protokołów interne
 
 TCP *powolna start* jest algorytm protokołu TCP, który uniemożliwia przeciążenie sieci, ograniczając ilość danych przesyłanych przez sieć. Rozpoczyna się od przeciążenia mały rozmiar okna między nadawcą i odbiorcą aż do osiągnięcia maksymalnej lub wykrycia utraty pakietów.
 
- Zarówno **Azure CDN from Akamai** i **Azure CDN from Verizon** wyeliminować TCP powolne Rozpoczynanie następujące trzy kroki:
+ Zarówno **Azure CDN from Akamai** i **Azure CDN from Verizon** profile wyeliminować TCP powolne Rozpoczynanie następujące trzy kroki:
 
 1. Przepustowość monitorowania kondycji i służy do pomiaru przepustowości połączenia między serwerami PoP krawędzi.
     
@@ -152,19 +152,32 @@ Z DSA, buforowanie jest domyślnie wyłączona w sieci CDN, nawet wtedy, gdy pun
 
 Jeśli masz witrynę z różnymi statycznych i dynamicznych zasobów, najlepiej zająć rozwiązanie hybrydowe, aby uzyskać najlepszą wydajność. 
 
-Dla **Azure CDN from Verizon Premium** profile, można włączyć buforowanie dla określonych przypadków przy użyciu [aparatu reguł](cdn-rules-engine.md) dla punktów końcowych DSA. Wszystkie reguły, które są tworzone wpływa na tylko te punkty końcowe profilu są zoptymalizowane pod kątem DSA. 
+Dla **Azure CDN from Verizon Standard** i **Azure CDN from Akamai Standard** profile, można włączyć buforowanie dla określonych DSA punktów końcowych przy użyciu [buforowanie reguły](cdn-caching-rules.md).
 
-Aby uzyskać dostęp do aparatu reguł dla punktów końcowych DSA:
+Dostęp do reguły buforowania:
+
+1. Z **profilu CDN** strony, w obszarze Ustawienia zaznacz **buforowanie reguły**.  
+    
+    ![Przycisk reguły buforowania CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
+
+    **Buforowanie reguły** zostanie otwarta strona.
+
+2. Utwórz regułę buforowania globalnych lub niestandardowych włączyć buforowanie dla punktu końcowego DSA. 
+
+Dla **Azure CDN from Verizon Premium** profilów tylko włączeniu buforowania dla określonego DSA punktów końcowych przy użyciu [aparatu reguł](cdn-rules-engine.md). Wszystkie reguły, które są tworzone wpływa na tylko te punkty końcowe profilu są zoptymalizowane pod kątem DSA. 
+
+Aby uzyskać dostęp do aparatu reguł:
     
 1. Z **profilu CDN** wybierz pozycję **Zarządzaj**.  
     
-    ![Przycisk Zarządzaj profilu CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Przycisk Zarządzaj profilu CDN](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Zostanie otwarty w portalu zarządzania usługi CDN.
 
 2. Wybierz z portalu zarządzania usługi CDN **sieci ADN**, a następnie wybierz pozycję **aparatu reguł**. 
 
-    ![Aparat reguł dla DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![Aparat reguł dla DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+
 
 
 Alternatywnie można użyć dwóch punktów końcowych usługi CDN: jeden punkt końcowy zoptymalizowane z DSA dynamicznych zasobów i innym punktem końcowym zoptymalizowanych pod kątem typu statycznego optymalizacji, takie jak ogólne dostarczania sieci web, do dostarczania buforowalnej zasobów. Zmodyfikuj adresami URL strony sieci Web bezpośrednio do elementu zawartości w punkcie końcowym CDN, który ma być używany. 

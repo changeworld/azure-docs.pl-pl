@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 05720e6c290b0b54e5b6d5170a6eb22306e9cb04
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczące usługi Azure Active Directory (Azure AD) Connect Health. Te często zadawane pytania dotyczące pokrycia pytania dotyczące sposobu korzystania z usługi, w tym modelu rozliczeń możliwości, ograniczeń i pomocy technicznej.
@@ -181,7 +181,7 @@ CheckForMS17-010
 
 **Pytanie: Dlaczego są moje usług AD FS Inspekcja nie wygenerowany?**
 
-Użyj polecenia cmdlet programu PowerShell <i>Get-AdfsProperties - AuditLevel</i> zapewnienie dzienników inspekcji nie znajduje się w stanu wyłączonego. Przeczytaj więcej na temat [dzienniki inspekcji usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)
+Użyj polecenia cmdlet programu PowerShell <i>Get-AdfsProperties - AuditLevel</i> zapewnienie dzienników inspekcji nie znajduje się w stanu wyłączonego. Przeczytaj więcej na temat [dzienniki inspekcji usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Powiadomienie, jeśli są zaawansowane ustawienia inspekcji wysyłany do serwera usług AD FS, wszystkie zmiany z auditpol.exe zostaną zastąpione (zdarzenie, jeśli nie skonfigurowano wygenerowane w aplikacji). W takim wypadku Ustaw zasady zabezpieczeń lokalnych do dziennika błędów wygenerowanych aplikacji i Powodzenie. 
 
 
 ## <a name="related-links"></a>Powiązane linki

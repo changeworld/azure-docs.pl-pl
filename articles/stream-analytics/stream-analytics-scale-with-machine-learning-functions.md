@@ -1,12 +1,11 @@
 ---
-title: "Zadanie skalowanie przy użyciu funkcji usługi Azure Stream Analytics & uczenie maszynowe Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak poprawnie skalowanie zadania usługi analiza strumienia (partycjonowania, ilość SU i inne) przy użyciu funkcji usługi Azure Machine Learning."
-keywords: 
-documentationcenter: 
+title: Zadanie skalowanie przy użyciu funkcji usługi Azure Stream Analytics & uczenie maszynowe Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak poprawnie skalowanie zadania usługi analiza strumienia (partycjonowania, ilość SU i inne) przy użyciu funkcji usługi Azure Machine Learning.
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 1e1c3724462a4d2a67eab3ef42867d2aeb5d3fa1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: dd6effab3ba0b411131414bd757ffe8cc54e49d2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Skalowanie zadania usługi analiza strumienia z funkcjami usługi Azure Machine Learning
 Często jest to łatwa do ustawiania zadania usługi analiza strumienia i uruchamiania przykładowych danych przy jego użyciu. Co możemy zrobić, gdy będzie trzeba przeprowadzić to samo zadanie z większą ilość danych? Wymaga to nam zrozumieć, jak skonfigurować zadanie usługi Stream Analytics, aby go skaluje. W tym dokumencie możemy skupić się na specjalne aspektów skalowanie zadania usługi analiza strumienia z funkcjami usługi Machine Learning. Aby uzyskać informacje dotyczące skalowania zadania usługi analiza strumienia ogólnie rzecz biorąc, zobacz artykuł [skalowanie zadania](stream-analytics-scale-jobs.md).
@@ -82,8 +81,8 @@ Poniżej znajduje się tabela dla zadania Stream Analytics przepustowość dla r
 | **1 SU** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **3 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
 | **6 SUs** |2,500 |5,000 |20,000 |30,000 |50,000 |
-| **12 SUs** |5,000 |10 000 |40,000 |60,000 |100,000 |
-| **18 SUs** |7,500 |15,000 |60,000 |90,000 |150,000 |
+| **12 SUs** |5000 |10 000 |40,000 |60,000 |100,000 |
+| **18 SUs** |7500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SUs** |10 000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
 | **60 SUs** |25,000 |50,000 |200,000 |300,000 |500,000 |
@@ -114,7 +113,7 @@ Podsumowując głównych punktów, aby skalować zadanie usługi Stream Analytic
 
 Pełni partycjonowanej zapytań usługi Stream Analytics została użyta jako przykład. Jeśli potrzebna jest bardziej złożonego zapytania [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) jest doskonałą pomocą podczas pobierania uzyskać dodatkową pomoc od zespołu usługi Stream Analytics.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat usługi Stream Analytics, zobacz:
 
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

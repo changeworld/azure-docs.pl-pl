@@ -1,6 +1,6 @@
 ---
-title: "Eksploruj dzienniki śledzenia platformy .NET w usłudze Application Insights"
-description: "Wyszukaj dzienniki generowane z śledzenia, NLog i Log4Net."
+title: Eksploruj dzienniki śledzenia platformy .NET w usłudze Application Insights
+description: Wyszukaj dzienniki generowane z śledzenia, NLog i Log4Net.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6da0bf009fa71885d7d8e3bd5376c5a7c9d4a344
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 574b11f9ba38bda775610f2f9e90fbb2d2b05868
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Eksploruj dzienniki śledzenia platformy .NET w usłudze Application Insights
 Jeśli używasz NLog, log4Net lub System.Diagnostics.Trace do śledzenia diagnostycznego w aplikacji programu ASP.NET może mieć dzienniki wysyłane do [Azure Application Insights][start], gdzie można eksplorować i ich wyszukiwania. Dzienniki zostaną scalone z innymi telemetrii pochodzące z aplikacji, aby zidentyfikować dane śledzenia skojarzone z obsługi każdego żądania użytkownika i skorelowania je za pomocą innych zdarzeń i raporty wyjątek.
@@ -91,15 +91,15 @@ Można skonfigurować [System.Diagnostics.Tracing.EventSource](https://msdn.micr
 ```
 
 Dla każdego źródła można ustawić następujące parametry:
- * `Name`Określa nazwę elementu EventSource do zbierania.
- * `Level`Określa poziom rejestrowania do zbierania. Może być jednym z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
- * `Keywords`(Opcjonalnie) określa wartość całkowita kombinacji słowa kluczowe do użycia.
+ * `Name` Określa nazwę elementu EventSource do zbierania.
+ * `Level` Określa poziom rejestrowania do zbierania. Może być jednym z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
+ * `Keywords` (Opcjonalnie) określa wartość całkowita kombinacji słowa kluczowe do użycia.
 
 ## <a name="using-diagnosticsource-events"></a>W przypadku używania DiagnosticSource zdarzeń
 Można skonfigurować [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) zdarzenia mają być wysyłane do usługi Application Insights jako dane śledzenia. Najpierw zainstaluj [ `Microsoft.ApplicationInsights.DiagnosticSourceListener` ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) pakietu NuGet. Następnie Edytuj `TelemetryModules` sekcji [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) pliku.
 
 ```xml
-    <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
+    <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
       <Sources>
         <Add Name="MyDiagnosticSourceName" />
       </Sources>
@@ -123,10 +123,10 @@ Można skonfigurować zdarzenia ETW mają być wysyłane do usługi Application 
 ```
 
 Dla każdego źródła można ustawić następujące parametry:
- * `ProviderName`jest nazwą dostawcy ETW do zbierania.
- * `ProviderGuid`Określa identyfikator GUID dostawców ETW, aby zebrać, można użyć zamiast `ProviderName`.
- * `Level`Ustawia poziom rejestrowania do zbierania. Może być jednym z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
- * `Keywords`(Opcjonalnie) ustawia całkowitą kombinacji — słowo kluczowe do użycia.
+ * `ProviderName` jest nazwą dostawcy ETW do zbierania.
+ * `ProviderGuid` Określa identyfikator GUID dostawców ETW, aby zebrać, można użyć zamiast `ProviderName`.
+ * `Level` Ustawia poziom rejestrowania do zbierania. Może być jednym z `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose`, `Warning`.
+ * `Keywords` (Opcjonalnie) ustawia całkowitą kombinacji — słowo kluczowe do użycia.
 
 ## <a name="using-the-trace-api-directly"></a>Bezpośrednio za pomocą śledzenia interfejsu API
 Śledzenia usługi Application Insights interfejsu API można wywołać bezpośrednio. Adaptery rejestrowania użycia tego interfejsu API.
@@ -168,7 +168,7 @@ Można na przykład:
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Diagnozowanie błędów i wyjątków w programie ASP.NET][exceptions]
 
 [Dowiedz się więcej na temat wyszukiwania][diagnostic].

@@ -1,11 +1,11 @@
 ---
 title: Windows Phone Silverlight Engagement SDK Integration
-description: "Integrowanie usługi Azure Mobile Engagement z aplikacji Silverlight Windows Phone"
+description: Integrowanie usługi Azure Mobile Engagement z aplikacji Silverlight Windows Phone
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 447fea8d-f4e3-4ad4-8ec0-8e3cf1ad3ab0
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 72a581643ccde55f8b849c511c3365e029d7cbcb
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: f041f19ceff366a34b1761bfdca12242f4bdf9b8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Windows Phone Silverlight Engagement SDK Integration
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> 
+
 > [!div class="op_single_selector"]
 > * [Aplikacje uniwersalne systemu Windows](mobile-engagement-windows-store-integrate-engagement.md) 
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
@@ -100,7 +104,7 @@ Modyfikowanie `App.xaml.cs`:
 > 
 > 
 
-## <a name="basic-reporting"></a>Podstawowym raportowaniem
+## <a name="basic-reporting"></a>Podstawowe raportowanie
 ### <a name="recommended-method--overload-your-phoneapplicationpage-classes"></a>Zalecana metoda: przeciążenia sieci `PhoneApplicationPage` klas
 Aby aktywować raportu wszystkie dzienniki wymagane przez zaangażowania można obliczyć użytkowników, sesji, działania, awarii (Crash) i statystyki technicznych, możesz po prostu wprowadzić wszystkie Twoje `PhoneApplicationPage` klasy podrzędne dziedziczą `EngagementPage` klasy.
 

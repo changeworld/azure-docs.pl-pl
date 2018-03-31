@@ -1,12 +1,12 @@
 ---
-title: "Azure DB rozwiązania Cosmos — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące bazy danych z rozwiązania Cosmos platformy Azure, usługa globalnie rozproszone i wiele modeli bazy danych. Więcej informacji na temat pojemności, poziomów wydajności i skalowania."
-keywords: "Pytania dotyczące bazy danych, często zadawane pytania, usługi documentdb, azure, platformy Microsoft azure"
+title: Azure DB rozwiązania Cosmos — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące bazy danych z rozwiązania Cosmos platformy Azure, usługa globalnie rozproszone i wiele modeli bazy danych. Więcej informacji na temat pojemności, poziomów wydajności i skalowania.
+keywords: Pytania dotyczące bazy danych, często zadawane pytania, usługi documentdb, azure, platformy Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 466abbffd250685baf886b7fc7cc772ee9e327f2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 946d0f6456ce27931c91066d63c028388ecec84c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -76,7 +76,7 @@ Można również użyć [Azure rozwiązania Cosmos DB emulatora](local-emulator.
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Jak można uzyskać dodatkową pomoc dotyczącą bazy danych rozwiązania Cosmos Azure?
 
 Aby zadać pytania techniczne, możesz post do jednej z tych dwóch pytania i odpowiedzi na forach:
-* [Forum MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Przepełnienie stosu](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najlepsze dla programowania pytania. Upewnij się, że jest to pytanie [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, co na pytanie, wyczyść i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask). 
 
 Aby poprosić o nowe funkcje, Utwórz nowe żądanie na [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -244,7 +244,7 @@ Jeśli którekolwiek z tych różnic są problem projektu skontaktuj się z [ as
 Twoja opinia można udostępniać w jednym z następujących sposobów:
 
 * [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
-* [Forum MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
+* [Forum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Przepełnienie stosu](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Przepełnienie stosu jest najlepsze dla programowania pytania. Upewnij się, że jest to pytanie [na temat](https://stackoverflow.com/help/on-topic) i [zawierają tyle szczegółowe informacje, jak to możliwe, co na pytanie, wyczyść i którą można odpowiedzieć](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Co to jest parametry połączenia, które należy użyć do nawiązania połączenia interfejsu API tabeli?

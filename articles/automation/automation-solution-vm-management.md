@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: da2d95bc100a6160282c93682ad76f7ee881e105
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Maszyny wirtualne uruchamiania i zatrzymywania podczas rozwiązania poza godzinami szczytu (wersja zapoznawcza) w usłudze Automatyzacja Azure
 
@@ -55,7 +55,7 @@ Wykonaj poniższe kroki, aby dodać uruchamiania/zatrzymywania maszyn wirtualnyc
 
 1. **Dodaj rozwiązanie** zostanie wyświetlona strona. Monit o skonfigurowanie rozwiązania, przed zaimportowaniem go w ramach subskrypcji automatyzacji.
    ![Strona Dodawanie zarządzającego maszyny Wirtualnej](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
-1. Na **Dodaj rozwiązanie** wybierz pozycję **obszaru roboczego**. Wybierz obszar roboczy OMS jest połączony z tej samej subskrypcji Azure, która jest konta automatyzacji. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszarem roboczym pakietu OMS** strony, wykonaj następujące czynności:
+1. Na **Dodaj rozwiązanie** wybierz pozycję **obszaru roboczego**. Wybierz obszar roboczy analizy dzienników połączonego z tej samej subskrypcji Azure, która jest konta automatyzacji. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszarem roboczym pakietu OMS** strony, wykonaj następujące czynności:
    * Określ nazwę dla nowego **Obszaru roboczego OMS**.
    * Wybierz **subskrypcji** się połączyć, wybierając z listy rozwijanej, jeśli wybrana domyślnie nie jest odpowiedni.
    * Aby uzyskać **grupy zasobów**, możesz utworzyć nową grupę zasobów lub wybierz istniejący.
@@ -63,13 +63,13 @@ Wykonaj poniższe kroki, aby dodać uruchamiania/zatrzymywania maszyn wirtualnyc
    * Wybierz **warstwę cenową**. Rozwiązanie oferuje dwie warstwy: **wolne** i **na węzeł (OMS)**. Warstwa bezpłatna ma ograniczenie ilości zbieranych danych codziennie, okres przechowywania i minut czasu wykonywania zadania elementu runbook. Warstwy każdego węzła nie ma ograniczenie ilości danych zbieranych dziennie.
 
         > [!NOTE]
-        > Mimo że warstwy na GB (autonomiczna) płatnej jest wyświetlany jako opcja, nie ma zastosowania. Jeśli zaznacz go i kontynuować tworzenie tego rozwiązania, w ramach subskrypcji, zwróci błąd. Ten problem zostanie rozwiązany po oficjalnym wydaniu tego rozwiązania. To rozwiązanie tylko używa automatyzacji zadań minut i wprowadzanie dziennika. Dodatkowe węzły OMS nie dodaje do środowiska.
+        > Mimo że warstwy na GB (autonomiczna) płatnej jest wyświetlany jako opcja, nie ma zastosowania. Jeśli zaznacz go i kontynuować tworzenie tego rozwiązania, w ramach subskrypcji, zwróci błąd. Ten problem zostanie rozwiązany po oficjalnym wydaniu tego rozwiązania. To rozwiązanie tylko używa automatyzacji zadań minut i wprowadzanie dziennika. Dodatkowe węzły nie dodaje do środowiska.
 
 1. Po podaniu wymaganych informacji w **obszarem roboczym pakietu OMS** kliknij przycisk **Utwórz**. Można śledzić postęp w obszarze **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
-1. Na **Dodaj rozwiązanie** wybierz pozycję **konto automatyzacji**. Jeśli tworzysz nowy obszar roboczy OMS, należy także utworzyć nowe konto automatyzacji ma zostać skojarzony z nim. Wybierz **utworzyć konto usługi automatyzacja**i na **konto automatyzacji dodać** pozycję zapewnia następujące korzyści:
+1. Na **Dodaj rozwiązanie** wybierz pozycję **konto automatyzacji**. Jeśli tworzysz nowy obszar roboczy analizy dzienników, należy także utworzyć nowe konto automatyzacji ma zostać skojarzony z nim. Wybierz **utworzyć konto usługi automatyzacja**i na **konto automatyzacji dodać** pozycję zapewnia następujące korzyści:
    * W polu **Nazwa** wprowadź nazwę konta usługi Automation.
 
-    Inne opcje są automatycznie wypełniane oparte na obszar roboczy OMS wybrane. Nie można modyfikować tych opcji. Konto Uruchom jako platformy Azure jest domyślną metodą uwierzytelniania dla elementów Runbook zawartych w tym rozwiązaniu. Po kliknięciu **OK**, opcje konfiguracji są weryfikowane i utworzeniu konta automatyzacji. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.
+    Inne opcje są wypełniane automatycznie na podstawie w obszarze roboczym analizy dzienników wybrane. Nie można modyfikować tych opcji. Konto Uruchom jako platformy Azure jest domyślną metodą uwierzytelniania dla elementów Runbook zawartych w tym rozwiązaniu. Po kliknięciu **OK**, opcje konfiguracji są weryfikowane i utworzeniu konta automatyzacji. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.
 
 1. Na koniec na **Dodaj rozwiązanie** wybierz pozycję **konfiguracji**. **Parametry** zostanie wyświetlona strona.
 
@@ -230,7 +230,7 @@ Nie należy włączać wszystkie harmonogramy, ponieważ może to powodować nak
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
 
-Automatyzacja tworzy dwa typy rekordów w repozytorium OMS: zadania dzienniki i strumieni zadania.
+Automatyzacja tworzy dwa typy rekordów w obszarze roboczym analizy dzienników: zadania dzienniki i strumieni zadania.
 
 ### <a name="job-logs"></a>Dzienniki zadań
 

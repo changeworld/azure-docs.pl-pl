@@ -1,24 +1,25 @@
 ---
 title: Konfiguruj ustawienia aplikacji funkcji platformy Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak skonfigurować ustawienia aplikacji funkcji platformy Azure."
-services: 
+description: Dowiedz się, jak skonfigurować ustawienia aplikacji funkcji platformy Azure.
+services: ''
 documentationcenter: .net
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 03/28/2018
 ms.author: glenga
-ms.openlocfilehash: 2aa35cf814f8de2af89c6f7e0eda1f919301d6a3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: 8974b2ca243da5dd2f7202c66602f7254496d040
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Jak zarządzać aplikacji funkcji w portalu Azure 
 
@@ -27,6 +28,24 @@ W środowisku Azure Functions aplikacji funkcji udostępnia kontekst wykonania d
 Aby rozpocząć, przejdź do [portalu Azure](http://portal.azure.com) i zaloguj się do konta platformy Azure. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. Po wybraniu aplikacji funkcji, można znaleźć na następującej stronie:
 
 ![Funkcja Przegląd aplikacji w portalu Azure](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+
+## <a name="favorite"></a>Funkcje ulubionych w portalu 
+
+Czasami może być trudne do znalezienia zasobów w [portalu Azure]. Aby ułatwić znajdowanie aplikacje funkcji, które zostały utworzone, należy dodać aplikacje funkcji do ulubionych w portalu. 
+
+1. Zaloguj się do witryny [portalu Azure].
+
+2. Kliknij strzałkę w lewym dolnym rogu, aby rozwinąć wszystkie usługi, wpisz `Functions` w polu **Filtr**, a następnie kliknij przycisk gwiazdki obok pozycji **Aplikacje funkcji**.  
+ 
+    ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
+
+    Powoduje to dodanie ikony Funkcje do menu po lewej stronie portalu.
+
+3. Zamknij menu, a następnie przewiń w dół, aby wyświetlić ikonę Funkcje. Kliknij tę ikonę, aby wyświetlić listę wszystkich aplikacji funkcji. Kliknij aplikację funkcji, aby pracować z funkcjami w tej aplikacji. 
+ 
+    ![Funkcja aplikacji w ulubionych](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
+ 
+[portalu Azure]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>Karta Ustawienia aplikacji — funkcja
 
@@ -66,7 +85,7 @@ Aby uzyskać więcej informacji na temat pracy z ustawieniami usługi aplikacji,
 
 ![Edytor usługi aplikacji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-### <a name="settings">Ustawienia aplikacji</a>
+### <a name="settings"></a>Ustawienia aplikacji
 
 | | |
 |-|-|
@@ -82,7 +101,7 @@ Aby uzyskać więcej informacji na temat pracy z ustawieniami usługi aplikacji,
 
 ![Funkcja aplikacji konsoli](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-### <a name="kudu">Zaawansowane narzędzia (Kudu)</a>
+### <a name="kudu"></a>Zaawansowane narzędzia (Kudu)
 
 | | |
 |-|-|
@@ -115,7 +134,7 @@ Aby uzyskać więcej informacji na temat pracy z ustawieniami usługi aplikacji,
 ![Konfigurowanie uwierzytelniania dla aplikacji funkcja](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
 
-### <a name="swagger">Definicja interfejsu API</a>
+### <a name="swagger"></a>Definicja interfejsu API
 
 | | |
 |-|-|

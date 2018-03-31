@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 1d4151d6c00da618cc008257bcdad4607f8fec49
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1fc4b64a879f090955a5611672acb6b58eb19d73
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Na podstawie grupy podstawy licencjonowania w usłudze Azure Active Directory
 
@@ -30,6 +30,9 @@ Za pomocą płatnej usługi w chmurze, takich jak usługi Office 365, Enterprise
 Do tej pory licencje może zostać przypisana tylko na poziomie indywidualnego użytkownika, co może utrudnić zarządzania na dużą skalę. Na przykład aby dodać lub usunąć licencje użytkownika na podstawie organizacyjnego zmian, takich jak użytkownicy przyłączenie się lub opuszczenie organizacji lub działu, administrator często musi być zapisana złożonych skrypt programu PowerShell. Ten skrypt wykonuje poszczególnych wywołań do usługi w chmurze.
 
 Aby rozwiązać te problemy, teraz usługi Azure AD zawiera oparte na grupach licencji. Do grupy można przypisać jedną lub więcej licencji produktu. Usługi Azure AD zapewnia przypisanie licencji dla wszystkich członków grupy. Nowe elementy członkowskie, które dołączenie do grupy przypisano odpowiednie licencje. Gdy opuszczą grupy te licencje zostaną usunięte. Dzięki temu do automatyzacji zarządzania licencji za pomocą programu PowerShell celu odzwierciedlenia zmian w organizacji i struktury działów w poszczególnych użytkowników.
+
+>[!NOTE]
+>Ta funkcja jest obecnie w wersji zapoznawczej. Przygotuj się do przywrócenia lub Usuń wszystkie zmiany. Funkcja jest dostępna w żadnych subskrypcji usługi Azure Active Directory (Azure AD) w publicznej wersji zapoznawczej. Gdy funkcja stanie się ogólnie dostępna, niektórych aspektów funkcji mogą jednak wymagać jedną lub więcej licencji usługi Azure Active Directory — wersja Premium.
 
 ## <a name="features"></a>Funkcje
 
