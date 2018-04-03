@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 847213a5b8aab908d412ecc9aecec984aec1a9ba
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9b3c4efc712ebe9c0fe209d2ca0478367872d3b7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Sieci monitora wydajności rozwiązania na platformie Azure
 
@@ -48,6 +48,7 @@ NPM można monitorować łączność sieci i aplikacji w dowolnej części świe
 * Wschodnie stany USA
 * Azja Południowo-Wschodnia
 * Australia Wschodnią Południowa
+* Wielka Brytania Południowa
 * Virginia dla instytucji rządowych USA
 
 Lista obsługiwane regiony dla monitora ExpressRoute jest dostępna w [dokumentacji](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions).

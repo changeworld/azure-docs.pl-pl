@@ -1,26 +1,26 @@
 ---
 title: W tym samouczku utworzysz stosu Azure oferuje | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak utworzyć ofertę Azure stosu, włącznie z planami i przydziały."
+description: Dowiedz się, jak utworzyć ofertę Azure stosu, włącznie z planami i przydziały.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 083b5e20b89f22cb8e523926858fe9ffb1441319
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8bcc2f3077e79ff83ac2e90db0bb0fa53ae83adc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-offer-azure-stack-iaas-services"></a>Samouczek: oferty usług Azure IaaS stosu
 Jako administrator chmury Azure stosu można utworzyć oferty, które mogą subskrybować użytkowników (nazywane czasami dzierżawcy). Za pomocą swoich subskrypcji, użytkownicy będą mogły używać usługi Azure stosu.
@@ -112,14 +112,24 @@ Oferty można:
 > Zmiany do oferty, nie są bezpośrednio widoczne dla użytkowników. Aby wyświetlić zmiany, użytkownicy mogą mieć wylogować i zalogować się ponownie do [portal użytkowników](https://portal.local.azurestack.external) zobaczysz tę ofertę nowe.
 
 Aby ustawić nowe oferty na publiczne: 
+   - Wersja 1803 lub nowszy: 
+     1. W menu nawigacyjnym kliknij **oferuje** a następnie kliknij przycisk Oferta, dla której został utworzony.
 
-1. W menu nawigacyjnym kliknij **oferuje** a następnie kliknij przycisk Oferta, dla której został utworzony.
+     2. Kliknij przycisk **stan dostępności**, a następnie kliknij przycisk **publicznego**.
 
-2. Kliknij pozycję **Zmień stan**, a następnie kliknij pozycję **Publiczne**.
+        ![Zmień stan](media/asdk-offer-services/change-state.png)
 
-   ![Stan publiczny](media/asdk-offer-services/set-public.png)
+     3. Oferta, dla której będą teraz dostępne w portalu Azure stosu użytkownika.
 
-3. Oferta, dla której będą teraz dostępne w portalu Azure stosu użytkownika.
+
+   - Przed wersją 1803:  
+     1. W menu nawigacyjnym kliknij **oferuje** a następnie kliknij przycisk Oferta, dla której został utworzony.
+
+     2. Kliknij pozycję **Zmień stan**, a następnie kliknij pozycję **Publiczne**.
+
+        ![Stan publiczny](media/asdk-offer-services/set-public.png)
+
+     3. Oferta, dla której będą teraz dostępne w portalu Azure stosu użytkownika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

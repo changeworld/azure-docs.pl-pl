@@ -1,34 +1,172 @@
 ---
-title: "Obróć kluczy tajnych w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Obróć tajnych w stosie Azure."
+title: Obróć kluczy tajnych w stosie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Obróć tajnych w stosie Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 49071044-6767-4041-9EDD-6132295FA551
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: e2e9d93af3889714ade1d0364a6f747c184e6d75
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.reviewer: ppacent
+ms.openlocfilehash: f3c6d50ac128cd766a1d22689b737da975922466
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć kluczy tajnych w stosie Azure
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Te instrukcje dotyczą tylko 1803 wersji systemów zintegrowanego stosu Azure i później. Nie należy podejmować tajny obrotu w wersji pre-1802 Azure stosu wersjach*
 
-Zaktualizuj hasła dla składników Azure stosu w regularnych okresach.
+Stos Azure korzysta z różnych kluczy tajnych do obsługi bezpiecznej komunikacji między zasobami infrastruktury stosu Azure i usługi.
 
-## <a name="updating-the-passwords-for-the-baseboard-management-controller-bmc"></a>Aktualizowanie hasła do kontrolera zarządzania płytą główną (BMC)
+- **Wewnętrzny kluczy tajnych**  
+Wszystkie certyfikaty, hasła bezpiecznego ciągów i kluczy używanych przez infrastrukturę stosu Azure bez interwencji operatora stosu Azure. 
 
-Kontrolery zarządzania płytą główną (BMC) monitorować stan fizycznych serwerów. Specyfikacje i instrukcje na temat aktualizowania hasła bmc różnić w zależności od producenta komputera producenta sprzętu (OEM).
+- **Klucze tajne zewnętrznych**  
+Infrastruktura certyfikatów usługi dla usługi dołączonej do Internetu, które są udostępniane przez podmiot stosu Azure. Obejmuje to certyfikaty dla następujących usług: 
+    - Portal administratora 
+    - Publiczny 
+    - Administrator usługi Azure Resource Manager 
+    - Globalny usługi Azure Resource Manager 
+    - Keyvault administratora 
+    - Keyvault 
+    - Usługi ACS (w tym obiektów blob, tabel i magazyn kolejek) 
+    - ADFS<sup>*</sup>
+    - Wykres<sup>*</sup>
+
+    > <sup>*</sup> Dotyczy tylko w przypadku dostawcy tożsamości w środowisku usług Active Directory federacyjnych (AD FS).
+
+> [!NOTE]
+> Wszystkich innych bezpieczeństwo kluczy i ciągi, łącznie z BMC i przełączyć hasła, haseł kont użytkowników i administrator nadal ręcznie zostały zaktualizowane przez administratora. 
+
+W celu zachowania integralności infrastruktury Azure stosu, Operatorzy będą potrzebowali możliwości okresowo Obróć kluczy tajnych ich infrastruktury częstotliwością, które są zgodne z wymaganiami zabezpieczeń używanych w organizacji.
+
+## <a name="alert-remediation"></a>Korygowanie alertu
+
+Gdy w ciągu 30 dni wygaśnięcia hasła, następujące alerty są generowane w portalu administratora: 
+
+- Wygaśnięcie hasła konta usługi oczekującej 
+- Wygaśnięcie certyfikatu wewnętrznego oczekujące 
+- Wygaśnięcie certyfikatu zewnętrznego oczekujące 
+
+Uruchomiona tajny obrotu z instrukcjami poniżej będzie skorygować te alerty.
+
+## <a name="pre-steps-for-secret-rotation"></a>Kroki przed tajny obrotu
+
+1.  Powiadom użytkowników żadnych operacji konserwacji. Planowanie okna obsługi normalnych, jak to możliwe, podczas poza godzinami pracy. Operacje konserwacji może mieć wpływ na zarówno obciążeń użytkownika, jak i działania portalu.
+
+    > [!note]  
+    > Następne kroki stosowane tylko wtedy, gdy obracanie kluczy tajnych zewnętrznego stosu Azure.
+
+2.  Przygotuj nowy zestaw wymiany certyfikatów zewnętrznych. Nowy zestaw odpowiada specyfikacji certyfikatu opisane w temacie [wymagania dotyczące certyfikatu PKI stosu Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
+3.  Przechowywanie kopii zapasowej certyfikaty używane do obrotu w bezpiecznej lokalizacji kopii zapasowej. Jeśli Twoje obrotu uruchomiona, a następnie kończy się niepowodzeniem, Zastąp certyfikaty w udziale plików kopii zapasowych przed ponownym uruchomieniem obrót. Należy pamiętać, wykonywania kopii zapasowych w bezpiecznej lokalizacji.
+3.  Tworzenie udziału plików, których masz dostęp z ERCS maszyn wirtualnych. Udział plików musi być zdatny do odczytu i zapisu dla **CloudAdmin** tożsamości.
+4.  Otwórz konsolę programu PowerShell ISE na maszynie Wirtualnej ERCS przy użyciu **CloudAdmin** konta.  Przejdź do Twojej udziału plików. 
+5.  Uruchom **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** można utworzyć katalogów wymaganych do używania certyfikatów zewnętrznych.
+
+## <a name="rotating-external-and-internal-secrets"></a>Obracanie kluczy tajnych wewnętrznych i zewnętrznych
+
+Obracanie wewnętrzny kluczy tajnych zarówno zewnętrznych:
+
+1. W nowo utworzony **/certyfikaty** Katalog utworzony w kroku przed, umieść nowy zestaw certyfikaty zewnętrzne zastąpienie w strukturze katalogów zgodnie z formatem opisane w sekcji wymagane certyfikaty z [wymagania dotyczące certyfikatu PKI stosu Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
+2. Tworzenie sesji programu PowerShell z [uprzywilejowanych punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) przy użyciu **CloudAdmin** konta i przechowywać sesje jako zmienną. Ta zmienna będzie używać jako parametru w następnym kroku.
+
+    > [!IMPORTANT]  
+    > Wprowadź sesji, nie sklepu sesji jako zmienną.
+    
+3. Uruchom  **[invoke-command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-5.1)**. Przekaż zmiennej sesji użytkownika uprzywilejowanego punktu końcowego programu PowerShell jako **sesji** parametru. 
+4. Uruchom **Start SecretRotation** z następującymi parametrami:
+    - **PfxFilesPath**  
+    Określ ścieżkę sieciową do utworzonego wcześniej katalogu certyfikatów.  
+    - **PathAccessCredential**  
+    Obiekt PSCredential poświadczeń do udziału. 
+    - **CertificatePassword**  
+    Bezpieczny ciąg hasło używane wszystkie pliki certyfikatów pfx utworzony.
+4. Zaczekaj, aż Obróć tajnych.  
+Po pomyślnym ukończeniu rotacji tajne, konsola wyświetli **ogólny stan akcji: Sukces**. 
+5. Po pomyślnym ukończeniu obrotu tajne Usuń certyfikaty z udziału utworzonego w kroku przed i zapisywanie ich w bezpiecznej lokalizacji kopii zapasowej. 
+
+## <a name="walkthrough-of-secret-rotation"></a>Wskazówki tajny obrotu
+
+W poniższym przykładzie programu PowerShell pokazano poleceń cmdlet i parametrów do uruchomienia w celu obracania tajnych.
+
+```powershell
+#Create a PEP Session
+winrm s winrm/config/client '@{TrustedHosts= "<IPofERCSMachine>"}'
+$PEPCreds = Get-Credential 
+$PEPsession = New-PSSession -computername <IPofERCSMachine> -Credential $PEPCreds -ConfigurationName PrivilegedEndpoint 
+
+#Run Secret Rotation
+$CertPassword = "CertPasswordHere" | ConvertTo-SecureString
+$CertShareCred = Get-Credential 
+$CertSharePath = <NetworkPathofCertShare>   
+Invoke-Command -session $PEPsession -ScriptBlock { 
+Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }
+Remove-PSSession -Session $PEPSession
+```
+## <a name="rotating-only-internal-secrets"></a>Obracanie tylko wewnętrzny kluczy tajnych
+
+Obracanie tylko Azure stosu wewnętrznego kluczy tajnych:
+
+1. Tworzenie sesji programu PowerShell z [uprzywilejowanych punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+2. W sesji uprzywilejowanych punktu końcowego, uruchom **Start SecretRotation** bez argumentów.
+
+## <a name="start-secretrotation-reference"></a>Odwołanie do rozpoczęcia SecretRotation
+
+Obraca kluczy tajnych stosu systemu Azure. Wykonywać tylko względem punktu końcowego uprzywilejowanych stosu Azure.
+
+### <a name="syntax"></a>Składnia
+
+Ścieżka (ustawienie domyślne)
+
+```powershell
+Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential] <PSCredential> [-CertificatePassword <SecureString>]  
+```
+
+### <a name="description"></a>Opis
+
+Polecenie cmdlet Start-SecretRotation obraca kluczy tajnych infrastruktury systemu Azure stosu. Domyślnie obraca się wszystkich kluczy tajnych udostępniany w sieci wewnętrznej infrastruktury przy użyciu danych wejściowych użytkownika także o certyfikaty wszystkie punkty końcowe infrastruktury sieci zewnętrznej. Gdy obracanie punkty końcowe infrastruktury sieci zewnętrznej, Start SecretRotation powinny być wykonywane za pomocą bloku skryptu Invoke-Command z sesji uprzywilejowanych punktu końcowego środowiska Azure stosu przekazany jako parametr sesji.
+ 
+### <a name="parameters"></a>Parametry
+
+| Parametr | Typ | Wymagane | Położenie | Domyślne | Opis |
+| -- | -- | -- | -- | -- | -- |
+| PfxFilesPath | Ciąg  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalog zawierający wszystkie zewnętrzne sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku obracanie kluczy tajnych wewnętrznych i zewnętrznych. Katalog end musi być **\Certificates**. |
+| CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniane po wewnętrznych i zewnętrznych kluczy tajnych są obracane. |
+|
+
+### <a name="examples"></a>Przykłady
+ 
+**Obróć tylko wewnętrzna infrastruktura kluczy tajnych**
+
+```powershell  
+PS C:\> Start-SecretRotation  
+```
+
+To polecenie obraca wszystkich kluczy tajnych infrastruktury narażonych na stosie Azure sieci wewnętrznej. Start SecretRotation obraca wszystkich kluczy tajnych generowany stos, ale ponieważ nie ma żadnych certyfikatów podany, certyfikaty zewnętrznego punktu końcowego nie można obracać.  
+
+**Obróć kluczy tajnych infrastruktury wewnętrznych i zewnętrznych**
+  
+```powershell
+PS C:\> Invoke-Command -session $PEPSession -ScriptBlock { 
+Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword } 
+Remove-PSSession -Session $PEPSession
+```
+
+To polecenie obraca wszystkich kluczy tajnych infrastruktury narażonych na stosie Azure sieci wewnętrznej, a także certyfikaty protokołu TLS, używane dla punktów końcowych infrastruktury sieci zewnętrznej Azure stosu. Start SecretRotation obraca wszystkich kluczy tajnych generowany stos, a ponieważ podano w nim certyfikaty zewnętrznego punktu końcowego certyfikatów również można obracać.  
+
+
+## <a name="update-the-baseboard-management-controller-bmc-password"></a>Zaktualizuj hasło kontrolera zarządzania płytą główną
+
+Kontroler zarządzania płytą główną (BMC) monitoruje stan fizycznych serwerów. Specyfikacje i instrukcje na temat aktualizowania hasła bmc różnić w zależności od producenta komputera producenta sprzętu (OEM). Należy zaktualizować hasła dla składników Azure stosu w regularnych okresach.
 
 1. Zaktualizuj BMC na serwerach fizycznych stosu Azure zgodnie z instrukcjami producenta OEM. Hasło dla każdego kontrolera BMC w danym środowisku muszą być takie same.
 2. Otwórz uprzywilejowanych punktu końcowego w sesjach stosu Azure. Aby uzyskać instrukcje, zobacz [przy użyciu punktu końcowego uprzywilejowanych w stosie Azure](azure-stack-privileged-endpoint.md).
@@ -45,6 +183,7 @@ Kontrolery zarządzania płytą główną (BMC) monitorować stan fizycznych ser
     Invoke-Command -Session $PEPSession -ScriptBlock {
         Set-Bmcpassword -bmcpassword $using:NewBMCpwd
     }
+    Remove-PSSession -Session $PEPSession
     ```
     
     Za pomocą statycznego wersja programu PowerShell i hasła jako wierszy kodu:
@@ -62,8 +201,9 @@ Kontrolery zarządzania płytą główną (BMC) monitorować stan fizycznych ser
     Invoke-Command -Session $PEPSession -ScriptBlock {
         Set-Bmcpassword -bmcpassword $using:NewBMCpwd
     }
+    Remove-PSSession -Session $PEPSession
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej o zabezpieczeniach i stosu Azure, zobacz [stan zabezpieczeń infrastruktury Azure stosu](azure-stack-security-foundations.md).
+[Dowiedz się więcej o zabezpieczeniach stosu Azure](azure-stack-security-foundations.md)

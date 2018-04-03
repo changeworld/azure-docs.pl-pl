@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdce5ad971e345971aa5de9a9bb79379fb1ead48
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b91cfdfe89f1f15354595400ed9547496fdcd796
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure stosu
 
@@ -220,4 +220,5 @@ Microsoft Azure stosu obsługuje następujące maszyny wirtualne Azure Marketpla
 | ![Zapora aplikacji PT](media/azure-stack-marketplace-azure-items/pt.png) | [Zapora aplikacji PT](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Zapora aplikacji PT wykrywa znane & nieznany luk w zabezpieczeniach i pozwala zapobiec atakom, aplikacji sieci web. <b>Pobierz oba elementy PT Marketplace.</b> | Technologie dodatnią |
 | ![Puppet przedsiębiorstwa](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet przedsiębiorstwa](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise pozwala zautomatyzować w całym cyklu ich życia infrastruktury Azure stosu. <b>Pobierz oba elementy Puppet Marketplace.</b> | Puppet |
 | ![Serwer Proxy Menedżera 3.0 SUSE (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [Serwer Proxy Menedżera 3.0 SUSE (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Zarządzanie infrastrukturą open source najlepsze w klasie. | SUSE |
+| ![Kopia zapasowa Veeam i replikacji](media/azure-stack-marketplace-azure-items/veeam.png) | [Kopia zapasowa Veeam i replikacji ](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication) | & Replikacji 9.5 Veeam kopii zapasowej. | Veeam |
 | ![Narzędzie ZeroDown oprogramowania](media/azure-stack-marketplace-azure-items/zerodown.png) | [Narzędzie ZeroDown oprogramowania ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | V7.1 Narzędzie oprogramowania ZeroDown - migracji + wysokiej dostępności. | ZeroDown oprogramowania |

@@ -1,25 +1,25 @@
 ---
 title: Zarejestruj ASDK Azure | Dokumentacja firmy Microsoft
-description: "Opisuje sposób rejestrowania stosu Azure przy użyciu platformy Azure marketplace zespolonego oraz raportowanie użycia."
+description: Opisuje sposób rejestrowania stosu Azure przy użyciu platformy Azure marketplace zespolonego oraz raportowanie użycia.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9e2dbc71f6424b87945e346a42c86d4cde7f740e
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a157879fb70a874ed99b39ffcdbfa49a65f6ab7c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Zarejestruj stosu Azure przy użyciu platformy Azure
 Można zarejestrować instalacji programu Azure stosu Development Kit (ASDK) z platformy Azure, aby pobrać elementów marketplace z platformy Azure i ustaw commerce dane raportowania z powrotem do firmy Microsoft. Rejestracja jest zalecane, ponieważ umożliwia testowanie ważne funkcje stosu Azure marketplace zespolonego i raportowanie użycia. Po zarejestrowaniu stosu Azure użycia jest zgłaszane do handlu platformy Azure. Można to sprawdzić w ramach subskrypcji, używanego do rejestracji. ASDK użytkownicy nie są jednak obciążony bez użycia, które zgłaszają.
@@ -49,9 +49,9 @@ Przed użyciem tych kroków można zarejestrować ASDK w usłudze Azure, upewnij
 
     #Register Azure Stack
     $AzureContext = Get-AzureRmContext
-    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"
+    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
     Set-AzsRegistration `
-        -CloudAdminCredential $CloudAdminCred `
+        -PrivilegedEndpointCredential $CloudAdminCred `
         -PrivilegedEndpoint AzS-ERCS01 `
         -BillingModel Development
 

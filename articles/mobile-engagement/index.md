@@ -1,24 +1,28 @@
 ---
-title: "Dokumentacja usługi Azure Mobile Engagement — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Dowiedz się, jak uzyskać wgląd w dane dotyczące użycia aplikacji mobilnych i segmentowania użytkowników w czasie rzeczywistym oraz jak włączyć kontekstowe powiadomienia wypychane i komunikaty w aplikacjach."
+title: Dokumentacja usługi Azure Mobile Engagement — samouczki i dokumentacja interfejsu API | Microsoft Docs
+description: Dowiedz się, jak uzyskać wgląd w dane dotyczące użycia aplikacji mobilnych i segmentowania użytkowników w czasie rzeczywistym oraz jak włączyć kontekstowe powiadomienia wypychane i komunikaty w aplikacjach.
 services: mobile-engagement
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: mobile-engagement
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 874b40e0e1407be9f546c5a5f57cee2d1034a840
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-documentation"></a>Dokumentacja usługi Mobile Engagement
+
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
+> 
 
 Dowiedz się, jak zwiększyć użycie aplikacji, utrzymanie użytkowników oraz zyski z aplikacji mobilnych za pomocą usługi Mobile Engagement. W samouczkach, zestawach SDK i innej dokumentacji pokazano, jak uzyskać wgląd w dane dotyczące użycia aplikacji i segmentowania użytkowników w czasie rzeczywistym oraz jak włączyć kontekstowe powiadomienia wypychane i komunikaty w aplikacjach.
 

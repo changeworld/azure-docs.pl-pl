@@ -1,25 +1,24 @@
 ---
-title: "Przewodnik rozwiązywania problemów dla usługi Azure Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Jak rozwiązywać problemy z zadania usługi analiza strumienia"
-keywords: "Rozwiązywanie problemów z przewodnika"
-documentationcenter: 
+title: Przewodnik rozwiązywania problemów dla usługi Azure Stream Analytics | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać problemy z zadania usługi analiza strumienia
+keywords: Rozwiązywanie problemów z przewodnika
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: dcff312e4a282b15e76ea32aadb1981a496a2446
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 87e8b99cb2774966ce22c76e1afed6a754749e9d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Podręcznik rozwiązywania problemów dotyczących usługi Azure Stream Analytics
 
@@ -65,7 +64,7 @@ Aby uzyskać najlepsze wyniki przy rozwiązywaniu zadania usługi analiza strumi
                 - Schemat zdarzeń mogą być niezgodne schemat zdefiniowane lub oczekiwanego zdarzenia w zapytaniu.
                 - Typy danych niektórych pól zdarzeń mogą być niezgodne oczekiwań.
             - Jeśli błędy podczas wykonywania > 0, jego oznacza, że zadanie może odbierać dane, ale generuje błędy podczas przetwarzania zapytania.
-                - Aby znaleźć błędy, przejdź do [dzienników inspekcji](../azure-resource-manager/resource-group-audit.md) i odfiltrować *niepowodzenie* stanu.
+                - Aby znaleźć błędy, przejdź do [dzienników inspekcji](../azure-resource-manager/resource-group-audit.md) i odfiltrować ** stanu.
             - Jeśli InputEvents > 0 i OutputEvents = 0, oznacza to, że jest spełniony jeden z następujących czynności:
                 - W wyniku przetwarzania zapytania nie zostało zwrócone żadne zdarzenie wyjściowe.
                 - Zdarzenia lub jego pól może być nieprawidłowo uformowany, w efekcie zero wynik po zakończeniu przetwarzania zapytania.
@@ -90,7 +89,7 @@ Aby uzyskać najlepsze wyniki przy rozwiązywaniu zadania usługi analiza strumi
 
 Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

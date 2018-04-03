@@ -8,6 +8,7 @@
 # Rozpoczęcie pracy
 ## [Tworzenie bramy sieci VPN opartej na trasie — witryna Azure Portal](create-routebased-vpn-gateway-portal.md)
 ## [Tworzenie bramy sieci VPN opartej na trasie — program PowerShell](create-routebased-vpn-gateway-powershell.md)
+## [Tworzenie bramy sieci VPN opartej na trasie — interfejs wiersza polecenia](create-routebased-vpn-gateway-cli.md)
 
 # Pojęcia
 ## [Planowanie i projektowanie dla usługi VPN Gateway](vpn-gateway-plan-design.md)
