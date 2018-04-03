@@ -3,7 +3,7 @@ title: Azure wymagania dotyczące certyfikatów infrastruktury kluczy publicznyc
 description: W tym artykule opisano wymagania dotyczące wdrażania certyfikatu PKI stosu Azure stosu Azure zintegrowanych systemów.
 services: azure-stack
 documentationcenter: ''
-author: mabriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,16 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: mabrigg
+ms.date: 03/29/2018
+ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące certyfikatów infrastruktury kluczy publicznych stosu Azure
+
 Azure stos nie zawiera publicznych infrastruktury sieci przy użyciu dostępne z zewnątrz publiczne adresy IP przypisane do niewielki zestaw usług Azure stosu i prawdopodobnie maszyny wirtualne dzierżawców. Certyfikaty PKI z odpowiedniej nazwy DNS dla tych punktów końcowych infrastruktury publicznych stosu Azure są wymagane podczas wdrażania usługi Azure stosu. Ten artykuł zawiera informacje na temat:
 
 - Jakie certyfikaty są wymagane do wdrożenia usługi Azure stosu
@@ -37,7 +38,7 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Infrastruktury Azure stos musi mieć dostęp do certyfikatu urzędu certyfikacji używanego do podpisywania certyfikatów
 - Gdy obracanie certyfikatów, certyfikaty musi być albo wystawiony na podstawie tego samego certyfikatu wewnętrznego urzędu certyfikacji używanego do podpisywania certyfikatów dostępnych na wdrożenie lub dowolnego publicznego urzędu certyfikacji z powyższych
 - Korzystanie z certyfikatów z podpisem własnym nie są obsługiwane.
-- Certyfikat może być obejmujące wszystkie przestrzenie nazw w pole alternatywnej nazwy podmiotu (SAN) certyfikatu jeden symbol wieloznaczny. Alternatywnie można użyć poszczególnych certyfikatów dla punktów końcowych, takie jak usługi acs oraz gdy wymagane są usługi Key Vault za pomocą symbole wieloznaczne. 
+- Certyfikat może być obejmujące wszystkie przestrzenie nazw w pole alternatywnej nazwy podmiotu (SAN) certyfikatu jeden symbol wieloznaczny. Alternatywnie można użyć poszczególnych certyfikatów przy użyciu symbole wieloznaczne dla punktów końcowych takich jak **acs** i magazyn kluczy, w którym są one wymagane. 
 - Algorytm podpisu certyfikatu nie może być SHA1, muszą być silniejsze. 
 - Format certyfikatu musi być PFX, jak klucze publiczne i prywatne są wymagane do zainstalowania stosu Azure. 
 - Pliki pfx certyfikatu musi mieć wartość "Podpis cyfrowy" i "KeyEncipherment" w polu "Użycie klucza".
@@ -58,6 +59,23 @@ W tabeli w tej sekcji opisano certyfikatów PKI publiczny punkt końcowy stosu A
 Certyfikaty z odpowiedniej nazwy DNS dla każdego punktu końcowego infrastruktury publicznych stosu Azure są wymagane. Nazwa DNS każdego punktu końcowego jest wyrażona w formacie:  *&lt;prefiks >.&lt; region >. &lt;fqdn >*. 
 
 Dla danego wdrożenia [region] i [externalfqdn] wartości muszą być zgodne, regionu i nazwy domen zewnętrznych, które wybrano systemu Azure stosu. Na przykład jeśli nazwa regionu *Redmond* i nazwa domeny zewnętrznej *contoso.com*, nazwy DNS musi format *&lt;prefiks >. redmond.contoso.com*.  *&lt;Prefiks >* wartości są ustalonym przez firmę Microsoft do opisywania zabezpieczone przez certyfikatu punktu końcowego. Ponadto  *&lt;prefiks >* wartości infrastruktury zewnętrznych punktów końcowych, które są zależne od usługi Azure stosu, który korzysta z określonego punktu końcowego. 
+
+> [!note]  
+> Certyfikaty mogą być dostarczane jako jeden symbol wieloznaczny certyfikat obejmujące wszystkie przestrzenie nazw w polu podmiotu i alternatywnej nazwy podmiotu (SAN) kopiowane do wszystkich katalogów lub poszczególne certyfikaty dla każdego punktu końcowego skopiowany do odpowiedniego katalogu. Należy pamiętać, że obie te opcje wymagają użycia certyfikatów z symbolami wieloznacznymi takie jak dla punktów końcowych **acs** i magazyn kluczy, w którym są one wymagane. 
+
+| Folder wdrożenia | Wymaganego certyfikatu podmiotu i alternatywnej nazwy podmiotu (SAN) | Zakres (dla regionu) | Przestrzeń nazw poddomeny |
+|-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
+| Publiczny | portal.&lt;region>.&lt;fqdn> | Portale | &lt;region>.&lt;fqdn> |
+| Portal administratora | adminportal.&lt;region>.&lt;fqdn> | Portale | &lt;region>.&lt;fqdn> |
+| Azure Resource Manager Public | management.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| Administratora usługi Azure Resource Manager | adminmanagement.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) | Blob Storage | blob.&lt;region>.&lt;fqdn> |
+| ACSTable | *.table.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) | Table Storage | table.&lt;region>.&lt;fqdn> |
+| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
+| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) | Usługa Key Vault | vault.&lt;region>.&lt;fqdn> |
+| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) |  Wewnętrzny Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
+
+### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>W środowisku Azure stosu w wersji Pre-1803
 
 |Folder wdrożenia|Wymaganego certyfikatu podmiotu i alternatywnej nazwy podmiotu (SAN)|Zakres (dla regionu)|Przestrzeń nazw poddomeny|
 |-----|-----|-----|-----|
@@ -93,7 +111,7 @@ W poniższej tabeli opisano punktów końcowych i certyfikatów wymaganych dla k
 |Zakres (dla regionu)|Certyfikat|Wymaganego certyfikatu podmiotu i nazwy alternatywnej podmiotu (SAN)|Przestrzeń nazw poddomeny|
 |-----|-----|-----|-----|
 |SQL, MySQL|SQL i bazy danych MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Wieloznaczny certyfikat SSL)|dbadapter.*&lt;region>.&lt;fqdn>*|
-|App Service|Certyfikat SSL domyślne ruchu w sieci Web|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>(Obsługa wielu domen wieloznaczny certyfikat SSL<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Certyfikat SSL domyślne ruchu w sieci Web|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Obsługa wielu domen wieloznaczny certyfikat SSL<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Interfejs API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certyfikat SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certyfikat SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certyfikat SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|

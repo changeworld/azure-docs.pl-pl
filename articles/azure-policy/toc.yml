@@ -25,6 +25,10 @@
   items:
     - name: Struktura definicji zasad platformy Azure
       href: policy-definition.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Programowe tworzenie zasad
+      href: policy-insights.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Azure podstawy administracji stosu
 Istnieje kilka kwestii, które trzeba znać, jeśli zaczynasz administracji stosu Azure. We wskazówkach tych zawiera omówienie roli jako operator stosu Azure i należy mówić użytkownikom na ich szybko stać się produktywności.
@@ -31,9 +31,9 @@ Jeśli używasz systemu Azure stosu zintegrowane zaktualizowane wersje stosu Azu
  
 ### <a name="development-kit"></a>Zestaw deweloperski
 
-Jeśli używasz usługi Azure stosu Development Kit Przejrzyj [co to jest Azure stosu?](azure-stack-poc.md) artykuł, aby upewnić się, zrozumienie przeznaczenia zestaw deweloperski, a także jej ograniczenia. Zestaw deweloperski należy używać jako "piaskownicy," gdzie można ocenić stosu Azure i opracowanie i przetestowanie aplikacji w środowiskach nieprodukcyjnych. (Aby uzyskać informacje na temat wdrażania, zobacz [wdrożenia usługi Azure stosu Development Kit](azure-stack-deploy-overview.md) Szybki Start.)
+Jeśli używasz usługi Azure stosu Development Kit Przejrzyj [co to jest Azure stosu?](.\asdk\asdk-what-is.md) artykuł, aby upewnić się, zrozumienie przeznaczenia zestaw deweloperski, a także jej ograniczenia. Zestaw deweloperski należy używać jako "piaskownicy," gdzie można ocenić stosu Azure i opracowanie i przetestowanie aplikacji w środowiskach nieprodukcyjnych. (Aby uzyskać informacje na temat wdrażania, zobacz [wdrożenia usługi Azure stosu Development Kit](.\asdk\asdk-deploy.md) samouczek.)
 
-Takich jak Azure możemy innowacji szybko. Regularnie udostępnimy nowe kompilacje. Jeśli pracujesz w zestawie, i chcesz przenieść do ostatniej kompilacji, należy najpierw [ponownie wdrożyć stosu Azure](azure-stack-redeploy.md). Nie można zastosować pakietów aktualizacji. Ten proces trwa, ale korzyścią jest można wypróbować najnowszych funkcji. Dokumentacja zestawu Programowanie w naszej witrynie sieci Web odzwierciedla najnowszej kompilacji wydania.
+Takich jak Azure możemy innowacji szybko. Regularnie udostępnimy nowe kompilacje. Jeśli pracujesz w zestawie, i chcesz przenieść do ostatniej kompilacji, należy najpierw [ponownie wdrożyć stosu Azure](.\asdk\asdk-redeploy.md). Nie można zastosować pakietów aktualizacji. Ten proces trwa, ale korzyścią jest można wypróbować najnowszych funkcji. Dokumentacja zestawu Programowanie w naszej witrynie sieci Web odzwierciedla najnowszej kompilacji wydania.
 
 ## <a name="learn-about-available-services"></a>Dowiedz się więcej o dostępnych usług
 
@@ -63,6 +63,18 @@ Te usługi wymagają dodatkowej konfiguracji przed można udostępnić je użytk
 **Plan usługi**
 
 Stos Azure będą w dalszym ciągu obsługę usług platformy Azure. Dla planowanego plan, zobacz [stosu Azure: rozszerzenie Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) oficjalny dokument. Można również monitorować [stosu Azure blogach](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) dla nowych anonsów.
+
+## <a name="what-account-should-i-use"></a>Jakiego konta należy użyć?
+Istnieje kilka uwagi dotyczące konta, które należy zwrócić uwagę podczas zarządzania Azure stosu. Szczególnie w przypadku wdrożeń za pomocą systemu Windows Server Active Directory Federation Services (AD FS) jako dostawca tożsamości, a nie usługi Azure Active Directory (Azure AD). Następujące uwagi dotyczące konta dotyczą zarówno stosu Azure zintegrowanych systemów i ASDK wdrożenia:
+
+
+|Konto|Azure AD|AD FS|
+|-----|-----|-----|
+|Administrator lokalny (. \Administrator)|Administrator hosta ASDK|Administrator hosta ASDK|
+|AzureStack\AzureStackAdmin|Administrator hosta ASDK<br><br>Może służyć do logowania do portalu administracyjnego platformy Azure stosu<br><br>Dostępu do wyświetlania i administrować sygnałów sieci szkieletowej usług|Administrator hosta ASDK<br><br>Brak dostępu do portalu administracyjnego platformy Azure stosu<br><br>Dostępu do wyświetlania i administrować sygnałów sieci szkieletowej usług<br><br>Właściciel nie jest już z domyślny dostawca subskrypcji (punktu dystrybucji)|
+|AzureStack\CloudAdmin|Można uzyskać dostęp i uruchamiania poleceń dozwolonych w ramach uprzywilejowanego punktu końcowego|Można uzyskać dostęp i uruchamiania poleceń dozwolonych w ramach uprzywilejowanego punktu końcowego<br><br>Nie można zalogować do hosta ASDK<br><br>Właściciel subskrypcji dostawcy domyślnego (punktu dystrybucji)|
+|Administrator globalny usługi Azure AD|Używane podczas instalacji<br><br>Właściciel subskrypcji dostawcy domyślnego (punktu dystrybucji)|Nie dotyczy|
+|
 
 ## <a name="what-tools-do-i-use-to-manage"></a>Jakie narzędzia należy używać do zarządzania?
  

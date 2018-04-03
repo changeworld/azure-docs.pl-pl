@@ -1,24 +1,24 @@
 ---
-title: "Instalowanie programu PowerShell dla usługi Azure stosu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zainstalować program PowerShell Azure stosu."
+title: Instalowanie programu PowerShell dla usługi Azure stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować program PowerShell Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0CDD8B9B-EC32-4453-918A-D0A606C7BC10
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/23/2018
+ms.date: 3/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 18a697813fbeb11be7a599359285f824ed804216
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 2b620a13cb752d573305154f57cac7f6a106968c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure stosu  
 
@@ -55,10 +55,10 @@ W poniższych sekcjach opisano kroki wymagane do zainstalowania programu PowerSh
 
 ## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>Instalowanie programu PowerShell w scenariuszu połączonych (z połączeniem internetowym)
 
-Azure stosu zgodne AzureRM moduły są instalowane za pośrednictwem interfejsu API w wersji profilów. Stos Azure wymaga **2017-03-09-profilu** profilu wersji interfejsu API, który jest dostępny przez zainstalowanie modułu AzureRM.Bootstrapper. Aby dowiedzieć się więcej o profilach wersji interfejsu API i udostępniane przez nich polecenia cmdlet, zapoznaj się [zarządzania profilami wersji interfejsu API](azure-stack-version-profiles.md). Oprócz modułów AzureRM należy również zainstalować moduł Azure PowerShell dotyczące stosu. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na deweloperskiej stacji roboczej:
+Azure stosu zgodne AzureRM moduły są instalowane za pośrednictwem interfejsu API w wersji profilów. Stos Azure wymaga **2017-03-09-profilu** profilu wersji interfejsu API, który jest dostępny przez zainstalowanie modułu AzureRM.Bootstrapper. Aby dowiedzieć się więcej o profilach wersji interfejsu API i udostępniane przez nich polecenia cmdlet, zapoznaj się [zarządzania profilami wersji interfejsu API](user/azure-stack-version-profiles.md). Oprócz modułów AzureRM należy również zainstalować moduł Azure PowerShell dotyczące stosu. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na deweloperskiej stacji roboczej:
 
 > [!IMPORTANT]
-> Wersja modułu PowerShell AzureRM 1.2.11 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.10 wersji, zobacz Przewodnik migracji w [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+> Wersja modułu PowerShell AzureRM 1.2.11 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.10 wersji, zobacz Przewodnik migracji w [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration).
 
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -87,7 +87,7 @@ Aby sprawdzić instalację, uruchom następujące polecenie:
 W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell na komputerze, na którym ma połączenie z Internetem i przesyła je Azure stosu Development Kit dla instalacji.
 
 > [!IMPORTANT]
-> Wersja modułu PowerShell AzureRM 1.2.11 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.10 wersji, zobacz Przewodnik migracji w [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+> Wersja modułu PowerShell AzureRM 1.2.11 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.10 wersji, zobacz Przewodnik migracji w [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration).
 
 1. Zaloguj się do komputera, na którym jest połączony z Internetem i użyj następującego skryptu do pobierania AzureRM i pakiety AzureStack na komputerze lokalnym:
 
@@ -138,4 +138,4 @@ W przypadku odłączonych należy najpierw Pobierz moduły programu PowerShell n
 * [Pobieranie narzędzia Azure stosu z usługi GitHub](azure-stack-powershell-download.md)
 * [Konfigurowanie środowiska PowerShell użytkownika Azure stosu](user/azure-stack-powershell-configure-user.md)  
 * [Konfigurowanie środowiska PowerShell Azure stosu — operator](azure-stack-powershell-configure-admin.md) 
-* [Zarządzanie profilami wersji interfejsu API Azure stosu](azure-stack-version-profiles.md)  
+* [Zarządzanie profilami wersji interfejsu API Azure stosu](user/azure-stack-version-profiles.md)  

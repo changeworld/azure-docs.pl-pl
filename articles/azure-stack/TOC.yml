@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: Informacje o wersji
       items:
+        - name: 1803 aktualizacji
+          href: azure-stack-update-1803.md
         - name: 1802 aktualizacji
           href: azure-stack-update-1802.md
         - name: Aktualizacja 1712
           href: azure-stack-update-1712.md
         - name: Aktualizacja 1711
           href: azure-stack-update-1711.md
-        - name: Aktualizacja 1710
-          href: azure-stack-update-1710.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -58,9 +58,9 @@
             - name: Uzyskiwanie certyfikatów PKI stosu Azure
               href: azure-stack-get-pki-certs.md
             - name: Przygotuj certyfikaty PKI stosu Azure
-              href: prepare-pki-certs.md
+              href: azure-stack-prepare-pki-certs.md
             - name: Sprawdź poprawność certyfikatów PKI stosu Azure
-              href: validate-pki-certs.md
+              href: azure-stack-validate-pki-certs.md
         - name: Integracja tożsamości
           href: azure-stack-integrate-identity.md
         - name: Monitorowania zewnętrznych

@@ -99,12 +99,19 @@
               href: azure-stack-powershell-download.md
             - name: Konfigurowanie programu PowerShell — użytkownik
               href: azure-stack-powershell-configure-user.md
-            - name: Instalowanie i konfigurowanie interfejsu wiersza polecenia usługi Azure Stack
-              href: azure-stack-connect-cli.md
             - name: Instalacja programu Visual Studio
               href: azure-stack-install-visual-studio.md
-            - name: Zarządzanie profilami wersji interfejsu API
+            - name: Przy użyciu profilów wersji interfejsu API
               href: azure-stack-version-profiles.md
+              items:
+                - name: PowerShell
+                  href: azure-stack-version-profiles-powershell.md
+                - name: Interfejs wiersza polecenia platformy Azure 2.0
+                  href: azure-stack-version-profiles-azurecli2.md
+                - name: PRZEJDŹ
+                  href: azure-stack-version-profiles-go.md
+                - name: 'Dostawca zasobów interfejsów API, obsługiwane przez profil'
+                  href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: Używanie modułu zasad
           href: azure-stack-policy-module.md
         - name: Korzystanie z szablonów

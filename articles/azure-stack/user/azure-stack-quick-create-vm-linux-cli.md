@@ -1,11 +1,11 @@
 ---
-title: "Utwórz maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Utwórz maszynę wirtualną systemu Linux z interfejsu wiersza polecenia Azure stosu."
+title: Utwórz maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure w stosie Azure | Dokumentacja firmy Microsoft
+description: Utwórz maszynę wirtualną systemu Linux z interfejsu wiersza polecenia Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 21F7D599-1FEC-4827-A5C3-06495C5F53A4
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 160893f5b2e9c78bd62355782c279fb08f7f6b48
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 69036b522b375eced604256340b532ad14a8708e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Utwórz maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure w stosie Azure
 
@@ -31,7 +31,7 @@ Interfejs wiersza polecenia platformy Azure jest używana do tworzenia i zarząd
 
 * Upewnij się, operatorem Azure stos został dodany obrazu "Ubuntu Server 16.04 LTS" do stosu Azure marketplace. 
 
-* Stos Azure wymaga określonej wersji interfejsu wiersza polecenia Azure, aby utworzyć i zarządzać zasobami. Jeśli nie jest skonfigurowany do stosu Azure wiersza polecenia platformy Azure, zaloguj się do [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrzny w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) i wykonaj kroki, aby [zainstalować i Konfigurowanie interfejsu wiersza polecenia Azure](azure-stack-connect-cli.md).
+* Stos Azure wymaga określonej wersji interfejsu wiersza polecenia Azure, aby utworzyć i zarządzać zasobami. Jeśli nie jest skonfigurowany do stosu Azure wiersza polecenia platformy Azure, zaloguj się do [zestaw deweloperski](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), lub z systemem Windows klient zewnętrzny w przypadku [połączone za pośrednictwem sieci VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) i wykonaj kroki, aby [zainstalować i Konfigurowanie interfejsu wiersza polecenia Azure](azure-stack-version-profiles-azurecli2.md).
 
 * Klucz publiczny SSH o nazwie id_rsa.pub powinny zostać utworzone w katalogu .ssh profilu użytkownika systemu Windows. Aby uzyskać szczegółowe informacje na temat tworzenia kluczy SSH, zobacz [klucze tworzenie SSH w systemie Windows](../../virtual-machines/linux/ssh-from-windows.md). 
 

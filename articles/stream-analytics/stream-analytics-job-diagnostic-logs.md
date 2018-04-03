@@ -1,25 +1,24 @@
 ---
-title: "Rozwiązywanie problemów z usługą Azure Stream Analytics z dzienników diagnostycznych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak i analizowanie dzienników diagnostycznych z zadania usługi analiza strumienia w Microsoft Azure."
-keywords: 
-documentationcenter: 
+title: Rozwiązywanie problemów z usługą Azure Stream Analytics z dzienników diagnostycznych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i analizowanie dzienników diagnostycznych z zadania usługi analiza strumienia w Microsoft Azure.
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: c9772df2c216d465ca6e90e69bce011969dd4f02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 164d522d7beaea222dbc408765877fa67a34c203
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych
 
@@ -77,13 +76,13 @@ Obecnie możemy przechwytywania dwie kategorie dzienników diagnostycznych:
 
 Wszystkie dzienniki są przechowywane w formacie JSON. Każdy wpis ma następujące typowe pola ciągu:
 
-Nazwa | Opis
+Name (Nazwa) | Opis
 ------- | -------
 time | Znacznik czasu (w formacie UTC) dziennika.
 resourceId | Identyfikator zasobu, że operacja miały miejsce, wielkimi literami. Zawiera identyfikator subskrypcji, grupy zasobów i nazwę zadania. Na przykład   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Dziennika kategorii, albo **wykonywania** lub **tworzenie**.
 operationName | Nazwa operacji, które są rejestrowane. Na przykład **wysyłać zdarzenia: błąd zapisu danych wyjściowych SQL do mysqloutput**.
-status | Stan operacji. Na przykład **niepowodzenie** lub **zakończyło się pomyślnie**.
+status | Stan operacji. Na przykład **** lub **zakończyło się pomyślnie**.
 poziom | Poziom dziennika. Na przykład **błąd**, **ostrzeżenie**, lub **komunikat o charakterze informacyjnym**.
 properties | Szczegóły konkretnego wpisu dziennika, zserializowanym w formacie ciągu JSON. Aby uzyskać więcej informacji zobacz następujące sekcje.
 
@@ -95,7 +94,7 @@ Dzienniki wykonywania ma informacji o zdarzeniach, które wystąpiły podczas wy
 
 Wszelkie błędy występujące podczas przetwarzania danych przez zadanie jest w tej kategorii dzienników. Najczęściej te dzienniki są tworzone podczas odczytu, dane serializacji i operacji zapisu. Dzienniki te nie zawierają błędów połączenia. Błędy łączności są traktowane jako zdarzenia ogólne.
 
-Nazwa | Opis
+Name (Nazwa) | Opis
 ------- | -------
 Element źródłowy | Nazwa zadania wejściowych lub wyjściowych, którym wystąpił błąd.
 Komunikat | Komunikat skojarzony z powodu błędu.
@@ -112,14 +111,14 @@ W zależności od **operationName** wartości błędów danych ma następująceg
 
 Zdarzenia ogólne obejmuje wszystkie inne elementy.
 
-Nazwa | Opis
+Name (Nazwa) | Opis
 -------- | --------
 Błąd | (opcjonalnie) Informacje o błędzie. Zazwyczaj jest to informacje o wyjątku, jeśli jest dostępna.
 Komunikat| Komunikat w dzienniku.
 Typ | Typ komunikatu. Mapowany do wewnętrznego kategoryzacji błędów. Na przykład **JobValidationError** lub **BlobOutputAdapterInitializationFailure**.
 Identyfikator korelacji | [Identyfikator GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) który unikatowo identyfikuje wykonywania zadania. Wszystkie wpisy dziennika wykonywania od czasu rozpoczęcia zadania aż zadanie zostanie zatrzymane, mieć taki sam **identyfikator korelacji** wartość.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Wprowadzenie do usługi analiza strumienia](stream-analytics-introduction.md)
 * [Wprowadzenie do usługi analiza strumienia](stream-analytics-real-time-fraud-detection.md)

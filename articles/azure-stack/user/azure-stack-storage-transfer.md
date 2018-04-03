@@ -1,24 +1,24 @@
 ---
-title: "Narzędzia do magazynu Azure stosu"
-description: "Dowiedz się więcej o Azure stosu magazynu danych narzędzia transferu"
+title: Narzędzia do magazynu Azure stosu
+description: Dowiedz się więcej o Azure stosu magazynu danych narzędzia transferu
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e26a38b8fd7d008a46eba2c41075c5af09a6616a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Narzędzia do magazynu Azure stosu
 
@@ -181,7 +181,7 @@ Interfejsu wiersza polecenia Azure to środowisko wiersza polecenia platformy Az
 
 Interfejs wiersza polecenia platformy Azure jest zoptymalizowany do zarządzania i administrowania zasobami Azure z poziomu wiersza polecenia, a także tworzenie skryptów automatyzacji, współpracujących z usługą Azure Resource Manager. Udostępnia wiele z tych samych funkcji w portalu Azure stosu, w tym dostęp do zaawansowanych danych.
 
-Stos Azure wymaga wiersza polecenia platformy Azure w wersji 2.0. Aby uzyskać więcej informacji o instalowaniu i konfigurowaniu wiersza polecenia platformy Azure z stosem platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure stosu](azure-stack-connect-cli.md). Aby uzyskać więcej informacji o sposobie używania wykonać kilka czynności, Praca z zasobów na koncie usługi Azure Storage stosu 2.0 interfejsu wiersza polecenia Azure, zobacz [przy użyciu Azure CLI2.0 z usługą Azure Storage](../../storage/storage-azure-cli.md)
+Stos Azure wymaga wiersza polecenia platformy Azure w wersji 2.0. Aby uzyskać więcej informacji o instalowaniu i konfigurowaniu wiersza polecenia platformy Azure z stosem platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure stosu](azure-stack-version-profiles-azurecli2.md). Aby uzyskać więcej informacji o sposobie używania wykonać kilka czynności, Praca z zasobów na koncie usługi Azure Storage stosu 2.0 interfejsu wiersza polecenia Azure, zobacz [przy użyciu Azure CLI2.0 z usługą Azure Storage](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure CLI przykładowy skrypt Azure stosu 
 Po zakończeniu interfejsu wiersza polecenia instalacji i konfiguracji, możesz spróbować następujące kroki, aby pracować z powłoki małych przykładowy skrypt do interakcji z zasobami Azure stosu magazynu. Skrypt najpierw tworzy nowy kontener na koncie magazynu, a następnie przekazuje istniejącego pliku (jako obiektu blob) do tego kontenera, zawiera listę wszystkich obiektów blob w kontenerze i na koniec pobierze plik do miejsca docelowego na komputerze lokalnym, który określisz. Przed uruchomieniem tego skryptu, upewnij się, pomyślnie nawiązywać połączeń i zaloguj się do obiektu docelowego stosu Azure. 
