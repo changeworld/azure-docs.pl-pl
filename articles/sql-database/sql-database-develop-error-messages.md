@@ -1,7 +1,7 @@
 ---
-title: "Kody błędów SQL — błąd połączenia z bazą danych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o kodach błędów SQL dla bazy danych SQL klienta aplikacji, takich jak typowych błędów połączenia bazy danych, problemy kopii bazy danych i ogólne błędy. "
-keywords: "Kod błędu SQL, sql dostępu, błędów połączenia bazy danych, kody błędów sql"
+title: Kody błędów SQL — błąd połączenia z bazą danych | Dokumentacja firmy Microsoft
+description: 'Dowiedz się więcej o kodach błędów SQL dla bazy danych SQL klienta aplikacji, takich jak typowych błędów połączenia bazy danych, problemy kopii bazy danych i ogólne błędy. '
+keywords: Kod błędu SQL, sql dostępu, błędów połączenia bazy danych, kody błędów sql
 services: sql-database
 author: stevestein
 manager: craigg
@@ -51,7 +51,7 @@ Następujące błędy są przejściowych i należy wykonać ponownie logiki apli
 | 4060 |16 |Nie można otworzyć bazy danych "%. & #x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. |
 | 40197 |17 |Usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie. Kod błędu: %d.<br/><br/>Ten błąd jest wyświetlany, gdy usługa nie działa z powodu oprogramowania lub modernizacji sprzętu, awarii sprzętu lub inne problemy trybu failover. Kod błędu: (%d) osadzone w komunikacie błąd 40197 udostępnia dodatkowe informacje o rodzaju awarii lub trybu failover, który wystąpił. Przykładowe kody są osadzone w komunikacie błąd 40197 błędów to 40020, 40143 40166 i 40540.<br/><br/>Automatyczne ponowne łączenie z serwerem bazy danych SQL łączy dobrej kopii bazy danych. Aplikacja musi catch 40197, dziennik błędów osadzony kod błędu: (%d) w wiadomości do rozwiązywania problemów i ponowić próbę połączenia z bazą danych SQL, dopóki zasoby są dostępne, a połączenie zostanie nawiązane ponownie. |
 | 40501 |20 |Usługa jest obecnie zajęta. Ponów żądanie po 10 sekundach. Identyfikator zdarzenia: %ls. Kod: %d.<br/><br/>Aby uzyskać więcej informacji, zobacz:<br/>• [Limity zasobów bazy danych SQL azure](sql-database-service-tiers.md). |
-| 40613 |17 |Baza danych "%. & #x2a; ls" na serwerze "%. & #x2a; ls" nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji "%. & #x2a; ls". |
+| 40613 |17 |Baza danych '%.&#x2a;ls' na serwerze '%.&#x2a;ls' nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji '%.&#x2a;ls'. |
 | 49918 |16 |Nie można przetworzyć żądania. Za mało zasobów do przetworzenia żądania.<br/><br/>Usługa jest obecnie zajęta. Ponów żądanie później. |
 | 49919 |16 |Nie można procesu Utwórz lub zaktualizuj zapytanie. Zbyt wiele operacji tworzenia lub aktualizacji w toku dla subskrypcji "% ld".<br/><br/>Usługa jest zajęta przetwarzania wielu utworzyć lub zaktualizować żądań dla subskrypcji lub serwera. Żądania są aktualnie zablokowane do optymalizacji zasobów. Zapytanie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) dla oczekujących operacji. Zaczekaj do czasu tworzenia lub aktualizacji zakończeniu żądania lub usuń jedno z oczekujących żądań i ponów żądanie później. |
 | 49920 |16 |Nie można przetworzyć żądania. Za dużo operacji w toku dla subskrypcji "% ld".<br/><br/>Usługa jest zajęty przetwarzaniem wiele żądań dla tej subskrypcji. Żądania są aktualnie zablokowane do optymalizacji zasobów. Zapytanie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) stanu operacji. Poczekaj, aż oczekujących żądań zakończeniu lub usuń jedno z oczekujących żądań i ponów żądanie później. |
@@ -62,7 +62,7 @@ Następujące błędy mogą wystąpić podczas kopiowania bazy danych w bazie da
 
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
-| 40635 |16 |Klient o adresie IP "%. & #x2a; ls" jest tymczasowo wyłączona. |
+| 40635 |16 |Klient o adresie IP '%.&#x2a;ls' jest tymczasowo wyłączona. |
 | 40637 |16 |Utwórz kopię bazy danych jest obecnie wyłączona. |
 | 40561 |16 |Kopiowanie bazy danych nie powiodło się. Źródłowa lub docelowa baza danych nie istnieje. |
 | 40562 |16 |Kopiowanie bazy danych nie powiodło się. Źródłowa baza danych została porzucona. |
@@ -139,33 +139,33 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) nie jest prawidłową nazwą, ponieważ zawiera ona nieprawidłowe znaki. |
 | 18452 |14 |Logowanie nie powiodło się. Nazwa logowania pochodzi z niezaufanej domeny i nie można używać z systemu Windows authentication.%. & #x2a; ls (nazwy logowania systemu Windows nie są obsługiwane w tej wersji programu SQL Server). |
-| 18456 |14 |Logowanie nie powiodło się dla użytkownika "%. & #x2a;ls'.%. & #x2a % ls. & #x2a; ls (Błąd logowania dla użytkownika"%. & #x2a; ls". Nie można zmienić hasła. Zmiany hasła podczas logowania nie jest obsługiwana w tej wersji programu SQL Server.) |
-| 18470 |14 |Logowanie nie powiodło się dla użytkownika "%. & #x2a; ls". Przyczyna: Konto jest disabled.%. & #x2a; ls |
+| 18456 |14 |Logowanie nie powiodło się dla użytkownika '%.&#x2a;ls'.%.&#x2a;ls%.&#x2a;ls(Błąd logowania dla użytkownika "%.&#x2a;ls". Nie można zmienić hasła. Zmiany hasła podczas logowania nie jest obsługiwana w tej wersji programu SQL Server.) |
+| 18470 |14 |Logowanie nie powiodło się dla użytkownika '%.&#x2a;ls'. Przyczyna: Konto jest disabled.%. & #x2a; ls |
 | 40014 |16 |Nie można używać wielu baz danych w tej samej transakcji. |
 | 40054 |16 |Tabele bez indeksu klastrowanego są nieobsługiwane w tej wersji programu SQL Server. Utwórz indeks klastrowany i spróbuj ponownie. |
 | 40133 |15 |Ta operacja jest nieobsługiwana w tej wersji programu SQL Server. |
 | 40506 |16 |Określony identyfikator SID jest nieprawidłowy dla tej wersji programu SQL Server. |
-| 40507 |16 |"%. & #x2a; ls nie można wywołać z parametrami w tej wersji programu SQL Server. |
+| 40507 |16 |'%.&#x2a;ls' ls nie można wywołać z parametrami w tej wersji programu SQL Server. |
 | 40508 |16 |UŻYJ instrukcja nie jest obsługiwana w celu przełączania się między bazami danych. Użyj nowego połączenia, aby nawiązać połączenie z inną bazą danych. |
-| 40510 |16 |Instrukcja "%. & #x2a; ls" nie jest obsługiwana w tej wersji programu SQL Server |
-| 40511 |16 |Wbudowana funkcja "%. & #x2a; ls" nie jest obsługiwana w tej wersji programu SQL Server. |
+| 40510 |16 |Instrukcja '%.&#x2a;ls' nie jest obsługiwana w tej wersji programu SQL Server |
+| 40511 |16 |Wbudowana funkcja '%.&#x2a;ls' nie jest obsługiwana w tej wersji programu SQL Server. |
 | 40512 |16 |Przestarzałe funkcja '%ls' nie jest obsługiwana w tej wersji programu SQL Server. |
-| 40513 |16 |Serwer zmiennej "%. & #x2a; ls" nie jest obsługiwana w tej wersji programu SQL Server. |
+| 40513 |16 |Serwer zmiennej '%.&#x2a;ls' nie jest obsługiwana w tej wersji programu SQL Server. |
 | 40514 |16 |'%ls' nie jest obsługiwana w tej wersji programu SQL Server. |
-| 40515 |16 |Odwołanie do nazwy bazy danych i/lub serwera w "%. & #x2a; ls" nie jest obsługiwana w tej wersji programu SQL Server. |
+| 40515 |16 |Odwołanie do nazwy bazy danych i/lub serwera w '%.&#x2a;ls' nie jest obsługiwana w tej wersji programu SQL Server. |
 | 40516 |16 |Globalne obiekty tymczasowe są nieobsługiwane w tej wersji programu SQL Server. |
-| 40517 |16 |Słowo kluczowe lub opcja instrukcji "%. & #x2a; ls" nie jest obsługiwana w tej wersji programu SQL Server. |
-| 40518 |16 |Polecenie DBCC "%. & #x2a; ls" nie jest obsługiwana w tej wersji programu SQL Server. |
+| 40517 |16 |Słowo kluczowe lub opcja instrukcji '%.&#x2a;ls' nie jest obsługiwana w tej wersji programu SQL Server. |
+| 40518 |16 |Polecenie DBCC '%.&#x2a;ls' nie jest obsługiwana w tej wersji programu SQL Server. |
 | 40520 |16 |Zabezpieczana klasa "% S_MSG" jest nieobsługiwane w tej wersji programu SQL Server. |
 | 40521 |16 |Zabezpieczana klasa "% S_MSG" jest nieobsługiwane w zakresie serwera w tej wersji programu SQL Server. |
-| 40522 |16 |Typ podmiotu zabezpieczeń "%. & #x2a; ls" w bazie danych nie jest obsługiwane w tej wersji programu SQL Server. |
-| 40523 |16 |Tworzenie "%. & #x2a; ls" niejawnego użytkownika nie jest obsługiwane w tej wersji programu SQL Server. Jawnie Utwórz użytkownika przed jego użyciem. |
-| 40524 |16 |Typ danych "%. & #x2a; ls" nie jest obsługiwana w tej wersji programu SQL Server. |
+| 40522 |16 |Typ podmiotu zabezpieczeń '%.&#x2a;ls' w bazie danych nie jest obsługiwane w tej wersji programu SQL Server. |
+| 40523 |16 |Tworzenie '%.&#x2a;ls' niejawnego użytkownika nie jest obsługiwane w tej wersji programu SQL Server. Jawnie Utwórz użytkownika przed jego użyciem. |
+| 40524 |16 |Typ danych '%.&#x2a;ls' nie jest obsługiwana w tej wersji programu SQL Server. |
 | 40525 |16 |Z "%.ls" nie jest obsługiwane w tej wersji programu SQL Server. |
-| 40526 |16 |"%. & #x2a; dostawcy zestawu wierszy ls nie jest obsługiwany w tej wersji programu SQL Server. |
+| 40526 |16 |'%.&#x2a;ls' dostawcy zestawu wierszy ls nie jest obsługiwany w tej wersji programu SQL Server. |
 | 40527 |16 |Połączonych serwerów nie są obsługiwane w tej wersji programu SQL Server. |
 | 40528 |16 |Użytkowników nie można mapować na certyfikaty, klucze asymetryczne lub nazwy logowania systemu Windows w tej wersji programu SQL Server. |
-| 40529 |16 |Wbudowana funkcja "%. & #x2a; ls" w personifikacji kontekst nie jest obsługiwany w tej wersji programu SQL Server. |
+| 40529 |16 |Wbudowana funkcja '%.&#x2a;ls' w personifikacji kontekst nie jest obsługiwany w tej wersji programu SQL Server. |
 | 40532 |11 |Nie można otworzyć serwera "%. & #x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. |
 | 40553 |16 |Sesja została przerwana z powodu nadmiernego wykorzystania pamięci. Spróbuj zmodyfikować zapytanie, tak aby przetwarzało mniejszą liczbę wierszy.<br/><br/> Zmniejszenie liczby `ORDER BY` i `GROUP BY` operacje w kodzie języka Transact-SQL pozwala zmniejszyć wymagania dotyczące pamięci kwerendy. |
 | 40604 |16 |Można nie CREATE/ALTER DATABASE, ponieważ może to spowodować przekroczenie przydziału serwera. |
@@ -181,7 +181,7 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | 40630 |16 |Sprawdzenie poprawności hasła nie powiodło się. Hasło nie spełnia wymagań zasad, ponieważ jest za krótkie. |
 | 40631 |16 |Należy określić hasło jest zbyt długa. Hasło powinna mieć nie więcej niż 128 znaków. |
 | 40632 |16 |Sprawdzenie poprawności hasła nie powiodło się. Hasło nie spełnia wymagań zasad, ponieważ nie jest wystarczająco złożone. |
-| 40636 |16 |Nie można użyć zastrzeżonej nazwy bazy danych "%. & #x2a; ls" w tej operacji. |
+| 40636 |16 |Nie można użyć zastrzeżonej nazwy bazy danych '%.&#x2a;ls' w tej operacji. |
 | 40638 |16 |Nieprawidłowy identyfikator subskrypcji (identyfikator subskrypcji). Subskrypcja nie istnieje. |
 | 40639 |16 |Żądanie nie jest zgodny ze schematem: (błąd schematu). |
 | 40640 |20 |Serwer napotkał nieoczekiwany wyjątek. |
