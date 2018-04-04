@@ -5,12 +5,18 @@
 - name: Kontrola dostępu oparta na rolach (RBAC)
   href: role-based-access-control-what-is.md
   items:
-    - name: Zarządzanie przypisaniami dostępu
+    - name: Zarządzanie przypisaniami ról
       items:
         - name: Według użytkownika
           href: role-based-access-control-manage-assignments.md
         - name: Według zasobu
           href: role-based-access-control-configure.md
+        - name: Z interfejsem wiersza polecenia platformy Azure
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: Przy użyciu programu PowerShell
+          href: role-based-access-control-manage-access-powershell.md
+        - name: Przy użyciu architektury REST
+          href: role-based-access-control-manage-access-rest.md
     - name: Wbudowane role
       href: role-based-access-built-in-roles.md
     - name: Role niestandardowe
@@ -19,14 +25,6 @@
       href: role-based-access-control-create-custom-roles-for-internal-external-users.md
     - name: Raportowanie
       href: role-based-access-control-access-change-history-report.md
-    - name: Więcej sposobów na zarządzanie rolami
-      items:
-        - name: Z interfejsem wiersza polecenia platformy Azure
-          href: role-based-access-control-manage-access-azure-cli.md
-        - name: Przy użyciu programu PowerShell
-          href: role-based-access-control-manage-access-powershell.md
-        - name: Przy użyciu architektury REST
-          href: role-based-access-control-manage-access-rest.md
     - name: Podniesienie poziomu dostępu administratora dzierżawy
       href: role-based-access-control-tenant-admin-access.md
     - name: Rozwiązywanie problemów
