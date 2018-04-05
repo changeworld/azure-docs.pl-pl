@@ -1,8 +1,8 @@
 ---
-title: "Omówienie kontroli dostępu w usłudze Data Lake Store | Microsoft Docs"
-description: "Zrozumienie sposobu działania kontroli dostępu w usłudze Azure Data Lake Store"
+title: Omówienie kontroli dostępu w usłudze Data Lake Store | Microsoft Docs
+description: Zrozumienie sposobu działania kontroli dostępu w usłudze Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Kontrola dostępu w usłudze Azure Data Lake Store
 
@@ -124,15 +124,15 @@ Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, 
 
 ## <a name="viewing-permissions-in-the-azure-portal"></a>Wyświetlanie uprawnień w witrynie Azure Portal
 
-W bloku **Eksplorator danych** konta usługi Data Lake Store kliknij przycisk **Dostęp**, aby zobaczyć listy ACL dla pliku lub folderu. Kliknij przycisk **Dostęp**, aby zobaczyć listy ACL dla folderu **catalog** na koncie **mydatastore**.
+W bloku **Eksploratora danych** konta usługi Data Lake Store kliknij pozycję **Dostęp**, aby wyświetlić listy kontroli dostępu do pliku lub folderu wyświetlanego w Eksploratorze danych. Kliknij przycisk **Dostęp**, aby zobaczyć listy ACL dla folderu **catalog** na koncie **mydatastore**.
 
 ![Listy ACL usługi Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-W tym bloku górna sekcja przedstawia omówienie uprawnień posiadanych przez użytkownika. (Na zrzucie ekranu użytkownikiem jest Bob). Poniżej widoczne są uprawnienia dostępu. Po wykonaniu tego kroku w bloku **Dostęp** kliknij przycisk **Widok prosty**, aby zobaczyć prostszy widok.
+W tym bloku najwyższa sekcja wyświetla uprawnienia właściciela. (Na zrzucie ekranu właścicielem jest Bob). Następnie są wyświetlane przypisane listy ACL dostępu. 
 
 ![Listy ACL usługi Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-Kliknij pozycję **Widok zaawansowany**, aby wyświetlić bardziej zaawansowany widok, w którym występują pojęcia domyślnych list ACL, maski i administratora.
+Kliknij pozycję **Widok zaawansowany**, aby wyświetlić bardziej zaawansowany widok, w którym występują domyślne listy kontroli dostępu, maski i opis administratora.  Ten blok udostępnia również sposób rekursywnego ustawiania list ACL dostępu dla programu Access i domyślnych dla podrzędnych plików i folderów na podstawie uprawnień bieżącego folderu.
 
 ![Listy ACL usługi Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -164,7 +164,7 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 * zmieniać grupę będącą właścicielem dla pliku, którego jest właścicielem, jeśli użytkownik będący właścicielem jest również członkiem grupy docelowej.
 
 > [!NOTE]
-> Użytkownik będący właścicielem *nie może* zmienić użytkownika będącego właścicielem innego pliku. Tylko administratorzy mogą zmieniać użytkowników będących właścicielami pliku lub folderu.
+> Użytkownik będący właścicielem *nie może* zmienić użytkownika będącego właścicielem pliku lub folderu. Tylko administratorzy mogą zmieniać użytkowników będących właścicielami pliku lub folderu.
 >
 >
 
@@ -177,9 +177,14 @@ Gdy zostaje utworzony nowy element systemu plików, usługa Data Lake Store przy
 * **Przypadek 1**: folder główny „/”. Ten folder jest tworzony wraz z kontem usługi Data Lake Store. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył konto.
 * **Przypadek 2** (każdy inny przypadek): gdy tworzony jest nowy element, grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
 
+Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
+
 Grupę będącą właścicielem może zmienić:
 * każdy administrator;
 * użytkownik będący właścicielem, jeśli jest on również członkiem grupy docelowej.
+
+> [!NOTE]
+> Grupa będąca właścicielem *nie może* zmienić list kontroli dostępu do pliku lub folderu.
 
 ## <a name="access-check-algorithm"></a>Algorytm kontroli dostępu
 
@@ -209,7 +214,7 @@ Jest to miejsce, w którym maska dla pliku lub folderu pojawia się w witrynie A
 ![Listy ACL usługi Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
 
 > [!NOTE]
-> W przypadku nowego konta usługi Data Lake Store maski dla listy ACL dostępu i domyślnej listy ACL folderu głównego („/”) są domyślnie maskami RWX.
+> W przypadku nowego konta usługi Data Lake Store maski dla listy ACL dostępu folderu głównego („/”) są domyślnie maskami RWX.
 >
 >
 
@@ -308,7 +313,7 @@ Identyfikator GUID jest wyświetlany w przypadku, gdy dany użytkownik nie istni
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Czy usługa Data Lake Store obsługuje dziedziczenie list ACL?
 
-Nie.
+Nie, ale domyślne listy kontroli dostępu mogą być używane do ustawienia list ACL dla podrzędnych plików i folderów, które zostały nowo utworzone w folderze nadrzędnym.  
 
 ### <a name="what-is-the-difference-between-mask-and-umask"></a>Jaka jest różnica między maską i maską umask?
 
@@ -317,7 +322,7 @@ Nie.
 | Właściwość **maski** jest dostępna dla każdego pliku i folderu. | **Umask** jest właściwością konta usługi Data Lake Store. W usłudze Data Lake Store istnieje więc tylko jedna maska umask.    |
 | Właściwość maski dla pliku lub folderu może zmienić użytkownik będący właścicielem lub grupa będąca właścicielem pliku, a także administrator. | Właściwości maski umask nie może zmodyfikować żaden użytkownik, nawet administrator. Jest to niezmienna, stała wartość.|
 | Właściwość maski jest używana podczas wykonywania algorytmu kontroli dostępu w momencie uruchomienia, aby określić, czy użytkownik ma prawo wykonać operację na pliku lub folderze. Rolą maski jest tworzenie „czynnych uprawnień” w momencie przeprowadzania kontroli dostępu. | Maska umask nie jest używana podczas kontroli dostępu. Maski umask używa się do określania listy ACL dostępu dla nowych elementów podrzędnych w folderze. |
-| Maska jest 3-bitową wartością RWX stosowaną do nazwanego użytkownika, nazwanej grupy i użytkownika będącego właścicielem w czasie przeprowadzania kontroli dostępu.| Umask jest 9-bitową wartością stosowaną do użytkownika będącego właścicielem, grupy będącej właścicielem i **innych** użytkowników nowego elementu podrzędnego.|
+| Maska jest 3-bitową wartością RWX stosowaną do nazwanego użytkownika, grupy będącej właścicielem i nazwanej grupy w czasie przeprowadzania kontroli dostępu.| Umask jest 9-bitową wartością stosowaną do użytkownika będącego właścicielem, grupy będącej właścicielem i **innych** użytkowników nowego elementu podrzędnego.|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Gdzie można dowiedzieć się więcej na temat modelu kontroli dostępu POSIX?
 

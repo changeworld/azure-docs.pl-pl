@@ -1,12 +1,12 @@
 ---
-title: "Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB | Microsoft Docs"
-description: "Utwórz za pomocą usługi Azure Functions funkcję niewymagającą użycia serwera wywoływaną w przypadku dodania danych do bazy danych w usłudze Azure Cosmos DB."
+title: Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB | Microsoft Docs
+description: Utwórz za pomocą usługi Azure Functions funkcję niewymagającą użycia serwera wywoływaną w przypadku dodania danych do bazy danych w usłudze Azure Cosmos DB.
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: functions; cosmos-db
 ms.devlang: multiple
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/07/2017
 ms.author: glenga
-ms.custom: 
-ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: ''
+ms.openlocfilehash: 435c4bf1c2619e91bbdd089375914ce06fdac6c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB
 
@@ -74,7 +74,7 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
     | Ustawienie      | Sugerowana wartość  | Opis                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Identyfikator** | Nazwa bazy danych | Unikatowy identyfikator bazy danych usługi Azure Cosmos DB  |
-    | **Interfejs API** | SQL (DocumentDB) | W tym temacie używany jest interfejs API bazy danych dokumentów.  |
+    | **Interfejs API** | SQL | W tym temacie jest używany interfejs API SQL.  |
     | **Subskrypcja** | Subskrypcja platformy Azure | Subskrypcja, w ramach której jest tworzone to nowe konto usługi Cosmos DB.  |
     | **Grupa zasobów** | myResourceGroup |  Użyj istniejącej grupy zasobów zawierającej aplikację funkcji. |
     | **Lokalizacja**  | WestEurope | Wybierz lokalizację znajdującą się w pobliżu aplikacji funkcji lub innych aplikacji, które korzystają z przechowywanych dokumentów.  |

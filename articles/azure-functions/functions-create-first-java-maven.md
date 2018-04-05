@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie pierwszej funkcji na platformie Azure przy użyciu języka Java i narzędzia Maven | Microsoft Docs"
-description: "Tworzenie prostej funkcji wyzwalanej przez protokół HTTP i publikowanie jej na platformie Azure przy użyciu języka Java i narzędzia Maven."
+title: Tworzenie pierwszej funkcji na platformie Azure przy użyciu języka Java i narzędzia Maven | Microsoft Docs
+description: Tworzenie prostej funkcji wyzwalanej przez protokół HTTP i publikowanie jej na platformie Azure przy użyciu języka Java i narzędzia Maven.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "azure functions, funkcje, przetwarzanie zdarzeń, obliczenia, architektura bez serwera"
+keywords: azure functions, funkcje, przetwarzanie zdarzeń, obliczenia, architektura bez serwera
 ms.service: functions
 ms.devlang: java
 ms.topic: quickstart
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c0984075cd8e372cce09ea100378dcd4e8cddabe
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven (wersja zapoznawcza)
 
@@ -34,18 +34,25 @@ Ten przewodnik Szybki start przeprowadzi Cię przez tworzenie projektu funkcji [
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby opracowywać aplikacje funkcji przy użyciu języka Java, trzeba mieć zainstalowane następujące składniki:
 
--  Oprogramowanie [.NET Core](https://www.microsoft.com/net/core), najnowsza wersja.
 -  Zestaw [Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8.
--  [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 -  Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza.
--  Środowisko [Node.js](https://nodejs.org/download/), wersja 8.6 lub nowsza.
+-  [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > Aby wykonać wszystkie czynności opisane w tym przewodniku Szybki start, dla zmiennej środowiskowej JAVA_HOME należy ustawić lokalizację instalacji zestawu JDK.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
 
-[Podstawowe narzędzia usługi Azure Functions w wersji 2.0](https://www.npmjs.com/package/azure-functions-core-tools) zapewniają lokalne środowisko deweloperskie do pisania, uruchamiania i debugowania usługi Azure Functions. Zainstaluj te narzędzia za pomocą menedżera [npm](https://www.npmjs.com/) dołączonego do środowiska [Node.js](https://nodejs.org/).
+[Podstawowe narzędzia usługi Azure Functions w wersji 2.0](https://www.npmjs.com/package/azure-functions-core-tools) zapewniają lokalne środowisko deweloperskie do pisania, uruchamiania i debugowania usługi Azure Functions. 
+
+Aby je zainstalować, odwiedź sekcję [Instalowanie](https://github.com/azure/azure-functions-core-tools#installing) i znajdź szczegółowe instrukcje dla wybranego systemu operacyjnego (Windows, Linux, Mac).
+
+Możesz także zainstalować je ręcznie za pomocą programu [npm](https://www.npmjs.com/), dołączonego do platformy [Node.js](https://nodejs.org/), po zainstalowaniu następujących wymaganych składników:
+
+-  Oprogramowanie [.NET Core](https://www.microsoft.com/net/core), najnowsza wersja.
+-  Środowisko [Node.js](https://nodejs.org/download/), wersja 8.6 lub nowsza.
+
+Aby kontynuować instalację z użyciem programu npm, uruchom następujące polecenie:
 
 ```
 npm install -g azure-functions-core-tools@core
@@ -185,6 +192,4 @@ Utworzyliśmy aplikację funkcji języka Java z prostym wyzwalaczem HTTP i wdro�
 - Zapoznaj się z [Przewodnikiem dewelopera po funkcjach języka Java](functions-reference-java.md), aby uzyskać więcej informacji na temat tworzenia funkcji języka Java.
 - Dodaj do swojego projektu kolejne funkcje z różnymi wyzwalaczami, używając elementu docelowego `azure-functions:add` narzędzia Maven.
 - Przeprowadź lokalne debugowanie funkcji za pomocą programu Visual Studio Code. Po zainstalowaniu [pakietu rozszerzenia języka Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) i otworzeniu projektu usługi Functions w programie Visual Studio Code [dołącz debuger](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations) do portu 5005. Następnie ustaw punkt przerwania w edytorze i wyzwól swoją funkcję, gdy będzie uruchomiona lokalnie: ![Debugowanie funkcji w programie Visual Studio Code](media/functions-create-java-maven/vscode-debug.png).
-
-
-
+- Przeprowadź zdalne debugowanie funkcji za pomocą programu Visual Studio Code. Aby uzyskać instrukcje, sprawdź dokumentację dotyczącą [pisania bezserwerowych aplikacji Java](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).

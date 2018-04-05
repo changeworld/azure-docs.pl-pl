@@ -1,24 +1,24 @@
 ---
-title: "Szyfrowanie w usłudze Azure Data Lake Store | Microsoft Docs"
-description: "Szyfrowanie w usłudze Azure Data Lake Store pomaga chronić dane, implementować zasady bezpieczeństwa w przedsiębiorstwie i spełniać prawne wymagania dotyczące zgodności. Ten artykuł zawiera omówienie projektu i niektórych technicznych aspektów implementacji."
+title: Szyfrowanie w usłudze Azure Data Lake Store | Microsoft Docs
+description: Szyfrowanie w usłudze Azure Data Lake Store pomaga chronić dane, implementować zasady bezpieczeństwa w przedsiębiorstwie i spełniać prawne wymagania dotyczące zgodności. Ten artykuł zawiera omówienie projektu i niektórych technicznych aspektów implementacji.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: esung22
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2018
+ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 4df0ce3d705361f20fa003929fed6a019f8b2f5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Szyfrowanie danych w usłudze Azure Data Lake Store
 
@@ -83,7 +83,7 @@ W projekcie szyfrowania danych używane są trzy typy kluczy. Poniższa tabela z
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Główny klucz szyfrowania | GKS          | Konto usługi Data Lake Store | Usługa Key Vault                              | Asymetryczny | Może nim zarządzać usługa Data Lake Store lub można to robić samodzielnie.                                                              |
 | Klucz szyfrowania danych   | KSD          | Konto usługi Data Lake Store | Magazyn trwały zarządzany przez usługę Data Lake Store | Symetryczny  | Klucz szyfrowania danych jest szyfrowany przy użyciu głównego klucza szyfrowania. Na nośniku trwałym jest zapisywany zaszyfrowany klucz szyfrowania danych. |
-| Klucz szyfrowania bloków  | KSB          | Blok danych | None                                         | Symetryczny  | Klucz szyfrowania bloków jest tworzony na podstawie klucza szyfrowania danych i bloku danych.                                                      |
+| Klucz szyfrowania bloków  | KSB          | Blok danych | Brak                                         | Symetryczny  | Klucz szyfrowania bloków jest tworzony na podstawie klucza szyfrowania danych i bloku danych.                                                      |
 
 Poniższy diagram przedstawia te koncepcje:
 
@@ -106,7 +106,7 @@ Poniższy diagram przedstawia te koncepcje:
 4.  Zapisz zaszyfrowany blok danych w magazynie trwałym.
 
 > [!NOTE] 
-> Ze względów wydajności klucz szyfrowania danych w formie niezaszyfrowanej jest przez krótki czas buforowany w pamięci, a następnie natychmiast usuwany. Na nośniku trwałym klucz szyfrowania danych jest zawsze przechowywany w postaci zaszyfrowanej przez główny klucz szyfrowania.
+> Klucz szyfrowania danych jest zawsze przechowywany jako zaszyfrowany za pomocą głównego klucza szyfrowania na nośniku trwałym lub buforowany w pamięci.
 
 ## <a name="key-rotation"></a>Wymiana kluczy
 

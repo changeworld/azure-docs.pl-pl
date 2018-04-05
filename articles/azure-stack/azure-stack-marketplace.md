@@ -1,25 +1,25 @@
 ---
-title: "Publikowanie elementów marketplace niestandardowych w stosie Azure (operatorowi chmury) | Dokumentacja firmy Microsoft"
-description: "Jako operator stosu Azure jak opublikować element marketplace niestandardowych w stosie Azure."
+title: Publikowanie elementów marketplace niestandardowych w stosie Azure (operatorowi chmury) | Dokumentacja firmy Microsoft
+description: Jako operator stosu Azure jak opublikować element marketplace niestandardowych w stosie Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 04/03/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c791708e11b7e9e8bbe046f06233d948d4632c90
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 37587cf5f99ce105413382cbd5a0de9cacc76b7d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Omówienie usługi Azure Marketplace stosu
 
@@ -43,6 +43,8 @@ Każdy element Marketplace zawiera:
 * Formatowanie informacje do wyświetlania elementu w portalu
 
 Każdy element publikowane w witrynie Marketplace używa formatu o nazwie pakietu galerii Azure (azpkg). Dodaj oddzielnie, wdrożenia lub środowisko uruchomieniowe zasobów (takich jak kod, pliki zip za pomocą oprogramowania, obrazy maszyny wirtualnej) Azure stosu nie jako część elementu portalu Marketplace. 
+
+Począwszy od 1803 obrazy są konwertowane na plików rozrzedzonych podczas pobierania z platformy Azure lub w trakcie przekazywania obrazów niestandardowych. Ten proces wydłuża czas przy dodawaniu obrazu, ale pozwala zaoszczędzić miejsce i przyspiesza wdrażanie tych obrazów. Konwersja ma zastosowanie tylko do nowych obrazów. Istniejących obrazów nie są zmieniane. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Tworzenie i publikowanie elementu portalu marketplace](azure-stack-create-and-publish-marketplace-item.md)

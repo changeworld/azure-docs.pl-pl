@@ -24,7 +24,7 @@ ms.lasthandoff: 03/23/2018
 
 W tym artykule definiuje listę operacji oparte na żądanie/odpowiedź systemu Microsoft Azure Service Bus. Te informacje opiera się na projekt pracy protokołu AMQP 1.0 wersji zarządzania.  
   
-Szczegółowy poziom danych przesyłanych w sieci protokołu AMQP 1.0 protokołu przewodnik, co wyjaśnia, jak Usługa Service Bus implementuje i opiera się na specyfikacji technicznej OASIS protokołu AMQP, zobacz [protokołu AMQP 1.0 w przewodniku protokołu usługi Azure Service Bus i usługi Event Hubs] [ Przewodnik protokołu AMQP 1.0].  
+Szczegółowy poziom danych przesyłanych w sieci protokołu AMQP 1.0 protokołu przewodnik, co wyjaśnia, jak Usługa Service Bus implementuje i opiera się na specyfikacji technicznej OASIS protokołu AMQP, zobacz [protokołu AMQP 1.0 w przewodniku protokołu usługi Azure Service Bus i usługi Event Hubs][Przewodnik dotyczący protokołu AMQP 1.0].  
   
 ## <a name="concepts"></a>Pojęcia  
   

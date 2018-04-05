@@ -1,8 +1,8 @@
 ---
-title: "Rozpoczynanie pracy z usługą Data Lake Store przy użyciu witryny Azure Portal | Microsoft Docs"
-description: "Użyj witryny Azure Portal, aby utworzyć konto usługi Data Lake Store i wykonywać podstawowe operacje w tej usłudze"
+title: Rozpoczynanie pracy z usługą Data Lake Store przy użyciu witryny Azure Portal | Microsoft Docs
+description: Użyj witryny Azure Portal, aby utworzyć konto usługi Data Lake Store i wykonywać podstawowe operacje w tej usłudze
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Rozpoczynanie pracy z usługą Azure Data Lake Store za pośrednictwem witryny Azure Portal
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 ## <a name="create-an-azure-data-lake-store-account"></a>Tworzenie konta usługi Azure Data Lake Store
 
 1. Zaloguj się w nowej witrynie [Azure Portal](https://portal.azure.com).
-2. Kliknij pozycję **Utwórz zasób**, pozycję **Dane + magazyn**, a następnie pozycję **Azure Data Lake Store**. Przeczytaj informacje w bloku **Azure Data Lake Store**, a następnie kliknij pozycję **Utwórz** w lewym dolnym rogu bloku.
+2. Kliknij pozycję **Utwórz zasób > Magazyn > Data Lake Store**.
 3. W bloku **Nowa usługa Data Lake Store** podaj wartości, jak pokazano na poniższym zrzucie ekranu:
    
     ![Tworzenie nowego konta usługi Azure Data Lake Store](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Tworzenie nowego konta usługi Azure Data Lake")
@@ -50,7 +50,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
    * **Ustawienia szyfrowania**. Dostępne są trzy opcje:
      
      * **Nie włączaj szyfrowania**.
-     * **Użyj klucz zarządzanych przez usługę Azure Data Lake**.  Jeśli chcesz, aby usługa Azure Data Lake Store zarządzała Twoimi kluczami szyfrowania.
+     * **Użyj kluczy zarządzanych przez usługę Data Lake Store**.  Jeśli chcesz, aby usługa Azure Data Lake Store zarządzała Twoimi kluczami szyfrowania.
      * **Użyj kluczy z własnej usługi Key Vault**. Możesz wybrać istniejącą usługę Azure Key Vault lub utworzyć nową usługę Key Vault. Aby użyć kluczy z usługi Key Vault, musisz przypisać do konta usługi Azure Data Lake Store uprawnienia dostępu do usługi Azure Key Vault. Aby uzyskać instrukcje, zobacz [Przypisywanie uprawnień do usługi Azure Key Vault](#assign-permissions-to-azure-key-vault).
        
         ![Szyfrowanie usługi Data Lake Store](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Szyfrowanie usługi Data Lake Store")
@@ -61,7 +61,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 
 4. Kliknij przycisk **Utwórz**. Jeśli wybrano opcję przypięcia konta do pulpitu nawigacyjnego, nastąpi powrót do pulpitu nawigacyjnego i będzie widoczny postęp aprowizowania konta usługi Data Lake Store. Po aprowizowaniu konta usługi Data Lake Store pojawi się blok konta.
 
-### <a name="assign-permissions-to-azure-key-vault"></a>Przypisywanie uprawnień do usługi Azure Key Vault
+## <a name="assign-permissions-to-azure-key-vault"></a>Przypisywanie uprawnień do usługi Azure Key Vault
 Jeśli używasz kluczy z usługi Azure Key Vault do skonfigurowania szyfrowania konta Data Lake Store, musisz skonfigurować dostęp między kontami usług Azure Data Lake a Azure Key Vault. W tym celu wykonaj poniższe kroki.
 
 1. Jeśli użyto kluczy z usługi Azure Key Vault, na górze bloku konta usługi Data Lake Store zostanie wyświetlone ostrzeżenie. Kliknij ostrzeżenie, aby otworzyć obszar **Szyfrowanie**.
@@ -87,7 +87,7 @@ Jeśli używasz kluczy z usługi Azure Key Vault do skonfigurowania szyfrowania 
 ## <a name="createfolder"></a>Tworzenie folderów w ramach konta usługi Azure Data Lake Store
 W ramach konta usługi Data Lake Store możesz tworzyć foldery w celu zarządzania danymi i przechowywania ich.
 
-1. Otwórz utworzone konto usługi Data Lake Store. W okienku po lewej stronie kliknij pozycję **Przeglądaj**, kliknij pozycję **Data Lake Store**, a następnie w bloku Data Lake Store kliknij nazwę konta, w ramach którego chcesz utworzyć foldery. Jeśli konto jest przypięte do tablicy startowej, kliknij kafelek konta.
+1. Otwórz utworzone konto usługi Data Lake Store. W okienku po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie w bloku Wszystkie zasoby kliknij nazwę konta, w ramach którego chcesz utworzyć foldery. Jeśli konto jest przypięte do tablicy startowej, kliknij kafelek konta.
 2. W bloku konta usługi Data Lake Store kliknij pozycję **Eksplorator danych**.
    
     ![Tworzenie folderów na koncie usługi Data Lake Store](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Tworzenie folderów na koncie usługi Data Lake Store")

@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą platformy .NET
 
@@ -25,21 +25,23 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby ukończyć ten przewodnik Szybki start, najpierw utwórz konto usługi Azure Storage w witrynie [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Aby uzyskać pomoc przy tworzeniu konta, zobacz [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 
-Następnie pobierz i zainstaluj program .NET Core 2.0 dla swojego systemu operacyjnego. Możesz również zainstalować edytor do korzystania w systemie operacyjnym.
+Następnie pobierz i zainstaluj program .NET Core 2.0 dla swojego systemu operacyjnego. Jeśli korzystasz z systemu Windows, możesz również zainstalować program Visual Studio i używać środowiska .NET Framework. Możesz również zainstalować edytor do korzystania w systemie operacyjnym.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-- Zainstaluj program [.NET Core dla systemu Windows](https://www.microsoft.com/net/download/windows/build) 
-- Opcjonalnie zainstaluj program [Visual Studio dla systemu Windows](https://www.visualstudio.com/) 
+- Zainstaluj program[.NET Core dla systemu Windows](https://www.microsoft.com/net/download/windows) lub program [.NET Framework](https://www.microsoft.com/net/download/windows) (dołączony do programu Visual Studio dla systemu Windows)
+- Zainstaluj program [Visual Studio dla systemu Windows](https://www.visualstudio.com/). Jeśli używasz programu .NET Core, instalacja programu Visual Studio jest opcjonalna.  
+
+Aby uzyskać informacje dotyczące wyboru między programem.NET Core i programem.NET Framework, zobacz [Choose between .NET Core and .NET Framework for server apps (Wybieranie między programami .NET Core i .NET Framework w przypadku aplikacji serwera)](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-- Zainstaluj program [.NET Core dla systemu Linux](https://www.microsoft.com/net/download/linux/build)
+- Zainstaluj program [.NET Core dla systemu Linux](https://www.microsoft.com/net/download/linux)
 - Opcjonalnie zainstaluj program [Visual Studio Code](https://www.visualstudio.com/) i [rozszerzenie języka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068)
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-- Zainstaluj program [.NET Core dla systemu macOS](https://www.microsoft.com/net/download/macos/build)
+- Zainstaluj program [.NET Core dla systemu macOS](https://www.microsoft.com/net/download/macos)
 - Opcjonalnie zainstaluj program [Visual Studio dla komputerów Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
 
 ---
@@ -58,7 +60,22 @@ To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć rozwi�
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 
-Aby uruchomić aplikację, należy wprowadzić parametry połączenia konta magazynu. Te parametry połączenia można przechowywać w zmiennej środowiskowej na maszynie lokalnej z uruchomioną aplikacją. Utwórz zmienną środowiskową przy użyciu jednego z poniższych poleceń, w zależności od systemu operacyjnego. Zastąp wartość `<yourconnectionstring>` rzeczywistymi parametrami połączenia.
+Aby uruchomić aplikację, należy wprowadzić parametry połączenia konta magazynu. Skopiuj parametry połączenia z witryny Azure Portal i zapisz je w nowej zmiennej środowiskowej. Przykład odczytuje parametry połączenia ze zmiennej środowiskowej i używa ich do uwierzytelniania żądań w usłudze Azure Storage.
+
+### <a name="copy-your-connection-string-from-the-azure-portal"></a>Kopiowanie parametrów połączenia z witryny Azure Portal
+
+Aby skopiować parametry połączenia:
+
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
+2. Odszukaj konto magazynu.
+3. W sekcji **Ustawienia** omówienia kont magazynu wybierz pozycję **Klucze dostępu**.
+4. Znajdź wartość **Parametry połączenia** w obszarze **key1**i kliknij przycisk **Kopiuj**, aby skopiować parametry połączenia.  
+
+    ![Zrzut ekranu pokazujący sposób kopiowania parametrów połączenia z witryny Azure Portal](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
+
+## <a name="write-your-connection-string-to-an-environment-variable"></a>Zapisywanie parametrów połączenia w zmiennej środowiskowej
+
+Następnie zapisz nową zmienną środowiskową na maszynie lokalnej, na której uruchomiono aplikację. Aby ustawić zmienną środowiskową, otwórz okno konsoli i postępuj zgodnie z instrukcjami dla systemu operacyjnego. Zastąp wartość `<yourconnectionstring>` rzeczywistymi parametrami połączenia:
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -66,21 +83,25 @@ Aby uruchomić aplikację, należy wprowadzić parametry połączenia konta maga
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
+Po dodaniu zmiennej środowiskowej być może trzeba będzie ponownie uruchomić działające programy, które muszą odczytywać zmienną środowiskową, w tym okno konsoli. Jeśli na przykład używasz programu Visual Studio jako edytora, uruchom ponownie program Visual Studio przed uruchomieniem przykładu. 
+
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```bash
 export storageconnectionstring=<yourconnectionstring>
 ```
 
+Po dodaniu zmiennej środowiskowej uruchom polecenie `source ~/.bashrc` z okna konsoli, aby zmiany zostały uwzględnione.
+
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
 Edytuj swój plik .bash_profile i dodaj zmienną środowiskową:
 
-```
-export STORAGE_CONNECTION_STRING=
+```bash
+export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 ```
 
-Po dodaniu zmiennej środowiskowej wyloguj się i zaloguj ponownie, aby zmiany zostały uwzględnione. Możesz również wpisać ciąg „source .bash_profile” z terminala.
+Po dodaniu zmiennej środowiskowej uruchom polecenie `source .bash_profile` z okna konsoli, aby zmiany zostały uwzględnione.
 
 ---
 
@@ -88,23 +109,50 @@ Po dodaniu zmiennej środowiskowej wyloguj się i zaloguj ponownie, aby zmiany z
 
 Ten przykład tworzy plik testowy w lokalnym folderze **Moje dokumenty** i przekazuje go do magazynu obiektów blob. Następnie w przykładzie zostanie utworzona lista obiektów blob w kontenerze i zostanie pobrany plik z nową nazwą, aby można było porównać stare i nowe pliki. 
 
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+Jeśli używasz programu Visual Studio jako edytora, możesz go uruchomić, naciskając klawisz **F5**. 
+
+W pozostałych przypadkach przejdź do katalogu aplikacji, a następnie uruchom aplikację za pomocą polecenia `dotnet run`.
+
+```
+dotnet run
+```
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
 Przejdź do katalogu aplikacji, a następnie uruchom aplikację za pomocą polecenia `dotnet run`.
 
 ```
 dotnet run
 ```
 
-Wyświetlone dane wyjściowe są podobne do poniższego przykładu:
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+Przejdź do katalogu aplikacji, a następnie uruchom aplikację za pomocą polecenia `dotnet run`.
 
 ```
-Azure Blob storage quick start sample
-Temp file = /home/admin/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt
-Uploading to Blob storage as blob 'QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt'
-List blobs in container.
-https://mystorageaccount.blob.core.windows.net/quickstartblobs/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374.txt
-Downloading blob to /home/admin/QuickStart_b73f2550-bf20-4b3b-92ec-b9b31c56b374_DOWNLOADED.txt
-The program has completed successfully.
-Press the 'Enter' key while in the console to delete the sample files, example container, and exit the application.
+dotnet run
+```
+
+---
+
+Dane wyjściowe przykładowej aplikacji będą podobne do poniższego przykładu:
+
+```
+Azure Blob storage - .NET Quickstart sample
+
+Created container 'quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f'
+
+Temp file = C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt
+Uploading to Blob storage as blob 'QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt'
+
+Listing blobs in container.
+https://storagesamples.blob.core.windows.net/quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f/QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db.txt
+
+Downloading blob to C:\Users\myusername\Documents\QuickStart_c5e7f24f-a7f8-4926-a9da-9697c748f4db_DOWNLOADED.txt
+
+Press any key to delete the sample files and example container.
 ```
 
 Po naciśnięciu klawisza **Enter** aplikacja usunie kontener magazynu i pliki. Przed ich usunięciem sprawdź, czy folder **Moje dokumenty** zawiera dwa pliki. Możesz je otworzyć i sprawdzić, czy są identyczne. Skopiuj adres URL obiektu blob z okna konsoli i wklej go do przeglądarki, aby wyświetlić zawartość obiektu blob.
@@ -123,8 +171,8 @@ Przykładowy kod najpierw sprawdza, czy zmienna środowiskowa zawiera parametry 
 // Retrieve the connection string for use with the application. The storage connection string is stored
 // in an environment variable on the machine running the application called storageconnectionstring.
 // If the environment variable is created after the application is launched in a console or with Visual
-// Studio, the shell needs to be closed and reloaded to take the environment variable into account.
-string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring", EnvironmentVariableTarget.User);
+// Studio, the shell or application needs to be closed and reloaded to take the environment variable into account.
+string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
 
 // Check whether the connection string can be parsed.
 if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))

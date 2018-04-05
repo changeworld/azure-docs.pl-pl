@@ -1,21 +1,21 @@
 ---
-title: "Informacje o usłudze Azure Migrate | Microsoft Docs"
-description: "Ten artykuł zawiera omówienie usługi Azure Migrate."
+title: Informacje o usłudze Azure Migrate | Microsoft Docs
+description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 02/26/2018
+ms.date: 03/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 857dab5474cba24445daf7d139ae49d923038196
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
-Usługa Azure Migrate ocenia obciążenia lokalne pod kątem migracji na platformę Azure. Obejmuje to ocenę gotowości maszyn lokalnych do migracji na platformę Azure, określenie rozmiaru odpowiedniego do wydajności oraz oszacowanie kosztów działania maszyn lokalnych na platformie Azure. Usługa ta jest przeznaczona dla osób, które zamierzają przeprowadzić migrację metodą „lift-and-shift” lub dopiero zaczęły oceniać możliwość migracji. Po dokonaniu oceny można przeprowadzić migrację maszyn na platformę Azure, korzystając z usług takich jak [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) i [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
+Usługa Azure Migrate ocenia obciążenia lokalne pod kątem migracji na platformę Azure. Obejmuje to ocenę gotowości maszyn lokalnych do migracji, określenie rozmiaru odpowiedniego do wydajności oraz oszacowanie kosztów działania maszyn lokalnych na platformie Azure. Usługa ta jest przeznaczona dla osób, które zamierzają przeprowadzić migrację metodą „lift-and-shift” lub dopiero zaczęły oceniać możliwość migracji. Po dokonaniu oceny można przeprowadzić migrację maszyn na platformę Azure, korzystając z usług takich jak [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) i [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
 
 ## <a name="why-use-azure-migrate"></a>Dlaczego warto używać usługi Azure Migrate?
 
@@ -28,14 +28,12 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
-- Aktualnie można oceniać gotowość do migracji na maszyny wirtualne platformy Azure tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5)
-
-> [!NOTE]
-> Obsługa funkcji Hyper-V znajduje się w planach i zostanie włączona wkrótce. Na razie zaleca się planowanie migracji obciążeń funkcji Hyper-V przy użyciu narzędzia [Planista wdrażania usługi Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc). 
-
+- Aktualnie można oceniać gotowość do migracji na maszyny wirtualne platformy Azure tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5).
+- Obsługa funkcji Hyper-V znajduje się w naszym harmonogramie działania. Na razie zaleca się planowanie migracji obciążeń funkcji Hyper-V przy użyciu narzędzia [Planista wdrażania usługi Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc). 
 - Można odnajdywać maksymalnie 1000 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 400 maszyn wirtualnych w ramach pojedynczej oceny. Jeśli masz więcej maszyn, możesz zwiększyć liczbę odnajdywań lub ocen. [Dowiedz się więcej](how-to-scale-assessment.md).
 - Projekt usługi Azure Migrate można utworzyć tylko w regionie Zachodnio-środkowe stany USA lub Wschodnie stany USA. Nie ma to jednak wpływu na możliwość planowania migracji w innej docelowej lokalizacji platformy Azure. Lokalizacja projektu migracji służy tylko do przechowywania metadanych wykrytych w środowisku lokalnym.
 - Usługa Azure Migrate obsługuje tylko dyski zarządzane na potrzeby oceny migracji.
+
 
 ## <a name="what-do-i-need-to-pay-for"></a>Za co są pobierane opłaty?
 

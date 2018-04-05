@@ -1,31 +1,31 @@
 ---
-title: "Tworzenie aplikacji .NET Framework lub Core usługi Azure Cosmos DB za pomocą interfejsu API programu Graph | Microsoft Docs"
-description: "Przykładowy kod programu .NET Framework/Core, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań"
+title: Tworzenie aplikacji .NET Framework lub Core usługi Azure Cosmos DB za pomocą interfejsu API programu Graph | Microsoft Docs
+description: Przykładowy kod programu .NET Framework/Core, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 38869444d43a3fb5c37a222ef58d30fc607106aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 21d8b39032c290d45a3ff772a769b427bded50b1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: tworzenie aplikacji .NET Framework lub Core za pomocą interfejsu API programu Graph
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych i grafu (kontenera) przy użyciu witryny Azure Portal. Następnie aplikacja konsoli utworzona za pomocą sterownika open source [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) zostanie skompilowana i uruchomiona.  
+Ten przewodnik Szybki start przedstawia sposób tworzenia [interfejsu API programu Graph](graph-introduction.md) konta usługi Azure Cosmos DB, bazy danych i grafu (kontenera) przy użyciu witryny Azure Portal. Następnie aplikacja konsoli utworzona za pomocą sterownika open source [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) zostanie skompilowana i uruchomiona.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

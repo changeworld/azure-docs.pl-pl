@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie środowiska projektowego w systemie Linux | Microsoft Docs"
-description: "Zainstaluj środowisko uruchomieniowe i zestaw SDK oraz utwórz lokalny klaster projektowy w systemie Linux. Po ukończeniu tej konfiguracji wszystko będzie gotowe do tworzenia aplikacji."
+title: Konfigurowanie środowiska projektowego w systemie Linux | Microsoft Docs
+description: Zainstaluj środowisko uruchomieniowe i zestaw SDK oraz utwórz lokalny klaster projektowy w systemie Linux. Po ukończeniu tej konfiguracji wszystko będzie gotowe do tworzenia aplikacji.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 20239acba46996ed7ec84a2fbaf300190deebc7f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c98a5e742356e24cee9e9d1414121faabac03084
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -29,6 +29,10 @@ ms.lasthandoff: 02/24/2018
 >  
 
 Aby wdrażać i uruchamiać [aplikacje usługi Azure Service Fabric](service-fabric-application-model.md) na maszynie deweloperskiej z systemem Linux, należy zainstalować środowisko uruchomieniowe i wspólny zestaw SDK. Można także zainstalować opcjonalne zestawy SDK na potrzeby programowania na platformach Java i .NET Core.
+
+> [!NOTE]
+> Instalowanie środowiska uruchomieniowego usługi Service Fabric i zestawu SDK w podsystemie systemu Windows dla systemu Linux nie jest obsługiwane. Obsługiwany jest jednak interfejs wiersza polecenia usługi Azure Service Fabric, który umożliwia zarządzanie jednostkami usługi Service Fabric hostowanymi w dowolnej lokalizacji w chmurze lub środowisku lokalnym. Aby uzyskać informacje na temat instalowania interfejsu wiersza polecenia, zobacz [Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric](./service-fabric-cli.md).
+>
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,6 +112,12 @@ sudo apt-get install servicefabricsdkcommon
 >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
 
+Środowisko uruchomieniowe usługi Service Fabric, które uwzględnia powyższą instalację, obejmuje pakiety przedstawione w poniższej tabeli. 
+
+ | | DotNetCore | Java | Python | NodeJS | 
+--- | --- | --- | --- |---
+Ubuntu | 2.0.0 | OpenJDK 1.8 | Niejawne z rozwiązania npm | najnowsza |
+
 ## <a name="set-up-a-local-cluster"></a>Tworzenie klastra lokalnego
   Po ukończeniu instalacji powinno być możliwe uruchomienie klastra lokalnego.
 
@@ -184,7 +194,7 @@ Wtyczkę środowiska Eclipse dla usługi Service Fabric można zainstalować z p
 
 2. Aby zainstalować wtyczkę usługi Service Fabric, wybierz pozycję **Help** > **Install New Software** (Pomoc > Zainstaluj nowe oprogramowanie).
 
-3. W polu **Work with** (Pracuj z) wprowadź adres **http://dl.microsoft.com/eclipse**.
+3. W polu **Work with** (Praca z) wpisz adres **http://dl.microsoft.com/eclipse**.
 
 4. Kliknij pozycję **Add** (Dodaj).
 

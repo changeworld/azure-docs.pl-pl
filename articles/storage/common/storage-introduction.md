@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 799636d0a702407be06bbe8cebae552b34d860db
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: eb68993924bff8605fc244f438a686f0142c4762
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Wprowadzenie do usługi Microsoft Azure Storage
 
@@ -147,7 +147,7 @@ Aby zapewnić trwałość danych, usługa Azure Storage będzie przechowywać ki
 
 **Magazyn lokalnie nadmiarowy (LRS)**
 
-Magazyn lokalnie nadmiarowy (LRS, locally-redundant storage) został zaprojektowany z myślą o zapewnieniu co najmniej 99,999999999% (11 cyfr 9) trwałości obiektów w danym roku. To oznacza, że wiele kopii danych jest zarządzanych przez usługę Azure Storage w centrum danych określonym podczas konfigurowania konta magazynu. Gdy zmiany zostaną zatwierdzone, wszystkie kopie są aktualizowane i zwracany jest komunikat o powodzeniu. To oznacza, że repliki są zawsze zsynchronizowane. Ponadto kopie znajdują się w oddzielnych domenach błędów i domenach uaktualnień, co oznacza, że dane są dostępne nawet wtedy, gdy węzeł magazynu, na którym są przechowywane, ulegnie awarii lub zostanie przełączony w tryb offline w celu aktualizacji.
+Magazyn lokalnie nadmiarowy (LRS) został zaprojektowany z myślą o zapewnieniu co najmniej 99,999999999% (11 cyfr 9) trwałości obiektów w danym roku. To oznacza, że wiele kopii danych jest zarządzanych przez usługę Azure Storage w centrum danych określonym podczas konfigurowania konta magazynu. Gdy zmiany zostaną zatwierdzone, wszystkie kopie są aktualizowane i zwracany jest komunikat o powodzeniu. To oznacza, że repliki są zawsze zsynchronizowane. Ponadto kopie znajdują się w oddzielnych domenach błędów i domenach uaktualnień, co oznacza, że dane są dostępne nawet wtedy, gdy węzeł magazynu, na którym są przechowywane, ulegnie awarii lub zostanie przełączony w tryb offline w celu aktualizacji.
 
 **Magazyn strefowo nadmiarowy (ZRS) (wersja zapoznawcza)**
 

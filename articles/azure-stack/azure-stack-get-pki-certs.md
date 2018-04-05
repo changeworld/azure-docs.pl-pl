@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 4a7432260167b8740567ad4308e102417abad82c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc2ec96113310f54d32a67ea5fa31725600046c9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Generowanie certyfikaty PKI dla wdrożenia usługi Azure stosu
 Teraz, znając [wymagania dotyczące certyfikatu PKI](azure-stack-pki-certs.md) wdrożeń stosu Azure, należy uzyskać tych certyfikatów z urzędu certyfikacji, wybranych przez użytkownika. 
@@ -75,4 +75,4 @@ Poniższy przepływ pracy w tym artykule opisano sposób dostosowywania i Użyj 
 5. **Wyeksportować i skopiować. PFX do folderów wdrożenia**. Wyeksportuj certyfikat (łącznie z kluczem prywatnym) jako. PFX pliku i skopiować. Plik PFX do folderów wdrożenia opisanego w [wymagania dotyczące infrastruktury kluczy publicznych wdrażania stosu Azure](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przygotuj certyfikaty PKI stosu Azure](prepare-pki-certs.md)
+[Przygotuj certyfikaty PKI stosu Azure](azure-stack-prepare-pki-certs.md)

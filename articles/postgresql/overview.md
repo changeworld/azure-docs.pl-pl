@@ -1,6 +1,6 @@
 ---
-title: "Omówienie usługi relacyjnej bazy danych Azure Database for PostgreSQL"
-description: "Zawiera omówienie usługi relacyjnej bazy danych Azure Database for PostgreSQL."
+title: Omówienie usługi relacyjnej bazy danych Azure Database for PostgreSQL
+description: Zawiera omówienie usługi relacyjnej bazy danych Azure Database for PostgreSQL.
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -10,15 +10,15 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 02/28/2018
-ms.openlocfilehash: ef7f710fb39c3745ff5a20a73cd4dc5c1fa1fece
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 766373f4b9390e576285db73d9e9e9942eb6624f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co to jest usługa Azure Database for PostgreSQL?
 
-Usługa Azure Database for PostgreSQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft utworzoną dla deweloperów i opartą na wersji społecznościowej aparatu bazy danych [PostgreSQL](https://www.postgresql.org/) typu open source. Ta usługa jest dostępna w publicznej wersji zapoznawczej. Zalety Azure Database for PostgreSQL:
+Usługa Azure Database for PostgreSQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft utworzoną dla deweloperów i opartą na wersji społecznościowej aparatu bazy danych [PostgreSQL](https://www.postgresql.org/) typu open source. Zalety Azure Database for PostgreSQL:
 
 - Wbudowana wysoka dostępność bez dodatkowych kosztów
 - Przewidywalna wydajność dzięki płatnościom zgodnym z rzeczywistym użyciem
@@ -45,10 +45,10 @@ Usługa Azure Database for PostgreSQL oferuje trzy warstwy cenowe: Podstawowa, O
 Jak podjąć decyzję o tym, kiedy należy regulować w górę lub w dół? Należy użyć wbudowanych funkcji monitorowania i zgłaszania alertów platformy Azure. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności bądź pamięci. Aby uzyskać szczegółowe informacje, zobacz [Alerty](howto-alert-on-metric.md).
 
 ## <a name="keep-your-app-and-business-running"></a>Zapewnienie działania aplikacji i firmy
-Umowa dotycząca poziomu usług (SLA) (niedostępna w wersji zapoznawczej) o czołowej w branży dostępności 99,99% dla platformy Azure, która jest obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24 godziny na dobę, 7 dni w tygodniu. Na każdym serwerze usługi Azure Database for PostgreSQL korzystasz z wbudowanych rozwiązań zabezpieczeń, odporności na uszkodzenia i ochrony danych, które w innej sytuacji trzeba byłoby kupić lub zaprojektować, zrealizować, a także nimi zarządzać. W usłudze Azure Database for PostgreSQL każda warstwa cenowa oferuje kompleksowy zestaw funkcji i opcji ciągłości działania, których można użyć, aby rozpocząć i kontynuować pracę. Możesz użyć [przywracania do punktu w czasie](howto-restore-server-portal.md), aby przywrócić bazę danych do wcześniejszego stanu — nawet sprzed 35 dni. Ponadto, jeśli centrum danych hostujące bazy danych ulegnie awarii, możesz przywrócić bazy danych z geograficznie nadmiarowych duplikatów najnowszych kopii zapasowych.
+Umowa dotycząca poziomu usług (SLA) o czołowej w branży dostępności 99,99% dla platformy Azure, która jest obsługiwana przez globalną sieć centrów danych zarządzanych przez firmę Microsoft, pomaga zapewnić działanie aplikacji przez 24 godziny na dobę, 7 dni w tygodniu. Na każdym serwerze usługi Azure Database for PostgreSQL korzystasz z wbudowanych rozwiązań zabezpieczeń, odporności na uszkodzenia i ochrony danych, które w innej sytuacji trzeba byłoby kupić lub zaprojektować, zrealizować, a także nimi zarządzać. W usłudze Azure Database for PostgreSQL każda warstwa cenowa oferuje kompleksowy zestaw funkcji i opcji ciągłości działania, których można użyć, aby rozpocząć i kontynuować pracę. Możesz użyć [przywracania do punktu w czasie](howto-restore-server-portal.md), aby przywrócić bazę danych do wcześniejszego stanu — nawet sprzed 35 dni. Ponadto, jeśli centrum danych hostujące bazy danych ulegnie awarii, możesz przywrócić bazy danych z geograficznie nadmiarowych duplikatów najnowszych kopii zapasowych.
 
 ## <a name="secure-your-data"></a>Zabezpieczanie danych
-Usługi baz danych platformy Azure mają tradycje zabezpieczeń danych, które usługa Azure Database for PostgreSQL podtrzymuje dzięki funkcjom ograniczania dostępu, ochrony przesyłanych i magazynowanych danych oraz monitorowania aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx), aby uzyskać informacje o zabezpieczeniach platformy Azure.
+Usługi baz danych platformy Azure mają tradycje zabezpieczeń danych, które usługa Azure Database for PostgreSQL podtrzymuje dzięki funkcjom ograniczania dostępu, ochrony przesyłanych i magazynowanych danych oraz monitorowania aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure.
 
 Usługa Azure Database for PostgreSQL używa szyfrowania magazynu dla magazynowanych danych. Dane, w tym kopie zapasowe, są szyfrowane na dysku (z wyjątkiem plików tymczasowych utworzonych przez aparat podczas uruchamiania zapytań). Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
 

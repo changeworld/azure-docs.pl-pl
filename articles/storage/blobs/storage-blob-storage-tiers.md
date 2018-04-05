@@ -1,11 +1,11 @@
 ---
-title: "Gorący, chłodny i archiwalny magazyn platformy Azure dla obiektów blob | Microsoft Docs"
-description: "Gorący, chłodny i archiwalny magazyn dla kont usługi Azure Storage."
+title: Gorący, chłodny i archiwalny magazyn platformy Azure dla obiektów blob | Microsoft Docs
+description: Gorący, chłodny i archiwalny magazyn dla kont usługi Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kuhussai
 manager: jwillis
-editor: 
+editor: ''
 ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 2adb301f1d047c7762a35880da6e6094a5afbd75
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: warstwa magazynu gorącego, chłodnego i archiwalnego
 

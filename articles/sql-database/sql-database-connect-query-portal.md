@@ -10,15 +10,15 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: e5c1a5a991284fcbeac53d2ce35be4e2634514fa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 97b14de64c4aa6bf134f2c293e4bb8b5725810d3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Witryna Azure Portal: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane
 
-Edytor zapytań SQL jest przeglądarkowym narzędziem do wykonywania zapytań, które zapewnia wydajny i nieskomplikowany sposób wykonywania zapytań SQL do bazy danych Azure SQL lub magazynu danych Azure SQL bez opuszczania witryny Azure Portal. W tym przewodniku Szybki start pokazano, jak używać edytora zapytań w celu nawiązywania połączenia z bazą danych SQL, a następnie, korzystając z instrukcji Transact-SQL, wysyłać zapytania o dane oraz wstawiać, aktualizować i usuwać dane z bazy danych.
+Edytor zapytań SQL jest przeglądarkowym narzędziem do wykonywania zapytań, które zapewnia wydajny i nieskomplikowany sposób wykonywania zapytań SQL do bazy danych Azure SQL lub magazynu danych Azure SQL bez opuszczania witryny Azure Portal. W tym samouczku Szybki start pokazano, jak używać edytora zapytań do nawiązywania połączenia z bazą danych SQL, a następnie, korzystając z instrukcji Transact-SQL, wysyłać zapytania o dane oraz wstawiać, aktualizować i usuwać dane z bazy danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -142,19 +142,25 @@ Użyj następującego kodu, aby usunąć nowy, wcześniej dodany produkt przy u�
 
 ## <a name="query-editor-considerations"></a>Zagadnienia dotyczące edytora zapytań
 
-Istnieje kilka kwestii, które należy wiedzieć podczas pracy z edytorem zapytań, gdy pozostaje on w stanie wersji zapoznawczej:
+Jest kilka rzeczy, o których trzeba wiedzieć podczas pracy z edytorem zapytań:
 
 1. Upewnij się, że opcja „Zezwalaj na dostęp do usług platformy Azure” w ustawieniach zapory serwera SQL Server jest ustawiona na „WŁ.”. Ta opcja zapewnia edytorowi zapytań SQL dostęp do Twoich baz danych SQL i magazynów danych.
 
-2. Logowanie administratora usługi Azure Active Directory nie działa dla kont, które mają włączone uwierzytelnianie 2-składnikowe.
+2. W przypadku serwera SQL w sieci wirtualnej edytor zapytań nie może służyć do wysyłania zapytań do baz danych na tym serwerze.
 
-3. Konta e-mail (na przykład outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) nie są jeszcze obsługiwane jako administratorzy usługi Active Directory. Upewnij się, aby wybrać użytkownika, który został utworzony natywnie w usłudze Azure Active Directory lub sfederowany z usługą Azure Active Directory
+3. Naciśnięcie klawisza F5 spowoduje odświeżenie strony edytora zapytań i utratę zapytania, które było opracowywane. Do wykonywania zapytań służy przycisk Uruchom na pasku narzędzi.
 
-4. Typy zapytań o dane przestrzenne nie są jeszcze obsługiwane w edytorze zapytań. Wykonanie zapytania o kolumny przestrzenne spowoduje błąd „System.IO.FileNotFoundException”.
+4. Edytor zapytań nie obsługuje nawiązywania połączenia z główną bazą danych
 
-5. Tabele i widoki bazy danych nie obsługują funkcji IntelliSense. Jednak edytor obsługuje funkcję automatycznego uzupełniania dla nazw, które zostały już wpisane.
+5. Istnieje limit czasu równy 5 minut na wykonanie zapytania.
 
-6. Naciśnięcie klawisza F5 spowoduje odświeżenie strony edytora zapytań i utratę zapytania, które było opracowywane. Do wykonywania zapytań służy przycisk Uruchom na pasku narzędzi.
+6. Logowanie administratora usługi Azure Active Directory nie działa dla kont, które mają włączone uwierzytelnianie 2-składnikowe.
+
+7. Konta e-mail (na przykład outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) nie są jeszcze obsługiwane jako administratorzy usługi Active Directory. Upewnij się, aby wybrać użytkownika, który został utworzony natywnie w usłudze Azure Active Directory lub sfederowany z usługą Azure Active Directory
+
+8. Edytor zapytań obsługuje tylko cylindryczne projekcje dla typów danych geograficznych.
+
+9. Tabele i widoki bazy danych nie obsługują funkcji IntelliSense. Jednak edytor obsługuje funkcję automatycznego uzupełniania dla nazw, które zostały już wpisane.
 
 
 ## <a name="next-steps"></a>Następne kroki

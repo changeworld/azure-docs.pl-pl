@@ -1,6 +1,6 @@
 ---
-title: "Samouczek usługi Azure Container Registry — przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną"
-description: "Tworzenie rejestru kontenerów platformy Azure, konfigurowanie replikacji geograficznej, przygotowanie obrazu platformy Docker i wdrożenie go w rejestrze. Pierwsza część trzyczęściowej serii."
+title: Samouczek usługi Azure Container Registry — przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
+description: Tworzenie rejestru kontenerów platformy Azure, konfigurowanie replikacji geograficznej, przygotowanie obrazu platformy Docker i wdrożenie go w rejestrze. Pierwsza część trzyczęściowej serii.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: b73222d9b31ff840273bdb91a15f7eaf37ad2508
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3463acc3db3dae9633635aaf7410d876aacf9b38
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="prepare-a-geo-replicated-azure-container-registry"></a>Przygotowanie rejestru kontenerów platformy Azure z replikacją geograficzną
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Samouczek: przygotowywanie rejestru kontenerów platformy Azure z replikacją geograficzną
 
 Rejestr kontenerów platformy Azure to prywatny rejestr platformy Docker wdrożony na platformie Azure, który można zlokalizować w sieci w pobliżu własnych wdrożeń. Ten zestaw trzech samouczków przedstawia metodę użycia replikacji geograficznej do wdrożenia aplikacji internetowej platformy ASP.NET Core uruchomionej w kontenerze systemu Linux do dwóch wystąpień funkcji [Web Apps for Containers](../app-service/containers/index.yml). Dowiesz się, jak platforma Azure automatycznie wdraża obraz do każdego wystąpienia aplikacji internetowej z najbliższego repozytorium z replikacją geograficzną.
 

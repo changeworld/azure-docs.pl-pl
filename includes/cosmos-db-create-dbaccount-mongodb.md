@@ -1,25 +1,32 @@
+---
+title: Tworzenie konta interfejsu API MongoDB usługi Azure Cosmos DB
+description: W tym artykule opisano sposób tworzenia konta interfejsu API MongoDB usługi Azure Cosmos DB w witrynie Azure Portal
+services: cosmos-db
+author: mimig1
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 03/20/2018
+ms.author: mimig
+ms.custom: include file
+ms.openlocfilehash: 02ea0e011642313b885bc48ec48104fa2789da81
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/28/2018
+---
 1. W nowym oknie zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 2. W menu po lewej stronie kliknij pozycję **Utwórz zasób**, kliknij pozycję **Bazy danych**, a następnie w obszarze **Azure Cosmos DB** kliknij pozycję **Utwórz**.
    
    ![Zrzut ekranu przedstawiający witrynę Azure Portal z wyróżnionymi poleceniami Więcej usług i Azure Cosmos DB](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png)
 
-3. W okienku **Nowe konto** określ odpowiednią konfigurację konta usługi Azure Cosmos DB. 
-
-    Usługa Azure Cosmos DB umożliwia wybór jednego z czterech modeli programowania: Gremlin (wykres), MongoDB, SQL oraz Tabela (klucz-wartość). 
-       
-    W tym przewodniku Szybki start będziemy programować przy użyciu interfejsu API usługi MongoDB, dlatego wybierz pozycję **MongoDB** podczas wypełniania formularza. Jeśli jednak masz dane grafu dla aplikacji mediów społecznościowych, dane dokumentu z aplikacji wykazu lub dane typu klucz/wartość (tabela), weź pod uwagę, że usługa Azure Cosmos DB może zapewnić globalnie rozproszoną platformę usługi bazy danych o wysokiej dostępności dla wszystkich Twoich aplikacji o znaczeniu krytycznym.
-
-    Wypełnij okienko **Nowe konto**, używając informacji przedstawionych w tabeli jako wskazówki.
+3. W bloku **Nowe konto** określ bazę danych **MongoDB** jako interfejs API i wprowadź żądaną konfigurację dla konta usługi Azure Cosmos DB.
  
-    ![Zrzut ekranu okienka Nowa usługa Azure Cosmos DB](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
-   
-    Ustawienie|Sugerowana wartość|Opis
-    ---|---|---
-    ID|*Unikatowa wartość*|Wybrana unikatowa wartość służąca do identyfikacji konta usługi Azure Cosmos DB. Adres domeny *documents.azure.com* jest dołączany do podanego identyfikatora w celu utworzenia identyfikatora URI, dlatego użyty identyfikator powinien być unikatowy, ale rozpoznawalny. Identyfikator może zawierać tylko małe litery, cyfry oraz znak „-” i musi się składać z 3–50 znaków.
-    Interfejs API|MongoDB|Interfejs API określa typ konta do utworzenia. Usługa Azure Cosmos DB oferuje pięć interfejsów API odpowiadających potrzebom aplikacji: SQL (baza danych dokumentów), Gremlin (baza danych wykresów), MongoDB (baza danych dokumentów), tabela platformy Azure i Cassandra. Każdy z tych interfejsów wymaga obecnie oddzielnego konta. <br><br>Wybierz pozycję **MongoDB**, ponieważ w tym podręczniku Szybki start tworzysz bazę danych dokumentów. Zapytania dotyczące tej bazy danych można tworzyć przy użyciu usługi MongoDB.<br><br>[Dowiedz się więcej o interfejsie API usługi MongoDB](../articles/cosmos-db/mongodb-introduction.md)|
-    Subskrypcja|*Twoja subskrypcja*|Subskrypcja platformy Azure, która ma być używana dla usługi Azure Cosmos DB. 
-    Grupa zasobów|*Taka sama wartość jak identyfikator*|Nazwa nowej grupy zasobów dla Twojego konta. Dla uproszczenia można użyć takiej samej nazwy jak identyfikator. 
-    Lokalizacja|*Region najbliżej Twoich użytkowników*|Lokalizacja geograficzna, w której będzie hostowane Twoje konto usługi Azure Cosmos DB. Wybierz lokalizację znajdującą się najbliżej Twoich użytkowników, aby zapewnić im najszybszy dostęp do danych.
+    ![Zrzut ekranu bloku Nowa usługa Azure Cosmos DB](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-2.png)
+
+    * **Identyfikator** musi być unikatową nazwą, której chcesz użyć do identyfikowania swojego konta usługi Azure Cosmos DB. Może on zawierać tylko małe litery, cyfry i znak „-” oraz musi mieć długość od 3 do 50 znaków.
+    * **Subskrypcja** to Twoja subskrypcja platformy Azure. Zostanie ona wypełniona automatycznie.
+    * **Grupa zasobów** to nazwa grupy zasobów dla Twojego konta usługi Azure Cosmos DB.
+    * **Lokalizacja** to lokalizacja geograficzna, gdzie znajduje się wystąpienie usługi Azure Cosmos DB. Wybierz lokalizację znajdującą się najbliżej użytkowników.
 
 4. Kliknij przycisk **Utwórz**, aby utworzyć konto.
 5. Na pasku narzędzi kliknij pozycję **Powiadomienia**, aby monitorować proces wdrażania.

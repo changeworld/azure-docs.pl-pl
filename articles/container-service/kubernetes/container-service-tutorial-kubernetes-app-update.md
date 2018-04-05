@@ -1,6 +1,6 @@
 ---
-title: "Samouczek usługi Azure Container Service — aktualizowanie aplikacji"
-description: "Samouczek usługi Azure Container Service — aktualizowanie aplikacji"
+title: Samouczek usługi Azure Container Service — aktualizowanie aplikacji
+description: Samouczek usługi Azure Container Service — aktualizowanie aplikacji
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5f22bb3ac378bc9b1ff94db486d6ea6053c64514
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 87de0f23a00b035b12bac6cf655781961b1fb9e5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-an-application-in-kubernetes"></a>Aktualizowanie aplikacji w usłudze Kubernetes
 
@@ -29,7 +29,7 @@ W tym samouczku (część szósta z siedmiu) aktualizowana jest przykładowa apl
 > * Wypychanie obrazu kontenera do usługi Azure Container Registry
 > * Wdrażanie zaktualizowanego obrazu kontenera
 
-W kolejnych samouczkach pakiet Operations Management Suite zostanie skonfigurowany do monitorowania klastra usługi Kubernetes.
+W kolejnych samouczkach usługa Log Analytics zostanie skonfigurowana do monitorowania klastra usługi Kubernetes.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -71,7 +71,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Przejdź do adresu http://localhost: 8080, aby wyświetlić zaktualizowaną aplikację.
+Przejdź do adresu http://localhost:8080, aby wyświetlić zaktualizowaną aplikację.
 
 ![Obraz przedstawiający klaster Kubernetes na platformie Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -166,7 +166,7 @@ W tym samouczku zaktualizowano aplikację i wydano tę aktualizację do klastra 
 > * Wypchnięto obraz kontenera do usługi Azure Container Registry
 > * Wdrożono zaktualizowaną aplikację
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak monitorować usługę Kubernetes przy użyciu pakietu Operations Management Suite.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak monitorować usługę Kubernetes przy użyciu usługi Log Analytics.
 
 > [!div class="nextstepaction"]
-> [Monitorowanie rozwiązania Kubernetes za pomocą pakietu OMS](./container-service-tutorial-kubernetes-monitor.md)
+> [Monitorowanie rozwiązania Kubernetes za pomocą usługi Log Analytics](./container-service-tutorial-kubernetes-monitor.md)

@@ -1,6 +1,6 @@
 ---
-title: "Inspekcja i otrzymywanie powiadomień dotyczących ważnych działań związanych z subskrypcją platformy Azure | Microsoft Docs"
-description: "Informacje na temat historii zarządzania zasobami, kondycji usług i innych działań związanych z subskrypcją w Dzienniku aktywności oraz korzystanie z alertów Dziennika aktywności w celu otrzymania powiadomienia e-mail w przypadku wykonania działań wymagających wysokiego poziomu uprawnień w ramach subskrypcji."
+title: Inspekcja i otrzymywanie powiadomień dotyczących ważnych działań związanych z subskrypcją platformy Azure | Microsoft Docs
+description: Informacje na temat historii zarządzania zasobami, kondycji usług i innych działań związanych z subskrypcją w Dzienniku aktywności oraz korzystanie z alertów Dziennika aktywności w celu otrzymania powiadomienia e-mail w przypadku wykonania działań wymagających wysokiego poziomu uprawnień w ramach subskrypcji.
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: b0a79f46788dc7efb588110dc50805c45c373a49
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dd04cd9c8074d49df168b32840d12901da83c834
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Inspekcja i otrzymywanie powiadomień dotyczących ważnych działań związanych z subskrypcją platformy Azure
 
@@ -74,7 +74,7 @@ Kliknij kartę **JSON**, aby wyświetlić wszystkie szczegóły zdarzenia. Są t
 
 5. W obszarze **Metoda dostarczenia alertu** wybierz pozycję **Nowa** grupa akcji, a następnie wprowadź **nazwę** i **krótką nazwę** grupy akcji. Grupa akcji służy do zdefiniowania zestawu akcji wykonywanych po aktywowaniu alertu (spełnieniu kryteriów przez nowe zdarzenie).
 
-6. W obszarze **Akcje** dodaj co najmniej 1 akcję, wprowadzając **Nazwę** akcji, **Typ akcji** (na przykład wiadomość e-mal lub SMS) oraz **Szczegóły** wybranego typu akcji (na przykład adres URL elementu webhook, adres e-mail, numer do wysłania wiadomości SMS).
+6. W obszarze **Akcje** dodaj co najmniej 1 akcję, wprowadzając **nazwę** akcji, **typ akcji** (na przykład wiadomość e-mail, SMS lub element webhook) oraz **szczegóły** wybranego typu akcji (na przykład adres URL elementu webhook, adres e-mail, numer do wysłania wiadomości SMS).
 
     ![Tworzenie sieciowej grupy zabezpieczeń w portalu](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-actions.png)
 
@@ -83,7 +83,7 @@ Kliknij kartę **JSON**, aby wyświetlić wszystkie szczegóły zdarzenia. Są t
 ## <a name="test-the-activity-log-alert"></a>Testowanie alertu Dziennika aktywności
 
 > [!NOTE]
-> Alert Dziennika aktywności zostanie w pełni włączony w ciągu około 10 minut. Nowe zdarzenia występujące przed pełnym włączeniem alertu Dziennika aktywności nie spowodują wygenerowania powiadomienia.
+> Alert Dziennika aktywności zostanie w pełni włączony w ciągu około 5 minut. Nowe zdarzenia występujące przed pełnym włączeniem alertu Dziennika aktywności nie spowodują wygenerowania powiadomienia.
 >
 >
 

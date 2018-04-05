@@ -15,17 +15,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 9aa603c438b267064c2238192669126847f953ef
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cbc6b084620e716496716cef51461f714c9988b2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji interfejsu API SQL za pomocą platformy Node.js i witryny Azure Portal
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie za pomocą [interfejsu API SQL platformy Node.js](sql-api-sdk-node.md) utworzysz i uruchomisz aplikację konsoli.
+Ten przewodnik Szybki start przedstawia sposób tworzenia konta [interfejsu SQL API](sql-api-introduction.md) usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie za pomocą [interfejsu API SQL platformy Node.js](sql-api-sdk-node.md) utworzysz i uruchomisz aplikację konsoli.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

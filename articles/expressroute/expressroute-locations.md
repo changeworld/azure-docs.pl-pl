@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/20/2018
 ms.author: pareshmu
-ms.openlocfilehash: 001dca30121d51cfdee5b26a431c7a3702024e5e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bad06add368c42970d235b335d14185eb8abf3a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -77,7 +77,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Obsługiwane |Obsługiwane |Montreal, Toronto, miasto Quebec |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Obsługiwane |Obsługiwane |Amsterdam, Hongkong, Londyn, Dolina Krzemowa, Singapur, Sydney, Tokio, Waszyngton |
 | **[C3ntro](https://c3ntro.com/)** |Wkrótce |Wkrótce |Miami |
-| **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |Wkrótce |Wkrótce |Dolina Krzemowa |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Obsługiwane |Obsługiwane |Nowy Jork, San Antonio, Tokio, Toronto |
 | **China Telecom Global** |Obsługiwane |Nieobsługiwane |Hongkong |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Obsługiwane |Obsługiwane |Dallas, Montreal, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Obsługiwane |Obsługiwane |Amsterdam, Dublin, Londyn, Paryż, Tokio |
@@ -98,7 +98,7 @@ W poniższej tabeli przedstawiono lokalizacje według dostawcy usług. Jeśli ch
 | **Jisc** |Obsługiwane |Obsługiwane |Londyn |
 | **KINX** |Obsługiwane |Obsługiwane |Seul |
 | **[KPN](http://www.kpn.com/cloudconnect)** | Obsługiwane | Obsługiwane | Amsterdam | 
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Obsługiwane |Obsługiwane |Amsterdam, Chicago, Dallas, Dolina Krzemowa, Las Vegas, Londyn, Newport, Nowy Jork, San Antonio, Sao Paulo, Seattle, Singapur, Tokio, Waszyngton |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Obsługiwane |Obsługiwane |Amsterdam, Chicago, Dallas, Dolina Krzemowa, Las Vegas, Newport, Londyn, Sao Paulo, Seattle, Singapur, Waszyngton |
 | **LG CNS** |Obsługiwane |Obsługiwane |Busan, Seul |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Obsługiwane |Obsługiwane |Amsterdam, Chicago, Dallas, Denver, Dublin, Dolina Krzemowa, Hongkong, Las Vegas, Londyn, Los Angeles, Melbourne, Miami, miasto Quebec, Nowy Jork, San Antonio, Seattle, Singapur, Singapur2, Sydney, Toronto, Waszyngton |
 | **MTN** |Obsługiwane |Obsługiwane |Londyn |

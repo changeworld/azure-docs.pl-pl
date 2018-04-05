@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 10/11/2017
+ms.date: 03/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 73639d59d047fbf1e07b242e21605a83e3c4b837
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 509cff23609896a019c110d8046935dfbce793f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-single-azure-sql-database-using-the-azure-cli"></a>Tworzenie pojedynczej bazy danych Azure SQL Database za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -99,14 +99,9 @@ az group delete --name $resourcegroupname
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy już masz bazę danych, możesz nawiązać z nią połączenie i uruchamiać zapytania za pomocą ulubionych narzędzi. Dowiedz się więcej, wybierając narzędzie poniżej:
+- Teraz, gdy już masz bazę danych, możesz [nawiązać z nią połączenie i uruchamiać zapytania](sql-database-connect-query.md) za pomocą jednego z Twoich ulubionych narzędzi lub języków. 
+- Aby dowiedzieć się, jak zaprojektować pierwszą bazę danych, tworzyć tabele i wstawiać dane, zapoznaj się z jednym z następujących samouczków:
+ - [Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS](sql-database-design-first-database.md)
+  - [Projektowanie bazy danych Azure SQL Database i nawiązywanie połączenia za pomocą języka C# i narzędzia ADO.NET](sql-database-design-first-database-csharp.md)
 
-- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
-- [Visual Studio Code](sql-database-connect-query-vscode.md)
-- [.NET](sql-database-connect-query-dotnet.md)
-- [PHP](sql-database-connect-query-php.md)
-- [Node.js](sql-database-connect-query-nodejs.md)
-- [Java](sql-database-connect-query-java.md)
-- [Python](sql-database-connect-query-python.md)
-- [Ruby](sql-database-connect-query-ruby.md)
 

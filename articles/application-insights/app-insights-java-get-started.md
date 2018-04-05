@@ -1,6 +1,6 @@
 ---
-title: "Analiza aplikacji sieci Web w języku Java za pomocą usługi Application Insights | Microsoft Docs"
-description: "Monitorowanie wydajności aplikacji sieci Web w języku Java za pomocą usługi Application Insights. "
+title: Analiza aplikacji sieci Web w języku Java za pomocą usługi Application Insights | Microsoft Docs
+description: 'Monitorowanie wydajności aplikacji sieci Web w języku Java za pomocą usługi Application Insights. '
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1ec845a6491b406c1aef34609b155a9c3d087427
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -30,7 +30,7 @@ Usługa Application Insights obsługuje aplikacje w języku Java działające w 
 
 Potrzebne elementy:
 
-* Środowisko Oracle JRE 1.6 lub nowsze albo Zulu JRE 1.6 lub nowsze
+* Oracle lub środowisko JRE Zulu w wersji 1.7 lub 1.8
 * Subskrypcja platformy [Microsoft Azure](https://azure.microsoft.com/).
 
 *Jeśli masz aplikację sieci Web, która już działa, możesz wykonać alternatywną procedurę, aby [dodać zestaw SDK w czasie wykonywania na serwerze sieci Web](app-insights-java-live.md). Ta alternatywa pozwala uniknąć ponownego kompilowania kodu, ale nie udostępnia opcji pisania kodu w celu śledzenia działań użytkownika.*
@@ -169,8 +169,7 @@ Zestaw SDK usługi Application Insights szuka klucza w następującej kolejnośc
 Możesz również [ustawić klucz w kodzie](app-insights-api-custom-events-metrics.md#ikey):
 
 ```Java
-
-    telemetryClient.InstrumentationKey = "...";
+    TelemetryConfiguration.getActive().setInstrumentationKey(iKey);
 ```
 
 ## <a name="4-add-an-http-filter"></a>4. Dodawanie filtru HTTP

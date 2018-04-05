@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do usługi Azure Data Factory | Microsoft Docs"
-description: "Dowiedz się więcej o usłudze Azure Data Factory, czyli usłudze integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych."
+title: Wprowadzenie do usługi Azure Data Factory | Microsoft Docs
+description: Dowiedz się więcej o usłudze Azure Data Factory, czyli usłudze integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ac1ecf8ef9f1e30eb5bdd2fe86433a4981d73d8d
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory
  
@@ -66,7 +66,7 @@ Po umieszczeniu danych w centralnym magazynie danych w chmurze zebrane dane nale
 Po przekształceniu danych pierwotnych do postaci gotowej dla działań biznesowych należy załadować je do magazynu Azure Data Warehouse, bazy danych Azure SQL Database, bazy danych Azure CosmosDB lub dowolnego aparatu analizy, z którego mogą korzystać użytkownicy biznesowi przy użyciu swoich narzędzi do analizy biznesowej.
 
 ### <a name="monitor"></a>Monitorowanie
-Po pomyślnym utworzeniu i wdrożeniu potoku integracji danych, zapewniającego wartość biznesową danym przetworzonym, należy monitorować zaplanowane działania i potoki pod kątem współczynników powodzenia i niepowodzenia. Usługa Azure Data Factory dysponuje wbudowaną obsługą monitorowania potoków przy użyciu narzędzi Azure Monitor, API, PowerShell, Microsoft Operations Management Suite i paneli kondycji w witrynie Azure Portal.
+Po pomyślnym utworzeniu i wdrożeniu potoku integracji danych, zapewniającego wartość biznesową danym przetworzonym, należy monitorować zaplanowane działania i potoki pod kątem współczynników powodzenia i niepowodzenia. Usługa Azure Data Factory dysponuje wbudowaną obsługą monitorowania potoków przy użyciu narzędzi Azure Monitor, API, PowerShell, Log Analytics i paneli kondycji w witrynie Azure Portal.
 
 ## <a name="top-level-concepts"></a>Koncepcje najwyższego poziomu
 Subskrypcja platformy Azure może zawierać jedno lub więcej wystąpień usługi Azure Data Factory (lub fabryk danych). Usługa Azure Data Factory składa się z czterech głównych składników. Ich współdziałanie pozwala udostępnić platformę umożliwiającą tworzenie opartych na danych przepływów pracy wraz z etapami służącymi do przenoszenia i przekształcania danych.

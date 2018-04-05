@@ -1,6 +1,6 @@
 ---
-title: "Samouczek usługi Azure Container Service — wdrażanie aplikacji"
-description: "Samouczek usługi Azure Container Service — wdrażanie aplikacji"
+title: Samouczek usługi Azure Container Service — wdrażanie aplikacji
+description: Samouczek usługi Azure Container Service — wdrażanie aplikacji
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 02ec97fecd4759e9f35ab313ffe2d18fa076170a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7119976ada00e10ebeadf6fcff2daf125f439c17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-applications-in-kubernetes"></a>Uruchamianie aplikacji w usłudze Kubernetes
 
@@ -26,7 +26,7 @@ W tym samouczku (część czwarta z siedmiu) przykładowa aplikacja jest wdraża
 > * Uruchamianie aplikacji w usłudze Kubernetes
 > * Testowanie aplikacji
 
-W kolejnych samouczkach ta aplikacja będzie skalowana w poziomie i aktualizowana, a pakiet Operations Management Suite zostanie skonfigurowany do monitorowania klastra usługi Kubernetes.
+W kolejnych samouczkach ta aplikacja zostanie przeskalowana, zaktualizowana, a usługa Log Analytics zostanie skonfigurowana do monitorowania klastra Kubernetes.
 
 Na potrzeby tego samouczka założono, że masz podstawową wiedzę na temat pojęć związanych z rozwiązaniem Kubernetes. Aby uzyskać szczegółowe informacje na jego temat, zapoznaj się z [dokumentacją rozwiązania Kubernetes](https://kubernetes.io/docs/home/).
 

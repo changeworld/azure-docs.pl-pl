@@ -1,8 +1,8 @@
 ---
-title: "Używanie programu Azure AD Connect Health z usługą synchronizacji | Microsoft Docs"
-description: "Jest to strona programu Azure AD Connect Health, która będzie omawiać temat monitorowania synchronizacji usługi Azure AD Connect."
+title: Używanie programu Azure AD Connect Health z usługą synchronizacji | Microsoft Docs
+description: Jest to strona programu Azure AD Connect Health, która będzie omawiać temat monitorowania synchronizacji usługi Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 821d4bd7e6b526ad826caf005456edf8235291b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Monitorowanie synchronizacji usługi Azure AD Connect za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania programu Azure AD Connect (synchronizacja) przy użyciu programu Azure AD Connect Health.  Aby uzyskać informacje na temat monitorowania usług AD FS za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](active-directory-aadconnect-health-adfs.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](active-directory-aadconnect-health-adds.md).
@@ -83,11 +83,12 @@ W raporcie istniejące błędy synchronizacji są klasyfikowane według następu
 | Zduplikowany atrybut |Błędy, które występują, gdy program Azure AD Connect próbuje utworzyć lub zaktualizować obiekty ze zduplikowanymi wartościami jednego lub kilku atrybutów w usłudze Azure AD, które muszą być unikatowe w dzierżawie, na przykład proxyAddresses lub UserPrincipalName. |
 | Niezgodność danych |Błędy niepowodzenia miękkiego dopasowania obiektów, które powodują błędy synchronizacji. |
 | Błąd weryfikacji danych |Błędy spowodowane nieprawidłowymi danymi, takimi jak nieobsługiwane znaki w atrybutach krytycznych (np. UserPrincipalName) czy błędy formatowania, które powodują niepowodzenie weryfikacji przed zapisaniem w usłudze Azure AD. |
+| Zmiana domeny federacyjnej | Błędy, które występują, gdy konta korzystają z innej domeny federacyjnej. |
 | Duży atrybut |Błędy, które występują, gdy co najmniej jeden atrybut ma rozmiar większy niż dozwolony, długość większą niż dozwolona, lub liczbę większą niż dozwolona. |
 | Inne |Wszystkie pozostałe błędy, które nie należą do powyższych kategorii. Na podstawie opinii ta kategoria zostanie podzielona na podkategorie. |
 
 ![Podsumowanie raportu o błędach synchronizacji](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![Kategorie raportu o błędach synchronizacji](./media/active-directory-aadconnect-health-sync/errorreport02.png)
+![Kategorie raportu o błędach synchronizacji](./media/active-directory-aadconnect-health-sync/SyncErrorByTypes.PNG)
 
 ### <a name="list-of-objects-with-error-per-category"></a>Lista obiektów z błędami według kategorii
 Przejście do szczegółów każdej kategorii pozwoli wyświetlić listę obiektów mających błędy z danej kategorii.

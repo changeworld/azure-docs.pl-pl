@@ -1,102 +1,246 @@
 ---
-title: "Jak zarządzać usługą Azure Files za pomocą programu PowerShell | Microsoft Docs"
-description: "Dowiedz się, jak zarządzać usługą Azure Files za pomocą programu PowerShell."
+title: Zarządzanie udziałami plików platformy Azure przy użyciu programu Azure PowerShell
+description: Dowiedz się, jak zarządzać udziałami plików platformy Azure przy użyciu programu Azure PowerShell.
 services: storage
-documentationcenter: 
-author: RenaShahMSFT
-manager: aungoo
-editor: tysonn
-ms.assetid: 
+documentationcenter: ''
+author: wmgries
+manager: jeconnoc
+editor: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
-ms.author: renash
-ms.openlocfilehash: f919e1880f709b416867a29de14f1dcc63a165fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/26/2018
+ms.author: wgries
+ms.openlocfilehash: c30bcc293cfe57452844dd74378593c234146802
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="how-to-use-powershell-to-manage-azure-files"></a>Jak zarządzać usługą Azure Files za pomocą programu PowerShell
-Przy użyciu programu Azure PowerShell można tworzyć udziały plików i zarządzać nimi.
+# <a name="managing-azure-file-shares-with-azure-powershell"></a>Zarządzanie udziałami plików platformy Azure przy użyciu programu Azure PowerShell 
+[Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemach Windows, Linux i macOS. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu programu PowerShell. W tym artykule omówiono sposób wykonywania następujących zadań:
 
-## <a name="install-the-powershell-cmdlets-for-azure-storage"></a>Instalowanie poleceń cmdlet programu PowerShell dla usługi Azure Storage
-Aby przygotować się do użycia programu Azure PowerShell, pobierz i zainstaluj polecenia cmdlet tego programu. Aby uzyskać informacje o punkcie instalacji oraz instrukcje dotyczące instalacji, zobacz [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Jak zainstalować i skonfigurować program Azure PowerShell).
+> [!div class="checklist"]
+> * Tworzenie grupy zasobów i konta magazynu
+> * Tworzenie udziału plików platformy Azure 
+> * Tworzenie katalogu
+> * Przekazywanie pliku 
+> * Pobieranie pliku
+> * Tworzenie i używanie migawki udziału
 
-> [!NOTE]
-> Zalecamy pobranie i zainstalowanie najnowszej wersji modułu Azure PowerShell (lub uaktualnienie do tej wersji).
-> 
-> 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Otwórz okno programu Azure PowerShell, klikając przycisk **Start** i wpisując polecenie **Windows PowerShell**. W oknie programu PowerShell zostanie załadowany moduł Azure PowerShell.
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-## <a name="create-a-context-for-your-storage-account-and-key"></a>Tworzenie kontekstu konta magazynu i klucza
-Utwórz kontekst konta magazynu. W kontekście zawarta jest nazwa konta magazynu oraz klucz konta. Aby uzyskać instrukcje dotyczące kopiowania klucza konta z witryny [Azure Portal](https://portal.azure.com), zobacz [Wyświetlanie i kopiowanie kluczy dostępu do magazynu](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#view-and-copy-storage-access-keys).
+Jeśli chcesz zainstalować program PowerShell i używać go lokalnie, ten przewodnik wymaga modułu Azure PowerShell w wersji 5.1.1 lub nowszej. Aby dowiedzieć się, jaka wersja modułu Azure PowerShell jest uruchomiona, wykonaj polecenie `Get-Module -ListAvailable AzureRM`. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
-W poniższym przykładzie zastąp zmienne `storage-account-name` i `storage-account-key` nazwą konta magazynu i kluczem.
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Jeśli nie masz jeszcze grupy zasobów platformy Azure, możesz utworzyć nową grupę za pomocą polecenia cmdlet [`New-AzureRmResourceGroup`](/powershell/module/azurerm.resources/new-azurermresourcegroup). 
 
-```powershell
-# create a context for account and key
-$ctx=New-AzureStorageContext storage-account-name storage-account-key
+W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w regionie East US (Wschodnie stany USA):
+
+```azurepowershell-interactive
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-new-file-share"></a>Tworzenie nowego udziału plików
-Utwórz nowy udział o nazwie `logs`.
+## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
+Konto magazynu to udostępniona pula magazynu, której można używać do wdrażania udziałów plików platformy Azure lub innych zasobów magazynu, takich jak obiekty Blob i kolejki. Konto magazynu może zawierać nieograniczoną liczbę udziałów, a udział może obejmować nieograniczoną liczbę plików, nieprzekraczającą limitów pojemności konta magazynu.
 
-```powershell
-# create a new share
-$s = New-AzureStorageShare logs -Context $ctx
+Ten przykład obejmuje tworzenie konta magazynu o nazwie `mystorageacct<random number>` i umieszczenie odwołania do tego konta magazynu w zmiennej **$storageAcct**. Nazwy kont magazynów muszą być unikatowe, użyj zatem polecenia `Get-Random` w celu dołączenia liczby do nazwy, aby była unikatowa. 
+
+```azurepowershell-interactive 
+$storageAcct = New-AzureRmStorageAccount `
+                  -ResourceGroupName "myResourceGroup" `
+                  -Name "mystorageacct$(Get-Random)" `
+                  -Location eastus `
+                  -SkuName Standard_LRS 
 ```
 
-Masz już udział plików w usłudze Magazyn plików. Teraz dodamy katalog i plik.
+## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
+Teraz możesz utworzyć swój pierwszy udział plików platformy Azure. Udział plików możesz utworzyć za pomocą polecenia cmdlet [New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare). W tym przykładzie tworzony jest udział o nazwie `myshare`.
 
-> [!IMPORTANT]
-> Nazwa udziału plików musi się składać z samych małych liter. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Naming and Referencing Shares, Directories, Files, and Metadata](https://msdn.microsoft.com/library/azure/dn167011.aspx) (Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych).
-> 
-> 
-
-## <a name="create-a-directory-in-the-file-share"></a>Tworzenie katalogu w udziale plików
-Utwórz katalog w udziale. W poniższym przykładzie katalog nosi nazwę `CustomLogs`.
-
-```powershell
-# create a directory in the share
-New-AzureStorageDirectory -Share $s -Path CustomLogs
+```azurepowershell-interactive
+New-AzureStorageShare `
+   -Name myshare `
+   -Context $storageAcct.Context
 ```
 
-## <a name="upload-a-local-file-to-the-directory"></a>Przekazywanie pliku lokalnego do katalogu
-Teraz przekażemy plik lokalny do katalogu. W poniższym przykładzie plik zostanie przekazany z lokalizacji `C:\temp\Log1.txt`. Zmień ścieżkę pliku tak, aby wskazywała prawidłowy plik na komputerze lokalnym.
+> [!Important]  
+> Nazwy udziałów muszą składać się z małych liter, cyfr i pojedynczych łączników, ale nie mogą zaczynać się od łącznika. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych).
 
-```powershell
-# upload a local file to the new directory
-Set-AzureStorageFileContent -Share $s -Source C:\temp\Log1.txt -Path CustomLogs
+## <a name="manipulating-the-contents-of-the-azure-file-share"></a>Manipulowanie zawartością udziału plików platformy Azure
+Po utworzeniu udziału plików platformy Azure możesz zainstalować ten udział plików w systemie [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) lub [macOS](storage-how-to-use-files-mac.md) za pomocą protokołu SMB. Możesz też manipulować udziałem plików platformy Azure przy użyciu modułu Azure PowerShell. Jest to korzystniejsze od instalowania udziału plików za pomocą protokołu SMB, ponieważ wszystkie żądania przekazywane za pośrednictwem programu PowerShell są przekazywane przy użyciu interfejsu API REST usługi Pliki, co umożliwia tworzenie, modyfikowanie oraz usuwanie plików i katalogów w udziale plików z następujących źródeł:
+
+- Program PowerShell Cloud Shell (który nie może instalować udziałów plików za pośrednictwem protokołu SMB).
+- Klienci, którzy nie mogą instalować udziałów SMB, tacy jak klienci lokalni bez odblokowanego portu 445.
+- Scenariusze bez serwerów, tak jak w przypadku rozwiązania [Azure Functions](../../azure-functions/functions-overview.md). 
+
+### <a name="create-directory"></a>Tworzenie katalogu
+Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału plików platformy Azure, użyj polecenia cmdlet [`New-AzureStorageDirectory`](/powershell/module/azurerm.storage/new-azurestoragedirectory).
+
+```azurepowershell-interactive
+New-AzureStorageDirectory `
+   -Context $storageAcct.Context `
+   -ShareName "myshare" `
+   -Path "myDirectory"
 ```
 
-## <a name="list-the-files-in-the-directory"></a>Wyświetlanie listy plików w katalogu
-Aby zobaczyć plik w katalogu, możesz wyświetlić listę wszystkich plików w tym katalogu. To polecenie zwraca pliki i podkatalogi (jeśli istnieją) w katalogu CustomLogs.
+### <a name="upload-a-file"></a>Przekazywanie pliku
+Aby zademonstrować przekazywanie pliku przy użyciu polecenia cmdlet [`Set-AzureStorageFileContent`](/powershell/module/azure.storage/set-azurestoragefilecontent), najpierw należy utworzyć plik do przekazania w obrębie dysku tymczasowego programu PowerShell Cloud Shell. 
 
-```powershell
-# list files in the new directory
-Get-AzureStorageFile -Share $s -Path CustomLogs | Get-AzureStorageFile
+Ten przykład obejmuje umieszczenie bieżącej daty i godziny w nowym pliku na dysku tymczasowym, a następnie przekazanie tego pliku do udziału plików.
+
+```azurepowershell-interactive
+# this expression will put the current date and time into a new file on your scratch drive
+Get-Date | Out-File -FilePath "C:\Users\ContainerAdministrator\CloudDrive\SampleUpload.txt" -Force
+
+# this expression will upload that newly created file to your Azure file share
+Set-AzureStorageFileContent `
+   -Context $storageAcct.Context `
+   -ShareName "myshare" `
+   -Source "C:\Users\ContainerAdministrator\CloudDrive\SampleUpload.txt" `
+   -Path "myDirectory\SampleUpload.txt"
+```   
+
+Jeśli korzystasz z programu PowerShell lokalnie, zastąp ciąg `C:\Users\ContainerAdministrator\CloudDrive\` ścieżką, która istnieje na Twoim komputerze.
+
+Po przekazaniu pliku możesz upewnić się, że plik został przekazany do udziału plików platformy Azure, korzystając z polecenia cmdlet [`Get-AzureStorageFile`](/powershell/module/Azure.Storage/Get-AzureStorageFile). 
+
+```azurepowershell-interactive
+Get-AzureStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
 ```
 
-Polecenie Get-AzureStorageFile zwraca listę plików i katalogów dla dowolnego przekazanego obiektu katalogu. Polecenie „Get-AzureStorageFile -Share $s” zwraca listę plików i katalogów w katalogu głównym. Aby uzyskać listę plików w podkatalogu, trzeba przekazać nazwę podkatalogu do polecenia Get-AzureStorageFile. Tak właśnie działa powyższy zapis — pierwsza część polecenia do kreski pionowej zwraca wystąpienie katalogu dla podkatalogu CustomLogs. Następnie jest ono przekazywane do polecenia Get-AzureStorageFile, które zwraca pliki i katalogi w podkatalogu CustomLogs.
+### <a name="download-a-file"></a>Pobieranie pliku
+Za pomocą polecenia cmdlet [`Get-AzureStorageFileContent`](/powershell/module/azure.storage/get-azurestoragefilecontent) możesz pobrać kopię pliku, który właśnie został przekazany na dysk tymczasowy usługi Cloud Shell.
 
-## <a name="copy-files"></a>Kopiowanie plików
-Począwszy od wersji 0.9.7 programu Azure PowerShell, można kopiować pliki do innych plików, pliki do obiektów blob oraz obiekty blob do plików. Poniżej przedstawiamy sposób wykonywania tych operacji kopiowania za pomocą poleceń cmdlet programu PowerShell.
+```azurepowershell-interactive
+# Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
+Remove-Item 
+    `-Path "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt" `
+     -Force `
+     -ErrorAction SilentlyContinue
 
-```powershell
-# copy a file to the new directory
-Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt -DestShareName destshare -DestFilePath destdir/hellocopy.txt -Context $srcCtx -DestContext $destCtx
-
-# copy a blob to a file directory
-Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
+Get-AzureStorageFileContent `
+    -Context $storageAcct.Context `
+    -ShareName "myshare" `
+    -Path "myDirectory\SampleUpload.txt" ` 
+    -Destination "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt"
 ```
+
+Po pobraniu pliku możesz sprawdzić, czy plik został pobrany na dysk tymczasowy programu PowerShell Cloud Shell, za pomocą polecenia `Get-ChildItem`.
+
+```azurepowershell-interactive
+Get-ChildItem -Path "C:\Users\ContainerAdministrator\CloudDrive"
+``` 
+
+### <a name="copy-files"></a>Kopiowanie plików
+Jednym z często wykonywanych zadań jest kopiowanie plików z jednego udziału plików do innego lub do/z kontenera usługi Azure Blob Storage. Aby zademonstrować tę funkcję, możesz utworzyć nowy udział i skopiować właśnie przekazany plik do tego nowego udziału przy użyciu polecenia cmdlet [`Start-AzureStorageFileCopy`](/powershell/module/azure.storage/start-azurestoragefilecopy). 
+
+```azurepowershell-interactive
+New-AzureStorageShare `
+    -Name "myshare2" `
+    -Context $storageAcct.Context
+  
+New-AzureStorageDirectory `
+   -Context $storageAcct.Context `
+   -ShareName "myshare2" `
+   -Path "myDirectory2"
+
+Start-AzureStorageFileCopy 
+    -Context $storageAcct.Context `
+    -SrcShareName "myshare" `
+    -SrcFilePath "myDirectory\SampleUpload.txt" `
+    -DestShareName "myshare2" `
+    -DestFilePath "myDirectory2\SampleCopy.txt" `
+    -DestContext $storageAcct.Context
+```
+
+Teraz, po wyświetleniu listy plików w nowym udziale, skopiowany plik powinien być widoczny.
+
+```azurepowershell-interactive
+Get-AzureStorageFile -Context $storageAcct.Context -Share "myshare2" -Path "myDirectory2" 
+```
+
+Polecenie cmdlet `Start-AzureStorageFileCopy` jest wygodne w przypadku przenoszenia plików ad-hoc między udziałami plików platformy Azure i kontenerami usługi Azure Blob Storage, jednak do przenoszenia większej liczby plików lub plików o większych rozmiarach zalecamy używanie narzędzia AzCopy. Dowiedz się więcej o [narzędziu AzCopy dla systemu Windows](../common/storage-use-azcopy.md) i [narzędziu AzCopy dla systemu Linux](../common/storage-use-azcopy-linux.md). Narzędzie AzCopy musi być zainstalowane lokalnie — nie jest dostępne w usłudze Cloud Shell 
+
+## <a name="create-and-modify-share-snapshots"></a>Tworzenie i modyfikowanie migawek udziałów
+Jedną z dodatkowych przydatnych czynności, które można wykonywać na udziałach plików platformy Azure, jest tworzenie migawek udziałów. Migawka zachowuje określony moment w czasie dla udziału plików platformy Azure. Migawki udziałów są podobne do technologii systemów operacyjnych, które być może już znasz, takich jak:
+- [Usługa kopiowania woluminów w tle (VSS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee923636) dla systemów plików systemu Windows, takich jak NTFS i ReFS
+- Migawki [Menedżera woluminów logicznych (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) dla systemu Linux
+- Migawki [Systemu plików firmy Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) dla systemu macOS 
+
+Migawkę udziału dla udziału można utworzyć, używając metody `Snapshot` na obiekcie programu PowerShell dla udziału plików, który jest pobierany za pomocą polecenia cmdlet [`Get-AzureStorageShare`](/powershell/module/azure.storage/get-azurestorageshare). 
+
+```azurepowershell-interactive
+$share = Get-AzureStorageShare -Context $storageAcct.Context -Name "myshare"
+$snapshot = $share.Snapshot()
+```
+
+### <a name="browse-share-snapshots"></a>Przeglądanie migawek udziałów
+Aby przeglądać zawartość migawki udziału, należy przekazać odwołanie do migawki (`$snapshot`) do parametru `-Share` polecenia cmdlet `Get-AzureStorageFile`.
+
+```azurepowershell-interactive
+Get-AzureStorageFile -Share $snapshot
+```
+
+### <a name="list-share-snapshots"></a>Wyświetlanie listy migawek udziałów
+Za pomocą następującego polecenia można wyświetlić listę migawek wykonanych dla udziału.
+
+```azurepowershell-interactive
+Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.Name -eq "myshare" -and $_.IsSnapshot -eq $true }
+```
+
+### <a name="restore-from-a-share-snapshot"></a>Przywracanie na podstawie migawki udziału
+Aby przywrócić plik, użyj polecenia `Start-AzureStorageFileCopy`, którego używaliśmy wcześniej. Na potrzeby tego przewodnika Szybki start najpierw usuniemy nasz plik `SampleUpload.txt`, który wcześniej przekazaliśmy, aby można go było przywrócić na podstawie migawki.
+
+```azurepowershell-interactive
+# Delete SampleUpload.txt
+Remove-AzureStorageFile `
+    -Context $storageAcct.Context `
+    -ShareName "myshare" `
+    -Path "myDirectory\SampleUpload.txt"
+
+# Restore SampleUpload.txt from the share snapshot
+Start-AzureStorageFileCopy `
+    -SrcShare $snapshot `
+    -SrcFilePath "myDirectory\SampleUpload.txt" `
+    -DestContext $storageAcct.Context `
+    -DestShareName "myshare" `
+    -DestFilePath "myDirectory\SampleUpload.txt"
+```
+
+### <a name="delete-a-share-snapshot"></a>Usuwanie migawki udziału
+Aby usunąć migawkę udziału, użyj polecenia cmdlet [`Remove-AzureStorageShare`](/powershell/module/azure.storage/remove-azurestorageshare) ze zmienną zawierającą odwołanie `$snapshot` do parametru `-Share`.
+
+```azurepowershell-interactive
+Remove-AzureStorageShare -Share $snapshot
+```
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+Gdy skończysz, możesz usunąć grupę zasobów i wszystkie pokrewne zasoby za pomocą polecenia cmdlet [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). 
+
+```azurepowershell-interactive
+Remove-AzureRmResourceGroup -Name myResourceGroup
+```
+
+Zasoby możesz również usuwać pojedynczo:
+
+- Aby usunąć udziały plików platformy Azure utworzone na potrzeby tego przewodnika Szybki start.
+```azurepowershell-interactive
+Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.IsSnapshot -eq $false } | ForEach-Object { 
+    Remove-AzureStorageShare -Context $storageAcct.Context -Name $_.Name
+}
+```
+
+- Aby usunąć konto magazynu (spowoduje to niejawne usunięcie utworzonych udziałów plików platformy Azure oraz wszelkich innych zasobów magazynu, które mogły zostać utworzone, takich jak kontener usługi Azure Blob Storage).
+```azurepowershell-interactive
+Remove-AzureRmStorageAccount -ResourceGroupName $storageAcct.ResourceGroupName -Name $storageAcct.StorageAccountName
+```
+
 ## <a name="next-steps"></a>Następne kroki
-Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files.
-
-* [Często zadawane pytania](../storage-files-faq.md)
-* [Rozwiązywanie problemów w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)      
-* [Rozwiązywanie problemów w systemie Linux](storage-troubleshoot-linux-file-connection-problems.md)    
+- [Zarządzanie udziałami plików za pomocą witryny Azure Portal](storage-how-to-use-files-portal.md)
+- [Zarządzanie udziałami plików za pomocą interfejsu wiersza polecenia platformy Azure](storage-how-to-use-files-cli.md)
+- [Zarządzanie udziałami plików za pomocą Eksploratora usługi Storage](storage-how-to-use-files-storage-explorer.md)
+- [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)

@@ -1,6 +1,6 @@
 ---
-title: "Szybki start: tworzenie serwera usługi Azure Database for MySQL — interfejs wiersza polecenia platformy Azure"
-description: "W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure."
+title: 'Quickstart: Create an Azure Database for MySQL server - Azure CLI'
+description: W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 2cd867f09550f922479955b885f10ff329715c1c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a4ae31e133cb275a8b795d53e73e0e83bb64b045
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Tworzenie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure w czasie około pięciu minut. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów.
@@ -56,11 +56,11 @@ Zwracany kod JSON powinien zawierać następujące informacje:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.3"
+    "version": "0.0.4"
 }
 ```
 
-Jeśli nie jest zwracana wersja 0.0.3, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
+Jeśli nie jest zwracana wersja 0.0.4, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

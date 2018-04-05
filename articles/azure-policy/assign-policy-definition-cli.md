@@ -9,11 +9,11 @@ ms.date: 03/13/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: f56f00aabbef2cfa86264d3e962af9a9c0bafa98
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1ff1240073e25bf406e7da6b79135264376a5b3f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów w środowisku Azure za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ Poprzednie polecenie korzysta z następujących informacji:
 - **Nazwa** — nazwa wyświetlana przypisania zasad. W tym przypadku użyj nazwy przypisania *Audit Virtual Machines without Managed Disks Assignment* (Przeprowadź inspekcję maszyn wirtualnych bez dysków zarządzanych).
 - **Zasady** — identyfikator definicji zasad, na podstawie której tworzysz przypisanie. W tym przypadku jest to definicja zasad *Audit Virtual Machines without Managed Disks* (Przeprowadź inspekcję maszyn wirtualnych bez dysków zarządzanych). Aby uzyskać identyfikator definicji zasad, uruchom następujące polecenie: `az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`
 - **Zakres** — zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad. Może obejmować zarówno subskrypcje, jak i grupy zasobów. Pamiętaj, aby zastąpić fragment &lt;zakres&gt; nazwą grupy zasobów.
-- **Jednostka SKU** — to polecenie tworzy przypisanie zasad w ramach warstwy Standardowa. Warstwa Standardowa umożliwia osiągnięcie zarządzania, oceny zgodności i korygowania na dużą skalę. Obecnie warstwa Standardowa jest bezpłatna. W przyszłości za warstwę Standardowa będą naliczane opłaty. Kiedy ceny się zmienią, zostanie to ogłoszone, a bardziej szczegółowe informacje zostaną udostępnione w [cenniku usługi Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy).
+- **Jednostka SKU** — to polecenie tworzy przypisanie zasad w ramach warstwy Standardowa. Warstwa Standardowa umożliwia osiągnięcie zarządzania, oceny zgodności i korygowania na dużą skalę. Aby uzyskać dodatkowe informacje o warstwach cenowych, zobacz [Azure Policy — cennik](https://azure.microsoft.com/pricing/details/azure-policy).
 
 
 ## <a name="identify-non-compliant-resources"></a>Identyfikowanie niezgodnych zasobów

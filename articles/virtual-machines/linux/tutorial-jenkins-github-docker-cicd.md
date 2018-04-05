@@ -1,26 +1,26 @@
 ---
-title: "Tworzenie potoku tworzenia aplikacji na platformie Azure przy użyciu usługi Jenkins | Microsoft Docs"
-description: "Dowiedz się, jak na platformie Azure utworzyć maszynę wirtualną usługi Jenkins, która przeprowadza ściąganie z usługi GitHub przy każdym zatwierdzeniu kodu i tworzy nowy kontener Docker w celu uruchomienia aplikacji"
+title: Tworzenie potoku tworzenia aplikacji na platformie Azure przy użyciu usługi Jenkins | Microsoft Docs
+description: Dowiedz się, jak na platformie Azure utworzyć maszynę wirtualną usługi Jenkins, która przeprowadza ściąganie z usługi GitHub przy każdym zatwierdzeniu kodu i tworzy nowy kontener Docker w celu uruchomienia aplikacji
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/15/2017
+ms.date: 03/27/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8a595ead7da8dfa5544903bd698bfdff40555eb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Sposób budowania infrastruktury tworzenia aplikacji na maszynie wirtualnej systemu Linux na platformie Azure przy użyciu usługi Jenkins, GitHub i Docker
 Aby zautomatyzować fazę kompilacji i testowania podczas tworzenia aplikacji, można użyć potoku ciągłej integracji i wdrażania (CI/CD). W tym samouczku utworzysz potok CI/CD na maszynie wirtualnej platformy Azure. Wykonasz m.in. następujące czynności:
@@ -64,7 +64,6 @@ runcmd:
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
   - usermod -aG docker jenkins
-  - touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion
   - service jenkins restart
 ```
 
@@ -118,10 +117,13 @@ Jeśli plik nie jest jeszcze dostępny, poczekaj kilka minut, aż plik cloud-ini
 
 Otwórz przeglądarkę internetową i przejdź do `http://<publicIps>:8080`. Ukończ początkową konfigurację usługi Jenkins w następujący sposób:
 
-- Wprowadź nazwę użytkownika **admin**, a następnie podaj hasło *initialAdminPassword* uzyskane z maszyny wirtualnej w poprzednim kroku.
-- Wybierz pozycję **Zarządzaj usługą Jenkins**, a następnie **Zarządzaj wtyczkami**.
-- Wybierz pozycję **Dostępne**, a następnie wyszukaj pozycję *GitHub* w polu tekstowym u góry. Zaznacz pole wyboru pozycji *wtyczki GitHub*, a następnie wybierz pozycję **Pobierz teraz i zainstaluj po ponownym uruchomieniu**.
-- Zaznacz pole wyboru pozycji **Uruchom ponownie usługę Jenkins po zakończeniu instalacji, jeśli żadne zadania nie zostały uruchomione**, a następnie zaczekaj na zakończenie procesu instalacji wtyczki.
+- Wybierz pozycję **Wybierz wtyczki do zainstalowania**.
+- Wyszukaj pozycję *GitHub* w polu tekstowym u góry. Zaznacz pole wyboru pozycji *GitHub*, a następnie wybierz pozycję **Zainstaluj**.
+- Utwórz pierwszego użytkownika administratora. Wprowadź nazwę użytkownika, taką jak **admin**, a następnie podaj bezpieczne hasło. Na koniec wpisz pełną nazwę i adres e-mail.
+- Wybierz pozycję **Zapisz i zakończ**.
+- Gdy narzędzie Jenkins będzie gotowe, wybierz pozycję **Rozpocznij korzystanie z narzędzia Jenkins**.
+  - Jeśli po rozpoczęciu korzystania z narzędzia Jenkins w przeglądarce internetowej zostanie wyświetlona pusta strona, uruchom ponownie usługę Jenkins. Z poziomu sesji protokołu SSH wpisz ciąg `sudo service jenkins restart`, a następnie odśwież przeglądarkę internetową.
+- Zaloguj się do narzędzie Jenkins przy użyciu utworzonej nazwy użytkownika i hasła.
 
 
 ## <a name="create-github-webhook"></a>Tworzenie elementu webhook GitHub
@@ -139,7 +141,7 @@ Utwórz element webhook wewnątrz utworzonego rozwidlenia:
 
 
 ## <a name="create-jenkins-job"></a>Tworzenie zadania usługi Jenkins
-Aby usługa Jenkins odpowiadała w usłudze GitHub na zdarzenie, takie jak zatwierdzenie kodu, należy utworzyć zadanie usługi Jenkins. 
+Aby usługa Jenkins odpowiadała w usłudze GitHub na zdarzenie, takie jak zatwierdzenie kodu, należy utworzyć zadanie usługi Jenkins. Użyj adresów URL dla własnego rozwidlenia usługi GitHub.
 
 W witrynie internetowej usługi Jenkins wybierz na stronie głównej pozycję **Utwórz nowe zadania**:
 

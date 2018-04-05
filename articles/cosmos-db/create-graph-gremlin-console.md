@@ -1,6 +1,6 @@
 ---
-title: "Samouczek usługi Azure Cosmos DB: Tworzenie, wykonywanie zapytań i przechodzenie w konsoli Apache TinkerPops Gremlin | Microsoft Docs"
-description: "Przewodnik Szybki start usługi Azure Cosmos DB opisujący tworzenie wierzchołków, krawędzi i zapytań za pomocą interfejsu API programu Graph w usłudze Azure Cosmos DB."
+title: 'Samouczek usługi Azure Cosmos DB: Tworzenie, wykonywanie zapytań i przechodzenie w konsoli Apache TinkerPops Gremlin | Microsoft Docs'
+description: Przewodnik Szybki start usługi Azure Cosmos DB opisujący tworzenie wierzchołków, krawędzi i zapytań za pomocą interfejsu API programu Graph w usłudze Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
 manager: jhubbard
@@ -13,17 +13,17 @@ ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 2729ad97b49e7284022adae06c5b5f006647849c
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 3f0ec59ccee61fd0dbb7587a9d2ec3e17b1cf873
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Tworzenie elementów, wykonywanie zapytań i przechodzenie grafu w konsoli Gremlin
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych i grafu (kontenera) przy użyciu witryny Azure Portal oraz korzystania z [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z platformy [Apache TinkerPop](http://tinkerpop.apache.org) do pracy z danymi interfejsu API programu Graph. W tym samouczku utworzysz wierzchołki i krawędzie oraz wykonasz względem nich zapytania, zaktualizujesz właściwość wierzchołka, przejdziesz graf i usuniesz wierzchołek.
+Ten przewodnik Szybki start przedstawia sposób tworzenia konta [interfejsu API programu Graph](graph-introduction.md) usługi Azure Cosmos DB, bazy danych i grafu (kontenera) przy użyciu witryny Azure Portal oraz korzystania z [konsoli Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z platformy [Apache TinkerPop](http://tinkerpop.apache.org) do pracy z danymi interfejsu API programu Graph. W tym samouczku utworzysz wierzchołki i krawędzie oraz wykonasz względem nich zapytania, zaktualizujesz właściwość wierzchołka, przejdziesz graf i usuniesz wierzchołek.
 
 ![Usługa Azure Cosmos DB w konsoli Apache Gremlin](./media/create-graph-gremlin-console/gremlin-console.png)
 

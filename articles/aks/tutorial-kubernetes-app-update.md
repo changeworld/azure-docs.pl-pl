@@ -1,6 +1,6 @@
 ---
-title: "Samouczek dotyczący usługi Kubernetes na platformie Azure — aktualizowanie aplikacji"
-description: "Samouczek dotyczący usługi AKS — aktualizowanie aplikacji"
+title: Samouczek dotyczący usługi Kubernetes na platformie Azure — aktualizowanie aplikacji
+description: Samouczek dotyczący usługi AKS — aktualizowanie aplikacji
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 82a6b6580fbe69b11fdb8a47e2ca09c19b341bbc
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-an-application-in-azure-container-service-aks"></a>Aktualizowanie aplikacji w usłudze Azure Container Service (AKS)
+# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>Samouczek: aktualizowanie aplikacji w usłudze Azure Container Service (AKS)
 
 Po wdrożeniu aplikacji w usłudze Kubernetes można ją zmodyfikować, określając nowy obraz kontenera lub wersję obrazu. W takiej sytuacji aktualizacja jest przygotowywana tak, aby tylko część była współbieżnie aktualizowana. Ta aktualizacja etapowa umożliwia kontynuowanie działania podczas aktualizacji aplikacji. Udostępnia ona również mechanizm wycofywania w przypadku niepowodzenia wdrożenia. 
 
@@ -27,7 +27,7 @@ W tym samouczku (część szósta z ośmiu) aktualizowana jest przykładowa apli
 > * Wypychanie obrazu kontenera do usługi Azure Container Registry
 > * Wdrażanie zaktualizowanego obrazu kontenera
 
-W kolejnych samouczkach pakiet Operations Management Suite zostanie skonfigurowany do monitorowania klastra usługi Kubernetes.
+W kolejnych samouczkach usługa Log Analytics zostanie skonfigurowana do monitorowania klastra usługi Kubernetes.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -89,7 +89,7 @@ Użyj polecenia [docker tag][docker-tag] w celu otagowania obrazu. Zastąp eleme
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Użyj polecenia [docker push][docker-push] w celu przekazania obrazu do rejestru. Zastąp element `<acrLoginServer>` nazwą serwera logowania usługi Azure Container Registry.
+Użyj polecenia [docker push][docker-push] w celu przekazania obrazu do rejestru. Zastąp element `<acrLoginServer>` nazwą serwera logowania usługi Azure Container Registry. Jeśli wystąpią problemy związane z wypychaniem do rejestru usługi ACR, upewnij się, że uruchomiono polecenie [az acr login][az-acr-login].
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -164,7 +164,7 @@ W tym samouczku zaktualizowano aplikację i wydano tę aktualizację do klastra 
 > * Wypchnięto obraz kontenera do usługi Azure Container Registry
 > * Wdrożono zaktualizowaną aplikację
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak monitorować usługę Kubernetes przy użyciu pakietu Operations Management Suite.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak monitorować usługę Kubernetes przy użyciu usługi Log Analytics.
 
 > [!div class="nextstepaction"]
 > [Monitorowanie rozwiązania Kubernetes za pomocą usługi Log Analytics][aks-tutorial-monitor]
@@ -179,3 +179,4 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak monitorować usług
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie środowiska deweloperskiego w systemie Windows dla mikrousług platformy Azure | Microsoft Docs"
-description: "Zainstaluj środowisko uruchomieniowe, zestaw SDK i narzędzia oraz utwórz lokalny klaster projektowy. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji w systemie Windows."
+title: Konfigurowanie środowiska deweloperskiego w systemie Windows dla mikrousług platformy Azure | Microsoft Docs
+description: Zainstaluj środowisko uruchomieniowe, zestaw SDK i narzędzia oraz utwórz lokalny klaster projektowy. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji w systemie Windows.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 730753efb6efaad659e1a713b0b68329032b3983
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8e0898cf8046443728f92a8e05f17e51221fe60a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/09/2018
 > 
 > 
 
- Aby móc tworzyć i uruchamiać [aplikacje usługi Azure Service Fabric][1] na maszynie deweloperskiej z systemem Windows, zainstaluj środowisko uruchomieniowe, zestaw SDK oraz narzędzia. Należy również włączyć wykonywanie skryptów programu Windows PowerShell zawartych w zestawie SDK.
+Aby kompilować i uruchamiać [aplikacje usługi Azure Service Fabric][1] na maszynie deweloperskiej z systemem Windows, należy zainstalować środowisko uruchomieniowe, zestaw SDK oraz narzędzia usługi Service Fabric. Należy również [włączyć wykonywanie skryptów programu Windows PowerShell](#enable-powershell-script-execution) zawartych w zestawie SDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 ### <a name="supported-operating-system-versions"></a>Obsługiwane wersje systemu operacyjnego
@@ -49,12 +49,12 @@ Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu op
 ## <a name="install-the-sdk-and-tools"></a>Instalowanie zestawu SDK i narzędzi
 ### <a name="to-use-visual-studio-2017"></a>Używanie programu Visual Studio 2017
 Narzędzia Service Fabric Tools są częścią pakietu roboczego Programowanie na platformie Azure w programie Visual Studio 2017. Włącz to obciążenie w ramach instalacji programu Visual Studio.
-Ponadto należy zainstalować zestaw SDK usługi Microsoft Azure Service Fabric przy użyciu instalatora platformy sieci Web.
+Ponadto należy zainstalować zestaw SDK i środowisko uruchomieniowe usługi Microsoft Azure Service Fabric przy użyciu Instalatora platformy sieci Web.
 
 * [Instalowanie zestawu SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Używanie programu Visual Studio 2015 (wymaga programu Visual Studio 2015 Update 2 lub nowszego)
-W przypadku programu Visual Studio 2015 narzędzia Service Fabric są instalowane razem z zestawem SDK przy użyciu instalatora platformy sieci Web:
+W przypadku programu Visual Studio 2015 narzędzia usługi Service Fabric są instalowane razem z zestawem SDK i środowiskiem uruchomieniowym przy użyciu Instalatora platformy sieci Web:
 
 * [Instalowanie zestawu SDK i narzędzi usługi Microsoft Azure Service Fabric][full-bundle-vs2015]
 

@@ -1,6 +1,6 @@
 ---
-title: "Samouczek usługi Azure Container Service — wdrażanie klastra"
-description: "Samouczek usługi Azure Container Service — wdrażanie klastra"
+title: Samouczek usługi Azure Container Service — wdrażanie klastra
+description: Samouczek usługi Azure Container Service — wdrażanie klastra
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ef789bc017e670566d25dd9d167698515e88349
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb7bdbaf095cefa72d1de302d90afeebbdb9d027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Wdrażanie klastra Kubernetes w usłudze Azure Container Service
 
@@ -26,7 +26,7 @@ Usługa Kubernetes zapewnia rozproszoną platformę dla konteneryzowanych aplika
 > * Instalacja interfejsu wiersza polecenia rozwiązania Kubernetes (kubectl)
 > * Konfiguracja narzędzia kubectl
 
-W kolejnych samouczkach aplikacja do głosowania platformy Azure będzie wdrażana do klastra, skalowana i aktualizowana, a pakiet Operations Management Suite zostanie skonfigurowany do monitorowania klastra usługi Kubernetes.
+W kolejnych samouczkach aplikacja do głosowania platformy Azure będzie wdrażana w klastrze, skalowana i aktualizowana, a usługa Log Analytics zostanie skonfigurowana do monitorowania klastra usługi Kubernetes.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

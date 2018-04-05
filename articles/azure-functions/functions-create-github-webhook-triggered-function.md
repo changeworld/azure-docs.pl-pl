@@ -1,12 +1,12 @@
 ---
 title: Tworzenie funkcji na platformie Azure wyzwalanej przez element webhook GitHub | Microsoft Docs
-description: "Użyj usługi Azure Functions, aby utworzyć funkcję niewymagającą użycia serwera wywoływaną za pomocą elementu webhook GitHub."
+description: Użyj usługi Azure Functions, aby utworzyć funkcję niewymagającą użycia serwera wywoływaną za pomocą elementu webhook GitHub.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 36ef34b8-3729-4940-86d2-cb8e176fcc06
 ms.service: functions
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: cd446c64b8e7627db1c76d652ea1ab6f496eee65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Tworzenie funkcji wyzwalanej przez element webhook GitHub
 
@@ -69,11 +69,15 @@ W następnym kroku zostanie utworzony element webhook w repozytorium GitHub.
 
 1. W usłudze GitHub przejdź do repozytorium, którego jesteś właścicielem. Możesz też użyć dowolnego rozwidlonego repozytorium. Jeśli potrzebujesz rozwidlić repozytorium, zobacz <https://github.com/Azure-Samples/functions-quickstart>.
 
-1. Kliknij kolejno pozycje **Ustawienia**, **Elementy webhook** i **Dodaj element webhook**.
+2. Wybierz kolejno pozycje **Ustawienia** > **Opcje** i upewnij się, że ustawienie **Problemy** zostało włączone w obszarze **Funkcje**.
+
+   ![Włączanie problemów](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook.png)
+
+1. W obszarze **Ustawienia** wybierz kolejno pozycje **Elementy webhook** > **Dodaj element webhook**.
 
     ![Dodawanie elementu webhook GitHub](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-2.png)
 
-1. Użyj ustawień określonych w tabeli i kliknij pozycję **Dodaj element webhook**.
+1. Użyj ustawień określonych w następującej tabeli, a następnie kliknij pozycję **Dodaj element webhook**:
 
     ![Ustawianie adresu URL i wpisu tajnego elementu webhook](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — aktualizowanie klastra"
-description: "Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — aktualizowanie klastra"
+title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — aktualizowanie klastra
+description: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — aktualizowanie klastra
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 16c8892743ac25c21b7004e10796c77c3ac9f900
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 9c63bf2204f1e18cda6bfc80d54b01240193833f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>Uaktualnianie rozwiązania Kubernetes w usłudze Azure Container Service (AKS)
+# <a name="tutorial-upgrade-kubernetes-in-azure-container-service-aks"></a>Samouczek: uaktualnianie rozwiązania Kubernetes w usłudze Azure Container Service (AKS)
 
 Klaster usługi Azure Container Service (AKS) można uaktualnić za pomocą wiersza polecenia platformy Azure. Podczas procesu uaktualniania węzły rozwiązania Kubernetes są dokładnie [odizolowywane i opróżniane][kubernetes-drain], aby zminimalizować zakłócenia dla działających aplikacji.
 

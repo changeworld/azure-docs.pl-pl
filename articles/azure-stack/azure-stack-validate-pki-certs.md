@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1f234c2529213dfa7f42d6ee11b840236488065d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0bdadadb1f4ee5f76cde9d05b11e8d57b99ac191
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Sprawdź poprawność certyfikatów PKI stosu Azure
 
@@ -43,7 +43,7 @@ Narzędzie do sprawdzania certyfikatów (Certchecker) wykonuje następujące tes
 ## <a name="prerequisites"></a>Wymagania wstępne
 System powinna spełniać następujące wymagania wstępne, przed sprawdzaniem poprawności certyfikatów PKI dla wdrożenia usługi Azure stosu:
 - CertChecker (w **PartnerToolKit** w obszarze **\utils\certchecker**)
-- Certyfikaty SSL wyeksportowane po [instrukcje dotyczące przygotowań](prepare-pki-certs.md)
+- Certyfikaty SSL wyeksportowane po [instrukcje dotyczące przygotowań](azure-stack-prepare-pki-certs.md)
 - DeploymentData.json
 - Windows 10 lub Windows Server 2016
 

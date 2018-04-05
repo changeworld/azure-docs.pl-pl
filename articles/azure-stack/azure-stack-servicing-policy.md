@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e37b63580d8cea4b5772bc54f7b2f79980afc0bc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure stos obsługi zasad
 W tym artykule opisano zasady obsługi w stosie Azure zintegrowanych systemów i co należy zrobić, aby zapewnić systemu do stanu umożliwiającego. 
@@ -47,19 +47,6 @@ Na przykład, jeśli niedawno dostępny zaktualizowanej wersji, która jest 1805
 
 Pakiety aktualizacji oprogramowania firmy Microsoft są skumulowanych i wymagają poprzedniego pakietu aktualizacji jako warunek wstępny. Jeśli zdecydujesz się odroczenie co najmniej jednej aktualizacji, należy wziąć pod uwagę ogólną środowiska uruchomieniowego Jeśli chcesz uzyskać dostęp do najnowszej wersji. 
 
-W poniższej tabeli przedstawiono przykład aktualizacji pakietu wersji, ich wymagań wstępnych i minimalna obsługiwana wersja systemu musi wynosić do obsługi pomocy technicznej. Tabela jest oparta na początkowa wersja stosu Azure zintegrowanych systemów (kompilacja 1708), z pierwszej aktualizacji wersji pakietu (1709), w września 2017 r. 
-
-| Najnowszy pakiet aktualizacji (*przykład*) | Wymagania wstępne | Minimalna obsługiwana wersja |
-| -- | -- | -- |
-| 1710 | 1709 | ND |
-| 1711 | 1710 | 1709 |
-| 1712 | 1711 | 1710 |
-| 1802 | 1712 | 1711 |
-| 1803 | 1802 | 1712 |
-| 1804 | 1803 | 1802 |
-| 1805 | 1804 | 1803 |
-| | | 
-W powyższej tabeli nie ma żadnych wersji 1801.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

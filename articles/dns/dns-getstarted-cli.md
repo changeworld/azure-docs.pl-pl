@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 | Microsoft Docs"
-description: "Dowiedz się, jak utworzyć strefę i rekord DNS w usłudze Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę i rekord DNS przy użyciu interfejsu wiersza polecenia platformy Azure 2.0."
+title: Rozpoczynanie pracy z usługą Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 | Microsoft Docs
+description: Dowiedz się, jak utworzyć strefę i rekord DNS w usłudze Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę i rekord DNS przy użyciu interfejsu wiersza polecenia platformy Azure 2.0.
 services: dns
 documentationcenter: na
 author: KumuD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 76782ac1e78cd0f7da4bc1aad8eff00d79865ed7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d24eaa4974f8bff09b337384e4fd139edb6ebd70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Rozpoczynanie pracy z usługą Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure 2.0
 
 > [!div class="op_single_selector"]
-> * [Witryna Azure Portal](dns-getstarted-portal.md)
-> * [PowerShell](dns-getstarted-powershell.md)
+> * [Azure Portal](dns-getstarted-portal.md)
+> * [Program PowerShell](dns-getstarted-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure 2.0](dns-getstarted-cli.md)
 
 W tym artykule przedstawiono procedurę tworzenia po raz pierwszy strefy i rekordu DNS przy użyciu wieloplatformowego interfejsu wiersza polecenia platformy Azure 2.0, który jest dostępny dla systemów Windows, Mac i Linux. Te kroki można również wykonać przy użyciu witryny Azure Portal lub programu Azure PowerShell.
@@ -33,6 +33,8 @@ W tym artykule przedstawiono procedurę tworzenia po raz pierwszy strefy i rekor
 Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby na koniec opublikować strefę DNS w Internecie, należy skonfigurować serwery nazw dla domeny. Poniżej opisano każdy z tych kroków.
 
 W tych instrukcjach założono, że już zainstalowano interfejs wiersza polecenia platformy Azure 2.0 i zalogowano się do niego. Aby uzyskać pomoc, zobacz [How to manage DNS zones using Azure CLI 2.0](dns-operations-dnszones-cli.md) (Jak zarządzać strefami systemu DNS przy użyciu interfejsu wiersza polecenia platformy Azure 2.0).
+
+Usługa Azure DNS teraz obsługuje również prywatne strefy DNS (obecnie w wersji zapoznawczej). Aby uzyskać więcej informacji na temat prywatnych stref DNS, zobacz [Using Azure DNS for private domains (Używanie usługi Azure DNS dla domen prywatnych)](private-dns-overview.md). Aby uzyskać przykład sposobu tworzenia prywatnej strefy DNS, zobacz [Rozpoczynanie pracy ze strefami prywatnymi usługi Azure DNS przy użyciu interfejsu wiersza polecenia](./private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
@@ -52,7 +54,6 @@ Poniższy przykład obejmuje tworzenie strefy DNS o nazwie *contoso.com* w grupi
 az network dns zone create -g MyResourceGroup -n contoso.com
 ```
 
-
 ## <a name="create-a-dns-record"></a>Tworzenie rekordu DNS
 
 Aby utworzyć rekord DNS, użyj polecenia `az network dns record-set [record type] add-record`. Aby uzyskać pomoc, na przykład dotyczącą rekordów A, zobacz `azure network dns record-set A add-record -h`.
@@ -65,7 +66,6 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 
 Aby uzyskać informacje o innych typach rekordów, zestawach rekordów zawierających więcej niż jeden rekord, alternatywnych wartościach czasu wygaśnięcia oraz sposobie modyfikowania istniejących rekordów, zobacz [Manage DNS records and record sets using the Azure CLI 2.0](dns-operations-recordsets-cli.md) (Zarządzanie rekordami i zestawami rekordów DNS przy użyciu interfejsu wiersza polecenia platformy Azure 2.0).
 
-
 ## <a name="view-records"></a>Wyświetlanie rekordów
 
 Aby wyświetlić listę rekordów DNS w strefie, należy użyć:
@@ -73,7 +73,6 @@ Aby wyświetlić listę rekordów DNS w strefie, należy użyć:
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
 ```
-
 
 ## <a name="update-name-servers"></a>Aktualizowanie serwerów nazw
 

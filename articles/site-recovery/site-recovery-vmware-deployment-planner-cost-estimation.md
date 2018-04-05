@@ -1,12 +1,12 @@
 ---
-title: "Planista wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure | Microsoft Docs"
-description: "Jest to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery."
+title: Planista wdrożenia usługi Azure Site Recovery dla oprogramowania VMware na platformie Azure | Microsoft Docs
+description: Jest to podręcznik użytkownika planisty wdrożenia usługi Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 63963804b81aa57e914e18fa474963a3830d04d5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Raport szacowania kosztów planisty wdrożenia usługi Azure Site Recovery  
 

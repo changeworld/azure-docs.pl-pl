@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e7dab67b46a2853e9585c88c8e4d4263f844c3b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 487ffffca445fb3f98dcaa6550b0b1b74290b803
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -91,7 +91,7 @@ exit
 
 ## <a name="understand-vm-images"></a>Omówienie obrazów maszyny wirtualnej
 
-Witryna Azure Marketplace zawiera wiele obrazów, za pomocą których można tworzyć maszyny wirtualne. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Ubuntu. W tym kroku interfejs wiersza polecenia platformy Azure jest używany do wyszukania w portalu Marketplace obrazu systemu CentOS, za pomocą którego zostanie wdrożona druga maszyna wirtualna.  
+Witryna Azure Marketplace zawiera wiele obrazów, za pomocą których można tworzyć maszyny wirtualne. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Ubuntu. W tym kroku interfejs wiersza polecenia platformy Azure jest używany do wyszukania w portalu Marketplace obrazu systemu CentOS, za pomocą którego zostanie wdrożona druga maszyna wirtualna. 
 
 Aby wyświetlić listę najczęściej używanych obrazów, użyj polecenia [az vm image list](/cli/azure/vm/image#az_vm_image_list).
 
@@ -136,7 +136,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-Aby wdrożyć maszynę wirtualną przy użyciu określonego obrazu, zanotuj wartość w kolumnie *Urn*. Podczas określania obrazu numer wersji można zastąpić wartością „latest”, co spowoduje wybranie najnowszej wersji dystrybucji. W tym przykładzie argument `--image` służy do określenia najnowszej wersji obrazu systemu CentOS 6.5.  
+W celu wdrożenia maszyny wirtualnej przy użyciu wybranego obrazu zanotuj wartość z kolumny *Urn*, która składa się z wydawcy, oferty, jednostki SKU i opcjonalnie numeru wersji, aby [zidentyfikować](cli-ps-findimage.md#terminology) obraz. Podczas określania obrazu numer wersji można zastąpić wartością „latest”, co spowoduje wybranie najnowszej wersji dystrybucji. W tym przykładzie argument `--image` służy do określenia najnowszej wersji obrazu systemu CentOS 6.5.  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -259,7 +259,7 @@ Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów
 
 ### <a name="find-power-state"></a>Znajdowanie stanu zasilania
 
-Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [az vm get instance-view](/cli/azure/vm#az_vm_get_instance_view). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów. 
+Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów. 
 
 ```azurecli-interactive 
 az vm get-instance-view \

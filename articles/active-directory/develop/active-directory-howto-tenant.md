@@ -1,64 +1,39 @@
 ---
-title: "Jak uzyskać dzierżawę usługi Azure AD | Microsoft Docs"
-description: "Jak uzyskać dzierżawę usługi Azure Active Directory w celu rejestracji i tworzenia aplikacji."
+title: Jak uzyskać dzierżawę usługi Azure AD | Microsoft Docs
+description: Jak uzyskać dzierżawę usługi Azure Active Directory w celu rejestracji i tworzenia aplikacji.
 services: active-directory
-documentationcenter: 
-author: bryanla
+documentationcenter: ''
+author: mtillman
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/19/2017
-ms.author: bryanla
+ms.date: 03/23/2018
+ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 85783d58b2b02a9d0c6230429bebf2806514dee5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ab7db49fa07f260de6ebbe4b2cee943b64cab7fe
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Jak uzyskać dzierżawę usługi Azure Active Directory
-W usłudze Azure Active Directory (Azure AD) [dzierżawa](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) reprezentuje organizację.  Jest to dedykowane wystąpienie usługi Azure AD, którą organizacja otrzymuje i której zostaje właścicielem po zarejestrowaniu się w usłudze w chmurze firmy Microsoft, takiej jak platforma Azure, usługa Microsoft Intune czy usługa Office 365.  Każda dzierżawa usługi Azure AD jest unikatowa i oddzielona od innych dzierżaw usługi Azure AD.  
+W usłudze Azure Active Directory (Azure AD) [dzierżawa](https://msdn.microsoft.com/library/azure/jj573650.aspx#Anchor_0) reprezentuje organizację.  Jest to dedykowane wystąpienie usługi Azure AD, którą organizacja otrzymuje i której zostaje właścicielem po utworzeniu relacji z firmą Microsoft, takiej jak zarejestrowanie się w usłudze w chmurze firmy Microsoft, np. platformie Azure, usłudze Microsoft Intune czy usłudze Office 365.  Każda dzierżawa usługi Azure AD jest unikatowa i oddzielona od innych dzierżaw usługi Azure AD.  
 
 Dzierżawa gromadzi użytkowników w firmie i informacje o nich — hasła, dane profilu użytkownika, uprawnienia i tak dalej.  Zawiera także grupy, aplikacje i inne informacje dotyczące organizacji i jej zabezpieczeń.
 
-Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do Twojej aplikacji, musisz zarejestrować aplikację w dzierżawie.  Publikowanie aplikacji w dzierżawie usługi Azure AD jest **całkowicie bezpłatne**.  W rzeczywistości większość deweloperów tworzy kilka dzierżaw i aplikacji do celów testowych, związanych z programowaniem, przeprowadzaniem badań oraz w ramach etapu przejściowego.  Organizacje, które zarejestrują się i będą korzystać z aplikacji, mogą opcjonalnie zakupić licencje, jeśli chcą skorzystać z zaawansowanych funkcji katalogów.
+Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do Twojej aplikacji, musisz zarejestrować aplikację w dzierżawie.  Tworzenie dzierżawy usługi Azure AD i publikowanie w niej aplikacji jest **całkowicie bezpłatne** (chociaż można płacić za funkcje premium w swojej dzierżawie).  W rzeczywistości wielu deweloperów tworzy kilka dzierżaw i aplikacji do celów testowych, związanych z programowaniem, przeprowadzaniem badań oraz w ramach etapu przejściowego.
 
-Jak uzyskać dzierżawę usługi Azure AD?  Procedura może przebiegać nieco inaczej, jeśli:
+## <a name="use-an-existing-azure-ad-tenant"></a>Używanie istniejącej dzierżawy usługi Azure AD
 
-* [Masz istniejącą subskrypcję usługi Office 365](#use-an-existing-office-365-subscription)
-* [Masz istniejącą subskrypcję platformy Azure skojarzoną z kontem Microsoft](#use-an-msa-azure-subscription)
-* [Masz istniejącą subskrypcję platformy Azure skojarzoną z kontem organizacyjnym](#use-an-organizational-azure-subscription)
-* [Nie masz żadnej z powyższych subskrypcji i chcesz rozpocząć od zera](#start-from-scratch)
+Wielu deweloperów już ma dzierżawy za pośrednictwem usług lub subskrypcji, które są powiązane z dzierżawami usługi Azure AD (na przykład: subskrypcje usługi Office 365 lub platformy Azure).  Aby sprawdzić, czy masz już dzierżawę, zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta, którego chcesz użyć do zarządzania aplikacją, i sprawdź prawy górny róg, w którym są wyświetlane informacje o Twoim koncie.  Jeśli masz dzierżawę, nastąpi automatyczne zalogowanie do niej i nazwa dzierżawy zostanie wyświetlona bezpośrednio pod nazwą Twojego konta.  Jeśli Twoje konto jest skojarzone z wieloma dzierżawami, możesz kliknąć nazwę swojego konta, aby otworzyć menu, w którym można przełączać się między dzierżawami.
 
-## <a name="use-an-existing-office-365-subscription"></a>Korzystanie z istniejącej subskrypcji usługi Office 365
-Jeśli masz istniejącą subskrypcję usługi Office 365, masz już dzierżawę usługi Azure AD. Możesz zalogować się w witrynie [Azure Portal](https://portal.azure.com) za pomocą danych konta usługi O365 i rozpocząć korzystanie z usługi Azure AD.
+Jeśli nie masz istniejącej dzierżawy skojarzonej z kontem, pod nazwą konta zostanie wyświetlony identyfikator GUID i nie będzie można wykonywać takich działań, jak rejestrowanie aplikacji, dopóki nie [utworzysz nowej dzierżawy](#create-a-new-azure-ad-tenant).
 
-## <a name="use-an-msa-azure-subscription"></a>Korzystanie z subskrypcji platformy Azure dla konta Microsoft
-Jeśli Twoje indywidualne konto Microsoft zostało wcześniej zarejestrowane w celu uzyskania subskrypcji platformy Azure, masz już dzierżawę.  Kiedy logujesz się w witrynie [Azure Portal](https://portal.azure.com), następuje automatyczne logowanie do domyślnej dzierżawy. Możesz korzystać z tej dzierżawy zgodnie z własnymi potrzebami, ale warto utworzyć konto administratora organizacyjnego.
+## <a name="create-a-new-azure-ad-tenant"></a>Tworzenie nowej dzierżawy usługi Azure AD
 
-W tym celu wykonaj poniższe kroki.  Możesz też utworzyć nową dzierżawę i utworzyć administratora w tej dzierżawie, postępując według podobnej procedury.
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) na swoje indywidualne konto.
-2. Przejdź do sekcji „Azure Active Directory” (na lewym pasku nawigacyjnym w obszarze **Wszystkie usługi**).
-3. Powinno nastąpić automatyczne zalogowanie do domyślnego katalogu. Jeśli tak się nie stanie, możesz przełączyć katalogi, klikając nazwę konta w prawym górnym rogu.
-4. W sekcji **Szybkie zadania** wybierz opcję **Dodaj użytkownika**.
-5. W formularzu Dodawanie użytkownika podaj następujące dane:
-
-   * Nazwa: (wybierz odpowiednią wartość).
-   * Nazwa użytkownika: (wybierz nazwę użytkownika dla tego administratora).
-   * Profil: (podaj odpowiednie wartości dla pól Imię, Nazwisko, Stanowisko i Dział).
-   * Rola: administrator globalny.
-6. Po ukończeniu pracy z formularzem Dodawanie użytkownika i otrzymaniu tymczasowego hasła dla nowego użytkownika administracyjnego pamiętaj o zapisaniu hasła. Jest to konieczne, ponieważ w celu zmiany hasła trzeba zalogować się za pomocą danych nowego użytkownika. Używając alternatywnego adresu e-mail, możesz również wysłać hasło bezpośrednio do użytkownika.
-7. Kliknij opcję **Utwórz**, aby utworzyć nowego użytkownika.
-8. Aby zmienić hasło tymczasowe, zaloguj się na stronie [https://login.microsoftonline.com](https://login.microsoftonline.com), używając nowego konta użytkownika, i zmień hasło, gdy pojawi się stosowny monit.
-
-## <a name="use-an-organizational-azure-subscription"></a>Korzystanie z organizacyjnej subskrypcji platformy Azure
-Jeśli konto organizacyjne zostało wcześniej zarejestrowane w celu uzyskania subskrypcji platformy Azure, masz już dzierżawę.  W witrynie [Azure Portal](https://portal.azure.com) dzierżawa powinna być dostępna po przejściu do sekcji „Wszystkie usługi” i „Azure Active Directory”.  Z tej dzierżawy możesz korzystać zależnie od potrzeb.
-
-## <a name="start-from-scratch"></a>Rozpoczynanie od zera
-Jeśli wszystkie powyższe informacje są dla Ciebie mało zrozumiałe, nie przejmuj się. Po prostu odwiedź witrynę [Azure Portal](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory), aby utworzyć nowy katalog usługi Azure AD. Po zakończeniu tego procesu będziesz dysponować własną dzierżawą usługi Azure AD wraz z nazwą domeny wybraną podczas rejestracji.  W witrynie [Azure Portal](https://portal.azure.com) możesz odnaleźć swoją dzierżawę, przechodząc do obszaru **Azure Active Directory** na panelu nawigacyjnym po lewej stronie.
+Jeśli nie masz jeszcze dzierżawy usługi Azure AD lub chcesz utworzyć nową, możesz to zrobić za pomocą [środowisko tworzenia katalogu](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) w witrynie [Azure Portal](https://portal.azure.com).  Proces potrwa około minuty, a na końcu zostanie wyświetlony monit, aby przejść do nowo utworzonej dzierżawy.

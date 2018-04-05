@@ -1,11 +1,11 @@
 ---
-title: "Łączenie komputera z siecią wirtualną platformy Azure przy użyciu połączenia typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal | Microsoft Docs"
-description: "Bezpieczne łączenie klientów systemu Windows i Mac OS X z siecią wirtualną platformy Azure przy użyciu połączeń typu punkt-lokacja oraz certyfikatów z podpisem własnym lub wystawionych przez urząd certyfikacji. W tym artykule jest używana witryna Azure Portal."
+title: 'Łączenie komputera z siecią wirtualną platformy Azure przy użyciu połączenia typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal | Microsoft Docs'
+description: Bezpieczne łączenie klientów systemu Windows i Mac OS X z siecią wirtualną platformy Azure przy użyciu połączeń typu punkt-lokacja oraz certyfikatów z podpisem własnym lub wystawionych przez urząd certyfikacji. W tym artykule jest używana witryna Azure Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a15ad327-e236-461f-a18e-6dbedbf74943
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2018
+ms.date: 03/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0a45430491e1e06080ae2eca2124088402c17f54
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4603131c31ab3792efc1df504eb95dfde2eccb17
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną przy użyciu natywnego uwierzytelniania certyfikatu platformy Azure: Azure Portal
 
@@ -78,6 +78,10 @@ Po utworzeniu sieci wirtualnej możesz dodać adres IP serwera DNS, aby umożliw
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
+>[!NOTE]
+>Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS.
+>
+
 ## <a name="generatecert"></a>5. Generowanie certyfikatów klienta
 
 Certyfikaty są używane przez platformę Azure do uwierzytelniania klientów łączących się z siecią wirtualną za pośrednictwem połączenia sieci VPN typu punkt-lokacja. Po uzyskaniu certyfikatu głównego należy [przekazać](#uploadfile) informacje o kluczu publicznym do platformy Azure. Certyfikat główny jest następnie uznawany przez platformę Azure za zaufany dla połączeń typu punkt-lokacja z siecią wirtualną. Ponadto certyfikaty klienta są generowane na podstawie zaufanego certyfikatu głównego, a następnie instalowane na każdym komputerze klienckim. Certyfikat klienta jest używany do uwierzytelniania klienta, gdy inicjuje on połączenie z siecią wirtualną. 
@@ -103,6 +107,10 @@ Pula adresów klienta to określony przez Ciebie zakres prywatnych adresów IP. 
 3. Na stronie konfiguracja połączenia **Punkt-lokacja** w polu **Pula adresów** dodaj zakres prywatnych adresów IP, z którego chcesz korzystać. Klienci sieci VPN dynamicznie otrzymują adres IP z określonego zakresu. Kliknij pozycję **Zapisz**, aby zweryfikować i zapisać ustawienie.
 
   ![Pula adresów klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+
+  >[!NOTE]
+  >Jeśli na tej stronie w portalu nie widzisz typu tunelu lub typu uwierzytelniania, brama korzysta z podstawowej jednostki SKU. Podstawowa jednostka SKU nie obsługuje uwierzytelniania za pomocą protokołu IKEv2 ani usługi RADIUS.
+  >
 
 ## <a name="tunneltype"></a>7. Konfigurowanie typu tunelu
 

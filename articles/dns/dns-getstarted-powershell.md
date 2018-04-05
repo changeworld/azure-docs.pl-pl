@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure DNS przy użyciu programu PowerShell | Microsoft Docs"
-description: "Dowiedz się, jak utworzyć strefę i rekord DNS w usłudze Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę i rekord DNS przy użyciu programu PowerShell."
+title: Rozpoczynanie pracy z usługą Azure DNS przy użyciu programu PowerShell | Microsoft Docs
+description: Dowiedz się, jak utworzyć strefę i rekord DNS w usłudze Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę i rekord DNS przy użyciu programu PowerShell.
 services: dns
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 3f67d4f537a832d1d3e13ff2a67645ae17ed8669
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 050111f4a5e8459e89d049ccb879b5079ff68527
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-dns-using-powershell"></a>Rozpoczynanie pracy z usługą Azure DNS przy użyciu programu PowerShell
 
@@ -50,6 +50,7 @@ Strefa DNS jest tworzona za pomocą polecenia cmdlet `New-AzureRmDnsZone`. Poni�
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
 ```
+Usługa Azure DNS teraz obsługuje również prywatne strefy DNS (obecnie w wersji zapoznawczej).  Aby uzyskać więcej informacji na temat prywatnych stref DNS, zobacz [Using Azure DNS for private domains (Używanie usługi Azure DNS dla domen prywatnych)](private-dns-overview.md). Aby uzyskać przykład sposobu tworzenia prywatnej strefy DNS, zobacz [Rozpoczynanie pracy ze strefami prywatnymi usługi Azure DNS przy użyciu programu PowerShell](./private-dns-getstarted-powershell.md).
 
 ## <a name="create-a-dns-record"></a>Tworzenie rekordu DNS
 
