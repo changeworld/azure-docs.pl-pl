@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.openlocfilehash: 81f083b799e359f69605de22c30d3adc4480e44b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń z monitorem Azure
 Wiele zespołów należy ściśle regulowania dostępu do danych i ustawienia monitorowania. Na przykład, jeśli masz członków zespołu, którzy używają wyłącznie na monitorowanie (pracowników działu pomocy technicznej, metodyki devops engineers) lub jeśli korzystasz z dostawcą usługi zarządzanej, można przyznać im dostęp do danych tylko do monitorowania podczas ograniczania możliwość tworzenia, modyfikowania, lub Usuwanie zasobów. W tym artykule pokazano, jak szybko zastosować wbudowane monitorowania roli RBAC użytkownikowi na platformie Azure lub tworzenie własnych niestandardowych ról dla użytkownika, który wymaga ograniczonych uprawnień monitorowania. Następnie zawiera omówienie zagadnienia dotyczące zabezpieczeń dla zasobów związanych z monitora Azure i jak można ograniczyć dostęp do danych, które zawierają.

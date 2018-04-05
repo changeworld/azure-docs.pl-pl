@@ -54,9 +54,9 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Zasady na konfigurację adresu IP | 299 |299 |
 | Konfiguracje adresów IP frontonu, Basic | 10 | 200 |
 | Konfiguracje adresów IP frontonu, Standard | 10 | 600 |
-| Puli zaplecza, Basic | 100, pojedynczy zestaw dostępności | - |
-| Puli zaplecza, Standard | 1000, pojedynczy sieci wirtualnej | - |
-| HA portów, Standard | 1 na frontonie wewnętrzny | - |
+| Puli zaplecza, Basic | 100, pojedynczy zestaw dostępności | 100, pojedynczy zestaw dostępności |
+| Puli zaplecza, Standard | 1000, pojedynczy sieci wirtualnej | 1000, pojedynczy sieci wirtualnej |
+| HA portów, Standard | 1 na frontonie wewnętrzny | 1 na frontonie wewnętrzny |
 
 Jeśli będzie konieczne zwiększenie limitów domyślnych, [skontaktuj się z pomocą techniczną](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 

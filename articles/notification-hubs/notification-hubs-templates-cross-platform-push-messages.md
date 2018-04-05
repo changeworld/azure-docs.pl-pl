@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="templates"></a>Szablony
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Szablony umożliwiają służy do określania dokładnej powiadomienia, które chce otrzymywać aplikacji klienta. Za pomocą szablonów, aplikacji może realizować kilka różnych korzyści, takie jak następujące:
 
 * Niezależne od platformy wewnętrznej bazie danych

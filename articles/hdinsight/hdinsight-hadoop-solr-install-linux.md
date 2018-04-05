@@ -1,8 +1,8 @@
 ---
-title: "Aby zainstalować Solr w usłudze HDInsight opartych na systemie Linux - Azure, użyj akcji skryptu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zainstalować Solr w klastrach opartych na systemie Linux usługi HDInsight Hadoop za pomocą akcji skryptu."
+title: Aby zainstalować Solr w usłudze HDInsight opartych na systemie Linux - Azure, użyj akcji skryptu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować Solr w klastrach opartych na systemie Linux usługi HDInsight Hadoop za pomocą akcji skryptu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Zainstalować i używać Solr w klastrach HDInsight Hadoop
 
@@ -39,7 +39,7 @@ Dowiedz się, jak zainstalować Solr w usłudze Azure HDInsight za pomocą akcji
 > [!WARNING]
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane przez firmę Microsoft.
 >
-> Niestandardowe składniki, takie jak Solr, otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Pomoc techniczna firmy Microsoft nie można rozwiązać problemy z niestandardowych składników. Konieczne może być Uwzględnij Wspólnot typu open source, aby uzyskać pomoc. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [http://apache.org](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
+> Niestandardowe składniki, takie jak Solr, otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Pomoc techniczna firmy Microsoft nie można rozwiązać problemy z niestandardowych składników. Konieczne może być Uwzględnij Wspólnot typu open source, aby uzyskać pomoc. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>Działanie skryptu
 
@@ -61,7 +61,7 @@ Aby utworzyć klaster ma zainstalowany Solr, wykonaj czynności w [Tworzenie kla
 1. Z __klastra Podsumowanie__ sekcji, settings__ select__Advanced, następnie __skryptu akcji__. Skorzystaj z poniższych informacji, aby wypełnić formularza:
 
    * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **HEAD**: Zaznaczenie tego pola wyboru
    * **Proces ROBOCZY**: Zaznaczenie tego pola wyboru
    * **DOZORCY**: Zaznacz tę opcję, aby zainstalować w węźle dozorcy
@@ -116,7 +116,7 @@ Wykonaj następujące kroki, aby dodać przykładowe dane do Solr, a następnie 
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    To polecenie wyszukuje **collection1** dokumenty dopasowania  **\*:\***  (zakodowane jako \*% 3A\* w ciągu zapytania). Następujący dokument JSON jest przykładem odpowiedzi:
+    To polecenie wyszukuje **collection1** dokumenty dopasowania **\*:\*** (zakodowane jako \*% 3A\* w ciągu zapytania). Następujący dokument JSON jest przykładem odpowiedzi:
 
             "response": {
                 "numFound": 2,
@@ -194,7 +194,7 @@ Po ustanowieniu tunelu SSH, wykonaj następujące kroki, aby za pomocą pulpitu 
 
         Zapisz wartość zwracana, które jest używane później.
 
-2. W przeglądarce, nawiąż połączenie z **http://HOSTNAME:8983/solr / #/**, gdzie **HOSTNAME** to nazwa określona w poprzednich krokach.
+2. W przeglądarce, nawiąż połączenie z **http://HOSTNAME:8983/solr/#/**, gdzie **HOSTNAME** to nazwa określona w poprzednich krokach.
 
     Żądanie jest kierowane za pośrednictwem tunelu SSH do Solr interfejsu użytkownika sieci web w klastrze. Strona wygląda podobnie jak na poniższej ilustracji:
 
@@ -319,7 +319,7 @@ Aby utworzyć kopię zapasową danych Solr do magazynu domyślnego dla klastra, 
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Aby uzyskać więcej informacji na temat pracy z Solr tworzenia kopii zapasowej i przywracania, zobacz [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Aby uzyskać więcej informacji na temat pracy z Solr tworzenia kopii zapasowej i przywracania, zobacz [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

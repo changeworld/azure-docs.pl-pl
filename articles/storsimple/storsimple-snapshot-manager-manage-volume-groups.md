@@ -1,11 +1,11 @@
 ---
 title: Grupy woluminu StorSimple Snapshot Manager | Dokumentacja firmy Microsoft
-description: "Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager do tworzenia i zarządzania grupami woluminu."
+description: Informacje dotyczące używania przystawki MMC programu StorSimple Snapshot Manager do tworzenia i zarządzania grupami woluminu.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
 ms.service: storsimple
 ms.devlang: NA
@@ -15,13 +15,13 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple Snapshot Manager umożliwia tworzenie i zarządzanie grupami woluminu
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Można użyć **grup woluminu** węzła na **zakres** okienko, aby przypisać woluminy do grup woluminu, Wyświetl informacje o grupie woluminu, zaplanować wykonywanie kopii zapasowych i edytować grupy woluminu.
 
 Wolumin grupy są pule powiązanych woluminów używanych do zapewnienia, że kopie zapasowe są spójne z aplikacjami. Aby uzyskać więcej informacji, zobacz [woluminów i woluminów grupy](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) i [integracji z usługą kopiowania woluminów w tle Windows](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
@@ -49,10 +49,10 @@ Jeśli klikniesz przycisk **grup woluminu** węzła, **wyniki** w okienku zostan
 
 | Kolumny wyników | Opis |
 |:--- |:--- |
-| Nazwa |**Nazwa** kolumna zawiera nazwę grupy woluminu. |
+| Name (Nazwa) |**Nazwa** kolumna zawiera nazwę grupy woluminu. |
 | Aplikacja |**Aplikacji** kolumnie jest wyświetlana liczba składniki zapisywania usługi VSS aktualnie zainstalowana i uruchomiona na hoście systemu Windows. |
 | Wybrano |**Wybrane** kolumna zawiera wiele woluminów, które są zawarte w grupie woluminu. Wartość zero (0) oznacza, że żadna aplikacja nie jest skojarzony z woluminów w grupie woluminu. |
-| Zaimportowany |**Zaimportowane** kolumnie jest wyświetlana liczba importowanych woluminów. Jeśli wartość **True**, ta kolumna wskazuje, że grupa woluminu została zaimportowana z portalu Azure i programu StorSimple Snapshot Manager nie został utworzony. |
+| Zaimportowane |**Zaimportowane** kolumnie jest wyświetlana liczba importowanych woluminów. Jeśli wartość **True**, ta kolumna wskazuje, że grupa woluminu została zaimportowana z portalu Azure i programu StorSimple Snapshot Manager nie został utworzony. |
 
 > [!NOTE]
 > Grupy woluminu StorSimple Snapshot Manager również są wyświetlane na **zasady tworzenia kopii zapasowej** kartę w portalu Azure.
@@ -124,7 +124,7 @@ Użyj poniższej procedury można usunąć grupy woluminu.
    
     Grupy usunięte woluminu nieodpowiedniej z listy w **wyniki** okienko i wszystkie kopie zapasowe, które są skojarzone z tą grupą woluminu są usuwane z katalogu kopii zapasowej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się, jak [zarządzać rozwiązania StorSimple przy użyciu programu StorSimple Snapshot Manager](storsimple-snapshot-manager-admin.md).
 * Dowiedz się, jak [StorSimple Snapshot Manager umożliwia tworzenie i zarządzanie zasadami tworzenia kopii zapasowej](storsimple-snapshot-manager-manage-backup-policies.md).
 

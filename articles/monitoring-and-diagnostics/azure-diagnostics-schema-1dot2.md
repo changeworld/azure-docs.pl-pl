@@ -1,12 +1,12 @@
 ---
 title: Schemat konfiguracji diagnostyki Azure 1.2 | Dokumentacja firmy Microsoft
-description: "Znaczenie tylko wtedy, gdy 2.5 zestawu SDK platformy Azure za pomocą usługi Azure Virtual Machines, zestawy skalowania maszyny wirtualnej, sieci szkieletowej usług lub usługi w chmurze."
+description: Znaczenie tylko wtedy, gdy 2.5 zestawu SDK platformy Azure za pomocą usługi Azure Virtual Machines, zestawy skalowania maszyny wirtualnej, sieci szkieletowej usług lub usługi w chmurze.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schemat konfiguracji 1.2 Diagnostyka Azure
 > [!NOTE]
@@ -103,8 +103,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
 |**WadCfg**|Wymagany. Ustawienia konfiguracji dla danych telemetrycznych do zebrania.|  
-|**Konto magazynu**|Nazwa konta magazynu Azure do przechowywania danych. To może również być określone jako parametr podczas wykonywania polecenia cmdlet Set-AzureServiceDiagnosticsExtension.|  
-|**LocalResourceDirectory**|Katalog na maszynie wirtualnej do użycia przez agenta monitorowania do przechowywania danych o zdarzeniach. Jeśli nie jest używany zestaw, domyślny katalog:<br /><br /> Dla roli proces roboczy/sieci web:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Atrybuty wymagane są:<br /><br /> -                      **ścieżka** -katalogu w systemie mają być używane przez diagnostyki Azure.<br /><br /> -                      **expandEnvironment** — Określa, czy zmienne środowiskowe są rozwijane w nazwie ścieżki.|  
+|**StorageAccount**|Nazwa konta magazynu Azure do przechowywania danych. To może również być określone jako parametr podczas wykonywania polecenia cmdlet Set-AzureServiceDiagnosticsExtension.|  
+|**LocalResourceDirectory**|Katalog na maszynie wirtualnej do użycia przez agenta monitorowania do przechowywania danych o zdarzeniach. Jeśli nie jest używany zestaw, domyślny katalog:<br /><br /> Dla roli proces roboczy/sieci web: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Atrybuty wymagane są:<br /><br /> -                      **ścieżka** -katalogu w systemie mają być używane przez diagnostyki Azure.<br /><br /> -                      **expandEnvironment** — Określa, czy zmienne środowiskowe są rozwijane w nazwie ścieżki.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
 Definiuje ustawienia konfiguracji dla danych telemetrycznych do zebrania. W poniższej tabeli opisano elementy podrzędne:  
@@ -117,7 +117,7 @@ Definiuje ustawienia konfiguracji dla danych telemetrycznych do zebrania. W poni
 |**Katalogi**|Umożliwia zbieranie zawartości katalogu, dzienniki żądań dostępu do usług IIS nie powiodło się i/lub dzienniki programu IIS. Atrybut opcjonalny:<br /><br /> **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Typ danych Duration."](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**EtwProviders**|Zbieranie zdarzeń ETW z EventSource konfiguruje i/lub ETW manifestu na podstawie dostawców.|  
 |**Metryki**|Ten element umożliwia generowanie tabeli licznika wydajności, która jest zoptymalizowana pod kątem szybkiego zapytania. Każdego licznika wydajności, który jest zdefiniowany w **liczniki wydajności** elementu są przechowywane w tabeli metryki oprócz tabeli licznika wydajności. Wymagany atrybut:<br /><br /> **resourceId** -to jest identyfikator zasobu wdrażasz diagnostyki Azure do maszyny wirtualnej. Pobierz **resourceID** z [portalu Azure](https://portal.azure.com). Wybierz **Przeglądaj** -> **grup zasobów** -> **< nazwa\>**. Kliknij przycisk **właściwości** Kafelek i skopiuj wartości z **identyfikator** pola.|  
-|**Liczniki wydajności**|Umożliwia zbieranie liczników wydajności. Atrybut opcjonalny:<br /><br /> **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Czas trwania typu danych".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**PerformanceCounters**|Umożliwia zbieranie liczników wydajności. Atrybut opcjonalny:<br /><br /> **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Czas trwania typu danych".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|Umożliwia zbieranie dzienników zdarzeń systemu Windows. Atrybut opcjonalny:<br /><br /> **scheduledTransferPeriod** — interwał transferu zaplanowane do magazynu zaokrąglona w górę do najbliższej minutę. Wartość jest [XML "Czas trwania typu danych".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
@@ -150,7 +150,7 @@ Definiuje ustawienia konfiguracji dla danych telemetrycznych do zebrania. W poni
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Bezwzględne**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> -                     **Ścieżka** -ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> -                      **expandEnvironment** — Określa, czy są rozwinięte zmiennych środowiskowych w ścieżce.|  
+|**Absolute**|Ścieżka bezwzględna do katalogu, do monitorowania. Wymagane są następujące atrybuty:<br /><br /> -                     **Ścieżka** -ścieżka bezwzględna do katalogu, do monitorowania.<br /><br /> -                      **expandEnvironment** — Określa, czy są rozwinięte zmiennych środowiskowych w ścieżce.|  
 |**LocalResource**|Ścieżka względna zasobu lokalnego do monitorowania. Atrybuty wymagane są:<br /><br /> -                     **Nazwa** -zasób lokalny, zawierająca katalogi do monitorowania<br /><br /> -                     **relativePath** -ścieżka względna nazwa zawierająca katalogi do monitorowania|  
 
 ## <a name="etwproviders-element"></a>EtwProviders Element  
@@ -196,11 +196,11 @@ Definiuje ustawienia konfiguracji dla danych telemetrycznych do zebrania. W poni
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Adnotacja**|Wymagany atrybut:<br /><br /> **Nazwa wyświetlana** — Nazwa wyświetlana dla licznika<br /><br /> Atrybut opcjonalny:<br /><br /> **Ustawienia regionalne** -ustawień regionalnych używany podczas wyświetlania Nazwa licznika|  
+|**annotation**|Wymagany atrybut:<br /><br /> **Nazwa wyświetlana** — Nazwa wyświetlana dla licznika<br /><br /> Atrybut opcjonalny:<br /><br /> **Ustawienia regionalne** -ustawień regionalnych używany podczas wyświetlania Nazwa licznika|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  W poniższej tabeli opisano elementy podrzędne:  
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Źródło danych**|Dzienniki zdarzeń systemu Windows do zbierania. Wymagany atrybut:<br /><br /> **Nazwa** — Kwerenda XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> W celu gromadzenia wszystkich zdarzeń, określ "*".|
+|**DataSource**|Dzienniki zdarzeń systemu Windows do zbierania. Wymagany atrybut:<br /><br /> **Nazwa** — Kwerenda XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> W celu gromadzenia wszystkich zdarzeń, określ "*".|

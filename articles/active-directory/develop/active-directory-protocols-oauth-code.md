@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 2ad995c4b48c2c298edd7c6b4da92ea8f3c4a060
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>Autoryzowanie dostępu do aplikacji sieci Web przy użyciu protokołu OAuth 2.0 i usługi Azure Active Directory
 Azure Active Directory (Azure AD) używa protokołu OAuth 2.0 do autoryzowania dostępu do aplikacji sieci web i interfejsów API sieci web w dzierżawie usługi Azure AD. Ten przewodnik jest niezależny od języka i opisuje sposób wysyłania i odbierania wiadomości HTTP bez przy użyciu dowolnej z naszych bibliotekach open source.

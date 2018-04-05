@@ -15,14 +15,14 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 2adf473c6acea0f128eb14e2616748ff29d5d762
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>Jak używać kryteriów strategicznych do wysyłania kampanie wypychania do wybranego podzbioru użytkowników
 > [!IMPORTANT]
-> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
 > 
 
 Elementów docelowych odbiorców według określonych kryteriów przy użyciu przycisku "Nowe kryterium" jest jednym z najbardziej zaawansowanych pojęcia związane z usługi Azure Mobile Engagement pomaga odpowiednich wysyłania powiadomień wypychanych że klienci będą odpowiadać zamiast wszyscy spamem. Można ograniczyć na podstawie standardowego kryteriów odbiorców i symulować wypchnięciu do określenia, ile osób będą otrzymywać powiadomienia.

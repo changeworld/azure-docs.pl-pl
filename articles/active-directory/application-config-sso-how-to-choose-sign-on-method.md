@@ -1,11 +1,11 @@
 ---
-title: "Jak ustalić, jakie jednokrotnego metodę | Dokumentacja firmy Microsoft"
-description: "Zrozumienie jednej metody logowania jednokrotnego obsługiwane przez usługę Azure AD i wybieranie odpowiedniej opcji dla aplikacji planuje się."
+title: Jak ustalić, jakie jednokrotnego metodę | Dokumentacja firmy Microsoft
+description: Zrozumienie jednej metody logowania jednokrotnego obsługiwane przez usługę Azure AD i wybieranie odpowiedniej opcji dla aplikacji planuje się.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 4363f308f9bfa685b0f4e946cdd97d34b6ece197
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Jak ustalić, jakie jednokrotnego metoda do użycia
 

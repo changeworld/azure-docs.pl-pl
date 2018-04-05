@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Pasujące aparatu reguł usługi Azure CDN 
 W tym artykule przedstawiono szczegółowe opisy warunki dopasowania dostępne dla usługi Azure sieci dostarczania zawartości (CDN) [aparatu reguł](cdn-rules-engine.md).
@@ -726,7 +726,7 @@ Informacje o kluczu:
 - Krawędź CNAME adres URL jest napisany od nowa do adresu URL usługi CDN przed porównania adresu URL.
 
     Na przykład obu następujących adresów URL wskaż danego elementu zawartości i dlatego mają taką samą ścieżkę adresu URL:
-     - Adres URL usługi CDN: http://wpc.0001. &lt;domeny&gt;/800001/CustomerOrigin/path/asset.htm
+     - Adres URL usługi CDN: http://wpc.0001.&lt; domeny&gt;/800001/CustomerOrigin/path/asset.htm
      - Adres URL CNAME krawędzi: http:\//&lt;punktu końcowego&gt;.azureedge.net/path/asset.htm
     
     Dodatkowe informacje:
@@ -783,7 +783,7 @@ Informacje o kluczu:
 
    Znak | Kodowanie adresu URL
    ----------|---------
-   Spacja     | %20
+   Przestrzeń kosmiczna     | %20
    &         | %25
 
 - Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ten warunek dopasowania jest niezgodny z następujących funkcji:
@@ -819,7 +819,7 @@ Informacje o kluczu:
 
        Znak | Kodowanie adresu URL
        ----------|---------
-       Spacja     | %20
+       Przestrzeń kosmiczna     | %20
        &         | %25
 
 - Oddzielającego każdej z nich z jednego miejsca, aby określić wiele wartości parametru ciągu zapytania. To dopasowanie warunek jest spełniony, jeśli żądanie zawiera jedną z kombinacji określona nazwa/wartość.
@@ -871,7 +871,7 @@ Name (Nazwa)  | Wartość |  Wynik
 ------|-------|--------
 Użytkownik  | Jan   | Ten wzorzec jest zgodny, gdy ciąg zapytania dla żądanego adresu URL jest "? użytkownika = Jan."
 Użytkownik  | *     | Ten wzorzec jest zgodny, gdy parametr użytkownika zawiera ciąg zapytania dla żądanego adresu URL.
-Adres e-mail | Jan\* | Ten wzorzec jest zgodny, jeśli ciąg zapytania dla żądanego adresu URL zawiera parametr poczty E-mail, który rozpoczyna się od "Jan".
+Email | Jan\* | Ten wzorzec jest zgodny, jeśli ciąg zapytania dla żądanego adresu URL zawiera parametr poczty E-mail, który rozpoczyna się od "Jan".
 
 [Powrót do początku](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -896,7 +896,7 @@ Informacje o kluczu:
 
    Znak | Kodowanie adresu URL | Wartość
    ----------|--------------|------
-   Spacja     | %20          | \%20
+   Przestrzeń kosmiczna     | %20          | \%20
    &         | %25          | \%25
 
    Należy pamiętać, że należy zastosować ucieczkę procent symboli.
@@ -938,7 +938,7 @@ Informacje o kluczu:
 
      Znak | Kodowanie adresu URL
      ----------|---------
-     Spacja     | %20
+     Przestrzeń kosmiczna     | %20
      &         | %25
 
 - Oddzielającego każdej z nich z jednego miejsca, aby określić wiele wartości.

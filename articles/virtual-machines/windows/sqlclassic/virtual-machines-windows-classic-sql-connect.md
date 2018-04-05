@@ -1,6 +1,6 @@
 ---
-title: "Połączenie z maszyną wirtualną programu SQL Server na platformie Azure (klasyczne) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak nawiązać połączenia z programem SQL Server uruchomiony na maszynie wirtualnej na platformie Azure. W tym temacie używa klasycznego modelu wdrażania. Scenariusze są różne w zależności od konfiguracji sieci i lokalizację klienta."
+title: Połączenie z maszyną wirtualną programu SQL Server na platformie Azure (klasyczne) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenia z programem SQL Server uruchomiony na maszynie wirtualnej na platformie Azure. W tym temacie używa klasycznego modelu wdrażania. Scenariusze są różne w zależności od konfiguracji sieci i lokalizację klienta.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -16,10 +16,10 @@ ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: c856c8c67d410a3b528c4f8b12b1225cf395bca4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Łączenie z maszyną wirtualną programu SQL Server na platformie Azure (wdrażanie klasyczne)
 > [!div class="op_single_selector"]

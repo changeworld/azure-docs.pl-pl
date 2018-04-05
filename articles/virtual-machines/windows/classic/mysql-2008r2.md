@@ -1,8 +1,8 @@
 ---
 title: Tworzenie klasycznego Azure maszyny Wirtualnej z systemem MySQL | Dokumentacja firmy Microsoft
-description: "Utwórz maszynę wirtualną platformy Azure systemem Windows Server 2012 R2 i bazy danych MySQL, przy użyciu klasycznego modelu wdrażania."
+description: Utwórz maszynę wirtualną platformy Azure systemem Windows Server 2012 R2 i bazy danych MySQL, przy użyciu klasycznego modelu wdrażania.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
 editor: tysonn
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
 ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Zainstaluj MySQL na maszyny wirtualnej utworzonej z klasycznym modelu wdrażania systemem Windows Server 2016
 [MySQL](https://www.mysql.com) jest popularnych typu open source, bazy danych SQL. Ten samouczek pokazuje, jak instalować i uruchamiać **społecznościową wersję MySQL 5.7.18** jako serwer MySQL na maszynie wirtualnej z systemem **systemu Windows Server 2016**. Środowiska mogą być nieco inne w przypadku innych wersji MySQL lub Windows Server.
@@ -51,7 +51,7 @@ Wykonaj następujące kroki, aby zainstalować, skonfigurować i uruchomić spo�
 
 1. Po nawiązaniu połączenia z maszyną wirtualną przy użyciu pulpitu zdalnego, kliknij przycisk **programu Internet Explorer** na ekranie startowym.
 2. Wybierz **narzędzia** przycisk w prawym górnym rogu (ikona kółka cogged), a następnie kliknij przycisk **Opcje internetowe**. Kliknij przycisk **zabezpieczeń** , kliknij pozycję **Zaufane witryny** ikonę, a następnie kliknij przycisk **witryny** przycisku. Dodaj http://*.mysql.com do listy zaufanych witryn. Kliknij przycisk **Zamknij**, a następnie kliknij przycisk **OK**.
-3. W adres pasek programu Internet Explorer, wpisz https://dev.mysql.com/downloads/mysql/.
+3. Wpisz w adres pasek programu Internet Explorer, https://dev.mysql.com/downloads/mysql/.
 4. Znajdź i Pobierz najnowszą wersję Instalatora MySQL dla systemu Windows za pomocą witryny MySQL. W przypadku wybrania Instalator MySQL, pobrać wersję z pełną plików zestawu (na przykład mysql — Instalator — społeczność 5.7.18.0.msi pliku o rozmiarze 352.8 MB) i Zapisz Instalator.
 5. Gdy Instalator zakończył pobieranie, kliknij przycisk **Uruchom** można uruchomić Instalatora.
 6. Na **umowy licencyjnej** , zaakceptuj umowę licencyjną i kliknij przycisk **dalej**.
@@ -114,11 +114,11 @@ Aby przetestować połączenia zdalnego do maszyny Wirtualnej Azure uruchomiona 
    ![](media/mysql-2008r2/MySQL_DNSName.png)
 3. Z komputera lokalnego z systemem MySQL lub klienta MySQL uruchom następujące polecenie, aby zalogować się jako użytkownik MySQL.
 
-     MySQL -u <yourMysqlUsername> - p -h<yourDNSname>
+     MySQL -u <yourMysqlUsername> - p -h <yourDNSname>
 
    Na przykład przy użyciu nazwy użytkownika MySQL _dbadmin3_ i _testmysql.cloudapp.net_ nazwy DNS dla maszyny wirtualnej, można uruchomić MySQL za pomocą następującego polecenia:
 
      testmysql.cloudapp.net -h -p dbadmin3 -u MySQL
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej o uruchamianiu MySQL, zobacz [dokumentacji MySQL](http://dev.mysql.com/doc/).

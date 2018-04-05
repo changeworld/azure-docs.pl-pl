@@ -1,8 +1,8 @@
 ---
-title: "Użyj akcji skryptu, aby zainstalować Solr na klastra usługi Hadoop - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostosować klastra usługi HDInsight za pomocą Solr za pomocą akcji skryptu."
+title: Użyj akcji skryptu, aby zainstalować Solr na klastra usługi Hadoop - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosować klastra usługi HDInsight za pomocą Solr za pomocą akcji skryptu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 6efb7ea26c3cdf7748fff4b02b5810c85cc41e1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Zainstalować i używać Solr w klastrach HDInsight opartych na systemie Windows
 
@@ -30,7 +30,7 @@ Dowiedz się, jak dostosować klastra usługi HDInsight opartej na systemie Wind
 > Kroki opisane w tym dokumencie pracować tylko z klastrami HDInsight opartych na systemie Windows. HDInsight jest dostępna tylko w systemie Windows dla wersji starszej niż HDInsight 3.4. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Dla informacji o korzystaniu z opartą na systemie Linux klastrem Solr, zobacz [instalacji i używania Solr w klastrach HDinsight Hadoop (Linux)](hdinsight-hadoop-solr-install-linux.md).
 
 
-Solr można zainstalować w klastrze (na platformie Hadoop, Storm, HBase, Spark) w usłudze Azure HDInsight dowolnego typu za pomocą *akcji skryptu*. Przykładowy skrypt do zainstalowania Solr w klastrze usługi HDInsight jest dostępna z obiektu blob magazynu Azure w trybie tylko do odczytu w [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Solr można zainstalować w klastrze (na platformie Hadoop, Storm, HBase, Spark) w usłudze Azure HDInsight dowolnego typu za pomocą *akcji skryptu*. Przykładowy skrypt do zainstalowania Solr w klastrze usługi HDInsight jest dostępna z obiektu blob magazynu Azure w trybie tylko do odczytu w [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 Przykładowy skrypt działa tylko w przypadku klastra HDInsight w wersji 3.1. Aby uzyskać więcej informacji o wersjach klastra usługi HDInsight, zobacz [wersji klastra usługi HDInsight](hdinsight-component-versioning.md).
 
@@ -54,7 +54,7 @@ Przykładowy skrypt używane w tym temacie tworzy klaster Solr opartych na syste
 
     <table border='1'>
         <tr><th>Właściwość</th><th>Wartość</th></tr>
-        <tr><td>Nazwa</td>
+        <tr><td>Name (Nazwa)</td>
             <td>Określ nazwę akcji skryptu. Na przykład <b>zainstalować Solr</b>.</td></tr>
         <tr><td>Identyfikator URI skryptu</td>
             <td>Określ identyfikator URI (Uniform Resource) do skryptu, które jest wywoływane, aby dostosować klastra. Na przykład <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
@@ -83,7 +83,7 @@ Musi rozpoczynać się od indeksowanie Solr z niektórych plików danych. Solr m
         Time spent: 0:00:01.624
 
     Narzędzie post.jar indeksuje Solr z dwa dokumenty przykładowe, **solr.xml** i **monitor.xml**. Narzędzie post.jar i przykładowe dokumenty są dostępne z instalacją Solr.
-3. **Wyszukiwanie w indeksowanej dokumentów za pomocą pulpitu nawigacyjnego Solr**. W sesji protokołu RDP w klastrze usługi HDInsight, Otwórz program Internet Explorer, a następnie uruchom Solr pulpitu nawigacyjnego w **http://headnodehost:8983/solr / #/**. W lewym okienku z **selektora Core** listy rozwijanej, wybierz pozycję **collection1**, a w ramach, kliknij przycisk **zapytania**. Na przykład, aby wybrać i zwraca wszystkie dokumenty w Solr, podaj następujące wartości:
+3. **Wyszukiwanie w indeksowanej dokumentów za pomocą pulpitu nawigacyjnego Solr**. W sesji protokołu RDP w klastrze usługi HDInsight, Otwórz program Internet Explorer, a następnie uruchom Solr pulpitu nawigacyjnego w **http://headnodehost:8983/solr/#/**. W lewym okienku z **selektora Core** listy rozwijanej, wybierz pozycję **collection1**, a w ramach, kliknij przycisk **zapytania**. Na przykład, aby wybrać i zwraca wszystkie dokumenty w Solr, podaj następujące wartości:
 
    * W **q** tekst wprowadź  **\*:**\*. Zwróci wszystkie dokumenty, które są indeksowane w Solr. Jeśli chcesz wyszukać określony ciąg znaków w dokumentach, możesz wprowadzić ten ciąg w tym miejscu.
    * W **wt** tekst wybierz format danych wyjściowych. Domyślnie jest **json**. Kliknij przycisk **wykonać kwerendy**.
@@ -159,7 +159,7 @@ Musi rozpoczynać się od indeksowanie Solr z niektórych plików danych. Solr m
              </lst>
              <str name="status">OK</str>
            </response>
-   2. W sesji zdalnej, przejdź do {SOLR_HOME}\{kolekcji} \data. Dla klastra utworzone za pomocą przykładowego skryptu, należy to **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. W tej lokalizacji powinna zostać wyświetlona utworzony z nazwą podobne do folderu migawki  **migawki.* Sygnatura czasowa***.
+   2. W sesji zdalnej, przejdź do {SOLR_HOME}\{kolekcji} \data. Dla klastra utworzone za pomocą przykładowego skryptu, należy to **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. W tej lokalizacji powinna zostać wyświetlona utworzony z nazwą podobne do folderu migawki **migawki.* Sygnatura czasowa ***.
    3. Zip w folderze migawek i przekaż go do magazynu obiektów Blob Azure. Z poziomu wiersza polecenia platformy Hadoop przejdź do lokalizacji folderu migawki za pomocą następującego polecenia:
 
              hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
@@ -167,12 +167,12 @@ Musi rozpoczynać się od indeksowanie Solr z niektórych plików danych. Solr m
        To polecenie powoduje skopiowanie migawki do /example/data/w kontenerze w ramach domyślnego konta magazynu skojarzone z klastrem.
 
 ## <a name="install-solr-using-aure-powershell"></a>Zainstaluj Solr przy użyciu programu Azure PowerShell
-Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Przykład pokazuje, jak zainstalować Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, aby użyć [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Przykład pokazuje, jak zainstalować Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, aby użyć [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
 ## <a name="install-solr-using-net-sdk"></a>Zainstaluj Solr przy użyciu zestawu .NET SDK
-Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Przykład pokazuje, jak zainstalować Spark przy użyciu zestawu .NET SDK. Należy dostosować skrypt, aby użyć [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Przykład pokazuje, jak zainstalować Spark przy użyciu zestawu .NET SDK. Należy dostosować skrypt, aby użyć [ https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Zainstalować i używać Solr w klastrach HDinsight Hadoop (Linux)](hdinsight-hadoop-solr-install-linux.md)
 * [Tworzenie klastrów Hadoop w usłudze HDInsight](hdinsight-provision-clusters.md): ogólne informacje na temat tworzenia klastrów usługi HDInsight.
 * [Dostosowywanie klastrów usługi HDInsight przy użyciu akcji skryptu][hdinsight-cluster-customize]: ogólne informacje na temat Dostosowywanie klastrów usługi HDInsight przy użyciu akcji skryptu.

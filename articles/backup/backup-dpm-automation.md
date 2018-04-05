@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
 ms.openlocfilehash: 89dd965208cd473e47de9e0c9bdbfa3ab986c3d5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Wdrażanie kopii zapasowych serwerów Data Protection Manager (DPM) na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób instalacji usługi Kopia zapasowa Azure na serwerze DPM przy użyciu programu PowerShell, a zarządzanie kopii zapasowych i odzyskiwania.

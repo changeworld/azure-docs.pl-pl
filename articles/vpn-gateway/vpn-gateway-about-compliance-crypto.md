@@ -1,11 +1,11 @@
 ---
-title: "Informacje dotyczące wymagań kryptograficznych i bram sieci VPN platformy Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule omówiono wymagania dotyczące szyfrowania i bram sieci VPN platformy Azure"
+title: Informacje dotyczące wymagań kryptograficznych i bram sieci VPN platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono wymagania dotyczące szyfrowania i bram sieci VPN platformy Azure
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: yushwang
 ms.openlocfilehash: d2f3da47f1d4eebe1b81964790ff6612dd78155d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Informacje dotyczące wymagań kryptograficznych i bram sieci VPN platformy Azure
 
@@ -38,7 +38,7 @@ Na przykład zasady trybu głównego protokołu IKEv2 dla bram sieci VPN platfor
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Niestandardowe zasady IPsec i IKE z bram sieci VPN platformy Azure
 Bramy sieci VPN platformy Azure obsługuje teraz poszczególnych połączeń, zasad IPsec i IKE niestandardowych. Lokacja-lokacja lub połączenia do wirtualnymi można wybrać określoną kombinację algorytmów kryptograficznych dla protokołu IPsec i IKE żądaną siły kluczy, jak pokazano w poniższym przykładzie:
 
-![zasady protokołu IPSec-ike](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 Możesz utworzyć zasady IPsec i IKE i zastosować do nowego lub istniejącego połączenia. 
 
@@ -55,7 +55,7 @@ Możesz utworzyć zasady IPsec i IKE i zastosować do nowego lub istniejącego p
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Zobacz [zasady IPsec/IKE skonfigurować](vpn-gateway-ipsecikepolicy-rm-powershell.md) instrukcje krok po kroku dotyczące konfigurowania niestandardowych zasad IPsec i IKE połączenia.
 
 Zobacz też [podłączenie wielu urządzeń sieci VPN opartych na zasadach](vpn-gateway-connect-multiple-policybased-rm-ps.md) Aby dowiedzieć się więcej na temat opcji UsePolicyBasedTrafficSelectors.

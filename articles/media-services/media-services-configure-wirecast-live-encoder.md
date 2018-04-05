@@ -1,11 +1,11 @@
 ---
-title: "Skonfiguruj koder Telestream Wirecast wysłać strumień na żywo o pojedynczej szybkości transmisji bitów | Dokumentacja firmy Microsoft"
-description: "W tym temacie przedstawiono sposób konfigurowania kodera na żywo Wirecast do wysłania do kanałów AMS, które są włączone dla kodowanie na żywo o pojedynczej szybkości transmisji. "
+title: Skonfiguruj koder Telestream Wirecast wysłać strumień na żywo o pojedynczej szybkości transmisji bitów | Dokumentacja firmy Microsoft
+description: 'W tym temacie przedstawiono sposób konfigurowania kodera na żywo Wirecast do wysłania do kanałów AMS, które są włączone dla kodowanie na żywo o pojedynczej szybkości transmisji. '
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
 ms.workload: media
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: 0e4fb0b7c915969da1760eaccc77aa399030752e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Użyj koder Wirecast, aby wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów
 > [!div class="op_single_selector"]
-> * [Wirecast](media-services-configure-wirecast-live-encoder.md)
+> * [wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Elemental na żywo](media-services-configure-elemental-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
+> * [tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
@@ -101,7 +101,7 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. Pozos
 
     Nazwę ustawienia i sprawdź, czy następujących zalecanych ustawień:
 
-    **Wideo**
+    **Video**
 
    * Koder: MainConcept H.264
    * Klatek na sekundę: 30

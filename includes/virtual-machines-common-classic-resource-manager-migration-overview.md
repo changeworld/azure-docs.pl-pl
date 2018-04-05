@@ -71,7 +71,7 @@ Firma Microsoft aktualnie nie obsługują niektórych funkcjach i konfiguracjach
 ### <a name="unsupported-features"></a>Nieobsługiwane funkcje
 Następujące funkcje nie są obecnie obsługiwane. Można opcjonalnie usunąć te ustawienia, migracji maszyn wirtualnych i następnie ponownie Włącz ustawienia w modelu wdrażania usługi Resource Manager.
 
-| Dostawca zasobów | Funkcja | Zalecenie |
+| Dostawca zasobów | Cecha | Zalecenie |
 | --- | --- | --- |
 | Wystąpienia obliczeniowe | Dyski nieskojarzone maszyny wirtualnej. | Obiekty BLOB dysków VHD za tych dyskach zostaną uzyskać migracji podczas migracji konta magazynu |
 | Wystąpienia obliczeniowe | Obrazy maszyny wirtualnej. | Obiekty BLOB dysków VHD za tych dyskach zostaną uzyskać migracji podczas migracji konta magazynu |
@@ -82,7 +82,7 @@ Następujące funkcje nie są obecnie obsługiwane. Można opcjonalnie usunąć 
 ### <a name="unsupported-configurations"></a>Nieobsługiwane konfiguracje
 Następujące konfiguracje nie są obecnie obsługiwane.
 
-| Usługa | Konfiguracja | Zalecenie |
+| Usługa | Konfigurowanie | Zalecenie |
 | --- | --- | --- |
 | Resource Manager |Na podstawie dostępu kontroli ról (RBAC) w przypadku klasycznych zasobów |Ponieważ identyfikator URI zasobów jest zmodyfikowane po migracji, zaleca się zaplanowanie aktualizacji zasad RBAC, które wymagają po migracji. |
 | Wystąpienia obliczeniowe |Wiele podsieci skojarzone z maszyny Wirtualnej |Zaktualizuj konfigurację podsieci, aby odwoływać się tylko z podsieci. |
@@ -97,8 +97,8 @@ Następujące konfiguracje nie są obecnie obsługiwane.
 | Sieć |Sieci wirtualne, które zawierają maszyny wirtualne i role sieć web/proces roboczy |To nie jest obecnie obsługiwane. Przed migracją Przenieś role sieć Web/proces roboczy do ich własnych sieci wirtualnej. Po migracji klasycznych sieci wirtualnych migrowanych sieci wirtualnej Menedżera zasobów Azure można można połączyć za pomocą z klasycznej sieci wirtualnej do osiągnięcia podobnej konfiguracji jak poprzednio.|
 | Sieć | Klasycznym obwody Express Route |To nie jest obecnie obsługiwane. Te obwody należy migrować do usługi Azure Resource Manager przed rozpoczęciem migracji IaaS. Aby dowiedzieć się więcej na ten temat, zobacz [obwody przenoszenie usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Sieci wirtualne, które zawierają środowiska usługi aplikacji |To nie jest obecnie obsługiwane. |
-| Usługa Azure HDInsight |Sieci wirtualne, które zawierają usługi HDInsight |To nie jest obecnie obsługiwane. |
-| Usługi cyklu życia Microsoft Dynamics |Sieci wirtualne, które zawierają maszyny wirtualne, które są zarządzane przez usługi cyklu życia Dynamics |To nie jest obecnie obsługiwane. |
+| Azure HDInsight |Sieci wirtualne, które zawierają usługi HDInsight |To nie jest obecnie obsługiwane. |
+| Microsoft Dynamics Lifecycle Services |Sieci wirtualne, które zawierają maszyny wirtualne, które są zarządzane przez usługi cyklu życia Dynamics |To nie jest obecnie obsługiwane. |
 | Azure AD Domain Services |Sieci wirtualne, które zawierają usługi domenowe Azure AD |To nie jest obecnie obsługiwane. |
 | Azure RemoteApp |Sieci wirtualne zawierające wdrożenia usługi Azure RemoteApp |To nie jest obecnie obsługiwane. |
 | Usługa Azure API Management |Sieci wirtualne zawierające wdrożenia usługi Azure API Management |To nie jest obecnie obsługiwane. Aby przeprowadzić migrację sieci Wirtualnej IaaS, zmień sieci Wirtualnej wdrożenia usługi API Management, czyli żadna operacja przestoju. |

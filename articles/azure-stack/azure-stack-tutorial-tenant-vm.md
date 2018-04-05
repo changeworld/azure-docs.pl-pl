@@ -17,10 +17,10 @@ ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
 ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Udostępnić użytkownikom stosu Azure maszyny wirtualne
 Jako administrator chmury Azure stosu można utworzyć oferty, które mogą subskrybować użytkowników (nazywane czasami dzierżawcy). Za pomocą swoich subskrypcji, użytkownicy będą mogły używać usługi Azure stosu.
@@ -113,7 +113,7 @@ Teraz, po utworzeniu oferty, można sprawdzić. Zaloguj się jako użytkownik i 
    Teraz możesz zalogować się do portalu użytkownika do subskrybowania oferty.
 
    a. Zaloguj się do portalu użytkowników jako użytkowników i kliknij przycisk **uzyskania subskrypcji**.
-   - Zintegrowany system adres URL zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem i będzie w format https://portal. &lt; *region*&gt;.&lt; *FQDN*&gt;.
+   - Zintegrowany system, zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem adres URL, a musi być w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
    - Jeśli używasz usługi Azure stosu Development Kit adres portalu jest https://portal.local.azurestack.external.
 
    ![Uzyskaj subskrypcję](media/azure-stack-subscribe-plan-provision-vm/image01.png)
@@ -131,7 +131,7 @@ Teraz, po utworzeniu oferty, można sprawdzić. Zaloguj się jako użytkownik i 
    Teraz możesz zalogować się do portalu użytkownika do udostępnienia maszyny wirtualnej przy użyciu subskrypcji. 
 
    a. Zaloguj się do portalu użytkowników, jako użytkownik.
-      - Zintegrowany system adres URL zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem i będzie w format https://portal. &lt; *region*&gt;.&lt; *FQDN*&gt;.
+      - Zintegrowany system, zmienia się na podstawie od regionu i nazwy domen zewnętrznych z operatorem adres URL, a musi być w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
    - Jeśli używasz usługi Azure stosu Development Kit adres portalu jest https://portal.local.azurestack.external.
 
    b.  Na pulpicie nawigacyjnym kliknij **nowy** > **obliczeniowe** > **Eval centrum danych systemu Windows Server 2016**, a następnie kliknij przycisk **Utwórz**.

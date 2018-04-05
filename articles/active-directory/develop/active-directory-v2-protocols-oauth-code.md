@@ -16,10 +16,10 @@ ms.date: 03/18/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: c6af6fb6ab957d79d71c816e6a23b0526f016a71
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły v2.0 - przepływu kodu autoryzacji OAuth 2.0
 Udzielania kodu autoryzacji protokołu OAuth 2.0 służy w aplikacjach, które są zainstalowane na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsów API sieci web.  Przy użyciu app model v2.0 w implementacji protokołu OAuth 2.0, można dodać Zaloguj się i interfejsu API dostępu do aplikacji mobilnych i klasycznych.  Ten przewodnik jest niezależny od języka i opisuje sposób wysyłania i odbierania wiadomości HTTP bez przy użyciu dowolnego [biblioteki uwierzytelniania usługi Azure open source](active-directory-authentication-libraries.md).

@@ -1,11 +1,11 @@
 ---
-title: "Wystąpił nieoczekiwany błąd podczas wykonywania zgody do aplikacji | Dokumentacja firmy Microsoft"
-description: "W tym artykule omówiono błędy, które mogą wystąpić w trakcie procesu zgodę, aplikacja i co można zrobić o nich"
+title: Wystąpił nieoczekiwany błąd podczas wykonywania zgody do aplikacji | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono błędy, które mogą wystąpić w trakcie procesu zgodę, aplikacja i co można zrobić o nich
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: bbc0cee8a44773c025c6174eaf7eccaba81b8d1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Wystąpił nieoczekiwany błąd podczas wykonywania zgody do aplikacji
 
@@ -50,7 +50,7 @@ Ten błąd wskazuje, że wystąpił problem po stronie usługi tymczasowymi. Mo�
 Skontaktuj się z deweloperem aplikacji.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Zasób nie jest dostępna w błąd dzierżawy
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; żąda dostępu do zasobu &lt;resourceAppDisplayName&gt; które nie są dostępne w Twojej organizacji &lt;tenantDisplayName&gt;. 
+* **AADSTS65005:** &lt;clientAppDisplayName&gt; żąda dostępu do zasobu &lt;resourceAppDisplayName&gt; które nie są dostępne w Twojej organizacji &lt;tenantDisplayName &gt;. 
 
 Upewnij się, że ten zasób jest dostępny, lub skontaktuj się z administratorem &lt;tenantDisplayName&gt;.
 
@@ -71,7 +71,7 @@ Te błędy, wszystkie wystąpić, gdy aplikacja użytkownik próbuje wyrażenia 
 
     -   Dodawanie aplikacji z poziomu galerii aplikacji Azure AD
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 
 [Aplikacje, uprawnienia i zgody w usłudze Azure Active Directory (punkt końcowy v1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 

@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Hightail | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Hightail."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Hightail.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2333a56cd9369cb66c4944304472462d2f2f7511
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Samouczek: Integracji Azure Active Directory z Hightail
 
@@ -110,7 +110,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url.png)
 
-     W **adres URL odpowiedzi** tekstowym, wpisz adres URL jako:`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+     W **adres URL odpowiedzi** tekstowym, wpisz adres URL jako: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
     > [!NOTE] 
     > Powyższe nie jest rzeczywistą wartość. Wartość zaktualizuje rzeczywiste odpowiedzi adres URL, który znajduje się w dalszej części tego samouczka.
@@ -121,7 +121,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. Kliknij przycisk **Pokaż zaawansowane ustawienia adresu URL**.
 
-    b. W **na adres URL logowania** tekstowym, wpisz adres URL jako:`https://www.hightail.com/loginSSO`
+    b. W **na adres URL logowania** tekstowym, wpisz adres URL jako: `https://www.hightail.com/loginSSO`
 
 4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
@@ -135,9 +135,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |
-    | Imię | User.givenName |
-    | Nazwisko | User.surname |
-    | Adres e-mail | User.mail |    
+    | Imię | user.givenname |
+    | LastName | user.surname |
+    | Email | User.mail |    
     | Tożsamości użytkownika | User.mail |
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
@@ -231,7 +231,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
 Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w Hightail. 
 
-Nie ma elementu akcji można w tej sekcji. Hightail obsługuje użytkownika w czasie inicjowania obsługi na podstawie niestandardowych oświadczeń. Jeśli skonfigurowano niestandardowe oświadczenia, jak pokazano w sekcji  **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  powyżej, użytkownik zostanie automatycznie utworzone w aplikacji nie istnieje. 
+Nie ma elementu akcji można w tej sekcji. Hightail obsługuje użytkownika w czasie inicjowania obsługi na podstawie niestandardowych oświadczeń. Jeśli skonfigurowano niestandardowe oświadczenia, jak pokazano w sekcji **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)** powyżej, użytkownik zostanie automatycznie utworzone w aplikacji nie istnieje. 
 
 >[!NOTE]
 >Jeśli trzeba ręcznie utworzyć użytkownika, należy skontaktować się [zespołem pomocy technicznej Hightail](mailto:support@hightail.com). 
@@ -273,7 +273,7 @@ Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczeg
 Po kliknięciu kafelka Hightail w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Hightail.
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

@@ -1,11 +1,11 @@
 ---
-title: "Jak używać usługi poczty e-mail SendGrid (Node.js) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wysłać wiadomość e-mail z usługi poczty e-mail SendGrid na platformie Azure. Przykłady kodu napisane przy użyciu interfejsu API środowiska Node.js."
-services: 
+title: Jak używać usługi poczty e-mail SendGrid (Node.js) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wysłać wiadomość e-mail z usługi poczty e-mail SendGrid na platformie Azure. Przykłady kodu napisane przy użyciu interfejsu API środowiska Node.js.
+services: ''
 documentationcenter: nodejs
 author: erikre
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: cac444b4-26b0-45ea-9c3d-eca28d57dacb
 ms.service: multiple
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Sposób wysyłania poczty E-mail przy użyciu SendGrid w oprogramowaniu Node.js
 W tym przewodniku przedstawiono sposób wykonywania typowych zadań programowania usługi poczty e-mail SendGrid na platformie Azure. Przykłady są napisane przy użyciu interfejsu API środowiska Node.js. Omówione scenariusze obejmują **konstruowania e-mail**, **wysyłania wiadomości e-mail**, **dodawanie załączników**, **za pomocą filtrów**i **aktualizowanie właściwości**. Aby uzyskać więcej informacji na SendGrid i wysyłania wiadomości e-mail, zobacz [następne kroki](#next-steps) sekcji.
@@ -123,7 +123,7 @@ Filtry można stosować do wiadomości, przy użyciu **filtry** właściwości.
 Każdy filtr jest określany przez skrót zawierający ustawienia specyficzne dla filtru.
 Poniższe przykłady pokazują, stopka i kliknij przycisk śledzenia filtrów:
 
-### <a name="footer"></a>Stopki
+### <a name="footer"></a>Stopka
     var email = new sendgrid.Email({
         to: 'john@contoso.com',
         from: 'anna@contoso.com',
@@ -161,7 +161,7 @@ Poniższe przykłady pokazują, stopka i kliknij przycisk śledzenia filtrów:
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>Porady: aktualizowanie właściwości wiadomości E-mail
-Niektóre właściwości wiadomości e-mail może zostać zastąpiona przy użyciu  **ustawić*właściwości*** lub dołączonych za pomocą  **dodać*właściwości***. Na przykład można dodać dodatkowych adresatów za pomocą
+Niektóre właściwości wiadomości e-mail może zostać zastąpiona przy użyciu **ustawić * właściwość*** lub dołączonych za pomocą **dodać*właściwości ***. Na przykład można dodać dodatkowych adresatów za pomocą
 
     email.addTo('jeff@contoso.com');
 

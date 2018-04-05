@@ -1,13 +1,13 @@
 ---
-title: "Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver | Dokumentacja firmy Microsoft"
-description: "Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver"
+title: Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver | Dokumentacja firmy Microsoft
+description: Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure maszyn wirtualnych, planowania i wdrażania dla programu SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -979,7 +979,7 @@ W takim przypadku chcemy przekazania dysku VHD, lub bez systemu operacyjnego i z
 * Zaloguj się do subskrypcji z *az logowania*
 * Wybierz subskrypcję z *skonfigurowane konto az — subskrypcji `<subscription name or id`>*
 * Przekazywanie wirtualnego dysku twardego z *az magazynu obiektów blob przekazywania* — zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage][storage-azure-cli]
-* (Opcjonalnie) Tworzenie dysku zarządzanego z wirtualnego dysku twardego z *Tworzenie dysku az* — Zobacz https://docs.microsoft.com/cli/azure/disk#az_disk_create
+* (Opcjonalnie) Tworzenie dysku zarządzanego z wirtualnego dysku twardego z *Tworzenie dysku az* — zobacz https://docs.microsoft.com/cli/azure/disk#az_disk_create
 * Tworzenie nowej maszyny Wirtualnej, określając przekazane wirtualnego dysku twardego lub dysk zarządzane jako dysk systemu operacyjnego z *tworzenia maszyny wirtualnej az* i parametru *--attach-os-disk*
 * Dodaj dysk danych do nowej maszyny Wirtualnej z *dołączyć dysku maszyny wirtualnej az* i parametru *— nowy*
 
@@ -1008,7 +1008,7 @@ Można przekazać istniejącej maszyny Wirtualnej lub wirtualnego dysku twardego
 * Zaloguj się do subskrypcji z *az logowania*
 * Wybierz subskrypcję z *skonfigurowane konto az — subskrypcji `<subscription name or id`>*
 * Przekazywanie wirtualnego dysku twardego z *az magazynu obiektów blob przekazywania* — zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage][storage-azure-cli]
-* (Opcjonalnie) Tworzenie obrazu dysku zarządzanego z wirtualnego dysku twardego z *tworzenia obrazu az* — Zobacz https://docs.microsoft.com/cli/azure/image#az_image_create
+* (Opcjonalnie) Tworzenie obrazu dysku zarządzanego z wirtualnego dysku twardego z *tworzenia obrazu az* — zobacz https://docs.microsoft.com/cli/azure/image#az_image_create
 * Tworzenie nowej maszyny Wirtualnej, określając przekazane wirtualnego dysku twardego lub obrazu dysku twardego zarządzanego jako dysk systemu operacyjnego z *tworzenia maszyny wirtualnej az* i parametru *--obrazu*
 
 **Szablon**
@@ -1420,7 +1420,7 @@ $pip = New-AzureRmPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName
 $nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
-* Utwórz maszynę wirtualną. W scenariuszu tylko w chmurze co maszyna wirtualna ma taką samą nazwę. Identyfikator SID SAP wystąpienie SAP NetWeaver w tych maszyn wirtualnych będą takie same jak również. W ramach grupy zasobów platformy Azure musi być unikatowa nazwa maszyny Wirtualnej, ale w różnych grupach zasobów platformy Azure można uruchomić maszyny wirtualne o takiej samej nazwie. Domyślnego konta "Administrator" systemu Windows lub "główny" dla systemu Linux nie są prawidłowe. W związku z tym nową nazwę użytkownika administratora musi być zdefiniowany wraz z hasłem. Rozmiar maszyny wirtualnej musi być zdefiniowany.
+* Tworzy maszynę wirtualną. W scenariuszu tylko w chmurze co maszyna wirtualna ma taką samą nazwę. Identyfikator SID SAP wystąpienie SAP NetWeaver w tych maszyn wirtualnych będą takie same jak również. W ramach grupy zasobów platformy Azure musi być unikatowa nazwa maszyny Wirtualnej, ale w różnych grupach zasobów platformy Azure można uruchomić maszyny wirtualne o takiej samej nazwie. Domyślnego konta "Administrator" systemu Windows lub "główny" dla systemu Linux nie są prawidłowe. W związku z tym nową nazwę użytkownika administratora musi być zdefiniowany wraz z hasłem. Rozmiar maszyny wirtualnej musi być zdefiniowany.
 
 ```powershell
 #####
@@ -1534,7 +1534,7 @@ az network public-ip create --resource-group $rgName --name SAPERPDemoPIP --loca
 az network nic create --resource-group $rgName --location "North Europe" --name SAPERPDemoNIC --public-ip-address SAPERPDemoPIP --subnet Subnet1 --vnet-name SAPERPDemoVNet
 ```
 
-* Utwórz maszynę wirtualną. W scenariuszu tylko w chmurze co maszyna wirtualna ma taką samą nazwę. Identyfikator SID SAP wystąpienie SAP NetWeaver w tych maszyn wirtualnych będą takie same jak również. W ramach grupy zasobów platformy Azure musi być unikatowa nazwa maszyny Wirtualnej, ale w różnych grupach zasobów platformy Azure można uruchomić maszyny wirtualne o takiej samej nazwie. Domyślnego konta "Administrator" systemu Windows lub "główny" dla systemu Linux nie są prawidłowe. W związku z tym nową nazwę użytkownika administratora musi być zdefiniowany wraz z hasłem. Rozmiar maszyny wirtualnej musi być zdefiniowany.
+* Tworzy maszynę wirtualną. W scenariuszu tylko w chmurze co maszyna wirtualna ma taką samą nazwę. Identyfikator SID SAP wystąpienie SAP NetWeaver w tych maszyn wirtualnych będą takie same jak również. W ramach grupy zasobów platformy Azure musi być unikatowa nazwa maszyny Wirtualnej, ale w różnych grupach zasobów platformy Azure można uruchomić maszyny wirtualne o takiej samej nazwie. Domyślnego konta "Administrator" systemu Windows lub "główny" dla systemu Linux nie są prawidłowe. W związku z tym nową nazwę użytkownika administratora musi być zdefiniowany wraz z hasłem. Rozmiar maszyny wirtualnej musi być zdefiniowany.
 
 ```
 #####

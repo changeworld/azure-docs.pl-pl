@@ -1,12 +1,12 @@
 ---
-title: "Jak pracować z serwera wewnętrznej bazy danych .NET SDK dla aplikacji mobilnych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure App Service Mobile Apps."
-keywords: "usługi aplikacji, usługa aplikacji azure, aplikacji mobilnej, usługi mobilnej, wdrażanie aplikacji wdrożenia usługi azure app skali, skalowalna,"
+title: Jak pracować z serwera wewnętrznej bazy danych .NET SDK dla aplikacji mobilnych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure App Service Mobile Apps.
+keywords: usługi aplikacji, usługa aplikacji azure, aplikacji mobilnej, usługi mobilnej, wdrażanie aplikacji wdrożenia usługi azure app skali, skalowalna,
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Praca z zestawem SDK serwera zaplecza platformy .NET na potrzeby usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -62,7 +62,7 @@ Zestaw SDK jest dostępny na [NuGet.org]. Ten pakiet zawiera podstawowe funkcje 
 ### <a name="install-the-sdk"></a>Instalacja zestawu SDK
 Aby zainstalować zestaw SDK, kliknij prawym przyciskiem myszy projekt serwera w programie Visual Studio, wybierz **Zarządzaj pakietami NuGet**, wyszukaj [Microsoft.Azure.Mobile.Server] pakietu, a następnie kliknij przycisk **zainstalować** .
 
-### <a name="server-project-setup"></a>Inicjowanie projektu serwera
+### <a name="server-project-setup"></a> Inicjowanie projektu serwera
 Projekt serwera zaplecza .NET zainicjowano podobne do innych projektów programu ASP.NET, umieszczając klasę początkową OWIN. Upewnij się, że ma odwołanie do pakietu NuGet `Microsoft.Owin.Host.SystemWeb`. Aby dodać do tej klasy w Visual Studio, kliknij prawym przyciskiem myszy projekt serwera, a następnie wybierz **Dodaj** >
 **nowy element**, następnie **Web**  >  ** Ogólne** > **klasy początkowej OWIN**.  Klasa jest generowana za pomocą następującego atrybutu:
 
@@ -105,12 +105,12 @@ Szybki Start serwera z portalu Azure wywołań **UseDefaultConfiguration()**. To
 
 Metody rozszerzenia używane są:
 
-* `AddMobileAppHomeController()`udostępnia domyślną stronę główną usługi Azure Mobile Apps.
-* `MapApiControllers()`zapewnia niestandardowego interfejsu API funkcji WebAPI kontrolerów ozdobione `[MobileAppController]` atrybutu.
-* `AddTables()`zapewnia mapowanie `/tables` punktów końcowych do tabeli kontrolerów.
-* `AddTablesWithEntityFramework()`jest skrótowym mapowania `/tables` kontrolerów na podstawie punktów końcowych przy użyciu programu Entity Framework.
-* `AddPushNotifications()`zapewnia prostą metodę rejestrowania urządzeń do usługi Notification Hubs.
-* `MapLegacyCrossDomainController()`zawiera standardowe nagłówki CORS dla rozwoju lokalnych.
+* `AddMobileAppHomeController()` udostępnia domyślną stronę główną usługi Azure Mobile Apps.
+* `MapApiControllers()` zapewnia niestandardowego interfejsu API funkcji WebAPI kontrolerów ozdobione `[MobileAppController]` atrybutu.
+* `AddTables()` zapewnia mapowanie `/tables` punktów końcowych do tabeli kontrolerów.
+* `AddTablesWithEntityFramework()` jest skrótowym mapowania `/tables` kontrolerów na podstawie punktów końcowych przy użyciu programu Entity Framework.
+* `AddPushNotifications()` zapewnia prostą metodę rejestrowania urządzeń do usługi Notification Hubs.
+* `MapLegacyCrossDomainController()` zawiera standardowe nagłówki CORS dla rozwoju lokalnych.
 
 ### <a name="sdk-extensions"></a>Rozszerzenia zestawu SDK
 Następujące pakiety NuGet, na podstawie rozszerzenia zawierają różne funkcje mobilne, które mogą być używane przez aplikację. Włącz rozszerzenia podczas inicjowania przy użyciu **MobileAppConfiguration** obiektu.
@@ -144,7 +144,7 @@ W tej sekcji przedstawiono sposób publikowania projektu zaplecza .NET z program
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="define-table-controller"></a>Porady: Definiowanie kontrolera tabeli
+## <a name="define-table-controller"></a> Porady: Definiowanie kontrolera tabeli
 Zdefiniuj kontrolera tabeli do udostępnienia tabeli SQL do klientów mobilnych.  Konfigurowanie kontrolera tabeli wymaga trzy kroki:
 
 1. Utwórz klasę obiektu transferu danych (DTO).

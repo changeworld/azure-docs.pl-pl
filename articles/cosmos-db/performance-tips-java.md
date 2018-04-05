@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: 3a6c7c51810375574895643cea2e0e24508fa382
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 7aeb76f59b9489f7c930ef754ccbe6d3712e52a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 > [!div class="op_single_selector"]
+> * [Java (asynchroniczny)](performance-tips-async-java.md)
 > * [Java](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
@@ -80,7 +81,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
    <a id="max-connection"></a>
 3. **Zwiększ MaxPoolSize na host w trybie bramy**
 
-    Azure DB rozwiązania Cosmos żądania są wykonywane za pośrednictwem protokołu HTTPS/REST w trybie bramy i są poddawane domyślny limit połączeń na nazwę hosta lub adres IP. Konieczne może być równa MaxPoolSize nowszej (200-1000) tak, aby biblioteka klienta może korzystać z wielu równoczesnych połączeń do bazy danych Azure rozwiązania Cosmos. W zestawie SDK Java, wartością domyślną dla [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.gsetmaxpoolsize) to 100. Użyj [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) Aby zmienić wartość.
+    Azure DB rozwiązania Cosmos żądania są wykonywane za pośrednictwem protokołu HTTPS/REST w trybie bramy i są poddawane domyślny limit połączeń na nazwę hosta lub adres IP. Konieczne może być równa MaxPoolSize nowszej (200-1000) tak, aby biblioteka klienta może korzystać z wielu równoczesnych połączeń do bazy danych Azure rozwiązania Cosmos. W zestawie SDK Java, wartością domyślną dla [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.getmaxpoolsize) to 100. Użyj [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy.setmaxpoolsize) Aby zmienić wartość.
 
 4. **Dostrajanie równoległe zapytania dla kolekcji partycjonowanych**
 
@@ -103,7 +104,7 @@ Dlatego jeśli "jak poprawić wydajność mojej bazy danych?" należy wziąć po
 
 7. **Użyj adresowanie na podstawie nazwy**
 
-    Użyj adresowanie na podstawie nazwy, której łącza mają format `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, zamiast SelfLinks (_self), które mają format `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` Aby uniknąć pobierania identyfikatory zasobów wszystkich zasobów, które są używane do utworzenia łącza. Ponadto zgodnie z tych zasobów uzyskać odtworzone (prawdopodobnie w tej samej nazwy), buforowanie tych może nie pomocy.
+    Użyj adresowanie na podstawie nazwy, której łącza mają format `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`, zamiast SelfLinks (\_self), które mają format `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` Aby uniknąć pobierania identyfikatory zasobów wszystkich zasobów, które są używane do utworzenia łącza. Ponadto zgodnie z tych zasobów uzyskać odtworzone (prawdopodobnie w tej samej nazwy), buforowanie tych może nie pomocy.
 
    <a id="tune-page-size"></a>
 8. **Dostosuj rozmiar strony dla źródła danych zapytania/odczytu w celu poprawy wydajności**

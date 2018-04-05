@@ -1,12 +1,12 @@
 ---
-title: "Udostępnianie urządzeń do monitorowania zdalnego w środowisku Node.js - Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób podłącz urządzenie do wstępnie pakiet IoT Azure zdalnego monitorowania rozwiązania przy użyciu aplikacji napisanych w Node.js."
-services: 
+title: Udostępnianie urządzeń do monitorowania zdalnego w środowisku Node.js - Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób podłącz urządzenie do wstępnie pakiet IoT Azure zdalnego monitorowania rozwiązania przy użyciu aplikacji napisanych w Node.js.
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: df89150867a3c95116ba8ca8cd684af4b32a36de
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Podłącz urządzenie do zdalnego wstępnie skonfigurowane rozwiązanie monitorowania (Node.js)
 

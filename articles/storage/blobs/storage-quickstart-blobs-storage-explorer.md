@@ -1,6 +1,6 @@
 ---
-title: "Szybki Start Azure — przekazywanie, pobieranie i wyświetlanie obiektów blob w usłudze Azure Storage za pomocą Eksploratora usługi Azure Storage | Microsoft Docs"
-description: "W tym przewodniku Szybki start utworzysz konto magazynu i kontener za pomocą Eksploratora usługi Azure Storage. Następnie przy użyciu Eksploratora usługi Storage przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz obiekty blob w kontenerze."
+title: Szybki Start Azure — przekazywanie, pobieranie i wyświetlanie obiektów blob w usłudze Azure Storage za pomocą Eksploratora usługi Azure Storage | Microsoft Docs
+description: W tym przewodniku Szybki start utworzysz konto magazynu i kontener za pomocą Eksploratora usługi Azure Storage. Następnie przy użyciu Eksploratora usługi Storage przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz obiekty blob w kontenerze.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: 72503dd0216d9d987d1222491c6e11d46a4d38a3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f44d42b949eae0d017e3bba218234fd1e2ead78e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Szybki Start: przekazywanie, pobieranie i wyświetlanie obiektów blob za pomocą Eksploratora usługi Azure Storage
 
@@ -47,7 +47,7 @@ Po nawiązaniu połączenia Eksplorator usługi Azure Storage zostanie załadowa
 
 Obiekty blob są zawsze przesyłane do kontenera. Umożliwia to organizowanie grup obiektów blob w sposób podobny do organizowania plików w folderach na komputerze.
 
-Aby utworzyć kontener, rozwiń konto magazynu utworzone w poprzednim kroku. Wybierz pozycję **Kontenery obiektów blob**, rozwiń ją, a następnie wybierz pozycję **Utwórz kontener obiektów blob**. Wprowadź nazwę kontenera obiektów blob. Lista reguł i ograniczeń dotyczących nazewnictwa kontenerów obiektów blob znajduje się w sekcji [reguł nazewnictwa kontenerów](storage-dotnet-how-to-use-blobs.md#create-a-container). Po zakończeniu naciśnij klawisz **Enter**, aby utworzyć kontener obiektów blob. Po pomyślnym utworzeniu kontener obiektów blob zostanie wyświetlony w folderze **Kontenery obiektów blob** dla wybranego konta magazynu.
+Aby utworzyć kontener, rozwiń konto magazynu utworzone w poprzednim kroku. Wybierz pozycję **Kontenery obiektów blob**, rozwiń ją, a następnie wybierz pozycję **Utwórz kontener obiektów blob**. Wprowadź nazwę kontenera obiektów blob. Lista reguł i ograniczeń dotyczących nazewnictwa kontenerów obiektów blob znajduje się w sekcji [Tworzenie kontenera i ustawianie uprawnień](storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions). Po zakończeniu naciśnij klawisz **Enter**, aby utworzyć kontener obiektów blob. Po pomyślnym utworzeniu kontener obiektów blob zostanie wyświetlony w folderze **Kontenery obiektów blob** dla wybranego konta magazynu.
 
 ## <a name="upload-blobs-to-the-container"></a>Przekazywanie obiektów blob do kontenera
 

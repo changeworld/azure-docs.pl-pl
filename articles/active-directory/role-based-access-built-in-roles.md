@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
 ms.openlocfilehash: 4d9df6743d84310b7db70034d1e84dd3591b3c21
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure
 Azure opartej na rolach kontroli dostępu (RBAC) zawiera następujące role wbudowane przypisane do użytkowników, grup i usług. Nie można zmodyfikować definicje ról wbudowanych. Można jednak utworzyć [niestandardowych ról w Azure RBAC](role-based-access-control-custom-roles.md) do określonych potrzeb organizacji.

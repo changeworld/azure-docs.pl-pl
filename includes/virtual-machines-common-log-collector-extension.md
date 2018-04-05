@@ -2,7 +2,7 @@
 Diagnozowanie problemów z usługą w chmurze Microsoft Azure wymaga zbieranie plików dziennika usługi na maszynach wirtualnych, ponieważ występują problemy. Umożliwia AzureLogCollector rozszerzenia na żądanie wykonywać jednorazowe zbierania dzienników z co najmniej jeden chmury maszyn wirtualnych usługi (od ról sieć web i roli proces roboczy) i przenieść zebranych plików do konta magazynu platformy Azure — wszystko to bez zdalne logowanie do dowolnego maszyn wirtualnych.
 
 > [!NOTE]
-> Opisy dla większości zarejestrowane informacje znajdują się w http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
+> Opisy dla większości zarejestrowane informacje można znaleźć w folderze http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp.
 > 
 > 
 
@@ -28,7 +28,7 @@ W obu trybach kolekcji można określić dodatkowe dane folderów kolekcji przy 
 * Masz konto magazynu dla rozszerzenia do zapisywania plików zip wygenerowany.
 * Użyj polecenia cmdlet programu PowerShell systemu Azure v0.8.0 lub nowszej. Aby uzyskać więcej informacji, zobacz [Azure pobiera](https://azure.microsoft.com/downloads/).
 
-## <a name="add-the-extension"></a>Dodawanie rozszerzeń
+## <a name="add-the-extension"></a>Dodawanie rozszerzenia
 Można użyć [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) poleceń cmdlet lub [API REST zarządzania usługami](https://msdn.microsoft.com/library/ee460799.aspx) można dodać rozszerzenia AzureLogCollector.
 
 Dla usług w chmurze, istniejącego polecenia cmdlet programu Azure Powershell **AzureServiceExtension zestaw**, można włączyć rozszerzenia dla wystąpień roli usługi w chmurze. Za każdym razem, gdy to rozszerzenie jest włączona za pomocą tego polecenia cmdlet, zbierania dzienników jest wyzwalane w wystąpieniach wybranej roli wybranych ról.
@@ -124,7 +124,7 @@ Możesz wykonać jedną dwa poniższe kroki, aby dodać AzureLogCollector do co 
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-5. Wywołanie SetAzureServiceLogCollector.ps1 (dołączony na końcu artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania można znaleźć przekazanego pliku w obszarze`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Wywołanie SetAzureServiceLogCollector.ps1 (dołączony na końcu artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania można znaleźć przekazanego pliku w obszarze `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
   ```powershell
   .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -216,7 +216,7 @@ Postępuj zgodnie z instrukcjami, aby połączyć program Azure PowerShell do su
   $StorageAccountKey  = 'YourStorageAccountKey'
   ```
 
-3. Wywołanie SetAzureVMLogCollector.ps1 (dołączony na końcu artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania można znaleźć przekazanego pliku w obszarze`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Wywołanie SetAzureVMLogCollector.ps1 (dołączony na końcu artykułu) w następujący sposób włączyć rozszerzenie AzureLogCollector dla usługi w chmurze. Po zakończeniu wykonywania można znaleźć przekazanego pliku w obszarze `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Poniżej znajduje się definicja parametry przekazywane do skryptu. (To jest kopiowana poniżej również.)
 

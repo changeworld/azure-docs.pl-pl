@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integrowanie usługi Azure Active Directory z Remix kierownik E | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i E sprzedaży Menedżera Remix."
+title: 'Samouczek: Integrowanie usługi Azure Active Directory z Remix kierownik E | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i E sprzedaży Menedżera Remix.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
 ms.openlocfilehash: 200d87b950ac76c85513bc11da2798562e48bec3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrowanie usługi Azure Active Directory z Remix kierownik E
 

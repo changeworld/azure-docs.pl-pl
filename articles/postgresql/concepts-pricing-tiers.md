@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 8c8a2f6076c14dabe70f90538ca8c8b97fb93de0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3ea7d09338d4d89030138b8c4dc4085a6cd8ccc5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Bazy danych platformy Azure dla PostgreSQL warstw cenowych
 
@@ -24,7 +24,7 @@ Można utworzyć bazy danych Azure PostgreSQL serwera w jednym z trzech różnyc
 | Generowanie obliczeniowe | Gen 4, 5 Gen | Gen 4, 5 Gen | 5. generacja |
 | vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Ilość pamięci na vCore | Baseline | 2 x Basic | 2 x ogólnego przeznaczenia |
-| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 1 TB | 5 GB do 1 TB |
+| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowych bazy danych | 7-35 dni | 7-35 dni | 7-35 dni |
 
@@ -46,9 +46,9 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 |:---|:----------:|:--------------------:|
 | Środkowe stany USA |  | X |
 | Wschodnie stany USA | X | X |
-| Wschodnie stany USA 2 | X |  |
+| Wschodnie stany USA 2 | X | X |
 | Środkowo-północne stany USA | X |  |
-| Środkowo-południowe stany USA | X |  |
+| Środkowo-południowe stany USA | X | X |
 | Zachodnie stany USA | X | X |
 | Zachodnie stany USA 2 |  | X |
 | Kanada Środkowa | X | X |
@@ -63,8 +63,8 @@ Obliczeń zasoby są dostarczane jako vCores, reprezentujące Procesora logiczne
 | Australia Wschodnia |  | X |
 | Indie Środkowe | X |  |
 | Indie Zachodnie | X |  |
-| Japonia Wschodnia | X |  |
-| Japonia Zachodnia | X |  |
+| Japonia Wschodnia | X | X |
+| Japonia Zachodnia | X | X |
 | Korea Południowa |  | X |
 
 W zależności od warstwy cenowej każdego vCore jest udostępniane z określoną ilością pamięci. Gdy zwiększyć lub zmniejszyć liczbę vCores serwera, ilość pamięci zwiększa lub zmniejsza proporcjonalnie. Warstwa ogólnego przeznaczenia zapewnia podwójne ilość pamięci na vCore w porównaniu do warstwy podstawowa. Warstwa zoptymalizowanych pod kątem pamięci miejsce double ilość pamięci w porównaniu do warstwy ogólnego przeznaczenia.
@@ -76,7 +76,7 @@ Zainicjowanie obsługi magazynu jest pojemności magazynu dostępnych do bazy da
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowana pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 1 TB | 5 GB do 1 TB |
+| Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 2 TB | 5 GB do 2 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
 | Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS | 3 IOPS/GB<br/>Min 100 IOPS |
 
@@ -100,7 +100,7 @@ Skalowanie magazynu i zmienić okres przechowywania kopii zapasowych to PRAWDA o
 
 Najbardziej aktualne informacje cenowej, zobacz Usługa [cennikiem](https://azure.microsoft.com/pricing/details/PostgreSQL/). Aby wyświetlić koszt konfiguracji, należy [portalu Azure](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) zawiera miesięczny koszt **warstwa cenowa** kartę na podstawie opcji wybrania. Jeśli nie masz subskrypcji platformy Azure, można użyć Azure Kalkulator cen można pobrać szacowanej ceny. Na [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator/) witryny sieci Web, wybierz opcję **Dodaj elementy**, rozwiń węzeł **baz danych** kategorii i wybierz polecenie **PostgreSQLbazydanychAzure** Aby dostosować opcje.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [utworzyć serwer PostgreSQL w portalu](tutorial-design-database-using-azure-portal.md).
 - Dowiedz się, jak [monitorować i skalowania bazy danych Azure PostgreSQL serwera przy użyciu interfejsu wiersza polecenia Azure](scripts/sample-scale-server-up-or-down.md).

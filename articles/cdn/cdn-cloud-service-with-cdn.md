@@ -1,6 +1,6 @@
 ---
-title: "Integrowanie usługi w chmurze Azure z usługą Azure CDN | Dokumentacja firmy Microsoft"
-description: "Sposób wdrażania usługi w chmurze, obejmującej zawartość z punktu końcowego zintegrowane usługi Azure CDN"
+title: Integrowanie usługi w chmurze Azure z usługą Azure CDN | Dokumentacja firmy Microsoft
+description: Sposób wdrażania usługi w chmurze, obejmującej zawartość z punktu końcowego zintegrowane usługi Azure CDN
 services: cdn, cloud-services
 documentationcenter: .net
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="intro"></a>Integracja z usługą w chmurze z usługą Azure CDN
+# <a name="intro"></a> Integracja z usługą w chmurze z usługą Azure CDN
 Usługi w chmurze można zintegrować z usługą Azure CDN, obsługująca zawartość z lokalizacji usługi w chmurze. To podejście zapewnia następujące korzyści:
 
 * Łatwe wdrażanie i aktualizowanie obrazów, skrypty i arkusze stylów w katalogu projektu usługi chmury
@@ -30,7 +30,7 @@ Usługi w chmurze można zintegrować z usługą Azure CDN, obsługująca zawart
 * Integracja z usługą Azure CDN ASP.NET tworzenie pakietów i minimalizowanie
 
 ## <a name="what-you-will-learn"></a>Co dowiesz się
-W tym samouczku przedstawiono sposób:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 * [Integracja punktu końcowego usługi Azure CDN z usługi w chmurze i udostępniać zawartość statyczną na stronach sieci Web z usługi Azure CDN](#deploy)
 * [Skonfiguruj ustawienia pamięci podręcznej zawartość statyczną w usługi w chmurze](#caching)
@@ -63,7 +63,7 @@ W tej sekcji zostanie wdrożyć rolę sieci Web usługi w chmurze domyślnego sz
 1. W programie Visual Studio 2015, Utwórz nową usługę w chmurze Azure z paska menu, przechodząc do **Plik > Nowy > Projekt > chmura > usługi w chmurze Azure**. Nadaj mu nazwę, a następnie kliknij przycisk **OK**.
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-1-new-project.PNG)
-2. Wybierz **roli sieci Web ASP.NET** i kliknij przycisk  **>**  przycisku. Kliknij przycisk OK.
+2. Wybierz **roli sieci Web ASP.NET** i kliknij przycisk **>** przycisku. Kliknij przycisk OK.
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-2-select-role.PNG)
 3. Wybierz **MVC** i kliknij przycisk **OK**.
@@ -108,7 +108,7 @@ Profil CDN jest kolekcją punktów końcowych usługi CDN.  Każdy profil zawier
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
-## <a name="create-a-new-cdn-endpoint"></a>Utwórz nowy punkt końcowy CDN
+## <a name="create-a-new-cdn-endpoint"></a>Tworzenie nowego punktu końcowego usługi CDN
 **Aby utworzyć nowy punkt końcowy CDN dla konta magazynu**
 
 1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do swojego profilu CDN.  Być może został on przypięty do pulpitu nawigacyjnego w poprzednim kroku.  Jeśli nie, możesz go znaleźć, klikając pozycję **Przeglądaj**, następnie pozycję **Profile CDN** i klikając profil, do którego planujesz dodać punkt końcowy.
@@ -138,7 +138,7 @@ Profil CDN jest kolekcją punktów końcowych usługi CDN.  Każdy profil zawier
    > 
 
 ## <a name="test-the-cdn-endpoint"></a>Testowanie punktu końcowego usługi CDN
-Gdy stan publikowania jest **Ukończono**, Otwórz okno przeglądarki i przejdź do  **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. Moje ustawienia ten adres URL jest:
+Gdy stan publikowania jest **Ukończono**, Otwórz okno przeglądarki i przejdź do **http://<cdnName>*.azureedge.net/Content/bootstrap.css**. Moje ustawienia ten adres URL jest:
 
     http://camservice.azureedge.net/Content/bootstrap.css
 
@@ -146,18 +146,18 @@ Które odpowiada następujący adres URL źródła na punkt końcowy CDN:
 
     http://camcdnservice.cloudapp.net/Content/bootstrap.css
 
-Po przejściu do  **http://*&lt;cdnName >*.azureedge.net/Content/bootstrap.css**, w zależności od przeglądarki, zostanie wyświetlony monit do pobierania lub otwierania bootstrap.css, która pochodzi z opublikowanych aplikacji sieci Web.
+Po przejściu do **http://*&lt;cdnName >*.azureedge.net/Content/bootstrap.css**, w zależności od przeglądarki, pojawi się monit do pobierania lub otwierania bootstrap.css, dołączone z opublikowanych aplikacji sieci Web.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-Podobnie można uzyskać dostępu do dowolny publicznie dostępny adres URL w  **http://*&lt;serviceName >*.cloudapp.net/** bezpośrednio z punktu końcowego CDN. Na przykład:
+Podobnie można uzyskać dostępu do dowolny publicznie dostępny adres URL w **http://*&lt;serviceName >*.cloudapp.net/**skorelowane z punktu końcowego CDN. Na przykład:
 
 * Plik ze ścieżki/Script js
 * Dowolny plik zawartości z argumencie / ścieżki
 * Wszelkie kontrolera/działania
 * Jeśli ciąg zapytania jest włączona na punkt końcowy CDN dowolny adres URL z ciągami zapytań
 
-W rzeczywistości z powyższej konfiguracji, może obsługiwać usługę w chmurze całego z  **http://*&lt;cdnName >*.azureedge.net/**. Jeśli I przejdź do **http://camservice.azureedge.net/**, pobrać wyniku akcji z głównej/indeksu.
+W rzeczywistości z powyższej konfiguracji, może obsługiwać usługę w chmurze całego z **http://*&lt;cdnName >*.azureedge.net/**. Jeśli I przejdź do **http://camservice.azureedge.net/**, pobrać wyniku akcji z głównej/indeksu.
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -325,7 +325,7 @@ Wykonaj kroki opisane powyżej, aby skonfigurować tę akcję kontrolera:
             <br />
             <input class="btn" type="submit" value="Generate meme" />
         </form>
-5. Ponownie opublikuj usługę w chmurze i przejdź do  **http://*&lt;serviceName >*.cloudapp.net/MemeGenerator/Index** w przeglądarce.
+5. Ponownie opublikuj usługę w chmurze i przejdź do **http://*&lt;serviceName >*.cloudapp.net/MemeGenerator/Index** w przeglądarce.
 
 Po przesłaniu wartości formularza do `/MemeGenerator/Index`, `Index_Post` metoda akcji zwraca łącze do `Show` metodę akcji za pomocą odpowiednich identyfikator wejściowy. Po kliknięciu łącza zostanie wyświetlona następujący kod:  
 
@@ -446,7 +446,7 @@ Wykonaj poniższe kroki do integracji ASP.NET tworzenie pakietów i minimalizowa
    * Ponieważ używasz konstruktora CDN tag skryptu CDN dla pakietu nie zawiera już ciąg wersji automatycznie generowane w renderowanym adresu URL. Musisz ręcznie wygenerować ciąg wersji unikatowy za każdym razem, gdy pakietu skryptu są modyfikowane w celu wymusić Chybienie pamięci podręcznej, w sieci Azure CDN. W tym samym czasie to ciąg wersji unikatowy musi pozostać stałej za pośrednictwem cyklu życia wdrożenia w celu zmaksymalizowania trafień w pamięci podręcznej w sieci Azure CDN, po wdrożeniu pakietu.
    * Ciąg zapytania v = < W.X.Y.Z > ściąga z *Properties\AssemblyInfo.cs* w projekcie roli sieci Web. Może mieć przepływ pracy wdrożenia, który zawiera przyrostową wersję zestawu za każdym razem, gdy publikowanie na platformie Azure. Lub, można zmodyfikować *Properties\AssemblyInfo.cs* w swoim projekcie automatycznie zwiększać ciąg wersji zawsze można utworzyć przy użyciu znaku wieloznacznego "*". Na przykład:
      
-        [zestawu: AssemblyVersion("1.0.0.*")]
+        [assembly: AssemblyVersion("1.0.0.*")]
      
      Strategii usprawnić generowania unikatowy ciąg dla cyklu życia wdrożenia będzie działać w tym miejscu.
 2. Ponownie opublikować usługi w chmurze i dostęp do strony głównej.
@@ -527,10 +527,10 @@ Kiedy punktu końcowego usługi Azure CDN nie powiedzie się z jakiegokolwiek po
    
     Gdy `CdnFallbackExpression` jest niezerowa, skrypt wstrzykiwane do HTML, aby sprawdzić, czy pakietu została pomyślnie załadowana, a jeśli nie, uzyskać dostęp do pakietu bezpośrednio z serwera sieci Web źródła. Ta właściwość musi można ustawić wyrażenia JavaScript, który umożliwia sprawdzenie, czy odpowiedniego pakietu CDN jest poprawnie załadowany. Wyrażenie potrzebne do przetestowania każdego pakietu różni się zgodnie z zawartości. Dla powyższych pakietów domyślne:
    
-   * `window.jquery`jest zdefiniowany w jquery {wersja}-js
-   * `$.validator`jest zdefiniowany w jquery.validate.js
-   * `window.Modernizr`jest zdefiniowany w modernizer {wersja}-js
-   * `$.fn.modal`jest zdefiniowany w bootstrap.js
+   * `window.jquery` jest zdefiniowany w jquery {wersja}-js
+   * `$.validator` jest zdefiniowany w jquery.validate.js
+   * `window.Modernizr` jest zdefiniowany w modernizer {wersja}-js
+   * `$.fn.modal` jest zdefiniowany w bootstrap.js
      
      Zwróć uwagę, że nie ustawił I CdnFallbackExpression dla `~/Cointent/css` pakietu. Ponieważ jest obecnie [usterkę w System.Web.Optimization](https://aspnetoptimization.codeplex.com/workitem/104) który injects `<script>` tag rezerwowy CSS zamiast oczekiwanej `<link>` tagu.
      

@@ -1,8 +1,8 @@
 ---
-title: "Zbieranie Linux wydajność aplikacji w OMS Log Analytics | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania agenta pakietu OMS dla systemu Linux można zebrać liczników wydajności dla MySQL i Apache HTTP Server."
+title: Zbieranie Linux wydajność aplikacji w OMS Log Analytics | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania agenta pakietu OMS dla systemu Linux można zebrać liczników wydajności dla MySQL i Apache HTTP Server.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbieraj liczniki wydajności dla aplikacji systemu Linux w analizy dzienników 
 Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [Agent pakietu OMS Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności dla określonych aplikacji.  Aplikacje zawarte w tym artykule są:  
@@ -53,7 +53,7 @@ Wpisy w pliku uwierzytelniania są opisane w poniższej tabeli.
 | Adres BIND| Bieżący bind MySQL — adres. |
 | nazwa użytkownika| Aby monitorować wystąpienia serwera MySQL używany użytkownika MySQL. |
 | Hasło kodowane w formacie Base64| Hasło użytkownika monitorowania MySQL zakodowane w formacie Base64. |
-| Aktualizacje automatyczne| Określa, czy Skanuj ponownie zmiany w pliku my.cnf i nadpisać plik MySQL OMI Authentication, po uaktualnieniu dostawcy OMI MySQL. |
+| AutoUpdate| Określa, czy Skanuj ponownie zmiany w pliku my.cnf i nadpisać plik MySQL OMI Authentication, po uaktualnieniu dostawcy OMI MySQL. |
 
 ### <a name="default-instance"></a>Domyślne wystąpienie
 Plik authentication MySQL OMI można określić domyślnego wystąpienia oraz numer portu do wielu wystąpień MySQL na jednym hoście Linux łatwiejsze zarządzanie.  Domyślne wystąpienie jest wskazywane przez wystąpienie o portu 0. Wszystkie dodatkowe wystąpienia będzie dziedziczyć właściwości ustawić domyślnego wystąpienia, chyba że określają różne wartości. Na przykład jeśli wystąpienie MySQL nasłuchiwanie na porcie "3308" zostanie dodany, adres powiązania domyślnego wystąpienia, username i password kodowany w standardzie Base64 będzie służyć monitorowanie wystąpienia nasłuchiwanie 3308 i spróbuj. Jeśli wystąpienie na 3308 jest powiązany z innym adresem i korzysta z tej samej pary nazwa użytkownika i hasło MySQL tylko adres bind jest niezbędny, a dziedziczone przez inne właściwości.
@@ -78,10 +78,10 @@ Poniższa tabela zawiera szczegółowe informacje o składni dla przy użyciu my
 
 | Operacja | Przykład | Opis
 |:--|:--|:--|
-| AutoUpdate * false\|wartość true * | mycimprovauth autoupdate false | Ustawia, czy plik authentication zostanie automatycznie zaktualizowana na ponowne uruchomienie lub zaktualizować. |
+| AutoUpdate *false\|true* | mycimprovauth autoupdate false | Ustawia, czy plik authentication zostanie automatycznie zaktualizowana na ponowne uruchomienie lub zaktualizować. |
 | domyślne *powiązanego adresu nazwa_użytkownika hasło* | pwd głównych domyślnego 127.0.0.1 mycimprovauth | Ustawia domyślnego wystąpienia MySQL OMI plik uwierzytelniania.<br>Pole hasła powinny być wprowadzane w formacie zwykłego tekstu — hasło w pliku authentication MySQL OMI będzie zakodowanych w Base 64. |
-| Usuń * default\|numer_portu * | mycimprovauth 3308 | Usuwa określone wystąpienie albo domyślnie lub numer portu. |
-| Pomoc | mycimprov pomocy | Drukuje listę poleceń do użycia. |
+| Usuń *domyślne\|numer_portu* | mycimprovauth 3308 | Usuwa określone wystąpienie albo domyślnie lub numer portu. |
+| pomoc | mycimprov pomocy | Drukuje listę poleceń do użycia. |
 | Drukuj | mycimprov drukowania | Drukuje łatwo odczytać pliku uwierzytelniania MySQL OMI. |
 | Zaktualizuj numer_portu *powiązanego adresu nazwa_użytkownika hasło* | mycimprov aktualizacji 3307 127.0.0.1 głównego pwd | Aktualizuje określone wystąpienie lub dodaje wystąpienie, jeśli nie istnieje. |
 
@@ -99,8 +99,8 @@ Użytkownika MySQL wymaga dostępu do następujących zapytań, aby zbierać dan
 
 Użytkownik MySQL wymaga również wybierz dostęp do poniższych tabelach domyślne.
 
-- INFORMATION_SCHEMA
-- MySQL. 
+- information_schema
+- mysql. 
 
 Te uprawnienia można otrzymać, uruchamiając następujące polecenia grant.
 
@@ -165,6 +165,6 @@ Po skonfigurowaniu Agent pakietu OMS dla systemu Linux w celu wysyłania danych 
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Zebrać liczników wydajności](log-analytics-data-sources-performance-counters.md) z agentów systemu Linux.
 * Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania. 

@@ -1,11 +1,11 @@
 ---
-title: "Technologie open source często zadawane pytania dotyczące usługi Azure web apps | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące open source technologii w funkcji aplikacji sieci Web w usłudze Azure App Service."
+title: Technologie open source często zadawane pytania dotyczące usługi Azure web apps | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące open source technologii w funkcji aplikacji sieci Web w usłudze Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie open source często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -49,10 +49,10 @@ Aby włączyć rejestrowanie PHP:
 2. Wybierz z górnego menu **konsoli debugowania** > **CMD**.
 3. Wybierz **lokacji** folderu.
 4. Wybierz **wwwroot** folderu.
-5. Wybierz  **+**  ikonę, a następnie wybierz **nowy plik**.
+5. Wybierz **+** ikonę, a następnie wybierz **nowy plik**.
 6. Ustaw nazwę pliku **. user.ini**.
 7. Wybierz ikonę ołówka obok **. user.ini**.
-8. W pliku Dodaj ten kod:`log_errors=on`
+8. W pliku Dodaj ten kod: `log_errors=on`
 9. Wybierz pozycję **Zapisz**.
 10. Wybierz ikonę ołówka obok **wp config.php**.
 11. Zmień go na następujący kod:
@@ -100,7 +100,7 @@ Aby zmienić wersję aplikacji Node.js, użyj jednej z następujących opcji:
     Proces wdrażania kontroli źródła Azure obejmuje następujące kroki:
     1. Przenosi zawartości do aplikacji sieci web platformy Azure.
     2. Tworzy domyślny skrypt wdrożenia, jeśli nie ma takiego (pliku deploy.cmd, pliki .deployment) w katalogu głównym aplikacji sieci web.
-    3. Uruchamia skrypt wdrożenia, w którym tworzy plik iisnode.yml udostępniany Jeśli wspomina wersji środowiska Node.js w pliku package.json > aparatu`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+    3. Uruchamia skrypt wdrożenia, w którym tworzy plik iisnode.yml udostępniany Jeśli wspomina wersji środowiska Node.js w pliku package.json > aparatu `"engines": {"node": "5.9.1","npm": "3.7.3"}`
     4. Plik iisnode.yml udostępniany ma następujący wiersz kodu:
         ```
         nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -135,7 +135,7 @@ Aby uzyskać informacje o instalowaniu Django, zobacz [wdrażanie aplikacji Djan
 
 Dla portalu Azure Marketplace i wdrożeń niestandardowych:
 
-* Lokalizacja folderu: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Folder location: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * Pliki odsetek:
     * catalina. *rrrr mm-dd*.log
     * Menedżer hosta. *rrrr mm-dd*.log

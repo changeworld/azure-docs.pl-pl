@@ -1,11 +1,11 @@
 ---
-title: "Przy użyciu usługi Azure Media Pakowarka wykonywać zadania statycznych pakowania | Dokumentacja firmy Microsoft"
-description: "W tym temacie przedstawiono różne zadania, które są realizowane za pomocą usługi Azure Media Pakowarka."
+title: Przy użyciu usługi Azure Media Pakowarka wykonywać zadania statycznych pakowania | Dokumentacja firmy Microsoft
+description: W tym temacie przedstawiono różne zadania, które są realizowane za pomocą usługi Azure Media Pakowarka.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.openlocfilehash: de6cbf954f175777407432845ece24ac49198e46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Przy użyciu usługi Azure Media Pakowarka wykonywać zadania pakowania statyczne
 > [!NOTE]

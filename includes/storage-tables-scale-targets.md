@@ -1,4 +1,4 @@
-| Zasób | docelowy |
+| Zasób | Środowisko docelowe |
 |----------|---------------|
 | Maksymalny rozmiar pojedynczej tabeli | 500 TiB |
 | Maksymalny rozmiar jednostki tabeli | 1 MiB |

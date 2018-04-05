@@ -1,4 +1,4 @@
-| Zasób | docelowy |
+| Zasób | Środowisko docelowe |
 |----------|---------------|
 | Maksymalny rozmiar udziału plików | 5 TiB |
 | Maksymalny rozmiar pliku w udziale plików | 1 TiB |

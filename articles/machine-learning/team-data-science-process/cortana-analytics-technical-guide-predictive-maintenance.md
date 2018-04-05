@@ -1,8 +1,8 @@
 ---
-title: "Konserwacji predykcyjnej w aerospace z platformy Azure — podręcznik techniczny Cortana Intelligence rozwiązania | Dokumentacja firmy Microsoft"
-description: "Podręcznik techniczny do szablonu rozwiązania z Microsoft Cortana Intelligence do konserwacji predykcyjnej w aerospace, narzędzia i transportu."
+title: Konserwacji predykcyjnej w aerospace z platformy Azure — podręcznik techniczny Cortana Intelligence rozwiązania | Dokumentacja firmy Microsoft
+description: Podręcznik techniczny do szablonu rozwiązania z Microsoft Cortana Intelligence do konserwacji predykcyjnej w aerospace, narzędzia i transportu.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
 ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Podręcznik techniczny do szablonu Cortana analizy rozwiązania dla konserwacji predykcyjnej aerospace i innych firm
 
@@ -41,7 +41,7 @@ Cele w tym artykule są:
 > 
 > 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 ![Architektura konserwacji predykcyjnej](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
 Podczas wdrażania rozwiązania, zostaje uaktywniony usług platformy Azure w ramach pakietu Analytics Cortana (w tym Centrum zdarzeń, Stream Analytics, HDInsight, fabryki danych i Machine Learning). Diagram architektury pokazuje, jak jest tworzony konserwacji predykcyjnej lotniczego szablonu rozwiązania. Badania tych usług w portalu Azure, klikając na diagramie szablon rozwiązania utworzone przy użyciu wdrażania rozwiązania (z wyjątkiem HDInsight, która jest inicjowana na żądanie, gdy są wymagane do uruchomienia działania powiązane potoku i usunąć później).
@@ -57,7 +57,7 @@ Aby uzyskać instrukcje, aby pobrać i zainstalować tę aplikację, wybierz wę
 
 Aplikacja generowania zdarzeń wypełnia Azure Event Hub tylko wtedy, gdy jest wykonywane na tym komputerze.
 
-### <a name="azure-event-hub"></a>Centrum zdarzeń platformy Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) usługi jest odbiorcą danych wejściowych dostarczonych przez syntetyczne źródło danych.
 
 ## <a name="data-preparation-and-analysis"></a>Przygotowanie danych i analiza
@@ -71,7 +71,7 @@ Uruchom [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-sta
 Tworzenia prognoz na pozostałych użytkowania (RUL) aparatem powietrznego określonej przy użyciu wejść odebranych z [Azure Machine Learning usługi](https://azure.microsoft.com/services/machine-learning/) (zorkiestrowana przez fabryki danych Azure). 
 
 ## <a name="data-publishing"></a>Publikowanie danych
-### <a name="azure-sql-database"></a>Usługa Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL Database
 Użyj [bazy danych SQL Azure](https://azure.microsoft.com/services/sql-database/) do przechowywania prognoz odbierane przez usługę uczenie maszynowe Azure, które są następnie używane w [usługi Power BI](https://powerbi.microsoft.com) pulpitu nawigacyjnego.
 
 ## <a name="data-consumption"></a>Użycie danych
@@ -85,7 +85,7 @@ Jest mało prawdopodobne, czy zestaw danych jest zgodna zestawu danych używany 
 
 W poniższych sekcjach omówiono części szablonu, które wymagają modyfikacji, jeśli wprowadzono nowy zestaw danych.
 
-### <a name="azure-event-hub"></a>Centrum zdarzeń platformy Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 Azure Centrum zdarzeń jest rodzajowy; dane mogą być publikowane w Centrum w formacie CSV lub JSON. Brak specjalnego przetwarzania występuje w Centrum zdarzeń platformy Azure, ale jest ważne, aby zrozumieć dane, które są przekazywane do niego.
 
 Ten dokument nie opisuje sposobu pozyskiwania danych, ale można łatwo wysłać zdarzenia lub dane do Centrum zdarzeń platformy Azure przy użyciu interfejsów API Centrum zdarzeń.
@@ -134,7 +134,7 @@ To [potoku](../../data-factory/v1/data-factory-create-pipelines.md) zawiera kilk
 
 Dostępne są następujące czynności:
 
-* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) działania przy użyciu [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , na którym działa [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skrypt, aby wykonać agregacji i inżynieria niezbędne do [usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) eksperymentu.
+* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) działania przy użyciu [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , na którym działa [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skrypt, aby wykonać agregacji i inżynieria niezbędne do [maszyny platformy Azure Learning](https://azure.microsoft.com/services/machine-learning/) eksperymentu.
   [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptów jest to zadanie partycjonowania ***PrepareMLInput.hql***.
 * [Kopiuj](https://msdn.microsoft.com/library/azure/dn835035.aspx) działanie, które przenosi wyników z [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) działania do jednego [usługi Azure Storage](https://azure.microsoft.com/services/storage/) dostęp do obiektów blob [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) działanie.
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) wywołań działania [usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) doświadczenia z wynikami umieścić w pojedynczym [usługi Azure Storage](https://azure.microsoft.com/services/storage/) obiektu blob.
@@ -191,7 +191,7 @@ Poniższe kroki informacje pomocne w sposób nawiązywania połączenia z bazą 
 3. (Opcjonalnie) Publikowanie pulpitu zimnych ścieżki [online usługi Power BI](http://www.powerbi.com/). Należy pamiętać, że ten krok wymaga konta usługi Power BI (lub konta usługi Office 365).
    
    * Kliknij przycisk **"Publikuj"** i później kilku sekund zostanie wyświetlone okno "Publikowania Power BI sukcesu!" z zielonym znacznikiem wyboru. Kliknij łącze poniżej "Otwórz PredictiveMaintenanceAerospace.pbix w usłudze Power BI". Aby uzyskać szczegółowe instrukcje, zobacz [publikowania z Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Aby utworzyć nowy pulpit nawigacyjny: kliknij  **+**  dalej, aby zarejestrować **pulpity nawigacyjne** sekcji w okienku po lewej stronie. Wprowadź nazwę "Demo konserwacji predykcyjnej" dla tego nowego pulpitu nawigacyjnego.
+   * Aby utworzyć nowy pulpit nawigacyjny: kliknij **+** dalej, aby zarejestrować **pulpity nawigacyjne** sekcji w okienku po lewej stronie. Wprowadź nazwę "Demo konserwacji predykcyjnej" dla tego nowego pulpitu nawigacyjnego.
    * Po otwarciu raportu, kliknij przycisk ![ikonę PINEZKI](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-pin.png) Aby przypiąć wszystkie wizualizacje do pulpitu nawigacyjnego. Aby uzyskać szczegółowe instrukcje, zobacz [przypiąć Kafelek do pulpitu nawigacyjnego usługi Power BI z raportu](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Przejdź do strony pulpitu nawigacyjnego i Dostosuj rozmiar i położenie sieci wizualizacji i Edytuj ich tytułów. Aby uzyskać szczegółowe instrukcje na temat edytowania swoje Kafelki, zobacz [edycji kafelka — zmiany rozmiaru, Przenieś, Zmień nazwę, numer pin, usuwanie, Dodawanie hiperłącza](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Oto pulpitu nawigacyjnego przykład z niektórych wizualizacjami zimnych ścieżki przypięty do niego.  W zależności od tego, jak długo zostanie uruchomione z generator danych numery na wizualizacjach mogą się różnić.
      <br/>
