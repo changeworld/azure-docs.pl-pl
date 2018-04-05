@@ -1,6 +1,6 @@
 ---
-title: "Azure Quickstart — przekazywanie, pobieranie i wyświetlanie listy obiektów blob w usłudze Azure Storage za pomocą języka Go | Microsoft Docs"
-description: "W tym przewodniku Szybki start utworzysz konto magazynu i kontener. Następnie przy użyciu biblioteki klienta języka Go przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze."
+title: Azure Quickstart — przekazywanie, pobieranie i wyświetlanie listy obiektów blob w usłudze Azure Storage za pomocą języka Go | Microsoft Docs
+description: W tym przewodniku Szybki start utworzysz konto magazynu i kontener. Następnie przy użyciu biblioteki klienta języka Go przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
 author: seguler
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: a30d012ea663b04028a4b0ebb2880532a596500b
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5572eaafa49200be0b2a8156dbc96bffd48be925
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą języka Go
 
@@ -211,6 +211,13 @@ containerURL.Delete(ctx, azblob.ContainerAccessConditions{})
 file.Close()
 os.Remove(fileName)
 ```
+
+## <a name="resources-for-developing-go-applications-with-blobs"></a>Zasoby używane do tworzenia aplikacji języka Go z obiektami blob
+
+Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji języka Go przy użyciu usługi Blob Storage:
+
+- W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta Go](https://github.com/Azure/azure-storage-blob-go) dla usługi Azure Storage i zainstaluj go.
+- Zapoznaj się z [przykładami magazynu Blob Storage](https://godoc.org/github.com/Azure/azure-storage-blob-go/2016-05-31/azblob#pkg-examples) napisanymi przy użyciu biblioteki klienta Go.
 
 ## <a name="next-steps"></a>Następne kroki
  

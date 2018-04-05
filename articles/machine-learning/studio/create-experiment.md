@@ -1,11 +1,12 @@
 ---
-title: "Prosty eksperyment w usłudze Machine Learning Studio | Microsoft Docs"
-description: "Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji."
+title: Prosty eksperyment w usłudze Machine Learning Studio | Microsoft Docs
+description: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
 keywords: experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques,data science experiment
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: 3cc4278ca7d4603f4bfb916885d44e6a85864b25
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 57461cf94898012619b865c455955f511e978995
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Samouczek dotyczący uczenia maszynowego: tworzenie pierwszego eksperymentu związanego z przetwarzaniem danych w usłudze Azure Machine Learning Studio
 
@@ -55,7 +55,7 @@ Można wykonywać iteracje projektu modelu, wielokrotnie edytując i uruchamiaj�
 
 ## <a name="open-machine-learning-studio"></a>Otwieranie usługi Machine Learning Studio
 
-Aby rozpocząć korzystanie z usługi Studio, otwórz stronę [https://studio.azureml.net](https://studio.azureml.net). Jeśli logujesz się w usłudze Machine Learning Studio nie po raz pierwszy, kliknij pozycję **Sign in** (Zaloguj się). W przeciwnym razie kliknij pozycję **Sign up here** (Zarejestruj się) i wybierz opcję darmową lub płatną.
+Aby rozpocząć pracę z usługą Studio, przejdź do [https://studio.azureml.net](https://studio.azureml.net). Jeśli logujesz się w usłudze Machine Learning Studio nie po raz pierwszy, kliknij pozycję **Sign in** (Zaloguj się). W przeciwnym razie kliknij pozycję **Sign up here** (Zarejestruj się) i wybierz opcję darmową lub płatną.
 
 ![Logowanie do usługi Machine Learning Studio][sign-in-to-studio]
 <br/>

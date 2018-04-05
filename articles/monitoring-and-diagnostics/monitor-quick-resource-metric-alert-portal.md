@@ -1,6 +1,6 @@
 ---
-title: "Otrzymywanie powiadomienia w przypadku spełnienia określonego warunku przez wartość metryki | Microsoft Docs"
-description: "Przewodnik Szybki start dotyczący tworzenia metryk dla aplikacji logiki"
+title: Otrzymywanie powiadomienia w przypadku spełnienia określonego warunku przez wartość metryki | Microsoft Docs
+description: Przewodnik Szybki start dotyczący tworzenia metryk dla aplikacji logiki
 author: anirudhcavale
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Otrzymywanie powiadomienia w przypadku spełnienia określonego warunku przez wartość metryki
 
@@ -34,20 +34,20 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 2. Wyszukaj i wybierz pozycję **Aplikacja logiki**. Kliknij przycisk **Utwórz**.
 
-3. Wprowadź informacje na temat aplikacji logiki, które zostały pokazane na poniższej ilustracji.  Użyj domyślnej lokalizacji. Zaznacz opcję **Przypnij do pulpitu nawigacyjnego**.  Na koniec kliknij pozycję **Utwórz**. 
+3. Wprowadź nazwę myLogicApp i grupę zasobów myResourceGroup. Użyj subskrypcji.  Użyj domyślnej lokalizacji. Zaznacz opcję **Przypnij do pulpitu nawigacyjnego**.  Na koniec kliknij pozycję **Utwórz**. 
 
-    ![Wprowadzanie podstawowych informacji o aplikacji logiki w portalu](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
+    ![Wprowadzanie podstawowych informacji o aplikacji logiki w portalu](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
 
 4. Aplikacja logiki powinna zostać przypięta do pulpitu nawigacyjnego. Kliknij aplikację logiki, aby do niej przejść.
 
 5. Na panelu aplikacji logiki wybierz pozycję **Projektant aplikacji logiki**.
 
-     ![Utworzono wyzwalacz cykliczny w Projektancie aplikacji logiki przy użyciu panelu portalu](./media/monitoring-quick-resource-metric-alert-portal/logic-app-designer.png)  
+     ![Utworzono wyzwalacz cykliczny w Projektancie aplikacji logiki przy użyciu panelu portalu](./media/monitor-quick-resource-metric-alert-portal/logic-app-designer.png)  
 
 6. Skonfiguruj wartości zgodnie z poniższym diagramem.
 
-    ![Konfigurowanie wyzwalacza aplikacji logiki przy użyciu panelu portalu](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-triggers.png). 
+    ![Konfigurowanie wyzwalacza aplikacji logiki przy użyciu panelu portalu](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png). 
 
 7. W projektancie wybierz wyzwalacz **Cykliczny**.
 
@@ -75,7 +75,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 5. Powinien być teraz widoczny wykres przedstawiający łączną liczbę przebiegów uruchomionych przez aplikację logiki w ciągu ostatniej godziny. Jeśli nie widać żadnych przebiegów, upewnij się, że od wykonania poprzedniego kroku minęło co najmniej 5 minut. Następnie odśwież przeglądarkę. 
 
-    ![Tworzenie wykresu metryki dla zasobu aplikacji logiki](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
+    ![Tworzenie wykresu metryki dla zasobu aplikacji logiki](./media/monitor-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 
 ## <a name="create-a-metric-alert-for-your-logic-app"></a>Tworzenie alertu dotyczącego metryki aplikacji logiki
 
@@ -87,7 +87,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 4. Na koniec w polu **Dodatkowe adresy e-mail administratora** wprowadź swój adres e-mail. Dzięki temu alertowi otrzymasz wiadomość e-mail, jeśli w aplikacji logiki w ciągu 5 minut wystąpi 10 nieudanych przebiegów.
 
-    ![Konfigurowanie alertu aplikacji logiki przy użyciu panelu portalu](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
+    ![Konfigurowanie alertu aplikacji logiki przy użyciu panelu portalu](./media/monitor-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
 
 ## <a name="receive-metric-alert-notifications-for-your-logic-app"></a>Otrzymywanie powiadomień alertów dotyczących metryki aplikacji logiki
 1. Po chwili powinna zostać dostarczona do Ciebie wiadomość e-mail od nadawcy „Microsoft Azure Alerts”, informująca o „aktywowaniu” alertu.

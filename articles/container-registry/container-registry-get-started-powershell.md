@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2bae45955cf3c2b157acce2544b1f35fbddd0170
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9603ac779c7dbc640a7c24856c32f04edbac849d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-an-azure-container-registry-using-powershell"></a>Tworzenie usługi Azure Container Registry przy użyciu programu PowerShell
+# <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>Szybki start: tworzenie usługi Azure Container Registry przy użyciu programu PowerShell
 
 Usługa Azure Container Registry to zarządzana usługa rejestru kontenerów platformy Docker używana do przechowywania prywatnych obrazów kontenerów Docker. W tym przewodniku szczegółowo opisano tworzenie wystąpienia usługi Azure Container Registry za pomocą programu PowerShell, wypychanie obrazu kontenera do rejestru i na koniec wdrażanie kontenera z rejestru do usługi Azure Container Instances (ACI).
 
@@ -73,7 +73,7 @@ Aby wypchnąć obraz do usługi Azure Container Registry, najpierw musisz go mie
 docker pull microsoft/aci-helloworld
 ```
 
-Obraz musi być otagowany nazwą serwera logowania usługi ACR. Użyj polecenia [docker tag][docker-tag], aby to zrobić. 
+Obraz musi być otagowany nazwą serwera logowania usługi ACR. Użyj polecenia [docker tag][docker-tag], aby to zrobić.
 
 ```powershell
 $image = $registry.LoginServer + "/aci-helloworld:v1"

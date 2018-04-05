@@ -1,6 +1,6 @@
 ---
-title: "Samouczek rejestru kontenera Azure — wypychania zaktualizowanego obrazu do wdrożenia regionalne"
-description: "Wypychanie zmodyfikowany obraz Docker na platformie Azure z replikacją geograficzną zawierają rejestru, a następnie zobaczyć zmiany automatycznie wdrażane na aplikacje sieci web działające w wielu regionach. Trzy częścią serii, trzech części."
+title: Samouczek dotyczący usługi Azure Container Registry — wypychanie zaktualizowanego obrazu do wdrożeń regionalnych
+description: Wypchnij zmodyfikowany obraz Docker do usługi Azure Container Registry z replikacją geograficzną, a następnie zobacz zmiany automatycznie wdrażane w aplikacjach internetowych działających w wielu regionach. Trzecia część trzyczęściowej serii.
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,37 +9,37 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 359fdcabd579d277e40f02eba2d4603ebd9f5f1f
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
-ms.translationtype: MT
+ms.openlocfilehash: f8eab93d1e6633ae4f17c5bb4836d96629d55cd4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="push-an-updated-image-to-regional-deployments"></a>Wypychanie zaktualizowanego obrazu do wdrożenia regionalne
+# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Samouczek: wypychanie zaktualizowanego obrazu do wdrożeń regionalnych
 
-Jest to część trzech w trzech części samouczka serii. W [poprzedniego samouczek](container-registry-tutorial-deploy-app.md), replikacja geograficzna została skonfigurowana dla dwóch różnych regionalnych wdrożeń aplikacji sieci Web. W tym samouczku należy najpierw zmodyfikować aplikację, następnie utwórz nowy obraz kontenera i wypchnąć go do rejestru replikacją geograficzną. Ponadto możesz wyświetlić zmianę, automatycznie wdrożone przez elementów webhook rejestru kontenera platformy Azure, w obu przypadkach aplikacji sieci Web.
+Niniejszy samouczek jest trzecią częścią trzyczęściowej serii. W [poprzednim samouczku](container-registry-tutorial-deploy-app.md) skonfigurowano replikację geograficzną dla dwóch różnych regionalnych wdrożeń aplikacji internetowej. W tym samouczku najpierw zmodyfikujesz aplikację, a następnie utworzysz nowy obraz kontenera i wypchniesz go do rejestru replikowanego geograficznie. Na koniec wyświetlisz zmianę, wdrożoną automatycznie przez elementy webhook usługi Azure Container Registry w obu wystąpieniach aplikacji internetowej.
 
-W tym samouczku końcowej części w serii:
+Ten samouczek, będący ostatnią częścią serii, obejmuje:
 
 > [!div class="checklist"]
-> * Modyfikowanie aplikacji sieci web HTML
-> * Tworzenie i tag obrazu Docker
-> * Wypchnij zmiany do rejestru kontenera platformy Azure
-> * Zaktualizowana aplikacja w dwóch różnych regionach widoku
+> * Modyfikowanie kodu HTML aplikacji internetowej
+> * Budowanie i tagowanie obrazu platformy Docker
+> * Wypychanie zmiany do usługi Azure Container Registry
+> * Wyświetlanie zaktualizowanej aplikacji w dwóch różnych regionach
 
-Jeśli jeszcze nie skonfigurowano dwa *aplikacji sieci Web dla kontenerów* regionalnych wdrożeń, wróć do poprzedniego samouczek z tej serii, [wdrażanie aplikacji sieci web z rejestru kontenera Azure](container-registry-tutorial-deploy-app.md).
+Jeśli jeszcze nie skonfigurowano dwóch regionalnych wdrożeń usługi *Web App for Containers*, wróć do poprzedniego samouczka z tej serii — [Wdrażanie aplikacji internetowej z usługi Azure Container Registry](container-registry-tutorial-deploy-app.md).
 
 ## <a name="modify-the-web-application"></a>Modyfikowanie aplikacji sieci Web
 
-W tym kroku należy wprowadzić zmianę do aplikacji sieci web, który ma być dobrze widoczne po push obrazu zaktualizowano kontener w rejestrze kontenera platformy Azure.
+W tym kroku należy wprowadzić w aplikacji zmianę, która będzie dobrze widoczna po wypchnięciu zaktualizowanego obrazu kontenera do usługi Azure Container Registry.
 
-Znajdź `AcrHelloworld/Views/Home/Index.cshtml` pliku źródła aplikacji [sklonować z serwisu GitHub](container-registry-tutorial-prepare-registry.md#get-application-code) w poprzednich instrukcji i otwórz go w edytorze tekstu. Dodaj następujący wiersz poniżej istniejące `<h1>` wiersza:
+Znajdź plik `AcrHelloworld/Views/Home/Index.cshtml` w źródle aplikacji [sklonowanym z usługi GitHub](container-registry-tutorial-prepare-registry.md#get-application-code) w poprzednim samouczku i otwórz go w edytorze tekstu. Dodaj następujący wiersz poniżej istniejącego wiersza `<h1>`:
 
 ```html
 <h1>MODIFIED</h1>
 ```
 
-Twoje zmodyfikowanych `Index.cshtml` powinien wyglądać podobnie do:
+Zmodyfikowany plik `Index.cshtml` powinien wyglądać podobnie do poniższego:
 
 ```html
 @{
@@ -68,23 +68,23 @@ Twoje zmodyfikowanych `Index.cshtml` powinien wyglądać podobnie do:
 </div>
 ```
 
-## <a name="rebuild-the-image"></a>Odbuduj obrazu
+## <a name="rebuild-the-image"></a>Ponowne tworzenie obrazu
 
-Teraz, gdy użytkownik zaktualizował aplikacji sieci web, należy ponownie utworzyć obrazu jego kontenera. Jak wcześniej Użyj nazwy obrazu w pełni kwalifikowana, adres URL serwera logowania dla tagu w tym:
+Teraz, po zaktualizowaniu aplikacji internetowej, należy ponownie utworzyć obraz jej kontenera. Tak jak wcześniej, użyj w pełni kwalifikowanej nazwy obrazu zawierającej adres URL serwera logowania dla tagu:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-## <a name="push-image-to-azure-container-registry"></a>Obraz wypychania do rejestru kontenera platformy Azure
+## <a name="push-image-to-azure-container-registry"></a>Wypychanie obrazu do usługi Azure Container Registry
 
-Teraz, push zaktualizowanego *acr helloworld* kontener obrazu do rejestru replikacją geograficzną. W tym miejscu jest wykonywane jeden `docker push` polecenie, aby wdrożyć zaktualizowanego obrazu do replik rejestru zarówno *zachodnie stany USA* i *wschodnie stany USA* regionów.
+Teraz wypchnij zaktualizowany kontener obrazu *acr-helloworld* do rejestru replikowanego geograficznie. W tym miejscu wykonujesz jedno polecenie `docker push`, aby wdrożyć zaktualizowany obraz w replikach rejestru w regionach *Zachodnie stany USA* i *Wschodnie stany USA*.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Dane wyjściowe powinny wyglądać podobnie jak poniżej:
+Dane wyjściowe powinny wyglądać podobnie do następujących:
 
 ```bash
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
@@ -98,47 +98,47 @@ a75caa09eb1f: Layer already exists
 v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186ec7a size: 1792
 ```
 
-## <a name="view-the-webhook-logs"></a>Wyświetl dzienniki elementu webhook
+## <a name="view-the-webhook-logs"></a>Wyświetlanie dzienników elementów webhook
 
-Gdy obraz jest replikowany, widać elementów webhook rejestru kontenera platformy Azure są wyzwalane.
+Gdy obraz jest replikowany, możesz zobaczyć wyzwalane elementy webhook usługi Azure Container Registry.
 
-Aby zobaczyć regionalnych elementów webhook, które zostały utworzone podczas wdrażania kontener, aby *aplikacji sieci Web dla kontenerów* w poprzednim samouczek, przejdź do rejestru kontenera w portalu Azure, a następnie wybierz **elementów Webhook**w obszarze **usług**.
+Aby wyświetlić regionalne elementy webhook utworzone podczas wdrażania kontenera w usłudze *Web App for Containers* w poprzednim samouczku, przejdź do usługi Container Registry w witrynie Azure Portal, a następnie wybierz pozycję **Elementy webhook** w obszarze **USŁUGI**.
 
-![Kontener rejestru elementów Webhook w portalu Azure][tutorial-portal-01]
+![Elementy webhook usługi Container Registry w witrynie Azure Portal][tutorial-portal-01]
 
-Wybierz każdego elementu Webhook, aby wyświetlić historię swoich wywołań i odpowiedzi. Powinien zostać wyświetlony wiersz **wypychania** działania w dziennikach obu elementów Webhook. W tym miejscu znajduje się w dzienniku dla elementu Webhook *zachodnie stany USA* pokazuje region **wypychania** akcji wyzwalane przez `docker push` w poprzednim kroku:
+Wybierz każdy element webhook, aby wyświetlić historię jego wywołań i odpowiedzi. W dziennikach obu elementów webhook powinien być wyświetlony wiersz akcji **push** (wypychanie). Tutaj dziennik dla elementu webhook w regionie *Zachodnie stany USA* wyświetla akcję **push** wyzwoloną przez polecenie `docker push` w poprzednim kroku:
 
-![Kontener rejestru elementu Webhook dziennika w portalu Azure (zachodnie stany USA)][tutorial-portal-02]
+![Dziennik elementów webhook usługi Container Registry w witrynie Azure Portal (Zachodnie stany USA)][tutorial-portal-02]
 
-## <a name="view-the-updated-web-app"></a>Widok zaktualizowano aplikację sieci web
+## <a name="view-the-updated-web-app"></a>Wyświetlanie zaktualizowanej aplikacji internetowej
 
-Elementów Webhook powiadamia aplikacje sieci Web, że nowy obraz został przypisany do rejestru, w którym jest wdrażana automatycznie zaktualizowane kontenera do dwóch aplikacji regionalnej sieci web.
+Elementy webhook powiadamiają usługę Web Apps o wypchnięciu nowego obrazu do rejestru, co automatycznie powoduje wdrożenie zaktualizowanego kontenera w dwóch regionalnych aplikacjach internetowych.
 
-Sprawdź, czy aplikacja została zaktualizowana w obu wdrożeniach przechodząc do obu regionalnych wdrożenia aplikacji sieci Web w przeglądarce sieci web. Dla przypomnienia można znaleźć adres URL wdrożonej aplikacji sieci web w prawym górnym rogu każdej karcie Przegląd usługi aplikacji.
+Sprawdź, czy aplikacja została zaktualizowana w obu wdrożeniach, przechodząc do obu regionalnych wdrożeń aplikacji internetowej w przeglądarce internetowej. Przypominamy, że adres URL wdrożonej aplikacji internetowej można znaleźć w prawym górnym rogu każdej karty Przegląd usługi App Service.
 
-![Omówienie usługi aplikacji w portalu Azure][tutorial-portal-03]
+![Przegląd usługi App Service w witrynie Azure Portal][tutorial-portal-03]
 
-Aby wyświetlić zaktualizowaną aplikację, wybierz łącze w obszarze Przegląd usługi aplikacji. Oto przykład widoku aplikacji uruchomionych w *zachodnie stany USA*:
+Aby wyświetlić zaktualizowaną aplikację, wybierz link w obszarze Przegląd usługi App Service. Oto przykładowy widok aplikacji uruchomionej w regionie *Zachodnie stany USA*:
 
-![Widok przeglądarki aplikacji web zmodyfikowane w regionu zachodnie stany USA][deployed-app-westus-modified]
+![Wyświetlany w przeglądarce widok zmodyfikowanej aplikacji internetowej uruchomionej w regionie Zachodnie stany USA][deployed-app-westus-modified]
 
-Sprawdź również wdrożonego obrazu zaktualizowano kontener do *wschodnie stany USA* wdrożenia, wyświetlając go w przeglądarce.
+Sprawdź, czy zaktualizowany obraz kontenera został również wdrożony we wdrożeniu dla regionu *Wschodnie stany USA*, wyświetlając go w przeglądarce.
 
-![Widok w przeglądarce aplikacji sieci web zmodyfikowane uruchomionej w regionie wschodnie stany USA][deployed-app-eastus-modified]
+![Wyświetlany w przeglądarce widok zmodyfikowanej aplikacji internetowej uruchomionej w regionie Wschodnie stany USA][deployed-app-eastus-modified]
 
-Za pomocą jednej `docker push`zaktualizował oba regionalnych wdrożenia aplikacji sieci Web i rejestru kontenera Azure obsługiwanych obrazów kontenera z repozytoriami Zamknij sieci.
+Za pomocą jednego polecenia `docker push` zaktualizowane zostały oba regionalne wdrożenia aplikacji internetowej, a usługa Azure Container Registry obsłużyła obrazy kontenera z repozytorium w pobliżu sieci.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku aktualizowane i wypychana nowej wersji kontenera aplikacji sieci web do rejestru replikacją geograficzną. Elementów Webhook w rejestrze kontenera Azure powiadomienie aplikacji sieci Web dla kontenerów aktualizacji, które uruchamiane lokalnego ściągnięcia z replik rejestru.
+Podczas pracy z samouczkiem utworzono i wypchnięto nową wersję kontenera aplikacji internetowej do rejestru replikowanego geograficznie. Elementy webhook w usłudze Azure Container Registry powiadomiły o aktualizacji usługę Web Apps for Containers, która wyzwoliła lokalne ściągnięcie z replik rejestru.
 
-W tym ostatnim samouczek z tej serii, możesz:
+W tym samouczku, ostatnim z serii, wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Zaktualizowana aplikacja sieci web HTML
-> * Wbudowane i tagged Docker image
-> * Wypychana zmiany do rejestru kontenera platformy Azure
-> * Wyświetlić zaktualizowana aplikacja w dwóch różnych regionach.
+> * Zaktualizowano kod HTML aplikacji internetowej
+> * Zbudowano i otagowano obraz platformy Docker
+> * Wypchnięto zmiany do usługi Azure Container Registry
+> * Wyświetlono zaktualizowaną aplikację w dwóch różnych regionach
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 2c1e8d8f59e42e75a5895b58e4e7500a2fa2c9a2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b02c69f34c72fc89a4ae81fc1feb3641a7c8b06d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Tworzenia bazy danych SQL platformy Azure w witrynie Azure Portal
 
@@ -163,13 +163,7 @@ Zapisz te zasoby, jeśli chcesz przejść do sekcji [Następne kroki](#next-step
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy już masz bazę danych, możesz nawiązać z nią połączenie i uruchamiać zapytania za pomocą ulubionych narzędzi. Dowiedz się więcej, wybierając narzędzie poniżej:
-
-- [SQL Server Management Studio](sql-database-connect-query-ssms.md)
-- [Visual Studio Code](sql-database-connect-query-vscode.md)
-- [.NET](sql-database-connect-query-dotnet.md)
-- [PHP](sql-database-connect-query-php.md)
-- [Node.js](sql-database-connect-query-nodejs.md)
-- [Java](sql-database-connect-query-java.md)
-- [Python](sql-database-connect-query-python.md)
-- [Ruby](sql-database-connect-query-ruby.md)
+- Teraz, gdy już masz bazę danych, możesz [nawiązać z nią połączenie i uruchamiać zapytania](sql-database-connect-query.md) za pomocą jednego z Twoich ulubionych narzędzi lub języków. 
+- Aby dowiedzieć się, jak zaprojektować pierwszą bazę danych, tworzyć tabele i wstawiać dane, zapoznaj się z jednym z następujących samouczków:
+ - [Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS](sql-database-design-first-database.md)
+  - [Projektowanie bazy danych Azure SQL Database i nawiązywanie połączenia za pomocą języka C# i narzędzia ADO.NET](sql-database-design-first-database-csharp.md)

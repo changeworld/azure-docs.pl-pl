@@ -1,8 +1,8 @@
 ---
-title: "Usługa Azure Application Insights dla aplikacji sieci Web w języku JavaScript | Microsoft Docs"
-description: "Pobieranie liczników wyświetleń stron i sesji, danych klienta sieci Web oraz śledzenie wzorców użycia. Wykrywanie wyjątków i problemów z wydajnością na stronach sieci Web w języku JavaScript."
+title: Usługa Azure Application Insights dla aplikacji sieci Web w języku JavaScript | Microsoft Docs
+description: Pobieranie liczników wyświetleń stron i sesji, danych klienta sieci Web oraz śledzenie wzorców użycia. Wykrywanie wyjątków i problemów z wydajnością na stronach sieci Web w języku JavaScript.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7cc061b921109f173837352199ff64f055ae2483
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0887c50ea7da00859e370f60626eabb03fcc1f4b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -50,6 +50,28 @@ Jeśli nie ma zasobu, utwórz go:
 Ze strony Szybki start pobierz skrypt dla stron sieci Web:
 
 ![W bloku przeglądu aplikacji wybierz kolejno opcje Szybki start, Pobierz kod umożliwiający monitorowanie stron sieci Web. Skopiuj skrypt.](./media/app-insights-javascript/02-monitor-web-page.png)
+
+> [!NOTE]
+> *Wprowadzenie* różni się w zależności od typu aplikacji wybranej podczas tworzenia zasobu usługi Application Insights. Jeśli dla Twojej aplikacji nie ma skryptu, jaki jest widoczny na poprzednim zrzucie ekranu, użyj po prostu poniższego skryptu.
+
+```HTML
+<!-- 
+To collect end-user usage analytics about your application, 
+insert the following script into each page you want to track.
+Place this code immediately before the closing </head> tag,
+and before any other scripts. Your first data will appear 
+automatically in just a few seconds.
+-->
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+  }({
+      instrumentationKey:"<your instrumentation key>"
+  });
+  
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+```
 
 Wstaw skrypt tuż przed tagiem `</head>` na każdej stronie, którą chcesz śledzić. Jeśli witryna ma stronę wzorcową, możesz umieścić skrypt na tej stronie. Na przykład:
 

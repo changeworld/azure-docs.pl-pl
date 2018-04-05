@@ -1,26 +1,26 @@
 ---
-title: "Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą modułu Azure PowerShell | Microsoft Docs"
-description: "Samouczek — tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą modułu Azure PowerShell"
+title: Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą modułu Azure PowerShell | Microsoft Docs
+description: Samouczek — tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą modułu Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/09/2018
+ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cf406dfbab40631c99da70085e99ba90f563411
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9bc5154486bf09072bdf3da6bbeb05407a140354
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą modułu Azure PowerShell
 
@@ -90,9 +90,11 @@ Użyj następującego polecenia na swojej maszynie lokalnej, aby utworzyć sesj�
 mstsc /v:<publicIpAddress>
 ```
 
+W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. Wpisz nazwę użytkownika i hasło utworzone dla maszyny wirtualnej, a następnie kliknij przycisk **OK**.
+
 ## <a name="understand-vm-images"></a>Omówienie obrazów maszyny wirtualnej
 
-Witryna Azure Marketplace udostępnia wiele obrazów maszyn wirtualnych, które mogą służyć do tworzenia nowej maszyny wirtualnej. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Windows Server 2016 Datacenter. W tym kroku moduł PowerShell jest używany do wyszukiwania w witrynie Marketplace innych obrazów systemu Windows, które mogą również służyć jako podstawa dla nowych maszyn wirtualnych. Ten proces składa się z wyszukiwania wydawcy, oferty i nazwy obrazu (SKU). 
+Witryna Azure Marketplace udostępnia wiele obrazów maszyn wirtualnych, które mogą służyć do tworzenia nowej maszyny wirtualnej. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Windows Server 2016 Datacenter. W tym kroku moduł PowerShell jest używany do wyszukiwania w witrynie Marketplace innych obrazów systemu Windows, które mogą być również używane jako podstawa nowych maszyn wirtualnych. Proces ten składa się z wyszukiwania wydawcy, oferty, jednostki SKU i opcjonalnie numeru wersji w celu [zidentyfikowania](cli-ps-findimage.md#terminology) obrazu. 
 
 Użyj polecenia [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), aby uzyskać listę wydawców obrazów:
 
@@ -139,7 +141,7 @@ Skus                                      Offer         PublisherName          L
 2016-Nano-Server                          WindowsServer MicrosoftWindowsServer EastUS
 ```
 
-Te informacje mogą być używane na potrzeby wdrażania maszyny wirtualnej za pomocą określonego obrazu. W tym przykładzie wdrażasz maszynę wirtualną przy użyciu systemu Windows Server 2016 i obrazu kontenerów.
+Te informacje mogą być używane na potrzeby wdrażania maszyny wirtualnej za pomocą określonego obrazu. W tym przykładzie wdrażasz maszynę wirtualną przy użyciu obrazu systemu Windows Server 2016 z kontenerami.
 
 ```azurepowershell-interactive
 New-AzureRmVm `

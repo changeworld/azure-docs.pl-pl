@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7ea0ae9c0c071a08c9ff99587cd8c5dc8034fe69
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-a-container-registry-using-the-azure-portal"></a>Tworzenie rejestru kontenerów za pomocą witryny Azure Portal
+# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Szybki start: tworzenie rejestru kontenerów za pomocą witryny Azure Portal
 
 Usługa Azure Container Registry to rejestr prywatny platformy Docker na platformie Azure, w którym można przechowywać prywatne obrazy kontenerów Docker i zarządzać nimi. W tym przewodniku Szybki start utworzysz rejestr kontenerów za pomocą witryny Azure Portal, wypchniesz obraz kontenera do rejestru i na koniec wdrożysz kontener z rejestru do usługi Azure Container Instances (ACI).
 
@@ -39,7 +39,7 @@ W tym przewodniku Szybki start utworzymy rejestr w ramach jednostki *Podstawowa*
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
-Kiedy pojawi się komunikat **Wdrażanie zakończyło się pomyślnie**, wybierz rejestr kontenerów w portalu, a następnie wybierz pozycję **Klucze dostępu**.
+Kiedy pojawi się komunikat **Wdrażanie zakończyło się pomyślnie**, wybierz rejestru kontenerów w portalu, a następnie wybierz pozycję **Klucze dostępu**.
 
 ![Tworzenie rejestru kontenerów w witrynie Azure Portal][qs-portal-05]
 

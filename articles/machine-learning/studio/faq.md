@@ -1,11 +1,12 @@
 ---
-title: "Często zadawane pytania dotyczące usługi Azure Machine Learning | Microsoft Docs"
-description: "Wprowadzenie do usługi Azure Machine Learning: odpowiedzi na często zadawane pytania dotyczące rozliczeń, możliwości i ograniczeń usługi w chmurze na potrzeby sprawnego modelowania predykcyjnego."
+title: Często zadawane pytania dotyczące usługi Azure Machine Learning | Microsoft Docs
+description: 'Wprowadzenie do usługi Azure Machine Learning: odpowiedzi na często zadawane pytania dotyczące rozliczeń, możliwości i ograniczeń usługi w chmurze na potrzeby sprawnego modelowania predykcyjnego.'
 keywords: wprowadzenie do uczenia maszynowego,modelowanie predykcyjne,co to jest uczenie maszynowe
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: paulettm
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.author: garye
-ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning — często zadawane pytania: rozliczenia, możliwości, ograniczenia i pomoc techniczna
 Przedstawione tutaj często zadawane pytania i odpowiedzi dotyczą usługi Azure Machine Learning, która jest usługą w chmurze przeznaczoną do tworzenia modeli predykcyjnych i rozwiązań operacyjnych za pośrednictwem usług sieci Web. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.
@@ -458,11 +458,11 @@ Usługi z przypisaną warstwą cenową tworzenia i testowania zostaną zatrzyman
 
 W przypadku obciążeń RRS opłata jest naliczana za każde wywołanie transakcji interfejsu API oraz czas obliczeń skojarzony z tymi żądaniami. Koszt transakcji RRS interfejsu API w środowisku produkcyjnym jest obliczany przez pomnożenie łącznej liczby wywołań interfejsu API przez cenę 1000 transakcji (proporcjonalnie do liczby indywidualnych transakcji). Koszt godzin obliczeniowych RRS interfejsu API w środowisku produkcyjnym jest obliczany przez pomnożenie czasu wymaganego do uruchomienia poszczególnych wywołań interfejsu API przez łączną liczbę transakcji interfejsu API oraz przez cenę godziny obliczeniowej interfejsu API w środowisku produkcyjnym.
 
-Na przykład w ramach użycia nadwyżkowego w warstwie Standardowa S1 1 000 000 transakcji interfejsu API, z których każda trwa 0,72 s, spowoduje naliczenie opłaty 500 USD (1 000 000 * 0,50 USD/1000 transakcji interfejsu API) z tytułu kosztów transakcji interfejsu API w środowisku produkcyjnym oraz 400 USD (1 000 000 * 0,72 s * 2 USD / godz.) z tytułu godzin obliczeniowych interfejsu API w środowisku produkcyjnym, co daje łączną kwotę 900 USD.
+Na przykład w ramach użycia nadwyżkowego w warstwie Standardowa S1 1 000 000 transakcji interfejsu API, z których każda trwa 0,72 s, spowoduje naliczenie opłaty 500 USD (1 000 000 0,50 USD/1000 transakcji interfejsu API) z tytułu kosztów transakcji interfejsu API w środowisku produkcyjnym oraz 400 USD (1 000 000 0,72 s * 2 USD / godz.) z tytułu godzin obliczeniowych interfejsu API w środowisku produkcyjnym, co daje łączną kwotę 900 USD.
 
 W przypadku obciążeń usługi BES opłata jest naliczana w ten sam sposób. Niemniej koszt transakcji interfejsu API odpowiada liczbie przesłanych zadań wsadowych, a koszt obliczeń odpowiada czasowi obliczeń skojarzonemu z tymi zadaniami wsadowymi. Z tego względu koszt transakcji interfejsu API usługi BES w środowisku produkcyjnym jest obliczany przez pomnożenie łącznej liczby przesłanych zadań przez cenę 1000 transakcji (proporcjonalnie do liczby indywidualnych transakcji). Koszt godzin obliczeniowych interfejsu API usługi BES w środowisku produkcyjnym jest obliczany przez pomnożenie czasu wymaganego do uruchomienia poszczególnych wierszy w zadaniu przez łączną liczbę wierszy w zadaniu przez łączną liczbę zadań oraz przez cenę godziny obliczeniowej interfejsu API w środowisku produkcyjnym. Podczas korzystania z kalkulatora usługi Machine Learning licznik transakcji reprezentuje liczbę zadań, które zamierzasz przesłać, a wartość w polu czasu transakcji reprezentuje łączny czas wymagany do uruchomienia wszystkich wierszy w poszczególnych zadaniach.
 
-Jeśli w ramach użycia nadwyżkowego w warstwie Standardowa S1 przesyłasz na przykład 100 zadań dziennie, z których każde zawiera 500 wierszy o czasie uruchamiania 0,72 s, miesięczny koszt nadwyżkowych transakcji interfejsu API w środowisku produkcyjnym wyniesie 1,55 USD (100 zadań dziennie = 3100 zadań/mies. * 0,50 USD/1000 transakcji interfejsu API), a koszt godzin obliczeniowych interfejsu API w środowisku produkcyjnym wyniesie 620 USD (500 wierszy * 0,72 s * 3100 zadań * 2 USD/godz.), co daje łączną kwotę 621,55 USD.
+Jeśli w ramach użycia nadwyżkowego w warstwie Standardowa S1 przesyłasz na przykład 100 zadań dziennie, z których każde zawiera 500 wierszy o czasie uruchamiania 0,72 s, miesięczny koszt nadwyżkowych transakcji interfejsu API w środowisku produkcyjnym wyniesie 1,55 USD (100 zadań dziennie = 3100 zadań/mies. 0,50 USD/1000 transakcji interfejsu API), a koszt godzin obliczeniowych interfejsu API w środowisku produkcyjnym wyniesie 620 USD (500 wierszy 0,72 s 3100 zadań 2 USD/godz.), co daje łączną kwotę 621,55 USD.
 
 ### <a name="azure-machine-learning-classic-web-services"></a>Klasyczne usługi sieci Web Azure Machine Learning
 **Czy model płatności zgodnie z rzeczywistym użyciem jest wciąż dostępny?**

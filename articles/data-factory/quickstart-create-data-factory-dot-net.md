@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/22/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7e3fd12b2157d28c5d61bfa8d5fb69a00557a1f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5b7af290a5e5c45d3f64ccb50586db0811dd592
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Tworzenie fabryki danych i potoku przy użyciu zestawu SDK .NET
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,12 +102,12 @@ W przewodniku w tym artykule jest używany program Visual Studio 2017. Możesz t
 Pobierz i zainstaluj zestaw [Azure .NET SDK](http://azure.microsoft.com/downloads/) na maszynie.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Tworzenie aplikacji w usłudze Azure Active Directory
-Postępuj zgodnie z instrukcjami przedstawionymi w [tym artykule](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application), aby wykonać następujące zadania: 
+Postępując zgodnie z instrukcjami w sekcjach w [tym artykule](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) wykonaj następujące zadania: 
 
 1. **Utworzenie aplikacji usługi Azure Active Directory**. Utwórz aplikację w usłudze Azure Active Directory reprezentującą aplikację platformy .NET tworzoną w tym samouczku. W przypadku adresu URL logowania możesz podać fikcyjny adres URL, jak pokazano w artykule (`https://contoso.org/exampleapp`).
-2. Pobierz **identyfikator aplikacji** i **klucz uwierzytelniania****, postępując zgodnie z instrukcjami przedstawionymi w sekcji **Pobieranie identyfikatora aplikacji i klucza uwierzytelniania** w artykule. Zanotuj te wartości, których użyjesz w dalszej części tego samouczka. 
-3. Pobierz **identyfikator dzierżawy**, postępując zgodnie z instrukcjami przedstawionymi w sekcji **Pobieranie identyfikatora dzierżawy** w artykule. Zanotuj tę wartość. 
-4. Przypisz aplikację do roli **Współautor** na poziomie subskrypcji, aby aplikacja mogła tworzyć fabryki danych w ramach subskrypcji. Postępuj zgodnie z instrukcjami przedstawionymi w sekcji **Przypisywanie aplikacji do roli** w artykule. 
+2. Uzyskaj **identyfikator aplikacji** i **klucz uwierzytelniania** oraz zanotuj te wartości do późniejszego użycia w tym samouczku. 
+3. Uzyskaj **identyfikator dzierżawy** i zanotuj tę wartość do późniejszego użycia w tym samouczku.
+4. Przypisz aplikację do roli **Współautor** na poziomie subskrypcji, aby aplikacja mogła tworzyć fabryki danych w ramach subskrypcji.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 

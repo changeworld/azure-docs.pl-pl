@@ -1,11 +1,11 @@
 ---
-title: "Łączenie sieci wirtualnej platformy Azure z inną siecią wirtualną: Portal | Microsoft Docs"
-description: "Utwórz połączenie usługi bramy VPN Gateway między sieciami wirtualnymi przy użyciu usługi Resource Manager i witryny Azure Portal."
+title: 'Łączenie sieci wirtualnej platformy Azure z inną siecią wirtualną: Portal | Microsoft Docs'
+description: Utwórz połączenie usługi bramy VPN Gateway między sieciami wirtualnymi przy użyciu usługi Resource Manager i witryny Azure Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 03/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: a24bd41adbe26b1905f7817f5e5888e492d234f4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a95fdf078baa35eb9ca8ade462223b204be77d8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -28,7 +28,7 @@ Ten artykuł pomoże Ci połączyć sieci wirtualne przy użyciu typu połączen
 Kroki podane w tym artykule mają zastosowanie do modelu wdrażania przy użyciu usługi Resource Manager i użyto w nich witryny Azure Portal. Tę konfigurację możesz również utworzyć przy użyciu innego narzędzia wdrażania lub modelu wdrażania, wybierając inną opcję z następującej listy:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Program PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Interfejs wiersza polecenia platformy Azure](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Portal Azure (klasyczny)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -127,7 +127,7 @@ Po utworzeniu sieci wirtualnej można dodać do niej dodatkową przestrzeń adre
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Tworzenie podsieci bramy
-Przed połączeniem sieci wirtualnej z bramą należy najpierw utworzyć podsieć bramy sieci wirtualnej, z którą ma zostać nawiązane połączenie. Jeśli to możliwe, najlepiej utworzyć podsieć bramy przy użyciu bloku CIDR /28 lub /27 w celu zapewnienia wystarczającej liczby adresów IP, aby uwzględnić wymagania dotyczące dodatkowych przyszłych konfiguracji.
+Przed utworzeniem bramy sieci wirtualnej dla sieci wirtualnej należy najpierw utworzyć podsieć bramy. Podsieć bramy zawiera adresy IP używane przez bramę sieci wirtualnej. Jeśli to możliwe, najlepiej utworzyć podsieć bramy przy użyciu bloku CIDR /28 lub /27 w celu zapewnienia wystarczającej liczby adresów IP, aby uwzględnić wymagania dotyczące dodatkowych przyszłych konfiguracji.
 
 Jeśli tworzysz tę konfigurację w ramach ćwiczenia, użyj [przykładowych ustawień](#values) podczas tworzenia podsieci bramy.
 

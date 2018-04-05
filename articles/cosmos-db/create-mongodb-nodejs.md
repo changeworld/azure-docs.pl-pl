@@ -1,31 +1,31 @@
 ---
-title: "Połączenie aplikacji MongoDB z usługą Azure Cosmos DB za pomocą środowiska Node.js | Microsoft Docs"
-description: "Dowiedz się, jako połączyć istniejącą aplikację MongoDB w języku Node.js z usługą Azure Cosmos DB"
+title: Połączenie aplikacji MongoDB z usługą Azure Cosmos DB za pomocą środowiska Node.js | Microsoft Docs
+description: Dowiedz się, jako połączyć istniejącą aplikację MongoDB w języku Node.js z usługą Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
-ms.openlocfilehash: 1b63c56e055a6dd5220a6c5e8050d493390e9168
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6357e1f71d96a1ec4894f9cf1130fc1e8808d3f4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: migracja istniejącej aplikacji sieci Web MongoDB w środowisku Node.js 
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-Ten przewodnik Szybki Start wyjaśnia, jak użyć istniejącej aplikacji [MongoDB](mongodb-introduction.md) napisanej w języku Node.js i połączyć ją z bazą danych usługi Azure Cosmos DB obsługującą połączenia klientów MongoDB. Innymi słowy, aplikacja Node.js wie jedynie, że łączy się z bazą danych przy użyciu interfejsów API MongoDB. Aplikacja nie wie, że dane są przechowywane w bazie danych usługi Azure Cosmos DB.
+Ten przewodnik Szybki start wyjaśnia, jak użyć istniejącej aplikacji MongoDB napisanej w języku Node.js i połączyć ją z bazą danych usługi Azure Cosmos DB obsługującą połączenia klientów MongoDB za pomocą [interfejsu API MongoDB](mongodb-introduction.md). Innymi słowy, aplikacja Node.js wie jedynie, że łączy się z bazą danych przy użyciu interfejsów API MongoDB. Aplikacja nie wie, że dane są przechowywane w bazie danych usługi Azure Cosmos DB.
 
 Gdy wszystko będzie gotowe, aplikacja MEAN (MongoDB, Express, Angular i Node.js) będzie uruchomiona dla bazy danych [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
 

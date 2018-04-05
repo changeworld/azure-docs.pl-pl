@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure Notification Hubs dla aplikacji platformy uniwersalnej systemu Windows | Microsoft Docs"
-description: "Korzystając z tego samouczka, dowiesz się, jak wypychać powiadomienia do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs."
+title: Rozpoczynanie pracy z usługą Azure Notification Hubs dla aplikacji platformy uniwersalnej systemu Windows | Microsoft Docs
+description: Korzystając z tego samouczka, dowiesz się, jak wypychać powiadomienia do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: windows
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8464a7e48a02be39fb624322fac6c26f4c6c6806
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>Rozpoczynanie pracy z usługą Notification Hubs dla aplikacji platformy uniwersalnej systemu Windows
 
@@ -94,11 +94,11 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą WNS. Ma
 1. W programie Visual Studio kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**.  
     Zostanie otwarte okno **Zarządzanie pakietami NuGet**.
 
-2. W polu wyszukiwania wprowadź ciąg **WindowsAzure.Messaging.Managed**, wybierz pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
+2. W polu wyszukiwania wprowadź ciąg **Microsoft.Azure.NotificationHubs**, wybierz pozycję **Zainstaluj** i zaakceptuj warunki użytkowania.
    
     ![Okno Zarządzanie pakietami NuGet][20]
    
-    Spowoduje to pobranie i zainstalowanie biblioteki obsługi wiadomości platformy Azure dla systemu Windows oraz dodanie odwołania do niej przy użyciu [pakietu NuGet WindowsAzure.Messaging.Managed](http://nuget.org/packages/WindowsAzure.Messaging).
+    Ta akcja spowoduje pobranie, zainstalowanie i dodanie odwołania do biblioteki usługi Azure Notification Hubs dla systemu Windows przy użyciu [pakietu NuGet Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs).
 
 3. Otwórz plik projektu App.xaml.cs i dodaj następujące instrukcje `using`: 
    

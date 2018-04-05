@@ -1,6 +1,6 @@
 ---
-title: "Szybki start — tworzenie bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure"
-description: "Przewodnik Szybki start dotyczący tworzenia serwera usługi Azure Database for PostgreSQL i zarządzania nim przy użyciu interfejsu wiersza polecenia platformy Azure."
+title: Szybki start — tworzenie bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure
+description: Przewodnik Szybki start dotyczący tworzenia serwera usługi Azure Database for PostgreSQL i zarządzania nim przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: feb99ae5bae16125d65a6c6e5776e6f3f286f0e3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 14007bff572f5ecf71b4595dcab8f24d9cf2d17e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Szybki start: tworzenie bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure
 Azure Database for PostgreSQL to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych PostgreSQL o wysokiej dostępności, a także zarządzanie nimi. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku Szybki start przedstawiono, jak utworzyć serwer usługi Azure Database for PostgreSQL w [grupie zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą interfejsu wiersza polecenia platformy Azure.
@@ -58,11 +58,11 @@ Zwracany kod JSON powinien zawierać następujące informacje:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.3"
+    "version": "0.0.4"
 }
 ```
 
-Jeśli nie jest zwracana wersja 0.0.3, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
+Jeśli nie jest zwracana wersja 0.0.4, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -92,9 +92,9 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 ```
 
 > [!NOTE]
-> Serwer Azure PostgreSQL komunikuje się przez port 5432. Podczas nawiązywania połączenia z sieci firmowej ruch wychodzący przez port 5432 może być blokowany przez zaporę sieciową. Aby było możliwe nawiązywanie połączenia z serwerem usługi Azure SQL Database, poproś dział IT o otwarcie portu 5432.
+> Serwer Azure PostgreSQL komunikuje się przez port 5432. Podczas nawiązywania połączenia z sieci firmowej ruch wychodzący przez port 5432 może być blokowany przez zaporę sieciową. Aby było możliwe nawiązywanie połączenia z serwerem usługi Azure PostgreSQL, poproś dział IT o otwarcie portu 5432.
 
-## <a name="get-the-connection-information"></a>Uzyskiwanie informacji o połączeniu
+## <a name="get-the-connection-information"></a>Pobieranie informacji o połączeniu
 
 Aby nawiązać połączenie z serwerem, musisz podać informacje o hoście i poświadczenia dostępu.
 ```azurecli-interactive

@@ -15,17 +15,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 199ea35d7df405ebc148185094a6865a1c373941
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9716bc9a4728a48732cacef7c2568a640ba39ee6
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Java i witryny Azure Portal
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację konsolową w oparciu o [sterownik Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
+Ten przewodnik Szybki start przedstawia sposób tworzenia [interfejsu API MongoDB](mongodb-introduction.md) konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację konsolową w oparciu o [sterownik Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

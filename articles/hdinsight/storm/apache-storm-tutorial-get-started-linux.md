@@ -1,9 +1,9 @@
 ---
-title: "Przykłady z projektu Storm Starter dotyczące pracy z platformą Apache Storm w usłudze HDInsight — Azure | Microsoft Docs"
-description: "Dowiedz się, jak przeprowadzać analizę danych big data i przetwarzać dane w czasie rzeczywistym przy użyciu platformy Apache Storm i przykładów z projektu Storm Starter w usłudze HDInsight."
-keywords: "projekt Storm Starter, przykład z platformy Apache Storm"
+title: Przykłady z projektu Storm Starter dotyczące pracy z platformą Apache Storm w usłudze HDInsight — Azure | Microsoft Docs
+description: Dowiedz się, jak przeprowadzać analizę danych big data i przetwarzać dane w czasie rzeczywistym przy użyciu platformy Apache Storm i przykładów z projektu Storm Starter w usłudze HDInsight.
+keywords: projekt Storm Starter, przykład z platformy Apache Storm
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -16,13 +16,13 @@ ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 6abdb15917508152529990c434eb48a9983b9432
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 0490ba63e651b0ef16175dca46b85a3e48bfd26f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Wprowadzenie do platformy Apache Storm w usłudze HDInsight przy użyciu przykładów z projektu Storm Starter
+# <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Wprowadzenie do platformy Apache Storm w usłudze HDInsight przy użyciu przykładów z projektu Storm Starter
 
 Dowiedz się, jak używać platformy Apache Storm w usłudze HDInsight przy użyciu przykładów z projektu Storm Starter.
 
@@ -108,7 +108,7 @@ Aby utworzyć klaster platformy Storm w usłudze HDInsight, wykonaj następując
     >
     > Przykład WordCount i inne przykłady z projektu Storm Starter znajdują się już w klastrze w lokalizacji `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-Jeśli chcesz zobaczyć źródło przykładów z projektu Storm Starter, kod możesz znaleźć na stronie [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter). Ten link dotyczy platformy Storm 1.1.x, która jest dostarczana z usługą HDInsight 3.6. W przypadku innych wersji platformy Storm należy za pomocą przycisku __Branch__ (Gałąź) w górnej części strony wybrać inną wersję platformy Storm.
+Jeśli interesuje Cię wyświetlenie źródła przykładów z projektu Storm Starter, możesz znaleźć kod w lokalizacji [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter). Ten link dotyczy platformy Storm 1.1.x, która jest dostarczana z usługą HDInsight 3.6. W przypadku innych wersji platformy Storm należy za pomocą przycisku __Branch__ (Gałąź) w górnej części strony wybrać inną wersję platformy Storm.
 
 ## <a name="monitor-the-topology"></a>Monitorowanie topologii
 

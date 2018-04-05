@@ -1,30 +1,29 @@
 ---
-title: "Rozwiązywanie problemów dotyczących tworzenia kopii zapasowej udziału plików platformy Azure"
-description: "W tym artykule znajdują się informacje dotyczące rozwiązywania problemów występujących podczas ochrony usługi Azure Files (udziały plików platformy Azure) na platformie Azure."
+title: Rozwiązywanie problemów dotyczących tworzenia kopii zapasowej udziału plików platformy Azure
+description: W tym artykule znajdują się informacje dotyczące rozwiązywania problemów występujących podczas ochrony udziałów plików platformy Azure.
 services: backup
 ms.service: backup
-keywords: "Nie dodawaj ani nie edytuj słów kluczowych bez konsultacji z ekspertem SEO."
+keywords: Nie dodawaj ani nie edytuj słów kluczowych bez konsultacji z ekspertem SEO.
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 3bc259245df86406e23418bac598c8b1e062d512
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej w usłudze Azure Files
-
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej w usłudze Azure Files.
 
 ## <a name="preview-boundaries"></a>Granice wersji zapoznawczej
 Usługa Azure Files jest w wersji zapoznawczej. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
-- Ochrona udziałów plików w ramach kont magazynu z replikacją (RA-GRS) [magazynu strefowo nadmiarowego (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) lub [magazynu geograficznie nadmiarowego dostępnego do odczytu (GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
-- Ochrona udziałów plików w ramach kont magazynu, które mają włączone sieci wirtualne.
-- Tworzenie kopii zapasowej w usłudze Azure Files za pomocą programu PowerShell lub interfejsu wiersza polecenia.
+- Ochrona udziałów plików platformy Azure w ramach kont magazynu przy użyciu replikacji [magazynu strefowo nadmiarowego (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) lub [magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
+- Ochrona udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne.
+- Tworzenie kopii zapasowej udziałów plików platformy Azure za pomocą programu PowerShell lub interfejsu wiersza polecenia.
 
 ### <a name="limitations"></a>Ograniczenia
 - Maksymalna liczba zaplanowanych kopii zapasowych na dzień wynosi 1.
@@ -51,7 +50,7 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | -------------- | ----------------------------- |
 | Operacja nie powiodła się, ponieważ nie odnaleziono udziału plików. | Sprawdź, czy udział plików, który chcesz chronić, nie został usunięty.|
 | Nie odnaleziono konta magazynu lub nie jest ono obsługiwane. | <ul><li>Sprawdź, czy konto magazynu istnieje w grupie zasobów i nie zostało usunięte ani przeniesione z grupy zasobów po ostatniej weryfikacji. <li> Sprawdź, czy dla konta magazynu obsługiwane jest tworzenie kopii zapasowej udziału plików.|
-| Osiągnięto maksymalną liczbę migawek dla tego udziału plików. Tworzenie kolejnych migawek będzie możliwe po wygaśnięciu starszych. | <ul><li> Ten błąd może wystąpić podczas tworzenia wielu kopii zapasowych na żądanie dla pliku. <li> Istnieje limit 200 migawek na udziałów plików łącznie z migawkami tworzonymi w ramach usługi Azure Backup. Starsze zaplanowane kopie zapasowych (lub migawki) są czyszczone automatycznie. Kopie zapasowe na żądanie (lub migawki) muszą zostać usunięte po osiągnięciu maksymalnego limitu.<li> Usuń kopie zapasowe na żądanie (migawki udziałów plików Azure) z portalu usługi Azure Files. **Uwaga**: punkty odzyskiwania zostaną utracone w przypadku usunięcia migawek utworzonych za pomocą usługi Azure Backup. |
+| Osiągnięto maksymalną liczbę migawek dla tego udziału plików. Tworzenie kolejnych migawek będzie możliwe po wygaśnięciu starszych. | <ul><li> Ten błąd może wystąpić podczas tworzenia wielu kopii zapasowych na żądanie dla pliku. <li> Istnieje limit 200 migawek na udziałów plików łącznie z migawkami tworzonymi w ramach usługi Azure Backup. Starsze zaplanowane kopie zapasowych (lub migawki) są czyszczone automatycznie. Kopie zapasowe na żądanie (lub migawki) muszą zostać usunięte po osiągnięciu maksymalnego limitu.<li> Usuń kopie zapasowe na żądanie (migawki udziałów plików platformy Azure) z portalu usługi Azure Files. **Uwaga**: punkty odzyskiwania zostaną utracone w przypadku usunięcia migawek utworzonych za pomocą usługi Azure Backup. |
 | Tworzenie kopii zapasowej udziału plików lub jego przywracanie nie powiodło się z powodu ograniczania usługi magazynu. Może to być spowodowane tym, że usługa magazynu jest zajęta przetwarzaniem innych żądań dla danego konta magazynu.| Spróbuj ponownie wykonać operację po pewnym czasie. |
 | Przywracanie nie powiodło się, ponieważ docelowy udziału plików nie został odnaleziony. | <ul><li>Sprawdź, czy wybrane konto magazynu istnieje, a docelowy udziału plików nie został usunięty. <li> Sprawdź, czy dla konta magazynu obsługiwane jest tworzenie kopii zapasowej udziału plików. |
 | Kopie zapasowe usługi Azure Backup nie są obecnie obsługiwane dla usługi Azure Files w ramach kont magazynu, które mają włączone sieci wirtualne. | Wyłącz sieci wirtualne w ramach konta magazynu, aby zapewnić powodzenie operacji tworzenia kopii zapasowych i przywracania. |

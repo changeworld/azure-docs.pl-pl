@@ -1,6 +1,6 @@
 ---
-title: "Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — skalowanie aplikacji"
-description: "Samouczek dotyczący usługi AKS — skalowanie aplikacji"
+title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — skalowanie aplikacji
+description: Samouczek dotyczący usługi AKS — skalowanie aplikacji
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 556f4bfb204504de55c41da9615e61d5a88c75b2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="scale-application-in-azure-container-service-aks"></a>Skalowanie aplikacji w usłudze Azure Container Service (AKS)
+# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>Samouczek: skalowanie aplikacji w usłudze Azure Container Service (AKS)
 
 Jeśli wykonujesz kolejno zadania z samouczków, masz już działający klaster Kubernetes w usłudze AKS z wdrożoną aplikacją do głosowania platformy Azure.
 
@@ -26,7 +26,7 @@ Ta część samouczka, piąta z ośmiu, obejmuje skalowanie w poziomie zasobnik�
 > * Ręczne skalowanie zasobników Kubernetes
 > * Konfigurowanie skalowania automatycznego zasobników obsługujących fronton aplikacji
 
-W kolejnych samouczkach aplikacja do głosowania platformy Azure zostanie zaktualizowana, a pakiet Operations Management Suite zostanie skonfigurowany do monitorowania klastra Kubernetes.
+W kolejnych samouczkach aplikacja do głosowania platformy Azure zostanie zaktualizowana, a usługa Log Analytics zostanie skonfigurowana do monitorowania klastra Kubernetes.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

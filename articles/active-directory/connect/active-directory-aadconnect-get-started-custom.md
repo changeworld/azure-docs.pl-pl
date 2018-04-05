@@ -1,9 +1,9 @@
 ---
 title: 'Azure AD Connect: instalacja niestandardowa | Microsoft Docs'
-description: "Ten dokument zawiera szczegółowe informacje dotyczące opcji niestandardowej instalacji programu Azure AD Connect. Korzystając z tych instrukcji, można zainstalować usługę Active Directory za pośrednictwem programu Azure AD Connect."
+description: Ten dokument zawiera szczegółowe informacje dotyczące opcji niestandardowej instalacji programu Azure AD Connect. Korzystając z tych instrukcji, można zainstalować usługę Active Directory za pośrednictwem programu Azure AD Connect.
 services: active-directory
-keywords: "co to jest program Azure AD Connect, instalowanie usługi Active Directory, wymagane składniki usługi Azure AD"
-documentationcenter: 
+keywords: co to jest program Azure AD Connect, instalowanie usługi Active Directory, wymagane składniki usługi Azure AD
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: ee16fe9e15e52fea482e0db34857780449c2ccb4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 680e70ce572e182aa35c736f61036415d8714ea0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](active-directory-aadconnect-get-started-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -49,7 +49,7 @@ Po zainstalowaniu wymaganych składników zostanie wyświetlony monit o wybranie
 
 | Opcja logowania jednokrotnego | Opis |
 | --- | --- |
-| Synchronizacja skrótów haseł |Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej. Hasła użytkowników są synchronizowane z usługą Azure AD jako skrót hasła, a uwierzytelnianie odbywa się w chmurze. Więcej informacji znajduje się w temacie [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-synchronization.md). |
+| Synchronizacja skrótów haseł |Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej. Hasła użytkowników są synchronizowane z usługą Azure AD jako skrót hasła, a uwierzytelnianie odbywa się w chmurze. Więcej informacji znajduje się w temacie [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md). |
 |Uwierzytelnianie przekazywane|Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej.  Hasło użytkownika jest przekazywane do lokalnego kontrolera domeny usługi Active Directory w celu przeprowadzenia walidacji.
 | Federacja z usługami AD FS |Użytkownicy mogą logować się do usług w chmurze firmy Microsoft, takich jak Office 365, przy użyciu tego samego hasła, którego używają w sieci lokalnej.  Użytkownicy są przekierowywani do wystąpienia lokalnych usług AD FS w celu zalogowania, a uwierzytelnianie odbywa się lokalnie. |
 | Nie konfiguruj |Żadna z funkcji logowania użytkownika nie została zainstalowana ani skonfigurowana. Wybierz tę opcję, jeśli masz już serwer federacyjny innej firmy lub korzystasz z innego rozwiązania. |
@@ -165,7 +165,7 @@ Na tym ekranie można wybrać funkcje opcjonalne dla określonych scenariuszy.
 | Wdrożenie hybrydowe programu Exchange |Funkcja wdrożenia hybrydowego programu Exchange umożliwia jednoczesne istnienie skrzynek pocztowych programu Exchange lokalnie i w usłudze Office 365. Program Azure AD Connect synchronizuje określony zbiór [atrybutów](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) z usługi Azure AD z katalogiem lokalnym. |
 | Foldery publiczne poczty programu Exchange | Funkcja Foldery publiczne poczty programu Exchange umożliwia synchronizowanie obiektów z folderu publicznego wykorzystującego pocztę z lokalnej usługi Active Directory do usługi Azure AD. |
 | Filtrowanie atrybutów i aplikacji usługi Azure AD |Przez włączenie filtrowania atrybutów i aplikacji usługi Azure AD można dostosować zestaw synchronizowanych atrybutów. Ta opcja dodaje do kreatora dwie dodatkowe strony konfiguracji. Więcej informacji znajduje się w temacie [Filtrowanie atrybutów i aplikacji usługi Azure AD](#azure-ad-app-and-attribute-filtering). |
-| Synchronizacja haseł |Te opcję można włączyć, jeśli jako metodę logowania wybrano federację. Synchronizacja haseł może być następnie użyta jako opcja tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja haseł](active-directory-aadconnectsync-implement-password-synchronization.md). </br></br>W przypadku wybrania uwierzytelniania przekazywanego tę opcję można również włączyć, aby zapewnić obsługę starszych klientów i opcję tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja haseł](active-directory-aadconnectsync-implement-password-synchronization.md).|
+| Synchronizacja skrótów haseł |Te opcję można włączyć, jeśli jako metodę logowania wybrano federację. Synchronizacja skrótów haseł może być następnie użyta jako opcja tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md). </br></br>W przypadku wybrania uwierzytelniania przekazywanego tę opcję można również włączyć, aby zapewnić obsługę starszych klientów i opcję tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md).|
 | Zapisywanie zwrotne haseł |Po włączeniu zapisywania zwrotnego haseł zmiany hasła, które pochodzą z usługi Azure AD, są ponownie zapisywane w katalogu lokalnym. Więcej informacji można znaleźć w temacie [Wprowadzenie do zarządzania hasłami](../active-directory-passwords-getting-started.md) |
 | Zapisywanie zwrotne grup |Jeśli używana jest funkcja **Grupy usługi Office 365**, grupy te mogą być reprezentowane w lokalnej usłudze Active Directory. Ta opcja jest dostępna tylko, jeśli w lokalnej usłudze Active Directory jest dostępny program Exchange. Więcej informacji znajduje się w temacie [Zapisywanie zwrotne grup](active-directory-aadconnect-feature-preview.md#group-writeback). |
 | Zapisywanie zwrotne urządzeń |Umożliwia zapisywanie zwrotne obiektów urządzeń w usłudze Azure AD do lokalnej usługi Active Directory dla scenariuszy dostępu warunkowego. Więcej informacji znajduje się w temacie [Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md). |

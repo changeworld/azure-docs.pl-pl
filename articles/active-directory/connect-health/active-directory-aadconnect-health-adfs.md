@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e82b1364593ff70ed87efcaa24c135277002904
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Monitorowanie usług AD FS za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania infrastruktury usług AD FS przy użyciu programu Azure AD Connect Health. Aby uzyskać informacje na temat monitorowania programu Azure AD Connect (synchronizacja) za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](active-directory-aadconnect-health-sync.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](active-directory-aadconnect-health-adds.md).
@@ -126,9 +126,9 @@ Ponadto możliwe jest podejmowanie szeregu prób logowania z jednego adresu IP p
 - Możliwość pobierania raportów w celu ich analizy w trybie offline oraz integracji z innymi systemami za pomocą automatyzacji
 
 > [!NOTE]
-> Aby móc korzystać z tego raportu, należy się upewnić, że inspekcja usług AD FS jest włączona. Aby uzyskać więcej informacji, zobacz [Włączanie inspekcji dla usług AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
->
->
+> Aby móc korzystać z tego raportu, należy się upewnić, że inspekcja usług AD FS jest włączona. Aby uzyskać więcej informacji, zobacz [Włączanie inspekcji dla usług AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
+> W celu uzyskania dostępu do wersji zapoznawczej wymagane są uprawnienia administratora globalnego lub [czytelnika zabezpieczeń](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader).  
+> 
 
 ### <a name="what-is-in-the-report"></a>Zawartość raportu
 Poszczególne elementy raportu ryzykownych adresów IP zawierają zagregowane informacje o nieudanych operacjach logowania za pomocą usług AD FS, przekraczających wyznaczoną wartość progową. Raport udostępnia następujące informacje: ![Portal programu Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4a.png)

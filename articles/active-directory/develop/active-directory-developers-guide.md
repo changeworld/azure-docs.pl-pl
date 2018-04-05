@@ -1,10 +1,10 @@
 ---
-title: "Usługa Azure Active Directory dla deweloperów | Microsoft Docs"
-description: "Ten artykuł zawiera omówienie logowania się na konta służbowe Microsoft przy użyciu usługi Azure Active Directory."
+title: Usługa Azure Active Directory dla deweloperów | Microsoft Docs
+description: Ten artykuł zawiera omówienie logowania się na konta służbowe Microsoft przy użyciu usługi Azure Active Directory.
 services: active-directory
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.devlang: na
@@ -14,14 +14,17 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e1f9fbf6cb80065ea796e2d53d09f48fe57b207b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8d70f36c5e434a26fce4d6b4bd1ddefc22234ab5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-for-developers"></a>Usługa Azure Active Directory dla deweloperów
-Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami w chmurze, która umożliwia deweloperom bezpieczne logowanie użytkowników mających konta służbowe Microsoft. W tej dokumentacji pokazano, jak dodać obsługę usługi Azure AD do własnej aplikacji, używając standardowych w branży protokołów: OAuth 2.0 i OpenID Connect.
+Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami w chmurze, która umożliwia deweloperom tworzenie aplikacji zapewniających bezpieczne logowanie użytkowników mających konta służbowe Microsoft. Usługa Azure AD obsługuje zarówno deweloperów tworzących aplikacje biznesowe dla pojedynczej dzierżawy, jak i deweloperów chcących tworzyć aplikacje wielodostępne. Oprócz podstawowego logowania usługa Azure AD umożliwia również aplikacjom wywoływanie interfejsów API firmy Microsoft, takich jak [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/overview), a także niestandardowych interfejsów API opartych na platformie Azure AD.  W tej dokumentacji pokazano, jak dodać obsługę usługi Azure AD do własnej aplikacji, używając standardowych w branży protokołów, takich jak OAuth 2.0 i OpenID Connect. 
+
+> [!NOTE]
+> Większość zawartości na tej stronie koncentruje się na punkcie końcowym usługi Azure AD w wersji 1, który obsługuje tylko konta służbowe Microsoft. Jeśli chcesz zarejestrować konta użytkownika lub osobiste konta Microsoft, zobacz dodatkowe informacje na temat [punktu końcowego usługi Azure AD w wersji 2.0](active-directory-appmodel-v2-overview.md). Punkt końcowy usługi Azure AD w wersji 2.0 oferuje ujednolicone środowisko deweloperów dla aplikacji, które chcesz zarejestrować na kontach użytkowników z kontami usługi Azure AD (służbowymi) i osobistymi kontami Microsoft. 
 
 | | |
 | --- | --- |
@@ -29,7 +32,7 @@ Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami w chmu
 |[Typy aplikacji](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Przegląd scenariuszy uwierzytelniania obsługiwanych przez usługę Azure AD. |                                
                                                                               
 ## <a name="get-started"></a>Rozpoczęcie pracy
-Przedstawieni poniżej instalatorzy z przewodnikiem prowadzą użytkownika krok po kroku po korzystaniu z bibliotek uwierzytelniania firmy Microsoft w celu logowania użytkowników usługi Azure AD.
+Przedstawione poniżej instalatory z przewodnikiem prowadzą użytkownika krok po kroku przez proces tworzenia aplikacji na jego preferowanej platformie przy użyciu zestawu SDK biblioteki usługi Azure Active Directory Library (ADAL). Jeśli szukasz informacji na temat korzystania z biblioteki Microsoft Authentication Library (MSAL), zobacz dokumentację dotyczącą [punktu końcowego usługi Azure AD w wersji 2.0](active-directory-appmodel-v2-overview.md).
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -40,7 +43,7 @@ Przedstawieni poniżej instalatorzy z przewodnikiem prowadzą użytkownika krok 
 | <center>![Usługa-usługa](./media/active-directory-developers-guide/Service_App.png)<br />Usługa-usługa</center> | [Omówienie](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)|  |
 
 ## <a name="how-to-guides"></a>Przewodniki z instrukcjami
-W poniższych przewodnikach znajdziesz informacje o tym, jak wykonywać typowe zadania w usłudze Azure AD.
+Poniższe przewodniki prowadzą użytkownika przez niektóre z najczęściej wykonywanych zadań w usłudze Azure AD.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
@@ -58,10 +61,6 @@ Następujące artykuły zawierają szczegółowe informacje o interfejsach API, 
 | [Przykłady kodu](active-directory-code-samples.md)                                  | Lista wszystkich przykładów kodu usługi Azure AD. |
 | [Słownik](active-directory-dev-glossary.md)                                      | Terminologia i definicje słów używanych w tej dokumentacji. |
 | [Dodatkowe tematy informacyjne](active-directory-developers-guide-index.md#reference)| Lista dostępnych tematów informacyjnych usługi Azure AD.   |
-
-
-> [!NOTE]
-> Jeśli musisz logować konta osobiste Microsoft, warto rozważyć skorzystanie z [punktu końcowego usługi Azure AD w wersji 2.0](active-directory-appmodel-v2-overview.md). Punkt końcowy usługi Azure AD w wersji 2.0 stanowi ujednolicenie kont osobistych i kont służbowych Microsoft (z usługi Azure AD) do postaci jednego systemu uwierzytelniania.
 
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

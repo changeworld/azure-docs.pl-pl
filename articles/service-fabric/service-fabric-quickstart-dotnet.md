@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/25/2018
+ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4c81baec0c047b551e1bdac2152b330f010baa18
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6038251ba79797312a0fec61e4a6f3d2e99d5435
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Szybki start: tworzenie aplikacji platformy .NET w usłudze Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -91,6 +91,7 @@ Podczas głosowania w aplikacji występują następujące zdarzenia:
 3. Usługa zaplecza przyjmuje żądanie przychodzące i przechowuje zaktualizowany wynik w niezawodnym słowniku, który jest replikowany do wielu węzłów w klastrze i utrwalany na dysku. Wszystkie dane aplikacji są przechowywane w klastrze, więc baza danych nie jest wymagana.
 
 ## <a name="debug-in-visual-studio"></a>Debugowanie w programie Visual Studio
+
 Podczas debugowania aplikacji w programie Visual Studio używany jest lokalny klaster projektowy usługi Service Fabric. Możesz opcjonalnie dostosować środowisko debugowania do danego scenariusza. W tej aplikacji dane są przechowywane w usłudze zaplecza przy użyciu niezawodnego słownika. Program Visual Studio domyślnie usuwa aplikację po zatrzymaniu debugera. Usunięcie aplikacji spowoduje, że dane w usłudze zaplecza także zostaną usunięte. Aby zachować dane między sesjami debugowania, możesz zmienić **Tryb debugowania aplikacji** jako właściwość w projekcie **Voting (Głosowanie)** w programie Visual Studio.
 
 Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:

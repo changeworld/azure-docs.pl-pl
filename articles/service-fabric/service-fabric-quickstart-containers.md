@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d4fe2d410152fc4d65f2d22bc26e5e72b91bc282
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: eb4de9d7781ae355e42a6fec9f7732ad67228e70
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Szybki start: wdrażanie aplikacji kontenera systemu Windows w usłudze Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -83,17 +83,20 @@ Skonfiguruj mapowanie portów kontenera typu „port do hosta” w taki sposób,
 Pełny przykładowy plik ApplicationManifest.xml znajduje się na końcu tego artykułu.
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
-Aby wdrożyć aplikację w klastrze na platformie Azure, możesz dołączyć do klastra testowego. Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i uruchamiane przez zespół usługi Service Fabric, w których każdy może wdrażać aplikacje i poznawać platformę.  Klaster używa jednego certyfikatu z podpisem własnym w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem. Klastry testowe obsługują kontenery. Jeśli jednak skonfigurujesz swój własny klaster, musi on działać w systemie Windows Server 2016 with Containers, aby było możliwe uruchamianie kontenerów.
+Aby wdrożyć aplikację w klastrze na platformie Azure, możesz dołączyć do klastra testowego. Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i uruchamiane przez zespół usługi Service Fabric, w których każdy może wdrażać aplikacje i poznawać platformę.  Klaster używa jednego certyfikatu z podpisem własnym w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem. Klastry testowe obsługują kontenery. Jeśli zdecydujesz się skonfigurować własny klaster i używać go, musi on działać w jednostce SKU obsługującej kontenery (np. Windows Server Datacenter 2016 z kontenerami).
 
-Zaloguj się i [dołącz do klastra z systemem Windows](http://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Certyfikat i wartość **Punkt końcowy połączenia** będą używane w kolejnych krokach.
+Zaloguj się i [dołącz do klastra z systemem Windows](http://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Kliknij link **Jak nawiązać połączenie z zabezpieczonym klastrem testowym?** i skopiuj hasło certyfikatu. Certyfikat, hasło certyfikatu oraz wartość pola **Punkt końcowy połączenia** będą używane w kolejnych krokach.
 
 ![Plik PFX i punkt końcowy połączenia](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+
+> [!Note]
+> Liczba klastrów testowych dostępnych przez godzinę jest ograniczona. Jeśli wystąpi błąd podczas próby tworzenia konta umożliwiającego korzystanie z klastra testowego, możesz poczekać, a następnie spróbować ponownie. Możesz też wykonać kroki opisane w samouczku [Wdrażanie aplikacji .NET](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application), aby utworzyć klaster usługi Service Fabric w subskrypcji platformy Azure i wdrożyć w nim aplikację. Klaster utworzony za pomocą programu Visual Studio obsługuje kontenery. Po wdrożeniu i zweryfikowaniu aplikacji w klastrze możesz przejść od razu do sekcji [Kompletny przykład aplikacji i manifestów usługi Service Fabric](#complete-example-service-fabric-application-and-service-manifests) w tym przewodniku Szybki start. 
+>
 
 Na komputerze z systemem Windows zainstaluj plik PFX w magazynie certyfikatów *CurrentUser\My*.
 
 ```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
-\CurrentUser\My
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
 
 
   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
@@ -118,7 +121,7 @@ Kliknij przycisk **Opublikuj**.
 
 Każda aplikacja w klastrze musi mieć unikatową nazwę.  Klastry testowe są jednak publicznym, udostępnionym środowiskiem i może wystąpić konflikt z istniejącą aplikacją.  Jeśli występuje konflikt nazw, zmień nazwę projektu programu Visual Studio i wdróż ponownie.
 
-Otwórz przeglądarkę i przejdź pod adres http://zwin7fh14scd.westus.cloudapp.azure.com:80. Powinna zostać wyświetlona domyślna strona internetowa usługi IIS: ![domyślna strona internetowa usług IIS][iis-default]
+Otwórz przeglądarkę i przejdź do **punktu końcowego połączenia** określonego na stronie klastra testowego. Adres URL można opcjonalnie poprzedzić identyfikatorem schematu `http://` i dołączyć port `:80`. Na przykład http://zwin7fh14scd.westus.cloudapp.azure.com:80. Powinna zostać wyświetlona domyślna strona internetowa usługi IIS: ![domyślna strona internetowa usług IIS][iis-default]
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Kompletny przykład aplikacji i manifestów usługi Service Fabric
 Zamieszczono tutaj kompletne manifesty usługi i aplikacji używane w tym przewodniku Szybki start.

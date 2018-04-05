@@ -1,6 +1,6 @@
 ---
-title: "Samouczek usługi Azure Container Service — monitorowanie usługi Kubernetes"
-description: "Samouczek usługi Azure Container Service — monitorowanie usługi Kubernetes za pomocą pakietu Microsoft Operations Management Suite (OMS)"
+title: Samouczek usługi Azure Container Service — monitorowanie usługi Kubernetes
+description: Samouczek usługi Azure Container Service — monitorowanie usługi Kubernetes przy użyciu usługi Log Analytics
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,24 +9,24 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 965ce4b7e154684fc1d171c90f17498afc828a66
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: e7d55f1579ce45a39f9b07225bc88c8ef8ff6b66
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>Monitorowanie klastra Kubernetes za pomocą pakietu Operations Management Suite
+# <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorowanie klastra usługi Kubernetes przy użyciu usługi Log Analytics
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 Monitorowanie klastra i kontenerów usługi Kubernetes ma krytyczne znaczenie, szczególnie w przypadku zarządzania klastrem produkcyjnym o dużej skali i z wieloma aplikacjami. 
 
-Możesz korzystać z kilku rozwiązań do monitorowania usługi Kubernetes pochodzących od firmy Microsoft lub innych dostawców. W tym samouczku przedstawiono monitorowanie klastra Kubernetes za pomocą rozwiązania Containers w pakiecie [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md) — oprogramowaniu firmy Microsoft do zarządzania chmurową infrastrukturą IT. (Rozwiązanie Containers pakietu OMS jest dostępne w wersji zapoznawczej).
+Możesz korzystać z kilku rozwiązań do monitorowania usługi Kubernetes pochodzących od firmy Microsoft lub innych dostawców. W tym samouczku przedstawiono monitorowanie klastra Kubernetes za pomocą rozwiązania Containers w usłudze [Log Analytics](../../operations-management-suite/operations-management-suite-overview.md) — oprogramowaniu firmy Microsoft do zarządzania chmurową infrastrukturą IT. (Rozwiązanie Containers jest dostępne w wersji zapoznawczej).
 
 Ten samouczek (część 7 z 7) obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Pobieranie ustawień obszaru roboczego pakietu OMS
+> * Pobieranie ustawień obszaru roboczego usługi Log Analytics
 > * Konfigurowanie agentów pakietu OMS w węzłach Kubernetes
 > * Uzyskiwanie dostępu do informacji monitorowania w portalu pakietu OMS lub witrynie Azure Portal
 
@@ -40,11 +40,19 @@ Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, wróć do częś
 
 Gdy [portal pakietu OMS](https://mms.microsoft.com) będzie dostępny, przejdź do pozycji **Ustawienia** > **Połączone źródła** > **Serwery z systemem Linux**. Tu możesz znaleźć *identyfikator obszaru roboczego* i podstawowy lub pomocniczy *klucz obszaru roboczego*. Zanotuj te wartości. Będą one potrzebne do skonfigurowania agentów pakietu OMS w klastrze.
 
+## <a name="create-kubernetes-secret"></a>Tworzenie wpisu tajnego rozwiązania Kubernetes
+
+Zapisz ustawienia obszaru roboczego usługi Log Analytics we wpisie tajnym rozwiązania Kubernetes o nazwie `omsagent-secret` za pomocą polecenia [kubectl create secret][kubectl-create-secret]. Zaktualizuj element `WORKSPACE_ID` za pomocą identyfikatora obszaru roboczego usługi Log Analytics, a element `WORKSPACE_KEY` za pomocą klucza obszaru roboczego.
+
+```console
+kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
+```
+
 ## <a name="set-up-oms-agents"></a>Konfigurowanie agentów pakietu OMS
 
 W tym miejscu znajduje się plik YAML pozwalający na skonfigurowanie agentów pakietu OMS w węzłach klastra z systemem Linux. Umożliwia on utworzenie elementu [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) usługi Kubernetes, który uruchamia pojedyncze, identyczne zasobniki w każdym węźle klastra. Zasób DaemonSet to idealne rozwiązanie na potrzeby wdrożenia agenta monitorowania. 
 
-Zapisz poniższy tekst do pliku o nazwie `oms-daemonset.yaml`, zamieniając symbole zastępcze *myWorkspaceID* i *myWorkspaceKey* na identyfikator i klucz obszaru roboczego pakietu OMS. (W środowisku produkcyjnym możesz zakodować te wartości jako wpisy tajne).
+Zapisz poniższy tekst w pliku o nazwie `oms-daemonset.yaml`, zamieniając wartości symboli zastępczych *myWorkspaceID* i *myWorkspaceKey* na identyfikator i klucz obszaru roboczego usługi Log Analytics. (W środowisku produkcyjnym możesz zakodować te wartości jako wpisy tajne).
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -56,20 +64,13 @@ spec:
   metadata:
    labels:
     app: omsagent
-    agentVersion: v1.3.4-127
-    dockerProviderVersion: 10.0.0-25
+    agentVersion: 1.4.3-174
+    dockerProviderVersion: 1.0.0-30
   spec:
    containers:
      - name: omsagent 
        image: "microsoft/oms"
        imagePullPolicy: Always
-       env:
-       - name: WSID
-         value: myWorkspaceID
-       - name: KEY 
-         value: myWorkspaceKey
-       - name: DOMAIN
-         value: opinsights.azure.com
        securityContext:
          privileged: true
        ports:
@@ -82,6 +83,11 @@ spec:
           name: docker-sock
         - mountPath: /var/log 
           name: host-log
+        - mountPath: /etc/omsagent-secret
+          name: omsagent-secret
+          readOnly: true
+        - mountPath: /var/lib/docker/containers 
+          name: containerlog-path  
        livenessProbe:
         exec:
          command:
@@ -90,13 +96,27 @@ spec:
          - ps -ef | grep omsagent | grep -v "grep"
         initialDelaySeconds: 60
         periodSeconds: 60
+   nodeSelector:
+    beta.kubernetes.io/os: linux    
+   # Tolerate a NoSchedule taint on master that ACS Engine sets.
+   tolerations:
+    - key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"     
    volumes:
     - name: docker-sock 
       hostPath:
        path: /var/run/docker.sock
     - name: host-log
       hostPath:
-       path: /var/log
+       path: /var/log 
+    - name: omsagent-secret
+      secret:
+       secretName: omsagent-secret
+    - name: containerlog-path
+      hostPath:
+       path: /var/lib/docker/containers 
 ```
 
 Utwórz element DaemonSet przy użyciu następującego polecenia:
@@ -118,15 +138,15 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         0            3           <none>          5m
 ```
 
-Po uruchomieniu agentów pozyskanie i przetworzenie danych przez pakiet OMS trwa kilka minut.
+Po uruchomieniu agentów pozyskanie i przetworzenie danych przez usługę Log Analytics trwa kilka minut.
 
 ## <a name="access-monitoring-data"></a>Dostęp do danych monitorowania
 
-Wyświetlanie i analizowanie danych monitorowania kontenera pakietu OMS za pomocą [rozwiązania Containers](../../log-analytics/log-analytics-containers.md) w portalu pakietu OMS lub w witrynie Azure Portal. 
+Dane monitorowania kontenera można wyświetlać i analizować za pomocą [rozwiązania Containers](../../log-analytics/log-analytics-containers.md) w portalu pakietu OMS lub w witrynie Azure Portal. 
 
 Aby zainstalować rozwiązanie Containers przy użyciu [portalu pakietu OMS](https://mms.microsoft.com), przejdź do **Galerii rozwiązań**. Następnie dodaj element **Rozwiązanie Containers**. Rozwiązanie Containers możesz też dodać z witryny [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
-W portalu pakietu OMS poszukaj kafelka podsumowania **Containers** na pulpicie nawigacyjnym pakietu OMS. Kliknij kafelek, aby wyświetlić szczegółowe informacje, w tym zdarzenia kontenera, błędy, stan, spis obrazów oraz użycie procesora i pamięci. Aby uzyskać bardziej szczegółowe informacje, kliknij wiersz w dowolnym kafelku lub [przeszukaj dzienniki](../../log-analytics/log-analytics-log-searches.md).
+W portalu pakietu OMS poszukaj kafelka podsumowania **Containers** na pulpicie nawigacyjnym. Kliknij kafelek, aby wyświetlić szczegółowe informacje, w tym zdarzenia kontenera, błędy, stan, spis obrazów oraz użycie procesora i pamięci. Aby uzyskać bardziej szczegółowe informacje, kliknij wiersz w dowolnym kafelku lub [przeszukaj dzienniki](../../log-analytics/log-analytics-log-searches.md).
 
 ![Pulpit nawigacyjny rozwiązania Containers w portalu pakietu OMS](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
@@ -136,10 +156,10 @@ Szczegółowy przewodnik dotyczący odpytywania i analizowania danych monitorowa
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób monitorowania klastra Kubernetes za pomocą pakietu OMS. Wykonano następujące zadania:
+W tym samouczku przedstawiono sposób monitorowania klastra Kubernetes za pomocą usługi Log Analytics. Wykonano następujące zadania:
 
 > [!div class="checklist"]
-> * Pobieranie ustawień obszaru roboczego pakietu OMS
+> * Pobieranie ustawień obszaru roboczego usługi Log Analytics
 > * Konfigurowanie agentów pakietu OMS w węzłach Kubernetes
 > * Uzyskiwanie dostępu do informacji monitorowania w portalu pakietu OMS lub witrynie Azure Portal
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal | Microsoft Docs"
-description: "Przykładowy kod języka Golang, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań"
+title: 'Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal | Microsoft Docs'
+description: Przykładowy kod języka Golang, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań
 services: cosmos-db
 author: Durgaprasad-Budhwani
 manager: jhubbard
@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 29a47646074819492e2c5179276a0c4de7f0d2d9
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 49bf6aed5a8daa482be9d22ecd97b6ab43cae5fe
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, można szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość i grafów.
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów.
 
-Ten przewodnik Szybki start wyjaśnia, jak użyć istniejącej aplikacji [MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) napisanej w języku [Golang](https://golang.org/) i połączyć ją z bazą danych usługi Azure Cosmos DB obsługującą połączenia klientów MongoDB.
+Ten przewodnik Szybki start wyjaśnia, jak użyć istniejącej aplikacji MongoDB napisanej w języku [Golang](https://golang.org/) i połączyć ją z bazą danych usługi Azure Cosmos DB obsługującą połączenia klientów MongoDB za pomocą [interfejsu API MongoDB](mongodb-introduction.md).
 
 Innymi słowy, aplikacja w języku Golang wie jedynie, że łączy się z bazą danych przy użyciu interfejsów API bazy danych MongoDB. Aplikacja nie wie, że dane są przechowywane w bazie danych usługi Azure Cosmos DB.
 

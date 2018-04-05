@@ -1,47 +1,47 @@
 ---
-title: "Przykładowy skrypt programu PowerShell Azure - zmiany zakresu portów protokołu RDP | Dokumentacja firmy Microsoft"
-description: "Przykładowy skrypt programu PowerShell Azure - zmienia zakres portów protokołu RDP wdrożonej klastra."
+title: Przykładowy skrypt programu Azure PowerShell — zmienianie zakresu portów protokołu RDP | Microsoft Docs
+description: Przykładowy skrypt programu Azure PowerShell — zmiany zakresu portów protokołu we wdrożonym klastrze.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 11/28/2017
+ms.date: 03/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 9089d071c69830323a94140a5ebb4e9e865499c6
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: MT
+ms.openlocfilehash: 83fb6cc03f605a60b06f31fa6ddd82cd4e3e899e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-the-rdp-port-range-values"></a>Zaktualizuj wartości zakresu portów protokołu RDP
+# <a name="update-the-rdp-port-range-values"></a>Aktualizowanie wartości zakresu portów protokołu RDP
 
-Ten przykładowy skrypt umożliwia zmianę wartości zakresu portów protokołu RDP w węźle klastra maszyny wirtualne po wdrożeniu klastra.  Program Azure PowerShell jest używany, aby nie wyłączać podstawowych maszynach wirtualnych.  Pobiera skrypt `Microsoft.Network/loadBalancers` zasobów w grupie zasobów klastra i aktualizacji `inboundNatPools.frontendPortRangeStart` i `inboundNatPools.frontendPortRangeEnd` wartości. Dostosuj parametry zgodnie z potrzebami.
+Ten przykładowy skrypt umożliwia zmianę wartości zakresu portów protokołu RDP na maszynach wirtualnych węzła klastra po wdrożeniu klastra.  Dzięki użyciu programu Azure PowerShell cykle podstawowych maszyn wirtualnych nie są wykonywane.  Skrypt pobiera zasób `Microsoft.Network/loadBalancers` w grupie zasobów klastra i aktualizuje wartości `inboundNatPools.frontendPortRangeStart` i `inboundNatPools.frontendPortRangeEnd`. Dostosuj parametry zgodnie z potrzebami.
 
-W razie potrzeby zainstalować program Azure PowerShell przy użyciu instrukcji w [Przewodnik programu Azure PowerShell](/powershell/azure/overview). 
+W razie potrzeby zainstaluj program Azure PowerShell przy użyciu instrukcji dostępnej w [przewodniku programu Azure PowerShell](/powershell/azure/overview). 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
 [!code-powershell[main](../../../powershell_scripts/service-fabric/change-rdp-port-range/change-rdp-port-range.ps1 "Update the RDP port range values")]
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń. Każde polecenie w tabeli łącza do dokumentacji określonego polecenia.
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera `Microsoft.Network/loadBalancers` zasobów. |
-|[Zestaw AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource)|Aktualizacje `Microsoft.Network/loadBalancers` zasobów.|
+| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera zasób `Microsoft.Network/loadBalancers`. |
+|[Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource)|Aktualizuje zasób `Microsoft.Network/loadBalancers`.|
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji dotyczących modułu Azure PowerShell, zobacz [dokumentacji programu Azure PowerShell](/powershell/azure/overview).
+Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
-Dodatkowe przykłady programu Azure Powershell dla usługi sieć szkieletowa usług Azure można znaleźć w [przykłady programu Azure PowerShell](../service-fabric-powershell-samples.md).
+Więcej przykładów programu Azure PowerShell dla usługi Azure Service Fabric można znaleźć w [przykładach programu Azure PowerShell](../service-fabric-powershell-samples.md).

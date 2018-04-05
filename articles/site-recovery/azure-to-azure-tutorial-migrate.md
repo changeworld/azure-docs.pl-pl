@@ -1,18 +1,18 @@
 ---
-title: "Migrowanie maszyn wirtualnych platformy Azure między regionami platformy Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs"
-description: "Używanie usługi Azure Site Recovery do migrowania maszyn wirtualnych IaaS platformy Azure z jednego regionu platformy Azure do innego."
+title: Migrowanie maszyn wirtualnych platformy Azure między regionami platformy Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: Używanie usługi Azure Site Recovery do migrowania maszyn wirtualnych IaaS platformy Azure z jednego regionu platformy Azure do innego.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: abae7cbd21a2c7f49dc1fe85711b80dc43a10517
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrowanie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -35,7 +35,15 @@ W tym samouczku założono, że masz już subskrypcję platformy Azure. Jeśli j
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończenie tego samouczka było możliwe, maszyny wirtualne platformy Azure muszą znajdować się w regionie Azure, z którego chcesz przeprowadzić migrację. Ponadto istnieją ustawienia, które należy sprawdzić przed rozpoczęciem pracy.
+- Upewnij się, że w regionie platformy Azure, z którego chcesz przeprowadzić migrację, znajdują się maszyny wirtualne platformy Azure.
+- Przeanalizuj informacje o [składnikach i architekturze scenariusza](azure-to-azure-architecture.md).
+- Zapoznaj się z [ograniczeniami i wymaganiami dotyczącymi pomocy technicznej](azure-to-azure-support-matrix.md).
+
+
+
+## <a name="before-you-start"></a>Przed rozpoczęciem
+
+Przed skonfigurowaniem replikacji wykonaj poniższe czynności.
 
 
 ### <a name="verify-target-resources"></a>Sprawdzanie zasobów docelowych
@@ -114,9 +122,7 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 
     ![włączanie replikacji](media/tutorial-migrate-azure-to-azure/settings.png)
 
->[!NOTE]
-  >
-  > Obecnie replikacja maszyn wirtualnych platformy Azure z dyskami zarządzanymi nie jest obsługiwana. 
+ 
 
 ## <a name="run-a-failover"></a>Uruchamianie trybu failover
 

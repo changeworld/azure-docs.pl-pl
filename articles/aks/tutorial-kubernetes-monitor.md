@@ -1,6 +1,6 @@
 ---
 title: Samouczek dla usługi Kubernetes na platformie Azure — monitorowanie usługi Kubernetes
-description: Samouczek dla usługi AKS — monitorowanie usługi Kubernetes za pomocą pakietu Microsoft Operations Management Suite (OMS)
+description: Samouczek AKS — monitorowanie usługi Kubernetes przy użyciu usługi Azure Log Analytics
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 227601858dbe07e6cb774a2d24878ddca05aaf56
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="monitor-azure-container-service-aks"></a>Monitorowanie usługi Azure Container Service (AKS)
+# <a name="tutorial-monitor-azure-container-service-aks"></a>Samouczek: monitorowanie usługi Azure Container Service (AKS)
 
 Monitorowanie klastra i kontenerów usługi Kubernetes ma krytyczne znaczenie, szczególnie w przypadku korzystania z klastra produkcyjnego o dużej skali i z wieloma aplikacjami.
 
@@ -40,11 +40,11 @@ W witrynie Azure Portal wybierz polecenie **Utwórz zasób** i wyszukaj pozycję
 
 ![Dodanie rozwiązania](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
-Utwórz nowy obszar roboczy pakietu OMS lub wybierz istniejący obszar roboczy. Formularz obszaru roboczego pakietu OMS przeprowadzi Cię przez ten proces.
+Utwórz nowy obszar roboczy usługi Log Analytics lub wybierz istniejący obszar roboczy. Formularz obszaru roboczego usługi Log Analytics przeprowadzi Cię przez ten proces.
 
 Podczas tworzenia obszaru roboczego wybierz polecenie **Przypnij do pulpitu nawigacyjnego**, co ułatwi dostęp do niego.
 
-![Obszar roboczy OMS](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
+![Obszar roboczy usługi Log Analytics](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
 Po zakończeniu wybierz polecenie **Zamknij**. Po zakończeniu walidacji wybierz polecenie **Utwórz**, aby utworzyć rozwiązanie do monitorowania kontenerów.
 
@@ -58,7 +58,7 @@ Aby pobrać te wartości, wybierz pozycję **Obszar roboczy OMS** z menu po lewe
 
 ## <a name="create-kubernetes-secret"></a>Tworzenie wpisu tajnego rozwiązania Kubernetes
 
-Zapisz ustawienia obszaru roboczego pakietu OMS we wpisie tajnym rozwiązania Kubernetes o nazwie `omsagent-secret` za pomocą polecenia [kubectl create secret][kubectl-create-secret]. Zaktualizuj element `WORKSPACE_ID` za pomocą identyfikatora obszaru roboczego pakietu OMS, a element `WORKSPACE_KEY` za pomocą klucza obszaru roboczego.
+Zapisz ustawienia obszaru roboczego usługi Log Analytics we wpisie tajnym rozwiązania Kubernetes o nazwie `omsagent-secret` za pomocą polecenia [kubectl create secret][kubectl-create-secret]. Zaktualizuj element `WORKSPACE_ID` za pomocą identyfikatora obszaru roboczego usługi Log Analytics, a element `WORKSPACE_KEY` za pomocą klucza obszaru roboczego.
 
 ```console
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
@@ -154,7 +154,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
-Po uruchomieniu agentów pozyskanie i przetworzenie danych przez pakiet OMS trwa kilka minut.
+Po uruchomieniu agentów pozyskanie i przetworzenie danych przez usługę Log Analytics trwa kilka minut.
 
 ## <a name="access-monitoring-data"></a>Dostęp do danych monitorowania
 
@@ -166,7 +166,7 @@ Szczegółowy przewodnik dotyczący odpytywania i analizowania danych monitorowa
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób monitorowania klastra Kubernetes za pomocą pakietu OMS. Wykonano następujące zadania:
+W tym samouczku przedstawiono sposób monitorowania klastra Kubernetes za pomocą usługi Log Analytics. Wykonano następujące zadania:
 
 > [!div class="checklist"]
 > * Konfigurowanie rozwiązania do monitorowania kontenerów

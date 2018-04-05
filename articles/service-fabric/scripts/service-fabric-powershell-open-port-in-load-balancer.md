@@ -1,51 +1,51 @@
 ---
-title: "Przykładowy skrypt programu PowerShell Azure - port otwartej aplikacji w usłudze równoważenia obciążenia | Dokumentacja firmy Microsoft"
-description: "Azure przykładowy skrypt programu PowerShell - Otwórz port w usłudze równoważenia obciążenia Azure dla aplikacji sieci szkieletowej usług."
+title: Przykładowy skrypt Azure PowerShell — otwieranie portu aplikacji w module równoważenia obciążenia | Microsoft Docs
+description: Przykładowy skrypt Azure PowerShell — otwieranie portu w module równoważenia obciążenia platformy Azure dla aplikacji usługi Service Fabric.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 12/08/2017
+ms.date: 03/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: c643fc9e575a8e836a361893d78348bbd627a425
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
-ms.translationtype: MT
+ms.openlocfilehash: 1edaca9c354a7b65b47213c7970e823aee3cbe87
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="open-an-application-port-in-the-azure-load-balancer"></a>Otwórz port aplikacji w usłudze równoważenia obciążenia Azure
+# <a name="open-an-application-port-in-the-azure-load-balancer"></a>Otwieranie portu aplikacji w module równoważenia obciążenia platformy Azure
 
-Aplikacji usługi Service Fabric, działające na platformie Azure znajduje się za usługą równoważenia obciążenia Azure. Ten przykładowy skrypt otwiera port do modułu równoważenia obciążenia Azure, dzięki czemu aplikacji usługi Service Fabric może komunikować się z klientami zewnętrznymi. Dostosuj parametry zgodnie z potrzebami. Jeśli klaster jest w grupie zabezpieczeń sieci, również [Dodaj regułę grupy zabezpieczeń sieci dla ruchu przychodzącego](service-fabric-powershell-add-nsg-rule.md) zezwalająca na ruch przychodzący.
+Aplikacja usługi Service Fabric uruchamiana na platformie Azure znajduje się za modułem równoważenia obciążenia platformy Azure. Ten przykładowy skrypt otwiera port w module równoważenia obciążenia platformy Azure, aby aplikacja usługi Service Fabric mogła komunikować się z klientami zewnętrznymi. Dostosuj parametry zgodnie z potrzebami. Jeśli klaster znajduje się w sieciowej grupie zabezpieczeń, należy również [dodać regułę sieciowej grupy zabezpieczeń dla ruchu przychodzącego](service-fabric-powershell-add-nsg-rule.md), aby umożliwić ruch przychodzący.
 
-Jeśli to konieczne, Zainstaluj moduł programu PowerShell usługi Service Fabric [zestawu SDK usług sieci szkieletowej](../service-fabric-get-started.md). 
+W razie potrzeby zainstaluj moduł Service Fabric programu PowerShell przy użyciu [Zestawu SDK usługi Service Fabric](../service-fabric-get-started.md). 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
 [!code-powershell[main](../../../powershell_scripts/service-fabric/open-port-in-load-balancer/open-port-in-load-balancer.ps1 "Open a port in the load balancer")]
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń. Każde polecenie w tabeli łącza do dokumentacji specyficzne dla polecenia.
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera zasobów platformy Azure.  |
-| [Get-AzureRmLoadBalancer](/powershell/module/azurerm.network/get-azurermloadbalancer) | Pobiera moduł równoważenia obciążenia Azure. |
-| [Dodaj AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig) | Dodaje konfiguracji sondowania z modułem równoważenia obciążenia.|
-| [Get-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/get-azurermloadbalancerprobeconfig) | Pobiera konfigurację sondę modułu równoważenia obciążenia. |
-| [Dodaj AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) | Dodaje konfiguracji reguły równoważenia obciążenia. |
-| [Zestaw AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) | Ustawia stan celem usługi równoważenia obciążenia. |
+| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera zasób platformy Azure.  |
+| [Get-AzureRmLoadBalancer](/powershell/module/azurerm.network/get-azurermloadbalancer) | Pobiera moduł równoważenia obciążenia platformy Azure. |
+| [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig) | Dodaje konfigurację sondowania do modułu równoważenia obciążenia.|
+| [Get-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/get-azurermloadbalancerprobeconfig) | Pobiera konfigurację sondowania dla modułu równoważenia obciążenia. |
+| [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) | Dodaje konfigurację reguły do modułu równoważenia obciążenia. |
+| [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) | Ustawia stan docelowy dla modułu równoważenia obciążenia. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji dotyczących modułu Azure PowerShell, zobacz [dokumentacji programu Azure PowerShell](/powershell/azure/overview).
+Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
-Dodatkowe przykłady środowiska Powershell dla usługi sieć szkieletowa usług Azure można znaleźć w [przykłady programu Azure PowerShell](../service-fabric-powershell-samples.md).
+Więcej przykładów dla programu PowerShell dla usługi Azure Service Fabric można znaleźć w [przykładach programu Azure PowerShell](../service-fabric-powershell-samples.md).

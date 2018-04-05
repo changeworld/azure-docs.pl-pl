@@ -1,216 +1,266 @@
 ---
-title: "Tworzenie wewnętrznego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure | Microsoft Docs"
-description: "Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure w usłudze Resource Manager"
+title: Tworzenie wewnętrznego podstawowego modułu równoważenia obciążenia — interfejs wiersza polecenia platformy Azure w wersji 2.0 | Microsoft Docs
+description: Dowiedz się, jak utworzyć wewnętrzny moduł równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: c7a24e92-b4da-43c0-90f2-841c1b7ce489
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/27/2017
 ms.author: kumud
-ms.openlocfilehash: 920ddecbf81296fd83606f2908e432f5327d4b7e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d90a4e74b6ad3bb95e91ad3a5327c887a87784bd
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="create-an-internal-load-balancer-by-using-the-azure-cli"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Program PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
-> * [Interfejs wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
-> * [Szablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
+W tym artykule przedstawiono sposób tworzenia wewnętrznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Ubuntu Server, aby zrównoważyć obciążenie aplikacji internetowej.
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-[!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
-[!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-## <a name="deploy-the-solution-by-using-the-azure-cli"></a>Wdrażanie rozwiązania przy użyciu interfejsu wiersza polecenia platformy Azure
+Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group#create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Poniższe kroki przedstawiają sposób tworzenia dostępnego z Internetu modułu równoważenia obciążenia przy użyciu wiersza interfejsu polecenia w usłudze Azure Resource Manager. Usługa Azure Resource Manager pozwala tworzyć i konfigurować każdy zasób osobno, a następnie łączyć je ze sobą w celu utworzenia kolejnego zasobu.
+W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroupILB* w lokalizacji *eastus*:
 
-Aby wdrożyć moduł równoważenia obciążenia, należy utworzyć i skonfigurować następujące obiekty:
+```azurecli-interactive
+  az group create \
+    --name myResourceGroupILB \
+    --location eastus
+```
+## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-* **Konfiguracja adresu IP frontonu** — publiczne adresy IP dla przychodzącego ruchu sieciowego.
-* **Pula adresów zaplecza** — interfejsy sieciowe (karty sieciowe) maszyn wirtualnych odbierających ruch sieciowy z modułu równoważenia obciążenia.
-* **Reguły równoważenia obciążenia** — reguły mapowania portu publicznego modułu równoważenia obciążenia na port w puli adresów zaplecza.
-* **Reguły NAT ruchu przychodzącego** — reguły mapowania portu publicznego modułu równoważenia obciążenia na port określonej maszyny wirtualnej w puli adresów zaplecza.
-* **Sondy** — sondy kondycji używane do sprawdzania dostępności wystąpień maszyn wirtualnych w puli adresów zaplecza.
+Utwórz sieć wirtualną o nazwie *myVnet* z podsiecią o nazwie *mySubnet* w grupie zasobów *myResourceGroup* przy użyciu polecenia [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create).
 
-Aby uzyskać więcej informacji, zobacz artykuł [Azure Resource Manager support for Load Balancer](load-balancer-arm.md) (Obsługa usługi Azure Resource Manager dla modułu równoważenia obciążenia).
+```azurecli-interactive
+  az network vnet create \
+    --name myVnet
+    --resource-group myResourceGroupILB \
+    --location eastus \
+    --subnet-name mySubnet
+```
+## <a name="create-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
 
-## <a name="set-up-cli-to-use-resource-manager"></a>Konfigurowanie interfejsu wiersza polecenia w celu użycia usługi Resource Manager
+W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następujących składników modułu równoważenia obciążenia:
+  - Konfiguracja adresu IP frontonu odbierającego przychodzący ruch sieciowy w module równoważenia obciążenia.
+  - Pula adresów IP zaplecza, gdzie pula frontonu wysyła ruch sieciowy o zrównoważonym obciążeniu.
+  - Sonda kondycji, która określa kondycję wystąpień maszyn wirtualnych zaplecza.
+  - Reguła modułu równoważenia obciążenia, która definiuje sposób dystrybucji ruchu do maszyn wirtualnych.
 
-1. Jeśli po raz pierwszy korzystasz z interfejsu wiersza polecenia platformy Azure, zobacz artykuł [Install and configure the Azure CLI](../cli-install-nodejs.md) (Instalowanie i konfigurowanie interfejsu wiersza polecenia platformy Azure). Postępuj zgodnie z instrukcjami do momentu wybierania konta i subskrypcji platformy Azure.
-2. Uruchom polecenie **azure config mode**, aby włączyć tryb usługi Resource Manager, w następujący sposób:
+### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-    ```azurecli
-    azure config mode arm
-    ```
+Za pomocą polecenia [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) utwórz publiczny podstawowy moduł równoważenia obciążenia o nazwie **myLoadBalancer** zawierający konfigurację adresu IP frontonu o nazwie **myFrontEnd** oraz pulę zaplecza o nazwie **myBackEndPool**, która jest skojarzona z prywatnym adresem IP **10.0.0.7.
 
-    Oczekiwane dane wyjściowe:
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupILB \
+    --name myLoadBalancer \
+    --frontend-ip-name myFrontEnd \
+    --private-ip-address 10.0.0.7 \
+    --backend-pool-name myBackEndPool \
+    --vnet-name myVnet \
+    --subnet mySubnet      
+  ```
+### <a name="create-the-health-probe"></a>Tworzenie sondy kondycji
 
-        info:    New mode is arm
+Sonda kondycji sprawdza wszystkie wystąpienia maszyny wirtualnej, aby upewnić się, że mogą one odbierać ruch sieciowy. Wystąpienie maszyny wirtualnej, w przypadku którego sprawdzanie kondycji za pomocą sondy nie powiodło się, jest usuwane z modułu równoważenia obciążenia do momentu ponownego przejścia do trybu online i pomyślnego sprawdzenia kondycji. Utwórz sondę kondycji za pomocą polecenia [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) w celu monitorowania kondycji maszyn wirtualnych. 
 
-## <a name="create-an-internal-load-balancer-step-by-step"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia krok po kroku
-
-1. Zaloguj się do platformy Azure.
-
-    ```azurecli
-    azure login
-    ```
-
-    Po wyświetleniu monitu wprowadź swoje poświadczenia platformy Azure.
-
-2. Przełącz narzędzia polecenia na tryb usługi Azure Resource Manager.
-
-    ```azurecli
-    azure config mode arm
-    ```
-
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
-
-Wszystkie zasoby usługi Azure Resource Manager są kojarzone z grupą zasobów. Jeśli jeszcze nie wykonano tej czynności, utwórz grupę zasobów.
-
-```azurecli
-azure group create <resource group name> <location>
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupILB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
 ```
 
-## <a name="create-an-internal-load-balancer-set"></a>Tworzenie zestawu wewnętrznego modułu równoważenia obciążenia
+### <a name="create-the-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
 
-1. Utwórz wewnętrzny moduł równoważenia obciążenia.
+Reguła modułu równoważenia obciążenia definiuje konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Utwórz regułę modułu równoważenia obciążenia *myLoadBalancerRuleWeb* za pomocą polecenia [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) w celu nasłuchiwania na porcie 80 w puli frontonu *myFrontEndPool* i wysyłania ruchu sieciowego o zrównoważonym obciążeniu do puli adresów zaplecza *myBackEndPool*, również przy użyciu portu 80. 
 
-    W poniższym scenariuszu tworzona jest grupa zasobów o nazwie nrprg w regionie Wschodnie stany USA.
-
-    ```azurecli
-    azure network lb create --name nrprg --location eastus
-    ```
-
-   > [!NOTE]
-   > Wszystkie zasoby wewnętrznych modułów równoważenia obciążenia, takie jak sieci wirtualne i podsieci sieci wirtualnych, muszą należeć do tej samej grupy zasobów i znajdować się w tym samym regionie.
-
-2. Utwórz adres IP frontonu dla wewnętrznego modułu równoważenia obciążenia.
-
-    Wybrany adres IP musi należeć do zakresu podsieci sieci wirtualnej.
-
-    ```azurecli
-    azure network lb frontend-ip create --resource-group nrprg --lb-name ilbset --name feilb --private-ip-address 10.0.0.7 --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet
-    ```
-
-3. Utwórz pulę adresów zaplecza.
-
-    ```azurecli
-    azure network lb address-pool create --resource-group nrprg --lb-name ilbset --name beilb
-    ```
-
-    Po zdefiniowaniu adresu IP frontonu i puli adresów zaplecza możesz utworzyć reguły modułu równoważenia obciążenia, reguły NAT dla ruchu przychodzącego i dostosowane sondy kondycji.
-
-4. Utwórz regułę modułu równoważenia obciążenia dla wewnętrznego modułu równoważenia obciążenia.
-
-    Po wykonaniu poprzednich kroków polecenie spowoduje utworzenie reguły modułu równoważenia obciążenia do nasłuchiwania w porcie 1433 w puli frontonu i wysyłania ruchu sieciowego ze zrównoważonym obciążeniem do puli adresów zaplecza, również przy użyciu portu 1433.
-
-    ```azurecli
-    azure network lb rule create --resource-group nrprg --lb-name ilbset --name ilbrule --protocol tcp --frontend-port 1433 --backend-port 1433 --frontend-ip-name feilb --backend-address-pool-name beilb
-    ```
-
-5. Utwórz reguły NAT dla ruchu przychodzącego.
-
-    Reguły NAT dla ruchu przychodzącego są używane do tworzenia punktów końcowych modułu równoważenia obciążenia, które umożliwiają przechodzenie do określonego wystąpienia maszyny wirtualnej. W ramach poprzednich kroków utworzono dwie reguły NAT dla pulpitu zdalnego.
-
-    ```azurecli
-    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule1 --protocol TCP --frontend-port 5432 --backend-port 3389
-
-    azure network lb inbound-nat-rule create --resource-group nrprg --lb-name ilbset --name NATrule2 --protocol TCP --frontend-port 5433 --backend-port 3389
-    ```
-
-6. Utwórz sondy kondycji modułu równoważenia obciążenia.
-
-    Sonda kondycji sprawdza wszystkie wystąpienia maszyny wirtualnej, aby upewnić się, że mogą wysyłać ruch sieciowy. Wystąpienie maszyny wirtualnej, w przypadku którego sprawdzanie kondycji za pomocą sondy nie powiodło się, jest usuwane z modułu równoważenia obciążenia do momentu ponownego przejścia do trybu online i pomyślnego sprawdzenia kondycji.
-
-    ```azurecli
-    azure network lb probe create --resource-group nrprg --lb-name ilbset --name ilbprobe --protocol tcp --interval 300 --count 4
-    ```
-
-    > [!NOTE]
-    > Platforma Microsoft Azure używa statycznego, podlegającego publicznemu routingowi adresu IPv4 do różnych scenariuszy administracyjnych. Adres IP to 168.63.129.16. Ten adres IP nie powinien być blokowany przez zapory, ponieważ może to spowodować nieoczekiwane zachowanie.
-    > Jeśli chodzi o wewnętrzne równoważenie obciążenia platformy Azure, ten adres IP jest używany przez sondy monitorujące wysyłane z modułu równoważenia obciążenia w celu określenia kondycji maszyn wirtualnych w zestawie o zrównoważonym obciążeniu. Jeśli sieciowa grupa zabezpieczeń jest używana do ograniczania ruchu do maszyn wirtualnych platformy Azure w zestawie o wewnętrznie zrównoważonym obciążeniu lub jest stosowana do podsieci sieci wirtualnej, upewnij się, że dodano regułę zabezpieczeń sieci zezwalającą na ruch z adresu 168.63.129.16.
-
-## <a name="create-nics"></a>Tworzenie kart sieciowych
-
-Musisz utworzyć karty sieciowe (lub zmodyfikować istniejące) i skojarzyć je z regułami NAT, regułami modułu równoważenia obciążenia i sondami.
-
-1. Utwórz kartę sieciową o nazwie *lb-nic1-be* i skojarz ją z regułą NAT *rdp1* oraz pulą adresów zaplecza *beilb*.
-
-    ```azurecli
-    azure network nic create --resource-group nrprg --name lb-nic1-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1" --location eastus
-    ```
-
-    Oczekiwane dane wyjściowe:
-
-        info:    Executing command network nic create
-        + Looking up the network interface "lb-nic1-be"
-        + Looking up the subnet "nrpvnetsubnet"
-        + Creating network interface "lb-nic1-be"
-        + Looking up the network interface "lb-nic1-be"
-        data:    Id                              : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
-        data:    Name                            : lb-nic1-be
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : eastus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Private IP address            : 10.0.0.4
-        data:      Private IP Allocation Method  : Dynamic
-        data:      Subnet                        : /subscriptions/####################################/resourceGroups/NRPRG/providers/Microsoft.Network/virtualNetworks/NRPVnet/subnets/NRPVnetSubnet
-        data:      Load balancer backend address pools
-        data:        Id                          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool
-        data:      Load balancer inbound NAT rules:
-        data:        Id                          : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1
-        data:
-        info:    network nic create command OK
-
-2. Utwórz kartę sieciową o nazwie *lb-nic2-be* i skojarz ją z regułą NAT *rdp2* oraz pulą adresów zaplecza *beilb*.
-
-    ```azurecli
-    azure network nic create --resource-group nrprg --name lb-nic2-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp2" --location eastus
-    ```
-
-3. Utwórz maszynę wirtualną o nazwie *DB1* i skojarz ją z kartą sieciową o nazwie *lb-nic1-be*. Konto magazynu o nazwie *web1nrp* zostało utworzone przed uruchomieniem następującego polecenia:
-
-    ```azurecli
-    azure vm create --resource--resource-grouproup nrprg --name DB1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
-    ```
-    > [!IMPORTANT]
-    > Maszyny wirtualne w module równoważenia obciążenia muszą być w tym samym zestawie dostępności. Użyj polecenia `azure availset create`, aby utworzyć zestaw dostępności.
-
-4. Utwórz maszynę wirtualną o nazwie *DB2* i skojarz ją z kartą sieciową o nazwie *lb-nic2-be*. Konto magazynu o nazwie *web1nrp* zostało utworzone przed uruchomieniem następującego polecenia:
-
-    ```azurecli
-    azure vm create --resource--resource-grouproup nrprg --name DB2 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
-    ```
-
-## <a name="delete-a-load-balancer"></a>Usuwanie modułu równoważenia obciążenia
-
-Aby usunąć moduł równoważenia obciążenia, użyj następującego polecenia:
-
-```azurecli
-azure network lb delete --resource-group nrprg --name ilbset
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupILB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe  
 ```
+
+## <a name="create-servers-for-the-backend-address-pool"></a>Tworzenie serwerów dla puli adresów zaplecza
+
+Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu równoważenia obciążenia, należy utworzyć pomocnicze zasoby sieci wirtualnej.
+
+###  <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
+Utwórz sieciową grupę zabezpieczeń w celu zdefiniowania połączeń przychodzących do sieci wirtualnej.
+
+```azurecli-interactive
+  az network nsg create \
+    --resource-group myResourceGroupILB \
+    --name myNetworkSecurityGroup
+```
+
+### <a name="create-a-network-security-group-rule"></a>Tworzenie reguły sieciowej grupy zabezpieczeń
+
+Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwalać na połączenia przychodzące za pośrednictwem portu 80.
+
+```azurecli-interactive
+  az network nsg rule create \
+    --resource-group myResourceGroupILB \
+    --nsg-name myNetworkSecurityGroup \
+    --name myNetworkSecurityGroupRuleHTTP \
+    --protocol tcp \
+    --direction inbound \
+    --source-address-prefix '*' \
+    --source-port-range '*' \
+    --destination-address-prefix '*' \
+    --destination-port-range 22 \
+    --access allow \
+    --priority 300
+```
+### <a name="create-nics"></a>Tworzenie kart sieciowych
+
+Utwórz dwa interfejsy sieciowe za pomocą polecenia [az network nic create](/cli/azure/network/nic#az_network_nic_create) i skojarz je z prywatnym adresem IP i sieciową grupą zabezpieczeń. 
+
+```azurecli-interactive
+for i in `seq 1 2`; do
+  az network nic create \
+    --resource-group myResourceGroupILB \
+    --name myNic$i \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+done
+```
+
+## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
+
+W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako serwery zaplecza dla modułu równoważenia obciążenia. Aby sprawdzić, czy moduł równoważenia obciążenia został utworzony pomyślnie, zainstalujesz także serwer NGINX na maszynach wirtualnych.
+
+### <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
+
+Utwórz zestaw dostępności za pomocą polecenia [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create).
+
+ ```azurecli-interactive
+  az vm availability-set create \
+    --resource-group myResourceGroupILB \
+    --name myAvailabilitySet
+```
+
+### <a name="create-two-virtual-machines"></a>Tworzenie dwóch maszyn wirtualnych
+
+Aby zainstalować serwer NGINX i uruchomić aplikację Node.js „Hello World” na maszynie wirtualnej z systemem Linux, możesz użyć pliku konfiguracji cloud-init. W bieżącej powłoce utwórz plik o nazwie cloud-init.txt, a następnie skopiuj i wklej poniższą konfigurację do powłoki. Upewnij się, że kopiujesz cały plik cloud-init, a szczególnie pierwszy wiersz:
+
+```yaml
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+  - owner: azureuser:azureuser
+  - path: /home/azureuser/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+``` 
+ 
+Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create).
+
+ ```azurecli-interactive
+for i in `seq 1 2`; do
+  az vm create \
+    --resource-group myResourceGroupILB \
+    --name myVM$i \
+    --availability-set myAvailabilitySet \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt
+    done
+```
+Wdrażanie maszyn wirtualnych może potrwać kilka minut.
+
+### <a name="create-a-vm-for-testing-the-load-balancer"></a>Tworzenie maszyny wirtualnej do testowania modułu równoważenia obciążenia
+
+Aby przetestować moduł równoważenia obciążenia, utwórz maszynę wirtualną *myVMTest* i skojarz ją z kartą sieciową *myNic3*.
+
+```azurecli-interactive
+ az vm create \
+    --resource-group myResourceGroupILB \
+    --name myVMTest \
+    --image win2016datacenter \
+    --admin-username azureuser \
+    --admin-password myPassword123456!
+```
+
+## <a name="test-the-internal-load-balancer"></a>Testowanie wewnętrznego modułu równoważenia obciążenia
+
+Aby przetestować moduł równoważenia obciążenia, najpierw uzyskaj prywatny adres IP tego modułu. Następnie zaloguj się do maszyny wirtualnej myVMTest i wpisz ten prywatny adres IP na pasku adresu przeglądarki internetowej.
+
+Aby uzyskać prywatny adres IP modułu równoważenia obciążenia, użyj polecenia [az network lb show](/cli/azure/network/public-ip##az-network-lb-show). Skopiuj prywatny adres IP, a następnie wklej go na pasku adresu przeglądarki internetowej maszyny wirtualnej — *myVMTest*.
+
+```azurecli-interactive
+  az network lb show \
+    --name myLoadBalancer
+    --resource-group myResourceGroupILB
+``` 
+![Testowanie modułu równoważenia obciążenia](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy grupa zasobów nie będzie już potrzebna, możesz użyć polecenia [az group delete](/cli/azure/group#az_group_delete), aby usunąć grupę zasobów, moduł równoważenia obciążenia oraz wszystkie pokrewne zasoby.
+
+```azurecli-interactive 
+  az group delete --name myResourceGroupILB
+```
+
 
 ## <a name="next-steps"></a>Następne kroki
-
-[Configure a load balancer distribution mode by using source IP affinity](load-balancer-distribution-mode.md) (Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia przy użyciu koligacji źródłowych adresów IP)
-
-[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)
-
+W tym artykule utworzono wewnętrzny podstawowy moduł równoważenia obciążenia, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu modułu równoważenia obciążenia i sondę kondycji, a następnie przetestowano moduł równoważenia obciążenia. Aby dowiedzieć się więcej na temat modułów równoważenia obciążenia i skojarzonych z nimi zasobów, zapoznaj się z kolejnymi artykułami zawierającymi instrukcje.

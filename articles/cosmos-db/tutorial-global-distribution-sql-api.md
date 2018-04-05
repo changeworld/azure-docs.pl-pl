@@ -1,9 +1,9 @@
 ---
-title: "Samouczek usługi Azure DB rozwiązania Cosmos dystrybucji globalne dla interfejsu API SQL | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować bazy danych Azure rozwiązania Cosmos dystrybucji globalnego przy użyciu interfejsu API SQL."
+title: Samouczek dystrybucji globalnej usługi Azure Cosmos DB dla interfejsu API SQL | Microsoft Docs
+description: Dowiedz się, jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu API SQL.
 services: cosmos-db
-keywords: Globalne dystrybucji
-documentationcenter: 
+keywords: Dystrybucja globalna
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
@@ -15,53 +15,51 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 0cee55673c8abca29b7e389fa4fd62a48566904b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 58cfa4f8898febf6d0bbe4c5a7a1dad4fcc6c854
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Konfigurowanie bazy danych Azure rozwiązania Cosmos dystrybucji globalnego przy użyciu interfejsu API SQL
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu API SQL
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
-
-W tym artykule zostanie przedstawiony sposób instalacji bazy danych Azure rozwiązania Cosmos globalne dystrybucji, a następnie nawiąż połączenie przy użyciu interfejsu API SQL za pomocą portalu Azure.
+W tym artykule pokazujemy, jak za pomocą witryny Azure Portal skonfigurować dystrybucję globalną usługi Azure Cosmos DB, a następnie nawiązać połączenie przy użyciu interfejsu API SQL.
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
-> * Skonfiguruj globalne dystrybucji przy użyciu portalu Azure
-> * Skonfigurować globalne dystrybucji za pomocą [SQL interfejsów API](sql-api-introduction.md)
+> * Konfigurowanie dystrybucji globalnej przy użyciu witryny Azure Portal
+> * Konfigurowanie dystrybucji globalnej przy użyciu [interfejsów API SQL](sql-api-introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Łączenie z preferowanego regionu przy użyciu interfejsu API SQL
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Nawiązywanie połączenia z preferowanym regionem przy użyciu interfejsu API SQL
 
-Aby korzystać z [globalne dystrybucji](distribute-data-globally.md), aplikacje klienckie można określić listy uporządkowanej preferencji regionów ma być używany do wykonywania operacji dokumentu. Można to zrobić przez ustawienie zasad połączenia. Na podstawie konfiguracji konta bazy danych Azure rozwiązania Cosmos, bieżącej dostępności regionalnych i na liście preferencji określone, optymalny punkt końcowy zostanie wybrany przez zestaw SDK SQL, aby wykonać zapisu i operacji odczytu.
+Aby można było korzystać z [dystrybucji globalnej](distribute-data-globally.md), w aplikacjach klienckich można określić uporządkowaną listę preferencji regionów, która będzie używana do wykonywania operacji na dokumentach. Można to zrobić, ustawiając zasady połączenia. Na podstawie konfiguracji konta usługi Azure Cosmos DB, bieżącej dostępności regionalnej i określonej listy preferencji zestaw SDK SQL wybiera najbardziej optymalny punkt końcowy, w którym będą wykonywane operacje zapisu i odczytu.
 
-Ta lista preferencji został określony podczas inicjowania połączenia przy użyciu zestawów SDK SQL. Zestawy SDK zaakceptować opcjonalny parametr "PreferredLocations" oznacza to uporządkowana lista regionów platformy Azure.
+Lista preferencji jest określana podczas inicjowania połączenia przy użyciu zestawów SDK SQL. Zestawy SDK akceptują opcjonalny parametr „PreferredLocations”, to znaczy uporządkowaną listę regionów świadczenia usługi Azure.
 
-Zestaw SDK będzie automatycznie wysyłać zapisuje wszystkie dane w bieżącej zapisu regionu.
+Zestaw SDK automatycznie wysyła wszystkie operacje zapisu do bieżącego regionu zapisu.
 
-Wszystkie operacje odczytu zostaną wysłane do pierwszy dostępny region na liście PreferredLocations. Jeśli żądanie kończy się niepowodzeniem, klient się nie powieść w dół na liście, aby następny region i tak dalej.
+Wszystkie operacje odczytu są wysyłane do pierwszego dostępnego regionu na liście PreferredLocations. Jeśli żądanie kończy się niepowodzeniem, klient przechodzi do następnego regionu z listy itd.
 
-Zestawy SDK podejmie próbę odczytu z określonych w PreferredLocations regionów. Tak na przykład, jeśli konto bazy danych jest dostępne w czterech regionów, ale klient tylko określa dwóch regionach read(non-write) PreferredLocations, następnie odczyty nie zostanie obsłużona poza region odczytu, która nie jest określona w PreferredLocations. Jeśli określonych w PreferredLocations regionów odczytu nie są dostępne, odczyty zostanie obsłużona poza region zapisu.
+Zestawy SDK podejmują próby odczytu tylko z regionów określonych na liście PreferredLocations. Na przykład jeśli konto bazy danych jest dostępne w czterech regionach, ale klient określa tylko dwa regiony odczytu (nie zapisu) na liście PreferredLocations, operacje odczytu z regionu odczytu, który nie jest określony na liście PreferredLocations, nie są obsługiwane. Jeśli regiony odczytu określone na liście PreferredLocations są niedostępne, operacje odczytu są obsługiwane przez region zapisu.
 
-Aplikacja może sprawdź bieżący punkt końcowy zapisu i odczytu punktu końcowego wybrany przez zestaw SDK, sprawdzając dwie właściwości WriteEndpoint i ReadEndpoint dostępne w wersji zestawu SDK 1.8 i powyżej.
+Aplikacja może zweryfikować bieżący punkt końcowy zapisu i punkt końcowy odczytu wybrany przez zestaw SDK, sprawdzając dwie właściwości, WriteEndpoint i ReadEndpoint, dostępne w zestawie SDK w wersji 1.8 i nowszych.
 
-Jeśli nie ustawiono właściwości PreferredLocations, zostanie obsłużona wszystkie żądania z bieżącego obszaru zapisu.
+Jeśli właściwość PreferredLocations nie została określona, wszystkie żądania są obsługiwane z bieżącego regionu zapisu.
 
 ## <a name="net-sdk"></a>Zestaw SDK .NET
-Zestaw SDK może służyć bez wprowadzania żadnych zmian kodu. W takim przypadku zestawu SDK automatycznie kieruje zarówno odczytuje i zapisuje bieżący obszar zapisu.
+Zestawu SDK można używać bez konieczności wprowadzania jakichkolwiek zmian kodu. W takim przypadku zestaw SDK automatycznie kieruje operacje odczytu i zapisu do bieżącego regionu zapisu.
 
-W wersji 1.8 i później zestawu .NET SDK parametr ConnectionPolicy dla konstruktora DocumentClient ma właściwość o nazwie Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Ta właściwość jest typu kolekcji `<string>` i powinien zawierać listę nazw regionu. Ciągi sformatowane w kolumnie Nazwa regionu na [regiony platformy Azure] [ regions] strony nie może zawierać spacji przed lub po pierwszy i ostatni znak odpowiednio.
+W wersji 1.8 (i nowszych) zestawu SDK .NET parametr ConnectionPolicy dla konstruktora DocumentClient ma właściwość o nazwie Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Jest to właściwość typu Collection `<string>`, która powinna zawierać listę nazw regionów. Wartości ciągu są sformatowane według kolumny Nazwa regionu na stronie [Regiony platformy Azure][regions], bez spacji przed pierwszym i po ostatnim znaku.
 
-Bieżący zapisu i odczytu punkty końcowe są odpowiednio dostępne w DocumentClient.WriteEndpoint i DocumentClient.ReadEndpoint.
+Bieżące punkty końcowe zapisu i odczytu są dostępne odpowiednio we właściwościach DocumentClient.WriteEndpoint i DocumentClient.ReadEndpoint.
 
 > [!NOTE]
-> Nie należy traktować jako długotrwałe stałe adresy URL punktów końcowych. Usługa może aktualizować je w dowolnym momencie. Zestaw SDK obsługuje automatycznie tej zmiany.
+> Adresów URL punktów końcowych nie należy traktować jako długotrwałych stałych. Usługa może zaktualizować je w dowolnym momencie. Zestaw SDK obsługuje tę zmianę automatycznie.
 >
 >
 
@@ -87,19 +85,19 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS, JavaScript i zestawy SDK Python
-Zestaw SDK może służyć bez wprowadzania żadnych zmian kodu. W takim przypadku zestawu SDK będą automatycznie bezpośrednie, odczytów i zapisów do bieżącego zapisu regionu.
+## <a name="nodejs-javascript-and-python-sdks"></a>Zestawy SDK NodeJS, JavaScript i Python
+Zestawu SDK można używać bez konieczności wprowadzania jakichkolwiek zmian kodu. W takim przypadku zestaw SDK automatycznie kieruje operacje odczytu i zapisu do bieżącego regionu zapisu.
 
-W wersji 1.8 i nowszych każdego zestawu SDK, ConnectionPolicy parametr dla konstruktora DocumentClient nową właściwość o nazwie DocumentClient.ConnectionPolicy.PreferredLocations. Ten parametr jest tablicą ciągów przyjmuje listę nazw regionu. Nazwy są sformatowane w kolumnie Nazwa regionu w [regiony platformy Azure] [ regions] strony. Umożliwia także stałe wstępnie zdefiniowane w obiekcie wygody AzureDocuments.Regions
+W wersji 1.8 (i nowszych) każdego zestawu SDK parametr ConnectionPolicy dla konstruktora DocumentClient ma nową właściwość o nazwie DocumentClient.ConnectionPolicy.PreferredLocations. Ten parametr jest tablicą ciągów, która przyjmuje listę nazw regionów. Nazwy są sformatowane według kolumny Nazwa regionu na stronie [Regiony platformy Azure][regions]. Możesz również używać wstępnie zdefiniowanych stałych w obiekcie wygody AzureDocuments.Regions
 
-Bieżący zapisu i odczytu punkty końcowe są odpowiednio dostępne w DocumentClient.getWriteEndpoint i DocumentClient.getReadEndpoint.
+Bieżące punkty końcowe zapisu i odczytu są dostępne odpowiednio we właściwościach DocumentClient.getWriteEndpoint i DocumentClient.getReadEndpoint.
 
 > [!NOTE]
-> Nie należy traktować jako długotrwałe stałe adresy URL punktów końcowych. Usługa może aktualizować je w dowolnym momencie. Zestaw SDK zostanie automatycznie obsłużyć tej zmiany.
+> Adresów URL punktów końcowych nie należy traktować jako długotrwałych stałych. Usługa może zaktualizować je w dowolnym momencie. Zestaw SDK obsługuje tę zmianę automatycznie.
 >
 >
 
-Poniżej podano przykładowy kod NodeJS/JavaScript. Python i Java są zgodne z tego samego wzorca.
+Poniżej podano przykładowy kod NodeJS/JavaScript. Kody Python i Java korzystają z tego samego wzorca.
 
 ```java
 // Creating a ConnectionPolicy object
@@ -116,13 +114,13 @@ var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPoli
 ```
 
 ## <a name="rest"></a>REST
-Gdy konto bazy danych został udostępniony w wielu regionach, klienci mogą wykonywać kwerendę jego dostępność, wykonując na następujący identyfikator URI żądania GET.
+Gdy konto bazy danych zostało udostępnione w wielu regionach, klienci mogą wysyłać zapytania o jego dostępność, wykonując żądanie GET względem poniższego identyfikatora URI.
 
     https://{databaseaccount}.documents.azure.com/
 
-Usługa zwróci listę regionów i ich odpowiednich bazy danych Azure rozwiązania Cosmos punktu końcowego identyfikatorów URI dla replik. Bieżący obszar zapisu zostanie wskazany w odpowiedzi. Klient może następnie wybrać odpowiednie punktu końcowego wszystkie kolejne żądania interfejsu API REST w następujący sposób.
+Usługa zwraca listę regionów i odpowiadające im identyfikatory URI punktów końcowych usługi Azure Cosmos DB dla replik. W odpowiedzi jest wskazywany bieżący region zapisu. Klient może następnie wybrać odpowiedni punkt końcowy dla wszystkich kolejnych żądań interfejsu API REST w pokazany poniżej sposób.
 
-Przykład odpowiedzi
+Przykładowa odpowiedź
 
     {
         "_dbs": "//dbs/",
@@ -155,27 +153,27 @@ Przykład odpowiedzi
     }
 
 
-* Przejdź do zapisu wskazany identyfikator URI żądania PUT, POST i DELETE
-* Pobiera wszystkie i inne żądania tylko do odczytu (na przykład kwerendy) może go do dowolnego punktu końcowego wybór klienta
+* Wszystkie żądania PUT, POST i DELETE muszą być przekazywane do wskazanego identyfikatora URI zapisu
+* Wszystkie żądania GET i pozostałe żądania tylko do odczytu (na przykład zapytania) mogą być przekazywane do dowolnego punktu końcowego wybranego przez klienta
 
-Zapisu żądania do regionów tylko do odczytu zakończy się niepowodzeniem z kodem błędu HTTP 403 ("Dostęp zabroniony").
+Żądania zapisu w regionach tylko do odczytu kończą się niepowodzeniem i wyświetlany jest kod błędu HTTP 403 („Dostęp zabroniony”).
 
-Jeśli region zapisu zmieni się po fazie początkowe wykrywanie klienta, kolejnych zapisów do poprzedniego regionu zapisu zakończy się niepowodzeniem z kodem błędu HTTP 403 ("Dostęp zabroniony"). Klienta, należy UZYSKAĆ listę regionów ponownie, aby pobrać regionu zaktualizowane zapisu.
+Jeśli region zapisu zmienia się po fazie początkowego odnajdywania klienta, kolejne operacje zapisu w poprzednim regionie zapisu kończą się niepowodzeniem i wyświetlany jest kod błędu HTTP 403 („Dostęp zabroniony”). Klient powinien wówczas ponownie uzyskać (żądanie GET) listę regionów, aby zaktualizować region zapisu.
 
-To wszystko, która kończy w tym samouczku. Znajdują się informacje dotyczące zarządzania spójności konta globalnie replikowanych odczytując [poziomów spójności w usłudze Azure DB rozwiązania Cosmos](consistency-levels.md). I uzyskać więcej informacji na temat sposobu globalnej replikacji bazy danych działa w usłudze Azure DB rozwiązania Cosmos, zobacz [dystrybucji danych globalnie z bazy danych Azure rozwiązania Cosmos](distribute-data-globally.md).
+To wszystko — na tym kończy się ten samouczek. Aby dowiedzieć się, jak zarządzać spójnością globalnie replikowanego konta, przeczytaj [Poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md). Natomiast aby uzyskać więcej informacji na temat sposobu działania globalnej replikacji w usłudze Azure Cosmos DB, zobacz [Dystrybuowanie danych globalnie za pomocą usługi Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Skonfiguruj globalne dystrybucji przy użyciu portalu Azure
-> * Skonfiguruj globalne dystrybucji przy użyciu interfejsów API SQL
+> * Konfigurowanie dystrybucji globalnej przy użyciu witryny Azure Portal
+> * Konfigurowanie dystrybucji globalnej przy użyciu interfejsów API SQL
 
-Możesz teraz przejść do następnym samouczku, aby dowiedzieć się, jak opracowywać lokalnie przy użyciu emulatora lokalnej bazy danych Azure rozwiązania Cosmos.
+Teraz możesz przejść do następnego samouczka, aby dowiedzieć się, jak programować lokalnie przy użyciu lokalnego emulatora usługi Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Opracowywanie lokalnie w emulatorze](local-emulator.md)
+> [Programowanie lokalnie za pomocą emulatora](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

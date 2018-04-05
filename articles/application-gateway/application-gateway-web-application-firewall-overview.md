@@ -1,6 +1,6 @@
 ---
-title: "Wprowadzenie do zapory aplikacji sieci Web (WAF) w usłudze Azure Application Gateway | Microsoft Docs"
-description: "Ta strona zawiera omówienie zapory aplikacji sieci Web (WAF) w usłudze Application Gateway"
+title: Wprowadzenie do zapory aplikacji sieci Web (WAF) w usłudze Azure Application Gateway | Microsoft Docs
+description: Ta strona zawiera omówienie zapory aplikacji sieci Web (WAF) w usłudze Application Gateway
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-application-firewall-waf"></a>Zapora aplikacji sieci Web
 
@@ -44,7 +44,7 @@ Poniżej przedstawiono główne korzyści wynikające ze stosowania usługi Appl
 
 * Monitoruj aplikacje sieci Web pod kątem ataków przy użyciu dziennika zapory aplikacji sieci Web w czasie rzeczywistym. Ten dziennik jest zintegrowany z usługą [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) w celu śledzenia alertów i dzienników zapory aplikacji sieci Web oraz łatwego monitorowania trendów.
 
-* Zapora aplikacji sieci Web zostanie wkrótce zintegrowana z usługą Azure Security Center. Usługa Azure Security Center daje pełny widok stanu bezpieczeństwa wszystkich Twoich zasobów platformy Azure.
+* Zapora aplikacji sieci Web integruje się z usługą Azure Security Center. Usługa Azure Security Center daje pełny widok stanu bezpieczeństwa wszystkich Twoich zasobów platformy Azure.
 
 ### <a name="customization"></a>Dostosowywanie
 
@@ -114,7 +114,7 @@ Zapora aplikacji sieci Web bramy aplikacji może zostać skonfigurowana pod kąt
 
 ### <a name="application-gateway-waf-reports"></a>Monitorowanie zapory aplikacji sieci Web
 
-Monitorowanie kondycji bramy Application Gateway jest ważne. Monitorowanie kondycji zapory aplikacji sieci Web i chronionych przez nią aplikacji jest możliwe dzięki rejestrowaniu i integracji z usługami Azure Monitor, Azure Security Center (wkrótce) oraz Log Analytics.
+Monitorowanie kondycji bramy Application Gateway jest ważne. Monitorowanie kondycji zapory aplikacji sieci Web i chronionych przez nią aplikacji jest możliwe dzięki rejestrowaniu i integracji z usługami Azure Monitor, Azure Security Center oraz Log Analytics.
 
 ![Diagnostyka](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
@@ -124,7 +124,7 @@ Każdy dziennik bramy Application Gateway jest zintegrowany z usługą [Azure Mo
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-Usługa [Azure Security Center](../security-center/security-center-intro.md) ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Brama aplikacji jest teraz [zintegrowana z usługą Azure Security Center](application-gateway-integration-security-center.md). Usługa Azure Security Center skanuje środowisko w celu wykrycia niechronionych aplikacji internetowych. Usługa ta może udostępnić zalecenie dotyczące zapory aplikacji internetowej bramy aplikacji służące do ochrony tych narażonych na ataki zasobów. Zapory aplikacji internetowej bramy aplikacji można tworzyć bezpośrednio z poziomu usługi Azure Security Center.  Te wystąpienia zapory aplikacji internetowej są zintegrowane z usługą Azure Security Center i za ich pomocą będą wysyłane alerty i informacje o kondycji do usługi Azure Security Center na potrzeby raportowania.
+Usługa [Azure Security Center](../security-center/security-center-intro.md) ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Brama aplikacji jest [zintegrowana z usługą Azure Security Center](application-gateway-integration-security-center.md). Usługa Azure Security Center skanuje środowisko w celu wykrycia niechronionych aplikacji internetowych. Usługa ta może udostępnić zalecenie dotyczące zapory aplikacji internetowej bramy aplikacji służące do ochrony tych narażonych na ataki zasobów. Zapory aplikacji internetowej bramy aplikacji można tworzyć bezpośrednio z poziomu usługi Azure Security Center.  Te wystąpienia zapory aplikacji internetowej są zintegrowane z usługą Azure Security Center i za ich pomocą będą wysyłane alerty i informacje o kondycji do usługi Azure Security Center na potrzeby raportowania.
 
 ![rysunek 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 

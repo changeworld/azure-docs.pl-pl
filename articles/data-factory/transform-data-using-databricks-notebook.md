@@ -13,11 +13,11 @@ ms.topic: get-started-article
 ms.date: 3/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: d1dcec26529c747a209dd10fcefbbadaa40365a3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7a90906f0bb41b0ced368e9010e0c8a4981f038c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
 

@@ -1,57 +1,57 @@
 ---
-title: "Azure Cosmos DB: Tworzenie aplikacji sieci Web za pomocą programu .NET i interfejsu API usługi MongoDB | Microsoft Docs"
-description: "Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń z interfejsem API MongoDB usługi Azure Cosmos DB i wykonywania względem niego zapytań"
+title: 'Azure Cosmos DB: Tworzenie aplikacji sieci Web za pomocą programu .NET i interfejsu API usługi MongoDB | Microsoft Docs'
+description: Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń z interfejsem API MongoDB usługi Azure Cosmos DB i wykonywania względem niego zapytań
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/10/2017
+ms.date: 03/19/2018
 ms.author: mimig
-ms.openlocfilehash: c92d970783ae0fb36e5761e4f35af7d4d6718121
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90b1ec66007302ed02032e04e7f3d771012ad02d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji sieci Web interfejsu API usługi MongoDB za pomocą programu .NET i witryny Azure Portal
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, można szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość i grafów. 
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację sieci Web listy zadań w oparciu o [sterownik .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/). 
+Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Azure Cosmos DB, bazy danych dokumentów i kolekcji przy użyciu witryny Azure Portal. Następnie utworzysz i wdrożysz aplikację sieci Web listy zadań w oparciu o [sterownik .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="prerequisites-to-run-the-sample-app"></a>Wymagania wstępne dotyczące uruchamiania przykładowej aplikacji
 
-Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2017, możesz pobrać program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) i używać go **bezpłatnie**. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+Aby uruchomić przykład, musisz mieć program [Visual Studio](https://www.visualstudio.com/downloads/) i ważne konto usługi Azure CosmosDB.
+
+Jeśli nie masz jeszcze programu Visual Studio, pobierz program [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) z obciążeniem **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych** zainstalowanym w ramach instalacji.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
+## <a name="clone-the-sample-app"></a>Klonowanie przykładowej aplikacji
 
-Teraz sklonujemy aplikację interfejsu API usługi MongoDB z repozytorium GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
+Najpierw pobierz przykładową aplikację interfejsu API bazy danych MongoDB z usługi GitHub. Implementuje ona listę zadań za pomocą modelu magazynu dokumentów bazy danych MongoDB.
 
-1. Otwórz okno terminalu usługi Git, na przykład git bash, i za pomocą polecenia `cd` przejdź do katalogu roboczego.  
-
+1. Otwórz okno terminalu usługi Git, na przykład git bash, i za pomocą polecenia `cd` przejdź do katalogu roboczego.
 2. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
     ```
 
-3. Następnie otwórz plik rozwiązania w programie Visual Studio. 
+Jeśli nie chcesz korzystać z usługi Git, możesz [pobrać projekt jako plik ZIP](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started/archive/master.zip).
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 

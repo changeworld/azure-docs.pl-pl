@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie potoku fabryki danych za pomocą witryny Azure Portal | Microsoft Docs"
-description: "Ten samouczek zawiera instrukcje krok po kroku dotyczące tworzenia fabryki danych z potokiem za pomocą witryny Azure Portal. Potok wykorzystuje działanie kopiowania do skopiowania danych z usługi Azure Blob Storage do bazy danych SQL."
+title: Tworzenie potoku fabryki danych za pomocą witryny Azure Portal | Microsoft Docs
+description: Ten samouczek zawiera instrukcje krok po kroku dotyczące tworzenia fabryki danych z potokiem za pomocą witryny Azure Portal. Potok wykorzystuje działanie kopiowania do skopiowania danych z usługi Azure Blob Storage do bazy danych SQL.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 116832175a4b7e4497c9005be7841cb56c1d235b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL za pomocą usługi Azure Data Factory
 W tym samouczku utworzysz fabrykę danych przy użyciu interfejsu użytkownika usługi Azure Data Factory. Potok w tej fabryce danych kopiuje dane z usługi Azure Blob Storage do bazy danych SQL. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -303,7 +303,7 @@ Przed opublikowaniem artefaktów (połączone usługi, zestawy danych i potok) w
     ![Wyświetlanie powiadomień](./media/tutorial-copy-data-portal/show-notifications.png)
 
 ## <a name="configure-code-repository"></a>Konfigurowanie repozytorium kodu
-Kod skojarzony z Twoimi artefaktami fabryki danych możesz opublikować w repozytorium kodu usług Visual Studio Team Services. W tym kroku utworzysz repozytorium kodu. 
+Kod skojarzony z Twoimi artefaktami fabryki danych możesz opublikować w repozytorium kodu usług Visual Studio Team Services. W tym kroku utworzysz repozytorium kodu.  Aby dowiedzieć się więcej o tworzeniu wizualizacji przy użyciu integracji VSTS, zobacz [Tworzenie przy użyciu integracji VSTS Git](author-visually.md#author-with-vsts-git-integration).
 
 Jeśli nie chcesz pracować z repozytorium kodu usług Visual Studio Team Services, możesz pominąć ten krok. Możesz kontynuować publikowanie w usłudze Data Factory jak w poprzednim kroku. 
 

@@ -1,6 +1,6 @@
 ---
-title: "Szybki start — klaster Azure Kubernetes"
-description: "Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Linux w usłudze AKS za pomocą witryny Azure Portal."
+title: Szybki start — klaster Azure Kubernetes
+description: Szybka nauka tworzenia klastra Kubernetes dla kontenerów systemu Linux w usłudze AKS za pomocą witryny Azure Portal.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 35886217328d35229a59b9713f5bb4bf0244569a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 4aad45559d167e6c046822200c9bbb98113d463b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Wdrażanie klastra usługi Azure Container Service (AKS)
+# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Szybki start: wdrażanie klastra usługi Azure Container Service (AKS)
 
 W tym przewodniku Szybki start wdrażany jest klaster AKS przy użyciu witryny Azure Portal. Następnie w klastrze jest uruchamiana aplikacja obsługująca wiele kontenerów, która składa się z frontonu internetowego i wystąpienia pamięci podręcznej Redis. Po ukończeniu aplikacja będzie dostępna w Internecie.
 
@@ -25,7 +25,7 @@ W tym przewodniku Szybki start założono, że masz podstawową wiedzę na temat
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
 ## <a name="create-service-principal"></a>Tworzenie jednostki usługi
 

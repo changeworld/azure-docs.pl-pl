@@ -1,26 +1,26 @@
 ---
-title: "Usługa połączona programu Visual Studio dla usługi Azure Cosmos DB"
-description: "Umożliwia deweloperom łatwe podłączenie swojego konta usługi Azure Cosmos DB i zarządzanie zasobami za pomocą usług połączonych programu Visual Studio"
+title: Usługa połączona programu Visual Studio dla usługi Azure Cosmos DB
+description: Umożliwia deweloperom łatwe podłączenie swojego konta usługi Azure Cosmos DB i zarządzanie zasobami za pomocą usług połączonych programu Visual Studio
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
 manager: DJ
 +tags: cosmos-db
 editor: Jenny Jiang
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: f63c20831a2700f1024507bef614a5a7cc87d00e
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 93be368d34f02e64d11abe9a04b11272ce18124d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: usługa połączona programu Visual Studio (wersja zapoznawcza)
 
@@ -36,11 +36,13 @@ Upewnij się, że masz:
 * Konto usługi Azure Cosmos DB. Jeśli jeszcze go nie masz, wykonaj kroki opisane w sekcji [Tworzenie bazy danych Azure Cosmos DB](create-sql-api-dotnet.md), aby utworzyć je w witrynie Azure Portal, lub zobacz sekcję [Tworzenie konta Azure Cosmos DB w narzędziu usługi połączonej](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool). 
 * Jeśli chcesz używać lokalnego środowiska do celów programistycznych, możesz skorzystać z [emulatora usługi Azure Cosmos DB](local-emulator.md). Środowisko emuluje usługę Azure Cosmos DB.
 * Program [Visual Studio](http://www.visualstudio.com/).
-* Najnowszą usługę bits usługi połączonej Azure Cosmos DB. Usługę połączoną usługi Azure Cosmos DB można pobrać z witryny Visual Studio Marketplace, jak pokazano na poniższym zrzucie ekranu. Otwórz program **Visual Studio** na komputerze. W menu **Narzędzia** wybierz opcję **Rozszerzenia i aktualizacje**, a następnie wybierz pozycję **Online** / **Visual Studio Marketplace**. Wprowadź ciąg **cosmosdb**, aby wyszukać usługę bits.
+* Najnowszą usługę bits usługi połączonej Azure Cosmos DB. Usługę połączoną usługi Azure Cosmos DB można pobrać z witryny Visual Studio Marketplace, jak pokazano na poniższym zrzucie ekranu. Otwórz program **Visual Studio** na komputerze. W menu **Narzędzia** wybierz opcję **Rozszerzenia i aktualizacje...**, a następnie wybierz pozycję **Online** / **Visual Studio Marketplace**. Wprowadź ciąg **cosmosdb**, aby wyszukać usługę bits.
 
     Można także zainstalować usługę połączoną usługi Azure Cosmos DB z portalu [Visual Studio Marketplace](https://go.microsoft.com/fwlink/?linkid=858709).
 
     ![Zrzut ekranu przedstawiający pobieranie pliku bits.png usługi połączonej](./media/connected-service/connected-service-downloadbits.png) 
+
+Po pobraniu rozszerzenia usługi połączonej dla usługi Azure Cosmos DB zamknij program Visual Studio i zainstaluj rozszerzenie.
 
 ## <a id="SetupVS"></a>Konfigurowanie rozwiązania programu Visual Studio
 1. Otwórz program **Visual Studio** na komputerze.

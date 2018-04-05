@@ -1,24 +1,24 @@
 ---
-title: "Wdrażanie aplikacji .NET w kontenerze w usłudze Azure Service Fabric | Microsoft Docs"
-description: "Przedstawiono tu sposób pakowania aplikacji .NET w kontenerze platformy Docker w programie Visual Studio. Ta nowa aplikacja „kontenerowa” jest następnie wdrażana w klastrze usługi Service Fabric."
+title: Wdrażanie aplikacji .NET w kontenerze w usłudze Azure Service Fabric | Microsoft Docs
+description: Przedstawiono tu sposób pakowania aplikacji .NET w kontenerze platformy Docker w programie Visual Studio. Ta nowa aplikacja „kontenerowa” jest następnie wdrażana w klastrze usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: cd1c3b063132ae549bfbf1e059667c5056c91046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 11bb34939e5fa3699973051664e85f9ef2147ff7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
@@ -49,13 +49,6 @@ Aplikacje usługi Service Fabric działają w klastrze — połączonym z sieci�
 Teraz, gdy klaster usługi Service Fabric działa na platformie Azure, możesz przystąpić do utworzenia i wdrożenia skonteneryzowanej aplikacji. Aby nasza aplikacja zaczęła działać w kontenerze, do projektu programu Visual Studio musimy dodać **obsługę platformy Docker**. Po dodaniu **obsługi platformy Docker** do aplikacji dzieją się dwie rzeczy. Najpierw do projektu jest dodawany plik _Dockerfile_. W tym nowym pliku jest opisany sposób kompilacji obrazu kontenera. Następnie do rozwiązania jest dodawany nowy projekt _docker-compose_. Ten nowy projekt zawiera kilka plików docker-compose. Pliki docker-compose mogą być używane do opisywania sposobu uruchamiania kontenera.
 
 Więcej informacji na temat pracy z [narzędziami kontenerów programu Visual Studio][link-visualstudio-container-tools].
-
->[!NOTE]
->Podczas pierwszego uruchomienia obrazów kontenerów systemu Windows na komputerze program Docker CE musi ściągnąć obrazy podstawowe dla kontenera. Obrazy używane w tym samouczku mają rozmiar 14 GB. Aby ściągnąć obrazy podstawowe, należy uruchomić następujące polecenie terminalu:
->```cmd
->docker pull microsoft/mssql-server-windows-developer
->docker pull microsoft/aspnet:4.6.2
->```
 
 ### <a name="add-docker-support"></a>Dodawanie obsługi platformy Docker
 
@@ -205,7 +198,7 @@ Naciśnij przycisk **OK**.
    >Kompilowanie obrazów kontenerów trwa około 15 minut.
    >Pierwsze wdrożenie w klastrze usługi Service Fabric powoduje pobranie podstawowych obrazów kontenerów systemu Windows Server Core. Pobieranie trwa dodatkowe 5–10 minut.
 
-Przejdź do aplikacji Fabrikam Call Center przy użyciu adresu URL Twojego klastra, na przykład: *http://mycluster.westeurope.cloudapp.azure.com*.
+Przejdź do aplikacji Fabrikam Call Center przy użyciu adresu URL klastra, na przykład: *http://mycluster.westeurope.cloudapp.azure.com*
 
 Teraz, po umieszczeniu w kontenerze i wdrożeniu rozwiązania Fabrikam Call Center, możesz otworzyć witrynę [Azure Portal][link-azure-portal] i zobaczyć aplikację uruchomioną w usłudze Service Fabric. Aby wypróbować aplikację, otwórz przeglądarkę internetową i przejdź do adresu URL Twojego klastra usługi Service Fabric.
 

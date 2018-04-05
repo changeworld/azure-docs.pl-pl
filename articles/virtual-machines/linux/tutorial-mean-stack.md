@@ -1,49 +1,49 @@
 ---
-title: "Tworzenie średniej stosu na maszynie Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć stosu bazy danych MongoDB, Express AngularJS i Node.js (średnia) na maszynie Wirtualnej systemu Linux na platformie Azure."
+title: Tworzenie stosu MEAN na maszynie wirtualnej z systemem Linux na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć stos MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1d74ead08dfb63276afb08bdcb7f4e3e3db5bfd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 2bd89bf25f619caef07ae099232add55dbe0cda7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Tworzenie stosu bazy danych MongoDB, Express AngularJS i Node.js (średnia) na maszynie Wirtualnej systemu Linux na platformie Azure
+# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Tworzenie stosu MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure
 
-W tym samouczku przedstawiono sposób wykonania stosu bazy danych MongoDB, Express AngularJS i Node.js (średnia) na maszynie Wirtualnej systemu Linux na platformie Azure. ŚREDNIE stosu, który można utworzyć umożliwia dodawanie, usuwanie i wyświetlanie listy książek w bazie danych. Omawiane kwestie:
+W tym samouczku pokazano, jak zaimplementować stos MEAN (MongoDB, Express, AngularJS i Node.js) na maszynie wirtualnej z systemem Linux na platformie Azure. Utworzony stos MEAN umożliwia dodawanie i usuwanie książek w bazie danych oraz wyświetlanie ich listy. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej z systemem Linux
 > * Instalowanie środowiska Node.js
 > * Instalowanie bazy danych MongoDB i konfigurowanie serwera
-> * Instalowanie Express i konfigurowanie tras do serwera
-> * Dostęp do trasy z AngularJS
+> * Instalowanie platformy Express i konfigurowanie tras do serwera
+> * Uzyskiwanie dostępu do tras przy użyciu AngularJS
 > * Uruchamianie aplikacji
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli wybierzesz do zainstalowania i używania interfejsu wiersza polecenia lokalnie, w tym samouczku wymaga używasz interfejsu wiersza polecenia Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
-Utwórz nową grupę zasobów o [Tworzenie grupy az](https://docs.microsoft.com/cli/azure/group#az_group_create) polecenie i Utwórz Maszynę wirtualną systemu Linux z [tworzenia maszyny wirtualnej az](https://docs.microsoft.com/cli/azure/vm#az_vm_create) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
+Utwórz nową grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) i utwórz maszynę wirtualną z systemem Linux za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-W poniższym przykładzie użyto interfejsu wiersza polecenia Azure, aby utworzyć grupę zasobów o nazwie *myResourceGroupMEAN* w *eastus* lokalizacji. Maszyna wirtualna jest tworzony o nazwie *myVM* z kluczy SSH, jeśli nie już istnieją w domyślnej lokalizacji klucza. Aby użyć określonego zestawu kluczy, użyj opcji ssh klucz wartość.
+W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure, aby utworzyć grupę zasobów o nazwie *myResourceGroupMEAN* w lokalizacji *eastus*. Tworzona jest maszyna wirtualna o nazwie *myVM* z kluczami SSH, jeśli jeszcze nie istnieją w domyślnej lokalizacji kluczy. Aby użyć konkretnego zestawu kluczy, użyj opcji --ssh-key-value.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMEAN --location eastus
@@ -57,7 +57,7 @@ az vm create \
 az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
 ```
 
-Po utworzeniu maszyny Wirtualnej, interfejsu wiersza polecenia Azure zawiera informacje podobne do poniższego przykładu: 
+Po utworzeniu maszyny wirtualnej w interfejsie wiersza polecenia platformy Azure zostanie wyświetlona informacja podobna do następującej: 
 
 ```azurecli-interactive
 {
@@ -73,7 +73,7 @@ Po utworzeniu maszyny Wirtualnej, interfejsu wiersza polecenia Azure zawiera inf
 ```
 Zwróć uwagę na element `publicIpAddress`. Ten adres jest używany na potrzeby uzyskiwania dostępu do maszyny wirtualnej.
 
-Użyj następującego polecenia, aby utworzyć sesję SSH z maszyną Wirtualną. Upewnij się użyć poprawne publicznego adresu IP. W naszym przykładzie powyżej naszych IP adres był 13.72.77.9.
+Użyj następującego polecenia, aby utworzyć sesję SSH z maszyną wirtualną. Upewnij się, że używasz prawidłowego publicznego adresu IP. W powyższym przykładzie adres IP to 13.72.77.9.
 
 ```bash
 ssh azureuser@13.72.77.9
@@ -81,31 +81,31 @@ ssh azureuser@13.72.77.9
 
 ## <a name="install-nodejs"></a>Instalowanie środowiska Node.js
 
-[Node.js](https://nodejs.org/en/) jest oparty na jego Chrome V8 JavaScript aparatu środowiska wykonawczego języka JavaScript. Node.js jest używana w tym samouczku do ustawiania Express trasy i kontrolery AngularJS.
+[Node.js](https://nodejs.org/en/) to środowisko uruchomieniowe JavaScript oparte na aparacie JavaScript V8 przeglądarki Chrome. W tym samouczku środowisko Node.js jest używane do konfigurowania tras platformy Express i kontrolerów AngularJS.
 
-Na maszynie Wirtualnej za pomocą powłoki bash, który został otwarty przy użyciu protokołu SSH zainstaluj środowisko Node.js.
+Na maszynie wirtualnej, korzystając z powłoki bash otwartej przy użyciu protokołu SSH, zainstaluj środowisko Node.js.
 
 ```bash
 sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>Instalowanie bazy danych MongoDB i konfigurowanie serwera
-[Bazy danych MongoDB](http://www.mongodb.com) przechowuje dane w dokumentach elastyczną i notacji JSON. Pola w bazie danych może się różnić od dokument i struktury danych można zmienić w czasie. Dla naszej aplikacji przykład dodajemy książki rekordów do bazy danych MongoDB, zawierające nazwa, numer isbn, autora i liczba stron. 
+[Baza danych MongoDB](http://www.mongodb.com) przechowuje dane w elastycznych dokumentach w notacji JSON. Pola w bazie danych mogą się różnić w zależności od dokumentu, a struktura danych może zmienić się z upływem czasu. W przypadku naszej przykładowej aplikacji dodajemy do bazy danych MongoDB rekordy książek zawierające nazwę, numer ISBN, autora i liczbę stron. 
 
-1. Na maszynie Wirtualnej za pomocą powłoki bash, który został otwarty przy użyciu protokołu SSH należy ustawić klucz bazy danych MongoDB.
+1. Na maszynie wirtualnej, korzystając z powłoki bash otwartej przy użyciu protokołu SSH, ustaw klucz bazy danych MongoDB.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
     echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
-2. Zaktualizuj Menedżera pakietów przy użyciu klucza.
+2. Zaktualizuj menedżera pakietów przy użyciu klucza.
   
     ```bash
     sudo apt-get update
     ```
 
-3. Instalowanie bazy danych MongoDB.
+3. Zainstaluj bazę danych MongoDB.
 
     ```bash
     sudo apt-get install -y mongodb
@@ -117,21 +117,21 @@ sudo apt-get install -y nodejs
     sudo service mongodb start
     ```
 
-5. Należy również zainstalować [treści analizator](https://www.npmjs.com/package/body-parser-json) pakietu, aby pomóc nam przetworzyć JSON przekazano żądania do serwera.
+5. Należy również zainstalować pakiet [analizatora treści](https://www.npmjs.com/package/body-parser-json), który pomoże nam przetworzyć dane JSON przekazywane w żądaniach do serwera.
 
-    Zainstaluj Menedżera pakietów npm.
+    Zainstaluj menedżera pakietów npm.
 
     ```bash
     sudo apt-get install npm
     ```
 
-    Zainstaluj pakiet analizator treści.
+    Zainstaluj pakiet analizatora treści.
     
     ```bash
     sudo npm install body-parser
     ```
 
-6. Utwórz folder o nazwie *książki* i Dodaj plik do niej o nazwie *server.js* zawierający konfiguracji serwera sieci web.
+6. Utwórz folder o nazwie *Books* i dodaj do niego plik o nazwie *server.js* zawierający konfigurację serwera internetowego.
 
     ```node.js
     var express = require('express');
@@ -146,17 +146,17 @@ sudo apt-get install -y nodejs
     });
     ```
 
-## <a name="install-express-and-set-up-routes-to-the-server"></a>Instalowanie Express i konfigurowanie tras do serwera
+## <a name="install-express-and-set-up-routes-to-the-server"></a>Instalowanie platformy Express i konfigurowanie tras do serwera
 
-[Express](https://expressjs.com) jest minimalną i elastyczną Node.js platforma aplikacji sieci web zapewniająca funkcje sieci web i aplikacji dla urządzeń przenośnych. Express używany w tym samouczku do przekazywania informacji do i z naszej bazy danych MongoDB skoroszyt. [Mongoose](http://mongoosejs.com) rozwiązaniem jest proste, na podstawie schematu do modelu danych aplikacji. Mongoose jest używana w tym samouczku zapewnienie schematu książki dla bazy danych.
+[Express](https://expressjs.com) to minimalna i elastyczna platforma aplikacji internetowych Node.js, która oferuje funkcje dla aplikacji internetowych i mobilnych. W tym samouczku platforma Express jest używana do przekazywania informacji o książkach do i z bazy danych MongoDB. Program [Mongoose](http://mongoosejs.com) zapewnia proste, oparte na schemacie rozwiązanie do modelowania danych aplikacji. W tym samouczku oprogramowanie Mongoose jest używane do zapewnienia schematu książki dla bazy danych.
 
-1. Zainstaluj Express i Mongoose.
+1. Zainstaluj platformę Express i program Mongoose.
 
     ```bash
     sudo npm install express mongoose
     ```
 
-2. W *książki* folderu, Utwórz folder o nazwie *aplikacje* i Dodaj plik o nazwie *routes.js* z ekspresowej trasy zdefiniowane.
+2. W folderze *Books* utwórz folder o nazwie *apps* i dodaj plik o nazwie *routes.js* ze zdefiniowanymi trasami platformy Express.
 
     ```node.js
     var Book = require('./models/book');
@@ -198,7 +198,7 @@ sudo apt-get install -y nodejs
     };
     ```
 
-3. W *aplikacje* folderu, Utwórz folder o nazwie *modele* i Dodaj plik o nazwie *book.js* z konfiguracją modelu książki zdefiniowane.  
+3. W folderze *apps* utwórz folder o nazwie *models* i dodaj plik o nazwie *book.js* ze zdefiniowaną konfiguracją modelu książki.  
 
     ```node.js
     var mongoose = require('mongoose');
@@ -216,11 +216,11 @@ sudo apt-get install -y nodejs
     module.exports = mongoose.model('Book', bookSchema); 
     ```
 
-## <a name="access-the-routes-with-angularjs"></a>Dostęp do trasy z AngularJS
+## <a name="access-the-routes-with-angularjs"></a>Uzyskiwanie dostępu do tras przy użyciu AngularJS
 
-[AngularJS](https://angularjs.org) zapewnia platformę sieci web do tworzenia dynamicznych widoków w aplikacji sieci web. W tym samouczku używamy AngularJS do łączenia z naszą stronę sieci web z Express i wykonywać działania na naszych książki bazy danych.
+[AngularJS](https://angularjs.org) udostępnia platformę internetową do tworzenia dynamicznych widoków w aplikacjach internetowych. W tym samouczku moduł AngularJS jest używany do połączenia naszej strony internetowej z platformą Express i wykonywania akcji na bazie danych książek.
 
-1. Zmień katalog kopii zapasowej do *— książki* (`cd ../..`), a następnie utwórz folder o nazwie *publicznego* i Dodaj plik o nazwie *script.js* z konfiguracją kontrolera zdefiniowane.
+1. Zmień katalog kopii zapasowej na *Books* (`cd ../..`), a następnie utwórz folder o nazwie *public* i dodaj plik o nazwie *script.js* ze zdefiniowaną konfiguracją kontrolera.
 
     ```node.js
     var app = angular.module('myApp', []);
@@ -262,7 +262,7 @@ sudo apt-get install -y nodejs
     });
     ```
     
-2. W *publicznego* folderu, Utwórz plik o nazwie *index.html* zdefiniowana strona sieci web.
+2. W folderze *public* utwórz plik o nazwie *index.html* ze zdefiniowaną stroną internetową.
 
     ```html
     <!doctype html>
@@ -317,39 +317,39 @@ sudo apt-get install -y nodejs
 
 ##  <a name="run-the-application"></a>Uruchamianie aplikacji
 
-1. Zmień katalog kopii zapasowej do *książki* (`cd ..`) i uruchomić serwera, uruchamiając polecenie:
+1. Zmień katalog kopii zapasowej na *Books* (`cd ..`) i uruchom serwer, uruchamiając następujące polecenie:
 
     ```bash
     nodejs server.js
     ```
 
-2. Otwórz przeglądarkę sieci web, adres zarejestrowane dla maszyny Wirtualnej. Na przykład *http://13.72.77.9:3300*. Powinien zostać wyświetlony przypominać następującą stronę:
+2. Otwórz w przeglądarce internetowej adres zarejestrowany dla maszyny wirtualnej. Na przykład *http://13.72.77.9:3300*. Powinna zostać wyświetlona zawartość podobna do tej strony:
 
     ![Rekord książki](media/tutorial-mean/meanstack-init.png)
 
-3. Wprowadź dane do pól tekstowych i kliknij przycisk **Dodaj**. Na przykład:
+3. Wprowadź dane w polach tekstowych i kliknij pozycję **Dodaj**. Na przykład:
 
-    ![Dodaj rekord książki](media/tutorial-mean/meanstack-add.png)
+    ![Dodawanie rekordu książki](media/tutorial-mean/meanstack-add.png)
 
-4. Po odświeżeniu strony, powinien zostać wyświetlony ekran podobny do tej strony:
+4. Po odświeżeniu strony powinna zostać wyświetlona zawartość podobna do tej strony:
 
-    ![Lista rekordów książki](media/tutorial-mean/meanstack-list.png)
+    ![Wyświetlanie listy rekordów książek](media/tutorial-mean/meanstack-list.png)
 
-5. Można kliknąć przycisk **usunąć** i usuwania rekordu książki z bazy danych.
+5. Możesz kliknąć przycisk **Usuń** i usunąć rekord książki z bazy danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku, utworzyć aplikacji sieci web, który śledzi książki rekordów przy użyciu średniej stosu na maszynie Wirtualnej systemu Linux. W tym samouczku omówiono:
+W ramach tego samouczka utworzono aplikację internetową, która śledzi rekordy książek przy użyciu stosu MEAN na maszynie wirtualnej z systemem Linux. W tym samouczku omówiono:
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej z systemem Linux
 > * Instalowanie środowiska Node.js
 > * Instalowanie bazy danych MongoDB i konfigurowanie serwera
-> * Instalowanie Express i konfigurowanie tras do serwera
-> * Dostęp do trasy z AngularJS
+> * Instalowanie platformy Express i konfigurowanie tras do serwera
+> * Uzyskiwanie dostępu do tras przy użyciu AngularJS
 > * Uruchamianie aplikacji
 
-Przejście do następnym samouczku, aby dowiedzieć się, jak zabezpieczyć serwerów sieci web za pomocą certyfikatów SSL.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwery internetowe przy użyciu certyfikatów SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpieczenia serwera sieci web przy użyciu protokołu SSL](tutorial-secure-web-server.md)
+> [Zabezpieczanie serwera internetowego przy użyciu protokołu SSL](tutorial-secure-web-server.md)

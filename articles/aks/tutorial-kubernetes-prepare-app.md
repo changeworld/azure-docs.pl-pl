@@ -1,6 +1,6 @@
 ---
-title: "Samouczek dotyczący usługi Kubernetes na platformie Azure — przygotowywanie aplikacji"
-description: "Samouczek dotyczący usługi AKS — przygotowywanie aplikacji"
+title: Samouczek dotyczący usługi Kubernetes na platformie Azure — przygotowywanie aplikacji
+description: Samouczek dotyczący usługi AKS — przygotowywanie aplikacji
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0c4a1459a49fb60578f9f38ea65cd1400b538382
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 8a2c2e53ed04cf00cc02135c5e5f82ded18fc2bc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="prepare-application-for-azure-container-service-aks"></a>Przygotowywanie aplikacji dla usługi Azure Container Service (AKS)
+# <a name="tutorial-prepare-application-for-azure-container-service-aks"></a>Samouczek: przygotowywanie aplikacji dla usługi Azure Container Service (AKS)
 
 Ten samouczek, część 1 z 8, obejmuje przygotowanie aplikacji z wieloma kontenerami do użycia w usłudze Kubernetes. Wykonano następujące czynności:  
 

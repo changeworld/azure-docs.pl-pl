@@ -9,11 +9,11 @@ ms.date: 3/14/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 9f7d32d3d1208b6fe6075f7dacdd6d350aee03e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 45c5ccd0f891a5592eee7400de108c5097f75286
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>Szybki start: tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu modułu Azure RM PowerShell
 
@@ -48,7 +48,7 @@ Poprzednie polecenia korzystają z następujących informacji:
 - **Nazwa** — nazwa wyświetlana przypisania zasad. W tym przypadku użyj nazwy przypisania *Audit Virtual Machines without Managed Disks Assignment* (Przeprowadź inspekcję maszyn wirtualnych bez dysków zarządzanych).
 - **Definicja** — identyfikator definicji zasad, na podstawie której tworzysz przypisanie. W tym przypadku jest to definicja zasad *Audit Virtual Machines without Managed Disks* (Przeprowadź inspekcję maszyn wirtualnych bez dysków zarządzanych).
 - **Zakres** — zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad. Może obejmować zarówno subskrypcje, jak i grupy zasobów. Pamiętaj, aby zastąpić fragment &lt;zakres&gt; nazwą grupy zasobów.
-- **Jednostka SKU** — to polecenie tworzy przypisanie zasad w ramach warstwy Standardowa. Warstwa Standardowa umożliwia osiągnięcie zarządzania, oceny zgodności i korygowania na dużą skalę. Obecnie warstwa Standardowa jest bezpłatna. W przyszłości za warstwę Standardowa będą naliczane opłaty. Kiedy ceny się zmienią, zostanie to ogłoszone, a bardziej szczegółowe informacje zostaną udostępnione w [cenniku usługi Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy).
+- **Jednostka SKU** — to polecenie tworzy przypisanie zasad w ramach warstwy Standardowa. Warstwa Standardowa umożliwia osiągnięcie zarządzania, oceny zgodności i korygowania na dużą skalę. Aby uzyskać dodatkowe informacje o warstwach cenowych, zobacz [Azure Policy — cennik](https://azure.microsoft.com/pricing/details/azure-policy).
 
 
 Teraz możesz zidentyfikować niezgodne zasoby, aby poznać stan zgodności Twojego środowiska.

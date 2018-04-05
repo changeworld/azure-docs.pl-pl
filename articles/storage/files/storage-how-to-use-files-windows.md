@@ -1,12 +1,12 @@
 ---
-title: "Instalowanie udziału plików platformy Azure i uzyskiwanie dostępu do udziału w systemie Windows | Microsoft Docs"
-description: "Zainstaluj udział plików platformy Azure i uzyskaj dostępu do tego udziału w systemie Windows."
+title: Instalowanie udziału plików platformy Azure i uzyskiwanie dostępu do udziału w systemie Windows | Microsoft Docs
+description: Zainstaluj udział plików platformy Azure i uzyskaj dostępu do tego udziału w systemie Windows.
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5d6d81678d1b3c63b52b34e79979d06fdc981ad0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Instalowanie udziału plików platformy Azure i uzyskiwanie dostępu do udziału w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w systemie Windows i Windows Server. W tym artykule przedstawiono trzy różne sposoby instalowania udziału plików platformy Azure w systemie Windows: za pomocą interfejsu użytkownika Eksploratora plików, programu PowerShell oraz wiersza polecenia. 
@@ -29,14 +29,14 @@ Udziały plików platformy Azure można zainstalować w instalacji systemu Windo
 
 | Wersja systemu Windows        | Wersja protokołu SMB | Możliwa instalacja na maszynie wirtualnej platformy Azure | Możliwa instalacja w środowisku lokalnym |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server Semi-Annual Channel<sup>1</sup> | SMB 3.0 | Tak | Tak |
-| Windows 10<sup>2</sup>  | SMB 3.0 | Tak | Tak |
-| Windows Server 2016    | SMB 3.0     | Tak                   | Tak                  |
-| Windows 8.1            | SMB 3.0     | Tak                   | Tak                  |
-| Windows Server 2012 R2 | SMB 3.0     | Tak                   | Tak                  |
-| Windows Server 2012    | SMB 3.0     | Tak                   | Tak                  |
-| Windows 7              | SMB 2.1     | Tak                   | Nie                   |
-| Windows Server 2008 R2 | SMB 2.1     | Tak                   | Nie                   |
+| Windows Server Semi-Annual Channel<sup>1</sup> | SMB 3.0 | Yes | Yes |
+| Windows 10<sup>2</sup>  | SMB 3.0 | Yes | Yes |
+| Windows Server 2016    | SMB 3.0     | Yes                   | Yes                  |
+| Windows 8.1            | SMB 3.0     | Yes                   | Yes                  |
+| Windows Server 2012 R2 | SMB 3.0     | Yes                   | Yes                  |
+| Windows Server 2012    | SMB 3.0     | Yes                   | Yes                  |
+| Windows 7              | SMB 2.1     | Yes                   | Nie                   |
+| Windows Server 2008 R2 | SMB 2.1     | Yes                   | Nie                   |
 
 <sup>1</sup>Windows Server w wersji 1709.  
 <sup>2</sup>Windows 10 w wersji 1507, 1607, 1703 i 1709.
@@ -50,6 +50,31 @@ Udziały plików platformy Azure można zainstalować w instalacji systemu Windo
 * **Klucz konta magazynu**: Aby zainstalować udział plików platformy Azure, konieczne będzie posiadanie podstawowego (lub dodatkowego) klucza magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
 
 * **Otwarty port 445**: Usługa Azure Files korzysta z protokołu SMB. Protokół SMB komunikuje się za pośrednictwem portu TCP 445. Upewnij się, że Twoja zapora nie blokuje portów TCP 445 z komputera klienckiego.
+
+## <a name="persisting-connections-across-reboots"></a>Utrwalanie połączeń między ponownymi uruchomieniami
+### <a name="cmdkey"></a>CmdKey
+Najprostszym sposobem ustanowienia połączeń trwałych jest zapisanie poświadczeń konta magazynu w systemie Windows za pomocą narzędzia wiersza polecenia „CmdKey”. Poniżej znajduje się przykładowy wiersz polecenia na potrzeby utrwalania poświadczeń konta magazynu w maszynie wirtualnej:
+```
+C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
+```
+> [!Note]
+> Nazwą domeny w tym miejscu będzie „AZURE”
+
+Narzędzie CmdKey pozwala również wyświetlić listę przechowywanych poświadczeń:
+
+```
+C:\>cmdkey /list
+```
+Dane wyjściowe będą następujące:
+
+```
+Currently stored credentials:
+
+Target: Domain:target=<yourstorageaccountname>.file.core.windows.net
+Type: Domain Password
+User: AZURE\<yourstorageaccountname>
+```
+Utrwalonych poświadczeń nie trzeba podawać ponownie podczas nawiązywania połączenia z udziałem. Zamiast tego można połączyć się bez podawania poświadczeń.
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>Instalowanie udziału plików platformy Azure za pomocą Eksploratora plików
 > [!Note]  
