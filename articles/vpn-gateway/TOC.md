@@ -6,9 +6,10 @@
 ## [Limity usług i subskrypcji](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Rozpoczęcie pracy
-## [Tworzenie bramy sieci VPN opartej na trasie — witryna Azure Portal](create-routebased-vpn-gateway-portal.md)
-## [Tworzenie bramy sieci VPN opartej na trasie — program PowerShell](create-routebased-vpn-gateway-powershell.md)
-## [Tworzenie bramy sieci VPN opartej na trasie — interfejs wiersza polecenia](create-routebased-vpn-gateway-cli.md)
+## Tworzenie bramy sieci VPN opartej na trasie
+### [Azure Portal](create-routebased-vpn-gateway-portal.md)
+### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
+### [Interfejs wiersza polecenia platformy Azure](create-routebased-vpn-gateway-cli.md)
 
 # Pojęcia
 ## [Planowanie i projektowanie dla usługi VPN Gateway](vpn-gateway-plan-design.md)
@@ -87,13 +88,16 @@
 ### [Sample: Cisco ASA device (IKEv2/no BGP) (Przykład: Urządzenie ASA Cisco [IKEv2/bez protokołu BGP])](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [Migracja z modelu klasycznego do usługi Resource Manager](vpn-gateway-classic-resource-manager-migration.md)
 ## [Rozwiązywanie problemów](vpn-gateway-troubleshoot.md)
-### [Sprawdzanie przepustowości sieci VPN do sieci wirtualnej](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Ustawienia sieci VPN lub urządzenia zapory sugerowane przez społeczność](vpn-gateway-third-party-settings.md)
-### [Problemy z połączeniem punkt-lokacja](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-#### [Problemy z połączeniem punkt-lokacja — klient VPN systemu Mac OS X](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
-### [Problemy z połączeniem lokacja-lokacja](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
-#### [Połączenie lokacja-lokacja jest sporadycznie rozłączane](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [Konfigurowanie i weryfikowanie połączeń sieci wirtualnej lub sieci VPN](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
+### [Sprawdzanie przepustowości sieci VPN do sieci wirtualnej](vpn-gateway-validate-throughput-to-vnet.md)
+### Problemy dotyczące połączenia punkt-lokacja
+#### [Problemy z połączeniem punkt-lokacja](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+#### [Problemy z połączeniem punkt-lokacja — klient VPN systemu Mac OS X](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### Problemy dotyczące połączenia lokacja-lokacja
+#### [Problemy z połączeniem lokacja-lokacja](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [Połączenie lokacja-lokacja jest sporadycznie rozłączane](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+
 
 # Dokumentacja
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

@@ -1,25 +1,25 @@
 ---
-title: "Utrwalanie i zadań dane wyjściowe do usługi Azure Storage z biblioteką konwencje plików dla platformy .NET — partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać biblioteki konwencje plików usługi partia zadań Azure dla platformy .NET do utrwalenia partii zadań i zadania dane wyjściowe do magazynu Azure i wyświetlić utrwalonych danych wyjściowych w portalu Azure."
+title: Utrwalanie i zadań dane wyjściowe do usługi Azure Storage z biblioteką konwencje plików dla platformy .NET — partii zadań Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać biblioteki konwencje plików usługi partia zadań Azure dla platformy .NET do utrwalenia partii zadań i zadania dane wyjściowe do magazynu Azure i wyświetlić utrwalonych danych wyjściowych w portalu Azure.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9de327c20463469bc91d9720aa17333a36f919e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbfb40b3740f9ea43df327a01ba6f4cf52d80457
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>Utrwalić danych i zadań do magazynu Azure za pomocą biblioteki konwencje pliku wsadowego dla platformy .NET utrwalić 
 
@@ -222,7 +222,7 @@ Aby wyświetlić dzienniki i pliki wyjściowe zadania w portalu Azure, przejdź 
 5. **Uruchom** (Uruchom) **PersistOutputs** projektu.
 6. Po wyświetleniu monitu wybierz technologię trwałości tak, aby użyć do uruchomienia przykładu, wprowadź **1** uruchamianie przykładowych za pomocą biblioteki konwencje plików do utrwalenia danych wyjściowych zadania. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>Pobierz biblioteki konwencje pliku wsadowego dla platformy .NET
 

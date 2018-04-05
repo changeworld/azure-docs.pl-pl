@@ -1,11 +1,11 @@
 ---
-title: "Przekazywanie plików z urządzenia do Centrum IoT Azure z węzłem | Dokumentacja firmy Microsoft"
-description: "Sposób przekazywania plików z urządzenia do chmury przy użyciu urządzenia Azure IoT SDK dla środowiska Node.js. Przekazano pliki są przechowywane w kontenerze obiektu blob magazynu Azure."
+title: Przekazywanie plików z urządzenia do Centrum IoT Azure z węzłem | Dokumentacja firmy Microsoft
+description: Sposób przekazywania plików z urządzenia do chmury przy użyciu urządzenia Azure IoT SDK dla środowiska Node.js. Przekazano pliki są przechowywane w kontenerze obiektu blob magazynu Azure.
 services: iot-hub
 documentationcenter: nodejs
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: node
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: v-masebo
-ms.openlocfilehash: cff0f2fc664e0c09bfa1f8f0e0d488a049a6f448
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
-ms.translationtype: MT
+ms.openlocfilehash: dd6f25173806d6e420bfeebaae3f81e39f8fd97f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury z Centrum IoT
 
@@ -29,7 +29,7 @@ W tym samouczku opiera się na kodzie w [wysyłać chmury do urządzenia z Centr
 - Bezpieczne udostępnianie urządzenia platformy Azure blob identyfikatora URI pobierania pliku.
 - Powiadomienia o przekazywania plików Centrum IoT umożliwia wyzwalanie przetwarzania plików w sieci wewnętrznej aplikacji.
 
-[Rozpoczynanie pracy z Centrum IoT](iot-hub-node-node-getstarted.md) i [wysyłać chmury do urządzenia z Centrum IoT](iot-hub-node-node-c2d.md) samouczki przedstawiają podstawowych funkcji obsługi komunikatów z Centrum IoT urządzenia do chmury i chmury do urządzenia. Jednak w niektórych scenariuszach nie można łatwo mapować dane, które Twojego urządzenia wysyłają do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje Centrum IoT. Na przykład:
+[Rozpoczynanie pracy z Centrum IoT](iot-hub-node-node-getstarted.md) samouczku został omówiony podstawowych funkcji obsługi komunikatów urządzenia do chmury Centrum IoT. Jednak w niektórych scenariuszach nie można łatwo mapować dane, które Twojego urządzenia wysyłają do stosunkowo mały wiadomości urządzenia do chmury, które akceptuje Centrum IoT. Na przykład:
 
 * Duże pliki, które zawierają obrazów
 * Filmy wideo

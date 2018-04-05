@@ -7,6 +7,8 @@
 
 Zaplecza aplikacji można użyć Centrum IoT Azure w nim elementów podstawowych, takich jak [dwie urządzenia] [ lnk-devtwin] i [bezpośrednie metody][lnk-c2dmethod], aby zdalnie uruchomić i monitorować urządzenia Akcje zarządzania na urządzeniach. Ten samouczek pokazuje, jak aplikacji zaplecza i aplikacji urządzenia mogą współdziałać ze sobą do inicjowania i monitorowania ponowne uruchomienie urządzenia zdalnego przy użyciu Centrum IoT.
 
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 Metoda bezpośrednia umożliwia zainicjować akcje zarządzania urządzeniami (takie jak ponowne uruchomienie komputera, resetowanie do ustawień fabrycznych i aktualizacji oprogramowania układowego) z zaplecza aplikacji w chmurze. Urządzenie jest odpowiedzialny za:
 
 * Obsługa żądanie metody wysyłane z Centrum IoT.

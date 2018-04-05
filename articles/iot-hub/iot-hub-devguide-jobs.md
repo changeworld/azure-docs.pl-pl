@@ -1,11 +1,11 @@
 ---
 title: Zrozumienie zadania Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: "Przewodnik dewelopera — Planowanie zadań do uruchamiania na wielu urządzeniach połączona z Centrum IoT. Zadania można zaktualizować znaczniki i odpowiednie właściwości i wywołania metod bezpośrednio na wielu urządzeniach."
+description: Przewodnik dewelopera — Planowanie zadań do uruchamiania na wielu urządzeniach połączona z Centrum IoT. Zadania można zaktualizować znaczniki i odpowiednie właściwości i wywołania metod bezpośrednio na wielu urządzeniach.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7e0af40b2fd5bbb12d5565765aae4026922aec5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 367eb703465b2fbc6f1e06a383bc9df709cabe78
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planowanie zadań na wielu urządzeniach
 
 Centrum IoT Azure umożliwia liczba bloków konstrukcyjnych, jak [dwie właściwości i urządzenia tagi] [ lnk-twin-devguide] i [bezpośrednie metody][lnk-dev-methods].  Zazwyczaj zaplecza aplikacji Włącz Administratorzy urządzenia i operatory do aktualizacji i interakcji z urządzeń IoT zbiorcze i w zaplanowanym terminie.  Zadania wykonywania aktualizacji dwie urządzenia i metody bezpośrednio pod kątem zestawu urządzeń w zaplanowanym terminie.  Na przykład operator użyje aplikacji zaplecza, która inicjuje i śledzi zadanie ponownego uruchomienia urządzeń z tworzeniem 43 i piętro 3 w czasie, który nie jest znaczący wpływ na operacje budynku.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Rozważ użycie zadań gdy należy zaplanować i śledzić postęp żadnego z następujących czynności na zbiór urządzeń:
 

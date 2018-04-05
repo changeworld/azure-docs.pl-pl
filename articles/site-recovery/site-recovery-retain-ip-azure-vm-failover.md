@@ -1,12 +1,12 @@
 ---
-title: "Zachowaj adresów IP podczas przechodzenie w tryb failover maszyn wirtualnych platformy Azure do innego regionu Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób zachowania adresów IP dla scenariuszy pracy awaryjnej Azure do platformy Azure z usługą Azure Site Recovery"
+title: Zachowaj adresów IP podczas przechodzenie w tryb failover maszyn wirtualnych platformy Azure do innego regionu Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób zachowania adresów IP dla scenariuszy pracy awaryjnej Azure do platformy Azure z usługą Azure Site Recovery
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Przechowywania adresów IP pracy w trybie failover maszyny wirtualnej platformy Azure
 
@@ -84,11 +84,7 @@ Powyżej izolowanego trybu failover przykładzie można rozszerzyć, aby dołąc
 
 ### <a name="further-considerations"></a>Dodatkowe uwagi
 
-Bramy sieci VPN korzystają z publicznych adresów IP i przeskoków bramy w celu nawiązania połączenia. Jeśli nie chcesz używać publicznego adresu IP i/lub aby uniknąć dodatkowych przeskoków, teraz umożliwia globalnej sieci wirtualnej komunikacji równorzędnej elementów równorzędnych sieci wirtualnych w regionach platformy Azure.
-
-Ta funkcja jest obecnie w publicznej wersji zapoznawczej i jest rozszerzana więcej pomocy technicznej regionów — Włączanie bezpośrednie połączenie maszyny Wirtualnej do maszyny Wirtualnej bez żadnych publicznych zaangażowania internet i wszelkie dodatkowe przeskoki.
-
-Aby uzyskać więcej informacji, zapoznaj się [komunikacji równorzędnej dokumentacji](../virtual-network/tutorial-connect-virtual-networks-portal.md#register) i [cennik](https://azure.microsoft.com/pricing/details/virtual-network/).
+Bramy sieci VPN korzystają z publicznych adresów IP i przeskoków bramy w celu nawiązania połączenia. Jeśli nie chcesz używać publicznego adresu IP i/lub aby uniknąć dodatkowych przeskoków, możesz użyć Azure [sieci wirtualnej komunikacji równorzędnej](../virtual-network/virtual-network-peering-overview.md) -to-peer sieci wirtualnych w [obsługiwane regiony platformy Azure](../virtual-network/virtual-network-manage-peering.md#cross-region).
 
 ## <a name="on-premises-to-azure-connectivity"></a>Łączność w lokalnym do Azure
 
@@ -118,5 +114,5 @@ W odróżnieniu od scenariusza Azure do platformy Azure opisano dla **firmy A**,
 
 Aby osiągnąć odporność aplikacji, zaleca się, że każdej aplikacji są przechowywane w własne dedykowane sieci wirtualnej platformy Azure. Aplikacje można następnie można przełączyć w izolacji i wymagane lokalnej do połączeń ze źródłem może być kierowane do region docelowy zgodnie z powyższym opisem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [planów odzyskiwania](site-recovery-create-recovery-plans.md).

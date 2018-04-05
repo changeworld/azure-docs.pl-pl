@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie dziennikami przepływu grupy zabezpieczeń sieci z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft"
-description: "Ta strona opisano sposób zarządzania dziennikami przepływu sieciowej grupy zabezpieczeń w obserwatora sieciowego Azure"
+title: Zarządzanie dziennikami przepływu grupy zabezpieczeń sieci z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
+description: Ta strona opisano sposób zarządzania dziennikami przepływu sieciowej grupy zabezpieczeń w obserwatora sieciowego Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 633543aba99f5c09b14a9e4b11adf59ca04d0fe5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cb41781c5ac8fb759cecea01402c08dd716bf7d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Zarządzanie dziennikami przepływu grupy zabezpieczeń sieci w portalu Azure
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [Program PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Interfejs wiersza polecenia 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 > - [Interfejs wiersza polecenia 2.0](network-watcher-nsg-flow-logging-cli.md)
@@ -38,7 +38,10 @@ Dzienniki przepływu grupy zabezpieczeń sieci są funkcją obserwatora sieciowe
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym scenariuszu przyjęto zostały już wykonane kroki przedstawione w [utworzyć wystąpienia obserwatora sieciowego](network-watcher-create.md). Scenariusz założono również, czy masz grupy zasobów z prawidłową maszyną wirtualną.
+Aby wykonać kroki opisane w tym artykule, trzeba już mieć następujące zasoby:
+
+- Istniejące obserwatora sieciowego. Aby utworzyć obserwatora sieciowego, zobacz [utworzyć wystąpienia obserwatora sieciowego](network-watcher-create.md).
+- Istniejącej grupy zasobów z prawidłową maszyną wirtualną. Jeśli nie masz maszyny wirtualnej, zobacz Tworzenie [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) lub [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) maszyny wirtualnej.
 
 ## <a name="register-insights-provider"></a>Zarejestruj dostawcę usługi Insights
 
@@ -68,7 +71,7 @@ Wybierz grupy zabezpieczeń sieci z listy.
 
 ### <a name="step-3"></a>Krok 3 
 
-Na **ustawień dzienników przepływu** bloku, Ustaw stan na **na**, a następnie skonfiguruj konto magazynu.  Gdy wszystko będzie gotowe, wybierz **OK**. Następnie wybierz **zapisać**.
+Na **ustawień dzienników przepływu** bloku, Ustaw stan na **na**, a następnie skonfiguruj konto magazynu. Wybierz istniejące konto magazynu, który ma **wszystkich sieci** (ustawienie domyślne) wybrany w obszarze **zapory i sieci wirtualne**w obszarze **ustawienia** dla konta magazynu. Po wybraniu konta magazynu, wybierz **OK**, a następnie wybierz **zapisać**.
 
 ![Przegląd dzienników przepływu][3]
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 92189eba7df49aa45adaee7ee3c93c8972b5594b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 018893a2124f1ab9c98e0728bc90ad0a69cf471f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Samouczek: Integracji Azure Active Directory z usług sieci Web firmy Amazon (AWS)
 
@@ -146,7 +146,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 8. W oknie innej przeglądarki logowania do witryny firmy Amazon Web Services (AWS) jako administrator.
 
-9. Kliknij przycisk **konsoli głównej**.
+9. Kliknij przycisk **głównej usług AWS**.
    
     ![Konfigurowanie rejestracji jednokrotnej głównej][11]
 
@@ -174,65 +174,53 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     ![Konfigurowanie rejestracji jednokrotnej Sprawdź][15]
 
-14. Kliknij przycisk **ról**, a następnie kliknij przycisk **Utwórz nową rolę**. 
+14. Kliknij przycisk **ról**, a następnie kliknij przycisk **Utwórz rolę**. 
     
     ![Konfigurowanie ról rejestracji jednokrotnej][16]
 
-15. Na **Ustaw nazwę roli** okna dialogowego, wykonaj następujące czynności: 
-    
-    ![Konfigurowanie jednej nazwy logowania jednokrotnego][17] 
-
-    a. W **nazwy roli** tekstowym, wpisz nazwę roli (na przykład: *TestUser*). 
-
-    b. Kliknij przycisk **następny krok**.
-
-16. Na **wybierz typ roli** okna dialogowego, wykonaj następujące czynności: 
-    
-    ![Skonfiguruj typ roli rejestracji jednokrotnej][18] 
-
-    a. Wybierz **roli dostęp dostawcy tożsamości**. 
-
-    b. W **Grant sieci Web rejestracji jednokrotnej (WebSSO) dostępu do dostawcy SAML** kliknij **wybierz**.
-
-17. Na **ustanowić zaufanie** okna dialogowego, wykonaj następujące czynności:  
+15. Na **Utwórz rolę** wykonaj następujące czynności:  
     
     ![Skonfigurować zaufanie rejestracji jednokrotnej][19] 
 
-    a. Jako dostawca SAML, należy wybrać dostawcę SAML utworzonym wcześniej (na przykład: *drewna*) 
+    a. Wybierz **federacyjnego SAML 2.0** w obszarze **wybierz typ zaufana jednostka**.
+
+    b. W obszarze **Wybieranie sekcji SAML 2.0 dostawcy**, wybierz pozycję **SAML dostawcy** utworzonym wcześniej (na przykład: *drewna*)
+
+    c. Wybierz **Zezwalaj programowych i dostępu do konsoli zarządzania usług AWS**.
   
-    b. Kliknij przycisk **następny krok**.
+    d. Kliknij przycisk **dalej: uprawnienia**.
 
-18. Na **Sprawdź zaufania roli** okna dialogowego, kliknij przycisk **następnego kroku**. 
-    
-    ![Skonfiguruj relację zaufania roli rejestracji jednokrotnej][32]
-
-19. Na **Dołącz zasady** okna dialogowego, kliknij przycisk **następnego kroku**.  
+16. Na **Dołącz zasady uprawnień** okna dialogowego, kliknij przycisk **dalej: Przejrzyj**.  
     
     ![Konfigurowanie zasad rejestracji jednokrotnej][33]
 
-20. Na **przeglądu** okna dialogowego, wykonaj następujące czynności:   
+17. Na **przeglądu** okna dialogowego, wykonaj następujące czynności:   
     
     ![Skonfiguruj przeglądu rejestracji jednokrotnej][34] 
+
+    a. W **nazwy roli** pole tekstowe, wprowadź nazwę roli.
+
+    b. W **opis roli** pole tekstowe, wprowadź opis.
 
     a. Kliknij przycisk **utworzyć rolę**.
 
     b. Tworzenie ról tyle zgodnie z potrzebami i zamapowania ich na dostawcy tożsamości.
 
-21. Użyj poświadczeń konta usługi usług AWS pobierania ról z konta usług AWS w inicjowania obsługi usługi Azure AD użytkownika. W tym celu otwórz konsolę usług AWS macierzystego.
+18. Użyj poświadczeń konta usługi usług AWS pobierania ról z konta usług AWS w inicjowania obsługi usługi Azure AD użytkownika. W tym celu otwórz konsolę usług AWS macierzystego.
 
-22. Polecenie **usług** -> **zabezpieczeń, tożsamości i zgodności** -> **IAM**.
+19. Polecenie **usług** -> **zabezpieczeń, tożsamości i zgodności** -> **IAM**.
 
     ![Pobieranie role z konta usług AWS](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
 
-23. Wybierz **zasady** kartę w sekcji IAM.
+20. Wybierz **zasady** kartę w sekcji IAM.
 
     ![Pobieranie role z konta usług AWS](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole2.png)
 
-24. Utwórz nowe zasady, klikając **Tworzenie zasad**.
+21. Utwórz nowe zasady, klikając **Tworzenie zasad** pobierania ról z konta usług AWS w inicjowania obsługi usługi Azure AD użytkownika.
 
     ![Tworzenie nowych zasad](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
- 
-25. Tworzenie własnych zasad można pobrać wszystkich ról z kont usług AWS, wykonując następujące czynności:
+
+22. Tworzenie własnych zasad można pobrać wszystkich ról z kont usług AWS, wykonując następujące czynności:
 
     ![Tworzenie nowych zasad](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
@@ -272,7 +260,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Definiowanie nowych zasad](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
 
-26. Zdefiniuj **nowe zasady** , wykonując następujące czynności:
+23. Zdefiniuj **nowe zasady** , wykonując następujące czynności:
 
     ![Definiowanie nowych zasad](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
 
@@ -281,8 +269,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     b. Możesz podać **opis** do zasad jako **umożliwi tej zasady można pobrać ról z kont usług AWS**.
     
     c. Polecenie **"Utwórz zasady"** przycisku.
-        
-27. Utwórz nowe konto użytkownika w usłudze IAM usług AWS, wykonując następujące czynności:
+
+24. Na **przeglądu** okna dialogowego, wykonaj następujące czynności:   
+    
+    ![Skonfiguruj przeglądu rejestracji jednokrotnej][34] 
+
+    a. Kliknij przycisk **utworzyć rolę**.
+
+    b. Tworzenie ról tyle zgodnie z potrzebami i zamapowania ich na dostawcy tożsamości.
+
+
+25. Utwórz nowe konto użytkownika w usłudze IAM usług AWS, wykonując następujące czynności:
 
     a. Polecenie **użytkowników** nawigacji w konsoli usług AWS IAM.
 
@@ -302,7 +299,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     * Polecenie **dalej uprawnienia** przycisk w prawym dolnym rogu.
 
-28. Teraz należy utworzyć nowe zasady dla tego użytkownika, wykonując następujące czynności:
+26. Teraz należy utworzyć nowe zasady dla tego użytkownika, wykonując następujące czynności:
 
     ![Dodawanie użytkownika](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
@@ -312,7 +309,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     c. Wybierz **zasad** , a następnie kliknij polecenie **dalej: Przejrzyj** przycisku.
 
-29. Przejrzyj zasady użytkownika, wykonując następujące kroki:
+27. Przejrzyj zasady użytkownika, wykonując następujące kroki:
 
     ![Dodawanie użytkownika](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
     
@@ -320,7 +317,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     b. Polecenie **tworzenia użytkownika** przycisk w prawym dolnym rogu do utworzenia użytkownika.
 
-30. Pobieranie poświadczeń użytkownika, wykonując następujące kroki:
+28. Pobieranie poświadczeń użytkownika, wykonując następujące kroki:
 
     ![Dodawanie użytkownika](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
@@ -330,11 +327,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     c. Polecenie **Zamknij** znajdujący się u dołu.
 
-31. Przejdź do **Inicjowanie obsługi użytkowników** części aplikacji usług Amazon Web Services w portalu zarządzania usługi Azure AD.
+29. Przejdź do **Inicjowanie obsługi użytkowników** części aplikacji usług Amazon Web Services w portalu zarządzania usługi Azure AD.
 
     ![Dodawanie użytkownika](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
-32. Wprowadź **klucz dostępu** i **klucz tajny** w **klucz tajny klienta** i **klucz tajny tokenu** odpowiednio do pola.
+30. Wprowadź **klucz dostępu** i **klucz tajny** w **klucz tajny klienta** i **klucz tajny tokenu** odpowiednio do pola.
 
     ![Dodawanie użytkownika](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
@@ -346,13 +343,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     d. Zapisz ustawienia, klikając **zapisać** na górze.
  
-33. Teraz upewnij się, że włączyć stan inicjowania obsługi administracyjnej **na** w sekcji Ustawienia wprowadzanie na przełącznik, a następnie klikając pozycję na **zapisać** na górze.
+31. Teraz upewnij się, że włączyć stan inicjowania obsługi administracyjnej **na** w sekcji Ustawienia wprowadzanie na przełącznik, a następnie klikając pozycję na **zapisać** na górze.
 
     ![Dodawanie użytkownika](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

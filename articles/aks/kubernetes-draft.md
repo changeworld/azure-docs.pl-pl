@@ -1,23 +1,23 @@
 ---
-title: "Projekt za pomocą AKS i rejestru kontenera platformy Azure"
-description: "Projekt za pomocą AKS i rejestru kontenera platformy Azure"
+title: Projekt za pomocą AKS i rejestru kontenera platformy Azure
+description: Projekt za pomocą AKS i rejestru kontenera platformy Azure
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 803d9e9ea7411c6de4dd15670f495fa8e169a989
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Projekt za pomocą usługi kontenera platformy Azure (AKS)
 
-Projekt jest narzędziem open source, które pomaga pakietu i uruchamianie kodu w klastrze Kubernetes. Projekt jest przeznaczona dla rozwoju cyklu iteracji; ponieważ kod jest obecnie opracowywane, ale przed zatwierdzeniem do systemu kontroli wersji. Z wersji próbnej można szybko wdrożyć ponownie aplikację Kubernetes wystąpienia zmian kodu. Aby uzyskać więcej informacji na temat projektu, zobacz [projekt dokumentacji w witrynie Github][draft-documentation].
+Wersja robocza jest narzędziem open source, które ułatwia przechowywania i wdrażania tych kontenerach w klastrze Kubernetes, pozostawiając należy skoncentrować się na cyklu deweloperów — "pętlę wewnętrzny" Programowanie najwięcej wolnego. Projekt działa jako kod jest obecnie opracowywane, ale przed zatwierdzeniem do systemu kontroli wersji. Z wersji próbnej można szybko wdrożyć ponownie aplikację Kubernetes wystąpienia zmian kodu. Aby uzyskać więcej informacji na temat projektu, zobacz [projekt dokumentacji w witrynie Github][draft-documentation].
 
 Szczegóły tego dokumentu z klastrem Kubernetes na AKS przy użyciu wersji roboczej.
 
@@ -29,64 +29,51 @@ Należy również prywatnej rejestru Docker w rejestrze kontenera platformy Azur
 
 Helm również musi być zainstalowany w klastrze AKS. Aby uzyskać więcej informacji na temat instalowania helm, zobacz [Helm użycia z usługi kontenera platformy Azure (AKS)][aks-helm].
 
+Na koniec należy zainstalować [Docker](https://www.docker.com).
+
 ## <a name="install-draft"></a>Zainstaluj wersję roboczą
 
-Projekt interfejsu wiersza polecenia jest klient, który działa w systemie deweloperskim i pozwala na quicky wdrożenie w klastrze Kubernetes kodu.
+Projekt interfejsu wiersza polecenia jest klient, który działa w systemie deweloperskim i pozwala na quicky wdrożenie w klastrze Kubernetes kodu. 
+
+> [!NOTE] 
+> Jeśli po zainstalowaniu wersji roboczej poprzedzające wersję 0.12, najpierw należy usunąć projekt z przy użyciu klastra `helm delete --purge draft` , a następnie usuń lokalnej konfiguracji uruchamiając `rm -rf ~/.draft`. Jeśli używany jest system MacOS, możesz uruchomić `brew upgrade draft`.
 
 Aby zainstalować projektu interfejsu wiersza polecenia przy użyciu Mac `brew`. Aby uzyskać dodatkowe opcje instalacji Zobacz, [zainstalować wersję roboczą przewodnik][install-draft].
 
 ```console
+brew tap azure/draft
 brew install draft
 ```
 
-Dane wyjściowe:
-
-```
-==> Installing draft from azure/draft
-==> Downloading https://azuredraft.blob.core.windows.net/draft/draft-v0.7.0-darwin-amd64.tar.gz
-Already downloaded: /Users/neilpeterson/Library/Caches/Homebrew/draft-0.7.0.tar.gz
-==> /usr/local/Cellar/draft/0.7.0/bin/draft init --client-only
-🍺  /usr/local/Cellar/draft/0.7.0: 6 files, 61.2MB, built in 1 second
-```
-
-## <a name="configure-draft"></a>Konfigurowanie projektu
-
-Podczas konfigurowania wersji roboczej, należy określić rejestru kontenera. W tym przykładzie jest używany rejestru kontenera platformy Azure.
-
-Uruchom następujące polecenie, aby pobrać nazwy i nazwy serwera logowania wystąpienia ACR. Zaktualizuj polecenia o nazwie grupę zasobów, zawierającą wystąpienia ACR.
-
-```console
-az acr list --resource-group <resource group> --query "[].{Name:name,LoginServer:loginServer}" --output table
-```
-
-Również jest potrzebne hasło wystąpienia ACR.
-
-Uruchom następujące polecenie, aby zwrócić hasła ACR. Zaktualizuj polecenia o nazwie wystąpienia ACR.
-
-```console
-az acr credential show --name <acr name> --query "passwords[0].value" --output table
-```
-
-Inicjowanie projektu z `draft init` polecenia.
+Teraz inicjowanie projektu z `draft init` polecenia.
 
 ```console
 draft init
 ```
 
-W trakcie tego procesu zostanie wyświetlony monit o poświadczenia rejestru kontenera. Korzystając z rejestru kontenera platformy Azure, adres URL rejestru jest nazwa ACR logowania serwera, nazwa użytkownika to nazwa wystąpienia ACR i hasło jest hasło ACR.
+## <a name="configure-draft"></a>Konfigurowanie projektu
+
+Projekt tworzy kontener obrazów na lokalnie, a następnie albo wdraża je z lokalnego rejestru (w przypadku Minikube), lub należy określić rejestru obrazu do użycia. W tym przykładzie użyto rejestru kontenera platformy Azure (ACR), dlatego należy ustanowić relację zaufania między klastrem AKS i rejestr ACR i skonfigurować projekt do dystrybuowania kontenera do ACR.
+
+### <a name="create-trust-between-aks-cluster-and-acr"></a>Tworzenie relacji zaufania między AKS klastra i ACR
+
+Aby ustanowić zaufanie między klastrem AKS i ACR rejestru, należy zmodyfikować główna Azure do usługi Active Directory używany z AKS, dodając do niego roli współautora z zakresem repozytorium ACR. Aby to zrobić, uruchom następujące polecenia, zastępując _&lt;aks zarządcy zasobów nazwy&gt;_ i _&lt;aks klastra name&gt;_ z grupy zasobów i nazwa użytkownika Klaster AKS i _&lt;acr-zarządcy zasobów — nazwa&gt;_ i _&lt;nazwa acr repozytorium&gt;_ z nazwą grupy i repozytorium zasobów rekordu ACR repozytorium, z którym chcesz utworzyć zaufania.
 
 ```console
-1. Enter your Docker registry URL (e.g. docker.io/myuser, quay.io/myuser, myregistry.azurecr.io): <ACR Login Server>
-2. Enter your username: <ACR Name>
-3. Enter your password: <ACR Password>
+export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 
-Po zakończeniu projektu jest skonfigurowany w klastrze Kubernetes i jest gotowe do użycia.
+(Te kroki i innych mechanizmów uwierzytelniania dostępu ACR do [uwierzytelnianych ACR](../container-registry/container-registry-auth-aks.md).)
 
-```
-Draft has been installed into your Kubernetes Cluster.
-Happy Sailing!
-```
+### <a name="configure-draft-to-push-to-and-deploy-from-acr"></a>Skonfiguruj projekt wypychania do i wdrażanie z ACR
+
+Teraz, że istnieje relacja zaufania między AKS i ACR, następujące kroki umożliwiają użycie ACR z klastrem AKS.
+1. Ustaw konfigurację projektu `registry` wartość, uruchamiając `draft config set registry <registry name>.azurecr.io`, gdzie _&lt;nazwa rejestru&lt;_ to nazwa ACR rejestru.
+2. Zaloguj się do rejestru ACR uruchamiając `az acr login -n <registry name>`. 
+
+Użytkownik jest obecnie zalogowany lokalnie do ACR i utworzyć relację zaufania z AKS i ACR, dlatego nie hasła lub kluczy tajnych są wymagane do wypychanej na lub ściąganie danych z ACR do AKS. Uwierzytelnianie odbywa się na poziomie usługi Azure Resource Manager, za pomocą usługi Azure Active Directory. 
 
 ## <a name="run-an-application"></a>Uruchamianie aplikacji
 
@@ -99,7 +86,7 @@ git clone https://github.com/Azure/draft
 Przejdź do katalogu przykłady Java.
 
 ```console
-cd draft/examples/java/
+cd draft/examples/example-java/
 ```
 
 Użyj `draft create` polecenie, aby rozpocząć proces. To polecenie tworzy artefaktów, które są używane do uruchamiania aplikacji w klastrze Kubernetes. Elementy te obejmują plik Dockerfile, wykres Helm i `draft.toml` pliku, który jest plikiem konfiguracji projektu.
@@ -110,12 +97,14 @@ draft create
 
 Dane wyjściowe:
 
-```
+```console
 --> Draft detected the primary language as Java with 92.205567% certainty.
 --> Ready to sail
 ```
 
-Aby uruchomić aplikację w klastrze Kubernetes, należy użyć `draft up` polecenia. To polecenie operacji przekazywania plików kodu i konfiguracji aplikacji do klastra Kubernetes. Następnie uruchamia plik Dockerfile, aby utworzyć obraz kontenera, wypychanie obrazu do rejestru kontenera i uruchamia finally wykres Helm, aby uruchomić aplikację.
+Aby uruchomić aplikację w klastrze Kubernetes, należy użyć `draft up` polecenia. To polecenie tworzy plik Dockerfile, aby utworzyć obraz kontenera, wypychanie obrazu do ACR i instaluje finally wykres Helm, aby uruchomić aplikację w AKS.
+
+Po raz pierwszy jest uruchomiona, wypychanie i ściąganie kontener obrazu może zająć pewien czas; Po warstwy podstawowej są buforowane, czas trwania jest znacznie mniejsza.
 
 ```console
 draft up
@@ -123,12 +112,13 @@ draft up
 
 Dane wyjściowe:
 
-```
-Draft Up Started: 'open-jaguar'
-open-jaguar: Building Docker Image: SUCCESS ⚓  (28.0342s)
-open-jaguar: Pushing Docker Image: SUCCESS ⚓  (7.0647s)
-open-jaguar: Releasing Application: SUCCESS ⚓  (4.5056s)
-open-jaguar: Build ID: 01BW3VVNZYQ5NQ8V1QSDGNVD0S
+```console
+Draft Up Started: 'example-java'
+example-java: Building Docker Image: SUCCESS ⚓  (1.0003s)
+example-java: Pushing Docker Image: SUCCESS ⚓  (3.0007s)
+example-java: Releasing Application: SUCCESS ⚓  (0.9322s)
+example-java: Build ID: 01C9NPDYQQH2CZENDMZW7ESJAM
+Inspect the logs with `draft logs 01C9NPDYQQH2CZENDMZW7ESJAM`
 ```
 
 ## <a name="test-the-application"></a>Testowanie aplikacji
@@ -143,7 +133,7 @@ draft connect
 
 Dane wyjściowe:
 
-```
+```console
 Connecting to your app...SUCCESS...Connect to your app on localhost:46143
 Starting log streaming...
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -153,7 +143,10 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-Po zakończeniu badania użycia aplikacji `Control+C` zatrzymania połączenia serwera proxy.
+Teraz można przetestować aplikację, przechodząc do http://localhost:46143 (dla poprzedniego przykładu; portów może być inny). Po zakończeniu badania użycia aplikacji `Control+C` zatrzymania połączenia serwera proxy.
+
+> [!NOTE]
+> Można również użyć `draft up --auto-connect` polecenia do tworzenia i wdrażania aplikacji i natychmiast nawiązania pierwszego kontenera uruchomionych dokonanie iteracji cyklu szybciej.
 
 ## <a name="expose-application"></a>Udostępnianie aplikacji
 
@@ -163,7 +156,7 @@ Podczas testowania aplikacji w Kubernetes, można udostępnić aplikacje w Inter
 Najpierw projekt pakietu musi zostać zaktualizowany, aby określić, że usługa z typem `LoadBalancer` powinien zostać utworzony. Aby to zrobić, typ usługi, w aktualizacji `values.yaml` pliku.
 
 ```console
-vi chart/java/values.yaml
+vi charts/java/values.yaml
 ```
 
 Zlokalizuj `service.type` właściwości i zaktualizuj wartość z `ClusterIP` do `LoadBalancer`.
@@ -203,13 +196,13 @@ kubectl get service -w
 Początkowo *IP zewnętrznego* dla usługi pojawia się jako `pending`.
 
 ```
-deadly-squid-java   10.0.141.72   <pending>     80:32150/TCP   14m
+example-java-java   10.0.141.72   <pending>     80:32150/TCP   14m
 ```
 
 Po zmianie adresu EXTERNAL-IP z `pending` na `IP address` użyj polecenia `Control+C`, aby zatrzymać proces śledzenia narzędzia kubectl.
 
 ```
-deadly-squid-java   10.0.141.72   52.175.224.118   80:32150/TCP   17m
+example-java-java   10.0.141.72   52.175.224.118   80:32150/TCP   17m
 ```
 
 Aby wyświetlić aplikację, przejdź do zewnętrznego adresu IP.
@@ -243,25 +236,35 @@ import static spark.Spark.*;
 
 public class Hello {
     public static void main(String[] args) {
-        get("/", (req, res) -> "Hello World, I'm Java - Draft Rocks!");
+        get("/", (req, res) -> "Hello World, I'm Java in AKS!");
     }
 }
 ```
 
-Uruchom `draft up` polecenie, aby ponownie wdrożyć aplikację.
+Uruchom `draft up --auto-connect` polecenie, aby ponownie wdrożyć aplikację wszelki natychmiast pod jest gotowy do odpowiedzi.
 
 ```console
-draft up
+draft up --auto-connect
 ```
 
 Dane wyjściowe
 
 ```
-Draft Up Started: 'deadly-squid'
-deadly-squid: Building Docker Image: SUCCESS ⚓  (18.0813s)
-deadly-squid: Pushing Docker Image: SUCCESS ⚓  (7.9394s)
-deadly-squid: Releasing Application: SUCCESS ⚓  (6.5005s)
-deadly-squid: Build ID: 01BWK8C8X922F5C0HCQ8FT12RR
+Draft Up Started: 'example-java'
+example-java: Building Docker Image: SUCCESS ⚓  (1.0003s)
+example-java: Pushing Docker Image: SUCCESS ⚓  (4.0010s)
+example-java: Releasing Application: SUCCESS ⚓  (1.1336s)
+example-java: Build ID: 01C9NPMJP6YM985GHKDR2J64KC
+Inspect the logs with `draft logs 01C9NPMJP6YM985GHKDR2J64KC`
+Connect to java:4567 on localhost:39249
+Your connection is still active.
+Connect to java:4567 on localhost:39249
+[java]: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+[java]: SLF4J: Defaulting to no-operation (NOP) logger implementation
+[java]: SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+[java]: == Spark has ignited ...
+[java]: >> Listening on 0.0.0.0:4567
+
 ```
 
 Na koniec Wyświetl aplikację, aby zobaczyć aktualizacje.
@@ -273,7 +276,7 @@ curl 52.175.224.118
 Dane wyjściowe:
 
 ```
-Hello World, I'm Java - Draft Rocks!
+Hello World, I'm Java in AKS!
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

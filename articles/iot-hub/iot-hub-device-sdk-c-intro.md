@@ -1,11 +1,11 @@
 ---
-title: "Urządzenia Azure IoT SDK dla języka C | Dokumentacja firmy Microsoft"
-description: "Rozpoczynanie pracy z urządzeń Azure IoT SDK dla języka C i Dowiedz się, jak tworzyć aplikacje urządzenia, które komunikują się z Centrum IoT."
+title: Urządzenia Azure IoT SDK dla języka C | Dokumentacja firmy Microsoft
+description: Rozpoczynanie pracy z urządzeń Azure IoT SDK dla języka C i Dowiedz się, jak tworzyć aplikacje urządzenia, które komunikują się z Centrum IoT.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e448b061-6bdd-470a-a527-15ec03cca7b9
 ms.service: iot-hub
 ms.devlang: cpp
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: cc559a19f6d7c31b3bc00a74851f4d42719832de
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6a85ae65a0f20892b3a20656abac05e90538a1bd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure urządzenia IoT zestawu SDK dla języka C
 
 **Urządzenia Azure IoT SDK** to zestaw bibliotek zaprojektowane w celu uproszczenia procesu wysyłania wiadomości i odbieranie komunikatów z **Centrum IoT Azure** usługi. Istnieją różne odmiany zestawu SDK, każdy przeznaczonych dla określonej platformy, ale w tym artykule opisano **urządzenia Azure IoT SDK dla języka C**.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Urządzenia Azure IoT SDK dla języka C są zapisywane w ANSI C (C99), aby zmaksymalizować przenoszenia. Ta funkcja udostępnia biblioteki dobrze nadaje się do działania na wielu platformach i urządzeniach, szczególnie w przypadku, gdy minimalizując dysku i zużycie pamięci jest priorytetem.
 
@@ -218,7 +220,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 
 Należy pamiętać, wywołanie **IoTHubMessage\_Destroy** działać po zakończeniu z komunikatem. Ta funkcja zwalnia zasoby przydzielone podczas tworzenia komunikatu.
 
-### <a name="receive-messages"></a>Odbieranie wiadomości
+### <a name="receive-messages"></a>Odbieranie komunikatów
 
 Odbieranie wiadomości jest operacja asynchroniczna. Najpierw należy zarejestrować wywołania zwrotnego do wywołania, gdy urządzenie otrzyma wiadomość:
 
@@ -476,7 +478,7 @@ Drugi parametr jest wskaźnik do kontekstu użytkownika; tym samym wskaźnik prz
 
 To wszystko jest do wysyłania wiadomości urządzenia do chmury. Jedyną operacją, lewo, aby pokrywał jest jak odbierać komunikaty.
 
-### <a name="receive-messages"></a>Odbieranie wiadomości
+### <a name="receive-messages"></a>Odbieranie komunikatów
 
 Odbieranie działa komunikat podobny sposób wiadomości działają w **IoTHubClient** biblioteki. Najpierw należy zarejestrować funkcję wywołania zwrotnego komunikat:
 

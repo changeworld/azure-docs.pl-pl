@@ -1,11 +1,11 @@
 ---
-title: "Azure urządzenia IoT zestawu SDK dla języka C - IoTHubClient | Dokumentacja firmy Microsoft"
-description: "Jak używać biblioteki IoTHubClient na urządzeniu Azure IoT SDK dla języka C do tworzenia aplikacji urządzenia, które komunikują się z Centrum IoT."
+title: Azure urządzenia IoT zestawu SDK dla języka C - IoTHubClient | Dokumentacja firmy Microsoft
+description: Jak używać biblioteki IoTHubClient na urządzeniu Azure IoT SDK dla języka C do tworzenia aplikacji urządzenia, które komunikują się z Centrum IoT.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 828cf2bf-999d-4b8a-8a28-c7c901629600
 ms.service: iot-hub
 ms.devlang: cpp
@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 6efd2980ce4dde99d934b3fe174d341fb68fac03
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0fa07b2a785bd7d1a26924918e4428fd420e1547
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure urządzenia IoT zestawu SDK dla języka C — więcej informacji na temat IoTHubClient
 [Najpierw artykuł](iot-hub-device-sdk-c-intro.md) w tej serii wprowadzone **urządzenia Azure IoT SDK dla języka C**. Tym artykule wyjaśniono, że istnieją dwie warstwy architektury w zestawie SDK. Na podstawowym jest **IoTHubClient** biblioteki, który bezpośrednio prowadzi komunikację z Centrum IoT. Istnieje również **serializator** biblioteki, która tworzy znajdujący się na świadczenie usług serializacji. W tym artykule udostępnimy dodatkowych szczegółów na **IoTHubClient** biblioteki.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Poprzednim artykule opisano sposób użycia **IoTHubClient** biblioteki do wysyłania zdarzeń do Centrum IoT i odbierania wiadomości. W tym artykule rozszerza tej dyskusji, wyjaśniający, bardziej precyzyjne zarządzanie *podczas* wysyłania i odbierania danych, wprowadzenie do **interfejsów API niższego poziomu**. Prezentujemy również zasady do dołączania właściwości zdarzenia (i pobrać wiadomości) przy użyciu właściwości obsługi funkcji w **IoTHubClient** biblioteki. Ponadto firma Microsoft udostępni dodatkowe objaśnienia dotyczące obsługi komunikatów odebranych z Centrum IoT na różne sposoby.
 

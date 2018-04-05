@@ -1,11 +1,11 @@
 ---
 title: Wprowadzenie do Monitora sieci platformy Azure | Dokumentacja firmy Microsoft
-description: "Ta strona zawiera omówienie usługi obserwatora sieciowego do monitorowania i Środek wywołujący sieć połączona zasobami na platformie Azure"
+description: Ta strona zawiera omówienie usługi obserwatora sieciowego do monitorowania i Środek wywołujący sieć połączona zasobami na platformie Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Omówienie monitorowania sieci platformy Azure
 
@@ -47,6 +47,7 @@ Obserwatora sieciowego ma obecnie następujące możliwości:
 * **[Limity subskrypcji sieci](#network-subscription-limits)**  — umożliwia wyświetlenie wykorzystania zasobów sieci ograniczeń.
 * **[Konfigurowanie dziennika diagnostyki](#diagnostic-logs)**  — zapewnia jeden Aby włączyć lub wyłączyć dzienników diagnostycznych do zasobów sieciowych w grupie zasobów.
 * **[Rozwiązywanie problemów dotyczących połączeń](network-watcher-connectivity-overview.md)**  -sprawdza możliwość nawiązywania bezpośredniego połączenia TCP z maszyny wirtualnej z danym punktem końcowym wzbogaconych Azure kontekstu.
+* **[Monitor połączenia](connection-monitor.md)**  — monitorowanie problemy opóźnienia i konfigurację między maszyny wirtualnej platformy Azure i adres IP, za pomocą źródłowego i docelowego adresu IP i portu.
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Kontrola dostępu oparta na rolach (RBAC) w obserwatora sieciowego
 
@@ -114,7 +115,7 @@ Rozwiązywania problemów z bloku obsługi w portalu jest dostarczany z zasobów
 
 Kondycja zasobu sieciowego znajduje się w regularnych odstępach czasu. Takie zasoby obejmują bramy sieci VPN i tunel VPN. Kondycja zasobów są dostępne w portalu Azure. Aby dowiedzieć się więcej na temat kondycji zasobów, odwiedź stronę [Przegląd kondycji zasobów](../resource-health/resource-health-overview.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zapoznawanie obserwatora sieciowego, aby dowiedzieć się do:
 

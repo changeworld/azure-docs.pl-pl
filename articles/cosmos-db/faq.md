@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 946d0f6456ce27931c91066d63c028388ecec84c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 7039b87c80aecb837059d80087c97e8691da2988
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Często zadawane pytania dotyczące usługi Azure rozwiązania Cosmos bazy danych
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawowe informacje na temat usługi Azure DB rozwiązania Cosmos
@@ -122,7 +122,7 @@ Po ustawieniu regionu, należy pamiętać, że bazy danych Azure rozwiązania Co
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak rozpocząć tworzenie oprogramowania dla interfejsu API SQL?
 Najpierw musisz zarejestrować subskrypcji platformy Azure. Po utworzeniu konta dla subskrypcji platformy Azure, możesz dodać kontener interfejsu API SQL do subskrypcji platformy Azure. Aby uzyskać instrukcje dotyczące dodawania konta bazy danych rozwiązania Cosmos platformy Azure, zobacz [Tworzenie konta bazy danych Azure DB rozwiązania Cosmos](create-sql-api-dotnet.md#create-account). 
 
-[Zestawy SDK](sql-api-sdk-dotnet.md) są dostępne dla platformy .NET, Python, Node.js, JavaScript i Java. Deweloperzy mogą również używać [interfejsy API RESTful protokołu HTTP](/rest/api/documentdb/) do interakcji z zasobami Azure DB rozwiązania Cosmos z różnych platform i języków.
+[Zestawy SDK](sql-api-sdk-dotnet.md) są dostępne dla platformy .NET, Python, Node.js, JavaScript i Java. Deweloperzy mogą również używać [interfejsy API RESTful protokołu HTTP](/rest/api/cosmos-db/) do interakcji z zasobami Azure DB rozwiązania Cosmos z różnych platform i języków.
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Można uzyskać dostęp do niektórych gotowe próbek, aby utworzyć?
 Przykłady dotyczące interfejsu API SQL [.NET](sql-api-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](sql-api-nodejs-samples.md), i [Python](sql-api-python-samples.md) zestawów SDK są dostępne w serwisie GitHub.
@@ -140,10 +140,10 @@ Kolekcja jest grupą dokumentów i ich skojarzonej logiki aplikacji JavaScript. 
 Kolekcje są również jednostkami rozliczeniowymi dla bazy danych Azure rozwiązania Cosmos. Każda kolekcja jest rozliczane godzinowo, oparta na udostępnionej przepływności i używać miejsca do magazynowania. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure rozwiązania Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
 ### <a name="how-do-i-create-a-database"></a>Jak utworzyć bazę danych?
-Bazy danych można tworzyć przy użyciu [portalu Azure](https://portal.azure.com), zgodnie z opisem w [dodania kolekcji](create-sql-api-dotnet.md#create-collection), jednego z [zestawów SDK DB rozwiązania Cosmos Azure](sql-api-sdk-dotnet.md), lub [interfejsów API REST](/rest/api/documentdb/). 
+Bazy danych można tworzyć przy użyciu [portalu Azure](https://portal.azure.com), zgodnie z opisem w [dodania kolekcji](create-sql-api-dotnet.md#create-collection), jednego z [zestawów SDK DB rozwiązania Cosmos Azure](sql-api-sdk-dotnet.md), lub [interfejsów API REST](/rest/api/cosmos-db/). 
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Jak skonfigurować użytkowników i uprawnienia?
-Można utworzyć użytkowników i uprawnień przy użyciu jednej z [zestawów SDK interfejsu API DB rozwiązania Cosmos](sql-api-sdk-dotnet.md) lub [interfejsów API REST](/rest/api/documentdb/).  
+Można utworzyć użytkowników i uprawnień przy użyciu jednej z [zestawów SDK interfejsu API DB rozwiązania Cosmos](sql-api-sdk-dotnet.md) lub [interfejsów API REST](/rest/api/cosmos-db/).  
 
 ### <a name="does-the-sql-api-support-sql"></a>Interfejsu API SQL obsługuje SQL?
 Język zapytań SQL, które są obsługiwane przez interfejs API SQL konta jest rozszerzonym podzbiorem funkcji zapytań, który jest obsługiwany przez program SQL Server. Języka zapytań usługi Azure rozwiązania Cosmos bazy danych SQL zawiera sformatowanego operatorów hierarchicznej i rozszerzalność dzięki funkcji oparte na języku JavaScript, zdefiniowane przez użytkownika (UDF). Gramatyka JSON umożliwia modelowanie dokumentów JSON jako drzewa z etykietami węzły, które są używane zarówno przez techniki automatycznego indeksowania bazy danych Azure rozwiązania Cosmos i dialekt zapytań SQL Azure DB rozwiązania Cosmos. Aby uzyskać informacji dotyczących używania gramatyki SQL, zobacz [zapytania SQL] [ query] artykułu.

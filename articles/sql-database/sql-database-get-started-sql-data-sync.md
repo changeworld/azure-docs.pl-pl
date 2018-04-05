@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie synchronizacji danych SQL Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: "Ten samouczek pokazuje, jak skonfigurować synchronizację danych SQL Azure (wersja zapoznawcza)"
+description: Ten samouczek pokazuje, jak skonfigurować synchronizację danych SQL Azure (wersja zapoznawcza)
 services: sql-database
 author: douglaslms
 manager: craigg
@@ -10,22 +10,22 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 237a34c955f8ef36e25c30a6b13787f6a9296612
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f9318b5baa46ab991b5e72e12a89a25e4f635db3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>Konfigurowanie synchronizacji danych SQL (wersja zapoznawcza)
 Z tego samouczka dowiesz się sposobu konfigurowania synchronizacji danych SQL Azure, tworząc grupy synchronizacji hybrydowych, zawierającej wystąpienia zarówno usługi Azure SQL Database i programu SQL Server. Nowa grupa synchronizacji jest w pełni skonfigurowane i synchronizuje się zgodnie z harmonogramem, które można ustawić.
 
 W tym samouczku założono, że co najmniej pewne doświadczenie z bazy danych SQL i programu SQL Server. 
 
-Omówienie synchronizacji danych SQL, zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md).
+Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync — wersja zapoznawcza)](sql-database-sync-data.md).
 
 Aby uzyskać pełną przykładów programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL, zobacz następujące artykuły:
 -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)
--   [Synchronizacja między bazą danych SQL Azure i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 ## <a name="step-1---create-sync-group"></a>Krok 1 — Tworzenie grupy synchronizacji
 
@@ -38,6 +38,8 @@ Aby uzyskać pełną przykładów programu PowerShell, które przedstawiają spo
     ![Lista baz danych Azure SQL](media/sql-database-get-started-sql-data-sync/datasync-preview-sqldbs.png)
 
 3.  Na **baz danych SQL** wybierz istniejącej bazy danych SQL, który ma być używany jako baza danych Centrum synchronizacji danych. Zostanie otwarta strona bazy danych SQL.
+
+    Baza danych Centrum jest centralny punkt końcowy topologia synchronizacji, w którym grupy synchronizacji ma wiele punktów końcowych bazy danych. Wszystkie inne bazy danych punkty końcowe w tym samym synchronizacji grupy - oznacza to, że wszystkie elementu członkowskiego bazy danych — synchronizacji z bazy danych Centrum.
 
 4.  Na stronie bazy danych SQL dla wybranej bazy danych wybierz **synchronizacji do innych baz danych**. Zostanie otwarta strona synchronizacji danych.
 
@@ -67,6 +69,8 @@ Aby uzyskać pełną przykładów programu PowerShell, które przedstawiają spo
         ![Określ częstotliwość synchronizacji](media/sql-database-get-started-sql-data-sync/datasync-preview-syncfreq.png)
 
     4.  W **rozwiązywania konfliktów** wybierz "Centrum wins" lub "Elementu członkowskiego wins".
+
+        "Usługa wins Centrum" oznacza, że, jeśli występuje konflikt, dane w bazie danych Centrum zastąpiony powodujące konflikt danych w bazie danych elementu członkowskiego. "Usługa wins elementu członkowskiego" oznacza, że, jeśli występuje konflikt, dane w bazie danych elementu członkowskiego zastąpiony powodujące konflikt danych w bazie danych koncentratora. 
 
         ![Określ, jak są rozwiązywane konflikty](media/sql-database-get-started-sql-data-sync/datasync-preview-conflictres.png)
 
@@ -267,20 +271,20 @@ Jeśli chcesz uruchomić lokalnego agenta z innego komputera niż aktualnie znaj
 ## <a name="next-steps"></a>Kolejne kroki
 Gratulacje. Utworzono grupę synchronizacji, która zawiera zarówno wystąpienie bazy danych SQL, jak i bazy danych programu SQL Server.
 
-Aby uzyskać więcej informacji na temat synchronizacji danych SQL zobacz:
+Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
--   [Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z synchronizacji danych SQL Azure](sql-database-sync-data.md)
--   [Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure](sql-database-best-practices-data-sync.md)
--   [Monitor synchronizacji danych Azure SQL z OMS analizy dzienników](sql-database-sync-monitor-oms.md)
--   [Rozwiązywanie problemów z synchronizacją danych SQL Azure](sql-database-troubleshoot-data-sync.md)
+-   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md)
+-   [Best practices for Azure SQL Data Sync (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)](sql-database-best-practices-data-sync.md)
+-   [Monitor Azure SQL Data Sync with OMS Log Analytics (Monitorowanie usługi Azure SQL Data Sync za pomocą usługi OMS Log Analytics)](sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](sql-database-troubleshoot-data-sync.md)
 
--   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL:
+-   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:
     -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)
-    -   [Synchronizacja między bazą danych SQL Azure i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)
+    -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 
--   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-Aby uzyskać więcej informacji na temat bazy danych SQL zobacz:
+Aby uzyskać więcej informacji na temat usługi SQL Database, zobacz:
 
--   [Omówienie bazy danych SQL](sql-database-technical-overview.md)
--   [Zarządzanie cyklem życia bazy danych](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Omówienie usługi SQL Database](sql-database-technical-overview.md)
+-   [Database Lifecycle Management (Zarządzanie cyklem życia bazy danych)](https://msdn.microsoft.com/library/jj907294.aspx)

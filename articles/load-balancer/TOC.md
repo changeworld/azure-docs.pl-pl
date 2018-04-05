@@ -20,13 +20,19 @@
 
 # Instrukcje
 
-## [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6](load-balancer-ipv6-internet-ps.md)
-### [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (interfejs wiersza polecenia)](load-balancer-ipv6-internet-cli.md)
-### [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (szablon)](load-balancer-ipv6-internet-template.md)
 ## [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa](load-balancer-get-started-internet-az-portal.md)
 ### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](load-balancer-get-started-internet-az-cli.md)
+## [Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa](load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+### [Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)](load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+### [Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+## [Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności](load-balancer-standard-public-availability-zones-portal.md)
+###  [Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności (interfejs wiersza polecenia)](load-balancer-standard-public-zone-redundant-cli.md)
+##  [Równoważenie obciążenia maszyn wirtualnych w strefie (interfejs wiersza polecenia)](load-balancer-standard-public-zonal-cli.md)   
 ## [Tworzenie usługi Load Balancer w warstwie Podstawowa (szablon)](load-balancer-get-started-internet-arm-template.md)
+## [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6](load-balancer-ipv6-internet-ps.md)
+### [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (interfejs wiersza polecenia)](load-balancer-ipv6-internet-cli.md)
+### [Tworzenie publicznego modułu równoważenia obciążenia przy użyciu protokołu IPv6 (szablon)](load-balancer-ipv6-internet-template.md)
 ## [Konfigurowanie wewnętrznego modułu równoważenia obciążenia](load-balancer-get-started-ilb-arm-portal.md)
 ### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
 ### [Konfigurowanie wewnętrznego modułu równoważenia obciążenia (interfejs wiersza polecenia)](load-balancer-get-started-ilb-arm-cli.md)

@@ -1,19 +1,19 @@
 ---
-title: "Tworzenie i zarządzanie Azure bazy danych dla serwera MySQL przy użyciu portalu Azure"
-description: "W tym artykule opisano, jak szybko utworzyć nową bazę danych Azure dla serwera MySQL i zarządzanie serwerem przy użyciu portalu Azure."
+title: Tworzenie i zarządzanie Azure bazy danych dla serwera MySQL przy użyciu portalu Azure
+description: W tym artykule opisano, jak szybko utworzyć nową bazę danych Azure dla serwera MySQL i zarządzanie serwerem przy użyciu portalu Azure.
 services: mysql
 author: ajlam
-ms.author: nolanwu
+ms.author: andrela
 editor: jasonwhowell
 manager: kfile
 ms.service: mysql-database
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0e274c0ada3de5e9000ae41516e5b9b67ef1490b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4b52cb9e42e582d42424c2814e2e30f764a8679b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Tworzenie i zarządzanie Azure bazy danych dla serwera MySQL przy użyciu portalu Azure
 W tym temacie opisano, jak szybko utworzyć nową bazę danych Azure dla serwera MySQL. Zawiera także informacje o sposobie zarządzania serwerem przy użyciu portalu Azure. Zarządzanie serwerem obejmuje, wyświetlanie szczegółów serwera i bazy danych, zresetuj hasło, skalowania zasobów i usuwanie serwera.
@@ -46,7 +46,7 @@ Wykonaj następujące kroki, aby utworzyć bazę danych Azure MySQL serwera o na
     | *Lokalizacja* | Południowo-Wschodnia, Azja (wybór między Europa Północna, Europa i zachodnie stany USA) |
     | *Wersja* | 5.7 (Wybierz bazy danych Azure w wersji server MySQL) |
 
-4. Kliknij przycisk **warstwa cenowa** umożliwia określenie poziomu wydajności i warstwy usługi dla nowego serwera. Wybierz **ogólnego przeznaczenia** kartę. *Gł 4*, *2 vCores*, *5 GB*, i *7 dni* są wartościami domyślnymi dla **obliczeniowe generowania**, **vCore** , **Magazynu**, i **kopii zapasowej okres przechowywania**. Możesz pozostawić te suwaki, ponieważ jest. Aby włączyć kopie zapasowe serwera, wybierz magazyn geograficznie nadmiarowy w **geograficznie nadmiarowy** z **Opcje nadmiarowości kopii zapasowej**.
+4. Kliknij przycisk **warstwa cenowa** umożliwia określenie poziomu wydajności i warstwy usługi dla nowego serwera. Wybierz **ogólnego przeznaczenia** kartę. *Generacja 4*, *2 rdzenie wirtualne*, *5 GB* oraz *7 dni* to wartości domyślne opcji **Generowanie obliczeń**, **Rdzeń wirtualny**, **Magazyn** oraz **Okres przechowywania kopii zapasowej**. Te suwaki możesz zostawić bez zmian. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**.
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 

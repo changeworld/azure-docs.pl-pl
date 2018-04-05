@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect: rozpoczynanie pracy przy użyciu ustawień ekspresowych | Microsoft Docs"
-description: "Dowiedz się, jak pobrać, zainstalować i uruchomić kreatora instalacji programu Azure AD Connect."
+title: 'Azure AD Connect: rozpoczynanie pracy przy użyciu ustawień ekspresowych | Microsoft Docs'
+description: Dowiedz się, jak pobrać, zainstalować i uruchomić kreatora instalacji programu Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2018
+ms.date: 03/21/2018
 ms.author: billmath
-ms.openlocfilehash: 15101e1edb483f49c7570a5d4eab66865bbceb87
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 46fc01bfd7fada529ff1416e8ad46d2ea34792bd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Rozpoczynanie pracy z programem Azure AD Connect przy użyciu ustawień ekspresowych
 Użyj **ustawień ekspresowych** programu Azure AD Connect, jeśli używasz topologii z jednym lasem oraz [synchronizacji haseł](active-directory-aadconnectsync-implement-password-synchronization.md) na potrzeby uwierzytelniania. **Ustawienia ekspresowe** to opcja domyślna używana w przypadku najbardziej typowych scenariuszy wdrożenia. Wystarczy kilka kliknięć, aby rozszerzyć katalog lokalny do chmury.
@@ -45,6 +45,7 @@ Możesz zobaczyć te czynności w praktyce, korzystając z sekcji [Filmy wideo](
    Jeśli zobaczysz tę stronę, sprawdź wszystkie domeny z oznaczeniem **Nie dodano** lub **Nie zweryfikowano**. Upewnij się, że używane domeny zostały zweryfikowane w usłudze Azure AD. Po zweryfikowaniu domen kliknij symbol Odśwież.
 8. Na ekranie Wszystko gotowe do skonfigurowania kliknij pozycję **Zainstaluj**.
    * Opcjonalnie można na stronie Wszystko gotowe do skonfigurowania usunąć zaznaczenie pola wyboru **Uruchom proces synchronizacji, gdy tylko konfiguracja zostanie ukończona**. Usuń zaznaczenie tego pola wyboru, jeśli planujesz dodatkową konfigurację, na przykład konfigurację [filtrowania](active-directory-aadconnectsync-configure-filtering.md). Jeśli ta opcja nie będzie zaznaczona, kreator skonfiguruje funkcję synchronizacji, ale nie włączy harmonogramu. Synchronizacja nie zostanie uruchomiona do momentu włączenia jej ręcznie przez [ponowne uruchomienie kreatora instalacji](active-directory-aadconnectsync-installation-wizard.md).
+   * Pozostawienie włączonego pola wyboru **Uruchom proces synchronizacji, gdy tylko konfiguracja zostanie ukończona** spowoduje natychmiastowe wyzwolenie pełnej synchronizacji z usługą Azure AD wszystkich użytkowników, kontaktów i grup. 
    * Jeśli korzystasz z programu Exchange z lokalną usługą Active Directory, możesz również włączyć [**Wdrożenie hybrydowe programu Exchange**](https://technet.microsoft.com/library/jj200581.aspx). Włącz tę opcję, jeśli chcesz, aby skrzynki pocztowe programu Exchange były przechowywane jednocześnie zarówno w chmurze, jak i lokalnie.
      ![Wszystko gotowe do skonfigurowania programu Azure AD Connect](./media/active-directory-aadconnect-get-started-express/readytoconfigure.png)
 9. Po zakończeniu instalacji kliknij przycisk **Zakończ**.

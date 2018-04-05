@@ -1,11 +1,11 @@
 ---
-title: "Planowanie zadań z Centrum IoT Azure (.NET/.NET) | Dokumentacja firmy Microsoft"
-description: "Sposób tworzenia harmonogramu zadań Centrum IoT Azure do wywołania metody bezpośrednio na wielu urządzeniach. Urządzenia Azure IoT SDK dla platformy .NET umożliwia wdrożenie symulowane urządzenie aplikacje i usługi aplikacji w celu uruchomienia zadania."
+title: Planowanie zadań z Centrum IoT Azure (.NET/.NET) | Dokumentacja firmy Microsoft
+description: Sposób tworzenia harmonogramu zadań Centrum IoT Azure do wywołania metody bezpośrednio na wielu urządzeniach. Urządzenia Azure IoT SDK dla platformy .NET umożliwia wdrożenie symulowane urządzenie aplikacje i usługi aplikacji w celu uruchomienia zadania.
 services: iot-hub
 documentationcenter: .net
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 012/16/2018
 ms.author: v-masebo
-ms.openlocfilehash: 0cdc23683489e103b061044856d68a8b014d3535
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: MT
+ms.openlocfilehash: 59d78c390e479acd16d47b70e8af5e164d746905
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Zadania harmonogramu i emisji (.NET/.NET)
 
@@ -36,6 +36,8 @@ Aby dowiedzieć się więcej na temat każdego z tych funkcji, zobacz:
 
 * Dwie urządzeń i właściwości: [Rozpoczynanie pracy z urządzenia twins] [ lnk-get-started-twin] i [samouczek: sposób użycia właściwości dwie urządzenia][lnk-twin-props]
 * Bezpośrednie metody: [przewodnik dewelopera Centrum IoT — metody bezpośredniego] [ lnk-dev-methods] i [samouczek: bezpośrednie metody][lnk-c2d-methods]
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 

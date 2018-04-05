@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT zarządzanie urządzeniami z Centrum iothub explorer | Dokumentacja firmy Microsoft"
-description: "Narzędzie do zarządzania urządzeniami Centrum IoT Azure CLI Centrum iothub explorer, bezpośrednie metod i dwie potrzeby opcji zarządzania właściwości."
+title: Azure IoT zarządzanie urządzeniami z Centrum iothub explorer | Dokumentacja firmy Microsoft
+description: Narzędzie do zarządzania urządzeniami Centrum IoT Azure CLI Centrum iothub explorer, bezpośrednie metod i dwie potrzeby opcji zarządzania właściwości.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "Zarządzanie urządzeniami iot platformy Azure, zarządzanie urządzeniami Centrum azure iot, urządzenia iot zarządzania, zarządzanie urządzeniami Centrum iot"
+tags: ''
+keywords: Zarządzanie urządzeniami iot platformy Azure, zarządzanie urządzeniami Centrum azure iot, urządzenia iot zarządzania, zarządzanie urządzeniami Centrum iot
 ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: xshi
-ms.openlocfilehash: 02d3241ae4ae515a8c2deaa14f50b5b7dbd4766f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e22c321e896abe8d5eb659866256942099cac2d9
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>Użyj Eksploratora Centrum iothub do zarządzania urządzeniami Centrum IoT Azure
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 01/18/2018
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [Centrum iothub explorer](https://github.com/azure/iothub-explorer) to narzędzie interfejsu wiersza polecenia, które jest uruchamiane na hoście komputera do zarządzania tożsamościami urządzenia w rejestrze Centrum IoT. Pochodzi on z opcjami zarządzania, które służy do wykonywania różnych zadań.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 | Opcja zarządzania          | Zadanie                                                                                                                            |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------|
@@ -40,8 +42,7 @@ ms.lasthandoff: 01/18/2018
 
 Aby uzyskać bardziej szczegółowe wyjaśnienia dotyczące różnic oraz wskazówki dotyczące używania tych opcji, zobacz [wskazówki komunikację urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) i [wskazówki dotyczące komunikacji chmury do urządzenia](iot-hub-devguide-c2d-guidance.md).
 
-> [!NOTE]
-> Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Centrum IoT utrzymuje dwie urządzenia, dla każdego urządzenia, które nawiązuje z nim połączenie. Aby uzyskać więcej informacji na temat twins urządzenia, zobacz [wprowadzenie twins urządzenia](iot-hub-node-node-twin-getstarted.md).
+Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Centrum IoT utrzymuje dwie urządzenia, dla każdego urządzenia, które nawiązuje z nim połączenie. Aby uzyskać więcej informacji na temat twins urządzenia, zobacz [wprowadzenie twins urządzenia](iot-hub-node-node-twin-getstarted.md).
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 

@@ -1,25 +1,25 @@
 ---
-title: "Uruchom zadania równolegle efektywnie - korzystać z zasobów obliczeniowych partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Zwiększenie wydajności i zredukowania kosztów przy użyciu mniejszej liczby węzłów obliczeniowych i uruchamianie równoczesnych zadań w każdym węźle w puli partii zadań Azure"
+title: Uruchom zadania równolegle efektywnie - korzystać z zasobów obliczeniowych partii zadań Azure | Dokumentacja firmy Microsoft
+description: Zwiększenie wydajności i zredukowania kosztów przy użyciu mniejszej liczby węzłów obliczeniowych i uruchamianie równoczesnych zadań w każdym węźle w puli partii zadań Azure
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eae6359b5fb36bd0317391ce2330afb7dd7bfe3b
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 5106bbbb073908af7e7e8f045fa6fb60e8a306f4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Węzły obliczeniowe uruchamiania zadań jednocześnie, aby zapewnić maksymalne użycie usługi partia zadań 
 
@@ -123,7 +123,7 @@ Drugi uruchomienie przedstawiono przykładowe znaczny spadek czas trwania zadani
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 ### <a name="batchlabs-heat-map"></a>Mapa cieplna BatchLabs
 [BatchLabs][batch_labs] to bezpłatne, bogate w funkcje, autonomiczne narzędzie klienta pomagające tworzyć, debugować i monitorować aplikacje usługi Azure Batch. Zawiera BatchLabs *Mapa cieplna* funkcja, która umożliwia wizualizację wykonywania zadania. Jeśli w przypadku wykonywania [ParallelTasks] [ parallel_tasks_sample] przykładowej aplikacji, można użyć funkcji Mapa cieplna można łatwo przedstawić wizualnie wykonywanie zadań równoległych w każdym węźle.
 

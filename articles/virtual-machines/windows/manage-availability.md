@@ -1,8 +1,8 @@
 ---
-title: "Zarządzaj dostępnością maszyn wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Używanie wielu maszyn wirtualnych, aby zapewnić wysoką dostępność dla aplikacji systemu Windows na platformie Azure"
+title: Zarządzaj dostępnością maszyn wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Używanie wielu maszyn wirtualnych, aby zapewnić wysoką dostępność dla aplikacji systemu Windows na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 editor: tysonn
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: badc7758cf852772bbf1b43b729e517432a2e681
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 7631205943efc827edd80d3a89ea68804d94153d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Zarządzaj dostępnością maszyn wirtualnych systemu Windows na platformie Azure 
 

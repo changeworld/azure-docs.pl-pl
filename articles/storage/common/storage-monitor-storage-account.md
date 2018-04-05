@@ -1,8 +1,8 @@
 ---
-title: "Jak monitorować konta usługi Azure Storage | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak monitorować konto magazynu na platformie Azure za pomocą portalu Azure."
+title: Jak monitorować konta usługi Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować konto magazynu na platformie Azure za pomocą portalu Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ffc7d46bbfa4db47a47e416c395efdfc451cadc1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitor konta magazynu w portalu Azure
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 01/24/2018
 > Brak kosztów związanych z badanie danych monitorowania w portalu Azure. Aby uzyskać więcej informacji, zobacz [analizy magazynu i rozliczeń](/rest/api/storageservices/Storage-Analytics-and-Billing).
 >
 > Usługa pliki Azure obecnie obsługuje metryki analityka magazynu, ale jeszcze nie obsługuje rejestrowania.
->
-> Konta magazynu z typem replikacji magazyn Strefowo nadmiarowy (ZRS) obsługują metryki i rejestrowania. Poprzednie kontami ZRS, które zostały zmienione ZRS klasycznego, wykonaj nie metryki pomocy technicznej lub rejestrowania. Aby uzyskać więcej informacji o ZRS, zobacz [magazyn Strefowo nadmiarowy](storage-redundancy.md#zone-redundant-storage). 
 > 
 > Aby uzyskać szczegółowy przewodnik przy użyciu analizy magazynu i innych narzędzi do identyfikacji, diagnozowanie i rozwiązywanie problemów związanych z usługą Azure Storage, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Magazyn Microsoft Azure](../storage-monitoring-diagnosing-troubleshooting.md).
 >
@@ -47,7 +45,7 @@ ms.lasthandoff: 01/24/2018
 
    Istnieją dwa typy metryk, które można włączyć dla poszczególnych usług, które są domyślnie włączone dla nowego konta magazynu:
 
-   * **Łączny**: umożliwia zbieranie metryk, takich jak wejście/wyjście, dostępności, opóźnienia i Powodzenie wartości procentowe. Te metryki są agregowane dla obiektu blob, kolejek, tabel i usług plików.
+   * **Łączny**: umożliwia zbieranie metryk, takich jak wejście/wyjście, dostępności, opóźnienia i Powodzenie wartości procentowe. Te metryki są agregowane dla obiektów blob, kolejek, tabel i usług plików.
    * **Dla interfejsu API**: oprócz agregacji miar, zbiera ten sam zestaw metryki dla każdej operacji magazynu w interfejsie API usługi Azure Storage.
 
    Aby skonfigurować zasady przechowywania danych, przenieść **przechowywania (dni)** suwak lub wprowadź liczbę dni przechowywania od 1 do 365 danych. Wartość domyślna dla nowych kont magazynu wynosi siedem dni. Jeśli nie chcesz ustawić zasady przechowywania, wprowadź wartość zero. Jeśli nie ma żadnych zasad przechowywania, jest można usunąć dane monitorowania.
@@ -154,7 +152,7 @@ Dzienniki diagnostyczne są zapisywane w kontenerze obiektu blob o nazwie $logs 
 
 Informacje o uzyskiwaniu dostępu do kontenera $logs, zobacz [Włączanie rejestrowania magazynu i uzyskiwanie dostępu do danych dziennika](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Uzyskać więcej informacji na temat [metryki, rejestrowania i rozliczeń](../storage-analytics.md) analizy magazynu.
 * [Włącz dane metryk usługi Azure Storage metryki i widoku](../storage-enable-and-view-metrics.md) przy użyciu programu PowerShell i programowo w języku C#.

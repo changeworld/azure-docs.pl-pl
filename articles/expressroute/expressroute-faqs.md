@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 03/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1893601f9fe9018cb51e6e31b6f9c397a0da38da
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -70,11 +70,12 @@ Obsługuje ExpressRoute [trzy domeny routingu](expressroute-circuit-peerings.md)
 
 * Power BI
 * Dynamics 365 Finanse i operacji (wcześniej znane jako Dynamics AX Online)
-* Większość usług Azure, z następującymi kilka wyjątków:
-  * CDN
-  * Visual Studio Team Services testów obciążenia
-  * Multi-Factor Authentication
-  * Traffic Manager
+* Większość usług Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć do sprawdzenia pomocy technicznej.<br>
+  Następujące usługi nie są obsługiwane:
+    * CDN
+    * Visual Studio Team Services testów obciążenia
+    * Multi-Factor Authentication
+    * Traffic Manager
 
 ### <a name="microsoft-peering"></a>Komunikacja równorzędna firmy Microsoft
 
@@ -87,7 +88,8 @@ Obsługuje ExpressRoute [trzy domeny routingu](expressroute-circuit-peerings.md)
 * Przy użyciu [filtry tras](#route-filters-for-microsoft-peering), możesz uzyskać dostęp do tej samej usługi publiczne z komunikacji równorzędnej firmy Microsoft:
   * Power BI
   * Dynamics 365 Finanse i operacje
-  * Większość usług Azure, z następującymi kilka wyjątków:
+  * Większość usług Azure są obsługiwane. Sprawdź, czy bezpośrednio z usługą, który chcesz użyć do sprawdzenia pomocy technicznej.<br>
+  Następujące usługi nie są obsługiwane:
     * CDN
     * Visual Studio Team Services testów obciążenia
     * Multi-Factor Authentication

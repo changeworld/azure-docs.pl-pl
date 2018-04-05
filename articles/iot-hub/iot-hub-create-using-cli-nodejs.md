@@ -1,24 +1,24 @@
 ---
-title: "Tworzenie Centrum IoT przy użyciu wiersza polecenia platformy Azure (azure.js) | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć Centrum Azure IoT przy użyciu wiersza polecenia platformy Azure i platform (azure.js)."
+title: Tworzenie Centrum IoT przy użyciu wiersza polecenia platformy Azure (azure.js) | Dokumentacja firmy Microsoft
+description: Jak utworzyć Centrum Azure IoT przy użyciu wiersza polecenia platformy Azure i platform (azure.js).
 services: iot-hub
 documentationcenter: .net
-author: BeatriceOltean
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
-ms.author: boltean
-ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/01/2018
+ms.author: kgremban
+ms.openlocfilehash: 7e761ba66f4b28dd7cc59dc8998c23810dd2b7d1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Tworzenie Centrum IoT przy użyciu wiersza polecenia platformy Azure
 
@@ -90,8 +90,8 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 * **Grupa zasobów**. Nazwa grupy zasobów. Format jest bez uwzględniania wielkości liter alfanumeryczne, podkreślenia i łączniki, długość 1-64.
 * **name**. Nazwa centrum IoT, który ma zostać utworzony. Format jest rozróżniana wielkość znaków alfanumerycznych i łącznik, 3 – 50 długości.
 * **Lokalizacja**. Lokalizacja (region/centrum danych azure) do obsługi administracyjnej Centrum IoT.
-* **Nazwa jednostki SKU**. Nazwa jednostki sku, jeden z: [F1, S1, S2, S3]. Aby uzyskać pełną listę najnowszych można znaleźć na stronie cenowa Centrum IoT.
-* **jednostki**. Liczba jednostek elastycznie. Zakres: F1 [1-1]: S1, S2 [1 – 200]: [1 – 10] S3. Jednostki Centrum IoT bazują na łącznej liczbie komunikatów i liczbę urządzeń, którymi chcesz się połączyć.
+* **Nazwa jednostki SKU**. Nazwa jednostki sku, jeden z: [F1, S1, S2, S3]. Aby uzyskać szczegółowe informacje o każdej jednostki sku, zobacz [cennik Centrum IoT Azure](https://azure.microsoft.com/pricing/details/iot-hub/). Obecnie warstwy podstawowej są dostępne tylko za pośrednictwem portalu. 
+* **jednostki**. Liczba jednostek elastycznie. Aby uzyskać więcej informacji dotyczących ograniczeń jednostki, zobacz [cennik Centrum IoT Azure](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 

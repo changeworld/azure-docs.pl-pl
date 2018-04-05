@@ -1,67 +1,57 @@
 ---
-title: "Porównanie Centrum IoT Azure do usługi Azure Event Hubs | Dokumentacja firmy Microsoft"
-description: "Porównanie usług Centrum IoT i Azure centra zdarzeń wyróżnianie różnice funkcjonalne i przypadki użycia. Porównanie zawiera obsługiwanych protokołów, zarządzanie urządzeniami, monitorowania i przekazywania plików."
+title: Porównanie Centrum IoT Azure do usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+description: Porównanie usług Centrum IoT i Azure centra zdarzeń wyróżnianie różnice funkcjonalne i przypadki użycia. Porównanie zawiera obsługiwanych protokołów, zarządzanie urządzeniami, monitorowania i przekazywania plików.
 services: iot-hub
-documentationcenter: 
-author: fsautomata
+documentationcenter: ''
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aeddea62-8302-48e2-9aad-c5a0e5f5abe9
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
-ms.author: elioda
-ms.openlocfilehash: b515e05d16dda83c7d865113d5d3578c44be084f
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.date: 04/01/2018
+ms.author: kgremban
+ms.openlocfilehash: 303a2bde0a1e0b25ca6eb145e7b0cd6c91fff351
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Porównanie Centrum IoT Azure i usługi Azure Event Hubs
-Jedną z głównych zastosowania Centrum IoT jest zbieranie danych telemetrycznych z urządzeń. Z tego powodu Centrum IoT często jest porównywany z [Azure Event Hubs][Azure Event Hubs]. Podobnie jak Centrum IoT Event Hubs to usługa, która umożliwia transfer danych przychodzących zdarzenia i dane telemetryczne do chmury w bardzo dużej skali, z małymi opóźnieniami i wysoką niezawodnością przetwarzania zdarzeń.
 
-Jednak usługi mają wiele różnice, które są szczegółowo opisane w poniższej tabeli:
+Zarówno Centrum IoT Azure i usługi Azure Event Hubs są usługi w chmurze, które mogą pozyskiwania dużych ilości danych i przetwarzania lub przechowywania tych danych biznesowych. Te dwie usługi są podobne, że obsługuje obie przetwarzania danych zdarzenia i dane telemetryczne z małymi opóźnieniami i wysoką niezawodnością. Jednak tylko Centrum IoT został opracowany z określonymi możliwościami potrzebnych do obsługi na dużą skalę internet rzeczy scenariuszy. 
 
-| Obszar | Usługa IoT Hub | Usługa Event Hubs |
-| --- | --- | --- |
-| Wzorce komunikacji | Umożliwia [komunikację urządzenia do chmury] [ lnk-d2c-guidance] (wiadomości, plik przekazywania oraz właściwości zgłoszone) i [komunikacji chmury do urządzenia] [ lnk-c2d-guidance] (bezpośrednie metod, odpowiednie właściwości wiadomości). |Tylko umożliwia transfer danych przychodzących zdarzeń (zazwyczaj wzięta pod uwagę scenariusze urządzenia do chmury). |
-| Informacje o stanie urządzenia | [Urządzenie twins] [ lnk-twins] można przechowywać i zapytania o informacje o stanie urządzeń. | Mogą być przechowywane żadne informacje o stanie urządzeń. |
-| Obsługa protokołu urządzeń |Obsługuje MQTT, MQTT przez protokół WebSockets, AMQP, AMQP za pośrednictwem protokołu WebSockets i HTTPS. Ponadto Centrum IoT współpracuje z [brama protokołu Azure IoT][lnk-azure-protocol-gateway], bramy można dostosowywać protokołu wykonania obsługuje protokoły niestandardowe. |Obsługa protokołu AMQP, AMQP za pośrednictwem protokołu WebSockets i HTTPS. |
-| Bezpieczeństwo |Miejsce na urządzenie tożsamości i kontroli dostępu odwoływalny. Zobacz [zabezpieczeń części przewodnika deweloperów Centrum IoT]. |Udostępnia centra zdarzeń na poziomie [udostępnionych zasady dostępu][Event Hubs - security], z ograniczoną odwołania obsługuje za pośrednictwem [zasad wydawcy][Event Hubs publisher policies]. Rozwiązania IoT często są wymagane do zaimplementowania niestandardowego rozwiązania do obsługi poświadczenia na urządzeniu i środki ochrony przed fałszowaniem. |
-| Monitorowanie operacji |Umożliwia rozwiązania IoT subskrybować bogaty zestaw urządzenia tożsamości zarządzania i łączność zdarzeń, takich jak błędy uwierzytelniania poszczególnych urządzeń, ograniczania i wyjątków zły format. Zdarzenia te umożliwiają szybkie identyfikowanie problemów z łącznością na poziomie poszczególnych urządzeń. |Przedstawia tylko agregacji metryki. |
-| Skalowanie |Jest zoptymalizowana pod kątem obsługi miliony równocześnie połączonych urządzeń. |Gazomierzy połączeń zgodnie [przydziały Azure Event Hubs][Azure Event Hubs quotas]. Z drugiej strony Usługa Event Hubs umożliwia określenie partycji dla każdej wiadomości wysyłane. |
-| Zestawy SDK urządzenia |Udostępnia [urządzenia zestawów SDK] [ Azure IoT SDKs] dla wielu różnych platformach i językach, oprócz bezpośrednich MQTT AMQP i interfejsy API protokołu HTTPS. |Jest obsługiwane na .NET, Java i C, oprócz interfejsów wysyłania protokołu AMQP i HTTPS. |
-| Przekazywanie pliku |Umożliwia rozwiązania IoT przekazywania plików z urządzenia do chmury. Zawiera punkt końcowy powiadomienia pliku integracji przepływu pracy i operacji monitorowania kategorii w celu obsługi debugowania. | Nie jest obsługiwane. |
-| Rozsyłanie wiadomości do wielu punktów końcowych | Maksymalnie 10 niestandardowe punkty końcowe są obsługiwane. Reguły określają, jak komunikaty są kierowane do niestandardowe punkty końcowe. Aby uzyskać więcej informacji, zobacz [wysyłania i odbierania wiadomości z Centrum IoT][lnk-devguide-messaging]. | Wymaga dodatkowego kodu napisać i hostowanych na potrzeby rozsyłania komunikatów. |
+Centrum IoT Azure jest brama chmury, który jest podłączany urządzeń i zbiera dane dotyczące biznesowych i automatyzacji. Go łatwo strumienia danych w chmurze i Zarządzaj swoimi urządzeniami na dużą skalę. Ważne różnicą między centrum IoT i innych usług wprowadzanie danych jest, że Centrum IoT zawiera funkcje, które wzbogacić relacji między urządzeniami i systemy zaplecza. Komunikacja dwukierunkowa możliwości oznacza podczas odbierania danych z urządzeń, można również wysyłane wiadomości z powrotem do urządzenia, aby zaktualizować właściwości lub wywoływania akcji. Tożsamości na poziomie urządzeń pomaga w zabezpieczeniu systemu. Rozproszonego przetwarzania logiki usługi chmury przenosi na krawędzi urządzenia.
 
-Podsumowując nawet jeżeli tylko przypadek użycia jest przychodzący telemetrii urządzenia do chmury Centrum IoT zapewnia usługi, której celem jest łączność urządzenia IoT. Nadal rozwiń atrakcyjne dotyczących następujących scenariuszy z funkcji specyficznych dla IoT. Centra zdarzeń jest przeznaczona dla zdarzeń wejściowych w bardzo dużej skali, zarówno w kontekście między centrum danych i centrum danych wewnątrz scenariuszy.
+[Usługa Azure Event Hubs] [ Azure Event Hubs] jest usługą wprowadzanie zdarzeń, która może przetwarzania i przechowywania dużych ilości danych telemetrycznych. Centra zdarzeń zaprojektowano pod kątem wprowadzanie zdarzeń w bardzo dużej skali, zarówno w kontekście między centrum danych i centrum danych wewnątrz scenariuszy, ale nie zapewnia rozbudowane możliwości specyficznych dla IoT, które są dostępne z Centrum IoT. Z tego względu nie zaleca się centra zdarzeń z rozwiązania IoT. 
 
-Nie jest rzadko używać Centrum IoT i centra zdarzeń w tym samym rozwiązaniu. Centrum IoT obsługuje komunikację urządzenia do chmury, a usługa Event Hubs obsługuje zdarzenia późniejszym etapie ruch przychodzący do aparatami przetwarzania w czasie rzeczywistym.
+Poniższa tabela zawiera szczegółowe informacje o dwóch warstw Centrum IoT porównanie do usługi Event Hubs podczas oceniania ich możliwości IoT. Aby uzyskać więcej informacji na temat warstwy standardowa i podstawowa z Centrum IoT, zobacz [Wybieranie prawo warstwy Centrum IoT][lnk-scaling].
 
-### <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat planowania wdrożenia Centrum IoT, zobacz [skalowanie, wysokiej dostępności i odzyskiwania po awarii][lnk-scaling].
+| Możliwość IoT | Centrum IoT warstwy standardowa | Centrum IoT warstwa podstawowa | Event Hubs |
+| --- | --- | --- | --- |
+| Urządzenia do chmury do obsługi komunikatów | ![Zaznacz][1] | ![Zaznacz][1] | ![Zaznacz][1] |
+| Protokoły: AMQP HTTPS, protokołu AMQP, przez protokół websockets | ![Zaznacz][1] | ![Zaznacz][1] | ![Zaznacz][1] |
+| Protokoły: MQTT, MQTT przez protokół websockets | ![Zaznacz][1] | ![Zaznacz][1] |  |
+| Tożsamość na urządzenie | ![Zaznacz][1] | ![Zaznacz][1] |  |
+| Przekazywanie plików z urządzeń | ![Zaznacz][1] | ![Zaznacz][1] |  |
+| Usługa Device Provisioning | ![Zaznacz][1] | ![Zaznacz][1] |  |
+| Obsługa wiadomości chmury do urządzenia | ![Zaznacz][1] |  |  |
+| Dwie urządzeń i zarządzanie urządzeniami | ![Zaznacz][1] |  |  |
+| IoT Edge | ![Zaznacz][1] |  |  |
 
-Aby dokładniej analizować możliwości Centrum IoT, zobacz:
+Nawet jeśli tylko przypadek użycia jest wprowadzanie danych urządzenia do chmury, zdecydowanie zaleca się przy użyciu Centrum IoT, ponieważ zapewnia to usługa, która jest przeznaczona dla łączności urządzenia IoT. 
 
-* [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie urządzenia brzegowe AI krawędzi IoT Azure][lnk-iotedge]
+### <a name="next-steps"></a>Kolejne kroki
 
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
+Aby dokładniej analizować możliwości Centrum IoT, zobacz [Centrum IoT — przewodnik dewelopera][lnk-devguide]
+
 
 [Azure Event Hubs]: ../event-hubs/event-hubs-what-is-event-hubs.md
-[zabezpieczeń części przewodnika deweloperów Centrum IoT]: iot-hub-devguide-security.md
-[Event Hubs - security]: ../event-hubs/event-hubs-authentication-and-security-model-overview.md
-[Event Hubs publisher policies]: ../event-hubs/event-hubs-features.md#event-publishers
-[Azure Event Hubs quotas]: ../event-hubs/event-hubs-quotas.md
-[Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks
-[lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
-
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-devguide-messaging]: iot-hub-devguide-messaging.md
+
+<!--Image references-->
+[1]: ./media/iot-hub-compare-event-hubs/ic195031.png

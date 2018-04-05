@@ -7,6 +7,8 @@
 
 Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Centrum IoT utrzymuje dwie urządzenia, dla każdego urządzenia, które nawiązuje z nim połączenie.
 
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
+
 Użyj twins urządzenia do:
 
 * Przechowywania metadanych urządzenie z Twojego zaplecza rozwiązania.
@@ -14,8 +16,7 @@ Użyj twins urządzenia do:
 * Synchronizuj stan długotrwałe przepływów pracy (takich jak aktualizacje oprogramowania układowego i konfiguracji), między aplikacją urządzenia i aplikacji zaplecza.
 * Zapytanie z metadanych urządzeniami, konfiguracji lub stanu.
 
-> [!NOTE]
-> Twins urządzenia są przeznaczone do synchronizacji i do wykonywania zapytań w konfiguracji urządzeń i warunki. Więcej informacji o tym, kiedy należy używać twins urządzenia znajdują się w [zrozumieć urządzenia twins][lnk-twins].
+Twins urządzenia są przeznaczone do synchronizacji i do wykonywania zapytań w konfiguracji urządzeń i warunki. Więcej informacji o tym, kiedy należy używać twins urządzenia znajdują się w [zrozumieć urządzenia twins][lnk-twins].
 
 Twins urządzeń są przechowywane w Centrum IoT i zawierają:
 

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 95ca66f34548f86e25c1e7af331fa88797847906
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 11c737adb6578437a3708bb97397a24114e39585
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Tworzenie i wdrażanie modułu krawędzi IoT C# w symulowane urządzenie — w wersji preview
 
@@ -223,6 +223,7 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
+   Aby znaleźć nazwę użytkownika, hasło i zaloguj się za serwer do użycia w tym poleceniu, przejdź do [Azure portal] (https://portal.azure.com). Z **wszystkie zasoby**, kliknij Kafelek przypadku kontenera platformy Azure otworzyć jego właściwości, a następnie kliknij przycisk **klucze dostępu**. Skopiuj wartości w **Username**, **hasło**, i **logowania serwera** pola. 
 
 2. W kodzie VS explorer, kliknij prawym przyciskiem myszy **module.json** plik i kliknij przycisk **kompilacji i Push IoT krawędzi obrazu Docker modułu**. W polu listy rozwijanej wyskakujących w górnej części okna kodu VS wybierz platformy kontenera albo **amd64** dla kontenera systemu Linux lub **windows amd64** kontenera systemu Windows. Kod VS potem kompiluje kod, containerize `FilterModule.dll` i wypchnąć go do określonego rejestru kontenera.
 

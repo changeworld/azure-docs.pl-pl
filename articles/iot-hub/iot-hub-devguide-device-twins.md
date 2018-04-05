@@ -1,11 +1,11 @@
 ---
-title: "Zrozumienie twins urządzenia Azure IoT Hub | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera - Użyj twins urządzenia do synchronizacji danych stanu i konfiguracji między centrum IoT i urządzeniami"
+title: Zrozumienie twins urządzenia Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera - Użyj twins urządzenia do synchronizacji danych stanu i konfiguracji między centrum IoT i urządzeniami
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8a3da072-a5bf-46e5-8de4-24cdbb2a03fa
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,16 +15,19 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bf2d24d0d5eadfea5ec8fd239a115c05a54fe99
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 01e94298aa3691d5bce33a12745b54fd398c7ad3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>W zrozumieniu i użytkowaniu twins urządzenie w Centrum IoT
 
-*Urządzenie twins* są dokumentów JSON, w których są przechowywane informacje o stanie urządzenie tym metadanych, konfiguracji i warunki. Centrum IoT Azure obsługuje dwie urządzenia, dla każdego urządzenia, na którym jest nawiązywane połączenie z Centrum IoT. W tym artykule opisano:
+*Urządzenie twins* są dokumentów JSON, w których są przechowywane informacje o stanie urządzenie tym metadanych, konfiguracji i warunki. Centrum IoT Azure obsługuje dwie urządzenia, dla każdego urządzenia, na którym jest nawiązywane połączenie z Centrum IoT. 
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
+W tym artykule opisano:
 
 * Struktura dwie urządzenia: *tagi*, *żądany* i *zgłosił właściwości*.
 * Operacje, które aplikacje urządzenia i zaplecza, które można wykonywać na twins urządzenia.
@@ -346,7 +349,7 @@ Inne tematy referencyjne w Podręczniku dewelopera Centrum IoT obejmują:
 * [Centrum IoT zapytania języka twins urządzenia, zadania i rozsyłania wiadomości] [ lnk-query] artykule język zapytań Centrum IoT można pobrać z Centrum IoT informacji o twins urządzenia i zadania.
 * [Obsługa MQTT Centrum IoT] [ lnk-devguide-mqtt] artykuł zawiera więcej informacji na temat obsługi protokołu MQTT Centrum IoT.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz wiesz już, o twins urządzenie, może Cię zainteresować następujące tematy przewodnik dewelopera Centrum IoT:
 
 * [Wywoływanie metody bezpośrednio na urządzeniu][lnk-methods]

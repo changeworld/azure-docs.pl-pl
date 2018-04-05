@@ -1,24 +1,24 @@
 ---
-title: "Utrwalanie wyników lub dzienniki z zakończonych zadań i zadań w magazynie danych - partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o różnych opcjach trwałych danych wyjściowych z zadań i zadań wsadowych. Można ją utrwalić danych do magazynu Azure lub do innego magazynu danych."
+title: Utrwalanie wyników lub dzienniki z zakończonych zadań i zadań w magazynie danych - partii zadań Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o różnych opcjach trwałych danych wyjściowych z zadań i zadań wsadowych. Można ją utrwalić danych do magazynu Azure lub do innego magazynu danych.
 services: batch
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb8b1ca3514e27221e95cb2def823c8f89d151e5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-output"></a>Utrwalanie danych wyjściowych zadań i zadań podrzędnych
 
@@ -79,7 +79,7 @@ Użyj interfejsu API usługi partii do utrzymania produkty wyjściowe kiedy zada
 - Aby zachować dane do kontenera usługi Magazyn Azure o nazwie zgodnie z [standard konwencje pliku wsadowego](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 > [!NOTE]
-> Usługi interfejsu API partii nie obsługuje trwałych danych z zadań uruchomionych w pulach utworzone z konfiguracją usługi w chmurze. Aby uzyskać informacji o zadaniu utrwalanie dane wyjściowe z pul systemem konfiguracji usługi w chmurze, zobacz [utrwalenia danych i zadań do magazynu Azure z biblioteką konwencje pliku wsadowego dla platformy .NET utrwalić](batch-task-output-file-conventions.md)
+> Usługi interfejsu API partii nie obsługuje trwałych danych z zadań uruchomionych w pulach utworzone z konfiguracją usługi w chmurze. Aby uzyskać informacji o zadaniu utrwalanie dane wyjściowe z pul systemem konfiguracji usługi w chmurze, zobacz [utrwalenia danych i zadań do magazynu Azure z biblioteką konwencje pliku wsadowego dla platformy .NET utrwalić ](batch-task-output-file-conventions.md)
 > 
 > 
 
@@ -113,11 +113,11 @@ Można zaimplementować pliku konwencje nazewnictwa samodzielnie sprawdzonych sc
 
 Można też wdrożyć własne rozwiązania przeniesienia całego pliku. Użyj tego podejścia, gdy:
 
-- Chcesz zachować dane zadania w magazynie danych innych niż Azure Storage. Aby przekazać pliki do magazynu danych, takich jak bazy danych Azure SQL lub danych Azure, należy utworzyć niestandardowego skryptu lub pliku wykonywalnego do przekazania do tej lokalizacji. Można następnie wywołać ją w wierszu polecenia po uruchomieniu podstawowego pliku wykonywalnego. Na przykład w węźle systemu Windows, należy wywołać następujące dwa polecenia:`doMyWork.exe && uploadMyFilesToSql.exe`
+- Chcesz zachować dane zadania w magazynie danych innych niż Azure Storage. Aby przekazać pliki do magazynu danych, takich jak bazy danych Azure SQL lub danych Azure, należy utworzyć niestandardowego skryptu lub pliku wykonywalnego do przekazania do tej lokalizacji. Można następnie wywołać ją w wierszu polecenia po uruchomieniu podstawowego pliku wykonywalnego. Na przykład w węźle systemu Windows, należy wywołać następujące dwa polecenia: `doMyWork.exe && uploadMyFilesToSql.exe`
 - Chcesz przekazywanie wskazanie wyboru lub wczesne początkowej wyników.
 - Chcesz zachować kontrolę nad obsługi błędów. Na przykład można zaimplementować własne rozwiązanie, jeśli chcesz użyć akcje zależności zadań do wykonania niektórych akcji przekazywania na podstawie kodów zakończenia określonego zadania. Aby uzyskać więcej informacji na akcje zależności zadań, zobacz [utworzyć zależności zadań do wykonywania zadań, które są zależne od innych zadań](batch-task-dependencies.md). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Eksplorowania przy użyciu nowych funkcji w interfejsie API partii usługi do utrwalenia danych zadania w [utrwalanie zadań dane do magazynu Azure z instancją usług interfejsu API](batch-task-output-files.md).
 - Więcej informacji na temat korzystania z biblioteki konwencje pliku wsadowego dla platformy .NET w [utrwalenia danych i zadań do magazynu Azure z biblioteką konwencje pliku wsadowego dla platformy .NET utrwalić ](batch-task-output-file-conventions.md).

@@ -1,25 +1,25 @@
 ---
-title: "Użyj usługi Azure Active Directory do uwierzytelniania rozwiązań usługi partia zadań Azure | Dokumentacja firmy Microsoft"
-description: "Wsadowe obsługuje usługi Azure AD do uwierzytelniania z usługi partia zadań."
+title: Użyj usługi Azure Active Directory do uwierzytelniania rozwiązań usługi partia zadań Azure | Dokumentacja firmy Microsoft
+description: Wsadowe obsługuje usługi Azure AD do uwierzytelniania z usługi partia zadań.
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 8ad9c3a779ca52140a78ae905e4825f3144976aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: MT
+ms.openlocfilehash: e2d97929ada820a1ce969c59fb69b3518fe2eb6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie partii rozwiązań usług w usłudze Active Directory
 
@@ -138,7 +138,7 @@ Do uwierzytelniania za pomocą nazwy głównej usługi, należy przypisać rolę
 
 1. W portalu Azure przejdź do konta usługi partia zadań używanych przez aplikację.
 2. W **ustawienia** bloku dla konta usługi partia zadań, wybierz opcję **kontroli dostępu (IAM)**.
-3. Kliknij przycisk **Dodaj** przycisku. 
+3. Kliknij przycisk **Dodaj**. 
 4. Z **roli** listy rozwijanej, wybierz opcję _współautora_ lub _czytnika_ roli aplikacji. Aby uzyskać więcej informacji o tych ról, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](../active-directory/role-based-access-control-what-is.md).  
 5. W **wybierz** wprowadź nazwę aplikacji. Wybierz aplikację z listy, a następnie kliknij przycisk **zapisać**.
 

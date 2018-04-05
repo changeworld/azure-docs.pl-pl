@@ -1,24 +1,24 @@
 ---
-title: "Błąd i obsługi dla usługi Logic Apps w usłudze Azure wyjątków | Dokumentacja firmy Microsoft"
-description: "Wzorce dla błędów i obsługa wyjątków w aplikacji logiki."
+title: Błąd i obsługi dla usługi Logic Apps w usłudze Azure wyjątków | Dokumentacja firmy Microsoft
+description: Wzorce dla błędów i obsługa wyjątków w aplikacji logiki.
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: dereklee
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 2ae4f0ae9782ada23089d364e8a1700144ef5ff7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Obsługa błędów i wyjątków w aplikacji logiki
 
@@ -55,9 +55,9 @@ Gdy nie definiować zasady ponawiania w **retryPolicy** sekcji aplikację logiki
         "retryPolicy" : {
             "type": "exponential",
             "count": 4,
-            "interval": "PT7.5S",
+            "interval": "PT7S",
             "minimumInterval": "PT5S",
-            "maximumInterval": "PT45S"
+            "maximumInterval": "PT1H"
         }
     },
     "runAfter": {}
@@ -80,7 +80,7 @@ Jeśli ustawisz **retryPolicy** do **stałej**, ta zasada ponowi próbę nieudan
 | Nazwa elementu | Wymagane | Typ | Opis |
 | ------------ | -------- | ---- | ----------- |
 | type | Yes | Ciąg | **Stałe** |
-| liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
+| Liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
 | interval | Yes | Ciąg | Interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od PT5S i PT1D | 
 ||||| 
 
@@ -93,7 +93,7 @@ Jeśli ustawisz **retryPolicy** do **wykładniczej**, ta zasada ponawia próby n
 | Nazwa elementu | Wymagane | Typ | Opis |
 | ------------ | -------- | ---- | ----------- |
 | type | Yes | Ciąg | **Wykładniczy** |
-| liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90  |
+| Liczba | Yes | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90  |
 | interval | Yes | Ciąg | Interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od PT5S i PT1D. |
 | minimumInterval | Nie | Ciąg | Minimalny interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od PT5S i **interwał** |
 | maximumInterval | Nie | Ciąg | Minimalny interwał ponawiania w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), który musi należeć do zakresu od **interwał** i PT1D | 
@@ -177,7 +177,7 @@ Mimo że przechwytywanie błędów z zakresu jest przydatne, będą również ch
 
  **@result()** Funkcja przyjmuje jeden parametr (nazwa zakresu) i zwraca tablicę wszystkich akcji wyników w tym zakresie. Te obiekty działania obejmują takie same atrybuty jak  **@actions()** obiektu, na przykład akcji czas rozpoczęcia, godziny zakończenia, stanu, danych wejściowych, identyfikatorów korelacji i dane wyjściowe. Aby wysłać kontekst dla akcji, które nie powiodło się w zakresie, można łatwo skojarzyć  **@result()** działać z **runAfter** właściwości.
 
-Do uruchomienia akcji *dla każdego* akcji w zakresie, którego **nie powiodło się** wyników, aby filtrować tablicy wyniki do akcji nie powiodło się, służący  **@result()** z  **[tablicy filtrów](../connectors/connectors-native-query.md)**  akcji i  **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)**  pętli. Możesz pobrać tablicy filtrowane wyniki i wykonania czynności dla każdego błędu przy użyciu funkcji **ForEach** pętli. 
+Do uruchomienia akcji *dla każdego* akcji w zakresie, którego **nie powiodło się** wyników, aby filtrować tablicy wyniki do akcji nie powiodło się, służący  **@result()** z **[tablicy filtrów](../connectors/connectors-native-query.md)** akcji i **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** pętli. Możesz pobrać tablicy filtrowane wyniki i wykonania czynności dla każdego błędu przy użyciu funkcji **ForEach** pętli. 
 
 Oto przykład, a następnie szczegółowy opis, który wysyła żądanie HTTP POST z treści odpowiedzi żadnych akcji, których nie powiodła się w zakresie "My_Scope":
 
@@ -276,7 +276,7 @@ Te wzorce poprzedniej to doskonały sposób na Obsługa błędów i wyjątków w
 
 Aby ocenić stany wykonywania, Monitoruj dzienniki i metryki lub do dowolnego narzędzia monitorowania, które chcesz publikować. Jedną z opcji potencjalnych jest do strumienia wszystkich zdarzeń za pomocą usługi Event Hubs w [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). W Stream Analytics można zapisywać zapytania na żywo na podstawie wszelkie nieprawidłowości, średnie lub błędy z dzienników diagnostycznych. Analiza strumienia służy do wysyłania informacji do innych źródeł danych, takich jak kolejki, tematy, SQL, bazy danych rozwiązania Cosmos Azure lub usługi Power BI.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zobacz, jak klient tworzy błąd obsługi z usługi Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Znajdź więcej Logic Apps przykłady i scenariusze](../logic-apps/logic-apps-examples-and-scenarios.md)

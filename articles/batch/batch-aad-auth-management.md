@@ -1,25 +1,25 @@
 ---
-title: "Użyj usługi Azure Active Directory do uwierzytelniania rozwiązania do zarządzania partii | Dokumentacja firmy Microsoft"
-description: "Aplikacji skompilowanej za pomocą usługi Azure resource manager i dostawca zasobów partii uwierzytelniania za pomocą usługi Azure AD."
+title: Użyj usługi Azure Active Directory do uwierzytelniania rozwiązania do zarządzania partii | Dokumentacja firmy Microsoft
+description: Aplikacji skompilowanej za pomocą usługi Azure resource manager i dostawca zasobów partii uwierzytelniania za pomocą usługi Azure AD.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
-ms.author: tamram
-ms.openlocfilehash: 054e9686a1acae09f4dd3b7d841d82eae1fc88a9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: danlep
+ms.openlocfilehash: a16d60dd48efeced7735562884acd26640d36483
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań do zarządzania partii z usługą Active Directory
 

@@ -1,9 +1,9 @@
 ---
-title: "Omówienie dziennika aktywności platformy Azure | Dokumentacja firmy Microsoft"
-description: "Poznaj dziennika aktywności platformy Azure i jak go używać do zrozumienia zdarzeń występujących w ramach Twojej subskrypcji platformy Azure."
+title: Omówienie dziennika aktywności platformy Azure | Dokumentacja firmy Microsoft
+description: Poznaj dziennika aktywności platformy Azure i jak go używać do zrozumienia zdarzeń występujących w ramach Twojej subskrypcji platformy Azure.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: c274782f-039d-4c28-9ddb-f89ce21052c7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: aef427483d647c53ba45688ce33a75f876115d08
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 **Dziennika aktywności platformy Azure** jest Dziennik subskrypcji, która zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym zakresie danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji na zdarzenia kondycji usługi. Dziennik aktywności była wcześniej znana jako "Dzienników inspekcji" lub "Operacyjne dzienniki", ponieważ zdarzenia płaszczyzny kontroli Raporty Kategoria administracyjna dla subskrypcji. Korzystając z dziennika aktywności, można określić ", co, która i kiedy" dla żadnego zapisu (PUT, POST, DELETE) podejmowaną w odniesieniu do zasobów w ramach subskrypcji. Można także zrozumienie stanu operacji i inne odpowiednie właściwości. Dziennik nie zawiera operacje odczytu (GET) lub operacji dla zasobów korzystających z klasycznego / modelu "RDFE".
@@ -38,7 +38,7 @@ Można pobrać zdarzenia z dziennika aktywności przy użyciu portalu Azure, int
 
 > [!NOTE]
 
->  [Alerty (wersja zapoznawcza)](monitoring-overview-unified-alerts.md) obecnie udostępnia udoskonalone środowisko podczas tworzenia i zarządzania regułami alertów dziennika aktywności.  [Dowiedz się więcej](monitoring-activity-log-alerts-new-experience.md).
+>  [Alerty nowszej)](monitoring-overview-unified-alerts.md) oferuje udoskonalone środowisko, podczas tworzenia i zarządzania nimi aktywności logowania reguł alertów.  [Dowiedz się więcej](monitoring-activity-log-alerts-new-experience.md).
 
 
 Umożliwia wyświetlenie poniższego klipu wideo wprowadzające dziennik aktywności.
@@ -126,7 +126,7 @@ Możesz strumienia dziennika aktywności do Centrum zdarzeń lub przechowywać j
   * Namespace magistrali usług, w którym chcesz Centrum zdarzeń należy utworzyć do przesyłania strumieniowego te zdarzenia.
 
      ![Eksport dziennika aktywności bloku](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
-4. Kliknij przycisk **zapisać** Aby zapisać te ustawienia. Ustawienia są zastosowane natychmiast do subskrypcji.
+4. Kliknij przycisk **zapisać** Aby zapisać te ustawienia. Ustawienia są natychmiastowo stosowane do subskrypcji.
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Konfigurowanie profilów dziennika przy użyciu poleceń cmdlet programu Azure PowerShell
 #### <a name="get-existing-log-profile"></a>Pobierz profil dziennika

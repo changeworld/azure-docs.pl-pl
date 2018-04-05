@@ -5,148 +5,63 @@ services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
-ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 600b66af3b7da24c5a40d09d5cdf76f2d5be67ac
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bdb9bfaa85f526af0c5e42294a75664fa7137849
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-storage-replication"></a>Replikacja usługi Azure Storage
 
-Dane konta usługi Microsoft Azure Storage są zawsze replikowane w celu zapewnienia trwałości i wysokiej dostępności. Replikacja kopiuje dane tak, że plik jest chroniony z przejściowych awarii sprzętu, zachowując Twojej aplikacji czasu. 
-
-Można replikować dane w tym samym centrum danych między centrami danych w tym samym regionie lub w regionach. Dane są replikowane w wielu centrach danych lub w regionach, są również chronione poważnej awarii w jednym miejscu.
+Dane konta usługi Microsoft Azure Storage są zawsze replikowane w celu zapewnienia trwałości i wysokiej dostępności. Replikacja usługi Azure Storage kopiuje danych, dzięki czemu jest on chroniony ze zdarzeń planowanych lub nieplanowanych od przejściowych awarii sprzętu, sieci lub awarie zasilania, ogromną klęski żywiołowej i tak dalej. Można replikować dane w tym samym centrum danych w centrach danych zonal w tym samym regionie, a nawet w różnych regionach.
 
 Replikacja gwarantuje, że Twoje konto magazynu spełnia warunki [Umowy dotyczącej poziomu usług (SLA) dla Magazynu](https://azure.microsoft.com/support/legal/sla/storage/) nawet w przypadku wystąpienia błędów. Zobacz umowę SLA, aby uzyskać informacje o gwarancjach usługi Azure Storage dotyczących trwałości i dostępności.
 
+## <a name="choosing-a-replication-option"></a>Wybranie opcji replikacji
+
 Podczas tworzenia konta magazynu można wybrać jedną z następujących opcji replikacji:
 
-* [Magazyn lokalnie nadmiarowy (LRS)](#locally-redundant-storage)
-* [Magazyn strefowo nadmiarowy (ZRS)](#zone-redundant-storage)
-* [Magazyn geograficznie nadmiarowy (GRS)](#geo-redundant-storage)
-* [Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)](#read-access-geo-redundant-storage)
+* [Magazyn lokalnie nadmiarowy (LRS)](storage-redundancy-lrs.md)
+* [Magazyn strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md)
+* [Magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md)
+* [Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
-Magazyn lokalnie nadmiarowy (LRS) jest domyślną opcją podczas tworzenia konta magazynu.
+Poniższa tabela zapewnia szybki przegląd zakres trwałość i dostępność zapewniającego każdej strategii replikacji dla danego typu zdarzenie (lub podobny wpływ).
 
-Poniższa tabela zapewnia szybki przegląd różnice między LRS, ZRS, GRS i RA-GRS. Kolejne sekcje w tym artykule dotyczą każdego typu replikacji bardziej szczegółowo.
-
-| Strategia replikacji | LRS | ZRS | GRS | RA-GRS |
+| Scenariusz | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Dane są replikowane w wielu centrach danych. |Nie |Yes |Yes |Yes |
-| Można odczytać danych z lokalizacji dodatkowej, a także lokalizacji głównej. |Nie |Nie |Nie |Yes |
-| Zaprojektowana w celu zapewnienia trwałości ___ obiektów w danym roku. |co najmniej 99.999999999% (11 na 9)|co najmniej 99.9999999999% (12 na 9)|co najmniej 99.99999999999999% (16 na 9)|co najmniej 99.99999999999999% (16 na 9)|
+| Brak węzła w obrębie centrum danych |Yes |Yes |Yes |Yes
+| Całym centrum danych (z systemem innym niż zonal lub zonal) jest niedostępny |Nie |Yes |Yes |Yes |
+| Awarii całej regionu |Nie |Nie |Yes |Yes |
+| Dostęp do odczytu do danych (w regionie zdalnego, replikacją geograficzną) w przypadku niedostępności całej regionu |Nie |Nie |Nie |Yes |
+| Zaprojektowana w celu zapewnienia trwałości ___ obiektów w danym roku |co najmniej 99.999999999% (11 na 9)|co najmniej 99.9999999999% (12 na 9)|co najmniej 99.99999999999999% (16 na 9)|co najmniej 99.99999999999999% (16 na 9)|
+| Dostępne typy kont magazynu ___ |GPv1, GPv2, Blob |GPv2 |GPv1, GPv2, Blob |GPv1, GPv2, Blob
 
-Zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) dla informacji o cenach dla opcji różnych nadmiarowości.
+Zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/) o cenach informacji na temat opcji różnych nadmiarowości.
 
 > [!NOTE]
 > Magazyn w warstwie Premium obsługuje magazyn tylko lokalnie nadmiarowy (LRS). Aby uzyskać informacje o magazynie Premium, zobacz [magazyn w warstwie Premium: magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej Azure](../../virtual-machines/windows/premium-storage.md).
->
 
-## <a name="locally-redundant-storage"></a>Magazyn lokalnie nadmiarowy
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-## <a name="zone-redundant-storage"></a>Strefa magazynu geograficznie nadmiarowego
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="zrs-classic-accounts"></a>Magazyn ZRS klasycznych kont
-
-Istniejące możliwości ZRS jest teraz nazywany ZRS klasycznego. Konta klasycznego magazynu ZRS są dostępne tylko dla blokowych obiektów blob w ramach kont magazynu ogólnego przeznaczenia w wersji 1. 
-
-Klasyczny magazyn ZRS replikuje dane asynchronicznie między centrami danych w jednym lub dwóch regionach. Replika może być niedostępna, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. 
-
-Nie można przekonwertować ZRS klasycznych kont, do lub z LRS, GRS lub RA-GRS. Magazyn ZRS klasycznych kont nie obsługują również metryki lub rejestrowania.   
-
-Po ZRS jest ogólnie dostępna w regionie, nie można utworzyć konto klasycznego ZRS z portalu w danym regionie, ale można go utworzyć za pomocą innych środków.  
-Proces automatycznej migracji z klasycznym ZRS ZRS zapewnia się w przyszłości.
-
-Dane konta ZRS można migrować ręcznie do lub z konta LRS, ZRS klasycznego, GRS lub RAGRS. Można wykonać tej ręcznej migracji za pomocą narzędzia AzCopy, Eksploratora usługi Storage platformy Azure, programu Azure PowerShell, interfejsu wiersza polecenia Azure lub jeden z biblioteki klienta magazynu Azure.
-
-> [!NOTE]
-> Amortyzacja i wymagane migracji na 31 marca 2021 planuje się kontami ZRS klasycznego. Firma Microsoft będzie wysyłać szczegółowe klientom ZRS klasycznego przed wycofywanie.
-
-Dodatkowe pytania są opisane w [— często zadawane pytania](#frequently-asked-questions) sekcji. 
-
-## <a name="geo-redundant-storage"></a>Magazyn geograficznie nadmiarowy
-[!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
-
-## <a name="read-access-geo-redundant-storage"></a>Dostęp do odczytu magazynu geograficznie nadmiarowego
-Dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS) maksymalizację dostępności dla konta magazynu. RA-GRS zapewnia dostęp tylko do odczytu do danych w dodatkowej lokalizacji, oprócz — replikacja geograficzna dwóch regionach.
-
-Po włączeniu dostępu tylko do odczytu do danych w regionie pomocniczym, dane są dostępne na dodatkowej punktu końcowego, a także podstawowy punkt końcowy dla konta magazynu. Pomocniczy punkt końcowy jest podobny do podstawowego punktu końcowego, ale dołącza sufiks `–secondary` do nazwy konta. Na przykład, jeśli jest podstawowym punktu końcowego usługi Blob `myaccount.blob.core.windows.net`, to jest punkt końcowy dodatkowej `myaccount-secondary.blob.core.windows.net`. Klawisze dostępu dla konta magazynu są takie same dla obu głównych i dodatkowych punktów końcowych.
-
-Niektóre kwestie należy wziąć pod uwagę w przypadku korzystania z RA-GRS:
-
-* Aplikacja musi zarządzać którym punktem końcowym, używając RA-GRS prowadzi interakcję z.
-* Ponieważ asynchroniczną replikację obejmuje opóźnienia, zmiany, które nie zostały jeszcze zreplikowane w regionie pomocniczym mogą zostać utracone, jeśli nie można odzyskać danych z regionu podstawowego, na przykład w przypadku regionalnej awarii.
-* Jeśli Microsoft inicjuje trybu failover w regionie pomocniczym, będą mieć odczytu i zapisu do tych danych po przejściu w tryb failover została ukończona. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące odzyskiwania po awarii](../storage-disaster-recovery-guidance.md).
-* RA-GRS jest przeznaczony dla celów wysokiej dostępności. Wskazówki dotyczące skalowalności, można przejrzeć [Lista kontrolna wydajności](../storage-performance-checklist.md).
-
-## <a name="frequently-asked-questions"></a>Często zadawane pytania
-
-<a id="howtochange"></a>
-#### <a name="1-how-can-i-change-the-geo-replication-type-of-my-storage-account"></a>1. Jak zmienić typ — replikacja geograficzna moim koncie magazynu?
-
-   Replikacja geograficzna typ konta magazynu można zmienić za pomocą [portalu Azure](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), lub jeden z biblioteki klienta magazynu Azure.
+## <a name="changing-replication-strategy"></a>Zmiana strategii replikacji
+Firma Microsoft zezwala na zmianę strategii replikacji konta magazynu przy użyciu [portalu Azure](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z wielu [ Biblioteki klienta usługi Azure](https://docs.microsoft.com/en-us/azure/index?view=azure-dotnet#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie powoduje czas przestoju.
 
    > [!NOTE]
-   > Kontami ZRS nie może być przekonwertowany LRS lub GRS. Podobnie istniejące konto LRS lub GRS nie można przekonwertować na konto ZRS.
+   > Obecnie nie można użyć portalu lub interfejsu API, aby przekonwertować konta ZRS. Jednak firma Microsoft planuje obsługują migrowania do ZRS LRS, GRS i RA-GRS po ZRS jest ogólnie dostępna. Zobacz [magazyn Strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md) szczegółowe informacje.
     
-<a id="changedowntime"></a>
-#### <a name="2-does-changing-the-replication-type-of-my-storage-account-result-in-down-time"></a>2. Oznacza zmianę typu replikacji Moje magazynu konta wyniku w dół czas?
+### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Czy istnieją kosztów na zmieniające się strategii replikacji Moje konto?
+To zależy od ścieżki konwersji. Kolejność od najtańszej z najdroższych ofertą nadmiarowość mamy LRS, ZRS, GRS i RA-GRS. Na przykład przejście *z* LRS na niczego spowoduje naliczenie dodatkowych opłat, ponieważ będą bardziej złożone poziom nadmiarowości. Przechodzenie *do* GRS lub RA-GRS spowoduje naliczenie opłat przepustowości wyjście ponieważ danych (w tym regionie podstawowym) jest replikowana do regionu pomocniczego zdalnego. Jest to jednorazowa opłat podczas początkowej instalacji. Po skopiowaniu danych nie istnieją żadne dodatkowe opłaty konwersji. Zostanie naliczona tylko replikowania wszelkie nowe lub aktualizacje do istniejących danych. Aby uzyskać więcej informacji o opłatach przepustowości, zobacz [cennik usługi Azure Storage strony](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-   Nie, zmiany typu replikacji konta magazynu nie powoduje czas przestoju.
+Jeśli zmienisz z GRS LRS, nie ma żadnych dodatkowych kosztów, ale replikowanych danych zostanie usunięta z lokacji dodatkowej.
 
-<a id="changecost"></a>
-#### <a name="3-are-there-additional-costs-to-changing-the-replication-type-of-my-storage-account"></a>3. Czy istnieją dodatkowe koszty na zmieniające się typ replikacji konta magazynu?
+## <a name="see-also"></a>Zobacz także
 
-   Tak. W przypadku zmiany z replikacji LRS na GRS (lub RA-GRS) dla konta magazynu jest naliczane dodatkowe opłaty za wyjście objętego kopiowanie istniejących danych z lokalizacji podstawowej do dodatkowej lokalizacji. Po skopiowaniu danych początkowej nie istnieją żadne opłaty za dalsze dodatkowe wyjście za replikację geograficzną w podstawowej do dodatkowej lokalizacji. Aby uzyskać więcej informacji o opłatach przepustowości, zobacz [cennik usługi Azure Storage strony](https://azure.microsoft.com/pricing/details/storage/blobs/).
-
-   Jeśli zmienisz z GRS LRS, nie ma żadnych dodatkowych kosztów, ale dane są usuwane z lokalizacji dodatkowej.
-
-<a id="ragrsbenefits"></a>
-#### <a name="4-how-can-ra-grs-help-me"></a>4. Jak RA-GRS może mi pomóc?
-
-   Magazyn GRS zapewnia replikację danych z głównego w regionie pomocniczym będący setki odległości od regionu podstawowego. W wypadku magazynu GRS dane są trwałe nawet w przypadku pełnej regionalnej awarii lub awarii, w którym regionie podstawowym nie jest możliwe do odzyskania. RA-GRS magazynu zapewnia replikacji GRS i dodaje możliwości odczytu danych z lokacji dodatkowej. Masz sugestie dotyczące projektowania wysokiej dostępności, zobacz [Projektowanie wysoce dostępnych aplikacji przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md).
-
-<a id="lastsynctime"></a>
-#### <a name="5-is-there-a-way-to-figure-out-how-long-it-takes-to-replicate-my-data-from-the-primary-to-the-secondary-region"></a>5. Czy istnieje sposób, aby dowiedzieć się, jak długo trwa replikowanie danych z serwera podstawowego w regionie pomocniczym?
-
-   Jeśli używasz magazynu RA-GRS, można sprawdzić czas ostatniej synchronizacji z konta magazynu. Czas ostatniej synchronizacji jest wartość daty/godziny GMT. Wszystkie zapisy głównej przed czas ostatniej synchronizacji zostały pomyślnie zapisane w lokalizacji dodatkowej, co oznacza, że są one dostępne do odczytu z lokalizacji dodatkowej. Podstawowy zapisuje po czas ostatniej synchronizacji może lub mogą nie być dostępne dla odczytów jeszcze. Można badać przy użyciu tej wartości [portalu Azure](https://portal.azure.com/), [programu Azure PowerShell](storage-powershell-guide-full.md), albo z jednego z biblioteki klienta magazynu Azure.
-
-<a id="outage"></a>
-#### <a name="6-if-there-is-an-outage-in-the-primary-region-how-do-i-switch-to-the-secondary-region"></a>6. Jeśli występuje awaria w regionie podstawowym, jak przełączać w regionie pomocniczym?
-
-   Aby uzyskać więcej informacji, zobacz [co robić w przypadku wystąpienia awarii usługi Azure Storage](../storage-disaster-recovery-guidance.md).
-
-<a id="rpo-rto"></a>
-#### <a name="7-what-is-the-rpo-and-rto-with-grs"></a>7. Co to jest RPO i RTO z GRS?
-
-   **Cel punktu odzyskiwania (RPO):** w GRS i RA-GRS, magazyn usługi asynchronicznie geograficznie są replikowane dane z serwera podstawowego do lokalizacji dodatkowej. W przypadku poważnej awarii regionalnych w regionie podstawowym Microsoft wykonuje trybu failover w regionie pomocniczym. W przypadku trybu failover najnowszych zmian, które nie zostały jeszcze replikacją geograficzną mogą zostać utracone. Liczba minut potencjalnych utraconych danych jest określana jako cel punktu odzyskiwania i wskazuje punkt w czasie, do którego można odzyskać dane. Magazyn Azure zazwyczaj ma RPO mniej niż 15 minut, mimo że nie ma żadnych SLA na jak długo replikacja geograficzna przyjmuje.
-
-   **Celu czasu odzyskiwania (RTO):** Docelowy jest miarą czas pracy w trybie failover i konto magazynu do trybu online. Czas pracy w trybie failover zawiera następujące akcje:
-
-   * Czas firmy Microsoft wymaga, aby określić, czy dane można odzyskać w lokalizacji głównej, czy tryb failover jest konieczne.
-   * Czas pracy w trybie failover konta magazynu, zmieniając głównej wpisy DNS, aby wskazać lokalizację dodatkowej.
-
-   Microsoft przyjmuje odpowiedzialność poważnie zachowania danych. Jeśli jakakolwiek możliwość odzyskania danych w regionie podstawowym, firma Microsoft będzie opóźnienie pracy awaryjnej i skupić się na odzyskanie danych. Przyszłych wersji usługi pozwoli wyzwolić tryb failover na poziomie konta, aby użytkownik Docelowy można kontrolować.
-
-#### <a name="8-what-azure-storage-objects-does-zrs-support"></a>8. Jakie obiekty usługi Azure Storage obsługuje ZRS? 
-Blokowe obiekty BLOB, stronicowych obiektów blob (z wyjątkiem tych dysków maszyny Wirtualnej zapasowy) tabel, plików i kolejek. 
-
-#### <a name="9-does-zrs-also-include-geo-replication"></a>9. Magazyn ZRS również zawiera — replikacja geograficzna? 
-Magazyn ZRS nie obsługuje obecnie replikację geograficzną. Jeśli dany scenariusz wymaga replikacji między region na potrzeby odzyskiwania po awarii, należy użyć konta magazynu GRS lub RA-GRS.   
-
-#### <a name="10-what-happens-when-one-or-more-zrs-zones-go-down"></a>10. Co się stanie, gdy co najmniej jedna strefa ZRS przestaną działać? 
-Gdy pierwszą strefę ulegnie awarii, ZRS kontynuuje zapis repliki danych na dwóch pozostałych stref w regionie. Jeśli drugiej strefy ulegnie awarii, odczytu i zapisu jest niedostępny, dopóki ponownie co najmniej dwie strefy są dostępne. 
-
-## <a name="next-steps"></a>Kolejne kroki
-* [Projektowanie aplikacji wysokiej dostępności przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
-* [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
-* [Informacji o kontach magazynu Azure](../storage-create-storage-account.md)
-* [Azure cele wydajności i skalowalności magazynu](storage-scalability-targets.md)
-* [Microsoft Azure Storage nadmiarowość opcje i dostęp do odczytu z magazynu geograficznie nadmiarowego magazynu ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-* [SOSP Paper - Azure Storage: Wysoce dostępna usługa magazynu w chmurze z wysoki poziom spójności](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Magazyn lokalnie nadmiarowy (LRS): niedrogich nadmiarowość danych usługi Azure Storage](storage-redundancy-lrs.md)
+- [Magazyn strefowo nadmiarowy (ZRS): aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md)
+- [Magazyn geograficznie nadmiarowy (GRS): replikacji między regionalne usługi Azure Storage](storage-redundancy-grs.md)
+- [Azure cele wydajności i skalowalności magazynu](storage-scalability-targets.md)
+- [Projektowanie aplikacji wysokiej dostępności przy użyciu magazynu RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
+- [Microsoft Azure Storage nadmiarowość opcje i dostęp do odczytu z magazynu geograficznie nadmiarowego magazynu ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [SOSP Paper - Azure Storage: Wysoce dostępna usługa magazynu w chmurze z wysoki poziom spójności](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

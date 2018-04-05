@@ -1,13 +1,13 @@
 ---
-title: "Przenieś publicznej komunikacji równorzędnej Azure ExpressRoute do komunikacji równorzędnej firmy Microsoft | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono kroki, aby przenieść sieci publicznej komunikacji równorzędnej do firmy Microsoft komunikacji równorzędnej ExpressRoute."
+title: Przenieś publicznej komunikacji równorzędnej Azure ExpressRoute do komunikacji równorzędnej firmy Microsoft | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono kroki, aby przenieść sieci publicznej komunikacji równorzędnej do firmy Microsoft komunikacji równorzędnej ExpressRoute.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 02d7c3f587a4cbfb11fc3b6863f75ca30b4d6c51
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f34fabc95d5b56edc6e37c323bebf60bd98c8b90
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Przenieś publicznej komunikacji równorzędnej się do komunikacji równorzędnej firmy Microsoft
 
@@ -27,8 +27,6 @@ Obsługuje ExpressRoute za pomocą programu Microsoft komunikacji równorzędnej
 
 W tym artykule opisano, jak przenieść publicznej konfiguracji komunikacji równorzędnej firmy Microsoft, równorzędna bez przestojów. Aby uzyskać więcej informacji o routingu domeny i komunikacji równorzędnych, zobacz [ExpressRoute obwody i domeny routingu](expressroute-circuit-peerings.md).
 
-> [!IMPORTANT]
-> Aby można było używać komunikacji równorzędnej firmy Microsoft, musi mieć dodatek usługi ExpressRoute w warstwie premium. Aby uzyskać więcej informacji na temat dodatek premium, zobacz [ExpressRoute — często zadawane pytania](expressroute-faqs.md#expressroute-premium).
 
 ## <a name="before"></a>Przed rozpoczęciem
 

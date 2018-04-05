@@ -1,6 +1,6 @@
 ---
-title: "Azure zarządzanych aplikacji OptionsGroup elementu interfejsu użytkownika | Dokumentacja firmy Microsoft"
-description: "Opis elementu Microsoft.Common.OptionsGroup interfejsu użytkownika dla aplikacji Azure"
+title: Azure elementu interfejsu użytkownika OptionsGroup | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Common.OptionsGroup interfejsu użytkownika do portalu Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0ba820176e0231437e878922cb508cd3b97d46c3
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 4b2ce987e311a12e3833fcc1dbae2b48b40135ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Element Microsoft.Common.OptionsGroup interfejsu użytkownika
-Formant wyboru z wierszem dostępnych opcji. Użyj tego elementu po [tworzenie aplikacji zarządzanych Azure](publish-service-catalog-app.md).
+Formant wyboru z wierszem dostępnych opcji.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
 ![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
@@ -31,17 +31,17 @@ Formant wyboru z wierszem dostępnych opcji. Użyj tego elementu po [tworzenie a
   "name": "element1",
   "type": "Microsoft.Common.OptionsGroup",
   "label": "Some options group",
-  "defaultValue": "Foo",
+  "defaultValue": "my value",
   "toolTip": "",
   "constraints": {
     "allowedValues": [
       {
-        "label": "Foo",
-        "value": "Bar"
+        "label": "Value one",
+        "value": "one"
       },
       {
-        "label": "Baz",
-        "value": "Qux"
+        "label": "Value two",
+        "value": "two"
       }
     ]
   },
@@ -52,7 +52,7 @@ Formant wyboru z wierszem dostępnych opcji. Użyj tego elementu po [tworzenie a
 ## <a name="remarks"></a>Uwagi
 - Etykieta dla `constraints.allowedValues` jest wyświetlany tekst dla elementu i jego wartość jest wartością danych wyjściowych w przypadku wybrania elementu.
 - Jeśli jest określony, wartość domyślna musi być obecne w etykiecie `constraints.allowedValues`. Jeśli nie zostanie określony, pierwszy element `constraints.allowedValues` jest domyślnie zaznaczona. Wartość domyślna to **null**.
-- `constraints.allowedValues`musi zawierać co najmniej jeden element.
+- `constraints.allowedValues` musi zawierać co najmniej jeden element.
 - Ten element nie obsługuje `constraints.required` właściwości; można pomyślnie zweryfikować należy wybrać element.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
@@ -60,7 +60,6 @@ Formant wyboru z wierszem dostępnych opcji. Użyj tego elementu po [tworzenie a
 "Bar"
 ```
 
-## <a name="next-steps"></a>Następne kroki
-* Aby obejrzeć wprowadzenie do aplikacji zarządzanych, zobacz [zarządzanej aplikacji Azure — omówienie](overview.md).
+## <a name="next-steps"></a>Kolejne kroki
 * Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
 * Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie środowiska uruchomieniowego integracji w fabryce danych Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak monitorować różne typy środowiska uruchomieniowego integracji w fabryce danych Azure."
+title: Monitorowanie środowiska uruchomieniowego integracji w fabryce danych Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak monitorować różne typy środowiska uruchomieniowego integracji w fabryce danych Azure.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 74a4ad6438f9e66331f76e87d20d1eb8b29e8451
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4c857af02e104940559cb86daa3ccd208d8e35a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitor środowiska uruchomieniowego integracji w fabryce danych Azure  
 **Integracja środowiska uruchomieniowego** jest używany przez fabryki danych Azure zapewnienie różne funkcje integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej. Istnieją trzy typy środowisk uruchomieniowych integracji oferowane przez fabrykę danych:
@@ -162,10 +162,10 @@ Przykładowe dane wyjściowe (przy założeniu, że istnieją dwa węzły skojar
 | NodeSize | Rozmiar każdego węzła Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
 | NodeCount | Liczba węzłów w środowisku uruchomieniowym programu Azure SSIS integracji. |
 | MaxParallelExecutionsPerNode | Liczba równoległych wykonaniami każdy węzeł w środowisku uruchomieniowym programu Azure SSIS integracji. |
-| CatalogServerEndpoint | Punkt końcowy istniejącego serwera wystąpienia zarządzanego/bazy danych SQL Azure do hosta usług SSIS. |
-| CatalogAdminUserName | Nazwa użytkownika serwera istniejącego wystąpienia zarządzanego/bazy danych SQL Azure. Usługi fabryka danych używa tych informacji do przygotowania i zarządzanie nimi SSISDB w Twoim imieniu. |
-| CatalogAdminPassword | Hasło administratora serwera istniejącego wystąpienia zarządzanego/bazy danych SQL Azure. |
-| CatalogPricingTier | Warstwa cenowa SSISDB należące do istniejącego serwera bazy danych SQL Azure.  Nie dotyczy wystąpienia zarządzane SQL Azure hosting usług SSIS. |
+| CatalogServerEndpoint | Punkt końcowy istniejącego serwera wystąpienia zarządzanego/bazy danych SQL Azure (wersja zapoznawcza) na host usług SSIS. |
+| CatalogAdminUserName | Nazwa użytkownika z istniejącego serwera Azure SQL bazy danych/zarządzane wystąpienia (wersja zapoznawcza). Usługi fabryka danych używa tych informacji do przygotowania i zarządzanie nimi SSISDB w Twoim imieniu. |
+| CatalogAdminPassword | Hasło administratora serwera istniejącego wystąpienia zarządzanego/bazy danych SQL Azure (wersja zapoznawcza). |
+| CatalogPricingTier | Warstwa cenowa SSISDB należące do istniejącego serwera bazy danych SQL Azure.  Nie dotyczy Azure zarządzane wystąpienia SQL (wersja zapoznawcza) hosting usług SSIS. |
 | VNetId | Sieć wirtualną (VNet) identyfikator zasobu dla Twojego środowiska uruchomieniowego integracji usług SSIS Azure do przyłączenia. |
 | Podsieć | Nazwa podsieci dla Twojego środowiska uruchomieniowego integracji Azure SSIS do przyłączenia. |
 | ID | Identyfikator zasobu Twojego środowiska uruchomieniowego integracji usług SSIS Azure. |
@@ -199,7 +199,7 @@ Zobacz następujące artykuły, aby dowiedzieć się więcej na temat środowisk
 
 - [Środowisko uruchomieniowe integracji usług SSIS Azure](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowisk uruchomieniowych integracji ogólnie tym podczerwieni Azure SSIS. 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR i używania bazy danych Azure SQL do hostowania wykazu usług SSIS. 
-- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje dotyczące używania wystąpienia zarządzanego Azure SQL (prywatna wersja zapoznawcza) i dołączania środowiska IR do sieci wirtualnej. 
+- [How to: Create an Azure-SSIS integration runtime (Jak: Tworzenie środowiska Azure SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md). W tym artykule rozszerzenie samouczka i zawiera instrukcje dotyczące przy użyciu wystąpienia zarządzane Azure SQL (wersja zapoznawcza) i dołączenie IR do sieci wirtualnej. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. Zawiera on również instrukcje skalowania środowiska Azure-SSIS IR do wewnątrz za pomocą dodawania do niego węzłów. 
 - [Join an Azure-SSIS IR to a VNet (Dołączanie środowiska Azure-SSIS IR do sieci wirtualnej)](join-azure-ssis-integration-runtime-virtual-network.md). Ten artykuł zawiera podstawowe informacje na temat dołączania środowiska Azure-SSIS IR do sieci wirtualnej platformy Azure. Opisano w nim kroki konfigurowania sieci wirtualnej za pomocą witryny Azure Portal tak, aby umożliwić dołączanie środowiska Azure-SSIS IR do sieci wirtualnej. 
 

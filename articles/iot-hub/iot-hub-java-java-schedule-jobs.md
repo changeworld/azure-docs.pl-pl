@@ -1,11 +1,11 @@
 ---
-title: "Planowanie zadań z Centrum IoT Azure (Java) | Dokumentacja firmy Microsoft"
-description: "Sposób tworzenia harmonogramu zadań Centrum IoT Azure do wywołania metody bezpośredniego i ustaw odpowiednie właściwości na wielu urządzeniach. Urządzenia Azure IoT SDK dla języka Java umożliwia wdrożenie symulowane urządzenie aplikacje i usługi Azure IoT SDK dla języka Java, aby zaimplementować aplikację usługi, aby uruchomić to zadanie."
+title: Planowanie zadań z Centrum IoT Azure (Java) | Dokumentacja firmy Microsoft
+description: Sposób tworzenia harmonogramu zadań Centrum IoT Azure do wywołania metody bezpośredniego i ustaw odpowiednie właściwości na wielu urządzeniach. Urządzenia Azure IoT SDK dla języka Java umożliwia wdrożenie symulowane urządzenie aplikacje i usługi Azure IoT SDK dla języka Java, aby zaimplementować aplikację usługi, aby uruchomić to zadanie.
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: 54f446f8735bc46b87fe19aaf7845c5fbfce2744
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: af853a378a36c97edd74ea99fc5dcce92a073fea
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Zadania harmonogramu i emisji (Java)
 
@@ -35,6 +35,8 @@ Aby dowiedzieć się więcej na temat każdego z tych funkcji, zobacz:
 
 * Dwie urządzeń i właściwości: [wprowadzenie twins urządzenia](iot-hub-java-java-twin-getstarted.md)
 * Bezpośrednie metody: [przewodnik dewelopera Centrum IoT — metody bezpośredniego](iot-hub-devguide-direct-methods.md) i [samouczek: bezpośrednie metody](iot-hub-java-java-direct-methods.md)
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -477,7 +479,7 @@ Teraz można przystąpić do uruchomienia aplikacji konsoli.
 
     ![Klient urządzenie odpowiada na zmiany](media/iot-hub-java-java-schedule-jobs/device-app-2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure Portal, a następnie tworzenie tożsamości urządzenia w rejestrze tożsamości centrum. Utworzono aplikacji zaplecza, aby uruchomić dwa zadania. Pierwszego zadania do ustawiania wartości właściwości odpowiednie, a drugi zadania wywołana metoda bezpośrednia.
 

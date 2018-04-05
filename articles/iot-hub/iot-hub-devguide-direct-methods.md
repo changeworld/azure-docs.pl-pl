@@ -1,11 +1,11 @@
 ---
-title: "Zrozumienie metod bezpośredniego Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera — użyj bezpośredniego metody do wywołania kodu na urządzeniach z usługi aplikacji."
+title: Zrozumienie metod bezpośredniego Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — użyj bezpośredniego metody do wywołania kodu na urządzeniach z usługi aplikacji.
 services: iot-hub
 documentationcenter: .net
 author: nberdy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,14 +15,17 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 003b3f6ef8a6fbc1c6fcdfc58f7d35bf6c42c9ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 47bf7437eda09a536aa2d960cf5ec474e23356a6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Informacje o funkcji i wywołanie metody bezpośrednio z Centrum IoT
 Centrum IoT daje możliwość wywołania metod bezpośrednio na urządzeniach z chmury. Bezpośrednie metody reprezentują żądanie odpowiedź interakcji z urządzeniem podobna do wywołania HTTP w tym ich powodzenie lub niepowodzenie natychmiast (po limitu określonego przez użytkownika). Ta metoda jest przydatne w scenariuszach, w którym kursu natychmiastowego działania różni się w zależności od tego, czy urządzenie zostało mogą odpowiadać. Na przykład wysyłanie SMS wake-up na urządzeniu, jeśli jest w trybie offline (SMS są droższe niż wywołania metody).
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
 Każda metoda urządzenia jest przeznaczony dla jednego urządzenia. [Zadania] [ lnk-devguide-jobs] umożliwiają wywołania metod bezpośrednio na wielu urządzeniach i Zaplanuj wywołania metody odłączone urządzenia.
 
 Każda osoba mająca **usługa połączyć** uprawnień w Centrum IoT mogą wywołać metodę na urządzeniu.
@@ -86,7 +89,7 @@ Aplikacja zaplecza odbiera odpowiedź, która obejmuje:
 ## <a name="handle-a-direct-method-on-a-device"></a>Dojście metody bezpośrednio na urządzeniu
 ### <a name="mqtt"></a>MQTT
 #### <a name="method-invocation"></a>Wywołanie metody
-Urządzenia odbierania żądań metoda bezpośrednia na temat MQTT:`$iothub/methods/POST/{method name}/?$rid={request id}`
+Urządzenia odbierania żądań metoda bezpośrednia na temat MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`
 
 Jednostkę urządzenie otrzyma znajduje się w następującym formacie:
 
@@ -109,7 +112,7 @@ Treść jest ustawiana przez urządzenia i może być dowolnym stanie.
 
 ### <a name="amqp"></a>AMQP
 #### <a name="method-invocation"></a>Wywołanie metody
-Urządzenie odbiera żądania metoda bezpośrednia przez utworzenie łącza receive na adres`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Urządzenie odbiera żądania metoda bezpośrednia przez utworzenie łącza receive na adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
 Komunikat protokołu AMQP dociera łącze receive reprezentujący żądanie metody. Ten przewodnik zawiera następujące czynności:
 * Właściwość Identyfikatora korelacji, który zawiera identyfikator żądania, które mają być przekazywane z powrotem odpowiadająca mu reakcja — metoda
@@ -117,7 +120,7 @@ Komunikat protokołu AMQP dociera łącze receive reprezentujący żądanie meto
 * Treść komunikatu protokołu AMQP zawierającego ładunek metody w formacie JSON
 
 #### <a name="response"></a>Odpowiedź
-Urządzenie tworzy łącze wysyłania zwraca odpowiedź metody na adres`amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
+Urządzenie tworzy łącze wysyłania zwraca odpowiedź metody na adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`
 
 Odpowiedź metody jest zwracana wysyłania łącze i ma następującą postać:
 * Właściwość Identyfikatora korelacji, który zawiera identyfikator żądania przekazano komunikat żądania — metoda

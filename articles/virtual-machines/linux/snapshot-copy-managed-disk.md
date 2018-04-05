@@ -1,68 +1,52 @@
 ---
 title: Tworzenie migawki wirtualnego dysku twardego na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak utworzyć kopię dysku VHD na platformie Azure jako kopii zapasowej lub podczas rozwiązywania problemów."
-documentationcenter: 
+description: Dowiedz się, jak utworzyć kopię dysku VHD na platformie Azure jako kopii zapasowej lub podczas rozwiązywania problemów.
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 03/20/2018
 ms.author: cynthn
-ms.openlocfilehash: 152c5a1103d32af27f689086cfcc9cc1a7acc5d3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e5882b2ddc708544a7715da13c1f0d18384ce4e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-snapshot"></a>Utwórz migawkę 
 
-Utwórz migawkę dysku systemu operacyjnego lub danych, który wystawia wirtualnego dysku twardego do utworzenia kopii zapasowej lub rozwiązywania problemów z maszyny Wirtualnej. Migawka jest pełna, tylko do odczytu kopię dysku VHD. 
+Utwórz migawkę dysku systemu operacyjnego lub dane kopii zapasowej lub rozwiązywać problemy z maszyny Wirtualnej. Migawka jest pełna, tylko do odczytu kopię dysku VHD. 
 
-## <a name="use-azure-cli-20-to-take-a-snapshot"></a>Umożliwia utworzenie migawki 2.0 interfejsu wiersza polecenia platformy Azure
+## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
 
 Poniższy przykład wymaga Azure CLI 2.0 zainstalowany, a zalogowany do konta platformy Azure. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
 
-Poniższe kroki przedstawiają sposób wykonania migawki za pomocą `az snapshot create` z `--source-disk` parametru. W poniższym przykładzie założono, że istnieje maszyna wirtualna o nazwie `myVM` utworzone za pomocą zarządzanego dysku systemu operacyjnego w `myResourceGroup` grupy zasobów.
+Poniższe kroki przedstawiają sposób wykonania migawki za pomocą `az snapshot create` z `--source-disk` parametru. W poniższym przykładzie założono, że istnieje maszyna wirtualna o nazwie `myVM` w `myResourceGroup` grupy zasobów.
 
+Pobierz identyfikator dysku
 ```azure-cli
-# take the disk id with which to create a snapshot
 osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
-az snapshot create -g myResourceGroup --source "$osDiskId" --name osDisk-backup
 ```
 
-Dane wyjściowe powinny wyglądać podobnie jak:
+Utworzenie migawki o nazwie *kopii zapasowej osDisk*.
 
-```json
-{
-  "accountType": "Standard_LRS",
-  "creationData": {
-    "createOption": "Copy",
-    "imageReference": null,
-    "sourceResourceId": null,
-    "sourceUri": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/osdisk_6NexYgkFQU",
-    "storageAccountId": null
-  },
-  "diskSizeGb": 30,
-  "encryptionSettings": null,
-  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/osDisk-backup",
-  "location": "westus",
-  "name": "osDisk-backup",
-  "osType": "Linux",
-  "ownerId": null,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "timeCreated": "2017-02-06T21:27:10.172980+00:00",
-  "type": "Microsoft.Compute/snapshots"
-}
+```azurecli-interactive
+az snapshot create \
+    -g myResourceGroup \
+    --source "$osDiskId" \
+    --name osDisk-backup
 ```
 
-## <a name="use-azure-portal-to-take-a-snapshot"></a>Utworzenie migawki za pomocą portalu Azure 
+> [!NOTE]
+> Jeśli chcesz przechowywać w strefie odporność pamięci masowej migawki, należy utworzyć ją w regionie, który obsługuje [stref dostępności](../../availability-zones/az-overview.md) i obejmują `--sku Standard_ZRS` parametru.
+
+## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Począwszy od lewej górnej kliknij **Utwórz zasób** i wyszukaj **migawki**.
@@ -73,8 +57,6 @@ Dane wyjściowe powinny wyglądać podobnie jak:
 7. Dla **dysku źródłowego**, wybierz zarządzany dysk do migawki.
 8. Wybierz **typ konta** do przechowywania migawki. Firma Microsoft zaleca **Standard_LRS** chyba że ma być przechowywane na dysku wysokiej wydajności.
 9. Kliknij przycisk **Utwórz**.
-
-Jeśli planujesz użyć migawki, aby utworzyć dysk zarządzany i dołączyć maszynę Wirtualną, która musi być wydajnych, użyj parametru `--sku Premium_LRS` z `az snapshot create` polecenia. Spowoduje to utworzenie migawki tak, aby była przechowywana jako dysk zarządzane Premium. Dysków zarządzanych w warstwie Premium działać lepiej, ponieważ są dysków półprzewodnikowych (SSD), ale są droższe niż dyski standardowe (HDD).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

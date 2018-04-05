@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/05/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d119cc4c4053a737e48739c17ae586abd51f3efa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 23f98d4e9f711496480d5e02b4d5b23cd8abab0c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT przy użyciu protokołu MQTT
 
@@ -27,6 +27,8 @@ Centrum IoT umożliwia urządzeniom komunikować się z punkty końcowe Centrum 
 
 * [MQTT v3.1.1] [ lnk-mqtt-org] na porcie 8883
 * V3.1.1 MQTT za pośrednictwem protokołu WebSocket na porcie 443.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Cała komunikacja urządzenie z Centrum IoT musi być zabezpieczona za pomocą protokołu TLS/SSL. W związku z tym Centrum IoT nie obsługuje niezabezpieczonego połączenia za pośrednictwem portu 1883.
 
@@ -279,7 +281,7 @@ Aby uzyskać więcej informacji, zobacz [bezpośrednie przewodnik dewelopera met
 
 Jako ostatecznego wchodzi w grę, jeśli musisz dostosować zachowanie protokołu MQTT po stronie chmury, należy przejrzeć [brama protokołu Azure IoT][lnk-azure-protocol-gateway]. To oprogramowanie umożliwia wdrażanie bramy protokołu niestandardowego wysokiej wydajności tej współpracuje bezpośrednio z Centrum IoT. Brama protokołu Azure IoT umożliwia dostosowanie protokołu urządzenia do uwzględnienia wdrożeń MQTT brownfield lub innymi protokołami niestandardowych. Takie podejście wymaga jednak uruchamiania i działać brama protokołu niestandardowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat protokołu MQTT, zobacz [dokumentacji MQTT][lnk-mqtt-docs].
 

@@ -1,6 +1,6 @@
 ---
-title: "Rozwiązywanie problemów dotyczących usługi Azure Storage z diagnostyki & Message Analyzer | Dokumentacja firmy Microsoft"
-description: "Samouczek prezentacja end-to-end Rozwiązywanie problemów z funkcją analizy magazynu Azure, AzCopy i programu Microsoft Message Analyzer"
+title: Rozwiązywanie problemów dotyczących usługi Azure Storage z diagnostyki & Message Analyzer | Dokumentacja firmy Microsoft
+description: Samouczek prezentacja end-to-end Rozwiązywanie problemów z funkcją analizy magazynu Azure, AzCopy i programu Microsoft Message Analyzer
 services: storage
 documentationcenter: dotnet
 author: tamram
@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-end Rozwiązywanie problemów przy użyciu metryk usługi Azure Storage i rejestrowania, AzCopy i analizatora komunikatów
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -35,9 +35,6 @@ Rozwiązywać aplikacji klienckich za pomocą usługi Magazyn Microsoft Azure ko
   
   * **Metryki magazynu** śledzi transakcji metryki i metryki pojemności konta magazynu. Korzystając z metryki, można określić, jak aplikacja działa zgodnie z wielu różnych środków. Zobacz [schemat tabeli metryki analityka magazynu](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) Aby uzyskać więcej informacji o typach metryki śledzone przez analityka magazynu.
   * **Rejestrowanie magazynu** rejestruje każde żądanie do usług magazynu Azure do dzienników po stronie serwera. Dziennik śledzenia szczegółowe dane dla każdego żądania, w tym operacje wykonywane, stan działania i informacje opóźnienia. Zobacz [Format dziennika analityka magazynu](/rest/api/storageservices/Storage-Analytics-Log-Format) Aby uzyskać więcej informacji o danych żądania i odpowiedzi, które są zapisywane w dziennikach przez analityka magazynu.
-
-> [!NOTE]
-> Konta magazynu z typem replikacji magazyn Strefowo nadmiarowy (ZRS) obsługują metryki i rejestrowania. Kontami ZRS klasycznego nie obsługują metryki i rejestrowania. Aby uzyskać więcej informacji o ZRS, zobacz [magazyn Strefowo nadmiarowy](storage-redundancy.md#zone-redundant-storage). 
 
 * **Azure portal**. Można skonfigurować rejestrowanie i metryki dla konta magazynu w [portalu Azure](https://portal.azure.com). Można także wyświetlić schematy i wykresy, które pokazują, jak aplikacja działa w czasie i skonfigurować alerty powiadamiające o, jeśli aplikacja przeprowadza się inaczej, niż oczekiwano dla określonej metryki.
   
@@ -366,7 +363,7 @@ Teraz, po zapoznaniu się z za pomocą analizatora komunikatów do analizowania 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat rozwiązywania problemów scenariuszy end-to-end w usłudze Azure Storage zobacz następujące zasoby:
 
-* [Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Magazyn Microsoft Azure](storage-monitoring-diagnosing-troubleshooting.md)
+* [Monitor, diagnose, and troubleshoot Microsoft Azure Storage (Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage)](storage-monitoring-diagnosing-troubleshooting.md)
 * [Analityka magazynu](http://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Monitor konta magazynu w portalu Azure](storage-monitor-storage-account.md)
 * [Transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md)

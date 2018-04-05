@@ -1,25 +1,25 @@
 ---
-title: "Węzły - partii zadań Azure obliczeniowe uruchamiania systemu Linux na maszynie wirtualnej | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie przetwarzania obciążeń obliczeniowych równoległe w pulach maszyn wirtualnych systemu Linux w partii zadań Azure."
+title: Węzły - partii zadań Azure obliczeniowe uruchamiania systemu Linux na maszynie wirtualnej | Dokumentacja firmy Microsoft
+description: Informacje o sposobie przetwarzania obciążeń obliczeniowych równoległe w pulach maszyn wirtualnych systemu Linux w partii zadań Azure.
 services: batch
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b2257917e2368478beb75957677de23d4157865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9aa896bfc4c860c87757f9379fc44cc5ee8d18a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zapewnij węzły obliczeniowe systemu Linux w puli partii
 
@@ -57,7 +57,7 @@ Po skonfigurowaniu odwołanie do obrazu maszyny wirtualnej, należy określić w
 ### <a name="node-agent-sku"></a>Agent węzła jednostki SKU
 Agenta węzła partii to program, który jest uruchamiany na każdym węźle w puli i udostępnia interfejs polecenia i kontroli między węzłem a usługa partia zadań. Istnieją różne implementacje agenta węzła, znany jako jednostki SKU, dla różnych systemów operacyjnych. Zasadniczo podczas tworzenia konfiguracji maszyny wirtualnej, najpierw określ odwołanie do obrazu maszyny wirtualnej, a następnie określ agenta węzeł, aby zainstalować w obrazie. Zazwyczaj każdego agenta węzła, jednostka SKU jest zgodny z wielu obrazów maszyny wirtualnej. Oto kilka przykładów agenta węzła jednostki SKU:
 
-* Batch.node.ubuntu 14.04
+* batch.node.ubuntu 14.04
 * Batch.node.centos 7
 * Batch.node.Windows amd64
 
@@ -213,23 +213,23 @@ W poniższej tabeli wymieniono Marketplace obrazy maszyny wirtualnej, które są
 >
 >
 
-| **Wydawcy** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agent węzła identyfikator jednostki SKU** |
+| **Wydawca** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agent węzła identyfikator jednostki SKU** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| Canonical | UbuntuServer | 14.04.5-LTS | najnowsza | Batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 16.04.0-LTS | najnowsza | Batch.node.ubuntu 16.04 |
-| Credativ | Debian | 8 | najnowsza | Batch.node.debian 8 |
+| Canonical | UbuntuServer | 14.04.5-LTS | najnowsza | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 16.04.0-LTS | najnowsza | batch.node.ubuntu 16.04 |
+| Credativ | Debian | 8 | najnowsza | batch.node.debian 8 |
 | OpenLogic | CentOS | 7.0 | najnowsza | Batch.node.centos 7 |
 | OpenLogic | CentOS | 7.1 | najnowsza | Batch.node.centos 7 |
-| OpenLogic | CentOS HPC | 7.1 | najnowsza | Batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.1 | najnowsza | Batch.node.centos 7 |
 | OpenLogic | CentOS | 7.2 | najnowsza | Batch.node.centos 7 |
-| Oracle | Oracle Linux | 7.0 | najnowsza | Batch.node.centos 7 |
-| Oracle | Oracle Linux | 7.2 | najnowsza | Batch.node.centos 7 |
-| SUSE | openSUSE | 13.2 | najnowsza | Batch.node.opensuse 13.2 |
-| SUSE | openSUSE przestępnego | 42.1 | najnowsza | Batch.node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | najnowsza | Batch.node.opensuse 42.1 |
-| SUSE | SLES HPC | 12-SP1 | najnowsza | Batch.node.opensuse 42.1 |
-| Microsoft reklam | data nauki-maszyny wirtualnej systemu Linux | linuxdsvm | najnowsza | Batch.node.centos 7 |
-| Microsoft reklam | Standard danych nauki vm | Standard danych nauki vm | najnowsza | Batch.node.Windows amd64 |
+| Oracle | Oracle-Linux | 7.0 | najnowsza | Batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7.2 | najnowsza | Batch.node.centos 7 |
+| SUSE | openSUSE | 13.2 | najnowsza | batch.node.opensuse 13.2 |
+| SUSE | openSUSE-Leap | 42.1 | najnowsza | batch.node.opensuse 42.1 |
+| SUSE | SLES | 12-SP1 | najnowsza | batch.node.opensuse 42.1 |
+| SUSE | SLES-HPC | 12-SP1 | najnowsza | batch.node.opensuse 42.1 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | najnowsza | Batch.node.centos 7 |
+| microsoft-ads | Standard danych nauki vm | Standard danych nauki vm | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | najnowsza | Batch.node.Windows amd64 |
@@ -315,7 +315,7 @@ Partia zadań Azure jest oparty na technologii usług Azure Cloud Services i mas
 
 W przypadku wdrożenia aplikacji węzły partii przy użyciu [pakietów aplikacji](batch-application-packages.md), naliczane są również opłaty za zasoby usługi Azure Storage czy używać pakietów aplikacji. Ogólnie rzecz biorąc koszty usługi Azure Storage są minimalne. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 ### <a name="batch-python-tutorial"></a>Samouczek języka Python dla usługi Batch
 Więcej informacji na temat samouczek dotyczący sposobu pracy z partii przy użyciu języka Python, zapoznaj się z [Rozpoczynanie pracy z klientem Python usługi partia zadań Azure](batch-python-tutorial.md). Pomocnik jego [przykładowy kod] [ github_samples_pyclient] obejmuje funkcję Pomocnika `get_vm_config_for_distro`, który pokazuje innej techniki, aby uzyskać konfigurację maszyny wirtualnej.
 

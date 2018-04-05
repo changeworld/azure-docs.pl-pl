@@ -1,8 +1,8 @@
 ---
-title: "Automatyzacji Azure Application Insights przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Zautomatyzować tworzenie testów dostępności zasobów i alertu w programie PowerShell przy użyciu szablonu usługi Azure Resource Manager."
+title: Automatyzacji Azure Application Insights przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Zautomatyzować tworzenie testów dostępności zasobów i alertu w programie PowerShell przy użyciu szablonu usługi Azure Resource Manager.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób tworzenia i aktualizacji [usługi Application Insights](app-insights-overview.md) zasobów automatycznie przy użyciu usługi Azure Resource Management. Użytkownik może na przykład zrobić jako część procesu kompilacji. Wraz z podstawowy zasób usługi Application Insights, można utworzyć [testów sieci web dostępności](app-insights-monitor-web-app-availability.md), skonfiguruj [alerty](app-insights-alerts.md)ustaw [cennik schemat](app-insights-pricing.md)i Utwórz innych zasobów platformy Azure.
@@ -166,9 +166,9 @@ Utwórz nowy plik JSON — teraz wywołać ją `template1.json` w tym przykładz
 
     ``` 
    
-   * `-ResourceGroupName`jest to grupa, której chcesz utworzyć nowe zasoby.
-   * `-TemplateFile`musi być wcześniejsza niż parametry niestandardowe.
-   * `-appName`Nazwa zasobu do utworzenia.
+   * `-ResourceGroupName` jest to grupa, której chcesz utworzyć nowe zasoby.
+   * `-TemplateFile` musi być wcześniejsza niż parametry niestandardowe.
+   * `-appName` Nazwa zasobu do utworzenia.
 
 Można dodać inne parametry - opisami znajdują się w sekcji parametrów szablonu.
 
@@ -196,7 +196,7 @@ Aby utworzyć zasobów aplikacji z planem cen przedsiębiorstwa przy użyciu sza
                -appName myNewApp
 ```
 
-|priceCode|Plan|
+|priceCode|plan|
 |---|---|
 |1|Podstawowa|
 |2|Enterprise|
@@ -204,7 +204,7 @@ Aby utworzyć zasobów aplikacji z planem cen przedsiębiorstwa przy użyciu sza
 * Jeśli chcesz użyć domyślnego planu ceny podstawowej, można pominąć zasobów CurrentBillingFeatures z szablonu.
 * Jeśli chcesz zmienić planu cen po utworzeniu zasobu składnik, można użyć szablonu, który umożliwia pominięcie zasobu "microsoft.insights/components". Ponadto Pomiń `dependsOn` węzła z zasobu rozliczeń. 
 
-Aby sprawdzić, zaktualizowana cena planu, obejrzyj "Funkcje + cennik" bloku w przeglądarce. **Odśwież widok w przeglądarce** się upewnić, że widoczny będzie najnowszy stan.
+Aby sprawdzić, zaktualizowana cena planu, obejrzyj **strona szacowanych kosztów i użycia** bloku w przeglądarce. **Odśwież widok w przeglądarce** się upewnić, że widoczny będzie najnowszy stan.
 
 
 
@@ -426,7 +426,7 @@ Poniżej przedstawiono przykłady podstawień, które należy wprowadzić. Istni
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(małe litery) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (małe litery) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Usuń identyfikator Guid i identyfikator. |
 
 ### <a name="set-dependencies-between-the-resources"></a>Definiowanie zależności między zasobami
@@ -441,7 +441,7 @@ Azure należy skonfigurować zasoby w kolejności strict. Aby upewnić się, że
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Inne artykuły automatyzacji:
 
 * [Tworzenie zasobu usługi Application Insights](app-insights-powershell-script-create-resource.md) — szybkie metody bez przy użyciu szablonu.

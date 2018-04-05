@@ -141,13 +141,15 @@
       href: sql-data-warehouse-troubleshoot.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Funkcje usługi
+    - name: Uaktualnienie
+      href: upgrade-to-latest-generation.md
+    - name: Przywracanie
       items:
-        - name: Przywracanie magazynu danych — portal
+        - name: Portal
           href: sql-data-warehouse-restore-database-portal.md
-        - name: Przywracanie magazynu danych — PowerShell
+        - name: PowerShell
           href: sql-data-warehouse-restore-database-powershell.md
-        - name: Przywracanie magazynu danych — interfejs API REST
+        - name: Interfejs API REST
           href: sql-data-warehouse-restore-database-rest-api.md
     - name: Bezpieczeństwo
       items:

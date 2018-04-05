@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Skonfiguruj wystąpienie klastra pracy awaryjnej programu SQL Server na maszynach wirtualnych Azure
 
@@ -375,27 +375,13 @@ Aby utworzyć usługę równoważenia obciążenia:
 
 1. Wróć do grupy zasobów platformy Azure z maszynami wirtualnymi i zlokalizuj nowy moduł równoważenia obciążenia. Może być konieczne odświeżenie widoku w grupie zasobów. Kliknij usługę równoważenia obciążenia.
 
-1. W bloku modułu równoważenia obciążenia, kliknij **pul zaplecza**.
+1. Kliknij przycisk **pul zaplecza** i kliknij przycisk **+ Dodaj** można dodać puli wewnętrznej bazy danych.
 
-1. Kliknij przycisk **+ Dodaj** można dodać puli wewnętrznej bazy danych.
+1. Skojarz puli wewnętrznej bazy danych z zestawu dostępności, która zawiera maszyn wirtualnych.
 
-1. Wpisz nazwę puli wewnętrznej bazy danych.
+1. W obszarze **Target konfiguracje adresów IP sieci**, sprawdź **maszyny WIRTUALNEJ** i wybierz maszyny wirtualne, które będą uczestniczyć jako węzły klastra. Pamiętaj uwzględnić wszystkie maszyny wirtualne, które będą obsługiwać infrastruktury klasyfikacji plików. 
 
-1. Kliknij przycisk **Dodaj maszynę wirtualną**.
-
-1. Na **wybierz maszyny wirtualne** bloku, kliknij przycisk **wybierz zestaw dostępności**.
-
-1. Wybierz umieszczanie maszyn wirtualnych programu SQL Server w zestawu dostępności.
-
-1. Na **wybierz maszyny wirtualne** bloku, kliknij przycisk **wybierz maszyny wirtualne**.
-
-   Portalem Azure powinien wyglądać podobnie jak na poniższej ilustracji:
-
-   ![CreateLoadBalancerBackEnd](./media/virtual-machines-windows-portal-sql-create-failover-cluster/33-load-balancer-back-end.png)
-
-1. Kliknij przycisk **wybierz** na **wybierz maszyny wirtualne** bloku.
-
-1. Kliknij przycisk **OK** dwa razy.
+1. Kliknij przycisk **OK** do utworzenia puli wewnętrznej bazy danych.
 
 ### <a name="configure-a-load-balancer-health-probe"></a>Skonfiguruj kondycji sondę modułu równoważenia obciążenia
 

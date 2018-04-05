@@ -1,12 +1,12 @@
 ---
-title: "Aktualizacja oprogramowania układowego urządzenia z Centrum IoT Azure (.NET/.NET) | Dokumentacja firmy Microsoft"
-description: "Jak używać zarządzania urządzeniami w usłudze Azure IoT Hub zainicjować aktualizację oprogramowania układowego urządzenia. Urządzenia Azure IoT SDK dla platformy .NET użyta do wdrożenia aplikacji symulowane urządzenie i usługa Azure IoT SDK dla platformy .NET do implementacji usługi aplikacji, które wyzwala aktualizacji oprogramowania układowego."
+title: Aktualizacja oprogramowania układowego urządzenia z Centrum IoT Azure (.NET/.NET) | Dokumentacja firmy Microsoft
+description: Jak używać zarządzania urządzeniami w usłudze Azure IoT Hub zainicjować aktualizację oprogramowania układowego urządzenia. Urządzenia Azure IoT SDK dla platformy .NET użyta do wdrożenia aplikacji symulowane urządzenie i usługa Azure IoT SDK dla platformy .NET do implementacji usługi aplikacji, które wyzwala aktualizacji oprogramowania układowego.
 services: iot-hub
 documentationcenter: .net
 author: JimacoMS2
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: v-jamebr
-ms.openlocfilehash: bd0a227861d75dc66af8fb4865a17a3b6d0f70ba
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
-ms.translationtype: MT
+ms.openlocfilehash: 984fd7516b5c05973c45891f4eda31c41a5a2be5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Umożliwia zarządzanie urządzeniami zainicjować aktualizację oprogramowania układowego urządzenia (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Wprowadzenie
 W [wprowadzenie do zarządzania urządzeniami] [ lnk-dm-getstarted] samouczka przedstawiono sposób użycia [dwie urządzenia] [ lnk-devtwin] i [bezpośrednie metody ] [ lnk-c2dmethod] podstawowych zdalnie ponownego uruchomienia urządzenia. Ten samouczek używa tego samego podstawowych Centrum IoT i pokazuje, jak wykonać aktualizację oprogramowania układowego symulowane end-to-end.  Ten wzorzec jest używany w implementacji aktualizacji oprogramowania układowego dla [Pi malina urządzenia implementacji próbki][lnk-rpi-implementation].
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -75,7 +77,7 @@ W tej sekcji służy do tworzenia aplikacji konsoli .NET (przy użyciu języka C
     static string targetDevice = "{deviceIdForTargetDevice}";
     ```
         
-6. Dodaj następującą metodę do **Program** klasy. Ta metoda sprawdza dwie urządzenia zaktualizowany stan co 500 milisekund. Zapisuje do konsoli tylko wtedy, gdy stan faktycznie został zmieniony. Dla tego przykładu, aby uniemożliwić korzystanie z dodatkowych komunikatów Centrum IoT w ramach subskrypcji, sondowanie zatrzymuje, gdy urządzenie zgłasza stan **applyComplete** lub wystąpił błąd.  
+6. Dodaj następującą metodę do klasy **Program**. Ta metoda sprawdza dwie urządzenia zaktualizowany stan co 500 milisekund. Zapisuje do konsoli tylko wtedy, gdy stan faktycznie został zmieniony. Dla tego przykładu, aby uniemożliwić korzystanie z dodatkowych komunikatów Centrum IoT w ramach subskrypcji, sondowanie zatrzymuje, gdy urządzenie zgłasza stan **applyComplete** lub wystąpił błąd.  
    
     ```csharp   
     public static async Task QueryTwinFWUpdateReported(DateTime startTime)
@@ -386,7 +388,7 @@ Teraz można przystąpić do uruchomienia aplikacji.
     ![Aplikacja usługi i urządzenia, uruchom][img-combinedrun]
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku używana metoda bezpośrednia do wyzwolenia aktualizacji oprogramowania układowego zdalnego na urządzeniu i można śledzić postępy aktualizacji oprogramowania układowego zgłoszone właściwości.
 
 Aby dowiedzieć się, jak rozszerzyć IoT, Twoje rozwiązanie i harmonogram metoda wywołuje na wielu urządzeniach, zobacz [emisji zadania i harmonogramu] [ lnk-tutorial-jobs] samouczka.

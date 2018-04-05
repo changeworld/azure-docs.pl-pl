@@ -1,6 +1,6 @@
 ---
-title: "Azure zarządzanych aplikacji StorageAccountSelector elementu interfejsu użytkownika | Dokumentacja firmy Microsoft"
-description: "Opis elementu Microsoft.Storage.StorageAccountSelector interfejsu użytkownika dla aplikacji Azure"
+title: Azure elementu interfejsu użytkownika StorageAccountSelector | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Storage.StorageAccountSelector interfejsu użytkownika do portalu Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 366a862acc15decf6a8e19f875d5d052695f373c
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: ca66b788af68699b4750e1e2826b6a6b104c72c7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Element Microsoft.Storage.StorageAccountSelector interfejsu użytkownika
-Formant wyboru konta magazynu do nowego lub istniejącego. Użyj tego elementu po [tworzenie aplikacji zarządzanych Azure](publish-service-catalog-app.md).
+# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI element
+Formant wyboru konta magazynu do nowego lub istniejącego.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
 ![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
@@ -51,7 +51,7 @@ Formant wyboru konta magazynu do nowego lub istniejącego. Użyj tego elementu p
 - Jeśli zostanie określona, `defaultValue.name` automatycznie sprawdzania poprawności unikatowość. Jeśli nazwa konta magazynu nie jest unikatowa, użytkownik musi określić inną nazwę lub wybierz istniejące konto magazynu.
 - Wartość domyślna dla `defaultValue.type` jest **Premium_LRS**.
 - Dowolnego typu nie jest określona w `constraints.allowedTypes` jest ukryta i dowolnego typu nie jest określona w `constraints.excludedTypes` jest wyświetlany.
-`constraints.allowedTypes`i `constraints.excludedTypes` są opcjonalne, ale nie mogą być używane jednocześnie.
+`constraints.allowedTypes` i `constraints.excludedTypes` są opcjonalne, ale nie mogą być używane jednocześnie.
 - Jeśli `options.hideExisting` jest **true**, użytkownik nie może wybrać istniejące konto magazynu. Wartość domyślna to **false**.
 
 
@@ -65,7 +65,6 @@ Formant wyboru konta magazynu do nowego lub istniejącego. Użyj tego elementu p
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
-* Aby obejrzeć wprowadzenie do aplikacji zarządzanych, zobacz [zarządzanej aplikacji Azure — omówienie](overview.md).
+## <a name="next-steps"></a>Kolejne kroki
 * Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
 * Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

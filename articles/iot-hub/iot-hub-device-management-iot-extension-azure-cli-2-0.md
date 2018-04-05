@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT zarządzania urządzeniami z rozszerzeniem IoT Azure CLI 2.0 | Dokumentacja firmy Microsoft"
-description: "Użyj rozszerzenia IoT Azure CLI 2.0 narzędzia do zarządzania urządzeniami Centrum IoT Azure, bezpośrednie metod i opcje zarządzania żądaną właściwości dwie."
+title: Azure IoT zarządzania urządzeniami z rozszerzeniem IoT Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: Użyj rozszerzenia IoT Azure CLI 2.0 narzędzia do zarządzania urządzeniami Centrum IoT Azure, bezpośrednie metod i opcje zarządzania żądaną właściwości dwie.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: chrissie926
 manager: timlt
-tags: 
-keywords: "Zarządzanie urządzeniami iot platformy Azure, zarządzanie urządzeniami Centrum azure iot, urządzenia iot zarządzania, zarządzanie urządzeniami Centrum iot"
+tags: ''
+keywords: Zarządzanie urządzeniami iot platformy Azure, zarządzanie urządzeniami Centrum azure iot, urządzenia iot zarządzania, zarządzanie urządzeniami Centrum iot
 ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 07b9f14048b6618863efd5bd8eb8bcc8f52ec735
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ceace7331c7548c5b4e27f8529152fd69d5469cd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Użyj rozszerzenia IoT 2.0 interfejsu wiersza polecenia platformy Azure do zarządzania urządzeniami Centrum IoT Azure
 
@@ -27,7 +27,9 @@ ms.lasthandoff: 03/09/2018
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) to nowe open source rozszerzenia IoT, który dodaje do możliwości [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) zawiera polecenia do interakcji z usługi Azure resource manager i zarządzanie punktami końcowymi. Azure CLI 2.0 zawiera polecenia do interakcji z usługi Azure resource manager i zarządzanie punktami końcowymi. Na przykład służy 2.0 interfejsu wiersza polecenia platformy Azure do utworzenia maszyny Wirtualnej platformy Azure lub Centrum IoT. Rozszerzenia interfejsu wiersza polecenia umożliwia usługą platformy Azure rozszerzyć nadanie wiersza polecenia platformy Azure, dostęp do dodatkowych możliwości specyficznych dla usług. Rozszerzenie IoT udostępnia deweloperom IoT wiersza polecenia możliwości Centrum IoT, krawędzi IoT i inicjowania obsługi usługi IoT Hub urządzeń.
+[Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) to nowe open source rozszerzenia IoT, który dodaje do możliwości [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest). Azure CLI 2.0 zawiera polecenia do interakcji z usługi Azure resource manager i zarządzanie punktami końcowymi. Na przykład służy 2.0 interfejsu wiersza polecenia platformy Azure do utworzenia maszyny Wirtualnej platformy Azure lub Centrum IoT. Rozszerzenia interfejsu wiersza polecenia umożliwia usługą platformy Azure rozszerzyć nadanie wiersza polecenia platformy Azure, dostęp do dodatkowych możliwości specyficznych dla usług. Rozszerzenie IoT udostępnia deweloperom IoT wiersza polecenia możliwości Centrum IoT, krawędzi IoT i inicjowania obsługi usługi IoT Hub urządzeń.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 | Opcja zarządzania          | Zadanie                                                                                                                            |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -39,8 +41,7 @@ ms.lasthandoff: 03/09/2018
 
 Aby uzyskać bardziej szczegółowe wyjaśnienia dotyczące różnic oraz wskazówki dotyczące używania tych opcji, zobacz [wskazówki komunikację urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) i [wskazówki dotyczące komunikacji chmury do urządzenia](iot-hub-devguide-c2d-guidance.md).
 
-> [!NOTE]
-> Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Centrum IoT utrzymuje dwie urządzenia, dla każdego urządzenia, które nawiązuje z nim połączenie. Aby uzyskać więcej informacji na temat twins urządzenia, zobacz [wprowadzenie twins urządzenia](iot-hub-node-node-twin-getstarted.md).
+Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Centrum IoT utrzymuje dwie urządzenia, dla każdego urządzenia, które nawiązuje z nim połączenie. Aby uzyskać więcej informacji na temat twins urządzenia, zobacz [wprowadzenie twins urządzenia](iot-hub-node-node-twin-getstarted.md).
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
@@ -61,9 +62,9 @@ Uruchom Azure CLI w wersji 2.0 i rozszerzenia IoT Azure CLI 2.0 z różnymi opcj
 
 - [Python 2.7x lub Python 3.x](https://www.python.org/downloads/)
 
-- Zainstaluj interfejs wiersza polecenia platformy Azure 2.0. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie [MSI](https://aka.ms/InstallAzureCliWindows). Można również postępuj zgodnie z instrukcjami instalacji [Microsoft Docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) można skonfigurować 2.0 interfejsu wiersza polecenia platformy Azure w danym środowisku. Co najmniej w wersji 2.0 interfejsu wiersza polecenia platformy Azure musi być 2.0.24 lub nowszej. Użyj `az –version` do sprawdzania poprawności. 
+- Zainstaluj interfejs wiersza polecenia platformy Azure 2.0. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie instalatora [MSI](https://aka.ms/InstallAzureCliWindows). Można również postępuj zgodnie z instrukcjami instalacji [Microsoft Docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) można skonfigurować 2.0 interfejsu wiersza polecenia platformy Azure w danym środowisku. Potrzebujesz co najmniej interfejsu wiersza polecenia platformy Azure 2.0 w wersji 2.0.24 lub nowszej. Użyj polecenia `az –version` w celu przeprowadzenia weryfikacji. 
 
-- Zainstaluj rozszerzenie IoT. Najprostszym sposobem jest uruchomienie `az extension add --name azure-cli-iot-ext`. [Plik readme rozszerzenia IoT](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) opisano kilka sposobów, aby zainstalować to rozszerzenie.
+- Zainstaluj rozszerzenie IoT. Najprostszym sposobem jest uruchomienie polecenia `az extension add --name azure-cli-iot-ext`. [Plik readme rozszerzenia IoT](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) opisuje kilka sposobów instalowania rozszerzenia.
 
 
 ## <a name="log-in-to-your-azure-account"></a>Zaloguj się do konta platformy Azure

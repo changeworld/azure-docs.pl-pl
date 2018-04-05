@@ -1,6 +1,6 @@
 ---
-title: "Azure zarządzanych aplikacji PasswordBox elementu interfejsu użytkownika | Dokumentacja firmy Microsoft"
-description: "Opis elementu Microsoft.Common.PasswordBox interfejsu użytkownika dla aplikacji Azure"
+title: Element PasswordBox interfejsu użytkownika platformy Azure | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Common.PasswordBox interfejsu użytkownika do portalu Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d9f2b7cf56375d3a609cff20e928307c13bf2b8
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 19c027819b83f10a7a3de714d690964507311da0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="microsoftcommonpasswordbox-ui-element"></a>Element Microsoft.Common.PasswordBox interfejsu użytkownika
-Formant, który może służyć do udostępniania i Potwierdź hasło. Użyj tego elementu po [tworzenie aplikacji zarządzanych Azure](publish-service-catalog-app.md).
+# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI element
+Formant, który może służyć do udostępniania i Potwierdź hasło.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
 ![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
@@ -58,6 +58,5 @@ Formant, który może służyć do udostępniania i Potwierdź hasło. Użyj teg
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby obejrzeć wprowadzenie do aplikacji zarządzanych, zobacz [zarządzanej aplikacji Azure — omówienie](overview.md).
 * Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
 * Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

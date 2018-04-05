@@ -1,8 +1,8 @@
 ---
-title: "Strumień metryk niestandardowych metryk i diagnostyki w usłudze Azure Application Insights na żywo | Dokumentacja firmy Microsoft"
-description: "Monitorowanie aplikacji sieci web w czasie rzeczywistym z metryki niestandardowe i diagnozowanie problemów z błędów, ślady i wydarzeń na żywo źródło danych."
+title: Strumień metryk niestandardowych metryk i diagnostyki w usłudze Azure Application Insights na żywo | Dokumentacja firmy Microsoft
+description: Monitorowanie aplikacji sieci web w czasie rzeczywistym z metryki niestandardowe i diagnozowanie problemów z błędów, ślady i wydarzeń na żywo źródło danych.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 866fc729b3167863c2d423d0e6ac0d7640e3425e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f0338642ab99af2fd5ec4f6432bbb8d626daea29
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Strumień na żywo metryki: Monitor & Diagnozuj z opóźnieniem 1 sekundę 
 
@@ -37,7 +37,7 @@ Strumień na żywo metryki można:
 
 Strumień na żywo metryki jest obecnie dostępna w aplikacji ASP.NET uruchomionych lokalnie lub w chmurze. 
 
-## <a name="get-started"></a>Rozpoczynanie pracy
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 1. Jeśli nie jest jeszcze [zainstalowane usługi Application Insights](app-insights-asp-net.md) w aplikacji sieci web ASP.NET lub [aplikacji dla systemu Windows server](app-insights-windows-services.md), zrób to teraz. 
 2. **Aktualizacja do najnowszej wersji** pakietu usługi Application Insights. W programie Visual Studio, kliknij prawym przyciskiem myszy projekt i wybierz polecenie **pakiety zarządzania pakietami Nuget**. Otwórz **aktualizacje** karcie wyboru **Uwzględnij wersję wstępną**i wybrać wszystkie pakiety Microsoft.ApplicationInsights.*.
@@ -115,12 +115,15 @@ Filtry niestandardowe podane kryteria są odsyłane do składnika metryki na ży
 ![Utwórz klucz interfejsu api](./media/app-insights-live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>Dodaj klucz interfejsu API do konfiguracji
+
+# <a name="net-standardtabnet-standard"></a>[.NET Standard](#tab/.net-standard)
+
 W pliku applicationinsights.config dodać AuthenticationApiKey QuickPulseTelemetryModule:
 ``` XML
 
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
-</Add> 
+</Add>
 
 ```
 Lub w kodzie, ustaw go w QuickPulseTelemetryModule:
@@ -130,6 +133,34 @@ Lub w kodzie, ustaw go w QuickPulseTelemetryModule:
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
+# <a name="net-core-tabnet-core"></a>[.NET Core] (#tab/.net-core)
+
+Modyfikowanie pliku startup.cs w następujący sposób:
+
+Najpierw dodaj
+
+``` C#
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using Microsoft.ApplicationInsights.Extensibility;
+```
+
+Następnie w obszarze metody konfiguracji należy dodać:
+
+``` C#
+  QuickPulseTelemetryModule dep;
+            var modules = app.ApplicationServices.GetServices<ITelemetryModule>();
+            foreach (var module in modules)
+            {
+                if (module is QuickPulseTelemetryModule)
+                {
+                    dep = module as QuickPulseTelemetryModule;
+                    dep.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+                    dep.Initialize(TelemetryConfiguration.Active);
+                }
+            }
+```
+
+---
 
 Jednak jeśli rozpoznaje i zaufania połączonych serwerów, możesz spróbować filtry niestandardowe bez uwierzytelnionego kanału. Ta opcja jest dostępna przez sześć miesięcy. To zastąpienie jest wymagana raz na nowej sesji, lub gdy nowy serwer przejściu do trybu online.
 
@@ -154,7 +185,7 @@ Brak danych? Jeśli aplikacja znajduje się w sieci chronionej: strumień na ży
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie użycia za pomocą usługi Application Insights](app-insights-web-track-usage.md)
 * [W wyszukiwaniu diagnostycznych](app-insights-diagnostic-search.md)
 * [Profiler](app-insights-profiler.md)

@@ -1,19 +1,20 @@
 ---
-title: "Moduł SQL krawędzi IoT Azure | Dokumentacja firmy Microsoft"
-description: "Przechowywanie danych na krawędzi, z modułów programu Microsoft SQL, z usługi Azure Functions do formatowania danych."
+title: Moduł SQL krawędzi IoT Azure | Dokumentacja firmy Microsoft
+description: Przechowywanie danych na krawędzi, z modułów programu Microsoft SQL, z usługi Azure Functions do formatowania danych.
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
-ms.author: kgremban, ebertrams
+ms.author: kgremban
+ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 792e754b84f1dc03a32780ed94d274c833be68f5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c755d171b34d59d2746a965ab3511a0df00c98db
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Przechowywanie danych na krawędzi, z baz danych programu SQL Server
 

@@ -25,9 +25,15 @@
 ### Moduł równoważenia obciążenia
 #### [Co to jest moduł równoważenia obciążenia?](../load-balancer/load-balancer-standard-overview.md)
 #### [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md)
-#### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal](../load-balancer/load-balancer-get-started-internet-az-portal.md)
-#### [Tworzenie strefowo nadmiarowej usługi Load Balancer w warstwie Standardowa przy użyciu programu PowerShell](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
-#### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa przy użyciu interfejsu wiersza polecenia](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+
+#### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+##### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+##### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+#### [Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+##### [Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+##### [Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+#### [Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności](../load-balancer/load-balancer-standard-public-availability-zones-portal.md)
+##### [Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności za pomocą platformy Azure (interfejs wiersza polecenia)](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 
 ### [Publiczny adres IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
@@ -35,7 +41,7 @@
 #### [Strefy dostępności z usługą SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### Magazyn
-#### [Magazyn strefowo nadmiarowy](../storage/common/storage-redundancy.md#zone-redundant-storage)
+#### [Magazyn strefowo nadmiarowy](../storage/common/storage-redundancy-zrs.md)
 
 # Odzyskiwanie po awarii
 ## [Korzystanie z usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

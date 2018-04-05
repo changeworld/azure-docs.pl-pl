@@ -35,9 +35,11 @@
       href: container-instances-multi-container-group.md
     - name: Wdrażanie z usługi Azure Container Registry
       href: container-instances-using-azure-container-registry.md
+    - name: Wykonywanie polecenia (exec)
+      href: container-instances-exec.md
     - name: Uruchamianie zadań konteneryzowanych
       href: container-instances-restart-policy.md
-    - name: Ustawianie zmiennych środowiskowych
+    - name: Ustawianie zmiennych środowiskowych (env)
       href: container-instances-environment-variables.md
     - name: Rozwiązywanie problemów z wdrożeniami
       href: container-instances-troubleshooting.md

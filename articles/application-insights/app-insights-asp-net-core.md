@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights dla platformy ASP.NET Core | Dokumentacja firmy Microsoft
-description: "Monitorowanie aplikacji sieci web dla dostępności, wydajności i użycia."
+description: Monitorowanie aplikacji sieci web dla dostępności, wydajności i użycia.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Usługa Application Insights dla aplikacji ASP.NET Core
 
@@ -95,7 +95,7 @@ Uruchamianie aplikacji, a następnie klikając wokół linki ręcznie może słu
 
 1. Uruchom aplikację, klikając pozycję IIS Express ![Ikona zrzut ekranu programu Visual Studio usług IIS Express](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. Skopiuj adres url z pola adresu przeglądarki. Jest w formacie http://localhost: {losowej port number}
+2. Skopiuj adres url z pola adresu przeglądarki. Jest w formacie http://localhost:{random numer portu}
 
    ![Zrzut ekranu przedstawiający adres url na pasku adresu przeglądarki](./media/app-insights-asp-net-core/0013-copy-url.png)
 
@@ -159,7 +159,7 @@ Wiele o potwierdzenie będą występować przeczytaj i zaakceptuj Jeśli zgadzas
    ```
      ![Zrzut ekranu przedstawiający _ViewImports.cshtml zmiany kodu](./media/app-insights-asp-net-core/00018-view-imports.png)
 
-3. W **Layout.cshtml** Dodaj wiersz poniżej przed ``</head>`` tag, ale przed innymi skryptami.
+3. W **_Layout.cshtml** Dodaj wiersz poniżej przed ``</head>`` tag, ale przed innymi skryptami.
 
     ```C#
     @Html.Raw(snippet.FullScript)

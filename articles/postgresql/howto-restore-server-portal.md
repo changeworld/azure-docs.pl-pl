@@ -1,6 +1,6 @@
 ---
 title: Przywracanie serwera w bazie danych systemu Azure dla PostgreSQL
-description: "W tym artykule opisano sposób przywracania serwera w bazie danych Azure dla PostgreSQL przy użyciu portalu Azure."
+description: W tym artykule opisano sposób przywracania serwera w bazie danych Azure dla PostgreSQL przy użyciu portalu Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -8,14 +8,14 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 7607a3e60eec39de61c785b8ff75a9f11fa02d0c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 04/01/2018
+ms.openlocfilehash: 0d67bf5625ee9037c5ec152c8ce8564235018e8e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Jak wykonać kopię zapasową i przywrócić serwera w bazie danych Azure PostgreSQL przy użyciu portalu Azure
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Sposób wykonywania kopii zapasowej i przywracania serwera w bazie danych Azure dla PostgreSQL przy użyciu portalu Azure
 
 ## <a name="backup-happens-automatically"></a>Kopia zapasowa jest wykonywana automatycznie
 Bazy danych platformy Azure dla serwerów PostgreSQL kopię zapasową okresowo do włączania funkcji przywracania. Za pomocą tej funkcji można przywrócić serwer i wszystkie jego bazy danych do wcześniejszych w momencie, na nowym serwerze.
@@ -45,7 +45,7 @@ Na poniższym zrzucie ekranu ma została zwiększona do 34 dni.
 
 Okres przechowywania kopii zapasowych decyduje, jak daleko w czasie, które mogą być pobierane w momencie przywracania, ponieważ jest on oparty na kopie zapasowe dostępne. W momencie przywracania jest dalsze opisane w poniższej sekcji. 
 
-## <a name="point-in-time-restore-in-the-azure-portal"></a>W momencie przywracania w portalu Azure
+## <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 Bazy danych platformy Azure dla PostgreSQL umożliwia przywrócenie serwera do punktu w czasie, a do z uprawnieniami do nowego serwera. Użyj tego nowego serwera, aby odzyskać dane lub ma punkt do nowego serwera aplikacji klienta.
 
 Na przykład jeśli przypadkowo tabeli w południe dzisiaj, można przywrócenie na czas bezpośrednio przed południe i pobieranie Brak tabeli i danych z tej kopii nowego serwera. W momencie przywracania na serwerze poziomu, nie jest na poziomie bazy danych.
@@ -72,6 +72,22 @@ Poniższe kroki należy przywrócić działanie serwera próbki do punktu w czas
 >[!Note]
 >Nowy serwer powstały w momencie przywracania ma taką samą nazwę logowania administratora serwera i wybierz hasło, które jest prawidłowa dla istniejącego serwera w punkcie czasu. Należy zmienić hasło z nowego serwera **omówienie** strony.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="geo-restore"></a>Przywracanie Geo
+Skonfigurowanie serwera na potrzeby geograficznie nadmiarowy kopii zapasowych można utworzyć nowego serwera z kopii zapasowej tego istniejącego serwera. W dowolnym regionie, że baza danych Azure dla PostgreSQL jest dostępny, można utworzyć nowego serwera.  
+
+1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu. Wybierz pozycję **Bazy danych** > **Azure Database for PostgreSQL**.
+
+   ![Opcja „Azure Database for PostgreSQL”](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
+
+2. W formularzu **wybierz źródło** listy rozwijanej wybierz **kopii zapasowej**. Ta akcja spowoduje załadowanie listę serwerów, które mają nadmiarowe kopie zapasowe geograficznie włączone. Wybierz jedną z tych kopii zapasowych jako źródło nowego serwera.
+   ![Wybierz źródło: Kopia zapasowa i listę z magazynu geograficznie nadmiarowego kopii zapasowych](./media/howto-restore-server-portal/2-georestore.png)
+
+3. Wypełnij pozostałej części formularza z swoje preferencje. Można wybrać dowolny **lokalizacji**. Po wybraniu lokalizacji, możesz wybrać **warstwy cenowej**. Domyślnie są wyświetlane parametry dla istniejącego serwera, który przywracasz z. Możesz kliknąć **OK** bez wprowadzania żadnych zmian, aby te ustawienia były dziedziczone. Lub zmienić **obliczeniowe generowania** (jeśli dostępna w regionie wybrano), liczba **vCores**, **okres przechowywania kopii zapasowej**, i **kopii zapasowej Opcja nadmiarowość**. Zmiana **warstwy cenowej** (podstawowe, ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci) lub **magazynu** rozmiar podczas przywracania nie jest obsługiwany.
+
+>[!Note]
+>Nowy serwer tworzone przez przywrócenie geograficznie ma taką samą nazwę logowania administratora serwera i hasło, które jest prawidłowa dla istniejącego serwera w czasie przywracania została zainicjowana. Hasło można zmienić z nowego serwera **omówienie** strony.
+
+
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o usłudze [kopii zapasowych](concepts-backup.md).
 - Dowiedz się więcej o [ciągłość prowadzenia działalności biznesowej](concepts-business-continuity.md) opcje.

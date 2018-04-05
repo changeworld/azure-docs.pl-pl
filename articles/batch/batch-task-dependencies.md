@@ -1,25 +1,25 @@
 ---
-title: "Użyj zależności zadań do uruchomienia zadania po zakończeniu innych zadań — partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Utwórz zadania, które są zależne od ukończenia innych zadań przetwarzania stylu MapReduce i podobnych danych big data obciążeń w partii zadań Azure."
+title: Użyj zależności zadań do uruchomienia zadania po zakończeniu innych zadań — partii zadań Azure | Dokumentacja firmy Microsoft
+description: Utwórz zadania, które są zależne od ukończenia innych zadań przetwarzania stylu MapReduce i podobnych danych big data obciążeń w partii zadań Azure.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 465306d2de8d1dbe6ba1f0cd74be720b78a50de3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba85e075c39251b0b3d7c4b8bc3f8d53a1afadf7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tworzenie zależności zadań do wykonywania zadań, które są zależne od innych zadań
 
@@ -76,7 +76,7 @@ Istnieją trzy scenariusze zależności podstawowe zadania, których można uży
 
 | Scenariusz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Przykład |  |
 |:---:| --- | --- |
-|  [Jeden do jednego](#one-to-one) |*taskB* zależy od *taskA* <p/> *taskB* nie będzie można zaplanować wykonywanie do momentu *taskA* zostało ukończone pomyślnie |![Diagram: jeden do jednego zadania zależności][1] |
+|  [One-to-one](#one-to-one) |*taskB* zależy od *taskA* <p/> *taskB* nie będzie można zaplanować wykonywanie do momentu *taskA* zostało ukończone pomyślnie |![Diagram: jeden do jednego zadania zależności][1] |
 |  [Jeden do wielu](#one-to-many) |*zadanieC* zależy od *zadaniaA* i *zadaniaB* <p/> *taskC* nie zostanie zaplanowane do wykonania przed zakończeniem *taskA* i *taskB* zostały ukończone pomyślnie |![Diagram: jeden do wielu zadań zależności][2] |
 |  [Zakres identyfikator zadania](#task-id-range) |*taskD* zależy od zakresu zadań <p/> *taskD* nie będzie można zaplanowane do uruchomienia aż do zadań z identyfikatorami *1* za pośrednictwem *10* zostały ukończone pomyślnie |![Diagram: Zadanie identyfikator zakresu zależności][3] |
 
@@ -207,7 +207,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 - Tworzenie zadań, które są zależne od innych zadań
 - Jak wykonać te zadania w puli węzłów obliczeniowych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 ### <a name="application-deployment"></a>Wdrażanie aplikacji
 [Pakietów aplikacji](batch-application-packages.md) funkcji partii zapewnia prosty sposób zarówno, jak wdrożyć i wersja aplikacji, które wykonania zadań na węzłach obliczeniowych.
 

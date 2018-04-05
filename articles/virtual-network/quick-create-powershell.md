@@ -1,26 +1,26 @@
 ---
 title: Tworzenie sieci wirtualnej platformy Azure - PowerShell | Dokumentacja firmy Microsoft
-description: "Dowiedz się szybko utworzyć sieć wirtualną przy użyciu programu PowerShell. Sieć wirtualna umożliwia zasobów platformy Azure, takich jak maszyny wirtualne do komunikowania się przez użytkowników ze sobą i z Internetu."
+description: Dowiedz się szybko utworzyć sieć wirtualną przy użyciu programu PowerShell. Sieć wirtualna umożliwia zasobów platformy Azure, takich jak maszyny wirtualne do komunikowania się przez użytkowników ze sobą i z Internetu.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
-ms.devlang: 
-ms.topic: 
+ms.devlang: ''
+ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 13d36e6861a30473e6cb5d54d94a3c23a1e4cc59
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
-ms.translationtype: MT
+ms.custom: ''
+ms.openlocfilehash: fe171000f83c27f23972569b93e351340f4426ad
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Tworzenie sieci wirtualnej przy użyciu programu PowerShell
 
@@ -159,4 +159,4 @@ W tym artykule tworzone są domyślne sieci wirtualnej i dwie maszyny wirtualne.
 Domyślnie program Azure umożliwia nieograniczony prywatnej komunikacji między maszynami wirtualnymi, ale tylko maszyn wirtualnych systemu Windows umożliwia przychodzących połączeń pulpitu zdalnego z Internetu. Aby dowiedzieć się ograniczyć różnego rodzaju komunikacji sieciowej do i z maszyn wirtualnych, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Filtrowanie ruchu sieciowego](virtual-networks-create-nsg-arm-ps.md)
+> [Filtrowanie ruchu sieciowego](tutorial-filter-network-traffic.md)

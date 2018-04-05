@@ -1,25 +1,25 @@
 ---
-title: "Rozpocząć tworzenie rozwiązań partii z szablony projektu Visual Studio - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak szablony projektu Visual Studio może pomóc w implementacji i uruchamiania obciążeń obliczeniowych w partii zadań Azure."
+title: Tworzenie rozwiązań partii z szablony programu Visual Studio — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak szablony projektu Visual Studio może pomóc w implementacji i uruchamiania obciążeń obliczeniowych w partii zadań Azure.
 services: batch
 documentationcenter: .net
-author: fayora
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Szablony projektu Visual Studio umożliwia szybkie rozpoczęcie tworzenia rozwiązań partii
 
@@ -434,7 +434,7 @@ parameters.JSON następującym kodem, a jeśli go znaleziono ładuje go jako sł
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Utrwalanie i zadań dane wyjściowe do magazynu Azure
 Kolejnym narzędziem pomocne w partii opracowywanie rozwiązań jest [konwencje pliku wsadowego Azure][nuget_package]. Ta biblioteka klas programu .NET (obecnie w wersji zapoznawczej) w aplikacjach partiami platformy .NET umożliwia łatwe przechowywanie i pobieranie danych wyjściowych zadania, do i z usługi Azure Storage. [Utrwalić danych wyjściowych i zadań partii zadań Azure](batch-task-output.md) zawiera pełne omówienie biblioteki i jej użycia.
 

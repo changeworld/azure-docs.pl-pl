@@ -1,11 +1,11 @@
 ---
-title: "Zrozumienie zestawów SDK usługi Azure IoT | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera — informacje i łącza do różnych Azure IoT urządzeń i usług zestawów SDK, które służy do tworzenia aplikacji zaplecza i aplikacji dla urządzeń."
+title: Zrozumienie zestawów SDK usługi Azure IoT | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — informacje i łącza do różnych Azure IoT urządzeń i usług zestawów SDK, które służy do tworzenia aplikacji zaplecza i aplikacji dla urządzeń.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c5c9a497-bb03-4301-be2d-00edfb7d308f
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/12/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c77812db85c3b6730fce9af3f634821b44508687
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aec2126369f45a89050dbd8b2d3cae7e00ccb8ed
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>W zrozumieniu i użytkowaniu zestawów SDK IoT Azure
 
@@ -32,6 +32,8 @@ Istnieją trzy kategorie software development Kit (SDK) do pracy z Centrum IoT:
 * **Usługa Azure IoT krawędzi** umożliwia tworzenie bram dla urządzeń, które nie używają jednego z obsługiwanych protokołów. Bramy może także przetwarzać komunikatów na krawędzi.
 
 Zestawy SDK są dostarczane do obsługi wielu języków programowania.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="azure-iot-device-sdks"></a>Urządzenia IoT Azure SDK
 
@@ -88,7 +90,7 @@ Poniższa lista zawiera łącza do trybu online dokumentacji interfejsu API urz�
 * [Centrum IoT REST][lnk-rest-ref]
 * [Azure IoT Edge][lnk-gateway-ref]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Inne tematy dokumentacji, w tym przewodniku deweloperów Centrum IoT obejmują:
 

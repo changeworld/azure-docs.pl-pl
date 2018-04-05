@@ -14,21 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 74645f3fdece14790311592a0fdd4ce6570a5bae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97b0e4c4dd8c67fdcd422fb04b7c32815b6c3fdb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Zarządzanie tożsamościami urządzenia IoT Hub zbiorcze
 
 Każdy Centrum IoT ma rejestru tożsamości używanej do tworzenia zasobów na urządzenie w usłudze. W rejestrze tożsamości umożliwia kontrolowanie dostępu do urządzeń połączonych z punktów końcowych. W tym artykule opisano, jak importować i eksportować tożsamości urządzenia w trybie zbiorczym do i z rejestru tożsamości.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Importowanie i eksportowanie działania mają miejsce w kontekście *zadania* umożliwiające wykonanie operacji usługi zbiorczego z Centrum IoT.
 
 **RegistryManager** klasa zawiera **ExportDevicesAsync** i **ImportDevicesAsync** metody, które używają **zadania** framework. Te metody umożliwiają eksportowanie, importowania i synchronizacji całości rejestru tożsamości Centrum IoT.
 
 W tym temacie omówiono przy użyciu **RegistryManager** klasy i **zadania** systemu, aby wykonać zbiorczego importu i eksportu urządzeń do i z rejestru tożsamości Centrum IoT. Usługa udostępniania urządzeń Centrum IoT Azure umożliwia również włączyć bezobsługową, just-in-time alokacji dla co najmniej jeden centra IoT bez udziału człowieka. Aby dowiedzieć się więcej, zobacz [inicjowania obsługi usługi dokumentacji][lnk-dps].
+
 
 ## <a name="what-are-jobs"></a>Co to są zadania?
 

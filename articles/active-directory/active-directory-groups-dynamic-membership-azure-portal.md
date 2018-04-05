@@ -12,31 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Utwórz zasady na podstawie atrybutów dynamiczne członkostwo w grupie w usłudze Azure Active Directory
-W usłudze Azure Active Directory (Azure AD) można utworzyć reguł zaawansowanych, aby włączyć złożonych opartych na atrybutach dynamiczne zarządzanie członkostwem w grupach. W tym artykule szczegółowo atrybuty i składni, aby utworzyć reguły członkostwa dynamicznych dla użytkowników lub urządzeń.
+W usłudze Azure Active Directory (Azure AD) można utworzyć reguł zaawansowanych, aby włączyć złożonych opartych na atrybutach dynamiczne zarządzanie członkostwem w grupach. W tym artykule szczegółowo atrybuty i składni, aby utworzyć reguły członkostwa dynamicznych dla użytkowników lub urządzeń. Możesz skonfigurować reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub w grupach usługi Office 365.
 
 Po zmianie wszystkie atrybuty użytkowników lub urządzeń, system ocenia wszystkie reguły dynamicznej grupy w katalogu, aby sprawdzić, czy spowoduje zmianę żadnej grupy dodaje lub usuwa. Jeśli użytkownik lub urządzenie spełnia zasady grupy, zostaną dodane jako członkiem tej grupy. Jeśli nie spełniają reguły, zostaną usunięte.
 
 > [!NOTE]
-> Możesz skonfigurować reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub w grupach usługi Office 365.
->
 > Ta funkcja wymaga licencji usługi Azure AD Premium P1 dla każdego użytkownika został dodany do co najmniej jednej grupy dynamicznej. Nie jest to konieczne, aby rzeczywiście przypisać licencje do użytkowników dla nich jako członków grup dynamicznych, ale musisz mieć minimalną liczbę licencji w dzierżawie dotyczyć wszystkich takich użytkowników. Na przykład: Jeśli masz łączną liczbę unikatowych użytkowników 1000 we wszystkich grupach dynamicznych w dzierżawie, musisz mieć co najmniej 1000 licencji dla programu Azure AD Premium P1 lub nowszej, do wersji spełniającej wymagania licencyjne.
 >
 > Można utworzyć grupy dynamicznej dla urządzeń lub użytkowników, ale nie można utworzyć regułę, która zawiera zarówno obiektów użytkowników i urządzeń.
 > 
 > W tej chwili nie jest możliwe tworzenie grupy urządzeń, na podstawie atrybutów użytkownika będący właścicielem. Reguły członkostwa urządzenie może odwoływać się tylko natychmiastowe atrybutów obiektów urządzeń w katalogu.
-> 
-> Teams firmy Microsoft nie obsługuje jeszcze dynamiczne członkostwo w grupie. Możesz to sprawdzić błąd w dziennikach skojarzone z "Nie można migrować członkostwo dynamiczne grupy"
 
 ## <a name="to-create-an-advanced-rule"></a>Aby utworzyć regułę zaawansowane
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym lub administratorem konta użytkownika.
@@ -74,7 +70,7 @@ Pełna lista obsługiwanych parametrów i operatorami reguł wyrażenia znajduje
 Całkowita długość treści zaawansowane reguły nie może przekraczać 2048 znaków.
 
 > [!NOTE]
-> Operacje ciągu i wyrażeń regularnych nie jest uwzględniana. Można także przeprowadzić sprawdzenia wartości null przy użyciu *null* jako stała, na przykład user.department - eq *$null*.
+> Operacje ciągu i wyrażeń regularnych nie jest uwzględniana. Można także przeprowadzić sprawdzenia wartości Null przy użyciu *null* jako stała, na przykład user.department - eq *null*.
 > Ciągi zawierające oferty "powinny być zmienione znaczenie przy użyciu ' znaków, na przykład user.department - eq \`"Sprzedaż".
 
 ## <a name="supported-expression-rule-operators"></a>Obsługiwane wyrażenie operatorami reguł
@@ -106,11 +102,11 @@ Poniżej przedstawiono wszystkie operatory na pierwszeństwo z niższym wyższy.
 Wszystkich operatorów można używać z lub bez prefiksu łącznik. Nawiasy są wymagane tylko wtedy, gdy priorytet nie spełnia wymagań.
 Na przykład:
 ```
-   user.department -eq "Marketing" -and user.country -eq "US"
+   user.department –eq "Marketing" –and user.country –eq "US"
 ```
 odpowiada to:
 ```
-   (user.department -eq "Marketing") -and (user.country -eq "US")
+   (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
 ## <a name="using-the--in-and--notin-operators"></a>Przy użyciu w i notIn — operatory
 
@@ -160,32 +156,32 @@ Dozwolonych operatorów
 
 | Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
-| city |Dowolną wartość ciągu lub *$null* |(user.city - eq "value") |
-| Kraju |Dowolną wartość ciągu lub *$null* |(user.country - eq "value") |
-| companyName | Dowolną wartość ciągu lub *$null* | (user.companyName - eq "value") |
-| Dział |Dowolną wartość ciągu lub *$null* |(user.department - eq "value") |
+| city |Dowolną wartość ciągu lub *wartości null* |(user.city - eq "value") |
+| Kraju |Dowolną wartość ciągu lub *wartości null* |(user.country - eq "value") |
+| companyName | Dowolną wartość ciągu lub *wartości null* | (user.companyName - eq "value") |
+| Dział |Dowolną wartość ciągu lub *wartości null* |(user.department - eq "value") |
 | Nazwa wyświetlana |Dowolną wartością ciągu |(user.displayName - eq "value") |
-| Identyfikator pracownika |Dowolną wartością ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *$null*) |
-| facsimileTelephoneNumber |Dowolną wartość ciągu lub *$null* |(user.facsimileTelephoneNumber - eq "value") |
-| givenName |Dowolną wartość ciągu lub *$null* |(user.givenName - eq "value") |
-| jobTitle |Dowolną wartość ciągu lub *$null* |(user.jobTitle - eq "value") |
-| Poczty |Dowolną wartość ciągu lub *$null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
+| Identyfikator pracownika |Dowolną wartością ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
+| facsimileTelephoneNumber |Dowolną wartość ciągu lub *wartości null* |(user.facsimileTelephoneNumber - eq "value") |
+| givenName |Dowolną wartość ciągu lub *wartości null* |(user.givenName - eq "value") |
+| jobTitle |Dowolną wartość ciągu lub *wartości null* |(user.jobTitle - eq "value") |
+| Poczty |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
 | mailNickName |Dowolną wartość ciągu (poczty alias użytkownika) |(user.mailNickName - eq "value") |
-| Telefon komórkowy |Dowolną wartość ciągu lub *$null* |(user.mobile - eq "value") |
+| Telefon komórkowy |Dowolną wartość ciągu lub *wartości null* |(user.mobile - eq "value") |
 | Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokalny identyfikator zabezpieczeń (SID) dla użytkowników, którzy zostały zsynchronizowane z lokalnymi do chmury. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Brak DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Dowolną wartość ciągu lub *$null* |(user.physicalDeliveryOfficeName - eq "value") |
-| postalCode |Dowolną wartość ciągu lub *$null* |(user.postalCode - eq "value") |
+| physicalDeliveryOfficeName |Dowolną wartość ciągu lub *wartości null* |(user.physicalDeliveryOfficeName - eq "value") |
+| postalCode |Dowolną wartość ciągu lub *wartości null* |(user.postalCode - eq "value") |
 | preferredLanguage |Kod ISO 639-1 |(user.preferredLanguage - eq "pl pl") |
-| sipProxyAddress |Dowolną wartość ciągu lub *$null* |(user.sipProxyAddress - eq "value") |
-| state |Dowolną wartość ciągu lub *$null* |(user.state - eq "value") |
-| streetAddress |Dowolną wartość ciągu lub *$null* |(user.streetAddress - eq "value") |
-| surname |Dowolną wartość ciągu lub *$null* |(user.surname - eq "value") |
-| TelephoneNumber |Dowolną wartość ciągu lub *$null* |(user.telephoneNumber - eq "value") |
+| sipProxyAddress |Dowolną wartość ciągu lub *wartości null* |(user.sipProxyAddress - eq "value") |
+| state |Dowolną wartość ciągu lub *wartości null* |(user.state - eq "value") |
+| streetAddress |Dowolną wartość ciągu lub *wartości null* |(user.streetAddress - eq "value") |
+| surname |Dowolną wartość ciągu lub *wartości null* |(user.surname - eq "value") |
+| TelephoneNumber |Dowolną wartość ciągu lub *wartości null* |(user.telephoneNumber - eq "value") |
 | usageLocation |Kod kraju własną literą dwóch |(user.usageLocation - eq "PL") |
 | userPrincipalName |Dowolną wartością ciągu |(user.userPrincipalName - eq "alias@domain") |
-| UserType |element członkowski gościa *$null* |(user.userType - eq "Elementu członkowskiego") |
+| UserType |element członkowski gościa *wartości null* |(user.userType - eq "Elementu członkowskiego") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości typu kolekcji ciągów
 Dozwolonych operatorów
@@ -226,9 +222,9 @@ Poniższe wyrażenie będzie wybierz wszystkich użytkowników, którzy mają ws
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-## <a name="use-of-null-values"></a>Użyj wartości null
+## <a name="use-of-null-values"></a>Użyj wartości Null
 
-Aby określić wartości null w regule, można użyć *null* wartość. Nie można więc użyć cudzysłowów wokół wyraz *null* — Jeśli to zrobisz, zostanie potraktowany jako wartość literału ciągu. Prawidłowy sposób odwoływać się do wartości null, jest następujący:
+Aby określić wartości null w regule, można użyć *null* wartość. Nie można więc użyć cudzysłowów wokół wyraz *null* — Jeśli to zrobisz, zostanie potraktowany jako wartość literału ciągu. Nie nie można używać operatora jako operatora porównawczych dla wartości null. Jeśli używasz tego błąd pojawia się przy użyciu wartości null lub $null. W zamian użyj - eq lub - ne. Prawidłowy sposób odwoływać się do wartości null, jest następujący:
 ```
    user.mail –ne $null
 ```
@@ -253,14 +249,15 @@ Można utworzyć grupę wszystkich bezpośrednich podwładnych menedżera. Mened
 
 > [!NOTE]
 > 1. Aby reguła mogła działać, upewnij się, że **identyfikator menedżera** właściwość została poprawnie ustawiona dla użytkowników w dzierżawie. Bieżąca wartość dla użytkownika można sprawdzić na ich **karta Profil**.
-> 2. Ta reguła obsługuje tylko **bezpośredniego** raportów. Obecnie nie jest możliwe tworzenie grupy zagnieżdżone hierarchii, np. grupy, która zawiera bezpośrednich podwładnych i ich raporty.
+> 2. Ta reguła obsługuje tylko **bezpośredniego** raportów. Obecnie nie jest możliwe utworzyć grupę dla zagnieżdżonej hierarchii; na przykład grupy, która zawiera bezpośrednich podwładnych i ich raporty.
+> 3. Ta zasada nie można łączyć z innymi regułami zaawansowane.
 
 **Aby skonfigurować grupę**
 
 1. Wykonaj kroki 1 – 5 z sekcji [do tworzenia zaawansowanych reguł](#to-create-the-advanced-rule)i wybierz **Typ członkostwa** z **dynamiczne użytkownika**.
 2. Na **członkostwo dynamiczne reguły** bloku, wprowadź regułę przy użyciu następującej składni:
 
-    *Bezpośrednich podwładnych dla "{obectID_of_manager}"*
+    *Bezpośrednich podwładnych dla "{objectID_of_manager}"*
 
     Przykład prawidłowy reguły:
 ```
@@ -295,19 +292,43 @@ Można również utworzyć regułę, która wybiera obiekty urządzeń do człon
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>Zmiana członkostwo dynamiczne statyczne i na odwrót
 Użytkownik może zmienić sposób zarządzania członkostwa w grupie. Jest to przydatne, gdy chcesz zachować taką samą nazwę grupy i identyfikator w systemie, więc wszystkie istniejące odwołania do grupy są nadal ważne. Tworzenie nowej grupy wymagają aktualizacji tych odwołań.
 
-Trwa aktualizowanie portalu Azure do obsługi tej funkcji. W międzyczasie można użyć poleceń cmdlet programu PowerShell, jak pokazano poniżej.
+Zaktualizowaliśmy Centrum usługi Azure AD administratora, aby dodać obsługę tej funkcji. Teraz klientów można przekonwertować istniejących grup z członkostwo dynamiczne przypisanych członkostwa i na odwrót za pośrednictwem Centrum administracyjnego usługi AD platformy Azure lub poleceń cmdlet programu PowerShell, jak pokazano poniżej.
 
 > [!WARNING]
 > Podczas zmiany istniejącej grupy statyczne Dynamiczna grupa, wszystkie istniejące elementy członkowskie zostaną usunięte z grupy, a następnie przetworzenie reguły członkostwa można dodać nowe elementy członkowskie. Jeśli grupa jest używana do kontrolowania dostępu do aplikacji lub zasobów, oryginalnego elementy Członkowskie mogą stracić dostęp do momentu reguły członkostwa jest w pełni przetworzony.
 >
-> Jest zalecanym rozwiązaniem do testowania wcześniej nowe reguły członkostwa, aby upewnić się, że nowe członkostwo w grupie jest zgodnie z oczekiwaniami.
+> Firma Microsoft zaleca test wcześniej nowe reguły członkostwa, aby upewnić się, że nowe członkostwo w grupie zgodnie z oczekiwaniami.
 
-**Przy użyciu programu PowerShell, aby zmienić zarządzanie członkostwem w grupie**
+### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>Aby zmienić zarządzanie członkostwem w grupie za pomocą Centrum administracyjnego usługi Azure AD 
+
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym lub administratorem konta użytkowników w dzierżawie.
+2. Wybierz **grup**.
+3. Z **wszystkich grup** listy, otwórz grupę, którą chcesz zmienić.
+4. Wybierz **właściwości**.
+5. Na **właściwości** stronie dla grupy, wybierz opcję **Typ członkostwa** przypisane (statyczny), dynamiczne użytkownika lub urządzenia dynamicznej, w zależności od typu żądanego członkostwa. Dynamicznego zarządzania członkostwem można użyć konstruktora reguły wybierz opcje Prosta reguła lub zapisać reguły zaawansowanej samodzielnie. 
+
+Poniższe kroki są przykładem zmiany grupy ze statycznego na dynamiczny członkostwa dla grupy użytkowników. 
+
+1. Na **właściwości** strony dla wybranej grupy, wybierz opcję **Typ członkostwa** z **dynamiczne użytkownika**, następnie wybierz opcję Tak w oknie dialogowym wyjaśniający zmiany do grupy członkostwo, aby kontynuować. 
+  
+   ![Wybierz typ członkostwa użytkownika dynamiczne](./media/active-directory-groups-dynamic-membership-azure-portal/select-group-to-convert.png)
+  
+2. Wybierz **zapytania dynamiczne dodawanie**, a następnie podaj reguły.
+  
+   ![Wprowadź reguły](./media/active-directory-groups-dynamic-membership-azure-portal/enter-rule.png)
+  
+3. Po utworzeniu reguły, wybierz **kwerendy dodaj** w dolnej części strony.
+4. Wybierz **zapisać** na **właściwości** stronie dla grupy zapisać zmiany. **Typ członkostwa** grupy natychmiast zaktualizowany na liście grupy.
+
+> [!TIP]
+> Konwersja grupy może zakończyć się niepowodzeniem, jeśli reguły zaawansowanej, wprowadzony jest niepoprawne. W prawym górnym rogu portalu, który zawiera wyjaśnienie, dlaczego reguły nie może zostać zaakceptowana przez system zostanie wyświetlone powiadomienie. Przeczytaj uważnie, aby zrozumieć, jak można dostosować reguły, aby była nieprawidłowa.
+
+### <a name="using-powershell-to-change-membership-management-on-a-group"></a>Przy użyciu programu PowerShell, aby zmienić zarządzanie członkostwem w grupie
 
 > [!NOTE]
-> Aby zmienić właściwości dynamicznych grupy będą musieli używać poleceń cmdlet z **wersję zapoznawczą** [programu Azure AD PowerShell w wersji 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Można zainstalować podglądu [tutaj](https://www.powershellgallery.com/packages/AzureADPreview).
+> Aby zmienić właściwości dynamicznych grupy będą musieli używać poleceń cmdlet z **wersję zapoznawczą** [programu Azure AD PowerShell w wersji 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Można zainstalować podglądu [galerii programu PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
 
-Oto przykład funkcji, które przełączają zarządzanie członkostwem w istniejącej grupy. Należy pamiętać, dokładnie dokumentowane poprawnie modyfikowania właściwości GroupTypes i zachowania wartości, które mogą wystąpić, niezwiązanych ze sobą członkostwo dynamiczne.
+Oto przykład funkcji, które przełączają zarządzanie członkostwem w istniejącej grupy. W tym przykładzie są dokładnie dokumentowane poprawnie modyfikowania właściwości GroupTypes i zachowania wartości, które są związane z członkostwo dynamiczne.
 
 ```
 #The moniker for dynamic groups as used in the GroupTypes property of a group object

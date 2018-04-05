@@ -1,25 +1,23 @@
 ---
-title: "Omówienie monitorowania bramy aplikacji Azure kondycji | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat możliwości monitorowania bramy aplikacji Azure"
+title: Kondycja omówienie monitorowania bramy aplikacji Azure
+description: Więcej informacji na temat możliwości monitorowania bramy aplikacji Azure
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
-ms.assetid: 7eeba328-bb2d-4d3e-bdac-7552e7900b7f
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
-ms.author: davidmu
-ms.openlocfilehash: 83a0b1be1aba48146aa1aaedb36ad9d9d23f17d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 3/30/2018
+ms.author: victorh
+ms.openlocfilehash: 2f62f01c1178f9529eb46051f088affccc5279a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Omówienie monitorowania kondycji bramy aplikacji
 
@@ -40,11 +38,30 @@ Na przykład: Konfigurowanie bramy aplikacji do korzystania z serwerów zaplecza
 
 Jeśli serwer A domyślnym sprawdzaniem sondy nie powiedzie się, bramę aplikacji spowoduje usunięcie jej z puli zaplecza, a ruch sieciowy przestanie przepływać do tego serwera. Domyślnego badania nadal w dalszym ciągu Sprawdź, czy serwer co 30 sekund. Gdy serwer A pomyślnie odpowiada na żądanie jednego z domyślnego badania kondycji, dodaniu wstecz dobrej kondycji do puli zaplecza i ruchu uruchamia ponownie przepływać do serwera.
 
+### <a name="probe-matching"></a>Sonda dopasowania
+
+Domyślnie dobrej kondycji jest uznawany za odpowiedź HTTP (S) z kodem stanu 200. Sondy kondycji niestandardowych dodatkowo obsługuje dwa kryteria dopasowywania procesów. Kryteria dopasowywania można opcjonalnie zmodyfikuj domyślnej interpretacji jakie consititutes dobrej odpowiedzi.
+
+Dopasowywanie są następujące kryteria: 
+
+- **Dopasuj kod stanu odpowiedzi HTTP** — sondowania kryterium akceptowania dopasowywania http odpowiedzi kod lub odpowiedzi kod zakresów określona przez użytkownika. Rozdzielone przecinkami poszczególne kody stanu odpowiedzi lub zakres kod stanu nie jest obsługiwana.
+- **Dopasowanie treści odpowiedzi HTTP** — sondowania, który wygląda w treści odpowiedzi HTTP i zgodny z użytkownikiem określony ciąg kryterium dopasowywania. Należy pamiętać, że dopasowania wyszukuje tylko obecności użytkownika określonego ciągu w treści odpowiedzi i nie są zgodne z wyrażeniem regularnym pełnej.
+
+Kryteria dopasowywania można określić za pomocą `New-AzureRmApplicationGatewayProbeHealthResponseMatch` polecenia cmdlet.
+
+Na przykład:
+
+```
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```
+Po kryteria dopasowania jest określony, będzie można dołączyć do sondowania przy użyciu konfiguracji `-Match` parametru w programie PowerShell.
+
 ### <a name="default-health-probe-settings"></a>Domyślne ustawienia sondy kondycji
 
 | Właściwość sondy | Wartość | Opis |
 | --- | --- | --- |
-| Sonda adresu URL |http://127.0.0.1:\<portu\>/ |Ścieżka adresu URL |
+| Adres URL sondy |http://127.0.0.1:\<port\>/ |Ścieżka adresu URL |
 | Interwał |30 |Interwał sondowania w sekundach |
 | Limit czasu |30 |Sonda limitu czasu w sekundach |
 | Próg złej kondycji |3 |Badania liczby ponownych prób. Po kolejnych sondowania liczby awarii osiągnie próg złej kondycji serwera zaplecza jest oznaczony jako w dół. |
@@ -52,7 +69,7 @@ Jeśli serwer A domyślnym sprawdzaniem sondy nie powiedzie się, bramę aplikac
 > [!NOTE]
 > Port jest tym samym porcie ustawienia HTTP zaplecza.
 
-Domyślnego badania sprawdza tylko http://127.0.0.1:\<portu\> do określenia stanu kondycji. Jeśli trzeba skonfigurować sondy kondycji, aby przejść do niestandardowy adres URL lub zmodyfikuj inne ustawienia, należy użyć niestandardowego sond zgodnie z opisem w poniższych krokach:
+Domyślnego badania analizuje tylko http://127.0.0.1: \<portu\> do określenia stanu kondycji. Jeśli trzeba skonfigurować sondy kondycji, aby przejść do niestandardowy adres URL lub zmodyfikuj inne ustawienia, należy użyć niestandardowego sond zgodnie z opisem w poniższych krokach:
 
 ## <a name="custom-health-probe"></a>Sondy kondycji niestandardowych
 
@@ -64,7 +81,7 @@ Poniższa tabela zawiera definicje dla właściwości sondy kondycji niestandard
 
 | Właściwość sondy | Opis |
 | --- | --- |
-| Nazwa |Nazwa sondy. Ta nazwa jest używana do odwoływania się do sondowania w ustawieniach protokołu HTTP zaplecza. |
+| Name (Nazwa) |Nazwa sondy. Ta nazwa jest używana do odwoływania się do sondowania w ustawieniach protokołu HTTP zaplecza. |
 | Protokół |Protokół używany do wysyłania sondy. Sonda korzysta z protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
 | Host |Nazwa hosta, aby wysłać sondy. Dotyczy tylko wtedy, gdy obejmujący wiele lokacji jest skonfigurowany dla bramy aplikacji, w przeciwnym razie użyj '127.0.0.1'. Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej. |
 | Ścieżka |Ścieżka względna sondy. Nieprawidłowa ścieżka rozpoczyna się od '/'. |
@@ -76,7 +93,7 @@ Poniższa tabela zawiera definicje dla właściwości sondy kondycji niestandard
 > Jeśli skonfigurowano brama aplikacji w jednej lokacji, domyślnie hosta należy określać nazwy jako "127.0.0.1", chyba że w przeciwnym razie skonfigurowane w niestandardowych sondowania.
 > Dla odwołania do badania niestandardowe są wysyłane do \<protokołu\>://\<hosta\>:\<portu\>\<ścieżki\>. Port używany będzie ten sam port, zgodnie z definicją w ustawienia HTTP zaplecza.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po szkoleniowe dotyczące monitorowania kondycji aplikacji bramy, można skonfigurować [sondy kondycji niestandardowych](application-gateway-create-probe-portal.md) w portalu Azure lub [sondy kondycji niestandardowych](application-gateway-create-probe-ps.md) przy użyciu programu PowerShell i modelu wdrażania usługi Azure Resource Manager.
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

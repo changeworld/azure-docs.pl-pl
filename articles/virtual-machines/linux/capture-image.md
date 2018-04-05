@@ -1,11 +1,11 @@
 ---
-title: "Przechwyć obraz maszyny wirtualnej systemu Linux na platformie Azure przy użyciu interfejsu wiersza polecenia 2.0 | Dokumentacja firmy Microsoft"
-description: "Przechwyć obraz maszyny Wirtualnej platformy Azure na potrzeby wdrożeń masowej przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure."
+title: Przechwyć obraz maszyny wirtualnej systemu Linux na platformie Azure przy użyciu interfejsu wiersza polecenia 2.0 | Dokumentacja firmy Microsoft
+description: Przechwyć obraz maszyny Wirtualnej platformy Azure na potrzeby wdrożeń masowej przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: e83319b8b4ace495a4301dd850cea27633115426
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego
 
@@ -89,6 +89,8 @@ Azure CLI 2.0 umożliwia zostać oznaczone jako uogólniona maszyna wirtualna i 
    
    > [!NOTE]
    > Obraz jest tworzony w tej samej grupie zasobów jako źródło maszyny Wirtualnej. Maszyny wirtualne można tworzyć w dowolnej grupie zasobów w ramach subskrypcji z tego obrazu. Z punktu widzenia zarządzania możesz utworzyć grupę zasobów dla określonych zasobów maszyny Wirtualnej i obrazów.
+   >
+   > Jeśli chcesz przechowywać obrazu w strefie odporność pamięci masowej, należy go utworzyć w regionie, który obsługuje [stref dostępności](../../availability-zones/az-overview.md) i obejmują `--zone-resilient true` parametru.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Tworzenie maszyny Wirtualnej z przechwyconego obrazu
 Utwórz maszynę Wirtualną przy użyciu obrazu zostały utworzone z [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMDeployed* z obrazu o nazwie *myImage*:
@@ -135,7 +137,7 @@ az vm show \
    --show-details
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Możesz utworzyć wiele maszyn wirtualnych z obrazu maszyny Wirtualnej źródłowego. Jeśli chcesz dokonać zmian obrazu: 
 
 - Utwórz maszynę Wirtualną z obrazu.

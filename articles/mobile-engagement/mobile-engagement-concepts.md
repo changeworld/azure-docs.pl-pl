@@ -1,11 +1,11 @@
 ---
-title: "Pojęcia dotyczące usługi Mobile Engagement | Microsoft Docs"
-description: "Pojęcia dotyczące usługi Azure Mobile Engagement"
+title: Pojęcia dotyczące usługi Mobile Engagement | Microsoft Docs
+description: Pojęcia dotyczące usługi Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8d19abd1-0a6c-4772-9fa5-5e99980ac5da
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 8450651528007b4527366b89a6ad7615169f93c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bc09de37c1b2aca35ef1ea74227df770f15baf5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-concepts"></a>Pojęcia dotyczące usługi Azure Mobile Engagement
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
+> 
+
 Usługa Mobile Engagement definiuje kilka pojęć wspólnych dla wszystkich obsługiwanych platform. W tym artykule krótko opisano te pojęcia.
 
 Ten artykuł stanowi dobry początek, jeśli dopiero zaczynasz korzystać z usługi Mobile Engagement. Należy również zapoznać się z dokumentacją specyficzną dla używanej platformy, ponieważ pozwoli to uściślić pojęcia opisane w tym artykule i uzyskać więcej szczegółów oraz przykładów, a także informacje o możliwych ograniczeniach.

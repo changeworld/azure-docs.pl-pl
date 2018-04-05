@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie aplikacji usługi Azure Mobile Engagement | Microsoft Docs"
-description: "Artykuł opisuje sposób tworzenia nowej kolekcji aplikacji usługi Mobile Engagement na platformie Azure i rozpoczynania zarządzania aplikacjami za pomocą portalu Mobile Engagement."
+title: Tworzenie aplikacji usługi Azure Mobile Engagement | Microsoft Docs
+description: Artykuł opisuje sposób tworzenia nowej kolekcji aplikacji usługi Mobile Engagement na platformie Azure i rozpoczynania zarządzania aplikacjami za pomocą portalu Mobile Engagement.
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b8aa1798-28c6-424c-a5b5-8a264d5a0ff0
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f47133a466f00de43ebfb2652eaf9058899f140
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Tworzenie aplikacji usługi Azure Mobile Engagement
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
+> 
+
 W tym artykule opisano sposób wykorzystania metody **Szybkie tworzenie** do utworzenia aplikacji usługi **Azure Mobile Engagement**. Artykuł opisuje również sposób przejścia do portalu **Mobile Engagement** w celu rozpoczęcia monitorowania aplikacji i zarządzania nimi. 
 
 Pamiętaj, że musisz dodać minimalny zestaw „podstawowej integracji”, aby korzystać z funkcji zbierania danych dla aplikacji i wysyłać powiadomienia wypychane. Kompletna dokumentacja integracji znajduje się w sekcji [Mobile Engagement integration](mobile-engagement-windows-store-integrate-engagement.md) (Integracja usługi Mobile Engagement).

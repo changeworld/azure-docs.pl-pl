@@ -1,31 +1,31 @@
 ---
-title: "Zarządzanie zasobami konta usługi partia zadań za pomocą biblioteki klienta dla platformy .NET - Azure | Dokumentacja firmy Microsoft"
-description: "Tworzenie, usuwanie i modyfikowanie zasobów konta partii zadań Azure przy użyciu biblioteki zarządzania partiami platformy .NET."
+title: Zarządzanie zasobami konta usługi partia zadań za pomocą biblioteki klienta dla platformy .NET - Azure | Dokumentacja firmy Microsoft
+description: Tworzenie, usuwanie i modyfikowanie zasobów konta partii zadań Azure przy użyciu biblioteki zarządzania partiami platformy .NET.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/24/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 7f2d0b261a991dc02b670488c14392697ea984ec
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Zarządzanie kontami partii i przydziały z biblioteki klienta usługi partia zadań zarządzania dla platformy .NET
 
 > [!div class="op_single_selector"]
-> * [Azure portal](batch-account-create-portal.md)
+> * [Azure Portal](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 > 
 > 
@@ -35,7 +35,7 @@ Można obniżyć konserwacji nakładów pracy w aplikacji partii zadań Azure za
 * **Tworzenie i usuwanie konta usługi partia zadań** w dowolnym regionie. Jeśli niezależnego dostawcy oprogramowania (ISV) na przykład można udostępnić usługi dla klientów, w których każdy jest przypisywana oddzielne konta usługi partia zadań do celów rozliczeń, możliwości tworzenia i usuwania konta można dodać do portalu klienta.
 * **Pobierz i ponownie wygenerować kluczy konta** programowo dla każdego konta usługi partia zadań. Może to pomóc w przestrzegania zasad zabezpieczeń, które wymuszają okresowe przerzucania lub wygaśnięcia klucze konta. Jeśli masz kilka kont usługi partia zadań w różnych regionach platformy Azure, automatyzacji tego procesu przerzucania zwiększa wydajność rozwiązania.
 * **Sprawdź konto przydziały** i wykonać czynności prób i błędów poza określania kont usługi partia zadań, które mają jakie limity. Sprawdzając przydziałami konta przed uruchomieniem zadania, tworzenia pul, lub dodawanie węzłów obliczeniowych, gdzie można dostosować aktywnego lub gdy obliczeniowe te zasoby są tworzone. Można określić konta, które wymagają przydziału zwiększa przed przydzielania dodatkowych zasobów w tych kont.
-* **Łączenie funkcji z innymi usługami Azure** środowisko oferujący wszystkie funkcje zarządzania — za pomocą zarządzania partiami platformy .NET, [usługi Azure Active Directory][aad_about]i [usługi Azure Resource Manager] [ resman_overview] razem w tej samej aplikacji. Korzystając z tych funkcji i ich interfejsów API, można zapewnić środowisko frictionless uwierzytelniania, możliwość tworzenia i usuwania grup zasobów i możliwości, które są opisane powyżej rozwiązania do zarządzania end-to-end.
+* **Łączenie funkcji z innymi usługami Azure** środowisko oferujący wszystkie funkcje zarządzania — za pomocą zarządzania partiami platformy .NET, [usługi Azure Active Directory][aad_about]i [Azure Menedżer zasobów] [ resman_overview] razem w tej samej aplikacji. Korzystając z tych funkcji i ich interfejsów API, można zapewnić środowisko frictionless uwierzytelniania, możliwość tworzenia i usuwania grup zasobów i możliwości, które są opisane powyżej rozwiązania do zarządzania end-to-end.
 
 > [!NOTE]
 > Chociaż ten artykuł dotyczy programowe zarządzanie konta wsadowego, kluczy i przydziały, mogą wykonywać wiele z tych działań za pomocą [portalu Azure][azure_portal]. Aby uzyskać więcej informacji, zobacz [utworzyć konto partii zadań Azure za pomocą portalu Azure](batch-account-create-portal.md) i [przydziały i limity dla usługi partia zadań Azure](batch-quota-limit.md).

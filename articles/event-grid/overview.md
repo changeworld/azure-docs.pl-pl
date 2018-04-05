@@ -1,18 +1,18 @@
 ---
-title: "Omówienie usługi Azure Event siatki"
-description: "Opisuje Azure zdarzeń siatki i jego pojęcia."
+title: Omówienie usługi Azure Event siatki
+description: Opisuje Azure zdarzeń siatki i jego pojęcia.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 5e700e3e9d17e790083facf00c7f4b8decf9037a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Wprowadzenie do usługi Azure Event siatki
 
@@ -33,25 +33,26 @@ Siatka zdarzeń obsługuje obecnie następujących regionach:
 *   Zachodnie stany USA
 *   Zachodnie stany USA 2
 
-Ten artykuł zawiera omówienie Azure zdarzeń siatki. Jeśli chcesz rozpocząć pracę z siatki zdarzeń, zobacz [tworzenie i tras niestandardowych zdarzeń siatki zdarzeń Azure](custom-event-quickstart.md). Na poniższej ilustracji przedstawiono, jak siatki zdarzeń łączy wydawcy i programy obsługi, ale nie zapewnia kompleksowe opcje są obsługiwane.
+Ten artykuł zawiera omówienie Azure zdarzeń siatki. Jeśli chcesz rozpocząć pracę z siatki zdarzeń, zobacz [tworzenie i tras niestandardowych zdarzeń siatki zdarzeń Azure](custom-event-quickstart.md). Na poniższej ilustracji przedstawiono, jak siatki zdarzeń łączy źródeł i programy obsługi, ale nie zapewnia kompleksowe opcje są obsługiwane.
 
 ![Model funkcjonalności siatki zdarzeń](./media/overview/functional-model.png)
 
-## <a name="event-publishers"></a>Wydawcy zdarzeń
+## <a name="event-sources"></a>Źródła zdarzeń
 
-Obecnie następujących usług platformy Azure są wbudowane wydawcy obsługę zdarzeń siatki:
+Obecnie następujących usług platformy Azure obsługuje wysyłanie zdarzeń do siatki zdarzeń:
 
 * Subskrypcje platformy Azure (operacje zarządzania)
 * Niestandardowe — tematy
 * Event Hubs
 * Usługa IoT Hub
 * Grupy zasobów (operacje zarządzania)
+* Service Bus
 * Obiektu Blob magazynu
 * Magazynu ogólnego przeznaczenia v2 (GPv2)
 
 ## <a name="event-handlers"></a>Uchwyty zdarzeń
 
-Obecnie następujących usług platformy Azure są wbudowana obsługa siatki zdarzeń: 
+Obecnie następujących usług platformy Azure obsługuje Obsługa zdarzeń z siatki zdarzeń: 
 
 * Azure Automation
 * Azure Functions
@@ -60,7 +61,7 @@ Obecnie następujących usług platformy Azure są wbudowana obsługa siatki zda
 * Microsoft Flow
 * Elementy webhook
 
-Podczas korzystania z usługi Azure Functions jako program obsługi, należy użyć wyzwalacza zdarzenia siatki ogólnego HTTP Wyzwalacze INSTEAD OF. Zdarzenie siatki automatycznie sprawdza poprawność wyzwalacze zdarzeń funkcji siatki. Z ogólnym wyzwalacze HTTP, musisz zaimplementować [weryfikacji odpowiedzi](security-authentication.md#webhook-event-delivery).
+Podczas korzystania z usługi Azure Functions jako program obsługi, należy użyć wyzwalacza zdarzenia siatki ogólnego HTTP Wyzwalacze INSTEAD OF. Usługa Event Grid automatycznie weryfikuje wyzwalacze funkcji usługi Event Grid. W przypadku ogólnych wyzwalaczy HTTP trzeba zaimplementować [odpowiedź weryfikacji](security-authentication.md#webhook-event-delivery).
 
 ## <a name="concepts"></a>Pojęcia
 

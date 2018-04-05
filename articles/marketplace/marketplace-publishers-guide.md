@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 94bf1a8fd9ac37087862823317bde5f3d130a3d6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Przewodnik dotyczący wydawcy witrynę Azure Marketplace i AppSource
 
@@ -335,7 +335,7 @@ Przed rozpoczęciem procesu publikowania warto poznać składniki wymagane do tw
 |Będziesz potrzebować tej publikacji artefaktów  |Dla tego typu oferty  |
 |---------|---------|
 |**Nazwa (200 znaków) i opis (2000 znaków)**    |  Wszyscy        |
-|**Identyfikator MPN i uprawnienia**   |  Usługi konsultingowe       |
+|**Identyfikator sieci (MPN) partnera firmy Microsoft**   |  Wszyscy       |
 |**Dostępność kraj/region**   | Wszyscy        |
 |**Czas trwania zaangażowania**     |   Usługi konsultingowe      |
 |**Zastosowanie branżach, kategorie i słowa kluczowe do wyszukania**     |  Wszyscy       |
@@ -412,6 +412,7 @@ W tej sekcji możemy opisano kroki, aby:
 
 |Kroku rejestracji w portalu Marketplace  |Time  |Opis  |
 |---------|---------|---------|
+| Rejestrowanie w sieci Microoft partnerów | 15 min | Należy zarejestrować w sieci partnera firmy Microsoft (MPN) ma pierwszy poziom sprawdzanie poprawności konta i dodatkowe korzyści i odbierania obsługę trwa Azure Marketplace wydawcy wydawcy |
 |Utwórz identyfikator firmy Microsoft     |   15 minut      |   Partnerzy muszą mieć ID. firmy Microsoft Ten identyfikator Microsoft będzie służyć do dostępu do portalu partnerów chmury.       |
 |Prześlij formularz wyznaczenie marketplace     |  1-3 dni       |  Partnerzy muszą Walidacja wyznaczenie, aby rozpocząć proces zatwierdzania witryny marketplace. Po przesłaniu formularza zespół organizujący dołączanie marketplace aplikacji i wkrótce weryfikacji żądania.       |
 |Zarejestruj w Centrum deweloperów     |    5 – 10 dni     | Rejestracji w usłudze Microsoft Developer Center jest wymagany dla firmy Microsoft, aby sprawdzić, czy partner ten jest prawidłowy firmy z Identyfikatorem prawidłowe podatku dla kraju, w którym jest on zarejestrowany. Centrum deweloperów umożliwi partnera w zarejestrowany Microsoft developer i zapewnić użytkownikom dostęp do programu Azure developer. <br><br>Należy pamiętać, że jeśli nie zostało ukończone formularza wyznaczenie marketplace, użytkownik zostanie zapytany dokonać opłaty rejestracji $99. Aby zrezygnować opłata, wypełnij formularz wyznaczenie marketplace i otrzymasz kod promocyjny za pośrednictwem poczty e-mail.  |
@@ -425,6 +426,9 @@ Powinien mieć tylko jedno konto Microsoft identyfikator dla Twojej oferty Azure
 
 Adres e-mail wybranego najlepiej musi należeć do domeny firmowej i kontrolowane przez Twój zespół IT. Dla wskazówki przed utworzeniem Identyfikatora, przejrzyj informacje zawarte w [wskazówki i kwestie](#guidelines-and-how-tos). 
 
+#### <a name="register-in-microsoft-partner-network"></a>Rejestrowanie w sieci Microsoft Partner Network 
+Staje się portalu Azure Marketplace lub wydawcy AppSource firmy będzie współpraca z firmą Microsoft. Biorąc udział w sieci partnera firmy Microsoft (MPN) będzie uzyskiwanie dostępu do ustawiania podstawowe korzyści, aby pomóc firmie tworzenia rozwiązań technicznych i rozwoju firmy (przykład: obejmują pomoc techniczną). Biorąc udział w witrynie Marketplace jako wydawca przyniesie swoje korzyści w sieci Microsoft Partner Network. Aby zarejestrować w MPN, przejdź na stronę [sieci Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/). Należy sprawdzić, czy firma jest już zarejestrowana w MPN. Po zarejestrowaniu, firma Microsoft poprosi o swój identyfikator MPN, aby zweryfikować Twoje konto do sprawdzania poprawności profilu wydawcy w [portalu dla partnerów chmury](https://cloudpartner.azure.com/). 
+
 #### <a name="submit-the-marketplace-nomination-form"></a>Prześlij formularz wyznaczenie marketplace
 Jako część procesu dołączania marketplace należy przesłać formularza nazwy. Formularz zawiera informacje o aplikacji lub oferty usługi, informacje o Twojej firmie i poziomu obsługi, które będzie dostarczać. 
 
@@ -435,7 +439,7 @@ Po przesłaniu formularza zespół Marketplace Przejrzyj aplikacji i sprawdzić 
 
 #### <a name="register-in-the-developer-center"></a>Zarejestruj w Centrum deweloperów
 
-[Microsoft Developer Center](https://developer.microsoft.com/) służy do rejestrowania informacji w firmie. Rejestratorem musi być prawidłową przedstawicielem firmy i podaj swoje informacje osobiste, aby zweryfikować swoją tożsamość. Rejestratorem musi używać Identyfikatora firmy Microsoft, który jest udostępniony dla firmy, a samo konto musi być używany w [portalu dla partnerów chmury](https://cloudpartner.azure.com/). 
+[Microsoft Developer Center](https://developer.microsoft.com/) jest wymagany na potrzeby publikowania aplikacji, które będą miały transact możliwości, takie jak maszyny wirtualnej, szablony rozwiązań i zarządzane aplikacje platformy Azure. To wymaganie umożliwi firmy Microsoft, aby zweryfikować prawne firmy informacji w firmie, podatku i banków jednostek. Rejestratorem musi być prawidłową przedstawicielem firmy i podaj swoje informacje osobiste, aby zweryfikować swoją tożsamość. Osoby, rejestrowanie, należy użyć Identyfikatora firmy Microsoft, który jest udostępniony dla firmy, a to samo konto musi być używany w [portalu dla partnerów chmury](https://cloudpartner.azure.com/). 
 
 >[!IMPORTANT]
 >Przed podjęciem próby utworzenia konta Microsoft Developer Center, upewnij się, że firma nie ma jeszcze.
@@ -453,9 +457,9 @@ Aby uzyskać szczegółowe wyjaśnienie tego procesu, zobacz [instrukcje na tema
 
 #### <a name="sign-in-to-the-cloud-partner-portal"></a>Zaloguj się do portalu dla partnerów chmury
 
-Po otrzymaniu zatwierdzenia przez zespół Marketplace wyznaczenie została zatwierdzona i zarejestrowany w [Microsoft Developer Center](https://dev.windows.com), konto jest tworzone dla użytkownika [portalu dla partnerów chmury ](https://cloudpartner.azure.com). Poświadczenia logowania po raz pierwszy znajdują się w wiadomości e-mail zatwierdzania nazwy. 
+Po otrzymaniu zatwierdzenia przez zespół Marketplace wyznaczenie została zatwierdzona i zarejestrowany w [sieci Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) i [Microsoft Developer Center](https://dev.windows.com) (Jeśli wymagane), zostanie utworzone konto umożliwiające dostęp do [portalu dla partnerów chmury](https://cloudpartner.azure.com). Poświadczenia logowania po raz pierwszy będą uwzględniane w wiadomości e-mail zatwierdzania nazwy. 
 
-Umożliwia dostęp do Twojego profilu wydawcy konta witryny Marketplace (identyfikator firmy Microsoft). Jeśli wszystko jest w chmurze Portal dla partnerów, ostatnim krokiem jest skojarzenie konta Centrum deweloperów z odpowiednich profil wydawcy Marketplace do opublikowania. Takie skojarzenie należy wykonać w portalu dla partnerów chmury, w Twoim profilu wydawcy, klikając przycisk w dolnej części ekranu.
+Umożliwia dostęp do Twojego profilu wydawcy konta witryny Marketplace (identyfikator firmy Microsoft). Raz w chmurze Portal dla partnerów, ostatnim krokiem jest skojarzyć konto Centrum deweloperów i sieci Microsoft Partner Network (jeśli jest to wymagane) z odpowiednich profil wydawcy Marketplace do opublikowania. Można to zrobić w portalu dla partnerów chmury w Twoim profilu wydawcy, klikając przycisk w dolnej części ekranu.
 
 Aby uzyskać szczegółowe informacje na temat korzystania z portalu dla partnerów chmury, przejdź do [informacje](https://cloudpartner.azure.com/#Learn) menu portalu i przejrzyj **dokumentacji** sekcji. 
 
@@ -621,6 +625,5 @@ Jeśli masz problemy z Centrum deweloperów rejestracji dziennika biletu pomocy 
    ![Przycisk "Przesłać zdarzenia"](./media/marketplace-publishers-guide/devcentersubmitincident.png)
 
 3. Wybierz **pomóc w Centrum deweloperów** jako **typ problemu**i wybierz **publikowania aplikacji i zarządzanie nimi** jako **kategorii**. Następnie wybierz **Start e-mail** przycisku.   
-
 4. Na stronie logowania należy używać żadnych kont Microsoft do logowania. Jeśli nie masz konta Microsoft, utwórz ją przy użyciu łącza. 
 5. Uzupełnij informacje dotyczące tego problemu i przesłać bilet, wybierając **przesyłania** przycisku.

@@ -9,18 +9,18 @@
 
 ## <a name="introduction"></a>Wprowadzenie
 
-W [Rozpoczynanie pracy z Centrum IoT urządzenia twins][lnk-twin-tutorial], wiesz, jak ustawić metadane urządzenia z pomocą zaplecza rozwiązania *tagi*, raport warunków urządzenia z aplikacjami urządzenia przy użyciu *zgłosił właściwości*oraz badanie tych informacji przy użyciu języka przypominającego SQL.
+W [Rozpoczynanie pracy z Centrum IoT urządzenia twins][lnk-twin-tutorial], wiesz, jak ustawić urządzeniami przy użyciu metadanych *tagi*. Odebrano warunki urządzenia z aplikacjami urządzenia przy użyciu *zgłosił właściwości*i następnie te informacje przy użyciu języka przypominającego SQL.
 
-Z tego samouczka, dowiesz się jak używać dwie urządzenia *żądanego właściwości* wraz z *zgłosił właściwości*, w celu zdalnego konfigurowania aplikacji dla urządzeń. W szczególności w tym samouczku przedstawiono sposób zgłaszania dwie urządzenia oraz odpowiednie właściwości Włącz konfigurację wieloetapowych aplikację dla urządzeń i widoczności do zaplecza rozwiązania stanu tej operacji dla wszystkich urządzeń. Można znaleźć więcej informacji na temat roli konfiguracji urządzeń w [omówienie zarządzania urządzeniami z Centrum IoT][lnk-dm-overview].
+W tym samouczku opisano sposób użycia dwie urządzenia *żądanego właściwości* i *zgłosił właściwości* celu zdalnego konfigurowania aplikacji dla urządzeń. Zgłoszone oraz odpowiednie właściwości w dwie urządzenia Włącz konfigurację wieloetapowych aplikację dla urządzeń i widoczność stan tej operacji dla wszystkich urządzeń. Można znaleźć więcej informacji na temat roli konfiguracji urządzeń w [omówienie zarządzania urządzeniami z Centrum IoT][lnk-dm-overview].
 
-Na wysokim poziomie za pomocą urządzenia twins umożliwia zaplecza rozwiązania określić odpowiednią konfigurację dla zarządzanych urządzeń, zamiast wysyłać określonych poleceń. To powoduje przełączenie urządzenia odpowiedzialnym za konfigurowanie najlepszy sposób, aby zaktualizować konfigurację (ważne w scenariuszach IoT, których warunki określonego urządzenia wpłynąć negatywnie na natychmiast wykonać określonych poleceń), podczas raportowania stale do zaplecza rozwiązania bieżący stan i potencjalnych błędów procesu aktualizacji. Ten wzorzec jest urządzeń do zarządzania dużych zestawów urządzeń, ponieważ umożliwia ona zaplecza rozwiązania mieć pełny wgląd w stan procesu konfiguracji na wszystkich urządzeniach.
+[!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-> [!NOTE]
-> W scenariuszach, w którym urządzenia są kontrolowane w sposób większej liczby interaktywnych (Włącz wentylator z aplikacji kontrolowane przez użytkownika), należy rozważyć użycie [bezpośrednie metody][lnk-methods].
-> 
-> 
+Na wysokim poziomie za pomocą urządzenia twins umożliwia zaplecza rozwiązania określić odpowiednią konfigurację dla zarządzanych urządzeń, zamiast wysyłać określonych poleceń. Urządzenie jest odpowiedzialny za konfigurowanie najlepszy sposób, aby zaktualizować konfigurację (ważne w scenariuszach IoT, których warunki określonego urządzenia wpłynąć negatywnie na natychmiast wykonać określonych poleceń), podczas raportowania stale bieżący stan i możliwości warunki błędów procesu aktualizacji. Ten wzorzec jest urządzeń do zarządzania dużych zestawów urządzeń, ponieważ udostępnia zaplecza rozwiązania pełny wgląd stanu procesu konfiguracji na wszystkich urządzeniach.
 
-W tym samouczku zaplecza rozwiązania umożliwia zmianę konfiguracji telemetrii urządzenia docelowego i, w związku z tym, że aplikacji urządzenia jest zgodna z procesu wieloetapowych, aby zastosować aktualizację konfiguracji (na przykład wymaganie oprogramowania modułu ponownego uruchomienia komputera, którym znajduje się ten samouczek symuluje z opóźnieniem prosty).
+> [!TIP]
+> W scenariuszach, w którym urządzenia są kontrolowane w sposób większej liczby interaktywnych (na przykład włączenie wentylator z aplikacji kontrolowane przez użytkownika), należy rozważyć użycie [bezpośrednie metody][lnk-methods].
+
+W tym samouczku zaplecza rozwiązania umożliwia zmianę konfiguracji telemetrii urządzenia docelowego, aby urządzenia aplikacji ma zastosowanie aktualizacji konfiguracji. Na przykład aktualizacji konfiguracji będzie wymagających Uruch moduł oprogramowania, w tym samouczku symuluje z opóźnieniem proste.
 
 Zaplecze rozwiązania przechowuje konfigurację w odpowiednich właściwościach dwie urządzenia w następujący sposób:
 
@@ -39,10 +39,8 @@ Zaplecze rozwiązania przechowuje konfigurację w odpowiednich właściwościach
             ...
         }
 
-> [!NOTE]
-> Ponieważ konfiguracje mogą zostać obiektów złożonych, są przypisane unikatowe identyfikatory (skróty lub [identyfikatorów GUID][lnk-guid]) aby uprościć ich porównania.
-> 
-> 
+Ponieważ konfiguracje mogą zostać obiektów złożonych, są przypisane unikatowe identyfikatory (skróty lub [identyfikatorów GUID][lnk-guid]).
+
 
 Aplikacji urządzenia raporty bieżącej konfiguracji dublowania żądanej właściwości **telemetryConfig** we właściwościach zgłoszone:
 
@@ -62,7 +60,7 @@ Aplikacji urządzenia raporty bieżącej konfiguracji dublowania żądanej wła�
 
 Uwaga jak opisane **telemetryConfig** ma dodatkowe właściwości **stanu**, używana do raportowania stanu procesu aktualizacji konfiguracji.
 
-Po odebraniu nowego wymaganą konfiguracją aplikacji urządzenia raportów oczekujących konfiguracji, zmieniając informacje:
+Po odebraniu nowego wymaganą konfiguracją aplikacji urządzenia raportów oczekujących konfiguracji przez zmianę stanu:
 
         {
             "properties": {
@@ -82,8 +80,7 @@ Po odebraniu nowego wymaganą konfiguracją aplikacji urządzenia raportów ocze
             }
         }
 
-Następnie w późniejszym czasie, aplikacji urządzenia raporty powodzenie lub niepowodzenie tej operacji przez modyfikowanie właściwości powyżej.
-Należy zwrócić uwagę, jak zaplecza rozwiązania jest w stanie, w dowolnym momencie można zbadać stanu procesu konfiguracji na wszystkich urządzeniach.
+Następnie w późniejszym czasie, aplikacji urządzenia raporty powodzenie lub niepowodzenie tej operacji, aktualizując właściwości. Zaplecze rozwiązania może zapytać o stan procesu konfiguracji na wszystkich urządzeniach w dowolnym momencie.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 

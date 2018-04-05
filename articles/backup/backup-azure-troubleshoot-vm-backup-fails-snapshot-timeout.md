@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: niedostępny stan agenta gościa | Dokumentacja firmy Microsoft"
-description: "Objawy, przyczyny i rozwiązania błędów kopia zapasowa Azure powiązane z agenta, rozszerzenia i dysków."
+title: 'Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: niedostępny stan agenta gościa | Dokumentacja firmy Microsoft'
+description: Objawy, przyczyny i rozwiązania błędów kopia zapasowa Azure powiązane z agenta, rozszerzenia i dysków.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
-keywords: "Kopia zapasowa Azure; Agent maszyny Wirtualnej; Łączności sieciowej;"
+editor: ''
+keywords: Kopia zapasowa Azure; Agent maszyny Wirtualnej; Łączności sieciowej;
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: problemy z agentem lub rozszerzenia
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc rozwi�
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Agent maszyny Wirtualnej nie może nawiązać komunikacji z usługą kopia zapasowa Azure
+## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Agent maszyny Wirtualnej nie można nawiązać połączenia z usługą kopia zapasowa Azure
 
 Komunikat o błędzie: "Agent maszyny Wirtualnej nie można nawiązać połączenia z kopii zapasowej systemu Azure"
 
@@ -78,21 +78,6 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Az
 **Przyczyna 4: [nie można pobrać stanu migawki lub migawka nie można pobrać](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Przyczyny 5: [zapasowy numer wewnętrzny nie może zaktualizować lub załadować](#the-backup-extension-fails-to-update-or-load)**  
 **Przyczyna 6: [usługa kopii zapasowej nie ma uprawnienia do usuwania starych punktów przywracania z powodu blokady grupy zasobów](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
-
-## <a name="disk-configuration-is-not-supported"></a>Konfiguracja dysku nie jest obsługiwana.
-
-Komunikat o błędzie: "nie jest obsługiwane w określonej konfiguracji dysku"
-
-> [!NOTE]
-> Mamy prywatnej wersji zapoznawczej do obsługi kopii zapasowych maszyn wirtualnych mających dyski większy niż 1 TB. Aby uzyskać więcej informacji, zobacz [prywatnej wersji zapoznawczej do obsługi kopii zapasowych maszyn wirtualnych dużych dysków](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
->
->
-
-Obecnie usługa Kopia zapasowa Azure nie obsługuje dysków, które są [większych niż 1,023 GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). Jeśli masz dysków, które są większe niż 1 TB:  
-1. [Dołącz nowe dyski](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) , które są mniejsze niż 1 TB.  
-2. Kopiowanie danych z dysków, które są większe niż 1 TB, aby nowo utworzony dysków, które są mniejsze niż 1 TB.  
-3. Upewnij się, że wszystkie dane zostały skopiowane. Następnie usuń dyski, które są większe niż 1 TB.  
-4. Zainicjuj tworzenie kopii zapasowej.
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
 

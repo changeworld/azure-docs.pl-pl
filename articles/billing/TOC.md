@@ -1,3 +1,4 @@
+
 # [Dokumentacja rozliczeń platformy Azure](index.md)
 
 # Rozpoczęcie pracy
@@ -41,6 +42,7 @@
 ### [Edytowanie profilu](billing-how-to-change-azure-account-profile.md)
 ### [Aktualizowanie informacji o płatności](billing-how-to-change-credit-card.md)
 ### [Płatność za subskrypcje przy użyciu faktury](billing-how-to-pay-by-invoice.md)
+### [Identyfikator partnera linku](billing-partner-admin-link-started.md)
 ## [Zarządzanie wystąpieniami zarezerwowanymi maszyn wirtualnych](billing-manage-reserved-vm-instance.md)
 ## Rozwiązywanie problemów
 ### [Problemy dotyczące rejestrowania](https://support.microsoft.com/en-us/help/4042959)

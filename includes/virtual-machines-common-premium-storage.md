@@ -35,11 +35,11 @@ Oto niektóre z funkcji Premium Storage:
 
 * **Dyski magazynu w warstwie Premium**
 
-    Magazyn w warstwie Premium obsługuje dyski maszyn wirtualnych, które można dołączyć do określonego rozmiaru serii maszyn wirtualnych. Magazyn w warstwie Premium obsługuje serii DS, DSv2 serii GS-series, Ls serii Fs serii i Esv3 serii maszyn wirtualnych. Masz do wyboru rozmiary dysków siedem: P4 (32GB) P6 (64GB), P10 (128 MB), P20 (512GB), P30 (1024GB), P40 (2048GB), P50 (4095GB). P4 i rozmiary dysków P6 są jeszcze obsługiwane tylko w przypadku dysków zarządzanych. Rozmiar każdego dysku ma specyfikacjami wydajności. W zależności od wymagań aplikacji można dołączyć jeden lub więcej dysków do maszyny Wirtualnej. Specyfikacje szczegółowo opisano [magazyn w warstwie Premium cele wydajności i skalowalności](#scalability-and-performance-targets).
+    Magazyn w warstwie Premium obsługuje dyski maszyn wirtualnych, które można dołączyć do określonego rozmiaru serii maszyn wirtualnych. Magazyn w warstwie Premium obsługuje serii DS, DSv2 serii GS-series, Ls serii, serie Fs i Esv3 serii maszyn wirtualnych. Masz do wyboru rozmiary siedmiu dysków: P4 (32 GB) P6 (64 GB), P10 (128 MB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 i rozmiary dysków P6 są jeszcze obsługiwane tylko w przypadku dysków zarządzanych. Rozmiar każdego dysku ma specyfikacjami wydajności. W zależności od wymagań aplikacji można dołączyć jeden lub więcej dysków do maszyny Wirtualnej. Specyfikacje szczegółowo opisano [magazyn w warstwie Premium cele wydajności i skalowalności](#scalability-and-performance-targets).
 
 * **Stronicowe — wersja Premium**
 
-    Magazyn w warstwie Premium obsługuje stronicowych obiektów blob. Używa stronicowych obiektów blob do przechowywania dysków trwałe, niezarządzany dla maszyn wirtualnych w warstwie Premium Storage. W przeciwieństwie do standardowego magazynu Azure magazyn w warstwie Premium nie obsługuje blokowe obiekty BLOB, Dołącz obiektów blob, plików, tabel lub kolejek. Stronicowe Premium obsługuje sześciu rozmiary z P10 P50 i P60 (8191GiB). Być dołączane jako dyski maszyny Wirtualnej — wersja Premium P60 stronicowych obiektów blob nie jest obsługiwane. 
+    Magazyn w warstwie Premium obsługuje stronicowych obiektów blob. Używa stronicowych obiektów blob do przechowywania dysków trwałe, niezarządzany dla maszyn wirtualnych w warstwie Premium Storage. W przeciwieństwie do standardowego magazynu Azure magazyn w warstwie Premium nie obsługuje blokowe obiekty BLOB, Dołącz obiektów blob, plików, tabel lub kolejek. Stronicowe Premium obsługuje sześciu rozmiarów z P10 P50 i P60 (8191GiB). Być dołączane jako dyski maszyny Wirtualnej — wersja Premium P60 stronicowych obiektów blob nie jest obsługiwane. 
 
     Dowolny obiekt umieszczony na koncie magazynu premium będzie stronicowych obiektów blob. Stronicowych obiektów blob przyciąganie do jednego z obsługiwanych rozmiarów elastycznie. Jest to, dlaczego konto magazynu w warstwie premium nie jest przeznaczona do używany do przechowywania obiektów blob niewielki rozmiar.
 
@@ -61,7 +61,7 @@ Oto niektóre z funkcji Premium Storage:
 
 ## <a name="supported-vms"></a>Obsługiwane maszyny wirtualne
 
-Magazyn w warstwie Premium obsługuje B-series, serii DS, DSv2-series, DSv3 serii GS-series, Ls serii M serii i Fs serii maszyn wirtualnych. Z tych typów maszyny Wirtualnej służy dyski magazynu standard i premium. Nie można używać dysków premium magazynu serii maszyn wirtualnych, które nie są Premium zgodnych z magazynu.
+Magazyn w warstwie Premium obsługuje B-series, serii DS, DSv2-series, DSv3 serii GS-series, Ls serii, serie M i Fs serii maszyn wirtualnych. Z tych typów maszyny Wirtualnej służy dyski magazynu standard i premium. Nie można używać dysków premium magazynu serii maszyn wirtualnych, które nie są Premium zgodnych z magazynu.
 
 
 Aby uzyskać informacje o typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Windows, zobacz [Windows VM sizes (Rozmiary maszyn wirtualnych z systemem Windows)](../articles/virtual-machines/windows/sizes.md). Aby uzyskać informacje o typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Linux, zobacz [Linux VM sizes (Rozmiary maszyn wirtualnych z systemem Linux)](../articles/virtual-machines/linux/sizes.md).
@@ -103,7 +103,7 @@ Są to niektóre funkcje serii GS: seria DS, DSv2 serii, serie Ls i Fs serii mas
 
     Największy maszyny Wirtualnej z serii DS jest obecnie Standard_DS15_v2. Standard_DS15_v2 można podać maksymalnie 960 MB/s na wszystkich dyskach. Największy maszyny Wirtualnej w serii GS to Standard_GS5. Standard_GS5 można podać maksymalnie 2000 MB/s na wszystkich dyskach.
 
-    Należy zauważyć, że te limity dysku tylko dla ruchu. Ograniczenia te nie zawierają trafień w pamięci podręcznej i ruchu sieciowego. Oddzielne przepustowości dostępnej dla ruchu sieciowego maszyn wirtualnych. Przepustowości dla ruchu sieciowego różni się od dedykowanych przepustowość wykorzystywaną przez dyski magazynu premium.
+    Te limity dotyczą tylko ruchu dysku. Ograniczenia te nie zawierają trafień w pamięci podręcznej i ruchu sieciowego. Oddzielne przepustowości dostępnej dla ruchu sieciowego maszyn wirtualnych. Przepustowości dla ruchu sieciowego różni się od dedykowanych przepustowość wykorzystywaną przez dyski magazynu premium.
 
     Aby uzyskać najbardziej aktualne informacje o maksymalne IOPS i przepływności (przepustowość) dla maszyn wirtualnych, obsługiwane przez Magazyn w warstwie Premium, zobacz [rozmiarów maszyn wirtualnych systemu Windows](../articles/virtual-machines/windows/sizes.md) lub [rozmiarów maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/sizes.md).
 
@@ -129,11 +129,11 @@ Jeśli używasz konta premium magazynu dysków niezarządzanego, aplikacja przek
 ### <a name="premium-storage-disk-limits"></a>Limity dysku magazynu Premium
 Podczas obsługi administracyjnej dysku magazynu premium rozmiar dysku określa maksymalną liczbę IOPS i przepływność (przepustowość). Platforma Azure oferuje siedem typów dysków w warstwie premium magazynu: P4 P6 (zarządzane tylko dysków), (zarządzane tylko dysków), P10, P20 P30, P40 i P50. Każdy typ dysku magazynu premium ma określone limity IOPS i przepływności. W poniższej tabeli opisano limity dla typów dysku:
 
-| Typ dysków Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GB| 64 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Przepływność na dysk | 25 MB na sekundę  | 50 MB / s  | 100 MB na sekundę | 150 MB na sekundę | 200 MB / s | 250 MB na sekundę | 250 MB na sekundę | 
+| Typ dysków Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Rozmiar dysku           | 32 GB| 64 GB| 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 
+| Przepływność na dysk | 25 MB na sekundę  | 50 MB / s  | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB / s | 250 MB na sekundę | 250 MB na sekundę | 
 
 > [!NOTE]
 > Upewnij się, że wystarczającą przepustowość jest dostępne na maszynie Wirtualnej stacji dysków ruchu, zgodnie z opisem w [obsługiwane magazyn w warstwie Premium maszyn wirtualnych](#premium-storage-supported-vms). W przeciwnym razie przepływność dysku, a IOPS jest ograniczony do zmniejszenia wartości. Maksymalna przepustowość i IOPS są oparte na granicach maszyny Wirtualnej, nie znajduje się w granicach dysku opisane w powyższej tabeli.  
@@ -144,11 +144,11 @@ Oto kilka ważnych rzeczy wiedzieć o magazyn w warstwie Premium cele wydajnośc
 
 * **Udostępnione pojemność i wydajność**
 
-    Podczas obsługi administracyjnej dysku magazynu premium, w przeciwieństwie do standardowego magazynu ma gwarancji pojemności, IOPS i przepływności tego dysku. Na przykład w przypadku tworzenia dysku P50 Azure udostępnia 4,095 GB pojemności, 7500 IOPS i 250 MB/s przepustowości dla tego dysku. Aplikacja może używać całość lub część pojemność i wydajność.
+    Podczas obsługi administracyjnej dysku magazynu premium, w przeciwieństwie do standardowego magazynu ma gwarancji pojemności, IOPS i przepływności tego dysku. Na przykład w przypadku tworzenia dysku P50 Azure udostępnia 4,095 GB pojemności, 7500 IOPS i 250-MB/s przepustowości dla tego dysku. Aplikacja może używać całość lub część pojemność i wydajność.
 
 * **Rozmiar dysku**
 
-    Azure mapuje rozmiar dysku (zaokrąglona w górę) do najbliższej premium dysku opcji magazynu, jak określono w tabeli w poprzedniej sekcji. Na przykład rozmiar 100 GB na dysku jest sklasyfikowany jako opcja P10. Może wykonywać maksymalnie 500 IOPS, z maksymalnie 100 MB/s przepustowości. Podobnie dysk 400 GB jest sklasyfikowany jako P20 rozmiar. Może wykonywać maksymalnie 2300 IOPS, o 150 MB/s przepustowości.
+    Azure mapuje rozmiar dysku (zaokrąglona w górę) do najbliższej premium dysku opcji magazynu, jak określono w tabeli w poprzedniej sekcji. Na przykład rozmiar 100 GB na dysku jest sklasyfikowany jako opcja P10. Może wykonywać maksymalnie 500 IOPS z maksymalnie 100-MB/s przepustowości. Podobnie dysk 400 GB jest sklasyfikowany jako P20 rozmiar. Może wykonywać maksymalnie 2300 IOPS, o 150-MB/s przepustowości.
     
     > [!NOTE]
     > Można łatwo zwiększyć rozmiar istniejącej dysków. Na przykład możesz zwiększyć rozmiar dysku 30 GB do 128 GB lub nawet do 1 TB. Można też dokonać konwersji dysku P20 dysku P30 ponieważ potrzebujesz większej pojemności lub więcej IOPS i przepustowość. 
@@ -160,7 +160,7 @@ Oto kilka ważnych rzeczy wiedzieć o magazyn w warstwie Premium cele wydajnośc
 
 * **Przepływność**
 
-    Limit przepustowości dotyczy operacji zapisu na dysku i zawiera operacji odczytu na dysku, które nie są obsługiwane z pamięci podręcznej. Na przykład dysk P10 ma 100 MB/s przepustowości dla każdego dysku. W poniższej tabeli przedstawiono przykładowe prawidłowe przepływności dysku P10:
+    Limit przepustowości dotyczy operacji zapisu na dysku i zawiera operacji odczytu na dysku, które nie są obsługiwane z pamięci podręcznej. Na przykład dysk P10 ma 100-MB/s przepustowości dla każdego dysku. W poniższej tabeli przedstawiono przykładowe prawidłowe przepływności dysku P10:
 
     | Maksymalna przepustowość dla każdego dysku P10 | Pamięć podręczna nie odczytuje z dysku | Spoza pamięci podręcznej zapisu na dysku |
     | --- | --- | --- |
@@ -170,7 +170,7 @@ Oto kilka ważnych rzeczy wiedzieć o magazyn w warstwie Premium cele wydajnośc
 
 * **Trafień w pamięci podręcznej**
 
-    Trafień w pamięci podręcznej nie są ograniczone przez przydzielony IOPS lub przepływności dysku. Na przykład, jeśli używasz dysku danych o **tylko do odczytu** ustawienia pamięci podręcznej na maszynie Wirtualnej, która jest obsługiwana przez Magazyn w warstwie Premium, odczytów, które są obsługiwane z pamięci podręcznej nie podlegają IOPS i przepływność caps dysku. Jeśli obciążenie dysku jest głównie operacje odczytu i może spowodować, że bardzo wysokiej przepływności. Pamięć podręczna podlega oddzielnych IOPS i limity przepustowości w Maszynie wirtualnej poziomu, zależnie od rozmiaru maszyny Wirtualnej. Maszyny wirtualne z serii DS mają około 4000 IOPS i 33 przepływności MB/s na podstawowe dla lokalnych dysków SSD operacji We/Wy i pamięci podręcznej. Maszyny wirtualne z serii GS mają limit 5000 IOPS i 50 MB/s przepustowości na podstawowe dla lokalnych dysków SSD operacji We/Wy i pamięci podręcznej. 
+    Trafień w pamięci podręcznej nie są ograniczone przez przydzielony IOPS lub przepływności dysku. Na przykład, jeśli używasz dysku danych o **tylko do odczytu** ustawienia pamięci podręcznej na maszynie Wirtualnej, która jest obsługiwana przez Magazyn w warstwie Premium, odczytów, które są obsługiwane z pamięci podręcznej nie podlegają IOPS i przepływność caps dysku. Jeśli obciążenie dysku jest głównie operacje odczytu i może spowodować, że bardzo wysokiej przepływności. Pamięć podręczna podlega oddzielnych IOPS i limity przepustowości w Maszynie wirtualnej poziomu, zależnie od rozmiaru maszyny Wirtualnej. Maszyny wirtualne z serii DS ma około 4000 IOPS i przepływność 33-MB/s na podstawowe dla lokalnych dysków SSD operacji We/Wy i pamięci podręcznej. Maszyny wirtualne z serii GS mają limit 5000 IOPS i przepływności 50-MB/s na podstawowe dla lokalnych dysków SSD operacji We/Wy i pamięci podręcznej. 
 
 ## <a name="throttling"></a>Ograniczanie przepływności
 Ograniczanie mogą wystąpić, jeśli aplikacji IOPS lub przepływności przekracza limity przydzielone dla dysku magazynu premium. Również ograniczanie może wystąpić, jeśli ruchu dysku na wszystkich dyskach na maszynie Wirtualnej przekracza limit przepustowości dysku dostępne dla maszyny Wirtualnej. Aby uniknąć ograniczania przepustowości, firma Microsoft zaleca, aby ograniczyć liczbę oczekujących żądań We/Wy dysku. Użyj limit na podstawie celów skalowalność i wydajność dysku, który po uprzednim udostępnieniu i na dysku przepustowość do maszyny Wirtualnej.  
@@ -186,7 +186,7 @@ Aplikacja została przetworzona 495 jednostki we/wy o rozmiarze 16 KB w jednej s
 Aplikacja została przetworzona 400 jednostek o rozmiarze 256 KB na dysku P10 we/wy. Całkowita liczba przepustowości jest (400 &#215; 256) / 1024 KB = 100 MB/s. Dysk P10 ma limit przepustowości 100 MB/s. Jeśli aplikacja próbuje wykonuje więcej operacji We/Wy w tym sekundy, jest to ograniczenie, ponieważ osiągnął limit przydzielone.
 
 ### <a name="example-3"></a>Przykład 3
-Masz DS4 maszyny Wirtualnej z dwóch dysków P30 dołączony. Każdy dysk P30 jest zdolny do 200 MB/s przepustowości. Jednak DS4 maszyny Wirtualnej ma pojemność dysku przepustowości 256 MB/s. Nie może obsłużyć obydwa dyski podłączone do maksymalną przepustowość na tej maszynie Wirtualnej DS4 w tym samym czasie. Aby rozwiązać ten problem, może wytrzymać ruchu 200 MB/s na jednym dysku i 56 MB/s na innym dysku. Jeśli sumę ruchu dysku odbywa się za pośrednictwem 256 MB/s, jest ograniczany ruch sieciowy dysku.
+Masz DS4 maszyny Wirtualnej z dwóch dysków P30 dołączony. Każdy dysk P30 jest w stanie 200-MB/s przepustowości. Jednak DS4 maszyny Wirtualnej ma pojemność dysku przepustowości 256 MB/s. Nie może obsłużyć obydwa dyski podłączone do maksymalną przepustowość na tej maszynie Wirtualnej DS4 w tym samym czasie. Aby rozwiązać ten problem, może wytrzymać ruchu 200 MB/s na jednym dysku i 56 MB/s na innym dysku. Jeśli sumę ruchu dysku odbywa się za pośrednictwem 256 MB/s, jest ograniczany ruch sieciowy dysku.
 
 > [!NOTE]
 > Jeśli ruchu dysku przede wszystkim składa się z małych rozmiarów we/wy, prawdopodobnie aplikacji będzie osiągnął limit IOPS przed limit przepływności. Jednak jeśli ruch dysku zawiera głównie duże rozmiary we/wy, prawdopodobnie aplikacji będzie osiągnęła limit przepływności najpierw zamiast limitu IOPS. Można zmaksymalizować IOPS aplikacji i przepustowości przy użyciu optymalny rozmiar operacji We/Wy. Ponadto można ograniczyć liczba oczekujących żądań We/Wy dysku.
@@ -297,14 +297,3 @@ Aby utworzyć zadanie tworzenia kopii zapasowej z kopii zapasowych opartych na c
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat magazyn w warstwie Premium zobacz następujące artykuły.
-
-### <a name="design-and-implement-with-premium-storage"></a>Projektowanie i implementowanie z magazyn w warstwie Premium
-* [Projektować pod kątem wydajności przy użyciu magazyn w warstwie Premium](../articles/virtual-machines/windows/premium-storage-performance.md)
-* [Operacje magazynu obiektów blob z magazyn w warstwie Premium](http://go.microsoft.com/fwlink/?LinkId=521969)
-
-### <a name="operational-guidance"></a>Wskazówki dotyczące obsługi
-* [Migracja do magazynu Azure — warstwa Premium](../articles/storage/common/storage-migration-to-premium-storage.md)
-
-### <a name="blog-posts"></a>Wpisy na blogach
-* [Usługa Azure Premium Storage ogólnie dostępna](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
-* [Anonsowanie GS-series: Obsługa Dodawanie magazyn w warstwie Premium do największej maszyn wirtualnych w chmurze publicznej](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)

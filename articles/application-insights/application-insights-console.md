@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights dla aplikacji konsoli | Dokumentacja firmy Microsoft
-description: "Monitorowanie aplikacji sieci web dla dostępności, wydajności i użycia."
+description: Monitorowanie aplikacji sieci web dla dostępności, wydajności i użycia.
 services: application-insights
 documentationcenter: .net
 author: lmolkova
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: lmolkova
-ms.openlocfilehash: 57f5670eec36ff2c4332da592dd2a3eef73fdefc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: lmolkova; mbullwin
+ms.openlocfilehash: f9d734abeb644fc865d5dc86afc8ad0e586bfc0a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>Aplikacje konsoli usługi Application Insights dla platformy .NET
 [Usługa Application Insights](app-insights-overview.md) umożliwia monitorowanie aplikacji sieci web, dostępności, wydajności i użycia.
@@ -26,8 +26,8 @@ Konieczna jest subskrypcja z [Microsoft Azure](http://azure.com). Zaloguj się p
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-* W witrynie [Azure Portal](https://portal.azure.com) [utwórz zasób usługi Application Insights](app-insights-create-new-resource.md). Jako typ aplikacji wybierz ASP.NET.
-* Wykonaj kopię klucza instrumentacji. Znajdź klucz w rozwijanej Essentials nowy zasób, który został utworzony. 
+* W witrynie [Azure Portal](https://portal.azure.com) [utwórz zasób usługi Application Insights](app-insights-create-new-resource.md). Typ aplikacji wybierz opcję **ogólne**.
+* Wykonaj kopię klucza instrumentacji. Znajdź klucz w **Essentials** listy rozwijanej nowy zasób został utworzony. 
 * Zainstaluj najnowsze [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) pakietu.
 * Ustaw klucz Instrumentacji w kodzie przed wszystkie dane telemetryczne śledzenia (lub ustaw dla zmiennej środowiskowej APPINSIGHTS_INSTRUMENTATIONKEY). Po wykonaniu tej powinno być możliwe do ręcznego śledzenia telemetrii i jest widoczny w portalu Azure
 
@@ -39,7 +39,10 @@ telemetryClient.TrackTrace("Hello World!");
 
 * Zainstaluj najnowszą wersję pakietu [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) package — automatyczne śledzenie HTTP, SQL lub inne wywołania zależności zewnętrznych.
 
-Możesz zainicjować i Konfiguruj usługę Application Insights z kodu lub przy użyciu `ApplicationInsights.config` pliku. Upewnij się, że inicjowania się stanie w możliwie jak najszybciej.
+Możesz zainicjować i Konfiguruj usługę Application Insights z kodu lub przy użyciu `ApplicationInsights.config` pliku. Upewnij się, że inicjowania się stanie w możliwie jak najszybciej. 
+
+> [!NOTE]
+> Instrukcje dotyczące **ApplicationInsights.config** dotyczą tylko aplikacji przeznaczonych dla platformy .NET Standard, które nie dotyczą aplikacji .NET Core. 
 
 ### <a name="using-config-file"></a>Przy użyciu pliku konfiguracji
 

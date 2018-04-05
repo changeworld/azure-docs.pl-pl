@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 300b9b7786c17972c5c48df7e5b6d28491adc095
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -30,7 +30,7 @@ Próbkowania powoduje zmniejszenie kosztów ruchu i dane i pomaga uniknąć ogra
 ## <a name="in-brief"></a>Krótko mówiąc:
 * Próbkowanie zachowuje 1 w *n* rejestruje i odrzuca wszystkie pozostałe. Na przykład mogą go zachować zdarzenia 1 do 5, częstotliwość próbkowania, 20%. 
 * Próbkowanie odbywa się automatycznie, jeśli aplikacja wyśle dużej ilości danych telemetrii, w aplikacji serwera sieci web ASP.NET.
-* Można również ustawić próbkowania ręcznie, albo w portalu na stronie cen; lub w zestawie SDK platformy ASP.NET w pliku Config. lub w zestawie SDK Java w pliku ApplicationInsights.xml również zmniejszenie ruchu w sieci.
+* Można również ustawić ręcznie próbkowania, albo w portalu użycia i szacowane koszty strony. lub w zestawie SDK platformy ASP.NET w pliku Config. lub w zestawie SDK Java w pliku ApplicationInsights.xml również zmniejszenie ruchu w sieci.
 * Jeśli dziennika zdarzeń niestandardowych, należy się upewnić, że zestaw zdarzeń jest zatrzymany lub odrzucone razem upewnij się, że mają one taką samą wartość OperationId.
 * Dzielnik próbkowania *n* jest zgłaszany we wszystkich rekordach we właściwości `itemCount`, w wyszukiwaniu widocznego pod przyjazną nazwą "liczbę żądań" lub "liczba zdarzeń". Podczas pobierania próbek nie jest w operacji `itemCount==1`.
 * Jeśli piszesz zapytania analityczne, [uwzględnienia próbkowania](app-insights-analytics-tour.md#counting-sampled-data). W szczególności, zamiast po prostu zliczanie rekordów, należy użyć `summarize sum(itemCount)`.
@@ -49,7 +49,7 @@ Ta forma pobierania próbek działa w momencie, gdy dane telemetryczne z serwera
 
 Użyj tego typu próbkowania, jeśli aplikacja często przechodzi przez jego przydział miesięczny, a nie ma możliwości użycia jednej z tego zestawu SDK typu próbkowania. 
 
-Ustaw częstotliwość próbkowania w przydziały i cenach bloku:
+Ustaw częstotliwość próbkowania użycia i szacowane koszty strony:
 
 ![W bloku Omówienie aplikacji kliknij ustawienia, przydział, próbek, a następnie wybierz częstotliwość próbkowania, a następnie kliknij przycisk Aktualizuj.](./media/app-insights-sampling/04.png)
 

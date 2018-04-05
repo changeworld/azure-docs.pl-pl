@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric — skonfiguruj monitorowanie za pomocą analizy dzienników OMS | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować usługi Operations Management Suite do wizualizacji i analizowania zdarzeń do monitorowania klastrów sieci szkieletowej usług Azure."
+title: Azure Service Fabric — skonfiguruj monitorowanie za pomocą analizy dzienników OMS | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować usługi Operations Management Suite do wizualizacji i analizowania zdarzeń do monitorowania klastrów sieci szkieletowej usług Azure.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2017
-ms.author: dekapur
-ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 3/30/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Konfigurowanie Operations Management Suite Log Analytics dla klastra
 
@@ -75,7 +75,7 @@ W obszarze roboczym analizy dzienników OMS, który jest teraz prawidłowo podł
 
 W przypadku wdrażania klastra przy użyciu szablonu usługi Resource Manager szablon tworzy nowy obszar roboczy OMS, dodaje rozwiązania sieci szkieletowej usług do obszaru roboczego i skonfiguruje je odczytać danych z tabel odpowiedniego magazynu.
 
-Można użyć i modyfikować [ten przykładowy szablon](https://azure.microsoft.com/resources/templates/service-fabric-oms/) zgodnie z wymaganiami. Szablony, które zapewniają różne opcje dla Konfigurowanie obszarem roboczym pakietu OMS można znaleźć w [szablonów usługi Service Fabric i OMS](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS).
+Można użyć i modyfikować [ten przykładowy szablon](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) zgodnie z wymaganiami.
 
 Wprowadź następujące zmiany:
 1. Dodaj `omsWorkspaceName` i `omsRegion` do parametry, dodając następujący fragment kodu do parametrów zdefiniowanych w Twojej *template.json* pliku. Możesz zmodyfikować wartości domyślne, zgodnie z własnymi potrzebami. Ponadto Dodaj dwa nowe parametry w Twojej *parameters.JSON następującym kodem* pliku, aby określić ich wartości dla wdrażania zasobów:

@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 832010181059e2ec42834e54622f374c367c8d4f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5979c0d79a0abd9897fd3970ccea1d9ba07f9dfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Tworzenie i odczytywanie wiadomości Centrum IoT
 
-Aby obsługiwać bezproblemowe współdziałanie różnych protokołów, Centrum IoT definiuje wspólne format komunikatu do wszystkich protokołów skierowane do urządzenia. Ten format komunikatu jest używana zarówno dla [urządzenia do chmury] [ lnk-d2c] i [chmury do urządzenia] [ lnk-c2d] wiadomości. [Komunikat Centrum IoT] [ lnk-messaging] obejmuje:
+Aby obsługiwać bezproblemowe współdziałanie różnych protokołów, Centrum IoT definiuje wspólne format komunikatu do wszystkich protokołów skierowane do urządzenia. Ten format komunikatu jest używana zarówno dla [urządzenia do chmury] [ lnk-d2c] i [chmury do urządzenia] [ lnk-c2d] wiadomości. 
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+[Komunikat Centrum IoT] [ lnk-messaging] obejmuje:
 
 * Zestaw *właściwości systemu*. Właściwości, które będą interpretowane przez Centrum IoT, i ustawia. Ten zestaw jest wcześniej.
 * Zestaw *właściwości aplikacji*. Słownik właściwości ciągu, definiujące aplikacji i dostępu, bez konieczności wykonywania deserializacji treści komunikatu. Centrum IoT nigdy nie modyfikuje tych właściwości.

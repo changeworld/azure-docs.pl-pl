@@ -1,13 +1,13 @@
 ---
-title: "Wyzwalacz siatki zdarzeń dla usługi Azure Functions"
-description: "Zrozumienie sposobu obsługi zdarzenia siatki zdarzeń w usługi Azure Functions."
+title: Wyzwalacz siatki zdarzeń dla usługi Azure Functions
+description: Zrozumienie sposobu obsługi zdarzenia siatki zdarzeń w usługi Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5039798d76017d93b77d724b2e6bca6712af0370
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
 W tym artykule opisano sposób obsługi [siatki zdarzeń](../event-grid/overview.md) zdarzenia w funkcji platformy Azure.
 
-Siatka zdarzeń jest usługą platformy Azure, która wysyła żądania HTTP do powiadamiania o zdarzeniach, które pojawiają się w *wydawców*. Wydawca jest usługa lub zasób, którego źródłem zdarzenia. Na przykład konta magazynu obiektów blob platformy Azure jest wydawcą i przekazywanie obiektu blob lub usunięciu jest zdarzeniem. Niektóre [usług Azure ma wbudowaną obsługę publikowania zdarzeń w siatce zdarzeń](../event-grid/overview.md#event-publishers). 
+Siatka zdarzeń jest usługą platformy Azure, która wysyła żądania HTTP do powiadamiania o zdarzeniach, które pojawiają się w *wydawców*. Wydawca jest usługa lub zasób, którego źródłem zdarzenia. Na przykład konta magazynu obiektów blob platformy Azure jest wydawcą i przekazywanie obiektu blob lub usunięciu jest zdarzeniem. Niektóre [usług Azure ma wbudowaną obsługę publikowania zdarzeń w siatce zdarzeń](../event-grid/overview.md#event-sources). 
 
 Zdarzenia *obsługi* odbierania i przetwarzania zdarzeń. Azure Functions to jeden z kilku [usług platformy Azure, które mają wbudowaną obsługę Obsługa zdarzeń siatki zdarzeń](../event-grid/overview.md#event-handlers). W tym artykule dowiesz się wywołanie funkcji po odebraniu zdarzenia z siatki zdarzeń przy użyciu wyzwalacza zdarzenia siatki.
 

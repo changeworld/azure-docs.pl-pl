@@ -1,12 +1,12 @@
 ---
-title: "Wygasić dane w usłudze Azure DB rozwiązania Cosmos z czasu wygaśnięcia | Dokumentacja firmy Microsoft"
-description: "TTL bazy danych programu Microsoft Azure rozwiązania Cosmos zapewnia możliwość dokumentów automatycznie usunięte z systemu po upływie określonego czasu."
+title: Wygasić dane w usłudze Azure DB rozwiązania Cosmos z czasu wygaśnięcia | Dokumentacja firmy Microsoft
+description: TTL bazy danych programu Microsoft Azure rozwiązania Cosmos zapewnia możliwość dokumentów automatycznie usunięte z systemu po upływie określonego czasu.
 services: cosmos-db
-documentationcenter: 
-keywords: "czas wygaśnięcia"
+documentationcenter: ''
+keywords: czas wygaśnięcia
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 3737a240d92d9420bac7d42475622182fb425a2b
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 6f8ce4e270b94bf1043c27ba879878e20372ffe7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Ważność danych w kolekcjach bazy danych rozwiązania Cosmos Azure automatycznie z czasu wygaśnięcia
 Aplikacje można tworzyć i przechowywania dużych ilości danych. Niektóre z tych danych, takich jak machine generowane zdarzenie danych, dzienników i użytkownika sesji informacji przydaje się tylko ograniczone okres czasu. Gdy dane będą nadwyżka na potrzeby aplikacji jest bezpieczne przeczyścić tych danych i zmniejszyć wymagania dotyczące magazynu aplikacji.
@@ -49,7 +49,7 @@ W poniższej tabeli można pokazać logiki powyżej:
 | --- |:--- |:--- |:--- |
 | Brak TTL dokumentu |Nie można zastąpić na poziomie dokumentu, ponieważ dokumentu i kolekcji nie ma żadnych koncepcji TTL. |Wygaśnie żaden dokument w tej kolekcji. |Dokumenty w tej kolekcji wygaśnie po upływie interwału n. |
 | Czas wygaśnięcia = -1 do dokumentu |Nie można zastąpić na poziomie dokumentu od kolekcji nie zdefiniowano Właściwość DefaultTTL, którą można zastąpić dokumentu. Wartość TTL dokumentu jest nie interpretowany przez system. |Wygaśnie żaden dokument w tej kolekcji. |Nigdy nie wygasa dokument z = TTL-1 w tej kolekcji. Wszystkie inne dokumenty wygaśnie po upływie interwału "n". |
-| Czas wygaśnięcia = n dokumentu |Nie można zastąpić na poziomie dokumentu. Wartość TTL dokumentu nie interpretowany przez system. |Dokument z TTL = n wygaśnie po n interwał, w sekundach. Inne dokumenty będą dziedziczyć interwał-1 i nigdy nie wygasa. |Dokument z TTL = n wygaśnie po n interwał, w sekundach. Inne dokumenty będzie dziedziczyć interwał "n" z kolekcji. |
+| Czas wygaśnięcia = n dokumentu |Nie można zastąpić na poziomie dokumentu. Wartość TTL dokumentu jest nie interpretowany przez system. |Dokument z TTL = n wygaśnie po n interwał, w sekundach. Inne dokumenty będą dziedziczyć interwał-1 i nigdy nie wygasa. |Dokument z TTL = n wygaśnie po n interwał, w sekundach. Inne dokumenty będzie dziedziczyć interwał "n" z kolekcji. |
 
 ## <a name="configuring-ttl"></a>Konfigurowanie TTL
 Domyślnie czas wygaśnięcia jest domyślnie wyłączona, we wszystkich zbiorach DB rozwiązania Cosmos i na wszystkich dokumentach. Czas wygaśnięcia można ustawić programowo lub w portalu Azure w **ustawienia** sekcji dla kolekcji. 

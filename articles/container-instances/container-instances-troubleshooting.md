@@ -1,6 +1,6 @@
 ---
-title: "Rozwiązywanie problemów z wystąpień kontenera platformy Azure"
-description: "Dowiedz się, jak rozwiązać problemy z wystąpień kontenera platformy Azure"
+title: Rozwiązywanie problemów z wystąpień kontenera platformy Azure
+description: Dowiedz się, jak rozwiązać problemy z wystąpień kontenera platformy Azure
 services: container-instances
 author: seanmck
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a527939d6bc73e3dee5701bc53ef8312e68d2953
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ac7ddbccdef736bce941716883cf821a0f5c1f34
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Rozwiązywanie problemów dotyczących wdrożenia z wystąpień kontenera platformy Azure
+# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>Rozwiązywanie problemów i wdrożenia kontenera w wystąpień kontenera platformy Azure
 
 W tym artykule przedstawiono sposób rozwiązywania problemów w przypadku wdrażania kontenerów do wystąpień kontenera platformy Azure. Omówiono także niektóre typowe problemy, które możesz napotkać.
 
@@ -51,7 +51,7 @@ Traceback (most recent call last):
 urllib.error.HTTPError: HTTP Error 404: Not Found
 ```
 
-### <a name="attach-output-streams"></a>Dołącz strumienie wyjściowe
+### <a name="attach-output-streams"></a>Dołączanie strumieni wyjściowych
 
 [Dołączyć kontenera az] [ az-container-attach] polecenie dostarcza informacje diagnostyczne podczas uruchamiania kontenera. Po rozpoczęciu kontenera, strumieni STDOUT i STDERR do konsoli lokalnej.
 
