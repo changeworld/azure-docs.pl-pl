@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 88020b27403f06ab8f1c0a1c45b798db02f517f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Omówienie metryk w Microsoft Azure
 W tym artykule opisano metryki są platformie Microsoft Azure, ich zalety oraz sposób rozpocząć korzystanie z nich.  
@@ -116,7 +116,7 @@ Metryki alertów: można następnie powiadomienie za pośrednictwem poczty e-mai
 
  ![Metryki i reguły alertów w monitorze Azure](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-Alerty czasu rzeczywistego (wersja zapoznawcza) w pobliżu: one mieć możliwość monitorowania wielu metryki i progi dla zasobu i powiadamiać użytkowników za pomocą [grupy akcji](/monitoring-action-groups.md). Dowiedz się więcej o [niemal metryki czasu rzeczywistego alerty tutaj](https://aka.ms/azuremonitor/near-real-time-alerts).
+Nowsze metryki alerty mają możliwość monitorowania wielu metryki i progi dla zasobu i powiadamiać użytkowników za pomocą [grupy akcji](/monitoring-action-groups.md). Dowiedz się więcej o [nowszej alerty tutaj](https://aka.ms/azuremonitor/near-real-time-alerts).
 
 
 ### <a name="autoscale-your-azure-resources"></a>Funkcja automatycznego skalowania Azure zasobów
@@ -127,7 +127,7 @@ Niektórych zasobów platformy Azure obsługuje skalowanie out lub w wielu wyst�
 ## <a name="learn-about-supported-services-and-metrics"></a>Więcej informacji na temat obsługiwanych usług i metryki
 Można wyświetlić szczegółową listę obsługiwanych usług i ich metryk [Azure Monitor metryki — obsługiwanych metryki na typ zasobu](monitoring-supported-metrics.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zapoznaj się łącza w tym artykule. Ponadto więcej informacji na temat:  
 
 * [Typowe metryki skalowania automatycznego](insights-autoscale-common-metrics.md)

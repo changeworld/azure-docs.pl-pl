@@ -1,12 +1,12 @@
 ---
-title: "Diagnostyka w funkcjach trwałe - Azure"
-description: "Dowiedz się, jak diagnozować problemy z rozszerzeniem trwałe funkcji dla usługi Azure Functions."
+title: Diagnostyka w funkcjach trwałe - Azure
+description: Dowiedz się, jak diagnozować problemy z rozszerzeniem trwałe funkcji dla usługi Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5ebab8660dfe21984e1a7f9a1cb925aea60de213
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostyka w funkcji trwałe (funkcje platformy Azure)
 
@@ -50,6 +50,7 @@ Każdego zdarzenia cyklu życia wystąpienia aranżacji spowoduje wygenerowanie 
 * **Przyczyna**: dodatkowe dane skojarzone ze zdarzeniem śledzenia. Na przykład jeśli wystąpienie oczekuje na powiadomienie o zdarzeniu zewnętrznych, to pole wskazuje nazwę zdarzenia, które oczekuje na. Jeśli funkcja nie powiodła się, to będzie zawierać szczegóły błędu.
 * **isReplay**: wartość logiczna określająca, czy zdarzenia śledzenia jest odtwarzany wykonywania.
 * **extensionVersion**: wersja rozszerzenia trwałe zadań. Jest to szczególnie ważne dane, gdy raportowaniu usterek możliwych do rozszerzenia. Długotrwałe wystąpień może zgłaszać wiele wersji, jeśli nastąpi aktualizacja jest uruchomiona. 
+* **sequenceNumber**: numer sekwencji wykonywania dla zdarzenia. Połączone z sygnatury czasowej pozwala kolejność zdarzenia według czasu wykonywania. *Należy pamiętać, że ta liczba będzie resetowania na zero, jeśli host zostanie uruchomiony ponownie po uruchomieniu wystąpienia tak ważne jest, aby zawsze najpierw sortować sygnatury czasowej, a następnie sequenceNumber.*
 
 Można skonfigurować poziom szczegółowości śledzenia danych wysyłanego do usługi Application Insights w `logger` sekcji `host.json` pliku.
 
@@ -72,11 +73,11 @@ Domyślnie wszystkie zdarzenia śledzenia są emitowane. Można zmniejszyć ilo�
 
 ### <a name="single-instance-query"></a>Zapytanie pojedynczego wystąpienia
 
-Następujące zapytanie wyświetla dane historyczne śledzenia dla pojedynczego wystąpienia [Hello sekwencji](durable-functions-sequence.md) funkcji aranżacji. Zostaną zapisane przy użyciu [Application Insights zapytania języka (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Odfiltrowuje go, aby tylko wykonywania powtarzania *logicznej* jest wyświetlana ścieżka wykonywania.
+Następujące zapytanie wyświetla dane historyczne śledzenia dla pojedynczego wystąpienia [Hello sekwencji](durable-functions-sequence.md) funkcji aranżacji. Zostaną zapisane przy użyciu [Application Insights zapytania języka (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Odfiltrowuje go, aby tylko wykonywania powtarzania *logicznej* jest wyświetlana ścieżka wykonywania. Zdarzenia może zostać określona przez sortowanie według `timestamp` i `sequenceNumber` jak pokazano w poniższym zapytaniu: 
 
 ```AIQL
-let targetInstanceId = "bf71335b26564016a93860491aa50c7f";
-let start = datetime(2017-09-29T00:00:00);
+let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
+let start = datetime(2018-03-25T09:20:00);
 traces
 | where timestamp > start and timestamp < start + 30m
 | where customDimensions.Category == "Host.Triggers.DurableTask"
@@ -84,16 +85,17 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
 | where isReplay == false
 | where instanceId == targetInstanceId
-| project timestamp, functionName, state, instanceId, appName = cloud_RoleName
+| sort by timestamp asc, sequenceNumber asc
+| project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
-Wynik jest Lista śledzenia zdarzeń, które pokazuje ścieżki wykonywania orchestration, w tym wszystkie funkcje działania.
 
-![Application Insights zapytania](media/durable-functions-diagnostics/app-insights-single-instance-query.png)
+Wynik jest Lista śledzenia zdarzeń, pokazujący ścieżka wykonywania orchestration, w tym wszystkie funkcje działania uporządkowanych według czasu wykonywania w kolejności rosnącej.
 
-> [!NOTE]
-> Niektóre z nich śledzenia zdarzeń może być uszkodzony z powodu braku dokładności `timestamp` kolumny. To jest śledzony w witrynie GitHub jako [wystawiać #71](https://github.com/Azure/azure-functions-durable-extension/issues/71).
+![Application Insights zapytania](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+
 
 ### <a name="instance-summary-query"></a>Podsumowanie zapytania wystąpienia
 
@@ -202,7 +204,7 @@ Jest to przydatne w przypadku debugowania, ponieważ widzisz dokładnie jakim st
 > [!WARNING]
 > Jest wygodną wyświetlić historię wykonywania w magazynie tabel, należy unikać wykonywania żadnych zależności w tej tabeli. Mogą ulec zmianie w miarę rozwoju środowisko rozszerzenie funkcji trwałe.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak używać czasomierze trwałe](durable-functions-timers.md)

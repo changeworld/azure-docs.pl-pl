@@ -1,24 +1,24 @@
 ---
-title: "Zarządzanie agenta usługi Analiza dzienników Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano zadania różnych zarządzania, które zwykle będą wykonywane podczas cyklu życia programu Microsoft Monitoring Agent (MMA) wdrożone na maszynie."
+title: Zarządzanie agenta usługi Analiza dzienników Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano zadania różnych zarządzania, które zwykle będą wykonywane podczas cyklu życia programu Microsoft Monitoring Agent (MMA) wdrożone na maszynie.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
+ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e4daebf18d5edeba92bc14d5a4f699fbd2d94ce
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzanie i obsługę agenta analizy dzienników systemu Windows i Linux
 
@@ -69,6 +69,34 @@ $mma.ReloadConfiguration()
 >[!NOTE]
 >Jeśli używano wiersza polecenia lub skryptu wcześniej do zainstalowania i skonfigurowania agenta, `EnableAzureOperationalInsights` została zastąpiona `AddCloudWorkspace` i `RemoveCloudWorkspace`.
 >
+
+### <a name="linux-agent"></a>Agent systemu Linux
+Poniższe kroki pokazują, jak zmienić konfigurację agenta systemu Linux, jeśli zdecydujesz się zarejestrowanie go za pomocą innego obszaru roboczego lub chcesz usunąć obszar roboczy z jej konfiguracji.  
+
+1.  Aby sprawdzić, czy jest zarejestrowany do obszaru roboczego, uruchom następujące polecenie.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    Powinien zostać zwrócony stan podobny do poniższego przykładu- 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+    Należy pamiętać, że stan przedstawiono również agent nie działa, w przeciwnym razie następujące kroki, aby ponownie skonfigurować agenta programu nie zostanie ukończona pomyślnie.  
+
+2. Jeśli został on już zarejestrowany z obszaru roboczego, Usuń zarejestrowanych obszaru roboczego, uruchamiając następujące polecenie.  W przeciwnym razie, jeśli nie jest zarejestrowany, przejdź do następnego kroku.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -X`  
+    
+3. Aby zarejestrować z innego obszaru roboczego, uruchom polecenie `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` 
+4. Aby sprawdzić, czy zmiany miały wpływ, uruchom polecenie.
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    Powinien zostać zwrócony stan podobny do poniższego przykładu- 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+Usługa agenta nie musi zostać uruchomiony ponownie, aby zmiany zaczęły obowiązywać.
 
 ## <a name="update-proxy-settings"></a>Zaktualizuj ustawienia serwera proxy 
 Aby skonfigurować agenta do komunikowania się z usługą za pośrednictwem serwera proxy lub [bramy OMS](log-analytics-oms-gateway.md) po wdrożeniu, użyj jednej z następujących metod do zakończenia tego zadania.
@@ -148,7 +176,7 @@ Pobrany plik dla agenta jest pakietem instalacyjnym niezależne utworzone za pom
 3. W wierszu polecenia wpisz `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.  
 
 ### <a name="linux-agent"></a>Agent systemu Linux
-Aby usunąć agenta, uruchom następujące polecenie na komputerze z systemem Linux.  *--Przeczyścić* argument usuwa całkowicie agent i jego konfiguracja.
+Aby usunąć agenta, uruchom poniższe polecenie na komputerze z systemem Linux.  Argument *--purge* powoduje całkowite usunięcie agenta i jego konfiguracji.
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
@@ -175,6 +203,6 @@ Wykonaj poniższe kroki, aby skonfigurować agenta pakietu OMS dla systemu Linux
 2. Upewnij się, że zaczyna się od wiersza `httpsport=` definiuje portu 1270. Takie jak: `httpsport=1270`
 3. Uruchom ponownie serwer OMI: `sudo /opt/omi/bin/service_control restart`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przegląd [Rozwiązywanie problemów z agentem systemu Linux](log-analytics-agent-linux-support.md) napotkania problemów podczas instalowania lub zarządzania agentem.  

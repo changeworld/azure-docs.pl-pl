@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: 1cf23a8f564553e65ac2c0fd34d44d81fe2327ea
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7dc467d9977d536011e1c3fcf663fc335f90a492
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Uruchamianie usługi jako grupy lub użytkownika usługi Active Directory
-Za pomocą usługi Azure Service Fabric, można zabezpieczyć aplikacji uruchomionych w klastrze, w obszarze konta innego użytkownika. Dzięki temu uruchamianie aplikacji, nawet w środowisku hostowanej udostępnionego bardziej bezpieczne od siebie nawzajem. Domyślnie aplikacje sieci szkieletowej usług są uruchamiane na koncie, działającą proces Fabric.exe. Autonomiczny klastra systemu Windows Server, można uruchomić usługi jako [konta grupy usługi zarządzanej (gMSA)](service-fabric-run-service-as-gmsa.md) lub użytkownika usługi Active Directory lub grupy za pomocą zasad RunAs. Należy pamiętać, że używa usługi Active Directory lokalnie w domenie i nie usługi Azure Active Directory (Azure AD).
+W klastrze systemu Windows Server autonomiczny można uruchomić usługi jako użytkownika usługi Active Directory lub grupy za pomocą zasad RunAs.  Domyślnie aplikacje sieci szkieletowej usług są uruchamiane na koncie, działającą proces Fabric.exe. Uruchamianie aplikacji w ramach różnych kont, nawet w środowisku hostowanej udostępnionego umożliwiają bardziej bezpieczne od siebie nawzajem. Należy pamiętać, że używa usługi Active Directory lokalnie w domenie i nie usługi Azure Active Directory (Azure AD).  Można również uruchomić usługi jako [konta grupy usługi zarządzanej (gMSA)](service-fabric-run-service-as-gmsa.md).
 
 Przy użyciu użytkownika domeny lub grupy, można następnie dostęp do innych zasobów domeny (na przykład udziałów plików), które ma odpowiednie uprawnienia.
 

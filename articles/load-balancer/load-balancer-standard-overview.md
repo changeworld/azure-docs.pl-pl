@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: b5443cb1d883bd829a13b6d941d2c87c6205c64f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie usługi Azure Standard modułu równoważenia obciążenia
 
@@ -76,9 +76,6 @@ Puli zaplecza może zawierać autonomicznych maszyn wirtualnych, zestawów dost�
 Podczas określania, jak zaprojektować pulę zaplecza, można zaprojektować dla o najmniejszej liczby indywidualnych zaplecza puli zasobów, aby jeszcze bardziej zoptymalizować czas trwania operacji zarządzania.  Nie ma różnic w wydajności płaszczyzna danych lub skali.
 
 ## <a name="az"></a>Dostępność strefy
-
->[!NOTE]
-> Umożliwia [Podgląd stref dostępności](https://aka.ms/availabilityzones) standardowe usługi równoważenia obciążenia wymaga [rejestracji dla stref dostępności](https://aka.ms/availabilityzones).
 
 Standardowa usługa równoważenia obciążenia obsługuje dodatkowe możliwości w regionach, w której dostępność strefy są dostępne.  Te funkcje są przyrostowe do wszystkich standardowych modułu równoważenia obciążenia zapewnia.  Konfiguracje dostępność strefy są dostępne dla publicznych i wewnętrznych standardowe usługi równoważenia obciążenia.
 

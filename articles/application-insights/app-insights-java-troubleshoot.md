@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 894b2234074dcfb262de9033a7728cad3bef2248
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b3205603b91077ca2c3226dcb78589de37d15cf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
 Pytania lub problemy z [Azure Application Insights w języku Java][java]? Poniżej przedstawiono kilka wskazówek.
@@ -48,7 +48,7 @@ Pytania lub problemy z [Azure Application Insights w języku Java][java]? Poniż
 * Szukasz na właściwy zasób AI? Sprawdź odpowiada iKey aplikacji do zasobu, gdzie są oczekiwane dane telemetryczne. Powinny one być takie same.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Nie widzę wszystkich danych I czy oczekiwana
-* Otwórz przydziały i cenach bloku i sprawdź, czy [próbkowania](app-insights-sampling.md) jest używany w operacji. (transmisji 100% oznacza, że próbkowania nie jest w operacji). Usługa Application Insights można ustawić do akceptowania tylko część danych telemetrii, przychodzący z aplikacji. Dzięki temu można przechowywać w wykorzystaniu całego przydziału miesięcznego dane telemetryczne. 
+* Otwórz użycia i szacowany koszt strony i sprawdź, czy [próbkowania](app-insights-sampling.md) jest używany w operacji. (transmisji 100% oznacza, że próbkowania nie jest w operacji). Usługa Application Insights można ustawić do akceptowania tylko część danych telemetrii, przychodzący z aplikacji. Dzięki temu można przechowywać w wykorzystaniu całego przydziału miesięcznego dane telemetryczne. 
 * Czy jest włączone próbkowania zestawu SDK? Jeśli tak, danych czy próbkowany szybkością określona dla wszystkich odpowiednich typów.
 * Czy uruchamiasz starszej wersji zestawu SDK Java Począwszy od wersji 2.0.1 zostały wprowadzone odporność na uszkodzenia mechanizm do obsługi sieci tymczasowymi i błędów wewnętrznej bazy danych, a także trwałości danych na dyskach lokalnych.
 * Czy pobieranie ograniczany z powodu nadmiernego telemetrii? Jeśli jest włączone rejestrowanie informacji, zostanie wyświetlony dziennik komunikatów "Aplikacji jest ograniczany". Nasze bieżący limit to 32 telemetrii k elementów na sekundę.

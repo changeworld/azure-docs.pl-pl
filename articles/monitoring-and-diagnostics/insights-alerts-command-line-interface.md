@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Tworzenie klasycznego metryki alertów w monitorze Azure dla usług Azure - CLI między platformami
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="overview"></a>Przegląd
 > [!NOTE]
-> W tym artykule opisano sposób tworzenia starsze alerty metryki. Azure obsługuje teraz Monitor [nowszą, lepiej metryki alerty](monitoring-near-real-time-metric-alerts.md). Te alerty można monitorować wiele metryk i umożliwić alertów na wymiarów metryki. Obsługa interfejsu wiersza polecenia dla nowszej alertów metryki będzie dostępna wkrótce.
+> W tym artykule opisano sposób tworzenia starsze klasycznego alerty metryki. Azure obsługuje teraz Monitor [nowszą, lepiej metryki alerty](monitoring-near-real-time-metric-alerts.md). Te alerty można monitorować wiele metryk i umożliwić alertów na wymiarów metryki. Obsługa interfejsu wiersza polecenia dla nowszej alertów metryki będzie dostępna wkrótce.
 >
 >
 
-W tym artykule przedstawiono sposób konfigurowania Azure metryki alertów za pomocą interfejsu wiersza polecenia i platform (CLI).
+W tym artykule przedstawiono sposób konfigurowania za pomocą interfejsu wiersza polecenia i platform (CLI) Azure klasycznego alertów metryki.
 
 > [!NOTE]
 > Azure Monitor to nowa nazwa dla proponowaną "Azure Insights" do 25 września 2016 r. Jednak przestrzenie nazw, dlatego poniższe polecenia nadal zawierają "insights".
@@ -46,14 +46,14 @@ Możesz otrzymywać alertu na podstawie metryki monitorowania lub zdarzenia na u
 * **Wartości metryki** — uruchamia alert, gdy wartość określonej metryki przekracza próg przypisać w żadnym kierunku. Oznacza to, że oba wyzwala po spełnieniu warunku zostanie najpierw i następnie później podczas warunku jest już spełniane.    
 * **Zdarzenia dziennika aktywności** -alert może wyzwolić na *co* zdarzenia lub tylko wtedy, gdy wystąpi określone zdarzenie. Aby dowiedzieć się więcej o alertach dziennika aktywności [kliknij tutaj](monitoring-activity-log-alerts.md)
 
-Można skonfigurować metryki alert do wyzwala, wykonaj następujące czynności:
+Można skonfigurować klasycznego alertu metryki wyzwala, wykonaj następujące czynności:
 
 * wysyłanie powiadomień e-mail do administratora usługi i współadministratorzy
 * Wyślij wiadomość e-mail do dodatkowych wiadomości e-mail przez użytkownika.
 * Wywołanie elementu webhook
 * Uruchamia wykonywanie elementów runbook platformy Azure (tylko z portalu Azure w tej chwili)
 
-Można skonfigurować i uzyskać informacje na temat metryki reguły alertów za pomocą
+Można skonfigurować i uzyskać informacje na temat przy użyciu klasycznego metryki reguły alertów
 
 * [Azure Portal](insights-alerts-portal.md)
 * [Program PowerShell](insights-alerts-powershell.md)
@@ -112,7 +112,7 @@ Zawsze może odbierać pomocy dla poleceń, wpisując polecenie i odkładanie �
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. Aby utworzyć elementu webhook lub Wyślij wiadomość e-mail po zgłoszeniu alertu metryki, należy najpierw utworzyć wiadomości e-mail i/lub elementów webhook. Od razu utworzyć regułę później. Nie można skojarzyć elementu webhook lub wiadomości e-mail przy użyciu już utworzone zasady przy użyciu interfejsu wiersza polecenia.
+5. Aby utworzyć elementu webhook lub Wyślij wiadomość e-mail po zgłoszeniu klasycznego alertu metryki, należy najpierw utworzyć wiadomości e-mail i/lub elementów webhook. Od razu utworzyć regułę później. Nie można skojarzyć elementu webhook lub wiadomości e-mail przy użyciu już utworzone zasady przy użyciu interfejsu wiersza polecenia.
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com

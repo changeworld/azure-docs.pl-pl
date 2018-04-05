@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 03/13/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9b43ec7106c70b7d9b326208043d2fe874fb7e20
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a1f0a022b4620b15e2d76a127ed48e5472e4a5bb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Tworzenie pierwszej funkcji przy użyciu programu Visual Studio
 
@@ -39,7 +39,7 @@ W celu ukończenia tego samouczka:
 
 * Zainstaluj program [Visual Studio 2017 w wersji 15.5](https://www.visualstudio.com/vs/) lub nowszej zawierający pakiet roboczy **Programowanie na platformie Azure**.
 
-    ![Instalowanie programu Visual Studio 2017 z pakietem roboczym Programowanie na platformie Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+    ![Instalowanie programu Visual Studio 2017 z obciążeniem Programowanie na platformie Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
     Jeśli masz już zainstalowany program Visual Studio, upewnij się, że zainstalowano wszystkie oczekujące aktualizacje. 
 

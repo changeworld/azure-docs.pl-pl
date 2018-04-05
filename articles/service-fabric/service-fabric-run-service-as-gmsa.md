@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: cd36d52df24610af1d2cb2d9e6e41f33bb7ea5fe
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e22c656218abcd0564faec6fae6d6979f09b386a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="run-a-service-as-a-group-managed-service-account"></a>Uruchamianie usługi jako konta usługi zarządzanego przez grupę
-Za pomocą usługi Azure Service Fabric, można zabezpieczyć aplikacji uruchomionych w klastrze, w obszarze konta innego użytkownika. Uruchamianie aplikacji w ramach różnych kont, nawet w środowisku hostowanej udostępnionego umożliwiają bardziej bezpieczne od siebie nawzajem. Domyślnie aplikacje sieci szkieletowej usług są uruchamiane na koncie, działającą proces Fabric.exe. Autonomiczny klastra systemu Windows Server, można uruchomić usługi jako grupa kont usług zarządzanych (gMSA) lub [użytkownika usługi Active Directory lub grupy](service-fabric-run-service-as-ad-user-or-group.md) przy użyciu zasad RunAs. Należy pamiętać, że używa usługi Active Directory lokalnie w domenie i nie usługi Azure Active Directory (Azure AD). Za pomocą grupę, a nie jest żadne hasło lub zaszyfrowane hasło jest przechowywane w `Application Manifest`.
+# <a name="run-a-service-as-a-group-managed-service-account"></a>Uruchamianie usługi za pomocą zarządzanego konta usługi grupy
+W klastrze systemu Windows Server autonomiczny można uruchomić usługi jako konto usługi zarządzane (gMSA) przy użyciu zasad RunAs grupy.  Domyślnie aplikacje sieci szkieletowej usług są uruchamiane na koncie, działającą proces Fabric.exe. Uruchamianie aplikacji w ramach różnych kont, nawet w środowisku hostowanej udostępnionego umożliwiają bardziej bezpieczne od siebie nawzajem. Należy pamiętać, że używa usługi Active Directory lokalnie w domenie i nie usługi Azure Active Directory (Azure AD). Za pomocą grupę, brak hasła i zaszyfrowane hasło przechowywane w manifeście aplikacji.  Można również uruchomić usługi jako [użytkownika usługi Active Directory lub grupy](service-fabric-run-service-as-ad-user-or-group.md).
 
 Poniższy przykład pokazuje, jak utworzyć konto usługi zarządzane przez grupę o nazwie *testu svc$*; sposobu wdrażania tego konta usługi zarządzanego przez węzły klastra; i sposobie konfigurowania głównej nazwy użytkownika.
 

@@ -1,12 +1,12 @@
 ---
-title: "Zarządzanie urządzeniem chmury Centrum IoT Azure messaging z Centrum iothub explorer | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak narzędzie explorer Centrum iothub interfejsu wiersza polecenia do urządzenia monitor wiadomości (D2C) w chmurze i wysyłanie chmury do urządzenia (C2D) wiadomości w usłudze Azure IoT Hub."
+title: Zarządzanie urządzeniem chmury Centrum IoT Azure messaging z Centrum iothub explorer | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak narzędzie explorer Centrum iothub interfejsu wiersza polecenia do urządzenia monitor wiadomości (D2C) w chmurze i wysyłanie chmury do urządzenia (C2D) wiadomości w usłudze Azure IoT Hub.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "Centrum iothub Eksploratorze chmury urządzenia wiadomości chmury Centrum iot na urządzeniu, chmury do urządzenia do obsługi komunikatów"
+tags: ''
+keywords: Centrum iothub Eksploratorze chmury urządzenia wiadomości chmury Centrum iot na urządzeniu, chmury do urządzenia do obsługi komunikatów
 ms.assetid: 04521658-35d3-4503-ae48-51d6ad3c62cc
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: 30151b7bdc544bc36e959cc3528d37897198fc7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e74c08849ae2f98d3189c0cd3d340874ea085ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Użyj Eksploratora Centrum iothub do wysyłania i odbierania komunikatów między urządzeniem a Centrum IoT
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [Centrum iothub explorer](https://github.com/azure/iothub-explorer) ma kilka poleceń, który ułatwia zarządzanie Centrum IoT. Ten samouczek koncentruje się na temat korzystania z Centrum iothub explorer do wysyłania i odbierania komunikatów między urządzeniem i Centrum IoT.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>Co dowiesz się
 
@@ -44,7 +46,7 @@ Sposób używania Eksploratora Centrum iothub do monitorowania urządzenia do ch
   - Aktywna subskrypcja platformy Azure.
   - Centrum Azure IoT w ramach Twojej subskrypcji.
   - Aplikacja klienta, która wysyła komunikaty do Centrum Azure IoT.
-- Eksplorator Centrum iothub. ([Zainstalować explorer Centrum iothub](https://github.com/azure/iothub-explorer))
+- iothub-explorer. ([Zainstalować explorer Centrum iothub](https://github.com/azure/iothub-explorer))
 
 ## <a name="monitor-device-to-cloud-messages"></a>Monitorowanie wiadomości urządzenia do chmury
 
@@ -82,7 +84,7 @@ Polecenie miga LED, który jest połączony z urządzeniem i wysyła wiadomość
 > [!Note]
 > Nie istnieje potrzeba urządzenia do odesłania do Centrum IoT po otrzymaniu komunikatu potwierdzenia oddzielne polecenia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Kiedy znasz już jak monitorować urządzenia do chmury wiadomości i wysyłanie komunikatów chmury do urządzenia między urządzenia IoT i Centrum IoT Azure.
 

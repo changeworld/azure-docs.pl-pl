@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie punktów końcowych w klasycznym maszyny Wirtualnej systemu Windows | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, można skonfigurować punkty końcowe dla klasycznego maszyny Wirtualnej systemu Windows w portalu Azure, aby umożliwić komunikację z maszyny wirtualnej systemu Windows na platformie Azure."
+title: Konfigurowanie punktów końcowych w klasycznym maszyny Wirtualnej systemu Windows | Dokumentacja firmy Microsoft
+description: Dowiedz się, można skonfigurować punkty końcowe dla klasycznego maszyny Wirtualnej systemu Windows w portalu Azure, aby umożliwić komunikację z maszyny wirtualnej systemu Windows na platformie Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 8afc21c2-d3fb-43a3-acce-aa06be448bb6
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 34bfad1e41037f38e950db085c0c13b7066b3e96
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d64feff341e389df4079c0603a414f0d40b754e7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>Jak skonfigurować punkty końcowe w klasycznym maszyny wirtualnej systemu Windows na platformie Azure
 Wszystkie okna, które maszyn wirtualnych, które tworzenia na platformie Azure przy użyciu klasycznego modelu wdrażania można automatycznie komunikują się za pośrednictwem prywatnej kanał sieciowy między maszynami wirtualnymi w tej samej usługi w chmurze lub sieci wirtualnej. Jednak komputery w Internecie lub innych sieci wirtualnych wymagają punktów końcowych, aby skierować ruch sieciowy przychodzący do maszyny wirtualnej. W tym artykule jest również dostępny do [maszyn wirtualnych systemu Linux](../../linux/classic/setup-endpoints.md).
@@ -34,7 +34,7 @@ Po utworzeniu maszyny wirtualnej systemu Windows w portalu Azure, typowe punkty 
 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby użyć polecenia cmdlet programu Azure PowerShell do konfigurowania punktu końcowego maszyny Wirtualnej, zobacz [AzureEndpoint Dodaj](https://msdn.microsoft.com/library/azure/dn495300.aspx).
 * Aby użyć polecenia cmdlet programu Azure PowerShell do zarządzania listy ACL punktu końcowego, zobacz [Zarządzanie listy kontroli dostępu (ACL) dla punktów końcowych przy użyciu programu PowerShell](../../../virtual-network/virtual-networks-acl-powershell.md).
-* Jeśli utworzono maszynę wirtualną w modelu wdrażania usługi Resource Manager, możesz użyć programu Azure PowerShell do [Utwórz grupy zabezpieczeń sieci](../../../virtual-network/virtual-networks-create-nsg-arm-ps.md) sterujących ruchem do maszyny Wirtualnej.
+* Jeśli utworzono maszynę wirtualną w modelu wdrażania usługi Resource Manager, możesz użyć programu Azure PowerShell do [Utwórz grupy zabezpieczeń sieci](../../../virtual-network/tutorial-filter-network-traffic.md) sterujących ruchem do maszyny Wirtualnej.

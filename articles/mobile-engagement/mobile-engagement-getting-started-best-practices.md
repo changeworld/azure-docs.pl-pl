@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do usługi Azure Mobile Engagement — przewodnik z najlepszymi rozwiązaniami"
-description: "Przewodnik wprowadzający do usługi Azure Mobile Engagement i najlepsze rozwiązania dotyczące dołączania"
+title: Wprowadzenie do usługi Azure Mobile Engagement — przewodnik z najlepszymi rozwiązaniami
+description: Przewodnik wprowadzający do usługi Azure Mobile Engagement i najlepsze rozwiązania dotyczące dołączania
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dfce1183-6398-466e-aa7e-ed702fb52818
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf9dc5febeae27473d2adb8a024536b945bb9d13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Wprowadzenie do usługi Azure Mobile Engagement — przewodnik z najlepszymi rozwiązaniami
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
+> 
+
 ## <a name="overview"></a>Omówienie
 **Ekrany urządzeń przenośnych stają się coraz bardziej zatłoczone —** badanie przeprowadzone w 2013 r. ujawniło, że na urządzeniach przenośnych jest zainstalowanych średnio po 27 aplikacji. Na ich używanie użytkownicy zazwyczaj poświęcają 30 godzin w miesiącu. Większość tego czasu zajmuje korzystanie z sieci społecznościowych i gier (około 20 godzin). Na początku 2014 r. rynek aplikacji dla systemu Android obejmował około 1,5 miliona pozycji. W sklepie Apple Store dostępnych było mniej więcej 1,2 miliona aplikacji. Aplikacje mobilne wciąż zyskują na popularności, a ich deweloperzy konkurują ze sobą na tym rosnącym rynku. 
 

@@ -1,11 +1,11 @@
 ---
 title: Zrozumienie cennik Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: "Przewodnik dewelopera po — informacje o jak pomiaru i cenach współpracuje z tym Centrum IoT poszło przykłady."
+description: Przewodnik dewelopera po — informacje o jak pomiaru i cenach współpracuje z tym Centrum IoT poszło przykłady.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: dbceca3daed53da2a383fd8a6b7a0bd1f225cf77
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 390e917990586642e55913a69873b1707e371de3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informacje o cenach Centrum IoT Azure
 
 [Centrum IoT Azure cennik] [ lnk-pricing] zawiera ogólne informacje dotyczące różnych jednostki SKU i cenach dla Centrum IoT. Ten artykuł zawiera więcej informacji na temat sposobu różne funkcje Centrum IoT są mierzone jako wiadomości przez Centrum IoT.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="charges-per-operation"></a>Opłaty na operację
 

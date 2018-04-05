@@ -1,12 +1,12 @@
 ---
 title: Co to jest Azure Backup? | Microsoft Docs
-description: "Usługa Azure Backup umożliwia wykonywanie kopii zapasowych oraz przywracanie danych i obciążeń z serwerów i stacji roboczych z systemem Windows, serwerów programu System Center DPM, a także maszyn wirtualnych platformy Azure."
+description: Usługa Azure Backup umożliwia wykonywanie kopii zapasowych oraz przywracanie danych i obciążeń z serwerów i stacji roboczych z systemem Windows, serwerów programu System Center DPM, a także maszyn wirtualnych platformy Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "tworzenie i przywracanie kopii zapasowej; recovery services; rozwiązania kopii zapasowych"
+editor: ''
+keywords: tworzenie i przywracanie kopii zapasowej; recovery services; rozwiązania kopii zapasowych
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 600c4a29d7d7daabbbf6d1825671d109ea499c4b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Omówienie funkcji usługi Azure Backup
 Azure Backup to oparta na platformie Azure usługa, która umożliwia tworzenie kopii zapasowej (lub ochronę) i przywracanie danych w chmurze Microsoft Cloud. Usługa Azure Backup pozwala zastąpić dotychczasowe rozwiązania tworzenia kopii zapasowych, istniejące lokalnie lub poza siedzibą firmy, rozwiązaniem opartym na chmurze, które jest niezawodne, bezpieczne i konkurencyjne cenowo. Usługa Azure Backup oferuje wiele składników, które możesz pobrać i wdrożyć na odpowiednim komputerze, serwerze lub w chmurze. Wdrażany składnik lub agent zależy od tego, co ma być chronione. Wszystkie składniki usługi Azure Backup (niezależnie od tego, czy dane są chronione lokalnie, czy w chmurze) mogą służyć do tworzenia kopii zapasowych danych w magazynie usługi Recovery Services na platformie Azure. Informacje o tym, jakich składników należy użyć do ochrony konkretnych danych, aplikacji lub obciążeń, znajdują się w [tabeli składników usługi Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (w dalszej części tego artykułu).
@@ -34,7 +34,7 @@ Tradycyjne rozwiązania do tworzenia kopii zapasowych rozwinęły się w kierunk
 
 **Nieograniczone skalowanie** — usługa Azure Backup używa dostępnej mocy i nieograniczonej skali chmury Azure do zapewniania wysokiej dostępności — bez narzutu na konserwację lub monitorowanie. Możesz skonfigurować alerty, aby udostępniać informacje o zdarzeniach, ale nie musisz obawiać się o wysoką dostępność danych w chmurze.
 
-**Wiele opcji magazynowania** — aspektem wysokiej dostępności jest replikacja magazynu. Usługa Azure Backup oferuje dwa typy replikacji: [magazyn lokalnie nadmiarowy](../storage/common/storage-redundancy.md#locally-redundant-storage) i [magazyn geograficznie nadmiarowy](../storage/common/storage-redundancy.md#geo-redundant-storage). Wybierz opcję magazynu kopii zapasowych na podstawie potrzeb:
+**Wiele opcji magazynowania** — aspektem wysokiej dostępności jest replikacja magazynu. Usługa Azure Backup oferuje dwa typy replikacji: [magazyn lokalnie nadmiarowy](../storage/common/storage-redundancy-lrs.md) i [magazyn geograficznie nadmiarowy](../storage/common/storage-redundancy-grs.md). Wybierz opcję magazynu kopii zapasowych na podstawie potrzeb:
 
 * Magazyn lokalnie nadmiarowy (LRS) replikuje dane trzy razy (tworzy trzy kopie danych) w jednostce skalowania magazynu w centrum danych. Wszystkie kopie danych istnieją w tym samym regionie. Magazyn LRS to ekonomiczna opcja ochrony danych przed awariami sprzętu lokalnego.
 
@@ -219,7 +219,7 @@ Typowe przykłady chronionych wystąpień to maszyny wirtualne, serwery aplikacj
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Co to jest magazyn usługi Recovery Services?
-Magazyn usługi Recovery Services jest jednostką magazynu online na platformie Azure używaną do przechowywania danych, takich jak kopie zapasowe, punkty odzyskiwania i zasady tworzenia kopii zapasowych. Magazyny usługi Recovery Services służą do przechowywania danych kopii zapasowych na potrzeby usług platformy Azure oraz lokalnych serwerów i stacji roboczych. Magazyny usługi Recovery Services ułatwiają organizowanie danych kopii zapasowych przy jednoczesnym zmniejszeniu nakładów pracy związanych z zarządzaniem. W ramach każdej subskrypcji platformy Azure możesz utworzyć maksymalnie 25 magazynów usług Recovery Services na region platformy Azure. Rozważając miejsce przechowywania danych, nie wszystkie regiony są takie same. Zobacz [Magazyn geograficznie nadmiarowy](../storage/common/storage-redundancy.md#geo-redundant-storage), aby uzyskać informacje o powiązanych regionach i innych kwestiach dotyczących dodatkowego miejsca do magazynowania.
+Magazyn usługi Recovery Services jest jednostką magazynu online na platformie Azure używaną do przechowywania danych, takich jak kopie zapasowe, punkty odzyskiwania i zasady tworzenia kopii zapasowych. Magazyny usługi Recovery Services służą do przechowywania danych kopii zapasowych na potrzeby usług platformy Azure oraz lokalnych serwerów i stacji roboczych. Magazyny usługi Recovery Services ułatwiają organizowanie danych kopii zapasowych przy jednoczesnym zmniejszeniu nakładów pracy związanych z zarządzaniem. W ramach każdej subskrypcji platformy Azure możesz utworzyć maksymalnie 25 magazynów usług Recovery Services na region platformy Azure. Rozważając miejsce przechowywania danych, nie wszystkie regiony są takie same. Zobacz [Magazyn geograficznie nadmiarowy](../storage/common/storage-redundancy-grs.md), aby uzyskać informacje o powiązanych regionach i innych kwestiach dotyczących dodatkowego miejsca do magazynowania.
 
 Magazyny kopii zapasowych oparte na usłudze Azure Service Manager stanowiły pierwszą wersję magazynu. Magazyny usługi Recovery Services, w których dodano funkcje modelu usługi Azure Resource Manager, stanowią drugą wersję magazynu. Zobacz [artykuł z omówieniem magazynu usługi Recovery Services](backup-azure-recovery-services-vault-overview.md), aby uzyskać pełen opis różnic między funkcjami. Nie możesz już tworzyć magazynów kopii zapasowych, a wszystkie istniejące magazyny kopii zapasowych zostały uaktualnione do magazynów usług Recovery Services. Witryny Azure Portal możesz użyć do zarządzania magazynami, które zostały uaktualnione do magazynów usług Recovery Services.
 

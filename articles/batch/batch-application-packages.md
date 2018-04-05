@@ -1,25 +1,25 @@
 ---
-title: "Instalowanie pakietów aplikacji w węzłach obliczeniowych - partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Użyj funkcji pakiety aplikacji partii zadań Azure ułatwia zarządzanie wiele aplikacji i wersji do instalacji na partii węzły obliczeniowe."
+title: Instalowanie pakietów aplikacji w węzłach obliczeniowych - partii zadań Azure | Dokumentacja firmy Microsoft
+description: Użyj funkcji pakiety aplikacji partii zadań Azure ułatwia zarządzanie wiele aplikacji i wersji do instalacji na partii węzły obliczeniowe.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 07/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b5f10cbd79227ccc6acb2004e449f426a6cbd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 440f7eba99e5fa02a597ae62d5d14329f5e50af7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji do wyliczenia węzłów za pomocą pakietów aplikacji partii
 
@@ -121,7 +121,7 @@ Wybranie tej opcji menu otwiera **aplikacji** bloku:
 
 * **Pakiety**: numer wersji skojarzonych z tą aplikacją.
 * **Wersja domyślna**: wersja aplikacji zainstalowane, jeśli nie wskazują wersji po określeniu dla puli aplikacji. To ustawienie jest opcjonalne.
-* **Zezwalaj na aktualizacje**: wartość, która określa, czy pakiet aktualizacji, usuwanie i dodatki są dozwolone. Jeśli ta wartość jest równa **nr**, pakiet aktualizacji i usunięć są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **tak**.
+* **Zezwalaj na aktualizacje**: wartość, która określa, czy pakiet aktualizacji, usuwanie i dodatki są dozwolone. Jeśli ta wartość jest równa **nr**, pakiet aktualizacji i usunięć są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **Tak**.
 
 ### <a name="view-application-details"></a>Wyświetlanie szczegółów aplikacji
 Aby otworzyć blok, który zawiera szczegóły aplikacji, wybierz aplikację w **aplikacji** bloku.
@@ -194,7 +194,7 @@ Po kliknięciu **aktualizacji**, *pakiet aktualizacji* bloku jest wyświetlany. 
 
 Po kliknięciu **usunąć**, zostanie wyświetlona prośba o potwierdzenie usunięcia wersji pakietu i partii usuwa pakiet z usługi Magazyn Azure. Jeśli usuniesz domyślnej wersji aplikacji, **wersja domyślna** ustawienie zostanie usunięte z aplikacji.
 
-![Usuwanie aplikacji][12]
+![Usuwanie aplikacji ][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalowanie aplikacji na węzły obliczeniowe
 Teraz, kiedy znasz już jak zarządzać pakietami aplikacji z portalu Azure, można omówiono sposób wdrożenia ich na węzłach obliczeniowych i uruchom je z zadań wsadowych.
@@ -269,7 +269,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`i `version` to wartości, które odpowiadają wersji aplikacji i pakietów zostały określone dla wdrożenia. Na przykład, jeśli określono tej wersji 2.7 aplikacji *mieszarce* należy zainstalować na węzłach systemu Windows, Twoje wiersze polecenia zadań użyje tej zmiennej środowiskowej dostęp do swoich plików:
+`APPLICATIONID` i `version` to wartości, które odpowiadają wersji aplikacji i pakietów zostały określone dla wdrożenia. Na przykład, jeśli określono tej wersji 2.7 aplikacji *mieszarce* należy zainstalować na węzłach systemu Windows, Twoje wiersze polecenia zadań użyje tej zmiennej środowiskowej dostęp do swoich plików:
 
 ```
 Windows:
@@ -346,7 +346,7 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>Dobiega końca
 Z pakietów aplikacji możesz pomóc klientom Wybierz aplikacje do ich zadań i określić dokładną wersję do użycia podczas przetwarzania zadania z usługą przetwarzania wsadowego. Można również określić przez klientów do przekazywania i śledzenie własnych aplikacji w usłudze.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Interfejsu API REST partii] [ api_rest] obsługuje również do pracy z pakietami aplikacji. Na przykład, zobacz [applicationPackageReferences] [ rest_add_pool_with_packages] element [Dodaj pulę, aby konto] [ rest_add_pool] informacji o sposobie określania pakiety do zainstalowania przy użyciu interfejsu API REST. Zobacz [aplikacji] [ rest_applications] szczegółowe informacje na temat sposobu uzyskiwania informacji o aplikacji przy użyciu interfejsu API REST partii.
 * Dowiedz się, jak programowo [Zarządzanie kontami partii zadań Azure i przydziały zarządzania partiami platformy .NET](batch-management-dotnet.md). [Zarządzania partiami platformy .NET][api_net_mgmt] biblioteki można włączyć funkcji Tworzenie i usuwanie konta wsadowego aplikacji lub usługi.
 

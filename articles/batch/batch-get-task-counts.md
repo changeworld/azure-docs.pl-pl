@@ -1,18 +1,18 @@
 ---
-title: "Monitorowanie postępu zadania przez zliczanie zadań według stanu - partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Monitorować postęp zadania, wywołując operację Get liczby zadań, aby liczba zadań dla zadania. Możesz uzyskać liczby aktywnych, uruchomione i zakończonych zadań i zadań, które zakończyło się pomyślnie lub nie powiodło się."
+title: Monitorowanie postępu zadania przez zliczanie zadań według stanu - partii zadań Azure | Dokumentacja firmy Microsoft
+description: Monitorować postęp zadania, wywołując operację Get liczby zadań, aby liczba zadań dla zadania. Możesz uzyskać liczby aktywnych, uruchomione i zakończonych zadań i zadań, które zakończyło się pomyślnie lub nie powiodło się.
 services: batch
-author: tamram
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: tamram
-ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bc112ed5b481560362962d6b550d336de6b3d9b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>Liczba zadań według stanu, aby monitorować postęp zadania (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Operacja Get liczby zadań liczby zadań według stanu, w następujący sposób:
 - Zadanie jest traktowane jako **systemem** po jego przypisany do węzła obliczeń, ale nie zostało jeszcze zakończone. Zadanie jest traktowane jako **systemem** po jej stan to `preparing` lub `running`, wskazywany przez [uzyskać informacje o zadaniu] [ rest_get_task] operacji.
 - Zadanie jest traktowane jako **ukończone** gdy nie jest już mogą być uruchamiane. Zadania są liczone jako **ukończone** ma zazwyczaj albo zakończyło się pomyślnie, lub zakończy się niepowodzeniem i również Przekroczono limit ponownych prób. 
 
-Operacja Get liczby zadań udostępnia również ile zadań ma powodzeniem lub niepowodzeniem. Partii określa, czy zadanie zakończyło się pomyślnie lub nie powiodło się, sprawdzając **wynik** właściwości właściwości [executionInfo] [https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo]:
+Operacja Get liczby zadań udostępnia również ile zadań ma powodzeniem lub niepowodzeniem. Partii określa, czy zadanie zakończyło się pomyślnie lub nie powiodło się, sprawdzając **wynik** właściwości [executionInfo] [https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] właściwości:
 
     - Zadanie jest traktowane jako **zakończyło się pomyślnie** Jeśli wynikiem wykonania zadania jest `success`.
     - Zadanie jest traktowane jako **nie powiodło się** Jeśli wynikiem wykonania zadania jest `failure`.
@@ -70,7 +70,7 @@ Podczas wywoływania operacji Get liczby zadań jest najbardziej wydajnym sposob
 
 Operacji Get liczby zadań nie jest starszy niż 2017-06-01.5.1 dostępne w wersjach usługi partii. Jeśli używasz starszej wersji usługi użyć kwerendy listy, aby zamiast tego liczba zadań w ramach zadania. Aby uzyskać więcej informacji, zobacz [tworzenia zapytań do listy zasobów partii wydajnie](batch-efficient-list-queries.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej o zasadach działania i funkcjach usługi Batch, zobacz temat [Omówienie funkcji usługi Batch](batch-api-basics.md). Artykuł zawiera omówienie głównej zasobów usługi partia zadań, takich jak pule, węzły obliczeniowe, zadań i zadań, a zawiera przegląd funkcji usługi.
 * Poznaj podstawy tworzenia aplikacji wykorzystujących usługę Batch za pomocą biblioteki klienta [Batch .NET](batch-dotnet-get-started.md) lub języka [Python](batch-python-tutorial.md). Te artykuły wprowadzające informacje pomocne przy działającą aplikację, która używa usługi partia zadań do wykonania na wielu węzłach obliczeniowych dla obciążenia.

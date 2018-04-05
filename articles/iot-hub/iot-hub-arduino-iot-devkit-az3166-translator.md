@@ -1,12 +1,12 @@
 ---
-title: "Translator zestaw deweloperski IoT przy użyciu funkcji platformy Azure i usługi kognitywnych | Dokumentacja firmy Microsoft"
-description: "W systemie mikrofon zestaw deweloperski IoT odbierać wiadomości głosowe i kognitywnych usług Azure do przetworzenia na przetłumaczony tekst w języku angielskim."
+title: Translator zestaw deweloperski IoT przy użyciu funkcji platformy Azure i usługi kognitywnych | Dokumentacja firmy Microsoft
+description: W systemie mikrofon zestaw deweloperski IoT odbierać wiadomości głosowe i kognitywnych usług Azure do przetworzenia na przetłumaczony tekst w języku angielskim.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hube
 ms.devlang: arduino
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: 5f74e43d20b5954ae4808f82a34372d1e2190481
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Używaj AZ3166 zestaw deweloperski IoT z kognitywnych usług i funkcji platformy Azure umożliwia translatora języka
 
@@ -35,7 +35,7 @@ Zakończ [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/iot-hu
 
 Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za pomocą jednej z tych dwóch metod:
 
-* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azureinfo.microsoft.com/us-freetrial.html)
+* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/en-us/free/)
 * Oświadczenie użytkownika [Azure środki](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) w przypadku subskrybentów MSDN lub Visual Studio
 
 ## <a name="step-1-open-the-project-folder"></a>Krok 1. Otwórz folder projektu

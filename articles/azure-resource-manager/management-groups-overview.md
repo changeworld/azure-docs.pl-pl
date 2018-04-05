@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów z grupami zarządzania Azure 
 
@@ -42,11 +42,15 @@ Tworząc hierarchii, które są grupowane według działów, to można przypisa�
 - Każdej grupie zarządzania może mieć wielu elementów podrzędnych. 
 
 ### <a name="preview-subscription-visibility-limitation"></a>Ograniczenie widoczności subskrypcji w wersji zapoznawczej 
-Obecnie jest to ograniczenie w wersji zapoznawczej gdzie nie jest możliwe wyświetlić subskrypcje, które zostały odziedziczone dostęp do. Dostęp jest dziedziczona do subskrypcji, ale usługi Azure Resource Manager nie jest w stanie przyjąć jeszcze dostępu dziedziczenia.  
+Obecnie jest to ograniczenie w wersji zapoznawczej, której nie można wyświetlić subskrypcje, które zostały odziedziczone dostęp do. Dostęp jest dziedziczona do subskrypcji, ale usługi Azure Resource Manager nie jest w stanie przyjąć jeszcze dostępu dziedziczenia.  
 
-Przy użyciu interfejsu API REST, aby uzyskać informacje o subskrypcji zwraca szczegółowe informacje, masz dostęp, ale w portalu Azure i programu Azure Powershell subskrypcji nie są wyświetlane. 
+Przy użyciu interfejsu API REST, aby uzyskać informacje o subskrypcji zwraca szczegółowe informacje, masz dostęp, ale w portalu Azure i programu Azure Powershell nie pokazuj subskrypcji. 
 
-Ten element jest wykorzystywanej na i zostanie rozwiązany przed grup zarządzania anonsowanych jako "Ogólnej dostępności."  
+Ten element jest wykorzystywanej na i zostanie rozwiązany, zanim grupy zarządzania są ogłaszane jako "Ogólnej dostępności."  
+
+### <a name="cloud-solution-providercsp-limitation-during-preview"></a>Rozwiązanie Provider(CSP) ograniczenia wersji zapoznawczej w chmurze 
+Jest to aktualne ograniczenie dla chmury rozwiązania Provider(CSP) partnerów, której nie można tworzyć ani Zarządzanie grupami zarządzania ich odbiorców w katalogu ich klienta.  
+Ten element jest wykorzystywanej na i zostanie rozwiązany, zanim grupy zarządzania są ogłaszane jako "Ogólnej dostępności."
 
 
 ## <a name="root-management-group-for-each-directory"></a>Grupa zarządzania głównego dla każdego katalogu

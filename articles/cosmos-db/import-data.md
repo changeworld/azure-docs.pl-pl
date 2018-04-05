@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 1276fb119199b9dbb9b50bed8ac12cff0a55d2dd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 317e5f2696635d28b5dbab302e45960af9c8aee2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure rozwiązania Cosmos bazy danych: Narzędzie migracji danych
 
@@ -59,7 +59,7 @@ Narzędzie do migracji danych jest rozwiązaniem typu open source, który import
 Podczas importowania narzędziu graficznego interfejsu użytkownika (dtui.exe), mogą być określane także z poziomu wiersza polecenia (dt.exe). W rzeczywistości ma opcji output skojarzone polecenie po skonfigurowaniu importu za pośrednictwem interfejsu użytkownika. Tabelaryczne źródła danych (np. programu SQL Server lub plików CSV) można je przekształcać w taki sposób, że relacje hierarchiczne (dokumentów podrzędnych) można utworzyć podczas importowania. Zachowaj odczytu, aby dowiedzieć się więcej o opcjach źródła, przykładowe wiersze polecenia do importowania z każdego źródła, target — opcje i importowanie wyświetlanie wyników.
 
 ## <a id="Install"></a>Instalacja
-Kod źródłowy narzędzie migracji jest dostępne w witrynie GitHub w [to repozytorium](https://github.com/azure/azure-documentdb-datamigrationtool). Możesz pobrać i Skompiluj rozwiązanie lokalnie, a następnie uruchom dowolne:
+Kod źródłowy narzędzie migracji jest dostępne w witrynie GitHub w [to repozytorium](https://github.com/azure/azure-documentdb-datamigrationtool). Możesz pobrać i Skompiluj rozwiązanie lokalnie, lub [Pobierz wstępnie skompilowanym plikiem binarnym](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip), następnie uruchom dowolne:
 
 * **Dtui.exe**: wersja interfejsu graficznego narzędzia
 * **DT.exe**: wersja narzędzia wiersza polecenia

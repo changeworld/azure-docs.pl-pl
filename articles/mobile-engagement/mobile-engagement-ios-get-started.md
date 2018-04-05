@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do usługi Azure Mobile Engagement dla systemu iOS w języku Objective C | Microsoft Docs"
-description: "Dowiedz się, jak używać usługi Azure Mobile Engagement razem z funkcją analizy i powiadomieniami wypychanymi na potrzeby aplikacji systemu iOS."
+title: Wprowadzenie do usługi Azure Mobile Engagement dla systemu iOS w języku Objective C | Microsoft Docs
+description: Dowiedz się, jak używać usługi Azure Mobile Engagement razem z funkcją analizy i powiadomieniami wypychanymi na potrzeby aplikacji systemu iOS.
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 117b5742-522b-41de-98c5-f432da2d98f8
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 913a60df4ce7c431b1c260135785972aac00c69d
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 7cf493e3a4878c64b0ea6a74b6e16329ce3d27b5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Wprowadzenie do usługi Azure Mobile Engagement dla aplikacji systemu iOS w języku Objective C
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 W tym temacie pokazano, jak za pomocą usługi Azure Mobile Engagement określać użycie aplikacji i wysyłać powiadomienia wypychane do danego segmentu użytkowników aplikacji systemu iOS.
@@ -34,7 +38,7 @@ Dla tego samouczka wymagane są następujące elementy:
 Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wszystkich innych samouczków usługi Mobile Engagement dla aplikacji systemu iOS.
 
 > [!NOTE]
-> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started).
+> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-get-started).
 >
 >
 
@@ -115,7 +119,7 @@ W poniższych sekcjach aplikacja zostanie skonfigurowana do ich odbierania.
 2. Wybierz pozycję **Add file to** (Dodaj plik do).
 3. Przejdź do folderu, w którym został wyodrębniony zestaw SDK.
 4. Wybierz folder `EngagementReach`.
-5. Kliknij pozycję **Dodaj**.
+5. Kliknij pozycję **Add** (Dodaj).
 
 ### <a name="modify-your-application-delegate"></a>Modyfikowanie delegata aplikacji
 1. Wróć do pliku **AppDelegate.m** i zaimportuj moduł Reach usługi Engagement.

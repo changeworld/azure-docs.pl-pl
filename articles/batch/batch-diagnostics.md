@@ -1,11 +1,11 @@
 ---
-title: "Włączanie rejestrowania diagnostycznego partii zdarzeń - Azure | Dokumentacja firmy Microsoft"
-description: "Rejestruj i analizowanie dzienników diagnostycznych zdarzeń dla zasobów konta partii zadań Azure, takich jak pule i zadania."
+title: Włączanie rejestrowania diagnostycznego partii zdarzeń - Azure | Dokumentacja firmy Microsoft
+description: Rejestruj i analizowanie dzienników diagnostycznych zdarzeń dla zasobów konta partii zadań Azure, takich jak pule i zadania.
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: e14e611d-12cd-4671-91dc-bc506dc853e5
 ms.service: batch
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: c41c8c9f8fd9302c610ce356b0485e33ea3c967d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Rejestrowanie zdarzeń diagnostycznych oceny i monitorowania rozwiązań partii
 
@@ -89,7 +89,7 @@ Usługa partia zadań emituje obecnie następujące zdarzenia logowania do usłu
 | [Zadania ukończone][task_complete] |
 | [Niepowodzenie zadania][task_fail] |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Oprócz zdarzeń diagnostycznych dziennika są przechowywane na koncie magazynu Azure, możesz również strumienia zdarzeń logowania do usługi partii [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md)i wyślij je do [Azure Log Analytics](../log-analytics/log-analytics-overview.md).
 
 * [Strumienia Azure dzienników diagnostycznych do usługi Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)

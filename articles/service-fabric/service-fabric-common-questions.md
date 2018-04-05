@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0ecce5581e8f14a02ad0ad618a226f4671e92f4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 38de0886de1d6068b2edad9aadc89d8048b48a55
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania dotyczące sieci szkieletowej usług
 
@@ -89,6 +89,28 @@ Gdy pracujemy nad udoskonalone środowisko obecnie jest odpowiedzialny za uaktua
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Można zaszyfrować danych dołączonych dysków w typ węzła klastra (zestaw skali maszyny wirtualnej)?
 Tak.  Aby uzyskać więcej informacji, zobacz [utworzyć klaster z dysków dołączonych danych](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [szyfrowania dysków (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), i [szyfrowania dysków (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster-"></a>Co to są katalogów i procesy wymagające do wykluczenia podczas uruchamiania programu antywirusowego w mojej klastra?
+
+| **Katalogi wykluczone antywirusowe** |
+| --- |
+| Program Files\Microsoft Service Fabric |
+| Zmiennej FabricDataRoot (z konfiguracji klastra) |
+| Lokalizacji FabricLogRoot (z konfiguracji klastra) |
+
+| **Procesy wykluczone antywirusowe** |
+| --- |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
 ## <a name="application-design"></a>Aplikacja — projekt
 
@@ -142,6 +164,6 @@ Firma Microsoft [zapowiedziała niedawno](https://blogs.msdn.microsoft.com/azure
 
 Postępuj zgodnie z [blogu usługi sieć szkieletowa](https://blogs.msdn.microsoft.com/azureservicefabric/) Aby uzyskać więcej informacji, ponieważ są one anonsowania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Dowiedz się więcej o podstawowych pojęć sieci szkieletowej usług i najlepsze rozwiązania](https://mva.microsoft.com/en-us/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965)

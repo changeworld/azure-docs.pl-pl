@@ -1,6 +1,6 @@
 ---
-title: "Azure zarządzanych aplikacji CredentialsCombo elementu interfejsu użytkownika | Dokumentacja firmy Microsoft"
-description: "Opis elementu Microsoft.Compute.CredentialsCombo interfejsu użytkownika dla aplikacji Azure"
+title: Azure elementu interfejsu użytkownika CredentialsCombo | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Compute.CredentialsCombo interfejsu użytkownika do portalu Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8faa36aca762bc8d787d5750fcf7efdbaf986ea
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: c17677a9e34de4c1afca8f04c8bd22c2155c3439
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="microsoftcomputecredentialscombo-ui-element"></a>Element Microsoft.Compute.CredentialsCombo interfejsu użytkownika
-Grupa formantów z wbudowanych weryfikacji dla systemu Windows i Linux hasła i klucze publiczne SSH. Użyj tego elementu po [tworzenie aplikacji zarządzanych Azure](publish-service-catalog-app.md).
+# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
+Grupa formantów z wbudowanych weryfikacji dla systemu Windows i Linux hasła i klucze publiczne SSH.
 
 ## <a name="ui-sample"></a>Przykład interfejsu użytkownika
 ![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
@@ -82,7 +82,7 @@ Jeśli `osPlatform` jest **Linux**, zostanie użyta następującego schematu:
 ```
 
 ## <a name="remarks"></a>Uwagi
-- `osPlatform`należy określić i mogą być **Windows** lub **Linux**.
+- `osPlatform` należy określić i mogą być **Windows** lub **Linux**.
 - Jeśli `constraints.required` ustawiono **true**, a następnie hasło lub pola tekstowego klucza publicznego SSH musi zawierać wartości można pomyślnie zweryfikować. Wartość domyślna to **true**.
 - Jeśli `options.hideConfirmation` ma ustawioną wartość **true**, a następnie drugie pole tekstowe potwierdzania hasła jest ukryty. Wartość domyślna to **false**.
 - Jeśli `options.hidePassword` ustawiono **true**, a następnie opcję uwierzytelniania za pomocą hasła jest ukryty. Można go używać tylko wtedy, gdy `osPlatform` jest **Linux**. Wartość domyślna to **false**.
@@ -106,7 +106,6 @@ Jeśli użytkownik podał klucz publiczny SSH, jest oczekiwany następujące dan
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
-* Aby obejrzeć wprowadzenie do aplikacji zarządzanych, zobacz [zarządzanej aplikacji Azure — omówienie](overview.md).
+## <a name="next-steps"></a>Kolejne kroki
 * Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
 * Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

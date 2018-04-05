@@ -2,21 +2,21 @@
 title: Utrwalanie i zadań dane wyjściowe do magazynu Azure przy użyciu interfejsu API usługi partia zadań Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak utrwalić partii zadań i zadania dane wyjściowe do usługi Azure Storage za pomocą interfejsu API usługi partii.
 services: batch
-author: tamram
-manager: timlt
+author: dlepow
+manager: jeconnoc
 editor: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
-ms.openlocfilehash: fa124109bfc9d333469c255c50df0af96a26bebf
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: danlep
+ms.openlocfilehash: ee8622525adcc698bf920b0c3379cc3065798a19
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalenia danych zadań do magazynu Azure przy użyciu interfejsu API usługi partii
 

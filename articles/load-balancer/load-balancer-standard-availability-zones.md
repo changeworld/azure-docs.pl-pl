@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 03/29/2018
 ms.author: kumud
-ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f5d46fda6bdb32c1a5000883c6aedb2da15e796a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Moduł równoważenia obciążenia standardowego i dostępności stref
 
 Standardowy SKU Azure równoważenia obciążenia obsługuje [stref dostępności](../availability-zones/az-overview.md) scenariuszy. Kilku nowych pojęć są dostępne standardowe usługi równoważenia obciążenia, które pozwalają zoptymalizować dostępność w danym scenariuszu end-to-end ustawiając zasobów przy użyciu stref, a także rozpowszechniają strefy.  Przegląd [stref dostępności](../availability-zones/az-overview.md) wskazówki dotyczące dostępności strefy są, regiony obsługuje obecnie stref dostępności i inne powiązane pojęcia i produktów. Dostępność stref w połączeniu z modułem równoważenia obciążenia standardowego to zestaw funkcji rozszerzania i elastyczne, który może tworzyć wiele różnych scenariuszy.  Przejrzyj tego dokumentu, aby zrozumieć [pojęcia](#concepts) oraz scenariusz podstawowych [wskazówki dotyczące projektowania](#design).
 
 >[!NOTE]
->Przegląd [Podgląd stref dostępności](https://aka.ms/availabilityzones) dla innych powiązanych tematów. 
+>Przegląd [stref dostępności](https://aka.ms/availabilityzones) dla innych powiązanych tematów. 
 
 ## <a name="concepts"></a> Pojęcia dotyczące dostępności stref stosowane do modułu równoważenia obciążenia
 
@@ -43,7 +43,7 @@ Sam zasobu usługi równoważenia obciążenia jest regionalnego i nigdy nie zon
 
 Konfiguracja IP frontonu odwołującego się do zasobu publiczny adres IP lub prywatnego adresu IP w podsieci sieci wirtualnej zasobu jest frontonu modułu równoważenia obciążenia.  Wchodzi w skład punkt końcowy ze zrównoważonym obciążeniem gdzie ma połączenie z usługą.
 
-Zasób usługi równoważenia obciążenia może zawierać zarówno zonal i strefowo nadmiarowy frontends jednocześnie.
+Zasób usługi równoważenia obciążenia może zawierać zarówno zonal i strefowo nadmiarowy frontends jednocześnie. 
 
 Gdy ma zostały gwarancję zasób publicznego adresu IP do strefy, zonality (lub ich brak) nie jest modyfikowalna.  Jeśli chcesz zmienić lub Pomiń zonality z publicznego adresu IP frontonu, należy utworzyć je ponownie z publicznym adresem IP w odpowiedniej strefy.  
 
@@ -219,3 +219,5 @@ Nie ma żadnych ogólne wskazówki, że jeden jest lepszym rozwiązaniem niż dr
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [stref dostępności](../availability-zones/az-overview.md)
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md)
+- Dowiedz się, jak [Równoważenie obciążenia maszyn wirtualnych w ramach strefy z zonal frontonu przy użyciu standardowych usługi równoważenia obciążenia.](load-balancer-standard-public-zonal-cli.md)
+- Dowiedz się, jak [Równoważenie obciążenia maszyn wirtualnych różnych strefach przy użyciu standardowych moduł równoważenia obciążenia z frontonu strefowo nadmiarowy](load-balancer-standard-public-zone-redundant-cli.md)

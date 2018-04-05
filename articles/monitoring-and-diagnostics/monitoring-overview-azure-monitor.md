@@ -1,25 +1,25 @@
 ---
-title: "Omówienie narzędzia Monitor systemu Azure | Dokumentacja firmy Microsoft"
-description: "Azure Monitor zbiera statystyki dla alertów, elementów webhook, skalowania automatycznego i automatyzacji. Artykuł listy również inne opcje monitorowania firmy Microsoft."
+title: Omówienie narzędzia Monitor systemu Azure | Dokumentacja firmy Microsoft
+description: Azure Monitor zbiera statystyki dla alertów, elementów webhook, skalowania automatycznego i automatyzacji. Artykuł listy również inne opcje monitorowania firmy Microsoft.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 448711b7b2e102662bc157485561c33bf7f5fba1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Omówienie usługi Azure monitora
 Ten artykuł zawiera omówienie usługi Azure Monitor w Microsoft Azure. Zawarto informacje, co Azure Monitor i zawiera łącza do dodatkowych informacji na temat korzystania z monitora Azure.  Jeśli wolisz wprowadzenie wideo, zobacz dalej łącza kroki w dolnej części tego artykułu. 
@@ -35,15 +35,13 @@ Azure Monitor ma strony docelowej, która ułatwia użytkownikom:
 - Opis możliwości monitorowania oferowanych na platformie Azure.
 - Odnajdywanie, należy skonfigurować oraz lokalnego Azure platformy i premium możliwości monitorowania.
 
-Gdy wydaniu usługę Azure Monitor strony Przegląd docelowa jest w wersji zapoznawczej. 
-
 Strona stanowi punkt wyjścia do nawigacji, w tym dołączania. Pokazuje wyselekcjonowanych godne uwagi problemy z różnych usług i umożliwia użytkownikowi nawigację do ich w kontekście.
  
 ![Model do monitorowania i diagnostyki dla zasobów obliczeniowych z systemem innym niż](./media/monitoring-overview-azure-monitor/monitor-overview-ux2.png)
 
 Po otwarciu strony można dokonać wyboru spośród subskrypcje, do których masz dostęp do odczytu. Dla wybranej subskrypcji można wyświetlić:
 
-- **Wyzwolone alerty i źródła alertów** — w poniższej tabeli przedstawiono podsumowanie liczby, źródła alertów oraz ile razy alerty generowane w czasie wybrana wartość czasu trwania. Dotyczy to zarówno metryki i działania alerty dziennika. *< Edytuj: alerty (wersja zapoznawcza) z ujednoliconym środowisku także wyświetlane dla wszystkich alertów — dzienniki, metryki i zdarzenia >*
+- **Wyzwolone alerty i źródła alertów** — w poniższej tabeli przedstawiono podsumowanie liczby, źródła alertów oraz ile razy alerty generowane w czasie wybrana wartość czasu trwania. Dotyczy to zarówno starszych i nowszych alerty. Przeczytaj więcej na temat [nowszej alerty Azure](monitoring-overview-unified-alerts.md). 
 - **Błędy dziennika aktywności** — Jeśli żadnego z zasobów platformy Azure rejestrowania zdarzeń z błąd wagę, można wyświetlić wysokiego poziomu liczbę i kliknij, aby stronie dziennik aktywności w celu zbadania każdego zdarzenia.
 - **Kondycja usługi Azure** -widać liczbę problemów dotyczących usługi, zdarzeń planowanych konserwacji i klasyfikatory kondycji usługi kondycji. Kondycja usługi Azure udostępnia spersonalizowane informacje w przypadku problemów z infrastrukturą systemu Azure mieć wpływ na usługi.  Zobacz [kondycja usługi Azure](../service-health/service-health-overview.md) Aby uzyskać więcej informacji.  
 - **Usługa Application Insights** — Zobacz kluczowych wskaźników wydajności dla każdego zasobu AppInsights w bieżącej subskrypcji. Kluczowe wskaźniki wydajności są zoptymalizowane pod kątem monitorowania aplikacji sieci web ASP.NET, Java, Node i ogólne typy aplikacji aplikacji po stronie serwera. Kluczowe wskaźniki wydajności to metryki dla żądania szybkość, czas odpowiedzi częstość niepowodzeń i dostępności %. 
@@ -143,19 +141,19 @@ Kilka metod wizualizacji obejmują:
 
 ### <a name="automate"></a>Automatyzacja
 > [!NOTE]
-> W ramach bieżących zmian alertów w systemie Microsoft Azure teraz ujednoliconym środowisku alertów jest przeglądany. Więcej informacji na temat [alerty Azure (wersja zapoznawcza)](monitoring-overview-unified-alerts.md)
+> W ramach bieżących zmian alertów w systemie Microsoft Azure teraz ujednoliconym środowisku alertów jest dostępna. Więcej informacji na temat [nowe alerty Azure](monitoring-overview-unified-alerts.md)
 
-Standardowe alertów Azure można użyć danych monitorowania do wyzwalania alertów lub nawet cały proces. Przykłady:
+Azure alertów można użyć danych monitorowania do wyzwalania alertów lub nawet cały proces. Przykłady:
 
 * Użyj danych do wystąpienia obliczeniowe automatycznego skalowania w górę lub w dół oparte na obciążenia aplikacji.
-* Wysyłaj wiadomości e-mail, gdy metryki przecina wstępnie określoną wartość progową.
+* Wysyłaj wiadomości e-mail na podstawie warunków Metryka lub dziennika. 
 * Wywołaj adres URL sieci web (webhook) do wykonywania akcji w systemie poza platformą Azure
 * Uruchom element runbook w automatyzacji Azure, aby wykonać wszelkie różnych zadań
 
 ## <a name="methods-of-accessing-azure-monitor"></a>Metody dostępu do monitora Azure
 Ogólnie rzecz biorąc można manipulować danych śledzenia, routingu i pobierania za pomocą jednej z poniższych metod. Nie wszystkie metody są dostępne dla wszystkich akcji lub typów danych.
 
-* [Azure portal](https://portal.azure.com)
+* [Azure Portal](https://portal.azure.com)
 * [Program PowerShell](insights-powershell-samples.md)  
 * [Interfejs wiersza polecenia i platform (CLI)](insights-cli-samples.md)
 * [Interfejs API REST](https://docs.microsoft.com/rest/api/monitor/)

@@ -118,6 +118,8 @@
   items:
     - name: Wizualne tworzenie fabryk danych
       href: author-visually.md
+    - name: Ciągła integracja i ciągłe wdrażanie
+      href: continuous-integration-deployment.md
     - name: Kopiowanie danych
       items:
         - name: Kopiowanie danych za pomocą działania kopiowania

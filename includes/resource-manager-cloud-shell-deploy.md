@@ -1,6 +1,6 @@
 ## <a name="deploy-template-from-cloud-shell"></a>Wdrażanie szablonu za pomocą usługi Cloud Shell
 
-Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). Jednak musisz najpierw załadować swój szablon do udziału plików dla usługi Cloud Shell. Jeśli nie używasz usługi Cloud Shell, zobacz [Overview of Azure Cloud Shell (Omówienie usługi Azure Cloud Shell)](../articles/cloud-shell/overview.md), aby uzyskać informacje o jej konfigurowaniu.
+Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). Jednak należy najpierw załadować szablonu do konta magazynu dla powłoki chmury. Jeśli nie używasz usługi Cloud Shell, zobacz [Overview of Azure Cloud Shell (Omówienie usługi Azure Cloud Shell)](../articles/cloud-shell/overview.md), aby uzyskać informacje o jej konfigurowaniu.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
@@ -12,33 +12,37 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
    ![Wybieranie konta magazynu](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. Wybierz pozycję **Pliki**.
+1. Wybierz **obiekty BLOB**.
 
-   ![Wybieranie pozycji Pliki](./media/resource-manager-cloud-shell-deploy/select-files.png)
+   ![Wybierz obiekty BLOB](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
-1. Wybierz udział plików dla usługi Cloud Shell. Wzorzec nazwy to `cs-<user>-<domain>-com-<uniqueGuid>`.
+1. Wybierz **+ kontener**.
 
-   ![Wybieranie udziału plików](./media/resource-manager-cloud-shell-deploy/select-file-share.png)
+   ![Dodaj kontener](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Wybierz pozycję **Dodaj katalog**.
+1. Z kontenera należy podać nazwę i poziom dostępu. Przykładowy szablon w tym artykule nie zawiera żadnych poufnych informacji, pozwalają na anonimowy dostęp do odczytu. Kliknij przycisk **OK**.
 
-   ![Dodawanie katalogu](./media/resource-manager-cloud-shell-deploy/select-add-directory.png)
+   ![Podaj wartości kontenera](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Nadaj mu nazwę **templates** i wybierz przycisk **OK**.
+1. Wybierz kontener, który został utworzony.
 
-   ![Nadawanie nazwy katalogowi](./media/resource-manager-cloud-shell-deploy/name-templates.png)
-
-1. Wybierz swój nowy katalog.
-
-   ![Wybieranie katalogu](./media/resource-manager-cloud-shell-deploy/select-templates.png)
+   ![Wybierz nowy kontener](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Wybierz pozycję **Przekaż**.
 
-   ![Wybieranie pozycji Przekaż](./media/resource-manager-cloud-shell-deploy/select-upload.png)
+   ![Przekazywanie obiektu blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Znajdź i przekaż swój szablon.
 
-   ![Przekazywanie pliku](./media/resource-manager-cloud-shell-deploy/upload-files.png)
+   ![Przekazywanie pliku](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
+
+1. Po przesłał, wybierz szablon.
+
+   ![Wybierz nowy szablon](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+
+1. Skopiuj adres URL.
+
+   ![Skopiuj adres URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Otwórz wiersz polecenia.
 

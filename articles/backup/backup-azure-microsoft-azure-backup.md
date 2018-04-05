@@ -1,12 +1,12 @@
 ---
-title: "Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowej obciążeń na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Serwer kopii zapasowej Azure umożliwia ochrony lub utworzyć kopię zapasową obciążeń do portalu Azure."
+title: Serwer kopii zapasowej Azure umożliwia tworzenie kopii zapasowej obciążeń na platformie Azure | Dokumentacja firmy Microsoft
+description: Serwer kopii zapasowej Azure umożliwia ochrony lub utworzyć kopię zapasową obciążeń do portalu Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: PVRK
 manager: shivamg
-editor: 
-keywords: "Serwer kopii zapasowej systemu Azure; chronić obciążenia; Tworzenie kopii zapasowej obciążeń"
+editor: ''
+keywords: Serwer kopii zapasowej systemu Azure; chronić obciążenia; Tworzenie kopii zapasowej obciążeń
 ms.assetid: e7fb1907-9dc1-4ca1-8c61-50423d86540c
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: c33cea62dac1c06dd1cb4031897af8c822e61661
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
-ms.translationtype: MT
+ms.openlocfilehash: 95c11de3a1aed680d37dd86c1783ac8bee7ffec3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Przygotowywanie do tworzenia kopii zapasowych obciążeń przy użyciu usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -69,7 +69,7 @@ Użytkownik może deduplikacja magazynu programu DPM, za pomocą deduplikacji se
 > Serwer kopii zapasowej systemu Azure zaprojektowanymi do działania na dedykowanym serwerze jednozadaniowych. Nie można zainstalować serwer kopii zapasowej Azure na:
 > - Komputer działa jako kontroler domeny
 > - Komputer, na którym jest zainstalowana rola serwera aplikacji
-> - Na komputerze będącym serwerem zarządzania programu System Center Operations Manager
+> - Komputer, który jest serwerem zarządzania programu System Center Operations Manager
 > - Komputer, na którym jest uruchomiony program Exchange Server
 > - Komputer, który jest węzłem klastra
 
@@ -101,7 +101,7 @@ Aby utworzyć magazyn usługi Recovery Services:
    Po utworzeniu magazynu zostanie otwarty w portalu.
 
 ### <a name="set-storage-replication"></a>Konfigurowanie replikacji magazynu
-Dla opcji replikacji magazynu można wybrać magazynowanie nadmiarowe geograficznie lub lokalnie. Domyślnie magazyn jest nadmiarowy geograficznie. Jeśli ten magazyn jest podstawowy magazyn, pozostaw tę opcję i magazynu do magazynu geograficznie nadmiarowego. Wybierz magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej, ale mniej trwałej opcji. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy.md#geo-redundant-storage) i [lokalnie nadmiarowego](../storage/common/storage-redundancy.md#locally-redundant-storage) można znaleźć w temacie [Azure Storage replication overview](../storage/common/storage-redundancy.md) (Omówienie replikacji usługi Azure Storage).
+Dla opcji replikacji magazynu można wybrać magazynowanie nadmiarowe geograficznie lub lokalnie. Domyślnie magazyn jest nadmiarowy geograficznie. Jeśli ten magazyn jest podstawowy magazyn, pozostaw tę opcję i magazynu do magazynu geograficznie nadmiarowego. Wybierz magazyn lokalnie nadmiarowy, jeśli chcesz skorzystać z tańszej, ale mniej trwałej opcji. Więcej informacji o opcjach magazynu [geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md) i [lokalnie nadmiarowego](../storage/common/storage-redundancy-lrs.md) można znaleźć w temacie [Azure Storage replication overview](../storage/common/storage-redundancy.md) (Omówienie replikacji usługi Azure Storage).
 
 Aby edytować ustawienia replikacji magazynu:
 

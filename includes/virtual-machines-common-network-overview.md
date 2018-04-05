@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6729c4281f4aa10b653d1c4f29104fd10a08a96e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 14aa0002ff88678bb54a3abed8bf7eeed3b717f4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 Utworzenie maszyny wirtualnej (VM) platformy Azure wymaga utworzenia [sieci wirtualnej](../articles/virtual-network/virtual-networks-overview.md) (VNet) lub użycia istniejącej sieci wirtualnej. Należy także określić sposób dostępu do maszyn wirtualnych w sieci wirtualnej. Ważne jest [zaplanowanie tworzenia zasobów](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) i dokładne zapoznanie się z [limitami zasobów sieciowych](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -110,8 +110,8 @@ Poniższa tabela zawiera listę metod, których można użyć do utworzenia siec
 | Metoda | Opis |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md) | Utworzenie maszyny wirtualnej w witrynie Azure Portal obejmuje automatyczne utworzenie sieciowej grupy zabezpieczeń i skojarzenie jej z kartą sieciową. Nazwa sieciowej grupy zabezpieczeń składa się z nazwy maszyny wirtualnej i ciągu **-nsg**. Konfiguracja tej sieciowej grupy zabezpieczeń jest następująca: jedna reguła ruchu przychodzącego z priorytetem 1000, ustawienie usługi — RDP, ustawienie protokołu — TCP, ustawienie portu — 3389 i ustawienie akcji — Zezwalaj. Jeśli chcesz zezwolić na inne rodzaje ruchu przychodzącego do maszyny wirtualnej, musisz dodać dodatkowe reguły do sieciowej grupy zabezpieczeń. |
-| [Azure PowerShell](../articles/virtual-network/virtual-networks-create-nsg-arm-ps.md) | Użyj polecenia [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityRuleConfig) i podaj wymagane informacje dotyczące reguły. Użyj polecenia [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityGroup), aby utworzyć sieciową grupę zabezpieczeń. Użyj polecenia [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/Set-AzureRmVirtualNetworkSubnetConfig), aby skonfigurować sieciową grupę zabezpieczeń dla podsieci. Użyj polecenia [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork), aby dodać sieciową grupę zabezpieczeń do sieci wirtualnej. |
-| [Interfejs wiersza polecenia platformy Azure](../articles/virtual-network/virtual-networks-create-nsg-arm-cli.md) | Użyj polecenia [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create), aby utworzyć początkową sieciową grupę zabezpieczeń. Użyj polecenia [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create), aby dodać reguły do sieciowej grupy zabezpieczeń. Użyj polecenia [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update), aby dodać sieciową grupę zabezpieczeń do podsieci. |
+| [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Użyj polecenia [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityRuleConfig) i podaj wymagane informacje dotyczące reguły. Użyj polecenia [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityGroup), aby utworzyć sieciową grupę zabezpieczeń. Użyj polecenia [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/Set-AzureRmVirtualNetworkSubnetConfig), aby skonfigurować sieciową grupę zabezpieczeń dla podsieci. Użyj polecenia [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork), aby dodać sieciową grupę zabezpieczeń do sieci wirtualnej. |
+| [Interfejs wiersza polecenia platformy Azure](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | Użyj polecenia [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create), aby utworzyć początkową sieciową grupę zabezpieczeń. Użyj polecenia [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create), aby dodać reguły do sieciowej grupy zabezpieczeń. Użyj polecenia [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update), aby dodać sieciową grupę zabezpieczeń do podsieci. |
 | [Szablon](../articles/virtual-network/virtual-networks-create-nsg-arm-template.md) | Przewodnik [Tworzenie sieciowej grupy zabezpieczeń](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) ułatwia wdrożenie sieciowej grupy zabezpieczeń przy użyciu szablonu. |
 
 ## <a name="load-balancers"></a>Moduły równoważenia obciążenia
@@ -163,7 +163,7 @@ Poniższa tabela zawiera listę metod, których można użyć do utworzenia masz
 | [Interfejs wiersza polecenia platformy Azure](../articles/virtual-machines/linux/create-cli-complete.md) | Tworzenie i łączenie maszyny Wirtualnej do sieci wirtualnej, podsieci i karty interfejsu Sieciowego z kompilacji jako poszczególne kroki. |
 | [Szablon](../articles/virtual-machines/windows/ps-template.md) | Przewodnik [Bardzo proste wdrożenie maszyny wirtualnej z systemem Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) ułatwia wdrożenie maszyny wirtualnej przy użyciu szablonu. |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby specyficzne dla maszyny Wirtualnej instrukcje na temat zarządzania sieci wirtualnych platformy Azure dla maszyn wirtualnych, zobacz [Windows](../articles/virtual-machines/windows/tutorial-virtual-network.md) lub [Linux](../articles/virtual-machines/linux/tutorial-virtual-network.md) samouczki.
 
 Dostępne są także samouczki dotyczące maszyn wirtualnych równoważenia obciążenia i utworzyć aplikacje o wysokiej dostępności dla [Windows](../articles/virtual-machines/windows/tutorial-load-balancer.md) lub [Linux](../articles/virtual-machines/linux/tutorial-load-balancer.md).

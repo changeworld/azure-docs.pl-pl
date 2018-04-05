@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 948fc84db2fd2d6f2059f9807b84194ebac59472
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Podstawowe pojęcia i hierarchiczny model zasobów usługi Azure Cosmos DB
 
@@ -158,7 +158,7 @@ W ramach inicjowania obsługi i zarządzania nimi konta bazy danych można skonf
     </tbody>
 </table>
 
-Oprócz udostępniania, konfigurowanie i zarządzanie nimi konta bazy danych z portalu Azure można również programowo utworzyć i zarządzać za pomocą konta bazy danych DB rozwiązania Cosmos [interfejsów API REST usługi Azure rozwiązania Cosmos DB](/rest/api/documentdb/) oraz [zestawów SDK klienta](sql-api-sdk-dotnet.md).  
+Oprócz udostępniania, konfigurowanie i zarządzanie nimi konta bazy danych z portalu Azure można również programowo utworzyć i zarządzać za pomocą konta bazy danych DB rozwiązania Cosmos [interfejsów API REST usługi Azure rozwiązania Cosmos DB](/rest/api/cosmos-db/) oraz [zestawów SDK klienta](sql-api-sdk-dotnet.md).  
 
 ## <a name="databases"></a>Bazy danych
 Bazy danych DB rozwiązania Cosmos jest kontenerem logicznym jedną lub więcej kolekcji i użytkowników, jak pokazano na poniższym diagramie. Można utworzyć dowolną liczbę baz danych w ramach konta bazy danych DB rozwiązania Cosmos limitom oferty.  
@@ -177,7 +177,7 @@ Można utworzyć dowolną liczbę kolekcji w bazie danych może ulec oferty. Ka�
 
 Baza danych bazy danych Azure rozwiązania Cosmos jest również kontener użytkowników. Użytkownik, w ruchu jest logiczną przestrzeń nazw dla zestaw uprawnień, który zawiera szczegółowe autoryzacji i dostępu do kolekcji, dokumentów i załączników.  
 
-Zgodnie z innymi zasobami w model zasobów bazy danych Azure rozwiązania Cosmos baz danych można tworzyć, zastąpiony, usunięty, odczytać lub wyliczyć łatwo za pomocą [interfejsów API REST](/rest/api/documentdb/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Azure DB rozwiązania Cosmos zapewnia wysoki poziom spójności odczytu lub zapytanie dotyczące metadanych zasobu bazy danych. Automatyczne usunięcie bazy danych zapewnia, że nie masz dostępu do żadnego z kolekcji lub użytkowników w nim zawarte.   
+Zgodnie z innymi zasobami w model zasobów bazy danych Azure rozwiązania Cosmos baz danych można tworzyć, zastąpiony, usunięty, odczytać lub wyliczyć łatwo za pomocą [interfejsów API REST](/rest/api/cosmos-db/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Azure DB rozwiązania Cosmos zapewnia wysoki poziom spójności odczytu lub zapytanie dotyczące metadanych zasobu bazy danych. Automatyczne usunięcie bazy danych zapewnia, że nie masz dostępu do żadnego z kolekcji lub użytkowników w nim zawarte.   
 
 ## <a name="collections"></a>Kolekcje
 Kolekcja DB rozwiązania Cosmos jest kontenerem dokumentów JSON. 
@@ -195,7 +195,7 @@ Zasady indeksowania wszystkich kolekcji pozwala wprowadzić wydajności i magazy
 * Określ, czy do dołączania lub wykluczania określonych ścieżek lub wzorce w dokumentach z indeksu. Można to osiągnąć przez ustawienie includedPaths i excludedPaths na indexingPolicy kolekcji odpowiednio. Można również skonfigurować magazynu i wydajności kompromisy dla zapytań o zakres i wyznaczania wartości skrótu dla wzorców określonej ścieżki. 
 * Wybór między synchroniczne (zgodne) i aktualizacje asynchroniczne indeksu (lazy). Domyślnie indeks jest aktualizowana synchronicznie na każdym insert, replace lub usuwania dokumentu do kolekcji. Dzięki temu zapytania uwzględnić poziomu spójności co odczytuje dokument. Podczas zapisu zoptymalizowany i obsługuje woluminy utrzymujących zapisów dokumentu oraz konserwacji synchroniczne indeksu i obsługujący spójne zapytania bazy danych Azure rozwiązania Cosmos można skonfigurować pewne kolekcji, aby zaktualizować ich indeksu w trybie opóźnienia. Indeksowanie z opóźnieniem zwiększa wydajność zapisu dalsze i jest idealny dla scenariuszy wprowadzanie zbiorczego głównie ciężki odczytu kolekcji.
 
-Zasady indeksowania można zmienić, wykonując PUT w kolekcji. Można to osiągnąć za pośrednictwem [klienta SDK](sql-api-sdk-dotnet.md), [portalu Azure](https://portal.azure.com) lub [interfejsów API REST](/rest/api/documentdb/).
+Zasady indeksowania można zmienić, wykonując PUT w kolekcji. Można to osiągnąć za pośrednictwem [klienta SDK](sql-api-sdk-dotnet.md), [portalu Azure](https://portal.azure.com) lub [interfejsów API REST](/rest/api/cosmos-db/).
 
 ### <a name="querying-a-collection"></a>Wykonywanie zapytania kolekcji
 Dokumentów w ramach kolekcji może zawierać dowolne schematów i dokumentów w kolekcji można zbadać bez podawania żadnego schematu lub wyprzedzeniem indeksów pomocniczych. Można zbadać za pomocą kolekcji [odwołania do składni SQL DB rozwiązania Cosmos Azure](https://msdn.microsoft.com/library/azure/dn782250.aspx), zapewniające sformatowanego operatorów hierarchiczna relacyjnych i przestrzennych i rozszerzalność dzięki oparte na języku JavaScript funkcji UDF. Gramatyka JSON umożliwia modelowanie dokumentów JSON jako drzewa z etykietami jako węzłami drzewa. To jest wykorzystywana zarówno przez techniki automatycznego indeksowania SQL API, a także dialekt SQL Azure rozwiązania Cosmos DB. Język zapytań SQL składa się z trzech głównych aspektach:   
@@ -204,7 +204,7 @@ Dokumentów w ramach kolekcji może zawierać dowolne schematów i dokumentów w
 2. Podzbiór relacyjne operacji, w tym kompozycji, filtr projekcje, agreguje i self sprzężenia. 
 3. Czysty JavaScript na podstawie funkcji UDF, które współpracują z (1) i (2).  
 
-Model zapytań bazy danych Azure rozwiązania Cosmos próbuje równowagę między funkcji, wydajności i prostota. Aparat bazy danych Azure DB rozwiązania Cosmos natywnie kompiluje i wykonuje instrukcje zapytania SQL. Można zbadać kolekcji przy użyciu [interfejsów API REST](/rest/api/documentdb/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Zestaw .NET SDK jest dostarczany z dostawcy LINQ.
+Model zapytań bazy danych Azure rozwiązania Cosmos próbuje równowagę między funkcji, wydajności i prostota. Aparat bazy danych Azure DB rozwiązania Cosmos natywnie kompiluje i wykonuje instrukcje zapytania SQL. Można zbadać kolekcji przy użyciu [interfejsów API REST](/rest/api/cosmos-db/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Zestaw .NET SDK jest dostarczany z dostawcy LINQ.
 
 > [!TIP]
 > Można wypróbować interfejsu API SQL i wykonywania kwerend SQL do naszego zestawu danych w [Plac zabaw dla zapytań](https://www.documentdb.com/sql/demo).
@@ -226,7 +226,7 @@ Logiki JavaScript zarejestrowany na poziomie kolekcji można następnie wystawia
 
 Możliwość wykonania JavaScript bezpośrednio wewnątrz aparatu bazy danych w przestrzeni adresowej jako pula buforów umożliwia wydajności i transakcyjnego wykonywania operacji bazy danych dla dokumentów w kolekcji. Ponadto aparat bazy danych DB rozwiązania Cosmos ułatwia głębokie zaangażowanie JSON i JavaScript eliminuje wszelkie impedancji niezgodność między systemami typu aplikacji i bazy danych.   
 
-Po utworzeniu kolekcji, możesz zarejestrować procedur składowanych, wyzwalaczy i funkcji UDF z kolekcji przy użyciu [interfejsów API REST](/rest/api/documentdb/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Po rejestracji można odwoływać się i ich wykonanie. Należy rozważyć następujące procedury składowanej napisanych w całości w JavaScript, poniższy kod przyjmuje dwa argumenty (Nazwa książki i nazwisko autora) i tworzy nowy dokument, wysyła zapytanie do dokumentu i następnie aktualizuje go — wszystko w ramach transakcji ACID niejawnej. W dowolnym momencie podczas wykonywania Jeśli zgłoszono wyjątek JavaScript, cała transakcja jest przerywana.
+Po utworzeniu kolekcji, możesz zarejestrować procedur składowanych, wyzwalaczy i funkcji UDF z kolekcji przy użyciu [interfejsów API REST](/rest/api/cosmos-db/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Po rejestracji można odwoływać się i ich wykonanie. Należy rozważyć następujące procedury składowanej napisanych w całości w JavaScript, poniższy kod przyjmuje dwa argumenty (Nazwa książki i nazwisko autora) i tworzy nowy dokument, wysyła zapytanie do dokumentu i następnie aktualizuje go — wszystko w ramach transakcji ACID niejawnej. W dowolnym momencie podczas wykonywania Jeśli zgłoszono wyjątek JavaScript, cała transakcja jest przerywana.
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -279,10 +279,10 @@ Należy zauważyć, że ponieważ bazy danych natywnie obsługuje usługę JSON 
 
 Procedury składowane i wyzwalaczy współdziałają z kolekcji i dokumentów w kolekcji za pomocą modelu dobrze zdefiniowanego obiektu, który udostępnia bieżącego kontekstu kolekcji.  
 
-Kolekcje w interfejsie API SQL można tworzyć, usunięto, odczytu lub wyliczeniowego, łatwo za pomocą [interfejsów API REST](/rest/api/documentdb/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Interfejsu API SQL zawsze zapewnia wysoki poziom spójności odczytu lub zapytanie dotyczące metadanych kolekcji. Usuwanie kolekcji automatycznie gwarantuje, że nie masz dostępu do tych dokumentów, załączniki, procedur składowanych, wyzwalaczy i funkcji UDF w nim zawarte.   
+Kolekcje w interfejsie API SQL można tworzyć, usunięto, odczytu lub wyliczeniowego, łatwo za pomocą [interfejsów API REST](/rest/api/cosmos-db/) lub [zestawów SDK klienta](sql-api-sdk-dotnet.md). Interfejsu API SQL zawsze zapewnia wysoki poziom spójności odczytu lub zapytanie dotyczące metadanych kolekcji. Usuwanie kolekcji automatycznie gwarantuje, że nie masz dostępu do tych dokumentów, załączniki, procedur składowanych, wyzwalaczy i funkcji UDF w nim zawarte.   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>Procedur składowanych, wyzwalaczy i funkcji zdefiniowanych użytkownika (UDF)
-Zgodnie z opisem w poprzedniej sekcji, można napisać logiki aplikacji do uruchamiania bezpośrednio z poziomu transakcji wewnątrz aparatu bazy danych. Logiki aplikacji mogą być zapisywane w całości w języku JavaScript i mogą być modelowane jako procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika. JavaScript można wstawić kodu w procedurze składowanej lub wyzwalacza, replace, delete, odczytu lub zapytania dokumentów w kolekcji. Z drugiej strony JavaScript w funkcji zdefiniowanej przez użytkownika nie może wstawić, Zamień lub usuwanie dokumentów. Funkcje UDF wyliczyć dokumenty zestawu wyników zapytania i utworzyć inny zestaw wyników. Dla wielu dzierżawców Azure DB rozwiązania Cosmos wymusza ładu strict oparte na rezerwacjach zasobów. Każdy przechowywane procedury, wyzwalacza lub UDF pobiera stałym quantum zasobów systemu operacyjnego, aby wykonać swoją pracę. Ponadto procedur składowanych, wyzwalaczy i funkcji UDF nie można połączyć z zewnętrznej biblioteki języka JavaScript i traktowane są jako zabronione przekraczających budżetów zasobów przydzielonych do nich. Możesz zarejestrować, wyrejestruj procedur składowanych, wyzwalaczy i funkcji UDF z kolekcji przy użyciu interfejsów API REST.  Po rejestracji procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika jest wstępnie skompilowany i przechowywane jako kod bajtowy, który jest wykonywany później. Następujące illustrateshow ssection zestawu JavaScript SDK usługi Azure rozwiązania Cosmos bazy danych służy do rejestrowania, wykonaj i wyrejestruj procedury składowanej, wyzwalaczy i funkcji zdefiniowanej przez użytkownika. Zestaw SDK JavaScript jest proste otoki za pośrednictwem [interfejsów API REST](/rest/api/documentdb/). 
+Zgodnie z opisem w poprzedniej sekcji, można napisać logiki aplikacji do uruchamiania bezpośrednio z poziomu transakcji wewnątrz aparatu bazy danych. Logiki aplikacji mogą być zapisywane w całości w języku JavaScript i mogą być modelowane jako procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika. JavaScript można wstawić kodu w procedurze składowanej lub wyzwalacza, replace, delete, odczytu lub zapytania dokumentów w kolekcji. Z drugiej strony JavaScript w funkcji zdefiniowanej przez użytkownika nie może wstawić, Zamień lub usuwanie dokumentów. Funkcje UDF wyliczyć dokumenty zestawu wyników zapytania i utworzyć inny zestaw wyników. Dla wielu dzierżawców Azure DB rozwiązania Cosmos wymusza ładu strict oparte na rezerwacjach zasobów. Każdy przechowywane procedury, wyzwalacza lub UDF pobiera stałym quantum zasobów systemu operacyjnego, aby wykonać swoją pracę. Ponadto procedur składowanych, wyzwalaczy i funkcji UDF nie można połączyć z zewnętrznej biblioteki języka JavaScript i traktowane są jako zabronione przekraczających budżetów zasobów przydzielonych do nich. Możesz zarejestrować, wyrejestruj procedur składowanych, wyzwalaczy i funkcji UDF z kolekcji przy użyciu interfejsów API REST.  Po rejestracji procedury przechowywanej, wyzwalacza lub funkcji zdefiniowanej przez użytkownika jest wstępnie skompilowany i przechowywane jako kod bajtowy, który jest wykonywany później. Następujące illustrateshow ssection zestawu JavaScript SDK usługi Azure rozwiązania Cosmos bazy danych służy do rejestrowania, wykonaj i wyrejestruj procedury składowanej, wyzwalaczy i funkcji zdefiniowanej przez użytkownika. Zestaw SDK JavaScript jest proste otoki za pośrednictwem [interfejsów API REST](/rest/api/cosmos-db/). 
 
 ### <a name="registering-a-stored-procedure"></a>Rejestrowanie procedury składowanej
 Rejestracja procedury składowanej tworzy nowy zasób procedury składowanej w kolekcji za pośrednictwem protokołu HTTP POST.  
@@ -410,7 +410,7 @@ Wyrejestrowywanie UDF po prostu odbywa się przez wystawienie HTTP DELETE przed 
             console.log("Error");
         });
 
-Mimo że wstawki powyżej wykazało rejestracji (POST), Wyrejestrowanie (PUT), odczytu/listy (GET) i wykonywania (POST) za pośrednictwem [JavaScript SDK](https://github.com/Azure/azure-documentdb-js), można również użyć [interfejsów API REST](/rest/api/documentdb/) lub innych [zestawów SDK klienta](sql-api-sdk-dotnet.md). 
+Mimo że wstawki powyżej wykazało rejestracji (POST), Wyrejestrowanie (PUT), odczytu/listy (GET) i wykonywania (POST) za pośrednictwem [JavaScript SDK](https://github.com/Azure/azure-documentdb-js), można również użyć [interfejsów API REST](/rest/api/cosmos-db/) lub innych [zestawów SDK klienta](sql-api-sdk-dotnet.md). 
 
 ## <a name="documents"></a>Dokumenty
 Można wstawić, Zastąp, usuwanie, odczytu, wyliczania i zapytania dowolnych dokumentów JSON w kolekcji. Azure DB rozwiązania Cosmos nie wprowadzić żadnego schematu i nie wymaga indeksów pomocniczych w celu zapewnienia obsługi zapytań za pośrednictwem dokumentów w kolekcji. Maksymalny rozmiar dokumentu jest 2 MB.   

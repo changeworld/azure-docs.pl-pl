@@ -1,12 +1,12 @@
 ---
-title: "Wprowadzenie do interfejsu API tabel usługi Azure Cosmos DB | Microsoft Docs"
-description: "Dowiedz się, jak korzystać z usługi Azure Cosmos DB i popularnych interfejsów API MongoDB OSS w celu przechowywania ogromnych wolumenów danych typu klucz-wartość i wykonywania zapytań na tych danych przy zachowaniu małych opóźnień."
+title: Wprowadzenie do interfejsu API tabel usługi Azure Cosmos DB | Microsoft Docs
+description: Dowiedz się, jak korzystać z usługi Azure Cosmos DB i popularnych interfejsów API MongoDB OSS w celu przechowywania ogromnych wolumenów danych typu klucz-wartość i wykonywania zapytań na tych danych przy zachowaniu małych opóźnień.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/20/2017
 ms.author: mimig
-ms.openlocfilehash: 7e116400f55375afe1e57abc6dadae0536cdfceb
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: ee5ceb29a3782967b0b9682a4b1f3d69cffd0e03
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Wprowadzenie do interfejsu API tabel usługi Azure Cosmos DB
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Wprowadzenie do usługi Azure Cosmos DB: Interfejs API tabel
 
 Usługa [Azure Cosmos DB](introduction.md) zapewnia interfejs API tabel dla aplikacji korzystających z usługi Azure Table Storage, które wymagają funkcji warstwy Premium, takich jak:
 
@@ -32,7 +32,7 @@ Usługa [Azure Cosmos DB](introduction.md) zapewnia interfejs API tabel dla apli
 
 Aplikacje korzystające z usługi Azure Table Storage mogą być migrowane do usługi Azure Cosmos DB przy użyciu interfejsu API tabel bez zmian kodu i mogą korzystać z funkcji warstwy Premium. Interfejs API tabel ma zestawy SDK klienta dostępne dla platform .NET, Java, Python i Node.js.
 
-Zalecamy obejrzenie poniższego wideo, w którym Aravind Ramachandran wyjaśnia, jak rozpocząć pracę z interfejsem API tabel w usłudze Azure Cosmos DB:
+Zalecamy obejrzenie poniższego wideo, w którym Aravind Krishna wyjaśnia, jak rozpocząć pracę z interfejsem API tabel w usłudze Azure Cosmos DB:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
 > 

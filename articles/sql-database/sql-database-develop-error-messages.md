@@ -12,7 +12,7 @@ ms.date: 09/28/2017
 ms.author: sstein
 ms.openlocfilehash: 5031ab1ec8c7b42c65fb35e47c32d10ff2898501
 ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/16/2018
 ---
@@ -48,7 +48,7 @@ Następujące błędy są przejściowych i należy wykonać ponownie logiki apli
 
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
-| 4060 |16 |Nie można otworzyć bazy danych "%. & #x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. |
+| 4060 |16 |Nie można otworzyć bazy danych "%.&#x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. |
 | 40197 |17 |Usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie. Kod błędu: %d.<br/><br/>Ten błąd jest wyświetlany, gdy usługa nie działa z powodu oprogramowania lub modernizacji sprzętu, awarii sprzętu lub inne problemy trybu failover. Kod błędu: (%d) osadzone w komunikacie błąd 40197 udostępnia dodatkowe informacje o rodzaju awarii lub trybu failover, który wystąpił. Przykładowe kody są osadzone w komunikacie błąd 40197 błędów to 40020, 40143 40166 i 40540.<br/><br/>Automatyczne ponowne łączenie z serwerem bazy danych SQL łączy dobrej kopii bazy danych. Aplikacja musi catch 40197, dziennik błędów osadzony kod błędu: (%d) w wiadomości do rozwiązywania problemów i ponowić próbę połączenia z bazą danych SQL, dopóki zasoby są dostępne, a połączenie zostanie nawiązane ponownie. |
 | 40501 |20 |Usługa jest obecnie zajęta. Ponów żądanie po 10 sekundach. Identyfikator zdarzenia: %ls. Kod: %d.<br/><br/>Aby uzyskać więcej informacji, zobacz:<br/>• [Limity zasobów bazy danych SQL azure](sql-database-service-tiers.md). |
 | 40613 |17 |Baza danych '%.&#x2a;ls' na serwerze '%.&#x2a;ls' nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji '%.&#x2a;ls'. |
@@ -138,9 +138,9 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) nie jest prawidłową nazwą, ponieważ zawiera ona nieprawidłowe znaki. |
-| 18452 |14 |Logowanie nie powiodło się. Nazwa logowania pochodzi z niezaufanej domeny i nie można używać z systemu Windows authentication.%. & #x2a; ls (nazwy logowania systemu Windows nie są obsługiwane w tej wersji programu SQL Server). |
+| 18452 |14 |Logowanie nie powiodło się. Nazwa logowania pochodzi z niezaufanej domeny i nie można używać z systemu Windows authentication.%.&#x2a;ls (nazwy logowania systemu Windows nie są obsługiwane w tej wersji programu SQL Server). |
 | 18456 |14 |Logowanie nie powiodło się dla użytkownika '%.&#x2a;ls'.%.&#x2a;ls%.&#x2a;ls(Błąd logowania dla użytkownika "%.&#x2a;ls". Nie można zmienić hasła. Zmiany hasła podczas logowania nie jest obsługiwana w tej wersji programu SQL Server.) |
-| 18470 |14 |Logowanie nie powiodło się dla użytkownika '%.&#x2a;ls'. Przyczyna: Konto jest disabled.%. & #x2a; ls |
+| 18470 |14 |Logowanie nie powiodło się dla użytkownika '%.&#x2a;ls'. Przyczyna: Konto jest disabled.%.&#x2a;ls |
 | 40014 |16 |Nie można używać wielu baz danych w tej samej transakcji. |
 | 40054 |16 |Tabele bez indeksu klastrowanego są nieobsługiwane w tej wersji programu SQL Server. Utwórz indeks klastrowany i spróbuj ponownie. |
 | 40133 |15 |Ta operacja jest nieobsługiwana w tej wersji programu SQL Server. |
@@ -166,7 +166,7 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | 40527 |16 |Połączonych serwerów nie są obsługiwane w tej wersji programu SQL Server. |
 | 40528 |16 |Użytkowników nie można mapować na certyfikaty, klucze asymetryczne lub nazwy logowania systemu Windows w tej wersji programu SQL Server. |
 | 40529 |16 |Wbudowana funkcja '%.&#x2a;ls' w personifikacji kontekst nie jest obsługiwany w tej wersji programu SQL Server. |
-| 40532 |11 |Nie można otworzyć serwera "%. & #x2a; ls" żądanego podczas logowania. Logowanie nie powiodło się. |
+| 40532 |11 |Nie można otworzyć serwera "%.&#x2a;ls" żądanego podczas logowania. Logowanie nie powiodło się. |
 | 40553 |16 |Sesja została przerwana z powodu nadmiernego wykorzystania pamięci. Spróbuj zmodyfikować zapytanie, tak aby przetwarzało mniejszą liczbę wierszy.<br/><br/> Zmniejszenie liczby `ORDER BY` i `GROUP BY` operacje w kodzie języka Transact-SQL pozwala zmniejszyć wymagania dotyczące pamięci kwerendy. |
 | 40604 |16 |Można nie CREATE/ALTER DATABASE, ponieważ może to spowodować przekroczenie przydziału serwera. |
 | 40606 |16 |Dołączanie bazy danych nie jest obsługiwane w tej wersji programu SQL Server. |
@@ -176,7 +176,7 @@ Następujące błędy nie należą do żadnych poprzednich kategorii.
 | 40615 |16 |Nie można otworzyć serwera "{0}" żądanego podczas logowania. Klient o adresie IP "{1}" nie jest dozwolony dostęp do serwera.<br /><br />Aby włączyć dostęp, użyj portalu bazy danych SQL lub uruchom sp\_ustawić\_zapory\_reguła wzorca bazy danych, aby utworzyć regułę zapory dla tego adresu IP lub zakresu adresów. Może upłynąć do pięciu minut, aby ta zmiana została uwzględniona. |
 | 40617 |16 |Nazwa reguły zapory, która rozpoczyna się nazwą (zasada) jest zbyt długa. Maksymalna długość to 128. |
 | 40618 |16 |Nazwa reguły zapory nie może być pusta. |
-| 40620 |16 |Logowanie nie powiodło się dla użytkownika "%. & #x2a; ls". Nie można zmienić hasła. Zmiana hasła podczas logowania nie jest obsługiwana w tej wersji programu SQL Server. |
+| 40620 |16 |Logowanie nie powiodło się dla użytkownika "%.&#x2a;ls". Nie można zmienić hasła. Zmiana hasła podczas logowania nie jest obsługiwana w tej wersji programu SQL Server. |
 | 40627 |20 |Operacja na serwerze "{0}" i bazy danych "{1}" jest w toku. Poczekaj kilka minut przed podjęciem ponownej próby. |
 | 40630 |16 |Sprawdzenie poprawności hasła nie powiodło się. Hasło nie spełnia wymagań zasad, ponieważ jest za krótkie. |
 | 40631 |16 |Należy określić hasło jest zbyt długa. Hasło powinna mieć nie więcej niż 128 znaków. |

@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ea26a2d4214c41faa5d63b7c72667955a43d6a2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a28f2f3e397c33e8bd98fcee68c5a051432cb3db
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Wdrażanie klastra usługi Azure Container Service (AKS)
+# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>Samouczek: wdrażanie klastra usługi Azure Container Service (AKS)
 
 Usługa Kubernetes zapewnia rozproszoną platformę dla konteneryzowanych aplikacji. Usługa AKS umożliwia łatwe i szybkie aprowizowanie produkcyjnego klastra Kubernetes. W tym samouczku (część trzecia z ośmiu) w usłudze AKS jest wdrażany klaster Kubernetes. Wykonano następujące czynności:
 
@@ -24,7 +24,7 @@ Usługa Kubernetes zapewnia rozproszoną platformę dla konteneryzowanych aplika
 > * Instalacja interfejsu wiersza polecenia rozwiązania Kubernetes (kubectl)
 > * Konfiguracja narzędzia kubectl
 
-W kolejnych samouczkach aplikacja do głosowania platformy Azure będzie wdrażana do klastra, skalowana i aktualizowana, a pakiet Operations Management Suite zostanie skonfigurowany do monitorowania klastra usługi Kubernetes.
+W kolejnych samouczkach aplikacja do głosowania platformy Azure będzie wdrażana w klastrze, skalowana i aktualizowana, a usługa Log Analytics zostanie skonfigurowana do monitorowania klastra usługi Kubernetes.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

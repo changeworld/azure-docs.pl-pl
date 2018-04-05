@@ -1,25 +1,22 @@
 ---
-title: Monitoruj dzienniki dostęp, Dzienniki wydajności kondycji zaplecza i metryki bramy aplikacji | Dokumentacja firmy Microsoft
+title: Monitoruj dzienniki dostęp, Dzienniki wydajności kondycji zaplecza i metryki bramy aplikacji
 description: Dowiedz się, jak włączyć i zarządzać Dzienniki wydajności i dzienników dostępu bramy aplikacji
 services: application-gateway
-documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 300628b8-8e3d-40ab-b294-3ecc5e48ef98
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 4/2/2018
 ms.author: amitsriva
-ms.openlocfilehash: dfa451a06fbadbb63c83f800ac164db399efd583
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycji zaplecza, dzienniki diagnostyczne i metryki bramy aplikacji
 
@@ -27,9 +24,9 @@ Korzystając z bramy aplikacji Azure, możesz monitorować zasobów w następuj�
 
 * [Kondycja zaplecza](#back-end-health): bramy aplikacji umożliwia monitorowanie kondycji serwerów w puli zaplecza za pośrednictwem portalu Azure i przy użyciu programu PowerShell. Można również znaleźć kondycję pul zaplecza za pośrednictwem dzienników diagnostycznych wydajności.
 
-* [Dzienniki](#diagnostic-logs): dzienniki umożliwiają wydajność, dostępu i innych danych, które mają być zapisywane lub używane z zasobu do celów monitorowania.
+* [Dzienniki](#diagnostic-logging): dzienniki umożliwiają wydajność, dostępu i innych danych, które mają być zapisywane lub używane z zasobu do celów monitorowania.
 
-* [Metryki](#metrics): jedna metryka ma obecnie Application Gateway. Ta metryka mierzy przepływność brama aplikacji w bajtach na sekundę.
+* [Metryki](#metrics): bramy aplikacji ma obecnie siedem metryki, aby wyświetlić liczniki wydajności.
 
 ## <a name="back-end-health"></a>Kondycja zaplecza
 
@@ -318,13 +315,22 @@ Można również nawiązać połączenia z kontem magazynu i pobrać JSON wpisó
 
 Metryki są funkcją dla niektórych zasobów platformy Azure, w którym liczniki wydajności można przeglądać w portalu. Brama aplikacji dostępne są następujące metryki:
 
-- Bieżąca liczba połączeń
-- Żądania zakończone niepowodzeniem
-- Liczba hosta dobrej kondycji
-- Stan odpowiedzi
-- Przepływność
-- Łączna liczba żądań
-- Zła liczba hosta
+- **Bieżąca liczba połączeń**
+- **Żądań zakończonych niepowodzeniem**
+- **Liczba hosta dobrej kondycji**
+
+   Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia w puli zaplecza określonych dobrej kondycji/zła hostów.
+
+
+- **Stan odpowiedzi**
+
+   Dystrybucji kod stanu odpowiedzi można następnie podzielone do wyświetlenia odpowiedzi na 2xx, 3xx 4xx i 5xx kategorii.
+
+- **Przepływność**
+- **Całkowita liczba żądań**
+- **Zła liczba hosta**
+
+   Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia w puli zaplecza określonych dobrej kondycji/zła hostów.
 
 Przejdź do bramy aplikacji w obszarze **monitorowanie** kliknij **metryki**. Zaznacz, aby wyświetlić dostępne wartości **METRYKA** listy rozwijanej.
 

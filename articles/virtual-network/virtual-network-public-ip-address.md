@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: c36a3451dabbb0d08e5e475e0eec14f861bd41ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: efb24f5e55d7ba0077797d3f7d0f2177020f92b3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Tworzenie, zmienianie lub usuwanie publicznego adresu IP
 
@@ -58,7 +58,7 @@ Publiczne adresy IP ma nominalnego opłat. Aby wyświetlić ceny, przeczytaj [ce
     |Subskrypcja|Yes|Musi istnieć w tym samym [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako zasób, aby skojarzyć publiczny adres IP.|
     |Grupa zasobów|Yes|W tym samym lub różnych, może istnieć [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako zasób, aby skojarzyć publiczny adres IP.|
     |Lokalizacja|Yes|Musi istnieć w tym samym [lokalizacji](https://azure.microsoft.com/regions), również określone jako region, jako zasób, którą chcesz skojarzyć z publicznym adresem IP adres.|
-    |Strefa dostępności| Nie | To ustawienie jest wyświetlany tylko w przypadku wybrania obsługiwanych lokalizacji. Aby uzyskać listę obsługiwanych lokalizacji, zobacz [omówienie stref dostępności](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dostępność strefy są obecnie w wersji zapoznawczej. Przed wybraniem strefy lub strefowo nadmiarowy opcji, należy najpierw wykonaj kroki [zarejestrować w wersji zapoznawczej stref dostępności](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#get-started-with-the-availability-zones-preview). W przypadku wybrania **podstawowe** jednostka SKU, *Brak* jest automatycznie wybrana. Jeśli wolisz zagwarantować dla określonej strefy, można wybrać określonej strefy. Wybór albo nie jest strefowo nadmiarowy. W przypadku wybrania **standardowe** SKU: Strefowo nadmiarowy jest automatycznie wybrana i sprawia, że ścieżki danych odporność na awarie strefy. Jeśli wolisz zagwarantować dla określonej strefy, który nie był odporny na awarie strefy, można wybrać określonej strefy.
+    |Dostępność strefy| Nie | To ustawienie jest wyświetlany tylko w przypadku wybrania obsługiwanych lokalizacji. Aby uzyskać listę obsługiwanych lokalizacji, zobacz [omówienie stref dostępności](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wybrania **podstawowe** jednostka SKU, *Brak* jest automatycznie wybrana. Jeśli wolisz zagwarantować dla określonej strefy, można wybrać określonej strefy. Wybór albo nie jest strefowo nadmiarowy. W przypadku wybrania **standardowe** SKU: Strefowo nadmiarowy jest automatycznie wybrana i sprawia, że ścieżki danych odporność na awarie strefy. Jeśli wolisz zagwarantować dla określonej strefy, który nie był odporny na awarie strefy, można wybrać określonej strefy.
   
 
 **Polecenia**
@@ -89,7 +89,7 @@ Chociaż portalu udostępnia opcję, aby utworzyć dwa zasoby publicznych adres�
 |Interfejs wiersza polecenia|[AZ sieci publicznego adresu ip listy](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_list) publiczne adresy IP, [az sieci publicznego adresu ip Pokazywanie](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_show) pokazanie ustawień; [az sieci ip publicznego aktualizacji](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_update) zaktualizować; [usunąć publicznej sieci az ip](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_delete) do usunięcia|
 |PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) można pobrać obiektu publiczny adres IP i wyświetlić jej ustawienia [AzureRmPublicIpAddress zestaw](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) można zaktualizować ustawień; [AzureRmPublicIpAddress Usuń](/powershell/module/azurerm.network/remove-azurermpublicipaddress) do usunięcia|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Podczas tworzenia następujących zasobów platformy Azure, przypisz publicznych adresów IP:
 
 - [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny wirtualne

@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do usługi Azure Mobile Engagement dla systemu iOS w języku Swift | Microsoft Docs"
-description: "Dowiedz się, jak używać usługi Azure Mobile Engagement z funkcją analizy i powiadomieniami wypychanymi na potrzeby aplikacji systemu iOS."
+title: Wprowadzenie do usługi Azure Mobile Engagement dla systemu iOS w języku Swift | Microsoft Docs
+description: Dowiedz się, jak używać usługi Azure Mobile Engagement z funkcją analizy i powiadomieniami wypychanymi na potrzeby aplikacji systemu iOS.
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 196c282d-6f2f-4cbc-aeee-6517c5ad866d
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: swift
 ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1168e05afa457825c2b982d6d33ea73c62b565dc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-swift"></a>Wprowadzenie do usługi Azure Mobile Engagement dla aplikacji systemu iOS w języku Swift
+> [!IMPORTANT]
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 W tym temacie pokazano, jak za pomocą usługi Azure Mobile Engagement określać użycie aplikacji i wysyłać powiadomienia wypychane do danego segmentu użytkowników aplikacji systemu iOS.
@@ -40,7 +44,7 @@ Dla tego samouczka wymagane są następujące elementy:
 Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wszystkich innych samouczków usługi Mobile Engagement dla aplikacji systemu iOS.
 
 > [!NOTE]
-> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-swift-get-started).
+> Do wykonania kroków tego samouczka potrzebne jest aktywne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-ios-swift-get-started).
 > 
 > 
 
@@ -55,7 +59,7 @@ Aby zademonstrować integrację, zostanie utworzona podstawowa aplikacja za pomo
 ### <a name="create-a-new-ios-project"></a>Tworzenie nowego projektu systemu iOS
 [!INCLUDE [Create a new iOS Project](../../includes/mobile-engagement-create-new-ios-app.md)]
 
-### <a name="connect-your-app-to-mobile-engagement-backend"></a>Łączenie aplikacji z zapleczem usługi Mobile Engagement 
+### <a name="connect-your-app-to-mobile-engagement-backend"></a>Łączenie aplikacji z zapleczem usługi Mobile Engagement
 1. Pobierz zestaw [Mobile Engagement iOS SDK].
 2. Wypakuj plik tar.gz do folderu na swoim komputerze.
 3. Kliknij prawym przyciskiem myszy projekt i wybierz pozycję „Add files to” (Dodaj pliki do).
@@ -67,10 +71,10 @@ Aby zademonstrować integrację, zostanie utworzona podstawowa aplikacja za pomo
 5. Otwórz kartę `Build Phases` i w menu `Link Binary With Libraries` dodaj struktury w sposób pokazany poniżej:
    
     ![][3]
-6. Utwórz nagłówek mostkowania, aby można było używać interfejsów API języka Objective C zestawu SDK, wybierając pozycję File (Plik) > New (Nowy) > File (Plik) > iOS > Source (Źródło) > Header File (Plik nagłówka).
+6. Utwórz nagłówek mostkowania, aby można było używać interfejsów API języka Objective C zestawu SDK, wybierając pozycję File (Plik) &gt; New (Nowy) &gt; File (Plik) &gt; iOS &gt; Source (Źródło) &gt; Header File (Plik nagłówkowy).
    
     ![][4]
-7. Przeprowadź edycję pliku nagłówka mostkowania w celu udostępnienia kodu usługi Mobile Engagement w języku Objective C dla kodu w języku Swift, dodając następujące instrukcje importu:
+7. Przeprowadź edycję pliku nagłówkowego mostkowania w celu udostępnienia kodu usługi Mobile Engagement w języku Objective C dla kodu w języku Swift, dodając następujące instrukcje importu:
    
         /* Mobile Engagement Agent */
         #import "AEModule.h"
@@ -99,7 +103,7 @@ Aby zademonstrować integrację, zostanie utworzona podstawowa aplikacja za pomo
 ## <a id="monitor"></a>Włączanie monitorowania w czasie rzeczywistym
 Aby rozpocząć wysyłanie danych i upewnić się, że użytkownicy są aktywni, konieczne jest wysłanie co najmniej jednego ekranu (Działanie) do zaplecza usługi Mobile Engagement.
 
-1. Otwórz plik **ViewController.swift** i zmień klasę podstawową klasy **ViewController** na **EngagementViewController**:
+1. Otwórz plik **ViewController.swift** i zmień klasę bazową klasy **ViewController** na **EngagementViewController**:
    
     `class ViewController : EngagementViewController {`
 
@@ -119,7 +123,7 @@ Poniższe sekcje umożliwią skonfigurowanie aplikacji do ich odbierania.
 3. Przejdź do folderu, w którym został wypakowany zestaw SDK.
 4. Wybierz folder `EngagementReach`. 
 5. Kliknij pozycję Dodaj.
-6. Przeprowadź edycję pliku nagłówka mostkowania w celu udostępnienia nagłówków Reach usługi Mobile Engagement w języku Objective C, dodając następujące instrukcje importu:
+6. Przeprowadź edycję pliku nagłówkowego mostkowania w celu udostępnienia nagłówków Reach usługi Mobile Engagement w języku Objective C, dodając następujące instrukcje importu:
    
         /* Mobile Engagement Reach */
         #import "AEAnnouncementViewController.h"

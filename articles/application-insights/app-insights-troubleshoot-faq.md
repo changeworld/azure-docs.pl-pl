@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
 
@@ -60,7 +60,7 @@ Enterprise plan wiąże opłat codziennie każdego węzła serwera sieci web wys
 
 ## <a name="how-much-is-it-costing"></a>Jaka jest wyceny?
 
-* Otwórz **funkcje + cennik** strony w zasobu usługi Application Insights. Brak wykres ostatnie informacje o użyciu. Ograniczenie wolumin danych, można ustawić, jeśli chcesz.
+* Otwórz **strona szacowanych kosztów i użycia** strony w zasobu usługi Application Insights. Brak wykres ostatnie informacje o użyciu. Ograniczenie wolumin danych, można ustawić, jeśli chcesz.
 * Otwórz [bloku rozliczenia Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) aby zobaczyć rachunków we wszystkich zasobów.
 
 ## <a name="q14"></a>Co to usługa Application Insights zmodyfikować w projekcie?

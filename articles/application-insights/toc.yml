@@ -238,6 +238,9 @@
       items:
         - name: Zarządzanie cenami i ilością danych
           href: app-insights-pricing.md
+          items:
+            - name: Szczegóły planu Enterprise
+              href: app-insights-pricing-enterprise-details.md
         - name: Monitorowanie wydajności aplikacji za pomocą usługi Application Insights dla oprogramowania SCOM
           href: app-insights-scom.md
     - name: Eksportowanie

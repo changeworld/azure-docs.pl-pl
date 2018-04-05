@@ -1,16 +1,16 @@
 ---
 title: Dostosuj ustawienia migracji Azure oceny | Dokumentacja firmy Microsoft
-description: "Opisuje sposób ustawiania i uruchamiania ocenę do migrowania maszyn wirtualnych VMware do platformy Azure przy użyciu usługi Azure planowania migracji"
+description: Opisuje sposób ustawiania i uruchamiania ocenę do migrowania maszyn wirtualnych VMware do platformy Azure przy użyciu usługi Azure planowania migracji
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: raynew
-ms.openlocfilehash: efb4ad59d25a0c1209e4f0f6cd406c2f0d48159c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 459a29012ec879d4d4989e51b5688b9042adc1a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="customize-an-assessment"></a>Dostosowywanie oceny
 
@@ -24,8 +24,8 @@ ms.lasthandoff: 02/27/2018
 
     **Ustawienie** | **Szczegóły** | **Domyślne**
     --- | --- | ---
-    **Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/> Migracji Azure obsługuje obecnie 30 regionów, w tym Australia Wschodnia, Południowo-Wschodnia Australia, Brazylia Południowa, Kanada centralnej, Kanada Wschodnia, Indie środkowe, środkowe stany USA, wschodnie Chin, Chin Północna, Azja Wschodnia, wschodnie stany USA, Niemcy centralnej, Niemcy północno-wschodnie, wschodnie stany USA 2, Japonia Wschodnia, Japonia Zachodnia Korei Południowej środkowe, Korea, Północna środkowe stany USA, Europa Północna, południowo środkowe stany USA, Azja południowo-wschodnia, Indie Południowe, Wielka Brytania Południowa, Wielka Brytania Zachodnia, zachodnie środkowe stany USA, Europa Zachodnia, Indie Zachodnie, zachodnie stany USA i US2 zachodnie. |  Zachodnie stany USA 2 jest domyślną lokalizacją.
-    **Nadmiarowość magazynu** | Typ nadmiarowość magazynu, który będzie używany przez maszyny wirtualne Azure po zakończeniu migracji. | [Magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) jest wartością domyślną. Azure obsługuje tylko migracji zarządzane opartej na dyskach: ocen i dysków zarządzanych obsługują tylko LRS, dlatego właściwość obecnie zawiera tylko opcja LRS. 
+    **Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/> Usługa Azure Migrate obsługuje obecnie 30 regionów, w tym: Australia Południowo-Wschodnia, Australia Wschodnia, Azja Południowo-Wschodnia, Azja Wschodnia, Brazylia Południowa, Chiny Północne, Chiny Wschodnie, Europa Północna, Europa Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Japonia Wschodnia, Japonia Zachodnia, Kanada Środkowa, Kanada Wschodnia, Korea Południowa, Korea Środkowa, Niemcy Północno-Wschodnie, Niemcy Środkowe, Południowe Zjednoczone Królestwo, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowe stany USA, Wschodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA, Zachodnie stany USA 2, Zachodnie Zjednoczone Królestwo i Zachodnio-środkowe stany USA. |  Zachodnie stany USA 2 jest domyślną lokalizacją.
+    **Nadmiarowość magazynu** | Typ nadmiarowość magazynu, który będzie używany przez maszyny wirtualne Azure po zakończeniu migracji. | [Magazyn lokalnie nadmiarowy (LRS)](../storage/common/storage-redundancy-lrs.md) jest wartością domyślną. Azure obsługuje tylko migracji zarządzane opartej na dyskach: ocen i dysków zarządzanych obsługują tylko LRS, dlatego właściwość obecnie zawiera tylko opcja LRS. 
     **Kryterium zmiany rozmiaru** | Kryterium do użycia przez usługę Azure Migrate w celu określenia odpowiedniego rozmiaru dla maszyn wirtualnych platformy Azure. Należy albo czy *na podstawie wydajności* zmiany rozmiaru lub rozmiar maszyn wirtualnych *jako lokalną*, bez uwzględniania Historia wydajności. | Na podstawie rozmiaru jest domyślną opcją.
     **Historia wydajności** | Czas trwania wziąć pod uwagę do oceny wydajności maszyn wirtualnych. Ta właściwość ma zastosowanie tylko w przypadku zmiany rozmiaru kryterium *wydajności na podstawie rozmiaru*. | Domyślny to jeden dzień.
     **Procentowy wykorzystania** | Wartość próbki wydajność, Ustaw to zostać uwzględnione podczas doboru wielkości. Ta właściwość ma zastosowanie tylko w przypadku zmiany rozmiaru kryterium *wydajności na podstawie rozmiaru*.  | Domyślnie jest 95. percentyl.

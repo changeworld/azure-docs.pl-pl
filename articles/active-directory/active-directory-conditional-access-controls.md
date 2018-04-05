@@ -1,26 +1,26 @@
 ---
-title: "Dostęp do formantów w usłudze Azure Active Directory dostępu warunkowego | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostęp do formantów w pracy dostępu warunkowego w usłudze Azure Active Directory."
+title: Dostęp do formantów w usłudze Azure Active Directory dostępu warunkowego | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostęp do formantów w pracy dostępu warunkowego w usłudze Azure Active Directory.
 services: active-directory
-keywords: "dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego"
-documentationcenter: 
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c5a2ab3b8d2fe55eee1f67e4b697a1e5b0dd2daf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Kontrola dostępu w usłudze Azure Active Directory dostępu warunkowego 
 
@@ -75,11 +75,15 @@ Przy użyciu usługi Multi-Factor authentication pomaga chronić zasoby z uzyski
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest aby udzielić dostępu do zasobów skonfigurowany tylko z zaufanych urządzeń. Wymaganie zgodnego urządzenia jest jedną z opcji należy zdefiniować jest urządzenie zaufane. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
+Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest aby udzielić dostępu do zasobów skonfigurowany tylko z zaufanych urządzeń. Wymaganie zgodnego urządzenia jest jedną z opcji należy zdefiniować jest urządzenie zaufane. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje prób dostępu do dostępu z urządzeń, które dołączyły do usługi Azure Active Directory i są oznaczone jako zgodne przez rozwiązanie do zarządzania urządzeniami Przenośnymi.
+
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
 ### <a name="domain-joined-device"></a>Urządzenia przyłączone do domeny
 
-Wymaganie inną opcją jest urządzenia przyłączone do domeny należy skonfigurować zasady dostępu warunkowego opartego na urządzeniu. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów przedsiębiorstwa, które są częścią lokalnej usługi Active Directory systemu Windows. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
+Wymaganie inną opcją jest urządzenia przyłączone do domeny należy skonfigurować zasady dostępu warunkowego opartego na urządzeniu. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów przedsiębiorstwa, które są częścią lokalnej usługi Active Directory systemu Windows. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje próby dostępu do dostępu z urządzeń, które są częścią lokalnej usługi Active Directory i Azure Active Directory.  
+
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzenia usługi Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
 
 

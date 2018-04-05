@@ -1,8 +1,8 @@
 ---
-title: "Obsługa wielu składników, mikrousług i kontenery Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Monitorowanie aplikacji, które składają się z wielu składników lub ról, wydajności i użycia."
+title: Obsługa wielu składników, mikrousług i kontenery Azure Application Insights | Dokumentacja firmy Microsoft
+description: Monitorowanie aplikacji, które składają się z wielu składników lub ról, wydajności i użycia.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Monitorowanie wielu składnika aplikacji za pomocą usługi Application Insights (wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Aby uzyskać mapy wielu składnika aplikacji, należy na osiągnięcie tych cel�
 
 * **Zainstalowanie najnowszej wersji wstępnej** pakiet usługi Application Insights w poszczególnych składników aplikacji. 
 * **Udostępnij pojedynczy zasób usługi Application Insights** dla wszystkich składników aplikacji.
-* **Włączyć usługi roli aplikacji mapy** w bloku podglądów.
+* **Włącz złożony mapowanie aplikacji** w bloku podglądów.
 
 Skonfiguruj poszczególnych składników aplikacji przy użyciu metody odpowiedniej dla jego typu. ([ASP.NET](app-insights-asp-net.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), [JavaScript](app-insights-javascript.md).)
 
@@ -68,14 +68,14 @@ Zaktualizuj lub instalowanie pakietów usługi Application Insights do projektu 
 
    1. W [portalu Azure](https://portal,azure.com), otwórz zasobu usługi Application Insights już utworzone dla innego składnika.
    2. W bloku Przegląd, Otwórz listę rozwijaną Essentials kartę i skopiuj **klucza instrumentacji.**
-   3. W projekcie Otwórz ApplicationInsights.config i Wstaw:`<InstrumentationKey>your copied key</InstrumentationKey>`
+   3. W projekcie Otwórz ApplicationInsights.config i Wstaw: `<InstrumentationKey>your copied key</InstrumentationKey>`
 
 ![Skopiuj klucz Instrumentacji do pliku .config](./media/app-insights-monitor-multi-role-apps/copy-instrumentation-key.png)
 
 
-### <a name="3-enable-multi-role-application-map"></a>3. Włącz mapowanie wielu roli w aplikacji
+### <a name="3-enable-composite-application-map"></a>3. Włącz mapowanie złożonych aplikacji
 
-Otwórz zasobów aplikacji w portalu Azure. W bloku podglądy włączyć *Mapa aplikacji usługi roli*.
+Otwórz zasobów aplikacji w portalu Azure. Podrzędne pozycji konfiguracji, kliknij przycisk Podgląd, aby otworzyć blok podglądów. W bloku podglądy włączyć *złożonego mapowanie aplikacji*.
 
 ### <a name="4-enable-docker-metrics-optional"></a>4. Włączyć metryki Docker (opcjonalnie) 
 
@@ -125,6 +125,6 @@ Kliknij, aby listę skorelowane dane telemetryczne dla tej operacji na serwerze 
 ![Wyszukaj między składnikami](./media/app-insights-monitor-multi-role-apps/search-across-components.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Oddzielne dane telemetryczne z programowanie, testowego i produkcyjnego](app-insights-separate-resources.md)

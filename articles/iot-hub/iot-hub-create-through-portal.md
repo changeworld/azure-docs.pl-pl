@@ -1,24 +1,24 @@
 ---
-title: "Umożliwia utworzenie Centrum IoT w portalu Azure | Dokumentacja firmy Microsoft"
-description: "Sposób tworzenia, zarządzania i usuwania centra Azure IoT za pośrednictwem portalu Azure. Zawiera informacje na temat warstw cenowych, skalowania, zabezpieczeń i konfiguracji do obsługi komunikatów."
+title: Umożliwia utworzenie Centrum IoT w portalu Azure | Dokumentacja firmy Microsoft
+description: Sposób tworzenia, zarządzania i usuwania centra Azure IoT za pośrednictwem portalu Azure. Zawiera informacje na temat warstw cenowych, skalowania, zabezpieczeń i konfiguracji do obsługi komunikatów.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ac1a52355ffa5354bebe3b98fdb75783bcd57697
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Tworzenie Centrum IoT przy użyciu portalu Azure
 
@@ -53,18 +53,9 @@ Aby utworzyć Centrum IoT, nazwę Centrum IoT. Ta nazwa musi być unikatowa w ws
 
 ### <a name="choose-the-pricing-tier"></a>Wybierz warstwę cenową
 
-Możesz wybrać spośród czterech warstw: **wolne**, **Standard 1** i **standardowy 2**, i **standardowa S3**. Warstwa bezpłatna umożliwia tylko 500 urządzeń do podłączenia do Centrum IoT i maksymalnie 8000 wiadomości na dzień.
+Możesz wybrać spośród kilku warstw w zależności od liczby funkcji chcesz i ile komunikatów można wysyłać za pośrednictwem rozwiązania na dzień. Warstwa bezpłatna służy do testowania i oceny. Umożliwia on 500 urządzeń do podłączenia do Centrum IoT i maksymalnie 8000 wiadomości na dzień. Każda subskrypcja platformy Azure można utworzyć jeden Centrum IoT w warstwie bezpłatna. 
 
-**Standardowa S1**: użycie wersji S1 dla rozwiązania IoT z dużą liczbą urządzeń, że wygenerowany dla każdego niewielkich ilości danych. Każda jednostka wersji S1 umożliwia przesłanie maksymalnie 400 000 komunikatów dziennie przez wszystkie połączone urządzenia.
-
-**Standardowa S2**: użycie wersji S2 dla rozwiązania IoT, w których urządzenie wygenerować dużych ilości danych. Każda jednostka S2 edition umożliwia wiadomości do 6 mln dziennie między wszystkich połączonych urządzeń.
-
-**Standardowa S3**: użycie wersji S3 dla rozwiązania IoT, które generują dużych ilości danych. Każda jednostka S3 edition pozwala maksymalnie 300 milionów dziennie między wszystkich połączonych urządzeń.
-
-![][4]
-
-> [!NOTE]
-> Centrum IoT umożliwia tylko koncentratorze wolne dla subskrypcji platformy Azure.
+Aby uzyskać szczegółowe informacje o innych opcjach warstwy, zobacz [wybrać prawa warstwy Centrum IoT](iot-hub-scaling.md).
 
 ### <a name="iot-hub-units"></a>Jednostki Centrum IoT
 
@@ -100,7 +91,7 @@ Po utworzeniu jest ono w bloku Centrum IoT można zmienić ustawienia istniejąc
 
 **Zasady dostępu do udostępnionych**: te zasady definiowania uprawnień do urządzeń i usług do nawiązania połączenia Centrum IoT. Te zasady można uzyskać, klikając **zasady dostępu współużytkowanego** w obszarze **ogólne**. W tym bloku należy modyfikowania istniejących zasad lub Dodaj nowe zasady.
 
-### <a name="create-a-policy"></a>Tworzenie zasad
+### <a name="create-a-policy"></a>Utwórz zasady
 
 * Kliknij przycisk **Dodaj** aby otworzyć blok. Można w tym miejscu wprowadź nową nazwę zasady i uprawnienia, które chcesz skojarzyć z tymi zasadami, jak pokazano na poniższej ilustracji:
 
@@ -154,22 +145,11 @@ Można dodać trasy do Centrum IoT, klikając **Dodaj** w górnej części **tra
 
 ![][15]
 
-## <a name="pricing-and-scale"></a>Cenach i skali
-
-Cennik istniejących Centrum IoT można zmienić za pomocą **cennik** ustawienia, z następującymi wyjątkami:
-
-* W bieżącej implementacji Centrum IoT z bezpłatnej wersji nie można zmienić warstwy do jednego z płatnych jednostki SKU, albo na odwrót.
-* Może istnieć tylko jeden Centrum IoT warstwę bezpłatna subskrypcja platformy Azure.
-
-![][12]
-
-Można przenosić z wyższej do dolnej warstwy tylko wtedy, gdy liczbę komunikatów wysłanych tego dnia przekroczenie limitu przydziału dla warstwy dolnej. Na przykład jeśli liczba komunikatów dziennie przekracza 400 000, następnie warstwy Centrum IoT można zmienić. Jednak w przypadku zmiany do warstwy S1 Centrum IoT jest ograniczony do danego dnia.
-
 ## <a name="delete-the-iot-hub"></a>Usuń Centrum IoT
 
 Możesz przejść do Centrum IoT, które chcesz usunąć, klikając **Przeglądaj**, a następnie wybierając odpowiedni koncentratora do usunięcia. Aby usunąć Centrum IoT kliknij **usunąć** znajdujący się poniżej nazwę Centrum IoT.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Centrum IoT Azure:
 
@@ -180,7 +160,7 @@ Skorzystaj z poniższych linków, aby dowiedzieć się więcej o zarządzaniu Ce
 Aby dokładniej analizować możliwości Centrum IoT, zobacz:
 
 * [Przewodnik dewelopera Centrum IoT][lnk-devguide]
-* [Wdrażanie urządzenia brzegowe AI krawędzi IoT Azure][lnk-iotedge]
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
 * [Zabezpieczanie rozwiązania IoT od podstaw w górę][lnk-securing]
 
 [4]: ./media/iot-hub-create-through-portal/create-iothub.png

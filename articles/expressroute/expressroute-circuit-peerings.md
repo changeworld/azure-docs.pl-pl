@@ -1,11 +1,11 @@
 ---
-title: "Usługa Azure ExpressRoute obwody i domeny routingu | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera omówienie obwody usługi ExpressRoute i domeny routingu."
+title: Usługa Azure ExpressRoute obwody i domeny routingu | Dokumentacja firmy Microsoft
+description: Ta strona zawiera omówienie obwody usługi ExpressRoute i domeny routingu.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Obwody usługi ExpressRoute i domeny routingu
  Należy zamówić *obwodu ExpressRoute* do podłączenia infrastruktury lokalnej do firmy Microsoft za pośrednictwem dostawcy łączności. Na poniższej ilustracji przedstawiono logiczną reprezentację połączenia między sieci WAN i firmy Microsoft.
@@ -72,7 +72,7 @@ Zobacz [z często Zadawanymi pytaniami](expressroute-faqs.md) Aby uzyskać więc
 ## <a name="routing-domain-comparison"></a>Porównanie domeny routingu
 W poniższej tabeli porównano trzy domeny routingu:
 
-|  | **Prywatnej komunikacji równorzędnej** | **Publicznej komunikacji równorzędnej** | **Komunikacji równorzędnej firmy Microsoft*** |
+|  | **Prywatnej komunikacji równorzędnej** | **Publicznej komunikacji równorzędnej** (uznane za przestarzałe w tworzenie nowych) | **Komunikacji równorzędnej firmy Microsoft** |
 | --- | --- | --- | --- |
 | **Maks. prefiksy # obsługiwane na komunikacji równorzędnej** |4000 domyślnie 10 000 z ExpressRoute — wersja Premium |200 |200 |
 | **Obsługiwane zakresów adresów IP** |Dowolny prawidłowy adres IP w sieci WAN. |Publiczne adresy IP należące do przez użytkownika lub dostawcą połączenia. |Publiczne adresy IP należące do przez użytkownika lub dostawcą połączenia. |
@@ -81,7 +81,7 @@ W poniższej tabeli porównano trzy domeny routingu:
 | **Routingu adresów IP interfejsu** |RFC1918 i publiczne adresy IP |Publiczne adresy IP, w zarejestrowany w rejestrach routingu. |Publiczne adresy IP, w zarejestrowany w rejestrach routingu. |
 | **Obsługa wyznaczania wartości skrótu MD5** |Yes |Yes |Yes |
 
-(*) Wymaga warstwy Premium dodatek jednostki SKU
+
 
 Można włączyć jedną lub więcej domen routingu w ramach obwodu usługi ExpressRoute. Można mieć wszystkich domen routingu umieszczanie na tej samej sieci VPN, jeśli chcesz połączyć je w jednej domeny routingu. Można również wprowadzić je w różnych domenach routingu, podobne do diagramu. Zalecana konfiguracja jest prywatnej komunikacji równorzędnej jest podłączony bezpośrednio do sieci podstawowej, czy publicznego i łączy komunikacji równorzędnej firmy Microsoft są podłączone do sieci Obwodowej.
 

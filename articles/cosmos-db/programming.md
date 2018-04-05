@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 2b55307c3122513b414c3f90a6a36d230f3459c2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 328cf016c98575ecd0fa7be023b48e670211babf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programowanie po stronie serwera w usłudze Azure DB rozwiązania Cosmos: procedury składowane, wyzwalacze bazy danych i funkcji UDF
 
@@ -54,7 +54,7 @@ To podejście *"JavaScript jako nowoczesnego dzień T-SQL"* zwalnia deweloperzy 
   * Dodaje warstwy abstrakcji na pierwotnych danych, co umożliwia architektów danych podlegać ewolucji swoich aplikacji niezależnie od danych. Ta warstwa abstrakcji jest korzystne w przypadku, gdy dane przynależy schematu, z powodu łamliwa założeń, które może być konieczne rozszerzania do aplikacji, jeśli mają dotyczyć dane bezpośrednio.  
   * Ta warstwa abstrakcji umożliwia przedsiębiorstwom chronić swoje dane usprawnienie dostęp ze skryptów.  
 
-Tworzenie i wykonywanie wyzwalaczy bazy danych, procedury składowane i operatory zapytań niestandardowych jest obsługiwana przez [portalu Azure](https://portal.azure.com), [interfejsu API REST](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), i [zestawów SDK klienta](sql-api-sdk-dotnet.md) na wielu platformach, w tym .NET, Node.js oraz JavaScript.
+Tworzenie i wykonywanie wyzwalaczy bazy danych, procedury składowane i operatory zapytań niestandardowych jest obsługiwana przez [portalu Azure](https://portal.azure.com), [interfejsu API REST](/rest/api/cosmos-db/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), i [zestawów SDK klienta](sql-api-sdk-dotnet.md) na wielu platformach, w tym .NET, Node.js oraz JavaScript.
 
 W tym samouczku używana [Node.js SDK z ze zobowiązania Q](http://azure.github.io/azure-documentdb-node-q/) w celu zilustrowania składni i użycia procedur składowanych, wyzwalaczy i funkcji UDF.   
 

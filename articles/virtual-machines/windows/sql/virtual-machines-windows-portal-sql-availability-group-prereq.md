@@ -1,6 +1,6 @@
 ---
-title: "Grupy dostępności programu SQL Server — maszyn wirtualnych platformy Azure — wymagania wstępne | Dokumentacja firmy Microsoft"
-description: "W tym samouczku przedstawiono sposób konfigurowania wymagań wstępnych dotyczących tworzenia grupy dostępności programu SQL Server AlwaysOn na maszynach wirtualnych Azure."
+title: Grupy dostępności programu SQL Server — maszyn wirtualnych platformy Azure — wymagania wstępne | Dokumentacja firmy Microsoft
+description: W tym samouczku przedstawiono sposób konfigurowania wymagań wstępnych dotyczących tworzenia grupy dostępności programu SQL Server AlwaysOn na maszynach wirtualnych Azure.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 85ad53f0b7b4b14784bb0755ee22763d124e63ba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2a0af65af068f3a78a08e46e0e42caefd87d7b1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności na maszynach wirtualnych Azure
 
@@ -42,7 +42,7 @@ Musisz mieć konto platformy Azure. Możesz [Załóż bezpłatne konto platformy
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 1. Zaloguj się w [Portalu Azure](http://portal.azure.com).
-2. Kliknij przycisk  **+**  można utworzyć nowego obiektu w portalu.
+2. Kliknij przycisk **+** można utworzyć nowego obiektu w portalu.
 
    ![Nowy obiekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
@@ -51,9 +51,9 @@ Musisz mieć konto platformy Azure. Możesz [Załóż bezpłatne konto platformy
    ![Grupa zasobów](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Kliknij przycisk **grupy zasobów**.
 5. Kliknij przycisk **Utwórz**.
-6. Na **grupy zasobów** bloku, w obszarze **Nazwa grupy zasobów**, wpisz nazwę grupy zasobów. Na przykład wpisz **sql-ha-zarządcy zasobów**.
+6. W obszarze **Nazwa grupy zasobów**, wpisz nazwę grupy zasobów. Na przykład wpisz **sql-ha-zarządcy zasobów**.
 7. Jeśli masz wiele subskrypcji Azure, sprawdź, czy subskrypcja jest subskrypcja platformy Azure, który chcesz utworzyć grupy dostępności w.
-8. Wybierz lokalizację. Lokalizacja jest region platformy Azure, której chcesz utworzyć grupy dostępności. W tym samouczku zamierzamy utworzyć wszystkie zasoby w jednej lokalizacji platformy Azure.
+8. Wybierz lokalizację. Lokalizacja jest region platformy Azure, której chcesz utworzyć grupy dostępności. W tym artykule kompilacje wszystkie zasoby w jednej lokalizacji platformy Azure.
 9. Sprawdź, czy **Przypnij do pulpitu nawigacyjnego** jest zaznaczony. To ustawienie opcjonalne umieszcza skrót dla grupy zasobów na pulpicie nawigacyjnym portalu Azure.
 
    ![Grupa zasobów](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
@@ -69,14 +69,14 @@ W tym rozwiązaniu zastosowano jedną sieć wirtualną z dwiema podsieciami. [Om
 
 Aby utworzyć sieć wirtualną:
 
-1. W portalu Azure, w grupie zasobów, kliknij przycisk **+ Dodaj**. Otwiera Azure **wszystko** bloku.
+1. W portalu Azure, w grupie zasobów, kliknij przycisk **+ Dodaj**. 
 
    ![Nowy element](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
 2. Wyszukaj **sieci wirtualnej**.
 
      ![Sieć wirtualna wyszukiwania](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
 3. Kliknij przycisk **sieci wirtualnej**.
-4. Na **sieci wirtualnej** bloku, kliknij przycisk **Resource Manager** model wdrażania, a następnie kliknij przycisk **Utwórz**.
+4. Na **sieci wirtualnej**, kliknij przycisk **Resource Manager** model wdrażania, a następnie kliknij przycisk **Utwórz**.
 
     W poniższej tabeli przedstawiono ustawienia dla sieci wirtualnej:
 
@@ -106,14 +106,14 @@ Nowa sieć wirtualna ma jedną podsieć o nazwie **Admin**. Kontrolery domeny u�
 1. Na pulpicie nawigacyjnym kliknij grupę zasobów, która została utworzona, **SQL-HA-zarządcy zasobów**. Zlokalizuj sieci w grupie zasobów w obszarze **zasobów**.
 
     Jeśli **SQL-HA-zarządcy zasobów** nie jest widoczny, znaleźć, klikając **grup zasobów** i filtrowanie według nazwy grupy zasobów.
-2. Kliknij przycisk **autoHAVNET** na liście zasobów. Azure spowoduje otwarcie bloku konfiguracji sieci.
-3. Na **autoHAVNET** bloku sieci wirtualnej, w obszarze **ustawienia** , kliknij przycisk **podsieci**.
+2. Kliknij przycisk **autoHAVNET** na liście zasobów. 
+3. Na **autoHAVNET** wirtualnych sieci, w obszarze **ustawienia** , kliknij przycisk **podsieci**.
 
     Należy pamiętać, podsieci, które już utworzone.
 
    ![Skonfiguruj sieć wirtualną](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. Tworzenie drugiej podsieci. Kliknij przycisk **+ podsieci**.
-6. Na **Dodaj podsieć** bloku, skonfiguruj podsieci, wpisując **sqlsubnet** w obszarze **nazwa**. Azure automatycznie określa prawidłową **zakres adresów**. Sprawdź, czy ten zakres adresów ma co najmniej 10 adresów w nim. W środowisku produkcyjnym może wymagać więcej adresów.
+6. Na **Dodaj podsieć**, skonfiguruj podsieci, wpisując **sqlsubnet** w obszarze **nazwa**. Azure automatycznie określa prawidłową **zakres adresów**. Sprawdź, czy ten zakres adresów ma co najmniej 10 adresów w nim. W środowisku produkcyjnym może wymagać więcej adresów.
 7. Kliknij przycisk **OK**.
 
     ![Skonfiguruj sieć wirtualną](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
@@ -134,7 +134,7 @@ Poniższa tabela zawiera podsumowanie ustawień konfiguracji sieci:
 
 ## <a name="create-availability-sets"></a>Tworzenie zestawów dostępności
 
-Przed utworzeniem maszyny wirtualnej, musisz utworzyć zestawy dostępności. Zestawy dostępności skrócić czas przestojów planowana lub nieplanowana konserwacja zdarzeń. Zestaw dostępności Azure jest logiczną grupa zasobów Azure umieszcza w fizycznych domenach awarii i Aktualizacja domeny. Domeny błędów gwarantuje, że elementy członkowskie w zestawie dostępności oddzielne zasilania i zasobów sieciowych. Domeny aktualizacji gwarantuje, że członkowie zestawu dostępności nie są obniżył konserwacji w tym samym czasie. Aby uzyskać więcej informacji, zobacz [Zarządzaj dostępnością maszyn wirtualnych](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Przed utworzeniem maszyny wirtualnej, musisz utworzyć zestawy dostępności. Zestawy dostępności skrócić czas przestojów planowana lub nieplanowana konserwacja zdarzeń. Zestaw dostępności Azure jest logiczną grupa zasobów Azure umieszcza w fizycznych domenach awarii i Aktualizacja domeny. Domeny błędów gwarantuje, że elementy członkowskie w zestawie dostępności oddzielne zasilania i zasobów sieciowych. Domeny aktualizacji gwarantuje, że członkowie zestawu dostępności nie są obniżył konserwacji w tym samym czasie. Aby uzyskać dodatkowe informacje, zobacz [Zarządzaj dostępnością maszyn wirtualnych](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Należy dwóch zestawów dostępności. Jedna jest dla kontrolerów domeny. Druga jest przeznaczona dla maszyn wirtualnych serwera SQL.
 
@@ -157,9 +157,9 @@ Po utworzeniu sieci, podsieci, zestawów dostępności i równoważenia obciąż
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Tworzenie maszyn wirtualnych kontrolerów domeny
 Aby utworzyć i skonfigurować na kontrolerach domeny, wróć do **SQL-HA-zarządcy zasobów** grupy zasobów.
 
-1. Kliknij pozycję **Add** (Dodaj). **Wszystko** zostanie otwarty blok.
+1. Kliknij pozycję **Add** (Dodaj). 
 2. Typ **systemu Windows Server 2016 Datacenter**.
-3. Kliknij przycisk **systemu Windows Server 2016 Datacenter**. W **systemu Windows Server Datacenter 2016** bloku, sprawdź, czy model wdrażania **Menedżera zasobów**, a następnie kliknij przycisk **Utwórz**. Otwiera Azure **tworzenia maszyny wirtualnej** bloku.
+3. Kliknij przycisk **systemu Windows Server 2016 Datacenter**. W **systemu Windows Server Datacenter 2016**, sprawdź, czy model wdrażania **Resource Manager**, a następnie kliknij przycisk **Utwórz**. 
 
 Powtórz poprzednie kroki, aby utworzyć dwie maszyny wirtualne. Nazwa dwóch maszyn wirtualnych:
 
@@ -187,7 +187,7 @@ W poniższej tabeli przedstawiono ustawienia dla tych dwóch maszyn:
 | **Sieć wirtualna** |autoHAVNET |
 | **Podsieć** |administrator |
 | **Publiczny adres IP** |*Tej samej nazwy co maszyna wirtualna* |
-| **Grupy zabezpieczeń sieci** |*Tej samej nazwy co maszyna wirtualna* |
+| **Sieciowa grupa zabezpieczeń** |*Tej samej nazwy co maszyna wirtualna* |
 | **Zestaw dostępności** |adavailabilityset </br>**Odporność domen**: 2</br>**Aktualizowanie domeny**: 2|
 | **Diagnostyka** |Enabled (Włączony) |
 | **Konto magazynu diagnostyki** |*Automatycznie utworzone* |
@@ -202,7 +202,7 @@ Po utworzeniu maszyny wirtualnej, należy skonfigurować kontroler domeny.
 ### <a name="configure-the-domain-controller"></a>Konfiguracja kontrolera domeny
 W poniższych krokach, należy skonfigurować **kontrolerów domeny podstawowej ad** komputera jako kontroler domeny corp.contoso.com.
 
-1. W portalu, otwórz **SQL-HA-zarządcy zasobów** zasobu, grupy i wybierz **kontrolerów domeny podstawowej ad** maszyny. Na **kontrolerów domeny podstawowej ad** bloku, kliknij przycisk **Connect** można otworzyć pliku RDP do dostępu do pulpitu zdalnego.
+1. W portalu, otwórz **SQL-HA-zarządcy zasobów** zasobu, grupy i wybierz **kontrolerów domeny podstawowej ad** maszyny. Na **kontrolerów domeny podstawowej ad**, kliknij przycisk **Connect** można otworzyć pliku RDP do dostępu do pulpitu zdalnego.
 
     ![Połącz z maszyną wirtualną](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
 2. Zaloguj się przy użyciu konta administratora skonfigurowane (**\DomainAdmin**) i hasło (**Contoso! 0000**).
@@ -246,7 +246,7 @@ Jednym ze sposobów uzyskać adres IP kontrolera domeny jest za pośrednictwem p
 
 2. Kliknij przycisk z podstawowym kontrolerem domeny.
 
-3. W bloku kontrolera domeny, kliknij **interfejsy sieciowe**.
+3. Na podstawowym kontrolerze domeny, kliknij przycisk **interfejsy sieciowe**.
 
 ![Interfejsy sieciowe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/25-primarydcip.png)
 
@@ -266,7 +266,7 @@ Po utworzeniu pierwszego kontrolera domeny i włączyć na pierwszym serwerze DN
 ### <a name="configure-the-second-domain-controller"></a>Konfigurowanie kontrolera domeny
 Po ponownym uruchomieniu podstawowego kontrolera domeny, można skonfigurować kontrolera domeny. Jest to krok opcjonalny wysokiej dostępności. Wykonaj następujące kroki, aby skonfigurować kontrolera domeny:
 
-1. W portalu, otwórz **SQL-HA-zarządcy zasobów** zasobu, grupy i wybierz **kontrolerów domeny pomocniczy ad** maszyny. Na **kontrolerów domeny pomocniczy ad** bloku, kliknij przycisk **Connect** można otworzyć pliku RDP do dostępu do pulpitu zdalnego.
+1. W portalu, otwórz **SQL-HA-zarządcy zasobów** zasobu, grupy i wybierz **kontrolerów domeny pomocniczy ad** maszyny. Na **kontrolerów domeny pomocniczy ad**, kliknij przycisk **Connect** można otworzyć pliku RDP do dostępu do pulpitu zdalnego.
 2. Zaloguj się do maszyny Wirtualnej przy użyciu konta administratora skonfigurowane (**BUILTIN\DomainAdmin**) i hasło (**Contoso! 0000**).
 3. Zmienianie adresu preferowanego serwera DNS na adres kontrolera domeny.
 4. W **Centrum sieci i udostępniania**, kliknij przycisk interfejsu sieciowego.
@@ -305,7 +305,7 @@ Po zakończeniu zmiany konfiguracji, uruchom ponownie serwer.
 
 ### <a name="add-the-private-ip-address-to-the-second-domain-controller-to-the-vpn-dns-server"></a>Dodaj prywatny adres IP do kontrolera domeny na serwerze DNS sieci VPN
 
-W portalu Azure w ramach sieci wirtualnej należy zmienić obejmują adres IP kontrolera domeny pomocniczy serwer DNS. Dzięki temu nadmiarowości usługi DNS.
+W portalu Azure w ramach sieci wirtualnej należy zmienić obejmują adres IP kontrolera domeny pomocniczy serwer DNS. To ustawienie umożliwia nadmiarowości usługi DNS.
 
 ### <a name=DomainAccounts></a> Konfigurowanie kont domeny
 
@@ -313,7 +313,7 @@ W następnych krokach konfigurowania kont usługi Active Directory. W poniższej
 
 | |Konto instalacji<br/> |sqlserver-0 <br/>Konto programu SQL Server i usługi agenta SQL |sqlserver-1<br/>Konto programu SQL Server i usługi agenta SQL
 | --- | --- | --- | ---
-|Imię |Instalowanie |SQLSvc1 | SQLSvc2
+|**Imię** |Instalowanie |SQLSvc1 | SQLSvc2
 |**SamAccountName użytkownika** |Instalowanie |SQLSvc1 | SQLSvc2
 
 Poniższe kroki umożliwiają utworzenie poszczególnych kont.
@@ -350,7 +350,7 @@ Teraz, po zakończeniu konfigurowania usługi Active Directory i obiektów użyt
 
 Utwórz trzy dodatkowe maszyny wirtualne. Rozwiązanie wymaga dwóch maszyn wirtualnych z wystąpień programu SQL Server. Trzeci maszyny wirtualnej będą działać jako monitor. Można użyć systemu Windows Server 2016 [chmury monitora](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), jednak zgodności ze starszymi systemami operacyjnymi niniejszym dokumencie użyto maszyny wirtualnej dla monitora.  
 
-Przed kontynuowaniem należy wziąć pod uwagę następujące decyzje dotyczące deisign.
+Przed kontynuowaniem należy wziąć pod uwagę następujące decyzje dotyczące projektu.
 
 * **Magazyn — dyskach zarządzanych Azure**
 
@@ -358,13 +358,13 @@ Przed kontynuowaniem należy wziąć pod uwagę następujące decyzje dotyczące
 
 * **Adresy IP prywatnej sieci — w środowisku produkcyjnym**
 
-   W przypadku maszyn wirtualnych w tym samouczku korzysta z publicznych adresów IP. Dzięki temu połączenia zdalnego bezpośrednio do maszyny wirtualnej za pośrednictwem Internetu — ułatwia czynności konfiguracyjne. W środowiskach produkcyjnych firma Microsoft zaleca tylko prywatnych adresów IP w celu zmniejszenia luk wystąpienia programu SQL Server zasobu maszyny Wirtualnej.
+   W przypadku maszyn wirtualnych w tym samouczku korzysta z publicznych adresów IP. Publiczny adres IP umożliwia połączenia zdalnego bezpośrednio do maszyny wirtualnej przez internet — ułatwia czynności konfiguracyjne. W środowiskach produkcyjnych firma Microsoft zaleca tylko prywatnych adresów IP w celu zmniejszenia luk wystąpienia programu SQL Server zasobu maszyny Wirtualnej.
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>Tworzenie i konfigurowanie maszyn wirtualnych serwera SQL
 Następnie należy utworzyć trzy maszyny wirtualne — dwóch maszyn wirtualnych serwera SQL i maszyny Wirtualnej na dodatkowym węźle klastra. Do tworzenia poszczególnych maszyn wirtualnych, przejdź wstecz do **SQL-HA-zarządcy zasobów** grupy zasobów, kliknij przycisk **Dodaj**, Wyszukiwanie elementu galerii odpowiednie, kliknij przycisk **maszyny wirtualnej**, a następnie kliknij przycisk  **Z galerii**. Użyj informacji w poniższej tabeli ułatwiają tworzenie maszyn wirtualnych:
 
 
-| Strona | Maszyna wirtualna 1 | Maszyna wirtualna 2 | VM3 |
+| Strona | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | Wybierz element galerii odpowiednie |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise w systemie Windows Server 2016** |**SQL Server 2016 SP1 Enterprise w systemie Windows Server 2016** |
 | Konfiguracja maszyny wirtualnej **podstawy** |**Nazwa** = fsw klastra<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = Contoso! 0000<br/>**Subskrypcja** = subskrypcji<br/>**Grupa zasobów** = SQL-HA-zarządcy zasobów<br/>**Lokalizacja** = Twojej lokalizacji platformy azure |**Name** = sqlserver-0<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = Contoso! 0000<br/>**Subskrypcja** = subskrypcji<br/>**Grupa zasobów** = SQL-HA-zarządcy zasobów<br/>**Lokalizacja** = Twojej lokalizacji platformy azure |**Nazwa** sqlserver-1<br/>**Nazwa użytkownika** = administrator domeny<br/>**Hasło** = Contoso! 0000<br/>**Subskrypcja** = subskrypcji<br/>**Grupa zasobów** = SQL-HA-zarządcy zasobów<br/>**Lokalizacja** = Twojej lokalizacji platformy azure |
@@ -383,7 +383,7 @@ Po trzy maszyny wirtualne są w pełni zaaprowizowanym, należy połączyć je *
 
 ### <a name="joinDomain"></a>Przyłącz serwer do domeny
 
-Teraz możesz dołączyć maszyn wirtualnych do **corp.contoso.com**. Wykonaj następujące czynności dla maszyn wirtualnych serwera SQL i serwera monitora udziału plików:
+Teraz możesz dołączyć maszyn wirtualnych do **corp.contoso.com**. Dla maszyn wirtualnych serwera SQL i serwera monitora udziału plików, wykonaj następujące czynności:
 
 1. Zdalne połączenia z maszyną wirtualną o **BUILTIN\DomainAdmin**.
 2. W **Menedżera serwera**, kliknij przycisk **lokalnego serwera**.
@@ -492,6 +492,36 @@ Metoda otwarcia portów zależy od zaporę, którego używasz. W następnej sekc
 8. Na **nazwa** Określ nazwę reguły (takich jak **Azure LB sondowania**) w **nazwa** polu tekstowym, a następnie kliknij przycisk **Zakończ**.
 
 Powtórz te kroki dla drugiej maszyny Wirtualnej programu SQL Server.
+
+## <a name="configure-system-account-permissions"></a>Konfigurowanie uprawnień konta systemu
+
+Aby utworzyć konta dla konta system i udzielić odpowiednich uprawnień, wykonaj następujące kroki na każde wystąpienie programu SQL Server:
+
+1. Tworzenie konta usługi dla `[NT AUTHORITY\SYSTEM]` na każde wystąpienie programu SQL Server. Poniższy skrypt tworzy tego konta:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. Przyznaj następujące uprawnienia do `[NT AUTHORITY\SYSTEM]` na każde wystąpienie programu SQL Server:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   Poniższy skrypt następujące uprawnienia:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

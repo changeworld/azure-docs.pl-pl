@@ -14,23 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: e7e45a6af0857520eec27263281a0f0a43b30013
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c410db9a7255a039ab9b41ae39f2fe1018719f8f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
 W tym artykule opisano opcje zabezpieczanie Centrum IoT. Centrum IoT używa *uprawnienia* uzyskać dostęp do każdego punktu końcowego Centrum IoT. Uprawnienia ograniczyć dostęp do Centrum IoT, w oparciu o funkcje.
 
-W tym artykule opisano:
+W tym artykule przedstawiono:
 
 * Inne uprawnienia można przyznać do urządzenia lub wewnętrznych aplikacji na dostęp do Centrum IoT.
 * Proces uwierzytelniania i tokenów używanych do Sprawdź uprawnienia.
 * Jak zakres poświadczenia, aby ograniczyć dostęp do określonych zasobów.
 * Obsługa Centrum IoT certyfikatów X.509.
 * Urządzeń niestandardowych mechanizmów uwierzytelniania, korzystających z istniejących rejestrów tożsamość urządzenia lub schematy uwierzytelniania.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Musi mieć odpowiednie uprawnienia do uzyskania dostępu punkty końcowe Centrum IoT. Na przykład urządzenie musi zawierać token zawierający poświadczenia zabezpieczeń, wraz z każdej wiadomości wysyłanych do Centrum IoT.
 
@@ -442,7 +444,7 @@ Inne tematy referencyjne w Podręczniku dewelopera Centrum IoT obejmują:
 * [Język zapytań Centrum IoT] [ lnk-query] opisuje język kwerendy można pobrać z Centrum IoT informacji o twins urządzenia i zadania.
 * [Obsługa MQTT Centrum IoT] [ lnk-devguide-mqtt] zapewnia więcej informacji na temat Centrum IoT obsługi protokołu MQTT.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, kiedy znasz sterowanie dostępem Centrum IoT, mogą być zainteresowane w następujących tematach przewodnik dewelopera Centrum IoT:
 

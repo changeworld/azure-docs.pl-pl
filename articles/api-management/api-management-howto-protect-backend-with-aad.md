@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3caa3d2b8640c83f1001aeac3b0a5e9ada143183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c05407d761a8848f9e032aa219960cd7ea6fa93
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>Jak zabezpieczyć interfejs API z usługi Azure Active Directory i zarządzanie interfejsami API przy użyciu protokołu OAuth 2.0
 
@@ -181,9 +181,9 @@ Kliknij przycisk **wysyłania** i powinno być możliwe do wywołania interfejsu
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Skonfiguruj zasady sprawdzania poprawności tokenu JWT wstępnie autoryzować żądania
 
-W tym momencie, gdy użytkownik podejmuje próbę nawiązania połączenia z konsoli dla deweloperów, użytkownik otrzyma monit Zaloguj się i konsoli dewelopera uzyska tokenu dostępu w imieniu użytkownika. Wszystko działa zgodnie z oczekiwaniami. Jednak co zrobić, jeśli ktoś wywołuje interfejsach API bez tokenu lub o nieprawidłowym tokenie? Na przykład, spróbuj usunąć `Authorization` nagłówka i zostanie ustalone, nadal można wywołać interfejsu API. Dzieje się tak, ponieważ APIM nie można zweryfikować tokenu dostępu w tym momencie. Przekazuje ono `Auhtorization` nagłówka do zaplecza interfejsu API.
+W tym momencie, gdy użytkownik podejmuje próbę nawiązania połączenia z konsoli dla deweloperów, użytkownik otrzyma monit Zaloguj się i konsoli dewelopera uzyska tokenu dostępu w imieniu użytkownika. Wszystko działa zgodnie z oczekiwaniami. Jednak co zrobić, jeśli ktoś wywołuje interfejsach API bez tokenu lub o nieprawidłowym tokenie? Na przykład, spróbuj usunąć `Authorization` nagłówka i zostanie ustalone, nadal można wywołać interfejsu API. Dzieje się tak, ponieważ APIM nie można zweryfikować tokenu dostępu w tym momencie. Po prostu przekazuje `Auhtorization` nagłówka do zaplecza interfejsu API.
 
-Możemy użyć [JWT do zweryfikowania](api-management-access-restriction-policies.md#ValidateJWT) zasad wstępnie autoryzować żądania w APIM weryfikując tokenów dostępu dla każdego żądania przychodzącego. Jeśli żądanie nie ma prawidłowy token, jest zablokowany przez interfejs API zarządzania i nie jest przekazywane do wewnętrznej bazy danych. Można dodać poniżej zasady `Echo API`. 
+Możemy użyć [JWT do zweryfikowania](api-management-access-restriction-policies.md#ValidateJWT) zasad wstępnie autoryzować żądania w APIM weryfikując tokenów dostępu dla każdego żądania przychodzącego. Jeśli żądanie nie ma prawidłowy token, jest zablokowany przez interfejs API zarządzania i nie jest przekazywane do wewnętrznej bazy danych. Na przykład można dodać poniżej zasady `<inbound>` sekcji zasad `Echo API`. Sprawdza oświadczeń odbiorców tokenu dostępu, a zwraca komunikat o błędzie, jeśli token jest nieprawidłowy. Aby uzyskać informacje na temat sposobu konfigurowania zasad, zobacz [ustawić lub edytować zasady](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -196,7 +196,12 @@ Możemy użyć [JWT do zweryfikowania](api-management-access-restriction-policie
 </validate-jwt>
 ```
 
+## <a name="build-an-application-to-call-the-api"></a>Tworzenie aplikacji do wywołania interfejsu API
+
+W tym przewodniku użyliśmy konsoli dewelopera w APIM jako przykładowej aplikacji klienta do wywołania `Echo API` chronione przez OAuth 2.0. Aby dowiedzieć się więcej na temat tworzenia aplikacji i implementacji przepływu OAuth 2.0, zobacz [przykłady kodu usługi Azure Active Directory](../active-directory/develop/active-directory-code-samples.md).
+
 ## <a name="next-steps"></a>Kolejne kroki
+* Dowiedz się więcej o [Azure Active Directory i OAuth2.0](../active-directory/develop/active-directory-authentication-scenarios.md)
 * Zapoznaj się z kilku [wideo](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o zarządzanie interfejsami API.
 * Aby uzyskać inne metody zabezpieczania usługi wewnętrznej bazy danych, zobacz [uwierzytelnianie wzajemne certyfikatu](api-management-howto-mutual-certificates.md).
 

@@ -1,11 +1,11 @@
 ---
-title: "Kopia zapasowa Azure — tworzenie kopii zapasowej obciążeń programu DPM w programie PowerShell | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie wdrażania i zarządzania nimi kopia zapasowa Azure dla Data Protection Manager (DPM) przy użyciu programu PowerShell"
+title: Kopia zapasowa Azure — tworzenie kopii zapasowej obciążeń programu DPM w programie PowerShell | Dokumentacja firmy Microsoft
+description: Informacje o sposobie wdrażania i zarządzania nimi kopia zapasowa Azure dla Data Protection Manager (DPM) przy użyciu programu PowerShell
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: NKolli1
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: e9bd223c-2398-4eb1-9bf3-50e08970fea7
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
-ms.openlocfilehash: 9322037427c84f0b8a91cc76f5c0fed52167bc3c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 89dd965208cd473e47de9e0c9bdbfa3ab986c3d5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Wdrażanie kopii zapasowych serwerów Data Protection Manager (DPM) na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób instalacji usługi Kopia zapasowa Azure na serwerze DPM przy użyciu programu PowerShell, a zarządzanie kopii zapasowych i odzyskiwania.
@@ -77,7 +77,7 @@ Poniższe kroki prowadzi przez proces tworzenia magazynu usług odzyskiwania. Ma
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. Określ typ nadmiarowość magazynu mają być używane; można użyć [lokalnie nadmiarowego magazynu (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) lub [z magazynu geograficznie nadmiarowego magazynu (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). W poniższym przykładzie przedstawiono, że opcja - BackupStorageRedundancy testVault jest ustawiona na GeoRedundant.
+4. Określ typ nadmiarowość magazynu mają być używane; można użyć [lokalnie nadmiarowego magazynu (LRS)](../storage/common/storage-redundancy-lrs.md) lub [z magazynu geograficznie nadmiarowego magazynu (GRS)](../storage/common/storage-redundancy-grs.md). W poniższym przykładzie przedstawiono, że opcja - BackupStorageRedundancy testVault jest ustawiona na GeoRedundant.
 
    > [!TIP]
    > Wiele poleceń cmdlet narzędzia Kopia zapasowa Azure wymaga obiektu magazynu usług odzyskiwania jako danych wejściowych. Z tego powodu jest wygodne do przechowywania obiektów magazynu usług odzyskiwania kopii zapasowej w zmiennej.
@@ -140,7 +140,7 @@ Dostępne opcje to:
 | /d |Odinstalowuje agenta usług odzyskiwania Microsoft Azure |- |
 | /pH |Adres hosta serwera proxy |- |
 | /Po |Numer portu hosta serwera proxy |- |
-| /Pu |Nazwa użytkownika serwera proxy hosta |- |
+| /pu |Nazwa użytkownika serwera proxy hosta |- |
 | /PW |Hasło serwera proxy |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Magazyn usługi rejestrowania programu DPM do odzyskiwania
@@ -309,10 +309,10 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 W powyższym przykładzie ```$onlineSch``` jest tablicą o czterech elementów zawierający istniejący harmonogram ochrony w trybie online dla grupy ochrony w schemacie GFS:
 
-1. ```$onlineSch[0]```zawiera harmonogramu dziennego
-2. ```$onlineSch[1]```zawiera harmonogramu tygodniowego
-3. ```$onlineSch[2]```zawiera harmonogramu miesięcznego
-4. ```$onlineSch[3]```zawiera corocznych harmonogramu
+1. ```$onlineSch[0]``` zawiera harmonogramu dziennego
+2. ```$onlineSch[1]``` zawiera harmonogramu tygodniowego
+3. ```$onlineSch[2]``` zawiera harmonogramu miesięcznego
+4. ```$onlineSch[3]``` zawiera corocznych harmonogramu
 
 Dlatego jeśli trzeba zmodyfikować harmonogram tygodniowy, trzeba odwoływać się do ```$onlineSch[1]```.
 
@@ -334,8 +334,8 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ## <a name="view-the-backup-points"></a>Wyświetlanie punktów kopii zapasowej
 Można użyć [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) polecenia cmdlet, aby uzyskać listę wszystkich punktów odzyskiwania dla źródła danych. W tym przykładzie zostaną wykonane następujące czynności:
 
-* Pobierz wszystkie PGA na serwerze DPM i przechowywane w tablicy```$PG```
-* Pobierz odpowiadający źródeł danych```$PG[0]```
+* Pobierz wszystkie PGA na serwerze DPM i przechowywane w tablicy ```$PG```
+* Pobierz odpowiadający źródeł danych ```$PG[0]```
 * Pobierz wszystkie punkty odzyskiwania dla źródła danych.
 
 ```

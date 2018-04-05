@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: da43e122c3e7d5e852107d4e4cca237ce4824267
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-caching-works"></a>Jak działa buforowanie
 
@@ -64,7 +64,7 @@ Dwa nagłówki mogą być używane do definiowania świeżości pamięci podręc
 ## <a name="cache-directive-headers"></a>Nagłówki pamięci podręcznej — dyrektywa
 
 > [!IMPORTANT]
-> Domyślnie usługi Azure CDN punktu końcowego, który jest zoptymalizowana pod kątem DSA ignoruje nagłówków pamięci podręcznej dyrektywy i pomija buforowania. Dla **Azure CDN from Verizon Standard** i **Azure CDN from Akamai Standard** profile, można dostosować sposób punktu końcowego usługi Azure CDN traktuje te nagłówki przy użyciu [reguły buforowania CDN](cdn-caching-rules.md)Aby włączyć buforowanie. Dla **Azure CDN from Verizon** tylko profile, użyj [aparatu reguł](cdn-rules-engine.md) Aby włączyć buforowanie.
+> Domyślnie usługi Azure CDN punktu końcowego, który jest zoptymalizowana pod kątem DSA ignoruje nagłówków pamięci podręcznej dyrektywy i pomija buforowania. Dla **Azure CDN from Verizon Standard** i **Azure CDN from Akamai Standard** profile, można dostosować sposób punktu końcowego usługi Azure CDN traktuje te nagłówki przy użyciu [reguły buforowania CDN](cdn-caching-rules.md)Aby włączyć buforowanie. Dla **Azure CDN from Verizon Premium** tylko profile, użyj [aparatu reguł](cdn-rules-engine.md) Aby włączyć buforowanie.
 
 Usługi Azure CDN obsługuje następujące dyrektywy pamięci podręcznej nagłówki HTTP, które definiują czas trwania pamięci podręcznej i współużytkowania pamięci podręcznej.
 

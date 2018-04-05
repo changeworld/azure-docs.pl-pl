@@ -1,11 +1,11 @@
 ---
-title: "Pobierz skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S: usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Ten artykuł przeprowadzi Cię przez pobierane skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager."
+title: 'Pobierz skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S: usługi Azure Resource Manager | Dokumentacja firmy Microsoft'
+description: Ten artykuł przeprowadzi Cię przez pobierane skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2018
+ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: 2ec428bc5d2cdfb376db3c27b9899014c7ffa2af
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 254f5012bfbf827aebc20d90405636dcb204193c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Pobierz skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S
 
 Ten artykuł przeprowadzi Cię przez pobierane skrypty do konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager. Na poniższym diagramie przedstawiono ogólny przepływ pracy.
 
 ![Pobieranie skryptu](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+
+Następujące urządzenia mają dostępnych skryptów:
+
+[!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
 ## <a name="about"></a>Temat skryptów konfiguracji urządzenia sieci VPN
 
@@ -81,14 +85,10 @@ Po utworzeniu zasobu połączenia, postępuj zgodnie z instrukcjami poniżej, ab
 
 Możesz również pobrać skrypt konfiguracji przy użyciu programu Azure PowerShell, jak pokazano w poniższym przykładzie:
 
-```powershell
-$Sub         = "<YourSubscriptionName>"
+```azurepowershell-interactive
 $RG          = "TestRG1"
 $GWName      = "VNet1GW"
-$Connection  = "VNet1toSite5"
-
-Login-AzureRmAccount
-Set-AzureRmContext -Subscription $Sub
+$Connection  = "VNet1toSite1"
 
 # List the available VPN device models and versions
 Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -Name $GWName -ResourceGroupName $RG

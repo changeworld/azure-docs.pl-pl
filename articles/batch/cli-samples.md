@@ -1,26 +1,26 @@
 ---
-title: "Przykłady interfejsu wiersza polecenia platformy Azure — Batch | Microsoft Docs"
-description: "Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Batch"
-services: virtual-machines-linux
+title: Przykłady interfejsu wiersza polecenia platformy Azure — Batch | Microsoft Docs
+description: Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Batch
+services: batch
 documentationcenter: batch
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 01/29/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1df259f32d9b811cc0a81e5ced62e74a3b7d140a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9eeb5879e0b8c2fefbc75986a655da8f78d608f6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Batch
 

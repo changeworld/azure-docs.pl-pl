@@ -1,25 +1,25 @@
 ---
-title: "Utwórz zadania przygotowanie zadania i zakończenie zadania na węzłach obliczeniowych - partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Użyj poziom zadania przygotowanie zadania, aby zminimalizować transfer danych w węzłach obliczeniowych partii zadań Azure, a następnie zwolnij zadania oczyszczania węzła po zakończeniu zadania."
+title: Utwórz zadania przygotowanie zadania i zakończenie zadania na węzłach obliczeniowych - partii zadań Azure | Dokumentacja firmy Microsoft
+description: Użyj poziom zadania przygotowanie zadania, aby zminimalizować transfer danych w węzłach obliczeniowych partii zadań Azure, a następnie zwolnij zadania oczyszczania węzła po zakończeniu zadania.
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aecce83b4d4444f2651f48475b596fa76cb5f44a
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 543c03c22b31389c3d6e048cc9f13c24add5aae7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchom zadanie przygotowanie i wersji zadania w partii węzły obliczeniowe
 
@@ -57,17 +57,17 @@ Warto przechowywać kopię plików dziennika, które generują zadań lub może 
 > 
 > 
 
-## <a name="job-preparation-task"></a>Zadanie przygotowanie zadania
+## <a name="job-preparation-task"></a>Zadanie przygotowania zadania
 Przed wykonaniem zadania wsadowego wykonuje zadanie przygotowanie zadania w każdym węźle obliczeń, który jest zaplanowane do uruchomienia zadania. Domyślnie usługa partia zadań czeka na zadanie przygotowanie zadania należy wykonać przed uruchomieniem zadania zaplanowane do wykonania na węźle. Można jednak skonfigurować usługę nie chcesz czekać. Jeśli węzeł zostanie uruchomiony ponownie, zostanie ponownie uruchomione zadanie przygotowanie zadania, ale można również wyłączyć to zachowanie.
 
 Zadanie przygotowanie zadania jest wykonywane tylko w przypadku węzłów, które są zaplanowane do uruchomienia zadania. Zapobiega to niepotrzebnych wykonywanie przygotowanie zadania, w przypadku, gdy węzeł nie jest przypisany zadania. Taka sytuacja może wystąpić, gdy liczba zadań dla zadania jest mniejsza niż liczba węzłów w puli. Ma również zastosowanie podczas [wykonywanie zadań jednoczesnych](batch-parallel-node-tasks.md) jest włączony, dlatego jeśli bezczynności niektóre węzły liczby zadań jest niższa niż całkowita liczba zadań jednoczesnych możliwe. Przez nie uruchomione zadanie przygotowanie zadania w węzłach bezczynności, możesz można kupować mniej opłat za transfer danych.
 
 > [!NOTE]
-> [JobPreparationTask] [ net_job_prep_cloudjob] różni się od [CloudPool.StartTask] [ pool_starttask] w tym JobPreparationTask wykonuje się na początku każdego zadania, natomiast StartTask wykonuje tylko wtedy, gdy węzeł obliczeniowy najpierw dołącza pulę lub ponownego uruchomienia.
+> [JobPreparationTask] [ net_job_prep_cloudjob] różni się od [CloudPool.StartTask] [ pool_starttask] w tym JobPreparationTask wykonuje się na początku każdego zadania, natomiast StartTask wykonuje, tylko gdy węzeł obliczeniowy najpierw dołącza puli lub ponownego uruchomienia.
 > 
 > 
 
-## <a name="job-release-task"></a>Zadanie zwolnienie zadania
+## <a name="job-release-task"></a>Zadanie zwolnienia zadania
 Gdy zadanie jest oznaczony jako ukończone, zadanie zwolnienie zadania jest wykonywany w każdym węźle w puli, która jest wykonywana co najmniej jedno zadanie. Zadania są oznaczone jako ukończone, wysyłając żądanie przerwania. Następnie usługa partia zadań ustawia stan zadania na *przerywanie*kończy żadnych zadań aktywnych lub nie działają, skojarzone z zadaniem i uruchamia zadanie zwolnienie zadania. Zadanie zostaje następnie przeniesiona do *ukończone* stanu.
 
 > [!NOTE]
@@ -183,7 +183,7 @@ Poniżej przedstawiono zrzut ekranu **przygotowanie zadania bloku** w portalu Az
 
 ![Właściwości przygotowanie zadania w portalu Azure][1]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 ### <a name="application-packages"></a>Pakiety aplikacji
 Oprócz zadanie przygotowanie zadania, można również użyć [pakietów aplikacji](batch-application-packages.md) funkcji partii do przygotowania do wykonania zadań węzłów obliczeniowych. Ta funkcja jest szczególnie przydatna w przypadku wdrażania aplikacji, które nie wymagają uruchomiony Instalator, aplikacje, które zawierają wiele plików (100 +) lub aplikacji, które wymagają kontroli wersji strict.
 

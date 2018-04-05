@@ -1,12 +1,12 @@
 ---
-title: "Wdrażanie systemu Windows 10 na platformie Azure z wielodostępnej Hosting uprawnień"
-description: "Dowiedz się, jak zmaksymalizować korzyści programu Windows Software Assurance w celu przełączenia lokalnej licencji Azure"
+title: Wdrażanie systemu Windows 10 na platformie Azure z wielodostępnej Hosting uprawnień
+description: Dowiedz się, jak zmaksymalizować korzyści programu Windows Software Assurance w celu przełączenia lokalnej licencji Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: xujing
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 6ad3b294e1d53d03f6ceb61048c8f657d8b471c0
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: c157fd8fded40f08c997c29ef6761f3c09dbd282
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Wdrażanie systemu Windows 10 na platformie Azure z wielodostępnej Hosting uprawnień 
 W przypadku klientów z systemem Windows 10 Enterprise E3/E5 dla poszczególnych użytkowników lub dostęp do pulpitu wirtualnego systemu Windows na użytkownika (licencji subskrypcji użytkownika lub licencji subskrypcji użytkownika dodatku) wielodostępnej Hosting praw dla systemu Windows 10 pozwala załadować licencji systemu Windows 10 do chmury i uruchom maszyny wirtualne systemu Windows 10 na platformie Azure, bez płatności dla innej licencji. Aby uzyskać więcej informacji, zobacz [wielodostępnej Hosting dla systemu Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -107,7 +107,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Dodatkowe informacje na temat przyłączania usługi Azure AD
 >[!NOTE]
->Azure udostępnia wszystkie maszyny wirtualne systemu Windows z wbudowanego konta administratora, którego nie można przyłączyć usługi AAD. Na przykład *Ustawienia > konta > dostępu pracy lub nauki > + Połącz* nie będzie działać. Należy utworzyć i zaloguj się jako drugiego konta administratora w celu dołączenia mannually usługi Azure AD. Można również skonfigurować usługi Azure AD przy użyciu pakietu inicjowania obsługi administracyjnej, użyj tego linku jest *następne kroki* sekcji, aby dowiedzieć się więcej.
+>Azure udostępnia wszystkie maszyny wirtualne systemu Windows z wbudowanego konta administratora, którego nie można przyłączyć usługi AAD. Na przykład *Ustawienia > konta > dostępu pracy lub nauki > + Połącz* nie będzie działać. Należy utworzyć i zaloguj się jako drugiego konta administratora do przyłączenia ręcznie usługi Azure AD. Można również skonfigurować usługi Azure AD przy użyciu pakietu inicjowania obsługi administracyjnej, użyj tego linku jest *następne kroki* sekcji, aby dowiedzieć się więcej.
 >
 >
 

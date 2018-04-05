@@ -1,30 +1,30 @@
 ---
-title: "Omówienie zasobów Azure PIM RBAC | Dokumentacja firmy Microsoft"
-description: "Zapoznaj się z omówieniem funkcji RBAC w PIM tym terminologii i powiadomienia"
+title: Omówienie zasobów Azure PIM RBAC | Dokumentacja firmy Microsoft
+description: Zapoznaj się z omówieniem funkcji RBAC w PIM tym terminologii i powiadomienia
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2017
-ms.author: barclayn
-ms.openlocfilehash: 19715f800e7d8d40336d8e9fa3bf8073795dce5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pim-for-azure-resources-preview"></a>PIM zasobów Azure (wersja zapoznawcza)
+# <a name="pim-for-azure-resources"></a>PIM dla zasobów platformy Azure
 
-Z usługi Azure Active Directory uprzywilejowanych tożsamości zarządzania (PIM), mogą teraz zarządzać, kontrolę i monitorowanie dostępu do zasobów Azure (wersja zapoznawcza) w ramach danej organizacji. W tym subskrypcji, grupy zasobów i nawet maszyn wirtualnych. Dowolnego zasobu w portalu Azure, która korzysta z funkcji Azure roli na podstawie kontroli dostępu (RBAC) korzystać ze wszystkich niezwykłych zabezpieczeń i możliwości zarządzania cyklem życia Azure AD PIM musi oferować i nowe, fantastyczne funkcje planujemy doprowadzić do Wkrótce role w AD platformy Azure. 
+Z usługi Azure Active Directory uprzywilejowanych tożsamości zarządzania (PIM), mogą teraz zarządzać, kontrolę i monitorowanie dostępu do zasobów platformy Azure w ramach danej organizacji. W tym subskrypcji, grupy zasobów i nawet maszyn wirtualnych. Dowolnego zasobu w portalu Azure, która korzysta z funkcji Azure roli na podstawie kontroli dostępu (RBAC) korzystać ze wszystkich niezwykłych zabezpieczeń i możliwości zarządzania cyklem życia Azure AD PIM musi oferować i nowe, fantastyczne funkcje planujemy doprowadzić do Wkrótce role w AD platformy Azure. 
 
-## <a name="pim-for-azure-resources-preview-helps-resource-administrators"></a>PIM zasobów Azure (wersja zapoznawcza) ułatwia administratorom zasobów
+## <a name="pim-for-azure-resources-helps-resource-administrators"></a>PIM zasobów Azure ułatwia administratorom zasobów
 
 - Zobacz, którzy użytkownicy i grupy są przypisane role dla zasobów platformy Azure, którą możesz administrować
 - Włącz na żądanie, "just in time" dostęp do zarządzania zasobami subskrypcji, grupy zasobów i więcej
@@ -49,15 +49,15 @@ Użytkowników lub członków grupy przypisane do ról właściciel lub Administ
 
 PIM umożliwia wygodne dostęp do aktywowania usługi ról, wyświetlanie oczekujących aktywacji /, oczekujących żądań zatwierdzenia (dla [ról katalogu usługi Azure AD](azure-ad-pim-approval-workflow.md)) i monitoruje oczekuje na Twoją odpowiedź z sekcji zadań menu nawigacji po lewej stronie.
 
-Podczas uzyskiwania dostępu do żadnego z elementów menu zadania z punktu wejścia Przegląd, wynikowy widok zawiera wyniki zarówno usługi Azure AD directory ról i zasobów Azure (wersja zapoznawcza). 
+Podczas uzyskiwania dostępu do żadnego z elementów menu zadania z punktu wejścia Przegląd, wynikowy widok zawiera wyniki zarówno usługi Azure AD directory ról i zasobów Azure. 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
 
-Moje role zawierają listę przypisania roli active i kwalifikujących się do ról katalogu usługi Azure AD i role zasobów Azure (wersja zapoznawcza).
+Moje role zawierają listę przypisania roli active i kwalifikujących się ról katalogu usługi Azure AD i ról zasobów Azure.
 
 ## <a name="activate-roles"></a>Uaktywnij role
 
-Aktywacja ról zasobów Azure (wersja zapoznawcza) wprowadza nową funkcjonalność, która umożliwia członkom roli kwalifikujących się do planowania aktywacji dla przyszłych daty/godziny i wybierz czas trwania aktywacji określonym terminie (skonfigurowanych przez administratorów). Dowiedz się więcej o [Aktywacja usługi Azure AD ról tutaj](../active-directory-privileged-identity-management-how-to-activate-role.md).
+Aktywacja ról zasobów Azure wprowadza nową funkcjonalność, która umożliwia członkom roli kwalifikujących się do planowania aktywacji dla przyszłych daty/godziny i wybierz czas trwania aktywacji określonym terminie (skonfigurowanych przez administratorów). Dowiedz się więcej o [Aktywacja usługi Azure AD ról tutaj](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -73,7 +73,7 @@ Jeśli aktywacja jest zaplanowane na czas datę w przyszłości, oczekujące ż�
 
 ## <a name="discover-and-manage-azure-resources"></a>Odnajdywanie i zarządzania zasobami Azure
 
-Aby znaleźć i zarządzanie rolami dla zasobów Azure, wybierz zasobów Azure (wersja zapoznawcza) na karcie Zarządzanie w menu nawigacji po lewej stronie. Użyj filtrów lub pasek wyszukiwania w górnej części strony, aby znaleźć zasobu.
+Aby znaleźć i zarządzanie rolami dla zasobów Azure, wybierz zasobów platformy Azure na karcie Zarządzanie w menu nawigacji po lewej stronie. Użyj filtrów lub pasek wyszukiwania w górnej części strony, aby znaleźć zasobu.
 
 ![](media/azure-pim-resource-rbac/azure-resources.png)
 
@@ -173,10 +173,10 @@ Zmiany ustawień są rejestrowane na stronie Ustawienia roli, łącznie z ostatn
 
 ![](media/azure-pim-resource-rbac/role-settings-02.png)
 
-## <a name="resource-audit"></a>Inspekcji zasobów
+## <a name="resource-audit"></a>Inspekcja zasobu
 
 Inspekcji zasobów umożliwia wyświetlanie wszystkich działań roli dla zasobu. Można filtrować dane przy użyciu wstępnie zdefiniowanych datę lub zakres niestandardowych.
-![](media/azure-pim-resource-rbac/last-day.png)Inspekcji zasobów również zapewnia szybki dostęp, aby wyświetlić szczegóły działania użytkownika. W widoku wszystkie akcje "Uaktywnij rolę" podano linki do działania zasobu określonego obiektu żądającego.
+![](media/azure-pim-resource-rbac/last-day.png) Inspekcji zasobów również zapewnia szybki dostęp, aby wyświetlić szczegóły działania użytkownika. W widoku wszystkie akcje "Uaktywnij rolę" podano linki do działania zasobu określonego obiektu żądającego.
 ![](media/azure-pim-resource-rbac/resource-audit.png)
 
 ## <a name="just-enough-administration"></a>Wystarczającego administracji
@@ -191,7 +191,7 @@ Wybierz z menu nawigacji po lewej stronie Moje ról, a następnie wybierz odpowi
 
 ![](media/azure-pim-resource-rbac/my-roles-02.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wbudowane role zasobów platformy Azure](../role-based-access-built-in-roles.md)
 - Dowiedz się więcej o [aktywowanie tutaj ról usługi Azure AD](../active-directory-privileged-identity-management-how-to-activate-role.md)

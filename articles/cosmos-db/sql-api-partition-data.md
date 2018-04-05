@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fe78289938e752731ff2e830fb62ad210e12111e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Podział na partycje w usłudze Azure DB rozwiązania Cosmos przy użyciu interfejsu API SQL
 
@@ -78,7 +78,7 @@ W interfejsu API SQL należy określić definicję klucza partycji w formie ści
 Oto jak wybór klucza partycji ma wpływ na wydajność aplikacji.
 
 ## <a name="working-with-the-azure-cosmos-db-sdks"></a>Praca z zestawów SDK usługi Azure rozwiązania Cosmos bazy danych
-Azure DB rozwiązania Cosmos dodano obsługę automatycznego partycjonowania z [interfejsu API REST wersji 2015-12-16](/rest/api/documentdb/). Aby można było utworzyć kontenery podzielonym na partycje, należy pobrać zestaw SDK w wersji 1.6.0 lub nowszej w jednym z obsługiwanych Platform SDK (.NET, Node.js, Java, Python, bazy danych MongoDB). 
+Azure DB rozwiązania Cosmos dodano obsługę automatycznego partycjonowania z [interfejsu API REST wersji 2015-12-16](/rest/api/cosmos-db/). Aby można było utworzyć kontenery podzielonym na partycje, należy pobrać zestaw SDK w wersji 1.6.0 lub nowszej w jednym z obsługiwanych Platform SDK (.NET, Node.js, Java, Python, bazy danych MongoDB). 
 
 ### <a name="creating-containers"></a>Tworzenie kontenerów
 Poniższy przykład przedstawia fragment .NET, aby utworzyć kontener do przechowywania danych telemetrycznych urządzenie 20 000 jednostek żądań na sekundę, przepływności. Zestaw SDK ustawia wartość OfferThroughput (który z kolei ustawia `x-ms-offer-throughput` nagłówek żądania w interfejsie API REST). W tym miejscu możemy ustawić `/deviceId` jako klucza partycji. Wybór klucza partycji są zapisywane wraz z resztą metadanych kontenera, takie jak nazwa i zasady indeksowania.
@@ -225,6 +225,6 @@ W następnej sekcji opisano, jak można przenieść do kontenerów podzielonym n
 W tym artykule podaliśmy omówienie sposobu pracy z partycji bazy danych Azure rozwiązania Cosmos kontenerów przy użyciu interfejsu API SQL. Zobacz też [partycjonowania i skalowanie w poziomie](../cosmos-db/partition-data.md) omówienie pojęć i najlepsze rozwiązania dotyczące partycjonowania z jakiegokolwiek interfejsu API Azure rozwiązania Cosmos bazy danych. 
 
 * Należy przeprowadzić testowanie z bazy danych Azure rozwiązania Cosmos wydajności i skalowania. Zobacz [wydajności i skalowania testowania z bazy danych Azure rozwiązania Cosmos](performance-testing.md) przykładowe.
-* Rozpoczynanie pracy kodowanie dzięki funkcjom [zestawów SDK](sql-api-sdk-dotnet.md) lub [interfejsu API REST](/rest/api/documentdb/)
+* Rozpoczynanie pracy kodowanie dzięki funkcjom [zestawów SDK](sql-api-sdk-dotnet.md) lub [interfejsu API REST](/rest/api/cosmos-db/)
 * Dowiedz się więcej o [udostępnionej przepływności w usłudze Azure DB rozwiązania Cosmos](request-units.md)
 

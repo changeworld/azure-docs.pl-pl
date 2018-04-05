@@ -1,25 +1,25 @@
 ---
-title: "Automatyczne skalowanie obliczeniowe węzłów w puli partii zadań Azure | Dokumentacja firmy Microsoft"
-description: "Włącz automatyczne skalowanie w puli chmury można dynamicznie zmieniać liczbę węzłów obliczeniowych w puli."
+title: Automatyczne skalowanie obliczeniowe węzłów w puli partii zadań Azure | Dokumentacja firmy Microsoft
+description: Włącz automatyczne skalowanie w puli chmury można dynamicznie zmieniać liczbę węzłów obliczeniowych w puli.
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0e49cd8a64a48c53f5b6104703164a597c797f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1114ea90ae6976a3bc3580ebae5fd853de0274a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę Skalowanie automatyczne skalowanie węzłów obliczeniowych w puli partii
 
@@ -125,17 +125,17 @@ Te typy są obsługiwane w formule:
 * O podwójnej precyzji
 * doubleVec
 * doubleVecList
-* Ciąg
+* ciąg
 * Sygnatura czasowa — sygnatura czasowa jest złożone struktura, która zawiera następujące składniki:
 
-  * Roku
+  * rok
   * miesiąc (1-12)
   * dzień (1-31)
   * dzień tygodnia (w formacie numeru; na przykład 1, od poniedziałku)
   * Godzina (w formacie liczby 24-godzinnym; na przykład 13 oznacza 13: 00)
   * minut (00 do 59)
   * drugie (00 do 59)
-* parametru TimeInterval
+* timeinterval
 
   * TimeInterval_Zero
   * TimeInterval_100ns
@@ -154,16 +154,16 @@ Te operacje są dozwolone w typach, które są wymienione w poprzedniej sekcji.
 | Operacja | Operatory obsługiwane | Typ wyniku |
 | --- | --- | --- |
 | Podwójna *operator* podwójne |+, -, *, / |O podwójnej precyzji |
-| Podwójna *operator* parametru timeinterval |* |parametru TimeInterval |
+| Podwójna *operator* parametru timeinterval |* |timeinterval |
 | doubleVec *operator* podwójne |+, -, *, / |doubleVec |
 | doubleVec *operator* doubleVec |+, -, *, / |doubleVec |
-| parametru TimeInterval *operator* podwójne |*, / |parametru TimeInterval |
-| parametru TimeInterval *operator* parametru timeinterval |+, - |parametru TimeInterval |
+| parametru TimeInterval *operator* podwójne |*, / |timeinterval |
+| parametru TimeInterval *operator* parametru timeinterval |+, - |timeinterval |
 | parametru TimeInterval *operator* sygnatury czasowej |+ |sygnatura czasowa |
 | Sygnatura czasowa *operator* parametru timeinterval |+ |sygnatura czasowa |
-| Sygnatura czasowa *operator* sygnatury czasowej |- |parametru TimeInterval |
+| Sygnatura czasowa *operator* sygnatury czasowej |- |timeinterval |
 | *operator*podwójne |-, ! |O podwójnej precyzji |
-| *operator*parametru timeinterval |- |parametru TimeInterval |
+| *operator*timeinterval |- |timeinterval |
 | Podwójna *operator* podwójne |<, <=, ==, >=, >, != |O podwójnej precyzji |
 | ciąg *operator* ciągu |<, <=, ==, >=, >, != |O podwójnej precyzji |
 | Sygnatura czasowa *operator* sygnatury czasowej |<, <=, ==, >=, >, != |O podwójnej precyzji |
@@ -180,17 +180,17 @@ Te wstępnie zdefiniowane **funkcje** są dostępne do użycia podczas definiowa
 | AVG(doubleVecList) |O podwójnej precyzji |Zwraca średnią wartość dla wszystkich wartości w doubleVecList. |
 | Len(doubleVecList) |O podwójnej precyzji |Zwraca długość wektora, która jest tworzona na podstawie doubleVecList. |
 | LG(Double) |O podwójnej precyzji |Zwraca dziennik podstawowej 2 podwójnego. |
-| LG(doubleVecList) |doubleVec |Zwraca podstawie 2 doubleVecList component-wise dziennika. Vec(double) muszą być jawnie przekazywane w parametrze. W przeciwnym razie przyjęto wersji lg(double) dwa razy. |
+| lg(doubleVecList) |doubleVec |Zwraca podstawie 2 doubleVecList component-wise dziennika. Vec(double) muszą być jawnie przekazywane w parametrze. W przeciwnym razie przyjęto wersji lg(double) dwa razy. |
 | ln(Double) |O podwójnej precyzji |Zwraca logarytm naturalny podwójnego. |
 | ln(doubleVecList) |doubleVec |Zwraca podstawie 2 doubleVecList component-wise dziennika. Vec(double) muszą być jawnie przekazywane w parametrze. W przeciwnym razie przyjęto wersji lg(double) dwa razy. |
 | log(Double) |O podwójnej precyzji |Zwraca dziennik podwójnego o podstawie 10. |
 | log(doubleVecList) |doubleVec |Zwraca dziennik component-wise doubleVecList o podstawie 10. Vec(double) muszą być jawnie przekazywane dla jednego parametru dwa razy. W przeciwnym razie przyjęto wersji log(double) dwa razy. |
-| MAX(doubleVecList) |O podwójnej precyzji |Zwraca maksymalną wartość doubleVecList. |
+| max(doubleVecList) |O podwójnej precyzji |Zwraca maksymalną wartość doubleVecList. |
 | min(doubleVecList) |O podwójnej precyzji |Zwraca minimalną wartość doubleVecList. |
 | norm(doubleVecList) |O podwójnej precyzji |Zwraca dwa normy wektora, która jest tworzona na podstawie doubleVecList. |
 | percentyl (v doubleVec podwójne p) |O podwójnej precyzji |Zwraca element percentyl wektora v. |
-| RAND() |O podwójnej precyzji |Zwraca wartość losowe od 0,0 do 1,0. |
-| Range(doubleVecList) |O podwójnej precyzji |Zwraca różnicę między minimalną i maksymalną wartości doubleVecList. |
+| rand() |O podwójnej precyzji |Zwraca wartość losowe od 0,0 do 1,0. |
+| range(doubleVecList) |O podwójnej precyzji |Zwraca różnicę między minimalną i maksymalną wartości doubleVecList. |
 | STD(doubleVecList) |O podwójnej precyzji |Zwraca odchylenie standardowe przykładowe wartości doubleVecList. |
 | stop() | |Zatrzymuje obliczania wyrażenia Skalowanie automatyczne. |
 | sum(doubleVecList) |O podwójnej precyzji |Zwraca sumę wszystkich składników doubleVecList. |
@@ -212,9 +212,9 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | Metoda | Opis |
 | --- | --- |
-| GetSample() |`GetSample()` Metoda zwraca wektor próbek danych.<br/><br/>Przykładowe wynosi 30 sekund warto danych metryki. Innymi słowy przykłady są uzyskiwane co 30 sekund. Ale przypadków wymienionych poniżej, opóźnienie między po próbki są zbierane i gdy jest ona dostępna do formuły. Tak nie wszystkie przykłady w danym czasie może być dostępny do szacowania przez formułę.<ul><li>`doubleVec GetSample(double count)`<br/>Określa liczbę próbek można uzyskać z najnowsze przykłady, które zostały zebrane.<br/><br/>`GetSample(1)`Zwraca ostatniej próbki dostępne. Dla metryk, takich jak `$CPUPercent`, jednak to nie stosuje się, ponieważ nie jest możliwe, należy wiedzieć *podczas* próbki został zebrany. Może być ostatnie lub z powodu problemów dotyczących systemu, może być znacznie starsza. Najlepiej w takich przypadkach można użyć przedział czasu, jak pokazano poniżej.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Określa przedział czasu zbierania przykładowych danych. Opcjonalnie określa również wartość procentowa próbek, które muszą być dostępne w ramach czasowych żądanej.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`zwróci 20 próbek, gdy wszystkie próbki dla ostatnich 10 minut znajdują się w historii CPUPercent. Jeśli w ciągu ostatniej minuty Historia nie jest dostępna, jednak tylko 18 przykłady będzie zwracany. W takim przypadku:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)`nie powiedzie się, ponieważ nie są dostępne tylko 90 procent próbek.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)`powiedzie się.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Określa przedział czasu zbierania danych z godziny rozpoczęcia i godzina zakończenia.<br/><br/>Jak wspomniano powyżej, istnieje opóźnienie między po próbki są zbierane i gdy jest ona dostępna do formuły. Należy rozważyć to opóźnienie, korzystając z `GetSample` metody. Zobacz `GetSamplePercent` poniżej. |
+| GetSample() |`GetSample()` Metoda zwraca wektor próbek danych.<br/><br/>Przykładowe wynosi 30 sekund warto danych metryki. Innymi słowy przykłady są uzyskiwane co 30 sekund. Ale przypadków wymienionych poniżej, opóźnienie między po próbki są zbierane i gdy jest ona dostępna do formuły. Tak nie wszystkie przykłady w danym czasie może być dostępny do szacowania przez formułę.<ul><li>`doubleVec GetSample(double count)`<br/>Określa liczbę próbek można uzyskać z najnowsze przykłady, które zostały zebrane.<br/><br/>`GetSample(1)` Zwraca ostatniej próbki dostępne. Dla metryk, takich jak `$CPUPercent`, jednak to nie stosuje się, ponieważ nie jest możliwe, należy wiedzieć *podczas* próbki został zebrany. Może być ostatnie lub z powodu problemów dotyczących systemu, może być znacznie starsza. Najlepiej w takich przypadkach można użyć przedział czasu, jak pokazano poniżej.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Określa przedział czasu zbierania przykładowych danych. Opcjonalnie określa również wartość procentowa próbek, które muszą być dostępne w ramach czasowych żądanej.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` zwróci 20 próbek, gdy wszystkie próbki dla ostatnich 10 minut znajdują się w historii CPUPercent. Jeśli w ciągu ostatniej minuty Historia nie jest dostępna, jednak tylko 18 przykłady będzie zwracany. W takim przypadku:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` nie powiedzie się, ponieważ nie są dostępne tylko 90 procent próbek.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` powiedzie się.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Określa przedział czasu zbierania danych z godziny rozpoczęcia i godzina zakończenia.<br/><br/>Jak wspomniano powyżej, istnieje opóźnienie między po próbki są zbierane i gdy jest ona dostępna do formuły. Należy rozważyć to opóźnienie, korzystając z `GetSample` metody. Zobacz `GetSamplePercent` poniżej. |
 | GetSamplePeriod() |Zwraca okres próbek, które zostały wykonane w zestawie danych historycznych próbki. |
-| Funkcji Count() |Zwraca łączna liczba próbek w historii metryki. |
+| Count() |Zwraca łączna liczba próbek w historii metryki. |
 | HistoryBeginTime() |Zwraca sygnaturę czasową najstarsze próbki dostępnych danych dla metryki. |
 | GetSamplePercent() |Zwraca wartość procentowa próbek, które są dostępne dla danego interwału. Na przykład:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Ponieważ `GetSample` metody zakończy się niepowodzeniem, jeśli wartość procentowa próbek zwracany jest mniejsza niż `samplePercent` określony, można użyć `GetSamplePercent` metodę, aby sprawdzić w pierwszej kolejności. Następnie można wykonać akcję alternatywną, jeśli brakuje przykłady są obecne, bez zatrzymania automatycznego skalowania oceny. |
 
@@ -385,7 +385,7 @@ Oprócz partiami platformy .NET, można użyć dowolnego z innych [wsadowego zes
 ### <a name="automatic-scaling-interval"></a>Interwał automatycznego skalowania
 Domyślnie usługa partia zadań dopasowuje rozmiar puli zgodnie z jego formułą automatycznego skalowania co 15 minut. Interwał ten jest można skonfigurować za pomocą następujących właściwości puli:
 
-* [CloudPool.AutoScaleEvaluationInterval] [ net_cloudpool_autoscaleevalinterval] (wsadowe .NET)
+* [CloudPool.AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
 * [autoScaleEvaluationInterval] [ rest_autoscaleinterval] (interfejsu API REST)
 
 Minimalny interwał to pięć minut, a maksymalna to 168 godzin. Jeśli określono interwał poza tym zakresem, usługa partia zadań zwrócą błąd nieprawidłowe żądanie (400).
@@ -399,7 +399,7 @@ Minimalny interwał to pięć minut, a maksymalna to 168 godzin. Jeśli określo
 
 Zestaw SDK każdej partii udostępnia sposób, aby umożliwić skalowanie automatyczne. Na przykład:
 
-* [BatchClient.PoolOperations.EnableAutoScaleAsync] [ net_enableautoscaleasync] (wsadowe .NET)
+* [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Włącz automatyczne skalowanie w puli] [ rest_enableautoscale] (interfejsu API REST)
 
 Po włączeniu Skalowanie automatyczne w istniejącej puli pamiętać następujące kwestie:
@@ -655,7 +655,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Maksymalizowanie użycia zasobów obliczeniowych partii zadań Azure z węzła równoczesnych zadań](batch-parallel-node-tasks.md) zawiera szczegółowe informacje o sposobie można wykonywać wielu zadań jednocześnie w węzłach obliczeniowych w puli. Oprócz Skalowanie automatyczne ta funkcja może pomóc zmniejszyć czas trwania zadania dla niektórych obciążeń, co pozwala zaoszczędzić pieniądze.
 * Dla innego wydajności zestawu wspomagającego upewnij się, że aplikacja partii zapytań usługa partia zadań w optymalny sposób. Zobacz [wydajnie zapytania usługi partia zadań Azure](batch-efficient-list-queries.md) Aby dowiedzieć się, jak ograniczyć ilość danych w sieci po wykonaniu kwerendy stanu tysięcy węzłów obliczeniowych lub zadania.
 

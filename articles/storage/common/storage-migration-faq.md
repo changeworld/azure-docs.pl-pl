@@ -1,6 +1,6 @@
 ---
-title: "Migracja magazynu Azure — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania dotyczące migracji usługi Azure Storage"
+title: Migracja magazynu Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania dotyczące migracji usługi Azure Storage
 services: storage
 documentationcenter: na
 author: genlin
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 89d1a4767c240c7e4fedb9d7ac47d6d4fb0aa737
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -168,7 +168,7 @@ Użyj narzędzia AzCopy można pobrać danych. Aby uzyskać więcej informacji, 
 
 **Jak zmienić lokalizacji dodatkowej, regionie Europy dla konta magazynu?**
 
-Po utworzeniu konta magazynu, należy wybrać regionie podstawowym konta. Wybór dodatkowej region jest oparta na regionie podstawowym, a nie można zmienić. Aby uzyskać więcej informacji, zobacz [replikacja usługi Azure Storage](storage-redundancy.md).
+Po utworzeniu konta magazynu, należy wybrać regionie podstawowym konta. Wybór dodatkowej region jest oparta na regionie podstawowym, a nie można zmienić. Aby uzyskać więcej informacji, zobacz [magazyn geograficznie nadmiarowy (GRS): replikacji między regionalne usługi Azure Storage](storage-redundancy.md).
 
 **Gdzie można uzyskać więcej informacji o szyfrowanie usługi Magazyn Azure (SSE)?**  
   
@@ -284,7 +284,7 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
     - **Token sygnatury dostępu Współdzielonego**: Użyj tokenu sygnatury dostępu Współdzielonego uzyskują dostęp do danych z punktu końcowego. Aby uzyskać więcej informacji, zobacz [używanie sygnatury dostępu współdzielonego](storage-dotnet-shared-access-signature-part-1.md).
 
-**Jak używać domeny niestandardowej HTTPS z moim koncie magazynu? Na przykład, jak utworzyć "https://mystorageaccountname.blob.core.windows.net/images/image.gif" są wyświetlane jako "https://www.contoso.com/images/image.gif"?**
+**Jak używać domeny niestandardowej HTTPS z moim koncie magazynu? Na przykład, jak utworzyć "https://mystorageaccountname.blob.core.windows.net/images/image.gif"są wyświetlane jako"https://www.contoso.com/images/image.gif"?**
 
 Protokół SSL nie jest obecnie obsługiwane na kontach magazynu z domen niestandardowych.
 Jednak można użyć niestandardowej domeny z systemem innym niż HTTPS. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowej nazwy domeny dla punktu końcowego magazynu obiektów Blob](../blobs/storage-custom-domain-name.md).

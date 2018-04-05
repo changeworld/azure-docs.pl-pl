@@ -1,11 +1,11 @@
 ---
-title: "Zrozumienie język zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft"
-description: "Przewodnik dewelopera — opis języka zapytań Centrum IoT przypominającego SQL używane do pobierania informacji o urządzeniu twins i zadania z Centrum IoT."
+title: Zrozumienie język zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — opis języka zapytań Centrum IoT przypominającego SQL używane do pobierania informacji o urządzeniu twins i zadania z Centrum IoT.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 851a9ed3-b69e-422e-8a5d-1d79f91ddf15
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 624f706532645034f19af15d10352dbc6db0b6c1
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Język zapytań Centrum IoT urządzenia twins, zadań i rozsyłania wiadomości
 
@@ -26,6 +26,8 @@ Centrum IoT zapewnia zaawansowane języka przypominającego SQL, aby pobrać inf
 
 * Wprowadzenie do najważniejszych funkcji języka kwerend Centrum IoT, i
 * Szczegółowy opis języka.
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-twin-queries"></a>Urządzenie dwie zapytań
 [Urządzenie twins] [ lnk-twins] może zawierać dowolne obiekty JSON jako znaczniki i właściwości. Centrum IoT umożliwia twins urządzenia zapytania jako pojedynczego dokumentu JSON zawierający wszystkie informacje dwie urządzenia.
@@ -416,7 +418,7 @@ FROM <from_specification>
 [GROUP BY <group_specification>]
 ```
 
-## <a name="from-clause"></a>klauzula FROM
+## <a name="from-clause"></a>Klauzula FROM
 **z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **z urządzeń** do twins urządzenia zapytania, lub **z devices.jobs** do szczegółów na urządzenie zadania zapytania.
 
 ## <a name="where-clause"></a>Klauzula WHERE
@@ -424,7 +426,7 @@ FROM <from_specification>
 
 Dozwolone warunki opisane w sekcji [wyrażeń i warunki][lnk-query-expressions].
 
-## <a name="select-clause"></a>klauzula SELECT
+## <a name="select-clause"></a>Klauzula SELECT
 **Wybierz < select_list >** jest wymagana i określa, jakie wartości są pobierane z zapytania. Określa wartości JSON ma być używany do generowania nowych obiektów JSON.
 Dla każdego elementu filtrowane (i opcjonalnie grupowanych) podzestaw kolekcji FROM faza projekcji generuje nowy obiekt JSON. Ten obiekt jest tworzony przy użyciu wartości określone w klauzuli SELECT.
 
@@ -454,7 +456,7 @@ SELECT [TOP <max number>] <projection list>
 
 Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w zapytaniach agregacji w twins urządzenia.
 
-## <a name="group-by-clause"></a>klauzula GROUP BY
+## <a name="group-by-clause"></a>Klauzula GROUP BY
 **GROUP BY < group_specification >** klauzuli to krok opcjonalny, który jest wykonywany po określony w klauzuli WHERE, a przed projekcji określonej w polu Wybierz filtr. Grup dokumentów na podstawie wartości atrybutu. Te grupy są używane do generowania wartości zagregowane, jak określono w klauzuli SELECT.
 
 Przykładem zapytanie, używając GROUP BY jest:
@@ -583,7 +585,7 @@ Obsługiwane są następujące funkcje ciągów w warunkach trasy:
 | ENDS_WITH (x, y) | Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu kończy się na sekundę. |
 | CONTAINS(x,y) | Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu zawiera drugi. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się, jak wykonywać zapytania w aplikacjach za pomocą [Azure IoT SDK][lnk-hub-sdks].
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause

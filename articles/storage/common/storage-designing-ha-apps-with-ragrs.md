@@ -1,6 +1,6 @@
 ---
-title: "Projektowanie wysokiej dostępności aplikacji przy użyciu magazynu geograficznie nadmiarowego Azure dostęp do odczytu (RA-GRS) | Dokumentacja firmy Microsoft"
-description: "Jak używać magazynu Azure RA-GRS do projektowania aplikacji wysokiej dostępności jest wystarczająco elastyczny, aby obsłużyć awarie."
+title: Projektowanie wysokiej dostępności aplikacji przy użyciu magazynu geograficznie nadmiarowego Azure dostęp do odczytu (RA-GRS) | Dokumentacja firmy Microsoft
+description: Jak używać magazynu Azure RA-GRS do projektowania aplikacji wysokiej dostępności jest wystarczająco elastyczny, aby obsłużyć awarie.
 services: storage
 documentationcenter: .net
 author: tamram
@@ -12,28 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysokiej dostępności aplikacji przy użyciu RA-GRS
 
 Typową funkcją oparte na chmurze infrastruktury, takich jak usługi Azure Storage jest zapewniają platformy wysokiej dostępności do obsługi aplikacji. Deweloperzy aplikacji opartych na chmurze należy starannie rozważyć sposób korzystania z tej platformie aplikacje wysokiej dostępności dla użytkowników. Ten artykuł skupia się na sposób deweloperzy mogą używać dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS) do zapewnienia o wysokiej dostępności swoich aplikacji usługi Azure Storage.
 
-Magazyn Azure oferuje cztery opcje nadmiarowość danych na koncie magazynu:
-
-- Magazyn LRS (magazyn lokalnie nadmiarowy)
-- Magazyn ZRS (strefy nadmiarowego magazynu) 
-- GRS (magazynu geograficznie nadmiarowego)
-- RA-GRS (dostęp do odczytu z magazynu geograficznie nadmiarowego magazynu). 
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 Ten artykuł skupia się na GRS i RA-GRS. W wypadku magazynu GRS trzy kopie danych są przechowywane w regionie podstawowym wybranej podczas konfigurowania konta magazynu. Trzy dodatkowe kopie są obsługiwane asynchronicznie w regionie pomocniczym określony przez platformę Azure. RA-GRS jest odpowiednikiem GRS z tą różnicą, że masz dostęp do odczytu do dodatkowej kopiowania. Aby uzyskać więcej informacji na temat opcji nadmiarowość magazynu Azure, zobacz [replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-redundancy). Artykuł replikacji zawiera także par podstawowych i pomocniczych regionów.
 
 Dostępne są zawarte w tym artykule i link do kompletnego przykładu na końcu, który można pobrać i uruchomić wstawki kodu.
+
+> [!NOTE]
+> Usługa Azure Storage obsługuje teraz magazyn strefowo nadmiarowy (ZRS) do tworzenia aplikacji wysokiej dostępności. Magazyn ZRS zapewnia prostym rozwiązaniem dla potrzeb nadmiarowość wiele aplikacji. Magazyn ZRS zapewnia ochronę przed awariami sprzętu lub poważnej awarii mające wpływ na jednego centrum danych. Aby uzyskać więcej informacji, zobacz [magazyn Strefowo nadmiarowy (ZRS): aplikacje o wysokiej dostępności usługi Azure Storage](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>Najważniejsze funkcje RA-GRS
 
@@ -105,7 +103,7 @@ Istnieje wiele sposobów do obsługi żądań aktualizacji w trybie tylko do odc
 
 Jak ustalić, które błędy są powtarzający operację? Jest to określane za pomocą biblioteki klienta usługi storage. Na przykład błąd 404 (nie znaleziono zasobu) nie jest powtarzający operację, ponieważ ponawianie próby jego nie może spowodować Powodzenie. Z drugiej strony 500 Błąd jest powtarzający operację, ponieważ jest to błąd serwera i po prostu może być to problem przejściowy. Aby uzyskać więcej informacji, zapoznaj się z [Otwórz kod źródłowy dla klasy ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) w bibliotece klienta .NET magazynu. (Poszukaj metody ShouldRetry).
 
-### <a name="read-requests"></a>Żądań odczytu
+### <a name="read-requests"></a>Żądania odczytu
 
 Jeśli występuje problem z magazynem podstawowego można przekierować żądania odczytu do magazynu pomocniczego. Jak zanotowane powyżej w [przy użyciu ostatecznie spójności danych](#using-eventually-consistent-data), musi być dopuszczalne potencjalnie odczytać starych danych aplikacji. Jeśli korzystasz z biblioteki klienta magazynu dostępu do danych RA-GRS, można określić zachowanie ponów żądanie odczytu, ustawiając wartość **LocationMode** właściwości do jednej z następujących czynności:
 
@@ -200,16 +198,16 @@ Trzeci scenariusz, gdy polecenie ping końcowego podstawowego magazynu staje si�
 
 ## <a name="handling-eventually-consistent-data"></a>Obsługa ostatecznie spójność danych
 
-RA-GRS polega na replikowanie transakcji z serwera podstawowego w regionie pomocniczym. Ten proces replikacji gwarantuje, że dane w regionie pomocniczym są *ostatecznie spójne*. Oznacza to, że wszystkie transakcje w regionie podstawowym ostatecznie pojawią się w regionie pomocniczym, ale może wystąpić opóźnienie przed wyświetleniem i że nie ma żadnej gwarancji, transakcje przychodzą w regionie pomocniczym w tej samej kolejności jak w którym one były pierwotnie stosowane w regionie podstawowym. Jeśli transakcje przychodzą w regionie pomocniczym poza kolejnością, możesz *może* należy wziąć pod uwagę dane w regionie pomocniczym, aby być w stanie niespójnym, dopóki wyrównania usługi.
+Działanie magazynu RA-GRS polega na replikowaniu transakcji z regionu podstawowego do pomocniczego. Ten proces replikacji gwarantuje, że dane w regionie pomocniczym są *ostatecznie spójne*. Oznacza to, że wszystkie transakcje w regionie podstawowym ostatecznie pojawią się w regionie pomocniczym, ale może wystąpić opóźnienie przed wyświetleniem i że nie ma żadnej gwarancji, transakcje przychodzą w regionie pomocniczym w tej samej kolejności jak w którym one były pierwotnie stosowane w regionie podstawowym. Jeśli transakcje przychodzą w regionie pomocniczym poza kolejnością, możesz *może* należy wziąć pod uwagę dane w regionie pomocniczym, aby być w stanie niespójnym, dopóki wyrównania usługi.
 
 W poniższej tabeli przedstawiono przykład co może się zdarzyć, gdy aktualizacja Szczegóły pracownika, aby jej członkiem *Administratorzy* roli. Ze względu na przykład wymaga aktualizacji **pracownika** jednostki i aktualizacji **roli administrator** jednostki wraz z liczbą całkowitą liczbę administratorów. Zwróć uwagę, jak aktualizacje są stosowane poza kolejnością w regionie pomocniczym.
 
-| **Czas** | **Transakcji**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **Wynik** |
+| **Czas** | **Transakcji**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **Result** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakcja A: <br> Wstaw pracownika <br> jednostki w podstawowej |                                   |                    | Dodaje podstawowym, A transakcji<br> nie jeszcze zreplikowane. |
 | T1       |                                                            | Transakcja A <br> Replikacja<br> pomocnicze | T1 | Replikowane do dodatkowej A transakcji. <br>Czas ostatniej synchronizacji aktualizacji.    |
 | T2       | Transakcja B:<br>Aktualizacja<br> Jednostka pracownika<br> w podstawowej  |                                | T1                 | Transakcja B zapisywane w podstawowym<br> nie jeszcze zreplikowane.  |
-| T3       | Transakcja C:<br> Aktualizacja <br>Administrator<br>Jednostka roli w<br>podstawowe |                    | T1                 | Transakcja zapisywane do podstawowych, C<br> nie jeszcze zreplikowane.  |
+| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowe |                    | T1                 | Transakcja zapisywane do podstawowych, C<br> nie jeszcze zreplikowane.  |
 | *T4*     |                                                       | Transakcja C <br>Replikacja<br> pomocnicze | T1         | Transakcja C replikowane do dodatkowej.<br>Nie zaktualizowano ponieważ LastSyncTime <br>Transakcja B nie został jeszcze zreplikowany.|
 | *T5*     | Odczyt jednostek <br>pomocniczej                           |                                  | T1                 | Przestarzała wartość dla pracowników <br> jednostki, ponieważ nie transakcji B <br> jeszcze zreplikowane. Pobierz nową wartość<br> Administrator roli jednostki, ponieważ ma C<br> zreplikowane. Czas ostatniej synchronizacji nadal nie.<br> zostały zaktualizowane, ponieważ transakcja B<br> nie replikowane. Można określić<br>Jednostka roli administratora jest niespójna <br>ponieważ entity Data/godzina jest po <br>Czas ostatniej synchronizacji. |
 | *T6*     |                                                      | Transakcja B<br> Replikacja<br> pomocnicze | T6                 | *T6* — wszystkie transakcje za pomocą C <br>zostały zreplikowane, czas ostatniej synchronizacji<br> jest aktualizowana. |

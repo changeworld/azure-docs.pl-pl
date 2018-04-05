@@ -1,27 +1,40 @@
-
->[!NOTE]
->Usługa Log Analytics wcześniej nosiła nazwę Operational Insights.
->
->
-
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: log-analytics
+author: MGoedtel
+ms.service: log-analytics
+ms.topic: include
+ms.date: 03/29/2018
+ms.author: magoedte
+ms.custom: include file
+ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/03/2018
+---
 Następujące limity dotyczą zasobów usługi Log Analytics na subskrypcję:
 
 | Zasób | Limit domyślny | Komentarze
 | --- | --- | --- |
 | Liczba wolnych obszarów roboczych na subskrypcję | 10 | Tego limitu nie można zwiększyć. |
-| Liczba płatnych obszarów roboczych na subskrypcję | Nie dotyczy | Ograniczeniem jest liczba zasobów w grupie zasobów i liczba grup zasobów na subskrypcję | 
+| Liczba płatnych obszarów roboczych na subskrypcję | ND | Ograniczeniem jest liczba zasobów w grupie zasobów i liczba grup zasobów na subskrypcję | 
 
+>[!NOTE]
+>Począwszy od 2 kwietnia 2018 nowych obszarów roboczych w nowej subskrypcji będą automatycznie używać *GB na* cenową planu.  Istniejące subskrypcje utworzone przed 2 kwietnia lub subskrypcji, która została powiązana z istniejących rejestracji EA można nadal wybór między trzy warstwy cenowej dla nowych obszarów roboczych. 
+>
 
 Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics:
 
-|  | Bezpłatna | Standardowa | Premium | Autonomiczna | OMS |
-| --- | --- | --- | --- | --- | --- |
-| Ilość danych zebranych na dzień |500 MB<sup>1</sup> |Brak |Brak | Brak | Brak
-| Okres przechowywania danych |7 dni |1 miesiąc |12 miesięcy | 1 miesiąc<sup>2</sup> | 1 miesiąc <sup>2</sup>|
+|  | Bezpłatna | Standardowa (Standard) | Premium | Autonomiczna | OMS | Na GB |
+| --- | --- | --- | --- | --- | --- |--- |
+| Ilość danych zebranych na dzień |500 MB<sup>1</sup> |None |Brak | Brak | Brak | Brak
+| Okres przechowywania danych |7 dni |1 miesiąc |12 miesięcy | 1 miesiąc<sup>2</sup> | 1 miesiąc <sup>2</sup>| 1 miesiąc <sup>2</sup>|
 
 <sup>1</sup> Gdy klienci osiągną limit dziennego transferu danych wynoszący 500 MB, analiza danych zostanie zatrzymana, a następnie wznowiona na początku następnego dnia. Dzień jest oparty na czasie UTC.
 
-<sup>2</sup> Okres przechowywania danych dla planów cenowych w warstwach Autonomiczna i OMS można zwiększyć do 730 dni.
+<sup>2</sup> okres przechowywania danych dla autonomicznej, OMS i planów cenowych GB na może wzrosnąć do 730 dni.
 
 | Kategoria | Limity | Komentarze
 | --- | --- | --- |

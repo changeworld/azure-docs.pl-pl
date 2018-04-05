@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0d938112aaea4d86dd539b53a1749cc800607a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Tworzenie klasycznej metryki alertów w monitorze Azure dla usług Azure - Azure portal
 > [!div class="op_single_selector"]
@@ -31,25 +31,25 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>Przegląd
 
 > [!NOTE]
-> W tym artykule opisano sposób tworzenia starsze alerty metryki. Azure obsługuje teraz Monitor nowszą, lepiej metryki alerty. Te alerty można monitorować wiele metryk i umożliwić alertów na wymiarów metryki. Dowiedz się więcej o [niemal w czasie rzeczywistym Metryka alerty](monitoring-near-real-time-metric-alerts.md).
+> W tym artykule opisano sposób tworzenia starsze klasycznego alerty metryki. Azure obsługuje teraz Monitor [nowszej alerty metryki](monitoring-near-real-time-metric-alerts.md). 
 >
 >
 
-W tym artykule przedstawiono sposób konfigurowania Azure metryki alertów za pomocą portalu Azure. 
+W tym artykule przedstawiono sposób konfigurowania klasycznego Azure alertów metryki przy użyciu portalu Azure. 
 
 Możesz otrzymywać alertu na podstawie metryki monitorowania lub zdarzenia na usługami Azure.
 
 * **Wartości metryki** — uruchamia alert, gdy wartość określonej metryki przekracza próg przypisać w żadnym kierunku. Oznacza to, że oba wyzwala po spełnieniu warunku zostanie najpierw i następnie później podczas warunku jest już spełniane.    
 * **Zdarzenia dziennika aktywności** -alert może wyzwolić na *co* zdarzenia lub tylko wtedy, gdy wystąpi określone zdarzenie. Dowiedz się więcej o [alertów dotyczących działań w dzienniku](monitoring-activity-log-alerts.md).
 
-Można skonfigurować metryki alert do wyzwala, wykonaj następujące czynności:
+Można skonfigurować klasycznego alertu metryki wyzwala, wykonaj następujące czynności:
 
 * wysyłanie powiadomień e-mail do administratora usługi i współadministratorzy
 * Wyślij wiadomość e-mail do dodatkowych wiadomości e-mail przez użytkownika.
 * Wywołanie elementu webhook
 * Uruchamia wykonywanie elementów runbook platformy Azure (tylko z portalu Azure)
 
-Można skonfigurować i uzyskać informacje na temat metryki reguły alertów za pomocą
+Można skonfigurować i uzyskać informacje na temat przy użyciu klasycznego metryki reguły alertów
 
 * [Azure Portal](insights-alerts-portal.md)
 * [Program PowerShell](insights-alerts-powershell.md)
@@ -63,9 +63,9 @@ Można skonfigurować i uzyskać informacje na temat metryki reguły alertów za
 
     ![Monitorowanie](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. Wybierz **Dodaj alert metryki** poleceń i wypełnij pola.
+3. Wybierz **Dodaj metryki alert (klasyczne)** poleceń i wypełnij pola.
 
-    ![Dodaj alert](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
+    ![Dodawanie alertu](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 
 4. **Nazwa** alertu reguły, a następnie wybierz pozycję **opis**, który pokazuje również w wiadomości e-mail z powiadomieniem.
 
@@ -90,7 +90,7 @@ Po utworzeniu alertu, zostanie ona wybrana oraz:
 * Edytuj lub usuń go.
 * **Wyłącz** lub **włączyć** go, jeśli chcesz tymczasowo zatrzymać lub wznowić odbieranie powiadomień dla tego alertu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Omówienie monitorowania Azure](monitoring-overview.md) w tym typy informacji, można zbierać i monitorowania.
 * Dowiedz się więcej o [nowszej metryki alertów](monitoring-near-real-time-metric-alerts.md)
 * Dowiedz się więcej o [konfigurowaniu elementów webhook w alertach](insights-webhooks-alerts.md).

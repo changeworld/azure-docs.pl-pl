@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z monitorem Azure
 Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy je w portalu, dostępu do nich za pośrednictwem interfejsu API REST lub zapytań je przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej przedstawiono pełną listę wszystkich metryki obecnie z potoku metryki Azure monitora.
@@ -335,14 +335,14 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |TotalCalls|Łączna liczba wywołań|Licznik|Łącznie|Łączna liczba wywołań.|Nie wymiarów|
 |SuccessfulCalls|Wywołania zakończone powodzeniem|Licznik|Łącznie|Liczba wywołań zakończonych powodzeniem.|Nie wymiarów|
 |TotalErrors|Łączna liczba błędów|Licznik|Łącznie|Łączna liczba wywołań z odpowiedzią oznaczającą błąd (odpowiedź HTTP o kodzie 4xx lub 5xx).|Nie wymiarów|
-|BlockedCalls|Zablokowane wywołania|Licznik|Łącznie|Liczba wywołań, które przekraczają limit szybkości lub przydziału.|Nie wymiarów|
-|ServerErrors|Błędy serwera|Licznik|Łącznie|Liczba wywołań z błędem wewnętrznym usługi (odpowiedź HTTP o kodzie 5xx).|Nie wymiarów|
-|ClientErrors|Błędy klienta|Licznik|Łącznie|Liczba wywołań z błędem po stronie klienta (odpowiedź HTTP o kodzie 4xx).|Nie wymiarów|
-|DataIn|Dane wejściowe|Bajty|Łącznie|Rozmiar danych przychodzących (w bajtach).|Nie wymiarów|
-|DataOut|Dane wyjściowe|Bajty|Łącznie|Rozmiar danych wychodzących (w bajtach).|Nie wymiarów|
+|BlockedCalls|Zablokowane wywołania|Licznik|Łącznie|Liczba wywołań tej Przekroczono szybkość lub limit przydziału.|Nie wymiarów|
+|ServerErrors|Błędy serwera|Licznik|Łącznie|Liczba wywołań z powodu błędu wewnętrznego usługi (5xx kod odpowiedzi HTTP).|Nie wymiarów|
+|ClientErrors|Błędy klienta|Licznik|Łącznie|Liczba wywołań z powodu błędu po stronie klienta (4xx kod odpowiedzi HTTP).|Nie wymiarów|
+|DataIn|Dane wejściowe|Bajty|Łącznie|Rozmiar danych przychodzących w bajtach.|Nie wymiarów|
+|DataOut|Dane wyjściowe|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|Nie wymiarów|
 |Opóźnienie|Opóźnienie|W milisekundach|Średnia|Opóźnienie w milisekundach.|Nie wymiarów|
-|CharactersTranslated|Przetłumaczone znaki|Licznik|Łącznie|Łączna liczba znaków w przychodzącym żądaniu tekstowym.|Nie wymiarów|
-|SpeechSessionDuration|Czas trwania sesji mowy|Sekundy|Łącznie|Łączny czas trwania sesji mowy w sekundach.|Nie wymiarów|
+|CharactersTranslated|Znaki translacji|Licznik|Łącznie|Całkowita liczba znaków w przychodzące żądanie tekstu.|Nie wymiarów|
+|SpeechSessionDuration|Mowy czas trwania sesji|Sekundy|Łącznie|Łączny czas trwania mowy sesji w sekundach.|Nie wymiarów|
 |TotalTransactions|Całkowita liczba transakcji|Licznik|Łącznie|Całkowita liczba transakcji|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
@@ -811,11 +811,11 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |Przepływność|Przepływność|Bajty na sekundę|Łącznie|Liczba bajtów na sekundę, ma obsłużone bramy aplikacji|Nie wymiarów|
-|UnhealthyHostCount|Zła liczba hosta|Licznik|Średnia|Liczba hostów zła wewnętrznej bazy danych|BackendSettingsPool|
-|HealthyHostCount|Liczba hosta dobrej kondycji|Licznik|Średnia|Liczba hostów zaplecza dobrej kondycji|BackendSettingsPool|
+|UnhealthyHostCount|Zła liczba hosta|Licznik|Średnia|Liczba hostów zła wewnętrznej bazy danych. Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia w puli zaplecza określonych dobrej kondycji/zła hostów.|BackendSettingsPool|
+|HealthyHostCount|Liczba hosta dobrej kondycji|Licznik|Średnia|Liczba hostów dobrej kondycji wewnętrznej bazy danych. Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia w puli zaplecza określonych dobrej kondycji/zła hostów.|BackendSettingsPool. |
 |TotalRequests|Łączna liczba żądań|Licznik|Łącznie|Liczba pomyślnych żądań, które ma obsługiwane bramy aplikacji|BackendSettingsPool|
 |FailedRequests|Żądania zakończone niepowodzeniem|Licznik|Łącznie|Liczba nieudanych żądań, które ma obsługiwane bramy aplikacji|BackendSettingsPool|
-|ResponseStatus|Stan odpowiedzi|Licznik|Łącznie|Stan odpowiedzi HTTP zwrócony przez bramę aplikacji|HttpStatusGroup|
+|ResponseStatus|Stan odpowiedzi|Licznik|Łącznie|Zwrócony przez bramę aplikacji stanu odpowiedzi HTTP. Dystrybucji kod stanu odpowiedzi może być więcej categoized do wyświetlenia odpowiedzi na 2xx, 3xx 4xx i 5xx kategorii.|HttpStatusGroup|
 |CurrentConnections|Bieżąca liczba połączeń|Licznik|Łącznie|Liczba bieżących połączeń ustanowionych z bramy aplikacji|Nie wymiarów|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways

@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 57296d828156184aa36532cd649fbec0c81b5e27
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Symulowanie błędu podczas uzyskiwania dostępu do odczytu do magazynu nadmiarowego
 
-Niniejszy samouczek jest drugą częścią serii.  W tym samouczku możesz użyć programu [Fiddler](#simulate-a-failure-with-fiddler) lub [routingu statycznego](#simulate-a-failure-with-an-invalid-static-route) do symulacji błędu żądań kierowanych do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu ](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) — aplikacja będzie odczytywać dane z pomocniczego punktu końcowego.
+Niniejszy samouczek jest drugą częścią serii.  W tym samouczku możesz użyć programu [Fiddler](#simulate-a-failure-with-fiddler) lub [routingu statycznego](#simulate-a-failure-with-an-invalid-static-route) do symulacji błędu żądań kierowanych do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu ](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) — aplikacja będzie odczytywać dane z pomocniczego punktu końcowego.
 
 ![Aplikacja scenariusza](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
@@ -117,7 +117,7 @@ Po zakończeniu naciśnij **dowolny klawisz**, aby wznowić działanie aplikacji
 
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Symulowanie błędu przy użyciu nieprawidłowej trasy statycznej 
-Możesz utworzyć nieprawidłową trasę statyczną dla wszystkich żądań kierowanych do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS). W tym samouczku host lokalny jest używany jako brama na potrzeby kierowania żądań do konta magazynu. Dzięki użyciu hosta lokalnego brama powoduje, że wszystkie żądania kierowane do podstawowego punktu końcowego konta magazynu wywołują sprzężenie zwrotne wewnątrz hosta, co następnie prowadzi do wystąpienia błędu. Wykonaj poniższe kroki, aby symulować błąd i przywracanie podstawowego punktu końcowego przy użyciu nieprawidłowej trasy statycznej. 
+Możesz utworzyć nieprawidłową trasę statyczną dla wszystkich żądań kierowanych do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS). W tym samouczku host lokalny jest używany jako brama na potrzeby kierowania żądań do konta magazynu. Dzięki użyciu hosta lokalnego brama powoduje, że wszystkie żądania kierowane do podstawowego punktu końcowego konta magazynu wywołują sprzężenie zwrotne wewnątrz hosta, co następnie prowadzi do wystąpienia błędu. Wykonaj poniższe kroki, aby symulować błąd i przywracanie podstawowego punktu końcowego przy użyciu nieprawidłowej trasy statycznej. 
 
 ### <a name="start-and-pause-the-application"></a>Uruchamianie i zatrzymywanie aplikacji
 
