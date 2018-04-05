@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
 ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect użytkownika opcje logowania
 Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logowania się do zasobów w chmurze, jak i dla lokalnego przy użyciu takich samych haseł. W tym artykule opisano podstawowe pojęcia dla każdego modelu tożsamości pomaga wybrać tożsamości, która ma być używany dla logowania do usługi Azure AD.

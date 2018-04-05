@@ -1,8 +1,8 @@
 ---
-title: "Prognozy w podręczniku technicznym energii | Dokumentacja firmy Microsoft"
-description: "Podręcznik techniczny do szablonu rozwiązania z Microsoft Cortana Intelligence dla Prognoza energii."
+title: Prognozy w podręczniku technicznym energii | Dokumentacja firmy Microsoft
+description: Podręcznik techniczny do szablonu rozwiązania z Microsoft Cortana Intelligence dla Prognoza energii.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yijichen
 manager: ilanr9
 editor: yijichen
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
 ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Podręcznik techniczny do szablonu Cortana analizy rozwiązania dla Prognoza energii
 ## <a name="overview"></a>**Omówienie**
@@ -42,7 +42,7 @@ W przypadku tego szablonu źródło danych używane jest generowana z aplikacją
 
 Aplikacja generowania zdarzeń wypełnia Azure Event Hub tylko wtedy, gdy jest wykonywane na tym komputerze.
 
-### <a name="azure-event-hub"></a>Centrum zdarzeń platformy Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) usługi jest odbiorcą danych wejściowych dostarczonych przez źródło danych syntetycznego opisem.
 
 ## <a name="data-preparation-and-analysis"></a>**Przygotowanie danych i analiza**
@@ -70,7 +70,7 @@ Jest mało prawdopodobne, że wszelkie zestawu danych, które można przenosić 
 
 W poniższych sekcjach omówiono części szablonu, który wymaga modyfikacji, jeśli wprowadzono nowy zestaw danych.
 
-### <a name="azure-event-hub"></a>Centrum zdarzeń platformy Azure
+### <a name="azure-event-hub"></a>Azure Event Hub
 [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) usługi jest ogólny, w taki sposób, że dane mogą być publikowane w Centrum w formacie CSV lub JSON. Brak specjalnego przetwarzania występuje w Centrum zdarzeń platformy Azure, ale należy pamiętać, że rozumiesz dane, które są przekazywane do niego.
 
 Ten dokument nie opisuje sposobu pozyskiwania danych, ale jeden łatwe wysyłanie zdarzenia lub dane do usługi Azure Event Hub, za pomocą [API Centrum zdarzeń](event-hubs/event-hubs-programming-guide.md).
@@ -117,7 +117,7 @@ To [potoku](data-factory/concepts-pipelines-activities.md) zawiera pojedyncze dz
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 To [potoku](data-factory/concepts-pipelines-activities.md) zawiera dwa działania:
 
-* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) działania przy użyciu [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , na którym działają skryptu Hive agregacji godzinowej danych żądanie historii w poziomie podstacji co godzinę poziom region i wprowadzane w usłudze Azure Storage podczas wykonywania zadania usługi analiza strumienia Azure
+* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) działania przy użyciu [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , na którym działają skryptu Hive agregacji godzinowej danych żądanie historii w poziomie podstacji co godzinę poziom region i wprowadzane w usłudze Azure Storage w strumieniu Azure Zadania usługi analiza
 * [Kopiuj](https://msdn.microsoft.com/library/azure/dn835035.aspx) działanie, które przenosi dane zagregowane z obiektu blob magazynu Azure do bazy danych SQL Azure udostępniony jako część instalacji szablon rozwiązania.
 
 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skryptów dla tego zadania jest ***AggregateDemandHistoryRegion.hql***.
@@ -136,7 +136,7 @@ To [potoku](data-factory/concepts-pipelines-activities.md) zawiera pojedyncze dz
 #### <a name="copyaggdemandpipeline"></a>*CopyAggDemandPipeline*
 To [potoku](data-factory/concepts-pipelines-activities.md) zawiera pojedyncze działanie - [kopiowania](https://msdn.microsoft.com/library/azure/dn835035.aspx) działanie, które przenosi dane zagregowane bieżące żądanie z ***LoadHistoryDemandDataPipeline*** do bazy danych SQL Azure Baza danych udostępniony jako część instalacji szablon rozwiązania.
 
-#### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyTopologyDataPipeline CopyRegionDataPipeline, CopySubstationDataPipeline,*
+#### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyRegionDataPipeline, CopySubstationDataPipeline, CopyTopologyDataPipeline*
 To [potoku](data-factory/concepts-pipelines-activities.md) zawiera pojedyncze działanie - [kopiowania](https://msdn.microsoft.com/library/azure/dn835035.aspx) działanie, które przenosi dane referencyjne Region/podstacji/Topologygeo, które są przekazywane do obiektu blob magazynu Azure w ramach szablon rozwiązania Instalacja z bazą danych SQL Azure, udostępniony jako część instalacji szablon rozwiązania.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
@@ -182,7 +182,7 @@ Poniższe kroki ułatwiają jak do wizualizacji danych w czasie rzeczywistym dan
    * Kliknij przycisk **ZAPISAĆ** u góry i nazwę raportu, ponieważ "EnergyStreamDataReport". Raport o nazwie "EnergyStreamDataReport" jest wyświetlany w sekcji raportów w okienku Nawigator po lewej stronie.
    * Kliknij przycisk **"Numer Pin Visual"** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) ikonę w prawym górnym rogu ten wykres liniowy, okno "Numer Pin do pulpitu nawigacyjnego" wyświetlani może można wybrać pulpitu nawigacyjnego. Wybierz "EnergyStreamDataReport", a następnie kliknij przycisk "Numer Pin".
    * Umieść kursor myszy nad tego kafelka na pulpicie nawigacyjnym kliknij "Edytuj" ikonę w prawym górnym rogu zmienić jego tytuł jako "Żądanie przez sygnatury czasowej"
-4. Utwórz innych kafelka pulpitu nawigacyjnego oparte na odpowiednich zestawów danych. Widok pulpitu nawigacyjnego końcowego:![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
+4. Utwórz innych kafelka pulpitu nawigacyjnego oparte na odpowiednich zestawów danych. Widok pulpitu nawigacyjnego końcowego: ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
 ### <a name="setup-cold-path-dashboard"></a>Pulpit nawigacyjny zimnych ścieżki Instalatora
 Ścieżka zimnych danych potoku niezbędne celem jest uzyskanie prognozy każdego regionu. Usługi Power BI łączy się z bazą danych Azure SQL jako źródła danych, w którym są przechowywane wyniki prognozowania.
@@ -213,7 +213,7 @@ Poniższe kroki ułatwiają jak do wizualizacji danych w czasie rzeczywistym dan
 3. (Opcjonalnie) Publikowanie pulpitu zimnych ścieżki [online usługi Power BI](http://www.powerbi.com/). Należy pamiętać, że ten krok wymaga konta usługi Power BI (lub konta usługi Office 365).
 
    * Kliknij przycisk **"Publikuj"** i później kilku sekund zostanie wyświetlone okno "Publikowania Power BI sukcesu!" z zielonym znacznikiem wyboru. Kliknij poniższe łącze "Demoprediction.pbix Otwórz w usłudze Power BI". Aby uzyskać szczegółowe instrukcje, zobacz [publikowania z Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Aby utworzyć nowy pulpit nawigacyjny: kliknij  **+**  dalej, aby zarejestrować **pulpity nawigacyjne** sekcji w okienku po lewej stronie. Wprowadź nazwę "Żądanie prognozowania pokaz" dla tego nowego pulpitu nawigacyjnego.
+   * Aby utworzyć nowy pulpit nawigacyjny: kliknij **+** dalej, aby zarejestrować **pulpity nawigacyjne** sekcji w okienku po lewej stronie. Wprowadź nazwę "Żądanie prognozowania pokaz" dla tego nowego pulpitu nawigacyjnego.
    * Po otwarciu raportu, kliknij przycisk ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) Aby przypiąć wszystkie wizualizacje do pulpitu nawigacyjnego. Aby uzyskać szczegółowe instrukcje, zobacz [przypiąć Kafelek do pulpitu nawigacyjnego usługi Power BI z raportu](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Przejdź do strony pulpitu nawigacyjnego i Dostosuj rozmiar i położenie sieci wizualizacji i Edytuj ich tytułów. Aby uzyskać szczegółowe instrukcje na temat edytowania swoje Kafelki, zobacz [edycji kafelka — zmiany rozmiaru, Przenieś, Zmień nazwę, numer pin, usuwanie, Dodawanie hiperłącza](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Oto pulpitu nawigacyjnego przykład z niektórych wizualizacjami zimnych ścieżki przypięty do niego.
 

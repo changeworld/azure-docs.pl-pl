@@ -1,10 +1,10 @@
 ---
-title: "Pełny tekst Architektura aparatu (Lucene) wyszukiwania w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Wyjaśnienie Lucene zapytań i przetwarzania dokumentów pobierania pojęcia dotyczące wyszukiwania pełnotekstowego w odniesieniu do usługi Azure Search."
+title: Pełny tekst Architektura aparatu (Lucene) wyszukiwania w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Wyjaśnienie Lucene zapytań i przetwarzania dokumentów pobierania pojęcia dotyczące wyszukiwania pełnotekstowego w odniesieniu do usługi Azure Search.
 services: search
 manager: jhubbard
 author: yahnoosh
-documentationcenter: 
+documentationcenter: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Ile wyszukiwanie pełnotekstowe działa w usłudze Azure Search
 
@@ -258,7 +258,7 @@ Powrót do naszym przykładzie dla **tytuł** pola odwrócony indeksu wygląda j
 |------|---------------|
 | atman | 1 |
 | Nieznane | 2 |
-| hoteli | 1, 3 |
+| hotel | 1, 3 |
 | Oceanu | 4  |
 | playa | 3 |
 | możliwości | 3 |
@@ -274,7 +274,7 @@ Aby uzyskać **opis** pola, indeks jest następujący:
 | i | 4
 | Nieznane | 1
 | przygotować | 3
-| doświadczenia | 3
+| comfortable | 3
 | odległość | 1
 | Wyspy | 2
 | kauaʻi | 2
@@ -282,7 +282,7 @@ Aby uzyskać **opis** pola, indeks jest następujący:
 | Północna | 2
 | Oceanu | 1, 2, 3
 | z | 2
-| na |2
+| włączone |2
 | quiet | 4
 | pokoje  | 1, 3
 | secluded | 4
@@ -292,7 +292,7 @@ Aby uzyskać **opis** pola, indeks jest następujący:
 | na | 1
 | wyświetl | 1, 2, 3
 | Przejście | 1
-| Z | 3
+| z  | 3
 
 
 **Dopasowywanie terminów zapytania względem indeksowanego warunków**
@@ -363,7 +363,7 @@ Dlaczego to ma znaczenie pokazano w przykładzie. Wyszukiwanie symboli wieloznac
 Istnieją dwa sposoby dostroić oceny przydatności w usłudze Azure Search:
 
 1. **Ocenianie profile** promowania dokumentów na liście uporządkowanej według rangi wyników na podstawie zestawu reguł. W tym przykładzie firma Microsoft może wziąć pod uwagę dokumentów, których dopasowano w polu Tytuł większe niż dokumenty zgodnych w polu Opis. Ponadto indeksu, gdyby pola ceny dla każdej hoteli, możemy wspierania dokumentów za pomocą dolnej ceny. Dowiedz się, jak więcej [Dodaj oceniania profile do indeksu wyszukiwania.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Promowanie** (dostępne tylko w składnia zapytań Lucene pełne) zapewnia operatora zwiększania wyniku `^` , który można zastosować do dowolnej części drzewa zapytania. W naszym przykładzie zamiast wyszukiwanie na podstawie prefiksów *air-condition*\*, jeden można wyszukać albo dokładną termin *air-condition* lub prefiks, ale dokumenty, które odpowiadają na określenie dokładnej są wyżej stosując zwiększanie wyniku zapytania termin: *warunku lotniczego ^ 2 || AIR-Condition**. Dowiedz się więcej o [promowanie](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. **Promowanie** (dostępne tylko w składnia zapytań Lucene pełne) zapewnia operatora zwiększania wyniku `^` , który można zastosować do dowolnej części drzewa zapytania. W naszym przykładzie zamiast wyszukiwanie na podstawie prefiksów *air-condition*\*, co może wyszukać albo dokładną termin *air-condition* lub prefiks, ale dokumenty, które odpowiadają na określenie dokładnej wyżej stosując zwiększanie wyniku zapytania termin: * warunku lotniczego ^ 2 || AIR-Condition **. Dowiedz się więcej o [promowanie](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Ocenianie rozproszonej indeksu
@@ -382,7 +382,7 @@ Z technicznego punktu widzenia wyszukiwanie pełnotekstowe jest wysoce złożone
 
 W tym artykule przedstawione wyszukiwania pełnotekstowego w kontekście usługi Azure Search. Mamy nadzieję, że umożliwia tła wystarczające do rozpoznawania możliwe przyczyny i rozwiązania dotyczące typowych problemów z zapytania. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 + Tworzenie indeksu próbki, wypróbować różne zapytania i przegląd wyników. Aby uzyskać instrukcje, zobacz [kompilacji i tworzenie zapytań względem indeksu w portalu](search-get-started-portal.md#query-index).
 
@@ -396,7 +396,7 @@ W tym artykule przedstawione wyszukiwania pełnotekstowego w kontekście usługi
 
 + [Porównanie analizatorów standard i angielskiej wersji językowej](http://alice.unearth.ai/)) obok siebie w tej witrynie sieci web demonstracyjnej. 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Wyszukiwanie w dokumentach interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

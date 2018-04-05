@@ -1,8 +1,8 @@
 ---
-title: "Ograniczanie dostępu przy użyciu sygnatury dostępu współdzielonego - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak ograniczyć HDInsight dostępu do danych przechowywanych w obiektach blob magazynu Azure za pomocą sygnatury dostępu współdzielonego."
+title: Ograniczanie dostępu przy użyciu sygnatury dostępu współdzielonego - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ograniczyć HDInsight dostępu do danych przechowywanych w obiektach blob magazynu Azure za pomocą sygnatury dostępu współdzielonego.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 01/25/2018
 ms.author: larryfr
 ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Użyj sygnatury dostępu współdzielonego magazynu Azure, aby ograniczyć dostęp do danych w usłudze HDInsight
 
@@ -44,7 +44,7 @@ HDInsight ma pełny dostęp do danych na kontach magazynu Azure skojarzony z kla
     > [!IMPORTANT]
     > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-* Przykład plików ze [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). To repozytorium zawiera następujące elementy:
+* Przykład plików ze [ https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature ](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). To repozytorium zawiera następujące elementy:
 
   * Projektu programu Visual Studio, który można utworzyć kontenera magazynu, zapisane zasady i skojarzenia zabezpieczeń do użycia z usługą HDInsight
   * Skrypt w języku Python, który można utworzyć kontenera magazynu, zapisane zasady i skojarzenia zabezpieczeń do użycia z usługą HDInsight

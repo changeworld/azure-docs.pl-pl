@@ -1,11 +1,11 @@
 ---
-title: "Uwierzytelnianie i autoryzację w usłudze Azure App Service | Dokumentacja firmy Microsoft"
-description: "Odwołanie koncepcyjne i omówienie uwierzytelniania / autoryzacji funkcji Azure App Service"
+title: Uwierzytelnianie i autoryzację w usłudze Azure App Service | Dokumentacja firmy Microsoft
+description: Odwołanie koncepcyjne i omówienie uwierzytelniania / autoryzacji funkcji Azure App Service
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
@@ -14,146 +14,140 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: f0d2644903181cd2e20166feae4f90ddd4037fa8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 0563f071083080de7f99b3a77c680f791d80bcdb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
-## <a name="what-is-app-service-authentication--authorization"></a>Co to jest aplikacja usługi uwierzytelniania / autoryzacji?
-Aplikacja usługi uwierzytelniania / autoryzacji jest funkcją, która umożliwia aplikacji do logowania użytkowników, dzięki czemu nie trzeba zmienić kodu w zapleczu aplikacji. Zapewnia prosty sposób ochrona aplikacji i pracować z danymi użytkownika.
 
-Tożsamości federacyjnych, w którym dostawca tożsamości innych firm przechowuje konta i uwierzytelnia użytkowników korzysta z usługi aplikacji. Aplikacja zależy od informacji o dostawcy tożsamości, aby aplikacja nie ma do przechowywania informacji o tej samej. App Service obsługuje pięć dostawców tożsamości fabrycznej: Azure Active Directory, Facebook, Google, Microsoft Account i Twitter. Aplikację można używać dowolnej liczby tych dostawców tożsamości zapewnić użytkownikom z opcjami sposób logowania się w. Aby rozszerzyć wbudowanych funkcji, można je zintegrować innego dostawcy tożsamości lub [rozwiązania tożsamość niestandardowa][custom-auth].
+Usługa aplikacji Azure oferuje wbudowane uwierzytelnianie i autoryzacja obsługi, aby można było zarejestrować użytkowników i uzyskać dostęp do danych przez zapisywanie minimalnego lub Brak kodu w aplikacji sieci web, interfejsu API i przenośnych zaplecza, a także [usługi Azure Functions](../azure-functions/functions-overview.md). W tym artykule opisano, jak usługi App Service ułatwia uwierzytelniania i autoryzacji dla aplikacji. 
 
-Jeśli chcesz rozpocząć od razu, zobacz jedną z następujących samouczków [Dodawanie uwierzytelniania do aplikacji systemu iOS] [ iOS] (lub [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [platformy Xamarin.Forms], lub [Cordova]).
+Bezpieczne uwierzytelnianie i autoryzacja wymaga dokładnego wiedzę na temat zabezpieczeń, w tym federacyjnych, szyfrowania, [tokenów sieci web JSON (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) zarządzania, [typy przydziałów](https://oauth.net/2/grant-types/)i tak dalej. Usługa App Service zapewnia tych narzędzi, aby poświęcić więcej czasu i pracy na zapewnienie wartość biznesową do klienta.
 
-## <a name="how-authentication-works-in-app-service"></a>Jak działa uwierzytelniania w usłudze App Service
-W celu uwierzytelniania za pomocą jednego z dostawców tożsamości, należy najpierw skonfigurować dostawcy tożsamości, aby dowiedzieć się o aplikacji. Dostawca tożsamości będzie dostarczać identyfikatory i hasła, które świadczą usługi aplikacji. Na tym kończy relacji zaufania, aby sprawdzić poprawność potwierdzenia użytkownika, takich jak tokeny uwierzytelniania przez dostawcę tożsamości usługi aplikacji.
+> [!NOTE]
+> Nie masz wymaganych do używania aplikacji usługi do uwierzytelniania i autoryzacji. Wiele platform sieci web są powiązane z funkcjami zabezpieczeń i ich użycia, jeśli chcesz. Aby uzyskać większą elastyczność niż Usługa App Service zapewnia można również napisać własne narzędzia.  
+>
 
-Aby zalogować użytkownika przy użyciu jednej z tych dostawców, użytkownik musi zostać przekierowany do punktu końcowego, który loguje się użytkowników dla tego dostawcy. Jeśli klienci używają przeglądarki sieci web, może mieć usługi aplikacji — automatyczne kierowanie nieuwierzytelnionym użytkownikom punktu końcowego, który loguje się użytkownicy. W przeciwnym razie musisz przekierować klientów do `{your App Service base URL}/.auth/login/<provider>`, gdzie `<provider>` jest jednym z następujących wartości: aad, facebook, google, microsoft lub twitter. Scenariusze mobilnych i interfejsu API opisano szczegółowo w sekcji w dalszej części tego artykułu.
+Aby uzyskać informacje specyficzne dla natywnych aplikacji mobilnych, zobacz [uwierzytelniania i autoryzacji dla aplikacji mobilnych w usłudze aplikacji Azure użytkowników](../app-service-mobile/app-service-mobile-auth.md).
 
-Użytkownicy, którzy korzystają z Twojej aplikacji za pośrednictwem przeglądarki sieci web ma plik cookie skonfigurować tak, aby może pozostawać uwierzytelniony jako przeglądania aplikacji. Dla innych typów klientów, takie jak telefon komórkowy, tokenu web JSON (JWT), który będzie wyświetlany w `X-ZUMO-AUTH` nagłówka, będą wystawiane do klienta. Klient Mobile Apps SDK obsłuży to dla Ciebie. Alternatywnie token tożsamości usługi Azure Active Directory lub token dostępu może być bezpośrednio zawarta w `Authorization` nagłówek jako [tokenu elementu nośnego](https://tools.ietf.org/html/rfc6750).
+## <a name="how-it-works"></a>Jak to działa
 
-Usługi aplikacji — zostanie przeprowadzona Weryfikacja dowolnego pliku cookie lub token, który wystawia aplikacji do uwierzytelniania użytkowników. Aby ograniczyć, kto ma dostęp do aplikacji, zobacz [autoryzacji](#authorization) sekcji w dalszej części tego artykułu.
+Moduł uwierzytelniania i autoryzacji jest uruchamiany w tym samym piaskownicy jako kod aplikacji. Gdy jest włączona, co przychodzące żądanie HTTP przechodzą przez go przed obsługiwanych przez kod aplikacji.
 
-### <a name="mobile-authentication-with-a-provider-sdk"></a>Przenośne uwierzytelniania za pomocą dostawcy zestawu SDK
-Po wszystko, co jest skonfigurowany do wewnętrznej bazy danych, można zmodyfikować klientów mobilnych, aby zalogować się przy użyciu usługi aplikacji. Istnieją dwie metody w tym miejscu:
+![](media/app-service-authentication-overview/architecture.png)
 
-* Korzystanie z zestawu SDK, publikującej dostawcy tożsamości danego do ustalenia tożsamości i uzyskać dostęp do usługi App Service.
-* Użyj pojedynczy wiersz kodu tak, aby zalogować się użytkowników klienta Mobile Apps SDK.
+Ten moduł obsługuje kilka kwestii dla aplikacji:
 
-> [!TIP]
-> Większość aplikacji należy używać dostawcy zestawu SDK, aby uzyskać bardziej spójne środowisko podczas logowania, z obsługą odświeżania, a także aby uzyskać inne korzyści, które określa dostawcę.
-> 
-> 
+- Służy do uwierzytelniania użytkowników z określonym dostawcą
+- Weryfikuje, są przechowywane i odświeża tokenów
+- Zarządza sesja uwierzytelniona
+- Injects informacji o tożsamości w nagłówki żądania
 
-Gdy używasz dostawcy SDK, można logowania użytkownika do bardziej ściśle zintegrowana z systemem operacyjnym, że aplikacja jest uruchomiona na środowisko. Zapewnia to również token dostawcy i niektóre informacje użytkownika na komputerze klienckim, co pozwala na znacznie łatwiejsze do wykorzystania wykres interfejsów API i dostosowanie środowiska użytkownika. Od czasu do czasu na blogi i fora, wyświetlona zostanie to określane jako "przebieg klienta" lub "przepływ skierowane do klienta", ponieważ kod na kliencie logowania użytkowników i kod klienta ma dostęp do tokenu dostawcy.
+Moduł jest uruchamiana niezależnie od kodu aplikacji i jest konfigurowana przy użyciu ustawień aplikacji. Nie zestawów SDK, określonych języków lub zmiany w kodzie aplikacji są wymagane. 
 
-Po uzyskaniu tokenu dostawcy musi wysłane do aplikacji usługi do sprawdzania poprawności. Po usługi aplikacji sprawdza poprawność tokenu, usługa aplikacji tworzy nowy token usługi aplikacji, która jest zwracana do klienta. Klient Mobile Apps SDK ma metody pomocnicze do zarządzania tym exchange i automatycznie dołączyć token do wszystkich żądań do zaplecza aplikacji. Deweloperzy mogą również zachować odwołania do tokenu dostawcy, jeśli więc wybrać.
+### <a name="user-claims"></a>Oświadczenia użytkowników
 
-### <a name="mobile-authentication-without-a-provider-sdk"></a>Przenośne uwierzytelniania bez dostawcy zestawu SDK
-Jeśli nie chcesz skonfigurować dostawcy SDK, można zezwolić funkcji Mobile Apps usługi aplikacji Azure do logowania dla Ciebie. Klient Mobile Apps SDK Otwórz widok sieci web dostawcy wybrane i zalogować użytkownika. Od czasu do czasu na blogi i fora, zobaczysz to określane jako "serwera przepływ" lub "przepływ skierowane do serwera", ponieważ serwer zarządza procesem, który loguje się użytkowników i zestawu SDK klienta nigdy nie otrzyma tokenu dostawcy.
+Dla wszystkich środowisk języka App Service udostępnia oświadczenia użytkownika do kodu przez wstrzykiwanie je w nagłówku żądania. Dla aplikacji platformy ASP.NET 4.6, wypełnia App Service [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) z oświadczeń uwierzytelnionego użytkownika, aby można było wykonywać standardowy wzorzec kodu platformy .NET, w tym `[Authorize]` atrybutu. Podobnie w przypadku aplikacji PHP, usługa aplikacji wypełnia `_SERVER['REMOTE_USER']` zmiennej.
 
-Kod, aby uruchomić ten przepływ znajduje się w samouczku uwierzytelniania dla każdej platformy. Na końcu przepływu klienta SDK ma token usługi aplikacji, a token są automatycznie dołączane do wszystkich żądań do wewnętrznej bazy danych aplikacji.
+Dla [usługi Azure Functions](../azure-functions/functions-overview.md), `ClaimsPrincipal.Current` nie jest uwodniony dla kodu platformy .NET, ale nadal można znaleźć oświadczeń użytkowników w nagłówkach żądania.
 
-### <a name="service-to-service-authentication"></a>Uwierzytelnianie między usługami
-Mimo że można udzielać użytkownikom dostępu do aplikacji, można również ufać inną aplikację do wywołania własnego interfejsu API. Na przykład można mieć jednej aplikacji sieci web wywołania interfejsu API w innej aplikacji sieci web. W tym scenariuszu można używać poświadczeń dla konta usługi zamiast poświadczeń użytkownika do pobrania tokenu. Konto usługi jest także znana jako *nazwy głównej usługi* w terminologii usługi Azure Active Directory i uwierzytelniania przy użyciu tego konta jest także znana jako scenariusza service-to-service.
+Aby uzyskać więcej informacji, zobacz [dostęp do oświadczeń użytkowników](app-service-authentication-how-to.md#access-user-claims).
 
-> [!IMPORTANT]
-> Ponieważ aplikacje mobilne są uruchamiane na urządzeniach klienckich, czy aplikacje mobilne *nie* są liczone jako zaufane aplikacje i nie należy używać przepływu główną usługi. Zamiast tego powinny używać przepływu użytkownika, który został wcześniej szczegółowe.
-> 
-> 
+### <a name="token-store"></a>Token magazynu
 
-W przypadku scenariuszy usług usługi aplikacji może chronić aplikacji za pomocą usługi Azure Active Directory. Aplikacja wywołująca musi tylko podać uzyskany przez identyfikator i klienta w usłudze Azure Active Directory, który dostarcza klientowi token autoryzacji podmiotu zabezpieczeń usługi Azure Active Directory. Przykładem tego scenariusza, który korzysta z aplikacji interfejsu API platformy ASP.NET tłumaczy samouczek [uwierzytelnianie główny dla usługi dla aplikacji interfejsu API] [apia usługa].
+Usługa App Service zawiera wbudowane magazynu tokenów, która jest repozytorium tokenów, które są skojarzone z użytkownikami aplikacji sieci web, interfejsów API lub natywnych aplikacji mobilnych. Po włączeniu uwierzytelniania za pomocą dowolnego dostawcy tego magazynu tokenów jest natychmiast dostępna do aplikacji. Jeśli kod aplikacji musi mieć dostęp do danych z usług tych dostawców w imieniu użytkownika, takich jak: 
 
-Jeśli chcesz użyć uwierzytelniania usługi aplikacji do obsługi scenariusza service-to-service, można użyć uwierzytelniania podstawowego lub certyfikatów klienta. Aby uzyskać informacje o certyfikatach klientów na platformie Azure, zobacz [jak do konfigurowania protokołu TLS wzajemnego uwierzytelniania dla aplikacji sieci Web](app-service-web-configure-tls-mutual-auth.md). Aby dowiedzieć się, uwierzytelnianie podstawowe w programie ASP.NET, zobacz [filtry uwierzytelniania w ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters).
+- ogłasza informacji pod uwierzytelnionego użytkownika usługi Facebook w osi czasu
+- Odczytywanie danych firmy użytkownika z usługi Azure Active Directory interfejsu API programu Graph lub nawet Microsoft Graph
 
-Uwierzytelnianie konta usługi z usługi aplikacji logiki aplikacji w aplikacji interfejsu API to specjalny przypadek została szczegółowo opisana w [przy użyciu niestandardowego interfejsu API hostowanych w usłudze aplikacji z usługą Logic apps](../logic-apps/logic-apps-custom-hosted-api.md).
+Tokeny identyfikatora, tokeny dostępu i tokenów odświeżania pamięci podręcznej dla sesja uwierzytelniona i są one dostępne tylko dla skojarzonego użytkownika.  
 
-## <a name="authorization"></a>Jak działa autoryzacji w usłudze App Service
-Masz pełną kontrolę nad żądań, które można uzyskać dostępu do aplikacji. Aplikacja usługi uwierzytelniania / autoryzacji można skonfigurować za pomocą dowolnej z następujących problemów:
+Zazwyczaj należy napisać kod zbierania, przechowywania i Odśwież te tokeny w aplikacji. Ze sklepem tokenu właśnie [pobrać tokenów](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) gdy są potrzebne i [Poinformuj usługi aplikacji, aby odświeżyć je](app-service-authentication-how-to.md#refresh-access-tokens) kiedy staną się nieprawidłowe. 
 
-* Zezwalaj tylko na uwierzytelniony żądania do aplikacji.
-  
-    Jeśli przeglądarka wysyła żądania od użytkowników anonimowych, usługi aplikacji przekieruje do strony wybranego przez użytkownika, dzięki czemu użytkownicy mogą rejestrować dostawcy tożsamości. Jeśli żądanie pochodzi z urządzenia przenośnego, zwrócona odpowiedź jest HTTP *401 nieautoryzowane* odpowiedzi.
-  
-    Dzięki tej opcji nie trzeba w ogóle pisania kodu uwierzytelniania w aplikacji. Aby uzyskać bardziej precyzyjną autoryzacji, informacje o użytkowniku jest dostępna w kodzie.
-* Zezwalaj na wszystkie żądania kierowane do osiągnięcia aplikacji, ale poprawności żądań uwierzytelnionych i przekazują informacje o uwierzytelnianiu w nagłówkach HTTP.
-  
-    Opcja ta różni się decyzji dotyczących autoryzacji w kodzie aplikacji. Większa elastyczność w obsłudze żądań anonimowych, ale trzeba napisać kod.
-* Zezwalaj na wszystkie żądania do aplikacji, a nie podejmuj żadnej akcji na informacje dotyczące uwierzytelniania w żądaniach.
-  
-    W tym przypadku uwierzytelnianie / autoryzacja funkcja jest wyłączona. Zadania uwierzytelniania i autoryzacji są całkowicie zależy kod aplikacji.
+Jeśli nie potrzebujesz do pracy z tokenów w aplikacji, można wyłączyć magazynu tokenów.
 
-Poprzednie zachowania są kontrolowane przez **działania należy podjąć w przypadku nieuwierzytelnionego żądania** opcji w portalu Azure. Jeśli wybierzesz ** Zaloguj się przy użyciu *Nazwa dostawcy* **, wszystkie żądania muszą zostać uwierzytelnione. **Zezwalaj na żądanie (żadnej akcji)** różni się decyzję dotyczącą autoryzacji w kodzie, ale nadal zawiera informacje dotyczące uwierzytelniania. Jeśli chcesz, aby obsłużyć wszystkie elementy kodu, możesz wyłączyć uwierzytelnianie / autoryzacja funkcji.
+### <a name="logging-and-tracing"></a>Rejestrowanie i śledzenie
 
-## <a name="working-with-user-identities-in-your-application"></a>Praca z tożsamościami użytkowników w aplikacji
-Usługi aplikacji przekazuje niektóre informacje użytkownika do aplikacji za pomocą specjalnych nagłówków. Zewnętrzne żądań Zabroń używania tych nagłówków i zostanie tylko jeśli obecne ustawiona przez aplikację usługi uwierzytelniania / autoryzacji. Niektóre nagłówki przykład obejmują:
+Jeśli użytkownik [Włącz rejestrowanie aplikacji](web-sites-enable-diagnostic-log.md), zobaczysz uwierzytelnianie i autoryzacja śladów bezpośrednio w plikach dziennika. Jeśli zostanie wyświetlony błąd uwierzytelniania, który Nieoczekiwane wyrażenie, wszystkie szczegóły można znaleźć wygodnie przeszukując istniejących dzienników aplikacji. Po włączeniu [śledzenie nieudanych żądań](web-sites-enable-diagnostic-log.md), można zobaczyć dokładnie jaką rolę uwierzytelniania i autoryzacji modułu może mieć odtwarzane nieudanych żądań. Poszukaj w dziennikach śledzenia odwołania do modułu o nazwie `EasyAuthModule_32/64`. 
 
-* X-MS-KLIENTA-— NAZWA GŁÓWNA
-* X-MS-CLIENT-PRINCIPAL-ID
-* X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN
-* X-MS-TOKEN-FACEBOOK-EXPIRES-ON
+## <a name="identity-providers"></a>Dostawcy tożsamości
 
-Kod napisany w dowolnego języka lub platformy można uzyskać informacji wymaganych z tych nagłówków. Dla aplikacji platformy ASP.NET 4.6 **ClaimsPrincipal** jest ustawiany automatycznie z odpowiednimi wartościami.
+Korzysta z usługi aplikacji [tożsamości federacyjnych](https://en.wikipedia.org/wiki/Federated_identity), w którym dostawca tożsamości innych firm zarządza tożsamości użytkowników i przepływ uwierzytelniania dla Ciebie. Domyślnie dostępne są pięć dostawców tożsamości: 
 
-Aplikację można również uzyskać szczegóły użytkownika dodatkowe za pośrednictwem HTTP GET na `/.auth/me` punkt końcowy aplikacji. Nieprawidłowy token, który wchodzi w skład żądania zwróci ładunek JSON z szczegółowe informacje o dostawcy, który jest używany, podstawowego tokenu dostawcy i inne informacje użytkownika. Serwer Mobile Apps SDK zapewnia metody pomocnicze do pracy z tych danych. Aby uzyskać więcej informacji, zobacz [sposobu korzystania z zestawem Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), i [pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+| Dostawca | Punkt końcowy logowania |
+| - | - |
+| [Azure Active Directory](../active-directory/active-directory-whatis.md) | `/.auth/login/aad` |
+| [Konto Microsoft](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoft` |
+| [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
+| [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
+| [Twitter](https://developer.twitter.com/docs/basics/authentication) | `/.auth/login/twitter` |
 
-## <a name="documentation-and-additional-resources"></a>Dokumentacja i dodatkowe zasoby
-### <a name="identity-providers"></a>Dostawców tożsamości
-Następujące samouczki przedstawiają sposób konfigurowania aplikacji usługi do używania uwierzytelniania różnych dostawców:
+Po włączeniu uwierzytelniania i autoryzacji z jednego z tych dostawców punktu końcowego logowania jest dostępna, do uwierzytelniania użytkowników i sprawdzania poprawności tokenów uwierzytelnienia od dostawcy. Z łatwością można zapewnić użytkownikom z dowolną liczbę tych opcji logowania. Można również zintegrować innego dostawcy tożsamości lub [rozwiązania tożsamość niestandardowa][custom-auth].
+
+## <a name="authentication-flow"></a>Przepływ uwierzytelniania
+
+Przepływ uwierzytelniania jest taka sama dla wszystkich dostawców, ale zależy od tego, czy mają być Zaloguj się przy użyciu zestawu SDK w dostawcy:
+
+- Bez dostawcy zestawu SDK: deleguje aplikacji federacyjnej logowania do usługi App Service. Jest to zazwyczaj w przypadku aplikacji przeglądarki, które może ona dostawcy strony logowania dla użytkownika. Kod serwera zarządza procesu logowania, więc jest również nazywany _skierowane do serwera przepływ_ lub _przepływu serwera_. Przypadek ma zastosowanie do aplikacji sieci web. Ma również zastosowanie do natywnej aplikacji, które logują użytkowników przy użyciu klienta Mobile Apps SDK, ponieważ zestaw SDK spowoduje otwarcie widoku sieci web logowania użytkowników przy użyciu uwierzytelniania usługi aplikacji. 
+- Z dostawcą zestawu SDK: aplikacja loguje się użytkownik ręcznie, a następnie przesyła token uwierzytelniania do aplikacji usługi do sprawdzania poprawności. Jest to zwykle z aplikacji bez przeglądarki, które użytkownik nie widzi strony logowania dla dostawcy. Kod aplikacji zarządza procesu logowania, więc jest również nazywany _klient skierowany przepływu_ lub _przepływu klienta_. Przypadek ma zastosowanie do interfejsów API REST, [usługi Azure Functions](../azure-functions/functions-overview.md)i klientów w przeglądarkach JavaScript, a także aplikacje sieci web, które muszą większą elastyczność podczas procesu logowania. Ma również zastosowanie do natywnej aplikacji mobilnych, które logują użytkowników przy użyciu zestawu SDK w dostawcy.
+
+> [!NOTE]
+> Wywołania z przeglądarki zaufanych aplikacji w usłudze App Service wymaga innego interfejsu API REST w usłudze App Service lub [usługi Azure Functions](../azure-functions/functions-overview.md) mogą być uwierzytelniane przy użyciu przepływu skierowane do serwera. Aby uzyskać więcej informacji, zobacz [uwierzytelniać użytkowników za pomocą usługi Azure App Service]().
+>
+
+W poniższej tabeli przedstawiono kroki przepływu uwierzytelniania.
+
+| Krok | Bez dostawcy zestawu SDK | Z dostawcą zestawu SDK |
+| - | - | - |
+| 1. Logowania użytkownika w | Przekierowuje klienta do `/.auth/login/<provider>`. | Kod klienta loguje użytkownika bezpośrednio z zestawem SDK dostawcy i otrzymuje token uwierzytelniania. Informacje Zobacz dokumentację dostawcy. |
+| 2. Uwierzytelnianie końcowe | Dostawca przekierowuje klienta do `/.auth/login/<provider>/callback`. | Kod klienta ogłoszeń tokenu od dostawcy, aby `/.auth/login/<provider>` do weryfikacji. |
+| 3. Ustanowienie sesji uwierzytelnionych | Usługi aplikacji — dodaje uwierzytelnionego pliku cookie do odpowiedzi. | Usługi aplikacji — zwraca własny token uwierzytelniania do kodu klienta. |
+| 4. Udostępniać zawartość uwierzytelnionego | Klient dołącza pliku cookie uwierzytelniania w kolejnych żądań (automatycznie obsługiwane przez przeglądarkę). | Kod klienta stanowi token uwierzytelniania w `X-ZUMO-AUTH` nagłówka (automatycznie obsługiwane przez klienta Mobile Apps SDK). |
+
+Dla przeglądarki klienta usługi aplikacji może automatyczne kierowanie wszystkich nieuwierzytelnionym użytkownikom `/.auth/login/<provider>`. Można także przedstawić użytkowników z co najmniej jednym `/.auth/login/<provider>` łącza do logowania do aplikacji przy użyciu dostawcy wyboru.
+
+<a name="authorization"></a>
+
+## <a name="authorization-behavior"></a>Zachowanie autoryzacji
+
+W [portalu Azure](https://portal.azure.com), można skonfigurować liczbę zachowań autoryzacja usługi App Service.
+
+![](media/app-service-authentication-overview/authorization-flow.png)
+
+Następujące nagłówki opisano opcje.
+
+### <a name="allow-all-requests-default"></a>Zezwalaj na wszystkie żądania (ustawienie domyślne)
+
+Uwierzytelnianie i autoryzacja nie jest obsługiwany przez usługę App Service (wyłączone). 
+
+Wybierz tę opcję, jeśli nie ma potrzeby uwierzytelniania i autoryzacji, lub aby napisać własny kod uwierzytelniania i autoryzacji.
+
+### <a name="allow-only-authenticated-requests"></a>Zezwalaj tylko uwierzytelnionego żądania.
+
+Ta opcja jest **Zaloguj się przy użyciu \<dostawcy >**. Usługi aplikacji — wykonuje przekierowanie wszystkich żądań anonimowych do `/.auth/login/<provider>` dla dostawcy, możesz wybrać. Jeśli anonimowe żądanie pochodzi z natywnych aplikacji mobilnej, zwrócona odpowiedź jest `HTTP 401 Unauthorized`.
+
+Po wybraniu tej opcji nie należy do pisania kodu uwierzytelniania w aplikacji. Bardziej precyzyjną autoryzacji, takich jak autoryzacja specyficzne dla roli, mogą być obsługiwane przez badanie oświadczenia użytkownika (zobacz [dostęp do oświadczeń użytkowników](app-service-authentication-how-to.md#access-user-claims)).
+
+### <a name="allow-all-requests-but-validate-authenticated-requests"></a>Zezwalaj na wszystkie żądania, ale poprawności żądań uwierzytelnionych
+
+Ta opcja jest **Zezwalaj na anonimowe żądania**. Ta opcja włącza opcję Uwierzytelnianie i autoryzację w usłudze App Service, ale różni się decyzji dotyczących autoryzacji w kodzie aplikacji. Dla żądań uwierzytelnionych usługi aplikacji przekazuje również informacje o uwierzytelnianiu w nagłówkach HTTP. 
+
+Opcja ta zapewnia większą elastyczność podczas obsługi żądań anonimowych. Na przykład umożliwia [istnieje wiele opcji logowania](app-service-authentication-how-to.md#configure-multiple-sign-in-options) dla użytkowników. Niemniej jednak należy napisać kod. 
+
+## <a name="more-resources"></a>Więcej zasobów
+
+[Dostosowywanie uwierzytelniania i autoryzacji w usłudze App Service](app-service-authentication-how-to.md)
+
+Przewodniki porad specyficznego dla dostawcy:
 
 * [Jak skonfigurować aplikację do używania nazwy logowania w usłudze Azure Active Directory][AAD]
 * [Jak skonfigurować aplikację do używania logowania usługi Facebook][Facebook]
 * [Jak skonfigurować aplikację do używania logowania Google][Google]
 * [Jak skonfigurować aplikację do używania Account Microsoft logowania][MSA]
 * [Jak skonfigurować aplikację do używania logowania usługi Twitter][Twitter]
-
-Jeśli chcesz użyć innych niż system obsługi tożsamości, wprowadzone w tym miejscu można również użyć [obsługę niestandardowych uwierzytelniania na serwerze Mobile Apps .NET SDK w wersji preview][custom-auth], której można użyć w aplikacji sieci web, mobilnych aplikacje, lub aplikacje interfejsu API.
-
-### <a name="mobile-applications"></a>Aplikacje mobilne
-Następujące samouczki przedstawiają sposób dodawania uwierzytelniania dla klientów mobilnych przy użyciu przepływu skierowane do serwera:
-
-* [Dodawanie uwierzytelniania do aplikacji systemu iOS][iOS]
-* [Dodawanie uwierzytelniania do aplikacji systemu Android][Android]
-* [Dodawanie uwierzytelniania do aplikacji systemu Windows][Windows]
-* [Dodawanie uwierzytelniania do aplikacji platformy Xamarin.iOS][Xamarin.iOS]
-* [Dodawanie uwierzytelniania do aplikacji platformy Xamarin.Android][Xamarin.Android]
-* [Dodawanie uwierzytelniania do aplikacji platformy Xamarin.Forms][platformy Xamarin.Forms]
-* [Dodawanie uwierzytelniania do aplikacji platformy Cordova][Cordova]
-
-Jeśli chcesz użyć przepływu skierowane do klienta usługi Azure Active Directory, użyj następujących zasobów:
-
-* [Użyj biblioteki uwierzytelniania usługi Active Directory dla systemu iOS][ADAL-iOS]
-* [Korzystanie z biblioteki uwierzytelniania usługi Active Directory dla systemu Android][ADAL-Android]
-* [Użyj biblioteki uwierzytelniania usługi Active Directory systemu Windows i Xamarin][ADAL-dotnet]
-
-Jeśli chcesz używać przepływu skierowane do klienta dla usługi Facebook, użyj następujących zasobów:
-
-* [Używanie zestawu SDK usługi Facebook dla systemu iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
-
-Jeśli chcesz używać przepływu skierowane do klienta dla usługi Twitter, użyj następujących zasobów:
-
-* [Użyj usługi Twitter sieci szkieletowej dla systemu iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
-
-Jeśli chcesz użyć dla usług Google przepływu skierowane do klienta, należy użyć następujących zasobów:
-
-* [Korzystanie z usługi Google logowania zestawu SDK dla systemu iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
-
-<!-- ### API applications
-The following tutorials show how to protect your API apps:
-
-* [User authentication for API Apps in Azure App Service][apia-user]
-* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
-
-[iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
-[Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
-[Xamarin.iOS]: ../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md
-[Xamarin.Android]: ../app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md
-[platformy Xamarin.Forms]: ../app-service-mobile/app-service-mobile-xamarin-forms-get-started-users.md
-[Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
-[Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
+* [Porady: użycie uwierzytelniania niestandardowego dla aplikacji][custom-auth]
 
 [AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md

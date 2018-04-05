@@ -1,11 +1,11 @@
 ---
-title: "Funkcja pytania i zgodne, za pomocą usługi Azure Machine Learning Workbench | Dokumentacja firmy Microsoft"
-description: "Jak używać różnych metod uczenia maszynowego skuteczne odpowiadające Otwórz zakończył zapytań do istniejących wcześniej — często zadawane pytania/odpowiedzi na pytania pary."
+title: Funkcja pytania i zgodne, za pomocą usługi Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
+description: Jak używać różnych metod uczenia maszynowego skuteczne odpowiadające Otwórz zakończył zapytań do istniejących wcześniej — często zadawane pytania/odpowiedzi na pytania pary.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: mezmicrosoft
 editor: mezmicrosoft
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
 ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/05/2018
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Funkcja pytania i zgodne, za pomocą usługi Azure Machine Learning workbench
 Udzielenie odpowiedzi na pytania zakończone Otwórz jest trudne i często wymaga nakładu pracy od ekspertów z danej dziedziny (msp). Aby zmniejszyć zapotrzebowanie na wewnętrzny MSP, firm często tworzyć listy — często zadawane pytania (FAQ) jako sposób udzielania pomocy użytkownikom. W tym przykładzie których są wyświetlane różne metody learning skuteczne maszyny do dopasowania Otwórz zakończone zapytań do istniejące pary odpowiedzi na pytania / — często zadawane pytania. W tym przykładzie przedstawiono prosty proces budowania rozwiązania przy użyciu Azure Machine Learning Workbench. 
@@ -51,7 +51,7 @@ Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
 Utwórz nowy projekt za pomocą tego przykładu jako szablon:
 1.  Otwórz Azure Machine Learning Workbench
-2.  Na **projekty** kliknij przycisk ** + ** podpisywania i wybierz **nowy projekt**
+2.  Na **projekty** kliknij przycisk **+** podpisywania i wybierz **nowy projekt**
 3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu
 4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz "Q & A dopasowania" i wybierz szablon
 5.  Kliknij przycisk **Utwórz**
@@ -82,7 +82,7 @@ Schemat danych i łącza pobierania bezpośredniego trzech zestawów danych moż
 
 | Zestaw danych | Pole | Typ | Opis
 | ----------|------------|------------|--------
-| [pytania](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | Identyfikator | Ciąg | Identyfikator unikatowy pytania (klucz podstawowy)
+| [Pytania](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | Identyfikator | Ciąg | Identyfikator unikatowy pytania (klucz podstawowy)
 |  | AnswerId | Ciąg | Identyfikator unikatowy odpowiedzi na pytania
 |  | text0 | Ciąg | Dane pierwotne tekstu, w tym tytuł i treści pytania
 |  | CreationDate | Sygnatura czasowa | Sygnatura czasowa kiedy został poproszony pytania
@@ -160,4 +160,4 @@ Niektóre najważniejsze funkcje klucza, w tym przykładzie są:
 
 Hazen J. Tymotka, Krzysztof Richardson, [ _Multiword fraz drzewo wyrażeń ograniczone do modelowania ulepszone modelowania tematu konwersacji mowy_](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf). Język rozmowy technologii Workshop (SLT) 2012 IEEE. IEEE, 2012.
 
-Tymotka J. Hazen, [ _techniki szkolenia MCE tematu do identyfikacji rozmowy dokumentów Audio_ ](http://ieeexplore.ieee.org/abstract/document/5742980/) w transakcji IEEE na Audio, mowy i język przetwarzania, obj. 19 nie. 8, str. 2451-2460, Nov. 2011.
+Tymotka J. Hazen, [ _techniki szkolenia MCE tematu do identyfikacji rozmowy dokumentów Audio_ ](http://ieeexplore.ieee.org/abstract/document/5742980/) w transakcji IEEE na Audio, mowy i język przetwarzania, obj. 19 nie. 8, pp. 2451-2460, Nov. 2011.

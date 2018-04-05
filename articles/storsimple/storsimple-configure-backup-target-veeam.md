@@ -2,11 +2,11 @@
 title: Z serii StorSimple 8000 jako miejsce docelowe kopii zapasowej z Veeam | Dokumentacja firmy Microsoft
 description: Zawiera opis konfiguracji miejsce docelowe kopii zapasowej StorSimple o Veeam.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako miejsce docelowe kopii zapasowej z Veeam
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Azure StorSimple jest rozwiązania magazynu hybrydowego chmury firmy Microsoft. StorSimple adresy złożoności przyrostu wykładniczej danych przy użyciu konta usługi Azure Storage jako rozszerzenia rozwiązania lokalnego i automatycznie warstw danych między lokalnymi magazynu i magazynu w chmurze.
 
@@ -93,17 +93,17 @@ W poniższej tabeli przedstawiono wskazówki dotyczące początkowej modelu do a
 
 | Pojemność magazynu | 8100 | 8600 |
 |---|---|---|
-| Pojemność magazynu lokalnego | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Pojemność magazynu w chmurze | &gt;200 TiB\* | &gt;500 TiB\* |
+| Pojemność magazynu lokalnego | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Pojemność magazynu w chmurze | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Rozmiar magazynu nie przyjmuje żadnych deduplikacji ani kompresji.
+\* Rozmiar magazynu nie przyjmuje żadnych deduplikacji ani kompresji.
 
 **StorSimple pojemności dla głównych i dodatkowych kopii zapasowych**
 
 | Scenariusz tworzenia kopii zapasowej  | Pojemność magazynu lokalnego  | Pojemność magazynu w chmurze  |
 |---|---|---|
 | Podstawowa kopia zapasowa  | Ostatnie kopie zapasowe przechowywane w magazynie lokalnym na szybkie odzyskiwanie aby spełnić cel punktu odzyskiwania (RPO) | Historia kopii zapasowych (RPO), który pasuje do pojemności chmury |
-| Dodatkowej kopii zapasowej | Dodatkowej kopii kopii zapasowej danych mogą być przechowywane w chmurze pojemności  | Nie dotyczy  |
+| Dodatkowej kopii zapasowej | Dodatkowej kopii kopii zapasowej danych mogą być przechowywane w chmurze pojemności  | ND  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako miejsce docelowe kopii zapasowej głównej
 
@@ -183,7 +183,7 @@ W tej sekcji przedstawiony przykłady konfiguracji. Następujące przykłady i z
 
 ### <a name="set-up-storsimple"></a>Konfigurowanie StorSimple
 
-| Zadania wdrażania StorSimple  | Dodatkowe uwagi |
+| Zadania wdrażania StorSimple  | Dodatkowe komentarze |
 |---|---|
 | Wdrażanie lokalnego urządzenia StorSimple. | Obsługiwane wersje: Aktualizacja 3 i jego nowsze wersje. |
 | Włącz miejsce docelowe kopii zapasowej. | Należy używać tych poleceń, aby włączyć lub wyłączyć tryb miejsce docelowe kopii zapasowej i można uzyskać stanu. Aby uzyskać więcej informacji, zobacz [połączenia zdalne z urządzeniem StorSimple](storsimple-remote-connect.md).</br> Aby włączyć tryb tworzenia kopii zapasowej: `Set-HCSBackupApplianceMode -enable`. </br> Aby wyłączyć tryb tworzenia kopii zapasowej: `Set-HCSBackupApplianceMode -disable`. </br> Aby uzyskać bieżący stan ustawienia trybu tworzenia kopii zapasowej: `Get-HCSBackupApplianceMode`. |
@@ -264,7 +264,7 @@ W oparciu o poprzednim założeń, Utwórz 26-TiB StorSimple do warstwy wolumin 
 | Pełne roczne | 1  | 10 | 10 |
 | Wymaganie GFS |   | 38 |   |
 | Dodatkowego limitu przydziału  | 4  |   | 42 całkowita wymaganie GFS  |
-\*Mnożnik GFS jest liczba kopii, które należy chronić i zachować zgodnie z wymaganiami zasad tworzenia kopii zapasowej.
+\* Mnożnik GFS jest liczba kopii, które należy chronić i zachować zgodnie z wymaganiami zasad tworzenia kopii zapasowej.
 
 ## <a name="set-up-veeam-storage"></a>Konfigurowanie magazynu Veeam
 
@@ -274,11 +274,11 @@ W oparciu o poprzednim założeń, Utwórz 26-TiB StorSimple do warstwy wolumin 
 
     ![Konsola zarządzania Veeam, strony tworzenia kopii zapasowej repozytorium](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  W **nowego repozytorium kopii zapasowej** okna dialogowego wprowadź nazwę i opis dla repozytorium. Wybierz **dalej**.
+2.  W **nowego repozytorium kopii zapasowej** okna dialogowego wprowadź nazwę i opis dla repozytorium. Wybierz opcję **Dalej**.
 
     ![Strony zarządzania Veeam konsoli, nazwę i opis](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Dla typu, wybierz **Microsoft Windows server**. Wybierz serwer Veeam. Wybierz **dalej**.
+3.  Dla typu, wybierz **Microsoft Windows server**. Wybierz serwer Veeam. Wybierz opcję **Dalej**.
 
     ![Konsola zarządzania Veeam, wybierz typ kopii zapasowej repozytorium](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -291,7 +291,7 @@ W oparciu o poprzednim założeń, Utwórz 26-TiB StorSimple do warstwy wolumin 
 
     ![Konsola zarządzania Veeam, ustawień zgodności magazynu](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  W **nowego repozytorium kopii zapasowej** okno dialogowe, wybierz opcję **Włącz usługę systemu plików NFS vPower na serwerze instalacji (zalecane)** pole wyboru. Wybierz **dalej**.
+6.  W **nowego repozytorium kopii zapasowej** okno dialogowe, wybierz opcję **Włącz usługę systemu plików NFS vPower na serwerze instalacji (zalecane)** pole wyboru. Wybierz opcję **Dalej**.
 
     ![Konsola zarządzania Veeam, strony tworzenia kopii zapasowej repozytorium](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -318,7 +318,7 @@ Oto przykład harmonogramu obrotu GFS cztery tygodnie miesięcznych i rocznych:
 |---|---|---|
 | Co tydzień (1 – 4 tygodnie) | Sobota | Poniedziałek — piątek |
 | Miesięczne  | Sobota  |   |
-| Co rok | Sobota  |   |   |
+| Rocznie | Sobota  |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Przypisać woluminy StorSimple do Veeam zadanie tworzenia kopii zapasowej
@@ -383,7 +383,7 @@ W poniższej tabeli przedstawiono, jak skonfigurować tworzenie kopii zapasowych
 | Miesięczne pełny |Dysk StorSimple (długoterminowej) | 1 | 12 | 12 |
 | Pełne roczne |Dysk StorSimple (długoterminowej) | 1 | 1 | 1 |
 |Wymagany rozmiar woluminów GFS |  |  |  | 18*|
-\*Łączna pojemność obejmuje 17 dyski TiB StorSimple i 1 TiB woluminu RAID.
+\* Łączna pojemność obejmuje 17 dyski TiB StorSimple i 1 TiB woluminu RAID.
 
 
 ### <a name="gfs-example-schedule"></a>GFS przykład harmonogramu
@@ -397,7 +397,7 @@ Obracanie GFS harmonogram tygodniowy, miesięcznych i rocznych
 | Tydzień 3 | Tygodnie StorSimple 2-4 |   |   |   |   |   |
 | Tydzień 4 | Tygodnie StorSimple 2-4 |   |   |   |   |   |
 | Miesięczne | Co miesiąc StorSimple |   |   |   |   |   |
-| Co rok | Co rok StorSimple  |   |   |   |   |   |   |
+| Rocznie | Co rok StorSimple  |   |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Przypisz do zadania kopiowania Veeam woluminów StorSimple
 
@@ -513,7 +513,7 @@ Poniższe dokumenty zostały odwołanie do tego artykułu:
 - [Przy użyciu GPT dysków](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Konfigurowanie kopii w tle dla folderów udostępnionych](http://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o sposobie [przywrócenie z zestawu kopii zapasowych](storsimple-restore-from-backup-set-u2.md).
 - Dowiedz się więcej na temat sposobu wykonywania [urządzenia trybu failover i odzyskiwania po awarii](storsimple-device-failover-disaster-recovery.md).

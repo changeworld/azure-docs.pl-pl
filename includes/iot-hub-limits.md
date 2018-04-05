@@ -16,6 +16,7 @@ W poniższej tabeli przedstawiono limity dotyczące zasobów usługi IoT Hub:
 | --- | --- |
 | Maksymalna liczba płatnych centrów IoT na subskrypcję platformy Azure |10 |
 | Maksymalna liczba bezpłatnych centrów IoT na subskrypcję platformy Azure |1 |
+| Maksymalna liczba znaków w identyfikator urządzenia | 128 |
 | Maksymalna liczba tożsamości urządzeń<br/> zwróconych w pojedynczym wywołaniu |1000 |
 | Maksymalny okres przechowywania komunikatów usługi IoT Hub dla komunikatów przesyłanych z urządzenia do chmury |7 dni |
 | Maksymalny rozmiar komunikatu przesyłanego z urządzenia do chmury |256 KB |

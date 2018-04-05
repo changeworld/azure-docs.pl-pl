@@ -1,12 +1,12 @@
 ---
-title: "Debugowanie Hadoop w usłudze HDInsight: Sprawdź dzienniki i interpretować komunikaty o błędach - Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat komunikaty o błędach, które może pojawić się w przypadku administrowania HDInsight przy użyciu programu PowerShell i czynności, które można wykonać w celu odzyskania."
+title: 'Debugowanie Hadoop w usłudze HDInsight: Sprawdź dzienniki i interpretować komunikaty o błędach - Azure | Dokumentacja firmy Microsoft'
+description: Więcej informacji na temat komunikaty o błędach, które może pojawić się w przypadku administrowania HDInsight przy użyciu programu PowerShell i czynności, które można wykonać w celu odzyskania.
 services: hdinsight
 tags: azure-portal
 editor: cgronlun
 manager: jhubbard
 author: ashishthaps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7e6ceb0e-8be8-4911-bc80-20714030a3ad
 ms.service: hdinsight
 ms.custom: hdinsightactive
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashish
 ms.openlocfilehash: a5db3848eda2dbb6f117562e059b909575966993
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-hadoop-logs"></a>Analizowanie dzienników usługi Hadoop
 

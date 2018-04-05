@@ -1,7 +1,7 @@
 ---
-title: "Jak używać usługi poczty e-mail SendGrid (Java) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wysłać wiadomość e-mail z usługi poczty e-mail SendGrid na platformie Azure. Przykłady kodu napisane w języku Java."
-services: 
+title: Jak używać usługi poczty e-mail SendGrid (Java) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wysłać wiadomość e-mail z usługi poczty e-mail SendGrid na platformie Azure. Przykłady kodu napisane w języku Java.
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Sposób wysyłania poczty E-mail przy użyciu SendGrid za pomocą języka Java
 W tym przewodniku przedstawiono sposób wykonywania typowych zadań programowania usługi poczty e-mail SendGrid na platformie Azure. Przykłady są napisane w języku Java. Omówione scenariusze obejmują **konstruowania e-mail**, **wysyłania wiadomości e-mail**, **dodawanie załączników**, **za pomocą filtrów**i **aktualizowanie właściwości**. Aby uzyskać więcej informacji na SendGrid i wysyłania wiadomości e-mail, zobacz [następne kroki](#next-steps) sekcji.
@@ -158,7 +158,7 @@ SendGrid udostępnia funkcje dodatkowe poczty e-mail za pośrednictwem *filtry*.
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Porady: Aktualizacja właściwości wiadomości e-mail
-Niektóre właściwości wiadomości e-mail może zostać zastąpiona przy użyciu  **ustawić*właściwości*** lub dołączonych za pomocą  **dodać*właściwości***.
+Niektóre właściwości wiadomości e-mail może zostać zastąpiona przy użyciu **ustawić * właściwość*** lub dołączonych za pomocą **dodać*właściwości ***.
 
 Na przykład, aby określić **ReplyTo** adresów, należy użyć następującego:
 
@@ -176,11 +176,11 @@ Aby dodać **DW** adresata, należy użyć następującego:
 ## <a name="how-to-use-additional-sendgrid-services"></a>Porady: Użyj dodatkowych usług SendGrid
 SendGrid oferuje opartych na sieci web interfejsów API, które można wykorzystać dodatkowe funkcje włączenie w aplikacji platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dokumentacji interfejsu API SendGrid][SendGrid API documentation].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy znasz już podstawy usługi poczty E-mail SendGrid, skorzystaj z poniższych linków, aby dowiedzieć się więcej.
 
 * Przykład przedstawiający we wdrożeniu Azure przy użyciu SendGrid: [sposób wysyłania poczty e-mail przy użyciu SendGrid za pomocą języka Java w wdrożenia usługi Azure](store-sendgrid-java-how-to-send-email-example.md)
-* Zestawu SDK SendGrid Java: <https://sendgrid.com/docs/Code_Examples/java.html>
+* Włączenie Java SDK: <https://sendgrid.com/docs/Code_Examples/java.html>
 * Dokumentacja interfejsu API SendGrid: <https://sendgrid.com/docs/API_Reference/index.html>
 * Oferta specjalna SendGrid dla klientów platformy Azure: <https://sendgrid.com/windowsazure.html>
 

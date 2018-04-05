@@ -1,12 +1,12 @@
 ---
-title: "Edison Intel do chmury (Node.js) - Połącz Edison Intel z Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować i Intel Edison nawiązać połączenia z Centrum IoT Azure dla Edison Intel do wysyłania danych do platformy w chmurze platformy Azure, w tym samouczku."
+title: Edison Intel do chmury (Node.js) - Połącz Edison Intel z Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować i Intel Edison nawiązać połączenia z Centrum IoT Azure dla Edison Intel do wysyłania danych do platformy w chmurze platformy Azure, w tym samouczku.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "Usługa Azure iot intel edison, intel edison Centrum iot, intel edison wysyłania danych do chmury, intel edison do chmury"
+tags: ''
+keywords: Usługa Azure iot intel edison, intel edison Centrum iot, intel edison wysyłania danych do chmury, intel edison do chmury
 ms.assetid: a7c9cf2d-c102-41b0-aa45-41285c6877eb
 ms.service: iot-hub
 ms.devlang: nodejs
@@ -17,10 +17,10 @@ ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Intel Edison nawiązać połączenia z Centrum IoT Azure (Node.js)
 
@@ -226,7 +226,7 @@ Powinny zostać wyświetlone następujące dane wyjściowe, który zawiera dane 
 
 ![Dane wyjściowe — dane czujników wysłanych z Intel Edison Centrum IoT](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Uruchomiono przykładowej aplikacji do zbierania danych czujników i wysyłania go do Centrum IoT.
 

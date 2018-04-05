@@ -1,11 +1,11 @@
 ---
-title: "Omówienie protokołu .NET usługi Azure AD | Microsoft Docs"
-description: "Jak używać wiadomości HTTP do autoryzacji dostępu do aplikacji sieci Web i interfejsów API sieci Web w dzierżawie za pomocą usługi Azure AD."
+title: Omówienie protokołu .NET usługi Azure AD | Microsoft Docs
+description: Jak używać wiadomości HTTP do autoryzacji dostępu do aplikacji sieci Web i interfejsów API sieci Web w dzierżawie za pomocą usługi Azure AD.
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/21/2016
 ms.author: priyamo
 ms.openlocfilehash: 42ce8dfd30cda7d4085778954350550fd9fdf13d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Rejestrowanie aplikacji w dzierżawie usługi AD
 Po pierwsze należy zarejestrować aplikację w dzierżawie usługi Azure Active Directory (Azure AD). Spowoduje to nadanie aplikacji identyfikatora oraz umożliwi jej otrzymywanie tokenów.

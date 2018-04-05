@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0887c50ea7da00859e370f60626eabb03fcc1f4b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a2cb3d504abcd3f9c50df2427884d478ad2240c4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
@@ -26,7 +26,7 @@ Usługi Application Insights można używać z dowolnymi stronami sieci Web — 
 
 ![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij pozycję Przeglądarka](./media/app-insights-javascript/03.png)
 
-Potrzebna jest subskrypcja platformy [Microsoft Azure](https://azure.com). Jeśli zespół ma subskrypcję organizacyjną, poproś właściciela, aby dodał do niej Twoje konto Microsoft. Tworząc strony i używając ich na małą skalę, nie poniesiesz żadnych kosztów.
+Potrzebna jest subskrypcja platformy [Microsoft Azure](https://azure.com). Jeśli zespół ma subskrypcję organizacyjną, poproś właściciela, aby dodał do niej Twoje konto Microsoft.
 
 ## <a name="set-up-application-insights-for-your-web-page"></a>Konfigurowanie usługi Application Insights dla strony sieci Web
 Dodaj fragment kodu modułu ładującego do stron sieci Web w opisany poniżej sposób.

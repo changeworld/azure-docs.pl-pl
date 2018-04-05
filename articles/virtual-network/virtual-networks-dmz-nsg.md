@@ -1,12 +1,12 @@
 ---
-title: "Przykład DMZ Azure — Tworzenie prostego DMZ z grup NSG | Dokumentacja firmy Microsoft"
-description: "Tworzenie DMZ z grup zabezpieczeń sieci (NSG)"
+title: Przykład DMZ Azure — Tworzenie prostego DMZ z grup NSG | Dokumentacja firmy Microsoft
+description: Tworzenie DMZ z grup zabezpieczeń sieci (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Przykład 1 — Tworzenie prostego DMZ, za pomocą grup NSG z szablonem usługi Azure Resource Manager
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]

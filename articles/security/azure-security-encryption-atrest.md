@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure danych szyfrowania podczas spoczynku | Dokumentacja firmy Microsoft
-description: "Ten artykuł zawiera omówienie Microsoft Azure danych szyfrowania podczas spoczynku, ogólną możliwości i zagadnienia ogólne."
+description: Ten artykuł zawiera omówienie Microsoft Azure danych szyfrowania podczas spoczynku, ogólną możliwości i zagadnienia ogólne.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
 ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Danych Azure szyfrowania na Rest
 Istnieje wiele narzędzi w systemie Microsoft Azure w celu zabezpieczenia danych zgodnie z potrzebami firmy zabezpieczeń i zgodności. Ten dokument koncentruje się na:
@@ -252,31 +252,31 @@ Szyfrowanie po stronie klienta danych SQL Azure jest obsługiwane przez [zawsze 
 
 |                                  |                |                     | **Model szyfrowania**             |                              |        |
 |----------------------------------|----------------|---------------------|------------------------------|------------------------------|--------|
-|                                  |                |                     |                              |                              | **Klienta** |
+|                                  |                |                     |                              |                              | **Client** |
 |                                  | **Zarządzanie kluczami** | **Usługa zarządzania klucza** | **Klientów zarządzanych w magazynie kluczy** | **Klient zarządzany lokalnie** |        |
 | **Magazyn i baz danych**            |                |                     |                              |                              |        |
-| Dysku (IaaS)                      |                | -                   | Tak                          | Tak*                         | -      |
-| Program SQL Server (IaaS)                |                | Tak                 | Tak                          | Tak                          | Tak    |
-| Azure SQL (PaaS)                 |                | Tak                 | Wersja zapoznawcza                      | -                            | Tak    |
-| Usługa Azure Storage (bloku/stronicowych obiektów blob) |                | Tak                 | Wersja zapoznawcza                      | -                            | Tak    |
-| Magazyn Azure (pliki)            |                | Tak                 | -                            | -                            | -      |
-| Usługa Azure Storage (tabel, kolejek)   |                | -                   | -                            | -                            | Tak    |
-| Rozwiązania cosmos bazy danych (dokument DB)          |                | Tak                 | -                            | -                            | -      |
-| Magazyn StorSimple                       |                | Tak                 | -                            | -                            | Tak    |
-| Tworzenie kopii zapasowych                           |                | -                   | -                            | -                            | Tak    |
+| Dysku (IaaS)                      |                | -                   | Yes                          | Tak*                         | -      |
+| Program SQL Server (IaaS)                |                | Yes                 | Yes                          | Yes                          | Yes    |
+| Azure SQL (PaaS)                 |                | Yes                 | Wersja zapoznawcza                      | -                            | Yes    |
+| Usługa Azure Storage (bloku/stronicowych obiektów blob) |                | Yes                 | Wersja zapoznawcza                      | -                            | Yes    |
+| Magazyn Azure (pliki)            |                | Yes                 | -                            | -                            | -      |
+| Usługa Azure Storage (tabel, kolejek)   |                | -                   | -                            | -                            | Yes    |
+| Rozwiązania cosmos bazy danych (dokument DB)          |                | Yes                 | -                            | -                            | -      |
+| Magazyn StorSimple                       |                | Yes                 | -                            | -                            | Yes    |
+| Backup                           |                | -                   | -                            | -                            | Yes    |
 | **Analiza i analiza**       |                |                     |                              |                              |        |
-| Azure Data Factory               |                | Tak                 | -                            | -                            | -      |
+| Azure Data Factory               |                | Yes                 | -                            | -                            | -      |
 | Azure Machine Learning           |                | -                   | Wersja zapoznawcza                      | -                            | -      |
-| Usługa Azure Stream Analytics           |                | Tak                 | -                            | -                            | -      |
-| HDInsights (magazyn obiektów Blob platformy Azure)  |                | Tak                 | -                            | -                            | -      |
-| HDInsights (Data Lake Storage)   |                | Tak                 | -                            | -                            | -      |
-| Azure Data Lake Store            |                | Tak                 | Tak                          | -                            | -      |
-| Azure Data Catalog               |                | Tak                 | -                            | -                            | -      |
-| Power BI                         |                | Tak                 | -                            | -                            | -      |
+| Usługa Azure Stream Analytics           |                | Yes                 | -                            | -                            | -      |
+| HDInsights (magazyn obiektów Blob platformy Azure)  |                | Yes                 | -                            | -                            | -      |
+| HDInsights (Data Lake Storage)   |                | Yes                 | -                            | -                            | -      |
+| Azure Data Lake Store            |                | Yes                 | Yes                          | -                            | -      |
+| Azure Data Catalog               |                | Yes                 | -                            | -                            | -      |
+| Power BI                         |                | Yes                 | -                            | -                            | -      |
 | **Usługi IoT**                     |                |                     |                              |                              |        |
-| Usługa IoT Hub                          |                | -                   | -                            | -                            | Tak    |
-| Service Bus                      |                | Tak (warstwy Premium)              | -                            | -                            | Tak    |
-| Usługa Event Hubs                       |                | Tak             | -                            | -                            | -      |
+| Usługa IoT Hub                          |                | -                   | -                            | -                            | Yes    |
+| Service Bus                      |                | Tak (warstwy Premium)              | -                            | -                            | Yes    |
+| Event Hubs                       |                | Yes             | -                            | -                            | -      |
 
 
 ## <a name="conclusion"></a>Podsumowanie

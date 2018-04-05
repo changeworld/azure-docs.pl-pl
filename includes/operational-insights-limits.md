@@ -9,10 +9,10 @@ ms.date: 03/29/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 Następujące limity dotyczą zasobów usługi Log Analytics na subskrypcję:
 
@@ -29,7 +29,7 @@ Następujące limity dotyczą każdego obszaru roboczego usługi Log Analytics:
 
 |  | Bezpłatna | Standardowa (Standard) | Premium | Autonomiczna | OMS | Na GB |
 | --- | --- | --- | --- | --- | --- |--- |
-| Ilość danych zebranych na dzień |500 MB<sup>1</sup> |None |Brak | Brak | Brak | Brak
+| Ilość danych zebranych na dzień |500 MB<sup>1</sup> |Brak |None | Brak | Brak | Brak
 | Okres przechowywania danych |7 dni |1 miesiąc |12 miesięcy | 1 miesiąc<sup>2</sup> | 1 miesiąc <sup>2</sup>| 1 miesiąc <sup>2</sup>|
 
 <sup>1</sup> Gdy klienci osiągną limit dziennego transferu danych wynoszący 500 MB, analiza danych zostanie zatrzymana, a następnie wznowiona na początku następnego dnia. Dzień jest oparty na czasie UTC.

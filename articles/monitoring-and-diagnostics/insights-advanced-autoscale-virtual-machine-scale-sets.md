@@ -1,9 +1,9 @@
 ---
-title: "Zaawansowane skalowania automatycznego przy użyciu usługi Azure Virtual Machines | Dokumentacja firmy Microsoft"
-description: "Używa usługi Resource Manager i zestawy skalowania maszyny Wirtualnej z wielu zasad i profilów, które wysyłania wiadomości e-mail i Wywołaj adresy URL elementu webhook z akcji skalowania."
+title: Zaawansowane skalowania automatycznego przy użyciu usługi Azure Virtual Machines | Dokumentacja firmy Microsoft
+description: Używa usługi Resource Manager i zestawy skalowania maszyny Wirtualnej z wielu zasad i profilów, które wysyłania wiadomości e-mail i Wywołaj adresy URL elementu webhook z akcji skalowania.
 author: anirudhcavale
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 7e3576e2-4a2b-4736-b5ae-98c4689cdd2b
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
 ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Zestawy skalowania maszyny Wirtualnej za pomocą szablonów usługi Resource Manager konfiguracji zaawansowanej skalowania automatycznego
 Można w skali i skalowalnego w poziomie w zestawy skalowania maszyny wirtualnej w oparciu metryki progów wydajności, zgodnie z cyklicznym harmonogramem lub w określonym dniu. Można również skonfigurować powiadomienia e-mail i elementu webhook dla akcji skalowania. W tym przewodniku przedstawiono przykład konfigurowania tych obiektów przy użyciu szablonu usługi Resource Manager dla zestawu skalowania maszyny Wirtualnej.
@@ -35,7 +35,7 @@ W tym przewodniku używamy [Eksploratora zasobów Azure](https://resources.azure
 1. Wdrożenie nowej skali ustawić przy użyciu ustawienia skalowania automatycznego podstawowe. W tym artykule wykorzystano z galerii Szybki Start Azure, z systemu Windows zestawu przy użyciu szablonu podstawowego skalowania automatycznego skalowania. Zestawy skalowania Linux działają tak samo.
 2. Po utworzeniu zestawu skalowania, przejdź do zasobu zestaw skali z Eksploratora zasobów Azure. Można znaleźć w następujących tematach w węźle elemencie Microsoft.Insights.
 
-    ![Eksplorator systemu Azure](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
     Wykonanie szablon został utworzony domyślnego ustawienia skalowania automatycznego o nazwie **"autoscalewad"**. Po prawej stronie można wyświetlić pełnej definicji tego ustawienia skalowania automatycznego. W takim przypadku domyślne ustawienie skalowania automatycznego zawiera reguły Procesora % na podstawie skalowalnego w poziomie i w skali.  
 

@@ -26,7 +26,7 @@ Aby wywołać metody na urządzeniach, należy użyć **urządzeń** strony w zd
 
 1. Aby wyświetlić listę metod można wywołać na urządzeniu, wybierz **harmonogram**. Aby zaplanować metody do uruchamiania na wielu urządzeniach, można wybrać wiele urządzeń na liście. **Harmonogram** panelu przedstawiono typy metody wspólne dla wszystkich wybranych urządzeń.
 
-1. Wybierz **FirmwareUpdate**, ustaw nazwę zadania **UpdatePhysicalChiller**. Ustaw **wersja oprogramowania układowego** do **2.0.0**ustaw **URI oprogramowania układowego** do **http://contoso.com/updates/firmware.bin**, a następnie wybierz pozycję  **Zastosuj**:
+1. Wybierz **FirmwareUpdate**, ustaw nazwę zadania **UpdatePhysicalChiller**. Ustaw **wersja oprogramowania układowego** do **2.0.0**ustaw **URI oprogramowania układowego** do **http://contoso.com/updates/firmware.bin**, a następnie wybierz pozycję **Zastosuj**:
 
     ![Planowanie aktualizacji oprogramowania układowego](media/iot-suite-visualize-connecting/deviceschedule.png)
 

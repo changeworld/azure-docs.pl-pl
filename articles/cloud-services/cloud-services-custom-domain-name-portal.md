@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie niestandardowej nazwy domeny usług w chmurze | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak udostępnić aplikacji Azure lub dane z Internetem na domenę niestandardową Konfigurowanie ustawień DNS.  Te przykłady, użyj portalu Azure."
+title: Konfigurowanie niestandardowej nazwy domeny usług w chmurze | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak udostępnić aplikacji Azure lub dane z Internetem na domenę niestandardową Konfigurowanie ustawień DNS.  Te przykłady, użyj portalu Azure.
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5783a246-a151-4fb1-b488-441bfb29ee44
 ms.service: cloud-services
 ms.workload: tbd
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurowanie niestandardowej nazwy domeny dla usługi w chmurze Azure
-Podczas tworzenia usługi w chmurze Azure przypisuje go do poddomeną **cloudapp.net**. Na przykład jeśli usługi w chmurze ma nazwę "contoso", użytkownikom będzie można uzyskać dostępu do aplikacji przy użyciu adresu URL, takie jak http://contoso.cloudapp.net. Azure przypisuje wirtualny adres IP.
+Podczas tworzenia usługi w chmurze Azure przypisuje go do poddomeną **cloudapp.net**. Na przykład, jeśli usługi w chmurze ma nazwę "contoso", użytkowników będzie można uzyskać dostępu do aplikacji przy użyciu adresu URL, takie jak http://contoso.cloudapp.net. Azure przypisuje wirtualny adres IP.
 
 Jednak pozwala również udostępnić aplikacji na własną nazwę domeny, takie jak **contoso.com**. W tym artykule wyjaśniono, jak zarezerwować lub skonfigurowania niestandardowej nazwy domeny dla ról sieci web usługi w chmurze.
 
@@ -69,7 +69,7 @@ Aby utworzyć rekord CNAME, możesz należy dodać nowy wpis w tabeli DNS dla do
      
        ![sekcja szybkiego dostępu przedstawiający adres URL witryny][csurl]
      
-       **LUB**
+       **OR**
    * Instalowanie i konfigurowanie [programu Azure Powershell](/powershell/azure/overview), a następnie użyj następującego polecenia:
      
        ```powershell
@@ -86,7 +86,7 @@ Na przykład następujący rekord CNAME przekazuje cały ruch z **www.contoso.co
 
 | Nazwa aliasu/hosta/domeny podrzędnej | Canonical domeny |
 | --- | --- |
-| www |contoso.cloudapp.NET |
+| www |contoso.cloudapp.net |
 
 > [!NOTE]
 > Obiekt odwiedzający **www.contoso.com** nie będzie widoczna wartość true, hosta (contoso.cloudapp.net), więc procesu przekazywania jest niewidoczny dla użytkownika końcowego.
@@ -104,7 +104,7 @@ Aby utworzyć rekord A, możesz znaleźć wirtualnego adresu IP usługi w chmurz
      
        ![Wyświetlanie adres VIP sekcji szybkiego dostępu][vip]
      
-       **LUB**
+       **OR**
    * Instalowanie i konfigurowanie [programu Azure Powershell](/powershell/azure/overview), a następnie użyj następującego polecenia:
      
        ```powershell
@@ -132,7 +132,7 @@ W tym przykładzie pokazano tworzenie rekordu A dla domeny głównej. Jeśli chc
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Jak zarządzać usługi w chmurze](cloud-services-how-to-manage-portal.md)
 * [Jak zamapować zawartość usługi CDN na domenę niestandardową](../cdn/cdn-map-content-to-custom-domain.md)
 * [Konfiguracja ogólna usługi w chmurze](cloud-services-how-to-configure-portal.md).

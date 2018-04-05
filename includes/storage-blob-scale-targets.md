@@ -1,4 +1,4 @@
-| Zasób | Obiekt docelowy |
+| Zasób | Środowisko docelowe |
 |----------|---------------|
 | Maksymalny rozmiar pojedynczego obiektu blob kontenera | 500 TiB |
 | Maksymalna liczba bloków w blokowych obiektów blob lub uzupełnialnych obiektów blob | 50 000 bloków |

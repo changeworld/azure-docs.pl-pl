@@ -1,4 +1,4 @@
-| Zasób | Cel |
+| Zasób | Środowisko docelowe |
 |----------|---------------|
 | Maksymalny rozmiar pojedynczej kolejki | 500 TiB |
 | Maksymalny rozmiar wiadomości w kolejce | 64 KiB |

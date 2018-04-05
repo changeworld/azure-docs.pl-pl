@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f135665b6fa7eb640526be513d2757c8e17ab8df
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 > [!NOTE]
 > Nowe jednostki SKU bramy sieci VPN (VpnGw1, VpnGw2 i VpnGw3) są obsługiwane tylko dla modelu wdrażania usługi Menedżer zasobów. Klasycznych sieci wirtualnych należy nadal używać starego (starsze) wersje produktu.

@@ -1,10 +1,10 @@
 ---
-title: "Monitorowanie Maszynę wirtualną z rozszerzenia maszyny Wirtualnej systemu Linux | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozszerzenie diagnostycznych Linux służy do monitorowania wydajności i danych diagnostycznych maszyny wirtualnej systemu Linux na platformie Azure."
+title: Monitorowanie Maszynę wirtualną z rozszerzenia maszyny Wirtualnej systemu Linux | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozszerzenie diagnostycznych Linux służy do monitorowania wydajności i danych diagnostycznych maszyny wirtualnej systemu Linux na platformie Azure.
 services: virtual-machines-linux
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: f54a11c5-5a0e-40ff-af6c-e60bd464058b
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Używanie rozszerzenia diagnostycznego systemu Linux do monitorowania wydajności i danych diagnostycznych maszyny wirtualnej systemu Linux
 
@@ -88,7 +88,7 @@ Krok 1. Utwórz plik o nazwie PrivateConfig.json o następującej treści:
         "storageAccountKey" : "the key of the account"
     }
 
-Krok 2. Uruchom  **vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 ustawić rozszerzenia maszyny wirtualnej platformy azure.* — PrivateConfig.json prywatnego config-path**.
+Krok 2. Run **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json**.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>Scenariusz 2. Dostosowanie metryk monitora wydajności
 
@@ -111,7 +111,7 @@ Domyślnie dane Rsyslog zawsze są zbierane.
     }
 
 
-Krok 2. Uruchom  **vm_name LinuxDiagnostic Microsoft.OSTCExtensions "2 ustawić rozszerzenia maszyny wirtualnej platformy azure.*"--prywatnego config-path PrivateConfig.json — PublicConfig.json publicznego config-path**.
+Krok 2. Run **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json**.
 
 ### <a name="scenario-3-upload-your-own-log-files"></a>Scenariusz 3. Przekazanie plików dzienników
 
@@ -147,7 +147,7 @@ Krok 1. Utwórz plik o nazwie PrivateConfig.json z zawartością, który został
     }
 
 
-Krok 2. Uruchom  **vm_name LinuxDiagnostic Microsoft.OSTCExtensions "2 ustawić rozszerzenia maszyny wirtualnej platformy azure.*"--prywatnego config-path PrivateConfig.json — PublicConfig.json publicznego config-path**.
+Krok 2. Run **azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json**.
 
 ## <a name="review-your-data"></a>Przejrzyj dane
 

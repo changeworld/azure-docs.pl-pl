@@ -1,11 +1,11 @@
 ---
-title: "Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Zawiera podstawowe informacje dotyczące serwera Proxy aplikacji usługi Azure AD łączników."
+title: Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Zawiera podstawowe informacje dotyczące serwera Proxy aplikacji usługi Azure AD łączników.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Zrozumienie łączniki serwera Proxy aplikacji usługi Azure AD
 
@@ -35,7 +35,7 @@ Aby pomyślnie wdrożyć serwer Proxy aplikacji, potrzebujesz co najmniej jeden 
 
 Aby uzyskać więcej informacji o wymaganiach dotyczących sieci na serwerze łącznika, zobacz [Rozpoczynanie pracy z serwera Proxy aplikacji i zainstalować łącznik](active-directory-application-proxy-enable.md).
 
-## <a name="maintenance"></a>Konserwacji
+## <a name="maintenance"></a>Konserwacja
 Łączniki i usługę automatyzującą wszystkie zadania wysokiej dostępności. Można można dodać lub usunąć dynamicznie. Zawsze, gdy nowe żądanie dociera jest kierowany do jednego z łączników, które jest obecnie dostępna. Jeśli łącznik jest tymczasowo niedostępny, nie odpowiada na ten ruch.
 
 Łączniki są bezstanowych i nie mają konfiguracji danych na tym komputerze. Tylko dane, które przechowują jest ustawienia dla połączenia usługi oraz jego certyfikat uwierzytelniania. Łączą się z usługą ściąganie wszystkich danych konfiguracji i go odświeżyć co kilka minut.
@@ -72,13 +72,13 @@ Aby dowiedzieć się więcej o grupach łącznika, zobacz [publikowania aplikacj
 
 Podczas łączników zostanie automatycznie równoważyć obciążenie spowodowane w obrębie grupy łącznika, jest również należy się upewnić, że zaplanowano wystarczającą wydajność między łączników, aby obsłużyć odebranej oczekiwanego natężenia ruchu. Na ogół więcej użytkowników, których można mieć większe maszyny, które mają być. Poniżej znajduje się, że może obsłużyć tabeli nadanie konspektu woluminu różnych maszyn. Należy pamiętać, jest on wszystkie oparty na oczekiwany transakcji na drugim (TPS), a nie przez użytkownika, ponieważ użycie wzorce różnią się i nie można używać do prognozowania obciążenia.  Należy również zauważyć, że będzie pewne różnice, zależnie od rozmiaru odpowiedzi i czas odpowiedzi aplikacji zaplecza - o większych rozmiarach odpowiedzi i mniejsza czas reakcji spowoduje niższe TPS Max.
 
-|Rdzenie|Pamięć RAM|Oczekiwany czas oczekiwania (MS)-P99|Maksymalna liczba TPS|
+|Rdzenie|Pamięć RAM|Oczekiwany czas oczekiwania (MS)-P99|Max TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\*Ten komputer ma limit połączenia 800. W przypadku wszystkich innych maszyn użyliśmy domyślny limit 200 połączenia.
+\* Ten komputer ma limit połączenia 800. W przypadku wszystkich innych maszyn użyliśmy domyślny limit 200 połączenia.
  
 >[!NOTE]
 >Nie jest znacznie różnicy w maksymalną TPS 4, 8 i 16 maszyny podstawowej. Główną różnicą między tymi jest oczekiwany czas oczekiwania.  
@@ -113,7 +113,7 @@ Innym czynnikiem wpływającym na wydajność jest jakość sieci między łącz
 
 Aby uzyskać więcej informacji o optymalizacji sieci, zobacz [zagadnienia dotyczące topologii sieci, używając serwera Proxy usługi Azure Active Directory aplikacji](application-proxy-network-topology-considerations.md).
 
-## <a name="domain-joining"></a>Sprzęganie domeny
+## <a name="domain-joining"></a>Przyłączanie do domeny
 
 Łączniki można uruchomić na komputerze, który nie jest przyłączony do domeny. Jeśli chcesz rejestracji jednokrotnej (SSO) do aplikacji używających zintegrowanego uwierzytelniania systemu Windows (IWA), jednak maszynie przyłączone do domeny. W takim przypadku łącznik maszyny musi być przyłączony do domeny, która może przeprowadzać [Kerberos](https://web.mit.edu/kerberos) delegowania ograniczonego w imieniu użytkowników dla opublikowanych aplikacji.
 
@@ -157,9 +157,9 @@ Aby wyświetlić dzienniki, przejdź do podglądu zdarzeń, otwórz **widoku** m
 
 Można zbadać stanu usługi w oknie usługi. Łącznik obejmuje dwie usługi systemu Windows: rzeczywiste łącznika i aktualizacji. Obie z nich należy uruchomić cały czas.
 
- ![Lokalne usługi AzureAD](./media/application-proxy-understand-connectors/aad-connector-services.png)
+ ![AzureAD Services Local](./media/application-proxy-understand-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 
 * [Publikowanie aplikacji w odrębnych sieci i lokalizacje przy użyciu grup łącznika](active-directory-application-proxy-connectors-azure-portal.md)

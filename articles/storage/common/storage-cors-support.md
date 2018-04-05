@@ -1,6 +1,6 @@
 ---
-title: "Współużytkowanie zasobów między źródłami (CORS) do udostępniania Obsługa | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak włączyć obsługę mechanizmu CORS dla usług magazynu Microsoft Azure."
+title: Współużytkowanie zasobów między źródłami (CORS) do udostępniania Obsługa | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć obsługę mechanizmu CORS dla usług magazynu Microsoft Azure.
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Współużytkowanie zasobów między źródłami (CORS) obsługę usług magazynu Azure do udostępniania
 Począwszy od wersji 2013-08-15, usług Azure storage obsługuje udostępniania zasobów między źródłami (CORS) dla usług obiektów Blob, tabeli, kolejki i plików. CORS jest funkcja HTTP, która umożliwia aplikacja sieci web w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web zaimplementować ograniczenia zabezpieczeń znany jako [zasad samego pochodzenia](http://www.w3.org/Security/wiki/Same_Origin_Policy) uniemożliwiający strony sieci web na podstawie wywoływania interfejsów API w innej domenie; Mechanizm CORS zapewnia bezpieczny sposób, aby umożliwić jednej domeny (domena pochodzenia) do wywoływania interfejsów API w innej domenie. Zobacz [specyfikacji CORS](http://www.w3.org/TR/cors/) szczegółowe informacje dotyczące mechanizmu CORS.
@@ -71,7 +71,7 @@ Poniżej przedstawiono przykładowe jednej zasady CORS określona za pomocą ope
 
 Poniżej opisano każdy element uwzględnione w regule CORS:
 
-* **AllowedOrigins**: domeny pochodzenia, które są dozwolone żądania z usługą magazynu za pomocą mechanizmu CORS. Domeny pochodzenia jest domeny, z której pochodzi żądanie. Należy pamiętać, że punkt początkowy musi być identyczna z uwzględnieniem wielkości liter z źródło, które wieku użytkownik wysyła do usługi. Można również użyć znaku wieloznacznego "*" zezwalająca na wszystkie domeny pochodzenia na wysyłanie żądań za pośrednictwem mechanizmu CORS. W przykładzie przedstawionym powyżej domen [http://www.contoso.com](http://www.contoso.com) i [http://www.fabrikam.com](http://www.fabrikam.com) mogą wysyłać żądania usługi przy użyciu mechanizmu CORS.
+* **AllowedOrigins**: domeny pochodzenia, które są dozwolone żądania z usługą magazynu za pomocą mechanizmu CORS. Domeny pochodzenia jest domeny, z której pochodzi żądanie. Należy pamiętać, że punkt początkowy musi być identyczna z uwzględnieniem wielkości liter z źródło, które wieku użytkownik wysyła do usługi. Można również użyć znaku wieloznacznego "*" zezwalająca na wszystkie domeny pochodzenia na wysyłanie żądań za pośrednictwem mechanizmu CORS. W przykładzie przedstawionym powyżej domen [ http://www.contoso.com ](http://www.contoso.com) i [ http://www.fabrikam.com ](http://www.fabrikam.com) mogą wysyłać żądania usługi przy użyciu mechanizmu CORS.
 * **AllowedMethods**: metody (zlecenia HTTP żądania), mogą używających dla żądania CORS dla domeny pochodzenia. W powyższym przykładzie są dozwolone tylko żądania PUT i GET.
 * **AllowedHeaders**: nagłówki żądania, które domeny pochodzenia może określać na żądanie CORS. W powyższym przykładzie są dozwolone wszystkie nagłówki metadanych, począwszy od x-ms metadane x-ms-meta docelowego, a x-ms-meta-abc. Należy pamiętać, że symbol wieloznaczny "*" wskazuje, że wszystkie nagłówka, począwszy od określonego prefiksu jest dozwolone.
 * **ExposedHeaders**: nagłówki odpowiedzi, które mogą być wysyłany w odpowiedzi na żądanie CORS i udostępniane przez przeglądarkę, aby wystawcy żądania. W powyższym przykładzie przeglądarki otrzymuje instrukcję uwidacznia żadnych począwszy nagłówka x-ms-meta.
@@ -86,7 +86,7 @@ Zasad CORS obowiązują następujące ograniczenia:
 * Długość nagłówku dozwolonych, narażonych nagłówka lub dozwolone pochodzenie nie może przekraczać 256 znaków.
 * Dozwolone nagłówki i nagłówki narażonych mogą być:
   * Literał nagłówków, których nazwa nagłówka dokładne podano, takich jak **x-ms-meta przetwarzane**. Można określić maksymalnie 64 literału nagłówki dla żądania.
-  * Nagłówki, w którym dostępne są prefiks nagłówka, takie jak prefiks **x-ms-meta-data***. Określenie prefiksu w ten sposób pozwala lub ujawnia żadnych nagłówek, który rozpoczyna się od danego prefiksu. Można określić maksymalnie dwa nagłówki prefiksem na żądanie.
+  * Nagłówki, w którym dostępne są prefiks nagłówka, takie jak prefiks ** x-ms-meta-danych ***. Określenie prefiksu w ten sposób pozwala lub ujawnia żadnych nagłówek, który rozpoczyna się od danego prefiksu. Można określić maksymalnie dwa nagłówki prefiksem na żądanie.
 * Metody (lub zlecenia HTTP), określona w **AllowedMethods** elementu musi być zgodna z metod obsługiwanych przez usługę Azure storage interfejsów API. Obsługiwane metody to DELETE, GET, HEAD, scalania, POST, opcje i PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>Opis logiki oceny reguły CORS
@@ -133,10 +133,10 @@ Następnie należy wziąć pod uwagę następujące żądania CORS:
 
 | Żądanie |  |  | Odpowiedź |  |
 | --- | --- | --- | --- | --- |
-| **— Metoda** |**Punkt początkowy** |**Nagłówki żądania** |**Reguła dopasowania** |**Wynik** |
-| **UMIEŚĆ** |http://www.contoso.com |x-ms-blob-content-type |Pierwsza reguła |Powodzenie |
-| **POBIERZ** |http://www.contoso.com |x-ms-blob-content-type |Drugą regułę |Powodzenie |
-| **POBIERZ** |http://www.contoso.com |x-ms-client żądania id |Drugą regułę |Niepowodzenie |
+| **— Metoda** |**Origin** |**Nagłówki żądania** |**Rule Match** |**Result** |
+| **PUT** |http://www.contoso.com |x-ms-blob-content-type |Pierwsza reguła |Powodzenie |
+| **GET** |http://www.contoso.com |x-ms-blob-content-type |Drugą regułę |Powodzenie |
+| **GET** |http://www.contoso.com |x-ms-client-request-id |Drugą regułę |Niepowodzenie |
 
 Pierwsze żądanie pasuje do pierwszej reguły — domeny pochodzenia odpowiada dozwolonych źródeł, metoda zgodna dozwolone metody i nagłówek odpowiada dozwolone nagłówki — i tak zakończy się pomyślnie.
 
@@ -167,21 +167,21 @@ W poniższej tabeli przedstawiono, jak usługa Azure storage będzie odpowiadał
 
 | Żądanie | Ustawienia konta i wyniki oceny reguły |  |  | Odpowiedź |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Nagłówek Origin na żądanie** |**Zasady CORS określony dla tej usługi** |**Istnieje reguła dopasowywania, która zezwala na wszystkie pochodzenia (*)** |**Istnieje reguła dopasowywania pochodzenia dokładnego dopasowania** |**Odpowiedź zawiera Nagłówek Vary ustawioną źródła** |**Odpowiedź zawiera Access-Control-dozwolone-Origin: "*"** |**Odpowiedź zawiera Access-Control-widoczne-Headers** |
+| **Nagłówek Origin na żądanie** |**Zasady CORS określony dla tej usługi** |**Istnieje reguła dopasowywania, która umożliwia origins(*) wszystkie** |**Istnieje reguła dopasowywania pochodzenia dokładnego dopasowania** |**Odpowiedź zawiera Nagłówek Vary ustawioną źródła** |**Odpowiedź zawiera Access-Control-dozwolone-Origin: "*"** |**Odpowiedź zawiera Access-Control-widoczne-Headers** |
 | Nie |Nie |Nie |Nie |Nie |Nie |Nie |
-| Nie |Tak |Nie |Nie |Tak |Nie |Nie |
-| Nie |Tak |Tak |Nie |Nie |Tak |Tak |
-| Tak |Nie |Nie |Nie |Nie |Nie |Nie |
-| Tak |Tak |Nie |Tak |Tak |Nie |Tak |
-| Tak |Tak |Nie |Nie |Tak |Nie |Nie |
-| Tak |Tak |Tak |Nie |Nie |Tak |Tak |
+| Nie |Yes |Nie |Nie |Yes |Nie |Nie |
+| Nie |Yes |Yes |Nie |Nie |Yes |Yes |
+| Yes |Nie |Nie |Nie |Nie |Nie |Nie |
+| Yes |Yes |Nie |Yes |Yes |Nie |Yes |
+| Yes |Yes |Nie |Nie |Yes |Nie |Nie |
+| Yes |Yes |Yes |Nie |Nie |Yes |Yes |
 
 ## <a name="billing-for-cors-requests"></a>Rozliczeń dla żądań CORS
 Inspekcja pomyślnych żądań są rozliczane włączenie mechanizmu CORS dla usług magazynu dla Twojego konta (wywołując [ustawić właściwości usługi Blob](https://msdn.microsoft.com/library/hh452235.aspx), [ustawić właściwości usługi kolejki](https://msdn.microsoft.com/library/hh452232.aspx), lub [ustawić właściwości usługi tabeli](https://msdn.microsoft.com/library/hh452240.aspx)). Aby zminimalizować koszty, rozważ ustawienie **MaxAgeInSeconds** element z CORS reguł na dużą wartość tak, aby agent użytkownika buforuje żądania.
 
 Niepomyślnych żądań wstępnych nie będą naliczane.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Ustaw właściwości usługi Blob](https://msdn.microsoft.com/library/hh452235.aspx)
 
 [Ustaw właściwości usługi kolejki](https://msdn.microsoft.com/library/hh452232.aspx)

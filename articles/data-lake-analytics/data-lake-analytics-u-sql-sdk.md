@@ -1,12 +1,12 @@
 ---
-title: "Uruchamiania lokalnego skryptu U-SQL skali i testowania przy użyciu zestawu SDK usługi Azure Data Lake U-SQL | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać zestawu SDK usługi Azure Data Lake U-SQL do zadań skali U-SQL lokalnego uruchamiania i testu z wiersza polecenia i interfejsów programowania na na lokalnej stacji roboczej."
+title: Uruchamiania lokalnego skryptu U-SQL skali i testowania przy użyciu zestawu SDK usługi Azure Data Lake U-SQL | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać zestawu SDK usługi Azure Data Lake U-SQL do zadań skali U-SQL lokalnego uruchamiania i testu z wiersza polecenia i interfejsów programowania na na lokalnej stacji roboczej.
 services: data-lake-analytics
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Uruchamiania lokalnego skryptu U-SQL skali i testowania przy użyciu zestawu SDK usługi Azure Data Lake U-SQL
 
@@ -60,9 +60,9 @@ W skryptów U-SQL, można użyć zarówno ścieżki względnej, jak i lokalną �
 
 |Ścieżka względna|Ścieżki bezwzględne|
 |-------------|-------------|
-|/ABC/DEF/Input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|ABC/DEF/Input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/ABC/DEF/Input.csv |D:\abc\def\input.csv|
+|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
+|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
+|D:/abc/def/input.csv |D:\abc\def\input.csv|
 
 ### <a name="working-directory"></a>Katalog roboczy
 
@@ -73,11 +73,11 @@ Podczas uruchamiania lokalnego skryptu U-SQL, przejdź do katalogu roboczego zos
 |C6A101DDCB470506| | |Ciąg skrótu wersji środowiska wykonawczego|Pliki środowiska uruchomieniowego niezbędne do wykonania lokalnej kopii w tle|
 | |Script_66AE4909AA0ED06C| |Nazwa skryptu + wyznaczania wartości skrótu ciągu ścieżki skryptu|Dane wyjściowe kompilacji i wykonywanie kroku rejestrowania|
 | | |\_skrypt\_.abr|Dane wyjściowe kompilatora|Plik algebraiczną|
-| | |\_ScopeCodeGen\_. *|Dane wyjściowe kompilatora|Wygenerowanego kodu zarządzanego|
-| | |\_ScopeCodeGenEngine\_. *|Dane wyjściowe kompilatora|Wygenerowany kod natywny|
+| | |\_ScopeCodeGen\_.*|Dane wyjściowe kompilatora|Wygenerowanego kodu zarządzanego|
+| | |\_ScopeCodeGenEngine\_.*|Dane wyjściowe kompilatora|Wygenerowany kod natywny|
 | | |przywoływanych zestawach|Odwołanie do zestawu|Przywoływany zestaw plików|
 | | |deployed_resources|Wdrażanie zasobu|Pliki zasobów wdrożenia|
-| | |xxxxxxxx.xxx[1..n]\_\*. *|Dziennik wykonywania.|Dziennik wykonywania czynności|
+| | |xxxxxxxx.xxx[1..n]\_\*.*|Dziennik wykonywania.|Dziennik wykonywania czynności|
 
 
 ## <a name="use-the-sdk-from-the-command-line"></a>Korzystanie z zestawu SDK z poziomu wiersza polecenia
@@ -148,7 +148,7 @@ Poniżej przedstawiono opcjonalne argumenty **Uruchom**:
 |-CppSDK| |CppSDK katalogu|
 |-DataRoot| Zmienna środowiskowa DataRoot|DataRoot dla lokalnego uruchomienia domyślną do zmiennej środowiskowej "LOCALRUN_DATAROOT"|
 |-MessageOut| |Komunikaty w konsoli w pliku zrzutu|
-|-Równoległe|1|Uruchom planu z określonym równoległości|
+|-Parallel|1|Uruchom planu z określonym równoległości|
 |— Odwołania| |Lista ścieżek do zestawów odwołań dodatkowe lub pliki danych w kodzie, oddzielone ";"|
 |-UdoRedirect|False|Generowanie konfiguracji przekierowania zestawu Udo|
 |-UseDatabase|master|Bazy danych do użycia na potrzeby kodu tymczasowej zestawu rejestracji|
@@ -341,35 +341,35 @@ publiczny LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|dane wyjściowe wiadomości ustawić wartości null przy użyciu konsoli|
 
-**Właściwości**
+**właściwości**
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
-|AlgebraPath|Ciąg|Ścieżka do pliku algebraiczną (plik algebraiczną jest jednym z rezultatów kompilacji)|
-|CodeBehindReferences|Ciąg|Jeśli skrypt ma dodatkowe kodzie odwołań, określ ścieżki oddzielone znakiem ";"|
-|CppSdkDir|Ciąg|CppSDK katalogu|
-|CurrentDir|Ciąg|Bieżący katalog|
-|DataRoot|Ciąg|Ścieżka katalogu głównego danych|
-|DebuggerMailPath|Ciąg|Ścieżka do mailslot debugera|
-|GenerateUdoRedirect|wartość logiczna|Jeśli chcemy, aby generować przekierowywania zastąpienie konfiguracji ładowania zestawu|
-|HasCodeBehind|wartość logiczna|Jeśli skrypt ma kodzie|
-|InputDir|Ciąg|Katalog dla danych wejściowych|
-|MessagePath|Ciąg|Ścieżka pliku zrzutu wiadomości|
-|OutputDir|Ciąg|Katalog danych wyjściowych|
+|AlgebraPath|ciąg|Ścieżka do pliku algebraiczną (plik algebraiczną jest jednym z rezultatów kompilacji)|
+|CodeBehindReferences|ciąg|Jeśli skrypt ma dodatkowe kodzie odwołań, określ ścieżki oddzielone znakiem ";"|
+|CppSdkDir|ciąg|CppSDK katalogu|
+|CurrentDir|ciąg|Bieżący katalog|
+|DataRoot|ciąg|Ścieżka katalogu głównego danych|
+|DebuggerMailPath|ciąg|Ścieżka do mailslot debugera|
+|GenerateUdoRedirect|bool|Jeśli chcemy, aby generować przekierowywania zastąpienie konfiguracji ładowania zestawu|
+|HasCodeBehind|bool|Jeśli skrypt ma kodzie|
+|InputDir|ciąg|Katalog dla danych wejściowych|
+|MessagePath|ciąg|Ścieżka pliku zrzutu wiadomości|
+|OutputDir|ciąg|Katalog danych wyjściowych|
 |Równoległość|int|Równoległość do uruchomienia algebraiczną|
 |ParentPid|int|Identyfikator procesu elementu nadrzędnego, na którym monitoruje usługę, aby zakończyć, równa 0 lub negatywną ignorowanie|
-|ResultPath|Ciąg|Ścieżka pliku zrzutu wyników|
-|RuntimeDir|Ciąg|Katalogu środowiska uruchomieniowego|
-|scriptPath|Ciąg|Gdzie można znaleźć skryptu|
-|Skrócona|wartość logiczna|Skrócona kompilacji lub nie|
-|TempDir|Ciąg|Katalog tymczasowy|
-|UseDataBase|Ciąg|Określ bazę danych do użycia na potrzeby kodzie rejestracji tymczasowego zestawu głównego domyślnie|
-|WorkDir|Ciąg|Preferowany katalog roboczy|
+|ResultPath|ciąg|Ścieżka pliku zrzutu wyników|
+|RuntimeDir|ciąg|Katalogu środowiska uruchomieniowego|
+|ScriptPath|ciąg|Gdzie można znaleźć skryptu|
+|Skrócona|bool|Skrócona kompilacji lub nie|
+|TempDir|ciąg|Katalog tymczasowy|
+|UseDataBase|ciąg|Określ bazę danych do użycia na potrzeby kodzie rejestracji tymczasowego zestawu głównego domyślnie|
+|WorkDir|ciąg|Preferowany katalog roboczy|
 
 
 **— Metoda**
 
-|Metoda|Opis|Zwraca|Parametr|
+|Metoda|Opis|Powrót|Parametr|
 |------|-----------|------|---------|
 |publiczny bool DoCompile()|Kompiluj skrypt U-SQL|Wartość true w przypadku powodzenia| |
 |publiczny bool DoExec()|Skompilowany wynik wykonywania|Wartość true w przypadku powodzenia| |
@@ -388,7 +388,7 @@ Sprawdź, czy następujące czynności:
 - Upewnij się, że wszystkie pliki zależności w NugetPackage\build\runtime\ zostały skopiowane do katalogu roboczego projektu.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej o języku U-SQL, zobacz [Wprowadzenie do języka U-SQL w usłudze Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Rejestrowanie informacji diagnostycznych, zobacz [uzyskiwanie dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).

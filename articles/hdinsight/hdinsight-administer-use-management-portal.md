@@ -1,8 +1,8 @@
 ---
-title: "Zarządzanie systemem Windows klastrów platformy Hadoop w usłudze HDInsight przy użyciu portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak do administrowania usługą usługi HDInsight. Tworzenie klastra usługi HDInsight, otwórz interakcyjne konsoli języka JavaScript, a konsoli poleceń usługi Hadoop."
+title: Zarządzanie systemem Windows klastrów platformy Hadoop w usłudze HDInsight przy użyciu portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak do administrowania usługą usługi HDInsight. Tworzenie klastra usługi HDInsight, otwórz interakcyjne konsoli języka JavaScript, a konsoli poleceń usługi Hadoop.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,10 +17,10 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0b34f861b306dc62cbdbf97378a1c370494bbb20
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie systemem Windows klastrów platformy Hadoop w usłudze HDInsight przy użyciu portalu Azure
 
@@ -40,7 +40,7 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
 * **Konto usługi Azure Storage** -klastra usługi HDInsight używa kontenera magazynu obiektów Blob platformy Azure jako domyślny system plików. Aby uzyskać więcej informacji o sposobie magazynu obiektów Blob Azure zapewnia bezproblemową obsługę z klastrami usługi HDInsight, zobacz [Użyj magazynu obiektów Blob Azure z usługą HDInsight](hdinsight-hadoop-use-blob-storage.md). Aby uzyskać więcej informacji na temat tworzenia konta usługi Azure Storage, zobacz [jak utworzyć konto magazynu](../storage/common/storage-create-storage-account.md).
 
 ## <a name="open-the-portal"></a>Otwórz Portal
-1. Zaloguj się do [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
 2. Po otwarciu portalu, możesz:
 
    * Kliknij przycisk **Utwórz zasób** z menu po lewej stronie do utworzenia nowego klastra:
@@ -73,7 +73,7 @@ HDInsight działa ze składnikami szeroki zakres Hadoop. Lista składników, kt�
 Instalacja oprogramowania niestandardowych w klastrze za pomocą usługi Podłączanie pulpitu zdalnego nie jest obsługiwana. Należy unikać przechowywania plików na dyskach węzła głównego, jak będą utracone, jeśli potrzebujesz ponownie utworzyć klastry. Zalecane jest przechowywanie plików w magazynie obiektów Blob platformy Azure. Magazyn obiektów blob jest trwały.
 
 ## <a name="list-and-show-clusters"></a>Lista i Pokaż klastrów
-1. Zaloguj się do [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
 2. Kliknij przycisk **klastrów usługi HDInsight** z menu po lewej stronie.
 3. Kliknij nazwę klastra. Jeśli na liście klastra jest długa, można użyć filtrów w górnej części strony.
 4. Kliknij dwukrotnie klastra z listy, aby wyświetlić szczegóły.
@@ -283,7 +283,7 @@ Konsolę zapytania HDInsight obejmuje następujące funkcje:
 
     ![HDInsight portalu pliku przeglądarki przeglądania](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)
 
-    Na zrzucie ekranu  **<Account>**  typ wskazuje element jest konto magazynu platformy Azure.  Kliknij nazwę konta, aby przeglądać pliki.
+    Na zrzucie ekranu **<Account>** typ wskazuje element jest konto magazynu platformy Azure.  Kliknij nazwę konta, aby przeglądać pliki.
 * **Interfejs użytkownika Hadoop**.
 
     ![Portal usługi HDInsight Hadoop interfejsu użytkownika](./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-ui.png)

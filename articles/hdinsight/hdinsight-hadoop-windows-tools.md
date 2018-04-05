@@ -1,8 +1,8 @@
 ---
-title: "Komputerami z systemem Windows za pomocą usługi Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Praca z Komputerami z systemem Windows w Hadoop w usłudze HDInsight. Zarządzanie i klastrów zapytania przy użyciu narzędzi programu PowerShell, Visual Studio i Linux. Tworzenie rozwiązania typu big data z platformą .NET."
+title: Komputerami z systemem Windows za pomocą usługi Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Praca z Komputerami z systemem Windows w Hadoop w usłudze HDInsight. Zarządzanie i klastrów zapytania przy użyciu narzędzi programu PowerShell, Visual Studio i Linux. Tworzenie rozwiązania typu big data z platformą .NET.
 services: hdinsight
-keywords: "hadoop w systemie windows, usługi hadoop dla systemu windows"
+keywords: hadoop w systemie windows, usługi hadoop dla systemu windows
 author: cjgronlund
 manager: jhubbard
 ms.author: cgronlun
@@ -11,10 +11,10 @@ ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: c9e4476334db95c66650f663dc3d8d13df2c5b52
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Praca w ekosystemie Hadoop w usłudze HDInsight z komputera z systemem Windows
 
@@ -87,7 +87,7 @@ W razie wystąpienia sytuacji, w których należy użyć narzędzia lub technolo
 * **Docker dla systemu Windows** zapewnia dostęp do wielu narzędzi opartych na systemie Linux i można je uruchomić bezpośrednio z systemu Windows. Na przykład można użyć Docker Uruchom klienta Beeline gałęzi bezpośrednio z systemu Windows. Można również użyć do uruchamiania lokalnego notesu Jupyter Docker i zdalne połączenia z platformy Spark w usłudze HDInsight. [Rozpoczynanie pracy z rozwiązaniem Docker dla systemu Windows](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](http://mobaxterm.mobatek.net/)**  zezwala na używanie przeglądanie klastra systemu plików za pośrednictwem połączenia SSH.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Jeśli masz doświadczenia w pracy w klastrach opartych na systemie Linux, zobacz artykuły wykonaj:
 * [Konfigurowanie usługi Hadoop, Kafka, Spark lub innych klastrów](hdinsight-hadoop-provision-linux-clusters.md)
 * [Porady dotyczące klastrów usługi HDInsight w systemie Linux](hdinsight-hadoop-linux-information.md)
