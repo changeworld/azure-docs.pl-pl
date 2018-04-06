@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: e2d97929ada820a1ce969c59fb69b3518fe2eb6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 2479701174086ddf680e0ecb1da4a9d13b32b76e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie partii rozwiązań usług w usłudze Active Directory
 
@@ -312,13 +312,13 @@ public static async Task PerformBatchOperations()
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure AD, zobacz [Azure Active Directory dokumentacji](https://docs.microsoft.com/azure/active-directory/). Szczegółowe przykłady przedstawiająca sposób używania biblioteki ADAL są dostępne w [przykłady kodu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) biblioteki.
+* Aby dowiedzieć się więcej na temat usługi Azure AD, zobacz [Azure Active Directory dokumentacji](https://docs.microsoft.com/azure/active-directory/). Szczegółowe przykłady przedstawiająca sposób używania biblioteki ADAL są dostępne w [przykłady kodu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) biblioteki.
 
-Aby dowiedzieć się więcej na temat nazwy główne usług, zobacz [aplikacji i usług obiektów principal w usłudze Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). Aby utworzyć nazwy głównej usługi przy użyciu portalu Azure, zobacz [użycia portalu do tworzenia aplikacji i usług podmiot zabezpieczeń, który ma dostęp do zasobów usługi Active Directory](../resource-group-create-service-principal-portal.md). Można również utworzyć nazwy głównej usługi z programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+* Aby dowiedzieć się więcej na temat nazwy główne usług, zobacz [aplikacji i usług obiektów principal w usłudze Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). Aby utworzyć nazwy głównej usługi przy użyciu portalu Azure, zobacz [użycia portalu do tworzenia aplikacji i usług podmiot zabezpieczeń, który ma dostęp do zasobów usługi Active Directory](../resource-group-create-service-principal-portal.md). Można również utworzyć nazwy głównej usługi z programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-Na potrzeby uwierzytelniania aplikacji partii zarządzania przy użyciu usługi Azure AD, zobacz [rozwiązań do zarządzania partii uwierzytelniania z usługi Active Directory](batch-aad-auth-management.md).
+* Na potrzeby uwierzytelniania aplikacji partii zarządzania przy użyciu usługi Azure AD, zobacz [rozwiązań do zarządzania partii uwierzytelniania z usługi Active Directory](batch-aad-auth-management.md).
 
-Na przykład Python sposobu tworzenia klienta uwierzytelniony przy użyciu tokenu usługi Azure AD, zobacz [uwierzytelniania usługi Azure Active Directory](http://azure-sdk-for-python.readthedocs.io/en/latest/batch.html#azure-active-directory-authentication) przykładowa w zestaw Azure SDK for Python dokumentacji.
+* Na przykład Python sposobu tworzenia klienta uwierzytelniony przy użyciu tokenu usługi Azure AD, zobacz [wdrażanie partii niestandardowy obraz Azure przy użyciu skryptu Python](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) próbki.
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Co to jest usługa Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md

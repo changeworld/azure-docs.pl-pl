@@ -1,12 +1,13 @@
 ---
 title: Kierować ruchem sieciowym - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można kierować ruchem sieciowym z tabelą tras za pomocą wiersza polecenia platformy Azure.
+description: W tym artykule Dowiedz się, jak można kierować ruchem sieciowym z tabelą tras za pomocą wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
@@ -16,24 +17,23 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 871b562fa12b93d1b65e23ca58615d35ef6bb34b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb4a28b5a57d7e301e800cd4ad87c56b7c5df6d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Kierować ruchem sieciowym z tabelą tras za pomocą wiersza polecenia platformy Azure
 
 Azure automatycznie tras ruchu między wszystkich podsieci w sieci wirtualnej, domyślnie. Można utworzyć trasy do przesłonięcia Azure routing domyślny. Możliwość tworzenia niestandardowych tras jest przydatne, jeśli na przykład chcesz kierować ruchem między podsieciami przez urządzenie wirtualne sieci (NVA). W tym artykule dowiesz się, jak:
 
-> [!div class="checklist"]
-> * Utwórz tabelę tras
-> * Utwórz trasę
-> * Tworzenie sieci wirtualnej z wieloma podsieciami
-> * Skojarz tabelę tras z podsiecią
-> * Utwórz NVA, który przekierowuje ruch
-> * Wdrażanie maszyn wirtualnych (VM) w różnych podsieciach
-> * Kierować ruchem z jednej podsieci do drugiego za pomocą NVA
+* Utwórz tabelę tras
+* Utwórz trasę
+* Tworzenie sieci wirtualnej z wieloma podsieciami
+* Skojarz tabelę tras z podsiecią
+* Utwórz NVA, który przekierowuje ruch
+* Wdrażanie maszyn wirtualnych (VM) w różnych podsieciach
+* Kierować ruchem z jednej podsieci do drugiego za pomocą NVA
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -215,7 +215,7 @@ ssh azureuser@<publicIpAddress>
 
 Po wyświetleniu monitu o podanie hasła, wprowadź hasło wybranym [Tworzenie maszyn wirtualnych](#create-virtual-machines).
 
-Użyj następującego polecenia, aby zainstalować traceroute na *myVmPrivate* maszyny Wirtualnej:
+Użyj następującego polecenia do zainstalowania na śledzenie trasy *myVmPrivate* maszyny Wirtualnej:
 
 ```bash 
 sudo apt-get install traceroute
@@ -242,7 +242,7 @@ Użyj następującego polecenia do SSH *myVmPublic* maszyny Wirtualnej z *myVmPr
 ssh azureuser@myVmPublic
 ```
 
-Użyj następującego polecenia, aby zainstalować traceroute na *myVmPublic* maszyny Wirtualnej:
+Użyj następującego polecenia do zainstalowania na śledzenie trasy *myVmPublic* maszyny Wirtualnej:
 
 ```bash 
 sudo apt-get install traceroute
@@ -275,9 +275,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule możesz utworzyć tabelę tras i skojarzone go do podsieci. Utworzono NVA proste, który kierowany ruch z publicznego podsieci prywatne podsieci. Wdrażanie różnych NVAs wstępnie skonfigurowane, wykonujących funkcji sieciowych, takich jak zapory i Optymalizacja sieci WAN z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Przed wdrożeniem tabel tras do użytku produkcyjnego, zaleca się, że należy dokładnie zapoznać się z [Routing na platformie Azure](virtual-networks-udr-overview.md), [tabel tras Zarządzaj](manage-route-table.md), i [Azure ogranicza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+W tym artykule możesz utworzyć tabelę tras i skojarzone go do podsieci. Utworzono NVA proste, który kierowany ruch z publicznego podsieci prywatne podsieci. Wdrażanie różnych NVAs wstępnie skonfigurowane, wykonujących funkcji sieciowych, takich jak zapory i Optymalizacja sieci WAN z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md) i [Zarządzanie tabelę tras](manage-route-table.md).
 
-Podczas wdrażania można wielu zasobów platformy Azure w ramach sieci wirtualnej, zasobów w przypadku niektórych usług Azure PaaS nie można wdrożyć w sieci wirtualnej. Możesz nadal ograniczyć dostęp do zasobów pewnych usług Azure PaaS ruch tylko z podsieci sieci wirtualnej jednak. Przejdź do następnego samouczkiem, aby dowiedzieć się, jak ograniczyć dostęp do sieci Azure PaaS zasobów.
-
-> [!div class="nextstepaction"]
-> [Ograniczenie dostępu do sieci do PaaS zasobów](tutorial-restrict-network-access-to-resources-cli.md)
+Podczas wdrażania można wielu zasobów platformy Azure w ramach sieci wirtualnej, zasobów w przypadku niektórych usług Azure PaaS nie można wdrożyć w sieci wirtualnej. Możesz nadal ograniczyć dostęp do zasobów pewnych usług Azure PaaS ruch tylko z podsieci sieci wirtualnej jednak. Aby dowiedzieć się więcej, zobacz temat [ograniczenie dostępu do sieci do zasobów PaaS](tutorial-restrict-network-access-to-resources-cli.md).

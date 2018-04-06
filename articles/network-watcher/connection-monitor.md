@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: 0d550d3bda119cfcb9ecc6f852006d5e325fdfa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Połączenia sieciowe monitora obserwatora sieciowego Azure przy użyciu portalu Azure
 
@@ -29,7 +29,7 @@ Przed wykonaniem kroków w tym artykule, musi spełniać następujące wymagania
 
 * Wystąpienia obserwatora sieciowego w regionie, który chcesz monitorować połączenia. Jeśli nie masz jeszcze jeden, możesz utworzyć jedną, wykonując kroki opisane w [utworzenia wystąpienia obserwatora sieciowego Azure](network-watcher-create.md).
 * Maszyny Wirtualnej, aby monitorować z. Aby dowiedzieć się, jak utworzyć Maszynę wirtualną, zobacz Tworzenie [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) maszyny Wirtualnej.
-* Ma `AzureNetworkWatcherExtension` zainstalowana na maszynie wirtualnej, który chcesz monitorować połączenia z. Aby zainstalować rozszerzenie na maszynie wirtualnej systemu Windows, zobacz [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i zainstalować rozszerzenie Zobacz maszyny Wirtualnej systemu Linux [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+* Ma `AzureNetworkWatcherExtension` zainstalowana na maszynie wirtualnej, który chcesz monitorować połączenia z. Aby zainstalować rozszerzenie na maszynie wirtualnej systemu Windows, zobacz [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i zainstalować rozszerzenie Zobacz maszyny Wirtualnej systemu Linux [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane na docelowy punkt końcowy, który chcesz monitorować.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
@@ -66,7 +66,7 @@ Poniższych kroków spowoduje włączenie monitorowania połączenia w docelowej
 
     ![Widok siatki](./media/connection-monitor/view-grid.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Informacje o sposobie przechwytywania pakietów z alertami maszyny Wirtualnej przez automatyzację [tworzenie przechwytywania pakietów wyzwolony alert](network-watcher-alert-triggered-packet-capture.md).
 - Ustalić, czy niektóre ruch jest dozwolony w lub z maszyny Wirtualnej za pomocą [Sprawdź przepływ IP](network-watcher-check-ip-flow-verify-portal.md).

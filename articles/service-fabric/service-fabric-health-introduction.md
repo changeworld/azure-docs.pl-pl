@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie kondycji w sieci szkieletowej usług | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do monitorowania modelu, który zapewnia monitorowanie klastra i jego aplikacji i usług kondycji sieci szkieletowej usług Azure."
+title: Monitorowanie kondycji w sieci szkieletowej usług | Dokumentacja firmy Microsoft
+description: Wprowadzenie do monitorowania modelu, który zapewnia monitorowanie klastra i jego aplikacji i usług kondycji sieci szkieletowej usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d226b8f8b3252fe82cd5077d235f301cfaa83654
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c5ce0a765451171f7cbd6d875d4302d1e406b4f6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Wprowadzenie do monitorowania kondycji usługi Service Fabric
 Sieć szkieletowa usług Azure wprowadza modelu kondycji, który zawiera oceny kondycji sformatowanego, elastyczny i rozszerzalny i raportowania. Model pozwala niemal czasie rzeczywistym monitorowania stanu klastra i usługi działające w nim. Można łatwo uzyskać informacje o kondycji i rozwiązać potencjalne problemy przed kaskadowo i spowodować duże awarii. W typowej modelu usług wysyłania raportów opartych na ich lokalnych widoków, a następnie agregowane zapewnienie ogólną informacji klastra poziomie widoku.

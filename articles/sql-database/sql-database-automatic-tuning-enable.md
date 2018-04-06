@@ -1,6 +1,6 @@
 ---
-title: "Włączanie automatycznego dostrajania dla usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: "Można włączyć automatycznego dostrajania bazy danych SQL Azure łatwe."
+title: Włączanie automatycznego dostrajania dla usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Można włączyć automatycznego dostrajania bazy danych SQL Azure łatwe.
 services: sql-database
 author: veljko-msft
 manager: drasumic
@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: vvasic
-ms.openlocfilehash: cfee95f5978073277a5351b976156cafefb87c16
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2ea5c0e640ac7e635692dafac1f30f377aa79625
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="enable-automatic-tuning"></a>Włączanie automatycznego dostrajania
 
@@ -22,7 +22,7 @@ Baza danych SQL Azure jest usługą automatycznie zarządzanych danych, która s
 ## <a name="enable-automatic-tuning-on-server"></a>Włączanie automatycznego dostrajania na serwerze
 Na poziomie serwera można wybrać dziedziczenia automatycznego dostrajania konfiguracji na podstawie "Azure domyślne" lub nie można odziedziczyć konfiguracji. Azure wartości domyślne są włączone FORCE_LAST_GOOD_PLAN CREATE_INDEX i włączona DROP_INDEX wyłączone.
 
-## <a name="configure-automiatic-tuning-e-mail-notifications"></a>Skonfiguruj automiatic dostrajanie powiadomienia pocztą e-mail
+## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurowanie automatycznego dostrajania powiadomienia pocztą e-mail
 
 Zobacz [automatycznego dostrajania powiadomienia pocztą e-mail](sql-database-automatic-tuning-email-notifications.md)
 

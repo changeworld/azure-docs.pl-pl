@@ -1,11 +1,11 @@
 ---
-title: "Sprawdź stan, skonfiguruj rejestrowanie i uzyskiwanie alertów - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Stan Monitora wydajności dla usługi logic apps rejestrowanie danych diagnostycznych i Konfigurowanie alertów"
+title: Sprawdź stan, skonfiguruj rejestrowanie i uzyskiwanie alertów - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Stan Monitora wydajności dla usługi logic apps rejestrowanie danych diagnostycznych i Konfigurowanie alertów
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, konfigurowanie rejestrowania diagnostyki i Włącz alerty dla usługi Azure Logic Apps
 
@@ -76,9 +76,9 @@ Aby otrzymywać powiadomień o awarii lub innych możliwych problemów, skonfigu
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Włącz diagnostykę, rejestrowanie aplikacji logiki
 
-Bardziej rozbudowane debugowanie z szczegóły środowiska uruchomieniowego i zdarzenia, można skonfigurować z funkcji rejestrowania diagnostyki [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Analiza dzienników jest usługą [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) który monitoruje chmurze i lokalnych środowiskach, które pomagają zachować ich dostępności i wydajności. 
+Bardziej rozbudowane debugowanie z szczegóły środowiska uruchomieniowego i zdarzenia, można skonfigurować z funkcji rejestrowania diagnostyki [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Analiza dzienników jest usługą platformy Azure, który monitoruje chmurze i lokalnych środowiskach, które pomagają zachować ich dostępności i wydajności. 
 
-Przed rozpoczęciem, musisz mieć obszarem roboczym pakietu OMS. Dowiedz się [jak Utwórz obszar roboczy OMS](../log-analytics/log-analytics-get-started.md).
+Przed rozpoczęciem, musisz mieć obszaru roboczego analizy dzienników. Dowiedz się [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. W [portalu Azure](https://portal.azure.com), Znajdź i wybierz aplikację logiki. 
 
@@ -90,16 +90,16 @@ Przed rozpoczęciem, musisz mieć obszarem roboczym pakietu OMS. Dowiedz się [j
 
    ![Włączanie dzienników diagnostycznych](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
-4. Teraz wybierz OMS kategorii obszaru roboczego i zdarzenia logowania, jak pokazano:
+4. Teraz wybierz analizy dzienników kategorii obszaru roboczego i zdarzenia logowania, jak pokazano:
 
    1. Wybierz **wysyłać do analizy dzienników**. 
    2. W obszarze **analizy dzienników**, wybierz **Konfiguruj**. 
-   3. W obszarze **obszarów roboczych OMS**, wybierz obszar roboczy OMS na potrzeby rejestrowania.
+   3. W obszarze **obszarów roboczych OMS**, wybierz obszar roboczy analizy dzienników na potrzeby rejestrowania.
    4. W obszarze **dziennika**, wybierz pozycję **WorkflowRuntime** kategorii.
    5. Interwał metryki.
    6. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
 
-   ![Wybierz obszar roboczy OMS i dane dotyczące rejestrowania](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
+   ![Wybierz obszar roboczy analizy dzienników i danych logowania](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
 
 Teraz można znaleźć zdarzeń i inne dane dla zdarzenia wyzwalacza, uruchom zdarzenia i akcji.
 
@@ -113,23 +113,23 @@ Aby znaleźć i wyświetlić zdarzenia w aplikacji logiki, takie jak wyzwolenia 
 
    ![Wybierz pozycję "Analizy dzienników"](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 
-2. W obszarze **analizy dzienników**, Znajdź i wybierz obszar roboczy OMS. 
+2. W obszarze **analizy dzienników**, Znajdź i zaznacz pozycję obszaru roboczego analizy dzienników. 
 
-   ![Wybierz obszar roboczy OMS](media/logic-apps-monitor-your-logic-apps/selectla.png)
+   ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
 3. W obszarze **zarządzania**, wybierz **portalu OMS**.
 
    ![Wybierz pozycję "Portalu OMS"](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
 
-4. Na stronie głównej OMS wybierz **wyszukiwania dziennika**.
+4. Na stronie głównej wybierz **wyszukiwania dziennika**.
 
-   ![Na stronie głównej OMS wybierz "Dziennik wyszukiwania"](media/logic-apps-monitor-your-logic-apps/logsearch.png)
+   ![Na stronie głównej wybierz pozycję "Dziennik wyszukiwania"](media/logic-apps-monitor-your-logic-apps/logsearch.png)
 
    — lub —
 
-   ![W menu OMS wybierz "Dziennik wyszukiwania"](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
+   ![W menu wybierz "Dziennik wyszukiwania"](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
 
-5. W polu wyszukiwania określ pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, OMS pokazuje, pasujących i operacje, które są dostępne. 
+5. W polu wyszukiwania określ pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, zobacz możliwe dopasowania i operacje, które są dostępne. 
 
    Na przykład, aby znaleźć zdarzenia pierwszych 10, które wystąpiły, wprowadź i wybierz tego zapytania wyszukiwania: **wyszukiwania kategorii == "WorkflowRuntime" | ograniczyć 10**
 

@@ -11,49 +11,49 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 12/18/2017
 ms.author: markscu
-ms.openlocfilehash: c991a1535b82a76a3d0b9bdbf4ede8f3e22bc866
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 4b4a5b9199fe648425304eaa8db0130bb1b4264d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Korzystanie z szablonów interfejsu wiersza polecenia usługi Azure Batch i transferu plików (wersja zapoznawcza)
 
 Przy użyciu wiersza polecenia platformy Azure jest możliwe uruchamianie zadań wsadowych bez pisania kodu.
 
-Tworzenie i używanie plików szablonu z wiersza polecenia platformy Azure do tworzenia pul, zadań i zadań wsadowych. Pliki wejściowe zadania mogą być łatwo przekazywane do konta magazynu skojarzone z partii konta i zadania pliki wyjściowe pobrane.
+Tworzenie i używanie plików szablonu z wiersza polecenia platformy Azure do tworzenia pul, zadań i zadań wsadowych. Łatwo przekazywania plików wejściowych zadania do konta magazynu skojarzone z konta usługi partia zadań i pobierania plików wyjściowych.
 
 ## <a name="overview"></a>Przegląd
 
-Rozszerzenie interfejsu wiersza polecenia Azure Umożliwia wsadowe być używane na całej trasie przez użytkowników, którzy nie są deweloperów. Można utworzyć puli, przekazać dane wejściowe, zadań i skojarzonych zadań tworzenia i danych wyjściowych pobrane — żaden kod nie jest wymagane, interfejsu wiersza polecenia używane bezpośrednio lub zintegrowania skryptów.
+Rozszerzenie interfejsu wiersza polecenia Azure Umożliwia wsadowe być używane na całej trasie przez użytkowników, którzy nie są deweloperów. Z tylko polecenia interfejsu wiersza polecenia można utworzyć pulę, przekazywanie danych wejściowych, tworzenie zadań i zadań skojarzonych i pobieranie danych wyjściowych. Żaden dodatkowy kod nie jest wymagana. Uruchom polecenia interfejsu wiersza polecenia, bezpośrednio lub zintegrować skryptów.
 
-Tworzenie szablonów usługi partia zadań na [istniejących obsługę partii w wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/batch/batch-cli-get-started#json-files-for-resource-creation) umożliwiająca pliki w formacie JSON można określić wartości właściwości dla tworzenia pul, zadania, zadania i inne elementy. Z szablonami partii przez co to jest możliwe za pomocą pliki w formacie JSON dodano następujące możliwości:
+Tworzenie szablonów usługi partia zadań na [istniejących obsługę partii w wiersza polecenia platformy Azure](batch-cli-get-started.md#json-files-for-resource-creation) plików JSON określić wartości właściwości, podczas tworzenia pul, zadania, zadania i inne elementy. Z szablonami partii przez co to jest możliwe za pomocą pliki w formacie JSON dodano następujące możliwości:
 
 -   Można zdefiniować parametrów. Jeśli ten szablon jest używany, tylko wartości parametrów są określony w celu utworzenia elementu z innego elementu wartości właściwości jest określony w treści szablonu. Użytkownik, który obsługuje usługę partii i aplikacje do uruchamiania przez partię można utworzyć szablony, określając puli, zadania i wartości właściwości zadania. Użytkownik mniej znanych z partii i/lub aplikacje tylko należy określić wartości dla określonych parametrów.
 
 -   Zadanie fabryki zadań utworzyć jedno lub więcej zadań skojarzonych z zadania, unikając konieczności wiele definicje zadań do utworzenia i znacznie uproszczenia przesyłanie zadań.
 
 
-Pliki danych wejściowych muszą być dostarczane na potrzeby zadań i często są produkowane plików danych wyjściowych. Konto magazynu jest skojarzony z każdego konta usługi partia zadań domyślnie i pliki można łatwo przenosić do i z tego konta magazynu przy użyciu interfejsu wiersza polecenia, z nie kodowania i wymagane nie poświadczenia magazynu.
+Zadania zazwyczaj pliki danych wejściowych i utworzyć pliki danych wyjściowych. Konto magazynu jest skojarzony z każdego konta usługi partia zadań domyślnie. Transfer plików do i z tego konta magazynu przy użyciu interfejsu wiersza polecenia, nie kodowania i żadne poświadczenia magazynu.
 
-Na przykład [ffmpeg](http://ffmpeg.org/) jest popularnych aplikacji, która przetwarza plików audio i wideo. Azure CLI partii może służyć do wywołania ffmpeg transkodowanie źródła wideo pliki do innego rozwiązania.
+Na przykład [ffmpeg](http://ffmpeg.org/) jest popularnych aplikacji, która przetwarza plików audio i wideo. Poniżej przedstawiono kroki z wiersza polecenia partii platformy Azure do wywołania ffmpeg transkodowanie źródła wideo pliki do innego rozwiązania.
 
--   Utworzono szablon puli. Tworzenie szablonu zna sposób wywołania ffmpeg aplikacji i jej wymagań; Określa odpowiedni system operacyjny, maszyna wirtualna rozmiar, jak ffmpeg jest zainstalowana (od pakietu aplikacji lub za pomocą Menedżera pakietów, na przykład) i inne wartości właściwości w puli. Parametry są tworzone, gdy używany jest szablon, tylko identyfikator puli i liczbę maszyn wirtualnych muszą być określone.
+-   Utwórz szablon puli. Tworzenie szablonu zna sposób wywołania ffmpeg aplikacji i jej wymagań; Określa odpowiedni system operacyjny, maszyna wirtualna rozmiar, jak ffmpeg jest zainstalowana (od pakietu aplikacji lub za pomocą Menedżera pakietów, na przykład) i inne wartości właściwości w puli. Parametry są tworzone, gdy używany jest szablon, tylko identyfikator puli i liczbę maszyn wirtualnych muszą być określone.
 
--   Utworzono szablon zadania. Tworzenie szablonu użytkownika wie jak ffmpeg musi być wywoływane ze źródłem transkodowanie wideo do innego rozwiązania i określa wiersz polecenia zadania; które znają, że istnieje folder zawierający pliki wideo źródła z zadaniem wymagane dla pliku wejściowego.
+-   Utwórz szablon zadania. Tworzenie szablonu użytkownika wie jak ffmpeg musi być wywoływane ze źródłem transkodowanie wideo do innego rozwiązania i określa wiersz polecenia zadania; które znają, że istnieje folder zawierający pliki wideo źródła z zadaniem wymagane dla pliku wejściowego.
 
--   Użytkownik końcowy zestaw plików wideo transkodowanie najpierw tworzy puli przy użyciu szablonu puli tylko identyfikator puli i liczbę maszyn wirtualnych wymagana. Następnie przekazywać pliki źródłowe transkodowanie. Następnie można przesłać zadania przy użyciu szablonu zadania, określając tylko identyfikator puli i lokalizację plików źródłowych przekazany. Zadania wsadowego jest tworzony z jedno zadanie na Trwa generowanie pliku wejściowego. Ponadto pliki wyjściowe przekodowane może być pobierania.
+-   Użytkownik końcowy zestaw plików wideo transkodowanie najpierw tworzy puli przy użyciu szablonu puli tylko identyfikator puli i liczbę maszyn wirtualnych wymagana. Następnie przekazywać pliki źródłowe transkodowanie. Następnie można przesłać zadania przy użyciu szablonu zadania, określając tylko identyfikator puli i lokalizację plików źródłowych przekazany. Zadania wsadowego jest tworzony z jedno zadanie na Trwa generowanie pliku wejściowego. Na koniec można pobrać pliki wyjściowe przekodowane.
 
 ## <a name="installation"></a>Instalacja
 
-Możliwości transferu szablonu i pliku wymagają rozszerzenia do zainstalowania.
+Zainstaluj rozszerzenie interfejsu wiersza polecenia usługi partia zadań Azure za pomocą szablonu i możliwości transferu plików.
 
-Instrukcje dotyczące sposobu instalowania wiersza polecenia platformy Azure można znaleźć [zainstalować Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Aby uzyskać instrukcje dotyczące sposobu instalowania interfejsu wiersza polecenia Azure, zobacz [zainstalować Azure CLI 2.0](/cli/azure/install-azure-cli).
 
-Po zainstalowaniu interfejsu wiersza polecenia Azure najnowszej wersji rozszerzenia partii można zainstalować przy użyciu interfejsu wiersza polecenia następujące polecenie:
+Po zainstalowaniu interfejsu wiersza polecenia Azure, zainstaluj najnowszą wersję rozszerzenia usługi partia zadań przy użyciu interfejsu wiersza polecenia następujące polecenie:
 
 ```azurecli
-az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.1/azure_batch_cli_extensions-2.0.1-py2.py3-none-any.whl
+az extension add --name azure-batch-cli-extensions
 ```
 
 Aby uzyskać więcej informacji o rozszerzeniu partii, zobacz [Microsoft Azure partii CLI rozszerzeń dla systemu Windows, Mac i Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux).
@@ -76,23 +76,23 @@ Szablony usługi partia zadań Azure są podobne do szablonów usługi Azure Res
 
 -   **Zmienne**
 
-    -   Zezwalaj na wartości parametrów prostymi lub złożonymi określona w jednym miejscu i używany w co najmniej jednego miejsca w treści szablonu. Zmienne można uprościć i zredukować rozmiar szablonu, a także była bardziej utrzymaniu przez jedną lokalizację, aby zmienić właściwości, którego wartość może zmienić.
+    -   Zezwalaj na wartości parametrów prostymi lub złożonymi określona w jednym miejscu i używany w co najmniej jednego miejsca w treści szablonu. Zmienne można uprościć i zredukować rozmiar szablonu, a także była bardziej utrzymaniu przez jedną lokalizację, aby zmienić właściwości.
 
 -   **Konstrukcji wyższego poziomu**
 
-    -   Niektóre konstrukcji wyższego poziomu dostępnych w szablonie, który nie są jeszcze dostępne, interfejsy API partii. Na przykład można zdefiniować fabryki zadań w szablonie zadania, który tworzy wiele zadań dla zadania przy użyciu wspólnej definicji zadania. Te konstrukcje uniknąć konieczności kod, aby dynamicznie utworzyć wiele plików JSON, takich jak jeden plik poszczególnych zadań, a także tworzyć plików skryptów do instalowania aplikacji za pomocą Menedżera pakietów, na przykład.
+    -   Niektóre konstrukcji wyższego poziomu dostępnych w szablonie, który nie są jeszcze dostępne, interfejsy API partii. Na przykład można zdefiniować fabryki zadań w szablonie zadania, który tworzy wiele zadań dla zadania przy użyciu wspólnej definicji zadania. Te konstrukcje uniknąć konieczności kod, aby dynamicznie utworzyć wiele plików JSON, takich jak jeden plik poszczególnych zadań, a także tworzyć plików skryptów do instalowania aplikacji za pomocą Menedżera pakietów.
 
-    -   W pewnym momencie Jeśli to możliwe, tych konstrukcji mogą być dodawane do usługi partia zadań i dostępne w partii interfejsów API, UI itp.
+    -   W pewnym momencie tych konstrukcji mogą być dodawane do usługi partia zadań i dostępne w partii interfejsów API, UI itp.
 
 ### <a name="pool-templates"></a>Szablony puli
 
-Oprócz możliwości standardowego szablonu parametry i zmienne następujące konstrukcji wyższego poziomu są obsługiwane przez szablon puli:
+Szablony puli obsługuje możliwości standardowego szablonu zmiennych i parametrów. Obsługują one następujące konstrukcji wyższego poziomu:
 
 -   **Odwołania do pakietu**
 
-    -   Opcjonalnie umożliwia oprogramowania ma zostać skopiowany do węzłów puli za pomocą Menedżera pakietów. Określono Menedżera pakietów i identyfikator pakietu. Możliwość deklaruje co najmniej jednego pakietu pozwala uniknąć konieczności tworzenia skrypt, który pobiera wymagane pakiety, zainstalować skrypt i uruchom skrypt w każdym węźle puli.
+    -   Opcjonalnie umożliwia oprogramowania ma zostać skopiowany do węzłów puli za pomocą Menedżera pakietów. Określono Menedżera pakietów i identyfikator pakietu. Przez zadeklarowanie co najmniej jednego pakietu, można uniknąć tworzenia skryptów, który pobiera wymagane pakiety, skrypt instalacji i uruchamiania skryptu w każdym węźle puli.
 
-Poniżej przedstawiono przykładowy szablon, który tworzy puli maszyn wirtualnych systemu Linux z ffmpeg zainstalowana i tylko wymaga ciąg Identyfikatora puli i liczbę maszyn wirtualnych mają być dostarczone do użycia:
+Poniżej przedstawiono przykładowy szablon, który tworzy puli maszyn wirtualnych systemu Linux z ffmpeg zainstalowane. Aby go użyć, podaj tylko ciąg Identyfikatora puli i liczbę maszyn wirtualnych w puli:
 
 ```json
 {
@@ -139,7 +139,7 @@ Poniżej przedstawiono przykładowy szablon, który tworzy puli maszyn wirtualny
 }
 ```
 
-Jeśli plik szablonu został nazwany _ffmpeg.json puli_, a następnie szablon będzie można wywołać w następujący sposób:
+Jeśli plik szablonu został nazwany _ffmpeg.json puli_, następnie wywołać szablonu w następujący sposób:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -147,13 +147,13 @@ az batch pool create --template pool-ffmpeg.json
 
 ### <a name="job-templates"></a>Szablony zadań
 
-Oprócz możliwości standardowego szablonu parametry i zmienne następujące konstrukcji wyższego poziomu są obsługiwane przez szablon zadania:
+Szablony zadań obsługują możliwości standardowego szablonu zmiennych i parametrów. Obsługują one następujące konstrukcji wyższego poziomu:
 
 -   **Fabryki zadań**
 
     -   Tworzy wiele zadań dla zadania na podstawie definicji zadania. Trzy typy fabryki zadań są obsługiwane — parametrycznych odchylenia zadań dla każdego pliku i zadań w kolekcji.
 
-Poniżej przedstawiono przykładowy szablon, który tworzy zadanie, które używa ffmpeg w plikach wideo MP4 transkodowanie do jednej z dwóch mniejszej rozdzielczości, z jednego zadania utworzone na źródłowy plik wideo:
+Poniżej przedstawiono przykładowy szablon, który tworzy zadanie w plikach wideo MP4 transkodowanie z ffmpeg do jednej z dwóch mniejszej rozdzielczości. Tworzy jedno zadanie na źródłowy plik wideo:
 
 ```json
 {
@@ -229,7 +229,7 @@ Poniżej przedstawiono przykładowy szablon, który tworzy zadanie, które używ
 }
 ```
 
-Jeśli plik szablonu został nazwany _ffmpeg.json zadania_, a następnie szablon będzie można wywołać w następujący sposób:
+Jeśli plik szablonu został nazwany _ffmpeg.json zadania_, następnie wywołać szablonu w następujący sposób:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
@@ -237,11 +237,11 @@ az batch job create --template job-ffmpeg.json
 
 ## <a name="file-groups-and-file-transfer"></a>Grup plików i transferu plików
 
-Większość zadań i zadań wymagane pliki wejściowe i utworzyć pliki danych wyjściowych. Oba pliki wejściowe i pliki wyjściowe zwykle mają zostać przeniesione z klienta do węzła lub z węzła do klienta. Rozszerzenie interfejsu wiersza polecenia Azure partii abstracts transfer plików zadań i korzysta z konta magazynu, które jest tworzone domyślnie dla każdego konta usługi partia zadań.
+Większość zadań i zadań wymagane pliki wejściowe i utworzyć pliki danych wyjściowych. Zazwyczaj pliki wejściowe i wyjściowe pliki są przesyłane, od klienta do węzła lub z węzła do klienta. Rozszerzenie interfejsu wiersza polecenia Azure partii abstracts transfer plików zadań i korzysta z konta magazynu, które jest tworzone domyślnie dla każdego konta usługi partia zadań.
 
 Grupa plików jest równa kontener, który jest tworzony na koncie magazynu Azure. Grupa plików może mieć podfoldery.
 
-Rozszerzenia interfejsu wiersza polecenia partii zawiera polecenia służące do przekazywania plików z klienta do grupy określonego pliku i pobieranie plików z określonej grupie plików do klienta.
+Rozszerzenia interfejsu wiersza polecenia partii zawiera polecenia, aby przekazać pliki z klienta do grupy określonego pliku i pobierania plików z określonej grupie plików do klienta.
 
 ```azurecli
 az batch file upload --local-path c:\source_videos\*.mp4 
@@ -251,7 +251,7 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-Szablony puli i zadania umożliwiają plików przechowywanych w grup plików może być określony dla kopiowania na węzłach puli lub wyłącz węzłów puli do grupy plików. Na przykład w szablonie zadania z określonym wcześniej pliku grupy "ffmpeg — dane wejściowe" jest określona dla fabryki zadań jako lokalizacja źródłowych plików wideo kopiowane na węzeł transkodowanie; Plik grupy "ffmpeg-output" jest używana jako lokalizacji, w którym przekodowane pliki wyjściowe są kopiowane do od węzła, w którym każdego zadania.
+Szablony puli i zadania umożliwiają plików przechowywanych w grup plików może być określony dla kopiowania na węzłach puli lub wyłącz węzłów puli do grupy plików. Na przykład w szablonie zadania z określonym wcześniej pliku grupy "ffmpeg — dane wejściowe" jest określona dla fabryki zadań jako lokalizacja źródłowych plików wideo kopiowane na węzeł transkodowanie; Plik grupy "ffmpeg-output" jest lokalizacji, w którym przekodowane pliki wyjściowe są kopiowane do od węzła, w którym każdego zadania.
 
 ## <a name="summary"></a>Podsumowanie
 

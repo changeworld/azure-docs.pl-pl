@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Opis zasad niestandardowych początkowego pakietu Azure AD B2C niestandardowych zasad
 
@@ -39,7 +39,7 @@ Oświadczenia to schematów jest podzielone na trzy części:
 3.  I po pewnym czasie trzeci sekcja, która wyświetla wszelkie dodatkowe, opcjonalne oświadczenia, które mogą być zbierane od użytkownika, przechowywane w katalogu i wysłane w tokenach podczas logowania. W tej sekcji można dodać nowy typ oświadczenia zbierane od użytkownika i/lub w tokenie.
 
 > [!IMPORTANT]
-> Schemat oświadczeń zawiera ograniczenia dotyczące określonych oświadczeń, takich jak nazwy użytkowników i hasła. Zasady zaufania Framework (TF) traktuje usługi Azure AD jako innego dostawcy oświadczeń i wszystkie jego ograniczenia są modelowany w zasadach premium. Aby dodać więcej ograniczeń, lub użyj innego dostawcy oświadczeń dla magazynu poświadczeń, który ma własną ograniczenia mogły zostać zmodyfikowane zasady.
+> Schemat oświadczeń zawiera ograniczenia dotyczące określonych oświadczeń, takich jak nazwy użytkowników i hasła. Zasady zaufania Framework (TF) traktuje usługi Azure AD jako innego dostawcy oświadczeń i wszystkie jego ograniczenia są modelowany w zasady niestandardowe. Aby dodać więcej ograniczeń, lub użyj innego dostawcy oświadczeń dla magazynu poświadczeń, który ma własną ograniczenia mogły zostać zmodyfikowane zasady.
 
 Poniżej przedstawiono typy oświadczeń dostępne.
 
@@ -51,12 +51,12 @@ Następujące oświadczenia są wymagane dla użytkownika podróże do poprawneg
 |-------------|-------------|
 | *Nazwa użytkownika* | Nazwa użytkownika |
 | *signInName* | Zaloguj się w nazwie |
-| *Dla identyfikatora dzierżawcy* | Identyfikator dzierżawy (ID) obiektu użytkownika w usłudze Azure AD B2C w warstwie Premium |
-| *objectId* | Identyfikator obiektu (ID) obiektu użytkownika w usłudze Azure AD B2C w warstwie Premium |
+| *Dla identyfikatora dzierżawcy* | Identyfikator dzierżawy (ID) obiektu użytkownika w usłudze Azure AD B2C |
+| *objectId* | Identyfikator obiektu (ID) obiektu użytkownika w usłudze Azure AD B2C |
 | *Hasło* | Hasło |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Zasady haseł używane przez usługi Azure AD B2C Premium do określenia siły hasła, wygaśnięcia itp. |
+| *passwordPolicies* | Zasady haseł używany przez usługę Azure AD B2C w celu określenia siły hasła, wygaśnięcia itp. |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
@@ -66,9 +66,9 @@ Następujące oświadczenia są wymagane dla użytkownika podróże do poprawneg
 | *Adres e-mail* | Adres e-mail, który może służyć do kontaktowania się z użytkownika |
 | *signInNamesInfo.emailAddress* | Adres e-mail, który użytkownik może użyć do logowania |
 | *otherMails* | Adresy e-mail, które mogą być używane do kontaktu użytkownik |
-| *userPrincipalName* | Nazwa użytkownika zapisaną w warstwie Premium usługi Azure AD B2C |
+| *userPrincipalName* | Nazwa użytkownika, jak przechowywane w usłudze Azure AD B2C |
 | *upnUserName* | Nazwa użytkownika do tworzenia głównej nazwy użytkownika |
-| *mailNickName* | Nazwa użytkownika poczty nick przechowywanej w usłudze Azure AD B2C — wersja Premium |
+| *mailNickName* | Nazwa użytkownika poczty nick przechowywanej w usłudze Azure AD B2C |
 | *newUser* | |
 | *executed-SelfAsserted-Input* | Oświadczenie, które określa, czy atrybuty zostały zebrane przez użytkownika |
 | *executed-PhoneFactor-Input* | Oświadczenie, które określa, czy nowy numer telefonu został zebrany przez użytkownika |

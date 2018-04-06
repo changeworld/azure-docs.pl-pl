@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Przewodnik dotyczący wydawcy witrynę Azure Marketplace i AppSource
 
@@ -121,7 +121,8 @@ Każdy sklepu obsługuje wiele typów publikowania opcje i oferty. Wybierz typ o
 Wersja próbna poziomie transakcji lub udział nie jest możliwe, należy użyć kontaktu mnie. Zaletą tej metody jest możliwość wydawców z rozwiązanie na rynek natychmiast rozpocząć potencjalni klienci, którzy mogą nurtured do podstawowych transakcji można uruchomić Twojej zamachowym biznesowe odbierania. Jednak wadą jest, że zaangażowanie klientów jest ograniczona w porównaniu z innych typów ofert.
 
 >[!IMPORTANT]
->Nie zalecamy kontakt mnie typ oferty. Należy go używać tylko w sytuacji, w których nie istnieje sposób ustanowienie środowisko wersji próbnej. Zaangażowanie klientów najlepiej z ofertami wersji próbnej i transakcji. Jeśli masz środowisko wersji próbnej dowolnego typu procesu dołączania przeprowadzi Cię do jednej z tych opcji, w zależności od danego scenariusza.
+<<<<<<< Zaangażowanie klientów HEAD jest najlepiej z wersji próbnej i oferuje Transact. Wartość kontaktu mnie jest potencjalnego klienta, który zostanie wyświetlony, więc wybranie tego typu listy, sprawdź, czy skonfigurowano folderu docelowego potencjalnych klientów i wszystko jest gotowe do zmaksymalizowania potencjalnego klienta. === Nie zalecamy kontakt mnie typ oferty. Należy go używać tylko w sytuacji, w których nie istnieje sposób ustanowienie środowisko wersji próbnej. Zaangażowanie klientów najlepiej z ofertami wersji próbnej i transakcji. Jeśli masz środowisko wersji próbnej dowolnego typu procesu dołączania przeprowadzi Cię do jednej z tych opcji, w zależności od danego scenariusza.
+>>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
 
 Gdy oferta obejmuje głównie profesjonalne usługi (na przykład badań, implementacji, zakładów), użyj usługi konsultingowe oferują typu. Zakres oferty, czas trwania i cen musi być stałą, musi być jednego odbiorcy i musi być przeprowadzane w witrynie.
 

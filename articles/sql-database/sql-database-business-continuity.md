@@ -1,23 +1,22 @@
 ---
-title: "Ciągłość działalności biznesowej w chmurze — odzyskiwanie bazy danych — usługa SQL Database | Microsoft Docs"
-description: "Dowiedz się, w jaki sposób usługa Azure SQL Database obsługuje ciągłość działalności biznesowej w chmurze i odzyskiwanie bazy danych oraz pomaga zapewnić działanie aplikacji o kluczowym znaczeniu w chmurze."
+title: Ciągłość działalności biznesowej w chmurze — odzyskiwanie bazy danych — usługa SQL Database | Microsoft Docs
+description: Dowiedz się, w jaki sposób usługa Azure SQL Database obsługuje ciągłość działalności biznesowej w chmurze i odzyskiwanie bazy danych oraz pomaga zapewnić działanie aplikacji o kluczowym znaczeniu w chmurze.
 keywords: business continuity,cloud business continuity,database disaster recovery,database recovery
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 160e65130efc78bc1a98a0feceb1c824cf226156
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 1f125596a6cc874f285611290d5c42700009afbe
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -27,20 +26,20 @@ W tym omówieniu opisano możliwości usługi Azure SQL Database w zakresie zape
 
 Usługa SQL Database udostępnia kilka funkcji zapewniających ciągłość działalności biznesowej, w tym zautomatyzowane kopie zapasowe oraz opcjonalną replikację bazy danych. Każda z tych funkcji ma różne charakterystyki dotyczące szacowanego czasu odzyskiwania (ERT, estimated recovery time) i potencjalnej utraty danych dotyczących ostatnich transakcji. Po zapoznaniu się z tymi opcjami można dokonać między nimi wyboru, a także — w większości przypadków — użyć ich razem w ramach różnych scenariuszy. Podczas opracowywania planu zapewniania ciągłości działalności biznesowej należy zrozumieć znaczenie maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia — jest to cel czasu odzyskiwania (RTO, recovery time objective). Należy także zrozumieć maksymalna ilość danych ostatnie aktualizacje (interwał czasu) aplikacja może tolerować utraty podczas odzyskiwania po zdarzeniu destrukcyjne — jest to cel punktu odzyskiwania (RPO).
 
-W poniższej tabeli znajduje się porównanie wartości ERT i RPO dla trzech najbardziej typowych scenariuszy.
+W poniższej tabeli porównano Wstaw i cel punktu odzyskiwania dla każdej warstwy usługi dla trzech najbardziej typowych scenariuszy.
 
-| Możliwości | Warstwa Podstawowa | Warstwa standardowa | Warstwa Premium |
-| --- | --- | --- | --- |
-| Przywracanie do punktu w czasie z kopii zapasowej |Dowolny punkt przywracania w ciągu ostatnich 7 dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |
-| Geograficznie — Przywracanie z kopii zapasowych z replikacją geograficzną |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz. |
-| Przywracanie z magazynu usługi Azure Backup |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |
-| Aktywna replikacja geograficzna |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |
+| Możliwości | Podstawowa | Standardowa (Standard) | Premium  | Ogólne zastosowanie | Krytyczne dla działania firmy
+| --- | --- | --- | --- |--- |--- |
+| Przywracanie do punktu w czasie z kopii zapasowej |Dowolny punkt przywracania w ciągu ostatnich 7 dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |Dowolny punkt przywracania w ciągu ostatnich 35 dni |Dowolny punkt przywracania w skonfigurowanym okresie (do 35 dni)|Dowolny punkt przywracania w skonfigurowanym okresie (do 35 dni)|
+| Geograficznie — Przywracanie z kopii zapasowych z replikacją geograficzną |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz. |ERT < 12 godz., RPO < 1 godz.|ERT < 12 godz., RPO < 1 godz.|
+| Przywracanie z magazynu usługi Azure Backup |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz. |ERT < 12 godz., RPO < 1 tydz.|ERT < 12 godz., RPO < 1 tydz.|
+| Aktywna replikacja geograficzna |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s |ERT < 30 s, RPO < 5 s|ERT < 30 s, RPO < 5 s|
 
-### <a name="use-database-backups-to-recover-a-database"></a>Używanie kopii zapasowych bazy danych w celu odzyskania bazy danych
+### <a name="use-point-in-time-restore-to-recover-a-database"></a>Użyj w momencie przywracania, aby odzyskać bazę danych
 
-Baza danych SQL automatycznie wykonuje kombinacji pełnej bazy danych kopii zapasowych co tydzień, co godzinę kopii zapasowych różnicowej bazy danych i transakcji kopii zapasowych dziennika co pięć - dziesięć minut do ochrony przed utratą danych firmy. Te kopie zapasowe są przechowywane w magazynu geograficznie nadmiarowego 35 dni w przypadku baz danych w warstwach usług standardowa i Premium i 7 dni w przypadku baz danych w warstwie usług podstawowych. Aby uzyskać więcej informacji, zobacz [warstw usług](sql-database-service-tiers.md). Jeśli okres przechowywania w warstwie usług nie spełnia Twoich wymagań biznesowych, można go zwiększyć, [zmieniając warstwę usług](sql-database-service-tiers.md). Pełne oraz różnicowe kopie zapasowe bazy danych są także replikowane do [sparowanego centrum danych](../best-practices-availability-paired-regions.md) w celu ochrony przed awarią centrum danych. Aby uzyskać więcej informacji, zobacz [kopie zapasowe bazy danych automatyczne](sql-database-automated-backups.md).
+Baza danych SQL automatycznie wykonuje kombinacji pełnej bazy danych kopii zapasowych co tydzień, co godzinę kopii zapasowych różnicowej bazy danych i transakcji kopii zapasowych dziennika co pięć - dziesięć minut do ochrony przed utratą danych firmy. Te kopie zapasowe są przechowywane w magazynie RA-GRS 35 dni w przypadku baz danych w warstwach usług standardowa i Premium i 7 dni w przypadku baz danych w warstwie usług podstawowych. Ogólnego przeznaczenia i warstwy krytycznych usług biznesowych (wersja zapoznawcza) konfiguruje się do 35 dni się przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [warstw usług](sql-database-service-tiers.md). Jeśli okres przechowywania w warstwie usług nie spełnia Twoich wymagań biznesowych, można go zwiększyć, [zmieniając warstwę usług](sql-database-service-tiers.md). Pełne oraz różnicowe kopie zapasowe bazy danych są także replikowane do [sparowanego centrum danych](../best-practices-availability-paired-regions.md) w celu ochrony przed awarią centrum danych. Aby uzyskać więcej informacji, zobacz [kopie zapasowe bazy danych automatyczne](sql-database-automated-backups.md).
 
-Jeśli okres przechowywania wbudowanych jest niewystarczająca dla aplikacji, można go rozszerzyć, konfigurując zasady przechowywania długoterminowego bazy danych. Aby uzyskać więcej informacji, zobacz [przechowywania długoterminowego](sql-database-long-term-retention.md).
+Maksymalny okres przechowywania PITR obsługiwanych jest niewystarczająca dla aplikacji, można go rozszerzyć Konfigurując zasady długoterminowego przechowywania (od lewej do prawej) dla baz danych. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
 Tych automatycznych kopii zapasowych bazy danych można użyć, aby odzyskać bazę danych po wystąpieniu różnych zdarzeń powodujących zakłócenia, zarówno w obrębie centrum danych, jak również do innego centrum danych. W przypadku korzystania z automatycznych kopii zapasowych bazy danych szacowany czas odzyskiwania zależy od kilku czynników, w tym łącznej liczby jednocześnie odzyskiwanych baz danych w tym samym regionie, rozmiaru bazy danych, rozmiaru dziennika transakcji oraz przepustowości sieci. Czas odzyskiwania jest zazwyczaj mniej niż 12 godzin. Podczas odzyskiwania do innego obszaru danych potencjalna utrata danych jest ograniczona do 1 godziny przez magazyn geograficznie nadmiarowy w ramach tworzonych co godzinę różnicowych kopii zapasowych bazy danych.
 
@@ -55,7 +54,7 @@ Zautomatyzowanych kopii zapasowych jako mechanizmu odzyskiwania i zapewniania ci
 * Ma niską częstotliwość zmian danych (mała liczba transakcji na godzinę) i utrata zmian z maksymalnie jednej godziny jest akceptowalna.
 * Jej koszt ma znaczenie.
 
-Szybsze odzyskiwania, należy użyć [aktywna replikacja geograficzna](sql-database-geo-replication-overview.md) (omówione dalej). Jeśli chcesz mieć możliwość odzyskania danych z sprzed 35 dni okresu, użyj [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md). 
+Szybsze odzyskiwania, należy użyć [aktywna replikacja geograficzna](sql-database-geo-replication-overview.md) (omówione dalej). Jeśli chcesz mieć możliwość odzyskania danych z sprzed 35 dni okresu, użyj [przechowywania długoterminowego](sql-database-long-term-retention.md). 
 
 ### <a name="use-active-geo-replication-and-auto-failover-groups-in-preview-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Użyj active grup — replikacja geograficzna i pracy awaryjnej automatycznego (w podglądzie) skrócić czas odzyskiwania i ograniczyć utraty danych odzyskiwania
 
@@ -77,12 +76,12 @@ Użyj active grup — replikacja geograficzna i pracy awaryjnej automatycznego (
 * Ma wysoki współczynnik zmian danych i utrata zmian z okresu jednej godziny jest niedopuszczalna.
 * Dodatkowy koszt związany z aktywną replikacją geograficzną jest niższy niż potencjalna odpowiedzialność finansowa i powiązane straty biznesowe.
 
->
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>Odzyskiwanie bazy danych po błędzie użytkownika lub aplikacji
-*Nikt nie jest doskonały! Użytkownik może przypadkowo usunąć pewne dane, nieodwracalnie usunąć ważną tabelę lub nawet usunąć całą bazę danych. Możliwe jest również przypadkowe zastąpienie przez aplikację poprawnych danych błędnymi danymi w wyniku wady aplikacji.
+
+Nie ma doskonałe! Użytkownik może przypadkowo usunąć pewne dane, nieodwracalnie usunąć ważną tabelę lub nawet usunąć całą bazę danych. Możliwe jest również przypadkowe zastąpienie przez aplikację poprawnych danych błędnymi danymi w wyniku wady aplikacji.
 
 W tym scenariuszu opcje odzyskiwania są następujące.
 
@@ -101,8 +100,9 @@ Aby uzyskać więcej informacji i poznać szczegółowe kroki przywracania usuni
 >
 >
 
-### <a name="restore-from-azure-backup-vault"></a>Przywracanie z magazynu usługi Azure Backup
-Jeśli baza danych jest skonfigurowany w celu przechowywania długoterminowego wystąpiła utrata danych poza okresem przechowywania bieżącego automatycznego tworzenia kopii zapasowych, można przywrócić z kopii zapasowej co tydzień w magazynie kopii zapasowej Azure do nowej bazy danych. W takim momencie można albo zastąpić oryginalną bazę danych przywróconą bazą danych, albo skopiować potrzebne dane z przywróconej bazy danych do oryginalnej bazy danych. Jeśli chcesz pobrać starą wersję bazy danych przed uaktualnieniem najważniejszych aplikacji, spełnia żądania z audytorów lub prawnym, można utworzyć bazy danych przy użyciu pełnej kopii zapasowej zapisać w magazynie kopii zapasowej Azure.  Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
+### <a name="restore-backups-from-long-term-retention"></a>Przywracanie kopii zapasowych z długoterminowego przechowywania
+
+Jeśli baza danych jest skonfigurowany w celu przechowywania długoterminowego wystąpiła utrata danych poza okresem przechowywania bieżącego automatycznego tworzenia kopii zapasowych, można przywrócić z pełnej kopii zapasowej w magazynie od lewej do prawej, do nowej bazy danych. W takim momencie można albo zastąpić oryginalną bazę danych przywróconą bazą danych, albo skopiować potrzebne dane z przywróconej bazy danych do oryginalnej bazy danych. Jeśli chcesz pobrać starą wersję bazy danych przed uaktualnieniem najważniejszych aplikacji, spełnia żądania z audytorów lub prawnym, można utworzyć bazy danych przy użyciu pełnej kopii zapasowej zapisać w magazynie kopii zapasowej Azure.  Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Odzyskiwanie bazy danych do innego regionu podczas awarii regionalnego centrum danych platformy Azure
 <!-- Explain this scenario -->

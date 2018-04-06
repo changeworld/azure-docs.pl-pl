@@ -1,25 +1,25 @@
 ---
-title: "Monitorowanie magazynu w pamięci XTP | Dokumentacja firmy Microsoft"
-description: "Szacowana i monitorowanie magazynu w pamięci XTP korzystać, pojemności; Napraw błąd pojemności 41823"
+title: Monitorowanie magazynu w pamięci XTP | Dokumentacja firmy Microsoft
+description: Szacowana i monitorowanie magazynu w pamięci XTP korzystać, pojemności; Napraw błąd pojemności 41823
 services: sql-database
 author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: c1adc6e98f7d101a6e5f3227f44b0035d9b9d157
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0802a3b51847236efb64e628ed259dc7776bac4e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Monitor OLTP w pamięci magazynu
-Korzystając z [OLTP w pamięci](sql-database-in-memory.md), dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel znajdują się w magazynie OLTP w pamięci. Każda warstwa usług Premium ma maksymalny rozmiar magazynu OLTP w pamięci, które opisano w [pojedynczy limity zasobów bazy danych](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) i [elastycznej puli zasobów limity](sql-database-resource-limits.md#elastic-pool-change-storage-size). Po przekroczeniu tego limitu insert i zaktualizować operacji mogą kończyć się niepowodzeniem z błędem 41823 autonomiczny baz danych i błąd 41840 dla pul elastycznych. W tym momencie możesz należy usunąć dane w celu odzyskania pamięci, lub Uaktualnij warstwę wydajności bazy danych.
+Korzystając z [OLTP w pamięci](sql-database-in-memory.md), dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel znajdują się w magazynie OLTP w pamięci. Każda warstwa usług Premium i biznesowe krytyczne ma maksymalny rozmiar magazynu OLTP w pamięci, które opisano w [limity zasobów na podstawie jednostek dtu w warstwie](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore](sql-database-vcore-resource-limits.md). Po przekroczeniu tego limitu insert i zaktualizować operacji mogą kończyć się niepowodzeniem z błędem 41823 autonomiczny baz danych i błąd 41840 dla pul elastycznych. W tym momencie możesz należy usunąć dane w celu odzyskania pamięci, lub Uaktualnij warstwę wydajności bazy danych.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Określić, czy danych mieści się w zakończenia magazynu OLTP w pamięci
-Określ caps magazynu z różnych warstw usługi Premium. Zobacz [pojedyncze bazy danych zasobów limity](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels) i [elastycznej puli zasobów limity](sql-database-resource-limits.md#elastic-pool-change-storage-size).
+Określ caps magazynu warstwy z innej usługi. Zobacz [limity zasobów na podstawie jednostek dtu w warstwie](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore](sql-database-vcore-resource-limits.md).
 
 Trwa szacowanie wymagań pamięci dla działania tabel zoptymalizowanych pod kątem pamięci jest taki sam sposób dla programu SQL Server, ponieważ w bazie danych SQL Azure. Potrwać kilka minut, aby przejrzeć ten artykuł na [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
 
@@ -48,7 +48,7 @@ Aby rozwiązać ten problem, albo:
 * Uaktualnienie warstwy usług, aby za mało przechowywania w pamięci dla danych, które należy przechowywać w tabelach zoptymalizowanych pod kątem pamięci.
 
 > [!NOTE] 
-> W rzadkich przypadkach błędy 41823 i 41840 może być przejściowy, co oznacza brak wystarczającej ilości dostępnego magazynu OLTP w pamięci i operacji zakończy się pomyślnie. Dlatego zaleca się zarówno monitorowania ogólnej dostępności magazynu OLTP w pamięci, aby ponowić próbę, gdy najpierw napotkania błędu 41823 lub 41840. Aby uzyskać więcej informacji na temat logika ponowień, zobacz [wykrywania konfliktów i ponów próbę wykonania logiki z OLTP w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> W rzadkich przypadkach błędy 41823 i 41840 może być przejściowy, co oznacza brak wystarczającej ilości dostępnego magazynu OLTP w pamięci i operacji zakończy się pomyślnie. Dlatego zaleca się zarówno monitorowania ogólnej dostępności magazynu OLTP w pamięci, aby ponowić próbę, gdy najpierw napotkania błędu 41823 lub 41840. Aby uzyskać więcej informacji na temat logika ponowień, zobacz [wykrywania konfliktów i ponów próbę wykonania logiki z OLTP w pamięci](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Do monitorowania wskazówki, zobacz [monitorowania bazy danych SQL Azure przy użyciu dynamicznych widoków zarządzania](sql-database-monitoring-with-dmvs.md).

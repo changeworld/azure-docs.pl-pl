@@ -1,8 +1,7 @@
 ---
-title: 'Usługa Azure Active Directory B2C: Odwołanie: Dostosowywanie interfejsu użytkownika w podróży użytkownika z zasady niestandardowe | Dokumentacja firmy Microsoft'
-description: Temat dotyczący zasad niestandardowych usługi Azure Active Directory B2C
+title: Dostosowywanie interfejsu użytkownika w podróży użytkownika z niestandardowych zasad | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o zasadach niestandardowych usługi Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
 editor: ''
@@ -11,18 +10,18 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4fe9e90996c56773480eb147e5aef7475453fe43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika w podróży użytkownika przy użyciu zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> W tym artykule jest zaawansowane opis działania dostosowywania interfejsu użytkownika i jak włączyć za pomocą zasad niestandardowych B2C, przy użyciu platformy obsługi tożsamości
+> W tym artykule jest zaawansowane opis działania dostosowywania interfejsu użytkownika i jak włączyć za pomocą niestandardowych zasad usługi Azure AD B2C, przy użyciu platformy obsługi tożsamości.
 
 
 Nie zakłóca pracy użytkowników jest kluczem dla dowolnego rozwiązania biznesowe z klientem. Nie zakłóca pracy użytkowników to środowisko, na urządzeniu lub w przeglądarce, gdzie jest odróżnienia od obsługi klienta, które używają przebieg użytkownika za pośrednictwem usługi.
@@ -66,7 +65,7 @@ Aby upewnić się, że wszystko działa zgodnie z oczekiwaniami, należy:
 - Upewnij się, że zawartość jest HTML5 zgodne i jest dostępny
 - Upewnij się, że serwer zawartości jest włączona dla CORS.
 - Udostępniać zawartość za pośrednictwem protokołu HTTPS.
-- Używać bezwzględnych adresów URL, takie jak https://yourdomain/content dla wszystkich łączy i zawartość arkusza CSS.
+- Takie jak używać bezwzględnych adresów URL https://yourdomain/content dla wszystkich łączy i zawartość arkusza CSS.
 
 > [!TIP]
 > Aby sprawdzić, czy są hostingu zawartości na lokacji ma włączonego mechanizmu CORS i żądań CORS testu, można skorzystać z witryny http://test-cors.org/. Dzięki tej lokacji możesz wysłać żądanie CORS do serwera zdalnego (do testowania, jeśli jest obsługiwana przez CORS) lub Wyślij żądanie CORS na serwerze testowym (aby eksplorować niektórych funkcji CORS).
@@ -115,7 +114,7 @@ Po wykonaniu powyższych kroków pliki CSS i HTML5 *pakietu w przypadku dostosow
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>Upewnij się, że konto magazynu ma włączonego mechanizmu CORS
 
-CORS (Cross-Origin Resource Sharing) musi być włączona dla usługi Azure AD B2C Premium można załadować zawartości, ponieważ zawartość znajduje się w innej domenie niż domena Premium usługi Azure AD B2C obsługuje stronę z punktu końcowego.
+CORS (Cross-Origin Resource Sharing) musi być włączona punktu końcowego dla usługi Azure AD B2C do załadowania zawartości. Jest to spowodowane zawartości znajduje się na innej domeny niż domena usługi Azure AD B2C będzie obsługująca stronę z.
 
 Aby sprawdzić, czy magazyn, które prowadzą hosting zawartości na ma włączonego mechanizmu CORS, kontynuować następujące czynności:
 
@@ -161,11 +160,11 @@ W poniższej tabeli opisano zestaw identyfikatorów definicji rozpoznał tożsam
 | *API.idpselections.Signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać podczas tworzenia konta. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (w oparciu nazwa użytkownika lub adres e-mail). |
 | *api.localaccountpasswordreset* | **Nie pamiętasz hasła strony**. Ta strona zawiera formularz, który użytkownik ma do wypełnienia zainicjować ich resetowania hasła.  |
 | *api.localaccountsignin* | **Strona logowania konta lokalnego**. Ta strona zawiera formularz logowania, który użytkownik musi podać podczas logowania się za pomocą konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać pola do wprowadzania tekstu, a w polu wprowadzania hasła. |
-| *api.localaccountsignup* | **Stronę tworzenia konta lokalnego konta**. Ta strona zawiera rejestracji formularz, który użytkownik musi podać podczas zapisywania się do konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takich jak pola do wprowadzania tekstu, pole wprowadzania hasła przycisk radiowy, jednokrotnym zaznaczeniem pola listy rozwijanej i pól wyboru wielokrotnego wyboru. |
-| *api.phonefactor* | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie, użytkownicy mogą sprawdzić swoje numery telefonów (przy użyciu tekstowych lub głosowych) podczas logowania w górę lub zaloguj się. |
-| *api.selfasserted* | **Strony rejestracji społecznościowych konta**. Ta strona zawiera rejestracji formularz, który użytkownik musi podać podczas logowania przy użyciu istniejącego konta od dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +. Ta strona jest podobny do poprzedniego konta społecznościowych stronę tworzenia konta z wyjątkiem pól wprowadzania hasła. |
-| *api.selfasserted.profileupdate* | **Strona aktualizacji profilu**. Ta strona zawiera formularz, który użytkownik może użyć do zaktualizowania swój profil. Ta strona jest podobny do poprzedniego konta społecznościowych stronę tworzenia konta z wyjątkiem pól wprowadzania hasła. |
-| *api.signuporsignin* | **Ujednolicone stronę tworzenia konta lub logowania**.  Ta strona obsługuje zarówno logowania się i logowania użytkowników można używać w organizacji dostawcy tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook lub Google + lub kont lokalnych.
+| *api.localaccountsignup* | **Stronę tworzenia konta lokalnego konta**. Ta strona zawiera wypełnieniu formularza, który użytkownik musi podać podczas zapisywania się do konta lokalnego, która jest oparta na adres e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takich jak pola do wprowadzania tekstu, pole wprowadzania hasła przycisk radiowy, jednokrotnym zaznaczeniem pola listy rozwijanej i pól wyboru wielokrotnego wyboru. |
+| *api.phonefactor* | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie użytkowników można sprawdzić ich numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania. |
+| *api.selfasserted* | **Strony rejestracji społecznościowych konta**. Ta strona zawiera wypełnieniu formularza, który użytkownik musi podać podczas logowania przy użyciu istniejącego konta od dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +. Ta strona jest podobny do poprzedniej strony rejestracji społecznościowych konta, z wyjątkiem pól wprowadzania hasła. |
+| *api.selfasserted.profileupdate* | **Strona aktualizacji profilu**. Ta strona zawiera formularz, który użytkownik może użyć do zaktualizowania swój profil. Ta strona jest podobny do poprzedniej strony rejestracji społecznościowych konta, z wyjątkiem pól wprowadzania hasła. |
+| *api.signuporsignin* | **Ujednolicone stronę tworzenia konta lub logowania**.  Ta strona obsługuje zarówno rejestracji i logowania użytkowników można używać w organizacji dostawcy tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook lub Google + lub kont lokalnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Odwołanie: Zrozumieć, jak niestandardowe zasady współpracują w ramach obsługi tożsamości w B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md)

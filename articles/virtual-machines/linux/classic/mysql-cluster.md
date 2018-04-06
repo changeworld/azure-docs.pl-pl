@@ -1,11 +1,11 @@
 ---
-title: "Clusterize MySQL z równoważeniem obciążenia zestawami | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie równoważenia obciążenia, wysoka dostępność, klaster programu Linux MySQL utworzone z klasycznym modelu wdrażania na platformie Azure"
+title: Clusterize MySQL z równoważeniem obciążenia zestawami | Dokumentacja firmy Microsoft
+description: Konfigurowanie równoważenia obciążenia, wysoka dostępność, klaster programu Linux MySQL utworzone z klasycznym modelu wdrażania na platformie Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: bureado
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 6c413a16-e9b5-4ffe-a8a3-ae67046bbdf3
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 8b39da7b96002e14c7d9a567ddc4f1dbc9d45c60
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2671def47879e3d4eae000c9084cd458e29b933
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Umożliwia zestawów o zrównoważonym obciążeniu clusterize bazy danych MySQL na systemie Linux
 > [!IMPORTANT]
@@ -335,7 +335,7 @@ Mają zastosowanie następujące ograniczenia:
 
 * Skrypt zasobów DRBD linbit, który zarządza DRBD jako zasób w używa rozrusznik `drbdadm down` zamknięcia węzła, nawet jeśli węzeł właśnie przechodzi w stan wstrzymania. To nie jest idealny ponieważ podrzędnej będzie nie można synchronizowanie zasobów DRBD podczas wzorca pobiera zapisów. Jeśli wzorzec nie powiedzie się graciously, podrzędnej może zająć ponad starsze stan systemu plików. Istnieją dwa sposoby potencjalnych rozwiązywania to:
   * Wymuszanie `drbdadm up r0` we wszystkich węzłach klastra za pośrednictwem lokalnego (nie clusterized) programu alarmowego
-  * Edytowanie skryptu DRBD linbit, upewniając się, że `down` nie jest wywoływana`/usr/lib/ocf/resource.d/linbit/drbd`
+  * Edytowanie skryptu DRBD linbit, upewniając się, że `down` nie jest wywoływana `/usr/lib/ocf/resource.d/linbit/drbd`
 * Moduł równoważenia obciążenia musi co najmniej pięciu sekund odpowiedzi, więc aplikacji powinien być typu cluster-aware i być bardziej odporne na limit czasu. Może również pomóc innych architektur, takich jak kolejki w aplikacji i middlewares zapytania.
 * Dostrajanie MySQL jest niezbędne do zapewnienia, że zapisu odbywa się w zarządzaniu tempie i pamięci podręczne są opróżniane na dysku, jak często, jak to możliwe, aby zminimalizować ograniczenie pamięci.
 * Zapis wydajności jest zależna w maszynie Wirtualnej łączyć przełącznika wirtualnego, ponieważ jest to mechanizm używany przez DRBD replikację na urządzeniu.

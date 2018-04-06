@@ -1,13 +1,13 @@
 ---
 title: Wprowadzenie do korzystania z Foundry chmurze na platformie Microsoft Azure | Dokumentacja firmy Microsoft
-description: "Uruchom OSS lub Foundry kluczową chmurze na platformie Microsoft Azure"
+description: Uruchom OSS lub Foundry kluczową chmurze na platformie Microsoft Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: seanmck
-manager: timlt
-editor: 
-tags: 
-keywords: 
+manager: jeconnoc
+editor: ''
+tags: ''
+keywords: ''
 ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 94fbde7707ea9a91076780fdefc3f5a827e0e7b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 25cb758d6d897e03884f77459620e69600a78511
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="cloud-foundry-on-azure"></a>Usługa Cloud Foundry na platformie Azure
 
@@ -51,7 +51,7 @@ Narzędzia te zawierają [kluczową programu Operations Manager](http://docs.piv
 
 Oprócz wymienione powyżej CF OSS kanałów pomocy technicznej licencji PCF uprawnia do kontaktowania się z Pivotal pomocy technicznej. Firma Microsoft i Pivotal również włączono przepływów pracy pomocy technicznej, które umożliwiają skontaktuj się z jednej strony pomocy i ma Twojego zapytania kierowane odpowiednio w zależności od tego, gdzie znajduje się problem.
 
-## <a name="azure-service-broker"></a>Broker usług Azure
+## <a name="azure-service-broker"></a>Azure Service Broker
 
 Chmura Foundry zachęca ["12 factor aplikacja"](https://12factor.net/) metodologii, która wspiera czyste rozdzielenie procesów aplikacji bezstanowych i stateful kopii usługi. [Usługa brokerzy](https://docs.cloudfoundry.org/services/api.html) oferują spójny sposób obsługi administracyjnej i powiąż zapasowy usług do aplikacji. [Brokera usług Azure](https://github.com/Azure/meta-azure-service-broker) zawiera niektóre z najważniejszych usług Azure za pośrednictwem tego kanału, w tym magazynu Azure i Azure SQL.
 
@@ -63,7 +63,7 @@ Jeśli używasz kluczową Foundry chmury programu service broker jest również 
 
 Foundry chmury jest dobrze nadają się do rozwoju oprogramowania agile, łącznie z użyciem ciągłej integracji (CI) i ciągłego dostarczania (CD). Jeśli w zarządzaniu projektami przy użyciu programu Visual Studio Team Services (VSTS), a chcesz ustawić zapasowej CI/CD potoku przeznaczonych dla Foundry chmury, możesz użyć [rozszerzenie kompilacji programu VSTS chmury Foundry](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Wtyczka ułatwia konfigurowanie i automatyzowania wdrożeń w celu Foundry chmury, czy działa w Azure lub innej środowiska.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Wdrażanie Foundry kluczową chmury z poziomu portalu Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
 - [Wdrażanie aplikacji w chmurze Foundry na platformie Azure](./cloudfoundry-deploy-your-first-app.md)

@@ -1,11 +1,11 @@
 ---
 title: Konfigurowanie Apache Tomcat na maszynie wirtualnej systemu Linux | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak skonfigurować Apache Tomcat7 przy użyciu maszyn wirtualnych Azure z systemem Linux."
+description: Dowiedz się, jak skonfigurować Apache Tomcat7 przy użyciu maszyn wirtualnych Azure z systemem Linux.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 45ecc89c-1cb0-4e80-8944-bd0d0bbedfdc
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Konfigurowanie Tomcat7 na maszynie wirtualnej systemu Linux przy użyciu platformy Azure
 Apache Tomcat (lub po prostu Tomcat, również nazywanych Jakarta Tomcat) to serwer sieci web typu open source i kontener serwlet opracowane przez Foundation oprogramowania Apache (ASF). Tomcat implementuje Serwlet Java i specyfikacje JavaServer Pages (JSP) z Sun Microsystems. Tomcat zapewnia czysty Java HTTP środowisku serwera sieci web do uruchamiania kodu języka Java. W najprostszej konfiguracji Tomcat działa w procesie jeden system operacyjny. Ten proces jest uruchomiony maszyny wirtualnej Java (JVM). Każde żądanie HTTP z przeglądarki do serwera Tomcat jest przetwarzany jako oddzielnym wątku w procesie Tomcat.  
@@ -92,7 +92,7 @@ TCP port 8080 jest domyślny numer portu serwera Tomcat używa do nasłuchiwania
 
       Jeśli zostanie ustawiona do 80, nie trzeba Podaj numer portu w adresie URL, który umożliwia dostęp do serwera Tomcat. Na przykład http://tomcatdemo.cloudapp.net.    
 
-      Jeśli zostanie ustawiona na inną wartość, takich jak 81, musisz dodać numer portu do adresu URL do serwera Tomcat. Na przykład http://tomcatdemo.cloudapp.net:81 /.
+      Jeśli zostanie ustawiona na inną wartość, takich jak 81, musisz dodać numer portu do adresu URL do serwera Tomcat. Przykład: http://tomcatdemo.cloudapp.net:81/.
    2. Wprowadź 8080 w **Port prywatny**. Domyślnie Tomcat nasłuchuje na porcie TCP 8080. Jeśli zmieniono domyślne nasłuchiwania port serwera Tomcat, należy zaktualizować **Port prywatny** być taka sama jak Tomcat nasłuchiwać portu.  
       ![Zrzut ekranu z interfejsu użytkownika, który zawiera polecenie Dodaj, Port publiczny i Port prywatny][7]
 4. Kliknij przycisk **OK** można dodać punktu końcowego do maszyny wirtualnej.
@@ -184,7 +184,7 @@ Użyj następującego polecenia, aby zainstalować Tomcat7.
 Jeśli nie używasz Tomcat7, użyj odpowiednią odmianę tego polecenia.  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>Upewnij się, że Tomcat7 Instalacja powiodła się
-Aby sprawdzić, czy pomyślnie zainstalowano Tomcat7, przejdź do nazwy DNS serwera Tomcat. W tym artykule przykładowy adres URL jest http://tomcatexample.cloudapp.net/. Jeśli zostanie wyświetlony komunikat z podobnie do następującej Tomcat7 jest poprawnie zainstalowany.
+Aby sprawdzić, czy pomyślnie zainstalowano Tomcat7, przejdź do nazwy DNS serwera Tomcat. W tym artykule jest przykładowy adres URL http://tomcatexample.cloudapp.net/. Jeśli zostanie wyświetlony komunikat z podobnie do następującej Tomcat7 jest poprawnie zainstalowany.
 ![Komunikat instalacji Tomcat7 powiodło się][16]
 
 ### <a name="install-other-tomcat7-components"></a>Instalowanie innych składników Tomcat7
@@ -231,7 +231,7 @@ Po zmodyfikowaniu tego pliku, należy ponownie uruchomić usługi Tomcat7 przy u
 
     sudo /etc/init.d/tomcat7 restart  
 
-Otwórz przeglądarkę i wprowadź **http://<your tomcat server DNS name>/Menedżera/html** jako adresu URL. Na przykład w tym artykule adres URL jest http://tomcatexample.cloudapp.net/manager/html.  
+Otwórz przeglądarkę i wprowadź **http://<your tomcat server DNS name>/Menedżera/html** jako adresu URL. Na przykład w tym artykule, adres URL jest http://tomcatexample.cloudapp.net/manager/html.  
 
 Po połączeniu, powinny zostać wyświetlone informacje podobne do następujących:  
 ![Zrzut ekranu Menedżera aplikacji sieci Web Tomcat][18]
@@ -265,7 +265,7 @@ Po połączeniu, powinny zostać wyświetlone informacje podobne do następując
         sudo yum instalacji w3m w3m-img
 
 
-        w3m adresem http://localhost: 8080  
+        w3m http://localhost:8080  
 #### <a name="solution"></a>Rozwiązanie
 
   * Jeśli Tomcat nasłuchiwać portu nie jest taki sam jak port prywatny punktu końcowego dla ruchu do maszyny wirtualnej, należy zmienić port prywatny jest taka sama jak Tomcat nasłuchiwać portu.   

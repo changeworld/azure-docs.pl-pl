@@ -11,16 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 4dabcdef32d337c5063d2b0503f32b06d5d0fdeb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 648c800da928ae230bde1ba92aea8c319a4d8fe2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>Skonfigurowania złożoności hasła w ramach zasad niestandardowych
-
-> [!NOTE]
-> **Ta funkcja jest dostępna w wersji zapoznawczej.**  Skontaktuj się z [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com) mają dzierżawy testu włączona przy użyciu tej funkcji.  Nie należy przeprowadzać testów to w produkcji dzierżaw.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 

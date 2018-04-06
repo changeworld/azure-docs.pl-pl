@@ -1,12 +1,12 @@
 ---
-title: "Monitor i get wgląd w aplikację logiki jest wykonywane przy użyciu pakietu OMS - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Monitorowanie sekwencji aplikacji logiki z analizy dzienników i Operations Management Suite (OMS), aby uzyskać szczegółowe informacje i szczegóły debugowania bardziej zaawansowane funkcje do rozwiązywania problemów i Diagnostyka"
+title: Monitor i get wgląd w aplikację logiki jest wykonywane przy użyciu Log Analytics — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Monitorowanie sieci jest uruchamiany aplikacji logiki z analizy dzienników, aby uzyskać szczegółowe informacje i szczegóły debugowania bardziej zaawansowane funkcje do rozwiązywania problemów i Diagnostyka
 author: divyaswarnkar
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f9f27dc74348909b89941c2bb17ccdf610dba33
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d484aaf7d7582bd474d7437a7a62f41880690dbc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Monitorowanie i uzyskiwanie szczegółowych informacji o uruchomieniu aplikacji logiki Operations Management Suite (OMS) i analizy dzienników
+# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorowanie i uzyskiwanie szczegółowych informacji o uruchomieniu aplikacji logiki z analizy dzienników
 
-Do monitorowania i bardziej rozbudowane informacje debugowania można włączyć analizy dzienników w tym samym czasie, podczas tworzenia aplikacji logiki. Analiza dzienników zapewnia diagnostyki rejestrowania i monitorowania aplikacji logiki uruchamia się za pośrednictwem portalu Operations Management Suite (OMS). Po dodaniu rozwiązania do zarządzania aplikacji logiki do OMS otrzymasz zagregowany stan logiki aplikacji działa i konkretne szczegółowe informacje, takie jak stan, czas wykonywania, stan ponownego wysyłania i identyfikatorów korelacji.
+Do monitorowania i bardziej rozbudowane informacje debugowania można włączyć analizy dzienników w tym samym czasie, podczas tworzenia aplikacji logiki. Analiza dzienników zapewnia diagnostyki rejestrowania i monitorowania aplikacji logiki uruchamia się za pośrednictwem portalu Azure. Po dodaniu rozwiązania do zarządzania aplikacji logiki, otrzymasz zagregowany stan logiki aplikacji działa i konkretne szczegółowe informacje, takie jak stan, czas wykonywania, stan ponownego wysyłania i identyfikatorów korelacji.
 
-W tym temacie przedstawiono sposób włączania analizy dzienników lub zainstalować rozwiązania do zarządzania aplikacji logiki w OMS, aby wyświetlić zdarzenia środowiska uruchomieniowego i dane aplikacji logiki Uruchom.
+W tym temacie pokazano, jak włączyć funkcję analizy dzienników, dzięki czemu można wyświetlać zdarzenia środowiska uruchomieniowego i uruchom danych aplikacji logiki.
 
  > [!TIP]
- > Aby monitorować istniejących aplikacji logiki, wykonaj następujące kroki, aby [włączyć rejestrowania diagnostycznego i wysyłać dane środowiska uruchomieniowego aplikacji logiki do OMS](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+ > Aby monitorować istniejących aplikacji logiki, wykonaj następujące kroki, aby [włączyć rejestrowania diagnostycznego i wysyłać dane środowiska uruchomieniowego aplikacji logiki do analizy dzienników](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 ## <a name="requirements"></a>Wymagania
 
-Przed rozpoczęciem, musisz mieć obszarem roboczym pakietu OMS. Dowiedz się [jak Utwórz obszar roboczy OMS](../log-analytics/log-analytics-get-started.md). 
+Przed rozpoczęciem, musisz mieć obszaru roboczego analizy dzienników. Dowiedz się [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md). 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>Włącz rejestrowanie danych diagnostycznych podczas tworzenia aplikacji logiki
 
@@ -44,56 +44,47 @@ Przed rozpoczęciem, musisz mieć obszarem roboczym pakietu OMS. Dowiedz się [j
    1. Podaj nazwę aplikacji logiki, a następnie wybierz subskrypcję platformy Azure. 
    2. Utwórz lub wybierz grupę zasobów platformy Azure.
    3. Ustaw **dziennika analizy** do **na**. 
-   Wybierz obszar roboczy OMS, gdy chcesz wysyłać dane dotyczące aplikacji logiki uruchamia. 
+   Wybierz obszar roboczy analizy dzienników, które chcesz wysyłać dane dotyczące aplikacji logiki uruchamia. 
    4. Gdy wszystko jest gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** > **Utwórz**.
 
       ![Tworzenie aplikacji logiki](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-app.png)
 
-      Po zakończeniu tego kroku, platforma Azure tworzy aplikację logiki, który jest obecnie skojarzony z obszarem roboczym pakietu OMS. 
-      Ponadto ten krok również automatycznie instaluje rozwiązanie do zarządzania aplikacji logiki w obszarze roboczym pakietu OMS.
+      Po zakończeniu tego kroku, platforma Azure tworzy aplikację logiki, który jest obecnie skojarzony z obszaru roboczego analizy dzienników. 
+      Ponadto ten krok również automatycznie instaluje rozwiązanie do zarządzania aplikacji logiki w obszarze roboczym.
 
-3. Aby wyświetlić logiki aplikacja jest uruchamiana w OMS, [wykonaj te czynności](#view-logic-app-runs-oms).
+3. Aby wyświetlić aplikację logiki uruchomieniu [wykonaj te czynności](#view-logic-app-runs-oms).
 
-## <a name="install-the-logic-apps-management-solution-in-oms"></a>Instalowanie rozwiązania do zarządzania aplikacji logiki w OMS
+## <a name="install-the-logic-apps-management-solution"></a>Instalowanie rozwiązania do zarządzania aplikacji logiki
 
-Jeśli już włączone analizy dzienników, podczas tworzenia aplikacji logiki, Pomiń ten krok. Masz już zainstalowany w OMS rozwiązania do zarządzania aplikacji logiki.
+Jeśli już włączone analizy dzienników, podczas tworzenia aplikacji logiki, Pomiń ten krok. Masz już zainstalowany rozwiązania do zarządzania aplikacji logiki.
 
 1. W [portalu Azure](https://portal.azure.com), wybierz **więcej usług**. Wyszukaj "analizy dzienników" jako filtr, a następnie wybierz pozycję **analizy dzienników** pokazany:
 
    ![Wybierz pozycję "Analizy dzienników"](media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
-2. W obszarze **analizy dzienników**, Znajdź i wybierz obszar roboczy OMS. 
+2. W obszarze **analizy dzienników**, Znajdź i zaznacz pozycję obszaru roboczego analizy dzienników. 
 
-   ![Wybierz obszar roboczy OMS](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
+   ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
 3. W obszarze **zarządzania**, wybierz **portalu OMS**.
 
    ![Wybierz pozycję "Portalu OMS"](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. Na stronie głównej OMS transparent uaktualnienia jest wyświetlany, jeśli transparentu tak, aby najpierw uaktualnić obszar roboczy OMS. Następnie wybierz pozycję **galerii rozwiązań**.
-
-   ![Wybierz pozycję "Rozwiązań Galeria"](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
-
-5. W obszarze **wszystkie rozwiązania**, Znajdź i wybierz Kafelek **zarządzania aplikacje logiki** rozwiązania.
+4. W obszarze **wszystkie rozwiązania**, Znajdź i wybierz Kafelek **zarządzania aplikacje logiki** rozwiązania.
 
    ![Wybierz pozycję "Zarządzanie aplikacje logiki"](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
 
-6. Aby zainstalować rozwiązania, w obszarze roboczym pakietu OMS, wybierz **Dodaj**.
+5. Aby zainstalować rozwiązania, w obszarze roboczym analizy dzienników, wybierz **Dodaj**.
 
    ![Wybierz opcję "Dodaj", "Zarządzania aplikacjami logiki"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-your-logic-app-runs-in-your-oms-workspace"></a>Widok, który uruchamia aplikację logiki w obszarze roboczym pakietu OMS
+## <a name="view-your-logic-app-runs-in-your-log-analytics-workspace"></a>Widok, który uruchamia aplikację logiki w obszarze roboczym analizy dzienników
 
-1. Aby wyświetlić liczbę i stan sekwencji aplikacji logiki, przejdź do strony Przegląd obszaru roboczego OMS. Przejrzyj szczegóły na **zarządzania aplikacje logiki** kafelka.
+1. Aby wyświetlić liczbę i stan sekwencji aplikacji logiki, przejdź do strony Przegląd obszaru roboczego analizy dzienników. Przejrzyj szczegóły na **zarządzania aplikacje logiki** kafelka.
 
    ![Wyświetlanie stanu i liczba Uruchom aplikację logiki kafelka przeglądu](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
-
-   > [!Note]
-   > Jeśli transparent uaktualnienia pojawia się zamiast kafelka zarządzania aplikacji logiki, wybierz transparentu, tak, aby najpierw uaktualnić obszar roboczy OMS.
-  
-   > ![Uaktualnij "Obszarem roboczym pakietu OMS"](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. Aby wyświetlić podsumowanie z bardziej szczegółowymi informacjami na temat sekwencji aplikacji logiki, wybierz **zarządzania aplikacje logiki** kafelka.
 

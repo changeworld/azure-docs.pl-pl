@@ -1,7 +1,7 @@
 ---
-title: "Usługa SQL Database: Co to jest jednostka DTU? | Microsoft Docs"
-description: "Opis jednostki transakcji usługi Azure SQL Database."
-keywords: "opcje bazy danych, wydajność bazy danych"
+title: 'Usługa SQL Database: Co to jest jednostka DTU? | Microsoft Docs'
+description: Opis jednostki transakcji usługi Azure SQL Database.
+keywords: opcje bazy danych, wydajność bazy danych
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -10,17 +10,17 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: carlrab
-ms.openlocfilehash: 9d13541444f487ad6afb9f59c6c6ac646091d42c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b5d6ffc9aa13e6aaf948028fabe3087f8dea2a1d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>Bazy danych (Dtu). jednostki transakcji i jednostek transakcji elastycznej bazy danych (Edtu)
 W tym artykule wyjaśniono jednostki DTU (Database Transaction Unit) i jednostki eDTU (elastic Database Transaction Unit) oraz skutki osiągnięcia maksymalnej liczby jednostek DTU lub eDTU.  
 
 ## <a name="what-are-database-transaction-units-dtus"></a>Co to są jednostki transakcji bazy danych (Dtu)?
-Dla jednej bazy danych Azure SQL w konkretnego poziomu wydajności w ramach [warstwy usług](sql-database-single-database-resources.md), Microsoft gwarantuje, że pewien poziom zasoby dla tej bazy danych (niezależnie od innych bazy danych w chmurze Azure) i zapewnia przewidywalną poziom wydajności. Ta ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub Dtu i jest mieszanych pomiarach Procesora, pamięci, we/wy (danych i dziennika transakcji we/wy). Stosunek między tymi zasobami pierwotnie został określony poprzez [obciążenia OLTP testu porównawczego](sql-database-benchmark-overview.md) zaprojektowaną do typowe dla obciążeń OLTP rzeczywistych. Gdy obciążenie przekracza ilość żadnego z tych zasobów, przepustowość sieci jest ograniczeniem przepustowości — wynikowe w niska wydajność i przekroczeń limitu czasu. Zasoby używane przez obciążenie będzie mieć wpływu na zasoby dostępne dla innych baz danych w chmurze platformy Azure i zasobów, używany przez inne obciążenia nie wpływają na zasoby dostępne dla Twojej bazy danych SQL.
+Dla jednej bazy danych Azure SQL w konkretnego poziomu wydajności w ramach [warstwy usług](sql-database-single-database-resources.md), Microsoft gwarantuje, że pewien poziom zasoby dla tej bazy danych (niezależnie od innych bazy danych w chmurze Azure) i zapewnia przewidywalną poziom wydajności. Ta ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub Dtu i powiązane miary obliczeniowej, magazynu i zasobów we/wy. Stosunek między tymi zasobami pierwotnie został określony poprzez [obciążenia OLTP testu porównawczego](sql-database-benchmark-overview.md) zaprojektowaną do typowe dla obciążeń OLTP rzeczywistych. Gdy obciążenie przekracza ilość żadnego z tych zasobów, przepustowość sieci jest ograniczeniem przepustowości — wynikowe w niska wydajność i przekroczeń limitu czasu. Zasoby używane przez obciążenie będzie mieć wpływu na zasoby dostępne dla innych baz danych w chmurze platformy Azure i zasobów, używany przez inne obciążenia nie wpływają na zasoby dostępne dla Twojej bazy danych SQL.
 
 ![obwiedni](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
@@ -28,7 +28,7 @@ Liczba jednostek Dtu są najbardziej przydatny w przypadku zrozumieć względną
 
 Aby uzyskać lepszy wgląd w zużycie zasobów (bazy danych DTU), obciążenia, należy użyć [szczegółowe informacje o usłudze Azure SQL bazy danych zapytań wydajności](sql-database-query-performance.md) do:
 
-- Identyfikowanie najważniejszych zapytań według liczby wykonywania-Procesor/czas trwania, który może potencjalnie dostroić zwiększonej wydajności. Na przykład kwerendę intensywne operacje We/Wy mogą korzystać ze stosowania [techniki optymalizacji w pamięci](sql-database-in-memory.md) lepsze wykorzystanie dostępnej pamięci w niektórych warstwę i poziom wydajności usługi.
+- Identyfikowanie najważniejszych zapytań według liczby wykonywania-Procesor/czas trwania, który może potencjalnie dostroić zwiększonej wydajności. Na przykład kwerendy znacznym We/Wy mogą korzystać z użycia [techniki optymalizacji w pamięci](sql-database-in-memory.md) lepsze wykorzystanie dostępnej pamięci w niektórych warstwę i poziom wydajności usługi.
 - Przechodzenie do szczegółów zapytania, Wyświetl tekst i historii wykorzystania zasobów.
 - Dostosowywanie zaleceń, które zawierają akcje wykonywane przez wydajności dostępu [doradcy bazy danych SQL](sql-database-advisor.md).
 
@@ -52,9 +52,9 @@ Jeśli chcesz zmigrować istniejące obciążenie lokalne lub obciążenie maszy
 Pule są odpowiednie dla wielu baz danych o określonych wzorcach użycia. Dla danej bazy danych ten wzorzec charakteryzuje się niskim średnim wykorzystaniem oraz stosunkowo rzadkimi okresami zwiększonego użycia. Usługa SQL Database automatycznie ocenia historyczne użycie zasobów przez bazy danych na istniejącym serwerze usługi SQL Database i zaleca odpowiednią konfigurację puli w witrynie Azure Portal. Aby uzyskać więcej informacji, zobacz [Kiedy należy użyć puli elastycznej?](sql-database-elastic-pool.md)
 
 ## <a name="what-happens-when-i-hit-my-maximum-dtus"></a>Co się stanie po naciśnięciu I Moje maksymalna liczba jednostek Dtu?
-Poziomy wydajności są kalibrowane i określane w celu zapewnienia zasobów wymaganych do uruchomienia obciążenia baz danych do maksymalnego limitu dozwolonego dla wybranej warstwy usługi/poziomu wydajności. Jeśli obciążenie powoduje osiągnięcie limitu procesora CPU, operacji we/wy danych lub operacji we/wy dziennika, nadal zapewniane będą zasoby na maksymalnym dozwolonym poziomie, ale mogą wystąpić opóźnienia zapytań. Te limity nie powodują występowania błędów, ale raczej spowalniają działanie obciążenia, o ile obciążenie nie stanie się tak duże, by powodować przekroczenie limitu czasu zapytań. W przypadku osiągnięcia limitów maksymalnej dozwolonej liczby równoczesnych sesji/żądań użytkowników (wątków roboczych) występują jawne błędy. Zobacz [Limity zasobów usługi Azure SQL Database]( sql-database-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached), aby uzyskać informacje na temat limitów zasobów innych niż procesor CPU, pamięć, operacje we/wy danych oraz operacje we/wy dziennika transakcji.
+Poziomy wydajności są kalibrowane i określane w celu zapewnienia zasobów wymaganych do uruchomienia obciążenia baz danych do maksymalnego limitu dozwolonego dla wybranej warstwy usługi/poziomu wydajności. Jeśli obciążenie powoduje osiągnięcie limitu procesora CPU, operacji we/wy danych lub operacji we/wy dziennika, nadal zapewniane będą zasoby na maksymalnym dozwolonym poziomie, ale mogą wystąpić opóźnienia zapytań. Te limity nie powodują występowania błędów, ale raczej spowalniają działanie obciążenia, o ile obciążenie nie stanie się tak duże, by powodować przekroczenie limitu czasu zapytań. W przypadku osiągnięcia limitów maksymalnej dozwolonej liczby równoczesnych sesji/żądań użytkowników (wątków roboczych) występują jawne błędy. Zobacz [limity zasobów bazy danych SQL Azure]( sql-database-dtu-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) uzyskać informacji o limit zasobów niż procesora CPU, pamięci, we/wy danych i dziennika transakcji, we/wy.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [warstwy usług](sql-database-service-tiers.md) informacji na temat jednostek Dtu a Edtu dostępnych dla pojedynczych baz danych i pul elastycznych, a także ograniczenia dotyczące zasobów niż procesora CPU, pamięci, we/wy danych i transakcji dziennik operacji We/Wy.
+* Zobacz [warstwy usług](sql-database-service-tiers.md) informacji na temat jednostek Dtu a Edtu dostępnych dla pojedynczych baz danych i pul elastycznych, a także ograniczenia dotyczące zasobów niż procesora CPU, pamięci, we/wy danych i dziennika transakcji, we/wy.
 * Zobacz [Szczegółowe informacje o wydajności zapytań usługi SQL Database](sql-database-query-performance.md), aby zrozumieć wykorzystanie jednostek DTU.
 * Zobacz [Omówienie testu porównawczego usługi SQL Database](sql-database-benchmark-overview.md), aby zrozumieć metodologię obciążenia porównawczego OLTP używanego w celu określenia połączonego wskaźnika w postaci jednostek DTU.

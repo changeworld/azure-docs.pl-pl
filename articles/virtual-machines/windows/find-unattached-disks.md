@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: d908cdcd9e77f91a726f985d21bdc5bbc80ffd27
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: a8d2e017ee0b368c2d509ab4bf47ea566ee52a3b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Znajdowanie i usuwanie odłączyć dysku systemu Azure zarządzane i niezarządzane
 Po usunięciu maszyny wirtualnej (VM) na platformie Azure, domyślnie nie są usuwane wszystkie dyski, które są dołączone do maszyny Wirtualnej. Ta funkcja pomaga zapobiec utracie danych z powodu usunięcia przypadkowe maszyn wirtualnych. Po usunięciu maszyny Wirtualnej będzie kontynuował opłacać odłączyć dysków. W tym artykule przedstawiono, jak znaleźć i Usuń wszystkie dyski odłączyć i zredukowanie niepotrzebnych kosztów. 
@@ -129,8 +129,7 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Usunięcie konta magazynu](../../storage/common/storage-create-storage-account.md)
-
+Aby uzyskać więcej informacji, zobacz [usunięcie konta magazynu](../../storage/common/storage-create-storage-account.md) i [zidentyfikować oddzielone dysków przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
 
 
 

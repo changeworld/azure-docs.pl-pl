@@ -1,19 +1,19 @@
 ---
-title: "Baza danych Azure SQL — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na typowe pytania klientów poproś o baz danych w chmurze i baza danych SQL Azure, system zarządzania relacyjnymi bazami danych firmy Microsoft (RDBMS) oraz bazy danych jako usługa w chmurze."
+title: Baza danych Azure SQL — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Odpowiedzi na typowe pytania klientów poproś o baz danych w chmurze i baza danych SQL Azure, system zarządzania relacyjnymi bazami danych firmy Microsoft (RDBMS) oraz bazy danych jako usługa w chmurze.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 59058b3445fdaf75df331d771afd28599491c52e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f98337044bdad788d2a4c9eac0c67a2031810430
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 
@@ -21,19 +21,101 @@ ms.lasthandoff: 03/16/2018
 Bieżąca wersja bazy danych SQL jest w wersji 12. W wersji V11 została wycofana.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Co to jest umowy SLA dla bazy danych SQL?
-Firma Microsoft gwarantuje, że przez co najmniej 99,99% czasu klienci będą mogli korzystać z łączności między pojedynczą lub elastyczną bazą danych usługi Microsoft Azure SQL Database w warstwach Podstawowa, Standardowa i Premium a bramą internetową firmy Microsoft. Aby uzyskać więcej informacji, zobacz [SLA](http://azure.microsoft.com/support/legal/sla/).
+Gwarantujemy 99,99% czasu, istnieje łączność między bazy danych SQL Microsoft Azure i naszych bramą internetową niezależnie od warstwę usług. Aby uzyskać więcej informacji, zobacz [SLA](http://azure.microsoft.com/support/legal/sla/).
 
-## <a name="how-do-i-reset-the-password-for-the-server-admin"></a>Jak zresetować hasła administratora serwera?
-W [portalu Azure](https://portal.azure.com), kliknij przycisk **serwerów SQL**, wybierz serwer z listy, a następnie kliknij przycisk **Resetuj hasło**.
+## <a name="whatis-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Whatis nowego na podstawie vCore zakupów modelu bazy danych SQL Azure?
 
-## <a name="how-do-i-manage-databases-and-logins"></a>Jak zarządzać baz danych i logowania
-Zobacz [Zarządzanie bazami danych i logowaniami](sql-database-manage-logins.md).
+Nowy model kupna jest oprócz istniejącego modelu na podstawie jednostek dtu w warstwie. VCore na podstawie modelu pozwala dać klientów elastyczność, kontroli, przezroczystość i łatwe do tłumaczenia wymogów dotyczących lokalnego obciążeń do chmury. Umożliwia klientom skalowanie możliwości obliczeniowych i magazynu ustalane na podstawie jego potrzeb obciążenia. Pojedynczej bazy danych i opcje puli elastycznej za pomocą modelu vCore również kwalifikują się do się do 30 procent oszczędności za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Zobacz [warstw usług](sql-database-service-tiers.md) Aby uzyskać więcej informacji na podstawie jednostek dtu w warstwie model kupna i model kupna vCore.
 
-## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Jak utworzyć się, że tylko autoryzowani adresy IP mogą uzyskać dostęp do serwera?
-Zobacz [porady: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md).
+## <a name="what-is-a-vcore"></a>Co to jest rdzeń wirtualny? 
+Wirtualne podstawowe reprezentuje Procesora logicznego oferowany z opcją wybór między generacje sprzętu. Gen 4 procesory logiczne są oparte na Intel E5-2673 v3 (Haswell) procesorów 2,4 GHz i procesorów logicznych Gen 5 są oparte na Intel E5-2673 w wersji 4 (Broadwell) 2.3 GHz procesorów.
 
-## <a name="how-does-the-usage-of-sql-database-show-up-on-my-bill"></a>Jak jest użycie bazy danych SQL wyświetlany na mojego rachunku?
-Opłaty bazy danych SQL na przewidywalną, godzinową szybkość oparte na warstwie usługi + poziom wydajności dla pojedynczych baz danych lub Edtu dla każdej puli elastycznej. Rzeczywistego użycia jest obliczana i proporcjonalnie co godzinę, więc rachunku mogą być wyświetlane ułamków godzinę. Na przykład jeśli baza danych istnieje na 12 godzin w miesiącu, rachunku pokazuje użycie 0,5 dni. Ponadto warstwy usług i poziom wydajności i jednostek Edtu na pulę są podzielone w zestawieniu, aby ułatwić orientację w liczbie dni bazy danych, dla każdej z nich w ciągu jednego miesiąca.
+## <a name="is-moving-to-the-vcore-based-model-required"></a>Czy przejście do modelu opartego na rdzeniach wirtualnych jest wymagane?
+Nie, wprowadzenie vCore na podstawie modelu do puli elastycznej i opcji wdrażania pojedynczej bazy danych odzwierciedla nasze zobowiązania szeroki wybór i elastyczność. Aby kontynuować korzystanie z modelu na podstawie jednostek dtu w warstwie klientów, nie trzeba wykonywać żadnych czynności to zawiadomienie i ich obsługi i rozliczeń pozostaną niezmienione. 
+
+W wielu przypadkach aplikacje mogą korzystać z uproszczenia wstępnie skonfigurowane pakietu zasobów. W związku z tym w dalszym oferować i obsługi tych opcji na podstawie jednostek DTU dla naszych klientów. Jeśli są używane i spełnia wymagania biznesowe, powinno być kontynuowane w tym celu.
+
+Modele oparte na jednostkach DTU i rdzeniach wirtualnych będą nadal istnieć obok siebie. Uruchamiamy model oparty na rdzeniach wirtualnych w odpowiedzi na prośby klientów, którzy pragną większej przejrzystości w zakresie zasobów bazy danych oraz możliwości oddzielnego skalowania zasobów obliczeniowych i magazynowych. VCore na podstawie modelu umożliwia również dodatkowe oszczędności w przypadku klientów z active Software Assurance korzyści hybrydowe platformy Azure dla programu SQL Server.
+
+## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Jak należy wybrać między vs na podstawie jednostek dtu w warstwie model kupna model kupna vCore? 
+Jednostka transmisji danych (DTU) jest oparta na kombinacji pomiarów procesora, pamięci, odczytów i zapisów. Poziomy wydajności oparte na jednostkach DTU reprezentują wstępnie skonfigurowane pakiety zasobów dostosowane do różnych poziomów wydajności aplikacji. Klienci, którzy nie chcą martwić zasobów i preferowanie prostotę wstępnie skonfigurowane pakietu podczas płatności stałą każdego miesiąca może znaleźć modelu na podstawie jednostek dtu w warstwie bardziej odpowiednie do potrzeb. Jednak dla klientów, którzy muszą uzyskać lepszy wgląd w zasobów lub musi przebiegać proces skalowania ich niezależnie w celu osiągnięcia optymalnej wydajności, na podstawie vCore modelu będzie najlepszym rozwiązaniem.  Ponadto, jeśli klient ma aktywne Software Assurance (SA) dla programu SQL Server, mogą korzystać z dotychczasowych inwestycji i Zapisz do 30% z [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  W ramach każdego z zakupem modeli zapewniają korzyści pełni zarządzaną usługę, takich jak automatyczne kopie zapasowe, aktualizacji i poprawek. 
+
+## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Jakie są zalety hybrydowe platformy Azure dla programu SQL Server? 
+[Korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) pomaga zmaksymalizowania wykorzystania wartości z bieżącego inwestycji licencjonowania i przyspieszyć ich migrację do chmury. Korzyści hybrydowe platformy Azure dla programu SQL Server jest korzyści bazujących na platformie Azure, która pozwala na użycie licencji programu SQL Server z Software Assurance zapłacenia obniżonej ("częstotliwość podstawową") w bazie danych SQL. Azure korzyści hybrydowego dla programu SQL Server jest dostępna w publicznej wersji zapoznawczej vCore na podstawie modelu zakupów dla pojedynczych baz danych SQL Database i elastyczne pule. Można zastosować takich korzyści, nawet jeśli jednostka SKU jest aktywny, ale należy pamiętać, że podstawowa stawka jest stosowana od czasu, wybierz je w portalu Azure. Żadne środki nie będą naliczane wstecznie.
+
+## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Dla programu SQL Server są prawa podwójnego zastosowania z korzyści hybrydowego Azure?
+Masz prawa do używania dwóch licencji do upewnij się, że migracje działają doskonale na 180 dni. Po 180-dniowy okres, licencji programu SQL Server można używać tylko w chmurze w bazie danych SQL i nie ma podwójną wykorzystanie praw lokalnych i w chmurze.
+
+
+## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Jaka jest różnica korzyści hybrydowe platformy Azure dla programu SQL Server z przenośność licencji?
+Obecnie oferujemy klientów programu SQL Server z licencją Software Assurance korzyści mobilności, co umożliwia ponowne przypisanie licencji do serwerów innych firm udostępnionych. Świadczenie może służyć IaaS platformy Azure i usług AWS EC2.
+Azure korzyści hybrydowego dla programu SQL Server różni się od przenośność licencji w dwóch podstawowych obszarach:
+- Zapewnia korzyści ekonomicznych przenoszenia wysokiej zwirtualizowanych obciążeń na platformie Azure. Klienci SQL EE mogą uzyskać 4 rdzeni na platformie Azure w ogólne SKU cel dla każdego core są właścicielami lokalnymi dla dużej zwirtualizowanych aplikacji. Przenośność licencji nie zezwala na wszelkie specjalne oszczędności przenoszenia zwirtualizowanych obciążeń do chmury.
+- Zapewnia miejsce docelowe PaaS na platformie Azure, które jest wysoce zgodną z programu SQL Server lokalnymi — zarządzane wystąpienia bazy danych SQL.
+
+## <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Jakie są określone prawa korzyści hybrydowe platformy Azure dla programu SQL Server?
+Baza danych SQL konieczne będzie następujące prawa skojarzone z korzyści hybrydowe platformy Azure dla programu SQL Server:
+
+|Wpływ licencji|Co oznacza korzyści hybrydowe platformy Azure dla programu SQL Server uzyskać możesz?|
+|---|---|
+|SQL Server Enterprise Edition core klientom SA|<li>Można zwrócić szybkość Base ogólnego przeznaczenia lub biznesowe krytyczne jednostki SKU</li><br><li>1 rdzeń lokalnymi = 4 rdzenie w ogólnego przeznaczenia jednostki SKU</li><br><li>1 rdzeń lokalnymi = 1 rdzeń w jednostce SKU krytyczne biznesowa</li>|
+|SQL Server Standard Edition core klientom SA|<li>Można tylko zwrócić szybkość Base na ogólnego przeznaczenia jednostki SKU</li><br><li>1 rdzeń lokalnymi = 1 rdzeń w ogólnego przeznaczenia jednostki SKU</li>|
+|||
+
+## <a name="is-the-vcore-based-model-available-to-sql-database-managed-instance"></a>Jest dostępne dla zarządzanych wystąpienia bazy danych SQL na podstawie vCore modelu?
+[Zarządzane wystąpienia](sql-database-managed-instance.md) jest dostępna tylko w przypadku vCore na podstawie modelu. Aby uzyskać więcej informacji, zobacz też [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/managed/). 
+
+## <a name="does-the-cost-of-compute-and-storage-depend-on-the-service-tier-that-i-choose"></a>Koszt zasobów obliczeniowych i magazynu zależą od warstwy usługi, którą można wybrać?
+Koszt obliczeń odzwierciedla wydajności obliczeniowej całkowita, która zostanie zainicjowana dla aplikacji. W warstwie Business krytycznych usług firma Microsoft automatycznie Przydziel co najmniej 3 replik Always ON. Uwzględnienie tego dodatkowego przydziału zasobów obliczeniowych, ceny vCore jest około 2.7 x wyżej w biznesowe krytyczne. Z tego samego powodu wyższej cena pamięci masowej na GB w warstwie Business krytyczne odzwierciedla wysokiej We/Wy i małe opóźnienia magazynu SSD. W tym samym czasie koszt magazynowania kopii zapasowej nie jest inny, ponieważ w obu przypadkach używamy klasę magazynu w warstwie standardowa.
+
+## <a name="how-am-i-charged-for-storage---based-on-what-i-configure-upfront-or-on-what-the-database-uses"></a>Jak m naliczane opłaty za magazyn — na podstawie co skonfigurować wyprzedzeniem lub baza danych używa?
+Różne rodzaje magazynu są rozliczane inaczej. Do przechowywania danych są naliczane dla zainicjowanego magazynu na podstawie maksymalnego bazy danych lub rozmiaru puli, którą wybierzesz. Koszt nie zmieniać zmniejszenia lub zwiększenia tej maksymalnej. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie. Magazyn kopii zapasowych jest bezpłatny do poziomu 100 procent łącznie zaprowizowanej pojemności magazynu serwera. Dodatkowe zużycie magazynu kopii zapasowej jest pobierana w GB miesięcznie. Jeśli na przykład magazyn bazy danych ma rozmiar 100 GB, otrzymasz bezpłatnie 100 GB magazynu kopii zapasowych. Jednak jeśli kopia zapasowa jest 110 GB, płacisz za dodatkowe 10 GB.
+
+W magazynie kopii zapasowej z jednej bazy danych są naliczane na podstawie proporcjonalnie dla magazynu, która została przydzielona do kopii zapasowych bazy danych minus rozmiar bazy danych. W magazynie kopii zapasowej z puli elastycznej są naliczane na podstawie proporcjonalnie dla magazynu, która została przydzielona do kopii zapasowych bazy danych wszystkich baz danych w puli minus maksymalnego rozmiaru danych w puli elastycznej. Wszelkie wzrost rozmiaru bazy danych lub puli elastycznej lub zwiększenie szybkości transakcji wymaga więcej pamięci masowej i w związku z tym zwiększa rachunku magazynu kopii zapasowej.  Zwiększanie maksymalnego rozmiaru danych tej nowej kwoty jest odejmowany od rozmiaru rachunku magazynu kopii zapasowej.
+
+## <a name="how-do-i-select-the-right-sku-when-converting-an-existing-database-to-the-new-service-tiers"></a>Jak wybrać prawo jednostki SKU podczas konwertowania z istniejącej bazy danych na nowe warstwy usług? 
+Istniejących aplikacji bazy danych SQL przy użyciu modelu na podstawie DTU warstwy usług ogólnego przeznaczenia jest porównywalna z warstwy standardowa. Warstwy usługi biznesowe krytyczne jest porównywalna z warstwy Premium. W obu przypadkach należy przydzielić co najmniej 1 vCore dla każdego 100 jednostek dtu w warstwie używanych przez aplikację w modelu na podstawie jednostek dtu w warstwie.
+
+## <a name="do-the-new-vcore-based-service-tiers-offer-the-performance-levels-compatible-with-all-existing-service-level-objectives-slos"></a>Nowe warstwy usług opartych na vCore, są one zgodne z wszystkich istniejących celów poziomu usług (slo) poziomów wydajności?
+Nowe warstwy usług vCore oferują wszystkie elastycznych pul i baz danych przy użyciu Dtu 100 lub więcej sposobów można porównywać pod względem wydajności.  Firma Microsoft będzie można dodać więcej cele slo wraz z upływem czasu, aby pomieścić sub 100 jednostek dtu w warstwie obciążeń.
+
+## <a name="are-there-any-database-feature-differences-between-the-existing-dtu-based-and-new-vcore-based-service-tiers"></a>Czy istnieją wszystkie bazy danych różnice w funkcjach między istniejących warstw DTU i nowej usługi opartej na vCore? 
+Nowe warstwy usług obsługuje podzbiorem funkcji dostępnych w bieżącym oferty na podstawie jednostek dtu w warstwie. Dodatkowe funkcje to zestaw dodatkowych dynamicznych widoków zarządzania (widoków DMV) i opcje konfiguracji dodatkowych zasobów. 
+
+## <a name="if-my-database-is-cpu-bound-and-does-not-use-much-storage-can-i-increase-the-compute-without-paying-for-extra-storage"></a>Jeśli bazy danych jest powiązany z procesora CPU i nie używa najwięcej pamięci masowej, można zwiększyć mocy obliczeniowej bez płatność za dodatkowe miejsce do magazynowania?
+Tak, można wybrać niezależnie poziomu obliczeniowej, aplikacja musi i Zachowaj magazynu bez zmian. Magazyn można ustawić możliwie jak 32GB. 
+
+## <a name="will-the-new-vcore-based-tiers-support-point-in-time-restore-pitr-for-35-days-as-today"></a>Zostanie nowych warstw na podstawie vCore obsługuje punktu w czasie przywracania (PITR) jako dzisiaj 35 dni 
+Przechowywania kopii zapasowych można skonfigurować dla PITR od 7 do 35 dni. Magazyn kopii zapasowych zostanie naliczona opłata osobno na podstawie użycia magazynu rzeczywista w razie przekroczenia wielkość magazynu równa maksymalnego rozmiaru danych. W wersji zapoznawczej domyślnie PITR okres przechowywania wynosi 7 dni. W wielu przypadkach maksymalnego rozmiaru danych jest wystarczająca do przechowywania kopii zapasowych 7 dni.
+
+## <a name="why-do-you-allow-selection-of-the-hardware-generation-for-compute"></a>Dlaczego umożliwia wybór generowania sprzętu dla obliczania?
+Naszym celem jest umożliwienie maksymalną elastyczność, w którym można wybrać konfigurację wydajności, która dokładnie odpowiada potrzebom aplikacji. Powyższej tabeli przedstawiono różnice między Gen4 i Gen5. W szczególności sprzętu Gen4 oferuje znacznie większej ilości pamięci na vCore. Jednak sprzęt Gen5 umożliwia skalowanie w górę obliczeń znacznie wyższa. Chcemy przezroczystego te różnice, dzięki czemu można osiągnąć współczynnik optymalne ceny/wydajności aplikacji.
+
+## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Należy podjąć Moja aplikacja w trybie offline można przekonwertować z bazy danych programu DTU do warstwy usług opartych na vCore? 
+Nowe warstwy usługi oferują prostą metodę konwersji online, która jest podobna do istniejącego procesu uaktualniania baz danych od warstwy Standard do Premium i odwrotnie. Konwersję tę można zainicjować przy użyciu portalu, usługi ARM, programu PowerShell, interfejsu wiersza polecenia platformy SQL lub narzędzia T-SQL. Zobacz [Zarządzanie pojedynczych baz danych](sql-database-single-database-resources.md) i [pule elastyczne zarządzanie](sql-database-elastic-pool.md).
+
+## <a name="can-i-convert-a-database-from-a-vcore-based-service-tier-to-a-dtu-based-one"></a>Czy mogę przekonwertować bazy danych z warstwy usług opartych na vCore aby stworzyć plik na podstawie jednostek dtu w warstwie 
+Tak, można z łatwością przekształcić bazy danych do dowolnego celu obsługiwanych wydajności za pomocą portalu lub programowo przy użyciu portalu, ARM, programu PowerShell, interfejsu wiersza polecenia Azure lub T-SQL. Zobacz [Zarządzanie pojedynczych baz danych](sql-database-single-database-resources.md) i [pule elastyczne zarządzanie](sql-database-elastic-pool.md).
+
+## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Można uaktualnić lub starszą wersję między warstwami usługi ogólnego przeznaczenia i biznesowe krytyczne? 
+Tak, z pewnymi ograniczeniami. Miejsce docelowe kopii jednostki SKU musi spełniać maksymalna bazy danych lub rozmiaru puli elastycznej, skonfigurowane dla istniejącego wdrożenia. Jeśli używasz [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md), biznesowe krytyczne jednostka SKU jest dostępna tylko dla klientów z licencji Enterprise Edition. Tylko klienci, którzy migrowane z lokalnymi do ogólnego przeznaczenia przy użyciu korzyści hybrydowe platformy Azure dla programu SQL Server z licencjami, Enterprise Edition można uaktualnić do biznesowe krytyczne. Aby uzyskać więcej informacji, zobacz [jakie są określone prawa korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md)?
+
+Ta konwersja nie powoduje Przestój i może być inicjowana przy użyciu portalu, ARM, programu PowerShell, interfejsu wiersza polecenia Azure lub T-SQL. Zobacz [Zarządzanie pojedynczych baz danych](sql-database-single-database-resources.md) i [pule elastyczne zarządzanie](sql-database-elastic-pool.md).
+
+## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>Używam Premium RS bazy danych, które nie są zwykle dostępne — można ją uaktualnić do nowej warstwy i osiągnięcia korzyści podobnych ceny do wydajności?
+Ponieważ vCore model pozwala niezależną kontrolę nad ilość elastycznie obliczeniowej i pamięci masowej, można bardziej efektywnie zarządzać wynikowy kosztów, co atrakcyjne docelowy dla bazy danych — warstwa Premium r. Ponadto [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zapewnia znaczne zniżki, gdy jest używany model na podstawie vCore. 
+
+## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Jak często można dostosować dla każdej puli zasobów
+Tyle razy, ile ma. Zobacz [pule elastyczne zarządzanie](sql-database-elastic-pool.md).
+
+## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak długo trwa zmiana poziomu warstwy lub wydajności usług pojedynczej bazy danych lub przenieść bazę danych i elastycznej puli?
+Zmiana warstwy usługi bazy danych i przenoszenia i puli wymaga bazy danych ma zostać skopiowany na platformie jako operacji w tle. Zmiana warstwy usług może zająć od kilku minut do kilku godzin w zależności od rozmiaru bazy danych. W obu przypadkach podczas przenoszenia baz danych pozostają online i dostępne. Aby uzyskać więcej informacji na temat zmieniania pojedynczych baz danych, zobacz [zmienić warstwy usługi bazy danych](sql-database-service-tiers.md). 
+
+## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Kiedy należy używać pojedynczej bazy danych, a elastycznych baz danych?
+Ogólnie rzecz biorąc, elastyczne pule są przeznaczone dla typowe [oprogramowanie jako usługa (SaaS) aplikacji wzorzec](sql-database-design-patterns-multi-tenancy-saas-applications.md), gdy istnieje jedną bazę danych na dzierżawcy lub klienta. Kupowanie poszczególnych baz danych i przydzielanie dla każdej z nich nadmiernej ilości zasobów pod kątem zmiennego i szczytowego zapotrzebowania często nie jest ekonomiczne. Pule Zarządzanie łączną wydajność puli i baz danych górę i w dół Skalowanie automatyczne. Inteligentnego aparatu platformy Azure zaleca puli baz danych, gdy użycie wzorca gwarantuje on. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące puli elastycznej](sql-database-elastic-pool.md).
+
+## <a name="how-does-the-usage-of-sql-database-using-the-dtu-based-purchasing-model-show-up-on-my-bill"></a>Jak jest użycie bazy danych SQL przy użyciu model kupna jednostek dtu w warstwie wyświetlany na mojego rachunku?
+Na podstawie bazy danych SQL rachunków na przewidywalną, godzinową szybkość [zakupu modelu](sql-database-service-tiers.md). Rzeczywistego użycia jest obliczana i proporcjonalnie co godzinę, więc rachunku mogą być wyświetlane ułamków godzinę. Na przykład jeśli baza danych istnieje na 12 godzin w miesiącu, rachunku pokazuje użycie 0,5 dni. 
 
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Co zrobić, jeśli pojedynczej bazy danych jest aktywna na mniej niż godzinę lub używa wyższego poziomu usług mniej niż godzinę?
 Opłaty są naliczane dla każdej godziny przy użyciu najwyższej warstwy usług istnieje baza danych + poziom wydajności, która zastosowana podczas tej godziny, niezależnie od użycia i czy baza danych była active przez mniej niż godzinę. Po utworzeniu pojedynczej bazy danych i usunąć go pięciu minut rachunku odzwierciedla opłat godzinę jedną bazę danych. 
@@ -44,58 +126,51 @@ Przykłady:
 * Jeśli uaktualnienie bazy danych z Basic do Premium na 10:00 w dniu i zakończeniu uaktualniania 1:35 o godzinie następnego dnia są naliczane szybkością Premium, rozpoczynając od godziny 1:00 
 * Jeśli starszą wersję bazy danych w warstwie Premium podstawowy o 11:00 wykonuje na 2:15:00, a następnie bazy danych jest rozliczana według szybkości Premium do 3:00 w dniu, po upływie którego jest rozliczana stawkami podstawowe.
 
-## <a name="how-does-elastic-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool"></a>Jak jest użycie puli elastycznej wyświetlany na mojego rachunku i co się stanie po zmianie jednostek Edtu na pulę?
-Puli elastycznej opłat Pokaż na rachunku jako elastycznej Dtu (Edtu) w przyrostach wyświetlany w obszarze jednostek Edtu na pulę na [stronie cen](https://azure.microsoft.com/pricing/details/sql-database/). Jest bezpłatna dla bazy danych dla puli elastycznej. Opłaty są naliczane dla każdej godziny puli istnieje w najwyższym liczbę jednostek eDTU, niezależnie od użycia i czy pula było aktywne przez mniej niż godzinę. 
+## <a name="how-does-elastic-pool-usage-using-the-dtu-based-purchasing-model-show-up-on-my-bill"></a>Jak jest użycie puli elastycznej za pomocą model kupna jednostek dtu w warstwie wyświetlany na mojego rachunku?
+Pula elastyczna opłaty Pokaż się na rachunku jako elastycznej Dtu (Edtu) lub vCores plus magazynu z przyrostem wyświetlany na [stronie cen](https://azure.microsoft.com/pricing/details/sql-database/). Jest bezpłatna dla bazy danych dla puli elastycznej. Opłaty są naliczane dla każdej godziny puli istnieje w najwyższym eDTU lub vCores, niezależnie od użycia i czy pula było aktywne przez mniej niż godzinę. 
 
-Przykłady:
+Na podstawie jednostek dtu w warstwie: zakupów przykłady modelu:
 
 * Po utworzeniu standardowej puli elastycznej z 200 Edtu o godzinie 11:18 Dodawanie pięć baz danych do puli, naliczane są opłaty dla 200 Edtu całego godzinę od o godzinie 11 do końca dnia.
 * W dniu 2, 5 o godzinie: 05 1 bazy danych rozpocznie korzystanie z 50 jednostek Edtu i przechowuje stałej za pośrednictwem dnia. Bazy danych 2-5 zmieniają się między 0 a Edtu 80. W ciągu dnia można dodać pięć innych baz danych używających różnych jednostek Edtu w ciągu dnia. Dzień 2 jest pełny dzień rozliczane według 200 eDTU. 
 * W dniu 3, 5 o godzinie Możesz dodać inny 15 baz danych. W ciągu dnia do punktu, gdzie chcesz zwiększyć jednostek Edtu puli 200 400 8 o godzinie: 05 powoduje zwiększenie użycia bazy danych Opłaty na poziomie 200 eDTU były obowiązywać do 20: 00 i zwiększa do 400 jednostek Edtu dla pozostałych czterech godzin. 
 
-## <a name="elastic-pool-billing-and-pricing-information"></a>Informacje o cenach i rozliczeniami puli elastycznej
+## <a name="how-are-elastic-pool-billed-for-the-dtu-based-purchasing-model"></a>Jak są rozliczane na podstawie DTU puli elastycznej zakupu modelu?
 Elastyczne pule są rozliczane według następującej charakterystyce:
 
 * Pula elastyczna jest on rozliczany po jego utworzeniu, nawet jeśli nie ma baz danych w puli.
 * Pula elastyczna jest rozliczane co godzinę. Jest to taką samą częstotliwością pomiarów, podobnie jak w przypadku poziomy wydajności pojedynczej bazy danych.
-* Jeśli rozmiar puli elastycznej jest dopasowywany do nowej liczby jednostek Edtu, następnie puli jest nie rozliczane zgodnie z nowego liczbę jednostek Edtu przed zakończeniem operacji zmiany rozmiaru. Wynika z tego samego wzorca podczas zmieniania poziomu wydajności pojedynczej bazy danych.
-* Cena puli elastycznej opiera się na liczbę jednostek Edtu puli. Cena puli elastycznej zależy od liczby i wykorzystania elastycznych baz danych w niej.
-* Cena jest obliczana przez (liczba jednostek Edtu puli) x (cena jednostki na eDTU).
+* Jeśli zmieniono rozmiar puli elastycznej, następnie puli jest nie rozliczane zgodnie z nowego ilość zasobów przed zakończeniem operacji zmiany rozmiaru. Wynika z tego samego wzorca podczas zmieniania poziomu wydajności pojedynczej bazy danych.
+* Cena puli elastycznej jest oparta na puli zasobów. Cena puli elastycznej zależy od liczby i wykorzystania elastycznych baz danych w niej.
 
-Cenie jednostkowej eDTU dla elastycznej puli jest wyższa niż cena jednostki DTU dla pojedynczej bazy danych w tej samej warstwie usług. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+Aby uzyskać więcej informacji, zobacz [SQL Database — cennik](https://azure.microsoft.com/pricing/details/sql-database/) i [warstw usług](sql-database-service-tiers.md).
 
-Aby poznać warstwy jednostek Edtu i usług, zobacz [opcje bazy danych SQL i wydajność](sql-database-service-tiers.md).
+## <a name="how-does-the-vcore-based-usage-show-up-in-my-bill"></a>Jak jest użycie na podstawie vCore wyświetlany w mojego rachunku? 
+W modelu na podstawie vCore usługi jest on rozliczany na przewidywalną, godzinową stawkę oparte na warstwie usługi elastycznie obliczeń w vCores, zainicjowaniu obsługi magazynu w GB/miesiąc i używane magazynu kopii zapasowej. Jeśli magazyn kopii zapasowych przekracza rozmiar całkowitą bazy danych (czyli 100% rozmiaru bazy danych), dostępne są dodatkowe opłaty. vCore godzin, magazyn baz danych skonfigurowanych wykorzystanych We/Wy i magazynu kopii zapasowej są wyraźnie wymienione w zestawieniu, ułatwiając szczegóły zasoby, które zostały użyte. Kopia zapasowa magazynu do 100% maksymalny rozmiar bazy danych jest dołączony, po której są rozliczane w GB/miesiąc używane w ciągu miesiąca.
+
+Na przykład:
+- Jeśli istnieje baza danych SQL na 12 godzin w miesiącu, BOM pokazuje użycie 12 godzin vCore. Jeśli baza danych SQL udostępnione dodatkowe 100 GB pamięci masowej, BOM pokazuje magazynu użycie w jednostkach GB/miesiąc proporcjonalnie co godzinę i liczby operacji We-Wy używane w ciągu miesiąca.
+- Jeśli baza danych SQL jest aktywna na mniej niż 1 godzinę, są rozliczane co godzinę, który istnieje w bazie danych przy użyciu najwyższej warstwy usług, zaznaczona, udostępnione magazynu i we/wy, która zastosowana podczas tej godziny, niezależnie od użycia i czy baza danych była aktywna dla mniej godziny.
+- Jeśli utworzysz wystąpienie zarządzane i usuniesz je 5 minut później, opłata zostanie naliczona za jedną godzinę korzystania z bazy danych.
+- Jeśli utworzysz wystąpienie zarządzane w warstwie Przeznaczenie ogólne z ośmioma rdzeniami wirtualnymi, a następnie od razu zmodernizujesz je do 16 rdzeni wirtualnych, opłata za pierwszą godzinę zostanie naliczona na podstawie stawki za 16 rdzeni wirtualnych.
+
+> [!NOTE]
+> Przez ograniczony czas za pośrednictwem 2018 30 czerwca obciążenia kopii zapasowej i obciążeń We/Wy są bezpłatnie.
 
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Jak jest użycie aktywna replikacja geograficzna w będą wyświetlane puli elastycznej na mojego rachunku?
-W przeciwieństwie do pojedynczych baz danych przy użyciu [aktywna replikacja geograficzna](sql-database-geo-replication-overview.md) z elastycznych baz danych nie ma to bezpośredni wpływ rozliczeń.  Naliczane są tylko opłaty dla Edtu udostępnione dla poszczególnych pul (puli głównej i dodatkowej puli)
+W przeciwieństwie do pojedynczych baz danych przy użyciu [aktywna replikacja geograficzna](sql-database-geo-replication-overview.md) z elastycznych baz danych nie ma to bezpośredni wpływ rozliczeń.  Naliczane są tylko opłaty za zasoby obsługi administracyjnej dla poszczególnych pul (puli głównej i dodatkowej puli)
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>W jaki sposób funkcja inspekcji będzie obciążać mój rachunek?
-Inspekcja jest wbudowana w usłudze SQL Database bez dodatkowych kosztów i jest dostępny dla baz danych Basic, Standard i Premium. Jednak do przechowywania dzienników inspekcji, używa funkcji inspekcji konta usługi Azure Storage oraz szybkości dla tabel i kolejek w usłudze Azure Storage są stosowane na podstawie rozmiaru dziennika inspekcji.
+Inspekcja jest wbudowana w usłudze SQL Database bez dodatkowych kosztów i jest dostępny na wszystkich warstwach usług. Jednak do przechowywania dzienników inspekcji, używa funkcji inspekcji konta usługi Azure Storage oraz szybkości dla tabel i kolejek w usłudze Azure Storage są stosowane na podstawie rozmiaru dziennika inspekcji.
 
-## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>Jak znaleźć usługowy warstwę i poziom wydajności dla pojedynczych baz danych i pul elastycznych?
-Dostępne są narzędzia kilka: 
+## <a name="how-do-i-reset-the-password-for-the-server-admin"></a>Jak zresetować hasła administratora serwera?
+W [portalu Azure](https://portal.azure.com), kliknij przycisk **serwerów SQL**, wybierz serwer z listy, a następnie kliknij przycisk **Resetuj hasło**.
 
-* Dla lokalnych baz danych, użyj [advisor zmiany rozmiaru jednostek dtu w warstwie](http://dtucalculator.azurewebsites.net/) zaleca baz danych i Dtu wymagane i ocena wielu baz danych dla puli elastycznej.
-* Jeśli pojedynczej bazy danych będzie korzystać z w puli, inteligentnego aparatu Azure zaleca puli elastycznej, jeśli wzorzec historycznych danych użycia, która go. Zobacz [monitorowanie i zarządzanie nimi puli elastycznej z portalu Azure](sql-database-elastic-pool-manage-portal.md). Aby uzyskać więcej informacji o sposobie wykonać obliczenia samodzielnie, zobacz [zagadnienia dotyczące cen i wydajności dla elastycznej puli](sql-database-elastic-pool.md)
-* Aby sprawdzić, czy chcesz wybrać pojedynczej bazy danych w górę lub w dół, zobacz [wytyczne dotyczące wydajności dla pojedynczej bazy danych](sql-database-performance-guidance.md).
+## <a name="how-do-i-manage-databases-and-logins"></a>Jak zarządzać baz danych i logowania
+Zobacz [Zarządzanie bazami danych i logowaniami](sql-database-manage-logins.md).
 
-## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database"></a>Jak często można zmienić poziomu warstwy lub wydajności usług pojedynczej bazy danych?
-Jak często ma można zmienić warstwy usług (między podstawowa, standardowa i Premium) lub poziom wydajności w ramach warstwy usług (na przykład S1 S2). Dla wcześniejszych wersji baz danych można zmienić poziomu warstwy lub wydajności usług łącznie cztery razy w okresie 24 godzin.
-
-## <a name="how-often-can-i-adjust-the-edtus-per-pool"></a>Jak często można dostosować jednostek Edtu na pulę?
-Tyle razy, ile ma.
-
-## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak długo trwa zmiana poziomu warstwy lub wydajności usług pojedynczej bazy danych lub przenieść bazę danych i elastycznej puli?
-Zmiana warstwy usługi bazy danych i przenoszenia i puli wymaga bazy danych ma zostać skopiowany na platformie jako operacji w tle. Zmiana warstwy usług może zająć od kilku minut do kilku godzin w zależności od rozmiaru bazy danych. W obu przypadkach podczas przenoszenia baz danych pozostają online i dostępne. Aby uzyskać więcej informacji na temat zmieniania pojedynczych baz danych, zobacz [zmienić warstwy usługi bazy danych](sql-database-service-tiers.md). 
-
-## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Kiedy należy używać pojedynczej bazy danych, a elastycznych baz danych?
-Ogólnie rzecz biorąc, elastyczne pule są przeznaczone dla typowe [oprogramowanie jako usługa (SaaS) aplikacji wzorzec](sql-database-design-patterns-multi-tenancy-saas-applications.md), gdy istnieje jedną bazę danych na dzierżawcy lub klienta. Kupowanie poszczególnych baz danych i przydzielanie dla każdej z nich nadmiernej ilości zasobów pod kątem zmiennego i szczytowego zapotrzebowania często nie jest ekonomiczne. Pule Zarządzanie łączną wydajność puli i baz danych górę i w dół Skalowanie automatyczne. Inteligentnego aparatu platformy Azure zaleca puli baz danych, gdy użycie wzorca gwarantuje on. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące puli elastycznej](sql-database-elastic-pool.md).
-
-## <a name="what-does-it-mean-to-have-up-to-200-of-your-maximum-provisioned-database-storage-for-backup-storage"></a>Co oznacza dostępność do 200% maksymalnej aktywnej pojemności bazy danych na potrzeby kopii zapasowych?
-Magazyn kopii zapasowych jest magazynem skojarzonym z kopii zapasowych automatycznych bazy danych, które są używane do [punkt-w — czas-przywracania](sql-database-recovery-using-backups.md#point-in-time-restore) i [geograficzne](sql-database-recovery-using-backups.md#geo-restore). Usługa Microsoft Azure SQL Database oferuje do 200% maksymalnej pojemności aktywnego magazynu bazy danych na potrzeby kopii zapasowych bez dodatkowych kosztów. Na przykład jeśli wystąpienie standardowe bazy danych o rozmiarze DB elastycznie 250 GB, są dostarczane z 500 GB magazynu kopii zapasowej bez dodatkowych opłat. Jeśli bazy danych przekroczy udostępnionego magazynu kopii zapasowych, możesz skrócić okres przechowywania, kontaktując się z pomocą techniczną platformy Azure lub zapłacić za dodatkowe kopii zapasowych magazynu rozliczane według stawki standardowej dostęp do odczytu geograficznie magazynu geograficznie nadmiarowego (RA-GRS). Aby uzyskać więcej informacji dotyczących rozliczeń RA-GRS Zobacz szczegóły cennika magazynu.
-
-## <a name="im-moving-from-webbusiness-to-the-new-service-tiers-what-do-i-need-to-know"></a>Przeprowadzam z sieci Web/firmy, aby nowe warstwy usług, co należy wiedzieć?
-Azure baz danych SQL w sieci Web i Business teraz zostały wycofane. Warstwy Basic, Standard, a Premium i elastyczna Zastąp Ustępujący baz danych w sieci Web i Business. 
+## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Jak utworzyć się, że tylko autoryzowani adresy IP mogą uzyskać dostęp do serwera?
+Zobacz [porady: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md).
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>Co to jest opóźnienie replikacji oczekiwanego podczas replikowania geograficznie bazy danych między dwóch regionach w ramach tej samej lokalizacji geograficznej Azure?
 Firma Microsoft są obecnie obsługiwane RPO pięciu sekund i opóźnienie replikacji została mniejszej niż że gdy dodatkowej geograficzna jest obsługiwana na platformie Azure zalecane sparowanego regionu i w tej samej warstwie usługi.

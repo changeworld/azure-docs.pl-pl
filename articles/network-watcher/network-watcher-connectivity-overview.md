@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do platformy Azure połączenia obserwator Rozwiązywanie problemów z | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera przegląd możliwości rozwiązywania problemów połączenia obserwator sieci"
+title: Wprowadzenie do platformy Azure połączenia obserwator Rozwiązywanie problemów z | Dokumentacja firmy Microsoft
+description: Ta strona zawiera przegląd możliwości rozwiązywania problemów połączenia obserwator sieci
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: f8825af71620722065c03a28c93e113876c5aa71
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0268c7e54aa82df12243f98fd72de836fbc82070
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Wprowadzenie do połączenia Rozwiązywanie problemów w obserwatora sieciowego Azure
 
 Rozwiązywanie problemów z połączenie funkcji obserwatora sieciowego umożliwia bezpośrednie połączenie TCP z maszyny wirtualnej z maszyną wirtualną (VM), pełną nazwę domeny (FQDN), identyfikator URI, lub adres IPv4. Scenariusze sieci są skomplikowane, są implementowane przy użyciu grup zabezpieczeń sieci, zapór, trasy zdefiniowane przez użytkownika i zasobów udostępnianych przez platformę Azure. Złożonych konfiguracji należy trudne Rozwiązywanie problemów z łącznością. Obserwatora sieciowego pozwala skrócić czas, aby znaleźć i wykrywania problemów z łącznością. Wyniki zwrócone zapewniają wgląd w informacje czy problemem z łącznością przyczyną jest to platforma lub problem z konfiguracją użytkownika. Można sprawdzić łączności z [PowerShell](network-watcher-connectivity-powershell.md), [interfejsu wiersza polecenia Azure](network-watcher-connectivity-cli.md), i [interfejsu API REST](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączenia wymaga rozszerzenia maszyny wirtualnej `AzureNetworkWatcherExtension`. Instalowanie rozszerzenia na maszynie Wirtualnej systemu Windows można znaleźć [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md) i dla maszyny Wirtualnej systemu Linux, odwiedź [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Linux](../virtual-machines/linux/extensions-nwa.md).
+> Rozwiązywanie problemów z połączenia wymaga, aby rozwiązać z maszyny Wirtualnej miało `AzureNetworkWatcherExtension` zainstalowane rozszerzenia maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej systemu Windows można znaleźć [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny Wirtualnej systemu Linux, odwiedź [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
 
 ## <a name="response"></a>Odpowiedź
 

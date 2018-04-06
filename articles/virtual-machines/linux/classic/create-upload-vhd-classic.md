@@ -1,10 +1,10 @@
 ---
 title: Tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: "Tworzenie i przekazywanie Azure wirtualnego dysku twardego (VHD) z systemem operacyjnym Linux przy użyciu klasycznego modelu wdrożenia"
+description: Tworzenie i przekazywanie Azure wirtualnego dysku twardego (VHD) z systemem operacyjnym Linux przy użyciu klasycznego modelu wdrożenia
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
-ms.openlocfilehash: 49cf4f1718e4dce1e86aa3c8921eaa8af5f16192
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 1ba568eeaf3bbc3d786cc48e54404aa65a00fecc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Tworzenie i przekazywanie wirtualnego dysku twardego zawierającego system operacyjny Linux
 > [!IMPORTANT] 
@@ -32,7 +32,7 @@ W tym artykule opisano tworzenie i przekazywanie wirtualnego dysku twardego (VHD
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule przyjęto założenie, że masz następujące elementy:
 
-* **Linux zainstalowanego systemu operacyjnego w pliku VHD** — zainstalowano [dystrybucji zatwierdzone na platformie Azure Linux](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (lub zobacz [informacje dotyczące niezatwierdzonych dystrybucji](../create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) do wirtualnego dysku w formacie VHD. Istnieje wiele narzędzi do tworzenia maszyny Wirtualnej i wirtualnego dysku twardego:
+* **Linux zainstalowanego systemu operacyjnego w pliku VHD** — zainstalowano [dystrybucji zatwierdzone na platformie Azure Linux](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (lub zobacz [informacje dotyczące niezatwierdzonych dystrybucji](../create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) do dysku wirtualnego w Format wirtualnego dysku twardego. Istnieje wiele narzędzi do tworzenia maszyny Wirtualnej i wirtualnego dysku twardego:
   * Instalowanie i konfigurowanie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) lub [KVM](http://www.linux-kvm.org/page/RunningKVM), zwracając szczególną uwagę na w formacie VHD obrazu. W razie potrzeby można [Konwertuj obraz](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) przy użyciu `qemu-img convert`.
   * Można także użyć funkcji Hyper-V [w systemie Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) lub [w systemie Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -59,7 +59,7 @@ Azure obsługuje różne dystrybucje systemu Linux (zobacz [dystrybucje zatwierd
 > 
 > 
 
-Zobacz też  **[informacje o instalacji systemu Linux](../create-upload-generic.md#general-linux-installation-notes)**  bardziej ogólne porady dotyczące przygotowywania obrazów systemu Linux na platformie Azure.
+Zobacz też **[informacje o instalacji systemu Linux](../create-upload-generic.md#general-linux-installation-notes)** bardziej ogólne porady dotyczące przygotowywania obrazów systemu Linux na platformie Azure.
 
 <a id="connect"> </a>
 

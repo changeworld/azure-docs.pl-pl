@@ -1,13 +1,13 @@
 ---
-title: "Monitorowanie bazy danych HBase w usłudze Operations Management Suite (OMS) - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Za pomocą pakietu OMS Analiza dzienników Azure do monitorowania klastrów HDInsight HBase."
+title: Monitorowanie bazy danych HBase z Azure Log Analytics — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: Analiza dzienników Azure umożliwia monitorowanie klastrów HDInsight HBase.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: f78d570cfa8b040cd7673a5e14e6a992511f60bb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3746713cdadff0a4c6f4fe25d278e8d78555f9d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-hbase-with-operations-management-suite-oms"></a>Monitor HBase w usłudze Operations Management Suite (OMS)
+# <a name="monitor-hbase-with-log-analytics"></a>Monitor HBase z analizy dzienników
 
 HDInsight HBase monitorowanie używa usługi Analiza dzienników Azure na potrzeby zbierania miar wydajności bazy danych HDInsight HBase z węzłów klastra usługi HDInsight. Monitor oferuje wizualizacje specyficzne dla bazy danych HBase i pulpity nawigacyjne, narzędzia do wyszukiwania metryki i możliwość tworzenia niestandardowych reguł monitorowania i alertów. Można monitorować metryki dla wielu klastrów HDInsight HBase przez wiele subskrypcji Azure.
 
-Analiza dzienników jest usługą [Operations Management Suite (OMS)](../../operations-management-suite/operations-management-suite-overview.md) który monitoruje chmury i lokalnych środowiskach utrzymywać ich dostępności i wydajności. Analiza dzienników zbiera dane generowane przez zasobów w swoich środowiskach w chmurze i lokalnie i z innych narzędzi monitorowania, w celu zapewnienia analizy całej wielu źródeł.
+Analiza dzienników jest usługą [Azure](../../operations-management-suite/operations-management-suite-overview.md) który monitoruje chmury i lokalnych środowiskach utrzymywać ich dostępności i wydajności. Analiza dzienników zbiera dane generowane przez zasobów w swoich środowiskach w chmurze i lokalnie i z innych narzędzi monitorowania, w celu zapewnienia analizy całej wielu źródeł.
 
-[Rozwiązania do zarządzania analizy dziennika](../../log-analytics/log-analytics-add-solutions.md) Dodawanie funkcji do OMS, zapewniając dodatkowe dane i narzędzia do analizy. Rozwiązania do zarządzania analizy dziennika są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki dla określonego obszaru. Rozwiązanie może również zdefiniować nowe typy rekordów mają być zbierane i można analizować te rekordy dziennika wyszukiwania lub nowe funkcje interfejsu użytkownika.
+[Rozwiązania do zarządzania analizy dziennika](../../log-analytics/log-analytics-add-solutions.md) Dodawanie funkcji do analizy dzienników, zapewniając dodatkowe dane i narzędzia do analizy. Rozwiązania do zarządzania analizy dziennika są Kolekcja reguł nabycia logiki, wizualizacji i danych zawierających metryki dla określonego obszaru. Rozwiązanie może również zdefiniować nowe typy rekordów mają być zbierane i można analizować te rekordy dziennika wyszukiwania lub nowe funkcje interfejsu użytkownika.
 
 [Szczegółowe informacje o & Analytics](https://azure.microsoft.com/pricing/details/insight-analytics/) jest zbudowany na platformie analizy dzienników. Można korzystać z funkcji analizy dzienników i płacić za GB pozyskanych w ramach usługi lub przełącznika obszaru roboczego do warstwy szczegółowe informacje o & Analytics i należy zwrócić na węzeł zarządzane przez usługę. Szczegółowe informacje o & Analytics zapewnia jest nadzbiorem możliwości oferowane przez analizy dzienników. To rozwiązanie monitorowanie bazy danych HBase jest dostępna z analizy dzienników lub szczegółowe informacje o & Analytics.
 
-Podczas obsługi administracyjnej rozwiązanie monitorowania HBase HDInsight, tworzysz obszarem roboczym pakietu OMS. Każdy obszar roboczy jako unikatowy środowiska analizy dzienników z własnych danych repozytorium, źródła danych i rozwiązania. Możesz utworzyć wiele obszarów roboczych w ramach subskrypcji do obsługi wielu środowiskach, na przykład produkcyjnym i testowania.
+Podczas obsługi administracyjnej rozwiązanie monitorowania HBase HDInsight tworzenia obszaru roboczego analizy dzienników. Każdy obszar roboczy jako unikatowy środowiska analizy dzienników z własnych danych repozytorium, źródła danych i rozwiązania. Możesz utworzyć wiele obszarów roboczych w ramach subskrypcji do obsługi wielu środowiskach, na przykład produkcyjnym i testowania.
 
 ## <a name="provision-hdinsight-hbase-monitoring"></a>Provision HDInsight HBase monitorowania
 
@@ -50,7 +50,7 @@ Podczas obsługi administracyjnej rozwiązanie monitorowania HBase HDInsight, tw
 
     ![Okienko rozwiązań do zarządzania](./media/apache-hbase-monitor-with-oms/hbase-solution.png)  
 6. W okienku rozwiązania zarządzania, przejrzyj informacje na temat rozwiązania do zarządzania, a następnie wybierz **Utwórz**. 
-7. W *Nazwa rozwiązania zarządzania* okienku, wybierz istniejący obszar roboczy do skojarzenia z rozwiązaniem do zarządzania lub Utwórz nowy obszar roboczy OMS, a następnie wybierz go.
+7. W *Nazwa rozwiązania zarządzania* okienku, wybierz istniejący obszar roboczy do skojarzenia z rozwiązaniem do zarządzania lub Utwórz nowy obszar roboczy analizy dzienników, a następnie wybierz go.
 8. Zmień ustawienia obszaru roboczego dla subskrypcji platformy Azure, grupy zasobów i lokalizacji, zależnie od potrzeb. 
     ![obszar roboczy rozwiązania](./media/apache-hbase-monitor-with-oms/solution-workspace.png)  
 9. Wybierz pozycję **Utwórz**.  
@@ -68,9 +68,9 @@ Podczas obsługi administracyjnej rozwiązanie monitorowania HBase HDInsight, tw
 
 Do korzystania z narzędzi dostarczanych przez monitorowanie HBase HDInsight, należy skonfigurować klaster, tak aby transmitowane metryki z jego serwera regionu, węzłów głównych i węzły dozorcy do analizy dzienników. Ta konfiguracja jest implementowana przez uruchomienie akcji skryptu przed klastra HDInsight HBase.
 
-### <a name="get-oms-workspace-id-and-workspace-key"></a>Uzyskaj identyfikator obszaru roboczego OMS i klucz obszaru roboczego
+### <a name="get-log-analytics-workspace-id-and-workspace-key"></a>Uzyskaj identyfikator obszaru roboczego analizy dzienników i klucz obszaru roboczego
 
-Należy OMS identyfikator i klucz obszaru roboczego umożliwiające węzłów w klastrze do uwierzytelniania za pomocą analizy dzienników. Aby wyświetlić te wartości:
+Należy dziennika analizy identyfikator i klucz obszaru roboczego umożliwiające węzłów w klastrze do uwierzytelniania za pomocą analizy dzienników. Aby wyświetlić te wartości:
 
 1. Wybierz omówienie z Twojej bazy danych HBase monitorowania okienku w portalu Azure.
 
@@ -146,5 +146,5 @@ Po ukończeniu działania skryptu, powinny pojawić się dane w rozwiązaniu mon
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Tworzenie alertów w OMS analizy dzienników](../../log-analytics/log-analytics-alerts-creating.md)
+* [Tworzenie alertów w analizy dzienników](../../log-analytics/log-analytics-alerts-creating.md)
 * [Wyszukiwanie danych z dziennika wyszukiwania w Azure Log Analytics](../../log-analytics/log-analytics-log-searches.md).

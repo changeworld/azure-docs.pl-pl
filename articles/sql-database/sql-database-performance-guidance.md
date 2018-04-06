@@ -1,6 +1,6 @@
 ---
-title: "Dostosowywanie wskazówki dotyczące wydajności bazy danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o używaniu zalecenia, aby zwiększyć wydajność przeszukiwania bazy danych SQL Azure."
+title: Dostosowywanie wskazówki dotyczące wydajności bazy danych SQL Azure | Dokumentacja firmy Microsoft
+description: Informacje o używaniu zalecenia, aby zwiększyć wydajność przeszukiwania bazy danych SQL Azure.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 63a8b9f8c81ad3dc122bf25d8a06cdf242a0f35b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 89575f94e95c5ae378d95220d63c162e53158069
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Dostrajanie wydajności w bazie danych SQL Azure
 
@@ -39,8 +39,8 @@ Baza danych SQL Azure oferuje cztery [warstw usług](sql-database-service-tiers.
   * **Masz bazę danych z jednego użytkownika**. Aplikacje, które zwykle kojarzenie jednego użytkownika z bazy danych nie mają wysokie wymagania współbieżności i wydajności. Te aplikacje nadają się do warstwy usług podstawowa.
 * **Standardowe**: standardowy warstwy usług oferuje lepszą wydajność przewidywalności i zapewnia dobrą wydajność dla baz danych, które mają wiele współbieżnych żądań, takich jak aplikacje sieci web i grupy roboczej. Po wybraniu warstwy standardowa usługa bazy danych można rozmiar bazy danych aplikacji w oparciu przewidywalną wydajność, minute w ciągu minuty.
   * **Baza danych zawiera wiele równoczesnych żądań**. Aplikacje, które usługi więcej niż jeden użytkownik naraz zwykle muszą wyższego poziomu wydajności. Na przykład aplikacje grupy roboczej lub sieci web, które muszą niski średnia we/wy ruchu wymagania dotyczące obsługi wielu równoczesnych zapytań nadaje się do warstwy standardowych usług.
-* **Premium**: warstwę Premium oferuje przewidywalną wydajność, drugi na drugi, dla każdej bazy danych — warstwa Premium. Po wybraniu warstwy usług Premium można rozmiar bazy danych aplikacji w oparciu obciążenia szczytowego dla tej bazy danych. Plan usuwa przypadków w wydajności, które wariancję może spowodować małych zapytań do trwać dłużej, niż oczekiwano w operacjach wrażliwy na opóźnienia. Ten model może bardzo uprościć cykli weryfikacji rozwoju i produktu dla aplikacji, które należy podjąć, silne oświadczenia dotyczące szczytowego zapotrzebowania na zasoby, odchylenie wydajności lub opóźnienia zapytania. Większość przypadków użycia warstwy Premium usługi ma co najmniej jeden z tych właściwości:
-  * **Obciążenia szczytowego wysokiej**. Aplikacja, która wymaga znacznej procesora CPU, pamięć lub wejścia/wyjścia (We/Wy) do ukończenia operacji wymaga poziomu dedykowanego, wysokiej wydajności. Na przykład znane użycie kilku rdzeni Procesora przez dłuższy czas operacji bazy danych jest kandydatem do warstwy Premium usługi.
+* **Premium**: warstwę Premium oferuje przewidywalną wydajność, sekundy na sekundę dla każdego Premium lub biznesowe krytyczne (wersja zapoznawcza) bazy danych. Po wybraniu warstwy usług Premium można rozmiar bazy danych aplikacji w oparciu obciążenia szczytowego dla tej bazy danych. Plan usuwa przypadków w wydajności, które wariancję może spowodować małych zapytań do trwać dłużej, niż oczekiwano w operacjach wrażliwy na opóźnienia. Ten model może bardzo uprościć cykli weryfikacji rozwoju i produktu dla aplikacji, które należy podjąć, silne oświadczenia dotyczące szczytowego zapotrzebowania na zasoby, odchylenie wydajności lub opóźnienia zapytania. Większość przypadków użycia warstwy Premium usługi ma co najmniej jeden z tych właściwości:
+  * **Obciążenia szczytowego wysokiej**. Aplikacja, która wymaga znacznej procesora CPU, pamięć lub wejścia/wyjścia (IO) do ukończenia operacji wymaga poziomu dedykowanego, wysokiej wydajności. Na przykład znane użycie kilku rdzeni Procesora przez dłuższy czas operacji bazy danych jest kandydatem do warstwy Premium usługi.
   * **Wiele równoczesnych żądań**. Niektóre aplikacje bazy danych usługi dużo współbieżnych żądań, na przykład gdy obsługująca witryny sieci Web, która ma duże natężenie ruchu. Podstawowa i standardowa warstwy usług Ogranicz liczbę równoczesnych żądań dla jednej bazy danych. Aplikacje, które wymagają więcej połączeń należy wybrać rozmiar rezerwacji odpowiednie do obsługi maksymalną liczbę żądań potrzebne.
   * **Małe opóźnienia**. Niektóre aplikacje wymagają do zagwarantowania minimalnego czasu odpowiedzi z bazy danych. Jeśli określone procedury składowanej jest wywoływana w ramach szerszych operacji klienta, może być wymagane są zwracane z tego wywołania w milisekundach nie więcej niż 20 99 procent czasu. Aplikacje tego typu korzysta z warstwę Premium, aby upewnić się, że wymagane mocy obliczeniowej jest dostępny.
 
@@ -134,7 +134,7 @@ Po jego utworzeniu tej samej instrukcji SELECT wybiera innego planu, który uży
 
 ![Planu zapytania z indeksami poprawiony](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Wiedzę klucza jest bardziej ograniczony niż maszyny dedykowanego serwera wydajność We/Wy systemu udostępnionego, zwykłych. Na minimalizując niepotrzebnych operacji We/Wy przeprowadzać maksymalną systemu w DTU poziomu wydajności poszczególnych warstwach usług bazy danych SQL Azure jest premium. Odpowiednie fizyczna baza danych projektu opcji może znacznie zwiększyć czas oczekiwania dla poszczególnych zapytań, poprawienia przepływności równoczesnych żądań obsługi na jednostkę skalowania i zminimalizować koszty, wymaganych do spełnienia zapytania. Aby uzyskać więcej informacji o indeksie Brak widoków DMV, zobacz [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Wiedzę klucza jest bardziej ograniczony niż maszyny dedykowanego serwera pojemności We/Wy systemu udostępnionego, zwykłych. Na minimalizując niepotrzebnych we/wy przeprowadzać maksymalną systemu w DTU poziomu wydajności poszczególnych warstwach usług bazy danych SQL Azure jest premium. Odpowiednie fizyczna baza danych projektu opcji może znacznie zwiększyć czas oczekiwania dla poszczególnych zapytań, poprawienia przepływności równoczesnych żądań obsługi na jednostkę skalowania i zminimalizować koszty, wymaganych do spełnienia zapytania. Aby uzyskać więcej informacji o indeksie Brak widoków DMV, zobacz [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Dostrajanie zapytania i zalecanych
 Optymalizator zapytań w bazie danych SQL Azure jest podobny do tradycyjnych Optymalizator zapytań programu SQL Server. Większość najlepsze rozwiązania dotyczące dostrajania zapytania i zrozumienie uzasadnienie modelu ograniczenia dotyczące Optymalizator zapytań mają zastosowanie również do bazy danych SQL Azure. Jeśli dostroić kwerendy w bazie danych SQL Azure, można otrzymać dodatkowe korzyści, zmniejszenie zapotrzebowania na zasoby agregacji. Aplikację można uruchomić niższe koszty niż niewyregulowanym równoważną, ponieważ można uruchomić na niższym poziomie wydajności.

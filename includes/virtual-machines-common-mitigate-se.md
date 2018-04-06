@@ -5,16 +5,16 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 6ad9c365894feed61fa4f55d442194d1cf996889
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 81357bce92bb8bd2f77f7aaabc8e3b1d49047a1b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
-**Dokument ostatniej aktualizacji**: 2 kwietnia 10:00 AM PST.
+**Dokument ostatniej aktualizacji**: 3 kwietnia 3:00 PM PST.
 
 Ostatnie ujawnienie [nowa klasa luk w zabezpieczeniach Procesora](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) znany jako rozważana wykonywania ataków kanału po stronie spowodowało pytania, korzystając z wyszukiwania jasności więcej klientów.  
 
@@ -25,7 +25,7 @@ Ponadto Azure rozszerza się użycie [pamięci, zachowując konserwacji](https:/
 > [!NOTE] 
 > W późne 2018 lutego, Intel Corporation opublikowane zaktualizowane [wskazówki poprawki mikrokodu](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stan ich wersje mikrokodu, które poprawić stabilność i ograniczyć ostatnie luk w zabezpieczeniach ujawnione przez [Projektu Google Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Środki zaradcze wprowadzone przez Azure [3 stycznia 2018](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/) nie dotyczy aktualizacji mikrokodu firmy Intel. Microsoft już wprowadzić Silne środki zaradcze ochrony klientów platformy Azure z innych maszyn wirtualnych platformy Azure.  
 >
-> Mikrokodu firmy Intel adresów variant 2 Spectre ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)) do ochrony przed atakami, które mogłyby tylko odpowiednie realizującym obciążeń udostępnionego lub niezaufanych wewnątrz maszyn wirtualnych na platformie Azure. Nasze inżynierów testowania stabilności, aby zminimalizować wpływ na wydajność mikrokodu, przed udostępnieniem jej klientów platformy Azure.  Bardzo kilku klientów Uruchom niezaufanych obciążeń w ramach ich maszyn wirtualnych, większość klientów nie będzie konieczne włączenie tej możliwości wydawane raz. 
+> Mikrokodu firmy Intel adresów variant 2 Spectre ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) lub gałęzi docelowej iniekcji) ochronę przed atakami, które mogłyby tylko odpowiednie realizującym obciążeń udostępnionego lub niezaufanych wewnątrz maszyn wirtualnych na platformie Azure. Nasze inżynierów testowania stabilności, aby zminimalizować wpływ na wydajność mikrokodu, przed udostępnieniem jej klientów platformy Azure.  Bardzo kilku klientów Uruchom niezaufanych obciążeń w ramach ich maszyn wirtualnych, większość klientów nie będzie konieczne włączenie tej możliwości wydawane raz. 
 >
 > Ta strona zostanie zaktualizowany, jako informacje są dostępne.  
 
@@ -64,7 +64,7 @@ Uruchomić kod z niezaufanej nie jest potrzebne nie działanie dodatkowe klienta
 
 
 ### <a name="windows"></a>Windows 
-Jeśli jesteś przy użyciu systemu Windows i obsługujący kodzie niezaufanym, należy również włączyć funkcję Windows polu Przesłanianie wirtualnych adresów jądra (KVA), co zapewnia dodatkową ochronę przed rozważana wykonywania kanału po stronie luk (w szczególności variant 3 meltdown [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754)). Ta funkcja jest domyślnie wyłączona i może wpłynąć na wydajność, jeśli jest włączona. Postępuj zgodnie z [systemu Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) instrukcje dotyczące włączania ochrony na serwerze. Jeśli korzystasz z usług Azure Cloud Services, sprawdź, czy korzystasz z WA-GOŚCIA-systemu operacyjnego — 5.15_201801-01 lub WA-GOŚCIA — systemu operacyjnego — 4.50_201801-01 (dostępne począwszy od na 10 stycznia 2018) i Włącz rejestru klucza za pomocą zadania uruchamiania.
+Jeśli używasz systemu Windows i obsługujący kodzie niezaufanym, należy również włączyć funkcję Windows polu Przesłanianie wirtualnych adresów jądra (KVA), co zapewnia dodatkową ochronę przed lukami kanału po stronie rozważana wykonywania (specjalnie z myślą o Wariant 3 Meltdown, [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754), lub ładowania pamięci podręcznej danych nieautoryzowanych). Ta funkcja jest domyślnie wyłączona i może wpłynąć na wydajność, jeśli jest włączona. Postępuj zgodnie z [systemu Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) instrukcje dotyczące włączania ochrony na serwerze. Jeśli korzystasz z usług Azure Cloud Services, sprawdź, czy korzystasz z WA-GOŚCIA-systemu operacyjnego — 5.15_201801-01 lub WA-GOŚCIA — systemu operacyjnego — 4.50_201801-01 (dostępne począwszy od na 10 stycznia 2018) i Włącz rejestru klucza za pomocą zadania uruchamiania.
 
 
 ### <a name="linux"></a>Linux
@@ -72,6 +72,6 @@ Jeśli korzysta z systemu Linux i hosting kodzie niezaufanym, należy również 
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej, zobacz [Zabezpieczanie klientów systemu Azure z usterka Procesora](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/).

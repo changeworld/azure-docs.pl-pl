@@ -1,19 +1,20 @@
 ---
-title: "Praca awaryjna grupy i aktywna replikacja geograficzna — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Użyj trybu failover automatycznie grup z aktywna replikacja geograficzna i Włącz autoomatic trybu failover w przypadku awarii."
+title: Praca awaryjna grupy i aktywna replikacja geograficzna — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Użyj trybu failover automatycznie grup z aktywna replikacja geograficzna i Włącz autoomatic trybu failover w przypadku awarii.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 45ddc4070e2162715eefab21841d75f1fa2a29e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: d241bfb6245eb5a70f1e4fcedc86c969766019f4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Omówienie: Grup trybu Failover i aktywna replikacja geograficzna
 Aktywna replikacja geograficzna można skonfigurować maksymalnie cztery czytelny dodatkowej bazy danych w centrach danych tego samego lub innego (regiony). Pomocniczych baz danych dostępnych do wykonywania zapytań i pracy awaryjnej w przypadku awarii centrum danych lub brakiem możliwości nawiązania połączenia podstawowej bazy danych. Tryb failover musi być inicjowana ręcznie przez użytkownika aplikacji. Po przejściu w tryb failover nową podstawową ma końcowego innego połączenia. 
@@ -69,7 +70,7 @@ Aktywna replikacja geograficzna udostępnia następujące podstawowe możliwośc
    >
 
 * **Obsługa elastycznej puli baz danych**: aktywna replikacja geograficzna można skonfigurować dla dowolnej bazy danych w każdej puli elastycznej. Dodatkowej bazy danych może być w innej puli elastycznej. W przypadku regularnego baz danych pomocniczej można elastycznej puli i na odwrót tak długo, jak warstwy usług są takie same. 
-* **Poziom wydajności można skonfigurować bazy danych w dodatkowej**: podstawowe i pomocnicze bazy danych są musi być w tej samej warstwie usług (Basic, Standard i Premium). Można utworzyć pomocniczą bazę danych z mniejszą wydajnością (Dtu) niż podstawowy. Ta opcja nie jest zalecana dla aplikacji z działania zapisu bazy danych wysokiej ponieważ opóźnienie replikacji zwiększona zwiększa ryzyko utraty danych znacznej po przejściu w tryb failover. Ponadto po pracy awaryjnej wydajności aplikacji jest w pełni funkcjonalne dopiero po uaktualnieniu nową podstawową na wyższy poziom wydajności. Wykres procent we/wy dziennika w portalu Azure zapewnia dobry sposób, aby oszacować poziom wydajności minimalnej dodatkowej, która jest wymagana do obsługi obciążenia replikacji. Na przykład, jeśli P6 jest podstawową bazą danych (1000 DTU) i procent we/wy dziennika to 50% lokacji dodatkowej musi mieć co najmniej P4 (500 DTU). Można również pobierać dane we/wy dziennika przy użyciu [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych widoków.  Aby uzyskać więcej informacji na temat poziomów wydajności bazy danych SQL, zobacz [opcje bazy danych SQL i wydajność](sql-database-service-tiers.md). 
+* **Poziom wydajności można skonfigurować bazy danych w dodatkowej**: podstawowych i pomocniczych baz danych muszą mieć tej samej warstwie usługi. Można utworzyć pomocniczą bazę danych z mniejszą wydajnością (Dtu) niż podstawowy. Ta opcja nie jest zalecana dla aplikacji z działania zapisu bazy danych wysokiej ponieważ opóźnienie replikacji zwiększona zwiększa ryzyko utraty danych znacznej po przejściu w tryb failover. Ponadto po pracy awaryjnej wydajności aplikacji jest w pełni funkcjonalne dopiero po uaktualnieniu nową podstawową na wyższy poziom wydajności. Wykres procent we/wy dziennika w portalu Azure zapewnia dobry sposób, aby oszacować poziom wydajności minimalnej dodatkowej, która jest wymagana do obsługi obciążenia replikacji. Na przykład, jeśli P6 jest podstawową bazą danych (1000 DTU) i procent we/wy dziennika to 50% lokacji dodatkowej musi mieć co najmniej P4 (500 DTU). Można również pobierać dane we/wy dziennika przy użyciu [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych widoków.  Aby uzyskać więcej informacji na temat poziomów wydajności bazy danych SQL, zobacz [co to są warstwach usług bazy danych SQL](sql-database-service-tiers.md). 
 * **Kontrolowane przez użytkownika trybu failover i powrotu po awarii**: pomocniczej bazy danych można jawnie przełącza się na podstawową rolą w dowolnym momencie przez użytkownika lub aplikacji. Podczas rzeczywista awaria opcji "nieplanowane" należy, która wspiera natychmiast pomocniczego się serwerem podstawowym. Kiedy nie powiodło się podstawowym odzyskuje i jest ponownie dostępny, system automatycznie oznacza odzyskane podstawowej jako dodatkowej i przełączyć go, instalując nową podstawową. Ze względu na specyfikę asynchroniczne replikacji niewielką ilość danych mogą zostać utracone podczas niezaplanowanych operacji Failover Jeśli podstawowy ulegnie awarii, przed rozpoczęciem replikacji najnowszych zmian na serwerze pomocniczym. W przypadku awarii podstawowego przy użyciu wielu pomocnicze bazy danych za pośrednictwem systemu automatycznie ponownie konfiguruje relacji replikacji i łączy pozostałe serwery do nowo utworzonego podstawowych bez interwencji użytkownika. Po awarii, który spowodował przejście w tryb failover jest niewielkie, może być pożądane, aby powrócić do aplikacji w regionie podstawowym. W tym celu polecenia pracy awaryjnej powinna być wywoływana z opcją "planowane". 
 * **Synchronizacja poświadczeń i jego reguły zapory**: Firma Microsoft zaleca używanie [bazy danych reguły zapory](sql-database-firewall-configure.md) replikacją geograficzną baz danych, więc te reguły mogą być replikowane z bazy danych, aby zapewnić wszystkie pomocnicze bazy danych tym samym reguły zapory jako podstawowy. Takie podejście eliminuje potrzebę stosowania klientów ręcznie konfigurowania i konserwacji reguły zapory na serwerach hostujących zarówno podstawowych i pomocniczych baz danych. Podobnie za pomocą [zawarte bazy danych użytkowników](sql-database-manage-logins.md) danych dostęp zapewnia podstawowe i pomocnicze bazy danych zawsze mieć taki sam poświadczenia użytkownika, dlatego podczas pracy w trybie failover nie przerwom z powodu niezgodności z logowania i hasła. Z dodatkiem [usługi Azure Active Directory](../active-directory/active-directory-whatis.md), klientów można zarządzać dostępem użytkowników do podstawowych i pomocniczych baz danych i wyeliminowanie konieczności zarządzania całkowicie poświadczeń w bazach danych.
 
@@ -186,9 +187,9 @@ Zgodnie z opisem wcześniej, pracy awaryjnej automatycznie grupy (w — wersja z
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać przykładowe skrypty Zobacz:
-   - [Konfigurowanie i pracy awaryjnej pojedynczej bazy danych przy użyciu aktywna replikacja geograficzna](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-   - [Konfigurowanie i pracy awaryjnej puli bazy danych przy użyciu aktywna replikacja geograficzna](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-   - [Konfigurowanie i trybu failover, a praca awaryjna grupy dla pojedynczej bazy danych (wersja zapoznawcza)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+   - [Konfigurowanie pojedynczej bazy danych i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+   - [Konfigurowanie bazy danych w puli i wprowadzanie jej w tryb failover przy użyciu funkcji aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+   - [Konfigurowanie grupy trybu failover i wprowadzanie jej w tryb failover dla jednej bazy danych (wersja zapoznawcza)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 * Omówienie ciągłości działalności biznesowej i scenariuszy, zobacz [omówienie ciągłości działalności biznesowej](sql-database-business-continuity.md)
 * Aby dowiedzieć się więcej na temat usługi Azure SQL bazy danych automatycznego tworzenia kopii zapasowych, zobacz [bazy danych SQL automatycznego tworzenia kopii zapasowych](sql-database-automated-backups.md).
 * Aby dowiedzieć się więcej o używaniu kopie zapasowe automatycznego odzyskiwania, zobacz [przywrócić bazę danych z kopii zapasowych inicjowane przez usługę](sql-database-recovery-using-backups.md).

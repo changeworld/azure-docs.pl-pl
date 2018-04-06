@@ -1,11 +1,11 @@
 ---
-title: "Skrypt programu PowerShell, aby wdrożyć klaster HPC systemu Linux | Dokumentacja firmy Microsoft"
-description: "Uruchom skrypt programu PowerShell, aby wdrożyć klaster systemu Linux HPC Pack 2012 R2 w maszynach wirtualnych platformy Azure"
+title: Skrypt programu PowerShell, aby wdrożyć klaster HPC systemu Linux | Dokumentacja firmy Microsoft
+description: Uruchom skrypt programu PowerShell, aby wdrożyć klaster systemu Linux HPC Pack 2012 R2 w maszynach wirtualnych platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 73041960-58d3-4ecf-9540-d7e1a612c467
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 477859db8c884714d9b5140483d300ebfe6c116a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 66affb47190ba0c6fccaae8e8267b310682aee46
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Utwórz Linux, wysokiej wydajności (HPC) klastra przy użyciu skryptu wdrażania HPC Pack IaaS
 Uruchom HPC Pack IaaS wdrożenie skryptu PowerShell do wdrożenia całego klastra HPC Pack 2012 R2 dla systemu Linux obciążeń na maszynach wirtualnych platformy Azure. Klaster składa się z węzłem głównym przyłączonych do usługi Active Directory systemem Windows Server i Microsoft HPC Pack i węzły obliczeniowe, które Uruchom jedno z dystrybucje systemu Linux obsługiwane przez HPC Pack. Jeśli chcesz wdrożyć klaster HPC Pack w obciążeń Azure dla systemu Windows, zobacz [utworzyć klaster HPC systemu Windows przy użyciu skryptu wdrażania HPC Pack IaaS](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

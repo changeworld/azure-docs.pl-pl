@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0bd9786d0c6a6e6ba571c58e7fdc4ad86cc20024
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Pliki konfiguracji w usłudze Azure Machine Learning eksperymenty usługi
 
@@ -190,7 +190,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 
 **TrackedRun**: Ta flaga sygnały usługi eksperymenty umożliwia określenie, czy śledzenie przebiegu w Azure ML Workbench Uruchom infrastruktury historii. Wartość domyślna to _true_. 
 
-**UseSampling**: _UseSampling_ Określa, czy aktywny przykładowych zestawów danych dla źródeł danych są używane do uruchomienia. Jeśli ustawiono _false_, źródła danych pozyskiwania i użyj pełne dane do odczytu z magazynu danych. Jeśli ustawiono _true_, aktywne przykłady są używane. Użytkownicy mogą używać ** DataSourceSettings "Aby określić, które określonych przykładowych zestawów danych do użycia, jeśli chcą, aby zastąpić aktywnej próbce. 
+**UseSampling**: _UseSampling_ Określa, czy aktywny przykładowych zestawów danych dla źródeł danych są używane do uruchomienia. Jeśli ustawiono _false_, źródła danych pozyskiwania i użyj pełne dane do odczytu z magazynu danych. Jeśli ustawiono _true_, aktywne przykłady są używane. Użytkownicy mogą używać **DataSourceSettings** Aby określić, które określonych przykładowych zestawów danych do użycia, jeśli chcą, aby zastąpić aktywnej próbce. 
 
 **DataSourceSettings**: Ta sekcja konfiguracji określa ustawienia źródła danych. W tej sekcji użytkownika określa, które istniejących przykładowych danych dla źródła danych jest używany jako część uruchomienia. 
 

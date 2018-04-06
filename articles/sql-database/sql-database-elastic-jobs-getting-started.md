@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie zadania elastycznej bazy danych | Dokumentacja firmy Microsoft
-description: "Zadania elastycznej bazy danych umożliwia wykonywanie skryptów T-SQL, które obejmują wiele baz danych."
+description: Zadania elastycznej bazy danych umożliwia wykonywanie skryptów T-SQL, które obejmują wiele baz danych.
 services: sql-database
 manager: craigg
 author: stevestein
@@ -9,11 +9,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: sstein
-ms.openlocfilehash: 5d55ae225ca1b550bbf70314e2f48fc0161ad107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 85fd04966822f8dd6a0c3086002e4388411d1051
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Wprowadzenie zadania elastycznej bazy danych
 Baza danych zadania elastyczne (wersja zapoznawcza) w bazie danych SQL Azure umożliwia niezawodnie wykonywanie skryptów T-SQL, obejmującej wiele baz danych podczas Automatyczne ponawianie próby i zapewnienia gwarancji ostatecznego zakończenia. Aby uzyskać więcej informacji na temat funkcji zadania elastycznej bazy danych, zobacz [zadania elastyczne](sql-database-elastic-jobs-overview.md).
@@ -460,7 +460,7 @@ Wszystkie wiersze z **klientów** tabeli, przechowywane w różnych odłamków w
 Możesz teraz użyć funkcji danych programu Excel. Umożliwiają parametry połączenia z nazwą serwera, nazwa bazy danych i poświadczeń nawiązanie narzędzi integracji danych i BI kwerendy elastycznej bazy danych. Upewnij się, czy program SQL Server jest obsługiwana jako źródło danych dla własnych narzędzi. Zobacz kwerendy elastycznej bazy danych i tabele zewnętrzne, podobnie jak wszystkie inne bazy danych programu SQL Server i tabel programu SQL Server, które można połączyć się z narzędziem.
 
 ### <a name="cost"></a>Koszty
-Brak dodatkowe opłaty za pomocą funkcji zapytania elastycznej bazy danych. Jednak w tej chwili ta funkcja jest dostępna tylko w bazach danych premium jako punkt końcowy, ale odłamków może być dowolnym warstwy usługi.
+Brak dodatkowe opłaty za pomocą funkcji zapytania elastycznej bazy danych. Jednak w tej chwili ta funkcja jest dostępna tylko w warstwie Premium i biznesowe krytyczne (wersja zapoznawcza) baz danych i pul elastycznych jako punkt końcowy, ale odłamków może być dowolnym warstwy usługi.
 
 Aby uzyskać informacje o cenach zobacz [szczegóły cennika bazy danych SQL](https://azure.microsoft.com/pricing/details/sql-database/).
 

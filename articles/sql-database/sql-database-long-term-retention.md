@@ -1,161 +1,66 @@
 ---
 title: Przechowywanie kopii zapasowych bazy danych SQL Azure przez maksymalnie 10 lat | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak baza danych SQL Azure obsługuje przechowywania kopii zapasowych maksymalnie 10 lat."
+description: Dowiedz się, jak baza danych SQL Azure obsługuje przechowywania kopii zapasowych pełnej bazy danych do 10 lat.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 2f31e89fce2746e57d6a670aef949d0d534af4c1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Przechowywanie kopii zapasowych bazy danych SQL Azure przez maksymalnie 10 lat
-Wiele aplikacji ma przepisów prawnych, zgodności lub innych firm celów, które wymagają przechowywania kopii zapasowych bazy danych poza 7 35 dni pochodzącymi z bazy danych SQL Azure [automatycznego tworzenia kopii zapasowych](sql-database-automated-backups.md). Za pomocą funkcji długoterminowego przechowywania kopii zapasowych, można przechowywać kopie zapasowe bazy danych SQL w magazynie usług odzyskiwania Azure przez maksymalnie 10 lat. Można przechowywać maksymalnie 1000 baz danych na magazynie. Następnie można wybrać jakiejkolwiek kopii zapasowej w magazynie, aby przywrócić go jako nową bazę danych.
+
+Wiele aplikacji ma przepisów prawnych, zgodności lub innych firm celów, które wymagają przechowywania kopii zapasowych bazy danych poza 7 35 dni pochodzącymi z bazy danych SQL Azure [automatycznego tworzenia kopii zapasowych](sql-database-automated-backups.md). Dzięki funkcji długoterminowego przechowywania (od lewej do prawej), można przechowywać określony SQL pełne kopie zapasowe bazy danych w [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) magazynu obiektów blob do 10 lat. Jakiejkolwiek kopii zapasowej można przywrócić jako nową bazę danych.
 
 > [!IMPORTANT]
-> Długoterminowego przechowywania kopii zapasowych jest obecnie w wersji zapoznawczej i jest dostępna w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, środkowe stany USA, Azja Wschodnia, wschodnie stany USA, wschodnie stany USA 2, Indie środkowe, Indie Południowe, Japonia Wschodnia, Japonia Zachodnia, północno-środkowe stany, Północna Europa, Południowej środkowe stany USA, Azja południowo-wschodnia, Europa Zachodnia i zachodnie stany USA
+> Długoterminowego przechowywania jest obecnie w przeglądzie. Istniejące kopie zapasowe przechowywane w magazynie usługi Azure Recovery Services jako część poprzedniej wersji zapoznawczej tej funkcji są migrowane do magazynu SQL Azure.<!-- and available in the following regions: Australia East, Australia Southeast, Brazil South, Central US, East Asia, East US, East US 2, India Central, India South, Japan East, Japan West, North Central US, North Europe, South Central US, Southeast Asia, West Europe, and West US.-->
 >
 
-> [!NOTE]
-> Maksymalnie 200 baz danych na magazyn można włączyć w 24-godzinnym przedziale czasu. Zalecane jest użycie oddzielnych magazynu dla każdego serwera, aby zminimalizować wpływ ten limit. 
-> 
+## <a name="how-sql-database-long-term-retention-works"></a>Jak działa długoterminowego przechowywania bazy danych SQL
 
-## <a name="how-sql-database-long-term-backup-retention-works"></a>Jak działa długoterminowego przechowywania kopii zapasowych bazy danych SQL
+Wykorzystuje długoterminowego przechowywania kopii zapasowych [automatycznego tworzenia kopii zapasowej bazy danych SQL](sql-database-automated-backups.md) utworzone przyjmuje do chwili przywrócenia (PITR). Można skonfigurować zasady przechowywania długoterminowego dla każdej bazy danych SQL i określ, jak często należy skopiować kopii zapasowych do magazynu długoterminowego. Aby umożliwić tym elastyczność można zdefiniować zasady przy użyciu kombinacji cztery parametry: przechowywania kopii zapasowych co tydzień (W), miesięczne przechowywania kopii zapasowych (M), corocznych przechowywania kopii zapasowych (Y) i tydzień roku (WeekOfYear). Jeśli określisz W, jedna kopia zapasowa co tydzień będą kopiowane do magazynu długoterminowego. Jeśli określisz M jedną kopię zapasową w pierwszym tygodniu każdego miesiąca będą kopiowane do magazynu długoterminowego. Jeśli określisz Y jedną kopię zapasową w tygodniu, określony przez WeekOfYear zostaną skopiowane do magazynu długoterminowego. Każdej kopii zapasowej będą przechowywane w pamięci nieulotnej przez czas określony przez te parametry. 
 
-Z długoterminowego przechowywania kopii zapasowych można skojarzyć serwer bazy danych SQL z magazynu usług odzyskiwania Azure. 
+Przykłady:
 
-* Należy utworzyć magazyn do tej samej subskrypcji platformy Azure, utworzony programu SQL server i w tym samym regionie geograficznym i grupy zasobów. 
-* Następnie skonfiguruj zasady przechowywania dla dowolnej bazy danych. Zasad powoduje, że cotygodniowe kopie zapasowe pełnej bazy danych należy skopiować do magazynu usług odzyskiwania i przechowywane przez okres przechowywania określony (maksymalnie 10 lat). 
-* Następnie można przywrócić bazy danych z dowolnego z tych kopii zapasowych do nowej bazy danych w dowolnego serwera w ramach subskrypcji. Magazynu Azure tworzy kopię na podstawie istniejących kopii zapasowych, a kopia nie ma wpływu wydajności w istniejącej bazie danych.
+-  W=0, M=0, Y=5, WeekOfYear=3
 
-> [!TIP]
-> Aby uzyskać przewodnik, zobacz [Konfigurowanie i przywrócenie z długoterminowego przechowywania kopii zapasowych bazy danych SQL Azure](sql-database-long-term-backup-retention-configure.md).
+   3 pełna kopia zapasowa każdego roku zostaną zachowane dla 5 lat.
 
-## <a name="enable-long-term-backup-retention"></a>Włącz długoterminowego przechowywania kopii zapasowych
+- W=0, M=3, Y=0
 
-Aby skonfigurować długoterminowego przechowywania kopii zapasowych bazy danych:
+   Pierwsza pełna kopia zapasowa każdego miesiąca będą przechowywane przez 3 miesiące.
 
-1. Tworzenie magazynu usług odzyskiwania Azure w tym samym regionie, subskrypcji i grupy zasobów jako serwer bazy danych SQL. 
-2. Zarejestruj serwer w magazynie.
-3. Tworzenie zasad ochrony usług odzyskiwania Azure.
-4. Zastosowanie zasad ochrony do baz danych, które wymagają długoterminowego przechowywania kopii zapasowych.
+- W=12, M=0, Y=0
 
-Konfigurowanie, zarządzanie i przywracanie bazy danych z długoterminowego przechowywania kopii zapasowych automatycznych kopii zapasowych w magazynie usług odzyskiwania Azure, wykonaj jedną z następujących czynności:
+   Każdy co tydzień pełnej kopii zapasowej zostaną zachowane dla 12 tygodni.
 
-* Przy użyciu portalu Azure: kliknij **długoterminowego przechowywania kopii zapasowych**, wybierz bazę danych, a następnie kliknij przycisk **Konfiguruj**. 
+- W = 6, M = 12, Y = 10 WeekOfYear = 16
 
-   ![Wybierz bazę danych do długoterminowego przechowywania kopii zapasowych](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
+   Każdy co tydzień pełnej kopii zapasowej zostaną zachowane dla 6 tygodni. Z wyjątkiem pierwsza pełna kopia zapasowa każdego miesiąca, które będą przechowywane przez 12 miesięcy. Z wyjątkiem pełną kopię zapasową wykonaną w 16 tydzień roku, które będą znajdować się na 10 lat. 
 
-* Przy użyciu programu PowerShell: Przejdź do [Konfigurowanie i przywrócenie z długoterminowego przechowywania kopii zapasowych bazy danych SQL Azure](sql-database-long-term-backup-retention-configure.md).
+W poniższej tabeli przedstawiono okresach i wygaśnięcia długoterminowe kopie zapasowe następujących zasad:
 
-## <a name="restore-a-database-thats-stored-with-the-long-term-backup-retention-feature"></a>Przywracanie bazy danych przechowywanych funkcją długoterminowego przechowywania kopii zapasowych
+W = 12 tygodni (84 dni), M = 12 miesięcy (365 dni), Y = 10 lat (3650 dni), WeekOfYear = 15 (tydzień po 15 kwietnia)
 
-Aby odzyskać z kopii zapasowej długoterminowego przechowywania kopii zapasowych:
+   ![przykład od lewej do prawej](./media/sql-database-long-term-retention/ltr-example.png)
 
-1. Wyświetl listę magazynu, w której jest przechowywana kopia zapasowa.
-2. Lista kontenera, który jest zamapowany z serwerem logicznym.
-3. Lista źródła danych w ramach magazynu, który jest mapowany do bazy danych.
-4. Lista punktów odzyskiwania, które są dostępne do przywrócenia.
-5. Przywracanie bazy danych z punktu odzyskiwania na serwerze docelowym w ramach subskrypcji.
 
-Konfigurowanie, zarządzanie i przywracanie bazy danych z długoterminowego przechowywania kopii zapasowych automatycznych kopii zapasowych w magazynie usług odzyskiwania Azure, wykonaj jedną z następujących czynności:
+ 
+Jeśli można zmodyfikować zasady powyżej i zestawu W = 0 (nie cotygodniowe kopie zapasowe), okresach kopii zapasowych zmieniłby jako przedstawiono w powyższej tabeli dat zaznaczony. W związku z tym ograniczy wielkość pamięci masowej niezbędne, aby zachować te kopie zapasowe. Uwaga: Kopie od lewej do prawej są tworzone przez usługę Azure storage, więc proces kopiowania nie ma wpływu wydajności na istniejącej bazy danych.
+Aby przywrócić bazę danych z magazynu od lewej do prawej, można wybrać określonego oparte na jego sygnatura czasowa kopii zapasowej.   Można przywrócić bazy danych do dowolnego istniejącego serwera w tej samej subskrypcji co oryginalnej bazy danych. 
 
-* Przy użyciu portalu Azure: Przejdź do [Zarządzanie długoterminowego przechowywania kopii zapasowych przy użyciu portalu Azure](sql-database-long-term-backup-retention-configure.md). 
+## <a name="configure-long-term-backup-retention"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych
 
-* Przy użyciu programu PowerShell: Przejdź do [Zarządzanie długoterminowego przechowywania kopii zapasowych przy użyciu programu PowerShell](sql-database-long-term-backup-retention-configure.md).
-
-## <a name="get-pricing-for-long-term-backup-retention"></a>Pobierz ceny dla długoterminowego przechowywania kopii zapasowych
-
-Długoterminowego przechowywania kopii zapasowych bazy danych SQL jest rozliczana zgodnie z [usługi kopii zapasowej Azure cennik stawki](https://azure.microsoft.com/pricing/details/backup/).
-
-Po zarejestrowaniu serwera bazy danych SQL w magazynie są naliczane opłaty za całkowita ilość miejsca, który jest używany przez cotygodniowe kopie zapasowe przechowywane w magazynie.
-
-## <a name="view-available-backups-that-are-stored-in-long-term-backup-retention"></a>Wyświetl dostępne kopie zapasowe, które są przechowywane w długoterminowego przechowywania kopii zapasowych
-
-Konfigurowanie, zarządzanie i przywrócić bazę danych z długoterminowego przechowywania kopii zapasowych automatycznych kopii zapasowych w magazynie usług odzyskiwania Azure przy użyciu portalu Azure, wykonaj jedną z następujących czynności:
-
-* Przy użyciu portalu Azure: Przejdź do [Zarządzanie długoterminowego przechowywania kopii zapasowych przy użyciu portalu Azure](sql-database-long-term-backup-retention-configure.md). 
-
-* Przy użyciu programu PowerShell: Przejdź do [Zarządzanie długoterminowego przechowywania kopii zapasowych przy użyciu programu PowerShell](sql-database-long-term-backup-retention-configure.md).
-
-## <a name="disable-long-term-retention"></a>Wyłącz długoterminowego przechowywania
-
-Usługi odzyskiwania obsługuje automatycznie Oczyszczanie na podstawie zasad podanych przechowywania kopii zapasowych. 
-
-Aby zatrzymać wysyłanie kopii zapasowych dla określonej bazy danych do magazynu, należy usunąć zasady przechowywania dla tej bazy danych.
-  
-```
-Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName 'RG1' -ServerName 'Server1' -DatabaseName 'DB1' -State 'Disabled' -ResourceId $policy.Id
-```
-
-> [!NOTE]
-> Nie dotyczy to kopie zapasowe, które znajdują się już w magazynie. Zostaną one automatycznie usunięte przez usługi odzyskiwania po wygaśnięciu okresu przechowywania.
-
-## <a name="long-term-backup-retention-faq"></a>Długoterminowego przechowywania kopii zapasowych — często zadawane pytania
-
-**Można ręcznie usunąć z określonych kopii zapasowych w magazynie?**
-
-Nie można obecnie. Magazyn automatycznie oczyszcza kopii zapasowych, po zakończeniu okresu przechowywania.
-
-**Można zarejestrować serwer do przechowywania kopii zapasowych do więcej niż jeden Magazyn?**
-
-Nie, w obecnie można przechowywać kopie zapasowe, aby tylko jeden magazyn, w czasie.
-
-**W ramach różnych subskrypcji może mieć magazyn i serwera?**
-
-Nie, obecnie magazyn i serwer musi być w tej samej subskrypcji i grupy zasobów.
-
-**Można użyć magazynu, który został utworzony w regionie, który jest inny niż region Mój serwer?**
-
-Nie, magazynu i serwer muszą być w tym samym regionie, aby zminimalizować czas kopiowania i zapobiec zmianom ruchu.
-
-**Jak wiele baz danych można przechowywać w jednym magazynie?**
-
-Obecnie usługa obsługuje maksymalnie 1000 baz danych na magazynie. 
-
-**Jak wiele magazynów można utworzyć na subskrypcję?**
-
-Możesz utworzyć maksymalnie 25 magazynów dla subskrypcji.
-
-**Jak wiele baz danych można skonfigurować na dzień na magazyn?**
-
-Można skonfigurować 200 bazy danych dziennie na magazynie.
-
-**Długoterminowego przechowywania kopii zapasowych działa z pul elastycznych?**
-
-Tak. Wszystkie bazy danych w puli można skonfigurować za pomocą zasad przechowywania.
-
-**Można wybrać czas, o której została utworzona kopia zapasowa?**
-
-Nie, baza danych SQL określa harmonogram tworzenia kopii zapasowych, aby zminimalizować wpływ na wydajność w bazach danych.
-
-**Masz przezroczystego szyfrowania danych włączone dla bazy danych. Można jej używać w magazynie?** 
-
-Tak, przezroczystego szyfrowania danych jest obsługiwane. Nawet jeśli oryginalnej bazy danych już nie istnieje, można przywrócić bazy danych z magazynu.
-
-**Co się stanie w przypadku kopii zapasowej w magazynie, jeśli Moja subskrypcja jest zawieszona?** 
-
-Jeśli subskrypcja jest zawieszona, możemy zachować istniejące bazy danych i kopii zapasowych. Nowe kopie zapasowe nie są kopiowane do magazynu. Po aktywowaniu subskrypcji usługi wznawia kopiowania do magazynu kopii zapasowych. Magazyn staje się dostępny dla operacji przywracania przy użyciu kopii zapasowych, które zostały skopiowane przed subskrypcji zostało zawieszone. 
-
-**Czy można uzyskać dostępu do plików kopii zapasowej bazy danych SQL, można pobrać lub przywrócić je do programu SQL server?**
-
-Nie, nie jest obecnie.
-
-**Może mieć wielu harmonogramów (codziennie, co tydzień, co miesiąc, co rok) w ramach zasad przechowywania SQL.**
-
-Nie, wielu harmonogramów są obecnie dostępne tylko dla kopii zapasowych maszyn wirtualnych.
-
-**Co zrobić, jeśli skonfigurowanie długoterminowego przechowywania kopii zapasowych w bazie danych, która jest aktywna replikacja geograficzna dodatkowej bazy danych dla?**
-
-Ponieważ firma Microsoft nie wykonuj kopie zapasowe replik, nie ma opcja długoterminowego przechowywania kopii zapasowych z dodatkowej bazy danych. Jednak ważne jest, aby umożliwić użytkownikom konfigurowanie długoterminowego przechowywania kopii zapasowej w pomocniczej bazie danych aktywna replikacja geograficzna z tego względu:
-* Po przejściu w tryb failover wykonywany i baza danych będzie podstawowej bazy danych, możemy zająć pełnej kopii zapasowej, który zostanie przekazany do magazynu.
-* Jest nie żadnymi dodatkowymi kosztami klientowi konfigurowania długoterminowego przechowywania kopii zapasowej w pomocniczej bazie danych.
+Aby dowiedzieć się, jak skonfigurować długoterminowego przechowywania przy użyciu portalu Azure lub programu PowerShell, zobacz [skonfigurować długoterminowego przechowywania kopii zapasowych](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Ponieważ kopie zapasowe bazy danych ochronę danych przed przypadkowym uszkodzenia lub usunięcia, są one integralną część wszelkie ciągłość prowadzenia działalności biznesowej i strategii odzyskiwania po awarii. Aby dowiedzieć się więcej o innych rozwiązań ciągłość prowadzenia działalności biznesowej bazy danych SQL, zobacz [omówienie ciągłości działalności biznesowej](sql-database-business-continuity.md).

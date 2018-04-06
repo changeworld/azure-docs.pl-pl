@@ -1,38 +1,38 @@
 ---
 title: Ograniczenie dostępu do sieci do zasobów PaaS - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ograniczyć i ograniczenie dostępu do sieci do zasobów platformy Azure, takich jak usługi Azure Storage i bazy danych SQL Azure z punktów końcowych usługi sieci wirtualnej przy użyciu wiersza polecenia platformy Azure.
+description: W tym artykule Dowiedz się jak ograniczenia i ograniczenie dostępu do sieci do zasobów platformy Azure, takich jak usługi Azure Storage i bazy danych SQL Azure z punktów końcowych usługi sieci wirtualnej przy użyciu wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 5c0c6a802c931b71f5be8b01c610cf0810b0b4d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f357861a7a44b249e06f091a8693b7f2d8dd5178
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Ograniczenie dostępu do sieci do PaaS zasobów z punktów końcowych usługi sieci wirtualnej przy użyciu wiersza polecenia platformy Azure
 
 Punktów końcowych usługi sieci wirtualnej umożliwiają ograniczenie dostępu do sieci do niektórych zasobów usługi Azure z podsiecią sieci wirtualnej. Można również usunąć dostęp do zasobów Internetu. Punkty końcowe usługi zapewniają bezpośredniego połączenia z Twojej sieci wirtualnej do obsługiwanych usług platformy Azure, co umożliwia wykorzystanie wirtualnej sieci prywatnej przestrzeni adresowej do uzyskiwania dostępu do usług Azure. Ruch kierowany do zasobów platformy Azure za pomocą punktów końcowych usługi zawsze pozostaje w sieci Microsoft Azure w sieci szkieletowej. W tym artykule dowiesz się, jak:
 
-> [!div class="checklist"]
-> * Utwórz sieć wirtualną z jedną podsiecią
-> * Dodaj podsieć i włączyć punkt końcowy usługi
-> * Tworzenie zasobów platformy Azure i zezwolić na dostęp do sieci z go z tylko podsieci
-> * Wdróż maszynę wirtualną (VM) do każdej podsieci
-> * Potwierdź dostęp do zasobu z podsieci
-> * Upewnij się, że odmowa dostępu do zasobu z podsieci i z Internetu
+* Utwórz sieć wirtualną z jedną podsiecią
+* Dodaj podsieć i włączyć punkt końcowy usługi
+* Tworzenie zasobów platformy Azure i zezwolić na dostęp do sieci z go z tylko podsieci
+* Wdróż maszynę wirtualną (VM) do każdej podsieci
+* Potwierdź dostęp do zasobu z podsieci
+* Upewnij się, że odmowa dostępu do zasobu z podsieci i z Internetu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -82,7 +82,7 @@ az network vnet subnet create \
   --service-endpoints Microsoft.Storage
 ```
 
-## <a name="restrict-network-access-to-and-from-subnet"></a>Ograniczenia dostępu do sieci i podsieci
+## <a name="restrict-network-access-for-a-subnet"></a>Ograniczenie dostępu do sieci dla podsieci
 
 Utwórz grupę zabezpieczeń sieci z [utworzyć nsg sieci az](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsgPrivate*.
 
@@ -311,7 +311,7 @@ Utwórz katalog dla punktu instalacji:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Próba instalowanie udziału plików na platformę Azure do katalogu, który został utworzony. W tym samouczku założono, że wdrożone najnowszą wersję Ubuntu. Jeśli korzystasz z wcześniejszymi wersjami systemu Ubuntu, zobacz [zainstalować w systemie Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dodatkowe instrukcje dotyczące instalowania udziałów plików. Przed uruchomieniem następujące polecenie, Zastąp `<storage-account-name>` nazwą konta i `<storage-account-key>` z kluczem pobierana w [Utwórz konto magazynu](#create-a-storage-account):
+Próba instalowanie udziału plików na platformę Azure do katalogu, który został utworzony. W tym artykule przyjęto założenie, że wdrożone najnowszą wersję Ubuntu. Jeśli korzystasz z wcześniejszymi wersjami systemu Ubuntu, zobacz [zainstalować w systemie Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) dodatkowe instrukcje dotyczące instalowania udziałów plików. Przed uruchomieniem następujące polecenie, Zastąp `<storage-account-name>` nazwą konta i `<storage-account-key>` z kluczem pobierana w [Utwórz konto magazynu](#create-a-storage-account):
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -341,9 +341,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku możesz włączyć punkt końcowy usługi dla podsieci sieci wirtualnej. Wiesz, że punkty końcowe usługi można włączyć dla zasobów z wielu usług Azure. Utworzono konto magazynu Azure i ograniczania dostępu do sieci do konta magazynu, aby tylko zasoby w podsieci sieci wirtualnej. Przed utworzeniem punktów końcowych usług w środowisku produkcyjnym sieci wirtualnych, zalecane jest, że należy dokładnie zapoznać się z [punkty końcowe usługi](virtual-network-service-endpoints-overview.md).
+W tym artykule należy włączyć punkt końcowy usługi dla podsieci sieci wirtualnej. Wiesz, że punkty końcowe usługi można włączyć dla zasobów z wielu usług Azure. Utworzono konto magazynu Azure i ograniczania dostępu do sieci do konta magazynu, aby tylko zasoby w podsieci sieci wirtualnej. Aby dowiedzieć się więcej na temat punktów końcowych usług, zobacz [Omówienie punktów końcowych usługi](virtual-network-service-endpoints-overview.md) i [Zarządzanie podsieci](virtual-network-manage-subnet.md).
 
-Jeśli masz wiele sieci wirtualnych w ramach Twojego konta, możesz połączyć ze sobą dwie sieci wirtualne, więc zasoby w każdej sieci wirtualnej mogą komunikować się ze sobą. Przejdź do następnego samouczkiem, aby dowiedzieć się, jak połączyć sieci wirtualnych.
-
-> [!div class="nextstepaction"]
-> [Łączenie sieci wirtualnej](./tutorial-connect-virtual-networks-cli.md)
+Jeśli masz wiele sieci wirtualnych w ramach Twojego konta, możesz połączyć ze sobą dwie sieci wirtualne, więc zasoby w każdej sieci wirtualnej mogą komunikować się ze sobą. Aby dowiedzieć się więcej, zobacz temat [połączyć sieci wirtualnych](tutorial-connect-virtual-networks-cli.md).

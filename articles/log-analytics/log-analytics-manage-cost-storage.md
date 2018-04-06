@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie koszt danych Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zmienić planu cenowego i zarządzania zasadami wolumin i przechowywania danych obszaru roboczego analizy dzienników w portalu Azure.
+description: Dowiedz się, jak zmienić planu cenowego i zarządzania zasadami wolumin i przechowywania danych obszaru roboczego analizy dzienników na platformie Azure.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 629031310eba21bc3308754706bd7ba227009ac6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="manage-cost-by-controlling-data-volume-and-retention-with-your-log-analytics-workspace"></a>Zarządzanie koszt kontrolując ilość danych i przechowywania z obszaru roboczego analizy dzienników
+# <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie koszt kontrolując ilość danych i przechowywania w analizy dzienników
 Analiza dzienników jest przeznaczone do skali i pomocy technicznej zbierania, indeksowanie i przechowywania dużych ilości danych dziennie z dowolnego źródła w przedsiębiorstwie lub wdrożona na platformie Azure.  Może to być podstawowy sterownik dla Twojej organizacji, niskich kosztów jest ostatecznie sterownika. W tym celu jego wziąć pod uwagę, że koszt obszaru roboczego Analytisc dziennika po prostu nie jest oparty na ilość danych zebranych, również jest zależny od plan wybrany, i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
 
 W tym artykule, firma Microsoft analizuje jak aktywnego monitorowania wzrostu wielkości i magazynu danych i zdefiniować limity, aby kontrolować te koszty. 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: 95c11de3a1aed680d37dd86c1783ac8bee7ffec3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 3b37afc9d768313f6cc202eeecca22528cc57b07
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Przygotowywanie do tworzenia kopii zapasowych obciążeń przy użyciu usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -183,7 +183,7 @@ Po zakończeniu procesu wyodrębniania pole wyboru, aby uruchomić świeżo wyod
 2. Na ekranie powitalnym kliknij przycisk **dalej** przycisku. Powoduje to przejście do *wymagań wstępnych sprawdza* sekcji. Na tym ekranie kliknij **Sprawdź** ustalenie, jeśli zostały spełnione wymagania wstępne sprzętu i oprogramowania dla serwera usługi Kopia zapasowa Azure. Jeśli pomyślnie zostały spełnione wszystkie wymagania wstępne, pojawi się komunikat wskazujący, że komputer spełnia wymagania. Polecenie **dalej** przycisku.
 
     ![Sprawdź serwera kopii zapasowej Azure — Zapraszamy i wymagania wstępne](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Serwer kopii zapasowej Microsoft Azure wymaga programu SQL Server Standard, a serwer kopii zapasowej Azure pakiet instalacyjny zawiera powiązane potrzebne odpowiednie pliki binarne programu SQL Server. Przy uruchamianiu nową instalację serwera usługi Kopia zapasowa Azure, należy wybrać opcję **zainstalować nowe wystąpienie programu SQL Server w przypadku takiej konfiguracji** i kliknij przycisk **Sprawdź i zainstaluj** przycisku. Po pomyślnym zainstalowaniu wymagań wstępnych kliknij przycisk **dalej**.
+3. Serwer kopii zapasowej Microsoft Azure wymaga programu SQL Server Standard. Ponadto serwer kopii zapasowej Azure pakiet instalacyjny zawiera powiązane potrzebne, jeśli nie chcesz, aby korzystać z własnych SQL odpowiednie pliki binarne programu SQL Server. Przy uruchamianiu nową instalację serwera usługi Kopia zapasowa Azure, należy wybrać opcję **zainstalować nowe wystąpienie programu SQL Server w przypadku takiej konfiguracji** i kliknij przycisk **Sprawdź i zainstaluj** przycisku. Po pomyślnym zainstalowaniu wymagań wstępnych kliknij przycisk **dalej**.
 
     ![Serwera kopii zapasowej Azure — sprawdzenie programu SQL Server](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 

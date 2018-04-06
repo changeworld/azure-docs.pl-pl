@@ -1,44 +1,44 @@
 ---
-title: "Zbieranie danych w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
+title: Zbieranie danych w Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
 description: " Informacje o włączaniu zbierania danych w Centrum zabezpieczeń Azure. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2018
+ms.date: 04/03/2018
 ms.author: terrylan
-ms.openlocfilehash: d5f2c9960b720fc44f37956f9150e89d6425d154
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 90a73545afa82276256a021588eaa594b95ee8da
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w Centrum zabezpieczeń Azure
-Centrum zabezpieczeń zbiera dane z maszyn wirtualnych platformy Azure (maszyny wirtualne) i komputerów z systemem innym niż Azure monitorowanie luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, która odczytuje różnych konfiguracji związanych z zabezpieczeniami i dzienniki zdarzeń z komputera i kopiuje dane do swojego obszaru roboczego do analizy. Przykłady takich danych to typ systemu operacyjnego i jego wersja, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa maszyny, adresy IP, zalogowany użytkownik i identyfikator dzierżawy. Microsoft Monitoring Agent kopiuje pliki zrzutu awaryjnego do swojego obszaru roboczego.
+Centrum zabezpieczeń zbiera dane z maszyn wirtualnych platformy Azure (maszyny wirtualne) i komputerów z systemem innym niż Azure monitorowanie luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to typ systemu operacyjnego i jego wersja, dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwa maszyny, adresy IP, zalogowany użytkownik i identyfikator dzierżawy. Microsoft Monitoring Agent kopiuje pliki zrzutu awaryjnego do swojego obszaru roboczego.
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Włącz automatyczne Inicjowanie obsługi programu Microsoft Monitoring Agent     
-Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Centrum zabezpieczeń firmy Microsoft Monitoring Agent na wszystkich obsługiwanych maszyn wirtualnych platformy Azure i nowe pliki, które są tworzone. Automatyczne udostępnianie zdecydowanie zaleca się i jest wymagany dla subskrypcji w warstwie standardowa Centrum zabezpieczeń.
+Automatyczne inicjowanie obsługi administracyjnej jest włączona, przepisy Centrum zabezpieczeń firmy Microsoft Monitoring Agent na wszystkich obsługiwanych maszyn wirtualnych platformy Azure i nowe pliki, które są tworzone. Automatyczne udostępnianie zdecydowanie zaleca się, ale ręcznej instalacji agenta jest również dostępna. [Dowiedz się, jak zainstalować rozszerzenie programu Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
-> Wyłączanie automatycznego inicjowania obsługi administracyjnej limitów monitorowania zabezpieczeń dla zasobów. Aby dowiedzieć się więcej, zobacz [Wyłącz automatyczne udostępnianie](security-center-enable-data-collection.md#disable-automatic-provisioning) w tym artykule. Migawki dysków maszyny Wirtualnej i kolekcji artefaktu są włączone, nawet jeśli jest wyłączona, automatyczne udostępnianie.
+> Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów. Aby dowiedzieć się więcej, zobacz [Wyłącz automatyczne udostępnianie](security-center-enable-data-collection.md#disable-automatic-provisioning) w tym artykule. Migawki dysków maszyny Wirtualnej i kolekcji artefaktu są włączone, nawet jeśli jest wyłączona, automatyczne udostępnianie.
 >
 >
 
-Aby włączyć automatyczne Inicjowanie obsługi programu Microsoft Monitoring Agent:
-1. W menu głównym Centrum zabezpieczeń, wybierz **zasady zabezpieczeń**.
+Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
+1. W menu głównym usługi Security Center wybierz pozycję **Zasady zabezpieczeń**.
 2. Wybierz subskrypcję.
-3. W obszarze **zasady zabezpieczeń**, wybierz pozycję **zbierania danych**.
+3. W obszarze **Zasady zabezpieczeń** wybierz pozycję **Zbieranie danych**.
 4. W obszarze **dołączania**, wybierz pozycję **na** Aby włączyć automatyczne udostępnianie.
 5. Wybierz pozycję **Zapisz**.
 
-![Włącz automatyczne Inicjowanie obsługi][1]
+![Włączanie automatycznej aprowizacji][1]
 
 ## <a name="default-workspace-configuration"></a>Domyślna konfiguracja obszaru roboczego
 Dane zebrane przez Centrum zabezpieczeń jest przechowywany w analizy dzienników obszarów roboczych.  Możesz zdecydować się na dane zbierane z maszyn wirtualnych platformy Azure, przechowywane w obszary robocze tworzone przez Centrum zabezpieczeń lub istniejący obszar roboczy utworzony.
@@ -101,7 +101,7 @@ Poniżej przedstawiono pełną podział zabezpieczeń i funkcji AppLocker identy
 | --- | --- |
 | Minimalny | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| Typowe (ustawienie domyślne) | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
+| Wspólne | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -124,7 +124,7 @@ Aby wybrać zasady filtrowania:
 Możesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej z zasobów w dowolnym momencie przez wyłączenie tego ustawienia w zasadach zabezpieczeń. Automatyczne udostępnianie zdecydowanie zalecane jest aby uzyskać alerty zabezpieczeń i zaleceń dotyczących aktualizacji systemu, luk w zabezpieczeniach systemu operacyjnego i programu endpoint protection.
 
 > [!NOTE]
-> Wyłączanie automatycznego inicjowania obsługi administracyjnej nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, w którym zainicjowano agenta.
+> Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta.
 >
 >
 
@@ -132,7 +132,7 @@ Możesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej z zasobó
 
    ![Wyłącz automatyczne udostępnianie][6]
 
-2. Wybierz subskrypcję, która ma zostać Wyłącz automatyczne udostępnianie.
+2. Wybierz subskrypcję, dla której chcesz wyłączyć automatyczną aprowizację.
 3. Na **zasady zabezpieczeń — zbieranie danych** bloku, w obszarze **dołączania** wybierz **poza** do Wyłącz automatyczne udostępnianie.
 4. Wybierz pozycję **Zapisz**.  
 

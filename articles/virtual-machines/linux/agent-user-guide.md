@@ -1,11 +1,11 @@
 ---
-title: "Omówienie agenta maszyny Wirtualnej systemu Linux platformy Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie instalowania i konfigurowania agenta systemu Linux (agenta waagent) do zarządzania na komputerze wirtualnym interakcji z kontrolerem sieci szkieletowej Azure."
+title: Omówienie agenta maszyny Wirtualnej systemu Linux platformy Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie instalowania i konfigurowania agenta systemu Linux (agenta waagent) do zarządzania na komputerze wirtualnym interakcji z kontrolerem sieci szkieletowej Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: be3955c670382af1a2b558e8e7d656ca5a1f353d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Opis i przy użyciu agenta systemu Linux platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -48,7 +48,7 @@ Agent systemu Linux usługi Microsoft Azure (agenta waagent) zarządza systemu L
   
   * Zarządza trasy, aby zwiększyć zgodność z serwerów DHCP platformy
   * Zapewnia stabilność Nazwa interfejsu sieciowego
-* **Jądra**
+* **Kernel**
   
   * Konfiguruje wirtualną architekturę NUMA (Wyłącz dla jądra < 2.6.37)
   * Wykorzystuje entropii funkcji Hyper-V dla /dev/random
@@ -79,11 +79,11 @@ Poniższe systemy zostały przetestowane i są znane, aby pracować z agenta sys
 > 
 
 * CoreOS
-* CentOS 6.3 +
+* CentOS 6.3+
 * Red Hat Enterprise Linux 6.7 +
 * Debian 7.0 +
-* Ubuntu 12.04 +
-* openSUSE 12.3 +
+* Ubuntu 12.04+
+* openSUSE 12.3+
 * SLES 11 Z DODATKIEM SP3 +
 * Oracle Linux 6.4 +
 
@@ -93,9 +93,9 @@ Inne obsługiwane systemy:
 
 Agent systemu Linux jest zależna od niektórych pakietów systemu prawidłowego działania:
 
-* Python 2.6 +
-* Biblioteki OpenSSL 1.0 +
-* OpenSSH 5.3 +
+* Python 2.6+
+* OpenSSL 1.0+
+* OpenSSH 5.3+
 * Narzędzia systemu plików: ulec sfdisk fdisk, mkfs,
 * Narzędzia hasło: chpasswd, sudo
 * Narzędzia do edycji tekstu: mniejszyć, grep
@@ -133,7 +133,7 @@ Zapoznaj się z dokumentacją w [repozytorium agenta systemu Linux platformy Azu
 * demon: uruchomiono agenta waagent jako demon do interakcji z platformą zarządzania. Ten argument zostanie określony do agenta waagent w skrypcie inicjowania agenta waagent.
 * Rozpocznij: uruchomiono agenta waagent jako proces w tle
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 Plik konfiguracji (/ etc/waagent.conf) steruje agenta waagent akcje. Poniżej przedstawiono przykładowy plik konfiguracji:
 
     Provisioning.Enabled=y
@@ -273,19 +273,19 @@ Domyślne: n
 
 Jeśli jest boosted zestawu, szczegółowości dziennika. Agenta Waagent rejestruje /var/log/waagent.log i korzysta z funkcji logrotate systemu w celu obracania dzienników.
 
-**SYSTEM OPERACYJNY. EnableRDMA**  
+**OS.EnableRDMA**  
 Typ: wartość logiczna  
 Domyślne: n
 
 Jeśli ustawiona, agent podejmie próbę instalacji, a następnie załadować sterownik jądra RDMA, zgodna z wersją oprogramowania sprzętowego używanego sprzętu.
 
-**SYSTEM OPERACYJNY. RootDeviceScsiTimeout:**  
+**OS.RootDeviceScsiTimeout:**  
 Typ: liczba całkowita  
 Domyślne: 300
 
 Spowoduje to skonfigurowanie SCSI limit czasu w sekundach na dyskach systemu operacyjnego dysku i danych. Jeśli nie jest ustawiony, systemu, które będą używane wartości domyślne.
 
-**SYSTEM OPERACYJNY. OpensslPath:**  
+**OS.OpensslPath:**  
 Typ: ciąg  
 Domyślnie: Brak
 
@@ -303,7 +303,7 @@ Włącz lub wyłącz automatyczne aktualizowanie stanu celem przetwarzania; Domy
 
 
 
-## <a name="ubuntu-cloud-images"></a>Obrazy Ubuntu chmury
+## <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
 Należy pamiętać, że korzystanie z obrazów chmury Ubuntu [init chmury](https://launchpad.net/ubuntu/+source/cloud-init) do wykonywania wielu zadań konfiguracji, które w przeciwnym razie będą zarządzane przez agenta systemu Linux platformy Azure.  Należy pamiętać, następujące różnice:
 
 * **Provisioning.Enabled** wartość domyślna to "n" na Ubuntu chmury obrazów użyj init chmury do wykonywania zadań inicjowania obsługi administracyjnej.

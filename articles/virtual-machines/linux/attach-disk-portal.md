@@ -1,11 +1,11 @@
 ---
-title: "Dołączenie dysku danych do maszyny Wirtualnej systemu Linux | Dokumentacja firmy Microsoft"
-description: "Użyj portalu można dołączyć danych do nowego lub istniejącego dysku do maszyny Wirtualnej systemu Linux."
+title: Dołączenie dysku danych do maszyny Wirtualnej systemu Linux | Dokumentacja firmy Microsoft
+description: Użyj portalu można dołączyć danych do nowego lub istniejącego dysku do maszyny Wirtualnej systemu Linux.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 1a7c98207a5f19d514a0cd05b66898e7fb725944
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 4acfe53d68db3192c1f6c3c9e5f91b55bd5df7b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączenie dysku danych do maszyny Wirtualnej systemu Linux za pomocą portalu 
 W tym artykule przedstawiono sposób dołączyć istniejących i nowych dysków do maszyny wirtualnej systemu Linux za pośrednictwem portalu Azure. Możesz również [dołączenie dysku danych do maszyny Wirtualnej systemu Windows w portalu Azure](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -73,5 +73,5 @@ Przed dołączeniem dysków do maszyny Wirtualnej, przejrzyj następujące wskaz
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Możesz również [dołączenie dysku danych](add-disk.md) przy użyciu wiersza polecenia platformy Azure.

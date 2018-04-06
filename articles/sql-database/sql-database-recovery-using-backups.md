@@ -1,19 +1,20 @@
 ---
 title: Przywracanie z kopii zapasowej bazy danych Azure SQL | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat punktu w czasie przywracania, która umożliwia przywracanie bazy danych SQL Azure z wcześniejszego punktu w czasie (do 35 dni)."
+description: Więcej informacji na temat punktu w czasie przywracania, która umożliwia przywracanie bazy danych SQL Azure z wcześniejszego punktu w czasie (do 35 dni).
 services: sql-database
-author: CarlRabeler
+author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 02/13/2018
-ms.author: carlrab
-ms.openlocfilehash: d2cc2e44c13750b654e2d6acf39d4f6a80cac98a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL przy użyciu kopii zapasowych bazy danych automatycznych
 Baza danych SQL oferuje następujące opcje bazy danych odzyskiwania przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) i [kopie zapasowe w przechowywania długoterminowego](sql-database-long-term-retention.md). Można przywrócić z kopii zapasowej bazy danych, aby:
@@ -30,7 +31,7 @@ Przywrócona baza danych generuje koszt dodatkowe miejsce do magazynowania w nas
 - Przywracanie P11 — P15 S4 S12 lub P1 — P6 Jeśli maksymalnego rozmiaru bazy danych jest większa niż 500 GB.
 - Przywracanie P1 — P6 do S4 S12 Jeśli maksymalnego rozmiaru bazy danych jest większa niż 250 GB.
 
-Nadmiarowe jest koszt, ponieważ maksymalny rozmiar przywróconej bazy danych jest większa niż ilość miejsca w magazynie uwzględnione na poziomie wydajności i wszelkie dodatkowe miejsce do magazynowania elastycznie powyżej uwzględniona ilość jest bardzo obciążona.  Aby cenach szczegóły dodatkowe miejsce do magazynowania, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/).  Jeśli rzeczywista ilość miejsca jest mniejsza niż ilość miejsca w magazynie uwzględnione, następnie z żadnymi dodatkowymi kosztami można tego uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględniona ilość. Aby uzyskać więcej informacji dotyczących rozmiaru magazynu bazy danych i zmiana maksymalnego rozmiaru bazy danych, zobacz [pojedyncze bazy danych zasobów limity](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
+Nadmiarowe jest koszt, ponieważ maksymalny rozmiar przywróconej bazy danych jest większa niż ilość miejsca w magazynie uwzględnione na poziomie wydajności i wszelkie dodatkowe miejsce do magazynowania elastycznie powyżej uwzględniona ilość jest bardzo obciążona.  Aby cenach szczegóły dodatkowe miejsce do magazynowania, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/).  Jeśli rzeczywista ilość miejsca jest mniejsza niż ilość miejsca w magazynie uwzględnione, następnie z żadnymi dodatkowymi kosztami można tego uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględniona ilość. Aby uzyskać więcej informacji dotyczących rozmiaru magazynu bazy danych i zmiana maksymalnego rozmiaru bazy danych, zobacz [pojedyncze bazy danych zasobów na podstawie jednostek dtu w warstwie limity](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels) i [pojedyncze bazy danych zasobów na podstawie vCore limity](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
 
 > [!NOTE]
 > [Automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) są używane podczas tworzenia [kopiowanie bazy danych](sql-database-copy.md). 
@@ -117,7 +118,7 @@ Geograficzne jest domyślną opcją odzyskiwania, gdy baza danych jest niedostę
 W momencie przywracania na dodatkowej geograficzna nie jest obecnie obsługiwane. W momencie przywracania jest możliwe tylko dla podstawowej bazy danych. Aby uzyskać szczegółowe informacje o korzystaniu z przywracaniem geograficznym odzyskiwania po awarii, zobacz [odzyskiwanie po awarii](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Odzyskiwanie z kopii zapasowych jest najbardziej podstawowa rozwiązań odzyskiwania po awarii dostępne w bazie danych SQL z celem najdłuższym punktu odzyskiwania (RPO) i szacowania czasu odzyskiwania (Wstaw). Rozwiązania z wykorzystaniem podstawowych baz danych geograficzne jest często rozsądne rozwiązanie odzyskiwania po awarii z Wstaw 12 godzin. Dla rozwiązania z wykorzystaniem większych standardowa lub Premium baz danych, które wymagają krótsze czasy odzyskiwania, należy rozważyć użycie [aktywna replikacja geograficzna](sql-database-geo-replication-overview.md). Aktywna replikacja geograficzna oferuje znacznie niższe RPO i Wstaw jako wystarczy Inicjuj tryb failover do dodatkowej stale zreplikowane. Aby uzyskać więcej informacji dotyczących opcji ciągłości biznesowej, zobacz [omówienie ciągłości działalności biznesowej](sql-database-business-continuity.md).
+> Odzyskiwanie z kopii zapasowych jest najbardziej podstawowa rozwiązań odzyskiwania po awarii dostępne w bazie danych SQL z celem najdłuższym punktu odzyskiwania (RPO) i szacowania czasu odzyskiwania (Wstaw). Rozwiązania z wykorzystaniem mały rozmiar baz danych, (np. podstawowej usługi warstwy lub mały rozmiar baz danych w pule elastyczne dzierżawy) geograficzne jest często rozsądne rozwiązanie odzyskiwania po awarii z Wstaw 12 godzin. Rozwiązania przy użyciu dużych baz danych i wymagają odzyskiwania krótszy czas, należy rozważyć użycie [trybu Failover grup i aktywna replikacja geograficzna](sql-database-geo-replication-overview.md). Aktywna replikacja geograficzna oferuje znacznie niższe RPO i Wstaw jako wystarczy Inicjuj tryb failover do dodatkowej stale zreplikowane. Aby uzyskać więcej informacji dotyczących opcji ciągłości biznesowej, zobacz [omówienie ciągłości działalności biznesowej](sql-database-business-continuity.md).
 > 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -149,6 +150,5 @@ Automatyczne kopie zapasowe chronić baz danych użytkownika i błędy aplikacji
 ## <a name="next-steps"></a>Kolejne kroki
 * Omówienie ciągłości działalności biznesowej i scenariuszy, zobacz [omówienie ciągłości działalności biznesowej](sql-database-business-continuity.md).
 * Aby dowiedzieć się więcej na temat usługi Azure SQL bazy danych automatycznego tworzenia kopii zapasowych, zobacz [bazy danych SQL automatycznego tworzenia kopii zapasowych](sql-database-automated-backups.md).
-* Aby uzyskać informacje dotyczące długoterminowego przechowywania kopii zapasowych, zobacz [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md).
-* Do konfigurowania, zarządzania i przywrócenie z długoterminowego przechowywania automatycznego tworzenia kopii zapasowych w magazynie usług odzyskiwania Azure przy użyciu portalu Azure, zobacz [Konfigurowanie i używanie długoterminowej kopii zapasowej przechowywania](sql-database-long-term-backup-retention-configure.md). 
+* Aby uzyskać informacje dotyczące długoterminowego przechowywania, zobacz [przechowywania długoterminowego](sql-database-long-term-retention.md).
 * Informacje na temat opcji odzyskiwania szybsze, zobacz [trybu Failover grupy i aktywna replikacja geograficzna](sql-database-geo-replication-overview.md).  

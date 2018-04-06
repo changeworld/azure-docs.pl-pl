@@ -1,12 +1,12 @@
 ---
-title: "Grupuje ważności dla usługi Office 365 w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować wygaśnięcia dla grup usługi Office 365 w usłudze Azure Active Directory"
+title: Grupuje ważności dla usługi Office 365 w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak skonfigurować wygaśnięcia dla grup usługi Office 365 w usłudze Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 95593eaacd73316ab527ffda8f977fbf0eb15558
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: aa8551db8c3982fa61b3d4731a8aac3e2832f1b1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Skonfiguruj zasady wygasania dla grup usługi Office 365
 
@@ -66,7 +66,7 @@ Powiadomienia e-mail, taką jak są wysyłane do właścicieli grupy usługi Off
 
 ![Powiadomienia e-mail o wygaśnięciu](./media/active-directory-groups-lifecycle-azure-portal/expiration-notification.png)
 
-Z **grupy odnawiania** powiadomienia e-mail właścicieli grupy może bezpośrednio szczegóły hegroup dostępu t strony panelu dostępu. Użytkownicy mogą uzyskać więcej informacji na temat grupy, takie jak jej opis, po jego został ostatnio odnowiony, datę wygaśnięcia, a także możliwość odnowić grupy. Strona szczegółów grupy teraz także linki do zasobów grupy usługi Office 365, tak aby właściciel grupy może wyświetlania zawartości i działań ich grupy.
+Z **grupy odnawiania** powiadomienia e-mail grupy Właściciele mogą bezpośrednio uzyskać dostępu do strony szczegółów grupy w panelu dostępu. Użytkownicy mogą uzyskać więcej informacji na temat grupy, takie jak jej opis, po jego został ostatnio odnowiony, datę wygaśnięcia, a także możliwość odnowić grupy. Strona szczegółów grupy teraz także linki do zasobów grupy usługi Office 365, tak aby właściciel grupy może wyświetlania zawartości i działań ich grupy.
 
 Po wygaśnięciu grupy, grupa zostanie usunięta jeden dzień po dacie wygaśnięcia. Powiadomienie e-mail, taką jak są wysyłane do właścicieli grupy usługi Office 365 informująca o wygaśnięciu i kolejne usunięcie ich z grupy usługi Office 365.
 

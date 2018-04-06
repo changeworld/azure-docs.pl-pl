@@ -1,13 +1,13 @@
 ---
-title: "Konfigurowanie monitora wydajności sieci dla usługi Azure ExpressRoute obwodów | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie monitorowania sieci opartej na chmurze dla obwodów Azure ExpressRoute."
+title: Konfigurowanie monitora wydajności sieci dla usługi Azure ExpressRoute obwodów | Dokumentacja firmy Microsoft
+description: Konfigurowanie monitorowania sieci opartej na chmurze dla obwodów Azure ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: ajaycode
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 586d78e29177dd4a627c94cd754c21cc2b6f37d4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute
 
-Monitor wydajności sieci (NPM) jest sieci opartej na chmurze rozwiązanie monitorujące, które monitoruje łączność między wdrożenia chmury Azure i lokalizacje lokalnymi (biurach oddziałów, itp.). NPM wchodzi w skład Microsoft Operations Management Suite (OMS). NPM oferuje rozszerzenie dla usługi ExpressRoute, który umożliwia monitorowanie wydajności sieci za pośrednictwem obwody usługi ExpressRoute, które są skonfigurowane do używania prywatnej komunikacji równorzędnej. Po skonfigurowaniu programu NPM dla usługi ExpressRoute, można wykrywać problemy z siecią do identyfikowania i eliminowania.
+Monitor wydajności sieci (NPM) jest sieci opartej na chmurze rozwiązanie monitorujące, które monitoruje łączność między wdrożenia chmury Azure i lokalizacje lokalnymi (biurach oddziałów, itp.). NPM jest częścią analizy dzienników. NPM oferuje rozszerzenie dla usługi ExpressRoute, który umożliwia monitorowanie wydajności sieci za pośrednictwem obwody usługi ExpressRoute, które są skonfigurowane do używania prywatnej komunikacji równorzędnej. Po skonfigurowaniu programu NPM dla usługi ExpressRoute, można wykrywać problemy z siecią do identyfikowania i eliminowania.
 
 Możesz:
 
@@ -72,11 +72,11 @@ Tworzenie obszaru roboczego w subskrypcji, która ma łącze sieci wirtualnych d
 
 1. W [portalu Azure](https://portal.azure.com), wybierz subskrypcję, która ma sieci wirtualne połączyć za pomocą do obwodu usługi ExpressRoute. Następnie odszukaj na liście usług w **Marketplace** "Monitor wydajności sieci". Powrotu, kliknij, aby otworzyć **monitora wydajności sieci** strony.
 
->[!NOTE]
->Może tworzyć nowy obszar roboczy lub użyj istniejącego obszaru roboczego.  Jeśli chcesz korzystać z istniejącym obszarem roboczym, upewnij się, że obszaru roboczego przeprowadzono migrację do nowego języka zapytań. [Więcej informacji...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
->
+   >[!NOTE]
+   >Może tworzyć nowy obszar roboczy lub użyj istniejącego obszaru roboczego.  Jeśli chcesz korzystać z istniejącym obszarem roboczym, upewnij się, że obszaru roboczego przeprowadzono migrację do nowego języka zapytań. [Więcej informacji...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >
 
-  ![portal](.\media\how-to-npm\3.png)<br><br>
+   ![portal](.\media\how-to-npm\3.png)<br><br>
 2. W dolnej części głównym **monitora wydajności sieci** kliknij przycisk **Utwórz** otworzyć **sieci monitora wydajności — Utwórz nowe rozwiązanie** strony. Kliknij przycisk **obszarem roboczym pakietu OMS — wybierz obszar roboczy** aby otworzyć stronę obszarów roboczych. Kliknij przycisk **+ Utwórz nowy obszar roboczy** aby otworzyć stronę obszaru roboczego.
 3. Na **obszarem roboczym pakietu OMS** wybierz pozycję **Utwórz nowy** i skonfiguruj następujące ustawienia:
 
@@ -86,15 +86,15 @@ Tworzenie obszaru roboczego w subskrypcji, która ma łącze sieci wirtualnych d
   * Lokalizacja — należy wybrać [obsługiwany region](#regions).
   * Warstwy cenowej — wybierz bezpłatna
   
-  >[!NOTE]
-  >Obwód usługi expressroute może być w dowolnym miejscu na świecie i nie musi znajdować się w tym samym regionie co obszaru roboczego.
-  >
+    >[!NOTE]
+    >Obwód usługi expressroute może być w dowolnym miejscu na świecie i nie musi znajdować się w tym samym regionie co obszaru roboczego.
+    >
   
-  ![Obszar roboczy](.\media\how-to-npm\4.png)<br><br>
+    ![Obszar roboczy](.\media\how-to-npm\4.png)<br><br>
 4. Kliknij przycisk **OK** Aby zapisać i wdrożyć ustawienia szablonu. Po weryfikuje szablonu, kliknij przycisk **Utwórz** do wdrożenia w obszarze roboczym.
 5. Po wdrożeniu obszaru roboczego, przejdź do **NetworkMonitoring(name)** utworzony zasób. Sprawdź poprawność ustawień, a następnie kliknij przycisk **rozwiązanie wymaga dodatkowej konfiguracji**.
 
-  ![dodatkowa konfiguracja](.\media\how-to-npm\5.png)
+   ![dodatkowa konfiguracja](.\media\how-to-npm\5.png)
 
 ## <a name="agents"></a>Krok 2: Instalowanie i konfigurowanie agentów
 
@@ -126,9 +126,9 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**.
 3. Na **postanowień licencyjnych** odczytu licencji, a następnie kliknij przycisk **zgadzam się**.
 4. Na **Folder docelowy** , zmienić lub zachować domyślny folder instalacji, a następnie kliknij przycisk **dalej**.
-5. Na **opcje instalacji agenta** strony, użytkownik może Połącz agenta z Analiza dzienników Azure (OMS) lub programu Operations Manager. Lub puste opcji, jeśli chcesz później skonfigurować agenta. Po wprowadzeniu selection(s) Twojego, kliknij przycisk **dalej**.
+5. Na **opcje instalacji agenta** strony, użytkownik może Połącz agenta z usługi Analiza dzienników Azure lub programu Operations Manager. Lub puste opcji, jeśli chcesz później skonfigurować agenta. Po wprowadzeniu selection(s) Twojego, kliknij przycisk **dalej**.
 
-  * Jeśli chcesz połączyć się z **Analiza dzienników Azure (OMS)**, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego** (klucz podstawowy) skopiowane do Notatnika w poprzedniej sekcji. Następnie kliknij przycisk **Dalej**.
+  * Jeśli chcesz połączyć się z **Azure Log Analytics**, Wklej **identyfikator obszaru roboczego** i **klucz obszaru roboczego** (klucz podstawowy) skopiowane do Notatnika w poprzedniej sekcji. Następnie kliknij przycisk **Dalej**.
 
     ![Identyfikator i klucz](.\media\how-to-npm\8.png)
   * Jeśli chcesz połączyć się z **programu Operations Manager**na **Konfiguracja grupy zarządzania** wpisz **Nazwa grupy zarządzania**, **serwera zarządzania** i **Port serwera zarządzania**. Następnie kliknij przycisk **Dalej**.
@@ -139,7 +139,7 @@ Zaleca się zainstalowanie co najmniej dwóch agentów po obu stronach połącze
     ![Konto](.\media\how-to-npm\10.png)
 6. Na **gotowy do instalacji** , przejrzyj wybrane opcje, a następnie kliknij przycisk **zainstalować**.
 7. Na stronie **Konfiguracja została zakończona pomyślnie** kliknij przycisk **Zakończ**.
-8. Po zakończeniu programu Microsoft Monitoring Agent pojawi się w Panelu sterowania. Można przejrzeć konfigurację istnieje i sprawdź, czy agent jest podłączony do Operational Insights (OMS). Podczas połączenia z usługą OMS, agent wyświetla komunikat z informacją: **programu Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
+8. Po zakończeniu programu Microsoft Monitoring Agent pojawi się w Panelu sterowania. Można przejrzeć konfigurację istnieje i sprawdź, czy agent jest podłączony do Analiza dzienników Azure (OMS). Po podłączeniu, agent wyświetla komunikat z informacją: **programu Microsoft Monitoring Agent pomyślnie połączył się z usługą Microsoft Operations Management Suite**.
 
 9. Sprawdź Powtórz te czynności dla każdej sieci Wirtualnej, które powinny być monitorowane.
 
@@ -162,8 +162,8 @@ Można łatwo sprawdzić, czy komunikują się agentów.
 
 1. Na serwerze z agenta monitorowania, należy otworzyć **Panelu sterowania**.
 2. Otwórz **programu Microsoft Monitoring Agent**.
-3. Kliknij przycisk **Analiza dzienników Azure (OMS)** kartę.
-4. W **stan** kolumny, powinny być widoczne czy agent pomyślnie połączony z usługą Operations Management Suite.
+3. Kliknij przycisk **Azure Log Analytics** kartę.
+4. W **stan** kolumny, powinny być widoczne czy agent pomyślnie połączony analizy dzienników.
 
   ![status](.\media\how-to-npm\12.png)
 

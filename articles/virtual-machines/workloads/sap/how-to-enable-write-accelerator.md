@@ -1,13 +1,13 @@
 ---
-title: "Azure zapisu klawisz skrótu dla wdrożenia SAP | Dokumentacja firmy Microsoft"
-description: "Przewodnik obsługi programu SAP HANA systemów, które zostały wdrożone na maszynach wirtualnych Azure."
+title: Azure zapisu klawisz skrótu dla wdrożenia SAP | Dokumentacja firmy Microsoft
+description: Przewodnik obsługi programu SAP HANA systemów, które zostały wdrożone na maszynach wirtualnych Azure.
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: msjuergent
 manager: patfilot
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d1ca15028590824cef95e3e9c2d957f9883a0e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 177bc05eea3aa05231c71a42950fa622b68afc53
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zapisu klawisz skrótu dla wdrożenia SAP
 Azure akceleratora zapisu jest funkcje, które jest pierwsze wprowadzanie dla maszyn wirtualnych, M serii wyłącznie. Accelerator zapisu Azure nie jest dostępna z żadnych innych maszyn wirtualnych serii na platformie Azure, z wyjątkiem serii M. Jako nazwa stany, celem funkcji jest zwiększyć czas oczekiwania operacji We/Wy zapisu w usłudze Azure Premium Storage. 
@@ -28,10 +28,11 @@ Azure akceleratora zapisu jest funkcje, które jest pierwsze wprowadzanie dla ma
 >[!NOTE]
 > W tym momencie akceleratora zapisu Azure znajduje się w publicznej wersji zapoznawczej i wymaga białe listy identyfikator subskrypcji platformy Azure
 
-Funkcje akceleratora zapisu Azure są dostępne jako publicznej wersji zapoznawczej w:
+Funkcja Azure akceleratora zapisu jest dostępna dla wdrażania serii M publicznej wersji zapoznawczej w:
 
 - US2 zachodnie
 - Europa Zachodnia
+- Azja Południowo-Wschodnia
 
 ## <a name="planning-for-using-azure-write-accelerator"></a>Planowanie zastosowania akceleratora zapisu Azure
 Azure akceleratora zapisu powinien być używany dla woluminów, które zawierają dziennika transakcji lub wykonaj ponownie dzienniki systemu DBMS. Nie zaleca się użyć akceleratora zapisu Azure dla woluminów danych z bazami danych. Powód, aby to ograniczenie jest, że akceleratora zapisu Azure wymaga Azure Premium magazynu dysków VHD ma zostać zainstalowany bez dodatkowych buforowania odczytu dostępnej dla usługi Premium Storage. W przypadku tradycyjnych baz danych można zaobserwować większe korzyści z tym typem buforowania. Ponieważ zapisu akceleratora ma wpływ tylko na działania zapisu, a nie przyspiesza odczytów, obsługiwanych projektu dla SAP jest użyj zapisu akceleratora przed dziennika transakcji lub wykonaj ponownie dyski dziennika bazy danych SAP obsługiwane. 

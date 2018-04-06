@@ -1,8 +1,8 @@
 ---
-title: "Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD | Microsoft Docs"
-description: "Publikowanie aplikacji lokalnych do chmury z serwera Proxy aplikacji usługi Azure AD w portalu Azure."
+title: Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD | Microsoft Docs
+description: Publikowanie aplikacji lokalnych do chmury z serwera Proxy aplikacji usługi Azure AD w portalu Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 43cabb03a698dd87f12fef8e9a4dd54ee42c3ec9
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1bf72b450747e98e254db77514fc7a902bbe70cc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikowanie aplikacji przy użyciu serwera proxy aplikacji usługi Azure AD
 
@@ -53,7 +53,7 @@ Wykonaj poniższe kroki publikowania aplikacji przy użyciu serwera Proxy aplika
    - **Wewnętrzny adres URL**: adres URL, który umożliwia dostęp do aplikacji z poziomu sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób można publikować różne Lokacje na tym samym serwerze co różnych aplikacji i nadaj każdej z nich własnej nazwy i reguły dostępu.
 
      > [!TIP]
-     > W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład jeśli aplikacja znajduje się w katalogu https://yourapp/app i korzysta z obrazów znajdujących się w katalogu https://yourapp/media, należy opublikować https://yourapp/ jako ścieżkę. Ten wewnętrzny adres URL nie musi być strony docelowej, które użytkownicy zobaczą. Aby uzyskać więcej informacji, zobacz [ustawić niestandardową stronę główną dla opublikowanych aplikacji](application-proxy-office365-app-launcher.md).
+     > W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład, jeśli Twoja aplikacja znajduje się w https://yourapp/app i przy użyciu obrazów w lokalizacji https://yourapp/media, a następnie należy opublikować https://yourapp/ jako ścieżka. Ten wewnętrzny adres URL nie musi być strony docelowej, które użytkownicy zobaczą. Aby uzyskać więcej informacji, zobacz [ustawić niestandardową stronę główną dla opublikowanych aplikacji](application-proxy-office365-app-launcher.md).
 
    - **Zewnętrzny adres URL**: adres Użytkownicy przechodzą do Aby uzyskać dostęp do aplikacji z spoza sieci. Jeśli nie chcesz użyć domyślnej domeny serwera Proxy aplikacji, przeczytaj o [domen niestandardowych w serwera Proxy aplikacji usługi Azure AD](active-directory-application-proxy-custom-domains.md).
    - **Wstępne uwierzytelnianie**: jak serwer Proxy aplikacji zweryfikuje użytkowników przed udzieleniem im dostępu do aplikacji. 
@@ -61,6 +61,9 @@ Wykonaj poniższe kroki publikowania aplikacji przy użyciu serwera Proxy aplika
      - Azure Active Directory: serwer proxy aplikacji przekierowuje użytkowników, aby zalogowali się w usłudze Azure AD, co umożliwia uwierzytelnienie ich uprawnień do katalogu i aplikacji. Zaleca się pozostawienie tej opcji jako domyślny, tak aby można było korzystać z funkcji zabezpieczeń usługi Azure AD, takich jak dostęp warunkowy i usługa Multi-Factor Authentication.
      - Przekazywanie: Użytkownicy nie mają do uwierzytelniania usługi Azure Active Directory dostępu do aplikacji. Nadal można skonfigurować uwierzytelniania wymogi do wewnętrznej bazy danych.
    - **Łącznik grupy**: łączników przetwarzania zdalnego dostępu do aplikacji i łącznika grup pomocy organizowanie łączniki i aplikacje według obszaru, sieci lub cel. Jeśli nie masz jeszcze utworzony łącznik grupy aplikacji jest przypisany do **domyślne**.
+
+>[!NOTE]
+>Jeśli aplikacja używa protokołu websocket się połączyć, upewnij się, że została zainstalowana wersja łącznika 1.5.612.0 lub nowszej obsługi protokołu websocket i przypisane grupie łącznik używa tylko tych łączników.
 
    ![Konfigurowanie aplikacji](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. Jeśli to konieczne, należy skonfigurować dodatkowe ustawienia. W przypadku większości aplikacji należy zachować te ustawienia w ich domyślne Stany. 

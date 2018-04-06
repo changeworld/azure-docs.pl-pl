@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować MSI w maszynie Wirtualnej platformy Azure przy użyciu programu PowerShell"
-description: "Krok kroku instrukcje dotyczące konfigurowania zarządzane tożsamości usługi (MSI) na maszynie Wirtualnej platformy Azure, przy użyciu programu PowerShell."
+title: Jak skonfigurować MSI w maszynie Wirtualnej platformy Azure przy użyciu programu PowerShell
+description: Krok kroku instrukcje dotyczące konfigurowania zarządzane tożsamości usługi (MSI) na maszynie Wirtualnej platformy Azure, przy użyciu programu PowerShell.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 42c361ac69122d00df290f4c3c2eb2cfeeb9eb47
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 76ea24a658c728aebd15be55cc0c8dfca27f01ec
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurowanie maszyny Wirtualnej zarządzane usługi tożsamości (MSI) przy użyciu programu PowerShell
 
@@ -40,9 +40,9 @@ Aby utworzyć maszynę Wirtualną z włączoną MSI:
 1. Odwołanie do jednego z następujących Quickstarts maszyny Wirtualnej Azure Kończenie tylko niezbędne sekcje ("Logowanie do platformy Azure", "Tworzenie grupy zasobów", "Tworzenie grupy sieci", "Utwórz maszynę Wirtualną"). 
 
    > [!IMPORTANT] 
-   > Po przejściu do sekcji "Tworzenie maszyny Wirtualnej" wprowadzić nieznaczne modyfikację [AzureRmVMConfig nowy](/powershell/module/azurerm.compute/new-azurermvm) składnię poleceń cmdlet. Pamiętaj dodać `-IdentityType "SystemAssigned"` parametr, aby udostępnić maszynę Wirtualną za pomocą Instalatora MSI, na przykład:
+   > Po przejściu do sekcji "Tworzenie maszyny Wirtualnej" wprowadzić nieznaczne modyfikację [AzureRmVMConfig nowy](/powershell/module/azurerm.compute/new-azurermvm) składnię poleceń cmdlet. Pamiętaj dodać `-AssignIdentity "SystemAssigned"` parametr, aby udostępnić maszynę Wirtualną za pomocą Instalatora MSI, na przykład:
    >  
-   > `$vmConfig = New-AzureRmVMConfig -VMName myVM -IdentityType "SystemAssigned" ...`
+   > `$vmConfig = New-AzureRmVMConfig -VMName myVM -AssignIdentity "SystemAssigned" ...`
 
    - [Utwórz maszynę wirtualną z systemem Windows przy użyciu programu PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
    - [Utwórz maszynę wirtualną systemu Linux przy użyciu programu PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
@@ -66,11 +66,11 @@ Jeśli musisz włączyć MSI na już istniejącej maszynie wirtualnej:
    Login-AzureRmAccount
    ```
 
-2. Najpierw pobrać właściwości maszyny Wirtualnej za pomocą `Get-AzureRmVM` polecenia cmdlet. Następnie MSI Użyj, aby włączyć `-IdentityType` Włącz [AzureRmVM aktualizacji](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet:
+2. Najpierw pobrać właściwości maszyny Wirtualnej za pomocą `Get-AzureRmVM` polecenia cmdlet. Następnie MSI Użyj, aby włączyć `-AssignIdentity` Włącz [AzureRmVM aktualizacji](/powershell/module/azurerm.compute/update-azurermvm) polecenia cmdlet:
 
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType "SystemAssigned"
+   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity "SystemAssigned"
    ```
 
 3. Dodawanie przy użyciu rozszerzenia maszyny Wirtualnej MSI `-Type` parametru [AzureRmVMExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmextension) polecenia cmdlet. Można przekazać "ManagedIdentityExtensionForWindows" lub "ManagedIdentityExtensionForLinux", w zależności od typu maszyny wirtualnej i nadaj mu nazwę o `-Name` parametru. `-Settings` Parametr określa port używany przez punkt końcowy tokenu OAuth uzyskania tokenu. Podaj poprawny `-Location` parametru dopasowania lokalizacji istniejącej maszyny wirtualnej:

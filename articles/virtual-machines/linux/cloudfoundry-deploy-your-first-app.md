@@ -1,13 +1,13 @@
 ---
-title: "Wdrażanie pierwszej aplikacji do Foundry chmury w systemie Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Wdrażanie aplikacji Foundry chmurze na platformie Azure"
+title: Wdrażanie pierwszej aplikacji do Foundry chmury w systemie Microsoft Azure | Dokumentacja firmy Microsoft
+description: Wdrażanie aplikacji Foundry chmurze na platformie Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: seanmck
-manager: timlt
-editor: 
-tags: 
-keywords: 
+manager: jeconnoc
+editor: ''
+tags: ''
+keywords: ''
 ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e7b321c9fc8f8568cd8109cea0ae877048d3663
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Wdrażanie pierwszej aplikacji do Foundry chmury w systemie Microsoft Azure
 
@@ -35,7 +35,7 @@ Dostępnych jest kilka opcji tworzenia środowiska Foundry chmurze na platformie
 - [Wdrażanie pakietów Foundry chmury open source bezpośrednio] [ oss-cf-bosh] poprzez ustawienie [BOSH](http://bosh.io) dyrektora, maszynę Wirtualną, która koordynuje wdrożenia w środowisku chmury Foundry.
 
 > [!IMPORTANT] 
-> Jeśli wdrażasz PCF z portalu Azure Marketplace, zanotuj SYSTEMDOMAINURL i poświadczeń administratora wymagane do uzyskania dostępu kluczową Menedżera aplikacji, które zostały opisane w przewodniku wdrażania portalu marketplace. Są one niezbędne do ukończenia tego samouczka. W przypadku wdrożeń marketplace SYSTEMDOMAINURL jest https://system formularza. *adres ip*. cf.pcfazure.com.
+> Jeśli wdrażasz PCF z portalu Azure Marketplace, zanotuj SYSTEMDOMAINURL i poświadczeń administratora wymagane do uzyskania dostępu kluczową Menedżera aplikacji, które zostały opisane w przewodniku wdrażania portalu marketplace. Są one niezbędne do ukończenia tego samouczka. W przypadku wdrożeń marketplace SYSTEMDOMAINURL ma postać https://system. *adres IP*. cf.pcfazure.com.
 
 ## <a name="connect-to-the-cloud-controller"></a>Połączyć się z kontrolerem chmury
 
@@ -141,7 +141,7 @@ cf scale -i 2 hello-spring-cloud
 Uruchomiona `cf app` polecenia w aplikacji pokazuje, że Foundry chmury wprowadza inne wystąpienie aplikacji. Po uruchomieniu aplikacji, w chmurze Foundry ruchu do niego równoważenia obciążenia jest uruchamiana automatycznie.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Zapoznaj się z dokumentacją chmury Foundry][cloudfoundry-docs]
 - [Konfigurowanie dodatku Visual Studio Team Services dla chmury Foundry][vsts-plugin]

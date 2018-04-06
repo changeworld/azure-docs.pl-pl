@@ -1,6 +1,6 @@
 ---
-title: "Zarządzanie po migracji — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie zarządzania bazą danych po zakończeniu migracji do usługi Azure SQL Database."
+title: Zarządzanie po migracji — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie zarządzania bazą danych po zakończeniu migracji do usługi Azure SQL Database.
 services: sql-database
 author: joesackmsft
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 4e50a1be3437ab1b027c1ca0f160402239e13e92
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowy model DBA w chmurze — zarządzania bazą danych w bazie danych SQL Azure
 
-Przenoszenie z tradycyjnego zarządzać własnym, własnym kontrolowanego środowiska do środowiska PaaS może wydawać się nieco utrudnione na początku. Jako Deweloper aplikacji lub administratorem baz danych należy znać możliwości podstawowej platformy, który umożliwia zachowanie aplikacji dostępne, wydajność, bezpieczne i elastyczne — zawsze. Ten artykuł ma na celu dokładnie. Artykuł krótkiej formie organizuje zasoby i daje wskazówek na temat sposobu najlepiej użyć kluczowych możliwości bazy danych SQL do zarządzania i Zachowaj wydajne działanie aplikacji i uzyskać optymalne wyniki w chmurze. Typowy odbiorców w tym artykule będzie tych kto:-
+Przenoszenie z tradycyjnego zarządzać własnym, własnym kontrolowanego środowiska do środowiska PaaS może wydawać się nieco utrudnione na początku. Jako Deweloper aplikacji lub administratorem baz danych należy znać możliwości podstawowej platformy, który umożliwia zachowanie aplikacji dostępne, wydajność, bezpieczne i elastyczne — zawsze. Ten artykuł ma na celu dokładnie. Artykuł krótkiej formie organizuje zasoby i daje wskazówek na temat sposobu najlepiej użyć kluczowych możliwości bazy danych SQL do zarządzania i Zachowaj wydajne działanie aplikacji i uzyskać optymalne wyniki w chmurze. Typowy odbiorców w tym artykule będzie te które: 
 - Ocenia migracji swoich aplikacjach do bazy danych SQL Azure — modernizacji Twojej aplikacji.
 - Trwa migrowanie swoich aplikacjach — scenariusz migracji w toku.
 - Niedawnym zakończeniu migracji do usługi Azure SQL DB — nowy DBA w chmurze.
@@ -218,7 +218,7 @@ Użytkownika podejście do rozwiązywania problemów z wydajnością może znacz
 
 Wydajność rozwiązywania problemów, należy ustalić, czy jest tylko aplikacja lub jego kopię bazy danych, która jest wpływające na wydajność aplikacji. Często problem z wydajnością znajduje się w warstwie aplikacji. Może to być architektura lub wzorca dostępu do danych. Rozważmy na przykład, że masz chatty aplikacji, która jest wrażliwy na opóźnienia sieci. W takim przypadku aplikacji wystąpi, ponieważ będzie wiele żądań krótkich przechodzi do i z powrotem ("chatty") pomiędzy aplikacją i serwera i sieci przeciążona, Dodaj te dwukierunkowe przesyłanie danych fast. Aby zwiększyć wydajność w tym przypadku, można użyć [partii zapytań](sql-database-performance-guidance.md#batch-queries). Przy użyciu partie pomaga znacznie ponieważ teraz przetworzenie swoje żądania w partii; w związku z tym pomaga skrócić czas oczekiwania obie strony i poprawić wydajność aplikacji. 
 
-Ponadto w przypadku zauważenia spadku ogólnej wydajności bazy danych można monitorować [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dynamicznego zarządzania widoków w celu Dowiedz się, użycie Procesora, operacji We/Wy i pamięci. Wydajność może być w pełni funkcjonalne, ponieważ baza danych jest zagłodzone zasobów. Może to być należy zmienić poziom wydajności i/lub warstwę, na podstawie powiększania i zmniejszanie obciążenia żądania usługi. 
+Ponadto w przypadku zauważenia spadku ogólnej wydajności bazy danych można monitorować [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dynamicznego zarządzania widoków w celu Dowiedz się, użycie procesora CPU, we/wy i pamięci. Wydajność może być w pełni funkcjonalne, ponieważ baza danych jest zagłodzone zasobów. Może to być należy zmienić poziom wydajności i/lub warstwę, na podstawie powiększania i zmniejszanie obciążenia żądania usługi. 
 
 Aby rozbudowany zestaw zaleceń dotyczących dostrajania problemy z wydajnością, zobacz: [dostrajania bazy danych](sql-database-performance-guidance.md#tune-your-database).
 

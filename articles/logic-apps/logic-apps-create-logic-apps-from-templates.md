@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie przepływów pracy za pomocą szablonów - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Tworzenie przepływów pracy szybsze przy użyciu szablonów aplikacji logiki"
+title: Tworzenie przepływów pracy za pomocą szablonów - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie przepływów pracy szybsze przy użyciu szablonów aplikacji logiki
 author: kevinlam1
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9145b9cb85cda9179f7ce46de017a0ab3a38924
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a2e939143d7181722df17ea7837658d96272e3a3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Tworzenie przepływów pracy aplikacji logiki z wbudowane szablony
 
@@ -42,7 +42,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
 
 1. Jeśli nie jest jeszcze, zaloguj się do [portalu Azure](https://portal.azure.com "portalu Azure").
 
-2. W menu głównym Azure, wybierz **Utwórz zasób** > **integracji przedsiębiorstwa** > **aplikacji logiki**.
+2. Z głównego menu platformy Azure wybierz pozycję **Utwórz zasób** > **Integracja dla przedsiębiorstw** > **Aplikacja logiki**.
 
    ![Azure Portal, Nowy, Integracja w przedsiębiorstwie, Aplikacja logiki](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -56,7 +56,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
    | **Subskrypcja** | *nazwa_Twojej_susbkrypcji_Azure* | Wybierz subskrypcję platformy Azure, której chcesz użyć. | 
    | **Grupa zasobów** | *nazwa_Twojej_grupy_zasobów_Azure* | Utwórz lub wybierz [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) dla tej aplikacji logiki i zorganizować wszystkie zasoby skojarzone z tą aplikacją. | 
    | **Lokalizacja** | *region_Twojego_centrum_danych_Azure* | Wybierz region centrum danych do wdrożenia swojej aplikacji logiki, na przykład Zachodnie stany USA. | 
-   | **Log Analytics** | **Wyłącz** (ustawienie domyślne) lub **na** | Włącz [rejestrowania diagnostycznego](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) aplikacji logiki za pośrednictwem [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Wymaga się, że masz już [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) obszaru roboczego. | 
+   | **Log Analytics** | **Wyłącz** (ustawienie domyślne) lub **na** | Włącz [rejestrowania diagnostycznego](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) aplikacji logiki za pośrednictwem [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Wymaga już obszaru roboczego analizy dzienników. | 
    |||| 
 
 4. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**. Dzięki temu aplikacja logiki automatycznie pojawi się na pulpicie nawigacyjnym platformy Azure i zostanie otwarta po wdrożeniu. Wybierz pozycję **Utwórz**.

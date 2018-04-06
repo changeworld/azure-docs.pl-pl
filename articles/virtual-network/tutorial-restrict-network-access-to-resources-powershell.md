@@ -1,38 +1,38 @@
 ---
 title: Ograniczenie dostępu do sieci do zasobów PaaS - programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ograniczyć i ograniczenie dostępu do sieci do zasobów platformy Azure, takich jak usługi Azure Storage i bazy danych SQL Azure z punktów końcowych usługi sieci wirtualnej przy użyciu programu PowerShell.
+description: W tym artykule Dowiedz się jak ograniczenia i ograniczenie dostępu do sieci do zasobów platformy Azure, takich jak usługi Azure Storage i bazy danych SQL Azure z punktów końcowych usługi sieci wirtualnej przy użyciu programu Azure PowerShell.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7e402af74babda2ce32d4a1597c61d71aba89b9e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 28c95e1333b4641e50284a869135a9608dd3242f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Ograniczenie dostępu do sieci do PaaS zasobów z punktów końcowych usługi sieci wirtualnej przy użyciu programu PowerShell
 
 Punktów końcowych usługi sieci wirtualnej umożliwiają ograniczenie dostępu do sieci do niektórych zasobów usługi Azure z podsiecią sieci wirtualnej. Można również usunąć dostęp do zasobów Internetu. Punkty końcowe usługi zapewniają bezpośredniego połączenia z Twojej sieci wirtualnej do obsługiwanych usług platformy Azure, co umożliwia wykorzystanie wirtualnej sieci prywatnej przestrzeni adresowej do uzyskiwania dostępu do usług Azure. Ruch kierowany do zasobów platformy Azure za pomocą punktów końcowych usługi zawsze pozostaje w sieci Microsoft Azure w sieci szkieletowej. W tym artykule dowiesz się, jak:
 
-> [!div class="checklist"]
-> * Utwórz sieć wirtualną z jedną podsiecią
-> * Dodaj podsieć i włączyć punkt końcowy usługi
-> * Tworzenie zasobów platformy Azure i zezwolić na dostęp do sieci z go z tylko podsieci
-> * Wdróż maszynę wirtualną (VM) do każdej podsieci
-> * Potwierdź dostęp do zasobu z podsieci
-> * Upewnij się, że odmowa dostępu do zasobu z podsieci i z Internetu
+* Utwórz sieć wirtualną z jedną podsiecią
+* Dodaj podsieć i włączyć punkt końcowy usługi
+* Tworzenie zasobów platformy Azure i zezwolić na dostęp do sieci z go z tylko podsieci
+* Wdróż maszynę wirtualną (VM) do każdej podsieci
+* Potwierdź dostęp do zasobu z podsieci
+* Upewnij się, że odmowa dostępu do zasobu z podsieci i z Internetu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -93,7 +93,7 @@ $subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-to-and-from-a-subnet"></a>Ograniczenie dostępu do sieci do i z podsiecią
+## <a name="restrict-network-access-for-a-subnet"></a>Ograniczenie dostępu do sieci dla podsieci
 
 Tworzenie reguł zabezpieczeń grupy z zabezpieczenia sieci [AzureRmNetworkSecurityRuleConfig nowy](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). Poniższa reguła umożliwia dostęp ruchu wychodzącego na publiczne adresy IP przypisane do usługi Azure Storage: 
 
@@ -114,7 +114,7 @@ Poniższa reguła nie zezwala na dostęp do wszystkich publicznych adresów IP. 
 
 ```azurepowershell-interactive
 $rule2 = New-AzureRmNetworkSecurityRuleConfig `
-  -Name Deny-internet-All `
+  -Name Deny-Internet-All `
   -Access Deny `
   -DestinationAddressPrefix Internet `
   -DestinationPortRange * `
@@ -372,9 +372,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku możesz włączyć punkt końcowy usługi dla podsieci sieci wirtualnej. Wiesz, że punkty końcowe usługi można włączyć dla zasobów z wielu usług Azure. Utworzono konto magazynu Azure i ograniczania dostępu do sieci do konta magazynu, aby tylko zasoby w podsieci sieci wirtualnej. Przed utworzeniem punktów końcowych usług w środowisku produkcyjnym sieci wirtualnych, zalecane jest, że należy dokładnie zapoznać się z [punkty końcowe usługi](virtual-network-service-endpoints-overview.md).
+W tym artykule należy włączyć punkt końcowy usługi dla podsieci sieci wirtualnej. Wiesz, że punkty końcowe usługi można włączyć dla zasobów z wielu usług Azure. Utworzono konto magazynu Azure i ograniczania dostępu do sieci do konta magazynu, aby tylko zasoby w podsieci sieci wirtualnej. Aby dowiedzieć się więcej na temat punktów końcowych usług, zobacz [Omówienie punktów końcowych usługi](virtual-network-service-endpoints-overview.md) i [Zarządzanie podsieci](virtual-network-manage-subnet.md).
 
-Jeśli masz wiele sieci wirtualnych w ramach Twojego konta, możesz połączyć ze sobą dwie sieci wirtualne, więc zasoby w każdej sieci wirtualnej mogą komunikować się ze sobą. Przejdź do następnego samouczkiem, aby dowiedzieć się, jak połączyć sieci wirtualnych.
-
-> [!div class="nextstepaction"]
-> [Łączenie sieci wirtualnej](./tutorial-connect-virtual-networks-powershell.md)
+Jeśli masz wiele sieci wirtualnych w ramach Twojego konta, możesz połączyć ze sobą dwie sieci wirtualne, więc zasoby w każdej sieci wirtualnej mogą komunikować się ze sobą. Aby dowiedzieć się więcej, zobacz temat [połączyć sieci wirtualnych](tutorial-connect-virtual-networks-powershell.md).

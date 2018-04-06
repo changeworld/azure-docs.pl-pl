@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli
-ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akceleracja dynamiczne witryny za pomocą usługi Azure CDN
 
@@ -152,7 +152,7 @@ Z DSA, buforowanie jest domyślnie wyłączona w sieci CDN, nawet wtedy, gdy pun
 
 Jeśli masz witrynę z różnymi statycznych i dynamicznych zasobów, najlepiej zająć rozwiązanie hybrydowe, aby uzyskać najlepszą wydajność. 
 
-Dla **Azure CDN from Verizon Standard** i **Azure CDN from Akamai Standard** profile, można włączyć buforowanie dla określonych DSA punktów końcowych przy użyciu [buforowanie reguły](cdn-caching-rules.md).
+Dla **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** profile, można włączyć buforowanie dla określonych DSA punktów końcowych przy użyciu [buforowanie reguły](cdn-caching-rules.md).
 
 Dostęp do reguły buforowania:
 
@@ -164,7 +164,7 @@ Dostęp do reguły buforowania:
 
 2. Utwórz regułę buforowania globalnych lub niestandardowych włączyć buforowanie dla punktu końcowego DSA. 
 
-Dla **Azure CDN from Verizon Premium** profilów tylko włączeniu buforowania dla określonego DSA punktów końcowych przy użyciu [aparatu reguł](cdn-rules-engine.md). Wszystkie reguły, które są tworzone wpływa na tylko te punkty końcowe profilu są zoptymalizowane pod kątem DSA. 
+Dla **Azure CDN Premium from Verizon** profilów tylko włączeniu buforowania dla określonego DSA punktów końcowych przy użyciu [aparatu reguł](cdn-rules-engine.md). Wszystkie reguły, które są tworzone wpływa na tylko te punkty końcowe profilu są zoptymalizowane pod kątem DSA. 
 
 Aby uzyskać dostęp do aparatu reguł:
     
