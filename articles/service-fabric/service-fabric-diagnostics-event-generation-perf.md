@@ -1,12 +1,12 @@
 ---
-title: "Wydajność sieci szkieletowej Azure usługi monitorowania | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat liczników wydajności dla monitorowania i diagnostyki klastrów sieci szkieletowej usług Azure."
+title: Wydajność sieci szkieletowej Azure usługi monitorowania | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat liczników wydajności dla monitorowania i diagnostyki klastrów sieci szkieletowej usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="performance-metrics"></a>Metryki wydajności
 
@@ -30,14 +30,14 @@ Dla maszyn w klastrze należy wziąć pod uwagę następujące liczniki wydajno�
 
 | Kategoria licznika | Nazwa licznika |
 | --- | --- |
-| Dysk fizyczny (na dysku) | Średni Długość kolejki odczytu dysku |
-| Dysk fizyczny (na dysku) | Średni Długość kolejki dysku zapisu |
-| Dysk fizyczny (na dysku) | Średni Czas dysku w s/Odczyt |
-| Dysk fizyczny (na dysku) | Średni Dysku w s/Zapis |
+| Dysk fizyczny (na dysku) | Avg. Długość kolejki odczytu dysku |
+| Dysk fizyczny (na dysku) | Avg. Długość kolejki dysku zapisu |
+| Dysk fizyczny (na dysku) | Avg. Czas dysku w s/Odczyt |
+| Dysk fizyczny (na dysku) | Avg. Dysku w s/Zapis |
 | Dysk fizyczny (na dysku) | Odczyty dysku/s |
-| Dysk fizyczny (na dysku) | Bajty odczytu dysku/s |
+| Dysk fizyczny (na dysku) | Bajty odczytu z dysku/s |
 | Dysk fizyczny (na dysku) | Zapisy dysku/s |
-| Dysk fizyczny (na dysku) | Bajty zapisu dysku/s |
+| Dysk fizyczny (na dysku) | Bajty zapisu na dysku/s |
 | Memory (Pamięć) | Dostępna pamięć (MB) |
 | Plik stronicowania | % Użycia |
 | Processor(Total) | Czas procesora (%) |
@@ -80,7 +80,7 @@ Jeśli używasz usługi niezawodnego podobnie mamy `Service Fabric Service` i `S
 Użycie niezawodnej kolekcje, zaleca się dodawania `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` zbierać opóźnienie zatwierdzania średni na Metryka transakcji.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [generowania zdarzeń na poziomie platformy](service-fabric-diagnostics-event-generation-infra.md) w sieci szkieletowej usług
 * Zbieranie metryk wydajności za pośrednictwem [diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md)

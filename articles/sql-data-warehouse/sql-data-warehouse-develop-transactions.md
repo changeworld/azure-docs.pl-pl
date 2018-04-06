@@ -1,11 +1,11 @@
 ---
-title: "Transakcje w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące implementowania transakcji w magazynie danych SQL Azure związane z opracowywaniem rozwiązań."
+title: Transakcje w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące implementowania transakcji w magazynie danych SQL Azure związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ae621788-e575-41f5-8bfe-fa04dc4b0b53
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>Transakcje w usłudze SQL Data Warehouse
 Jak można oczekiwać, Magazyn danych SQL obsługuje transakcje jako część obciążenia magazynu danych. Jednak aby upewnić się, że wydajność usługi SQL Data Warehouse jest przechowywany na dużą skalę niektóre funkcje są ograniczone w porównaniu z programem SQL Server. W tym artykule wyróżnia różnic oraz listę innych. 
@@ -35,7 +35,7 @@ Zostały wprowadzone w tabeli poniżej następujące założenia:
 * Wystąpił nawet rozkład danych 
 * Długość wiersza średni to 250 bajtów
 
-| [JEDNOSTKA DWU][DWU] | Cap na dystrybucji (GiB) | Liczba dystrybucji | Maksymalny rozmiar transakcji (GiB) | # Wierszy na dystrybucji | Maksymalna liczba wierszy na transakcję |
+| [DWU][DWU] | Cap na dystrybucji (GiB) | Liczba dystrybucji | Maksymalny rozmiar transakcji (GiB) | # Wierszy na dystrybucji | Maksymalna liczba wierszy na transakcję |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6 000 000 |360,000,000 |
@@ -175,7 +175,7 @@ Są one w następujący sposób:
 * Nie zaznaczonych transakcji
 * Brak obsługi języka DDL, takie jak `CREATE TABLE` wewnątrz użytkownika zdefiniowanych transakcji
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat optymalizacji transakcji, zobacz [transakcji najlepsze rozwiązania][Transactions best practices].  Aby dowiedzieć się więcej o najlepszych rozwiązaniach innych SQL Data Warehouse, zobacz [najlepsze rozwiązania w zakresie usługi SQL Data Warehouse][SQL Data Warehouse best practices].
 
 <!--Image references-->

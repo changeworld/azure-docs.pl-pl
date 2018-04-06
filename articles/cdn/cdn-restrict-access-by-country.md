@@ -1,11 +1,11 @@
 ---
-title: "Ogranicz zawartość sieci Azure CDN według kraju | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak ograniczyć dostęp do treści Azure CDN przy użyciu funkcji filtrowania Geo."
+title: Ogranicz zawartość sieci Azure CDN według kraju | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ograniczyć dostęp do treści Azure CDN przy użyciu funkcji filtrowania Geo.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
 ms.workload: tbd
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
 ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Ogranicz zawartość sieci Azure CDN według kraju
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Gdy użytkownik zażąda zawartości, domyślnie, niezależnie od tego, w którym użytkownik wprowadzone tego żądania z obsługiwanej zawartości. W niektórych przypadkach można ograniczyć dostęp do zawartości według kraju. W tym temacie wyjaśniono, jak używać **filtrowania geograficznie** funkcji, aby skonfigurować usługę, aby umożliwić lub zablokować dostęp według kraju.
 
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ Na przykład reguła blokowania /Photos/Strasburgu/będzie filtrować pliki w ty
     http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
 
 
-### <a name="country-codes"></a>Kod kraju
+### <a name="country-codes"></a>Kody krajów
 **Filtrowania geograficznie** funkcji używa kodów kraju, aby zdefiniować krajów, z których będą dozwolone lub blokowane dla katalogu zabezpieczonych żądanie. Można znaleźć numerów kierunkowych w [Azure CDN numerów kierunkowych](https://msdn.microsoft.com/library/mt761717.aspx). 
 
 ## <a id="considerations"></a>Zagadnienia dotyczące

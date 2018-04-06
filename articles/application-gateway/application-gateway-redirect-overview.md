@@ -1,11 +1,11 @@
 ---
-title: "Przekieruj bramy aplikacji Azure — omówienie | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat możliwości przekierowania bramę aplikacji Azure"
+title: Przekieruj bramy aplikacji Azure — omówienie | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat możliwości przekierowania bramę aplikacji Azure
 services: application-gateway
 documentationcenter: na
 author: amsriva
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
 ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="application-gateway-redirect-overview"></a>Omówienie przekierowania bramy aplikacji
 
@@ -32,6 +32,6 @@ Typowy scenariusz dla wielu aplikacji sieci web jest obsługuje automatyczne HTT
 
 Z tą zmianą klienci muszą tworzyć nowe przekierowania konfiguracji obiektu, który określa odbiornika docelowego lub witryny zewnętrznej, z którym wymagane jest przekierowanie. Element konfiguracji również obsługuje opcje umożliwiające dodanie ciągu identyfikatora URI ścieżka i kwerenda do adresu URL. Klientów można również wybrać, czy Przekierowanie tymczasowe (kod stanu HTTP 302) lub przekierowanie trwałe (kod stanu HTTP 301). Po utworzeniu tej konfiguracji przekierowania jest dołączony do odbiornika źródła za pomocą nowej reguły. Używając podstawowe reguły, przekierowanie konfiguracja jest skojarzony z odbiornika źródła i globalnych przekierowania. Stosowania reguły na podstawie ścieżki konfiguracji przekierowania jest zdefiniowana na mapie ścieżki adresu URL i dlatego ma zastosowanie tylko do określonej ścieżki obszaru lokacji.
 
-### <a name="next-steps"></a>Następne kroki
+### <a name="next-steps"></a>Kolejne kroki
 
 [Skonfiguruj adres URL przekierowania na bramy aplikacji](application-gateway-configure-redirect-powershell.md)

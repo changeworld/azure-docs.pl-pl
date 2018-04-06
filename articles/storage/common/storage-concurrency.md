@@ -1,8 +1,8 @@
 ---
-title: "Zarządzanie współbieżnością w usłudze Microsoft Azure Storage"
-description: "Jak zarządzać współbieżności dla usług obiektów Blob, kolejki, tabel i plików"
+title: Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
+description: Jak zarządzać współbieżności dla usług obiektów Blob, kolejki, tabel i plików
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: jasontang501
 manager: tadb
 editor: tysonn
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Nowoczesne aplikacje internetowe, na podstawie zwykle mają wielu użytkowników, wyświetlanie i aktualizowanie danych jednocześnie. Wymaga to deweloperom aplikacji dokładnie traktować jak zapewnia przewidywalną środowisko dla użytkowników końcowych, szczególnie w przypadku scenariuszy, w którym wielu użytkowników można aktualizować tych samych danych. Istnieją trzy Strategie współbieżności główne dane, które deweloperzy zazwyczaj należy wziąć pod uwagę:  
 
 1. Optymistycznej współbieżności — aplikacji wykonywanie aktualizacji w ramach jego aktualizacji sprawdzi, czy dane zostały zmienione od aplikacji ostatniego odczytu danych. Na przykład jeśli dwóch użytkowników wyświetlania strony typu wiki aktualizacji do tej samej stronie wiki platformy musi upewnij Druga aktualizacja nie zastępuje pierwszą aktualizacją — i użytkownicy dokładnie, czy ich aktualizacja zakończyła się powodzeniem. Ta strategia jest najczęściej używana w aplikacji sieci web.
@@ -90,14 +90,14 @@ W poniższej tabeli przedstawiono operacje kontenera, które warunkowego nagłó
 
 | Operacja | Zwraca wartość ETag kontenera | Akceptuje warunkowego nagłówki |
 |:--- |:--- |:--- |
-| Tworzenie kontenera |Tak |Nie |
-| Pobierz właściwości kontenera |Tak |Nie |
-| Pobranie metadanych kontenera |Tak |Nie |
-| Ustaw metadanych kontenera |Tak |Tak |
-| Pobierz ACL kontenera |Tak |Nie |
-| Ustaw ACL kontenera |Tak |Tak (*) |
-| Usunąć kontenera |Nie |Tak |
-| Kontener dzierżawy |Tak |Tak |
+| Tworzenie kontenera |Yes |Nie |
+| Pobierz właściwości kontenera |Yes |Nie |
+| Pobranie metadanych kontenera |Yes |Nie |
+| Ustaw metadanych kontenera |Yes |Yes |
+| Pobierz ACL kontenera |Yes |Nie |
+| Ustaw ACL kontenera |Yes |Tak (*) |
+| Usunąć kontenera |Nie |Yes |
+| Kontener dzierżawy |Yes |Yes |
 | Lista obiektów blob |Nie |Nie |
 
 (*) Uprawnienia określone przez SetContainerACL znajdują się w pamięci podręcznej i aktualizacje te uprawnienia potrwać 30 sekund propagację, w tym okresie aktualizacje nie ma gwarancji być zgodne.  
@@ -106,22 +106,22 @@ W poniższej tabeli przedstawiono operacje obiektów blob, które warunkowego na
 
 | Operacja | Zwraca wartość ETag | Akceptuje warunkowego nagłówki |
 |:--- |:--- |:--- |
-| Umieszczanie obiektu Blob |Tak |Tak |
-| Pobierz obiekt Blob |Tak |Tak |
-| Pobierz właściwości obiektu Blob |Tak |Tak |
-| Ustaw właściwości obiektów Blob |Tak |Tak |
-| Pobierz metadane obiektu Blob |Tak |Tak |
-| Ustaw metadane obiektu Blob |Tak |Tak |
-| Obiekt Blob dzierżawy (*) |Tak |Tak |
-| Migawki obiektu Blob |Tak |Tak |
-| Kopiowanie obiektu Blob |Tak |Tak (w przypadku obiektów blob źródłowego i docelowego) |
+| Put Blob |Yes |Yes |
+| Get Blob |Yes |Yes |
+| Pobierz właściwości obiektu Blob |Yes |Yes |
+| Ustaw właściwości obiektów Blob |Yes |Yes |
+| Pobierz metadane obiektu Blob |Yes |Yes |
+| Ustaw metadane obiektu Blob |Yes |Yes |
+| Obiekt Blob dzierżawy (*) |Yes |Yes |
+| Migawki obiektu Blob |Yes |Yes |
+| Copy Blob |Yes |Tak (w przypadku obiektów blob źródłowego i docelowego) |
 | Przerwij kopiowania obiektów Blob |Nie |Nie |
-| Usuwanie obiektów Blob |Nie |Tak |
+| Usuwanie obiektów Blob |Nie |Yes |
 | Umieść bloku |Nie |Nie |
-| Umieść zablokowanych |Tak |Tak |
-| Pobierz listę zablokowanych |Tak |Nie |
-| Umieść stronę |Tak |Tak |
-| Get zakresów stron |Tak |Tak |
+| Umieść zablokowanych |Yes |Yes |
+| Pobierz listę zablokowanych |Yes |Nie |
+| Umieść stronę |Yes |Yes |
+| Get zakresów stron |Yes |Yes |
 
 (*) Obiekt Blob dzierżawy nie zmienia ETag na obiektu blob.  
 
@@ -163,8 +163,8 @@ Przy próbie operacji zapisu dla dzierżawionych obiektu blob bez przekazywania 
 
 Następujące operacje obiektów blob umożliwia zarządzanie pesymistyczne współbieżności dzierżawy:  
 
-* Umieszczanie obiektu Blob
-* Pobierz obiekt Blob
+* Put Blob
+* Get Blob
 * Pobierz właściwości obiektu Blob
 * Ustaw właściwości obiektów Blob
 * Pobierz metadane obiektu Blob
@@ -197,7 +197,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 * [Określanie warunkowego nagłówki dla operacji usługi Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Kontener dzierżawy](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Obiekt Blob dzierżawy](http://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Obiekt Blob dzierżawy ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Zarządzanie współbieżność w usłudze tabel
 Usługa tabel używa optymistycznej współbieżności kontroli jako domyślne zachowanie podczas pracy z obiektami, w przeciwieństwie do usługi obiektów blob, którym jawnie należy wybrać do sprawdzania optymistycznej współbieżności. Różnica między usługami tabeli i obiektów blob jest, czy użytkownik może zarządzać tylko zachowania jednostek współbieżności podczas, gdy usługa blob można zarządzać współbieżności kontenerów i obiektów blob.  
@@ -241,13 +241,13 @@ W poniższej tabeli przedstawiono, jak operacje jednostki tabeli użyj wartości
 
 | Operacja | Zwraca wartość ETag | Wymaga nagłówek If-Match żądania |
 |:--- |:--- |:--- |
-| Zapytanie jednostek |Tak |Nie |
-| Wstaw jednostkę |Tak |Nie |
-| Aktualizowanie jednostek |Tak |Tak |
-| Scal jednostki |Tak |Tak |
-| Usuwanie jednostki |Nie |Tak |
-| Wstawianie lub zastępowanie jednostki |Tak |Nie |
-| Wstawianie lub scalania jednostki |Tak |Nie |
+| Zapytanie jednostek |Yes |Nie |
+| Wstaw jednostkę |Yes |Nie |
+| Aktualizowanie jednostek |Yes |Yes |
+| Scal jednostki |Yes |Yes |
+| Usuwanie jednostki |Nie |Yes |
+| Wstawianie lub zastępowanie jednostki |Yes |Nie |
+| Wstawianie lub scalania jednostki |Yes |Nie |
 
 Należy pamiętać, że **wstawienia lub Zastąp jednostki** i **wstawienia lub scalania jednostki** wykonaj operacje *nie* wykonać wszelkie kontrolach współbieżności, ponieważ nie wysyłaj wartość ETag usłudze tabel.  
 

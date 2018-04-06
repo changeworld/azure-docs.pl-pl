@@ -1,11 +1,11 @@
 ---
-title: "Przy użyciu usługi Azure CDN z CORS | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać usługi Azure sieci dostarczania zawartości (CDN) do z udostępniania zasobów między źródłami (CORS)."
+title: Przy użyciu usługi Azure CDN z CORS | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Azure sieci dostarczania zawartości (CDN) do z udostępniania zasobów między źródłami (CORS).
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Przy użyciu usługi Azure CDN z CORS
 ## <a name="what-is-cors"></a>Co to jest CORS?
@@ -29,7 +29,7 @@ Istnieją dwa typy żądań CORPS *prostych żądań* i *złożonych żądań.*
 
 ### <a name="for-simple-requests"></a>Proste żądań:
 
-1. Przeglądarka wysyła żądanie CORS z dodatkowymi **pochodzenia** nagłówek żądania HTTP. Wartość tego nagłówka jest punkt początkowy, który obsłużył Strona nadrzędna, który jest zdefiniowany jako kombinacja *protokołu,* *domeny,* i *portu.*  Jeśli strony z https://www.contoso.com próbuje uzyskać dostęp do danych użytkownika ze źródłem fabrikam.com, następujący nagłówek żądania wysłania do fabrikam.com:
+1. Przeglądarka wysyła żądanie CORS z dodatkowymi **pochodzenia** nagłówek żądania HTTP. Wartość tego nagłówka jest punkt początkowy, który obsłużył Strona nadrzędna, który jest zdefiniowany jako kombinacja *protokołu,* *domeny,* i *portu.*  Gdy strony z https://www.contoso.com próbuje uzyskać dostęp do danych użytkownika w początek fabrikam.com, następujący nagłówek żądania wysłania do fabrikam.com:
 
    `Origin: https://www.contoso.com`
 

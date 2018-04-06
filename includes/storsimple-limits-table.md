@@ -25,5 +25,5 @@
 | Przepływność odczytu/zapisu maksymalną klienta (jeśli są udostępniane przez warstwę HDD) * |120/250 MB/s | |
 | Przepływność odczytu/zapisu maksymalną klienta (jeśli jest obsługiwana w ramach warstwy chmury) * |11/41 MB/s |Przepływność odczytu zależy od klientów generowania i utrzymywania wystarczające głębokość kolejki operacji We/Wy. |
 
-&#42; Maksymalna przepustowość na typ operacji We/Wy zmierzono z scenariusze 100 procent zapisu i odczytu 100 procent. Aktualna przepływność może być niższa i zależy od operacji We/Wy mieszać i warunki sieciowe.
+&#42;Maksymalna przepustowość na typ operacji We/Wy zmierzono z scenariusze 100 procent zapisu i odczytu 100 procent. Aktualna przepływność może być niższa i zależy od operacji We/Wy mieszać i warunki sieciowe.
 

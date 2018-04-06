@@ -1,11 +1,11 @@
 ---
-title: "Wykonaj włamań sieci z obserwatora sieciowego Azure i narzędzi typu open source | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób używania obserwatora sieciowego Azure i otworzyć narzędzia źródła do wykonywania wykrywania nieautoryzowanego dostępu sieciowego"
+title: Wykonaj włamań sieci z obserwatora sieciowego Azure i narzędzi typu open source | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób używania obserwatora sieciowego Azure i otworzyć narzędzia źródła do wykonywania wykrywania nieautoryzowanego dostępu sieciowego
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Wykonaj włamań sieci z obserwatora sieciowego i narzędzi typu open source
 
 Pakiet przechwyconych obrazów są kluczowym elementem za zaimplementowanie systemów wykrywania nieautoryzowanego dostępu sieciowego (ID) i przeprowadzanie monitorowania zabezpieczeń sieci (NSM). Istnieje kilka narzędzi identyfikatorów typu open source, które przetwarzają przechwytywania pakietów i poszukaj podpisami sieci atakami złośliwych działań. Za pomocą pakietu znajdują się pod warunkiem przez obserwatora sieciowego można analizować wtargnięcia szkodliwe lub luk w zabezpieczeniach sieci.
 
-Jednym takich narzędzi typu open source jest Suricata, aparat Identyfikatory, który używa zestawów reguł do monitorowania ruchu sieciowego i wyzwala alerty, gdy występują podejrzane zdarzenia. Suricata oferuje wielowątkowych aparatu, co oznacza, że można wykonać analizy ruchu sieciowego z zwiększenie szybkości i wydajności. Aby uzyskać więcej informacji na temat Suricata i jego możliwości odwiedź stronę ich https://suricata-ids.org/ witryny sieci Web.
+Jednym takich narzędzi typu open source jest Suricata, aparat Identyfikatory, który używa zestawów reguł do monitorowania ruchu sieciowego i wyzwala alerty, gdy występują podejrzane zdarzenia. Suricata oferuje wielowątkowych aparatu, co oznacza, że można wykonać analizy ruchu sieciowego z zwiększenie szybkości i wydajności. Aby uzyskać więcej informacji na temat Suricata i jego możliwości witrynie ich w https://suricata-ids.org/.
 
 ## <a name="scenario"></a>Scenariusz
 
@@ -38,7 +38,7 @@ Zarówno narzędzi typu open source można skonfigurować na maszynie Wirtualnej
 
 ### <a name="install-suricata"></a>Zainstaluj Suricata
 
-Dla wszystkich innych metod instalacji odwiedź stronę http://suricata.readthedocs.io/en/latest/install.html
+Dla wszystkich innych metod instalacji odwiedź http://suricata.readthedocs.io/en/latest/install.html
 
 1. Z poziomu wiersza polecenia terminala z maszyną Wirtualną, uruchom następujące polecenia:
 
@@ -232,7 +232,7 @@ Aby uzyskać dalsze instrukcje na temat instalowania Logstash odwoływać się d
     ./bin/kibana
     ```
 
-1. Aby wyświetlić Kibana interfejsu sieci web, przejdź do`http://localhost:5601`
+1. Aby wyświetlić Kibana interfejsu sieci web, przejdź do `http://localhost:5601`
 1. W tym scenariuszu jest używane dla dzienników Suricata wzorzec indeksu "logstash-*"
 
 1. Jeśli chcesz wyświetlić pulpit nawigacyjny Kibana zdalnie, Utwórz regułę ruchu przychodzącego grupy NSG zezwalania na dostęp do **portu 5601**.
@@ -263,7 +263,7 @@ Przykładowy pulpit nawigacyjny udostępnia kilka wizualizacje Suricata dziennik
 
 1. Liczba alertów — łączna liczba alertów wyzwalanych przez zestaw reguł
 
-    ![Obraz 5][5]
+    ![image 5][5]
 
 1. Wyzwolone na najwyższym 20 lokalizacja źródłowa/docelowa adresy IP/porty — wykresy kołowe przedstawiający górnego 20 adresów IP i portów tego alerty. Można filtrować są inicjowane w dół na określone adresy IP/porty, aby wyświetlić liczbę i typy alertów.
 
@@ -279,7 +279,7 @@ Aby uzyskać więcej dokumentacji na temat tworzenia niestandardowych wizualizac
 
 Dzięki połączeniu pakietu przechwytuje dostarczane przez obserwatora sieciowego oraz narzędzia identyfikatorów typu open source, takie jak Suricata, można wykonać wykrywania nieautoryzowanego dostępu sieciowego dla szerokiego zakresu zagrożeń. Te pulpity nawigacyjne umożliwiają szybkie wychwycenia trendów i anomalii w sieci, jak dobrze dig do danych, aby dowiedzieć się, że główne przyczyny alertów, takie jak agentów złośliwy użytkownik lub narażone portów. Z tym wyodrębnione dane można podejmowania świadomych decyzji na temat reagowania na ochronę sieci przed atakami wszelkie szkodliwe nieautoryzowanego dostępu i tworzyć reguły uniemożliwia przyszłych dostęp do sieci.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak można wyzwolić przechwytywania pakietów, na podstawie alertów, odwiedzając [celu sieci aktywnego monitorowania za pomocą usługi Azure Functions Użyj przechwytywania pakietów](network-watcher-alert-triggered-packet-capture.md)
 

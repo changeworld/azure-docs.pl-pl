@@ -1,9 +1,9 @@
 ---
 title: Co to jest Apache Hive i HiveQL - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Apache Hive jest platforma Hadoop w systemie magazynu danych. Można badać danych przechowywanych w gałęzi przy użyciu HiveQL, który podobnie do języka Transact-SQL. W tym dokumencie opisano do korzystania z usługi Azure HDInsight Hive i HiveQL."
-keywords: "hiveql, co to jest hive i hadoop hiveql, jak korzystanie z programu hive, Dowiedz się, hive, co to jest gałąź"
+description: Apache Hive jest platforma Hadoop w systemie magazynu danych. Można badać danych przechowywanych w gałęzi przy użyciu HiveQL, który podobnie do języka Transact-SQL. W tym dokumencie opisano do korzystania z usługi Azure HDInsight Hive i HiveQL.
+keywords: hiveql, co to jest hive i hadoop hiveql, jak korzystanie z programu hive, Dowiedz się, hive, co to jest gałąź
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 01/26/2018
 ms.author: larryfr
 ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
@@ -78,7 +78,7 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Hive obsługuje również niestandardowe **serializator/deserializers (SerDe)** złożonego lub nieregularnych strukturalnych danych. Aby uzyskać więcej informacji, zobacz [sposobu używania niestandardowych SerDe JSON z usługą HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentu.
 
-Aby uzyskać więcej informacji na formaty plików obsługiwane przez Hive, zobacz [ręcznego języka (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Aby uzyskać więcej informacji na formaty plików obsługiwane przez Hive, zobacz [(ręczna) językahttps://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Hive tabel zewnętrznych vs wewnętrzny tabel
 

@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie strefy DNS i zestawy rekordów w usłudze Azure DNS przy użyciu zestawu .NET SDK | Dokumentacja firmy Microsoft"
-description: "Jak utworzyć strefy DNS i zestawy rekordów w usłudze Azure DNS przy użyciu zestawu .NET SDK."
+title: Tworzenie strefy DNS i zestawy rekordów w usłudze Azure DNS przy użyciu zestawu .NET SDK | Dokumentacja firmy Microsoft
+description: Jak utworzyć strefy DNS i zestawy rekordów w usłudze Azure DNS przy użyciu zestawu .NET SDK.
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: jonatul
 ms.openlocfilehash: c0fb0be8da1c0ca48a4d43ea027d30a0bc17fe30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Tworzenie strefy DNS i zestawy rekordów przy użyciu zestawu .NET SDK
 
@@ -41,7 +41,7 @@ Zazwyczaj otrzymuje programowy dostęp do zasobów platformy Azure za pomocą de
 Aby użyć zestawu .NET SDK usługi Azure DNS, musisz zainstalować **biblioteki zarządzania usługi Azure DNS** pakietu NuGet i inne wymagane pakiety platformy Azure.
 
 1. W **programu Visual Studio**, otwórz projekt lub nowego projektu.
-2. Przejdź do **narzędzia**  **>**  **Menedżera pakietów NuGet**  **>**  **Zarządzaj pakietami NuGet dla rozwiązania...** .
+2. Przejdź do **narzędzia** **>** **Menedżera pakietów NuGet** **>** **Zarządzaj pakietami NuGet dla rozwiązania...** .
 3. Kliknij przycisk **Przeglądaj**, Włącz **Uwzględnij wersję wstępną** wyboru i wpisz **Microsoft.Azure.Management.Dns** w polu wyszukiwania.
 4. Wybierz pakiet, a następnie kliknij przycisk **zainstalować** ją dodać do projektu programu Visual Studio.
 5. Powtórz proces powyżej, aby również zainstalować następujących pakietów: **Microsoft.Rest.ClientRuntime.Azure.Authentication** i **Microsoft.Azure.Management.ResourceManager**.
@@ -162,6 +162,6 @@ while (page.NextPageLink != null)
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Pobierz [zestawu SDK usługi Azure DNS .NET przykładowy projekt](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), który zawiera dalsze przykłady sposobu korzystania z usługi Azure DNS zestawu .NET SDK, wraz z przykładami dla innych typów rekordów DNS.

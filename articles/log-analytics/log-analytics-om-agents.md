@@ -1,11 +1,11 @@
 ---
-title: "Łączenie programu Operations Manager do analizy dzienników | Dokumentacja firmy Microsoft"
-description: "Aby chronić inwestycję istniejących w programie System Center Operations Manager i rozszerzone możliwości za pomocą analizy dzienników, programu Operations Manager można zintegrować z obszarem roboczym pakietu OMS."
+title: Łączenie programu Operations Manager do analizy dzienników | Dokumentacja firmy Microsoft
+description: Aby chronić inwestycję istniejących w programie System Center Operations Manager i rozszerzone możliwości za pomocą analizy dzienników, programu Operations Manager można zintegrować z obszarem roboczym pakietu OMS.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: magoedte
 ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Łączenie programu Operations Manager do analizy dzienników
 Aby chronić inwestycję istniejących w programie System Center Operations Manager i rozszerzone możliwości za pomocą analizy dzienników, programu Operations Manager można zintegrować z obszarem roboczym pakietu OMS.  Dzięki temu, że wykorzystać możliwości OMS podczas dalszego korzystania z programu Operations Manager:
@@ -33,7 +33,7 @@ Agenci raportowania w grupie zarządzania programu Operations Manager zbieranie 
 
 Poniższy diagram przedstawia połączenia między serwerami zarządzania i agentów w grupie zarządzania programu System Center Operations Manager i OMS, w tym kierunku i portów.   
 
-![OMS — operacji manager integracji — diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
+![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
 Jeśli zasady zabezpieczeń IT nie zezwalają na komputerach w sieci, aby nawiązać połączenie z Internetem, aby połączyć się z bramą OMS do odbierania informacji o konfiguracji i wysyłania danych zebranych w zależności od rozwiązania, które aktywowano można skonfigurować serwery zarządzania.  Aby uzyskać więcej informacji i kroki dotyczące sposobu konfigurowania grupę zarządzania programu Operations Manager do komunikowania się za pośrednictwem bramy OMS z usługą OMS, zobacz [łączenia komputerów przy użyciu bramy OMS OMS](log-analytics-oms-gateway.md).  
 
@@ -50,15 +50,15 @@ Informacje poniżej listy proxy i zapory konfiguracji wymaganych informacji dla 
 |Zasób | Numer portu| Obejście kontroli HTTP|  
 |---------|------|-----------------------|  
 |**Agent**|||  
-|\*.ods.opinsights.azure.com| 443 |Tak|  
-|\*.oms.opinsights.azure.com| 443|Tak|  
-|\*.blob.core.windows.net| 443|Tak|  
-|\*.azure-automation.net| 443|Tak|  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Serwer zarządzania**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Tak|  
-|\*.ods.opinsights.azure.com| 443| Tak|  
-|*.azure-automation.net | 443| Tak|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Konsola programu Operations Manager z usługą OMS**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -101,7 +101,7 @@ Jeśli wewnętrzny serwer proxy jest między grupą zarządzania a usługę siec
 1. Otwórz konsolę programu Operations Manager i wybierz obszar roboczy **Administracja**.
 2. Rozwiń pozycję Operations Management Suite, a następnie kliknij przycisk **połączenia**.
 3. W widoku Połączenie OMS kliknij pozycję **Konfiguruj serwer proxy**.
-4. Na **Kreator Operations Management Suite: serwer Proxy** wybierz pozycję **Użyj serwera proxy, aby uzyskać dostępu do usługi Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http:// corpproxy:80, a następnie kliknij przycisk **Zakończ**.
+4. Na **Kreator Operations Management Suite: serwer Proxy** wybierz pozycję **Użyj serwera proxy, aby uzyskać dostępu do usługi Operations Management Suite**, a następnie wpisz adres URL z numerem portu, na przykład http://corpproxy:80 a następnie kliknij przycisk **Zakończ**.
 
 Jeśli serwer proxy wymaga uwierzytelnienia, wykonaj następujące kroki, aby skonfigurować poświadczenia i ustawienia, które należy obejmie zarządzanych komputerów, które raporty do OMS w grupie zarządzania.
 
@@ -150,7 +150,7 @@ Istnieje kilka sposobów można sprawdzić, czy powiodła się z usługą OMS do
 2. Wybierz **połączone źródła**.
 3. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania wymienione do liczby agentów i stan podczas ostatniego Odebrano dane.
    
-   ![connectedsources-OMS — ustawienia](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
+   ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
 4. Uwaga **identyfikator obszaru roboczego** wartością w lewej części strony ustawień.  Należy sprawdzić jego poprawność poniżej grupy zarządzania programu Operations Manager.  
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Aby potwierdzić integracji z poziomu konsoli operacje
@@ -159,7 +159,7 @@ Istnieje kilka sposobów można sprawdzić, czy powiodła się z usługą OMS do
 3. W zależności od rozwiązania, które aktywowano zostanie wyświetlony odpowiedni pakiet administracyjny, w wynikach wyszukiwania.  Na przykład jeśli włączono rozwiązania zarządzania alertami, pakiet administracyjny programu Microsoft System Center Advisor alertu Management jest na liście.
 4. Z **monitorowanie** wyświetlić, przejdź do **operacji zarządzania Suite\Health stanu** widoku.  Wybierz serwer zarządzania, w obszarze **stan serwera zarządzania** okienku i w **: widok szczegółów** okienko upewnij się, wartość właściwości **adres URI usługi uwierzytelniania** zgodny Identyfikator pakietu OMS obszaru roboczego.
    
-   ![OMS-OpsMgr-mg-authsvcuri-Property-MS](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
+   ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-oms"></a>Usuń integrację z usługą OMS
 Podczas integracji między grupą zarządzania programu Operations Manager a obszarem roboczym pakietu OMS nie są już potrzebne, istnieje kilka kroków wymaganych do prawidłowo Usuń połączenie i konfigurację w grupie zarządzania. Poniższa procedura ma możesz zaktualizować obszar roboczy OMS przez usunięcie odwołanie do grupy zarządzania, Usuń łączniki OMS, a następnie usuń pakiety administracyjne obsługujące OMS.   
@@ -172,8 +172,8 @@ Pakiety administracyjne rozwiązań włączono integrujące się z programem Ope
     > Upewnij się, nie masz żadnych niestandardowych pakietów administracyjnych z programu word Advisor lub IntelligencePack w nazwie przed kontynuowaniem, w przeciwnym razie następujące kroki usunąć je z grupą zarządzania.
     > 
 
-2. W wierszu polecenia powłoki wpisz`Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-3. Typ następnego`Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+2. W wierszu polecenia powłoki wpisz `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+3. Typ następnego `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 4. Aby usunąć wszystkie pakiety administracyjne, które pozostały, który ma zależność od innych pakietów administracyjnych programu System Center Advisor, należy użyć skryptu *RecursiveRemove.ps1* wcześniej pobranego z Centrum skryptów w witrynie TechNet.  
  
     > [!NOTE]
@@ -184,7 +184,7 @@ Pakiety administracyjne rozwiązań włączono integrujące się z programem Ope
 6. W obszarze **administracji**, wybierz pozycję **pakietów administracyjnych** węzeł i w **Wyszukaj:** wpisz **Advisor** i sprawdź, czy w grupie zarządzania nadal zaimportowaniu pakietów administracyjnych:
    
    * Microsoft System Center Advisor
-   * Microsoft System Center Advisor wewnętrzny
+   * Microsoft System Center Advisor Internal
 7. W portalu pakietu OMS kliknij kafelek **Ustawienia**.
 8. Wybierz **połączone źródła**.
 9. W tabeli w sekcji System Center Operations Manager powinna zostać wyświetlona nazwa grupy zarządzania, który chcesz usunąć z obszaru roboczego.  W kolumnie **dane o ostatniej**, kliknij przycisk **Usuń**.  
@@ -295,7 +295,7 @@ Aby usunąć dwa łączniki - Microsoft.SystemCenter.Advisor.DataConnector i ł�
 
 W przyszłości, jeśli planujesz ponowne nawiązywanie połączenia z obszarem roboczym pakietu OMS grupy zarządzania, należy ponownie zaimportować `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` pliku pakietu administracyjnego z najnowszych pakietu zbiorczego aktualizacji stosowane do grupy zarządzania.  Możesz znaleźć tego pliku w `%ProgramFiles%\Microsoft System Center 2012` lub `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` folderu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dodać funkcje i zbieranie danych, zobacz [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
 
 

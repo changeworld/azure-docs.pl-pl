@@ -1,11 +1,11 @@
 ---
 title: Aplikacja Azure Authenticator dla systemu Android | Dokumentacja firmy Microsoft
-description: "Aplikacja Microsoft Azure Authenticator może służyć do logowania na dostęp do zasobów roboczych. Aplikacji Azure Authenticator powiadomi użytkownika żądania oczekujące weryfikacji dwuskładnikowego poprzez wyświetlenie alert do urządzenia przenośnego."
+description: Aplikacja Microsoft Azure Authenticator może służyć do logowania na dostęp do zasobów roboczych. Aplikacji Azure Authenticator powiadomi użytkownika żądania oczekujące weryfikacji dwuskładnikowego poprzez wyświetlenie alert do urządzenia przenośnego.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
 ms.openlocfilehash: 349649e015aae7198d2c40efc3c1865cad087e8a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-authenticator-for-android"></a>Aplikacja Azure Authenticator dla systemu Android
 IT administrator może zalecić przy użyciu programu Microsoft Azure Authenticator logowanie na dostęp do zasobów roboczych. Ta aplikacja zawiera te dwie opcje logowania:

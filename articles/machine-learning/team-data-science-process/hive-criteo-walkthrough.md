@@ -1,8 +1,8 @@
 ---
-title: "Proces nauki danych zespołu w akcji — przy użyciu klastra usługi Azure HDInsight Hadoop w zestawie danych 1 TB | Dokumentacja firmy Microsoft"
-description: "Scenariusz end-to-end wykorzystujących klastra usługi Hadoop w usłudze HDInsight do tworzenia i wdrażania modelu przy użyciu dużych publicznie dostępnych dataset (1 TB) przy użyciu procesu nauki danych Team"
+title: Proces nauki danych zespołu w akcji — przy użyciu klastra usługi Azure HDInsight Hadoop w zestawie danych 1 TB | Dokumentacja firmy Microsoft
+description: Scenariusz end-to-end wykorzystujących klastra usługi Hadoop w usłudze HDInsight do tworzenia i wdrażania modelu przy użyciu dużych publicznie dostępnych dataset (1 TB) przy użyciu procesu nauki danych Team
 services: machine-learning,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
 ms.openlocfilehash: 760e08643fb3e71478fc899278591569da1d515b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Proces nauki danych zespołu w akcji — przy użyciu klastra usługi Azure HDInsight Hadoop na 1 TB zestawu danych
 
@@ -98,7 +98,7 @@ Po lewej stronie jest "Hadoop wiersza polecenia", czyli naszych najważniejszą 
 
 Teraz są skonfigurowane i gotowe do rozpoczęcia pierwszej części tego przewodnika: Eksploracja danych przy użyciu Hive i przygotowanie danych do usługi Azure Machine Learning.
 
-## <a name="hive-db-tables"></a>Utwórz gałąź bazy danych i tabel
+## <a name="hive-db-tables"></a> Utwórz gałąź bazy danych i tabel
 Aby utworzyć tabele programu Hive dla naszych Criteo zestawu danych, otwórz ***wiersza polecenia platformy Hadoop*** na pulpicie węzła głównego i wprowadź katalog Hive przez wprowadzenie polecenia
 
     cd %hive_home%\bin
@@ -124,7 +124,7 @@ Poniższy kod tworzy bazę danych "criteo", a następnie generuje 4 tabel:
 
 Podziel na dwóch różnych tabelach zestawu danych testowych, ponieważ jeden z dni jest dniem wolnym od pracy. Celem jest ustalenie modelu można wykryć różnice między dni wolnych i nie święta od szybkości kliknięć.
 
-Skrypt [&#95;przykładowe; hive &#95; Utwórz &#95; criteo &#95; &#95; bazy danych i &#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) są wyświetlane tutaj dla wygody:
+Skrypt [próbki&#95;hive&#95;utworzyć&#95;criteo&#95;bazy danych&#95;i&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) są wyświetlane tutaj dla wygody:
 
     CREATE DATABASE IF NOT EXISTS criteo;
     DROP TABLE IF EXISTS criteo.criteo_count;
@@ -165,7 +165,7 @@ Te tabele są zewnętrzne, więc możesz po prostu wskazać ich lokalizacji maga
         hive
    
      Teraz w wierszu polecenia REPL, wycinanie i wklejanie zapytanie go uruchomi.
-2. **Zapisywanie zapytań do pliku i wykonywania polecenia**: drugi to można zapisać zapytania do pliku .hql ([&#95;przykładowe; hive &#95; Utwórz &#95; criteo &#95; &#95; bazy danych i &#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) i następnie należy wydać następujące polecenie do wykonania zapytania:
+2. **Zapisywanie zapytań do pliku i wykonywania polecenia**: drugi to można zapisać zapytania do pliku .hql ([próbki&#95;hive&#95;utworzyć&#95;criteo&#95;bazy danych&#95;i&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a następnie należy wydać następujące polecenie, aby wykonać zapytanie:
    
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
@@ -194,11 +194,11 @@ Następnie powinny być widoczne następujące dane wyjściowe:
         criteo_train
         Time taken: 1.437 seconds, Fetched: 4 row(s)
 
-## <a name="exploration"></a>Eksploracja danych w gałęzi
+## <a name="exploration"></a> Eksploracja danych w gałęzi
 Teraz można przystąpić do eksploracji niektóre podstawowe dane w gałęzi. Rozpocznij od liczby przykłady w pociągu i przetestować tabel danych.
 
 ### <a name="number-of-train-examples"></a>Liczba train przykłady
-Zawartość [&#95;przykładowe; hive &#95; liczba &#95; train &#95; tabeli &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) są wyświetlane tutaj:
+Zawartość [próbki&#95;hive&#95;liczba&#95;uczenia&#95;tabeli&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) są wyświetlane tutaj:
 
         SELECT COUNT(*) FROM criteo.criteo_train;
 
@@ -212,7 +212,7 @@ Alternatywnie jedną może również wydać następujące polecenie z bin gałę
         hive -f C:\temp\sample_hive_count_criteo_train_table_examples.hql
 
 ### <a name="number-of-test-examples-in-the-two-test-datasets"></a>Wiele przykładów testu w dwóch zestawach testu
-Teraz określić liczbę przykłady w dwóch zestawach testu. Zawartość [&#95;przykładowe hive &#95; liczba &#95; criteo &#95; test &#95; dzień &#95; 22 &#95; tabeli &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) są tutaj:
+Teraz określić liczbę przykłady w dwóch zestawach testu. Zawartość [próbki&#95;hive&#95;liczba&#95;criteo&#95;test&#95;dzień&#95;22&#95;tabeli&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) są tutaj:
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_22;
 
@@ -227,7 +227,7 @@ W zwykły sposób, również może wywołać skrypt z gałęzi bin / directory m
 
 Na koniec należy zbadać liczba przykłady testu w zestawu danych testowych na podstawie dnia\_23.
 
-Polecenia w tym celu jest podobny do przedstawionego właśnie (dotyczą [&#95;przykładowe; hive &#95; liczba &#95; criteo &#95; test &#95; dzień &#95; 23 &#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
+Polecenia w tym celu jest podobny do przedstawionego właśnie (odwoływać się do [próbki&#95;hive&#95;liczba&#95;criteo&#95;test&#95;dzień&#95;23&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
@@ -237,7 +237,7 @@ Dzięki temu:
         Time taken: 253.089 seconds, Fetched: 1 row(s)
 
 ### <a name="label-distribution-in-the-train-dataset"></a>Dystrybucji etykiety w zestawie danych pociągu
-Rozkład etykiety w zestawie danych pociągu jest. Aby to sprawdzić, czy wyświetlać zawartość [&#95;przykładowe; hive &#95; criteo &#95; &#95;etykiety; #95 & dystrybucji; train &#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
+Rozkład etykiety w zestawie danych pociągu jest. Aby to sprawdzić, czy wyświetlać zawartość [próbki&#95;hive&#95;criteo&#95;etykiety&#95;dystrybucji&#95;uczenia&#95;table.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
 
         SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
 
@@ -250,7 +250,7 @@ Daje to dystrybucji etykiety:
 Należy pamiętać, że odsetek dodatnią etykiety około 3.3% (zgodne z oryginalnego zestawu danych).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Dystrybucje Histogram niektóre liczbowe zmiennych w zestawie danych pociągu
-Można użyć natywnego gałęzi "histogram\_liczbowa" funkcji, aby dowiedzieć się, jak wygląda rozkład zmiennych liczbowych. Poniżej przedstawiono zawartość [&#95;przykładowe; hive &#95; criteo &#95; histogram &#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
+Można użyć natywnego gałęzi "histogram\_liczbowa" funkcji, aby dowiedzieć się, jak wygląda rozkład zmiennych liczbowych. Poniżej przedstawiono zawartość [próbki&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -287,7 +287,7 @@ Daje to następujące czynności:
 PENETRACJA widok - rozłożenie kombinacja w gałęzi służy do generowania danych wyjściowych przypominającego SQL zamiast standardowego listy. Należy pamiętać, że w tej tabeli, pierwsza kolumna odpowiada Centrum bin, a drugi częstotliwości bin.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Przybliżony percentylu niektóre liczbowe zmiennych w zestawie danych pociągu
-Płynących ze zmiennymi liczbowych jest również obliczenia przybliżonej percentylu. Gałąź do natywnego "percentyl\_przybliżone" robi to firmie Microsoft. Zawartość [&#95;przykładowe; hive &#95; criteo &#95; przybliżonej &#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) są:
+Płynących ze zmiennymi liczbowych jest również obliczenia przybliżonej percentylu. Gałąź do natywnego "percentyl\_przybliżone" robi to firmie Microsoft. Zawartość [próbki&#95;hive&#95;criteo&#95;przybliżonej&#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) są:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
@@ -299,7 +299,7 @@ Daje to:
 Rozkład percentylu blisko związane zwykle do dystrybucji histogram żadnych liczbowa zmiennej.         
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Znajdź liczbę unikatowych wartości dla niektórych podzielone na kategorie kolumn w zestawie danych pociągu
-Kontynuowanie Eksploracja danych, Znajdź, dla niektórych kolumn podzielone na kategorie, liczbę unikatowych wartości, które podejmują. Aby to zrobić, Pokaż zawartość [&#95;przykładowe; hive &#95; criteo &#95; unikatowy &#95; wartości &#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
+Kontynuowanie Eksploracja danych, Znajdź, dla niektórych kolumn podzielone na kategorie, liczbę unikatowych wartości, które podejmują. Aby to zrobić, Pokaż zawartość [próbki&#95;hive&#95;criteo&#95;unikatowy&#95;wartości&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
 
         SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
 
@@ -310,7 +310,7 @@ Daje to:
 
 Należy pamiętać, że Col15 ma unikatowe wartości 19M! Przy użyciu prostego technik, takich jak "hot jeden kodowanie" do kodowania tych wymiarów wysokiej zmienne podzielone na kategorie nie jest możliwe. W szczególności wywołana metoda zaawansowanych, niezawodnych [uczenia z liczby](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) dla wydajne rozwiązania problemu tego problemu jest wyjaśniono i przedstawiono.
 
-Na koniec sprawdź liczbę unikatowych wartości dla niektórych innych kategorii kolumn oraz. Zawartość [&#95;przykładowe; hive &#95; criteo &#95; unikatowy &#95; &#95;wartości wielu &#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) są:
+Na koniec sprawdź liczbę unikatowych wartości dla niektórych innych kategorii kolumn oraz. Zawartość [próbki&#95;hive&#95;criteo&#95;unikatowy&#95;wartości&#95;wiele&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) są:
 
         SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
         COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
@@ -325,7 +325,7 @@ Ponownie należy pamiętać, że z wyjątkiem Col20, innych kolumn ma wiele unik
 
 ### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>Wystąpienie wspólnej liczby par podzielone na kategorie zmiennych w zestawie danych pociągu
 
-Liczby wystąpień wspólnej par podzielone na kategorie zmiennych jest również przydatne. To można określić, używając kodu w [&#95;przykładowe; hive &#95; criteo &#95; sparowanego &#95; podzielone na kategorie &#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
+Liczby wystąpień wspólnej par podzielone na kategorie zmiennych jest również przydatne. Można to ustalić przy użyciu kodu w [próbki&#95;hive&#95;criteo&#95;sparowanego&#95;podzielone na kategorie&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
@@ -348,10 +348,10 @@ Odwróć kolejność zliczeń według ich wystąpienia i Znajdź najwyżej 15 w 
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a>Dół przykładowych zestawów danych dla usługi Azure Machine Learning
+## <a name="downsample"></a> Dół przykładowych zestawów danych dla usługi Azure Machine Learning
 Posiadanie przedstawione zestawy danych i przedstawiono sposób wykonywania tego typu eksploracji zmiennych (w tym kombinacji), dół przykładowych zestawów danych, dzięki czemu mogą być wbudowane w modelach w usłudze Azure Machine Learning. Odwołania, który koncentruje się problem: podany zestaw atrybutów przykład (funkcja wartości z Col2 - Col40), prognozowania, jeśli Col1 jest 0 (nie kliknij) lub 1 (kliknij).
 
-W dół przykładowych zestawów danych pociągu i testu % 1 oryginalny rozmiar, użyj funkcji macierzystej RAND() gałęzi. Skrypt dalej [&#95;przykładowe; hive &#95; criteo &#95; próbkowanie &#95; train &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) robi to train zestawu danych:
+W dół przykładowych zestawów danych pociągu i testu % 1 oryginalny rozmiar, użyj funkcji macierzystej RAND() gałęzi. Skrypt dalej [próbki&#95;hive&#95;criteo&#95;próbkowanie&#95;uczenia&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) robi to train zestawu danych:
 
         CREATE TABLE criteo.criteo_train_downsample_1perc (
         col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
@@ -368,7 +368,7 @@ Daje to:
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-Skrypt [&#95;przykładowe; hive &#95; criteo &#95; próbkowanie &#95; test &#95; dzień &#95; 22 &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) zrobi to za dane testowe dzień\_22:
+Skrypt [próbki&#95;hive&#95;criteo&#95;próbkowanie&#95;test&#95;dzień&#95;22&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) zrobi to za dane testowe dzień\_22:
 
         --- Now for test data (day_22)
 
@@ -386,7 +386,7 @@ Daje to:
         Time taken: 317.66 seconds
 
 
-Na koniec skryptu [&#95;przykładowe; hive &#95; criteo &#95; próbkowanie &#95; test &#95; dzień &#95; 23 &#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) zrobi to za dane testowe dzień\_23:
+Na koniec skryptu [próbki&#95;hive&#95;criteo&#95;próbkowanie&#95;test&#95;dzień&#95;23&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) zrobi to za dane testowe dzień\_23:
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -406,7 +406,7 @@ Dzięki temu można przystąpić do naszej dół train próbki i testów zestaw�
 
 Brak ważnych finalnych przed przejściem do usługi Azure Machine Learning, która dotyczy liczby tabeli. W następnej sekcji podrzędne Tabela liczba została szczegółowo opisana w niektórych.
 
-## <a name="count"></a>Krótkie omówienie w tabeli liczby
+## <a name="count"></a> Krótkie omówienie w tabeli liczby
 Jak widać, kilku zmiennych podzielone na kategorie ma bardzo duże wymiary. W tym przewodnikiem zaawansowanych technik o nazwie [uczenia z liczby](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) do kodowania tych zmiennych w wydajne, są prezentowane niezawodny sposób. Więcej informacji na temat tej metody jest łączem.
 
 [!NOTE]
@@ -415,7 +415,7 @@ Jak widać, kilku zmiennych podzielone na kategorie ma bardzo duże wymiary. W t
 
 Tworzenia liczba tabel na danych o liczbie, należy użyć danych do folderu raw/liczby. W sekcji modelowania użytkowników przedstawiono sposób tworzenia tych tabel liczba kategorii funkcji od początku, lub też używać tabeli liczbę wstępnie skompilowanych dla ich eksploracji. W jaki sposób podczas "wstępnie skompilowany liczba tabel" są określane, możemy oznacza przy użyciu tabel liczba, które zostały opublikowane. Szczegółowe informacje na temat dostęp do tych tabel znajdują się w następnej sekcji.
 
-## <a name="aml"></a>Tworzenie modelu przy użyciu usługi Azure Machine Learning
+## <a name="aml"></a> Tworzenie modelu przy użyciu usługi Azure Machine Learning
 Nasz model budowania procesu w usłudze Azure Machine Learning obejmuje następujące kroki:
 
 1. [Pobierz dane z tabele programu Hive w usłudze Azure Machine Learning](#step1)
@@ -426,7 +426,7 @@ Nasz model budowania procesu w usłudze Azure Machine Learning obejmuje następu
 
 Teraz można przystąpić do tworzenia modeli w usłudze Azure Machine Learning studio. Nasze dół próbki danych zostanie zapisany jako tabele programu Hive w klastrze. Użyj usługi Azure Machine Learning **i zaimportuj dane** modułu do tych danych do odczytu. Poświadczenia, aby uzyskać dostęp do konta magazynu tego klastra znajdują się w poniżej.
 
-### <a name="step1"></a>Krok 1: Pobierz dane z tabel gałęzi do usługi Azure Machine Learning, za pomocą modułu importowanie danych i wybrać go do eksperymentu uczenia maszynowego
+### <a name="step1"></a> Krok 1: Pobierz dane z tabel gałęzi do usługi Azure Machine Learning, za pomocą modułu importowanie danych i wybrać go do eksperymentu uczenia maszynowego
 Najpierw wybrać **+ nowy** -> **EKSPERYMENTU** -> **pusty eksperyment**. Następnie z **wyszukiwania** pole u góry po lewej, wyszukaj "Import Data". Przeciągnij i upuść **i zaimportuj dane** modułu do eksperymentu kanwy (środkowej części ekranu), aby użyć modułu programu dla dostępu do danych.
 
 Co to jest **i zaimportuj dane** wygląda jak podczas pobierania danych z tabeli Hive:
@@ -460,7 +460,7 @@ Aby wybrać zapisany zestaw danych do użycia w eksperymencie machine learning, 
 > 
 > 
 
-### <a name="step2"></a>Krok 2: Tworzenie prostego eksperymentu w uczenie maszynowe Azure do prognozowania kliknięć / nie kliknięcia
+### <a name="step2"></a> Krok 2: Tworzenie prostego eksperymentu w uczenie maszynowe Azure do prognozowania kliknięć / nie kliknięcia
 Nasze eksperymentu uczenia Maszynowego Azure wygląda następująco:
 
 ![Machine Learning eksperymentu](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -537,7 +537,7 @@ Ten fragment pokazuje, czy w kolumnach zliczane uzyskać liczby i prawdopodobie�
 
 Teraz można przystąpić do tworzenia modelu uczenia maszynowego Azure przy użyciu tych przekształcone zestawów danych. W następnej sekcji opisano, jak to zrobić.
 
-### <a name="step3"></a>Krok 3: Tworzenie uczenia i klasyfikacja modelu
+### <a name="step3"></a> Krok 3: Tworzenie uczenia i klasyfikacja modelu
 
 #### <a name="choice-of-learner"></a>Wybór uczeń
 Najpierw musisz wybrać uczeń. Korzystanie z drzewa decyzji boosted dwuklasowych jako naszych uczeń. Poniżej przedstawiono wartości domyślne dla tego uczeń:
@@ -556,7 +556,7 @@ Po uzyskaniu nauczonego modelu wszystko jest gotowe do wyniku na zestawu danych 
 
 ![Moduł Score Model (Generowanie wyników przez model)](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a>Krok 4: Ocena modelu
+### <a name="step4"></a> Krok 4: Ocena modelu
 Na koniec należy analizowanie wydajności modelu. W przypadku problemów klasyfikacji (binarnego) dwie klasy dobrej miary jest zazwyczaj, AUC. To wizualizować, Podłączanie **Score Model** moduł **Evaluate Model** modułu dla tego. Kliknięcie przycisku **Visualize** na **Evaluate Model** modułu daje grafiki podobny do następującego:
 
 ![Ocena modelu BDT modułu](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -565,7 +565,7 @@ W danych binarnych (lub dwie klasy) klasyfikacji problemów, dobrym miara dokła
 
 ![Wizualizuj modułu Evaluate Model](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a>Krok 5: Opublikuj model jako usługę sieci Web
+### <a name="step5"></a> Krok 5: Opublikuj model jako usługę sieci Web
 Umożliwia publikowanie modelu uczenia maszynowego Azure jako usługi sieci web z co najmniej problemów jest przydatna funkcja dokonywania szeroko dostępne. Po zakończeniu tej operacji, każda osoba, która wykonywania wywołań do usługi sieci web z danych wejściowych muszą prognoz dotyczących, czy usługa sieci web używa modelu do zwrócenia tych prognoz.
 
 W tym celu należy najpierw zapisać uczonego modelu obiektu Trenowanego modelu. Jest to realizowane przez kliknięcie prawym przyciskiem myszy **Train Model** modułu i przy użyciu **Zapisz jako Uczonego modelu** opcji.
