@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/03/2018
 ms.author: bonova
-ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -69,6 +69,23 @@ W poniższej tabeli przedstawiono kilka właściwości dostępne za pośrednictw
 
 ![Logowanie jednokrotne](./media/sql-database-managed-instance/sso.png) 
 
+## <a name="vcore-based-purchasing-model"></a>na podstawie vCore model kupna
+
+Model kupna vCore zapewnia elastyczność, przejrzystości, formantowi i łatwe do tłumaczenia lokalne wymagania obciążenia w chmurze. Ten model umożliwia skalowanie możliwości obliczeniowych, pamięci oraz Magazyn ustalane na podstawie jego potrzeb obciążenia. VCore model również jest uprawniona do się do 30 procent oszczędności za pomocą [korzyści Użyj hybrydowe platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+
+Wirtualne podstawowe reprezentuje Procesora logicznego oferowany z opcją wybór między generacje sprzętu.
+- Logiczne procesory CPU 4. generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) z zegarem 2,4 GHz.
+- Gen 5 procesorów logicznych są oparte na Intel E5-2673 w wersji 4 (Broadwell) 2.3 GHz procesorów.
+
+Poniższa tabela ułatwia zrozumienie sposobu wybierania optymalną konfigurację obliczeniowych, pamięci, magazynu i zasobów we/wy.
+
+||4. generacja|5. generacja|
+|----|------|-----|
+|Sprzęt|Intel E5-2673 v3 (Haswell) procesorów 2,4 GHz dołączonych dysków SSD vCore = 1 PZ (fizyczne rdzenie)|Intel E5-2673 w wersji 4 (Broadwell) 2.3 GHz procesorów, szybkie eNVM dysków SSD, vCore = LP 1 (hyper wątek)|
+|Poziomy wydajności|8, 16, 24 vCores|8, 16, 24, 32, 40 vCores|
+|Memory (Pamięć)|7GB na vCore|5.5GB na vCore|
+||||
+
 ## <a name="managed-instance-service-tier"></a>Zarządzane wystąpienia warstwy usług
 
 Wystąpienie zarządzanych jest początkowo dostępne w warstwie usług pojedynczego - ogólnego przeznaczenia — przeznaczony dla aplikacji z typowych dostępności i wymogach opóźnienia we/wy.
@@ -89,11 +106,11 @@ Poniżej opisano najważniejsze funkcje ogólnego przeznaczenia warstwy usług:
 
 |Cecha | Opis|
 |---|---|
-| Liczba vCores * | 8, 16, 24|
+| Liczba vCores * | 8, 16, 24 (gł 4)<br>8, 16, 24, 32, 40 (Gen5)|
 | Wersja programu SQL Server / kompilacji | SQL Server najnowszych (dostępne) |
 | Minimalny rozmiar magazynu | 32 GB |
 | Maksymalny rozmiar magazynu | 8 TB |
-| Maksymalna liczba magazyn na bazę danych | 4 TB |
+| Maksymalna liczba magazyn na bazę danych | 8 TB |
 | Oczekiwano magazynu IOPS | 500-7500 IOPS dla pliku danych (w zależności od danych plików). Zobacz [magazyn w warstwie Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | Liczba plików danych (wiersze) na bazie danych | Wiele | 
 | Liczba plików dziennika (dziennik) na bazę danych | 1 | 
@@ -106,7 +123,7 @@ Poniżej opisano najważniejsze funkcje ogólnego przeznaczenia warstwy usług:
 | Portalu pomocy technicznej | Yes|
 |||
 
-\* Wirtualne podstawowe reprezentuje Procesora logicznego oferowany z opcją wybór między generacje sprzętu. Gen 4 procesory logiczne są oparte na Intel E5-2673 v3 (Haswell) procesorów 2,4 GHz i procesorów logicznych Gen 5 są oparte na Intel E5-2673 w wersji 4 (Broadwell) 2.3 GHz procesorów.  
+\* Wirtualne podstawowe reprezentuje Procesora logicznego oferowany z opcją wybór między generacje sprzętu. Gen 4 procesory logiczne są oparte na Intel E5-2673 v3 (Haswell) procesorów 2,4 GHz i procesorów logicznych Gen 5 są oparte na Intel E5-2673 w wersji 4 (Broadwell) 2.3 GHz procesorów. 
 
 ## <a name="advanced-security-and-compliance"></a>Zaawansowane zabezpieczenia i zgodność 
 
@@ -152,7 +169,7 @@ Usługa SQL Database umożliwia centralne zarządzanie tożsamościami użytkown
 Uwierzytelnianie bazy danych SQL odnosi się do sposobu użytkowników potwierdzenia tożsamości podczas nawiązywania połączenia z bazą danych. Usługa SQL Database obsługuje dwa typy uwierzytelniania:  
 
 - Uwierzytelnianie SQL, które używa nazwy użytkownika i hasła.
-- Azure uwierzytelnianie usługi Active Directory, który używa tożsamości zarządzanych przez usługę Azure Active Directory i jest obsługiwana w przypadku domen zarządzanych i zintegrowane.  
+- Azure uwierzytelnianie usługi Active Directory, który używa tożsamości zarządzanych przez usługę Azure Active Directory i jest obsługiwana w przypadku domen zarządzanych i zintegrowane. 
 
 ### <a name="authorization"></a>Autoryzacja
 
@@ -160,11 +177,11 @@ Autoryzacji odwołuje się do użytkownika używanego można wykonać w bazie da
 
 ## <a name="database-migration"></a>Migracja bazy danych 
 
-Zarządzane wystąpienia obiektów docelowych użytkownika scenariusze migracji masowej bazy danych z lokalnymi lub IaaS implementacje bazy danych.  Zarządzane wystąpienie obsługuje kilka opcji migracji bazy danych: 
+Zarządzane wystąpienia obiektów docelowych użytkownika scenariusze migracji masowej bazy danych z lokalnymi lub IaaS implementacje bazy danych. Zarządzane wystąpienie obsługuje kilka opcji migracji bazy danych: 
 
 ### <a name="data-migration-service"></a>Usługi danych migracji
 
-Usługa Azure bazy danych migracji jest pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemowego migracji z wielu źródeł bazy danych do platformy Azure danych z minimalnym czasem przestojów.   Ta usługa upraszcza zadania wymagane do przenoszenia istniejącego innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrażania obejmują usługi Azure SQL Database, zarządzane wystąpienia i programu SQL Server w maszynie Wirtualnej platformy Azure w publicznej wersji zapoznawczej. Zobacz [jak przeprowadzić migrację z lokalnej bazy danych do wystąpienia zarządzane przy użyciu DMS](https://aka.ms/migratetoMIusingDMS).  
+Usługa Azure bazy danych migracji jest pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemowego migracji z wielu źródeł bazy danych do platformy Azure danych z minimalnym czasem przestojów. Ta usługa upraszcza zadania wymagane do przenoszenia istniejącego innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrażania obejmują usługi Azure SQL Database, zarządzane wystąpienia i programu SQL Server w maszynie Wirtualnej platformy Azure w publicznej wersji zapoznawczej. Zobacz [jak przeprowadzić migrację z lokalnej bazy danych do wystąpienia zarządzane przy użyciu DMS](https://aka.ms/migratetoMIusingDMS). 
 
 ### <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie  
 
@@ -174,7 +191,7 @@ Metoda migracji wykorzystuje kopii zapasowych SQL do przechowywania obiektów bl
 
 Zarządzane wystąpienia ma na celu dostarczenia blisko powierzchni 100% zgodności z lokalnym programem SQL Server przychodzących etapy, aż do ogólnej dostępności usługi. Dla funkcji i listy porównanie, zobacz [wspólne funkcje SQL](sql-database-features.md).
  
-Zarządzane wystąpienia zgodności z poprzednimi wersjami obsługuje do baz danych SQL 2008.  Migracja bezpośrednio z serwerami baz danych programu SQL 2005 jest obsługiwana, poziom zgodności bazy danych SQL 2005 zmigrowane zostały zaktualizowane do programu SQL 2008. 
+Zarządzane wystąpienia zgodności z poprzednimi wersjami obsługuje do baz danych SQL 2008. Migracja bezpośrednio z serwerami baz danych programu SQL 2005 jest obsługiwana, poziom zgodności bazy danych SQL 2005 zmigrowane zostały zaktualizowane do programu SQL 2008. 
  
 Poniższy diagram przedstawia zgodność powierzchni w wystąpieniu zarządzane:  
 
@@ -182,7 +199,7 @@ Poniższy diagram przedstawia zgodność powierzchni w wystąpieniu zarządzane:
 
 ### <a name="key-differences-between-sql-server-on-premises-and-managed-instance"></a>Podstawowe różnice między lokalnej instalacji programu SQL Server oraz wystąpienia zarządzane 
 
-Zarządzane wystąpienia korzyści z jest zawsze do uaktualnia w chmury, co oznacza, że niektóre funkcje w lokalnym programie SQL Server mogą być nieaktualne, wycofane lub mieć alternatyw.  Istnieją szczególnych przypadkach, gdy potrzeba rozpoznaje, że poszczególnych funkcji działa w sposób nieco inny lub usługa nie jest uruchomiona w środowisku, które nie pełni kontroli narzędzi: 
+Zarządzane wystąpienia korzyści z jest zawsze do uaktualnia w chmury, co oznacza, że niektóre funkcje w lokalnym programie SQL Server mogą być nieaktualne, wycofane lub mieć alternatyw. Istnieją szczególnych przypadkach, gdy potrzeba rozpoznaje, że poszczególnych funkcji działa w sposób nieco inny lub usługa nie jest uruchomiona w środowisku, które nie pełni kontroli narzędzi: 
 
 - Wysokiej dostępności jest wbudowana i wstępnie skonfigurowane. Zawsze włączone funkcje wysokiej dostępności nie są widoczne w taki sam sposób jak w implementacji SQL IaaS 
 - Automatyczne kopie zapasowe i punktu w czasie przywracania. Odbiorcy mogą inicjować `copy-only` kopie zapasowe, które nie zakłóca automatyczne łańcuch kopii zapasowych. 
@@ -192,7 +209,7 @@ Zarządzane wystąpienia korzyści z jest zawsze do uaktualnia w chmury, co ozna
  
 ### <a name="managed-instance-administration-features"></a>Funkcje administracyjne wystąpienia zarządzane  
 
-Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co jest ważne, większość dla firm. Wiele działań administratora/administrator systemu nie są wymagane, lub są proste. Na przykład systemu operacyjnego / RDBMS instalacji i aktualizacji dynamicznej wystąpienie zmiana rozmiaru i konfiguracji, kopie zapasowe, replikacji bazy danych (w tym systemowych baz danych), konfiguracja wysokiej dostępności i konfigurację danych monitorowania kondycji i wydajności strumienie.  
+Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co jest ważne, większość dla firm. Wiele działań administratora/administrator systemu nie są wymagane, lub są proste. Na przykład systemu operacyjnego / RDBMS instalacji i aktualizacji dynamicznej wystąpienie zmiana rozmiaru i konfiguracji, kopie zapasowe, replikacji bazy danych (w tym systemowych baz danych), konfiguracja wysokiej dostępności i konfigurację danych monitorowania kondycji i wydajności strumienie. 
 
 > [!IMPORTANT]
 > Aby uzyskać listę obsługiwanych, częściowo obsługiwane i nieobsługiwane funkcje, zobacz [funkcje bazy danych SQL](sql-database-features.md). Aby uzyskać listę różnice T-SQL w zarządzanych wystąpień i SQL Server, zobacz [zarządzane wystąpienia T-SQL różnice z programu SQL Server](sql-database-managed-instance-transact-sql-information.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9b3c4efc712ebe9c0fe209d2ca0478367872d3b7
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: 9d5e189720a92ca17289d0c9717e9e10bf8691d1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Sieci monitora wydajności rozwiązania na platformie Azure
 
@@ -250,7 +250,9 @@ Topologia pokazano mapy topologii warstwy 3 i nie zawiera urządzenia warstwy 2 
 
 Wszystkie dane, które jest narażonych graficznie za pośrednictwem pulpitu nawigacyjnego monitora wydajności sieci i przechodzenia strony jest również dostępna natywnie w [wyszukiwania analizy dzienników](log-analytics-log-search-new.md). Można wykonywać analizy interakcyjnej danych w repozytorium i skorelować danych z różnych źródeł. Możesz również utworzyć niestandardowe alertów i widoków i eksportowanie danych do programu Excel, usłudze Power BI lub możliwe do udostępnienia łącza.  **Typowych kwerend** obszar na pulpicie nawigacyjnym ma niektóre przydatne zapytań, które służy jako punkt początkowy do tworzenia własnych kwerendy i raporty. 
 
- 
+##<a name="pricing"></a>Cennik
+
+Dostępne są informacje o cenach [online](log-analytics-network-performance-monitor-pricing-faq.md).
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii 
 
