@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/11/2017
 ms.author: sngun
-ms.openlocfilehash: 0ddc3187e9fc0664838dd07f781f4d7e2e4a7fe0
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 405fcf190ab03b84ec463da8a1942adb8e326498
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Połączenie danych: Dowiedz się więcej o danych strumienia danych wejściowych ze zdarzeń w celu usługi analiza strumienia
 Połączenie danych do zadania usługi Stream Analytics jest strumienia zdarzeń źródła danych, które są określone jako zadanie *wejściowych*. Analiza strumienia ma najwyższej jakości integracji z źródeł strumienia danych Azure, w tym [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Centrum IoT Azure](https://azure.microsoft.com/services/iot-hub/), i [magazynu obiektów Blob Azure](https://azure.microsoft.com/services/storage/blobs/). Tych źródeł danych wejściowych można z tej samej subskrypcji platformy Azure jako zadanie analizy lub innej subskrypcji.
@@ -176,7 +176,7 @@ FROM Input
 ````
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Znasz opcji połączenia danych na platformie Azure dla Twojego zadania usługi analiza strumienia. Aby dowiedzieć się więcej na temat usługi Stream Analytics, zobacz:

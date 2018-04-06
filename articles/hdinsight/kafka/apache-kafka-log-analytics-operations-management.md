@@ -1,30 +1,30 @@
 ---
-title: Dziennika analizy dla Apache Kafka - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak używać usługi Operations Management Suite do analizowania dzienników z klastra Apache Kafka w usłudze Azure HDInsight."
+title: Dziennika analizy dla Apache Kafka — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak umożliwia analizowanie dzienników z klastra Apache Kafka na Azure HDInsight Log Analytics.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 6fcb925829e33704c94c96209a61346b0404e13b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 15107a0fbcd6242ac13f366b16be10efaeaad6bb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla Kafka Apache na HDInsight
 
-Jak analizować dzienniki generowane przez Kafka Apache na HDInsight przy użyciu programu Microsoft Operations Management Suite.
+Jak analizować dzienniki generowane przez Kafka Apache na HDInsight przy użyciu analizy dzienników.
 
-## <a name="enable-oms-for-kafka"></a>Włącz OMS dla Kafka
+## <a name="enable-log-analytics-for-kafka"></a>Włącz analizy dzienników dla Kafka
 
 Procedurę włączania analizy dzienników dla usługi HDInsight są takie same dla wszystkich klastrów usługi HDInsight. Aby zrozumieć, jak utworzyć i skonfigurować wymagane usługi, użyj następujących łączy:
 
@@ -38,12 +38,12 @@ Procedurę włączania analizy dzienników dla usługi HDInsight są takie same 
     > Można również skonfigurować klaster, aby użyć analizy dzienników przy użyciu `Enable-AzureRmHDInsightOperationsManagementSuite` polecenia cmdlet. To polecenie cmdlet wymaga następujących informacji:
     >
     > * Nazwa klastra usługi HDInsight.
-    > * Identyfikator obszaru roboczego analizy dzienników. Identyfikator obszaru roboczego można znaleźć w obszarze roboczym pakietu OMS obszaru roboczego analizy dzienników.
-    > * Klucz podstawowy połączenia OMS. Aby znaleźć klucz podstawowy, wybierz wystąpienie analizy dziennika, a następnie __portalu OMS__. Wybierz z portalu OMS __ustawienia__, __połączonych źródeł__, a następnie __serwerów z systemem Linux__.
+    > * Identyfikator obszaru roboczego analizy dzienników. Identyfikator obszaru roboczego można znaleźć w obszarze roboczym analizy dzienników.
+    > * Klucz podstawowy połączenia analizy dzienników. Aby znaleźć klucz podstawowy, wybierz wystąpienie analizy dzienników, a następnie __portalu OMS__. Wybierz z portalu OMS __ustawienia__, __połączonych źródeł__, a następnie __serwerów z systemem Linux__.
 
 
 > [!IMPORTANT]
-> może potrwać około 20 minut, zanim dane są dostępne dla analizy dzienników.
+> Może potrwać około 20 minut, zanim dane są dostępne dla analizy dzienników.
 
 ## <a name="query-logs"></a>Dzienniki zapytania
 
@@ -51,14 +51,14 @@ Procedurę włączania analizy dzienników dla usługi HDInsight są takie same 
 
 2. Wybierz __dziennika wyszukiwania__. W tym miejscu można wyszukiwać dane zbierane z Kafka. Poniżej przedstawiono niektóre przykładowe wyszukiwania:
 
-    * Użycie dysku:`Type=Perf ObjectName="Logical Disk" (CounterName="Free Megabytes")  InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by   Computer interval 1HOUR`
-    * Użycie procesora CPU:`Type:Perf CounterName="% Processor Time" InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by Computer interval 1HOUR`
-    * Wiadomości przychodzących na sekundę:`Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-MessagesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s interval 1HOUR`
-    * Przychodzące bajty na sekundę:`Type=metrics_kafka_CL HostName_s="wn0-kafka" InstanceName_s="kafka-BrokerTopicMetrics-BytesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) interval 1HOUR`
-    * Wychodzące bajty na sekundę:`Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-BytesOutPerSec-Count" |  measure avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) interval 1HOUR`
+    * Użycie dysku: `Type=Perf ObjectName="Logical Disk" (CounterName="Free Megabytes")  InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by   Computer interval 1HOUR`
+    * Użycie procesora CPU: `Type:Perf CounterName="% Processor Time" InstanceName="_Total" Computer='hn*-*' or Computer='wn*-*' | measure avg(CounterValue) by Computer interval 1HOUR`
+    * Wiadomości przychodzących na sekundę: `Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-MessagesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s interval 1HOUR`
+    * Przychodzące bajty na sekundę: `Type=metrics_kafka_CL HostName_s="wn0-kafka" InstanceName_s="kafka-BrokerTopicMetrics-BytesInPerSec-Count" | measure avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) interval 1HOUR`
+    * Wychodzące bajty na sekundę: `Type=metrics_kafka_CL ClusterName_s="your_kafka_cluster_name" InstanceName_s="kafka-BrokerTopicMetrics-BytesOutPerSec-Count" |  measure avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) interval 1HOUR`
 
     > [!IMPORTANT]
-    > Zastąp wartości zapytania Twoje informacje dotyczące klastra. Na przykład `ClusterName_s` należy ustawić nazwę klastra. `HostName_s`należy ustawić nazwę domeny z węzłem procesu roboczego w klastrze.
+    > Zastąp wartości zapytania Twoje informacje dotyczące klastra. Na przykład `ClusterName_s` należy ustawić nazwę klastra. `HostName_s` należy ustawić nazwę domeny z węzłem procesu roboczego w klastrze.
 
     Możesz też wprowadzić `*` aby wyszukać wszystkie typy rejestrowanych. Obecnie dostępne dla zapytań są następujące dzienniki:
 

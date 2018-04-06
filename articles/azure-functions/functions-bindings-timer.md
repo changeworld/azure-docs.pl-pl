@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2bc2559dc1cf737e018895ffae61d0da0e56fc85
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla usługi Azure Functions 
 
@@ -168,11 +168,11 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Typ** | Nie dotyczy | Musi być równa "timerTrigger". Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure.|
-|**Kierunek** | Nie dotyczy | Należy wybrać opcję "w". Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure. |
+|**type** | Nie dotyczy | Musi być równa "timerTrigger". Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure.|
+|**direction** | Nie dotyczy | Należy wybrać opcję "w". Ta właściwość ma wartość automatycznie, podczas tworzenia wyzwalacza w portalu Azure. |
 |**Nazwa** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt czasomierza w kodzie funkcji. | 
-|**schedule**|**ScheduleExpression**|A [wyrażenie CRON](#cron-expressions) lub [TimeSpan](#timespan) wartość. A `TimeSpan` można używać tylko dla aplikacji funkcja, która działa na Plan usługi App Service. Można umieścić wyrażenia harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na aplikacji, nazwa otoczona ustawienia **%** znaków, jak w poniższym przykładzie: "% NameOfAppSettingWithScheduleExpression %". |
-|**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowiska uruchomieniowego rozpoczyna się, gdy funkcja aplikacji zostanie wznowiona po przejście w stan bezczynności z powodu nieaktywności. gdy aplikacji funkcji uruchamia się ponownie, z powodu zmian funkcji i gdy aplikacji funkcji skaluje się. Dlatego **runOnStartup** powinna rzadko Jeśli kiedykolwiek ustawić `true`, ponieważ spowoduje to, że kod wykonać w czasie wysokiej nieprzewidywalne. Jeśli trzeba wywołać funkcję poza harmonogramem czasomierza, można utworzyć drugi funkcję z typem różnych wyzwalacza i udostępniać kod między dwie funkcje. Na przykład, aby wyzwolić we wdrożeniu można [Dostosowywanie wdrożenia](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) do wywołania funkcji second dokonując żądania HTTP, po zakończeniu wdrożenia.|
+|**schedule**|**ScheduleExpression**|A [wyrażenie CRON](#cron-expressions) lub [TimeSpan](#timespan) wartość. A `TimeSpan` można używać tylko dla aplikacji funkcja, która działa na Plan usługi App Service. Można umieścić wyrażenia harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na aplikacji, nazwa otoczona ustawienia **%** znaków, jak w poniższym przykładzie: "% ScheduleAppSetting %". |
+|**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowiska uruchomieniowego rozpoczyna się, gdy funkcja aplikacji zostanie wznowiona po przejście w stan bezczynności z powodu nieaktywności. gdy aplikacji funkcji uruchamia się ponownie, z powodu zmian funkcji i gdy aplikacji funkcji skaluje się. Dlatego **runOnStartup** powinna rzadko Jeśli kiedykolwiek ustawić `true`, ponieważ spowoduje to, że kod wykonać w czasie wysokiej nieprzewidywalne.|
 |**useMonitor**|**UseMonitor**|Ustaw `true` lub `false` wskazująca, czy harmonogram powinny być monitorowane. Harmonogram monitorowania utrzymuje wystąpień harmonogram, aby pomóc w zapewnieniu, że harmonogram jest zachowywane poprawnie, nawet w przypadku ponownego uruchomienia wystąpienia aplikacji funkcji. Jeśli nie został ustawiony jawnie, wartością domyślną jest `true` harmonogramów, które mają większy niż 1 minuta interwał cyklu. Harmonogramy, które mogą powodować więcej niż raz na minutę, wartością domyślną jest `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -1,11 +1,11 @@
 ---
-title: "Linux obliczeń maszyny wirtualne w klastrze HPC Pack | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć i używać klastra HPC Pack Linux komputerowych o wysokiej wydajności (HPC) obciążeń na platformie Azure"
+title: Linux obliczeń maszyny wirtualne w klastrze HPC Pack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i używać klastra HPC Pack Linux komputerowych o wysokiej wydajności (HPC) obciążeń na platformie Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 4d080fdd-5ffe-4f54-a78d-4c818f6eb3fb
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Rozpoczynanie pracy z węzłami obliczeniowymi systemu Linux w klastrze pakietu HPC Pack na platformie Azure
 Konfigurowanie [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) klastra na platformie Azure, zawierającą węzła głównego z systemem Windows Server i kilka obliczeniowe węzłów z systemem obsługiwanych dystrybucji systemu Linux. Poznaj opcje przenoszenia danych między węzły systemu Linux i Windows węzłem głównym klastra. Dowiedz się, jak można przesłać zadań HPC systemu Linux do klastra.
@@ -296,7 +296,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) narzędz
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Spróbuj skalowaniu większą liczbę węzłów klastra lub działających obciążeń systemu Linux w klastrze. Na przykład zobacz [Uruchom NAMD z pakietem Microsoft HPC w systemie Linux obliczeniowe węzłów na platformie Azure](hpcpack-cluster-namd.md).
 * Spróbuj klaster z [maszyn wirtualnych z funkcją RDMA, obliczeniowych](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) uruchamiać obciążenia na MPI. Na przykład zobacz [klastra uruchom OpenFOAM z pakietem Microsoft HPC na RDMA systemu Linux na platformie Azure](hpcpack-cluster-openfoam.md).
 * Jeśli interesuje Cię w pracy z Linux węzłów w klastrze HPC Pack lokalnych, zobacz [wskazówki TechNet](https://technet.microsoft.com/library/mt595803.aspx).

@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure - Azure CLI 2.0 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystać z połączenia Rozwiązywanie problemów z możliwości obserwatora sieciowego Azure za pomocą 2.0 interfejsu wiersza polecenia platformy Azure."
+title: Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure - Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z połączenia Rozwiązywanie problemów z możliwości obserwatora sieciowego Azure za pomocą 2.0 interfejsu wiersza polecenia platformy Azure.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: dfe77b0a9620ccb8ac91fa8843d01d1cb7bdc44f
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9554c7f564836d9e7ac94367ade6719a1ee5b5c7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli-20"></a>Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure za pomocą 2.0 interfejsu wiersza polecenia platformy Azure
 
@@ -36,7 +36,7 @@ W tym artykule przyjęto założenie, że masz następujące zasoby:
 * Rozwiązywanie problemów z połączeniami z maszyn wirtualnych.
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączenia wymaga rozszerzenia maszyny wirtualnej `AzureNetworkWatcherExtension`. Instalowanie rozszerzenia na maszynie Wirtualnej systemu Windows można znaleźć [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md) i dla maszyny Wirtualnej systemu Linux, odwiedź [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Linux](../virtual-machines/linux/extensions-nwa.md).
+> Rozwiązywanie problemów z połączenia wymaga, aby rozwiązać z maszyny Wirtualnej miało `AzureNetworkWatcherExtension` zainstalowane rozszerzenia maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej systemu Windows można znaleźć [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny Wirtualnej systemu Linux, odwiedź [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź połączenie z maszyną wirtualną
 

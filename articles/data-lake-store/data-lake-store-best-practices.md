@@ -1,8 +1,8 @@
 ---
-title: "Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, najlepsze rozwiązania dotyczące wprowadzanie danych, Data zabezpieczeń i wydajności powiązane z użyciem usługi Azure Data Lake Store"
+title: Najlepsze rozwiązania dotyczące korzystania z usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Dowiedz się, najlepsze rozwiązania dotyczące wprowadzanie danych, Data zabezpieczeń i wydajności powiązane z użyciem usługi Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Najlepsze rozwiązania dotyczące używania usługi Azure Data Lake Store
 W tym artykule opisano najważniejsze wskazówki i informacje dotyczące pracy z usługi Azure Data Lake Store. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajności, odporności i monitorowania usługi Data Lake Store. Przed usługi Data Lake Store pracę z danymi big naprawdę w usługach, takich jak usługa Azure HDInsight był zbyt złożony. Konieczne było współdzielenie danych między wiele kont magazynu obiektów Blob, aby petabajt magazynu i optymalnej wydajności, które rozwijają się może zostać osiągnięty. Z usługi Data Lake Store większość stałych limitów rozmiaru i wydajności zostaną usunięte. Jednak nadal istnieją pewne kwestie, które w tym artykule omówiono tak, aby uzyskać najlepszą wydajność dzięki usłudze Data Lake Store. 
@@ -129,7 +129,7 @@ Data Lake Store zapewnia szczegółowe dzienniki diagnostyczne i inspekcji. Data
 
 ### <a name="export-data-lake-store-diagnostics"></a>Diagnostyka eksportu Data Lake Store 
 
-Najszybszym sposoby uzyskania dostępu do dzienników można wyszukiwać z usługi Data Lake Store jest umożliwienie wysyłania dziennika do **Operations Management Suite (OMS)** w obszarze **diagnostyki** bloku dla konta usługi Data Lake Store. Zapewnia natychmiastowy dostęp do dzienników przychodzące z czasem i filtry zawartości, oraz alerty opcje (e-mail/webhook) wyzwalane w ciągu 15 minut. Aby uzyskać instrukcje, zobacz [podczas uzyskiwania dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store](data-lake-store-diagnostic-logs.md). 
+Najszybszym sposoby uzyskania dostępu do dzienników można wyszukiwać z usługi Data Lake Store jest umożliwienie wysyłania dziennika do **analizy dzienników** w obszarze **diagnostyki** bloku dla konta usługi Data Lake Store. Zapewnia natychmiastowy dostęp do dzienników przychodzące z czasem i filtry zawartości, oraz alerty opcje (e-mail/webhook) wyzwalane w ciągu 15 minut. Aby uzyskać instrukcje, zobacz [podczas uzyskiwania dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store](data-lake-store-diagnostic-logs.md). 
 
 Więcej alertów w czasie rzeczywistym i większą kontrolę, skąd trafić w dziennikach należy wziąć pod uwagę eksportowanie dzienników do Centrum EventHub Azure, której zawartość można analizować pojedynczo lub za pośrednictwem przedział czasu w celu przesyłania powiadomień w czasie rzeczywistym do kolejki. Oddzielne aplikacji, takich jak [aplikacji logiki](../connectors/connectors-create-api-azure-event-hubs.md) można następnie używać i alerty odpowiedni kanał komunikacji, jak również przedstawia metryki do monitorowania takich narzędzi jak NewRelic, Datadog lub AppDynamics. Alternatywnie, jeśli używasz narzędzia innych firm, takich jak ElasticSearch, możesz wyeksportować dzienniki do magazynu obiektów Blob i użyj [wtyczkę Azure Logstash](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob) korzystającą z danych na stosie Elasticsearch, Kibana i Logstash (ŁOSI).
 
@@ -139,7 +139,7 @@ Jeśli usługi Data Lake Store wysyłania dziennika nie jest włączona, Azure H
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-Gdy właściwość jest ustawiona, i węzły są ponownie uruchamiane, diagnostyka usługi Data Lake Store jest zapisywane do dzienników YARN w węzłach (/tmp/<user>/yarn.log), a ważne informacje, takie jak błędy lub ograniczenia przepustowości (kod błędu HTTP 429) mogą być monitorowane. Tych informacji można również monitorować OMS lub wszędzie tam, gdzie dzienniki są wysyłane do w [diagnostyki](data-lake-store-diagnostic-logs.md) bloku konta usługi Data Lake Store. Zalecane jest co najmniej włączenia funkcji dziennika po stronie klienta lub korzystanie z opcji z usługą Data Lake Store operacyjne widoczność i ułatwiają debugowanie wysyłania dziennika.
+Gdy właściwość jest ustawiona, i węzły są ponownie uruchamiane, diagnostyka usługi Data Lake Store jest zapisywane do dzienników YARN w węzłach (/tmp/<user>/yarn.log), a ważne informacje, takie jak błędy lub ograniczenia przepustowości (kod błędu HTTP 429) mogą być monitorowane. Tych informacji można również monitorować analizy dzienników lub wszędzie tam, gdzie dzienniki są wysyłane do w [diagnostyki](data-lake-store-diagnostic-logs.md) bloku konta usługi Data Lake Store. Zalecane jest co najmniej włączenia funkcji dziennika po stronie klienta lub korzystanie z opcji z usługą Data Lake Store operacyjne widoczność i ułatwiają debugowanie wysyłania dziennika.
 
 ### <a name="run-synthetic-transactions"></a>Uruchom transakcji syntetycznych 
 

@@ -1,11 +1,11 @@
 ---
-title: "Model danych usługi Log Analytics na potrzeby usługi Azure Backup"
-description: "Ten artykuł zawiera informacje o szczegóły modelu danych analizy dzienników dla danych kopii zapasowej Azure."
+title: Model danych usługi Log Analytics na potrzeby usługi Azure Backup
+description: Ten artykuł zawiera informacje o szczegóły modelu danych analizy dzienników dla danych kopii zapasowej Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
 ms.devlang: na
@@ -15,14 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Model danych analizy dziennika dla danych kopia zapasowa Azure
-W tym artykule opisano model danych używany do wypychania danych raportowania do analizy dzienników. Użycie tego modelu danych, można tworzyć zapytania niestandardowe pulpity nawigacyjne i wykorzystanie go w OMS. 
+W tym artykule opisano model danych używany do wypychania danych raportowania do analizy dzienników. Użycie tego modelu danych, można tworzyć zapytania niestandardowe pulpity nawigacyjne i wykorzystanie go w analizy dzienników. 
 
 ## <a name="using-azure-backup-data-model"></a>Za pomocą usługi Kopia zapasowa Azure modelu danych
 Następujące pola w ramach modelu danych służy do tworzenia elementów wizualnych, niestandardowych kwerend i pulpitu nawigacyjnego zgodnie z wymaganiami.
@@ -35,7 +35,7 @@ Ta tabela zawiera szczegóły dotyczące alertu związane pola.
 | AlertUniqueId_s |Tekst |Unikatowy identyfikator wygenerowany alert |
 | AlertType_s |Tekst |Typ wygenerowany alert, na przykład kopii zapasowej |
 | AlertStatus_s |Tekst |Stan alertu, na przykład aktywny |
-| AlertOccurenceDateTime_s |Data i godzina |Data i godzina utworzenia alertu |
+| AlertOccurenceDateTime_s |Data/godzina |Data i godzina utworzenia alertu |
 | AlertSeverity_s |Tekst |Ważność alertu, na przykład krytyczne |
 | EventName_s |Tekst |To pole reprezentuje nazwę tego zdarzenia, jest zawsze AzureBackupCentralReport |
 | BackupItemUniqueId_s |Tekst |Unikatowy identyfikator elementu kopii zapasowej, do którego należy ten alert |
@@ -48,7 +48,7 @@ Ta tabela zawiera szczegóły dotyczące alertu związane pola.
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator elementu chronionej, do którego należy ten alert |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator elementu chronionej, do którego należy ten alert |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -74,7 +74,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące tworzenia kopii zapasowej 
 | Kategoria |Tekst |To pole reprezentuje kategorię do analizy dzienników danych diagnostycznych, jest AzureBackupReport |
 | Zasób |Tekst |Jest to zasobu, dla którego dane są zbierane, będzie wyświetlana nazwa magazynu usług odzyskiwania |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -97,7 +97,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia elementu kopii
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, do którego należy ten element kopii zapasowej |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ten element kopii zapasowej |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -121,13 +121,13 @@ Ta tabela zawiera szczegółowe informacje o polach związanych z pracą.
 | JobOperation_s |Tekst |Operacja, dla którego zadanie jest uruchamiane na przykład kopii zapasowych, przywracania, konfigurowanie usługi Kopia zapasowa |
 | JobStatus_s |Tekst |Stan zadania zakończono, na przykład ukończone, nie powiodło się |
 | JobFailureCode_s |Tekst |Ciąg kodu błędu z powodu którego wystąpiło niepowodzenie zadania |
-| JobStartDateTime_s |Data i godzina |Data i godzina podczas zadań uruchomiona wprowadzenie |
+| JobStartDateTime_s |Data/godzina |Data i godzina podczas zadań uruchomiona wprowadzenie |
 | BackupStorageDestination_s |Tekst |Miejsce docelowe magazynu kopii zapasowej, na przykład chmury, dysku  |
 | JobDurationInSecs_s | Liczba |Zadanie całkowity czas w sekundach |
 | DataTransferredInMB_s | Liczba |Dane przekazywane w MB dla tego zadania|
 | JobUniqueId_g |Tekst |Unikatowy identyfikator zadania |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -167,7 +167,7 @@ Ta tabela zawiera szczegółowe informacje o polach związane z zasadami.
 | YearlyRetentionFormat_s |Tekst |Typ konfiguracji corocznych okresu przechowywania, na przykład codziennie na podstawie co tydzień na podstawie tydzień dzień |
 | YearlyRetentionDaysOfTheMonth_s |Tekst |Daty miesiąca wybrany do przechowywania roczne |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -188,7 +188,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące skojarzenia zasad z różn
 | PolicyUniqueId_g |Tekst |Unikatowy identyfikator zasady |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ta zasada |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -213,7 +213,7 @@ Ta tabela zawiera szczegółowe informacje o chronionych polach związanych z se
 | ProtectedServerFriendlyName_s |Tekst |Przyjazna nazwa serwera chronionego |
 | AzureBackupAgentVersion_s |Tekst |Numer wersji wersja agenta kopii zapasowej |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -234,7 +234,7 @@ Ta tabela zawiera szczegółowe informacje o serwerze chronionym powiązania z i
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu, do którego należy ten serwer chroniony |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -257,7 +257,7 @@ Ta tabela zawiera szczegółowe informacje dotyczące pola dotyczące magazynu.
 | ProtectedServerUniqueId_s |Tekst |Unikatowy identyfikator serwera chronionego, dla której jest obliczany magazynu |
 | VaultUniqueId_s |Tekst |Unikatowy identyfikator magazynu dla magazynu jest obliczana. |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
@@ -279,11 +279,11 @@ Ta tabela zawiera szczegółowe informacje dotyczące pola związane z magazynem
 | AzureDataCenter_s |Tekst |Centrum danych, w którym znajduje się magazyn |
 | StorageReplicationType_s |Tekst |Typ replikacji magazynu dla magazynu, na przykład GeoRedundant |
 | SourceSystem |Tekst |System źródła danych bieżącego - Azure |
-| Identyfikator zasobu |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
+| ResourceId |Tekst |To pole reprezentuje identyfikator zasobu dla którego dane są zbierane, zawiera identyfikator zasobu magazynu usług odzyskiwania |
 | SubscriptionId |Tekst |To pole reprezentuje identyfikator zasobów (RS magazynu), dla którego dane są zbierane w subskrypcji |
 | ResourceGroup |Tekst |To pole reprezentuje grupę zasobów, zasobów (RS magazynu), dla którego dane są zbierane |
 | ResourceProvider |Tekst |To pole reprezentuje dostawcy zasobów, dla których są zbierane dane - Microsoft.RecoveryServices |
 | ResourceType |Tekst |To pole reprezentuje typ zasobu, dla których są zbierane dane - magazynów |
 
-## <a name="next-steps"></a>Następne kroki
-Po przejrzeniu modelu danych do tworzenia raportów usługi Kopia zapasowa Azure można rozpocząć [Tworzenie pulpitu nawigacyjnego](../log-analytics/log-analytics-dashboards.md) analizy dzienników i OMS.
+## <a name="next-steps"></a>Kolejne kroki
+Po przejrzeniu modelu danych do tworzenia raportów usługi Kopia zapasowa Azure można rozpocząć [Tworzenie pulpitu nawigacyjnego](../log-analytics/log-analytics-dashboards.md) w analizy dzienników.

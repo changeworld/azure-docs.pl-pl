@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mazha
-ms.openlocfilehash: 87f00575e0c2c4cd7a8525df96b2f5b13d470643
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed6f0b2c021fc4b31b85986c07df0502dba826f2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Formant Azure CDN buforowanie z ciągami zapytań — warstwa standardowa
 > [!div class="op_single_selector"]
@@ -36,8 +36,13 @@ Z buforowania ciągu kwerendy Azure sieci dostarczania zawartości (CDN) określ
 Dostępne są trzy tryby ciągu zapytania:
 
 - **Ignorować ciągi kwerendy**: domyślny tryb. W tym trybie węzeł CDN punktu z obecności (POP) przekazuje ciągi zapytań z obiektu żądającego do serwera pochodzenia na pierwsze żądanie i buforuje elementu zawartości. Wszystkie kolejne żądania dla elementu zawartości, które są obsługiwane z punktu obecności ignorować ciągi kwerendy do momentu wygaśnięcia elementu pamięci podręcznej zawartości.
+
 - **Pomiń buforowanie dla ciągów zapytań**: W tym trybie żądań z ciągami zapytań nie są buforowane w węźle POP w sieci CDN. Węzeł POP pobiera elementu zawartości bezpośrednio z serwera pochodzenia i przekazuje je do obiektu żądającego z każdym żądaniem.
-- **Buforuj każdy unikatowy adres URL**: W tym trybie każde żądanie o unikatowym adresie URL, ciąg zapytania w tym jest traktowany jako unikatowy zasób ze swojej własnej pamięci podręcznej. Na przykład odpowiedzi z serwera pochodzenia żądania dla `example.ashx?q=test1` jest buforowany w węźle POP i zwrócony dla kolejnych pamięci podręcznych ciągiem zapytania. Żądanie `example.ashx?q=test2` jest buforowana jako osobne zasobów z własną ustawienie czasu wygaśnięcia.
+
+- **Buforuj każdy unikatowy adres URL**: W tym trybie każde żądanie o unikatowym adresie URL, ciąg zapytania w tym jest traktowany jako unikatowy zasób ze swojej własnej pamięci podręcznej. Na przykład odpowiedź z serwera pochodzenia żądania dla example.ashx?q=test1 jest buforowane w węźle POP i zwrócony dla kolejnych pamięci podręcznych ciągiem zapytania. Żądanie example.ashx?q=test2 jest buforowany jako osobne zasobów z własną ustawienie czasu wygaśnięcia.
+   
+    >[!IMPORTANT] 
+    > W tym trybie nie należy używać, jeśli ciąg zapytania zawiera parametry, które zmieni się z każdym żądaniu, takich jak identyfikator sesji lub nazwę użytkownika, ponieważ spowoduje niski Stosunek trafień w pamięci podręcznej.
 
 ## <a name="changing-query-string-caching-settings-for-standard-cdn-profiles"></a>Zmiana ustawienia profilów sieci CDN w warstwie standardowa buforowanie ciągów zapytań
 1. Otwieranie profilu CDN, a następnie wybierz punkt końcowy CDN, którą chcesz zarządzać.

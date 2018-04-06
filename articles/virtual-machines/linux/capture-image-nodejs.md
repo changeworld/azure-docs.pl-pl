@@ -1,11 +1,11 @@
 ---
-title: "Przechwytywanie maszyny Wirtualnej systemu Linux platformy Azure do użycia jako szablon | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie przechwytywania i obraz opartych na systemie Linux Azure maszynę wirtualną (VM) utworzone za pomocą modelu wdrażania usługi Azure Resource Manager."
+title: Przechwytywanie maszyny Wirtualnej systemu Linux platformy Azure do użycia jako szablon | Dokumentacja firmy Microsoft
+description: Informacje o sposobie przechwytywania i obraz opartych na systemie Linux Azure maszynę wirtualną (VM) utworzone za pomocą modelu wdrażania usługi Azure Resource Manager.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: f990a0da0be7f10dc16aa2e5a6320b456cfffed1
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 71c60c8d29e4db8aab1932a1bece03396a12e4da
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Przechwytywanie maszyny wirtualnej systemu Linux działających na platformie Azure
 Wykonaj kroki opisane w tym artykule, aby Uogólnij i Przechwyć maszyny wirtualnej systemu Linux platformy Azure (VM) w modelu wdrażania Menedżera zasobów. Uogólnienie maszynę Wirtualną, Usuń konto osobiste informacje i przygotowanie wirtualna do użycia jako obraz. Można następnie przechwytywania obrazu uogólniony wirtualny dysk twardy (VHD) dla systemu operacyjnego, dysków VHD dla dysków dołączonych danych i [szablonu usługi Resource Manager](../../azure-resource-manager/resource-group-overview.md) o nowych wdrożeniach maszyny Wirtualnej. Ten artykuł zawiera szczegóły dotyczące sposobu przechwytywania obrazu maszyny Wirtualnej z interfejsu wiersza polecenia platformy Azure w wersji 1.0 za pomocą niezarządzanych dysków maszyny wirtualnej. Możesz również [Przechwytywanie maszyny Wirtualnej za pomocą dysków zarządzanych Azure 2.0 interfejsu wiersza polecenia Azure](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dyski zarządzane są obsługiwane przez platformę Azure i nie wymagają wszystkie lub lokalizację do przechowywania ich. Aby uzyskać więcej informacji, zobacz temat [Omówienie usługi Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -38,7 +38,7 @@ Zadanie można wykonać przy użyciu jednej z następujących wersji interfejsu 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Upewnij się, że zostały spełnione następujące wymagania wstępne:
 
-* **Maszyna wirtualna platformy Azure utworzonych w modelu wdrażania usługi Resource Manager** — Jeśli nie utworzono Maszynę wirtualną systemu Linux, możesz użyć [portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [interfejsu wiersza polecenia Azure](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), lub [szablony Menedżera zasobów](create-ssh-secured-vm-from-template.md). 
+* **Maszyna wirtualna platformy Azure utworzonych w modelu wdrażania usługi Resource Manager** — Jeśli nie utworzono Maszynę wirtualną systemu Linux, możesz użyć [portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), [interfejsu wiersza polecenia Azure](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), lub [szablony Menedżera zasobów ](create-ssh-secured-vm-from-template.md). 
   
     Konfigurowanie maszyny Wirtualnej, zgodnie z potrzebami. Na przykład [Dodaj dyski danych](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), stosowania aktualizacji i zainstalować aplikacje. 
 * **Azure CLI** -Zainstaluj [interfejsu wiersza polecenia Azure](../../cli-install-nodejs.md) na komputerze lokalnym.
@@ -86,12 +86,12 @@ Użyj interfejsu wiersza polecenia Azure, aby Uogólnij i Przechwyć maszyny Wir
    > [!IMPORTANT]
    > Pliki VHD obrazu tworzone domyślnie na tym samym koncie magazynu, która używana oryginalna maszyna wirtualna. Użyj *tego samego konta magazynu* do przechowywania dysków VHD dla wszelkie nowe maszyny wirtualne utworzysz z obrazu. 
 
-6. Aby znaleźć lokalizację przechwycony obraz, otwórz szablon JSON w edytorze tekstów. W **storageProfile**, Znajdź **uri** z **obrazu** znajduje się w **systemu** kontenera. Na przykład jest podobny do identyfikatora URI obrazu dysku systemu operacyjnego`https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
+6. Aby znaleźć lokalizację przechwycony obraz, otwórz szablon JSON w edytorze tekstów. W **storageProfile**, Znajdź **uri** z **obrazu** znajduje się w **systemu** kontenera. Na przykład jest podobny do identyfikatora URI obrazu dysku systemu operacyjnego `https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Tworzenie maszyny Wirtualnej z przechwyconego obrazu
 Teraz należy użyć obrazu przy użyciu szablonu, aby utworzyć Maszynę wirtualną systemu Linux. Te kroki pokazują, jak użyć wiersza polecenia platformy Azure i szablon pliku JSON, przechwyconych w celu utworzenia maszyny Wirtualnej w nowej sieci wirtualnej.
 
-### <a name="create-network-resources"></a>Utwórz zasoby sieciowe
+### <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 Aby użyć szablonu, należy najpierw skonfigurować sieć wirtualną i karty Sieciowej dla nowej maszyny Wirtualnej. Zaleca się tworzenie grupy zasobów dla tych zasobów w lokalizacji przechowywania obrazu maszyny Wirtualnej. Uruchom polecenia podobne do następujących, zastępując nazwy zasobów i odpowiednie lokalizacji platformy Azure ("centralus" w tych poleceniach):
 
 ```azurecli
@@ -113,7 +113,7 @@ Aby wdrożyć Maszynę wirtualną z obrazu przy użyciu JSON zapisane podczas pr
 azure network nic show myResourceGroup1 myNIC
 ```
 
-**Identyfikator** w danych wyjściowych jest podobny do`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup1/providers/Microsoft.Network/networkInterfaces/myNic`
+**Identyfikator** w danych wyjściowych jest podobny do `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup1/providers/Microsoft.Network/networkInterfaces/myNic`
 
 ### <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 Teraz uruchom następujące polecenie w celu utworzenia maszyny Wirtualnej z przechwyconego obrazu maszyny Wirtualnej. Użyj **-f** parametr, aby określić ścieżkę do pliku JSON szablonu został zapisany.
@@ -177,7 +177,7 @@ Skorzystaj z przechwyconego obrazu i szablonu można wdrożyć dodatkowe maszyny
 Aby użyć przechwyconego obrazu szablonu, wykonaj następujące kroki, (szczegóły w poprzedniej sekcji):
 
 * Upewnij się, że obraz maszyny Wirtualnej ma na tym samym koncie magazynu, który jest hostem wirtualnego dysku twardego maszyny Wirtualnej.
-* Skopiuj plik JSON szablonu i określ unikatową nazwę dysku systemu operacyjnego, dysku VHD nowej maszyny Wirtualnej (lub wirtualne dyski twarde). Na przykład w **storageProfile**w obszarze **wirtualnego dysku twardego**w **uri**, określ unikatową nazwę dla **osDisk** wirtualnego dysku twardego, podobnie jak`https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/MyNewVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
+* Skopiuj plik JSON szablonu i określ unikatową nazwę dysku systemu operacyjnego, dysku VHD nowej maszyny Wirtualnej (lub wirtualne dyski twarde). Na przykład w **storageProfile**w obszarze **wirtualnego dysku twardego**w **uri**, określ unikatową nazwę dla **osDisk** wirtualnego dysku twardego, podobnie jak `https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/MyNewVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
 * Utwórz kartę Sieciową, w tym samym lub różnych sieci wirtualnej.
 * Przy użyciu pliku JSON zmodyfikowany szablon, Utwórz wdrożenie w grupie zasobów, w którym Konfigurowanie sieci wirtualnej.
 
@@ -203,6 +203,6 @@ azure vm create -g myResourceGroup1 -n myNewVM -l eastus -y Linux \
 
 Opcje dodatkowe polecenia, można uruchomić `azure help vm create`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby zarządzać maszyn wirtualnych z poziomu interfejsu wiersza polecenia, zobacz zadań w [wdrażania i zarządzania maszynami wirtualnymi przy użyciu szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia Azure](create-ssh-secured-vm-from-template.md).
 

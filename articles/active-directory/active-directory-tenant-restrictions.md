@@ -1,24 +1,24 @@
 ---
-title: "Zarządzanie dostępem do aplikacji w chmurze poprzez ograniczenie dzierżaw - Azure | Dokumentacja firmy Microsoft"
-description: "Jak używać ograniczenia dzierżawy do zarządzania użytkowników, którzy mają dostęp do aplikacji, w oparciu o ich dzierżawy usługi Azure AD."
+title: Zarządzanie dostępem do aplikacji w chmurze poprzez ograniczenie dzierżaw - Azure | Dokumentacja firmy Microsoft
+description: Jak używać ograniczenia dzierżawy do zarządzania użytkowników, którzy mają dostęp do aplikacji, w oparciu o ich dzierżawy usługi Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
 editor: yossib
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: 63e0fa54433a60fe7384d21cf7d215cc8283afca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Ograniczenia dzierżawy do zarządzania dostępem do SaaS aplikacji w chmurze
 
@@ -66,13 +66,13 @@ Aby włączyć ograniczenia dzierżawcy przy użyciu infrastruktury serwera prox
 
 - Ta funkcja jest dostępna w subskrypcji usługi Office 365, ale jeśli chcesz użyć do kontrolowania dostępu do innych aplikacji SaaS ograniczenia dzierżawy następnie licencji Azure AD Premium 1 są wymagane.
 
-#### <a name="configuration"></a>Konfiguracja
+#### <a name="configuration"></a>Konfigurowanie
 
 Dla każdego żądania przychodzącego login.microsoftonline.com login.microsoft.com i login.windows.net Wstaw dwa nagłówki HTTP: *ograniczanie dostępu do dzierżawców* i *ograniczanie dostępu do kontekstu*.
 
 Nagłówki powinny zawierać następujące elementy: 
-- Dla *ograniczanie dostępu do dzierżawców*, wartość \<dozwolone listy dzierżawy\>, która jest rozdzielana przecinkami lista dzierżawcy, aby umożliwić użytkownikom dostęp do. Dowolnej domeny, która jest zarejestrowana w usłudze dzierżawcy może służyć do identyfikowania dzierżawy na tej liście. Na przykład aby zezwolić na dostęp do dzierżawców zarówno Contoso i Fabrikam, pary nazwa/wartość wygląda następująco:`Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- Dla *ograniczanie dostępu do kontekstu*, wartość identyfikatora jednego katalogu deklarowanie dzierżawy, który jest ustawienie ograniczenia dzierżawy. Na przykład aby zadeklarować Contoso jako dzierżawy, który ustawić zasady ograniczeń dzierżawy, pary nazwa/wartość wygląda następująco:`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+- Dla *ograniczanie dostępu do dzierżawców*, wartość \<dozwolone listy dzierżawy\>, która jest rozdzielana przecinkami lista dzierżawcy, aby umożliwić użytkownikom dostęp do. Dowolnej domeny, która jest zarejestrowana w usłudze dzierżawcy może służyć do identyfikowania dzierżawy na tej liście. Na przykład aby zezwolić na dostęp do dzierżawców zarówno Contoso i Fabrikam, pary nazwa/wartość wygląda następująco:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
+- Dla *ograniczanie dostępu do kontekstu*, wartość identyfikatora jednego katalogu deklarowanie dzierżawy, który jest ustawienie ograniczenia dzierżawy. Na przykład aby zadeklarować Contoso jako dzierżawy, który ustawić zasady ograniczeń dzierżawy, pary nazwa/wartość wygląda następująco: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
 > Można znaleźć Identyfikatora katalogu w [portalu Azure](https://portal.azure.com). Zaloguj się jako administrator, wybierz opcję **usługi Azure Active Directory**, a następnie wybierz pozycję **właściwości**.
@@ -112,7 +112,9 @@ Zapoznaj się [nowoczesne uwierzytelnianie usługi Office 365 aktualizacji](http
 
 Ograniczenia dzierżawy jest obecnie obsługiwane przez usługi Office 365 aplikacji opartych na przeglądarce (programu SharePoint portalu usługi Office, Yammer, witryny, Outlook Web itp.). Grubość klientów (program Outlook, Skype dla firm, Word, Excel, PowerPoint, itp.) Ograniczenia dzierżawy są wymuszane tylko, gdy nowoczesnego uwierzytelniania jest używany.  
 
-Outlook i Skype dla firm klientów, którzy obsługują nowoczesnego uwierzytelniania mogą nadal używać starszych protokołów przed dzierżaw gdzie nowoczesnego uwierzytelniania nie jest włączone, efektywnie pomijanie ograniczenia dzierżawy. Dla programu Outlook w systemie Windows klienci mogą zadecydować o stosowaniu ograniczenia uniemożliwia użytkownikom dodawanie konta poczty niezatwierdzonych do ich profile. Na przykład, zobacz [Zapobiegaj dodawanie kont innych niż domyślne Exchange konta](http://gpsearch.azurewebsites.net/default.aspx?ref=1) ustawienie zasad grupy. Dla programu Outlook na platformach z systemem innym niż Windows, a dla usługi Skype dla firm na wszystkich platformach Pełna obsługa ograniczenia dzierżawy nie jest obecnie dostępna.
+Outlook i Skype dla firm klientów, którzy obsługują nowoczesnego uwierzytelniania może nadal mogli używać starszych protokołów przed dzierżawcy, gdzie nowoczesnego uwierzytelniania nie jest włączone, efektywnie pomijanie ograniczenia dzierżawy. Aplikacje używające starszych protokołów mogą być blokowane przez ograniczenia dzierżawy, jeśli zgłosić login.microsoftonline.com, login.microsoft.com lub login.windows.net podczas uwierzytelniania.
+
+Dla programu Outlook w systemie Windows klienci mogą zadecydować o stosowaniu ograniczenia uniemożliwia użytkownikom dodawanie konta poczty niezatwierdzonych do ich profile. Na przykład, zobacz [Zapobiegaj dodawanie kont innych niż domyślne Exchange konta](http://gpsearch.azurewebsites.net/default.aspx?ref=1) ustawienie zasad grupy. Dla programu Outlook na platformach z systemem innym niż Windows, a dla usługi Skype dla firm na wszystkich platformach Pełna obsługa ograniczenia dzierżawy nie jest obecnie dostępna.
 
 ## <a name="testing"></a>Testowanie
 
@@ -151,7 +153,7 @@ W zależności od możliwości infrastruktury serwera proxy można przemieścić
 
 Zapoznaj się z dokumentacją serwera proxy, aby uzyskać szczegółowe informacje.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Przeczytaj informacje o [aktualizacji usługi Office 365 nowoczesnego uwierzytelniania](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)
 

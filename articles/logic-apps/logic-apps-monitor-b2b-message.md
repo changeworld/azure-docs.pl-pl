@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie transakcji B2B i skonfigurować rejestrowanie - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Monitor AS2, X 12 i EDIFACT wiadomości, uruchomić rejestrowania diagnostyki dla Twojego konta integracji"
+title: Monitorowanie transakcji B2B i skonfigurować rejestrowanie - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Monitor AS2, X 12 i EDIFACT wiadomości, uruchomić rejestrowania diagnostyki dla Twojego konta integracji
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -15,22 +15,22 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6afab12b9e2d6e8686ecbc95be9743afbe70d98c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>Monitorowanie i konfigurowanie rejestrowania diagnostyki dla komunikacji B2B w konta integracji
 
-Po skonfigurowaniu B2B komunikacji między dwiema uruchomionych procesów biznesowych lub aplikacji za pośrednictwem konta integracji tych jednostek mogą wymieniać komunikaty ze sobą. Aby potwierdzić tę komunikację działa zgodnie z oczekiwaniami, można skonfigurować monitorowanie AS2, X12, i EDIFACT komunikaty, wraz z rejestrowania diagnostyki dla Twojego konta integracji za pośrednictwem [Azure Log Analytics](../log-analytics/log-analytics-overview.md) usługi. Usługa ta [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) monitoruje chmurze i lokalnych środowiskach, pomaga zachować ich dostępności i wydajności i zbiera również szczegóły środowiska uruchomieniowego i zdarzeń dla bardziej zaawansowane funkcje debugowania. Możesz również [użyć danych diagnostycznych z innymi usługami](#extend-diagnostic-data), takie jak usługi Azure Storage i Azure Event Hubs.
+Po skonfigurowaniu B2B komunikacji między dwiema uruchomionych procesów biznesowych lub aplikacji za pośrednictwem konta integracji tych jednostek mogą wymieniać komunikaty ze sobą. Aby potwierdzić tę komunikację działa zgodnie z oczekiwaniami, można skonfigurować monitorowanie AS2, X12, i EDIFACT komunikaty, wraz z rejestrowania diagnostyki dla Twojego konta integracji za pośrednictwem [Azure Log Analytics](../log-analytics/log-analytics-overview.md) usługi. Ta usługa monitoruje chmury i lokalnych środowiskach, pomaga zachować ich dostępności i wydajności i zbiera również szczegóły środowiska uruchomieniowego i zdarzeń dla bardziej zaawansowane funkcje debugowania. Możesz również [użyć danych diagnostycznych z innymi usługami](#extend-diagnostic-data), takie jak usługi Azure Storage i Azure Event Hubs.
 
 ## <a name="requirements"></a>Wymagania
 
 * Aplikację logiki, który został skonfigurowany z rejestrowania diagnostyki. Dowiedz się [jak skonfigurować rejestrowanie dla danej aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
   > [!NOTE]
-  > Po tego wymagania zostały spełnione, powinien mieć obszar roboczy [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Po skonfigurowaniu rejestrowania dla Twojego konta integracji, należy używać tego samego obszaru roboczego OMS. Dowiedz się, jeśli nie masz obszar roboczy OMS [jak Utwórz obszar roboczy OMS](../log-analytics/log-analytics-get-started.md).
+  > Po tego wymagania zostały spełnione, powinien mieć obszar roboczy w analizy dzienników. Po skonfigurowaniu rejestrowania dla Twojego konta integracji, należy używać tego samego obszaru roboczego analizy dzienników. Dowiedz się, jeśli nie masz obszaru roboczego analizy dzienników [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
 
 * Konta integracji połączonego z aplikacji logiki. Dowiedz się [sposobu tworzenia konta integracji z łączem do aplikacji logiki](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
@@ -58,17 +58,17 @@ Można włączyć rejestrowanie albo bezpośrednio z Twojego konta integracji lu
 
    ![Włącz diagnostykę Azure](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. Teraz wybierz obszar roboczy OMS i dane do użycia podczas rejestrowania, jak pokazano:
+4. Teraz wybierz obszar roboczy analizy dzienników i danych na potrzeby rejestrowania pokazany:
 
    1. Wybierz **wysyłać do analizy dzienników**. 
    2. W obszarze **analizy dzienników**, wybierz **Konfiguruj**. 
-   3. W obszarze **obszarów roboczych OMS**, wybierz obszar roboczy OMS na potrzeby rejestrowania.
+   3. W obszarze **obszarów roboczych OMS**, wybierz obszar roboczy analizy dzienników na potrzeby rejestrowania.
    4. W obszarze **dziennika**, wybierz pozycję **IntegrationAccountTrackingEvents** kategorii.
    5. Wybierz pozycję **Zapisz**.
 
    ![Konfigurowanie analizy dzienników, aby wysłać dane diagnostyczne dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. Teraz [skonfigurować śledzenie wiadomości B2B w OMS](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+5. Teraz [skonfigurować śledzenie wiadomości B2B w analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 <a name="azure-monitor-service"></a>
 
@@ -92,17 +92,17 @@ Można włączyć rejestrowanie albo bezpośrednio z Twojego konta integracji lu
 
    ![Włącz diagnostykę Azure](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. Teraz wybierz OMS kategorii obszaru roboczego i zdarzenia logowania, jak pokazano:
+4. Teraz wybierz analizy dzienników kategorii obszaru roboczego i zdarzenia logowania, jak pokazano:
 
    1. Wybierz **wysyłać do analizy dzienników**. 
    2. W obszarze **analizy dzienników**, wybierz **Konfiguruj**. 
-   3. W obszarze **obszarów roboczych OMS**, wybierz obszar roboczy OMS na potrzeby rejestrowania.
+   3. W obszarze **obszarów roboczych OMS**, wybierz obszar roboczy analizy dzienników na potrzeby rejestrowania.
    4. W obszarze **dziennika**, wybierz pozycję **IntegrationAccountTrackingEvents** kategorii.
-   5. Gdy wszystko będzie gotowe, wybierz pozycję **zapisać**.
+   5. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
 
    ![Konfigurowanie analizy dzienników, aby wysłać dane diagnostyczne dziennika](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. Teraz [skonfigurować śledzenie wiadomości B2B w OMS](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+5. Teraz [skonfigurować śledzenie wiadomości B2B w analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Rozszerzanie, jak i gdzie używać danych diagnostycznych z innymi usługami
 
@@ -131,8 +131,8 @@ Azure obsługuje te śledzenia typów schematów, które ustalone schematów z w
 * [Schemat śledzenia X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Niestandardowe schematy śledzenia](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Śledzenie wiadomości B2B w OMS](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "wiadomości B2B śledzenie w OMS")
+* [Śledzenie wiadomości B2B w analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "wiadomości B2B śledzenie w OMS")
 * [Dowiedz się więcej o pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej na temat pakiet integracyjny dla przedsiębiorstw")
 

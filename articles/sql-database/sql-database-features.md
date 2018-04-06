@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: d8adf097d6bee404cff8e7b15782c6c59531a897
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: bca2629ea4a0c859e92d829b49072fbdf3f9ffe2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database i programu SQL Server 
 
@@ -45,7 +45,7 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [Przechwytywania zmian danych](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nie | Yes |
 | [Śledzenie zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Yes |Yes |
 | [Instrukcje sortowania](https://docs.microsoft.com/sql/t-sql/statements/collations) | Yes | Yes |
-| [Indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Tak — [warstwy Premium i standardowa warstwy - S3 i nowsze](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Yes |
+| [Indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Tak — [warstwy Premium, warstwy standardowa - S3 i powyżej warstwy ogólnego przeznaczenia i warstwy biznesowej krytyczne](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Yes |
 | [Środowisko uruchomieniowe języka wspólnego (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nie | Tak — zobacz [różnice CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Zawartych baz danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Yes | Yes |
 | [Zawartych użytkowników](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Yes | Yes |
@@ -82,7 +82,7 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [geograficzne](sql-database-recovery-using-backups.md#geo-restore) | Yes | Nie — można przywrócić COPY_ONLY pełne kopie zapasowe wykonywane okresowo — zobacz [kopii zapasowej różnice](sql-database-managed-instance-transact-sql-information.md#backup) i [przywrócić różnice](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Geo-replication](sql-database-geo-replication-overview.md) (Replikacja geograficzna) | Yes | Nie |
 | [Przetwarzanie wykresu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Yes | Yes |
-| [Optymalizacja w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Tak — [tylko w wersji Premium](sql-database-in-memory.md) | Nie |
+| [Optymalizacja w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Tak — [tylko warstwy Premium i firm krytyczna](sql-database-in-memory.md) | Nie |
 | [Obsługa danych JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Yes | Yes |
 | [Elementy języka](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Większość — Zobacz poszczególne elementy |  Tak — zobacz [różnice T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Połączonych serwerów](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nie — zobacz [elastycznej zapytania](sql-database-elastic-query-horizontal-partitioning.md) | Tylko z programem SQL Server |
@@ -115,7 +115,7 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | Yes | Yes |
 | [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Yes | Yes |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Yes | Nie |
-| [Program SQL Studio operacji](https://docs.microsoft.com/sql/sql-operations-studio/what-is) | Yes | Yes |
+| [SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/what-is) | Yes | Yes |
 | [Program SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nie — zobacz [zadania elastyczne](sql-database-elastic-jobs-getting-started.md) | Tak — zobacz [różnice programu SQL Server Agent](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nie — zobacz [usług Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nie — zobacz [usług Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
 | [Inspekcja programu SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nie — zobacz [inspekcji bazy danych SQL](sql-database-auditing.md) | Tak — zobacz [inspekcji różnic](sql-database-managed-instance-transact-sql-information.md#auditing) |

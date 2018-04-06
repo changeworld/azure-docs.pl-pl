@@ -1,11 +1,11 @@
 ---
-title: "Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory? | Microsoft Docs"
-description: "Użyj usługi Azure Active Directory, aby włączyć logowanie jednokrotne na wszystkie aplikacje sieci web i SaaS, które są potrzebne dla firm."
+title: Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory? | Microsoft Docs
+description: Użyj usługi Azure Active Directory, aby włączyć logowanie jednokrotne na wszystkie aplikacje sieci web i SaaS, które są potrzebne dla firm.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 75d1a3fd-b3c5-4495-a5c8-c4c24145ff00
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 42a24654eb059894a855474c922a4dd2da185149
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?
 Logowanie jednokrotne oznacza dostępowi do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, logując się tylko raz przy użyciu jednego konta użytkownika. Po zalogowaniu możesz uzyskać dostęp do wszystkich aplikacji bez konieczności uwierzytelnienia (na przykład wpisz hasło) po raz drugi.
@@ -68,7 +68,7 @@ Konfigurowanie opartego na hasłach logowania jednokrotnego pozwala użytkowniko
 Usługi Azure AD może obsługiwać opartego na hasłach rejestracji jednokrotnej dla dowolnego chmurowych aplikacji, który ma oparty na języku HTML strony logowania. Za pomocą wtyczki przeglądarki niestandardowych, automatyzuje użytkownika procesu logowania za pośrednictwem bezpiecznego pobierania poświadczeń aplikacji, takie jak nazwa użytkownika i hasło z katalogu usługi AAD i wejścia te poświadczenia aplikacji strony logowania dla użytkownik. Istnieją dwa przypadki użycia:
 
 1. **Administrator zarządza poświadczeniami** — Administratorzy mogą tworzyć i zarządzać poświadczeń aplikacji i przypisz tych poświadczeń do użytkowników lub grupy, którzy potrzebują dostępu do aplikacji. W takich przypadkach użytkownik końcowy musi znać poświadczeń, ale nadal uzyskuje dostęp pojedynczego logowania do aplikacji po prostu, klikając go w ich panelu dostępu lub przy użyciu podanego łącza. Dzięki temu zarówno zarządzania cyklem życia poświadczeń przez administratora, a także ułatwienia dla użytkowników końcowych, zgodnie z którymi nie muszą pamiętać lub zarządzać hasłami specyficzny dla aplikacji. Poświadczenia są zaciemniona od użytkownika końcowego podczas automatycznego logowania; jednak jest technicznie wykrywalny przez użytkownika za pomocą narzędzia debugowania sieci web, a użytkownicy i Administratorzy należy stosować te same zasady zabezpieczeń tak, jakby poświadczenia były widoczne bezpośrednio przez użytkownika. Poświadczenia administratora są przydatne podczas tworzenia konta dostępu, który jest współużytkowane przez wielu użytkowników, takich jak mediami społecznościowymi lub aplikacji do udostępniania dokumentu.
-2. **Użytkownik zarządza poświadczeniami** — Administratorzy mogą przypisywać aplikacje do użytkowników lub grup i umożliwić użytkownikom końcowym o wprowadzenie poświadczeń bezpośrednio na uzyskiwanie dostępu do aplikacji po raz pierwszy w ich panelu dostępu. Spowoduje to utworzenie udogodnienie dla użytkowników końcowych, zgodnie z którymi nie ma potrzeby stale wprowadzać haseł specyficzny dla aplikacji za każdym razem, ich dostęp do aplikacji. Ten przypadek użycia mogą służyć jako kamieniem wykonywania krokowego administracyjne zarządzania poświadczeniami, zgodnie z którymi administrator może ustawić nowe poświadczenia dla aplikacji w przyszłości bez zmieniania obsługi dostępu do aplikacji przez użytkownika końcowego.
+2. **Użytkownik zarządza poświadczeniami** — Administratorzy mogą przypisywać aplikacje do użytkowników lub grup i umożliwić użytkownikom końcowym o wprowadzenie poświadczeń bezpośrednio na uzyskiwanie dostępu do aplikacji po raz pierwszy w ich panelu dostępu. Spowoduje to utworzenie udogodnienie dla użytkowników końcowych, zgodnie z którymi nie ma potrzeby stale wprowadzać haseł specyficzny dla aplikacji za każdym razem, ich dostęp do aplikacji. Użytkownicy mogą nadal zarządzać hasłami ich aktualizowania lub usuwania ich w razie potrzeby. Ten przypadek użycia mogą służyć jako kamieniem wykonywania krokowego administracyjne zarządzania poświadczeniami, zgodnie z którymi administrator może ustawić nowe poświadczenia dla aplikacji w przyszłości bez zmieniania obsługi dostępu do aplikacji przez użytkownika końcowego.
 
 W obu przypadkach poświadczenia są przechowywane w zaszyfrowanej stanu w katalogu, a tylko są przekazywane za pośrednictwem protokołu HTTPS podczas automatycznego logowania. Za pomocą opartego na hasłach rejestracji jednokrotnej, usługi Azure AD oferuje wygodny dostępu rozwiązania do zarządzania tożsamościami dla aplikacji, które nie są w stanie obsłużyć protokoły federacji.
 
@@ -151,7 +151,7 @@ Usługa Azure AD zapewnia kilka metod można dostosować do wdrożenia aplikacji
 Metody, które chcesz wdrożyć w organizacji jest uznania.
 
 ### <a name="azure-ad-access-panel"></a>Panel dostępu usługi Azure AD
-Panelu dostępu pod adresem https://myapps.microsoft.com to portal sieci web, który umożliwia użytkownikowi końcowemu za pomocą konta organizacyjnego w usłudze Azure Active Directory, aby wyświetlić i uruchom aplikacje oparte na chmurze do których przyznano im dostęp przez administratora usługi Azure AD . Jeśli użytkownik końcowy z [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), można również korzystać z możliwości zarządzania grupami samoobsługi za pomocą panelu dostępu.
+Panelu dostępu pod adresem https://myapps.microsoft.com jest oparte na sieci web portalu, który umożliwia użytkownikowi końcowemu za pomocą konta organizacyjnego w usłudze Azure Active Directory, aby wyświetlić i uruchom aplikacje oparte na chmurze do których ma zostać udzielony dostęp przez administratora usługi Azure AD. Jeśli użytkownik końcowy z [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), można również korzystać z możliwości zarządzania grupami samoobsługi za pomocą panelu dostępu.
 
 ![Panel dostępu usługi Azure AD](media/active-directory-appssoaccess-whatis/azure-ad-access-panel.png)
 
@@ -160,7 +160,7 @@ Panel dostępu jest oddzielony od portalu Azure i nie wymaga użytkowników do s
 Aby uzyskać więcej informacji na panelu dostępu do usługi Azure AD, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
 ### <a name="office-365-application-launcher"></a>Uruchamianie aplikacji usługi Office 365
-Aplikacje przypisane do użytkowników za pomocą usługi Azure AD dla organizacji, które zostały wdrożone usługi Office 365, również pojawi się w portalu usługi Office 365 na https://portal.office.com/myapps. To ułatwia wygodne dla użytkowników w organizacji, aby uruchomić swoje aplikacje bez konieczności użycia portalu drugi i jest zalecaną aplikację uruchamiania rozwiązania dla organizacji przy użyciu usługi Office 365.
+W przypadku organizacji, które zostały wdrożone usługi Office 365, aplikacje przypisane do użytkowników za pomocą usługi Azure AD są również wyświetlane w portalu usługi Office 365 w https://portal.office.com/myapps. To ułatwia wygodne dla użytkowników w organizacji, aby uruchomić swoje aplikacje bez konieczności użycia portalu drugi i jest zalecaną aplikację uruchamiania rozwiązania dla organizacji przy użyciu usługi Office 365.
 
 ![][4]
 

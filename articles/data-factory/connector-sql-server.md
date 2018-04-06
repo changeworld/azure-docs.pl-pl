@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b845f3112d96838454653dcd742b950009206bf4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3da4b0286ddea88d8009757ea44797e4269140a2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -404,7 +404,7 @@ Zwróć uwagę, że tabela docelowa ma kolumny tożsamości.
 
 Należy zauważyć, że jako tabela źródłowa i docelowa mają różne schemat (element docelowy ma dodatkową kolumnę z tożsamością). W tym scenariuszu, należy określić **struktury** właściwości w definicji zestawu danych docelowego, który nie zawiera kolumny tożsamości.
 
-## <a name="invoke-stored-procedure-from-sql-sink"></a>Wywołaj procedurę składowaną z zbiornika SQL
+## <a name="invoking-stored-procedure-for-sql-sink"></a> Wywołaj procedurę składowaną z zbiornika SQL
 
 Podczas kopiowania danych do bazy danych programu SQL Server, użytkownikiem określone procedury składowanej można skonfigurować i wywoływane z dodatkowymi parametrami.
 
@@ -499,7 +499,7 @@ Podczas kopiowania danych z/do programu SQL Server, z typów danych programu SQL
 | ntext |Ciąg, Char] |
 | numeryczne |Decimal |
 | nvarchar |Ciąg, Char] |
-| rzeczywiste |Kawaler/panna |
+| rzeczywiste |Pojedyncze |
 | ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

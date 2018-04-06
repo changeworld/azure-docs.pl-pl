@@ -1,11 +1,11 @@
 ---
 title: Uruchom klaster MariaDB (MySQL) na platformie Azure | Dokumentacja firmy Microsoft
-description: "Utwórz MariaDB + Galera MySQL klastra na maszynach wirtualnych Azure"
+description: Utwórz MariaDB + Galera MySQL klastra na maszynach wirtualnych Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: sabbour
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: d0d21937-7aac-4222-8255-2fdc4f2ea65b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5438bfb75abaac2bed55a76b38f69790f7fc87fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>Klaster MariaDB (MySQL): samouczek platformy Azure
 > [!IMPORTANT]
@@ -163,10 +163,10 @@ W tym artykule opisano sposób wykonania następujących czynności:
             service mysql stop
 7. Utwórz symbol zastępczy konfiguracji.
 
-   a. Zmień konfigurację MySQL, aby utworzyć symbol zastępczy ustawienia klastra. Nie zastępuj  **`<Variables>`**  lub Usuń komentarz teraz. Które nastąpi po utworzeniu maszyny Wirtualnej za pomocą tego szablonu.
+   a. Zmień konfigurację MySQL, aby utworzyć symbol zastępczy ustawienia klastra. Nie zastępuj **`<Variables>`** lub Usuń komentarz teraz. Które nastąpi po utworzeniu maszyny Wirtualnej za pomocą tego szablonu.
 
             vi /etc/my.cnf.d/server.cnf
-   b. Edytuj  **[galera]**  sekcji i wyczyszczenie go.
+   b. Edytuj **[galera]** sekcji i wyczyszczenie go.
 
    c. Edytuj **[mariadb]** sekcji.
 
@@ -184,11 +184,11 @@ W tym artykule opisano sposób wykonania następujących czynności:
            #wsrep_node_name='<NodeName>' # CHANGE: Uncomment and set the node name of this server
 8. Otwórz wymagane porty zapory przy użyciu FirewallD na CentOS 7.
 
-   * MySQL:`firewall-cmd --zone=public --add-port=3306/tcp --permanent`
-   * GALERA:`firewall-cmd --zone=public --add-port=4567/tcp --permanent`
-   * GALERA IST:`firewall-cmd --zone=public --add-port=4568/tcp --permanent`
-   * RSYNC:`firewall-cmd --zone=public --add-port=4444/tcp --permanent`
-   * Załaduj ponownie zapory:`firewall-cmd --reload`
+   * MySQL: `firewall-cmd --zone=public --add-port=3306/tcp --permanent`
+   * GALERA: `firewall-cmd --zone=public --add-port=4567/tcp --permanent`
+   * GALERA IST: `firewall-cmd --zone=public --add-port=4568/tcp --permanent`
+   * RSYNC: `firewall-cmd --zone=public --add-port=4444/tcp --permanent`
+   * Załaduj ponownie zapory: `firewall-cmd --reload`
 
 9. Optymalizacja wydajności systemu. Aby uzyskać więcej informacji, zobacz [strategii dostrajania wydajności](optimize-mysql.md).
 
@@ -214,7 +214,7 @@ W tym artykule opisano sposób wykonania następujących czynności:
         service mysql stop
         chkconfig mysql off
         waagent -deprovision
-11. Przechwytywanie maszyny Wirtualnej za pośrednictwem portalu. (Aktualnie [wystawiać &#1268; w narzędziach wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli/issues/1268) w tym artykule wyjaśniono obrazy przechwycone przez narzędzia wiersza polecenia platformy Azure nie należy przechwytywać dysków dołączonych danych.)
+11. Przechwytywanie maszyny Wirtualnej za pośrednictwem portalu. (Aktualnie [wystawiać 1268 # w narzędziach wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli/issues/1268) w tym artykule wyjaśniono obrazy przechwycone przez narzędzia wiersza polecenia platformy Azure nie należy przechwytywać dysków dołączonych danych.)
 
     a. Zamknij maszynę za pośrednictwem portalu.
 
@@ -281,8 +281,8 @@ Utwórz trzy maszyny wirtualne z szablonem utworzone, a następnie skonfigurowa�
 
         sudo vi /etc/my.cnf.d/server.cnf
 
-    Usuń znaczniki komentarza  **`wsrep_cluster_name`**  i  **`wsrep_cluster_address`**  przez usunięcie  **#**  na początku wiersza.
-    Ponadto Zastąp  **`<ServerIP>`**  w  **`wsrep_node_address`**  i  **`<NodeName>`**  w  **`wsrep_node_name`**  z adresem IP maszyny Wirtualnej adresu i nazwa, i Usuń komentarz także te wiersze.
+    Usuń znaczniki komentarza **`wsrep_cluster_name`** i **`wsrep_cluster_address`** przez usunięcie **#** na początku wiersza.
+    Ponadto Zastąp **`<ServerIP>`** w **`wsrep_node_address`** i **`<NodeName>`** w **`wsrep_node_name`** z adresem IP maszyny Wirtualnej adresu i nazwa, i Usuń komentarz także te wiersze.
 5. Uruchomienie klastra w MariaDB1 i pozwól mu uruchamiane automatycznie.
 
         sudo service mysql bootstrap
@@ -299,7 +299,7 @@ Teraz użyć modułu równoważenia obciążenia Azure równoważenie żądań m
 
 Uruchom następujące polecenia na komputerze przy użyciu wiersza polecenia platformy Azure.
 
-Struktura parametrów polecenia jest:`azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
+Struktura parametrów polecenia jest: `azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
     azure vm endpoint create-multiple mariadb1 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
@@ -344,7 +344,7 @@ Bazy danych utworzonej zwraca poniższej tabeli:
     2 rows in set (0.00 sec)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule tworzone MariaDB trzy + Galera klastra wysokiej dostępności na platformie Azure wirtualnych maszyn uruchomionych CentOS 7. Maszyn wirtualnych jest równoważone z modułem równoważenia obciążenia w Azure.
 
 Można przyjrzeć się [klastra MySQL w systemie Linux w inny sposób](mysql-cluster.md) i sposoby [optymalizacji i testowania wydajności MySQL na maszynach wirtualnych systemu Linux Azure](optimize-mysql.md).

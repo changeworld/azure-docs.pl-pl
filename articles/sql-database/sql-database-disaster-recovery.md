@@ -1,20 +1,20 @@
 ---
 title: Odzyskiwanie po awarii bazy danych SQL | Dokumentacja firmy Microsoft
-description: "Jak odzyskać bazę danych z datacenter regionalnej awarii lub niepowodzenia aktywna replikacja geograficzna bazy danych SQL Azure i możliwości przywracania geo."
+description: Jak odzyskać bazę danych z datacenter regionalnej awarii lub niepowodzenia aktywna replikacja geograficzna bazy danych SQL Azure i możliwości przywracania geo.
 services: sql-database
 author: anosov1960
 manager: jhubbard
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e9ec0a0a602965561b77619123588db57c59993c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc97c0703150df9773427b13fc07371c3593ce9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie bazy danych SQL Azure lub trybu failover do dodatkowej
 Baza danych SQL Azure oferuje następujące możliwości odzyskiwania po awarii:
@@ -26,7 +26,7 @@ Baza danych SQL Azure oferuje następujące możliwości odzyskiwania po awarii:
 Aby dowiedzieć się więcej o scenariuszach ciągłości biznesowej i funkcje obsługi tych scenariuszy, zobacz [ciągłość prowadzenia działalności biznesowej](sql-database-business-continuity.md).
 
 > [!NOTE]
-> Jeśli używasz strefowo nadmiarowy baz danych Premium lub pul jest zautomatyzowany proces odzyskiwania i pozostałej części tego materiału nie ma zastosowania. 
+> Jeśli używasz strefowo nadmiarowy bazy danych Premium lub biznesowe krytyczne lub pule (wersja zapoznawcza) jest zautomatyzowany proces odzyskiwania i pozostałej części tego materiału nie ma zastosowania. 
 
 ### <a name="prepare-for-the-event-of-an-outage"></a>Przygotowanie na wypadek wystąpienia awarii
 Do poprawnego działania odzyskiwania do innego obszaru danych przy użyciu grup pracy awaryjnej lub geograficznie nadmiarowego kopii zapasowych, które trzeba przygotować serwer w innym centrum danych awarii, aby stać się nowym serwerem podstawowym należy wystąpić również mają dobrze zdefiniowanego czynności opisanych i przetestowane w celu zapewnienia sprawnego odzyskiwania. Te kroki przygotowania obejmują:

@@ -1,10 +1,10 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Teamwork.com | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Teamwork.com."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Teamwork.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 00292d0aed24ea034eba8686bcd9cbdd1ef676e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b4be1256b77ac35efab9c6b2d593b4763cdf86
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcomhttpswwwteamworkcomprojects"></a>Samouczek: Integracji Azure Active Directory z [Teamwork.com](https://www.teamwork.com/projects)
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Samouczek: Integracji Azure Active Directory z Teamwork.com
 
 Z tego samouczka dowiesz się integrowanie Teamwork.com z usługi Azure Active Directory (Azure AD).
 
@@ -37,7 +37,7 @@ Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w 
 Aby skonfigurować integrację usługi Azure AD z Teamwork.com, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- A [Teamwork.com](https://www.teamwork.com/projects) subskrypcji w planie Pro lub nowszy
+- Teamwork.com logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
@@ -108,10 +108,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Teamwork.com pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_url.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<company name>.teamwork.com`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<company name>.teamwork.com`
+
+    b. W **identyfikator** tekstowym, wpisz adres URL:
+
+    |||
+    |-|-|
+    | `https://teamwork.com/saml`|
+    | `https://eu.teamwork.com/saml`|
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej Teamwork.com](mailto:support@teamwork.com) aby zyskać tę wartość. 
+    > Ta wartość adres URL logowania nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej Teamwork.com](mailto:support@teamwork.com) aby zyskać tę wartość. 
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -122,10 +129,6 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-teamwork-tutorial/tutorial_general_400.png)
 
 6. Skonfigurować logowanie jednokrotne w **Teamwork.com** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Teamwork.com](mailto:support@teamwork.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -200,12 +203,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka Teamwork.com w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji Teamwork.com.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

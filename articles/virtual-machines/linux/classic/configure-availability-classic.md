@@ -1,11 +1,11 @@
 ---
-title: "Zestawy dostępności dla maszyn wirtualnych systemu Linux klasycznego | Dokumentacja firmy Microsoft"
-description: "Skonfiguruj zbiór dostępności dla maszyny wirtualnej systemu Linux nowego lub istniejącego w klasycznym modelu wdrażania przy użyciu portalu Azure i programu Azure PowerShell."
+title: Zestawy dostępności dla maszyn wirtualnych systemu Linux klasycznego | Dokumentacja firmy Microsoft
+description: Skonfiguruj zbiór dostępności dla maszyny wirtualnej systemu Linux nowego lub istniejącego w klasycznym modelu wdrażania przy użyciu portalu Azure i programu Azure PowerShell.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: b8624315-beca-4ec7-8441-2e98b166b548
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2016
 ms.author: cynthn
-ms.openlocfilehash: b6243614bf7cbd97a4ce8ceff5a3ba0d33fc42f4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c5ca51f854e2358dc57286759d5b219e0d954a15
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-configure-an-availability-set-for-linux-virtual-machines-in-the-classic-deployment-model"></a>Jak skonfigurować zbiór dostępności dla maszyn wirtualnych systemu Linux w klasycznym modelu wdrażania
 > [!IMPORTANT] 

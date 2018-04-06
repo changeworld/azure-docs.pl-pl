@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -26,7 +26,7 @@ Dzienniki diagnostyczne platformy Azure możesz wyświetlić podstawowa analiza 
 
  - Konto usługi Azure Storage
  - Azure Event Hubs
- - [Repozytorium OMS analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Obszar roboczy analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 Ta funkcja jest dostępna dla wszystkich punktów końcowych usługi CDN Verizon (Standard i Premium) oraz profilów usługi CDN Akamai (Standard). 
 
@@ -34,7 +34,7 @@ Dzienniki diagnostyczne platformy Azure umożliwiają eksportowania metryki uży
 
 - Eksportuj dane do magazynu obiektów blob, Eksportuj do pliku CSV i Generowanie wykresów w programie Excel.
 - Eksportuj dane do usługi Event Hubs i skorelowania danych z innymi usługami Azure.
-- Eksportuj dane do dziennika analizy i wyświetlania danych w własne obszar roboczy OMS
+- Eksportuj dane do dziennika analizy i wyświetlania danych w swojego obszaru roboczego analizy dzienników
 
 Na poniższej ilustracji przedstawiono typowe analytics core CDN widoku danych.
 
@@ -68,9 +68,9 @@ Zaloguj się w [Portalu Azure](http://portal.azure.com). Jeśli nie masz już w�
 
 *Rysunek 2 — rejestrowanie z usługą Azure Storage*
 
-### <a name="logging-with-oms-log-analytics"></a>Rejestrowanie z OMS analizy dzienników
+### <a name="logging-with-log-analytics"></a>Rejestrowanie z analizy dzienników
 
-Aby użyć OMS analizy dzienników do przechowywania dzienników, wykonaj następujące kroki:
+Aby użyć analizy dzienników do przechowywania dzienników, wykonaj następujące kroki:
 
 1. Z **dzienników diagnostycznych** bloku, wybierz opcję **wysyłać do analizy dzienników**. 
 
@@ -84,7 +84,7 @@ Aby użyć OMS analizy dzienników do przechowywania dzienników, wykonaj nastę
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Wprowadź nazwę nowego obszaru roboczego OMS. Nazwa obszaru roboczego pakietu OMS musi być unikatowa i zawierać tylko litery, cyfry i łączniki; spacje i znaki podkreślenia są niedozwolone. 
+4. Wprowadź nazwę nowego obszaru roboczego analizy dzienników. Nazwa obszaru roboczego analizy dzienników musi być unikatowa i może zawierać tylko litery, cyfry i łączniki; spacje i znaki podkreślenia są niedozwolone. 
 5. Następnie wybierz istniejącej subskrypcji, grupy zasobów (Nowa lub istniejąca), lokalizacji i warstwę cenową. Istnieje również opcja kotwiczenia tej konfiguracji do pulpitu nawigacyjnego. Kliknij przycisk **OK** w celu ukończenia konfiguracji.
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/08_Workspace-resource.png)
@@ -97,11 +97,11 @@ Aby użyć OMS analizy dzienników do przechowywania dzienników, wykonaj nastę
 
 6. Kliknij pozycję **Zapisz**.
 
-7. Aby wyświetlić nowy obszar roboczy OMS, przejdź do pulpitu nawigacyjnego portalu Azure, a następnie kliknij nazwę obszaru roboczego analizy dzienników. Kliknij Kafelek portalu OMS, aby wyświetlić obszar roboczy w repozytorium OMS. 
+7. Aby wyświetlić nowy obszar roboczy analizy dzienników, przejdź do pulpitu nawigacyjnego portalu Azure, a następnie kliknij nazwę obszaru roboczego analizy dzienników. Kliknij Kafelek portalu OMS, aby wyświetlić obszar roboczy analizy dzienników. 
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
-    Repozytorium OMS jest teraz gotowy do rejestrowania danych. Aby można było korzystać z tych danych, należy użyć [rozwiązania OMS](#consuming-oms-log-analytics-data), wymienionych w dalszej części tego artykułu.
+    Obszar roboczy analizy dzienników jest teraz gotowy do rejestrowania danych. Aby można było korzystać z tych danych, należy użyć [rozwiązania analizy dziennika](#consuming-diagnostics-logs-from-a-log-analytics-workspace), wymienionych w dalszej części tego artykułu.
 
 Aby uzyskać więcej informacji na temat opóźnienia danych dziennika, zobacz [dziennika opóźnienia danych](#log-data-delays).
 
@@ -123,7 +123,7 @@ Aby włączyć dzienniki diagnostyczne na koncie magazynu należy użyć tego po
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
 ```
-Aby włączyć dzienniki diagnostyki w obszarze roboczym pakietu OMS należy użyć tego polecenia:
+Aby włączyć dzienniki diagnostyki w obszarze roboczym analizy dzienników należy użyć tego polecenia:
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -179,16 +179,16 @@ Oto, jak można użyć narzędzia:
 4.  Uruchom narzędzie.
 5.  Wynikowy plik CSV zawiera dane analityczne w prosty płaskiej hierarchii.
 
-## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>Korzystanie z dzienników diagnostycznych z repozytorium OMS analizy dzienników
-Analiza dzienników jest usługą w operacji pakietu zarządzania (OMS), który monitoruje chmurze i lokalnych środowiskach utrzymywać ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Korzystanie z dzienników diagnostycznych z obszaru roboczego analizy dzienników
+Log Analytics to usługa platformy Azure, która monitoruje środowiska chmurowe i lokalne w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. 
 
-Aby korzystać z analizy dzienników, należy najpierw [włączyć rejestrowanie](#enable-logging-with-azure-storage) do repozytorium Analiza dzienników Azure OMS które omówione w tym artykule.
+Aby korzystać z analizy dzienników, należy najpierw [włączyć rejestrowanie](#enable-logging-with-azure-storage) do obszaru roboczego analizy dzienników Azure, które omówione w tym artykule.
 
-### <a name="using-the-oms-repository"></a>Przy użyciu repozytorium OMS
+### <a name="using-the-log-analytics-workspace"></a>Korzystanie z obszaru roboczego analizy dzienników
 
  Na poniższym diagramie przedstawiono architekturę danych wejściowych i wyjściowych repozytorium:
 
-![Repozytorium analizy dziennika OMS](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Obszar roboczy usługi Log Analytics](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *Rysunek 3 – repozytorium analizy dzienników*
 
@@ -196,7 +196,7 @@ Dane można wyświetlić w na różne sposoby, za pomocą rozwiązania do zarzą
 
 Rozwiązania do zarządzania można zainstalować z portalu Azure marketplace, klikając **Pobierz teraz** łącze u dołu każdego z rozwiązań.
 
-### <a name="adding-an-oms-cdn-management-solution"></a>Dodawanie rozwiązania do zarządzania OMS CDN
+### <a name="adding-a-log-analytics-cdn-management-solution"></a>Dodawanie rozwiązania do zarządzania dziennika analizy CDN
 
 Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
 
@@ -219,7 +219,7 @@ Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  Po kliknięciu przycisku **Utwórz**, użytkownik będzie musiał utworzyć nowy obszar roboczy OMS lub użyć istniejącego. 
+6.  Po kliknięciu przycisku **Utwórz**, użytkownik zostanie poproszony do utworzenia nowego obszaru roboczego analizy dzienników lub użyć istniejącego. 
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -241,11 +241,11 @@ Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
 
     Kliknij obszar roboczy analizy dzienników, utworzonego przejdź do obszaru roboczego. 
 
-11. Kliknij przycisk **portalu OMS** Kafelek, aby zobaczyć nowe rozwiązania w portalu OMS.
+11. Kliknij przycisk **portalu OMS** Kafelek, aby zobaczyć nowe rozwiązania.
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. Portalu OMS powinna wyglądać tak jak następujący ekran:
+12. Portalem powinna wyglądać tak jak następujący ekran:
 
     ![Zobacz wszystkie](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
@@ -261,11 +261,11 @@ Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania:
 
 ### <a name="offers-and-pricing-tiers"></a>Oferty i warstw cenowych
 
-Możesz wyświetlać oferty i warstw cenowych dla rozwiązań do zarządzania OMS [tutaj](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
+Możesz wyświetlać oferty i warstw cenowych dla rozwiązań do zarządzania [tutaj](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
 
 ### <a name="customizing-views"></a>Dostosowywanie widoków
 
-Widok danych można dostosować za pomocą **Widok projektanta**. Aby rozpocząć projektowanie, przejdź do obszaru roboczego OMS, a następnie kliknij przycisk **Widok projektanta** kafelka.
+Widok danych można dostosować za pomocą **Widok projektanta**. Aby rozpocząć projektowanie, przejdź do obszaru roboczego analizy dzienników, a następnie kliknij przycisk **Widok projektanta** kafelka.
 
 ![Projektant widoków](./media/cdn-diagnostics-log/27_Designer.png)
 
@@ -410,7 +410,7 @@ Przykład właściwości:
 
 * [Dzienniki diagnostyczne platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Podstawowa analiza uzupełniające portalu usługi Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Analiza dzienników Azure OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Program Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Analiza dzienników Azure interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics)
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Plany i rozliczeń w harmonogramie Azure"
-description: "Plany i rozliczeń w harmonogramie Azure"
+title: Plany i rozliczeń w harmonogramie Azure
+description: Plany i rozliczeń w harmonogramie Azure
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,33 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: f0662230c5d1663e37ee2be58f234934ec3d55dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Plany i rozliczeń w harmonogramie Azure
 ## <a name="job-collection-plans"></a>Plany kolekcji zadań
-Kolekcji zadań to płatna jednostka w harmonogramie Azure. Kolekcje zadań zawiera liczbę zadań i są dostępne w trzech planów — wolne, standardowa i Premium — opisane poniżej.
+Kolekcji zadań to płatna jednostka w harmonogramie Azure. Kolekcje zadań zawiera liczbę zadań i są dostępne w trzech planów — Standard, P10 Premium i P20 Premium — które są opisane poniżej.
 
 | **Planu kolekcji zadań** | **Maksymalna liczba zadań na kolekcji zadań** | **Maksymalna liczba cyklu** | **Kolekcje maksymalna liczba zadań dla subskrypcji** | **Limity** |
 |:--- |:--- |:--- |:--- |:--- |
-| **W warstwie bezpłatna** |5 zadań na kolekcji zadań |Raz na godzinę. Nie można wykonać zadania częściej niż raz na godzinę |Subskrypcja jest dozwolone maksymalnie 1 bezpłatnej kolekcji zadań |Nie można użyć [obiekt wychodzącego autoryzacji HTTP](scheduler-outbound-authentication.md) |
 | **Standardowa** |50 zadań na kolekcji zadań |Raz na minutę. Nie można wykonać zadania częściej niż raz na minutę |Subskrypcja jest dozwolone do 100 kolekcji zadań standardowych |Dostęp do wszystkich funkcji zestawu harmonogramu |
 | **P10 Premium** |50 zadań na kolekcji zadań |Raz na minutę. Nie można wykonać zadania częściej niż raz na minutę |Subskrypcja jest dozwolone do 10 000 kolekcji zadań — wersja Premium P10. <a href="mailto:wapteams@microsoft.com">Skontaktuj się z nami</a> Aby uzyskać więcej informacji. |Dostęp do wszystkich funkcji zestawu harmonogramu |
 | **P20 Premium** |1000 zadań na kolekcji zadań |Raz na minutę. Nie można wykonać zadania częściej niż raz na minutę |Subskrypcja jest dozwolone do 10 000 kolekcji zadań — wersja Premium P20. <a href="mailto:wapteams@microsoft.com">Skontaktuj się z nami</a> Aby uzyskać więcej informacji. |Dostęp do wszystkich funkcji zestawu harmonogramu |
 
 ## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Aktualizacje i zmiany na starszą wersję plany kolekcji zadań
-Można uaktualnić lub starszą wersję planu kolekcji zadań w każdej chwili między planami wolne, standardowa i Premium. Jednak przechodzeniem do bezpłatna kolekcja zadań obniżania może zakończyć się niepowodzeniem dla jednego z następujących powodów:
-
-* Bezpłatna kolekcja zadań już istnieje w subskrypcji
-* Zadanie w kolekcji zadań ma wartość cyklu wyższe niż dozwolona liczba zadań w kolekcji zadań wolne. Maksymalna wartość cyklu dozwolone w bezpłatna kolekcja zadań jest raz na godzinę
-* Ma więcej niż 5 zadań w kolekcji zadań
-* Zadanie w kolekcji zadań ma akcji HTTP lub HTTPS, która używa [obiekt wychodzącego autoryzacji HTTP](scheduler-outbound-authentication.md)
+Można uaktualnić lub starszą wersję planu kolekcji zadań w dowolnym momencie między planie Standard, P10 Premium i P20 Premium.
 
 ## <a name="billing-and-azure-plans"></a>Plany rozliczeń i Azure
-Subskrypcje nie pobiera bezpłatnej kolekcji zadań. Jeśli masz więcej niż 100 kolekcji zadań standardowe (10 rozliczeń jednostek standard), to lepszą transakcji, aby wszystkie kolekcje zadań w planie premium.
+Jeśli masz więcej niż 100 kolekcji zadań standardowe (10 rozliczeń jednostek standard), to lepszą transakcji, aby wszystkie kolekcje zadań w planie premium.
 
 Jeśli masz jednej kolekcji zadań standardowa i premium jednej kolekcji zadań są rachunku standardowe rozliczeniowym jednostki *i* premium rozliczeniowym jednostki. Opłaty usługi harmonogramu, na podstawie liczby kolekcji aktywnego zadania, które są ustawione na standardowy lub premium; jest to wyjaśnić bardziej szczegółowo w dwóch następnych sekcjach.
 

@@ -17,21 +17,20 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 445baa36f33cbe02b68bdb37406f842932089183
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 2490b96716519ef749dd1e3a1fbe6846c6b5d999
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Uzyskuj dostęp do sieci wirtualnych sieci wirtualnej komunikacji równorzędnej przy użyciu programu PowerShell
 
 Sieci wirtualne można połączyć ze sobą z sieci wirtualnej komunikacji równorzędnej. Po połączyć się za pomocą sieci wirtualnych, zasobów w obie sieci wirtualne są mogły komunikować się ze sobą, z tym samym opóźnienia i przepustowości tak, jakby był zasoby w tej samej sieci wirtualnej. W tym artykule dowiesz się, jak:
 
-> [!div class="checklist"]
-> * Utwórz dwie sieci wirtualne
-> * Połącz dwie sieci wirtualnej z sieci wirtualnej komunikacji równorzędnej
-> * Wdróż maszynę wirtualną (VM) do każdej sieci wirtualnej
-> * Komunikację między maszynami wirtualnymi
+* Utwórz dwie sieci wirtualne
+* Połącz dwie sieci wirtualnej z sieci wirtualnej komunikacji równorzędnej
+* Wdróż maszynę wirtualną (VM) do każdej sieci wirtualnej
+* Komunikację między maszynami wirtualnymi
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -204,7 +203,7 @@ Gdy nie są już potrzebne, użyj [Remove-AzureRmResourcegroup](/powershell/modu
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przedstawiono sposób połączyć dwie sieci w tym samym regionie Azure, z sieci wirtualnej komunikacji równorzędnej. Można również elementów równorzędnych sieci wirtualnych w różnych [obsługiwane regiony](virtual-network-manage-peering.md#cross-region) i w [różnych subskrypcji Azure](create-peering-different-subscriptions.md#powershell), a także utworzyć [gwiazdy projektów sieci](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) z komunikacji równorzędnej. Aby dowiedzieć się więcej na temat sieci wirtualnej komunikacji równorzędnej, zobacz [komunikacji równorzędnej omówienie sieci wirtualnej](virtual-network-peering-overview.md) i [Zarządzanie komunikacji równorzędnych sieci wirtualnych](virtual-network-manage-peering.md).
 

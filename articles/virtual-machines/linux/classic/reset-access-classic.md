@@ -1,11 +1,11 @@
 ---
-title: "Resetowanie hasła maszyny Wirtualnej systemu Linux i klucz SSH z poziomu interfejsu wiersza polecenia | Dokumentacja firmy Microsoft"
-description: "Resetowanie hasła maszyny Wirtualnej systemu Linux lub klucza SSH, popraw konfigurację SSH i sprawdzanie spójności dysku przy użyciu rozszerzenia VMAccess z Azure interfejsu wiersza polecenia (CLI)"
+title: Resetowanie hasła maszyny Wirtualnej systemu Linux i klucz SSH z poziomu interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
+description: Resetowanie hasła maszyny Wirtualnej systemu Linux lub klucza SSH, popraw konfigurację SSH i sprawdzanie spójności dysku przy użyciu rozszerzenia VMAccess z Azure interfejsu wiersza polecenia (CLI)
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: d975eb70-5ff1-40d1-a634-8dd2646dcd17
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 4577b6b9656b6a1cf83e6f9a227526701ba297b4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c36498d2f4fef506dc7047fe91666aceec73c13d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Jak można zresetować hasła maszyny Wirtualnej systemu Linux lub klucza SSH, popraw konfigurację SSH i sprawdzanie spójności dysku przy użyciu rozszerzenia VMAccess
 Nie można połączyć z maszyną wirtualną systemu Linux na platformie Azure z powodu zapomniane hasło, nieprawidłowy klucz Secure Shell (SSH), lub na problem z konfiguracją SSH za pomocą rozszerzenia VMAccessForLinux z wiersza polecenia platformy Azure można zresetować hasła lub klucza SSH, napraw SSH Konfiguracja i sprawdzania spójności dysku. 
@@ -53,7 +53,7 @@ Należy wykonać następujące czynności:
 * Jeśli chcesz przywrócić jedną mają nowe hasło lub zestawu kluczy SSH. Nie trzeba je, aby zresetować konfiguracji SSH.
 
 ## <a name="pwresetcli"></a>Resetowanie hasła
-1. Utwórz plik na komputerze o nazwie PrivateConf.json z tych wierszy. Zastąp **myUserName** i  **myP@ssW0rd**  z własną nazwę użytkownika i hasło i ustawić własne datę wygaśnięcia.
+1. Utwórz plik na komputerze o nazwie PrivateConf.json z tych wierszy. Zastąp **myUserName** i **myP@ssW0rd** z własną nazwę użytkownika i hasło i ustawić własne datę wygaśnięcia.
 
     ```   
         {
@@ -83,7 +83,7 @@ Należy wykonać następujące czynności:
         azure vm extension set myVM VMAccessForLinux Microsoft.OSTCExtensions 1.* --private-config-path PrivateConf.json
 
 ## <a name="resetbothcli"></a>Zresetuj hasło i klucz SSH
-1. Utwórz plik o nazwie PrivateConf.json z tych zawartości. Zastąp **myUserName**, **mySSHKey** i  **myP@ssW0rd**  wartościami odpowiednimi informacjami.
+1. Utwórz plik o nazwie PrivateConf.json z tych zawartości. Zastąp **myUserName**, **mySSHKey** i **myP@ssW0rd** wartościami odpowiednimi informacjami.
 
     ``` 
         {

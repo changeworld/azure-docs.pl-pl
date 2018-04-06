@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 02/18/2017
 ms.author: sngun
-ms.openlocfilehash: a641c7e5e792b020be54a2ebc4bac63b545ce71e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ae8c4daf6b4beff3b1baf7ef5a5f3b84d706401a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Wyniki analizy strumienia: opcje magazynu, analizy
 Podczas tworzenia zadania usługi analiza strumienia, należy wziąć pod uwagę sposób używania danych. Jak można wyświetlić wyniki zadania usługi analiza strumienia i gdzie należy go przechowywać?
@@ -342,7 +342,7 @@ Ponadto w sytuacji, gdy nie ma żadnego zdarzenia, kierowanych do przedział cza
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 W niniejszym artykule przedstawiono usługę Stream Analytics — zarządzaną usługę służącą do analizy danych przesyłanych strumieniowo z Internetu rzeczy. Aby dowiedzieć się więcej na temat tej usługi, zobacz:

@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie i zarządzanie serwerami Azure SQL & bazy danych | Dokumentacja firmy Microsoft"
-description: "Informacje o serwerze bazy danych SQL Azure i pojęcia dotyczące bazy danych i dotyczących tworzenia i zarządzania serwerami i bazami danych."
+title: Tworzenie i zarządzanie serwerami Azure SQL & bazy danych | Dokumentacja firmy Microsoft
+description: Informacje o serwerze bazy danych SQL Azure i pojęcia dotyczące bazy danych i dotyczących tworzenia i zarządzania serwerami i bazami danych.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Utwórz i Zarządzaj serwerami bazy danych SQL Azure i baz danych
 
@@ -26,7 +26,7 @@ Baza danych SQL oferuje trzy typy baz danych:
 Baza danych SQL Azure Microsoft obsługuje danych tabelarycznych (TDS) protokół klienta wersja strumienia 7.3 lub nowszym i zezwala na tylko zaszyfrowanego połączenia TCP/IP.
 
 > [!IMPORTANT]
-> Wystąpienia zarządzane bazy danych SQL w publicznej wersji zapoznawczej, oferuje pojedynczej warstwie usługi ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [zarządzane wystąpienia bazy danych SQL](sql-database-managed-instance.md). W dalszej części tego artykułu, nie ma zastosowania do zarządzanego wystąpienia.
+> Wystąpienia zarządzane bazy danych SQL w publicznej wersji zapoznawczej, oferuje pojedynczej warstwie usługi ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [Wystąpienie zarządzane usługi SQL Database](sql-database-managed-instance.md). W dalszej części tego artykułu, nie ma zastosowania do zarządzanego wystąpienia.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Co to jest serwer logiczny Azure SQL?
 
@@ -53,7 +53,7 @@ Serwer logiczny bazy danych Azure:
 - Zapewnia dostęp do metadanych dotyczących zawartych zasobów przy użyciu dynamicznych widoków zarządzania, łącząc się z główną bazą danych 
 - Określa zakres dla zasad zarządzania, które dotyczą bazy danych — logowania, zapory, inspekcji, zagrożenia wykrywania itp. 
 - Jest ograniczony przez przydział w ramach subskrypcji nadrzędnej (sześciu serwerów na subskrypcję domyślnie - [Zobacz subskrypcji w tym miejscu ogranicza](../azure-subscription-service-limits.md))
-- Udostępnia zakres limit przydziału bazy danych i limit przydziału jednostek DTU dla zasoby, które zawiera (na przykład DTU 45 000)
+- Zapewnia zakres limit przydziału bazy danych i limit przydziału jednostek dtu w warstwie lub vCore zasoby, które zawiera (na przykład DTU 45 000)
 - Zakres przechowywania wersji dla możliwościami włączonymi na zasobach ograniczonego 
 - Logowania główne na poziomie serwera mogą zarządzać wszystkimi bazami danych na serwerze
 - Może zawierać logowania podobne do tych w lokalnych wystąpieniach programu SQL Server, którym udzielono dostępu do co najmniej jednej bazy danych na serwerze, i może otrzymać ograniczone prawa administracyjne. Aby uzyskać więcej informacji, zobacz temat [Logowania](sql-database-manage-logins.md).
@@ -135,7 +135,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapory z [interfejs
 |[Lista wersje az bazy danych sql](/cli/azure/sql/db#az_sql_db_list_editions)|Wyświetla dostępne usługi cele i limity magazynu|
 |[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Zwraca bazy danych użycia|
 |[Pokaż bazy danych sql az](/cli/azure/sql/db#az_sql_db_show)|Pobiera Magazyn bazy danych lub danych|
-|[Aktualizacja bazy danych sql az](/cli/azure/sql/db#az_sql_db_update)|Aktualizuje bazę danych|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualizuje bazę danych|
 |[Usuwanie bazy danych sql az](/cli/azure/sql/db#az_sql_db_delete)|Usuwa z bazy danych|
 |[az group create](/cli/azure/group#az_group_create)|Tworzy grupę zasobów|
 |[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Tworzy serwer|
@@ -169,7 +169,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapór z Transact-S
 |[ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Modyfikuje magazyn danych Azure SQL.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Usuwa z bazy danych.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Zwraca edition (warstwy usług), celem usługi (warstwa cenowa) i nazwę puli elastycznej dla bazy danych Azure SQL lub usługi Azure SQL Data Warehouse. Jeśli zalogowany do głównej bazy danych na serwerze bazy danych SQL Azure, zwraca informacje o wszystkich baz danych. Dla usługi Azure SQL Data Warehouse musi być podłączony do bazy danych master.|
-|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca zużycie Procesora, operacji We/Wy i pamięci dla bazy danych z bazy danych SQL Azure. Dla co 15 s istnieje jeden wiersz, nawet jeśli nic się nie w bazie danych.|
+|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Zwraca zużycie procesora CPU, we/wy i pamięci dla bazy danych z bazy danych SQL Azure. Dla co 15 s istnieje jeden wiersz, nawet jeśli nic się nie w bazie danych.|
 |[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Zwraca procesora CPU, użycia i magazynu danych dla bazy danych SQL Azure. Dane są zbierane i agregowane w ciągu 5 minut.|
 |[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Zawiera dane statystyczne dla zdarzenia łączności bazy danych SQL Database przedstawiające przegląd bazy danych połączenia sukcesy i niepowodzenia. |
 |[sys.event_log (baza danych SQL Azure)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Zwraca pomyślnego połączenia z bazą danych usługi Azure SQL Database, błędy połączeń i zakleszczenia. Te informacje można użyć do śledzenia i rozwiązywanie problemów z działania bazy danych z bazy danych SQL.|

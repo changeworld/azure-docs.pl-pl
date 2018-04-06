@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 269b65662796c092190cd2622c240756f6bd1cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Usługi Azure Active Directory B2C: Zasady niestandardowe
 
@@ -48,7 +48,7 @@ Firma Microsoft zaleca użycie trzech typów plików zasad:
 - **plik strony jednostki uzależnionej (RP)** pojedynczego pliku fokus zadania, który jest wywoływany bezpośrednio przez aplikację lub usługę (alias uzależniona).  Przeczytaj artykuł na definicje pliku zasad, aby uzyskać więcej informacji.  Każde zadanie unikatowy wymaga własnego planu odzyskiwania i w zależności od wymagań znakowania ta liczba może być "Całkowita liczba aplikacji x liczba przypadków użycia".
 
 
-Wbudowane zasady w usłudze Azure AD B2C zgodne ze wzorcem pliku 3 przedstawione powyżej, ale Deweloper widoczny jest tylko plik jednostki uzależnionej strony (RP) podczas portalu dokonuje zmian w tle w pliku EXTenstions.
+Wbudowane zasady w usłudze Azure AD B2C zgodne ze wzorcem pliku 3 przedstawione powyżej, ale Deweloper widoczny jest tylko plik jednostki uzależnionej strony (RP) podczas portalu wprowadza zmiany w tle pliku rozszerzenia.
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>Podstawowe koncepcje, których należy wiedzieć, korzystając z zasad niestandardowych
 
@@ -89,7 +89,7 @@ Zasady niestandardowe jest reprezentowany jako jeden lub kilka plików w formaci
 
 | Typ pliku zasad | Nazwa pliku przykłady | Zalecane użycie | Dziedziczy |
 |---------------------|--------------------|-----------------|---------------|
-| BASE |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | Zawiera podstawowe oświadczeń schematu, przekształcenia oświadczeń, dostawców oświadczeń i podróże użytkownika skonfigurowane przez firmę Microsoft<br><br>Minimalne zmiany tego pliku | None |
+| BASE |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | Zawiera podstawowe oświadczeń schematu, przekształcenia oświadczeń, dostawców oświadczeń i podróże użytkownika skonfigurowane przez firmę Microsoft<br><br>Minimalne zmiany tego pliku | Brak |
 | Rozszerzenia (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | Konsolidacja zmiany w tym miejscu pliku podstawowego<br><br>Dostawców oświadczeń zmodyfikowane<br><br>Podróże zmodyfikowanego użytkownika<br><br>Definicje własnych niestandardowych schematów | Pliku podstawowego |
 | Jednostka uzależniona (RP) | B2C_1A_sign_up_sign_in.xml| Ustawienia tokenu kształt i sesji tutaj| Plik Extensions(ext) |
 

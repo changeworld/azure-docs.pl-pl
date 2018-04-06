@@ -1,8 +1,8 @@
 ---
-title: "Certyfikat odnowienia dla użytkowników usługi Office 365 i Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano użytkowników usługi Office 365, jak rozwiązać problemy z wiadomości e-mail, które powiadamiają o odnawiania certyfikatu."
+title: Certyfikat odnowienia dla użytkowników usługi Office 365 i Azure AD | Dokumentacja firmy Microsoft
+description: W tym artykule opisano użytkowników usługi Office 365, jak rozwiązać problemy z wiadomości e-mail, które powiadamiają o odnawiania certyfikatu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: billmath
-ms.openlocfilehash: a0e3b65c108f8d839b8107e98a5cd59df78e1ab0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0435f1c5aae9381c76441b1233a47799af94768
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Odnawianie certyfikatów Federacji dla usługi Office 365 i Azure Active Directory
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Do pomyślnego federacji między Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS) certyfikaty używane przez usługi AD FS do podpisywania tokenów zabezpieczających do usługi Azure AD powinna odpowiadać co to jest skonfigurowany w usłudze Azure AD. Wszelkie niezgodność może prowadzić do zerwaniem relacji zaufania. Usługi Azure AD zapewnia, że te informacje są utrzymywane w synchronizacji podczas wdrażania usług AD FS i serwera Proxy aplikacji sieci Web (Aby uzyskać dostęp przez ekstranet).
 
 Ten artykuł zawiera dodatkowe informacje na temat zarządzania token certyfikaty podpisywania i zachowania ich synchronizacji z usługą Azure AD w następujących przypadkach:
@@ -55,7 +55,7 @@ Usługi Azure AD próbuje metadanych Federacji monitorowanie i aktualizowanie ce
 >
 >
 
-## Sprawdź, czy certyfikaty muszą zostać zaktualizowane<a name="managecerts"></a>
+## Sprawdź, czy certyfikaty muszą zostać zaktualizowane <a name="managecerts"></a>
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>Krok 1: Sprawdź stan AutoCertificateRollover
 Na serwerze usług AD FS Otwórz program PowerShell. Sprawdź, czy wartość AutoCertificateRollover jest równa True.
 
@@ -89,13 +89,13 @@ W danych wyjściowych Get MsolFederationProperty lub Get-AdfsCertificate Sprawd�
 
 | AutoCertificateRollover | Certyfikaty w synchronizacji z usługą Azure AD | Jest dostępny publicznie element metadanych Federacji | Ważność | Akcja |
 |:---:|:---:|:---:|:---:|:---:|
-| Tak |Tak |Tak |- |Nie jest wymagana żadna akcja. Zobacz [podpisywania tokenu odnawiania certyfikatów automatycznie](#autorenew). |
-| Tak |Nie |- |Mniej niż 15 dni |Odnów natychmiast. Zobacz [podpisywania tokenu odnawiania certyfikatu ręcznie](#manualrenew). |
+| Yes |Yes |Yes |- |Nie jest wymagana żadna akcja. Zobacz [podpisywania tokenu odnawiania certyfikatów automatycznie](#autorenew). |
+| Yes |Nie |- |Mniej niż 15 dni |Odnów natychmiast. Zobacz [podpisywania tokenu odnawiania certyfikatu ręcznie](#manualrenew). |
 | Nie |- |- |Mniej niż 30 dni |Odnów natychmiast. Zobacz [podpisywania tokenu odnawiania certyfikatu ręcznie](#manualrenew). |
 
 \[-] Nie ma znaczenia.
 
-## Odnów certyfikat podpisywania automatycznie tokenu (zalecane)<a name="autorenew"></a>
+## Odnów certyfikat podpisywania automatycznie tokenu (zalecane) <a name="autorenew"></a>
 Nie trzeba wykonywać żadnych czynności ręcznej, jeśli są spełnione oba poniższe:
 
 * Należy wdrożyć serwer Proxy aplikacji sieci Web, które można włączyć dostęp do metadanych federacji z ekstranetu.
@@ -107,13 +107,12 @@ Sprawdź następujące polecenie, aby potwierdzić, że certyfikat mogą być au
 
 **2. Metadane federacji usług AD FS jest dostępny publicznie.** Sprawdź, czy z metadanych federacji jest dostępny publicznie, przechodząc pod następujący adres URL z komputera w publicznej sieci internet (się z sieci firmowej):
 
-/federationmetadata/2007-06/federationmetadata.xml https:// (your_FS_name)
+https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 gdzie `(your_FS_name) `jest zastępowany nazwę hosta usługi federacyjnej, organizacja używa, takich jak fs.contoso.com.  Jeśli możesz zweryfikować oba te ustawienia pomyślnie, nie trzeba nic robić.  
 
 Przykład: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-
-## Odnów certyfikat podpisywania ręcznie tokenu<a name="manualrenew"></a>
+## Odnów certyfikat podpisywania ręcznie tokenu <a name="manualrenew"></a>
 Można odnowić certyfikatów podpisywania ręcznie tokenu. Na przykład poniższe scenariusze mogą działać lepiej odnowienia ręczne:
 
 * Certyfikaty podpisywania tokenu to certyfikaty nie podpisem. Najczęstszą przyczyną tego jest, że Twoja organizacja zarządza certyfikatów usługi AD FS zarejestrowane od urzędu certyfikacji w organizacji.
@@ -150,17 +149,17 @@ Powinien być teraz wyświetlany dwa certyfikaty, z których jedna ma **nie pó�
 Aktualizacja usługi Office 365 przy użyciu nowego tokenu podpisywania certyfikatów do zastosowania w przypadku zaufania, w następujący sposób.
 
 1. Otwórz moduł usługi Active Directory platformy Microsoft Azure dla środowiska Windows PowerShell.
-2. Uruchom $cred = Get-Credential. Gdy to polecenie cmdlet wyświetla monit o podanie poświadczeń, wpisz poświadczenia konta administratora usługi chmury.
+2. Run $cred=Get-Credential. Gdy to polecenie cmdlet wyświetla monit o podanie poświadczeń, wpisz poświadczenia konta administratora usługi chmury.
 3. Uruchom Connect MsolService — $cred poświadczeń. To polecenie cmdlet łączy do usługi w chmurze. Tworzenie kontekstu, który łączy do usługi w chmurze jest wymagana przed uruchomieniem dowolnych poleceniach cmdlet dodatkowe zainstalowane przez narzędzie.
-4. Jeśli używasz tych poleceń na komputerze, który nie jest serwerem podstawowym usług AD FS, uruchom zestaw MSOLAdfscontext-komputer <AD FS primary server>, gdzie <AD FS primary server> to wewnętrzna nazwa FQDN podstawowego serwera usług AD FS. To polecenie cmdlet tworzy kontekstu, który łączy użytkownika z usług AD FS.
-5. Uruchom aktualizacji MSOLFederatedDomain — DomainName <domain>. To polecenie cmdlet zaktualizowanie ustawień z usług AD FS do usługi w chmurze i konfiguruje relację zaufania między nimi.
+4. Jeśli używasz tych poleceń na komputerze, który nie jest serwerem podstawowym usług AD FS, uruchom zestaw MSOLAdfscontext-komputer &lt;podstawowego serwera usług AD FS&gt;, gdzie &lt;podstawowego serwera usług AD FS&gt; jest wewnętrzna nazwa FQDN Nazwa podstawowego serwera usług AD FS. To polecenie cmdlet tworzy kontekstu, który łączy użytkownika z usług AD FS.
+5. Uruchom aktualizacji MSOLFederatedDomain — DomainName &lt;domeny&gt;. To polecenie cmdlet zaktualizowanie ustawień z usług AD FS do usługi w chmurze i konfiguruje relację zaufania między nimi.
 
 > [!NOTE]
 > Jeśli zachodzi konieczność obsługi wielu domen najwyższego poziomu, takich jak contoso.com i fabrikam.com, należy użyć **SupportMultipleDomain** przełącznik z dowolnego polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [Obsługa wielu domen poziom górnej](active-directory-aadconnect-multiple-domains.md).
 >
 
 
-## Napraw zaufania usługi Azure AD za pomocą usługi Azure AD Connect<a name="connectrenew"></a>
+## Napraw zaufania usługi Azure AD za pomocą usługi Azure AD Connect <a name="connectrenew"></a>
 Jeśli farma usług AD FS, a relacja zaufania usługi Azure AD są skonfigurowane za pomocą usługi Azure AD Connect, można użyć usługi Azure AD Connect do wykrywania, jeśli musisz podejmować żadnych działań dla Twojego certyfikaty podpisywania tokenu. Jeśli chcesz odnowić certyfikaty, można użyć Azure AD Connect, aby to zrobić.
 
 Aby uzyskać więcej informacji, zobacz [naprawiania zaufania](active-directory-aadconnect-federation-management.md).

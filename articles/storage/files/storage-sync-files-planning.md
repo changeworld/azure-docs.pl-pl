@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planowanie wdrożenia synchronizacji plików Azure (wersja zapoznawcza)
 Umożliwia synchronizacji plików Azure (wersja zapoznawcza) scentralizowanie udziałów plików w organizacji w plikach Azure, przy zachowaniu elastyczności, wydajności i zgodności serwera plików lokalnych. Synchronizacja programu Azure pliku przy użyciu systemu Windows Server do szybkiego pamięci podręcznej udziału plików na platformę Azure. Można użyć każdego protokołu, który jest dostępny w systemie Windows Server dostępu do danych lokalnie, w tym protokołu SMB, systemu plików NFS i FTPS. Może mieć dowolną liczbę pamięci podręcznych zgodnie z potrzebami na całym świecie.
@@ -173,6 +173,7 @@ Synchronizacja programu Azure plik jest dostępny tylko w następujących region
 |--------|---------------------|
 | Australia Wschodnia | Stan Nowa Południowa Walia |
 | Kanada Środkowa | Toronto |
+| Kanada Wschodnia | Quebec |
 | Środkowe stany USA | Iowa |
 | Azja Wschodnia | Hongkong |
 | Wschodnie stany USA | Wirginia |
@@ -180,7 +181,6 @@ Synchronizacja programu Azure plik jest dostępny tylko w następujących region
 | Europa Północna | Irlandia |
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
-| Cental zachodnie stany USA |
 | Europa Zachodnia | Holandia |
 | Zachodnie stany USA | Kalifornia |
 
@@ -191,6 +191,6 @@ W wersji zapoznawczej firma Microsoft obsługuje synchronizację tylko z udział
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Należy wziąć pod uwagę ustawienia zapory i serwera proxy](storage-sync-files-firewall-and-proxy.md)
-* [Planowanie wdrożenia usługi pliki Azure](storage-files-planning.md)
+* [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
 * [Wdrażanie plików platformy Azure](storage-files-deployment-guide.md)
 * [Wdrażanie synchronizacji plików na platformę Azure](storage-sync-files-deployment-guide.md)

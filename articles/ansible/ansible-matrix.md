@@ -1,18 +1,18 @@
 ---
-title: "Macierz modułu i wersji Ansible dla platformy Azure"
-description: "Macierz modułu i wersji Ansible dla platformy Azure"
+title: Macierz modułu i wersji Ansible dla platformy Azure
+description: Macierz modułu i wersji Ansible dla platformy Azure
 ms.service: ansible
-keywords: "ansible, ról, macierzy, wersja, azure, opracowywania oprogramowania"
+keywords: ansible, ról, macierzy, wersja, azure, opracowywania oprogramowania
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/19/2018
+ms.date: 03/25/2018
 ms.topic: article
-ms.openlocfilehash: f62cc2df9e4ce815c4427b80e271ddc672748e4f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011cb173ffdecc7a22c2e470209719ccaf6bda58
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="ansible-module-and-version-matrix"></a>Macierz Ansible modułu i wersji
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 02/01/2018
 Ansible jest dostarczany z modułów, które mogą być wykonywane bezpośrednio na hostach zdalnych lub za pośrednictwem playbooks.
 W tym artykule wymieniono modułów Ansible dla platformy Azure, które można udostępnić zasobów chmury Azure, takich jak maszyny wirtualnej, sieci i usługi kontenera. Możesz uzyskać te moduły z oficjalnego wydania Ansible lub następujące role podręcznika dotyczącego opublikowane przez firmę Microsoft.
 
-| Moduł Ansible dla platformy Azure                   |  Ansible 2.4 |  Rola podręcznikowym [azure_module](#introduction-to-azuremodule) |  Rola podręcznikowym [azure_preview_module](#introduction-to-azurepreviewmodule) | 
+| Moduł Ansible dla platformy Azure                   |  Ansible 2.4 |  Ansible 2.5 |  Rola podręcznikowym [azure_preview_module](#introduction-to-azurepreviewmodule) | 
 |---------------------------------------------|--------------|-----------------------------|-------------------------------------| 
 | **Obliczanie**                    |           |                          |                                  | 
 | azure_rm_availabilityset                    | Yes          | Yes                         | Yes                                 | 
@@ -54,7 +54,7 @@ W tym artykule wymieniono modułów Ansible dla platformy Azure, które można u
 | azure_rm_appgwroute_facts                   | -            | -                           | Yes                                 |
 | azure_rm_appgwroutetable                    | -            | -                           | Yes                                 |
 | azure_rm_securitygroup                      | Yes          | Yes                         | Yes                                 | 
-| azure_rm_appgwroutetable_facts              | Yes          | Yes                         | Yes                                 | 
+| azure_rm_appgwroutetable_facts              | -            | -                           | Yes                                 | 
 | **Storage**                    |           |                          |                                  | 
 | azure_rm_storageaccount                     | Yes          | Yes                         | Yes                                 | 
 | azure_rm_storageaccount_facts               | Yes          | Yes                         | Yes                                 | 
@@ -76,7 +76,7 @@ W tym artykule wymieniono modułów Ansible dla platformy Azure, które można u
 | azure_rm_functionapp_facts                  | Yes          | Yes                         | Yes                                 | 
 | **Bazy danych**                    |           |                          |                                  | 
 | azure_rm_sqlserver                          | -            | Yes                         | Yes                                 | 
-| azure_rm_sqlserver_facts                    | -            | -                           | Yes                                 | 
+| azure_rm_sqlserver_facts                    | -            | Yes                         | Yes                                 | 
 | azure_rm_sqldatabase                        | -            | Yes                         | Yes                                 | 
 | azure_rm_sqldatabase_facts                  | -            | -                           | Yes                                 | 
 | azure_rm_sqlelasticpool                     | -            | -                           | Yes                                 | 
@@ -100,17 +100,13 @@ W tym artykule wymieniono modułów Ansible dla platformy Azure, które można u
 | azure_rm_postgresqlconfiguration            | -            | -                           | Yes                                 | 
 | azure_rm_postgresqlconfiguration_facts      | -            | -                           | Yes                                 | 
 | **Usługa Key Vault**                    |           |                          |                                  | 
-| azure_rm_keyvault                           | -            | -                           | Yes                                 |
+| azure_rm_keyvault                           | -            | Yes                         | Yes                                 |
 | azure_rm_keyvault_facts                     | -            | -                           | Yes                                 |
-| azure_rm_keyvaultkey                        | -            | -                           | Yes                                 |
-| azure_rm_keyvaultsecret                     | -            | -                           | Yes                                 |
+| azure_rm_keyvaultkey                        | -            | Yes                         | Yes                                 |
+| azure_rm_keyvaultsecret                     | -            | Yes                         | Yes                                 |
 
-## <a name="introduction-to-azuremodule"></a>Wprowadzenie do azure_module
-[Roli podręcznikowym azure_module](https://galaxy.ansible.com/Azure/azure_modules/) zawiera najnowsze zmiany i poprawki dla modułów Azure [devel gałęzi w repozytorium Ansible](https://github.com/ansible/ansible/tree/devel). Jeśli nie można czekać na Ansible następnej wersji, instalowanie roli azure_module jest dobrym rozwiązaniem.
 
-Rola podręcznika dotyczącego azure_module zwolnieniu co trzy tygodnie.
-
-## <a name="introduction-to-azurepreviewmodule"></a>Wprowadzenie do azure_preview_module
+## <a name="introduction-to-playbook-role-for-azure"></a>Wprowadzenie do podręcznika dotyczącego roli dla platformy Azure
 [Azure_preview_module podręcznikowym roli](https://galaxy.ansible.com/Azure/azure_preview_modules/) jest najbardziej kompleksowe roli i zawiera najnowsze Azure modułów. Aktualizacje i poprawki są wykonywane w sposób terminowy więcej niż oficjalnego wydania Ansible. Jeśli używasz Ansible dla celów udostępniania zasobów platformy Azure, możesz zaleca się zainstalowanie roli azure_preview_module.
 
 Rola podręcznika dotyczącego azure_preview_module zwolnieniu co trzy tygodnie.

@@ -1,23 +1,23 @@
 ---
-title: "Usługa Azure IoT EdgeAgent i EdgeHub odwołania | Dokumentacja firmy Microsoft"
-description: "Sprawdź właściwości i ich wartości dla twins modułu edgeAgent i edgeHub"
+title: Usługa Azure IoT EdgeAgent i EdgeHub odwołania | Dokumentacja firmy Microsoft
+description: Sprawdź właściwości i ich wartości dla twins modułu edgeAgent i edgeHub
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 17c97c6f233c9861ac42abc0a1f11089bb938e7c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0971d5bba59ce3c7b1a6409ef3248f33a41e37c9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Właściwości krawędź agent i twins modułu Centrum krawędzi
 
-Krawędź agent i koncentrator krawędzi są dwa moduły, które składają się na krawędzi IoT środowiska uruchomieniowego. Aby uzyskać więcej informacji o jakie obowiązków wykonuje każdy moduł, zobacz [zrozumieć środowiska uruchomieniowego Azure IoT Edge i jego architecture]](iot-edge-runtime.md). 
+Krawędź agent i koncentrator krawędzi są dwa moduły, które składają się na krawędzi IoT środowiska uruchomieniowego. Aby uzyskać więcej informacji o jakie obowiązków wykonuje każdy moduł, zobacz [zrozumienie środowiska uruchomieniowego Azure IoT Edge i jego architektura](iot-edge-runtime.md). 
 
 Ten artykuł zawiera odpowiednie właściwości i zgłoszone właściwości twins moduł środowiska wykonawczego. Zobacz [wdrażania i monitorowania] [ lnk-deploy] Aby uzyskać więcej informacji na temat wdrażania modułów na urządzenia brzegowe IoT.
 

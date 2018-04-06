@@ -1,11 +1,11 @@
 ---
-title: "Utwórz Maszynę wirtualną systemu Linux na platformie Azure z wieloma kartami sieciowymi | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączone do niego przy użyciu szablonów usługi Azure CLI w wersji 2.0 lub Menedżera zasobów."
+title: Utwórz Maszynę wirtualną systemu Linux na platformie Azure z wieloma kartami sieciowymi | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączone do niego przy użyciu szablonów usługi Azure CLI w wersji 2.0 lub Menedżera zasobów.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 635d1373a51f2f2e4d4f7ab5053e520f5b9363a6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 79c5d70d201b54e7ca1c8d421a5f0dc5e6b53bcd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Tworzenie maszyny wirtualnej systemu Linux na platformie Azure z sieci wielu kart interfejsu
 Można utworzyć maszynę wirtualną (VM) na platformie Azure, który ma wiele interfejsów sieci wirtualnej (NIC) do niego dołączony. Typowy scenariusz ma różne podsieci dla łączności frontonu i zaplecza lub sieć przeznaczona do monitorowania lub kopii zapasowej rozwiązanie. Ten artykuł zawiera szczegóły dotyczące sposobu tworzenia maszyn wirtualnych z wieloma kartami sieciowymi, do niego dołączony oraz dodawanie i usuwanie kart sieciowych z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej.
@@ -190,7 +190,7 @@ echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-Aby wprowadzić zmiany, stałe i stosowane podczas aktywacji stosu sieciowego, należy edytować */etc/sysconfig/network-scipts/ifcfg-eth0* i */etc/sysconfig/network-scipts/ifcfg-eth1*. ALTER wiersza *"NM_CONTROLLED = yes"* do *"NM_CONTROLLED = nie"*. Bez tego kroku dodatkowe reguły/routingu nie są automatycznie stosowane.
+Aby wprowadzić zmiany, stałe i stosowane podczas aktywacji stosu sieciowego, należy edytować */etc/sysconfig/network-scripts/ifcfg-eth0* i */etc/sysconfig/network-scripts/ifcfg-eth1*. ALTER wiersza *"NM_CONTROLLED = yes"* do *"NM_CONTROLLED = nie"*. Bez tego kroku dodatkowe reguły/routingu nie są automatycznie stosowane.
  
 Następnie należy rozszerzyć tabele routingu. Załóżmy, że mamy następujące ustawienia w miejscu:
 

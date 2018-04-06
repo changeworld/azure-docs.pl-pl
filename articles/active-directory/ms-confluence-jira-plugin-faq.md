@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure Active Directory pojedynczego logowania jednokrotnego wtyczki — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usługi Microsoft Azure Active Directory rejestracji jednokrotnej dla JIRA."
+title: Często zadawane pytania dotyczące usługi Azure Active Directory SSO wtyczki | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania na temat konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Jira/zlewiska.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,70 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 571fbd5078f66375f6e81cba2a790121366f9d60
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b642d6de9fd9265d7f7ee11b827a36d20e5bcce7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="microsoft-azure-active-directory-single-sign-on-plugin-faq"></a>Microsoft Azure Active Directory pojedynczego logowania jednokrotnego wtyczki — często zadawane pytania 
+# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Często zadawane pytania dotyczące usługi Azure Active Directory SSO wtyczki 
 
-## <a name="1-whats-the-microsoft-sso-add-on"></a>1. Co to jest dodatek Microsoft logowania jednokrotnego?
+## <a name="what-does-the-plug-in-do"></a>Jaki jest wtyczki?
 
-Ten dodatek zapewnia rejestrację jednokrotną JIRA (w tym JIRA Core, oprogramowanie JIRA, JIRA działu) i oprogramowania lokalnego zlewiska Atlassian firmy. Dodatek współpracuje z usługą Azure AD jako dostawca tożsamości.
+Dodatek zapewnia rejestracji jednokrotnej (SSO) Atlassian Jira (w tym Jira Core, oprogramowanie Jira, Jira działu) i zlewiska oprogramowania lokalnego. Wtyczka współpracuje z usługą Azure Active Directory (Azure AD) funkcję dostawcy tożsamości (IdP).
 
-## <a name="2-add-on-works-with-which-atlassian-products"></a>2. Dodatek współpracuje z produktów, które Atlassian?
+## <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Które produkty Atlassian działa wtyczki z?
 
-Od tej chwili dodatek współpracuje z wersjami lokalnymi JIRA i zlewiska.
+Wtyczka współpracuje z wersjami lokalnymi Jira i zlewiska.
 
-## <a name="3-does-this-add-on-work-on-cloud-version"></a>3. Ten dodatek działa w chmurze wersji?
+## <a name="does-the-plug-in-work-on-cloud-versions"></a>Wykonuje pracę wtyczki w wersjach chmury?
 
-Nie. Obsługiwane są tylko wersje lokalnymi JIRA i zlewiska.
+Nie. Wtyczka obsługuje tylko lokalne wersje Jira i zlewiska.
 
-## <a name="4-which-versions-of-jira-and-confluence-are-supported"></a>4. Które wersje JIRA i zlewiska są obsługiwane?
+## <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Które wersje Jira i zlewiska czy wtyczki obsługuje?
 
-Poniżej znajduje się lista wszystkich wersji, które są obsługiwane:
+Wtyczka obsługuje następujące wersje:
 
-* Podstawowe JIRA i oprogramowania: 6.0 do 7.2.2 
-* JIRA działu: 3.2 do 3.0 
+* Podstawowe Jira i oprogramowania: 6.0 do 7.2.2 
+* Jira działu: 3.2 do 3.0 
 * Zlewiska: 5.10 do 5.0
 
-## <a name="5-is-this-add-on-free-or-paid"></a>5. Jest to bezpłatna dodatek lub zapłacone?
+## <a name="is-the-plug-in-free-or-paid"></a>Wtyczka jest bezpłatne lub płatną?
 
-Jest to bezpłatny dodatek i mogą być instalowane z Atlassian handlową.
+Jest to bezpłatny dodatek. Można go zainstalować z witryny Atlassian Marketplace.
 
-## <a name="6-do-i-need-to-restart-jiraconfluence-once-i-deploy-the-add-on"></a>6. Należy ponownie uruchomić JIRA/zlewiska po zainstalować dodatek
+## <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Należy ponownie uruchomić Jira lub zlewiska po zainstalować dodatek typu plug-in?
 
-Ponowne uruchomienie nie jest wymagane po wdrożeniu dodatku. Można uruchomić przy użyciu dodatku natychmiast po wdrożeniu.
+Ponowne uruchomienie nie jest wymagane. Można uruchomić bezpośrednio za pomocą wtyczki.
 
-## <a name="7-how-do-i-get-support-for-the-add-on"></a>7. Jak uzyskać pomoc techniczną dla dodatku?
+## <a name="how-do-i-get-support-for-the-plug-in"></a>Jak uzyskać pomoc techniczną dla wtyczki?
 
-Dotrzeć do nas na: <email> . Otrzymasz odpowiedź w ciągu godziny <>. Może też wiązać biletu pomocy technicznej w firmie Microsoft za pośrednictwem kanału portalu Azure. Można również wywołać nam na: <Number> między <> używam do <> pm w dni robocze.
+Dotrzeć do [zespołu integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zespół reaguje w 24-48 godzin. 
 
-## <a name="8-would-this-add-on-work-on-mac-or-ubuntu-installation-of-jira-and-confluence"></a>8. Ten dodatek będzie działać w instalacji Mac lub Ubuntu JIRA i zlewiska?
+Może też wiązać biletu pomocy technicznej w firmie Microsoft za pośrednictwem kanału portalu Azure.
 
-Ten dodatek tylko w przypadku 64-bitowe systemu Windows server instalacji JIRA i zlewiska została przetestowana.
+## <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Czy wtyczki pracy w instalacji Mac lub Ubuntu Jira i zlewiska?
 
-## <a name="9-does-this-add-on-work-with-other-idps-than-azure-ad"></a>9. Ten dodatek działa z IdPs innych niż Azure AD?
+Przetestowano wtyczkę tylko w 64-bitowej instalacji systemu Windows Server Jira i zlewiska.
 
-Nie. Dodatek działa tylko z usługą Azure AD.
+## <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Wykonuje pracę wtyczki z IdPs innego niż Azure AD?
 
-## <a name="10-what-version-of-saml-does-the-add-on-work-with"></a>10. Która wersja SAML dodatek działa z?
+Nie. Działa tylko z usługą Azure AD.
 
-Dodatek współpracuje z SAML 2.0.
+## <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Która wersja SAML działa wtyczki z?
 
-## <a name="11-does-the-add-on-do-use-provisioning-as-well"></a>11. Dodatek należy używać inicjowania obsługi administracyjnej, a także czy?
+Działa on z SAML 2.0.
 
-Nie. Od tej chwili dodatek zapewnia tylko SAML 2.0 logowania jednokrotnego. Użytkownik ma być aprowizowana w aplikacji przed logowanie SSO.
+## <a name="does-the-plug-in-do-user-provisioning"></a>Wtyczka robi Inicjowanie obsługi użytkowników?
 
-## <a name="12-are-cluster-versions-of-jira-and-confluence-supported-by-add-on"></a>12. Czy wersjach klastra JIRA i zlewiska obsługiwane przez dodatek?
+Nie. Dodatek zapewnia tylko logowania jednokrotnego SAML 2.0 na podstawie. Użytkownik ma być aprowizowana w aplikacji przed logowanie SSO.
 
-Nie. Dodatek współpracuje z wersjami lokalnymi JIRA i zlewiska.
+## <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Czy obsługa wtyczki wersje klastra Jira i zlewiska?
 
-## <a name="13-would-this-plugin-work-with-http-version-of-jira-and-confluence"></a>13. Ten dodatek plug-in będzie działać z wersją protokołu HTTP JIRA i zlewiska?
+Nie. Wtyczka współpracuje z wersjami lokalnymi Jira i zlewiska.
 
-Nie. Działa dodatek z protokołu HTTPS włączone tylko instalacji.
+## <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Wykonuje pracę wtyczki z Jira i zlewiska wersji protokołu HTTP?
 
-## <a name="14-do-i-need-to-buy-license-of-the-add-on"></a>14. Należy kupić licencję dodatek?
-
-Jest to bezpłatny dodatek.
+Nie. Wtyczka współpracuje z włączonym protokołem HTTPS tylko instalacji.

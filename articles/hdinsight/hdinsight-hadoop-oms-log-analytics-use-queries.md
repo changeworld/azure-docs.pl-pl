@@ -1,8 +1,8 @@
 ---
-title: "Zapytanie usługi Analiza dzienników Azure do monitorowania klastrów usługi HDInsight Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak uruchamiać zapytania dotyczące usługi Analiza dzienników Azure, aby monitorować zadania uruchomione w klastrze usługi HDInsight."
+title: Zapytanie usługi Analiza dzienników Azure do monitorowania klastrów usługi HDInsight Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uruchamiać zapytania dotyczące usługi Analiza dzienników Azure, aby monitorować zadania uruchomione w klastrze usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: f9e023ae8d6c50049b588cf056629cd8d46ee603
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1b2f5fc9bd4f8fc8cd70437e38831595d0a8a819
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Analiza dzienników Azure zapytania do monitorowania klastrów usługi HDInsight
 
@@ -33,7 +33,7 @@ Poznać niektóre podstawowe scenariusze dotyczące sposobu używania usługi An
 
 * Należy skonfigurować klaster usługi HDInsight, aby użyć usługi Analiza dzienników Azure. Aby uzyskać instrukcje, zobacz [Użyj Azure Log Analytics z klastrami HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
-* Należy dodać rozwiązania zarządzania specyficznych dla klastra usługi HDInsight [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) obszaru roboczego, zgodnie z opisem w [rozwiązania do zarządzania klastra Dodaj HDInsight do analizy dzienników](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
+* Należy dodać rozwiązania zarządzania specyficznych dla klastra usługi HDInsight [analizy dzienników](../operations-management-suite/operations-management-suite-overview.md) obszaru roboczego, zgodnie z opisem w [rozwiązań do zarządzania klastra Dodaj HDInsight do analizy dzienników](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>Analizowanie metrykę klastra usługi HDInsight
 
@@ -86,7 +86,7 @@ Dowiedz się, jak wyglądają komunikaty o błędach podczas określonego okna c
 
     ![Otwórz pulpit nawigacyjny OMS](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS Otwórz pulpit nawigacyjny")
 
-2. Na pulpicie nawigacyjnym OMS z ekranu głównego, kliknij przycisk **wyszukiwania dziennika**.
+2. W portalu OMS z ekranu głównego, kliknij **wyszukiwania dziennika**.
 
     ![Otwórz dziennik wyszukiwania](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "Otwórz dziennik wyszukiwania")
 
@@ -126,7 +126,7 @@ Można użyć dowolnego zapytania, który ma być tworzony alert.
 
     ![Otwórz pulpit nawigacyjny OMS](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS Otwórz pulpit nawigacyjny")
 
-2. Na pulpicie nawigacyjnym OMS z ekranu głównego, kliknij przycisk **wyszukiwania dziennika**.
+2. W portalu OMS z ekranu głównego, kliknij **wyszukiwania dziennika**.
 
     ![Otwórz dziennik wyszukiwania](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "Otwórz dziennik wyszukiwania")
 
@@ -152,5 +152,5 @@ Można użyć dowolnego zapytania, który ma być tworzony alert.
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Praca z Operations Management Suite Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Praca z analizy dzienników](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [Tworzyć reguły alertów w analizy dzienników](../log-analytics/log-analytics-alerts-creating.md)

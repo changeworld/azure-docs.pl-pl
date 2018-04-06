@@ -1,6 +1,6 @@
 ---
-title: "Zagadnienia dotyczące sieci ze środowiska usługi aplikacji Azure"
-description: "Wyjaśniono ASE ruchu sieciowego i ustawiania grup NSG i Udr z Twojej ASE"
+title: Zagadnienia dotyczące sieci ze środowiska usługi aplikacji Azure
+description: Wyjaśniono ASE ruchu sieciowego i ustawiania grup NSG i Udr z Twojej ASE
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Zagadnienia dotyczące sieci dla środowiska usługi aplikacji #
 
@@ -163,7 +163,7 @@ Pierwsze dwa wymagania dla ruchu przychodzącego ASE funkcji są wyświetlane na
 
 ![Reguły zabezpieczeń ruchu przychodzącego][4]
 
-Domyślna reguła umożliwia adresów IP w sieci wirtualnej do komunikowania się z podsiecią ASE. Inna reguła domyślna umożliwia usługi równoważenia obciążenia, znanej także jako publiczny adres VIP, do komunikowania się z ASE. Aby wyświetlić reguły domyślne, wybierz **domyślne zasady** obok **Dodaj** ikony. Umieszczenie Odmów, wszystkie inne reguły po pokazano reguły grupy NSG, uniemożliwia ruch między adres VIP i ASE. Aby zapobiec ruchu przychodzącego z wewnątrz sieci wirtualnej, należy dodać własne reguły zezwalającej na przychodzące. Używać źródła równa AzureLoadBalancer, których miejscem docelowym **żadnych** i zakres portów  **\*** . Ponieważ reguła grupa NSG jest stosowana do podsieci ASE, nie trzeba być specyficzne dla miejsca docelowego.
+Domyślna reguła umożliwia adresów IP w sieci wirtualnej do komunikowania się z podsiecią ASE. Inna reguła domyślna umożliwia usługi równoważenia obciążenia, znanej także jako publiczny adres VIP, do komunikowania się z ASE. Aby wyświetlić reguły domyślne, wybierz **domyślne zasady** obok **Dodaj** ikony. Umieszczenie Odmów, wszystkie inne reguły po pokazano reguły grupy NSG, uniemożliwia ruch między adres VIP i ASE. Aby zapobiec ruchu przychodzącego z wewnątrz sieci wirtualnej, należy dodać własne reguły zezwalającej na przychodzące. Używać źródła równa AzureLoadBalancer, których miejscem docelowym **żadnych** i zakres portów **\***. Ponieważ reguła grupa NSG jest stosowana do podsieci ASE, nie trzeba być specyficzne dla miejsca docelowego.
 
 Jeśli adres IP jest przypisany do aplikacji, upewnij się, że porty stale otwarte. Aby wyświetlić porty, wybierz **środowiska usługi aplikacji** > **adresów IP**.  
 
@@ -175,31 +175,10 @@ Po zdefiniowaniu grup NSG, należy je przypisać do podsieci, która jest Twoje 
 
 ## <a name="routes"></a>Trasy ##
 
-Trasy mają kluczowe znaczenie dla wymuszonego tunelowania i sposobu jego obsługi. W sieci wirtualnej platformy Azure routing odbywa się na podstawie najdłuższego dopasowania prefiksu (LPM, Longest Prefix Match). Jeśli istnieje więcej niż jedna trasa z tym samym dopasowaniem LPM, wybór trasy odbywa się według następującej kolejności:
+Wymuszanie tunelowania jest w przypadku wartości trasy w sieci wirtualnej co ruchu wychodzącego nie przejść bezpośrednio do Internetu, ale innym miejscu, takich jak brama usługi ExpressRoute lub urządzenie wirtualne.  Jeśli musisz skonfigurować Twoje ASE w taki sposób, a następnie przeczytaj dokument na [Konfigurowanie środowiska usługi aplikacji przy użyciu tunelowania wymuszonego][forcedtunnel].  Ten dokument informują opcje dostępne do pracy z ExpressRoute, jak i wymuszanie tunelowania.
 
-- Trasa zdefiniowana przez użytkownika
-- Trasa protokołu BGP (jeśli używane są połączenia ExpressRoute)
-- Trasa systemowa
-
-Aby dowiedzieć się więcej na temat routingu w sieci wirtualnej, przeczytaj [User-defined routes and IP forwarding][UDRs] (Trasy zdefiniowane przez użytkownika i przesyłanie pakietów IP dalej).
-
-Baza danych Azure SQL, która ASE używa do zarządzania systemem ma zapory. Wymaga to pochodzą z publicznych adresów VIP ASE komunikacji. Połączenia z bazą danych SQL z ASE będą odrzucane, jeśli są one wysyłane połączenie ExpressRoute i innego adresu IP.
-
-Jeśli odpowiedzi na przychodzące żądania zarządzania są wysyłane w dół usługi ExpressRoute, adres, który różni się od początkowego miejsca docelowego. Ta niezgodność przerywa komunikację protokołu TCP.
-
-Dla Twojego ASE pracę podczas sieci wirtualnej jest skonfigurowana z ExpressRoute najłatwiejszym jest:
-
--   Konfigurowanie usługi ExpressRoute anonsowanie _0.0.0.0/0_. Domyślnie powoduje to wymuszenie tunelowania całego ruchu wychodzącego do środowiska lokalnego.
--   Utwórz trasę zdefiniowaną przez użytkownika. Dotyczą podsieci, która zawiera ASE z prefiksem adresu o _0.0.0.0/0_ i następnego przeskoku typu _Internet_.
-
-Jeśli te dwie zmiany, ruch kierowany przez internet pochodzący z podsieci ASE nie jest wymuszone usługi ExpressRoute i ASE działa. 
-
-> [!IMPORTANT]
-> Trasy zdefiniowane przez użytkownika muszą być wystarczająco szczegółowe, aby miały pierwszeństwo względem wszelkich tras anonsowanych przez konfigurację usługi ExpressRoute. W poprzednim przykładzie użyto szerokiego zakresu adresów 0.0.0.0/0. Może to zostać przypadkowo zastąpione przez anonsy tras z bardziej szczegółowymi zakresami adresów.
->
-> ASEs nie są obsługiwane w przypadku konfiguracji usługi ExpressRoute, które między anonsować tras z publicznej komunikacji równorzędnej ścieżki do ścieżki prywatnej komunikacji równorzędnej. Konfiguracje usługi ExpressRoute ze skonfigurowaną publiczną komunikacją równorzędną otrzymują anonsy tras od firmy Microsoft. Te anonse zawierają duży zestaw zakresów adresów IP platformy Microsoft Azure. W przypadku zakresów adresów między anonsowany w ścieżce prywatnej komunikacji równorzędnej, wszystkie pakiety wychodzącego z podsieci ASE są życie tunel do infrastruktury sieci lokalnej klienta. Ten przepływ sieci nie jest obecnie obsługiwane z ASEs. Jednym z rozwiązań tego problemu jest zatrzymanie anonsowania krzyżowego tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej.
-
-Aby utworzyć przez, wykonaj następujące kroki:
+Po utworzeniu ASE w portalu również utworzymy zestaw tabel tras w tej podsieci, który jest tworzony przez ASE.  Te trasy po prostu, że na wysyłanie ruchu wychodzącego bezpośrednio do Internetu.  
+Aby ręcznie utworzyć tego samego tras, wykonaj następujące kroki:
 
 1. Przejdź do portalu Azure. Wybierz **sieci** > **tabel tras**.
 
@@ -217,17 +196,15 @@ Aby utworzyć przez, wykonaj następujące kroki:
 
     ![Tras i grupy NSG][7]
 
-### <a name="deploy-into-existing-azure-virtual-networks-that-are-integrated-with-expressroute"></a>Wdróż do istniejącej sieci wirtualnych platformy Azure zintegrowanych z usługi ExpressRoute ###
+## <a name="service-endpoints"></a>Punkty końcowe usługi ##
 
-Do wdrożenia programu ASE w sieci wirtualnej, który jest zintegrowany z usługi ExpressRoute, należy wstępnie skonfigurować podsieci, w którym ma ASE wdrożone. Następnie należy użyć szablonu usługi Resource Manager jej wdrożenia. Aby utworzyć ASE w sieci wirtualnej który już ma ExpressRoute skonfigurowane:
+Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi sieci wirtualnej][serviceendpoints]. 
 
-- Utwórz podsieć do hostowania ASE.
+Po włączeniu punktów końcowych usługi w zasobie niektóre trasy są utworzone z wyższym priorytetem niż wszystkie inne trasy. Jeśli używasz punktów końcowych usługi w środowisku ASE z wymuszonym tunelowaniem, ruch związany z zarządzaniem usługami Azure SQL i Azure Storage nie będzie tunelowany w sposób wymuszony. 
 
-    > [!NOTE]
-    > Nic może być w tej podsieci, ale ASE. Należy wybrać przestrzeń adresową, która umożliwia rozwój w przyszłości. Nie można zmienić tego ustawienia później. Firma Microsoft zaleca rozmiar `/25` z adresami 128.
+Kiedy punkty końcowe usługi są włączone w podsieci z wystąpieniem usługi Azure SQL, wszystkie wystąpienia usługi Azure SQL połączone z tej podsieci muszą mieć włączone punkty końcowe usługi. Jeśli chcesz uzyskać dostęp do wielu wystąpień usługi Azure SQL z tej samej podsieci, musisz włączyć punkty końcowe usługi na każdym wystąpieniu usługi Azure SQL. Usługa Azure Storage nie zachowuje się tak samo jak usługa Azure SQL. Włączenie punktów końcowych usługi w usłudze Azure Storage powoduje zablokowanie dostępu do tego zasobu z podsieci, ale można nadal uzyskiwać dostęp do innych kont usługi Azure Storage, nawet jeśli nie mają włączonych punktów końcowych usługi.  
 
-- Utwórz Udr (na przykład, tabele tras), jak opisano wcześniej i ustawić go w podsieci.
-- Tworzenie ASE przy użyciu szablonu usługi Resource Manager, zgodnie z opisem w [utworzyć ASE przy użyciu szablonu usługi Resource Manager][MakeASEfromTemplate].
+![Punkty końcowe usługi][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png
@@ -237,6 +214,7 @@ Do wdrożenia programu ASE w sieci wirtualnej, który jest zintegrowany z usług
 [5]: ./media/network_considerations_with_an_app_service_environment/networkase-outboundnsg.png
 [6]: ./media/network_considerations_with_an_app_service_environment/networkase-udr.png
 [7]: ./media/network_considerations_with_an_app_service_environment/networkase-subnet.png
+[8]: ./media/network_considerations_with_an_app_service_environment/serviceendpoint.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -258,3 +236,6 @@ Do wdrożenia programu ASE w sieci wirtualnej, który jest zintegrowany z usług
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[forcedtunnel]: ./forced-tunnel-support.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md

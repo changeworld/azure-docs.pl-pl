@@ -1,6 +1,6 @@
 ---
-title: "Baza danych SQL Azure Rozwiązywanie problemów z wydajnością z informacjami dotyczącymi inteligentnego | Dokumentacja firmy Microsoft"
-description: "Inteligentnego szczegółowe informacje pomocy w rozwiązywaniu problemów z wydajnością bazy danych SQL Azure."
+title: Baza danych SQL Azure Rozwiązywanie problemów z wydajnością z informacjami dotyczącymi inteligentnego | Dokumentacja firmy Microsoft
+description: Inteligentnego szczegółowe informacje pomocy w rozwiązywaniu problemów z wydajnością bazy danych SQL Azure.
 services: sql-database
 author: danimir
 manager: craigg
@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 0f23a76506a6692dd907a0b9fc7cfadfe7cd8f40
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7830a8a4bfc43e158069cc7cdc186e289e166751
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Baza danych SQL Azure Rozwiązywanie problemów z wydajnością z informacjami dotyczącymi inteligentnego
 
@@ -152,7 +152,7 @@ Ten wzorzec wydajności wskazuje bieżący spadek wydajności obciążenie bazy 
 
 Zamków to mechanizmy lekkie synchronizacji używane przez bazy danych SQL, aby włączyć wielowątkowości. One zagwarantować spójności struktur w pamięci, które obejmują indeksów, strony danych i innych struktur wewnętrznych.
 
-Istnieje wiele typów zamków dostępne w bazie danych SQL. Dla uproszczenia zamków buforu służą do ochrony stron w pamięci w puli bufora. Zamków We/Wy są używane do ochrony nie została jeszcze załadowana do puli buforów stron. Zawsze, gdy dane są zapisywania lub odczytywania ze strony w puli buforów, musi najpierw uzyskać zatrzaśnięcie buforu, na stronie wątku roboczego. Zawsze, gdy wątek roboczy próbuje uzyskać dostęp do strony, która nie jest już dostępny w puli buforów w pamięci, we/wy żądań załadować wymaganych informacji z magazynu. Ta sekwencja zdarzeń wskazuje poważniejsze formę spadku wydajności.
+Istnieje wiele typów zamków dostępne w bazie danych SQL. Dla uproszczenia zamków buforu służą do ochrony stron w pamięci w puli bufora. We/Wy zamków służą do ochrony nie została jeszcze załadowana do puli buforów stron. Zawsze, gdy dane są zapisywania lub odczytywania ze strony w puli buforów, musi najpierw uzyskać zatrzaśnięcie buforu, na stronie wątku roboczego. Zawsze, gdy wątek roboczy próbuje uzyskać dostęp do strony, która nie jest już dostępny w puli buforów w pamięci, we/wy żądań załadować wymaganych informacji z magazynu. Ta sekwencja zdarzeń wskazuje poważniejsze formę spadku wydajności.
 
 Rywalizacji zamków strony występuje, gdy wiele wątków jednocześnie prób uzyskania zamków na tej samej struktury w pamięci, która przedstawia czas oczekiwania zwiększona do wykonywania zapytań. W przypadku niezgodności we/wy pagelatch gdy dane trzeba można uzyskać dostępu do magazynu i czas oczekiwania jest jeszcze większym. To może wpłynąć na wydajność obciążenia znacznie. Rywalizacji Pagelatch jest najbardziej typowym scenariuszem wątków oczekujących na każdym z nich i konkurowanie o zasoby w wielu systemach procesora CPU.
 

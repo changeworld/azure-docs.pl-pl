@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 03f21c076624ee758d313c4f58e29c616226de57
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e332651af29514ca773b1476eafb0381207df86e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Jak utworzyć zadanie przetwarzania analizy danych dla usługi analiza strumienia
 Zasób najwyższego poziomu w Azure Stream Analytics jest zadania usługi analiza strumienia.  Składa się z co najmniej jedno źródło danych wejściowych, zapytania, przedstawiając przekształcania danych i co najmniej jeden wyjściowy obiektów docelowych, które wyniki są zapisywane do. Razem te umożliwiają użytkownikowi wykonywać analizy danych przetwarzania do strumieniowego przesyłania danych.
@@ -44,7 +44,7 @@ Może upłynąć kilka minut, aż zadanie usługi analiza strumienia, który ma 
    ![Azure w portalu analityka danych przetwarzania stanu zadania](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

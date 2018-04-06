@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5cdc67a138e2316c2e87a72371a6df527cc36ac
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Uzyskiwanie dostępu do dzienników diagnostycznych dla usługi Azure Data Lake Store
 Dowiedz się włączyć diagnostyczne dla konta usługi Data Lake Store i sposób wyświetlania dzienników zbierane dla Twojego konta.
@@ -47,7 +47,7 @@ Organizacje mogą włączyć rejestrowanie diagnostyczne dla swojego konta usłu
         
         * Wybierz opcję **strumienia do Centrum zdarzeń** strumienia danych dziennika do usługi Azure Event Hub. Prawdopodobnie użyjesz tę opcję, jeśli masz potoku przetwarzania podrzędnego do analizowania przychodzących dzienniki w czasie rzeczywistym. Jeśli wybierzesz tę opcję, podaj szczegóły w Centrum zdarzeń platformy Azure, którego chcesz użyć.
 
-        * Wybierz opcję **wysyłać do analizy dzienników** do analizowania danych dziennika wygenerowanych przy użyciu usługi Analiza dzienników Azure. Jeśli wybierzesz tę opcję, podaj szczegóły dla obszaru roboczego usługi Operations Management Suite użyje przeprowadzanie analizy dziennika. Zobacz [widoku lub analizowania danych zebranych przez wyszukiwania dziennika analizy dzienników](../log-analytics/log-analytics-tutorial-viewdata.md) szczegółowe informacje na temat używania analizy dzienników.
+        * Wybierz opcję **wysyłać do analizy dzienników** do analizowania danych dziennika wygenerowanych przy użyciu usługi Analiza dzienników Azure. Jeśli wybierzesz tę opcję, podaj szczegóły dla obszaru roboczego analizy dzienników użyje przeprowadzanie analizy dziennika. Zobacz [widoku lub analizowania danych zebranych przez wyszukiwania dziennika analizy dzienników](../log-analytics/log-analytics-tutorial-viewdata.md) szczegółowe informacje na temat używania analizy dzienników.
      
    * Określ, czy chcesz pobrać dzienniki inspekcji Dzienniki żądań i/lub.
    * Określ liczbę dni, dla których dane muszą zostać zachowane. Przechowywania dotyczy tylko jeśli używasz konta magazynu Azure do archiwum danych dziennika.

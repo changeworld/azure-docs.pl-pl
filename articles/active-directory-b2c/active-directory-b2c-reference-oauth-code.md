@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: d49a1c97a578726c26f8533476042646b0b302d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d8ed5747f29f969535bbafc1624d9d02e54c8418
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Przepływu kodu autoryzacji protokołu OAuth 2.0
 Udzielania kodu autoryzacji protokołu OAuth 2.0 w aplikacjach na urządzeniu służy do uzyskiwania dostępu do chronionych zasobów, takich jak interfejsów API sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) implementacji protokołu OAuth 2.0, można dodać rejestrację, logowanie i innych Zarządzanie tożsamościami zadań do aplikacji mobilnych i klasycznych. W tym artykule jest niezależny od języka. W artykule możemy opisują sposób wysyłania i odbierania wiadomości HTTP bez korzystania z żadnych bibliotek open source.
@@ -195,7 +195,8 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 | Parametr | Wymagana? | Opis |
 | --- | --- | --- |
 | p |Wymagane |Zasady, które zostało użyte do uzyskania oryginalnego token odświeżania. Nie można użyć różnych zasad w tym żądaniu. Należy pamiętać, aby dodać ten parametr, aby *ciągu zapytania*, a nie w treści POST. |
-| client_id |Zalecane |Identyfikator aplikacji przypisany do aplikacji w [portalu Azure](https://portal.azure.com). |
+| client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji w [portalu Azure](https://portal.azure.com). |
+| client_secret |Wymagane |Client_secret skojarzonego z client_id w [portalu Azure](https://portal.azure.com). |
 | Typ grant_type |Wymagane |Typ grant. Dla tej gałęzi przepływu kodu autoryzacji musi być typu przydziału `refresh_token`. |
 | Zakres |Zalecane |Rozdzieloną spacjami listę zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure AD zarówno uprawnienia, które są żądane. Przy użyciu Identyfikatora klienta, jak zakres wskazuje, że Twoja aplikacja powinna tokenu dostępu, który może służyć przed własnych usług lub interfejsu API sieci web, reprezentowany przez ten sam identyfikator klienta.  `offline_access` Zakresu wskazuje, że aplikacji będą potrzebne token odświeżania długotrwałe dostępu do zasobów.  Można też użyć `openid` zakresu żądania tokenu identyfikator od usługi Azure AD B2C. |
 | redirect_uri |Optional (Opcjonalność) |Identyfikator URI przekierowania w aplikacji, w którym odebrano kod autoryzacji. |

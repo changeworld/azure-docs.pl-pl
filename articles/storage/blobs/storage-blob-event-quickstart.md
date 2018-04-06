@@ -1,31 +1,29 @@
 ---
-title: "Trasy do punktu końcowego sieci web niestandardowego zdarzenia magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid."
+title: Trasy do punktu końcowego sieci web niestandardowego zdarzenia magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft
+description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid.
 services: storage,event-grid
-keywords: 
+keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 4f10d9b26cb75bee8103d986b7fa1197168c692f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f0764ebc423cfb5323f2b634ce5a5ecbe075135c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Zdarzenia magazynu obiektów Blob trasy do punktu końcowego niestandardowe sieci web z wiersza polecenia platformy Azure
 
 Azure Event Grid to usługa obsługi zdarzeń dla chmury. W tym artykule omówiono subskrybowanie zdarzeń usługi Blob Storage i wyzwalanie zdarzenia w celu wyświetlenia wyniku za pomocą interfejsu wiersza polecenia platformy Azure. 
 
-Zazwyczaj wysyła się zdarzenia do punktu końcowego, który na nie reaguje, takiego jak element webhook lub funkcja platformy Azure. Aby uprościć przykład w tym artykule, omówimy wysłanie zdarzeń na adres URL, który tylko zbiera komunikaty. Utwórz ten adres URL przy użyciu narzędzia innej firmy z [RequestBin](https://requestb.in/) lub [Hookbin](https://hookbin.com/).
+Zazwyczaj wysyła się zdarzenia do punktu końcowego, który na nie reaguje, takiego jak element webhook lub funkcja platformy Azure. Aby uprościć przykład w tym artykule, omówimy wysłanie zdarzeń na adres URL, który tylko zbiera komunikaty. Ten adres URL jest tworzony w narzędziu innej firmy przy użyciu narzędzia [Hookbin](https://hookbin.com/).
 
 > [!NOTE]
-> **RequestBin** i **Hookbin** nie są przeznaczone do użycia z wysokiej przepływności. Korzystanie z tych narzędzi jest całkowicie demonstrative. W przypadku wypchnięcia więcej niż jednego zdarzenia w tym samym czasie w narzędziu mogą nie być widoczne wszystkie zdarzenia.
+> **Hookbin** nie jest przeznaczony do użycia z wysokiej przepływności. Zastosowanie tego narzędzia ma charakter czysto poglądowy. W przypadku wypchnięcia więcej niż jednego zdarzenia w tym samym czasie w narzędziu mogą nie być widoczne wszystkie zdarzenia.
 
 Po wykonaniu czynności opisanych w tym artykule dane powinny zostać wysłane do punktu końcowego.
-
-![Dane zdarzenia](./media/storage-blob-event-quickstart/request-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,11 +66,11 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
-Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zamiast pisać kod w celu zareagowania na zdarzenie, utwórzmy punkt końcowy, który będzie zbierać komunikaty, aby można było je wyświetlić. RequestBin i Hookbin są narzędzia innych firm, które umożliwiają tworzenie punktu końcowego i wyświetlić żądań, które są wysyłane do niej. Przejdź do [RequestBin](https://requestb.in/)i kliknij przycisk **utworzyć RequestBin**, lub przejdź do [Hookbin](https://hookbin.com/) i kliknij przycisk **utworzyć nowy punkt końcowy**.  Skopiuj adres URL pojemnika, ponieważ będzie on potrzebny podczas subskrybowania tematu.
+Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zamiast pisać kod w celu zareagowania na zdarzenie, utwórzmy punkt końcowy, który będzie zbierać komunikaty, aby można było je wyświetlić. Hookbin to narzędzie innego producenta, które umożliwia utworzenie punktu końcowego i wyświetlanie wysyłanych do niego żądań. Przejdź do narzędzia [Hookbin](https://hookbin.com/) i kliknij pozycję **Create New Endpoint** (Utwórz nowy punkt końcowy).  Skopiuj adres URL pojemnika, ponieważ będzie on potrzebny podczas subskrybowania tematu.
 
 ## <a name="subscribe-to-your-storage-account"></a>Subskrypcja konta magazynu
 
-Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład subskrybuje konta magazynu utworzone i przekazuje adres URL z RequestBin lub Hookbin jako punktu końcowego powiadomienia o zdarzeniach. Zamień `<event_subscription_name>` na unikatową nazwę subskrypcji zdarzeń oraz `<endpoint_URL>` na wartość z poprzedniej sekcji. Dzięki określeniu punktu końcowego podczas subskrybowania usługa Event Grid obsługuje kierowanie zdarzeń do tego punktu końcowego. Jako parametrów `<resource_group_name>` i `<storage_account_name>` użyj utworzonych wcześniej wartości.  
+Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić. Poniższy przykład subskrybuje konta magazynu utworzone i przekazuje adres URL z Hookbin jako punkt końcowy powiadomienia o zdarzeniach. Zamień `<event_subscription_name>` na unikatową nazwę subskrypcji zdarzeń oraz `<endpoint_URL>` na wartość z poprzedniej sekcji. Dzięki określeniu punktu końcowego podczas subskrybowania usługa Event Grid obsługuje kierowanie zdarzeń do tego punktu końcowego. Jako parametrów `<resource_group_name>` i `<storage_account_name>` użyj utworzonych wcześniej wartości.  
 
 ```azurecli-interactive
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -97,7 +95,7 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Przejdź do adresu URL punktu końcowego, który został utworzony wcześniej. Lub kliknij przycisk Odśwież w przeglądarce otwórz. Zobaczysz właśnie wysłane zdarzenie. 
+Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Przejdź do adresu URL punktu końcowego utworzonego wcześniej. Ewentualnie kliknij przycisk Refresh (Odśwież) w otwartej przeglądarce. Zobaczysz właśnie wysłane zdarzenie. 
 
 ```json
 [{

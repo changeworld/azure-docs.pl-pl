@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: d4229a3ecbcf8aa044eb448290c243e9920bd5cb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 ## <a name="about-this-list"></a>Ta lista — informacje
@@ -27,9 +27,11 @@ Podczas importowania interfejsu API, może spotkać się z pewnymi ograniczeniam
 ## <a name="open-api"> </a>Interfejs API otwarty/Swagger
 W przypadku otrzymania błędy importowania dokument otwarty interfejs API, upewnij się, zweryfikowaniu jej — przy użyciu narzędzia Projektant w portalu Azure (projekt - Front End — Otwórz interfejs API specyfikacji Edytor), lub z innych firm narzędzia takie jak <a href="http://www.swagger.io">edytora programu Swagger</a>.
 
-* **Nazwa hosta** APIM wymaga atrybutu nazwy hosta.
-* **Podstawowa ścieżka** APIM wymaga, aby atrybut ścieżki podstawowej.
-* **Schematy** APIM wymaga tablicy schematu.
+* Obsługiwane jest tylko format JSON OpenAPI.
+* Schematy odwoływać się przy użyciu **$ref** właściwości nie może zawierać inne **$ref** właściwości.
+* **$ref** wskaźniki nie mogą odwoływać się do plików zewnętrznych.
+* **x-ms ścieżki** i **serwerach x** są obsługiwane tylko rozszerzenia.
+* Niestandardowe rozszerzenia zostaną zignorowane podczas importowania i są nie zapisano lub zachowane eksportu.
 
 > [!IMPORTANT]
 > Zobacz to [dokumentu](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) ważne informacje i wskazówki związane z OpenAPI importu.

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ac3d2d90909d740d28eb05396b915280f58c8ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e05d620a457edf427c946366a9caca471ac8531e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Tworzenie obszaru roboczego analizy dzienników w portalu Azure
 W portalu Azure, które można ustawić obszaru roboczego analizy dzienników, która jest unikatowym środowisku analizy dzienników z własnych danych repozytorium, źródła danych i rozwiązania.  Kroki opisane w tym artykule są wymagane, jeśli planujesz na zbieranie danych z następujących źródeł:
@@ -47,7 +47,7 @@ Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https
   * Wybierz **Subskrypcję** do połączenia poprzez wybór subskrypcji z listy rozwijanej, jeśli domyślnie wybrana subskrypcja jest niewłaściwa.
   * Aby uzyskać **grupy zasobów**, wybierz opcję, aby użyć istniejącego zasobu już grupy konfiguracji lub Utwórz nową.  
   * Wybierz dostępny **lokalizacji**.  Aby uzyskać dodatkowe informacje, sprawdź, w których [regionach jest dostępna usługa Log Analytics](https://azure.microsoft.com/regions/services/).
-  * W przypadku tworzenia obszaru roboczego w nowej subskrypcji utworzone po 2 kwietnia 2018 zostaną automatycznie użyte *GB na* cenową planu wraz z opcją wybór warstwy cenowej nie są dostępne.  W przypadku tworzenia obszaru roboczego dla istniejącej subskrypcji utworzone przed 2 kwietnia lub subskrypcji, która została powiązana z istniejących rejestracji EA, użytkownik może wybrać trzy warstwy cenowej.  Ta opcja szybkiego startu zamierzasz wybierz warstwę bezpłatna.  Aby uzyskać dodatkowe informacje dotyczące konkretnej warstwy, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
+  * W przypadku tworzenia obszaru roboczego w nowej subskrypcji utworzone po 2 kwietnia 2018 zostaną automatycznie użyte *GB na* cenową planu wraz z opcją wybór warstwy cenowej nie są dostępne.  W przypadku tworzenia obszaru roboczego dla istniejącej subskrypcji utworzone przed 2 kwietnia lub subskrypcji, która została powiązana z istniejących rejestracji EA, wybierz preferowany warstwę cenową.  Aby uzyskać dodatkowe informacje dotyczące konkretnej warstwy, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
 
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 

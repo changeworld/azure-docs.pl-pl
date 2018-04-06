@@ -1,8 +1,8 @@
 ---
-title: "Zbieranie dzienników niestandardowych w Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Analiza dzienników można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux.  W tym artykule opisano sposób definiowania nowy dziennik niestandardowy i szczegóły rekordów tworzonych w obszarze roboczym analizy dzienników."
+title: Zbieranie dzienników niestandardowych w Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Analiza dzienników można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux.  W tym artykule opisano sposób definiowania nowy dziennik niestandardowy i szczegóły rekordów tworzonych w obszarze roboczym analizy dzienników.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Niestandardowe dzienniki w analizy dzienników
 Źródło danych niestandardowe dzienniki w analizy dzienników umożliwia zbieranie zdarzeń z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrowania informacji w plikach tekstowych zamiast standardowych usług rejestrowania, takich jak dziennika zdarzeń systemu Windows lub Syslog.  Po zebraniu danych, można przeanalizować każdego rekordu podczas logowania do poszczególnych pól przy użyciu [pola niestandardowe](log-analytics-custom-fields.md) funkcji analizy dzienników.
@@ -31,7 +31,7 @@ Pliki dziennika mają być zbierane musi odpowiadać następujących kryteriów.
 
     HH: MM: RRRR MM-DD<br>M/D/RRRR GG: MM: SS AM/PM <br>MON DD, YYYY HH: mm:
 
-- Plik dziennika nie może zezwalać na aktualizacje cykliczne gdy plik jest zastępowany nowe wpisy.
+- Plik dziennika nie może dopuszczać logowanie cykliczne lub rotacji dziennika, gdy plik jest zastępowany nowe wpisy.
 - Plik dziennika, należy użyć kodowanie ASCII lub UTF-8.  Innych formatach, takich jak UTF-16 nie są obsługiwane.
 
 >[!NOTE]
@@ -78,7 +78,7 @@ Poniższa tabela zawiera przykłady prawidłowych do określenia różnych plika
 | Wszystkie pliki w */var/log/audit* o nazwie rozpoczynającej się od dziennika i rozszerzeniem txt na agenta systemu Linux |/var/log/audit/log\*.txt |
 
 1. Wybierz systemu Windows lub Linux, aby określić format ścieżki, które dodajesz.
-2. Wpisz ścieżkę i kliknij przycisk  **+**  przycisku.
+2. Wpisz ścieżkę i kliknij przycisk **+** przycisku.
 3. Należy powtórzyć dla żadnych dodatkowych ścieżek.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Podaj nazwę i opis dziennika

@@ -1,20 +1,21 @@
 ---
 title: Baza danych SQL automatycznego, geograficznie nadmiarowego kopii zapasowych Azure | Dokumentacja firmy Microsoft
-description: "Baza danych SQL automatycznie tworzy kopię zapasową lokalnej bazy danych co kilka minut i korzysta z magazynu geograficznie nadmiarowego Azure dostęp do odczytu dla nadmiarowość geograficzna."
+description: Baza danych SQL automatycznie tworzy kopię zapasową lokalnej bazy danych co kilka minut i korzysta z magazynu geograficznie nadmiarowego Azure dostęp do odczytu dla nadmiarowość geograficzna.
 services: sql-database
-author: CarlRabeler
-manager: jhubbard
+author: anosov1960
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
 ms.workload: Active
-ms.date: 07/05/2017
-ms.author: carlrab
-ms.openlocfilehash: 053dd680af020aa05bc071c49f0f47ebe6a8f0da
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Więcej informacji na temat automatycznego tworzenia kopii zapasowej bazy danych SQL
 
@@ -22,7 +23,7 @@ Baza danych SQL automatycznie tworzy kopie zapasowe bazy danych i używa magazyn
 
 ## <a name="what-is-a-sql-database-backup"></a>Co to jest kopia zapasowa bazy danych SQL?
 
-Baza danych SQL używa technologii SQL Server w celu utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://msdn.microsoft.com/library/ms175526.aspx), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych. Kopie zapasowe dziennika transakcji nastąpić zazwyczaj co 5 – 10 minut, przy częstotliwości na podstawie poziomu wydajności i ilości aktywności bazy danych. Kopie zapasowe dziennika transakcji, o pełne i różnicowe kopie zapasowe, można przywrócić bazę danych do określonego punktu w czasie na tym samym serwerze, który jest hostem bazy danych. Po przywróceniu bazy danych usługi danych liczbowych limit które dziennika pełnej, różnicowej i transakcji konieczne jest przywrócenie kopii zapasowych.
+Baza danych SQL używa technologii SQL Server w celu utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://msdn.microsoft.com/library/ms175526.aspx), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych na potrzeby punktu w czasie przywracania (PITR). Kopie zapasowe dziennika transakcji nastąpić zazwyczaj co 5 – 10 minut, przy częstotliwości na podstawie poziomu wydajności i ilości aktywności bazy danych. Kopie zapasowe dziennika transakcji, o pełne i różnicowe kopie zapasowe, można przywrócić bazę danych do określonego punktu w czasie na tym samym serwerze, który jest hostem bazy danych. Po przywróceniu bazy danych usługi danych liczbowych limit które dziennika pełnej, różnicowej i transakcji konieczne jest przywrócenie kopii zapasowych.
 
 
 Te kopie zapasowe, można użyć:
@@ -30,7 +31,7 @@ Te kopie zapasowe, można użyć:
 * Przywróć bazę danych do punktu w czasie w okresie przechowywania. Ta operacja spowoduje utworzenie nowej bazy danych, w tym samym serwerze co oryginalnej bazy danych.
 * Przywracanie usuniętej bazy danych do czasu, który został usunięty lub kiedykolwiek okresem przechowywania. W tym samym serwerze, na którym utworzono oryginalnej bazy danych można przywrócić tylko usunięte bazy danych.
 * Przywróć bazę danych do innego regionu geograficznego. Dzięki temu można odzyskać z geograficzne po awarii, gdy nie można uzyskać dostępu do serwera i bazy danych. Tworzy nową bazę danych w dowolnym istniejącego serwera miejscu na świecie. 
-* Przywróć bazę danych z kopii zapasowej określonych przechowywane w magazynie usług odzyskiwania Azure. Dzięki temu można przywrócić starą wersję bazy danych, aby wykonać żądanie zgodności lub uruchomić starą wersję aplikacji. Zobacz [przechowywania długoterminowego](sql-database-long-term-retention.md).
+* Z określonym długoterminowej kopii zapasowej należy przywrócić bazę danych, jeśli bazy danych został skonfigurowany z zasadami przechowywania długoterminowego. Dzięki temu można przywrócić starą wersję bazy danych, aby wykonać żądanie zgodności lub uruchomić starą wersję aplikacji. Zobacz [przechowywania długoterminowego](sql-database-long-term-retention.md).
 * Aby wykonać operację przywracania, zobacz [przywrócić bazę danych z kopii zapasowych](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -49,10 +50,14 @@ Każdej kopii zapasowej bazy danych SQL ma okres przechowywania, która jest opa
 * Warstwy usług podstawowa wynosi 7 dni.
 * Standardowa usługa warstwa jest 35 dni.
 * Warstwy usług Premium jest 35 dni.
+* Warstwa ogólnego przeznaczenia jest można skonfigurować przy użyciu maksymalnie 35 dni (domyślnie co 7 dni) *
+* Krytyczne warstwy biznesowej (wersja zapoznawcza) jest można skonfigurować przy użyciu maksymalnie 35 dni (domyślnie co 7 dni) *
 
-Czy można obniżyć bazy danych z warstwy standardowa lub Premium usługi do warstwy podstawowa, kopie zapasowe są zapisywane na siedem dni. Wszystkie istniejące kopie zapasowe starsze niż 7 dni nie są już dostępne. 
+\* Podczas udostępniania wersji zapoznawczej okres przechowywania kopii zapasowych nie konfiguruje się i zostanie rozwiązany do 7 dni.
 
-Uaktualnienie bazy danych z warstwy podstawowej usługi do standardowa lub Premium, bazy danych SQL przechowuje istniejące kopie zapasowe, aż do ich 35 dni temu. Zapewnia nowe kopie zapasowe w miarę ich występowania 35 dni.
+Po skonwertowaniu bazy danych z dłużej przechowywania kopii zapasowych bazy danych z krótszą przechowywania wszystkich istniejących kopii zapasowych starsze niż okres przechowywania warstwy docelowych nie będą dostępne.
+
+Po uaktualnieniu baza danych o krótszy okres przechowywania bazy danych z dłuższy okres bazy danych SQL przechowuje istniejące kopie zapasowe, aż do osiągnięcia dłuższy okres przechowywania. 
 
 Usunięcie bazy danych, bazy danych SQL przechowuje kopie zapasowe w taki sam sposób miałoby to miejsce dla bazy danych online. Na przykład załóżmy, że należy usunąć podstawowa baza danych ma okres przechowywania wynosi siedem dni. Kopię zapasową, która jest czterech dni są zapisywane dla trzech dni.
 
@@ -61,17 +66,17 @@ Usunięcie bazy danych, bazy danych SQL przechowuje kopie zapasowe w taki sam sp
 > 
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>Jak rozszerzyć okres przechowywania kopii zapasowej?
-Jeśli aplikacja wymaga czy kopie zapasowe będą dostępne do czasu można rozszerzyć okres przechowywania wbudowanych konfigurując długoterminowo zasad przechowywania kopii zapasowych dla pojedynczych baz danych (zasada od lewej do prawej). Dzięki temu można przedłużyć okres przechowywania wbudowane it od 35 dni do maksymalnie 10 lat. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
-Po dodaniu zasad od lewej do prawej z bazą danych przy użyciu portalu Azure lub interfejsu API cotygodniowe kopie zapasowe pełnej bazy danych będą automatycznie skopiowane do własnych magazynu usługi Kopia zapasowa Azure. Jeśli baza danych jest szyfrowany przy funkcji TDE kopie zapasowe są automatycznie szyfrowane, gdy.  Magazyn usług automatycznie usunie kopie zapasowe wygasłe na podstawie ich sygnatury czasowej i zasad od lewej do prawej.  Więc nie trzeba martwić usuwania starych plików oraz zarządzania nimi harmonogram tworzenia kopii zapasowych. Interfejs API przywracania obsługuje kopie zapasowe przechowywane w magazynie, dopóki magazyn jest w tej samej subskrypcji co baza danych SQL. Portalu Azure lub programu PowerShell umożliwia dostęp do tych kopii zapasowych.
+Jeśli aplikacja wymaga, aby tworzenie kopii zapasowych są dostępne dłużej niż maksymalny okres przechowywania kopii zapasowych PITR, można skonfigurować zasadę długoterminowego przechowywania kopii zapasowych dla pojedynczych baz danych (zasada od lewej do prawej). Dzięki temu można rozszerzyć okres przechowywania wbudowane it maksymalnie 10 lat z maksymalną 35 dni. Aby uzyskać więcej informacji, zobacz [Długoterminowe przechowywanie](sql-database-long-term-retention.md).
 
-> [!TIP]
-> Aby uzyskać przewodnik, zobacz [Konfigurowanie i przywrócenie z długoterminowego przechowywania kopii zapasowych bazy danych SQL Azure](sql-database-long-term-backup-retention-configure.md)
->
+Po dodaniu zasad od lewej do prawej z bazą danych przy użyciu portalu Azure lub interfejsu API cotygodniowe kopie zapasowe pełnej bazy danych będą automatycznie skopiowane do oddzielnych kontenera magazynu RA-GRS, w celu przechowywania długoterminowego (od lewej do prawej magazynu). Jeśli baza danych jest szyfrowany przy funkcji TDE kopie zapasowe są automatycznie szyfrowane, gdy. Baza danych SQL automatycznie usunie kopie zapasowe wygasłe na podstawie ich sygnatury czasowej i zasad od lewej do prawej. Po skonfigurowaniu zasad, nie trzeba zarządzać harmonogram tworzenia kopii zapasowych lub martwić usuwania starych plików. Aby wyświetlić, przywrócić lub usunąć te kopie zapasowe, można użyć portalu Azure lub programu PowerShell.
 
 ## <a name="are-backups-encrypted"></a>Kopie zapasowe są szyfrowane?
 
 Po włączeniu funkcji TDE dla bazy danych Azure SQL kopii zapasowych również są szyfrowane. Wszystkie nowe bazy danych Azure SQL korzystają z funkcji TDE domyślnie włączone. Aby uzyskać więcej informacji o funkcji TDE, zobacz [przezroczystego szyfrowania danych z bazy danych SQL Azure](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+
+## <a name="are-the-automatic-backups-compliant-with-gdpr"></a>Automatyczne kopie zapasowe są zgodne z GDPR?
+Jeśli kopia zapasowa zawiera dane osobowe, czyli może ulec ogólne dane ochrony rozporządzenia (GDPR), należy zastosować środki zwiększone zabezpieczenia, aby chronić dane przed nieautoryzowanym dostępem. Aby można było zgodne z GDPR, należy sposób zarządzania żądania danych właścicieli danych bez konieczności uzyskiwania dostępu do kopii zapasowych.  Krótkoterminowe kopie zapasowe, jedno rozwiązanie można skrócić kopii zapasowej dozwolone okna w ciągu 30 dni, który określa czas do ukończenia żądania dostępu do danych.  Dłuższy okres kopie zapasowe są wymagane, zalecane jest przechowywanie tylko "pseudonymized" danych podczas tworzenia kopii zapasowych. Na przykład jeśli dane dotyczące osoby musi zostać usunięty lub zaktualizowany, nie trzeba będzie usunięcie lub aktualizowania istniejących kopii zapasowych. Można znaleźć więcej informacji na temat najlepszych rozwiązań w GDPR [zarządzania danymi zgodności GDPR](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

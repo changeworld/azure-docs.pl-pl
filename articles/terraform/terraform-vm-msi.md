@@ -1,88 +1,97 @@
 ---
-title: "Użyj obrazu portalu Azure Marketplace do utworzenia maszyny wirtualnej systemu Linux Terraform zarządzane tożsamości usługi"
-description: "Aby utworzyć maszyny wirtualnej systemu Linux Terraform z zarządzanych tożsamość usługi i stan zdalnego zarządzania łatwe wdrażanie zasobów na platformie Azure, Użyj obrazu z witryny Marketplace."
+title: Użyj obrazu portalu Azure Marketplace do utworzenia maszyny wirtualnej systemu Terraform Linux zarządzane tożsamości usługi
+description: Aby utworzyć maszyny wirtualnej systemu Terraform Linux z zarządzanych tożsamość usługi i zdalne zarządzanie stanem łatwe wdrażanie zasobów na platformie Azure, Użyj obrazu z witryny Marketplace.
 keywords: terraform, devops, MSI, virtual machine, remote state, azure
 author: VaijanathB
 manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: ce8a3e8b813bf4224a1fd77d60ec30f2f8e080a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Użyj obrazu portalu Azure Marketplace do utworzenia maszyny wirtualnej systemu Linux Terraform zarządzane tożsamości usługi
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Użyj obrazu portalu Azure Marketplace do utworzenia maszyny wirtualnej systemu Terraform Linux zarządzane tożsamości usługi
 
-W tym artykule przedstawiono sposób użycia [obrazu z witryny Terraform Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) utworzyć `Ubuntu Linux VM (16.04 LTS)` z najnowszej [Terraform](https://www.terraform.io/intro/index.html) wersji zainstalowany i skonfigurowany za pomocą [(zarządzane tożsamości usługi MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Ten obraz konfiguruje również zdalnego zaplecza, aby włączyć [stan zdalnej](https://www.terraform.io/docs/state/remote.html) zarządzania przy użyciu Terraform. Obrazu witryny Terraform Marketplace ułatwia rozpoczęcie pracy z Terraform na platformie Azure (w minutach), bez konieczności instalowania Terraform i ręcznie skonfigurować uwierzytelnianie. 
+W tym artykule przedstawiono sposób użycia [obrazu z witryny Terraform Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) do utworzenia maszyny Wirtualnej systemu Ubuntu Linux (16.04 LTS) przy użyciu najnowszych [Terraform](https://www.terraform.io/intro/index.html) wersji zainstalowany i skonfigurowany za pomocą [zarządzane Usługa tożsamości (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Ten obraz konfiguruje również zdalnego zaplecze umożliwiające [stan zdalnego](https://www.terraform.io/docs/state/remote.html) zarządzania przy użyciu Terraform. 
 
-Nie ma żadnych opłat oprogramowania dla tego obrazu Terraform maszyny Wirtualnej. Płaci się tylko opłaty użycia Azure sprzętu, które są oceniane na podstawie rozmiaru maszyny wirtualnej, udostępnione. Więcej informacji na temat opłat obliczeniowe można znaleźć w [cennik maszyn wirtualnych systemu Linux strony](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Obrazu witryny Terraform Marketplace ułatwia rozpoczęcie pracy z Terraform na platformie Azure, bez konieczności instalowania i konfigurowania Terraform ręcznie. 
+
+Nie ma żadnych opłat oprogramowania dla tego obrazu Terraform maszyny Wirtualnej. Płaci się tylko opłaty użycia Azure sprzętu, które są oceniane na podstawie rozmiaru maszyny wirtualnej, która zostanie zainicjowana. Aby uzyskać więcej informacji o opłatach obliczeń, zobacz [cennik maszyn wirtualnych systemu Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed utworzeniem maszyny wirtualnej systemu Linux Terraform musi mieć subskrypcję platformy Azure. Jeśli nie masz już jeden, zobacz [utworzyć bezpłatne konto platformy Azure obecnie](https://azure.microsoft.com/free/).  
+Przed utworzeniem maszyny wirtualnej systemu Linux Terraform musi mieć subskrypcję platformy Azure. Jeśli nie masz jeszcze jeden, zobacz [utworzyć bezpłatne konto platformy Azure obecnie](https://azure.microsoft.com/free/).  
 
 ## <a name="create-your-terraform-virtual-machine"></a>Tworzenie maszyny wirtualnej Terraform 
 
-Poniżej przedstawiono kroki, aby utworzyć wystąpienie maszyny wirtualnej Terraform systemu Linux. 
+Poniżej przedstawiono kroki, aby utworzyć wystąpienie maszyny wirtualnej systemu Linux Terraform: 
 
-1. Przejdź do [Utwórz zasób](https://ms.portal.azure.com/#create/hub) wyświetlania w portalu Azure.
-2. Wyszukaj `Terraform` w `Search the Marketplace` pasek wyszukiwania. Wybierz `Terraform` szablonu. Wybierz **Utwórz** przycisku na karcie Szczegóły Terraform w prawej dolnej.
-![tekst alternatywny](media\terraformmsi.png)
-3. Poniższe sekcje zawierają dane wejściowe dla poszczególne kroki w Kreatorze (**wyliczyć po prawej stronie**) do utworzenia maszyny wirtualnej systemu Linux Terraform.  W tym miejscu są potrzebne do skonfigurowania każdego z tych kroków dane wejściowe
+1. W portalu Azure, przejdź do [Utwórz zasób](https://ms.portal.azure.com/#create/hub) wyświetlania.
 
-## <a name="details-in-create-terraform-tab"></a>Szczegóły w utworzenia Terraform karty
+2. W **wyszukiwania portalu Marketplace** pasek wyszukiwania, wyszukiwanie **Terraform**. Wybierz **Terraform** szablonu. 
 
-Poniżej przedstawiono szczegółowe informacje, które należy wprowadzić na karcie Terraform utworzyć.
+3. Na karcie Szczegóły Terraform w prawej dolnej wybierz **Utwórz** przycisku.
 
-a. **Podstawy**
+    ![Utwórz maszynę wirtualną Terraform](media\terraformmsi.png)
+
+4. Poniższe sekcje zawierają dane wejściowe dla poszczególne kroki w kreatorze, aby utworzyć maszynę wirtualną systemu Terraform Linux. W poniższej sekcji przedstawiono wejść, które są potrzebne do skonfigurowania każdego z tych kroków.
+
+## <a name="details-on-the-create-terraform-tab"></a>Szczegółowe informacje o karcie Tworzenie Terraform
+
+Wprowadź następujące informacje szczegółowe **utworzyć Terraform** karty:
+
+1. **Podstawy**
     
-* **Nazwa**: Nazwa Terraform maszyny wirtualnej.
-* **Nazwa użytkownika**: pierwsze konto logowania identyfikatora.
-* **Hasło**: pierwszy hasło do konta (zamiast hasła można użyć klucza publicznego SSH).
-* **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz jedną, na którym maszyna ma być utworzony i są rozliczane. Musi mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
-* **Grupy zasobów**: można utworzyć nowej lub istniejącej grupy.
-* **Lokalizacja**: wybierz centrum danych, która jest najbardziej odpowiednia. Zazwyczaj jest centrum danych, która zawiera większość danych lub zbliżony do fizycznej lokalizacji najszybszy dostęp do sieci.
+   * **Nazwa**: Nazwa Terraform maszyny wirtualnej.
+   * **Nazwa użytkownika**: pierwsze konto logowania identyfikatora.
+   * **Hasło**: pierwszy hasło do konta. (Zamiast hasła można użyć klucza publicznego SSH).
+   * **Subskrypcja**: subskrypcji, na którym maszyna ma być utworzony i są rozliczane. Musi mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
+   * **Grupa zasobów**: nowy lub istniejący zasób grupy.
+   * **Lokalizacja**: centrum danych, która jest najbardziej odpowiednia. Jest zazwyczaj większość danych lub jeden, zbliżony do fizycznej lokalizacji najszybszy dostęp do sieci centrum danych.
 
-b. **Dodatkowe ustawienia**
+2. **Dodatkowe ustawienia**
 
-* : Rozmiar pamięci maszyny wirtualnej.
-* Typ dysku maszyny Wirtualnej: wybór między SSD i HDD
+   * **Rozmiar**: rozmiar maszyny wirtualnej. 
+   * **Typ dysku maszyny Wirtualnej**: dysków SSD i HDD.
 
-c. **Podsumowanie Terraform**
+3. **Podsumowanie Terraform**
 
-* Sprawdź, czy wszystkie wprowadzone informacje jest poprawna. 
+   * Sprawdź, czy wszystkie wprowadzone informacje jest poprawna. 
 
-d. **Buy**
+4. **Buy**
 
-* Aby rozpocząć, udostępnianie, kliknij dostawcy. Łącze znajduje się na warunki transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczeń rozmiarze serwera, który wybrano w kroku rozmiar.
+   * Aby rozpocząć proces inicjowania obsługi administracyjnej, wybierz **kupić**. Łącze znajduje się na warunki transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczeniowe dla rozmiaru serwera, które wybrano w kroku rozmiar.
 
-Obraz maszyny Wirtualnej Terraform wykonuje następujące czynności
+Obraz maszyny Wirtualnej Terraform wykonuje następujące czynności:
 
-* Tworzy Maszynę wirtualną z systemu przypisane tożsamości na podstawie obrazu Ubuntu 16.04 LTS
-* Instaluje rozszerzenie MSI na maszynie Wirtualnej, aby umożliwić tokenów OAuth zostanie wysłane do zasobów platformy Azure
-* Przypisz uprawnienia RBAC tożsamości zarządzanych przyznanie praw właściciela grupy zasobów
-* Tworzy folder szablonu Terraform (tfTemplate)
-* Wstępnie konfiguruje stan zdalnego Terraform z wewnętrznej bazy danych Azure
+* Tworzy Maszynę wirtualną z przypisane systemu tożsamości opartego na obrazie Ubuntu 16.04 LTS.
+* Instaluje rozszerzenia MSI na maszynie Wirtualnej, aby umożliwić tokenów OAuth zostanie wysłane do zasobów platformy Azure.
+* Przypisywanie uprawnień RBAC tożsamości zarządzanych, przyznanie praw właściciela grupy zasobów.
+* Tworzy folder szablonu Terraform (tfTemplate).
+* Wstępnie konfiguruje Terraform stan zdalnego przy użyciu zwrotnego Azure zakończenia.
 
-## <a name="how-to-access-and-configure-linux-terraform-virtual-machine"></a>Uzyskiwanie dostępu i konfigurowanie maszyny wirtualnej systemu Linux Terraform
+## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Dostęp i konfigurowanie maszyny wirtualnej systemu Linux Terraform
 
-Po utworzeniu maszyny Wirtualnej można logowania się do go przy użyciu protokołu SSH. Korzystać z poświadczeń konta, które zostały utworzone w sekcji podstawy krok 3 dla interfejsu powłoki tekstu. W systemie Windows, możesz pobrać narzędzie klienta SSH, takie jak [programu Putty](http://www.putty.org/)
+Po utworzeniu maszyny Wirtualnej można logowania się do go przy użyciu protokołu SSH. Korzystać z poświadczeń konta, które zostały utworzone w sekcji "Podstawowe" krok 3 dla interfejsu powłoki tekstu. W systemie Windows, możesz pobrać narzędzie klienta SSH, takie jak [Putty](http://www.putty.org/).
 
-Po zastosowaniu `SSH` Aby podłączyć się do maszyny wirtualnej, należy nadać uprawnienia współautora dla całej subskrypcji dla zarządzanych tożsamości usługi na maszynie wirtualnej. Uprawnienia współautora pomaga MSI w maszynie Wirtualnej, aby Terraform umożliwiają utworzenie zasobów spoza grupy zasobów maszyny Wirtualnej. Ta akcja może łatwo osiągnąć za raz wykonywania skryptu. Oto polecenia, aby wykonać to zadanie.
+Połącz z maszyną wirtualną przy użyciu protokołu SSH, należy przyznać uprawnienia współautora dla całej subskrypcji do zarządzanego tożsamości usługi na maszynie wirtualnej. 
+
+Uprawnienia współautora pomaga MSI w maszynie Wirtualnej, aby Terraform umożliwiają utworzenie zasobów spoza grupy zasobów maszyny Wirtualnej. Ta akcja można łatwo osiągnąć przez uruchomienie skryptu raz. Użyj następującego polecenia:
 
 `. ~/tfEnv.sh`
 
-Poprzedni skrypt używa [AZ CLI v 2.0 interakcyjnego logowania](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanizm uwierzytelniania w usłudze Azure i przypisać tożsamość usługi zarządzania maszyny wirtualnej uprawnienia współautora dla całej subskrypcji. 
+Poprzedni skrypt używa [AZ CLI v 2.0 interakcyjnego logowania](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanizm uwierzytelniania w usłudze Azure i przypisać maszynie wirtualnej zarządzane tożsamość usługi uprawnienia współautora dla całej subskrypcji. 
 
- Maszyna wirtualna ma stan zdalnej Terraform wewnętrznej bazy danych utworzone i aby ją włączyć w danym wdrożeniu Terraform, należy skopiować plik remoteState.tf z katalogu tfTemplate do katalogu głównego skrypty Terraform.  
+ Maszyna wirtualna ma zaplecze stan zdalnego Terraform. Aby ją włączyć w danym wdrożeniu Terraform, skopiuj plik remoteState.tf z katalogu tfTemplate do katalogu głównego Terraform skryptów.  
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- Możesz przeczytać więcej na temat zdalnego zarządzania stanem [tutaj](https://www.terraform.io/docs/state/remote.html). Klucz dostępu do magazynu jest widoczne w tym pliku i musi zostać dokładnie sprawdzony pod kontrolą źródła.  
+ Aby uzyskać więcej informacji na temat zdalnego zarządzania stanem, zobacz [tę stronę o stanie zdalnego Terraform](https://www.terraform.io/docs/state/remote.html). Klucz dostępu do magazynu jest widoczne w tym pliku i musi zostać dokładnie sprawdzony pod kontrolą źródła.  
 
-## <a name="next-steps"></a>Następne kroki
-W tym artykule przedstawiono sposób ustawić się Terraform maszyny wirtualnej systemu Linux na platformie Azure. Poniżej przedstawiono dodatkowe zasoby, aby dowiedzieć się więcej o Terraform na platformie Azure. 
+## <a name="next-steps"></a>Kolejne kroki
+W tym artykule przedstawiono sposób konfigurowania maszyny wirtualnej systemu Terraform Linux na platformie Azure. Poniżej przedstawiono dodatkowe zasoby ułatwiające Dowiedz się więcej o Terraform na platformie Azure: 
 
  [Koncentrator Terraform w domenie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
  [Dokumentacji dostawcy Terraform platformy Azure](http://aka.ms/terraform)  

@@ -1,6 +1,6 @@
 ---
-title: "Omówienie testów porównawczych bazy danych SQL Azure"
-description: "W tym temacie opisano wzorca bazy danych SQL Azure używana w pomiaru wydajności bazy danych SQL Azure."
+title: Omówienie testów porównawczych jednostek dtu w warstwie bazy danych SQL Azure
+description: W tym temacie opisano wzorca bazy danych SQL Azure używana w pomiaru wydajności bazy danych SQL Azure.
 services: sql-database
 author: jan-eng
 manager: jhubbard
@@ -9,15 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 684ae62400adbde6f0624b802b79a926c06961c8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="azure-sql-database-benchmark-overview"></a>Omówienie testów porównawczych bazy danych SQL Azure
+# <a name="azure-sql-database-dtu-benchmark-overview"></a>Omówienie testów porównawczych jednostek dtu w warstwie bazy danych SQL Azure
 ## <a name="overview"></a>Przegląd
-Microsoft Azure SQL Database oferuje trzy [warstw usług](sql-database-service-tiers.md) wiele poziomów wydajności. Każdy poziom wydajności udostępnia zwiększanie zasobów lub "power" przeznaczona do dostarczania coraz wyższej przepustowości.
+W podstawie jednostek dtu w warstwie model kupna Microsoft Azure SQL Database oferuje trzy [warstw usług](sql-database-service-tiers.md) wiele poziomów wydajności. Każdy poziom wydajności udostępnia zwiększanie zasobów lub "power" przeznaczona do dostarczania coraz wyższej przepustowości.
+
+> [!IMPORTANT]
+> Baza danych SQL Azure obsługuje teraz również na podstawie vCore model kupna (wersja zapoznawcza). Aby uzyskać informacje, zobacz [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
 
 Jest ważne można było określić, jak zwiększa możliwości każdym poziomie wydajności przekłada się na wydajności zwiększona bazy danych. Aby zrobić to Microsoft opracowała testu wydajności bazy danych SQL Azure (ASDB). Testu porównawczego wykonuje podstawowe operacje, w przypadku wszystkich obciążeń OLTP. Firma Microsoft mierzenia przepływności uzyskuje baz danych uruchomionych w każdym poziomie wydajności.
 

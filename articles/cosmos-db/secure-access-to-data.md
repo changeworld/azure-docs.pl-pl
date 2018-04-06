@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
-ms.openlocfilehash: 771c4a539d240a6bfdc9770adc7cfada01571939
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5ca2ea638dfa43b3b687ef65a420886f1ddf92f9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpieczanie dostępu do danych bazy danych Azure rozwiązania Cosmos
 Ten artykuł zawiera omówienie zabezpieczanie dostępu do danych przechowywanych w [bazy danych programu Microsoft Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/).
@@ -151,7 +151,7 @@ Poniższy przykładowy kod przedstawia sposób tworzenia zasobu uprawnienia, tok
 Permission docPermission = new Permission
 {
     PermissionMode = PermissionMode.Read,
-    ResourceLink = documentCollection.SelfLink,
+    ResourceLink = UriFactory.CreateDocumentCollectionUri("db", "collection"),
     Id = "readperm"
 };
   

@@ -1,11 +1,11 @@
 ---
 title: Uruchom OpenFOAM pakietem HPC na maszynach wirtualnych systemu Linux | Dokumentacja firmy Microsoft
-description: "Wdrażanie klastra Microsoft HPC Pack na platformie Azure, a następnie uruchom zadanie OpenFOAM na wielu węzłach obliczeniowych Linux przez sieć RDMA."
+description: Wdrażanie klastra Microsoft HPC Pack na platformie Azure, a następnie uruchom zadanie OpenFOAM na wielu węzłach obliczeniowych Linux przez sieć RDMA.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: c0bb1637-bb19-48f1-adaa-491808d3441f
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: ef124a8983fa112d499252460bff9ed2fcccc02b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Uruchamianie oprogramowania OpenFoam przy użyciu pakietu Microsoft HPC w węzłach RDMA systemu Linux na platformie Azure
 Ten artykuł przedstawia sposób uruchamiania OpenFoam w maszynach wirtualnych platformy Azure. W tym miejscu, w przypadku wdrażania klastra Microsoft HPC Pack z węzłami obliczeniowymi systemu Linux na platformie Azure i uruchom [OpenFoam](http://openfoam.com/) zadania z Intel MPI. Tak, aby węzły obliczeniowe komunikują się za pośrednictwem sieci Azure RDMA, można użyć z funkcją RDMA maszynach wirtualnych platformy Azure dla węzłów obliczeniowych. Inne opcje do uruchomienia OpenFoam na platformie Azure obejmują dostępnych obrazów komercyjnych pełni skonfigurowany w witrynie Marketplace, takie jak jego UberCloud [2.3 OpenFoam na CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)i uruchamianych [partii zadań Azure](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
@@ -36,7 +36,7 @@ Microsoft HPC Pack udostępnia funkcje do uruchamiania HPC na dużą skalę i r�
 > 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Węzły obliczeniowe HPC Pack klastra z systemem Linux z funkcją RDMA** — wdrożenie klastra HPC Pack o rozmiarze A8, A9, H16r, lub H16rm Linux obliczeniowe węzłów za pomocą [szablonu usługi Azure Resource Manager](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) lub [skrypt programu PowerShell Azure](hpcpack-cluster-powershell-script.md). Zobacz [wprowadzenie węzły obliczeniowe systemu Linux w klastrze HPC Pack na platformie Azure](hpcpack-cluster.md) wymagania wstępne i kroki dla każdej opcji. Jeśli wybierzesz opcję wdrożenia skryptu programu PowerShell, zobacz przykładowy plik konfiguracji w przykładowych plików na końcu tego artykułu. Ta konfiguracja umożliwia wdrożenie składający się z węzłem głównym A8 systemu Windows Server 2012 R2 rozmiar i 2 węzły obliczeniowe A8 SUSE Linux Enterprise Server 12 rozmiar klastra bazujących na platformie Azure HPC Pack. Zastąp wartości odpowiednie dla Twojej subskrypcji i usługi nazw. 
+* **Węzły obliczeniowe HPC Pack klastra z systemem Linux z funkcją RDMA** — wdrożenie klastra HPC Pack o rozmiarze A8, A9, H16r, lub H16rm Linux obliczeniowe węzłów za pomocą [szablonu usługi Azure Resource Manager](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) lub [Azure Skrypt programu PowerShell](hpcpack-cluster-powershell-script.md). Zobacz [wprowadzenie węzły obliczeniowe systemu Linux w klastrze HPC Pack na platformie Azure](hpcpack-cluster.md) wymagania wstępne i kroki dla każdej opcji. Jeśli wybierzesz opcję wdrożenia skryptu programu PowerShell, zobacz przykładowy plik konfiguracji w przykładowych plików na końcu tego artykułu. Ta konfiguracja umożliwia wdrożenie składający się z węzłem głównym A8 systemu Windows Server 2012 R2 rozmiar i 2 węzły obliczeniowe A8 SUSE Linux Enterprise Server 12 rozmiar klastra bazujących na platformie Azure HPC Pack. Zastąp wartości odpowiednie dla Twojej subskrypcji i usługi nazw. 
   
   **Dodatkowe czynności, aby dowiedzieć się**
   
@@ -267,9 +267,9 @@ W tym kroku możesz utworzyć plik hosta (listy węzłów obliczeniowych) który
    
    1. Konfiguruje zmiennych środowiskowych dla **mpirun**, a niektóre parametry polecenia Dodawanie, uruchamianie zadań MPI za pośrednictwem sieci RDMA. W takim przypadku ustawia następujące zmienne:
       
-      * I_MPI_FABRICS = shm:dapl
-      * I_MPI_DAPL_PROVIDER = ib0-v2 — ustawienia
-      * I_MPI_DYNAMIC_CONNECTION = 0
+      * I_MPI_FABRICS=shm:dapl
+      * I_MPI_DAPL_PROVIDER=ofa-v2-ib0
+      * I_MPI_DYNAMIC_CONNECTION=0
    2. Tworzy plik hostów zgodnie ze środowiska zmiennej $CCP_NODES_CORES, który jest ustawiony przez węzła głównego klastra HPC, gdy zadanie jest aktywny.
       
       Format $CCP_NODES_CORES następujące tego wzorca:
@@ -280,9 +280,9 @@ W tym kroku możesz utworzyć plik hosta (listy węzłów obliczeniowych) który
       
       gdzie
       
-      * `<Number of nodes>`-Liczba węzłów przydzielone do tego zadania.  
-      * `<Name of node_n_...>`-Nazwa każdego węzła przydzielone do tego zadania.
-      * `<Cores of node_n_...>`-Liczba rdzeni w węźle przydzielone do tego zadania.
+      * `<Number of nodes>` -Liczba węzłów przydzielone do tego zadania.  
+      * `<Name of node_n_...>` -Nazwa każdego węzła przydzielone do tego zadania.
+      * `<Cores of node_n_...>` -Liczba rdzeni w węźle przydzielone do tego zadania.
       
       Na przykład jeśli zadanie wymaga dwóch węzłów do uruchomienia, $CCP_NODES_CORES jest podobny do
       
@@ -291,8 +291,8 @@ W tym kroku możesz utworzyć plik hosta (listy węzłów obliczeniowych) który
       ```
    3. Wywołania **mpirun** polecenie i dołącza dwa parametry wiersza polecenia.
       
-      * `--hostfile <hostfilepath>: <hostfilepath>`— Ścieżka pliku hostów skrypt tworzy
-      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}`-Zmienna środowiskowa ustawione przez węzłem głównym HPC Pack, którym przechowywana jest liczba całkowita liczba rdzeni przydzielone do tego zadania. W takim przypadku określa liczbę procesów dla **mpirun**.
+      * `--hostfile <hostfilepath>: <hostfilepath>` — Ścieżka pliku hostów skrypt tworzy
+      * `-np ${CCP_NUMCPUS}: ${CCP_NUMCPUS}` -Zmienna środowiskowa ustawione przez węzłem głównym HPC Pack, którym przechowywana jest liczba całkowita liczba rdzeni przydzielone do tego zadania. W takim przypadku określa liczbę procesów dla **mpirun**.
 
 ## <a name="submit-an-openfoam-job"></a>Prześlij zadanie OpenFOAM
 Teraz można przesłać zadania w Menedżerze klastra HPC. Należy przekazać hpcimpirun.sh skryptu w wierszu polecenia dla niektórych zadań zadania.
@@ -305,7 +305,7 @@ Teraz można przesłać zadania w Menedżerze klastra HPC. Należy przekazać hp
    ![Szczegóły zadania][job_details]
 5. W **zadania zasoby**, wybierz typ zasobu jako "Węzła" i ustaw wartości minimalnej do 2. Ta konfiguracja uruchamia zadanie na dwa węzły Linux, z których każdy ma osiem rdzeni w tym przykładzie.
    
-   ![Zadanie zasobów][job_resources]
+   ![Zasoby zadania][job_resources]
 6. Kliknij przycisk **Edycja zadań** nawigacji po lewej stronie, a następnie kliknij polecenie **Dodaj** można dodać zadania do zadania. Dodaj cztery zadania do zadania o następujące wiersze poleceń i ustawienia.
    
    > [!NOTE]
@@ -364,7 +364,7 @@ Teraz można przesłać zadania w Menedżerze klastra HPC. Należy przekazać hp
 Opcjonalnie użyj [EnSight](https://www.ceisoftware.com/) do wizualizowania i analizowania wyników zadania OpenFOAM. Więcej informacji o wizualizacji i animacji EnSight, zobacz [przewodnik wideo](http://www.ceisoftware.com/wp-content/uploads/screencasts/vof_visualization/vof_visualization.html).
 
 1. Po zainstalowaniu EnSight w węźle głównym, należy ją uruchomić.
-2. Otwórz C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
+2. Open C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.
    
    Zostanie wyświetlony zbiornika w przeglądarce.
    

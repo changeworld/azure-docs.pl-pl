@@ -1,11 +1,11 @@
 ---
-title: "Dodaj dysk do maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się dodać dysk trwałych do maszyny Wirtualnej systemu Linux Azure CLI 1.0 i 2.0."
-keywords: "maszyny wirtualnej systemu Linux, Dodaj zasób dysku"
+title: Dodaj dysk do maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się dodać dysk trwałych do maszyny Wirtualnej systemu Linux Azure CLI 1.0 i 2.0.
+keywords: maszyny wirtualnej systemu Linux, Dodaj zasób dysku
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
@@ -17,18 +17,18 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9db7d300b745001906bdc38769dcbe6e4d7c7b83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Dodawanie dysku do maszyny wirtualnej z systemem Linux
 W tym artykule przedstawiono sposób dołączyć trwałe dysku do maszyny Wirtualnej, dzięki czemu można zachować dane — nawet wtedy, gdy maszyna wirtualna jest ponownie udostępnić z powodu konserwacji lub zmiany rozmiaru. 
 
 
 ## <a name="use-managed-disks"></a>Użyj zarządzanego dysków
-Dyskach zarządzanych platformy Azure ułatwia zarządzanie dyskami na maszynach wirtualnych platformy Azure Zarządzanie konta magazynu skojarzone z dyskami maszyny Wirtualnej. Należy określić typ (Premium lub Standard) należy rozmiar dysku i Azure tworzy i zarządza dysku. Aby uzyskać więcej informacji, zobacz [omówienie dysków zarządzanych](managed-disks-overview.md).
+Usługa Azure Managed Disks upraszcza zarządzanie dyskami maszyn wirtualnych platformy Azure dzięki zarządzaniu kontami magazynu skojarzonymi z dyskami maszyn wirtualnych. Należy tylko określić potrzebny typ magazynu (Premium lub Standardowa) oraz rozmiar dysku, a platforma Azure utworzy dyski i będzie nimi zarządzać. Aby uzyskać więcej informacji, zobacz [omówienie dysków zarządzanych](managed-disks-overview.md).
 
 
 ### <a name="attach-a-new-disk-to-a-vm"></a>Dołączanie nowego dysku do maszyny Wirtualnej
@@ -264,7 +264,7 @@ Istnieją dwa sposoby, aby umożliwić PRZYCINANIE obsługi w maszynie Wirtualne
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Należy pamiętać, że nowy dysk nie jest dostępne dla maszyny Wirtualnej, jeśli nastąpi ponowne uruchomienie, chyba że zapisania tych informacji do użytkownika [fstab](http://en.wikipedia.org/wiki/Fstab) pliku.
 * Aby maszyny Wirtualnej systemu Linux jest skonfigurowany prawidłowo, przejrzeć [maszyny Linux Optymalizowanie](optimization.md) zalecenia.
 * Rozwiń węzeł pojemności pamięci masowej przez dodanie dodatkowych dysków i [skonfigurować RAID](configure-raid.md) dla wyższą wydajność.

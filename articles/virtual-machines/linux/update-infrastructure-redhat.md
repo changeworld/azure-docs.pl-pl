@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/10/2017
+ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: fe354c6c9415c1525527dd6b95d1b3a481b5a2de
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 336990373027ae13688f41e453b9a262f120c6e0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat infrastruktury aktualizacji na żądanie Red Hat Enterprise Linux w maszynach wirtualnych na platformie Azure
  [Red Hat aktualizacji infrastruktury](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług chmury, takich jak Azure zawartości hostowanej Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i był dostępny dla maszyn wirtualnych przez użytkownika końcowego.
@@ -166,5 +166,5 @@ Ta procedura jest podana jedynie do celów referencyjnych. Obrazy między RHEL j
 
 6. Po zakończeniu upewnij się, że masz dostęp Azure RHUI z maszyny Wirtualnej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby utworzyć maszynę Wirtualną Red Hat Enterprise Linux z obrazu Azure Marketplace między i użyj RHUI hostowanymi na platformie Azure, przejdź do [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/). 

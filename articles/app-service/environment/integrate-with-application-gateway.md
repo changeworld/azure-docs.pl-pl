@@ -1,5 +1,5 @@
 ---
-title: Integracja środowiska usługi aplikacji ILB z bramy aplikacji
+title: Integrację środowiska usługi aplikacji ILB z bramy aplikacji Azure
 description: Przewodnik dotyczący sposobu integracji aplikacji w środowisku usługi aplikacji ILB z bramy aplikacji
 services: app-service
 documentationcenter: na
@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: c64b686d7a9016b3834096ebc88179db8972098f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 31aea1d19ed6da856bb5fc634a919819513cb6b2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-an-application-gateway"></a>Integracja środowiska usługi aplikacji ILB z bramy aplikacji #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrację środowiska usługi aplikacji ILB z bramy aplikacji Azure #
 
 [Środowiska usługi aplikacji](./intro.md) wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure klienta. Może on zostać wdrożony z punktu końcowego publicznej lub prywatnej w celu uzyskania dostępu do aplikacji. Wdrożenie środowiska usługi aplikacji z punktem końcowym prywatne (to znaczy wewnętrznego modułu równoważenia obciążenia) jest nazywany ILB środowiska usługi aplikacji.  
 
-Brama aplikacji Azure jest urządzenie wirtualne, które oferuje usługa równoważenia obciążenia warstwy 7, odciążanie protokołu SSL i ochrony (WAF) zapory aplikacji sieci web. Można go nasłuchiwać na publiczny adres i trasy ruch pakietów IP punktu końcowego aplikacji. 
+Aplikacja sieci Web zapór pomagają w zabezpieczaniu aplikacji sieci web, sprawdzając ruch przychodzący sieci web do blokowania przekazywania złośliwego oprogramowania iniekcji skryptów krzyżowych, SQL i aplikacji przed atakami DDoS i inne ataki. Sprawdza również odpowiedzi z serwerów sieci web zaplecza dla zapobiegania utracie danych (DLP). Urządzenia zapory aplikacji sieci Web można uzyskać z poziomu portalu Azure marketplace lub użyć [Azure Application Gateway][appgw].
 
-Poniższe informacje zawierają opis sposobu integracji bramy aplikacji skonfigurowanej zapory aplikacji sieci Web z aplikacji w środowisku usługi aplikacji ILB.  
+Brama aplikacji w usłudze Azure to urządzenie wirtualne, które oferuje usługa równoważenia obciążenia warstwy 7, odciążanie protokołu SSL i ochrony (WAF) zapory aplikacji sieci web. Można go nasłuchiwać na publiczny adres i trasy ruch pakietów IP punktu końcowego aplikacji. Poniższe informacje zawierają opis sposobu integracji bramy aplikacji skonfigurowanej zapory aplikacji sieci Web z aplikacji w środowisku usługi aplikacji ILB.  
 
 Integracja bramy aplikacji z ILB środowiska usługi aplikacji znajduje się na poziomie aplikacji. Podczas konfigurowania bramy aplikacji ze środowiska usługi aplikacji ILB, jest to zrobić dla określonych aplikacji w środowisku usługi aplikacji ILB. Ta metoda umożliwia hosting bezpiecznych wielodostępnych aplikacji w jednym środowisku usługi aplikacji ILB.  
 
@@ -33,7 +33,7 @@ Integracja bramy aplikacji z ILB środowiska usługi aplikacji znajduje się na 
 
 Korzystając z tego przewodnika, wykonasz następujące czynności:
 
-* Tworzenie bramy aplikacji.
+* Utwórz bramę aplikacji Azure.
 * Konfigurowanie bramy aplikacji, aby wskazywała aplikację w środowisku usługi aplikacji ILB.
 * Skonfiguruj aplikację, aby uwzględnić nazwy domeny niestandardowej.
 * Edytuj publicznej nazwy hosta DNS wskazujący bramy aplikacji.
@@ -93,9 +93,9 @@ Ponadto nie można umieścić bramy w podsieci, która używa środowiska usług
 
    ![Nowe ustawienia tworzenia bramy aplikacji][3]
     
-4. W **Podsumowanie** sekcji, przejrzyj ustawienia i wybierz **OK**. Bramy aplikacji może zająć nieco więcej niż 30 minut do ukończenia instalacji.  
+4. W **Podsumowanie** sekcji, przejrzyj ustawienia i wybierz **OK**. Bramy aplikacji może zająć nieco więcej niż 30 minut, aby zakończyć instalację.  
 
-5. Po zakończeniu instalacji bramy aplikacji przejdź do swojego portalu dla bramy aplikacji. Wybierz **puli zaplecza**. Dodaj adres ILB dla środowiska usługi aplikacji ILB.
+5. Po zakończeniu instalacji bramy aplikacji przejdź do portalu Application Gateway. Wybierz **puli zaplecza**. Dodaj adres ILB dla środowiska usługi aplikacji ILB.
 
    ![Konfigurowanie puli wewnętrznej bazy danych][4]
 

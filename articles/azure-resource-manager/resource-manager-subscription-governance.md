@@ -1,6 +1,6 @@
 ---
-title: "Najlepsze rozwiązania dla przedsiębiorstw przenoszenie na platformę Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano szkieletu służącego do zapewnienia bezpiecznego i łatwą w obsłudze środowiska przedsiębiorstwa."
+title: Najlepsze rozwiązania dla przedsiębiorstw przenoszenie na platformę Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano szkieletu służącego do zapewnienia bezpiecznego i łatwą w obsłudze środowiska przedsiębiorstwa.
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3b5087faaf3db087b15b77fedac8df0d7e4a899a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 02553bb59cb37bab21d53adafc42fddcf08795a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Szkieletu Azure enterprise — ładu przetestowanego subskrypcji
 Przedsiębiorstwa są coraz bardziej przyjmowanie chmury publicznej, elastyczność i elastyczność. Są one przy użyciu sile z chmury do generowania przychodu lub optymalizacji zasobów w firmie. Microsoft Azure udostępnia wiele różnych usług czy przedsiębiorstwa można grupować jak bloków konstrukcyjnych w celu rozwiązania szerokiej gamy obciążeń i aplikacji. 
@@ -135,7 +135,7 @@ Zasady usługi Azure Resource Manager są zaawansowane narzędzie w zestawie nar
 > 
 
 ### <a name="audit---what-happened"></a>Inspekcji - co się stało?
-Aby zobaczyć, jak działa środowisko, musisz inspekcji aktywności użytkownika. Większość typów zasobów w systemie Azure utworzyć dzienników diagnostycznych, które można analizować przy użyciu narzędzia dziennika lub w usłudze Azure Operations Management Suite. Możesz zbierać Dzienniki aktywności wielu subskrypcji, aby zapewnić działów lub widok przedsiębiorstwa. Rekordy inspekcji są zarówno ważne narzędzia diagnostycznego, jak i ważnych mechanizm zdarzenia wyzwalacza w środowisku platformy Azure.
+Aby zobaczyć, jak działa środowisko, musisz inspekcji aktywności użytkownika. Większość typów zasobów w systemie Azure utworzyć dzienników diagnostycznych, które można analizować przy użyciu narzędzia dziennika lub w Analiza dzienników Azure. Możesz zbierać Dzienniki aktywności wielu subskrypcji, aby zapewnić działów lub widok przedsiębiorstwa. Rekordy inspekcji są zarówno ważne narzędzia diagnostycznego, jak i ważnych mechanizm zdarzenia wyzwalacza w środowisku platformy Azure.
 
 Dzienniki aktywności z wdrożenia usługi Resource Manager umożliwiają określenie **operacji** które miało miejsce i kto wykonał. Dzienniki aktywności mogą być zbierane i zagregowane za pomocą narzędzi takich jak analizy dzienników.
 
@@ -252,6 +252,6 @@ Możliwe, że jedną z największych okienek do chmury wdrażania została probl
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Teraz, kiedy znasz dotyczących ładu subskrypcji, jest czas, aby wyświetlić te zalecenia w praktyce. Zobacz [przykłady stosowania ładu subskrypcji platformy Azure](resource-manager-subscription-examples.md).
 

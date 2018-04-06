@@ -1,12 +1,12 @@
 ---
-title: "Omówienie usługi Azure Niekorzystającą | Dokumentacja firmy Microsoft"
-description: "Tworzenie zaawansowanych rozwiązań w chmurze bez myśleć o infrastruktury."
-keywords: 
+title: Omówienie usługi Azure Niekorzystającą | Dokumentacja firmy Microsoft
+description: Tworzenie zaawansowanych rozwiązań w chmurze bez myśleć o infrastruktury.
+keywords: ''
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 30c7dd36efca5ffcae770fe310a43a107d9136af
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Omówienie usługi Azure Niekorzystającą z funkcjami i Logic Apps
 
@@ -45,7 +45,7 @@ Aby rozpocząć pracę z usługą Logic Apps, Rozpocznij od [tworzenie pierwszej
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Jak tworzenie i wdrażanie aplikacji Niekorzystającą na platformie Azure?
 
-Platforma Azure oferuje bogaty zestaw narzędzi na projektowanie, wdrażanie i zarządzanie aplikacjami bez serwera.  Aplikacje mogą być wbudowane bezpośrednio w portalu Azure lub z [narzędzi z programu Visual Studio](logic-apps-serverless-get-started-vs.md).  Gdy aplikacja została utworzona może być [natychmiast wdrożyć](logic-apps-create-deploy-template.md).  Platforma Azure udostępnia również monitorowanie bez serwera aplikacji.  Monitorowania są dostępne w portalu Azure, za pośrednictwem interfejsu API lub zestawów SDK lub z narzędziami zintegrowanego OMS i usługi Application Insights.
+Platforma Azure oferuje bogaty zestaw narzędzi na projektowanie, wdrażanie i zarządzanie aplikacjami bez serwera.  Aplikacje mogą być wbudowane bezpośrednio w portalu Azure lub z [narzędzi z programu Visual Studio](logic-apps-serverless-get-started-vs.md).  Gdy aplikacja została utworzona może być [natychmiast wdrożyć](logic-apps-create-deploy-template.md).  Platforma Azure udostępnia również monitorowanie bez serwera aplikacji.  Monitorowania są dostępne w portalu Azure, za pośrednictwem interfejsu API lub zestawów SDK lub zintegrowane narzędzia do analizy dzienników i usługi Application Insights.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

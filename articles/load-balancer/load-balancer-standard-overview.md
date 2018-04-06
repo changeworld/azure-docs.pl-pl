@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: kumud
-ms.openlocfilehash: b5443cb1d883bd829a13b6d941d2c87c6205c64f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Omówienie usługi Azure Standard modułu równoważenia obciążenia
 
@@ -43,7 +43,7 @@ Zasoby usługi równoważenia obciążenia to obiekty w ramach których mogą ex
 
 ## <a name="why-use-standard-load-balancer"></a>Dlaczego warto używać usługi równoważenia obciążenia standardowego?
 
-Standardowa usługa równoważenia obciążenia służącego do pełnego zakresu centra danych wirtualnego z małą skalę wdrożeń do dużych i złożonych architektury wielu strefy.
+Standardowa usługa równoważenia obciążenia umożliwia skalowanie aplikacji i utworzyć wysoka dostępność dla małych wdrożeń do architektury strefy wielu dużych i złożonych.
 
 Przejrzyj tabelę poniżej, aby zapoznać się z omówieniem różnice między standardowe usługi równoważenia obciążenia i podstawowa usługi równoważenia obciążenia:
 

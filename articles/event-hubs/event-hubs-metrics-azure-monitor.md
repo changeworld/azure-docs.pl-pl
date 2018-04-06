@@ -1,12 +1,12 @@
 ---
 title: Azure Event Hubs metryki w monitorze Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: "Użyj monitorowania Azure do monitorowania usługi Event Hubs"
+description: Użyj monitorowania Azure do monitorowania usługi Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: sethm
-ms.openlocfilehash: c3ee6a87592145801167b35ff281c04062e525da
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 8ca00b234c00bfeb52a5b601e8780d56a0732dd9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Event Hubs metryki w monitorze Azure (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Dla metryki pomocnicze, wymiary musi filtru o wartości wymiaru, jak pokazano w 
 
 ## <a name="billing"></a>Rozliczenia
 
-Przy użyciu metryk w monitorze Azure jest obecnie bezpłatna podczas w wersji zapoznawczej. Jednak użycie dodatkowe rozwiązania, które pozyskiwania danych metryki, użytkownik może zostać użyta przez te rozwiązania. Na przykład możesz są rozliczane przez usługi Azure Storage archiwizacji danych metryk do konta usługi Azure Storage. Również są rozliczane przez operację Management Suite (OMS), jeśli strumienia danych metryki z usługą OMS dla zaawansowanej analizy.
+Przy użyciu metryk w monitorze Azure jest obecnie bezpłatna podczas w wersji zapoznawczej. Jednak użycie dodatkowe rozwiązania, które pozyskiwania danych metryki, użytkownik może zostać użyta przez te rozwiązania. Na przykład możesz są rozliczane przez usługi Azure Storage archiwizacji danych metryk do konta usługi Azure Storage. Możesz również są rozliczane przez platformę Azure w przypadku strumienia danych metryk do analizy dzienników dla zaawansowanej analizy.
 
 Następujące metryki zawiera przegląd kondycji usługi. 
 
@@ -61,35 +61,35 @@ Zlicza żądania operacji danych i zarządzania.
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| Przychodzące żądania (wersja zapoznawcza) | Liczba żądań wysyłanych do usługi Azure Event Hubs w określonym czasie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki |
-| Liczba pomyślnych żądań (wersja zapoznawcza)   | Liczba pomyślnych żądań wprowadzone w usłudze Azure Event Hubs w określonym czasie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki |
-| Błędy serwera (wersja zapoznawcza) | Liczba żądań przetworzonych nie ze względu na błąd w usłudze Azure Event Hubs w określonym czasie. <br/><br/>Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki |
-|Błędy użytkownika (wersja zapoznawcza)|Liczba żądań przetworzonych nie ze względu na błędy użytkowników w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Ograniczeniem przepustowości żądań (wersja zapoznawcza)|Liczba żądań, które zostały ograniczenie, ponieważ przekroczono użycia jednostek przepływności.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Błędy przekroczyła przydział (wersja zapoznawcza)|Liczba żądań przekracza dostępny przydział. Zobacz [w tym artykule](event-hubs-quotas.md) uzyskać więcej informacji na temat usługi Event Hubs przydziałów.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
+| Przychodzące żądania (wersja zapoznawcza) | Liczba żądań wysyłanych do usługi Azure Event Hubs w określonym czasie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName |
+| Liczba pomyślnych żądań (wersja zapoznawcza)   | Liczba pomyślnych żądań wprowadzone w usłudze Azure Event Hubs w określonym czasie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName |
+| Błędy serwera (wersja zapoznawcza) | Liczba żądań przetworzonych nie ze względu na błąd w usłudze Azure Event Hubs w określonym czasie. <br/><br/>Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName |
+|Błędy użytkownika (wersja zapoznawcza)|Liczba żądań przetworzonych nie ze względu na błędy użytkowników w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Ograniczeniem przepustowości żądań (wersja zapoznawcza)|Liczba żądań, które zostały ograniczenie, ponieważ przekroczono użycia jednostek przepływności.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Błędy przekroczyła przydział (wersja zapoznawcza)|Liczba żądań przekracza dostępny przydział. Zobacz [w tym artykule](event-hubs-quotas.md) uzyskać więcej informacji na temat usługi Event Hubs przydziałów.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
 
 ## <a name="throughput-metrics"></a>Dane pomiarowe przepływności
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Ograniczeniem przepustowości żądań (wersja zapoznawcza)|Liczba żądań, które zostały ograniczenie, ponieważ przekroczono użycia jednostek przepływności.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
+|Ograniczeniem przepustowości żądań (wersja zapoznawcza)|Liczba żądań, które zostały ograniczenie, ponieważ przekroczono użycia jednostek przepływności.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
 
 ## <a name="message-metrics"></a>Metryki wiadomości
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Komunikaty przychodzące (wersja zapoznawcza)|Liczba zdarzeń lub komunikaty wysyłane do usługi Event Hubs w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Wysyła komunikaty wychodzące (wersja zapoznawcza)|Liczba zdarzeń lub wiadomości pobierane z usługi Event Hubs w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Przychodzące bajty (wersja zapoznawcza)|Liczba bajtów wysłanych z usługą Azure Event Hubs w określonym czasie.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Wychodzące bajty (wersja zapoznawcza)|Liczba bajtów pobrany z usługi Azure Event Hubs w określonym czasie.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
+|Komunikaty przychodzące (wersja zapoznawcza)|Liczba zdarzeń lub komunikaty wysyłane do usługi Event Hubs w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Wysyła komunikaty wychodzące (wersja zapoznawcza)|Liczba zdarzeń lub wiadomości pobierane z usługi Event Hubs w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Przychodzące bajty (wersja zapoznawcza)|Liczba bajtów wysłanych z usługą Azure Event Hubs w określonym czasie.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Wychodzące bajty (wersja zapoznawcza)|Liczba bajtów pobrany z usługi Azure Event Hubs w określonym czasie.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
 
 ## <a name="connection-metrics"></a>Metryki połączenia
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń przestrzeni nazw, a także jednostki.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Otwartego połączenia (wersja zapoznawcza)|Liczba otwartych połączeń.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Zamknięte połączenia (wersja zapoznawcza)|Liczba połączeń zamknięte.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
+|ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń przestrzeni nazw, a także jednostki.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Otwartego połączenia (wersja zapoznawcza)|Liczba otwartych połączeń.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Zamknięte połączenia (wersja zapoznawcza)|Liczba połączeń zamknięte.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
 
 ## <a name="event-hubs-capture-metrics"></a>Metryki przechwytywania centra zdarzeń
 
@@ -97,9 +97,9 @@ Można monitorować metryki przechwytywania centra zdarzeń, po włączeniu funk
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Przechwyć zaległości (wersja zapoznawcza)|Liczba bajtów, które jeszcze mają być przechwytywane do wybranej lokalizacji docelowej.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Przechwycony wiadomości (wersja zapoznawcza)|Liczba komunikatów lub zdarzeń, które są przechwytywane do wybranej lokalizacji docelowej w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
-|Przechwycony bajtów (wersja zapoznawcza)|Liczba bajtów, które są przechwytywane do wybranej lokalizacji docelowej w określonym czasie.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Wymiar: Nazwa jednostki|
+|Przechwyć zaległości (wersja zapoznawcza)|Liczba bajtów, które jeszcze mają być przechwytywane do wybranej lokalizacji docelowej.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Przechwycony wiadomości (wersja zapoznawcza)|Liczba komunikatów lub zdarzeń, które są przechwytywane do wybranej lokalizacji docelowej w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
+|Przechwycony bajtów (wersja zapoznawcza)|Liczba bajtów, które są przechwytywane do wybranej lokalizacji docelowej w określonym czasie.<br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Dimension: EntityName|
 
 ## <a name="metrics-dimensions"></a>Wymiary metryk
 
@@ -107,9 +107,9 @@ Usługa Azure Event Hubs obsługuje następujące wymiary metryki w monitorze Az
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Nazwa jednostki| Usługa Event Hubs obsługuje jednostek Centrum zdarzeń w przestrzeni nazw.|
+|EntityName| Usługa Event Hubs obsługuje jednostek Centrum zdarzeń w przestrzeni nazw.|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Zobacz [Azure monitorowanie — Przegląd](../monitoring-and-diagnostics/monitoring-overview.md).
 * [Pobrać metryki Azure Monitor z platformą .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) w witrynie GitHub. 

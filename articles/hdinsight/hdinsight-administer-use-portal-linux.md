@@ -1,8 +1,8 @@
 ---
-title: "Zarządzanie klastrami Hadoop w HDInsight przy użyciu portalu Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia i zarządzania klastrami HDInsight przy użyciu portalu Azure."
+title: Zarządzanie klastrami Hadoop w HDInsight przy użyciu portalu Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia i zarządzania klastrami HDInsight przy użyciu portalu Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b0a9b808f2c1a65d10c1c12500325a9b5a34bc5a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu portalu Azure
 
@@ -33,7 +33,7 @@ Przy użyciu [portalu Azure][azure-portal], można zarządzać klastrów platfor
 Aby wykonać kroki opisane w tym artykule, należy **subskrypcji platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="open-the-azure-portal"></a>Otwórz Azure portal
-1. Zaloguj się do [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
 2. Po otwarciu portalu, możesz:
 
    * Kliknij przycisk **Utwórz zasób** z menu po lewej stronie do utworzenia nowego klastra:
@@ -75,7 +75,7 @@ Należy określić subskrypcji platformy Azure, podczas tworzenia klastra usług
 Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionRegistration, zobacz [Rozwiąż typowe błędy wdrożenia usługi Azure z usługą Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
 ## <a name="list-and-show-clusters"></a>Lista i Pokaż klastrów
-1. Zaloguj się do [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
 2. Kliknij przycisk **klastrów usługi HDInsight** z menu po lewej stronie, aby wyświetlić listę istniejących klastrów. Jeśli nie widzisz **klastrów usługi HDInsight**, kliknij przycisk **wszystkie usługi** pierwszy.
 3. Kliknij nazwę klastra. Jeśli na liście klastra jest długa, można użyć filtrów w górnej części strony.
 4. Kliknij klastra z listy w celu wyświetlenia strony Przegląd:
@@ -103,7 +103,7 @@ Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionR
     * **Zewnętrzne magazyny**: Wyświetl magazyny Hive i Oozie. Magazyny można skonfigurować tylko w trakcie procesu tworzenia klastra. Zobacz [użyć na potrzeby magazynu metadanych Hive/Oozie](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore).
     * **Akcje skryptu**: skrypty Bash uruchomić w klastrze. Zobacz [klastrów usługi HDInsight opartej na dostosowanie systemu Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
     * **Aplikacje**: aplikacje usługi HDInsight dodawania i usuwania.  Zobacz [instalowanie niestandardowych aplikacji usługi HDInsight](hdinsight-apps-install-custom-applications.md).
-    * **Monitorowanie**: monitorowanie klastra w systemie Azure Operations Management Suite i Azure Log Analytics.
+    * **Monitorowanie**: monitorowanie klastra w Analiza dzienników Azure.
     * **Właściwości**: wyświetlanie właściwości klastra.
     * **Konta magazynu**: Wyświetl konta magazynu i klucze. Konta magazynu są skonfigurowane w trakcie procesu tworzenia klastra.
     * **Dostęp do usługi Data Lake Store**: Konfigurowanie dostępu są przechowywane w usłudze Data Lake.  Zobacz [Tworzenie klastrów usługi HDInsight z usługą Data Lake Store za pomocą portalu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
@@ -345,7 +345,7 @@ Zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytko
 ## <a name="browse-files"></a>Przeglądanie plików
 Przy użyciu portalu Azure, możesz przeglądać zawartość domyślnego kontenera.
 
-1. Zaloguj się do [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com).
 2. Kliknij przycisk **klastrów usługi HDInsight** z menu po lewej stronie, aby wyświetlić listę istniejących klastrów.
 3. Kliknij nazwę klastra. Jeśli na liście klastra jest długa, można użyć filtrów w górnej części strony.
 4. Kliknij przycisk **kont magazynu** z menu po lewej stronie klastra.

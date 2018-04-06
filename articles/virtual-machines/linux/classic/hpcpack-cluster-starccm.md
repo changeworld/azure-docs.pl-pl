@@ -1,11 +1,11 @@
 ---
-title: "Uruchomienie GWIAZDĘ — CCM + pakietem HPC na maszynach wirtualnych systemu Linux | Dokumentacja firmy Microsoft"
-description: "Wdrażanie klastra Microsoft HPC Pack na platformie Azure i uruchomienie GWIAZDĘ — CCM + zadania w systemie Linux w wielu węzłach obliczeniowych przez sieć RDMA."
+title: Uruchomienie GWIAZDĘ — CCM + pakietem HPC na maszynach wirtualnych systemu Linux | Dokumentacja firmy Microsoft
+description: Wdrażanie klastra Microsoft HPC Pack na platformie Azure i uruchomienie GWIAZDĘ — CCM + zadania w systemie Linux w wielu węzłach obliczeniowych przez sieć RDMA.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: xpillons
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 75523406-d268-4623-ac3e-811c7b74de4b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8689d7abfd5ab45277df3b5672a1f6e7e874d88e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Uruchomienie GWIAZDĘ — CCM + z pakietem Microsoft HPC na Linux RDMA klaster na platformie Azure
 W tym artykule przedstawiono sposób wdrażania klastra Microsoft HPC Pack na platformie Azure i uruchom [GWIAZDKĘ CD adapco-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) zadania na wielu węzłach obliczeniowych Linux, które są wzajemnie InfiniBand.
@@ -284,7 +284,7 @@ Zastąp **runner.java** z Twojej preferowanych GWIAZDKĄ — CCM + Java modelu u
     exit ${RTNSTS}
 ```
 
-W naszym teście użyliśmy token licencji zasilania na żądanie. Token, należy ustawić **$CDLMD_LICENSE_FILE** zmienną środowiskową  **1999@flex.cd-adapco.com**  i klucz w **- podkey** opcji wiersza polecenia.
+W naszym teście użyliśmy token licencji zasilania na żądanie. Token, należy ustawić **$CDLMD_LICENSE_FILE** zmienną środowiskową **1999@flex.cd-adapco.com** i klucz w **- podkey** opcji wiersza polecenia.
 
 Po zainicjowaniu niektórych skrypt wyodrębnia — od **$CCP_NODES_CORES** zmienne środowiskowe tego pakietu HPC ustawiane — Lista węzłów do tworzenia hostfile, używającej uruchamiania MPI. Ta hostfile będzie zawierać listę nazw węzła obliczeń, które są używane do zadania, nazwa jeden na wiersz.
 
@@ -296,19 +296,19 @@ Format **$CCP_NODES_CORES** następuje tego wzorca:
 
 Gdzie:
 
-* `<Number of nodes>`jest to liczba węzłów przydzielone do tego zadania.
-* `<Name of node_n_...>`to nazwa każdego węzła przydzielone do tego zadania.
-* `<Cores of node_n_...>`jest to liczba rdzeni w węźle przydzielone do tego zadania.
+* `<Number of nodes>` jest to liczba węzłów przydzielone do tego zadania.
+* `<Name of node_n_...>` to nazwa każdego węzła przydzielone do tego zadania.
+* `<Cores of node_n_...>` jest to liczba rdzeni w węźle przydzielone do tego zadania.
 
 Liczba rdzeni (**$NBCORES**) jest obliczana na podstawie liczby węzłów (**$NBNODES**) i liczba rdzeni przypadająca na węzeł (podać jako parametr **$NBCORESPERNODE**).
 
 Dla opcji MPI te, które są używane z Intel MPI na platformie Azure są:
 
-* `-mpi intel`Aby określić Intel MPI.
-* `-fabric UDAPL`do korzystania z poleceń Azure InfiniBand.
-* `-cpubind bandwidth,v`w celu zoptymalizowania przepustowości dla MPI z GWIAZDKĄ — CCM +.
-* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"`Aby pracować z Azure InfiniBand MPI Intel i ustawić wymaganej liczby rdzeni w jednym węźle.
-* `-batch`Aby uruchomić GWIAZDKĘ — CCM + w trybie wsadowym z bez interfejsu użytkownika.
+* `-mpi intel` Aby określić Intel MPI.
+* `-fabric UDAPL` do korzystania z poleceń Azure InfiniBand.
+* `-cpubind bandwidth,v` w celu zoptymalizowania przepustowości dla MPI z GWIAZDKĄ — CCM +.
+* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"` Aby pracować z Azure InfiniBand MPI Intel i ustawić wymaganej liczby rdzeni w jednym węźle.
+* `-batch` Aby uruchomić GWIAZDKĘ — CCM + w trybie wsadowym z bez interfejsu użytkownika.
 
 Na koniec można uruchomić zadania, upewnij się, że węzły są gotowe do działania i są w trybie online w Menedżerze klastra. Następnie w wierszu polecenia programu PowerShell, uruchom to:
 
@@ -324,7 +324,7 @@ Później po wykonaniu tych testów, służy następujące polecenia środowiska
     Start-HPCIaaSNode.ps1 -Name <prefix>-00*
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Spróbuj uruchomić inne obciążenia systemu Linux. Na przykład zobacz:
 
 * [Uruchamianie NAMD z pakietem Microsoft HPC w węzłach obliczeń systemu Linux na platformie Azure](hpcpack-cluster-namd.md)

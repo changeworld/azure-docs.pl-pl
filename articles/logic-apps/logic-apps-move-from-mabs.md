@@ -1,12 +1,12 @@
 ---
-title: "Przenoszenie aplikacji z usługi BizTalk Services do usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Przenieś lub migrację usług BizTalk Azure (MABS) do usługi Azure Logic Apps"
+title: Przenoszenie aplikacji z usługi BizTalk Services do usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Przenieś lub migrację usług BizTalk Azure (MABS) do usługi Azure Logic Apps
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jonfancey
 manager: anneta
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: jonfan; LADocs
-ms.openlocfilehash: 6e00e62e60c059a16731a77e529b4b93f50802e9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f5ad003189d70216198f2d5c7719a971c16d5479
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="move-from-biztalk-services-to-azure-logic-apps"></a>Przenoszenie z usługi BizTalk Services do usługi Azure Logic Apps
 
@@ -130,7 +130,7 @@ W przeciwieństwie do usługi BizTalk Services te akcje są całkowicie niezale�
 
 ## <a name="manage-and-monitor"></a>Monitorowanie i zarządzanie nim
 
-W usługi BizTalk Services dedykowanego portalu przedstawione możliwości śledzenia do monitorowania i rozwiązywania problemów. Logic Apps oferuje bardziej rozbudowane śledzenie i monitorowanie możliwości za pomocą [portalu Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md)oraz z [rozwiązanie B2B usługi Operations Management Suite](../logic-apps/logic-apps-monitor-b2b-message.md), zawiera aplikację mobilną dla śledzeniu na rzeczy w czasie przenoszenia.
+W usługi BizTalk Services dedykowanego portalu przedstawione możliwości śledzenia do monitorowania i rozwiązywania problemów. Logic Apps oferuje bardziej rozbudowane śledzenie i monitorowanie możliwości za pomocą [portalu Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md)i zawiera aplikację mobilną dla śledzeniu na rzeczy podczas pracy w ruchu.
 
 ## <a name="high-availability"></a>Wysoka dostępność
 

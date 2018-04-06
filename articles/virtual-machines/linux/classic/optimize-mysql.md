@@ -1,11 +1,11 @@
 ---
 title: Optymalizowanie MySQL w systemie Linux | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak zoptymalizować MySQL uruchomionych na maszynie wirtualnej platformy Azure (VM) systemem Linux."
+description: Dowiedz się, jak zoptymalizować MySQL uruchomionych na maszynie wirtualnej platformy Azure (VM) systemem Linux.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 0c1c7fc5-a528-4d84-b65d-2df225f2233f
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 7e7582a31cb3e74fd8c3cd0dd54961392d9c53bb
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Optymalizowanie MySQL na maszynach wirtualnych systemu Linux platformy Azure
 Istnieje wiele czynników, które mają wpływ na wydajność MySQL na platformie Azure, zarówno w wybór sprzęt wirtualny i konfiguracji oprogramowania. Ten artykuł dotyczy Optymalizacja wydajności za pomocą magazynu, systemu i konfiguracje bazy danych.

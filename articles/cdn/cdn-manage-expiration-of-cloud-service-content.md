@@ -1,11 +1,11 @@
 ---
-title: "Zarządzaj wygasaniem zawartości sieci web w sieci dostarczania zawartości platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzać wygasaniem zawartości usług Azure Web Apps/Cloud Services, ASP.NET lub usługi IIS w usłudze Azure CDN."
+title: Zarządzaj wygasaniem zawartości sieci web w sieci dostarczania zawartości platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać wygasaniem zawartości usług Azure Web Apps/Cloud Services, ASP.NET lub usługi IIS w usłudze Azure CDN.
 services: cdn
 documentationcenter: .NET
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Zarządzaj wygasaniem zawartości sieci web w sieci dostarczania zawartości platformy Azure
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Ustawienia pamięci podręcznej z portalu Azure można też kontrolować przez u
 Preferowaną metodą ustawienie serwera sieci web `Cache-Control` nagłówka jest użycie zasad buforowania w portalu Azure. Aby uzyskać więcej informacji o CDN buforowanie reguły, zobacz [kontroli usługi Azure CDN zachowanie buforowania z buforowaniem reguły](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Reguły buforowania są dostępne tylko dla **Azure CDN from Verizon Standard** i **Azure CDN from Akamai Standard** profilów. Dla **Azure CDN from Verizon Premium** profile, należy użyć [aparatu reguł Azure CDN](cdn-rules-engine.md) w **Zarządzaj** portalu dla podobnych możliwościach.
+> Reguły buforowania są dostępne tylko dla **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** profilów. Dla **Azure CDN Premium from Verizon** profile, należy użyć [aparatu reguł Azure CDN](cdn-rules-engine.md) w **Zarządzaj** portalu dla podobnych możliwościach.
 
 **Aby przejść do strony reguł buforowania CDN**:
 

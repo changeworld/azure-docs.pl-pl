@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizacja wydajności za pomocą technologii w pamięci w bazie danych SQL
 
@@ -22,7 +22,7 @@ Dzięki użyciu technologii w pamięci w bazie danych SQL Azure, można osiągn�
 Poniżej przedstawiono dwa przykłady sposobu pomógł znacznie poprawić wydajność OLTP w pamięci:
 
 - Za pomocą OLTP w pamięci [rozwiązań biznesowych kworum był w stanie dwukrotnie ich obciążenie poprawienie Dtu 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
-    - Oznacza jednostek dtu w warstwie *jednostki przepływności bazy danych*, a także mesurement zużycia zasobów.
+    - Oznacza jednostek dtu w warstwie *jednostka transakcji bazy danych*, a także mesurement zużycia zasobów.
 - Poniżej film wideo przedstawia znaczne ulepszenia w zużycie zasobów z przykładowe obciążenie: [OLTP w pamięci wideo bazy danych SQL Azure](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
     - Aby uzyskać więcej informacji, zobacz w blogu: [OLTP w pamięci w blogu blogu bazy danych SQL Azure](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
@@ -36,7 +36,7 @@ Poniższe wideo objaśniono potencjalny wzrost wydajności z technologiami w pam
 
 Baza danych SQL Azure zawiera następujące technologie w pamięci:
 
-- *OLTP w pamięci* zwiększa przepustowość i zmniejsza opóźnienia przetwarzania transakcji. Scenariusze, w których warto skorzystać z OLTP w pamięci są: przetwarzanie takich jak handlowych i gier, wprowadzanie danych z urządzeń IoT, buforowanie ładowania danych i tabeli tymczasowej i scenariusze zmiennej tabeli lub zdarzenia transakcji wysokiej przepustowości.
+- *OLTP w pamięci* zwiększa transakcji i zmniejsza jej opóźnienie przetwarzania transakcji. Scenariusze, w których warto skorzystać z OLTP w pamięci są: przetwarzanie takich jak handlowych i gier, wprowadzanie danych z urządzeń IoT, buforowanie ładowania danych i tabeli tymczasowej i scenariusze zmiennej tabeli lub zdarzenia transakcji wysokiej przepustowości.
 - *Klastrowane indeksy magazynu kolumn* ograniczyć wpływ sieci magazynowania (maksymalnie 10 razy) i zwiększyć wydajność dla raportowania i zapytań analiz. Możesz może być używany z tabel faktów w Twojej składnic danych programów do dopasowania większej ilości danych w bazie danych i zwiększyć wydajność. Ponadto służy go z danych historycznych w operacyjnej bazie danych do archiwizacji i można zbadać maksymalnie 10 razy więcej danych.
 - *Klastrowanych indeksów magazynu kolumn* HTAP pomocy można uzyskać wgląd w czasie rzeczywistym w firmie za pomocą zapytań operacyjnej bazy danych bezpośrednio, bez potrzeby uruchamiania kosztowne wyodrębniania, przekształcania i ładowania (ETL) proces i poczekaj, aż Magazyn danych, który będzie zapełniony. Klastrowanych indeksów magazynu kolumn bardzo szybkie wykonywanie zapytania analityczne w bazie danych OLTP, przy jednoczesnym umożliwianiu zmniejsza wpływ na obciążenie operacyjną.
 - Można również mieć kombinację tabeli zoptymalizowanej pod kątem pamięci z indeksem magazynu kolumn. To połączenie umożliwia przetwarzanie transakcji bardzo szybko, a *jednocześnie* bardzo szybko uruchomić zapytania analityczne na tych samych danych.
@@ -71,7 +71,7 @@ Szczegółowe wideo na temat technologii sieci:
 
 OLTP w pamięci zawiera tabele zoptymalizowane pod kątem pamięci, które są używane do przechowywania danych użytkownika. Te tabele są wymagane, aby zmieścić ją w pamięci. Ponieważ zarządzanie pamięci bezpośrednio w usłudze SQL Database, mamy pojęcie limit przydziału dla danych użytkownika. Tę koncepcję jest określany jako *magazynu OLTP w pamięci*.
 
-Każda baza danych z obsługiwanych autonomiczny warstwa cenowa i każda pula elastyczna warstwa cenowa zawiera pewne magazynu OLTP w pamięci. W czasie zapisywania otrzymasz gigabajta przestrzeni dyskowej dla każdego 125 jednostki transakcji bazy danych (Dtu) lub jednostek transakcji elastycznej bazy danych (Edtu). Aby uzyskać więcej informacji, zobacz [limity zasobów](sql-database-resource-limits.md).
+Każda baza danych z obsługiwanych autonomiczny warstwa cenowa i każda pula elastyczna warstwa cenowa zawiera pewne magazynu OLTP w pamięci. Zobacz [limity zasobów na podstawie jednostek dtu w warstwie](sql-database-dtu-resource-limits.md) i [limity zasobów na podstawie vCore](sql-database-vcore-resource-limits.md).
 
 Następujące elementy są wliczane do Twojej zakończenia magazynu OLTP w pamięci:
 
@@ -87,8 +87,8 @@ Aby uzyskać więcej informacji dotyczących monitorowania użycia magazynu OLTP
 
 O elastycznych pulach magazynu OLTP w pamięci jest współużytkowana przez wszystkie bazy danych w puli. W związku z tym użycia w jednej bazie danych może wpłynąć na innych baz danych. Są dwa środki zaradcze dla tego:
 
-- Skonfiguruj Max-liczbę jednostek eDTU dla baz danych jest niższa niż liczba jednostek eDTU na pulę jako całość. Maksymalna caps wykorzystanie magazynu OLTP w pamięci, w dowolnej bazy danych w puli, rozmiar, umożliwiająca liczby jednostek eDTU.
-- Skonfiguruj Min-eDTU, która jest większa niż 0. Ta minimalna wielkość gwarantuje, czy każdy bazy danych w puli jest ilość dostępnego magazynu OLTP w pamięci, umożliwiająca skonfigurowanego eDTU Min.
+- Skonfiguruj `Max-eDTU` lub `MaxvCore` dla baz danych, które jest mniejszy niż liczba jednostek eDTU lub vCore na pulę jako całość. Maksymalna caps wykorzystanie magazynu OLTP w pamięci, w dowolnej bazy danych w puli, rozmiar, umożliwiająca liczby jednostek eDTU.
+- Skonfiguruj `Min-eDTU` lub `MinvCore` większą niż 0. Ta minimalna wielkość gwarantuje, że każda baza danych w puli ma ilość dostępnego magazynu OLTP w pamięci, umożliwiająca skonfigurowanego `Min-eDTU` lub `vCore`.
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Rozmiar danych i magazynu dla indeksów magazynu kolumn
 
@@ -152,7 +152,7 @@ Aby uzyskać więcej simplistic, ale atrakcyjność wizualną demonstrację wyda
 
 #### <a name="installation-steps"></a>Kroki instalacji
 
-1. W [portalu Azure](https://portal.azure.com/), utworzyć bazy danych Premium na serwerze. Ustaw **źródła** do przykładową bazę danych AdventureWorksLT. Aby uzyskać szczegółowe instrukcje, zobacz [utworzyć pierwszą bazę danych Azure SQL](sql-database-get-started-portal.md).
+1. W [portalu Azure](https://portal.azure.com/), utworzyć Premium lub biznesowe krytyczne (wersja zapoznawcza) bazy danych na serwerze. Ustaw **źródła** do przykładową bazę danych AdventureWorksLT. Aby uzyskać szczegółowe instrukcje, zobacz [utworzyć pierwszą bazę danych Azure SQL](sql-database-get-started-portal.md).
 
 2. Połączenie z bazą danych z programu SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
 

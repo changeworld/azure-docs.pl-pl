@@ -1,11 +1,11 @@
 ---
 title: NAMD z pakietem Microsoft HPC na maszynach wirtualnych systemu Linux | Dokumentacja firmy Microsoft
-description: "Wdrażanie klastra Microsoft HPC Pack na platformie Azure i uruchom symulacji NAMD z charmrun na wielu węzłach obliczeniowych systemu Linux"
+description: Wdrażanie klastra Microsoft HPC Pack na platformie Azure i uruchom symulacji NAMD z charmrun na wielu węzłach obliczeniowych systemu Linux
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 76072c6b-ac35-4729-ba67-0d16f9443bd7
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
-ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61dd49d4bd3183b6b9a78036d6d7d01798e4dc89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Uruchamianie oprogramowania NAMD przy użyciu pakietu Microsoft HPC w węzłach obliczeniowych systemu Linux na platformie Azure
 Ten artykuł przedstawia sposób do uruchamiania na maszynach wirtualnych Azure Linux obciążenia wysokiej wydajności (HPC). W tym miejscu można skonfigurować [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) klaster na platformie Azure z węzłami obliczeniowymi systemu Linux i uruchamianie [NAMD](http://www.ks.uiuc.edu/Research/namd/) symulację do obliczenia i wizualizację struktury systemu biomolekularnych duże.  
@@ -30,7 +30,7 @@ Ten artykuł przedstawia sposób do uruchamiania na maszynach wirtualnych Azure 
 * **Microsoft HPC Pack** udostępnia funkcje do uruchomienia HPC na dużą skalę i aplikacje równoległe w klastrach komputerów lokalnych lub maszyn wirtualnych platformy Azure. Pierwotnie opracowany jako rozwiązaniem w przypadku obciążeń HPC systemu Windows HPC Pack obsługuje teraz aplikacje HPC systemu Linux w systemie Linux obliczeniowe węzła maszyn wirtualnych wdrożonych w klastrze HPC Pack. Zobacz [wprowadzenie węzły obliczeniowe systemu Linux w klastrze HPC Pack na platformie Azure](hpcpack-cluster.md) wprowadzenie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Węzły obliczeniowe HPC Pack klastra z systemem Linux** — wdrożenie klastra HPC Pack z węzłami obliczeniowymi systemu Linux na platformie Azure przy użyciu [szablonu usługi Azure Resource Manager](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) lub [skrypt programu PowerShell Azure](hpcpack-cluster-powershell-script.md) . Zobacz [wprowadzenie węzły obliczeniowe systemu Linux w klastrze HPC Pack na platformie Azure](hpcpack-cluster.md) wymagania wstępne i kroki dla każdej opcji. Jeśli wybierzesz opcję wdrożenia skryptu programu PowerShell, zobacz przykładowy plik konfiguracji w przykładowych plików na końcu tego artykułu. Ten plik służy do konfigurowania klastra bazujących na platformie Azure HPC Pack składające się z węzłem głównym systemu Windows Server 2012 R2 i cztery węzły obliczeniowe 6.6 CentOS duży rozmiar. Ten plik należy dostosować zgodnie z wymaganiami środowiska.
+* **Węzły obliczeniowe HPC Pack klastra z systemem Linux** — wdrożenie klastra HPC Pack z węzłami obliczeniowymi systemu Linux na platformie Azure przy użyciu [szablonu usługi Azure Resource Manager](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) lub [skrypt programu PowerShell Azure](hpcpack-cluster-powershell-script.md). Zobacz [wprowadzenie węzły obliczeniowe systemu Linux w klastrze HPC Pack na platformie Azure](hpcpack-cluster.md) wymagania wstępne i kroki dla każdej opcji. Jeśli wybierzesz opcję wdrożenia skryptu programu PowerShell, zobacz przykładowy plik konfiguracji w przykładowych plików na końcu tego artykułu. Ten plik służy do konfigurowania klastra bazujących na platformie Azure HPC Pack składające się z węzłem głównym systemu Windows Server 2012 R2 i cztery węzły obliczeniowe 6.6 CentOS duży rozmiar. Ten plik należy dostosować zgodnie z wymaganiami środowiska.
 * **Pliki oprogramowania i samouczek NAMD** — Pobierz NAMD oprogramowania dla systemu Linux z [NAMD](http://www.ks.uiuc.edu/Research/namd/) lokacji (rejestracja wymagane). W tym artykule jest oparta na NAMD wersji 2.10 i używa [Linux-x86_64 (64-bit Intel/AMD z Ethernet)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310) archiwum. Również pobrać [plików samouczka NAMD](http://www.ks.uiuc.edu/Training/Tutorials/#namd). Pliki do pobrania są pliki tar i trzeba narzędzie systemu Windows, aby wyodrębnić pliki na głównym węzłem klastra. Aby wyodrębnić pliki, postępuj zgodnie z instrukcjami w dalszej części tego artykułu. 
 * **VMD** (opcjonalnie) — aby wyświetlić wyniki zadania NAMD, Pobierz i zainstaluj program molekularnej wizualizacji [VMD](http://www.ks.uiuc.edu/Research/vmd/) na wybranym komputerze. Bieżąca wersja to 1.9.2. Zobacz VMD lokacji, aby rozpocząć pobieranie.  
 
@@ -228,11 +228,11 @@ Teraz można przystąpić do przesyłania zadania NAMD w Menedżerze klastra HPC
    ![Nowe zadanie HPC][namd_job]
 5. Na **szczegóły zadania** w obszarze **zasobów zadania**, wybierz typ zasobu jako **węzła** i ustaw **Minimum** 3. , możemy uruchomić zadania na trzy węzły systemu Linux i każdy węzeł ma cztery rdzenie.
    
-   ![Zadanie zasobów][job_resources]
+   ![Zasoby zadania][job_resources]
 6. Kliknij przycisk **Edycja zadań** nawigacji po lewej stronie, a następnie kliknij polecenie **Dodaj** można dodać zadania do zadania.    
 7. Na **szczegółów zadań i Przekierowanie We/Wy** ustaw następujące wartości:
    
-   * **Wiersz polecenia**-
+   * **Wiersz polecenia** -
      `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
      
      > [!TIP]

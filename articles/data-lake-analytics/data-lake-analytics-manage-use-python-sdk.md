@@ -1,8 +1,8 @@
 ---
-title: "Zarządzanie Azure Data Lake Analytics przy użyciu języka Python | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć konto usługi Data Lake Store i przesyłać zadania za pomocą języka Python. "
+title: Zarządzanie Azure Data Lake Analytics przy użyciu języka Python | Dokumentacja firmy Microsoft
+description: 'Dowiedz się, jak utworzyć konto usługi Data Lake Store i przesyłać zadania za pomocą języka Python. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: matt1883
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
 ms.custom: devcenter
-ms.openlocfilehash: 22b56e9569ac1fd2afe2c91013fa5605f9f3ef99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0182a14979550c880904ec829f6b59dee016cad2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Zarządzanie Azure Data Lake Analytics przy użyciu języka Python
 
@@ -150,13 +150,11 @@ armGroupResult = resourceClient.resource_groups.create_or_update( rg, ResourceGr
 Najpierw utwórz konto magazynu.
 
 ```python
-adlaAcctResult = adlaAcctClient.account.create(
+adlsAcctResult = adlsAcctClient.account.create(
     rg,
-    adla,
-    DataLakeAnalyticsAccount(
-        location=location,
-        default_data_lake_store_account=adls,
-        data_lake_store_accounts=[DataLakeStoreAccountInfo(name=adls)]
+    adls,
+    DataLakeStoreAccount(
+        location=location)
     )
 ).wait()
 ```
@@ -251,7 +249,7 @@ newPolicyParams = ComputePolicyCreateOrUpdateParameters(userAadObjectId, "User",
 adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams)
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby wyświetlić ten samouczek przy użyciu innych narzędzi, kliknij odpowiedni selektor karty w górnej części strony.
 - Aby dowiedzieć się więcej o języku U-SQL, zobacz [Wprowadzenie do języka U-SQL w usłudze Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
