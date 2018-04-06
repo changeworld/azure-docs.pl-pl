@@ -1,9 +1,9 @@
 ---
-title: "Zarządzaj kontem bazy danych rozwiązania Cosmos Azure za pośrednictwem portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Zarządzanie kontem bazy danych Azure rozwiązania Cosmos w portalu Azure. Przewodnik na wyświetlanie, kopiowanie, usuwanie i dostęp do kont za pomocą portalu Azure."
-keywords: Azure portalu azure, programu Microsoft azure
+title: Zarządzaj kontem bazy danych rozwiązania Cosmos Azure za pośrednictwem portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Zarządzanie kontem bazy danych Azure rozwiązania Cosmos w portalu Azure. Przewodnik na wyświetlanie, kopiowanie, usuwanie i dostęp do kont za pomocą portalu Azure.
+keywords: Azure Portal, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: kirillg
 manager: jhubbard
 editor: cgronlun
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: kirillg
 ms.openlocfilehash: e5820cb17cfbaa15f10f24881f02a37aec617267
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Jak zarządzać konta bazy danych Azure rozwiązania Cosmos
 Dowiedz się, jak ustawić globalne spójności, pracy z kluczy oraz usunąć konto bazy danych Azure rozwiązania Cosmos w portalu Azure.
@@ -50,7 +50,7 @@ Tylko do odczytu klucze są również dostępne na tej stronie. Odczyty i zapyta
 ### <a name="copy-an-access-key-or-password-in-the-azure-portal"></a>Kopiowanie klucza dostępu lub hasła w portalu Azure
 Na **klucze** strony (lub **ciąg połączenia** strony dla interfejsu API bazy danych MongoDB kont), kliknij przycisk **kopiowania** przycisku z prawej strony klucza lub hasła, które mają zostać skopiowane.
 
-![Wyświetlanie i kopiowanie kluczy dostępu w Azure strony portalu, kluczy](./media/manage-account/copykeys.png)
+![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, strona Klucze](./media/manage-account/copykeys.png)
 
 ### <a name="regenerate-access-keys-and-passwords"></a>Ponowne generowanie kluczy dostępu i hasła
 Należy zmienić dostępu klucze (i hasła dla konta bazy danych MongoDB interfejsu API) do swojego konta bazy danych Azure rozwiązania Cosmos okresowo do zabezpieczania połączeń. Dwa klucze dostępu/hasła są przypisywane do utrzymania połączeń przy użyciu jednego klucza dostępu, jednocześnie ponownie generując drugi klucz dostępu konta bazy danych Azure rozwiązania Cosmos.
@@ -86,7 +86,7 @@ Aby pobrać parametrów połączenia, wykonaj następujące czynności:
 
 Jeśli używane są parametry połączenia w [narzędzia migracji bazy danych DB rozwiązania Cosmos Azure](import-data.md), Dodaj nazwę bazy danych do końca ciągu połączenia. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
 
-## <a id="delete"></a>Usuń konto bazy danych Azure rozwiązania Cosmos
+## <a id="delete"></a> Usuń konto bazy danych Azure rozwiązania Cosmos
 Aby usunąć konta bazy danych Azure rozwiązania Cosmos w portalu Azure, nie jest już używany, kliknij prawym przyciskiem myszy nazwę konta, a następnie kliknij przycisk **usunąć konto**.
 
 ![Jak usunąć konto bazy danych Azure rozwiązania Cosmos w portalu Azure](./media/manage-account/deleteaccount.png)

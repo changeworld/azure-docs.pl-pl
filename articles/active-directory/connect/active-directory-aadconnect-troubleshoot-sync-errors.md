@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect: Rozwiązywanie problemów z błędami podczas synchronizacji | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak rozwiązywać problemy podczas synchronizacji z programem Azure AD Connect."
+title: 'Azure AD Connect: Rozwiązywanie problemów z błędami podczas synchronizacji | Dokumentacja firmy Microsoft'
+description: Wyjaśniono, jak rozwiązywać problemy podczas synchronizacji z programem Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
 ms.openlocfilehash: aaa374d5a11ef5b5860f83a87386ff981319189f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Rozwiązywanie problemów z błędami podczas synchronizacji
 Podczas synchronizowania danych tożsamości z usługi Windows Server Active Directory (AD DS) do usługi Azure Active Directory (Azure AD), mogą wystąpić błędy. Ten artykuł zawiera omówienie różnych typów błędów synchronizacji, niektóre możliwe scenariusze, które powodują tych błędów i potencjalnych sposobów, aby naprawić błędy. Ten artykuł zawiera typowych błędów i może nie obejmować wszystkich możliwych błędów.
@@ -42,7 +42,7 @@ Błędy podczas eksportowania do usługi Azure AD wskazują, że operacja \(Doda
 #### <a name="description"></a>Opis
 * Gdy programu Azure AD Connect \(aparatu synchronizacji\) powoduje, że usługi Azure Active Directory, aby dodać lub zaktualizować obiektów, usługi Azure AD odpowiada na przychodzące za pomocą obiektu **sourceAnchor** atrybutu **nazwę immutableId** atrybutu obiektów w usłudze Azure AD. Nosi nazwę tego dopasowania **twardych odpowiada**.
 * Podczas usługi Azure AD **nie znajdzie** dowolnego obiektu, który pasuje **nazwę immutableId** atrybutem **sourceAnchor** atrybutu przychodzące obiektu przed zainicjowaniem obsługi administracyjnej nowy obiekt, jego powraca do wyszukiwać dopasowania przy użyciu atrybutów ProxyAddresses i UserPrincipalName. Nosi nazwę tego dopasowania **nietrwałego odpowiada**. Słabe zgodne zaprojektowano w celu odpowiada obiektów znajduje się już w usłudze Azure AD (które biorą się w usłudze Azure AD) obiektami nowego jest dodać/zaktualizować podczas synchronizacji, które reprezentują tego samego jednostek (użytkowników, grupy) lokalnie.
-* **InvalidSoftMatch** błąd występuje, gdy dopasowanie twardych nie znajdzie dowolnego zgodnego obiektu **i** nietrwałego dopasowania znajduje dopasowywania obiektu, ale ten obiekt ma wartość inną *nazwę immutableId* niż obiekt przychodzące *SourceAnchor*, sugerujące, że obiektu zgodne była synchronizowana z innym obiektem z na lokalnych usługi Active Directory.
+* **InvalidSoftMatch** błąd występuje, gdy dopasowanie twardych nie znajdzie dowolnego zgodnego obiektu **i** nietrwałego dopasowania znajduje dopasowywania obiektu, ale ten obiekt ma wartość inną *nazwę immutableId* niż przychodzące obiektu *SourceAnchor*, sugerujące, że obiektu zgodne była synchronizowana z innym obiektem z na lokalnych usługi Active Directory.
 
 Innymi słowy, aby nietrwałego dopasowania do pracy, ma być dopasowane soft z nie ma żadnej wartości dla *nazwę immutableId*. Jeśli dowolne obiekty z *nazwę immutableId* zestawu z wartością kończy się niepowodzeniem twardych dopasowanie, ale spełniające kryteria soft-match, Operacja spowodowałaby InvalidSoftMatch błąd synchronizacji.
 
@@ -70,14 +70,14 @@ Co najmniej dwa obiekty mają taką samą wartość następujące atrybuty są n
 
 #### <a name="example-case"></a>Przykład przypadek:
 1. **Robert Smith** jest zsynchronizowany użytkownika w usłudze Azure Active Directory z na lokalnych usługi Active Directory dla *contoso.com*
-2. Robert Smith **UserPrincipalName** jest ustawiony jako  **bobs@contoso.com** .
-3. **"abcdefghijklmnopqrstuv =="** jest **SourceAnchor** obliczane przy użyciu usługi Azure AD Connect przy użyciu Bob Smith **objectGUID** z na lokalnej usługi Active Directory, który jest **nazwę immutableId** Nowak Bob w usłudze Azure Active Directory.
+2. Robert Smith **UserPrincipalName** jest ustawiony jako **bobs@contoso.com**.
+3. **"abcdefghijklmnopqrstuv =="** jest **SourceAnchor** obliczane przy użyciu usługi Azure AD Connect przy użyciu Bob Smith **objectGUID** z na lokalnej usługi Active Directory, który jest  **nazwę immutableId** Nowak Bob w usłudze Azure Active Directory.
 4. Robert ma również następujące wartości **proxyAddresses** atrybutu:
    * smtp:bobs@contoso.com
    * smtp:bob.smith@contoso.com
    * **smtp:bob@contoso.com**
 5. Nowy użytkownik **Taylora Bob**, jest dodawany do lokalnymi usługi Active Directory.
-6. Robert Taylora **UserPrincipalName** jest ustawiony jako  **bobt@contoso.com** .
+6. Robert Taylora **UserPrincipalName** jest ustawiony jako **bobt@contoso.com**.
 7. **"abcdefghijkl0123456789 ==" "** jest **sourceAnchor** obliczane przy użyciu usługi Azure AD Connect przy użyciu Taylora Bob **objectGUID** z na lokalnych usługi Active Directory. Bob Taylora obiektu nie ma jeszcze zsynchronizowane z usługą Azure Active Directory.
 8. Taylora Roberta, który ma następujące wartości dla atrybutu proxyAddresses
    * smtp:bobt@contoso.com
@@ -85,7 +85,7 @@ Co najmniej dwa obiekty mają taką samą wartość następujące atrybuty są n
    * **smtp:bob@contoso.com**
 9. Podczas synchronizacji Azure AD Connect rozpozna Dodawanie Roberta Taylora w na lokalnej usługi Active Directory i poproś usługi Azure AD, aby wprowadzić te same zmiany.
 10. Usługi Azure AD najpierw zostanie wykonana twarde dopasowania. Oznacza to, umożliwia wyszukiwanie, jeśli dowolny obiekt nazwę immutableId jest równa "abcdefghijkl0123456789 ==". Dopasowanie twardych zakończy się niepowodzeniem, zgodnie z żadnego innego obiektu w usłudze Azure AD nie odniesie tego nazwę immutableId.
-11. Usługi Azure AD następnie będzie podejmować próby soft-match Bob Taylora. Oznacza to będzie szukać, jeśli jest równa trzy wartości, łącznie z dowolnych obiektów z proxyAddressessmtp:bob@contoso.com
+11. Usługi Azure AD następnie będzie podejmować próby soft-match Bob Taylora. Oznacza to będzie szukać, jeśli jest równa trzy wartości, łącznie z dowolnych obiektów z proxyAddresses smtp:bob@contoso.com
 12. Obiekt Bob Smith zgodne z kryteriami soft-match zostanie ustalone, usługi Azure AD. Ale ten obiekt zawiera wartość nazwę immutableId = "abcdefghijklmnopqrstuv ==". co oznacza ten obiekt został zsynchronizowany z innego obiektu z lokalnie usługi Active Directory. W związku z tym usługi Azure AD nie soft-match te obiekty i powoduje **InvalidSoftMatch** błąd synchronizacji.
 
 #### <a name="how-to-fix-invalidsoftmatch-error"></a>Jak usunąć błąd InvalidSoftMatch
@@ -114,8 +114,8 @@ Jeśli usługi Azure AD próbuje soft odpowiada dwa obiekty, jest to możliwe, �
 * Grupy zabezpieczeń włączoną obsługę poczty jest tworzony w usłudze Office 365. Administrator dodaje nowego użytkownika lub kontaktu w lokalnie AD (tj. nie jest zsynchronizowany z usługą Azure AD jeszcze) z tą samą wartością dla atrybutu ProxyAddresses jako grupa usługi Office 365.
 
 #### <a name="example-case"></a>Przykład case
-1. Administrator tworzy nową grupę zabezpieczeń z włączoną obsługę poczty w usłudze Office 365 dla działu podatku i udostępnia adres e-mail jako tax@contoso.com. W ten sposób atrybut ProxyAddresses dla tej grupy o wartości**smtp:tax@contoso.com**
-2. Nowy użytkownik nie przyłączy Contoso.com i konto jest tworzone dla użytkowników lokalnych z proxyAddress jako**smtp:tax@contoso.com**
+1. Administrator tworzy nową grupę zabezpieczeń z włączoną obsługę poczty w usłudze Office 365 dla działu podatku i udostępnia adres e-mail jako tax@contoso.com. W ten sposób atrybut ProxyAddresses dla tej grupy o wartości **smtp:tax@contoso.com**
+2. Nowy użytkownik nie przyłączy Contoso.com i konto jest tworzone dla użytkowników lokalnych z proxyAddress jako **smtp:tax@contoso.com**
 3. Gdy Azure AD Connect będzie synchronizować nowe konto użytkownika, otrzyma błąd "ObjectTypeMismatch".
 
 #### <a name="how-to-fix-objecttypemismatch-error"></a>Jak usunąć błąd ObjectTypeMismatch
@@ -141,14 +141,14 @@ Jeśli usługa Azure AD Connect podejmuje próbę dodania nowego obiektu lub zak
 
 #### <a name="example-case"></a>Przykład przypadek:
 1. **Robert Smith** jest zsynchronizowany użytkownika w usłudze Azure Active Directory z na lokalnych usługi Active Directory dla domeny contoso.com
-2. Robert Smith **UserPrincipalName** lokalnie jest ustawiony jako  **bobs@contoso.com** .
+2. Robert Smith **UserPrincipalName** lokalnie jest ustawiony jako **bobs@contoso.com**.
 3. Robert ma również następujące wartości **proxyAddresses** atrybutu:
    * smtp:bobs@contoso.com
    * smtp:bob.smith@contoso.com
    * **smtp:bob@contoso.com**
 4. Nowy użytkownik **Taylora Bob**, jest dodawany do lokalnymi usługi Active Directory.
-5. Robert Taylora **UserPrincipalName** jest ustawiony jako  **bobt@contoso.com** .
-6. **Robert Taylora** z następującymi wartościami dla **ProxyAddresses** atrybutu i. smtp:bobt@contoso.comII. smtp:bob.taylor@contoso.com
+5. Robert Taylora **UserPrincipalName** jest ustawiony jako **bobt@contoso.com**.
+6. **Robert Taylora** z następującymi wartościami dla **ProxyAddresses** atrybutu i. smtp:bobt@contoso.com II. smtp:bob.taylor@contoso.com
 7. Obiektu Taylora Roberta, który jest synchronizowany z usługą Azure AD pomyślnie.
 8. Admin postanowiła zaktualizować Taylora Bob **ProxyAddresses** atrybutu przy użyciu następującej wartości: i. **smtp:bob@contoso.com**
 9. Usługi Azure AD będzie próbował zaktualizować Taylora Bob obiektu w usłudze Azure AD z powyższą wartość, ale operacja zakończy się niepowodzeniem jako że ProxyAddresses wartość jest już przypisany do Bob Smith błąd "AttributeValueMustBeUnique".
@@ -187,15 +187,15 @@ Określone tak, którego wynikiem jest **"FederatedDomainChangeError"** błąd s
 Synchronizowanych użytkowników sufiks UserPrincipalName została zmieniona z jednej domeny federacyjnej do innej domeny federacyjnej lokalnie. Na przykład *UserPrincipalName = bob@contoso.com*  została zmieniona na *UserPrincipalName = bob@fabrikam.com* .
 
 #### <a name="example"></a>Przykład
-1. Smith Roberta, konta dla domeny Contoso.com, pobiera dodany jako nowy użytkownik w usłudze Active Directory o właściwości UserPrincipalNamebob@contoso.com
-2. Robert przenosi do innego oddziału contoso.com o nazwie Fabrikam.com i jego UserPrincipalName jest zmieniana nabob@fabrikam.com
+1. Smith Roberta, konta dla domeny Contoso.com, pobiera dodany jako nowy użytkownik w usłudze Active Directory o właściwości UserPrincipalName bob@contoso.com
+2. Robert przenosi do innego oddziału contoso.com o nazwie Fabrikam.com i jego UserPrincipalName jest zmieniana na bob@fabrikam.com
 3. Domeny contoso.com jak również fabrikam.com są Sfederowanych domen w usłudze Azure Active Directory.
 4. UserPrincipalName Roberta nie zostanie zaktualizowana i powoduje błąd synchronizacji "FederatedDomainChangeError".
 
 #### <a name="how-to-fix"></a>Jak rozwiązać
 Jeśli sufiks UserPrincipalName użytkownika została zaktualizowana z bob @**contoso.com** do bob @**fabrikam.com**, gdzie oba **contoso.com** i **fabrikam.com** są **Sfederowanych domen**, wykonaj następujące kroki, aby naprawić błąd synchronizacji
 
-1. Zaktualizuj UserPrincipalName użytkownika w usłudze Azure AD z bob@contoso.com do bob@contoso.onmicrosoft.com. Można Użyj następującego polecenia programu PowerShell z modułu Azure AD PowerShell:`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+1. Zaktualizuj UserPrincipalName użytkownika w usłudze Azure AD z bob@contoso.com do bob@contoso.onmicrosoft.com. Można Użyj następującego polecenia programu PowerShell z modułu Azure AD PowerShell: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Zezwalaj na następny cykl synchronizacji próby synchronizacji. Czas synchronizacji zakończy się pomyślnie i spowoduje zaktualizowanie UserPrincipalName Roberta do bob@fabrikam.com zgodnie z oczekiwaniami.
 
 #### <a name="related-articles"></a>Powiązane artykuły

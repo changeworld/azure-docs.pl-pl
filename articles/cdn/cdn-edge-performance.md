@@ -1,11 +1,11 @@
 ---
-title: "Analizowanie wydajności węzłów brzegowych w usłudze Azure CDN | Dokumentacja firmy Microsoft"
-description: "Analizowanie wydajności węzłów brzegowych w usłudze Microsoft Azure CDN. Analiza wydajności krawędzi zawiera szczegółowe informacje o ruchu i użycia przepustowości sieci CDN."
+title: Analizowanie wydajności węzłów brzegowych w usłudze Azure CDN | Dokumentacja firmy Microsoft
+description: Analizowanie wydajności węzłów brzegowych w usłudze Microsoft Azure CDN. Analiza wydajności krawędzi zawiera szczegółowe informacje o ruchu i użycia przepustowości sieci CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
 ms.service: cdn
 ms.workload: tbd
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: ad285b4e2226c85859acb22ba214cc44c77c08e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analizowanie wydajności węzła brzegowego w usłudze Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Analiza wydajności krawędzi zawiera szczegółowe informacje o ruchu i użycia przepustowości sieci CDN. Te informacje można wygenerować statystyki trendzie, co pozwala uzyskać wgląd w sposób zasobów są buforowane i dostarczyć do klientów. Z kolei pozwala na formularzu strategii dotyczące optymalizacji dostarczania zawartości i do określenia, jakie problemy powinny być rozwiązywane lepiej wykorzystać CDN. W związku z tym nie tylko będzie można poprawić wydajność dostarczania danych, ale również można zmniejszyć koszty sieci CDN.
 
 > [!NOTE]
@@ -120,7 +120,7 @@ Te metryki ma na celu śledzenie ogólną wydajność sieci CDN dla ruchu.
 | Współczynnik żądań skompresowane |Wskazuje procent trafień, które zostały dostarczone z sieci CDN (serwery krawędzi) do obiektu żądającego (np. przeglądarki sieci web) w formacie skompresowanym. |
 | Współczynnik błędów 4xx |Wskazuje procent trafień wygenerowanych 4xx kod stanu. |
 | Współczynnik błędów 5xx |Wskazuje procent trafień wygenerowanych 5xx kod stanu. |
-| Liczba trafień |Określa liczbę żądań dotyczących zawartości usługi CDN. |
+| Trafienia |Określa liczbę żądań dotyczących zawartości usługi CDN. |
 
 #### <a name="secure-traffic-metrics"></a>Bezpieczny ruch metryk
 Te metryki ma na celu śledzić wydajność sieci CDN dla ruchu HTTPS.
@@ -153,8 +153,8 @@ Każdy raport, w tym module zawiera wykres i statystyki dotyczące wykorzystania
 | Protokoły |Przedstawia podział ruchu między protokołami HTTP i HTTPS. Wykres pierścieniowy przedstawiający wskazuje procent trafień, które wystąpiły dla każdego typu protokołu. |
 | Metody HTTP |Umożliwia uzyskiwanie nowościami, które HTTP metody są używane do żądania danych. Zazwyczaj najbardziej typowe metody żądania HTTP są GET, HEAD i POST. Wykres pierścieniowy przedstawiający wskazuje procent trafień, które wystąpiły dla każdego typu Metoda żądania HTTP. |
 | Adresy URL |Zawiera wykresu, który wyświetla top 10 żądanego adresów URL. Dla każdego adresu URL jest wyświetlany pasek. Wysokość paska wskazuje, ile razy wygenerowanych określonego adresu URL za pośrednictwem przedział czasu objętego raportem. Statystyka dla pierwszych 100 zażądał adresy URL są wyświetlane bezpośrednio poniżej tego wykresu. |
-| CNAME |Zawiera wykresu, który wyświetla pierwszych 10 rekordów CNAME używane do żądania zasobów w czasie span raportu. Statystyka dla pierwszych 100 zażądał CNAME są wyświetlane bezpośrednio poniżej tego wykresu. |
-| Źródeł |Zawiera wykres przedstawia top 10 CDN lub klienta pochodzenia serwerów, z których wystąpiło zasobów w określonym okresie. Statystyka dla pierwszych 100 zażądał serwery pochodzenia CDN lub klienta są wyświetlane bezpośrednio poniżej tego wykresu. Serwery pochodzenia klienta są identyfikowane przez nazwę zdefiniowane w przypadku opcji Nazwa katalogu. |
+| CNAMEs |Zawiera wykresu, który wyświetla pierwszych 10 rekordów CNAME używane do żądania zasobów w czasie span raportu. Statystyka dla pierwszych 100 zażądał CNAME są wyświetlane bezpośrednio poniżej tego wykresu. |
+| Źródła |Zawiera wykres przedstawia top 10 CDN lub klienta pochodzenia serwerów, z których wystąpiło zasobów w określonym okresie. Statystyka dla pierwszych 100 zażądał serwery pochodzenia CDN lub klienta są wyświetlane bezpośrednio poniżej tego wykresu. Serwery pochodzenia klienta są identyfikowane przez nazwę zdefiniowane w przypadku opcji Nazwa katalogu. |
 | POP Geo |Pokazuje, ile ruchu rozsyłane do określonego punktu elementu obecności (POP). Skrót trzyliterowy reprezentuje POP w naszej sieci CDN. |
 | Klienci |Zawiera wykres przedstawia top 10 klientów, którzy zażądali zasobów w określonym okresie. Na potrzeby tego raportu z tego samego klienta są traktowane jako wszystkie żądania, które pochodzą z tego samego adresu IP. Statystyki dotyczące top 100 klientów są wyświetlane bezpośrednio poniżej tego wykresu. Ten raport jest przydatne w przypadku określania wzorce działania pobierania top klientów. |
 | Stany pamięci podręcznej |Zapewnia szczegółowe podział zachowanie pamięci podręcznej może ujawnić podejścia do poprawy ogólnej środowisko użytkownika końcowego. Ponieważ największą wydajność pochodzi z trafień w pamięci podręcznej, aby zoptymalizować szybkości dostarczania danych, minimalizując Chybienia pamięci podręcznej i trafień w pamięci podręcznej wygasła. |
@@ -182,7 +182,7 @@ Każdy raport, w tym module zawiera wykres i statystyki dotyczące wykorzystania
 | Błędy 502 |Zawiera wykres słupkowy, który służy do wyświetlania Najczęstsze żądania 10, które wywołały kod odpowiedzi 502 Zła brama. 502 kod odpowiedzi Zła brama występuje, gdy wystąpił błąd protokołu HTTP między serwerem i serwer proxy HTTP. W przypadku naszego CDN 502 kod odpowiedzi Zła brama zwykle występuje, gdy serwer pochodzenia klienta zwraca nieprawidłową odpowiedź na serwer graniczny. Odpowiedź jest nieprawidłowa, jeśli nie można przeanalizować lub jest niekompletny. |
 | Błędy 5xx |Zawiera wykres słupkowy, który służy do wyświetlania Najczęstsze żądania 10, które wywołały kod odpowiedzi w zakresie 500.  Ten raport to 502 Niewłaściwa brama i 504 kody odpowiedzi upływu limitu czasu bramy. |
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Omówienie usługi Azure CDN](cdn-overview.md)
 * [Statystyki w czasie rzeczywistym w usłudze Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Zastępowanie domyślnego zachowania HTTP przy użyciu aparatu reguł](cdn-rules-engine.md)

@@ -1,9 +1,9 @@
 
 | WARSTWA: | BEZPŁATNA | PODSTAWOWA | STANDARDOWA |
 | --- | --- | --- | --- |
-| Wywołania API |500 KB |1.5 M / jednostki |15 M / jednostki |
+| Wywołania API |500 K |1.5 M / jednostki |15 M / unit |
 | Aktywne urządzenia |500 |Nieograniczona liczba |Nieograniczona liczba |
-| Skalowanie |Nie dotyczy |Do 6 jednostek |Bez ograniczeń jednostek |
+| Skalowanie |ND |Do 6 jednostek |Bez ograniczeń jednostek |
 | Powiadomienia wypychane |Wypychanie do 1 M Notification Hubs warstwa bezpłatna uwzględnione, |Wypychanie do 10 M powiadomień koncentratory warstwie podstawowej uwzględnione, |Wypychanie do 10 M Notification Hubs warstwy standardowa uwzględnione, |
 | Obsługa wiadomości w czasie rzeczywistym /<br/>Gniazda sieci Web |Ograniczone |Usługa 350 / przenośnych |Nieograniczona liczba |
 | Synchronizacje w trybie offline |Ograniczone |Dołączono |Dołączono |

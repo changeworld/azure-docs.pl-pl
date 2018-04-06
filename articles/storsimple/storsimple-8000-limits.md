@@ -1,11 +1,11 @@
 ---
 title: Ograniczenia systemu serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: "W tym artykule opisano limity systemu i rozmiary zalecane dla połączeń i składniki serii StorSimple 8000."
+description: W tym artykule opisano limity systemu i rozmiary zalecane dla połączeń i składniki serii StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
 ms.devlang: NA
@@ -16,14 +16,14 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc3c0ad193af7625c8c4c1c2e82b6bdc8be33310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>Jakie są ograniczenia systemu serii StorSimple 8000?
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 StorSimple zapewnia skalowalny i elastyczna pamięć centrum danych. Istnieją jednak niektóre limity, które należy mieć na uwadze, jak planowania, wdrażania i obsługi rozwiązania StorSimple. Poniższa tabela opisuje te limity oraz przedstawiono powiązane zalecenia, dzięki czemu można uzyskać na maksymalne wykorzystanie możliwości rozwiązania StorSimple.
 
@@ -53,10 +53,10 @@ StorSimple zapewnia skalowalny i elastyczna pamięć centrum danych. Istnieją j
 | Przepływność odczytu/zapisu maksymalną klienta (jeśli są udostępniane przez warstwę HDD) * |120/250 MB/s | |
 | Przepływność odczytu/zapisu maksymalną klienta (jeśli jest obsługiwana w ramach warstwy chmury) * dla aktualizacji 3 i nowszych ** |40/60 MB/s dla woluminami warstwowymi<br><br>60/80 MB/s dla woluminami warstwowymi o archiwizacji opcji podczas tworzenia woluminu |Przepływność odczytu zależy od klientów generowania i utrzymywania wystarczające głębokość kolejki operacji We/Wy. <br><br>Szybkość osiągnięte zależy od prędkości użyć konta magazynu. |
 
-&#42; Maksymalna przepustowość na typ operacji We/Wy zmierzono z scenariusze 100 procent zapisu i odczytu 100 procent. Aktualna przepływność może być niższa i zależy od operacji We/Wy mieszać i warunki sieciowe.
+&#42;Maksymalna przepustowość na typ operacji We/Wy zmierzono z scenariusze 100 procent zapisu i odczytu 100 procent. Aktualna przepływność może być niższa i zależy od operacji We/Wy mieszać i warunki sieciowe.
 
-&#42; &#42; Numery wydajności przed Update 3 może być niższa.
+&#42;&#42;Numery wydajności przed Update 3 może być niższa.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przegląd [wymagania systemowe StorSimple](storsimple-8000-system-requirements.md).
 

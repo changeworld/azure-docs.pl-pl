@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie maszyny Wirtualnej z serwerem raportów w trybie macierzystym przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano i przedstawiono wdrożenia i konfiguracji serwera raportów usług SQL Server Reporting Services w trybie macierzystym w maszynie wirtualnej platformy Azure. "
+title: Tworzenie maszyny Wirtualnej z serwerem raportów w trybie macierzystym przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: 'W tym temacie opisano i przedstawiono wdrożenia i konfiguracji serwera raportów usług SQL Server Reporting Services w trybie macierzystym w maszynie wirtualnej platformy Azure. '
 services: virtual-machines-windows
 documentationcenter: na
 author: guyinacube
@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Korzystanie z programu PowerShell do tworzenia maszyny wirtualnej platformy Azure z serwerem raportów pracującym w trybie macierzystym
 > [!IMPORTANT] 
@@ -66,7 +66,7 @@ W tym temacie opisano i przedstawiono wdrożenia i konfiguracji serwera raportó
    * **Rozmiar: A3** jest zalecany rozmiar maszyny Wirtualnej dla obciążeń programu SQL Server. Jeśli maszyna wirtualna jest używana tylko jako serwer raportów maszyny Wirtualnej o rozmiarze A2 jest wystarczająca, chyba że serwer raportów napotka duże obciążenie. Dla maszyny Wirtualnej, informacje o cenach, zobacz [cennik maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/).
    * **Nową nazwę użytkownika**: podanej nazwie zostanie utworzona jako administrator na maszynie Wirtualnej.
    * **Nowe hasło** i **potwierdzić**. To hasło służy do nowego konta administratora i zaleca się, że używasz silne hasło.
-   * Kliknij przycisk **Dalej**. ![dalej](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Kliknij przycisk **Dalej**. ![next](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. Na następnej stronie można edytować następujących pól:
    
    * **Usługi w chmurze**: Wybierz **Utwórz nową usługę w chmurze**.
@@ -546,7 +546,7 @@ Aby sprawdzić, czy port jest otwarty, Otwórz okno programu Windows PowerShell 
 
     get-netfirewallrule | where {$_.displayname -like "*report*"} | select displayname,enabled,action
 
-## <a name="verify-the-configuration"></a>Sprawdź, czy konfiguracja
+## <a name="verify-the-configuration"></a>Sprawdź konfigurację
 Aby sprawdzić, czy raport podstawowe funkcje serwera działa, otwórz przeglądarkę z uprawnieniami administracyjnymi, a następnie przejdź do następujących raportów ad raportu Menedżera serwera adresów URL:
 
 * Na Maszynie wirtualnej przejdź do adresu URL serwera raportów:

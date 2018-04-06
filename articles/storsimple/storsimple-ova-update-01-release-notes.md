@@ -1,11 +1,11 @@
 ---
 title: Informacje o wersji StorSimple wirtualnego aktualizacje tablicy | Dokumentacja firmy Microsoft
-description: "Opisuje krytyczne Otwórz problemy i rozwiązania dla tablicy wirtualnego StorSimple uruchomieniu Update 0.2 i 0,1."
+description: Opisuje krytyczne Otwórz problemy i rozwiązania dla tablicy wirtualnego StorSimple uruchomieniu Update 0.2 i 0,1.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 3993864d-2ddd-4302-a2f1-8d737fba6eab
 ms.service: storsimple
 ms.devlang: NA
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Informacje o wersji wirtualnej tablicy Update 0.2 i 0,1 StorSimple
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W poniższych informacjach o zidentyfikować krytyczne problemy otwarte i rozwiązać problemy dotyczące aktualizacji tablicy wirtualne Microsoft Azure StorSimple. (Microsoft Azure StorSimple wirtualnego tablicy jest znanej także jako urządzenie wirtualne StorSimple lokalnymi lub urządzenie wirtualne StorSimple). 
 
 Informacje o wersji są stale aktualizowane i wykrywane krytyczne problemy wymagające obejścia są dodawane. Przed wdrożeniem urządzenia wirtualnego StorSimple, należy dokładnie przejrzeć informacje zawarte w informacjach o wersji.
@@ -36,7 +36,7 @@ Update 0.2 odpowiada wersji oprogramowania **10.0.10280.0**; Wersja jest aktuali
 ## <a name="issues-fixed-in-the-update-02"></a>Problemy rozwiązane w Update 0.2
 Aktualizacja 0,2 obejmuje wszystkie zmiany z Update 0.1, oprócz poprawki opisanej w poniższej tabeli:
 
-| Funkcja | Problem |
+| Cecha | Problem |
 | --- | --- |
 | Aktualizacje |W ostatniej wersji aktualizacje nie zostały wykrywane automatycznie w klasycznym portalu Azure, więc konieczne było użycie lokalnego interfejsu użytkownika sieci Web do zainstalowania aktualizacji. Tego problemu w tej wersji. Po zainstalowaniu aktualizacji 0,2, należy zainstalować przyszłych aktualizacji przy użyciu klasycznego portalu Azure. |
 
@@ -53,7 +53,7 @@ Aktualizacja 0,1 zawiera następujące ulepszenia i poprawki błędów.
 ## <a name="issues-fixed-in-the-update-01"></a>Problemy rozwiązane w Update 0.1
 Poniższa tabela zawiera podsumowanie problemy rozwiązane w tej wersji.
 
-| Nie. | Funkcja | Problem |
+| Nie. | Cecha | Problem |
 | --- | --- | --- |
 | 1 |VMDK |W niektórych wersjach VMware dysk systemu operacyjnego został postrzegane jako rozrzedzony przyczyną alertów i zakłócania normalnych operacji. Problem został rozwiązany w tej wersji. |
 | 2 |Serwer iSCSI |W ostatniej wersji użytkownika było wymagane do określenia bramy dla każdego interfejsu sieciowego włączone, urządzenia wirtualnego StorSimple. To zachowanie zostanie zmieniona w tej wersji, dzięki czemu użytkownik ma do skonfigurowania co najmniej jedną bramę dla wszystkich interfejsów sieciowych włączone. |
@@ -64,7 +64,7 @@ Poniższa tabela zawiera podsumowanie problemy rozwiązane w tej wersji.
 ## <a name="known-issues-in-the-update-01"></a>Znane problemy w aktualizacji 0,1
 Poniższa tabela zawiera podsumowanie znane problemy dla tablicy wirtualnego StorSimple oraz problemów wymienionych wersji z poprzednich wersji. **Wersja problemów wymienionych w tej wersji są oznaczone gwiazdką. Prawie wszystkie problemy na liście zostały przeniesione z wersji GA tablicy wirtualne StorSimple.**
 
-| Nie. | Funkcja | Problem | Obejście/komentarzy |
+| Nie. | Cecha | Problem | Obejście/komentarzy |
 | --- | --- | --- | --- |
 | **1.** |Aktualizacje |Nie można zaktualizować urządzenia wirtualne utworzone w wersji zapoznawczej do obsługiwanej wersji ogólnej dostępności. |Te urządzenia wirtualnego należy można przełączyć w wersji ogólnodostępnej za pomocą przepływu pracy (DR) odzyskiwania po awarii. |
 | **2.** |Dysk z danymi udostępnione |Po aprowizowaniu dysk z danymi o określonym rozmiarze określonym i utworzyć odpowiednie urządzenia wirtualnego StorSimple, użytkownik musi nie zwiększania lub zmniejszania dysk z danymi. Takie próby spowoduje utratę wszystkich danych w warstwach lokalnych urządzenia. | |

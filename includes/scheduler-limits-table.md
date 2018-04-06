@@ -15,5 +15,5 @@ Poniższa tabela zawiera opis głównych przydziałów, limity, wartości domyś
 | **Kolekcje zadań** |Maksymalna liczba kolekcji zadań dla subskrypcji to 200 000. |
 | **Przechowywanie historii zadań** |Jest zachowywana Historia zadania, dla maksymalnie dwa miesiące lub maksymalnie 1000 ostatniego wykonania. |
 | **Przechowywanie zadań została zakończona i błędnej** |Zadania ukończone i błędnej są przechowywane przez 60 dni. |
-| **Limit czasu** |Brak statyczne (nie można konfigurować) żądania limitu czasu 60 sekund dla akcji HTTP. W przypadku operacji dłużej wykonaj asynchroniczne protokołów HTTP; na przykład zwracać 202 natychmiast, ale nadal działa w tle. |
+| **Timeout** |Brak statyczne (nie można konfigurować) żądania limitu czasu 60 sekund dla akcji HTTP. W przypadku operacji dłużej wykonaj asynchroniczne protokołów HTTP; na przykład zwracać 202 natychmiast, ale nadal działa w tle. |
 

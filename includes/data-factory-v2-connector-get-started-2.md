@@ -3,7 +3,7 @@
 -->
 Można utworzyć potoku o aktywności kopiowania za pomocą jednej z następujących narzędzi/zestawów SDK: kliknij łącze, aby przejść do samouczek z instrukcjami krok po kroku można utworzyć potoku o działanie kopiowania. 
 
-- [Azure portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
+- [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [Zestaw SDK platformy .NET](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Zestaw SDK dla języka Python](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)

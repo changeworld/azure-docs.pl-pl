@@ -1,11 +1,11 @@
 ---
-title: "Rozmiar maszyny wirtualnej dla usługi w chmurze Azure | Dokumentacja firmy Microsoft"
-description: "Wyświetla rozmiary inną maszynę wirtualną (i identyfikatory) dla usługi chmury Azure role sieci web i proces roboczy."
+title: Rozmiar maszyny wirtualnej dla usługi w chmurze Azure | Dokumentacja firmy Microsoft
+description: Wyświetla rozmiary inną maszynę wirtualną (i identyfikatory) dla usługi chmury Azure role sieci web i proces roboczy.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
 ms.service: cloud-services
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
 ms.openlocfilehash: 542632dc61f1acecd8ca8ac45fb29bfa6aa839c2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary dla usług w chmurze
 W tym temacie opisano dostępne rozmiary i opcje dla wystąpień roli usługi w chmurze (role sieci web i proces roboczy). Umożliwia także zagadnienia dotyczące wdrażania pod uwagę podczas planowania użycia tych zasobów. Rozmiar każdego ma identyfikator umieszczony w sieci [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny dla każdego rozmiaru są dostępne na [cennik usługi w chmurze](https://azure.microsoft.com/pricing/details/cloud-services/) strony.

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Rozwiązywanie problemów z łącznością | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak rozwiązywać problemy z łącznością z programem Azure AD Connect."
+title: 'Azure AD Connect: Rozwiązywanie problemów z łącznością | Dokumentacja firmy Microsoft'
+description: Wyjaśniono, jak rozwiązywać problemy z łącznością z programem Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Rozwiązywanie problemów z łącznością z programem Azure AD Connect
 W tym artykule opisano, jak działa połączenie między Azure AD Connect i Azure AD i jak rozwiązywać problemy z połączeniem. Te problemy najprawdopodobniej będzie można przejrzeć w środowisku z serwerem proxy.
@@ -75,10 +75,10 @@ Ten błąd pojawia się, gdy punkt końcowy **https://secure.aadcdn.microsoftonl
 Jeśli Kreator instalacji zakończy się pomyślnie w połączeniu z usługą Azure AD, ale nie można zweryfikować samego hasła, że wyświetlenie tego błędu:  
 ![badpassword](./media/active-directory-aadconnect-troubleshoot-connectivity/badpassword.png)
 
-* To hasło tymczasowe hasło i musi zostać zmienione? Jest to rzeczywiście prawidłowe hasło? Spróbuj zalogować się do https://login.microsoftonline.com (na innym komputerze niż serwer Azure AD Connect) i sprawdź, czy konto jest użyteczne.
+* To hasło tymczasowe hasło i musi zostać zmienione? Jest to rzeczywiście prawidłowe hasło? Spróbuj zalogować się do https://login.microsoftonline.com (na innym komputerze niż serwer Azure AD Connect) i upewnij się, konto jest użyteczne.
 
 ### <a name="verify-proxy-connectivity"></a>Sprawdź łączność serwera proxy
-Sprawdź, czy serwer Azure AD Connect ma rzeczywistego łączności z serwera Proxy i Internet, użyć niektórych programu PowerShell, aby zobaczyć, czy serwer proxy zezwala na żądania sieci web lub nie. W wierszu programu PowerShell, uruchom `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Jest technicznie pierwsze wywołanie https://login.microsoftonline.com i ten identyfikator URI również działa, ale identyfikator URI jest szybszy w odpowiedzi.)
+Sprawdź, czy serwer Azure AD Connect ma rzeczywistego łączności z serwera Proxy i Internet, użyć niektórych programu PowerShell, aby zobaczyć, czy serwer proxy zezwala na żądania sieci web lub nie. W wierszu programu PowerShell, uruchom `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Jest technicznie pierwsze wywołanie https://login.microsoftonline.com tego identyfikatora URI działa również, ale identyfikator URI jest szybszy w odpowiedzi.)
 
 PowerShell korzysta z konfiguracji w pliku machine.config nawiązać połączenia z serwerem proxy. Ustawienia winhttp/Netsh nie powinny mieć wpływ na te polecenia cmdlet.
 

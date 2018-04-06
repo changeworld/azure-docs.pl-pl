@@ -16,7 +16,7 @@
 | Parametry |256 |256 |
 | Zmienne |256 |256 |
 | Zasoby (w tym liczba kopii) |800 |800 |
-| dane wyjściowe |64 |64 |
+| Dane wyjściowe |64 |64 |
 | Wyrażenia szablonu |24 576 znaków |24 576 znaków |
 | Zasoby w wyeksportowanych szablonów |200 |200 | 
 | Rozmiar szablonu |1 MB |1 MB |
