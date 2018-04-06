@@ -1,11 +1,11 @@
 ---
-title: "Wyświetl zadania i zarządzać nimi tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano na stronie zadań usługi Menedżer StorSimple urządzenia i jak z niego korzystać, aby śledzić najnowsze i bieżącego zadania dla tablicy wirtualnego StorSimple."
+title: Wyświetl zadania i zarządzać nimi tablicy wirtualnego StorSimple | Dokumentacja firmy Microsoft
+description: W tym artykule opisano na stronie zadań usługi Menedżer StorSimple urządzenia i jak z niego korzystać, aby śledzić najnowsze i bieżącego zadania dla tablicy wirtualnego StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 31879821-b599-4609-a7f4-d4b0f658a933
 ms.service: storsimple
 ms.devlang: NA
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Użyj usługi Menedżer StorSimple urządzenia do wyświetlania zadań dla tablicy wirtualnego StorSimple
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 **Zadania** bloku udostępnia pojedynczy portal centralnej do przeglądania i zarządzania zadaniami, które są uruchamiane w tablicach wirtualnych, które są połączone z usługą Menedżera urządzeń StorSimple. Możesz wyświetlić zadania uruchomione, została zakończona i nie powiodło się dla wielu urządzeń wirtualnych. Wyniki są prezentowane w formie tabeli.
 
 ![Bloku zadań](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
@@ -62,6 +62,6 @@ Zostanie wyświetlony następujący błąd: "Godzina na urządzeniu jest zsynchr
 
 Błędy te dotyczą zadań kopii zapasowych, przywracania, aktualizacji i pracy awaryjnej. Jeśli zainicjowaniu obsługi maszyny wirtualnej w funkcji Hyper-V, maszyny ostatecznie synchronizuje czas z funkcji hypervisor. Gdy tak się stanie, można ponownie uruchomić zadanie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się, jak używać lokalnego interfejsu użytkownika sieci web do administrowania tablica wirtualnego StorSimple](storsimple-ova-web-ui-admin.md).
 

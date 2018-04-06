@@ -1,12 +1,12 @@
 ---
 title: Rozszerzenie diagnostyki Azure 1.3 i nowszym schemat konfiguracji | Dokumentacja firmy Microsoft
-description: "Wersja schematu 1.3 i nowszym diagnostyki Azure dostarczana jako część 2.4 zestawu SDK programu Microsoft Azure i później."
+description: Wersja schematu 1.3 i nowszym diagnostyki Azure dostarczana jako część 2.4 zestawu SDK programu Microsoft Azure i później.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>1.3 diagnostyki Azure i nowszym schemat konfiguracji
 > [!NOTE]
@@ -396,7 +396,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
 |**StorageAccount**|Nazwa konta magazynu Azure do przechowywania danych. Można także określić jako parametr podczas wykonywania polecenia cmdlet Set-AzureServiceDiagnosticsExtension.|  
 |**StorageType**|Może być *tabeli*, *obiektu Blob*, lub *TableAndBlob*. Tabela jest domyślny. Po wybraniu TableAndBlob danych diagnostycznych są zapisywane dwukrotnie — raz dla każdego typu.|  
-|**LocalResourceDirectory**|Katalog na maszynie wirtualnej, na którym Agent monitorowania przechowuje dane zdarzenia. Jeśli nie, ustawić, jest używany domyślny katalog:<br /><br /> Dla roli proces roboczy/sieci web:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Atrybuty wymagane są:<br /><br /> - **ścieżka** -katalogu w systemie mają być używane przez diagnostyki Azure.<br /><br /> - **expandEnvironment** — Określa, czy zmienne środowiskowe są rozwijane w nazwie ścieżki.|  
+|**LocalResourceDirectory**|Katalog na maszynie wirtualnej, na którym Agent monitorowania przechowuje dane zdarzenia. Jeśli nie, ustawić, jest używany domyślny katalog:<br /><br /> Dla roli proces roboczy/sieci web: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Atrybuty wymagane są:<br /><br /> - **ścieżka** -katalogu w systemie mają być używane przez diagnostyki Azure.<br /><br /> - **expandEnvironment** — Określa, czy zmienne środowiskowe są rozwijane w nazwie ścieżki.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
  *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG katalogu głównego*
@@ -572,9 +572,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Opcjonalny. Określa maksymalną ilość pamięci systemu plików, która jest dostępna dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilterr**|**ciąg**|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
-|**scheduledTransferPeriod**|**czas trwania**|Opcjonalny. Określa interwał między zaplanowane transferów danych, zaokrąglona w górę do najbliższej minutę.<br /><br /> Wartość domyślna to PT0S.|  
-|**wychwytywanie** dodane w wersji 1.5|**ciąg**|Opcjonalny. Wskazuje lokalizację odbioru można również wysyłać dane diagnostyczne. Na przykład usługi Application Insights.|  
+|**scheduledTransferLogLevelFilterr**|**Ciąg**|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
+|**scheduledTransferPeriod**|**Czas trwania**|Opcjonalny. Określa interwał między zaplanowane transferów danych, zaokrąglona w górę do najbliższej minutę.<br /><br /> Wartość domyślna to PT0S.|  
+|**wychwytywanie** dodane w wersji 1.5|**Ciąg**|Opcjonalny. Wskazuje lokalizację odbioru można również wysyłać dane diagnostyczne. Na przykład usługi Application Insights.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources katalogu głównego*
@@ -592,7 +592,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
+|**obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="sink-element"></a>Sink — Element
  *Drzewa: - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - zbiornika katalogu głównego*
@@ -630,8 +630,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atrybuty|Typ|Opis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**ciąg**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
-|**Nazwa**|**ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
+|**logLevel**|**Ciąg**|Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**, który przesyła wszystkie dzienniki. Inne możliwe wartości (w kolejności od najbardziej do najmniej informacji) to **pełne**, **informacji**, **ostrzeżenie**, **błąd**i **Krytyczne**.|  
+|**Nazwa**|**Ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element 
