@@ -94,7 +94,7 @@
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
 ## [Wideo](https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest)
 ## [Forum z opiniami](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [Cennik](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
 ## [Informacje o wersji](stream-analytics-release-notes.md)
