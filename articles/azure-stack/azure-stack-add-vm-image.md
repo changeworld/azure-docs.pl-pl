@@ -1,24 +1,24 @@
 ---
 title: Dodaj obraz maszyny Wirtualnej Azure stos | Dokumentacja firmy Microsoft
-description: "Dodaj organizacji niestandardowych systemu Windows lub Linux VM obraz dla dzierżawców."
+description: Dodaj organizacji niestandardowych systemu Windows lub Linux VM obraz dla dzierżawców.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2018
+ms.date: 04/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 0ba0bc4e8350a65a95dc41788c93d5c89fc48334
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: eb2035f6e667a9b3ab642d42cb9bb5ecf5c86fb1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz niestandardowy maszyny wirtualnej Azure stosu
 
@@ -126,6 +126,7 @@ Aby dodać obraz do portalu Azure Marketplace stosu, wykonaj następujące czynn
     -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
   ```
 
+
 Polecenie wykonuje następujące czynności:
 
 * Uwierzytelnia się w środowisku Azure stosu.
@@ -133,9 +134,9 @@ Polecenie wykonuje następujące czynności:
 * Dodaje obraz maszyny Wirtualnej do repozytorium obrazów maszyn wirtualnych.
 * Tworzy element Marketplace.
 
-Aby zweryfikować, że polecenie zostało wykonane pomyślnie, w portalu przejdź do witryny Marketplace. Sprawdź, czy obraz maszyny Wirtualnej jest dostępna w **maszyn wirtualnych** kategorii.
+Aby zweryfikować, że polecenie zostało wykonane pomyślnie, w portalu przejdź do witryny Marketplace. Sprawdź, czy obraz maszyny Wirtualnej jest dostępna w **obliczeniowe** kategorii.
 
-![Pomyślnie dodano obrazu maszyny Wirtualnej](./media/azure-stack-add-vm-image/image5.PNG)
+![Pomyślnie dodano obrazu maszyny Wirtualnej](./media/azure-stack-add-vm-image/verify-vm.png)
 
 ## <a name="remove-a-vm-image-by-using-powershell"></a>Usuń obraz maszyny Wirtualnej za pomocą programu PowerShell
 
@@ -185,7 +186,7 @@ Obrazy można musi odwoływać się do magazynu obiektów Blob identyfikatora UR
 
    * Po przekazaniu [obrazu maszyny Wirtualnej systemu Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), upewnij się zastąpić **logowania do platformy Azure** krok z [konfigurowania środowiska PowerShell operator stosu Azure](azure-stack-powershell-configure-admin.md) kroku.  
 
-   * Zanotuj magazynu obiektów Blob identyfikatora URI, których przekazaniem obrazu. Magazyn obiektów Blob identyfikatora URI ma następujący format:  *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
+   * Zanotuj magazynu obiektów Blob identyfikatora URI, których przekazaniem obrazu. Magazyn obiektów Blob identyfikatora URI ma następujący format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*VHD.
 
    * Aby udostępnić obiektu blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie obrazu wirtualnego dysku twardego maszyny Wirtualnej został przekazany. Wybierz **obiektu Blob**, a następnie wybierz **zasad dostępu**. Opcjonalnie można zamiast tego Generowanie sygnatury dostępu współdzielonego dla kontenera i dołącz ją jako część identyfikator URI obiektu blob.
 
