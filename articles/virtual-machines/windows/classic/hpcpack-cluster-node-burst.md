@@ -1,11 +1,11 @@
 ---
-title: "Dodaj serii węzły w klastrze HPC Pack | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak i rozwiń klaster HPC Pack w Azure na żądanie przez dodanie wystąpień roli procesów roboczych uruchomionych w usłudze chmury"
+title: Dodaj serii węzły w klastrze HPC Pack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i rozwiń klaster HPC Pack w Azure na żądanie przez dodanie wystąpień roli procesów roboczych uruchomionych w usłudze chmury
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 24b79a8a-24ad-4002-ae76-75abc9b28c83
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: 96e332504509ae98e280d1c8585b0b294e0e07cb
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: eee9183321f21676271c8a9c7e023c80c4daf554
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Dodaj węzły na żądanie "serii" do klastra HPC Pack na platformie Azure
 Po skonfigurowaniu [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) klastra na platformie Azure, może być sposobem szybkie skalowanie pojemności klastra, bez zachowania zestaw węzeł obliczeniowy wstępnie skonfigurowanych maszyn wirtualnych. W tym artykule przedstawiono sposób dodawania węzłów na żądanie "serii" (uruchomionych w usłudze chmury wystąpień roli proces roboczy) jako zasoby obliczeniowe z węzłem głównym na platformie Azure. 
@@ -80,7 +80,7 @@ Po dodaniu i uruchomić węzły są gotowe do uruchomienia zadań klastra.
 
 W razie wystąpienia problemów podczas wdrażania węzły platformy Azure, zobacz [Rozwiązywanie problemów z wdrożeniami Azure węzłów z pakietem Microsoft HPC](http://technet.microsoft.com/library/jj159097.aspx).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby skorzystać rozmiar wystąpienia obliczeniowych dla węzłów serii, zobacz uwagi w [wysokiej wydajności obliczeniowe rozmiarów maszyn wirtualnych](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Jeśli chcesz automatycznie Zwiększ lub Zmniejsz Azure zasobów zgodnie z obciążenia klastrów obliczeniowych, zobacz [automatycznie zwiększyć lub zmniejszyć zasoby obliczeniowe systemu Azure w klastrze HPC Pack](hpcpack-cluster-node-autogrowshrink.md).
 

@@ -1,21 +1,21 @@
 ---
-title: Monitorowanie synchronizacji danych Azure SQL (wersja zapoznawcza) z pakietu OMS Log Analytics | Dokumentacja firmy Microsoft
-description: Informacje o sposobie monitorowania synchronizacji danych SQL Azure (wersja zapoznawcza) przy użyciu pakietu OMS analizy dzienników
+title: Monitor synchronizacji danych Azure SQL (wersja zapoznawcza) z analizy dzienników | Dokumentacja firmy Microsoft
+description: Informacje o sposobie monitorowania synchronizacji danych SQL Azure (wersja zapoznawcza) przy użyciu analizy dzienników
 services: sql-database
-ms.date: 11/07/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: c106d5bbea118c9b78cbccee187b8eb5c347f232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1b22b4ddf9fa4880b814efc3f8c3f1fc6ec7d141
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>Synchronizacja danych SQL Monitor (wersja zapoznawcza) z pakietu OMS analizy dzienników 
+# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Synchronizacja danych SQL Monitor (wersja zapoznawcza) z analizy dzienników 
 
 Sprawdź dziennik aktywności synchronizacji danych SQL i wykrywać błędy i ostrzeżenia, należy wcześniej było ręcznie sprawdzić synchronizacji danych SQL w portalu Azure, lub użyj programu PowerShell lub interfejsu API REST. Wykonaj kroki opisane w tym artykule, aby skonfigurować niestandardowe rozwiązanie zwiększa monitorowania obsługi synchronizacji danych. Można dostosować to rozwiązanie do danego scenariusza.
 
@@ -23,27 +23,27 @@ Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud 
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Pulpit nawigacyjny monitorowania dla wszystkich grup synchronizacji 
 
-Nie trzeba Przejrzyj dzienniki każdej grupy synchronizacji indywidualnie do wyszukania problemów. Wszystkie grupy synchronizacji można monitorować za pomocą dowolnego z subskrypcji w jednym miejscu, za pomocą widok niestandardowy OMS (Operations Management Suite). Ten widok udostępnia informacje, które ma znaczenie klientom synchronizacji danych SQL.
+Nie trzeba Przejrzyj dzienniki każdej grupy synchronizacji indywidualnie do wyszukania problemów. Wszystkie grupy synchronizacji można monitorować za pomocą dowolnego z subskrypcji w jednym miejscu, za pomocą widok niestandardowy analizy dzienników. Ten widok udostępnia informacje, które ma znaczenie klientom synchronizacji danych SQL.
 
 ![Pulpitu nawigacyjnego monitorowania synchronizacji danych](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Automatyczne powiadomienia E-mail
 
-Nie trzeba sprawdzić dziennik ręcznie w portalu Azure lub za pomocą programu PowerShell lub interfejsu API REST. Z [analizy dzienników OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), można tworzyć alerty, które go bezpośrednio na adresy e-mail osób, którym chcesz wyświetlać je po wystąpieniu błędu.
+Nie trzeba sprawdzić dziennik ręcznie w portalu Azure lub za pomocą programu PowerShell lub interfejsu API REST. Z [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), można tworzyć alerty, które go bezpośrednio na adresy e-mail osób, którym chcesz wyświetlać je po wystąpieniu błędu.
 
 ![Powiadomienia e-mail synchronizacji danych](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>Jak można skonfigurować te funkcje monitorowania? 
 
-Implementowanie niestandardowych OMS, monitorowanie rozwiązania synchronizacji danych SQL w mniej niż godzinę, wykonując następujące czynności:
+Implementowanie niestandardowych analizy dzienników monitorowania rozwiązania synchronizacji danych SQL w mniej niż godzinę, wykonując następujące czynności:
 
 Należy skonfigurować trzy składniki:
 
--   Element runbook programu PowerShell ze źródłem danych dziennika SQL danych synchronizacji z usługą OMS.
+-   Element runbook programu PowerShell ze źródłem danych dziennika SQL synchronizacji danych do analizy dzienników.
 
--   Alert OMS analizy dzienników dla powiadomień e-mail.
+-   Alert analizy dzienników dla powiadomień e-mail.
 
--   Widok OMS do monitorowania.
+-   Widok analizy dziennika do monitorowania.
 
 ### <a name="samples-to-download"></a>Przykłady do pobrania
 
@@ -51,7 +51,7 @@ Pobierz następujące dwa przykłady:
 
 -   [Runbook programu PowerShell w dzienniku synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Widok OMS dziennika synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Widok analizy dziennika synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
@@ -59,11 +59,11 @@ Upewnij się, że po skonfigurowaniu następujących czynności:
 
 -   Konto usługi Automatyzacja Azure
 
--   Połączone z obszarem roboczym pakietu OMS analizy dzienników
+-   Obszar roboczy usługi Log Analytics
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Runbook programu PowerShell, aby uzyskać w dzienniku synchronizacji danych SQL 
 
-Element runbook programu PowerShell hostowanych w usłudze Automatyzacja Azure umożliwia ściągania dziennika synchronizacji danych SQL, a następnie wysłać je z usługą OMS. Przykładowy skrypt jest dołączony. Warunkiem wstępnym musisz mieć konto usługi Automatyzacja Azure. Następnie należy utworzyć element runbook i zaplanuj jego uruchomienie. 
+Element runbook programu PowerShell hostowanych w usłudze Automatyzacja Azure umożliwia ściągania dziennika SQL synchronizacji danych i wysyłania go do analizy dzienników. Przykładowy skrypt jest dołączony. Warunkiem wstępnym musisz mieć konto usługi Automatyzacja Azure. Następnie należy utworzyć element runbook i zaplanuj jego uruchomienie. 
 
 ### <a name="create-a-runbook"></a>Tworzenie elementu runbook
 
@@ -121,9 +121,9 @@ Aby zaplanować elementu runbook:
 
 Można monitorować, czy Twoje automatyzacji działa zgodnie z oczekiwaniami, w obszarze **omówienie** Twojego konta automatyzacji, można znaleźć **statystyki zadania** wyświetlić w obszarze **monitorowanie**. Przypnij ten widok do pulpitu nawigacyjnego w celu łatwego wyświetlania. Uruchamia się pomyślnie Pokaż runbook jako "Ukończone" i działa wyświetlane jako "Nieudane".
 
-## <a name="create-an-oms-log-reader-alert-for-email-notifications"></a>Utwórz Alert czytnika dziennika OMS powiadomień E-mail
+## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Utwórz Alert czytnika Analytics dziennik powiadomień E-mail
 
-Aby utworzyć alert, który używa analizy dzienników OMS, wykonaj następujące czynności. Jako warunek wstępny użytkownik musi być powiązany z obszarem roboczym pakietu OMS analizy dzienników.
+Aby utworzyć alert, który używa analizy dzienników, wykonaj następujące czynności. Warunkiem wstępnym musisz mieć analizy dzienników połączone z obszaru roboczego analizy dzienników.
 
 1.  W portalu OMS wybierz **wyszukiwania dziennika**.
 
@@ -179,7 +179,7 @@ W większości przypadków to rozwiązanie jest bezpłatna.
 
 **Automatyzacja Azure:** może być pewnych kosztów ponoszonych z kontem usługi Automatyzacja Azure, w zależności od użycie. 500 pierwszych minut zadanie było uruchamiane raz w każdym miesiącu jest bezpłatne. W większości przypadków to rozwiązanie powinien użyć mniej niż 500 minut miesięcznie. Aby uniknąć naliczania opłat, Zaplanuj uruchomienie elementu runbook w interwału dwie lub więcej godzin. Aby uzyskać więcej informacji, zobacz [cennik automatyzacji](https://azure.microsoft.com/pricing/details/automation/).
 
-**Analiza dzienników OMS:** może być skojarzony z usługą OMS w zależności od użycie koszt. Warstwa bezpłatna obejmuje 500 MB danych pozyskiwane na dzień. W większości przypadków to rozwiązanie ma pozyskiwania mniej niż 500 MB na dzień. Aby zmniejszyć użycie, użyj tylko do awarii filtrowanie zawarte w elemencie runbook. Jeśli używasz więcej niż 500 MB na dzień, Uaktualnij do planu płatną, aby uniknąć zagrożenia analytics zatrzymywanie po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [cennik analizy dzienników](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Analiza dzienników:** może być skojarzony z analizy dzienników w zależności od użycie koszt. Warstwa bezpłatna obejmuje 500 MB danych pozyskiwane na dzień. W większości przypadków to rozwiązanie ma pozyskiwania mniej niż 500 MB na dzień. Aby zmniejszyć użycie, użyj tylko do awarii filtrowanie zawarte w elemencie runbook. Jeśli używasz więcej niż 500 MB na dzień, Uaktualnij do planu płatną, aby uniknąć zagrożenia analytics zatrzymywanie po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [cennik analizy dzienników](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Przykłady kodu
 
@@ -187,9 +187,9 @@ Pobierz przykłady kodu, opisane w tym artykule w następujących lokalizacjach:
 
 -   [Runbook programu PowerShell w dzienniku synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Widok OMS dziennika synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Widok analizy dziennika synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
 -   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md)

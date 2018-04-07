@@ -1,12 +1,12 @@
 ---
-title: "Utwórz Maszynę wirtualną systemu Linux na platformie Azure z wieloma kartami sieciowymi | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączone do niego przy użyciu wiersza polecenia platformy Azure lub usługi Resource Manager szablonów."
+title: Utwórz Maszynę wirtualną systemu Linux na platformie Azure z wieloma kartami sieciowymi | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączone do niego przy użyciu wiersza polecenia platformy Azure lub usługi Resource Manager szablonów.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 93a32ae7ec0cf73825791e8c8bc3d388cf999ece
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 20e3a65c28e95849822d81076b6780e05a2aebbf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Utwórz maszynę wirtualną systemu Linux z wieloma kartami sieciowymi przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 Można utworzyć maszynę wirtualną (VM) na platformie Azure, który ma wiele interfejsów sieci wirtualnej (NIC) do niego dołączony. Typowy scenariusz ma różne podsieci dla łączności frontonu i zaplecza lub sieć przeznaczona do monitorowania lub kopii zapasowej rozwiązanie. W tym artykule przedstawiono szybki poleceń, aby utworzyć Maszynę wirtualną z wieloma kartami sieciowymi, do niego dołączony. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej.
@@ -43,7 +43,7 @@ azure config mode arm
 
 W poniższych przykładach Zastąp przykładowe nazwy parametrów własne wartości. Przykład nazwy parametrów uwzględnione *myResourceGroup*, *mojekontomagazynu*, i *myVM*.
 
-Najpierw utwórz grupę zasobów. Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *eastus* lokalizacji:
+Najpierw utwórz grupę zasobów. W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 azure group create myResourceGroup --location eastus
@@ -143,6 +143,8 @@ azure vm create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
+Podczas dodawania wielu kart sieciowych do maszyny Wirtualnej systemu Linux, należy utworzyć reguły routingu. Te reguły zezwalają na maszynie Wirtualnej na wysyłanie i odbieranie ruchu, który należy do określonej karty sieciowej. W przeciwnym razie ruchu, który należy do eth1, na przykład nie może przetworzyć poprawnie trasy zdefiniowanej wartości domyślnej. Aby rozwiązać ten problem routingu, zobacz [Konfiguruj system operacyjny gościa dla wielu kart sieciowych](multiple-nics.md#configure-guest-os-for-multiple-nics).
+
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Tworzenie wielu kart sieciowych przy użyciu szablonów usługi Resource Manager
 Szablony usługi Azure Resource Manager umożliwia definiowanie środowiska deklaratywne pliki w formacie JSON. Możesz przeczytać [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Szablony Menedżera zasobów umożliwiają tworzenie wielu wystąpień zasobu podczas wdrażania, takich jak tworzenie wielu kart sieciowych. Możesz użyć *kopiowania* umożliwia określenie liczby wystąpień, aby utworzyć:
 
@@ -163,7 +165,9 @@ Można również użyć `copyIndex()` następnie dołączyć numer na nazwę zas
 
 Pełny przykład można znaleźć [tworzenia wielu kart sieciowych przy użyciu szablonów usługi Resource Manager](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
-## <a name="next-steps"></a>Następne kroki
+Podczas dodawania wielu kart sieciowych do maszyny Wirtualnej systemu Linux, należy utworzyć reguły routingu. Te reguły zezwalają na maszynie Wirtualnej na wysyłanie i odbieranie ruchu, który należy do określonej karty sieciowej. W przeciwnym razie ruchu, który należy do eth1, na przykład nie może przetworzyć poprawnie trasy zdefiniowanej wartości domyślnej. Aby rozwiązać ten problem routingu, zobacz [Konfiguruj system operacyjny gościa dla wielu kart sieciowych](multiple-nics.md#configure-guest-os-for-multiple-nics).
+
+## <a name="next-steps"></a>Kolejne kroki
 Upewnij się przejrzeć [rozmiarów maszyn wirtualnych systemu Linux](sizes.md) podczas tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi. Należy zwrócić uwagę na maksymalną liczbę kart sieciowych obsługuje każdego rozmiaru maszyny Wirtualnej. 
 
 Należy pamiętać, że nie można dodać dodatkowe karty sieciowe do istniejącej maszyny Wirtualnej, należy utworzyć wszystkich kart sieciowych podczas wdrażania maszyny Wirtualnej. Zachowaj ostrożność podczas planowania wdrożeń w taki sposób, aby upewnić się, czy istnieje połączenie sieciowe wymagane od samego początku.

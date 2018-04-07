@@ -9,20 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea2dc723c674e7119b6ef38771a73ff4c11e98d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6c94701507f86f6ecab2875f952215cc3e4cc719
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code---preview"></a>Tworzenie rozwiązania IoT krawędź z wielu modułów w programie Visual Studio Code - preview
-Visual Studio Code służy do opracowywania rozwiązania IoT krawędź z wielu modułów. Ten samouczek przeprowadzi Cię przez proces tworzenia, aktualizowania i wdrażanie rozwiązania IoT krawędzi, która po prostu przekazać dane czujników na symulowane urządzenie brzegowe IoT w programie Visual Studio Code. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Visual Studio Code służy do opracowywania rozwiązania IoT krawędź z wielu modułów. W tym artykule przedstawiono tworzenie, aktualizowanie i wdrażanie rozwiązań IoT Edge potoków danych czujnika na symulowane urządzenie brzegowe IoT w programie Visual Studio Code. W tym artykule dowiesz się, jak:
 
-> [!div class="checklist"]
-> * Visual Studio Code umożliwiają utworzenie rozwiązania IoT krawędzi
-> * Dodaj nowy moduł do pracy przy użyciu kodu VS rozwiązania IoT krawędzi. 
-> * Wdrażanie rozwiązania IoT krawędzi (wiele modułów) na urządzeniu IoT krawędzi
-> * Widok wygenerowany danych
+* Visual Studio Code umożliwiają utworzenie rozwiązania IoT krawędzi
+* Dodaj nowy moduł do pracy przy użyciu kodu VS rozwiązania IoT krawędzi. 
+* Wdrażanie rozwiązania IoT krawędzi (wiele modułów) na urządzeniu IoT krawędzi
+* Wyświetlanie wygenerowanych danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Zakończenie poniżej samouczki
@@ -60,15 +59,14 @@ Visual Studio Code służy do opracowywania rozwiązania IoT krawędź z wielu m
 
 3. Jeśli jesteś [symulacji urządzenia IoT](tutorial-simulate-device-linux.md) na komputerze deweloperskim. Zobaczysz, że wszystkie kontenery obrazu modułu zostanie uruchomiony za kilka minut.
 
-## <a name="view-generated-data"></a>Widok wygenerowany danych
+## <a name="view-generated-data"></a>Wyświetlanie wygenerowanych danych
 
-1. Aby monitorować danych otrzymywanych przez Centrum IoT, wybierz **widoku** > **palety polecenia...**  i wyszukaj **IoT: rozpocząć monitorowanie komunikat D2C**. 
-2. Aby zatrzymać monitorowanie danych, należy użyć **IoT: zatrzymać monitorowanie komunikat D2C** w palecie polecenia. 
+1. Aby monitorować dane otrzymywane przez centrum IoT Hub, wybierz pozycję **Widok** > **Paleta poleceń...** , a następnie wyszukaj ciąg **IoT: rozpocznij monitorowania komunikatu D2C**. 
+2. Aby zatrzymać monitorowanie danych, użyj polecenia **IoT: zatrzymaj monitorowanie komunikatu D2C** w palecie poleceń. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku rozwiązań IoT Edge utworzony przy użyciu języka C# modułu, później dodać moduł funkcji, zaktualizować trasy dla rozwiązania, wbudowane i wdrożony na urządzeniu IoT krawędzi symulowane. Można kontynuować do jednej z następujących samouczków, aby dowiedzieć się więcej o innych scenariuszy podczas opracowywania Azure IoT krawędź w kodzie VS.
+Można kontynuować do jednej z następujących artykułów, aby dowiedzieć się więcej o innych scenariuszy podczas opracowywania krawędź IoT Azure w programie Visual Studio Code:
 
-> [!div class="nextstepaction"]
-> [Debugowanie modułu C# w kodzie VS](how-to-vscode-debug-csharp-module.md)
-> [debugowania funkcji języka C# w kodzie VS](how-to-vscode-debug-azure-function.md)
+* [Debugowanie modułu C# w kodzie VS](how-to-vscode-debug-csharp-module.md)
+* [Debugowanie funkcji języka C# w kodzie VS](how-to-vscode-debug-azure-function.md)

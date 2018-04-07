@@ -1,18 +1,18 @@
 ---
-title: Odłączanie konta usługi Automatyzacja Azure Log Analytics | Dokumentacja firmy Microsoft
+title: Odłączanie konta usługi Azure Automation od usługi Log Analytics
 description: Ten artykuł zawiera omówienie sposobu odłączania Twoje konto usługi Automatyzacja Azure z obszaru roboczego analizy dzienników.
 services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/19/2018
+ms.date: 04/04/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b8b00f8a82dd63df13ccd0bc7e10429323c15ab3
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4928f1b92e84fc2b960c1f41e7531de9e346dfa2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Sposobu odłączania Twoje konto usługi Automatyzacja z obszaru roboczego analizy dzienników
 
@@ -21,16 +21,27 @@ Automatyzacja Azure umożliwia integrację z analizy dzienników umożliwia nie 
 * [Zarządzanie aktualizacjami](../operations-management-suite/oms-solution-update-management.md)
 * [Śledzenie zmian](../log-analytics/log-analytics-change-tracking.md)
 * [Uruchamiania/zatrzymywania maszyn wirtualnych w godzinach](automation-solution-vm-management.md)
- 
-Jeśli zdecydujesz się, że chcesz zintegrować Twoje konto usługi Automatyzacja z analizy dzienników nie będzie można odłączyć konta bezpośrednio z portalu Azure.  Zanim będziesz kontynuować, należy najpierw usunąć rozwiązania wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować.  Przejrzyj temat dla określonego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane w celu usunięcia go.  
+
+Jeśli zdecydujesz się, że chcesz zintegrować Twoje konto usługi Automatyzacja z analizy dzienników nie będzie można odłączyć konta bezpośrednio z portalu Azure.  Zanim będziesz kontynuować, należy najpierw usunąć rozwiązania wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Przejrzyj temat dla określonego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane w celu usunięcia go.
 
 Po usunięciu tych rozwiązań, które można wykonać następujące kroki, aby odłączyć Twoje konto usługi Automatyzacja.
 
+> [!NOTE]
+> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązanie monitorowania Azure SQL zostały utworzone zasoby automatyzacji i może również muszą zostać usunięte przed odłączenie obszaru roboczego.
+
 ## <a name="unlink-workspace"></a>Rozłącz obszaru roboczego
 
-1. Korzystając z portalu Azure Otwórz Twoje konto usługi Automatyzacja, a na automatyzację konta wybierz stronę **odłączyć obszaru roboczego** w sekcji **powiązane zasoby** po lewej stronie.<br><br> ![Odłącz obszar roboczy](media/automation-unlink-from-log-analytics/automation-unlink-workspace-option.png)<br><br>  
-2. Na stronie Rozłącz obszaru roboczego kliknij **odłączyć obszaru roboczego**.<br><br> ![Strona obszaru roboczego odłączyć](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png).<br><br>  Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.<br><br>
-3. Gdy usługi Automatyzacja Azure usiłuje odłączyć konto obszaru roboczego analizy dzienników, możesz śledzić postępy w obszarze **powiadomienia** z menu.
+1. Korzystając z portalu Azure Otwórz Twoje konto usługi Automatyzacja, a na automatyzację konta wybierz stronę **odłączyć obszaru roboczego** w sekcji **powiązane zasoby** po lewej stronie.
+
+   ![Odłącz obszar roboczy](media/automation-unlink-from-log-analytics/automation-unlink-workspace-option.png)
+
+1. Na stronie Rozłącz obszaru roboczego kliknij **odłączyć obszaru roboczego**.
+
+   ![Rozłącz strona obszaru roboczego](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png).
+
+   Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
+
+1. Gdy usługi Automatyzacja Azure usiłuje odłączyć konto obszaru roboczego analizy dzienników, możesz śledzić postępy w obszarze **powiadomienia** z menu.
 
 Użycie rozwiązania zarządzania aktualizacjami, opcjonalnie możesz usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
@@ -40,10 +51,10 @@ Użycie rozwiązania zarządzania aktualizacjami, opcjonalnie możesz usunąć n
 
 Jeśli używasz uruchamiania/zatrzymywania maszyn wirtualnych podczas rozwiązania poza godzinami szczytu, opcjonalnie może chcesz usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Uruchamianie i zatrzymywanie harmonogramy runbook maszyny Wirtualnej 
+* Uruchamianie i zatrzymywanie harmonogramy runbook maszyny Wirtualnej
 * Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
-* Zmienne   
+* Zmienne
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby zmienić konfigurację konta automatyzacji do integracji z analizy dzienników, zobacz [przekazywania strumienie zadania i stan zadania z automatyzacji do analizy dzienników](automation-manage-send-joblogs-log-analytics.md). 
+Aby zmienić konfigurację konta automatyzacji do integracji z analizy dzienników, zobacz [przekazywania strumienie zadania i stan zadania z automatyzacji do analizy dzienników](automation-manage-send-joblogs-log-analytics.md).

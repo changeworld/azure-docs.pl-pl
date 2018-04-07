@@ -1,10 +1,10 @@
 ---
-title: "Należy skonfigurować oprogramowanie RAID na maszynie wirtualnej z systemem Linux | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować RAID w systemie Linux na platformie Azure przy użyciu mdadm."
+title: Należy skonfigurować oprogramowanie RAID na maszynie wirtualnej z systemem Linux | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować RAID w systemie Linux na platformie Azure przy użyciu mdadm.
 services: virtual-machines-linux
 documentationcenter: na
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurowanie macierzy RAID oprogramowania w systemie Linux
 Jest to typowy scenariusz, aby korzystać z oprogramowania RAID na maszynach wirtualnych systemu Linux na platformie Azure można prezentować wiele dysków dołączonych danych jako pojedynczego urządzenia RAID. Zazwyczaj może być używany do zwiększenia wydajności i umożliwiają lepsze przepustowości w porównaniu do przy użyciu jednego dysku.
@@ -61,7 +61,7 @@ W tym przykładzie tworzymy partycji jednego dysku na /dev/sdc. /Dev/sdc1 zostan
                     sectors (command 'u').
     ```
 
-2. Naciśnij przycisk "n" w wierszu polecenia, aby utworzyć  **n** wa partycji:
+2. Naciśnij przycisk "n" w wierszu polecenia, aby utworzyć **n**wa partycji:
 
     ```bash
     Command (m for help): n

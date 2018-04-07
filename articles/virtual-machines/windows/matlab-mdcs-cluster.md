@@ -1,11 +1,11 @@
 ---
-title: "MATLAB klastrów na maszynach wirtualnych | Dokumentacja firmy Microsoft"
-description: "Umożliwia tworzenie klastrów MATLAB Distributed Computing serwera do uruchamiania obciążeń obliczeniowych równoległych MATLAB maszyny wirtualne Microsoft Azure"
+title: MATLAB klastrów na maszynach wirtualnych | Dokumentacja firmy Microsoft
+description: Umożliwia tworzenie klastrów MATLAB Distributed Computing serwera do uruchamiania obciążeń obliczeniowych równoległych MATLAB maszyny wirtualne Microsoft Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mscurrell
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: 177f8a61487130e718e3e6cfb779b17a3ed8ed69
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 695833fb12c0c7a130e98fe9b3bdfa502672ab29
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Tworzenie klastrów serwera przetwarzania danych rozproszonych MATLAB na maszynach wirtualnych Azure
 Maszyny wirtualne Microsoft Azure umożliwia utworzenie co najmniej jeden klaster serwera Computing rozproszone MATLAB do uruchamiania obciążeń MATLAB równoległych obliczeniowych. Zainstaluj oprogramowanie serwera przetwarzania danych rozproszonych MATLAB na maszynie Wirtualnej jako obrazu podstawowego i przy użyciu szablonu Azure szybkiego startu skryptu programu Azure PowerShell (dostępne na [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) do wdrażania i zarządzania klastrem. Po wdrożeniu Połącz się z klastrem do uruchamiania obciążeń.
@@ -69,6 +69,6 @@ Jako inne typy klastrów serwerów rozproszonych obliczeniowych MATLAB, należy 
 
 ![Menedżer profilu klastra](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać szczegółowe instrukcje dotyczące wdrażania i zarządzania klastrami serwerów rozproszonych obliczeniowych MATLAB na platformie Azure, zobacz [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) repozytorium zawierającego szablony i skryptów.
 * Przejdź do [lokacji MathWorks](http://www.mathworks.com/) szczegółowa dokumentacja MATLAB i MATLAB rozproszonego przetwarzania danych serwera.

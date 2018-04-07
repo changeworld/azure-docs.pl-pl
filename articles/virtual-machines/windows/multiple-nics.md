@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows na platformie Azure używanego przez wiele kart sieciowych | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia i zarządzania nimi maszyny Wirtualnej systemu Windows, który ma wiele kart sieciowych do niego dołączony przy użyciu szablonów programu Azure PowerShell lub Menedżera zasobów."
+title: Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows na platformie Azure używanego przez wiele kart sieciowych | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia i zarządzania nimi maszyny Wirtualnej systemu Windows, który ma wiele kart sieciowych do niego dołączony przy użyciu szablonów programu Azure PowerShell lub Menedżera zasobów.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: fab9f4ab1f0e974da68e1e9f36bc10687ea0b631
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0f19ed89e49b34ff4b8abf5d22e7d59b89fd6d72
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Tworzenie i zarządzanie nimi maszyny wirtualnej systemu Windows, który ma wiele kart sieciowych
 Maszynach wirtualnych (VM) na platformie Azure mogą mieć wiele wirtualnych kart interfejsu sieciowego (NIC) dołączona do nich. Typowy scenariusz ma różne podsieci dla łączności frontonu i zaplecza lub sieć przeznaczona do monitorowania lub kopii zapasowej rozwiązanie. Ten artykuł zawiera szczegóły dotyczące sposobu tworzenia maszyny Wirtualnej, który ma wiele kart sieciowych do niego dołączony. Możesz również sposób dodawania lub usuwania kart sieciowych z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej.
@@ -116,11 +116,13 @@ Teraz rozpocząć tworzenie konfiguracji maszyny Wirtualnej. Rozmiar każdej mas
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. Na koniec należy utworzyć maszyny Wirtualnej z [AzureRmVM nowy](/powershell/module/azurerm.compute/new-azurermvm):
+5. Tworzenie maszyny Wirtualnej z [nowe AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
 
     ```powershell
     New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
+
+6. Dodawanie tras dla dodatkowej kart sieciowych do systemu operacyjnego, wykonując kroki opisane w [konfiguracji systemu operacyjnego dla wielu kart sieciowych](#configure-guest-os-for-multiple-nics).
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Dodać kartę Sieciową do istniejącej maszyny Wirtualnej
 Aby dodać wirtualną kartę Sieciową do istniejącej maszyny Wirtualnej, deallocate maszyny Wirtualnej, dodać wirtualnej karty Sieciowej, a następnie uruchom maszynę Wirtualną. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej. W razie potrzeby można [Zmień rozmiar maszyny Wirtualnej](resize-vm.md).
@@ -175,6 +177,8 @@ Aby dodać wirtualną kartę Sieciową do istniejącej maszyny Wirtualnej, deall
     ```powershell
     Start-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
+
+5. Dodawanie tras dla dodatkowej kart sieciowych do systemu operacyjnego, wykonując kroki opisane w [konfiguracji systemu operacyjnego dla wielu kart sieciowych](#configure-guest-os-for-multiple-nics).
 
 ## <a name="remove-a-nic-from-an-existing-vm"></a>Usuń z istniejącej maszyny Wirtualnej karty Sieciowej
 Usunięcie wirtualnej karty Sieciowej z istniejącej maszyny Wirtualnej, należy cofnąć maszyny Wirtualnej, Usuń wirtualną kartę Sieciową, a następnie uruchom maszynę Wirtualną.
@@ -233,6 +237,8 @@ Można również użyć `copyIndex()` dołączyć numer do nazwy zasobu. Następ
 
 Pełny przykład można znaleźć [tworzenia wielu kart sieciowych przy użyciu szablonów usługi Resource Manager](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
+Dodawanie tras dla dodatkowej kart sieciowych do systemu operacyjnego, wykonując kroki opisane w [konfiguracji systemu operacyjnego dla wielu kart sieciowych](#configure-guest-os-for-multiple-nics).
+
 ## <a name="configure-guest-os-for-multiple-nics"></a>Skonfiguruj system operacyjny gościa dla wielu kart sieciowych
 
 Azure przypisuje do pierwszego interfejsu sieciowego (podstawowe) dołączonych do maszyny wirtualnej bramy domyślnej. Platforma Azure domyślnie nie przypisuje domyślnej bramy do dodatkowych interfejsów sieciowych dołączonych do maszyny wirtualnej. Dlatego domyślnie nie można komunikować się z zasobami poza podsiecią, w której znajduje się dodatkowy interfejs sieciowy. Dodatkowych interfejsów sieciowych można jednak komunikować się z zasobami spoza ich podsieci, chociaż kroki, aby umożliwić komunikację są różne dla różnych systemów operacyjnych.
@@ -287,7 +293,7 @@ Azure przypisuje do pierwszego interfejsu sieciowego (podstawowe) dołączonych 
 
     Na liście z trasy *192.168.1.1* w obszarze **bramy**, trasy, który jest domyślnie dla interfejsu sieci podstawowej. Trasa o *192.168.2.1* w obszarze **bramy**, trasy dodane.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przegląd [rozmiarów maszyn wirtualnych systemu Windows](sizes.md) Jeśli próbujesz utworzyć maszynę Wirtualną, która ma wiele kart sieciowych. Należy zwrócić uwagę na maksymalną liczbę kart sieciowych obsługiwanych przez każdy rozmiar maszyny Wirtualnej. 
 
 

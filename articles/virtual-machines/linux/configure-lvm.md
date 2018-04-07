@@ -1,10 +1,10 @@
 ---
 title: Skonfiguruj LVM na maszynie wirtualnej z systemem Linux | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak skonfigurować LVM w systemie Linux na platformie Azure."
+description: Dowiedz się, jak skonfigurować LVM w systemie Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 7926627aaa3f0da935131f491d927ab5cb4b35c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a22426d0422585714cb78d541a84d55d2fce6e0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Skonfiguruj LVM na Maszynę wirtualną systemu Linux na platformie Azure
 Ten dokument przedstawimy Konfigurowanie menedżera woluminu logicznego (LVM) w sieci maszyny wirtualnej platformy Azure. Mimo że jest to możliwe, aby skonfigurować LVM na dowolny dysk dołączony do maszyny wirtualnej, domyślnie większość obrazów chmury nie będą miały LVM skonfigurowane na dysk systemu operacyjnego. Ma to zapobiec problemom z grup zduplikowanych woluminu, jeśli dysk systemu operacyjnego jest kiedykolwiek dołączona do innej maszyny Wirtualnej o takiej samej dystrybucji i typ, tj. podczas scenariusza odzyskiwania. Dlatego zalecane jest tylko do użycia LVM na dyskach danych.
@@ -141,7 +141,7 @@ W tym przewodniku zakładamy, że dołączono trzy dyski danych, które będzie 
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. (Opcjonalnie) Parametry rozruchu przed uszkodzeniami w`/etc/fstab`
+5. (Opcjonalnie) Parametry rozruchu przed uszkodzeniami w `/etc/fstab`
    
     Zawiera wiele dystrybucji `nobootwait` lub `nofail` zainstalować parametrów, które mogą być dodawane do `/etc/fstab` pliku. Te parametry Zezwalaj na wypadek awarii w przypadku instalowania w określonym systemie plików i Zezwalaj na systemie Linux, aby kontynuować do rozruchu, nawet jeśli nie można poprawnie zainstalować system plików woluminu macierzy RAID. Zapoznaj się z dystrybucji dokumentację, aby uzyskać więcej informacji na temat tych parametrów.
    

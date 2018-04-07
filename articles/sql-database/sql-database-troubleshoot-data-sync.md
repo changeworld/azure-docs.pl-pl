@@ -1,19 +1,19 @@
 ---
-title: "Rozwiązywanie problemów z synchronizacji danych Azure SQL (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Sposoby rozwiązywania typowych problemów z synchronizacją danych SQL Azure (wersja zapoznawcza)."
+title: Rozwiązywanie problemów z synchronizacji danych Azure SQL (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Sposoby rozwiązywania typowych problemów z synchronizacją danych SQL Azure (wersja zapoznawcza).
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Rozwiązywanie problemów z synchronizacją danych SQL (wersja zapoznawcza)
 
@@ -442,13 +442,13 @@ Aby uzyskać więcej informacji na temat synchronizacji danych SQL (wersja zapoz
 -   [Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md)  
 -   [Konfigurowanie synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-get-started-sql-data-sync.md)  
 -   [Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-best-practices-data-sync.md)  
--   [Synchronizacja danych Azure SQL monitora (wersja zapoznawcza) z pakietu OMS analizy dzienników](sql-database-sync-monitor-oms.md)  
+-   [Synchronizacja danych Azure SQL monitora (wersja zapoznawcza) z analizy dzienników](sql-database-sync-monitor-oms.md)  
 -   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL (wersja zapoznawcza):  
     -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [Synchronizacja między bazą danych SQL Azure i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)  
+    -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL (wersja zapoznawcza)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 Aby uzyskać więcej informacji dotyczących bazy danych SQL zobacz:
 
--   [Omówienie bazy danych SQL](sql-database-technical-overview.md)
--   [Zarządzanie cyklem życia bazy danych](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Omówienie usługi SQL Database](sql-database-technical-overview.md)
+-   [Database Lifecycle Management (Zarządzanie cyklem życia bazy danych)](https://msdn.microsoft.com/library/jj907294.aspx)

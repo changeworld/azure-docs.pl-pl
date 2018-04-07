@@ -1,13 +1,13 @@
 ---
-title: "Zarządzanie Azure DDoS ochrony standardowe przy użyciu portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak ograniczyć atak za pomocą standardowych ochrony przed atakami DDoS Azure telemetrii w Azure Monitor."
+title: Zarządzanie Azure DDoS ochrony standardowe przy użyciu portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ograniczyć atak za pomocą standardowych ochrony przed atakami DDoS Azure telemetrii w Azure Monitor.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6a5ab1ba44197c0103e1e7d353a116dc01dfc163
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5cc03189124dbea56535af2fed84f5ca74aac6cd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie Azure DDoS ochrony standardowe przy użyciu portalu Azure
 
@@ -30,7 +30,7 @@ Dowiedz się, jak włączyć i wyłączyć atakach typu protection service (DDoS
 
 ## <a name="enable-ddos-protection-standard---new-virtual-network"></a>Włącz Standard ochrony przed atakami DDoS — nowej sieci wirtualnej
 
-1. Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+1. Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 2. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
 3. Wybierz **sieci**, a następnie wybierz **sieci wirtualnej**.
 4. Tworzenie sieci wirtualnej z wybranego ustawienia. Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnych, zobacz [utworzyć sieć wirtualną](manage-virtual-network.md#create-a-virtual-network). W obszarze **ochrona przed atakami DDoS**, kliknij przycisk **włączone**, a następnie kliknij przycisk **Utwórz**. Jeśli nie widzisz **ochrona przed atakami DDoS**, prawdopodobną przyczyną jest, że subskrypcja nie jest zarejestrowany dla funkcji. Należy wykonać [rejestracji](http://aka.ms/ddosprotection), otrzymasz powiadomienie, które subskrypcji została włączona dla funkcji, przed **ochrona przed atakami DDoS** pojawi się.
@@ -84,7 +84,7 @@ Rejestrowanie dostępne są trzy opcje:
 
 - **Archiwum na konto magazynu**: zapisuje dzienniki na koncie magazynu.
 - **Strumień do Centrum zdarzeń**: umożliwia odbiornik dziennika do pobrania dzienników przy użyciu Centrum zdarzeń. To umożliwia integrację z Splunk lub innych systemów SIEM.
-- **Wyślij do analizy dzienników**: zapisuje dzienniki z usługą Analiza dzienników Azure OMS.
+- **Wyślij do analizy dzienników**: zapisuje dzienniki z usługą Analiza dzienników Azure.
 
 ## <a name="use-ddos-protection-telemetry"></a>Użyj telemetrii ochrona przed atakami DDoS
 

@@ -1,11 +1,11 @@
 ---
-title: "Zarządzaj rozszerzeniami maszyny wirtualnej z systemem Windows | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób dodawania, znaleźć, aktualizowanie i usuwanie rozszerzeń dla maszyn wirtualnych platformy Azure w klasycznym modelu wdrażania."
+title: Zarządzaj rozszerzeniami maszyny wirtualnej z systemem Windows | Dokumentacja firmy Microsoft
+description: Opisuje sposób dodawania, znaleźć, aktualizowanie i usuwanie rozszerzeń dla maszyn wirtualnych platformy Azure w klasycznym modelu wdrażania.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: squillace
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 53f0543f-3217-4ad5-90ca-802810118ff9
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: 2bd51d0838dd0bd88beb66a40b4256a85e8dbea1
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 4454f587678fd58a96de149ee4cb0448db53dcdd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-virtual-machine-extensions"></a>Zarządzaj rozszerzeniami maszyny wirtualnej
 Opisuje sposób znaleźć, dodawanie, modyfikowanie lub usuwanie rozszerzeń maszyny Wirtualnej z systemem Windows lub maszyn wirtualnych systemu Linux na platformie Azure.

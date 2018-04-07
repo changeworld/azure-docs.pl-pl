@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 04/06/2018
 ms.author: brenduns
-ms.openlocfilehash: c3cb8ab8a838a3f831ece617fcf3e218a9510ea5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1712-update"></a>Azure aktualizacji 1712 stosu
 
@@ -43,11 +43,14 @@ Numer kompilacji aktualizacji 1712 stosu Azure jest **180106.1**. Jeśli klient 
 Należy najpierw zainstalować na stosie Azure [zaktualizować 1711](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1711) przed zastosowaniem tej aktualizacji.
 
 ### <a name="post-update-steps"></a>Czynności po aktualizacji
+- Po zakończeniu instalacji 1712 Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszych [obsługi zasad](azure-stack-servicing-policy.md).  
+  - [KB 4103348 — interfejs API kontrolera sieci usługi ulega awarii podczas próby zainstalowania aktualizacji Azure stosu](https://support.microsoft.com/help/4103348)
 
-Ta aktualizacja wymaga również zainstalować aktualizacje oprogramowania układowego od partnera OEM po zakończeniu instalacji aktualizacji 1712 stosu Azure.
 
-> [!NOTE]
-> Zapoznaj się z witryny partnera OEM do pobierania aktualizacji.
+- Aktualizacja 1712 wymaga również zainstalować aktualizacje oprogramowania układowego od partnera OEM po zakończeniu instalacji aktualizacji 1712 stosu Azure.
+
+  > [!NOTE]
+  > Zapoznaj się z witryny partnera OEM do pobierania aktualizacji.
 
 ### <a name="new-features-and-fixes"></a>Nowe funkcje i poprawki
 

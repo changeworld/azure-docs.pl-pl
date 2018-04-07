@@ -1,13 +1,13 @@
 ---
-title: "Szczegółowy Pulpit zdalny, rozwiązywanie problemów z platformy Azure | Dokumentacja firmy Microsoft"
-description: "Przeglądanie szczegółowe kroki rozwiązywania problemów dla zdalnego pulpitu błędy, których nie do maszyn wirtualnych systemu Windows na platformie Azure"
+title: Szczegółowy Pulpit zdalny, rozwiązywanie problemów z platformy Azure | Dokumentacja firmy Microsoft
+description: Przeglądanie szczegółowe kroki rozwiązywania problemów dla zdalnego pulpitu błędy, których nie do maszyn wirtualnych systemu Windows na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: "Nie można połączyć z pulpitem zdalnym, rozwiązywanie problemów z pulpitu zdalnego, Pulpit zdalny nie może połączyć błędy usług pulpitu zdalnego, rozwiązywania problemów pulpitu zdalnego, problemy z pulpitu zdalnego"
+keywords: Nie można połączyć z pulpitem zdalnym, rozwiązywanie problemów z pulpitu zdalnego, Pulpit zdalny nie może połączyć błędy usług pulpitu zdalnego, rozwiązywania problemów pulpitu zdalnego, problemy z pulpitu zdalnego
 ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/06/2017
 ms.author: genli
-ms.openlocfilehash: afbaa3afc78efd220d74def2e9f106e9fbd1ee2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1485bc5ac7ae47df9a1a36c8b88d6515b5624360
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Szczegółowe kroki rozwiązywania problemów dotyczących problemów połączeń usług pulpitu zdalnego do maszyn wirtualnych systemu Windows na platformie Azure
 Ten artykuł zawiera szczegółowe kroki rozwiązywania problemów w celu zdiagnozowania i rozwiązania złożonych błędy pulpitu zdalnego dla komputerów z systemem Windows Azure maszyny wirtualne.
@@ -191,12 +191,12 @@ Exit-PSSession
 
 Sprawdź, czy punkt końcowy pulpitu zdalnego dla maszyny Wirtualnej Azure również używa portu TCP 3398 jako wewnętrznego portu. Ponowne uruchomienie maszyny Wirtualnej Azure, a następnie spróbuj ponownie za pomocą połączenia pulpitu zdalnego.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 [Jak można zresetować hasła lub usługi pulpitu zdalnego dla maszyn wirtualnych systemu Windows](reset-rdp.md)
 
 [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
 
 [Rozwiązywanie problemów z połączeniami Secure Shell (SSH) do maszyny wirtualnej opartych na systemie Linux platformy Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Rozwiązywanie problemów z dostępem do aplikacji działających na maszynie wirtualnej platformy Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Rozwiązywanie problemów z dostępem do aplikacji uruchomionej na maszynie wirtualnej platformy Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

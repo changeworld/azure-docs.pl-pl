@@ -1,12 +1,11 @@
 ---
-title: "Tworzenie kopii zapasowej online i przywracania bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wykonać automatycznego tworzenia kopii zapasowej i przywracanie bazy danych z bazy danych Azure rozwiązania Cosmos."
+title: Tworzenie kopii zapasowej online i przywracania bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wykonać automatycznego tworzenia kopii zapasowej i przywracanie bazy danych z bazy danych Azure rozwiązania Cosmos.
 keywords: Kopia zapasowa i przywracanie, tworzenie kopii zapasowej online
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: monicar
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 98eade4a-7ef4-4667-b167-6603ecd80b79
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: f88bdd6ffb70ccd2aa48453747964c4afb5bea46
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.author: sngun
+ms.openlocfilehash: a51b7d115a8287340450b3525a9b1a325702485b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatyczne tworzenie kopii zapasowej online i przywracania bazy danych Azure rozwiązania Cosmos
 Azure DB rozwiązania Cosmos automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatycznego tworzenia kopii zapasowych woluminów bez wpływu na wydajność i dostępność operacji w bazie danych. Kopie zapasowe są przechowywane oddzielnie w innej usłudze magazynu, a te kopie zapasowe globalnie są replikowane w celu odporność regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy przypadkowego usunięcia z kontenera DB rozwiązania Cosmos i później wymagają danych odzyskiwania lub rozwiązanie odzyskiwania po awarii.  

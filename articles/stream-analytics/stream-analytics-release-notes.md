@@ -1,28 +1,24 @@
 ---
-title: Informacje o wersji usługi Stream Analytics | Dokumentacja firmy Microsoft
-description: Informacje o wersji usługi analiza strumienia
+title: Azure Stream Analytics — informacje o wersji
+description: W tym artykule opisano Historia wersji usługi Azure Stream Analytics i odpowiednie narzędzia programu Visual Studio.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 5e59f893-cd2c-43fb-9eca-c146ce637203
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 05/03/2017
 ms.author: jeanb
-ms.openlocfilehash: 645c9e7014beba0312de3784bbc04734927929a9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 05/03/2017
+ms.openlocfilehash: b5f6f4f42929127521320e56bcc9b36c324cde89
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-release-notes"></a>Informacje o wersji usługi analiza strumienia
 
 ## <a name="notes-for-06142017-update-of-stream-analytics-tools-for-visual-studio"></a>Informacje o aktualizacji 06/14/2017 Stream Analytics narzędzi dla programu Visual Studio
-Ta aktualizacja jest naszych narzędzi Visual Studio Tools. Ta wersja zawiera następujące nowe funkcje:
+Ta aktualizacja dotyczy programu Visual Studio Tools. Ta wersja zawiera następujące nowe funkcje:
 
 | Stanowisko | Opis |
 | --- | --- |
@@ -31,19 +27,19 @@ Ta aktualizacja jest naszych narzędzi Visual Studio Tools. Ta wersja zawiera na
 | CSV i Avro obsługuje reakcję testowania lokalnego | Oprócz JSON teraz służy format pliku CSV i Avro reakcję testowania lokalnego.|
 
 ## <a name="notes-for-05032017-update-of-stream-analytics"></a>Informacje o aktualizacji 05/03/2017 analiza strumienia
-Ta aktualizacja jest wydania dokumentacji naszych rozwiązywania problemów.
+Ta aktualizacja jest w wersji dokumentacji rozwiązywania problemów.
 
-[Przewodnik rozwiązywania problemów](stream-analytics-troubleshooting-guide.md) i inne dokumenty zostały wydane. Zapoznaj się z tematem, opinie użytkowników są powitalnej.
+[Przewodnik rozwiązywania problemów](stream-analytics-troubleshooting-guide.md) i inne dokumenty zostały wydane. Przejrzyj tego przewodnika, a Twoja opinia jest powitalnej.
 
 ## <a name="notes-for-04242017-update-of-stream-analytics-tools-for-visual-studio"></a>Informacje o aktualizacji 2017-04/24 Stream Analytics narzędzi dla programu Visual Studio
-Ta aktualizacja jest naszych narzędzi Visual Studio Tools. Ta wersja zawiera następujące nowe funkcje:
+Ta aktualizacja dotyczy programu Visual Studio Tools. Ta wersja zawiera następujące nowe funkcje:
 
 | Stanowisko | Opis |
 | --- | --- |
 | Wynik testu lokalnego widoku w programie Visual Studio | Aby wyświetlić dane wyjściowe wynik testu lokalnego, po prostu naciśnij klawisz ENTER w oknie dane wyjściowe konsoli lub go zamknąć. Wynik jest wyświetlany w oknie programu Visual Studio w formacie tabeli. |
 | Wynik lokalnych danych wyjściowych w formacie JSON | Podczas uruchamiania lokalnego testu wynik dane wyjściowe są generowane, zgodnie z formatów plików JSON i CSV. |
 | Wyświetl podgląd danych wejść/wyjść magazynu obiektów Blob/tabeli | Dwukrotne kliknięcie w magazynie obiektów blob lub tabeli wejścia/wyjścia w widoku zadania, można łatwo podglądu danych w programie Visual Studio. |
-| Wyświetl komunikat o błędzie dla wejścia/wyjścia | Jeśli występują błędy środowiska wykonawczego związane z wejściowych i wyjściowych z zadania, jest wyświetlany na diagramie zadania, których możesz najechać Aby wyświetlić szczegółowy komunikat o błędzie.|
+| Wyświetl komunikat o błędzie dla wejścia/wyjścia | W razie błędu czasu wykonywania dotyczące wejściowych i wyjściowych zadania, jest wyświetlany na diagramie zadania, których możesz najechać Aby wyświetlić szczegółowy komunikat o błędzie.|
 
 
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>Informacje o wersji 2017-02/01 usługi analiza strumienia
@@ -76,7 +72,7 @@ Ta wersja zawiera następującą aktualizację:
 | Stanowisko | Opis |
 | --- | --- |
 | Aktualizacja wersji interfejsu API REST |Wersja interfejsu API REST został zaktualizowany do 2015-10-01. Szczegółowe informacje można znaleźć w witrynie MSDN w [dokumentacja interfejsu API REST zarządzania usługi analiza strumienia](https://msdn.microsoft.com/library/azure/dn835031.aspx) i [uczenia maszynowego integracji usługi Stream Analytics](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md). |
-| Azure Machine Learning integracji |W tej wersji zawiera obsługę Azure Machine Learning funkcje zdefiniowane przez użytkownika. Zobacz [samouczek](stream-analytics-machine-learning-integration-tutorial.md) Aby uzyskać więcej informacji, jak również [anonsu ogólne blogu](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx). |
+| Azure Machine Learning integracji |W tej wersji zawiera obsługę Azure Machine Learning funkcje zdefiniowane przez użytkownika. Aby uzyskać więcej informacji, zobacz [samouczek](stream-analytics-machine-learning-integration-tutorial.md) i [anonsu ogólne blogu](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx). |
 
 ## <a name="notes-for-11122015-release-of-stream-analytics"></a>Informacje o wersji 2015-11-12 usługi analiza strumienia
 Ta wersja zawiera następującą aktualizację:
@@ -93,7 +89,7 @@ Ta wersja zawiera następujące aktualizacje:
 | Dodatkowe funkcje językowe |Analiza strumienia ma rozwinięty język zapytań poprzez włączenie następujących funkcji: [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx), [limitu](https://msdn.microsoft.com/library/azure/mt605286.aspx), [EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx), [FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx), [ POWER](https://msdn.microsoft.com/library/azure/mt605287.aspx), [znak](https://msdn.microsoft.com/library/azure/mt605290.aspx), [kwadratowe](https://msdn.microsoft.com/library/azure/mt605288.aspx), i [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx). |
 | Usunięto ograniczenia agregacji |Ta wersja usuwa ograniczenie 15 agregacji w zapytaniu. Obecnie nie ma żadnego limitu liczby agregacji dla kwerendy. |
 | Dodano funkcję grupy przez System.Timestamp |[GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx) funkcja umożliwia teraz albo window_type lub [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx). |
-| Dodano przesunięcie wirowania i skaczące systemu windows |Domyślnie [wirowania](https://msdn.microsoft.com/library/azure/dn835055.aspx) i [Hopping](https://msdn.microsoft.com/library/azure/dn835041.aspx) systemu windows są wyrównane względem czas wynosi zero (1/1/0001 UTC 00:00:00: 00). Nowy parametr (opcjonalny) "offsetsize" zezwala na określanie niestandardowych przesunięcie (lub wyrównanie). |
+| Dodano przesunięcie wirowania i skaczące systemu windows |Domyślnie [wirowania](https://msdn.microsoft.com/library/azure/dn835055.aspx) i [Hopping](https://msdn.microsoft.com/library/azure/dn835041.aspx) systemu windows są wyrównane względem czas wynosi zero (1/1/0001 UTC 00:00:00: 00). Nowy parametr (opcjonalny) `offsetsize` umożliwia określanie niestandardowych przesunięcie (lub wyrównanie). |
 
 ## <a name="notes-for-09292015-release-of-stream-analytics"></a>Informacje o wersji 2015-09-29 usługi analiza strumienia
 Ta wersja zawiera następujące aktualizacje:
@@ -151,16 +147,16 @@ Ta wersja zawiera następujące aktualizacje:
 | --- | --- |
 | Opóźnienie w konfiguracji konta usługi Azure Storage |Podczas tworzenia zadania usługi analiza strumienia w regionie po raz pierwszy, wyświetlany jest monit o utworzenie nowego konta magazynu lub określenie istniejącego konta do monitorowania zadania usługi analiza strumienia, w tym regionie. Z powodu opóźnienia w konfigurowaniu monitorowania, tworzenie inne zadanie usługi analiza strumienia w tym samym regionie, w ciągu 30 minut wiersza do określenia drugiego konta magazynu, zamiast przedstawiający ostatnio skonfigurowany jeden w listy rozwijanej konto magazynu monitorowania. Aby uniknąć tworzenia niepotrzebnych konta magazynu, Odczekaj 30 minut po utworzeniu zadania w obszarze po raz pierwszy przed zainicjowaniem obsługi administracyjnej dodatkowych zadań, w tym regionie. |
 | Zadanie uaktualnienia |W tej chwili Stream Analytics nie obsługuje edycji na żywo do definicji lub konfiguracji uruchomionego zadania. Aby zmienić dane wejściowe, dane wyjściowe, zapytania, skali lub konfiguracji uruchomionego zadania, należy zatrzymać zadanie. |
-| Typy danych wywnioskować ze źródła danych wejściowych |Jeśli w instrukcji CREATE TABLE nie jest używany, typ danych wejściowych jest pochodną format wejściowy, na przykład wszystkie pola z pliku CSV są ciągu. Pola zachodzi potrzeba konwertowania jawnie odpowiedniego typu przy użyciu funkcji CAST w celu uniknięcia błędy niezgodności typów. |
+| Typy danych wywnioskować ze źródła danych wejściowych |Jeśli w instrukcji CREATE TABLE nie jest używany, typ danych wejściowych jest pochodną format wejściowy, na przykład wszystkie pola z pliku CSV są ciągu. Jawnie przekonwertować pola odpowiedniego typu przy użyciu funkcji CAST w celu uniknięcia błędy niezgodności typów. |
 | Brakujące pola są wyjściowych jako wartości null |Odwołanie do pola, które nie jest obecny w źródła danych wejściowych powoduje wartości null w przypadku danych wyjściowych. |
 | W instrukcjach musi poprzedzać instrukcji "SELECT" |W zapytaniu podzapytania zdefiniowany za pomocą instrukcji musi następować po instrukcji "SELECT". |
 | Problem braku pamięci |Ponowne uruchomienie zadań przesyłania strumieniowego Analytics z tolerancją duża dla zdarzenia poza kolejnością i/lub złożonych zapytań obsługi dużej liczby stanu może spowodować uruchomienie za mało pamięci, co w przypadku zadania. Uruchamianie i zatrzymywanie operacji są widoczne w dzienniki operacji zadania. Aby uniknąć tego zachowania, skalowanie w poziomie zapytania między wieloma partycjami. W przyszłym wydaniu to ograniczenie dotyczy zmniejszenie wydajności na wpływ na zadania zamiast ponownego uruchamiania ich. |
 | Dane wejściowe dużych obiektów blob bez sygnatury czasowej ładunek może spowodować problem braku pamięci |Zużywa duże pliki z magazynu obiektów Blob może spowodować zadania usługi analiza strumienia do awarii, jeśli nie określono pola sygnatury czasowej za pośrednictwem TIMESTAMP BY. Aby uniknąć tego problemu, należy każdy obiekt blob poniżej 10 MB rozmiar. |
-| Ograniczenie woluminu zdarzeń bazy danych SQL |Podczas korzystania z bazy danych SQL jako miejsce docelowe danych wyjściowych, bardzo dużych ilości danych wyjściowych może spowodować zadanie usługi Stream Analytics limitu czasu. Aby rozwiązać ten problem, zmniejszyć ilość danych wyjściowych za pomocą wartości zagregowanych lub operatory filtru lub zamiast tego wybrać magazynu obiektów Blob platformy Azure lub usługi Event Hubs jako miejsce docelowe danych wyjściowych. |
+| Ograniczenie woluminu zdarzeń bazy danych SQL |Podczas korzystania z bazy danych SQL jako miejsce docelowe danych wyjściowych, dużych ilości danych wyjściowych może spowodować zadanie usługi Stream Analytics limitu czasu. Aby rozwiązać ten problem, zmniejszyć ilość danych wyjściowych za pomocą wartości zagregowanych lub operatory filtru lub zamiast tego wybrać magazynu obiektów Blob platformy Azure lub usługi Event Hubs jako miejsce docelowe danych wyjściowych. |
 | Zestawy danych usługi Power BI może zawierać tylko jedną tabelę |Usługa Power BI nie obsługuje więcej niż jednej tabeli w danym zestawie danych. |
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, wypróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

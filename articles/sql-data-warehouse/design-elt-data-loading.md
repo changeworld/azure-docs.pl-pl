@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 03/28/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Projektowanie wyodrębniania, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse
 
@@ -47,8 +47,9 @@ Program PolyBase jest technologia, która uzyskuje dostęp do danych poza bazy d
 Aby załadować dane przy użyciu programu PolyBase, można użyć dowolnej z tych opcji ładowania.
 
 - [Program PolyBase z T-SQL](load-data-from-azure-blob-storage-using-polybase.md) działa poprawnie, gdy dane pochodzą z magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Store. Umożliwia sterowanie za pośrednictwem procesu ładowania, ale wymaga również do definiowania obiektów danych zewnętrznych. Inne metody Definiuj Mapowanie tabel źródłowych do tabel docelowych tych obiektów w tle.  Do organizowania obciążeń T-SQL, można użyć usługi fabryka danych Azure, SSIS lub usługę Azure functions. 
-- [Program PolyBase z SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md) działa poprawnie, gdy źródło danych jest w programie SQL Server, SQL Server lokalnie lub w chmurze. SSIS definiuje źródłowej do docelowej tabeli mapowania, a także organizuje obciążenia. Jeśli masz już pakiety usług SSIS, można zmodyfikować pakiety do pracy z nowego miejsca docelowego magazynu danych. 
-- [Program PolyBase z fabryki danych Azure (ADF)](sql-data-warehouse-load-with-data-factory.md) jest inne narzędzie do aranżacji.  Definiuje potoku i harmonogramy zadań. 
+- [Program PolyBase z SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) działa poprawnie, gdy źródło danych jest w programie SQL Server, SQL Server lokalnie lub w chmurze. SSIS definiuje źródłowej do docelowej tabeli mapowania, a także organizuje obciążenia. Jeśli masz już pakiety usług SSIS, można zmodyfikować pakiety do pracy z nowego miejsca docelowego magazynu danych. 
+- [Program PolyBase z fabryki danych Azure (ADF)](sql-data-warehouse-load-with-data-factory.md) jest inne narzędzie do aranżacji.  Definiuje potoku i harmonogramy zadań. ADF służy do analizowania danych JSON i załaduj go do usługi SQL Data Warehouse.
+- [Program PolyBase z Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) transferu danych z usługi Azure Data Lake Store do usługi SQL Data Warehouse. Azure DataBricks umożliwia analizowanie danych JSON i ładowanie danych do usługi SQL Data Warehouse. 
 
 ### <a name="polybase-external-file-formats"></a>Program PolyBase formatów plików zewnętrznych
 

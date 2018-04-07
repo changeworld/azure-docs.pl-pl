@@ -1,28 +1,23 @@
 ---
-title: "Uruchom usługi Azure Functions z zadania usługi analiza strumienia Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować usługi Azure Functions ujściem danych wyjściowych do zadania usługi analiza strumienia."
-keywords: "dane wyjściowe, strumieniowego przesyłania danych i funkcji platformy Azure"
-documentationcenter: 
+title: Uruchom usługi Azure Functions z zadania usługi analiza strumienia Azure
+description: W tym artykule opisano sposób konfigurowania usługi Azure Functions ujściem danych wyjściowych zadania usługi analiza strumienia, w przypadku obciążeń zdarzeń dysku.
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
+ms.reviewer: jasonh
 manager: kfile
-ms.assetid: 
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Uruchom usługi Azure Functions z zadania usługi analiza strumienia Azure 
+# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Uruchom usługi Azure Functions z zadania usługi analiza strumienia Azure 
 
-Usługi Azure Functions można uruchomić z usługą Azure Stream Analytics, konfigurując funkcje wśród sink danych wyjściowych do zadania usługi analiza strumienia. Funkcje to środowisko sterowane zdarzeniami, obliczeń na żądanie, które umożliwia implementowania kodu wyzwalane przez zdarzenia występujące w Azure lub usług innych firm. Możliwość odpowiadanie na wyzwalaczy funkcji ułatwia fizycznych danych wyjściowych do zadania usługi analiza strumienia.
+Usługi Azure Functions można uruchomić z usługi Azure Stream Analytics, konfigurując funkcje wśród sink danych wyjściowych do zadania usługi analiza strumienia. Funkcje są sterowane zdarzeniami obliczeń na żądanie środowisko, które umożliwia implementowania kodu wyzwalane przez zdarzenia występujące w Azure lub usług innych firm. Możliwość odpowiadanie na wyzwalaczy funkcji ułatwia fizycznych danych wyjściowych do zadania usługi analiza strumienia.
 
 Analiza strumienia wywołuje funkcje za pomocą wyzwalaczy HTTP. Adapter wyjścia funkcji umożliwia użytkownikom łączenie się Stream Analytics z z funkcji tak, aby zdarzenia mogą być wyzwalane opartych na kwerendach Stream Analytics. 
 

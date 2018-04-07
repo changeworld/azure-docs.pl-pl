@@ -1,24 +1,19 @@
 ---
-title: Monitorowanie i zarządzanie nimi zadania usługi analiza strumienia przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać programu Azure PowerShell i polecenia cmdlet można monitorować i zarządzać nimi zadania usługi analiza strumienia.
-keywords: Program Azure powershell, poleceń cmdlet programu azure powershell, polecenia programu powershell skryptów środowiska powershell
+title: Monitorowanie i zarządzanie nimi zadania usługi analiza strumienia Azure przy użyciu programu PowerShell
+description: W tym artykule opisano sposób użycia programu Azure PowerShell i polecenia cmdlet można monitorować i zarządzać nimi zadania usługi analiza strumienia Azure.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 1dcb6f8fe9f2f26ea0bd6970134b0bec67a50aa5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: ed47141c46259007227ed391c1e114932153de38
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorowanie i zarządzanie nimi zadania usługi analiza strumienia za pomocą poleceń cmdlet programu Azure PowerShell
 Dowiedz się, jak monitorowanie i zarządzanie zasobami usługi Stream Analytics za pomocą poleceń cmdlet programu Azure PowerShell i skryptów programu powershell, które wykonywać podstawowe zadania usługi analiza strumienia.
@@ -449,7 +444,7 @@ Program Azure PowerShell 1.0:
 Ten stan połączenia danych wyjściowych danych wyjściowych w StreamingJob testy polecenia programu PowerShell.  
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics). 
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

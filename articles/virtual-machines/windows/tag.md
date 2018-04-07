@@ -1,10 +1,10 @@
 ---
 title: Jak tag zasobu maszyny Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się więcej o znakowanie utworzona na platformie Azure przy użyciu modelu wdrażania Menedżera zasobów systemu Windows maszyny wirtualnej"
+description: Dowiedz się więcej o znakowanie utworzona na platformie Azure przy użyciu modelu wdrażania Menedżera zasobów systemu Windows maszyny wirtualnej
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 56d17f45-e4a7-4d84-8022-b40334ae49d2
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 5f00c4265cea3db02dbb09a7f81be636a3fdd3d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5044bda855b6ac88eb5784f257686bf8a1838222
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak tagu maszyny wirtualnej systemu Windows na platformie Azure
 W tym artykule opisano różne sposoby tagu maszyny wirtualnej systemu Windows na platformie Azure za pośrednictwem modelu wdrażania usługi Resource Manager. Tagi to pary klucz wartość zdefiniowana przez użytkownika, które mogą być umieszczone bezpośrednio na zasób lub grupa zasobów. Azure obecnie obsługuje maksymalnie 15 znaczników dla zasobu i grupy zasobów. Tagi mogą dotyczącymi zasobów w czasie tworzenia lub dodać do istniejącego zasobu. Należy pamiętać, że tagi są obsługiwane dla zasobów utworzone za pośrednictwem tylko modelu wdrażania Menedżera zasobów. Jeśli chcesz oznaczyć maszyny wirtualnej systemu Linux, zobacz [jak tagu maszyny wirtualnej systemu Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -63,7 +63,7 @@ Drugie polecenie wyświetla tagi dla danego zmiennej.
         Value        Production
         Name        Environment
 
-Trzecie polecenie dodaje tag dodatkowe do *$tags* zmiennej. Zwróć uwagę na użycie  **+=**  do dołączenia nową parę klucz wartość do *$tags* listy.
+Trzecie polecenie dodaje tag dodatkowe do *$tags* zmiennej. Zwróć uwagę na użycie **+=** do dołączenia nową parę klucz wartość do *$tags* listy.
 
         PS C:\> $tags += @{Name="Location";Value="MyLocation"}
 
@@ -92,7 +92,7 @@ Aby dowiedzieć się więcej na temat znakowanie za pomocą programu PowerShell,
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej na temat znakowanie zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager] [ Azure Resource Manager Overview] i [przy użyciu tagów do organizowania zasobów platformy Azure][Using Tags to organize your Azure Resources].
 * Aby dowiedzieć się, jak tagów można zarządzać korzystanie z zasobów platformy Azure, zobacz [Opis rachunku Azure] [ Understanding your Azure Bill] i [uzyskać wgląd w Microsoft Azure użycia zasobów][Gain insights into your Microsoft Azure resource consumption].
 

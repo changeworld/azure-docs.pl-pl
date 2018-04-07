@@ -1,9 +1,9 @@
 ---
-title: "Strumienia Azure dzienników diagnostycznych do Centrum zdarzeń | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak strumienia Azure dzienników diagnostycznych do Centrum zdarzeń."
+title: Strumienia Azure dzienników diagnostycznych do Centrum zdarzeń | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak strumienia Azure dzienników diagnostycznych do Centrum zdarzeń.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 42bc4845-c564-4568-b72d-0614591ebd80
@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 72876e38f77aa7a13c0dd9a8cdf9479e058f4a0d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1f5a97f5af47a3c5731d5c5d4d5e8cf17097ae60
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Dzienniki diagnostyczne strumienia Azure do Centrum zdarzeń
-**[Azure dzienników diagnostycznych](monitoring-overview-of-diagnostic-logs.md)**  mogą być przesyłane strumieniowo w najbliższym czasie rzeczywistym do aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs", w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawienie diagnostyczne za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure CLI.
+**[Azure dzienników diagnostycznych](monitoring-overview-of-diagnostic-logs.md)**  mogą być przesyłane strumieniowo w najbliższym czasie rzeczywistym do aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs", w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawienie diagnostyczne za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure CLI 2.0.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co można zrobić z dzienników diagnostyki i usługi Event Hubs
 Poniżej przedstawiono kilka sposobów można na przykład możliwość przesyłania strumieniowego dzienników diagnostycznych:
 
 * **Strumienia dzienniki 3 systemów firm rejestrowania i dane telemetryczne** — przesyłania strumieniowego wszystkich dzienników diagnostycznych do koncentratora pojedyncze zdarzenie do potoku danych dziennika narzędzia analizy rozwiązania SIEM lub dziennika innej firmy.
 * **Wyświetlić kondycję usługi przesyłania strumieniowego "aktywnej ścieżki" danych do usługi Power BI** — za pomocą usługi Event Hubs, Stream Analytics i usługi Power BI, łatwo można przekształcać dane diagnostyczne w prawie w czasie rzeczywistym rozeznanie usługami Azure. [Ten artykuł dokumentacja zawiera wszechstronne omówienie sposobu konfigurowania usługi Event Hubs, przetwarzania danych za pomocą usługi Stream Analytics i używać usługi Power BI jako dane wyjściowe](../stream-analytics/stream-analytics-power-bi-dashboard.md). Oto kilka porad dotyczących uzyskiwania skonfigurowany z dzienników diagnostycznych:
-  
+
   * Centrum zdarzeń dla kategorii dzienników diagnostycznych jest tworzona automatycznie po zaznaczeniu opcji w portalu lub włączyć za pomocą programu PowerShell, tak aby wybrać Centrum zdarzeń w obszarze nazw o nazwie, która rozpoczyna się od **insights -**.
   * Następujący kod SQL jest przykładowe zapytanie Stream Analytics można przeanalizować wszystkie dane dziennika w tabeli usługi Power BI:
 
@@ -45,16 +45,23 @@ Poniżej przedstawiono kilka sposobów można na przykład możliwość przesył
 * **Tworzenie niestandardowych telemetrii i rejestrowanie platformy** — Jeśli masz już platformy telemetrii niestandardowej lub są tylko pomyśleć o jeden wysoce skalowalna tworzenia charakter publikowania / subskrypcji usługi Event hubs umożliwia elastyczne pozyskiwania dzienników diagnostycznych. [Zobacz Przewodnik Dan Rosanova przy użyciu usługi Event Hubs w skali globalnej platformy telemetrii tutaj](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Przesyłania strumieniowego dzienników diagnostycznych
+
 Można włączyć przesyłania strumieniowego dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST Monitor Azure](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). W obu przypadkach należy utworzyć ustawienie diagnostyczne, w którym można określić przestrzeni nazw usługi Event Hubs i kategorie dziennika i metryk, które chcesz wysłać do przestrzeni nazw. Centrum zdarzeń jest tworzony w przestrzeni nazw dla każdej kategorii dziennika, który zostanie włączone. Diagnostyka **kategorii dziennika** jest typem dziennika, który może zbierać zasobu.
 
 > [!WARNING]
 > Włączanie i przesyłania strumieniowego dzienników diagnostycznych z zasobów obliczeniowych (na przykład maszyny wirtualne lub sieci szkieletowej usług) [wymaga innego zestawu kroków](../event-hubs/event-hubs-streaming-azure-diags-data.md).
-> 
-> 
 
 Centra zdarzeń w przestrzeni nazw nie ma w tej samej subskrypcji co zasób emitowanie dzienniki, dopóki użytkownik, który konfiguruje ustawienia ma odpowiedni dostęp RBAC do obu subskrypcji.
 
+> [!NOTE]
+> Wysyłanie metryki wielowymiarowej za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryka z wymiarów są eksportowane jako spłaszczone pojedynczego metryki wymiarów, zagregowane WE wartości wymiaru.
+>
+> *Na przykład*: metryka "Komunikatów przychodzących" w Centrum zdarzeń można przedstawione i wykresie na na poziomie kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych, które Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
+>
+>
+
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Strumieniowe przesyłanie dzienników diagnostycznych przy użyciu portalu
+
 1. W portalu przejdź do monitora Azure i kliknij na **ustawień diagnostycznych**
 
     ![Monitorowanie sekcji Azure Monitor](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
@@ -70,9 +77,9 @@ Centra zdarzeń w przestrzeni nazw nie ma w tej samej subskrypcji co zasób emit
    ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
 
 3. Nadaj nazwę ustawienia i pole wyboru dla **strumienia do Centrum zdarzeń**, następnie wybierz obszar nazw usługi Event Hubs.
-   
+
    ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
-    
+
    Przestrzeni nazw wybrane będzie gdzie (jeżeli jest to pierwszy przesyłania strumieniowego dzienników diagnostycznych czasu) lub przesyłane strumieniowo do Centrum zdarzeń (jeśli istnieje już zasobów, które są przesyłania strumieniowego tej kategorii dziennika do tej przestrzeni nazw), a zasada definiuje uprawnienia który przesyłanie strumieniowe mechanizmu ma. Obecnie przesyłania strumieniowego do Centrum zdarzeń wymaga uprawnienia Zarządzanie, wysyłania i nasłuchiwania. Można utworzyć lub zmodyfikować zasady dostępu przestrzeń nazw udostępnionych centra zdarzeń w portalu na karcie Konfiguracja przestrzeni nazw. Aby zaktualizować jednego z tych ustawień diagnostycznych, klient musi mieć uprawnienie ListKey dla reguły autoryzacji usługi Event Hubs. Opcjonalnie można określić nazwę Centrum zdarzeń. Jeśli określisz nazwy Centrum zdarzeń, dzienniki są kierowane do tego Centrum zdarzeń, a nie z koncentratorem nowo utworzonego zdarzenia według kategorii dziennika.
 
 4. Kliknij pozycję **Zapisz**.
@@ -80,6 +87,7 @@ Centra zdarzeń w przestrzeni nazw nie ma w tej samej subskrypcji co zasób emit
 Po kilku chwilach nowe ustawienie jest wyświetlane na liście ustawień dla tego zasobu, a dzienników diagnostycznych są przesyłane strumieniowo do tego Centrum zdarzeń zaraz po wygenerowaniu nowych danych zdarzenia.
 
 ### <a name="via-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
+
 Przesyłania strumieniowego za pośrednictwem [poleceń cmdlet programu PowerShell Azure](insights-powershell-samples.md), można użyć `Set-AzureRmDiagnosticSetting` polecenia cmdlet z następującymi parametrami:
 
 ```powershell
@@ -88,16 +96,29 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizati
 
 Identyfikator reguły autoryzacji Centrum zdarzeń jest ciągiem o następującym formacie: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, na przykład `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Obecnie nie można wybrać nazwę koncentratora określonego zdarzenia przy użyciu programu PowerShell.
 
-### <a name="via-azure-cli"></a>Za pomocą interfejsu wiersza polecenia platformy Azure
-Do przesyłania strumieniowego za pośrednictwem [interfejsu wiersza polecenia Azure](insights-cli-samples.md), można użyć `insights diagnostic set` polecenia w następujący sposób:
+### <a name="via-azure-cli-20"></a>Za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+
+Do przesyłania strumieniowego za pośrednictwem [Azure CLI 2.0](insights-cli-samples.md), można użyć [utworzyć ustawienia diagnostyki az monitora](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) polecenia.
 
 ```azurecli
-azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serviceBusRuleID> --enabled true
+az monitor diagnostic-settings create --name <diagnostic name> \
+    --event-hub <event hub name> \
+    --event-hub-rule <event hub rule ID> \
+    --resource <target resource object ID> \
+    --logs '[
+    {
+        "category": <category name>,
+        "enabled": true
+    }
+    ]'
 ```
 
-Użyj tego samego formatu dla identyfikator reguły autoryzacji Centrum zdarzeń, zgodnie z objaśnieniem dla polecenia Cmdlet programu PowerShell. Obecnie nie można wybrać określonego zdarzenia nazwę Centrum z wiersza polecenia platformy Azure.
+Dodatkowe kategorie można dodać do dzienników diagnostycznych, dodając słowniki do tablicy JSON przekazany jako `--logs` parametru.
+
+`--event-hub-rule` Argument używa tego samego formatu jako identyfikator reguły autoryzacji Centrum zdarzeń, zgodnie z objaśnieniem dla polecenia Cmdlet programu PowerShell.
 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Jak korzystać z danych dziennika z usługi Event Hubs?
+
 Oto przykładowe dane wyjściowe dane z centrów zdarzeń:
 
 ```json
@@ -174,9 +195,10 @@ Oto przykładowe dane wyjściowe dane z centrów zdarzeń:
 Można wyświetlić listę wszystkich dostawców zasobów, które obsługi przesyłania strumieniowego do usługi Event Hubs [tutaj](monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="stream-data-from-compute-resources"></a>Strumień danych z zasoby obliczeniowe
+
 Można również przesyłania strumieniowego dzienników diagnostycznych z zasobów obliczeniowych, przy użyciu agenta Windows Azure Diagnostics. [Znajduje się w artykule](../event-hubs/event-hubs-streaming-azure-diags-data.md) jak to skonfigurować.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Więcej informacji na temat dzienników diagnostycznych platformy Azure](monitoring-overview-of-diagnostic-logs.md)
 * [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-

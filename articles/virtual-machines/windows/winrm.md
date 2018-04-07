@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie dostępu do usługi WinRM dla maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Konfiguracja dostępu do usługi WinRM do użytku z maszyny wirtualnej platformy Azure utworzonych w modelu wdrażania usługi Resource Manager."
+title: Konfigurowanie dostępu do usługi WinRM dla maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Konfiguracja dostępu do usługi WinRM do użytku z maszyny wirtualnej platformy Azure utworzonych w modelu wdrażania usługi Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 2d6533462400bc1d93d0d3b0227769784e2658a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fa82dd4a85ff2e62848df0fdc6006922005a84b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie usługi WinRM dostępu dla maszyn wirtualnych w usłudze Azure Resource Manager
 ## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>Usługa WinRM w programie vs zarządzania usługą Azure usługi Azure Resource Manager
@@ -88,7 +88,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 Dostawcy zasobów Microsoft.Compute musi mieć adres URL do klucza tajnego w magazynie kluczy podczas inicjowania obsługi administracyjnej maszyny Wirtualnej. Dzięki temu dostawcy zasobów Microsoft.Compute pobrać klucz tajny i utworzyć równoważne certyfikatu na maszynie Wirtualnej.
 
 > [!NOTE]
-> Adres URL klucz tajny musi obejmować także wersji. Przykładowy adres URL wygląda jak poniżej https://contosovault.vault.azure.net:443/klucze tajne/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Adres URL klucz tajny musi obejmować także wersji. Przykładowy adres URL wygląda jak poniżej https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 > 
 > 
 
@@ -157,7 +157,7 @@ Zanim będzie można połączyć się z maszyną Wirtualną, należy się upewni
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Konieczne może być upewnij się, że Usługa WinRM jest uruchomiona, jeśli powyższe czynności zakończą się niepowodzeniem. Możesz zrobić tego za pomocą`Get-Service WinRM`
+> Konieczne może być upewnij się, że Usługa WinRM jest uruchomiona, jeśli powyższe czynności zakończą się niepowodzeniem. Możesz zrobić tego za pomocą `Get-Service WinRM`
 > 
 > 
 

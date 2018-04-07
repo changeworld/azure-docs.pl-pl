@@ -1,20 +1,20 @@
 ---
-title: "Monitorowanie wydajności wiele baz danych Azure SQL w wielodostępnych aplikacji SaaS | Dokumentacja firmy Microsoft"
-description: "Monitorowanie i zarządzanie nimi wydajności bazy danych Azure SQL i pul w wielodostępnych aplikacji SaaS"
-keywords: "samouczek usługi sql database"
+title: Monitorowanie wydajności wiele baz danych Azure SQL w wielodostępnych aplikacji SaaS | Dokumentacja firmy Microsoft
+description: Monitorowanie i zarządzanie nimi wydajności bazy danych Azure SQL i pul w wielodostępnych aplikacji SaaS
+keywords: samouczek usługi sql database
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f76a9f0aa5e68e729c67dad52f6dae4e01fdb56a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie nimi wydajności bazy danych Azure SQL i pul w wielodostępnych aplikacji SaaS
 
@@ -54,7 +54,7 @@ Pul i baz danych w puli, powinny być monitorowane w celu zapewnienia, że te ko
 
 Witryna [Azure Portal](https://portal.azure.com) udostępnia wbudowane funkcje monitorowania i alertów dla większości zasobów. W usłudze SQL Database funkcje monitorowania i zgłaszania alertów są dostępne na poziomie baz danych i pul. Ten wbudowaną funkcję monitorowania i alertów jest określonych zasobów, dlatego jest łatwe w użyciu dla małej liczby zasobów, ale nie jest wygodną podczas pracy z wielu zasobów.
 
-Dla dużych scenariuszy, w którym pracujesz z wielu zasobów, [analizy dzienników (OMS)](saas-dbpertenant-log-analytics.md) mogą być używane. Jest to oddzielne usługa Azure, która udostępnia analityka w porównaniu z emitowany dzienniki diagnostyczne i dane telemetryczne zebrane w obszarze roboczym analizy dzienników. Analiza dzienników może zbierać dane telemetryczne z wielu usług i służyć do wykonywania zapytań i Ustaw alerty.
+Dla dużych scenariuszy, w którym pracujesz z wielu zasobów, [analizy dzienników](saas-dbpertenant-log-analytics.md) mogą być używane. Jest to oddzielne usługa Azure, która udostępnia analityka w porównaniu z emitowany dzienniki diagnostyczne i dane telemetryczne zebrane w obszarze roboczym analizy dzienników. Analiza dzienników może zbierać dane telemetryczne z wielu usług i służyć do wykonywania zapytań i Ustaw alerty.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobierz skrypty aplikacji Wingtip biletów SaaS bazy danych dla dzierżawcy
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Omówienie metryk w Microsoft Azure
 W tym artykule opisano metryki są platformie Microsoft Azure, ich zalety oraz sposób rozpocząć korzystanie z nich.  
@@ -47,7 +47,7 @@ Możesz również:
 
 * Skonfiguruj metrykę **alert regułę, która wyśle powiadomienie, lub przyjmuje automatycznego akcji** po Metryka przekracza wartość progową, która została zdefiniowana. Skalowania automatycznego jest specjalnych działań automatycznych, który pozwala na skalowanie zasobu do spełnienia żądań przychodzących lub obciążenia na witrynie sieci Web lub zasobów obliczeniowych. Można skonfigurować regułę Ustawienia skalowania automatycznego skalowania przychodzący lub wychodzący w oparciu metryki przekroczenia wartości progowej.
 
-* **Trasy** wszystkie metryki usługi Application Insights lub analizy dzienników (OMS), umożliwia błyskawiczne analytics, wyszukiwanie i niestandardowe alerty dla danych metryk z Twoich zasobów. Można również strumienia metryk do Centrum zdarzeń, dzięki któremu można kierować je do usługi Azure Stream Analytics lub niestandardowych aplikacji do analizy w czasie niemal rzeczywistym. Możesz skonfigurować Centrum zdarzeń przesyłania strumieniowego przy użyciu ustawień diagnostycznych.
+* **Trasy** wszystkie metryki usługi Application Insights lub analizy dzienników, umożliwia błyskawiczne analytics, wyszukiwanie i niestandardowe alerty dla danych metryk z Twoich zasobów. Można również strumienia metryk do Centrum zdarzeń, dzięki któremu można kierować je do usługi Azure Stream Analytics lub niestandardowych aplikacji do analizy w czasie niemal rzeczywistym. Możesz skonfigurować Centrum zdarzeń przesyłania strumieniowego przy użyciu ustawień diagnostycznych.
 
 * **Archiwum metryk do magazynu** dłużej okresu przechowywania lub używać ich na potrzeby raportowania w trybie offline. Twoje metryki może kierować do magazynu obiektów Blob platformy Azure, podczas konfigurowania ustawień diagnostycznych dla zasobu.
 
@@ -100,11 +100,18 @@ Metryki Azure są dostępne za pośrednictwem interfejsów API usługi Azure mon
 Bardziej szczegółowy przewodnik przy użyciu interfejsów API REST Monitor Azure, zobacz [interfejsu API REST Monitor Azure wskazówki](monitoring-rest-api-walkthrough.md).
 
 ## <a name="export-metrics"></a>Metryki eksportu
-Można przejść do **ustawień diagnostycznych** bloku w obszarze **Monitor** i wyświetlając opcji eksportu dla metryki. Można wybrać metryki (i dzienników diagnostycznych) być kierowane do magazynu obiektów Blob Azure Event Hubs lub OMS dla przypadków użycia, które zostały wymienione wcześniej w tym artykule.
+Można przejść do **ustawień diagnostycznych** bloku w obszarze **Monitor** i wyświetlając opcji eksportu dla metryki. Można wybrać metryki (i dzienników diagnostycznych) być kierowane do magazynu obiektów Blob Azure Event Hubs, lub do analizy dzienników dla przypadków użycia, które zostały wymienione wcześniej w tym artykule.
 
  ![Opcji eksportu dla metryki w monitorze Azure](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
 Ustawienie to można skonfigurować za pomocą szablonów usługi Resource Manager [PowerShell](insights-powershell-samples.md), [interfejsu wiersza polecenia Azure](insights-cli-samples.md), lub [interfejsów API REST](https://msdn.microsoft.com/library/dn931943.aspx).
+
+> [!NOTE]
+> Wysyłanie metryki wielowymiarowej za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryka z wymiarów są eksportowane jako spłaszczone pojedynczego metryki wymiarów, zagregowane WE wartości wymiaru.
+>
+> *Na przykład*: metryka "Komunikatów przychodzących" w Centrum zdarzeń można przedstawione i wykresie na na poziomie kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych, które Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
+>
+>
 
 ## <a name="take-action-on-metrics"></a>Podejmij działanie metryk
 Aby otrzymywać powiadomienia lub podjąć akcje automatyczne na dane, można skonfigurować reguły alertów lub ustawienia skalowania automatycznego.
@@ -127,7 +134,7 @@ Niektórych zasobów platformy Azure obsługuje skalowanie out lub w wielu wyst�
 ## <a name="learn-about-supported-services-and-metrics"></a>Więcej informacji na temat obsługiwanych usług i metryki
 Można wyświetlić szczegółową listę obsługiwanych usług i ich metryk [Azure Monitor metryki — obsługiwanych metryki na typ zasobu](monitoring-supported-metrics.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Zapoznaj się łącza w tym artykule. Ponadto więcej informacji na temat:  
 
 * [Typowe metryki skalowania automatycznego](insights-autoscale-common-metrics.md)

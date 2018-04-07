@@ -1,19 +1,19 @@
 ---
-title: "Ładowanie danych z pliku CSV do bazy danych SQL Azure (bcp) | Dokumentacja firmy Microsoft"
-description: "Dane niewielkich rozmiarów można importować do usługi Azure SQL Database za pomocą narzędzia bcp."
+title: Ładowanie danych z pliku CSV do bazy danych SQL Azure (bcp) | Dokumentacja firmy Microsoft
+description: Dane niewielkich rozmiarów można importować do usługi Azure SQL Database za pomocą narzędzia bcp.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: c9bc6d2de6647d0ec047a600a52d14ad24ccbae9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8ee8dcfddda01b16f18a14f445a2639cc56ee44d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Ładowanie danych z pliku CSV do usługi Azure SQL Database (pliki proste)
 Dane z pliku CSV można importować do usługi Azure SQL Database za pomocą narzędzia wiersza polecenia bcp.

@@ -1,24 +1,24 @@
 ---
-title: "Zarządzane tożsamości usługi (MSI) dla usługi Azure Active Directory"
-description: "Przegląd zarządzane tożsamości usługi dla zasobów platformy Azure."
+title: Zarządzane tożsamości usługi (MSI) dla usługi Azure Active Directory
+description: Przegląd zarządzane tożsamości usługi dla zasobów platformy Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 2d711d4fa48a1d10d4c37b9591a66e5b746f1ca7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Zarządzane tożsamości usługi (MSI) dla zasobów platformy Azure
 
@@ -38,7 +38,7 @@ Oto przykład działania zarządzane tożsamość usługi z maszyn wirtualnych p
 2. Usługa Azure Resource Manager tworzy nazwy głównej usługi w usłudze Azure AD do reprezentowania tożsamości maszyny wirtualnej. Nazwy głównej usługi jest tworzony w dzierżawie usługi Azure AD, który jest zaufany dla tej subskrypcji.
 3. Usługa Azure Resource Manager konfiguruje szczegóły nazwy głównej usługi w pliku MSI rozszerzenia maszyny Wirtualnej maszyny wirtualnej.  Ten krok obejmuje Konfigurowanie identyfikator klienta i certyfikat używany przez rozszerzenie do uzyskania dostępu do tokenów z usługi Azure AD.
 4. Teraz, nosi nazwę główną usługi tożsamość maszyny Wirtualnej, może zostać przydzielony dostęp do zasobów platformy Azure.  Na przykład jeśli kod wymaga wywołań usługi Azure Resource Manager, następnie należy przypisywanej nazwy głównej usługi maszyny Wirtualnej odpowiednią rolę przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD.  Kod musi wywołać Key Vault, czy udzielić kodu dostępu do określonego hasła lub klucza w magazynie kluczy.
-5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z lokalnego punktu końcowego, który jest obsługiwany przez rozszerzenie maszyny Wirtualnej MSI: http://localhost:50342/oauth2/token.  Parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu = https://management.azure.com/.
+5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z lokalnego punktu końcowego, który jest obsługiwany przez rozszerzenie maszyny Wirtualnej MSI: http://localhost:50342/oauth2/token.  Parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu =https://management.azure.com/.
 6. MSI rozszerzenia maszyny Wirtualnej używa Identyfikatora klienta skonfigurowanego i certyfikatu poproś token dostępu z usługi Azure AD.  Usługi Azure AD zwraca token dostępu tokenu Web JSON (JWT).
 7. Kod wysyła ten token dostępu na wywołanie do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
 
@@ -62,7 +62,7 @@ Spróbuj samouczek zarządzane tożsamość usługi, aby dowiedzieć się więce
 |                    | [Dostęp do usługi Azure tożsamość usługi zarządzanej magazynu za pomocą sygnatury dostępu Współdzielonego z maszyny Wirtualnej systemu Linux](tutorial-linux-vm-access-storage-sas.md) |
 |                    | [Dostęp do zasobu AD innych niż Azure z maszyny Wirtualnej systemu Linux zarządzanych tożsamość usługi i usługi Azure Key Vault](tutorial-linux-vm-access-nonaad.md) |
 | Azure App Service  | [Użyj tożsamości usług zarządzanych przez z usługi aplikacji Azure lub funkcji platformy Azure](/azure/app-service/app-service-managed-service-identity) |
-| Azure — funkcja     | [Użyj tożsamości usług zarządzanych przez z usługi aplikacji Azure lub funkcji platformy Azure](/azure/app-service/app-service-managed-service-identity) |
+| Azure Functions    | [Użyj tożsamości usług zarządzanych przez z usługi aplikacji Azure lub funkcji platformy Azure](/azure/app-service/app-service-managed-service-identity) |
 | Azure Service Bus  | [Tożsamość usługi zarządzanej za pomocą usługi Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md) |
 | Azure Event Hubs   | [Tożsamość usługi zarządzanej za pomocą usługi Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md) |
 
@@ -76,10 +76,12 @@ Następujących usług platformy Azure obsługuje zarządzane tożsamości usłu
 
 | Usługa | Stan | Date | Konfigurowanie | Uzyskaj token |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure Virtual Machines | Wersja zapoznawcza | 2017 września | [Azure portal](qs-configure-portal-windows-vm.md)<br>[Program PowerShell](qs-configure-powershell-windows-vm.md)<br>[Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)<br>[Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[Program PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| Azure App Service | Wersja zapoznawcza | 2017 września | [Azure portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Szablon usługi Azure Resource Manager](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Functions | Wersja zapoznawcza | 2017 września | [Azure portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Szablon usługi Azure Resource Manager](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Data Factory V2 | Wersja zapoznawcza | 2017 listopada | [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[Program PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+| Azure Virtual Machines | Wersja zapoznawcza | 2017 września | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[Program PowerShell](qs-configure-powershell-windows-vm.md)<br>[Interfejs wiersza polecenia platformy Azure](qs-configure-cli-windows-vm.md)<br>[Szablony usługi Azure Resource Manager](qs-configure-template-windows-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[Program PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
+| Azure App Service | Wersja zapoznawcza | 2017 września | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Szablon usługi Azure Resource Manager](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Środowisko Azure Functions<sup>1</sup> | Wersja zapoznawcza | 2017 września | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Szablon usługi Azure Resource Manager](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Data Factory V2 | Wersja zapoznawcza | 2017 listopada | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[Program PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+
+<sup>1</sup> Obsługa usługi azure Functions zapewnia kod użytkownika do korzystania z tożsamości, ale wyzwalaczy i powiązań może nadal wymaga parametrów połączenia.
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>Azure usługi uwierzytelniania pomocy technicznej usługi Azure AD
 
@@ -87,7 +89,7 @@ Następujące usługi obsługi uwierzytelniania usługi Azure AD i zostały prze
 
 | Usługa | Identyfikator zasobu | Stan | Date | Przypisywanie dostępu |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com | Dostępna | 2017 września | [Azure portal](howto-assign-access-portal.md) <br>[Program PowerShell](howto-assign-access-powershell.md) <br>[Interfejs wiersza polecenia platformy Azure](howto-assign-access-CLI.md) |
+| Azure Resource Manager | https://management.azure.com | Dostępna | 2017 września | [Azure Portal](howto-assign-access-portal.md) <br>[Program PowerShell](howto-assign-access-powershell.md) <br>[Interfejs wiersza polecenia platformy Azure](howto-assign-access-CLI.md) |
 | W usłudze Azure Key Vault | https://vault.azure.net | Dostępna | 2017 września | |
 | Azure Data Lake | https://datalake.azure.net | Dostępna | 2017 września | |
 | Azure SQL | https://database.windows.net | Dostępna | 2017 października | |

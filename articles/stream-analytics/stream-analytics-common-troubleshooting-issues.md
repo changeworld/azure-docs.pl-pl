@@ -1,24 +1,19 @@
 ---
-title: "Rozwiązywanie problemów z źle sformułowane zdarzenia wejściowe w Azure Stream Analytics | Dokumentacja firmy Microsoft"
-description: "Jak sprawdzić, które zdarzenie w moich danych wejściowych danych powoduje problem w zadaniu Stream Analytics"
-keywords: 
-documentationcenter: 
+title: Rozwiązywanie problemów z źle sformułowane zdarzenia wejściowe w Azure Stream Analytics
+description: Jak sprawdzić, które zdarzenie w moich danych wejściowych danych powoduje problem w zadaniu Stream Analytics
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
 manager: Kfile
-ms.assetid: 
+ms.author: jasonh
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: sngun
-ms.openlocfilehash: 6b6c154568fe97b7495ae70dc162dc475169afea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fcbb03b4d9aed797cf99c374661c743d39f81276
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Typowe problemy Stream Analytics i kroki rozwiązywania problemów z
 
@@ -39,7 +34,7 @@ Można włączyć dzienniki diagnostyczne, aby wyświetlić szczegóły ostrzeż
 
 3. Aby uzyskać dane JSON, który ma niepoprawny format, uruchom kod CheckMalformedEvents.cs, możesz uzyskać it z [repozytorium GitHub przykłady](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ten kod odczytuje partycji identyfikator, przesunięcie i wyświetla dane, które znajduje się w tym przesunięcia. 
 
-4. Po przeczytaniu dane można analizować i Popraw format serializacji. 
+4. Po odczytaniu danych możesz przeanalizować i poprawić format serializacji. 
 
 ## <a name="handling-duplicate-records-when-using-azure-sql-database-as-output-for-a-stream-analytics-job"></a>Obsługa zduplikowanych rekordów, korzystając z bazy danych SQL Azure jako dane wyjściowe zadania usługi analiza strumienia
 

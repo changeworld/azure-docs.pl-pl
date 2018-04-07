@@ -1,11 +1,11 @@
 ---
 title: Optymalizacja sieci maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się więcej wskazówki optymalizacji, aby upewnić się, że po skonfigurowaniu sieci maszyny Wirtualnej systemu Linux, aby uzyskać optymalną wydajność na platformie Azure"
+description: Dowiedz się więcej wskazówki optymalizacji, aby upewnić się, że po skonfigurowaniu sieci maszyny Wirtualnej systemu Linux, aby uzyskać optymalną wydajność na platformie Azure
 keywords: maszyny wirtualnej systemu Linux, maszyny wirtualnej systemu linux, ubuntu maszyny wirtualnej
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: d3ee98253a69580e5ecafb4e117ef93f7c981416
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenie maszyny wirtualnej systemu Linux (VM) to łatwo zrobić z wiersza polecenia lub w portalu. W tym samouczku przedstawiono sposób zapewnienia skonfigurowaniu go w celu zoptymalizowania wydajności jej na platformie Microsoft Azure. W tym temacie korzysta z maszyny Wirtualnej systemu Ubuntu Server, ale można również utworzyć maszynę wirtualną systemu Linux przy użyciu [obrazów jako szablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -124,7 +124,7 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Przy użyciu oprogramowania RAID w celu osiągnięcia wyższej I / Ops
-Jeśli obciążeń wymagają IOps więcej niż jednego dysku, należy użyć konfiguracji RAID oprogramowania z wielu dysków. Ponieważ Azure wykonuje już odporności dysków w warstwie lokalnej sieci szkieletowej, uzyskania najwyższej wydajności z konfiguracji rozkładanie RAID-0.  Udostępnić i utworzyć dyski w środowisku platformy Azure i dołącz je do maszyny Wirtualnej systemu Linux przed partycjonowanie, formatowania i instalowanie dysków.  Więcej informacji na temat konfigurowania ustawień RAID oprogramowania na maszynie Wirtualnej systemu Linux na platformie azure można znaleźć w  **[Konfigurowanie RAID oprogramowania w systemie Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**  dokumentu.
+Jeśli obciążeń wymagają IOps więcej niż jednego dysku, należy użyć konfiguracji RAID oprogramowania z wielu dysków. Ponieważ Azure wykonuje już odporności dysków w warstwie lokalnej sieci szkieletowej, uzyskania najwyższej wydajności z konfiguracji rozkładanie RAID-0.  Udostępnić i utworzyć dyski w środowisku platformy Azure i dołącz je do maszyny Wirtualnej systemu Linux przed partycjonowanie, formatowania i instalowanie dysków.  Więcej informacji na temat konfigurowania ustawień RAID oprogramowania na maszynie Wirtualnej systemu Linux na platformie azure można znaleźć w **[Konfigurowanie RAID oprogramowania w systemie Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** dokumentu.
 
 ## <a name="next-steps"></a>Następne kroki
 Należy pamiętać, jak z wszystkich dyskusji optymalizacji, należy przeprowadzić testy przed i po każdej zmianie do mierzenia wpływ ma zmiana.  Optymalizacja jest proces krok po kroku, który ma różne wyniki na różnych komputerach w danym środowisku.  Co działa w przypadku jednej konfiguracji mogą nie działać w innym osobom.

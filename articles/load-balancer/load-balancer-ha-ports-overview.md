@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6e9dd09558a3485629d5b70dd8b68b292427b18
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-availability-ports-overview"></a>Omówienie portów wysokiej dostępności
 
@@ -72,20 +72,20 @@ Ta konfiguracja nie zezwala na innych równoważenia obciążenia reguły konfig
 
 Można jednak skonfigurować publicznego standardowego modułu równoważenia obciążenia dla wystąpień wewnętrznej bazy danych oprócz tej reguły HA portów.
 
-## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Jeden zmiennoprzecinkowych (bezpośredniego zwrotu serwera) HA portów IP konfigurację jednej wewnętrznego modułu równoważenia obciążenia standardowego
+### <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Jeden zmiennoprzecinkowych (bezpośredniego zwrotu serwera) HA portów IP konfigurację jednej wewnętrznego modułu równoważenia obciążenia standardowego
 
 Podobnie można skonfigurować przez moduł równoważenia obciążenia, aby użyć reguły z równoważeniem obciążenia **HA portu** z jednego serwera sieci Web i **pływający adres IP** ustawioną **włączone**. 
 
 Ta konfiguracja umożliwia dodanie więcej przestawne obciążenia IP równoważenia reguł i / lub publiczny moduł równoważenia obciążenia. Jednak nie można używać bez pływającego adresu IP HA portu boad równoważenia konfiguracji na podstawie tej konfiguracji.
 
-## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>Wiele konfiguracji portów HA wewnętrznego modułu równoważenia obciążenia standardowego
+### <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>Wiele konfiguracji portów HA wewnętrznego modułu równoważenia obciążenia standardowego
 
 Jeśli dany scenariusz wymaga, aby skonfigurować więcej niż jeden frontends portu wysokiej dostępności dla tej samej puli wewnętrznej bazy danych, można osiągnąć to przez: 
 - Konfigurowanie więcej niż jeden frontonu prywatnych adresów IP, do jednego zasobu wewnętrznego modułu równoważenia obciążenia standardowego.
 - Konfigurowanie reguł, w którym każda reguła ma jeden równoważenia obciążenia wielu frontonu unikatowy adres IP jest zaznaczone.
 - Wybierz **HA porty** opcji i ustaw **pływający adres IP** do **włączone** dla wszystkich reguł równoważenia obciążenia.
 
-## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>Wewnętrzny moduł równoważenia obciążenia z portów HA & publiczny moduł równoważenia obciążenia na tego samego wystąpienia wewnętrznej bazy danych
+### <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>Wewnętrzny moduł równoważenia obciążenia z portów HA & publiczny moduł równoważenia obciążenia na tego samego wystąpienia wewnętrznej bazy danych
 
 Można skonfigurować **jeden** publicznego zasobów standardowy moduł równoważenia obciążenia dla zasobów w wewnętrznej bazie danych wraz z jednego wewnętrznego standardowego modułu równoważenia obciążenia z portami wysokiej dostępności.
 

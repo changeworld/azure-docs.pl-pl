@@ -1,11 +1,11 @@
 ---
-title: "Utwórz węzłem głównym HPC Pack w maszynie Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać portalu Azure i modelu wdrażania usługi Resource Manager można utworzyć węzła głównego Microsoft HPC Pack 2012 R2 w maszynie Wirtualnej platformy Azure."
+title: Utwórz węzłem głównym HPC Pack w maszynie Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać portalu Azure i modelu wdrażania usługi Resource Manager można utworzyć węzła głównego Microsoft HPC Pack 2012 R2 w maszynie Wirtualnej platformy Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: e6a13eaf-9124-47b4-8d75-2bc4672b8f21
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: b2bb9caf82a580dc5f67ea0b0b1c2e9a46363e9c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: acd4cd44dd35a5b1755d9456f683076567d62165
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Tworzenie węzła głównego klastra pakietu HPC Pack na maszynie wirtualnej platformy Azure przy użyciu obrazu portalu Marketplace
 Użyj [obraz maszyny wirtualnej Microsoft HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) z portalu Azure Marketplace i portalu Azure, można utworzyć węzła głównego klastra HPC. Tego obrazu maszyny Wirtualnej programu HPC Pack jest oparta na systemie Windows Server 2012 R2 Datacenter z preinstalowanym HPC Pack 2012 R2 Update 3. Użyj tego węzła głównego do weryfikacji koncepcji wdrożenia pakietu HPC na platformie Azure. Następnie można dodać węzłów obliczeniowych do klastra do uruchamiania obciążeń HPC.
@@ -73,7 +73,7 @@ Poniżej przedstawiono ogólne kroki, aby utworzyć maszyny Wirtualnej platformy
    
     Dla węzła głównego dodatkowe opcje konfiguracji, wpisz `get-help HPCHNPrepare.ps1`.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Teraz możesz pracować z węzła głównego klastra HPC Pack. Na przykład, uruchom Menedżera klastra HPC i ukończyć [listy zadań do wykonania wdrożenia](https://technet.microsoft.com/library/jj884141.aspx).
 * Jeśli chcesz zwiększyć klastra obliczeniowego pojemności na żądanie, Dodaj [Azure serii węzłów](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) w usłudze w chmurze. 
 * Spróbuj uruchomić test obciążenia w klastrze. Na przykład zobacz HPC Pack [Wprowadzenie — przewodnik](https://technet.microsoft.com/library/jj884144).

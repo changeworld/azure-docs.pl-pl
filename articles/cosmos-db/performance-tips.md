@@ -3,9 +3,8 @@ title: Azure porady dotyczące wydajności rozwiązania Cosmos DB dla programu .
 description: Dowiedz się więcej opcji konfiguracji klienta w celu poprawy wydajności bazy danych Azure DB rozwiązania Cosmos
 keywords: jak poprawić wydajność bazy danych
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
-ms.author: mimig
-ms.openlocfilehash: 6b1817a7539cc7bac72b8c90cdfb99da1882660e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: sngun
+ms.openlocfilehash: 51674f80e918f28febf0e854caa72c0da43c589c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java (asynchroniczny)](performance-tips-async-java.md)

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: b5d6ffc9aa13e6aaf948028fabe3087f8dea2a1d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 178eba46e0d128c8d93f2ba664a4a0916889fbbd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>Bazy danych (Dtu). jednostki transakcji i jednostek transakcji elastycznej bazy danych (Edtu)
 W tym artykule wyjaśniono jednostki DTU (Database Transaction Unit) i jednostki eDTU (elastic Database Transaction Unit) oraz skutki osiągnięcia maksymalnej liczby jednostek DTU lub eDTU.  

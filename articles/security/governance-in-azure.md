@@ -1,12 +1,12 @@
 ---
-title: "Zarządzanie na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa."
+title: Zarządzanie na platformie Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 875b78f6af330aea3333b045ee72e9632e9aa8a6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="governance-in-azure"></a>Zarządzanie w systemie Azure
+# <a name="governance-in-azure"></a>Ład na platformie Azure
 
 Wiemy, że zabezpieczenia są zadania, co w chmurze i jak ważne jest aby znaleźć dokładne i aktualne informacje na temat zabezpieczeń platformy Azure. Najważniejsze przyczyny na potrzeby aplikacji i usług Azure ma korzystać z jego szerokiej gamy narzędzi zabezpieczeń i możliwości. Te narzędzia i funkcje pomocy umożliwiają tworzenie bezpiecznych rozwiązań na bezpiecznej platformie Azure.
 
@@ -199,7 +199,7 @@ W 2014 r. Azure wprowadzono Menedżera zasobów dodane pojęcie grupę zasobów.
 
 Menedżer zasobów pozwala na poddane zasobów znaczący grup zarządzania, koligacji rozliczeń lub fizycznych. Jak wspomniano wcześniej, platforma Azure ma dwa modele wdrażania. W starszych [klasycznego modelu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model), podstawową jednostką zarządzania został subskrypcji. Było trudne do podziału zasobów w ramach subskrypcji, które doprowadziło do utworzenia dużą liczbę subskrypcji. Z modelu Resource Manager widzieliśmy wprowadzenie grup zasobów.
 
-Grupa zasobów jest kontenerem, który zawiera powiązane zasoby Azure rozwiązania. [Grupa zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) mogą zawierać wszystkich zasobów dla rozwiązania lub tylko tych zasobów, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji.
+Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. [Grupa zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) mogą zawierać wszystkich zasobów dla rozwiązania lub tylko tych zasobów, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji.
 
 Aby uzyskać zalecenia dotyczące szablonów, zobacz [Best practices for creating Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) (Najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager).
 
@@ -379,7 +379,7 @@ Monitorowanie, rejestrowanie i inspekcja stanowią podstawę dla śledzenia i zr
 
 Zabezpieczeń platformy Azure zarządzania z usługi AD DS obiektów zasad grupy do kontrolowania wszystkich administratorów Windows interfejsów, takich jak udostępnianie plików. Uwzględnij stacje robocze używane do zarządzania w procesach inspekcji, monitorowania i rejestrowania. Śledź dostęp i używanie przez wszystkich administratorów i deweloperów.
 
-### <a name="azure-security-center"></a>Centrum zabezpieczeń Azure
+### <a name="azure-security-center"></a>Azure Security Center
 
 [Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro) centralnej Wyświetla stan zabezpieczeń zasobów w subskrypcji i zawiera zalecenia, które ułatwiają ochronę zasobów ze złamanymi zabezpieczeniami. Bardziej szczegółowe zasady (na przykład stosowania zasad do określonych grup zasobów, które umożliwiają firmie dostosować ich postawie ryzyko, które są one adresowania) można ją włączyć.
 
@@ -410,33 +410,33 @@ Centrum zabezpieczeń Azure monitorowanie następujących zasobów platformy Azu
 
 - Partnerskich rozwiązań zintegrowanych z subskrypcją platformy Azure, takich jak Zapora aplikacji sieci web na maszynach wirtualnych i na [środowiska usługi aplikacji](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme).
 
-### <a name="operations-management-suite"></a>Operations Management Suite
+### <a name="log-analytics"></a>Log Analytics
 
-Bezpieczeństwo informacji OMS oprogramowania rozwoju i usługi zespołu i [program ładu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) obsługuje jej wymagania biznesowe i stosuje przepisom eksportowym obowiązującym zgodnie z opisem w [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) i [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak OMS ustanowić wymagania dotyczące zabezpieczeń, identyfikuje kontroli zabezpieczeń zarządza i monitoruje ryzyka są także opisane istnieje. Co rok, możemy przeglądu zasady, normy, procedury i wskazówek.
+Bezpieczeństwo informacji analizy dzienników oprogramowania rozwoju i usługi zespołu i [program ładu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) obsługuje jej wymagania biznesowe i stosuje przepisom eksportowym obowiązującym zgodnie z opisem w [zaufania usługi Microsoft Azure Centrum](https://azure.microsoft.com/support/trust-center/) i [zgodności Centrum zaufania Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak analizy dzienników ustanowić wymagania dotyczące zabezpieczeń, identyfikuje kontroli zabezpieczeń zarządza i monitoruje ryzyka są także opisane istnieje. Co rok, możemy przeglądu zasady, normy, procedury i wskazówek.
 
-Każdego członka zespołu programowanie OMS odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. Wewnętrznie używamy system kontroli wersji dla rozwoju oprogramowania. Każdy projekt oprogramowania jest chroniona przez system kontroli wersji.
+Każdego członka zespołu programowanie analizy dzienników odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. Wewnętrznie używamy system kontroli wersji dla rozwoju oprogramowania. Każdy projekt oprogramowania jest chroniona przez system kontroli wersji.
 
-Firma Microsoft ma zabezpieczeń i zgodności zespołu nadzoruje i ocenia wszystkich usług firmy Microsoft. Zabezpieczenia informatyków uzupełnić zespołu i nie są one powiązane z działów engineering, które opracowanie OMS. Biuro zabezpieczeń ma swoje własne łańcuch zarządzania i przeprowadzanie niezależnych ocen produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
+Firma Microsoft ma zabezpieczeń i zgodności zespołu nadzoruje i ocenia wszystkich usług firmy Microsoft. Zabezpieczenia informatyków uzupełnić zespołu i nie są one powiązane z działów engineering, które opracowanie analizy dzienników. Biuro zabezpieczeń ma swoje własne łańcuch zarządzania i przeprowadzanie niezależnych ocen produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
 
-Pakiet Operations Management Suite (OMS) to zbiór usług zarządzania zaprojektowanych od podstaw w chmurze. Składniki pakietu OMS zamiast wdrażania i zarządzania nimi w lokalnych zasobach, całkowicie znajdują się na platformie Azure. Konfiguracja jest ograniczona do minimalnego zakresu, a pracę można rozpocząć dosłownie w ciągu kilku minut.
+Platforma Azure udostępnia kolekcję usług zarządzania, które zostały zaprojektowane w chmurze od początku. Zamiast wdrażania i zarządzania nimi w lokalnych zasobach, te składniki znajdują się wyłącznie na platformie Azure. Konfiguracja jest ograniczona do minimalnego zakresu, a pracę można rozpocząć dosłownie w ciągu kilku minut.
 
 ![Program Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-Usługi pakietu OMS działają w chmurze, ale to nie oznacza, że nie mogą efektywnie zarządzać środowiskiem lokalnym.
+Wyłącznie z powodu analizy dzienników usługi uruchamiane w chmurze nie oznacza, że nie można efektywnie zarządzać w lokalnym środowisku.
 
 Umieść agenta w dowolnym systemie Windows lub komputera z systemem Linux w centrum danych która będzie wysyłać dane do analizy dzienników, w którym można przeprowadzić analizę oraz innych danych zebranych z chmury, lub na lokalne usługi. Użyj Azure Backup i Azure Site Recovery, aby korzystać z chmury na potrzeby tworzenia kopii zapasowej i wysoka dostępność dla zasobów lokalnych.
 
 Elementy runbook w chmurze zwykle nie mają dostępu do zasobów lokalnych, ale możesz też zainstalować na komputerach agenta, który będzie hostować elementy runbook w centrum danych. Po uruchomieniu elementu runbook wystarczy określić, czy ma on działać w chmurze czy w lokalnym procesie roboczym.
 
-Podstawowe funkcje pakietu OMS są oferowane jako zbiór usług działających na platformie Azure. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania.
+Do podstawowych funkcji analizy dzienników są udostępniane przez zestaw usług, które działają na platformie Azure. Każda usługa udostępnia określoną funkcję zarządzania. Możesz łączyć usługi, aby realizować różne scenariusze zarządzania.
 
 ![Program Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-Azure Operations manager rozszerza jego funkcje zapewniając rozwiązania do zarządzania. [Rozwiązania do zarządzania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) opakowaniach jednostkowych zestawów logiki implementujących scenariusz zarządzania, wykorzystując co najmniej jedną usługę OMS.
+Azure Operations manager rozszerza jego funkcje zapewniając rozwiązania do zarządzania. [Rozwiązania do zarządzania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) opakowaniach jednostkowych zestawów logiki implementujących scenariusz zarządzania, wykorzystując co najmniej jednej usługi zarządzania.
 
 ![Zarządzanie operacji systemu Azure](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-Dostępne są różne rozwiązania oferowane przez firmę Microsoft i partnerów, które można łatwo dodać do subskrypcji platformy Azure w celu zwiększenia wartości inwestycji w pakiet OMS.
+Różnych rozwiązaniach dostępnych firmy Microsoft i partnerów, możesz łatwo można dodać do subskrypcji platformy Azure, aby zwiększyć wartość inwestycji w usługę Analiza dzienników.
 
 Przez partnera możesz utworzyć rozwiązań do obsługi aplikacji i usług i udostępniania ich użytkownikom za pośrednictwem portalu Azure Marketplace lub Szybki Start szablonów.
 
@@ -455,7 +455,7 @@ Alerty są dostępne w różnych usługach, w tym:
 >[!Note]
 > Zobacz [ustawić alertów w usłudze Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) i [monitorowanie dostępności i czas odpowiedzi dla wszystkich witryn sieci Web](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
 
-- Analizy dzienników (Operations Management Suite): Umożliwia routing aktywności i dzienników diagnostycznych do analizy dzienników. Operations Management Suite umożliwia metryki, log oraz inne typy alertów.
+- Analiza dzienników: Włącza routing aktywności i dzienników diagnostycznych do analizy dzienników i umożliwia metryki, log oraz inne typy alertów.
 
 >[!Note]
 > Aby uzyskać więcej informacji, zobacz alerty w [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts).
@@ -484,7 +484,7 @@ Poniżej przedstawiono główne narzędzia:
 - **System Center Operations Manager (SCOM)** jest do zarządzania i monitorowania instalacji dużych chmury. Może być już znasz go jako narzędzia do zarządzania lokalnymi chmury na podstawie funkcji Hyper-V i Windows Server, ale można również zintegrować z i zarządzanie aplikacjami platformy Azure. Między innymi może instalować usługi Application Insights na istniejące aplikacje na żywo. Jeśli aplikacja przestanie działać, określa w sekundach.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Najlepsze rozwiązania dotyczące tworzenia szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices).
 

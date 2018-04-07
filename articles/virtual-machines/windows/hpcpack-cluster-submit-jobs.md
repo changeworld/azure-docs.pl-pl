@@ -1,11 +1,11 @@
 ---
-title: "Przesyłanie zadań HPC Pack klastra na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować na komputerze lokalnym do przesyłania zadań do klastra HPC Pack na platformie Azure"
+title: Przesyłanie zadań HPC Pack klastra na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować na komputerze lokalnym do przesyłania zadań do klastra HPC Pack na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management,hpc-pack
 ms.assetid: 78f6833c-4aa6-4b3e-be71-97201abb4721
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: d5953f1e1dd2deb4d871bd67352a6a5b2ae13dbf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Przesyłanie zadań HPC z lokalnego komputera do klastra pakietu HPC Pack wdrożonego na platformie Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,7 +29,7 @@ Konfigurowanie komputera klienckiego lokalnymi umożliwiają przesyłanie zadań
 ![Przesyłanie zadań do klastra w systemie Azure][jobsubmit]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Węzłem głównym HPC Pack wdrożony w maszynie Wirtualnej platformy Azure** -zalecane jest użycie automatycznych narzędzi takich jak [szablonie Szybki Start Azure](https://azure.microsoft.com/documentation/templates/) lub [skrypt programu PowerShell Azure](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) wdrażania węzła głównego i klaster. Należy nazwy DNS węzła głównego i poświadczenia administratora klastra, aby wykonać kroki opisane w tym artykule.
+* **Węzłem głównym HPC Pack wdrożony w maszynie Wirtualnej platformy Azure** -zalecane jest użycie automatycznych narzędzi takich jak [szablonie Szybki Start Azure](https://azure.microsoft.com/documentation/templates/) lub [skrypt programu PowerShell Azure](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) wdrażanie węzła głównego i klastra . Należy nazwy DNS węzła głównego i poświadczenia administratora klastra, aby wykonać kroki opisane w tym artykule.
 * **Komputer kliencki** -wymagają systemu Windows lub Windows Server komputera klienckiego, który można uruchomić narzędzia klienta HPC Pack (zobacz [wymagania systemowe](https://technet.microsoft.com/library/dn535781.aspx)). Jeśli chcesz użyć portalu internetowego HPC Pack lub interfejsu API REST do przesyłania zadań, można użyć dowolnego komputera klienckiego wybranych przez użytkownika.
 * **Nośnik instalacyjny HPC Pack** — Aby zainstalować narzędzia HPC Pack klienta pakietu instalacyjnego wolnego do najnowszej wersji HPC Pack (HPC Pack 2012 R2) jest niedostępna z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Upewnij się, pobrania tej samej wersji pakietu HPC, który jest zainstalowany w węźle głównym maszyny Wirtualnej.
 
@@ -167,7 +167,7 @@ Aby sprawdzić konfigurację, spróbuj uruchomionych zadań w klastrze na platfo
 5. Kliknij przycisk **przesłać**. Po wyświetleniu monitu podaj poświadczenia domeny administratora klastra HPC. Zadanie, a identyfikator zadania są wyświetlane na **Moje zadania** strony.
 6. Aby wyświetlić wyniki zadania, który zostanie przesłany, kliknij Identyfikatora zadania, a następnie kliknij **zadania widoku** do wyświetlania danych wyjściowych polecenia (w obszarze **dane wyjściowe**).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Istnieje także możliwość przesyłania zadań do klastra platformy Azure z [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
 * Jeśli chcesz przesłać zadań klastra z klientów systemu Linux, zobacz próbki Python w [HPC Pack 2012 R2 SDK oraz przykładowy kod](https://www.microsoft.com/download/details.aspx?id=41633).
 

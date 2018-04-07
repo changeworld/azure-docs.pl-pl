@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 177bc05eea3aa05231c71a42950fa622b68afc53
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zapisu klawisz skrótu dla wdrożenia SAP
 Azure akceleratora zapisu jest funkcje, które jest pierwsze wprowadzanie dla maszyn wirtualnych, M serii wyłącznie. Accelerator zapisu Azure nie jest dostępna z żadnych innych maszyn wirtualnych serii na platformie Azure, z wyjątkiem serii M. Jako nazwa stany, celem funkcji jest zwiększyć czas oczekiwania operacji We/Wy zapisu w usłudze Azure Premium Storage. 
@@ -55,15 +55,16 @@ Istnieją ograniczenia Azure Premium magazynu wirtualne dyski twarde dla maszyny
 > Aby włączyć Azure zapisu akceleratora do istniejącego dysku Azure, który nie jest częścią kompilacji woluminu poza wiele dysków o dysk systemu Windows lub menedżerów wolumin miejsca do magazynowania systemu Windows, skalowalnych w poziomie systemu Windows serwera plików (SOFS), Linux LVM albo MDADM, jest obciążenie, uzyskiwanie dostępu Dysku platformy Azure musi być wyłączony. Aplikacje baz danych przy użyciu dysku platformy Azure musi zostać zamknięta.
 
 > [!IMPORTANT]
-> Włączenie zapisu akceleratora dla dysku systemu operacyjnego Azure maszyny wirtualnej spowoduje ponowny rozruch maszyny Wirtualnej. 
+> Włączanie zapisu akceleratora dla dysku systemu operacyjnego maszyny Wirtualnej Azure maszyny wirtualnej zostanie ponowny rozruch maszyny Wirtualnej. 
 
 Włączanie akceleratora zapisu Azure działających dysków, nie powinna być niezbędne do programu SAP związane z konfiguracji maszyny Wirtualnej
 
 ### <a name="restrictions-when-using-azure-write-accelerator"></a>Ograniczenia, korzystając z akceleratora zapisu Azure
 W przypadku używania Azure akceleratora zapisu dla dysków Azure/VHD, następujące ograniczenia:
 
-- Buforowanie dysku Premium musi być ustawiona na "Brak". Wszystkie tryby buforowania nie są obsługiwane.
+- Buforowanie dysku Premium musi być ustawiona na "None" lub "Tylko do odczytu". Wszystkie tryby buforowania nie są obsługiwane.
 - Migawki na dysku zapisu włączone klawiszy skrótów nie jest jeszcze obsługiwany. To ograniczenie blokuje możliwość usługi Kopia zapasowa Azure wykonywania spójna migawka aplikacji wszystkich dysków maszyny wirtualnej.
+- Tylko mniejszych we/wy trwa przyspieszonego ścieżki. Obciążenia pracą sytuacji, w którym danych otrzymuje zbiorczego załadowany lub w przypadku gdy buforów dziennika transakcji z innego systemu DBMS są wypełnione w większym stopniu przed pobierania utrwalone w magazynie, istnieje prawdopodobieństwo są zapisywane w operacji We/Wy dysku nie podejmuje przyspieszonego ścieżki.
 
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Włączanie akceleratora zapisu na konkretnym dysku
@@ -290,7 +291,7 @@ Dane wyjściowe może wyglądać jak:
 
 ```
 
-Następnym krokiem jest, aby zaktualizować plik JSON i włączyć akceleratora zapisu na dysku o nazwie "log1". Można to zrobić przez dodanie tego atrybutu w pliku JSON po wpisu pamięci podręcznej dysku. 
+Następnym krokiem jest, aby zaktualizować plik JSON i włączyć akceleratora zapisu na dysku o nazwie "log1". Ten krok można osiągnąć przez dodanie tego atrybutu w pliku JSON po wpisu pamięci podręcznej dysku. 
 
 ```
         {

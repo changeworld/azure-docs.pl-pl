@@ -1,6 +1,6 @@
 ---
 title: Analiza dzienników aplikacji korzystać z bazy danych SQL wielodostępnym | Dokumentacja firmy Microsoft
-description: Konfigurowanie i używanie wielodostępnych aplikacji SaaS bazy danych SQL Azure Log Analytics (Operations Management Suite)
+description: Konfigurowanie i używanie analizy dzienników wielodostępnych aplikacji SaaS bazy danych SQL Azure
 keywords: samouczek usługi sql database
 services: sql-database
 author: stevestein
@@ -8,23 +8,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 38a849ca5f4a767a4b9d9b9b86549e89a8217a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 285b8d0acc8a6cbe1a6441a4aabf372de204309e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="set-up-and-use-log-analytics-operations-management-suite-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie analizy dzienników (Operations Management Suite) z wielodostępnych aplikacji SaaS bazy danych SQL
+# <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie analizy dzienników wielodostępnych aplikacji SaaS bazy danych SQL
 
-W tym samouczku, konfigurowania i używania usługi Analiza dzienników Azure ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)) do monitorowania pule elastyczne i baz danych. W tym samouczku opiera się na [Samouczek zarządzania i monitorowania wydajności](saas-dbpertenant-performance-monitoring.md). Widoczny jest sposób rozszerzyć monitorowanie za pomocą analizy dzienników i alertów dostępne w portalu Azure. Analiza dzienników obsługuje monitorowania tysiące pule elastyczne i setkami tysięcy baz danych. Analiza dzienników udostępnia jedno rozwiązanie monitorowania, które można zintegrować monitorowanie różnych aplikacji i usług Azure w wielu subskrypcji platformy Azure.
+W tym samouczku, konfigurowania i używania Azure [analizy dzienników](/azure/log-analytics/log-analytics-overview) monitorowania pule elastyczne i baz danych. W tym samouczku opiera się na [Samouczek zarządzania i monitorowania wydajności](saas-dbpertenant-performance-monitoring.md). Widoczny jest sposób rozszerzyć monitorowanie za pomocą analizy dzienników i alertów dostępne w portalu Azure. Analiza dzienników obsługuje monitorowania tysiące pule elastyczne i setkami tysięcy baz danych. Analiza dzienników udostępnia jedno rozwiązanie monitorowania, które można zintegrować monitorowanie różnych aplikacji i usług Azure w wielu subskrypcji platformy Azure.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Instalowanie i konfigurowanie analizy dzienników (Operations Management Suite).
+> * Instalowanie i konfigurowanie analizy dzienników.
 > * Umożliwia monitorowanie pul i bazy danych analizy dzienników.
 
 Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie następujących wymagań wstępnych:
@@ -34,11 +34,11 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 Zobacz [Samouczek zarządzania i monitorowania wydajności](saas-dbpertenant-performance-monitoring.md) omówienie scenariuszy SaaS, wzorców i ich wpływ na wymagania dotyczące rozwiązanie monitorowania.
 
-## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite"></a>Monitorowanie i zarządzanie nimi wydajność puli bazy danych i elastyczna z analizy dzienników lub Operations Management Suite
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics"></a>Monitorowanie i zarządzanie nimi wydajność puli bazy danych i elastyczna z analizy dzienników
 
 Baza danych SQL Azure monitorowanie i alerty jest dostępna dla baz danych i pul w portalu Azure. Ten wbudowaną funkcję monitorowania i alertów jest wygodne, ale jest również określonych zasobów. Oznacza to, że mniej dobrze nadaje się do monitorowania duże instalacje lub zapewnienia ujednoliconego podglądu całej zasobów i subskrypcje.
 
-W przypadku dużych scenariuszy analizy dzienników służy do monitorowania oraz alertów. Analiza dzienników jest osobnym usługa Azure, która umożliwia analytics przez dzienniki diagnostyczne i dane telemetryczne, które są zbierane w obszarze roboczym z potencjalnie wiele usług. Analiza dzienników udostępnia wbudowaną kwerendę narzędzia wizualizacji języka i danych, które umożliwiają analizy danych operacyjnych. Rozwiązania analizy SQL zawiera kilka wstępnie zdefiniowanych puli elastycznej i bazy danych monitorowania i alertów widoków i zapytań. Operations Management Suite udostępnia również projektanta widok niestandardowy.
+W przypadku dużych scenariuszy analizy dzienników służy do monitorowania oraz alertów. Analiza dzienników jest osobnym usługa Azure, która umożliwia analytics przez dzienniki diagnostyczne i dane telemetryczne, które są zbierane w obszarze roboczym z potencjalnie wiele usług. Analiza dzienników udostępnia wbudowaną kwerendę narzędzia wizualizacji języka i danych, które umożliwiają analizy danych operacyjnych. Rozwiązania analizy SQL zawiera kilka wstępnie zdefiniowanych puli elastycznej i bazy danych monitorowania i alertów widoków i zapytań. Analiza dzienników także projektanta widok niestandardowy.
 
 Rozwiązań analitycznych dziennika obszarów roboczych i analiza Otwórz w portalu Azure i usługi Operations Management Suite. Azure portal to nowsza punktu dostępu, ale może być za portal usługi Operations Management Suite w niektórych obszarach.
 
@@ -129,9 +129,9 @@ W tym ćwiczeniu Otwórz analizy dzienników i portalu usługi Operations Manage
 
 W portalu usługi Operations Management Suite można eksplorować dane dziennika i metryki w obszarze roboczym dalej. 
 
-Monitorowanie i alerty analizy dzienników i Operations Management Suite są oparte na zapytania na danych w obszarze roboczym, w odróżnieniu od alerty zdefiniowane na każdy zasób w portalu Azure. Użycie alerty dla zapytań, można określić pojedynczy alert, która wygląda przez wszystkie bazy danych, a nie definiującego po jednym dla każdej bazy danych. Zapytania są ograniczone tylko danych dostępnych w obszarze roboczym.
+Monitorowanie i alerty w analizy dzienników są oparte na kwerend danych w obszarze roboczym, w odróżnieniu od alerty zdefiniowane na każdy zasób w portalu Azure. Użycie alerty dla zapytań, można określić pojedynczy alert, która wygląda przez wszystkie bazy danych, a nie definiującego po jednym dla każdej bazy danych. Zapytania są ograniczone tylko danych dostępnych w obszarze roboczym.
 
-Aby uzyskać więcej informacji na temat korzystania z usługi Operations Management Suite do sprawdzania i ustawiania alertów, zobacz [pracować z reguły alertów w analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
+Aby uzyskać więcej informacji na temat korzystania z analizy dzienników do wykonywania zapytań i Ustaw alerty, zobacz [pracować z reguły alertów w analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
 Analiza dzienników opłat bazy danych SQL na podstawie rozmiaru danych w obszarze roboczym. W tym samouczku utworzono obszar roboczy wolne, która jest ograniczona do 500 MB na dzień. Po osiągnięciu tego limitu danych jest już dodany do obszaru roboczego.
 
@@ -141,7 +141,7 @@ Analiza dzienników opłat bazy danych SQL na podstawie rozmiaru danych w obszar
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Instalowanie i konfigurowanie analizy dzienników (Operations Management Suite).
+> * Instalowanie i konfigurowanie analizy dzienników.
 > * Umożliwia monitorowanie pul i bazy danych analizy dzienników.
 
 Spróbuj [samouczek analizy dzierżawy](saas-dbpertenant-log-analytics.md).
@@ -150,4 +150,3 @@ Spróbuj [samouczek analizy dzierżawy](saas-dbpertenant-log-analytics.md).
 
 * [Dodatkowe samouczki, w początkowym wdrożeniu aplikacji bazy danych dla dzierżawy Wingtip biletów SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Program Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
-* [Operations Management Suite](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)

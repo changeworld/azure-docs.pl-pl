@@ -1,6 +1,6 @@
 ---
-title: "Konfiguracja zabezpieczeń scalania podziału | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie x409 certyfikaty szyfrowania w usłudze podziału/merge elastycznego skalowania."
+title: Konfiguracja zabezpieczeń scalania podziału | Dokumentacja firmy Microsoft
+description: Konfigurowanie x409 certyfikaty szyfrowania w usłudze podziału/merge elastycznego skalowania.
 metakeywords: Elastic Database certificates security
 services: sql-database
 manager: craigg
@@ -8,13 +8,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 694c1755b5263d48fdfa5cad3c0b13e42bfb8522
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczeń scalania podziału
 Do korzystania z usługi podziału/Merge, należy poprawnie skonfigurować zabezpieczeń. Usługa jest część funkcji elastycznego skalowania bazy danych SQL Azure firmy Microsoft. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scal samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -111,7 +111,7 @@ Domyślna konfiguracja nie zezwala na dostęp do punktu końcowego HTTP. To jest
 Domyślna konfiguracja umożliwia dostęp do punktu końcowego protokołu HTTPS. To ustawienie może być ograniczony dalej.
 
 ### <a name="changing-the-configuration"></a>Zmiana konfiguracji
-Grupy z regułami kontroli dostępu, które dotyczą i punktu końcowego są konfigurowane w  **<EndpointAcls>**  sekcji **pliku konfiguracji usługi**.
+Grupy z regułami kontroli dostępu, które dotyczą i punktu końcowego są konfigurowane w **<EndpointAcls>** sekcji **pliku konfiguracji usługi**.
 
     <EndpointAcls>
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
@@ -429,7 +429,7 @@ W Kreatorze importu certyfikatów:
 9. Kliknij przycisk **OK** na wszystkie okna dialogowe.
 
 ## <a name="upload-certificate"></a>Przekazywanie certyfikatu
-W [portalu Azure](https://portal.azure.com/)
+W witrynie [Azure Portal](https://portal.azure.com/)
 
 1. Wybierz **usługi w chmurze**.
 2. Wybierz usługę w chmurze.

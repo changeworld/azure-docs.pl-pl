@@ -1,24 +1,19 @@
 ---
-title: Obsługa kolejność zdarzeń i opóźnienie z usługą Azure Stream Analytics | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat działania usługi analiza strumienia poza kolejnością lub opóźnione zdarzenia w strumieniach danych.
-keywords: zdarzenia poza kolejnością, późne,
-documentationcenter: ''
+title: Obsługa kolejność zdarzeń i opóźnienie w Azure Stream Analytics
+description: W tym artykule opisano, jak analiza strumienia obsługuje zdarzenia poza kolejnością lub opóźnień w strumieniach danych.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 3c1924ad87715f7a44c3666991e792adc3a20af9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Zagadnienia dotyczące usługi Azure Stream Analytics zdarzeń kolejności
 
@@ -132,7 +127,7 @@ Usługa Azure Stream Analytics implementuje tę funkcję za pomocą [TIMESTAMP B
 * Podczas łączenia wielu osi czasu, Brak danych w jednym źródeł lub partycji może opóźnić danych wyjściowych przez dodatkowe późne przyjęcia tolerancji.
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi analiza strumienia](stream-analytics-introduction.md)

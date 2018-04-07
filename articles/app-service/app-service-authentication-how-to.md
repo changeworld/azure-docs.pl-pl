@@ -13,18 +13,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: b7c641cebad5a3157808938040ea9309d2868896
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 10decbd5291e2054e373bfef266b64eae36ea1cf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Dostosowywanie uwierzytelnianie i autoryzację w usłudze Azure App Service
 
-W tym artykule pokazano, jak dostosować uwierzytelniania i autoryzacji w usłudze App Service i zarządzania tożsamościami z poziomu aplikacji. 
+W tym artykule przedstawiono sposób dostosowywania [uwierzytelniania i autoryzacji w usłudze App Service](app-service-authentication-overview.md)i zarządzania tożsamościami z poziomu aplikacji. 
 
 Aby szybko rozpocząć pracę, zobacz jedną z następujących samouczków:
 
+* [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end w usłudze Azure App Service](app-service-web-tutorial-auth-aad.md)
 * [Jak skonfigurować aplikację do używania logowania w usłudze Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Jak skonfigurować aplikację do używania logowania usługi Google](app-service-mobile-how-to-configure-google-authentication.md)
@@ -144,3 +145,7 @@ Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następ
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+## <a name="next-steps"></a>Kolejne kroki
+
+> [!div class="nextstepaction"]
+> [Samouczek: Uwierzytelniania i autoryzacji użytkowników end-to-end](app-service-web-tutorial-auth-aad.md)

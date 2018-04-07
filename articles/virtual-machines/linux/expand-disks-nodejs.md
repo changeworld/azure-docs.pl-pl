@@ -1,12 +1,12 @@
 ---
-title: "Zwiększ rozmiar dysku systemu operacyjnego na maszynie Wirtualnej systemu Linux z interfejsu wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozszerzyć wirtualny dysk systemu operacyjnego (OS) na maszynie Wirtualnej systemu Linux przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure i modelu wdrażania usługi Resource Manager"
+title: Zwiększ rozmiar dysku systemu operacyjnego na maszynie Wirtualnej systemu Linux z interfejsu wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozszerzyć wirtualny dysk systemu operacyjnego (OS) na maszynie Wirtualnej systemu Linux przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure i modelu wdrażania usługi Resource Manager
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 0aedcd70b54c2ed47ec327ccf0529a48351353c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f81054727bb1f0e8ffa752783e866a72d573589d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Zwiększ rozmiar dysku systemu operacyjnego na maszynie Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure z interfejsu wiersza polecenia platformy Azure w wersji 1.0
 Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zwykle 30 GB na maszynie wirtualnej systemu Linux (VM) na platformie Azure. Możesz [Dodaj dyski danych](add-disk.md) zapewnienie dodatkowego miejsca, ale mogą też chcieć Zwiększ rozmiar dysku systemu operacyjnego. Ten artykuł zawiera szczegóły dotyczące sposobu rozszerzania dysku systemu operacyjnego dla maszyny Wirtualnej systemu Linux przy użyciu niezarządzanych dysków z interfejsu wiersza polecenia platformy Azure w wersji 1.0.
@@ -47,7 +47,7 @@ W poniższych przykładach Zastąp przykładowe nazwy parametrów własne warto�
     ```
 
     > [!NOTE]
-    > `azure vm stop`zwalnia zasoby obliczeniowe. Aby zwolnić zasoby obliczeniowe, użyj `azure vm deallocate`. Aby zwiększyć rozmiaru wirtualnego dysku twardego, można cofnąć przydziału maszyny Wirtualnej.
+    > `azure vm stop` zwalnia zasoby obliczeniowe. Aby zwolnić zasoby obliczeniowe, użyj `azure vm deallocate`. Aby zwiększyć rozmiaru wirtualnego dysku twardego, można cofnąć przydziału maszyny Wirtualnej.
 
 2. Aktualizacja rozmiaru niezarządzane użycie dysku systemu operacyjnego `azure vm set` polecenia. Poniższy przykład aktualizuje maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup* jako *50* GB:
 
@@ -73,5 +73,5 @@ W poniższych przykładach Zastąp przykładowe nazwy parametrów własne warto�
     /dev/sda1        49G  1.3G   48G   3% /
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Jeśli potrzebujesz dodatkowego magazynu, możesz również [Dodaj dyski danych do maszyny Wirtualnej systemu Linux](add-disk.md). Aby uzyskać więcej informacji o szyfrowaniu dysków, zobacz [szyfrowania dysków na Maszynę wirtualną systemu Linux przy użyciu interfejsu wiersza polecenia Azure](encrypt-disks.md).

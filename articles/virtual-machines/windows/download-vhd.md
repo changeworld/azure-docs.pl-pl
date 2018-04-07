@@ -1,13 +1,13 @@
 ---
 title: Pobierz zestaw Windows wirtualnego dysku twardego z platformy Azure | Dokumentacja firmy Microsoft
-description: "Pobierz dysku VHD systemu Windows przy użyciu portalu Azure."
+description: Pobierz dysku VHD systemu Windows przy użyciu portalu Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: d8bf89a4b7c2a158302f9ba09a182a3d8d062adc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9a75890af86a5342debe1d6fdb18f5e9bd2b227
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Pobierz zestaw Windows wirtualnego dysku twardego z platformy Azure
 
@@ -74,7 +74,7 @@ Aby pobrać plik wirtualnego dysku twardego, należy wygenerować [sygnatury dos
 
     ![Kliknij przycisk Zapisz w przeglądarce](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [Przekaż plik VHD na platformę Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Tworzenie dysków zarządzanych z niezarządzanego dysków na koncie magazynu](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

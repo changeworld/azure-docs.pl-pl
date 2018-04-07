@@ -1,19 +1,19 @@
 ---
-title: "Zarządzanie poświadczeniami w biblioteki klienta elastycznej bazy danych | Dokumentacja firmy Microsoft"
-description: "Jak ustawić odpowiedni poziom poświadczeń administratora tylko do odczytu, dla elastycznej bazy danych aplikacji"
+title: Zarządzanie poświadczeniami w biblioteki klienta elastycznej bazy danych | Dokumentacja firmy Microsoft
+description: Jak ustawić odpowiedni poziom poświadczeń administratora tylko do odczytu, dla elastycznej bazy danych aplikacji
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 26d83779b218f8c936c020d63651861f45bafa2f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c18e5da04fd92fed2cb9e93d13b5f3ecdeaac1a1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Poświadczenia używane do dostępu biblioteki klienta elastycznej bazy danych
 [Biblioteki klienta elastycznej bazy danych](sql-database-elastic-database-client-library.md) używa trzech różnych rodzajów poświadczenia dostępu do [menedżera map niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md). Zależności od potrzeb za pomocą poświadczeń najniższego poziomu dostępu, które są możliwe.

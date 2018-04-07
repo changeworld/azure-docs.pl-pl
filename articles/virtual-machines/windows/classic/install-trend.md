@@ -1,11 +1,11 @@
 ---
-title: "Zainstaluj Trend Micro głębokie zabezpieczeń na maszynie Wirtualnej | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób instalowania i konfigurowania zabezpieczeń Trend Micro na maszynie Wirtualnej utworzone za pomocą klasycznego modelu wdrożenia na platformie Azure."
+title: Zainstaluj Trend Micro głębokie zabezpieczeń na maszynie Wirtualnej | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób instalowania i konfigurowania zabezpieczeń Trend Micro na maszynie Wirtualnej utworzone za pomocą klasycznego modelu wdrożenia na platformie Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 41b7ecf0d0c71b5c225454cc77ce87d5736c2165
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 155f4d8c7aa3e0e8f64944435e14112a7970420d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak zainstalować i skonfigurować rozwiązanie Trend Micro Deep Security as a Service na maszynie wirtualnej systemu Windows
 > [!IMPORTANT]
@@ -77,14 +77,14 @@ Jeśli jest zainstalowany Agent maszyny Wirtualnej, uruchom następujące polece
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Trwa kilka minut, aż do uruchomienia po zainstalowaniu agenta. Po tym musisz aktywować głębokie zabezpieczeń na maszynie wirtualnej, więc można nim zarządzać za głębokie Menedżera zabezpieczeń. Zobacz następujące artykuły, aby uzyskać dodatkowe instrukcje:
 
 * Trend w artykule o tym rozwiązaniu [Instant-On Cloud Security platformy Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=404101)
 * A [przykładowy skrypt programu Windows PowerShell](http://go.microsoft.com/fwlink/?LinkId=404100) można skonfigurować maszyny wirtualnej
 * [Instrukcje](http://go.microsoft.com/fwlink/?LinkId=404099) przykładowej
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 [Jak zalogować się do maszyny wirtualnej z systemem Windows Server]
 
 [Rozszerzenia maszyny Wirtualnej platformy Azure i funkcje]

@@ -1,10 +1,10 @@
 ---
-title: "Wdróż Maszynę wirtualną przy użyciu języka C# i szablonu usługi Resource Manager | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać języka C# i szablonu usługi Resource Manager do wdrażania maszyny Wirtualnej platformy Azure."
+title: Wdróż Maszynę wirtualną przy użyciu języka C# i szablonu usługi Resource Manager | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać języka C# i szablonu usługi Resource Manager do wdrażania maszyny Wirtualnej platformy Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: davidmu
-ms.openlocfilehash: b82a70d1b654ff9601db501011d9aa21af8e36c2
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: f2c488a891d1037535f1782da54544ac6af9dd41
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Wdróż maszynę wirtualną platformy Azure przy użyciu języka C# i szablonu usługi Resource Manager
 W tym artykule przedstawiono sposób wdrażania szablonu usługi Azure Resource Manager przy użyciu języka C#. Tworzony szablon wdraża jednej maszyny wirtualnej z systemem Windows Server w nowej sieci wirtualnej z pojedynczą podsiecią.
@@ -200,7 +200,7 @@ Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [nazwy
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp  **&lt;identyfikator subskrypcji&gt;**  z identyfikatorem subskrypcji  **&lt;identyfikator aplikacji&gt;**  z identyfikatorem aplikacji usługi Active Directory  **&lt;klucz uwierzytelniania&gt;**  z klucz aplikacji i  **&lt;identyfikator dzierżawcy&gt;**  przy użyciu identyfikatora dzierżawcy.
+    Zastąp **&lt;identyfikator subskrypcji&gt;** z identyfikatorem subskrypcji **&lt;identyfikator aplikacji&gt;** z identyfikatorem aplikacji usługi Active Directory **&lt;klucz uwierzytelniania&gt;** z klucz aplikacji i **&lt;identyfikator dzierżawcy&gt;** przy użyciu identyfikatora dzierżawcy.
 
 3. Zapisz plik azureauth.properties.
 4. Ustaw zmienną środowiskową systemu Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżkę do pliku autoryzacji utworzony, na przykład następujące PowerShell, można użyć polecenia:

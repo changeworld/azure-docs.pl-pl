@@ -4,7 +4,7 @@ description: Porównaj wyniki testu porównawczego obliczeń SPECint dla maszyn 
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 69ae72ec-e8be-4e46-a8f0-e744aebb5cc2
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: cb77a058e72b8f08cb8974d5ec5088bc498e071d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b3e717ef9bf8af98650e78ce4a89eb9bf3eb83c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Obliczenia bazy danych wyników testów porównawczych dla maszyn wirtualnych systemu Windows
 Następujące wyniki testu porównawczego SPECInt Pokaż wydajności obliczeniowej dla zestawienia maszyny Wirtualnej platformy Azure wysokiej wydajności z systemem Windows Server. Wyniki testu porównawczego obliczeniowe są także dostępne dla [maszyn wirtualnych systemu Linux](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -69,6 +69,6 @@ Następujące wyniki testu porównawczego SPECInt Pokaż wydajności obliczeniow
 ## <a name="about-specint"></a>O SPECint
 Numery systemu Windows zostały obliczone, uruchamiając [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) w systemie Windows Server. SPECint był uruchamiany z jednej kopii na vCPU przy użyciu opcji szybkości podstawowej (SPECint_rate2006). SPECint składa się z 12 testy w oddzielnych, każdy trzykrotne uruchomienie, biorąc wartość mediany każdego testu i wagi je do utworzenia złożonego wynik. Te testy zostały uruchomione następnie między wieloma maszynami wirtualnymi, aby zapewnić średnie wyniki wyświetlane.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Pojemność, dysku szczegóły i dodatkowe uwagi dotyczące wybierania rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

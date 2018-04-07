@@ -1,22 +1,22 @@
 ---
-title: "Dostępne w stosie Azure zestawach skali maszyn wirtualnych upewnij | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać skalowania maszyny wirtualnej w portalu Azure Marketplace stosu operatorowi chmury"
+title: Dostępne w stosie Azure zestawach skali maszyn wirtualnych upewnij | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać skalowania maszyny wirtualnej w portalu Azure Marketplace stosu operatorowi chmury
 services: azure-stack
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/13/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: anajod
-keywords: 
-ms.openlocfilehash: a4c854bdd659a05f032f5ee232074bc38ff677ef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+keywords: ''
+ms.openlocfilehash: cdabd2a9d336cdd8ac83d27460fe129c45b7e1c6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Udostępnia zestawy skalowania maszyny wirtualnej Azure stosu
 
@@ -30,7 +30,7 @@ Zestawy skalowania maszyny wirtualnej na stosie Azure są podobne zestawy skalow
 * [Mark Russinovich omawia zestawy skalowania na platformie Azure](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 * [Zestawy skalowania maszyn wirtualnych według Guya Bowermana](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-Na stosie Azure zestawy skalowania maszyny wirtualnej nie obsługują automatycznego skalowania. Można dodać więcej wystąpień do skalowania, ustawić za pomocą portalu Azure stosu, szablony usługi Resource Manager lub programu PowerShell.
+Na stosie Azure zestawy skalowania maszyny wirtualnej nie obsługuje automatycznego skalowania. Można dodać więcej wystąpień do skalowania, ustawić za pomocą portalu Azure stosu, szablony usługi Resource Manager lub programu PowerShell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Narzędzia i programu PowerShell**
@@ -46,6 +46,7 @@ Na stosie Azure zestawy skalowania maszyny wirtualnej nie obsługują automatycz
    Jeśli nie dodano obrazu systemu operacyjnego do programu Azure Marketplace stosu, zobacz [Dodaj obraz maszyny Wirtualnej systemu Windows Server 2016 do stosu Azure marketplace](azure-stack-add-default-image.md).
 
    Obsługę systemu Linux, Pobierz Ubuntu Server 16.04 i dodać go za pomocą ```Add-AzsVMImage``` z następującymi parametrami: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
+
 
 ## <a name="add-the-virtual-machine-scale-set"></a>Dodaj zestaw skali maszyny wirtualnej
 
@@ -72,6 +73,38 @@ Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 
 Add-AzsVMSSGalleryItem -Location $Location
 ```
+
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualizowanie obrazów w zestawie skalowania maszyn wirtualnych 
+Po utworzeniu zestawu skalowania maszyn wirtualnych użytkowników można aktualizować obrazów w skali bez zestaw musi zostać ponownie utworzone skalowania. Proces aktualizacji obrazu jest zależna od następujących scenariuszy:
+
+1. Szablon wdrożenia zestawu skalowania maszyn wirtualnych **określa najnowszych** dla *wersji*:  
+
+   Gdy *wersji* jest ustawiony jako **najnowsze** w *elementu imageReference* sekcji szablonu dla skalowania ustawić, skalowanie w górę operacje przy użyciu zestawu skali najnowszej dostępnej wersji obrazu skali ustawić wystąpień. Po zakończeniu skalowania w górę, można usunąć starszej wystąpień zestawów skalowania maszyn wirtualnych.  (Wartości *wydawcy*, *oferują*, i *sku* pozostają niezmienione). 
+
+   Poniżej przedstawiono przykład określenia *najnowsze*:  
+
+          "imageReference": {
+             "publisher": "[parameters('osImagePublisher')]",
+             "offer": "[parameters('osImageOffer')]",
+             "sku": "[parameters('osImageSku')]",
+             "version": "latest"
+             }
+
+   Zanim skalowania w górę, można użyć nowego obrazu, należy pobrać nowe obrazu:  
+
+   - Gdy obraz w witrynie Marketplace jest nowsza wersja niż obrazu w zestawie skalowania: Pobierz nowy obraz, który zastępuje starsze obrazu. Po obrazu zostanie zastąpiony, użytkownik może przejść do skalowanie w górę. 
+
+   - Gdy wersja obrazu w witrynie Marketplace jest taka sama jak obrazu w zestawie skalowania: Usuń obraz, który jest używany w zestawie skalowania, a następnie Pobierz nowy obraz. W okresie między po usunięciu oryginalnego obrazu i pobieranie obrazu nie skalowanie w górę. 
+      
+     Ten proces jest wymagany do resyndicate obrazów, dzięki któremu używać formatu plików rozrzedzonych, wprowadzonym w wersji 1803. 
+ 
+
+2. Szablon wdrożenia zestawu skalowania maszyn wirtualnych **nie określa najnowszych** dla *wersji* i zamiast tego Określa numer wersji:  
+
+     W przypadku pobrania obrazu przy użyciu nowszej wersji (co spowoduje zmianę wersji dostępnych), zestaw skalowania nie skalowanie w górę. To jest celowe jako wersja obrazu określonego w szablonie zestaw skali musi być dostępna.  
+
+Aby uzyskać więcej informacji, zobacz [dysków systemu operacyjnego i obrazy](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>Usuń zestaw skali maszyny wirtualnej
 

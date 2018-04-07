@@ -1,19 +1,19 @@
 ---
-title: "Za pomocą Menedżera odzyskiwania do rozwiązywania problemów z mapy niezależnego fragmentu | Dokumentacja firmy Microsoft"
-description: "Klasa RecoveryManager służy do rozwiązywania problemów przy użyciu map niezależnego fragmentu"
+title: Za pomocą Menedżera odzyskiwania do rozwiązywania problemów z mapy niezależnego fragmentu | Dokumentacja firmy Microsoft
+description: Klasa RecoveryManager służy do rozwiązywania problemów przy użyciu map niezależnego fragmentu
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 45dc16c7bf54f34c89f2e9208a7cee06de03c0da
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 350ea0d4b744467849916f2d958cc49fd72d3e4b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Używanie klasy RecoveryManager do rozwiązywanie problemów z mapą fragmentów
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) klasa umożliwia aplikacji ADO.Net łatwiej wykryć i naprawić wszystkie niespójności między mapy globalne niezależnego fragmentu (GSM), a następnie mapować lokalnego niezależnego fragmentu (LSM) tak, w środowisku bazy danych podzielonej. 

@@ -1,53 +1,47 @@
 ---
-title: "Mapowanie w usłudze Azure Active Directory oświadczeń użytkowników współpracy B2B | Dokumentacja firmy Microsoft"
-description: "mapowanie odwołania do usługi Azure Active Directory B2B współpracy oświadczeń"
+title: Mapowanie w usłudze Azure Active Directory oświadczeń użytkowników współpracy B2B | Dokumentacja firmy Microsoft
+description: Dostosowywanie oświadczeń użytkowników, które są wydawane w tokenie SAML dla użytkowników B2B usługi Azure Active Directory (Azure AD).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/15/2017
+ms.date: 04/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 3fe75e96c153a7cbcad638d606d0fbc248bd983a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8f5e471d4e7102300cd5581976b45c9fa8cc57bc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Mapowanie w usłudze Azure Active Directory oświadczeń użytkowników współpracy B2B
 
-Dostosowywanie oświadczeń wydanych w tokenie SAML dla użytkowników współpracy B2B usługi Azure obsługuje usługi Active Directory (Azure AD). Podczas uwierzytelniania użytkownika do aplikacji, usługi Azure AD wystawia SAML token aplikacja, która zawiera informacje (lub oświadczenia) dotyczące użytkownika, który unikatowo identyfikuje je. Domyślnie w tym nazwę użytkownika, adres e-mail, imię i nazwisko użytkownika. Umożliwia wyświetlenie i edytowanie oświadczenia wysyłane w tokenie SAML do aplikacji na karcie atrybutów.
+Dostosowywanie oświadczeń wydanych w tokenie SAML dla użytkowników współpracy B2B usługi Azure obsługuje usługi Active Directory (Azure AD). Podczas uwierzytelniania użytkownika do aplikacji, usługi Azure AD wystawia SAML token aplikacja, która zawiera informacje (lub oświadczenia) dotyczące użytkownika, który unikatowo identyfikuje je. Domyślnie w tym nazwę użytkownika, adres e-mail, imię i nazwisko użytkownika.
 
-Istnieją dwie możliwe przyczyny, dlaczego konieczne może być Edycja oświadczeń wydanych w tokenie SAML.
+W [portalu Azure](https://portal.azure.com), można wyświetlić lub edytować oświadczenia, które są wysyłane w tokenie SAML do aplikacji. Aby uzyskać dostęp do ustawień, wybierz **usługi Azure Active Directory** > **aplikacje dla przedsiębiorstw** > aplikacji, która jest skonfigurowana dla logowania jednokrotnego > **logowanie jednokrotne** . Informacje o ustawieniach tokenu SAML w **atrybuty użytkownika** sekcji.
 
-1. Aplikacja została zapisana wymagają innego zestawu oświadczeń identyfikatorów URI lub wartości oświadczeń
+![Pokazuje atrybuty tokenu SAML w interfejsie użytkownika](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
 
-2. Aplikacja wymaga oświadczeń NameIdentifier inny niż nazwa główna użytkownika przechowywane w usłudze Azure Active Directory.
+Istnieją dwie możliwe przyczyny, dlaczego konieczne może być Edycja oświadczeń, które są wydawane w tokenie SAML:
 
-  ![Widok oświadczenia w tokenie SAML](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
+1. Aplikacja wymaga innego zestawu identyfikatorów URI lub wartości oświadczeń.
 
-Aby uzyskać informacje o tym, jak dodawać i edytować oświadczenia, zapoznaj się z tego artykułu na dostosowanie oświadczenia, [Dostosowywanie oświadczeń wydanych w tokenie SAML dla wstępnie zintegrowanych aplikacji w usłudze Azure Active Directory](develop/active-directory-saml-claims-customization.md). Do współpracy B2B użytkowników mapowania NameID i UPN dzierżawy między będą mogły ze względów bezpieczeństwa.
+2. Aplikacja wymaga oświadczeń NameIdentifier inny niż główna nazwa użytkownika (UPN) przechowywanych w usłudze Azure AD.
 
+Aby uzyskać informacje o tym, jak dodawać i edytować oświadczeń, zobacz [Dostosowywanie oświadczeń wydanych w tokenie SAML dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory](develop/active-directory-saml-claims-customization.md).
+
+Do współpracy B2B użytkowników mapowania NameID i UPN dzierżawy między będą mogły ze względów bezpieczeństwa.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz nasze inne artykuły dotyczące współpracy B2B w usłudze Azure AD:
+- Informacje o właściwościach użytkownika współpracy B2B, zobacz [właściwości użytkownika współpracy usługi Azure Active Directory B2B](active-directory-b2b-user-properties.md).
+- Informacje użytkownika tokeny dla użytkowników współpracy B2B, zobacz [zrozumieć tokenów użytkowników we współpracy B2B usługi Azure AD](active-directory-b2b-user-token.md).
 
-* [Czym jest współpraca B2B w usłudze Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Właściwości użytkownika współpracy B2B](active-directory-b2b-user-properties.md)
-* [Dodawanie do roli użytkownika współpracy B2B](active-directory-b2b-add-guest-to-role.md)
-* [Delegowanie B2bB współpracy zaproszenia](active-directory-b2b-delegate-invitations.md)
-* [Grupami dynamicznymi i współpracy B2B](active-directory-b2b-dynamic-groups.md)
-* [Kod współpracy B2B i przykłady środowiska PowerShell](active-directory-b2b-code-samples.md)
-* [Konfigurowanie aplikacji SaaS do współpracy B2B](active-directory-b2b-configure-saas-apps.md)
-* [Udostępnianie zewnętrzne w usłudze Office 365](active-directory-b2b-o365-external-user.md)
-* [Tokeny użytkownika współpracy B2B](active-directory-b2b-user-token.md)
-* [Bieżące ograniczenia współpracy B2B](active-directory-b2b-current-limitations.md)

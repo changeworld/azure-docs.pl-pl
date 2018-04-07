@@ -1,24 +1,19 @@
 ---
-title: Jak utworzyć zadanie przetwarzania analizy danych dla usługi Stream Analytics | Dokumentacja firmy Microsoft
+title: Jak utworzyć zadanie przetwarzania analizy danych dla usługi Azure Stream Analytics
 description: Utwórz zadanie przetwarzania analizy danych dla usługi Stream Analytics | Learning segmentu ścieżki.
-keywords: przetwarzanie analizy danych
-documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: e825fbcf-69e9-443f-b402-3b7a4568f415
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: e332651af29514ca773b1476eafb0381207df86e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 349d99a003df4fd211842033a467aa3051b50c77
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Jak utworzyć zadanie przetwarzania analizy danych dla usługi analiza strumienia
 Zasób najwyższego poziomu w Azure Stream Analytics jest zadania usługi analiza strumienia.  Składa się z co najmniej jedno źródło danych wejściowych, zapytania, przedstawiając przekształcania danych i co najmniej jeden wyjściowy obiektów docelowych, które wyniki są zapisywane do. Razem te umożliwiają użytkownikowi wykonywać analizy danych przetwarzania do strumieniowego przesyłania danych.

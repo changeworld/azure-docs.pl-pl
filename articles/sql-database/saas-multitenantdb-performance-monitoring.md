@@ -1,20 +1,20 @@
 ---
-title: "Monitorowanie wydajności podzielonej bazy danych Azure SQL wielodostępne w wielodostępnych aplikacji SaaS | Dokumentacja firmy Microsoft"
-description: "Monitorowanie i zarządzanie nimi wydajności podzielonej bazy danych Azure SQL wielodostępne w wielodostępnych aplikacji SaaS"
-keywords: "samouczek usługi sql database"
+title: Monitorowanie wydajności podzielonej bazy danych Azure SQL wielodostępne w wielodostępnych aplikacji SaaS | Dokumentacja firmy Microsoft
+description: Monitorowanie i zarządzanie nimi wydajności podzielonej bazy danych Azure SQL wielodostępne w wielodostępnych aplikacji SaaS
+keywords: samouczek usługi sql database
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 53d8c099d68fd7eb3f00fb4d1be7ec54404521ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 43bac88a7ab6320c5fdcc9dc0fb6b5209bdbcaa3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie nimi wydajności podzielonej bazy danych Azure SQL wielodostępne w wielodostępnych aplikacji SaaS
 
@@ -49,7 +49,7 @@ Zarządzanie wydajnością bazy danych polega na zbieraniu danych dotyczących w
 
 Witryna [Azure Portal](https://portal.azure.com) udostępnia wbudowane funkcje monitorowania i alertów dla większości zasobów. Bazy danych SQL jest dostępna w bazach danych, monitorowanie i alerty. Ten wbudowaną funkcję monitorowania i alertów jest określonych zasobów, dlatego jest łatwe w użyciu dla małej liczby zasobów, ale nie jest wygodne, podczas pracy z wielu zasobów.
 
-Dla dużych scenariuszy, w którym pracujesz z wielu zasobów, [analizy dzienników (OMS)](https://azure.microsoft.com/services/log-analytics/) mogą być używane. Jest to oddzielne usługa Azure, która udostępnia analityka w porównaniu z emitowany dzienniki diagnostyczne i dane telemetryczne zebrane w obszarze roboczym analizy dzienników. Analiza dzienników może zbierać dane telemetryczne z wielu usług i służyć do wykonywania zapytań i Ustaw alerty.
+Dla dużych scenariuszy, w którym pracujesz z wielu zasobów, [analizy dzienników](https://azure.microsoft.com/services/log-analytics/) mogą być używane. Jest to oddzielne usługa Azure, która udostępnia analityka w porównaniu z emitowany dzienniki diagnostyczne i dane telemetryczne zebrane w obszarze roboczym analizy dzienników. Analiza dzienników może zbierać dane telemetryczne z wielu usług i służyć do wykonywania zapytań i Ustaw alerty.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Pobieranie kodu źródłowego aplikacji Wingtip biletów SaaS wielodostępne w bazie danych i skryptów
 

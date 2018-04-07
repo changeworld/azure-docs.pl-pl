@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie węzły obliczeniowe klastra HPC Pack | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat narzędzia skryptu programu PowerShell do dodawania, usuwania, uruchomić i zatrzymać węzły obliczeniowe klastra HPC Pack 2012 R2 na platformie Azure"
+title: Zarządzanie węzły obliczeniowe klastra HPC Pack | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat narzędzia skryptu programu PowerShell do dodawania, usuwania, uruchomić i zatrzymać węzły obliczeniowe klastra HPC Pack 2012 R2 na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 4193f03b-94e9-4704-a7ad-379abde063a9
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 2ad67efecf9a688ac3e7ccd7cc32576e9a46d1f5
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 453f53be15b24b96f183b4935cc45fc97ad058bd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Zarządzanie liczbą i dostępnością węzłów obliczeniowych w klastrze pakietu HPC Pack na platformie Azure
 Jeśli utworzony klaster HPC Pack 2012 R2 w maszynach wirtualnych platformy Azure, możesz sposobów, aby łatwo dodać, usunąć, start (zainicjować obsługi administracyjnej) lub zatrzymać (deprovision) obliczeniowe niektórych maszyn wirtualnych węzła w klastrze. Aby wykonać te zadania, uruchomić skrypty programu Azure PowerShell, które są zainstalowane w węźle głównym maszyny Wirtualnej. Skrypty te można kontrolować liczbę i dostępności zasobów klastra HPC Pack, więc można kontrolować koszty.
@@ -147,6 +147,6 @@ Poniższy przykład wymusza węzłów w trybie offline z nazwami od *HPCNode-CN 
 Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby automatycznie zwiększać i zmniejszać węzłów klastra, zgodnie z bieżące obciążenie zadań i zadań w klastrze, zobacz [automatycznie zwiększyć lub zmniejszyć zasobów klastra HPC Pack na platformie Azure zgodnie z obciążenie klastra](hpcpack-cluster-node-autogrowshrink.md).
 

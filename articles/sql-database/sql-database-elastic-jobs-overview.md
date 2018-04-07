@@ -1,6 +1,6 @@
 ---
-title: "Zarządzanie bazami danych w chmurze skalowalnych w poziomie | Dokumentacja firmy Microsoft"
-description: "Użyj usługi zadania elastycznej bazy danych do uruchomienia skryptu przez grupę baz danych."
+title: Zarządzanie bazami danych w chmurze skalowalnych w poziomie | Dokumentacja firmy Microsoft
+description: Użyj usługi zadania elastycznej bazy danych do uruchomienia skryptu przez grupę baz danych.
 metakeywords: azure sql database elastic databases
 services: sql-database
 manager: craigg
@@ -8,13 +8,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 1f0e022eb98619b22f7e62e0602d36ba821def22
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3fdc24a811544de87d97da498d7946507653cec5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Zarządzanie bazami danych w chmurze skalowalnych w poziomie
 Aby zarządzać bazy danych podzielonej skalowalnych w poziomie, **zadania elastycznej bazy danych** funkcji (wersja zapoznawcza) umożliwia niezawodnie wykonać skryptu języka Transact-SQL (T-SQL) między grupą baz danych, w tym:

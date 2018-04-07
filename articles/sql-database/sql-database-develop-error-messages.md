@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a4fa0d542d755e783f422a62e9135d06133385f8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5a20f8cb2946db0ff5fafc4c307f56629b635825
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich, bazy danych SQL: błędy połączeń i inne problemy z bazy danych
 
@@ -112,7 +112,7 @@ Do tworzenia i używania pule elastyczne odnoszą się następujące błędy:
 | 40859 |EX_USER |Pula elastyczna nie obsługuje warstwy usługi '%ls'. |Warstwa usług puli elastycznej |Warstwa określonej usługi nie jest obsługiwana dla puli elastycznej inicjowania obsługi administracyjnej. |Podaj poprawne edition lub pozostaw pole puste, aby użyć domyślnej warstwy usług warstwy usług. |
 | 40860 |EX_USER |Kombinacja puli elastycznej usług i '%ls' cel '%ls' jest nieprawidłowa. |Nazwa puli elastycznej; Nazwa celu poziomu usługi |Elastyczne cel puli i usługi mogą być określone razem tylko wtedy, gdy cel usługi jest określony jako "ElasticPool". |Określ poprawny kombinacja puli elastycznej i cel usługi. |
 | 40861 |EX_USER |Wersja bazy danych "%. *ls nie może być inna niż warstwa usług puli elastycznej, czyli "%.* ls. |Wersja bazy danych, warstwa usług puli elastycznej |Wersja bazy danych jest inna niż warstwa usług puli elastycznej. |Nie można określić wersji bazy danych, która jest inna niż warstwa usług puli elastycznej.  Należy pamiętać, że wersja bazy danych nie muszą być określone. |
-| 40862 |EX_USER |Nazwa puli elastycznej musi być określona, jeśli określono cel usług puli elastycznej. |Brak |Cel usług puli elastycznej nie identyfikuje jednoznacznie puli elastycznej. |Jeśli przy użyciu cel usług puli elastycznej, należy określić nazwę puli elastycznej. |
+| 40862 |EX_USER |Nazwa puli elastycznej musi być określona, jeśli określono cel usług puli elastycznej. |None |Cel usług puli elastycznej nie identyfikuje jednoznacznie puli elastycznej. |Jeśli przy użyciu cel usług puli elastycznej, należy określić nazwę puli elastycznej. |
 | 40864 |EX_USER |Liczba jednostek Dtu dla puli elastycznej musi wynosić co najmniej (%d) Dtu dla warstwy usług "%. * ls. |Liczba jednostek Dtu dla puli elastycznej; Warstwa usług puli elastycznej. |Trwa próba skonfigurowania jednostek Dtu dla puli elastycznej poniżej minimalnego limitu. |Ustawienie jednostek Dtu dla elastyczna pula co najmniej minimalny limit ponownych prób. |
 | 40865 |EX_USER |Liczba jednostek Dtu dla puli elastycznej nie może przekroczyć (%d) Dtu dla warstwy usług "%. * ls. |Liczba jednostek Dtu dla puli elastycznej; Warstwa usług puli elastycznej. |Trwa próba skonfigurowania jednostek Dtu dla puli elastycznej przekracza maksymalny limit. |Ustawienie jednostek Dtu dla puli elastycznej nie może przekraczać maksymalny limit ponownych prób. |
 | 40867 |EX_USER |Maksymalna wartość DTU na bazę danych musi wynosić co najmniej (%d) dla warstwy usług "%. * ls. |Maksymalnej wartości DTU na bazę danych; Warstwa usług puli elastycznej |Trwa próba skonfigurowania maksymalnej wartości DTU na bazę danych poniżej obsługiwany limit. | onsider przy użyciu warstwa usług puli elastycznej, który obsługuje odpowiednie ustawienie. |

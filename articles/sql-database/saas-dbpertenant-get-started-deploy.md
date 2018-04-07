@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: c62817b6bb60d99a4762e433510cc54d15add35a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i Eksploruj wielodostępnych aplikacji SaaS, który korzysta ze wzorca bazy danych na dzierżawcy z bazy danych SQL
 
@@ -108,7 +108,7 @@ Wewnętrznie w aplikacji, każdy dzierżawca pobiera wdrożonych w puli elastycz
 
 Centralnego **Centrum zdarzeń** strona zawiera listę łączy do dzierżawców w danym wdrożeniu.
 
-1. Użyj adresu URL, aby otworzyć Centrum zdarzeń w przeglądarce sieci web: http://events.wingtip-dpt.&lt;użytkownika&gt;. trafficmanager.net. SUBSTITUTE &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.
+1. Użyj adresu URL, aby otworzyć Centrum zdarzeń w przeglądarce sieci web: http://events.wingtip-dpt.&lt; Użytkownik&gt;. trafficmanager.net. SUBSTITUTE &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.
 
     ![Centrum zdarzeń](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 

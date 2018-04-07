@@ -1,21 +1,21 @@
 ---
-title: "Użyj modułu usługi migracji bazy danych Azure w programie Microsoft Azure PowerShell do migracji serwera SQL lokalnej do bazy danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się przeprowadzić migrację z lokalnego programu SQL Server do bazy danych SQL Azure przy użyciu programu Azure PowerShell."
+title: Użyj modułu usługi migracji bazy danych Azure w programie Microsoft Azure PowerShell do migracji serwera SQL lokalnej do bazy danych SQL Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się przeprowadzić migrację z lokalnego programu SQL Server do bazy danych SQL Azure przy użyciu programu Azure PowerShell.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/24/2018
-ms.openlocfilehash: 8569bf65d04f677a45935284dc61d68879014c10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 04/05/2018
+ms.openlocfilehash: d70d39f027df1fba7934c4b752b1dd2100f2e8b9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrowanie lokalnej instalacji programu SQL Server do bazy danych SQL Azure przy użyciu programu Azure PowerShell
 W tym artykule, wykonywana jest migracja **Adventureworks2012** przywrócone do lokalnego wystąpienia programu SQL Server 2016 lub nowszy z bazą danych SQL Azure za pomocą programu Microsoft Azure PowerShell bazy danych. Można migrować baz danych z lokalnego wystąpienia programu SQL Server z bazą danych SQL Azure za pomocą `AzureRM.DataMigration` moduł w programie Microsoft Azure PowerShell.
@@ -127,7 +127,7 @@ $project = New-AzureRmDataMigrationProject -ResourceGroupName myResourceGroup `
   -TargetType SQLDB `
   -SourceConnection $sourceConnInfo `
   -TargetConnection $targetConnInfo `
-  -DatabaseInfos $dbList
+  -DatabaseInfo $dbList
 ```
 
 ## <a name="create-and-start-a-migration-task"></a>Tworzenie i uruchamianie zadania migracji

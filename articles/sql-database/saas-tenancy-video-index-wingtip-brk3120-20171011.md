@@ -1,19 +1,19 @@
 ---
 title: Indeksowane wideo, aplikacja Azure SaaS SQL | Dokumentacja firmy Microsoft
-description: "W tym artykule indeksuje różnych punktach w czasie w naszym 81 minut wideo dotyczących projektu aplikacji dzierżawy SaaS bazy danych, z konferencji Ignite przechowywać 11 października 2017 r. Możesz przejść od razu do części interesujący Cię. Wzorce co najmniej 3 opisano. Opisano funkcje platformy Azure, które upraszczają proces projektowania i zarządzania nimi."
+description: W tym artykule indeksuje różnych punktach w czasie w naszym 81 minut wideo dotyczących projektu aplikacji dzierżawy SaaS bazy danych, z konferencji Ignite przechowywać 11 października 2017 r. Możesz przejść od razu do części interesujący Cię. Wzorce co najmniej 3 opisano. Opisano funkcje platformy Azure, które upraszczają proces projektowania i zarządzania nimi.
 services: sql-database
-ms.date: 12/06/2017
+ms.date: 04/01/2018
 ms.service: sql-database
 ms.reviewer: billgib
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.openlocfilehash: 0d9182abda03aef3ffe35e10114fa045d8b0ca74
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7dcd4681833f227f32534ae3053b7b482bb813bc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Wideo indeksowane i opatrzone adnotacjami dla aplikacji SaaS mulit dzierżawcy przy użyciu bazy danych SQL Azure
 

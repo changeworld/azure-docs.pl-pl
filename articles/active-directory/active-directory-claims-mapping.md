@@ -1,6 +1,6 @@
 ---
-title: "Oświadczenia mapowanie w usłudze Azure Active Directory (publicznej wersji zapoznawczej) | Dokumentacja firmy Microsoft"
-description: "Na tej stronie opisano mapowania oświadczenia usługi Azure Active Directory."
+title: Oświadczenia mapowanie w usłudze Azure Active Directory (publicznej wersji zapoznawczej) | Dokumentacja firmy Microsoft
+description: Na tej stronie opisano mapowania oświadczenia usługi Azure Active Directory.
 services: active-directory
 author: billmath
 manager: mtillman
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Oświadczenia mapowanie w usłudze Azure Active Directory (publicznej wersji zapoznawczej)
 
@@ -234,7 +234,7 @@ Nie można zmodyfikować ograniczeniami oświadczeń przy użyciu zasad. Nie mo�
 |http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>Mapowanie właściwości zasad oświadczeń
-Użyj właściwości mapowania zasad kontroli jakie oświadczenia są emitowane, gdy dane są uzyskiwane z oświadczeń. Jeśli żadne zasady nie jest ustawiona, system wystawia tokeny zawierający podstawowy zestaw oświadczeń w zestawie oświadczeń podstawowe i wszelkie oświadczenia opcjonalne, które wybierze aplikacji na odbieranie.
+Użyj właściwości mapowania zasad kontroli jakie oświadczenia są emitowane, gdy dane są uzyskiwane z oświadczeń. Jeśli żadne zasady nie jest ustawiona, tokeny problemów systemu zawierającego podstawową oświadczeń zestaw, do zestawu oświadczeń podstawowe i wszystkie [opcjonalnych oświadczeń](develop/active-directory-optional-claims.md) wybrany aplikacji tak otrzymywać.
 
 ### <a name="include-basic-claim-set"></a>Obejmują zestaw oświadczeń podstawowe
 

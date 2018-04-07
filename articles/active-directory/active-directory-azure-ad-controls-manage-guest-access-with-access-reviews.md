@@ -1,11 +1,11 @@
 ---
-title: "Zarządzaj dostępem gościa za pomocą usługi Azure AD dostęp przeglądami | Dokumentacja firmy Microsoft"
-description: "Zarządzaj jako członków grupy Goście lub przypisane do aplikacji przy użyciu usługi Azure Active Directory dostępu przeglądy"
+title: Zarządzaj dostępem gościa za pomocą usługi Azure AD dostęp przeglądami | Dokumentacja firmy Microsoft
+description: Zarządzaj jako członków grupy Goście lub przypisane do aplikacji przy użyciu usługi Azure Active Directory dostępu przeglądy
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzaj dostępem gościa za pomocą usługi Azure AD dostęp do przeglądu
 
@@ -105,17 +105,17 @@ W niektórych organizacjach goście mogą nie być świadomy ich członkostwa w 
 > [!NOTE]
 > Wcześniejszych wersji portalu Azure nie zezwala na dostęp administracyjny przez użytkowników z UserType gościa. W niektórych przypadkach administrator w katalogu może zmienić wartość UserType gościa do elementu członkowskiego przy użyciu programu PowerShell. Jeśli ta zmiana wystąpił wcześniej w katalogu, poprzednie zapytanie może nie zawierać wszystkich użytkowników gościa, którzy w przeszłości miał uprawnień administratora. W takim przypadku należy zmienić UserType gościa albo ręcznie dołączyć Gość w członkostwie grupy.
 
-1. Utwórz grupę zabezpieczeń w usłudze Azure AD z gości, jako elementy członkowskie, jeśli odpowiednie grupy już nie istnieje. Na przykład można utworzyć grupę z członkostwem ręcznie utrzymywana gości. Alternatywnie można utworzyć grupę dynamicznego o nazwie takich jak "Gości Contoso" dla użytkowników w dzierżawie Contoso, którzy mają wartość atrybut UserType gościa.
+1. Utwórz grupę zabezpieczeń w usłudze Azure AD z gości, jako elementy członkowskie, jeśli odpowiednie grupy już nie istnieje. Na przykład można utworzyć grupę z członkostwem ręcznie utrzymywana gości. Alternatywnie można utworzyć grupę dynamicznego o nazwie takich jak "Gości Contoso" dla użytkowników w dzierżawie Contoso, którzy mają wartość atrybut UserType gościa.  W celu zwiększenia wydajności upewnij się, grupa jest głównie gości — nie wybierz grupy, która ma użytkowników, którzy nie wymagają przejrzenia.
 
 2. Aby rozpocząć Przegląd dostępu dla tej grupy, wybierz recenzentów należeć do siebie. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu](active-directory-azure-ad-controls-create-access-review.md).
 
-3. Poproś każdego gościa, aby przejrzeć ich członkostwa. Domyślnie każdy gościa, który zaakceptował zaproszenie otrzymuje wiadomość e-mail z usługi Azure AD z łączem do przeglądu dostępu w panelu dostępu w organizacji. Usługa Azure AD ma instrukcje dla gości na temat [weryfikować ich dostęp](active-directory-azure-ad-controls-perform-access-review.md).
+3. Poproś każdego gościa, aby przejrzeć ich członkostwa. Domyślnie każdy gościa, który zaakceptował zaproszenie otrzymuje wiadomość e-mail z usługi Azure AD z łączem do przeglądu dostępu w panelu dostępu w organizacji. Usługa Azure AD ma instrukcje dla gości na temat [weryfikować ich dostęp](active-directory-azure-ad-controls-perform-access-review.md).  Te gości, którzy nie zaakceptował ich zaproszenia pojawi się w wynikach przeglądu "Nie jest powiadamiany".
 
 4. Po recenzentów dać danych wejściowych, Zatrzymaj Przegląd dostępu. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu](active-directory-azure-ad-controls-complete-access-review.md).
 
-5. Usuń gościa dostępu dla gości, które zostały odrzucone, nie została ukończona przeglądu lub wcześniej nie zaakceptował ich zaproszenia. Jeśli niektóre gości są kontakty, które zostały wybrane do udziału w przeglądzie, ponieważ wcześniej zaakceptował zaproszenia, ich kont można wyłączyć za pomocą portalu Azure lub programu PowerShell. Gość nie musi mieć dostęp, nie jest kontakt można usunąć ich obiektu użytkownika z katalogu przy użyciu portalu Azure lub programu PowerShell.
+5. Usuń gościa dostępu dla gości, które zostały odrzucone, nie została ukończona przeglądu lub wcześniej nie zaakceptował ich zaproszenia. Jeśli niektóre gości są kontakty, które zostały wybrane do udziału w przeglądzie lub wcześniej zaakceptował zaproszenia, ich kont można wyłączyć za pomocą portalu Azure lub programu PowerShell. Gość nie musi mieć dostęp, nie jest kontakt można usunąć ich obiektu użytkownika z katalogu przy użyciu portalu Azure lub programu PowerShell, aby usunąć obiekt użytkownika gościa.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Create an access review for members of a group or access to an application (Tworzenie przeglądu dostępu dla członków grupy lub na potrzeby dostępu do aplikacji)](active-directory-azure-ad-controls-create-access-review.md)
 

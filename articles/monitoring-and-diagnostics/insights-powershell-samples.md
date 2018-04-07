@@ -1,9 +1,9 @@
 ---
-title: "Przykłady szybki start Azure PowerShell monitora. | Microsoft Docs"
-description: "Dostęp do funkcji Azure Monitor, takich jak skalowania automatycznego, alertów, elementów webhook i wyszukiwanie Dzienniki aktywności za pomocą programu PowerShell."
+title: Przykłady szybki start Azure PowerShell monitora. | Microsoft Docs
+description: Dostęp do funkcji Azure Monitor, takich jak skalowania automatycznego, alertów, elementów webhook i wyszukiwanie Dzienniki aktywności za pomocą programu PowerShell.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: c0761814-7148-4ab5-8c27-a2c9fa4cfef5
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 5a08fd7d20dc78512315ab5d154ba95bd8e8494b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7b6da166ddd53162ca1177e925f00291ae78de2a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykładów dla platformy Azure Monitor PowerShell szybki start
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji Azure monitora.
@@ -338,7 +338,7 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 Wiele usług platformy Azure zapewniają dodatkowe dzienniki i dane telemetryczne, które można wykonać jedną lub więcej z następujących czynności: 
  - można skonfigurować w celu zapisywania danych na koncie magazynu Azure
  - wysyłane do usługi Event Hubs
- - wysyłane do obszaru roboczego analizy dzienników OMS. 
+ - wysyłane do obszaru roboczego analizy dzienników. 
 
 Tę operację można wykonać tylko na poziomie zasobów. Centrum konta lub zdarzenia magazynu powinien znajdować się w tym samym regionie co zasób docelowy, na którym skonfigurowano ustawienie diagnostyki.
 
@@ -377,7 +377,7 @@ Włącz ustawienie diagnostyczne dla usługi Event Hubs
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
 ```
 
-Włącz ustawienie diagnostyczne dla analizy dzienników (OMS)
+Włącz ustawienie diagnostyczne dla analizy dzienników
 
 ```PowerShell
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId /subscriptions/s1/resourceGroups/insights-integration/providers/providers/microsoft.operationalinsights/workspaces/myWorkspace -Enabled $true

@@ -1,13 +1,13 @@
 ---
-title: "Omówienie standardowe ochrony przed atakami DDoS Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o usłudze Azure ochrona przed atakami DDoS."
+title: Omówienie standardowe ochrony przed atakami DDoS Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o usłudze Azure ochrona przed atakami DDoS.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb19baae1bc03633b7646fd2255ca910532595c5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Omówienie usługi Azure Standard ochrony przed atakami DDoS
 
@@ -65,7 +65,7 @@ Ochrona przed atakami DDoS — standardowe funkcje:
 - **Warstwy 3 do ochrony warstwy 7:** zapewnia ochrona przed atakami DDoS pełnego stosu, gdy jest używany z bramy aplikacji.
 - **Ograniczenie dużej skali:** można zminimalizować przez 60 ataku różnych typów, globalne pojemność, ochronę przed największy znane atakami DDoS. 
 - **Ataki metryki:** Summarized metryki na każdym ataki są dostępne za pośrednictwem Monitora Azure.
-- **Alerty ataku:** alertów można skonfigurować na rozpoczęcie i zakończenie ataku i w czasie trwania ataku, za pomocą wbudowanych ataku metryki. Alerty zintegrować oprogramowanie operacyjne, takich jak Microsoft Operations Management Suite, Splunk usługi Azure Storage, poczty E-mail i portalu Azure.
+- **Alerty ataku:** alertów można skonfigurować na rozpoczęcie i zakończenie ataku i w czasie trwania ataku, za pomocą wbudowanych ataku metryki. Alerty zintegrować oprogramowanie operacyjne, takie jak Microsoft Azure Log Analytics, Splunk usługi Azure Storage, poczty E-mail i portalu Azure.
 - **Koszt gwarancji:** transferu danych i aplikacji skalowalnych w poziomie zniżki w ramach ataków DDoS udokumentowane.
 
 ## <a name="ddos-protection-standard-mitigation"></a>Środki zaradcze standardowe ochrony przed atakami DDoS
@@ -82,6 +82,6 @@ Bloki ochrony przed atakami DDoS ataku ruchu i przekazuje pozostały ruch do jeg
 
 Klientów, aby symulować własnych ataków DDoS nie jest zalecane. Zamiast tego, klienci mogą użyć kanału pomocy technicznej aby żądania DDoS ataki symulacji wykonywane przez sieć platformy Azure. Inżynier skontaktuje się z rozmieszczania szczegóły takiego ataku (portów, protokołów, docelowych adresów IP) i Rozmieść czas, aby zaplanować uruchomienie testu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o zarządzaniu przy użyciu standardowych ochrony przed atakami DDoS [programu Azure PowerShell](ddos-protection-manage-ps.md) lub [portalu Azure](ddos-protection-manage-portal.md).

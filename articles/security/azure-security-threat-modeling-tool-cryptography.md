@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5e5d487c4c793a49ce1d4ac17f6fcd672e09bb90
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Ramka zabezpieczeń: Kryptografia | Środki zaradcze 
 | Produktów i usług | Artykuł |
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/05/2018
 | **Zastosowanie technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | <p>Produkty muszą używać zatwierdzonych generatory liczb losowych. Pseudolosowych funkcji, takich jak rand funkcji środowiska uruchomieniowego C, .NET Framework klasy System.Random lub funkcji systemu, takich jak GetTickCount w związku z tym nigdy nie należy w taki kod. Podwójne algorytm krzywej eliptycznej losowych liczb generator (DUAL_EC_DRBG) jest zabronione</p><ul><li>**CNG -** BCryptGenRandom (Użyj flagi BCRYPT_USE_SYSTEM_PREFERRED_RNG zalecane, chyba że obiekt wywołujący mogą zostać uruchomione w dowolnej IRQL większa niż 0 [czyli PASSIVE_LEVEL])</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (Nowe implementacje powinny używać BCryptGenRandom lub CryptGenRandom) * rand_s — * SystemPrng (dla trybu jądra)</li><li>**. NET -** RNGCryptoServiceProvider lub RNGCng</li><li>**Aplikacje Sklepu Windows -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom lub. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef losowych, liczba size_t, uint8_t *bajtów)</li><li>** Apple OS X (< 10,7)-** Użyj/dev/losowe można pobrać liczby losowe</li><li>**Java(including Google Android Java Code) -** java.security.SecureRandom klasy. Zauważ, że dla systemu Android 4.3 (galaretki ziarna), deweloperzy musi wykonać Android zalecane rozwiązania i zaktualizować swoje aplikacje, aby jawnie zainicjować PRNG z entropii z /dev/urandom lub /dev/random</li></ul>|
+| **Kroki** | <p>Produkty muszą używać zatwierdzonych generatory liczb losowych. Pseudolosowych funkcji, takich jak rand funkcji środowiska uruchomieniowego C, .NET Framework klasy System.Random lub funkcji systemu, takich jak GetTickCount w związku z tym nigdy nie należy w taki kod. Podwójne algorytm krzywej eliptycznej losowych liczb generator (DUAL_EC_DRBG) jest zabronione</p><ul><li>**CNG -** BCryptGenRandom (Użyj flagi BCRYPT_USE_SYSTEM_PREFERRED_RNG zalecane, chyba że obiekt wywołujący mogą zostać uruchomione w dowolnej IRQL większa niż 0 [czyli PASSIVE_LEVEL])</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (Nowe implementacje powinny używać BCryptGenRandom lub CryptGenRandom) * rand_s — * SystemPrng (dla trybu jądra)</li><li>**. NET -** RNGCryptoServiceProvider lub RNGCng</li><li>**Aplikacje Sklepu Windows -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom lub. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef losowych, liczba size_t, uint8_t \*bajtów)</li><li>**Apple OS X (< 10,7)-** Użyj/dev/losowe można pobrać liczby losowe</li><li>**Java(including Google Android Java Code) -** java.security.SecureRandom klasy. Zauważ, że dla systemu Android 4.3 (galaretki ziarna), deweloperzy musi wykonać Android zalecane rozwiązania i zaktualizować swoje aplikacje, aby jawnie zainicjować PRNG z entropii z /dev/urandom lub /dev/random</li></ul>|
 
 ## <a id="stream-ciphers"></a>Nie należy używać szyfrowania symetrycznego strumienia
 

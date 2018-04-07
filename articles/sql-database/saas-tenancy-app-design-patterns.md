@@ -1,20 +1,20 @@
 ---
-title: "Wzorce SaaS wielodostępne — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat wymagań i wspólne dane wzorce architektura wielodostępnej oprogramowania jako usługa (SaaS) aplikacje baz danych, które są uruchamiane w środowisku chmury Azure."
-keywords: "samouczek usługi sql database"
+title: Wzorce SaaS wielodostępne — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat wymagań i wspólne dane wzorce architektura wielodostępnej oprogramowania jako usługa (SaaS) aplikacje baz danych, które są uruchamiane w środowisku chmury Azure.
+keywords: samouczek usługi sql database
 services: sql-database
 author: billgib
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: ac4eceb2265850b18682b38141f24b18ca0f9b4b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3220c538e08753ed3515f42a5b8110df71745a63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS bazy danych dzierżawców wzorców
 
@@ -171,8 +171,8 @@ W poniższej tabeli przedstawiono różnice między modelami główny dzierżawy
 
 | Miary | Aplikacja autonomiczna | Bazy danych dla dzierżawcy | Podzielonej wieloma dzierżawcami |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Skalowanie | Medium<br />1 100s | Bardzo wysoka<br />1 100,000s | Nieograniczona liczba<br />1 1,000,000s |
-| Izolacji dzierżawców | Bardzo wysoka | Wysoka | Niski; z wyjątkiem dowolnej dzierżawy pojedyncze (która jest tylko do bazy danych MT). |
+| Skalowanie | Medium<br />1 100s | Bardzo wysokie<br />1 100,000s | Nieograniczona liczba<br />1 1,000,000s |
+| Izolacji dzierżawców | Bardzo wysokie | Wysoka | Niski; z wyjątkiem dowolnej dzierżawy pojedyncze (która jest tylko do bazy danych MT). |
 | Koszt bazy danych dla każdego dzierżawcy | Wysoki; rozmiar jest szczytów. | Niski; pule używane. | Najniższa, w przypadku małych dzierżaw w MT bazami danych. |
 | Monitorowanie wydajności i zarządzanie | Dla dzierżawcy tylko | Agregacja + na dzierżawy | Agregacja; Mimo że jest na dzierżawy tylko dla pojedynczych wystąpień. |
 | Programowanie złożoności | Małe | Małe | Średnia liczba godzin; z powodu dzielenia na fragmenty. |

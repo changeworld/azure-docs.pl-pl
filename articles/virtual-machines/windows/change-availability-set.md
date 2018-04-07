@@ -1,12 +1,12 @@
 ---
-title: "Zmień zestaw dostępności maszyn wirtualnych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zmienić zbiór dostępności dla maszyn wirtualnych przy użyciu programu Azure PowerShell i modelu wdrażania usługi Resource Manager."
-keywords: 
+title: Zmień zestaw dostępności maszyn wirtualnych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zmienić zbiór dostępności dla maszyn wirtualnych przy użyciu programu Azure PowerShell i modelu wdrażania usługi Resource Manager.
+keywords: ''
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 44c90f90-bc9a-4260-a36f-5465e2a1ef94
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
-ms.openlocfilehash: c10c947b6fc0737a7b9fba6b7f3efcae1f96638b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 938614d7427f691dcacbafa324694a9a7f37d3ca
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Zmień zbiór dostępności dla maszyny Wirtualnej systemu Windows
 W poniższych krokach opisano sposób Zmień zestaw dostępności maszyny wirtualnej przy użyciu programu Azure PowerShell. Maszynę wirtualną można dodać tylko do zestawu po utworzeniu dostępności. Aby zmienić dostępność, należy usunąć i ponownie utwórz maszynę wirtualną. 
@@ -35,7 +35,7 @@ W poniższych krokach opisano sposób Zmień zestaw dostępności maszyny wirtua
     $vm.Name
     ```
    
-    Rozmiar maszyny Wirtualnej
+    Rozmiar maszyny wirtualnej
    
     ```powershell
     $vm.HardwareProfile.VmSize
@@ -154,6 +154,6 @@ Poniższy skrypt zawiera przykład zebraniu wymaganych informacji usuwanie orygi
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dodaj dodatkowy magazyn do maszyny Wirtualnej przez dodanie dodatkowych [dysku danych](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

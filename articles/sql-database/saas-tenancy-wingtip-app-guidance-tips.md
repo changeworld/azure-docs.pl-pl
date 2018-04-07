@@ -1,20 +1,20 @@
 ---
-title: "Wskazówki dotyczące na przykład wielodostępnych aplikacji bazy danych SQL — Wingtip SaaS | Dokumentacja firmy Microsoft"
-description: "Zawiera wskazówki i kroki dotyczące instalowania i uruchamiania przykładowej aplikacji wielodostępnych, która używa usługi Azure SQL Database w przykładzie Wingtip biletów SaaS."
-keywords: "samouczek usługi sql database"
+title: Wskazówki dotyczące na przykład wielodostępnych aplikacji bazy danych SQL — Wingtip SaaS | Dokumentacja firmy Microsoft
+description: Zawiera wskazówki i kroki dotyczące instalowania i uruchamiania przykładowej aplikacji wielodostępnych, która używa usługi Azure SQL Database w przykładzie Wingtip biletów SaaS.
+keywords: samouczek usługi sql database
 services: sql-database
 author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 0bdb91fc9eb2fa23f8cf1e3f69206a89a93ceaee
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1e3ecd27ce7ec2e2763a7249428875e51872bf63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Ogólne wskazówki dotyczące pracy z biletów Wingtip przykładowej aplikacji SaaS
 

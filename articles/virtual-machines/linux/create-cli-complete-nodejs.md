@@ -1,11 +1,11 @@
 ---
-title: "Utwórz pełną środowiska Linux z interfejsu wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft"
-description: "Tworzenie magazynu, Maszynę wirtualną systemu Linux, sieci wirtualnej i podsieci, usługi równoważenia obciążenia, karty Sieciowej, publicznego adresu IP i sieciową grupę zabezpieczeń, wszystkie od podstaw przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure."
+title: Utwórz pełną środowiska Linux z interfejsu wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft
+description: Tworzenie magazynu, Maszynę wirtualną systemu Linux, sieci wirtualnej i podsieci, usługi równoważenia obciążenia, karty Sieciowej, publicznego adresu IP i sieciową grupę zabezpieczeń, wszystkie od podstaw przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a43e138d3497e01fe9e0e5c55a4a66adac767c6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Utwórz pełną środowiska Linux z interfejsu wiersza polecenia platformy Azure w wersji 1.0
 W tym artykule budujemy prosta sieć z modułem równoważenia obciążenia i para maszyn wirtualnych, które są przydatne w przypadku tworzenia i przetwarzania proste. Firma Microsoft przeprowadzenie procesu polecenie, dopóki nie uzyskasz dwóch pracy, bezpieczne maszyn wirtualnych systemu Linux których możesz połączyć z dowolnego miejsca w Internecie. Następnie możesz przejść do bardziej złożone sieci i środowiskach.
@@ -795,7 +795,7 @@ data:    Backend address pool id         : /subscriptions/guid/resourceGroups/my
 info:    network lb rule create command OK
 ```
 
-## <a name="create-a-load-balancer-health-probe"></a>Utwórz kondycji sondę modułu równoważenia obciążenia
+## <a name="create-a-load-balancer-health-probe"></a>Tworzenie sondy kondycji modułu równoważenia obciążenia
 Kondycję sondowania okresowo sprawdza na maszynach wirtualnych, które znajdują się za naszej usługi równoważenia obciążenia, aby upewnić się, ich działania i odpowiada na żądania, zgodnie z definicją. Jeśli nie, usuwane z operacji, aby upewnić się, że użytkownicy nie są być kierowany do nich. Można zdefiniować niestandardowe kontroli sondy kondycji, oraz odstępach czasu i wartości limitu czasu. Aby uzyskać więcej informacji na temat sondy kondycji, zobacz [sondy modułu równoważenia obciążenia](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Poniższy przykład tworzy TCP kondycji sondowany o nazwie `myHealthProbe`:
 
 ```azurecli
@@ -1287,5 +1287,5 @@ azure group deployment create --resource-group myNewResourceGroup \
 
 Warto przeczytać [więcej informacji na temat sposobu wdrażania z szablonów](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Więcej informacji na temat sposobu przyrostowo aktualizacja środowisk, użyj pliku parametrów i dostępu do szablonów z lokalizacji magazynu jednego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz możesz przystąpić do rozpoczęcia pracy z wieloma składnikami sieciowymi i maszyny wirtualne. To środowisko próbki służy do tworzenia aplikacji przy użyciu podstawowe składniki wprowadzone w tym miejscu.

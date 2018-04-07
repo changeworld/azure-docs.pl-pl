@@ -1,11 +1,10 @@
 ---
-title: "Wdrażanie aplikacji sieci web przy użyciu szablonu - DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie wdrażania konta bazy danych Azure rozwiązania Cosmos, aplikacje sieci Web usługi aplikacji Azure i przykładowej aplikacji sieci web przy użyciu szablonu usługi Azure Resource Manager."
+title: Wdrażanie aplikacji sieci web przy użyciu szablonu - DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie wdrażania konta bazy danych Azure rozwiązania Cosmos, aplikacje sieci Web usługi aplikacji Azure i przykładowej aplikacji sieci web przy użyciu szablonu usługi Azure Resource Manager.
 services: cosmos-db, app-service\web
-author: mimig1
-manager: jhubbard
-editor: monicar
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: 087d8786-1155-42c7-924b-0eaba5a8b3e0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 89513d6c1b9aa9f4709359d6d7681bff9c291618
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 468edd78e0ef8e13b2783485004a9db21906f1fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Wdrożenie bazy danych Azure rozwiązania Cosmos i Azure Web Apps App Service przy użyciu szablonu usługi Azure Resource Manager
 Ten samouczek pokazuje, jak za pomocą szablonu usługi Azure Resource Manager można wdrożyć oraz integracji [bazy danych programu Microsoft Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/), [usłudze Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) aplikacji sieci web i przykładowej aplikacji sieci web.
@@ -77,7 +76,7 @@ Teraz załóżmy wdrażania pierwszego szablonu.
    ![Zrzut ekranu przedstawiający wdrażanie szablonu interfejsu użytkownika](./media/create-website/TemplateDeployment6.png)
 7. Po zakończeniu wdrożenia zostanie otwarte okienko grupy zasobów.
    ![Zrzut ekranu okienka grupy zasobów](./media/create-website/TemplateDeployment7.png)  
-8. Korzystanie z aplikacji, przejdź do adresu URL aplikacji sieci web (w powyższym przykładzie adres URL jest http://mydemodocdbwebapp.azurewebsites.net).  Zostanie wyświetlony w następującej aplikacji sieci web:
+8. Korzystanie z aplikacji, przejdź do adresu URL aplikacji sieci web (w powyższym przykładzie adres URL może być http://mydemodocdbwebapp.azurewebsites.net).  Zostanie wyświetlony w następującej aplikacji sieci web:
    
    ![Przykładowa aplikacja Todo](./media/create-website/image2.png)
 9. Przejdź dalej i Utwórz kilka zadań w aplikacji sieci web, a następnie wróć do okienka grupy zasobów w portalu Azure. Kliknij zasób konta bazy danych Azure rozwiązania Cosmos na liście zasobów, a następnie kliknij przycisk **Eksploratora danych**.

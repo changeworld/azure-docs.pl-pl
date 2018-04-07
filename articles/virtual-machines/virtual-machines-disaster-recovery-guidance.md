@@ -1,11 +1,11 @@
 ---
 title: Scenariusze odzyskiwania po awarii dla maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, co należy zrobić w przypadku, gdy przerw w działaniu usługi Azure ma wpływ na maszynach wirtualnych platformy Azure."
+description: Dowiedz się, co należy zrobić w przypadku, gdy przerw w działaniu usługi Azure ma wpływ na maszynach wirtualnych platformy Azure.
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: kmouss
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
 ms.workload: virtual-machines
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb986a41e33501ee71c93a48457ac4114e33c671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70aec41c885ab81371f5318f7557b0e628ac3308
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co robić w przypadku, gdy przerw w działaniu usługi Azure ma wpływ na maszynach wirtualnych platformy Azure
 W firmie Microsoft firma Microsoft nad tym, aby upewnić się, że naszych usług są zawsze dostępne dla Ciebie przydatne. Wymusza naszych niezależnych czasami wpływ nam w sposób, aby spowodować zakłócenia w świadczeniu usług nieplanowane.
@@ -47,7 +47,7 @@ Jest najlepszym rozwiązaniem, jeśli nie skonfigurowano usługi Azure Site Reco
 >
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Uruchom [ochrona aplikacji uruchomionych na maszynach wirtualnych Azure](https://aka.ms/a2a-getting-started) przy użyciu usługi Azure Site Recovery
 

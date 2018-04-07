@@ -1,19 +1,19 @@
 ---
-title: "Dostęp warunkowy — baza danych Azure SQL i magazynem danych | Doc firmy Microsoft"
-description: "Informacje o sposobie konfigurowania warunkowego dostępu do bazy danych SQL Azure i magazynem danych."
+title: Dostęp warunkowy — baza danych Azure SQL i magazynem danych | Doc firmy Microsoft
+description: Informacje o sposobie konfigurowania warunkowego dostępu do bazy danych SQL Azure i magazynem danych.
 services: sql-database
 author: GithubMirek
 manager: johammer
 ms.custom: security
 ms.service: sql-database
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: f32928805275c9d797c8cb15bb731fe172d5903f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7f34bc7a28cdf3a23af54785002b12fba4baf1d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) i baza danych Azure SQL i magazynem danych  
 

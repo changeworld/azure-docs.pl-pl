@@ -1,26 +1,21 @@
 ---
-title: 'Wyniki analizy strumienia: opcje magazynu, analizy | Dokumentacja firmy Microsoft'
+title: Typy danych wyjściowych z zadania usługi analiza strumienia Azure
 description: Informacje o przeznaczonych dla opcji dane wyjściowe analiza strumienia danych w tym usługi Power BI dla wyników analizy.
-keywords: przekształcenia danych, wyniki analizy, opcje magazynu danych
-services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
-documentationcenter: ''
-author: SnehaGunda
+services: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 02/18/2017
-ms.author: sngun
-ms.openlocfilehash: ae8c4daf6b4beff3b1baf7ef5a5f3b84d706401a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Wyniki analizy strumienia: opcje magazynu, analizy
+# <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>Wyniki analizy strumienia: opcje magazynu i analiza
 Podczas tworzenia zadania usługi analiza strumienia, należy wziąć pod uwagę sposób używania danych. Jak można wyświetlić wyniki zadania usługi analiza strumienia i gdzie należy go przechowywać?
 
 Aby włączyć różnych wzorców aplikacji, usługi Azure Stream Analytics ma inne opcje do przechowywania danych wyjściowych i wyświetlania wyników analizy. To ułatwia wyświetlić dane wyjściowe zadania i zapewnia elastyczność w użycie i przechowywania danych wyjściowych zadania dla magazynów danych i innych celów. Żadnych danych wyjściowych konfigurowane w zadaniu musi istnieć przed rozpoczęcia zadania i uruchomić zdarzeń przepływu. Na przykład jeśli używasz magazynu obiektów Blob jako dane wyjściowe zadania nie tworzy konto magazynu automatycznie. Utwórz konto magazynu, przed uruchomieniem zadania usługi analiza strumienia.

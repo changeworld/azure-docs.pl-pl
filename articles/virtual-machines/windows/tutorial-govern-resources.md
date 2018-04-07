@@ -1,10 +1,10 @@
 ---
-title: "Decydować maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Samouczek — Zarządzanie maszyn wirtualnych platformy Azure, stosując RBAC, zasady blokad i tagi przy użyciu programu Azure PowerShell"
+title: Decydować maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Samouczek — Zarządzanie maszyn wirtualnych platformy Azure, stosując RBAC, zasady blokad i tagi przy użyciu programu Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9fbe9318e52f8299c3ef46f73c3be177de6d4a0c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 30f5fe83c46f2dbe1933e8347242be7fbb30a3e3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>Zarządzanie maszyny wirtualnej przy użyciu programu Azure PowerShell
 

@@ -1,6 +1,6 @@
 ---
-title: "Jak używać usługi tabel magazynu Azure lub interfejsu API tabeli bazy danych rozwiązania Cosmos Azure za pomocą języka PHP | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia i usuwania tabeli, za pomocą interfejsu API usługi tabeli za pomocą języka PHP i wstawianie, usuwanie i zapytanie tabeli."
+title: Jak używać usługi tabel magazynu Azure lub interfejsu API tabeli bazy danych rozwiązania Cosmos Azure za pomocą języka PHP | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia i usuwania tabeli, za pomocą interfejsu API usługi tabeli za pomocą języka PHP i wstawianie, usuwanie i zapytanie tabeli.
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 64ce8206b4b0ab3c831417d6e478f9c059188345
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Jak używać usługi tabel magazynu Azure lub rozwiązania Cosmos interfejsu API tabeli bazy danych z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -435,9 +435,6 @@ Kontrolach współbieżności, można ustawić Etag obiektu do usunięcia za pom
 * **addDeleteEntity** (dodaje operacji deleteEntity)
 
 Poniższy przykład przedstawia sposób wykonania **insertEntity** i **deleteEntity** operacji w ramach pojedynczego żądania. 
-
-> [!NOTE]
-> Azure DB rozwiązania Cosmos jeszcze nie obsługuje operacji partii dla tabel. 
 
 ```php
 require_once 'vendor/autoload.php';

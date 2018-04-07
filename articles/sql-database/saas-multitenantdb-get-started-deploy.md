@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i Eksploruj podzielonej aplikacji wielodostępnych, która używa bazy danych SQL Azure
 
@@ -57,7 +57,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 W procedurze w tej sekcji, podaj *użytkownika* wartość, która służy do zapewnienia są globalnie unikatowe nazwy zasobów i nazwę *grupy zasobów* zawierającą wszystkie zasoby utworzone przez wdrożenia aplikacji. Osoby o nazwie *Finley pods*, zalecamy:
 - *Użytkownik:* **af1***(jej inicjały oraz cyfry. Użyj innej wartości (np. af2) w przypadku wdrożenia aplikacji po raz drugi.)*
-- *Grupa zasobów:* **wingtip-dpt-af1** *(wingtip dpt wskazuje to aplikacja bazy danych dla dzierżawy. Dołączanie af1 nazwa użytkownika są powiązane z nazwy grupy zasobów z nazw zasobów, które zawiera.)*
+- *Grupa zasobów:* **wingtip-mt-af1** *(wingtip mt wskazuje jest podzielony na niezależne fragmenty aplikacja wielodostępnej. Dołączanie af1 nazwa użytkownika są powiązane z nazwy grupy zasobów z nazw zasobów, które zawiera.)*
 
 Teraz wybierz nazwy, a następnie zapisz je. 
 
@@ -123,7 +123,7 @@ Każda właściwość pobiera aplikację sieci web spersonalizowane listy ich zd
 Centralnego **Centrum zdarzeń** strony sieci Web zawiera listę łącza do dzierżawców w danego wdrożenia. Wykonaj następujące kroki, aby zgłaszać **Centrum zdarzeń** strony sieci Web i aplikacji sieci web poszczególnych:
 
 1. Otwórz **Centrum zdarzeń** w przeglądarce sieci web:
-    - http://events.Wingtip-MT.&lt;użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.)*
+    - http://events.wingtip-mt. &lt;użytkownika&gt;. trafficmanager.net &nbsp; *(Zastąp &lt;użytkownika&gt; o wartości użytkownika w danym wdrożeniu.)*
 
     ![centrum zdarzeń](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 

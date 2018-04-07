@@ -1,23 +1,19 @@
 ---
-title: Azure Stream Analytics JavaScript funkcje zdefiniowane przez użytkownika | Dokumentacja firmy Microsoft
-description: Wykonaj mechanika zaawansowanych zapytań z języka JavaScript funkcje zdefiniowane przez użytkownika
-keywords: JavaScript, funkcje udf zdefiniowane przez użytkownika
+title: Funkcje zdefiniowane przez użytkownika JavaScript w usłudze Azure Stream Analytics
+description: W tym artykule opisano sposób wykonywania mechanika zaawansowanych zapytań z języka JavaScript funkcje zdefiniowane przez użytkownika w usłudze Azure Stream Analytics.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: f2b14029ebea7f9cf1fa74a384ecbb72b08b7ad6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 462bd55dfae3a2c471d1111637a6de0bc95e6bfa
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-functions"></a>Azure Stream Analytics JavaScript funkcje zdefiniowane przez użytkownika
 Usługa Azure Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika napisane w języku JavaScript. Z zaawansowanej zestaw **ciąg**, **RegExp**, **matematyczne**, **tablicy**, i **data** metod tego JavaScript zawiera, danych złożonych przekształceń analiza strumienia zadania stają się łatwiejsze do utworzenia.
@@ -138,7 +134,7 @@ FROM
 ```
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

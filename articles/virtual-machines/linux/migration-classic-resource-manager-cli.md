@@ -1,11 +1,11 @@
 ---
-title: "Migrowanie maszyn wirtualnych do Menedżera zasobów przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono za pośrednictwem obsługiwanych platform migracji zasobów z klasycznego do usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure"
+title: Migrowanie maszyn wirtualnych do Menedżera zasobów przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono za pośrednictwem obsługiwanych platform migracji zasobów z klasycznego do usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 607ab59dbeb414c69a6272d0aeb00299296bca6a
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: f986246e74305789eb2978a95fd6a3e51accd25e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migracja zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure
 Te kroki pokazują, jak używać poleceń Azure interfejsu wiersza polecenia (CLI), aby migrować infrastruktury jako zasoby usługi (IaaS) z klasycznym modelu wdrażania modelu wdrażania usługi Azure Resource Manager. Wymaga artykułu [Azure CLI 1.0](../../cli-install-nodejs.md). Ponieważ 2.0 interfejsu wiersza polecenia Azure ma zastosowanie tylko dla zasobów usługi Azure Resource Manager, nie można użyć dla tej migracji.
@@ -180,7 +180,7 @@ Jeśli przygotowane Konfiguracja wygląda dobrze, można przejść do przodu i z
 
     azure storage account commit-migration <storageAccountName>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Omówienie migracji zasobów IaaS ze środowiska klasycznego do usługi Azure Resource Manager obsługiwane platformy](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Techniczne szczegółowe informacje na temat obsługiwanych platform migracji ze środowiska klasycznego do usługi Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -1,24 +1,19 @@
 ---
-title: Tworzenie wizualizacji i rozwiązywanie problemów z zadania usługi analiza strumienia | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wizualizacji potok zadania usługi analiza strumienia samoobsługi Rozwiązywanie problemów przy użyciu funkcji diagram diagnostyki.
-keywords: ''
-documentationcenter: ''
+title: Tworzenie wizualizacji i rozwiązywanie problemów z zadania usługi analiza strumienia Azure
+description: W tym artykule opisano sposób wizualizacji zadanie usługi Stream Analytics, za pomocą funkcji diagram diagnostyki celu samodzielnego rozwiązywania problemów.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: d87841cd-c59f-4a46-b46e-8b904fdc12e9
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: eae43a6a444514855229af760de6aa1cbec7840a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 523802f1f9a1dda19c5b6a66da7bc26fee851bd2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="visualize-and-troubleshoot-stream-analytics-jobs"></a>Tworzenie wizualizacji i rozwiązywanie problemów z zadania usługi analiza strumienia
 W Stream Analytics podobnie jak w przypadku innych technologii chmurowych, rozwiązywanie problemów z jest czasami potrzebne do dlaczego zadania nie tworzy oczekiwane dane wyjściowe (lub żadnych danych wyjściowych istotnego dla badania). Dzięki koncepcji na uwadze Stream Analytics zapewnia możliwość do wizualizacji zadanie przesyłania strumieniowego. To jest również przydatne jako narzędzia do modelowania i rozwiązanie po stronie tych wymagające dokumentacji ich pracy.

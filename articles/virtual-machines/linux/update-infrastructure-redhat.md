@@ -4,7 +4,7 @@ description: Dowiedz się więcej o Red Hat aktualizacji infrastruktury dla wyst
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 336990373027ae13688f41e453b9a262f120c6e0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b69cc226ca5b4f48747b033e0da5e7f991be112e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat infrastruktury aktualizacji na żądanie Red Hat Enterprise Linux w maszynach wirtualnych na platformie Azure
  [Red Hat aktualizacji infrastruktury](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług chmury, takich jak Azure zawartości hostowanej Red Hat repozytorium, Utwórz niestandardowe repozytoria specyficzne dla platformy Azure zawartości i był dostępny dla maszyn wirtualnych przez użytkownika końcowego.

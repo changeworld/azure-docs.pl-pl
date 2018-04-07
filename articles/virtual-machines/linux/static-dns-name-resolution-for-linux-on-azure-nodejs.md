@@ -4,7 +4,7 @@ description: Przy użyciu wewnętrznego serwera DNS do rozpoznawania nazw maszyn
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
-ms.openlocfilehash: 6072374cd7a37df6d7cc75479e24996dff3ee667
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 73ecbb5bfcc99eb4507cac24b0539a04c3d8f521
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="using-internal-dns-for-vm-name-resolution-on-azure"></a>Przy użyciu wewnętrznego serwera DNS do rozpoznawania nazw maszyny Wirtualnej na platformie Azure
 
@@ -180,6 +180,6 @@ azure vm create jenkins \
 
 Za pomocą flag interfejsu wiersza polecenia do wyróżnienia istniejących zasobów, poinstruuj firma Microsoft Azure, aby wdrożyć maszynę Wirtualną w istniejącej sieci.  Aby przywołują, po wdrożeniu sieci wirtualnej i podsieci, możesz je zostawić jako statyczne ani stałe zasoby w Twoim regionie Azure.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie niestandardowego środowiska dla maszyny wirtualnej z systemem Linux poprzez bezpośrednie użycie poleceń interfejsu wiersza polecenia platformy Azure](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Utwórz Maszynę wirtualną systemu Linux na platformie Azure za pomocą szablonów](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -1,13 +1,13 @@
 ---
-title: "Przenoszenie plików do i z maszyn wirtualnych systemu Linux platformy Azure z punktu połączenia usługi | Dokumentacja firmy Microsoft"
-description: "Bezpiecznie przenieść plików do i z maszyny Wirtualnej systemu Linux na platformie Azure przy użyciu połączenia usługi i parę kluczy SSH."
+title: Przenoszenie plików do i z maszyn wirtualnych systemu Linux platformy Azure z punktu połączenia usługi | Dokumentacja firmy Microsoft
+description: Bezpiecznie przenieść plików do i z maszyny Wirtualnej systemu Linux na platformie Azure przy użyciu połączenia usługi i parę kluczy SSH.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
-ms.openlocfilehash: 736f7c11ec3de04f1ad52ee29d0a4c952c9b0545
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0231e402848e617a46ca70470ba4d3272ace59f7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Przenoszenie plików do i z maszyny Wirtualnej systemu Linux przy użyciu połączenia usługi
 
@@ -73,6 +73,6 @@ scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 
 `-r` Flagi interfejsu wiersza polecenia powoduje, że punkt połączenia usługi do kopiowania rekursywnie pliki i katalogi z katalogu punktu wymienionych w poleceniu.  Także zauważyć, że składnia wiersza polecenia jest podobny do `cp` skopiować polecenia.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Zarządzanie użytkownikami, SSH i wyboru lub napraw dyski na maszynach wirtualnych systemu Linux platformy Azure przy użyciu rozszerzenia VMAccess](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -1,13 +1,13 @@
 ---
-title: "Tworzenie potoku CI/CD na platformie Azure z usługi Team Services | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć potok Visual Studio Team Services dla ciągłej integracji i dostarczania, która wdraża aplikację sieci web do usług IIS na maszynie Wirtualnej systemu Windows"
+title: Tworzenie potoku CI/CD na platformie Azure z usługi Team Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć potok Visual Studio Team Services dla ciągłej integracji i dostarczania, która wdraża aplikację sieci web do usług IIS na maszynie Wirtualnej systemu Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 006cac5606c411c9d86b36d0069021094fcdb1db
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Tworzenie potoku ciągłej integracji z Visual Studio Team Services i IIS
 Aby zautomatyzować kompilacji, testowe i wdrożenia etapy tworzenia aplikacji, można użyć ciągłej integracji i wdrażania (CI/CD) potoku. W tym samouczku utworzysz potok CI/CD przy użyciu programu Visual Studio Team Services i Windows maszyny wirtualnej (VM) na platformie Azure z uruchomionymi usługami IIS. Omawiane kwestie:
@@ -218,7 +218,7 @@ Z aplikacji sieci web uruchomionej na serwerze IIS teraz spróbuj całego proces
     ![Uruchamianie na IIS maszyny Wirtualnej na podstawie elementu konfiguracji/CD potoku aplikacji sieci web ASP.NET](media/tutorial-vsts-iis-cicd/running_web_app_cicd.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku utworzeniu aplikacji sieci web ASP.NET w usłudze Team Services i skonfigurowaniu kompilacji i definicji wersji, aby wdrożyć nową sieć web wdrażania pakietów do usług IIS na każdym zatwierdzeniu kodu. W tym samouczku omówiono:
 
@@ -230,7 +230,7 @@ W tym samouczku utworzeniu aplikacji sieci web ASP.NET w usłudze Team Services 
 > * Utworzyć wersję definicji, aby opublikować nową sieć web wdrażania pakietów do usług IIS
 > * Testowanie potoku CI/CD
 
-Przejdź do następnego samouczkiem, aby dowiedzieć się, jak zainstalować SQL &#92; IIS &#92;. NET stosu w parze składającej się z maszynami wirtualnymi systemu Windows.
+ADVANCE do samouczka dalej, aby dowiedzieć się, jak zainstalować program SQL&#92;IIS&#92;stos .NET w parze składającej się z maszynami wirtualnymi systemu Windows.
 
 > [!div class="nextstepaction"]
-> [SQL &#92; IIS &#92;. NET stosu](tutorial-iis-sql.md)
+> [SQL&#92;IIS&#92;.NET stack](tutorial-iis-sql.md)

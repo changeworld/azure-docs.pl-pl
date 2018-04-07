@@ -1,10 +1,10 @@
 ---
-title: "Utwórz maszynę wirtualną systemu Windows niestandardowego | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć niestandardowe maszyny wirtualnej systemu Windows z portalu Azure przy użyciu klasycznego modelu wdrażania."
+title: Utwórz maszynę wirtualną systemu Windows niestandardowego | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć niestandardowe maszyny wirtualnej systemu Windows z portalu Azure przy użyciu klasycznego modelu wdrażania.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/17
 ms.author: cynthn
-ms.openlocfilehash: 471ea60adf2107795749c084772fa92ec2df445b
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 0ed150b1cce967bc0be614a24cc1d363a0209373
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-custom-virtual-machine-running-windows-using-the-classic-deployment-model"></a>Utwórz niestandardowe maszynę wirtualną z systemem Windows przy użyciu klasycznego modelu wdrażania
 > [!IMPORTANT]

@@ -1,13 +1,13 @@
 ---
 title: Pobierz dysku VHD systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: "Pobierz dysku VHD systemu Linux przy użyciu wiersza polecenia platformy Azure i portalu Azure."
+description: Pobierz dysku VHD systemu Linux przy użyciu wiersza polecenia platformy Azure i portalu Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 20af28dd4caa6ee5487b9a2ed83715b9b16fad48
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d177e8de7ace571c57a0b8b39c8834fb5b115365
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Pobierz dysku VHD systemu Linux na platformie Azure
 
@@ -35,10 +35,10 @@ Nie można pobrać wirtualnego dysku twardego z platformy Azure, jeśli jest pod
 
 Aby użyć wirtualnego dysku twardego jako obraz do tworzenia innych maszyn wirtualnych, wykonaj następujące kroki:
 
-1. Aby podłączyć się do niego i anulowanie zastrzeżenia go, należy użyć SSH, nazwę konta i publiczny adres IP maszyny wirtualnej. + Parametr użytkownika spowoduje również usunięcie ostatniego elastycznie konta. Jeśli poświadczenia konta w celu maszyny Wirtualnej są pieczenia, Opuść to + parametr użytkownika. Poniższy przykład umożliwia usunięcie ostatniego elastycznie konta:
+1. Aby podłączyć się do niego i anulowanie zastrzeżenia go, należy użyć SSH, nazwę konta i publiczny adres IP maszyny wirtualnej. Można znaleźć publicznego adresu IP z [az sieci ip publicznego Pokaż](https://docs.microsoft.com/en-us/cli/azure/network/public-ip#az-network-public-ip-show). + Parametr użytkownika spowoduje również usunięcie ostatniego elastycznie konta. Jeśli poświadczenia konta w celu maszyny Wirtualnej są pieczenia, Opuść to + parametr użytkownika. Poniższy przykład umożliwia usunięcie ostatniego elastycznie konta:
 
     ```bash
-    ssh azureuser@40.118.249.235
+    ssh azureuser@<publicIpAddress>
     sudo waagent -deprovision+user -force
     exit 
     ```

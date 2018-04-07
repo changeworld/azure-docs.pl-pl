@@ -1,26 +1,21 @@
 ---
-title: Proces ciągłej integracji i wdrażania za pomocą narzędzi Visual Studio analizy strumienia | Dokumentacja firmy Microsoft
-description: Samouczek tworzenia usługi Stream Analytics tools dla Visual Studio do tworzenia, debugowania i Utwórz użytkownika zadania Stream Analytics krawędzi.
-keywords: visual studio, NuGet, DevOps, Edge jobs, Stream analytics
-documentationcenter: ''
+title: Krawędzi zadania usługi analiza strumienia Azure tools dla programu Visual Studio
+description: W tym artykule opisano sposób tworzenia, debugowania i Utwórz użytkownika zadania Stream Analytics krawędzi za pomocą narzędzi usługi analiza strumienia dla programu Visual Studio.
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/13/2018
 ms.author: sujie
-ms.openlocfilehash: c6e1d0693035ef343e20cee4b09f0669e089afee
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/13/2018
+ms.openlocfilehash: ec916ea2104df9d694aad2462df7ca5a487017f2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="develop-stream-analytics-edge-jobs-by-using-visual-studio-tools"></a>Tworzenie zadania Stream Analytics krawędzi za pomocą narzędzi Visual Studio
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Tworzenie zadania Stream Analytics krawędzi za pomocą narzędzi Visual Studio
 
 W tym samouczku Dowiedz się jak używać usługi Stream Analytics tools dla Visual Studio do tworzenia, debugowania i Utwórz użytkownika zadania Stream Analytics krawędzi. Po utworzeniu i przetestować zadania, można przejść do portalu Azure, aby wdrożyć na urządzeniach. 
 

@@ -1,8 +1,8 @@
 ---
-title: "Wyświetl dzienniki aktywności platformy Azure do monitorowania zasobów | Dokumentacja firmy Microsoft"
-description: "Użyj dzienników działania do przeglądu użytkownika akcje i błędy. Pokazuje portalu Azure w programie PowerShell, interfejsu wiersza polecenia platformy Azure i REST."
+title: Wyświetl dzienniki aktywności platformy Azure do monitorowania zasobów | Dokumentacja firmy Microsoft
+description: Użyj dzienników działania do przeglądu użytkownika akcje i błędy. Pokazuje portalu Azure w programie PowerShell, interfejsu wiersza polecenia platformy Azure i REST.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,15 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Wyświetl dzienniki aktywności inspekcji akcje zasobów
+
 Za pomocą działania dzienniki można określić:
 
 * jakie operacje zostały pobrane do zasobów w Twojej subskrypcji
@@ -38,6 +39,7 @@ Dzienniki aktywności są przechowywane przez 90 dni. Mogą wykonywać kwerendę
 Mogą pobierać informacje z Dzienniki aktywności za pośrednictwem portalu programu PowerShell, interfejsu wiersza polecenia Azure, interfejsu API REST szczegółowych informacji, lub [biblioteki .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="portal"></a>Portal
+
 1. Aby wyświetlić dzienniki aktywności za pośrednictwem portalu, wybierz **Monitor**.
    
     ![Wybierz Dzienniki aktywności](./media/resource-group-audit/select-monitor.png)
@@ -68,6 +70,7 @@ Mogą pobierać informacje z Dzienniki aktywności za pośrednictwem portalu pro
     ![operacji dotyczącej widoku](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
+
 1. Aby pobrać wpisów dziennika, należy uruchomić **Get-AzureRmLog** polecenia. Możesz podać dodatkowe parametry do filtrowania pozycji listy. Jeśli nie określisz godzina rozpoczęcia i zakończenia, wpisy w ciągu ostatniej godziny są zwracane. Na przykład, aby pobrać operacji dla grupy zasobów w ciągu ostatniej godziny uruchomienia:
 
   ```powershell
@@ -136,17 +139,20 @@ Mogą pobierać informacje z Dzienniki aktywności za pośrednictwem portalu pro
 
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-* Aby pobrać wpisów dziennika, należy uruchomić **Pokaż dziennik grupy azure** polecenia.
+
+Aby pobrać wpisów dziennika, należy uruchomić [listy dziennik aktywności monitora az](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) polecenia.
 
   ```azurecli
-  azure group log show ExampleGroup --json
+  az monitor activity-log list --resource-group <group name>
   ```
 
 
 ## <a name="rest-api"></a>Interfejs API REST
+
 Operacje REST do pracy z dziennika aktywności są częścią [interfejsu API REST usługi Insights](https://msdn.microsoft.com/library/azure/dn931943.aspx). Aby pobrać zdarzenia dziennika aktywności, zobacz [listy zdarzeń zarządzania w ramach subskrypcji](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Dzienniki aktywności platformy Azure może służyć przy użyciu usługi Power BI, aby uzyskać bardziej szczegółowe analizy o akcjach w ramach subskrypcji. Zobacz [widoku i analizować Dzienniki aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Aby dowiedzieć się więcej na temat ustawiania zasad zabezpieczeń, zobacz [kontroli dostępu opartej na roli Azure](../active-directory/role-based-access-control-configure.md).
 * Informacje na temat polecenia do wyświetlania operacji wdrażania, zobacz [wyświetlić operacje wdrażania](resource-manager-deployment-operations.md).

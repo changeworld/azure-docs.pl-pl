@@ -1,16 +1,16 @@
 ---
-title: "Skalowanie odnajdywania i ocena za pomocą migracji Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób oceny dużej liczby komputerów lokalnych za pomocą usługi Azure migracji."
+title: Skalowanie odnajdywania i ocena za pomocą migracji Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób oceny dużej liczby komputerów lokalnych za pomocą usługi Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -29,9 +29,9 @@ Zaplanuj odnajdywania i oceny na podstawie limitów następujące:
 
 | **Entity** | **Limit komputera** |
 | ---------- | ----------------- |
-| Project    | 1,500              | 
-| Odnajdowanie  | 1,500              |
-| Ocena | 1,500               |
+| Project    | 1,500             |
+| Odnajdowanie  | 1,500             |
+| Ocena | 1,500             |
 
 <!-- 
 - If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
@@ -40,12 +40,12 @@ Zaplanuj odnajdywania i oceny na podstawie limitów następujące:
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
     - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
--->
+      -->
 
 ## <a name="plan-multiple-discoveries"></a>Planowanie wielu odnajdywania
 
 Można użyć tego samego modułu zbierającego migracji Azure celu odkrycia wiele do jednego lub więcej projektów. Należy pamiętać, te zagadnienia dotyczące planowania:
- 
+
 - Po wykonaniu odnajdywania przy użyciu modułu zbierającego Azure migracji można ustawić zakresu odnajdowania do folderu na serwerze vCenter, datacenter, klastra lub hosta.
 - Aby zrobić więcej niż jedne operacje odnajdywania, sprawdź, czy serwer, który ma zostać przeprowadzone odnajdywanie maszyn wirtualnych znajdują się w foldery, centrów danych, klastrów i hostów, które obsługują ograniczenie 1500 maszyny vCenter.
 - Firma Microsoft zaleca do celów oceny maszyn z zależnościami, w tym samym projekcie i oceny. W programie vCenter Server upewnij się, że zależnych maszyny są w tym samym folderze, datacenter lub klastra na potrzeby oceny.
@@ -73,20 +73,30 @@ Jeśli masz wiele projektów, należy pobrać urządzenia modułu zbierającego 
 2. W **Odkryj maszyny**, wybierz pozycję **Pobierz**, aby pobrać plik komórek jajowych.
 3. W **skopiuj poświadczenia projektu**, skopiować identyfikator i klucz dla projektu. Będą potrzebne do skonfigurowania modułu zbierającego.
 
-   
+
 ### <a name="verify-the-collector-appliance"></a>Weryfikowanie urządzenia modułu zbierającego
 
 Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do wdrażania:
 
 1. Na maszynie, na którą pobrano plik, otwórz okno wiersza polecenia administratora.
+
 2. Uruchom następujące polecenie, aby wygenerować skrót pliku OVA:
 
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
    Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
 3. Upewnij się, czy wygenerowane skrótu zgodna następujące ustawienia.
 
-    Dla wersji komórek jajowych 1.0.9.5
+    Dla wersji komórek jajowych 1.0.9.7
+
+    **Algorytm** | **Wartość skrótu**
+    --- | ---
+    MD5 | d5b6a03701203ff556fa78694d6d7c35
+    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
+
+    OVA w wersji 1.0.9.5
 
     **Algorytm** | **Wartość skrótu**
     --- | ---
@@ -94,7 +104,7 @@ Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do w
     SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
     SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
 
-    Dla wersji komórek jajowych 1.0.9.2
+    OVA w wersji 1.0.9.2
 
     **Algorytm** | **Wartość skrótu**
     --- | ---
@@ -109,7 +119,7 @@ Sprawdź, czy plik komórek jajowych jest bezpieczne, przed przystąpieniem do w
     MD5 | 71139e24a532ca67669260b3062c3dad
     SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
     SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
- 
+
     OVA w wersji 1.0.8.49
 
     **Algorytm** | **Wartość skrótu**
@@ -136,11 +146,11 @@ Pobrany plik należy zaimportować do programu vCenter Server:
 
 2. W Kreatorze wdrażania szablonu OVF > **źródła**, określ lokalizację pliku komórek jajowych.
 3. W polach **Name** (Nazwa) i **Location** (Lokalizacja) wprowadź przyjazną nazwę maszyny wirtualnej modułu zbierającego oraz obiekt magazynu, w którym będzie hostowana maszyna wirtualna.
-5. W polu **Host/Cluster** (Host/klaster) określ host lub klaster, na którym będzie działać maszyna wirtualna modułu zbierającego.
-7. W obszarze Magazyn określ docelowy magazyn dla maszyny wirtualnej modułu zbierającego.
-8. W obszarze **Disk Format** (Format dysku) określ typ i rozmiar dysku.
-9. W obszarze **Network Mapping** (Mapowanie sieci) określ sieć, z którą będzie się łączyć maszyna wirtualna modułu zbierającego. Sieci wymaga łączności z Internetem można wysłać metadanych na platformie Azure. 
-10. Przejrzyj i Potwierdź ustawienia, a następnie wybierz **Zakończ**.
+4. W polu **Host/Cluster** (Host/klaster) określ host lub klaster, na którym będzie działać maszyna wirtualna modułu zbierającego.
+5. W obszarze Magazyn określ docelowy magazyn dla maszyny wirtualnej modułu zbierającego.
+6. W obszarze **Disk Format** (Format dysku) określ typ i rozmiar dysku.
+7. W obszarze **Network Mapping** (Mapowanie sieci) określ sieć, z którą będzie się łączyć maszyna wirtualna modułu zbierającego. Sieci wymaga łączności z Internetem można wysłać metadanych na platformie Azure. 
+8. Przejrzyj i Potwierdź ustawienia, a następnie wybierz **Zakończ**.
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>Określ identyfikator i klucz dla każdego projektu
 
@@ -157,16 +167,16 @@ Zalecane ustawienie najwyższego poziomu wspólnych (3) dla poziomu statystyk, t
 
 W poniższej tabeli wymieniono także wyniki oceny, które zostaną zmienione, jeśli nie ma określonego licznika.
 
-|Licznik                                  |Poziom    |Poziom na urządzenie  |Ocena wpływu                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |Nie dotyczy                |Zalecany rozmiar maszyny Wirtualnej i kosztów                    |
-|mem.usage.average                        | 1       |Nie dotyczy                |Zalecany rozmiar maszyny Wirtualnej i kosztów                    |
-|virtualDisk.read.average                 | 2       |2                 |Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej         |
-|virtualDisk.write.average                | 2       |2                 |Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej         |
-|net.received.average                     | 2       |3                 |Koszt rozmiar i sieci maszyny Wirtualnej                        |
-|net.transmitted.average                  | 2       |3                 |Koszt rozmiar i sieci maszyny Wirtualnej                        |
+| Licznik                                 | Poziom | Poziom na urządzenie | Ocena wpływu                    |
+| --------------------------------------- | ----- | ---------------- | ------------------------------------ |
+| cpu.usage.average                       | 1     | Nie dotyczy               | Zalecany rozmiar maszyny Wirtualnej i kosztów         |
+| mem.usage.average                       | 1     | Nie dotyczy               | Zalecany rozmiar maszyny Wirtualnej i kosztów         |
+| virtualDisk.read.average                | 2     | 2                | Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej |
+| virtualDisk.write.average               | 2     | 2                | Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej |
+| virtualDisk.numberReadAveraged.average  | 1     | 3                | Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej |
+| virtualDisk.numberWriteAveraged.average | 1     | 3                | Rozmiar dysku, kosztem magazynowania i rozmiar maszyny Wirtualnej |
+| net.received.average                    | 2     | 3                | Koszt rozmiar i sieci maszyny Wirtualnej             |
+| net.transmitted.average                 | 2     | 3                | Koszt rozmiar i sieci maszyny Wirtualnej             |
 
 > [!WARNING]
 > Jeśli właśnie ustawione na wyższy poziom statystyki potrwa na dzień do generowania liczników wydajności. Tak firma Microsoft zaleca uruchomienia odnajdywania po jednym dniu.
@@ -175,28 +185,28 @@ W poniższej tabeli wymieniono także wyniki oceny, które zostaną zmienione, j
 
 Dla każdego odnajdowania, które należy wykonać możesz uruchomić moduł zbierający do odnajdywanie maszyn wirtualnych w zakresie wymaganych. Uruchom odnajdywanie jeden po drugim. Równoczesne operacje odnajdywania nie są obsługiwane, a poszczególne zadania odnajdywania musi mieć inny zakres.
 
-1. W konsoli klienta vSphere kliknij maszynę wirtualną prawym przyciskiem myszy, a następnie kliknij pozycję **Open Console** (Otwórz konsolę).
-2. Określ preferencje dotyczące języka, strefy czasowej i hasła dla urządzenia.
-3. Na pulpicie, wybierz **uruchom moduł zbierający** skrótów.
-4. Moduł zbierający migracji Azure Otwórz **konfigurowanie wymagań wstępnych** , a następnie:
+1.  W konsoli klienta vSphere kliknij maszynę wirtualną prawym przyciskiem myszy, a następnie kliknij pozycję **Open Console** (Otwórz konsolę).
+2.  Określ preferencje dotyczące języka, strefy czasowej i hasła dla urządzenia.
+3.  Na pulpicie, wybierz **uruchom moduł zbierający** skrótów.
+4.  Moduł zbierający migracji Azure Otwórz **konfigurowanie wymagań wstępnych** , a następnie:
 
-   a. Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
+    a. Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
 
-   Moduł zbierający sprawdzi, czy maszyna wirtualna ma dostęp do Internetu.
-   
-   b. Jeśli maszyna wirtualna uzyskuje dostęp do Internetu za pośrednictwem serwera proxy, zaznacz **ustawienia serwera Proxy**i określić adres serwera proxy i port nasłuchiwania. Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia.
+    Moduł zbierający sprawdzi, czy maszyna wirtualna ma dostęp do Internetu.
 
-   Moduł zbierający sprawdzi, czy usługa modułu zbierającego jest uruchomiona. Jest ona instalowana domyślnie na maszynie wirtualnej modułu zbierającego.
+    b. Jeśli maszyna wirtualna uzyskuje dostęp do Internetu za pośrednictwem serwera proxy, zaznacz **ustawienia serwera Proxy**i określić adres serwera proxy i port nasłuchiwania. Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia.
 
-   c. Pobierz i zainstaluj VMware PowerCLI.
+    Moduł zbierający sprawdzi, czy usługa modułu zbierającego jest uruchomiona. Jest ona instalowana domyślnie na maszynie wirtualnej modułu zbierającego.
 
-5. W obszarze **Specify vCenter Server details** (Określ szczegóły serwera vCenter) wykonaj następujące czynności:
+    c. Pobierz i zainstaluj VMware PowerCLI.
+
+5.  W obszarze **Specify vCenter Server details** (Określ szczegóły serwera vCenter) wykonaj następujące czynności:
     - Określ nazwę (FQDN) lub adres IP serwera vCenter.
     - W **nazwy użytkownika** i **hasło**, określ poświadczenia konta tylko do odczytu, które moduł zbierający będzie używane do wykrywania maszyn wirtualnych w programie vCenter Server.
     - W **, wybierz zakres**, wybierz zakres odnajdywania maszyny Wirtualnej. Moduł zbierający może odnajdywać tylko maszyny wirtualne w podanym zakresie. Zakresem może być określony folder, centrum danych albo klaster. Nie powinien on zawierać więcej niż 1000 maszyn wirtualnych. 
 
-6. W **Określ migrację**, podaj identyfikator i klucz dla projektu. Jeśli nie zostaną skopiowane, otwórz Azure portal z modułu zbierającego maszyny Wirtualnej. Do projektu **omówienie** wybierz pozycję **odnajdywanie maszyn** i skopiuj wartości.  
-7. W **wyświetlić postęp kolekcji**, monitorować proces odnajdywania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
+6.  W **Określ migrację**, podaj identyfikator i klucz dla projektu. Jeśli nie zostaną skopiowane, otwórz Azure portal z modułu zbierającego maszyny Wirtualnej. Do projektu **omówienie** wybierz pozycję **odnajdywanie maszyn** i skopiuj wartości.  
+7.  W **wyświetlić postęp kolekcji**, monitorować proces odnajdywania i sprawdź, że metadane zbierane z maszyn wirtualnych znajduje się w zakresie. Moduł zbierający informuje o szacowanym czasie odnajdowania.
 
 
 ### <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu

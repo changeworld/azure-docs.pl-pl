@@ -14,11 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
-ms.openlocfilehash: ec0c6e22919e84bbaed284e16211ef52e526991d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 737054aefa684b3fc486c860253c69afbb6eaf0c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Jak używać Magazynu kolejek w języku PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -158,7 +158,6 @@ $queueClient = QueueRestProxy::createQueueService($connectionString);
 
 try    {
     // Create message.
-    $builder = new ServicesBuilder();
     $queueClient->createMessage("myqueue", "Hello World!");
 }
 catch(ServiceException $e){
@@ -414,7 +413,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy znasz już podstawy magazynu kolejek Azure, skorzystaj z poniższych linków, aby dowiedzieć się więcej o bardziej skomplikowanych zadaniach magazynu:
 
 * Odwiedź stronę [dokumentacja interfejsu API dla biblioteki klienta magazynu Azure PHP](http://azure.github.io/azure-storage-php/)

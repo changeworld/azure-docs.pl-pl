@@ -1,34 +1,29 @@
 ---
-title: Instrukcje instalacji usługi analiza strumienia Azure tools dla programu Visual Studio | Dokumentacja firmy Microsoft
-description: Instrukcje instalacji usługi analiza strumienia Azure tools dla programu Visual Studio
-keywords: Visual studio
-documentationcenter: ''
+title: Konfiguracja usługi analiza strumienia Azure tools dla programu Visual Studio
+description: W tym artykule opisano wymagania dotyczące instalacji i konfiguracji usługi Azure Stream Analytics tools dla programu Visual Studio.
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 9/19/2017
 ms.author: sujie
-ms.openlocfilehash: fe1f2158439b2c04e8232eb6fe3c9faf79641ffe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 09/19/2017
+ms.openlocfilehash: 511658fc0e2b480987455007dac5f55cd7850feb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="installation-instructions-for-stream-analytics-tools-for-visual-studio"></a>Instrukcje instalacji usługi Stream Analytics tools dla programu Visual Studio
-Azure Stream Analytics tools są teraz obsługiwane w Visual Studio 2017 r. 2015 i 2013. W tym dokumencie wprowadzeniu sposobu instalowania i odinstalowywania narzędzia.
+# <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Zainstaluj narzędzia analiza strumienia Azure dla programu Visual Studio
+Azure Stream Analytics tools są teraz obsługiwane w Visual Studio 2017 r. 2015 i 2013. Ten dokument zawiera opis sposobu instalowania i odinstalowywania narzędzia.
 
-Dowiedz się, jak używać [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Aby uzyskać więcej informacji na temat używania narzędzia, zobacz [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="install"></a>Instalowanie
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 * Pobierz [programu Visual Studio 2017 (15.3 lub nowszej)](https://www.visualstudio.com/). Enterprise (Ultimate/Premium), Professional i społeczności wersje są obsługiwane. Express edition nie jest obsługiwane. 
-* Narzędzia do analizy strumienia są częścią **Azure programowanie** i **magazynu danych i przetwarzania** obciążenia w programie Visual Studio 2017 r. Włącz albo jeden z tych dwóch obciążeń w ramach instalacji programu Visual Studio.
+* Narzędzia do analizy strumienia są częścią **Azure programowanie** i **magazynu danych i przetwarzania** obciążenia w programie Visual Studio 2017 r. Włącz jedno z tych dwóch obciążeń w ramach instalacji programu Visual Studio.
 
 Włącz **magazynu danych i przetwarzania** obciążenia, jak pokazano:
 

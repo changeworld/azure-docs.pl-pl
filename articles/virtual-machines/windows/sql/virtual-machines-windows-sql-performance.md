@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/20/2018
 ms.author: jroth
-ms.openlocfilehash: 2aa066caf6239f29038228c3c91607d913e70682
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4f955a0880254cb67ccd3e46ad04b3685341263
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Najlepsze rozwiązania w zakresie wydajności dla programu SQL Server w usłudze Azure Virtual Machines
 
@@ -39,7 +39,7 @@ Oto lista szybkie sprawdzenie do uzyskania optymalnej wydajności programu SQL S
 
 | Obszar | Optymalizacje |
 | --- | --- |
-| [Rozmiar maszyny Wirtualnej](#vm-size-guidance) |[DS3](../sizes-memory.md) lub nowszej wersji Enterprise programu SQL.<br/><br/>[DS2](../sizes-memory.md) lub nowszej wersji Standard programu SQL i sieci Web. |
+| [Rozmiar maszyny Wirtualnej](#vm-size-guidance) |[DS3](../sizes-general.md) lub nowszej wersji Enterprise programu SQL.<br/><br/>[DS2](../sizes-general.md) lub nowszej wersji Standard programu SQL i sieci Web. |
 | [Storage](#storage-guidance) |Użyj [magazyn w warstwie Premium](../premium-storage.md). Magazynu w warstwie standardowa zaleca się tylko do programowania i testowania.<br/><br/>Zachowaj [konta magazynu](../../../storage/common/storage-create-storage-account.md) i maszyny Wirtualnej serwera SQL, w tym samym regionie.<br/><br/>Wyłącz Azure [magazynu geograficznie nadmiarowego](../../../storage/common/storage-redundancy.md) (replikacja geograficzna) na koncie magazynu. |
 | [Dyski](#disks-guidance) |Użyj co najmniej 2 [dysków P30](../premium-storage.md#scalability-and-performance-targets) (1 dla plików dziennika; 1 dla danych plików i TempDB).<br/><br/>Unikaj używania systemu operacyjnego lub dysków tymczasowego magazynu bazy danych lub rejestrowania.<br/><br/>Włącz buforowanie odczytu na dyskach hosting plików danych i plików danych bazy danych TempDB.<br/><br/>Nie należy włączać buforowanie na dyskach hosting pliku dziennika.<br/><br/>Ważne: Zatrzymaj usługę programu SQL Server, w przypadku zmiany ustawień pamięci podręcznej dysku maszyny Wirtualnej platformy Azure.<br/><br/>Paskowych wiele dysków danych Azure, aby uzyskać większą przepływność we/wy.<br/><br/>Format z opisem rozmiarów alokacji. |
 | [WE/WY](#io-guidance) |Włączanie kompresji strony bazy danych.<br/><br/>Włącz inicjowanie błyskawicznych plików dla danych plików.<br/><br/>Ogranicz automatycznego przyrostu bazy danych.<br/><br/>Wyłącz autoshrink w bazie danych.<br/><br/>Przenieś wszystkie bazy danych do dysków z danymi, w tym systemowych baz danych.<br/><br/>Przenieś programu SQL Server błąd dziennika śledzenia pliku katalogów i dysków z danymi.<br/><br/>Ustawienia domyślne lokalizacje plików kopii zapasowej i bazy danych.<br/><br/>Włącz zablokowanych stron.<br/><br/>Zastosuj poprawki wydajności programu SQL Server. |

@@ -1,11 +1,11 @@
 ---
-title: "Wymuszanie zabezpieczeń przy użyciu zasad na maszynach wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Sposób stosowania zasad do Menedżera zasobów systemu Windows maszyny wirtualnej platformy Azure"
+title: Wymuszanie zabezpieczeń przy użyciu zasad na maszynach wirtualnych systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Sposób stosowania zasad do Menedżera zasobów systemu Windows maszyny wirtualnej platformy Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0b71ba54-01db-43ad-9bca-8ab358ae141b
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 4bb9a5087ead309ab24128594c53ae313cd4b63c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7ec348bbd75bfce268d1e3d7a46b79397ee39f98
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Stosowania zasad do maszyn wirtualnych systemu Windows z usługą Azure Resource Manager
 Korzystając z zasad, organizacja może wymusić różnych konwencje i zasady w całym przedsiębiorstwie. Wymuszanie zachowanie można zmniejszenia ryzyka podczas pracy nad dla sukcesu organizacji. W tym artykule opisano sposób można użyć zasad usługi Azure Resource Manager do definiowania zachowanie w przypadku maszyn wirtualnych w organizacji.
@@ -225,7 +225,7 @@ Może zajść potrzeba zabraniać użycia pewnych typów rozszerzeń. Na przykł
 ```
 
 
-## <a name="azure-hybrid-use-benefit"></a>Korzyści Użyj hybrydowe platformy Azure
+## <a name="azure-hybrid-use-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 
 Gdy użytkownik ma licencję lokalnie, można zapisać opłata licencji na maszynach wirtualnych. Jeśli nie masz licencji, należy zabraniać opcji. Następujące zasady zabrania użycia korzyści Użyj Azure hybrydowych (AHUB):
 
@@ -249,7 +249,7 @@ Gdy użytkownik ma licencję lokalnie, można zapisać opłata licencji na maszy
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Po zdefiniowaniu reguły zasad (jak pokazano w powyższych przykładach), należy utworzyć definicji zasad i przypisać je do zakresu. Zakres może być subskrypcji, grupy zasobów lub zasobów. Aby przypisać zasady, zobacz [portal Azure używany do przypisywania i zarządzanie zasadami zasobów](../../azure-policy/assign-policy-definition.md), [Użyj programu PowerShell, aby przypisać zasady](../../azure-policy/assign-policy-definition-ps.md), lub [Użyj wiersza polecenia platformy Azure można przypisać zasady](../../azure-policy/assign-policy-definition-cli.md).
 * Aby obejrzeć wprowadzenie do zasad zasobów, zobacz [co to jest Azure zasad?](../../azure-policy/azure-policy-introduction.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](../../azure-resource-manager/resource-manager-subscription-governance.md) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

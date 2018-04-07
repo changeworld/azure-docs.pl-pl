@@ -1,18 +1,17 @@
 ---
-title: "Sposób wyszukiwania adresu przy użyciu usługi wyszukiwanie Azure usługi na podstawie lokalizacji (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wyszukiwanie adresu przy użyciu lokalizacji na podstawie usług Azure (wersja zapoznawcza) usługi wyszukiwania"
+title: Sposób wyszukiwania adresu przy użyciu usługi wyszukiwanie Azure usługi na podstawie lokalizacji (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyszukiwanie adresu przy użyciu lokalizacji na podstawie usług Azure (wersja zapoznawcza) usługi wyszukiwania
 services: location-based-services
-keywords: "Nie dodawaj ani nie edytuj słów kluczowych bez konsultacji z ekspertem SEO."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8b886607fe0915396a659593cd5910a271fca93
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Jak znaleźć adres przy użyciu usługi wyszukiwanie Azure usługi na podstawie lokalizacji (wersja zapoznawcza)
 Usługa wyszukiwania jest RESTful zestaw interfejsów API przeznaczone dla deweloperów wyszukać adresy, miejsca, punkty zainteresowań, listy biznesowych i innych informacji geograficznych. Usługa wyszukiwania przypisuje szerokości geograficznej/długości określonego adresu, krzyżowego ulicy, geograficzne funkcji lub z interesujących (POI). Współrzędne geograficzne wartości zwracane przez usługę wyszukiwania interfejsów API mogą być używane jako parametry w innych Azure lokalizacji na podstawie usług takich jak API przepływ ruchu i trasy.

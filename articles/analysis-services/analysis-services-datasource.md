@@ -1,25 +1,25 @@
 ---
-title: "Źródła danych obsługiwane w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "Zawiera opis źródła danych obsługiwane w przypadku modeli danych z usług Azure Analysis Services."
+title: Źródła danych obsługiwane w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Zawiera opis źródła danych obsługiwane w przypadku modeli danych z usług Azure Analysis Services.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 6ec63319-ff9b-4b01-a1cd-274481dc8995
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2018
+ms.date: 04/05/2018
 ms.author: owend
-ms.openlocfilehash: 9f2a4acdd0a2b29bc1485f62c0049f0065cbf711
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 16bf333fe18c912db7cb81e74fce29960b0728d9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w usłudze Azure Analysis Services
 
@@ -33,12 +33,10 @@ ms.lasthandoff: 03/02/2018
 |Azure SQL Data Warehouse     |   Yes      |   Yes       |
 |Azure Blob Storage*     |   Yes       |    Nie      |
 |Azure Table Storage*    |   Yes       |    Nie      |
-|Azure rozwiązania Cosmos bazy danych (Beta) *     |  Yes        |  Nie        |
+|Azure Cosmos DB*     |  Yes        |  Nie        |
 |Azure Data Lake Store*     |   Yes       |    Nie      |
 |Azure HDInsight HDFS*     |     Yes     |   Nie       |
-|Azure HDInsight Spark (Beta) *     |   Yes       |   Nie       |
-|Bazy danych platformy Azure dla programu MySQL (wersja zapoznawcza) *     |   Yes       |   Nie      |
-|Bazy danych platformy Azure dla PostgreSQL (wersja zapoznawcza) *     | Yes         |  Nie       |
+|Azure HDInsight Spark*     |   Yes       |   Nie       |
 ||||
 
 \* Tylko modele w 1400 tabelarycznych.

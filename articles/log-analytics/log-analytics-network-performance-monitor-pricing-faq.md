@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: 84a3834416c7d93ecb4f51fea9c7baed8af85db0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5b2335ee2584af07ed23ce87be92a869f3a07ba1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cenowych dla monitora wydajności sieci platformy Azure
 
-Firma Microsoft nasłuch do Ciebie i zostały niedawno wprowadzone [nowych cen środowisko](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/), dla różnych monitorowanie usług w obrębie platformy Azure.
+Firma Microsoft nasłuchiwanie swoją opinię i zostały niedawno wprowadzone [nowych cen środowisko](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/), dla różnych monitorowanie usług w obrębie platformy Azure.
 
 Ten dokument zawiera cenową zmiany dotyczące usługi Azure [monitora wydajności sieci](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM), w żadnym łatwy do odczytania pytań i odpowiedzi w formacie.
 
@@ -32,11 +32,11 @@ Monitor wydajności sieci składa się z trzech składników:
 * [Monitor punktu końcowego usługi](https://docs.microsoft.com/azure/networking/network-monitoring-overview#service-endpoint-monitor) i
 * [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
-Poniższej sekcji opisano zmiany ceny dla monitora wydajności, ExpressRoute Monitor i Monitor punktu końcowego usługi.
+Poniżej wyjaśniono cenową zmiany powyżej składników.
 
 ## <a name="performance-monitor-pm"></a>Monitor wydajności (PM)
 
-**Jak jest użycie monitora wydajności rozliczane w starym systemie?**
+**Jak jest użycie monitora wydajności rozliczane w starym modelu?**
 
 Rozliczenia dla NPM został na podstawie użycia/dwa składniki:
 * Węzły: Wszystkie transakcje syntetyczne pochodzą i wygasać w węzłach. Węzły są też określane jako agentów lub MMA (agenci zarządzania firmy Microsoft).
@@ -121,3 +121,8 @@ Połączenie jest test uzyskiwanie na jeden punkt końcowy (adres URL lub z usł
 
 - Zapoznaj się [monitorowania połączenia](https://azure.microsoft.com/pricing/details/network-watcher/) sekcji kosztów monitorowania punkt końcowy dla całego miesiąca.
 - Opłata za danych jest dostępne na [cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/) dla analizy dzienników.  (Sekcji: wprowadzanie danych).
+
+## <a name="references"></a>Dokumentacja
+
+- [Często zadawane pytania dotyczące cen analizy dziennika](https://azure.microsoft.com/pricing/details/log-analytics/) -sekcji często zadawanych PYTAŃ zawiera informacje o warstwę bezpłatna, każdy węzeł cenową itp.
+

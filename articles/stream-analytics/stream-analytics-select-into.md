@@ -1,24 +1,19 @@
 ---
-title: Debugowania zapytań usługi analiza strumienia Azure przy użyciu SELECT INTO | Dokumentacja firmy Microsoft
-description: Przykładowe zapytanie pośredniej danych przy użyciu instrukcji SELECT INTO w analiza strumienia
-keywords: ''
+title: Debugowania zapytań usługi analiza strumienia Azure przy użyciu SELECT INTO
+description: W tym artykule opisano sposób przykładowe zapytanie pośredniej danych w ramach zadania usługi analiza strumienia Azure przy użyciu instrukcji SELECT INTO w składni zapytania.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: f232ba9804886f416ac0941ddc7e602782b6ebe2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: ccaa6203e4bfe52758e26416646f9152ac5378ea
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>Debugowania zapytania przy użyciu instrukcji SELECT INTO
 
@@ -73,7 +68,7 @@ Dane w danych wyjściowych ten czas jest sformatowany i wypełniane zgodnie z oc
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

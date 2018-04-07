@@ -1,8 +1,8 @@
 ---
 title: Przywracanie aplikacji na platformie Azure
-description: "Dowiedz się, jak przywracanie z kopii zapasowej aplikacji."
+description: Dowiedz się, jak przywracanie z kopii zapasowej aplikacji.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 60b55acaf687dae76e054b428b8d6584d8eb09f8
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 502e3cefca5e2e60efe6a9875de0b63413bc4578
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="restore-an-app-in-azure"></a>Przywracanie aplikacji na platformie Azure
 W tym artykule przedstawiono sposób przywracania aplikacji w [usłudze Azure App Service](../app-service/app-service-web-overview.md) , która została wcześniej utworzona kopia zapasowa (zobacz [kopii zapasowych aplikacji na platformie Azure](web-sites-backup.md)). Możesz przywrócić poprzedni stan aplikacji za pomocą jego połączonej bazy danych na żądanie lub Utwórz nową aplikację na podstawie jednej z aplikacji oryginalne kopie zapasowe. Usługa aplikacji Azure obsługuje następujące bazy danych dla kopii zapasowej i przywracania:
 - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-- [Bazy danych platformy Azure dla programu MySQL (wersja zapoznawcza)](https://azure.microsoft.com/en-us/services/mysql)
-- [Bazy danych platformy Azure dla PostgreSQL (wersja zapoznawcza)](https://azure.microsoft.com/en-us/services/postgres)
+- [Azure bazy danych MySQL)](https://azure.microsoft.com/en-us/services/mysql)
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/en-us/services/postgres)
 - [MySQL w aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 Przywracanie z kopii zapasowych jest dostępne dla aplikacji działających **standardowe** i **Premium** warstwy. Aby uzyskać informacji na temat skalowania aplikacji w górę, zobacz [skalowanie w górę aplikacji na platformie Azure](web-sites-scale.md). **Premium** warstwy pozwala większa liczba codziennych kopii zapasowych wykonywanych niż **standardowe** warstwy.
@@ -78,7 +78,7 @@ Przewiń w dół do znajdowania żądaną operację przywracania i zaznacz je.
 
 Na stronie Szczegóły Wyświetla dostępne informacje dotyczące operacji przywracania.
 
-## <a name="automate-with-scripts"></a>Zautomatyzować za pomocą skryptów
+## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 
 Można zautomatyzować zarządzania kopiami zapasowymi za pomocą skryptów przy użyciu [interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).
 

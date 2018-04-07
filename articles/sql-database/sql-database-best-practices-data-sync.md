@@ -1,18 +1,18 @@
 ---
-title: "Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat najlepszych rozwiązań do konfigurowania i uruchamiania synchronizacji danych SQL Azure (wersja zapoznawcza)."
+title: Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat najlepszych rozwiązań do konfigurowania i uruchamiania synchronizacji danych SQL Azure (wersja zapoznawcza).
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 1c8ad4b318d52b5cb6af284b3304cfa7ad35522b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>Najlepsze rozwiązania dotyczące synchronizacji danych SQL (wersja zapoznawcza) 
 
@@ -20,7 +20,7 @@ W tym artykule opisano najlepsze rozwiązania synchronizacji danych usługi Azur
 
 Omówienie synchronizacji danych SQL (wersja zapoznawcza), zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md).
 
-## <a name="security-and-reliability"></a>Bezpieczeństwo i niezawodność
+## <a name="security-and-reliability"></a> Bezpieczeństwo i niezawodność
 
 ### <a name="client-agent"></a>Agent klienta
 
@@ -45,7 +45,7 @@ Baza danych SQL Azure obsługuje tylko jednego zestawu poświadczeń. Aby wykona
 
 ## <a name="setup"></a>Konfiguracja
 
-### <a name="database-considerations-and-constraints"></a>Zagadnienia dotyczące bazy danych i ograniczenia
+### <a name="database-considerations-and-constraints"></a> Zagadnienia dotyczące bazy danych i ograniczenia
 
 #### <a name="sql-database-instance-size"></a>Rozmiar wystąpienia bazy danych SQL
 
@@ -54,7 +54,7 @@ Podczas tworzenia nowego wystąpienia bazy danych SQL, Ustaw maksymalny rozmiar,
 > [!IMPORTANT]
 > Synchronizacja danych SQL (wersja zapoznawcza) przechowuje dodatkowe metadane z każdej bazy danych. Upewnij się, że zostało uwzględnione metadanych podczas obliczania potrzebne miejsce. Ilość dodane obciążenia jest powiązana z szerokość tabele (na przykład wąskie tabele wymagają większe obciążenie) i ilość ruchu sieciowego.
 
-### <a name="table-considerations-and-constraints"></a>Zagadnienia dotyczące tabeli i ograniczenia
+### <a name="table-considerations-and-constraints"></a> Zagadnienia dotyczące tabeli i ograniczenia
 
 #### <a name="selecting-tables"></a>Wybieranie tabel
 
@@ -66,7 +66,7 @@ Każda tabela w grupie synchronizacji musi mieć klucz podstawowy. Usługa synch
 
 Przed użyciem synchronizacji danych SQL (wersja zapoznawcza) w środowisku produkcyjnym należy przetestować wydajność wstępnych i bieżących synchronizacji.
 
-### <a name="provisioning-destination-databases"></a>Inicjowanie obsługi administracyjnej docelowej bazy danych
+### <a name="provisioning-destination-databases"></a> Inicjowanie obsługi administracyjnej docelowej bazy danych
 
 Synchronizacja danych SQL (wersja zapoznawcza) w wersji zapoznawczej oferuje autoprovisioning podstawowej bazy danych.
 
@@ -90,7 +90,7 @@ Synchronizacja danych SQL (wersja zapoznawcza) ma następujące ograniczenia na 
 -   Tylko wtedy, gdy okaże się usługi, należy używać funkcji autoprovisioning synchronizacji danych SQL (wersja zapoznawcza).  
 -   W środowisku produkcyjnym należy udostępnić schemat bazy danych.
 
-### <a name="locate-hub"></a>Gdzie można znaleźć bazy danych Centrum
+### <a name="locate-hub"></a> Gdzie można znaleźć bazy danych Centrum
 
 #### <a name="enterprise-to-cloud-scenario"></a>Scenariusz przedsiębiorstwa do chmury
 
@@ -107,7 +107,7 @@ Zastosuj wytycznymi powyższych konfiguracji grupy synchronizacji złożonych, t
 
 ## <a name="sync"></a>Sync
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Unikaj powolne i kosztowne synchronizacji początkowej
+### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> Unikaj powolne i kosztowne synchronizacji początkowej
 
 W tej sekcji omówiono synchronizacji początkowej synchronizacji grupy. Dowiedz się, jak zapobiegać synchronizacji początkowej z wydłużenie i jest droższy niż jest to konieczne.
 
@@ -121,13 +121,13 @@ W przypadku baz danych w różnych centrach danych, każdy wiersz musi przejść
 
 Jeśli to możliwe należy rozpocząć od danych tylko jednej grupy synchronizacji baz danych.
 
-### <a name="design-to-avoid-synchronization-loops"></a>Projekt, aby uniknąć tworzenia pętli synchronizacji
+### <a name="design-to-avoid-synchronization-loops"></a> Projekt, aby uniknąć tworzenia pętli synchronizacji
 
 Pętla synchronizacji występuje, gdy istnieją odwołania cykliczne w obrębie grupy synchronizacji. W tym scenariuszu każdej zmiany w jednej bazy danych jest nieskończoność i rekurencyjnie replikowana przy użyciu baz danych w grupie synchronizacji.   
 
 Upewnij się, należy unikać pętle synchronizacji, ponieważ powodować spadku wydajności i może znacznie zwiększyć koszty.
 
-### <a name="handling-changes-that-fail-to-propagate"></a>Nie można propagować zmian
+### <a name="handling-changes-that-fail-to-propagate"></a> Nie można propagować zmian
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>Przyczyn, które zmiany nie można propagować
 
@@ -151,9 +151,9 @@ Zmiany może się nie powieść propagację dla jednego z następujących powod�
 Monitorowanie kondycji grupy i bazy danych synchronizacji regularnie za pomocą interfejsu portalu i dziennika.
 
 
-## <a name="maintenance"></a>Konserwacji
+## <a name="maintenance"></a>Konserwacja
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Unikaj nieaktualne baz danych i synchronizacji grupy
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a> Unikaj nieaktualne baz danych i synchronizacji grupy
 
 Grupy synchronizacji lub bazy danych w grupie synchronizacji może stać się nieaktualne. Gdy stan grupy synchronizacji jest **nieaktualne**, przestanie działać. Gdy stan bazy danych jest **nieaktualne**, dane mogą zostać utracone. Zaleca się uniknąć tego scenariusza, zamiast w trakcie odzyskiwania z niego.
 
@@ -178,7 +178,7 @@ Aby uniknąć grupy nieaktualne synchronizacji:
 -   Zaktualizuj wartości klucza obcego do uwzględnienia wartości, które znajdują się w wierszach nie powiodło się.
 -   Zaktualizuj wartości danych w wierszu nie powiodło się, aby były zgodne z schematu lub klucze obce w docelowej bazie danych.
 
-### <a name="avoid-deprovisioning-issues"></a>Unikaj anulowania obsługi problemów
+### <a name="avoid-deprovisioning-issues"></a> Unikaj anulowania obsługi problemów
 
 W niektórych sytuacjach wyrejestrowywania bazy danych przy użyciu agenta klienta może spowodować synchronizację, aby zakończyć się niepowodzeniem.
 
@@ -199,7 +199,7 @@ Aby odzyskać z tego scenariusza:
 2. Bazy danych z powrotem dodać do każdej grupy synchronizacji, które zostało usunięte z.  
 3. Wdróż każdej grupy synchronizacji dotyczy (Ta akcja inicjuje bazy danych).  
 
-### <a name="modifying-your-sync-group"></a>Modyfikowanie grupy synchronizacji
+### <a name="modifying-your-sync-group"></a> Modyfikowanie grupy synchronizacji
 
 Nie próbuj usunąć bazę danych z grupy synchronizacji, a następnie Edytuj grupę synchronizacji bez pierwszego wdrażania zmian.
 
@@ -207,16 +207,16 @@ Zamiast tego należy najpierw usunąć bazę danych z grupy synchronizacji. Nast
 
 Jeśli próbujesz usunąć bazę danych, a następnie Edytuj grupę synchronizacji bez wdrażanie pierwszej zmian, awarii jednego lub innej operacji. Interfejs portalu może stać się niespójna. Jeśli tak się stanie, Odśwież stronę, aby przywrócić stan.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat synchronizacji danych SQL (wersja zapoznawcza) zobacz:
 
 -   [Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-sync-data.md)
 -   [Konfigurowanie synchronizacji danych SQL Azure (wersja zapoznawcza)](sql-database-get-started-sql-data-sync.md)
--   [Synchronizacja danych Azure SQL monitora (wersja zapoznawcza) z pakietu OMS analizy dzienników](sql-database-sync-monitor-oms.md)
+-   [Synchronizacja danych Azure SQL monitora (wersja zapoznawcza) z analizy dzienników](sql-database-sync-monitor-oms.md)
 -   [Rozwiązywanie problemów z synchronizacją danych SQL Azure (wersja zapoznawcza)](sql-database-troubleshoot-data-sync.md)  
 -   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL (wersja zapoznawcza):  
     -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [Synchronizacja między bazą danych SQL Azure i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)  
+    -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL (wersja zapoznawcza)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 Aby uzyskać więcej informacji dotyczących bazy danych SQL zobacz:

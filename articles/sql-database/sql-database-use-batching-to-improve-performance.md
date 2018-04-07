@@ -1,19 +1,19 @@
 ---
-title: "Jak używać przetwarzanie wsadowe, aby zwiększyć wydajność aplikacji bazy danych SQL Azure"
-description: "Temat zawiera dowód tym przetwarzanie wsadowe operacji bazy danych znacznie imroves szybkości i skalowalność aplikacji bazy danych SQL Azure. Mimo że te techniki przetwarzanie wsadowe działać dla dowolnej bazy danych programu SQL Server, artykuł koncentruje się na platformie Azure."
+title: Jak używać przetwarzanie wsadowe, aby zwiększyć wydajność aplikacji bazy danych SQL Azure
+description: Temat zawiera dowód tym przetwarzanie wsadowe operacji bazy danych znacznie imroves szybkości i skalowalność aplikacji bazy danych SQL Azure. Mimo że te techniki przetwarzanie wsadowe działać dla dowolnej bazy danych programu SQL Server, artykuł koncentruje się na platformie Azure.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5c7846fdd8d6a7584cab2b4f3811151332171ba4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak używać przetwarzanie wsadowe, aby zwiększyć wydajność aplikacji bazy danych SQL
 Przetwarzanie wsadowe operacji do bazy danych SQL Azure w znacznie poprawia wydajność i skalowalność aplikacji. Aby zrozumieć korzyści, pierwsza część w tym artykule omówiono niektóre przykładowe wyniki testów, pozwalające porównać wsadów i sekwencyjny żądania do bazy danych SQL. W pozostałej części tego artykułu pokazuje techniki, scenariusze i zagadnienia dotyczące pomogą pomyślnie przetwarzanie wsadowe w aplikacjach platformy Azure.
@@ -154,7 +154,7 @@ W kodzie, możesz utworzyć **DataTable** o dokładnie tych samych nazw i typy t
         cmd.ExecuteNonQuery();
     }
 
-W poprzednim przykładzie **SqlCommand** obiektu wstawia wiersze z parametrem przechowywanymi w tabeli  **@TestTvp** . Utworzonej wcześniej **DataTable** obiekt jest przypisany do tego parametru z **SqlCommand.Parameters.Add** metody. Przetwarzanie wsadowe operacji wstawienia w jednym wywołaniu znacznie zwiększa wydajność za pośrednictwem sekwencyjnego wstawiania.
+W poprzednim przykładzie **SqlCommand** obiektu wstawia wiersze z parametrem przechowywanymi w tabeli **@TestTvp**. Utworzonej wcześniej **DataTable** obiekt jest przypisany do tego parametru z **SqlCommand.Parameters.Add** metody. Przetwarzanie wsadowe operacji wstawienia w jednym wywołaniu znacznie zwiększa wydajność za pośrednictwem sekwencyjnego wstawiania.
 
 Aby poprawić dalsze w poprzednim przykładzie, użyj procedury składowanej zamiast polecenia opartego na tekście. Następujące polecenie języka Transact-SQL tworzy procedury przechowywanej, która przyjmuje **SimpleTestTableType** parametru przechowywanymi w tabeli.
 

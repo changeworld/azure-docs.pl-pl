@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 80f427d5acb884be1752f470e2a9d9d04eee5518
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f1e1c2aa447e35ea483665cc33e4eb6af7a41f51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatycznie włączaj ustawień diagnostycznych na tworzenie zasobów przy użyciu szablonu usługi Resource Manager
 W tym artykule zostanie przedstawiony sposób korzystania [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do konfigurowania ustawień diagnostycznych zasobu podczas jego tworzenia. Umożliwia to automatyczne uruchamianie przesyłanych strumieniowo z dzienników diagnostycznych i metryk do usługi Event Hubs, archiwizacji je na koncie magazynu lub wysyłania ich do analizy dzienników po utworzeniu zasobu.
@@ -40,7 +40,7 @@ Poniżej możemy podać przykład pliku JSON szablonu, który chcesz wygenerowa�
 ## <a name="non-compute-resource-template"></a>Zasób obliczeniowy bez szablonu
 Dla zasobów obliczeniowych nie należy wykonać dwie czynności:
 
-1. Dodawanie parametrów do obiektu blob parametry dla nazwy konta magazynu, identyfikator reguły autoryzacji Centrum zdarzeń i/lub identyfikator obszaru roboczego analizy dzienników OMS (Włączanie archiwizacji dzienników diagnostycznych na konto magazynu, przesyłania strumieniowego dzienników do usługi Event Hubs i/lub wysyłania dzienników do dziennika Analytics).
+1. Dodawanie parametrów do obiektu blob parametry dla nazwy konta magazynu, identyfikator reguły autoryzacji Centrum zdarzeń i/lub identyfikator obszaru roboczego analizy dzienników (Włączanie archiwizacji dzienników diagnostycznych na konto magazynu, przesyłania strumieniowego dzienników do usługi Event Hubs i/lub wysyłania dzienników do analizy dzienników).
    
     ```json
     "settingName": {

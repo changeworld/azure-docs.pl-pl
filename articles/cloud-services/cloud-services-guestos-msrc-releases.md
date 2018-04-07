@@ -12,16 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/19/2018
+ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: c42986e4cdae1d5156863d92eb946220805f7b48
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5631fb8df6453cf7a1806947f0e29ab7fff7093e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa Azure
 Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpowiedzi Center (MSRC) stosowany do systemu operacyjnego gościa Azure. Wyszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczą systemu operacyjnego gościa w przypadku korzystania. Aktualizacje zawsze przeniesieniu dla konkretnej [rodziny] [ family-explain] zostały wprowadzone w.
+
+## <a name="march-guest-os"></a>Marzec systemu operacyjnego gościa
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18-03 | [4088787], [4088776] |Zabezpieczenia systemu Windows 10 |5.17 |13 marca 2018 r. |
+| ReL 18-03 | [4088878], [4088880], [4088879] |Tylko zabezpieczenia systemu Windows |2.72, 3.59, 4.52 |13 marca 2018 r. |
+| ReL 18-03 | [4089187] |Internet Explorer |2.72, 3.59, 4.52 |13 marca 2018 r. |
+| ReL 18-03 | [4074595] |Flash |3.59, 4.52, 5.17 |13 marca 2018 r. |
+| ND | [4074598] |Zbiorcze informacje z systemem innym niż zabezpieczeniach lutego |2.72 |13 lutego 2018 r. |
+| ND | [4074593] |Zbiorcze informacje z systemem innym niż zabezpieczeniach lutego |3.59 |13 lutego 2018 r. |
+| ND | [4074594] |Zbiorcze informacje z systemem innym niż zabezpieczeniach lutego |4.52 |13 lutego 2018 r. |
+| ND | [4074837] |Aktualizacja strefy czasowej |2.72, 3.59, 4.52 |13 lutego 2018 r. |
+
 
 ## <a name="february-guest-os"></a>Lutego systemu operacyjnego gościa
 | Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
@@ -601,6 +614,17 @@ Poniższe tabele zawierają informacje o aktualizacjach Microsoft Security odpow
 | ND |[2999802] |Zamiast wierszy przerywana linia ciągła są podane w systemie Windows |4.15, 3.22, 2.34 |2015 13 stycznia |
 | ND |[2896881] |Długi czas logowania, jeśli używasz polecenia AddPrinterConnection VBScript mapować drukarki dla użytkowników podczas procesu logowania w systemie Windows |4.15, 3.22, 2.34 |2015 13 stycznia |
 
+[4088787]: http://support.microsoft.com/kb/4088787
+[4088776]: http://support.microsoft.com/kb/4088776 
+[4088878]: http://support.microsoft.com/kb/4088878
+[4088880]: http://support.microsoft.com/kb/4088880
+[4088879]: http://support.microsoft.com/kb/4088879
+[4089187]: http://support.microsoft.com/kb/4089187
+[4088785]: http://support.microsoft.com/kb/4088785
+[4074598]: http://support.microsoft.com/kb/4074598
+[4074593]: http://support.microsoft.com/kb/4074593
+[4074594]: http://support.microsoft.com/kb/4074594
+[4074837]: http://support.microsoft.com/kb/4074837
 
 [4074590]: http://support.microsoft.com/kb/4074590
 [4074588]: http://support.microsoft.com/kb/4074588 

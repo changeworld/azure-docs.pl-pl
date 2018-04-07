@@ -4,7 +4,7 @@ description: Samouczek, który powoduje utworzenie bazy danych w trybie online i
 services: cosmos-db
 documentationcenter: .net
 author: arramac
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 3fb14a2ae6e820c289e7000a4876efe4b4a3b89c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ad6b8889b1d98993eadeb531b7e63771a848719b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure rozwiązania Cosmos bazy danych: Wprowadzenie do korzystania z interfejsu API SQL i .NET Core
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ W portalu Azure, przejdź do swojego konta bazy danych rozwiązania Cosmos platf
 
 Skopiuj identyfikator URI z portalu i wklej go w miejsce `<your endpoint URI>` w pliku program.cs. Następnie skopiuj KLUCZ PODSTAWOWY z portalu i wklej go w miejsce `<your key>`. Jeśli używasz emulatora usługi Azure Cosmos DB, użyj `https://localhost:8081` jako punktu końcowego i dobrze zdefiniowanego klucza autoryzacji z tematu [How to develop using the Azure Cosmos DB Emulator](local-emulator.md) (Programowanie przy użyciu emulatora usługi Azure Cosmos DB). Upewnij się, że zostały usunięte znaki < i >, ale pozostawiono podwójny cudzysłów wokół punktu końcowego i klucza.
 
-![Zrzut ekranu przedstawiający portal Azure używany przez samouczek NoSQL do tworzenia aplikacji konsolowej C#. Przedstawia konto bazy danych Azure rozwiązania Cosmos z wyróżnionym AKTYWNYM Centrum, przyciskiem KLUCZE wyróżnionym na stronie konta bazy danych Azure rozwiązania Cosmos oraz wartościami identyfikator URI, klucz podstawowy i klucz POMOCNICZY wyróżnione na stronie kluczy][keys]
+![Zrzut ekranu przedstawiający witrynę Azure Portal używaną przez samouczek NoSQL do tworzenia aplikacji konsolowej C#. Przedstawia konto bazy danych Azure rozwiązania Cosmos z wyróżnionym AKTYWNYM Centrum, przyciskiem KLUCZE wyróżnionym na stronie konta bazy danych Azure rozwiązania Cosmos oraz wartościami identyfikator URI, klucz podstawowy i klucz POMOCNICZY wyróżnione na stronie kluczy][keys]
 
 Zaczniemy tworzenie aplikacji rozpoczynania pracy, tworząc nowe wystąpienie klasy **DocumentClient**.
 

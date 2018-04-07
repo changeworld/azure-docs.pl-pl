@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b3a3c07446ad04a58d5180793404fc04677749b2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizacji 1802 stosu
 
@@ -56,7 +56,9 @@ Numer kompilacji aktualizacji 1802 stosu Azure jest **20180302.1**.
 
 
 ### <a name="post-update-steps"></a>Czynności po aktualizacji
-*Nie istnieją żadne czynności po aktualizacji dla aktualizacji 1802.*
+Po zakończeniu instalacji 1802 Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszych [obsługi zasad](azure-stack-servicing-policy.md).  
+- [KB 4103348 — interfejs API kontrolera sieci usługi ulega awarii podczas próby zainstalowania aktualizacji Azure stosu](https://support.microsoft.com/help/4103348)
+
 
 
 ### <a name="new-features-and-fixes"></a>Nowe funkcje i poprawki
@@ -82,7 +84,7 @@ Ta aktualizacja obejmuje następujące ulepszenia i poprawki dla stosu Azure.
 
 - **Dodano obsługę wielu domen błędów**.  Aby uzyskać więcej informacji, zobacz [wysoka dostępność dla stosu Azure](azure-stack-key-features.md#high-availability-for-azure-stack).
 
-- **Różne poprawki** wydajności, trwałości, zabezpieczeń i systemu operacyjnego, który jest używany przez stos platformy Azure.
+- **Różne poprawki** wydajności, trwałości, zabezpieczeń i systemu operacyjnego, który jest używany przez stos Azure.
 
 <!--
 #### New features
@@ -141,6 +143,10 @@ Nie są znane problemy po zaktualizowaniu do 1802.
 
 #### <a name="compute"></a>Wystąpienia obliczeniowe
 - Ustawienia skalowania dla zestawy skalowania maszyny wirtualnej nie są dostępne w portalu. Jako rozwiązanie alternatywne można zastosować [programu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z powodu różnic wersji programu PowerShell, należy użyć `-Name` parametru zamiast `-VMScaleSetName`.
+
+- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
+
+  Ten problem zostanie rozwiązany w wersji 1803. Aby rozwiązać ten problem dla wersji 1802, należy zainstalować poprawkę stosu Azure **1.0.180302.4**. Aby uzyskać więcej informacji, zobacz [KB 4131152: istniejące zestawy skalowania maszyny wirtualnej może stać się bezużyteczny]( https://support.microsoft.com/help/4131152). 
 
 - Stos Azure obsługuje, używając tylko dysków VHD typu stałego. Niektóre obrazy oferowane za pośrednictwem portalu marketplace na stosie Azure Użyj dynamicznych wirtualnych dysków twardych, ale te zostały usunięte. Zmiana rozmiaru maszyny wirtualnej (VM) z dysku dynamicznego do niego dołączony pozostawia maszyny Wirtualnej w stanie niepowodzenia.
 

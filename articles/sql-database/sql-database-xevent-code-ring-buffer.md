@@ -1,19 +1,19 @@
 ---
-title: "Kod bufor pierścień systemu XEvent dla bazy danych SQL | Dokumentacja firmy Microsoft"
-description: "Zawiera przykładowy kod języka Transact-SQL, które zostało utworzone przy użyciu obiektu docelowego buforu pierścień w bazie danych SQL Azure łatwo i szybko."
+title: Kod bufor pierścień systemu XEvent dla bazy danych SQL | Dokumentacja firmy Microsoft
+description: Zawiera przykładowy kod języka Transact-SQL, które zostało utworzone przy użyciu obiektu docelowego buforu pierścień w bazie danych SQL Azure łatwo i szybko.
 services: sql-database
 author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: f553933d5a1435a96421939af8522daf53db1ff3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ee6181baf7a16bc827d35aaf5d18b281bcf9c3f7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Pierścienia kodu docelowego buforu dla zdarzeń rozszerzonych w bazie danych SQL
 
@@ -219,7 +219,7 @@ Aby wyświetlić wyniki, możemy kliknięciu komórki w nagłówku kolumny **tar
 
 Następnie w okienku wyników możemy kliknięciu komórki w nagłówku kolumny **target_data_XML**. Kliknij ten przycisk utworzyć inną kartę pliku w ssms.exe w którym zawartość komórki wynik został wyświetlony, w formacie XML.
 
-Dane wyjściowe przedstawiono w następującym fragmencie. Wygląda na to długie, ale jest tylko dwa  **<event>**  elementów.
+Dane wyjściowe przedstawiono w następującym fragmencie. Wygląda na to długie, ale jest tylko dwa **<event>** elementów.
 
 &nbsp;
 

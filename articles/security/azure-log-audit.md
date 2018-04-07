@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie platformy Azure i inspekcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -74,7 +74,7 @@ Następująca tabela zawiera listę najważniejszych typów dzienników dostępn
 |[Analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Rejestrowanie magazynu i udostępnia metryki danych dla konta magazynu|Zapewnia wgląd w żądań śledzenia analizować trendy użycia i diagnozowanie problemów z konta magazynu.|    Interfejs API REST lub [biblioteki klienta](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Dzienniki przepływu NSG (sieciowej grupy zabezpieczeń)](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON format i zawiera przepływy ruchu wychodzącego i przychodzącego na podstawie reguł na|Wyświetl informacje o przychodzące i wychodzące ruchu IP za pośrednictwem grupy zabezpieczeń sieci|[Obserwatora sieciowego](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Szczegółowe informacje o aplikacji](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Dzienniki, wyjątków i diagnostyki niestandardowej|    Usługa zarządzania wydajności aplikacji przeznaczonych dla deweloperów sieci web na wielu platformach.| Interfejs API REST, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
-|Przetwarzaj dane / Alert zabezpieczeń| Centrum zabezpieczeń Azure Alert, OMS Alert| Informacje o zabezpieczeniach i alerty.|   Interfejsy API REST, JSON|
+|Przetwarzaj dane / Alert zabezpieczeń| Centrum zabezpieczeń Azure Alert, Alert analizy dzienników|   Informacje o zabezpieczeniach i alerty.|   Interfejsy API REST, JSON|
 
 ### <a name="activity-log"></a>Dziennik aktywności
 [Dziennika aktywności platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), zapewnia wgląd w operacje wykonywane na zasobów w ramach subskrypcji. Dziennik aktywności była wcześniej znana jako "Dzienników inspekcji" lub "Operacyjne dzienniki", ponieważ zgłasza [zdarzeń formantu płaszczyzny](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/) dla Twojej subskrypcji. Korzystając z dziennika aktywności, można określić ", co, która i kiedy" dla żadnego zapisu (PUT, POST, DELETE) podejmowaną w odniesieniu do zasobów w ramach subskrypcji. Można także zrozumienie stanu operacji i inne odpowiednie właściwości. Dziennik nie zawiera operacje odczytu (GET).
@@ -114,7 +114,7 @@ Dzienniki diagnostyczne Azure oferują wiele opcji konfiguracji, które jest, po
 
 -   [Strumienia je do usługi Event Hubs](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs) dla wprowadzanie przez usługi innej firmy lub rozwiązania analizy niestandardowych, takich jak [usługi Power BI.](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
--   Analizuj je za pomocą [OMS Log Analytics.](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+-   Analizuj je za pomocą [analizy dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 
 **Obsługiwane usługi schematu dla dzienników diagnostycznych i kategorie dziennika obsługiwanych na typ zasobu**
 
@@ -333,11 +333,11 @@ Wiele operacji zabezpieczeń i odpowiedzi na zdarzenia zespołów zależne rozwi
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Analiza dzienników jest usługą [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) który pomaga zbieranie i analizowanie danych wygenerowanych przez zasobów w chmurze i lokalnych środowiskach. Udostępnia wgląd w czasie rzeczywistym przy użyciu wyszukiwanie zintegrowane i niestandardowe pulpity nawigacyjne, aby łatwo analizować miliony rekordów we wszystkich obciążeń i serwerów, niezależnie od ich lokalizacji fizycznej.
+Analiza dzienników jest usługa na platformie Azure, która ułatwia zbieranie i analizowanie danych wygenerowanych przez zasobów w chmurze i lokalnych środowiskach. Udostępnia wgląd w czasie rzeczywistym przy użyciu wyszukiwanie zintegrowane i niestandardowe pulpity nawigacyjne, aby łatwo analizować miliony rekordów we wszystkich obciążeń i serwerów, niezależnie od ich lokalizacji fizycznej.
 
 ![Log Analytics](./media/azure-log-audit/azure-log-audit-fig8.png)
 
-W Centrum Log Analytics to repozytorium OMS, która jest hostowana w chmurze Azure. Dane są zbierane do repozytorium z połączonych źródeł przez konfigurowanie źródeł danych i dodawanie rozwiązań do subskrypcji. Za pomocą źródeł danych i rozwiązań będą tworzone różne typy rekordów mających własne zestawy właściwości, ale które mogą być analizowane razem w zapytaniach do repozytorium. Pozwala to korzystać z tych samych narzędzi i metod do pracy z różnymi rodzajami danych zbieranych przez różne źródła.
+W Centrum Log Analytics jest obszar roboczy analizy dzienników, która jest hostowana w chmurze Azure. Dane są zbierane w obszarze roboczym z połączonych źródeł przez konfigurowanie źródeł danych i Dodawanie rozwiązania do subskrypcji. Źródła danych i rozwiązań każdego utworzy różnych typów rekordów własnych zbiór właściwości, które mogą być analizowane razem w zapytaniach do obszaru roboczego. Pozwala to korzystać z tych samych narzędzi i metod do pracy z różnymi rodzajami danych zbieranych przez różne źródła.
 
 Połączone źródła to komputery i inne zasoby, które generują dane zbierane przez usługę Log Analytics. Może to obejmować agentów zainstalowanych na [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) i [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) komputerów, które łączą się bezpośrednio lub agentów w [podłączonej grupy zarządzania programu System Center Operations Manager.](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents) Analiza dzienników może również zbierać dane z [magazynu Azure.](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)
 

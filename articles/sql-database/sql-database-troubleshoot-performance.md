@@ -1,21 +1,21 @@
 ---
-title: "Monitorowanie i dostrajanie wydajności — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Porady dotyczące dostrajania w bazie danych SQL Azure za pośrednictwem oceny i poprawa wydajności."
+title: Monitorowanie i dostrajanie wydajności — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Porady dotyczące dostrajania w bazie danych SQL Azure za pośrednictwem oceny i poprawa wydajności.
 services: sql-database
 author: v-shysun
 manager: craigg
-editor: 
-keywords: "dostrajanie wydajności bazy danych dostrajanie dostrajanie wskazówki dotyczące wydajności programu sql wydajności programu SQL dostrajania wydajności bazy danych sql"
+editor: ''
+keywords: dostrajanie wydajności bazy danych dostrajanie dostrajanie wskazówki dotyczące wydajności programu sql wydajności programu SQL dostrajania wydajności bazy danych sql
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 273a80134975fb9aa4d40b132c1403cc27246371
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 

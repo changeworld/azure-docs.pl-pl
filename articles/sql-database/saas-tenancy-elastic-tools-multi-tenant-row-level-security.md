@@ -1,6 +1,6 @@
 ---
-title: "Aplikacje wielodostępne kontrola dostępu i narzędzi elastycznej bazy danych | Dokumentacja firmy Microsoft"
-description: "Użyj narzędzi elastycznej bazy danych z zabezpieczeniami na poziomie wiersza, aby skompilować aplikację z warstwą danych wysokiej skalowalności."
+title: Aplikacje wielodostępne kontrola dostępu i narzędzi elastycznej bazy danych | Dokumentacja firmy Microsoft
+description: Użyj narzędzi elastycznej bazy danych z zabezpieczeniami na poziomie wiersza, aby skompilować aplikację z warstwą danych wysokiej skalowalności.
 metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
 manager: craigg
@@ -8,13 +8,13 @@ author: tmullaney
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 04/01/2018
 ms.author: thmullan
-ms.openlocfilehash: 62213eeeee0b1d93cabc32101ad6fe51bf394080
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 151a21a60b6205ca9a454faaaeff65330d9b57ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikacje wielodostępne z narzędzi elastycznej bazy danych i zabezpieczenia na poziomie wiersza
 

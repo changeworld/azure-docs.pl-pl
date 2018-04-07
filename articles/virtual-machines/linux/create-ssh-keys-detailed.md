@@ -1,13 +1,13 @@
 ---
-title: "Szczegółowe instrukcje dotyczące tworzenia pary kluczy SSH dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs"
-description: "Poznaj dodatkowe czynności dotyczące tworzenia pary publicznych i prywatnych kluczy SSH dla maszyn wirtualnych z systemem Linux na platformie Azure wraz z określonymi certyfikatami dla różnych przypadków zastosowań."
+title: Szczegółowe instrukcje dotyczące tworzenia pary kluczy SSH dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: Poznaj dodatkowe czynności dotyczące tworzenia pary publicznych i prywatnych kluczy SSH dla maszyn wirtualnych z systemem Linux na platformie Azure wraz z określonymi certyfikatami dla różnych przypadków zastosowań.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.openlocfilehash: 1308812287fa4484e244c47497a7aef7aa994b14
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 20d36f5e377f2d5af588319cee2be1808571f905
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Szczegółowy przewodnik tworzenia pary kluczy SSH oraz dodatkowe certyfikaty dla maszyn wirtualnych z systemem Linux na platformie Azure
 Para kluczy SSH umożliwia tworzenie na platformie Azure maszyn wirtualnych, które domyślnie używają kluczy SSH do uwierzytelniania, eliminując konieczność logowania przy użyciu haseł. Hasła można złamać i narażają one maszyny wirtualne na bezlitosne próby ataków siłowych w celu odgadnięcia hasła. Maszyny wirtualne tworzone za pomocą interfejsu wiersza polecenia platformy Azure lub szablonów usługi Resource Manager mogą mieć dołączony publiczny klucz SSH w ramach wdrożenia, co eliminuje potrzebę wykonania po wdrożeniu kroku konfiguracji polegającego na wyłączeniu logowania przy użyciu haseł dla protokołu SSH. Ten artykuł zawiera szczegółowe kroki i dodatkowe przykłady generowania certyfikatów, takich jak do użycia z maszyn wirtualnych systemu Linux. Jeśli chcesz szybko utworzyć parę prywatnych i publicznych kluczy SSH i używać ich, zobacz [Jak utworzyć parę kluczy publicznych i prywatnych dla maszyn wirtualnych z systemem Linux na platformie Azure](mac-create-ssh-keys.md).
@@ -55,7 +55,7 @@ ssh-keygen \
 
 `ssh-keygen` — program używany do tworzenia kluczy
 
-`-t rsa`= Typ klucza do utworzenia, która jest [formacie RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) 
+`-t rsa` = Typ klucza do utworzenia, która jest [formacie RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) 
  `-b 2048` = liczba bitów klucza
 
 `-C "azureuser@myserver"` — komentarz dodany na końcu pliku klucza publicznego, aby umożliwić jego łatwą identyfikację.  Zwykle jako komentarz używany jest adres e-mail, ale można też użyć innych informacji, które sprawdzą się najlepiej w danej infrastrukturze.

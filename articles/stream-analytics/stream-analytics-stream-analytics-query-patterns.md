@@ -1,24 +1,19 @@
 ---
-title: Zapytanie przykłady typowych wzorców użycia w Stream Analytics | Dokumentacja firmy Microsoft
-description: Typowych wzorców zapytań usługi Azure Stream Analytics
-keywords: Przykłady zapytań
+title: Typowych wzorców zapytań w programie Azure Stream Analytics
+description: W tym artykule opisano kilka typowych wzorców zapytań i projekty, które są przydatne w zadania usługi analiza strumienia Azure.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 08/08/2017
+manager: kfile
 ms.author: jeanb
-ms.openlocfilehash: 9632a77afff6ba47d6ce80457e02f1f6194362a1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 08/08/2017
+ms.openlocfilehash: b929eaf17255210a5c813e3e91478f9202941b64
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Zapytanie przykłady typowych wzorców użycia usługi analiza strumienia
 ## <a name="introduction"></a>Wprowadzenie
@@ -580,7 +575,7 @@ WHERE
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

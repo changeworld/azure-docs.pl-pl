@@ -1,13 +1,13 @@
 ---
-title: "Dostosowywanie maszyny Wirtualnej systemu Linux podczas tworzenia na platformie Azure za pomocą init chmurze | Dokumentacja firmy Microsoft"
-description: "Jak użyć init chmury w celu dostosowania Maszynę wirtualną systemu Linux podczas tworzenia z interfejsu wiersza polecenia platformy Azure w wersji 1.0"
+title: Dostosowywanie maszyny Wirtualnej systemu Linux podczas tworzenia na platformie Azure za pomocą init chmurze | Dokumentacja firmy Microsoft
+description: Jak użyć init chmury w celu dostosowania Maszynę wirtualną systemu Linux podczas tworzenia z interfejsu wiersza polecenia platformy Azure w wersji 1.0
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: v-livech
-ms.openlocfilehash: 0b6150bca333188666935b3c9aa02c4b33690db9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e9182a18a2827ed7f54f5fd042e5934b3b1fd5c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Użyć init chmury w celu dostosowania Maszynę wirtualną systemu Linux podczas tworzenia z interfejsu wiersza polecenia platformy Azure w wersji 1.0
 W tym artykule przedstawiono sposób wprowadzania skryptu init chmury, ustawiania nazwy hosta, zainstalowano aktualizację pakietów i zarządzanie kontami użytkowników.  Skrypty chmurze init wywoływane podczas tworzenia maszyny Wirtualnej z wiersza polecenia platformy Azure.  Wykonanie czynności opisanych w tym artykule wymaga:
@@ -97,7 +97,7 @@ Do dodania skryptów w dowolnym momencie po rozruchu:
 > 
 
 ## <a name="cloud-init-availability-on-azure-vm-quick-create-image-aliases"></a>Dostępność init chmury na maszynie Wirtualnej Azure szybkie — tworzenie aliasów obrazu:
-| Alias | Wydawca | Oferta | SKU | Wersja | init chmury |
+| Alias | Wydawca | Oferta | SKU | Wersja | cloud-init |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | CentOS |OpenLogic |Centos |7.2 |najnowsza |nie |
 | CoreOS |CoreOS |CoreOS |Stable |najnowsza |tak |

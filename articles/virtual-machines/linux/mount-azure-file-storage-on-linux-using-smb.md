@@ -1,12 +1,12 @@
 ---
-title: "Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux za pomocą protokołu SMB | Dokumentacja firmy Microsoft"
-description: "Jak zainstalować magazyn plików Azure na maszynach wirtualnych systemu Linux za pomocą protokołu SMB 2.0 interfejsu wiersza polecenia platformy Azure"
+title: Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux za pomocą protokołu SMB | Dokumentacja firmy Microsoft
+description: Jak zainstalować magazyn plików Azure na maszynach wirtualnych systemu Linux za pomocą protokołu SMB 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: v-livech
-ms.openlocfilehash: 4566e9b236049c336858e9149cca80066b029775
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: de200c9b18b9d27325bcb92e0d27e83ad7c65811
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux za pomocą protokołu SMB
 

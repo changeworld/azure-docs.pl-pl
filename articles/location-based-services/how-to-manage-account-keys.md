@@ -1,19 +1,18 @@
 ---
-title: "Jak zarządzać Twoje konto usługi na podstawie lokalizacji platformy Azure i klucze | Dokumentacja firmy Microsoft"
-description: "Azure portal umożliwia zarządzanie kontem usługi na podstawie lokalizacji platformy Azure i zarządzanie kluczami dostępu."
+title: Jak zarządzać Twoje konto usługi na podstawie lokalizacji platformy Azure i klucze | Dokumentacja firmy Microsoft
+description: Azure portal umożliwia zarządzanie kontem usługi na podstawie lokalizacji platformy Azure i zarządzanie kluczami dostępu.
 services: location-based-services
-keywords: "Nie dodawaj ani nie edytuj słów kluczowych bez konsultacji z ekspertem SEO."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 8ea7beae054157800ee404cf237772d0677574ca
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 38466a741bc836a6f13db83fd939d178fbbc1a7b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>Jak zarządzać Twoje konto usługi na podstawie lokalizacji platformy Azure i kluczy
 
@@ -23,7 +22,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure. 
 
-Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
 ## <a name="create-a-new-account"></a>Utwórz nowe konto
 
