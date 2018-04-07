@@ -1,10 +1,10 @@
 ---
-title: "Zaloguj się do klasycznej maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Użyj portalu Azure do logowania się do systemu Windows maszyny wirtualnej utworzonej z klasycznym modelu wdrażania."
+title: Zaloguj się do klasycznej maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Użyj portalu Azure do logowania się do systemu Windows maszyny wirtualnej utworzonej z klasycznym modelu wdrażania.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: c35bfeaa81f89dc5a636d67ed9a2a930d689c54a
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: bcbebc216dbd63acfb33cf72ba774d088149a3a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Logowanie do maszyny wirtualnej systemu Windows przy użyciu witryny Azure Portal
 W portalu Azure, użyj **Connect** przycisk, aby rozpocząć sesję pulpitu zdalnego i zaloguj się do maszyny Wirtualnej systemu Windows.
@@ -40,7 +40,7 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 1. Zaloguj się do Portalu Azure.
 2. Kliknij maszynę wirtualną, którą chcesz uzyskać dostęp. Nazwa jest wyświetlana w **wszystkie zasoby** okienka.
 
-    ![Lokalizacje wirtualne — komputera](./media/connect-logon/azureportaldashboard.png)
+    ![Virtual-machine-locations](./media/connect-logon/azureportaldashboard.png)
 
 3. Kliknij przycisk **Connect** na pasku poleceń nad pulpitu nawigacyjnego maszyny wirtualnej.
 
@@ -60,7 +60,7 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 ## <a name="next-steps"></a>Kolejne kroki
 * Jeśli **Connect** przycisk jest nieaktywny lub występują inne problemy z połączeniem pulpitu zdalnego, spróbuj zresetować konfigurację. Kliknij przycisk **Zresetuj dostęp zdalny** z poziomu pulpitu nawigacyjnego maszyny wirtualnej.
 
-    ![Resetowanie zdalnego dostępu](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
+    ![Reset-remote-access](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
 
 * Problemy z hasłem spróbuj zresetować urządzenie. Kliknij przycisk **resetowania hasła** wzdłuż lewej krawędzi wirtualnej maszyny pulpitu nawigacyjnego, w obszarze **pomocy technicznej i rozwiązywania problemów**.
 

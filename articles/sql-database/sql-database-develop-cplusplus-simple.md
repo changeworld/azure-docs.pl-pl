@@ -1,6 +1,6 @@
 ---
-title: "Połącz z bazą danych SQL za pomocą C i C++ | Dokumentacja firmy Microsoft"
-description: "Użyj przykładowy kod w tym szybki start, aby skompilować modern aplikacji z C++ i kopii zapasowej przez zaawansowanych relacyjnej bazy danych w chmurze z bazy danych SQL Azure."
+title: Połącz z bazą danych SQL za pomocą C i C++ | Dokumentacja firmy Microsoft
+description: Użyj przykładowy kod w tym szybki start, aby skompilować modern aplikacji z C++ i kopii zapasowej przez zaawansowanych relacyjnej bazy danych w chmurze z bazy danych SQL Azure.
 services: sql-database
 author: edmacauley
 manager: craigg
@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: develop apps
 ms.devlang: cpp
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: edmacauley
-ms.openlocfilehash: 659b413b2686a50a0681e7307b51188e6e6d0859
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 49cbed06d92843fcf0c444e7ef2bb42df2addf7e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Połącz z bazą danych SQL za pomocą C i C++
 Ten wpis jest przeznaczony dla deweloperów C i C++ podejmuje próbę nawiązania połączenia z bazą danych SQL Azure. Podzielona jest na sekcje, można przejść do sekcji, która najlepiej przechwytuje zainteresowanie. 

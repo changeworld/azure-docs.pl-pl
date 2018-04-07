@@ -1,10 +1,10 @@
 ---
 title: Przekazanie niestandardowego dysku Linux 2.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: "Tworzenie i przekazywanie wirtualnego dysku twardego (VHD) na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager i 2.0 interfejsu wiersza polecenia platformy Azure"
+description: Tworzenie i przekazywanie wirtualnego dysku twardego (VHD) na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager i 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 258c2a5bbce1f15c78690cb01dc9b66fef4bb8f5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5c5c9894127386a05da9825435cfe5ca07b01542
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Przekazywanie i Utwórz Maszynę wirtualną systemu Linux na podstawie niestandardowych dysku 2.0 interfejsu wiersza polecenia platformy Azure
 W tym artykule przedstawiono sposób przekazywania wirtualnego dysku twardego (VHD) do konta magazynu Azure, Azure CLI 2.0 i Tworzenie maszyn wirtualnych systemu Linux z tego dysku niestandardowych. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ta funkcja pozwala zainstalować i skonfigurować distro Linux do własnych potrzeb, a następnie użyć tego wirtualnego dysku twardego do szybkiego tworzenia maszyn wirtualnych platformy Azure (maszyny wirtualne).
@@ -112,7 +112,7 @@ Azure obsługuje różne dystrybucje systemu Linux (zobacz [dystrybucje zatwierd
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Inne — niezatwierdzonych dystrybucji](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-Zobacz też  **[informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes)**  bardziej ogólne porady dotyczące przygotowywania obrazów systemu Linux na platformie Azure.
+Zobacz też **[informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes)** bardziej ogólne porady dotyczące przygotowywania obrazów systemu Linux na platformie Azure.
 
 > [!NOTE]
 > [Umowy SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) ma zastosowanie do maszyn wirtualnych z systemem Linux tylko wtedy, gdy jeden z potwierdzony dystrybucji jest używany z szczegóły konfiguracji określone w obsługiwanych wersjach w [systemu Linux na dystrybucje Azure-Endorsed](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

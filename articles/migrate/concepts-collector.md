@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="collector-appliance"></a>Moduł zbierający urządzenia
 
@@ -53,7 +53,7 @@ Moduł zbierający urządzenia musi być połączony z Internetem, aby wysłać 
 1. Istnieje możliwość skonfigurowania modułu zbierającego mieć bezpośrednie połączenie z Internetem.
 2. Istnieje możliwość skonfigurowania modułu zbierającego połączenia za pomocą serwera proxy.
     * Jeśli serwer proxy wymaga uwierzytelnienia, można określić nazwę użytkownika i hasło w ustawieniach połączenia.
-    * Adres IP/FQDN serwera Proxy, należy http://IPaddress formularza lub http://FQDN. Obsługiwane jest tylko serwer proxy http.
+    * Adres IP/FQDN serwera Proxy, powinien mieć postać http://IPaddress lub http://FQDN. Obsługiwane jest tylko serwer proxy http.
 
 > [!NOTE]
 > Serwery proxy oparty na protokole HTTPS nie są obsługiwane przez moduł zbierający.
@@ -126,7 +126,7 @@ Po nawiązaniu połączenia vCenter, można wybrać zakres odnajdywania. Wybiera
 
 1. Zakres może być centrum danych, folder lub hosta ESXi. 
 2. Jednocześnie można wybrać tylko jeden zakres. Aby wybrać więcej maszyn wirtualnych, można zakończyć jeden odnajdywania i ponownego uruchomienia procesu odnajdywania z nowego zakresu.
-3. Można wybrać tylko zakres, który ma *mniej niż 1000 maszyn wirtualnych*. Wybierz zakres, który ma więcej niż 1000 maszyn wirtualnych, należy podzielić zakres na mniejsze jednostki, tworząc foldery. Następnie należy uruchomić niezależne odnajdywania mniejszych folderów.
+3. Można wybrać tylko zakres, który ma *mniej niż 1500 maszyn wirtualnych*.
 
 ## <a name="specify-migration-project"></a>Określ migrację
 
@@ -197,6 +197,16 @@ Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania komó
 5. Kliknij prawym przyciskiem myszy na Setup.ps1 i wybierz polecenie Uruchom przy użyciu programu PowerShell i postępuj zgodnie z instrukcjami na ekranie, aby zainstalować aktualizację.
 
 ### <a name="list-of-updates"></a>Lista aktualizacji
+
+#### <a name="upgrade-to-version-1097"></a>Uaktualnienie do wersji 1.0.9.7
+
+W celu uaktualnienia do wersji 1.0.9.7 pobierania [pakietu](https://aka.ms/migrate/col/upgrade_9_7)
+
+**Algorytm** | **Wartość skrótu**
+--- | ---
+MD5 | 01ccd6bc0281f63f2a672952a2a25363
+SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
+SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 #### <a name="upgrade-to-version-1095"></a>Uaktualnienie do wersji 1.0.9.5
 

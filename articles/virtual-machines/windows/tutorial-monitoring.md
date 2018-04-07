@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Monitorowanie i aktualizowanie maszyny wirtualnej systemu Windows przy użyciu programu Azure PowerShell
 
@@ -238,7 +238,7 @@ Wykres pokazuje zmiany, które wystąpiły w czasie. Po dodaniu połączenia dzi
 
 ## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie
 
-Możesz to zrobić bardziej zaawansowane monitorowanie maszyny wirtualnej przy użyciu rozwiązań, takich jak zarządzanie aktualizacjami i zmianami i spisu udostępniane przez usługi Automatyzacja Azure. [Operations Management Suite](../../automation/automation-intro.md).
+Możliwość bardziej zaawansowane monitorowanie maszyny wirtualnej przy użyciu rozwiązań, takich jak zarządzanie aktualizacjami i zmianami i spisu dostarczonych przez [usługi Automatyzacja Azure](../../automation/automation-intro.md).
 
 Jeśli masz dostęp do obszaru roboczego analizy dzienników klucz obszaru roboczego i identyfikator obszaru roboczego można znaleźć na, wybierając **Zaawansowane ustawienia** w obszarze **ustawienia**. Użyj [AzureRmVMExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmextension) polecenie, aby dodać rozszerzenie jako Microsoft Monitoring agent maszyny Wirtualnej. Zaktualizuj wartości zmiennej w poniżej przykładowy w celu uwzględnienia możesz klucz obszaru roboczego analizy dzienników i identyfikator obszaru roboczego
 

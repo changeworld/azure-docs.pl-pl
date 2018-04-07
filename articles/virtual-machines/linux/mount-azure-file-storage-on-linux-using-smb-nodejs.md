@@ -1,12 +1,12 @@
 ---
-title: "Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB 1.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Jak zainstalować magazyn plików Azure na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB"
+title: Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB 1.0 interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Jak zainstalować magazyn plików Azure na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/07/2016
 ms.author: v-livech
-ms.openlocfilehash: 4951860630f0aad107d0846d52ebe4423ee0b91c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 442c08a03ff3eb8e4c86f8190e16b74744aa9dd3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-by-using-smb-with-azure-cli-10"></a>Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB 1.0 interfejsu wiersza polecenia platformy Azure
 
@@ -45,7 +45,7 @@ Szybko wykonywania tego zadania, wykonaj kroki opisane w tej sekcji. Aby uzyska�
 * Konto magazynu platformy Azure
 * Klucze konta magazynu platformy Azure
 * Udział magazynu plików Azure
-* Maszynę wirtualną systemu Linux
+* A Linux VM
 
 Przykładami należy zastąpić własnymi ustawieniami.
 
@@ -127,7 +127,7 @@ W ramach tego przewodnika szczegółowe możemy utworzyć wymagania wstępne nie
     //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Dostosowywanie maszyny Wirtualnej systemu Linux podczas tworzenia za pomocą init chmury](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Dodawanie dysku do maszyny wirtualnej z systemem Linux](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

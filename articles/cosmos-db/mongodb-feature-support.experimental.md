@@ -3,8 +3,7 @@ title: Azure obsługę funkcji rozwiązania Cosmos DB dla bazy danych MongoDB | 
 description: Dowiedz się więcej o obsłudze funkcji interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB zapewnia 3.4 bazy danych MongoDB.
 services: cosmos-db
 author: alekseys
-manager: jhubbard
-editor: ''
+manager: kfile
 documentationcenter: ''
 ms.assetid: 29b6547c-3201-44b6-9e0b-e6f56e473e24
 ms.service: cosmos-db
@@ -14,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: ff83c186702a65ce8b15df4094b9aed823e34cd5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 0bae274a7bf849267aed92d1372bc26e86227cb2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Obsługa interfejsu API bazy danych MongoDB funkcji bazy danych MongoDB i składni
+# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Obsługa interfejsu API bazy danych MongoDB dla funkcji i składni bazy danych MongoDB
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Użytkownik może komunikować się z bazy danych MongoDB API za pomocą dowolnego klienta bazy danych MongoDB typu open source [sterowniki](https://docs.mongodb.org/ecosystem/drivers). Interfejs API bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta przez do bazy danych MongoDB [okablować protokołu](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 

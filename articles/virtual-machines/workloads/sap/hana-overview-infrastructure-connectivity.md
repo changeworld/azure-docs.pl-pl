@@ -1,11 +1,11 @@
 ---
-title: "Infrastruktury i łączności z SAP HANA na platformie Azure (wystąpienia duże) | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie infrastruktury wymaga połączenia do użycia na platformie Azure (wystąpienia duże) SAP HANA."
+title: Infrastruktury i łączności z SAP HANA na platformie Azure (wystąpienia duże) | Dokumentacja firmy Microsoft
+description: Konfigurowanie infrastruktury wymaga połączenia do użycia na platformie Azure (wystąpienia duże) SAP HANA.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktura SAP HANA (duże wystąpień) i łączność na platformie Azure 
 
@@ -49,9 +49,9 @@ Po zakupu SAP HANA na platformie Azure (wystąpienia duże) jest zakończona mi�
 - Dane dla każdego wystąpienia dużych HANA systemu:
   - Żądany hostname - najlepiej z pełną nazwę domeny.
   - Żądany adres IP dla jednostki wystąpienia dużych HANA poza zakres adresów puli adresów IP serwera — należy pamiętać, że pierwsze 30 adresów IP, zakresu adresów puli adresów IP serwera są zarezerwowane do użytku wewnętrznego w dużych wystąpień HANA
-  - Nazwa SAP HANA SID dla wystąpienia SAP HANA (wymagane do tworzenia woluminów potrzeby związane z SAP HANA dysku). Identyfikator SID HANA ma wymagane uprawnienia do tworzenia <sidadm> w woluminach systemu plików NFS, który pobierania dołączonych do HANA dużych wystąpienia jednostki. Ponadto jest używany jako jeden ze składników nazwy woluminów dysków, które uzyskać zainstalowane. Jeśli chcesz uruchomić więcej niż jedno wystąpienie HANA w jednostce należy listy wielu HANA identyfikatorów SID. Każda z nich pobiera osobny zestaw woluminów przypisane.
-  - Identyfikator grupy, którą ma użytkownik hana sidadm w systemie operacyjnym Linux są wymagane do utworzenia woluminów konieczne dysków związanych z SAP HANA. Instalacja SAP HANA zazwyczaj tworzy grupy sapsys z identyfikatorem grupy 1001. Użytkownik hana sidadm wchodzi w skład tej grupy
-  - Nazwa użytkownika, z którą ma użytkownik hana sidadm w systemie operacyjnym Linux są wymagane do utworzenia woluminów konieczne dysków związanych z SAP HANA. Jeśli używasz wielu wystąpień HANA na jednostce, należy wyświetlić listę wszystkich <sid>adm użytkowników 
+  - Nazwa SAP HANA SID dla wystąpienia SAP HANA (wymagane do tworzenia woluminów potrzeby związane z SAP HANA dysku). Identyfikator SID HANA jest wymagane do tworzenia uprawnienia sidadm w woluminach systemu plików NFS, uzyskiwanie dołączonych do jednostki HANA dużych wystąpienia. Ponadto jest używany jako jeden ze składników nazwy woluminów dysków, które uzyskać zainstalowane. Jeśli chcesz uruchomić więcej niż jedno wystąpienie HANA w jednostce należy listy wielu HANA identyfikatorów SID. Każda z nich pobiera osobny zestaw woluminów przypisane.
+  - Identyfikator grupy, z którą ma użytkownik sidadm w systemie operacyjnym Linux jest wymagane do utworzenia woluminów konieczne dysków związanych z SAP HANA. Instalacja SAP HANA zazwyczaj tworzy grupy sapsys z identyfikatorem grupy 1001. Użytkownik sidadm wchodzi w skład tej grupy
+  - Identyfikator użytkownika, z którą ma użytkownik sidadm w systemie operacyjnym Linux jest wymagany do tworzenia woluminów konieczne dysku powiązane SAP HANA. Jeśli używasz wielu wystąpień HANA na jednostce, należy wyświetlić listę wszystkich <sid>adm użytkowników 
 - Identyfikator subskrypcji platformy Azure dla subskrypcji platformy Azure, do których SAP HANA na Azure HANA mają być bezpośrednio połączony dużych wystąpień. Ten identyfikator subskrypcji odwołuje się do subskrypcji platformy Azure, który będzie obciążana HANA dużych wystąpienia jednostki.
 
 Po podaniu informacji firmy Microsoft udostępnia SAP HANA na platformie Azure (wystąpienia duże) i zwróci informacje link do wystąpień dużych HANA sieciom wirtualnym platformy Azure i dostęp do jednostki HANA dużych wystąpienia.
@@ -182,7 +182,7 @@ Jeśli brama już istnieje, sprawdź, czy należy bramę usługi ExpressRoute. J
 
 - Użyj albo (nowy) [portalu Azure](https://portal.azure.com/), lub programu PowerShell, aby utworzyć bramę sieci VPN ExpressRoute podłączony do sieci wirtualnej.
   - Jeśli używasz portalu Azure, Dodaj nową **Brama sieci wirtualnej** , a następnie wybierz **ExpressRoute** jako typu bramy.
-  - Jeśli zamiast tego wybrano programu PowerShell, należy najpierw pobrać i użyć najnowszej wersji [zestawu SDK usługi Azure PowerShell](https://azure.microsoft.com/downloads/) zapewnienie zapewnienia optymalnego działania. Następujące polecenia Utwórz bramę usługi ExpressRoute. Teksty poprzedzony  _$_  to zmienne zdefiniowane przez użytkownika, które muszą zostać zaktualizowane z konkretnych informacji.
+  - Jeśli zamiast tego wybrano programu PowerShell, należy najpierw pobrać i użyć najnowszej wersji [zestawu SDK usługi Azure PowerShell](https://azure.microsoft.com/downloads/) zapewnienie zapewnienia optymalnego działania. Następujące polecenia Utwórz bramę usługi ExpressRoute. Teksty poprzedzony _$_ to zmienne zdefiniowane przez użytkownika, które muszą zostać zaktualizowane z konkretnych informacji.
 
 ```PowerShell
 # These Values should already exist, update to match your environment

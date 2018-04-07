@@ -1,25 +1,24 @@
 ---
-title: "Przy użyciu preferencji odczytu bazy danych MongoDB w usłudze Azure rozwiązania Cosmos bazy danych MongoDB interfejsu API | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystać z interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB preferencji odczytu bazy danych MongoDB"
+title: Przy użyciu preferencji odczytu bazy danych MongoDB w usłudze Azure rozwiązania Cosmos bazy danych MongoDB interfejsu API | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB preferencji odczytu bazy danych MongoDB
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: vidhoonv
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: kfile
+ms.assetid: ''
 ms.service: cosmos-db
-ms.custom: 
-ms.workload: 
+ms.custom: ''
+ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: viviswan
-ms.openlocfilehash: b28285695f52d6dbcc33d9fb0efe06b43cdf1cab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cc9f22bc5e7b54ed03fbf83b58dda0aff0114737
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Odczytuje sposobu dystrybucji globalnie Preferencje odczytu z interfejsu API Azure rozwiązania Cosmos bazy danych MongoDB 
 
@@ -156,4 +155,4 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, należy usunąć wszystk
 
 * [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
 * [Skonfigurować konto bazy danych Azure rozwiązania Cosmos globalnie replikowanych i używać go z interfejsem API bazy danych MongoDB](tutorial-global-distribution-mongodb.md)
-* [Opracowywanie lokalnie w emulatorze](local-emulator.md)
+* [Programowanie lokalnie za pomocą emulatora](local-emulator.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Zmodyfikuj zestaw skali maszyny wirtualnej
 W całym cyklu życia aplikacji należy zmodyfikować lub zaktualizować zestawu skalowania maszyny wirtualnej. Aktualizacje te mogą obejmować jak zaktualizować konfigurację zestawu skali lub zmienić konfigurację aplikacji. W tym artykule opisano sposób modyfikowania istniejących zestaw interfejsów API REST, programu Azure PowerShell lub Azure CLI 2.0 skalowania.
@@ -367,7 +367,7 @@ Pewne zmiany mogą być stosowane do określonych maszyn wirtualnych, zamiast w�
 ## <a name="scenarios"></a>Scenariusze
 
 ### <a name="application-updates"></a>Aktualizacje aplikacji
-Jeśli aplikacja jest wdrażana do skali ustawiana za pośrednictwem rozszerzenia, aktualizacja Konfiguracja rozszerzenia powoduje, że aplikacja do aktualizacji zgodnie z zasadami uaktualnienia. Na przykład, jeśli masz nową wersję skryptu do uruchomienia w niestandardowe rozszerzenie skryptu, można zaktualizować *fileUris* właściwości, aby wskazywały nowy skrypt. W niektórych przypadkach możesz wymusić aktualizację, nawet jeśli jest bez zmian konfiguracji rozszerzenia (na przykład możesz zaktualizować skryptu bez zmiany na identyfikator URI skryptu). W takich przypadkach można modyfikować *wartość forceUpdateTag* Aby wymusić aktualizację. Platformy Azure nie ma możliwości interpretowania tej właściwości. Jeśli zmienisz wartość Brak nie wpływa na sposób uruchamiania rozszerzenia. Zmiana po prostu wymusza rozszerzenia, aby ponownie uruchomić. Aby uzyskać więcej informacji na temat *wartość forceUpdateTag*, zobacz [dokumentacja interfejsu API REST dla rozszerzeń](/rest/api/compute/virtualmachineextensions/createorupdate).
+Jeśli aplikacja jest wdrażana do skali ustawiana za pośrednictwem rozszerzenia, aktualizacja Konfiguracja rozszerzenia powoduje, że aplikacja do aktualizacji zgodnie z zasadami uaktualnienia. Na przykład, jeśli masz nową wersję skryptu do uruchomienia w niestandardowe rozszerzenie skryptu, można zaktualizować *fileUris* właściwości, aby wskazywały nowy skrypt. W niektórych przypadkach możesz wymusić aktualizację, nawet jeśli jest bez zmian konfiguracji rozszerzenia (na przykład możesz zaktualizować skryptu bez zmiany na identyfikator URI skryptu). W takich przypadkach można modyfikować *wartość forceUpdateTag* Aby wymusić aktualizację. Platformy Azure nie ma możliwości interpretowania tej właściwości. Jeśli zmienisz wartość Brak nie wpływa na sposób uruchamiania rozszerzenia. Zmiana po prostu wymusza rozszerzenia, aby ponownie uruchomić. Aby uzyskać więcej informacji na temat *wartość forceUpdateTag*, zobacz [dokumentacja interfejsu API REST dla rozszerzeń](/rest/api/compute/virtualmachineextensions/createorupdate). Należy pamiętać, że *wartość forceUpdateTag* może być używany z wszystkich rozszerzeń, nie tylko niestandardowego rozszerzenia skryptu.
 
 Jest również wspólne dla aplikacji można wdrożyć za pomocą niestandardowego obrazu. W tym scenariuszu zostało opisane w poniższej sekcji.
 

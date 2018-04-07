@@ -1,6 +1,6 @@
 ---
 title: Wykonywania analizy kwerend do bazy danych Azure SQL | Dokumentacja firmy Microsoft
-description: "Zapytania analityczne między dzierżawcy przy użyciu danych pobranych z wielu baz danych z bazy danych SQL Azure."
+description: Zapytania analityczne między dzierżawcy przy użyciu danych pobranych z wielu baz danych z bazy danych SQL Azure.
 keywords: Samouczek SQL
 services: sql-database
 author: stevestein
@@ -8,13 +8,13 @@ manager: jhubbard
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 04/01/2018
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 7f04ca4bf324586e0cb34effa324b1703d92d065
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fab5d893697a961ef588b0b26008fb27f92a5a18
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Analytics między dzierżawcy przy użyciu wyodrębnione dane
 
@@ -91,7 +91,7 @@ W poniższych krokach Wdrażanie magazynu analytics, która jest wywoływana **t
     - Aby używać bazy danych SQL z magazynu kolumn, ustaw **$DemoScenario** = **3**  
 3. Naciśnij klawisz **F5** do uruchamiania skryptu pokaz (, który odwołuje się *TenantAnalytics Wdróż<XX>ps1* skryptu) co powoduje magazynu analytics dzierżawy. 
 
-Po wdrożeniu aplikacji i wypełnione interesujące dane dzierżawy, za pomocą [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nawiązać **tenants1-mt -\<użytkownika\>**  i **katalogu-mt -\<użytkownika\>**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło =  *P@ssword1* .
+Po wdrożeniu aplikacji i wypełnione interesujące dane dzierżawy, za pomocą [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nawiązać **tenants1-mt -\<użytkownika\>**  i **katalogu-mt -\<użytkownika\>**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło = *P@ssword1*.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -173,7 +173,7 @@ Do nawiązania połączenia usługi Power BI i zaimportować widoków, które wc
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło =  *P@ssword1* . Kliknij przycisk **Połącz**.  
+5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło = *P@ssword1*. Kliknij przycisk **Połącz**.  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

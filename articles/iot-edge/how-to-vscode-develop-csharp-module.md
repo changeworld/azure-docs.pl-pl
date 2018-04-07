@@ -1,25 +1,25 @@
 ---
-title: "Użyj Visual Studio Code do opracowywania C# modułu Azure IoT krawędzi | Dokumentacja firmy Microsoft"
-description: "Opracowywania i wdrażania modułu C# z krawędzią IoT Azure w programie Visual Studio Code, bez przełączania kontekstu."
+title: Użyj Visual Studio Code do opracowywania C# modułu Azure IoT krawędzi | Dokumentacja firmy Microsoft
+description: Opracowywania i wdrażania modułu C# z krawędzią IoT Azure w programie Visual Studio Code, bez przełączania kontekstu.
 services: iot-edge
-keywords: 
+keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4cf07d5c4a21fa989e7de6e996cc62424099e3e5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 48c6cacebdeb7505c8dc2bcaed099c33862589ac
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-develop-a-c-module-with-azure-iot-edge"></a>Korzystanie z programu Visual Studio Code w celu projektowania modułu C# z krawędzią IoT Azure
 Ten artykuł zawiera szczegółowe instrukcje dotyczące używania [Visual Studio Code](https://code.visualstudio.com/) jako narzędzie programowanie głównego do opracowywania i wdrażania własnych modułów Azure IoT krawędzi. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten samouczek zakłada, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenie brzegowe IoT może być inne urządzenie fizyczne lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
+W tym artykule przyjęto założenie, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenie brzegowe IoT może być inne urządzenie fizyczne lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
 
 Przed rozpoczęciem tych wskazówek, wykonaj następujące samouczki:
 - Wdrożenie usługi Azure IoT krawędzi na symulowane urządzenie w [Windows](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-windows) lub [systemu Linux](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)
@@ -86,7 +86,7 @@ Zainstaluj i uruchom środowiska uruchomieniowego Azure IoT Edge na urządzeniu.
 W samouczku [opracowanie modułu C#](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module), aktualizowanie, tworzenie i publikowanie obrazu modułu w kodzie VS. Następnie przejdź do portalu Azure, aby wdrożyć modułu C#. W tej sekcji przedstawiono sposób użycia kodzie VS do wdrażania i monitorowania modułu C#.
 
 ### <a name="start-a-local-docker-registry"></a>Uruchom lokalnego rejestru Docker
-W tym samouczku, można użyć dowolnego rejestru zgodnego Docker. Są dwa popularne Docker rejestru usług dostępnych w chmurze [rejestru kontenera Azure](https://docs.microsoft.com/azure/container-registry/) i [Centrum Docker](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ta sekcja używa [lokalnego rejestru Docker](https://docs.docker.com/registry/deploying/), który jest łatwiejsze testowanie podczas wcześniejszego programowania.
+Można użyć dowolnego rejestru Docker zgodnego tego artykułu. Dwie popularne usługi rejestru Docker dostępne w chmurze to [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) i [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ta sekcja używa [lokalnego rejestru Docker](https://docs.docker.com/registry/deploying/), który jest łatwiejsze testowanie podczas wcześniejszego programowania.
 W kodzie VS **zintegrowane terminal** (Ctrl + "), uruchom następujące polecenie, aby uruchomić lokalnego rejestru:  
 
 ```cmd/sh
@@ -105,7 +105,7 @@ Poniższe kroki pokazują, jak utworzyć moduł krawędzi IoT oparte na .NET Cor
     dotnet new -i Microsoft.Azure.IoT.Edge.Module
     ```
 
-2. Tworzenie projektu dla nowego modułu. Poniższe polecenie tworzy folder projektu **FilterModule**, w bieżącym folderze roboczych:
+2. Utwórz projekt dla nowego modułu. Poniższe polecenie tworzy folder projektu **FilterModule**, w bieżącym folderze roboczych:
 
     ```cmd/sh
     dotnet new aziotedgemodule -n FilterModule
@@ -253,14 +253,14 @@ Poniższe kroki pokazują, jak utworzyć moduł krawędzi IoT oparte na .NET Cor
 
 ### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Tworzenie obrazu Docker i publikowanie go do rejestru
 
-1. W Eksploratorze kodu VS rozwiń **Docker** folderu. Następnie rozwiń folder dla danej platformy kontenera albo **linux x64** lub **windows nano**.
+1. W Eksploratorze kodu VS rozwiń **Docker** folderu. Następnie rozwiń folder dla platformy kontenera — **linux-x64** lub **windows-nano**.
 2. Kliknij prawym przyciskiem myszy **plik Dockerfile** pliku, a następnie wybierz **krawędzi IoT Tworzenie modułu Docker obrazu**. 
 
     ![Zrzut ekranu przedstawiający Eksplorator kodu VS](./media/how-to-vscode-develop-csharp-module/build-docker-image.png)
 
 3. W **wybierz Folder** okna, przejdź do albo wprowadź `./bin/Debug/netcoreapp2.0/publish`. Wybierz **wybierz Folder jako EXE_DIR**.
-4. W polu tekstowym wyskakujących w górnej części okna kodu programu VS wprowadź nazwę obrazu. Na przykład: `<your container registry address>/filtermodule:latest`. Jeśli są wdrażane w lokalnym rejestrze, powinien być `localhost:5000/filtermodule:latest`.
-5. Wypchnij obrazu do repozytorium Docker. Użyj **krawędzi: Push krawędzi IoT modułu Docker obrazu** polecenia i wprowadź adres URL obrazu, w polu tekstowym wyskakujących w górnej części okna kodu programu VS. Użyj tego samego adresu URL obraz używany w poprzednim kroku. Upewnij się, że obraz został pomyślnie przypisany za pomocą dzienniku konsoli.
+4. W wyskakującym polu tekstowym w górnej części okna kodu programu VS Code wprowadź nazwę obrazu. Na przykład: `<your container registry address>/filtermodule:latest`. Jeśli są wdrażane w lokalnym rejestrze, powinien być `localhost:5000/filtermodule:latest`.
+5. Wypchnij obraz do repozytorium platformy Docker. Użyj **krawędzi: Push krawędzi IoT modułu Docker obrazu** polecenia i wprowadź adres URL obrazu, w polu tekstowym wyskakujących w górnej części okna kodu programu VS. Użyj tego samego adresu URL obraz używany w poprzednim kroku. Upewnij się, że obraz został pomyślnie przypisany za pomocą dzienniku konsoli.
 
     ![Zrzut ekranu przedstawiający wypychanie obrazu Docker](./media/how-to-vscode-develop-csharp-module/push-image.png) ![zrzut ekranu konsoli dziennika](./media/how-to-vscode-develop-csharp-module/pushed-image.png)
 
@@ -296,7 +296,7 @@ Poniższe kroki pokazują, jak utworzyć moduł krawędzi IoT oparte na .NET Cor
     "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
     ```
    > [!NOTE]
-   > Deklaracyjne reguły w środowisku uruchomieniowym definiują, do których przepływu wiadomości. W tym samouczku należy na dwa sposoby. Pierwszy trasy transportu wiadomości z czujnika temperatury w module filtru za pośrednictwem punktu końcowego "input1". To jest punkt końcowy, który został skonfigurowany z obsługą FilterMessages. Drugi trasy transportu wiadomości z modułem filtru do Centrum IoT. W tej trasy nadrzędnego jest specjalne lokalizacji docelowej, która informuje Centrum IoT krawędzi do wysyłania komunikatów do Centrum IoT.
+   > Deklaracyjne reguły w środowisku uruchomieniowym definiują, do których przepływu wiadomości. W tym artykule należy na dwa sposoby. Pierwsza trasa służy do transportu komunikatów z czujnika temperatury do modułu filtru za pośrednictwem punktu końcowego „input1”. To jest punkt końcowy, który został skonfigurowany z obsługą FilterMessages. Druga trasa służy do transportu komunikatów z modułu filtru do centrum IoT Hub. W tej trasy nadrzędnego jest specjalne lokalizacji docelowej, która informuje Centrum IoT krawędzi do wysyłania komunikatów do Centrum IoT.
 
 3. Zapisz ten plik.
 4. W palecie polecenia Wybierz **krawędzi: tworzenie wdrożenia dla urządzenie brzegowe**. Następnie wybierz identyfikator urządzenia IoT krawędzi Aby utworzyć wdrożenie. Lub kliknij prawym przyciskiem myszy identyfikator urządzenia na liście urządzeń i wybierz **tworzenie wdrożenia dla urządzenie brzegowe**.
@@ -317,7 +317,4 @@ Poniższe kroki pokazują, jak utworzyć moduł krawędzi IoT oparte na .NET Cor
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku został utworzony moduł krawędzi IoT i wdrożony go urządzenia IoT w kodzie VS. Aby dowiedzieć się o innych scenariuszy podczas projektowania usługi Azure IoT krawędź w kodzie VS, samouczki:
-
-> [!div class="nextstepaction"]
-> [Debugowanie modułu C# w kodzie VS](how-to-vscode-debug-csharp-module.md)
+[Debugowanie modułu C# w kodzie VS](how-to-vscode-debug-csharp-module.md)

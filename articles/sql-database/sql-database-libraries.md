@@ -1,19 +1,19 @@
 ---
-title: "Biblioteki połączeń dla bazy danych SQL | Dokumentacja firmy Microsoft"
-description: "Zawiera łącza do pobrania modułów, które umożliwiają połączenie programu SQL Server i bazy danych SQL z szerokiej gamy klienta języków programowania."
+title: Biblioteki połączeń dla bazy danych SQL | Dokumentacja firmy Microsoft
+description: Zawiera łącza do pobrania modułów, które umożliwiają połączenie programu SQL Server i bazy danych SQL z szerokiej gamy klienta języków programowania.
 services: sql-database
 author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: f371afc89273af4ce1c6c55eccc99a6f8a6349d5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a1e74e9fd2f1ed5eec27d6ede9ba51a7ba93263d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Łączność bibliotek i platform dla programu SQL Server
 

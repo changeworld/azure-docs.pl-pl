@@ -1,13 +1,13 @@
 ---
-title: "Utwórz Maszynę wirtualną systemu Linux przy użyciu szablonu platformy Azure z interfejsu wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft"
-description: "Utwórz Maszynę wirtualną systemu Linux na platformie Azure przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure i szablonu usługi Azure Resource Manager."
+title: Utwórz Maszynę wirtualną systemu Linux przy użyciu szablonu platformy Azure z interfejsu wiersza polecenia platformy Azure w wersji 1.0 | Dokumentacja firmy Microsoft
+description: Utwórz Maszynę wirtualną systemu Linux na platformie Azure przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure i szablonu usługi Azure Resource Manager.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 620adcba9e136aa56e7a4867196ce5b9249b6072
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Tworzenie maszyny Wirtualnej systemu Linux przy użyciu 1.0 interfejsu wiersza polecenia Azure szablonu usługi Azure Resource Manager
 W tym artykule przedstawiono szybki sposób wdrożenia maszyny wirtualnej systemu Linux przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure i szablonu usługi Azure Resource Manager. Wykonanie czynności opisanych w tym artykule wymaga:
@@ -83,6 +83,6 @@ info:    group create command OK
 
 W tym przykładzie wdrożono maszynę wirtualną przy użyciu parametru `--template-uri`.  Możesz również pobrać bądź utworzyć szablon lokalnie i przekazać go przy użyciu parametru `--template-file` ze ścieżką do pliku szablonu jako argumentem. Interfejs wiersza polecenia platformy Azure monituje o parametry wymagane przez szablon.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przeszukaj [galerię szablonów](https://azure.microsoft.com/documentation/templates/), aby odkryć kolejne platformy aplikacji do wdrożenia.
 

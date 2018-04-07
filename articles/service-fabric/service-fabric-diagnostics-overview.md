@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: b7bd5ce879e5119417a24879c875915245f9070b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowania i diagnostyki dla sieci szkieletowej usług Azure
 
@@ -68,7 +68,7 @@ Platformy Service Fabric zawiera model kondycji, co zapewnia rozszerzonego rapor
 
 ![Pulpit nawigacyjny kondycji SFX](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
-Oprócz wyświetlać najnowsze raportów o kondycji w SFX, każdy raport jest również dostępny jako zdarzenie. Zdarzenia kondycji mogą być zbierane przez kanał operacyjne (zobacz [agregacji zdarzenia z diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)) i przechowywane w OMS analizy dzienników dla alertów i wykonywaniu zapytań w przyszłości. Dzięki temu można wykrywać problemy, które mogą mieć wpływ na jego dostępność aplikacji, tak więc zaleca się Konfigurowanie alertów dla scenariuszy awarii odpowiednie (niestandardowe alerty za pomocą pakietu OMS).
+Oprócz wyświetlać najnowsze raportów o kondycji w SFX, każdy raport jest również dostępny jako zdarzenie. Zdarzenia kondycji mogą być zbierane przez kanał operacyjne (zobacz [agregacji zdarzenia z diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)) i przechowywane w analizy dzienników dla alertów i wykonywaniu zapytań w przyszłości. Dzięki temu można wykrywać problemy, które mogą mieć wpływ na jego dostępność aplikacji, tak więc zaleca się Konfigurowanie alertów dla scenariuszy awarii odpowiednie (niestandardowe alerty za pomocą analizy dzienników).
 
 ## <a name="other-logging-solutions"></a>Inne rozwiązania rejestrowania
 

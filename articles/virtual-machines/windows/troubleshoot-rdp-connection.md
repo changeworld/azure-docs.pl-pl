@@ -5,7 +5,7 @@ keywords: Błąd pulpitu zdalnego, błąd połączeń usług pulpitu zdalnego, n
 services: virtual-machines-windows
 documentationcenter: ''
 author: danielsollondon
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: danis
-ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 60c54850c1ca5de0e9bda4b48688ba297874e48e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Rozwiązywanie problemów z połączeniami pulpitu zdalnego do maszyny wirtualnej platformy Azure
 Połączenia protokołu RDP (Remote Desktop) do systemu Windows Azure maszyny wirtualnej (VM) może zakończyć się niepowodzeniem z różnych powodów, pozostawiając użytkownik mógł uzyskać dostępu do maszyny Wirtualnej. Problem może być usługą pulpitu zdalnego na Maszynie wirtualnej, połączenie sieciowe lub klienta pulpitu zdalnego na komputerze hosta. W tym artykule przedstawiono niektóre z najczęściej metod, aby rozwiązać problemy z połączeniami RDP. 
@@ -94,6 +94,10 @@ Każdy krok rozwiązywania problemów a następnie spróbuj ponownie nawiązać 
     ![Wdrożenie maszyny Wirtualnej w portalu Azure](./media/troubleshoot-rdp-connection/redeploy-vm.png)
    
     Po zakończeniu tej operacji, tymczasowych dysku dane zostaną utracone, a zaktualizowane dynamicznych adresów IP, które są skojarzone z maszyną Wirtualną.
+
+9. **Sprawdź routing**. Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, czy trasa nie jest uniemożliwia ruchu z rozsyłane do lub z maszyny wirtualnej. Można również przejrzeć skuteczne trasy, aby zobaczyć wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu trasy efektywne korzystanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+
+10. Upewnij się, że wszelkie zapory lokalnymi lub zapora na komputerze, zezwala na ruch wychodzący TCP 3389 na platformie Azure.
 
 Jeśli nadal wystąpią problemy RDP, możesz [otwarcia żądania pomocy technicznej](https://azure.microsoft.com/support/options/) lub odczytać [bardziej szczegółowe Rozwiązywanie problemów z założenia i kroki RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
@@ -180,6 +184,10 @@ Każdy krok rozwiązywania problemów a następnie spróbuj ponownie nawiązać 
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
+6. **Sprawdź routing**. Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, czy trasa nie jest uniemożliwia ruchu z rozsyłane do lub z maszyny wirtualnej. Można również przejrzeć skuteczne trasy, aby zobaczyć wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu trasy efektywne korzystanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/virtual-network-routes-troubleshoot-powershell.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+
+7. Upewnij się, że wszelkie zapory lokalnymi lub zapora na komputerze, zezwala na ruch wychodzący TCP 3389 na platformie Azure.
+
 Jeśli nadal wystąpią problemy RDP, możesz [otwarcia żądania pomocy technicznej](https://azure.microsoft.com/support/options/) lub odczytać [bardziej szczegółowe Rozwiązywanie problemów z założenia i kroki RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Rozwiązywanie problemów z maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrożenia
@@ -217,6 +225,8 @@ Po wykonaniu każdego kroku rozwiązywania problemów spróbuj połączyć się 
     Wybierz maszyny Wirtualnej w portalu Azure i kliknij przycisk **omówienie** kartę. Kliknij przycisk **ponowne uruchomienie** przycisk:
    
     ![Uruchom ponownie maszynę Wirtualną w portalu Azure](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+
+7. Upewnij się, że wszelkie zapory lokalnymi lub zapora na komputerze, zezwala na ruch wychodzący TCP 3389 na platformie Azure.
 
 Jeśli nadal wystąpią problemy RDP, możesz [otwarcia żądania pomocy technicznej](https://azure.microsoft.com/support/options/) lub odczytać [bardziej szczegółowe Rozwiązywanie problemów z założenia i kroki RDP](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

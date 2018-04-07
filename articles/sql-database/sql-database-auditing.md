@@ -1,19 +1,19 @@
 ---
 title: Rozpoczynanie pracy z inspekcji bazy danych Azure SQL | Dokumentacja firmy Microsoft
-description: "Użyj inspekcji bazy danych Azure SQL, aby śledzić zdarzenia bazy danych w dzienniku inspekcji."
+description: Użyj inspekcji bazy danych Azure SQL, aby śledzić zdarzenia bazy danych w dzienniku inspekcji.
 services: sql-database
 author: giladm
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 0339dc2ecc93fb9ec260ede9d3f2e9b7b1419b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Usługa Azure SQL database auditing śledzi zdarzenia bazy danych i zapisuje je inspekcji logowania na koncie magazynu Azure. Inspekcja również:
@@ -118,7 +118,7 @@ Istnieje kilka metod, których można użyć do wyświetlenia obiektu blob, dzie
 
     4. Scalony plik zostanie otwarty w programie SSMS, gdzie możesz można wyświetlać i analizować je, a także go wyeksportować do pliku w pliku XEL lub CSV lub tabeli.
 
-* Użyj [synchronizacji aplikacji](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , który został utworzony. Działa na platformie Azure, a używa Operations Management Suite (OMS) analizy dzienników publiczne interfejsy API, aby wypchnąć dzienników inspekcji SQL do OMS. Synchronizowanie aplikacji wypchnięcia dzienników inspekcji SQL do analizy dzienników OMS zużycia za pośrednictwem pulpitu nawigacyjnego Analytics dziennika OMS.
+* Użyj [synchronizacji aplikacji](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) , który został utworzony. Działa na platformie Azure, a używa analizy dzienników publiczne interfejsy API, aby wypchnąć dzienników inspekcji SQL do analizy dzienników. Synchronizowanie aplikacji wypchnięcia dzienników inspekcji SQL do analizy dzienników zużycia za pośrednictwem pulpitu nawigacyjnego Analytics dziennika.
 
 * Use Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Dowiedz się więcej o [usługi Power BI i dostęp do pobrania szablonu](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 

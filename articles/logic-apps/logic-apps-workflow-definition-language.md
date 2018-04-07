@@ -1,11 +1,11 @@
 ---
-title: "Schemat języka definicji przepływu pracy — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Zdefiniuj przepływów pracy opartych na schemat definicji przepływu pracy dla usługi Azure Logic Apps"
+title: Schemat języka definicji przepływu pracy — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Zdefiniuj przepływów pracy opartych na schemat definicji przepływu pracy dla usługi Azure Logic Apps
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 994b8946078ed9b4c8aa965a3bc0e117ba3185c0
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schemat języka definicji przepływu pracy dla usługi Azure Logic Apps
 
@@ -70,10 +70,10 @@ W poniższym przykładzie przedstawiono struktura definicji parametru:
 
 |Nazwa elementu|Wymagane|Opis|  
 |------------------|--------------|-----------------|  
-|type|Yes|**Typ**: ciąg <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "string"}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: securestring <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: int <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "int"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ**: wartość logiczna <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": true }}` <p> **Typ**: tablicy <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "array"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ**: obiekt <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ**: secureobject <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Uwaga:** `securestring` i `secureobject` typy nie są zwracane w `GET` operacji. Haseł, kluczy i kluczy tajnych należy użyć tego typu.|  
+|type|Yes|**Typ**: ciąg <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "string"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: securestring <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: int <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "int"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ**: wartość logiczna <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": true }}` <p> **Typ**: tablicy <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "array"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ**: obiekt <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ**: secureobject <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Uwaga:** `securestring` i `secureobject` typy nie są zwracane w `GET` operacji. Haseł, kluczy i kluczy tajnych należy użyć tego typu.|  
 |Wartość domyślna|Nie|Określa wartość domyślną dla parametru, gdy nie określono wartości w momencie utworzenia zasobu.|  
 |allowedValues|Nie|Określa tablicę dozwolonych wartości dla parametru.|  
-|metadata|Nie|Określa dodatkowe informacje na temat parametrów, takich jak czytelny opis lub danych czasu projektowania używana przez Visual Studio lub innych narzędzi.|  
+|metadane|Nie|Określa dodatkowe informacje na temat parametrów, takich jak czytelny opis lub danych czasu projektowania używana przez Visual Studio lub innych narzędzi.|  
   
 Ten przykład przedstawia, jak można użyć parametru w sekcji body akcji:  
   
@@ -179,7 +179,7 @@ Te funkcje umożliwiają odwołania wyjścia z innych działań w aplikacji logi
 |Nazwa funkcji|Opis|  
 |-------------------|-----------------|  
 |parameters|Zwraca wartość parametru, który jest zdefiniowany w definicji. <p>`parameters('password')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: parametr <p> **Opis elementu**: wymagane. Nazwa parametru wartości, których chcesz.|  
-|Akcja|Umożliwia wyrażenie ma być jego wartość z innej nazwy JSON i pary wartości lub dane wyjściowe bieżącej akcji środowiska wykonawczego. Właściwość reprezentowany przez propertyPath w poniższym przykładzie jest opcjonalna. Jeśli nie określono propertyPath, odwołanie jest obiekt całej akcji. Tej funkcji można używać tylko wewnątrz czy — do warunków akcji. <p>`action().outputs.body.propertyPath`|  
+|action|Umożliwia wyrażenie ma być jego wartość z innej nazwy JSON i pary wartości lub dane wyjściowe bieżącej akcji środowiska wykonawczego. Właściwość reprezentowany przez propertyPath w poniższym przykładzie jest opcjonalna. Jeśli nie określono propertyPath, odwołanie jest obiekt całej akcji. Tej funkcji można używać tylko wewnątrz czy — do warunków akcji. <p>`action().outputs.body.propertyPath`|  
 |Akcje|Umożliwia wyrażenie ma być jego wartość z innej nazwy JSON i pary wartości lub dane wyjściowe działania środowiska wykonawczego. Wyrażenia te jawnie deklarować, że jedno działanie zależy od innej akcji. Właściwość reprezentowany przez propertyPath w poniższym przykładzie jest opcjonalna. Jeśli nie określono propertyPath, odwołanie jest obiekt całej akcji. Aby określić zależności można użyć tego elementu lub element warunków, ale nie trzeba używać obu zasobów zależnych. <p>`actions('myAction').outputs.body.propertyPath` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Nazwa akcji <p> **Opis elementu**: wymagane. Nazwa akcji, których wartości mają. <p> Dostępne właściwości w obiekcie akcji to: <ul><li>`name`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Zobacz [interfejsu API Rest](http://go.microsoft.com/fwlink/p/?LinkID=850646) szczegółowe informacje na temat tych właściwości.|
 |trigger|Umożliwia wyrażenie ma być jego wartość z innej nazwy JSON i pary wartości lub dane wyjściowe wyzwalacza środowiska uruchomieniowego. Właściwość reprezentowany przez propertyPath w poniższym przykładzie jest opcjonalna. Jeśli nie określono propertyPath, odwołanie jest obiektem wyzwalacza całego. <p>`trigger().outputs.body.propertyPath` <p>Użyta wewnątrz elementu trigger dane wejściowe, funkcja zwraca dane wyjściowe poprzedniego wykonywania. Jednakże, gdy jest używany wewnątrz warunku wyzwalacza `trigger` funkcja zwraca dane wyjściowe wykonania bieżącej. <p> Dostępne właściwości w obiekcie wyzwalacza to: <ul><li>`name`</li><li>`scheduledTime`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Zobacz [interfejsu API Rest](http://go.microsoft.com/fwlink/p/?LinkID=850644) szczegółowe informacje na temat tych właściwości.|
 |actionOutputs|Ta funkcja jest skrócona forma funkcji `actions('actionName').outputs` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Nazwa akcji <p> **Opis elementu**: wymagane. Nazwa akcji, których wartości mają.|  
@@ -267,7 +267,7 @@ Funkcje te służą do konwersji między każdego typu natywnego w języku:
 |base64|Zwraca reprezentację ciągu wejściowego base64. Na przykład, funkcja zwraca `c29tZSBzdHJpbmc=`: <p>`base64('some string')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: String 1 <p> **Opis elementu**: wymagane. Ciąg do zakodowania w reprezentację base64.|  
 |base64ToBinary|Zwraca wartość binarna reprezentacja ciągu w kodowaniu base64. Na przykład, ta funkcja zwraca reprezentacja binarna `some string`: <p>`base64ToBinary('c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg kodowany w formacie base64.|  
 |base64ToString|Zwraca reprezentację ciągu based64 zakodowany ciąg. Na przykład, funkcja zwraca `some string`: <p>`base64ToString('c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg kodowany w formacie base64.|  
-|Binarne|Zwraca wartość binarna reprezentacja wartości.  Na przykład, ta funkcja zwraca to binarna reprezentacja `some string`: <p>`binary('some string')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowana na format binarny.|  
+|Binarny|Zwraca wartość binarna reprezentacja wartości.  Na przykład, ta funkcja zwraca to binarna reprezentacja `some string`: <p>`binary('some string')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowana na format binarny.|  
 |dataUriToBinary|Zwraca wartość binarna reprezentacja identyfikatora URI danych. Na przykład, ta funkcja zwraca reprezentacja binarna `some string`: <p>`dataUriToBinary('data:;base64,c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Identyfikator URI do przekonwertowania na binarna reprezentacja danych.|  
 |dataUriToString|Zwraca reprezentację ciągu identyfikatora URI danych. Na przykład, funkcja zwraca `some string`: <p>`dataUriToString('data:;base64,c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg<p> **Opis elementu**: wymagane. Identyfikator URI do przekonwertowania na ciąg reprezentujący dane.|  
 |dataUri|Zwraca identyfikator URI wartości danych. Na przykład, funkcja zwraca identyfikator URI danych `text/plain;charset=utf8;base64,c29tZSBzdHJpbmc=`: <p>`dataUri('some string')` <p> **Liczba parametrów**: 1<p> **Nazwa**: wartość<p> **Opis elementu**: wymagane. Wartość można przekonwertować na identyfikator URI danych.|  

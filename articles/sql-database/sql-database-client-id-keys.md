@@ -1,19 +1,19 @@
 ---
-title: "Pobiera wartości do uwierzytelniania aplikacji, usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: "Tworzenie nazwy głównej usługi do uzyskiwania dostępu do bazy danych SQL z kodu."
+title: Pobiera wartości do uwierzytelniania aplikacji, usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Tworzenie nazwy głównej usługi do uzyskiwania dostępu do bazy danych SQL z kodu.
 services: sql-database
 author: stevestein
 manager: jhubbard
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: e907edc98228ecab645e63f5e38094e3a04812de
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9127362ec806b7b3cbf3971488bb5393eb170eff
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobiera wartości wymagane do uwierzytelniania aplikacji dostęp do bazy danych SQL z kodu
 Tworzenie i zarządzanie nimi bazy danych SQL z kodu, należy zarejestrować aplikację w domenie usługi Azure Active Directory (AAD) w subskrypcji, gdzie zostały utworzone zasobów platformy Azure.

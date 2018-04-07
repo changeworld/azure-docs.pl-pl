@@ -1,25 +1,19 @@
 ---
-title: Dodawanie danych wejściowych do zadań usługi Stream Analytics | Dokumentacja firmy Microsoft
+title: Dodawanie danych wejściowych do zadań usługi Azure Stream Analytics
 description: Dowiedz się, jak podłączenie do zadania usługi analiza strumienia jako dane wejściowe z usługi Event Hubs lub odwołanie do danych z magazynu blogu strumieniowe źródła danych.
-keywords: danych wejściowych, przesyłanie strumieniowe danych
-documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: ryanw
-editor: ''
-ms.assetid: 9e59bd24-2a80-4ecb-b6b2-309a07c70bcd
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: ca96f0a9abc13cd5d3cc93210c0347064c6503b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 713b830717cce7b4b2b0fb1171596659c2275b85
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Dodaj dane przesyłane strumieniowo danych wejściowych lub odwołanie do zadania usługi analiza strumienia
 Dowiedz się, jak podłączenie do zadania usługi analiza strumienia jako dane wejściowe z usługi Event Hubs lub odwołanie do danych z magazynu obiektów Blob strumieniowe źródła danych.

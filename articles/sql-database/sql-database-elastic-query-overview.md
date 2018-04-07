@@ -1,19 +1,19 @@
 ---
-title: "Omówienie zapytania elastycznej bazy danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Elastyczne zapytania umożliwia uruchomienie zapytania języka Transact-SQL, obejmującej wiele baz danych."
+title: Omówienie zapytania elastycznej bazy danych SQL Azure | Dokumentacja firmy Microsoft
+description: Elastyczne zapytania umożliwia uruchomienie zapytania języka Transact-SQL, obejmującej wiele baz danych.
 services: sql-database
 manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 04/27/2016
+ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: 76a8332b99639bacee994824b69624d7fd457a7f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6367418fb07b2ab5b425609540c653678a207ebc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Omówienie usługi Azure zapytania elastycznej bazy danych SQL (wersja zapoznawcza)
 Funkcja elastycznej zapytania (w wersji zapoznawczej) umożliwia uruchamianie zapytania języka Transact-SQL, obejmującej wiele baz danych w bazie danych SQL Azure. Umożliwia wykonywanie kwerend bazy danych między dostęp do tabel zdalnych, a także łączenie narzędzi firmy Microsoft i innych firm (Excel, usługi Power BI, Tableau, itp.), zapytanie między warstwami danych z wielu baz danych. Za pomocą tej funkcji, można skalować w poziomie zapytania do warstw dużej ilości danych w bazie danych SQL i wizualizacja wyników business intelligence (BI) raportów.

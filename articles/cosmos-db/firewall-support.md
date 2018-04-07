@@ -3,9 +3,8 @@ title: Obsługa zapory DB rozwiązania Cosmos & IP Azure kontrola dostępu | Dok
 description: Dowiedz się, jak używać zasad kontroli dostępu dla adresu IP dla strony Obsługa zapory na kontach bazy danych Azure DB rozwiązania Cosmos.
 keywords: Kontrola dostępu do adresu IP, obsługi zapory
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 tags: azure-resource-manager
 documentationcenter: ''
 ms.assetid: c1b9ede0-ed93-411a-ac9a-62c113a8e887
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: mimig
-ms.openlocfilehash: 5b70f77d49651e2873428fc7798fff3770b7a095
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: sngun
+ms.openlocfilehash: 4d5743703f3a1d98b720bd92a30c91549bbf89c0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Obsługa zapory w usłudze Azure DB rozwiązania Cosmos
 Aby zabezpieczyć dane przechowywane na koncie Azure DB rozwiązania Cosmos bazy danych, bazy danych Azure rozwiązania Cosmos udostępnił pomocy technicznej na podstawie klucza tajnego [modelu autoryzacji](https://msdn.microsoft.com/library/azure/dn783368.aspx) , która zawiera kod uwierzytelniania wiadomości Hash-based silne (HMAC). Oprócz modelu autoryzacji na podstawie tajnego bazy danych Azure rozwiązania Cosmos obsługuje teraz, zasady kontroli dostępu na podstawie adresu IP dla strony Obsługa zapory dla ruchu przychodzącego zmiennych. Ten model jest podobne do reguł zapory systemu tradycyjne bazy danych i zapewnia dodatkowy poziom zabezpieczeń do bazy danych Azure rozwiązania Cosmos konta bazy danych. Z tym modelem można teraz skonfigurować konto bazy danych DB rozwiązania Cosmos Azure można uzyskiwać tylko z zatwierdzonych zbiór maszyny i/lub usług w chmurze. Dostęp do zasobów bazy danych Azure rozwiązania Cosmos z tych zestawów zatwierdzonych komputery i usługi wymagają nadal obiekt wywołujący, aby przedstawić token prawidłowego autoryzacji.

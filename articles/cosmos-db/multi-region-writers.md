@@ -1,11 +1,10 @@
 ---
-title: "Architektur wielu głównej bazy danych z bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej na temat projektowania architektury aplikacji z lokalnym odczyty i zapisy w różnych regionach geograficznych z bazy danych Azure rozwiązania Cosmos."
+title: Architektur wielu głównej bazy danych z bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat projektowania architektury aplikacji z lokalnym odczyty i zapisy w różnych regionach geograficznych z bazy danych Azure rozwiązania Cosmos.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: 706ced74-ea67-45dd-a7de-666c3c893687
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +14,11 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e02b286db42d8a9de8f1df8263f40c3732484038
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 941af42561afbdf91cb3529fd51971ee88fafdbc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Wzorzec wielu globalnie zreplikowany architektury bazy danych z bazy danych Azure rozwiązania Cosmos
 Azure DB rozwiązania Cosmos obsługuje gotowe [globalnej replikacji](distribute-data-globally.md), który umożliwia dystrybucję danych do wielu regionów o małych opóźnieniach dostępu w dowolnym miejscu obciążenie. Ten model jest najczęściej używany w przypadku obciążeń wydawcy/konsumenta przypadku zapisywania w jednym regionie geograficznym i czytników globalnie rozproszone w różnych regionach (odczytu). 
@@ -166,7 +165,7 @@ Teraz Przyjrzyjmy się główne dane należy implementować metody dostępu. Oto
 ## <a id="Architecture"></a>Konfiguracja konta w usłudze Azure DB rozwiązania Cosmos
 Zagwarantowanie lokalnego odczytuje i zapisuje, firma Microsoft musi partycji danych nie tylko na partycji klucza, ale także na podstawie wzorca dostępu geograficzne w regionach. Model zależy od tego, mając konto bazy danych Azure DB rozwiązania Cosmos replikacją geograficzną dla każdego regionu. Na przykład z dwóch regionach, w tym miejscu jest konfiguracji w przypadku zapisów:
 
-| Nazwa konta | Zapis regionu | Region odczytu |
+| Nazwa konta | Region zapisu | Region odczytu |
 | --- | --- | --- |
 | `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |
@@ -197,7 +196,7 @@ Oto fragment kodu będący jak zainicjować klientów w DAL, uruchomionych w `We
 
 Z poprzedniej instalacji Warstwa dostępu do danych można przekazywać wszystkich zapisów do lokalnego konta, na którym jest wdrażany podstawie. Odczyty są wykonywane przez odczyt z oba konta, aby pobrać globalne widoku danych. Ta metoda może zostać rozszerzony do w wielu regionach, zgodnie z wymaganiami. Na przykład poniżej przedstawiono ustawienia z trzech regionów geograficznych:
 
-| Nazwa konta | Zapis regionu | Region odczytu 1 | Region odczytu 2 |
+| Nazwa konta | Region zapisu | Region odczytu 1 | Region odczytu 2 |
 | --- | --- | --- | --- |
 | `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |`Southeast Asia` |
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |

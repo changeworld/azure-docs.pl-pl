@@ -1,11 +1,11 @@
 ---
-title: "Klaster HPC Pack dla programów Excel i SOA | Dokumentacja firmy Microsoft"
-description: "Wprowadzenie do uruchamiania dużych obciążeń programu Excel i SOA w klastrze HPC Pack na platformie Azure"
+title: Klaster HPC Pack dla programów Excel i SOA | Dokumentacja firmy Microsoft
+description: Wprowadzenie do uruchamiania dużych obciążeń programu Excel i SOA w klastrze HPC Pack na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: cb6a9abe-caf3-44da-b911-849a50f6cfb3
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Wprowadzenie do uruchamiania obciążeń programu Excel i SOA w klastrze HPC Pack na platformie Azure
 W tym artykule przedstawiono sposób wdrażania klastra Microsoft HPC Pack 2012 R2 na maszynach wirtualnych Azure przy użyciu szablonu Azure Szybki Start lub opcjonalnie skrypt wdrażania środowiska Azure PowerShell. Klaster używa przeznaczonych do uruchamiania programu Microsoft Excel lub obciążeń zorientowane na usługę architektura (SOA) HPC Pack obrazów maszyny Wirtualnej Azure Marketplace. Klastra służy do uruchamiania usług SOA i HPC dla programu Excel z lokalnych komputera klienckiego. Usługi HPC dla programu Excel obejmują odciążenia skoroszytu programu Excel i funkcje zdefiniowane przez użytkownika programu Excel lub funkcji UDF.
@@ -43,7 +43,7 @@ Na wysokim poziomie na poniższym diagramie przedstawiono klastra HPC Pack, że 
 ## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>Krok 1. Konfigurowanie klastra HPC Pack na platformie Azure
 Zostanie przedstawiony dwie opcje do skonfigurowania klastra HPC Pack 2012 R2: najpierw przy użyciu szablonu Azure Szybki Start i portalu Azure; i sekundę, za pomocą skryptu wdrażania programu Azure PowerShell.
 
-### <a name="option-1-use-a-quickstart-template"></a>Opcja 1. Szablon szybkiego startu
+### <a name="option-1-use-a-quickstart-template"></a>Sposób 1. Szablon szybkiego startu
 Szablon Szybki Start Azure umożliwia szybkie wdrożenie klastra HPC Pack w portalu Azure. Po otwarciu szablonu w portalu można uzyskać Interfejsu prostego, gdzie możesz wprowadzić ustawienia dla klastra. Poniżej przedstawiono kroki. 
 
 > [!TIP]
@@ -59,7 +59,7 @@ Szablon Szybki Start Azure umożliwia szybkie wdrożenie klastra HPC Pack w port
    
    a. Na **parametry** strony, wprowadź lub zmień wartości parametrów szablonu. (Kliknij ikonę obok każdego ustawienia, aby uzyskać pomoc.) W poniższym ekranie przedstawiono przykładowe wartości. W tym przykładzie jest tworzony klaster o nazwie *hpc01* w *hpc.local* węzły obliczeniowe domeny składające się z węzła głównego i 2. Węzły obliczeniowe są tworzone na podstawie obrazu HPC Pack VM, który zawiera program Microsoft Excel.
    
-   ![Wprowadź parametry][parameters-new-portal]
+   ![Wprowadzanie parametrów][parameters-new-portal]
    
    > [!NOTE]
    > Maszyna wirtualna jest utworzona automatycznie z węzłem głównym [najnowsze obrazu z witryny Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) HPC Pack 2012 R2 w systemie Windows Server 2012 R2. Obecnie obraz jest oparty na HPC Pack 2012 R2 Update 3.
@@ -85,7 +85,7 @@ Szablon Szybki Start Azure umożliwia szybkie wdrożenie klastra HPC Pack w port
    
    ![Eksportowanie certyfikatu][cert]
 
-### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>Opcja 2. Użyj skryptu HPC Pack IaaS wdrożenia
+### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>Sposób 2. Użyj skryptu HPC Pack IaaS wdrożenia
 Skrypt wdrożenia HPC Pack IaaS umożliwia innym elastyczne wdrożenie klastra HPC Pack. Tworzy klaster w klasycznym modelu wdrażania, podczas gdy szablon korzysta z modelu wdrażania usługi Azure Resource Manager. Ponadto skryptu jest zgodny z subskrypcją w usłudze Azure globalne lub chińskiej wersji platformy Azure.
 
 **Dodatkowe wymagania wstępne**
@@ -337,11 +337,11 @@ Aby użyć NetTcp powiązania, konfiguracja jest podobny do nawiązywania połą
 2. Dodaj porty TCP 9090, 9087, 9091, Broker 9094 w sesji, odpowiednio Broker pracownik i usługi danych
    
     ![Konfigurowanie punktów końcowych][endpoint-new-portal]
-3. Uruchom maszynę Wirtualną.
+3. Uruchom maszynę wirtualną.
 
 Aplikacja kliencka SOA nie wymagają żadnych zmian, z wyjątkiem zmiana nazwy head pełnej nazwy klastra IaaS.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [tych zasobów](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) uzyskać więcej informacji dotyczących uruchamiania obciążeń programu Excel z HPC Pack.
 * Zobacz [Zarządzanie SOA usług Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) szczegółowe informacje na temat wdrażania i zarządzania usługami SOA pakietem HPC.
 

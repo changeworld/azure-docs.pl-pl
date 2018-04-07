@@ -3,9 +3,8 @@ title: Poziomy spójności w usłudze Azure DB rozwiązania Cosmos | Dokumentacj
 description: Azure DB rozwiązania Cosmos ma pięć poziomy spójności, aby ułatwić równoważenie ostatecznego spójności, dostępnością i opóźnieniem kompromis.
 keywords: eventual consistency, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: cgronlun
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
@@ -14,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
-ms.author: mimig
+ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b0e46eb001e0b100ad1e181b02c18cfe67648f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Poziomy spójności danych dostosowywalne w usłudze Azure DB rozwiązania Cosmos
 Azure DB rozwiązania Cosmos jest zaprojektowany od podstaw się z globalnego dystrybucji pamiętać dla każdego modelu danych. Zaprojektowano go do zapewnienia gwarancje przewidywalną małe opóźnienia i wielu modeli dobrze zdefiniowany swobodna spójności. Obecnie bazy danych Azure rozwiązania Cosmos zawiera pięć poziomów spójności: silne, nieaktualność, sesji, prefiks spójne i "ostateczna". Nieaktualność, sesji prefiks spójne i ostatecznego są nazywane "swobodna spójności modeli" świadczą one mniej spójności niż silne, czyli większości wysokiej spójny model dostępne. 
@@ -109,7 +108,7 @@ Domyślny poziom spójności można skonfigurować na Twoim koncie bazy danych, 
 
 ## <a name="configuring-the-default-consistency-level"></a>Konfigurowanie poziomu spójności domyślne
 1. W [portalu Azure](https://portal.azure.com/), na pasku przechodzenia kliknij **bazy danych Azure rozwiązania Cosmos**.
-2. W **bazy danych Azure rozwiązania Cosmos** wybierz konto bazy danych do zmodyfikowania.
+2. Na stronie usługi **Azure Cosmos DB** wybierz konto bazy danych do modyfikacji.
 3. Na stronie konta, kliknij przycisk **domyślna spójność**.
 4. W **domyślna spójność** , wybierz nowy poziom spójności i kliknij przycisk **zapisać**.
    

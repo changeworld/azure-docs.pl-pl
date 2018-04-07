@@ -1,12 +1,12 @@
 ---
-title: "Ochrona danych osobowych dokumentu przy użyciu narzędzi do raportowania platformy Azure | Dokumentacja firmy Microsoft"
-description: "Umożliwia Azure usługi reporting services, aby chronić prywatność danych osobowych w inicjatyw zgodne z ogólnych danych ochrony rozporządzenia (GDPR)."
+title: Ochrona danych osobowych dokumentu przy użyciu narzędzi do raportowania platformy Azure | Dokumentacja firmy Microsoft
+description: Umożliwia Azure usługi reporting services, aby chronić prywatność danych osobowych w inicjatyw zgodne z ogólnych danych ochrony rozporządzenia (GDPR).
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc859f3aa34531133b7a21e36591b011c63d511c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Ochrona danych osobowych dokumentu przy użyciu narzędzi do raportowania platformy Azure
 
@@ -95,13 +95,13 @@ Narzędzia analizy w analizy dzienników takie jak dziennik wyszukiwania, widok�
 
 #### <a name="how-do-i-use-log-analytics"></a>Jak używać Log Analytics?
 
-Analiza dzienników dostępne za pośrednictwem portalu OMS lub w portalu Azure, z dowolnej przeglądarki sieci web. Usługa Log Analytics oferuje język zapytań, za pomocą którego można szybko pobierać i konsolidować dane w repozytorium. Można utworzyć i zapisać dziennik wyszukiwania bezpośrednio analizowania danych w portalu.
+Analiza dzienników dostępne za pośrednictwem portalu OMS lub w portalu Azure, z dowolnej przeglądarki sieci web. Log Analytics obejmuje język kwerendy szybkie pobieranie i Konsolidowanie danych w obszarze roboczym analizy dzienników. Można utworzyć i zapisać dziennik wyszukiwania bezpośrednio analizowania danych w portalu.
 
 Aby utworzyć obszaru roboczego analizy dzienników w portalu Azure, wykonaj następujące czynności:
 
 1. Wybierz **analizy dzienników** z listy usług w witrynie Marketplace.
 
-2. Wybierz **tworzenia,** następnie określ nazwę obszaru roboczego OMS, wybierz Twojej subskrypcji, grupy zasobów, lokalizacji i warstwę cenową.
+2. Wybierz **tworzenia,** następnie określ nazwę obszaru roboczego analizy dzienników, wybierz Twojej subskrypcji, grupy zasobów, lokalizacji i warstwę cenową.
 
 3. Kliknij przycisk **OK** Aby wyświetlić listę obszarów roboczych.
 

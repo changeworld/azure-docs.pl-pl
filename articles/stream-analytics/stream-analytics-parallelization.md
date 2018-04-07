@@ -1,24 +1,19 @@
 ---
-title: Korzystać z zapytania paralelizacja w Azure Stream Analytics | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skalować zadania usługi analiza strumienia Konfigurowanie partycji wejściowych, dostosowywanie definicji zapytania i ustawiając zadania jednostki przesyłania strumieniowego.
-keywords: przesyłanie strumieniowe, danych przesyłania strumieniowego przetwarzania danych, dostroić analityka
+title: Użyj zapytania paralelizacja i skali w Azure Stream Analytics
+description: W tym artykule opisano sposób skalowania zadania usługi analiza strumienia Konfigurowanie partycji wejściowych, dostosowywanie definicji zapytania i ustawiając zadania jednostki przesyłania strumieniowego.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: eb19a9b4e92e7007f64ae7b593663be6a47a7a4b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Korzystać z zapytania paralelizacja w Azure Stream Analytics
 W tym artykule przedstawiono sposób wykorzystać paralelizacja Azure Stream Analytics. Sposób skalowania zadania usługi analiza strumienia, konfigurując wejściowych partycji i dostrajania analytics definicji zapytania.
@@ -50,7 +45,7 @@ Podczas pracy z usługi Stream Analytics, możesz korzystać z partycji w danych
 -   Centrum IoT (należy jawnie ustawić klucz partycji)
 -   Service Bus
 
-Wyjść usługi Power BI, SQL i magazyn danych SQL nie obsługują partycjonowania. Jednak można nadal podzielić danych wejściowych zgodnie z opisem w [w tej sekcji](#multi-step-query-with-a-grouping-key) 
+Wyjść usługi Power BI, SQL i magazyn danych SQL nie obsługują partycjonowania. Jednak można nadal podzielić danych wejściowych zgodnie z opisem w [w tej sekcji](#multi-step-query-with-different-partition-by-values) 
 
 Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 
@@ -65,7 +60,7 @@ Aby uzyskać więcej informacji o partycjach zobacz następujące artykuły:
 
 2. Po danych jest rozmieszczona na stronie wprowadzania, to należy się upewnić, że zapytanie jest podzielona na partycje. Wymaga to użycia **PARTITION BY** wszystkich kroków. Wiele kroków są dozwolone, ale wszystkie muszą podzielone na partycje przy użyciu tego samego klucza. Obecnie, podziału klucza musi być ustawiona na **PartitionId** aby pełni równoległe zadania.  
 
-3. Większość wyjście mogą wykorzystać partycjonowania, jednak jeśli jest używany typ danych wyjściowych która nie obsługuje partycjonowanie zadania nie będzie w pełni równoległych. Zapoznaj się [output sekcji](#Outputs) więcej szczegółów.
+3. Większość wyjście mogą wykorzystać partycjonowania, jednak jeśli jest używany typ danych wyjściowych która nie obsługuje partycjonowanie zadania nie będzie w pełni równoległych. Zapoznaj się [output sekcji](#outputs) więcej szczegółów.
 
 4. Liczby partycji wejściowych musi być równa liczbie partycji danych wyjściowych. Dane wyjściowe z magazynu obiektów blob nie obsługuje obecnie partycji. Ale nie szkodzi, ponieważ dziedziczy ona schemat partycjonowania nadrzędnego zapytania. Poniżej przedstawiono przykładowe wartości partycji, umożliwiających pełni równoległe zadania:  
 
@@ -221,7 +216,7 @@ To zapytanie może być skalowana do 24 SUs.
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

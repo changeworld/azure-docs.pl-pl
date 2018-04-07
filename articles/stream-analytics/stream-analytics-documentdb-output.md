@@ -1,26 +1,21 @@
 ---
-title: Dane wyjściowe JSON dla usługi Stream Analytics | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Stream Analytics można kierować bazy danych rozwiązania Cosmos Azure dla danych wyjściowych JSON archiwizowania danych i zapytania o małych opóźnieniach na dane JSON bez struktury.
-keywords: Dane wyjściowe JSON
-documentationcenter: ''
-services: stream-analytics,documentdb
+title: Azure Stream Analytics danych wyjściowych do rozwiązania Cosmos bazy danych.
+description: W tym artykule opisano sposób użycia usługi Azure Stream Analytics można zapisać danych wyjściowych do bazy danych rozwiązania Cosmos Azure dla danych wyjściowych JSON archiwizowania danych i zapytania o małych opóźnieniach na dane JSON bez struktury.
+services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 8bda2abda6f2b7207a5a7195c24b07da9089fb06
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: f7115f7d19cd44ae7d0812d3aa6c48d8dd58c20d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Docelowej bazy danych rozwiązania Cosmos Azure dla danych wyjściowych JSON z usługi Stream Analytics
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics dane wyjściowe do bazy danych Azure rozwiązania Cosmos  
 Analiza strumienia może kierować [bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/services/documentdb/) dla danych wyjściowych JSON, włączanie archiwizacji i małych opóźnieniach kwerend danych na dane JSON bez struktury. W tym dokumencie opisano najważniejsze wskazówki dotyczące implementowania tej konfiguracji.
 
 Dla osób, które znają rozwiązania Cosmos DB, Przyjrzyjmy się [ścieżka szkoleniowa dotycząca usługi Azure rozwiązania Cosmos DB](https://azure.microsoft.com/documentation/learning-paths/documentdb/) rozpocząć pracę. 
@@ -35,7 +30,7 @@ Dane wyjściowe bazy danych Azure rozwiązania Cosmos w Stream Analytics umożli
 Niektóre opcje kolekcji DB rozwiązania Cosmos są szczegółowo opisane poniżej.
 
 ## <a name="tune-consistency-availability-and-latency"></a>Dostosuj spójności, dostępnością i opóźnieniem
-Aby była zgodna z wymaganiami aplikacji z DB rozwiązania Cosmos umożliwia prawidłowo dostrajania bazy danych i kolekcji i wprowadzić kompromis między spójności, dostępności i opóźnień. W zależności od tego, jakiego poziomu spójności odczytu potrzeb scenariusz przed zapisu i odczytu opóźnienia, możesz wybrać poziom spójności na konta bazy danych. Domyślnie DB rozwiązania Cosmos umożliwia również synchroniczne indeksowania na każdej operacji CRUD do kolekcji. To jest inną opcją przydatne do kontrolowania wydajności zapisu/odczytu w bazie danych rozwiązania Cosmos. Aby uzyskać więcej informacji na ten temat, zapoznaj się [Zmień poziomy spójności bazy danych i zapytania](../cosmos-db/consistency-levels.md) artykułu.
+Aby była zgodna z wymaganiami aplikacji z DB rozwiązania Cosmos umożliwia prawidłowo dostrajania bazy danych i kolekcji i wprowadzić kompromis między spójności, dostępności i opóźnień. W zależności od tego, jakiego poziomu spójności odczytu potrzeb scenariusz przed zapisu i odczytu opóźnienia, możesz wybrać poziom spójności na konta bazy danych. Domyślnie DB rozwiązania Cosmos umożliwia również synchroniczne indeksowania na każdej operacji CRUD do kolekcji. To jest inną opcją przydatne do kontrolowania wydajności zapisu/odczytu w bazie danych rozwiązania Cosmos. Aby uzyskać więcej informacji, przejrzyj [Zmień poziomy spójności bazy danych i zapytania](../cosmos-db/consistency-levels.md) artykułu.
 
 ## <a name="upserts-from-stream-analytics"></a>Upserts z usługi Stream Analytics
 Stream Analytics integracji z rozwiązania Cosmos DB umożliwia wstawić lub zaktualizować rekord w kolekcji rozwiązania Cosmos bazy danych na podstawie danego kolumny Identyfikator dokumentu. To jest również nazywany *Upsert*.

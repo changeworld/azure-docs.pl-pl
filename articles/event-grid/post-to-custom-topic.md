@@ -1,18 +1,18 @@
 ---
-title: "Zdarzenie ogłaszania do tematu Azure siatki zdarzeń niestandardowych"
-description: "Opisuje sposób przesłać zdarzenia do niestandardowego tematu Azure zdarzeń siatki"
+title: Zdarzenie ogłaszania do tematu Azure siatki zdarzeń niestandardowych
+description: Opisuje sposób przesłać zdarzenia do niestandardowego tematu Azure zdarzeń siatki
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 43dcdf9ab0fee5f7e61ecdc42aaf40430e272d92
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>POST do tematu niestandardowych dla usługi Azure Event siatki
 
@@ -91,8 +91,34 @@ Na przykład schemat danych ważne jest:
 }]
 ```
 
+## <a name="response"></a>Odpowiedź
+
+Po publikowanie do punktu końcowego tematu, otrzymasz odpowiedź. Odpowiedź jest standardowy kod odpowiedzi HTTP. Niektóre typowe odpowiedzi są:
+
+|Wynik  |Odpowiedź  |
+|---------|---------|
+|Powodzenie  | 200 OK  |
+|Nieprawidłowy punkt końcowy | 404 — Nie odnaleziono |
+|Nieprawidłowy klucz dostępu. | 401 nieautoryzowane |
+|Dane zdarzenia mają niepoprawny format | 400 Niewłaściwe żądanie |
+
+Błędy treść komunikatu ma następujący format:
+
+```json
+{
+    "error": {
+        "code": "<HTTP status code>",
+        "message": "<description>",
+        "details": [{
+            "code": "<HTTP status code>",
+            "message": "<description>"
+    }]
+  }
+}
+```
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby obejrzeć wprowadzenie do routingu zdarzeń niestandardowych, zobacz [tworzenie i tras niestandardowych zdarzeń z wiersza polecenia platformy Azure i siatki zdarzeń](custom-event-quickstart.md) lub [tworzenie i tras niestandardowych zdarzeń z programu Azure PowerShell i siatki zdarzeń](custom-event-quickstart-powershell.md).
+* Informacje o monitorowaniu dostaw zdarzeń, zobacz [dostarczanie komunikatów Monitora zdarzeń siatki](monitor-event-delivery.md).
 * Aby uzyskać więcej informacji na temat klucza uwierzytelniania, zobacz [siatki zdarzeń zabezpieczeń i uwierzytelniania](security-authentication.md).
 * Aby uzyskać więcej informacji o tworzeniu subskrypcji platformy Azure zdarzeń siatki, zobacz [schematu subskrypcji zdarzeń siatki](subscription-creation-schema.md).

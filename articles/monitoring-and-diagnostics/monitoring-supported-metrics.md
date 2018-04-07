@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c9dab276b39b1ceb55851e865f9166e3e9e7fee8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z monitorem Azure
-Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy je w portalu, dostępu do nich za pośrednictwem interfejsu API REST lub zapytań je przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej przedstawiono pełną listę wszystkich metryki obecnie z potoku metryki Azure monitora.
+Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy je w portalu, dostępu do nich za pośrednictwem interfejsu API REST lub zapytań je przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej przedstawiono pełną listę wszystkich metryki obecnie z potoku metryki Azure monitora. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk dostępnych za pośrednictwem potoku metryki skonsolidowanych Azure Monitor. Wykonanie kwerendy i dostępu do tych metryk możesz użyć [wersja interfejsu api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
-> Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista zawiera tylko metryk dostępnych za pośrednictwem potoku metryki skonsolidowanych Azure Monitor. Wykonanie kwerendy i dostępu do metryki z wymiarów, użyj [wersja interfejsu api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+> Wysyłanie metryki wielowymiarowej za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryka z wymiarów są eksportowane jako spłaszczone pojedynczego metryki wymiarów, zagregowane WE wartości wymiaru.
+>
+> *Na przykład*: metryka "Komunikatów przychodzących" w Centrum zdarzeń można przedstawione i wykresie na na poziomie kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych, które Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
 >
 >
 
@@ -335,14 +337,14 @@ Azure Monitor udostępnia kilka metod do interakcji z metryk, takich jak wykresy
 |TotalCalls|Łączna liczba wywołań|Licznik|Łącznie|Łączna liczba wywołań.|Nie wymiarów|
 |SuccessfulCalls|Wywołania zakończone powodzeniem|Licznik|Łącznie|Liczba wywołań zakończonych powodzeniem.|Nie wymiarów|
 |TotalErrors|Łączna liczba błędów|Licznik|Łącznie|Łączna liczba wywołań z odpowiedzią oznaczającą błąd (odpowiedź HTTP o kodzie 4xx lub 5xx).|Nie wymiarów|
-|BlockedCalls|Zablokowane wywołania|Licznik|Łącznie|Liczba wywołań tej Przekroczono szybkość lub limit przydziału.|Nie wymiarów|
-|ServerErrors|Błędy serwera|Licznik|Łącznie|Liczba wywołań z powodu błędu wewnętrznego usługi (5xx kod odpowiedzi HTTP).|Nie wymiarów|
-|ClientErrors|Błędy klienta|Licznik|Łącznie|Liczba wywołań z powodu błędu po stronie klienta (4xx kod odpowiedzi HTTP).|Nie wymiarów|
-|DataIn|Dane wejściowe|Bajty|Łącznie|Rozmiar danych przychodzących w bajtach.|Nie wymiarów|
-|DataOut|Dane wyjściowe|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|Nie wymiarów|
+|BlockedCalls|Zablokowane wywołania|Licznik|Łącznie|Liczba wywołań, które przekraczają limit szybkości lub przydziału.|Nie wymiarów|
+|ServerErrors|Błędy serwera|Licznik|Łącznie|Liczba wywołań z błędem wewnętrznym usługi (odpowiedź HTTP o kodzie 5xx).|Nie wymiarów|
+|ClientErrors|Błędy klienta|Licznik|Łącznie|Liczba wywołań z błędem po stronie klienta (odpowiedź HTTP o kodzie 4xx).|Nie wymiarów|
+|DataIn|Dane wejściowe|Bajty|Łącznie|Rozmiar danych przychodzących (w bajtach).|Nie wymiarów|
+|DataOut|Dane wyjściowe|Bajty|Łącznie|Rozmiar danych wychodzących (w bajtach).|Nie wymiarów|
 |Opóźnienie|Opóźnienie|W milisekundach|Średnia|Opóźnienie w milisekundach.|Nie wymiarów|
-|CharactersTranslated|Znaki translacji|Licznik|Łącznie|Całkowita liczba znaków w przychodzące żądanie tekstu.|Nie wymiarów|
-|SpeechSessionDuration|Mowy czas trwania sesji|Sekundy|Łącznie|Łączny czas trwania mowy sesji w sekundach.|Nie wymiarów|
+|CharactersTranslated|Przetłumaczone znaki|Licznik|Łącznie|Łączna liczba znaków w przychodzącym żądaniu tekstowym.|Nie wymiarów|
+|SpeechSessionDuration|Czas trwania sesji mowy|Sekundy|Łącznie|Łączny czas trwania sesji mowy w sekundach.|Nie wymiarów|
 |TotalTransactions|Całkowita liczba transakcji|Licznik|Łącznie|Całkowita liczba transakcji|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines

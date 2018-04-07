@@ -1,24 +1,19 @@
 ---
-title: W czasie rzeczywistym analizy wskaźniki nastrojów klientów Twitter z usługą Azure Stream Analytics | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Stream Analytics w czasie rzeczywistym analizy wskaźniki nastrojów klientów usługi Twitter. Wskazówki krok po kroku od wygenerowania zdarzenia do danych na żywo pulpitu nawigacyjnego.
-keywords: Analiza trendu w czasie rzeczywistym usługi twitter, analizy wskaźniki nastrojów klientów, analizy mediów społecznościowych, przykład analizy trendów
+title: W czasie rzeczywistym analizy wskaźniki nastrojów klientów Twitter z usługą Azure Stream Analytics
+description: W tym artykule opisano, jak używać usługi Stream Analytics w czasie rzeczywistym analizy wskaźniki nastrojów klientów usługi Twitter. Wskazówki krok po kroku od wygenerowania zdarzenia do danych na żywo pulpitu nawigacyjnego.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 42068691-074b-4c3b-a527-acafa484fda2
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/29/2017
 ms.author: jeanb
-ms.openlocfilehash: 87a9ecc5984075d700ddc64a1377342d5fe7e494
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: jasonh
+manager: kfile
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/29/2017
+ms.openlocfilehash: 4c77c8a7209825477929ddc0997b75ace5fe04a1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>W czasie rzeczywistym analizy usługi Azure Stream Analytics wskaźniki nastrojów klientów usługi Twitter
 
@@ -374,7 +369,7 @@ Na potrzeby tego samouczka możesz sprawdzić tematy, które są wymienione wię
 
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

@@ -1,11 +1,11 @@
 ---
-title: "Zresetować lokalne hasło systemu Windows bez agenta platformy Azure | Dokumentacja firmy Microsoft"
-description: "Jak można zresetować hasła lokalnego konta użytkownika systemu Windows, gdy agent gościa Azure nie jest zainstalowany i działa na maszynie Wirtualnej"
+title: Zresetować lokalne hasło systemu Windows bez agenta platformy Azure | Dokumentacja firmy Microsoft
+description: Jak można zresetować hasła lokalnego konta użytkownika systemu Windows, gdy agent gościa Azure nie jest zainstalowany i działa na maszynie Wirtualnej
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 2f9efdbaf0ae79781d6f9c7dfa4c8317185be79e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ad892aee646b1a5f8c96d5bdeca24b7a0d88f38e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Zresetować lokalne hasło systemu Windows dla maszyny Wirtualnej platformy Azure w trybie offline
 Można zresetować lokalne hasło systemu Windows maszyny wirtualnej platformy Azure przy użyciu [portalu Azure lub programu Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pod warunkiem jest zainstalowany agent gościa platformy Azure. Ta metoda jest podstawową metodą resetowania hasła dla maszyny Wirtualnej platformy Azure. Jeśli wystąpią problemy z agentem Azure gościa nie odpowiada lub błąd instalacji po przekazaniu niestandardowego obrazu, można ręcznie zresetować hasło systemu Windows. Ten artykuł zawiera szczegóły dotyczące resetowania hasła konta lokalnego przez dołączenie dysku wirtualnego źródłowego systemu operacyjnego do innej maszyny Wirtualnej. Kroki opisane w tym artykule nie dotyczą kontrolery domeny systemu Windows. 

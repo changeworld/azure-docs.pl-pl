@@ -1,10 +1,10 @@
 ---
-title: "Tworzenie i zarządzanie nimi maszyny wirtualnej platformy Azure przy użyciu języka C# | Dokumentacja firmy Microsoft"
-description: "Używanie języka C# i Menedżera zasobów Azure, aby wdrożyć maszynę wirtualną i wszystkie dodatkowe zasoby."
+title: Tworzenie i zarządzanie nimi maszyny wirtualnej platformy Azure przy użyciu języka C# | Dokumentacja firmy Microsoft
+description: Używanie języka C# i Menedżera zasobów Azure, aby wdrożyć maszynę wirtualną i wszystkie dodatkowe zasoby.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43dcc8e5d9756807a3e005d629e84469a2e6eb04
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows na platformie Azure przy użyciu języka C# #
 
@@ -73,7 +73,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [nazwy główne
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp  **&lt;identyfikator subskrypcji&gt;**  z identyfikatorem subskrypcji  **&lt;identyfikator aplikacji&gt;**  z identyfikatorem aplikacji usługi Active Directory  **&lt;klucz uwierzytelniania&gt;**  z klucz aplikacji i  **&lt;identyfikator dzierżawcy&gt;**  przy użyciu identyfikatora dzierżawcy.
+    Zastąp **&lt;identyfikator subskrypcji&gt;** z identyfikatorem subskrypcji **&lt;identyfikator aplikacji&gt;** z identyfikatorem aplikacji usługi Active Directory **&lt;klucz uwierzytelniania&gt;** z klucz aplikacji i **&lt;identyfikator dzierżawcy&gt;** przy użyciu identyfikatora dzierżawcy.
 
 3. Zapisz plik azureauth.properties. 
 4. Ustaw zmienną środowiskową systemu Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżkę do pliku autoryzacji, który został utworzony. Na przykład można użyć następującego polecenia programu PowerShell:
@@ -239,7 +239,7 @@ azure.VirtualMachines.Define("myVM")
 
 ## <a name="perform-management-tasks"></a>Wykonywanie zadań zarządzania
 
-Podczas cyklu maszyny wirtualnej można uruchomić zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzowania zadań powtarzających się lub złożonych.
+W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzowania zadań powtarzających się lub złożonych.
 
 Gdy trzeba wykonywać żadnych czynności z maszyną Wirtualną, należy uzyskać wystąpienie:
 
@@ -393,7 +393,7 @@ Zakończ powinno zająć około pięciu minut dla tej aplikacji konsoli uruchomi
 
 2. Przed naciśnięciem przycisku **Enter** zacząć usuwanie zasobów może potrwać kilka minut, aby zweryfikować utworzenie zasobów w portalu Azure. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Zalety przy użyciu szablonu, aby utworzyć maszynę wirtualną, korzystając z informacji w [wdrożyć maszynę wirtualną platformy Azure przy użyciu języka C# i szablonu usługi Resource Manager](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Dowiedz się więcej o korzystaniu z [bibliotek platformy Azure dla platformy .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
 

@@ -1,11 +1,11 @@
 ---
-title: "Używanie kluczy SSH w systemie Windows dla maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Generowanie i używanie kluczy SSH na komputerze z systemem Windows do nawiązania połączenia maszyny wirtualnej systemu Linux na platformie Azure."
+title: Używanie kluczy SSH w systemie Windows dla maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Generowanie i używanie kluczy SSH na komputerze z systemem Windows do nawiązania połączenia maszyny wirtualnej systemu Linux na platformie Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
-ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fcc2365c3b41fb69492aa68bf7c48c2d3b8ee5f3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Jak klucze używanie SSH z usługą Microsoft Azure
 > [!div class="op_single_selector"]
@@ -48,9 +48,9 @@ Nawiązywanie połączenia i zarządzać maszyn wirtualnych systemu Linux w prog
 Jeśli chcesz użyć czegoś innego niż Bash dla systemu Windows, typowe Windows SSH klienci które można zainstalować znajdują się w następujących pakietów:
 
 * [Git dla systemu Windows](https://git-for-windows.github.io/)
-* [programu puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
-* [Programów Cygwin](https://cygwin.com/)
+* [Cygwin](https://cygwin.com/)
 
 
 ## <a name="which-key-files-do-you-need-to-create"></a>Pliki, które klucza musisz utworzyć?
@@ -66,7 +66,7 @@ Poniżej przedstawiono scenariusze wdrażania i typy plików, których można u�
 ## <a name="install-git-for-windows"></a>Zainstaluj usługę Git dla systemu Windows
 Poprzedniej sekcji wymienionych kilka pakietów, które obejmują `openssl` narzędzia dla systemu Windows. To narzędzie jest potrzebne do tworzenia kluczy publicznych i prywatnych. Poniższe przykłady szczegółowe instrukcje dotyczące instalacji i używania **Git dla systemu Windows**, ale można wybrać niezależnie od tego pakietu preferowane. **Git dla systemu Windows** zapewnia dostęp do niektórych dodatkowe oprogramowanie open source ([OSS](https://en.wikipedia.org/wiki/Open-source_software)) narzędzi, które mogą być przydatne podczas pracy z maszyn wirtualnych systemu Linux.
 
-1. Pobierz i zainstaluj **Git dla systemu Windows** z następującej lokalizacji: [https://git-for-windows.github.io/](https://git-for-windows.github.io/).
+1. Pobierz i zainstaluj **Git dla systemu Windows** z następującej lokalizacji: [ https://git-for-windows.github.io/ ](https://git-for-windows.github.io/).
 2. Podczas procesu instalacji należy zaakceptować wartości domyślne, chyba że należy je zmienić.
 3. Uruchom **Git Bash** z **Start Menu** > **Git** > **Git Bash**. Konsolę wygląda podobnie do poniższego przykładu:
 

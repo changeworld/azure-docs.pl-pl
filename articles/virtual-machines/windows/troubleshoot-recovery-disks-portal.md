@@ -1,11 +1,11 @@
 ---
-title: "Używanie okien, rozwiązywanie problemów z maszyny Wirtualnej w portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy dotyczące maszyny wirtualnej systemu Windows na platformie Azure łącząc dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu portalu Azure"
+title: Używanie okien, rozwiązywanie problemów z maszyny Wirtualnej w portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy dotyczące maszyny wirtualnej systemu Windows na platformie Azure łącząc dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu portalu Azure
 services: virtual-machines-windows
-documentationCenter: 
+documentationCenter: ''
 authors: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 0b6b2220f5b7287bae6bfd6e99390944b7a7578d
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 523bf4055b4181715efd2c2d67e4dde086e7540e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyny Wirtualnej systemu Windows, dołączając dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu portalu Azure
 Maszyny wirtualnej systemu Windows (VM) na platformie Azure napotkał błąd podczas rozruchu lub dysk, konieczne może wykonać kroki rozwiązywania problemów na wirtualnym dysku twardym, do samej siebie. Typowym przykładem jest aktualizacja aplikacji nie powiodło się, który uniemożliwia było pomyślnie uruchomić maszynę Wirtualną. W tym artykule szczegółowo sposób łączenia wirtualnego dysku twardego do innej maszyny Wirtualnej systemu Windows, napraw błędy, a następnie ponownie utwórz oryginalnego maszyny Wirtualnej za pomocą portalu Azure.

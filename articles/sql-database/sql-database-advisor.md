@@ -1,19 +1,19 @@
 ---
-title: "Zalecenia dotyczące wydajności — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Baza danych SQL Azure zawiera zalecenia dotyczące Twojej bazy danych SQL, które może poprawić wydajność kwerend bieżącej."
+title: Zalecenia dotyczące wydajności — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Baza danych SQL Azure zawiera zalecenia dotyczące Twojej bazy danych SQL, które może poprawić wydajność kwerend bieżącej.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 47e93d270aa3596430ab5892b2bd9323fba1d12e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b88b8a313a03ef2ad72aeb053b89505201c23819
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Zalecenia dotyczące wydajności bazy danych SQL
 

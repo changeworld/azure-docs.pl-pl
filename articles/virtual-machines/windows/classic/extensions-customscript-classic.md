@@ -1,11 +1,11 @@
 ---
 title: Niestandardowe rozszerzenie skryptu na maszynie Wirtualnej z systemem Windows | Dokumentacja firmy Microsoft
-description: "Automatyzowanie zadań konfiguracji maszyny Wirtualnej platformy Azure przy użyciu rozszerzenia niestandardowego skryptu umożliwiają uruchamianie skryptów programu PowerShell w zdalnej maszyny Wirtualnej systemu Windows"
+description: Automatyzowanie zadań konfiguracji maszyny Wirtualnej platformy Azure przy użyciu rozszerzenia niestandardowego skryptu umożliwiają uruchamianie skryptów programu PowerShell w zdalnej maszyny Wirtualnej systemu Windows
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: ebb7340a-8f61-4d3c-a290-d7bf8de2d0bd
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: danis
-ms.openlocfilehash: 5de2949561ed5f64582898006de7818e81f79f5b
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 0ed73a53e6ec40af888f12cbf8f002a62098cda5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="custom-script-extension-for-windows-using-the-classic-deployment-model"></a>Niestandardowych skryptów rozszerzenia dla systemu Windows przy użyciu klasycznego modelu wdrażania
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/09/2018
 > Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Resource Manager i Model Klasyczny](../../../resource-manager-deployment-model.md). W tym artykule omówiono przy użyciu klasycznego modelu wdrożenia. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonać te kroki przy użyciu modelu usługi Resource Manager](../extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-Niestandardowe rozszerzenie skryptu pobiera i uruchamia skrypty na maszynach wirtualnych Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Skryptów można pobrać z magazynu Azure lub usługi GitHub lub dostarczone do portalu Azure pod adresem rozszerzenia czas wykonywania. Rozszerzenie skryptu niestandardowego integruje się z szablonów usługi Azure Resource Manager i mogą być także uruchamiane przy użyciu wiersza polecenia platformy Azure, programu PowerShell, portalu Azure lub interfejsu API REST dla maszyny wirtualnej Azure.
+Niestandardowe rozszerzenie skryptu pobiera i uruchamia skrypty na maszynach wirtualnych Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub GitHub bądź można je dostarczyć do witryny Azure Portal w czasie wykonywania rozszerzenia. Rozszerzenie niestandardowego skryptu można zintegrować z szablonami usługi Azure Resource Manager, a także uruchamiać przy użyciu interfejsu wiersza polecenia platformy Azure, programu PowerShell, witryny Azure Portal lub interfejsu API REST maszyny wirtualnej platformy Azure.
 
 Ten dokument zawiera szczegóły dotyczące sposobu używania niestandardowe rozszerzenie skryptu przy użyciu modułu Azure PowerShell, szablony usługi Azure Resource Manager i szczegóły dotyczące rozwiązywania problemów z w systemach Windows.
 
@@ -76,10 +76,10 @@ Następujące JSON zawiera schemat niestandardowe rozszerzenie skryptu. Rozszerz
 | Name (Nazwa) | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| Wydawcy | Microsoft.Compute |
+| publisher | Microsoft.Compute |
 | Rozszerzenia | CustomScriptExtension |
 | typeHandlerVersion | 1.8 |
-| fileUris (np.) | https://RAW.githubusercontent.com/Microsoft/DotNet-Core-Sample-Templates/Master/DotNet-Core-Music-Windows/scripts/Configure-Music-App.ps1 |
+| fileUris (np.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 |
 | commandToExecute (np.) | PowerShell - ExecutionPolicy Unrestricted - pliku skonfigurować muzyka app.ps1 |
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu

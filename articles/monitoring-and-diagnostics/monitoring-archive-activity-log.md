@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6020272d79ace55041da94ee45165e557e92b80f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwum dziennik aktywności platformy Azure
 W tym artykule zostanie przedstawiony sposób można użyć portalu Azure, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia i Platform do archiwizacji Twojej [ **dziennika aktywności platformy Azure** ](monitoring-overview-activity-logs.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz zachować dłużej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzeń przez 90 dni lub mniej nie trzeba skonfigurować archiwizacji na konto magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
@@ -43,29 +43,43 @@ Archiwizowanie dziennika aktywności przy użyciu dowolnej z poniższych metod, 
 5. Kliknij pozycję **Zapisz**.
 
 ## <a name="archive-the-activity-log-via-powershell"></a>Archiwizowanie dziennika aktywności za pomocą programu PowerShell
-```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus -RetentionInDays 180 -Categories Write,Delete,Action
-```
+
+   ```powershell
+   # Settings needed for the new log profile
+   $logProfileName = "default"
+   $locations = (Get-AzureRmLocation).Location
+   $locations += "global"
+   $subscriptionId = "<your Azure subscription Id>"
+   $resourceGroupName = "<resource group name your storage account belongs to>"
+   $storageAccountName = "<your storage account name>"
+
+   # Build the storage account Id from the settings above
+   $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+
+   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
+   ```
 
 | Właściwość | Wymagane | Opis |
 | --- | --- | --- |
-| StorageAccountId |Nie |Identyfikator zasobu konta magazynu, do której ma zostać zapisany Dzienniki aktywności. |
-| Lokalizacje |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Można wyświetlić listę wszystkich regionach [, przechodząc na stronę tej strony](https://azure.microsoft.com/en-us/regions) lub za pomocą [interfejsu API REST zarządzania Azure](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| retentionInDays |Yes |Liczba dni dla zdarzenia, które mają być przechowywane, od 1 do 2147483647. Wartość zero przechowuje dzienniki w nieskończoność (zawsze). |
-| Kategorie |Yes |Rozdzielana przecinkami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to zapisu, usuwania i akcji. |
+| StorageAccountId |Yes |Identyfikator zasobu konta magazynu, do której ma zostać zapisany Dzienniki aktywności. |
+| Lokalizacje |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Można wyświetlić listę wszystkich regionów do subskrypcji przy użyciu `(Get-AzureRmLocation).Location`. |
+| retentionInDays |Nie |Liczba dni dla zdarzenia, które mają być przechowywane, od 1 do 2147483647. Wartość zero przechowuje dzienniki w nieskończoność (zawsze). |
+| Kategorie |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to zapisu, usuwania i akcji.  Jeśli nie zostanie podana, wszystkie możliwe wartości będą traktowani |
 
 ## <a name="archive-the-activity-log-via-cli"></a>Archiwizowanie dziennika aktywności za pomocą interfejsu wiersza polecenia
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --locations global,westus,eastus,northeurope --retentionInDays 180 –categories Write,Delete,Action
-```
+
+   ```azurecli-interactive
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
+   ```
 
 | Właściwość | Wymagane | Opis |
 | --- | --- | --- |
 | name |Yes |Nazwa profilu dziennika. |
-| storageId |Nie |Identyfikator zasobu konta magazynu, do której ma zostać zapisany Dzienniki aktywności. |
-| Lokalizacje |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Można wyświetlić listę wszystkich regionach [, przechodząc na stronę tej strony](https://azure.microsoft.com/en-us/regions) lub za pomocą [interfejsu API REST zarządzania Azure](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| retentionInDays |Yes |Liczba dni dla zdarzenia, które mają być przechowywane, od 1 do 2147483647. Wartość zero będą przechowywane dzienniki nieskończoność (zawsze). |
-| kategorie |Yes |Rozdzielana przecinkami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to zapisu, usuwania i akcji. |
+| storage-account-id |Yes |Identyfikator zasobu konta magazynu, do której ma zostać zapisany Dzienniki aktywności. |
+| Lokalizacje |Yes |Rozdzieloną spacjami listę regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Można wyświetlić listę wszystkich regionów do subskrypcji przy użyciu `az account list-locations --query [].name`. |
+| dni |Yes |Liczba dni dla zdarzenia, które mają być przechowywane, od 1 do 2147483647. Wartość zero będą przechowywane dzienniki nieskończoność (zawsze).  Jeśli zero, to włączone parametr powinien być ustawiony na wartość true. |
+|enabled | Yes |Wartość TRUE lub False.  Należy użyć, aby włączyć lub wyłączyć zasady przechowywania.  W przypadku wartości PRAWDA parametru dni musi być wartość większą niż 0.
+| kategorie |Yes |Rozdzielonej spacjami listy kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to zapisu, usuwania i akcji. |
 
 ## <a name="storage-schema-of-the-activity-log"></a>Schemat magazynu dziennika aktywności
 Po skonfigurowaniu archiwizacji, kontenera magazynu zostanie utworzony na koncie magazynu zaraz po wystąpieniu zdarzenia dziennika aktywności. Obiekty BLOB w kontenerze należy wykonać ten sam format dziennika aktywności i dzienników diagnostycznych. Struktura tych obiektów blob jest:

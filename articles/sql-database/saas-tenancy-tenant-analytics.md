@@ -1,21 +1,21 @@
 ---
-title: "Uruchom analytics między dzierżawcy przy użyciu wyodrębnione dane | Dokumentacja firmy Microsoft"
-description: "Zapytania analityczne między dzierżawcy przy użyciu danych pobranych z wielu baz danych z bazy danych SQL Azure."
-keywords: "samouczek usługi sql database"
+title: Uruchom analytics między dzierżawcy przy użyciu wyodrębnione dane | Dokumentacja firmy Microsoft
+description: Zapytania analityczne między dzierżawcy przy użyciu danych pobranych z wielu baz danych z bazy danych SQL Azure.
+keywords: samouczek usługi sql database
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: ff57bd054f3ff28662d3fd2eb46dca02e74af69b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ec54e68ee1d0b09b5fb34a2a11c331cb0d478326
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Analytics między dzierżawcy przy użyciu wyodrębnione dane
 
@@ -91,7 +91,7 @@ W poniższych krokach Wdrażanie magazynu analytics, która jest wywoływana **t
     - Aby używać bazy danych SQL z magazynu kolumn, ustaw **$DemoScenario** = **3**  
 3. Naciśnij klawisz **F5** do uruchamiania skryptu pokaz (, który odwołuje się *TenantAnalytics Wdróż<XX>ps1* skryptu) co powoduje magazynu analytics dzierżawy. 
 
-Po wdrożeniu aplikacji i wypełnione interesujące dane dzierżawy, za pomocą [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nawiązać **tenants1-dpt -&lt;użytkownika&gt;**  i **katalogu-dpt -&lt;użytkownika&gt;**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło =  *P@ssword1* . Zobacz [Samouczek wprowadzający](saas-dbpertenant-wingtip-app-overview.md) Aby uzyskać więcej pomocy.
+Po wdrożeniu aplikacji i wypełnione interesujące dane dzierżawy, za pomocą [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nawiązać **tenants1-dpt -&lt;użytkownika&gt;**  i **katalogu-dpt -&lt;użytkownika&gt;**  serwerów przy użyciu identyfikatora logowania = *developer*, hasło = *P@ssword1*. Zobacz [Samouczek wprowadzający](saas-dbpertenant-wingtip-app-overview.md) Aby uzyskać więcej pomocy.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -173,7 +173,7 @@ Do nawiązania połączenia usługi Power BI i zaimportować widoków, które wc
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło =  *P@ssword1* . Kliknij przycisk **Połącz**.  
+5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło = *P@ssword1*. Kliknij przycisk **Połącz**.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

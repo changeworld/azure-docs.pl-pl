@@ -1,7 +1,7 @@
 ---
-title: "Postanowienie SaaS wielodostępne Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie obsługi administracyjnej i w katalogu nowych dzierżaw w wielodostępnych aplikacji SaaS bazy danych SQL Azure"
-keywords: "samouczek usługi sql database"
+title: Postanowienie SaaS wielodostępne Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie obsługi administracyjnej i w katalogu nowych dzierżaw w wielodostępnych aplikacji SaaS bazy danych SQL Azure
+keywords: samouczek usługi sql database
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -9,13 +9,13 @@ ms.reviewer: billgib;andrela;genemi
 ms.service: sql-database
 ms.custom: saas apps
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: fb2f2bcbbc8b7f0b0012c4e7baf4a274671d4af0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb0229731d8fd1495173915b3bc95b48538f1e85
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Dostarczanie i katalogu nowych dzierżaw w przy użyciu podzielonej bazy danych Azure SQL wielodostępnych aplikacji SaaS
 
@@ -101,7 +101,7 @@ Podobnie jak wszelkie aplikacje Wingtip rozpoczyna się wraz z upływem czasu. W
 
 W przypadku aplikacji SaaS zmiany te muszą zostać wprowadzone w sposób skoordynowany — potencjalnie w bardzo wielu bazach danych dzierżaw. Aby te zmiany można w przyszłości dzierżawy baz danych muszą należy włączyć do procesu inicjowania obsługi administracyjnej. To żądanie jest przedstawione na [Samouczek zarządzania schematu](saas-tenancy-schema-management.md).
 
-#### <a name="scripts"></a>Skrypty
+#### <a name="scripts"></a>Scripts
 
 Skrypty inicjowania obsługi administracyjnej dzierżawy, w tym samouczku obsługują zarówno z następujących scenariuszy:
 - Inicjowanie obsługi administracyjnej dzierżawcy do istniejącej bazy danych udostępnionych z innymi dzierżawcami.
@@ -253,7 +253,7 @@ W tej sekcji omówiono innych interesujących wzorców inicjowania obsługi admi
 
 Wzorzec wstępnego inicjowania obsługi administracyjnej wykorzystuje fakt, że gdy używane są pule elastyczne, rozliczeń dla puli nie jest baz danych. W związku z tym baz danych można dodać do puli elastycznej przed są potrzebne bez ponoszenia dodatkowych kosztów. To wstępnie potencjał znacznie zmniejsza czas potrzebny do udostępnienia dzierżawcy w bazie danych. Wstępnie tworzyć baz danych można dostosować do własnych potrzeb, aby zachować odpowiedni w przypadku inicjowania obsługi administracyjnej oczekiwanego wskaźnika buforu.
 
-#### <a name="auto-provisioning"></a>Automatyczne inicjowanie obsługi administracyjnej
+#### <a name="auto-provisioning"></a>Automatyczne aprowizowanie
 
 We wzorcu automatycznego inicjowania obsługi administracyjnej dedykowanego inicjowania obsługi usługi służy do obsługi administracyjnej serwerów, pule adresów i baz danych automatycznie zgodnie z potrzebami. Ta Automatyzacja obejmuje wstępnie udostępniania bazy danych w puli elastycznej. A jeśli bazy danych są zlikwidowana i usuwane, luki, który spowoduje to utworzenie w puli elastycznej mogą być wypełniane przez usługę inicjowania obsługi administracyjnej zgodnie z potrzebami.
 

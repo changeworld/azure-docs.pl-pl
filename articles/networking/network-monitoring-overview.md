@@ -1,13 +1,13 @@
 ---
-title: "Dotyczące monitorowania sieci w Log Analytics | Dokumentacja firmy Microsoft"
-description: "Omówienie rozwiązania NPM, zarządzać sieciami środowiskach chmury, lokalne i hybrydowe monitorowania sieci."
+title: Dotyczące monitorowania sieci w Log Analytics | Dokumentacja firmy Microsoft
+description: Omówienie rozwiązania NPM, zarządzać sieciami środowiskach chmury, lokalne i hybrydowe monitorowania sieci.
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-monitoring-solutions"></a>Monitorowanie rozwiązań sieci 
 
@@ -60,9 +60,11 @@ NPM dla ExpressRoute oferuje kompleksowe monitorowanie usługi ExpressRoute dla 
 
 * Automatyczne wykrywanie obwody ER skojarzone z subskrypcją
 * Wykrywanie topologii sieci z lokalnej do aplikacji w chmurze
-* Planowanie pojemności, analiza wykorzystania
+* Planowanie pojemności, analiza wykorzystania użycie przepustowości dla sieci wirtualnej
 * Monitorowanie i alerty na głównych i dodatkowych ścieżek
 * Wykryj spadek łączność sieci wirtualnych
+
+![Obszar mapy przedstawiający ruchu w regionach](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
@@ -116,7 +118,6 @@ Utworzony dla administratorów DNS, to rozwiązanie gromadzi, analizuje i skorel
 Linki pokrewne:
 * [Wpis w blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentacji](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="miscellaneous"></a>Różne postanowienia
 
-* [Konfigurowanie monitora wydajności sieci](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)
-* [Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute](../expressroute/how-to-npm.md)
+* [Nowe ceny](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

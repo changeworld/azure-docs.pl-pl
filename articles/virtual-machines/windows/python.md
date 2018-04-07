@@ -1,13 +1,13 @@
 ---
-title: "Tworzenie i zarządzanie nimi maszyny Wirtualnej systemu Windows na platformie Azure przy użyciu języka Python | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące sposobu korzystania z języka Python do tworzenia i zarządzania maszyny Wirtualnej systemu Windows na platformie Azure."
+title: Tworzenie i zarządzanie nimi maszyny Wirtualnej systemu Windows na platformie Azure przy użyciu języka Python | Dokumentacja firmy Microsoft
+description: Informacje dotyczące sposobu korzystania z języka Python do tworzenia i zarządzania maszyny Wirtualnej systemu Windows na platformie Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
-ms.openlocfilehash: bb777d41570d7b1dc97402d532519488912948e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d56143a470be4da1faaea949ea286fca1ffd319d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows na platformie Azure przy użyciu języka Python
 
@@ -363,7 +363,7 @@ Teraz, gdy utworzono pomocnicze zasoby, można utworzyć maszyny wirtualnej.
 
 ## <a name="perform-management-tasks"></a>Wykonywanie zadań zarządzania
 
-Podczas cyklu maszyny wirtualnej można uruchomić zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzowania zadań powtarzających się lub złożonych.
+W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzowania zadań powtarzających się lub złożonych.
 
 ### <a name="get-information-about-the-vm"></a>Uzyskiwanie informacji o Maszynie wirtualnej
 
@@ -570,7 +570,7 @@ Ponieważ naliczane są opłaty za zasoby używane na platformie Azure, zawsze j
     Zakończ powinno zająć około pięciu minut dla tej aplikacji konsoli uruchomić zupełnie od początku. Może upłynąć kilka minut po aplikacji zostało zakończone przed wszystkie zasoby i grupy zasobów są usuwane.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Jeśli wystąpiły problemy dotyczące wdrożenia, następnym krokiem powinno być zapoznanie się z artykułem [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Rozwiązywanie problemów z wdrożeniami grup zasobów za pomocą witryny Azure Portal).
 - Dowiedz się więcej o [biblioteka języka Python platformy Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)

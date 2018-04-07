@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: c2e11d89f35915ef0a0c1e1f544b0be8df0473de
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Jak rozszerzyć alerty (Kopiuj) z pakietu OMS na platformie Azure
-Począwszy od **23 kwietnia 2018**, wszystkich klientów przy użyciu alertów, które są skonfigurowane w [programu Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), zostanie rozszerzony na platformie Azure. Alerty, które zostały rozszerzone na platformie Azure zachowują się tak samo jak OMS. Możliwości monitorowania pozostaną nienaruszone. Rozszerzające alertach tworzonych w OMS Azure oferuje wiele korzyści. Aby uzyskać więcej informacji o zaletach i proces rozszerzenia alerty z usługą OMS na platformie Azure, zobacz [rozszerzyć alerty z OMS Azure](monitoring-alerts-extend.md).
+Począwszy od **14 maja 2018**, wszystkich klientów przy użyciu alertów, które są skonfigurowane w [programu Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), zostanie rozszerzony na platformie Azure. Alerty, które zostały rozszerzone na platformie Azure zachowują się tak samo jak OMS. Możliwości monitorowania pozostaną nienaruszone. Rozszerzające alertach tworzonych w OMS Azure oferuje wiele korzyści. Aby uzyskać więcej informacji o zaletach i proces rozszerzenia alerty z usługą OMS na platformie Azure, zobacz [rozszerzyć alerty z OMS Azure](monitoring-alerts-extend.md).
 
 Klienci chcą Przenieś alerty z usługą OMS na platformie Azure, to zrobić za pomocą jednej z opcji podane.
 
@@ -157,11 +157,90 @@ Jeśli WPIS zakończy się pomyślnie, zwraca odpowiedź 200 OK wraz z programem
 ```
 Wskazującą, czy alerty zostały rozszerzone na platformie Azure, jak wskazano w wersji 2. Ta wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone na platformie Azure i nie ma wpływu wykorzystania z [interfejsu API Search analizy dziennika](../log-analytics/log-analytics-api-alerts.md). Po alerty zostały rozszerzone pomyślnie na platformie Azure, wszystkie e-mail adresy podane podczas GET będą wysyłane raport zawierający szczegółowe informacje o zmianach gotowe.
 
+I na koniec, jeśli wszystkie alerty w obszarze roboczym określonego już zaplanowane na platformie Azure — odpowiedź POST będzie 403 Zabroniony. Aby wyświetlić wszelkie komunikaty o błędach lub określić, czy rozszerzenie procesu jest zablokowana, użytkownik może robić GET i wywołanie komunikat, jeśli dowolne zostanie zwrócony oraz podsumowanie.
 
-I na koniec, jeśli wszystkie alerty w obszarze roboczym określony wcześniej zaplanowane na platformie Azure — odpowiedź POST będzie 403 Zabroniony.
+```json
+{
+    "version": 1,
+    "message": "OMS was unable to extend your alerts into Azure, Error: The subscription is not registered to use the namespace 'microsoft.insights'. OMS will schedule extending your alerts, once remediation steps illustrated in the troubleshooting guide are done.",
+    "recipients": [
+       "john.doe@email.com",
+       "jane.doe@email.com"
+     ],
+    "migrationSummary": {
+        "alertsCount": 2,
+        "actionGroupsCount": 2,
+        "alerts": [
+            {
+                "alertName": "DemoAlert_1",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_1"
+            },
+            {
+                "alertName": "DemoAlert_2",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_2"
+            }
+        ],
+        "actionGroups": [
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                "actions": {
+                    "emailIds": [
+                        "JohnDoe@mail.com"
+                    ],
+                    "webhookActions": [
+                        {
+                            "name": "Webhook_1",
+                            "serviceUri": "http://test.com"
+                        }
+                    ],
+                    "itsmAction": {}
+                }
+            },
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                 "actions": {
+                    "emailIds": [
+                        "test1@mail.com",
+                          "test2@mail.com"
+                    ],
+                    "webhookActions": [],
+                    "itsmAction": {
+                        "connectionId": "<Guid>",
+                        "templateInfo":"{\"PayloadRevision\":0,\"WorkItemType\":\"Incident\",\"UseTemplate\":false,\"WorkItemData\":\"{\\\"contact_type\\\":\\\"email\\\",\\\"impact\\\":\\\"3\\\",\\\"urgency\\\":\\\"2\\\",\\\"category\\\":\\\"request\\\",\\\"subcategory\\\":\\\"password\\\"}\",\"CreateOneWIPerCI\":false}"
+                    }
+                }
+            }
+        ]
+    }
+}              
+
+```
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów 
+Podczas rozszerzania alerty z usługą OMS na platformie Azure, może być okazjonalne problemy, które zapobiega tworzeniu niezbędne [grupy akcji](monitoring-action-groups.md). W takich przypadkach komunikat o błędzie będzie wyświetlana w portalu OMS za pośrednictwem Baner w sekcji alertów i wywołanie GET gotowe do interfejsu API.
+
+Poniżej przedstawiono procedurę korygowania dla każdego błędu:
+1. **Błąd: Subskrypcji nie jest zarejestrowany do korzystania z przestrzeni nazw "w elemencie microsoft.insights"**: ![strony portalu ustawienia alertu OMS komunikat o błędzie rejestracji](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+
+    a. Nie zarejestrowano subskrypcję skojarzoną z obszarem roboczym pakietu OMS — Aby używać funkcji monitorowania Azure (elemencie microsoft.insights); ze względu na których nie można rozszerzyć alerty do monitora Azure & alerty OMS.
+    
+    b. Aby rozwiązać, należy zarejestrować używany w elemencie microsoft.insights (Azure monitor & alerty) w ramach subskrypcji przy użyciu programu Powershell, interfejsu wiersza polecenia Azure lub portalu Azure. Aby dowiedzieć się więcej, Wyświetl artykuł na [naprawianie błędów w rejestracji dostawcy zasobów](../azure-resource-manager/resource-manager-register-provider-errors.md)
+    
+    c. Po rozpoznaniu zgodnie z harmonogramem kroki przedstawione w artykule, OMS rozszerzenie alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie; bez konieczności żadnej akcji ani inicjowania.
+2. **Błąd: Zakres blokady jest obecna na poziomie grupy zasobów subskrypcji dla operacji zapisu**: ![strony portalu ustawienia alertu OMS komunikat o błędzie ScopeLock](./media/monitor-alerts-extend/ErrorScopeLock.png)
+
+    a. Gdy zakres blokady jest włączona, ograniczanie żadnych nowych zmian w subskrypcji lub grupy zasobów zawierającej obszaru roboczego analizy dzienników (OMS); system nie może rozszerzyć alerty (Kopiuj) na platformie Azure i tworzenie grup niezbędnych działań.
+    
+    b. Aby rozwiązać, należy usunąć *tylko do odczytu* blokady w grupie zasobów lub subskrypcji zawierający obszar roboczy; przy użyciu portalu Azure, programu Powershell, interfejsu wiersza polecenia Azure lub interfejsu API. Aby dowiedzieć się więcej, Wyświetl artykuł na [użycia zasobów blokady](../azure-resource-manager/resource-group-lock-resources.md). 
+    
+    c. Po rozpoznaniu zgodnie z harmonogramem kroki przedstawione w artykule, OMS rozszerzenie alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie; bez konieczności żadnej akcji ani inicjowania.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o nowe [zgłaszać alerty Azure](monitoring-overview-unified-alerts.md).
 * Dowiedz się więcej o [rejestrowania alertów w alertach Azure](monitor-alerts-unified-log.md).

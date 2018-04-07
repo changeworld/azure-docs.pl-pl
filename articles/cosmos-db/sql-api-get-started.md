@@ -5,8 +5,7 @@ keywords: samouczek nosql, baza danych online, aplikacja konsolowa c#
 services: cosmos-db
 documentationcenter: .net
 author: AndrewHoh
-manager: jhubbard
-editor: monicar
+manager: kfile
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.openlocfilehash: 870bdce0b909a882b99de92bbe5ad1e51db11a39
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9de183ccd60dca0b8c67bc3e17136212b7132439
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure DB rozwiązania Cosmos: Interfejsu API SQL Wprowadzenie — samouczek
 > [!div class="op_single_selector"]
@@ -74,7 +73,7 @@ Utwórzmy konto usługi Azure Cosmos DB. Jeśli masz już konto, którego chcesz
 5. W **NuGet** , kliknij pozycję **Przeglądaj**i wpisz **usługa azure documentdb** w polu wyszukiwania.
 6. W wynikach znajdź pozycję **Microsoft.Azure.DocumentDB** i kliknij przycisk **Zainstaluj**.
    Identyfikator pakietu dla biblioteki klienta interfejsu API Azure rozwiązania Cosmos bazy danych SQL jest [Biblioteka kliencka usługi Microsoft Azure rozwiązania Cosmos DB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).
-   ![Zrzut ekranu przedstawiający NuGet Menu do znajdowania zestawu SDK klienta usługi Azure rozwiązania Cosmos bazy danych](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+   ![Zrzut ekranu przedstawiający menu NuGet służące do znajdowania zestawu SDK klienta usługi Azure Cosmos DB](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
     Jeśli zostanie wyświetlony komunikat dotyczący przejrzenia zmian wprowadzonych w rozwiązaniu, kliknij przycisk **OK**. Jeśli wyświetlany jest komunikat o akceptacji licencji, kliknij pozycję **Akceptuję**.
 
@@ -113,7 +112,7 @@ W portalu Azure, przejdź do swojego konta bazy danych rozwiązania Cosmos platf
 
 Skopiuj identyfikator URI z portalu i wklej go w miejsce `<your endpoint URL>` w pliku program.cs. Następnie skopiuj KLUCZ PODSTAWOWY z portalu i wklej go w miejsce `<your primary key>`.
 
-![Zrzut ekranu przedstawiający portal Azure używany przez samouczek NoSQL do tworzenia aplikacji konsolowej C#. Przedstawia konto bazy danych Azure rozwiązania Cosmos z wyróżnionym AKTYWNYM Centrum, przyciskiem KLUCZE wyróżnionym na stronie konta bazy danych Azure rozwiązania Cosmos oraz wartościami identyfikator URI, klucz podstawowy i klucz POMOCNICZY wyróżnione na stronie kluczy][keys]
+![Zrzut ekranu przedstawiający witrynę Azure Portal używaną przez samouczek NoSQL do tworzenia aplikacji konsolowej C#. Przedstawia konto bazy danych Azure rozwiązania Cosmos z wyróżnionym AKTYWNYM Centrum, przyciskiem KLUCZE wyróżnionym na stronie konta bazy danych Azure rozwiązania Cosmos oraz wartościami identyfikator URI, klucz podstawowy i klucz POMOCNICZY wyróżnione na stronie kluczy][keys]
 
 Następnie zaczniemy budowanie aplikacji, tworząc nowe wystąpienie klasy **DocumentClient**.
 

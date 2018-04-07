@@ -1,19 +1,19 @@
 ---
-title: "Przenoszenie danych między bazami danych w chmurze skalowalnych w poziomie | Dokumentacja firmy Microsoft"
-description: "Wyjaśniono, jak do manipulowania odłamków i przenoszenia danych za pośrednictwem usługi hostowania samoobsługowego przy użyciu interfejsów API elastycznej bazy danych."
+title: Przenoszenie danych między bazami danych w chmurze skalowalnych w poziomie | Dokumentacja firmy Microsoft
+description: Wyjaśniono, jak do manipulowania odłamków i przenoszenia danych za pośrednictwem usługi hostowania samoobsługowego przy użyciu interfejsów API elastycznej bazy danych.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 9e2b231ad2e9fc5ab07532daef44da9870cef4ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c70279bd52f7b0b0e0cbc27742eca93d9af5e630
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
 Jeśli jesteś oprogramowania jako deweloper usługi, i nagle aplikacji ulega ogromne żądanie, należy uwzględnić rozwój. Dlatego należy dodać więcej baz danych (odłamków). Jak wszystkie dane do nowych baz danych bez zakłócania integralność danych Użyj **narzędzia do scalania podziału** do przenoszenia danych z baz danych ograniczone do nowych baz danych.  

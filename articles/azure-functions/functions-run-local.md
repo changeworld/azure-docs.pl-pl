@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie i uruchom usługę Azure functions lokalnie | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak kod i przetestować usługę Azure functions na komputerze lokalnym, przed uruchomieniem funkcji platformy Azure."
+title: Tworzenie i uruchom usługę Azure functions lokalnie | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kod i przetestować usługę Azure functions na komputerze lokalnym, przed uruchomieniem funkcji platformy Azure.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kod testu Azure funkcji i lokalnie
 
@@ -110,7 +110,7 @@ Aby utworzyć projekt bez lokalnego repozytorium Git, użyj `--no-source-control
 
 W wersji 2.x środowiska uruchomieniowego usługi Azure Functions, należy jawnie zarejestrować [powiązanie rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) używaną w funkcji aplikacji. 
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
 Aby uzyskać więcej informacji, zobacz [usługi Azure Functions wyzwalaczy i powiązań pojęcia](functions-triggers-bindings.md#register-binding-extensions).
 
@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | Numer portu debugera węzła do użycia. Wartość domyślna: Wartość z launch.json lub 5858. |
 | **`--debugLevel -d`** | Poziom śledzenia konsoli (wyłączony, pełne, info, warning lub error). Domyślne: informacji.|
 | **`--timeout -t`** | Limit czasu dla funkcji hosta można uruchomić w sekundach. Wartość domyślna: 20 sekund.|
-| **`--useHttps`** | Powiązać https://localhost:{port}, a nie do http://localhost:{port}. Domyślnie ta opcja tworzy zaufanego certyfikatu na tym komputerze.|
+| **`--useHttps`** | Powiązać https://localhost:{port} , a nie do http://localhost:{port}. Domyślnie ta opcja tworzy zaufanego certyfikatu na tym komputerze.|
 | **`--pause-on-error`** | Wstrzymaj na dodatkowe dane wejściowe przed zakończeniem procesu. Przydatne przy uruchamianiu narzędzia podstawowych funkcji platformy Azure z zintegrowane środowisko programistyczne (IDE).|
 
 Po uruchomieniu funkcji hosta danych wyjściowych funkcji wyzwalanych przez URL HTTP:

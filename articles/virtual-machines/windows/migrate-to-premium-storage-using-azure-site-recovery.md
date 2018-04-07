@@ -1,12 +1,12 @@
 ---
-title: "Migracja maszyn wirtualnych systemu Windows do magazynu Azure Premium z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Migracji istniejących maszyn wirtualnych do usługi Azure Premium Storage za pomocą usługi Site Recovery. Magazyn w warstwie Premium oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach/O wykonujących obciążeń uruchomionych na maszynach wirtualnych platformy Azure."
+title: Migracja maszyn wirtualnych systemu Windows do magazynu Azure Premium z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Migracji istniejących maszyn wirtualnych do usługi Azure Premium Storage za pomocą usługi Site Recovery. Magazyn w warstwie Premium oferuje obsługę dysków o wysokiej wydajności i małych opóźnieniach/O wykonujących obciążeń uruchomionych na maszynach wirtualnych platformy Azure.
 services: virtual-machines-windows
 cloud: Azure
 documentationcenter: na
 author: luywang
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 15c9a6608421b3eeebe6fbe91a10a849bf36ed85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 171b0f938e44218d11cfb001e3f58ebd0feb35fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migracja do magazynu Premium za pomocą usługi Azure Site Recovery
 
@@ -80,7 +80,7 @@ Usługa Site Recovery można użyć do przeprowadzenia migracji maszyn wirtualny
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: Tworzenie magazynu usług odzyskiwania
 
 1. Otwórz [portal Azure](https://portal.azure.com).
-2. Wybierz **Utwórz zasób** > **zarządzania** > **kopii zapasowej** i **odzyskiwania lokacji (OMS)**. Alternatywnie można wybrać **Przeglądaj** > **magazyn usług odzyskiwania** > **Dodaj**. 
+2. Wybierz **Utwórz zasób** > **zarządzania** > **tworzenia kopii zapasowych i odzyskiwania lokacji (OMS)**. Alternatywnie można wybrać **Przeglądaj** > **magazyn usług odzyskiwania** > **Dodaj**. 
 3. Określ region, który maszyny wirtualne będą replikowane do. Na potrzeby migracji w tym samym regionie wybierz region, w których źródła maszyn wirtualnych i kont magazynu źródłowego. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: Wybranie celów ochrony 
@@ -157,7 +157,7 @@ Aby sprawdzić, czy serwer konfiguracji jest pomyślnie skojarzone z zasadami re
 
    Przełączona w tryb failover maszyny Wirtualnej będzie mieć dwa tymczasowego dyski: jeden z podstawowej maszyny Wirtualnej, a druga utworzone podczas inicjowania obsługi maszyny wirtualnej w regionie odzyskiwania. Aby wykluczyć dysku tymczasowym przed replikacji, zainstalować usługi mobilności, przed włączeniem replikacji. Aby dowiedzieć się więcej o tym, jak można wykluczyć dysku tymczasowy, zobacz [wykluczyć z replikacji dyski](../../site-recovery/vmware-walkthrough-overview.md).
 
-2. Włącz replikację w następujący sposób:
+2. Aby włączyć replikację:
    1. Wybierz **Replikowanie aplikacji** > **źródła**. Po włączeniu replikacji po raz pierwszy, wybierz **+ Replikuj** w magazynie, aby włączyć replikację dla dodatkowych maszyn.
    2. W kroku 1 — Konfiguracja **źródła** jako serwera przetwarzania.
    3. W kroku 2 Określ model wdrożenia trybu failover post, konto magazynu premium, aby przeprowadzić migrację do konta magazynu w warstwie standardowa, aby zapisać dzienników i sieci wirtualnej nie.

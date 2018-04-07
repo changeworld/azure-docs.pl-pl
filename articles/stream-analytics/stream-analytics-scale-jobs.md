@@ -1,31 +1,25 @@
 ---
-title: Skalowanie zadania usługi analiza strumienia w celu zwiększenia przepływności | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skalować zadania usługi analiza strumienia Konfigurowanie partycji wejściowych, dostosowywanie definicji zapytania i ustawiając zadania jednostki przesyłania strumieniowego.
-keywords: przesyłanie strumieniowe, danych przesyłania strumieniowego przetwarzania danych, dostroić analityka
+title: Skalowanie w górę i w zadania usługi analiza strumienia Azure
+description: W tym artykule opisano sposób skalowania zadanie usługi Stream Analytics partycjonowanie danych wejściowych, dostrajanie zapytania i ustawiając zadania jednostki przesyłania strumieniowego.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Skalowanie zadania usługi analiza strumienia Azure w celu zwiększenia przepływności
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Zadanie usługi analiza strumienia Azure w celu zwiększenia przepływności skalowania
 W tym artykule przedstawiono sposób dostrajania Stream Analytics zapytanie w celu zwiększenia przepływności zadań przesyłania strumieniowego usługi Analytics. Następujący Przewodnik umożliwia skalowanie zadania obsługi większych obciążeń i wykorzystać więcej zasobów systemowych (np. większą przepustowość, więcej zasobów procesora CPU, więcej pamięci).
 Warunkiem wstępnym konieczne może być przeczytaj następujące artykuły:
 -   [Opis i dostosowywanie jednostek przesyłania strumieniowego](stream-analytics-streaming-unit-consumption.md)
 -   [Tworzenie zadań działania równoległego](stream-analytics-parallelization.md)
-
 
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Przypadek 1 – zapytania jest z założenia pełni działania równoległego między partycjami wejściowych
 Jeśli zapytanie jest z założenia pełni działania równoległego między partycjami wejściowych, należy wykonać następujące czynności:
@@ -40,7 +34,6 @@ Jeśli zapytanie jest z założenia pełni działania równoległego między par
 >[!Note]
 > Wybierz prawa liczbę jednostek przesyłania strumieniowego: ponieważ Stream Analytics tworzy węzeł przetwarzania dla każdego 6 SU dodane, najlepiej powiększając liczby węzłów dzielnikiem liczby partycji wejściowych partycji można równomiernie rozłożony między węzły.
 > Na przykład mieć mierzona z 6 SU zadania można osiągnąć 4 MB/s przetwarzania szybkości i liczba partycji wejściowe to 4. Można uruchamiać zadanie z 12 SU do osiągnięcia około 8 szybkości przetwarzania MB/s lub 24 SU do osiągnięcia 16 MB/s. Następnie można zdecydować, kiedy należy zwiększyć liczbę SU na jakie korzyści zadania jako funkcja częstotliwość wprowadzania.
-
 
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>Przypadek 2 - Jeśli zapytanie nie jest embarrassingly równoległych.
@@ -150,7 +143,7 @@ I Wykres ukazuje wizualizacji relacji między usługami SUs i przepływności.
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

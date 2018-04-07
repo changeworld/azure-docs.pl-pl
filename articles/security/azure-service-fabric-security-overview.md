@@ -1,12 +1,12 @@
 ---
-title: "Omówienie zabezpieczeń usługi Azure sieci szkieletowej | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie zabezpieczeń usługi Azure Service Fabric."
+title: Omówienie zabezpieczeń usługi Azure sieci szkieletowej | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie zabezpieczeń usługi Azure Service Fabric.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9b6c2463c2a782f463e64d6e350a565fa7898b63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-fabric-security-overview"></a>Omówienie zabezpieczeń usługi Azure Service Fabric
 [Sieć szkieletowa usług Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) to platforma systemów rozproszonych, która ułatwia pakietów, wdrażanie i zarządzanie mikrousług skalowalne i niezawodne. Sieć szkieletowa usług adresów istotnych wyzwań rozwijania i zarządzanie aplikacjami w chmurze. Deweloperzy i administratorzy mogą uniknąć złożonych problemów związanych z infrastrukturą i skoncentrować się na implementowaniu wymagających obciążeń o znaczeniu strategicznym, które są skalowalne, niezawodne i łatwe w zarządzaniu.
@@ -104,7 +104,7 @@ Ogólny przepływ pracy monitorowania i diagnostyki obejmuje trzy kroki:
 
 -   **Agregacja zdarzeń:** Generated zdarzeń muszą być zbierane i agregować przed mogą być wyświetlane. Zazwyczaj zalecane jest używanie [diagnostyki Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobny do zbierania dzienników opartej o agentów) lub [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (w procesie zbierania dzienników).
 
--   **Analiza:** zdarzeń muszą być wizualizowanego i jest dostępna w niektórych formacie zezwalająca na potrzeby analizy i wyświetlania. Istnieje kilka platformy analizy i wizualizacji danych monitorowania i diagnostyki. Są dwa, które są zalecane [Operations Management Suite](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) i [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) z powodu ich dobrej integracji z sieci szkieletowej usług.
+-   **Analiza:** zdarzeń muszą być wizualizowanego i jest dostępna w niektórych formacie zezwalająca na potrzeby analizy i wyświetlania. Istnieje kilka platformy analizy i wizualizacji danych monitorowania i diagnostyki. Są dwa, które są zalecane [analizy dzienników](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) i [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) z powodu ich dobrej integracji z sieci szkieletowej usług.
 
 Można również użyć [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) do monitorowania wielu zasobów platformy Azure, na których jest zbudowany klastra sieci szkieletowej usług.
 
@@ -189,6 +189,6 @@ Zabezpieczeń jest jednym z najważniejszych aspektów komunikacji. Struktura ap
 -   [Zabezpieczanie usługi podczas korzystania z komunikacji zdalnej usługi](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication)
 -   [Zabezpieczanie usługi podczas korzystania z stosu komunikacji usługi WCF](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication#help-secure-a-service-when-youre-using-a-wcf-based-communication-stack)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać ogólne informacje o zabezpieczeniach klastra, zobacz [tworzenia klastra usługi sieć szkieletowa usług za pomocą usługi Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) i [portalu Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal).
 - Aby dowiedzieć się więcej na temat zabezpieczeń klastra w sieci szkieletowej usług, zobacz [zabezpieczeń klastra sieci szkieletowej usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).

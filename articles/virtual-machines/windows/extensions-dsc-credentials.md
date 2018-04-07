@@ -1,11 +1,11 @@
 ---
-title: "Przekazywania poświadczeń na platformie Azure przy użyciu konfiguracji żądanego stanu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak bezpiecznie przekazywania poświadczeń do maszyn wirtualnych platformy Azure przy użyciu konfiguracji żądanego stanu środowiska PowerShell (DSC)."
+title: Przekazywania poświadczeń na platformie Azure przy użyciu konfiguracji żądanego stanu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak bezpiecznie przekazywania poświadczeń do maszyn wirtualnych platformy Azure przy użyciu konfiguracji żądanego stanu środowiska PowerShell (DSC).
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: zjalexander
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 keywords: DSC
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: zachal,migreene
-ms.openlocfilehash: a0a565c0bb7e17315c7b0475f3213b620a3e2d6c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f372685692c2f02984bf0e0b8deeae27ce94422b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Przekazywania poświadczeń do obsługi Azure DSCExtension
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]

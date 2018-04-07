@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/19/2018
+ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: 0456bf8d8cdd84078d12c3fc0f48d16b0370cddd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1f24db331b3d59eaad54c5c2488e56913261cff2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure wersji systemu operacyjnego gościa i zgodność pakietu SDK
 Zapewnia użytkownikowi aktualne informacje o najnowszych systemu operacyjnego gościa Azure wersje usługi w chmurze. Informacje te pomagają sobie planowanie uaktualnienia przed wyłączeniem systemu operacyjnego gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, aby odczytać tę stronę.
@@ -42,6 +42,9 @@ Zapewnia użytkownikowi aktualne informacje o najnowszych systemu operacyjnego g
 Nie wiesz, o jaką systemu operacyjnego gościa jest lub jak systemu operacyjnego gościa wersje robocze? Odczyt [to](#how-it-works) sekcji.
 
 ## <a name="news-updates"></a>Wiadomości
+###### <a name="april-6-2018"></a>**6 kwietnia 2018**
+Wydała marca systemu operacyjnego gościa.
+
 ###### <a name="march-19-2018"></a>**19 marca 2018**
 Wydała lutego systemu operacyjnego gościa.
 
@@ -90,8 +93,9 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Wygasłe daty |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.17_201803-01 |6 kwietnia 2018 |Post 5.19 |TBD |
 | WA-GUEST-OS-5.16_201802-01 |12 marca 2018 |Post 5.18 |TBD |
-| WA-GUEST-OS-5.15_201801-01 |4 stycznia 2018 |Post 5.17 |TBD |
+|~~WA-GUEST-OS-5.15_201801-01~~ |4 stycznia 2018 |6 kwietnia 2018 |TBD |
 |~~WA-GUEST-OS-5.14_201712-01~~ |4 stycznia 2018 |12 marca 2018 |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 |TBD |
@@ -116,8 +120,9 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Wygasłe daty |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.52_201803-01 |6 kwietnia 2018 |Post 4.54 |TBD |
 | WA-GUEST-OS-4.51_201802-01 |12 marca 2018 |Post 4,53 |TBD |
-| WA-GUEST-OS-4.50_201801-01 |4 stycznia 2018 |Post 4,52 |TBD |
+|~~WA-GUEST-OS-4.50_201801-01~~ |4 stycznia 2018 |6 kwietnia 2018 |TBD |
 |~~WA-GUEST-OS-4.49_201712-01~~ |4 stycznia 2018 |12 marca 2018 |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 |TBD |
@@ -142,8 +147,9 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Wygasłe daty |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.59_201803-01 |6 kwietnia 2018 |Post 3.61 |TBD |
 | WA-GUEST-OS-3.58_201802-01 |19 marca 2018 |Post 3.60 |TBD |
-| WA-GUEST-OS-3.57_201801-01 |29 stycznia 2018 |Post 3.59 |TBD |
+|~~WA-GUEST-OS-3.57_201801-01~~ |29 stycznia 2018 |6 kwietnia 2018 |TBD |
 |~~WA-GUEST-OS-3.56_201712-01~~ |4 stycznia 2018 |19 marca 2018 |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 |TBD |
@@ -168,8 +174,9 @@ Wdrożenie systemu operacyjnego gościa lipca rozpoczyna lipca 19 i ma planowane
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty | Wygasłe daty |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.72_201803-01 |6 kwietnia 2018 |Post 2.74 |TBD |
 | WA-GUEST-OS-2.71_201802-01 |12 marca 2018 |Post 2,73 |TBD |
-| WA-GUEST-OS-2.70_201801-01 |29 stycznia 2018 |Post 2.72 |TBD |
+|~~WA-GUEST-OS-2.70_201801-01~~ |29 stycznia 2018 |6 kwietnia 2018 |TBD |
 |~~WA-GUEST-OS-2.69_201712-01~~ |4 stycznia 2018 |12 marca 2018 |TBD |
 |~~WA-GUEST-OS-2.68_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 |TBD |
 |~~WA-GUEST-OS-2.67_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 |TBD |

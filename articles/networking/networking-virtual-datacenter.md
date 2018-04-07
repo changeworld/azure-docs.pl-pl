@@ -1,6 +1,6 @@
 ---
 title: 'Wirtualne centrum danych platformy Microsoft Azure: Perspektywy sieci | Dokumentacja firmy Microsoft'
-description: "Dowiedz się, jak utworzyć centrum danych wirtualnych na platformie Azure"
+description: Dowiedz się, jak utworzyć centrum danych wirtualnych na platformie Azure
 services: networking
 author: tracsman
 manager: rossort
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Wirtualne centrum danych platformy Microsoft Azure: Perspektywy sieci
 **Microsoft Azure**: szybszą, oszczędności, integracja danych i aplikacji lokalnych
@@ -259,9 +259,9 @@ W vDC jest bardzo ważne, aby śledzić dzienniki grup NSG, szczególnie tych in
 
 Wszystkie dzienniki mogą być przechowywane na kontach magazynu Azure do inspekcji, analizę statyczną lub wykonywania kopii zapasowych. Gdy dzienniki są przechowywane na koncie magazynu platformy Azure, klientów można pobrać, przygotowywanie, analizowanie przy użyciu różne typy struktur, a następnie wizualizacji tych danych do raportowania stanu i kondycji zasobów w chmurze.
 
-Duże przedsiębiorstwa powinna już zostały nabyte standardowych ramy do monitorowania systemów lokalnych i można rozszerzyć tego framework do integracji dzienniki generowane przez wdrożenia chmury. W przypadku organizacji, które chcesz zachować wszystkie rejestrowania w chmurze [programu Microsoft Operations Management Suite (OMS)] [ OMS] jest doskonałym wyborem. Ponieważ oprogramowanie OMS jest zaimplementowane jako usługa w chmurze, może być dostępne szybko przy minimalnym poziomie inwestycji w usługi infrastruktury. OMS można również zintegrować z składników programu System Center, takich jak System Center Operations Manager, aby rozszerzyć istniejące inwestycje w technologie zarządzania w chmurze.
+Duże przedsiębiorstwa powinna już zostały nabyte standardowych ramy do monitorowania systemów lokalnych i można rozszerzyć tego framework do integracji dzienniki generowane przez wdrożenia chmury. W przypadku organizacji, które chcesz zachować wszystkie rejestrowania w chmurze [analizy dzienników] [ LogAnalytics] jest doskonałym wyborem. Ponieważ analizy dzienników jest zaimplementowany jako usługa w chmurze, można mieć on działa szybko z minimalnym inwestycji w infrastrukturę usług. Analiza dzienników można również zintegrować z składników programu System Center, takich jak System Center Operations Manager, aby rozszerzyć istniejące inwestycje w technologie zarządzania w chmurze.
 
-Analiza dzienników OMS wchodzi w skład framework OMS, aby zebrać, skorelowania, wyszukiwanie i działają na dane wydajności i dziennika zostały wygenerowane przez systemy operacyjne, aplikacje, składników infrastruktury chmury. Udostępnia klientom w czasie rzeczywistym operational insights przy użyciu wyszukiwanie zintegrowane i niestandardowe pulpity nawigacyjne, aby analizować wszystkie rekordy we wszystkich obciążeń w vDC.
+Analiza dzienników jest usługą platformy Azure, która pomaga zbierania, korelowania wyszukiwania i działają na dane dziennika i wydajności, które są generowane przez systemów operacyjnych, aplikacji i składników infrastruktury chmury. Udostępnia klientom w czasie rzeczywistym operational insights przy użyciu wyszukiwanie zintegrowane i niestandardowe pulpity nawigacyjne, aby analizować wszystkie rekordy we wszystkich obciążeń w vDC.
 
 #### <a name="component-type-workloads"></a>Typ składnika: obciążeń
 Składniki obciążenia są, gdzie znajdują się rzeczywista aplikacji i usług. Istnieje również gdzie zespołów deweloperów aplikacji spędzają większość czasu.
@@ -332,7 +332,7 @@ Następujące funkcje zostały omówione w tym dokumencie. Kliknij łącza, aby 
 |Funkcje sieci|Równoważenie obciążenia|Łączność|
 |[Azure Virtual Networks][VNet]</br>[Grupy zabezpieczeń sieci][NSG]</br>[NSG Logs][NSGLog]</br>[Routing zdefiniowane przez użytkownika][UDR]</br>[Urządzenie wirtualne sieci][NVA]</br>[Publiczny adres IP][PIP]|[Moduł równoważenia obciążenia Azure (L3) ][ALB]</br>[Brama aplikacji (P7) ][AppGW]</br>[Zapora aplikacji sieci Web][WAF]</br>[Usługi Azure Traffic Manager][TM] |[Komunikacja równorzędna sieci wirtualnej][VNetPeering]</br>[Wirtualna sieć prywatna][VPN]</br>[ExpressRoute][ExR]
 |Tożsamość</br>|Monitorowanie</br>|Najlepsze rozwiązania</br>|
-|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[Rola dostępu bazowego formantów][RBAC]</br>[Domyślne role usługi AAD][Roles] |[Dzienniki aktywności][ActLog]</br>[Dzienniki diagnostyczne][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br> |[Najlepsze rozwiązania w zakresie sieci obwodowej][DMZ]</br>[Zarządzanie subskrypcją][SubMgmt]</br>[Zarządzanie grupami zasobów][RGMgmt]</br>[Limity subskrypcji platformy Azure][Limits] |
+|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[Rola dostępu bazowego formantów][RBAC]</br>[Domyślne role usługi AAD][Roles] |[Dzienniki aktywności][ActLog]</br>[Dzienniki diagnostyczne][DiagLog]</br>[Log Analytics][LogAnalytics]</br> |[Najlepsze rozwiązania w zakresie sieci obwodowej][DMZ]</br>[Zarządzanie subskrypcją][SubMgmt]</br>[Zarządzanie grupami zasobów][RGMgmt]</br>[Limity subskrypcji platformy Azure][Limits] |
 |Innymi usługami platformy Azure|
 |[Aplikacje sieci Web Azure][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
@@ -379,7 +379,7 @@ Następujące funkcje zostały omówione w tym dokumencie. Kliknij łącza, aby 
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

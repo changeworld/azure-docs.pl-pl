@@ -1,13 +1,13 @@
 ---
-title: "Resetowanie hasła lub w konfiguracji pulpitu zdalnego na maszynie Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można zresetować hasło do konta lub usług pulpitu zdalnego na maszynie Wirtualnej Windows utworzone przy użyciu klasycznego modelu wdrażania przy użyciu portalu Azure lub programu Azure PowerShell."
+title: Resetowanie hasła lub w konfiguracji pulpitu zdalnego na maszynie Wirtualnej systemu Windows na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można zresetować hasło do konta lub usług pulpitu zdalnego na maszynie Wirtualnej Windows utworzone przy użyciu klasycznego modelu wdrażania przy użyciu portalu Azure lub programu Azure PowerShell.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 200e5667f4bc2ca0b7dc041eef990b7aff0914ff
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 516cb740f9acad19dac77db0239341b42a2b27fe
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>Jak można zresetować usług pulpitu zdalnego lub jego hasło logowania w utworzonych przy użyciu klasycznego modelu wdrożenia maszyny Wirtualnej systemu Windows
 > [!IMPORTANT]
@@ -102,7 +102,7 @@ Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' 
 
 To polecenie ustawia fDenyTSConnections wartości rejestru na 0, włączenie połączeń pulpitu zdalnego.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Jeśli rozszerzenia dostępu do maszyny Wirtualnej platformy Azure nie odpowiada i nie można zresetować hasło, możesz [zresetować lokalne hasło systemu Windows w trybie offline](../reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ta metoda jest procesem bardziej zaawansowane i wymaga łączenie się inną maszynę Wirtualną z wirtualnego dysku twardego maszyny wirtualnej powodować problemy. Wykonaj kroki opisane w tym artykule najpierw, a następnie spróbuj tylko metody resetowania hasła w trybie offline w ostateczności.
 
 [Rozszerzenia maszyny Wirtualnej platformy Azure i funkcje](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

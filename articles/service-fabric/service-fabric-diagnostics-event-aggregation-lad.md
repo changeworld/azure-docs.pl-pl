@@ -1,12 +1,12 @@
 ---
-title: "Usługa Azure sieci szkieletowej zdarzeń agregacji Diagnostyka Azure systemu Linux | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat agregowania i zbierania zdarzeń przy użyciu LAD monitorowania i diagnostyki klastrów sieci szkieletowej usług Azure."
+title: Usługa Azure sieci szkieletowej zdarzeń agregacji Diagnostyka Azure systemu Linux | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat agregowania i zbierania zdarzeń przy użyciu LAD monitorowania i diagnostyki klastrów sieci szkieletowej usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: b70780b2e1d169aced3412f6fe6d13ad4dab82be
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9ad63a67d3b51cad1376eb9e97e68fb9102013e3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregacja zdarzeń i kolekcji za pomocą diagnostyki Azure systemu Linux
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 
 Jeśli korzystasz z klastra usługi sieć szkieletowa usług Azure, jest dobrym pomysłem jest zebrać dzienniki ze wszystkich węzłów w centralnej lokalizacji. Posiadanie dzienniki w centralnej lokalizacji ułatwiają analizowanie i rozwiązywanie problemów w klastrze lub problemy w aplikacji i usług działających w klastrze.
 
-Jednym ze sposobów przekazywania i zbierania dzienników to próbę użycia rozszerzenia Linux Azure Diagnostics (LAD), która przekazuje dzienniki usługi Azure Storage, a także ma możliwość przesyłania dzienników usługi Application Insights dla platformy Azure lub usługi Event Hubs. Umożliwia także procesu zewnętrznego do odczytywania zdarzenia z magazynu i umieścić w produkcie platformy analizy, takich jak [analizy dzienników OMS](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
+Jednym ze sposobów przekazywania i zbierania dzienników to próbę użycia rozszerzenia Linux Azure Diagnostics (LAD), która przekazuje dzienniki usługi Azure Storage, a także ma możliwość przesyłania dzienników usługi Application Insights dla platformy Azure lub usługi Event Hubs. Umożliwia także procesu zewnętrznego do odczytywania zdarzenia z magazynu i umieścić w produkcie platformy analizy, takich jak [analizy dzienników](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
 
 ## <a name="log-and-event-sources"></a>Źródła dziennika i zdarzenie
 
@@ -52,4 +52,4 @@ Spowoduje to skonfigurowanie agenta LAD do monitorowania określonych plików dz
 ## <a name="next-steps"></a>Kolejne kroki
 
 1. Aby bardziej szczegółowo zrozumieć, jakie zdarzenia należy sprawdzić podczas rozwiązywania problemów, zobacz [dokumentacji LTTng](http://lttng.org/docs) i [przy użyciu LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
-2. [Skonfiguruj agenta pakietu OMS](service-fabric-diagnostics-event-analysis-oms.md) ułatwiające zbieranie metryk monitorowanie kontenery wdrożone w klastrze i wizualizacji dzienników 
+2. [Skonfiguruj agenta analizy dzienników](service-fabric-diagnostics-event-analysis-oms.md) ułatwiające zbieranie metryk monitorowanie kontenery wdrożone w klastrze i wizualizacji dzienników 

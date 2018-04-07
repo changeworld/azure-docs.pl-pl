@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 1ebfab93c94c27de8e765ac3f8278372c8f0690f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3175236306f05831a78ae8ca01911d0c5d19f893
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Zarządzanie danych historycznych w tabelach danych czasowych z zasady przechowywania
 Tabele danych czasowych może zwiększyć baz danych o rozmiarze ponad zwykłych tabelach, zwłaszcza jeśli przechowywanie danych historycznych przez dłuższy okres. W związku z tym zasady przechowywania danych historycznych jest istotnym elementem planowania i zarządzanie cyklem życia każda tabela danych czasowych. Tabele danych czasowych w bazie danych SQL Azure pochodzą z mechanizmem przechowywania łatwy w użyciu, który ułatwia wykonywanie tego zadania.

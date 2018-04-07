@@ -1,19 +1,19 @@
 ---
-title: "Zapytanie szczegółowe informacje o wydajności dla usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: "Monitorowanie wydajności zapytania identyfikuje większość używające Procesora zapytań dla bazy danych SQL Azure."
+title: Zapytanie szczegółowe informacje o wydajności dla usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Monitorowanie wydajności zapytania identyfikuje większość używające Procesora zapytań dla bazy danych SQL Azure.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 18d03ffcd586a809b37cbc1ca9a7843c25c7758d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 85f25946974b7ede64f9f8fb0009eed42c55c25a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Wgląd wydajności kwerendy bazy danych Azure SQL
 Zarządzanie i dostrajania wydajności relacyjnych baz danych jest trudne zadanie, które wymaga znaczących wiedzę i czas inwestycji. Szczegółowe informacje o wydajności zapytań umożliwia poświęcają mniej czasu Rozwiązywanie problemów z bazy danych wydajności przez korzystanie z następujących:

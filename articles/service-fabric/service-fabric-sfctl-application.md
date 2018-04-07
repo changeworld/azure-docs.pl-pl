@@ -1,12 +1,12 @@
 ---
-title: "Usługa sieci szkieletowej interfejsu wiersza polecenia - sfctl aplikacji Azure | Dokumentacja firmy Microsoft"
-description: "Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl aplikacji."
+title: Usługa sieci szkieletowej interfejsu wiersza polecenia - sfctl aplikacji Azure | Dokumentacja firmy Microsoft
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl aplikacji.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3a10437d0a2d680e586ada6a87750a69453c1f0c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: fe0ef5c81b1ef6bef298e65cde3649c9464089d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sfctl-application"></a>sfctl application
 Tworzenie, usuwanie i zarządzanie aplikacjami i typami aplikacji.
@@ -46,7 +46,7 @@ Tworzenie, usuwanie i zarządzanie aplikacjami i typami aplikacji.
 | Wznów uaktualnienia  | Wznawia uaktualniania aplikacji w klastrze usługi sieć szkieletowa usług.|
 | Wycofywanie uaktualnienia| Uruchamia wycofywanie uaktualnienia obecnie w toku aplikacji w klastrze usługi sieć szkieletowa usług.|
 | upgrade-status  | Pobiera szczegóły dla najnowszą aktualizację w tej aplikacji.|
-| Przekaż       | Skopiuj pakiet sieci szkieletowej usług aplikacji do magazynu obrazów.|
+| przekazywanie       | Skopiuj pakiet sieci szkieletowej usług aplikacji do magazynu obrazów.|
 
 ## <a name="sfctl-application-create"></a>Tworzenie aplikacji sfctl
 Tworzy aplikację usługi Service Fabric przy użyciu określonego opisu.
@@ -143,7 +143,7 @@ Zwraca stan kondycji aplikacji sieci szkieletowej usług. Odpowiedź raporty kon
 | --debug                                 | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h                               | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o                             | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                                 | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania                                 | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose                               | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-application-info"></a>informacje o aplikacji sfctl
@@ -166,7 +166,7 @@ Zwraca informacje o aplikacji, który został utworzony lub właśnie trwa tworz
 | --debug                      | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h                    | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o                  | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.             Domyślne: json.|
-| — zapytania                      | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania                      | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose                    | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-application-list"></a>Lista aplikacji sfctl
@@ -212,7 +212,7 @@ Zwraca obciążenia informacje dotyczące aplikacji, która została utworzona l
 |--debug                    | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
     — Pomoc -h                  | Pokaż ten komunikat pomocy i Zakończ.|
     --output -o                | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-    — zapytania                    | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+    — zapytania                    | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
     -verbose                  | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-application-manifest"></a>manifest aplikacji sfctl
@@ -235,15 +235,13 @@ Pobiera manifest opisu typu aplikacji. Odpowiedź zawiera manifest aplikacji XML
 | --debug                           | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h                         | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o                       | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.                  Domyślne: json.|
-| — zapytania                           | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania                           | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose                         | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-application-provision"></a>Zainicjuj obsługę aplikacji sfctl
 Przepisy lub rejestrów aplikacji usługi Service Fabric typu z klastrem przy użyciu pakietu SFPKG w zewnętrznym sklepie lub pakiet aplikacji w magazynie obrazu.
 
-Inicjuje typem aplikacji usługi sieć szkieletowa z klastra. Jest to wymagane, zanim można utworzyć wystąpienia każdej nowej aplikacji. Operacja inicjowania obsługi administracyjnej można przeprowadzić na określona przez relativePathInImageStore lub za pomocą identyfikatora URI z zewnętrznego SFPKG pakietu aplikacji. O ile — udostępniania zewnętrznych jest ustawiona, to polecenie oczekuje magazynu obrazów
-
-Zainicjuj obsługę.
+Inicjuje typem aplikacji usługi sieć szkieletowa z klastra. Jest to wymagane, zanim można utworzyć wystąpienia każdej nowej aplikacji. Operacja inicjowania obsługi administracyjnej można przeprowadzić na określona przez relativePathInImageStore lub za pomocą identyfikatora URI z zewnętrznego SFPKG pakietu aplikacji. Jeżeli--udostępniania zewnętrznego nie jest ustawiony, to polecenie inicjuje pakietu aplikacji w sklepie obrazu.
         
 
 
@@ -266,7 +264,7 @@ Zainicjuj obsługę.
 | --debug                              | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h                            | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o                          | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                              | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania                              | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose                            | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-application-type"></a>Typ aplikacji sfctl
@@ -317,7 +315,7 @@ Usuwa lub wyrejestrowuje typu sieci szkieletowej usług aplikacji z klastra. Tę
 | --debug                           | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h                         | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o                       | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.                  Domyślne: json.|
-| — zapytania                           | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania                           | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose                         | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-application-upgrade"></a>Uaktualnianie aplikacji sfctl
@@ -377,7 +375,7 @@ Opcjonalnie można wyświetlić postępu przekazywania dla poszczególnych plik�
 | --debug       | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h     | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o   | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania       | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania       | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose     | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="next-steps"></a>Kolejne kroki

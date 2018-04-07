@@ -1,12 +1,12 @@
 ---
 title: Azure Service Bus metryki w monitorze Azure (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: "Użyj monitorowania Azure, aby monitorować jednostek usługi Service Bus"
+description: Użyj monitorowania Azure, aby monitorować jednostek usługi Service Bus
 services: service-bus-messaging
 documentationcenter: .NET
 author: christianwolf42
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 20115897bb5ae2638588e79d80700fa8ece06104
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3660f0a6794a2fd784ec8846177da7effe7fe681
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Service Bus metryki w monitorze Azure (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Azure Monitor udostępnia interfejsy użytkownika ujednoliconego do monitorowani
 
 ## <a name="access-metrics"></a>Metryki dostępu
 
-Azure Monitor oferuje wiele sposobów metryki dostępu. Można albo metryki dostęp za pośrednictwem [portalu Azure](https://portal.azure.com), lub użyj interfejsów API usługi Azure monitora (REST i .NET) i rozwiązań analitycznych, takie jak operacji Management Suite (OMS) i usługi Event Hubs. Aby uzyskać więcej informacji, zobacz [metryki Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
+Azure Monitor oferuje wiele sposobów metryki dostępu. Można albo metryki dostęp za pośrednictwem [portalu Azure](https://portal.azure.com), lub użyj interfejsów API usługi Azure monitora (REST i .NET) i rozwiązań analitycznych, takich jak analizy dzienników i usługi Event Hubs. Aby uzyskać więcej informacji, zobacz [metryki Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api).
 
 Metryki są domyślnie włączone i są dostępne najnowsze w ciągu 30 dni od danych. Jeśli chcesz zachować dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. Te ustawienia zostaną skonfigurowane w [ustawień diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) w monitorze Azure.
 
@@ -46,7 +46,7 @@ Dla metryki pomocnicze, wymiary możesz filtrować z żądaną wartością.
 
 ## <a name="billing"></a>Rozliczenia
 
-Przy użyciu metryk w monitorze Azure jest bezpłatna podczas w wersji zapoznawczej. Jednak użycie dodatkowe rozwiązania, które pozyskiwania danych metryki, użytkownik może zostać użyta przez te rozwiązania. Na przykład możesz są rozliczane przez usługi Azure Storage archiwizacji danych metryk do konta usługi Azure Storage. Również są rozliczane przez operację Management Suite (OMS), jeśli strumienia danych metryki z usługą OMS dla zaawansowanej analizy.
+Przy użyciu metryk w monitorze Azure jest bezpłatna podczas w wersji zapoznawczej. Jednak użycie dodatkowe rozwiązania, które pozyskiwania danych metryki, użytkownik może zostać użyta przez te rozwiązania. Na przykład możesz są rozliczane przez usługi Azure Storage archiwizacji danych metryk do konta usługi Azure Storage. Można również są rozliczane według analizy dzienników Jeśli strumienia danych metryk do analizy dzienników dla zaawansowanej analizy.
 
 Następujące metryki zawiera przegląd kondycji usługi. 
 

@@ -1,11 +1,11 @@
 ---
-title: "Łączenie Microsoft Advanced Threat Analytics do Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Centrum zabezpieczeń Azure umożliwia integrację z Microsoft Advanced Threat Analytics."
+title: Łączenie Microsoft Advanced Threat Analytics do Centrum zabezpieczeń Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Centrum zabezpieczeń Azure umożliwia integrację z Microsoft Advanced Threat Analytics.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fb32fc55288229fb1d09dce98b6092d38c10abf2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Łączącego Microsoft Advanced Threat Analytics do Centrum zabezpieczeń Azure
 Ten dokument pomaga skonfigurować integrację Centrum zabezpieczeń Azure i Microsoft Advanced Threat Analytics.
@@ -52,13 +52,13 @@ Przy założeniu, że masz już instalacji usługi ATA i działa prawidłowo lok
 
 10. W **Dodaj nowy komputer z systemem innym niż Azure** wybierz obszar roboczy.
 
-    ![Non-Azure](./media/security-center-ata-integration/security-center-ata-integration-fig5.png)
+    ![Poza platformą Azure](./media/security-center-ata-integration/security-center-ata-integration-fig5.png)
 
 11. W **bezpośredniego agenta** strony, Pobierz odpowiedniego agenta systemu Windows i zanotować **identyfikator obszaru roboczego** i **klucz podstawowy**.
 
     ![Bezpośrednie agenta](./media/security-center-ata-integration/security-center-ata-integration-fig6.png)
 
-12. Zainstaluj agenta w Centrum usługi ATA. Podczas instalacji, upewnij się, że opcja **Połącz agenta z do Analiza dzienników Azure (OMS)**i podaj *identyfikator obszaru roboczego*, i *klucz podstawowy* na żądanie .
+12. Zainstaluj agenta w Centrum usługi ATA. Podczas instalacji, upewnij się, że opcja **Połącz agenta z usługą Analiza dzienników Azure**i podaj *identyfikator obszaru roboczego*, i *klucz podstawowy* na żądanie.
 
 
 Po zakończeniu instalacji, zakończeniu integracji i można zobaczyć nowe alerty wysyłane z usługi ATA do Centrum zabezpieczeń w **wyszukiwania** wynik. Rozwiązanie wydaje w **rozwiązań zabezpieczeń** w obszarze **połączone rozwiązań**. 

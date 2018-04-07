@@ -2,8 +2,8 @@
 title: 'Azure DB rozwiązania Cosmos: Artykuły interfejsu API SQL | Dokumentacja firmy Microsoft'
 description: Lista wszystkich artykułów określonych do tworzenia baz danych dokumentu przy użyciu interfejsu API SQL w usłudze Azure DB rozwiązania Cosmos.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 82bec99a-ac2b-474e-b41f-d2fb296c8feb
 ms.service: cosmos-db
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
-ms.author: mimig
-ms.openlocfilehash: 20b8cabded739335e9615d001138bde16e6308e5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: sngun
+ms.openlocfilehash: 5e6f277a3c020334ba26a0b1a2681cbbdd672f45
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Azure rozwiązania Cosmos bazy danych: Dokumentacja interfejsu API SQL
 

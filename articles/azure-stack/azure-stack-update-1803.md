@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: cff6d780826164de6ef0122849e40d453192f81c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizacji 1803 stosu
 
@@ -44,7 +44,9 @@ Numer kompilacji aktualizacji 1803 stosu Azure jest **20180329.1**.
 
 
 ### <a name="post-update-steps"></a>Czynności po aktualizacji
-*Nie istnieją żadne czynności po aktualizacji dla aktualizacji 1803.*
+Po zakończeniu instalacji 1803 Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszych [obsługi zasad](azure-stack-servicing-policy.md).
+
+- [KB 4103348 — interfejs API kontrolera sieci usługi ulega awarii podczas próby zainstalowania aktualizacji Azure stosu](https://support.microsoft.com/en-us/help/4103348)
 
 
 ### <a name="new-features"></a>Nowe funkcje 
@@ -90,7 +92,7 @@ Ta aktualizacja obejmuje następujące ulepszenia i poprawki dla stosu Azure.
 
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji    
-Podczas instalacji aktualizacji 1803 może być przestoje usługi obiektów blob i wewnętrzny usługi, które używają usługi blob. Obejmuje to niektóre operacje maszyny wirtualnej.  Czas przestoju może to powodować błędy dzierżawcy operacje lub alerty z usług, których nie można uzyskać dostępu do danych. Ten problem rozwiązuje się po ukończeniu instalacji. 
+<!-- 2328416 --> During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can’t access data. This issue resolves itself when the update completes installation. 
 
 
 ### <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
@@ -129,10 +131,6 @@ Poniżej przedstawiono znane problemy występujące po instalacji w kompilacji *
 
 #### <a name="compute"></a>Wystąpienia obliczeniowe
 - Ustawienia skalowania dla zestawy skalowania maszyny wirtualnej nie są dostępne w portalu. Jako rozwiązanie alternatywne można zastosować [programu Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z powodu różnic wersji programu PowerShell, należy użyć `-Name` parametru zamiast `-VMScaleSetName`.
-
-- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
-
-  Aby rozwiązać ten problem, skontaktuj się z pomocą techniczną w celu Wyślij żądanie poprawki **1.0.180302.4** stosu Azure. 
 
 - Po utworzeniu zestawem dostępności w portalu, przechodząc do **nowy** > **obliczeniowe** > **zestawu dostępności**, można tworzyć tylko z domeny błędów i Aktualizacja domeny 1 zestawu dostępności. Jako obejście, podczas tworzenia nowej maszyny wirtualnej, Utwórz dostępności przy użyciu programu PowerShell, interfejsu wiersza polecenia, lub z poziomu portalu.
 

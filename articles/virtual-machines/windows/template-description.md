@@ -1,11 +1,11 @@
 ---
-title: "Maszyny wirtualne w szablonie usługi Azure Resource Manager | Microsoft Azure"
-description: "Dowiedz się więcej na temat sposobu zasobu maszyny wirtualnej jest zdefiniowany w szablonie usługi Azure Resource Manager."
+title: Maszyny wirtualne w szablonie usługi Azure Resource Manager | Microsoft Azure
+description: Dowiedz się więcej na temat sposobu zasobu maszyny wirtualnej jest zdefiniowany w szablonie usługi Azure Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: 9c0039987ec28601c9338d2b94633c38c31e01f8
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 43cd6322bb03b5c781a890c3280247cbb2d118f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie usługi Azure Resource Manager
 
@@ -162,7 +162,7 @@ Wersja interfejsu API, określ w szablonie dotyczy właściwości, które można
 Użyj tych możliwości pobierania najnowszej wersji interfejsu API:
 
 - Interfejs API REST - [listy wszystkich dostawców zasobów](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
-- PowerShell — [Get AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
+- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
 - Azure CLI 2.0 — [az Pokaż dostawcy](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>Parametry i zmienne
@@ -278,7 +278,7 @@ Aby ustawić tę właściwość, musi istnieć interfejsu sieciowego. W związku
 
 Niektóre elementy profilu są używane podczas definiowania zasobu maszyny wirtualnej. Niektóre są wymagane, a inne opcjonalne. Na przykład hardwareProfile, osProfile storageProfile i networkProfile elementy są wymagane, ale diagnosticsProfile jest opcjonalna. Te profile zdefiniować ustawienia, takie jak:
    
-- [rozmiar](sizes.md)
+- [Rozmiar](sizes.md)
 - [Nazwa](/architecture/best-practices/naming-conventions) i poświadczenia
 - dysk i [ustawień systemu operacyjnego](cli-ps-findimage.md)
 - [Interfejs sieciowy](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 

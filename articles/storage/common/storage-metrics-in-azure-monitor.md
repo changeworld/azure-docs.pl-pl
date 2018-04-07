@@ -1,12 +1,12 @@
 ---
 title: Azure metryki magazynu w monitorze Azure | Dokumentacja firmy Microsoft
-description: "Więcej informacji o nowe metryki oferowane za pośrednictwem Monitora Azure."
+description: Więcej informacji o nowe metryki oferowane za pośrednictwem Monitora Azure.
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: cbrooks
 editor: fhryo-msft
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: d30a99044e335723e5d2c4bbd71fab7e4fd51145
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8e9f9c0cbe044b2aa459898f2d3900db10d200a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Azure metryki magazynu w monitorze Azure (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Azure Monitor udostępnia interfejsy użytkownika ujednoliconego do monitorowani
 
 ## <a name="access-metrics"></a>Metryki dostępu
 
-Azure Monitor oferuje wiele sposobów metryki dostępu. Użytkownik może uzyskiwać do nich dostęp z [portalu Azure](https://portal.azure.com), interfejsów API usługi Azure monitora (REST i .net) i rozwiązań analitycznych, takie jak operacji Management Suite i Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [metryki Monitor Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure Monitor oferuje wiele sposobów metryki dostępu. Użytkownik może uzyskiwać do nich dostęp z [portalu Azure](https://portal.azure.com), interfejsów API usługi Azure monitora (REST i .net) i rozwiązań analitycznych, takich jak analizy dzienników i Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [metryki Monitor Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Metryki są domyślnie włączone i można uzyskać dostępu do 30 dni najnowszych danych. Jeśli chcesz zachować dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. Te ustawienia zostaną skonfigurowane w [ustawień diagnostycznych](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) w monitorze Azure.
 
@@ -141,7 +141,7 @@ Następującą odpowiedź zawiera metryki wartości w formacie JSON:
 
 ## <a name="billing-for-metrics"></a>Rozliczeń dla metryki
 
-Przy użyciu metryk w monitorze Azure jest obecnie bezpłatna. Jednak użycie dodatkowych rozwiązań wprowadzania danych metryki, użytkownik może zostać użyta przez te rozwiązania. Na przykład możesz są rozliczane przez usługi Azure Storage archiwizacji danych metryk do konta usługi Azure Storage. Lub jeśli strumienia danych metryki z usługą OMS dla zaawansowanej analizy, są rozliczane przez operację Management Suite (OMS).
+Przy użyciu metryk w monitorze Azure jest obecnie bezpłatna. Jednak użycie dodatkowych rozwiązań wprowadzania danych metryki, użytkownik może zostać użyta przez te rozwiązania. Na przykład możesz są rozliczane przez usługi Azure Storage archiwizacji danych metryk do konta usługi Azure Storage. Lub są rozliczane według analizy dzienników, jeśli strumienia danych metryk do analizy dzienników dla zaawansowanej analizy.
 
 ## <a name="understanding-resource-id-for-services-in-azure-storage"></a>Identyfikator zasobu opis dla usług w usłudze Azure Storage
 
@@ -165,16 +165,16 @@ Poniżej przedstawiono format Określ identyfikator ID zasobu dla konta magazynu
 
 Poniżej przedstawiono format Określ identyfikator ID zasobu dla każdej z usług magazynu.
 
-* Identyfikator zasobu usługi blob`
+* Identyfikator zasobu usługi blob `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 `
-* Identyfikator zasobu usługi tabel`
+* Identyfikator zasobu usługi tabel `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 `
-* Identyfikator zasobu usługi kolejki`
+* Identyfikator zasobu usługi kolejki `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
-* Identyfikator zasobu usługi plików`
+* Identyfikator zasobu usługi plików `
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 `
 
@@ -203,7 +203,7 @@ Usługa Azure Storage udostępnia następujące metryki wydajności w monitorze 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
 | BlobCapacity | Suma magazynu obiektów Blob używane w ramach konta magazynu. <br/><br/> Jednostka: bajtów <br/> Typ agregacji: średni <br/> Przykładowe wartości: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
-| Liczba obiektów blob    | Liczba przechowywanych w ramach konta magazynu obiektów blob. <br/><br/> Jednostka: liczba <br/> Typ agregacji: średni <br/> Przykładowe wartości: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
+| BlobCount    | Liczba przechowywanych w ramach konta magazynu obiektów blob. <br/><br/> Jednostka: liczba <br/> Typ agregacji: średni <br/> Przykładowe wartości: 1024 <br/> Wymiar: BlobType ([definicji](#metrics-dimensions)) |
 | ContainerCount    | Liczba kontenerów w ramach konta magazynu. <br/><br/> Jednostka: liczba <br/> Typ agregacji: średni <br/> Przykładowe wartości: 1024 |
 
 ### <a name="table-storage"></a>Magazyn tabel
@@ -238,11 +238,11 @@ Usługa Azure Storage udostępnia następujące metryki transakcji w monitorze A
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| Transakcje | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądań, które tworzone błędy. <br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Zastosowanie wymiarów: wartość ResponseType, GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions))<br/> Przykładowe wartości: 1024 |
-| Zdarzenia związane z transferem danych przychodzących | Ilość danych wejściowych. Liczba ta obejmuje transfer danych przychodzących z zewnętrznego klienta do usługi Azure Storage, a także ruch przychodzący w obrębie platformy Azure. <br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
-| Transfer danych wychodzących | Ilość danych wyjściowych. Liczba ta obejmuje wyjście z zewnętrznego klienta do usługi Azure Storage, a także Wyjście w obrębie platformy Azure. W związku z tym ta liczba nie odzwierciedla wyjście rozliczeniowy. <br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
-| SuccessServerLatency | Średni czas używaną do przetwarzania żądań pomyślnie usługi Azure Storage. Ta wartość nie obejmuje opóźnienia sieci, określona w SuccessE2ELatency. <br/><br/> Jednostka: w milisekundach <br/> Typ agregacji: średni <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
-| SuccessE2ELatency | Średnie opóźnienie end-to-end pomyślnych żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Ta wartość obejmuje wymagany czas przetwarzania w ramach usługi Azure Storage do odczytu żądania, wysyłania odpowiedzi i otrzyma odpowiedź. <br/><br/> Jednostka: w milisekundach <br/> Typ agregacji: średni <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
+| Transakcje | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone zarówno powodzeniem, jak i niepowodzeniem, a także żądania, które wywołały błędy. <br/><br/> Jednostka: liczba <br/> Typ agregacji: Całkowita liczba <br/> Zastosowanie wymiarów: wartość ResponseType, GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions))<br/> Przykładowe wartości: 1024 |
+| Zdarzenia związane z transferem danych przychodzących | Ilość danych przychodzących. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. <br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
+| Ruch wychodzący | Ilość danych wychodzących. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. <br/><br/> Jednostka: bajtów <br/> Typ agregacji: Całkowita liczba <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
+| SuccessServerLatency | Średni czas potrzebny na przetworzenie żądania zakończonego powodzeniem przez usługę Azure Storage. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia. <br/><br/> Jednostka: w milisekundach <br/> Typ agregacji: średni <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
+| SuccessE2ELatency | Średnie całkowite opóźnienie dla żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. <br/><br/> Jednostka: w milisekundach <br/> Typ agregacji: średni <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 1024 |
 | Dostępność | Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez pobranie wartość całkowita liczba żądań rozliczeń i podzielenie go przez liczbę odpowiednie żądania, w tym te żądania, które tworzone nieoczekiwane błędy. Wszystkie powodować nieoczekiwane błędy zmniejszona dostępność usługi magazynu lub określonej operacji interfejsu API. <br/><br/> Jednostka: procent <br/> Typ agregacji: średni <br/> Zastosowanie wymiarów: GeoType, Nazwa_funkcji_api ([definicji](#metrics-dimensions)) <br/> Przykładowe wartości: 99,99 |
 
 ## <a name="metrics-dimensions"></a>Wymiary metryk
@@ -254,7 +254,7 @@ Usługa Azure Storage obsługuje następujące wymiary metryki w monitorze Azure
 | BlobType | Typ obiektu blob dla tylko metryki obiektów Blob. Obsługiwane wartości to **BlockBlob** i **PageBlob**. Dołącz obiekt Blob jest uwzględniona w BlockBlob. |
 | Wartość ResponseType | Typ odpowiedzi transakcji. Dostępne wartości to: <br/><br/> <li>ServerOtherError: Inne błędy po stronie serwera, z wyjątkiem opisano te </li> <li> ServerBusyError: Żądanie uwierzytelniony zwrócił kod stanu HTTP 503. (Nie obsługuje jeszcze) </li> <li> ServerTimeoutError: Upłynął limit czasu żądania uwierzytelnionego który zwrócił kod stanu HTTP 500. Nastąpiło przekroczenie limitu czasu z powodu błędu serwera. </li> <li> ThrottlingError: Suma po stronie klienta i po stronie serwera błąd ograniczenia przepustowości (zostanie usunięta po ServerBusyError i ClientThrottlingError są obsługiwane) </li> <li> AuthorizationError: Żądanie uwierzytelniony nie powiodło się z powodu nieautoryzowanego dostępu do danych lub wystąpił błąd autoryzacji. </li> <li> NetworkError: Żądanie uwierzytelniony nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient przedwcześnie zamyka połączenie przed jego wygaśnięciem limitu czasu. </li> <li>  ClientThrottlingError: Błąd po stronie klienta ograniczenia przepustowości (nieobsługiwane jeszcze) </li> <li> ClientTimeoutError: Upłynął limit czasu żądania uwierzytelnionego który zwrócił kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiona na mniejszą wartość niż oczekiwano przez usługę magazynu, jest oczekiwany limitu czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Inne błędy po stronie klienta, z wyjątkiem opisane z nich. </li> <li> Powodzenie: Pomyślnie żądania|
 | GeoType | Transakcja z podstawowej lub pomocniczej klastra. Dostępne wartości to podstawowe i pomocnicze. Dotyczy to dostęp do odczytu z magazynu geograficznie nadmiarowego Storage(RA-GRS) podczas odczytywania obiektów ze dodatkowej dzierżawy. |
-| Nazwa_funkcji_api | Nazwa operacji. Na przykład: <br/> <li>Tworzony kontener</li> <li>DeleteBlob</li> <li>GetBlob</li> Nazwy wszystkich operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
+| Nazwa_funkcji_api | Nazwa operacji. Na przykład: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Nazwy wszystkich operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
 
 Obsługa metryki wymiarów należy określić wartość wymiaru, aby wyświetlić odpowiednie wartości metryki. Na przykład, jeśli przyjrzymy się **transakcji** wartość dla pomyślnej odpowiedzi, należy filtrować **wartość ResponseType** wymiaru z **Powodzenie**. Lub jeśli przyjrzymy się **BlobCount** wartość dla blokowych obiektów Blob, należy filtrować **BlobType** wymiaru z **BlockBlob**.
 

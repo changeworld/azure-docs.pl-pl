@@ -1,24 +1,19 @@
 ---
-title: Zdarzenia w czasie rzeczywistym przetwarzania za pomocą usługi Stream Analytics przetwarzania zdarzeń | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak to zestaw usług Azure mogą współdziałać umożliwiających analytics i przetwarzania zdarzeń w czasie rzeczywistym.
-keywords: przetwarzanie w czasie rzeczywistym, przetwarzanie zdarzeń, architektura referencyjna
-services: stream-analytics,event-hubs,storage,sql-database
-documentationcenter: ''
+title: Przetwarzanie zdarzeń w czasie rzeczywistym za pomocą usługi Azure Stream Analytics przetwarzania zdarzeń
+description: W tym artykule opisano architekturę odwołania do osiągnięcia analytics przy użyciu usługi Azure Stream Analytics i przetwarzania zdarzeń w czasie rzeczywistym.
+services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 11af48bc-313c-4527-8c80-91088dc9f3c6
-ms.service: stream-analytics
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/24/2017
 ms.author: jeanb
-ms.openlocfilehash: cf11a80a93a923f038b7d6a0f02a35938794c242
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 01/24/2017
+ms.openlocfilehash: 8a5d426d67916e010c7fff048eebdc77b93c5c38
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Architektura odwołania: zdarzeń w czasie rzeczywistym przetwarzania za pomocą usługi Microsoft Azure Stream Analytics
 Architektura referencyjna dla zdarzenia w czasie rzeczywistym przetwarzania za pomocą usługi Azure Stream Analytics mają na celu dostarczenie ogólnego planu wdrażania platformy w czasie rzeczywistym jako rozwiązanie przetwarzania strumienia usługa (PaaS) w systemie Microsoft Azure.
@@ -50,7 +45,7 @@ Microsoft Azure udostępnia szeroką gamę katalog analytics technologii, które
 **Pobieranie:** [zdarzeń w czasie rzeczywistym przetwarzania za pomocą usługi Microsoft Azure Stream Analytics](http://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

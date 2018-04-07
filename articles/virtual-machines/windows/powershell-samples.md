@@ -1,13 +1,13 @@
 ---
-title: "Przykłady środowiska PowerShell maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Przykłady środowiska PowerShell maszyny wirtualnej platformy Azure"
+title: Przykłady środowiska PowerShell maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Przykłady środowiska PowerShell maszyny wirtualnej platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bd7fe69f50e1fe1c1b333c6102dd4b8fc39cf3ad
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 31dbb8485232d1b446469135b5bda0c8c7884190
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Przykładów dla platformy Azure PowerShell maszyny wirtualnej
 

@@ -1,26 +1,26 @@
 ---
-title: "Użyj programu Visual Studio Code do opracowywania i wdrażania usługi Azure Functions do usługi Azure IoT krawędzi | Dokumentacja firmy Microsoft"
-description: "Tworzenie i wdrażanie C# usługi Azure Functions Azure IoT krawędzi w kodzie VS bez przełączania kontekstu"
+title: Użyj programu Visual Studio Code do opracowywania i wdrażania usługi Azure Functions do usługi Azure IoT krawędzi | Dokumentacja firmy Microsoft
+description: Tworzenie i wdrażanie C# usługi Azure Functions Azure IoT krawędzi w kodzie VS bez przełączania kontekstu
 services: iot-edge
-keywords: 
+keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
 ms.date: 12/20/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 219474a4577a76f5ceb9a9efaa3c349d633de047
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 47d420b4b283b390f67719233c4bea59495a589a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-develop-and-deploy-azure-functions-to-azure-iot-edge"></a>Użyj programu Visual Studio Code do opracowywania i wdrażania usługi Azure Functions do krawędzi IoT Azure
 
 Ten artykuł zawiera szczegółowe instrukcje dotyczące używania [Visual Studio Code](https://code.visualstudio.com/) jako narzędzie do projektowania głównego do opracowywania i wdrażania usługi Azure Functions na krawędzi IoT. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten samouczek zakłada, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenia IoT krawędzi może być inne fizyczne urządzenie lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
+W tym artykule przyjęto założenie, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenia IoT krawędzi może być inne fizyczne urządzenie lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
 
 Upewnij się, że masz następujące samouczki ukończone przed rozpoczęciem tej wskazówki.
 - Wdrożenie usługi Azure IoT krawędzi na symulowane urządzenie w [Windows](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-windows) lub [systemu Linux](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)
@@ -28,11 +28,11 @@ Upewnij się, że masz następujące samouczki ukończone przed rozpoczęciem te
 
 Poniżej przedstawiono listę kontrolną, która zawiera elementy powinna mieć po zakończeniu poprzedniego samouczki.
 
-- [Visual Studio Code](https://code.visualstudio.com/). 
-- [Rozszerzenie krawędzi IoT Azure dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
-- [C# dla rozszerzenia Visual Studio Code (obsługiwane przez OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
+- [Program Visual Studio Code](https://code.visualstudio.com/) 
+- [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
+- [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 - [Docker](https://docs.docker.com/engine/installation/)
-- [.NET core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd). 
+- [Zestaw .NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd) 
 - [Python 2.7](https://www.python.org/downloads/)
 - [IoT krawędzią formantu skryptu](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 - Szablon AzureIoTEdgeFunction (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
@@ -47,7 +47,7 @@ Proponowana jest również zainstalować [Docker obsługę kodzie VS](https://ma
 W samouczku [wdrożenia usługi Azure Functions](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function), zaktualizować, kompilacji i opublikować funkcji modułu obrazów w kodzie VS, a następnie odwiedź portal Azure w celu wdrożenia usługi Azure Functions. W tej sekcji przedstawiono sposób użycia kodzie VS do wdrażania i monitorowania funkcji platformy Azure.
 
 ### <a name="start-a-local-docker-registry"></a>Uruchom rejestru lokalnych docker
-W tym samouczku, można użyć dowolnego rejestru zgodnego Docker. Są dwa popularne Docker rejestru usług dostępnych w chmurze [rejestru kontenera Azure](https://docs.microsoft.com/azure/container-registry/) i [Centrum Docker](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ta sekcja używa [lokalnego rejestru Docker](https://docs.docker.com/registry/deploying/), który jest łatwiejsze do celów testowania podczas wcześniejszego programowania.
+Można użyć dowolnego rejestru Docker zgodnego tego artykułu. Dwie popularne usługi rejestru Docker dostępne w chmurze to [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) i [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ta sekcja używa [lokalnego rejestru Docker](https://docs.docker.com/registry/deploying/), który jest łatwiejsze do celów testowania podczas wcześniejszego programowania.
 W kodzie VS **zintegrowane terminal**(Ctrl + "), uruchom następujące polecenia, aby uruchomić w rejestrze lokalnym.  
 
 ```cmd/sh
@@ -57,16 +57,16 @@ docker run -d -p 5000:5000 --name registry registry:2
 > [!NOTE]
 > Powyżej przykładzie pokazano konfiguracji rejestru, które są tylko odpowiednie do testowania. Rejestru gotowe do produkcji musi być chroniony przez protokół TLS i najlepiej należy używać mechanizmu kontroli dostępu. Zalecane jest użycie [rejestru kontenera Azure](https://docs.microsoft.com/azure/container-registry/) lub [Centrum Docker](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) wdrażania modułów krawędzi IoT gotowe do produkcji.
 
-### <a name="create-a-function-project"></a>Tworzenie projektu — funkcja
+### <a name="create-a-function-project"></a>Tworzenie projektu funkcji
 Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstawie .NET core 2.0 przy użyciu programu Visual Studio Code i rozszerzenie Azure IoT krawędzi. Jeśli po wykonaniu tej sekcji samouczka poprzedniej, można bezpiecznie pominąć tę sekcję.
 
 1. W programie Visual Studio Code, wybierz **widoku** > **zintegrowane terminali** otworzyć terminal zintegrowane kodzie VS.
-2. Aby zainstalować (lub zaktualizować) **AzureIoTEdgeFunction** szablonu w dotnet, uruchom następujące polecenie w zintegrowanym terminala:
+2. Aby zainstalować (lub zaktualizować) szablon **AzureIoTEdgeFunction** za pomocą polecenia dotnet, uruchom następujące polecenie w zintegrowanym terminalu:
 
    ```cmd/sh
    dotnet new -i Microsoft.Azure.IoT.Edge.Function
    ```
-3. Tworzenie projektu dla nowego modułu. Poniższe polecenie tworzy folder projektu **funkcji FilterFunction**, w bieżącym folderze roboczych:
+3. Utwórz projekt dla nowego modułu. Poniższe polecenie służy do tworzenia folderu projektu **FilterFunction** w bieżącym folderze roboczym:
 
    ```cmd/sh
    dotnet new aziotedgefunction -n FilterFunction
@@ -74,7 +74,7 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
  
 4. Wybierz **Plik > Otwórz Folder**, a następnie wyszukaj **funkcji FilterFunction** folderu i Otwórz projekt w kodzie VS.
 5. Przejdź do **funkcji FilterFunction** folder i kliknij przycisk **wybierz Folder** otworzyć projektu w kodzie VS.
-6. W Eksploratorze kodzie VS rozwiń **EdgeHubTrigger Csharp** folderu, otwórz **run.csx** pliku.
+6. W eksploratorze programu VS Code rozwiń węzeł **EdgeHubTrigger-Csharp**, a następnie otwórz plik **run.csx**.
 7. Zastąp zawartość pliku następującym kodem:
 
    ```csharp
@@ -138,14 +138,14 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
 
 ### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Tworzenie obrazu Docker i publikowanie go do rejestru
 
-1. W Eksploratorze kodzie VS rozwiń **Docker** folderu. Następnie rozwiń folder dla danej platformy kontenera albo **linux x64** lub **windows nano**.
-2. Kliknij prawym przyciskiem myszy **plik Dockerfile** plik i kliknij przycisk **krawędzi IoT Tworzenie modułu Docker obrazu**. 
+1. W eksploratorze programu VS Code rozwiń folder **Docker**. Następnie rozwiń folder dla platformy kontenera — **linux-x64** lub **windows-nano**.
+2. Kliknij prawym przyciskiem myszy plik **Dockerfile**, a następnie kliknij pozycję **Zbuduj obraz platformy Docker modułu usługi IoT Edge**. 
 
     ![Utwórz obraz docker](./media/how-to-vscode-develop-csharp-function/build-docker-image.png)
 
-3. Przejdź do **funkcji FilterFunction** folderu projektu i kliknij przycisk **wybierz Folder jako EXE_DIR**. 
-4. W polu tekstowym wyskakujących w górnej części okna kodu programu VS wprowadź nazwę obrazu. Na przykład: `<your container registry address>/filterfunction:latest`. Jeśli są wdrażane w lokalnym rejestrze, powinien być `localhost:5000/filterfunction:latest`.
-5. Wypchnij obrazu do repozytorium Docker. Użyj **krawędzi: Push krawędzi IoT modułu Docker obrazu** polecenia i wprowadź adres URL obrazu, w polu tekstowym wyskakujących w górnej części okna kodu programu VS. Użyj używany w ponad krok ten sam adres URL obrazu.
+3. Przejdź do folderu projektu **FilterFunction**, a następnie kliknij pozycję **Wybierz folder jako EXE_DIR**. 
+4. W wyskakującym polu tekstowym w górnej części okna kodu programu VS Code wprowadź nazwę obrazu. Na przykład: `<your container registry address>/filterfunction:latest`. Jeśli są wdrażane w lokalnym rejestrze, powinien być `localhost:5000/filterfunction:latest`.
+5. Wypchnij obraz do repozytorium platformy Docker. Użyj **krawędzi: Push krawędzi IoT modułu Docker obrazu** polecenia i wprowadź adres URL obrazu, w polu tekstowym wyskakujących w górnej części okna kodu programu VS. Użyj używany w ponad krok ten sam adres URL obrazu.
     ![Obraz docker wypychania](./media/how-to-vscode-develop-csharp-function/push-image.png)
 
 ### <a name="deploy-your-function-to-iot-edge"></a>Wdrażanie funkcji na krawędzi IoT
@@ -182,7 +182,7 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
        }
    ```
    > [!NOTE]
-   > Deklaracyjne reguły w środowisku uruchomieniowym definiują, do których przepływu wiadomości. W tym samouczku należy na dwa sposoby. Pierwszy trasy transportu wiadomości z czujnika temperatury funkcji filtru za pośrednictwem punktu końcowego "input1", który jest punkt końcowy, który został skonfigurowany z obsługą FilterMessages. Drugi trasy transportu wiadomości z funkcji filtr do Centrum IoT. W tej trasy nadrzędnego jest specjalne lokalizacji docelowej, która informuje krawędzi koncentratora do wysyłania komunikatów do Centrum IoT.
+   > Deklaracyjne reguły w środowisku uruchomieniowym definiują, do których przepływu wiadomości. W tym artykule należy na dwa sposoby. Pierwszy trasy transportu wiadomości z czujnika temperatury funkcji filtru za pośrednictwem punktu końcowego "input1", który jest punkt końcowy, który został skonfigurowany z obsługą FilterMessages. Drugi trasy transportu wiadomości z funkcji filtr do Centrum IoT. W tej trasy nadrzędnego jest specjalne lokalizacji docelowej, która informuje krawędzi koncentratora do wysyłania komunikatów do Centrum IoT.
 
 3. Zapisz ten plik.
 4. Polecenie palety, wybierz **krawędzi: tworzenie wdrożenia dla urządzenie brzegowe**. Następnie wybierz identyfikator urządzenia IoT krawędzi Aby utworzyć wdrożenie. Lub kliknij prawym przyciskiem myszy identyfikator urządzenia na liście urządzeń i wybierz polecenie **tworzenie wdrożenia dla urządzenie brzegowe**.
@@ -202,7 +202,4 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku zostało utworzone funkcji platformy Azure na krawędzi IoT i wdrożyć go na urządzeniu IoT krawędzi w kodzie VS. Można kontynuować do jednej z następujących samouczków, aby dowiedzieć się więcej o innych scenariuszy podczas opracowywania Azure IoT krawędź w kodzie VS.
-
-> [!div class="nextstepaction"]
-> [Debugowanie funkcji platformy Azure w kodzie VS](how-to-vscode-debug-azure-function.md)
+[Debugowanie funkcji platformy Azure w kodzie VS](how-to-vscode-debug-azure-function.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Zasady usługi Azure CDN aparat funkcji
 W tym artykule przedstawiono szczegółowe opisy funkcji dostępnych dla Azure Content Delivery Network (CDN) [aparatu reguł](cdn-rules-engine.md).
@@ -28,7 +28,6 @@ Trzeci część reguły jest funkcja. Funkcja definiuje typ akcji, która jest s
 ## <a name="access-features"></a>Funkcje dostępu
 
 Te funkcje są przeznaczone do kontrolowania dostępu do zawartości.
-
 
 Name (Nazwa) | Przeznaczenie
 -----|--------
@@ -312,7 +311,7 @@ Remove| Tej opcji zapewnia, że `Cache-Control` nagłówka nie jest dołączony 
 
 Informacje o kluczu:
 
-- Określ co najmniej jeden nazwy parametru ciągu zapytania. Deliminate nazwa każdego parametru z jednego miejsca.
+- Określ co najmniej jedną nazwę parametru ciągu zapytania i Oddziel poszczególne nazwy parametru z jednego miejsca.
 - Ta funkcja określa, czy parametry ciągu zapytania są dołączone lub wykluczone z klucza pamięci podręcznej. Dodatkowe informacje są udostępniane dla każdej opcji w poniższej tabeli.
 
 Typ|Opis
@@ -325,6 +324,9 @@ Typ|Opis
 Aparat reguł umożliwia dostosowanie sposobu, w którym zaimplementowana jest buforowanie ciągu zapytania. Na przykład można określić, czy buforowanie ciągu zapytania jest wykonywana tylko w określonych lokalizacjach lub typów plików.
 
 Aby zduplikować zachowanie na stronie buforowanie ciągu zapytania buforowania ciągu kwerendy "no-cache", należy utworzyć regułę, która zawiera warunek dopasowanie symbolu wieloznacznego zapytanie adresu URL i funkcja pomijania pamięci podręcznej. Warunek dopasowanie symbolu wieloznacznego zapytanie adresu URL na znak gwiazdki (*).
+
+>[!IMPORTANT] 
+> Jeśli token autoryzacji jest włączona dla dowolną ścieżkę na tym koncie, tryb standardowy pamięci podręcznej jest tylko tryb, który może służyć do buforowania ciągu kwerendy. Aby uzyskać więcej informacji, zobacz [Control Azure CDN caching behavior with query strings](cdn-query-string-premium.md) (Sterowanie zachowaniem buforowania usługi CDN za pomocą ciągów zapytań).
 
 #### <a name="sample-scenarios"></a>Przykładowe scenariusze
 
@@ -1054,10 +1056,12 @@ Disabled (Wyłączony)| Przywraca domyślne zachowanie. Domyślnym zachowaniem j
 ### <a name="token-auth-denial-code"></a>Kod odmowa tokenu uwierzytelniania
 **Cel:** Określa typ odpowiedzi, który zostanie zwrócony użytkownikowi, gdy żądanie zostanie odrzucone z powodu uwierzytelniania opartego na tokenie.
 
-Kody odpowiedzi dostępne są wymienione poniżej.
+Nie można użyć kodu odmowa tokenu uwierzytelniania z warunkiem dopasowania zawsze. Zamiast tego należy użyć **niestandardowe odmowa obsługi** sekcji **Token uwierzytelniania** strony **Zarządzaj** portalu. Aby uzyskać więcej informacji, zobacz [zasobów Zabezpieczanie usługi Azure CDN z tokenu uwierzytelniania](cdn-token-auth.md).
+
+Kody odpowiedzi dostępne są wymienione w poniższej tabeli.
 
 Kod odpowiedzi|Nazwa odpowiedzi|Opis
-----------------|-----------|--------
+-------------|-------------|--------
 301|Trwale przeniesiona|Ten kod stanu przekierowania nieautoryzowanym użytkownikom na adres URL określony w nagłówku lokalizacji.
 302|Znaleziono|Ten kod stanu przekierowania nieautoryzowanym użytkownikom na adres URL określony w nagłówku lokalizacji. Ten kod stanu jest branży standardową metodą wykonania przekierowania.
 307|Przekierowanie tymczasowe|Ten kod stanu przekierowania nieautoryzowanym użytkownikom na adres URL określony w nagłówku lokalizacji.

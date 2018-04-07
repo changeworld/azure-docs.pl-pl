@@ -1,13 +1,13 @@
 ---
-title: "Tworzenie i zarządzanie nimi maszyny wirtualnej platformy Azure przy użyciu języka Java | Dokumentacja firmy Microsoft"
-description: "Użyj Java i usługi Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie dodatkowe zasoby."
+title: Tworzenie i zarządzanie nimi maszyny wirtualnej platformy Azure przy użyciu języka Java | Dokumentacja firmy Microsoft
+description: Użyj Java i usługi Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie dodatkowe zasoby.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: b970b7a5e1db6d8580ede9699d4776a79e03c98f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: da8f8b0e84a51683bd4f631832e1f319f3a9bbb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Tworzenie i zarządzanie maszynami wirtualnymi systemu Windows na platformie Azure przy użyciu języka Java
 
@@ -133,7 +133,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [nazwy główne
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp  **&lt;identyfikator subskrypcji&gt;**  z identyfikatorem subskrypcji  **&lt;identyfikator aplikacji&gt;**  z identyfikatorem aplikacji usługi Active Directory  **&lt;klucz uwierzytelniania&gt;**  z klucz aplikacji i  **&lt;identyfikator dzierżawcy&gt;**  przy użyciu identyfikatora dzierżawcy.
+    Zastąp **&lt;identyfikator subskrypcji&gt;** z identyfikatorem subskrypcji **&lt;identyfikator aplikacji&gt;** z identyfikatorem aplikacji usługi Active Directory **&lt;klucz uwierzytelniania&gt;** z klucz aplikacji i **&lt;identyfikator dzierżawcy&gt;** przy użyciu identyfikatora dzierżawcy.
 
 2. Zapisz plik.
 3. Ustaw zmienną środowiskową o nazwie AZURE_AUTH_LOCATION w powłoki z pełną ścieżką do pliku uwierzytelniania.
@@ -320,7 +320,7 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Wykonywanie zadań zarządzania
 
-Podczas cyklu maszyny wirtualnej można uruchomić zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzowania zadań powtarzających się lub złożonych.
+W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można utworzyć kod do automatyzowania zadań powtarzających się lub złożonych.
 
 Gdy trzeba wykonywać żadnych czynności z maszyną Wirtualną, należy uzyskać wystąpienie. Dodaj ten kod do bloku try głównej metody:
 
@@ -470,6 +470,6 @@ Zakończ powinno zająć około pięciu minut dla tej aplikacji konsoli uruchomi
 2. Przed naciśnięciem przycisku **Enter** zacząć usuwanie zasobów może potrwać kilka minut, aby zweryfikować utworzenie zasobów w portalu Azure. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o korzystaniu z [bibliotek platformy Azure dla języka Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
 

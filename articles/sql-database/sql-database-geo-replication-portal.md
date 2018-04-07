@@ -1,19 +1,19 @@
 ---
 title: 'Portalu Azure: replikacja geograficzna bazy danych SQL | Dokumentacja firmy Microsoft'
-description: "Skonfiguruj — replikacja geograficzna bazy danych SQL Azure w portalu Azure i zainicjuj tryb failover"
+description: Skonfiguruj — replikacja geograficzna bazy danych SQL Azure w portalu Azure i zainicjuj tryb failover
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/06/2016
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 33e67c9415ddf3504d593858d56f15cdc7282d69
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 09672c9f8ba725e46f2cdbb1a13de101137cb718
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Skonfiguruj aktywna replikacja geograficzna bazy danych SQL Azure w portalu Azure i zainicjuj tryb failover
 

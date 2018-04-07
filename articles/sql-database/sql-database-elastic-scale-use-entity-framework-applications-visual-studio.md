@@ -1,19 +1,19 @@
 ---
 title: Korzystanie z biblioteki klienta elastycznej bazy danych z programu Entity Framework | Dokumentacja firmy Microsoft
-description: "Użyj kodowania bazy danych biblioteki klienta elastycznej bazy danych i strukturą Entity Framework"
+description: Użyj kodowania bazy danych biblioteki klienta elastycznej bazy danych i strukturą Entity Framework
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5f215c6c6f65804785e35ae1b3ec9cce24e2a976
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fba872b01d4ddf0bb4e6aa8d0217042617688b8a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Biblioteka klienta usługi elastycznej bazy danych z programu Entity Framework
 Ten dokument przedstawia zmiany w aplikacji programu Entity Framework, które są potrzebne do integracji z [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Koncentruje się na tworzenie [zarządzania mapy niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md) i [routingu zależne od danych](sql-database-elastic-scale-data-dependent-routing.md) z programu Entity Framework **Code First** podejście. [Najpierw - Code nową bazę danych](http://msdn.microsoft.com/data/jj193542.aspx) samouczek dotyczący EF służy jako przykład uruchomionych w tym dokumencie. Przykładowy kod towarzyszące ten dokument jest częścią narzędzi elastycznej bazy danych, ustaw próbek w przykładach kodu programu Visual Studio.

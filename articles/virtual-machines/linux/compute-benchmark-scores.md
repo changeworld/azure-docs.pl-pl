@@ -4,7 +4,7 @@ description: Porównaj wyniki testu porównawczego obliczeń CoreMark dla maszyn
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cynthn;davberg
-ms.openlocfilehash: 5066ca582beb0c226e3b5e4014a696d44af50df6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 25e471b826a1df0bd71f141286a59159b674f365
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Obliczenia bazy danych wyników testów porównawczych dla maszyn wirtualnych systemu Linux
 Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczeniowej dla zestawienia maszyny Wirtualnej platformy Azure wysokiej wydajności z systemem Ubuntu. Wyniki testu porównawczego obliczeniowe są także dostępne dla [maszyn wirtualnych systemu Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -187,7 +187,7 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 ## <a name="dv2---general-compute"></a>Dv2 — ogólne obliczeń
 (3/23/2018 7:27:28 PM pbi 2050259)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Vcpu | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_D1_v2 | Intel(R) Xeon(R) E5 Procesora 2673 v3 @ 2,40 GHz | 1 | 1 | 3.4 | 15,027 | 963 | 6.41% | 105 |
 | Standardowa_D1_v2 | Intel(R) Xeon(R) E5 Procesora 2673 v4 @ 2.30GHz | 1 | 1 | 3.4 | 15,296 | 1,696 | 11.09% | 77 |
@@ -213,7 +213,7 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 ## <a name="d---general-compute"></a>D — obliczeniowe ogólne
 (3/23/2018 19:28:16: 00 pbi 2050259)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Vcpu | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_D1 | Intel(R) Xeon(R) E5 Procesora-2660 0 @ 2,20 GHz | 1 | 1 | 3.4 | 10,331 | 303 | 2.93% | 112 |
 | Standardowa_D1 | Intel(R) Xeon(R) E5 Procesora 2673 v3 @ 2,40 GHz | 1 | 1 | 3.4 | 14,547 | 916 | 6.30% | 14 |
@@ -235,7 +235,7 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 ## <a name="ds---storage-optimized"></a>DS - optymalizować magazynu
 (3/23/2018 7:34:52 PM pbi 2050259)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Vcpu | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_DS1 | Intel(R) Xeon(R) E5 Procesora-2660 0 @ 2,20 GHz | 1 | 1 | 3.4 | 10,666 | 134 | 1.25% | 126 |
 | Standardowa_DS11 | Intel(R) Xeon(R) E5 Procesora-2660 0 @ 2,20 GHz | 2 | 1 | 14.0 | 21,330 | 268 | 1.26% | 49 |
@@ -252,7 +252,7 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 - obliczeniowe i Magazyn zoptymalizowanych pod kątem
 (3/23/2018 7:33:23: 00 pbi 2050259)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Vcpu | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F2s_v2 | Intel(R) Xeon(R) Procesora Platynowa 8168 @ 2,70 GHz | 2 | 1 | 3.9 | 25,392 | 157 | 0.62% | 49 |
 | Standard_F4s_v2 | Intel(R) Xeon(R) Procesora Platynowa 8168 @ 2,70 GHz | 4 | 1 | 8.0 | 48,065 | 656 | 1.36% | 42 |
@@ -265,7 +265,7 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 ## <a name="f---compute-optimized"></a>F - obliczeń zoptymalizowanych pod kątem
 (3/23/2018 7:28:54 PM pbi 2050259)
 
-| Rozmiar maszyny wirtualnej | Procesor CPU | Vcpu | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
+| Rozmiar maszyny wirtualnej | Procesor CPU | Procesory wirtualne vCPU | Węzły NUMA | Memory(GiB) | Wynik Śr. | StdDev | StdDev % | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standardowa_F1 | Intel(R) Xeon(R) E5 Procesora 2673 v3 @ 2,40 GHz | 1 | 1 | 1.9 | 14,762 | 815 | 5.52% | 175 |
 | Standardowa_F1 | Intel(R) Xeon(R) E5 Procesora 2673 v4 @ 2.30GHz | 1 | 1 | 1.9 | 15,756 | 1,653 | 10.49% | 91 |
@@ -370,7 +370,7 @@ Następujące wyniki testów porównawczych CoreMark Pokaż wydajności obliczen
 ## <a name="about-coremark"></a>O CoreMark
 Numery Linux zostały obliczone, uruchamiając [CoreMark](http://www.eembc.org/coremark/faq.php) na Ubuntu. CoreMark został skonfigurowany z liczbę wątków, określ liczbę procesorów wirtualnych i ustaw PThreads współbieżności. Docelowy liczba iteracji została dostosowana oparte na obniżenie wydajności w celu zapewnienia obsługi co najmniej 20 sekund (zwykle znacznie dłużej). Końcowy wynik reprezentuje liczby iteracji ukończone podzielona przez liczbę sekund trwania testu. Każdy test zostało uruchomione co najmniej siedmiu razy na każdej maszynie Wirtualnej. Uruchomienie testu dat podanego powyżej. Testy uruchamiane na wiele maszyn wirtualnych w Azure regionach publicznego, który maszyny Wirtualnej jest obsługiwana w dniu Uruchom. Podstawowe A i B (Burstable) serii nie wyświetlany, ponieważ wydajność jest zmienna. N serii nie pokazano, jak są one na procesora GPU i Coremark nie pomiaru wydajności procesora GPU.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Pojemność, dysku szczegóły i dodatkowe uwagi dotyczące wybierania rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Aby uruchamiać skrypty CoreMark na maszynach wirtualnych systemu Linux, Pobierz [CoreMark pakiet skryptu](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
 

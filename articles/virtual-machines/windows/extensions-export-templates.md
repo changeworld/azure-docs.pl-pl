@@ -1,11 +1,11 @@
 ---
-title: "Eksportowanie grupy zasobów Azure, która zawiera rozszerzenia maszyny Wirtualnej | Dokumentacja firmy Microsoft"
-description: "Wyeksportować szablony Menedżera zasobów, które obejmują rozszerzenia maszyny wirtualnej."
+title: Eksportowanie grupy zasobów Azure, która zawiera rozszerzenia maszyny Wirtualnej | Dokumentacja firmy Microsoft
+description: Wyeksportować szablony Menedżera zasobów, które obejmują rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: danis
-ms.openlocfilehash: 739ae7995fca41fe8abb7cd54ccb72ff3bc43854
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 2dc05fd21df3d408ed57badeec2b5c06e25bf50c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Eksportowanie grupy zasobów, która zawiera rozszerzenia maszyny Wirtualnej
 
@@ -37,13 +37,13 @@ Następujące rozszerzenia można wyeksportować za pomocą funkcji skryptów au
 |---|---|---|---|
 | Kopia zapasowa Acronis | Agent Datadog Windows | Stosowanie poprawek dla systemu Linux systemu operacyjnego | Migawki maszyny Wirtualnej w systemie Linux
 | Kopia zapasowa Acronis systemu Linux | Rozszerzenie docker | Puppet Agent |
-| Informacje o BG | Rozszerzenie DSC | Szczegółowe informacje o lokacji 24 x 7 Apm |
-| Linux Agent BMC CTM | Dynatrace systemu Linux | 24 x 7 Linux serwera lokacji |
+| Bg Info | Rozszerzenie DSC | Szczegółowe informacje o lokacji 24 x 7 Apm |
+| Linux Agent BMC CTM | Dynatrace Linux | 24 x 7 Linux serwera lokacji |
 | BMC CTM agenta w systemie Windows | Dynatrace systemu Windows | Lokacja 24 x 7 systemu Windows Server |
 | Chef klienta | HPE zabezpieczeń aplikacji Defender | Trend Micro DSA |
 | Niestandardowego skryptu | IaaS ochrony przed złośliwym oprogramowaniem | Trend Micro DSA Linux |
 | Rozszerzenie niestandardowego skryptu | Diagnostyka IaaS | Dostęp do maszyny Wirtualnej dla systemu Linux |
-| Skryptu niestandardowego dla systemu Linux | Linux Chef klienta | Dostęp do maszyny Wirtualnej dla systemu Linux |
+| Skryptu niestandardowego dla systemu Linux | Linux Chef Client | Dostęp do maszyny Wirtualnej dla systemu Linux |
 | Datadog agenta systemu Linux | Diagnostyka systemu Linux | Migawki maszyny Wirtualnej |
 
 ## <a name="export-the-resource-group"></a>Eksportowanie grupy zasobów

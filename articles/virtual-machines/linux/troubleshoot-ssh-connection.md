@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów połączenia SSH do maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Jak rozwiązywać problemy, takie jak \"Połączenia SSH nie powiodło się\" lub \"Odmowa połączenia SSH\" dla maszyny Wirtualnej platformy Azure, systemem Linux."
-keywords: "SSH połączenia zostało odrzucone, ssh błędu, platforma azure ssh, połączenia SSH nie powiodło się"
+title: Rozwiązywanie problemów połączenia SSH do maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Jak rozwiązywać problemy, takie jak "Połączenia SSH nie powiodło się" lub "Odmowa połączenia SSH" dla maszyny Wirtualnej platformy Azure, systemem Linux.
+keywords: SSH połączenia zostało odrzucone, ssh błędu, platforma azure ssh, połączenia SSH nie powiodło się
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 176477105e1f660b0bd22d95142b744ef17044ee
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Rozwiązywanie problemów z połączeń SSH maszyny Wirtualnej systemu Linux platformy Azure, który zakończy się niepowodzeniem, błędy, lub zostało odrzucone
 Istnieją różne powody, czy występują błędy protokołu Secure Shell (SSH), błędów połączenia SSH, lub SSH zostało odrzucone podczas próby nawiązania połączenia z maszyną wirtualną systemu Linux (VM). Ten artykuł ułatwia znajdowanie i rozwiązać problemy. Można użyć portalu Azure, Azure CLI lub rozszerzenia dostępu do maszyny Wirtualnej dla systemu Linux, aby rozwiązać problemy z połączeniem.
@@ -68,6 +68,14 @@ Pierwszym krokiem, wybierz `Reset configuration only` z **tryb** menu rozwijane 
 Do zresetowania poświadczeń istniejącego użytkownika, wybierz `Reset SSH public key` lub `Reset password` z **tryb** menu rozwijanego, jak poprzedni zrzut ekranu. Określ nazwę użytkownika i klucz SSH lub nowe hasło, a następnie kliknij przycisk **zresetować** przycisku.
 
 Można również utworzyć użytkownika z uprawnieniami sudo na Maszynie wirtualnej z tego menu. Wprowadź nową nazwę użytkownika i skojarzone hasła lub klucza SSH, a następnie kliknij przycisk **zresetować** przycisku.
+
+### <a name="check-security-rules"></a>Sprawdź zasady zabezpieczeń
+
+Użyj [Sprawdź przepływ IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) aby potwierdzić, czy reguły do grupy zabezpieczeń sieci blokuje ruch do i z maszyny wirtualnej. Można również przejrzeć efektywnym elementem systemu zabezpieczeń zasady grupy w celu zapewnienia ruchu przychodzącego "Zezwalaj" NSG reguły istnieje i jest priorytety dla portu SSH (wartość domyślna 22). Aby uzyskać więcej informacji, zobacz [przepływu ruchu reguły zabezpieczeń efektywne używanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+
+### <a name="check-routing"></a>Sprawdź routing
+
+Użyj obserwatora sieciowego [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, czy trasa nie jest uniemożliwia ruchu z rozsyłane do lub z maszyny wirtualnej. Można również przejrzeć skuteczne trasy, aby zobaczyć wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu trasy efektywne korzystanie rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
 
 ## <a name="use-the-azure-cli-20"></a>Użyj Azure CLI 2.0
 Jeśli nie jest jeszcze, zainstaluj najnowszą [Azure CLI 2.0](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [logowania az](/cli/azure/reference-index#az_login).

@@ -1,19 +1,19 @@
 ---
-title: "Stosować zalecenia wydajności — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Użyj portalu Azure, aby znaleźć zalecenia dotyczące wydajności, które można zoptymalizować wydajność bazy danych SQL Azure."
+title: Stosować zalecenia wydajności — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Użyj portalu Azure, aby znaleźć zalecenia dotyczące wydajności, które można zoptymalizować wydajność bazy danych SQL Azure.
 services: sql-database
 author: stevestein
 manager: jhubbard
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a5772e67d5b91ff989ac6d049b14b1ccad5c952e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdź i stosować zalecenia wydajności
 

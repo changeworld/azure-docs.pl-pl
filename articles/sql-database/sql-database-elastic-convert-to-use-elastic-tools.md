@@ -1,19 +1,19 @@
 ---
-title: "Migrowanie istniejących baz danych do skalowania w poziomie | Dokumentacja firmy Microsoft"
-description: "Konwertuj podzielonej baz danych za pomocą narzędzi elastycznej bazy danych przez utworzenie niezależnego fragmentu menedżera map"
+title: Migrowanie istniejących baz danych do skalowania w poziomie | Dokumentacja firmy Microsoft
+description: Konwertuj podzielonej baz danych za pomocą narzędzi elastycznej bazy danych przez utworzenie niezależnego fragmentu menedżera map
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: d82994f3ab925fa3ace0d0dbe1631a01dd1df586
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 41652717417f47858698b80eac83a4022dcfe13b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrowanie istniejących baz danych do skalowania w poziomie
 Łatwe zarządzanie istniejących skalowalnych w poziomie podzielonej baz danych za pomocą narzędzi bazy danych usługi Azure SQL Database (takich jak [biblioteki klienta elastycznej bazy danych](sql-database-elastic-database-client-library.md)). Najpierw przekonwertuj istniejącego zestawu baz danych do użycia [menedżera map niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md). 

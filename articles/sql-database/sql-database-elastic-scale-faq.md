@@ -1,20 +1,20 @@
 ---
-title: "Elastyczne skalowanie Azure SQL — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dotyczące elastycznego skalowania bazy danych Azure SQL."
+title: Elastyczne skalowanie Azure SQL — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące elastycznego skalowania bazy danych Azure SQL.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 575167293d9b4685ecc38303414b69074c366ab2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 57a5ef07aa8ca6d35085f9b2425cbc1c08c23b36
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="elastic-database-tools-faq"></a>Często zadawane pytania dotyczące narzędzi elastycznej bazy danych
 #### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Jak wypełnić klucza dzielenia na fragmenty informacji schematu posiadający pojedynczej dzierżawy na niezależnych i żaden klucz dzielenia na fragmenty?
@@ -30,7 +30,7 @@ Za pomocą biblioteki klienta elastycznej bazy danych nie wpływa negatywnie kos
 Nie należy używać poświadczeń w formie "Nazwa użytkownika =username@servername", po prostu użyć zamiast tego "identyfikator użytkownika = nazwa użytkownika".  Upewnij się również, że nazwa logowania "nazwa_użytkownika" ma uprawnienia na niezależnego fragmentu.
 
 #### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Należy utworzyć Menedżera Map niezależnego fragmentu i wypełnić odłamków w każdym uruchomieniu aplikacje?
-Nie — tworzenie Menedżera Map niezależnego fragmentu (na przykład  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) jest to jednorazowa operacja.  Aplikacja powinna używać wywołania  **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)**  w momencie uruchamiania aplikacji.  Ma takich tylko jedno wywołanie dla domeny aplikacji.
+Nie — tworzenie Menedżera Map niezależnego fragmentu (na przykład  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) jest to jednorazowa operacja.  Aplikacja powinna używać wywołania **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** w momencie uruchamiania aplikacji.  Ma takich tylko jedno wywołanie dla domeny aplikacji.
 
 #### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Pytania dotyczące korzystania z narzędzi elastycznej bazy danych, jak ich odpowiedzi uzyskać?
 Sprawdź dotrzeć do nas na [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).

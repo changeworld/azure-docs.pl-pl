@@ -1,24 +1,19 @@
 ---
-title: Korzystanie z punktów końcowych usługi Azure Machine Learning w Stream Analytics | Dokumentacja firmy Microsoft
-description: Funkcje zdefiniowane przez użytkownika język maszyny w analiza strumienia
-keywords: ''
-documentationcenter: ''
+title: Korzystanie z punktów końcowych uczenia maszynowego w usłudze Azure Stream Analytics
+description: W tym artykule opisano sposób użycia funkcji zdefiniowanych przez użytkownika języka maszyny w Azure Stream Analytics.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 406b258f-b8c2-4e55-953c-b7f84e8e5354
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: a7d76d6015f8e9f08d3493b1c1e237858c341592
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: bdc6041258e4a5ecf602d19c0d912918f86af313
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Maszyny Learning integracji usługi analiza strumienia
 Analiza strumienia obsługuje funkcje zdefiniowane przez użytkownika, które wyróżnienia do punktów końcowych usługi Azure Machine Learning. Obsługa interfejsu API REST dla tej funkcji została szczegółowo opisana w [biblioteki interfejsu API REST usługi analiza strumienia](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ten artykuł zawiera dodatkowe informacje potrzebne do pomyślnego wykonania tej funkcji w Stream Analytics. Samouczek również została opublikowana i jest dostępny [tutaj](stream-analytics-machine-learning-integration-tutorial.md).

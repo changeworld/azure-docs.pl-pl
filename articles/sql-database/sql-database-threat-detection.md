@@ -1,19 +1,19 @@
 ---
-title: "Wykrywanie — baza danych Azure SQL zagrożeń | Dokumentacja firmy Microsoft"
-description: "Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych, które wskazują możliwe zagrożenia bezpieczeństwa bazy danych."
+title: Wykrywanie — baza danych Azure SQL zagrożeń | Dokumentacja firmy Microsoft
+description: Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych, które wskazują możliwe zagrożenia bezpieczeństwa bazy danych.
 services: sql-database
 author: rmatchoro
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 04/01/2018
 ms.author: ronmat
-ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c4a94ab9c7e0dab9e8c25e54fdd0a30b28b7a8a3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database-threat-detection"></a>Wykrywanie zagrożeń bazy danych SQL
 
@@ -21,7 +21,7 @@ SQL wykrywanie zagrożeń wykrywa nietypowe działania wskazują nietypowe i pot
 
 ## <a name="overview"></a>Przegląd
 
-Wykrywanie zagrożeń SQL zawiera nową warstwę zabezpieczeń, co umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń w nietypowych działań.  Użytkownicy otrzymują alert po bazy danych podejrzanych działań, potencjalnych luk i ataki, a także bazy danych nietypowe wzorce dostępu. Wykrywanie zagrożeń SQL alerty zawierają szczegółowe informacje o podejrzanych działaniach i zalecane działania dotyczące sposobu badania i ograniczyć zagrożenie. Użytkownicy mogą Eksploruj podejrzane zdarzenia przy użyciu [SQL Database Auditing](sql-database-auditing.md) ustalenie, jeśli są one wynikiem próby dostępu, naruszenia lub wykorzystać w bazie danych. Wykrywanie zagrożeń upraszcza potencjalne zagrożenia do bazy danych bez konieczności ekspertów zabezpieczeń lub zarządzać zabezpieczeniami zaawansowanymi, monitorowanie systemów.
+Wykrywanie zagrożeń SQL zawiera nową warstwę zabezpieczeń, co umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń w nietypowych działań.  Użytkownicy otrzymują alert po bazy danych podejrzanych działań, potencjalnych luk i ataki, a także bazy danych nietypowe wzorce dostępu. Wykrywanie zagrożeń SQL alerty zawierają szczegółowe informacje o podejrzanych działaniach i zalecane działania dotyczące sposobu badania i ograniczyć zagrożenie. Użytkownicy mogą Eksploruj podejrzane zdarzenia przy użyciu [SQL Database Auditing](sql-database-auditing.md) ustalenie, jeśli są one wynikiem próby dostępu, naruszenia lub wykorzystać w bazie danych. Wykrywanie zagrożeń upraszcza reagowanie na potencjalne zagrożenia bazy danych bez konieczności dysponowania wiedzą na poziomie eksperta zabezpieczeń lub zarządzania zaawansowanymi systemami monitorowania bezpieczeństwa.
 
 Na przykład iniekcja kodu SQL jest jednym z typowych problemów zabezpieczeń aplikacji sieci Web w Internecie, używane do ataków opartych na danych aplikacji. Osoby atakujące wykorzystać luki w zabezpieczeniach aplikacji do dodania złośliwego instrukcje SQL do pola wejścia aplikacji, naruszenia lub modyfikowanie danych w bazie danych.
 

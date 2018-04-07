@@ -1,11 +1,11 @@
 ---
 title: Wprowadzenie do FreeBSD na platformie Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się więcej o używaniu maszyn wirtualnych FreeBSD na platformie Azure"
+description: Dowiedz się więcej o używaniu maszyn wirtualnych FreeBSD na platformie Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: thomas1206
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 32b87a5f-d024-4da0-8bf0-77e233d1422b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e47a00a8375659f9112da57f9e7a4747f10f8f16
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9c7cf223eab3e989436e12c39b122f2aee7619a0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Wprowadzenie do FreeBSD na platformie Azure
 Ten temat zawiera omówienie uruchomienie maszyny wirtualnej FreeBSD na platformie Azure.
@@ -130,7 +130,7 @@ $ sudo <COMMAND>
 Powłoka głównego Opcjonalnie można uzyskać za pomocą `sudo -s`.
 
 ## <a name="known-issues"></a>Znane problemy
-[Agent gościa maszyny Wirtualnej Azure](https://github.com/Azure/WALinuxAgent/) wersji 2.2.2 ma [znany problem] (https://github.com/Azure/WALinuxAgent/pull/517), która powoduje niepowodzenie udostępniania dla maszyny Wirtualnej FreeBSD na platformie Azure. Ta poprawka została przechwycona przez [Agent gościa maszyny Wirtualnej Azure](https://github.com/Azure/WALinuxAgent/) wersji 2.2.3 i jego nowszych wersjach. 
+[Agent gościa maszyny Wirtualnej Azure](https://github.com/Azure/WALinuxAgent/) wersji 2.2.2 ma [znany problem] (https://github.com/Azure/WALinuxAgent/pull/517) powodujący błąd udostępniania dla maszyny Wirtualnej FreeBSD na platformie Azure. Ta poprawka została przechwycona przez [Agent gościa maszyny Wirtualnej Azure](https://github.com/Azure/WALinuxAgent/) wersji 2.2.3 i jego nowszych wersjach. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Przejdź do [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) tworzenie FreeBSD maszyny Wirtualnej.

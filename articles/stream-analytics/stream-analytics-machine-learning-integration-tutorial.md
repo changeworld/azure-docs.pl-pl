@@ -1,24 +1,19 @@
 ---
-title: Integracja usługi analiza strumienia i uczenia maszynowego Azure | Dokumentacja firmy Microsoft
-description: Jak używać funkcji zdefiniowanej przez użytkownika i uczenia maszynowego w zadaniu Stream Analytics
-keywords: ''
-documentationcenter: ''
+title: Integracja usługi analiza strumienia Azure przy użyciu usługi Azure Machine Learning
+description: W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi analiza strumienia Azure, której zintegrowano usługi Azure Machine Learning, przy użyciu funkcji zdefiniowanych przez użytkownika.
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/01/2018
-ms.author: sngun
-ms.openlocfilehash: e5661f9f3871619201ff9106e87785de802e8933
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 93397e5370863b11b7c153bbf234d6bfdd808718
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Wykonywanie analiz wskaźniki nastrojów klientów przy użyciu usługi Azure Stream Analytics i usługi Azure Machine Learning
 W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi analiza strumienia Azure, której zintegrowano usługi Azure Machine Learning. Umożliwia modelu uczenia maszynowego analytics wskaźniki nastrojów klientów z Cortana Intelligence Gallery analizować dane przesyłane strumieniowo tekstu i określić wynik wskaźniki nastrojów klientów w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence Suite pozwala wykonać to zadanie, nie martwiąc się o mogli dokładnie zapoznać się tworzenia modelu analizy wskaźniki nastrojów klientów.

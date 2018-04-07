@@ -1,35 +1,30 @@
 ---
-title: Proces ciągłej integracji i wdrażania za pomocą narzędzi Visual Studio analizy strumienia | Dokumentacja firmy Microsoft
-description: Samouczek dotyczący konfigurowania procesem ciągłej integracji i wdrażania za pomocą narzędzi Visual Studio analiza strumienia
-keywords: visual studio, NuGet, DevOps, CI/CD
-documentationcenter: ''
+title: Ciągłej integracji i opracowywania narzędzia analiza strumienia
+description: W tym artykule opisano, jak za pomocą narzędzi Visual Studio dla usługi Azure Stream Analytics Konfigurowanie ciągłej integracji i procesu wdrażania.
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 9/27/2017
 ms.author: sujie
-ms.openlocfilehash: 14bb15f19b517b55281959f0de970e3f5e0d360b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 9/27/2017
+ms.openlocfilehash: e4e831c602255df66f4c86ffa17336f51d2b52f7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-stream-analytics-visual-studio-tools-to-set-up-a-continuous-integration-and-deployment-process"></a>Umożliwia skonfigurowanie ciągłej integracji i wdrażania procesu Stream Analytics Visual Studio tools
-W tym samouczku Dowiedz się jak używać usługi Azure Stream Analytics Visual Studio tools do ciągłej integracji i procesu wdrażania.
+# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Ciągłej integracji i opracowywania narzędzia analiza strumienia
+W tym artykule opisano sposób użycia na potrzeby ciągłej integracji i wdrażania proces narzędzia analiza strumienia Azure dla programu Visual Studio.
 
-Najnowszą wersję (2.3.0000.0 lub nowszy) z [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) dodaje obsługę programu MSBuild.
+Użyj wersji 2.3.0000.0 lub nowszego z [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) uzyskać pomoc techniczną dotyczącą programu MSBuild.
 
-Istnieje również nowo wydanego pakietu NuGet, [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Oferuje MSBuild, przebiegu lokalnego i narzędzia wdrażania, które obsługują ciągłej integracji i wdrażania proces projektów programu Visual Studio analizy strumienia. 
+Pakiet NuGet jest dostępny: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Oferuje MSBuild, przebiegu lokalnego i narzędzia wdrażania, które obsługują ciągłej integracji i wdrażania proces projektów programu Visual Studio analizy strumienia. 
 > [!NOTE] 
 Pakiet NuGet można tylko mający 2.3.0000.0 lub nowszą wersją narzędzia do analizy strumienia dla programu Visual Studio. Jeśli masz projektów utworzonych w poprzednich wersjach programu Visual Studio tools, wystarczy otworzyć, mający 2.3.0000.0 lub nowszą wersję i Zapisz. Włączać nowe funkcje. 
 
-Dowiedz się, jak używać [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Aby uzyskać więcej informacji, zobacz [Stream Analytics tools dla Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="msbuild"></a>MSBuild
 Podobnie jak standardowe środowisko programu Visual Studio MSBuild aby zbudować projekt masz dwie opcje. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz **kompilacji**. Można też użyć **MSBuild** pakietu NuGet z wiersza polecenia.

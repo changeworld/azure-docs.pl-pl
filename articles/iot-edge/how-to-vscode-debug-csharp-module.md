@@ -9,22 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c2a1acd2c249bdbc92119bc92f055b095f318f00
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 65f2fb4526f1048ae88193f85a552a2202afa1d9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Debugowanie modułu C# z krawędzią IoT Azure przy użyciu programu Visual Studio Code
 Ten artykuł zawiera szczegółowe instrukcje dotyczące używania [Visual Studio Code](https://code.visualstudio.com/) jako Narzędzia główne programowanie debugowania moduły Azure IoT krawędzi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten samouczek zakłada, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenie brzegowe IoT może być inne urządzenie fizyczne lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
+W tym artykule przyjęto założenie, że używasz komputera lub maszyny wirtualnej z systemem Windows lub Linux jako komputerze deweloperskim. Urządzenie brzegowe IoT może być inne urządzenie fizyczne lub urządzenia IoT krawędzi można symulować na komputerze deweloperskim.
 
-Przed rozpoczęciem tej wskazówki Ukończ samouczek następujące:
-- [Tworzenie rozwiązania IoT krawędź z wielu modułów w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md)
-
-Po zakończeniu samouczka poprzedniego powinny mieć gotowy następujące elementy:
+Przed wykonaniem wskazówki zawarte w tym artykule, wykonaj kroki [opracowywania rozwiązań IoT Edge z wieloma modułami w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md). Po wykonaniu tej powinny mieć gotowy następujące elementy:
 - Lokalnego rejestru Docker uruchomiony na komputerze deweloperskim. Zalecane jest korzystanie lokalnego rejestru Docker prototypu i celów testowych. Można zaktualizować klucza rejestru kontenera `module.json` plik w folderze każdego modułu.
 - Krawędź IoT rozwiązania obszar roboczy projektu z podfolderu modułu C# w nim.
 - `Program.cs` Pliku z najnowszą kodu modułu.
@@ -55,8 +52,5 @@ Po zakończeniu samouczka poprzedniego powinny mieć gotowy następujące elemen
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku utworzony moduł krawędzi IoT i wdrożyć ją do debugowania. Uruchomiono jej debugowanie w kodzie VS. Aby dowiedzieć się o innych scenariuszy podczas projektowania usługi Azure IoT krawędź w kodzie VS, zobacz: 
-
-> [!div class="nextstepaction"]
-> [Tworzenie rozwiązania IoT krawędź z wielu modułów w programie Visual Studio Code](tutorial-multiple-modules-in-vscode.md)
+[Użyj programu Visual Studio kodu do debugowania usługi Azure Functions krawędzi IoT Azure](how-to-vscode-debug-azure-function.md)
 

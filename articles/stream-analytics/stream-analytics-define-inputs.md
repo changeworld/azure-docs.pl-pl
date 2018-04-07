@@ -1,24 +1,19 @@
 ---
-title: 'Połączenie danych: dane wejściowe ze strumienia zdarzeń strumienia danych | Dokumentacja firmy Microsoft'
-description: Więcej informacji na temat konfigurowania połączenia danych do usługi Stream Analytics o nazwie "dane wejściowe". Dane wejściowe zawierają strumień danych zdarzeń i również danych referencyjnych.
-keywords: strumień danych, połączenie danych strumienia zdarzeń
+title: Dane wejściowe ze strumienia zdarzeń w Azure Stream Analytics strumienia danych
+description: Więcej informacji na temat konfigurowania połączenia danych w usłudze Azure Stream Analytics. Dane wejściowe zawierają strumień danych zdarzeń i również danych referencyjnych.
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/11/2017
-ms.author: sngun
-ms.openlocfilehash: 405fcf190ab03b84ec463da8a1942adb8e326498
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0a90e97779416db7b7244cce9d6bdad740161051
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Połączenie danych: Dowiedz się więcej o danych strumienia danych wejściowych ze zdarzeń w celu usługi analiza strumienia
 Połączenie danych do zadania usługi Stream Analytics jest strumienia zdarzeń źródła danych, które są określone jako zadanie *wejściowych*. Analiza strumienia ma najwyższej jakości integracji z źródeł strumienia danych Azure, w tym [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Centrum IoT Azure](https://azure.microsoft.com/services/iot-hub/), i [magazynu obiektów Blob Azure](https://azure.microsoft.com/services/storage/blobs/). Tych źródeł danych wejściowych można z tej samej subskrypcji platformy Azure jako zadanie analizy lub innej subskrypcji.

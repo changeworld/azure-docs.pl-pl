@@ -1,11 +1,11 @@
 ---
-title: "Użyj Linux, rozwiązywanie problemów z maszyny Wirtualnej w portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy dotyczące maszyny wirtualnej systemu Linux łącząc dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu portalu Azure"
+title: Użyj Linux, rozwiązywanie problemów z maszyny Wirtualnej w portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy dotyczące maszyny wirtualnej systemu Linux łącząc dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu portalu Azure
 services: virtual-machines-linux
-documentationCenter: 
+documentationCenter: ''
 authors: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
-ms.openlocfilehash: c96ff625c3e83f6fc9057f1163c877e8e0aed5e3
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 08bf4675378918097e177228ee1be4e4e690c63b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyny Wirtualnej systemu Linux, dołączając dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu portalu Azure
 Maszyny wirtualnej systemu Linux (VM) napotkał błąd podczas rozruchu lub dysk, należy wykonać kroki rozwiązywania problemów na wirtualnym dysku twardym, sam. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab` , w związku z było pomyślnie uruchomić maszynę Wirtualną. W tym artykule szczegółowo sposób łączenia wirtualnego dysku twardego do innej maszyny Wirtualnej systemu Linux, napraw błędy, a następnie ponownie utwórz oryginalnego maszyny Wirtualnej za pomocą portalu Azure.

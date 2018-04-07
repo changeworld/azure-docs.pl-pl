@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9768fd96b8023ac97d8c5711e0c02f2c147e28f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
+
 **Dziennika aktywności platformy Azure** jest Dziennik subskrypcji, która zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym zakresie danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji na zdarzenia kondycji usługi. Dziennik aktywności była wcześniej znana jako "Dzienników inspekcji" lub "Operacyjne dzienniki", ponieważ zdarzenia płaszczyzny kontroli Raporty Kategoria administracyjna dla subskrypcji. Korzystając z dziennika aktywności, można określić ", co, która i kiedy" dla żadnego zapisu (PUT, POST, DELETE) podejmowaną w odniesieniu do zasobów w ramach subskrypcji. Można także zrozumienie stanu operacji i inne odpowiednie właściwości. Dziennik nie zawiera operacje odczytu (GET) lub operacji dla zasobów korzystających z klasycznego / modelu "RDFE".
 
 ![Vs Dzienniki aktywności innych typów dzienników ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
@@ -37,9 +38,7 @@ Dziennik aktywności różni się od [dzienników diagnostycznych](monitoring-ov
 Można pobrać zdarzenia z dziennika aktywności przy użyciu portalu Azure, interfejsu wiersza polecenia, poleceń cmdlet programu PowerShell i interfejsu API REST Monitor Azure.
 
 > [!NOTE]
-
->  [Alerty nowszej)](monitoring-overview-unified-alerts.md) oferuje udoskonalone środowisko, podczas tworzenia i zarządzania nimi aktywności logowania reguł alertów.  [Dowiedz się więcej](monitoring-activity-log-alerts-new-experience.md).
-
+>  [Alerty nowszej](monitoring-overview-unified-alerts.md) oferuje udoskonalone środowisko, podczas tworzenia i zarządzania nimi aktywności logowania reguł alertów.  [Dowiedz się więcej](monitoring-activity-log-alerts-new-experience.md).
 
 Umożliwia wyświetlenie poniższego klipu wideo wprowadzające dziennik aktywności.
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
@@ -103,7 +102,7 @@ A **profilu dziennika** kontroluje sposób eksportowania jest dziennik aktywnoś
 * Regiony (lokalizacja) powinny być wyeksportowane. Upewnij się, że obejmują "globalne", ponieważ wiele zdarzeń w dzienniku aktywności są zdarzenia globalne.
 * Jak długo dziennika aktywności powinny być przechowywane na koncie magazynu.
     - Przechowywanie 0 oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni od 1 do 2147483647.
-    - Jeśli zasady przechowywania są skonfigurowane, ale przechowywanie dzienniki na koncie magazynu jest wyłączone (na przykład, jeśli tylko opcje usługi Event Hubs lub OMS są zaznaczone), zasad przechowywania nie obowiązują.
+    - Jeśli zasady przechowywania są skonfigurowane, ale przechowywanie dzienniki na koncie magazynu jest wyłączone (na przykład, jeśli tylko są zaznaczone opcje usługi Event Hubs lub analizy dzienników), zasad przechowywania nie obowiązują.
     - Zasady przechowywania są zastosowane na dni, więc pod koniec dnia (UTC), dzienniki od dnia, która jest teraz poza przechowywania zasad są usuwane. Na przykład jeśli masz zasady przechowywania jeden dzień na początku dnia dzisiaj dzienniki na wczoraj zanim dzień zostaną usunięte.
 
 Możesz użyć magazynu konta lub zdarzenia koncentratora przestrzeni nazw, która nie znajduje się w tej samej subskrypcji co emitowanie dzienników. Użytkownik, który konfiguruje ustawienie musi mieć odpowiedni dostęp RBAC do obu subskrypcji.
@@ -129,12 +128,15 @@ Możesz strumienia dziennika aktywności do Centrum zdarzeń lub przechowywać j
 4. Kliknij przycisk **zapisać** Aby zapisać te ustawienia. Ustawienia są natychmiastowo stosowane do subskrypcji.
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Konfigurowanie profilów dziennika przy użyciu poleceń cmdlet programu Azure PowerShell
+
 #### <a name="get-existing-log-profile"></a>Pobierz profil dziennika
+
 ```
 Get-AzureRmLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>Dodawanie profilu dziennika
+
 ```
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
 ```
@@ -153,33 +155,32 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cross-platform-cli"></a>Konfigurowanie profilów dziennika przy użyciu interfejsu wiersza polecenia Azure i Platform
+### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Konfigurowanie profilów dziennika przy użyciu 2.0 interfejsu wiersza polecenia platformy Azure
+
 #### <a name="get-existing-log-profile"></a>Pobierz profil dziennika
+
+```azurecli
+az monitor log-profiles list
+az monitor log-profiles show --name <profile name>
 ```
-azure insights logprofile list
-```
-```
-azure insights logprofile get --name my_log_profile
-```
+
 `name` Właściwość powinna być nazwą profilu dziennika.
 
 #### <a name="add-a-log-profile"></a>Dodawanie profilu dziennika
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
+
+```azurecli
+az monitor log-profiles create --name <profile name> \
+    --locations <location1 location2 ...> \
+    --location <location> \
+    --categories <category1 category2 ...>
 ```
 
-| Właściwość | Wymagane | Opis |
-| --- | --- | --- |
-| name |Yes |Nazwa profilu dziennika. |
-| storageId |Nie |Identyfikator zasobu konta magazynu, do której ma zostać zapisany dziennik aktywności. |
-| serviceBusRuleId |Nie |Identyfikator reguły magistrali usługi chcesz mieć centra zdarzeń utworzonych w przestrzeni nazw usługi Service Bus. Ciąg w formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Lokalizacje |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
-| retentionInDays |Yes |Liczba dni dla zdarzenia, które mają być przechowywane, od 1 do 2147483647. Wartość zero przechowuje dzienniki w nieskończoność (zawsze). |
-| kategorie |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to zapisu, usuwania i akcji. |
+Aby wyświetlić pełną dokumentację do tworzenia profilu monitora z poziomu interfejsu wiersza polecenia, zobacz [Dokumentacja poleceń interfejsu wiersza polecenia](/cli/azure/monitor/log-profiles#az-monitor-log-profiles-create)
 
 #### <a name="remove-a-log-profile"></a>Usuń profil dziennika
-```
-azure insights logprofile delete --name my_log_profile
+
+```azurecli
+az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>Następne kroki

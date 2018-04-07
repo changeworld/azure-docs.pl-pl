@@ -1,19 +1,19 @@
 ---
 title: Tworzenie baz danych w chmurze skalowalne | Dokumentacja firmy Microsoft
-description: "Tworzenie skalowalnych aplikacji .NET bazy danych za pomocą biblioteki klienta elastycznej bazy danych"
+description: Tworzenie skalowalnych aplikacji .NET bazy danych za pomocą biblioteki klienta elastycznej bazy danych
 services: sql-database
 manager: jhubbard
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: e15254fd529d98f2b92acea8dd1ed908a82841ea
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6000b06950ddd442b76838e5632196808f893ef9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="building-scalable-cloud-databases"></a>Tworzenie skalowalnych baz danych w chmurze
 Skalowanie w poziomie baz danych można łatwo osiągnąć za pomocą funkcji i narzędzi skalowalne bazy danych SQL Azure. W szczególności można użyć **biblioteki klienta elastycznej bazy danych** tworzenie i zarządzanie nimi skalowalnych w poziomie baz danych. Ta funkcja pozwala łatwo tworzyć aplikacje podzielonej przy użyciu setki —, a nawet tysiące — baz danych Azure SQL. [Zadania elastyczne](sql-database-elastic-jobs-powershell.md) mogą następnie służyć do pomocy ułatwiają zarządzanie tych baz danych.

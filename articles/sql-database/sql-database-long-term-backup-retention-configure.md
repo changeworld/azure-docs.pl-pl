@@ -1,5 +1,5 @@
 ---
-title: Długoterminowego przechowywania kopii zapasowych & ARS vault - baza danych SQL Azure | Dokumentacja firmy Microsoft
+title: Zarządzanie długoterminowego przechowywania kopii zapasowych bazy danych SQL Azure | Dokumentacja firmy Microsoft
 description: Informacje o sposobie przechowywania automatycznych kopii zapasowych w usłudze SQL Azure storage, a następnie przywróci je
 services: sql-database
 author: anosov1960
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 80dd58a9c0267975c9e4df74c77d60ac861a1fdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 29bfc914dd5c1f4c8b5405ff0e7202b767d032b8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="configure-and-restore-backups-from-azure-sql-database-long-term-backup-retention-using-azure-sql-storage"></a>Konfigurowanie i przywracania kopii zapasowych z bazy danych SQL Azure długoterminowego przechowywania kopii zapasowych przy użyciu magazynu Azure SQL
+# <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długoterminowego przechowywania kopii zapasowych bazy danych SQL Azure
 
 Można skonfigurować bazy danych Azure SQL z [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md) (od lewej do prawej) automatycznie przechowywania kopii zapasowych w magazynie obiektów blob platformy Azure przez maksymalnie 10 lat zasad. Można odzyskać bazy danych przy użyciu tych kopii zapasowych za pomocą portalu Azure lub programu PowerShell.
 
@@ -112,6 +112,12 @@ $ltrPolicies = Get-AzureRmSqlDatabase -ResourceGroupName Default-SQL-WestCentral
 
 # Get the LTR policy of a specific database 
 $ltrPolicies = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName  -ResourceGroupName $resourceGroup -Current
+```
+### <a name="clear-an-ltr-policy"></a>Czyszczenie zasad od lewej do prawej
+W tym przykładzie pokazano, jak czyszczenie zasad od lewej do prawej z bazy danych
+
+```powershell
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -DatabaseName $dbName -ResourceGroupName $resourceGroup -RemovePolicy
 ```
 
 ### <a name="view-ltr-backups"></a>Wyświetl kopie zapasowe od lewej do prawej

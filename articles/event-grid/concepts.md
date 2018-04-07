@@ -1,18 +1,18 @@
 ---
-title: "Azure pojęcia siatki zdarzeń"
-description: "Opisuje Azure zdarzeń siatki i jego pojęcia. Definiuje kilka najważniejszych składników zdarzeń siatki."
+title: Azure pojęcia siatki zdarzeń
+description: Opisuje Azure zdarzeń siatki i jego pojęcia. Definiuje kilka najważniejszych składników zdarzeń siatki.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/04/2018
 ms.author: babanisa
-ms.openlocfilehash: 4fd44387ac1c3dad9f0194f1b2c97d6350f9b15d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event siatki
 
@@ -32,9 +32,11 @@ Wydawcy kategoryzowanie zdarzeń do tematów. Temat zawiera punkt końcowy, gdzi
 
 System tematy dotyczą wbudowanych udostępnionego przez usługi Azure. Tematy niestandardowe są tematy innych firm i aplikacji.
 
+Podczas projektowania aplikacji, należy utworzyć niestandardowego tematu dla każdej kategorii powiązanych zdarzeń. Rozważmy na przykład aplikacja, która wysyła zdarzenia związane z modyfikowanie kont użytkowników i przetwarzania zamówienia. Jest mało prawdopodobne, wszelkie obsługi zdarzeń oczekuje, że oba rodzaje zdarzeń. Utwórz dwa tematy niestandardowych i pozwól subskrybować ten interesującego ich obsługi zdarzeń. Podczas subskrybowania niestandardowego tematu, program obsługi zdarzeń można filtrować według typu zdarzenia.
+
 ## <a name="event-subscriptions"></a>Subskrypcja zdarzeń
 
-Subskrypcję nakazuje siatki zdarzeń na zdarzenia na temat otrzymywać jest subskrybenta.  Subskrypcja zawiera również informacji na temat sposobu zdarzenia powinna zostać dostarczona do subskrybenta.
+Subskrypcję nakazuje siatki zdarzeń na zdarzenia na temat otrzymywać jest subskrybenta. Subskrypcja zawiera również informacji na temat sposobu zdarzenia powinna zostać dostarczona do subskrybenta.
 
 ## <a name="event-handlers"></a>Uchwyty zdarzeń
 

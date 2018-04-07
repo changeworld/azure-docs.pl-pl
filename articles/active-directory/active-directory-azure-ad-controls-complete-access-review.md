@@ -1,11 +1,11 @@
 ---
-title: "Zakończenie przeglądu dostępu do elementów członkowskich grupy lub użytkownikom dostępu do aplikacji z usługą Azure AD | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przeprowadzić przegląd dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji w usłudze Azure Active Directory."
+title: Zakończenie przeglądu dostępu do elementów członkowskich grupy lub użytkownikom dostępu do aplikacji z usługą Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić przegląd dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji w usłudze Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: de853d633aa65c9f08f5e28088d5240c2e4d7fa6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c4efdbf5a355ddc9a31091517665f91dd8e68ec0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Zakończenie przeglądu dostępu do elementów członkowskich grupy lub użytkownikom dostępu do aplikacji w usłudze Azure AD
 
-Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [utworzyć Przegląd dostępu](active-directory-azure-ad-controls-create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji. Usługi Azure AD automatycznie wysyła wiadomość e-mail zawierająca monit o ich sprawdzaj dostęp osoby dokonujące przeglądu. Jeśli użytkownik nie otrzymasz wiadomość e-mail, możesz wysłać je zgodnie z instrukcjami [Przejrzyj dostęp](active-directory-azure-ad-controls-perform-access-review.md). Po zakończeniu okresu przeglądu dostępu lub administrator zatrzymuje Przegląd dostępu, wykonaj kroki opisane w tym artykule, aby zobaczyć i zastosować wyniki.
+Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [utworzyć Przegląd dostępu](active-directory-azure-ad-controls-create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji. Usługi Azure AD automatycznie wysyła wiadomość e-mail zawierająca monit o ich sprawdzaj dostęp osoby dokonujące przeglądu. Jeśli użytkownik nie otrzymasz wiadomość e-mail, możesz wysłać je zgodnie z instrukcjami [Przejrzyj dostęp](active-directory-azure-ad-controls-perform-access-review.md). (Należy pamiętać, że gości, którzy są przypisane jako osób dokonujących przeglądu, ale nie zostały zaakceptowane zaproszenie nie otrzymają wiadomość e-mail z przeglądami dostępu, jak będą musieli najpierw zaakceptować zaproszenie przed recenzowania.) Po zakończeniu okresu przeglądu dostępu lub administrator zatrzymuje Przegląd dostępu, wykonaj kroki opisane w tym artykule, aby zobaczyć i zastosować wyniki.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Wyświetl przegląd dostępu w portalu Azure
 
@@ -35,13 +35,15 @@ Jeśli przeglądu nie osiągnięto planowana data zakończenia, administrator mo
 
 ## <a name="apply-the-changes"></a>Zastosuj zmiany 
 
-Po zakończeniu Przegląd dostępu, ponieważ osiągnął Data zakończenia lub administrator zatrzymał go ręcznie, zaznacz **Zastosuj**. Wyniku przeglądu jest implementowany przez aktualizację aplikacji lub grupy. Jeśli w przeglądzie, nastąpiła odmowa dostępu użytkownika, gdy administrator może wybrać tę opcję, usługi Azure AD usuwa przypisanie ich członkostwa lub aplikacji. 
+Po zakończeniu Przegląd dostępu, albo ponieważ osiągnął Data zakończenia lub ręcznie zatrzymany przez administratora i automatycznie Zastosuj nie został skonfigurowany do przeglądu, można wybrać **Zastosuj** Aby ręcznie zastosować zmiany. Wyniku przeglądu jest implementowany przez aktualizację aplikacji lub grupy. Jeśli w przeglądzie, nastąpiła odmowa dostępu użytkownika, gdy administrator może wybrać tę opcję, usługi Azure AD usuwa przypisanie ich członkostwa lub aplikacji. 
 
-Wybieranie **Zastosuj** nie ma wpływu na grupę, która pochodzi z katalogu lokalnego lub grupą dynamiczną. Jeśli chcesz zmienić grupę, która pochodzi z lokalnymi pobierania wyników i zastosować te zmiany do reprezentacji grupy, w tym katalogu.
+Po zakończeniu Przegląd dostępu i automatycznie Zastosuj został skonfigurowany, stan przeglądu ulegnie zmianie z ukończono za pośrednictwem pośrednich stanów i na koniec zostanie zmieniony na stan zastosowano. Należy się spodziewać odmowy użytkowników, jeśli dowolne usuwana z zasobu grupy aplikacji lub członkostwa przypisania za kilka minut.
+
+Skonfigurowane automatyczne stosowanie przeglądu, lub wybierz **Zastosuj** nie ma wpływu na grupę, która pochodzi z katalogu lokalnego lub grupą dynamiczną. Jeśli chcesz zmienić grupę, która pochodzi z lokalnymi pobierania wyników i zastosować te zmiany do reprezentacji grupy, w tym katalogu.
 
 ## <a name="download-the-results-of-the-review"></a>Pobieranie wyników przeglądu
 
-Aby pobrać wyników przeglądu, wybierz **zatwierdzenia** , a następnie wybierz **Pobierz**. Wynikowy plik CSV można wyświetlić w programie Excel lub w inne programy, które mają otwarte pliki CSV.
+Aby pobrać wyników przeglądu, wybierz **zatwierdzenia** , a następnie wybierz **Pobierz**. Wynikowy plik CSV można wyświetlić w programie Excel lub w inne programy, które otwierają UTF-8 zakodowane plików CSV.
 
 ## <a name="optional-delete-a-review"></a>Opcjonalnie: Usuń przeglądu
 Jeśli możesz już nie są zainteresowane w przeglądzie, można go usunąć. Wybierz **usunąć** usunąć przeglądu z usługi Azure AD.
@@ -51,7 +53,7 @@ Jeśli możesz już nie są zainteresowane w przeglądzie, można go usunąć. W
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu w usłudze Azure AD](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)

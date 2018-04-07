@@ -1,11 +1,11 @@
 ---
-title: "Zmień rozmiar maszyny Wirtualnej systemu Windows w klasycznym modelu wdrażania - Azure | Dokumentacja firmy Microsoft"
-description: "Zmień rozmiar maszyny wirtualnej systemu Windows tworzone w klasycznym modelu wdrażania, przy użyciu programu Azure Powershell."
+title: Zmień rozmiar maszyny Wirtualnej systemu Windows w klasycznym modelu wdrażania - Azure | Dokumentacja firmy Microsoft
+description: Zmień rozmiar maszyny wirtualnej systemu Windows tworzone w klasycznym modelu wdrażania, przy użyciu programu Azure Powershell.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: e3038215-001c-406e-904d-e0f4e326a4c7
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 6afc8125462a659d0892e7dbb53f1f71789815cc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>Zmień rozmiar maszyny Wirtualnej systemu Windows tworzone w klasycznym modelu wdrażania
 W tym artykule przedstawiono sposób zmiany rozmiaru maszyny Wirtualnej systemu Windows, utworzone w klasycznym modelu wdrażania przy użyciu programu Azure Powershell.

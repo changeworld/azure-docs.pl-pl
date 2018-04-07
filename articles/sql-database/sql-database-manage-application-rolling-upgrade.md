@@ -1,19 +1,19 @@
 ---
-title: "Wprowadzanie uaktualnień aplikacji — baza danych SQL Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać replikacja geograficzna bazy danych SQL Azure w celu obsługi online uaktualnień aplikacji w chmurze."
+title: Wprowadzanie uaktualnień aplikacji — baza danych SQL Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać replikacja geograficzna bazy danych SQL Azure w celu obsługi online uaktualnień aplikacji w chmurze.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 07/16/2016
+ms.date: 04/01/2018
 ms.author: sashan
-ms.openlocfilehash: 6efc14e5f8fab5baafff50e8eb6844f8decca1c9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d1799befb2b5f59f1794bbca2a1daa2a13990882
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Zarządzanie stopniowe aplikacji w chmurze przy użyciu aktywna replikacja geograficzna bazy danych SQL
 > [!NOTE]

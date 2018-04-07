@@ -1,24 +1,19 @@
 ---
-title: Wprowadzenie do usługi Stream Analytics | Microsoft Docs
+title: Omówienie usługi Azure Stream Analytics
 description: Poznaj usługę Stream Analytics — zarządzaną usługę, która pomaga analizować dane przesyłane strumieniowo z Internetu rzeczy (IoT) w czasie rzeczywistym.
-keywords: analiza jako usługa, usługi zarządzane, przetwarzanie strumienia, stream analytics, co to jest stream analytics
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 10/17/2017
 ms.author: jeanb
-ms.openlocfilehash: 70a4b0b358b79ec892483a9fa5573e4bf2d57534
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: HT
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 10/17/2017
+ms.openlocfilehash: 1912972b2a5ef40bcc61140225f1fdbcbb1535c3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="what-is-stream-analytics"></a>Co to jest usługa Stream Analytics?
 
@@ -82,9 +77,9 @@ Jako usługa w chmurze usługa Stream Analytics jest zoptymalizowana pod kątem 
 
 Jako usługa zarządzana usługa Stream Analytics pomaga uniknąć utraty danych i zapewnia ciągłość działalności biznesowej. Jeśli wystąpią błędy, usługa zapewnia wbudowane funkcje odzyskiwania. Dzięki możliwości wewnętrznego przechowywania stanu usługa zapewnia powtarzalne wyniki, co gwarantuje możliwość archiwizacji zdarzeń i ponownego stosowania przetwarzania w przyszłości, zawsze uzyskując takie same wyniki. Umożliwia to klientom przechodzenie wstecz w czasie i badanie obliczeń podczas ustalania głównej przyczyny problemu, analizy warunkowej itp.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Rozpoczynanie pracy przez [eksperymentowanie z danymi wejściowymi i zapytaniami z urządzeń IoT](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md).
 * Tworzenie [kompleksowego rozwiązania usługi Stream Analytics](stream-analytics-real-time-fraud-detection.md), które analizuje metadane telefonu, wyszukując fałszywe wywołania.
-* Znajdź odpowiedzi na swoje pytania dotyczące usługi Stream Analytics na [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+* Znajdź odpowiedzi na swoje pytania dotyczące usługi Stream Analytics na [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

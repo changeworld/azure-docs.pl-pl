@@ -1,29 +1,29 @@
 ---
-title: "Wdrażanie modułów do urządzenia brzegowe IoT przy użyciu rozszerzenia IoT Azure CLI 2.0 | Dokumentacja firmy Microsoft"
-description: "Wdrażanie modułów na IoT urządzenia przy użyciu rozszerzenia IoT Azure CLI 2.0"
+title: Wdrażanie modułów do urządzenia brzegowe IoT przy użyciu rozszerzenia IoT Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: Wdrażanie modułów na IoT urządzenia przy użyciu rozszerzenia IoT Azure CLI 2.0
 services: iot-edge
-keywords: 
+keywords: ''
 author: chrissie926
 manager: timlt
 ms.author: menchi
 ms.date: 03/02/2018
 ms.topic: article
 ms.service: iot-edge
-ms.custom: mvc
+ms.custom: ''
 ms.reviewer: kgremban
-ms.openlocfilehash: 25f1becff11138e59595c211802acbf791094e53
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1f71fdfb7090dce24ba73f1fa01e287c52b065f8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Wdrażanie modułów na IoT urządzenia przy użyciu rozszerzenia IoT Azure CLI 2.0
 
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) jest open source cross platform narzędzie wiersza polecenia do zarządzania zasobami platformy Azure, takich jak IoT krawędzi. 2.0 interfejsu wiersza polecenia platformy Azure jest dostępna w systemach Windows, Linux i MacOS.
+[Interfejs wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) to międzyplatformowe narzędzie wiersza polecenia typu open-source służące do zarządzania zasobami platformy Azure, takimi jak usługa IoT Edge. Interfejs wiersza polecenia platformy Azure 2.0 jest dostępny dla systemów Windows, Linux i MacOS.
 
-Azure CLI 2.0 umożliwia zarządzanie zasobami, inicjowania obsługi administracyjnej wystąpień usługi urządzenia i połączone w koncentratory fabrycznej Centrum IoT Azure. Nowe rozszerzenie IoT wzbogaca 2.0 interfejsu wiersza polecenia platformy Azure z funkcjami takimi jak zarządzanie urządzeniami i pełne możliwości IoT krawędzi.
+Interfejs wiersza polecenia platformy Azure 2.0 umożliwia zarządzanie zasobami centrum Hub, wystąpieniami usługi Device Provisioning i połączonymi centrami po pierwszej instalacji. Nowe rozszerzenie IoT wzbogaca 2.0 interfejsu wiersza polecenia platformy Azure z funkcjami takimi jak zarządzanie urządzeniami i pełne możliwości IoT krawędzi.
 
-W tym samouczku najpierw wykonaj kroki, aby skonfigurować interfejs wiersza polecenia Azure w wersji 2.0 i rozszerzenia IoT. Następnie zostanie przedstawiony sposób wdrażania modułów do urządzenia IoT przy użyciu dostępnych poleceń interfejsu wiersza polecenia.
+W tym artykule skonfigurowaniu Azure CLI w wersji 2.0 i rozszerzenia IoT. Następnie zostanie przedstawiony sposób wdrażania modułów do urządzenia IoT przy użyciu dostępnych poleceń interfejsu wiersza polecenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -31,7 +31,7 @@ W tym samouczku najpierw wykonaj kroki, aby skonfigurować interfejs wiersza pol
 
 * [Python 2.7 x lub Python 3.x](https://www.python.org/downloads/).
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) w danym środowisku. Co najmniej w wersji 2.0 interfejsu wiersza polecenia platformy Azure musi być 2.0.24 lub nowszej. Użyj `az –-version` do sprawdzania poprawności. Ta wersja obsługuje az rozszerzenia poleceń i wprowadza Knack framework polecenia. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie [MSI](https://aka.ms/InstallAzureCliWindows).
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) w danym środowisku. Potrzebujesz co najmniej interfejsu wiersza polecenia platformy Azure 2.0 w wersji 2.0.24 lub nowszej. Użyj polecenia `az –-version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack. Prostym sposobem instalowania w systemie Windows jest pobranie i zainstalowanie instalatora [MSI](https://aka.ms/InstallAzureCliWindows).
 
 * [Rozszerzenie IoT Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension):
    1. Uruchom polecenie `az extension add --name azure-cli-iot-ext`. 

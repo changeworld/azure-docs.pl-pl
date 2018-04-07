@@ -1,25 +1,24 @@
 ---
-title: "Azure DB rozwiązania Cosmos: Wykonywać analizy wykresu przy użyciu platformy Spark i Apache TinkerPop Gremlin | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera instrukcje dotyczące konfigurowania i uruchamiania wykres analizy i równolegle obliczeń w usłudze Azure DB rozwiązania Cosmos z platformy Spark i TinkerPop SparkGraphComputer."
+title: 'Azure DB rozwiązania Cosmos: Wykonywać analizy wykresu przy użyciu platformy Spark i Apache TinkerPop Gremlin | Dokumentacja firmy Microsoft'
+description: Ten artykuł zawiera instrukcje dotyczące konfigurowania i uruchamiania wykres analizy i równolegle obliczeń w usłudze Azure DB rozwiązania Cosmos z platformy Spark i TinkerPop SparkGraphComputer.
 services: cosmosdb
-documentationcenter: 
-author: khdang
-manager: shireest
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 89ea62bb-c620-46d5-baa0-eefd9888557c
 ms.service: cosmos-db
 ms.custom: quick start connect
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: gremlin
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: khdang
-ms.openlocfilehash: d2ea692c5c353586cc2b653e57eca7ccb8c9c7ce
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: sngun
+ms.openlocfilehash: f44c7d432ac9c07daf9b99dd922f1dcd5de5d58e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure DB rozwiązania Cosmos: Wykonywać analizy wykresu przy użyciu platformy Spark i Apache TinkerPop Gremlin
 
@@ -400,7 +399,7 @@ Aby zademonstrować sposób utrwalić wykres do bazy danych z rozwiązania Cosmo
 > Aby wyświetlić bardziej szczegółowe rejestrowanie, należy ustawić dziennika w `conf/log4j-console.properties` na pełniejsze poziom.
 >
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule szybki start kiedy znasz już sposób pracy z wykresy przez połączenie bazy danych Azure rozwiązania Cosmos i Spark.
 

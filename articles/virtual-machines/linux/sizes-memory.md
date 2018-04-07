@@ -1,13 +1,13 @@
 ---
-title: "Rozmiary maszyn wirtualnych Azure Linux - pamięci | Dokumentacja firmy Microsoft"
-description: "Wyświetla listę rozmiarów różnych zoptymalizowanych pod kątem pamięci dostępnej dla maszyn wirtualnych systemu Linux na platformie Azure. Wyświetla informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu rozmiarów w tej serii."
+title: Rozmiary maszyn wirtualnych Azure Linux - pamięci | Dokumentacja firmy Microsoft
+description: Wyświetla listę rozmiarów różnych zoptymalizowanych pod kątem pamięci dostępnej dla maszyn wirtualnych systemu Linux na platformie Azure. Wyświetla informacje o liczbie Vcpu, dysków z danymi i karty sieciowe, a także przepustowości przepływności i sieć magazynu rozmiarów w tej serii.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: jonbeck7
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: f74296fd752e8ec968f4bdcd833a6a2a8a763246
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cdcb0e6bdc8d3e91fd31ee1d448a7ff070139002
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowanych pod kątem pamięci
 

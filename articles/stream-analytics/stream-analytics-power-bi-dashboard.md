@@ -1,24 +1,19 @@
 ---
-title: Power BI pulpitu nawigacyjnego usługi Azure Stream Analytics | Dokumentacja firmy Microsoft
-description: W czasie rzeczywistym przesyłania strumieniowego pulpit nawigacyjny usługi Power BI umożliwia zebranie analizy biznesowej i przeanalizowanie duże ilości danych z zadania usługi analiza strumienia.
-keywords: pulpitu nawigacyjnego Analytics, pulpit nawigacyjny w czasie rzeczywistym
+title: Power BI pulpitu nawigacyjnego integracji z usługą Azure Stream Analytics
+description: W tym artykule opisano sposób użycia w czasie rzeczywistym pulpit nawigacyjny usługi Power BI do wizualizacji danych poza zadanie usługi analiza strumienia Azure.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/27/2017
 ms.author: jeanb
-ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/27/2017
+ms.openlocfilehash: 15b8548e8b5b6ff8d2f5722d2a4031f8e52d044b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Strumienia analizy i usługi Power BI: pulpitu nawigacyjnego analytics w czasie rzeczywistym do strumieniowego przesyłania danych
 Usługa Azure Stream Analytics pozwala korzystać z jednego z początku narzędzi analizy biznesowej, [Microsoft Power BI](https://powerbi.com/). W tym artykule dowiesz się, jak utworzyć przy użyciu usługi Power BI jako dane wyjściowe dla Twojego zadania usługi analiza strumienia Azure narzędzia do analizy biznesowej. Możesz również sposób tworzenia i używania w czasie rzeczywistym pulpitu nawigacyjnego.
@@ -249,7 +244,7 @@ Podobnie jeśli zadanie rozpoczyna się po wygaśnięciu tokenu, występuje bł�
 Po odświeżeniu autoryzację przy użyciu usługi Power BI, zielony alert zostanie wyświetlony w obszarze autoryzacji, aby uwzględnić, czy problem został rozwiązany.
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

@@ -12,16 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 517ce3547f471dd1b40c79b2f087b02ad7f51b85
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 82011126375a3c5016e110aac9ce6bc1b2d59cdf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Strumienia Azure dzienników diagnostycznych do analizy dzienników
-**[Azure dzienników diagnostycznych](monitoring-overview-of-diagnostic-logs.md)**  przesyłane strumieniowo w najbliższym czasie rzeczywistym za pomocą portalu, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia Azure Analiza dzienników Azure.
+
+**[Azure dzienników diagnostycznych](monitoring-overview-of-diagnostic-logs.md)**  przesyłane strumieniowo w najbliższym czasie rzeczywistym Analiza dzienników Azure za pomocą portalu, poleceń cmdlet programu PowerShell lub 2.0 interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Co można zrobić w diagnostyce loguje analizy dzienników
 
@@ -33,9 +34,17 @@ Analiza dzienników Azure jest narzędziem elastyczne dziennik wyszukiwania i an
 * **Zaawansowane analizy** — zastosować uczenia maszynowego i wzorca zgodnego algorytmy umożliwiające identyfikowanie możliwe problemy ujawnionych w dziennikach.
 
 ## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Przesyłania strumieniowego dzienników diagnostycznych do analizy dzienników
+
 Można włączyć przesyłania strumieniowego dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST Monitor Azure](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). W obu przypadkach należy utworzyć ustawienie diagnostyczne, w którym można określić obszaru roboczego analizy dzienników i kategorie dziennika i metryki, aby wysłać do tego obszaru roboczego. Diagnostyka **kategorii dziennika** jest typem dziennika, która może zapewnić zasobu.
 
 Obszar roboczy analizy dzienników nie musi znajdować się w tej samej subskrypcji co zasób emitowanie dzienniki, dopóki użytkownik, który konfiguruje ustawienia ma odpowiedni dostęp RBAC do obu subskrypcji.
+
+> [!NOTE]
+> Wysyłanie metryki wielowymiarowej za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryka z wymiarów są eksportowane jako spłaszczone pojedynczego metryki wymiarów, zagregowane WE wartości wymiaru.
+>
+> *Na przykład*: metryka "Komunikatów przychodzących" w Centrum zdarzeń można przedstawione i wykresie na na poziomie kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych, które Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
+>
+>
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Strumieniowe przesyłanie dzienników diagnostycznych przy użyciu portalu
 1. W portalu przejdź do monitora Azure i kliknij na **ustawień diagnostycznych**
@@ -53,7 +62,7 @@ Obszar roboczy analizy dzienników nie musi znajdować się w tej samej subskryp
    ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-multiple.png)
 
 3. Nadaj nazwę ustawienia i pole wyboru dla **wysyłać do analizy dzienników**, następnie wybierz obszar roboczy analizy dzienników.
-   
+
    ![Dodaj ustawienie diagnostyczne — istniejące ustawienia](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-configure.png)
 
 4. Kliknij pozycję **Zapisz**.
@@ -69,19 +78,31 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resour
 
 Należy pamiętać, że właściwość workspaceID przyjmuje identyfikator zasobu pełnej Azure obszaru roboczego nie obszaru roboczego identyfikator/klucz wyświetlane w portalu usługi Analiza dzienników.
 
-### <a name="via-azure-cli"></a>Za pomocą interfejsu wiersza polecenia platformy Azure
-Do przesyłania strumieniowego za pośrednictwem [interfejsu wiersza polecenia Azure](insights-cli-samples.md), można użyć `insights diagnostic set` polecenia w następujący sposób:
+### <a name="via-azure-cli-20"></a>Za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+
+Do przesyłania strumieniowego za pośrednictwem [Azure CLI 2.0](insights-cli-samples.md), można użyć [utworzyć ustawienia diagnostyki az monitora](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) polecenia.
 
 ```azurecli
-azure insights diagnostic set --resourceId <resourceID> --workspaceId <workspace resource ID> --categories <list of categories> --enabled true
+az monitor diagnostic-settings create --name <diagnostic name> \
+    --workspace <log analytics name or object ID> \
+    --resource <target resource object ID> \
+    --resource-group <log analytics workspace resource group> \
+    --logs '[
+    {
+        "category": <category name>,
+        "enabled": true
+    }
+    ]'
 ```
 
-Należy pamiętać, że właściwość workspaceId przyjmuje identyfikator zasobu pełnej Azure obszaru roboczego nie obszaru roboczego identyfikator/klucz wyświetlane w portalu usługi Analiza dzienników.
+Dodatkowe kategorie można dodać do dzienników diagnostycznych, dodając słowniki do tablicy JSON przekazany jako `--logs` parametru.
+
+`--resource-group` Argument jest tylko w przypadku wymaganych `--workspace` nie jest identyfikatorem obiektu.
 
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Jak zbadać danych analizy dzienników?
 
 W bloku dziennika wyszukiwania w portalu lub analityka zaawansowane środowisko w ramach analizy dzienników jako część rozwiązania do zarządzania dziennika w tabeli AzureDiagnostics można badać dzienników diagnostycznych. Dostępne są także [kilka rozwiązań dla zasobów Azure](../log-analytics/log-analytics-add-solutions.md) można zainstalować, aby uzyskać błyskawiczny wgląd w dane dziennika są wysyłane do analizy dzienników.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
+
 * [Więcej informacji na temat dzienników diagnostycznych platformy Azure](monitoring-overview-of-diagnostic-logs.md)

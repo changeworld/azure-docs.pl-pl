@@ -1,12 +1,11 @@
 ---
-title: "Parametry połączenia bazy danych MongoDB dla konta bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak łączenie aplikacji z bazy danych MongoDB konta bazy danych rozwiązania Cosmos Azure przy użyciu ciągu połączenia bazy danych MongoDB."
-keywords: "Parametry połączenia bazy danych mongodb"
+title: Parametry połączenia bazy danych MongoDB dla konta bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak łączenie aplikacji z bazy danych MongoDB konta bazy danych rozwiązania Cosmos Azure przy użyciu ciągu połączenia bazy danych MongoDB.
+keywords: Parametry połączenia bazy danych mongodb
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
+manager: kfile
+documentationcenter: ''
 ms.assetid: e36f7375-9329-403b-afd1-4ab49894f75e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: anhoh
-ms.openlocfilehash: 41c0b360b54f9a9dcd2458ce5bdc05911c4f73a5
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: dfdcb458d0f81c0ddb9399ee8b89a52c4cbc6270
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Łączenie aplikacji bazy danych MongoDB, do bazy danych Azure rozwiązania Cosmos
 Dowiedz się, jak łączenie aplikacji z bazy danych MongoDB konta bazy danych rozwiązania Cosmos Azure przy użyciu ciągu połączenia bazy danych MongoDB. Następnie można użyć bazy danych Azure rozwiązania Cosmos bazy danych jako dane magazynu dla aplikacji bazy danych MongoDB. 
@@ -43,7 +42,7 @@ Ten samouczek zawiera można pobrać ciągu połączenia na dwa sposoby:
 
     ![Bloku szybki start](./media/connect-mongodb-account/QuickStartBlade.png)
 
-## <a id="GetCustomConnection"></a>Pobierz ciąg połączenia bazy danych MongoDB do dostosowania
+## <a id="GetCustomConnection"></a> Pobierz ciąg połączenia bazy danych MongoDB do dostosowania
 1. W przeglądarce internetowej, zaloguj się do [portalu Azure](https://portal.azure.com).
 2. W **bazy danych Azure rozwiązania Cosmos** bloku, wybierz interfejsu API dla konta bazy danych MongoDB. 
 3. W lewym okienku blok konta, kliknij przycisk **ciąg połączenia**. 

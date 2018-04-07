@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b317a2d9241016b66651af4659c7daf2e8d8f2cc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8f212797decdd967154584927984bc0a4e58f4ba
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatyzację zasobów w centrum danych lub w chmurze chronionej za pomocą hybrydowy proces roboczy elementu Runbook
 
@@ -93,6 +93,7 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
 Raz wykonać pierwsze dwa kroki dla danego środowiska automatyzacji, a następnie powtórz pozostałe kroki na każdym komputerze pracownika.
 
 #### <a name="1-create-log-analytics-workspace"></a>1. Tworzenie obszaru roboczego usługi Log Analytics
+
 Jeśli nie masz już obszaru roboczego analizy dzienników, następnie utwórz ją przy użyciu instrukcji w [Zarządzanie obszaru roboczego](../log-analytics/log-analytics-manage-access.md). Istniejący obszar roboczy można użyć, jeśli już istnieje.
 
 #### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2. Dodaj rozwiązanie do automatyzacji do obszaru roboczego analizy dzienników
@@ -102,6 +103,7 @@ Rozwiązania powodują dodawanie funkcji do usługi Log Analytics. Rozwiązanie 
 Postępuj zgodnie z instrukcjami w [można dodać za pomocą galerii rozwiązań rozwiązania](../log-analytics/log-analytics-add-solutions.md) można dodać **automatyzacji** rozwiązania do swojego obszaru roboczego analizy dzienników.
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3. Zainstaluj program Microsoft Monitoring Agent
+
 Microsoft Monitoring Agent łączy się analizy dzienników z komputerów. Po zainstalowaniu agenta na komputerze lokalnym i podłącz go do swojego obszaru roboczego, będzie automatycznie pobierał składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
 
 Postępuj zgodnie z instrukcjami w [połączyć komputery do analizy dzienników](../log-analytics/log-analytics-windows-agent.md) do zainstalowania agenta na komputerze lokalnym. Można powtórzyć ten proces dla wielu komputerów do dodania wielu pracowników w danym środowisku.

@@ -1,19 +1,19 @@
 ---
-title: "Kod systemu XEvent zdarzeń pliku bazy danych SQL | Dokumentacja firmy Microsoft"
-description: "Przykład dwufazowego kod, który demonstruje obiekt docelowy plik zdarzeń rozszerzonych zdarzeń w bazie danych SQL Azure zapewnia środowiska PowerShell i języka Transact-SQL. Usługa Azure Storage jest wymagany częścią tego scenariusza."
+title: Kod systemu XEvent zdarzeń pliku bazy danych SQL | Dokumentacja firmy Microsoft
+description: Przykład dwufazowego kod, który demonstruje obiekt docelowy plik zdarzeń rozszerzonych zdarzeń w bazie danych SQL Azure zapewnia środowiska PowerShell i języka Transact-SQL. Usługa Azure Storage jest wymagany częścią tego scenariusza.
 services: sql-database
 author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 630e0ca84479757d3bb4397aa63ee8a440e69427
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f13ac366a1c382e955db23f3bcefb8f31c89fcb9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowego pliku zdarzenia rozszerzonego zdarzeń w bazie danych SQL
 
@@ -455,9 +455,9 @@ GO
 
 ## <a name="output"></a>Dane wyjściowe
 
-Po ukończeniu działania skryptu języka Transact-SQL, kliknij komórkę w obszarze **event_data_XML** nagłówka kolumny. Jeden  **<event>**  element jest wyświetlany, która zawiera jedną instrukcję aktualizacji.
+Po ukończeniu działania skryptu języka Transact-SQL, kliknij komórkę w obszarze **event_data_XML** nagłówka kolumny. Jeden **<event>** element jest wyświetlany, która zawiera jedną instrukcję aktualizacji.
 
-Oto jeden  **<event>**  element, który został wygenerowany podczas testowania:
+Oto jeden **<event>** element, który został wygenerowany podczas testowania:
 
 
 ```xml

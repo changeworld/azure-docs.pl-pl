@@ -1,11 +1,11 @@
 ---
 title: Instalowanie programu Symantec Endpoint Protection w systemie Windows maszyny Wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
-description: "Informacje o sposobie instalowania i konfigurowania rozszerzeń zabezpieczeń firmy Symantec Endpoint Protection w nowej lub istniejącej maszyny Wirtualnej platformy Azure utworzonych za pomocą klasycznego modelu wdrożenia."
+description: Informacje o sposobie instalowania i konfigurowania rozszerzeń zabezpieczeń firmy Symantec Endpoint Protection w nowej lub istniejącej maszyny Wirtualnej platformy Azure utworzonych za pomocą klasycznego modelu wdrożenia.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: iainfou
-ms.openlocfilehash: 1603ebc7ee3c29277f30fbb802bdd8205b92d648
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd96cb975bfc30b2561a98a950a9dd3fc060fa54
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection na maszynie wirtualnej systemu Windows
 > [!IMPORTANT] 
@@ -64,7 +64,7 @@ Aby sprawdzić, czy rozszerzenie zabezpieczeń firmy Symantec został zainstalow
 2. Dla systemu Windows Server 2008 R2, kliknij przycisk **Start > Symantec Endpoint Protection**. Dla systemu Windows Server 2012 lub Windows Server 2012 R2, na ekranie startowym wpisz **firmy Symantec**, a następnie kliknij przycisk **Symantec Endpoint Protection**.
 3. Z **stan** karcie **stan Symantec Endpoint Protection** okna, stosowania aktualizacji lub uruchom ponownie w razie potrzeby.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 [Jak Zaloguj się do maszyny wirtualnej z systemem Windows Server][Logon]
 
 [Maszyna wirtualna platformy Azure rozszerzeń i funkcji][Ext]

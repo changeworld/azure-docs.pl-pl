@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -70,7 +70,7 @@ Wszystkie próbki szablonu zasad Azure są [szablony zasad Azure](json-samples.m
 * `all`: ocena grup zasobów i wszystkie typy zasobów 
 * `indexed`: tylko ocenić typy zasobów, które obsługują tagów i lokalizacja
 
-Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasady utworzone za pomocą portalu `all` tryb. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia Azure, należy określić **tryb** parametru ręcznie.
+Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasady utworzone za pomocą portalu `all` tryb. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia Azure, należy określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartość jego wartość domyślna to `indexed` dla zapewnienia zgodności.
 
 `indexed` powinien być używany podczas tworzenia zasad, który będzie wymuszać znaczników lub lokalizacji. Nie jest to wymagane, ale uniemożliwi zasoby, które nie obsługują znaczniki i lokalizacje wyświetlane jako niezgodne w wyniki oceny zgodności. Jedynym wyjątkiem jest **grup zasobów**. Należy ustawić zasady, które próbują wymusić lokalizacji lub tagi dla grupy zasobów **tryb** do `all` , a w szczególności docelowej `Microsoft.Resources/subscriptions/resourceGroup` typu. Na przykład zobacz [wymusić tagi grupy zasobów](scripts/enforce-tag-rg.md).
 
@@ -102,6 +102,8 @@ W metadanych właściwości można użyć **strongType** zapewnienie wielokrotne
 * `"resourceTypes"`
 * `"storageSkus"`
 * `"vmSKUs"`
+* `"existingResourceGroups"`
+* `"omsWorkspace"`
 
 W regule zasad możesz odwołania do parametrów przy użyciu następującej składni:
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 356c1343443b33e565c65ef0693b8d8455ff1d1b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Rozszerzanie alerty (Kopiuj) z portalu OMS na platformie Azure
 Portal Operations Management Suite (OMS) wyświetlane tylko alerty analizy dzienników.  Nowe środowisko alertów ma teraz zintegrowane środowisko alertów w różnych usług i części na platformie Microsoft Azure. Nowe środowisko dostępna jako **alerty** w obszarze Monitor Azure w usłudze Azure portalu zawiera alertów dotyczących działań w dzienniku, metryki alertów i dziennika alerty dla analizy dzienników i usługi Application Insights. 
@@ -30,12 +30,13 @@ Oprócz korzyści naliczone w nie ma potrzeby przejść z portalu Azure istniej�
 
 - W odróżnieniu od w portalu OMS, gdzie można utworzyć i wyświetlić; tylko 250 alerty w alertach Azure to ograniczenie nie jest obecny
 - Azure alertów wszystkie typy alertów mogą być zarządzane, wyliczyć i wyświetlane; nie tylko analizy dzienników alertów, jak w przypadku portalu OMS
-- Korzystanie z alertów Azure [grupy akcji](monitoring-action-groups.md), które umożliwiają używanie więcej niż jedną akcję dla każdego alertu, w tym programu SMS, wywołać głosu, elementu Runbook automatyzacji, elementu Webhook, zarządzanie usługami IT — łącznika i więcej. Alerty analizy dzienników są ograniczone w obu numer również jako typ możliwe akcje
+- Kontrola dostępu umożliwia użytkownikom tylko monitorowanie i alerty, przy użyciu [roli Azure Monitor](monitoring-roles-permissions-security.md)
+- Korzystanie z alertów Azure [grupy akcji](monitoring-action-groups.md), które umożliwiają używanie więcej niż jedną akcję dla każdego alertu, w tym programu SMS, wywołać głosu, elementu Runbook automatyzacji, elementu Webhook, zarządzanie usługami IT — łącznika i więcej. 
 
 ## <a name="process-of-extending-your-alerts"></a>Proces rozszerzania alerty
 Proces rozszerzania alerty z portalu OMS na platformie Azure, nie **nie** wymaga zmian w definicji alertu, w zapytania lub w konfiguracji w dowolny sposób. Tylko zmiany wymagane jest, że na platformie Azure, wszystkie akcje, takie jak powiadomienia e-mail wywołanie elementu webhook i uruchamiania elementu runbook automatyzacji lub nawiązywania Zarządzanie usługami IT — tool są wykonywane za pośrednictwem grupy działań. Dlatego jeśli grupa odpowiednich akcji skojarzonych z alertu - one zostaną stają się rozszerzone na platformie Azure.
 
-Ponieważ proces rozszerzenia jest bezpieczna i nie interruptive, firma Microsoft rozszerzy alerty utworzone w portalu OMS na alerty Azure automatycznie — począwszy od **23 kwietnia 2018**. Od tego dnia Microsoft rozpocznie się zaplanować rozszerzanie alerty na platformie Azure i stopniowo wszystkie alerty w portalu OMS, można zarządzać z portalu Azure. 
+Ponieważ proces rozszerzenia jest bezpieczna i nie interruptive, firma Microsoft rozszerzy alerty utworzone w portalu OMS na alerty Azure automatycznie — począwszy od **14 maja 2018**. Od tego dnia Microsoft rozpocznie się zaplanować rozszerzanie alerty na platformie Azure i stopniowo wszystkie alerty w portalu OMS, można zarządzać z portalu Azure. 
 
 Gdy alerty w obszarze roboczym analizy dzienników są planowane do rozszerzania na platformie Azure, użytkownik będzie nadal działać i zostanie **nie** w żaden sposób naruszyć monitorowanie. Podczas planowania alerty mogą być niedostępne do edycji/modyfikacji tymczasowo; ale nowe alerty Azure mogą w dalszym ciągu można tworzyć w tym krótkim czasie. W tym czasie Jeśli wszystkie edytowania lub tworzenia alertu można to zrobić w portalu OMS, użytkownicy będą mieć opcję, aby kontynuować do Azure Log Analytics lub Azure alerty.
 
@@ -55,9 +56,14 @@ Jak już wspomniano, alertach tworzonych w pakiet zarządzania operacji Microsof
 
  ![Wyświetlanie alertów po rozszerzana na platformie Azure portalu OMS](./media/monitor-alerts-extend/PostExtendList.png)
 
-Do żadnej operacji dotyczących alertów, takie jak edytowania lub tworzenia zrobić w portalu OMS użytkowników będzie przezroczysty kierowane do alertów Azure. Alert będzie tworzenia z istniejącego [API analizy dziennika](../log-analytics/log-analytics-api-alerts.md) jak wcześniej, tylko drobne zmiany że po alerty zostały rozszerzone na platformie Azure — grup akcji musiałby być skojarzone w harmonogramie.
+Do żadnej operacji dotyczących alertów, takie jak edytowania lub tworzenia zrobić w portalu OMS użytkowników będzie przezroczysty kierowane do alertów Azure. 
 
-## <a name="next-steps"></a>Następne kroki
+> [!NOTE]
+> Gdy użytkownicy niewidocznie wpłynie na platformie Azure, na dodanie lub edytować akcję na alert w OMS — upewnij się, użytkownicy są prawidłowo zamapowane odpowiedni [uprawnienia za pomocą monitora Azure i alerty](monitoring-roles-permissions-security.md)
+
+Alert będzie tworzenia z istniejącego [API analizy dziennika](../log-analytics/log-analytics-api-alerts.md) jak wcześniej, tylko drobne zmiany że po alerty zostały rozszerzone na platformie Azure — grup akcji musiałby być skojarzone w harmonogramie.
+
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się, z narzędzi [inicjować rozszerzanie alerty z usługą OMS na platformie Azure](monitoring-alerts-extend-tool.md)
 * Dowiedz się więcej o nowe [zgłaszać alerty Azure](monitoring-overview-unified-alerts.md).
