@@ -139,6 +139,8 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: Uwierzytelnianie za pomocą usługi Twitter
               href: app-service-mobile-how-to-configure-twitter-authentication.md
+        - name: Dostosowywanie uwierzytelniania/autoryzacji
+          href: app-service-authentication-how-to.md
         - name: Używanie tożsamości usługi zarządzanej
           href: app-service-managed-service-identity.md
         - name: Używanie certyfikatu SSL w kodzie aplikacji

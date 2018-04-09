@@ -342,13 +342,20 @@
         - name: Rozszerzenie modułu zbierania danych dzienników platformy Azure
           href: log-collector-extension.md
         - name: Rozszerzenie diagnostyki platformy Azure
-          href: ps-extensions-diagnostics.md
+          href: extensions-diagnostics.md
+          items:
+            - name: Schemat rozszerzenia
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
+            - name: Włączanie przy użyciu programu PowerShell
+              href: ps-extensions-diagnostics.md
+            - name: Włączanie za pomocą szablonów
+              href: extensions-diagnostics-template.md
+            - name: Rozwiązywanie problemów
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
         - name: Eksportowanie rozszerzeń maszyn wirtualnych
           href: extensions-export-templates.md
         - name: Rozwiązywanie problemów z rozszerzeniami
           href: extensions-troubleshoot.md
-        - name: Rozszerzenie monitorowania i diagnostyki
-          href: extensions-diagnostics-template.md
         - name: Agent usługi Network Watcher
           href: extensions-nwa.md
         - name: Ograniczanie instalacji rozszerzeń

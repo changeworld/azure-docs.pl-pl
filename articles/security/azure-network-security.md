@@ -1,12 +1,12 @@
 ---
 title: Zabezpieczenia sieci platformy Azure | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa."
+description: Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f0cc1716daa70bf7c860373819568774cf6f95d9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-network-security"></a>Zabezpieczenia sieci platformy Azure
+# <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
 
 Wiemy, że zabezpieczenia są zadania, co w chmurze i jak ważne jest aby znaleźć dokładne i aktualne informacje na temat zabezpieczeń platformy Azure. Najważniejsze przyczyny na potrzeby aplikacji i usług Azure ma korzystać z platformy Azure szerokiej gamy narzędzi zabezpieczeń i możliwości. Te narzędzia i funkcje pomocy umożliwiają tworzenie bezpiecznych rozwiązań na platformie Azure.
 
@@ -392,7 +392,7 @@ Ponadto bramy aplikacji zapory aplikacji sieci Web ułatwia monitorowanie aplika
 
 Dziennik sformatowany JSON trafia bezpośrednio do konta magazynu klienta. Mają pełną kontrolę nad te dzienniki i można zastosować zasad przechowywania.
 
-Te dzienniki mogą również pozyskiwania do własnych analytics systemu za pomocą [integracji dziennika Azure](https://aka.ms/AzLog). Dzienniki zapory aplikacji sieci Web są również zintegrowane z [Operations Management Suite (OMS)](https://www.microsoft.com/cloud-platform/operations-management-suite) , można wykonywać zaawansowane zapytania szczegółowych analizy dzienników OMS.
+Te dzienniki mogą również pozyskiwania do własnych analytics systemu za pomocą [integracji dziennika Azure](https://aka.ms/AzLog). Dzienniki zapory aplikacji sieci Web są również zintegrowane z [analizy dzienników](../log-analytics/log-analytics-overview.md) , można wykonywać zaawansowane zapytania szczegółowe analizy dzienników.
 
 #### <a name="azure-web-application-firewall-waf"></a>Zapora aplikacji sieci web platformy Azure (WAF)
 
@@ -477,7 +477,7 @@ Osoby i procesy, które działają na Microsoft Azure są prawdopodobnie najważ
 
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może być maszynę wirtualną, konta magazynu i sieci wirtualnej lub aplikacji sieci web, bazy danych, serwer bazy danych i usług innych firm. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy.
 
-Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i tagowania ułatwiające zarządzanie zasobami po wdrożeniu.
+Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu.
 
 **Korzyści wynikające ze stosowania usługi Resource Manager**
 
@@ -510,7 +510,7 @@ System Azure oferuje wiele narzędzi do monitorowania, zapobiegania, wykrywania 
 
 -   Log Analytics
 
-### <a name="network-watcher"></a>Obserwatora sieciowego
+### <a name="network-watcher"></a>Obserwator sieci
 
 [Monitor sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) — na podstawie scenariusza monitorowania jest dostarczana z funkcji obserwatora sieciowego. Ta usługa obejmuje przechwytywania pakietów, następnego przeskoku, przepływ IP Sprawdź widok grupy zabezpieczeń, dzienniki przepływu NSG. Scenariusz poziomu monitorowania udostępnia widok pełnego zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 
@@ -606,7 +606,7 @@ Wyświetl dzienniki diagnostyczne zawiera obserwatora sieciowego. Ten widok zawi
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Zaloguj się Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) to usługa w [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) który monitoruje chmury i lokalnych środowiskach utrzymywać ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł.
+[Zaloguj się Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) jest usługą platformy Azure, który monitoruje chmurze i lokalnych środowiskach utrzymywać ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł.
 
 Analiza dzienników oferuje następujące rozwiązania do monitorowania sieci:
 
@@ -650,7 +650,7 @@ Następujące dzienniki są obsługiwane w przypadku [sieciowej grupy zabezpiecz
 
 - **NetworkSecurityGroupRuleCounter:** reguł zawiera wpisy dla ile razy każda grupa NSG jest stosowana do odmowy lub zezwolić na ruch.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o zabezpieczeń, odczytując niektóre nasze tematy szczegółowe zabezpieczeń:
 
 -   [Analizy dzienników dla grup zabezpieczeń sieci (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)

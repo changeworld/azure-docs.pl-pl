@@ -155,14 +155,10 @@
           href: backup-client-automation.md
     - name: Azure SQL Database
       items:
-        - name: Konfigurowanie długoterminowego przechowywania kopii zapasowych
-          href: ../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Wyświetlanie kopii zapasowych w magazynie usługi Recovery Services
-          href: ../sql-database/sql-database-view-backups-in-vault.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Przywracanie po długoterminowym przechowywaniu kopii zapasowych
-          href: ../sql-database/sql-database-restore-from-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Usuwanie długoterminowych kopii zapasowych usługi Azure SQL
-          href: ../sql-database/sql-database-long-term-retention-delete.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Konfigurowanie i przywracanie kopii zapasowych usługi SQL Database — magazyn SQL
+          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Konfigurowanie i przywracanie kopii zapasowych usługi SQL Database — magazyn usługi Recovery Services
+          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
     - name: Windows Server
       items:
         - name: Tworzenie kopii zapasowych plików i folderów z systemu Windows Server

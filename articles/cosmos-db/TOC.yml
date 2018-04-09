@@ -6,8 +6,6 @@ items:
     items:
       - name: Informacje o usłudze Azure Cosmos DB
         href: introduction.md
-      - name: Eksperyment dotyczący dokumentacji
-        href: experiment.md
   - name: Przewodniki Szybki start
     expanded: true
     items:
@@ -164,7 +162,7 @@ items:
       - name: Bezpieczeństwo
         href: database-security.md
       - name: Całkowity koszt posiadania
-        href: 'https://aka.ms/documentdb-tco-paper'
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Przypadki zastosowań
         href: use-cases.md
         items:
@@ -184,13 +182,15 @@ items:
               - name: Wydajność zapytań SQL
                 href: sql-api-sql-query-metrics.md
               - name: SQL — informacje i testowanie
-                href: 'https://www.documentdb.com/sql/demo'
+                href: 'https://aka.ms/cosmos-db-playground'
               - name: Partycjonowanie
                 href: sql-api-partition-data.md
               - name: 'Procedury składowane, wyzwalacze i funkcje definiowane przez użytkownika (UDF)'
                 href: programming.md
               - name: Testowanie wydajności
                 href: performance-testing.md
+              - name: Porady dotyczące wydajności asynchronicznego języka Java
+                href: performance-tips-async-java.md
               - name: Porady dotyczące wydajności kodu .NET
                 href: performance-tips.md
               - name: Porady dotyczące wydajności kodu Java
@@ -378,17 +378,17 @@ items:
           - name: Rejestrowanie aplikacji za pomocą usługi Logic Apps
             href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
           - name: Powiązanie z funkcją Azure Functions
-            href: ../azure-functions/functions-bindings-documentdb.md
+            href: ../azure-functions/functions-bindings-cosmosdb.md
           - name: Integracja z usługą Azure Search
-            href: ../search/search-howto-index-documentdb.md
+            href: ../search/search-howto-index-cosmosdb.md
           - name: Przenoszenie danych za pomocą usługi Azure Data Factory
             href: ../data-factory/connector-azure-cosmos-db.md
           - name: Analiza danych czasu rzeczywistego przy użyciu usługi Azure Stream Analytics
-            href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+            href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: Uzyskiwanie zmienionego rekordu HL7 FHIR przy użyciu usługi Logic Apps
             href: change-feed-hl7-fhir-logic-apps.md
           - name: Przetwarzanie danych z czujników w czasie rzeczywistym
-            href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+            href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
           - name: Wizualizacja danych przy użyciu usługi Power BI
             href: powerbi-visualize.md
           - name: Wykorzystywanie sterownika ODBC do wizualizacji danych
