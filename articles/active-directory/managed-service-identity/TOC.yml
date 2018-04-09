@@ -37,37 +37,49 @@
           href: how-to-use-vm-sign-in.md
         - name: Używanie z zestawami SDK platformy Azure
           href: how-to-use-vm-sdk.md
-    - name: Uzyskiwanie dostępu do usługi Azure Data Lake Store przy użyciu tożsamości usługi zarządzanej
+    - name: Korzystania z tożsamości zarządzanej maszyny wirtualnej z systemem Windows/usługi VMSS
       items:
-        - name: Z maszyny wirtualnej z systemem Windows
+        - name: Uzyskiwanie dostępu do usługi Azure Data Lake Store
           href: tutorial-windows-vm-access-datalake.md
-        - name: Z maszyny wirtualnej z systemem Linux
-          href: tutorial-linux-vm-access-datalake.md
-    - name: Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości usługi zarządzanej
-      items:
-        - name: Z maszyny wirtualnej z systemem Windows
+        - name: Uzyskiwanie dostępu do usługi Azure Resource Manager
           href: tutorial-windows-vm-access-arm.md
-        - name: Z maszyny wirtualnej z systemem Linux
-          href: tutorial-linux-vm-access-arm.md
-    - name: Uzyskiwanie dostępu do serwera SQL platformy Azure przy użyciu tożsamości usługi zarządzanej
-      items:
-        - name: Z maszyny wirtualnej z systemem Windows
+        - name: Uzyskiwanie dostępu do usługi Azure SQL
           href: tutorial-windows-vm-access-sql.md
-    - name: Uzyskiwanie dostępu do magazynu platformy Azure przy użyciu tożsamości usługi zarządzanej
-      items:
-        - name: Z maszyny wirtualnej z systemem Windows przy użyciu klucza dostępu
+        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu
           href: tutorial-windows-vm-access-storage.md
-        - name: Z maszyny wirtualnej z systemem Windows przy użyciu sygnatury dostępu współdzielonego
+        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą sygnatury dostępu współdzielonego
           href: tutorial-windows-vm-access-storage-sas.md
-        - name: Z maszyny wirtualnej z systemem Linux przy użyciu klucza dostępu
-          href: tutorial-linux-vm-access-storage.md
-        - name: Z maszyny wirtualnej z systemem Linux przy użyciu sygnatury dostępu współdzielonego
-          href: tutorial-linux-vm-access-storage-sas.md
-    - name: Uzyskiwanie dostępu do usługi Azure Key Vault przy użyciu tożsamości usługi zarządzanej
-      items:
-        - name: Z maszyny wirtualnej z systemem Windows
+        - name: Uzyskiwanie dostępu do usługi Azure Key Vault
           href: tutorial-windows-vm-access-nonaad.md
-        - name: Z maszyny wirtualnej z systemem Linux
+    - name: Korzystanie z tożsamości zarządzanej maszyny wirtualnej z systemem Linux/programu VMSS
+      items:
+        - name: Uzyskiwanie dostępu do usługi Azure Data Lake Store
+          href: tutorial-linux-vm-access-datalake.md
+        - name: Uzyskiwanie dostępu do usługi Azure Resource Manager
+          href: tutorial-linux-vm-access-arm.md
+        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu
+          href: tutorial-linux-vm-access-storage.md
+        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą sygnatury dostępu współdzielonego
+          href: tutorial-linux-vm-access-storage-sas.md
+        - name: Uzyskiwanie dostępu do usługi Azure Key Vault
           href: tutorial-linux-vm-access-nonaad.md
     - name: Często zadawane pytania i znane problemy
       href: known-issues.md
+    - name: Dokumentacja
+      items:
+        - name: Interfejs wiersza polecenia
+          href: /cli/azure/identity
+        - name: PowerShell
+          href: '/powershell/module/azurerm.managedserviceidentity#managed_service_identity'
+        - name: .NET
+          href: '/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet'
+        - name: Java
+          href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
+        - name: Python
+          href: /python/api/azure.mgmt.msi
+        - name: Ruby
+          href: 'https://rubygems.org/gems/azure_mgmt_msi'
+        - name: Node.js
+          href: /javascript/api/ms-rest-azure
+        - name: Przejdź
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'

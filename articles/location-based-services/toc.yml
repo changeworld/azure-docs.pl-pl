@@ -19,7 +19,7 @@
       href: tutorial-prioritized-routes.md
 - name: Pojęcia
   items:
-    - name: Poziomy powiększenia i siatka
+    - name: Poziomy powiększenia i siatka kafelków
       href: zoom-levels-and-tile-grid.md
     - name: Pokrycie geokodowaniem
       href: geocoding-coverage.md
@@ -27,8 +27,10 @@
       href: traffic-coverage.md
     - name: Pokrycie renderowaniem
       href: render-coverage.md
-    - name: Pokrycie wyznaczaniem tras
+    - name: Pokrycie routingiem
       href: routing-coverage.md
+    - name: Obsługiwane języki
+      href: supported-languages.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Zarządzanie kontem i kluczami

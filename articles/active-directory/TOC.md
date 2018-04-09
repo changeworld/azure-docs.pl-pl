@@ -215,11 +215,12 @@
 ##### [Niestandardowa strona główna](application-proxy-office365-app-launcher.md)
 ##### [Tłumaczenie linków w tekście](application-proxy-link-translation.md)
 ##### [Aplikacje z symbolami wieloznacznymi](active-directory-application-proxy-wildcard.md)
-##### [Serwer proxy aplikacji usługi Azure AD i usługa Qlik Sense](active-directory-application-proxy-qlik.md) 
+
 #### Przewodniki dotyczące publikowania
 ##### [Pulpit zdalny](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
+##### [Qlik Sense](active-directory-application-proxy-qlik.md) 
 #### [Program PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
 #### [Rozwiązywanie problemów](active-directory-application-proxy-troubleshoot.md)
 

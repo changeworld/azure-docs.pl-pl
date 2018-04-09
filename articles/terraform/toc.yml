@@ -15,6 +15,8 @@
       maintainContext: true
 - name: Samouczki
   items:
+    - name: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
+      href: terraform-slot-walkthru.md
     - name: Tworzenie maszyny wirtualnej programu z włączoną tożsamością usługi zarządzanej
       href: terraform-vm-msi.md
     - name: Tworzenie klastra maszyn wirtualnych przy użyciu modułów Terraform
