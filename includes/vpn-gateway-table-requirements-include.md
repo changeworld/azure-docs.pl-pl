@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d8091fdade9cd417af58755d8245c2fb091b86b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5e7e365a73c9ba9cfd91d4f93759e7af55a0ad48
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 Poniższej tabeli wymieniono wymagania dla bram PolicyBased i RouteBased sieci VPN. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym. W przypadku modelu klasycznego bramy sieci VPN PolicyBased są takie same, jak bramy statyczne, a bramy oparte na trasach są takie same, jak bramy dynamiczne.
 
@@ -23,4 +23,6 @@ Poniższej tabeli wymieniono wymagania dla bram PolicyBased i RouteBased sieci V
 | **Metoda uwierzytelniania** |Klucz wstępny |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |
 | **Maksymalna liczba połączeń S2S** |1 |10 |10 |30 |
 | **Maksymalna liczba połączeń P2S** |Nieobsługiwane |128 |128 |128 |
-| **Aktywna Obsługa routingu (BGP)** |Nieobsługiwane |Nieobsługiwane |Obsługiwane |Obsługiwane |
+| **Aktywna Obsługa routingu (BGP)** (*) |Nieobsługiwane |Nieobsługiwane |Obsługiwane |Obsługiwane |
+
+  (*) Protokół BGP nie jest obsługiwany dla klasycznym modelu wdrażania.

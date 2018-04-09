@@ -9,15 +9,14 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ba457daca030d3219fe32177b0b5f8b5565ff544
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="back-up-azure-file-shares-preview"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure (wersja zapoznawcza)
-
-W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) na platformie Azure przy użyciu witryny Azure Portal.
+# <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
+W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
 
 Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -29,20 +28,19 @@ Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czy
 > * Usuwanie danych kopii zapasowych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy udział ten jest określony jako jeden z [obsługiwanych typów kont magazynu](troubleshoot-azure-files.md#preview-boundaries). Jeśli tak, oznacza to, że możesz chronić swoje udziały plików.
+Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy znajduje się on na [koncie magazynu jednego z obsługiwanych typów](troubleshoot-azure-files.md#preview-boundaries). Jeśli tak, oznacza to, że możesz chronić swoje udziały plików.
 
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie zapoznawczym
-Usługa Azure Files jest w wersji zapoznawczej. Należy pamiętać o następujących ograniczeniach w okresie zapoznawczym:
-- Nie można chronić udziałów plików w ramach kont magazynu z replikacją (RA-GRS) [magazynu strefowo nadmiarowego (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) lub [magazynu geograficznie nadmiarowego dostępnego do odczytu (GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
-- Nie można chronić udziałów plików w ramach kont magazynu, które mają włączone sieci wirtualne.
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
+Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Należy pamiętać o następujących ograniczeniach w okresie zapoznawczym:
+- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu z replikacją [magazynu strefowo nadmiarowego (ZRS, zone-redundant storage)](../storage/common/storage-redundancy.md#zone-redundant-storage) ani [magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS, read-access geo-redundant storage)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
+- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne.
 - Nie ma programu PowerShell ani interfejsu wiersza polecenia dostępnego dla ochrony usługi Azure Files.
 - Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.
 - Maksymalna liczba kopii zapasowych na żądanie to cztery dziennie.
 - Aby zapobiec przypadkowemu usunięciu kopii zapasowych z magazynu usługi Recovery Services, użyj [blokad zasobów](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) na koncie magazynu.
 - Nie usuwaj migawek utworzonych przy użyciu usługi Azure Backup. Usunięcie migawek może spowodować utratę punktów odzyskiwania i/lub błędy przywracania. 
 
-## <a name="configuring-azure-file-shares-backup"></a>Konfigurowanie kopii zapasowych udziałów plików platformy Azure
-
+## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurowanie kopii zapasowej udziału plików platformy Azure
 Wszystkie dane kopii zapasowych są przechowywane w magazynach usługi Recovery Services. W tym samouczku przyjęto założenie, że ustanowiono już udział plików platformy Azure. Aby utworzyć kopię zapasową udziału plików platformy Azure:
 
 1. Utwórz magazyn usługi Recovery Services w tym samym regionie, co udziału plików. Jeśli magazyn już istnieje, otwórz stronę z jego przeglądem, a następnie kliknij pozycję **Kopia zapasowa**.
@@ -55,21 +53,21 @@ Wszystkie dane kopii zapasowych są przechowywane w magazynach usługi Recovery 
 
 3. Kliknij pozycję **Utwórz kopię zapasową**, aby skonfigurować udział plików platformy Azure na potrzeby magazynu usługi Recovery Services. 
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/set-backup-goal.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/set-backup-goal.png)
 
-    Po skojarzeniu magazynu z udziałem plików platformy Azure zostanie otwarte menu Kopia zapasowa oraz monit dotyczący wyboru konta magazynu. W menu wyświetlane są wszystkie obsługiwane konta magazynu znajdujące się w tym samym regionie, co magazyn, które nie są jeszcze skojarzone z magazynem usługi Recovery Services.
+    Po skojarzeniu magazynu z udziałem plików platformy Azure zostanie otwarte menu Kopia zapasowa oraz zostanie wyświetlony monit dotyczący wyboru konta magazynu. W menu wyświetlane są wszystkie obsługiwane konta magazynu znajdujące się w tym samym regionie, co magazyn, które nie są jeszcze skojarzone z magazynem usługi Recovery Services.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-storage-accounts.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-storage-accounts.png)
 
 4. Na liście kont magazynu wybierz konto, a następnie kliknij przycisk **OK**. Na platformie Azure zostanie wykonane wyszukiwanie udziałów plików w ramach magazynu, dla których można utworzyć kopię zapasową. Jeśli niedawno dodano udziały plików i nie ma ich na liście, poczekaj chwilę na ich pojawienie się.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/discover-file-shares.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/discover-file-shares.png)
 
 5. Z listy **Udziały plików** wybierz co najmniej jeden udział plików, którego kopię zapasową chcesz utworzyć, a następnie kliknij przycisk **OK**.
 
 6. Po wybraniu udziałów plików menu Kopia zapasowa zostanie przełączone na menu **Zasady tworzenie kopii zapasowych**. Z poziomu tego menu wybierz istniejące zasady tworzenia kopii zapasowych lub utwórz nowe, a następnie kliknij pozycję **Włącz kopię zapasową**. 
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/apply-backup-policy.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/apply-backup-policy.png)
 
     Po ustanowieniu zasad tworzenia kopii zapasowych w zaplanowanym czasie zostanie utworzona migawka udziałów plików, a punkt odzyskiwania zostanie zachowany przez wybrany okres.
 
@@ -80,29 +78,29 @@ W pewnych okolicznościach może zaistnieć potrzeba wygenerowania migawki kopii
 
 1. Otwórz magazyn usługi Recovery Services zawierający punkty odzyskiwania udziałów plików, a następnie kliknij pozycję **Elementy kopii zapasowej**. Zostanie wyświetlona lista typów elementów kopii zapasowych.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-backup-items.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-backup-items.png)
 
 2. Z listy wybierz pozycję **Azure Storage (Azure Files)**. Zostanie wyświetlona lista udziałów plików platformy Azure.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-azure-files-backup-items.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
 3. Z listy udziałów plików platformy Azure wybierz żądany udział plików. Zostanie otwarte menu elementu kopii zapasowej dla wybranego udziału plików.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/backup-item-menu.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/backup-item-menu.png)
 
 4. W menu Element kopii zapasowej kliknij pozycję **Utwórz kopię zapasową teraz**. Ponieważ jest to zadanie tworzenia kopii zapasowej na żądanie, nie istnieją żadne zasady przechowywania skojarzone z punktem odzyskiwania. Zostanie otwarte okno dialogowe **Utwórz kopię zapasową teraz**. Określ ostatni dzień zachowywania punktu odzyskiwania. 
   
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/backup-now-menu.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/backup-now-menu.png)
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Przywracanie z kopii zapasowej udziału plików platformy Azure
 Jeśli chcesz przywrócić cały udział plików bądź pojedyncze pliki lub foldery z punktu przywracania, przejdź do elementu kopii zapasowej zgodnie z opisem w poprzedniej sekcji. Wybierz pozycję **Przywróć udział plików**, aby przywrócić cały udział plików z żądanego punktu w czasie. Z wyświetlonej listy Punkty przywracania wybierz punkt przywracania, aby możliwe było zastąpienie bieżącego udziału plików lub przywrócenie go do alternatywnego udziału plików w tym samym regionie.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/select-restore-location.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/select-restore-location.png)
 
 ## <a name="restore-individual-files-or-folders-from-backup-of-azure-file-shares"></a>Przywracanie pojedynczych plików lub folderów z kopii zapasowej udziału plików platformy Azure
 Usługa Azure Backup zapewnia możliwość przeglądania punktu przywracania w witrynie Azure Portal. Aby przywrócić wybrany plik lub folder, kliknij pozycję Odzyskiwanie plików na stronie Element kopii zapasowej, a następnie dokonaj wyboru z listy dostępnych punktów przywracania. Wybierz lokalizację docelową odzyskiwania, a następnie kliknij pozycję **Wybierz plik**, aby przejrzeć punkt przywracania. Wybierz wybrany plik lub folder, a następnie wybierz pozycję **Przywróć**.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/restore-individual-files-folders.png)
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/restore-individual-files-folders.png)
 
 ## <a name="manage-azure-file-share-backups"></a>Zarządzanie kopiami zapasowymi udziałów plików platformy Azure
 
@@ -127,7 +125,7 @@ Aby otworzyć stronę **Zadania tworzenia kopii zapasowej**:
 
 ### <a name="create-a-new-policy"></a>Tworzenie nowych zasad
 
-Możesz utworzyć nowe zasady w celu tworzenia kopii zapasowej udziału plików z poziomu obszaru **Zasady tworzenia kopii zapasowych** magazynu usługi Recovery Services. Wszystkie zasady utworzone podczas konfigurowania kopii zapasowej na potrzeby udziałów plików są wyświetlane z udziałem plików platformy Azure jako typem zasad.
+Nowe zasady w celu tworzenia kopii zapasowej udziałów plików platformy Azure możesz utworzyć z poziomu obszaru **Zasady tworzenia kopii zapasowych** magazynu usługi Recovery Services. Wszystkie zasady utworzone podczas konfigurowania kopii zapasowej na potrzeby udziałów plików są wyświetlane z udziałem plików platformy Azure jako typem zasad.
 
 Aby wyświetlić istniejące zasady tworzenia kopii zapasowych:
 
@@ -159,7 +157,7 @@ Aby zatrzymać ochronę udziału plików platformy Azure:
 
 1. Otwórz magazyn usługi Recovery Services zawierający punkty odzyskiwania udziałów plików, a następnie kliknij pozycję **Elementy kopii zapasowej**. Zostanie wyświetlona lista typów elementów kopii zapasowych.
 
-   ![kliknij pozycję Kopia zapasowa, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-backup-items.png) 
+   ![Klikanie pozycji Utwórz kopię zapasową, aby skojarzyć udział plików platformy Azure z magazynem](./media/backup-file-shares/list-of-backup-items.png) 
 
 2. Z listy **Typ zarządzania kopiami zapasowymi** wybierz pozycję **Azure Storage (Azure Files)**. Zostanie wyświetlona lista elementów kopii zapasowych dla typu Azure Storage (Azure Files).
 

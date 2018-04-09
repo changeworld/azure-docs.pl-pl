@@ -3,6 +3,8 @@
 
 * Konwersja jest nieodwracalna. 
 
+* Należy pamiętać, że jakaś użytkownikom [Współautor·maszyny·wirtualnej](../articles/active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) rola nie będzie mógł zmienić rozmiar maszyny Wirtualnej (ponieważ mogą one wstępne konwersji). Jest to spowodowane maszyny wirtualne z dyskami zarządzanych wymagają od użytkownika posiadania uprawnienia Microsoft.Compute/disks/write na dyskach systemu operacyjnego.
+
 * Należy przetestować konwersję. Przeprowadź migrację testowej maszyny wirtualnej, zanim przeprowadzisz migrację w środowisku produkcyjnym.
 
 * Podczas konwersji cofany jest przydział maszyny wirtualnej. Maszyna wirtualna otrzyma nowy adres IP przy jej ponownym uruchomieniu po konwersji. W razie potrzeby do maszyny wirtualnej można [przypisać statyczny adres IP](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md).
