@@ -1,8 +1,8 @@
 ---
-title: "Jak utworzyć lub usunąć konto magazynu oraz zarządzać nim w witrynie Azure Portal | Microsoft Docs"
-description: "Utwórz nowe konto magazynu, zarządzaj kluczami dostępu do konta lub usuń konto magazynu w witrynie Azure Portal. Więcej informacji na temat kont magazynu (warstwy Standardowa i Premium)."
+title: Jak utworzyć lub usunąć konto magazynu oraz zarządzać nim w witrynie Azure Portal | Microsoft Docs
+description: Utwórz nowe konto magazynu, zarządzaj kluczami dostępu do konta lub usuń konto magazynu w witrynie Azure Portal. Więcej informacji na temat kont magazynu (warstwy Standardowa i Premium).
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -12,7 +12,8 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-f1_keywords: sql13.swb.windowsazurestorage.connect.f1
+f1_keywords:
+- sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
 ms.openlocfilehash: dde2ec3b68f5951e268c32b1c6551641f22a0511
