@@ -1,12 +1,12 @@
 ---
-title: "Tworzenie klastra usługi Service Fabric systemu Linux na platformie Azure | Microsoft Docs"
-description: "Z tego samouczka dowiesz się, jak wdrożyć klaster usługi Service Fabric systemu Linux w istniejącej sieci wirtualnej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure."
+title: Tworzenie klastra usługi Service Fabric systemu Linux na platformie Azure | Microsoft Docs
+description: Z tego samouczka dowiesz się, jak wdrożyć klaster usługi Service Fabric systemu Linux w istniejącej sieci wirtualnej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: e6cbc8c3c7e1a9ebe9684efb0fa6ffa0717240ea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 63d5ae371b4852be96f764b91ec44f1befbd469b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Samouczek: wdrażanie klastra usługi Service Fabric systemu Linux w sieci wirtualnej platformy Azure
 Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się w nim, jak wdrożyć klaster usługi Service Fabric systemu Linux w [sieci wirtualnej (VNET) platformy Azure](../virtual-network/virtual-networks-overview.md) i [sieciowej grupie zabezpieczeń](../virtual-network/virtual-networks-nsg.md) za pomocą szablonu i interfejsu wiersza polecenia platformy Azure. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje. Aby utworzyć klaster systemu Windows za pomocą programu PowerShell, zobacz [Tworzenie bezpiecznego klastra systemu Windows na platformie Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).

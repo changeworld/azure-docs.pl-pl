@@ -51,6 +51,8 @@
       href: app-service-web-tutorial-custom-ssl.md
     - name: 4 — Dodawanie usługi CDN
       href: app-service-web-tutorial-content-delivery-network.md
+    - name: 5 — Uwierzytelnianie użytkowników
+      href: app-service-web-tutorial-auth-aad.md
 - name: Przykłady
   items:
     - name: Interfejs wiersza polecenia platformy Azure
@@ -139,7 +141,7 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: Uwierzytelnianie za pomocą usługi Twitter
               href: app-service-mobile-how-to-configure-twitter-authentication.md
-        - name: Dostosowywanie uwierzytelniania/autoryzacji
+        - name: Dostosowywanie aplikacji
           href: app-service-authentication-how-to.md
         - name: Używanie tożsamości usługi zarządzanej
           href: app-service-managed-service-identity.md

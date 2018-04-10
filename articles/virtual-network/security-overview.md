@@ -1,12 +1,12 @@
 ---
-title: "Omówienie zabezpieczeń sieci na platformie Azure | Microsoft Docs"
-description: "Dowiedz się więcej na temat opcji zabezpieczeń na potrzeby kontrolowania przepływu ruchu sieciowego między zasobami platformy Azure."
+title: Omówienie zabezpieczeń sieci na platformie Azure | Microsoft Docs
+description: Dowiedz się więcej na temat opcji zabezpieczeń na potrzeby kontrolowania przepływu ruchu sieciowego między zasobami platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: fbf0556cc47bc08a71fcf050b43c2dbbe5d27184
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="network-security"></a>Bezpieczeństwo sieci
 
@@ -141,7 +141,7 @@ W przypadku utworzenia innych reguł aplikacji, określających inne grupy zabez
  
 Aby dowiedzieć się więcej o limitach podczas tworzenia grup zabezpieczeń aplikacji i określania ich w regułach zabezpieczeń, zobacz [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-Grupy zabezpieczeń aplikacji są dostępne w wersji zapoznawczej. Funkcje w wersji zapoznawczej nie mają takiego samego poziomu dostępności i niezawodności jak funkcje w głównym wydaniu. Przed rozpoczęciem korzystania z grup zabezpieczeń aplikacji musisz się najpierw zarejestrować, aby ich używać, wykonując kroki od 1 do 5 w sekcji [Tworzenie grupy zabezpieczeń sieci z użyciem grup zabezpieczeń aplikacji](create-network-security-group-preview.md) dla platformy Azure lub programu PowerShell. Grupy zabezpieczeń aplikacji mają następujące ograniczenia:
+Grupy zabezpieczeń aplikacji mają następujące ograniczenia:
 
 -   Wszystkie interfejsy sieciowe w ramach grupy zabezpieczeń aplikacji muszą istnieć w tej samej sieci wirtualnej. Interfejsy sieciowe z różnych sieci wirtualnych nie mogą być dodawane do tej samej grupy zabezpieczeń aplikacji. Sieć wirtualna, która zawiera pierwszy interfejs sieciowy przypisany do grupy zabezpieczeń aplikacji, definiuje sieć wirtualną, w której muszą istnieć wszystkie później przypisywane interfejsy sieciowe.
 - Jeśli określisz grupy zabezpieczeń aplikacji jako źródło i miejsce docelowe w regule zabezpieczeń, interfejsy sieciowe w obu grupach zabezpieczeń aplikacji muszą istnieć w tej samej sieci wirtualnej. Na przykład jeśli grupa ASG1 zawiera interfejsy sieciowe z sieci VNet1, a grupa ASG2 zawiera interfejsy sieciowe z sieci VNet2, nie można przypisać grupy ASG1 jako źródła i grupy ASG2 jako miejsca docelowego w regule — wszystkie interfejsy sieciowe muszą istnieć w sieci VNet1.
@@ -165,5 +165,4 @@ Grupy zabezpieczeń aplikacji są dostępne w wersji zapoznawczej. Funkcje w wer
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wykonaj kroki samouczka [Tworzenie grupy zabezpieczeń sieci](virtual-networks-create-nsg-arm-pportal.md)
-* Wykonaj kroki samouczka [Tworzenie grupy zabezpieczeń sieci z użyciem grup zabezpieczeń aplikacji](create-network-security-group-preview.md)
+* Dowiedz się, jak [utworzyć sieciową grupę zabezpieczeń](tutorial-filter-network-traffic.md).

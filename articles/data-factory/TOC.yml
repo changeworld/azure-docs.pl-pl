@@ -122,6 +122,8 @@
           href: author-visually.md
         - name: Ciągła integracja i ciągłe wdrażanie
           href: continuous-integration-deployment.md
+        - name: Debugowanie i programowanie iteracyjne
+          href: iterative-development-debugging.md
     - name: Kopiowanie danych
       items:
         - name: Kopiowanie danych za pomocą działania kopiowania

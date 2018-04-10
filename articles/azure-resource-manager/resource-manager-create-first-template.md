@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie pierwszego szablonu usługi Azure Resource Manager | Microsoft Docs"
-description: "Przewodnik krok po kroku dotyczący tworzenia pierwszego szablonu usługi Azure Resource Manager. Przewodnik pokazuje sposób użycia odwołania do szablonu dla konta magazynu w celu utworzenia szablonu."
+title: Tworzenie pierwszego szablonu usługi Azure Resource Manager | Microsoft Docs
+description: Przewodnik krok po kroku dotyczący tworzenia pierwszego szablonu usługi Azure Resource Manager. Przewodnik pokazuje sposób użycia odwołania do szablonu dla konta magazynu w celu utworzenia szablonu.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -10,14 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2017
+ms.date: 03/30/2018
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adf7d6ad04b9c341eac2172e09da3cb1f044aa62
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Tworzenie i wdrażanie pierwszego szablonu usługi Azure Resource Manager
 W tym temacie szczegółowo omówiono kroki tworzenia pierwszego szablonu usługi Azure Resource Manager. Szablony usługi Resource Manager są plikami JSON definiującymi zasoby, które należy wdrożyć dla danego rozwiązania. Aby zrozumieć pojęcia związane z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Usługa Azure Resource Manager — omówienie](resource-group-overview.md). Jeśli masz istniejące zasoby i chcesz uzyskać szablon dla tych zasobów, zobacz [Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów](resource-manager-export-template.md).
@@ -26,8 +26,9 @@ Aby utworzyć i sprawdzić szablony, potrzebujesz edytora plików JSON. [Visual 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Program Visual Studio Code. W razie potrzeby zainstaluj go ze strony [https://code.visualstudio.com/](https://code.visualstudio.com/).
+* Program Visual Studio Code. W razie potrzeby zainstaluj go z witryny [https://code.visualstudio.com/](https://code.visualstudio.com/).
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Zainstalowany lokalnie program [Azure PowerShell](/powershell/azure/install-azurerm-ps) lub [interfejs wiersza polecenia Azure](/cli/azure/install-azure-cli). Na potrzeby tego samouczka jest wymagana instalacja lokalna, ponieważ szablon jest zapisywany jako plik lokalny. Aby użyć usługi Cloud Shell, musisz [załadować szablon na konto magazynu](resource-group-template-deploy-cli.md#deploy-template-from-cloud-shell).
 
 ## <a name="create-template"></a>Tworzenie szablonu
 
@@ -92,24 +93,6 @@ Wszystko jest teraz gotowe do wdrożenia tego szablonu. Użyjesz programu PowerS
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
-
-Po zakończeniu wdrażania Twoje konto magazynu będzie istnieć w grupie zasobów.
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
-
-Dla wiersza polecenia platformy Azure użyj następujących poleceń:
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-```
-
-Program PowerShell jest obecnie dostępny w usłudze Cloud Shell jako wersja zapoznawcza. Dla programu PowerShell użyj następujących poleceń:
-
-```powershell
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
-```
 
 Po zakończeniu wdrażania Twoje konto magazynu będzie istnieć w grupie zasobów.
 
@@ -244,12 +227,6 @@ W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
-W przypadku usługi Cloud Shell przekaż zmieniony szablon do udziału plików. Zastąp istniejący plik. Następnie użyj poniższego polecenia:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
-```
-
 ## <a name="use-autocomplete"></a>Korzystanie z autouzupełniania
 
 Do tej pory praca z szablonem składała się tylko z kopiowania i wklejania elementów JSON z tego artykułu. Jednak podczas tworzenia własnych szablonów chcesz znaleźć i określić właściwości i wartości, które są dostępne dla danego typu zasobu. Program VS Code odczytuje schemat dla typu zasobu i sugeruje właściwości oraz wartości. Aby wyświetlić funkcję autouzupełniania, przejdź do elementu właściwości szablonu i dodaj nowy wiersz. Wpisz znak cudzysłowu i zwróć uwagę, że program VS Code natychmiast sugeruje nazwy dostępne w elemencie właściwości.
@@ -377,12 +354,6 @@ W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
 ```azurecli
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
-```
-
-W przypadku usługi Cloud Shell przekaż zmieniony szablon do udziału plików. Zastąp istniejący plik. Następnie użyj poniższego polecenia:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

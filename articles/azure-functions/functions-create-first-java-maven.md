@@ -11,14 +11,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 04/02/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9cf1d485f32c861ac5b5720cd77a988eee624f4d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven (wersja zapoznawcza)
 
@@ -45,7 +45,7 @@ Aby opracowywać aplikacje funkcji przy użyciu języka Java, trzeba mieć zains
 
 [Podstawowe narzędzia usługi Azure Functions w wersji 2.0](https://www.npmjs.com/package/azure-functions-core-tools) zapewniają lokalne środowisko deweloperskie do pisania, uruchamiania i debugowania usługi Azure Functions. 
 
-Aby je zainstalować, odwiedź sekcję [Instalowanie](https://github.com/azure/azure-functions-core-tools#installing) i znajdź szczegółowe instrukcje dla wybranego systemu operacyjnego (Windows, Linux, Mac).
+Aby je zainstalować, odwiedź sekcję [Installing (Instalowanie)](https://github.com/azure/azure-functions-core-tools#installing) projektu podstawowych narzędzi usługi Azure Functions w celu uzyskania szczegółowych instrukcji dla używanego systemu operacyjnego.
 
 Możesz także zainstalować je ręcznie za pomocą programu [npm](https://www.npmjs.com/), dołączonego do platformy [Node.js](https://nodejs.org/), po zainstalowaniu następujących wymaganych składników:
 
@@ -80,7 +80,9 @@ mvn archetype:generate ^
     -DarchetypeArtifactId=azure-functions-archetype
 ```
 
-W narzędziu Maven zostanie wyświetlony monit o podanie wartości wymaganych do ukończenia generowania projektu. Aby uzyskać informacje o wartościach _groupId_, _artifactId_ i _version_, zobacz materiały referencyjne [Konwencja nazewnictwa narzędzia Maven](https://maven.apache.org/guides/mini/guide-naming-conventions.html). Wartość _appName_ musi być unikatowa w obrębie platformy Azure, dlatego narzędzie Maven generuje domyślną nazwę aplikacji na podstawie wprowadzonej wcześniej wartości _artifactId_. Wartość _packageName_ określa pakiet Java dla generowanego kodu funkcji.
+Narzędzie Maven poprosi o podanie wartości wymaganych do ukończenia generowania projektu. Aby uzyskać informacje o wartościach _groupId_, _artifactId_ i _version_, zobacz materiały referencyjne [Konwencja nazewnictwa narzędzia Maven](https://maven.apache.org/guides/mini/guide-naming-conventions.html). Wartość _appName_ musi być unikatowa w obrębie platformy Azure, dlatego narzędzie Maven generuje domyślną nazwę aplikacji na podstawie wprowadzonej wcześniej wartości _artifactId_. Wartość _packageName_ określa pakiet Java dla generowanego kodu funkcji.
+
+Poniższe identyfikatory `com.fabrikam.functions` i `fabrikam-functions` są używane jako przykład i poprawiają czytelność dalszych kroków w tym przewodniku Szybki start. Zachęcamy do podania własnych wartości w narzędziu Maven w tym kroku.
 
 ```Output
 Define value for property 'groupId': com.fabrikam.functions
@@ -91,7 +93,7 @@ Define value for property 'appName' fabrikam-functions-20170927220323382:
 Confirm properties configuration: Y
 ```
 
-Narzędzie Maven tworzy pliki projektu w nowym folderze o nazwie wartości _artifactId_. Kod wygenerowany w projekcie jest prostą funkcją [wyzwalaną przez protokół HTTP](/azure/azure-functions/functions-bindings-http-webhook), która zwraca treść żądania:
+Narzędzie Maven utworzy pliki projektu w nowym folderze o nazwie podanej we właściwości _artifactId_. W tym przykładzie jest to `fabrikam-functions`. Gotowy do uruchomienia kod wygenerowany w projekcie jest prostą funkcją [wyzwalaną przez protokół HTTP](/azure/azure-functions/functions-bindings-http-webhook), która zwraca treść żądania:
 
 ```java
 public class Function {
@@ -133,7 +135,7 @@ mvn azure-functions:run
 > [!NOTE]
 > Jeśli wystąpi wyjątek `javax.xml.bind.JAXBException` w przypadku używania platformy Java 9, zobacz obejście w serwisie [GitHub](https://github.com/jOOQ/jOOQ/issues/6477).
 
-Po uruchomieniu funkcji zostaną wyświetlone następujące dane wyjściowe:
+Te dane wyjściowe są wyświetlane, gdy funkcja jest uruchomiona lokalnie w systemie i jest gotowa do odpowiadania na żądania HTTP:
 
 ```Output
 Listening on http://localhost:7071
@@ -144,7 +146,7 @@ Http Functions:
    hello: http://localhost:7071/api/hello
 ```
 
-Wyzwól funkcje z poziomu wiersza polecenia, używając programu curl w nowym terminalu:
+Wyzwól funkcję z poziomu wiersza polecenia, używając programu curl w nowym oknie terminalu:
 
 ```
 curl -w '\n' -d LocalFunction http://localhost:7071/api/hello
@@ -158,10 +160,15 @@ Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl-C` w oknie termin
 
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 
-Proces wdrażania w usłudze Azure Functions korzysta z poświadczeń konta z interfejsu wiersza polecenia platformy Azure. [Zaloguj się przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), a następnie wdróż swój kod w nowej aplikacji usługi Functions, używając elementu docelowego `azure-functions:deploy` narzędzia Maven.
+Proces wdrażania w usłudze Azure Functions korzysta z poświadczeń konta z interfejsu wiersza polecenia platformy Azure. Aby kontynuować, [zaloguj się przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+
+```azurecli
+az login
+```
+
+Wdróż swój kod w nowej aplikacji funkcji, używając elementu docelowego `azure-functions:deploy` narzędzia Maven.
 
 ```
-az login
 mvn azure-functions:deploy
 ```
 
@@ -175,7 +182,7 @@ Po zakończeniu wdrażania zostanie wyświetlony adres URL umożliwiający uzysk
 [INFO] ------------------------------------------------------------------------
 ```
 
-Przetestuj działanie aplikacji funkcji na platformie Azure, używając programu curl:
+Przetestuj działanie aplikacji funkcji na platformie Azure, używając programu `cURL`. Musisz zmienić adres URL z poniższego przykładu tak, aby był zgodny z adresem URL Twojej wdrożonej aplikacji funkcji uzyskanym w poprzednim kroku.
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions

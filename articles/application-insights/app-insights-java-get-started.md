@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7331c3385f70de7d13895fc88d1d8630af4e9b05
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -47,10 +47,10 @@ Potrzebne elementy:
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Dodawanie zestawu SDK usługi Application Insights dla środowiska Java do projektu
 *Wybierz odpowiedni sposób dla danego projektu.*
 
-#### <a name="if-youre-using-eclipse-to-create-a-maven-or-dynamic-web-project-"></a>Jeśli używasz środowiska Eclipse do tworzenia projektu Maven lub dynamicznego projektu sieci Web...
+#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project"></a>Jeśli używasz środowiska Eclipse do tworzenia dynamicznego projektu internetowego...
 Użyj [wtyczki zestawu SDK Application Insights dla środowiska Java][eclipse].
 
-#### <a name="if-youre-using-maven"></a>Jeśli używasz narzędzia Maven...
+#### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Jeśli używasz narzędzia Maven... <a name="maven-setup" />
 Jeśli projekt jest już skonfigurowany do używania narzędzia Maven w celu kompilacji, scal następujący kod z plikiem pom.xml.
 
 Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
@@ -75,15 +75,15 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
     </dependencies>
 ```
 
-* *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `<version>2.0.n</version>`. Najbardziej aktualną wersję z najdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród naszych [artefaktów Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `<version>2.0.n</version>`. Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród [artefaktów Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Trzeba zaktualizować zestaw SDK?* Odśwież zależności projektu.
 
-#### <a name="if-youre-using-gradle"></a>Jeśli używasz narzędzia Gradle...
+#### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Jeśli używasz narzędzia Gradle... <a name="gradle-setup" />
 Jeśli projekt jest już skonfigurowany do używania narzędzia Gradle w celu kompilacji, scal następujący kod z plikiem build.gradle.
 
 Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
 
-```JSON
+```gradle
 
     repositories {
       mavenCentral()
@@ -95,27 +95,24 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
     }
 ```
 
-* *Błędy kompilacji lub walidacji sumy kontrolnej? Spróbuj użyć określonej wersji, np.:* `version:'2.0.n'`. *Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
-* *Aby zaktualizować zestaw SDK*
-  * Odśwież zależności projektu.
+* *Błędy kompilacji lub walidacji sumy kontrolnej?* Spróbuj użyć określonej wersji, np.: `version:'2.0.n'`. Najbardziej aktualną wersję znajdziesz w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) lub wśród [artefaktów Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Aby zaktualizować zestaw SDK do nowej wersji*, odśwież zależności projektu.
 
-#### <a name="otherwise-"></a>W innym przypadku...
-Ręcznie dodaj zestaw SDK:
-
-1. Pobierz [Zestaw SDK usługi Application Insights dla środowiska Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest).
-2. Wyodrębnij pliki binarne z pliku zip i dodaj je do projektu.
+#### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>W innym przypadku, jeśli ręcznie zarządzasz zależnościami...
+Pobierz [najnowszą wersję](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) i skopiuj niezbędne pliki do projektu, zastępując wszystkie poprzednie wersje.
 
 ### <a name="questions"></a>Pytania...
-* *Jaki jest związek między składnikami `-core` i `-web` w pliku zip?*
-
+* *Jaki jest związek między składnikami `-core` i `-web`?*
   * Element `applicationinsights-core` dostarcza podstawowy interfejs API. Ten składnik jest zawsze potrzebny.
   * Element `applicationinsights-web` dostarcza metryki do śledzenia liczby żądań HTTP i czasów odpowiedzi. Możesz pominąć ten składnik, jeśli nie chcesz automatycznie zbierać tych danych telemetrycznych. Na przykład jeśli chcesz zaprogramować zbieranie samodzielnie.
-* *Aby zaktualizować zestaw SDK po opublikowaniu zmian*
+  
+* *Jak zaktualizować zestaw SDK do najnowszej wersji?*
+  * Jeśli używasz narzędzia Gradle lub Maven...
+    * Zaktualizuj plik kompilacji, aby określić najnowszą wersję, lub użyj składni symboli wieloznacznych narzędzia Gradle/Maven, aby automatycznie uwzględnić najnowszą wersję. Następnie odśwież zależności projektu. Składnia symboli wieloznacznych jest widoczna w powyższych przykładach dla narzędzia [Gradle](#gradle-setup) lub [Maven](#maven-setup).
+  * Jeśli ręcznie zarządzasz zależnościami...
+    * Pobierz najnowszy [Zestaw SDK usługi Application Insights dla środowiska Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) i zastąp nim stary. Zmiany są opisane w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
-  * Pobierz najnowszy [Zestaw SDK usługi Application Insights dla środowiska Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) i zastąp nim stary.
-  * Zmiany są opisane w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
-
-## <a name="3-add-an-application-insights-xml-file"></a>3. Dodawanie pliku .xml usługi Application Insights
+## <a name="3-add-an-applicationinsightsxml-file"></a>3. Dodawanie pliku ApplicationInsights.xml
 Dodaj plik ApplicationInsights.xml do folderu zasobów w projekcie lub upewnij się, że jest dodany do ścieżki klas wdrażania projektu. Skopiuj do niego następujący kod XML.
 
 Zastąp klucz instrumentacji kluczem pobranym z portalu Azure.
@@ -127,12 +124,10 @@ Zastąp klucz instrumentacji kluczem pobranym z portalu Azure.
 
 
       <!-- The key from the portal: -->
-
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
 
       <!-- HTTP request component (not required for bare API) -->
-
       <TelemetryModules>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
@@ -153,11 +148,11 @@ Zastąp klucz instrumentacji kluczem pobranym z portalu Azure.
     </ApplicationInsights>
 ```
 
+Opcjonalnie plik konfiguracji może znajdować się w dowolnym miejscu, które jest dostępne dla aplikacji.  Właściwość systemu `-Dapplicationinsights.configurationDirectory` określa katalog, który zawiera plik ApplicationInsights.xml. Na przykład plik konfiguracji znajdujący się w lokalizacji `E:\myconfigs\appinsights\ApplicationInsights.xml` można skonfigurować za pomocą właściwości `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"`.
 
 * Klucz instrumentacji jest wysyłany wraz z każdym elementem telemetrii i dzięki temu te elementy mogą być wyświetlane dla odpowiedniego zasobu usługi Application Insights.
 * Składnik żądań HTTP jest opcjonalny. Powoduje automatyczne wysyłanie telemetrii dotyczącej żądań i czasów odpowiedzi do portalu.
-* Korelacja zdarzeń jest dodatkiem do składnika żądań HTTP. Przypisuje identyfikator do każdego żądania odebranego przez serwer i dodaje go do każdego elementu telemetrii jako właściwość „Operation.Id”. Umożliwia korelowanie telemetrii skojarzonej z każdym żądaniem przez ustawienie filtru w [wyszukiwaniu diagnostycznym][diagnostic].
-* Klucz usługi Application Insights może zostać przekazany dynamicznie z witryny Azure Portal jako właściwość systemu (-DAPPLICATION_INSIGHTS_IKEY=Twój_klucz_ikey). Jeśli nie zdefiniowano żadnej właściwości, sprawdzana jest zmienna środowiskowa (APPLICATION_INSIGHTS_IKEY) w ustawieniach aplikacji platformy Azure. Jeśli obie właściwości nie są zdefiniowane, używana jest domyślna właściwość InstrumentationKey z pliku ApplicationInsights.xml. Ta sekwencja ułatwia dynamiczne zarządzanie elementami InstrumentationKey dla różnych środowisk.
+* Korelacja zdarzenia jest dodatkiem do składnika żądań HTTP. Przypisuje identyfikator do każdego żądania odebranego przez serwer i dodaje go do każdego elementu telemetrii jako właściwość „Operation.Id”. Umożliwia korelowanie telemetrii skojarzonej z każdym żądaniem przez ustawienie filtru w [wyszukiwaniu diagnostycznym][diagnostic].
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Alternatywne sposoby ustawienia klucza instrumentacji
 Zestaw SDK usługi Application Insights szuka klucza w następującej kolejności:
@@ -219,7 +214,7 @@ Dodaj ten element do pliku konfiguracyjnego Struts (zwykle o nazwie struts.xml l
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 ```
 
-(Jeśli masz interceptory zdefiniowane w stosie domyślnym, możesz po prostu dodać interceptor do tego stosu).
+Jeśli masz interceptory zdefiniowane w stosie domyślnym, możesz dodać interceptor do tego stosu.
 
 ## <a name="5-run-your-application"></a>5. Uruchamianie aplikacji
 Uruchom aplikację w trybie debugowania na komputerze deweloperskim albo opublikuj na serwerze.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 829646be6404f86d9f370b3a402cfc0c0c980699
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7380629344b27d5bb1e7af0aeddcb8f7665c1a5c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -197,7 +197,7 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 Wszystkie trasy anonsowane przez firmę Microsoft zostaną oznaczone odpowiednią wartością społeczności. 
 
 > [!IMPORTANT]
-> Globalne prefiksy są oznaczane odpowiednią wartością społeczności i będą anonsowane tylko po włączeniu dodatku Premium usługi ExpressRoute.
+> Prefiksy globalne są oznaczane odpowiednią wartością społeczności.
 > 
 > 
 

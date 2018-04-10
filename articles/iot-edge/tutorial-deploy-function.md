@@ -5,16 +5,16 @@ services: iot-edge
 keywords: ''
 author: kgremban
 manager: timlt
-ms.author: v-jamebr
+ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a43ae8f28fc32b61fb5db985ffae98f093293798
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3d7dd0986878c747f92afc712301453bc8772ef2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Wdrażanie funkcji platformy Azure jako moduł usługi IoT Edge — wersja zapoznawcza
 Możesz użyć usługi Azure Functions, aby wdrożyć kod implementujący Twoją logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera instrukcje dotyczące tworzenia i wdrażania funkcji platformy Azure służącej do filtrowania danych czujników na symulowanym urządzeniu usługi IoT Edge utworzonym na podstawie informacji zawartych w samouczkach dotyczących wdrażania usługi Azure IoT Edge na symulowanym urządzeniu w systemie [Windows][lnk-tutorial1-win] lub [Linux][lnk-tutorial1-lin]. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:     
@@ -58,10 +58,10 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
     ```cmd/sh
     dotnet new -i Microsoft.Azure.IoT.Edge.Function
     ```
-2. Utwórz projekt dla nowego modułu. Poniższe polecenie służy do tworzenia folderu projektu **FilterFunction** w bieżącym folderze roboczym:
+2. Utwórz projekt dla nowego modułu. Poniższe polecenie utworzy folder projektu, **FilterFunction**, w Twoim repozytorium kontenerów. Drugi parametr powinien mieć postać `<your container registry name>.azurecr.io`, jeśli używasz rejestru kontenerów platformy Azure. Wprowadź następujące polecenie w bieżącym folderze roboczym:
 
     ```cmd/sh
-    dotnet new aziotedgefunction -n FilterFunction
+    dotnet new aziotedgefunction -n FilterFunction -r <your container registry address>/filterfunction
     ```
 
 3. Wybierz pozycję **Plik** > **Otwórz Folder**, a następnie przejdź do folderu **FilterFunction** i otwórz projekt w programie VS Code.
@@ -127,24 +127,19 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
 
 11. Zapisz plik.
 
-## <a name="publish-a-docker-image"></a>Publikowanie obrazu platformy Docker
+## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Tworzenie obrazu platformy Docker i publikowanie go w rejestrze
 
-1. Zbuduj obraz platformy Docker.
-    1. W eksploratorze programu VS Code rozwiń folder **Docker**. Następnie rozwiń folder dla platformy kontenera — **linux-x64** lub **windows-nano**. 
-    2. Kliknij prawym przyciskiem myszy plik **Dockerfile**, a następnie kliknij pozycję **Zbuduj obraz platformy Docker modułu usługi IoT Edge**. 
-    3. Przejdź do folderu projektu **FilterFunction**, a następnie kliknij pozycję **Wybierz folder jako EXE_DIR**. 
-    4. W wyskakującym polu tekstowym w górnej części okna kodu programu VS Code wprowadź nazwę obrazu. Na przykład: `<your container registry address>/filterfunction:latest`. Adres rejestru kontenera jest taki sam jak adres serwera logowania skopiowany z rejestru. Powinien on być w formie `<your container registry name>.azurecr.io`.
- 
-4. Zaloguj się do platformy Docker. W zintegrowanym terminalu wprowadź następujące polecenie: 
-
+1. Zaloguj się do platformy Docker, wprowadzając następujące polecenie w zintegrowanym terminalu programu VS Code: 
+     
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
    Aby znaleźć nazwę użytkownika, hasło i serwer logowania do użycia w tym poleceniu, przejdź do witryny Azure Portal (https://portal.azure.com)). W obszarze **Wszystkie zasoby** kliknij kafelek usługi Azure Container Registry, aby otworzyć jej właściwości, a następnie kliknij pozycję **Klucze dostępu**. Skopiuj wartości w polach **Nazwa użytkownika**, **Hasło** i **Serwer logowania**. 
 
-3. Wypchnij obraz do repozytorium platformy Docker. Wybierz pozycję **Widok** > **Paleta poleceń...** , a następnie wyszukaj ciąg **Usługa Edge: wypychanie obrazu platformy Docker modułu usługi IoT Edge**.
-4. W wyskakującym polu tekstowym wprowadź tę samą nazwę obrazu, która została użyta w kroku 1.d.
+2. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik **module.json** i kliknij polecenie **Skompiluj i wypchnij obraz platformy Docker modułu usługi IoT Edge**. W podręcznym polu listy rozwijanej w górnej części okna programu VS Code wybierz platformę kontenera, **amd64** dla kontenera systemu Linux lub **windows-amd64** dla kontenera systemu Windows. Program VS Code utworzy kontener z kodem funkcji i wypchnie go do określonego rejestru kontenerów.
+
+
+3. Pełny adres obrazu kontenera możesz uzyskać za pomocą tagu w zintegrowanym terminalu programu VS Code. Aby uzyskać więcej informacji na temat definicji kompilacji i wypychania, zapoznaj się z plikiem `module.json`.
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>Dodawanie poświadczeń rejestru na urządzeniu usługi Edge
 Dodaj poświadczenia dla rejestru do środowiska uruchomieniowego usługi Edge na komputerze, na którym jest uruchomione urządzenie usługi Edge. Daje to dostęp do środowiska uruchomieniowego w celu ściągnięcia kontenera. 
@@ -174,7 +169,7 @@ Dodaj poświadczenia dla rejestru do środowiska uruchomieniowego usługi Edge n
 1. Dodaj moduł **filterFunction**.
     1. Ponownie wybierz pozycję **Dodaj moduł usługi IoT Edge**.
     2. W polu **Nazwa** wprowadź wartość `filterFunction`.
-    3. W polu **Identyfikator URI obrazu** wprowadź adres obrazu, na przykład `<your container registry address>/filtermodule:0.0.1-amd64`. Pełen adres obrazu można znaleźć w poprzedniej sekcji.
+    3. W polu **Identyfikator URI obrazu** wprowadź adres obrazu, na przykład `<your container registry address>/filterfunction:0.0.1-amd64`. Pełen adres obrazu można znaleźć w poprzedniej sekcji.
     74. Kliknij pozycję **Zapisz**.
 2. Kliknij przycisk **Dalej**.
 3. W kroku **Określanie tras** skopiuj poniższe dane JSON do pola tekstowego. Pierwsza trasa służy do transportu komunikatów z czujnika temperatury do modułu filtru za pośrednictwem punktu końcowego „input1”. Druga trasa służy do transportu komunikatów z modułu filtru do centrum IoT Hub. W tej trasie element `$upstream` jest specjalnym miejscem docelowym, które nakazuje centrum Edge Hub wysyłanie komunikatów do centrum IoT Hub. 
@@ -198,11 +193,11 @@ Aby monitorować urządzenie pod kątem komunikatów w chmurze wysyłanych z urz
 1. Skonfiguruj rozszerzenie Azure IoT Toolkit za pomocą parametrów połączenia na potrzeby centrum IoT Hub: 
     1. W witrynie Azure Portal przejdź do centrum IoT Hub, a następnie wybierz pozycję **Zasady dostępu współużytkowanego**. 
     2. Wybierz pozycję **iothubowner**, a następnie skopiuj wartość **Parametry połączenia — klucz podstawowy**.
-    1. W eksploratorze programu VS Code kliknij pozycję **IOT HUB DEVICES**, a następnie kliknij pozycję **...**. 
-    1. Wybierz pozycję **Ustaw parametry połączenia centrum IoT Hub**, a następnie wprowadź parametry połączenia centrum IoT Hub w oknie podręcznym. 
+    3. W eksploratorze programu VS Code kliknij pozycję **IOT HUB DEVICES**, a następnie kliknij pozycję **...**. 
+    4. Wybierz pozycję **Ustaw parametry połączenia centrum IoT Hub**, a następnie wprowadź parametry połączenia centrum IoT Hub w oknie podręcznym. 
 
-1. Aby monitorować dane otrzymywane przez centrum IoT Hub, wybierz pozycję **Widok** > **Paleta poleceń...** , a następnie wyszukaj ciąg **IoT: rozpocznij monitorowania komunikatu D2C**. 
-2. Aby zatrzymać monitorowanie danych, użyj polecenia **IoT: zatrzymaj monitorowanie komunikatu D2C** w palecie poleceń. 
+2. Aby monitorować dane otrzymywane przez centrum IoT Hub, wybierz pozycję **Widok** > **Paleta poleceń...** , a następnie wyszukaj ciąg **IoT: rozpocznij monitorowania komunikatu D2C**. 
+3. Aby zatrzymać monitorowanie danych, użyj polecenia **IoT: zatrzymaj monitorowanie komunikatu D2C** w palecie poleceń. 
 
 ## <a name="next-steps"></a>Następne kroki
 

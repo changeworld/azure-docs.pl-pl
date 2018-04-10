@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Włączanie synchronizacji haseł | Microsoft Docs"
-description: "Wprowadzenie do usługi Active Directory Domain Services"
+title: 'Azure Active Directory Domain Services: włączanie synchronizacji skrótów haseł | Microsoft Docs'
+description: Wprowadzenie do usługi Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2017
+ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: ea65659b1d35246bc3e7235b3faed8d2a5368010
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5d65ce4c199c9ddc54e0120fe1c456a95a34f649
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji haseł w usługach Azure Active Directory Domain Services
-W poprzednich zadaniach włączono usługi Azure Active Directory Domain Services dla dzierżawy usługi Azure Active Directory (Azure AD). Kolejnym krokiem jest włączenie synchronizacji skrótów poświadczeń wymaganych do uwierzytelniania NT LAN Manager (NTLM) i Kerberos w usługach Azure AD Domain Services. Po skonfigurowaniu synchronizacji poświadczeń użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.
+# <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Włączanie synchronizacji skrótów haseł w usługach Azure Active Directory Domain Services
+W poprzednich zadaniach włączono usługi Azure Active Directory Domain Services dla dzierżawy usługi Azure Active Directory (Azure AD). Kolejnym krokiem jest włączenie synchronizacji skrótów haseł wymaganych do uwierzytelniania NT LAN Manager (NTLM) i Kerberos w usługach Azure AD Domain Services. Po skonfigurowaniu synchronizacji skrótów haseł użytkownik może zalogować się do domeny zarządzanej przy użyciu poświadczeń firmowych.
 
 Wykonywane czynności są różne dla kont użytkowników tylko w chmurze i kont użytkowników synchronizowanych z katalogu lokalnego przy użyciu programu Azure AD Connect. 
 
 <br>
 | **Typ konta użytkownika** | **Czynności do wykonania** |
 | --- |---|
-| **Konta użytkowników chmury utworzone w usłudze Azure AD** |**&#x2713;** [Postępuj zgodnie z instrukcjami w tym artykule](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |
-| **Konta użytkownika synchronizowane z poziomu katalogu lokalnego** |**&#x2713;** [Zsynchronizuj hasła dla kont użytkowników synchronizowanych z lokalnej usługi AD do domeny zarządzanej](active-directory-ds-getting-started-password-sync-synced-tenant.md) | 
+| **Konta użytkowników chmury utworzone w usłudze Azure AD** |**&#x2713;** [Postępuj zgodnie z instrukcjami w tym artykule](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |
+| **Konta użytkownika synchronizowane z poziomu katalogu lokalnego** |**&#x2713;** [Zsynchronizuj skróty haseł dla kont użytkowników synchronizowanych z lokalnej usługi AD do domeny zarządzanej](active-directory-ds-getting-started-password-sync-synced-tenant.md) | 
 
 <br>
 
@@ -38,17 +38,17 @@ Wykonywane czynności są różne dla kont użytkowników tylko w chmurze i kont
 > Jeśli dzierżawa usługi Azure AD ma kombinację użytkowników tylko w chmurze i użytkowników z lokalnej usługi AD, należy ukończyć oba zestawy czynności.
 >
 
-## <a name="task-5-enable-password-synchronization-to-your-managed-domain-for-cloud-only-user-accounts"></a>Zadanie 5. Włączanie synchronizacji haseł do domeny zarządzanej dla kont użytkowników tylko w chmurze
-Usługi Azure Active Directory Domain Services wymagają skrótów poświadczeń w formacie odpowiednim do uwierzytelniania NTLM i Kerberos, aby uwierzytelnić użytkowników w domenie zarządzanej. Usługa Azure AD nie będzie generować ani przechowywać skrótów poświadczeń w formacie wymaganym podczas uwierzytelniania NTLM i Kerberos, jeśli nie zostaną włączone usługi Azure Active Directory Domain Services dla dzierżawy. Ze względów bezpieczeństwa usługa Azure AD nie przechowuje również żadnych poświadczeń haseł w postaci zwykłego tekstu. W związku z tym usługa Azure AD nie ma możliwości automatycznego generowania skrótów poświadczeń protokołu NTLM ani Kerberos w oparciu o istniejące poświadczenia użytkownika.
+## <a name="task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts"></a>Zadanie 5. Włączanie synchronizacji skrótów haseł do domeny zarządzanej dla kont użytkowników tylko w chmurze
+Usługi Azure Active Directory Domain Services wymagają skrótów haseł w formacie odpowiednim do uwierzytelniania NTLM i Kerberos, aby uwierzytelnić użytkowników w domenie zarządzanej. Usługa Azure AD nie będzie generować ani przechowywać skrótów haseł w formacie wymaganym podczas uwierzytelniania NTLM i Kerberos, jeśli nie zostaną włączone usługi Azure Active Directory Domain Services dla dzierżawy. Ze względów bezpieczeństwa usługa Azure AD nie przechowuje również żadnych poświadczeń haseł w postaci zwykłego tekstu. W związku z tym usługa Azure AD nie ma możliwości automatycznego generowania skrótów haseł protokołu NTLM ani Kerberos w oparciu o istniejące poświadczenia użytkownika.
 
 > [!NOTE]
 > **Jeśli organizacja ma konta użytkowników tylko w chmurze, wszyscy użytkownicy, którzy muszą korzystać z usług Azure Active Directory Domain Services, muszą zmienić swoje hasła.** Konto użytkownika tylko w chmurze to konto, które zostało utworzone w katalogu usługi Azure AD przy użyciu witryny Azure Portal lub poleceń cmdlet programu Azure AD PowerShell. Takie konta użytkownika nie są synchronizowane z poziomu katalogu lokalnego.
 >
 >
 
-Ten proces zmiany haseł powoduje generowanie w usłudze Azure AD skrótów poświadczeń wymaganych przez usługi Azure Active Directory Domain Services na potrzeby uwierzytelniania Kerberos i NTLM. Możesz unieważnić hasła wszystkich użytkowników w dzierżawie, którzy muszą korzystać z usług Azure Active Directory Domain Services, lub poinformować ich o konieczności zmiany haseł.
+Ten proces zmiany haseł powoduje generowanie w usłudze Azure AD skrótów haseł wymaganych przez usługi Azure Active Directory Domain Services na potrzeby uwierzytelniania Kerberos i NTLM. Możesz unieważnić hasła wszystkich użytkowników w dzierżawie, którzy muszą korzystać z usług Azure Active Directory Domain Services, lub poinformować ich o konieczności zmiany haseł.
 
-### <a name="enable-ntlm-and-kerberos-credential-hash-generation-for-a-cloud-only-user-account"></a>Włączanie generowania skrótów poświadczeń NTLM i Kerberos dla kont użytkowników tylko w chmurze
+### <a name="enable-ntlm-and-kerberos-password-hash-generation-for-a-cloud-only-user-account"></a>Włączanie generowania skrótów haseł NTLM i Kerberos dla kont użytkowników tylko w chmurze
 Poniżej znajdują się instrukcje zmieniania haseł dla użytkowników:
 
 1. Przejdź do strony [panelu dostępu do usługi Azure AD](http://myapps.microsoft.com) dla organizacji.
@@ -69,7 +69,7 @@ Poniżej znajdują się instrukcje zmieniania haseł dla użytkowników:
    >
 4. Na stronie **Zmiana hasła** wpisz istniejące hasło (stare), a następnie wpisz nowe hasło i je zatwierdź.
 
-    ![Utwórz sieć wirtualną dla Usług domenowych Azure AD.](./media/active-directory-domain-services-getting-started/user-change-password2.png)
+    ![Użytkownik zmienia hasło](./media/active-directory-domain-services-getting-started/user-change-password2.png)
 
 5. Kliknij przycisk **prześlij**.
 
@@ -78,7 +78,7 @@ Nowego hasła w usługach Azure Active Directory Domain Services można używać
 ## <a name="related-content"></a>Powiązana zawartość
 * [Jak zaktualizować własne hasło](../active-directory/active-directory-passwords-update-your-own-password.md)
 * [Wprowadzenie do zarządzania hasłami w usłudze Azure AD](../active-directory/active-directory-passwords-getting-started.md)
-* [Włączanie synchronizacji haseł w usługach Azure Active Directory Domain Services dla zsynchronizowanej dzierżawy usługi Azure AD](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+* [Włączanie synchronizacji skrótów haseł w usługach Azure Active Directory Domain Services dla zsynchronizowanej dzierżawy usługi Azure AD](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Administrowanie domeną zarządzaną usług Azure Active Directory Domain Services](active-directory-ds-admin-guide-administer-domain.md)
 * [Dołączanie maszyny wirtualnej z systemem Windows do domeny zarządzanej usług Azure Active Directory Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Dołączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux do domeny zarządzanej usług Azure Active Directory Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

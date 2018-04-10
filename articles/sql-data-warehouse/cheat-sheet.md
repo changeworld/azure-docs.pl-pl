@@ -1,141 +1,136 @@
 ---
-title: "Ściągawka dla usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Znajdź łącza i najlepsze rozwiązania w celu szybkiego tworzenia rozwiązań magazyn danych SQL Azure."
+title: Ściągawka dotycząca usługi Azure SQL Data Warehouse | Microsoft Docs
+description: Skorzystaj z linków i najlepszych rozwiązań, aby szybko kompilować rozwiązania usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
 author: acomet
 manager: jhubbard
-editor: 
-ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
+ms.topic: overview
+ms.component: design
+ms.date: 03/28/2018
 ms.author: acomet
-ms.openlocfilehash: c67d56ff63f70baa052be17c119d943c558d398f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
-ms.translationtype: MT
+ms.reviewer: mausher,igorstan,jrj
+ms.openlocfilehash: 1e09dc2f3c7e7aa4ae98ef98a8957454a1beee6b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Ściągawka dla usługi Azure SQL Data Warehouse
-Arkusz ze wskazówkami dotyczącymi ten zawiera przydatne porady i wskazówki umożliwiające tworzenie rozwiązań magazyn danych SQL Azure. Przed rozpoczęciem pracy Dowiedz się więcej o każdym kroku szczegółowo odczytując [wzorce magazynu danych Azure SQL w obciążenie i wzorce przed](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), który opisano, co to jest usługa SQL Data Warehouse i co nie jest.
+# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Ściągawka dotycząca usługi Azure SQL Data Warehouse
+Ta ściągawka zawiera przydatne porady i wskazówki dotyczące kompilowania rozwiązań usługi Azure SQL Data Warehouse. Przed rozpoczęciem pracy zapoznaj się ze szczegółowymi informacjami na temat poszczególnych kroków w artykule [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns (Wzorce i antywzorce obciążeń usługi Azure SQL Data Warehouse)](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns). Opisano w nim elementy wchodzące i niewchodzące w skład usługi SQL Data Warehouse.
 
 Na poniższym rysunku przedstawiono proces projektowania magazynu danych:
 
-![Szkicu]
+![Szkic]
 
-## <a name="queries-and-operations-across-tables"></a>Operacje między tabel i zapytań
+## <a name="queries-and-operations-across-tables"></a>Zapytania i operacje między tabelami
 
-Jeśli wcześniej znana operacji głównych i zapytań, które mają być wykonywane w magazynie danych, można przypisać priorytety architektury magazynu danych dla tych operacji. Te zapytania i operacje mogą być następujące:
-* Sprzęganie co najmniej dwie tabele faktów z tabelami wymiarów, filtrowania połączone tabeli, a następnie dołączyć wyniki do składnicy danych.
-* Wprowadzanie duże lub małe aktualizacji do sprzedaży faktów.
-* Dołączanie danych tylko do tabel.
+Jeśli wcześniej wiadomo, które operacje i zapytania będą uruchamiane w magazynie danych, można przydzielać priorytety architekturze magazynu danych dla tych operacji. Te zapytania i operacje mogą być następujące:
+* Łączenie jednej lub dwóch tabel faktów z tabelami wymiarów, filtrowanie połączonej tabeli, a następnie łączenie wyników w składnicy danych.
+* Wprowadzanie dużych lub małych aktualizacji do sprzedaży faktów.
+* Dołączanie tylko danych do tabel.
 
-Znajomość typy operacji wcześniej pomaga zoptymalizować projektowanie tabelach.
+Wcześniejsza znajomość typów operacji pomaga zoptymalizować projekt tabel.
 
 ## <a name="data-migration"></a>Migracja danych
 
-Najpierw załadować dane do [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) lub magazynu obiektów Blob platformy Azure. Następnie użyj programu PolyBase, aby załadować dane do magazynu danych SQL w tabeli przemieszczania. Użyj następującej konfiguracji:
+Najpierw załaduj dane do usługi [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) lub magazynu Azure Blob Storage. Następnie użyj programu PolyBase, aby załadować dane do magazynu SQL Data Warehouse w tabeli tymczasowej. Użyj następującej konfiguracji:
 
-| Projektowanie | Zalecenie |
+| Projekt | Zalecenie |
 |:--- |:--- |
 | Dystrybucja | Działanie okrężne |
-| Indeksowanie | Sterty |
-| Partycjonowanie | None |
+| Indeksowanie | Sterta |
+| Partycjonowanie | Brak |
 | Klasa zasobów | largerc lub xlargerc |
 
-Dowiedz się więcej o [migracji danych], [ładowanie danych]i [proces wyodrębniania, obciążenia i przekształcenie (ELT)](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
+Dowiedz się więcej o [migracji danych], [ładowaniu danych] i [proces wyodrębniania, przekształcania i ładowania (ELT)](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
 
-## <a name="distributed-or-replicated-tables"></a>Rozproszone lub zreplikowanych tabel
+## <a name="distributed-or-replicated-tables"></a>Tabele rozproszone lub replikowane
 
 Użyj następujących strategii, w zależności od właściwości tabeli:
 
-| Typ | Doskonałym rozwiązaniem dla...| Uważaj if...|
+| Typ | Doskonałe rozwiązanie dla...| Należy uważać, jeśli...|
 |:--- |:--- |:--- |
-| Replikacja | Tabele wymiarów małych • w schemat gwiazdy z mniej niż 2 GB pamięci masowej po kompresji (kompresji ~ 5 x) |• Wiele transakcji zapisu znajdują się w tabeli (takie jak wstawianie, upsert, delete, aktualizacja)<br></br>• Zmienić udostępniania często wartości jednostki magazynu danych (DWU)<br></br>• Tylko używać kolumn 2 – 3 ale tabela zawiera wiele kolumn<br></br>• Indeksu zreplikowanej tabeli |
-| Działanie okrężne (ustawienie domyślne) | • Tabeli tymczasowej/przemieszczania<br></br> • Nie oczywiste Sprzęganie kolumn klucza lub dobrej candidate |• Wydajności jest powolne z powodu przemieszczenia danych |
-| Skrót | Tabele faktów •<br></br>• Wymiaru dużych tabel |Nie można zaktualizować • dystrybucji kluczy |
+| Replikowane | • Tabele małych wymiarów w schemacie gwiazdy z mniej niż 2 GB magazynu po kompresji (kompresja ok. 5x) |• Tabela zawiera wiele transakcji zapisu (takich jak wstawianie, operacja upsert, usuwanie, aktualizacja)<br></br>• Często zmieniasz aprowizację jednostek magazynu danych (DWU, Data Warehouse Unit)<br></br>• Używasz tylko 2–3 kolumn, ale tabela zawiera wiele kolumn<br></br>• Indeksujesz tabelę replikowaną |
+| Działanie okrężne (ustawienie domyślne) | • Tabela tymczasowa/przejściowa<br></br> • Brak oczywistego klucza dołączania lub właściwej kolumny kandydata |• Wydajność jest niska z powodu przenoszenia danych |
+| Skrót | • Tabele faktów<br></br>• Tabele o dużych wymiarach |• Nie można zaktualizować klucza dystrybucji |
 
-**Wskazówki:**
-* Rozpoczynać działanie okrężne, ale Oczekuj zalet architektury równoległemu strategii dystrybucji wyznaczania wartości skrótu.
-* Upewnij się, że typowe klawisze skrótów mają ten sam format danych.
-* Nie dystrybucji na varchar format.
-* Tabele wymiarów wspólnego klucza skrótu do tabeli faktów z operacji sprzężenia często może być rozpowszechniane skrót.
-* Użyj  *[sys.dm_pdw_nodes_db_partition_stats]*  do analizowania skośność żadnych danych.
-* Użyj  *[sys.dm_pdw_request_steps]*  do analizowania danych przemieszczania za zapytań, monitorowanie czasu emisji i losowa operacji. Jest to przydatne przejrzeć strategii dystrybucji.
+**Porady:**
+* Rozpocznij od działania okrężnego, ale staraj się zastosować strategię dystrybucji skrótów, aby skorzystać z zalet architektury z wysokim wskaźnikiem przetwarzania równoległego.
+* Upewnij się, że typowe klucze skrótów mają ten sam format danych.
+* Nie przeprowadzaj dystrybucji w formacie varchar.
+* Tabele wymiarów ze wspólnym kluczem skrótu do tabeli faktów z częstymi operacjami sprzężenia mogą być rozproszonymi tabelami skrótów.
+* Użyj elementu *[sys.dm_pdw_nodes_db_partition_stats]*, aby analizować skośność danych.
+* Użyj elementu *[sys.dm_pdw_request_steps]*, aby analizować operacje przenoszenia danych w powiązaniu z zapytaniami i monitorować czas emisji oraz operacji mieszania. Jest to przydatne w przypadku przeglądu strategii dystrybucji.
 
-Dowiedz się więcej o [zreplikowane tabele] i [rozproszonych tabel].
+Dowiedz się więcej o [tabelach replikowanych] i [tabelach rozproszonych].
 
-## <a name="index-your-table"></a>Indeks tabeli
+## <a name="index-your-table"></a>Indeksowanie tabeli
 
-Indeksowanie jest przydatne do szybkiego odczytywanie tabel. Jest unikatowy zestaw technologii, których można użyć na podstawie Twoich potrzeb:
+Indeksowanie ułatwia szybkie odczytywanie tabel. W zależności od potrzeb można używać unikatowego zestawu technologii:
 
-| Typ | Doskonałym rozwiązaniem dla... | Uważaj if...|
+| Typ | Doskonałe rozwiązanie dla... | Należy uważać, jeśli...|
 |:--- |:--- |:--- |
-| Sterty | • Tabeli przemieszczania/tymczasowej<br></br>• Małe tabele z małych wyszukiwań |• Tabeli pełna skanuje wszystkie wyszukiwania |
-| Indeks klastrowany | • Tabel z maksymalnie 100 milionów wierszy<br></br>• Dużych tabel (więcej niż 100 milionów wierszy) z tylko 1 i 2 kolumny rzadko |• Używane na zreplikowanej tabeli<br></br>• Masz złożonych zapytań obejmujących wiele sprzężenia i operacje Group By<br></br>• Odpowiednie aktualizacje na indeksowanych kolumn: Trwa pamięci |
-| Klastrowany indeks magazynu kolumn (WIK) (ustawienie domyślne) | • Dużych tabel (więcej niż 100 milionów wierszy) | • Używane na zreplikowanej tabeli<br></br>• Wprowadzone w bardzo dużej aktualizowanie operacji dla tabeli<br></br>• Overpartition tabeli: nie obejmują grupy wierszy na partycje i dystrybucji różnych węzłów |
+| Sterta | • Tabela przejściowa/tymczasowa<br></br>• Małe tabele z małymi wyszukiwaniami |• Każde wyszukiwanie skanuje pełną tabelę |
+| Indeks klastrowany | • Tabele zawierające maksymalnie 100 milionów wierszy<br></br>• Duże tabele (ponad 100 milionów wierszy), w których często są używane tylko 1–2 kolumny |• Użycie w replikowanej tabeli<br></br>• Masz złożone zapytania obejmujące wiele operacje łączenia i grupowania<br></br>• Wprowadzasz aktualizacje indeksowanych kolumn: zajmuje to pamięć |
+| Klastrowany indeks magazynu kolumn (CCI) (ustawienie domyślne) | • Duże tabele (ponad 100 milionów wierszy) | • Użycie w replikowanej tabeli<br></br>• Przeprowadzasz ogromne operacje aktualizacji w tabelach<br></br>• Występuje nadmierna aprowizacja tabeli: grupy wierszy nie obejmują różnych partycji i węzłów dystrybucji |
 
-**Wskazówki:**
-* Na indeks klastrowany można dodać indeksu nieklastrowanego na indeks do kolumny intensywnie używane do filtrowania. 
-* Należy zachować ostrożność sposób zarządzania pamięci dla tabeli z CCI. Podczas ładowania danych ma użytkownik (lub zapytanie) do korzystania z klasy dużych zasobów. Upewnij się uniknąć przycinanie i tworzenie wielu grup małych skompresowany wiersza.
-* Zoptymalizowana pod kątem skały obliczeniowe warstwy z CCI.
-* Dla WIK niską wydajność może się zdarzyć z powodu słabej kompresja grup wierszy. W takim przypadku odbudować lub zreorganizować WIK Twojego. Ma co najmniej 100 000 wierszy na grupy wierszy skompresowane. Idealna to 1 mln wierszy w grupy wierszy.
-* Na podstawie częstotliwości przyrostowe obciążenia i rozmiaru, chcesz zautomatyzować reorganizacji lub Odbuduj indeksy użytkownika. Pomocne jest zawsze czyszczenie sprężyny.
-* Być strategicznych, aby przyciąć grupę wierszy. Jak duży czy grupy wierszy Otwórz? Ilość danych będą ładowane w ciągu najbliższych dni?
+**Porady:**
+* Oprócz indeksu klastrowanego można do kolumny intensywnie używanej do filtrowania dodać indeks nieklastrowany. 
+* Zachowaj ostrożność przy zarządzaniu pamięcią tabeli przy użyciu indeksu CCI. Gdy ładujesz dane, chcesz, aby użytkownik (lub zapytanie) korzystał z zalet dużej klasy zasobów. Pamiętaj, aby unikać przycinania i tworzenia wielu małych skompresowanych grup wierszy.
+* Optymalizacja pod kątem obliczeń świetnie współdziała z indeksem CCI.
+* W przypadku interfejsu CCI przyczyną niskiej wydajności może być słaba kompresja grup wierszy. W takim przypadku ponownie skompiluj lub zorganizuj indeks CCI. Chcesz, aby każda skompresowana grupa wierszy zawierała co najmniej 100 000 wierszy. Idealna liczba to 1 mln wierszy w grupie.
+* Na podstawie rozmiaru i częstotliwości ładowania przyrostowego chcesz zautomatyzować reorganizację lub ponowną kompilację indeksów. Gruntowne porządki będą zawsze pomocne.
+* Jeśli chcesz przyciąć grupę wierszy, podejdź do tego strategicznie. Jak duże są otwarte grupy wierszy? Ile danych planujesz załadować w ciągu nadchodzących dni?
 
-Dowiedz się więcej o [indeksów].
+Dowiedz się więcej o [indeksach].
 
 ## <a name="partitioning"></a>Partycjonowanie
-Może być partycji tabeli, gdy tabela faktów duże (większe niż 1 miliard wierszy). W przypadku 99 procent klucza partycji powinny być oparte na datę. Należy zachować ostrożność nie overpartition, zwłaszcza jeśli użytkownik ma klastrowany indeks magazynu kolumn.
+Tabelę możesz partycjonować, gdy jest to duża tabela faktów (większa niż 1 miliard wierszy). W 99% przypadków klucz partycji powinien opierać się na dacie. Uważaj, aby nie partycjonować nadmiernie, szczególnie gdy korzystasz z klastrowanego indeksu magazynu kolumn.
 
-Z tabel, które wymagają ELT przemieszczania, mogą korzystać z partycjonowania. Ułatwia ona zarządzanie cyklem życia danych.
-Nie można więc overpartition danych, szczególnie w przypadku klastrowanego indeksu magazynu kolumn.
+Partycjonowanie może przynieść korzyści w przypadku tabel przejściowych, które wymagają procesu ELT. Ułatwia ono zarządzanie cyklem życia danych.
+Uważaj, aby nadmiernie nie partycjonować danych, szczególnie w przypadku klastrowanego indeksu magazynu kolumn.
 
-Dowiedz się więcej o [partycji].
+Dowiedz się więcej o [partycjach].
 
-## <a name="incremental-load"></a>Przyrostowe obciążenia
+## <a name="incremental-load"></a>Ładowanie przyrostowe
 
-Jw przypadku przyrostowo załadować dane, najpierw upewnij się, że Przydziel większy klasy zasobu do ładowania danych. Zaleca się przy użyciu programu PolyBase i ADF V2 do automatyzacji programu potoki ELT do usługi SQL Data Warehouse.
+Jeśli planujesz ładować dane przyrostowo, najpierw upewnij się, że przydzielasz większe klasy zasobów na potrzeby ładowania danych. Zalecamy automatyzowanie potoków ELT do usługi SQL Data Warehouse przy użyciu programu PolyBase i pliku ADF w wersji V2.
 
-Dla dużych partii aktualizacji w danych historycznych należy najpierw usunąć dane danych. Następnie przełącz wstawiania zbiorczego, nowych danych. Takie podejście dwuetapowej jest bardziej wydajny.
+W przypadku dużych partii aktualizacji danych historycznych najpierw usuń powiązane dane. Następnie przeprowadź zbiorcze wstawianie nowych danych. Takie podejście dwuetapowe jest bardziej wydajne.
 
 ## <a name="maintain-statistics"></a>Prowadzenie statystyk
- Dopóki auto statystyki są ogólnie dostępna, SQL Data Warehouse wymaga ręcznej obsługi statystyk. Ważne jest, aby zaktualizować statystyk jako *znaczne* wprowadzenia zmiany danych. Dzięki temu można zoptymalizować swoje plany zapytań. Jeśli okaże się, że trwa zbyt długo, aby zachować wszystkie statystyk, być kolumny, które mają statystyk. 
+ Do momentu ogólnego udostępnienia statystyk automatycznych usługa SQL Data Warehouse wymaga ręcznej obsługi statystyk. Ważne jest aktualizowanie statystyk w miarę pojawiania się kolejnych *znaczących* zmian danych. Ułatwia to optymalizowanie planów zapytań. Jeśli okaże się, że obsługa wszystkich statystyk trwa zbyt długo, należy przemyśleć dokładnie wybór kolumn ze statystykami. 
 
-Można również zdefiniować częstotliwość aktualizacji. Na przykład można zaktualizować kolumn dat, gdzie nowe wartości może zostać dodana, codziennie. Aby uzyskać największe korzyści, uzyskanie statystyki do kolumn uczestniczących w sprzężenia, kolumn używana w klauzuli WHERE i kolumn w GROUP BY.
+Można również zdefiniować częstotliwość aktualizacji. Można na przykład codziennie aktualizować kolumny danych, w których mogą być dodawane nowe wartości. Największe korzyści można osiągnąć, prowadząc statystyki dla kolumn uczestniczących w sprzężeniach, kolumn używanych w ramach klauzuli WHERE i kolumn z klauzuli GROUP BY.
 
-Dowiedz się więcej o [statystyki].
+Dowiedz się więcej o [statystykach].
 
 ## <a name="resource-class"></a>Klasa zasobów
-Usługa SQL Data Warehouse korzysta z grup zasobów w celu przydzielania pamięci zapytaniom. Jeśli potrzebujesz większej ilości pamięci do ulepszenia zapytania i szybkość ładowania, należy przydzielić wyższej klasy zasobów. Na stronie Przerzucanie przy użyciu klasy zasobów o większych ma wpływ współbieżności. Chcesz uwzględnić który przed przeniesieniem wszystkich użytkowników do klasy dużych zasobów.
+Usługa SQL Data Warehouse korzysta z grup zasobów w celu przydzielania pamięci zapytaniom. Jeśli potrzeba większej ilości pamięci w celu zwiększenia szybkości zapytań lub ładowania, należy przydzielić wyższe klasy zasobów. Z drugiej strony użycie większych klas zasobów wpływa na współbieżność. Należy o tym pamiętać przed przeniesieniem wszystkich użytkowników do dużej klasy zasobów.
 
-Jeśli zauważysz, że zapytania trwa zbyt długo, sprawdź, czy użytkownicy nie są uruchamiane w dużych zasobów klasy. Klasy zasobów o dużych używać wielu miejsc współbieżności. Może spowodować inne zapytania do kolejki.
+Jeśli zauważysz, że wykonywanie zapytań trwa zbyt długo, sprawdź, czy użytkownicy nie stosują uruchamiania w dużych klasach zasobów. Duże klasy zasobów używają wielu miejsc współbieżności. Może to powodować powstanie kolejki innych zasobów.
 
-Na koniec za pomocą warstwy zoptymalizowanych pod kątem obliczeniowe, każda klasa zasobów pobiera 2,5 raza więcej pamięci niż w warstwie elastycznej zoptymalizowane.
+Na koniec dzięki użyciu warstwy Zoptymalizowana pod kątem obliczeń każda klasa zasobów otrzymuje 2,5 raza więcej pamięci niż w warstwie zoptymalizowanej w sposób elastyczny.
 
-Dowiedz się więcej, jak pracować z [klasy zasobów i współbieżność].
+Dowiedz się więcej, jak pracować z [klasami zasobów i współbieżnością].
 
-## <a name="lower-your-cost"></a>Niższy koszt
-Kluczowych funkcji usługi SQL Data Warehouse jest możliwość [Zarządzanie zasoby obliczeniowe](sql-data-warehouse-manage-compute-overview.md). Można wstrzymać hurtowni danych, gdy nie używasz, co uniemożliwia rozliczenia zasoby obliczeniowe. Możesz skalować zasobów do Twojej wymagań dotyczących wydajności. Aby wstrzymać, użyj [portalu Azure](pause-and-resume-compute-portal.md) lub [PowerShell](pause-and-resume-compute-powershell.md). Aby skalować, użyj [portalu Azure](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md), lub [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+## <a name="lower-your-cost"></a>Obniżanie kosztów
+Kluczową funkcją usługi SQL Data Warehouse jest możliwość [zarządzanie zasobami obliczeniowymi](sql-data-warehouse-manage-compute-overview.md). Magazyn danych można wstrzymać, gdy nie jest używany, co uniemożliwi naliczanie opłat za zasoby obliczeniowe. Zasoby można skalować zgodnie ze swoimi wymaganiami dotyczącymi wydajności. W celu wstrzymania użyj witryny [Azure Portal](pause-and-resume-compute-portal.md) lub programu [PowerShell](pause-and-resume-compute-powershell.md). W celu skalowania użyj witryny [Azure Portal](quickstart-scale-compute-portal.md), programu [PowerShell](quickstart-scale-compute-powershell.md), języka [T-SQL](quickstart-scale-compute-tsql.md) lub [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Funkcja automatycznego skalowania teraz w czasie ma w środowisku Azure Functions:
+Teraz możesz używać automatycznego skalowania w dowolnym momencie dzięki funkcji Azure Functions:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-## <a name="optimize-your-architecture-for-performance"></a>Optymalizacja wydajności architektury
+## <a name="optimize-your-architecture-for-performance"></a>Optymalizacja architektury pod kątem wydajności
 
-Firma Microsoft zaleca, biorąc bazy danych SQL i usług Azure Analysis Services w architekturze gwiazdy. To rozwiązanie może rozdzielenia obciążenia różnych grup użytkowników podczas również przy użyciu zaawansowanych funkcji zabezpieczeń z bazy danych SQL i usług Azure Analysis Services. To jest również sposób zapewnia współbieżność nieograniczona dla użytkowników.
+Zalecamy rozważenie użycia bazy danych SQL Database i usługi Azure Analysis Services w architekturze gwiazdy. To rozwiązanie może spowodować rozdzielenie obciążenia między różnymi grupami użytkowników przy równoczesnym korzystaniu z zaawansowanych funkcji zabezpieczeń bazy danych SQL Database i usługi Azure Analysis Services. Jest to również sposób na zapewnienie użytkownikom nieograniczonej współbieżności.
 
-Dowiedz się więcej o [typowe architektury, które korzystają z usługi SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Dowiedz się więcej o [typowych architekturach korzystających z usługi SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Wdrażanie za pomocą jednego kliknięcia z wymienionymi w baz danych z magazynu danych SQL:
+Wdrażaj szprychy za pomocą jednego kliknięcia w bazach danych SQL Database z poziomu magazynu SQL Data Warehouse:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
@@ -143,15 +138,17 @@ Wdrażanie za pomocą jednego kliknięcia z wymienionymi w baz danych z magazynu
 
 
 <!--Image references-->
-[Sketch]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
+[Szkic]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
 
 <!--Article references-->
-[ładowanie danych]:design-elt-data-loading.md
+[ładowaniu danych]:design-elt-data-loading.md
 [deeper guidance]:guidance-for-loading-data.md
-[indeksów]:sql-data-warehouse-tables-index.md
-[partycji]:sql-data-warehouse-tables-partition.md
-[statystyki]:sql-data-warehouse-tables-statistics.md
-[klasy zasobów i współbieżność]:resource-classes-for-workload-management.md
+[indeksach]:sql-data-warehouse-tables-index.md
+[partycjach]:sql-data-warehouse-tables-partition.md
+[statystykach]:sql-data-warehouse-tables-statistics.md
+[klasami zasobów i współbieżnością]:resource-classes-for-workload-management.md
+[tabelach replikowanych]:design-guidance-for-replicated-tables.md
+[tabelach rozproszonych]:sql-data-warehouse-tables-distribute.md
 
 <!--MSDN references-->
 
@@ -160,8 +157,7 @@ Wdrażanie za pomocą jednego kliknięcia z wymienionymi w baz danych z magazynu
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
 [migracji danych]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-[zreplikowane tabele]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-guidance-for-replicated-tables
-[rozproszonych tabel]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute
-[Azure Data Lake Store]: https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store
-[sys.dm_pdw_nodes_db_partition_stats]: https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql
+
+[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
+[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

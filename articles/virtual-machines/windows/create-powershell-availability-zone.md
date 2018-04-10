@@ -1,32 +1,32 @@
 ---
-title: "Tworzenie przydzielonej do strefy maszyny wirtualnej z systemem Windows — program Azure PowerShell | Microsoft Docs"
-description: "Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu Azure PowerShell"
+title: Tworzenie przydzielonej do strefy maszyny wirtualnej z systemem Windows — program Azure PowerShell | Microsoft Docs
+description: Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/27/2018
 ms.author: danlep
-ms.custom: 
-ms.openlocfilehash: ada47536dbd736386a4efc76249f4ff3a1cfd527
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.custom: ''
+ms.openlocfilehash: 4b6ae95d9b8f7cc4924ea89a743cf9878c7dd79a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu PowerShell
 
 W tym artykule przedstawiono szczegółowe informacje dotyczące tworzenia maszyny wirtualnej z systemem Windows Server 2016 w strefie dostępności platformy Azure przy użyciu programu Azure PowerShell. [Strefa dostępności](../../availability-zones/az-overview.md) to fizycznie oddzielona strefa w regionie świadczenia usługi Azure. Strefy dostępności chronią aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych.
 
-[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
+Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym regionie platformy Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
 
 Upewnij się, że zainstalowano najnowszy moduł Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
@@ -50,7 +50,7 @@ Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("eastus2")};
 Rezultat jest podobny do poniższego, skróconego przykładu, który pokazuje strefy dostępności, w których dostępne są poszczególne rozmiary maszyn wirtualnych:
 
 ```powershell
-ResourceType                Name  Location      Zones
+ResourceType                Name  Location      Zones   [...]
 ------------                ----  --------      -----
 virtualMachines  Standard_DS1_v2   eastus2  {1, 2, 3}
 virtualMachines  Standard_DS2_v2   eastus2  {1, 2, 3}
@@ -68,16 +68,16 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. W tym przykładzie utworzymy grupę zasobów o nazwie *myResourceGroup* w regionie *eastus2*. East US 2 (Wschodnie stany USA 2) jest jednym z regionów świadczenia usługi Azure, które obsługują strefy dostępności w wersji zapoznawczej.
+Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. W tym przykładzie utworzymy grupę zasobów o nazwie *myResourceGroup* w regionie *eastus2*. 
 
 ```powershell
-New-AzureRmResourceGroup -Name myResourceGroup -Location eastus2
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS2
 ```
 
 ## <a name="create-networking-resources"></a>Tworzenie zasobów sieciowych
 
 ### <a name="create-a-virtual-network-subnet-and-a-public-ip-address"></a>Tworzenie sieci wirtualnej, podsieci i publicznego adresu IP 
-Te zasoby są używane do zapewniania łączności sieciowej z maszyną wirtualną i nawiązywania połączenia z Internetem. Utwórz adres IP w strefie dostępności, w tym przykładzie *2*. Aby utworzyć maszynę wirtualną w strefie dostępności (co przedstawiono w kolejnym kroku), musisz podać tę samą strefę, której użyto do utworzenia adresu IP.
+Te zasoby są używane do zapewniania łączności sieciowej z maszyną wirtualną i nawiązywania połączenia z Internetem. Utwórz adres IP w strefie dostępności, w tym przykładzie *2*. W ostatnim kroku utworzono maszynę wirtualną w tej samej strefie, która została użyta do utworzenia adresu IP.
 
 ```powershell
 # Create a subnet configuration
@@ -85,7 +85,7 @@ $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPre
 
 # Create a virtual network
 $vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus2 `
-    -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+    -Name myVNet -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
 
 # Create a public IP address in an availability zone and specify a DNS name
 $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
@@ -122,7 +122,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia, które są używane podczas wdrażania maszyny wirtualnej, takie jak obraz maszyny wirtualnej, rozmiar i konfiguracja uwierzytelniania. Rozmiar *Standardowa_DS1_v2* używany w tym przykładzie jest obsługiwany w wersji zapoznawczej strefy dostępności. Konfiguracja ta określa również strefę dostępności ustawioną podczas tworzenia adresu IP. Podczas wykonywania tego kroku jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej.
+Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia, które są używane podczas wdrażania maszyny wirtualnej, takie jak obraz maszyny wirtualnej, rozmiar i konfiguracja uwierzytelniania. Rozmiar *Standardowa_DS1_v2* używany w tym przykładzie jest obsługiwany w strefach dostępności. Konfiguracja ta określa również strefę dostępności ustawioną podczas tworzenia adresu IP. Podczas wykonywania tego kroku jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej.
 
 ```powershell
 # Define a credential object
@@ -141,9 +141,9 @@ Utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/mod
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 ```
 
-## <a name="zone-for-ip-address-and-managed-disk"></a>Strefa adresu IP i dysku zarządzanego
+## <a name="confirm-zone-for-managed-disk"></a>Potwierdzanie strefy dla dysku zarządzanego
 
-Zasób adresu IP maszyny wirtualnej został utworzony w tej samej strefie dostępności co maszyna wirtualna. Zasób dysku zarządzanego maszyny wirtualnej również został utworzony w tej strefie. Można to sprawdzić za pomocą polecenia [Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk):
+Zasób adresu IP maszyny wirtualnej został utworzony w tej samej strefie dostępności co maszyna wirtualna. Zasób dysku zarządzanego maszyny wirtualnej jest tworzony w tej samej strefie dostępności. Można to sprawdzić za pomocą polecenia [Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk):
 
 ```powershell
 Get-AzureRmDisk -ResourceGroupName myResourceGroup
@@ -154,9 +154,9 @@ Dane wyjściowe pokazują, że dysk zarządzany znajduje się w tej samej strefi
 ```powershell
 ResourceGroupName  : myResourceGroup
 AccountType        : PremiumLRS
-OwnerId            : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+OwnerId            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/virtualMachines/myVM
-ManagedBy          : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+ManagedBy          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx//resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/virtualMachines/myVM
 Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
 Zones              : {2}
@@ -166,15 +166,13 @@ CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
 DiskSizeGB         : 127
 EncryptionSettings :
 ProvisioningState  : Succeeded
-Id                 : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
+Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.
                      Compute/disks/myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
 Name               : myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
 Type               : Microsoft.Compute/disks
 Location           : eastus2
 Tags               : {}
 ```
-
-
 
 
 ## <a name="next-steps"></a>Następne kroki

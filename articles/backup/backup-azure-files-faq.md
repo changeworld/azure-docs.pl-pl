@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 850d4d1e2ef6a13fcd8a072e6da210d558c7769b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8093275ec9e9cce6d9a765bf1bfc434fecdb6ea7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,8 +29,14 @@ W wersji zapoznawczej kopie zapasowe udziałów plików platformy Azure nie obs�
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Gdy próbuję skonfigurować kopię zapasową, nie widzę niektórych udziałów plików platformy Azure na koncie magazynu. Dlaczego? <br/>
 Sprawdź, czy udział pliku platformy Azure nie jest już chroniony w tym samym magazynie usługi Recovery Services lub nie został ostatnio usunięty.
 
-### <a name="why-cant-i-protect-file-shares-connected-to-a-sync-group-in-azure-file-sync-br"></a>Dlaczego nie mogę chronić udziałów plików połączonych z grupą synchronizacji w usłudze Azure File Sync? <br/>
-Ochrona udziałów plików platformy Azure połączonych z grupami synchronizacji jest dostępna w ograniczonej wersji zapoznawczej. Napisz na adres [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), podając identyfikator subskrypcji, i poproś o dostęp. 
+### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync-br"></a>Czy mogę chronić udziały plików połączonych z grupą synchronizacji w usłudze Azure Files Sync? <br/>
+Tak. Ochrona udziałów plików platformy Azure połączonych z grupami synchronizacji została włączona i jest częścią publicznej wersji zapoznawczej.
+
+### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Podczas próby utworzenia kopii zapasowej udziałów plików konto usługi Storage zostało kliknięte w celu odnalezienia w nim udziałów plików. Ale nie zostały one jednak objęte ochroną. Jak mogę chronić te udziały plików w innym magazynie?
+Wybranie konta usługi Storage w celu odnalezienia udziałów plików podczas próby utworzenia kopii zapasowej powoduje zarejestrowanie konta usługi Storage w obrębie magazynu, z poziomu którego wykonano tę czynność. Jeśli chcesz chronić udziały plików przy użyciu innego magazynu, [wyrejestruj](troubleshoot-azure-files.md#configuring-backup) wybrane konto usługi Storage z tego magazynu.
+
+### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Czy mogę zmienić magazyn, w którym tworzę kopię zapasową moich udziałów plików?
+Tak. Musisz jednak [zatrzymać ochronę](backup-azure-files.md#stop-protecting-an-azure-file-share) na poziomie połączonego magazynu, [wyrejestrować](troubleshoot-azure-files.md#configuring-backup) to konto usługi Storage, a następnie włączyć ochronę z poziomu innego magazynu.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>W których obszarach geograficznych można tworzyć kopie zapasowe udziałów plików usługi Azure Files? <br/>
 Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w wersji zapoznawczej tylko w następujących obszarach geograficznych: 
@@ -43,7 +49,11 @@ Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w we
 -   Australia Wschodnia (AE) 
 -   Wschodnie stany USA (EUS)
 -   Wschodnie stany USA 2 (EUS2)
+- Japonia Wschodnia (JPE)
+- Japonia Zachodnia (JPW)
 -   Indie Środkowe (INC) 
+- Indie Południowe (INS)
+- Korea Południowa (KRS)
 -   Północno-środkowe stany USA (NCUS) 
 -   Europa Północna (NE) 
 -   Południowo-środkowe stany USA (SCUS) 
@@ -55,10 +65,13 @@ Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w we
 -   Zachodnio-środkowe stany USA (WCUS)
 -   Zachodnie stany USA 2 (WUS 2)
 
-Napisz na adres [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) jeśli chcesz używać tej usługi w określonym obszarze geograficznym, którego nie ma na powyższej liście.
+Napisz na adres [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), jeśli chcesz używać tej usługi w określonym obszarze geograficznym, którego nie ma na powyższej liście.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Ile udziałów plików platformy Azure można chronić w magazynie?<br/>
-W wersji zapoznawczej można chronić w jednym magazynie udziały plików platformy Azure znajdujące się na maksymalnie 25 kontach magazynu. Maksymalna liczba udziałów plików platformy Azure w jednym magazynie wynosi 200. 
+W wersji zapoznawczej można chronić w jednym magazynie udziały plików platformy Azure znajdujące się na maksymalnie 25 kontach magazynu. Maksymalna liczba udziałów plików platformy Azure w jednym magazynie wynosi 200.
+
+### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Czy można chronić dwa różne udziały plików z poziomu tego samego konta usługi Storage w różnych magazynach?
+Nie. Wszystkie udziały plików na koncie usługi Storage mogą być chronione tylko przez ten sam magazyn.
 
 ## <a name="backup"></a>Backup
 
@@ -66,12 +79,12 @@ W wersji zapoznawczej można chronić w jednym magazynie udziały plików platfo
 W dowolnym momencie możesz mieć maksymalnie 200 migawek na jeden udział plików. Limit obejmuje migawki wykonane przez usługę Azure Backup na podstawie zasad. Jeśli tworzenie kopii zapasowych będzie kończyć się niepowodzeniem z powodu osiągnięcia tego limitu, usuń punkty przywracania utworzone na żądanie, aby zapewnić pomyślne tworzenie kopii zapasowych w przyszłości.
 
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>Po włączeniu sieci wirtualnych na koncie magazynu tworzenie kopii zapasowej udziału plików na koncie kończy się niepowodzeniem. Dlaczego?
-Kopie zapasowe udziałów plików platformy Azure nie obsługują kont magazynu, które mają włączone sieci wirtualne. Wyłącz sieci wirtualne na kontach magazynu, aby pomyślnie tworzyć kopie zapasowe. 
+Kopie zapasowe udziałów plików platformy Azure nie obsługują kont usługi Storage z włączonymi sieciami wirtualnymi. Wyłącz sieci wirtualne na kontach magazynu, aby pomyślnie tworzyć kopie zapasowe. 
 
 ## <a name="restore"></a>Przywracanie
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Czy można odzyskać dane z usuniętego udziału plików platformy Azure? <br/>
-Podczas usuwania udziału plików platformy Azure zostanie wyświetlona lista kopii zapasowych, które również zostaną usunięte, z prośbą o potwierdzenie. Nie można przywrócić usuniętego udziału plików platformy Azure.
+Podczas usuwania udziału plików platformy Azure zostanie wyświetlona lista kopii zapasowych, które zostaną usunięte, z prośbą o potwierdzenie. Nie można przywrócić usuniętego udziału plików platformy Azure.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Czy można przywrócić dane z kopii zapasowych, jeśli zatrzymano ochronę udziału plików platformy Azure? <br/>
 Tak. Jeśli podczas zatrzymywania ochrony została wybrana opcja **Zachowaj dane kopii zapasowej**, można przywrócić dane z wszystkich istniejących punktów przywracania.
@@ -85,7 +98,7 @@ Do wszystkich migawek wykonanych przez usługę Azure Backup możesz uzyskać do
 Kopie zapasowe udziałów plików platformy Azure tworzone codziennie można przechowywać przez maksymalnie 120 dni.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Co się stanie, jeśli zmienię zasady tworzenia kopii zapasowych udziału plików platformy Azure? <br/>
-Po zastosowaniu nowych zasad do udziału plików będzie obowiązywał harmonogram i okres przechowywania określony przez te nowe zasady. Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania zostaną oznaczone, aby przechowywać je zgodnie z nowymi zasadami. W przypadku skrócenia okresu przechowywania zostaną one oznaczone do oczyszczenia w ramach następnego zadania oczyszczania, a następnie usunięte.
+Po zastosowaniu nowych zasad do udziału plików będzie obowiązywał harmonogram i okres przechowywania określony przez te nowe zasady. Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania zostaną oznaczone, aby przechowywać je zgodnie z nowymi zasadami. W przypadku skrócenia okresu przechowywania są one oznaczane do oczyszczenia w ramach następnego zadania oczyszczania i usuwane.
 
 ## <a name="see-also"></a>Zobacz też
 Te informacje dotyczą wyłącznie tworzenia kopii zapasowych plików usługi Azure Files. Aby dowiedzieć się więcej na temat innych obszarów usługi Azure Backup, zobacz inne najczęściej zadawane pytania dotyczące tworzenia kopii zapasowych:

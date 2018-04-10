@@ -1,27 +1,27 @@
 ---
-title: "Analizowanie użycia danych w usłudze Log Analytics | Microsoft Docs"
-description: "Do wyświetlania informacji o ilości danych wysyłanych do usługi Log Analytics i do rozwiązywania problemów związanych z dużą ilością wysyłanych danych można wykorzystać pulpit nawigacyjny Użycie w usłudze Log Analytics."
+title: Analizowanie użycia danych w usłudze Log Analytics | Microsoft Docs
+description: Pulpit nawigacyjny użycia i szacowanych kosztów w usłudze Log Analytics umożliwia szacowanie ilości danych wysyłanych do usługi Log Analytics oraz identyfikowanie potencjalnych przyczyn nieprzewidzianego wzrostu tej ilości.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2018
+ms.date: 03/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d6baa6b46290c7a332f5cf780c7f70680fb6a2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
-Usługa Log Analytics zawiera informacje na temat ilości zebranych danych, systemów, z których zostały one wysyłane, oraz typów danych.  Pulpit nawigacyjny **Użycie usługi Log Analytics** pozwala na sprawdzenie ilości danych wysyłanych do usługi Log Analytics. Na pulpicie nawigacyjnym prezentowana jest ilość danych zebranych przez każde rozwiązanie i ilość danych wysyłanych przez komputery.
+Usługa Log Analytics zawiera informacje na temat ilości zebranych danych, źródeł, z których zostały one wysłane, oraz typów danych.  Użyj pulpitu nawigacyjnego **Użycie usługi Log Analytics** do przeglądania i analizowania użycia danych. Na pulpicie nawigacyjnym prezentowana jest ilość danych zebranych przez każde rozwiązanie i ilość danych wysyłanych przez komputery.
 
 ## <a name="understand-the-usage-dashboard"></a>Objaśnienie pulpitu nawigacyjnego Użycie
 Pulpit nawigacyjny **Użycie usługi Log Analytics** udostępnia następujące informacje:
@@ -41,20 +41,17 @@ Pulpit nawigacyjny **Użycie usługi Log Analytics** udostępnia następujące i
     - Ilość czasu zbierania i indeksowania danych  
 - Lista zapytań
 
-![pulpit nawigacyjny Użycie](./media/log-analytics-usage/usage-dashboard01.png)
+![Pulpit nawigacyjny użycia i kosztów](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+)
 
 ### <a name="to-work-with-usage-data"></a>Aby pracować z danymi użycia
-1. Jeśli nie zostało to jeszcze zrobione, zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu subskrypcji platformy Azure.
-2. Kliknij pozycję **Wszystkie usługi**, a następnie na liście zasobów wpisz wartość **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Kliknij pozycję **Log Analytics**.  
-    ![Centrum platformy Azure](./media/log-analytics-usage/hub.png)
-3. Pulpit nawigacyjny **Log Analytics** wyświetla listę obszarów roboczych. Wybierz obszar roboczy.
-4. Na pulpicie nawigacyjnym *obszar roboczy* kliknij pozycję **Użycie usługi Log Analytics**.
-5. Na pulpicie nawigacyjnym **Użycie usługi Log Analytics** kliknij pozycję **Czas: ostatnie 24 godziny**, aby zmienić przedział czasu.  
-    ![przedział czasu](./media/log-analytics-usage/time.png)
-6. Wyświetl bloki kategorii użycia pokazujące obszary, które Cię interesują. Wybierz blok, a następnie kliknij w nim pozycję, aby wyświetlić więcej szczegółów w obszarze [Wyszukiwanie w dzienniku](log-analytics-log-searches.md).  
-    ![przykładowy blok użycia danych](./media/log-analytics-usage/blade.png)
-7. Na pulpicie nawigacyjnym wyszukiwania w dzienniku przejrzyj wyniki zwrócone w wyniku wyszukiwania.  
-    ![przykład wyszukiwania w dzienniku użycia](./media/log-analytics-usage/usage-log-search.png)
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br><br> ![Azure Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. Na liście obszarów roboczych usługi Log Analytics wybierz obszar roboczy.
+4. Wybierz pozycję **Użycie i szacunkowe koszty** z listy w lewym okienku.
+5. Na pulpicie nawigacyjnym **Użycie i szacowane koszty** możesz modyfikować zakres czasu, wybierając pozycję **Czas: ostatnie 24 godziny** i zmieniać przedział czasu.<br><br> ![przedział czasu](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
+6. Wyświetl bloki kategorii użycia pokazujące obszary, które Cię interesują. Wybierz blok, a następnie kliknij w nim pozycję, aby wyświetlić więcej szczegółów w obszarze [Wyszukiwanie w dzienniku](log-analytics-log-searches.md).<br><br> ![przykładowy kluczowy wskaźnik wydajności użycia danych](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+7. Na pulpicie nawigacyjnym wyszukiwania w dzienniku przejrzyj wyniki zwrócone w wyniku wyszukiwania.<br><br> ![przykład wyszukiwania w dzienniku użycia](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Tworzenie alertu, gdy ilość zebranych danych jest większa od oczekiwanej
 W tej sekcji opisano sposób tworzenia alertu w sytuacji, gdy:

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/20/2018
+ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: 8858df394885ae7820a4bc72458f4f1d851965e6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 87984859d1f0562149e6700642f7f0a1361d624e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks
 
@@ -113,7 +113,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitter. Wykonaj poniższe kroki, aby utworzyć aplikację usługi Twitter i zarejestrować wartości potrzebne do ukończenia tego samouczka.
 
-1. W przeglądarce internetowej przejdź do strony [Twitter Application Management (Zarządzanie aplikacjami usługi Twitter)](http://twitter.com/app) i wybierz pozycję **Create New App (Utwórz nową aplikację)**.
+1. W przeglądarce internetowej przejdź do strony [Twitter Application Management (Zarządzanie aplikacjami usługi Twitter)](https://apps.twitter.com/) i wybierz pozycję **Create New App (Utwórz nową aplikację)**.
 
     ![Tworzenie aplikacji usługi Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-twitter-app.png "Tworzenie aplikacji usługi Twitter")
 
@@ -121,7 +121,7 @@ Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitt
 
     ![Szczegóły aplikacji usługi Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Szczegóły aplikacji usługi Twitter")
 
-3. Na stronie aplikacji wybierz kartę **Keys and Access Tokens (Klucze i tokeny dostępu)** i skopiuj wartości pól **Consume Key (Klucz klienta)** i **Consumer Secret (Klucz tajny klienta)**. Zaznacz również pole **Create my access token (Utwórz mój token dostępu)**, aby wygenerować tokeny dostępu. Skopiuj wartości pól **Access Token (Token dostępu)** i **Access Token Secret (Klucz tajny tokenu dostępu)**.
+3. Na stronie aplikacji wybierz kartę **Keys and Access Tokens (Klucze i tokeny dostępu)**, a następnie skopiuj wartości pól **Consumer Key (Klucz klienta)** i **Consumer Secret (Wpis tajny klienta)**. Zaznacz również pole **Create my access token (Utwórz mój token dostępu)**, aby wygenerować tokeny dostępu. Skopiuj wartości pól **Access Token (Token dostępu)** i **Access Token Secret (Klucz tajny tokenu dostępu)**.
 
     ![Szczegóły aplikacji usługi Twitter](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Szczegóły aplikacji usługi Twitter")
 
@@ -395,6 +395,8 @@ Dane wyjściowe są teraz podobne do następującego fragmentu kodu:
     -------------------------------------------
     ...
     ...
+
+Dane z usługi Azure Event Hubs zostały przesłane strumieniowo do usługi Azure Databricks niemal w czasie rzeczywistym za pomocą łącznika usługi Event Hubs dla platformy Apache Spark. Aby uzyskać więcej informacji na temat sposobu korzystania z łącznika usługi Event Hubs dla platformy Spark, zobacz [dokumentację łącznika](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 
 ## <a name="run-sentiment-analysis-on-tweets"></a>Przeprowadzanie analizy tonacji na tweetach
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2018
+ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytics w wielu subskrypcjach
 
@@ -324,9 +324,9 @@ Aby wyświetlić szczegółowe informacje dotyczące każdego kroku, kliknij naz
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>Krok 5. Wyświetlenie dziennika aktywności platformy Azure w usłudze Log Analytics
 Ostatnim krokiem jest sprawdzenie obszaru roboczego usługi Log Analytics, aby upewnić się, że dane są zbierane zgodnie z oczekiwaniami.
 
-1. W witrynie Azure Portal wybierz opcję **Log Analytics**.
-2. Wybierz obszar roboczy, a następnie kafelek **Przeszukiwanie dzienników**.
-3. Na pasku wyszukiwania zapytania wpisz `AzureActivity_CL` i kliknij przycisk wyszukiwania. Jeśli dziennik niestandardowy nie został nazwany *AzureActivity*, wpisz wybraną nazwę i dołącz do niej `_CL`.
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+2. Na liście obszarów roboczych usługi Log Analytics wybierz swój obszar roboczy.
+3.  Kliknij kafelek **Przeszukiwanie dzienników** i w okienku Przeszukiwanie dzienników w polu zapytania wpisz `AzureActivity_CL`, a następnie naciśnij klawisz Enter lub kliknij przycisk wyszukiwania z prawej strony pola zapytania. Jeśli dziennik niestandardowy nie został nazwany *AzureActivity*, wpisz wybraną nazwę i dołącz do niej `_CL`.
 
 >[!NOTE]
 > Kiedy nowy dziennik niestandardowy zostaje wysłany do usługi Log Analytics po raz pierwszy, możliwość jego wyszukania może być dostępna dopiero po godzinie.

@@ -1,8 +1,8 @@
 ---
 title: Instalacja agenta programu Azure AD Connect Health | Microsoft Docs
-description: "Jest to strona programu Azure AD Connect Health opisująca instalację agenta usług AD FS i synchronizacji."
+description: Jest to strona programu Azure AD Connect Health opisująca instalację agenta usług AD FS i synchronizacji.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 85a12cbfdad4a1b8fbc7c3e3ea15b91c5267d7c8
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 5a0dadb86b6bdcbf8fc9ba38d09a2bfc9f8ec341
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalowanie agenta programu Azure AD Connect Health
 W tym dokumencie opisano instalowanie i konfigurowanie agentów programu Azure AD Connect Health. Agentów możesz pobrać [tutaj](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent).
@@ -136,7 +136,7 @@ Aby funkcja Analiza użycia mogła zbierać i analizować dane, agent programu A
 9. Zaznacz pola wyboru **Inspekcje zakończone sukcesem i Inspekcje zakończone niepowodzeniem**, a następnie kliknij przycisk **OK**. Powinno to być włączone domyślnie.
 10. Otwórz okno programu PowerShell i uruchom następujące polecenie: ```Set-AdfsProperties -AuditLevel Verbose```.
 
-Zwróć uwagę, że poziom inspekcji „basic” (podstawowy) jest włączony domyślnie. Przeczytaj więcej na temat [ulepszenia inspekcji usług AD FS w systemie Windows Server 2016](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016)
+Zwróć uwagę, że poziom inspekcji „basic” (podstawowy) jest włączony domyślnie. Przeczytaj więcej na temat [ulepszenia inspekcji usług AD FS w systemie Windows Server 2016](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016)
 
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>Aby zlokalizować dzienniki inspekcji usług AD FS
@@ -144,6 +144,8 @@ Zwróć uwagę, że poziom inspekcji „basic” (podstawowy) jest włączony do
 2. Przejdź do dzienników systemu Windows i wybierz pozycję **Zabezpieczenia**.
 3. Po prawej stronie kliknij pozycję **Filtruj bieżące dzienniki**.
 4. W obszarze Źródło zdarzenia wybierz pozycję **Inspekcja usług AD FS**.
+
+    Poniżej znajdziesz [krótką uwagę z tematu zawierającego często zadawane pytania](active-directory-aadconnect-health-faq.md#operations-questions) dotyczącą dzienników inspekcji.
 
 ![Dzienniki inspekcji usług AD FS](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
