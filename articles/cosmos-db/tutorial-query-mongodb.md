@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/16/2018
+ms.date: 03/29/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f47d250bbe6689e19dda5042b335ff1812a790d4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Samouczek: Wykonywanie zapytań w usłudze Azure Cosmos DB przy użyciu interfejsu MongoDB API
 
@@ -30,6 +30,10 @@ W tym artykule opisano następujące zadania:
 
 > [!div class="checklist"]
 > * Wykonywanie zapytania o dane za pomocą bazy danych MongoDB
+
+Możesz rozpocząć od obejrzenia tego filmu wideo, w którym menedżer programowy usługi Azure Cosmos DB, Andy Hoh, opowiada o wykonywaniu zapytań w usłudze MongoDB:
+
+>[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
 
 ## <a name="sample-document"></a>Przykładowy dokument
 
@@ -71,7 +75,7 @@ Bazując na powyższym przykładowym dokumencie dotyczącym rodziny, następują
     
     db.families.find({ id: “WakefieldFamily”})
 
-**Wyniki**
+**Results**
 
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
@@ -121,7 +125,7 @@ Następne zapytanie zwraca wszystkie dzieci w rodzinie.
     
     db.families.find( { id: “WakefieldFamily” }, { children: true } )
 
-**Wyniki**
+**Results**
 
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
@@ -157,12 +161,12 @@ Następne zapytanie zwraca wszystkie zarejestrowane rodziny.
 
 ## <a id="examplequery4"></a> Przykładowe zapytanie 4
 
-Następne zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane. 
+Następne zapytanie zwraca wszystkie niezarejestrowane rodziny. 
 
 **Zapytanie**
     
     db.families.find( { "isRegistered" : false })
-**Wyniki**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -201,13 +205,13 @@ Następne zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane
 
 ## <a id="examplequery5"></a> Przykładowe zapytanie 5
 
-Następne zapytanie zwraca wszystkie rodziny, które nie są zarejestrowane i dla których stan to NY. 
+Następne zapytanie zwraca wszystkie rodziny, które nie zostały zarejestrowane i dla których stan to NY. 
 
 **Zapytanie**
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
-**Wyniki**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -253,7 +257,7 @@ Następne zapytanie zwraca wszystkie rodziny, w których dzieci chodzą do 8 kla
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
-**Wyniki**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -298,9 +302,9 @@ Następne zapytanie zwraca wszystkie rodziny, w których rozmiar tablicy z dzie�
   
       db.Family.find( {children: { $size:3} } )
 
-**Wyniki**
+**Results**
 
-Nie zostaną zwrócone żadne wyniki, ponieważ nigdzie nie ma więcej niż 2 dzieci. To zapytanie powiedzie się i zwróci pełny dokument tylko wtedy, gdy parametr będzie równy 2.
+Żadne wyniki nie zostaną zwrócone, ponieważ nie ma żadnych rodzin z więcej niż 2 dzieci. To zapytanie powiedzie się i zwróci pełny dokument tylko wtedy, gdy parametr będzie równy 2.
 
 ## <a name="next-steps"></a>Następne kroki
 

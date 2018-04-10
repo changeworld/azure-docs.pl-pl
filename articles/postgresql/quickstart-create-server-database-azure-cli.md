@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 14007bff572f5ecf71b4595dcab8f24d9cf2d17e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9b92e00f7082921586e8b8d8461ddf718ca30aeb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Szybki start: tworzenie bazy danych Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure
 Azure Database for PostgreSQL to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych PostgreSQL o wysokiej dostępności, a także zarządzanie nimi. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku Szybki start przedstawiono, jak utworzyć serwer usługi Azure Database for PostgreSQL w [grupie zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą interfejsu wiersza polecenia platformy Azure.
@@ -58,11 +58,11 @@ Zwracany kod JSON powinien zawierać następujące informacje:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
 ```
 
-Jeśli nie jest zwracana wersja 0.0.4, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
+Jeśli nie jest zwracana wersja 0.0.5, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

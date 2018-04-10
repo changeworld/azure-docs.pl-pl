@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: c2a52a387860de640e290746b25c164090819654
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Samouczek: Uwierzytelnianie użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji internetowej platformy ASP.NET
 
@@ -66,7 +66,7 @@ Zwróć uwagę na wartość **Identyfikator klienta aplikacji**. Ten identyfikat
 
 ### <a name="create-a-client-password"></a>Tworzenie hasła klienta
 
-Usługa Azure AD B2C używa autoryzacji OAuth2 dla [aplikacji klienckich](../active-directory/develop/active-directory-dev-glossary.md#client-application). Aplikacje internetowe są [klientami poufnymi](../active-directory/develop/active-directory-dev-glossary.md#web-client) i wymagają klucza tajnego klienta (hasła). Identyfikator klienta aplikacji i klucz tajny klienta są używane podczas uwierzytelniania aplikacji internetowej w usłudze Azure Active Directory. 
+Usługa Azure AD B2C używa autoryzacji OAuth2 dla [aplikacji klienckich](../active-directory/develop/active-directory-dev-glossary.md#client-application). Aplikacje internetowe są [klientami poufnymi](../active-directory/develop/active-directory-dev-glossary.md#web-client) i wymagają identyfikatora klienta lub identyfikatora aplikacji oraz klucza tajnego klienta, hasła klienta lub klucza aplikacji.
 
 1. Wybierz stronę Klucze dla rejestrowanej aplikacji internetowej i kliknij pozycję **Generuj klucz**.
 
@@ -150,7 +150,7 @@ Przykładowe rozwiązanie zawiera dwa projekty:
 
 **Przykładowa aplikacja internetowego interfejsu API (TaskService):** internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
 
-Należy zmodyfikować aplikację tak, aby korzystała z rejestracji aplikacji w Twojej dzierżawie. Należy też skonfigurować utworzone zasady. Przykładowa aplikacja internetowa definiuje wartości konfiguracji jako ustawienia aplikacji w pliku Web.config. Aby zmienić ustawienia aplikacji:
+Należy zmienić aplikację w celu korzystania z rejestracji aplikacji w dzierżawie; obejmuje to identyfikator klienta lub identyfikator aplikacji i hasło klienta lub klucz aplikacji. Należy też skonfigurować utworzone zasady. Przykładowa aplikacja internetowa definiuje wartości konfiguracji jako ustawienia aplikacji w pliku Web.config. Aby zmienić ustawienia aplikacji:
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 
@@ -161,7 +161,7 @@ Należy zmodyfikować aplikację tak, aby korzystała z rejestracji aplikacji w 
     
     <add key="ida:ClientId" value="The Application ID for your web app registered in your tenant" />
     
-    <add key="ida:ClientSecret" value="Client password (client secret)" />
+    <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
 3. Zaktualizuj ustawienia zasad, używając nazwy wygenerowanej podczas tworzenia zasad.
 

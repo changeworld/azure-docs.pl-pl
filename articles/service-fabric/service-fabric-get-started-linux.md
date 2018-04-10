@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c98a5e742356e24cee9e9d1414121faabac03084
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9123519217e87494316c1dc6b7f90da1b30ba392
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Przygotowywanie środowiska projektowego w systemie Linux
 > [!div class="op_single_selector"]
@@ -28,17 +28,25 @@ ms.lasthandoff: 03/28/2018
 >
 >  
 
-Aby wdrażać i uruchamiać [aplikacje usługi Azure Service Fabric](service-fabric-application-model.md) na maszynie deweloperskiej z systemem Linux, należy zainstalować środowisko uruchomieniowe i wspólny zestaw SDK. Można także zainstalować opcjonalne zestawy SDK na potrzeby programowania na platformach Java i .NET Core.
+Aby wdrażać i uruchamiać [aplikacje usługi Azure Service Fabric](service-fabric-application-model.md) na maszynie deweloperskiej z systemem Linux, należy zainstalować środowisko uruchomieniowe i wspólny zestaw SDK. Można także zainstalować opcjonalne zestawy SDK na potrzeby programowania na platformach Java i .NET Core. 
 
-> [!NOTE]
-> Instalowanie środowiska uruchomieniowego usługi Service Fabric i zestawu SDK w podsystemie systemu Windows dla systemu Linux nie jest obsługiwane. Obsługiwany jest jednak interfejs wiersza polecenia usługi Azure Service Fabric, który umożliwia zarządzanie jednostkami usługi Service Fabric hostowanymi w dowolnej lokalizacji w chmurze lub środowisku lokalnym. Aby uzyskać informacje na temat instalowania interfejsu wiersza polecenia, zobacz [Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric](./service-fabric-cli.md).
->
+Na potrzeby kroków opisanych w tym artykule założono, że instalujesz natywnie w systemie Linux lub korzystasz z obrazu kontenera OneBox usługi Service Fabric, `microsoft/service-fabric-onebox`. 
+
+Instalowanie środowiska uruchomieniowego usługi Service Fabric i zestawu SDK w podsystemie systemu Windows dla systemu Linux nie jest obsługiwane. Obsługiwany jest jednak interfejs wiersza polecenia usługi Azure Service Fabric, który umożliwia zarządzanie jednostkami usługi Service Fabric hostowanymi w dowolnej lokalizacji w chmurze lub środowisku lokalnym. Aby uzyskać informacje na temat instalowania interfejsu wiersza polecenia, zobacz [Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric](./service-fabric-cli.md).
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu operacyjnego:
+* Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu operacyjnego:
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+    * Ubuntu 16.04 (`Xenial Xerus`)
+
+* Upewnij się, że pakiet `apt-transport-https` został zainstalowany:
+
+      ```bash
+      sudo apt-get install apt-transport-https
+      ```
+
 
 ## <a name="installation-methods"></a>Metody instalacji
 

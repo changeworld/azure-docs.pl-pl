@@ -1,20 +1,20 @@
 ---
-title: "Szybki start na platformie Azure — uruchamianie zadania usługi Batch — Python"
-description: "Szybko uruchamiaj zadania i zadania podrzędne usługi Batch za pomocą biblioteki klienta Python usługi Batch."
+title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — Python
+description: Szybko uruchamiaj zadania i zadania podrzędne usługi Batch za pomocą biblioteki klienta Python usługi Batch.
 services: batch
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0e6a631a8d4956e2be9fd14941131968d5f4443f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e843bc0d3a56b9e99cd3fbb865bb0066321475df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
 
@@ -65,7 +65,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 
 Aby zobaczyć przepływ pracy usługi Batch w akcji, uruchom skrypt:
 

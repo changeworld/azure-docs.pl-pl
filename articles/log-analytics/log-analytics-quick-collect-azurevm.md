@@ -1,25 +1,25 @@
 ---
-title: "Zbieranie danych dotyczących infrastruktury Azure Virtual Machines | Microsoft Docs"
-description: "Dowiedz się, jak włączyć rozszerzenie OMS Agent VM Extension i zbieranie danych z maszyn wirtualnych platformy Azure za pomocą usługi Log Analytics."
+title: Zbieranie danych dotyczących infrastruktury Azure Virtual Machines | Microsoft Docs
+description: Dowiedz się, jak włączyć rozszerzenie OMS Agent VM Extension i zbieranie danych z maszyn wirtualnych platformy Azure za pomocą usługi Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 03/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: be43701f96a71ad5cd9239c4ec7b3eea7fd6db21
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff610c4efa9db16ca8a1e151b36e0e08dfe30d69
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Zbieranie danych dotyczących infrastruktury Azure Virtual Machines
 Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie danych bezpośrednio z maszyn wirtualnych platformy Azure i innych zasobów w środowisku do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku krokach skonfigurować i rozpocząć zbieranie danych z maszyn wirtualnych platformy Azure z systemem Linux lub Windows.  
@@ -27,22 +27,27 @@ Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie da
 W tym przewodniku Szybki start przyjęto założenie, że masz już maszynę wirtualną platformy Azure. Jeśli jeszcze jej nie masz, możesz [utworzyć maszynę wirtualną z systemem Windows](../virtual-machines/windows/quick-create-portal.md) lub [utworzyć maszynę wirtualną z systemem Linux](../virtual-machines/linux/quick-create-cli.md), wykonując czynności opisane w przewodnikach Szybki start dotyczących maszyn wirtualnych.
 
 ## <a name="log-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
+Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
-1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.<br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
 2. Kliknij pozycję **Utwórz**, a następnie wybierz opcje dla następujących elementów:
 
   * Podaj nazwę dla nowego **obszaru roboczego OMS**, na przykład *DefaultLAWorkspace*. 
   * Wybierz **Subskrypcję** do połączenia poprzez wybór subskrypcji z listy rozwijanej, jeśli domyślnie wybrana subskrypcja jest niewłaściwa.
   * W obszarze **Grupa zasobów** wybierz istniejącą grupę zasobów, która zawiera co najmniej jedną maszynę wirtualną platformy Azure.  
   * W polu **Lokalizacja** wybierz lokalizację, w której wdrożono maszyny wirtualne.  Aby uzyskać dodatkowe informacje, sprawdź, w których [regionach jest dostępna usługa Log Analytics](https://azure.microsoft.com/regions/services/).
-  * Usługa Log Analytics oferuje do wyboru trzy różne **warstwy cenowe**, ale na potrzeby tego przewodnika Szybki start wybierz warstwę **bezpłatną**.  Aby uzyskać dodatkowe informacje dotyczące konkretnej warstwy, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
+  * W przypadku tworzenia obszaru roboczego w nowej subskrypcji utworzonej po 2 kwietnia 2018 r. zostanie automatycznie użyty plan cenowy *Na GB*, a opcja wyboru warstwy cenowej będzie niedostępna.  W przypadku tworzenia obszaru roboczego dla istniejącej subskrypcji utworzonej przed 2 kwietnia lub dla subskrypcji powiązanej z istniejącą rejestracją umowy EA użytkownik może wybrać jedną z trzech warstw cenowych.  W tym przewodniku Szybki start wybierzesz warstwę Bezpłatna.  Aby uzyskać dodatkowe informacje dotyczące konkretnej warstwy, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
+  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 
-        ![Create Log Analytics resource blade](./media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-01.png)<br>  
 3. Po podaniu wymaganych informacji w okienku **Obszar roboczy OMS** kliknij przycisk **OK**.  
 
 Podczas weryfikowania informacji i tworzenia obszaru roboczego możesz śledzić postęp w sekcji **Powiadomienia** z poziomu menu. 
+
+>[!NOTE]
+>Podczas tworzenia nowego obszaru roboczego połączonego z nową subskrypcją utworzoną po 2 kwietnia 2018 r. zostanie automatycznie użyty plan cenowy *PerGB2018*.  Ten plan obejmuje 5 GB bezpłatnych danych miesięcznie we wszystkich zasobach usług Application Insights i Log Analytics. Aby uzyskać dodatkowe informacje dotyczące modelu cen, zobacz [Log Analytics — szczegóły cennika](https://azure.microsoft.com/pricing/details/log-analytics/).
+>
 
 ## <a name="enable-the-log-analytics-vm-extension"></a>Włączanie rozszerzenia Log Analytics VM Extension
 W przypadku wdrożonych już na platformie Azure maszyn wirtualnych z systemem Windows i Linux agent usługi Log Analytics jest instalowany za pomocą rozszerzenia Log Analytics VM Extension.  Użycie tego rozszerzenia upraszcza proces instalacji i automatycznie konfiguruje agenta do przesyłania danych do określonego obszaru roboczego usługi Log Analytics. Agent jest również automatycznie uaktualniany, co zapewnia, że posiadane funkcje i poprawki są zawsze najnowsze.
@@ -53,7 +58,7 @@ W przypadku wdrożonych już na platformie Azure maszyn wirtualnych z systemem W
 Jeśli obszar roboczy utworzono w chmurze na platformie Azure dla instytucji rządowych, w górnej części strony zasobów usługi Log Analytics w portalu może zostać wyświetlony baner z zaproszeniem do uaktualnienia.  Uaktualnienie nie jest wymagane na potrzeby tego przewodnika Szybki start.<br>
 
 ![Powiadomienie o uaktualnieniu usługi Log Analytics w witrynie Azure Portal](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png).    
-1. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. Na liście obszarów roboczych usługi Log Analytics wybierz utworzony wcześniej obszar *DefaultLAWorkspace*.
 3. W menu po lewej stronie w obszarze Źródła danych obszaru roboczego kliknij pozycję **Maszyny wirtualne**.  
 4. Z listy **Maszyny wirtualne** wybierz maszynę wirtualną, na której chcesz zainstalować agenta. Zwróć uwagę, że **Stan połączenia pakietu OMS** dla maszyny wirtualnej wskazuje, że jest ona **Niepołączona**.

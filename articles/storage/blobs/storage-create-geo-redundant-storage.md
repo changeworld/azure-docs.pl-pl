@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ce72c1a68c1dbe5cede33dd42adc1b002a81326e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6226fea5001d19a6f0e1f6700d90ea2b9481d43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Uzyskiwanie wysokiej dostępności danych aplikacji przy użyciu usługi Azure Storage
 
-Ten samouczek to pierwsza część w serii. Przedstawiono w nim sposób uzyskiwania wysokiej dostępności danych aplikacji na platformie Azure. Po zakończeniu będziesz mieć aplikację konsolową, która przekazuje i pobiera obiekt blob do konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS). Działanie magazynu RA-GRS polega na replikowaniu transakcji z regionu podstawowego do pomocniczego. Ten proces replikacji gwarantuje, że dane w regionie pomocniczym ostatecznie uzyskają spójność. Aplikacja używa wzorca [wyłącznika](/azure/architecture/patterns/circuit-breaker), aby określić, z którym punktem końcowym nawiązać połączenie. Aplikacja przełącza się do pomocniczego punktu końcowego w przypadku symulacji błędu.
+Ten samouczek to pierwsza część w serii. Przedstawiono w nim sposób uzyskiwania wysokiej dostępności danych aplikacji na platformie Azure. Po zakończeniu będziesz mieć aplikację konsolową, która przekazuje i pobiera obiekt blob do konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS). Działanie magazynu RA-GRS polega na replikowaniu transakcji z regionu podstawowego do pomocniczego. Ten proces replikacji gwarantuje, że dane w regionie pomocniczym ostatecznie uzyskają spójność. Aplikacja używa wzorca [wyłącznika](/azure/architecture/patterns/circuit-breaker), aby określić, z którym punktem końcowym nawiązać połączenie. Aplikacja przełącza się do pomocniczego punktu końcowego w przypadku symulacji błędu.
 
 Część pierwsza serii zawiera informacje na temat wykonywania następujących czynności:
 

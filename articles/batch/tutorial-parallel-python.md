@@ -1,6 +1,6 @@
 ---
-title: "Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska Python"
-description: "Samouczek — Równoległe przetwarzanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch Python"
+title: Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska Python
+description: Samouczek — Równoległe przetwarzanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch Python
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -8,13 +8,13 @@ ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: dlepow
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f9853578962027d6308581a76e00d6619cbbf9ec
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a04cd63944d0ed75ff90f211134cd93c77abe1e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python
 
@@ -75,7 +75,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-### <a name="run-the-app"></a>Uruchomienie aplikacji
+### <a name="run-the-app"></a>Uruchamianie aplikacji
 
 Aby uruchomić skrypt:
 
@@ -238,11 +238,11 @@ for idx, input_file in enumerate(input_files):
 batch_service_client.task.add_collection(job_id, tasks)
 ```    
 
-### <a name="monitor-tasks"></a>Monitorowanie zadań podrzędnych
+### <a name="monitor-tasks"></a>Monitorowanie podzadań
 
 Po dodaniu zadań podrzędnych do zadania usługa Batch automatycznie dodaje je do kolejki i planuje ich wykonanie w węzłach obliczeniowych powiązanej puli. Na podstawie określonych przez użytkownika ustawień usługa Batch obsługuje dodawanie zadań podrzędnych do kolejki, ich planowanie, ponawianie prób ich wykonania oraz inne czynności administracyjne. 
 
-Istnieje wiele sposobów, w jakie można monitorować wykonanie zadań podrzędnych. Funkcja `wait_for_tasks_to_complete` w tym przykładzie zawiera obiekt [TaskState](/python/api/azure.batch.models.taskstate) używany do monitorowania zadań podrzędnych pod kątem określonego stanu, w tym przypadku ukończenia, w wybranym limicie czasu.
+Istnieje wiele sposobów, w jakie można monitorować wykonanie podzadań. Funkcja `wait_for_tasks_to_complete` w tym przykładzie zawiera obiekt [TaskState](/python/api/azure.batch.models.taskstate) używany do monitorowania zadań podrzędnych pod kątem określonego stanu, w tym przypadku ukończenia, w wybranym limicie czasu.
 
 ```python
 while datetime.datetime.now() < timeout_expiration:

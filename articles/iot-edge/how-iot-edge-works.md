@@ -1,29 +1,32 @@
 ---
-title: "Co to jest usługa Azure IoT Edge | Microsoft Docs"
-description: "Omówienie usługi Azure IoT Edge"
+title: Co to jest usługa Azure IoT Edge | Microsoft Docs
+description: Omówienie usługi Azure IoT Edge
 services: iot-Edge
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
 editor: chipalost
-ms.assetid: 
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: 5f69041572729d1458a22a855128639056d61586
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: ''
+ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Co to jest usługa Azure IoT Edge — wersja zapoznawcza
 
 Usługa IoT Edge przenosi analizę w chmurze i niestandardową logikę biznesową na urządzenia, aby Twoja organizacja mogła skoncentrować się na szczegółowych informacjach dotyczących działalności zamiast na zarządzaniu danymi. Zapewnij swojemu rozwiązaniu rzeczywiste możliwości skalowania, konfigurując oprogramowanie IoT, wdrażając je na urządzeniach za pomocą standardowych kontenerów i monitorując wszystko z poziomu chmury.
+
+>[!NOTE]
+>Usługa Azure IoT Edge jest dostępna tylko w warstwie Standardowa usługi IoT Hub. Aby uzyskać więcej informacji na temat warstw Podstawowa i Standardowa, zobacz [Jak wybrać właściwą warstwę usługi IoT Hub](../iot-hub/iot-hub-scaling.md).
 
 Dzięki analizie wzrasta wartość biznesowa w rozwiązaniach IoT, ale nie wszystkie operacje analizy muszą być wykonywane w chmurze. Aby urządzenie reagowało na sytuacje awaryjne tak szybko, jak to możliwe, możesz przeprowadzać wykrywanie anomalii na samym urządzeniu. Podobnie jeśli chcesz obniżyć koszty przepustowości i uniknąć przesyłania terabajtów danych pierwotnych, czyszczenie i agregację danych możesz przeprowadzać lokalnie. Następnie możesz wysłać szczegółowe informacje do chmury. 
 
@@ -66,7 +69,7 @@ Sposób używania urządzenia Azure IoT Edge zależy wyłącznie od Ciebie. Śro
 
 Zarządzanie cyklem życia oprogramowania w przypadku urządzeń korporacyjnych jest skomplikowane. Zarządzanie cyklem życia oprogramowania w przypadku milionów heterogenicznych urządzeń IoT jest jeszcze trudniejsze. Obciążenia muszą być tworzone i konfigurowane dla konkretnego typu urządzenia, wdrażane na dużą skalę na milionach urządzeń w Twoim rozwiązaniu i monitorowane, aby wyłapywać nieprawidłowo funkcjonujące urządzenia. Tych działań nie można wykonywać dla poszczególnych urządzeń. Muszą być wykonywane na dużą skalę.
 
-Usługa Azure IoT Edge bezproblemowo integruje się z Pakietem IoT Azure w celu zapewnienia jednej warstwy kontroli na potrzeby rozwiązania. Usługi w chmurze umożliwiają użytkownikom wykonywanie następujących działań:
+Usługa Azure IoT Edge bezproblemowo integruje się z pakietem Azure IoT Suite w celu zapewnienia jednej warstwy kontroli na potrzeby rozwiązania. Usługi w chmurze umożliwiają użytkownikom wykonywanie następujących działań:
 
 * Tworzenie i konfigurowanie obciążeń do uruchamiania na określonym typie urządzenia.
 * Wysyłanie obciążeń do zestawu urządzeń.

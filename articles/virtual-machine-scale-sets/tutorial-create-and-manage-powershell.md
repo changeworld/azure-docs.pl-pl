@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1f1b987d00fad4931f9ad39b39101cc474c2a1e3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 54f63ec4cddf64110eadf25fff60167238f9f9a6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i zarządzanie nim przy użyciu programu Azure PowerShell
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -45,7 +45,6 @@ Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania z
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
-
 Nazwa grupy zasobów jest podawana podczas tworzenia lub modyfikowania zestawu skalowania w różnych miejscach tego samouczka.
 
 
@@ -83,10 +82,10 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleS
 Następujące przykładowe dane wyjściowe zawierają dwa wystąpienia maszyn wirtualnych w zestawie skalowania:
 
 ```powershell
-ResourceGroupName         Name Location          Sku InstanceID ProvisioningState
------------------         ---- --------          --- ---------- -----------------
-MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS2          0         Succeeded
-MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS2          1         Succeeded
+ResourceGroupName         Name Location             Sku InstanceID ProvisioningState
+-----------------         ---- --------             --- ---------- -----------------
+MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succeeded
+MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
 Aby wyświetlić dodatkowe informacje na temat określonego wystąpienia maszyny wirtualnej, dodaj parametr `-InstanceId` do polecenia [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm). W poniższym przykładzie są widoczne informacje o wystąpieniu maszyny wirtualnej *1*:
@@ -235,7 +234,7 @@ Standard_NV6                       6      57344               24        1047552 
 Standard_NV12                     12     114688               48        1047552               696320
 ```
 
-Podczas tworzenia zestawu skalowania na początku tego samouczka dla wystąpień maszyn wirtualnych została użyta domyślna jednostka SKU maszyny wirtualnej *Standard_D1_v2*. Można wskazać inny rozmiar wystąpienia maszyny wirtualnej na podstawie danych wyjściowych polecenia [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize). W poniższym przykładzie zostanie utworzony zestaw skalowania z parametrem `-VmSize` umożliwiającym wskazanie rozmiaru wystąpienia maszyny wirtualnej *Standard_F1*. Nie trzeba wdrażać następującego zestawu skalowania, ponieważ utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania oraz wystąpień maszyn wirtualnych trwa kilka minut:
+Podczas tworzenia zestawu skalowania na początku tego samouczka dla wystąpień maszyn wirtualnych została użyta domyślna jednostka SKU maszyny wirtualnej *Standard_DS1_v2*. Można wskazać inny rozmiar wystąpienia maszyny wirtualnej na podstawie danych wyjściowych polecenia [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize). W poniższym przykładzie zostanie utworzony zestaw skalowania z parametrem `-VmSize` umożliwiającym wskazanie rozmiaru wystąpienia maszyny wirtualnej *Standard_F1*. Nie trzeba wdrażać następującego zestawu skalowania, ponieważ utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania oraz wystąpień maszyn wirtualnych trwa kilka minut:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `

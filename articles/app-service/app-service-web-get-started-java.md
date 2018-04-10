@@ -4,7 +4,7 @@ description: Dowiedz się, jak można uruchamiać aplikacje internetowe w usłud
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: routlaw
+manager: mbaldwin
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,18 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/08/2017
+ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e63f8706e28a5d34cc9774cbaecde31415a4b48e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Tworzenie pierwszej aplikacji internetowej w środowisku Java na platformie Azure
 
 Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. W tym przewodniku Szybki start pokazano, jak wdrożyć aplikację internetową w języku Java przy użyciu środowiska [Eclipse IDE for Java EE Developers](http://www.eclipse.org/).
+
+> [!NOTE]
+>
+> Kroki tego przewodnika Szybki start pokazują, jak publikować aplikację internetową języka Java w usłudze App Service za pomocą środowiska IDE programu Eclipse, ale możesz również użyć rozwiązania IntelliJ IDEA w wersji Ultimate Edition lub Community Edition. Aby uzyskać więcej informacji, zobacz [Create a Hello World web app for Azure using IntelliJ (Tworzenie aplikacji internetowej Hello world na platformie Azure przy użyciu środowiska IntelliJ)](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app).
+>
 
 Po ukończeniu tego przewodnika Szybki start aplikacja będzie wyglądać podobnie do poniższej ilustracji podczas wyświetlania jej w przeglądarce internetowej:
 
@@ -37,6 +42,11 @@ Aby ukończyć ten przewodnik Szybki Start, zainstaluj:
 
 * Bezpłatne środowisko <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>. W tym przewodniku Szybki start używane jest środowisko Eclipse Neon.
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Zestaw narzędzi platformy Azure dla środowiska Eclipse</a>.
+
+> [!NOTE]
+>
+> Aby wykonać kroki tego przewodnika Szybki start, należy zalogować się do konta platformy Azure przy użyciu zestawu narzędzi platformy Azure dla środowiska Eclipse. W tym celu zobacz [Azure Sign In Instructions for the Azure Toolkit for Eclipse (Instrukcje logowania do platformy Azure dotyczące zestawu narzędzi platformy Azure dla środowiska Eclipse)](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions).
+>
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Tworzenie dynamicznego projektu internetowego w środowisku Eclipse
 
@@ -74,15 +84,20 @@ W pliku index.jsp zastąp element `<body></body>` następującym kodem:
 
 Zapisz zmiany.
 
+> [!NOTE]
+>
+> Jeśli w wierszu 1 zostanie wyświetlony błąd odwołujący się do brakującej klasy serwletu języka Java, możesz go zignorować.
+> 
+> ![Nieszkodliwy błąd serwletu języka Java](./media/app-service-web-get-started-java/java-servlet-benign-error.png)
+>
+
 ## <a name="publish-the-web-app-to-azure"></a>Publikowanie aplikacji internetowej na platformie Azure
 
 W obszarze Project Explorer (Eksplorator projektów) kliknij projekt prawym przyciskiem myszy, a następnie wybierz pozycję **Azure** > **Publish as Azure Web App** (Publikuj jako aplikację internetową platformy Azure).
 
 ![Menu kontekstowe Publish as Azure Web App (Publikuj jako aplikację internetową platformy Azure)](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-W oknie dialogowym **Azure Sign In** (Logowanie do platformy Azure) zachowaj opcję **Interactive** (Interaktywne), a następnie wybierz pozycję **Sign in** (Zaloguj).
-
-Postępuj zgodnie z instrukcjami dotyczącymi logowania.
+Jeśli zostanie wyświetlone okno dialogowe monitu **Azure Sign In** (Logowanie do platformy Azure), wykonaj kroki opisane w artykule [Azure Sign In Instructions for the Azure Toolkit for Eclipse (Instrukcje logowania do platformy Azure dotyczące zestawu narzędzi platformy Azure dla środowiska Eclipse)](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions) w celu wprowadzenia poświadczeń.
 
 ### <a name="deploy-web-app-dialog-box"></a>Okno dialogowe Deploy Web App (Wdrażanie aplikacji internetowej)
 
@@ -100,8 +115,8 @@ Zostanie wyświetlone okno dialogowe **Create App Service** (Tworzenie usługi A
 
 W oknie dialogowym **Create App Service** (Tworzenie usługi App Service):
 
-* Zachowaj wygenerowaną nazwę aplikacji internetowej. Ta nazwa musi być unikatowa w obrębie całej platformy Azure. Nazwa jest częścią adresu URL aplikacji internetowej. Przykład: jeśli nazwa aplikacji internetowej to **MyJavaWebApp**, adres URL to *myjavawebapp.azurewebsites.net*.
-* Zachowaj domyślny kontener internetowy.
+* Wprowadź unikatową nazwę aplikacji internetowej lub pozostaw wygenerowaną nazwę. Ta nazwa musi być unikatowa w obrębie całej platformy Azure. Nazwa jest częścią adresu URL aplikacji internetowej. Przykład: jeśli nazwa aplikacji internetowej to **MyJavaWebApp**, adres URL to *myjavawebapp.azurewebsites.net*.
+* W przypadku tego przewodnika Szybki start zachowaj domyślny kontener internetowy.
 * Wybierz subskrypcję platformy Azure.
 * Na karcie **App service plan** (Plan usługi App Service):
 
@@ -187,7 +202,7 @@ W menu po lewej stronie kliknij pozycję **Grupy zasobów**.
 
 Wybierz grupę zasobów. Na stronie znajdują się zasoby utworzone w ramach tego przewodnika Szybki Start.
 
-![Grupa zasobów myResourceGroup](media/app-service-web-get-started-java/rg2.png)
+![Grupa zasobów](media/app-service-web-get-started-java/rg2.png)
 
 Wybierz aplikację internetową (**webapp-170602193915** na powyższym obrazie).
 

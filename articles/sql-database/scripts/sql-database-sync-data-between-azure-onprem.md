@@ -1,13 +1,13 @@
 ---
-title: "Lokalne PowerShell przykład synchronizacja między bazą danych SQL i programu SQL Server | Dokumentacja firmy Microsoft"
-description: "Azure przykładowy skrypt programu PowerShell do synchronizacji między bazą danych SQL Azure i lokalnej bazy danych programu SQL Server"
+title: Przykład z programu PowerShell — przeprowadzanie synchronizacji między bazą danych SQL Database i lokalną bazą danych SQL Server | Microsoft Docs
+description: Przykładowy skrypt programu Azure PowerShell służący do przeprowadzania synchronizacji między bazą danych Azure SQL Database i lokalną bazą danych SQL Server
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
@@ -17,21 +17,21 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: a29c8c7fbd583b45849be6fcab046c578dbbb98a
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 31be6bc80b147e106066c064903c6eb9e1900e12
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Synchronizacja między bazą danych SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell
+# <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Użyj programu PowerShell, aby przeprowadzić synchronizację między bazą danych SQL Database i lokalną bazą danych SQL Server
 
-W tym przykładzie programu PowerShell skonfiguruje funkcję synchronizacji danych do synchronizacji między bazą danych SQL Azure i lokalnej bazy danych programu SQL Server. 
+Ten przykład z programu PowerShell umożliwia skonfigurowanie funkcji Data Sync (wersja zapoznawcza) w celu przeprowadzenia synchronizacji między bazą danych Azure SQL Database i lokalną bazą danych SQL Server. 
 
-W tym przykładzie wymaga programu Azure PowerShell modułu w wersji 4.2 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` można odnaleźć zainstalowanej wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Ten przykładowy skrypt wymaga modułu Azure PowerShell w wersji 4.2 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
  
-Uruchom `Login-AzureRmAccount` można utworzyć połączenia z platformą Azure.
+Uruchom polecenie `Login-AzureRmAccount`, aby utworzyć połączenia z platformą Azure.
 
-Omówienie synchronizacji danych SQL, zobacz [synchronizacji danych między wieloma bazami danych chmury i lokalnych z synchronizacji danych SQL Azure (wersja zapoznawcza)](../sql-database-sync-data.md).
+Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync — wersja zapoznawcza)](../sql-database-sync-data.md).
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -360,50 +360,50 @@ else
 
 ## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
-Po uruchomieniu przykładowy skrypt można uruchomić następujące polecenie, aby usunąć grupę zasobów i wszystkie zasoby skojarzone z nim.
+Po wykonaniu przykładowego skryptu możesz uruchomić następujące polecenie, aby usunąć grupę zasobów i wszystkie skojarzone z nią zasoby.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $ResourceGroupName
 Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 ```
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń. Każde polecenie w tabeli łącza do dokumentacji specyficzne dla polecenia.
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [Nowe AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Tworzy nowy Agent synchronizacji |
-| [Nowe AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Generuje klucz agenta skojarzonego z synchronizacji |
-| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Uzyskanie wszystkich informacji dla agenta synchronizacji |
-| [Nowe AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Dodawanie nowego elementu członkowskiego do grupy synchronizacji |
-| [AzureRmSqlSyncSchema aktualizacji](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Odświeża informacje o schemacie bazy danych |
-| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Uzyskanie informacji o schemacie bazy danych |
-| [AzureRmSqlSyncGroup aktualizacji](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Aktualizuje grupy synchronizacji |
-| [Start AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | Wyzwalacze synchronizacji |
-| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Sprawdza w dzienniku synchronizacji |
+| [New-AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Tworzy nowego agenta synchronizacji. |
+| [New-AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Generuje klucz agenta skojarzony z agentem synchronizacji. |
+| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Pobiera wszystkie informacje dla agenta synchronizacji. |
+| [New-AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Dodaje nowy element do grupy synchronizacji. |
+| [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Odświeża informacje o schemacie bazy danych. |
+| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Pobiera informacje o schemacie bazy danych. |
+| [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Aktualizuje grupę synchronizacji. |
+| [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | Wyzwala synchronizację. |
+| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Sprawdza dziennik synchronizacji. |
 |||
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentacji programu Azure PowerShell](/powershell/azure/overview).
+Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
-Dodatkowe przykłady skryptów programu PowerShell bazy danych SQL można znaleźć w [skryptów programu PowerShell bazy danych SQL Azure](../sql-database-powershell-samples.md).
+Więcej przykładowych skryptów programu PowerShell dla usługi SQL Database można znaleźć w [skryptach programu PowerShell dla usługi Azure SQL Database](../sql-database-powershell-samples.md).
 
-Aby uzyskać więcej informacji na temat synchronizacji danych SQL zobacz:
+Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
--   [Synchronizowanie danych w wielu w chmurze i lokalnych baz danych z synchronizacji danych SQL Azure](../sql-database-sync-data.md)
--   [Konfigurowanie synchronizacji danych SQL Azure](../sql-database-get-started-sql-data-sync.md)
--   [Najlepsze rozwiązania dotyczące synchronizacji danych SQL Azure](../sql-database-best-practices-data-sync.md)
--   [Monitor synchronizacji danych Azure SQL z OMS analizy dzienników](../sql-database-sync-monitor-oms.md)
--   [Rozwiązywanie problemów z synchronizacją danych SQL Azure](../sql-database-troubleshoot-data-sync.md)
+-   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](../sql-database-sync-data.md)
+-   [Set up Azure SQL Data Sync (Konfigurowanie usługi Azure SQL Data Sync)](../sql-database-get-started-sql-data-sync.md)
+-   [Best practices for Azure SQL Data Sync (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)](../sql-database-best-practices-data-sync.md)
+-   [Monitor Azure SQL Data Sync with OMS Log Analytics (Monitorowanie usługi Azure SQL Data Sync za pomocą usługi OMS Log Analytics)](../sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](../sql-database-troubleshoot-data-sync.md)
 
--   Wykonaj przykłady z programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL:
-    -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](sql-database-sync-data-between-sql-databases.md)
+-   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:
+    -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](sql-database-sync-data-between-sql-databases.md)
 
--   [Pobrać dokumentację interfejsu API REST synchronizacji danych SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-Aby uzyskać więcej informacji na temat bazy danych SQL zobacz:
+Aby uzyskać więcej informacji na temat usługi SQL Database, zobacz:
 
--   [Omówienie bazy danych SQL](../sql-database-technical-overview.md)
--   [Zarządzanie cyklem życia bazy danych](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Omówienie usługi SQL Database](../sql-database-technical-overview.md)
+-   [Database Lifecycle Management (Zarządzanie cyklem życia bazy danych)](https://msdn.microsoft.com/library/jj907294.aspx)

@@ -1,11 +1,11 @@
 ---
-title: "Monitorowanie opublikowanych interfejsów API w usłudze Azure API Management | Microsoft Docs"
-description: "Wykonaj kroki tego samouczka, aby dowiedzieć się, jak monitorować interfejs API w usłudze Azure API Management."
+title: Monitorowanie opublikowanych interfejsów API w usłudze Azure API Management | Microsoft Docs
+description: Wykonaj kroki tego samouczka, aby dowiedzieć się, jak monitorować interfejs API w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 445723242a76dcef4a6b137439728235d5d6e32a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-published-apis"></a>Monitorowanie opublikowanych interfejsów API
 
@@ -44,29 +44,6 @@ W poniższym filmie wideo pokazano, jak monitorować usługę API Management prz
 + Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
-## <a name="diagnostic-logs"></a>Wyświetlanie dzienników aktywności
-
-Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do usług API Management. Korzystając z tych dzienników, można określić rodzaj, użytkownika i czas każdej operacji zapisu (PUT, POST, DELETE) wykonanej względem usług API Management. 
-
-> [!NOTE]
-> Dzienniki aktywności nie obejmują operacji odczytu (GET) ani operacji wykonywanych w witrynie Azure Portal albo przy użyciu oryginalnych interfejsów API zarządzania.
-
-Dostęp do dzienników aktywności można uzyskać w usłudze API Management, a dostęp do wszystkich zasobów platformy Azure — w usłudze Azure Monitor. 
-
-Aby wyświetlić dzienniki aktywności:
-
-1. Wybierz wystąpienie usługi APIM.
-2. Kliknij pozycję **Dziennik aktywności**.
-
-## <a name="view-diagnostic-logs"></a>Wyświetlanie dzienników diagnostycznych
-
-Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
-
-Aby uzyskać do dzienników diagnostycznych:
-
-1. Wybierz wystąpienie usługi APIM.
-2. Kliknij pozycję **Dzienniki diagnostyczne**.
 
 ## <a name="view-metrics-of-your-apis"></a>Wyświetlanie metryk interfejsów API
 
@@ -109,6 +86,118 @@ Aby skonfigurować alerty:
     > Wyzwolenie reguły alertu może również spowodować wywołanie elementu webhook lub aplikacji logiki platformy Azure.
 
     ![set-up-alert](./media/api-management-azure-monitor/set-up-alert.png)
+
+## <a name="activity-logs"></a>Dzienniki aktywności
+
+Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do usług API Management. Korzystając z tych dzienników, można określić rodzaj, użytkownika i czas każdej operacji zapisu (PUT, POST, DELETE) wykonanej względem usług API Management. 
+
+> [!NOTE]
+> Dzienniki aktywności nie obejmują operacji odczytu (GET) ani operacji wykonywanych w witrynie Azure Portal albo przy użyciu oryginalnych interfejsów API zarządzania.
+
+Dostęp do dzienników aktywności można uzyskać w usłudze API Management, a dostęp do wszystkich zasobów platformy Azure — w usłudze Azure Monitor. 
+
+Aby wyświetlić dzienniki aktywności:
+
+1. Wybierz wystąpienie usługi APIM.
+2. Kliknij pozycję **Dziennik aktywności**.
+
+## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
+
+Dzienniki diagnostyczne zawierają bogate informacje o operacjach i błędach, które są ważne w przypadku inspekcji, a także pomagają rozwiązywać problemy. Dzienniki diagnostyczne różnią się od dzienników aktywności. Dzienniki aktywności udostępniają szczegółowe dane operacji wykonywanych w stosunku do zasobów platformy Azure. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
+
+Aby skonfigurować dzienniki diagnostyczne:
+
+1. Wybierz wystąpienie usługi APIM.
+2. Kliknij pozycję **Dzienniki diagnostyczne**.
+3. Kliknij pozycję **Włącz diagnostykę**. Dzienniki diagnostyczne wraz z metrykami można zarchiwizować na koncie magazynu, przesłać strumieniowo do usługi Event Hub lub wysłać do usługi Log Analytics. 
+
+Usługa API Management udostępnia obecnie dzienniki diagnostyczne (przetwarzane w trybie wsadowym co godzinę) dotyczące poszczególnych żądań interfejsu AP. Każdy wpis jest zgodny z następującym schematem:
+
+```json
+{  
+    "isRequestSuccess" : "",
+    "time": "",   
+    "operationName": "",      
+    "category": "",   
+    "durationMs": ,   
+    "callerIpAddress": "",   
+    "correlationId": "",   
+    "location": "",      
+    "httpStatusCodeCategory": "",      
+    "resourceId": "",      
+    "properties": {   
+        "method": "", 
+        "url": "", 
+        "clientProtocol": "", 
+        "responseCode": , 
+        "backendMethod": "", 
+        "backendUrl": "", 
+        "backendResponseCode": ,
+        "backendProtocol": "",  
+        "requestSize": , 
+        "responseSize": , 
+        "cache": "", 
+        "cacheTime": "", 
+        "backendTime": , 
+        "clientTime": , 
+        "apiId": "",
+        "operationId": "", 
+        "productId": "", 
+        "userId": "", 
+        "apimSubscriptionId": "", 
+        "backendId": "",
+        "lastError": { 
+            "elapsed" : "", 
+            "source" : "", 
+            "scope" : "", 
+            "section" : "" ,
+            "reason" : "", 
+            "message" : ""
+        } 
+    }      
+}  
+```
+
+| Właściwość  | Typ | Opis |
+| ------------- | ------------- | ------------- |
+| isRequestSuccess | wartość logiczna | Wartość true, jeśli żądanie HTTP zostało zakończone z kodem stanu odpowiedzi z zakresu 2xx lub 3xx |
+| time | data i godzina | Znacznik czasu odbierania żądania HTTP przez bramę |
+| operationName | ciąg | Wartość stała „Microsoft.ApiManagement/GatewayLogs” |
+| category | ciąg | Wartość stała „GatewayLogs” |
+| durationMs | liczba całkowita | Liczba milisekund od momentu odebrania żądania w bramie do momentu pełnego wysłania odpowiedzi |
+| callerIpAddress | ciąg | Adres IP bezpośredniego modułu wywołującego bramy (może być pośrednik) |
+| correlationId | ciąg | Unikatowy identyfikator żądania HTTP przypisany przez usługę API Management |
+| location | ciąg | Nazwa regionu platformy Azure, w którym znajdowała się brama przetwarzająca żądanie |
+| httpStatusCodeCategory | ciąg | Kategoria kodu stanu odpowiedzi HTTP: Powodzenie (301 lub mniej albo 304 lub 307), Bez autoryzacji (401, 403, 429), Błąd (400, od 500 do 600), Inne |
+| resourceId | ciąg | Identyfikator zasobu usługi API Management /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<grupa_zasobów>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> |
+| properties | obiekt | Właściwości bieżącego żądania |
+| method | ciąg | Metoda HTTP żądania przychodzącego |
+| url | ciąg | Adres URL żądania przychodzącego |
+| clientProtocol | ciąg | Wersja protokołu HTTP żądania przychodzącego |
+| responseCode | liczba całkowita | Kod stanu odpowiedzi HTTP wysłanej do klienta |
+| backendMethod | ciąg | Metoda HTTP żądania wysłanego do zaplecza |
+| backendUrl | ciąg | Adres URL żądania wysłanego do zaplecza |
+| backendResponseCode | liczba całkowita | Kod odpowiedzi HTTP odebranej z zaplecza |
+| backendProtocol | ciąg | Wersja protokołu HTTP żądania wysłanego do zaplecza | 
+| requestSize | liczba całkowita | Liczba bajtów odebranych od klienta podczas przetwarzania żądania | 
+| responseSize | liczba całkowita | Liczba bajtów wysłanych do klienta podczas przetwarzania żądania | 
+| cache | ciąg | Stan zaangażowania pamięci podręcznej usługi API Management w przetwarzanie żądania (tj. trafienie, chybienie, brak) | 
+| cacheTime | liczba całkowita | Liczba milisekund spędzonych na wykonywaniu ogólnych operacji we/wy pamięci podręcznej w usłudze API Management (łączenie, wysyłanie i odbieranie bajtów) | 
+| backendTime | liczba całkowita | Liczba milisekund spędzonych na wykonywaniu ogólnych operacji we/wy zaplecza (łączenie, wysyłanie i odbieranie bajtów) | 
+| clientTime | liczba całkowita | Liczba milisekund spędzonych na wykonywaniu ogólnych operacji we/wy klienta (łączenie, wysyłanie i odbieranie bajtów) | 
+| apiId | ciąg | Identyfikator jednostki interfejsu API dla bieżącego żądania | 
+| operationId | ciąg | Identyfikator jednostki operacji dla bieżącego żądania | 
+| productId | ciąg | Identyfikator jednostki produktu dla bieżącego żądania | 
+| userId | ciąg | Identyfikator jednostki użytkownika dla bieżącego żądania | 
+| apimSubscriptionId | ciąg | Identyfikator jednostki subskrypcji dla bieżącego żądania | 
+| backendId | ciąg | Identyfikator jednostki zaplecza dla bieżącego żądania | 
+| LastError | obiekt | Ostatni błąd przetwarzania żądania | 
+| elapsed | liczba całkowita | Liczba milisekund, które upłynęło od momentu odebrania żądania przez bramę do momentu wystąpienia błędu | 
+| source | ciąg | Nazwa wewnętrznej procedury obsługi przetwarzania lub zasad, które spowodowały błąd | 
+| scope | ciąg | Zakres dokumentu zasad zawierający zasady, które spowodowały błąd | 
+| section | ciąg | Sekcja dokumentu zasad zawierająca zasady, które spowodowały błąd | 
+| reason | ciąg | Przyczyna błędu | 
+| message | ciąg | Komunikat o błędzie | 
 
 ## <a name="next-steps"></a>Następne kroki
 
