@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie grup NSG przy użyciu portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzać istniejących grup NSG, przy użyciu portalu Azure."
+title: Zarządzanie grup NSG przy użyciu portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać istniejących grup NSG, przy użyciu portalu Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5d55679d-57da-457c-97dc-1e1973909ee5
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-nsgs-using-the-portal"></a>Grupy NSG za pomocą portalu zarządzania
 
@@ -44,7 +44,7 @@ Można wyświetlić istniejących grup NSG, pobrać reguł dla istniejącej grup
 
 Aby wyświetlić wszystkich istniejących grup NSG w ramach subskrypcji, wykonaj następujące kroki:
 
-1. W przeglądarce przejdź do strony http://portal.azure.com i w razie potrzeby zaloguj się przy użyciu konta platformy Azure.
+1. W przeglądarce przejdź do witryny http://portal.azure.com i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
 
 2. Kliknij przycisk **Przeglądaj >** > **sieciowej grupy zabezpieczeń**.
 
