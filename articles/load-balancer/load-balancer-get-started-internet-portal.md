@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1b7901542a699e74f65527bf734133f73acb0bea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c646b0b1ab0ec62cffb4f7cf7474b48c68dfabb4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-public-basic-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Tworzenie publicznego podstawowego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu witryny Azure Portal
 
@@ -38,8 +38,8 @@ W tej sekcji utworzysz publiczny podstawowy moduł równoważenia obciążenia p
 1. W lewym górnym rogu ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Moduł równoważenia obciążenia**.
 2. Na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź następujące wartości dla modułu równoważenia obciążenia:
     - *myLoadBalancer* — jako nazwę modułu równoważenia obciążenia.
-    - **Public** — jako typ modułu równoważenia obciążenia. 
-     - *myPublicIP* — jako publiczny adres IP do utworzenia z jednostką SKU ustawioną na **Podstawowa** i pozycją **Przypisanie** ustawioną na **Dynamiczne**.
+    - **Public** — jako typ modułu równoważenia obciążenia.
+    - *myPublicIP* — jako publiczny adres IP do utworzenia z jednostką SKU ustawioną na **Podstawowa** i pozycją **Przypisanie** ustawioną na **Dynamiczne**.
     - *myResourceGroupSLB* — jako nazwę nowo tworzonej grupy zasobów.
 3. Kliknij pozycję **Utwórz**, aby utworzyć moduł równoważenia obciążenia.
    
@@ -146,7 +146,7 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
 
 ### <a name="create-a-health-probe"></a>Tworzenie sondy kondycji
 
-Aby zezwolić podstawowemu modułowi równoważenia obciążenia na monitorowanie stanu aplikacji, należy użyć sondy kondycji. Dynamicznie dodaje ona lub usuwa maszyny wirtualne w rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. Utwórz sondę kondycji *myHealthProbe*, aby monitorować kondycję maszyn wirtualnych.
+Aby zezwolić podstawowemu modułowi równoważenia obciążenia na monitorowanie stanu aplikacji, należy użyć sondy kondycji. Dynamicznie dodaje lub usuwa maszyny wirtualne w rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na kontrole kondycji. Utwórz sondę kondycji *myHealthProbe*, aby monitorować kondycję maszyn wirtualnych.
 
 1. W menu po lewej stronie kliknij pozycję **Wszystkie zasoby**, a następnie na liście zasobów kliknij pozycję **myLoadBalancer**.
 2. W obszarze **Ustawienia** kliknij pozycję **Sondy kondycji**, a następnie kliknij pozycję **Dodaj**.

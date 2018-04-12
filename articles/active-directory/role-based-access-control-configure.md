@@ -1,8 +1,8 @@
 ---
-title: "Kontrola dostępu oparta na rolach w witrynie Azure Portal | Microsoft Docs"
-description: "Rozpocznij zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach w witrynie Azure Portal. Przypisz uprawnienia do swoich zasobów za pomocą przypisań ról."
+title: Kontrola dostępu oparta na rolach w witrynie Azure Portal | Microsoft Docs
+description: Rozpocznij zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach w witrynie Azure Portal. Przypisz uprawnienia do swoich zasobów za pomocą przypisań ról.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
@@ -15,10 +15,10 @@ ms.date: 07/17/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.openlocfilehash: 57b6aa57a57317563a9da8e1765f4d97b1b79852
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>Korzystanie z kontroli dostępu opartej na rolach do zarządzania dostępem do zasobów subskrypcji platformy Azure
 > [!div class="op_single_selector"]

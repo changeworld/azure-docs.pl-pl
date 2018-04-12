@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 9ea8fdcd2d21729117101748e20e52029c315e15
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a3b081e34886d4075ae3c88e412d732578d1ce26
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu języka Python
 
@@ -39,6 +39,8 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
 ```
 
 To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć program Python, odszukaj folder storage-blobs-python-quickstart i plik example.py.  
+
+[!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 W aplikacji należy podać nazwę konta magazynu i klucz konta, aby utworzyć obiekt `BlockBlobService`. Otwórz plik `example.py` w Eksploratorze rozwiązań w środowisku IDE. Zastąp wartości **accountname** i **accountkey** własną nazwą konta i własnym kluczem. 
