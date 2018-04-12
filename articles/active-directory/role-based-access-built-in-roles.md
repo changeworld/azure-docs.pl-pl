@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
 ms.openlocfilehash: 4d9df6743d84310b7db70034d1e84dd3591b3c21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure
 Azure opartej na rolach kontroli dostępu (RBAC) zawiera następujące role wbudowane przypisane do użytkowników, grup i usług. Nie można zmodyfikować definicje ról wbudowanych. Można jednak utworzyć [niestandardowych ról w Azure RBAC](role-based-access-control-custom-roles.md) do określonych potrzeb organizacji.
@@ -39,27 +39,27 @@ W tym artykule opisano tylko różne role, które istnieją już dzisiaj. Po prz
 
 | Wbudowane roli | Opis |
 | --- | --- |
-| [Właściciel](#owner) | Umożliwia zarządzanie wszystkim, w tym dostępem do zasobów. |
-| [Contributor](#contributor) | Umożliwia zarządzanie wszystkim z wyjątkiem dostępu do zasobów. |
+| [Owner](#owner) | Umożliwia zarządzanie wszystkim, w tym dostępem do zasobów. |
+| [Współautora](#contributor) | Umożliwia zarządzanie wszystkim z wyjątkiem dostępu do zasobów. |
 | [Reader](#reader) | Umożliwia wyświetlanie wszystkiego, ale nie umożliwia wprowadzania jakichkolwiek zmian. |
 | [Interfejs API zarządzania usługi współautora](#api-management-service-contributor) | Może zarządzać usługą i interfejsami API |
 | [Rola operatora usługi zarządzania interfejsu API](#api-management-service-operator-role) | Może zarządzać usługą, lecz nie interfejsami API |
 | [Interfejs API zarządzania usługi czytnika roli](#api-management-service-reader-role) | Dostęp tylko do odczytu do usługi i interfejsów API |
 | [Application Insights składnika współautora](#application-insights-component-contributor) | Umożliwia zarządzanie składnikami usługi Application Insights |
-| [Application Insights migawki debugera](#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie do korzystania z funkcji debugera migawek usługi Application Insights |
+| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Nadaje użytkownikowi uprawnienie do korzystania z funkcji debugera migawek usługi Application Insights |
 | [Operator zadania automatyzacji](#automation-job-operator) | Twórz zadania i zarządzaj nimi za pomocą elementów runbook usługi Automation. |
 | [Operator automatyzacji](#automation-operator) | Operatorzy automatyzacji mogą uruchamiać, zatrzymywać, wstrzymywać i wznawiać zadania |
 | [Operator elementów Runbook automatyzacji](#automation-runbook-operator) | Odczytuj właściwości elementu runbook, aby móc tworzyć zadania tego elementu. |
 | [Właściciel rejestracji Azure stosu](#azure-stack-registration-owner) | Umożliwia zarządzanie rejestracjami w usłudze Azure Stack. |
 | [Współautor kopii zapasowej](#backup-contributor) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem tworzenia magazynów i przyznawania dostępu innym osobom |
 | [Operator kopii zapasowych](#backup-operator) | Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem usuwania kopii zapasowych, tworzenia magazynów i przyznawania dostępu innym osobom |
-| [Czytnik kopii zapasowej](#backup-reader) | Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian |
+| [Backup Reader](#backup-reader) | Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian |
 | [Czytnik rozliczeń](#billing-reader) | Umożliwia dostęp do odczytu do danych dotyczących rozliczeń |
 | [BizTalk Contributor](#biztalk-contributor) | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. |
-| [CDN Endpoint Contributor](#cdn-endpoint-contributor) | Może zarządzać punktami końcowymi usługi CDN, lecz nie może przyznawać dostępu innym użytkownikom. |
-| [Czytnik punktu końcowego CDN](#cdn-endpoint-reader) | Może wyświetlać punkty końcowe usługi CDN, ale nie może wprowadzać zmian. |
+| [Współautor punktu końcowego CDN](#cdn-endpoint-contributor) | Może zarządzać punktami końcowymi usługi CDN, lecz nie może przyznawać dostępu innym użytkownikom. |
+| [CDN Endpoint Reader](#cdn-endpoint-reader) | Może wyświetlać punkty końcowe usługi CDN, ale nie może wprowadzać zmian. |
 | [Współautor profilu CDN](#cdn-profile-contributor) | Może zarządzać profilami usługi CDN i ich punktami końcowymi, ale nie może przyznawać dostępu innym użytkownikom. |
-| [Czytnik profilu CDN](#cdn-profile-reader) | Może wyświetlać profile usługi CDN i ich punkty końcowe, ale nie może wprowadzać zmian. |
+| [CDN Profile Reader](#cdn-profile-reader) | Może wyświetlać profile usługi CDN i ich punkty końcowe, ale nie może wprowadzać zmian. |
 | [Współautor klasycznej sieci](#classic-network-contributor) | Umożliwia zarządzanie klasycznymi sieciami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor konta magazynu Classic](#classic-storage-account-contributor) | Umożliwia zarządzanie kontami klasycznego magazynu, ale nie dostęp do nich. |
 | [Rola usługi Operator klucza konta magazynu klasycznego](#classic-storage-account-key-operator-service-role) | Operatorzy kluczy klasycznych kont magazynu mogą wyświetlać listę kluczy dla klasycznych kont magazynu i ponownie je generować |
@@ -68,14 +68,14 @@ W tym artykule opisano tylko różne role, które istnieją już dzisiaj. Po prz
 | [Rozwiązania cosmos bazy danych konta czytnik roli](#cosmos-db-account-reader-role) | Można odczytać danych konta bazy danych Azure rozwiązania Cosmos. Zobacz [współautora konta usługi DocumentDB](#documentdb-account-contributor) do zarządzania kontami bazy danych Azure rozwiązania Cosmos. |
 | [Współautor fabryki danych](#data-factory-contributor) | Tworzenie fabryk danych i zawartych w nich zasobów podrzędnych oraz zarządzanie nimi. |
 | [Data Lake Analytics Developer](#data-lake-analytics-developer) | Umożliwia przesyłanie własnych zadań, monitorowanie ich i zarządzanie nimi, ale nie tworzenie ani usuwanie kont usługi Data Lake Analytics. |
-| [DevTest Labs użytkownika](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
+| [DevTest Labs User](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
 | [Współautor konta usługi DocumentDB](#documentdb-account-contributor) | Można zarządzać kontami bazy danych Azure rozwiązania Cosmos. Azure DB rozwiązania Cosmos jest znanego wcześniej jako usługi DocumentDB. |
 | [Współautor konta systemów inteligentnych](#intelligent-systems-account-contributor) | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor magazyn kluczy](#key-vault-contributor) | Umożliwia zarządzanie magazynami kluczy, ale nie umożliwia uzyskiwania do nich dostępu. |
-| [Twórca laboratorium](#lab-creator) | Umożliwia tworzenie, zarządzania, Usuń z zarządzanego laboratoriów w ramach konta Azure laboratorium. |
+| [Lab Creator](#lab-creator) | Umożliwia tworzenie, zarządzania, Usuń z zarządzanego laboratoriów w ramach konta Azure laboratorium. |
 | [Współautor analizy dzienników](#log-analytics-contributor) | Współautor analizy dziennika można odczytać wszystkich danych monitorowania i edytować ustawienia monitorowania. Edytowanie ustawień monitorowania obejmuje dodawanie rozszerzenia maszyny Wirtualnej do maszyn wirtualnych; Odczyt kluczy konta magazynu, aby można było skonfigurować kolekcję dzienników z usługi Magazyn Azure; Tworzenie i konfigurowanie kont automatyzacji; Dodawanie rozwiązań. i konfigurowania diagnostyki Azure dla wszystkich zasobów systemu Azure. |
-| [Czytnik dziennika analityka](#log-analytics-reader) | Czytelnik usługi Log Analytics może wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
+| [Log Analytics Reader](#log-analytics-reader) | Czytelnik usługi Log Analytics może wyświetlać i wyszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym konfigurację diagnostyki platformy Azure dla wszystkich zasobów platformy Azure. |
 | [Współautor aplikacji logiki](#logic-app-contributor) | Umożliwia zarządzanie aplikacjami logiki, lecz nie dostęp do nich. |
 | [Operator aplikacji logiki](#logic-app-operator) | Umożliwia odczytywanie, włączanie i wyłączanie aplikacji logiki. |
 | [Współautor tożsamości zarządzanych](#managed-identity-contributor) | Tworzenia, odczytu, aktualizacji i usuwania tożsamości przypisane przez użytkownika |
@@ -88,14 +88,14 @@ W tym artykule opisano tylko różne role, które istnieją już dzisiaj. Po prz
 | [Harmonogram zadania kolekcje współautora](#scheduler-job-collections-contributor) | Umożliwia zarządzanie kolekcjami zadań usługi Scheduler, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor usługi wyszukiwania](#search-service-contributor) | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Administrator zabezpieczeń](#security-admin) | W Centrum zabezpieczeń tylko: można wyświetlić zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, Edytuj zasady zabezpieczeń, wyświetlanie alertów i zalecenia, odrzucać alerty i zalecenia |
-| [Security Manager](#security-manager) | Umożliwia zarządzanie składnikami zabezpieczeń, zasadami zabezpieczeń i maszynami wirtualnymi |
-| [Czytnik zabezpieczeń](#security-reader) | W Centrum zabezpieczeń tylko: można wyświetlić zalecenia i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie można wprowadzić zmian |
+| [Menedżer zabezpieczeń](#security-manager) | Umożliwia zarządzanie składnikami zabezpieczeń, zasadami zabezpieczeń i maszynami wirtualnymi |
+| [Security Reader](#security-reader) | W Centrum zabezpieczeń tylko: można wyświetlić zalecenia i alertów, widok zasady zabezpieczeń, wyświetlanie stanów zabezpieczeń, ale nie można wprowadzić zmian |
 | [Współautor odzyskiwania lokacji](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
 | [Operator odzyskiwania lokacji](#site-recovery-operator) | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
-| [Czytnik odzyskiwania lokacji](#site-recovery-reader) | Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania innych operacji zarządzania |
+| [Site Recovery Reader](#site-recovery-reader) | Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania innych operacji zarządzania |
 | [Współautor bazy danych SQL](#sql-db-contributor) | Umożliwia zarządzanie baz danych, ale nie do nich dostępu. Ponadto nie można zarządzać ich zasad związanych z zabezpieczeniami lub ich nadrzędnego serwerów SQL. |
 | [SQL Security Manager](#sql-security-manager) | Umożliwia zarządzanie zasadami serwerów i baz danych SQL związanymi z zabezpieczeniami, ale nie umożliwia uzyskiwania do nich dostępu. |
-| [SQL Server współautora](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
+| [SQL Server Contributor](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
 | [Współautor konta magazynu](#storage-account-contributor) | Umożliwia zarządzanie kontami magazynu, ale nie dostęp do nich. |
 | [Rola usługi Operator klucza konta magazynu](#storage-account-key-operator-service-role) | Operatorzy kluczy kont magazynu mogą wyświetlać listę kluczy dla kont magazynu i ponownie je generować |
 | [Współautor żądania obsługi](#support-request-contributor) | Umożliwia tworzenie żądań pomocy technicznej i zarządzanie nimi |
@@ -328,13 +328,13 @@ Umożliwia zarządzanie usługami kopii zapasowych z wyjątkiem usuwania kopii z
 | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Zwraca stan operacji |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ operationResults/read | Pobiera wynik operacji wykonanej na kontenerze ochrony. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/tworzenia kopii zapasowej/działania | Wykonuje kopię zapasową elementu chronionego. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/backup/action | Wykonuje kopię zapasową elementu chronionego. |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationResults/read | Pobiera wynik operacji wykonanej na elementach chronionych. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/Odczyt | Zwraca stan operacji wykonanej na elementach chronionych. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/Odczyt | Zwraca szczegóły obiektu elemencie chroniony |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/read | Zwraca stan operacji wykonanej na elementach chronionych. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/read | Zwraca szczegóły obiektu elemencie chroniony |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/read | Pobierz punkty odzyskiwania dla elementów chronionych. |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/restore/action | Przywróć punkty odzyskiwania dla elementów chronionych. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/zapisu | Tworzenie kopii zapasowej elementu chronione |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/write | Tworzenie kopii zapasowej elementu chronione |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Zwraca wszystkich zarejestrowanych kontenerów |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Tworzenie i zarządzanie nimi zadania tworzenia kopii zapasowej |
 | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | Anulowanie zadania |
@@ -382,8 +382,8 @@ Może wyświetlać usługi kopii zapasowych, ale nie może wprowadzać zmian
 | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Zwraca stan operacji |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ operationResults/read | Pobiera wynik operacji wykonanej na kontenerze ochrony. |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationResults/read | Pobiera wynik operacji wykonanej na elementach chronionych. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/Odczyt | Zwraca stan operacji wykonanej na elementach chronionych. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/Odczyt | Zwraca szczegóły obiektu elemencie chroniony |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/read | Zwraca stan operacji wykonanej na elementach chronionych. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/read | Zwraca szczegóły obiektu elemencie chroniony |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Zwraca wszystkich zarejestrowanych kontenerów |
 | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Zwraca wynik operacji zadania. |
 | Microsoft.RecoveryServices/Vaults/backupJobs/read | Zwraca wszystkie obiekty zadania |
@@ -1048,9 +1048,9 @@ Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale 
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | Tryb failover |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizacja usługi mobilności |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/read | Przeczytaj mapowań kontenera ochrony |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/Odczyt | Przeczytaj wszystkich dostawców usług odzyskiwania |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/działania | Odśwież dostawcę |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/Odczyt | Przeczytaj wszystkie klasyfikacje magazynu |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/read | Read Any Recovery Services Providers |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/action | Odśwież dostawcę |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read | Przeczytaj wszystkie klasyfikacje magazynu |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read | Wszelkie mapowania klasyfikacji magazynu do odczytu |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Wszystkie zadania do odczytu |
 | Microsoft.RecoveryServices/vaults/replicationJobs/* | Tworzenie i zarządzanie nimi zadania replikacji |
@@ -1098,8 +1098,8 @@ Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania 
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/read | Wszystkie chronione elementy do odczytu |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Przeczytaj punktów odzyskiwania replikacji |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/read | Przeczytaj mapowań kontenera ochrony |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/Odczyt | Przeczytaj wszystkich dostawców usług odzyskiwania |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/Odczyt | Przeczytaj wszystkie klasyfikacje magazynu |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/read | Read Any Recovery Services Providers |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read | Przeczytaj wszystkie klasyfikacje magazynu |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read | Wszelkie mapowania klasyfikacji magazynu do odczytu |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Wszystkie zadania do odczytu |
 | Microsoft.RecoveryServices/vaults/replicationJobs/read | Wszystkie zadania do odczytu |
@@ -1301,9 +1301,9 @@ Umożliwia zarządzanie maszyn wirtualnych, ale nie do nich dostępu i nie sieci
 | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
 | Microsoft.Network/virtualNetworks/subnets/join/action | Tworzy sprzężenie sieci wirtualnej |
 | Microsoft.RecoveryServices/locations/* |  |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems / * / Odczyt |  |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/Odczyt | Zwraca szczegóły obiektu elemencie chroniony |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/zapisu | Tworzenie kopii zapasowej elementu chronione |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/*/read |  |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/read | Zwraca szczegóły obiektu elemencie chroniony |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/write | Tworzenie kopii zapasowej elementu chronione |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Tworzenie kopii zapasowej opcje ochrony |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Zwraca wszystkie zasady ochrony |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Tworzy zasady ochrony |

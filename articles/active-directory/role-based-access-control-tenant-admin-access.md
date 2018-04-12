@@ -1,8 +1,8 @@
 ---
-title: "Administrator dzierżawy podniesienie uprawnień dostępu — usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC)."
+title: Administrator dzierżawy podniesienie uprawnień dostępu — usługi Azure AD | Dokumentacja firmy Microsoft
+description: W tym temacie opisano wbudowanych ról dla kontroli dostępu opartej na rolach (RBAC).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: rqureshi
@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 10/30/2017
 ms.author: rolyon
 ms.openlocfilehash: dff3a26201507f974d52de3fe6dcb23945cd900f
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Podniesienie uprawnień dostępu jako Administrator dzierżawy przy użyciu kontroli dostępu opartej na rolach
 
@@ -45,7 +45,7 @@ Ta funkcja jest ważna, ponieważ zezwala ona na administratora dzierżawy wyśw
 ![Administrator globalny usługi Azure Centrum administracyjnego usługi AD - właściwości — można zarządzać subskrypcją Azure — zrzut ekranu](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
 
 ## <a name="view-role-assignments-at-the--scope-using-powershell"></a>Przypisania ról widok w zakresie "/" przy użyciu programu PowerShell
-Aby wyświetlić **Administrator dostępu użytkowników** przypisanie w  **/**  zakres, należy użyć `Get-AzureRmRoleAssignment` polecenia cmdlet programu PowerShell.
+Aby wyświetlić **Administrator dostępu użytkowników** przypisanie w **/** zakres, należy użyć `Get-AzureRmRoleAssignment` polecenia cmdlet programu PowerShell.
     
 ```powershell
 Get-AzureRmRoleAssignment* | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}
