@@ -1,8 +1,8 @@
 ---
-title: "Zarządzanie dostępem do zasobów platformy Azure w usłudze Azure Active Directory"
-description: "Więcej informacji na temat sposobów, aby zarządzać dostępem do zasobów platformy Azure przy użyciu różnych funkcji usługi Azure Active Directory."
+title: Zarządzanie dostępem do zasobów platformy Azure w usłudze Azure Active Directory
+description: Więcej informacji na temat sposobów, aby zarządzać dostępem do zasobów platformy Azure przy użyciu różnych funkcji usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: skwan
 manager: mtillman
 editor: bryanla
@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 10/05/2017
 ms.author: skwan
 ms.openlocfilehash: eee4353c183aeec19f72f8e1dec6c20b6c5bb226
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-access-to-azure-resources-with-azure-active-directory"></a>Zarządzanie dostępem do zasobów platformy Azure w usłudze Azure Active Directory
 

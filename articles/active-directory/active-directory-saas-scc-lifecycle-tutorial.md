@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integrację z cyklem życia SCC | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak użyć SCC cyklu życia z usługą Azure Active Directory w celu włączenia logowania jednokrotnego, automatyczne Inicjowanie obsługi i inne!"
+title: 'Samouczek: Azure Active Directory integrację z cyklem życia SCC | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak użyć SCC cyklu życia z usługą Azure Active Directory w celu włączenia logowania jednokrotnego, automatyczne Inicjowanie obsługi i inne!
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Samouczek: Azure Active Directory integrację z cyklem życia SCC
 Celem tego samouczka jest pokazanie integracji Azure i SCC cyklu życia.  
@@ -45,7 +45,7 @@ Celem tej sekcji jest przedstawiają sposób włączania integracji aplikacji dl
 
 1. W klasycznym portalu Azure, w okienku nawigacji po lewej stronie kliknij **usługi Active Directory**.
    
-    ![Usługi Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "usługi Active Directory")
+    ![Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "Active Directory")
 2. Z **katalogu** listy, wybierz katalog, dla którego chcesz włączyć integracji katalogów.
 3. Aby otworzyć widok aplikacji, w widoku katalogu, kliknij przycisk **aplikacji** w menu u góry.
    
@@ -58,10 +58,10 @@ Celem tej sekcji jest przedstawiają sposób włączania integracji aplikacji dl
     ![Dodawanie aplikacji z gallerry](./media/active-directory-saas-scc-lifecycle-tutorial/IC749322.png "dodać aplikację z gallerry")
 6. W **pole wyszukiwania**, typ **cyklu życia SCC**.
    
-    ![Galerii aplikacji](./media/active-directory-saas-scc-lifecycle-tutorial/IC794121.png "galerii aplikacji")
+    ![Application Gallery](./media/active-directory-saas-scc-lifecycle-tutorial/IC794121.png "Application Gallery")
 7. W okienku wyników wybierz **cyklu życia SCC**, a następnie kliknij przycisk **Complete** można dodać aplikację.
    
-    ![Cykl życia SCC](./media/active-directory-saas-scc-lifecycle-tutorial/IC795082.png "SCC cykl życia")
+    ![SCC LifeCycle](./media/active-directory-saas-scc-lifecycle-tutorial/IC795082.png "SCC LifeCycle")
    
 ## <a name="configure-single-sign-on"></a>Konfigurowanie rejestracji jednokrotnej
 
@@ -75,7 +75,7 @@ Celem tej sekcji jest przedstawiają sposób umożliwić użytkownikom uwierzyte
 2. Na **jak chcesz użytkownikom zalogować się na cyklu życia SCC** wybierz pozycję **usługi Microsoft Azure AD rejestracji jednokrotnej**, a następnie kliknij przycisk **dalej**.
    
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "skonfigurować logowanie jednokrotne")
-3. Na **Konfigurowanie adresu URL aplikacji** strony w **na adres URL logowania** tekstowym, wpisz adres URL używany przez użytkowników do logowania się SCC cyklem życia aplikacji przy użyciu następującego wzorca " *https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx* ", a następnie kliknij przycisk **dalej**.
+3. Na **Konfigurowanie adresu URL aplikacji** strony w **na adres URL logowania** tekstowym, wpisz adres URL używany przez użytkowników do logowania się SCC cyklem życia aplikacji przy użyciu następującego wzorca "*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*", a następnie kliknij przycisk **dalej**.
    
     ![Skonfiguruj adres URL aplikacji](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "skonfigurować adres URL aplikacji")
 4. Na **skonfigurować logowanie jednokrotne w cyklu życia SCC** kliknij przycisk **pobierania metadanych**, a następnie zapisz plik metadanych lokalnie na komputerze.

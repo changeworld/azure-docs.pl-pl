@@ -1,11 +1,11 @@
 ---
-title: "Kontrola dostępu oparta na rolach przy użyciu REST - usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Zarządzanie kontrolą dostępu opartej na rolach przy użyciu interfejsu API REST"
+title: Kontrola dostępu oparta na rolach przy użyciu REST - usługi Azure AD | Dokumentacja firmy Microsoft
+description: Zarządzanie kontrolą dostępu opartej na rolach przy użyciu interfejsu API REST
 services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: active-directory
 ms.workload: multiple
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.openlocfilehash: ba25340e41cefe2b7847a39a6c9182cd0fc057d3
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>Zarządzanie kontrolą dostępu opartej na rolach przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1  
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 3. Zastąp *{filtru}* warunek, który chcesz zastosować, aby filtrować listę przypisania roli:
 
@@ -94,7 +94,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1  
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{— identyfikator przypisania roli-}* o identyfikatorze GUID przypisania roli.
 3. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 
@@ -135,7 +135,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1   
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{— identyfikator przypisania roli-}* za pomocą nowego identyfikatora GUID, który staje się identyfikator GUID nowe przypisanie roli.
 3. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 
@@ -153,7 +153,7 @@ Treść żądania Podaj wartości w następującym formacie:
 
 | Nazwa elementu | Wymagane | Typ | Opis |
 | --- | --- | --- | --- |
-| wartość roleDefinitionId |Yes |Ciąg |Identyfikator roli. Format identyfikatora jest: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| roleDefinitionId |Yes |Ciąg |Identyfikator roli. Format identyfikatora jest: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
 | principalId |Yes |Ciąg |Identyfikator obiektu głównego usługi Azure AD (użytkownika, grupy lub nazwy głównej usługi), do której przypisano rolę. |
 
 ### <a name="response"></a>Odpowiedź
@@ -193,7 +193,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1  
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{— identyfikator przypisania roli-}* o identyfikatorze GUID przypisania roli.
 3. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 
@@ -317,7 +317,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1  
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{— identyfikator definicji roli-}* o identyfikatorze GUID definicji roli.
 3. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 
@@ -397,7 +397,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1  
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{— identyfikator definicji roli-}* za pomocą nowego identyfikatora GUID, który staje się identyfikator GUID nowej niestandardowej roli.
 3. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 
@@ -438,11 +438,11 @@ Treść żądania Podaj wartości w następującym formacie:
 | --- | --- | --- | --- |
 | name |Yes |Ciąg |Identyfikator GUID tworzona rola niestandardowa. |
 | properties.roleName |Yes |Ciąg |Tworzona rola niestandardowa nazwa wyświetlana. Maksymalny rozmiar 128 znaków. |
-| Properties.Description |Nie |Ciąg |Opis roli niestandardowej. Maksymalny rozmiar 1024 znaki. |
+| properties.description |Nie |Ciąg |Opis roli niestandardowej. Maksymalny rozmiar 1024 znaki. |
 | Properties.Type |Yes |Ciąg |Wartość "CustomRole." |
-| Properties.permissions.Actions |Yes |String[] |Tablica ciągów akcji określenie operacji przyznanych przez rolę niestandardowych. |
-| properties.permissions.notActions |Nie |String[] |Tablica ciągów akcji określenie operacji do wykluczenia z operacji przyznanych przez rolę niestandardowych. |
-| properties.assignableScopes |Yes |String[] |Tablica zakresów, w których można użyć niestandardowej roli. |
+| Properties.permissions.Actions |Yes |ciąg] |Tablica ciągów akcji określenie operacji przyznanych przez rolę niestandardowych. |
+| properties.permissions.notActions |Nie |ciąg] |Tablica ciągów akcji określenie operacji do wykluczenia z operacji przyznanych przez rolę niestandardowych. |
+| properties.assignableScopes |Yes |ciąg] |Tablica zakresów, w których można użyć niestandardowej roli. |
 
 ### <a name="response"></a>Odpowiedź
 Kod stanu: 201
@@ -500,7 +500,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1  
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{— identyfikator definicji roli-}* o identyfikatorze GUID niestandardowej roli.
 3. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 
@@ -541,11 +541,11 @@ Treść żądania Podaj wartości w następującym formacie:
 | --- | --- | --- | --- |
 | name |Yes |Ciąg |Identyfikator GUID tworzona rola niestandardowa. |
 | properties.roleName |Yes |Ciąg |Nazwa wyświetlana zaktualizowane rola niestandardowa. |
-| Properties.Description |Nie |Ciąg |Opis roli niestandardowej zaktualizowane. |
+| properties.description |Nie |Ciąg |Opis roli niestandardowej zaktualizowane. |
 | Properties.Type |Yes |Ciąg |Wartość "CustomRole." |
-| Properties.permissions.Actions |Yes |String[] |Tablica ciągów akcji Określanie operacje, do których tworzona rola niestandardowa zaktualizowane udziela dostępu. |
-| properties.permissions.notActions |Nie |String[] |Tablica ciągów akcji określenie operacji do wykluczenia z działań, które zaktualizowane niestandardowe rola przyznaje. |
-| properties.assignableScopes |Yes |String[] |Tablica zakresów, w których można użyć roli zaktualizowane niestandardowe. |
+| Properties.permissions.Actions |Yes |ciąg] |Tablica ciągów akcji Określanie operacje, do których tworzona rola niestandardowa zaktualizowane udziela dostępu. |
+| properties.permissions.notActions |Nie |ciąg] |Tablica ciągów akcji określenie operacji do wykluczenia z działań, które zaktualizowane niestandardowe rola przyznaje. |
+| properties.assignableScopes |Yes |ciąg] |Tablica zakresów, w których można użyć roli zaktualizowane niestandardowe. |
 
 ### <a name="response"></a>Odpowiedź
 Kod stanu: 201
@@ -603,7 +603,7 @@ W identyfikatorze URI wprowadź następujące elementy zastępcze, aby dostosowa
 
    * Subskrypcja: /subscriptions/ {identyfikator subskrypcji}  
    * Grupa zasobów: /subscriptions/ {identyfikator subskrypcji} / resourceGroups/myresourcegroup1  
-   * Zasób: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Zastąp *{— identyfikator definicji roli-}* z identyfikatorem GUID identyfikator definicji roli niestandardowej roli.
 3. Zastąp *{wersja interfejsu api}* z 2015-07-01.
 
