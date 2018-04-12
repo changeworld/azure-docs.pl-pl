@@ -1,13 +1,13 @@
 ---
-title: "Jak równoważyć obciążenie maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs"
-description: "Dowiedz się, jak utworzyć bezpieczną aplikację o wysokiej dostępności przy użyciu trzech maszyn wirtualnych z systemem Linux i modułu równoważenia obciążenia platformy Azure"
+title: Jak równoważyć obciążenie maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć bezpieczną aplikację o wysokiej dostępności przy użyciu trzech maszyn wirtualnych z systemem Linux i modułu równoważenia obciążenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: tutorial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: feb2c369fc00d37c9a6af0c0be68cbf7d9e59921
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Jak równoważyć obciążenie maszyn wirtualnych z systemem Linux na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności
 Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żądań przychodzących pomiędzy wiele maszyn wirtualnych. W tym samouczku poznasz poszczególne składniki modułu równoważenia obciążenia platformy Azure, które dystrybuują ruch i zapewniają wysoką dostępność. Omawiane kwestie:

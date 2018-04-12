@@ -1,31 +1,30 @@
 ---
-title: "Wyświetlanie i analizowanie zebranych danych usługi Azure Log Analytics | Microsoft Docs"
-description: "Ten artykuł zawiera samouczek, w którym opisano sposób tworzenia wyszukiwań w dziennikach i analizowania danych przechowywanych w zasobie usługi Log Analytics przy użyciu portalu do wyszukiwania w dziennikach.  Samouczek obejmuje uruchamianie pewnych prostych zapytań na potrzeby zwracania różnych typów danych i analizowanie wyników."
+title: Wyświetlanie i analizowanie zebranych danych usługi Azure Log Analytics | Microsoft Docs
+description: Ten artykuł zawiera samouczek, w którym opisano sposób tworzenia wyszukiwań w dziennikach i analizowania danych przechowywanych w zasobie usługi Log Analytics przy użyciu portalu do wyszukiwania w dziennikach.  Samouczek obejmuje uruchamianie pewnych prostych zapytań na potrzeby zwracania różnych typów danych i analizowanie wyników.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2017
+ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fc5dcc945750b4ab4eef337dbd96bd051bb4dd81
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6345fe89a3bf25041621213274ea0c3081848d99
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Wyświetlanie i analizowanie zebranych danych za pomocą wyszukiwania w dziennikach usługi Log Analytics
 
 W usłudze Log Analytics można korzystać z wyszukiwań w dziennikach, tworząc zapytania służące do analizowania zebranych danych, a także używać już istniejących pulpitów nawigacyjnych, które można dostosować za pomocą widoków graficznych dotyczących najbardziej wartościowych wyszukiwań.  Zdefiniowano już zbieranie danych operacyjnych z maszyn wirtualnych platformy Azure i dzienników aktywności, natomiast w tym samouczku omawiane są następujące czynności:
 
 > [!div class="checklist"]
-> * Uaktualnianie zasobu usługi Azure Log Analytics do nowego języka zapytań 
 > * Wykonywanie prostego wyszukiwania danych dotyczących zdarzeń i modyfikowanie oraz filtrowanie wyników za pomocą funkcji 
 > * Informacje o pracy z danymi wydajności
 
@@ -36,21 +35,13 @@ Istnieją dwa sposoby na tworzenie i edytowanie zapytań oraz interakcyjną prac
 W tym samouczku będziemy używać strony Wyszukiwanie w dziennikach w witrynie Azure Portal. 
 
 ## <a name="log-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
+Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="open-the-log-search-portal"></a>Otwieranie portalu do wyszukiwania w dziennikach 
 Zacznij od otwarcia portalu do wyszukiwania w dziennikach.   
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
-2. Wybierz obszar roboczy w okienku subskrypcji usługi Log Analytics, a następnie wybierz kafelek **Wyszukiwanie w dziennikach**.<br> ![Przycisk Wyszukiwanie w dziennikach](media/log-analytics-tutorial-viewdata/azure-portal-01.png)
-
-W górnej części strony zasobów usługi Log Analytics w portalu może zostać wyświetlony transparent z zaproszeniem do uaktualnienia.<br> ![Powiadomienie o uaktualnieniu usługi Log Analytics w witrynie Azure Portal](media/log-analytics-tutorial-viewdata/log-analytics-portal-upgradebanner.png)
-
-W usłudze Log Analytics wprowadzono niedawno nowy język zapytań ułatwiający konstruowanie zapytań, korelowanie danych z różnych źródeł i analizowanie w celu szybkiego identyfikowania trendów lub problemów.
-
-Uaktualnienie jest proste.  Rozpocznij proces, klikając transparent **Dowiedz się więcej i uaktualnij**.  Przeczytaj dodatkowe informacje na temat uaktualniania na stronie informacji o uaktualnianiu, a następnie kliknij pozycję **Uaktualnij teraz**.
-
-Ten proces może potrwać kilka minut, a w jego trakcie możesz śledzić postęp w obszarze **Powiadomienia** z poziomu menu. Możesz dowiedzieć się więcej o [zaletach nowego języka zapytań](log-analytics-log-search-upgrade.md#why-the-new-language).
+2. Wybierz obszar roboczy w okienku subskrypcji usługi Log Analytics, a następnie wybierz kafelek **Wyszukiwanie w dziennikach**.<br><br> ![Przycisk Wyszukiwanie w dziennikach](media/log-analytics-tutorial-viewdata/azure-portal-02.png)
 
 ## <a name="create-a-simple-search"></a>Tworzenie prostego wyszukiwania
 Najszybszym sposobem pobrania danych do pracy jest użycie prostego zapytania zwracającego wszystkie rekordy w tabeli.  Jeśli z obszarem roboczym są połączeni jacyś klienci z systemem Windows lub Linux, istnieją dane w tabeli Event („Zdarzenie”, system Windows) lub Syslog („Dziennik systemu”, system Linux).

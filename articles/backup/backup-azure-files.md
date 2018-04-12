@@ -2,18 +2,17 @@
 title: Tworzenie kopii zapasowej plików w usłudze Azure Files
 description: W tym artykule szczegółowo przedstawiono sposób tworzenia kopii zapasowej udziałów plików platformy Azure i ich przywracania. Opisano w nim także zadania związane z zarządzaniem.
 services: backup
-keywords: Nie dodawaj ani nie edytuj słów kluczowych bez konsultacji z ekspertem SEO.
 author: markgalioto
 ms.author: markgal
 ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="back-up-azure-file-shares"></a>Tworzenie kopii zapasowej udziałów plików platformy Azure
 W tym artykule opisano sposób tworzenia kopii zapasowej i przywracania [udziałów plików platformy Azure](../storage/files/storage-files-introduction.md) przy użyciu witryny Azure Portal.
@@ -32,7 +31,7 @@ Przed utworzeniem kopii zapasowej udziału plików platformy Azure sprawdź, czy
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Ograniczenia dotyczące tworzenia kopii zapasowej udziału plików platformy Azure w okresie korzystania z wersji zapoznawczej
 Funkcja tworzenia kopii zapasowych udziałów plików platformy Azure jest dostępna w wersji zapoznawczej. Należy pamiętać o następujących ograniczeniach w okresie zapoznawczym:
-- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu z replikacją [magazynu strefowo nadmiarowego (ZRS, zone-redundant storage)](../storage/common/storage-redundancy.md#zone-redundant-storage) ani [magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS, read-access geo-redundant storage)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
+- Nie można chronić udziałów plików platformy Azure w ramach kont magazynu z replikacją [magazynu strefowo nadmiarowego (ZRS, zone-redundant storage)](../storage/common/storage-redundancy-zrs.md) ani [magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS, read-access geo-redundant storage)](../storage/common/storage-redundancy-grs.md).
 - Nie można chronić udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne.
 - Nie ma programu PowerShell ani interfejsu wiersza polecenia dostępnego dla ochrony usługi Azure Files.
 - Maksymalna liczba zaplanowanych kopii zapasowych to jedna dziennie.

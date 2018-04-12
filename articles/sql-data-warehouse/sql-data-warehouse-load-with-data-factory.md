@@ -1,11 +1,11 @@
 ---
-title: "Ładowanie danych do usługi Azure SQL Data Warehouse — fabryki danych | Dokumentacja firmy Microsoft"
-description: "W tym samouczku ładuje dane do usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure i korzysta z bazy danych programu SQL Server jako źródła danych."
+title: Ładowanie danych do usługi Azure SQL Data Warehouse — fabryki danych | Dokumentacja firmy Microsoft
+description: W tym samouczku ładuje dane do usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure i korzysta z bazy danych programu SQL Server jako źródła danych.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-sql-data-warehouse;azure-data-factory
 ms.service: sql-data-warehouse
 ms.workload: data-management
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Ładowanie danych do usługi SQL Data Warehouse z fabryką danych
 
@@ -146,7 +146,7 @@ Można wyświetlić postęp wdrażania i powoduje **wdrożenia** strony.
 
 5. Można uruchomić tego widoku monitorowania nowsze, przejdź do magazynu danych SQL, kliknij przycisk **danych obciążenia > fabryki danych Azure**, wybierz fabryką i wybierz **monitorowanie istniejących podczas ładowania zadania**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby przeprowadzić migrację bazy danych SQL Data Warehouse, zobacz [Omówienie migracji](sql-data-warehouse-overview-migrate.md).
 

@@ -3,25 +3,24 @@ title: Rozwiązywanie problemów dotyczących tworzenia kopii zapasowej udziału
 description: W tym artykule znajdują się informacje dotyczące rozwiązywania problemów występujących podczas ochrony udziałów plików platformy Azure.
 services: backup
 ms.service: backup
-keywords: Nie dodawaj ani nie edytuj słów kluczowych bez konsultacji z ekspertem SEO.
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej w usłudze Azure Files
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej w usłudze Azure Files.
 
 ## <a name="preview-boundaries"></a>Granice wersji zapoznawczej
 Usługa Azure Files jest w wersji zapoznawczej. Następujące scenariusze tworzenia kopii zapasowej nie są obsługiwane w przypadku udziałów plików platformy Azure:
-- Ochrona udziałów plików platformy Azure w ramach kont magazynu przy użyciu replikacji [magazynu strefowo nadmiarowego (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) lub [magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
+- Ochrona udziałów plików platformy Azure w ramach kont magazynu przy użyciu replikacji [magazynu strefowo nadmiarowego (ZRS)](../storage/common/storage-redundancy-zrs.md) lub [magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS)](../storage/common/storage-redundancy-grs.md).
 - Ochrona udziałów plików platformy Azure w ramach kont magazynu, które mają włączone sieci wirtualne.
 - Tworzenie kopii zapasowej udziałów plików platformy Azure za pomocą programu PowerShell lub interfejsu wiersza polecenia.
 

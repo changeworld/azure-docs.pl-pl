@@ -1,13 +1,12 @@
 ---
-title: "Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i kolekcji interfejsu API SQL usługi Azure Cosmos DB | Microsoft Docs"
-description: "Przykład skryptu interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i kolekcji interfejsu API SQL usługi Azure Cosmos DB"
+title: Skrypt interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i kolekcji interfejsu API SQL usługi Azure Cosmos DB | Microsoft Docs
+description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — tworzenie konta, bazy danych i kolekcji interfejsu API SQL usługi Azure Cosmos DB
 services: cosmos-db
 documentationcenter: cosmosdb
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: azurecli
@@ -15,12 +14,12 @@ ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
-ms.author: mimig
-ms.openlocfilehash: fef334e287ce7c5b84c13dc3442ade52eff5c387
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: sngun
+ms.openlocfilehash: 47194a3becf970a8e97e0d9f44b3e70d34f368b1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-an-sql-api-account-using-cli"></a>Azure Cosmos DB: tworzenie konta interfejsu API SQL przy użyciu interfejsu wiersza polecenia
 
