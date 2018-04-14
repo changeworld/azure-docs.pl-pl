@@ -1,11 +1,11 @@
 ---
-title: "Migrację istniejącego magazynu danych Azure do magazynu premium | Dokumentacja firmy Microsoft"
-description: "Instrukcje dotyczące migracji istniejącego magazynu danych do magazynu w warstwie premium"
+title: Migrację istniejącego magazynu danych Azure do magazynu premium | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące migracji istniejącego magazynu danych do magazynu w warstwie premium
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 03/15/2018
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 3b43bc17b7f9cf80a9520c5c573be3a48d82e4e7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migracja magazynu danych do magazynu w warstwie premium
 Usługa Azure SQL Data Warehouse niedawno wprowadzone [magazyn w warstwie premium dla większej wydajności przewidywalności][premium storage for greater performance predictability]. Teraz można migrować istniejące magazynów danych obecnie na magazynu w warstwie standardowa do magazyn w warstwie premium. Możesz korzystać z automatycznych migracji, lub jeśli wolisz decyduje o migracji (która jest związana z przestój), migrację można wykonać samodzielnie.

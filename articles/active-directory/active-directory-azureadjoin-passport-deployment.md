@@ -1,9 +1,9 @@
 ---
-title: "Włącz program Microsoft Windows Hello dla firm w Twojej organizacji | Dokumentacja firmy Microsoft"
-description: "Instrukcje dotyczące wdrażania do włączenia Microsoft Passport w Twojej organizacji."
+title: Włącz program Microsoft Windows Hello dla firm w Twojej organizacji | Dokumentacja firmy Microsoft
+description: Instrukcje dotyczące wdrażania do włączenia Microsoft Passport w Twojej organizacji.
 services: active-directory
-documentationcenter: 
-keywords: "Skonfiguruj Microsoft Passport, Microsoft Windows Hello dla firm wdrożenia"
+documentationcenter: ''
+keywords: Skonfiguruj Microsoft Passport, Microsoft Windows Hello dla firm wdrożenia
 author: MarkusVi
 manager: mtillman
 tags: azure-classic-portal
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>Włącz program Microsoft Windows Hello dla firm w Twojej organizacji
 Po [łączenie urządzeń przyłączonych do domeny systemu Windows 10 w usłudze Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md), wykonaj następujące czynności, aby włączyć program Microsoft Windows Hello dla firm w Twojej organizacji:
@@ -88,7 +88,7 @@ Za pomocą programu System Center Configuration Manager jest preferowaną metod�
    
     b. Jako **używaj (Trusted Platform Module)**, wybierz pozycję **wymagane**. 
    
-    d. Jako **metodę uwierzytelniania**, wybierz pozycję **opartego na certyfikatach**.
+    c. Jako **metodę uwierzytelniania**, wybierz pozycję **opartego na certyfikatach**.
    
     d. Kliknij przycisk **Dalej**.
 6. Na **Podsumowanie** okna dialogowego, kliknij przycisk **dalej**.
