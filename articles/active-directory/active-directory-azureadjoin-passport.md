@@ -1,11 +1,11 @@
 ---
-title: "Uwierzytelnianie tożsamości bez hasła przy użyciu usługi Windows Hello dla firm i Azure AD | Dokumentacja firmy Microsoft"
-description: "Zawiera omówienie usługi Windows Hello dla firm i dodatkowe informacje na temat wdrażania usługi Windows Hello dla firm."
+title: Uwierzytelnianie tożsamości bez hasła przy użyciu usługi Windows Hello dla firm i Azure AD | Dokumentacja firmy Microsoft
+description: Zawiera omówienie usługi Windows Hello dla firm i dodatkowe informacje na temat wdrażania usługi Windows Hello dla firm.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
 ms.service: active-directory
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>Uwierzytelnianie tożsamości bez hasła przy użyciu usługi Windows Hello dla firm
 Bieżącej metody uwierzytelniania przy użyciu haseł wyłącznie nie są wystarczające, aby zapewnić bezpieczeństwo użytkowników. Użytkownicy ponownego wykorzystania i zapomnisz hasła. Hasła są breachable, phishable, podatne na rys i odgadnięcia. One również uzyskać trudne do zapamiętania i podatność na ataki, takie jak "[przekazać skrót](https://technet.microsoft.com/dn785092.aspx)".
