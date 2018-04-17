@@ -1,12 +1,12 @@
 ---
-title: "Planowanie stosu Azure zaporę stosu platformy Azure zintegrowanych systemów | Dokumentacja firmy Microsoft"
-description: "Zawiera opis zagadnień zapory Azure stosu dla połączonych Azure stosu Azure wdrożeniach z wieloma węzłami."
+title: Planowanie stosu Azure zaporę stosu platformy Azure zintegrowanych systemów | Dokumentacja firmy Microsoft
+description: Zawiera opis zagadnień zapory Azure stosu dla połączonych Azure stosu Azure wdrożeniach z wieloma węzłami.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -51,10 +51,10 @@ Zazwyczaj publiczne rutowalne adresy IP są określone dla publicznych pulę adr
 ![Przykład zapory krawędzi w usłudze Azure stosu](.\media\azure-stack-firewall\edge-firewall-scenario.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Enterprise intranet lub obwód zapory scenariusz sieci
-W sieci intranet lub obwód wdrożenia w przedsiębiorstwie stosu Azure jest wdrażany zaporę przydzielony do strefy multi lub Between zaporą brzegową, a Zapora wewnętrznej sieci firmowej. Ruch jest dystrybuowane między bezpiecznego, sieci obwodowej (lub strefa DMZ), a niezabezpieczone strefy, jak opisano poniżej:
+W sieci intranet lub obwód wdrożenia w przedsiębiorstwie stosu Azure jest wdrażany zaporę przydzielony do strefy multi lub Between zaporą brzegową, a Zapora wewnętrznej sieci firmowej. Ruch jest dystrybuowane między bezpiecznego, sieci obwodowej (lub sieć obwodowa), a niezabezpieczone strefy, jak opisano poniżej:
 
 - **Bezpieczne strefy**: jest to używający wewnętrzny lub firmowych routingu adresów IP sieci wewnętrznej. Bezpiecznej sieci można podzielić, mają wychodzący dostęp do Internetu za pośrednictwem NAT zapory i jest zazwyczaj dostępna z dowolnego miejsca w centrum danych za pośrednictwem sieci wewnętrznej. Wszystkie sieci Azure stosu powinien znajdować się w strefie bezpieczny, z wyjątkiem zewnętrznej sieci publicznych puli adresów VIP.
-- **Strefy granicznej**. Sieci obwodowej jest w przypadku, gdy zewnętrzne lub aplikacji, takich jak serwery sieci Web są zwykle wdrażane internetowy. Zazwyczaj jest monitorowany przez zaporę, aby uniknąć ataków DDoS i włamań (przejęcie), umożliwiając określony ruch przychodzący z Internetu. Tylko zewnętrzne sieci publicznych pulę adresów VIP stosu Azure powinien znajdować się w strefie DMZ.
+- **Strefy granicznej**. Sieci obwodowej jest w przypadku, gdy zewnętrzne lub aplikacji, takich jak serwery sieci Web są zwykle wdrażane internetowy. Zazwyczaj jest monitorowany przez zaporę, aby uniknąć ataków DDoS i włamań (przejęcie), umożliwiając określony ruch przychodzący z Internetu. Tylko zewnętrzne sieci publicznych pulę adresów VIP stosu Azure powinien znajdować się w sieci obwodowej.
 - **Niezabezpieczone strefy**. Jest to zewnętrznej sieci internet. On **nie jest** zalecane w celu wdrożenia stosu Azure w strefie niezabezpieczonych.
 
 ![Przykład sieci obwodowej w usłudze Azure stosu](.\media\azure-stack-firewall\perimeter-network-scenario.png)

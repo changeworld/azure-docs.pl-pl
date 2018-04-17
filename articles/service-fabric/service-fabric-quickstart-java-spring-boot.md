@@ -1,12 +1,12 @@
 ---
-title: "Wdrażanie aplikacji Spring Boot w usłudze Azure Service Fabric | Microsoft Docs"
-description: "W tym przewodniku Szybki start wdrożysz aplikację Spring Boot dla usługi Azure Service Fabric, korzystając z przykładowej aplikacji Spring Boot."
+title: Wdrażanie aplikacji Spring Boot w usłudze Azure Service Fabric | Microsoft Docs
+description: W tym przewodniku Szybki start wdrożysz aplikację Spring Boot dla usługi Azure Service Fabric, korzystając z przykładowej aplikacji Spring Boot.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
 manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: quickstart
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ab860b8525bcb77d3ab35d3f649532713c661b61
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e41a7754e6e170dda7818bceadab7858a9d9fa76
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>Szybki start: wdrażanie aplikacji Java Spring Boot na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych umożliwiająca wdrażanie mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -30,12 +30,11 @@ Ten przewodnik Szybki start przedstawia sposób wdrażania aplikacji Spring Boot
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
-> [!div class="checklist"]
-> * Wdrażanie aplikacji Spring Boot w usłudze Service Fabric
-> * Wdrażanie aplikacji w klastrze lokalnym 
-> * Wdrażanie aplikacji w klastrze na platformie Azure
-> * Skalowanie aplikacji w poziomie na wiele węzłów
-> * Przenoszenie usługi w tryb failover bez wywierania wpływu na jej dostępność
+* Wdrażanie aplikacji Spring Boot w usłudze Service Fabric
+* Wdrażanie aplikacji w klastrze lokalnym 
+* Wdrażanie aplikacji w klastrze na platformie Azure
+* Skalowanie aplikacji w poziomie na wiele węzłów
+* Przenoszenie usługi w tryb failover bez wywierania wpływu na jej dostępność
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik Szybki start:
@@ -45,8 +44,8 @@ Aby ukończyć ten przewodnik Szybki start:
 4. [Skonfiguruj środowisko Java](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
 
 ## <a name="download-the-sample"></a>Pobierz przykład
-W oknie polecenia uruchom następujące polecenie, aby sklonować przykładową aplikację Wprowadzenie środowiska Spring Boot na komputer lokalny.
-```
+W oknie terminala uruchom następujące polecenie, aby sklonować przykładową aplikację Wprowadzenie środowiska Spring Boot na komputer lokalny.
+```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
@@ -101,21 +100,40 @@ Teraz możesz uzyskiwać dostęp do aplikacji Spring Boot, która została wdro�
 ### <a name="set-up-your-azure-service-fabric-cluster"></a>Konfigurowanie klastra usługi Azure Service Fabric
 Aby wdrożyć aplikację w klastrze na platformie Azure, utwórz własny klaster.
 
-Klastry testowe to bezpłatne, działające przez ograniczony czas klastry usługi Service Fabric hostowane na platformie Azure. Są one obsługiwane przez zespół usługi Service Fabric. Każdy może wdrażać w nich aplikacje i poznawać szczegółowo platformę. Aby uzyskać dostęp do klastra testowego, [postępuj zgodnie z instrukcjami](http://aka.ms/tryservicefabric). 
+Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i obsługiwane przez zespół usługi Service Fabric. Klastry testowe pozwalają wdrażać aplikacje i uzyskiwać informacje o platformie. Klaster używa jednego certyfikatu z podpisem własnym na potrzeby zabezpieczeń między węzłami oraz między klientem a węzłem.
 
-W celu wykonywania operacji zarządzania w zabezpieczonym klastrze testowym można użyć narzędzia Service Fabric Explorer, interfejsu wiersza polecenia lub programu PowerShell. Aby korzystać z narzędzia Service Fabric Explorer, należy załadować plik PFX z witryny internetowej klastra testowego i zaimportować certyfikat do magazynu certyfikatów (w systemie Windows lub Mac) lub do przeglądarki (w systemie Ubuntu). Nie ma żadnego hasła dla certyfikatów z podpisem własnym z klastra testowego. 
-
-Aby wykonywać operacje zarządzania za pomocą programu PowerShell lub interfejsu wiersza polecenia, potrzebny będzie plik PFX (w przypadku programu PowerShell) lub PEM (w przypadku interfejsu wiersza polecenia). Aby przekonwertować plik PFX na plik PEM, uruchom następujące polecenie:  
-
-```bash
-openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
-```
-
-Aby uzyskać informacje na temat tworzenia własnego klastra, zobacz [Tworzenie klastra usługi Service Fabric na platformie Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Zaloguj się i dołącz do [klastra systemu Linux](http://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Kliknij link **ReadMe**, aby znaleźć hasło certyfikatu i instrukcje dotyczące konfigurowania różnych środowisk do użycia certyfikatu. Pozostaw otwarte strony **Powitalna** i **ReadMe**, ponieważ będziesz korzystać z niektórych instrukcji w poniższej procedurze. 
 
 > [!Note]
+> Liczba klastrów testowych dostępnych na godzinę jest ograniczona. Jeśli wystąpi błąd podczas próby tworzenia konta umożliwiającego korzystanie z klastra testowego, możesz poczekać, a następnie spróbować ponownie. Możesz też wykonać kroki opisane w artykule [Create a Service Fabric cluster on Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md) (Tworzenie klastra usługi Service Fabric na platformie Azure), aby utworzyć klaster usługi w swojej subskrypcji. 
+>
 > Usługa Spring Boot została skonfigurowana do nasłuchiwania ruchu przychodzącego na porcie 8080. Upewnij się, że port w klastrze został otwarty. Jeśli używasz klastra testowego, ten port jest otwarty.
 >
+
+Usługa Service Fabric udostępnia kilka narzędzi, których możesz używać do zarządzania klastrem i jego aplikacjami:
+
+- Service Fabric Explorer — narzędzie oparte na przeglądarce.
+- Interfejs wiersza polecenia (CLI) usługi Service Fabric, który korzysta z interfejsu wiersza polecenia platformy Azure 2.0.
+- Polecenia programu PowerShell. 
+
+W tym przewodniku Szybki start jest używany interfejs wiersza polecenia usługi Service Fabric i narzędzie Service Fabric Explorer. 
+
+Aby korzystać z interfejsu wiersza polecenia, musisz utworzyć plik PEM na podstawie pobranego pliku PFX. Aby przekonwertować plik, użyj następującego polecenia. (W przypadku klastrów testowych możesz skopiować polecenie specyficzne dla Twojego pliku PFX z instrukcji na stronie **ReadMe**).
+
+    ```bash
+    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
+    ``` 
+
+Aby użyć narzędzia Service Fabric Explorer, musisz zaimportować plik PFX certyfikatu pobrany z witryny internetowej klastra testowego do swojego magazynu certyfikatów (w systemie Windows lub Mac) lub do samej przeglądarki (w systemie Ubuntu). Będzie potrzebne hasło klucza prywatnego PFX, które możesz pobrać ze strony **ReadMe**.
+
+Aby zaimportować certyfikat w swoim systemie, użyj dowolnej, preferowanej przez siebie metody. Na przykład:
+
+- W systemie Windows: kliknij dwukrotnie plik PFX i postępuj zgodnie z monitami, aby zainstalować certyfikat w magazynie osobistym `Certificates - Current User\Personal\Certificates`. Alternatywnie możesz użyć polecenia programu PowerShell podanego w instrukcjach na stronie **ReadMe**.
+- Na komputerach Mac: kliknij dwukrotnie plik PFX, a następnie postępuj zgodnie z monitami, aby zainstalować certyfikat w pęku kluczy.
+- W systemie Ubuntu: domyślną przeglądarką w systemie Ubuntu 16.04 jest Mozilla Firefox. Aby zaimportować certyfikat w przeglądarce Firefox, kliknij przycisk menu w prawym górnym rogu przeglądarki, a następnie kliknij pozycję **Opcje**. Na stronie **Preferencje** użyj pola wyszukiwania, aby wyszukać ciąg „certyfikaty”. Kliknij przycisk **Wyświetl certyfikaty**, wybierz kartę **Twoje certyfikaty**, kliknij pozycję **Importuj** i postępuj zgodnie z monitami, aby zaimportować certyfikat.
+ 
+   ![Instalowanie certyfikatu w programie Firefox](./media/service-fabric-quickstart-java-spring-boot/install-cert-firefox.png) 
+
 
 ### <a name="deploy-the-application-using-cli"></a>Wdrażanie aplikacji przy użyciu interfejsu wiersza polecenia
 Kiedy aplikacja i klaster są gotowe, możesz wdrożyć aplikację w klastrze bezpośrednio z wiersza polecenia.
@@ -138,14 +156,14 @@ Kiedy aplikacja i klaster są gotowe, możesz wdrożyć aplikację w klastrze be
     ./install.sh
     ```
 
-4. Uruchom przeglądarkę internetową i uzyskaj dostęp do aplikacji, przechodząc do adresu **http://\<ConnectionIPOrUrl>:8080**. 
+4. Uruchom przeglądarkę internetową i uzyskaj dostęp do aplikacji, przechodząc do adresu **http://\<ConnectionIPOrURL>:8080**. 
 
     ![Fronton aplikacji — lokalny](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
     
-Teraz możesz uzyskiwać dostęp do aplikacji Spring Boot, która została wdrożona w klastrze usługi Service Fabric.  
+Teraz możesz uzyskać dostęp do aplikacji Spring Boot uruchomionej w klastrze usługi Service Fabric na platformie Azure.  
     
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalowanie aplikacji i usług w klastrze
-Usługi można skalować na klaster w celu dostosowania ich do zmiany obciążenia. Skalowanie usługi odbywa się przez zmienianie liczby wystąpień uruchomionych w klastrze. Istnieje wiele sposobów skalowania usług. Można użyć skryptów lub poleceń interfejsu wiersza polecenia usługi Service Fabric (sfctl). W tym przykładzie używane jest narzędzie Service Fabric Explorer.
+Usługi można skalować na klaster w celu dostosowania ich do zmiany obciążenia. Skalowanie usługi odbywa się przez zmienianie liczby wystąpień uruchomionych w klastrze. Istnieje wiele sposobów skalowania usług. Na przykład można użyć skryptów lub poleceń interfejsu wiersza polecenia usługi Service Fabric (sfctl). W poniższych krokach będzie używane narzędzie Service Fabric Explorer.
 
 Narzędzie Service Fabric Explorer działa we wszystkich klastrach usługi Service Fabric i można uzyskać do niego dostęp z przeglądarki, przechodząc do portu HTTP zarządzania klastrami (19080), na przykład `http://localhost:19080`.
 
@@ -176,7 +194,7 @@ Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
 
     Usługa ma trzy wystąpienia, a widok drzewa pokazuje węzły, na których wystąpienia są uruchomione.
 
-Dzięki temu prostemu zadaniu zarządzania zwiększona została liczba zasobów dostępnych dla naszej usługi Spring w celu przetworzenia obciążenia użytkownika. Ważne jest, aby zrozumieć, że nie musisz mieć wielu wystąpień usługi, aby działała ona niezawodnie. W przypadku niepowodzenia usługi usługa Service Fabric zapewnia, że nowe wystąpienie usługi jest uruchamiane w klastrze.
+Za pomocą tego prostego zadania zarządzania zostały podwojone zasoby dostępne dla usługi frontonu na potrzeby przetwarzania obciążenia użytkownika. Pamiętaj, że nie musisz mieć wielu wystąpień usługi, aby działała ona niezawodnie. W przypadku awarii usługa Service Fabric gwarantuje uruchomienie nowego wystąpienie usługi w klastrze.
 
 ## <a name="fail-over-services-in-a-cluster"></a>Przenoszenie usług do trybu failover w klastrze 
 Aby przedstawić przenoszenie usługi w tryb failover, ponowne uruchomienie węzła jest symulowane przy użyciu narzędzia Service Fabric Explorer. Upewnij się, że jest uruchomione tylko jedno wystąpienie usługi. 
@@ -192,13 +210,13 @@ Aby przedstawić przenoszenie usługi w tryb failover, ponowne uruchomienie węz
 ## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
-> [!div class="checklist"]
-> * Wdrażanie aplikacji Spring Boot w usłudze Service Fabric
-> * Wdrażanie aplikacji w klastrze lokalnym 
-> * Wdrażanie aplikacji w klastrze na platformie Azure
-> * Skalowanie aplikacji w poziomie na wiele węzłów
-> * Przenoszenie usługi w tryb failover bez wywierania wpływu na jej dostępność
+* Wdrażanie aplikacji Spring Boot w usłudze Service Fabric
+* Wdrażanie aplikacji w klastrze lokalnym 
+* Wdrażanie aplikacji w klastrze na platformie Azure
+* Skalowanie aplikacji w poziomie na wiele węzłów
+* Przenoszenie usługi w tryb failover bez wywierania wpływu na jej dostępność
 
-* Więcej informacji na temat [tworzenia mikrousług języka Java przy użyciu modeli programowania usługi Service Fabric](service-fabric-quickstart-java-reliable-services.md)
-* Dowiedz się więcej o [konfigurowaniu ciągłej integracji i ciągłego wdrażania za pomocą usługi Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
-* Zapoznaj się z innymi [przykładami w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+Aby dowiedzieć się więcej o pracy z aplikacjami Java w usłudze Service Fabric, przejdź do samouczka dotyczącego aplikacji Java.
+
+> [!div class="nextstepaction"]
+> [Wdrażanie aplikacji Java](./service-fabric-tutorial-create-java-app.md)

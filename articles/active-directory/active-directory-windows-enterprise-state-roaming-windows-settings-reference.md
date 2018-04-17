@@ -1,9 +1,9 @@
 ---
-title: "Windows 10 informacje dotyczące ustawień roamingu | Dokumentacja firmy Microsoft"
-description: "Pełną listę ustawień, które będą przekazywane lub kopii zapasowej w systemie Windows 10."
+title: Windows 10 informacje dotyczące ustawień roamingu | Dokumentacja firmy Microsoft
+description: Pełną listę ustawień, które będą przekazywane lub kopii zapasowej w systemie Windows 10.
 services: active-directory
-keywords: "roaming stanu przedsiębiorstwa chmury systemu windows"
-documentationcenter: 
+keywords: roaming stanu przedsiębiorstwa chmury systemu windows
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -49,7 +49,7 @@ Następujące grupy ustawienia są dostępne dla użytkowników końcowych włą
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-individual-sync-settings.png)
 
-Synchronizowanie grupy (Ulubione, odczytywanie listy) ustawienie przeglądarki Edge może włączona lub wyłączona przez użytkowników końcowych za pośrednictwem przeglądarki Edge opcji menu Ustawienia.
+Synchronizowanie grupy (Ulubione, odczytywanie listy) ustawienie przeglądarki Microsoft Edge może włączona lub wyłączona przez użytkowników końcowych za pośrednictwem przeglądarki Microsoft Edge opcji menu Ustawienia.
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
 
@@ -86,21 +86,21 @@ Ustawienia, które nie są przekazywane lub synchronizacji nie będą należeć 
 | **Personalizacja pulpitu**: ustawienia paska zadań (pozycja, automatyczne ukrywanie itp.) |Synchronizacji |X |Motyw |
 | **Personalizacja pulpitu**: start układu ekranu |X |kopia zapasowa | |
 | **Urządzenia**: nawiązaniu połączenia z drukarkami udostępnionymi |X |X |inne |
-| **Przeglądarka Edge**: odczytywanie listy |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: Ulubione |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: top witryn <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: wpisane adresy URL <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: ustawienia paska ulubionych <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: Pokaż przycisk Strona główna <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: Blokuj wyskakujące okienka <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: pytaj mnie, co należy zrobić z każdego pobrania <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: oferują na zapisywanie haseł <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: wysyłanie żądania nie Śledź żądań <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: wpisy formularza <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: Pokaż sugestie dotyczące wyszukiwania i lokacji, podczas pisania <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: preferencji pliki cookie <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: let witryn zapisać chronionych nośnika licencji w urządzeniu <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
-| **Przeglądarka Edge**: czytnik ustawienie <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: odczytywanie listy |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: Ulubione |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: top witryn <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: wpisane adresy URL <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: ustawienia paska ulubionych <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: Pokaż przycisk Strona główna <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: Blokuj wyskakujące okienka <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: pytaj mnie, co należy zrobić z każdego pobrania <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: oferują na zapisywanie haseł <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: wysyłanie żądania nie Śledź żądań <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: wpisy formularza <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: Pokaż sugestie dotyczące wyszukiwania i lokacji, podczas pisania <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: preferencji pliki cookie <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: let witryn zapisać chronionych nośnika licencji w urządzeniu <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
+| **Przeglądarka Microsoft Edge**: czytnik ustawienie <sup> [[1]](#footnote-1)</sup> |Synchronizacji |Synchronizacji |wewnętrzny |
 | **Duży kontrast**: Włączanie/wyłączanie |Synchronizacji |X |łatwość dostępu |
 | **Duży kontrast**: ustawienia motywu |Synchronizacji |X |łatwość dostępu |
 | **Program Internet Explorer**: Otwórz karty (adres URL i tytuł) |Synchronizacji |Synchronizacji |Internet Explorer |

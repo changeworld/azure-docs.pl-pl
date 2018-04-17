@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure | Microsoft Docs"
-description: "Dowiedz się, jak uruchomić aplikację napisaną w języku Python na platformie Azure z użyciem połączenia z bazą danych PostgreSQL."
+title: Tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak uruchomić aplikację napisaną w języku Python na platformie Azure z użyciem połączenia z bazą danych PostgreSQL.
 services: app-service\web
 documentationcenter: python
 author: berndverst
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: de20dae10ae6b43adcbc5040a8a71ba5650bafec
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9694dcfec7b3297e925bb45bee5e74b69609063d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-python-and-postgresql-web-app-in-azure"></a>Tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure
+# <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. W przypadku wdrażania w usłudze App Service w systemie _Linux_ zobacz [Tworzenie aplikacji internetowej platformy Docker przy użyciu języka Python i bazy danych PostgreSQL na platformie Azure](./containers/tutorial-docker-python-postgresql-app.md).
@@ -345,7 +345,7 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-W przeglądarce przejdź do adresu http://localhost: 5000, aby przejrzeć zmiany. Utwórz rejestrację testową.
+W przeglądarce przejdź do adresu http://localhost:5000, aby przejrzeć zmiany. Utwórz rejestrację testową.
 
 ![Działająca lokalnie aplikacja platformy Python Flask](./media/app-service-web-tutorial-python-postgresql/local-app-v2.png)
 

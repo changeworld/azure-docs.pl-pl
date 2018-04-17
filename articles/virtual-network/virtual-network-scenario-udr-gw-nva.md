@@ -1,6 +1,6 @@
 ---
-title: "Połączenie hybrydowe z aplikacji warstwy 2 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wdrożyć urządzeń wirtualnych i przez, aby utworzyć środowisko wielowarstwową aplikację na platformie Azure"
+title: Połączenie hybrydowe z aplikacji warstwy 2 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć urządzeń wirtualnych i przez, aby utworzyć środowisko wielowarstwową aplikację na platformie Azure
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -29,14 +29,14 @@ Typowy scenariusz większych klientów platformy Azure jest konieczność zapewn
 * Całego ruchu kierowanego do serwera aplikacji musi przechodzić przez urządzenie wirtualne zapory. To urządzenie wirtualne będą używane do dostępu do serwera zaplecza mające na celu i odbierane z sieci lokalnej za pośrednictwem bramy sieci VPN dostępu.
 * Administratorzy muszą mieć możliwość zarządzania urządzenie wirtualne zapory z ich komputerami lokalnymi, przy użyciu innej zapory używane wyłącznie do celów zarządzania urządzenie wirtualne.
 
-Jest to standardowe scenariusz DMZ strefą DMZ i chronionej sieci. Taki scenariusz może być skonstruowany w Azure za pomocą grup NSG, urządzenie wirtualne zapory lub obie te grupy. W poniższej tabeli przedstawiono niektóre z zalet i wad między grupy NSG oraz zapory urządzenia wirtualnego.
+Jest to standardowy scenariusz sieci obwodowej i chronionej sieci. Taki scenariusz może być skonstruowany w Azure za pomocą grup NSG, urządzenie wirtualne zapory lub obie te grupy. W poniższej tabeli przedstawiono niektóre z zalet i wad między grupy NSG oraz zapory urządzenia wirtualnego.
 
 |  | Specjaliści | Wady |
 | --- | --- | --- |
 | GRUPA NSG |Bez kosztów. <br/>Zintegrowane usługi Azure RBAC. <br/>Reguły można tworzyć w szablonów ARM. |Złożoność może się różnić w większych środowiskach. |
 | Zapora |Pełną kontrolę nad płaszczyzna danych. <br/>Centralne zarządzanie za pomocą konsoli zapory. |Koszt urządzenia zapory. <br/>Nie jest zintegrowany z Azure RBAC. |
 
-Rozwiązanie poniżej używa urządzenie wirtualne zapory do implementacji scenariusza sieci DMZ/chronione.
+Rozwiązanie poniżej używa urządzenie wirtualne zapory do implementacji scenariusza sieci obwodowej/chronione.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 Możesz wdrożyć środowiska przedstawionych powyżej na platformie Azure przy użyciu różnych funkcji dostępnych już dziś, wykonując następujące czynności.

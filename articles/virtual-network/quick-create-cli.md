@@ -1,47 +1,48 @@
 ---
-title: Tworzenie sieci wirtualnej platformy Azure - Azure CLI | Dokumentacja firmy Microsoft
-description: Dowiedz się szybko utworzyć sieć wirtualną przy użyciu wiersza polecenia platformy Azure. Sieć wirtualna umożliwia zasobów platformy Azure, takich jak maszyny wirtualne do komunikowania się przez użytkowników ze sobą i z Internetu.
+title: Tworzenie sieci wirtualnej — Szybki start — Interfejs wiersza polecenia platformy Azure | Microsoft Docs
+description: W tym przewodniku Szybki start dowiesz się, jak utworzyć sieć wirtualną przy użyciu witryny Azure Portal. Dzięki sieci wirtualnej zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie ze sobą i z Internetem.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: d07f06a1a70c859544c3b1ceb6146dc11e4d10aa
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: mvc
+ms.openlocfilehash: bb45b2b4ecd89187e94066bc81782174738fe3a9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="create-a-virtual-network-using-the-azure-cli"></a>Utwórz sieć wirtualną przy użyciu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Szybki start: tworzenie sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Sieci wirtualnej umożliwia zasobów platformy Azure, takich jak maszyn wirtualnych (VM) do prywatnie komunikowania się ze sobą i z Internetu. W tym artykule należy Dowiedz się, jak utworzyć sieć wirtualną. Po utworzeniu sieci wirtualnej, możesz wdrożyć dwóch maszyn wirtualnych w sieci wirtualnej. Następnie podłącz do jednej maszyny Wirtualnej z Internetu, a komunikacji przez użytkowników z innych maszyn wirtualnych.
+Dzięki sieci wirtualnej zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie ze sobą i z Internetem. W tym przewodniku Szybki start dowiesz się, jak utworzyć sieć wirtualną. Po utworzeniu sieci wirtualnej, wdrożysz w niej dwie maszyny wirtualne. Następnie nawiążesz połączenie z jedną z maszyn wirtualnych z Internetu, a następnie rozpoczniesz prywatną komunikację z drugą maszyną wirtualną.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli do zainstalowania i używania interfejsu wiersza polecenia lokalnie, w tym artykule, wymaga używasz interfejsu wiersza polecenia Azure w wersji 2.0.28 lub nowszej. Aby znaleźć zainstalowanej wersji, uruchom `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Przed utworzeniem sieci wirtualnej, należy utworzyć grupę zasobów, aby zawierała sieci wirtualnej. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Przed utworzeniem sieci wirtualnej musisz utworzyć grupę zasobów, która będzie zawierała tę sieć wirtualną. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład tworzy domyślną sieci wirtualnej o nazwie *myVirtualNetwork* z jednej podsieci o nazwie *domyślne*:
+Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład obejmuje tworzenie domyślnej sieci wirtualnej o nazwie *myVirtualNetwork* z jedną podsiecią o nazwie *default*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -52,11 +53,11 @@ az network vnet create \
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
-Utwórz dwie maszyny wirtualne w sieci wirtualnej:
+W sieci wirtualnej utwórz dwie maszyny wirtualne:
 
-### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny Wirtualnej
+### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Jeśli kluczy SSH już nie istnieją w domyślnej lokalizacji klucza, polecenie tworzy je. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`. `--no-wait` Opcja tworzy maszynę Wirtualną w tle, dzięki czemu można kontynuować do następnego kroku. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVm1*:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`. Opcja `--no-wait` tworzy maszynę wirtualną w tle, dzięki czemu można przejść do następnego kroku. W poniższym przykładzie jest tworzona maszyna wirtualna o nazwie *myVm1*:
 
 ```azurecli-interactive 
 az vm create \
@@ -67,7 +68,7 @@ az vm create \
   --no-wait
 ```
 
-### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny Wirtualnej
+### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
 
 ```azurecli-interactive 
 az vm create \
@@ -77,7 +78,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Maszyna wirtualna ma kilka minut na utworzenie. Po utworzeniu maszyny Wirtualnej Azure CLI zwraca dane wyjściowe podobne do poniższego przykładu: 
+W ciągu kilku minut zostanie utworzona maszyna wirtualna. Po utworzeniu maszyny wirtualnej interfejs wiersza polecenia platformy Azure zwraca dane wyjściowe podobne do tych z poniższego przykładu: 
 
 ```azurecli 
 {
@@ -92,41 +93,38 @@ Maszyna wirtualna ma kilka minut na utworzenie. Po utworzeniu maszyny Wirtualnej
 }
 ```
 
-Zwróć uwagę na **publicznego adresu IP**. Ten adres jest używany do nawiązania połączenia z maszyną Wirtualną z Internetu w następnym kroku.
+Zanotuj wartość adresu **publicIpAddress**. Ten adres jest używany do nawiązania połączenia z maszyną wirtualną z Internetu w następnym kroku.
 
-## <a name="connect-to-a-vm-from-the-internet"></a>Połączenie z maszyną wirtualną z Internetu
+## <a name="connect-to-a-vm-from-the-internet"></a>Nawiązywanie połączenia z maszyną wirtualną z Internetu
 
-Zastąp `<publicIpAddress>` publiczny adres IP Twojego *myVm2* maszyny Wirtualnej w poleceniu następujące, a następnie wprowadź następujące polecenie:
+W poniższym poleceniu zastąp ciąg `<publicIpAddress>` publicznym adresem IP Twojej maszyny wirtualnej *myVm2*, a następnie wprowadź to polecenie:
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-## <a name="communicate-privately-between-vms"></a>Prywatnie komunikacji między maszynami wirtualnymi
+## <a name="communicate-between-vms"></a>Nawiązywanie komunikacji między maszynami wirtualnymi
 
-Aby potwierdzić prywatnej komunikacji między *myVm2* i *myVm1* maszyn wirtualnych, wprowadź następujące polecenie:
+Aby potwierdzić nawiązanie prywatnej komunikacji między maszynami wirtualnymi *myVm2* i *myVm1*, wprowadź następujące polecenie:
 
 ```bash
 ping myVm1 -c 4
 ```
 
-Otrzymasz cztery odpowiedzi z *10.0.0.4*.
+Otrzymasz cztery odpowiedzi z adresu *10.0.0.4*.
 
-Zakończyć sesję SSH z *myVm2* maszyny Wirtualnej.
+Zakończ sesję SSH z maszyną wirtualną *myVm2*.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, można użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) można usunąć grupy zasobów i wszystkie zasoby zawiera:
+Gdy grupa zasobów i wszystkie zawarte w niej zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete).
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule tworzone są domyślne sieci wirtualnej i dwie maszyny wirtualne. Połączone z jedną maszynę Wirtualną z Internetu i prywatnie przekazywane między maszyny Wirtualnej i inną maszynę Wirtualną. Aby dowiedzieć się więcej na temat ustawień sieci wirtualnej, zobacz [Zarządzanie sieci wirtualnej](manage-virtual-network.md). 
+W tym przewodniku Szybki start utworzono domyślną sieć wirtualną i dwie maszyny wirtualne. Z Internetu nawiązano połączenie z jedną z maszyn wirtualnych, a następnie rozpoczęto prywatną komunikację między jedną i drugą maszyną wirtualną. Aby dowiedzieć się więcej na temat ustawień sieci wirtualnych, zobacz [Manage a virtual network](manage-virtual-network.md) (Zarządzanie siecią wirtualną). 
 
-Domyślnie program Azure umożliwia nieograniczony prywatnej komunikacji między maszynami wirtualnymi, lecz tylko umożliwia sesje SSH przychodzące z Internetu maszyn wirtualnych systemu Linux. Aby dowiedzieć się ograniczyć różnego rodzaju komunikacji sieciowej do i z maszyn wirtualnych, przejdź do następnego samouczka.
-
-> [!div class="nextstepaction"]
-> [Filtrowanie ruchu sieciowego](tutorial-filter-network-traffic-cli.md)
+Domyślnie platforma Azure zezwala na nieograniczoną komunikację prywatną między maszynami wirtualnymi, ale w przypadku funkcji podłączania pulpitu zdalnego zezwala tylko na ruch przychodzący z Internetu do maszyn wirtualnych z systemem Windows. Aby dowiedzieć się, jak ograniczać różnego rodzaju komunikację sieciową lub zezwalać na nią do i z maszyn wirtualnych, zobacz [Filtrowanie ruchu sieciowego](tutorial-filter-network-traffic.md).

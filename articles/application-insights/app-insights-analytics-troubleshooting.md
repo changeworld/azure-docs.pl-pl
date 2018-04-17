@@ -1,8 +1,8 @@
 ---
-title: "Rozwiązywanie problemów z analizy w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Problemy z analizy usługi Application Insights? Zacznij tutaj. "
+title: Rozwiązywanie problemów z analizy w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: 'Problemy z analizy usługi Application Insights? Zacznij tutaj. '
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9bbd5859-3584-4d80-9b6d-d5910fa48baa
@@ -24,7 +24,7 @@ Problemy z [Application Insights Analytics](app-insights-analytics.md)? Zacznij 
 
 ## <a name="limits"></a>Limity
 * Obecnie wyniki zapytania są ograniczone nieco dłużej niż przez tydzień w ciągu ostatnich danych.
-* Firma Microsoft testuje w przeglądarkach: najnowsze wersje programu Chrome, Edge i przeglądarki Internet Explorer.
+* Firma Microsoft testuje w przeglądarkach: najnowsze wersje programu Chrome, Microsoft Edge i przeglądarki Internet Explorer.
 
 ## <a name="known-incompatible-browser-extensions"></a>Rozszerzenia znanych niezgodne przeglądarki
 * Ghostery
@@ -54,7 +54,7 @@ Wystąpił błąd (podczas uwierzytelniania lub podczas generowania tokenu dost�
 2. Czy do otwarcia portalu użyto ulubionych, zakładki lub zapisanego linku? Czy zalogowano się przy użyciu innych poświadczeń niż użyte podczas zapisywania linku?
 3. Spróbuj użyć okna przeglądarki w trybie prywatnym/incognito (po zamknięciu wszystkich tych okien). Musisz podać swoje poświadczenia. 
 4. Otwiera inne okno przeglądarki (zwykłej) i przejdź do [Azure](https://portal.azure.com). Wyloguj się. Następnie otwórz hiperlink i zaloguj się z prawidłowymi poświadczeniami.
-5. Użytkownicy przeglądarek Edge i Internet Explorer mogą również otrzymać ten błąd, gdy ustawienia zaufanej strefy nie są obsługiwane.
+5. Użytkownicy przeglądarek Microsoft Edge i Internet Explorer mogą również otrzymać ten błąd, gdy ustawienia zaufanej strefy nie są obsługiwane.
    
     Sprawdź zarówno [portal analityka](https://analytics.applicationinsights.io) i [portalu usługi Azure Active Directory](https://portal.azure.com) znajdują się w tej samej strefie zabezpieczeń:
    

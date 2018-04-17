@@ -2,40 +2,38 @@
 
 # Omówienie
 ## [Co to jest Stream Analytics?](stream-analytics-introduction.md)
-## [Porównanie usługi Storm i Stream Analytics](stream-analytics-comparison-storm.md)
 
-# Rozpoczęcie pracy
-## [Przetwarzanie danych strumienia IoT](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
-## [Wykrywanie oszustw w czasie rzeczywistym](stream-analytics-real-time-fraud-detection.md)
-## [Analizowanie danych przy użyciu usługi Power BI](stream-analytics-power-bi-dashboard.md)
+# Przewodniki Szybki start
+## [Tworzenie zadania — Azure Portal](stream-analytics-quick-create-portal.md)
+## [Tworzenie zadania — PowerShell](stream-analytics-quick-create-powershell.md)
+
+# Samouczki
+## [1 — Tworzenie zadania i zarządzanie nim](stream-analytics-manage-job.md)
+## [2 — Uruchamianie funkcji usługi Azure Functions](stream-analytics-with-azure-functions.md)
+## [3 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku JavaScript](stream-analytics-javascript-user-defined-functions.md)
 
 # Przykłady
 ## [Przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
 
 # Pojęcia
-## Typy wejść zadania
+## [Typy wejść zadania](stream-analytics-add-inputs.md)
 ### [Wejścia danych przesyłanych strumieniowo](stream-analytics-define-inputs.md)
 ### [Wejścia danych referencyjnych](stream-analytics-use-reference-data.md)
 ## [Typy wyjść zadania](stream-analytics-define-outputs.md)
+### [Wyjście do usługi Cosmos DB](stream-analytics-documentdb-output.md)
 ## [Funkcje okien](stream-analytics-window-functions.md)
 ## [Poziom zgodności](stream-analytics-compatibility-level.md)
 ## [Typowe wzorce zapytań](stream-analytics-stream-analytics-query-patterns.md)
 ## [Zagadnienia do rozważenia dotyczące kolejności zdarzeń](stream-analytics-out-of-order-and-late-events.md)
 
-
 # Podręczniki z instrukcjami
-
-## Tworzenie zadań
-### [Zapytania testowe i przykładowe dane wejściowe](stream-analytics-sample-data-input.md)
-### [Zapytania testowe](stream-analytics-test-query.md)
-### [Uruchamianie funkcji zdefiniowanej przez użytkownika w języku JavaScript](stream-analytics-javascript-user-defined-functions.md)
-### [Przesyłanie danych wyjściowych do usługi Data Lake Store](stream-analytics-data-lake-output.md)
-### [Wyjście do usługi Cosmos DB](stream-analytics-documentdb-output.md)
-### [Konfigurowanie alertów](stream-analytics-set-up-alerts.md)
 
 ## Zarządzanie
 ### [Aktualizowanie zadania](stream-analytics-job-reliability.md)
 ### [Aktualizowanie poświadczeń](stream-analytics-login-credentials-inputs-outputs.md)
+### [Konfigurowanie alertów](stream-analytics-set-up-alerts.md)
+### [Testowanie zadania](stream-analytics-test-query.md)
+### [Wyświetlanie wyników na pulpicie nawigacyjnym](stream-analytics-power-bi-dashboard.md)
 
 ## Tworzenie rozwiązań
 ### [Analiza tonacji w usłudze Twitter](stream-analytics-twitter-sentiment-analysis-trends.md)
@@ -44,11 +42,11 @@
 ### [Analizowanie danych z czujników punktu poboru opłat](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [Uruchamianie agregacji zdefiniowanej przez użytkownika w języku JavaScript](stream-analytics-javascript-user-defined-aggregates.md)
 ### [Transakcje o wysokiej częstotliwości](stream-analytics-high-frequency-trading.md)
-### [Uruchamianie funkcji usługi Azure Functions](stream-analytics-with-azure-functions.md)
+### [Przetwarzanie danych strumienia IoT](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
 
 ## Monitorowanie
 
-### [Monitorowanie zadań — portal](stream-analytics-monitoring.md)
+### [Monitorowanie zadań — Azure Portal](stream-analytics-monitoring.md)
 ### [Monitorowanie zadań — PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Monitorowanie zadań — Azure .Net SDK](stream-analytics-monitor-jobs.md)
 
@@ -82,7 +80,6 @@
 ### [Wykrywanie anomalii](stream-analytics-machine-learning-anomaly-detection.md)
 ### [Używanie interfejsów API REST](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 
-
 # Dokumentacja
 ## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [Język zapytań](https://msdn.microsoft.com/library/azure/dn834998)
@@ -102,7 +99,8 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Wideo](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 ## [Analizy przypadków klientów](https://azure.microsoft.com/case-studies/?service=stream-analytics)
-## [Przetwarzanie zdarzeń w czasie rzeczywistym](stream-analytics-real-time-event-processing-reference-architecture.md)
+## [Oficjalny dokument — przetwarzanie zdarzeń w czasie rzeczywistym](stream-analytics-real-time-event-processing-reference-architecture.md)
+## [Porównanie usługi Storm i Stream Analytics](stream-analytics-comparison-storm.md)
 
 
 

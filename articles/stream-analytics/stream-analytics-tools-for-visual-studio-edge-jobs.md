@@ -104,7 +104,7 @@ Aby przetestować zapytanie lokalnie, należy przekazać przykładowe dane. Przy
 
 2. Aby przesłać zadanie na platformie Azure, przejdź do edytora zapytań > Wybierz **przesyłania Azure**.  
 
-3. Zostanie otwarte okno podręczne, w którym można zaktualizować istniejące zadanie Edge lub Utwórz nową. Podczas aktualizacji istniejącego zadania spowoduje zastąpienie wszystkich konfiguracji zadania, w tym scenariuszu, będzie publikować nowe zadanie. Wybierz **utworzyć nowego zadania usługi analiza strumienia Azure** > Wprowadź nazwę dla zadania coś, takich jak **MyASAEdgeJob** > Wybierz wymagane **subskrypcji**, **Grupy zasobów**, i **lokalizacji** > Wybierz **przesłać**.
+3. Zostanie otwarte okno podręczne, w którym można zaktualizować istniejące zadanie Microsoft Edge lub Utwórz nową. Podczas aktualizacji istniejącego zadania spowoduje zastąpienie wszystkich konfiguracji zadania, w tym scenariuszu, będzie publikować nowe zadanie. Wybierz **utworzyć nowego zadania usługi analiza strumienia Azure** > Wprowadź nazwę dla zadania coś, takich jak **MyASAEdgeJob** > Wybierz wymagane **subskrypcji**, **Grupy zasobów**, i **lokalizacji** > Wybierz **przesłać**.
 
    ![Przekaż do platformy Azure](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-to-azure.png)
  

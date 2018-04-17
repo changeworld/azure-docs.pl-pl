@@ -27,7 +27,7 @@ Rejestracji w usłudze udostępniania urządzenia pozwala na urządzeniu można 
 > [!NOTE] 
 > Należy pamiętać o zasady ponawiania urządzeń, które odwołać dostęp. Na przykład urządzenie ma zasady ponawiania nieskończone stale może podjąć próbę zarejestrować w usłudze udostępniania. Taka sytuacja wykorzystuje zasoby usługi i prawdopodobnie wpływa na wydajność.
 
-## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Czarna lista urządzeń za pomocą wpisu rejestracji poszczególnych
+## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>Lista zablokowanych urządzeń za pomocą wpisu rejestracji poszczególnych
 
 Poszczególne rejestracji zastosować do jednego urządzenia i może używać certyfikatów X.509 lub tokeny sygnatury dostępu Współdzielonego (w module TPM rzeczywistymi lub wirtualnymi) jako mechanizm zaświadczania. (Urządzeń używających tokeny sygnatury dostępu Współdzielonego, zgodnie z ich mechanizm zaświadczania można udostępnić tylko za pośrednictwem poszczególnych rejestracji). Aby wyeliminować urządzenie ma poszczególnych rejestracji, możesz wyłączyć lub usunąć jego wpis rejestracji. 
 
@@ -85,7 +85,7 @@ Po zakończeniu procedury powinna zostać wyświetlona wpis usunięte z listy gr
 > [!NOTE]
 > Jeśli usuniesz grupę rejestracji certyfikatu, urządzeń, które mają certyfikat w łańcuchu certyfikatów, ich może nadal mieć możliwość rejestrowania, jeśli grupa włączone rejestracji certyfikatu głównego lub innego certyfikatu pośredniego się wyżej w certyfikacie istnieje łańcuch.
 
-## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Czarna lista określonych urządzeń w grupie rejestracji
+## <a name="blacklist-specific-devices-in-an-enrollment-group"></a>Lista zablokowanych urządzeń w grupie rejestracji
 
 Urządzenia, które implementuje mechanizm zaświadczania X.509 używają łańcucha certyfikatów urządzenia i klucz prywatny do uwierzytelniania. Gdy urządzenie łączy i służy do uwierzytelniania przy użyciu usługi inicjowania obsługi urządzeń, usługi najpierw wyszukiwana poszczególnych rejestracji odpowiadający poświadczenia urządzenia. Usługa wyszukuje rejestracji grup w celu określenia, czy urządzenie można udostępnić. Jeśli usługa znajdzie wyłączone rejestracji poszczególne urządzenia, uniemożliwia urządzenia połączenie. Usługa zapobiega połączenia, nawet jeśli istnieje grupa rejestracji włączone dla pośredniego lub głównego urzędu certyfikacji w łańcuchu certyfikatów urządzenia. 
 

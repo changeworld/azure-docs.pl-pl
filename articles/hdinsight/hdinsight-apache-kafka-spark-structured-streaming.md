@@ -1,161 +1,134 @@
 ---
-title: "Platforma Apache Spark strukturalnych przesyłania strumieniowego z Kafka — usługa Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać Apache Spark przesyłania strumieniowego (DStream) można pobrać danych do lub wychodzący Apache Kafka. W tym przykładzie można przesyłać strumieniowo dane za pomocą notesu Jupyter z platformy Spark w usłudze HDInsight."
+title: Przesyłanie strumieniowe ze strukturą w systemie Apache Spark za pomocą platformy Kafka — Azure HDInsight | Microsoft Docs
+description: Dowiedz się, jak przekazywać dane do platformy Apache Kafka lub pobierać je z platformy Apache Kafka za pomocą przesyłania strumieniowego systemu Apache Spark (DStream). Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/30/2018
+ms.date: 04/04/2018
 ms.author: larryfr
-ms.openlocfilehash: 78f89d1355545a944d981d6d65ed41a1afa2fec3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 49c13bbea537d7de60ecf509bc28675191c0b34d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Korzystanie z platformy Spark strukturę przesyłania strumieniowego z Kafka w usłudze HDInsight
+# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
-Dowiedz się, jak używać strukturalnych przesyłania strumieniowego Spark można odczytać danych z Kafka Apache na Azure HDInsight.
+Dowiedz się, jak używać przesyłania strumieniowego ze strukturą w systemie Spark w celu odczytywania danych z platformy Apache Kafka w usłudze Azure HDInsight.
 
-Struktura przesyłania strumieniowego Spark jest aparatem przetwarzania strumienia oparty na Spark SQL. Umożliwia express przesyłania strumieniowego obliczenia taka sama jak partii obliczeń na danych statycznych. Aby uzyskać więcej informacji o strukturze przesyłania strumieniowego, zobacz [strukturalnych przesyłania strumieniowego przewodnik programowania w języku [alfa]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html) w serwisie Apache.org.
+Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. Aby uzyskać więcej informacji o przesyłaniu strumieniowym ze strukturą, zobacz dokument [Structured Streaming Programming Guide [Alpha] (Przewodnik po programowaniu przesyłania strumieniowego ze strukturą [Alpha])](http://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) w witrynie Apache.org.
 
 > [!IMPORTANT]
-> W tym przykładzie użyto Spark 2.1 w usłudze HDInsight 3,6. Strukturalne Streaming jest uznawany za __alfa__ 2.1 Spark.
+> W tym przykładzie użyto platformy Spark 2.2 w usłudze HDInsight 3.6.
 >
-> Kroki opisane w tym dokumencie Tworzenie grupy zasobów platformy Azure, który zawiera zarówno Spark w usłudze HDInsight i Kafka w klastrze usługi HDInsight. Te klastry są oba znajdujących się w sieci wirtualnej platformy Azure, dzięki czemu klastra Spark do bezpośredniego komunikowania się z Kafka klastra.
+> Kroki przedstawione w tym dokumencie obejmują tworzenie grupy zasobów platformy Azure, która zawiera zarówno platformę Spark w usłudze HDInsight, jak i platformę Kafka w klastrze usługi HDInsight. Oba klastry znajdują się w usłudze Azure Virtual Network, dzięki czemu klaster Spark może komunikować się bezpośrednio z klastrem Kafka.
 >
-> Po zakończeniu kroków w tym dokumencie, pamiętaj, aby usuwać te klastry, aby zapobiec zmianom nadmiarowe.
+> Po zakończeniu pracy z tym dokumentem pamiętaj o usunięciu tych klastrów, aby uniknąć naliczania opłat.
 
 ## <a name="create-the-clusters"></a>Tworzenie klastrów
 
-Kafka Apache na HDInsight nie zapewnia dostępu do brokerzy Kafka za pośrednictwem publicznej sieci internet. Wszystkie elementy, które komunikuje się Kafka musi być w tej samej sieci wirtualnej platformy Azure jako węzły w klastrze Kafka. W tym przykładzie zarówno Kafka, jak i Spark klastrach znajdują się w sieci wirtualnej platformy Azure. Na poniższym diagramie przedstawiono sposób komunikacji przepływa między klastrami:
+Platforma Apache Kafka w usłudze HDInsight nie zapewnia dostępu do brokerów Kafka za pośrednictwem publicznego Internetu. Wszystkie elementy, które używają platformy Kafka, muszą znajdować się w tej samej sieci wirtualnej platformy Azure. W tym samouczku zarówno klaster Kafka, jak i klaster Spark znajdują się w tej samej sieci wirtualnej platformy Azure. 
 
-![Diagram klastry Spark i Kafka w sieci wirtualnej platformy Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
+Na poniższym diagramie przedstawiono przepływ komunikacji między platformami Spark i Kafka:
+
+![Diagram przedstawiający klastry Spark i Kafka w sieci wirtualnej platformy Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
 > [!NOTE]
-> Usługa Kafka jest ograniczone do komunikacji w sieci wirtualnej. Inne usługi w klastrze, takich jak SSH i Ambari, są dostępne za pośrednictwem Internetu. Aby uzyskać więcej informacji na portach publicznego dostępne z usługą HDInsight, zobacz [portów i identyfikatory URI używany przez HDInsight](hdinsight-hadoop-port-settings-for-services.md).
+> Komunikacja usługi Kafka jest ograniczona do sieci wirtualnej. Inne usługi w klastrze, takie jak SSH i Ambari, są dostępne przez Internet. Aby uzyskać więcej informacji o publicznych portach dostępnych z usługą HDInsight, zobacz [Ports and URIs used by HDInsight (Porty i identyfikatory URI używane przez usługę HDInsight)](hdinsight-hadoop-port-settings-for-services.md).
 
-Podczas tworzenia sieci wirtualnej platformy Azure, Kafka, i Spark klastrów ręcznie, łatwiej jest użyć szablonu usługi Azure Resource Manager. Wykonaj następujące kroki, aby wdrożyć sieci wirtualnej platformy Azure, Kafka i Spark klastrów do subskrypcji platformy Azure.
+Dla wygody do utworzenia klastrów Kafka i Spark wewnątrz sieci wirtualnej użyto szablonu usługi Azure Resource Manager.
 
-1. Poniższy przycisk umożliwia logowanie do platformy Azure i otwórz szablon w portalu Azure.
+1. Kliknij poniższy przycisk, aby zalogować się do platformy Azure i otworzyć szablon w witrynie Azure Portal.
     
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-kafka-structured-streaming%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Szablon usługi Azure Resource Manager znajduje się pod adresem **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
+    Szablon usługi Azure Resource Manager znajduje się tutaj: **https://raw.githubusercontent.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming/master/azuredeploy.json**.
 
-    Ten szablon umożliwia tworzenie następujących zasobów:
+    Ten szablon umożliwia utworzenie następujących zasobów:
 
-    * Kafka w klastrze HDInsight 3,6.
-    * Platforma Spark w klastrze HDInsight 3,6.
-    * Sieci wirtualnej platformy Azure, który zawiera klastry usługi HDInsight.
+    * Klaster Kafka w usłudze HDInsight 3.6.
+    * Klaster Spark 2.2.0 w usłudze HDInsight 3.6.
+    * Sieć wirtualna platformy Azure zawierająca klastry usługi HDInsight.
 
     > [!IMPORTANT]
-    > Strukturalne notesu przesyłania strumieniowego w tym przykładzie wymaga platforma Spark w usłudze HDInsight 3,6. Jeśli używasz starszej wersji platformy Spark w usłudze HDInsight, wystąpią błędy, gdy za pomocą notesu.
+    > Używany w tym przykładzie notes do przesyłania strumieniowego ze strukturą wymaga platformy Spark w usłudze HDInsight 3.6. W przypadku użycia starszej wersji platformy Spark w usłudze HDInsight podczas korzystania z notesu wystąpią błędy.
 
-2. Użyj poniższych informacji, aby wypełnić wpisy na **wdrożenie niestandardowe** sekcji:
+2. Wypełnij pola w sekcji **Dostosowany szablon**, korzystając z poniższych informacji:
+
+    | Ustawienie | Wartość |
+    | --- | --- |
+    | Subskrypcja | Twoja subskrypcja platformy Azure |
+    | Grupa zasobów | Grupa zasobów zawierająca zasoby. |
+    | Lokalizacja | Region świadczenia usługi Azure, w którym są tworzone zasoby. |
+    | Nazwa klastra Spark | Nazwa klastra Spark. |
+    | Nazwa klastra Kafka | Nazwa klastra Kafka. |
+    | Nazwa użytkownika logowania klastra | Nazwa użytkownika będącego administratorem klastrów. |
+    | Hasło logowania klastra | Hasło użytkownika będącego administratorem klastrów. |
+    | Nazwa użytkownika SSH | Użytkownik SSH tworzony na potrzeby obsługi klastrów. |
+    | Hasło SSH | Hasło użytkownika SSH. |
    
-    ![Niestandardowe wdrożenie usługi HDInsight](./media/hdinsight-apache-spark-with-kafka/parameters.png)
-   
-    * **Grupa zasobów**: Utwórz grupę lub wybierz istniejący. Ta grupa zawiera klastra usługi HDInsight.
+    ![Zrzut ekranu przedstawiający dostosowany szablon](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-    * **Lokalizacja**: Wybierz lokalizację lokalizacji geograficznej blisko.
-
-    * **Podstawowa nazwa klastra**: Ta wartość jest używana jako nazwa podstawowa platformy Spark i Kafka klastrów. Na przykład wprowadzenie **hdi** tworzy Spark klastra o nazwie spark hdi__ i Kafka klastra o nazwie **kafka hdi**.
-
-    * **Nazwa użytkownika logowania klastra**: nazwa użytkownika administratora klastrów platformy Spark i Kafka.
-
-    * **Hasło logowania klastra**: hasła użytkownika administratora klastrów platformy Spark i Kafka.
-
-    * **Nazwa użytkownika SSH**: użytkownika SSH do tworzenia klastrów platformy Spark i Kafka.
-
-    * **Hasło SSH**: hasło dla użytkownika SSH dla klastrów Spark i Kafka.
-
-3. Odczyt **warunków i postanowień**, a następnie wybierz **akceptuję warunki i postanowienia, o których wspomniano**.
-
-4. Ponadto sprawdź **Przypnij do pulpitu nawigacyjnego** , a następnie wybierz **zakupu**. Tworzenie klastrów trwa około 20 minut.
-
-Po utworzeniu zasobów strony podsumowania jest wyświetlany.
-
-![Informacje o grupie zasobów dla sieci wirtualnej i klastrów](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
-
-> [!IMPORTANT]
-> Należy zauważyć, że nazwy klastrów usługi HDInsight są **nazwę BAZOWĄ spark** i **nazwę BAZOWĄ kafka**, gdzie nazwę BAZOWĄ jest podana nazwa do szablonu. Te nazwy można użyć w kolejnych krokach, podczas nawiązywania połączenia z klastrów.
-
-## <a name="get-the-kafka-brokers"></a>Pobierz Kafka brokerzy
-
-Kod w tym przykładzie nawiązanie Kafka brokera hosty w klastrze Kafka. Aby znaleźć adres dwa hosty brokera Kafka, skorzystaj z następującego przykładu programu PowerShell lub Bash:
-
-```powershell
-$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
-$clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
-    -Credential $creds
-$respObj = ConvertFrom-Json $resp.Content
-$brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
-($brokerHosts -join ":9092,") + ":9092"
-```
-
-```bash
-curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
-```
-
-Po wyświetleniu monitu wprowadź hasło do konta logowania (Administrator) klastra
+4. Na koniec zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie wybierz pozycję **Kup**. 
 
 > [!NOTE]
-> W tym przykładzie oczekuje `$CLUSTERNAME` zawierać nazwy klastra Kafka.
->
-> W tym przykładzie użyto [jq](https://stedolan.github.io/jq/) narzędzie do analizy danych z dokumentu JSON.
+> Tworzenie klastrów może potrwać do 20 minut.
 
-Dane wyjściowe będą podobne do następującego tekstu:
+## <a name="get-the-notebook"></a>Pobieranie notesu
 
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
+Kod przykładu opisanego w tym dokumencie jest dostępny na stronie [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
 
-Zapisz te informacje, które jest używane w następujących sekcjach tego dokumentu.
+## <a name="upload-the-notebooks"></a>Przekazywanie notesów
 
-## <a name="get-the-notebooks"></a>Pobierz notebooki
+Aby przekazać notes z projektu na platformę Spark w klastrze usługi HDInsight, wykonaj następujące kroki:
 
-Kod, na przykład opisanych w niniejszym dokumencie jest dostępny na [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
-
-## <a name="upload-the-notebooks"></a>Przekaż notebooki
-
-Wykonaj następujące kroki, aby przekazać notesów z projektu do programu Spark w klastrze usługi HDInsight:
-
-1. W przeglądarce sieci web nawiązać notesu Jupyter w klastrze Spark. Następujący adres URL, Zastąp `CLUSTERNAME` z nazwą użytkownika __Spark__ klastra:
+1. W przeglądarce internetowej połącz się z notesem Jupyter w klastrze Spark. Zastąp element `CLUSTERNAME` w poniższym adresie URL nazwą klastra __Spark__:
 
         https://CLUSTERNAME.azurehdinsight.net/jupyter
 
-    Po wyświetleniu monitu wprowadź logowania do klastra (admin) i hasło użyte podczas tworzenia klastra.
+    Po wyświetleniu monitu wprowadź nazwę użytkownika klastra (administratora) i hasło użyte podczas tworzenia klastra.
 
-2. Górny prawej części strony, użyj funkcji __przekazać__ przycisk, aby przekazać __strumienia-Tweetów-To_Kafka.ipynb__ pliku do klastra. Wybierz __Otwórz__ uruchomić przekazywanie.
+2. Za pomocą przycisku __Przekaż__ wyświetlanego w prawej górnej części strony przekaż plik __spark-structured-streaming-kafka.ipynb__ do klastra. Wybierz pozycję __Otwórz__, aby rozpocząć przekazywanie.
 
-    ![Użyj przycisku przekazywania wybierz i przekazać Notes](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-button.png)
+    ![Wybieranie i przekazywanie notesu za pomocą przycisku przekazywania](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-button.png)
 
-    ![Wybierz plik KafkaStreaming.ipynb](./media/hdinsight-apache-kafka-spark-structured-streaming/select-notebook.png)
+    ![Wybieranie pliku KafkaStreaming.ipynb](./media/hdinsight-apache-kafka-spark-structured-streaming/select-notebook.png)
 
-3. Znajdź __strumienia-Tweetów-To_Kafka.ipynb__ wpisu na liście notesów, a następnie wybierz __przekazać__ przycisk obok siebie.
+3. Znajdź pozycję __spark-structured-streaming-kafka.ipynb__ na liście notesów, a następnie wybierz przycisk __Przekaż__ widoczny obok tej pozycji.
 
-    ![Aby przekazać notesu, użyj przycisku przekazywania wpisu KafkaStreaming.ipynb](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
+    ![Aby przekazać notes, użyj przycisku przekazywania dla pozycji KafkaStreaming.ipynb](./media/hdinsight-apache-kafka-spark-structured-streaming/upload-notebook.png)
 
-4. Powtórz kroki od 1 do 3, aby załadować __Spark-strukturę-przesyłania strumieniowego-od-Kafka.ipynb__ notesu.
 
-## <a name="load-tweets-into-kafka"></a>Ładowanie tweetów do Kafka
+## <a name="use-the-notebook"></a>Używanie notesu
 
-Gdy pliki zostały przekazane, wybierz __strumienia-Tweetów-To_Kafka.ipynb__ wpis, aby otworzyć notesu. Postępuj zgodnie z instrukcjami, aby załadować tweetów do Kafka.
+Po przekazaniu plików wybierz pozycję __spark-structured-streaming-kafka.ipynb__, aby otworzyć notes. Aby dowiedzieć się, jak używać przesyłania strumieniowego ze strukturą w systemie Spark z platformą Kafka w usłudze HDInsight, postępuj zgodnie z instrukcjami zawartymi w notesie.
 
-## <a name="process-tweets-using-spark-structured-streaming"></a>Przy użyciu strukturalnych przesyłania strumieniowego Spark tweetów procesu
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Na stronie głównej notesu Jupyter wybierz __Spark-strukturę-przesyłania strumieniowego-od-Kafka.ipynb__ wpisu. Postępuj zgodnie z instrukcjami notesu załadować tweetów z Kafka przy użyciu strukturalnych przesyłania strumieniowego Spark.
+Aby wyczyścić zasoby utworzone w tym samouczku, możesz usunąć grupę zasobów. Usunięcie grupy zasobów powoduje również usunięcie skojarzonego klastra usługi HDInsight i wszystkich innych zasobów skojarzonych z tą grupą zasobów.
 
-## <a name="next-steps"></a>Kolejne kroki
+Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
-Teraz, kiedy znasz sposób użycia strukturalnych przesyłania strumieniowego Spark, należy znaleźć w następujących dokumentach, aby dowiedzieć się więcej na temat pracy z platformy Spark i Kafka:
+1. W witrynie Azure Portal rozwiń menu po lewej stronie, aby otworzyć menu usług, a następnie wybierz pozycję __Grupy zasobów__, aby wyświetlić listę grup zasobów.
+2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
+3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
-* [Sposób użycia platformy Spark przesyłania strumieniowego (DStream) z Kafka](hdinsight-apache-spark-with-kafka.md).
-* [Rozpoczynać notesu Jupyter i Spark w usłudze HDInsight](spark/apache-spark-jupyter-spark-sql.md)
+> [!WARNING]
+> Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć.
+> 
+> Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
+
+## <a name="next-steps"></a>Następne kroki
+
+Gdy już wiesz, jak używać przesyłania strumieniowego ze strukturą na platformie Spark, zapoznaj się z następującymi dokumentami, aby dowiedzieć się więcej na temat pracy z platformami Spark i Kafka:
+
+* [How to use Spark streaming (DStream) with Kafka (Jak korzystać z przesyłania strumieniowego w usłudze Spark [DStream] za pomocą usługi Kafka)](hdinsight-apache-spark-with-kafka.md).
+* [Start with Jupyter Notebook and Spark on HDInsight (Rozpoczynanie korzystania z notesu Jupyter i platformy Spark w usłudze HDInsight)](spark/apache-spark-jupyter-spark-sql.md)

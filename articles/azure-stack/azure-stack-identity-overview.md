@@ -1,12 +1,12 @@
 ---
-title: "Omówienie tożsamości dla stosu Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat systemów tożsamości, używanych w usłudze Azure stosu."
+title: Omówienie tożsamości dla stosu Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat systemów tożsamości, używanych w usłudze Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: deebe5d8ff4c35c4507d2daf5c15025a1810d865
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.reviewer: ''
+ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Omówienie tożsamości Azure stosu
 
@@ -52,12 +52,12 @@ Konta użytkowników (tożsamości) są standardowe konta uwierzytelniających o
 Jak tworzyć i zarządzać użytkownikami i grupami zależy od rozwiązania tożsamości, których używasz. 
 
 W stosie Azure, kont użytkowników: 
-- Są tworzone w  *username@domain*  format. Mimo że usługi AD FS mapuje kont użytkowników z wystąpieniem usługi Active Directory, usługi AD FS nie obsługuje korzystania z  *\<domeny >\<alias >* format. 
+- Są tworzone w *username@domain* format. Mimo że usługi AD FS mapuje kont użytkowników z wystąpieniem usługi Active Directory, usługi AD FS nie obsługuje korzystania z  *\<domeny >\<alias >* format. 
 - Można skonfigurować do używania uwierzytelniania wieloskładnikowego. 
 - Są ograniczone do katalogu, gdzie są najpierw zarejestrować, jest katalogiem używanych w organizacji.
 - Mogą zostać zaimportowane z katalogów lokalnych. Aby uzyskać więcej informacji, zobacz [integrację katalogów lokalnych z usługą Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect). 
 
-Po zalogowaniu się do portalu dzierżawcy w organizacji, użyj  *https://portal.local.azurestack.external*  adresu URL. 
+Po zalogowaniu się do portalu dzierżawcy w organizacji, użyj *https://portal.local.azurestack.external* adresu URL. 
 
 ### <a name="guest-users"></a>Użytkownicy-goście
 Goście są konta użytkowników od pozostałych dzierżawców katalogu, którym przyznano dostęp do zasobów w katalogu. Aby obsługiwać gości, przy użyciu usługi Azure AD i włączyć obsługę wielu dzierżawców. Po włączeniu obsługi można zaprosić użytkowników gościa dostęp do zasobów w dzierżawie katalogu, który z kolei umożliwia ich współpracy z zewnątrz organizacji. 
@@ -145,10 +145,10 @@ Dla aplikacji i użytkowników architektura stosu Azure opisano cztery warstwy. 
 
 ### <a name="authenticate-to-azure-resource-manager"></a>Uwierzytelniania do usługi Azure Resource Manager
 Do uwierzytelniania za pomocą dostawcy tożsamości i odbierać żetonu Web JSON, musi mieć następujące informacje: 
-1.  **Adres URL dla systemu tożsamości (urzędu)**: adres URL, w którym można osiągnąć dostawcy tożsamości. Na przykład  *https://login.windows.net* . 
+1.  **Adres URL dla systemu tożsamości (urzędu)**: adres URL, w którym można osiągnąć dostawcy tożsamości. Na przykład *https://login.windows.net*. 
 2.  **Identyfikator URI aplikacji usługi Azure Resource Manager**: Unikatowy identyfikator dla usługi Azure Resource Manager zarejestrowana u dostawcy tożsamości. Jest również unikatowa dla każdej instalacji stosu Azure.
 3.  **Poświadczenia**: poświadczeń używana do uwierzytelniania z dostawcy tożsamości. 
-4.  **Adres URL dla usługi Azure Resource Manager**: adres URL jest lokalizacja usługi Azure Resource Manager. Na przykład  *https://management.azure.com*  lub  *https://management.local.azurestack.external* .
+4.  **Adres URL dla usługi Azure Resource Manager**: adres URL jest lokalizacja usługi Azure Resource Manager. Na przykład *https://management.azure.com* lub *https://management.local.azurestack.external*.
 
 Gdy podmiot zabezpieczeń (klienta, aplikacji lub użytkownika) wysyła żądanie uwierzytelnienia do uzyskania dostępu do zasobu, żądanie musi zawierać:
 - Poświadczenia podmiotu.
@@ -169,9 +169,9 @@ Po ukończeniu wszystkich operacji sprawdzania poprawności używa usługi Azure
 
 ### <a name="use-role-based-access-control"></a>Za pomocą kontroli dostępu opartej na rolach  
 Oparta na rolach kontroli dostępu (RBAC) w stosie Azure jest zgodna z implementacją w systemie Microsoft Azure. Dostęp do zasobów można zarządzać, przypisując odpowiednie role RBAC do użytkowników, grup i aplikacji. Aby uzyskać informacje o sposobie używania RBAC stosu Azure, zobacz następujące artykuły:
-- [Rozpoczynanie pracy z opartej na rolach kontroli dostępu w portalu Azure](/azure/active-directory/role-based-access-control-what-is).
-- [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą opartej na rolach kontroli dostępu](/azure/active-directory/role-based-access-control-configure).
-- [Tworzenie niestandardowych ról dla kontroli dostępu](/azure/active-directory/role-based-access-control-custom-roles).
+- [Rozpoczynanie pracy z opartej na rolach kontroli dostępu w portalu Azure](/azure/role-based-access-control/overview).
+- [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą opartej na rolach kontroli dostępu](/azure/role-based-access-control/role-assignments-portal).
+- [Tworzenie niestandardowych ról dla kontroli dostępu](/azure/role-based-access-control/custom-roles).
 - [Zarządzanie kontrolą dostępu opartą na rolach](azure-stack-manage-permissions.md) Azure stosu.
 
 

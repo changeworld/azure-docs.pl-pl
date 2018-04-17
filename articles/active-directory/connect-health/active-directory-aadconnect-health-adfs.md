@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Monitorowanie usług AD FS za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania infrastruktury usług AD FS przy użyciu programu Azure AD Connect Health. Aby uzyskać informacje na temat monitorowania programu Azure AD Connect (synchronizacja) za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](active-directory-aadconnect-health-sync.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](active-directory-aadconnect-health-adds.md).
@@ -109,7 +109,7 @@ Raport zawiera następujące informacje:
 | Identyfikator użytkownika |Wyświetla użyty identyfikator użytkownika. Jest to wartość wpisana przez użytkownika, co w niektórych przypadkach powoduje użycie nieprawidłowego identyfikatora użytkownika. |
 | Nieudane próby |Pokazuje łączną liczbę nieudanych prób dla konkretnego identyfikatora użytkownika. Tabela jest sortowana według największej liczby nieudanych prób w kolejności malejącej. |
 | Ostatnia nieudana próba |Wyświetla sygnaturę czasową momentu, w którym wystąpiła ostatnia awaria. |
-| Adres IP ostatniej nieudanej próby |Wyświetla adres IP klienta dla ostatniego złego żądania. |
+| Adres IP ostatniej nieudanej próby |Wyświetla adres IP klienta dla ostatniego złego żądania. Jeśli w obszarze tej wartości widzisz kilka adresów IP, może on zawierać adres IP klienta na potrzeby przekazywania oraz adres IP użytkownika dla ostatniej próby żądania.  |
 
 > [!NOTE]
 > Ten raport jest aktualizowany automatycznie co 12 godzin o nowe informacje, które pojawiły się w tym czasie. W rezultacie próby logowania z ostatnich 12 godzin mogą nie zostać zawarte w raporcie.
@@ -191,11 +191,14 @@ Próg alertu można zaktualizować za pomocą ustawień progowych. W systemie je
 1. Dlaczego w raporcie są widoczne zakresy prywatnych adresów IP?  <br />
 Prywatne adresy IP (<i>10.x.x.x, 172.x.x.x & 192.168.x.x</i>) i adresy IP programu Exchange są odfiltrowane i oznaczone wartością True na liście dozwolonych adresów IP. Jeśli zakresy prywatnych adresów IP są widoczne, prawdopodobnie zewnętrzny moduł równoważenia obciążenia nie wysyła adresu IP klienta podczas przekazywania żądania do serwera proxy aplikacji internetowych.
 
-2. Co zrobić, aby zablokować adres IP?  <br />
+2. Dlaczego w raporcie widzę adresy IP modułu równoważenia obciążenia?  <br />
+Jeśli adresy IP modułu równoważenia obciążenia są widoczne, prawdopodobnie zewnętrzny moduł równoważenia obciążenia nie wysyła adresu IP klienta podczas przekazywania żądania do serwera proxy aplikacji internetowych. Skonfiguruj prawidłowo moduł równoważenia obciążenia, aby przekazać adres IP klienta na potrzeby przekazywania dalej. 
+
+3. Co zrobić, aby zablokować adres IP?  <br />
 Złośliwy adres IP należy dodać do zapory lub blokady w programie Exchange.   <br />
 W przypadku usług AD FS 2016 + 1803.C + QFE adres IP można zablokować bezpośrednio w usługach AD FS. 
 
-3. Dlaczego raport nie zawiera żadnych elementów? <br />
+4. Dlaczego raport nie zawiera żadnych elementów? <br />
    - Nieudane działania związane z logowaniem nie przekraczają ustawień progowych. 
    - Upewnij się, że lista serwerów AD FS nie zawiera aktywnego alertu „Dane usługi kondycji są nieaktualne”.  Dowiedz się więcej o tym, jak [rozwiązywać problemy z tym alertem](active-directory-aadconnect-health-data-freshness.md).
    - Na farmach AD FS nie włączono inspekcji.

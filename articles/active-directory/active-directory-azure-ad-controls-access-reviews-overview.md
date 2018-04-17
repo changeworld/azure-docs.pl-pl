@@ -1,11 +1,11 @@
 ---
-title: "Przeglądy dostępu w usłudze Azure AD | Microsoft Docs"
-description: "Przeglądy dostępu w usłudze Azure Active Directory umożliwiają kontrolowanie członkostwa w grupie i dostępu do aplikacji w celu spełnienia wymagań organizacji dotyczących ładu, zgodności oraz zarządzania ryzykiem."
+title: Przeglądy dostępu w usłudze Azure AD | Microsoft Docs
+description: Przeglądy dostępu w usłudze Azure Active Directory umożliwiają kontrolowanie członkostwa w grupie i dostępu do aplikacji w celu spełnienia wymagań organizacji dotyczących ładu, zgodności oraz zarządzania ryzykiem.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.openlocfilehash: 40c3cfaf723a22013c93e0efae3d074e98643742
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3c5d09b6f17fe8ae9be73d23d7aef6beae2ae43c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-ad-access-reviews-preview"></a>Przeglądy dostępu w usłudze Azure AD (wersja zapoznawcza)
+# <a name="azure-ad-access-reviews"></a>Przeglądy dostępu w usłudze Azure AD
 
-Przeglądy dostępu w usłudze Azure Active Directory (Azure AD) pozwalają organizacjom efektywnie zarządzać członkostwem w grupach i dostępem do aplikacji przedsiębiorstwa. 
+Przeglądy dostępu w usłudze Azure Active Directory (Azure AD) pozwalają organizacjom efektywnie zarządzać członkostwem w grupach, dostępem do aplikacji przedsiębiorstwa i przypisaniami ról uprzywilejowanych. 
 
 ## <a name="what-can-you-do-with-access-reviews"></a>Co można zrobić przy użyciu przeglądów dostępu?
    
@@ -30,6 +30,8 @@ Przeglądy dostępu w usłudze Azure Active Directory (Azure AD) pozwalają orga
 - Przeprowadzając przeglądy dostępu, można ponownie certyfikować dostęp do aplikacji i członkostwo w grupach pracowników.
    
 - Kontrole z przeglądem dostępu można łączyć w programy odpowiednie dla danej organizacji, aby śledzić przeglądy dla aplikacji dotyczących zgodności lub aplikacji narażonych na ryzyko.
+
+- Możesz ponownie certyfikować przypisanie roli użytkowników administracyjnych, którzy zostali przypisani do ról usługi Azure AD, np. roli Administrator globalny, lub ról subskrypcji platformy Azure.  Ta funkcja jest uwzględniona w usłudze Azure AD Privileged Identity Management.
     
 
 ## <a name="next-steps"></a>Następne kroki

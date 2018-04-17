@@ -1,6 +1,6 @@
 ---
-title: "Dodaj CDN usłudze Azure App Service | Dokumentacja firmy Microsoft"
-description: "Dodaj usługę Content Delivery Network (CDN) do usługi Azure App Service, aby buforować i dostarczać pliki statyczne z serwerów znajdujących się blisko klientów na całym świecie."
+title: Dodawanie usługi CDN do usługi Azure App Service | Microsoft Docs
+description: Dodaj usługę Content Delivery Network (CDN) do usługi Azure App Service, aby buforować i dostarczać pliki statyczne z serwerów znajdujących się blisko klientów na całym świecie.
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
@@ -10,13 +10,13 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 74344b72869ef6b27f9e7329c7a1777a40662b17
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Dodawanie usługi Content Delivery Network (CDN) do usługi Azure App Service
+# <a name="tutorial-add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Samouczek: dodawanie usługi Content Delivery Network (CDN) do usługi Azure App Service
 
 Usługa [Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) buforuje zawartość statyczną sieci Web w strategicznie rozmieszczonych lokalizacjach w celu zapewnienia maksymalnej przepływności dostarczania zawartości dla użytkowników. Usługa CDN zmniejsza również obciążenie serwera w aplikacji sieci Web. W tym samouczku przedstawiono sposób dodawania usługi Azure CDN do [aplikacji sieci Web w usłudze Azure App Service](app-service-web-overview.md). 
 
@@ -43,11 +43,11 @@ W celu ukończenia tego samouczka:
 
 ## <a name="create-the-web-app"></a>Tworzenie aplikacji sieci Web
 
-Aby utworzyć aplikację sieci web, która będzie współpracować, wykonaj [statycznych Szybki Start — HTML](app-service-web-get-started-html.md) za pośrednictwem **przejdź do aplikacji** kroku.
+Aby utworzyć aplikację internetową, z którą będziesz pracować, postępuj zgodnie z instrukcjami opisanymi w artykule [Tworzenie statycznej witryny HTML — szybki start](app-service-web-get-started-html.md) do kroku **Przechodzenie do aplikacji**.
 
 ### <a name="have-a-custom-domain-ready"></a>Przygotowywanie domeny niestandardowej
 
-Aby wykonać krok domeny niestandardowej z tego samouczka, należy właścicielem domeny niestandardowej i uzyskiwania dostępu do rejestru systemu DNS dla domeny dostawcy (takie jak GoDaddy). Aby na przykład dodać wpisy DNS dla domen `contoso.com` i `www.contoso.com`, musisz mieć możliwość skonfigurowania ustawień DNS dla domeny głównej `contoso.com`.
+Aby ukończyć etap tworzenia domeny niestandardowej w tym samouczku, musisz mieć domenę niestandardową oraz dostęp do rejestru systemu DNS dostawcy domeny (np. GoDaddy). Aby na przykład dodać wpisy DNS dla domen `contoso.com` i `www.contoso.com`, musisz mieć możliwość skonfigurowania ustawień DNS dla domeny głównej `contoso.com`.
 
 Jeśli nie masz jeszcze nazwy domeny, możesz postępować według instrukcji zawartych w [samouczku dotyczącym domeny usługi App Service](custom-dns-web-site-buydomains-web-app.md) w celu zakupienia domeny za pośrednictwem witryny Azure Portal. 
 
@@ -71,8 +71,8 @@ Na stronie **Azure Content Delivery Network** określ ustawienia dla **nowego pu
 
 | Ustawienie | Sugerowana wartość | Opis |
 | ------- | --------------- | ----------- |
-| **Profil CDN** | myCDNProfile | Wybierz **Utwórz nowy** można utworzyć profilu CDN. Profil CDN jest kolekcją punktów końcowych usługi CDN znajdujących się w tej samej warstwie cenowej. |
-| **Warstwa cenowa** | Standard Akamai | [Warstwa cenowa](../cdn/cdn-overview.md#azure-cdn-features) określa dostawcę i dostępne funkcje. W tym samouczku używamy Akamai standardowa. |
+| **Profil CDN** | myCDNProfile | Wybierz pozycję **Utwórz nowy**, aby utworzyć profil CDN. Profil CDN jest kolekcją punktów końcowych usługi CDN znajdujących się w tej samej warstwie cenowej. |
+| **Warstwa cenowa** | Standard Akamai | [Warstwa cenowa](../cdn/cdn-overview.md#azure-cdn-features) określa dostawcę i dostępne funkcje. W tym samouczku użyto warstwy Standard Akamai. |
 | **Nazwa punktu końcowego usługi CDN** | Dowolna unikatowa nazwa w domenie azureedge.net | Dostęp do zbuforowanych zasobów można uzyskać w domenie *\<nazwapunktukoncowego>.azureedge.net*.
 
 Wybierz pozycję **Utwórz**.
@@ -95,7 +95,7 @@ http://<appname>.azurewebsites.net/css/bootstrap.css
 http://<endpointname>.azureedge.net/css/bootstrap.css
 ```
 
-Przejdź przeglądarki pod następujący adres URL:
+W przeglądarce przejdź pod następujący adres URL:
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -103,7 +103,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![Strona główna aplikacji przykładowej udostępnianej przez usługę CDN](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page-cdn.png)
 
- Zostanie wyświetlona strona tego samego, który został przeprowadzony wcześniej w aplikacji sieci web platformy Azure. Usługi Azure CDN ma pobrać zasobów aplikacji sieci web pochodzenia i obsługujący z punktu końcowego CDN
+ Zobaczysz tę samą stronę, którą uruchomiono wcześniej w aplikacji internetowej platformy Azure. Usługa Azure CDN pobrała elementy zawartości oryginalnej aplikacji internetowej i udostępnia je za pośrednictwem punktu końcowego usługi CDN.
 
 Odśwież tę stronę, aby się upewnić, że jest ona buforowana w usłudze CDN. Aby usługa CDN umieściła żądaną zawartość w pamięci podręcznej, czasami wymagane są dwa żądania tego samego elementu zawartości.
 
@@ -194,7 +194,7 @@ Usługa Azure CDN oferuje następujące opcje zachowania podczas buforowania:
 * Pomiń buforowanie dla ciągów zapytań
 * Buforuj każdy unikatowy adres URL 
 
-Pierwszy z nich jest wartość domyślna, co oznacza, że istnieje tylko jedna wersja buforowanych zasobów, niezależnie od tego ciągu zapytania w adresie URL. 
+Pierwsze zachowanie jest zachowaniem domyślnym. W tym przypadku istnieje tylko jedna zbuforowana wersja elementu zawartości, niezależnie od tego, jakiego ciągu zapytania użyto w adresie URL. 
 
 W tej części samouczka zostanie zmienione zachowanie buforowania w taki sposób, że w pamięci podręcznej będzie umieszczany każdy unikatowy adres URL.
 
@@ -241,10 +241,10 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 ![V2 w tytule w usłudze CDN, ciąg zapytania 1](media/app-service-web-tutorial-content-delivery-network/v2-in-cdn-title-qs1.png)
 
-Te dane wyjściowe pokazuje, czy każdy ciąg zapytania jest traktowane inaczej:
+W tych danych wyjściowych widać, że każdy ciąg zapytania jest traktowany inaczej:
 
-* q = 1 był używany przed, więc zawartości z pamięci podręcznej są zwracane (V2).
-* q = 2 jest nowy, więc pobierania najnowszej zawartości aplikacji sieci web i zwracane (V3).
+* Wcześniej użyto ciągu q=1, dlatego zwrócona została zbuforowana zawartość (V2).
+* Ciąg q=2 jest nowy, więc pobierana i zwracana jest najnowsza zawartość aplikacji internetowej (V3).
 
 Aby uzyskać więcej informacji, zobacz [Control Azure CDN caching behavior with query strings](../cdn/cdn-query-string.md) (Sterowanie zachowaniem buforowania usługi CDN za pomocą ciągów zapytań).
 
@@ -270,7 +270,7 @@ Przejdź do witryny sieci Web swojego rejestratora domen i znajdź sekcję tworz
 
 Znajdź sekcję zarządzania rekordami CNAME. W tym celu może być konieczne przejście do strony ustawień zaawansowanych i poszukanie słów CNAME, Alias lub Subdomains (Poddomeny).
 
-Utwórz rekord CNAME mapujący z wybranym domeny podrzędnej (na przykład **statycznych** lub **cdn**) do **nazwę hosta punktu końcowego** pokazano wcześniej w portalu. 
+Utwórz rekord CNAME mapujący wybraną poddomenę (na przykład **static** lub **cdn**) na **nazwę hosta punktu końcowego** wyświetlaną wcześniej w portalu. 
 
 ### <a name="enter-the-custom-domain-in-azure"></a>Wprowadzanie domeny niestandardowej na platformie Azure
 
@@ -278,7 +278,7 @@ Powróć do strony **Dodaj domenę niestandardową** i wprowadź w oknie dialogo
    
 Platforma Azure sprawdzi, czy dla wprowadzonej nazwy domeny istnieje rekord CNAME. Jeśli rekord CNAME jest poprawny, domena niestandardowa jest weryfikowana.
 
-Może upłynąć trochę czasu, zanim rekord CNAME zostanie rozpropagowany do serwerów nazw w Internecie. Jeśli domena nie została zweryfikowana natychmiast, zaczekaj kilka minut i spróbuj ponownie.
+Może upłynąć trochę czasu, zanim rekord CNAME zostanie rozpropagowany do serwerów nazw w Internecie. Jeśli domena nie zostanie zweryfikowana natychmiast, zaczekaj kilka minut i spróbuj ponownie.
 
 ### <a name="test-the-custom-domain"></a>Testowanie domeny niestandardowej
 
@@ -292,7 +292,7 @@ Aby uzyskać więcej informacji, zobacz [Map Azure CDN content to a custom domai
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wiadomości:
+Które czynności umiesz wykonać:
 
 > [!div class="checklist"]
 > * Tworzenie punktu końcowego usługi CDN.
@@ -300,7 +300,7 @@ Wiadomości:
 > * Używanie ciągów zapytań do sterowania zbuforowanymi wersjami.
 > * Używanie domeny niestandardowej na potrzeby punktu końcowego usługi CDN.
 
-Dowiedz się, jak zoptymalizować wydajność sieci CDN w następujących artykułach:
+Zapoznaj się z następującymi artykułami, aby dowiedzieć się, jak zoptymalizować wydajność usługi CDN:
 
 > [!div class="nextstepaction"]
 > [Poprawianie wydajności poprzez kompresowanie plików w usłudze Azure CDN](../cdn/cdn-improve-performance.md)

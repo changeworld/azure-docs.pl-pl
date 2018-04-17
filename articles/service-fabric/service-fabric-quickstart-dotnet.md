@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6038251ba79797312a0fec61e4a6f3d2e99d5435
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Szybki start: tworzenie aplikacji platformy .NET w usłudze Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -29,14 +29,14 @@ W tym przewodniku Szybki start pokazano, jak wdrożyć pierwszą aplikację plat
 ![Zrzut ekranu aplikacji](./media/service-fabric-quickstart-dotnet/application-screenshot.png)
 
 Korzystając z tej aplikacji, nauczysz się wykonywać następujące czynności:
-> [!div class="checklist"]
-> * Tworzenie aplikacji przy użyciu platformy .NET i usługi Service Fabric
-> * Używanie platformy ASP.NET Core jako frontonu sieci Web
-> * Przechowywanie danych aplikacji w usłudze stanowej
-> * Debugowanie aplikacji lokalnie
-> * Wdrażanie aplikacji w klastrze na platformie Azure
-> * Skalowanie aplikacji w poziomie na wiele węzłów
-> * Przeprowadzanie stopniowego uaktualnienia aplikacji
+
+* Tworzenie aplikacji przy użyciu platformy .NET i usługi Service Fabric
+* Używanie platformy ASP.NET Core jako frontonu sieci Web
+* Przechowywanie danych aplikacji w usłudze stanowej
+* Debugowanie aplikacji lokalnie
+* Wdrażanie aplikacji w klastrze na platformie Azure
+* Skalowanie aplikacji w poziomie na wiele węzłów
+* Przeprowadzanie stopniowego uaktualnienia aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik Szybki start:
@@ -92,7 +92,7 @@ Podczas głosowania w aplikacji występują następujące zdarzenia:
 
 ## <a name="debug-in-visual-studio"></a>Debugowanie w programie Visual Studio
 
-Podczas debugowania aplikacji w programie Visual Studio używany jest lokalny klaster projektowy usługi Service Fabric. Możesz opcjonalnie dostosować środowisko debugowania do danego scenariusza. W tej aplikacji dane są przechowywane w usłudze zaplecza przy użyciu niezawodnego słownika. Program Visual Studio domyślnie usuwa aplikację po zatrzymaniu debugera. Usunięcie aplikacji spowoduje, że dane w usłudze zaplecza także zostaną usunięte. Aby zachować dane między sesjami debugowania, możesz zmienić **Tryb debugowania aplikacji** jako właściwość w projekcie **Voting (Głosowanie)** w programie Visual Studio.
+Aplikacja powinna być uruchomiona, ale przy użyciu debugera można zobaczyć, jak działają kluczowe części aplikacji. Podczas debugowania aplikacji w programie Visual Studio używany jest lokalny klaster projektowy usługi Service Fabric. Możesz opcjonalnie dostosować środowisko debugowania do danego scenariusza. W tej aplikacji dane są przechowywane w usłudze zaplecza przy użyciu niezawodnego słownika. Program Visual Studio domyślnie usuwa aplikację po zatrzymaniu debugera. Usunięcie aplikacji spowoduje, że dane w usłudze zaplecza także zostaną usunięte. Aby zachować dane między sesjami debugowania, możesz zmienić **Tryb debugowania aplikacji** jako właściwość w projekcie **Voting (Głosowanie)** w programie Visual Studio.
 
 Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 1. Otwórz plik **/VotingWeb/Controllers/VotesController.cs** i ustaw punkt przerwania w metodzie **Put** internetowego interfejsu API (wiersz 69) — możesz wyszukać ten plik w Eksploratorze rozwiązań w programie Visual Studio.
@@ -181,8 +181,8 @@ W przeglądarce może pojawić się ostrzeżenie informujące, że lokalizacja n
 
 Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
 
-1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-2. Kliknij wielokropek (trzy kropki) obok węzła **fabric:/Voting/VotingWeb** w widoku drzewa i wybierz pozycję **Skaluj usługę**.
+1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+2. W widoku drzewa rozwiń węzeł **Aplikacje**->**VotingType**->**fabric:/Voting**. Kliknij wielokropek (trzy kropki) obok węzła **fabric:/Voting/VotingWeb** w widoku drzewa i wybierz pozycję **Skaluj usługę**.
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
 
@@ -213,25 +213,26 @@ Aby uaktualnić aplikację, wykonaj następujące czynności:
 7. W oknie dialogowym **Publikowanie aplikacji usługi Service Fabric** zaznacz pole wyboru Uaktualnij aplikację, a następnie kliknij przycisk **Publikuj**.
 
     ![Okno dialogowe publikowania — ustawienie uaktualnienia](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
+
+    Podczas uaktualniania można nadal korzystać z aplikacji. Ponieważ masz dwa wystąpienia usługi uruchomione w klastrze, niektóre żądania mogą trafiać do uaktualnionej wersji aplikacji, podczas gdy inne mogą nadal otrzymywać starą wersję.
+
 8. Otwórz przeglądarkę i przejdź do adresu klastra na porcie 19080, na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 9. W widoku drzewa kliknij węzeł **Aplikacje**, a następnie kliknij pozycję **Uaktualnienia w toku** w okienku po prawej stronie. Możesz zobaczyć, jak uaktualnienie jest wprowadzane w domenach uaktualnienia w klastrze, upewniając się, że każda domena jest w dobrej kondycji przed przejściem do następnej. Domena uaktualnienia na pasku postępu będzie wyświetlana w kolorze zielonym po zweryfikowaniu kondycji domeny.
     ![Widok uaktualniania w narzędziu Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Usługa Service Fabric zapewnia bezpieczeństwo uaktualnień dzięki oczekiwaniu przez dwie minuty po uaktualnieniu usługi na każdym węźle w klastrze. Całe uaktualnienie zajmuje około ośmiu minut.
 
-10. Podczas uaktualniania można nadal korzystać z aplikacji. Ponieważ masz dwa wystąpienia usługi uruchomione w klastrze, niektóre żądania mogą trafiać do uaktualnionej wersji aplikacji, podczas gdy inne mogą nadal otrzymywać starą wersję.
 
 ## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
-> [!div class="checklist"]
-> * Tworzenie aplikacji przy użyciu platformy .NET i usługi Service Fabric
-> * Używanie platformy ASP.NET Core jako frontonu sieci Web
-> * Przechowywanie danych aplikacji w usłudze stanowej
-> * Debugowanie aplikacji lokalnie
-> * Wdrażanie aplikacji w klastrze na platformie Azure
-> * Skalowanie aplikacji w poziomie na wiele węzłów
-> * Przeprowadzanie stopniowego uaktualnienia aplikacji
+* Tworzenie aplikacji przy użyciu platformy .NET i usługi Service Fabric
+* Używanie platformy ASP.NET Core jako frontonu sieci Web
+* Przechowywanie danych aplikacji w usłudze stanowej
+* Debugowanie aplikacji lokalnie
+* Wdrażanie aplikacji w klastrze na platformie Azure
+* Skalowanie aplikacji w poziomie na wiele węzłów
+* Przeprowadzanie stopniowego uaktualnienia aplikacji
 
 Aby dowiedzieć się więcej o usłudze Service Fabric i platformie .NET, zapoznaj się z tym samouczkiem:
 > [!div class="nextstepaction"]

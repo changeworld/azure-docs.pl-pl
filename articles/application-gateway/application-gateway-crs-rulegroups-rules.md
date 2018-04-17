@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway zapory aplikacji sieci web CRS reguły grup i zasad | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera informacje dotyczące grup reguł CRS zapory aplikacji sieci web i zasady."
+title: Azure Application Gateway zapory aplikacji sieci web CRS reguły grup i zasad | Dokumentacja firmy Microsoft
+description: Ta strona zawiera informacje dotyczące grup reguł CRS zapory aplikacji sieci web i zasady.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -11,7 +11,7 @@ ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: davidmu
@@ -268,7 +268,7 @@ Następujące tabele są zasady grupy i reguł, które są dostępne podczas kor
 |941130|Filtr XSS - kategorii 3 = wektor atrybutu|
 |941140|Filtr XSS - kategorii 4 = wektor Javascript URI|
 |941150|Filtr XSS - kategorii 5 = atrybuty HTML niedozwolone|
-|941180|Słowa kluczowe czarna lista modułów weryfikacji węzła|
+|941180|Słowa kluczowe lista zablokowanych modułów weryfikacji węzła|
 |941190|Filtry IE XSS - wykryto ataku.|
 |941200|Filtry IE XSS - wykryto ataku.|
 |941210|Filtry IE XSS - wykryto ataku.|

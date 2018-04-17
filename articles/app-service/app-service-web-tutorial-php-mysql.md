@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure | Microsoft Docs"
-description: "Dowiedz się, jak uruchomić aplikację języka PHP na platformie Azure z użyciem połączenia z bazą danych MySQL na platformie Azure."
+title: Tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak uruchomić aplikację języka PHP na platformie Azure z użyciem połączenia z bazą danych MySQL na platformie Azure.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 39bfc4e6a4f4066e8aeda0da387fe570525b6086
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 28c50aea9aaad1b9b18fb6b3034617d10beea7ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>Tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure
+# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Samouczek: tworzenie aplikacji internetowej języka PHP i MySQL na platformie Azure
 
 > [!NOTE]
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Build a PHP and MySQL web app in Azure App Service on Linux (Tworzenie aplikacji internetowej języka PHP i MySQL w usłudze Azure App Service w systemie Linux)](./containers/tutorial-php-mysql-app.md).
@@ -154,7 +154,7 @@ Aby zatrzymać serwer środowiska PHP, naciśnij w terminalu klawisze `Ctrl + C`
 
 ## <a name="create-mysql-in-azure"></a>Tworzenie bazy danych MySQL na platformie Azure
 
-W tym kroku utworzysz bazę danych MySQL w usłudze [Azure Database for MySQL (wersja zapoznawcza)](/azure/mysql). Następnie skonfigurujesz aplikację PHP i połączysz ją z tą bazą danych.
+W tym kroku utworzysz bazę danych MySQL w usłudze [Azure Database for MySQL](/azure/mysql). Następnie skonfigurujesz aplikację PHP i połączysz ją z tą bazą danych.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -162,7 +162,7 @@ W tym kroku utworzysz bazę danych MySQL w usłudze [Azure Database for MySQL (w
 
 ### <a name="create-a-mysql-server"></a>Tworzenie serwera MySQL
 
-W usłudze Cloud Shell utwórz serwer w usłudze Azure Database for MySQL (wersja zapoznawcza) przy użyciu polecenia [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create).
+W usłudze Cloud Shell utwórz serwer w usłudze Azure Database for MySQL przy użyciu polecenia [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create).
 
 W następującym poleceniu zamień tekst zastępczy _&lt;mysql_server_name>_ na nazwę swojego serwera MySQL (dozwolone znaki to `a-z`, `0-9` i `-`). Ta nazwa jest częścią nazwy hosta serwera MySQL (`<mysql_server_name>.database.windows.net`) i musi być unikatowa w skali globalnej.
 
@@ -199,7 +199,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> W usłudze Azure Database for MySQL (wersja zapoznawcza) połączenia nie są obecnie ograniczone tylko do usług platformy Azure. Ponieważ adresy IP na platformie Azure są przypisywane dynamicznie, lepiej jest włączyć wszystkie adresy IP. Usługa jest w wersji zapoznawczej. Planowane są lepsze metody zabezpieczania bazy danych.
+> W usłudze Azure Database for MySQL połączenia nie są obecnie ograniczone tylko do usług platformy Azure. Ponieważ adresy IP na platformie Azure są przypisywane dynamicznie, lepiej jest włączyć wszystkie adresy IP. Planowane są lepsze metody zabezpieczania bazy danych.
 >
 >
 
@@ -236,7 +236,7 @@ quit
 
 ## <a name="connect-app-to-azure-mysql"></a>Łączenie aplikacji z bazą danych Azure MySQL
 
-W tym kroku połączysz aplikację PHP z bazą danych MySQL utworzoną w usłudze Azure Database for MySQL (wersja zapoznawcza).
+W tym kroku połączysz aplikację PHP z bazą danych MySQL utworzoną w usłudze Azure Database for MySQL.
 
 <a name="devconfig"></a>
 
@@ -260,7 +260,7 @@ MYSQL_SSL=true
 Zapisz zmiany.
 
 > [!TIP]
-> Aby zabezpieczyć informacje o połączeniu MySQL, ten plik jest już wykluczony z repozytorium Git (zobacz plik _gitignore_ w katalogu głównym repozytorium). W dalszej części dowiesz się, jak skonfigurować zmienne środowiskowe w usłudze App Service, aby nawiązać połączenie z bazą danych w usłudze Azure Database for MySQL (wersja zapoznawcza). Zmienne środowiskowe nie wymagają pliku *env* w usłudze App Service.
+> Aby zabezpieczyć informacje o połączeniu MySQL, ten plik jest już wykluczony z repozytorium Git (zobacz plik _gitignore_ w katalogu głównym repozytorium). W dalszej części dowiesz się, jak skonfigurować zmienne środowiskowe w usłudze App Service, aby nawiązać połączenie z bazą danych w usłudze Azure Database for MySQL. Zmienne środowiskowe nie wymagają pliku *env* w usłudze App Service.
 >
 
 ### <a name="configure-ssl-certificate"></a>Konfigurowanie certyfikatu SSL
@@ -283,7 +283,7 @@ Dla wygody w tym samouczku certyfikat `BaltimoreCyberTrustRoot.crt.pem` znajduje
 
 ### <a name="test-the-application-locally"></a>Testowanie aplikacji w środowisku lokalnym
 
-Uruchom migracje baz danych platformy Laravel z plikiem _env.production_ jako plikiem środowiska, aby utworzyć tabele w bazie danych MySQL w usłudze Azure Database for MySQL (wersja zapoznawcza). Pamiętaj, że plik _env.production_ zawiera informacje o połączeniu z bazą danych MySQL na platformie Azure.
+Uruchom migracje baz danych platformy Laravel z plikiem _env.production_ jako plikiem środowiska, aby utworzyć tabele w bazie danych MySQL w usłudze Azure Database for MySQL. Pamiętaj, że plik _env.production_ zawiera informacje o połączeniu z bazą danych MySQL na platformie Azure.
 
 ```bash
 php artisan migrate --env=production --force
@@ -305,7 +305,7 @@ Przejdź do adresu `http://localhost:8000`. Jeśli strona ładuje się bez błę
 
 Dodaj na stronie kilka zadań.
 
-![Pomyślne połączenie środowiska PHP z usługą Azure Database for MySQL (wersja zapoznawcza)](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
+![Pomyślne połączenie środowiska PHP z usługą Azure Database for MySQL](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
 Aby zatrzymać środowisko PHP, naciśnij w terminalu klawisze `Ctrl + C`.
 

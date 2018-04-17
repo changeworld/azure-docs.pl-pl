@@ -1,11 +1,11 @@
 ---
-title: "Wtyczka usługi Azure Service Fabric dla środowiska Eclipse | Microsoft Docs"
-description: "Rozpocznij pracę z wtyczką usługi Service Fabric dla środowiska Eclipse."
+title: Wtyczka usługi Azure Service Fabric dla środowiska Eclipse | Microsoft Docs
+description: Rozpocznij pracę z wtyczką usługi Service Fabric dla środowiska Eclipse.
 services: service-fabric
 documentationcenter: java
 author: rapatchi
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
@@ -14,31 +14,36 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2016
 ms.author: rapatchi
-ms.openlocfilehash: 291bbd35d6e3c89eb9568130ad144831452142ad
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: d415c3eb540056dc7ad6f1ab14fc8250903d6744
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse
-Eclipse jest jednym z najczęściej używanych zintegrowanych środowisk projektowych (IDE, integrated development environment) przez programistów języka Java. W tym artykule omówiono konfigurowanie środowiska projektowego Eclipse do pracy z usługą Azure Service Fabric. Dowiedz się, jak zainstalować wtyczkę usługi Service Fabric oraz utworzyć aplikację usługi Service Fabric i wdrożyć ją w lokalnym lub zdalnym klastrze usługi Service Fabric w środowisku Eclipse Neon. 
+Eclipse jest jednym z najczęściej używanych zintegrowanych środowisk projektowych (IDE, integrated development environment) przez programistów języka Java. W tym artykule omówiono konfigurowanie środowiska projektowego Eclipse do pracy z usługą Azure Service Fabric. Dowiedz się, jak zainstalować wtyczkę usługi Service Fabric oraz utworzyć aplikację usługi Service Fabric i wdrożyć ją w lokalnym lub zdalnym klastrze usługi Service Fabric w środowisku Eclipse. 
 
 > [!NOTE]
 > Wtyczka Eclipse obecnie nie jest obsługiwana w systemie Windows. 
 
-## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse-neon"></a>Instalowanie lub aktualizowanie wtyczki usługi Service Fabric w środowisku Eclipse Neon
+## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse"></a>Instalowanie lub aktualizowanie wtyczki usługi Service Fabric w środowisku Eclipse
 W środowisku Eclipse można zainstalować wtyczkę usługi Service Fabric. Wtyczka może pomóc w uproszczeniu procesu kompilowania i wdrażania usług Java.
 
-1.  Upewnij się, że masz zainstalowaną najnowszą wersję środowiska Eclipse Neon i zestawu Buildship (wersję 1.0.17 lub nowszą):
-    -   Aby sprawdzić wersje zainstalowanych składników, w środowisku Eclipse Neon wybierz pozycję **Help** > **Installation Details** (Pomoc — Szczegóły instalacji).
-    -   Aby zaktualizować zestaw Buildship, zobacz [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: wtyczki środowiska Eclipse dla narzędzia Gradle).
-    -   Aby sprawdzić i zainstalować aktualizacje środowiska Eclipse Neon, wybierz opcję **Help** > **Check for Updates** (Pomoc — Sprawdź dostępność aktualizacji).
+> [!IMPORTANT]
+> Wtyczka usługi Service Fabric wymaga środowiska Eclipse Neon lub nowszej wersji. Aby sprawdzić wersję środowiska Eclipse, zobacz poniższe instrukcje. Jeśli masz zainstalowaną starszą wersję środowiska Eclipse, możesz pobrać nowsze wersje z [witryny środowiska Eclipse](https://www.eclipse.org). Nie zaleca się instalowania nowej wersji na istniejącej instalacji środowiska Eclipse. Można usunąć starszą wersję przed uruchomieniem instalatora lub zainstalować nowszą wersję w innym katalogu. 
+> 
+> W systemie Ubuntu zaleca się instalowanie bezpośrednio z witryny środowiska Eclipse, a nie za pomocą instalatora pakietu (`apt` lub `apt-get`). Gwarantuje to uzyskanie najnowszej wersji środowiska Eclipse. 
 
-2.  Aby zainstalować wtyczkę usługi Service Fabric, w środowisku Eclipse Neon wybierz pozycję **Help** > **Install New Software** (Pomoc — Instaluj nowe oprogramowanie).
-  1.    W polu **Work with** (Pracuj z) wprowadź adres **http://dl.microsoft.com/eclipse**.
+1.  Upewnij się, że masz zainstalowane środowisko Eclipse Neon lub nowsze oraz najnowszą wersję zestawu Buildship (wersję 1.0.17 lub nowszą):
+    -   Aby sprawdzić wersje zainstalowanych składników, w środowisku Eclipse wybierz pozycję **Help** > **Installation Details** (Pomoc — Szczegóły instalacji).
+    -   Aby zaktualizować zestaw Buildship, zobacz [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: wtyczki środowiska Eclipse dla narzędzia Gradle).
+    -   Aby sprawdzić i zainstalować aktualizacje środowiska Eclipse, wybierz opcję **Help** > **Check for Updates** (Pomoc — Sprawdź dostępność aktualizacji).
+
+2.  Aby zainstalować wtyczkę usługi Service Fabric, w środowisku Eclipse wybierz pozycję **Help** > **Install New Software** (Pomoc — Instaluj nowe oprogramowanie).
+  1.    W polu **Work with** (Praca z) wpisz adres **http://dl.microsoft.com/eclipse**.
   2.    Kliknij pozycję **Add** (Dodaj).
 
-         ![Wtyczka usługi Service Fabric dla środowiska Eclipse Neon][sf-eclipse-plugin-install]
+         ![Wtyczka usługi Service Fabric dla środowiska Eclipse][sf-eclipse-plugin-install]
   3.    Wybierz wtyczkę usługi Service Fabric, a następnie kliknij przycisk **Next** (Dalej).
   4.    Wykonaj kroki instalacji, a następnie zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft.
 
@@ -53,7 +58,7 @@ Jeśli wtyczka usługi Service Fabric jest już zainstalowana, upewnij się, że
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Tworzenie aplikacji usługi Service Fabric w środowisku Eclipse
 
-1.  W środowisku Eclipse Neon wybierz opcję **File** > **New** > **Other** (Plik — Nowy — Inne). Wybierz pozycję **Service Fabric Project** (Projekt usługi Service Fabric), a następnie kliknij przycisk **Next** (Dalej).
+1.  W środowisku Eclipse wybierz opcję **File** > **New** > **Other** (Plik — Nowy — Inne). Wybierz pozycję **Service Fabric Project** (Projekt usługi Service Fabric), a następnie kliknij przycisk **Next** (Dalej).
 
     ![Nowy projekt usługi Service Fabric — strona 1][create-application/p1]
 
@@ -142,7 +147,7 @@ Na potrzeby scenariusza uaktualniania przyjmijmy, że utworzono projekt **App1**
 
 Najpierw wprowadź zmiany w aplikacji i ponownie skompiluj zmodyfikowaną usługę. Zaktualizuj plik manifestu zmodyfikowanej usługi (ServiceManifest.xml) za pomocą zaktualizowanych wersji usługi (i kodu, konfiguracji lub danych — odpowiednio do potrzeb). Zmodyfikuj także manifest aplikacji (ApplicationManifest.xml), określając zaktualizowany numer wersji dla aplikacji i zmodyfikowaną usługę.  
 
-Aby uaktualnić aplikację przy użyciu środowiska Eclipse Neon, możesz utworzyć zduplikowany profil konfiguracji uruchamiania. Następnie użyj go do uaktualnienia aplikacji zgodnie z potrzebami.
+Aby uaktualnić aplikację przy użyciu środowiska Eclipse, możesz utworzyć zduplikowany profil konfiguracji uruchamiania. Następnie użyj go do uaktualnienia aplikacji zgodnie z potrzebami.
 
 1.  Wybierz opcję **Run** > **Run Configurations** (Uruchom — Konfiguracje uruchamiania). W lewym okienku kliknij małą strzałkę po lewej stronie pozycji **Gradle Project** (Projekt narzędzia Gradle).
 2.  Kliknij prawym przyciskiem myszy pozycję **ServiceFabricDeployer** i wybierz polecenie **Duplicate** (Duplikuj). Wprowadź nową nazwę dla tej konfiguracji, na przykład **ServiceFabricUpgrader**.

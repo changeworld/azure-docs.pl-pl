@@ -1,8 +1,8 @@
 ---
 title: Co to są powiadomienia o kondycji usługi platformy Azure? | Microsoft Docs
 description: Powiadomienia o kondycji usługi umożliwiają wyświetlanie komunikatów o kondycji usługi opublikowana przez Microsoft Azure.
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
-ms.author: ancav
-ms.openlocfilehash: 4a95e9882515e6a2861292829a44847e11f39063
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 4/12/2017
+ms.author: dukek
+ms.openlocfilehash: 6821828d3e39a87b8c93f74e7e0583bf9fe1fe4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Wyświetlanie powiadomień o kondycji usługi za pomocą portalu Azure
 
@@ -40,10 +40,10 @@ Nazwa właściwości | Opis
 kanały | Jedną z następujących wartości: **Admin** lub **operacji**.
 correlationId | Zazwyczaj identyfikator GUID w postaci ciągu. Zdarzenia, które należą do tego samego działania zwykle udostępnianie tego samego correlationId.
 eventDataId | Unikatowy identyfikator zdarzenia.
-eventName | Tytuł zdarzenia.
-poziom | Poziom zdarzenia. Jedną z następujących wartości: **krytyczny**, **błąd**, **ostrzeżenie** lub **komunikat o charakterze informacyjnym**.
+EventName | Tytuł zdarzenia.
+poziom | Poziom zdarzenia
 resourceProviderName | Nazwa dostawcy zasobów dla zasobu objęte wpływem.
-resourceType| Typ zasobu ryzyko zasobu.
+Typ zasobu| Typ zasobu ryzyko zasobu.
 subStatus | Zazwyczaj REST odpowiedni kod stanu HTTP wywołań, ale można również uwzględnić inne parametry opisujące podstanu. Na przykład: OK (kod stanu HTTP: 200), utworzony (kod stanu HTTP: 201), akceptowane (kod stanu HTTP: 202), nie zawartości (kod stanu HTTP: 204), nieprawidłowe żądanie (kod stanu HTTP: 400), nie znaleziono (kod stanu HTTP: 404), konflikt (kod stanu HTTP: 409), serwer wewnętrzny Błąd (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504).
 eventTimestamp | Sygnatura czasowa po zdarzeniu został wygenerowany przez usługę Azure przetwarzania żądania odpowiadający zdarzenia.
 submissionTimestamp | Znacznik czasu w momencie zdarzenia stały się dostępne na potrzeby zapytań.
@@ -52,16 +52,54 @@ status | Ciąg opisujący stan operacji. Niektóre typowe wartości to: **urucho
 operationName | Nazwa operacji.
 category | Ta właściwość jest zawsze **ServiceHealth**.
 resourceId | Identyfikator zasobu ryzyko zasobu.
-Properties.title | Tytuł zlokalizowane dla tej komunikacji. Domyślnym będzie angielski.
-Properties.communication | Szczegóły zlokalizowanych komunikacji z kodu znaczników HTML. Domyślnym będzie angielski.
-Properties.incidentType | Jedną z następujących wartości: **AssistedRecovery**, **ActionRequired**, **informacji**, **zdarzenia**,  **Konserwacja**, lub **zabezpieczeń**.
+Properties.Title | Tytuł zlokalizowane dla tej komunikacji. Domyślnym będzie angielski.
+Properties.Communication | Szczegóły zlokalizowanych komunikacji z kodu znaczników HTML. Domyślnym będzie angielski.
+Properties.incidentType | Jedną z następujących wartości: **ActionRequired**, **informacji**, **zdarzenia**, **konserwacji**, lub **zabezpieczeń**.
 Properties.trackingId | Zdarzenia, z którą jest skojarzone to zdarzenie. Umożliwia korelowanie zdarzeń związanych ze zdarzeniem.
 Properties.impactedServices | Zmienionym obiektu blob JSON opisujący usługi i regiony wpływa zdarzenie. Właściwość zawiera listę usług, z których każda ma **ServiceName**oraz listę ryzyko regionów, z których każda ma **RegionName**.
 Properties.defaultLanguageTitle | Komunikacja w języku angielskim.
 Properties.defaultLanguageContent | Komunikacja w języku angielskim jako kod znaczników HTML i zwykły tekst.
-Properties.stage | Możliwe wartości **AssistedRecovery**, **ActionRequired**, **informacji**, **zdarzenia**, i **zabezpieczeń**  są **Active** lub **rozwiązane**. Dla **konserwacji**, są one: **Active**, **planowane**, **w toku**, **anulowane**, **Zmienił**, **rozpoznać**, lub **pełną**.
+Properties.Stage | Możliwe wartości **zdarzenia**, i **zabezpieczeń** są **aktywny,** **rozwiązane** lub **RCA**. Dla **ActionRequired** lub **informacji** jest to jedyna wartość **aktywne.** Dla **konserwacji** są: **Active**, **planowane**, **w toku**, **anulowane**, **Zmienił**, **rozpoznać**, lub **pełną**.
 Properties.communicationId | Komunikacja, z którą jest skojarzone to zdarzenie.
 
+### <a name="details-on-service-health-level-information"></a>Szczegóły na poziomie informacje o kondycji usługi
+  <ul>
+    <li><b>Wymagana akcja</b> (properties.incidentType == ActionRequired) <dl>
+            <dt>Informacyjny</dt>
+            <dd>Czynności wykonywane przez administratora wymagane w celu ograniczenia wpływu na istniejące usługi</dd>
+        </dl>
+    </li>
+    <li><b>Konserwacja</b> (properties.incidentType == konserwacji) <dl>
+            <dt>Ostrzeżenie</dt>
+            <dd>pilnej konserwacji<dd>
+            <dt>Informacyjny</dt>
+            <dd>Standardowa zaplanowanej konserwacji</dd>
+        </dl>
+    </li>
+    <li><b>Informacje o</b> (properties.incidentType == informacji) <dl>
+            <dt>Informacyjny</dt>
+            <dd>Aby uniknąć wpływu na istniejące usługi może być konieczne administratora</dd>
+        </dl>
+    </li>
+    <li><b>Zabezpieczenia</b> (properties.incidentType == zabezpieczeń) <dl>
+            <dt>Błąd</dt>
+            <dd>Powszechne problemy podczas uzyskiwania dostępu do wielu usług w wielu regionach wpływają na szerokiego zakresu klientów.</dd>
+            <dt>Ostrzeżenie</dt>
+            <dd>Problemy dotyczące uzyskiwania dostępu do określonych usług i/lub w określonych regionach wpływają na podzestawie klientów.</dd>
+            <dt>Informacyjny</dt>
+            <dd>Problemów wpływających na operacje zarządzania i/lub opóźnienia, nie wpływu na dostępność usługi.</dd>
+        </dl>
+    </li>
+    <li><b>Usługa problemów</b> (properties.incidentType == zdarzenie) <dl>
+            <dt>Błąd</dt>
+            <dd>Powszechne problemy podczas uzyskiwania dostępu do wielu usług w wielu regionach wpływają na szerokiego zakresu klientów.</dd>
+            <dt>Ostrzeżenie</dt>
+            <dd>Problemy dotyczące uzyskiwania dostępu do określonych usług i/lub w określonych regionach wpływają na podzestawie klientów.</dd>
+            <dt>Informacyjny</dt>
+            <dd>Problemów wpływających na operacje zarządzania i/lub opóźnienia, nie wpływu na dostępność usługi.</dd>
+        </dl>
+    </li>
+  </ul>
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Wyświetl powiadomienia usługi kondycji w portalu Azure
 1.  W [portalu Azure](https://portal.azure.com), wybierz pozycję **Monitor**.

@@ -30,7 +30,7 @@
       href: storage-quickstart-blobs-ruby.md
     - name: Praca z obiektami blob — Node.js
       href: storage-quickstart-blobs-nodejs.md
-    - name: Praca z obiektami blob — JavaScript/HTML
+    - name: Praca z obiektami blob — JS/HTML
       href: storage-quickstart-blobs-javascript-client-libraries.md
     - name: Praca z obiektami blob — PHP
       href: storage-quickstart-blobs-php.md

@@ -89,28 +89,30 @@
       href: concepts-service.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Zarządzanie rejestracjami urządzeń
-      items:
-        - name: Zarządzanie rejestracjami urządzeń w witrynie Azure Portal
-          href: how-to-manage-enrollments.md
-        - name: Zarządzanie rejestracjami urządzeń przy użyciu zestawów SDK usług
-          href: how-to-manage-enrollments-sdks.md
-    - name: Odwoływanie dostępu urządzeń
-      href: how-to-revoke-device-access-portal.md
-    - name: Anulowanie aprowizacji urządzeń
-      href: how-to-unprovision-devices.md
-    - name: Sprawdzanie dowodu posiadania dla certyfikatów urzędu certyfikacji X.509
-      href: how-to-verify-certificates.md
-    - name: Używanie modułu HSM z zestawem SDK
-      href: use-hsm-with-sdk.md
-    - name: Kontrola dostępu do usługi Provisioning Service
-      href: how-to-control-access.md
-    - name: Zarządzanie usługą aprowizowania urządzeń za pomocą interfejsu wiersza polecenia platformy Azure
-      href: how-to-manage-dps-with-cli.md
-    - name: Programowanie za pomocą narzędzi zestawu SDK
-      href: how-to-use-sdk-tools.md
-    - name: Łączenie z zestawem MXChip IoT DevKit
+    - name: Łączenie zestawu deweloperskiego IoT MXChip z usługą IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Zarządzanie konfiguracją aprowizacji urządzeń
+      items:
+        - name: Konfigurowanie zweryfikowanych certyfikatów witryny
+          href: how-to-verify-certificates.md
+        - name: Zarządzanie anulowaniem aprowizacji
+          href: how-to-unprovision-devices.md
+        - name: Zarządzanie wyrejestrowywaniem
+          href: how-to-revoke-device-access-portal.md
+        - name: Zarządzanie rejestracjami — Portal
+          href: how-to-manage-enrollments.md
+        - name: Zarządzanie rejestracjami — zestawy SDK usług
+          href: how-to-manage-enrollments-sdks.md
+    - name: Zarządzanie usługą aprowizacji urządzeń
+      items:
+        - name: Konfigurowanie usługi aprowizacji urządzeń przy użyciu interfejsu wiersza polecenia platformy Azure
+          href: how-to-manage-dps-with-cli.md
+        - name: Kontrola dostępu do interfejsów API usługi Provisioning Service
+          href: how-to-control-access.md
+    - name: Korzystanie z mechanizmów zaświadczania za pomocą zestawu SDK
+      href: use-hsm-with-sdk.md
+    - name: Korzystanie z narzędzi zestawu SDK do programowania
+      href: how-to-use-sdk-tools.md
 - name: Dokumentacja
   items:
     - name: REST

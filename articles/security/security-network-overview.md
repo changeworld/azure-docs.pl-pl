@@ -32,7 +32,7 @@ W tym artykule Przegląd zabezpieczeń sieci Azure skupia się wokół następuj
 * Bezpiecznego połączenia zdalnego dostępu i między lokalizacjami
 * Dostępność
 * Rozpoznawanie nazw
-* Architektura DMZ
+* Architektura sieci obwodowej
 * Monitorowanie i wykrywania zagrożeń
 
 
@@ -235,10 +235,10 @@ Więcej informacji:
 
 * [Omówienie usługi Azure DNS](../dns/dns-overview.md)
 
-## <a name="dmz-architecture"></a>Architektura DMZ
-W wielu organizacjach enterprise umożliwia segment ich sieci, aby utworzyć strefę buforu od Internetu, a ich usług sieci DMZ. DMZ część sieci jest uznawany za strefy niskim poziomie zabezpieczeń i nie zasoby wysokiej wartości są umieszczane w tym segmencie sieci. Zwykle zobaczysz urządzeń zabezpieczeń sieciowych, karty sieciowej w segmencie DMZ i inny interfejs sieciowy podłączony do sieci z maszyn wirtualnych i usług, które akceptują połączenia przychodzące z Internetu.
+## <a name="dmz-architecture"></a>Architektura sieci obwodowej
+W wielu organizacjach enterprise umożliwia segment ich sieci, aby utworzyć strefę buforu od Internetu, a ich usług sieci obwodowej. Sieć obwodowa część sieci jest uznawany za strefy niskim poziomie zabezpieczeń i nie zasoby wysokiej wartości są umieszczane w tym segmencie sieci. Zwykle zobaczysz urządzeń zabezpieczeń sieciowych, karty sieciowej w segmencie DMZ i inny interfejs sieciowy podłączony do sieci z maszyn wirtualnych i usług, które akceptują połączenia przychodzące z Internetu.
 
-Istnieje wiele zmian projektu DMZ i decyzja o wdrożeniu strefą DMZ i następnie jakiego rodzaju DMZ do użycia, jeśli zdecydujesz się używać jednego, opiera się na określonych wymagań dotyczących zabezpieczeń sieci.
+Istnieje wiele zmian projektu sieci obwodowej i decyzja o wdrożeniu sieci obwodowej i następnie jakiego rodzaju sieć obwodowa do użycia, jeśli zdecydujesz się używać jednego, opiera się na określonych wymagań dotyczących zabezpieczeń sieci.
 
 Więcej informacji:
 
