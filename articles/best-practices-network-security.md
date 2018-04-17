@@ -1,11 +1,11 @@
 ---
-title: "Najlepsze rozwiązania sieci platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, niektóre najważniejsze funkcje dostępne w systemie Azure w celu tworzenia bezpiecznego w środowiskach sieci"
+title: Najlepsze rozwiązania sieci platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, niektóre najważniejsze funkcje dostępne w systemie Azure w celu tworzenia bezpiecznego w środowiskach sieci
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: d169387a-1243-4867-a602-01d6f2d8a2a1
 ms.service: virtual-network
 ms.devlang: na
@@ -524,21 +524,21 @@ Dodanie połączenia sieciowego w komunikacji równorzędnej ExpressRoute prywat
 <!--Image References-->
 [0]: ./media/best-practices-network-security/flowchart.png "schemat blokowy opcji zabezpieczeń"
 [2]: ./media/best-practices-network-security/azuresecurityfeatures.png "funkcje zabezpieczeń platformy azure"
-[3]: ./media/best-practices-network-security/dmzcorporate.png "DMZ A w sieci firmowej"
+[3]: ./media/best-practices-network-security/dmzcorporate.png "Sieć obwodowa A w sieci firmowej"
 [4]: ./media/best-practices-network-security/azuresecurityarchitecture.png "architektury zabezpieczeń platformy azure"
-[5]: ./media/best-practices-network-security/dmzazure.png "DMZ w sieci wirtualnej platformy Azure"
+[5]: ./media/best-practices-network-security/dmzazure.png "Sieć obwodowa w sieci wirtualnej platformy Azure"
 [6]: ./media/best-practices-network-security/dmzhybrid.png "sieci hybrydowe za pomocą trzech granic zabezpieczeń"
-[7]: ./media/best-practices-network-security/example1design.png "ruchu przychodzącego DMZ z grupy NSG"
-[8]: ./media/best-practices-network-security/example2design.png "ruchu przychodzącego DMZ NVA i grupy NSG"
-[9]: ./media/best-practices-network-security/example3design.png "DMZ dwukierunkowe z NVA, NSG i przez"
+[7]: ./media/best-practices-network-security/example1design.png "ruchu przychodzącego sieci obwodowej z grupy NSG"
+[8]: ./media/best-practices-network-security/example2design.png "ruchu przychodzącego sieci obwodowej NVA i grupy NSG"
+[9]: ./media/best-practices-network-security/example3design.png "Dwukierunkowa sieć obwodowa z NVA, NSG i przez"
 [10]: ./media/best-practices-network-security/example3firewalllogical.png "widok logiczny reguł zapory"
-[11]: ./media/best-practices-network-security/example3designoptions.png "DMZ z NVA połączonych sieci hybrydowe"
-[12]: ./media/best-practices-network-security/example4designs2s.png "DMZ z NVA nawiązano połączenie przy użyciu sieci VPN lokacja lokacja"
+[11]: ./media/best-practices-network-security/example3designoptions.png "Sieć obwodowa z NVA połączonych sieci hybrydowe"
+[12]: ./media/best-practices-network-security/example4designs2s.png "Sieć obwodowa z NVA nawiązano połączenie przy użyciu sieci VPN lokacja lokacja"
 [13]: ./media/best-practices-network-security/example4networklogical.png "sieci logicznej z punktu widzenia NVA"
-[14]: ./media/best-practices-network-security/example5designoptions.png "DMZ Azure bramy połączonej sieci hybrydowe lokacja lokacja"
-[15]: ./media/best-practices-network-security/example5designs2s.png "DMZ Azure bramy przy użyciu sieci VPN lokacja lokacja"
-[16]: ./media/best-practices-network-security/example6designoptions.png "DMZ Azure bramy połączonej sieci hybrydowe usługi ExpressRoute"
-[17]: ./media/best-practices-network-security/example6designexpressroute.png "DMZ Azure bramy przy użyciu połączenia ExpressRoute"
+[14]: ./media/best-practices-network-security/example5designoptions.png "Sieć obwodowa na platformie Azure bramy połączonej sieci hybrydowe lokacja lokacja"
+[15]: ./media/best-practices-network-security/example5designs2s.png "Sieć obwodowa na platformie Azure bramy przy użyciu sieci VPN lokacja lokacja"
+[16]: ./media/best-practices-network-security/example6designoptions.png "Sieć obwodowa na platformie Azure bramy połączonej sieci hybrydowe usługi ExpressRoute"
+[17]: ./media/best-practices-network-security/example6designexpressroute.png "Sieć obwodowa na platformie Azure bramy przy użyciu połączenia ExpressRoute"
 
 <!--Link References-->
 [TrustCenter]: https://azure.microsoft.com/support/trust-center/compliance/

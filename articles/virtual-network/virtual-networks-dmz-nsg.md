@@ -1,6 +1,6 @@
 ---
-title: Przykład DMZ Azure — Tworzenie prostego DMZ z grup NSG | Dokumentacja firmy Microsoft
-description: Tworzenie DMZ z grup zabezpieczeń sieci (NSG)
+title: Przykład sieci obwodowej na platformie Azure — Tworzenie prostej sieci obwodowej z grup NSG | Dokumentacja firmy Microsoft
+description: Tworzenie sieci obwodowej z grup zabezpieczeń sieci (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -20,7 +20,7 @@ ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 04/05/2018
 ---
-# <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Przykład 1 — Tworzenie prostego DMZ, za pomocą grup NSG z szablonem usługi Azure Resource Manager
+# <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Przykład 1 — Tworzenie prostej sieci obwodowej za pomocą grup NSG z szablonem usługi Azure Resource Manager
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
 
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.lasthandoff: 04/05/2018
 > 
 >
 
-W tym przykładzie tworzy DMZ pierwotnych z czterech serwerów z systemem Windows i grupy zabezpieczeń sieci. W tym przykładzie przedstawiono sekcjach odpowiedni szablon zapewnienie głębsze zrozumienie każdego kroku. Brak sekcji scenariusza ruchu zapewnienie krok po kroku omówiono sposób ruch będzie kontynuowana za pośrednictwem warstw zabezpieczeń w strefie DMZ. Na koniec w odwołaniach sekcja jest kod pełną szablonu i instrukcje dotyczące tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
+W tym przykładzie tworzy sieć obwodową pierwotnych z czterech serwerów z systemem Windows i grupy zabezpieczeń sieci. W tym przykładzie przedstawiono sekcjach odpowiedni szablon zapewnienie głębsze zrozumienie każdego kroku. Brak sekcji scenariusza ruchu zapewnienie krok po kroku omówiono sposób ruch będzie kontynuowana za pośrednictwem warstw zabezpieczeń w sieci obwodowej. Na koniec w odwołaniach sekcja jest kod pełną szablonu i instrukcje dotyczące tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] 
 
-![Przychodzący DMZ z grupy NSG][1]
+![Przychodząca sieć obwodowa z grupy NSG][1]
 
 ## <a name="environment-description"></a>Opis elementu środowiska
 W tym przykładzie subskrypcja zawiera następujące zasoby:
@@ -349,16 +349,16 @@ Aby wdrożyć szablon, który tworzy w tym przykładzie z serwisu GitHub i porta
 Aby usunąć to wdrożenie, Usuń grupę zasobów i wszystkie zasoby podrzędne zostaną również usunięte.
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
-Po pomyślnym uruchomieniu szablon, można skonfigurować serwer sieci web i serwerów aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji DMZ. Aby zainstalować przykładową aplikację dla tego i innych przykłady DMZ, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
+Po pomyślnym uruchomieniu szablon, można skonfigurować serwer sieci web i serwerów aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej. Aby zainstalować przykładową aplikację dla tego i innych przykładowych sieci obwodowych, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * W tym przykładzie wdrożenia
 * Tworzenie przykładowej aplikacji
-* Testowanie różnych ruch za pośrednictwem tego DMZ
+* Testowanie różnych ruch za pośrednictwem tej sieci obwodowej
 
 <!--Image References-->
-[1]: ./media/virtual-networks-dmz-nsg-arm/example1design.png "Przychodzący DMZ z grupy NSG"
+[1]: ./media/virtual-networks-dmz-nsg-arm/example1design.png "Przychodząca sieć obwodowa z grupy NSG"
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md

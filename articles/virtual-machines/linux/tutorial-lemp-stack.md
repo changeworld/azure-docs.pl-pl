@@ -1,13 +1,13 @@
 ---
-title: "Wdrażanie LEMP na maszynie wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Samouczek — instalacja stosu LEMP na maszynie Wirtualnej systemu Linux na platformie Azure"
+title: Wdrażanie stosu LEMP na maszynie wirtualnej z systemem Linux na platformie Azure | Microsoft Docs
+description: Samouczek — instalowanie stosu oprogramowania LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,92 +15,92 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: c77cd0148a7e3e7b99e90e29bc1499dae8f95028
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
-ms.translationtype: MT
+ms.openlocfilehash: f907b468a409135d4b45e76297fc7cd86eeead78
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Zainstaluj serwer sieci web LEMP na maszynie Wirtualnej platformy Azure
-W tym artykule przedstawiono sposób wdrażania serwera sieci web NGINX, MySQL i PHP (stos LEMP) na maszynie Wirtualnej systemu Ubuntu na platformie Azure. Stos LEMP stanowi alternatywę dla popularnych [stosu światła](tutorial-lamp-stack.md), które można także zainstalować na platformie Azure. Aby wyświetlić serwera LEMP w akcji, można opcjonalnie zainstalować i skonfigurować witrynę WordPress. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+# <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Instalowanie serwera internetowego LEMP na maszynie wirtualnej platformy Azure
+W tym artykule przedstawiono kroki wdrażania serwera internetowego NGINX oraz oprogramowania MySQL i PHP (stosu LEMP) na maszynie wirtualnej z systemem Ubuntu na platformie Azure. Stos LEMP, który stanowi alternatywę dla popularnego [stosu LAMP](tutorial-lamp-stack.md), również można zainstalować na platformie Azure. Aby zobaczyć, jak działa serwer LEMP, możesz opcjonalnie zainstalować i skonfigurować witrynę WordPress. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie maszyny Wirtualnej systemu Ubuntu ("L" w stosie LEMP)
+> * Tworzenie maszyny wirtualnej z systemem Ubuntu (oznaczonym literą „L” w stosie LEMP)
 > * Otwieranie portu 80 na potrzeby ruchu w sieci Web
-> * Zainstaluj NGINX, MySQL i PHP
-> * Sprawdź, instalacja i Konfiguracja
-> * Zainstaluj program WordPress na serwerze LEMP
+> * Instalowanie oprogramowania NGINX, MySQL i PHP
+> * Weryfikowanie instalacji i konfiguracji
+> * Instalowanie oprogramowania WordPress na serwerze LEMP
 
 
-Ta konfiguracja jest szybkie testów i weryfikacji koncepcji.
+Ta konfiguracja umożliwia szybkie przeprowadzenie testów lub weryfikacji koncepcji.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli wybierzesz do zainstalowania i używania interfejsu wiersza polecenia lokalnie, w tym samouczku wymaga używasz interfejsu wiersza polecenia Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
-## <a name="install-nginx-mysql-and-php"></a>Zainstaluj NGINX, MySQL i PHP
+## <a name="install-nginx-mysql-and-php"></a>Instalowanie oprogramowania NGINX, MySQL i PHP
 
-Uruchom następujące polecenie, aby zaktualizować źródła pakietu Ubuntu i zainstaluj NGINX, MySQL i PHP. 
+Uruchom następujące polecenie, aby zaktualizować źródła pakietów systemu Ubuntu oraz zainstalować oprogramowanie NGINX, MySQL i PHP. 
 
 ```bash
 sudo apt update && sudo apt install nginx mysql-server php-mysql php php-fpm
 ```
 
-Monit, aby zainstalować pakiety i innych zależności. Po wyświetleniu monitu ustawienia hasła głównego dla programu MySQL, a następnie [Enter], aby kontynuować. Postępuj zgodnie z monitami pozostałych. Ten proces instaluje minimalne wymagane rozszerzeń PHP potrzebne do korzystania z MySQL PHP. 
+Pojawi się monit o zainstalowanie pakietów i innych zależności. Po wyświetleniu monitu ustaw hasło główne programu MySQL, a następnie naciśnij klawisz [Enter], aby kontynuować. Postępuj zgodnie z pozostałymi instrukcjami. W tym procesie jest instalowana minimalna liczba wymaganych rozszerzeń PHP potrzebnych do używania języka PHP z oprogramowaniem MySQL. 
 
 ![Strona hasła głównego MySQL][1]
 
-## <a name="verify-installation-and-configuration"></a>Sprawdź, instalacja i Konfiguracja
+## <a name="verify-installation-and-configuration"></a>Weryfikowanie instalacji i konfiguracji
 
 
 ### <a name="nginx"></a>NGINX
 
-Sprawdź wersję programu NGINX przy użyciu następującego polecenia:
+Sprawdź wersję oprogramowania NGINX przy użyciu następującego polecenia:
 ```bash
 nginx -v
 ```
 
-Z NGINX zainstalowane, a port 80 jest otwarty do maszyny Wirtualnej teraz są dostępne serwera sieci web z Internetu. Aby wyświetlić stronę powitalną NGINX, otwórz przeglądarkę sieci web, a następnie wprowadź publiczny adres IP maszyny wirtualnej. Użyj publicznego adresu IP używanego do SSH do maszyny Wirtualnej:
+Po zainstalowaniu serwera NGINX i otwarciu portu 80 dla maszyny wirtualnej można uzyskać dostęp do serwera internetowego z Internetu. Aby wyświetlić stronę powitalną oprogramowania NGINX, otwórz przeglądarkę internetową i wpisz publiczny adres IP maszyny wirtualnej. Wpisz publiczny adres IP użyty do nawiązania połączenia SSH z maszyną wirtualną:
 
-![NGINX domyślnej strony][3]
+![Strona domyślna serwera NGINX][3]
 
 
 ### <a name="mysql"></a>MySQL
 
-Sprawdź wersję programu MySQL przy użyciu następującego polecenia (należy pamiętać, kapitału `V` parametru):
+Sprawdź wersję oprogramowania MySQL przy użyciu następującego polecenia (zwróć uwagę na parametr `V` oznaczony wielką literą):
 
 ```bash
 mysql -V
 ```
 
-Aby pomóc w zabezpieczeniu instalacji MySQL, uruchom `mysql_secure_installation` skryptu. Jeśli tylko konfigurujesz serwer tymczasowy, możesz pominąć ten krok. 
+Aby ułatwić ochronę instalacji oprogramowania MySQL, uruchom skrypt `mysql_secure_installation`. Jeśli konfigurujesz tylko serwer tymczasowy, możesz pominąć ten krok. 
 
 ```bash
 mysql_secure_installation
 ```
 
-Wprowadź hasło główne dla programu MySQL, a następnie skonfiguruj ustawienia zabezpieczeń dla danego środowiska.
+Wprowadź hasło główne oprogramowania MySQL, a następnie skonfiguruj ustawienia zabezpieczeń dla środowiska.
 
-Jeśli chcesz wypróbować funkcje MySQL (Utwórz bazę danych MySQL, dodać użytkowników lub zmienić ustawienia konfiguracji), logowanie do MySQL. Ten krok nie jest wymagany do ukończenia tego samouczka. 
+Jeśli chcesz wypróbować funkcje oprogramowania MySQL (na przykład utworzyć bazę danych MySQL, dodać użytkowników lub zmienić ustawienia konfiguracji), zaloguj się do systemu MySQL. Ten krok nie jest wymagany do ukończenia samouczka. 
 
 
 ```bash
 mysql -u root -p
 ```
 
-Po zakończeniu zamknij wiersz mysql, wpisując `\q`.
+Gdy skończysz, zamknij wiersz polecenia mysql, wpisując `\q`.
 
 ### <a name="php"></a>PHP
 
-Sprawdź wersję programu PHP za pomocą następującego polecenia:
+Sprawdź wersję oprogramowania PHP przy użyciu następującego polecenia:
 
 ```bash
 php -v
 ```
 
-Skonfiguruj NGINX, aby użyć Menedżera procesu FastCGI PHP (PHP FPM). Uruchom następujące polecenia, aby utworzyć kopię zapasową oryginalnego pliku konfiguracji blok serwera NGINX, a następnie edytuj oryginalny plik w wybranym edytorze:
+Skonfiguruj serwer NGINX pod kątem używania menedżera procesów FastCGI języka PHP (PHP-FPM). Uruchom następujące polecenia, aby utworzyć kopię zapasową oryginalnego pliku konfiguracji bloku serwera NGINX, a następnie zmodyfikuj oryginalny plik w wybranym edytorze:
 
 ```bash
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_backup
@@ -108,7 +108,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-W edytorze, Zastąp zawartość `/etc/nginx/sites-available/default` następującym kodem. Zobacz komentarze opis ustawienia. Zastąp publicznego adresu IP dla maszyny Wirtualnej *yourPublicIPAddress*i pozostawić pozostałe ustawienia. Następnie zapisz plik.
+W edytorze zastąp zawartość pliku `/etc/nginx/sites-available/default` następującym kodem. Komentarze zawierają opisy ustawień. Wartość *yourPublicIPAddress* zastąp publicznym adresem IP swojej maszyny wirtualnej, a resztę ustawień pozostaw bez zmian. Następnie zapisz plik.
 
 ```
 server {
@@ -133,19 +133,19 @@ server {
 }
 ```
 
-Sprawdź konfigurację NGINX błędy składniowe:
+Sprawdź konfigurację serwera NGINX pod kątem błędów składniowych:
 
 ```bash
 sudo nginx -t
 ```
 
-Jeśli składnia jest poprawna, uruchom ponownie NGINX za pomocą następującego polecenia:
+Jeśli składnia jest poprawna, uruchom ponownie serwer NGINX za pomocą następującego polecenia:
 
 ```bash
 sudo service nginx restart
 ```
 
-Jeśli chcesz przetestować dalsze, Utwórz szybkie stronę informacji PHP do wyświetlania w przeglądarce. Poniższe polecenie tworzy stronę informacji PHP:
+Jeśli chcesz wykonać dodatkowe testy, utwórz prostą stronę z informacjami o PHP, przeznaczoną do wyświetlania w przeglądarce. Poniższe polecenie tworzy stronę z informacjami o języku PHP:
 
 ```bash
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
@@ -153,9 +153,9 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 
 
-Teraz można sprawdzić stronę informacji PHP utworzony. Otwórz przeglądarkę i przejdź do `http://yourPublicIPAddress/info.php`. Należy zastąpić publicznego adresu IP maszyny Wirtualnej. Powinien być podobny do tego obrazu.
+Możesz teraz sprawdzić zawartość utworzonej strony z informacjami o języku PHP. Otwórz przeglądarkę i przejdź pod adres `http://yourPublicIPAddress/info.php`. Zastąp publiczny adres IP maszyny wirtualnej. Zawartość okna powinna wyglądać mniej więcej tak.
 
-![Strona informacje o PHP][2]
+![Strona z informacjami o języku PHP][2]
 
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
@@ -165,16 +165,16 @@ Teraz można sprawdzić stronę informacji PHP utworzony. Otwórz przeglądarkę
 W tym samouczku wdrożono serwer LEMP na platformie Azure. W tym samouczku omówiono:
 
 > [!div class="checklist"]
-> * Tworzenie maszyny Wirtualnej systemu Ubuntu
+> * Tworzenie maszyny wirtualnej z systemem Ubuntu
 > * Otwieranie portu 80 na potrzeby ruchu w sieci Web
-> * Zainstaluj NGINX, MySQL i PHP
-> * Sprawdź, instalacja i Konfiguracja
-> * Zainstaluj program WordPress na stosie LEMP
+> * Instalowanie oprogramowania NGINX, MySQL i PHP
+> * Weryfikowanie instalacji i konfiguracji
+> * Instalowanie oprogramowania WordPress na stosie LEMP
 
-Przejście do następnym samouczku, aby dowiedzieć się, jak zabezpieczyć serwerów sieci web za pomocą certyfikatów SSL.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwery internetowe przy użyciu certyfikatów SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpieczenia serwera sieci web przy użyciu protokołu SSL](tutorial-secure-web-server.md)
+> [Zabezpieczanie serwera internetowego przy użyciu protokołu SSL](tutorial-secure-web-server.md)
 
 [1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png

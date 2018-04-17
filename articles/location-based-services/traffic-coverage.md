@@ -1,14 +1,14 @@
 ---
-title: "Usługi na podstawie zapotrzebowania ruchu w lokalizacji platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o ruchu usługi na podstawie zapotrzebowania w lokalizacji platformy Azure"
+title: Usługi na podstawie zapotrzebowania ruchu w lokalizacji platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o ruchu usługi na podstawie zapotrzebowania w lokalizacji platformy Azure
 services: location-based-services
-keywords: 
+keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
@@ -45,7 +45,7 @@ Azure lokalizacji na podstawie usług (kg) zawiera informacje sformatowanego ruc
 |+Monaco     |✓         |✓         |
 |Niemcy     |✓         |✓         |
 |Grecja     |✓         |✓         |
-|Hongkong SAR     |✓         |✓         |
+|SRA Hongkong     |✓         |✓         |
 |Węgry     |✓         |✓         |
 |Islandia     |         |✓         |
 |Indonezja     |✓         |✓         |
@@ -58,7 +58,7 @@ Azure lokalizacji na podstawie usług (kg) zawiera informacje sformatowanego ruc
 |Lesotho     |✓         |✓         |
 |Litwa     |         |✓         |
 |Luksemburg     |✓         |✓         |
-|Makau SAR     |         |✓         |
+|SRA Makau     |         |✓         |
 |Malezja     |✓         |✓         |
 |Malta     |✓         |✓         |
 |Meksyk     |✓         |✓         |

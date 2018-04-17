@@ -1,11 +1,11 @@
 ---
-title: "Powiąż istniejący certyfikat SSL niestandardowych do aplikacji sieci Web platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się powiązać niestandardowego certyfikatu SSL do aplikacji sieci web, zaplecza aplikacji mobilnej lub aplikacji interfejsu API w usłudze Azure App Service."
+title: Wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps | Microsoft Docs
+description: Dowiedz się, jak powiązać niestandardowy certyfikat protokołu SSL ze swoją aplikacją internetową, zapleczem aplikacji mobilnej lub aplikacją interfejsu API w usłudze Azure App Service.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5d5bf588-b0bb-4c6d-8840-1b609cfb5750
 ms.service: app-service-web
 ms.workload: web
@@ -15,105 +15,105 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f69bc731b2858c338d7f7b4d347e7107a0f4eeed
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
-ms.translationtype: MT
+ms.openlocfilehash: 7c14b241155e10f0bb325b50819e2277622e4dff
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Powiąż istniejący certyfikat SSL niestandardowych do aplikacji sieci Web Azure
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
 
-Aplikacje sieci Web platformy Azure oferuje wysoce skalowalną, własnym poprawiania usługi hosta sieci web. Ten samouczek pokazuje, jak można powiązać certyfikat SSL niestandardowych zakupionego od zaufanego urzędu certyfikacji do [Azure Web Apps](app-service-web-overview.md). Po zakończeniu, będzie można uzyskać dostępu do aplikacji sieci web w punkcie końcowym HTTPS z niestandardowej domeny DNS.
+Usługa Azure Web Apps oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten samouczek pokazuje, jak powiązać niestandardowy certyfikat protokołu SSL zakupiony od zaufanego urzędu certyfikacji z usługą [Azure Web Apps](app-service-web-overview.md). Po zakończeniu, będzie można uzyskać dostęp do aplikacji internetowej w punkcie końcowym protokołu HTTPS niestandardowej domeny DNS.
 
-![Aplikacja sieci Web z niestandardowego certyfikatu SSL](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
+![Aplikacja internetowa z niestandardowym certyfikatem protokołu SSL](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Uaktualnij warstwę cenową aplikacji
-> * Powiązać niestandardowego certyfikatu SSL z usługi aplikacji
+> * Uaktualnienie warstwy cenowej aplikacji
+> * Wiązanie niestandardowego certyfikatu protokołu SSL z usługą App Service
 > * Wymuszanie protokołu HTTPS dla aplikacji
-> * Powiązania certyfikatu SSL za pomocą skryptów automatyzacji
+> * Automatyzacja wiązania certyfikatu protokołu SSL za pomocą skryptów
 
 > [!NOTE]
-> Jeśli potrzebujesz niestandardowego certyfikatu SSL, możesz pobrać go w portalu Azure bezpośrednio i powiązać go z aplikacji sieci web. Postępuj zgodnie z [certyfikaty usługi aplikacji — samouczek](web-sites-purchase-ssl-web-site.md).
+> Jeśli potrzebujesz uzyskać niestandardowy certyfikat protokołu SSL, możesz pobrać go bezpośrednio w witrynie Azure Portal i powiązać ze swoją aplikacją internetową. Postępuj zgodnie z [samouczkiem Certyfikaty usługi App Service](web-sites-purchase-ssl-web-site.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W celu ukończenia tego samouczka:
 
-- [Utwórz aplikację usługi aplikacji](/azure/app-service/)
-- [Mapowanie niestandardową nazwę DNS do aplikacji sieci web](app-service-web-tutorial-custom-domain.md)
-- Uzyskanie certyfikatu SSL z zaufanego urzędu certyfikacji
-- Klucz prywatny, używanego do podpisywania żądań certyfikatów SSL
+- [Utwórz aplikację usługi App Service](/azure/app-service/)
+- [Mapuj niestandardową nazwę DNS na swoją aplikację internetową](app-service-web-tutorial-custom-domain.md)
+- Uzyskaj certyfikat protokołu SSL z zaufanego urzędu certyfikacji
+- Zachowaj klucz prywatny użyty do podpisania żądania certyfikatu protokołu SSL
 
 <a name="requirements"></a>
 
-### <a name="requirements-for-your-ssl-certificate"></a>Wymagania dotyczące certyfikatu SSL
+### <a name="requirements-for-your-ssl-certificate"></a>Wymagania dotyczące certyfikatu protokołu SSL
 
-Aby użyć certyfikatu w usłudze App Service, certyfikat musi spełniać następujące wymagania:
+Aby używać certyfikatu w usłudze App Service, musi on spełniać wszystkie następujące wymagania:
 
-* Podpisane przez zaufany urząd certyfikacji
-* Eksportowane jako chronionego hasłem pliku PFX
-* Zawiera klucz prywatny co najmniej 2048 bitów długo
+* Podpisany przez zaufany urząd certyfikacji
+* Wyeksportowany jako chroniony hasłem plik PFX
+* Zawiera klucz prywatny o długości co najmniej 2048 bitów
 * Zawiera wszystkie certyfikaty pośrednie w łańcuchu certyfikatów
 
 > [!NOTE]
-> **Certyfikaty krzywa Cryptography (ECC) eliptycznej** może współpracować z usługi aplikacji, ale nie są objęte w tym artykule. Współpraca z urzędu certyfikacji na kolejnych kroków w celu utworzenia certyfikatów ECC.
+> **Certyfikaty kryptografii opartej na krzywej eliptycznej (ECC, Elliptic Curve Cryptography)** mogą współpracować z usługą App Service, ale nie są uwzględnione w tym artykule. Skontaktuj się ze swoim urzędem certyfikacji, aby uzyskać informacje o dokładnych krokach, które należy wykonać w celu utworzenia certyfikatów ECC.
 
-## <a name="prepare-your-web-app"></a>Przygotowanie aplikacji sieci web
+## <a name="prepare-your-web-app"></a>Przygotowywanie aplikacji internetowej
 
-Do powiązania niestandardowego certyfikatu SSL do aplikacji sieci web z [planu usługi aplikacji](https://azure.microsoft.com/pricing/details/app-service/) musi znajdować się w **podstawowe**, **standardowe**, lub **Premium** warstwy. W tym kroku należy upewnić się, że aplikacja sieci web jest w obsługiwanym warstwy cenowej.
+Aby powiązać niestandardowy certyfikat protokołu SSL z Twoją aplikacją internetową, Twój [Plan usługi App Service](https://azure.microsoft.com/pricing/details/app-service/) musi znajdować się w warstwie **Podstawowa**, **Standardowa** lub **Premium**. W tym kroku musisz się upewnić, że Twoja aplikacja internetowa jest w obsługiwanej warstwie cenowej.
 
 ### <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
 Otwórz [portal Azure](https://portal.azure.com).
 
-### <a name="navigate-to-your-web-app"></a>Przejdź do aplikacji sieci web
+### <a name="navigate-to-your-web-app"></a>Przejdź do swojej aplikacji internetowej
 
-Z menu po lewej stronie kliknij **usługi aplikacji**, a następnie kliknij nazwę aplikacji sieci web.
+W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji internetowej.
 
-![Wybierz aplikację sieci web](./media/app-service-web-tutorial-custom-ssl/select-app.png)
+![Wybieranie aplikacji internetowej](./media/app-service-web-tutorial-custom-ssl/select-app.png)
 
-Jest na stronie Zarządzanie aplikacji sieci web.  
+Znajdujesz się na stronie zarządzania Twojej aplikacji internetowej.  
 
-### <a name="check-the-pricing-tier"></a>Sprawdź warstwę cenową
+### <a name="check-the-pricing-tier"></a>Sprawdzanie warstwy cenowej
 
-W obszarze nawigacji po lewej stronie strony aplikacji sieci web, przewiń do **ustawienia** a następnie wybierz opcję **skalowanie w górę (plan usługi App Service)**.
+W lewym obszarze nawigacji na stronie Twojej aplikacji internetowej przewiń do sekcji **Ustawienia** i wybierz pozycję **Skaluj w górę (plan usługi App Service)**.
 
-![Skalowanie w pionie menu](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
+![Menu skalowania w górę](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
 
-Upewnij się, że aplikacja sieci web nie znajduje się w **wolne** lub **Shared** warstwy. Warstwa bieżąca aplikacja sieci web jest wyróżniony ciemny niebieskie pole.
+Upewnij się, że Twoja aplikacja internetowa nie znajduje się w warstwie **Bezpłatna** ani **Współdzielona**. Bieżąca warstwa Twojej aplikacji internetowej jest wyróżniona ciemnoniebieskim polem.
 
-![Sprawdź warstwę cenową](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
+![Sprawdzanie warstwy cenowej](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-Niestandardowe SSL nie jest obsługiwany w **wolne** lub **Shared** warstwy. Jeśli potrzebujesz skalowanie w górę, wykonaj kroki opisane w następnej sekcji. W przeciwnym razie Zamknij **wybierz warstwę cenową** strony i przejść [przekazywanie i powiązać certyfikatu SSL](#upload).
+Niestandardowy protokół SSL nie jest obsługiwany w warstwie **Bezpłatna** ani **Współdzielona**. Jeśli musisz skalować w górę, wykonaj kroki opisane w następnej sekcji. W przeciwnym razie zamknij stronę **Wybieranie warstwy cenowej** i przejdź do [przekazywania i wiązania certyfikatu protokołu SSL](#upload).
 
-### <a name="scale-up-your-app-service-plan"></a>Skalowanie w górę plan usługi aplikacji
+### <a name="scale-up-your-app-service-plan"></a>Skalowanie w górę planu usługi App Service
 
-Wybierz jedną z **podstawowe**, **standardowe**, lub **Premium** warstw.
+Wybierz jedną z następujących warstw: **Podstawowa**, **Standardowa** lub **Premium**.
 
 Kliknij pozycję **Wybierz**.
 
-![Wybierz warstwę cenową](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
+![Wybieranie warstwy cenowej](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 
-Gdy zostanie wyświetlone następujące powiadomienie, zakończeniu operacji skalowania.
+Wyświetlenie następującego powiadomienia oznacza zakończenie operacji skalowania.
 
-![Skalowanie w górę powiadomień](./media/app-service-web-tutorial-custom-ssl/scale-notification.png)
+![Powiadomienie o skalowaniu w górę](./media/app-service-web-tutorial-custom-ssl/scale-notification.png)
 
 <a name="upload"></a>
 
-## <a name="bind-your-ssl-certificate"></a>Powiąż certyfikat protokołu SSL
+## <a name="bind-your-ssl-certificate"></a>Wiązanie certyfikatu protokołu SSL
 
-Wszystko jest gotowe do przekazania certyfikatu SSL do aplikacji sieci web.
+Wszystko jest gotowe do przekazania certyfikatu protokołu SSL do Twojej aplikacji internetowej.
 
-### <a name="merge-intermediate-certificates"></a>Certyfikaty pośrednie scalenia
+### <a name="merge-intermediate-certificates"></a>Scalanie certyfikatów pośrednich
 
-Urzędu certyfikacji zawiera wiele certyfikatów w łańcuchu certyfikatów, należy scalić certyfikaty w kolejności. 
+Jeśli Twój urząd certyfikacji dał Ci wiele certyfikatów w łańcuchu certyfikatów, musisz kolejno scalić certyfikaty. 
 
-Aby to zrobić, Otwórz każdy z certyfikatów, zostanie wyświetlony w edytorze tekstów. 
+Aby to zrobić, otwórz każdy otrzymany certyfikat w edytorze tekstów. 
 
-Utwórz plik certyfikatu scalone, nazywany _mergedcertificate.crt_. W edytorze tekstów skopiuj zawartość każdy z certyfikatów do tego pliku. Kolejność certyfikaty należy stosować kolejności w łańcuchu certyfikatów, począwszy od certyfikatu i kończąc certyfikatu głównego. Wygląda następująco:
+Utwórz plik scalonego certyfikatu o nazwie _mergedcertificate.crt_. W edytorze tekstów skopiuj zawartość każdego certyfikatu do tego pliku. Kolejność certyfikatów powinna być zgodna z kolejnością w łańcuchu certyfikatów, poczynając od Twojego certyfikatu i kończąc na certyfikacie głównym. Wygląda to następująco:
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -133,106 +133,106 @@ Utwórz plik certyfikatu scalone, nazywany _mergedcertificate.crt_. W edytorze t
 -----END CERTIFICATE-----
 ```
 
-### <a name="export-certificate-to-pfx"></a>Wyeksportuj certyfikat PFX
+### <a name="export-certificate-to-pfx"></a>Eksportowanie certyfikatu do pliku PFX
 
-Eksportowanie scalonych certyfikatu SSL z kluczem prywatnym, który żądania certyfikatu został wygenerowany z.
+Wyeksportuj scalony certyfikat protokołu SSL z kluczem prywatnym, przy użyciu którego zostało wygenerowane żądanie certyfikatu.
 
-Jeśli generowany jest żądanie certyfikatu przy użyciu biblioteki OpenSSL, został utworzony plik klucza prywatnego. Aby wyeksportować certyfikat do PFX, uruchom następujące polecenie. Zastąp symbole zastępcze  _&lt;plików kluczy prywatnych >_ i  _&lt;scalić — plik certyfikatu >_ z ścieżki do klucza prywatnego i certyfikatu scalony plik.
+Jeśli żądanie certyfikatu zostało wygenerowane przy użyciu biblioteki OpenSSL, został utworzony plik klucza prywatnego. Aby wyeksportować certyfikat do pliku PFX, uruchom następujące polecenie. Zamień symbole zastępcze _&lt;private-key-file>_ i _&lt;merged-certificate-file>_ ścieżkami do Twojego klucza prywatnego i pliku scalonego certyfikatu.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-Po wyświetleniu monitu, należy określić hasło eksportu. To hasło będzie używany podczas przekazywania certyfikatu SSL w usłudze App Service później.
+Po wyświetleniu monitu określ hasło eksportu. To hasło będzie później używane podczas przekazywania certyfikatu protokołu SSL do usługi App Service.
 
-Jeśli używasz usług IIS lub _Certreq.exe_ do wygenerowania żądania certyfikatu, zainstalować certyfikat na komputerze lokalnym, a następnie [wyeksportuj certyfikat PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
+Jeśli używasz usług IIS lub programu _Certreq.exe_ do wygenerowania swojego żądania certyfikatu, zainstaluj certyfikat na komputerze lokalnym, a następnie [wyeksportuj certyfikat do pliku PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
-### <a name="upload-your-ssl-certificate"></a>Przekaż certyfikat protokołu SSL
+### <a name="upload-your-ssl-certificate"></a>Przekazywanie certyfikatu protokołu SSL
 
-Aby przekazać certyfikat SSL, kliknij przycisk **certyfikaty SSL** na lewym pasku nawigacyjnym aplikacji sieci web.
+Aby przekazać certyfikat protokołu SSL, kliknij przycisk **Certyfikaty SSL** w lewym obszarze nawigacji aplikacji internetowej.
 
-Kliknij przycisk **Przekaż certyfikat**. 
+Kliknij pozycję **Przekaż certyfikat**. 
 
-W **plik certyfikatu PFX**, wybierz plik w formacie PFX. W **hasło certyfikatu**, wpisz hasło, które utworzono podczas eksportowania pliku PFX.
+W pozycji **Plik PFX certyfikatu** wybierz swój plik PFX. W polu **Hasło certyfikatu** wpisz hasło, które zostało utworzone podczas eksportowania pliku PFX.
 
 Kliknij pozycję **Przekaż**.
 
 ![Przekazywanie certyfikatu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
-Po zakończeniu przekazywania certyfikatu usługi aplikacji był w **certyfikaty SSL** strony.
+Po zakończeniu przekazywania Twojego certyfikatu przez usługę App Service zostanie on wyświetlony na stronie **Certyfikaty protokołu SSL**.
 
-![Przekazany certyfikat](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+![Przekazano certyfikat](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
-### <a name="bind-your-ssl-certificate"></a>Powiąż certyfikat protokołu SSL
+### <a name="bind-your-ssl-certificate"></a>Wiązanie certyfikatu protokołu SSL
 
-W **powiązania SSL** kliknij **dodać powiązanie**.
+W sekcji **Powiązania SSL** kliknij pozycję **Dodaj powiązanie**.
 
-W **Dodaj powiązanie SSL** Użyj listę rozwijaną, aby wybrać nazwę domeny do zabezpieczania i certyfikat do użycia.
+Na stronie **Dodawanie powiązania protokołu SSL** użyj list rozwijanych, aby wybrać nazwę domeny do zabezpieczenia i certyfikat do używania.
 
 > [!NOTE]
-> Jeśli zostały przekazane certyfikat, ale nie ma nazwy domeny w **Hostname** listy rozwijanej, spróbuj odświeżyć stronę przeglądarki.
+> Jeśli certyfikat został przekazany, ale nie widzisz nazw domen na liście rozwijanej **Nazwa hosta**, spróbuj odświeżyć stronę przeglądarki.
 >
 >
 
-W **typu SSL**, wybierz, czy ma być używany  **[oznaczenia nazwy serwera (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)**  lub opartych na protokole SSL.
+W obszarze **Typ protokołu SSL** wybierz, czy ma być używane **[Oznaczanie nazwy serwera (SNI, Server Name Indication)](http://en.wikipedia.org/wiki/Server_Name_Indication)**, czy też protokół SSL oparty na protokole IP.
 
-- **SSL opartego na protokole SNI** -powiązania SSL opartego na wiele SNI mogą zostać dodane. Ta opcja umożliwia wielu certyfikatów protokołu SSL do zabezpieczania wielu domen na ten sam adres IP. Większość nowoczesnych przeglądarek (w tym programu Internet Explorer, Chrome, Firefox i Opera) obsługuje SNI (znaleźć bardziej szczegółowe informacje pomocy technicznej przeglądarki na [wskaźnika nazwy serwera](http://wikipedia.org/wiki/Server_Name_Indication)).
-- **Oparte na protokole SSL** — mogą być dodawane tylko jednego powiązania SSL opartego na protokole IP. Ta opcja umożliwia tylko jeden certyfikat SSL do zabezpieczania dedykowanych publicznego adresu IP. Aby zabezpieczyć wielu domen, należy zabezpieczyć je wszystkie przy użyciu tego samego certyfikatu SSL. Jest to tradycyjne opcja dla powiązania SSL.
+- **SNI SSL** — można dodać wiele powiązań rozszerzenia SNI SSL. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](http://wikipedia.org/wiki/Server_Name_Indication).
+- **Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Aby zabezpieczyć wiele domen, musisz zabezpieczyć je wszystkie przy użyciu tego samego certyfikatu protokołu SSL. Jest to tradycyjna opcja dla powiązania protokołu SSL.
 
-Kliknij przycisk **dodać powiązanie**.
+Kliknij przycisk **Dodaj powiązanie**.
 
-![Powiąż certyfikat protokołu SSL](./media/app-service-web-tutorial-custom-ssl/bind-certificate.png)
+![Wiązanie certyfikatu protokołu SSL](./media/app-service-web-tutorial-custom-ssl/bind-certificate.png)
 
-Po zakończeniu przekazywania certyfikatu usługi aplikacji był w **powiązania SSL** sekcje.
+Gdy usługa App Service zakończy przekazywanie Twojego certyfikatu, zostanie on wyświetlony w sekcjach **Powiązania protokołu SSL**.
 
-![Certyfikat powiązany z aplikacji sieci web](./media/app-service-web-tutorial-custom-ssl/certificate-bound.png)
+![Wiązanie certyfikatu z aplikacją internetową](./media/app-service-web-tutorial-custom-ssl/certificate-bound.png)
 
-## <a name="remap-a-record-for-ip-ssl"></a>Ponowne mapowanie rekord dla protokołu SSL z adresu IP
+## <a name="remap-a-record-for-ip-ssl"></a>Ponowne mapowanie rekordu A dla połączenia SSL z adresu IP
 
-Jeśli nie używasz opartych na protokole SSL w aplikacji sieci web, przejdź do [HTTPS testu dla domeny niestandardowej](#test).
+Jeśli w swojej aplikacji internetowej nie używasz protokołu SSL opartego na protokole IP, przejdź do sekcji [Testowanie protokołu HTTPS dla domeny niestandardowej](#test).
 
-Domyślnie aplikacja sieci web używa udostępnionego publicznego adresu IP. Gdy Powiąż certyfikat z SSL opartego na protokole IP, usługi aplikacji — tworzy nowy, dedykowany adres IP dla aplikacji sieci web.
+Domyślnie aplikacja internetowa używa udostępnionego publicznego adresu IP. Gdy powiążesz certyfikat z protokołem SSL opartym na protokole IP, usługa App Service utworzy nowy, dedykowany adres IP dla Twojej aplikacji internetowej.
 
-Jeśli rekord A zamapowaniu do aplikacji sieci web, należy zaktualizować rejestru domeny ten nowy, dedykowany adres IP.
+Jeśli rekord A jest mapowany na aplikację internetową, zaktualizuj rejestr domeny przy użyciu tego nowego, dedykowanego adresu IP.
 
-Aplikacja sieci web **domeny niestandardowe** strona zostanie zaktualizowana nowy, dedykowany adres IP. [Skopiuj ten adres IP](app-service-web-tutorial-custom-domain.md#info), następnie [ponownie zamapować rekord A](app-service-web-tutorial-custom-domain.md#map-an-a-record) ten nowy adres IP.
+Strona **Domena niestandardowa** Twojej aplikacji internetowej zostanie zaktualizowana z nowego, dedykowanego adresu IP. [Skopiuj ten adres IP](app-service-web-tutorial-custom-domain.md#info), a następnie [ponownie mapuj rekord A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na ten nowy adres IP.
 
 <a name="test"></a>
 
-## <a name="test-https"></a>Test protokołu HTTPS
+## <a name="test-https"></a>Testowanie protokołu HTTPS
 
-Teraz pozostało celu jest aby upewnić się, że HTTPS działa dla domeny niestandardowej. W różnych przeglądarkach, przejdź do `https://<your.custom.domain>` aby zobaczyć, służy ona zapasowej swojej aplikacji sieci web.
+Teraz pozostało tylko upewnienie się, że protokół HTTPS działa dla domeny niestandardowej. W różnych przeglądarkach przejdź na adres `https://<your.custom.domain>`, aby zobaczyć, że Twoja aplikacja internetowa jest udostępniana.
 
-![Nawigacji w portalu do aplikacji Azure](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
+![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
 > [!NOTE]
-> Jeśli aplikacja sieci web udostępnia certyfikatu błędy sprawdzania poprawności, prawdopodobnie używasz certyfikatu z podpisem własnym.
+> Jeśli Twoja aplikacja internetowa wyświetla błędy walidacji certyfikatu, prawdopodobnie używasz certyfikatu z podpisem własnym.
 >
-> Jeśli nie jest wielkość liter, mogą być przechowywane poza certyfikaty pośrednie podczas eksportowania certyfikatu do pliku PFX.
+> Jeśli tak nie jest, certyfikaty pośrednie mogły zostać pominięte podczas eksportowania certyfikatu do pliku PFX.
 
 <a name="bkmk_enforce"></a>
 
 ## <a name="enforce-https"></a>Wymuszanie protokołu HTTPS
 
-Domyślnie każdy użytkownik nadal dostęp do aplikacji sieci web przy użyciu protokołu HTTP. Można przekierować żądania HTTP z portem HTTPS.
+Domyślnie każda osoba nadal może uzyskać dostęp do Twojej aplikacji internetowej przy użyciu protokołu HTTP. Możesz przekierować wszystkie żądania HTTP do portu HTTPS.
 
-Na stronie sieci web aplikacji, w obszarze nawigacji po lewej stronie, wybierz **domen niestandardowych**. Następnie w **HTTPS tylko**, wybierz pozycję **na**.
+Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Domeny niestandardowe**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
 
 ![Wymuszanie protokołu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
-Po zakończeniu operacji, przejdź do żadnego z adresów URL protokołu HTTP, który aby wskazywała twoją aplikację. Na przykład:
+Po zakończeniu operacji przejdź do dowolnego adresu URL protokołu HTTP, który wskazuje Twoją aplikację. Na przykład:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
 - `http://www.contoso.com`
 
-## <a name="automate-with-scripts"></a>Zautomatyzować za pomocą skryptów
+## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 
-Można zautomatyzować powiązań SSL dla aplikacji sieci web za pomocą skryptów przy użyciu [interfejsu wiersza polecenia Azure](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).
+Tworzenie powiązań protokołu SSL dla Twojej aplikacji internetowej możesz zautomatyzować za pomocą skryptów, korzystając z [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Polecenie przekazuje wyeksportowanego pliku PFX i pobiera odcisk palca.
+Następujące polecenie przekazuje wyeksportowany plik PFX i pobiera odcisk palca.
 
 ```bash
 thumbprint=$(az webapp config ssl upload \
@@ -244,7 +244,7 @@ thumbprint=$(az webapp config ssl upload \
     --output tsv)
 ```
 
-Polecenie dodaje powiązania SSL opartego na protokole SNI, za pomocą odcisku palca z poprzednie polecenie.
+Następujące polecenie dodaje powiązanie SNI SSL, używając odcisku palca z poprzedniego polecenia.
 
 ```bash
 az webapp config ssl bind \
@@ -256,7 +256,7 @@ az webapp config ssl bind \
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Polecenie przekazuje wyeksportowanego pliku PFX i dodaje powiązania SSL opartego na SNI.
+Następujące polecenie przekazuje wyeksportowany plik PFX i dodaje powiązanie SNI SSL.
 
 ```PowerShell
 New-AzureRmWebAppSSLBinding `
@@ -268,23 +268,23 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Certyfikaty publiczne (opcjonalnie)
-Możesz przekazać [certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) do aplikacji sieci web. Można również używane certyfikaty publiczne dla aplikacji w środowisku usługi aplikacji. Jeśli potrzebujesz do przechowywania certyfikatu w magazynie LocalMachine certyfikatów, należy użyć aplikacji sieci web w środowisku usługi aplikacji. Aby uzyskać więcej informacji, zobacz [jak skonfigurować certyfikaty publiczne do aplikacji sieci Web](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+Do swojej aplikacji internetowej możesz przekazać [certyfikaty publiczne](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/). Certyfikatów publicznych możesz też używać dla aplikacji w środowiskach App Service Environment. Jeśli potrzebujesz przechować certyfikat w magazynie certyfikatów komputera lokalnego, musisz użyć aplikacji internetowej w środowisku App Service Environment. Aby uzyskać więcej informacji, zobacz [How to configure public certificates to your Web App (Jak skonfigurować certyfikaty publiczne dla aplikacji internetowej)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
-![Przekaż certyfikat publiczny](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
+![Przekazywanie certyfikatu publicznego](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Uaktualnij warstwę cenową aplikacji
-> * Powiązać niestandardowego certyfikatu SSL z usługi aplikacji
+> * Uaktualnienie warstwy cenowej aplikacji
+> * Wiązanie niestandardowego certyfikatu protokołu SSL z usługą App Service
 > * Wymuszanie protokołu HTTPS dla aplikacji
-> * Powiązania certyfikatu SSL za pomocą skryptów automatyzacji
+> * Automatyzacja wiązania certyfikatu protokołu SSL za pomocą skryptów
 
-Przejdź do następnego samouczkiem, aby dowiedzieć się, jak używać usługi Azure Content Delivery Network.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak używać usługi Azure Content Delivery Network.
 
 > [!div class="nextstepaction"]
-> [Dodawanie sieci dostarczania zawartości (CDN) w usłudze Azure App Service](app-service-web-tutorial-content-delivery-network.md)
+> [Dodawanie usługi Content Delivery Network (CDN) do usługi Azure App Service](app-service-web-tutorial-content-delivery-network.md)
 
-Aby uzyskać więcej informacji, zobacz [używają certyfikatu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md).
+Aby uzyskać więcej informacji, zobacz [Use an SSL certificate in your application code in Azure App Service (Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service)](app-service-web-ssl-cert-load.md).

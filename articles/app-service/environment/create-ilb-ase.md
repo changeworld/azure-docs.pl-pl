@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia ze środowiskiem App Service Environment #
 
@@ -63,7 +63,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
 4. Wybierz lub utwórz sieć wirtualną.
 
-5. W przypadku wybrania istniejącej sieci wirtualnej należy utworzyć podsieć, w której zostanie umieszczone środowisko ASE. Ustaw wystarczająco duży rozmiar podsieci, aby pomieścić środowisko ASE, nawet gdy w przyszłości się rozrośnie. Zalecamy rozmiar `/25`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Minimalny rozmiar, jaki można wybrać, to `/28`. Po zaspokojeniu wymagań infrastruktury ten rozmiar można skalować do maksymalnie 11 wystąpień.
+5. W przypadku wybrania istniejącej sieci wirtualnej należy utworzyć podsieć, w której zostanie umieszczone środowisko ASE. Ustaw wystarczająco duży rozmiar podsieci, aby pomieścić środowisko ASE, nawet gdy w przyszłości się rozrośnie. Zalecamy rozmiar `/25`, który zapewnia 128 adresów i może obsłużyć środowiska ASE o maksymalnym rozmiarze. Minimalny rozmiar, jaki można wybrać, to `/28`. Po zaspokojeniu wymagań infrastruktury ten rozmiar można skalować tylko do maksymalnie 3 wystąpień.
 
     * Plany usługi App Service umożliwiają przekroczenie domyślnej maksymalnej liczby wystąpień wynoszącej 100.
 
@@ -81,7 +81,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
     * &lt;nazwa_ASE&gt;.p.azurewebsites.net
 
-   Nazwa domeny niestandardowej używanej z aplikacjami i nazwa domeny używana przez środowisko ASE nie mogą się nakładać. W przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia mającego nazwę domeny _contoso.com_ nie można używać następujących nazw domen niestandardowych dla aplikacji:
+   Istnieje funkcja o nazwie „nazwy domen niestandardowych”, która umożliwia mapowanie istniejącej nazwy DNS na aplikację internetową. Więcej informacji o tej funkcji można znaleźć w dokumencie [Mapowanie istniejącej nazwy DNS na aplikację internetową][customdomain]. Nazwa domeny niestandardowej używanej z aplikacjami i nazwa domeny używana przez środowisko ASE nie mogą się nakładać. W przypadku środowiska ASE z wewnętrznym modułem równoważenia obciążenia mającego nazwę domeny _contoso.com_ nie można używać następujących nazw domen niestandardowych dla aplikacji:
 
     * www.contoso.com
 
@@ -250,3 +250,4 @@ Aby dowiedzieć się więcej na temat sposobu konfigurowania używania środowis
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[customdomain]: ../app-service-web-tutorial-custom-domain.md

@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie kontami magazynu Azure stosu | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak znaleźć, zarządzania, odzyskiwania i odzyskania konta magazynu Azure stosu"
+title: Zarządzanie kontami magazynu Azure stosu | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak znaleźć, zarządzania, odzyskiwania i odzyskania konta magazynu Azure stosu
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/22/2018
 ms.author: mabrigg
 ms.reviewer: anirudha
-ms.openlocfilehash: 395cd113e21bf747c796ff28026f552f30656b47
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ce61dec785d6207e2d2df21884525f76a6778f4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu Azure stosu
 Dowiedz się, jak zarządzać kontami magazynu Azure stosu, odzyskiwanie, a odzyskać pojemność magazynu, w zależności od potrzeb biznesowych.
@@ -27,7 +27,7 @@ Dowiedz się, jak zarządzać kontami magazynu Azure stosu, odzyskiwanie, a odzy
 ## <a name="find"></a>Znajdź konto magazynu
 Lista kont magazynu w regionie można wyświetlić w stosie Azure przez:
 
-1. W przeglądarce sieci Web przejdź do https://adminportal.local.azurestack.external.
+1. W przeglądarce sieci Web, przejdź do https://adminportal.local.azurestack.external.
 2. Zaloguj się do portalu administracyjnego stosu Azure jako chmury operatora (przy użyciu poświadczeń, których podana podczas wdrażania)
 3. Na pulpicie nawigacyjnym domyślny — Znajdź **zarządzania Region** listy i kliknij region chcesz się dowiedzieć, na przykład **(lokalnego**).
    
@@ -99,11 +99,11 @@ W stosie Azure jest prosty sposób, w tym:
   Twoje konto nie mogą być wyświetlane na liście kont podczas usuniętego konta została już bezużytecznych. W takim przypadku nie można odzyskać. Zobacz [odzyskiwania pojemności](#reclaim) w tym temacie.
 
 ## <a name="set-the-retention-period"></a>Ustaw okres przechowywania
-Ustawienie okresu przechowywania umożliwia operatorowi chmury określić okres czasu w dni (od 0 do 9999 dni), w których wszystkie usuniętego konta potencjalnie mogą zostać odzyskane. Domyślny okres przechowywania wynosi 15 dni. Ustawienie wartości "0" oznacza, że wszystkie konta usuniętego natychmiast Brak przechowywania i oznaczone do okresowego wyrzucanie elementów bezużytecznych.
+Ustawienie okresu przechowywania umożliwia operatorowi chmury określić okres czasu w dni (od 0 do 9999 dni), w których wszystkie usuniętego konta potencjalnie mogą zostać odzyskane. Domyślny okres przechowywania wynosi 0 dni. Ustawienie wartości "0" oznacza, że wszystkie konta usuniętego natychmiast Brak przechowywania i oznaczone do okresowego wyrzucanie elementów bezużytecznych.
 
 **Aby zmienić okres przechowywania:**
 
-1. W przeglądarce sieci Web przejdź do https://adminportal.local.azurestack.external.
+1. W przeglądarce sieci Web, przejdź do https://adminportal.local.azurestack.external.
 2. Zaloguj się do portalu administracyjnego stosu Azure jako chmury operatora (przy użyciu poświadczeń, których podana podczas wdrażania)
 3. Na pulpicie nawigacyjnym domyślny — Znajdź **zarządzania Region** listy i kliknij go, aby eksplorować — na przykład **(lokalnego**).
 4. Wybierz **magazynu** z **dostawców zasobów** listy.

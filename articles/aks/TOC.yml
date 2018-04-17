@@ -83,6 +83,8 @@
           href: openfaas.md
         - name: Uruchamianie zadań Spark w usłudze AKS
           href: spark-job.md
+        - name: Przy użyciu procesorów GPU w usłudze AKS
+          href: gpu-cluster.md
     - name: Podstawy platformy Kubernetes
       items:
         - name: Używanie pulpitu nawigacyjnego rozwiązania Kubernetes

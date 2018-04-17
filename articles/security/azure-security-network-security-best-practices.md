@@ -1,6 +1,6 @@
 ---
-title: "Najlepsze rozwiązania sieci platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące sieci zabezpieczeń przy użyciu wbudowanych funkcji platformy Azure."
+title: Najlepsze rozwiązania sieci platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące sieci zabezpieczeń przy użyciu wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -41,7 +41,7 @@ Azure sieci najlepsze rozwiązania omówione w tym artykule obejmują:
 * Kontrolowania zachowania routingu
 * Włączanie tunelowania wymuszonego
 * Użyj wirtualnych urządzeń sieciowych
-* Wdrażanie sieci DMZ podziału na strefy zabezpieczeń
+* Wdrażanie sieci obwodowej podziału na strefy zabezpieczeń
 * Unikaj narażenia z Internetem za pomocą dedykowanego łącza sieci WAN
 * Optymalizuj czas działania i wydajności
 * Użyj równoważenia obciążenia globalne
@@ -111,16 +111,16 @@ Jeśli potrzebujesz wyższy poziom zabezpieczeń sieci, nie można uzyskać z ko
 
 Aby dowiedzieć się więcej o jakie sieci wirtualnej platformy Azure są dostępne urządzenia zabezpieczeń i dotyczące ich możliwości, odwiedź stronę [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/) i wyszukaj "zabezpieczenia" i "zabezpieczenia sieciowe".
 
-## <a name="deploy-dmzs-for-security-zoning"></a>Wdrażanie sieci DMZ podziału na strefy zabezpieczeń
-Strefa DMZ lub "w sieci obwodowej" jest segment sieci fizycznej lub logicznej, która zapewnia dodatkową warstwę zabezpieczeń zasobów od Internetu. Celem strefie DMZ jest umieszczenie urządzenia kontroli dostępu do sieci specjalne na granicy sieci DMZ, tak aby tylko odpowiednie ruch jest dozwolony, urządzenie sieciowe zabezpieczeń i w sieci wirtualnej platformy Azure.
+## <a name="deploy-dmzs-for-security-zoning"></a>Wdrażanie sieci obwodowej podziału na strefy zabezpieczeń
+Strefa DMZ lub "w sieci obwodowej" jest segment sieci fizycznej lub logicznej, która zapewnia dodatkową warstwę zabezpieczeń zasobów od Internetu. Celem sieci obwodowej jest umieszczenie urządzenia kontroli dostępu do sieci specjalne na granicy sieci obwodowej, tak aby tylko odpowiednie ruch jest dozwolony, urządzenie sieciowe zabezpieczeń i w sieci wirtualnej platformy Azure.
 
-Sieci DMZ są przydatne, ponieważ monitorowania, rejestrowania i raportowania na urządzeniach na brzegu sieci wirtualnej platformy Azure można skupić się zarządzanie kontrolą dostępu z sieci. W tym miejscu zwykle czy włączyć zapobiegania DDoS, systemów zapobiegania włamań/wykrywania nieautoryzowanego dostępu (Identyfikatory/adresów IP), reguły zapory i zasady, filtrowanie sieci web, sieci ochrony przed złośliwym oprogramowaniem i więcej. Urządzenia zabezpieczeń sieci znajdują się między Internetu i sieci wirtualnej platformy Azure i interfejs w obu sieciach.
+Sieci obwodowe są przydatne, ponieważ monitorowania, rejestrowania i raportowania na urządzeniach na brzegu sieci wirtualnej platformy Azure można skupić się zarządzanie kontrolą dostępu z sieci. W tym miejscu zwykle czy włączyć zapobiegania DDoS, systemów zapobiegania włamań/wykrywania nieautoryzowanego dostępu (Identyfikatory/adresów IP), reguły zapory i zasady, filtrowanie sieci web, sieci ochrony przed złośliwym oprogramowaniem i więcej. Urządzenia zabezpieczeń sieci znajdują się między Internetu i sieci wirtualnej platformy Azure i interfejs w obu sieciach.
 
-Jest to podstawowy projekt strefą DMZ, istnieje wiele różnych projektów DMZ, takich jak symetryczna, adresem IP tri, wieloadresowego i inne.
+Jest to podstawowy projekt sieci obwodowej, istnieje wiele różnych projektów sieci obwodowej, takich jak symetryczna, adresem IP tri, wieloadresowego i inne.
 
-Firma Microsoft zaleca wdrożeń wysokiego poziomu zabezpieczeń rozważ wdrożenie strefą DMZ, aby zwiększyć poziom zabezpieczeń sieci dla zasobów platformy Azure.
+Firma Microsoft zaleca wdrożeń wysokiego poziomu zabezpieczeń rozważ wdrożenie sieci obwodowej, aby zwiększyć poziom zabezpieczeń sieci dla zasobów platformy Azure.
 
-Aby dowiedzieć się więcej o sieci DMZ i ich wdrażanie na platformie Azure, przeczytaj artykuł [usług chmurowych firmy Microsoft i zabezpieczeń sieciowych](../best-practices-network-security.md).
+Aby dowiedzieć się więcej o sieci obwodowej i ich wdrażanie na platformie Azure, przeczytaj artykuł [usług chmurowych firmy Microsoft i zabezpieczeń sieciowych](../best-practices-network-security.md).
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Unikaj narażenia z Internetem za pomocą dedykowanego łącza sieci WAN
 W wielu organizacjach wybrane trasy IT hybrydowego. Hybrydowy IT niektóre zasobów informacji firmy są na platformie Azure, podczas gdy inne pozostają lokalnymi. W wielu przypadkach niektóre składniki usługi będzie uruchomiony w Azure, podczas gdy inne składniki pozostają lokalnymi.

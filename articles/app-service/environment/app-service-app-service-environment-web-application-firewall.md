@@ -1,8 +1,8 @@
 ---
-title: "Konfigurowanie zapory aplikacji sieci Web (WAF) do środowiska usługi aplikacji"
-description: "Informacje o sposobie konfigurowania zapory aplikacji sieci web przed środowiska usługi aplikacji."
+title: Konfigurowanie zapory aplikacji internetowych za pomocą środowiska App Service Environment
+description: Informacje na temat sposobu konfigurowania zapory aplikacji internetowych przed środowiskiem App Service Environment.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -12,95 +12,98 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/17/2016
+ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: mvc
-ms.openlocfilehash: bfe36ee5365e71db4280e8e2ccff6db8e552dd39
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: bc59d8671d904cf5096d616213cc4674ef5743b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurowanie zapory aplikacji sieci Web (WAF) do środowiska usługi aplikacji
+# <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurowanie zapory aplikacji internetowych za pomocą środowiska App Service Environment
 ## <a name="overview"></a>Omówienie
-Zapory aplikacji sieci Web, takich jak [Barracuda zapory aplikacji sieci Web dla platformy Azure](https://www.barracuda.com/programs/azure) dostępnych na [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) ułatwia zabezpieczenie aplikacji sieci web, sprawdzając ruch przychodzący sieci web do blokowania przekazywania złośliwego oprogramowania iniekcji skryptów krzyżowych, SQL i aplikacji przed atakami DDoS i inne ataki. Sprawdza również odpowiedzi z serwerów sieci web zaplecza dla zapobiegania utracie danych (DLP). W połączeniu z izolacji i dodatkowe skalowanie podał środowiska usługi App Service, zapewnia to idealne środowiska do hosta biznesowe krytyczne aplikacje sieci web muszą wytrzymać złośliwymi żądaniami i dużych obciążeń ruchem.
+
+Zapory aplikacji internetowych pomagają w zabezpieczaniu aplikacji internetowych, sprawdzając przychodzący ruch internetowy w celu blokowania wstrzyknięcia kodu SQL, działania skryptów między witrynami, operacji pobierania złośliwego oprogramowania oraz ataków DDoS na aplikacje i innych ataków. Badają one również odpowiedzi z internetowych serwerów zaplecza na potrzeby zapobiegania utracie danych. W połączeniu z izolacją i dodatkowym skalowaniem oferowanym przez środowisko App Service Environment ta funkcja oferuje idealne środowisko hostowania biznesowych aplikacji internetowych o krytycznym znaczeniu, które muszą radzić sobie ze złośliwymi żądaniami i intensywnym ruchem. Platforma Azure oferuje możliwości zapory aplikacji internetowych dzięki usłudze [Application Gateway](http://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Aby dowiedzieć się, jak zintegrować środowisko App Service Environment z usługą Application Gateway, zapoznaj się z dokumentem [Integrate your ILB ASE with an Application Gateway (Integrowanie środowiska ASE wewnętrznego modułu równoważenia obciążenia z usługą Application Gateway)](http://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
+
+Oprócz usługi Azure Application Gateway istnieje wiele innych opcji, takich jak [zapora aplikacji internetowych Barracuda dla platformy Azure](https://www.barracuda.com/programs/azure), które są dostępne w witrynie [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/). W pozostałej części tego dokumentu skupiono się na sposobie integrowania środowiska App Service Environment z urządzeniem zapory aplikacji internetowych Barracuda.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>Konfiguracja
-Dla tego dokumentu możemy skonfigurować środowisko usługi aplikacji za wiele wystąpień ze zrównoważonym obciążeniem Barracuda zapory aplikacji sieci Web tak, aby tylko ruch z zapory aplikacji sieci Web można osiągnąć środowiska usługi aplikacji i nie jest on dostępny od strefy DMZ. Mamy także usługi Azure Traffic Manager przed wystąpień Barracuda zapory aplikacji sieci Web w celu zrównoważenia obciążenia w centrach danych platformy Azure i regionów. Diagramu wysokiego poziomu ustawień będzie wyglądać poniższej ilustracji:
+W przypadku tego dokumentu konfigurujemy środowisko App Service Environment za wieloma wystąpieniami zapory aplikacji internetowych Barracuda ze zrównoważonym obciążeniem tak, aby tylko ruch z zapory aplikacji internetowych mógł docierać do środowiska App Service Environment i był niedostępny ze strefy DMZ. Mamy również usługę Azure Traffic Manager przed wystąpieniami zapory aplikacji internetowych Barracuda w celu zrównoważenia obciążenia w centrach danych i regionach platformy Azure. Diagram konfiguracji wysokiego poziomu będzie wyglądać podobnie jak na poniższej ilustracji:
 
 ![Architektura][Architecture] 
 
 > [!NOTE]
-> Wraz z wprowadzeniem [ILB obsługę środowiska usługi aplikacji](app-service-environment-with-internal-load-balancer.md), można skonfigurować ASE niedostępny od strefy DMZ i udostępniane wyłącznie do sieci prywatnej. 
+> Dzięki wprowadzeniu [obsługi wewnętrznego modułu równoważenia obciążenia dla środowiska App Service Environment](app-service-environment-with-internal-load-balancer.md) można skonfigurować środowisko ASE tak, aby było niedostępne ze strefy DMZ i było dostępne wyłącznie w sieci prywatnej. 
 > 
 > 
 
-## <a name="configuring-your-app-service-environment"></a>Konfigurowanie środowiska usługi aplikacji
-Aby skonfigurować środowisko usługi aplikacji, zapoznaj się [naszej dokumentacji](app-service-web-how-to-create-an-app-service-environment.md) na ten temat. Po utworzeniu środowiska usługi aplikacji utworzony, można utworzyć aplikacji sieci Web, aplikacje interfejsu API i [Mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md) w tym środowisku, które będą wszystkie chronione za skonfigurowanie w następnej sekcji zapory aplikacji sieci Web.
+## <a name="configuring-your-app-service-environment"></a>Konfigurowanie środowiska App Service Environment
+Aby skonfigurować środowisko App Service Environment, zapoznaj się z [naszą dokumentacją](app-service-web-how-to-create-an-app-service-environment.md) dotyczącą tego tematu. Po utworzeniu środowiska App Service Environment można utworzyć w nim aplikacje internetowe, aplikacje interfejsu API i [aplikacje mobilne](../../app-service-mobile/app-service-mobile-value-prop.md). Będą one chronione za skonfigurowaną w następnej sekcji zaporą aplikacji internetowych.
 
-## <a name="configuring-your-barracuda-waf-cloud-service"></a>Konfigurowanie usługi w chmurze zapory aplikacji sieci Web Barracuda
-Ma barracuda [szczegółowe artykułu](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) na temat wdrażania jego zapory aplikacji sieci Web na maszynie wirtualnej na platformie Azure. Jednak ponieważ firma Microsoft ma nadmiarowości i wprowadza pojedynczy punkt awarii, którą chcesz wdrożyć co najmniej dwie maszyny wirtualne wystąpienie zapory aplikacji sieci Web do tej samej usługi w chmurze, gdy następujące instrukcje.
+## <a name="configuring-your-barracuda-waf-cloud-service"></a>Konfigurowanie usługi w chmurze zapory aplikacji internetowych Barracuda
+Można zapoznać się ze [szczegółowym artykułem](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) na temat wdrażania zapory aplikacji internetowych usługi Barracuda na maszynie wirtualnej na platformie Azure. Jednak ponieważ potrzebujemy nadmiarowości i nie chcemy wprowadzać ani jednego punktu występowania awarii, warto wdrożyć co najmniej dwie maszyny wirtualne wystąpienia zapory aplikacji internetowych w jednej usłudze w chmurze, wykonując poniższe instrukcje.
 
 ### <a name="adding-endpoints-to-cloud-service"></a>Dodawanie punktów końcowych do usługi w chmurze
-Gdy masz 2 lub wirtualna zapory aplikacji sieci Web więcej wystąpień w usłudze w chmurze, możesz użyć [portalu Azure](https://portal.azure.com/) można dodać punktów końcowych HTTP i HTTPS, które są używane przez aplikację, jak pokazano na poniższej ilustracji:
+Gdy masz już co najmniej 2 wystąpienia maszyny wirtualnej zapory aplikacji internetowych w usłudze w chmurze, możesz użyć witryny [Azure Portal](https://portal.azure.com/) do dodania punktów końcowych HTTP i HTTPS używanych przez aplikację, jak pokazano na poniższej ilustracji:
 
 ![Konfigurowanie punktu końcowego][ConfigureEndpoint]
 
-Aplikacji korzystanie z innych punktów końcowych, należy je dodać do tej listy, a także. 
+Jeśli aplikacje korzystają z innych punktów końcowych, pamiętaj również o dodaniu ich do tej listy. 
 
-### <a name="configuring-barracuda-waf-through-its-management-portal"></a>Konfigurowanie Barracuda zapory aplikacji sieci Web za pomocą portalu zarządzania
-Barracuda zapory aplikacji sieci Web używa TCP Port 8000 dla konfiguracji za pomocą portalu zarządzania. Jeśli masz wiele wystąpień maszyn wirtualnych zapory aplikacji sieci Web, należy powtórzyć kroki opisane w tym miejscu dla każdego wystąpienia maszyny Wirtualnej. 
-
-> [!NOTE]
-> Po zakończeniu konfiguracji zapory aplikacji sieci Web, należy usunąć punkt końcowy protokołu TCP/8000 z Twojej VMs zapory aplikacji sieci Web w celu poprawy bezpieczeństwa Twojej zapory aplikacji sieci Web.
-> 
-> 
-
-Dodaj punkt końcowy zarządzania, jak pokazano na poniższej ilustracji skonfigurować Twoje Barracuda zapory aplikacji sieci Web.
-
-![Dodaj punkt końcowy zarządzania][AddManagementEndpoint]
-
-Korzystanie z przeglądarki, aby przejść do zarządzania punktem końcowym usługi w chmurze. Usługi w chmurze jest nazywany test.cloudapp.net, czy dostęp do tego punktu końcowego przechodząc do http://test.cloudapp.net:8000. Powinna zostać wyświetlona strona logowania, takie jak poniższy obraz, który możesz zalogować się przy użyciu poświadczeń, których określono w fazie konfiguracji maszyny Wirtualnej zapory aplikacji sieci Web.
-
-![Zarządzanie strony logowania][ManagementLoginPage]
-
-Po zalogowaniu powinien zostać wyświetlony pulpit nawigacyjny tak jak na poniższej ilustracji, który przedstawia podstawowe dane statystyczne dotyczące ochrony zapory aplikacji sieci Web.
-
-![Pulpit nawigacyjny zarządzania][ManagementDashboard]
-
-Kliknięcie **usług** kartę umożliwia skonfigurowanie zapory Twojej aplikacji sieci Web dla usługi ochrony. Aby uzyskać więcej informacji na temat konfigurowania sieci Barracuda zapory aplikacji sieci Web, zobacz [dokumentacji](https://techlib.barracuda.com/waf/getstarted1). W poniższym przykładzie skonfigurowano aplikacji sieci Web platformy Azure obsługujące ruch HTTP i HTTPS.
-
-![Dodaj zarządzania usługi][ManagementAddServices]
+### <a name="configuring-barracuda-waf-through-its-management-portal"></a>Konfigurowanie zapory aplikacji internetowych Barracuda za pomocą portalu zarządzania
+Zapora aplikacji internetowych Barracuda używa portu 8000 w obrębie protokołu TCP na potrzeby konfiguracji ustawianej w portalu zarządzania. Jeśli istnieje wiele wystąpień maszyn wirtualnych zapory aplikacji internetowych, należy powtórzyć kroki opisane w tym miejscu dla każdego wystąpienia maszyny wirtualnej. 
 
 > [!NOTE]
-> W zależności od sposobu konfiguracji aplikacji i jakie funkcje są używane w środowisku usługi aplikacji należy przekazywać ruch dla protokołu TCP porty inne niż 80 i 443, na przykład, jeśli masz ustawienia protokołu SSL z adresu IP dla aplikacji sieci Web. Listę porty używane w środowisku usługi aplikacji, zobacz [ruch przychodzący kontroli dokumentacji](app-service-app-service-environment-control-inbound-traffic.md) sekcji porty sieciowe.
+> Po zakończeniu konfiguracji zapory aplikacji sieci internetowych należy usunąć punkt końcowy protokołu TCP/8000 ze wszystkich maszyn wirtualnych zapory aplikacji internetowych w celu zapewnienia bezpieczeństwa tej zapory.
 > 
 > 
 
-## <a name="configuring-microsoft-azure-traffic-manager-optional"></a>Konfigurowanie Menedżera ruchu Microsoft Azure (OPCJONALNIE)
-Jeśli aplikacja jest dostępna w wielu regionach, a następnie chcesz załadować saldo je za [usługi Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md). Aby to zrobić, można dodać punktu końcowego w [portalu Azure](https://portal.azure.com) przy użyciu nazwy usługi w chmurze dla Twojej zapory aplikacji sieci Web w profilu Menedżera ruchu, jak pokazano na poniższej ilustracji. 
+Dodaj punkt końcowy zarządzania, jak pokazano na poniższej ilustracji, aby skonfigurować zaporę aplikacji internetowych Barracuda.
 
-![Punkt końcowy Menedżera ruchu][TrafficManagerEndpoint]
+![Dodawanie punktu końcowego zarządzania][AddManagementEndpoint]
 
-Jeśli aplikacja wymaga uwierzytelniania, upewnij się, że jakiś zasób, który nie wymaga uwierzytelniania dla Menedżera ruchu sieciowego na polecenie ping dostępność aplikacji. Można skonfigurować adres URL na **konfiguracji** strony [portalu Azure](https://portal.azure.com) jak pokazano na poniższej ilustracji:
+Aby przejść do punktu końcowego zarządzania w usłudze w chmurze, należy użyć przeglądarki. Jeśli usługa w chmurze ma nazwę test.cloudapp.net, dostęp do tego punktu końcowego można uzyskać, przechodząc do adresu http://test.cloudapp.net:8000. Powinna zostać wyświetlona strona logowania, taka jak na poniższej ilustracji. Można się na niej zalogować się przy użyciu poświadczeń zdefiniowanych w fazie konfiguracji maszyny wirtualnej zapory aplikacji internetowych.
+
+![Zarządzanie — strona logowania][ManagementLoginPage]
+
+Gdy się zalogujesz, powinien zostać wyświetlony pulpit nawigacyjny, taki jak na poniższej ilustracji. Będzie on zawierać podstawowe dane statystyczne dotyczące ochrony przy użyciu zapory aplikacji internetowych.
+
+![Zarządzanie — pulpit nawigacyjny][ManagementDashboard]
+
+Kliknięcie karty **Usługi** umożliwia skonfigurowanie zapory aplikacji internetowych dla chronionych usług. Więcej informacji na temat konfigurowania zapory aplikacji internetowych Barracuda można znaleźć w odpowiedniej [dokumentacji](https://techlib.barracuda.com/waf/getstarted1). W poniższym przykładzie skonfigurowano aplikację internetową platformy Azure, która obsługuje ruch w obrębie protokołów HTTP i HTTPS.
+
+![Zarządzanie — dodawanie usług][ManagementAddServices]
+
+> [!NOTE]
+> W zależności od sposobu konfiguracji aplikacji i funkcji używanych w środowisku App Service Environment należy przekazywać ruch do portów protokołu TCP innych niż 80 i 443, jeśli na przykład w przypadku aplikacji internetowej jest stosowana konfiguracja połączenia SSL z adresu IP. Listę portów używanych w środowiskach App Service Environment można znaleźć w sekcji dotyczącej portów sieciowych w [dokumentacji funkcji sterowania ruchem przychodzącym](app-service-app-service-environment-control-inbound-traffic.md).
+> 
+> 
+
+## <a name="configuring-microsoft-azure-traffic-manager-optional"></a>Konfigurowanie usługi Microsoft Azure Traffic Manager (OPCJONALNIE)
+Jeśli aplikacja jest dostępna w wielu regionach, można równoważyć ich obciążenie za pomocą usługi [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md). W tym celu można dodać punkt końcowy w witrynie [Azure Portal](https://portal.azure.com) przy użyciu nazwy usługi w chmurze dla zapory aplikacji internetowych w profilu usługi Traffic Manager, jak pokazano na poniższej ilustracji. 
+
+![Punkt końcowy usługi Traffic Manager][TrafficManagerEndpoint]
+
+Jeśli aplikacja wymaga uwierzytelniania, upewnij się, że masz zasób, który nie wymaga uwierzytelniania w usłudze Traffic Manager w przypadku sprawdzania dostępności aplikacji przy użyciu polecenia ping. Adres URL można skonfigurować na stronie **Konfiguracja** witryny [Azure Portal](https://portal.azure.com), jak pokazano na poniższej ilustracji:
 
 ![Konfigurowanie usługi Traffic Manager][ConfigureTrafficManager]
 
-Aby przesłać dalej polecenia ping Menedżera ruchu z Twojej zapory aplikacji sieci Web do aplikacji, należy zdefiniować tłumaczenia witryny sieci Web na Twojej Barracuda zapory aplikacji sieci Web, aby przesyłał dalej ruch do aplikacji, jak pokazano w poniższym przykładzie:
+Aby przekazywać dalej polecenia ping usługi Traffic Manager z zapory aplikacji internetowych do aplikacji, należy skonfigurować tłumaczenia witryn internetowych w obrębie zapory aplikacji internetowych Barracuda. Umożliwi to przekazywanie ruchu do aplikacji, tak jak w poniższym przykładzie:
 
-![Tłumaczenie witryny sieci Web][WebsiteTranslations]
+![Tłumaczenia witryn internetowych][WebsiteTranslations]
 
-## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Zabezpieczanie ruchu do środowiska usługi aplikacji przy użyciu grup zabezpieczeń sieci (NSG)
-Postępuj zgodnie z [ruch przychodzący kontroli dokumentacji](app-service-app-service-environment-control-inbound-traffic.md) szczegółowe informacje na temat ograniczania ruchu do środowiska usługi aplikacji z zapory aplikacji sieci Web tylko przy użyciu adresu VIP usługi w chmurze. Oto przykład polecenia programu Powershell do wykonywania tego zadania TCP port 80.
+## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Zabezpieczanie ruchu do środowiska App Service Environment przy użyciu sieciowych grup zabezpieczeń
+Szczegółowe informacje na temat ograniczania ruchu do środowiska App Service Environment tylko z zapory aplikacji internetowych przy użyciu adresu VIP usługi w chmurze można znaleźć w [dokumentacji dotyczącej sterowania ruchem przychodzącym](app-service-app-service-environment-control-inbound-traffic.md). Oto przykładowe polecenie cmdlet programu PowerShell, które umożliwia wykonanie tego zadania na poziomie portu 80 protokołu TCP.
 
     Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
 
-Zamień wirtualny adres IP (VIP) usługi w chmurze Twoje WAF SourceAddressPrefix.
+Zastąp element SourceAddressPrefix wirtualnym adresem IP (VIP) usługi w chmurze zapory aplikacji internetowych.
 
 > [!NOTE]
-> Adres VIP usługi w chmurze zostanie zmieniona, gdy usunięcie i ponowne utworzenie usługi w chmurze. Upewnij się zaktualizować adres IP w tej grupie zasobów sieciowych, wówczas. 
+> Adres VIP usługi w chmurze zmieni się po usunięciu i ponownym utworzeniu usługi w chmurze. Pamiętaj o zaktualizowaniu adresu IP w grupie zasobów sieciowych po wykonaniu tej czynności. 
 > 
 > 
 

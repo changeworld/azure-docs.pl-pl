@@ -89,6 +89,8 @@
           href: sizes-hpc.md
         - name: Jednostki obliczeniowe platformy Azure (ACU)
           href: acu.md
+        - name: Wyniki testów porównawczych
+          href: compute-benchmark-scores.md
     - name: Dystrybucje zatwierdzone
       href: endorsed-distros.md
     - name: Konserwacja i aktualizacje
@@ -145,7 +147,7 @@
         - name: Szyfrowanie
           href: encrypt-disks.md
         - name: Korzystanie z kontroli dostępu
-          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Korzystanie z zasad
           href: policy.md
         - name: Tworzenie magazynu kluczy
@@ -400,6 +402,8 @@
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Przypisywanie publicznej nazwy DNS
           href: portal-create-fqdn.md
+        - name: Znajdowanie i usuwanie niedołączonych kart sieciowych
+          href: find-unattached-nics.md
         - name: Rozpoznawanie nazw DNS
           href: azure-dns.md
           items:

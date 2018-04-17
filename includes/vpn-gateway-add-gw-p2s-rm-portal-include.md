@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8a5d05342a1db5f27d115364798885a278d09fc0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cd17826afece44eff9f4a4c403b077dc78fd1c9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 1. W portalu po lewej stronie kliknij pozycję **+ Utwórz zasób** i wpisz „Brama sieci wirtualnej” w polu wyszukiwania. Znajdź pozycję **Brama sieci wirtualnej** w wynikach wyszukiwania i kliknij tę pozycję. Na stronie **Brama sieci wirtualnej** kliknij pozycję **Utwórz** u dołu strony, aby otworzyć stronę **Tworzenie bramy sieci wirtualnej**.
 2. Na stronie **Tworzenie bramy sieci wirtualnej** wypełnij wartości dla swojej bramy sieci wirtualnej.
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
     - Najpierw kliknij pozycję **Utwórz konfigurację protokołu IP bramy**, aby otworzyć stronę „Wybierz publiczny adres IP”. Następnie kliknij pozycję **+Utwórz nowe**, aby otworzyć stronę „Tworzenie publicznego adresu IP”.
     - Wprowadź **nazwę** dla publicznego adresu IP. Pozostaw jednostkę SKU jako **Podstawowa**, chyba że istnieje konkretny powód, aby ją zmienić na inną, a następnie kliknij przycisk **OK** u dołu tej strony, aby zapisać zmiany.
 
-      ![Tworzenie publicznego adresu IP](./media/vpn-gateway-add-gw-s2s-rm-portal-include/gwip.png "Tworzenie adresu PIP")
+      ![Żądanie publicznego adresu IP](./media/vpn-gateway-add-gateway-portal-include/public-ip-address-name.png "Żądanie publicznego adresu IP")
 
 4. Sprawdź poprawność ustawień. Jeśli chcesz, aby brama była wyświetlana na pulpicie nawigacyjnym, możesz wybrać pozycję **Przypnij do pulpitu nawigacyjnego** u dołu strony. 
 5. Kliknij przycisk **Utwórz**, aby rozpocząć tworzenie bramy sieci VPN. Zostanie sprawdzona poprawność ustawień, a na pulpicie nawigacyjnym pojawi się kafelek „Wdrażanie bramy sieci wirtualnej”. Tworzenie bramy może potrwać do 45 minut. Być może będzie trzeba odświeżyć stronę portalu, aby zobaczyć, czy tworzenie zostało ukończone.

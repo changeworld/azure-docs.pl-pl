@@ -1,26 +1,25 @@
 ---
-title: "Dokumentacja usługi Azure SQL Data Warehouse — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Informacje o sposobie używania usługi SQL Data Warehouse, która korzysta z programu SQL Server i masowego przetwarzania równoległego. Dokumentacja przedstawiająca sposób ładowania, analizowania i eksportowania danych oraz zarządzania nimi."
+title: Dokumentacja usługi Azure SQL Data Warehouse — samouczki i pojęcia | Microsoft Docs
+description: Dowiedz się, jak używać usługi Azure SQL Data Warehouse, która łączy relacyjne bazy danych SQL z masowym przetwarzaniem równoległym. Samouczki i inna dokumentacja przedstawiają sposób projektowania, ładowania i analizowania danych oraz zarządzania nimi przy użyciu magazynu danych.
 services: sql-data-warehouse
-author: czeumault
-manager: carolz
+author: hirokib
+manager: craigg-msft
 layout: LandingPage
-ms.assetid: 
 ms.service: sql-data-warehouse
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 47807360dd58f0c19360d90ed66f726d8922be1e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.component: design
+ms.date: 04/11/2018
+ms.author: elbutter
+ms.reviewer: jrj
+ms.openlocfilehash: 42db87fd64bca58ee3e86589acdc85107e057665
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-data-warehouse-documentation"></a>Dokumentacja usługi SQL Data Warehouse
 
-Dowiedz się, jak używać usługi SQL Data Warehouse, która korzysta z relacyjnej bazy danych programu SQL Server oraz masowego przetwarzania równoległego. Samouczki i inne dokumenty przedstawiające sposób ładowania danych do magazynu, ich analizowania i eksportowania oraz zarządzania nimi.
+Dowiedz się, jak używać usługi Azure SQL Data Warehouse, która łączy relacyjne bazy danych SQL z masowym przetwarzaniem równoległym. Samouczki i inna dokumentacja przedstawiają sposób projektowania, ładowania i analizowania danych oraz zarządzania nimi przy użyciu magazynu danych. 
 
 <ul class="panelContent cardsFTitle">
     <li>

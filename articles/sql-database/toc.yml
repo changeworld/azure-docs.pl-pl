@@ -48,14 +48,18 @@
       href: sql-database-design-first-database.md
     - name: 1 — Projektowanie bazy danych przy użyciu programu .NET
       href: sql-database-design-first-database-csharp.md
-    - name: 2 — Migracja do bazy danych programu SQL Server
+    - name: 2 — Migracja do bazy danych programu SQL Server przy użyciu usługi DMS
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 — Zabezpieczanie bazy danych SQL
       href: sql-database-security-tutorial.md
     - name: 4 — Implementowanie rozproszonej geograficznie bazy danych
       href: sql-database-implement-geo-distributed-database.md
     - name: 5 — Tworzenie wystąpienia zarządzanego
-      href: sql-database-managed-instance-tutorial-portal.md
+      href: sql-database-managed-instance-create-tutorial-portal.md
+    - name: 6 — Przywracanie kopii zapasowej do wystąpienia zarządzanego
+      href: sql-database-managed-instance-restore-from-backup-tutorial.md
+    - name: 7 — Migracja do wystąpienia zarządzanego przy użyciu usługi DMS
+      href: ../dms/tutorial-sql-server-to-managed-instance.md
 - name: Przykłady
   items:
     - name: Przykłady kodu
@@ -410,6 +414,10 @@
               href: saas-tenancy-cross-tenant-reporting.md
             - name: Proces ETL na potrzeby analizy
               href: saas-tenancy-tenant-analytics.md
+            - name: Odzyskiwanie po awarii przy użyciu przywracania geograficznego
+              href: saas-dbpertenant-dr-geo-restore.md
+            - name: Odzyskiwanie po awarii przy użyciu replikacji geograficznej bazy danych
+              href: saas-dbpertenant-dr-geo-replication.md
         - name: Baza danych z wieloma dzierżawcami
           items:
             - name: Wdrażanie aplikacji przykładowej

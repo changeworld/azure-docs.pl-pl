@@ -56,6 +56,7 @@
 #### [Wiadomość e-mail z zaproszeniem](active-directory-b2b-invitation-email.md)
 #### [Realizacja zaproszenia](active-directory-b2b-redemption-experience.md)
 #### [Add B2B users without an invitation (Dodawanie użytkowników B2B bez zaproszenia)](active-directory-b2b-add-user-without-invite.md)
+#### [Zezwalanie na zaproszenia lub blokowanie ich](active-directory-b2b-allow-deny-list.md)
 #### [Dostęp warunkowy dla modelu B2B](active-directory-b2b-mfa-instructions.md)
 #### [Zasady udostępniania B2B](active-directory-b2b-delegate-invitations.md)
 #### [Dodawanie użytkownika B2B do roli](active-directory-b2b-add-guest-to-role.md)
@@ -327,9 +328,6 @@
 #### [Dokumentacja techniczna](active-directory-conditional-access-technical-reference.md)
 #### [Często zadawane pytania](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [Uwierzytelnianie bez hasła](active-directory-azureadjoin-passport.md)
-#### [Włączanie usługi Windows Hello dla firm](active-directory-azureadjoin-passport-deployment.md)
 ### Uwierzytelnianie oparte na certyfikatach
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

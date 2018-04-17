@@ -85,8 +85,6 @@
           href: backup-azure-files.md
         - name: Tworzenie kopii zapasowej udziałów plików platformy Azure — często zadawane pytania
           href: backup-azure-files-faq.md
-        - name: Rozwiązywanie problemów dotyczących tworzenia kopii zapasowej udziałów plików platformy Azure
-          href: troubleshoot-azure-files.md
     - name: Maszyny wirtualne platformy Azure
       items:
         - name: Przygotowywanie maszyny wirtualnej
@@ -181,18 +179,20 @@
           href: backup-azure-delete-vault.md
     - name: Rozwiązywanie problemów
       items:
-        - name: Problemy z tworzeniem kopii zapasowej maszyny wirtualnej platformy Azure w witrynie Azure Portal
+        - name: Komunikaty o błędach kopii zapasowych maszyn wirtualnych IaaS
           href: backup-azure-vms-troubleshoot.md
-        - name: 'Niepowodzenie tworzenia kopii zapasowej maszyny wirtualnej platformy Azure: Nie można nawiązać komunikacji z agentem maszyny wirtualnej w celu uzyskania stanu migawki — Upłynął limit czasu zadania podrzędnego migawki maszyny wirtualnej'
+        - name: Upłynął limit czasu rozszerzenia maszyny wirtualnej lub agenta usługi Azure Backup (MARS)
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
-        - name: Powolne tworzenie kopii zapasowych plików i folderów w usłudze Azure Backup
+        - name: Tworzenie kopii zapasowej plików i folderów odbywa się wolno
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
-        - name: Rozwiązywanie problemów ze składnikiem Azure Backup Server
+        - name: Azure Backup Server
           href: backup-azure-mabs-troubleshoot.md
-        - name: Rozwiązywanie problemów z programem System Center Data Protection Manager
+        - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Rozwiązywanie problemów ze składnikiem Azure Backup Agent
+        - name: Agent usługi Azure Backup (MARS)
           href: backup-azure-mars-troubleshoot.md
+        - name: Kopia zapasowa udziałów plików platformy Azure
+          href: troubleshoot-azure-files.md
 - name: Dokumentacja
   items:
     - name: Azure PowerShell

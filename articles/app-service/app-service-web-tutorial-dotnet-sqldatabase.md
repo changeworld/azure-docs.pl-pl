@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database | Microsoft Docs"
-description: "Dowiedz się, jak uruchomić aplikację ASP.NET na platformie Azure z użyciem połączenia z usługą SQL Database."
+title: Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database | Microsoft Docs
+description: Dowiedz się, jak uruchomić aplikację ASP.NET na platformie Azure z użyciem połączenia z usługą SQL Database.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
+# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
 Usługa [Azure Web Apps](app-service-web-overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostowaną w Internecie. W tym samouczku pokazano, jak wdrożyć opartą na danych aplikację internetową ASP.NET na platformie Azure i połączyć ją z usługą [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po zakończeniu aplikacja ASP.NET będzie działała na platformie Azure i będzie połączona z usługą SQL Database.
 
@@ -49,7 +49,9 @@ W celu ukończenia tego samouczka:
 
   ![Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych oraz tworzenie aplikacji na platformie Azure (w ramach Internetu i chmury)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
 
-## <a name="download-the-sample"></a>Pobieranie przykładu
+Jeśli program Visual Studio został już zainstalowany, dodaj obciążenia w programie Visual Studio, klikając kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
+
+## <a name="download-the-sample"></a>Pobierz przykład
 
 [Pobierz przykładowy projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
 
@@ -57,7 +59,7 @@ Wyodrębnij (rozpakuj) plik *dotnet-sqldb-tutorial-master.zip*.
 
 Przykładowy projekt zawiera podstawową aplikację [ASP.NET MVC](https://www.asp.net/mvc) CRUD (create-read-update-delete, tworzenie-odczytywanie-aktualizowanie-usuwanie) korzystającą z modelu [Code First platformy Entity Framework](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
-### <a name="run-the-app"></a>Uruchomienie aplikacji
+### <a name="run-the-app"></a>Uruchamianie aplikacji
 
 Otwórz plik *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* w programie Visual Studio. 
 

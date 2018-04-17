@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ba57530c5708216ca7c990025d513144dcdf82a4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -64,7 +64,7 @@ W poniższej tabeli przedstawiono kilka właściwości dostępne za pośrednictw
 | **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
 | --- | --- |
 |Zakup sprzętu i zarządzania <br>Nie zarządzania nakładów pracy związanych z zarządzaniem podstawowej infrastruktury <br>Szybkie inicjowania i skalowania usługi <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |czas działania 99,99% umowy SLA  <br>Wbudowane wysokiej dostępności <br>Dane chronione przy użyciu automatycznego tworzenia kopii zapasowych <br>Okres przechowywania kopii zapasowych można skonfigurować klienta (ustalona na 7 dni w publicznej wersji zapoznawczej) <br>Tworzenie kopii zapasowych zainicjowane przez użytkownika <br>Możliwość przywrócenia punktu w czasie w bazie danych |
-|**Zabezpieczeń i zgodności** | **Management**|
+|**Zabezpieczeń i zgodności** | **Zarządzanie**|
 |Środowiska izolowane (integracji sieci wirtualnej, Usługa pojedynczej dzierżawy, dedykowane obliczeniowej i magazynu <br>Szyfrowanie danych podczas przesyłania <br>Azure AD authentication, obsługę rejestracji jednokrotnej <br>Zgodnego ze standardami zgodności takie same jak baza danych Azure SQL <br>Inspekcja SQL <br>Wykrywanie zagrożeń |Interfejs API Menedżera zasobów Azure do automatyzacji usługi inicjowania i skalowania <br>Azure funkcje portalu usługi ręcznego inicjowania i skalowania <br>Usługi danych migracji 
 
 ![Logowanie jednokrotne](./media/sql-database-managed-instance/sso.png) 
@@ -131,7 +131,7 @@ Poniżej opisano najważniejsze funkcje ogólnego przeznaczenia warstwy usług:
 
 Zarządzane wystąpienia zapewniają izolację dodatkowe zabezpieczenia od pozostałych dzierżawców w chmurze Azure. Izolacji zabezpieczeń obejmuje: 
 
-- Implementacja natywnego sieci wirtualnej i łączności do środowiska lokalnego przy użyciu Azure Express Route lub brama sieci VPN 
+- [Implementacja natywnego sieci wirtualnej](sql-database-managed-instance-vnet-configuration.md) i łączności do środowiska lokalnego przy użyciu Azure Express Route lub brama sieci VPN 
 - Punkt końcowy programu SQL jest widoczne tylko za pośrednictwem prywatnego adresu IP, umożliwiając bezpieczne połączenie z prywatnej Azure lub hybrydowej sieci
 - Pojedynczego dzierżawcy z dedykowanym podstawowej infrastruktury (obliczeniowych, pamięci masowej)
 
@@ -185,7 +185,13 @@ Usługa Azure bazy danych migracji jest pełni zarządzana usługa zaprojektowan
 
 ### <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie  
 
-Metoda migracji wykorzystuje kopii zapasowych SQL do przechowywania obiektów blob platformy Azure. Kopie zapasowe przechowywane w obiekcie blob magazynu Azure może bezpośrednio przywrócony do zarządzanego wystąpienia. 
+Metoda migracji wykorzystuje kopii zapasowych SQL do przechowywania obiektów blob platformy Azure. Kopie zapasowe przechowywane w obiekcie blob magazynu Azure może bezpośrednio przywrócony do zarządzanego wystąpienia. Aby przywrócić istniejącej bazy danych SQL do wystąpienia zarządzany, możesz:
+
+- Użyj [usługi migracji danych (DMS)](/sql/dma/dma-overview). Samouczek, zobacz [migracji do wystąpienia zarządzane przy użyciu usługi migracji bazy danych Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) przywrócenie z pliku kopii zapasowej bazy danych
+- Użyj [polecenia T-SQL Przywróć](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql). 
+  - Samouczek przedstawiający sposób przywracania World Wide Importers — standardowe pliku kopii zapasowej, zobacz [przywrócić pliku kopii zapasowej do wystąpienia zarządzane](sql-database-managed-instance-restore-from-backup-tutorial.md). Ten samouczek pokazuje, że masz przekazywany plik kopii zapasowej do magazynu Azure blogu i bezpieczne przy użyciu klucza sygnatury dostępu Współdzielonego dostępu współużytkowanego.
+  - Aby uzyskać informacje dotyczące przywracania z adresu URL, zobacz [natywnego Przywracanie z adresu URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
+- [Importuj z pliku pliku BACPAC](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Obsługiwane funkcje SQL 
 
@@ -217,5 +223,6 @@ Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co jes
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dla funkcji i listy porównanie, zobacz [wspólne funkcje SQL](sql-database-features.md).
+- Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [Konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md).
 - Samouczek, która tworzy wystąpienie zarządzane i przywrócenie bazy danych z pliku kopii zapasowej, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-tutorial-portal.md).
 - Aby skorzystać z samouczka w zakresie używania usługi Azure Database Migration Service (DMS) do celów migracji, zobacz [Migracja wystąpień zarządzanych przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).

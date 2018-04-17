@@ -1,111 +1,90 @@
 ---
-title: "Wprowadzenie do usługi Azure CDN | Microsoft Docs"
-description: "W tym temacie przedstawiono sposób włączania usługi Azure Content Delivery Network (CDN). Samouczek przeprowadza przez tworzenie nowego profilu i punktu końcowego usługi CDN."
+title: Tworzenie profilu i punktu końcowego usługi Azure CDN | Microsoft Docs
+description: W tym przewodniku Szybki start przedstawiono sposób włączania usługi Azure CDN przez utworzenie nowego profilu i punktu końcowego usługi CDN.
 services: cdn
-documentationcenter: 
-author: zhangmanling
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dksimpson
+manager: akucer
+editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 01/25/2018
+ms.topic: quickstart
+ms.date: 03/13/2018
 ms.author: mazha
-ms.openlocfilehash: f1681b0796885cd6dc880303485edb97c15cda71
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.custom: mvc
+ms.openlocfilehash: 6237b47be878217115849b87ebcd3d980665643a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="getting-started-with-azure-cdn"></a>Wprowadzenie do usługi Azure CDN
-W tym artykule opisano włączanie usługi Azure [Content Delivery Network (CDN)](cdn-overview.md) przez utworzenie nowego profilu i punktu końcowego usługi CDN.
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN
+W tym przewodniku Szybki start włączysz usługę Azure Content Delivery Network (CDN) przez utworzenie nowego profilu i punktu końcowego usługi CDN. Po utworzeniu profilu i punktu końcowego można rozpocząć dostarczanie zawartości do klientów.
 
-## <a name="create-a-new-cdn-profile"></a>Tworzenie nowego profilu CDN
-Profil CDN jest kolekcją punktów końcowych usługi CDN. Każdy profil może zawierać jeden lub więcej punktów końcowych usługi CDN. Do organizowania punktów końcowych usługi CDN według domeny internetowej, aplikacji internetowej lub innych kryteriów można używać wielu profilów.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> Subskrypcja platformy Azure ma limity domyślne dla następujących zasobów:
-> - Liczba profilów CDN, które można utworzyć
-> - Liczba punktów końcowych, które można utworzyć w profilu CDN 
-> - Liczba domen niestandardowych, które można zamapować na punkt końcowy
->
-> Aby dowiedzieć się więcej o limitach subskrypcji usługi CDN, zobacz [Limity CDN](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits).
->
-> Cennik usługi CDN jest stosowany na poziomie profilu CDN. Dlatego, aby używać różnych warstw cenowych usługi Azure CDN, musisz utworzyć wiele profilów usługi CDN.
-> 
-> 
+## <a name="prerequisites"></a>Wymagania wstępne
+Na potrzeby tego przewodnika Szybki start trzeba wcześniej utworzyć konto magazynu o nazwie *mystorageacct123*, które będzie używane jako nazwa hosta źródła. Aby uzyskać więcej informacji, zobacz [Integrate an Azure storage account with Azure CDN (Integrowanie konta usługi Azure Storage z usługą Azure CDN)](cdn-create-a-storage-account-with-cdn.md)
+
+## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) przy użyciu konta platformy Azure.
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
 ## <a name="create-a-new-cdn-endpoint"></a>Tworzenie nowego punktu końcowego usługi CDN
-**Aby utworzyć nowy punkt końcowy usługi CDN**
 
-1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do swojego profilu CDN. Być może został on przypięty do pulpitu nawigacyjnego w poprzednim kroku. Jeśli nie, możesz go znaleźć, wybierając kolejno pozycje **Wszystkie usługi** i **Profile CDN**. W okienku **Profile CDN** wybierz profil, do którego planujesz dodać punkt końcowy. 
+Utworzony profil usługi CDN może służyć do tworzenia punktu końcowego.
+
+1. W witrynie Azure Portal na pulpicie nawigacyjnym wybierz utworzony profil usługi CDN. Jeśli nie możesz go znaleźć, wybierz pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Profile CDN**. Na stronie **Profile CDN** wybierz profil do użycia. 
    
-    Zostanie wyświetlone okienko profilu CDN.
-   
-    ![Profil CDN][cdn-profile-settings]
+    Zostanie wyświetlona strona profilu usługi CDN.
 
 2. Wybierz pozycję **Punkt końcowy**.
    
-    ![Przycisk dodawania punktu końcowego][cdn-new-endpoint-button]
+    ![Profil CDN](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
-    Zostanie wyświetlone okienko **Dodawanie punktu końcowego**.
-   
-    ![Okienko Dodawanie punktu końcowego][cdn-add-endpoint]
+    Zostanie wyświetlona strona **Dodawanie punktu końcowego**.
 
-3. W polu **Nazwa** wprowadź unikatową nazwę nowego punktu końcowego CDN. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie `<endpointname>.azureedge.net`.
+    Użyj ustawień określonych w tabeli pod obrazem.
+   
+    ![Okienko Dodawanie punktu końcowego](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
 
-4. W polu **Typ źródła** wybierz typ źródła. Wybierz typ **Storage** dla konta usługi Azure Storage, **Usługa w chmurze** dla usługi Azure Cloud Service, **Web App** dla usługi Azure Web App lub **Źródło niestandardowe** dla każdego innego publicznie dostępnego źródła serwera sieci Web (hostowanego na platformie Azure lub gdziekolwiek indziej).
-   
-    ![Typ źródła usługi CDN](./media/cdn-create-new-endpoint/cdn-origin-type.png)
-
-5. W polu **Nazwa hosta źródła** wybierz lub wprowadź domenę źródła. Na liście rozwijanej są wyświetlane wszystkie dostępne źródła typu określonego w kroku 4. W przypadku wybrania pozycji **Źródło niestandardowe** jako typu źródła wprowadź domenę źródła niestandardowego.
+    | Ustawienie | Wartość |
+    | ------- | ----- |
+    | **Nazwa** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, wprowadź inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_.azureedge.net.|
+    | **Typ źródła** | Wybierz pozycję **Magazyn**. | 
+    | **Nazwa hosta źródła** | Wprowadź ciąg *mystorageacct123.blob.core.windows.net* jako nazwę hosta. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, wprowadź inną nazwę |
+    | **Ścieżka do źródła** | Pozostaw to pole puste. |
+    | **Nagłówek hosta źródła** | Pozostaw wygenerowaną wartość domyślną. |  
+    | **Protokół** | Pozostaw domyślnie wybrane opcje **HTTP** i **HTTPS**. |
+    | **Port źródła** | Pozostaw domyślne wartości portów. | 
+    | **Zoptymalizowano pod kątem** | Pozostaw domyślnie wybraną pozycję **Ogólne dostarczanie w Internecie**. |
     
-6. W polu **Ścieżka do źródła** wprowadź ścieżkę do zasobów, które chcesz buforować w pamięci podręcznej, lub pozostaw to pole puste, aby umożliwić buforowanie dowolnego zasobu w domenie określonej w kroku 5.
-    
-7. W polu **Nagłówek hosta źródła** wprowadź nagłówek hosta, który usługa Azure CDN ma wysłać z każdym żądaniem, lub pozostaw wartość domyślną.
-   
-   > [!WARNING]
-   > Niektóre typy źródeł, takie jak usługi Azure Storage i Web Apps, wymagają, aby nagłówek hosta był zgodny z domeną źródła. Pozostaw wartość domyślną, chyba że masz źródło, które wymaga nagłówka hosta innego niż jego domena.
-   > 
-    
-8. W obszarach **Protokół** i **Port źródła** określ protokoły i porty używane do uzyskiwania dostępu do zasobów w źródle. Należy wybrać co najmniej jeden protokół (HTTP lub HTTPS). Aby uzyskać dostęp do zawartości HTTPS, użyj domeny udostępnionej przez usługę CDN (`<endpointname>.azureedge.net`). 
-   
-   > [!NOTE]
-   > Ustawienie **Port źródła** określa tylko port używany przez punkt końcowy do pobierania informacji ze źródła. Sam punkt końcowy jest dostępny dla klientów końcowych tylko na domyślnych portach HTTP i HTTPS (80 i 443), niezależnie od wartości **Port źródła**.  
-   > 
-   > Punkty końcowe w profilach usługi **Azure CDN from Akamai** nie zezwalają na pełny zakres portów TCP dla portów źródeł. Lista niedozwolonych portów źródłowych znajduje się w artykule [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Azure CDN from Akamai — dozwolone porty źródłowe).  
-   > 
-   > Gdy uzyskujesz dostęp do zawartości usługi CDN przy użyciu protokołu HTTPS, istnieją następujące ograniczenia:
-   > 
-   > * Należy używać certyfikatu SSL dostarczonego przez usługę CDN. Certyfikaty innych firm nie są obsługiwane.
-   > * Obsługa protokołu HTTPS dla domen niestandardowych usługi Azure CDN jest dostępna tylko w przypadku produktów usługi **Azure CDN from Verizon** (Standard i Premium). Nie jest on obsługiwany w produktach **Azure CDN from Akamai**. Aby uzyskać więcej informacji, zobacz [Konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN](cdn-custom-ssl.md).
-    
-9. Wybierz pozycję **Dodaj**, aby utworzyć nowy punkt końcowy.
+3. Wybierz pozycję **Dodaj**, aby utworzyć nowy punkt końcowy.
    
    Po utworzeniu punktu końcowego zostanie on wyświetlony na liście punktów końcowych dla profilu.
     
-   ![Punkt końcowy usługi CDN][cdn-endpoint-success]
+   ![Punkt końcowy usługi CDN](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   > [!IMPORTANT]
-   > Punkt końcowy nie jest natychmiast dostępny do użycia, ponieważ propagacja rejestracji zajmuje trochę czasu. W przypadku profili usługi **Azure CDN from Akamai** propagacja zwykle trwa do minuty. W przypadku profili usługi **Azure CDN from Verizon** propagacja zwykle trwa do 90 minut, ale niekiedy może to zająć więcej czasu.
-    > 
-    > Jeśli spróbujesz użyć nazwy domeny usługi CDN przed zakończeniem propagacji konfiguracji punktu końcowego do lokalizacji POP, możesz otrzymać kod odpowiedzi HTTP 404. Jeśli od czasu utworzenia punktu końcowego minęło kilka godzin, a nadal otrzymujesz stan odpowiedzi 404, zapoznaj się z artykułem [Rozwiązywanie problemów z punktami końcowymi usługi CDN zwracającymi stany 404](cdn-troubleshoot-endpoint.md).
-    > 
-    > 
+   Punkt końcowy nie jest natychmiast dostępny do użycia, ponieważ propagacja rejestracji zajmuje trochę czasu. 
 
-## <a name="see-also"></a>Zobacz też
-* [Kontrolowanie zachowania buforowania żądań z ciągami zapytań](cdn-query-string.md)
-* [Jak zamapować zawartość usługi CDN na domenę niestandardową](cdn-map-content-to-custom-domain.md)
-* [Wstępne ładowanie zasobów w punkcie końcowym usługi Azure CDN](cdn-preload-endpoint.md)
-* [Przeczyszczanie punktu końcowego usługi Azure CDN](cdn-purge-endpoint.md)
-* [Rozwiązywanie problemów z punktami końcowymi usługi CDN zwracającymi stany 404](cdn-troubleshoot-endpoint.md)
 
-[cdn-profile-settings]: ./media/cdn-create-new-endpoint/cdn-profile-settings.png
-[cdn-new-endpoint-button]: ./media/cdn-create-new-endpoint/cdn-new-endpoint-button.png
-[cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
-[cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+W poprzednich krokach utworzono profil i punkt końcowy usługi CDN w grupie zasobów. Zapisz te zasoby, jeśli chcesz przejść do sekcji [Następne kroki](#next-steps) i dowiedzieć się, jak dodać domenę niestandardową do punktu końcowego. Jeśli jednak nie będziesz już potrzebować tych zasobów w przyszłości, możesz je usunąć przez usunięcie grupy zasobów, unikając w ten sposób dodatkowych opłat:
+
+1. W menu znajdującym się po lewej stronie w witrynie Azure Portal wybierz pozycję **Grupy zasobów**, a następnie wybierz pozycję **my-resource-group-123**.
+
+2. Na stronie **Grupa zasobów** wybierz pozycję **Usuń grupę zasobów**, wprowadź ciąg *my-resource-group-123* w polu tekstowym, a następnie wybierz pozycję **Usuń**.
+
+    Ta akcja spowoduje usunięcie grupy zasobów, profilu i punktu końcowego, które utworzono w tym przewodniku Szybki start.
+
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej na temat dodawania domeny niestandardowej do punktu końcowego usługi CDN, zapoznaj się z następującym samouczkiem:
+
+> [!div class="nextstepaction"]
+> [Dodawanie domeny niestandardowej](cdn-map-content-to-custom-domain.md)
+
+

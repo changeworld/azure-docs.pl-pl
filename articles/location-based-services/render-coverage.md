@@ -1,14 +1,14 @@
 ---
-title: "Renderowanie zapotrzebowania na platformie Azure usługi na podstawie lokalizacji | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o renderowania usługi na podstawie zapotrzebowania w lokalizacji platformy Azure"
+title: Renderowanie zapotrzebowania na platformie Azure usługi na podstawie lokalizacji | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o renderowania usługi na podstawie zapotrzebowania w lokalizacji platformy Azure
 services: location-based-services
-keywords: 
+keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 3/6/2018
 ms.topic: article
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
@@ -135,7 +135,7 @@ Poniższa tabela zawiera informacja o pokryciu Azure lokalizacji na podstawie us
 |Liechtenstein|✓ |
 |Litwa|✓ |
 |Luksemburg|✓ |
-|Macedonia|✓ |
+|BJR Macedonia|✓ |
 |Malta|✓ |
 |Mołdawia|✓ |
 |Monako|✓ |
@@ -221,7 +221,7 @@ Poniższa tabela zawiera informacja o pokryciu Azure lokalizacji na podstawie us
 |Nigeria|✓|
 |Réunion|✓|
 |Rwanda|✓|
-|Święta Helena, Ascension i Tristan da Cunha|Ø|
+|Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha|Ø|
 |Wyspy Świętego Tomasza i Książęca|Ø|
 |Senegal|✓|
 |Sierra Leone|Ø|
@@ -293,7 +293,7 @@ Poniższa tabela zawiera informacja o pokryciu Azure lokalizacji na podstawie us
 |Turks i Caicos|✓|
 |Stany Zjednoczone|✓|
 |Urugwaj|✓|
-|Republika Wenezueli|✓|
+|Boliwariańska Republika Wenezueli|✓|
 |Brytyjskie Wyspy Dziewicze|✓|
 |Wyspy Dziewicze (St. Zjed. Ameryki)|✓|
 |                                |                |
@@ -306,7 +306,7 @@ Poniższa tabela zawiera informacja o pokryciu Azure lokalizacji na podstawie us
 |Kambodża|Ø|
 |Chiny|Ø|
 |Koreańska Republika Ludowo-Demokratyczna|Ø|
-|Dokdo i Takeshima|Ø|
+|Dokdo/Takeshima|Ø|
 |Hongkong|✓|
 |Indonezja|✓|
 |Iran|Ø|
@@ -314,7 +314,7 @@ Poniższa tabela zawiera informacja o pokryciu Azure lokalizacji na podstawie us
 |Kazachstan|✓|
 |Kirgistan|Ø|
 |Laotańska Republika Ludowo-Demokratyczna|Ø|
-|Makau SAR|✓|
+|SRA Makau|✓|
 |Malezja|✓|
 |Malediwy|Ø|
 |Mongolia|Ø|
@@ -323,14 +323,14 @@ Poniższa tabela zawiera informacja o pokryciu Azure lokalizacji na podstawie us
 |Pakistan|Ø|
 |Filipiny|✓|
 |Republika Korei|Ø|
-|Wyspy Senkaku|✓|
+|Wyspy Senkaku/Diaoyutai|✓|
 |Singapur|✓|
 |Sri Lanka|Ø|
 |Arabska Republika Syryjska|Ø|
 |Tajwan|✓|
 |Tadżykistan|Ø|
 |Tajlandia|✓|
-|Timor Wschodni|Ø|
+|Timor-Leste|Ø|
 |Turkmenistan|Ø|
 |Uzbekistan|Ø|
 |Wietnam|✓|
@@ -370,7 +370,7 @@ Poniższa tabela zawiera informacja o pokryciu Azure lokalizacji na podstawie us
 |Liechtenstein|✓|
 |Litwa|✓|
 |Luksemburg|✓|
-|Macedonia|✓|
+|BJR Macedonia|✓|
 |Malta|✓|
 |Mołdawia|✓|
 |Monako|✓|

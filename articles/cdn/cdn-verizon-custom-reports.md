@@ -1,12 +1,12 @@
 ---
 title: Raporty niestandardowe from Verizon | Dokumentacja firmy Microsoft
-description: "Możesz wyświetlić wzorców użycia sieci CDN za pomocą następujących raportów: przepustowości, dane przesyłane, trafień, stany pamięci podręcznej, Stosunek trafień w pamięci podręcznej, przesłanych danych IPV4 i IPV6."
+description: 'Możesz wyświetlić wzorców użycia sieci CDN za pomocą następujących raportów: przepustowości, dane przesyłane, trafień, stany pamięci podręcznej, Stosunek trafień w pamięci podręcznej, przesłanych danych IPV4 i IPV6.'
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -72,10 +72,10 @@ Można eksportować dane w formacie programu Excel, klikając symbol programu Ex
 | 2xx                       | Wskazuje całkowitą liczbę żądań lub transferu danych (MB) krawędzi CNAME, który daje 2xx kod stanu HTTP (na przykład 200 OK). |
 | 3xx                       | Wskazuje całkowitą liczbę żądań lub transferu danych (MB) krawędzi CNAME, który daje 3xx kod stanu HTTP (na przykład znaleźć 302 lub 304 nie jest modyfikowany. |
 | 4xx                       | Wskazuje całkowitą liczbę żądań lub transferu danych (MB) krawędzi CNAME, który daje 4xx kod stanu HTTP (na przykład 400 Nieprawidłowe żądanie, 403 Forbidden lub 404 Nie znaleziono). |
-| 5xx                       | Wskazuje całkowitą liczbę żądań lub transferu danych (MB) Edge CNAME, który daje kod stanu HTTP 5xx (na przykład, 500 Wewnętrzny błąd serwera lub bramy zły 502). |
+| 5xx                       | Wskazuje całkowitą liczbę żądań lub transferu danych (MB) Microsoft Edge CNAME, który daje kod stanu HTTP 5xx (na przykład, 500 Wewnętrzny błąd serwera lub bramy zły 502). |
 | Procent trafień w pamięci podręcznej               | Wskazuje procent buforowalnej żądań, które były przekazywane bezpośrednio z pamięci podręcznej do zleceniodawcy. |
 | Trafienia w pamięci podręcznej                | Wskazuje całkowitą liczbę żądań lub transferu danych (MB) krawędzi CNAME, który daje w trafienie pamięci podręcznej (na przykład TCP_EXPIRED_HIT, TCP_HIT lub TCP_PARTIAL_HIT). Trafienie w pamięci podręcznej występuje, gdy zostanie znaleziony wersja buforowana żądanej zawartości. |
-| Przesyłane dane (MB)     | Wskazuje łączną ilość danych przesyłanych (MB) z serwerów krawędzi do klientów HTTP (przeglądarki sieci web) Edge CNAME. Ilość danych przesyłanych jest obliczana przez dodawanie nagłówków odpowiedzi HTTP do treści odpowiedzi. W związku z tym ilość danych przesyłanych za każdy zasób jest większa niż jego bieżący rozmiar pliku. |
+| Przesyłane dane (MB)     | Wskazuje łączną ilość danych przesyłanych (MB) z serwerów krawędzi do klientów HTTP (przeglądarki sieci web) Microsoft Edge CNAME. Ilość danych przesyłanych jest obliczana przez dodawanie nagłówków odpowiedzi HTTP do treści odpowiedzi. W związku z tym ilość danych przesyłanych za każdy zasób jest większa niż jego bieżący rozmiar pliku. |
 | Opis               | Identyfikuje krawędzi CNAME według jego nazwy hosta |
 | Trafienia                      | Całkowita liczba żądań do krawędzi CNAME wskazuje |
 | Chybienia                    | Wskazuje całkowitą liczbę żądań lub transferu danych (MB) krawędzi CNAME, który powoduje Chybienie pamięci podręcznej, (na przykład TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS lub TCP_MISS). Chybienia pamięci podręcznej występuje, gdy żądana zawartość nie jest buforowana na serwerze krawędzi, który honorowane żądania. | 

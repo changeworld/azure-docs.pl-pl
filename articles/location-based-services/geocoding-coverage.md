@@ -1,14 +1,14 @@
 ---
-title: "Geokodowanie pokrycia w lokalizacji platformy Azure na podstawie usług | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o Geokodowanie usługi na podstawie zapotrzebowania w lokalizacji platformy Azure"
+title: Geokodowanie pokrycia w lokalizacji platformy Azure na podstawie usług | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o Geokodowanie usługi na podstawie zapotrzebowania w lokalizacji platformy Azure
 services: location-based-services
-keywords: 
+keywords: ''
 author: dsk-2015
 ms.author: dkshir
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
@@ -102,7 +102,7 @@ Azure lokalizacji na podstawie usług (kg) zawiera informacje szczegółowe geok
 | Japonia                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
-| Makau SAR                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| SRA Makau                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malezja                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronezja |                 |                |              |      ✓     |          ✓         |
 | Mongolia                                            |                 |                |              |      ✓     |          ✓         |
@@ -121,12 +121,12 @@ Azure lokalizacji na podstawie usług (kg) zawiera informacje szczegółowe geok
 | Filipiny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
-| Wyspy Senkaku                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Wyspy Senkaku/Diaoyutai                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wyspy Salomona                                     |                 |                |              |      ✓     |          ✓         |
 | Korea Południowa                                         |                 |                |              |      ✓     |          ✓         |
 | Kurils Terytoria Południowe                                     |        ✓        |                |              |      ✓     |          ✓         |
-| Wyspy spratly                                     |                 |                |              |      ✓     |                    |
+| Wyspy Spratly                                      |                 |                |              |      ✓     |                    |
 | Sri Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Tajwan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Tajlandia                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |

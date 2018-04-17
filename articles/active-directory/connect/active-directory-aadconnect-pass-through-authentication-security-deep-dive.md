@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory przekazywanego uwierzytelniania zabezpieczeń nowości | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD) chroni konta lokalnego"
+title: Azure Active Directory przekazywanego uwierzytelniania zabezpieczeń nowości | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak uwierzytelniania przekazywanego usługi Azure Active Directory (Azure AD) chroni konta lokalnego
 services: active-directory
-keywords: "Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Azure AD Connect przekazywanego uwierzytelniania, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.service: active-directory
@@ -35,7 +35,7 @@ Tematy skierowana obejmują:
 Są to bezpieczeństwo kluczy aspektów tej funkcji:
 - Jest on oparty na bezpieczną architekturę dzierżawcza multi, który zapewnia izolację żądań logowania między dzierżawcami.
 - Lokalne hasła nigdy nie są przechowywane w chmurze w jakimkolwiek formularzu.
-- Agenci uwierzytelniania lokalnego nasłuchiwania i odpowiedzieć, żądania weryfikacji haseł tylko nawiązywać połączenia wychodzące z sieci. Nie jest wymagane do zainstalowania tych agentów uwierzytelniania w sieci obwodowej (DMZ).
+- Agenci uwierzytelniania lokalnego nasłuchiwania i odpowiedzieć, żądania weryfikacji haseł tylko nawiązywać połączenia wychodzące z sieci. Nie jest wymagane do zainstalowania tych agentów uwierzytelniania w sieci obwodowej.
 - Tylko na standardowe porty (80 i 443) są używane dla komunikacji wychodzącej czynnikami uwierzytelniania usługi Azure AD. Nie trzeba otworzyć porty dla ruchu przychodzącego na zaporze. 
   - Port 443 jest używany do cała komunikacja wychodząca uwierzytelniony.
   - Port 80 jest używany tylko w przypadku pobierania odwołania list certyfikatów (CRL) aby upewnić się, że żaden z tych certyfikatów używanych przez tę funkcję zostały odwołane.

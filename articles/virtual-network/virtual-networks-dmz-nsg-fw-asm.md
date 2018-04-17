@@ -1,11 +1,11 @@
 ---
-title: "Przykład DMZ — tworzenie DMZ w ochronie aplikacji z zaporą i grup NSG | Dokumentacja firmy Microsoft"
-description: "Tworzenie DMZ z zaporą i grup zabezpieczeń sieci (NSG)"
+title: Przykład sieci obwodowej — tworzenie sieci obwodowej w ochronie aplikacji z zaporą i grup NSG | Dokumentacja firmy Microsoft
+description: Tworzenie sieci obwodowej z zaporą i grup zabezpieczeń sieci (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: c78491c7-54ac-4469-851c-b35bfed0f528
 ms.service: virtual-network
 ms.devlang: na
@@ -20,12 +20,12 @@ ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Przykład 2 — Tworzenie DMZ w ochronie aplikacji z zaporą i grupy NSG
+# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Przykład 2 — Tworzenie sieci obwodowej w ochronie aplikacji z zaporą i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
 
-W tym przykładzie utworzy strefą DMZ z zaporą, windows czterech serwerów i grup zabezpieczeń sieci. On również przeprowadzi wszystkich odpowiednich poleceń, aby zapewnić głębsze zrozumienie każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w strefie DMZ. Ponadto w odwołaniach sekcja jest kompletny kod i instrukcje do tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
+W tym przykładzie utworzy sieć obwodową z zaporą, windows czterech serwerów i grup zabezpieczeń sieci. On również przeprowadzi wszystkich odpowiednich poleceń, aby zapewnić głębsze zrozumienie każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w sieci obwodowej. Ponadto w odwołaniach sekcja jest kompletny kod i instrukcje do tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
 
-![Przychodzący DMZ NVA i grupy NSG][1]
+![Przychodzący sieć obwodowa NVA i grupy NSG][1]
 
 ## <a name="environment-description"></a>Opis elementu środowiska
 W tym przykładzie jest subskrypcji, która zawiera następujące elementy:
@@ -56,7 +56,7 @@ Aby utworzyć środowiska:
 Po pomyślnym uruchomieniu skryptu może podjąć następujące kroki skryptu po:
 
 1. Konfigurowanie reguł zapory, ten temat znajdują się w sekcji poniżej: reguł zapory.
-2. Opcjonalnie w sekcji odwołań są dwa skrypty do konfiguracji serwera sieci web oraz serwer aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji DMZ.
+2. Opcjonalnie w sekcji odwołań są dwa skrypty do konfiguracji serwera sieci web oraz serwer aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej.
 
 W następnej sekcji objaśniono większości instrukcji skryptów względem grup zabezpieczeń sieci.
 
@@ -81,7 +81,7 @@ Przy użyciu tych reguł powiązany z każdej podsieci, jeśli żądanie HTTP zo
 
 Brak domyślnej regule wychodzącej, która umożliwia ruchu wychodzącego do Internetu. Na przykład firma Microsoft zezwala na ruch wychodzący i nie modyfikowanie reguł wychodzących. Do blokowania ruchu w zarówno wskazówek zdefiniowanych routingu użytkownika jest wymagana, jest to przedstawione w przykładzie różnych, który można znaleźć w [dokumentu granic zabezpieczeń głównego][HOME].
 
-Reguły NSG opisanych powyżej są bardzo podobne do reguł NSG w [przykład 1 — Tworzenie prostego DMZ z grup NSG][Example1]. Przejrzyj opis grupy NSG, w tym dokumencie, aby uzyskać szczegółowy widok każdej reguły NSG i jego atrybuty.
+Reguły NSG opisanych powyżej są bardzo podobne do reguł NSG w [przykład 1 — Tworzenie prostej sieci obwodowej z grup NSG][Example1]. Przejrzyj opis grupy NSG, w tym dokumencie, aby uzyskać szczegółowy widok każdej reguły NSG i jego atrybuty.
 
 ## <a name="firewall-rules"></a>Reguły zapory
 Klienta zarządzania musi być zainstalowana na komputerze Zarządzanie zaporą i tworzyć konfiguracje wymagane. Można znaleźć dostawcy dokumentacji zapory (lub inne NVA) do zarządzania urządzeniem. W pozostałej części tej sekcji opisano konfigurację zapory, za pomocą klienta zarządzania dostawców (tj. portalu Azure lub programu PowerShell).
@@ -567,10 +567,10 @@ Zapisz ten plik xml z lokalizacji zaktualizowane i dodać link do tego pliku do 
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
-Jeśli chcesz zainstalować przykładową aplikację dla tego i innych przykłady DMZ, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
+Jeśli chcesz zainstalować przykładową aplikację dla tego i innych przykładów sieci obwodowej, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
 
 <!--Image References-->
-[1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Przychodzący DMZ z grupy NSG"
+[1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Przychodząca sieć obwodowa z grupy NSG"
 [2]: ./media/virtual-networks-dmz-nsg-fw-asm/dstnaticon.png "Ikona NAT docelowego"
 [3]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallrule.png "Reguły zapory"
 [4]: ./media/virtual-networks-dmz-nsg-fw-asm/firewallruleactivate.png "Aktywacja reguły zapory"

@@ -1,11 +1,10 @@
 ---
-title: "Szybki start: interfejs API bazy danych Cassandra z językiem Python — Azure Cosmos DB | Microsoft Docs"
-description: "W tym przewodniku Szybki start przedstawiono używanie interfejsu API bazy danych Apache Cassandra w usłudze Azure Cosmos DB do tworzenia aplikacji profilów przy użyciu języka Python do tworzenia aplikacji profilów przy użyciu języka Python"
+title: 'Szybki start: interfejs API bazy danych Cassandra z językiem Python — Azure Cosmos DB | Microsoft Docs'
+description: W tym przewodniku Szybki start przedstawiono używanie interfejsu API bazy danych Apache Cassandra w usłudze Azure Cosmos DB do tworzenia aplikacji profilów przy użyciu języka Python do tworzenia aplikacji profilów przy użyciu języka Python
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 4ebc883e-c512-4e34-bd10-19f048661159
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: govindk
-ms.openlocfilehash: 4a2347fe9578b35c95d240c5c4dd2bf062077ece
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.author: sngun
+ms.openlocfilehash: c725610dde10c275c3e2811cab197cf4912fe808
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API bazy danych Cassandra przy użyciu języka Python i usługi Azure Cosmos DB
 
@@ -161,13 +160,13 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
     
 ## <a name="use-the-x509-certificate"></a>Używanie certyfikatu X509
 
-1. Jeśli musisz dodać certyfikat Baltimore CyberTrust Root, jego numer to 02:00:00:b9, a odcisk palca SH1 to d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Można go pobrać ze strony https://cacert.omniroot.com/bc2025.crt i zapisać w pliku lokalnym z rozszerzeniem .cer
+1. Jeśli musisz dodać certyfikat Baltimore CyberTrust Root, jego numer to 02:00:00:b9, a odcisk palca SH1 to d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Można go pobrać ze strony https://cacert.omniroot.com/bc2025.crt i zapisać w pliku lokalnym z rozszerzeniem cer.
 
 2. Otwórz plik pyquickstart.py i zmień element „path\to\cert” tak, aby wskazywał nowy certyfikat.
 
 3. Zapisz plik pyquickstart.py.
 
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 
 1. Użyj polecenia cd w terminalu git, aby zmienić folder na azure-cosmos-db-cassandra-python-getting-started. 
 

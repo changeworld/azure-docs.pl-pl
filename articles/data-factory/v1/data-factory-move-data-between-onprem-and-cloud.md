@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: eff58d77b2f79581ee0f611ca25d6cbbc258e996
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 93b63e7c657282fc0ef285054ba90c9d6bc310b6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między lokalnych źródeł i w chmurze z brama zarządzania danymi
 > [!NOTE]
@@ -72,7 +72,7 @@ W tym kroku, użyj portalu Azure można utworzyć wystąpienia fabryki danych Az
 6. Kliknij przycisk **Utwórz** na **nowa fabryka danych** strony.
 
    > [!IMPORTANT]
-   > Aby utworzyć wystąpienia usługi Data Factory, użytkownik musi być członkiem roli [współautora usługi Data Factory](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) na poziomie subskrypcji/grupy zasobów.
+   > Aby utworzyć wystąpienia usługi Data Factory, użytkownik musi być członkiem roli [współautora usługi Data Factory](../../role-based-access-control/built-in-roles.md#data-factory-contributor) na poziomie subskrypcji/grupy zasobów.
    >
    >
 7. Po zakończeniu tworzenia zobacz **fabryki danych** strony, jak pokazano na poniższej ilustracji:
@@ -393,7 +393,7 @@ W tym kroku opisano użycie witryny Azure Portal do monitorowania tego, co dziej
 2. Zwróć uwagę, że wszystkie dane wycinków zapasowej znajdują się w **gotowe** stanu, ponieważ czas trwania procesu (czas rozpoczęcia do czasu zakończenia) przypada w przeszłości. Jest również wstawieniu danych w bazie danych programu SQL Server i jest cały czas. Upewnij się, że brak wycinków widoczne w **wycinków Problem** sekcji u dołu. Aby wyświetlić wszystkie fragmenty, kliknij przycisk **Zobacz więcej** w dolnej części listy wycinków.
 3. Teraz, w **zestawów danych** kliknij przycisk **OutputBlobTable**.
 
-    ![OputputBlobTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
+    ![Wycinki OputputBlobTable](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
 4. Kliknij wycinek żadnych danych z listy i powinna zostać wyświetlona **wycinka danych** strony. Zobaczysz, że działanie jest uruchomione wycinka. Użytkownik widzi tylko jedno działanie Uruchom zwykle.  
 
     ![Blok wycinek danych](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)

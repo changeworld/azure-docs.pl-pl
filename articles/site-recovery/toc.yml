@@ -293,8 +293,8 @@
               href: delete-vault.md
         - name: Monitorowanie i rozwiązywanie problemów
           items:
-            - name: Rozwiązywanie problemów z przełączaniem do trybu failover na platformę Azure
-              href: site-recovery-failover-to-azure-troubleshoot.md
+            - name: Rozwiązywanie problemów dotyczących replikacji funkcji Hyper-V
+              href: hyper-v-azure-troubleshoot.md
             - name: Monitorowanie usługi Azure Site Recovery
               href: site-recovery-monitor-and-troubleshoot.md
     - name: Z funkcji Hyper-V do lokacji dodatkowej

@@ -55,11 +55,11 @@
         - name: Wymagania dotyczące usługi Azure stosu wdrażania infrastruktury kluczy publicznych
           href: azure-stack-pki-certs.md
           items:
-            - name: Uzyskiwanie certyfikatów PKI stosu Azure
+            - name: Generowanie certyfikatów PKI
               href: azure-stack-get-pki-certs.md
             - name: Przygotuj certyfikaty PKI stosu Azure
               href: azure-stack-prepare-pki-certs.md
-            - name: Sprawdź poprawność certyfikatów PKI stosu Azure
+            - name: Sprawdź poprawność certyfikatów PKI
               href: azure-stack-validate-pki-certs.md
         - name: Integracja tożsamości
           href: azure-stack-integrate-identity.md
@@ -286,8 +286,6 @@
           href: azure-stack-diagnostics.md
         - name: Sprawdzanie poprawności Azure stosu
           href: azure-stack-diagnostic-test.md
-        - name: Wdrażanie zestawu Azure Stack Development Kit
-          href: azure-stack-redeploy.md
 - name: Informacje ogólne
   items:
     - name: Azure Stack PowerShell

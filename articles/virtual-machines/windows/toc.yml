@@ -83,6 +83,8 @@
           href: sizes-hpc.md
         - name: Jednostki obliczeniowe platformy Azure (ACU)
           href: acu.md
+        - name: Wyniki testów porównawczych
+          href: compute-benchmark-scores.md
     - name: Konserwacja i aktualizacje
       href: maintenance-and-updates.md
     - name: Przechowywanie na dysku
@@ -157,7 +159,7 @@
         - name: Korzystanie ze składnika WinRM
           href: winrm.md
         - name: Korzystanie z kontroli dostępu
-          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Korzystanie z zasad
           href: policy.md
         - name: Tworzenie magazynu kluczy

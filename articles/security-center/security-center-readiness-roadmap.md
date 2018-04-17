@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
+ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 0de8dda6f88f31208c3fe7d560a461fea46a67e6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 88b95c28cd64afb97fb34d2bced09161c3aa9312
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Mapa gotowości usługi Azure Security Center
 Ten dokument zapewnia mapę gotowości, która będzie pomocna w rozpoczynaniu pracy z usługą Azure Security Center.
@@ -94,8 +94,9 @@ Maszyny wirtualne platformy Azure mogą wykorzystywać zaawansowane możliwości
 
 Użyj następujących zasobów, aby dowiedzieć się, jak korzystać z tych możliwości w usłudze Security Center.
 
-Połączenia wideo   
+Filmy wideo  
 * [Azure Security Center — dostęp JIT do maszyn wirtualnych](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center — funkcje adaptacyjnego sterowania aplikacjami](https://youtu.be/wWWekI1Y9ck)
 
 Artykuły    
 * [Zarządzanie dostępem maszyny wirtualnej przy użyciu funkcji „dokładnie na czas”](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
@@ -105,6 +106,7 @@ Artykuły
 
 * [Praktyczne laboratorium usługi Security Center](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Podręcznik dotyczący zaleceń zapory aplikacji sieci Web (WAF) w usłudze Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
+* [Podręcznik dotyczący usługi Azure Security Center: alerty zabezpieczeń](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Strona dokumentacji usługi Security Center](https://docs.microsoft.com/azure/security-center/)
@@ -115,6 +117,7 @@ Artykuły
 * [Najlepsze rozwiązania z zakresu zabezpieczeń sieci](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
 * [Zalecenia PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Zgodność](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist)
+* [Klienci pakietu OMS mogą teraz używać usługi Azure Security Center do ochrony obciążeń w chmurze hybrydowej](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Zasoby społeczności
 

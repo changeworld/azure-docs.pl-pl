@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/18
+ms.date: 04/03/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: eb4de9d7781ae355e42a6fec9f7732ad67228e70
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 47a4e75699e024dae367524f16eb23fb72043ef5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Szybki start: wdrażanie aplikacji kontenera systemu Windows w usłudze Service Fabric na platformie Azure
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi. 
@@ -29,11 +29,11 @@ Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usł
 ![Domyślna strona internetowa usług IIS][iis-default]
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
-> [!div class="checklist"]
-> * Pakowanie kontenera obrazu platformy Docker
-> * Konfigurowanie komunikacji
-> * Kompilowanie i tworzenie pakietu aplikacji usługi Service Fabric
-> * Wdrażanie aplikacji kontenera na platformie Azure
+
+* Pakowanie kontenera obrazu platformy Docker
+* Konfigurowanie komunikacji
+* Kompilowanie i tworzenie pakietu aplikacji usługi Service Fabric
+* Wdrażanie aplikacji kontenera na platformie Azure
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Subskrypcja platformy Azure (można utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
@@ -210,16 +210,16 @@ Zamieszczono tutaj kompletne manifesty usługi i aplikacji używane w tym przewo
 
 ## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
-> [!div class="checklist"]
-> * Pakowanie kontenera obrazu platformy Docker
-> * Konfigurowanie komunikacji
-> * Kompilowanie i tworzenie pakietu aplikacji usługi Service Fabric
-> * Wdrażanie aplikacji kontenera na platformie Azure
 
-* Dowiedz się więcej o uruchamianiu [kontenerów w usłudze Service Fabric](service-fabric-containers-overview.md).
-* Zapoznaj się z samouczkiem [Deploy a .NET application in a container](service-fabric-host-app-in-a-container.md) (Wdrażanie aplikacji .NET w kontenerze).
-* Uzyskaj informacje o [cyklu życia aplikacji](service-fabric-application-lifecycle.md) usługi Service Fabric.
-* Sprawdź [przykłady kodu kontenera usługi Service Fabric](https://github.com/Azure-Samples/service-fabric-containers) w witrynie GitHub.
+* Pakowanie kontenera obrazu platformy Docker
+* Konfigurowanie komunikacji
+* Kompilowanie i tworzenie pakietu aplikacji usługi Service Fabric
+* Wdrażanie aplikacji kontenera na platformie Azure
+
+Aby dowiedzieć się więcej na temat pracy z kontenerami systemu Windows w usłudze Service Fabric, przejdź do samouczka dotyczącego aplikacji kontenerów systemu Windows.
+
+> [!div class="nextstepaction"]
+> [Tworzenie aplikacji kontenerów systemu Windows](./service-fabric-host-app-in-a-container.md)
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png
