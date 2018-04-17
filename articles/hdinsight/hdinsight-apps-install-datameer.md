@@ -1,26 +1,24 @@
 ---
-title: "Zainstaluj opublikowana aplikacja — Datameer - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Zainstalować i używać aplikacji Hadoop Datameer innych firm."
+title: Zainstaluj opublikowana aplikacja — Datameer - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Zainstalować i używać aplikacji Hadoop Datameer innych firm.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8a898b4f82cf2d7e05e8c3895e5eddd8cf02b173
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 5008056ae2274d058706649f286b91b71feadc27
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---datameer"></a>Instalowanie aplikacji opublikowanych - Datameer
 
@@ -62,7 +60,7 @@ W poniższej procedurze pokazano pokaz "Hello World".
 
 1. [Pobierz przykładowe CSV](https://datameer.box.com/s/wzzw27za3agic4yjj8zrn6vfrph0ppnf).
 
-2. Kliknij przycisk  **+**  Zaloguj się na pulpicie nawigacyjnym Datameer, a następnie kliknij przycisk **przekazywanie pliku**.
+2. Kliknij przycisk **+** Zaloguj się na pulpicie nawigacyjnym Datameer, a następnie kliknij przycisk **przekazywanie pliku**.
 
     ![Przekazywanie pliku](./media/hdinsight-apps-install-datameer/upload.png)
 
@@ -74,7 +72,7 @@ W poniższej procedurze pokazano pokaz "Hello World".
 
     ![Zapisz](./media/hdinsight-apps-install-datameer/save.png)
 
-5. Kliknij przycisk  **+**  Zaloguj się ponownie, a następnie wybierz **skoroszytu** Aby utworzyć nowy skoroszyt danych.
+5. Kliknij przycisk **+** Zaloguj się ponownie, a następnie wybierz **skoroszytu** Aby utworzyć nowy skoroszyt danych.
 
     ![Dodaj skoroszytu](./media/hdinsight-apps-install-datameer/add-workbook.png)
 
@@ -96,7 +94,7 @@ W poniższej procedurze pokazano pokaz "Hello World".
 
     ![Zapisz skoroszyt](./media/hdinsight-apps-install-datameer/save-workbook.png)
 
-11. Datameer udostępnia zaawansowane wizualizacje narzędzia. Aby wyświetlić dane, należy utworzyć Infographic. Wybierz  **+**  Zaloguj się na pulpicie nawigacyjnym, a następnie wybierz **Infographic**.
+11. Datameer udostępnia zaawansowane wizualizacje narzędzia. Aby wyświetlić dane, należy utworzyć Infographic. Wybierz **+** Zaloguj się na pulpicie nawigacyjnym, a następnie wybierz **Infographic**.
 
     ![Dodaj Infographic](./media/hdinsight-apps-install-datameer/infographic-button.png)
 

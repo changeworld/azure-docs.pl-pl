@@ -1,6 +1,6 @@
 ---
-title: "Należy użyć dysku platformy Azure z AKS"
-description: "Używać dysków Azure AKS"
+title: Należy użyć dysku platformy Azure z AKS
+description: Używać dysków Azure AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -8,17 +8,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 36e25d7e5f1e5c6e1cf72442b73ac081810d216a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Trwałe woluminy z dysku systemu Azure
 
 Trwały wolumin reprezentuje fragment magazynu, które zostały udostępnione do użycia z stanowiskami Kubernetes. Trwały wolumin mogą być używane przez jedną lub wiele stanowiskami i można za dynamicznie, czy statycznie. Aby uzyskać więcej informacji na woluminach trwałe Kubernetes, zobacz [woluminy trwałe Kubernetes][kubernetes-volumes].
 
 Szczegóły tego dokumentu przy użyciu trwałe woluminy z dysku systemu Azure w klastrze usługi kontenera platformy Azure (AKS).
+
+> [!NOTE]
+> Dysku platformy Azure może być instalowany tylko z typem tryb dostępu ReadWriteOnce, dzięki czemu można tylko jeden węzeł AKS. W przypadku konieczności nie współużytkują woluminu trwałego na wielu węzłach, warto rozważyć użycie [plików Azure][azure-files-pvc].
 
 ## <a name="built-in-storage-classes"></a>Wbudowane klasy magazynu
 
@@ -40,7 +43,7 @@ Oświadczenie trwały wolumin (PVC) służy do automatycznie obsługiwać magazy
 
 Utwórz plik o nazwie `azure-premimum.yaml`i skopiuj następujące manifestu.
 
-Zwróć uwagę, że `managed-premium` magazynu jest określona w adnotacji i oświadczenia żąda dysku `5GB` rozmiaru w `ReadWriteOnce` dostępu. 
+Zwróć uwagę, że `managed-premium` magazynu jest określona w adnotacji i oświadczenia żąda dysku `5GB` rozmiaru w `ReadWriteOnce` dostępu.
 
 ```yaml
 apiVersion: v1
@@ -63,12 +66,9 @@ Tworzenie oświadczenia trwały wolumin o [utworzyć kubectl] [ kubectl-create] 
 kubectl create -f azure-premimum.yaml
 ```
 
-> [!NOTE]
-> Dysku platformy Azure może być instalowany tylko z typem tryb dostępu ReadWriteOnce, dzięki czemu można tylko jeden węzeł AKS. W przypadku konieczności nie współużytkują woluminu trwałego na wielu węzłach, warto rozważyć użycie [plików Azure][azure-files-pvc].
-
 ## <a name="using-the-persistent-volume"></a>Przy użyciu trwały wolumin
 
-Po oświadczeń trwały wolumin został utworzony i dysku pomyślnie zainicjowano obsługę administracyjną, pod można tworzyć za pomocą dostępu do dysku. Manifest następujących tworzy pod, używającej oświadczeń trwały wolumin `azure-managed-disk` do zainstalowania dysku platformy Azure na `/mnt/azure` ścieżki. 
+Po oświadczeń trwały wolumin został utworzony i dysku pomyślnie zainicjowano obsługę administracyjną, pod można tworzyć za pomocą dostępu do dysku. Manifest następujących tworzy pod, używającej oświadczeń trwały wolumin `azure-managed-disk` do zainstalowania dysku platformy Azure na `/mnt/azure` ścieżki.
 
 Utwórz plik o nazwie `azure-pvc-disk.yaml`i skopiuj następujące manifestu.
 
@@ -96,7 +96,7 @@ Utwórz pod z [utworzyć kubectl] [ kubectl-create] polecenia.
 kubectl create -f azure-pvc-disk.yaml
 ```
 
-Masz teraz pod uruchomiona z dysku platformy Azure, zamontowane w `/mnt/azure` katalogu. Widać instalacji podczas sprawdzania z pod za pośrednictwem woluminu `kubectl describe pod mypod`.
+Masz teraz pod uruchomiona z dysku platformy Azure, zamontowane w `/mnt/azure` katalogu. Ta konfiguracja może być moment zapoznanie się z pod za pośrednictwem `kubectl describe pod mypod`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

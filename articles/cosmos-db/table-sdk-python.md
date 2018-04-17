@@ -1,25 +1,25 @@
 ---
-title: "Rozwiązania Cosmos Azure DB tabeli interfejsu API dla języka Python | Dokumentacja firmy Microsoft"
-description: "Dowiedz się wszystkiego o rozwiązania Cosmos DB tabeli interfejsu API Azure tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji."
+title: Rozwiązania Cosmos Azure DB tabeli interfejsu API dla języka Python | Dokumentacja firmy Microsoft
+description: Dowiedz się wszystkiego o rozwiązania Cosmos DB tabeli interfejsu API Azure tym daty wydania, daty wycofania i zmiany wprowadzone od każdej wersji.
 services: cosmos-db
 documentationcenter: python
-author: mimig
-manager: jhubbard
-editor: 
-ms.assetid: 
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 11/20/2017
-ms.author: mimig1
-ms.custom: 
-ms.openlocfilehash: 70315d93b7211351c19a17553db88962f25d8acb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: sngun
+ms.custom: ''
+ms.openlocfilehash: 760f79bf50ea3e6e76beb26d2cd8419a8404a3ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB tabeli interfejsu API zestawu SDK dla języka Python: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/21/2017
 |**Dokumentacja interfejsu API**|[Dokumentacji interfejsu API języka Python](https://azure.github.io/azure-cosmosdb-python/)|
 |**Instrukcje dotyczące instalacji zestawu SDK**|[Instrukcje dotyczące instalacji zestawu SDK Python](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Przyczyniają się do zestawu SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Bieżący obsługiwanych platform**|[Python 2.7](https://www.python.org/downloads/) lub [Python 3.3, 3.4, 3.5 lub 3,6] (https://www.python.org/downloads/)|
+|**Bieżący obsługiwanych platform**|[Python 2.7](https://www.python.org/downloads/) lub () [Python 3.3, 3.4, 3.5 lub 3,6]https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > Jeśli utworzono konto interfejsu API tabel w trakcie okresu próbnego, utwórz [nowe konto interfejsu API tabel](create-table-dotnet.md#create-a-database-account), aby móc korzystać z ogólnie dostępnych zestawów SDK interfejsu API tabel.

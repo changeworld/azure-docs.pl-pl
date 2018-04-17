@@ -1,25 +1,25 @@
 ---
-title: "Przypisywanie ról administratorów w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Rolę administratora można dodać użytkowników, Przypisz role administracyjne, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników lub zarządzania domenami. Użytkownik, któremu przypisano rolę administratora ma te same uprawnienia we wszystkich usługach chmury, do których zostały zasubskrybowane przez organizację."
+title: Przypisywanie ról administratorów w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Rolę administratora można dodać użytkowników, Przypisz role administracyjne, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników lub zarządzania domenami. Użytkownik, któremu przypisano rolę administratora ma te same uprawnienia we wszystkich usługach chmury, do których zostały zasubskrybowane przez organizację.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8ba4787852902f194deb3eee27ff9f0fc28fa5aa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 88cd8fd99b61a8332d443e4969e30eac39916d66
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -189,7 +189,7 @@ Nie można używać następujących ról. One zostały przestarzałe i zostanie 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej o modyfikowaniu administratorów subskrypcji platformy Azure, zobacz [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md) (Jak dodać lub zmienić role administratora platformy Azure).
-* Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](active-directory-understanding-resource-access.md) (Opis dostępu do zasobów na platformie Azure).
+* Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
 * Aby uzyskać więcej informacji dotyczących sposobu usługi Azure Active Directory odnosi się do subskrypcji platformy Azure, zobacz [jak subskrypcje platformy Azure są kojarzone z usługi Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 * [Zarządzanie użytkownikami](active-directory-create-users.md)
 * [Zarządzanie hasłami](active-directory-manage-passwords.md)

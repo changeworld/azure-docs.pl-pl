@@ -1,29 +1,27 @@
 ---
-title: "Dzienniki aplikacji Hadoop YARN dostępu programowo - Azure | Dokumentacja firmy Microsoft"
-description: "Dostęp do aplikacji programowo loguje klastra usługi Hadoop w usłudze HDInsight."
+title: Dzienniki aplikacji Hadoop YARN dostępu programowo - Azure | Dokumentacja firmy Microsoft
+description: Dostęp do aplikacji programowo loguje klastra usługi Hadoop w usłudze HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 0198d6c9-7767-4682-bd34-42838cf48fc5
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 90323af4a1f4526ab9b26811c8679337076112d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aab7865548c034cb550874c31977b05936dc45b9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Dzienniki aplikacji YARN dostępu w usłudze HDInsight z systemu Windows
-W tym temacie wyjaśniono, jak dostępu do dzienników YARN (jeszcze inny zasób moduł negocjowania) aplikacji, które zakończyły się w klastrze z systemem Windows Hadoop w usłudze Azure HDInsight
+W tym dokumencie opisano sposób dostępu do dzienników YARN aplikacji, które zakończyły się w klastrze z systemem Windows Hadoop w usłudze Azure HDInsight
 
 > [!IMPORTANT]
 > Informacje przedstawione w tym dokumencie ma zastosowanie tylko w klastrach HDInsight opartych na systemie Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows). Aby uzyskać informacje na temat uruchamiania YARN loguje się klastrów usługi HDInsight opartych na systemie Linux, zobacz [logowania YARN dostęp do aplikacji opartych na systemie Linux platformą Hadoop w usłudze HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
@@ -46,17 +44,22 @@ Ogólne informacje na temat aplikacji obejmuje następujące rodzaje danych:
 * Informacje o podjętych w celu wykonania aplikacji
 * Kontenery używane przez wszystkie próby danej aplikacji
 
-W klastrach HDInsight te informacje będą przechowywane przez usługi Azure Resource Manager w magazynie historii w domyślnym kontenerze domyślnego konta usługi Azure Storage. Za pomocą interfejsu API REST można pobrać tego ogólnego danych w aplikacjach zakończone:
+W klastrach HDInsight te informacje są przechowywane przez Menedżera zasobów Azure. Informacje są zapisywane w magazynie historii w domyślny magazyn dla klastra. Za pomocą interfejsu API REST można pobrać tego ogólnego danych w aplikacjach zakończone:
 
     GET on https://<cluster-dns-name>.azurehdinsight.net/ws/v1/applicationhistory/apps
 
 
 ## <a name="yarn-applications-and-logs"></a>Dzienniki YARN aplikacji i
-YARN obsługuje wiele modele programowania (MapReduce jest jednym z nich) dzięki rozdzieleniu zarządzanie zasobami z planowania/monitorowania aplikacji. Odbywa się za pośrednictwem globalnym *ResourceManager* (RM) na węzła procesu roboczego *NodeManagers* (NMs) i dla każdej aplikacji *ApplicationMasters* (AMs). AM poszczególnych aplikacji negocjuje zasobów (Procesora, pamięci, dysku, sieci) do uruchamiania aplikacji z Menedżera zasobów. Menedżer zasobów współpracuje z NMs udzielenia tych zasobów, które są przyznawane jako *kontenery*. AM jest odpowiedzialny za śledzenie postępu kontenery przypisane do niej przez Menedżera zasobów. Aplikacja może wymagać wiele kontenerów w zależności od charakteru aplikacji.
+YARN obsługuje wiele modele programowania Dzięki rozdzieleniu zarządzanie zasobami z planowania/monitorowania aplikacji. YARN używa globalnym *ResourceManager* (RM) na węzła procesu roboczego *NodeManagers* (NMs) i dla każdej aplikacji *ApplicationMasters* (AMs). AM poszczególnych aplikacji negocjuje zasobów (Procesora, pamięci, dysku, sieci) do uruchamiania aplikacji z Menedżera zasobów. Menedżer zasobów współpracuje z NMs udzielenia tych zasobów, które są przyznawane jako *kontenery*. AM jest odpowiedzialny za śledzenie postępu kontenery przypisane do niej przez Menedżera zasobów. Aplikacja może wymagać wiele kontenerów w zależności od charakteru aplikacji.
 
-Ponadto każda aplikacja może składać się z wielu *prób aplikacji* w celu zakończenia obecności awarii (Crash) lub z powodu utraty komunikacji między AM i Menedżera zasobów. W związku z tym kontenery są przyznawane określonych próba aplikacji. W tym sensie kontener dostarcza kontekst dla podstawowa jednostka pracy wykonanej przez aplikację YARN, a wszystkie pracy, którą można wykonać w ramach kontenera odbywa się w węźle pojedynczego procesu roboczego, na którym została przydzielona kontenera. Zobacz [pojęcia YARN] [ YARN-concepts] dla dalszego odwołania.
+* Każda aplikacja może składać się z wielu *prób aplikacji*. 
+* Kontenery są przyznawane określonych próba aplikacji. 
+* Kontener udostępnia kontekst dla podstawowa jednostka pracy. 
+* Praca odbywa się w kontekście kontenera odbywa się w węźle pojedynczego procesu roboczego, który kontenera została przydzielona do. 
 
-Dzienniki aplikacji (oraz Dzienniki skojarzone kontenera) są kluczowe w debugowaniu problematyczne aplikacje platformy Hadoop. YARN umożliwia nieuprzywilejowany framework do zbierania, agregację i przechowywania Dzienniki aplikacji z [agregacji dziennika] [ log-aggregation] funkcji. Funkcja agregacji dziennika sprawia, że podczas uzyskiwania dostępu do dzienników aplikacji teraz bardziej przewidywalna, ponieważ agreguje dzienniki we wszystkich kontenerów w węźle procesu roboczego i przechowuje je jako jeden zagregowany plik dziennika na węzła procesu roboczego na domyślny system plików, po zakończeniu działania aplikacji. Aplikacja może korzystać z setkami lub tysiącami kontenerów, ale dzienniki dla wszystkich kontenerów uruchomiona w węźle pojedynczego procesu roboczego zawsze są agregowane w pojedynczym pliku, co w jeden plik dziennika na węzła procesu roboczego używany przez aplikację. Agregacji dziennik jest domyślnie włączone w klastrach HDInsight (w wersji 3.0 lub nowszej), i zagregowane Dzienniki znajdują się w domyślnym kontenerze klastra w następującej lokalizacji:
+Aby uzyskać więcej informacji, zobacz [pojęcia YARN][YARN-concepts].
+
+Dzienniki aplikacji (oraz Dzienniki skojarzone kontenera) są kluczowe w debugowaniu problematyczne aplikacje platformy Hadoop. YARN umożliwia nieuprzywilejowany framework do zbierania, agregację i przechowywania Dzienniki aplikacji z [agregacji dziennika] [ log-aggregation] funkcji. Funkcja agregacji dziennika sprawia, że podczas uzyskiwania dostępu do dzienników aplikacji teraz bardziej przewidywalna, ponieważ agreguje dzienniki we wszystkich kontenerów w węźle procesu roboczego i przechowuje je jako jeden zagregowany plik dziennika na węzła procesu roboczego na domyślny system plików, po zakończeniu działania aplikacji. Aplikacja może korzystać z setkami lub tysiącami kontenerów, ale dzienniki dla wszystkich kontenerów uruchomiona w węźle pojedynczego procesu roboczego są agregowane w pojedynczym pliku, co w jednym pliku na węzeł roboczych używanych przez aplikację. Agregacji dziennik jest domyślnie włączone w klastrach HDInsight (w wersji 3.0 lub nowszej), i zagregowane Dzienniki znajdują się w domyślnym kontenerze klastra w następującej lokalizacji:
 
     wasb:///app-logs/<user>/logs/<applicationId>
 
@@ -73,7 +76,7 @@ Interfejsie użytkownika YARN ResourceManager działa na headnode klastra i jest
 
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
 2. W menu po lewej stronie kliknij **Przeglądaj**, kliknij przycisk **klastrów usługi HDInsight**, kliknij klaster opartych na systemie Windows, który ma dostępu do dzienników YARN w aplikacji.
-3. W górnym menu, kliknij przycisk **pulpitu nawigacyjnego**. Zostanie wyświetlona strona otwarty w nowym oknie przeglądarki kartę o nazwie **HDInsight zapytania konsoli**.
+3. W górnym menu, kliknij przycisk **pulpitu nawigacyjnego**. Zobacz stronę na nowym oknie przeglądarki otworzyć kartę o nazwie **HDInsight zapytania konsoli**.
 4. Z **konsoli zapytania HDInsight**, kliknij przycisk **interfejsie użytkownika Yarn**.
 
 [YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html

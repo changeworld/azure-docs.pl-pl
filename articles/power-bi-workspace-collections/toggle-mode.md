@@ -1,26 +1,26 @@
 ---
-title: "Przełącz między widokami i edytować tryb dla raportów w programie Power BI obszaru roboczego kolekcje | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie przełączania między widoku i edytować tryb dla raportów w kolekcjach obszaru roboczego programu Power BI."
+title: Przełącz między widokami i edytować tryb dla raportów w programie Power BI obszaru roboczego kolekcje | Dokumentacja firmy Microsoft
+description: Informacje o sposobie przełączania między widoku i edytować tryb dla raportów w kolekcjach obszaru roboczego programu Power BI.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: e66778697f3f4f2f065d2757b3b60ac2699c0334
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 23a8c4f0dd626a623df56de9546258a23d549d1a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Przełącz między widokami i edytować tryb dla raportów w programie Power BI obszaru roboczego kolekcje
 
@@ -116,7 +116,7 @@ report.switchMode("edit");
 
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Rozpoczęcie pracy z przykładem](get-started-sample.md)  
 [Embed a report](embed-report.md) (Osadzanie raportu)  

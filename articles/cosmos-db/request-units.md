@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: sngun
-ms.openlocfilehash: ab85591ce4ffadeba4c1336efea0bd6945d46ec3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.author: rimman
+ms.openlocfilehash: 182f9fcfd03d736f66dd8ca11720c88c9f5b36fc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Żądanie jednostki w Azure rozwiązania Cosmos bazy danych
 
-[Azure DB rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) jest globalnie rozproszone wielu modelu bazy danych firmy Microsoft. Z bazy danych rozwiązania Cosmos platformy Azure nie trzeba wynajmować maszyn wirtualnych, wdrażania oprogramowania lub monitora bazy danych. Azure DB rozwiązania Cosmos jest obsługiwane i stale monitorowane przez górny pracownicy firmy Microsoft do dostarczania światowej klasy ochrony dostępności, wydajności i danych. Można uzyskać dostępu do danych przy użyciu interfejsów API wybranych przez użytkownika, takich jak [interfejsu API SQL](documentdb-introduction.md), [API bazy danych MongoDB](mongodb-introduction.md), [API tabeli](table-introduction.md)i Gremlin za pośrednictwem [interfejsu API programu Graph](graph-introduction.md) - Wszystkie obsługiwane. Waluta Azure DB rozwiązania Cosmos jest jednostka żądań (RU). Z RUs nie należy do zarezerwowania możliwości odczytu/zapisu lub udostępnić procesora CPU, pamięci i IOPS.
+[Azure DB rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) jest globalnie rozproszone wielu modelu bazy danych firmy Microsoft. Z bazy danych rozwiązania Cosmos platformy Azure nie trzeba wynajmować maszyn wirtualnych, wdrażania oprogramowania lub monitora bazy danych. Azure DB rozwiązania Cosmos jest obsługiwane i stale monitorowane przez górny pracownicy firmy Microsoft do dostarczania światowej klasy ochrony dostępności, wydajności i danych. Można uzyskać dostępu do danych przy użyciu interfejsów API wybranych przez użytkownika, takich jak [interfejsu API SQL](documentdb-introduction.md), [API bazy danych MongoDB](mongodb-introduction.md), [API tabeli](table-introduction.md)i za pośrednictwem programu graph [Gremlin API](graph-introduction.md) — Wszystkie obsługiwane. 
 
-Azure DB rozwiązania Cosmos obsługuje kilka interfejsów API z różnych operacji — od prostych odczytuje i zapisuje wykres złożonych zapytań. Ponieważ nie wszystkie żądania są takie same, są przypisane znormalizowane ilość **jednostek żądania** na podstawie ilości obliczeń wymaganych do obsłużenia żądania. Liczba jednostek żądania dla operacji jest deterministyczna, a można śledzić liczbę jednostek żądania używane przez żadnych operacji w usłudze Azure DB rozwiązania Cosmos za pośrednictwem nagłówka odpowiedzi. 
+Waluta bazy danych Azure rozwiązania Cosmos jest **jednostek żądań (RU)**. Z RUs nie należy do zarezerwowania możliwości odczytu/zapisu lub udostępnić procesora CPU, pamięci i IOPS. Azure DB rozwiązania Cosmos obsługuje kilka interfejsów API z różnych operacji — od prostych odczytuje i zapisuje wykres złożonych zapytań. Ponieważ nie wszystkie żądania są takie same, są przypisane znormalizowane ilość **jednostek żądania** na podstawie ilości obliczeń wymaganych do obsłużenia żądania. Liczba jednostek żądania dla operacji jest deterministyczna, a można śledzić liczbę jednostek żądania używane przez żadnych operacji w usłudze Azure DB rozwiązania Cosmos za pośrednictwem nagłówka odpowiedzi. 
 
 Zapewnienie przewidywalnej wydajności, należy zarezerwować przepływności w jednostkach 100 RU/sekundę. Możesz [oszacować przepustowość sieci musi](request-units.md#estimating-throughput-needs) za pomocą usługi Azure DB rozwiązania Cosmos [Kalkulator jednostki żądania](https://www.documentdb.com/capacityplanner).
 
@@ -31,12 +31,12 @@ Zapewnienie przewidywalnej wydajności, należy zarezerwować przepływności w 
 
 Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na następujące pytania:  
 
-* Co to są jednostek żądania i żądania opłat?
-* Jak określić pojemność jednostki żądania kontener?
+* Jakie są jednostek żądania i żądania opłat w usłudze Azure DB rozwiązania Cosmos?
+* Jak określić pojemność jednostki żądania kontenera w usłudze Azure DB rozwiązania Cosmos?
 * Jak oszacować musi jednostki żądania Moja aplikacja
-* Co się stanie, jeśli I przekracza pojemność jednostki żądania kontener?
+* Co się stanie, jeśli I przekracza pojemność jednostki żądania dla kontenera w usłudze Azure DB rozwiązania Cosmos?
 
-Bazy danych Azure rozwiązania Cosmos jest wiele modeli bazy danych, to należy pamiętać, że ten artykuł dotyczy kolekcji/dokumentu, dokument interfejsu API graph/węzeł Graph API i tabeli na jednostkę tabeli interfejsu API. Ten artykuł dotyczy koncepcji zbierania, wykres lub tabeli jako kontenera, a dokument, węzeł lub jednostki jako element.
+Bazy danych Azure rozwiązania Cosmos jest wiele modeli bazy danych; należy pamiętać, że w tym artykule jest zastosowanie do wszystkich modeli danych i interfejsów API w usłudze Azure DB rozwiązania Cosmos. W tym artykule wykorzystano terminy ogólne *kontenera* i *elementu* oznacza objęty kolekcji, wykres, lub tabeli i dokumentu, węzeł lub jednostki, odpowiednio.
 
 ## <a name="request-units-and-request-charges"></a>Jednostek żądania i żądania opłat
 Azure DB rozwiązania Cosmos zapewnia szybkie, przewidywalną wydajność przez *rezerwowania* zasobów do zaspokojenia musi przepływność aplikacji.  Ponieważ aplikacja obciążenia i dostęp do zmiany wzorce wraz z upływem czasu, bazy danych Azure rozwiązania Cosmos umożliwia łatwe zwiększyć lub zmniejszyć ilość zarezerwowaną przepływnością dostępne dla aplikacji.
@@ -70,7 +70,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-Azure DB rozwiązania Cosmos działa modelu rezerwacji przepływności. Oznacza to, że są rozliczane ilości przepływności *zastrzeżone*, niezależnie od tego, jaka część tego przepływności jest aktywnie *używane*. Aplikacją na obciążenia, danych i użycia zmiany wzorce, można łatwo skalowania ilość zastrzeżone RUs za pomocą zestawów SDK lub przy użyciu [Azure Portal](https://portal.azure.com).
+Azure DB rozwiązania Cosmos działa modelu rezerwacji przepustowości. Oznacza to, że są rozliczane ilości przepływności *zastrzeżone*, niezależnie od tego, jaka część tego przepływności jest aktywnie *używane*. Aplikacją na obciążenia, danych i użycia zmiany wzorce, można łatwo skalowania ilość zastrzeżone RUs za pomocą zestawów SDK lub przy użyciu [Azure Portal](https://portal.azure.com).
 
 Każdy kontener jest mapowany na `Offer` zasobów w usłudze Azure DB rozwiązania Cosmos mającej metadane dotyczące udostępnionej przepływności. Możesz zmienić przydzielone przepływności wyszukiwania odpowiadający jej zasób oferta dla kontenera, a następnie zaktualizowaniem go przy użyciu nowej wartości przepływności. Oto fragment kodu do zmiany przepływności kontenera do 5000 jednostek żądania na drugi przy użyciu zestawu .NET SDK:
 
@@ -92,28 +92,28 @@ Jeśli zmienisz przepływność jest bez zakłócania dostępności z kontenera.
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Izolacja przepływności w rozproszonych globalnie baz danych
 
-W przypadku bazy danych zostały zreplikowane do więcej niż jeden region, bazy danych Azure rozwiązania Cosmos zapewnia izolację przepływności, aby upewnić się, że użycie RU w jednym regionie nie ma wpływu na RU użycia w innym regionie. Na przykład jeśli zapisu danych do jednego regionu i odczytywanie danych z innego regionu, RUs, używany do wykonywania operacji zapisu w regionie, A nie przyjmują przeciwną RUs używane dla operacji odczytu w regionie, w którym B. RUs nie są dzielone w regionach, w których została wdrożona. Każdego regionu, w której są replikowane bazy danych ma pełne ilość RUs udostępnione. Aby uzyskać więcej informacji na temat globalnej replikacji, zobacz [sposobu dystrybucji danych globalnie z bazy danych Azure rozwiązania Cosmos](distribute-data-globally.md).
+W przypadku bazy danych zostały zreplikowane do więcej niż jeden region, bazy danych Azure rozwiązania Cosmos zapewnia izolację przepływności, aby upewnić się, że użycie RU w jednym regionie nie ma wpływu na RU użycia w innym regionie. Na przykład, jeśli zapisu danych do jednego regionu i odczytywanie danych z innego regionu, RUs są używane do wykonywania operacji zapisu w regionie *A* nie przyjmują przeciwną RUs używane dla operacji odczytu w regionie *B*. RUs nie są dzielone w regionach, w których została wdrożona. Każdego regionu, w której są replikowane bazy danych ma pełne ilość RUs udostępnione. Aby uzyskać więcej informacji na temat globalnej replikacji, zobacz [sposobu dystrybucji danych globalnie z bazy danych Azure rozwiązania Cosmos](distribute-data-globally.md).
 
 ## <a name="request-unit-considerations"></a>Zagadnienia dotyczące jednostki żądania
-Szacowanie liczby jednostek żądania do zarezerwowania dla Twojej bazy danych Azure rozwiązania Cosmos kontenera, należy wziąć pod uwagę następujące zmienne:
+Szacowanie liczby jednostek żądania udzielenia dla Twojej bazy danych Azure rozwiązania Cosmos kontenera, należy wziąć pod uwagę następujące zmienne:
 
-* **Rozmiar elementu**. Jak jednostki używane do odczytu lub zapisu danych zwiększa się również rozmiarze.
+* **Rozmiar elementu**. Jak rozmiar zwiększa liczbę zwiększa się również używane do odczytywania lub zapisywania danych jednostki żądania
 * **Liczba właściwości elementu**. Zakładając, że domyślna indeksowania wszystkich właściwości, jednostki używane do zapisania wzrost dokumentu na węzeł/jednostkę wraz ze wzrostem liczby właściwości.
-* **Spójność danych**. Dodatkowe jednostki za pomocą poziomów spójności danych silne lub ograniczonych nieaktualności, są używane do odczytu elementów.
+* **Spójność danych**. Przy użyciu modeli spójności danych, takich jak silne lub ograniczonych nieaktualności, jednostki dodatkowe żądania są używane do odczytu elementów.
 * **Właściwości indeksowanych**. Zasady indeksu na każdego kontenera określa właściwości, które są indeksowane domyślnie. Można ograniczyć zużycie jednostki Twoje żądanie, przez ograniczenie liczby właściwości indeksowanych lub włączenie indeksowanie z opóźnieniem.
-* **Indeksowanie dokumentów**. Domyślnie każdy element jest indeksowany automatycznie. Jeśli wybierzesz nie może zindeksować niektórych elementów można używać mniejszej liczby jednostek żądania.
-* **Zapytanie wzorce**. Złożoność kwerendy wpływa na liczbę jednostek żądania są używane dla operacji. Liczba predykatów, rodzaj predykaty, projekcje liczbę funkcji UDF i rozmiaru zestawu danych źródła wszystkich wpływ kosztów operacji zapytania.
+* **Indeksowanie dokumentów**. Domyślnie każdy element jest indeksowany automatycznie. Jeśli wybierzesz nie zindeksować niektórych elementów wykorzystywać się mniej jednostek żądania.
+* **Zapytanie wzorce**. Złożoność kwerendy wpływa na liczbę jednostek żądania są używane dla operacji. Liczba predykatów, rodzaj predykaty, projekcje liczbę funkcji UDF i rozmiar źródła danych - wszystkie wpływ kosztów operacji zapytania.
 * **Użycie skryptu**.  Podobnie jak w przypadku zapytań, procedury składowane i wyzwalaczy wykorzystywać jednostki żądania, zależnie od stopnia złożoności wykonywania operacji. Podczas opracowywania aplikacji, sprawdź, czy nagłówek opłat żądania, aby lepiej zrozumieć, jak każdej operacji zajmuje pojemność jednostki żądania.
 
 ## <a name="estimating-throughput-needs"></a>Planowania potrzeb w zakresie przepustowości
 Jednostka żądania jest znormalizowane miara kosztu przetwarzania żądania. Jednostka pojedyncze żądanie reprezentuje możliwości przetwarzania wymagane do odczytu (za pośrednictwem łączy własnych lub identyfikator) pojedynczego 1 KB elementu składające się z 10 unikatowe wartości (z wyjątkiem właściwości systemu). Żądanie utworzenia (Wstaw), Zamień lub Usuń ten sam element będą korzystać z dodatkowych zadań przetwarzania przez usługę i tym samym więcej jednostek żądania.   
 
 > [!NOTE]
-> Linia bazowa jednostka żądania 1 dla elementu 1 KB odpowiada proste GET przez łącze własne lub identyfikator elementu.
+> Linia bazowa jednostka żądania 1 do 1 KB elementu odpowiada proste GET przez łącze własne lub identyfikator elementu.
 > 
 > 
 
-Na przykład, w tym miejscu jest tabelę, która zawiera liczbę jednostek żądania udzielenia na trzy rozmiary innego elementu (1 KB, 4 KB do 64 KB) i na dwa różne poziomy wydajności (odczyty 500 na sekundę 100 zapisy na sekundę i 500 odczyty/sekundę + 500 zapisy na sekundę). Spójność danych skonfigurowano na sesji, a zasady indeksowania został ustawiony na None.
+Na przykład, w tym miejscu jest tabeli, która przedstawia liczbę jednostek żądania udzielenia dla elementów z trzech różnych rozmiarach (1 KB, 4 KB do 64 KB) i dwa różne poziomy wydajności (odczyty 500 na sekundę 100 zapisy na sekundę i 500 odczyty/sekundę + 500 zapisy na sekundę). Spójność danych skonfigurowano na *sesji*, i ustawiono zasady indeksowania *Brak*.
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -174,11 +174,11 @@ Narzędzie obejmuje również obsługę Szacowanie oparte na elementach próbki,
 
 Za pomocą narzędzia jest prosty:
 
-1. Należy przekazać co najmniej jeden element reprezentatywny.
+1. Należy przekazać co najmniej jeden element reprezentatywny (np. przykładowy dokument JSON).
    
     ![Przekaż elementów do Kalkulatora jednostki żądania][2]
-2. Aby oszacować wymagania dotyczące magazynu danych, wprowadź całkowitą liczbę elementów, które chcesz przechowywać.
-3. Wprowadź liczbę elementów, które tworzenia, odczytu, aktualizacji i usuwania działań, które wymagają (na podstawie na sekundę). Aby oszacować opłat jednostki żądania operacji aktualizowania elementu, Przekaż kopię elementu próbki z kroku 1 zawiera pole typowe aktualizacje.  Na przykład aktualizacji elementu zmodyfikowania zwykle dwie właściwości o nazwie lastLogin i userVisits, następnie po prostu skopiuj element przykładowych, zaktualizuj wartości dla tych dwóch właściwości i przekaż skopiowany element.
+2. Aby oszacować wymagania dotyczące magazynu danych, wprowadź całkowitą liczbę elementów (np. dokumentów, tabel lub wykresy) prawdopodobnie będzie przechowywana.
+3. Wprowadź liczbę tworzenia, odczytu, aktualizacji i operacji delete, które są wymagane (na podstawie na sekundę). Aby oszacować opłat jednostki żądania operacji aktualizowania elementu, Przekaż kopię elementu próbki z kroku 1 zawiera pole typowe aktualizacje.  Na przykład, jeśli element aktualizacje zwykle zmodyfikuj dwie właściwości o nazwie *lastLogin* i *userVisits*, następnie po prostu skopiuj element przykładowych, zaktualizuj wartości dla tych dwóch właściwości i przekazać skopiowany element.
    
     ![Wprowadź wymagania dotyczące przepływności w Kalkulator jednostki żądania][3]
 4. Kliknij przycisk Oblicz i przejrzeć wyniki.
@@ -191,9 +191,9 @@ Za pomocą narzędzia jest prosty:
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Użyj nagłówka odpowiedzi opłat żądania bazy danych Azure rozwiązania Cosmos
-Każdy odpowiedź z usługi Azure DB rozwiązania Cosmos zawiera niestandardowy nagłówek (`x-ms-request-charge`) zawiera jednostki żądania używane dla żądania. Ten nagłówek jest również dostępny za pośrednictwem Azure DB rozwiązania Cosmos z zestawów SDK. W zestawie SDK .NET RequestCharge jest właściwością obiektu ResourceResponse.  Dla zapytań Eksploratora danych Azure DB rozwiązania Cosmos w portalu Azure informacje żądania opłaty dotyczące wykonywane zapytania.
+Każdy odpowiedź z usługi Azure DB rozwiązania Cosmos zawiera niestandardowy nagłówek (`x-ms-request-charge`) zawiera jednostki żądania używane dla danego żądania. Ten nagłówek jest również dostępny za pośrednictwem Azure DB rozwiązania Cosmos z zestawów SDK. W zestawie SDK .NET `RequestCharge` jest właściwością `ResourceResponse` obiektu.  Dla zapytań Eksploratora danych Azure DB rozwiązania Cosmos w portalu Azure informacje żądania opłaty dotyczące wykonywane zapytania.
 
-Pamiętając o tym jednej metody w oszacowania zarezerwowaną przepływnością wymagane przez aplikację jest rejestrowanie skojarzone z systemem typowymi operacjami względem elementu reprezentatywny używanych przez aplikację, a następnie Szacowanie opłata jednostki żądania Liczba operacji przewidujesz wykonywania każdej sekundy.  Pamiętaj mierzyć i obejmują typowe zapytania i również użycie skryptu bazy danych Azure rozwiązania Cosmos.
+Pamiętając o tym, jedną z metod do oszacowania ilości zarezerwowaną przepływnością wymagane przez aplikację jest rekord opłata jednostki żądania skojarzonego z typowymi operacjami uruchamiania elementu reprezentatywny używanych przez aplikację i następnie ocenić Liczba operacji, które planujesz do wykonania w ciągu sekundy.  Pamiętaj mierzyć i obejmują typowe zapytania i również użycie skryptu bazy danych Azure rozwiązania Cosmos.
 
 > [!NOTE]
 > Jeśli masz typów elementów, które różnią się znacznie pod względem rozmiaru i liczby właściwości indeksowanych rejestrowania opłata jednostki żądanie dotyczy operacji związanych z każdym *typu* typowe elementu.
@@ -209,8 +209,8 @@ Na przykład:
 5. Zarejestruj opłata jednostki żądania żadnych niestandardowych skryptów (procedury składowane, wyzwalacze, funkcje zdefiniowane przez użytkownika) wykorzystywana przez aplikację
 6. Oblicz jednostki żądania wymagane podane szacowaną liczbę operacji, które planujesz do uruchomienia w ciągu sekundy.
 
-## <a id="GetLastRequestStatistics"></a>Za pomocą interfejsu API dla bazy danych MongoDB w GetLastRequestStatistics polecenia
-Interfejs API bazy danych MongoDB obsługuje polecenia niestandardowych, *getLastRequestStatistics*, pobierania opłat żądania dla określonej operacji.
+## <a id="GetLastRequestStatistics"></a>Użyj polecenia GetLastRequestStatistics interfejsu API bazy danych MongoDB
+Interfejs API bazy danych MongoDB obsługuje polecenia niestandardowych, *getLastRequestStatistics*, pobierania opłat żądania dla danej operacji.
 
 Na przykład w powłokę Mongo, należy wykonać chcesz zweryfikować opłata żądania dla operacji.
 ```
@@ -229,7 +229,7 @@ Następnie wykonaj polecenie *getLastRequestStatistics*.
 }
 ```
 
-Pamiętając o tym jednej metody w oszacowania zarezerwowaną przepływnością wymagane przez aplikację jest rejestrowanie skojarzone z systemem typowymi operacjami względem elementu reprezentatywny używanych przez aplikację, a następnie Szacowanie opłata jednostki żądania Liczba operacji przewidujesz wykonywania każdej sekundy.
+Pamiętając o tym, jedną z metod do oszacowania ilości zarezerwowaną przepływnością wymagane przez aplikację jest rekord opłata jednostki żądania skojarzonego z typowymi operacjami uruchamiania elementu reprezentatywny używanych przez aplikację i następnie ocenić Liczba operacji, które planujesz do wykonania w ciągu sekundy.
 
 > [!NOTE]
 > Jeśli masz typów elementów, które różnią się znacznie pod względem rozmiaru i liczby właściwości indeksowanych rejestrowania opłata jednostki żądanie dotyczy operacji związanych z każdym *typu* typowe elementu.
@@ -237,11 +237,11 @@ Pamiętając o tym jednej metody w oszacowania zarezerwowaną przepływnością 
 > 
 
 ## <a name="use-mongodb-api-portal-metrics"></a>Użyj portalu metryki interfejsu API bazy danych MongoDB
-Najprostszym sposobem, aby uzyskać dobrą szacowania żądania opłat jednostki bazy danych MongoDB interfejsu API jest użycie [portalu Azure](https://portal.azure.com) metryki. Z *liczba żądań* i *opłat żądania* wykresy, możesz uzyskać oszacowanie liczbę jednostek żądania, każdy zajmuje operacji i liczbę jednostek żądania zużywają względem siebie.
+Najprostszym sposobem, aby uzyskać dobrą oszacowanie żądania opłat jednostki bazy danych MongoDB interfejsu API jest użycie [portalu Azure](https://portal.azure.com) metryki. Z *liczba żądań* i *opłat żądania* wykresy, możesz uzyskać szacunkową liczbę jednostek żądania, każdy zajmuje operacji i liczbę jednostek żądania zużywają względem siebie.
 
 ![Metryki portalu API bazy danych MongoDB][6]
 
-## <a name="a-request-unit-estimation-example"></a>W przykładzie szacowania jednostki żądania
+## <a name="a-request-unit-estimate-example"></a>W przykładzie szacowania jednostki żądania
 Należy wziąć pod uwagę następujące dokumentu ~ 1 KB:
 
 ```json
@@ -299,7 +299,7 @@ Należy wziąć pod uwagę następujące dokumentu ~ 1 KB:
 > 
 > 
 
-W poniższej tabeli przedstawiono przybliżone żądania jednostki związanych z typowymi operacjami na tym elemencie (opłata jednostki żądania przybliżonej przy założeniu, że poziomu spójności konta jest ustawiona na "Sesja" i że wszystkie elementy są automatycznie indeksowane):
+W poniższej tabeli przedstawiono przybliżone żądania jednostki związanych z typowymi operacjami na tym elemencie (opłata jednostki żądania przybliżonej przyjęto założenie, że poziomu spójności konta jest ustawiona na *sesji* i że wszystkie elementy są automatycznie indeksowane):
 
 | Operacja | Opłata jednostki żądania |
 | --- | --- |
@@ -317,7 +317,7 @@ Ponadto w poniższej tabeli zamieszczono przybliżonej żądania jednostki opła
 | Zaznacz górny żywności 10 w grupie żywności |~10 RU |10 |
 
 > [!NOTE]
-> Opłat RU się różnić w zależności od liczby elementów zwróconych.
+> Opłaty RU różnią się zależnie od liczby elementów zwróconych.
 > 
 > 
 
@@ -334,18 +334,18 @@ Dzięki tym informacjom można oszacować wymagania dotyczące RU dla tej aplika
 W takim przypadku spodziewasz się wymóg średniej przepływności 1,275 RU/s.  Zaokrąglenie do najbliższej 100, może udostępnić 1300 RU/s dla tej aplikacji kontenera.
 
 ## <a id="RequestRateTooLarge"></a> Przekraczanie limitów zarezerwowaną przepływnością w usłudze Azure DB rozwiązania Cosmos
-Odwołaj, że zużycie jednostka żądania jest oceniana jako szybkość na sekundę, jeśli budżetu jest pusta. Dla aplikacji, które przekroczyć współczynnika jednostki żądania elastycznie kontenera żądania do tego kontenera są ograniczane dopóki częstotliwość spadnie poniżej poziomu zastrzeżone. W przypadku ograniczania serwera preemptively kończy żądanie z RequestRateTooLargeException (kod stanu HTTP 429) i zwraca wartość wskazującą czas (w milisekundach), które użytkownik musi czekać przed ponowną próbą wykonania nagłówek x-ms ponawiania — po ms żądanie.
+Odwołaj się, że zużycie jednostka żądania jest oceniane w szybkość na sekundę. Dla aplikacji, które przekroczyć współczynnika jednostki elastycznie żądania żądania będą ograniczone szybkość dopóki częstotliwość spadnie poniżej poziomu udostępnionej przepływności. Gdy żądanie pobiera współczynnik ograniczone, serwer preemptively kończy się żądanie z `RequestRateTooLargeException` (kod stanu HTTP 429) i zwraca `x-ms-retry-after-ms` nagłówek wskazujący ilość czasu (w milisekundach), które użytkownik musi czekać przed podjęciem próby wykonania żądania.
 
     HTTP Status 429
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
 
-Jeśli używasz zestawu SDK klienta usługi .NET i LINQ zapytania, a następnie w większości przypadków, nie trzeba uwzględniać tego wyjątku, zgodnie z bieżącą wersją programu .NET SDK klienta niejawnie przechwytuje tej odpowiedzi szanuje określony serwer ponownych prób po nagłówka i ponawia żądanie. Następna ponowna próba powiedzie się, chyba że Twoje konto jest uzyskiwany jednocześnie przez wielu klientów.
+Jeśli używasz zestawu SDK klienta usługi .NET i LINQ zapytania, a następnie w większości przypadków, nie trzeba uwzględniać tego wyjątku, zgodnie z bieżącą wersją programu .NET SDK klienta niejawnie przechwytuje tej odpowiedzi szanuje określony serwer ponownych prób po nagłówka i ponawia żądanie automatycznie. Następna ponowna próba powiedzie się, chyba że Twoje konto jest uzyskiwany jednocześnie przez wielu klientów.
 
-Jeśli masz więcej niż jednego klienta zbiorczo operacyjnego powyżej liczby żądań domyślne zachowanie ponownych prób nie mogą być niewystarczające, a klient zgłosi DocumentClientException z kodem stanu 429 do aplikacji. W przypadkach, takich jak ta można rozważyć Obsługa zachowanie ponownych prób i logikę w aplikacji Błąd procedury obsługi lub zwiększenie zarezerwowaną przepływnością kontenera.
+Jeśli masz więcej niż jednego klienta zbiorczo operacyjnego powyżej liczby żądań, domyślne zachowanie ponownych prób nie mogą być niewystarczające i klient zgłosi `DocumentClientException` ze stanem kodu 429 do aplikacji. W takich sytuacjach warto wziąć pod uwagę zachowanie ponownych prób i logikę w aplikacji Błąd procedury obsługi lub zwiększyć przepływność dla kontenera.
 
 ## <a id="RequestRateTooLargeAPIforMongoDB"></a> Przekraczanie limitów zarezerwowaną przepływnością w interfejsie API bazy danych MongoDB
-Aplikacje, które przekracza jednostek żądania elastycznie kontenera będzie ograniczony, dopóki częstotliwość spadnie poniżej poziomu zastrzeżone. W przypadku przepustnicy wewnętrznej bazy danych preemptively zakończy się żądanie z *16500* kod błędu: - *zbyt wiele żądań*. Domyślnie interfejsu API bazy danych MongoDB ma automatycznie ponawiać próbę maksymalnie 10 razy przed zwróceniem *zbyt wiele żądań* kod błędu. W przypadku otrzymania wiele *zbyt wiele żądań* kody błędów, można rozważyć albo dodanie zachowanie ponownych prób w aplikacji Błąd procedury obsługi lub [zwiększenie zarezerwowaną przepływnością kontenera](set-throughput.md).
+Aplikacje, które przekraczają udostępnionej przepływności dla kontenera będzie ograniczony szybkość dopóki stopę zużycia spadnie poniżej elastycznie przepustowość. W przypadku ograniczenia szybkości wewnętrznej bazy danych preemptively zakończy się żądanie z `16500` kod błędu: - `Too Many Requests`. Domyślnie interfejsu API bazy danych MongoDB ma automatycznie ponawiać próbę maksymalnie 10 razy przed zwróceniem `Too Many Requests` kod błędu. W przypadku otrzymania wiele `Too Many Requests` kody błędów, warto rozważyć dodanie logiki ponawiania próby w aplikacji Błąd procedury obsługi lub [zwiększyć przepływność dla kontenera](set-throughput.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat zarezerwowaną przepływnością z bazami danych bazy danych Azure rozwiązania Cosmos, zapoznaj się z tymi zasobami:

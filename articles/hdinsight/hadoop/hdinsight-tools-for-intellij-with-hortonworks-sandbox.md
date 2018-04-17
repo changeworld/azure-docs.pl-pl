@@ -1,9 +1,9 @@
 ---
-title: "Użyj narzędzi Azure for IntelliJ z piaskownicy Hortonworks | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak za pomocą narzędzi HDInsight w zestawie narzędzi Azure for IntelliJ z Hortonworks piaskownicy."
-keywords: "narzędzia hadoop hive zapytania, intellij, hortonworks piaskownicy, narzędzi platformy azure dla intellij"
+title: Użyj narzędzi Azure for IntelliJ z piaskownicy Hortonworks | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak za pomocą narzędzi HDInsight w zestawie narzędzi Azure for IntelliJ z Hortonworks piaskownicy.
+keywords: narzędzia hadoop hive zapytania, intellij, hortonworks piaskownicy, narzędzi platformy azure dla intellij
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -12,16 +12,14 @@ ms.assetid: b587cc9b-a41a-49ac-998f-b54d6c0bdfe0
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 6bb29dc4e231bc859be620e56a606fbbfade102b
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: c72fb17a53b9d373bbd141f76f01e6b029d1e8f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Użyj narzędzia HDInsight Tools for IntelliJ z Hortonworks piaskownicy
 
@@ -64,7 +62,7 @@ W tej sekcji utworzysz przykładowy projekt Scala przy użyciu IntelliJ IDEA. W 
 
    ![Okno dialogowe nowego projektu](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. Wybierz **dalej**.
+2. Wybierz opcję **Dalej**.
 3. W następnej **nowy projekt** okna dialogowego należy wykonać następujące czynności:
 
     1. W **Nazwa projektu** wprowadź nazwę projektu.
@@ -79,7 +77,7 @@ W tej sekcji utworzysz przykładowy projekt Scala przy użyciu IntelliJ IDEA. W 
 5. Jeśli **projektu** widoku nie jest jeszcze otwarty, naciśnij klawisz **Alt + 1** go otworzyć.
 6. W **Eksplorator projektów**, rozwiń węzeł projektu, a następnie wybierz **src**.
 7. Kliknij prawym przyciskiem myszy **src**, wskaż polecenie **nowy**, a następnie wybierz **klasy Scala**.
-8. W **nazwa** wprowadź nazwę. W **rodzaj** wybierz opcję **obiektu**. Następnie wybierz opcję **OK**.
+8. W **nazwa** wprowadź nazwę. W **rodzaj** wybierz opcję **obiektu**. Następnie wybierz przycisk **OK**.
 
     ![Okno dialogowe Tworzenie nowej klasy Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
@@ -131,7 +129,7 @@ Aby utworzyć link do emulatora:
 1. Otwórz projekt w IntelliJ.
 2. Na **widoku** menu, wybierz opcję **narzędzi systemu Windows**, a następnie wybierz **Eksploratora Azure**.
 3. Rozwiń węzeł **Azure**, kliknij prawym przyciskiem myszy **HDInsight**, a następnie wybierz **Link Emulator**.
-4. W **emulatora nowe łącze A** okna dialogowego wprowadź hasło, które ustawiono dla konta głównego piaskownicy Hortonworks. Następnie wprowadź wartości podobnie jak w poniższym zrzucie ekranu. Następnie wybierz opcję **OK**. 
+4. W **emulatora nowe łącze A** okna dialogowego wprowadź hasło, które ustawiono dla konta głównego piaskownicy Hortonworks. Następnie wprowadź wartości podobnie jak w poniższym zrzucie ekranu. Następnie wybierz przycisk **OK**. 
 
    ![Okno dialogowe Nowy Emulator Link](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
 

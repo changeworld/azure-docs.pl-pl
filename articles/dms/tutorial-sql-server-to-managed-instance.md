@@ -1,5 +1,5 @@
 ---
-title: Migrowanie serwera SQL do wystąpienia zarządzane bazy danych SQL Azure za pomocą usługi migracji bazy danych Azure | Dokumentacja firmy Microsoft
+title: Usługa DMS umożliwia migrację do wystąpienia zarządzane bazy danych SQL Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się przeprowadzić migrację z lokalnej instalacji programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure za pomocą usługi Azure migracji bazy danych.
 services: dms
 author: edmacauley
@@ -10,15 +10,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 03/29/2018
-ms.openlocfilehash: 8abf3bae3a2274ed5514a5c621675b4c9ec27ae2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.date: 04/10/2018
+ms.openlocfilehash: f78a68704f1670b4670384931a07d9651cd646e3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance"></a>Migrowanie serwera SQL do zarządzanego wystąpienia bazy danych Azure SQL
-Usługa Azure bazy danych migracji umożliwia migrację bazy danych z lokalnego wystąpienia programu SQL Server do bazy danych SQL Azure. W tym samouczku, wykonywana jest migracja **Adventureworks2012** bazy danych z lokalnego wystąpienia programu SQL Server do bazy danych SQL Azure za pomocą usługi Azure migracji bazy danych.
+# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Migrowanie serwera SQL do Azure wystąpienia bazy danych SQL zarządzane przy użyciu DMS
+Usługa Azure bazy danych migracji umożliwia migrację bazy danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzane bazy danych SQL Azure](../sql-database/sql-database-managed-instance.md) przestojów bliskie zeru. Aby uzyskać dodatkowe metody, które wymagają pewien Przestój, zobacz [migracji wystąpienie programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure](../sql-database/sql-database-managed-instance-migrate.md).
+
+W tym samouczku, wykonywana jest migracja **Adventureworks2012** bazy danych z lokalnego wystąpienia programu SQL Server do bazy danych SQL Azure za pomocą usługi Azure migracji bazy danych.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -36,7 +38,7 @@ Do ukończenia tego samouczka, musisz:
 - Otwórz Zaporę systemu Windows, aby umożliwić usłudze migracji bazy danych Azure dostępu do źródła SQL Server, która domyślnie jest TCP port 1433.
 - Jeśli używasz wielu wystąpień programu SQL Server o nazwie przy użyciu portów dynamicznych, możesz włączyć usługę Przeglądarka SQL i umożliwiają dostęp do portu UDP 1434 na zaporach, dzięki czemu usługa migracji bazy danych Azure mogą łączyć się nazwanego wystąpienia w źródle serwer.
 - Jeśli korzystasz z urządzenia zapory przed źródła baz danych, może być konieczne dodanie reguły zapory, aby umożliwić dostęp do baz danych źródła dla plików za pośrednictwem portu SMB 445, a także migracji z usługi migracji bazy danych Azure.
-- Utwórz wystąpienie wystąpienia zarządzane bazy danych SQL Azure, wykonując szczegółowo w artykule [utworzyć wystąpienia zarządzanego bazy danych SQL Azure w portalu Azure](https://aka.ms/sqldbmi).
+- Utwórz wystąpienie zarządzane bazy danych SQL Azure, wykonując szczegółowo w artykule [utworzyć wystąpienia zarządzanego bazy danych SQL Azure w portalu Azure](https://aka.ms/sqldbmi).
 - Sprawdź, czy dane logowania umożliwiający połączenie źródła programu SQL Server i zarządzane wystąpienia docelowego są członkowie roli serwera sysadmin.
 - Utwórz udział sieciowy, który usługa migracji bazy danych Azure umożliwia tworzenie kopii zapasowej źródłowej bazy danych.
 - Upewnij się, że konto usługi uruchomione wystąpienie programu SQL Server źródła ma uprawnienia zapisu w udziale sieciowym, który został utworzony.
@@ -54,7 +56,7 @@ Do ukończenia tego samouczka, musisz:
 1.  Wyszukiwanie do migracji, a następnie po prawej stronie **Microsoft.DataMigration**, wybierz pozycję **zarejestrować**.
 ![Rejestrowanie dostawcy zasobów](media\tutorial-sql-server-to-managed-instance\portal-register-resource-provider.png)    
 
-## <a name="create-an-instance"></a>Tworzenie wystąpienia
+## <a name="create-an-azure-database-migration-service-instance"></a>Utwórz wystąpienie usługi migracji bazy danych Azure
 
 1.  W portalu Azure wybierz **+ Utwórz zasób**, wyszukaj **usługi migracji bazy danych Azure**, a następnie wybierz **usługi migracji bazy danych Azure** z listy rozwijanej Lista.
 
@@ -145,3 +147,9 @@ Po utworzeniu usługi znalezienie go w portalu Azure, a następnie otwórz go.
 
     ![Monitoruj migrację](media\tutorial-sql-server-to-managed-instance\dms-monitor-migration.png)
 
+## <a name="next-steps"></a>Kolejne kroki
+
+- Samouczek pokazuje, jak przeprowadzić migrację bazy danych do wystąpienia zarządzane przy użyciu polecenia Przywróć T-SQL, zobacz [przywrócenia kopii zapasowej do wystąpienia zarządzane za pomocą polecenia restore](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md).
+- Uzyskać informacji dotyczących importowania z pliku pliku BACPAC bazy danych, zobacz [Importowanie pliku pliku BACPAC do nowej bazy danych SQL Azure](../sql-database/sql-database-import.md).
+- Informacji o zarządzanych wystąpienie znajduje się w temacie [co to jest wystąpieniem zarządzane](../sql-database/sql-database-managed-instance.md).
+- Informacji o podłączaniu aplikacje do wystąpienia zarządzane, zobacz [łączyć aplikacje](../sql-database/sql-database-managed-instance-connect-app.md).

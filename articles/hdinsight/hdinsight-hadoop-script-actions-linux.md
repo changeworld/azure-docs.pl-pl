@@ -4,7 +4,7 @@ description: Dowiedz się, jak skrypty powłoki systemowej umożliwia dostosowyw
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: cf4c89cd-f7da-4a10-857f-838004965d3e
 ms.service: hdinsight
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/17/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: 5074345533f0fdb0c72bf319646ad614632d1940
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d5df67021e997df3a6344701f50be4871a11386d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>Tworzenie akcji skryptu za pomocą usługi HDInsight
 
@@ -38,7 +38,7 @@ Akcje skryptu można zastosować za pomocą następujących metod:
 | --- |:---:|:---:|
 | Azure Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
-| Interfejs wiersza polecenia platformy Azure |&nbsp; |✓ |
+| Interfejs wiersza polecenia platformy Azure CLI w wersji 1.0 |&nbsp; |✓ |
 | Zestaw SDK dla platformy .NET usługi HDInsight |✓ |✓ |
 | Szablonu usługi Azure Resource Manager |✓ |&nbsp; |
 

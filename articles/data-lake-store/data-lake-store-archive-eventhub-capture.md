@@ -1,8 +1,8 @@
 ---
-title: "Przechwytywanie danych z usługi Event Hubs do usługi Azure Data Lake Store | Dokumentacja firmy Microsoft"
-description: "Użyj usługi Azure Data Lake Store do przechwytywania danych z usługi Event Hubs"
+title: Przechwytywanie danych z usługi Event Hubs do usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
+description: Użyj usługi Azure Data Lake Store do przechwytywania danych z usługi Event Hubs
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9f91acf8c26fdec0c8d128f598f218cff091c7aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Użyj usługi Azure Data Lake Store do przechwytywania danych z usługi Event Hubs
 
@@ -27,7 +27,7 @@ Dowiedz się, jak używać usługi Azure Data Lake Store do przechwytywania dany
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje na temat go utworzyć, zobacz [wprowadzenie do usługi Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje dotyczące jego tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store](data-lake-store-get-started-portal.md).
 
 *  **Centra zdarzeń w przestrzeni nazw**. Aby uzyskać instrukcje, zobacz [tworzenie przestrzeni nazw usługi Event Hubs](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Upewnij się, że konto usługi Data Lake Store i przestrzeni nazw usługi Event Hubs są w tej samej subskrypcji platformy Azure.
 
@@ -58,9 +58,12 @@ W tej sekcji utworzysz folder w ramach konta, których chcesz przechwytywać dan
 
     c. W obszarze **przypisywanie uprawnień**, kliknij przycisk **wybierz uprawnienia**. Ustaw **uprawnienia** do **wykonania**. Ustaw **dodać do** do **ten folder i wszystkie obiekty podrzędne**. Ustaw **dodać jako** do **wpisu uprawnienia dostępu i wpis uprawnienia domyślne**.
 
-    ![Przypisywanie uprawnień do katalogu głównego usługi Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "przypisać uprawnienia dla elementu głównego usługi Data Lake Store")
+> [!IMPORTANT]
+> Podczas tworzenia nowej hierarchii folderu do przechwytywania danych otrzymywanych przez usługi Azure Event Hubs, jest prosty sposób, aby zapewnić dostęp do folderu docelowego.  Jednak dodanie uprawnień do wszystkich obiektów podrzędnych folderu najwyższego poziomu z wielu podrzędnych plików i folderów może zająć dużo czasu.  Jeśli folder główny zawiera dużą liczbę plików i folderów, może to być szybsze można dodać **Execute** uprawnienia `Microsoft.EventHubs` indywidualnie do każdego folderu w ścieżce do folderu przeznaczenia. 
 
-    Kliknij przycisk **OK**.
+    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+
+    Click **OK**.
 
 4. Przypisywanie uprawnień do folderu w ramach konta usługi Data Lake Store, w którym ma do przechwytywania danych.
 

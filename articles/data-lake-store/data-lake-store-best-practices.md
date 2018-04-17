@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Najlepsze rozwiązania dotyczące używania usługi Azure Data Lake Store
 W tym artykule opisano najważniejsze wskazówki i informacje dotyczące pracy z usługi Azure Data Lake Store. Ten artykuł zawiera informacje dotyczące zabezpieczeń, wydajności, odporności i monitorowania usługi Data Lake Store. Przed usługi Data Lake Store pracę z danymi big naprawdę w usługach, takich jak usługa Azure HDInsight był zbyt złożony. Konieczne było współdzielenie danych między wiele kont magazynu obiektów Blob, aby petabajt magazynu i optymalnej wydajności, które rozwijają się może zostać osiągnięty. Z usługi Data Lake Store większość stałych limitów rozmiaru i wydajności zostaną usunięte. Jednak nadal istnieją pewne kwestie, które w tym artykule omówiono tak, aby uzyskać najlepszą wydajność dzięki usłudze Data Lake Store. 
@@ -26,11 +26,13 @@ W tym artykule opisano najważniejsze wskazówki i informacje dotyczące pracy z
 
 Azure Data Lake Store udostępnia dostępu POSIX formanty i szczegółową inspekcję dla użytkowników usługi Azure Active Directory (Azure AD), grupy i nazwy główne usług. Można ustawić tych metod kontroli dostępu do istniejących plików i folderów. Ustawienia kontroli dostępu można również tworzyć wartości domyślnych, które można stosować do nowych plików lub folderów. Gdy uprawnienia do istniejących folderów i obiektów podrzędnych, uprawnienia muszą być rekursywnie propagowany dla każdego obiektu. Jeśli istnieje wiele plików, propagowanie uprawnień może zająć dużo czasu. Czas poświęcony na mogą należeć do zakresu między obiektami 30 – 50 przetwarzanych na sekundę. W związku z tym odpowiednio zaplanować grupy folderów struktury i użytkownika. W przeciwnym razie może spowodować nieprzewidziane opóźnienia i problemy podczas pracy z danymi. 
 
-Założono, że folder o 100 000 obiektów podrzędnych. Jeśli nie podejmiesz dolna granica 30 obiektów przetworzonych na sekundę, aby zaktualizować uprawnienia do całego folderu może zająć godzinę. Więcej informacji na temat listy ACL magazynu Lake danych są dostępne pod adresem [kontroli dostępu w usłudze Azure Data Lake Store](data-lake-store-access-control.md). Zwiększonej wydajności dla przypisywanie rekursywnie listy ACL można użyć narzędzie wiersza polecenia Azure Data Lake. Narzędzie tworzy wiele wątków i logikę nawigacji cykliczne Szybkie stosowanie listy kontroli dostępu do milionów plików. Narzędzie to jest dostępne dla systemów Linux i Windows i [dokumentacji](https://github.com/Azure/data-lake-adlstool) i [pobiera](http://aka.ms/adlstool-download) dla tego narzędzia można znaleźć w witrynie GitHub.
+Założono, że folder o 100 000 obiektów podrzędnych. Jeśli nie podejmiesz dolna granica 30 obiektów przetworzonych na sekundę, aby zaktualizować uprawnienia do całego folderu może zająć godzinę. Więcej informacji na temat listy ACL magazynu Lake danych są dostępne pod adresem [kontroli dostępu w usłudze Azure Data Lake Store](data-lake-store-access-control.md). Zwiększonej wydajności dla przypisywanie rekursywnie listy ACL można użyć narzędzie wiersza polecenia Azure Data Lake. Narzędzie tworzy wiele wątków i logikę nawigacji cykliczne Szybkie stosowanie listy kontroli dostępu do milionów plików. Narzędzie to jest dostępne dla systemów Linux i Windows i [dokumentacji](https://github.com/Azure/data-lake-adlstool) i [pobiera](http://aka.ms/adlstool-download) dla tego narzędzia można znaleźć w witrynie GitHub. Te tego samego ulepszenia wydajności można włączyć za pomocą własnych narzędzi napisany za pomocą usługi Data Lake Store [.NET](data-lake-store-data-operations-net-sdk.md) i [Java](data-lake-store-get-started-java-sdk.md) zestawów SDK.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Przy użyciu grup zabezpieczeń lub pojedynczych użytkowników 
 
-Podczas pracy z danymi big data w usłudze Data Lake Store, najprawdopodobniej nazwy głównej usługi jest stosowane do umożliwienia usług, takich jak Azure HDInsight do pracy z danymi. Jednak może być przypadkach, gdy muszą dostęp do danych, jak również przez poszczególnych użytkowników. W takich przypadkach muszą używać grup zabezpieczeń usługi Azure Active Directory zamiast przypisywanie poszczególnych użytkowników do plików i folderów. Gdy grupa zabezpieczeń są przypisywane uprawnienia, dodawanie lub usuwanie użytkowników z grupy nie wymaga żadnych aktualizacji do usługi Data Lake Store. 
+Podczas pracy z danymi big data w usłudze Data Lake Store, najprawdopodobniej nazwy głównej usługi jest stosowane do umożliwienia usług, takich jak Azure HDInsight do pracy z danymi. Jednak może być przypadkach, gdy muszą dostęp do danych, jak również przez poszczególnych użytkowników. W takiej sytuacji należy używać usługi Azure Active Directory [grup zabezpieczeń](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) zamiast przypisywać poszczególnych użytkowników do plików i folderów. 
+
+Gdy grupa zabezpieczeń są przypisywane uprawnienia, dodawanie lub usuwanie użytkowników z grupy nie wymaga żadnych aktualizacji do usługi Data Lake Store. Pomaga to także zapewnić nie przekraczają limit [32 dostępu i domyślne listy ACL](../azure-subscription-service-limits.md#data-lake-store-limits) (obejmuje cztery listy ACL stylu POSIX, których zawsze są skojarzone z każdym plików i folderów: [użytkownik będący właścicielem](data-lake-store-access-control.md#the-owning-user), [będący właścicielem grupy](data-lake-store-access-control.md#the-owning-group), [maska](data-lake-store-access-control.md#the-mask-and-effective-permissions)i innych).
 
 ### <a name="security-for-groups"></a>Zabezpieczeń dla grup 
 

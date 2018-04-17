@@ -1,16 +1,16 @@
 ---
-title: "Uściślij grupy oceny pomocą mapowania grup zależności w migracji Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób uściślić oceny w usłudze Azure migracji za pomocą mapowania grup zależności."
+title: Uściślij grupy oceny pomocą mapowania grup zależności w migracji Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób uściślić oceny w usłudze Azure migracji za pomocą mapowania grup zależności.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
-ms.openlocfilehash: 3b10765894501791004e3a9221363f196cc0c91d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Dostosuj grupę za pomocą mapowania grup zależności
 
@@ -37,8 +37,8 @@ Aby zainstalować agenta na komputerze z systemem Windows:
 1. Kliknij dwukrotnie pobrany agenta.
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**. Na **postanowień licencyjnych** kliknij przycisk **zgadzam się** do akceptowania licencji.
 3. W **Folder docelowy**, Zachowaj lub zmienić domyślny folder instalacji > **dalej**. 
-4. W **opcje instalacji agenta**, wybierz pozycję **Analiza dzienników Azure (OMS)** > **dalej**. 
-5. Kliknij przycisk **Dodaj** Aby dodać nowy obszar roboczy OMS. Wklej identyfikator i klucz, który został skopiowany z portalu. Kliknij przycisk **Dalej**.
+4. W **opcje instalacji agenta**, wybierz pozycję **Azure Log Analytics** > **dalej**. 
+5. Kliknij przycisk **Dodaj** Aby dodać nowy obszar roboczy analizy dzienników. Wklej identyfikator i klucz, który został skopiowany z portalu. Kliknij przycisk **Dalej**.
 
 
 Aby zainstalować agenta na komputerze z systemem Linux:

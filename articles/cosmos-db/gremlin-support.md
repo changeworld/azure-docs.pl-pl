@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Pomoc techniczna platformy Azure wykres Gremlin DB rozwiązania Cosmos
 Obsługuje bazę danych systemu Azure rozwiązania Cosmos [Apache Tinkerpop](http://tinkerpop.apache.org) wykresu języka przechodzenie [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), która jest interfejs API programu Graph do tworzenia jednostek wykres i wykonywanie operacji zapytania wykresu. Język Gremlin służy do tworzenia jednostek graph (wierzchołki i krawędzi), zmodyfikuj właściwości w ramach tych jednostek, wykonywania zapytań i traversals i usuwania jednostek. 
@@ -153,12 +153,6 @@ Każda właściwość może przechowywać wiele wartości w tablicy.
 | Właściwość | Opis |
 | --- | --- |
 | wartość | Wartość właściwości
-
-## <a name="gremlin-partitioning"></a>Partycjonowanie gremlin
-
-W usłudze Azure DB rozwiązania Cosmos, wykresy są przechowywane w kontenerach, które mogą być skalowane niezależnie pod względem pamięci masowej i przepływność (wyrażony w znormalizowanej żądań na sekundę). Każdego kontenera należy określić opcjonalne, ale zalecane właściwości klucza partycji, określająca granicę partycji logicznej powiązanych danych. Każdy wierzchołek/krawędź musi mieć `id` właściwość, która jest unikatowa dla jednostek w ramach wartość klucza partycji. Szczegółowe informacje znajdują się w [partycjonowania w usłudze Azure DB rozwiązania Cosmos](partition-data.md).
-
-Operacje gremlin bezproblemowo działa między dane wykresu, obejmujących wiele partycji w usłudze Azure DB rozwiązania Cosmos. Jednak zalecane jest wybranie klucza partycji dla wykresów, który jest powszechnie używany jako filtru w zapytaniach, ma wiele unikatowych wartości i podobne częstotliwość dostępu do tych wartości. 
 
 ## <a name="gremlin-steps"></a>Kroki gremlin
 Teraz Przyjrzyjmy się kroki Gremlin obsługiwane przez bazy danych Azure rozwiązania Cosmos. Aby uzyskać pełną dokumentację Gremlin, zobacz [odwołania TinkerPop](http://tinkerpop.apache.org/docs/current/reference).

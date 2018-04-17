@@ -1,12 +1,12 @@
 ---
-title: "Wyeksportowanie certyfikatów emulatora DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft"
-description: "Podczas tworzenia w językach i środowisk uruchomieniowych, który nie należy używać magazynu certyfikatów systemu Windows należy wyeksportować i zarządzanie certyfikatami SSL. Ten wpis zawiera instrukcje krok po kroku."
+title: Wyeksportowanie certyfikatów emulatora DB rozwiązania Cosmos Azure | Dokumentacja firmy Microsoft
+description: Podczas tworzenia w językach i środowisk uruchomieniowych, który nie należy używać magazynu certyfikatów systemu Windows należy wyeksportować i zarządzanie certyfikatami SSL. Ten wpis zawiera instrukcje krok po kroku.
 services: cosmos-db
-documentationcenter: 
-keywords: "Emulator usługi Azure rozwiązania Cosmos bazy danych"
+documentationcenter: ''
+keywords: Emulator usługi Azure rozwiązania Cosmos bazy danych
 author: voellm
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: ef43deda-c2e9-4193-99e2-7f6a88a0319f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d3811a9d59e388a1ceaacdefebc17afeda5b07d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 87d453cd544b3e913209f50e4e08b77282efab39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Wyeksportowanie certyfikatów emulatora DB rozwiązania Cosmos Azure do użycia z programem Java, Python i Node.js
 
@@ -93,9 +93,9 @@ Domyślnie [Python SDK(version 2.0.0 or higher)](sql-api-sdk-python.md) interfej
 
 Domyślnie [Node.js SDK(version 1.10.1 or higher)](sql-api-sdk-node.md) interfejsu API SQL nie będą spróbuj i użyć certyfikatu SSL, podczas nawiązywania połączenia z lokalnym emulatora. Jeśli jednak chcesz używać protokołu SSL weryfikacji można wykonać w przykładach w [dokumentacji Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
 > * Obrócony certyfikatów

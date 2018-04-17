@@ -2,9 +2,8 @@
 title: Partycjonowanie i skalowanie w poziomie w usłudze Azure DB rozwiązania Cosmos | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat działa jak partycjonowania bazy danych rozwiązania Cosmos Azure, jak skonfigurować partycje i kluczy partycji i Wybieranie klucza prawego partycji aplikacji.
 services: cosmos-db
-author: arramac
+author: SnehaGunda
 manager: kfile
-editor: monicar
 documentationcenter: ''
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
@@ -12,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: arramac
+ms.date: 04/10/2018
+ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16b0ddd45c8e524798a453af7c731af28f5f5c2d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fcb33dff131106fd801b72a0bfaafd528d9f1af9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure DB rozwiązania Cosmos
 
@@ -99,8 +98,8 @@ Azure DB rozwiązania Cosmos zaprojektowano pod kątem przewidywalnej wydajnośc
 ## <a name="work-with-the-azure-cosmos-db-apis"></a>Praca z Azure rozwiązania Cosmos DB API
 Portalu Azure lub interfejsu wiersza polecenia Azure umożliwia tworzenie kontenerów i skalować je w dowolnym momencie. W tej sekcji przedstawiono sposób tworzenia kontenery i określ definicję klucza przepływności i partycji w każdej z obsługiwanych interfejsów API.
 
-### <a name="azure-cosmos-db-api"></a>Interfejs API Azure rozwiązania Cosmos bazy danych
-Poniższy przykład przedstawia sposób tworzenia kontenera (kolekcja) przy użyciu interfejsu API Azure rozwiązania Cosmos bazy danych. 
+### <a name="sql-api"></a>Interfejs API SQL
+Poniższy przykład przedstawia sposób tworzenia kontenera (kolekcja) przy użyciu interfejsu API Azure rozwiązania Cosmos bazy danych SQL. 
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -124,6 +123,8 @@ DeviceReading document = await client.ReadDocumentAsync<DeviceReading>(
   UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
+
+Aby uzyskać więcej informacji, zobacz [partycjonowania w usłudze Azure DB rozwiązania Cosmos przy użyciu interfejsu API SQL](sql-api-partition-data.md).
 
 ### <a name="mongodb-api"></a>Interfejs API usługi MongoDB
 Przy użyciu interfejsu API bazy danych MongoDB można utworzyć kolekcję podzielonej przez ulubionego narzędzia, sterownika lub zestawu SDK. W tym przykładzie używamy powłoki Mongo w celu utworzenia kolekcji.
@@ -186,7 +187,7 @@ Krawędź można odwoływać się przy użyciu klucza partycji i klucz wiersza.
 g.E(['USA', 'I5'])
 ```
 
-Aby uzyskać więcej informacji, zobacz [Gremlin obsługę bazy danych Azure rozwiązania Cosmos](gremlin-support.md).
+Aby uzyskać więcej informacji, zobacz [przy użyciu wykresu podzielonym na partycje w usłudze Azure DB rozwiązania Cosmos](graph-partitioning.md).
 
 
 <a name="designing-for-partitioning"></a>

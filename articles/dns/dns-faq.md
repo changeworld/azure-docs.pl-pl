@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: kumud
-ms.openlocfilehash: f07f914ccf8ea6df216e3f571e38d7628b2d7fb6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -46,6 +46,7 @@ Aby uzyskać więcej informacji, zobacz [strony umowy SLA platformy Azure DNS](h
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co to jest strefy DNS? Czy to jest to samo co „domena DNS”? 
 
 Domena jest unikatową nazwę w systemie nazw domen, na przykład "contoso.com".
+
 
 Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Na przykład domena "contoso.com" może zawierać wiele rekordów DNS, takie jak "mail.contoso.com" (dla serwera poczty) i "www.contoso.com" (dla witryny sieci web). Może być hostowana te rekordy w strefie DNS "contoso.com".
 
@@ -90,6 +91,14 @@ Transfer strefy to funkcja śledzenia na liście prac usługi Azure DNS. Można 
 Nie. Adres URL przekierowania usługi nie są faktycznie usługi DNS — działają na poziomie protokołu HTTP, a nie poziom DNS. Niektórzy dostawcy DNS pakietów adres URL przekierowania usługi w ramach ich ogólną oferty. Jest to obecnie nieobsługiwane przez usługę Azure DNS.
 
 Funkcja Przekierowywanie adresu URL jest śledzony na liście prac usługi Azure DNS. Można użyć witrynę opinii do [rejestrowania programu obsługi dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Usługi Azure DNS obsługuje rozszerzonej ASCII (8-bitowych) zestawu dla zestawu rekordów TXT kodowania?
+
+Tak. Usługa DNS platformy Azure obsługuje rozszerzonego zestawu kodowanie ASCII dla zestawów rekordów TXT, korzystając z najnowszej wersji interfejsów API REST usługi Azure, SDK, programu PowerShell i interfejsu wiersza polecenia (w wersji wcześniejszej niż 2017-10-01 lub zestawu SDK 2.1 obsługuje rozszerzonego zestawu ASCII). Na przykład, jeśli użytkownik udostępnia ciąg jako wartość rekordu TXT mający rozszerzonej \128 znaków ASCII (np: "abcd\128efgh"), usługi Azure DNS będzie używać wartości bajtu tego znaku (czyli 128) w reprezentacji wewnętrznej. W tym czasie rozpoznawania nazw DNS również tej wartości bajtu zostanie zwrócony w odpowiedzi. Należy również zauważyć, że "abc" i "\097\098\099" są wymienne chodzi rozpoznawania jest. 
+
+Firma Microsoft wykonaj [ze standardem RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) strefy reguły specjalne wzorca format pliku rekordów TXT. Na przykład "\" teraz faktycznie specjalne wszystko na dokumenty RFC. Jeśli określisz "A\B" jako wartości rekordu TXT będą reprezentowane i rozpoznać jako właśnie "AB". Rekord TXT mają "A\B" rozdzielczością na pewno chcesz, należy wprowadzić "\" ponownie, tj. Określ jako "A\\B". 
+
+Należy pamiętać, że ta obsługa jest obecnie niedostępna dla rekordów TXT utworzone w portalu Azure. 
 
 ## <a name="using-azure-dns"></a>Za pomocą usługi Azure DNS
 
@@ -169,7 +178,7 @@ Nie. Strefy prywatnego działają w połączeniu z sieciami wirtualnymi i poinfo
 Tak. Klientów można skojarzyć maksymalnie 10 sieciami wirtualnymi rozwiązania z jednej strefie prywatnych.
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Można sieci wirtualnej, który należy do innej subskrypcji można dodać jako rozwiązania wirtualnej sieci do strefy prywatnej? 
-Tak, jak długo użytkownik ma uprawnienia do zapisu operacji na zarówno sieci wirtualnych, jak i strefy DNS prywatnych. Należy pamiętać, że uprawnienia do zapisu mogą zostać przypisane do wielu ról RBAC. Na przykład rola klasycznego RBAC współautora sieci ma uprawnienia zapisu do sieci wirtualnych. Aby uzyskać więcej informacji na role RBAC, zobacz [kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-what-is.md)
+Tak, jak długo użytkownik ma uprawnienia do zapisu operacji na zarówno sieci wirtualnych, jak i strefy DNS prywatnych. Należy pamiętać, że uprawnienia do zapisu mogą zostać przypisane do wielu ról RBAC. Na przykład rola klasycznego RBAC współautora sieci ma uprawnienia zapisu do sieci wirtualnych. Aby uzyskać więcej informacji na role RBAC, zobacz [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md)
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Zostaną automatycznie zarejestrowane maszyny wirtualnej rekordów DNS w strefie prywatnej automatycznie usunięte po maszyn wirtualnych zostaną usunięte przez klienta?
 Tak. Po usunięciu maszyny wirtualnej w ramach sieci wirtualnej rejestracji, firma Microsoft automatycznie usunąć rekordy DNS, które zostały zarejestrowane w strefie ze względu na to jest sieć wirtualną rejestracji. 

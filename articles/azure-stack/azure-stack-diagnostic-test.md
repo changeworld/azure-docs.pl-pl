@@ -1,6 +1,6 @@
 ---
-title: "Uruchomienie testu poprawności w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Jak zbierać pliki dziennika diagnostyki Azure stosu"
+title: Uruchomienie testu poprawności w stosie Azure | Dokumentacja firmy Microsoft
+description: Jak zbierać pliki dziennika diagnostyki Azure stosu
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,13 +11,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c28216ced2a7cd2995c55a9faacb93cf27e60c65
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Uruchomienie testu poprawności Azure stosu
 
@@ -33,7 +33,8 @@ Jeśli masz problem, skontaktuj się z pomocą techniczną usługi firmy Microso
 2. Skontaktuj się z pomocą klienta firmy Microsoft usług pomocy technicznej.
 3. Uruchom **AzureStack testu** z uprzywilejowanego punktu końcowego.
     1. Dostęp uprzywilejowany punktu końcowego. Aby uzyskać instrukcje, zobacz [przy użyciu punktu końcowego uprzywilejowanych w stosie Azure](azure-stack-privileged-endpoint.md). 
-    2. Zaloguj się jako **AzureStack\CloudAdmin** na hosta zarządzania.
+    2. Na ASDK, zaloguj się do hosta zarządzania jako **AzureStack\CloudAdmin**.  
+    Zintegrowane w systemie należy użyć adresu IP dla uprzywilejowanych punkt końcowy dla zarządzania dostarczonego przez producenta OEM komputera.
     3. Otwórz program PowerShell jako administrator.
     4. Uruchom: `Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
     5. Uruchom: `Test-AzureStack`
@@ -154,7 +155,7 @@ Poniższa tabela zawiera podsumowanie testy weryfikacyjne, uruchamiając AzureSt
 | Podsumowanie dotyczące usług magazynu Azure stosu                                                                                              |
 | Podsumowanie wystąpienia roli infrastruktury Azure stosu                                                                                  |
 | Hostingu wykorzystanie infrastruktury w chmurze Azure stosu                                                                              |
-| Azure Stack Infrastructure Capacity                                                                                               |
+| Pojemność infrastruktury Azure stosu                                                                                               |
 | Portal Azure stosu oraz podsumowanie interfejsu API                                                                                                |
 | Azure stosu Podsumowanie certyfikatu w usłudze Azure Resource Manager                                                                                               |
 | Kontroler zarządzania infrastruktury, kontrolera sieci usług magazynu i punktu końcowego uprzywilejowanych ról infrastruktury          |

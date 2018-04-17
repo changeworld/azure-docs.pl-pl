@@ -1,24 +1,18 @@
 ---
-title: "Dodaj zasadę usługi do roli administratora serwera usług Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać zasadę usługi Automatyzacja do roli administratora serwera"
-services: analysis-services
-documentationcenter: 
+title: Dodaj zasadę usługi do roli administratora serwera usług Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać zasadę usługi Automatyzacja do roli administratora serwera
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 8e51b80e184b2b1ff24b1051b55088fbc54c271c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: minewiskan
+ms.openlocfilehash: 9c6417e069bbed38b1f6e9317636a10834ce7197
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-a-service-principle-to-the-server-administrator-role"></a>Dodaj zasadę usługi do roli administratora serwera 
 
@@ -28,7 +22,7 @@ ms.lasthandoff: 03/08/2018
 Przed wykonaniem tego zadania, musi mieć zasady usługi zarejestrowany w usłudze Azure Active Directory.
 
 [Utwórz zasadę usługi - portalu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
-[Utwórz zasadę usługi - programu PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+[Tworzenie jednostki usługi — program PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 Aby wykonać to zadanie, musisz mieć [administrator serwera](analysis-services-server-admins.md) uprawnienia na serwerze jako platformy Azure. 
@@ -47,7 +41,7 @@ Aby wykonać to zadanie, musisz mieć [administrator serwera](analysis-services-
 
 
 > [!NOTE]
-> Dla operacji serwera za pomocą poleceń cmdlet AzureRm, zasady usługi harmonogramu uruchamiania musi również należeć do **właściciela** roli dla zasobu w [based kontroli dostępu (RBAC)](../active-directory/role-based-access-control-what-is.md). 
+> Dla operacji serwera za pomocą poleceń cmdlet AzureRm, zasady usługi harmonogramu uruchamiania musi również należeć do **właściciela** roli dla zasobu w [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="related-information"></a>Informacje pokrewne
 

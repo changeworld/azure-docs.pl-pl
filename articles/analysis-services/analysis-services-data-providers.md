@@ -1,25 +1,18 @@
 ---
-title: "Klient biblioteki wymagane do nawiązywania połączenia z usług Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano biblioteki klienta wymagane dla aplikacji klienckich i narzędzi można połączyć z usług Azure Analysis Services"
-services: analysis-services
-documentationcenter: 
+title: Klient biblioteki wymagane do nawiązywania połączenia z usług Azure Analysis Services | Dokumentacja firmy Microsoft
+description: W tym artykule opisano biblioteki klienta wymagane dla aplikacji klienckich i narzędzi można połączyć z usług Azure Analysis Services
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/27/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 5c847f5cd02503b708db8a0a0211b5d403df0943
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.reviewer: minewiskan
+ms.openlocfilehash: 66818fd0d6618abe83903df8723e3e17920a4a2e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienta do nawiązywania połączenia z usług Azure Analysis Services
 
@@ -72,7 +65,7 @@ Biblioteki klienta dla połączeń klienckich różnią się od dostawców danyc
 
  ADOMD.NET jest biblioteka klienta zarządzanych danych używane do wykonywania zapytań danych usług Analysis Services. Zostanie on zainstalowany i używana przez narzędzia i aplikacje klienckie. 
   
- Podczas nawiązywania połączenia z bazą danych, właściwości parametrów połączenia dla wszystkich trzech bibliotek są podobne. Prawie wszystkie parametry połączenia należy zdefiniować dla ADOMD.NET przy użyciu [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) działa także dla AMO i analizy usługi OLE DB Provider (MSOLAP). Aby dowiedzieć się więcej, zobacz [właściwości parametrów połączenia &#40; Usługi Analysis Services &#41; ](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
+ Podczas nawiązywania połączenia z bazą danych, właściwości parametrów połączenia dla wszystkich trzech bibliotek są podobne. Prawie wszystkie parametry połączenia należy zdefiniować dla ADOMD.NET przy użyciu [Microsoft.AnalysisServices.AdomdClient.AdomdConnection.ConnectionString](https://msdn.microsoft.com/library/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring.aspx) działa także dla AMO i analizy usługi OLE DB Provider (MSOLAP). Aby dowiedzieć się więcej, zobacz [właściwości parametrów połączenia &#40;usług Analysis Services&#41;](https://docs.microsoft.com/sql/analysis-services/instances/connection-string-properties-analysis-services).  
 
   
 ##  <a name="bkmk_LibUpdate"></a> Sposób określania wersji biblioteki klienta   

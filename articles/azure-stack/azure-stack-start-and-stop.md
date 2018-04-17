@@ -1,28 +1,28 @@
 ---
 title: Uruchamianie i zatrzymywanie stosu Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak uruchomić i zamknąć stosu Azure."
+description: Dowiedz się, jak uruchomić i zamknąć stosu Azure.
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 43BF9DCF-F1B7-49B5-ADC5-1DA3AF9668CA
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
-ms.author: mabrigg
-ms.openlocfilehash: 98bf75f5883b734c785ed1a3ed924afca1737c56
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 04/09/2018
+ms.author: jeffgilb
+ms.reviewer: misainat
+ms.openlocfilehash: 53015ba5c282bbe9c7b8185b080ffb6d834b6c75
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>Uruchamianie i zatrzymywanie Azure stosu
-
-*Dotyczy: Azure stosu zintegrowane systemy (wersja 1712 i nowsze)*
+Należy wykonać procedury opisane w tym artykule, aby poprawnie zamykania i ponownego uruchamiania usług Azure stosu. 
 
 ## <a name="stop-azure-stack"></a>Zatrzymaj Azure stosu 
 
@@ -86,4 +86,4 @@ Jeśli usługi infrastruktury i dzierżawcy nie pomyślnie uruchomić 2 godziny 
 
 ## <a name="next-steps"></a>Kolejne kroki 
 
-Dowiedz się więcej na temat narzędzia diagnostycznego stosu Azure i wystawiania rejestrowania, zobacz [narzędzia diagnostyczne stosu Azure. Narzędzia diagnostyczne Azure stosu. Narzędzia diagnostyczne Azure stosu. Narzędzia diagnostyczne Azure stosu.
+Dowiedz się więcej na temat narzędzia diagnostycznego stosu Azure i wystawiania rejestrowania, zobacz [narzędzia diagnostyczne stosu Azure](azure-stack-diagnostics.md).

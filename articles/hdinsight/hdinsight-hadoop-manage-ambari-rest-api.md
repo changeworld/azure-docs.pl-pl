@@ -1,8 +1,8 @@
 ---
-title: "Monitorowanie i zarządzanie nimi platformy Hadoop za pomocą narzędzia Ambari API REST - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać narzędzia Ambari do monitorowania i zarządzania klastrami Hadoop w usłudze Azure HDInsight. W tym dokumencie dowiesz się, jak używać interfejsu API REST Ambari, które zostały dołączone do klastrów usługi HDInsight."
+title: Monitorowanie i zarządzanie nimi platformy Hadoop za pomocą narzędzia Ambari API REST - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać narzędzia Ambari do monitorowania i zarządzania klastrami Hadoop w usłudze Azure HDInsight. W tym dokumencie dowiesz się, jak używać interfejsu API REST Ambari, które zostały dołączone do klastrów usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 2400530f-92b3-47b7-aa48-875f028765ff
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 44066a3b4d5bebc67b089bebc2f3c11d33c77000
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 6d82e67e546c8c2079d1feced6e10954fe67a83d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu API REST Ambari
 
@@ -82,7 +80,7 @@ curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$C
 > Przykłady Bash, w tym dokumencie mieć następujące wartości domyślne:
 >
 > * Nazwa logowania dla klastra jest domyślna wartość `admin`.
-> * `$CLUSTERNAME`zawiera nazwę klastra. Tę wartość można ustawić za pomocą`set CLUSTERNAME='clustername'`
+> * `$CLUSTERNAME` zawiera nazwę klastra. Tę wartość można ustawić za pomocą `set CLUSTERNAME='clustername'`
 > * Po wyświetleniu monitu wprowadź hasło do logowania do klastra (admin).
 
 ```powershell
@@ -94,8 +92,8 @@ $resp.Content
 > [!IMPORTANT]
 > Przykłady programu PowerShell w tym dokumencie mieć następujące wartości domyślne:
 >
-> * `$creds`jest obiekt poświadczeń, który zawiera identyfikator logowania administratora i hasła dla klastra. Tę wartość można ustawić za pomocą `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` i podawania poświadczeń po wyświetleniu monitu.
-> * `$clusterName`jest ciąg znaków zawierający nazwę klastra. Tę wartość można ustawić za pomocą `$clusterName="clustername"`.
+> * `$creds` jest obiekt poświadczeń, który zawiera identyfikator logowania administratora i hasła dla klastra. Tę wartość można ustawić za pomocą `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` i podawania poświadczeń po wyświetleniu monitu.
+> * `$clusterName` jest ciąg znaków zawierający nazwę klastra. Tę wartość można ustawić za pomocą `$clusterName="clustername"`.
 
 Oba przykłady zwracają dokument JSON, który rozpoczyna się od informacje podobne do poniższego przykładu:
 
@@ -259,9 +257,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 Wartość zwracana jest podobny do jednego z poniższych przykładach:
 
-* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net`— Ta wartość wskazuje, że klaster używa konta usługi Azure Storage do przechowywania domyślne. `ACCOUNTNAME` Wartość jest nazwą konta magazynu. `CONTAINER` Fragment jest nazwa kontenera obiektów blob na koncie magazynu. Kontener jest katalog główny systemu plików HDFS zgodne magazyn dla klastra.
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` — Ta wartość wskazuje, że klaster używa konta usługi Azure Storage do przechowywania domyślne. `ACCOUNTNAME` Wartość jest nazwą konta magazynu. `CONTAINER` Fragment jest nazwa kontenera obiektów blob na koncie magazynu. Kontener jest katalog główny systemu plików HDFS zgodne magazyn dla klastra.
 
-* `adl://home`— Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Store dla domyślnego magazynu.
+* `adl://home` — Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Store dla domyślnego magazynu.
 
     Aby znaleźć nazwę konta usługi Data Lake Store, wykonaj następujące przykłady:
 

@@ -1,25 +1,18 @@
 ---
-title: "Wdrażanie usług Azure Analysis Services przy użyciu programu SSDT | Microsoft Docs"
-description: "Dowiedz się, jak wdrożyć model tabelaryczny na serwerze usług Azure Analysis Services przy użyciu programu SSDT."
-services: analysis-services
-documentationcenter: 
+title: Wdrażanie usług Azure Analysis Services przy użyciu programu SSDT | Microsoft Docs
+description: Dowiedz się, jak wdrożyć model tabelaryczny na serwerze usług Azure Analysis Services przy użyciu programu SSDT.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 5f1f0ae7-11de-4923-a3da-888b13a3638c
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: f356b5d8e2b047add41873ab2676bd46db8d1fd2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: a25066ef8446449148bc0ca95989dc6ca3ca6839
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-a-model-from-ssdt"></a>Wdrażanie modelu w programie SSDT
 Po utworzeniu serwera w ramach subskrypcji platformy Azure wszystko jest gotowe do wdrożenia bazy danych modelu tabelarycznego. Program SSDT (SQL Server Data Tools) służy do tworzenia i wdrażania projektu modelu tabelarycznego, nad którymi pracujesz. 
@@ -60,6 +53,6 @@ Jeśli wdrożenie zakończy się niepowodzeniem podczas wdrażania metadanych, p
 
 Jeśli wdrożenie zakończy się niepowodzeniem dla tabeli, prawdopodobnie serwer nie mógł nawiązać połączenia ze źródłem danych. Jeśli źródło danych znajduje się w lokalnej sieci organizacji, należy zainstalować [bramę danych lokalnych](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po wdrożeniu modelu tabelarycznego na serwerze możesz się z nim połączyć. W celu zarządzania modelem możesz [połączyć się przy użyciu programu SSMS](analysis-services-manage.md). Możesz również [nawiązać połączenie za pomocą narzędzia klienta](analysis-services-connect.md), takiego jak usługi Power BI, Power BI Desktop lub program Excel, i rozpocząć tworzenie raportów.
 

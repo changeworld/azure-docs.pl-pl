@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 ## <a name="about-this-list"></a>Ta lista — informacje
@@ -34,16 +34,16 @@ W przypadku otrzymania błędy importowania dokument otwarty interfejs API, upew
 * Niestandardowe rozszerzenia zostaną zignorowane podczas importowania i są nie zapisano lub zachowane eksportu.
 
 > [!IMPORTANT]
-> Zobacz to [dokumentu](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/) ważne informacje i wskazówki związane z OpenAPI importu.
+> Zobacz ten [dokument](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/), aby uzyskać ważne informacje i wskazówki związane z importowaniem interfejsu OpenAPI.
 
 ## <a name="wsdl"> </a>WSDL
 Pliki WSDL są używane do generowania interfejsów API przekazywanego SOAP lub służyć jako zaplecza interfejsu API SOAP-REST.
-
-* **WSDL: import** — obecnie APIM nie obsługuje interfejsów API przy użyciu tego atrybutu. Klienci, należy scalić importowanych elementów w jednym dokumencie.
-* **Komunikaty z wielu części** , APIM nie obsługuje obecnie komunikatów tego typu.
-* **WCF wsHttpBinding** usług SOAP utworzone za pomocą programu Windows Communication Foundation należy użyć klasy basicHttpBinding — wsHttpBinding nie jest obsługiwane.
-* **MTOM** usług przy użyciu mechanizmu MTOM <em>może</em> pracy. W tej chwili nie jest oferowany oficjalnego wsparcia.
-* **Rekursja** typy, które są zdefiniowane cyklicznie (na przykład odwoływać się do siebie tablicę) nie są obsługiwane przez APIM.
+* **Powiązania SOAP** — są obsługiwane tylko SOAP powiązania stylu "dokumentu" i "literal" kodowania. Nie jest obsługiwane dla styl "rpc" lub kodowania protokołu SOAP.
+* **WSDL: import** -tego atrybutu nie jest obsługiwana. Klienci, należy scalić polecenie importuje jeden dokument.
+* **Komunikaty z wielu części** -komunikatów tego typu nie są obsługiwane.
+* **WCF wsHttpBinding** -usług SOAP utworzone za pomocą programu Windows Communication Foundation należy użyć klasy basicHttpBinding — wsHttpBinding nie jest obsługiwane.
+* **MTOM** — usługi przy użyciu mechanizmu MTOM <em>może</em> pracy. W tej chwili nie jest oferowany oficjalnego wsparcia.
+* **Rekursja** — typy, które są zdefiniowane cyklicznie (na przykład odwoływać się do siebie tablicę) nie są obsługiwane przez APIM.
 
 ## <a name="wadl"> </a>WADL
 Obecnie nie istnieją żadne znane problemy importu WADL.

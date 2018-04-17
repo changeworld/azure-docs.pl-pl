@@ -1,26 +1,24 @@
 ---
-title: "Architektura usługi Hadoop - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Opisuje Hadoop przechowywania i przetwarzania w klastrach usługi HDInsight."
+title: Architektura usługi Hadoop - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Opisuje Hadoop przechowywania i przetwarzania w klastrach usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 49277871026e79b871b0216c05e051a1c93336b3
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 5ec5f1f24d3bf953115bfa5023faf81df132f510
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="hadoop-architecture-in-hdinsight"></a>Architektura usługi Hadoop w usłudze HDInsight
 

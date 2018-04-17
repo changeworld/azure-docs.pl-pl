@@ -1,26 +1,24 @@
 ---
-title: "Użyj metadanych zewnętrzne magazyny - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Magazyny metadanych zewnętrznych za pomocą klastrów usługi HDInsight."
+title: Użyj metadanych zewnętrzne magazyny - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Magazyny metadanych zewnętrznych za pomocą klastrów usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 tags: azure-portal
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: jgao
-ms.openlocfilehash: 767a1b8a8213b0139878c82d64639b2ba10b5f4f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 26f71b8efb7d31192ceecf03d9c0ed904196faf1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Użyj zewnętrznego metadanych magazynów w usłudze Azure HDInsight
 
@@ -80,7 +78,7 @@ Poniżej przedstawiono pewne ogólne HDInsight Hive potrzeby magazynu metadanych
 - Zachowaj Twoje potrzeby magazynu metadanych i klaster usługi HDInsight w tym samym regionie.
 - Monitorowanie Twoje potrzeby magazynu metadanych wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL Azure, takich jak portalu Azure lub usługi Analiza dzienników Azure.
 
-## <a name="oozie-metastore"></a>Oozie Metastore
+## <a name="oozie-metastore"></a>Potrzeby magazynu metadanych Oozie
 
 Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami na platformie Hadoop.  Oozie obsługuje zadania platformy Hadoop dla Apache MapReduce Pig, Hive i innych użytkowników.  Oozie przechowuje potrzeby magazynu metadanych szczegółowe informacje o aktualnych i zakończonych przepływów pracy. Aby zwiększyć wydajność, korzystając z Oozie, bazy danych SQL Azure służy jako niestandardowego potrzeby magazynu metadanych. Potrzeby magazynu metadanych oferuje również dostęp do danych zadania Oozie, po usunięciu klastra.
 

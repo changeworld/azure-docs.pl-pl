@@ -9,18 +9,16 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac2a087bb0a9d8cac15dfea2448a9c42cee4a1f4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Tworzenie skryptów akcji skryptu dla klastrów usługi HDInsight w systemie Windows
 Dowiedz się, jak napisać skrypty akcji skryptu dla usługi HDInsight. Uzyskać informacji na temat używania skryptów akcji skryptu, zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md). Aby uzyskać ten sam artykuł, przeznaczony dla klastrów usługi HDInsight opartych na systemie Linux, zobacz [skryptów tworzenie akcji skryptu dla usługi HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -140,7 +138,7 @@ Poniżej przedstawiono metody pomocnicze, które są udostępniane przez ten skr
 
 | Metoda pomocnika | Opis |
 | --- | --- |
-| **Save-HDIFile** |Pobierz plik z określonego identyfikatora URI (Uniform Resource) do lokalizacji na dysku lokalnym, który jest skojarzony z węzłem maszyny Wirtualnej Azure przypisana do klastra. |
+| **Zapisz HDIFile** |Pobierz plik z określonego identyfikatora URI (Uniform Resource) do lokalizacji na dysku lokalnym, który jest skojarzony z węzłem maszyny Wirtualnej Azure przypisana do klastra. |
 | **Rozwiń węzeł HDIZippedFile** |Rozpakuj plik z rozszerzeniem zip. |
 | **Invoke-HDICmdScript** |Uruchom skrypt z cmd.exe. |
 | **HDILog zapisu** |Zapisywania danych wyjściowych skryptu niestandardowego używanych w przypadku akcji skryptu. |
@@ -178,7 +176,7 @@ Podczas opracowywania niestandardowego skryptu dla klastra usługi HDInsight, is
 
     HDInsight ma architekturę aktywny / pasywny wysokiej dostępności, jednego z węzła głównego w trybie aktywnym (w którym są uruchomione usługi HDInsight) i innych węzła głównego jest w trybie rezerwy (w którym HDInsight usługi nie działają). Węzły przełącznika tryby aktywnym i pasywnym, jeśli usługi HDInsight są przerywane. Jeśli akcja skryptu jest używany do instalowania usług na obu węzłach głównych wysokiej dostępności, należy pamiętać, mechanizm pracy awaryjnej usługi HDInsight nie jest automatycznie awaryjnie tych usług zainstalowane przez użytkownika. Dlatego użytkownik zainstalował usług na HDInsight węzłów głównych, które powinny być wysokiej dostępności musisz mieć własne mechanizm pracy awaryjnej w trybie aktywny / pasywny lub być w trybie aktywny / aktywny.
 
-    Akcja skryptu HDInsight polecenie jest uruchamiane na obu węzłach głównych, gdy rola head węzła jest określony jako wartość *ClusterRoleCollection* parametru. Tak podczas projektowania niestandardowego skryptu, upewnij się, że skrypt jest świadome tego Instalatora. Nie należy uruchamiać do problemów, gdy te same usługi są zainstalowane i uruchomione na obu węzłów głównych i ich przechodzili konkurujących ze sobą. Pamiętaj też, że dane zostały utracone podczas ponownej instalacji systemu, więc oprogramowania zainstalowanych za pomocą akcji skryptu musi być odporny na takie zdarzenia. Aplikacje powinny zaprojektowane w taki sposób, aby pracować z danymi wysokiej dostępności, która jest dystrybuowana do wielu węzłów. Należy pamiętać, że maksymalnie 1/5 węzłów w klastrze mogą można odtworzyć z obrazu w tym samym czasie.
+    Akcja skryptu HDInsight polecenie jest uruchamiane na obu węzłach głównych, gdy rola head węzła jest określony jako wartość *ClusterRoleCollection* parametru. Tak podczas projektowania niestandardowego skryptu, upewnij się, że skrypt jest świadome tego Instalatora. Nie należy uruchamiać do problemów, gdy te same usługi są zainstalowane i uruchomione na obu węzłów głównych i ich przechodzili konkurujących ze sobą. Pamiętaj też, że dane zostały utracone podczas ponownej instalacji systemu, więc oprogramowania zainstalowanych za pomocą akcji skryptu musi być odporny na takie zdarzenia. Aplikacje powinny zaprojektowane w taki sposób, aby pracować z danymi wysokiej dostępności, która jest dystrybuowana do wielu węzłów. Maksymalnie 1/5 węzłów w klastrze mogą można odtworzyć z obrazu w tym samym czasie.
 * Konfigurowanie niestandardowych składników można używać magazynu obiektów Blob platformy Azure
 
     Niestandardowych składników, które należy zainstalować na węzłach klastra może być domyślna konfiguracja korzystania z magazynu systemu Distributed plików Hadoop (HDFS). Należy zmienić konfigurację, aby zamiast tego użyj magazynu obiektów Blob platformy Azure. Na odtworzenia z obrazu klastra sformatowany pobiera system plików HDFS i zostaną utracone wszystkie dane są przechowywane. Zamiast tego przy użyciu magazynu obiektów Blob platformy Azure zapewnia, że dane są przechowywane.
@@ -192,14 +190,14 @@ Często w rozwoju akcji skryptu, uważasz, że trzeba ustawić zmienne środowis
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-Ta instrukcja ustawia zmienną środowiskową **MDS_RUNNER_CUSTOM_CLUSTER** na wartość "true", a także ustawia zakres tej zmiennej jako komputera. W czasie ważne jest, że zmienne środowiskowe są ustawiane na odpowiedni zakres — komputera lub użytkownika. Zobacz [tutaj] [ 1] Aby uzyskać więcej informacji na temat ustawiania zmiennych środowiskowych.
+Ta instrukcja ustawia zmienną środowiskową **MDS_RUNNER_CUSTOM_CLUSTER** na wartość "true", a także ustawia zakres tej zmiennej jako komputera. Należy pamiętać, że zmienne środowiskowe są ustawiane na odpowiedni zakres — komputera lub użytkownika. Zobacz [tutaj] [ 1] Aby uzyskać więcej informacji na temat ustawiania zmiennych środowiskowych.
 
 ### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Dostęp do lokalizacji, w którym są przechowywane niestandardowe skrypty
-Skrypty używane w celu dostosowania klastra musi być albo w domyślne konto magazynu dla klastra lub w publicznego kontenera tylko do odczytu na inne konto magazynu. Jeśli skrypt uzyskuje dostęp do zasobów znajdujących się w innym miejscu te muszą być publicznie dostępny (co najmniej publiczne tylko do odczytu). Na przykład można uzyskać dostępu do pliku i zapisz go przy użyciu polecenia SaveFile HDI.
+Skrypty używane w celu dostosowania klastra musi być albo w domyślne konto magazynu dla klastra lub w publicznego kontenera tylko do odczytu na inne konto magazynu. Jeśli skrypt uzyskuje dostęp do zasobów znajdujących się w innym miejscu zasobów musi być publicznie do odczytu. Na przykład można uzyskać dostępu do pliku i zapisz go przy użyciu polecenia SaveFile HDI.
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-W tym przykładzie należy się upewnić, że kontener "somecontainer" na koncie magazynu "somestorageaccount" jest dostępny publicznie. W przeciwnym razie skrypt zgłasza wyjątek nie znaleziono i zakończyć się niepowodzeniem.
+W tym przykładzie, upewnij się, że kontener `somecontainer` na koncie magazynu `somestorageaccount` jest dostępny publicznie. W przeciwnym razie skrypt zgłasza wyjątek nie znaleziono i zakończyć się niepowodzeniem.
 
 ### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Przekazania parametrów do polecenia cmdlet Add-AzureRmHDInsightScriptAction
 Aby przekazać wiele parametrów polecenia cmdlet Add-AzureRmHDInsightScriptAction, należy sformatować wartość ciągu zawiera wszystkie parametry skryptu. Na przykład:
@@ -238,9 +236,9 @@ Poniżej przedstawiono kroki, które Wybraliśmy podczas przygotowania do wdroż
 
 1. Umieścić pliki, które zawierają niestandardowe skrypty w miejscu, który jest dostępny dla węzłów klastra podczas wdrażania. Może to być domyślne lub dodatkowych kont magazynu określony w czasie wdrażania klastra lub innych kontenera magazynu publicznie.
 2. Dodaj kontroli w skryptach, aby upewnić się, że są one wykonywane idempotently, dzięki czemu skrypt mogą być wykonywane wiele razy w tym samym węźle.
-3. Użyj **Write-Output** polecenia cmdlet programu Azure PowerShell do drukowania do STDOUT, a także STDERR. Nie używaj **Write-Host**.
-4. Użyj folder plików tymczasowych, takich jak $env: TEMP, aby zachować pobrany plik używany przez skrypty i następnie wyczyść je po wykonaniu skryptów.
-5. Zainstaluj oprogramowanie niestandardowe tylko na D:\ lub C:\apps. Są one zastrzeżone nie należy używać innych lokalizacji na dysku C:. Należy pamiętać, że instalowanie plików na dysku C: poza folderem C:\apps może spowodować błędy instalacji podczas reimages węzła.
+3. Użyj `Write-Output` polecenia cmdlet programu Azure PowerShell do drukowania do STDOUT, a także STDERR. Nie używaj `Write-Host`.
+4. Użyj folder plików tymczasowych, takiego jak `$env:TEMP`, aby zachować pobrany plik używany przez skrypty i następnie wyczyść je po wykonaniu skryptów.
+5. Zainstaluj oprogramowanie niestandardowe tylko na D:\ lub C:\apps. Są one zastrzeżone nie należy używać innych lokalizacji na dysku C:. Instalowanie plików na dysku C: poza folderem C:\apps może spowodować błędy instalacji podczas reimages węzła.
 6. W przypadku, gdy zmieniono ustawienia na poziomie systemu operacyjnego lub plików konfiguracyjnych usługi Hadoop, możesz ponownie uruchomić usługi HDInsight, dzięki czemu mogą one odbierać wszystkie ustawienia poziomu systemu operacyjnego, takich jak zmiennych środowiskowych w skryptach.
 
 ## <a name="debug-custom-scripts"></a>Debugowanie skryptów niestandardowych

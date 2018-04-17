@@ -1,6 +1,6 @@
 ---
-title: "Utwórz tożsamość aplikacji usługi Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób tworzenia aplikacji usługi Azure Active Directory i nazwy głównej usługi i przyznać jej dostęp do zasobów za pomocą kontroli dostępu opartej na rolach przy użyciu programu Azure PowerShell. Widoczny jest sposób uwierzytelniania aplikacji przy użyciu certyfikatu."
+title: Utwórz tożsamość aplikacji usługi Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Opisuje sposób tworzenia aplikacji usługi Azure Active Directory i nazwy głównej usługi i przyznać jej dostęp do zasobów za pomocą kontroli dostępu opartej na rolach przy użyciu programu Azure PowerShell. Widoczny jest sposób uwierzytelniania aplikacji przy użyciu certyfikatu.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 175d95c16484b90b13936c3be39b67749f0c3238
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3b14d148669457a47eecda11cf6a8c85b5361677
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Tworzenie nazwy głównej usługi przy użyciu certyfikatu przy użyciu programu Azure PowerShell
 
@@ -40,7 +40,7 @@ Najłatwiejszym sposobem sprawdzenia, czy Twoje konto ma odpowiednie uprawnienia
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Tworzenie nazwy głównej usługi o certyfikat z podpisem własnym
 
-Poniższy przykład obejmuje Prosty scenariusz. Używa [AzureRmADServicePrincipal nowy](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) tworzenia nazwy głównej usługi z certyfikatu z podpisem własnym i używa [AzureRmRoleAssignment nowy](/powershell/module/azurerm.resources/new-azurermroleassignment) można przypisać [współautora](../active-directory/role-based-access-built-in-roles.md#contributor)roli do nazwy głównej usługi. Zakres przypisania roli to aktualnie wybranej subskrypcji Azure. Aby wybrać inną subskrypcję, użyj [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
+Poniższy przykład obejmuje Prosty scenariusz. Używa [AzureRmADServicePrincipal nowy](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) tworzenia nazwy głównej usługi z certyfikatu z podpisem własnym i używa [AzureRmRoleAssignment nowy](/powershell/module/azurerm.resources/new-azurermroleassignment) można przypisać [współautora](../role-based-access-control/built-in-roles.md#contributor)roli do nazwy głównej usługi. Zakres przypisania roli to aktualnie wybranej subskrypcji Azure. Aby wybrać inną subskrypcję, użyj [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -170,7 +170,7 @@ Aby uzyskać identyfikator aplikacji, należy użyć:
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Tworzenie nazwy głównej usługi o certyfikat od urzędu certyfikacji
 
-W poniższym przykładzie użyto certyfikatu wystawionego przez urząd certyfikacji, tworzenie nazwy głównej usługi. Obejmuje przypisania do określonej subskrypcji platformy Azure. Dodaje nazwę główną usługi do [współautora](../active-directory/role-based-access-built-in-roles.md#contributor) roli. Jeśli wystąpi błąd podczas przypisywania roli, ponowi próbę przypisania.
+W poniższym przykładzie użyto certyfikatu wystawionego przez urząd certyfikacji, tworzenie nazwy głównej usługi. Obejmuje przypisania do określonej subskrypcji platformy Azure. Dodaje nazwę główną usługi do [współautora](../role-based-access-control/built-in-roles.md#contributor) roli. Jeśli wystąpi błąd podczas przypisywania roli, ponowi próbę przypisania.
 
 ```powershell
 Param (

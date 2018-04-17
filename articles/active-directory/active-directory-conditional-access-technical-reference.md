@@ -1,8 +1,8 @@
 ---
-title: "Dokumentacja ustawień dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Omówienie obsługiwanych ustawień w zasadach dostępu warunkowego usługi Azure Active Directory."
+title: Dokumentacja ustawień dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Omówienie obsługiwanych ustawień w zasadach dostępu warunkowego usługi Azure Active Directory.
 services: active-directory.
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2018
+ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 3e65371396b91c1dc97f504bac8b969093f5c518
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 300367ee4e4bdb412bf4e5f25ba6cea067e18ed3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -147,7 +147,7 @@ Chrome działu pomocy technicznej w **7 i Windows 8.1**, utwórz następujący k
 |--- | ---|
 |Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |Name (Nazwa) | 1 |
-|Typ | REG_SZ (String) |
+|Typ | REG_SZ (ciąg) |
 |Dane | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 Te przeglądarki obsługuje uwierzytelnianie urządzenia, umożliwiając urządzenia można zidentyfikować ani weryfikowana pod kątem zasad. Sprawdzanie urządzenia kończy się niepowodzeniem, jeśli przeglądarka jest uruchomiony w trybie prywatnym. 
@@ -164,24 +164,24 @@ Zasady dostępu warunkowego, można wybrać **aplikacji mobilnych i klasycznych 
 To ustawienie ma wpływ na prób dostępu z następujących aplikacji mobilnych i będących klientami pulpitu: 
 
 
-| Aplikacje klienckie| Usługa docelowa| Platforma |
-| --- | --- | --- |
-| Usługa Azure RemoteApp| Usługa Azure RemoteApp| Windows 10, Windows 8.1, Windows 7, iOS, Android i Mac OS X|
-| Aplikacji programu Dynamics CRM| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS i Android|
-| Osoby-mail/kalendarza aplikacji Outlook 2016 Outlook 2013 (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online| Windows 10|
-| Zasady MFA i lokalizację dla aplikacji. Urządzenia, na podstawie zasad nie są obsługiwane.| Moje aplikacje usługi aplikacji| Android i iOS|
-| Kontroluje usługi zespoły firmy Microsoft — do wszystkich usług, które obsługują Teams firmy Microsoft i wszystkie jego aplikacjach klienckich - pulpitu systemu Windows, iOS, Android, WP i klienta sieci web| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS|
-| Aplikacje pakietu Office 2016, Office 2013 (z nowoczesnego uwierzytelniania), usługi OneDrive Synchronizowanie klienta (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Usługi Office 365 SharePoint Online| Windows 8.1, Windows 7|
-| Aplikacje pakietu Office 2016, Office uniwersalnych aplikacji, Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji usługi OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), obsługa grupy Office jest planowane w przyszłości, obsługi aplikacji programu SharePoint jest planowane w przyszłości| Usługi Office 365 SharePoint Online| Windows 10|
-| Pakiet Office 2016 dla macOS (Word, Excel, PowerPoint, tylko w programie OneNote). OneDrive dla firm Obsługa planowanych w przyszłości| Usługi Office 365 SharePoint Online| Mac OS X|
-| Aplikacje mobilne pakietu Office| Usługi Office 365 SharePoint Online| Android, iOS|
-| Aplikacja usługi Yammer pakietu Office| Office 365 Yammer| Windows 10, iOS, Android|
-| Outlook 2016 (Urząd macOS)| Office 365 Exchange Online| Mac OS X|
-| Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania), usługi Skype dla firm (z nowoczesnego uwierzytelniania)| Office 365 Exchange Online| Windows 8.1, Windows 7|
-| Outlook aplikacji mobilnej| Office 365 Exchange Online| Android, iOS|
-| Aplikacji Power BI| Usługa Power BI| Windows 10, Windows 8.1, Windows 7, Android i iOS|
-| Skype dla firm| Office 365 Exchange Online| Android, IOS|
-| Visual Studio Team Services aplikacji| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS i Android|
+|Aplikacje klienckie|Usługa docelowa|Platforma|
+|---|---|---|
+|Usługa Azure RemoteApp|Usługa Azure RemoteApp|Windows 10, Windows 8.1, Windows 7, iOS, Android i Mac OS X|
+|Aplikacji programu Dynamics CRM|Dynamics CRM|Windows 10, Windows 8.1, iOS i Android|
+|Osoby-mail/kalendarza aplikacji Outlook 2016 Outlook 2013 (z nowoczesnego uwierzytelniania)|Office 365 Exchange Online|Windows 10|
+|Zasady MFA i lokalizację dla aplikacji. Urządzenia, na podstawie zasad nie są obsługiwane. |Moje aplikacje usługi aplikacji|Android i iOS|
+|Kontroluje usługi zespoły firmy Microsoft — do wszystkich usług, które obsługują Teams firmy Microsoft i wszystkie jego aplikacjach klienckich - pulpitu systemu Windows, iOS, Android, WP i klienta sieci web|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
+|Aplikacje pakietu Office 2016, Office 2013 (z nowoczesnego uwierzytelniania), usługi OneDrive Synchronizowanie klienta (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Usługi Office 365 SharePoint Online|Windows 8.1, Windows 7|
+|Aplikacje pakietu Office 2016, Office uniwersalnych aplikacji, Office 2013 (z nowoczesnego uwierzytelniania), klient synchronizacji usługi OneDrive (zobacz [uwagi](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), obsługa grupy Office jest planowane w przyszłości, obsługi aplikacji programu SharePoint jest planowane w przyszłości|Usługi Office 365 SharePoint Online|Windows 10|
+|Pakiet Office 2016 dla macOS (Word, Excel, PowerPoint, tylko w programie OneNote). OneDrive dla firm Obsługa planowanych w przyszłości|Usługi Office 365 SharePoint Online|Mac OS X|
+|Aplikacje mobilne pakietu Office|Usługi Office 365 SharePoint Online|Android, iOS|
+|Aplikacja usługi Yammer pakietu Office|Yammer usługi Office 365|Windows 10, iOS, Android|
+|Outlook 2016 (Urząd macOS)|Office 365 Exchange Online|Mac OS X|
+|Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania), usługi Skype dla firm (z nowoczesnego uwierzytelniania)|Office 365 Exchange Online|Windows 8.1, Windows 7|
+|Outlook aplikacji mobilnej|Office 365 Exchange Online|Android, iOS|
+|Aplikacji Power BI|Usługa Power BI|Windows 10, Windows 8.1, Windows 7, Android i iOS|
+|Skype dla firm|Office 365 Exchange Online|Android, IOS |
+|Visual Studio Team Services aplikacji|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS i Android|
 
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Rozpocząć Integrowanie usługi Azure AD z aplikacjami | Dokumentacja firmy Microsoft"
+title: Rozpocząć Integrowanie usługi Azure AD z aplikacjami | Dokumentacja firmy Microsoft
 description: W tym artykule jest Przewodnik z wprowadzeniem do integracji z lokalnymi aplikacjami i aplikacje w chmurze Azure Active Directory (AD).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: db6d210d-c970-49e9-bd20-36d984bcd1c3
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: bf8ef28b49a3a12772965e7ebc85539c1a86e10f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dd118dbda9b7b0bee27bf9c97627bb8269e2d9b4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Przewodnik Wprowadzenie do integracji Azure Active Directory z aplikacjami pobierania
 ## <a name="overview"></a>Przegląd
@@ -51,7 +51,7 @@ Aby przejść w celu Integrowanie aplikacji z usługą Azure AD, należy wiedzie
 * Należy wyczyścić użytkownika/grupy baz danych przed zintegrowaniem?  (Jest to bardzo ważne pytania. Odzyskiwanie w pamięci out).
 
 ### <a name="access-management-inventory"></a>Dostęp do zarządzania spisu
-* Jak można obecnie zarządzać dostępem użytkowników do aplikacji? Czy, które należy zmienić?  Bierzesz pod uwagę inne sposoby zarządzania dostępu, takich jak z [RBAC](role-based-access-control-configure.md) na przykład?
+* Jak można obecnie zarządzać dostępem użytkowników do aplikacji? Czy, które należy zmienić?  Bierzesz pod uwagę inne sposoby zarządzania dostępu, takich jak z [RBAC](../role-based-access-control/role-assignments-portal.md) na przykład?
 * Który musi mieć dostęp do co?
 
 Być może nie masz odpowiedzi na wszystkie pytania na początku, ale nie szkodzi.  Ten przewodnik może pomóc w odpowiedzi na niektóre z tych pytań i niektóre świadomych decyzji.

@@ -1,13 +1,12 @@
 ---
-title: "Azure DB rozwiązania Cosmos jako wartość klucza magazynu — omówienie koszt | Dokumentacja firmy Microsoft"
-description: "Więcej informacji o niskich kosztów korzystania z bazy danych Azure rozwiązania Cosmos jako magazyn wartości klucza."
-keywords: "magazyn kluczy i wartości"
+title: Azure DB rozwiązania Cosmos jako wartość klucza magazynu — omówienie koszt | Dokumentacja firmy Microsoft
+description: Więcej informacji o niskich kosztów korzystania z bazy danych Azure rozwiązania Cosmos jako magazyn wartości klucza.
+keywords: magazyn kluczy i wartości
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: 
-tags: 
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+tags: ''
+documentationcenter: ''
 ms.assetid: 7f765c17-8549-4509-9475-46394fc3a218
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: e6f87cd82ebe31965fcaac1f66d2df03fd58294f
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: 9854ed30672ea16650fbdd98e991fb3916afef07
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure DB rozwiązania Cosmos jako magazyn wartości klucza — koszt — omówienie
 
@@ -53,7 +52,7 @@ Jeśli dostarczasz 1 000 RU/s, ta ilość 3,6 m RU na godzinę i będzie koszt $
 
 Większość podstawowych obiektów blob lub obiekt Magazyny usług opłatą $0,40 na milionów transakcji odczytu i 5 USD na transakcję milionów zapisu. Jeśli używane optymalnie, rozwiązania Cosmos bazy danych może być 98% tańszy niż te rozwiązania, (dla transakcji 1 KB).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Wkrótce nowe artykuły dotyczące optymalizacji Inicjowanie obsługi zasobów bazy danych Azure rozwiązania Cosmos. W międzyczasie możesz użyć naszych [Kalkulator RU](https://www.documentdb.com/capacityplanner).
 

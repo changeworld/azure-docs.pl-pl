@@ -1,8 +1,8 @@
 ---
-title: "Migrację z usługi HDInsight opartej na systemie Windows do usługi HDInsight opartej na systemie Linux - Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o migracji z klastra usługi HDInsight opartej na systemie Windows do klastra usługi HDInsight opartej na systemie Linux."
+title: Migrację z usługi HDInsight opartej na systemie Windows do usługi HDInsight opartej na systemie Linux - Azure | Dokumentacja firmy Microsoft
+description: Informacje o migracji z klastra usługi HDInsight opartej na systemie Windows do klastra usługi HDInsight opartej na systemie Linux.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6d4b537834b8a70f0015fc9c6316dae20af5dd5a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migracji z klastra usługi HDInsight opartej na systemie Windows do klastra z systemem Linux
 
@@ -173,7 +171,7 @@ System Linux klaster plików jest rozmieszczona inaczej niż klastrów usługi H
 | Konfigurowanie |`/etc`. Na przykład: `/etc/hadoop/conf/core-site.xml` |
 | Pliki dziennika |`/var/logs` |
 | Hortonworks Data Platform (HDP) |`/usr/hdp`. Istnieją dwa katalogi znajduje się w tym miejscu jest bieżąca wersja HDP i `current`. `current` Katalog zawiera linki symboliczne do plików i katalogów znajduje się w katalogu numeru wersji. `current` Katalogu została podana jako wygodny sposób uzyskiwania dostępu do plików HDP od zmiany numeru wersji jako HDP wersja jest aktualizowana. |
-| hadoop-streaming.jar |`/usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar` |
+| hadoop streaming.jar |`/usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar` |
 
 Ogólnie rzecz biorąc Jeśli znasz nazwę pliku, służy następujące polecenie w sesji SSH można znaleźć ścieżki pliku:
 
@@ -234,7 +232,7 @@ Jeśli przepływ pracy, który korzysta z aplikacji C#, sprawdź poprawność ty
 | Na podstawie systemu Windows, używać... | Na opartych na systemie Linux... |
 | --- | --- |
 | Pulpit nawigacyjny STORM |Pulpit nawigacyjny Storm jest niedostępna. Zobacz [topologie wdrażania i zarządzania Storm w usłudze HDInsight z systemem Linux](storm/apache-storm-deploy-monitor-topology-linux.md) sposobów przesyłania topologii |
-| STORM interfejsu użytkownika |Interfejs użytkownika platformy Storm jest dostępne pod adresem https://CLUSTERNAME.azurehdinsight.net/stormui |
+| STORM interfejsu użytkownika |Interfejs użytkownika platformy Storm znajduje się w temacie https://CLUSTERNAME.azurehdinsight.net/stormui |
 | Visual Studio umożliwia tworzenie, wdrażanie i zarządzanie C# i hybrydowych topologii |Program Visual Studio umożliwia tworzenie, wdrażanie i zarządzanie języka C# (SCP.NET) lub hybrydowe topologie na opartych na systemie Linux Storm w usłudze HDInsight. Można można używać tylko z klastrami utworzone po 10/28/2016. |
 
 ## <a name="hbase"></a>HBase

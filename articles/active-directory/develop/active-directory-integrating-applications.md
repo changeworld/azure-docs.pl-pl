@@ -1,8 +1,8 @@
 ---
-title: "Integrowanie aplikacji z usługą Azure Active Directory"
-description: "Jak dodać, zaktualizować lub usunąć aplikacji w usłudze Azure Active Directory (Azure AD)."
+title: Integrowanie aplikacji z usługą Azure Active Directory
+description: Jak dodać, zaktualizować lub usunąć aplikacji w usłudze Azure Active Directory (Azure AD).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: PatAltimore
 manager: mtillman
 editor: mbaldwin
@@ -15,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: f08e7327e266c342fe7f869f0b7a6a251792a071
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 472a1746a338857d457a7b8d5e7fec3ddbf65895
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrowanie aplikacji z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -47,7 +47,7 @@ Każda aplikacja, która chce korzystać z funkcji usługi Azure AD musi najpier
     - Wybierz "Native" dla [aplikacje klienckie](active-directory-dev-glossary.md#client-application) są instalowane lokalnie na urządzeniu. To ustawienie jest stosowane do publicznego OAuth [klientach natywnych](active-directory-dev-glossary.md#native-client).
     - Wybierz "aplikacji sieci Web / interfejs API" dla [aplikacje klienckie](active-directory-dev-glossary.md#client-application) i [aplikacji zasobów/API](active-directory-dev-glossary.md#resource-server) są instalowane na serwerze bezpieczne. To ustawienie jest stosowane do OAuth poufne [sieci web klientów](active-directory-dev-glossary.md#web-client) i publiczne [klientów z systemem agenta użytkownika](active-directory-dev-glossary.md#user-agent-based-client). Ta sama aplikacja również mogą uwidaczniać zarówno klient, jak i zasobów/interfejsu API.
   - **Adres URL logowania:** dla "aplikacja sieci Web / interfejs API" aplikacji, podaj podstawowy adres URL aplikacji. Na przykład `http://localhost:31544` może być adresem URL dla aplikacji sieci web uruchomiony na komputerze lokalnym. Użytkownicy użyje tego adresu URL, aby zalogować się do aplikacji klienta sieci web. 
-  - **Identyfikator URI przekierowania:** "Native" aplikacji, podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartości określonych aplikacji, na przykład`http://MyFirstAADApp`
+  - **Identyfikator URI przekierowania:** "Native" aplikacji, podaj identyfikator URI używany przez usługę Azure AD do zwracania odpowiedzi tokenu. Wprowadź wartości określonych aplikacji, na przykład `http://MyFirstAADApp`
 
    ![Zarejestrować nową aplikację — tworzenie](./media/active-directory-integrating-applications/add-app-registration-create.png)
 
@@ -101,7 +101,7 @@ W poniższej procedurze pokazano, jak zgody wystąpić działa dla deweloperów 
   > Udzielanie jawne zgodę za pomocą **udzielanie uprawnień** przycisk jest obecnie wymagane dla aplikacji jednej strony (SPA), które używają ADAL.js. W przeciwnym razie aplikacja kończy się niepowodzeniem podczas żądania tokenu dostępu.   
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Skonfigurować aplikację klienta do dostępu do interfejsów API sieci web
-Aby sieci web/poufnych aplikacji klienckiej można było uczestniczyć w przepływie grant autoryzacji, który wymaga uwierzytelniania (i Uzyskaj token dostępu) jego ustanawiania bezpiecznych poświadczeń. Domyślną metodą uwierzytelniania obsługiwanych przez Azure portal jest identyfikator klienta i klucz tajny. W tej sekcji opisano kroki konfiguracji, wymagane jest podanie klucza tajnego poświadczeń klienta.
+Aby sieci web/poufnych aplikacji klienckiej można było uczestniczyć w przepływie grant autoryzacji, który wymaga uwierzytelniania (i Uzyskaj token dostępu) jego ustanawiania bezpiecznych poświadczeń. Domyślną metodą uwierzytelniania obsługiwanych przez Azure portal jest identyfikator klienta i klucz tajny. W tej sekcji opisano kroki konfiguracji, wymagane jest podanie klucza tajnego przy użyciu poświadczeń klienta.
 
 Ponadto, zanim klient może uzyskać dostęp do składnika web API udostępnianych przez aplikację zasobów (takich jak Microsoft Graph API), framework zgody zapewnia klient uzyskuje Udziel uprawnienia wymagane, na podstawie uprawnień żądanie. Domyślnie wszystkie aplikacje dostępne uprawnienia "Systemu Windows Azure Active Directory" (interfejs API programu Graph) i "Systemu Windows Azure interfejs API zarządzania usługami". [Uprawnienie "Logowanie i profilu użytkownika odczytu" interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) również jest domyślnie zaznaczona. Jeśli klient jest rejestrowana w dzierżawie z konta subskrypcji usługi Office 365, interfejsów API sieci Web i uprawnienia do usługi Exchange Online i SharePoint są dostępne do wyboru. Możesz wybrać z [dwa typy uprawnień](active-directory-dev-glossary.md#permissions) dla każdego żądanego interfejsu API sieci web:
 
@@ -129,7 +129,7 @@ Ponadto, zanim klient może uzyskać dostęp do składnika web API udostępniany
 
 5. Aby dodać uprawnienia dostępu do zasobu interfejsy API z klienta
   - Kliknij przycisk **wymagane uprawnienia** sekcji na **ustawienia** strony. 
-  - Kliknij przycisk **Dodaj** przycisku.
+  - Kliknij przycisk **Dodaj**.
   - Kliknij przycisk **wybierz interfejs API** wybierz typ zasobów, które mają zostać pobrane z.
   - Przejrzyj listę dostępnych interfejsach API lub użyj pola wyszukiwania można wybierać z poziomu aplikacji dostępnych zasobów w katalogu, które udostępniają interfejs API sieci web. Kliknij zasób interesuje, następnie kliknij przycisk **wybierz**.
   - W przypadku podjąć w celu **Włącz dostęp** strony. Wybierz uprawnienia dostępu do aplikacji i/lub delegowane uprawnienia aplikacji musi podczas uzyskiwania dostępu do interfejsu API.
@@ -162,7 +162,7 @@ Poniższej sekcji przedstawiono sposób ujawniać zakresy dostępu, modyfikując
 
 4. Zostają przeniesieni do strony głównej rejestracji aplikacji, która otwiera **ustawienia** strony dla aplikacji. Przełącz się do **Edytuj manifest** strony, klikając **manifestu** ze strony rejestracji aplikacji. Zostanie otwarty Edytor manifestu z opartych na sieci web, co umożliwia **Edytuj** manifest w portalu. Opcjonalnie możesz kliknąć **Pobierz** i edytować lokalnie, a następnie użyj **przekazać** Aby ponownie zastosować go do aplikacji.
 
-5. W tym przykładzie mamy powoduje to udostępnienie nowego zakresu o nazwie `Employees.Read.All` naszych zasobów/interfejs API, dodając następujący element JSON do `oauth2Permissions` kolekcji. Istniejące `user_impersonation` zakresu podano domyślnie podczas rejestracji. `user_impersonation`umożliwia aplikacji klienckiej na żądanie zezwolenia na dostęp do zasobu z tożsamością zalogowanego użytkownika. Pamiętaj dodać przecinek po istniejącej `user_impersonation` zakres elementu i zmiany wartości właściwości do potrzeb użytkownika zasobu. 
+5. W tym przykładzie mamy powoduje to udostępnienie nowego zakresu o nazwie `Employees.Read.All` naszych zasobów/interfejs API, dodając następujący element JSON do `oauth2Permissions` kolekcji. Istniejące `user_impersonation` zakresu podano domyślnie podczas rejestracji. `user_impersonation` umożliwia aplikacji klienckiej na żądanie zezwolenia na dostęp do zasobu z tożsamością zalogowanego użytkownika. Pamiętaj dodać przecinek po istniejącej `user_impersonation` zakres elementu i zmiany wartości właściwości do potrzeb użytkownika zasobu. 
 
   ```json
   {
@@ -233,7 +233,7 @@ Tworzenie wielodostępnych aplikacji wymaga zmiany rejestracji aplikacji, a tak�
 Jeśli piszesz aplikację, która ma być dostępna do klientów lub partnerów spoza organizacji, należy zaktualizować definicję aplikacji w portalu Azure.
 
 > [!IMPORTANT]
-> Usługa Azure AD wymaga aplikacji wielodostępnych być globalnie unikatowy identyfikator URI aplikacji. Identyfikator URI aplikacji jest jednym ze sposobów, który aplikacja zostanie zidentyfikowana w wiadomości protokołu. Dla aplikacji pojedynczej dzierżawy jest wystarczająca dla identyfikator URI aplikacji być unikatowe w obrębie tej dzierżawy. Aplikacji wielodostępnych musi być globalnie unikatowe dzięki usłudze Azure AD można znaleźć aplikacji we wszystkich dzierżawców. Globalne unikatowości jest wymuszana przez wymaganie identyfikator URI aplikacji ma nazwę hosta pasującą zweryfikowanej domeny dzierżawy usługi Azure AD. Na przykład jeśli nazwa dzierżawy to contoso.onmicrosoft.com prawidłowy identyfikator URI aplikacji będzie https://contoso.onmicrosoft.com/myapp. Jeśli dzierżawy zweryfikowanej domeny contoso.com, w prawidłowy identyfikator URI aplikacji może również być https://contoso.com/myapp. Jeśli identyfikator URI aplikacji nie będzie zgodna z tego wzorca ustawienia aplikacji, ponieważ wielodostępne zakończy się niepowodzeniem.
+> Usługa Azure AD wymaga aplikacji wielodostępnych być globalnie unikatowy identyfikator URI aplikacji. Identyfikator URI aplikacji jest jednym ze sposobów, który aplikacja zostanie zidentyfikowana w wiadomości protokołu. Dla aplikacji pojedynczej dzierżawy jest wystarczająca dla identyfikator URI aplikacji być unikatowe w obrębie tej dzierżawy. Aplikacji wielodostępnych musi być globalnie unikatowe dzięki usłudze Azure AD można znaleźć aplikacji we wszystkich dzierżawców. Globalne unikatowości jest wymuszana przez wymaganie identyfikator URI aplikacji ma nazwę hosta pasującą zweryfikowanej domeny dzierżawy usługi Azure AD. Na przykład, jeśli nazwa dzierżawy jest contoso.onmicrosoft.com prawidłowy identyfikator URI aplikacji będzie https://contoso.onmicrosoft.com/myapp. Jeśli dzierżawy ma zweryfikowanej domeny contoso.com, a następnie jest prawidłowy identyfikator URI aplikacji również https://contoso.com/myapp. Jeśli identyfikator URI aplikacji nie będzie zgodna z tego wzorca ustawienia aplikacji, ponieważ wielodostępne zakończy się niepowodzeniem.
 > 
 
 Aby udzielić dostępu aplikacji do użytkowników zewnętrznych: 

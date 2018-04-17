@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 78f447c96afe7955f115de4bbd28015cd231bb53
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ab118cd43f1e3e57627d940072e50405cd85ca58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Woluminy trwałe pliki Azure
 
-Trwały wolumin reprezentuje fragment magazynu, które zostały udostępnione do użycia w klastrze Kubernetes. Trwały wolumin mogą być używane przez jedną lub wiele stanowiskami i można za dynamicznie, czy statycznie. Ten dokument zawiera szczegóły dotyczące dynamicznego inicjowania obsługi administracyjnej udziału plików na platformę Azure jako trwały wolumin Kubernetes AKS klastra. 
+Trwały wolumin reprezentuje fragment magazynu, które zostały udostępnione do użycia w klastrze Kubernetes. Trwały wolumin mogą być używane przez jedną lub wiele stanowiskami i można za dynamicznie, czy statycznie. Ten dokument zawiera szczegóły dotyczące dynamicznego inicjowania obsługi administracyjnej udziału plików na platformę Azure jako trwały wolumin Kubernetes AKS klastra.
 
 Aby uzyskać więcej informacji na woluminach trwałe Kubernetes, zobacz [woluminy trwałe Kubernetes][kubernetes-volumes].
 
 ## <a name="create-storage-account"></a>Tworzenie konta magazynu
 
-Podczas dynamicznego inicjowania obsługi administracyjnej udziału plików na platformę Azure jako wolumin Kubernetes dowolne konto magazynu może służyć tak długo, jak są zawarte w tej samej grupie zasobów co klaster AKS. Jeśli to konieczne, Utwórz konto magazynu w tej samej grupie zasobów co klaster AKS. 
+Podczas dynamicznego inicjowania obsługi administracyjnej udziału plików na platformę Azure jako wolumin Kubernetes dowolne konto magazynu może służyć tak długo, jak są zawarte w tej samej grupie zasobów co klaster AKS. Jeśli to konieczne, Utwórz konto magazynu w tej samej grupie zasobów co klaster AKS.
 
 Aby zidentyfikować grupę odpowiednich zasobów, użyj [listy grup az] [ az-group-list] polecenia.
 
@@ -40,7 +40,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-Użyj [Tworzenie konta magazynu az] [ az-storage-account-create] polecenie, aby utworzyć konto magazynu. 
+Użyj [Tworzenie konta magazynu az] [ az-storage-account-create] polecenie, aby utworzyć konto magazynu.
 
 Za pomocą tego przykładu, zaktualizuj `--resource-group` z nazwą grupy zasobów i `--name` na wybraną nazwę.
 
@@ -74,7 +74,7 @@ kubectl create -f azure-file-sc.yaml
 
 ## <a name="create-persistent-volume-claim"></a>Tworzenie oświadczeń trwały wolumin
 
-Oświadczenie trwały wolumin (PVC) używa obiektu klasy magazynu, aby dynamicznie inicjują obsługę udziału plików na platformę Azure. 
+Oświadczenie trwały wolumin (PVC) używa obiektu klasy magazynu, aby dynamicznie inicjują obsługę udziału plików na platformę Azure.
 
 Manifest następujące może służyć do tworzenia oświadczeń trwały wolumin `5GB` rozmiaru w `ReadWriteOnce` dostępu.
 
@@ -132,12 +132,12 @@ Utwórz pod z [utworzyć kubectl] [ kubectl-create] polecenia.
 kubectl create -f azure-pvc-files.yaml
 ```
 
-Masz teraz pod uruchomiona z dysku platformy Azure, zamontowane w `/mnt/azure` katalogu. Widać instalacji podczas sprawdzania z pod za pośrednictwem woluminu `kubectl describe pod mypod`.
+Masz teraz pod uruchomiona z dysku platformy Azure, zamontowane w `/mnt/azure` katalogu. Ta konfiguracja może być moment zapoznanie się z pod za pośrednictwem `kubectl describe pod mypod`.
 
 ## <a name="mount-options"></a>Opcje instalacji
- 
+
 Domyślną wartością parametru fileMode i dirMode wartości różnią się między wersjami Kubernetes zgodnie z opisem w poniższej tabeli.
- 
+
 | wersja | wartość |
 | ---- | ---- |
 | v1.6.x, v1.7.x | 0777 |
@@ -145,9 +145,9 @@ Domyślną wartością parametru fileMode i dirMode wartości różnią się mi�
 | V1.8.6 lub nowszy | 0755 |
 | v1.9.0 | 0700 |
 | V1.9.1 lub nowszy | 0755 |
- 
+
 Jeśli przy użyciu klastra wersji 1.8.5 lub nowszego instalacji można określić opcji dla obiekt klasy magazynu. W poniższym przykładzie `0777`.
- 
+
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -162,7 +162,7 @@ mountOptions:
 parameters:
   skuName: Standard_LRS
 ```
- 
+
 Jeśli przy użyciu klastra wersji 1.8.0 - 1.8.4, za pomocą można określić kontekstu zabezpieczeń `runAsUser` wartość `0`. Aby uzyskać więcej informacji na Pod kontekstu zabezpieczeń, zobacz [skonfigurować kontekstu zabezpieczeń][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,11 +1,11 @@
 ---
-title: "Kwerenda dotycząca wiadomości B2B usługi Operations Management Suite — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Tworzenie zapytań do śledzenia AS2, X 12 i EDIFACT wiadomości w Operations Management Suite"
+title: Kwerenda dotycząca wiadomości B2B Log Analytics — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Tworzenie zapytań do śledzenia AS2, X 12 i EDIFACT wiadomości w analizy dzienników
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Zapytanie o AS2, X 12 i EDIFACT wiadomości pakiet zarządzania Operations (OMS) firmy Microsoft
+# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Wykonanie kwerendy AS2, X 12 i EDIFACT wiadomości w analizy dzienników
 
-Aby znaleźć AS2, X12 lub EDIFACT wiadomości, że podczas śledzenia z [Azure Log Analytics](../log-analytics/log-analytics-overview.md) w [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), można utworzyć kwerendy, które akcje na podstawie określonych kryteriów filtrowania. Na przykład można znaleźć na podstawie różnych kontroli określonych wymiany wiadomości.
+Aby znaleźć AS2, X12 lub EDIFACT wiadomości, że podczas śledzenia z [Azure Log Analytics](../log-analytics/log-analytics-overview.md), można utworzyć kwerendy, które akcje na podstawie określonych kryteriów filtrowania. Na przykład można znaleźć na podstawie różnych kontroli określonych wymiany wiadomości.
 
 ## <a name="requirements"></a>Wymagania
 
@@ -30,41 +30,41 @@ Aby znaleźć AS2, X12 lub EDIFACT wiadomości, że podczas śledzenia z [Azure 
 
 * Konta integracji, które skonfigurowano przy użyciu rejestrowania i monitorowania. Dowiedz się [sposobu tworzenia konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i [jak skonfigurować monitorowanie i rejestrowanie dla tego konta](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Jeśli nie jest jeszcze, [publikowania danych diagnostycznych do analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) i [Konfigurowanie śledzenia w OMS wiadomości](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Jeśli nie jest jeszcze, [publikowania danych diagnostycznych do analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) i [Konfigurowanie śledzenia w analizy dzienników wiadomości](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Po zostały spełnione wymagania poprzedniej, powinien mieć obszar roboczy [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Należy używać tego samego obszaru roboczego OMS śledzenia komunikacji B2B w OMS. 
+> Po zostały spełnione wymagania poprzedniej, powinien mieć obszar roboczy w analizy dzienników. Do komunikacji B2B w analizy dzienników śledzenia, należy używać tego samego obszaru roboczego. 
 >  
-> Dowiedz się, jeśli nie masz obszar roboczy OMS [jak Utwórz obszar roboczy OMS](../log-analytics/log-analytics-get-started.md).
+> Dowiedz się, jeśli nie masz obszaru roboczego analizy dzienników [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>Tworzenie kwerend komunikatów z filtrami w portalu usługi Operations Management Suite
+## <a name="create-message-queries-with-filters-in-log-analytics"></a>Tworzenie kwerend komunikatów z filtrów w analizy dzienników
 
 Ten przykład przedstawia, jak można znaleźć na podstawie ich liczby kontroli wymiany wiadomości.
 
 > [!TIP] 
-> Jeśli znasz nazwę obszar roboczy OMS, przejdź do strony głównej obszaru roboczego (`https://{your-workspace-name}.portal.mms.microsoft.com`) i uruchomić w kroku 4. W przeciwnym razie Rozpocznij w kroku 1.
+> Jeśli znasz nazwę obszaru roboczego analizy dzienników, przejdź do strony głównej obszaru roboczego (`https://{your-workspace-name}.portal.mms.microsoft.com`) i uruchomić w kroku 4. W przeciwnym razie Rozpocznij w kroku 1.
 
 1. W [portalu Azure](https://portal.azure.com), wybierz **wszystkie usługi**. Wyszukaj "analizy dzienników", a następnie wybierz pozycję **analizy dzienników** w sposób pokazany poniżej:
 
    ![Znajdź analizy dzienników](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 
-2. W obszarze **analizy dzienników**, Znajdź i wybierz obszar roboczy OMS.
+2. W obszarze **analizy dzienników**, Znajdź i zaznacz pozycję obszaru roboczego analizy dzienników.
 
-   ![Wybierz obszar roboczy OMS](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
 3. W obszarze **zarządzania**, wybierz **portalu OMS**.
 
    ![Wybierz portalu OMS](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
 
-4. Na stronie głównej OMS wybierz **wyszukiwania dziennika**.
+4. Na stronie głównej wybierz **wyszukiwania dziennika**.
 
-   ![Na stronie głównej OMS wybierz "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Na stronie głównej wybierz pozycję "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    — lub —
 
-   ![W menu OMS wybierz "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![W menu wybierz "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. W polu wyszukiwania wprowadź pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, OMS pokazuje, pasujących i operacje, które są dostępne. Dowiedz się więcej o [jak wyszukiwania danych analizy dzienników](../log-analytics/log-analytics-log-searches.md).
+5. W polu wyszukiwania wprowadź pola, które chcesz odnaleźć, a następnie naciśnij klawisz **Enter**. Po rozpoczęciu wprowadzania, analizy dzienników pokazuje, pasujących i operacje, które są dostępne. Dowiedz się więcej o [jak wyszukiwania danych analizy dzienników](../log-analytics/log-analytics-log-searches.md).
 
    W tym przykładzie wyszukuje zdarzeń o **typu = AzureDiagnostics**.
 
@@ -106,15 +106,15 @@ Ten przykład przedstawia, jak można znaleźć na podstawie ich liczby kontroli
 
    ![Wybierz zapytanie](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
 
-## <a name="find-and-run-saved-queries-in-the-operations-management-suite-portal"></a>Znajdź i uruchom zapisane kwerendy w portalu usługi Operations Management Suite
+## <a name="find-and-run-saved-queries-in-log-analytics"></a>Znajdź i uruchom zapisane kwerendy w analizy dzienników
 
-1. Otwórz stronę główną obszar roboczy OMS (`https://{your-workspace-name}.portal.mms.microsoft.com`) i wybierz polecenie **wyszukiwania dziennika**.
+1. Otwórz stronę główną obszaru roboczego analizy dzienników (`https://{your-workspace-name}.portal.mms.microsoft.com`) i wybierz polecenie **wyszukiwania dziennika**.
 
-   ![Na stronie głównej OMS wybierz "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Na stronie głównej Analiza dzienników wybierz polecenie "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    — lub —
 
-   ![W menu OMS wybierz "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![W menu wybierz "Dziennik wyszukiwania"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
 2. Na **wyszukiwania dziennika** strony głównej, wybierz **ulubione**.
 

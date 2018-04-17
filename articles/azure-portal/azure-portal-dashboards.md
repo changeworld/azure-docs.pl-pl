@@ -1,8 +1,8 @@
 ---
-title: "Tworzyć i udostępniać pulpity nawigacyjne portalu Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule wyjaśniono, jak tworzyć i edytować pulpitów nawigacyjnych w portalu Azure."
+title: Tworzyć i udostępniać pulpity nawigacyjne portalu Azure | Dokumentacja firmy Microsoft
+description: W tym artykule wyjaśniono, jak tworzyć i edytować pulpitów nawigacyjnych w portalu Azure.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: sewatson
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-ms.openlocfilehash: 7f90c882285170bac34bfe020831d3ac04010a11
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4e5a5ae944b5f0059ee78a2171a9688902aaf6db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych w portalu Azure
 Można tworzyć wiele pulpitów nawigacyjnych i udostępniać je innym użytkownikom, którzy mają dostęp do Twojej subskrypcji platformy Azure.  W tym artykule przechodzi przez podstawy tworzenia, edytowania, publikowanie i zarządzanie dostępem do pulpitów nawigacyjnych.
@@ -75,7 +75,7 @@ Podczas tworzenia pulpitu nawigacyjnego jest prywatna domyślnie, co oznacza, ż
 
 ![Udostępnij pulpit nawigacyjny](./media/azure-portal-dashboards/share-dashboard.png)
 
-Zostanie wyświetlona prośba o wybranie subskrypcji i grupy zasobów dla pulpitu nawigacyjnego do opublikowania dla. Aby bezproblemowo zintegrować pulpitów nawigacyjnych w ekosystemie, wdrożyliśmy udostępnionych pulpitów nawigacyjnych jako zasobów platformy Azure (tak, aby nie można udostępnić, wpisując adres e-mail).  Dostęp do informacji wyświetlanych przez większość Kafelki w portalu są regulowane przez [kontroli dostępu opartej na roli Azure](../active-directory/role-based-access-control-configure.md). Z punktu widzenia kontroli dostępu do udostępnionych pulpitów nawigacyjnych nie różnią się od maszyny wirtualnej lub konto magazynu.  
+Zostanie wyświetlona prośba o wybranie subskrypcji i grupy zasobów dla pulpitu nawigacyjnego do opublikowania dla. Aby bezproblemowo zintegrować pulpitów nawigacyjnych w ekosystemie, wdrożyliśmy udostępnionych pulpitów nawigacyjnych jako zasobów platformy Azure (tak, aby nie można udostępnić, wpisując adres e-mail).  Dostęp do informacji wyświetlanych przez większość Kafelki w portalu są regulowane przez [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md). Z punktu widzenia kontroli dostępu do udostępnionych pulpitów nawigacyjnych nie różnią się od maszyny wirtualnej lub konto magazynu.  
 
 Załóżmy, że masz subskrypcję platformy Azure i członkowie zespołu są przypisane role **właściciela**, **współautora**, lub **czytnika** subskrypcji.  Użytkownicy, którzy są właściciele i współautorzy mogą się na liście, wyświetlanie, tworzenie, modyfikowanie lub usuwanie pulpitów nawigacyjnych w ramach danej subskrypcji.  Użytkownicy, którzy są czytników są w stanie listy i widok pulpity nawigacyjne, ale nie można je modyfikować lub usuwać.  Użytkownicy z dostępem czytnika można wprowadzać zmian lokalnych do udostępnionego pulpitu nawigacyjnego, ale nie będą mogły publikować tych zmian na serwerze.  Jednak mogą one ułatwić prywatnej kopii pulpitu nawigacyjnego na własny użytek.  Jak zawsze poszczególnych Kafelki na pulpicie nawigacyjnym wymuszanie własnych regułami kontroli dostępu na podstawie zasobów, które są zgodne.  
 
@@ -91,7 +91,7 @@ Po opublikowaniu pulpitu nawigacyjnego **udostępniania + dostępu** Panelu ster
 
 ![Zarządzanie kontrolą dostępu](./media/azure-portal-dashboards/manage-access.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby zarządzać zasobami, zobacz [zasobów Azure zarządzania za pośrednictwem portalu](../azure-resource-manager/resource-group-portal.md).
 * Aby wdrożyć zasobów, zobacz [wdrożenie zasobów z szablonami usługi Resource Manager i portalu Azure](../azure-resource-manager/resource-group-template-deploy-portal.md).
 

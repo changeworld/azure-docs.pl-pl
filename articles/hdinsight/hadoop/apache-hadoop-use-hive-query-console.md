@@ -1,8 +1,8 @@
 ---
-title: "Korzystanie z programu Hadoop Hive w konsoli zapytania w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przy użyciu konsoli zapytania oparte na sieci web do uruchamiania zapytań Hive w klastrze usługi HDInsight Hadoop w przeglądarce."
+title: Korzystanie z programu Hadoop Hive w konsoli zapytania w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przy użyciu konsoli zapytania oparte na sieci web do uruchamiania zapytań Hive w klastrze usługi HDInsight Hadoop w przeglądarce.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: d6032b8a1e3d338b046c958804102aeb9efcf4ab
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 04a6ad67fec4145d8f9164743b08f9e105778091
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>Uruchamianie zapytań Hive przy użyciu konsoli zapytania
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -38,7 +36,7 @@ Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy.
 * Klastra z systemem Windows usługi HDInsight Hadoop
 * Nowoczesna przeglądarka sieci web
 
-## <a id="run"></a>Uruchamianie zapytań Hive przy użyciu konsoli zapytania
+## <a id="run"></a> Uruchamianie zapytań Hive przy użyciu konsoli zapytania
 1. Otwórz przeglądarkę sieci web i przejdź do **https://CLUSTERNAME.azurehdinsight.net**, gdzie **CLUSTERNAME** jest nazwą klastra usługi HDInsight. Jeśli zostanie wyświetlony monit, wprowadź nazwę użytkownika i hasło, które zostały użyte podczas tworzenia klastra.
 2. Łącza w górnej części strony, zaznacz **Edytor Hive**. Spowoduje to wyświetlenie formularza, który może służyć do wprowadzania instrukcje HiveQL, które mają być uruchamiane w klastrze usługi HDInsight.
 

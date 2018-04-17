@@ -1,30 +1,30 @@
 ---
-title: "Za pomocą szablonów usługi Azure Resource Manager do tworzenia i konfigurowania obszaru roboczego analizy dzienników | Dokumentacja firmy Microsoft"
-description: "Szablony usługi Azure Resource Manager umożliwia tworzenie i konfigurowanie analizy dzienników obszarów roboczych."
+title: Za pomocą szablonów usługi Azure Resource Manager do tworzenia i konfigurowania obszaru roboczego analizy dzienników | Dokumentacja firmy Microsoft
+description: Szablony usługi Azure Resource Manager umożliwia tworzenie i konfigurowanie analizy dzienników obszarów roboczych.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/11/2018
 ms.author: richrund
-ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e51dab1543c9c5c1c762134b3e73d608bcd523ba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Zarządzanie za pomocą szablonów usługi Azure Resource Manager analizy dzienników
 Można użyć [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania analizy dzienników obszarów roboczych. Zadania, które można wykonywać za pomocą szablonów należą:
 
-* Tworzenie obszaru roboczego
-* Dodaj rozwiązanie
+* Tworzenie obszaru roboczego, włączając ustawienie warstwy cenowej 
+* Dodawanie rozwiązania
 * Tworzenie zapisanych wyszukiwań
 * Tworzenie grupy komputerów
 * Włącz zbieranie dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
@@ -34,32 +34,108 @@ Można użyć [szablonów usługi Azure Resource Manager](../azure-resource-mana
 * Dodaj agenta analizy dziennika do maszyny wirtualnej platformy Azure
 * Konfigurowanie analizy dzienników do indeksowania danych zbieranych za pomocą diagnostyki Azure
 
-Ten artykuł zawiera szablon przykłady ilustrujące część konfiguracji, który można wykonać za pomocą szablonów.
+W tym artykule przedstawiono przykłady szablonów, które zilustrować niektóre konfiguracji, które można wykonywać za pomocą szablonów.
 
-## <a name="api-versions"></a>Wersje interfejsu API
-Przykład, w tym artykule [uaktualnione obszaru roboczego analizy dzienników](log-analytics-log-search-upgrade.md).  Użyć starszej wersji obszaru roboczego, musisz zmienić składnię zapytania dla starszej wersji języka i Zmień wersję interfejsu API dla każdego zasobu.  W poniższej tabeli wymieniono wersja interfejsu API dla zasobów używanych w tym przykładzie.
+## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego analizy dzienników
+W poniższym przykładzie jest tworzona przy użyciu szablonu z komputera lokalnego obszaru roboczego. Szablon JSON skonfigurowano tylko wyświetlenie monitu o nazwę obszaru roboczego i określenie wartości domyślnej dla innych parametrów, które prawdopodobnie będzie służyć jako standardowej konfiguracji w danym środowisku.  
 
-| Zasób | Typ zasobu | Starszych wersji interfejsu API | Uaktualnionej wersji interfejsu API |
-|:---|:---|:---|:---|
-| Obszar roboczy   | Obszary robocze    | 2015-11-01-preview | 2017-03-15-preview |
-| Wyszukiwanie      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
-| Źródło danych | źródła danych   | 2015-11-01-preview | 2015-11-01-preview |
-| Rozwiązanie    | rozwiązania     | 2015-11-01-preview | 2015-11-01-preview |
+Następujące parametry ustaw wartość domyślną:
 
+* Lokalizacja — wartość domyślna to wschodnie stany USA
+* Jednostka SKU - domyślnie nowe warstwy cenowej na GB wydane w ramach 2018 kwietnia model cenowy
+
+>[!WARNING]
+>W przypadku tworzenia lub konfigurowania obszaru roboczego analizy dzienników w ramach subskrypcji, który dokonał do nowego 2018 kwietnia model cenowy, jest jedyną prawidłową analizy dzienników warstwy cenowej **PerGB2018**. 
+>
+
+### <a name="create-and-deploy-template"></a>Tworzenie i wdrażanie szablonu
+
+1. Skopiuj i wklej następującą składnię JSON do pliku:
+
+    ```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "eastus",
+              "westus"
+            ],
+            "defaultValue": "eastus",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        },
+        "sku": {
+            "type": "String",
+            "allowedValues": [
+              "Standalone",
+              "PerNode",
+              "PerGB2018"
+            ],
+            "defaultValue": "PerGB2018",
+            "metadata": {
+            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
+        }
+          },
+    },
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2017-03-15-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "Name": "[parameters('sku')]"
+                },
+                "features": {
+                    "searchVersion": 1
+                }
+            }
+          }
+       ]
+    }
+    ```
+2. Edytuj szablon zgodnie z wymaganiami.  Przegląd [szablonu Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odwołania, aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
+3. Zapisz ten plik jako **deploylaworkspacetemplate.json** do folderu lokalnego.
+4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Możesz użyć programu PowerShell lub wiersza polecenia w celu cretae obszaru roboczego.
+
+   * Dla środowiska PowerShell Użyj następujących poleceń z folderu zawierającego szablon:
+   
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        ```
+
+   * W wierszu polecenia użyj następujących poleceń z folderu zawierającego szablon:
+
+        ```cmd
+        azure config mode arm
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        ```
+
+Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat o podobne do poniższych opcji obejmujących wynik:<br><br> ![Przykład wynik po zakończeniu wdrożenia](./media/log-analytics-template-workspace-configuration/template-output-01.png)
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Tworzenie i konfigurowanie obszaru roboczego analizy dzienników
 Poniższy przykład szablonu ilustruje sposób:
 
-1. Tworzenie obszaru roboczego, w tym ustawienia przechowywania danych
-2. Dodawanie rozwiązania do obszaru roboczego
-3. Tworzenie zapisanych wyszukiwań
-4. Tworzenie grupy komputerów
-5. Włącz zbieranie dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
-6. Zbierania z komputerów z systemem Linux liczników wydajności dysku logicznego (% użytych węzłów i; Wolne megabajty; % Używane miejsce; Transfery dyskowe/s; Odczyty dysku/s; Zapisy dysku/s)
-7. Zbieraj zdarzenia dziennika systemowego z komputerów z systemem Linux
-8. Zbieranie zdarzeń błędu i ostrzeżenia w dzienniku zdarzeń aplikacji z komputerów z systemem Windows
-9. Zbieraj dane licznika wydajności dostępna pamięć (MB) z komputerów z systemem Windows
-11. Zbieranie dzienników usług IIS i dzienniki zdarzeń systemu Windows zapisywane przez diagnostycznych platformy Azure na konto magazynu
+1. Dodawanie rozwiązania do obszaru roboczego
+2. Tworzenie zapisanych wyszukiwań
+3. Tworzenie grupy komputerów
+4. Włącz zbieranie dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
+5. Zbierania z komputerów z systemem Linux liczników wydajności dysku logicznego (% użytych węzłów i; Wolne megabajty; % Używane miejsce; Transfery dyskowe/s; Odczyty dysku/s; Zapisy dysku/s)
+6. Zbieraj zdarzenia dziennika systemowego z komputerów z systemem Linux
+7. Zbieranie zdarzeń błędu i ostrzeżenia w dzienniku zdarzeń aplikacji z komputerów z systemem Windows
+8. Zbieraj dane licznika wydajności dostępna pamięć (MB) z komputerów z systemem Windows
+9. Zbieranie dzienników usług IIS i dzienniki zdarzeń systemu Windows zapisywane przez diagnostycznych platformy Azure na konto magazynu
 
 ```json
 {
@@ -77,10 +153,11 @@ Poniższy przykład szablonu ilustruje sposób:
       "allowedValues": [
         "Free",
         "Standalone",
-        "PerNode"
+        "PerNode",
+        "PerGB2018"
       ],
       "metadata": {
-        "description": "Service Tier: Free, Standalone, or PerNode"
+        "description": "Service Tier: Free, Standalone, PerNode, or PerGB2018"
     }
       },
     "dataRetention": {
@@ -421,7 +498,6 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
-
 
 ## <a name="example-resource-manager-templates"></a>Szablony przykład Resource Manager
 Galerii szablonów Szybki Start Azure zawiera kilka szablonów dla analizy dziennika, w tym:

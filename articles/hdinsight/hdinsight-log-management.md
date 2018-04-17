@@ -1,28 +1,26 @@
 ---
-title: "Zarządzanie dziennikami dla klastra usługi HDInsight - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Określ typy, rozmiarów i zasady przechowywania plików dziennika aktywności HDInsight."
+title: Zarządzanie dziennikami dla klastra usługi HDInsight - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Określ typy, rozmiarów i zasady przechowywania plików dziennika aktywności HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: a161a5c639ff02e1e8a2ea987d9f913ff41c5618
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami dla klastra usługi HDInsight
+# <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
 Klaster usługi HDInsight zapewnia różne pliki dziennika. Na przykład Apache Hadoop i powiązanych usług, takich jak Apache Spark tworzy dzienniki wykonywania zadania szczegółowe. Zarządzanie plikami dziennika jest częścią utrzymanie dobrej kondycji klastra usługi HDInsight. Można także przepisami dotyczącymi archiwizacji dziennika.  Z powodu liczby i rozmiaru plików dziennika Optymalizacja magazynu dziennika i archiwizowania pomaga z usługi kosztów zarządzania.
 
@@ -179,8 +177,8 @@ Aby sprawdzić pliki dziennika wygenerowane dla magazynu Azure, która przechowu
 
 Aby kontrolować rozmiar i przechowywane pliki dziennika, ustaw następujące właściwości `RollingFileAppender`:
 
-* `maxFileSize`jest krytyczne rozmiar pliku, nad którym jest wycofywany pliku. Wartość domyślna to 10 MB.
-* `maxBackupIndex`Określa liczbę plików kopii zapasowej należy utworzyć domyślną 1.
+* `maxFileSize` jest krytyczne rozmiar pliku, nad którym jest wycofywany pliku. Wartość domyślna to 10 MB.
+* `maxBackupIndex` Określa liczbę plików kopii zapasowej należy utworzyć domyślną 1.
 
 ### <a name="other-log-management-techniques"></a>Inne metody zarządzania dziennika
 

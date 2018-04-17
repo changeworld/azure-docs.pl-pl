@@ -1,26 +1,24 @@
 ---
-title: "Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dostosować klastry usługi HDInsight przy użyciu akcji skryptu."
+title: Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dostosować klastry usługi HDInsight przy użyciu akcji skryptu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 3a63e216-4163-40c1-aa04-6b42fd0162ad
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec95b6d66c71b4278dd1e16807fcc75f5e8b1c36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5785fd6dc9b2c66913f7226a9c75246382c0485
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Dostosowywanie klastrów usługi HDInsight opartej na systemie Windows za pomocą akcji skryptu
 **Akcja skryptu** może służyć do wywołania [niestandardowych skryptów](hdinsight-hadoop-script-actions.md) podczas procesu tworzenia klastra w przypadku instalowania dodatkowego oprogramowania w klastrze.
@@ -52,13 +50,13 @@ Każdy klaster może akceptować wiele akcji skryptu, które jest wywoływane w 
 
 Usługa HDInsight zapewnia kilka skryptów do zainstalowania następujących składników w klastrach HDInsight:
 
-| Nazwa | Skrypt |
+| Name (Nazwa) | Skrypt |
 | --- | --- |
-| **Zainstaluj Spark** |https://hdiconfigactions.blob.Core.Windows.NET/sparkconfigactionv03/Spark-Installer-v03.ps1. Zobacz [instalacji i używania platformy Spark w usłudze HDInsight clusters][hdinsight-install-spark]. |
-| **Zainstalować język R** |https://hdiconfigactions.blob.Core.Windows.NET/rconfigactionv02/r-Installer-v02.ps1. Zobacz [instalacji i używania R w klastrach HDInsight][hdinsight-install-r]. |
-| **Zainstaluj Solr** |https://hdiconfigactions.blob.Core.Windows.NET/solrconfigactionv01/solr-Installer-v01.ps1. Zobacz [instalacji i używania Solr w usłudze HDInsight clusters](hdinsight-hadoop-solr-install.md). |
-| - **Zainstaluj Giraph** |https://hdiconfigactions.blob.Core.Windows.NET/giraphconfigactionv01/giraph-Installer-v01.ps1. Zobacz [instalacji i używania Giraph w usłudze HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
-| **Wstępne ładowanie bibliotek technologii Hive** |https://hdiconfigactions.blob.Core.Windows.NET/setupcustomhivelibsv01/Setup-customhivelibs-v01.ps1. Zobacz [dodać Hive bibliotek w klastrach HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
+| **Zainstaluj Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. Zobacz [instalacji i używania platformy Spark w usłudze HDInsight clusters][hdinsight-install-spark]. |
+| **Zainstalować język R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Zobacz [instalacji i używania R w klastrach HDInsight][hdinsight-install-r]. |
+| **Zainstaluj Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. Zobacz [instalacji i używania Solr w usłudze HDInsight clusters](hdinsight-hadoop-solr-install.md). |
+| - **Zainstaluj Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Zobacz [instalacji i używania Giraph w usłudze HDInsight clusters](hdinsight-hadoop-giraph-install.md). |
+| **Wstępne ładowanie bibliotek technologii Hive** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1. Zobacz [dodać Hive bibliotek w klastrach HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
 ## <a name="call-scripts-using-the-azure-portal"></a>Skrypty wywołania przy użyciu portalu Azure
 **W portalu Azure**
@@ -70,7 +68,7 @@ Usługa HDInsight zapewnia kilka skryptów do zainstalowania następujących sk�
 
     <table border='1'>
         <tr><th>Właściwość</th><th>Wartość</th></tr>
-        <tr><td>Nazwa</td>
+        <tr><td>Name (Nazwa)</td>
             <td>Określ nazwę akcji skryptu.</td></tr>
         <tr><td>Identyfikator URI skryptu</td>
             <td>Określ identyfikator URI do skryptu, które jest wywoływane, aby dostosować klastra. s</td></tr>
@@ -297,7 +295,7 @@ Wbudowane składniki są w pełni obsługiwane, a Support firmy Microsoft pomoż
 > [!WARNING]
 > Składniki dostarczony z klastrem usługi HDInsight są w pełni obsługiwane, a Microsoft Support pomoże w celu odizolowania i rozwiązać problemy związane z tych składników.
 >
-> Niestandardowe składniki otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Może to spowodować w rozwiązaniu problemu lub monitem o Uwzględnij dostępnych kanałów dla technologiach typu open source wykryto głębokie doświadczenia z tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [http://apache.org](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Niestandardowe składniki otrzymywanie pomocy uzasadnione ekonomicznie ułatwiające aby dalej rozwiązywać ten problem. Może to spowodować w rozwiązaniu problemu lub monitem o Uwzględnij dostępnych kanałów dla technologiach typu open source wykryto głębokie doświadczenia z tej technologii. Na przykład istnieje wiele witryn społeczności, które mogą być używane, takie jak: [forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Projekty Apache mieć witryny projektu na [ http://apache.org ](http://apache.org), na przykład: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 >
 >
 
@@ -310,7 +308,7 @@ Usługa HDInsight zapewnia kilka sposobów użycia niestandardowych składników
 ## <a name="develop-script-action-scripts"></a>Tworzenie skryptów akcji skryptu
 Zobacz [skryptów tworzenie akcji skryptu dla usługi HDInsight][hdinsight-write-script].
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Tworzenie klastrów Hadoop w usłudze HDInsight] [ hdinsight-provision-cluster] zawiera instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu niestandardowych opcji.
 * [Tworzenie skryptów akcji skryptu dla usługi HDInsight][hdinsight-write-script]
 * [Zainstalować i używać platformy Spark w usłudze hdinsight][hdinsight-install-spark]

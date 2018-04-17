@@ -1,11 +1,11 @@
 ---
-title: "Autoryzowanie konta dewelopera przy użyciu usługi Azure Active Directory B2C - Azure API Management | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak i autoryzacji użytkowników przy użyciu usługi Azure Active Directory B2C w usłudze API Management."
+title: Autoryzowanie konta dewelopera przy użyciu usługi Azure Active Directory B2C - Azure API Management | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i autoryzacji użytkowników przy użyciu usługi Azure Active Directory B2C w usłudze API Management.
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: d843757c2ed63c4f8cff09d809c2de382b2aeb59
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 1268905d8a992d0cac65174142f6a3870f38f0d8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 > [!WARNING]
 > Integracja z usługą Azure Active Directory B2C jest dostępna w [deweloperów i Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) tylko warstwy.
 
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Sposób autoryzowania konta dewelopera przy użyciu usługi Azure Active Directory B2C w usłudze Azure API Management
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Usługa Azure Active Directory B2C jest chmury rozwiązania do zarządzania tożsamościami internetowych i aplikacji dla urządzeń przenośnych. Można go użyć do zarządzania dostępem do swojego portalu dla deweloperów. Ten przewodnik przedstawia konfigurację, która jest wymagana w usłudze API Management do integracji z usługi Azure Active Directory B2C. Aby uzyskać informacje na temat włączania dostępu do portalu dla deweloperów przy użyciu klasycznego Azure Active Directory, zobacz [sposób autoryzowania konta dewelopera przy użyciu usługi Azure Active Directory].
 
 > [!NOTE]
@@ -33,7 +33,7 @@ Usługa Azure Active Directory B2C jest chmury rozwiązania do zarządzania toż
 
 1. Aby rozpocząć, kliknij przycisk **portal wydawcy** w portalu Azure usługi Zarządzanie interfejsami API. Spowoduje to przejście do portalu wydawcy usługi API Management.
 
-   ![Portal wydawcy][api-management-management-console]
+   ![Publisher portal][api-management-management-console]
 
    > [!NOTE]
    > Jeśli jeszcze nie utworzono wystąpienie usługi API Management, zobacz [Utwórz wystąpienie usługi Zarządzanie interfejsami API] [ Create an API Management service instance] w [Wprowadzenie — samouczek usługi Azure API Management][Get started with Azure API Management].
@@ -114,7 +114,7 @@ Usługa Azure Active Directory B2C jest chmury rozwiązania do zarządzania toż
 
     ![Zakończono rejestrację][api-management-registration-complete]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 *  [Omówienie usługi Azure Active Directory B2C]
 *  [usługi Azure Active Directory B2C: rozszerzona platforma zasad]

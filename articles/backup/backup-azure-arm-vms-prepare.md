@@ -1,11 +1,11 @@
 ---
 title: 'Kopia zapasowa Azure: Przygotowanie do tworzenia kopii zapasowych maszyn wirtualnych | Dokumentacja firmy Microsoft'
-description: "Upewnij się, że środowisko jest przygotowane do tworzenia kopii zapasowych maszyn wirtualnych na platformie Azure."
+description: Upewnij się, że środowisko jest przygotowane do tworzenia kopii zapasowych maszyn wirtualnych na platformie Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keywords: Tworzenie kopii zapasowych; Tworzenie kopii zapasowej;
 ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70c1553c166cc334f9db03c78139181c6f5c0553
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -55,7 +55,7 @@ Aby przygotować środowisko, należy zrozumieć następujące ograniczenia:
 * Dane kopii zapasowej nie zawiera dyski sieciowe zainstalowane dołączony do maszyny Wirtualnej.
 * Zamiana istniejącej maszyny wirtualnej podczas przywracania nie jest obsługiwana. Jeśli podjęto próbę przywrócenia maszyny Wirtualnej, gdy maszyna wirtualna istnieje, operacja przywracania kończy się niepowodzeniem.
 * Region między tworzenie kopii zapasowej i przywracania nie są obsługiwane.
-* Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych za pomocą niezarządzanych dysków na kontach magazynu przy użyciu reguł sieciowej zastosowane, nie jest obsługiwana. 
+* Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych za pomocą niezarządzanych dysków na kontach magazynu przy użyciu reguł sieciowej zastosowane, nie jest obsługiwane dla klientów na starym stos kopii zapasowej maszyny Wirtualnej. 
 * Podczas konfigurowania kopii zapasowej, upewnij się, że **zapory i sieci wirtualne** ustawienia konta magazynu jest dozwolony dostęp z wszystkich sieci.
 * Można tworzyć kopie zapasowe maszyn wirtualnych we wszystkich regionach publicznej platformy Azure. (Zobacz [Lista kontrolna](https://azure.microsoft.com/regions/#services) obsługiwanych regionów.) Jeśli obecnie jest obsługiwany region, którego szukasz, nie zostanie wyświetlony na liście rozwijanej podczas tworzenia magazynu.
 * Przywracanie kontrolera domeny (DC) maszyny Wirtualnej, która jest częścią konfiguracji kontrolera domeny na wielu jest obsługiwane tylko za pomocą programu PowerShell. Aby dowiedzieć się więcej, zobacz [Przywracanie kontrolera domeny, kontrolera domeny na wielu](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).

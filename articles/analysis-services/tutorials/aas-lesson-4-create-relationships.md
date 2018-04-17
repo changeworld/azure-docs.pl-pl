@@ -1,27 +1,20 @@
 ---
-title: "Samouczek Azure Analysis Services: lekcja 4 — tworzenie relacji | Microsoft Docs"
-description: "Opisuje sposób tworzenia relacji w projekcie samouczka usług Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Samouczek Azure Analysis Services: lekcja 4 — tworzenie relacji | Microsoft Docs'
+description: Opisuje sposób tworzenia relacji w projekcie samouczka usług Azure Analysis Services.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 694043454ba2564900416135e1f143bdeb63c202
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-relationships"></a>Utwórz relacje
+# <a name="create-relationships"></a>Tworzenie relacji
 
 W tej lekcji sprawdzisz relacje, które zostały automatycznie utworzone po zaimportowaniu danych, i dodasz nowe relacje między różnymi tabelami. Relacja to połączenie między dwiema tabelami, które określa sposób korelowania danych w tych tabelach. Na przykład: między tabelą DimProduct a tabelą DimProductSubcategory istnieje relacja opierająca się na fakcie, że każdy z produktów należy do podkategorii. Aby dowiedzieć się więcej, zobacz [Relacje](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular).
   

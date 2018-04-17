@@ -1,25 +1,18 @@
 ---
 title: Instalowanie bramy danych lokalnych | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zainstalować i skonfigurować bramę danych lokalnego.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/03/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: b57ee7d9617f8bf2e54122ac37f351ae0cf9db26
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: minewiskan
+ms.openlocfilehash: 5a923d3b5fbb5e7afe5f2a922ba083608ff35fd9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Zainstaluj i skonfiguruj bramę danych lokalnych
 Bramę danych lokalnych jest wymagany, gdy łączą się lokalnych źródeł danych z co najmniej jeden serwer usług Azure Analysis Services, w tym samym regionie. Aby dowiedzieć się więcej o bramie, zobacz [bramy danych lokalnych](analysis-services-gateway.md).
@@ -44,7 +37,7 @@ Bramę danych lokalnych jest wymagany, gdy łączą się lokalnych źródeł dan
 * Zainstalować bramę na komputerze, który pozostaje na, a nie przechodzi w stan uśpienia.
 * Nie należy instalować bramy na komputerze bezprzewodowo podłączony do sieci. Wydajność może być mniejsza.
 * Logowanie do platformy Azure przy użyciu konta w usłudze Azure AD dla tego samego [dzierżawy](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako subskrypcji w przypadku rejestracji bramy w. Funkcje B2B platformy Azure (Gość) konta nie są obsługiwane, gdy instalowanie i rejestrowanie bramy.
-* (Unified) bramy, opisanych w tym miejscu nie jest obsługiwana w Azure dla instytucji rządowych (Fairfax). Użyj bramy lokalnej dedykowane dla usług Azure Analysis Services. Dedykowane bramy nie obsługuje dodatkowe usługi, takie jak usługi Power BI i aplikacje zasilania. Dedykowane bramy jest zainstalowana z serwerów szybkiego startu w portalu.
+* (Unified) bramy, opisanych w tym miejscu nie jest obsługiwana w regionach suwerennych Azure dla instytucji rządowych, platformy Azure w Niemczech i Chińskiej wersji platformy Azure. Użyj **brama lokalna dedykowane dla usług Azure Analysis Services**zainstalowany na serwerze server **Szybki Start** w portalu. 
 
 
 ## <a name="download"></a>Pobierz

@@ -1,8 +1,8 @@
 ---
-title: "Publikowanie aplikacji usługi Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć aplikację usługi HDInsight, a następnie opublikować go w portalu Azure Marketplace."
+title: Publikowanie aplikacji usługi Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć aplikację usługi HDInsight, a następnie opublikować go w portalu Azure Marketplace.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 597ea68f063d02541132d275de815c1673369ae0
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: aef54782c200ad0be261959705b9b10cd0ebb064
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikowanie aplikacji usługi HDInsight w portalu Azure Marketplace
 Aplikacja Azure HDInsight można zainstalować w klastrze usługi HDInsight opartej na systemie Linux. W tym artykule Dowiedz się, jak opublikować aplikację usługi HDInsight w portalu Azure Marketplace. Aby uzyskać ogólne informacje o publikowaniu w portalu Azure Marketplace, zobacz [publikowanie oferty w portalu Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md).
@@ -99,8 +97,8 @@ Aby opublikować aplikację usługi HDInsight:
 3. Wprowadź tytuł, a następnie wybierz **Utwórz nowy szablon rozwiązania**.
 4. Jeśli nie zostało już zarejestrowane organizacji, wybierz **konto Centrum deweloperów Utwórz i Dołącz do programu Azure**.  Aby uzyskać więcej informacji, zobacz [Utwórz konto Microsoft Developer](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
 5. Wybierz **zdefiniować niektóre topologiami aby rozpocząć**. Szablon rozwiązania jest "nadrzędnej" do wszystkich jego topologii. Można zdefiniować wiele topologii w jednym szablonie oferty lub rozwiązania. Gdy oferta zostanie przeniesiona do etapu przemieszczania, spoczywa z jego topologii. 
-6. Wprowadź nazwę topologii, a następnie wybierz  **+** .
-7. Wprowadź nową wersję, a następnie wybierz  **+** .
+6. Wprowadź nazwę topologii, a następnie wybierz **+**.
+7. Wprowadź nową wersję, a następnie wybierz **+**.
 8. Przekaż plik zip został utworzony, gdy użytkownik [spakowanej aplikacji](#package-application).  
 9. Wybierz **żądanie certyfikacji**. Zespół certyfikacji Microsoft sprawdza pliki i oświadcza topologii.
 

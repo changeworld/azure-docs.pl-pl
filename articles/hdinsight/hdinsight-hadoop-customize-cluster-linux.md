@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5d1af5ae008fb2811f1ae59396a03833b8c1b15f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów usługi HDInsight opartej na systemie Linux za pomocą akcji skryptu
 
@@ -50,8 +48,8 @@ Ponadto podczas tworzenia klastra usługi HDInsight, ktoś z co najmniej **wspó
 
 Więcej informacji o zarządzaniu dostępem można znaleźć w następujących dokumentach:
 
-* [Wprowadzenie do zarządzania dostępem w witrynie Azure Portal](../active-directory/role-based-access-control-what-is.md)
-* [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../active-directory/role-based-access-control-configure.md)
+* [Wprowadzenie do zarządzania dostępem w witrynie Azure Portal](../role-based-access-control/overview.md)
+* [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="understanding-script-actions"></a>Opis akcji skryptu
 

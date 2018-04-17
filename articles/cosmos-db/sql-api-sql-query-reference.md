@@ -3,8 +3,7 @@ title: 'Azure DB rozwiązania Cosmos: Odwołania do zapytań składni SQL | Doku
 description: Dokumentacja referencyjna dla języka zapytań usługi Azure rozwiązania Cosmos bazy danych SQL.
 services: cosmos-db
 author: LalithaMV
-manager: jhubbard
-editor: mimig
+manager: kfile
 documentationcenter: ''
 ms.assetid: ''
 ms.service: cosmos-db
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 012fa27fdebebf1c86a324c49c53d665a15a91c2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Odwołania do składni rozwiązania Cosmos bazy danych SQL Azure
 
@@ -31,7 +30,7 @@ Również zachęcamy do odwiedzenia [Plac zabaw dla zapytań](http://www.documen
 ## <a name="select-query"></a>Zapytanie SELECT  
 Pobiera dokumentów JSON z bazy danych. Obsługuje oceny wyrażenia, projekcji, filtrowania i tworzy sprzężenie.  Konwencje opisujących instrukcji "SELECT" wyszczególniono w sekcji konwencje składni.  
   
-**Syntax**  
+**Składnia**  
   
 ```
 <select_query> ::=  
@@ -79,7 +78,7 @@ Podczas znaków odstępu i komentarze nie ma żadnego znaczenia w gramatyce, ich
 ##  <a name="bk_select_query"></a> Klauzula SELECT  
 Muszą być uporządkowane klauzul w instrukcji SELECT, jak pokazano powyżej. Dowolny opcjonalna klauzula można pominąć. Jednak w przypadku używania klauzule opcjonalne muszą występować w odpowiedniej kolejności.  
 
-**Syntax**  
+**Składnia**  
 ```  
 SELECT <select_specification>  
 
@@ -141,7 +140,7 @@ Należy pamiętać, że `SELECT <select_list>` i `SELECT *` są "sugar składni"
 ##  <a name="bk_from_clause"></a> Klauzula FROM  
 Określa źródło lub dołączonym do źródła. Klauzula FROM jest opcjonalna. Jeśli nie jest określony, inne klauzule nadal będą wykonywane tak, jakby klauzuli FROM podane pojedynczego dokumentu.  
   
-**Syntax**  
+**Składnia**  
   
 ```  
 FROM <from_specification>  
@@ -308,7 +307,7 @@ Przyjrzyjmy się następujące klauzuli FROM: `<from_source1> JOIN <from_source2
   
     (`input_alias1, input_alias2, input_alias3`):  
   
-    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200),  (C, 4, 300) ,  (C, 5, 300)  
+    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), C, 4, 300, (C, 5, 300)  
   
 > [!NOTE]
 > Spowodowało to iloczyn wektorowy między `<from_source2>` i `<from_source3>` ponieważ oba ograniczone do tej samej `<from_source1>`.  Spowodowało to 4 (2 x 2) spójnych kolekcji o wartości A, 0 spójnych kolekcji o wartości B (1 x 0) i 2 (2 x 1) spójnych kolekcji o wartości C.  
@@ -320,7 +319,7 @@ Przyjrzyjmy się następujące klauzuli FROM: `<from_source1> JOIN <from_source2
 ##  <a name="bk_where_clause"></a> Klauzula WHERE  
  Określa warunek wyszukiwania dla dokumentów zwróconych przez kwerendę.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 WHERE <filter_condition>  
@@ -345,7 +344,7 @@ WHERE <filter_condition>
 ##  <a name="bk_orderby_clause"></a> Klauzula ORDER BY  
  Określa kolejność sortowania wyników zwróconych przez kwerendę.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ORDER BY <sort_specification>  
@@ -385,7 +384,7 @@ ORDER BY <sort_specification>
   
  Aby uzyskać szczegółowe informacje, na których wyrażenie skalarne może mieć wartości, zobacz [stałe](#bk_constants) sekcji.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 <scalar_expression> ::=  
@@ -483,7 +482,7 @@ ORDER BY <sort_specification>
 |**Kategoria**|**Szczegóły**|  
 |-|-|  
 |**Operacje arytmetyczne**|Operator oczekuje input(s) się numery. Dane wyjściowe również jest liczbą. Jeśli dowolny z jej danych wejściowych jest **Niezdefiniowany** lub jest typu innego niż numer następnie wynik **Niezdefiniowany**.|  
-|**bitwise**|Operator oczekuje input(s) być 32-bitowej liczby całkowitej ze znakiem numery. Dane wyjściowe jest również 32-bitowa liczba całkowita.<br /><br /> Zostanie zaokrąglony żadnej wartości niebędące liczbami całkowitymi. Wartość dodatnią zostaną zaokrąglone w dół, ujemne wartości zaokrąglona w górę.<br /><br /> Każdą wartość, która znajduje się poza zakresem 32-bitową liczbę całkowitą zostaną przekonwertowane, wykonując ostatnich 32 bity jego dwa w notacji uzupełnienia.<br /><br /> Jeśli dowolny z jej danych wejściowych jest **Niezdefiniowany** lub innych typów niż numer, a następnie wynik jest **Niezdefiniowany**.<br /><br /> **Uwaga:** powyżej zachowanie jest zgodne z zachowanie bitowy operator w JavaScript.|  
+|**Alternatywy bitowej**|Operator oczekuje input(s) być 32-bitowej liczby całkowitej ze znakiem numery. Dane wyjściowe jest również 32-bitowa liczba całkowita.<br /><br /> Zostanie zaokrąglony żadnej wartości niebędące liczbami całkowitymi. Wartość dodatnią zostaną zaokrąglone w dół, ujemne wartości zaokrąglona w górę.<br /><br /> Każdą wartość, która znajduje się poza zakresem 32-bitową liczbę całkowitą zostaną przekonwertowane, wykonując ostatnich 32 bity jego dwa w notacji uzupełnienia.<br /><br /> Jeśli dowolny z jej danych wejściowych jest **Niezdefiniowany** lub innych typów niż numer, a następnie wynik jest **Niezdefiniowany**.<br /><br /> **Uwaga:** powyżej zachowanie jest zgodne z zachowanie bitowy operator w JavaScript.|  
 |**logical**|Operator oczekuje input(s) jako Boolean(s). Dane wyjściowe również jest wartością logiczną.<br />Jeśli dowolny z jej danych wejściowych jest **Niezdefiniowany** lub typu, innego niż Boolean, wynikiem będzie **Niezdefiniowany**.|  
 |**Porównanie**|Operator oczekuje input(s) być tego samego typu i nie jest niezdefiniowany. Dane wyjściowe jest wartością logiczną.<br /><br /> Jeśli dowolny z jej danych wejściowych jest **Niezdefiniowany** lub dane wejściowe mają różne typy, a następnie w wyniku **Niezdefiniowany**.<br /><br /> Zobacz **porządkowanie wartości do porównania** tabeli dla wartości kolejności szczegóły.|  
 |**Ciąg**|Operator oczekuje input(s) jako ciągi. Dane wyjściowe również jest ciągiem.<br />Jeśli dowolny z jej danych wejściowych jest **Niezdefiniowany** lub typu, innego niż ciąg wynik jest **Niezdefiniowany**.|  
@@ -493,7 +492,7 @@ ORDER BY <sort_specification>
 |**Nazwa**|**Operator**|**Szczegóły**|  
 |-|-|-|  
 |**Operacje arytmetyczne**|+<br /><br /> -|Zwraca wartość liczbową.<br /><br /> Bitową negację. Zwraca zanegowane wartość liczbową.|  
-|**bitwise**|~|Uzupełnienie tych. Zwraca uzupełnienie wartość liczbową.|  
+|**Alternatywy bitowej**|~|Uzupełnienie tych. Zwraca uzupełnienie wartość liczbową.|  
 |**Logiczne**|**NIE**|Negacja. Zwraca zanegowane wartość logiczna.|  
   
  **Operatory binarne:**  
@@ -501,8 +500,8 @@ ORDER BY <sort_specification>
 |**Nazwa**|**Operator**|**Szczegóły**|  
 |-|-|-|  
 |**Operacje arytmetyczne**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Dodatek.<br /><br /> Odejmowanie.<br /><br /> Mnożenia.<br /><br /> Podział.<br /><br /> Modulacji.|  
-|**bitwise**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Wartość logiczną lub.<br /><br /> Bitowe koniunkcji binarnej.<br /><br /> Iloczynu bitowego XOR.<br /><br /> Przesunięcia w lewo.<br /><br /> Przesunięcia w prawo.<br /><br /> Przesunięcia w prawo wypełnienia zero.|  
-|**logical**|**I**<br /><br /> **OR**|Połączenie logiczne. Zwraca **true** Jeśli oba argumenty mają **true**, zwraca **false** inaczej.<br /><br /> Połączenie logiczne. Zwraca **true** Jeśli oba argumenty mają **true**, zwraca **false** inaczej.|  
+|**Alternatywy bitowej**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Wartość logiczną lub.<br /><br /> Bitowe koniunkcji binarnej.<br /><br /> Iloczynu bitowego XOR.<br /><br /> Przesunięcia w lewo.<br /><br /> Przesunięcia w prawo.<br /><br /> Przesunięcia w prawo wypełnienia zero.|  
+|**logical**|**I**<br /><br /> **LUB**|Połączenie logiczne. Zwraca **true** Jeśli oba argumenty mają **true**, zwraca **false** inaczej.<br /><br /> Połączenie logiczne. Zwraca **true** Jeśli oba argumenty mają **true**, zwraca **false** inaczej.|  
 |**Porównanie**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Równa się. Zwraca **true** argumenty są takie same, funkcja zwraca **false** inaczej.<br /><br /> Nie równa się. Zwraca **true** argumenty nie są równe, zwraca **false** inaczej.<br /><br /> Większa. Zwraca **true** Jeśli pierwszy argument jest większy niż drugi, zwróć **false** inaczej.<br /><br /> Większe lub równe. Zwraca **true** Jeśli pierwszy argument jest większa niż lub równa jeden, **false** inaczej.<br /><br /> Poniżej. Zwraca **true** Jeśli pierwszy argument jest mniejsza niż drugi jeden zwracany **false** inaczej.<br /><br /> Mniejsze niż lub równe. Zwraca **true** Jeśli pierwszy argument jest mniejsza niż drugi, **false** inaczej.<br /><br /> Połączenie. Zwraca drugi argument, jeśli pierwszy argument **Niezdefiniowany** wartość.|  
 |**Ciąg**|**&#124;&#124;**|Łączenie. Zwraca złączeniem oba argumenty.|  
   
@@ -516,11 +515,11 @@ ORDER BY <sort_specification>
 |**Typ**|**Kolejność wartości**|  
 |-|-|  
 |**Niezdefiniowana**|Nie można porównywać.|  
-|**Null**|Pojedyncza wartość: **wartości null**|  
+|**Wartość null**|Pojedyncza wartość: **wartości null**|  
 |**Numer**|Liczba rzeczywista fizycznych.<br /><br /> Wartości nieskończoności ujemnej jest mniejszy niż inne wartość liczbową.<br /><br /> Dodatnia wartość Infinity jest większy niż inne wartość liczbową. **NaN** wartość nie jest on porównywalny. Porównanie z **NaN** spowoduje **Niezdefiniowany** wartość.|  
 |**Ciąg**|Kolejność lexicographical.|  
 |**Tablica**|Nie określania kolejności, ale słuszne.|  
-|**Object**|Nie określania kolejności, ale słuszne.|  
+|**Obiekt**|Nie określania kolejności, ale słuszne.|  
   
  **Uwagi**  
   
@@ -544,14 +543,14 @@ ORDER BY <sort_specification>
 |**Typ**|**Kolejność wartości**|  
 |-|-|  
 |**Niezdefiniowana**|Pojedyncza wartość: **niezdefiniowane**|  
-|**Null**|Pojedyncza wartość: **wartości null**|  
+|**Wartość null**|Pojedyncza wartość: **wartości null**|  
 |**Boolean**|Wartości: **false**, **true**.|  
 |**Numer**|Liczba podwójnej precyzji liczb zmiennoprzecinkowych, IEEE-754 standardowa.|  
 |**Ciąg**|Sekwencja zero lub więcej znaków Unicode. Ciągi, musi być ujęty w pojedynczym lub podwójnym cudzysłowie.|  
 |**Tablica**|Sekwencja zero lub więcej elementów. Każdy element może być wartością dowolnego typu danych skalarnych, z wyjątkiem Undefined.|  
-|**Object**|Nieuporządkowaną zestaw par nazwa/wartość zero lub więcej. Nazwa jest ciągiem Unicode, wartość może być dowolnego typu danych skalarnych, z wyjątkiem **niezdefiniowane**.|  
+|**Obiekt**|Nieuporządkowaną zestaw par nazwa/wartość zero lub więcej. Nazwa jest ciągiem Unicode, wartość może być dowolnego typu danych skalarnych, z wyjątkiem **niezdefiniowane**.|  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 <constant> ::=  
@@ -631,7 +630,7 @@ ORDER BY <sort_specification>
 |\\"|znak cudzysłowu (")|U+0022|  
 |\\\|Odwrotna kreska ułamkowa (\\)|U+005C|  
 |\\/|kreska ułamkowa (/)|U+002F|  
-|\b|backspace|U+0008|  
+|\b|BACKSPACE|U+0008|  
 |\f|Wysuw strony|U+000C|  
 |\n|wysuwu wiersza|U+000A|  
 |\r|Powrót karetki|U+000D|  
@@ -667,7 +666,7 @@ ORDER BY <sort_specification>
   
     |**Konwencja**|**Używany do**|  
     |-|-|    
-    |UPPERCASE|Słowa kluczowe bez uwzględniania wielkości liter.|  
+    |WIELKIE LITERY|Słowa kluczowe bez uwzględniania wielkości liter.|  
     |małe litery|Słowa kluczowe z uwzględnieniem wielkości liter.|  
     |\<nonterminal >|Nonterminal, definiowane osobno.|  
     |\<nonterminal >:: =|Definicja składni nonterminal.|  
@@ -698,7 +697,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
 |[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[LIMITU](#bk_ceiling)|  
-|[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
+|[COS](#bk_cos)|[KOT](#bk_cot)|[STOPNI](#bk_degrees)|  
 |[EXP](#bk_exp)|[FLOOR](#bk_floor)|[DZIENNIK](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[ZASILANIA](#bk_power)|  
 |[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
@@ -708,7 +707,7 @@ ORDER BY <sort_specification>
 ####  <a name="bk_abs"></a> ABS  
  Zwraca wartość bezwzględną (dodatnia) z określonego wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ABS (<numeric_expression>)  
@@ -741,7 +740,7 @@ SELECT ABS(-1), ABS(0), ABS(1)
 ####  <a name="bk_acos"></a> ACOS  
  Zwraca kąt w radianach, którego cosinus jest określonego wyrażenia liczbowego; Skrót cosinus.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ACOS(<numeric_expression>)  
@@ -774,7 +773,7 @@ SELECT ACOS(-1)
 ####  <a name="bk_asin"></a> ASIN  
  Zwraca kąt w radianach, którego sinusem jest dana określonego wyrażenia liczbowego. Jest to również sinus.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ASIN(<numeric_expression>)  
@@ -807,7 +806,7 @@ SELECT ASIN(-1)
 ####  <a name="bk_atan"></a> ATAN  
  Zwraca kąt w radianach, którego tangens jest określonego wyrażenia liczbowego. Jest to również tangens.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ATAN(<numeric_expression>)  
@@ -840,7 +839,7 @@ SELECT ATAN(-45.01)
 ####  <a name="bk_atn2"></a> ATN2  
  Zwraca wartość główną arcus tangens y / x, wyrażone w radianach.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ATN2(<numeric_expression>, <numeric_expression>)  
@@ -873,7 +872,7 @@ SELECT ATN2(35.175643, 129.44)
 ####  <a name="bk_ceiling"></a> LIMITU  
  Zwraca najmniejszą wartość całkowita większa lub równa określonej wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 CEILING (<numeric_expression>)  
@@ -906,7 +905,7 @@ SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)
 ####  <a name="bk_cos"></a> COS  
  Zwraca cosinus trygonometryczne o określony kąt w radianach, określone wyrażenie.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 COS(<numeric_expression>)  
@@ -939,7 +938,7 @@ SELECT COS(14.78)
 ####  <a name="bk_cot"></a> KOT  
  Zwraca trygonometryczne cotangens kąta określonego w radianach, określonego wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 COT(<numeric_expression>)  
@@ -972,7 +971,7 @@ SELECT COT(124.1332)
 ####  <a name="bk_degrees"></a> STOPNI  
  Zwraca odpowiadający mu kąt w stopniach dla kąta określonego w radianach.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 DEGREES (<numeric_expression>)  
@@ -1005,7 +1004,7 @@ SELECT DEGREES(PI()/2)
 ####  <a name="bk_floor"></a> FLOOR  
  Zwraca największą liczbę całkowitą mniejszą niż określona wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 FLOOR (<numeric_expression>)  
@@ -1038,7 +1037,7 @@ SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)
 ####  <a name="bk_exp"></a> EXP  
  Zwraca wartość wykładniczej określonego wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 EXP (<numeric_expression>)  
@@ -1091,7 +1090,7 @@ SELECT EXP(LOG(20)), LOG(EXP(20))
 ####  <a name="bk_log"></a> DZIENNIK  
  Zwraca logarytm naturalny z określonego wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 LOG (<numeric_expression> [, <base>])  
@@ -1148,7 +1147,7 @@ SELECT EXP(LOG(10))
 ####  <a name="bk_log10"></a> LOG10  
  Zwraca logarytm base 10 określonego wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 LOG10 (<numeric_expression>)  
@@ -1185,7 +1184,7 @@ SELECT LOG10(100)
 ####  <a name="bk_pi"></a> PI  
  Zwraca stałą wartość liczby PI.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 PI ()  
@@ -1218,7 +1217,7 @@ SELECT PI()
 ####  <a name="bk_power"></a> ZASILANIA  
  Zwraca wartość określonego wyrażenia do określonej potęgi.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 POWER (<numeric_expression>, <y>)  
@@ -1255,7 +1254,7 @@ SELECT POWER(2, 3), POWER(2.5, 3)
 ####  <a name="bk_radians"></a> WARTOŚĆ W RADIANACH  
  Zwraca wartość w radianach, po wprowadzeniu w stopniach, wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 RADIANS (<numeric_expression>)  
@@ -1294,7 +1293,7 @@ SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIAN
 ####  <a name="bk_round"></a> ROUND  
  Zwraca wartość liczbową zaokrąglona do najbliższej wartości całkowitej.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ROUND(<numeric_expression>)  
@@ -1327,7 +1326,7 @@ SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)
 ####  <a name="bk_sign"></a> ZALOGUJ SIĘ  
  Zwraca plus (+ 1), 0 (zero) lub znakiem minus (-1) z określonego wyrażenia liczbowego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 SIGN(<numeric_expression>)  
@@ -1360,7 +1359,7 @@ SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)
 ####  <a name="bk_sin"></a> SIN  
  Zwraca sinus określonego kąta trygonometryczne w radianach, określone wyrażenie.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 SIN(<numeric_expression>)  
@@ -1393,7 +1392,7 @@ SELECT SIN(45.175643)
 ####  <a name="bk_sqrt"></a> SQRT  
  Zwraca pierwiastek kwadratowy z określoną wartość liczbową.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 SQRT(<numeric_expression>)  
@@ -1426,7 +1425,7 @@ SELECT SQRT(1), SQRT(2.0), SQRT(3)
 ####  <a name="bk_square"></a> KWADRATOWE  
  Zwraca kwadrat określoną wartość liczbową.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 SQUARE(<numeric_expression>)  
@@ -1459,7 +1458,7 @@ SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)
 ####  <a name="bk_tan"></a> TAN  
  Zwraca tangens kąta określonego w radianach, określone wyrażenie.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 TAN (<numeric_expression>)  
@@ -1492,7 +1491,7 @@ SELECT TAN(PI()/2);
 ####  <a name="bk_trunc"></a> TRUNC —  
  Zwraca wartość liczbową obcięte do najbliższej wartości całkowitej.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 TRUNC(<numeric_expression>)  
@@ -1534,7 +1533,7 @@ SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)
 ####  <a name="bk_is_array"></a> IS_ARRAY  
  Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest typem tablicy.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_ARRAY(<expression>)  
@@ -1574,7 +1573,7 @@ SELECT
 ####  <a name="bk_is_bool"></a> IS_BOOL  
  Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenie jest wartością logiczną.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_BOOL(<expression>)  
@@ -1614,7 +1613,7 @@ SELECT
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
  Zwraca wartość Boolean wskazującą, czy właściwość zostanie przypisana wartość.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_DEFINED(<expression>)  
@@ -1650,7 +1649,7 @@ SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)
 ####  <a name="bk_is_null"></a> IS_NULL  
  Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest wartość null.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_NULL(<expression>)  
@@ -1690,7 +1689,7 @@ SELECT
 ####  <a name="bk_is_number"></a> IS_NUMBER  
  Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest liczbą.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_NUMBER(<expression>)  
@@ -1730,7 +1729,7 @@ SELECT
 ####  <a name="bk_is_object"></a> IS_OBJECT  
  Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest obiektem JSON.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_OBJECT(<expression>)  
@@ -1770,7 +1769,7 @@ SELECT
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
  Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest właściwością pierwotną (string, Boolean, liczbowa lub wartość null).  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_PRIMITIVE(<expression>)  
@@ -1810,7 +1809,7 @@ SELECT
 ####  <a name="bk_is_string"></a> IS_STRING  
  Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest ciągiem.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 IS_STRING(<expression>)  
@@ -1854,7 +1853,7 @@ SELECT
 |-|-|-|  
 |[CONCAT](#bk_concat)|[ZAWIERA](#bk_contains)|[ENDSWITH](#bk_endswith)|  
 |[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[DŁUGOŚĆ](#bk_length)|  
-|[NIŻSZE](#bk_lower)|[LTRIM](#bk_ltrim)|[ZAMIEŃ](#bk_replace)|  
+|[NIŻSZE](#bk_lower)|[PRZYTP](#bk_ltrim)|[ZAMIEŃ](#bk_replace)|  
 |[REPLIKUJ](#bk_replicate)|[REVERSE](#bk_reverse)|[PRAWO](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
 |[GÓRNY](#bk_upper)|||  
@@ -1862,7 +1861,7 @@ SELECT
 ####  <a name="bk_concat"></a> CONCAT  
  Zwraca ciąg, który jest wynikiem łączenie dwóch lub więcej wartości ciągu.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 CONCAT(<str_expr>, <str_expr> [, <str_expr>])  
@@ -1895,7 +1894,7 @@ SELECT CONCAT("abc", "def")
 ####  <a name="bk_contains"></a> ZAWIERA  
  Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu zawiera drugi.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 CONTAINS(<str_expr>, <str_expr>)  
@@ -1928,7 +1927,7 @@ SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")
 ####  <a name="bk_endswith"></a> ENDSWITH  
  Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu kończy się na sekundę.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ENDSWITH(<str_expr>, <str_expr>)  
@@ -1961,7 +1960,7 @@ SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")
 ####  <a name="bk_index_of"></a> INDEX_OF  
  Zwraca pozycję początkową pierwszego wystąpienia drugi ciąg wyrażenia w pierwszym wyrażeniu określony ciąg lub wartość -1, jeśli nie zostanie znaleziony ciąg.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 INDEX_OF(<str_expr>, <str_expr>)  
@@ -1994,7 +1993,7 @@ SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")
 ####  <a name="bk_left"></a> LEFT  
  Zwraca lewej części ciągu z określoną liczbę znaków.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 LEFT(<str_expr>, <num_expr>)  
@@ -2031,7 +2030,7 @@ SELECT LEFT("abc", 1), LEFT("abc", 2)
 ####  <a name="bk_length"></a> DŁUGOŚĆ  
  Zwraca liczbę znaków z określonego wyrażenia ciągu.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 LENGTH(<str_expr>)  
@@ -2064,7 +2063,7 @@ SELECT LENGTH("abc")
 ####  <a name="bk_lower"></a> NIŻSZE  
  Zwraca wyrażenie ciągu po konwersji danych wielką literę na małe litery.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 LOWER(<str_expr>)  
@@ -2095,10 +2094,10 @@ SELECT LOWER("Abc")
   
 ```  
   
-####  <a name="bk_ltrim"></a> LTRIM  
+####  <a name="bk_ltrim"></a> PRZYTP  
  Zwraca wyrażenie ciągu, po usuwa spacje wiodące.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 LTRIM(<str_expr>)  
@@ -2131,7 +2130,7 @@ SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")
 ####  <a name="bk_replace"></a> ZAMIEŃ  
  Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 REPLACE(<str_expr>, <str_expr>, <str_expr>)  
@@ -2164,7 +2163,7 @@ SELECT REPLACE("This is a Test", "Test", "desk")
 ####  <a name="bk_replicate"></a> REPLIKOWANIE  
  Wartość ciągu jest powtarzany określoną liczbę razy.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 REPLICATE(<str_expr>, <num_expr>)  
@@ -2201,7 +2200,7 @@ SELECT REPLICATE("a", 3)
 ####  <a name="bk_reverse"></a> REVERSE  
  Zwraca odwrotnej kolejności wartość ciągu.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 REVERSE(<str_expr>)  
@@ -2234,7 +2233,7 @@ SELECT REVERSE("Abc")
 ####  <a name="bk_right"></a> PRAWO  
  Zwraca prawa część ciągu z określoną liczbę znaków.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 RIGHT(<str_expr>, <num_expr>)  
@@ -2268,10 +2267,10 @@ SELECT RIGHT("abc", 1), RIGHT("abc", 2)
 [{"$1": "c", "$2": "bc"}]  
 ```  
   
-####  <a name="bk_rtrim"></a> RTRIM  
+####  <a name="bk_rtrim"></a> PRZYTK  
  Zwraca wyrażenie ciągu, po usuwa spacje końcowe.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 RTRIM(<str_expr>)  
@@ -2304,7 +2303,7 @@ SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")
 ####  <a name="bk_startswith"></a> STARTSWITH  
  Zwraca wartość Boolean wskazującą, czy pierwszy wyrażenia ciągu rozpoczyna się od drugiego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 STARTSWITH(<str_expr>, <str_expr>)  
@@ -2337,7 +2336,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
 ####  <a name="bk_substring"></a> SUBSTRING  
  Zwraca część wyrażenia ciągu, zaczynając od pozycji określony znak liczony od zera i kontynuuje określonej długości lub końca ciągu.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
@@ -2374,7 +2373,7 @@ SELECT SUBSTRING("abc", 1, 1)
 ####  <a name="bk_upper"></a> GÓRNY  
  Zwraca wyrażenie ciągu po konwersji danych małą literę na wielkie litery.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 UPPER(<str_expr>)  
@@ -2415,7 +2414,7 @@ SELECT UPPER("Abc")
 ####  <a name="bk_array_concat"></a> ARRAY_CONCAT  
  Zwraca tablicę, która jest wynikiem łączenie dwóch lub więcej wartości tablicy.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])  
@@ -2448,7 +2447,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
 Zwraca wartość Boolean wskazującą, czy tablica zawiera określoną wartość. Można określić, czy dopasowanie jest pełny lub jego część. 
 
- **Syntax**  
+ **Składnia**  
   
 ```  
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
@@ -2510,7 +2509,7 @@ SELECT
 ####  <a name="bk_array_length"></a> ARRAY_LENGTH  
  Zwraca liczbę elementów wyrażenia określonej tablicy.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ARRAY_LENGTH(<arr_expr>)  
@@ -2543,7 +2542,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])
 ####  <a name="bk_array_slice"></a> ARRAY_SLICE  
  Zwraca część wyrażenie tablicy.
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])  
@@ -2593,7 +2592,7 @@ SELECT
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
  Zwraca odległość między dwoma wyrażeniami GeoJSON punktu wielokąta i LineString.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ST_DISTANCE (<spatial_expr>, <spatial_expr>)  
@@ -2630,7 +2629,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 ####  <a name="bk_st_within"></a> ST_WITHIN  
  Zwraca wartość wskazującą, czy obiektu GeoJSON (punkt, wielokąta lub LineString) określony w pierwszym argumencie jest w GeoJSON (punkt, wielokąta lub LineString) drugiego argumentu wyrażenia logicznego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ST_WITHIN (<spatial_expr>, <spatial_expr>)  
@@ -2672,7 +2671,7 @@ WHERE ST_WITHIN(f.location, {
 ####  <a name="bk_st_intersects"></a> ST_INTERSECTS  
  Zwraca wartość wskazującą, czy obiektu GeoJSON (punkt, wielokąta lub LineString) określony w pierwszym argumencie przecina GeoJSON (punkt, wielokąta lub LineString) drugiego argumentu wyrażenia logicznego.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ST_INTERSECTS (<spatial_expr>, <spatial_expr>)  
@@ -2714,7 +2713,7 @@ WHERE ST_INTERSECTS(a.location, {
 ####  <a name="bk_st_isvalid"></a> ST_ISVALID  
  Zwraca wartość logiczną wskazującą, czy określone wyrażenie GeoJSON punktu wielokąta i LineString jest nieprawidłowy.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ST_ISVALID(<spatial_expr>)  
@@ -2751,7 +2750,7 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 ####  <a name="bk_st_isvaliddetailed"></a> ST_ISVALIDDETAILED  
  Zwraca wartość wartość JSON, zawierające wartość typu Boolean, jeśli określone wyrażenie GeoJSON punktu wielokąta i LineString jest prawidłowy, a nieprawidłowy, ponadto Przyczyna jako wartość typu ciąg.  
   
- **Syntax**  
+ **Składnia**  
   
 ```  
 ST_ISVALID(<spatial_expr>)  

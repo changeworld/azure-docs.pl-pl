@@ -1,6 +1,6 @@
 ---
-title: "Wprowadzenie do usługi Azure Application Insights z językiem Java w środowisku Eclipse | Dokumentacja firmy Microsoft"
-description: "Przy użyciu wtyczki Eclipse Dodaj wydajności i użycia monitorowania do witryny sieci Web Java z usługą Application Insights"
+title: Wprowadzenie do usługi Azure Application Insights z językiem Java w środowisku Eclipse | Dokumentacja firmy Microsoft
+description: Przy użyciu wtyczki Eclipse Dodaj wydajności i użycia monitorowania do witryny sieci Web Java z usługą Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Wprowadzenie do usługi Application Insights z językiem Java w środowisku Eclipse
 Zestaw SDK usługi Application Insights wysyła dane telemetryczne z aplikacji sieci web w języku Java, dzięki czemu można analizować użycia i wydajności. Wtyczki dla usługi Application Insights Eclipse automatycznie instaluje zestaw SDK w projekcie, tak aby uzyskać poza telemetrii pola, a także interfejs API, który służy do zapisywania telemetria niestandardowa.   
@@ -28,7 +28,7 @@ Obecnie wtyczki sprawdza w przypadku Maven projektów i dynamicznych projekty si
 
 Będą potrzebne:
 
-* Oracle środowiska JRE wersji 1.6 lub nowszej
+* 1.7 środowiska JRE lub 1.8
 * Subskrypcja platformy [Microsoft Azure](https://azure.microsoft.com/).
 * [Zaćmienie-IDE for Java EE Developers](http://www.eclipse.org/downloads/), indygo lub nowszej.
 * System Windows 7 lub nowszym lub Windows Server 2008 lub nowszy
@@ -168,7 +168,7 @@ Możesz określić dodatkowe liczniki wydajności do zbierania danych.
   * `tabular`: dane licznika wydajności są w formacie wiersza tabeli
 
 #### <a name="windows-performance-counters"></a>Liczniki wydajności systemu Windows
-Każdy [licznik wydajności systemu Windows](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) należy do kategorii (w taki sam sposób, w jaki pole należy do klasy). Kategorie mogą być globalne lub mogą mieć wystąpienia numerowane lub nazwane.
+Każdy [licznik wydajności systemu Windows](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) jest składową kategorii (w taki sam sposób, w jaki pole jest składową klasy). Kategorie mogą być globalne lub mogą mieć wystąpienia numerowane lub nazwane.
 
 ```XML
 
@@ -215,7 +215,7 @@ Możesz wstawić kod zarówno strony sieci web JavaScript i Java po stronie serw
 
 [Dowiedz się więcej o telemetrii niestandardowej][track]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 #### <a name="detect-and-diagnose-issues"></a>Wykrywanie i diagnozowanie problemów
 * [Dodaj telemetrię usługi sieci web klienta] [ usage] do Pobierz dane telemetryczne wydajności klienta sieci web.
 * [Konfigurowanie testów sieci Web][availability], aby upewnić się, że aplikacja stale działa i odpowiada.

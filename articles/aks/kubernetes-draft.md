@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Projekt za pomocą usługi kontenera platformy Azure (AKS)
 
@@ -33,10 +33,10 @@ Na koniec należy zainstalować [Docker](https://www.docker.com).
 
 ## <a name="install-draft"></a>Zainstaluj wersję roboczą
 
-Projekt interfejsu wiersza polecenia jest klient, który działa w systemie deweloperskim i pozwala na quicky wdrożenie w klastrze Kubernetes kodu. 
+Projekt interfejsu wiersza polecenia jest klient, który działa w systemie deweloperskim i pozwala na quicky wdrożenie w klastrze Kubernetes kodu.
 
-> [!NOTE] 
-> Jeśli po zainstalowaniu wersji roboczej poprzedzające wersję 0.12, najpierw należy usunąć projekt z przy użyciu klastra `helm delete --purge draft` , a następnie usuń lokalnej konfiguracji uruchamiając `rm -rf ~/.draft`. Jeśli używany jest system MacOS, możesz uruchomić `brew upgrade draft`.
+> [!NOTE]
+> Jeśli po zainstalowaniu wersji roboczej poprzedzające wersję 0.12, najpierw należy usunąć projekt z przy użyciu klastra `helm delete --purge draft` , a następnie usuń lokalnej konfiguracji uruchamiając `rm -rf ~/.draft`. Jeśli używany jest system MacOS, uruchom `brew upgrade draft`.
 
 Aby zainstalować projektu interfejsu wiersza polecenia przy użyciu Mac `brew`. Aby uzyskać dodatkowe opcje instalacji Zobacz, [zainstalować wersję roboczą przewodnik][install-draft].
 
@@ -71,9 +71,9 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 
 Teraz, że istnieje relacja zaufania między AKS i ACR, następujące kroki umożliwiają użycie ACR z klastrem AKS.
 1. Ustaw konfigurację projektu `registry` wartość, uruchamiając `draft config set registry <registry name>.azurecr.io`, gdzie _&lt;nazwa rejestru&lt;_ to nazwa ACR rejestru.
-2. Zaloguj się do rejestru ACR uruchamiając `az acr login -n <registry name>`. 
+2. Zaloguj się do rejestru ACR uruchamiając `az acr login -n <registry name>`.
 
-Użytkownik jest obecnie zalogowany lokalnie do ACR i utworzyć relację zaufania z AKS i ACR, dlatego nie hasła lub kluczy tajnych są wymagane do wypychanej na lub ściąganie danych z ACR do AKS. Uwierzytelnianie odbywa się na poziomie usługi Azure Resource Manager, za pomocą usługi Azure Active Directory. 
+Użytkownik jest obecnie zalogowany lokalnie do ACR i utworzyć relację zaufania z AKS i ACR, dlatego nie hasła lub kluczy tajnych są wymagane do wypychanej na lub ściąganie danych z ACR do AKS. Uwierzytelnianie odbywa się na poziomie usługi Azure Resource Manager, za pomocą usługi Azure Active Directory.
 
 ## <a name="run-an-application"></a>Uruchamianie aplikacji
 
@@ -143,7 +143,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-Teraz można przetestować aplikację, przechodząc do http://localhost:46143 (dla poprzedniego przykładu; portów może być inny). Po zakończeniu badania użycia aplikacji `Control+C` zatrzymania połączenia serwera proxy.
+Teraz przetestować aplikację, przechodząc do http://localhost:46143 (dla poprzedniego przykładu; portów może być inny). Po zakończeniu badania użycia aplikacji `Control+C` zatrzymania połączenia serwera proxy.
 
 > [!NOTE]
 > Można również użyć `draft up --auto-connect` polecenia do tworzenia i wdrażania aplikacji i natychmiast nawiązania pierwszego kontenera uruchomionych dokonanie iteracji cyklu szybciej.

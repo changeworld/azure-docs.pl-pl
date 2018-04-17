@@ -1,11 +1,11 @@
 ---
-title: "Zautomatyzować NSG inspekcji z widokiem grupy zabezpieczeń obserwatora sieci Azure | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera instrukcje dotyczące sposobu konfigurowania inspekcji grupy zabezpieczeń sieci"
+title: Zautomatyzować NSG inspekcji z widokiem grupy zabezpieczeń obserwatora sieci Azure | Dokumentacja firmy Microsoft
+description: Ta strona zawiera instrukcje dotyczące sposobu konfigurowania inspekcji grupy zabezpieczeń sieci
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 57f2200e541eeb629f72d60ffa0acb2d8233c018
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c9450099ad3561611796a9b45157932f9ac85a9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatyzowanie NSG inspekcji z widokiem grupy zabezpieczeń obserwatora sieci platformy Azure
 
@@ -185,9 +185,9 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli ustawienia zostały zmienione, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/virtual-network-manage-nsg-arm-portal.md) do śledzenia sieci zabezpieczeń grupy i zabezpieczeń reguł, które w danym.
+Jeśli ustawienia zostały zmienione, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) do śledzenia sieci zabezpieczeń grupy i zabezpieczeń reguł, które w danym.
 
 
 

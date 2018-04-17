@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z Brama sieci wirtualnej i połączeń za pomocą Monitora sieci Azure - REST | Dokumentacja firmy Microsoft"
-description: "Ta strona wyjaśniono, jak rozwiązywanie problemów z bramy sieci wirtualnej i połączenia z obserwatora sieciowego Azure za pomocą usługi REST"
+title: Rozwiązywanie problemów z Brama sieci wirtualnej i połączeń za pomocą Monitora sieci Azure - REST | Dokumentacja firmy Microsoft
+description: Ta strona wyjaśniono, jak rozwiązywanie problemów z bramy sieci wirtualnej i połączenia z obserwatora sieciowego Azure za pomocą usługi REST
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 086a853d0849ee22f992c9d3265f6988bcc7bd83
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a916a261c310a2a9b4cc777fe17db794fed26cbd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Rozwiązywanie problemów z bramy sieci wirtualnej i połączeń za pomocą Monitora sieci platformy Azure
 
@@ -329,4 +329,4 @@ Aby uzyskać instrukcje dotyczące pobierania plików z kontami magazynu azure, 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli ustawienia zostały zmienione które zatrzymania połączenia sieci VPN, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/virtual-network-manage-nsg-arm-portal.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń, które mogą być zagrożona.
+Jeśli ustawienia zostały zmienione które zatrzymania połączenia sieci VPN, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń, które mogą być zagrożona.

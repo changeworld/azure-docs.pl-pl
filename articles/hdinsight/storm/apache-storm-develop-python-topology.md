@@ -1,26 +1,24 @@
 ---
 title: Apache Storm z comopnents Python - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak utworzyć topologii Apache Storm, która używa składników języka Python."
+description: Dowiedz się, jak utworzyć topologii Apache Storm, która używa składników języka Python.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
-keywords: "Apache storm w języku python"
+keywords: Apache storm w języku python
 ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1da38ebbe3354bbb36f68d1243b30bf2f4c5633f
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: ebfc9d5aa1c3a650a938c0a9f5fc3d047f90458d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Opracowywanie topologii Apache Storm w usłudze HDInsight przy użyciu języka Python
 
@@ -29,7 +27,7 @@ Dowiedz się, jak utworzyć topologii Apache Storm, która używa składników j
 > [!IMPORTANT]
 > Informacje przedstawione w tym dokumencie przetestowano korzystanie z systemu Storm w usłudze HDInsight 3,6. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
-Kod dla tego projektu jest dostępne pod adresem [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+Kod dla tego projektu jest dostępne pod adresem [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,7 +41,7 @@ Kod dla tego projektu jest dostępne pod adresem [https://github.com/Azure-Sampl
 
 ## <a name="storm-multi-language-support"></a>Obsługa wielu języków STORM
 
-Apache Storm został zaprojektowany do pracy ze składnikami napisane przy użyciu dowolnego języka programowania. Składniki zrozumieć, jak pracować z [Thrift definicji Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Dla języka Python moduł jest dostarczane jako część projektu systemu Apache Storm, która pozwala łatwo łączyć się z systemu Storm. Możesz znaleźć tego modułu w [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm został zaprojektowany do pracy ze składnikami napisane przy użyciu dowolnego języka programowania. Składniki zrozumieć, jak pracować z [Thrift definicji Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Dla języka Python moduł jest dostarczane jako część projektu systemu Apache Storm, która pozwala łatwo łączyć się z systemu Storm. Możesz znaleźć tego modułu w [ https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py ](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
 STORM jest proces Java, który działa na maszynie wirtualnej Java (JVM). Składniki napisanych w innych językach są wykonywane jako podprocesy. Storm komunikuje się z tych podprocesy przy użyciu JSON wiadomości wysyłane za pośrednictwem stdin/stdout. Więcej informacji dotyczących komunikacji między składnikami znajdują się w [protokołu Multi-lang](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentacji.
 

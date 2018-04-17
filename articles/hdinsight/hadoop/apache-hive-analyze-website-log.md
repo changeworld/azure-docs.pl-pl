@@ -1,26 +1,24 @@
 ---
-title: "Korzystanie z programu Hive z usługą Hadoop do analizy dziennika witryny sieci Web - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystanie z programu Hive z usługą HDInsight do analizy dzienników witryn sieci Web. Będzie użyć pliku dziennika jako dane wejściowe do tabeli HDInsight, a następnie użyć HiveQL do wykonywania zapytań o dane."
+title: Korzystanie z programu Hive z usługą Hadoop do analizy dziennika witryny sieci Web - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystanie z programu Hive z usługą HDInsight do analizy dzienników witryn sieci Web. Będzie użyć pliku dziennika jako dane wejściowe do tabeli HDInsight, a następnie użyć HiveQL do wykonywania zapytań o dane.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 6fb7b5c2-8df4-40b1-a9e2-6815080004f9
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5aabb69dc233dfd927c1d6cc1b131115e2d096d4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 53a0560d3bc5a52069d5829b9c3bd353e0c37ef3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Korzystanie z programu Hive z HDInsight opartych na systemie Windows do analizowania dzienników witryn sieci Web
 Dowiedz się, jak używać HiveQL z usługą HDInsight do analizy dzienników z witryny sieci Web. Analiza dziennika witryny sieci Web może służyć do segmentowania odbiorców w oparciu podobne działania, kategoryzowanie odwiedzający przez demograficznych i sprawdzić zawartość one widoku, witryn sieci Web, które pochodzą z i tak dalej.
@@ -52,7 +50,7 @@ W tym przykładzie używasz klastra usługi HDInsight do analizy pliki dziennika
 3. Na stronie sieci web, który zostanie otwarty, kliknij **Getting Started galerii** kartę, a następnie w obszarze **rozwiązań z przykładowymi danymi** kategorii, kliknij przycisk **analiza dziennika witryny sieci Web** próbki.
 4. Postępuj zgodnie z instrukcjami na stronie sieci web zakończenie próbki.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Poniższy przykład spróbuj: [analizowanie danych czujnika przy użyciu Hive z usługą HDInsight](apache-hive-analyze-sensor-data.md).
 
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md

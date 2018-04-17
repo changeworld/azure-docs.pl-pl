@@ -1,8 +1,8 @@
 ---
-title: "Konfigurowanie środowisk dla aplikacji sieci web w usłudze Azure App Service przejściowych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak użyć przemieszczanego publikowania aplikacji sieci web w usłudze Azure App Service."
+title: Konfigurowanie środowisk dla aplikacji sieci web w usłudze Azure App Service przejściowych | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć przemieszczanego publikowania aplikacji sieci web w usłudze Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: a262ba335256878b03a9a2cce6f7ba6a3dae715c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c02b7a74eea6973d6ccfbc1cc59d15bfd5cb5b77
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk w usłudze Azure App Service przejściowych
 <a name="Overview"></a>
@@ -30,7 +30,7 @@ Podczas wdrażania aplikację sieci web, aplikacji sieci web w systemie Linux, p
 * Wdrażanie aplikacji na gnieździe najpierw i zamienienie go w środowisku produkcyjnym gwarantuje, że wszystkie wystąpienia gniazda są przygotowaniu miejsca przed wymieniane w środowisku produkcyjnym. Eliminuje to czas przestoju, podczas wdrażania aplikacji. Przekierowywanie ruchu jest łatwego i żadne żądania są usuwane w wyniku operacji wymiany. Ta całego przepływu pracy można zautomatyzować poprzez skonfigurowanie [automatycznej wymiany](#Auto-Swap) podczas weryfikacji przed wymiany nie jest wymagana.
 * Po wymiany gniazda z wcześniej przygotowanych aplikacji ma poprzedniej aplikacji produkcyjnej. Jeśli zmiany miejscami do miejsca produkcji są niezgodne z oczekiwaniami, można wykonać tego samego wymiany od razu do pobrania "ostatniej znanej dobrej witryny" ponownie.
 
-Każda warstwa planu usługi aplikacji obsługuje różne liczby miejsc wdrożenia. Aby dowiedzieć się, liczba gniazd obsługuje warstwy aplikacji, zobacz [App Service — ceny](https://azure.microsoft.com/pricing/details/app-service/).
+Każda warstwa planu usługi aplikacji obsługuje różne liczby miejsc wdrożenia. Aby dowiedzieć się, liczba gniazd obsługuje warstwy aplikacji, zobacz [limity usługi App](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#app-service-limits).
 
 * Gdy aplikacja ma wiele miejsc, nie można zmienić warstwy.
 * Skalowanie jest niedostępna dla gniazda nieprodukcyjnych.

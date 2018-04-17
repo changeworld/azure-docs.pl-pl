@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d284277f600465345be0058468192f2f5609d89
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0bc24fb0206455c723acf5e6f4b82d82002f727c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -130,7 +130,7 @@ Aby użyć usługi głównej na podstawie aplikacji token uwierzytelniania w us�
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             },
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
@@ -346,7 +346,7 @@ Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ uj
 |:--- |:--- |:--- |
 | type | Musi mieć ustawioną właściwość typu sink działania kopiowania: **SqlDWSink** | Yes |
 | allowPolyBase |Wskazuje, czy do użycia zamiast mechanizmu BULKINSERT PolyBase (jeśli jest to wymagane). <br/><br/> **Przy użyciu programu PolyBase jest zalecanym sposobem ładowanie danych do usługi SQL Data Warehouse.** Zobacz [Użyj programu PolyBase, aby załadować dane do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji dla ograniczenia i szczegółów.<br/><br/>Dozwolone wartości to: **True** (ustawienie domyślne) i **False**.  |Nie |
-| polyBaseSettings |Grupy właściwości, które można określić, kiedy **allowPolybase** właściwość jest ustawiona na **true**. |Nie |
+| Usługi |Grupy właściwości, które można określić, kiedy **allowPolybase** właściwość jest ustawiona na **true**. |Nie |
 | rejectValue |Określa liczbę lub odsetek wierszy, które można odrzucić przed zapytanie nie powiedzie się.<br/><br/>Dowiedz się więcej o opcjach Odrzuć PolyBase **argumenty** sekcji [Tworzenie tabeli zewnętrznej (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) tematu. <br/><br/>Dozwolone wartości to: 0 (domyślnie), 1, 2,... |Nie |
 | dla właściwości rejectType |Określa, czy opcja rejectValue jest określona jako wartość literału lub wartość procentowa.<br/><br/>Dozwolone wartości to: **wartość** (ustawienie domyślne) i **procent**. |Nie |
 | rejectSampleValue |Określa liczbę wierszy do pobrania przed PolyBase ponownie oblicza procent odrzuconych wierszy.<br/><br/>Dozwolone wartości to: 1, 2,... |Tak, jeśli **dla właściwości rejectType** jest **procent** |
@@ -563,17 +563,17 @@ Podczas kopiowania danych z/na magazyn danych SQL Azure, z typów danych Azure S
 | ntext |Ciąg, Char] |
 | numeryczne |Decimal |
 | nvarchar |Ciąg, Char] |
-| rzeczywiste |Kawaler/panna |
+| rzeczywiste |Pojedyncze |
 | ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Obiekt * |
 | Tekst |Ciąg, Char] |
-| time |TimeSpan |
+| time |Zakres czasu |
 | sygnatura czasowa |Byte[] |
 | tinyint |Bajtów |
-| uniqueidentifier |Identyfikator GUID |
+| Unikatowy identyfikator |Identyfikator GUID |
 | varbinary |Byte[] |
 | varchar |Ciąg, Char] |
 | xml |Xml |

@@ -1,25 +1,18 @@
 ---
-title: "Zarządzanie Administratorzy serwera w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzać Administratorzy serwera dla serwera usług Analysis Services na platformie Azure."
-services: analysis-services
-documentationcenter: 
+title: Zarządzanie Administratorzy serwera w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać Administratorzy serwera dla serwera usług Analysis Services na platformie Azure.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: d90f1e3df8f5934d5c334ec72b5726f105842ca1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: def09f2853f761f3fefca80f341e6cc0557bac86
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-server-administrators"></a>Administratorzy serwerów zarządzania
 Administratorzy serwera musi być prawidłowa nazwa użytkownika lub grupy w usłudze Azure Active Directory (Azure AD) dla dzierżawcy, w której znajduje się serwer. Można użyć **Administratorzy usług analizy** serwera w portalu Azure lub właściwości serwera w programie SSMS administratorom serwerów zarządzania. 
@@ -41,5 +34,5 @@ Administratorzy serwera musi być prawidłowa nazwa użytkownika lub grupy w us�
 ## <a name="next-steps"></a>Kolejne kroki 
 [Uwierzytelnianie i uprawnienia użytkownika](analysis-services-manage-users.md)  
 [Zarządzanie ról bazy danych i użytkowników](analysis-services-database-users.md)  
-[Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md)  
+[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md)  
 

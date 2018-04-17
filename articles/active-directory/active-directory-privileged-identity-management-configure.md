@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie usługi Azure AD Privileged Identity Management | Dokumentacja firmy Microsoft"
-description: "Temat, który objaśnia, co to jest Azure AD Privileged Identity Management i sposobu użycia usługi PIM, aby zwiększyć bezpieczeństwo chmury."
+title: Konfigurowanie usługi Azure AD Privileged Identity Management | Dokumentacja firmy Microsoft
+description: Temat, który objaśnia, co to jest Azure AD Privileged Identity Management i sposobu użycia usługi PIM, aby zwiększyć bezpieczeństwo chmury.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f91ebe0f94c57c9ad217ffe280f9aa0a9aa6acb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest Azure AD Privileged Identity Management?
 
@@ -72,7 +72,7 @@ Dla ról Azure RBAC administratorem subskrypcji, właściciela zasobów lub zaso
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Omówienie zarządzania tożsamościami uprzywilejowanymi (punkt wejścia)
 
-Azure AD Privileged Identity Management obsługuje administracyjną katalogu usługi Azure AD, oraz ról zasobów Azure (wersja zapoznawcza). Funkcja ról dla zasobów Azure różnią się od ról administracyjnych w usłudze Azure AD. Role zasobów platformy Azure zapewniają szczegółowe uprawnienia dla zasobów, w którym są przypisane i wszystkie zasoby podrzędne w hierarchii zasobów (nazywane dziedziczenia). [Dowiedz się więcej o RBAC, hierarchii zasobów i dziedziczenie](role-based-access-control-configure.md). PIM dla obu ról katalogu usługi Azure AD i zasobów Azure (wersja zapoznawcza) można podawać uzyskując dostęp do odpowiednie łącze w sekcji Zarządzanie menu nawigacji po lewej stronie punktu wejścia omówienie PIM.
+Azure AD Privileged Identity Management obsługuje administracyjną katalogu usługi Azure AD, oraz ról zasobów Azure (wersja zapoznawcza). Funkcja ról dla zasobów Azure różnią się od ról administracyjnych w usłudze Azure AD. Role zasobów platformy Azure zapewniają szczegółowe uprawnienia dla zasobów, w którym są przypisane i wszystkie zasoby podrzędne w hierarchii zasobów (nazywane dziedziczenia). [Dowiedz się więcej o RBAC, hierarchii zasobów i dziedziczenie](../role-based-access-control/role-assignments-portal.md). PIM dla obu ról katalogu usługi Azure AD i zasobów Azure (wersja zapoznawcza) można podawać uzyskując dostęp do odpowiednie łącze w sekcji Zarządzanie menu nawigacji po lewej stronie punktu wejścia omówienie PIM.
 
 PIM umożliwia wygodne dostęp do aktywowania usługi ról, wyświetlanie oczekujących aktywacji /, oczekujących żądań zatwierdzenia (dla ról katalogu usługi Azure AD) i monitoruje oczekuje na Twoją odpowiedź z sekcji zadań menu nawigacji po lewej stronie.
 

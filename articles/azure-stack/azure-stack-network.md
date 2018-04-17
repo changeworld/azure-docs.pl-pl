@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 5ade2a09d0729f48c075a5bcaa20bee079ead47d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6438c353d84510ee918df120e6d54df0607c89d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
 Ten artykuł zawiera informacje infrastruktury sieci stosu Azure, aby ułatwić wybór najlepiej integrowanie stosu Azure z istniejącym środowiskiem sieci. 
@@ -40,7 +40,7 @@ W poniższej tabeli przedstawiono sieci logiczne i skojarzone zakresy podsieci I
 
 | Sieć logiczna | Opis | Rozmiar | 
 | -------- | ------------- | ------------ | 
-| Publiczny adres VIP | Publiczne adresy IP niewielki zestaw usług Azure stosu, z resztą używanych przez maszyny wirtualne dzierżawcy. Infrastruktura stosu Azure używa 32 adresów z tą siecią. Jeśli zamierzasz korzystać z usługi aplikacji i dostawców zasobów SQL, używane są adresy więcej 7. | / 26 (62 hostów) - /22 (1022 hostów)<br><br>Zalecane = prefiksie/24 (254 hostów) | 
+| Publiczny adres VIP | Stos Azure używa łącznie 32 adresów z tą siecią. Osiem publiczne adresy IP są używane do niewielki zestaw usług Azure stosu, a pozostałe są używane przez maszyny wirtualne dzierżawców. Jeśli zamierzasz korzystać z usługi aplikacji i dostawców zasobów SQL, używane są adresy więcej 7. | / 26 (62 hostów) - /22 (1022 hostów)<br><br>Zalecane = prefiksie/24 (254 hostów) | 
 | Infrastruktura przełączników | Point-to-Point adresy IP do celów routingu dedykowanego przełącznika interfejsów zarządzania i adresy sprzężenia zwrotnego przypisane do tego przełącznika. | /26 | 
 | Infrastruktura | Używane składniki wewnętrzne stosu Azure do komunikacji. | /24 |
 | Prywatne | Używane dla sieci magazynu i prywatne adresy VIP. | /24 | 
@@ -70,7 +70,7 @@ To/24 sieć jest przeznaczona do wewnętrznych składników stosu Azure, dzięki
 To/27 sieci jest niewielki zakres z podsieci infrastruktury Azure stosu wspomniano wcześniej, nie wymaga publiczne adresy IP, ale wymagają dostępu do Internetu za pośrednictwem NAT lub przezroczystego obiektu pośredniczącego. Ta sieć zostanie przydzielone dla systemu konsoli odzyskiwania awaryjnego (ERCS), ERCS maszyna wirtualna wymaga dostępu do Internetu, podczas rejestracji na platformie Azure oraz infrastruktury kopii zapasowych. Maszyna wirtualna ERCS powinny obsługiwać routing do sieci zarządzania na potrzeby rozwiązywania problemów.
 
 ### <a name="public-vip-network"></a>Sieć publiczna VIP
-Sieć publiczna adresu VIP jest przypisany do kontrolera sieci w stosie Azure. Nie jest sieć logiczna na przełączniku. Programowego używa puli adresów i przypisuje/32 sieci dla obciążeń dzierżawców. W tabeli routingu przełącznika tych 32 adresów IP są rozgłaszane jako dostępny za pośrednictwem protokołu BGP. Ta sieć zawiera zewnętrzne dostępny lub publicznych adresów IP. Infrastruktury Azure stosu używa co najmniej 8 adresów tego publicznej sieci wirtualne adresy IP, podczas gdy pozostała jest używany przez dzierżawione maszyny wirtualne. Rozmiar sieci w tej podsieci może należeć do zakresu od co najmniej /26 (64 hostów) do maksymalnie /22 (1022 hostów), zaleca się zaplanowanie prefiksie/24 sieci.
+Sieć publiczna adresu VIP jest przypisany do kontrolera sieci w stosie Azure. Nie jest sieć logiczna na przełączniku. Programowego używa puli adresów i przypisuje/32 sieci dla obciążeń dzierżawców. W tabeli routingu przełącznika tych 32 adresów IP są rozgłaszane jako dostępny za pośrednictwem protokołu BGP. Ta sieć zawiera zewnętrzne dostępny lub publicznych adresów IP. Infrastruktury Azure stosu używa 8 adresów tego publicznej sieci wirtualne adresy IP, podczas gdy pozostała jest używany przez dzierżawione maszyny wirtualne. Rozmiar sieci w tej podsieci może należeć do zakresu od co najmniej /26 (64 hostów) do maksymalnie /22 (1022 hostów), zaleca się zaplanowanie prefiksie/24 sieci.
 
 ### <a name="switch-infrastructure-network"></a>Przełącznik sieci infrastruktury
 To 26 sieć jest podsieci, która zawiera podsieci /30 IP routingu point-to-point (2 IP hosta w) i sprzężenia zwrotne, które są przeznaczone wyłącznie/32 podsieci dla wewnątrzpasmowe przełącznik zarządzania i identyfikator routera BGP Ten zakres adresów IP musi obsługiwać Routing zewnętrznie z rozwiązania Azure stosu centrum danych, mogą być prywatnych lub publicznych adresów IP.

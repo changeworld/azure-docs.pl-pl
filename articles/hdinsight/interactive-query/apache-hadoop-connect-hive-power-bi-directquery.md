@@ -1,26 +1,24 @@
 ---
-title: "Wizualizuj dane interakcyjne zapytań Hive z usługą Power BI w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać usługi Microsoft Power BI do wizualizacji danych interakcyjne zapytania Hive przetwarzanych przez usługi Azure HDInsight."
+title: Wizualizuj dane interakcyjne zapytań Hive z usługą Power BI w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać usługi Microsoft Power BI do wizualizacji danych interakcyjne zapytania Hive przetwarzanych przez usługi Azure HDInsight.
 keywords: hdinsight, hadoop, hive, interakcyjne zapytanie directquery interakcyjne hive, LLAP,
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: c74e02ea32a5aacf1a5208c0e194a25b0b6bcb48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b8da1f17b9e477caf9031cf94ee14f3a181e247e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Wizualizuj dane interakcyjne zapytań Hive z usługi Microsoft Power BI przy użyciu zapytania bezpośredniego w usłudze Azure HDInsight
 

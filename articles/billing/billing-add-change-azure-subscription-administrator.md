@@ -1,11 +1,11 @@
 ---
-title: "Dodawanie lub zmienianie ról subskrypcji Azure administratora | Dokumentacja firmy Microsoft"
-description: "Opisuje, jak dodać lub zmienić administratora współpracującego Azure, Administrator usługi i konto administratora"
-services: 
-documentationcenter: 
+title: Dodawanie lub zmienianie ról subskrypcji Azure administratora | Dokumentacja firmy Microsoft
+description: Opisuje, jak dodać lub zmienić administratora współpracującego Azure, Administrator usługi i konto administratora
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/04/2018
 ms.author: genli
-ms.openlocfilehash: dc09f29fec78d408e1560bfa0a943f16ab50c760
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ecee98e9b74613a4176d20d231b32e4cb99a721e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie administratorów subskrypcji platformy Azure
 
-Administratorzy subskrypcji platformy Azure classic i Azure [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-what-is.md) są dwa systemy do zarządzania dostępem do zasobów platformy Azure:
+Administratorzy subskrypcji platformy Azure classic i Azure [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) są dwa systemy do zarządzania dostępem do zasobów platformy Azure:
 
 * Role administratora subskrypcji klasycznego oferować zarządzania dostępem do warstwy podstawowa i to konto administratora, administratora usługi i Współadministratorzy.
     * Gdy utworzysz nową subskrypcję platformy Azure, Twoje konto jest domyślnie jako konto administratora i administratora usługi.
@@ -41,10 +41,12 @@ Aby dodać osobę administratora dla subskrypcji platformy Azure usługi adminis
 
 1. Odwiedź stronę [ **subskrypcje** w portalu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Wybierz subskrypcję, którą chcesz przyznać dostęp.
-3. Wybierz **(IAM) kontroli dostępu** w menu.
-4. W **roli** wybierz opcję **właściciela**. 
-5. W **przypisany dostęp** wybierz opcję **użytkownika usługi Azure AD, grupy lub aplikacji**. 
-6. W **wybierz** wpisz adres e-mail użytkownika, które chcesz dodać jako właściciela. Wybierz użytkownika, a następnie wybierz **zapisać**.
+3. Wybierz **Dodaj**  
+   (Jeśli brakuje przycisk Dodaj, nie masz uprawnień do dodawania uprawnień.)
+4. Wybierz **(IAM) kontroli dostępu** w menu.
+5. W **roli** wybierz opcję **właściciela**. 
+6. W **przypisany dostęp** wybierz opcję **użytkownika usługi Azure AD, grupy lub aplikacji**. 
+7. W **wybierz** wpisz adres e-mail użytkownika, które chcesz dodać jako właściciela. Wybierz użytkownika, a następnie wybierz **zapisać**.
 
     ![Zrzut ekranu pokazujący rolę właściciela wybrane](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
@@ -111,7 +113,7 @@ Administrator konta jest użytkownik, który początkowo konta subskrypcji platf
  Konto administratora, Administrator usługi i współadministrator są trzy rodzaje ról administratorów klasycznego subskrypcji platformy Azure. Konto, które jest używane podczas tworzenia konta platformy Azure jest automatycznie ustawiana jako konto administratora i administratora usługi. Następnie można dodać dodatkowe Współadministratorów. W poniższej tabeli opisano dokładnie różnice między tych trzech ról administracyjnych. 
 
 > [!TIP]
-> Lepszą kontrolę i precyzyjne zarządzanie dostępem firma Microsoft zaleca używanie opartej na rolach Azure kontroli dostępu (RBAC), dzięki czemu użytkownicy mają zostać dodane do wielu ról. Aby dowiedzieć się więcej, zobacz [kontroli dostępu opartej na roli Azure Active Directory](../active-directory/role-based-access-control-what-is.md).
+> Lepszą kontrolę i precyzyjne zarządzanie dostępem firma Microsoft zaleca używanie opartej na rolach Azure kontroli dostępu (RBAC), dzięki czemu użytkownicy mają zostać dodane do wielu ról. Aby dowiedzieć się więcej, zobacz [kontroli dostępu opartej na roli Azure Active Directory](../role-based-access-control/overview.md).
 
 | Klasyczny administrator subskrypcji | Limit | Opis |
 | --- | --- | --- |
@@ -121,7 +123,7 @@ Administrator konta jest użytkownik, który początkowo konta subskrypcji platf
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>Dowiedz się więcej na temat kontroli dostępu do zasobów i usługi Active Directory
 
-* Aby dowiedzieć się więcej na temat sposobu jest kontrolowany dostęp do zasobów w systemie Microsoft Azure, zobacz [opis dostęp do zasobów na platformie Azure](../active-directory/active-directory-understanding-resource-access.md).
+* Aby dowiedzieć się więcej na temat sposobu jest kontrolowany dostęp do zasobów w systemie Microsoft Azure, zobacz [opis dostęp do zasobów na platformie Azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 * Aby uzyskać więcej informacji o usłudze Azure Active Directory, zobacz [jak subskrypcje platformy Azure są kojarzone z usługi Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md) i [przypisywanie ról administratorów w usłudze Azure Active Directory](../active-directory/active-directory-assign-admin-roles-azure-portal.md).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.

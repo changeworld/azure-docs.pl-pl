@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: cd11ea68f298395236abf83295b939462ba00964
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Przejąć niezarządzane katalogu jako administrator w usłudze Azure Active Directory
 W tym artykule opisano dwa sposoby przejąć nazwy domeny DNS w niezarządzanych katalogu w usłudze Azure Active Directory (Azure AD). Gdy użytkownik samoobsługi tworzy konto dla usługi w chmurze, która używa usługi Azure AD, są dodawane do niezarządzanego Azure AD directory oparte na ich domenę poczty e-mail. Aby uzyskać więcej informacji o samoobsługi lub signup "wirusa" dla usługi, zobacz [co to jest subskrypcji samoobsługowej usługi Azure Active Directory?]()
@@ -83,14 +83,12 @@ Podczas weryfikowania własności nazwy domeny usługi Azure AD usuwa nazwy dome
 - Użytkownicy
 - Subskrypcje
 - Przypisań licencji
- 
-[ **ForceTakeover** opcji](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) dla zewnętrznego administratora nazwa domeny przejęcia jest obsługiwana w przypadku tylko dwie usługi Power BI i Azure RMS.
 
 ### <a name="support-for-external-admin-takeover"></a>Obsługa przejęcia zewnętrznego administratora
 Przejęcia zewnętrznego administratora jest obsługiwany przez następujących usług online:
 
 - Power BI
-- Usługa Azure Rights Management (RMS)
+- Azure Rights Management
 - Exchange Online
 
 Plany usługi obsługiwane obejmują:
@@ -99,12 +97,19 @@ Plany usługi obsługiwane obejmują:
 - Power BI Pro
 - Rozwiązanie PowerApps w warstwie bezpłatna
 - PowerFlow bezpłatna
-- Usługi Azure Rights Management Service Basic (RMS)
-- Przedsiębiorstwa usługi Azure Rights Management (RMS)
+- Usługa RMS dla użytkowników indywidualnych
 - Microsoft Stream
 - Dynamics 365 bezpłatnej wersji próbnej
 
-Exernal przejęcia admin nie jest obsługiwane dla żadnej usługi, która ma planów usług, które obejmują programu SharePoint, usłudze OneDrive lub Skype dla firm; na przykład za pomocą bezpłatnej subskrypcji pakietu Office lub podstawowy SKU pakietu Office.
+Przejęcia zewnętrznego administratora nie jest obsługiwane dla żadnej usługi, która ma planów usług, które obejmują programu SharePoint, usłudze OneDrive lub Skype dla firm; na przykład za pomocą bezpłatnej subskrypcji pakietu Office lub podstawowy SKU pakietu Office. Opcjonalnie można użyć [ **ForceTakeover** opcji](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) usuwanie nazwy domeny z niezarządzanej dzierżawy i weryfikowania ją na żądaną dzierżawy. Ta opcja ForceTakeover nie będzie przenieść je przez użytkowników, czy zachować dostęp do subskrypcji. Zamiast tego ta opcja przenosi nazwy domeny. 
+
+#### <a name="more-information-about-rms-for-individuals"></a>Więcej informacji o usłudze RMS dla użytkowników indywidualnych
+
+Dla [RMS dla użytkowników indywidualnych](/information-protection/understand-explore/rms-for-individuals), gdy niezarządzanej dzierżawy jest w tym samym regionie co dzierżawcy, że jesteś właścicielem, automatycznie utworzony [klucza dzierżawy usługi Azure Information Protection](/information-protection/plan-design/plan-implement-tenant-key) i [domyślne Szablony ochrony](/information-protection/deploy-use/configure-usage-rights#rights-included-in-the-default-templates) są dodatkowo przeniesiony z nazwą domeny. 
+
+Klucz i szablony nie są przenoszone, gdy niezarządzanej dzierżawy jest w innym regionie. Na przykład niezarządzanej dzierżawy jest w Europie i dzierżawcy, użytkownika znajduje się w Ameryce Północnej. 
+
+Chociaż usługa RMS dla użytkowników indywidualnych jest zaprojektowana do obsługi uwierzytelniania usługi Azure AD można otworzyć chronionej zawartości, nie uniemożliwia użytkowników z również ochrony zawartości. Jeśli użytkownicy będą zapewniały ochronę zawartości za pomocą usługi RMS dla użytkowników indywidualnych subskrypcji, a klucz i szablony nie zostały przeniesione, zawartość nie będą dostępne po przejęciu domeny.    
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Polecenia cmdlet systemu Azure AD PowerShell opcji ForceTakeover
 Można wyświetlić te polecenia cmdlet używane w [przykładzie programu PowerShell](#powershell-example).
@@ -118,7 +123,7 @@ Polecenia cmdlet | Sposób użycia
 `get-msoldomain` | Nazwa domeny jest teraz zawarta w listę nazw domeny skojarzony z dzierżawą zarządzanych, ale jest wymienione jako **Unverified**.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Informacje w celu uruchomienia nowego rekordu TXT usługi DNS dla domeny (MS = xxxxx). Weryfikacja może nie wystąpić natychmiast ponieważ dopiero po pewnym czasie dla rekordu TXT propagację, więc czekać kilka minut przed uwzględnieniu **- ForceTakeover** opcji. 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Jeśli nadal nazwy domeny nie została zweryfikowana, możesz przejść z **- ForceTakeover** opcji. Sprawdza, czy rekord TXT został utworzony i rozpoczyna proces przejęcia.<li>**- ForceTakeover** opcji powinny zostać dodane do polecenia cmdlet, tylko wtedy, gdy wymuszania przejęcia zewnętrznego administratora, na przykład w przypadku niezarządzanej dzierżawy usługi Office 365 blokuje przejęcia.
-`get-msoldomain` | Pojawi się na liście domeny nazwę domeny, jak **zweryfikowano**.
+`get-msoldomain` | Lista domeny zawiera teraz nazwę domeny, jak **zweryfikowano**.
 
 ### <a name="powershell-example"></a>Przykład środowiska PowerShell
 

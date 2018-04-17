@@ -1,20 +1,20 @@
 ---
 title: Aktywacja subskrypcji platformy Azure i kont | Dokumentacja firmy Microsoft
-description: "Włącz dostęp za pomocą interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont i rozwiązać typowe problemy z konta."
+description: Włącz dostęp za pomocą interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont i rozwiązać typowe problemy z konta.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktywacja subskrypcji platformy Azure i kont za pomocą usługi Azure Management koszt
 
@@ -29,7 +29,7 @@ Określone uprawnienia są wymagane do wykonania procedur w tym artykule. Użytk
 - Uprawnienia do rejestrowania aplikacji CloudynCollector z dzierżawy usługi Azure AD.
 - Możliwość przypisywanie aplikacji do roli w Twojej subskrypcji platformy Azure.
 
-W Twojej subskrypcji platformy Azure, musi mieć swoje konta `Microsoft.Authorization/*/Write` dostępu przypisany CloudynCollector aplikacji. Ta akcja jest przyznawane za pośrednictwem [właściciela](../active-directory/role-based-access-built-in-roles.md#owner) roli lub [Administrator dostępu użytkowników](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) roli.
+W Twojej subskrypcji platformy Azure, musi mieć swoje konta `Microsoft.Authorization/*/Write` dostępu przypisany CloudynCollector aplikacji. Ta akcja jest przyznawane za pośrednictwem [właściciela](../role-based-access-control/built-in-roles.md#owner) roli lub [Administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) roli.
 
 Jeśli Twoje konto jest przypisany **współautora** roli, nie masz odpowiednich uprawnień, aby przypisać tę aplikację. Błąd podczas próby przypisać aplikację CloudynCollector do subskrypcji platformy Azure.
 
@@ -61,8 +61,8 @@ Po dodaniu aktualizacji konta subskrypcji, można przyznać dostęp do usługi A
 2. W razie potrzeby wprowadź identyfikator dzierżawy. Jeśli nie znasz Identyfikatora dzierżawy, wykonaj następujące kroki, aby ją znaleźć:
     1. Zaloguj się do [portalu Azure](https://portal.azure.com).
     2. W portalu Azure wybierz **usługi Azure Active Directory**.
-    3. Uzyskanie Identyfikatora dzierżawy, wybierz **właściwości** dla dzierżawy usługi Azure AD.
-    4. Skopiuj katalog Identyfikatora GUID. Ta wartość jest swojego identyfikatora dzierżawcy.
+    3. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
+    4. Skopiuj katalog Identyfikatora GUID. Ta wartość jest Twoim identyfikatorem dzierżawy.
     Aby uzyskać więcej informacji, zobacz [uzyskanie Identyfikatora dzierżawy](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
 3. W razie potrzeby wybierz szybkość identyfikatora Jeśli nie znasz Identyfikatora szybkość, wykonaj następujące kroki, aby ją znaleźć.
     1. W prawym górnym rogu portalu Azure, kliknij przycisk informacje o użytkowniku, a następnie kliknij przycisk **wyświetlić mojego rachunku**.

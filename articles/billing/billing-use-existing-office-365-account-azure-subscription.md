@@ -1,11 +1,11 @@
 ---
-title: "Tworzenia konta platformy Azure z kontem usługi Office 365 | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia subskrypcji platformy Azure przy użyciu konta usługi Office 365"
-services: 
-documentationcenter: 
+title: Tworzenia konta platformy Azure z kontem usługi Office 365 | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia subskrypcji platformy Azure przy użyciu konta usługi Office 365
+services: ''
+documentationcenter: ''
 author: JiangChen79
 manager: adpick
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: 129cdf7a-2165-483d-83e4-8f11f0fa7f8b
 ms.service: billing
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: cjiang
-ms.openlocfilehash: c81d7fa793388612ec4d76d79a2f30f209b9cf42
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e9f90127bce0502147572c5ac6bd65e47dbe8c35
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Załóż subskrypcji platformy Azure z Twoim kontem usługi Office 365
-Jeśli masz subskrypcję usługi Office 365, można użyć konta usługi Office 365, można utworzyć subskrypcji platformy Azure. Zaloguj się do [portalu Azure](https://portal.azure.com/) przy użyciu usługi Office 365, nazwę użytkownika i hasło. Jeśli chcesz skonfigurować maszyn wirtualnych lub innych usług platformy Azure, musisz zarejestrować subskrypcji platformy Azure. Twoja subskrypcja platformy Azure można udostępniać innym użytkownikom i [kontroli dostępu opartej na rolach umożliwia zarządzanie dostępem do Twojej subskrypcji platformy Azure i zasoby](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
+Jeśli masz subskrypcję usługi Office 365, można użyć konta usługi Office 365, można utworzyć subskrypcji platformy Azure. Zaloguj się do [portalu Azure](https://portal.azure.com/) przy użyciu usługi Office 365, nazwę użytkownika i hasło. Jeśli chcesz skonfigurować maszyn wirtualnych lub innych usług platformy Azure, musisz zarejestrować subskrypcji platformy Azure. Twoja subskrypcja platformy Azure można udostępniać innym użytkownikom i [kontroli dostępu opartej na rolach umożliwia zarządzanie dostępem do Twojej subskrypcji platformy Azure i zasoby](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 Jeśli masz już konto usługi Office 365 oraz subskrypcji platformy Azure, zobacz [skojarzyć dzierżawy usługi Office 365 z subskrypcją platformy Azure](billing-add-office-365-tenant-to-azure-subscription.md).
 
@@ -39,7 +39,7 @@ Zaoszczędzić czas i uniknąć mnożenie konta po utworzeniu konta platformy Az
 
     ![Zrzut ekranu pokazujący wypełnieniu formularza.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-- Jeśli konieczne jest dodanie innych osób w organizacji z subskrypcją platformy Azure, zobacz [wprowadzenie do zarządzania dostępem w portalu Azure](../active-directory/role-based-access-control-what-is.md). 
+- Jeśli konieczne jest dodanie innych osób w organizacji z subskrypcją platformy Azure, zobacz [wprowadzenie do zarządzania dostępem w portalu Azure](../role-based-access-control/overview.md). 
 
 ## <a id="more-about-subs">Więcej informacji na temat subskrypcji platformy Azure i usługi Office 365</a>
 Office 365 i Azure umożliwia zarządzanie użytkownikami i subskrypcji usługi Azure AD. Katalog platformy Azure przypomina kontenera, w którym można pogrupować użytkowników i subskrypcje. Aby użyć tego samego konta użytkowników dla subskrypcji platformy Azure i usługi Office 365, należy się upewnić, że subskrypcji platformy Azure są tworzone w tym samym katalogu co subskrypcji usługi Office 365. Mieć na uwadze następujące kwestie:

@@ -1,25 +1,25 @@
 ---
-title: "Usługa Azure Backup — często zadawane pytania | Microsoft Docs"
-description: "Odpowiedzi na typowe pytania dotyczące funkcji usługi Azure Backup, w tym magazynów usług Recovery Services, elementów, których kopie zapasowe można tworzyć, sposobu działania, szyfrowania i ograniczeń. "
+title: Usługa Azure Backup — często zadawane pytania | Microsoft Docs
+description: 'Odpowiedzi na typowe pytania dotyczące funkcji usługi Azure Backup, w tym magazynów usług Recovery Services, elementów, których kopie zapasowe można tworzyć, sposobu działania, szyfrowania i ograniczeń. '
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "tworzenie kopii zapasowej i odzyskiwanie po awarii; usługa kopii zapasowej"
+editor: ''
+keywords: tworzenie kopii zapasowej i odzyskiwanie po awarii; usługa kopii zapasowej
 ms.assetid: 1011bdd6-7a64-434f-abd7-2783436668d7
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/21/2017
+ms.date: 4/11/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 39e7c95f236f53d7b7c4de0e5b792debe5c0c6f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9226bef986a0fd2b6e8454cbd78b659feda401b9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Kopia zapasowa Azure. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Aby komentować, musisz mieć konto Livefyre. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ Aby szybko przeskanować sekcje znajdujące się w tym artykule, użyj linków z
 Tak. Począwszy od stycznia 2018 możesz utworzyć maksymalnie 25 Magazyny usług odzyskiwania, na region obsługiwane usługi Azure Backup na subskrypcję. Jeśli potrzebna jest większa liczba magazynów, należy utworzyć dodatkową subskrypcję.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Czy istnieją ograniczenia dotyczące liczby serwerów/maszyn, które można zarejestrować w każdym magazynie? <br/>
-Możesz zarejestrować maksymalnie 200 maszyn wirtualnych platformy Azure dla magazynu. Jeśli używasz MAB agenta można zarejestrować maksymalnie 50 MAB agentów na magazynie. I możesz zarejestrować 50 MAB serwerów/serwerów programu DPM do magazynu.
+Możesz zarejestrować maksymalnie 200 maszyn wirtualnych platformy Azure dla magazynu. Jeśli używasz MAB agenta, należy zarejestrować maksymalnie 50 MAB agentów na magazynie. I możesz zarejestrować 50 MAB serwerów/serwerów programu DPM do magazynu.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Jeśli organizacja ma jeden magazyn, to w jaki sposób można odizolować dane z jednego serwera od danych z innego serwera podczas przywracania danych?<br/>
 Wszystkie serwery, które są zarejestrowane w tym samym magazynie, mogą odzyskać dane umieszczone w kopii zapasowej przez inne serwery, *które korzystają z tego samego hasła*. Jeśli dane kopii zapasowej pewnych serwerów mają zostać odizolowane od innych serwerów w organizacji, należy użyć w przypadku tych serwerów innego hasła. Na przykład serwery zarządzania zasobami ludzkimi mogą korzystać z jednego hasła szyfrowania, serwery księgowości z drugiego, a serwery pamięci masowej z trzeciego.
@@ -81,13 +81,13 @@ Nie. Wszystkie dane przesłane do magazynu przed momentem anulowania zadania utw
 Jeśli anulujesz zadanie kopii zapasowej dla maszyny wirtualnej platformy Azure, wszelkie przesłane dane zostaną zignorowane. Następne zadanie kopii zapasowej przesyła przyrostowe dane z ostatniego wykonanego zadania kopii zapasowej.
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>Czy istnieją ograniczenia dotyczące czasu wykonywania zadań tworzenia kopii zapasowej i ich liczby?<br/>
-Tak. Zadania tworzenia kopii zapasowej na serwerze lub stacjach roboczych z systemem Windows można uruchamiać maksymalnie trzy razy w ciągu dnia. Zadania tworzenia kopii zapasowej w programie System Center DPM można uruchamiać maksymalnie dwa razy dziennie. Zadanie tworzenia kopii zapasowej maszyn wirtualnych IaaS można uruchamiać jeden raz w ciągu dnia. Korzystając z zasad planowania dla systemu Windows Server lub stacji roboczej z systemem Windows, można określić dzienne lub tygodniowe harmonogramy. Za pomocą programu System Center DPM można określić dzienne, tygodniowe, miesięczne i roczne harmonogramy.
+Tak. Zadania tworzenia kopii zapasowej na serwerze lub stacjach roboczych z systemem Windows można uruchamiać maksymalnie trzy razy w ciągu dnia. Można uruchomić zadania tworzenia kopii zapasowej w programie System Center DPM maksymalnie dwa razy dziennie. Zadanie tworzenia kopii zapasowej maszyn wirtualnych IaaS można uruchamiać jeden raz w ciągu dnia. Zasady harmonogramu dla systemu Windows Server lub stacji roboczej systemu Windows umożliwia określenie harmonogramy codziennie lub co tydzień. Za pomocą programu System Center DPM możesz określić harmonogramy codziennie, co tydzień, miesięcznych i rocznych.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Dlaczego rozmiar danych przesyłanych do magazynu usługi Recovery Services jest mniejszy niż rozmiar danych, dla których utworzono kopię zapasową?<br/>
  Wszystkie kopie zapasowe wykonywane przy użyciu agenta usługi Azure Backup, programu SCDPM lub serwera usługi Azure Backup są kompresowane i szyfrowane, zanim zostaną przesłane. Po zastosowaniu kompresji i szyfrowania danych w magazynie usług odzyskiwania jest mniejszy 30-40%.
 
 ## <a name="what-can-i-back-up"></a>Dla jakich danych mogę utworzyć kopię zapasową
-### <a name="which-operating-systems-do-azure-backup-support-br"></a>Jakie systemy operacyjne są obsługiwane przez usługę Azure Backup? <br/>
+### <a name="which-operating-systems-does-azure-backup-support-br"></a>Które systemy operacyjne obsługuje kopia zapasowa Azure? <br/>
 Usługa Azure Backup obsługuje następujące systemy operacyjne w przypadku zabezpieczonego tworzenia kopii zapasowych: plików i folderów oraz kopii zapasowych aplikacji obciążeń przy użyciu programów Azure Backup Server i System Center Data Protection Manager (DPM).
 
 | System operacyjny | Platforma | SKU |
@@ -112,7 +112,7 @@ Usługa Azure Backup obsługuje następujące systemy operacyjne w przypadku zab
 
 
 ### <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>Czy istnieje ograniczenie rozmiaru poszczególnych źródeł danych, dla których tworzona jest kopia zapasowa? <br/>
-Nie ma żadnego limitu ilości danych, dla których można utworzyć kopie zapasowe w magazynie. Usługa Azure Backup ogranicza maksymalny rozmiar źródła danych, niemniej te limity są duże. Według stanu na sierpień 2015 r. maksymalny rozmiar źródła danych dla obsługiwanych systemów operacyjnych wynosi:
+Kopia zapasowa Azure wymusza maksymalny rozmiar źródła danych, jednak są duże limity dla źródła. Według stanu na sierpień 2015 r. maksymalny rozmiar źródła danych dla obsługiwanych systemów operacyjnych wynosi:
 
 | L.p. | System operacyjny | Maksymalny rozmiar źródła danych |
 |:---:|:--- |:--- |
@@ -132,13 +132,16 @@ W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła da
 | Microsoft Exchange |Suma wszystkich baz danych programu Exchange w serwerze Exchange, którego kopia zapasowa jest wykonywana |
 | Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, którego kopia zapasowa jest wykonywana |
 
-Do utworzenia kopii zapasowej maszyny Wirtualnej platformy Azure każda maszyna wirtualna może mieć maksymalnie 16 dysków z danymi z każdego dysku danych o rozmiarze do 4095GB lub mniej. <br>
+Do utworzenia kopii zapasowej maszyny Wirtualnej Azure IaaS każda maszyna wirtualna może mieć maksymalnie 16 dysków z danymi, a każdy dysk danych może być do 4095 GB.
+
+### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>Czy istnieje ograniczenie ilości danych przechowywanych w magazynie usług odzyskiwania?
+Nie ma żadnego limitu ilości danych, które użytkownik może wykonać kopię zapasową usług odzyskiwania magazynu.
 
 ## <a name="retention-policy-and-recovery-points"></a>Zasady przechowywania i punkty odzyskiwania
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Czy istnieje różnica między zasadami przechowywania w programie DPM i systemie Windows Server/kliencie systemu Windows (tj. w systemie Windows Server bez programu DPM)?<br/>
 Nie, zarówno program DPM, jak i system Windows Server/klient systemu Windows mają dzienne, tygodniowe, miesięczne i roczne zasady przechowywania.
 
-### <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Czy można skonfigurować zasady przechowywania selektywnie, na przykład skonfigurować zasady tygodniowe i dziennie, ale nie roczne i miesięczne?<br/>
+### <a name="can-i-configure-my-retention-policies-selectively--that-is-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Można I konfigurowania zasad przechowywania dotyczących okresu Mój selektywnie — to znaczy, skonfiguruj co tydzień i codziennie, ale nie co rok i miesiąc<br/>
 Tak, struktura przechowywania usługi Azure Backup umożliwia w pełni elastyczne definiowanie zasad przechowywania zgodnie z wymaganiami użytkownika.
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>Czy można „zaplanować utworzenie kopii zapasowej” o godzinie 18:00 i określić zasady przechowywania na inną godzinę?<br/>

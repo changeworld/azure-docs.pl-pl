@@ -1,11 +1,10 @@
 ---
-title: "Podręcznik projektowania tabeli magazynu systemu Azure | Dokumentacja firmy Microsoft"
-description: "Projektowania skalowalności i wydajności tabel Azure Table Storage"
+title: Podręcznik projektowania tabeli magazynu systemu Azure | Dokumentacja firmy Microsoft
+description: Projektowania skalowalności i wydajności tabel Azure Table Storage
 services: cosmos-db
 documentationcenter: na
-author: mimig1
-manager: tadb
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
 ms.devlang: na
@@ -13,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/03/2017
-ms.author: mimig
-ms.openlocfilehash: fadb81e16a6c641ca15efb4f910a51de4fe7c997
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: sngun
+ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik projektowania tabeli magazynu systemu Azure: Projektowanie skalowalności i wydajności tabele
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -52,9 +51,9 @@ W poniższym przykładzie przedstawiono projekt prostą tabelę do przechowywani
 <table>
 <tr>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>ADAM</td>
@@ -72,9 +71,9 @@ W poniższym przykładzie przedstawiono projekt prostą tabelę do przechowywani
 <table>
 <tr>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Cze</td>
@@ -91,7 +90,7 @@ W poniższym przykładzie przedstawiono projekt prostą tabelę do przechowywani
 <td>
 <table>
 <tr>
-<th>DepartmentName</th>
+<th>Nazwa działu</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -109,9 +108,9 @@ W poniższym przykładzie przedstawiono projekt prostą tabelę do przechowywani
 <table>
 <tr>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Krzysztof</td>
@@ -1087,7 +1086,7 @@ Zwróć uwagę, że wyjątki zgłaszane, gdy biblioteka klienta magazynu wykonuj
 
 Należy również rozważyć, jak projektu wpływa na sposób obsługi przez aplikację kliencką operacje współbieżności i aktualizacji.  
 
-#### <a name="managing-concurrency"></a>Zarządzanie współbieżności
+#### <a name="managing-concurrency"></a>Zarządzanie współbieżnością
 Domyślnie usługa tabel implementuje optymistycznej współbieżności testy na poziomie poszczególnych jednostek dla **Wstaw**, **scalania**, i **usunąć** operacje, chociaż można wymusić uruchomienia usługi tabeli, aby pominąć te sprawdzenia klienta. Aby uzyskać więcej informacji o zarządzaniu współbieżności usługi tabel, zobacz [Zarządzanie współbieżność w magazynie platformy Microsoft Azure](../storage/common/storage-concurrency.md).  
 
 #### <a name="merge-or-replace"></a>Scalanie lub Zastąp
@@ -1118,9 +1117,9 @@ Usługa tabel jest *bez schematu* sklepu tabeli, która oznacza, że pojedynczej
 <table>
 <tr>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1138,9 +1137,9 @@ Usługa tabel jest *bez schematu* sklepu tabeli, która oznacza, że pojedynczej
 <table>
 <tr>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1157,7 +1156,7 @@ Usługa tabel jest *bez schematu* sklepu tabeli, która oznacza, że pojedynczej
 <td>
 <table>
 <tr>
-<th>DepartmentName</th>
+<th>Nazwa działu</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1175,9 +1174,9 @@ Usługa tabel jest *bez schematu* sklepu tabeli, która oznacza, że pojedynczej
 <table>
 <tr>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1211,9 +1210,9 @@ Należy pamiętać, że każdy obiekt muszą mieć **PartitionKey**, **RowKey**,
 <tr>
 <th>EntityType</th>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Pracownika</td>
@@ -1233,9 +1232,9 @@ Należy pamiętać, że każdy obiekt muszą mieć **PartitionKey**, **RowKey**,
 <tr>
 <th>EntityType</th>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Pracownika</td>
@@ -1254,7 +1253,7 @@ Należy pamiętać, że każdy obiekt muszą mieć **PartitionKey**, **RowKey**,
 <table>
 <tr>
 <th>EntityType</th>
-<th>DepartmentName</th>
+<th>Nazwa działu</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -1274,9 +1273,9 @@ Należy pamiętać, że każdy obiekt muszą mieć **PartitionKey**, **RowKey**,
 <tr>
 <th>EntityType</th>
 <th>Imię</th>
-<th>LastName</th>
+<th>Nazwisko</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Pracownika</td>

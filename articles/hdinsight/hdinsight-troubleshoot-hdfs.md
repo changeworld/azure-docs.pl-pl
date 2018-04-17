@@ -1,25 +1,23 @@
 ---
-title: "Rozwiązywanie problemów z systemem plików HDFS za pomocą usługi Azure HDinsight | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania na temat pracy z systemem plików HDFS i usłudze Azure HDInsight."
-keywords: "Azure HDInsight, system plików HDFS, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania"
+title: Rozwiązywanie problemów z systemem plików HDFS za pomocą usługi Azure HDinsight | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania na temat pracy z systemem plików HDFS i usłudze Azure HDInsight.
+keywords: Azure HDInsight, system plików HDFS, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 4C33828F-2982-47F0-B858-C32FFF634D9E
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: 7c9d555130d806728f9d3a82f49e81b18c1e5125
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e63dbf8feb941aef3d3c76439f55527da0388b85
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem plików HDFS za pomocą usługi Azure HDInsight
 
@@ -31,7 +29,7 @@ Dowiedz się więcej o Najważniejsze problemy i rozwiązania ich podczas pracy 
 
 Dostęp do lokalnego systemu plików HDFS wiersz polecenia i kodu aplikacji, a nie przy użyciu magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Store z wewnątrz klastra usługi HDInsight.   
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. W wierszu polecenia, użyj `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` jako literału, tak jak następujące polecenie:
 
@@ -151,7 +149,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Liczba węzłów to poniżej lub bliski współczynnik replikacji systemu plików HDFS.
 
-### <a name="resolution-steps"></a>Kroki rozwiązania 
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
 1. Pobierz stan systemu plików HDFS w klastrze usługi HDInsight przy użyciu następujących poleceń:
 

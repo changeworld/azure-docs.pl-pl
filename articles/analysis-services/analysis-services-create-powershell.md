@@ -1,25 +1,18 @@
 ---
-title: "Tworzenie serwera usług Azure Analysis Services przy użyciu programu PowerShell | Microsoft Docs"
-description: "Dowiedz się, jak utworzyć serwer usług Azure Analysis Services przy użyciu programu PowerShell"
-services: analysis-services
-documentationcenter: 
+title: Tworzenie serwera usług Azure Analysis Services przy użyciu programu PowerShell | Microsoft Docs
+description: Dowiedz się, jak utworzyć serwer usług Azure Analysis Services przy użyciu programu PowerShell
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.custom: mvc
-ms.openlocfilehash: 083c5a9bb5c57f3287c259900e6a23d6f0a886de
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: cba5d5d6547421ed2d665fc78e35a654eda5fda6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>Tworzenie serwera usług Azure Analysis Services przy użyciu programu PowerShell
 
@@ -76,7 +69,7 @@ Możesz usunąć serwer z subskrypcji przy użyciu polecenia [Remove-AzureRmAnal
 Remove-AzureRmAnalysisServicesServer -Name "myServer" -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Zarządzanie usługami Azure Analysis Services przy użyciu programu PowerShell](analysis-services-powershell.md)   
 [Wdrażanie modelu w programie SSDT](analysis-services-deploy.md)   
 [Create a model in Azure portal (preview) (Tworzenie modelu w wersji zapoznawczej witryny Azure Portal)](analysis-services-create-model-portal.md)

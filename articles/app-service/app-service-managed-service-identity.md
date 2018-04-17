@@ -1,36 +1,32 @@
 ---
-title: "Tożsamość usługi App Service i usługę Azure Functions zarządzanej | Dokumentacja firmy Microsoft"
-description: "Koncepcyjny przewodnik odwołanie i instalacji do obsługi tożsamości usługi zarządzane w usłudze Azure App Service i usługi Azure Functions"
+title: Tożsamość usługi App Service i usługę Azure Functions zarządzanej | Dokumentacja firmy Microsoft
+description: Koncepcyjny przewodnik odwołanie i instalacji do obsługi tożsamości usługi zarządzane w usłudze Azure App Service i usługi Azure Functions
 services: app-service
 author: mattchenderson
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a2aacc28a70a5150c1903a60c7a697409e2bbbe7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Jak używać Azure zarządzanych tożsamości usługi (publicznej wersji zapoznawczej) w aplikacji usługi i usługi Azure Functions
 
 > [!NOTE] 
-> Zarządzane tożsamości usługi dla usługi aplikacji i funkcji platformy Azure jest obecnie w przeglądzie.
+> Zarządzane tożsamości usługi dla usługi aplikacji i funkcji platformy Azure jest obecnie w przeglądzie. Usługa aplikacji w systemie Linux i aplikacji sieci Web dla kontenerów nie są obecnie obsługiwane.
 
 W tym temacie przedstawiono sposób utworzenia tożsamości zarządzanych aplikacji usługi aplikacji i usługi Azure Functions aplikacje i jak z niego korzystać, aby uzyskać dostęp do innych zasobów. Tożsamość usługi zarządzanej z usługi Azure Active Directory umożliwia aplikacji łatwo uzyskiwać dostęp do innych chronionych AAD zasoby, takie jak usługi Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie trzeba zapewniać ani obrócić żadnych kluczy tajnych. Więcej informacji o zarządzanych tożsamość usługi, zobacz [omówienie zarządzane tożsamość usługi](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Tworzenie aplikacji przy użyciu tożsamości
 
 Tworzenie aplikacji przy użyciu tożsamości wymaga dodatkowych właściwości można ustawić w aplikacji.
-
-> [!NOTE] 
-> Tylko podstawowy miejsca dla lokacji będzie odbierać tożsamości. Zarządzane tożsamości usługi do wdrożenia, które gniazda nie są jeszcze obsługiwane.
-
 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
@@ -48,11 +44,11 @@ Aby skonfigurować tożsamość usługi zarządzanej w portalu, zostanie najpier
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 
-Aby skonfigurować tożsamość usługi zarządzanej przy użyciu wiersza polecenia platformy Azure, musisz użyć `az webapp assign-identity` polecenia w odniesieniu do istniejących aplikacji. Są trzy opcje uruchamiania przykładów w tej sekcji:
+Aby skonfigurować tożsamość usługi zarządzanej przy użyciu wiersza polecenia platformy Azure, musisz użyć `az webapp identity assign` polecenia w odniesieniu do istniejących aplikacji. Są trzy opcje uruchamiania przykładów w tej sekcji:
 
 - Użyj [powłoki chmury Azure](../cloud-shell/overview.md) z portalu Azure.
 - Użyć osadzonego powłoki chmury Azure za pośrednictwem "Spróbuj on" przycisk, znajdujący się w prawym górnym rogu każdej blok kodu poniżej.
-- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.21 lub nowsza), jeśli wolisz korzystać z konsoli lokalnej interfejsu wiersza polecenia. 
+- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 lub nowsza), jeśli wolisz korzystać z konsoli lokalnej interfejsu wiersza polecenia. 
 
 Poniższe kroki przeprowadzi użytkownika przez proces tworzenia aplikacji sieci web i przypisywania jej tożsamość za pomocą interfejsu wiersza polecenia:
 
@@ -65,14 +61,14 @@ Poniższe kroki przeprowadzi użytkownika przez proces tworzenia aplikacji sieci
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location westus
-    az appservice plan create --name myplan --resource-group myResourceGroup --sku S1
-    az webapp create --name myapp --resource-group myResourceGroup --plan myplan
+    az appservice plan create --name myPlan --resource-group myResourceGroup --sku S1
+    az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. Uruchom `assign-identity` polecenie w celu utworzenia tożsamości dla tej aplikacji:
+3. Uruchom `identity assign` polecenie w celu utworzenia tożsamości dla tej aplikacji:
 
     ```azurecli-interactive
-    az webapp assign-identity --name myApp --resource-group myResourceGroup
+    az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Azure Resource Manager

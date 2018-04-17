@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie i zarządzanie problemy dotyczące Microsoft Azure Cloud Services często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera listę często zadawanych pytań dotyczących konfiguracji i zarządzania dla usługi w chmurze Microsoft Azure."
+title: Konfigurowanie i zarządzanie problemy dotyczące Microsoft Azure Cloud Services często zadawane pytania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera listę często zadawanych pytań dotyczących konfiguracji i zarządzania dla usługi w chmurze Microsoft Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
-ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cc43d1a0e07eac78a47e6f183c2fd066a489f4f4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurowanie i zarządzanie problemy dotyczące usług Azure Cloud Services: często zadawane pytania (FAQ)
 
@@ -201,7 +201,7 @@ Aby uzyskać więcej informacji, zobacz [HTTP/2 w usługach IIS](https://blogs.i
 ### <a name="how-can-i-implement-role-based-access-for-cloud-services"></a>Jak wdrożyć dostępu opartej na rolach dla usługi w chmurze?
 Usługi w chmurze nie obsługuje modelu kontroli dostępu opartej na rolach (RBAC), ponieważ nie jest usługa Azure Resource Manager na podstawie.
 
-Zobacz [Azure RBAC, a administratorzy subskrypcji klasycznego](../active-directory/role-based-access-control-what-is.md#azure-rbac-vs-classic-subscription-administrators).
+Zobacz [Azure RBAC, a administratorzy subskrypcji klasycznego](../role-based-access-control/overview.md#azure-rbac-vs-classic-subscription-administrators).
 
 ## <a name="remote-desktop"></a>Pulpit zdalny
 

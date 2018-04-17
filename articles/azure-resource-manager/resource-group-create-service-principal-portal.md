@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 264befc6c60b87d41658b4da763e477fbb7e3f8c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bbda406633f97d9a6c90bc49374268df28b68f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Aby utworzyć aplikację usługi Azure Active Directory i nazwy głównej usługi, który ma dostęp do zasobów za pomocą portalu
 
@@ -34,9 +34,9 @@ Aby ukończyć w tym artykule, należy wystarczających uprawnień do rejestrowa
 
 ### <a name="check-azure-active-directory-permissions"></a>Sprawdź uprawnienia usługi Azure Active Directory
 
-1. Wybierz **usługi Azure Active Directory**.
+1. Wybierz pozycję **Azure Active Directory**.
 
-   ![Wybierz usługę azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
+   ![Wybieranie pozycji Azure Active Directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
 1. W usłudze Azure Active Directory, zaznacz **ustawienia użytkownika**.
 
@@ -46,13 +46,13 @@ Aby ukończyć w tym artykule, należy wystarczających uprawnień do rejestrowa
 
    ![Wyświetlanie rejestracji aplikacji](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
 
-1. Jeśli ustawiono rejestracji aplikacji, ustawianie **nr**tylko administrator użytkownicy będą mogli zarejestrować aplikacji. Sprawdź, czy Twoje konto administratora dla dzierżawy usługi Azure AD. Wybierz **omówienie** i przyjrzyj się informacje o użytkowniku. Jeśli Twoje konto jest przypisany do roli użytkownika, ale ustawienia rejestracji aplikacji (z poprzedniego kroku) jest ograniczona do administratorów, skontaktuj się z administratorem, aby albo przypisanie do roli administratora lub aby użytkownicy mogli zarejestrować aplikacji.
+1. Jeśli ustawiono rejestracji aplikacji, ustawianie **nr**, tylko [Administratorzy globalni](../active-directory/active-directory-assign-admin-roles-azure-portal.md) można zarejestrować aplikacji. Sprawdź, czy Twoje konto administratora dla dzierżawy usługi Azure AD. Wybierz **omówienie** i przyjrzyj się informacje o użytkowniku. Jeśli Twoje konto jest przypisany do roli użytkownika, ale ustawienia rejestracji aplikacji (z poprzedniego kroku) jest ograniczona do administratorów, skontaktuj się z administratorem, aby albo przypisanie do roli administratora globalnego lub aby użytkownicy mogli zarejestrować aplikacji.
 
    ![Znajdź użytkownika](./media/resource-group-create-service-principal-portal/view-user-info.png)
 
 ### <a name="check-azure-subscription-permissions"></a>Sprawdź uprawnienia subskrypcji platformy Azure
 
-W Twojej subskrypcji platformy Azure, jego konto musi mieć `Microsoft.Authorization/*/Write` dostępu przypisany do roli aplikacji usługi AD. Ta akcja jest przyznawane za pośrednictwem [właściciela](../active-directory/role-based-access-built-in-roles.md#owner) roli lub [Administrator dostępu użytkowników](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) roli. Jeśli Twoje konto jest przypisany do **współautora** roli, nie masz odpowiedniego uprawnienia. Błąd podczas próby przypisać nazwę główną usługi do roli.
+W Twojej subskrypcji platformy Azure, jego konto musi mieć `Microsoft.Authorization/*/Write` dostępu przypisany do roli aplikacji usługi AD. Ta akcja jest przyznawane za pośrednictwem [właściciela](../role-based-access-control/built-in-roles.md#owner) roli lub [Administrator dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) roli. Jeśli Twoje konto jest przypisany do **współautora** roli, nie masz odpowiedniego uprawnienia. Błąd podczas próby przypisać nazwę główną usługi do roli.
 
 Aby sprawdzić uprawnienia subskrypcji:
 
@@ -71,71 +71,71 @@ Aby sprawdzić uprawnienia subskrypcji:
 ## <a name="create-an-azure-active-directory-application"></a>Tworzenie aplikacji usługi Azure Active Directory
 
 1. Zaloguj się do konta platformy Azure za pośrednictwem [portalu Azure](https://portal.azure.com).
-1. Wybierz **usługi Azure Active Directory**.
+1. Wybierz pozycję **Azure Active Directory**.
 
-   ![Wybierz usługę azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
+   ![Wybieranie pozycji Azure Active Directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
-1. Wybierz **rejestracji aplikacji**.
+1. Wybierz pozycję **Rejestracje aplikacji**.
 
-   ![Wybierz rejestracji aplikacji](./media/resource-group-create-service-principal-portal/select-app-registrations.png)
+   ![Wybieranie rejestracji aplikacji](./media/resource-group-create-service-principal-portal/select-app-registrations.png)
 
-1. Wybierz **nowej rejestracji aplikacji**.
+1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 
-   ![Dodaj aplikację](./media/resource-group-create-service-principal-portal/select-add-app.png)
+   ![Dodawanie aplikacji](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-1. Podaj nazwę i adres URL dla aplikacji. Wybierz **aplikacji sieci Web / interfejs API** dla typu aplikacji, w którym chcesz utworzyć. Nie można utworzyć poświadczenia dla [aplikacji natywnej](../active-directory/active-directory-application-proxy-native-client.md); w związku z tym, że typ nie działa w przypadku zautomatyzowanych aplikacji. Po ustawieniu wartości, wybierz **Utwórz**.
+1. Podaj nazwę i adres URL aplikacji. Wybierz **aplikację internetową/interfejs API** dla typu aplikacji, którą chcesz utworzyć. Nie można utworzyć poświadczenia dla [aplikacji natywnej](../active-directory/active-directory-application-proxy-native-client.md); w związku z tym, że typ nie działa w przypadku zautomatyzowanych aplikacji. Po ustawieniu wartości, wybierz **Utwórz**.
 
-   ![Nazwa aplikacji](./media/resource-group-create-service-principal-portal/create-app.png)
+   ![Nadawanie nazwy aplikacji](./media/resource-group-create-service-principal-portal/create-app.png)
 
 Utworzono aplikację.
 
 ## <a name="get-application-id-and-authentication-key"></a>Pobierz klucz aplikacji identyfikator i uwierzytelniania
 
-Podczas logowania programowo, potrzebny jest identyfikator dla aplikacji i klucz uwierzytelniania. Aby uzyskać te wartości, wykonaj następujące kroki:
+Gdy logujesz się w sposób programowy, potrzebujesz identyfikatora aplikacji i klucza uwierzytelniania. Aby uzyskać te wartości, wykonaj następujące kroki:
 
-1. Z **rejestracji aplikacji** w usłudze Azure Active Directory, wybierz aplikację.
+1. W oknie **Rejestracje aplikacji** w usłudze Azure Active Directory wybierz aplikację.
 
-   ![Wybierz aplikację](./media/resource-group-create-service-principal-portal/select-app.png)
+   ![Wybieranie aplikacji](./media/resource-group-create-service-principal-portal/select-app.png)
 
-1. Kopiuj **identyfikator aplikacji** i zapisze go w kodzie aplikacji. Niektóre [przykładowe aplikacje](#log-in-as-the-application) odwoływać się do tej wartości jako identyfikator klienta.
+1. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Niektóre [przykładowe aplikacje](#log-in-as-the-application) odwołują się do tej wartości jako identyfikatora klienta.
 
    ![Identyfikator klienta](./media/resource-group-create-service-principal-portal/copy-app-id.png)
 
-1. Aby wygenerować klucz uwierzytelniania, wybierz **ustawienia**.
+1. Aby wygenerować klucz uwierzytelniania, wybierz pozycję **Ustawienia**.
 
-   ![Wybierz ustawienia](./media/resource-group-create-service-principal-portal/select-settings.png)
+   ![Wybieranie pozycji Ustawienia](./media/resource-group-create-service-principal-portal/select-settings.png)
 
-1. Aby wygenerować klucz uwierzytelniania, wybierz **klucze**.
+1. Aby wygenerować klucz uwierzytelniania, wybierz pozycję **Klucze**.
 
-   ![Wybierz klucze](./media/resource-group-create-service-principal-portal/select-keys.png)
+   ![Wybieranie pozycji Klucze](./media/resource-group-create-service-principal-portal/select-keys.png)
 
-1. Podaj opis klucza i czas trwania dla klucza. Po zakończeniu wybierz **zapisać**.
+1. Podaj opis i czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
 
-   ![Zapisz klucz](./media/resource-group-create-service-principal-portal/save-key.png)
+   ![Zapisywanie klucza](./media/resource-group-create-service-principal-portal/save-key.png)
 
-   Po zapisaniu klucza, wyświetlana jest wartość klucza. Skopiuj tę wartość, ponieważ nie można pobrać klucza później. Musisz podać wartość tego klucza z Identyfikatorem aplikacji do logowania jako aplikacja. Przechowywanie wartości klucza, gdzie aplikacja je pobrać.
+   Po zapisaniu klucza zostanie wyświetlona jego wartość. Skopiuj tę wartość, ponieważ później nie będzie można pobrać klucza. Wartość klucza podaje się z identyfikatorem aplikacji w celu zalogowania się jako aplikacja. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
-   ![zapisano klucza](./media/resource-group-create-service-principal-portal/copy-key.png)
+   ![Zapisany klucz](./media/resource-group-create-service-principal-portal/copy-key.png)
 
-## <a name="get-tenant-id"></a>Uzyskanie Identyfikatora dzierżawy
+## <a name="get-tenant-id"></a>Pobieranie identyfikatora dzierżawy
 
-Podczas logowania programowo, musisz przekazać identyfikator dzierżawcy do żądania uwierzytelniania.
+Gdy logujesz się w sposób programowy, musisz przekazać identyfikator dzierżawy z żądaniem uwierzytelniania.
 
-1. Wybierz **usługi Azure Active Directory**.
+1. Wybierz pozycję **Azure Active Directory**.
 
-   ![Wybierz usługę azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
+   ![Wybieranie pozycji Azure Active Directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
-1. Uzyskanie Identyfikatora dzierżawy, wybierz **właściwości** dla dzierżawy usługi Azure AD.
+1. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
 
-   ![Wybierz właściwości usługi Azure AD](./media/resource-group-create-service-principal-portal/select-ad-properties.png)
+   ![Wybieranie pozycji Właściwości usługi Azure AD](./media/resource-group-create-service-principal-portal/select-ad-properties.png)
 
-1. Kopiuj **identyfikator katalogu**. Ta wartość jest swojego identyfikatora dzierżawcy.
+1. Skopiuj **identyfikator katalogu**. Ta wartość jest Twoim identyfikatorem dzierżawy.
 
    ![Identyfikator dzierżawy](./media/resource-group-create-service-principal-portal/copy-directory-id.png)
 
 ## <a name="assign-application-to-role"></a>Przypisywanie aplikacji do roli
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, które roli reprezentuje odpowiednich uprawnień dla aplikacji. Aby dowiedzieć się więcej o dostępnych ról, zobacz [RBAC: Built in Roles](../active-directory/role-based-access-built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, które roli reprezentuje odpowiednich uprawnień dla aplikacji. Aby dowiedzieć się więcej o dostępnych ról, zobacz [RBAC: Built in Roles](../role-based-access-control/built-in-roles.md).
 
 Na poziomie subskrypcji, grupy zasobów lub zasobów można ustawić zakresu. Uprawnienia są dziedziczone na niższe poziomy zakresu. Na przykład dodawanie aplikacji do roli czytnik dla grupy zasobów oznacza, że mogą odczytywać, grupy zasobów i wszystkie zasoby, które zawiera.
 
@@ -167,5 +167,5 @@ Na poziomie subskrypcji, grupy zasobów lub zasobów można ustawić zakresu. Up
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby skonfigurować aplikację wielu dzierżawców, zobacz [przewodnik dewelopera do autoryzacji przy użyciu interfejsu API Menedżera zasobów Azure](resource-manager-api-authentication.md).
-* Aby dowiedzieć się więcej na temat określania zasad zabezpieczeń, zobacz [kontroli dostępu opartej na roli Azure](../active-directory/role-based-access-control-configure.md).  
-* Aby uzyskać listę dostępnych akcji, które można udzielić lub odmówić dla użytkowników, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../active-directory/role-based-access-control-resource-provider-operations.md).
+* Aby dowiedzieć się więcej na temat określania zasad zabezpieczeń, zobacz [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md).  
+* Aby uzyskać listę dostępnych akcji, które można udzielić lub odmówić dla użytkowników, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../role-based-access-control/resource-provider-operations.md).

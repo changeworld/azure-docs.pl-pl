@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b0adf5098b1be9f245b22c859dbb86a14335e435
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Ciągłe wdrażanie w środowisku z Wpięć usługi kontenera platformy Azure
 
-Ten dokument pokazano, jak skonfigurować ciągłe wdrażanie podstawowych przepływ pracy między Wpięć a klastrem usługi kontenera platformy Azure (AKS). 
+Ten dokument pokazano, jak skonfigurować ciągłe wdrażanie podstawowych przepływ pracy między Wpięć a klastrem usługi kontenera platformy Azure (AKS).
 
 Przykładowy przepływ pracy obejmuje następujące kroki:
 
@@ -41,7 +41,7 @@ Aby wykonać kroki opisane w tym artykule potrzebne są następujące zasoby.
 
 ## <a name="prepare-application"></a>Przygotowanie aplikacji
 
-Aplikacja Azure głos w całym dokumencie zawiera interfejs sieci web hostowanych w stanowiskami co najmniej jednego i drugiego pod hosting Redis do przechowywania danych tymczasowych. 
+Aplikacja Azure głos w całym dokumencie zawiera interfejs sieci web hostowanych w stanowiskami co najmniej jednego i drugiego pod hosting Redis do przechowywania danych tymczasowych.
 
 Przed zbudowaniem Wpięć / integracji AKS przygotować i wdrożyć aplikację Azure głos AKS klastra. Traktować jako wersja jednego z aplikacji.
 
@@ -94,7 +94,7 @@ Użyj [docker tag] [ docker-tag] polecenie, aby tag obrazu o nazwę logowania se
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Zaktualizuj wartość ACR logowania serwera o nazwę serwera ACR logowania i wypychania `azure-vote-front` obrazu w rejestrze. 
+Zaktualizuj wartość ACR logowania serwera o nazwę serwera ACR logowania i wypychania `azure-vote-front` obrazu w rejestrze.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -118,7 +118,7 @@ Następnie użyj [utworzyć kubectl] [ kubectl-create] polecenie do uruchomienia
 kubectl create -f azure-vote-all-in-one-redis.yaml
 ```
 
-A [usługi Kubernetes] [ kubernetes-service] utworzeniu do udostępnienia aplikacji w Internecie. Ten proces może potrwać kilka minut. 
+A [usługi Kubernetes] [ kubernetes-service] utworzeniu do udostępnienia aplikacji w Internecie. Ten proces może potrwać kilka minut.
 
 Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z argumentem `--watch`.
 
@@ -127,12 +127,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 Początkowo adres *EXTERNAL-IP* dla usługi *azure-vote-front* pojawia się jako *oczekujący*.
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Po zmianie adresu *EXTERNAL-IP* z *oczekującego* na *adres IP*, zatrzymaj proces śledzenia narzędzia kubectl za pomocą polecenia `control+c`. 
+Po zmianie adresu *EXTERNAL-IP* z *oczekującego* na *adres IP*, zatrzymaj proces śledzenia narzędzia kubectl za pomocą polecenia `control+c`.
 
 ```
 azure-vote-front   10.0.34.242   13.90.150.118   80:30676/TCP   2m
@@ -209,7 +209,7 @@ Kliknij przycisk **OK** i wróć do portalu administratora Wpięć.
 
 W portalu administracyjnym Wpięć kliknij **nowy element**.
 
-Nazwę projektu, na przykład `azure-vote`, wybierz pozycję **projektu dowolne**i kliknij przycisk **OK**. 
+Nazwę projektu, na przykład `azure-vote`, wybierz pozycję **projektu dowolne**i kliknij przycisk **OK**.
 
 ![Wpięć projektu](media/aks-jenkins/jenkins-project.png)
 
@@ -217,9 +217,9 @@ W obszarze **ogólne**, wybierz pozycję **projektu GitHub** , a następnie wpro
 
 ![Projekt GitHub](media/aks-jenkins/github-project.png)
 
-W obszarze **zarządzania kodem źródłowym**, wybierz pozycję **Git**, wprowadź adres URL do rozwidlenia repozytorium GitHub głos Azure. 
+W obszarze **zarządzania kodem źródłowym**, wybierz pozycję **Git**, wprowadź adres URL do rozwidlenia repozytorium GitHub głos Azure.
 
-Za pomocą poświadczeń kliknij i **Dodaj** > **Wpięć**. W obszarze **rodzaj**, wybierz pozycję **tajny tekst** , a następnie wprowadź Twojej [GitHub osobisty token dostępu] [ git-access-token] jako klucz tajny. 
+Za pomocą poświadczeń kliknij i **Dodaj** > **Wpięć**. W obszarze **rodzaj**, wybierz pozycję **tajny tekst** , a następnie wprowadź Twojej [GitHub osobisty token dostępu] [ git-access-token] jako klucz tajny.
 
 Wybierz **Dodaj** po zakończeniu.
 
@@ -233,7 +233,7 @@ W obszarze **Build Environment**, wybierz pozycję **tajny teksty lub plików u�
 
 ![Wpięć środowisko kompilacji](media/aks-jenkins/build-environment.png)
 
-W obszarze **powiązania**, wybierz pozycję **Dodaj** > **nazwy użytkownika i hasła (oddzielone)**. 
+W obszarze **powiązania**, wybierz pozycję **Dodaj** > **nazwy użytkownika i hasła (oddzielone)**.
 
 Wprowadź `ACR_ID` dla **zmienna nazwy użytkownika**, i `ACR_PASSWORD` dla **zmiennej hasła**.
 
@@ -263,13 +263,13 @@ Po ukończeniu kliknij przycisk **zapisać**.
 
 Przed kontynuowaniem należy przetestować Wpięć kompilacji. Taki tryb testowania weryfikuje, czy zadania kompilacji został prawidłowo skonfigurowany, właściwy plik uwierzytelniania Kubernetes znajduje się w miejscu i że dostarczono prawidłowe poświadczenia ACR.
 
-Kliknij przycisk **kompilacji teraz** w menu po lewej stronie projektu. 
+Kliknij przycisk **kompilacji teraz** w menu po lewej stronie projektu.
 
 ![Wpięć testów kompilacji](media/aks-jenkins/test-build.png)
 
 W trakcie tego procesu repozytorium GitHub został sklonowany z Wpięć serwerem kompilacji. Nowy obraz kontenera jest wbudowana i przypisany do rejestru ACR. Na koniec głos Azure aplikacja była uruchomiona w klastrze AKS zostało zaktualizowane do użycia nowego obrazu. Ponieważ żadne zmiany nie zostały wprowadzone do kodu aplikacji, aplikacja nie zostanie zmieniona.
 
-Po zakończeniu procesu możesz kliknąć **kompilacji #1** w obszarze Historia kompilacji i wybierz **dane wyjściowe konsoli** aby zobaczyć wszystkie dane wyjściowe z procesu kompilacji. Ostatnim wierszu powinna wskazywać pomyślnego utworzenia kompilacji. 
+Po zakończeniu procesu kliknij **kompilacji #1** w obszarze Historia kompilacji i wybierz **dane wyjściowe konsoli** aby zobaczyć wszystkie dane wyjściowe z procesu kompilacji. Ostatnim wierszu powinna wskazywać pomyślnego utworzenia kompilacji.
 
 ## <a name="create-github-webhook"></a>Tworzenie elementu webhook GitHub
 
@@ -280,14 +280,14 @@ Następnie podłącz repozytorium aplikacji do serwera kompilacji Wpięć tak, a
 3. Wybierz **Dodaj usługę**, wprowadź `Jenkins (GitHub plugin)` w polu filtru, a następnie wybierz wtyczki.
 4. Dla Wpięć utworzenie punktu zaczepienia adres URL, wprowadź `http://<publicIp:8080>/github-webhook/` gdzie `publicIp` to adres IP serwera Wpięć. Pamiętaj wpisać kreskę końcową /.
 5. Wybierz opcję Dodaj usługi.
-  
+
 ![Element webhook GitHub](media/aks-jenkins/webhook.png)
 
 ## <a name="test-cicd-process-end-to-end"></a>Testowanie procesu CI/CD pełnego
 
-Na komputerze deweloperskim otwarcie Sklonowana aplikacja za pomocą edytora kodu. 
+Na komputerze deweloperskim otwarcie Sklonowana aplikacja za pomocą edytora kodu.
 
-W obszarze **/azure-vote/azure-vote** katalogu, można znaleźć w pliku o nazwie **config_file.cfg**. Zaktualizuj wartości głosowanie w tym pliku inny niż kotów i psów. 
+W obszarze **/azure-vote/azure-vote** katalogu, Znajdź plik o nazwie **config_file.cfg**. Zaktualizuj wartości głosowanie w tym pliku inny niż kotów i psów.
 
 Poniższy przykład przedstawia i zaktualizować **config_file.cfg** pliku.
 
@@ -299,7 +299,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Po zakończeniu zapisz plik, Zatwierdź zmiany i wypychania do rozwidlenia repozytorium GitHub. Po zakończeniu zatwierdzenia element webhook GitHub wyzwala nową kompilację Wpięć, która aktualizuje kontener obrazu i wdrożenie AKS. Monitorowanie procesu kompilacji w konsoli administracyjnej Wpięć. 
+Po zakończeniu zapisz plik, Zatwierdź zmiany i wypychania do rozwidlenia repozytorium GitHub. Po zakończeniu zatwierdzenia element webhook GitHub wyzwala nową kompilację Wpięć, która aktualizuje kontener obrazu i wdrożenie AKS. Monitorowanie procesu kompilacji w konsoli administracyjnej Wpięć.
 
 Po ukończeniu kompilacji, Wyszukaj ponownie punkt końcowy aplikacji można obserwować zmiany.
 

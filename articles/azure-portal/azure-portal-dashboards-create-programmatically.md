@@ -1,8 +1,8 @@
 ---
-title: "Programowe tworzenie pulpitów nawigacyjnych Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule wyjaśniono, jak programowo tworzenia pulpitów nawigacyjnych Azure."
+title: Programowe tworzenie pulpitów nawigacyjnych Azure | Dokumentacja firmy Microsoft
+description: W tym artykule wyjaśniono, jak programowo tworzenia pulpitów nawigacyjnych Azure.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
 manager: timlt
 editor: tysonn
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3d72c8b026dd7c72be01aabcb47e76174d7afd6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programowe tworzenie pulpitów nawigacyjnych Azure
 
@@ -55,7 +55,7 @@ Po skonfigurowaniu pulpitu nawigacyjnego do potrzeb, Twoje następne kroki są p
 
 ![polecenie udziału](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Polecenie udziału Pokazuje okno dialogowe z prośbą o wybierz grupę subskrypcji i zasobu do publikowania. Należy pamiętać, że [musi mieć dostęp do zapisu](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) do wybranej grupy subskrypcji i zasobu.
+Polecenie udziału Pokazuje okno dialogowe z prośbą o wybierz grupę subskrypcji i zasobu do publikowania. Należy pamiętać, że [musi mieć dostęp do zapisu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) do wybranej grupy subskrypcji i zasobu.
 
 ![Udostępnianie i dostęp](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

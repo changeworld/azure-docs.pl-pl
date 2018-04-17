@@ -1,11 +1,11 @@
 ---
-title: "Interfejsu wiersza polecenia 2.0 umożliwia tworzenie aplikacji usługi Azure AD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services | Dokumentacja firmy Microsoft"
-description: "W tym temacie pokazano, jak używać do tworzenia aplikacji usługi Azure AD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services 2.0 interfejsu wiersza polecenia."
+title: Interfejsu wiersza polecenia 2.0 umożliwia tworzenie aplikacji usługi Azure AD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak używać do tworzenia aplikacji usługi Azure AD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services 2.0 interfejsu wiersza polecenia.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 205e554fa42b1c28ed78add3e84c046855875872
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b640455b151d0e5d4701b8c076ee1a587b92f5b6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Użyj 2.0 interfejsu wiersza polecenia, aby utworzyć aplikację AAD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services
 
@@ -61,7 +61,7 @@ Może to być na przykład jeden z następujących poziomów:
 
 Aby uzyskać więcej informacji, zobacz [Tworzenie nazwy głównej usługi platformy Azure z 2.0 interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Zobacz też [Manage Role-Based kontroli dostępu przy użyciu interfejsu wiersza polecenia platformy Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md). 
+Zobacz też [Manage Role-Based kontroli dostępu przy użyciu interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,11 +1,11 @@
 ---
-title: "Co robić w przypadku platformy Azure usługa przerw w działaniu, który ma wpływ na usługi Azure Key Vault | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, co należy zrobić w przypadku Azure zakłócenia, który ma wpływ na usługi Azure Key Vault."
+title: Co robić w przypadku platformy Azure usługa przerw w działaniu, który ma wpływ na usługi Azure Key Vault | Dokumentacja firmy Microsoft
+description: Dowiedz się, co należy zrobić w przypadku Azure zakłócenia, który ma wpływ na usługi Azure Key Vault.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: adamglick
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
 ms.service: key-vault
 ms.workload: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: sumedhb;aglick
-ms.openlocfilehash: 1f19c4bba2152eb021831dedda734fd54ee78d75
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: aglick
+ms.openlocfilehash: 11c2fe5d4b84f99c3b0e303d1abeea73442f57aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Usługa Azure Key Vault dostępność i nadmiarowość
 Usługa Azure Key Vault funkcjami wielu warstw nadmiarowość, aby upewnić się, że kluczy i kluczy tajnych pozostają dostępne dla aplikacji nawet w przypadku awarii poszczególnych składników usługi.
@@ -45,6 +45,6 @@ Istnieje kilka ostrzeżenia pod uwagę:
   * Dekodowanie
   * Weryfikuj
   * Podpisywanie
-  * Tworzenie kopii zapasowych
+  * Backup
 * Po przejściu w tryb failover nie jest ponownie, wszystkie żądania typy (w tym odczytu *i* żądań zapisu) są dostępne.
 

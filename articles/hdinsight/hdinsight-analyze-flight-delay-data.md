@@ -1,25 +1,23 @@
 ---
-title: "Analizowanie danych opóźnienie transmitowane przy użyciu platformy Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać jednego skryptu środowiska Windows PowerShell do tworzenia klastra usługi HDInsight, uruchamiać zadania Hive, uruchom zadanie Sqoop i usunąć klaster."
+title: Analizowanie danych opóźnienie transmitowane przy użyciu platformy Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać jednego skryptu środowiska Windows PowerShell do tworzenia klastra usługi HDInsight, uruchamiać zadania Hive, uruchom zadanie Sqoop i usunąć klaster.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5da745901ec2fe57530e4d7fe38a055e0b8691ac
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6e42cfa666ad6b6523043f4412a321789adad9a1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analizowanie danych opóźnienie transmitowane przy użyciu usługi Hive w usłudze HDInsight
 Gałąź umożliwia uruchomionych zadań MapReduce z Hadoop za pomocą skryptów języka przypominającego SQL o nazwie  *[HiveQL][hadoop-hiveql]*, które można zastosować do podsumowania, wyszukiwanie i analizowania dużych ilości danych.
@@ -54,7 +52,7 @@ W dodatkach instrukcje można znaleźć przekazywanie danych opóźnienie transm
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
 
-* **Subskrypcja platformy Azure**. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Stacja robocza z programem Azure PowerShell**.
 
     > [!IMPORTANT]
@@ -256,12 +254,12 @@ Przekazywanie plików danych i plików skryptu po stronie HiveQL (zobacz [dodate
 2. Na stronie wybierz następujące wartości:
 
     <table border="1">
-    <tr><th>Nazwa</th><th>Wartość</th></tr>
+    <tr><th>Name (Nazwa)</th><th>Wartość</th></tr>
     <tr><td>Filtr roku</td><td>2013 </td></tr>
-    <tr><td>Filtruj okres</td><td>Stycznia</td></tr>
-    <tr><td>Pola</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *operatora*, *FlightNum*, *OriginAirportID*, *pochodzenia*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*, *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*,  *NASDelay*, *SecurityDelay*, *LateAircraftDelay* (Usuń zaznaczenie wszystkich innych pól)</td></tr>
+    <tr><td>Filtruj okres</td><td>styczeń</td></tr>
+    <tr><td>Pola</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *operatora*, *FlightNum*, *OriginAirportID*, *Pochodzenia*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (Usuń zaznaczenie wszystkich innych pól)</td></tr>
     </table>
-3.Kliknij przycisk **Pobierz**.
+3. Kliknij przycisk **Pobierz**.
 4. Rozpakuj plik **C:\Tutorials\FlightDelay\2013Data** folderu. Każdy plik jest plikiem CSV i jest rozmiar około 60GB.
 5. Zmień nazwę miesiąca, który zawiera dane dla pliku. Na przykład, czy nazwę pliku zawierającego dane stycznia *January.csv*.
 6. Powtórz kroki 2 i 5, aby pobrać plik dla każdej z 12 miesięcy w 2013. Konieczne będzie co najmniej jeden plik do uruchamiania w samouczku.
@@ -383,8 +381,10 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [Hive języka definicji dany
     <tr><td>$storageAccountName</td><td>Gdzie chcesz przekazać skrypt HiveQL, aby konto usługi Azure Storage.</td></tr>
     <tr><td>$blobContainerName</td><td>Kontener obiektów Blob, gdy chcesz przekazać skrypt HiveQL.</td></tr>
     </table>
-2. Otwórz program Azure PowerShell ISE.
-3. Skopiuj i wklej poniższy skrypt w okienku skryptów:
+    
+2. Otwórz program Azure PowerShell ISE.  
+
+3. Skopiuj i wklej poniższy skrypt w okienku skryptów:  
 
     ```powershell
     [CmdletBinding()]
@@ -573,8 +573,10 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [Hive języka definicji dany
     <tr><td>$sqlDatabaseLocation</td><td>Ta wartość jest używana tylko wtedy, gdy tworzysz nowy serwer bazy danych platformy Azure.</td></tr>
     <tr><td>$sqlDatabaseName</td><td>Baza danych SQL, użyty do utworzenia tabeli AvgDelays zadania Sqoop. Utworzy bazę danych o nazwie HDISqoop pozostawić je puste. Nazwa tabeli dla danych wyjściowych zadania Sqoop jest AvgDelays. </td></tr>
     </table>
+    
 2. Otwórz program Azure PowerShell ISE.
-3. Skopiuj i wklej poniższy skrypt w okienku skryptów:
+
+3. Skopiuj i wklej poniższy skrypt w okienku skryptów:  
 
     ```powershell
     [CmdletBinding()]
@@ -699,7 +701,7 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [Hive języka definicji dany
     ```
 
    > [!NOTE]
-   > Skrypt używa representational stanu usługi transfer (REST), http://bot.whatismyipaddress.com, można pobrać zewnętrzny adres IP. Adres IP jest używany do utworzenia reguły zapory dla serwera bazy danych SQL.
+   > Skrypt używa representational stanu usługi transfer (REST), http://bot.whatismyipaddress.com, aby pobrać zewnętrzny adres IP. Adres IP jest używany do utworzenia reguły zapory dla serwera bazy danych SQL.
 
     Poniżej przedstawiono niektóre zmienne używane w skrypcie:
 

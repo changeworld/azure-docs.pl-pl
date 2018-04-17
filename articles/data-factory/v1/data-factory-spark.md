@@ -1,11 +1,11 @@
 ---
-title: "Wywoływanie programów Spark z fabryki danych Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak wywołać Spark programy z fabryki danych Azure za pomocą działania MapReduce."
+title: Wywoływanie programów Spark z fabryki danych Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wywołać Spark programy z fabryki danych Azure za pomocą działania MapReduce.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b39e6012365c426e95a38d5c5a40790f584ba473
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9df8b0987378fef37c7ca8f24070a88cbfc42f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Wywoływanie programów Spark z potoków fabryki danych Azure
 
@@ -59,7 +59,7 @@ Poniżej przedstawiono typowe etapy, aby utworzyć potok fabryki danych z dział
 
 2. Tworzenie klastra Spark w usłudze HDInsight, postępując zgodnie z instrukcjami w samouczku [Tworzenie klastra Spark w usłudze HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Skojarz konto magazynu, który został utworzony w kroku 1 z tym klastrem.
 
-3. Pobierz i przejrzyj plik skryptu języka Python **test.py** znajdujący się w [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).
+3. Pobierz i przejrzyj plik skryptu języka Python **test.py** znajdujący się w [ https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py ](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).
 
 4. Przekaż **test.py** do **pyFiles** folderu w **adfspark** kontenera w magazynie obiektów blob. Tworzenie kontenera i folderu, jeśli nie istnieją.
 
@@ -84,7 +84,7 @@ Aby utworzyć fabrykę danych, wykonaj następujące kroki:
 7. Wybierz pozycję **Utwórz**.
 
    > [!IMPORTANT]
-   > Aby utworzyć wystąpienia usługi Data Factory, musisz być członkiem roli [współautora usługi Data Factory](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) na poziomie subskrypcji/grupy zasobów.
+   > Aby utworzyć wystąpienia usługi Data Factory, musisz być członkiem roli [współautora usługi Data Factory](../../role-based-access-control/built-in-roles.md#data-factory-contributor) na poziomie subskrypcji/grupy zasobów.
 
 8. Fabryka danych możesz sprawdzić, jak jest tworzony na pulpicie nawigacyjnym portalu Azure.
 

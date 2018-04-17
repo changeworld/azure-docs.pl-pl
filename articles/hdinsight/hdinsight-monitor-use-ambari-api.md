@@ -1,26 +1,24 @@
 ---
-title: "Monitorowanie klastrów platformy Hadoop w usłudze HDInsight przy użyciu interfejsu API Ambari - Azure | Dokumentacja firmy Microsoft"
-description: "Przy użyciu interfejsów API Apache Ambari do tworzenia, zarządzania i monitorowania klastrów platformy Hadoop. Operator intuicyjne narzędzia i interfejsy API neutralizują złożoność platformy Hadoop."
+title: Monitorowanie klastrów platformy Hadoop w usłudze HDInsight przy użyciu interfejsu API Ambari - Azure | Dokumentacja firmy Microsoft
+description: Przy użyciu interfejsów API Apache Ambari do tworzenia, zarządzania i monitorowania klastrów platformy Hadoop. Operator intuicyjne narzędzia i interfejsy API neutralizują złożoność platformy Hadoop.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 editor: cgronlun
 manager: jhubbard
 ms.assetid: 052135b3-d497-4acc-92ff-71cee49356ff
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 57b63490037760c9150fd4b8fdb66267739f20ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 3c8b1af3ad151a7a901150352202ab0b85aa6ec8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu interfejsów API systemu Ambari
 Informacje o sposobie monitorowania klastrów usługi HDInsight przy użyciu Ambari API.
@@ -128,7 +126,7 @@ Korzystając z punktu końcowego Ambari "https://{clusterDns}.azurehdinsight.net
 ## <a name="ambari-monitoring-apis"></a>Ambari API monitorowania
 W poniższej tabeli wymieniono niektóre z najczęściej Ambari monitorowania wywołań interfejsu API. Aby uzyskać więcej informacji na temat interfejsu API, zobacz [Ambari API Reference][ambari-api-reference].
 
-| Wywołanie interfejsu API Monitora | IDENTYFIKATOR URI | Opis |
+| Wywołanie interfejsu API Monitora | Identyfikator URI | Opis |
 | --- | --- | --- |
 | Pobierz klastrów |`/api/v1/clusters` | |
 | Pobierz informacje o klastrze. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |klastry usług, hosty |

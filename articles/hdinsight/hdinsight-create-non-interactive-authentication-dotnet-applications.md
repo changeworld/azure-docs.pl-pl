@@ -1,26 +1,24 @@
 ---
-title: "Tworzenie aplikacji platformy .NET w usłudze Azure HDInsight uwierzytelnianie nieinteraktywne | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak tworzyć aplikacje platformy Microsoft .NET nieinterakcyjnym uwierzytelniania w usłudze Azure HDInsight."
+title: Tworzenie aplikacji platformy .NET w usłudze Azure HDInsight uwierzytelnianie nieinteraktywne | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzyć aplikacje platformy Microsoft .NET nieinterakcyjnym uwierzytelniania w usłudze Azure HDInsight.
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: 8e32430f-6404-498a-9fcd-f20338d964af
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: b2b24747ce4ea8499c999c693f00fb09178d52b0
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5672dae5600634b53cfbc8d677f6e1b8e3fa327d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Utwórz uwierzytelnianie nieinteraktywne aplikacji .NET HDInsight
 Można uruchomić aplikacji Microsoft .NET Azure HDInsight przy użyciu tożsamości aplikacji (nieinterakcyjnym) lub tożsamością zalogowany użytkownik aplikacji (interaktywne). W tym artykule przedstawiono sposób tworzenia uwierzytelnianie nieinteraktywne aplikacji .NET w celu połączenia z platformą Azure i zarządzanie nimi HDInsight. Przykładowy interaktywna aplikacja, [nawiązywanie połączenia z usługi Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
@@ -35,7 +33,7 @@ Z poziomu innego nieinteraktywnego aplikacji .NET potrzebne są:
 * Klaster usługi HDInsight. Zobacz [Wprowadzenie — samouczek](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Przypisywanie roli do aplikacji usługi Azure AD
-Przypisz aplikację usługi Azure AD [roli](../active-directory/role-based-access-built-in-roles.md), udzielenia uprawnienia do wykonania akcji. Na poziomie subskrypcji, grupy zasobów lub zasobów można ustawić zakresu. Uprawnienia są dziedziczone na niższe poziomy zakresu. (Na przykład dodawanie aplikacji do roli czytnik dla grupy zasobów oznacza, że aplikacja może odczytać grupy zasobów i wszystkie zasoby w nim.) W tym samouczku Ustaw zakres na poziomie grupy zasobów. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../active-directory/role-based-access-control-configure.md).
+Przypisz aplikację usługi Azure AD [roli](../role-based-access-control/built-in-roles.md), udzielenia uprawnienia do wykonania akcji. Na poziomie subskrypcji, grupy zasobów lub zasobów można ustawić zakresu. Uprawnienia są dziedziczone na niższe poziomy zakresu. (Na przykład dodawanie aplikacji do roli czytnik dla grupy zasobów oznacza, że aplikacja może odczytać grupy zasobów i wszystkie zasoby w nim.) W tym samouczku Ustaw zakres na poziomie grupy zasobów. Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).
 
 **Aby dodać rolę właściciela do aplikacji usługi Azure AD**
 
@@ -127,4 +125,4 @@ Przypisz aplikację usługi Azure AD [roli](../active-directory/role-based-acces
 ## <a name="next-steps"></a>Kolejne kroki
 * [Utworzyć podmiot zabezpieczeń aplikacji i usług Azure Active Directory w portalu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 * Dowiedz się, jak [uwierzytelnienia nazwy głównej usługi z usługą Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).
-* Dowiedz się więcej o [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](../active-directory/role-based-access-control-configure.md).
+* Dowiedz się więcej o [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).

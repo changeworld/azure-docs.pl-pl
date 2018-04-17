@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: acdd829785c44f6683c356c135587be183cce392
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d394c856b2f27446ab28c44fe4fed2dfd59ae62f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Store i magazynu obiektów Blob platformy Azure
 W tabeli w tym artykule przedstawiono różnice między Azure Data Lake Store i magazynu obiektów Blob Azure wzdłuż niektóre kluczowe aspekty przetwarzania danych big. Magazyn obiektów Blob Azure jest ogólnego przeznaczenia, magazynu skalowalne obiektów, które jest przeznaczone do szerokiej gamy scenariuszy magazynu. Azure Data Lake Store to repozytorium hiperskali, zoptymalizowana pod kątem obciążeń analizy danych big data.
@@ -37,7 +37,7 @@ W tabeli w tym artykule przedstawiono różnice między Azure Data Lake Store i 
 | Operacje na danych - autoryzacji |Listy kontroli dostępu POSIX (ACL).  Listy ACL oparte na Azure Active Directory tożsamości można ustawić na poziomie plików i folderów. |Na poziomie konta autoryzacji — użyj [klucze dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>Dla konta, kontenera lub obiektu blob autoryzacji - użyj [udostępnionych kluczy podpisów dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Operacje na danych - inspekcji |Dostępne. Zobacz [tutaj](data-lake-store-diagnostic-logs.md) informacji. |Dostępna |
 | Szyfrowanie danych magazynowanych |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Z usługami zarządzać kluczami</li><li>Z zarządzanego przez klienta kluczy w Azure KeyVault</li></ul></ul> |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Z usługami zarządzać kluczami</li><li>Z zarządzanego przez klienta kluczy w KeyVault Azure (wersja zapoznawcza)</li></ul><li>Szyfrowania po stronie klienta</li></ul> |
-| Operacje zarządzania (np. Utwórz konto) |[Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |[Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |
+| Operacje zarządzania (np. Utwórz konto) |[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami |
 | Zestawy SDK dewelopera |.NET, Java, Python, Node.js |.Net, Java, Python, Node.js, C++, Ruby, PHP, Go, Android, iOS |
 | Wydajność przetwarzania obciążenia analityka |Zoptymalizowana wydajność w przypadku obciążeń równoległych analytics. Wysokiej przepływności i IOPS. |Zoptymalizowana wydajność w przypadku obciążeń równoległych analytics. |
 | Limity rozmiaru |Brak ograniczeń na rozmiarów kont, rozmiarów plików lub liczby plików |Określone limity udokumentowane [tutaj](../storage/common/storage-scalability-targets.md). Konto większych ogranicza dostępne kontaktując się [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/faq/) |

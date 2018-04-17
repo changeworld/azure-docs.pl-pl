@@ -6,26 +6,26 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: a89c51ae5b4b0c9d58aed04515042ed8b08dcce6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: df29d0a55317d06d656d8444c6bd7754c6c955eb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Eksploracja i wizualizacja narzędzia danych na maszynie wirtualnej nauki danych
 
 Klucza etap nauki danych jest zrozumieć dane. Narzędzia Eksploracja danych i wizualizacji pomocy przyspieszanie opis danych. Poniżej przedstawiono niektóre narzędzia, pod warunkiem na DSVM faciliate tego kroku tego klucza. 
 
-## <a name="apache-drill"></a>Apache Drill
+## <a name="apache-drill"></a>Apache Przechodzenie do szczegółów
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   | Aparat zapytań SQL typu open source danych Big Data    |
@@ -33,7 +33,7 @@ Klucza etap nauki danych jest zrozumieć dane. Narzędzia Eksploracja danych i w
 | Jak jest on skonfigurowany / zainstalowanym DSVM?      |  Zainstalowane w `/dsvm/tools/drill*` osadzonych tylko w trybie   |
 | Typowe zastosowania      |  Eksploracja danych w miejscu, bez konieczności ETL. Zapytanie danych z różnych źródeł i formaty includign CSV, JSON, tabel relacyjnych, Hadoop     |
 | Jak używać / uruchom go?      | Skrót na pulpicie  <br/> [Rozpoczynanie pracy z Przechodzenie do szczegółów w ciągu 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| Pokrewne narzędzia na DSVM      |   Rattle, Weka, SQL Server Management Studio      |
+| Pokrewne narzędzia na DSVM      |   Rattle Weka, SQL Server Management Studio      |
 
 ## <a name="weka"></a>Weka
 |    |           |
@@ -43,7 +43,7 @@ Klucza etap nauki danych jest zrozumieć dane. Narzędzia Eksploracja danych i w
 | Typowe zastosowania      | Narzędzie ML ogólne     |
 | Jak używać / uruchom go?      | W systemie Windows wyszukaj Weka w Start Menu. W systemie Linux, zaloguj się za pomocą X2Go, a następnie przejdź do aplikacji -> Programowanie -> Weka. |
 | Łącza do próbek      | [Przykłady weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| Pokrewne narzędzia na DSVM      |LightGBM, Rattle, Xgboost   |
+| Pokrewne narzędzia na DSVM      |Xgboost LightGBM, Rattle,   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |

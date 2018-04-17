@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 31e71f153c7bbf76b0f06f8f17a74c43cc1b1c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów z grupami zarządzania Azure 
 
@@ -32,7 +32,7 @@ Można tworzyć elastyczne struktury grupy zarządzania i subskrypcji do organiz
 
 ![drzewa](media/management-groups/MG_overview.png)
 
-Tworząc hierarchii, które są grupowane według działów, to można przypisać [based kontroli dostępu (RBAC)](../active-directory/role-based-access-control-what-is.md) ról który *dziedziczą* do działów w ramach tej grupy zarządzania. Za pomocą grup zarządzania, można zmniejszyć obciążenie sieci i zmniejsza ryzyko błędu o konieczności tylko raz przypisanie roli. 
+Tworząc hierarchii, które są grupowane według działów, to można przypisać [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) ról który *dziedziczą* do działów w ramach tej grupy zarządzania. Za pomocą grup zarządzania, można zmniejszyć obciążenie sieci i zmniejsza ryzyko błędu o konieczności tylko raz przypisanie roli. 
 
 ### <a name="important-facts-about-management-groups"></a>Ważne informacje o grupy zarządzania
 - 10 000 grup zarządzania może być obsługiwany w jednym katalogu. 
@@ -55,7 +55,7 @@ Ten element jest wykorzystywanej na i zostanie rozwiązany, zanim grupy zarządz
 
 ## <a name="root-management-group-for-each-directory"></a>Grupa zarządzania głównego dla każdego katalogu
 
-Każdy katalog znajduje się grupę pojedynczego zarządzania najwyższego poziomu o nazwie grupy zarządzania "Root". Tej grupy zarządzania głównego jest wbudowana w hierarchii, aby wszystkie grupy zarządzania i subskrypcje fold do niego. Tej grupy zarządzania głównego umożliwia globalnych zasad i przypisań RBAC można zastosować na poziomie katalogu. [Katalogu Administrator musi się podnieść](../active-directory/role-based-access-control-tenant-admin-access.md) początkowo jako właściciela tej grupy głównego. Gdy administrator jest właścicielem grupy, może on przypisać dowolnej roli RBAC do innego katalogu użytkowników lub grup, do zarządzania w hierarchii.  
+Każdy katalog znajduje się grupę pojedynczego zarządzania najwyższego poziomu o nazwie grupy zarządzania "Root". Tej grupy zarządzania głównego jest wbudowana w hierarchii, aby wszystkie grupy zarządzania i subskrypcje fold do niego. Tej grupy zarządzania głównego umożliwia globalnych zasad i przypisań RBAC można zastosować na poziomie katalogu. [Katalogu Administrator musi się podnieść](../role-based-access-control/elevate-access-global-admin.md) początkowo jako właściciela tej grupy głównego. Gdy administrator jest właścicielem grupy, może on przypisać dowolnej roli RBAC do innego katalogu użytkowników lub grup, do zarządzania w hierarchii.  
 
 ### <a name="important-facts-about-the-root-management-group"></a>Ważne informacje o grupie zarządzania głównego
 - Nazwa i identyfikator grupy zarządzania głównego podano identyfikator usługi Azure Active Directory domyślnie. Nazwa wyświetlana może zostać zaktualizowana w dowolnym momencie, aby wyświetlić różne w portalu Azure. 
@@ -67,9 +67,9 @@ Każdy katalog znajduje się grupę pojedynczego zarządzania najwyższego pozio
   
 ## <a name="management-group-access"></a>Dostęp do grupy zarządzania
 
-Grupy zarządzania platformy Azure obsługuje [based kontroli dostępu (RBAC)](../active-directory/role-based-access-control-what-is.md) dla wszystkich uzyskuje dostęp do zasobów i definicje ról. Te uprawnienia są dziedziczone przez zasoby podrzędne, które istnieją w hierarchii.   
+Grupy zarządzania platformy Azure obsługuje [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md) dla wszystkich uzyskuje dostęp do zasobów i definicje ról. Te uprawnienia są dziedziczone przez zasoby podrzędne, które istnieją w hierarchii.   
 
-Podczas żadnego [wbudowanej roli RBAC](../active-directory/role-based-access-control-what-is.md#built-in-roles) mogą być przypisane do grupy zarządzania są cztery role, które są często używane: 
+Podczas żadnego [wbudowanej roli RBAC](../role-based-access-control/overview.md#built-in-roles) mogą być przypisane do grupy zarządzania są cztery role, które są często używane: 
 - **Właściciel** ma pełny dostęp do wszystkich zasobów łącznie z prawem delegować dostęp do innych użytkowników. 
 - **Współautor** można tworzyć i zarządzania wszystkimi typami zasobów platformy Azure, ale nie może udzielić dostępu do innych użytkowników.
 - **Współautor zasad zasobów** można utworzyć zasad i zarządzanie nimi w katalogu na zasobach.     

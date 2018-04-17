@@ -11,17 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: davidmu
-ms.openlocfilehash: ac0351ce220da5194d3a447e51185409b7368f21
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3347eac16e447091ffcaaf403e1291e2c7175a2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Usługa Azure AD B2C: Jednostronicowej aplikacji logowania przy użyciu niejawnego przepływu OAuth 2.0
-
-> [!NOTE]
-> Ta funkcja jest dostępna w wersji zapoznawczej.
-> 
 
 Wiele nowoczesnych aplikacji ma jednostronicowej aplikacji fronton głównie napisany w języku JavaScript. Często napisano aplikację przy użyciu framework, takich jak AngularJS, Ember.js lub Durandal. Aplikacje jednej strony i innych aplikacji JavaScript, które można uruchamiać głównie w przeglądarce ma pewne dodatkowe problemy dotyczące uwierzytelniania:
 
@@ -93,7 +89,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_type |Wymagane |Musi zawierać `id_token` OpenID Connect logowaniu. Ponadto może zawierać typ odpowiedzi `token`. Jeśli używasz `token`, aplikacja może bezpośrednio odbierać token dostępu z punktu końcowego autoryzacji bez wprowadzania drugie żądanie do punktu końcowego autoryzacji.  Jeśli używasz `token` typ odpowiedzi `scope` parametr musi zawierać zakres, który wskazuje, którego zasobu należy wystawić token dla. |
 | redirect_uri |Zalecane |Identyfikator URI przekierowania w aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania. Go musi dokładnie odpowiadać jeden przekierowania URI, który został zarejestrowany w portalu, z wyjątkiem tego, że musi być zakodowane w adresie URL. |
 | response_mode |Zalecane |Określa metodę używaną do wysyłania wynikowy token wstecz do aplikacji.  Niejawne przepływów, użyj `fragment`. |
-| Zakres |Wymagane |Rozdzieloną spacjami listę zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure AD zarówno uprawnienia, które są żądane. `openid` Uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie tokenów identyfikator wskazuje zakres. (Będzie omawianiu to bardziej dalszej części tego artykułu.) `offline_access` Zakres jest opcjonalne dla aplikacji sieci web. Oznacza to, że Twoja aplikacja powinna token odświeżania długotrwałe dostępu do zasobów. |
+| scope |Wymagane |Rozdzieloną spacjami listę zakresów. Wskazuje wartość pojedynczy zakres do usługi Azure AD zarówno uprawnienia, które są żądane. `openid` Uprawnienia, aby zalogować użytkownika i Pobierz dane o użytkowniku w formie tokenów identyfikator wskazuje zakres. (Będzie omawianiu to bardziej dalszej części tego artykułu.) `offline_access` Zakres jest opcjonalne dla aplikacji sieci web. Oznacza to, że Twoja aplikacja powinna token odświeżania długotrwałe dostępu do zasobów. |
 | state |Zalecane |Wartość zawarte w żądaniu, który jest także zwracany w odpowiedzi tokenu. Można go ciągiem zawartość, która ma być używany. Zazwyczaj wartość losowo generowany, unikatowy jest używana, aby zapobiec fałszerstwie żądania międzywitrynowego. Stan jest również używany do kodowania informacje o stanie użytkownika w aplikacji, przed wystąpieniem żądania uwierzytelniania, takich jak znajdowały się na stronie. |
 | Identyfikator jednorazowy |Wymagane |Wartość zawarte w żądaniu (wygenerowany przez aplikację), który znajduje się w jego identyfikator tokenu jako oświadczenia. Aplikacja może zweryfikować tę wartość, aby ograniczyć ataków powtórzeń tokenów. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |
 | p |Wymagane |Zasady do wykonania. Jest to nazwa zasad, która jest tworzona w dzierżawie usługi Azure AD B2C. Wartość Nazwa zasad powinny rozpoczynać się od **b2c\_1\_**. Aby uzyskać więcej informacji, zobacz [wbudowane zasady usługi Azure AD B2C](active-directory-b2c-reference-policies.md). |
@@ -121,7 +117,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | access_token |Token dostępu do żądanej aplikacji.  Nie można zdekodować lub w przeciwnym razie sprawdził tokenu dostępu. Może być traktowana jako ciąg z ogólnym opisem. |
 | token_type |Wartość typu tokenu. Jedynym typem, który obsługuje usługę Azure AD jest elementu nośnego. |
 | expires_in |Długość czasu, przez który token dostępu jest nieprawidłowy (w sekundach). |
-| Zakres |Token jest prawidłowy dla zakresów. Możesz również zakresów można użyć do pamięci podręcznej tokenów do późniejszego użycia. |
+| scope |Token jest prawidłowy dla zakresów. Możesz również zakresów można użyć do pamięci podręcznej tokenów do późniejszego użycia. |
 | żądaniu |Token ID żądanej aplikacji. Token identyfikator służy do weryfikacji tożsamości użytkownika i rozpocząć sesję użytkownika. Aby uzyskać więcej informacji o identyfikatorze tokeny i ich zawartość, zobacz [odwołania do tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md). |
 | state |Jeśli `state` parametru jest zawarte w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Aplikację należy sprawdzić, czy `state` wartości żądań i odpowiedzi są identyczne. |
 
@@ -203,7 +199,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji w [portalu Azure](https://portal.azure.com). |
 | response_type |Wymagane |Musi zawierać `id_token` OpenID Connect logowaniu.  Może również zawierać typ odpowiedzi `token`. Jeśli używasz `token` , aplikacja może bezpośrednio odbierać token dostępu z punktu końcowego autoryzacji bez wprowadzania drugie żądanie do punktu końcowego autoryzacji. Jeśli używasz `token` typ odpowiedzi `scope` parametr musi zawierać zakres, który wskazuje, którego zasobu należy wystawić token dla. |
 | redirect_uri |Zalecane |Identyfikator URI przekierowania w aplikacji, w którym można wysłanych i odebranych przez aplikację odpowiedzi uwierzytelniania. Go musi dokładnie odpowiadać jeden przekierowania URI zarejestrowany w portalu, z wyjątkiem tego, że musi być zakodowane w adresie URL. |
-| Zakres |Wymagane |Rozdzieloną spacjami listę zakresów.  W przypadku uzyskiwania tokenów, zawiera wszystkie zakresy, które wymagają danego zasobu. |
+| scope |Wymagane |Rozdzieloną spacjami listę zakresów.  W przypadku uzyskiwania tokenów, zawiera wszystkie zakresy, które wymagają danego zasobu. |
 | response_mode |Zalecane |Określa metodę, która służy do wysyłania wynikowy token wstecz do aplikacji.  Może być `query`, `form_post`, lub `fragment`. |
 | state |Zalecane |Wartość zawarte w żądaniu, który jest zwracany w odpowiedzi tokenu.  Można go ciągiem zawartość, która ma być używany.  Zazwyczaj wartość losowo generowany, unikatowy jest używana, aby zapobiec fałszerstwie żądania międzywitrynowego.  Stan jest również używany do kodowania informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia. Na przykład strony lub widoku użytkownik był na. |
 | Identyfikator jednorazowy |Wymagane |Wartość zawarte w żądaniu wygenerowany przez aplikację, który znajduje się w jego identyfikator tokenu jako oświadczenia.  Aplikacja może zweryfikować tę wartość, aby ograniczyć ataków powtórzeń tokenów. Wartość jest zazwyczaj losowego, unikatowy ciąg identyfikujący pochodzenia żądania. |
@@ -231,7 +227,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | token_type |Typ tokenu jest zawsze elementu nośnego. |
 | state |Jeśli `state` parametru jest zawarte w żądaniu, tę samą wartość powinna być widoczna w odpowiedzi. Aplikację należy sprawdzić, czy `state` wartości żądań i odpowiedzi są identyczne. |
 | expires_in |Jak długo token dostępu jest nieprawidłowy (w sekundach). |
-| Zakres |Token dostępu jest nieprawidłowy dla zakresów. |
+| scope |Token dostępu jest nieprawidłowy dla zakresów. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd
 Odpowiedzi na błędy również mogą być wysyłane do identyfikatora URI przekierowania, dzięki czemu aplikacja może je odpowiednią obsługę.  Aby uzyskać `prompt=none`, oczekiwany błąd wygląda następująco:

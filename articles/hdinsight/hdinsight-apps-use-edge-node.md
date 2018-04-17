@@ -1,26 +1,24 @@
 ---
-title: "Użyj węzłami pusty edge na klastrów platformy Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Jak dodać węzeł krawędzi pusty do klastra usługi HDInsight, który może być używany jako klient, a następnie/hosta testów aplikacji usługi HDInsight."
+title: Użyj węzłami pusty edge na klastrów platformy Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Jak dodać węzeł krawędzi pusty do klastra usługi HDInsight, który może być używany jako klient, a następnie/hosta testów aplikacji usługi HDInsight.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: mumian
 tags: azure-portal
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: jgao
-ms.openlocfilehash: 7c09b2aefac1248a0bad06b913a8da56e73c0e4d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Użyj węzłami pusty edge na klastrów platformy Hadoop w usłudze HDInsight
 
@@ -67,12 +65,12 @@ Po utworzeniu węzeł krawędzi, można połączyć się z węzłem krawędzi pr
 > Niestandardowe składniki, które są zainstalowane w węźle krawędzi otrzymywania uzasadnione ekonomicznie pomocy technicznej firmy Microsoft. Może to spowodować w rozwiązywaniu problemów występujących u użytkownika. Lub może być określonej zasoby społeczności, aby uzyskać dalszą pomoc. Poniżej przedstawiono niektóre najbardziej aktywne witryn uzyskiwanie pomocy od społeczności:
 >
 > * [Forum MSDN dla usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
-> * [http://StackOverflow.com](http://stackoverflow.com).
+> * [http://stackoverflow.com](http://stackoverflow.com).
 >
-> Jeśli korzystasz z technologii Apache, można znaleźć pomoc za pośrednictwem Apache witryny projektu na [http://apache.org](http://apache.org), takich jak [Hadoop](http://hadoop.apache.org/) lokacji.
+> Jeśli korzystasz z technologii Apache, można znaleźć pomoc za pośrednictwem Apache witryny projektu na [ http://apache.org ](http://apache.org), takich jak [Hadoop](http://hadoop.apache.org/) lokacji.
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Dodawanie węzła krawędzi do istniejącego klastra
-W tej sekcji możesz Użyj szablonu usługi Resource Manager, aby dodać węzeł krawędzi w istniejącym klastrze usługi HDInsight.  Szablon usługi Resource Manager można znaleźć w [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon usługi Resource Manager wywołuje znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh akcji skryptu. Skrypt nie wykonywać żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu z szablonem usługi Resource Manager.
+W tej sekcji możesz Użyj szablonu usługi Resource Manager, aby dodać węzeł krawędzi w istniejącym klastrze usługi HDInsight.  Szablon usługi Resource Manager można znaleźć w [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon usługi Resource Manager wywołuje akcję skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonywać żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu z szablonem usługi Resource Manager.
 
 **Aby dodać węzeł krawędzi pusty do istniejącego klastra**
 
@@ -95,7 +93,7 @@ W tej sekcji możesz Użyj szablonu usługi Resource Manager, aby dodać węzeł
 > Upewnij się wybrać grupę zasobów platformy Azure dla istniejącego klastra usługi HDInsight.  W przeciwnym razie otrzymasz komunikat o błędzie "nie można wykonać żądanej operacji dla zasobu zagnieżdżonego. Zasobu nadrzędnego "&lt;ClusterName >' nie znaleziono."
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Dodaj węzeł krawędzi, podczas tworzenia klastra
-W tej sekcji użyjesz szablonu usługi Resource Manager do tworzenia klastra usługi HDInsight z węzłem krawędzi.  Szablon usługi Resource Manager można znaleźć w [galerię szablonów Szybki Start Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Szablon usługi Resource Manager wywołuje znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh akcji skryptu. Skrypt nie wykonywać żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu z szablonem usługi Resource Manager.
+W tej sekcji użyjesz szablonu usługi Resource Manager do tworzenia klastra usługi HDInsight z węzłem krawędzi.  Szablon usługi Resource Manager można znaleźć w [galerię szablonów Szybki Start Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Szablon usługi Resource Manager wywołuje akcję skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonywać żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu z szablonem usługi Resource Manager.
 
 **Aby dodać węzeł krawędzi pusty do istniejącego klastra**
 
@@ -132,7 +130,7 @@ Węzeł krawędzi jest wyświetlany jako aplikacji w portalu Azure.  Portal zawi
 
 **Aby korzystanie z programu Hive w węźle krawędzi**
 
-1. Używanie protokołu SSH, aby połączyć się z węzłem krawędzi. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Połącz się z węzłem brzegowym za pomocą protokołu SSH. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Po nawiązaniu połączenia z węzłem krawędzi przy użyciu protokołu SSH, użyj następującego polecenia, aby otworzyć konsolę gałęzi:
    

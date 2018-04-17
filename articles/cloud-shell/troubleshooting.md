@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów powłoki chmury Azure | Dokumentacja firmy Microsoft"
-description: "Rozwiązywanie problemów z powłoki w chmurze Azure"
+title: Rozwiązywanie problemów powłoki chmury Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów z powłoki w chmurze Azure
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendMSFT
 manager: angelc
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 52ee832b643af573d8236b266df17d36e485ead2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7ab344f77ef88ffdc2ff1976d97b0b9aa86aa3fc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów z & ograniczenia Azure Cloud powłoki
 
@@ -148,3 +148,29 @@ Za pomocą poleceń cmdlet programu PowerShell, użytkownicy nie można utworzy�
 ### <a name="gui-applications-are-not-supported"></a>Graficzny interfejs użytkownika aplikacji nie są obsługiwane.
 
 Jeśli użytkownik uruchamia polecenia, które mogą utworzyć okno dialogowe systemu Windows, takich jak `Connect-AzureAD` lub `Login-AzureRMAccount`, takich jak jedną zobaczy komunikat o błędzie: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+
+## <a name="gdpr-compliance-for-cloud-shell"></a>Zgodność GDPR powłoki chmury
+
+Powłoka chmury Azure poważnie danych osobistych, dane zebrane i przechowywane przez usługę Azure Cloud powłoki służą do zapewniania wartości domyślne dla środowiska, takie jak niedawno używanych powłoki, preferowany rozmiar czcionki, typ Preferowana czcionka i udziału plików szczegóły który kopii clouddrive. Powinien zostać eksportu lub usunąć te dane, firma Microsoft uwzględniła następujące instrukcje.
+
+### <a name="export"></a>Eksportowanie
+W celu **wyeksportować** preferowanych ustawień użytkownika powłoki chmury zapisuje dla Ciebie, takich jak powłoki, rozmiar czcionki i typ czcionki, uruchom następujące polecenia.
+
+1. Uruchamianie Bash w powłoce chmury
+2. Uruchom następujące polecenia:
+```
+user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+user@Azure:~$ curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
+```
+
+### <a name="delete"></a>Usuwanie
+W celu **usunąć** preferowanych ustawień użytkownika powłoki chmury zapisuje dla Ciebie, takich jak powłoki, rozmiar czcionki i typ czcionki, uruchom następujące polecenia. Przy następnym uruchomieniu powłoki chmury użytkownik jest proszony o dołączeniu udział plików ponownie. 
+
+Rzeczywiste pliki Azure udziału nie zostaną usunięte, jeśli usuniesz ustawień użytkownika przejdź do usługi pliki Azure do ukończenia tego działania.
+
+1. Uruchamianie Bash w powłoce chmury
+2. Uruchom następujące polecenia:
+```
+user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+user@Azure:~$ curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
+```

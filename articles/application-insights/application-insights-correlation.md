@@ -10,13 +10,13 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9adecca35524962402d46169c531d135d0772bbd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacji telemetrii w usłudze Application Insights
 
@@ -103,6 +103,31 @@ Platformy ASP.NET Core 2.0 obsługuje wyodrębniania nagłówków Http i urucham
 Moduł Http jest nowy [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) klasycznego ASP.NET. Ten moduł stanowi wdrożenie przy użyciu DiagnosticsSource korelacji telemetrii. Rozpoczyna działania od nagłówków żądań przychodzących. Są również powiązane dane telemetryczne z różnych etapów przetwarzania żądania. Nawet w przypadku przypadków po uruchomieniu każdego etapu przetwarzania usług IIS w wątkach różnych zarządzanie.
 
 Wersję początkową aplikacji zestawu SDK Insights `2.4.0-beta1` używa DiagnosticsSource i działania do zbierania danych telemetrycznych i skojarzyć go z bieżącego działania. 
+
+<a name="java-correlation"></a>
+## <a name="telemetry-correlation-in-the-java-sdk"></a>Korelacji danych telemetrycznych zestawu SDK Java
+[Zestaw SDK Java usługi Application Insights](app-insights-java-get-started.md) obsługuje automatyczne korelacji telemetrii, począwszy od wersji `2.0.0`. Automatycznie wypełni `operation_id` dla wszystkie dane telemetryczne (śladów, wyjątków, niestandardowych zdarzeń itd.) wydane w ramach zakresu żądania. On również zajmuje się propagowanie nagłówki korelacji (opisanej powyżej) dla wywołań usług za pośrednictwem protokołu HTTP Jeśli [agenta zestawu Java SDK](app-insights-java-agent.md) jest skonfigurowany. Uwaga: tylko wywołań za pośrednictwem Apache HTTP klienta są obsługiwane przez funkcję korelacji. Jeśli używasz szablonu Rest Spring lub Feign zarówno może służyć pomocą Apache HTTP klienta pod maską.
+
+Obecnie usługa propagacji automatyczne kontekstu w technologii komunikacji (np. Kafka, RabbitMQ, usługi Azure Service Bus) nie jest obsługiwana. Możliwe jest jednak ręczne kodu za pomocą takich scenariuszy `trackDependency` i `trackRequest` interfejsu API, zgodnie z którymi dane telemetryczne zależności reprezentuje komunikat jest umieszczonych w kolejce przez producenta, a żądanie komunikatów przetwarzanych przez konsumenta. W takim przypadku zarówno `operation_id` i `operation_parentId` powinny propagowane we właściwościach komunikatu.
+
+<a name="java-role-name"></a>
+### <a name="role-name"></a>Nazwa roli
+W czasie, można dostosować nazwy składnika są wyświetlane w [mapowanie aplikacji](app-insights-app-map.md). Aby to zrobić, można ręcznie ustawić `cloud_roleName` wykonując jedną z następujących czynności:
+
+Za pomocą inicjator telemetrii (wszystkie elementy dane telemetryczne są oznakowany)
+```Java
+public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
+
+    @Override
+    protected void onInitializeTelemetry(Telemetry telemetry) {
+        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
+    }
+  }
+```
+Za pomocą [klasy kontekstu urządzenia](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (oznakowany tego elementu danych telemetrycznych)
+```Java
+telemetry.getContext().getDevice().setRoleName("My Component Name");
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

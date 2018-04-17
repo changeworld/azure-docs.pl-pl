@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z bramy sieci wirtualnej platformy Azure i połączenia - Azure CLI 2.0 | Dokumentacja firmy Microsoft"
-description: "Ta strona wyjaśniono, jak użyć obserwatora sieciowego Azure Rozwiązywanie problemów z 2.0 interfejsu wiersza polecenia platformy Azure"
+title: Rozwiązywanie problemów z bramy sieci wirtualnej platformy Azure i połączenia - Azure CLI 2.0 | Dokumentacja firmy Microsoft
+description: Ta strona wyjaśniono, jak użyć obserwatora sieciowego Azure Rozwiązywanie problemów z 2.0 interfejsu wiersza polecenia platformy Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 6e55e0a70142c81e9543688bf699ef149f3ecff2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 67f2e8a897c7bcb66b2950925480b3dff5a09f61
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli-20"></a>Rozwiązywanie problemów z Brama sieci wirtualnej i połączeń przy użyciu usługi Azure sieci obserwatora Azure CLI 2.0
 
@@ -99,4 +99,4 @@ Aby uzyskać instrukcje dotyczące pobierania plików z kontami magazynu azure, 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli ustawienia zostały zmienione które zatrzymania połączenia sieci VPN, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/virtual-network-manage-nsg-arm-portal.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń, które mogą być zagrożona.
+Jeśli ustawienia zostały zmienione które zatrzymania połączenia sieci VPN, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń, które mogą być zagrożona.

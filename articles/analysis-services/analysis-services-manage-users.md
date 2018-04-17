@@ -1,25 +1,18 @@
 ---
-title: "Uprawnienia do uwierzytelniania i użytkownika w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat uwierzytelniania i uprawnień użytkowników w usłudze Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
+title: Uprawnienia do uwierzytelniania i użytkownika w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat uwierzytelniania i uprawnień użytkowników w usłudze Azure Analysis Services.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authentication-and-user-permissions"></a>Uprawnienia do uwierzytelniania i użytkownika
 Azure Analysis Services używa usługi Azure Active Directory (Azure AD) do uwierzytelniania użytkowników i zarządzania tożsamościami. Każdy użytkownik, tworzenia, zarządzania lub nawiązywania połączenia z usług Azure Analysis Services serwer musi mieć tożsamość prawidłowego użytkownika w [dzierżawy usługi Azure AD](../active-directory/active-directory-administer.md) w tej samej subskrypcji.
@@ -69,7 +62,7 @@ Użytkownicy programu Excel można łączyć z serwerem przy użyciu konta syste
 
 ![Kontrola dostępu w portalu Azure](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Role na tym poziomie dotyczą użytkowników lub kont, które należy wykonać zadania, które można wykonać w portalu lub przy użyciu szablonów usługi Azure Resource Manager. Aby dowiedzieć się więcej, zobacz [kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-what-is.md). 
+Role na tym poziomie dotyczą użytkowników lub kont, które należy wykonać zadania, które można wykonać w portalu lub przy użyciu szablonów usługi Azure Resource Manager. Aby dowiedzieć się więcej, zobacz [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md). 
 
 
 ## <a name="database-roles"></a>Role bazy danych
@@ -85,4 +78,4 @@ Role na tym poziomie dotyczą użytkowników lub kont, które należy wykonać z
 [Zarządzanie dostępem do zasobów przy użyciu grup usługi Azure Active Directory](../active-directory/active-directory-manage-groups.md)   
 [Zarządzanie ról bazy danych i użytkowników](analysis-services-database-users.md)  
 [Zarządzanie administratorami serwerów](analysis-services-server-admins.md)  
-[Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md)  
+[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md)  

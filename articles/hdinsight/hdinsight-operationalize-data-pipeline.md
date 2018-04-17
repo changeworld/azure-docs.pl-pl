@@ -1,27 +1,25 @@
 ---
 title: Operacjonalizuj potoku analizy danych - Azure | Dokumentacja firmy Microsoft
-description: "Skonfiguruj i uruchom przykład potok danych, który jest wyzwalany przez nowe dane i tworzy zwięzły wyników."
+description: Skonfiguruj i uruchom przykład potok danych, który jest wyzwalany przez nowe dane i tworzy zwięzły wyników.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 7a439c9d25a470a2474b427f6b20addb6ff3b0c7
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="operationalize-a-data-analytics-pipeline"></a>Operacjonalizuj potoku analizy danych
+# <a name="operationalize-a-data-analytics-pipeline"></a>Operacjonalizacja potoku analizy danych
 
 *Potoki danych* underly wielu rozwiązań analizy danych. Jak wynika z nazwy, potoku danych przyjmuje dane pierwotne, czyści przekształca ją w razie potrzeby i następnie zazwyczaj wykonuje obliczenia lub agregacji przed przekazaniem przetworzone dane. Przetworzone dane są używane przez klientów, raporty lub interfejsów API. Potoku danych musisz podać powtarzalne wyniki, czy zgodnie z harmonogramem lub wyzwolone przez nowe dane.
 
@@ -137,7 +135,7 @@ Baza danych SQL Azure jest gotowy.
 
        ![Ustawienia na potrzeby magazynu metadanych usługi HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
-12. Wybierz **dalej**.
+12. Wybierz opcję **Dalej**.
 13. Na **Podsumowanie** okienku wybierz **Utwórz** do wdrożenia klastra.
 
 ### <a name="verify-ssh-tunneling-setup"></a>Sprawdź ustawienia tunelowania SSH
@@ -181,7 +179,7 @@ Możesz skopiować plik przy użyciu połączenia usługi w sieci `bash` powłok
 
 Przykładowe dane, jest teraz dostępna. Jednak potoku wymaga dwóch tabel gałęzi do przetwarzania, jeden dla danych przychodzących (`rawFlights`) i jeden dla podsumowanych danych (`flights`). Utwórz te tabele w Ambari w następujący sposób.
 
-1. Zaloguj się do narzędzia Ambari, przechodząc do [http://headnodehost:8080](http://headnodehost:8080).
+1. Zaloguj się do narzędzia Ambari, przechodząc do [ http://headnodehost:8080 ](http://headnodehost:8080).
 2. Wybierz z listy usług **Hive**.
 
     ![Wybranie gałęzi w Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
@@ -419,7 +417,7 @@ Poniższa tabela zawiera podsumowanie każdej właściwości oraz wskazuje, gdzi
 
 | Właściwość | Wartość źródła |
 | --- | --- |
-| nameNode | Pełna ścieżka do kontenera magazynu Azure powiązany z klastrem usługi HDInsight. |
+| NameNode | Pełna ścieżka do kontenera magazynu Azure powiązany z klastrem usługi HDInsight. |
 | jobTracker | Wewnętrzna nazwa hosta do klastra active YARN head węzła. Na stronie głównej Ambari wybierz z listy usług YARN, a następnie wybierz aktywny Resource Manager. Nazwa hosta identyfikatora URI jest wyświetlany w górnej części strony. Dołącz portu 8050. |
 | queueName | Nazwa kolejki YARN używany podczas planowania zadań Hive. Pozostaw domyślne. |
 | oozie.use.system.libpath | Pozostaw jako true. |

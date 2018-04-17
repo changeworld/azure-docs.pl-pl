@@ -1,13 +1,13 @@
 ---
-title: "Rozwiąż typowe błędy wdrożenia usługi Azure | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób rozwiązania typowych błędów, podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager."
+title: Rozwiąż typowe błędy wdrożenia usługi Azure | Dokumentacja firmy Microsoft
+description: Opisuje sposób rozwiązania typowych błędów, podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: "Błąd wdrażania, wdrożenia usługi azure wdrażanie na platformie azure"
+keywords: Błąd wdrażania, wdrożenia usługi azure wdrażanie na platformie azure
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: support-article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 01cc75c522b85f7b4a4b38c92f42cb113d016b73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrożenia usługi Azure z usługą Azure Resource Manager
 
@@ -31,9 +31,9 @@ W tym artykule opisano niektóre typowe błędy wdrożenia usługi Azure może w
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Wykonaj ograniczenia nazewnictwa dla kont magazynu. | [Rozpoznanie nazwy konta magazynu](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Sprawdź właściwości konta magazynu dostępne. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | Klaster lub regionie nie ma dostępu do zasobów lub nie może obsługiwać żądany rozmiar maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub zwróć inny rozmiar maszyny Wirtualnej. | [Problemy z inicjowaniem obsługi administracyjnej i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) i [problemy z inicjowaniem obsługi administracyjnej i alokacji dla systemu Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
+| AllocationFailed | Klaster lub regionie nie ma dostępu do zasobów lub nie może obsługiwać żądany rozmiar maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub zwróć inny rozmiar maszyny Wirtualnej. | [Problemy z inicjowaniem obsługi administracyjnej i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problemy z inicjowaniem obsługi administracyjnej i alokacji dla systemu Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) i [Rozwiązywanie problemów z przydziałem](../virtual-machines/windows/allocation-failure.md)|
 | AnotherOperationInProgress | Poczekaj na zakończenie operacji współbieżnych. | |
-| AuthorizationFailed | Twoje konto lub nazwy głównej usługi nie ma wystarczające prawa dostępu do wdrażania. Sprawdź używane konto należy do roli, a jego dostępu dla zakresu wdrożenia. | [Kontrola dostępu oparta na rolach na platformie Azure](../active-directory/role-based-access-control-configure.md) |
+| AuthorizationFailed | Twoje konto lub nazwy głównej usługi nie ma wystarczające prawa dostępu do wdrażania. Sprawdź używane konto należy do roli, a jego dostępu dla zakresu wdrożenia. | [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md) |
 | Element BadRequest | Wysłano wartości wdrożenia, które nie są zgodne, czego oczekuje się za pomocą Menedżera zasobów. Sprawdź komunikat o stanie wewnętrzny Aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Odwołanie do szablonu](/azure/templates/) i [obsługiwane lokalizacje](resource-manager-templates-resources.md#location) |
 | Konflikt | Zażądano operacji, które nie są dozwolone w bieżącym stanie zasobu. Na przykład zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej. | |
 | DeploymentActive | Poczekaj, aż równoczesnych wdrożenia do tej grupy zasobów, aby zakończyć. | |

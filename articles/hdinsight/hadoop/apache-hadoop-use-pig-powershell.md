@@ -1,8 +1,8 @@
 ---
-title: "Korzystanie z języka Pig Hadoop przy użyciu programu PowerShell w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak umożliwiają przesyłanie zadań Pig do klastra usługi Hadoop w usłudze HDInsight przy użyciu programu Azure PowerShell."
+title: Korzystanie z języka Pig Hadoop przy użyciu programu PowerShell w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak umożliwiają przesyłanie zadań Pig do klastra usługi Hadoop w usłudze HDInsight przy użyciu programu Azure PowerShell.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 737089c1-b494-4387-9def-7b4dac3be532
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 7fa50e206c86b307f7e2a90ff0938571b64f41bb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c54670b11c0a2a3c5379abe4a43431445daa1a5a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Uruchamianie zadań Pig z usługą HDInsight przy użyciu programu Azure PowerShell
 

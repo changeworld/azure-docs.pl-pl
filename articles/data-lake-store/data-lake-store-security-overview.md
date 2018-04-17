@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpieczeń w usłudze Azure Data Lake Store
 Wiele przedsiębiorstw są korzystanie z analizy danych big data szczegółowe informacje biznesowe ułatwić im podejmowanie decyzji inteligentne. Organizacja może mieć środowisko złożone i podlegającymi ochronie, z coraz większa liczba różnych użytkowników. Jest ważne dla organizacji upewnić się, że ważnych danych biznesowych jest bezpieczniejsza, przechowywane z odpowiedniego poziomu udzielono dostępu do poszczególnych użytkowników. Azure Data Lake Store ułatwia spełnia te wymagania dotyczące zabezpieczeń. W tym artykule, więcej informacji na temat funkcji zabezpieczeń w usłudze Data Lake Store, w tym:
@@ -42,7 +42,7 @@ Każda subskrypcja platformy Azure może być skojarzony z wystąpieniem usługi
 ## <a name="authorization-and-access-control"></a>Autoryzacji i kontroli dostępu
 Po usługi Azure Active Directory uwierzytelnia użytkownika, dzięki czemu użytkownik może uzyskać dostępu do usługi Azure Data Lake Store, formanty autoryzacji uprawnień dostępu dla usługi Data Lake Store. Data Lake Store oddziela autoryzacji dla działań związanych z kontem i związanych z danymi w następujący sposób:
 
-* [Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami
+* [Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md) (RBAC) jest dostarczany przez platformę Azure do zarządzania kontami
 * Listy ACL POSIX do uzyskiwania dostępu do danych w magazynie
 
 ### <a name="rbac-for-account-management"></a>RBAC dla zarządzania kontem

@@ -1,11 +1,11 @@
 ---
-title: "Autoryzowanie konta dewelopera przy użyciu usługi Azure Active Directory — Zarządzanie interfejsami API Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak i autoryzacji użytkowników przy użyciu usługi Azure Active Directory w usłudze API Management."
+title: Autoryzowanie konta dewelopera przy użyciu usługi Azure Active Directory — Zarządzanie interfejsami API Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i autoryzacji użytkowników przy użyciu usługi Azure Active Directory w usłudze API Management.
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d89257cba70fb82d56fb1beef8a8efe66a8af02d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzowanie konta dewelopera przy użyciu usługi Azure Active Directory w usłudze Azure API Management
 
@@ -34,7 +34,7 @@ W tym artykule przedstawiono sposób umożliwić dostęp do portalu dla dewelope
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autoryzowanie konta dewelopera przy użyciu usługi Azure AD
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
-2. Wybierz pozycję ![Strzałka](./media/api-management-howto-aad/arrow.png).
+2. Wybierz pozycję ![strzałkę](./media/api-management-howto-aad/arrow.png).
 3. Typ **interfejsu api** w polu wyszukiwania.
 4. Wybierz **usługi Zarządzanie interfejsami API**.
 5. Wybierz wystąpienia usługi Zarządzanie interfejsami API.
@@ -51,11 +51,11 @@ W tym artykule przedstawiono sposób umożliwić dostęp do portalu dla dewelope
    ![Procedura dodawania dostawcy tożsamości w portalu Azure](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. W przeglądarce otwórz innej karty. 
 11. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-12. Wybierz pozycję ![Strzałka](./media/api-management-howto-aad/arrow.png).
+12. Wybierz pozycję ![strzałkę](./media/api-management-howto-aad/arrow.png).
 13. Typ **active**. **Usługi Azure Active Directory** pojawi się okienko.
-14. Wybierz **usługi Azure Active Directory**.
+14. Wybierz pozycję **Azure Active Directory**.
 15. W obszarze **ZARZĄDZAJ**, wybierz pozycję **rejestracji aplikacji**.
-16. Wybierz **nowej rejestracji aplikacji**.
+16. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 
     ![Wybrane elementy do tworzenia nowej rejestracji aplikacji](./media/api-management-howto-aad/api-management-with-aad002.png)
 

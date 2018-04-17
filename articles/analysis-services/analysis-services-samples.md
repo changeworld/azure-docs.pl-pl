@@ -1,25 +1,18 @@
 ---
-title: "Azure kod usług Analysis Services, projektu i przykładowe bazy danych | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o kodu projektu i przykładowe bazy danych dla usług Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
+title: Azure kod usług Analysis Services, projektu i przykładowe bazy danych | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o kodu projektu i przykładowe bazy danych dla usług Azure Analysis Services.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 17c3624804475f1f711130372a7442ddd8dbeb3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 55f350f21111e8937fa1687c890d4f7bb4ab07ed
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-analysis-services-samples"></a>Przykładów dla platformy Azure Analysis Services
 Użyj poniższych przykładowych zasobów ułatwiają Dowiedz się więcej o i testowania oprogramowania Analysis Services dla środowiska.

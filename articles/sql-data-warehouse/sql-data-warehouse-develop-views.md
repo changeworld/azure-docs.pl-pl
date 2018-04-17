@@ -1,38 +1,37 @@
 ---
-title: "Korzystanie z widoków T-SQL w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Porady dotyczące korzystania z widoków języka Transact-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań."
-services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: b5208f32-8f4a-4056-8788-2adbb253d9fd
+title: Korzystanie z widoków T-SQL w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: ccccc
+services: Tips for using T-SQL views in Azure SQL Data Warehouse for developing solutions.
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: d2a03be810bd7f792876607ec735eb578b65a3b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 249eaf07c5cd4ae918b6a95b1555f7198c7a23a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="views-in-sql-data-warehouse"></a>Widoki w usłudze SQL Data Warehouse
-Widoki są szczególnie przydatne w usłudze SQL Data Warehouse. Służy na kilka różnych sposobów poprawy jakości rozwiązania.  W tym artykule omówiono sposób wzbogacić rozwiązania z widoków, a także ograniczenia, które należy wziąć pod uwagę kilka przykładów.
+# <a name="views-in-azure-sql-data-warehouse"></a>Widoki w magazynie danych Azure SQL
+Porady dotyczące korzystania z widoków T-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań. 
+
+
+## <a name="why-use-views"></a>Dlaczego warto używać widoków?
+Widoki można na wiele sposobów poprawy jakości rozwiązania.  W tym artykule omówiono sposób wzbogacić rozwiązania z widoków, a także ograniczenia, które należy wziąć pod uwagę kilka przykładów.
 
 > [!NOTE]
-> Składnia `CREATE VIEW` nie została szczegółowo opisana w tym artykule. Zapoznaj się z [CREATE VIEW] [ CREATE VIEW] artykuł w witrynie MSDN, aby uzyskać informacje na ten.
+> Składnia CREATE VIEW nie omówiono w tym artykule. Aby uzyskać więcej informacji, zobacz [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql) dokumentacji.
 > 
 > 
 
 ## <a name="architectural-abstraction"></a>Abstrakcja architektury
-Jest bardzo typowy wzorzec aplikacji do ponownego tworzenia tabel za pomocą tworzenia tabeli jako wybierz (CTAS) następuje zmiana nazwy wzorzec podczas ładowania danych obiektu.
+Wspólnego wzorca aplikacji jest ponownie utworzyć tabel za pomocą tworzenia tabeli jako wybierz (CTAS) następuje zmiana nazwy wzorzec podczas ładowania danych obiektu.
 
-W poniższym przykładzie dodaje Data nowych rekordów do wymiaru daty. Należy zauważyć, jak nowy tabela, DimDate_New, jest najpierw utworzyć i następnie zmieniona na zastępowanie wersji oryginalnej tabeli.
+Poniższy przykład dodaje Data nowych rekordów do wymiaru daty. Należy zwrócić uwagę, jak nową tabelę DimDate_New, utworzenia, a następnie zmieniona na zastępowanie wersji oryginalnej tabeli.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -52,13 +51,13 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Jednak ta metoda może spowodować tabel znajdujących się i znika z punktu widzenia użytkownika, a także "Tabela nie istnieje" komunikaty o błędach. Widoków może służyć do zapewnienia użytkowników z warstwą prezentacji spójne, przy jednoczesnym obiektów zostały zmienione. Zapewniając użytkownikom dostęp do danych za pośrednictwem widoków, oznacza, że użytkownicy nie muszą mieć wgląd w tabeli. Zapewnia to spójny interfejs użytkownika podczas sprawdzeniu, czy projektanci magazyn danych można rozwijać modelu danych i zmaksymalizować wydajność przy użyciu CTAS podczas procesu ładowania danych.    
+Jednak ta metoda może spowodować tabel znajdujących się i znika z punktu widzenia użytkownika, a także "Tabela nie istnieje" komunikaty o błędach. Widoków może służyć do zapewnienia użytkowników z warstwą prezentacji spójne, przy jednoczesnym obiektów zostały zmienione. Dzięki dostępowi do danych za pośrednictwem widoków, użytkownicy nie muszą widoczność w tabelach. Ta warstwa umożliwia spójną obsługę użytkowników podczas sprawdzeniu, czy projektanci magazyn danych można rozwijać modelu danych. Można sformułować tabel oznacza, że projektanci mogą używać CTAS w celu zwiększenia wydajności podczas procesu ładowania danych.   
 
 ## <a name="performance-optimization"></a>Optymalizacja wydajności
-Widoki można również używać do wymuszania zoptymalizowanych pod kątem wydajności sprzężenia między tabelami. Na przykład widoku można zastosować klucza dystrybucji nadmiarowe jako część łącząca kryteriów, aby zminimalizować przenoszenia danych.  Inną zaletą widoku można wymusić określonej kwerendy lub łącząca wskazówki. Korzystanie z widoków w ten sposób gwarantuje, że sprzężenia zawsze są realizowane w sposób optymalny uniknięcie do zapamiętania prawidłowa konstrukcja dla ich sprzężeń przez użytkowników.
+Widoki można również używać do wymuszania zoptymalizowanych pod kątem wydajności sprzężenia między tabelami. Na przykład widoku można zastosować klucza dystrybucji nadmiarowe jako część łącząca kryteriów, aby zminimalizować przenoszenia danych. Inną zaletą widoku można wymusić określonej kwerendy lub łącząca wskazówki. Korzystanie z widoków w ten sposób gwarantuje, że sprzężenia zawsze są realizowane w sposób optymalny uniknięcie do zapamiętania prawidłowa konstrukcja dla ich sprzężeń przez użytkowników.
 
 ## <a name="limitations"></a>Ograniczenia
-Widoki w usłudze SQL Data Warehouse są tylko metadane.  W związku z tym nie dostępne są następujące opcje:
+Widoki SQL Data Warehouse są przechowywane jako zawierają tylko metadane. W związku z tym nie dostępne są następujące opcje:
 
 * Nie jest dostępna opcja powiązanie schematu
 * Nie można aktualizować tabel podstawowych za pośrednictwem widoku
@@ -66,16 +65,7 @@ Widoki w usłudze SQL Data Warehouse są tylko metadane.  W związku z tym nie d
 * Nie jest obsługiwane dla ROZWIJANIA / wskazówki NOEXPAND
 * Brak widoków indeksowanych w usłudze SQL Data Warehouse
 
-## <a name="next-steps"></a>Następne kroki
-Więcej porad dla deweloperów znajduje się w artykule [Omówienie programowania w usłudze SQL Data Warehouse][SQL Data Warehouse development overview].
-Aby uzyskać `CREATE VIEW` składni, zapoznaj się [CREATE VIEW][CREATE VIEW].
+## <a name="next-steps"></a>Kolejne kroki
+Więcej porad programistycznych znajdziesz w artykule [Omówienie programowania w usłudze SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
 
-<!--Article references-->
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
-
-<!--Other Web references-->

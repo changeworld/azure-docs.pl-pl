@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2017
+ms.date: 04/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7bf2d9b999db738007f75d72a8818ca0eb6f34ba
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 70a2118ef0e26043f9f6a9cceb9d4a533d343556
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure stosu  
 
@@ -55,8 +55,7 @@ W poniższych sekcjach opisano kroki wymagane do zainstalowania programu PowerSh
 
 Azure stosu zgodne AzureRM moduły są instalowane za pośrednictwem interfejsu API w wersji profilów. Stos Azure wymaga **2017-03-09-profilu** profilu wersji interfejsu API, który jest dostępny przez zainstalowanie modułu AzureRM.Bootstrapper. Aby dowiedzieć się więcej o profilach wersji interfejsu API i udostępniane przez nich polecenia cmdlet, zapoznaj się [zarządzania profilami wersji interfejsu API](azure-stack-version-profiles-powershell.md). Oprócz modułów AzureRM należy również zainstalować moduł Azure PowerShell dotyczące stosu. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły na deweloperskiej stacji roboczej:
 
-> [!IMPORTANT]  
-> Wersja modułu PowerShell AzureRM 1.2.11 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.10 wersji, zobacz Przewodnik migracji w [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration).
+
 
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -83,9 +82,6 @@ Aby sprawdzić instalację, uruchom następujące polecenie:
 ## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Instalowanie programu PowerShell w scenariuszu częściowo połączonych lub rozłączona (ograniczone z łącznością z Internetem)
 
 W scenariuszu bez połączenia lub częściowo połączonych musi najpierw Pobierz moduły programu PowerShell na komputerze, na którym ma połączenie z Internetem, a następnie przesyła je Azure stosu Development Kit dla instalacji.
-
-> [!IMPORTANT]
-> Wersja modułu PowerShell AzureRM 1.2.11 zawiera listę fundamentalne zmiany. Aby uaktualnić 1.2.10 wersji, zobacz Przewodnik migracji w [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration).
 
 1. Zaloguj się do komputera, na którym jest połączony z Internetem i użyj następującego skryptu do pobierania AzureRM i pakiety AzureStack na komputerze lokalnym:
 

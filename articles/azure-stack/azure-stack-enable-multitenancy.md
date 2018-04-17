@@ -1,11 +1,11 @@
 ---
-title: "Włącz wielodostępność stosu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak obsługiwać wiele katalogów usługi Azure Active Directory w stosie Azure"
+title: Włącz wielodostępność stosu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak obsługiwać wiele katalogów usługi Azure Active Directory w stosie Azure
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9ee54827ae9e8a803a5e3d7464559aec62c67119
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Włącz wielodostępność stosu Azure
 
@@ -91,7 +91,7 @@ Register-AzSWithMyDirectoryTenant `
 ## <a name="direct-users-to-sign-in"></a>Bezpośrednie użytkownikom na logowanie
 Teraz, możesz i Joanna zostały wykonane kroki do katalogu dołączyć Joanna, Joanna przekierować użytkowników Fabrikam do logowania.  Firma Fabrikam (to znaczy, że użytkownicy z sufiksem fabrikam.onmicrosoft.com) logowania po przejściu na stronę https://portal.local.azurestack.external.  
 
-Joanna kieruje żadnego [obce podmioty](../active-directory/active-directory-understanding-resource-access.md) w katalogu firmy Fabrikam (to znaczy użytkowników w katalogu firmy Fabrikam bez sufiks fabrikam.onmicrosoft.com) zalogowanie się przy użyciu https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Jeśli nie należy używać tego adresu URL, są wysyłane do ich domyślny katalog (Fabrikam) i komunikat o błędzie z informacją, że nie zgodził ich administratora.
+Joanna kieruje żadnego [obce podmioty](../role-based-access-control/rbac-and-directory-admin-roles.md) w katalogu firmy Fabrikam (to znaczy użytkowników w katalogu firmy Fabrikam bez sufiks fabrikam.onmicrosoft.com) zalogowanie się przy użyciu https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Jeśli nie należy używać tego adresu URL, są wysyłane do ich domyślny katalog (Fabrikam) i komunikat o błędzie z informacją, że nie zgodził ich administratora.
 
 ## <a name="next-steps"></a>Następne kroki
 

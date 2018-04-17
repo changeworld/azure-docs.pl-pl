@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 322de1fb19461455a063d939ace3d5553ed1fc79
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5e8ac9da4df2428191e8a7e6402f2ac06e695503
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w bazie danych Azure dla programu MySQL przy użyciu wiersza polecenia platformy Azure
 
@@ -52,7 +52,7 @@ Zwracany kod JSON powinien zawierać następujące informacje:
 }
 ```
 
-Jeśli wersja 0.0.5 nie zostanie zwrócone, uruchom następujące polecenie, aby zaktualizować rozszerzenia: 
+Jeśli nie jest zwracana wersja 0.0.5, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -113,6 +113,10 @@ Po ukończeniu procesu przywracania, zlokalizuj nowy serwer i sprawdź, czy dane
 Skonfigurowanie serwera na potrzeby geograficznie nadmiarowy kopii zapasowych można utworzyć nowego serwera z kopii zapasowej tego istniejącego serwera. W dowolnym regionie, że baza danych Azure dla programu MySQL jest dostępny, można utworzyć nowego serwera.  
 
 Aby utworzyć serwer przy użyciu kopii zapasowej z magazynu geograficznie nadmiarowego, użyj interfejsu wiersza polecenia Azure `az mysql server georestore` polecenia.
+
+> [!NOTE]
+> Podczas tworzenia serwera nie może być dostępne od razu do przywracania geo. Może upłynąć kilka godzin metadane potrzebne do wypełnienia.
+>
 
 Do przywrócenia geograficznie serwera, w wierszu polecenia interfejsu wiersza polecenia Azure wprowadź następujące polecenie:
 

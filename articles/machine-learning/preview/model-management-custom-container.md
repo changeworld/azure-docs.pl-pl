@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
-ms.openlocfilehash: 858c8933565aeeb22dc1b685082dab2c6481737b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f56b651c40187e42361ac12f0cbf4e509385e0d2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>Dostosowanie obrazu kontenera używana dla modeli uczenia Maszynowego Azure
 
@@ -23,7 +23,7 @@ W tym artykule opisano sposób dostosowywania obrazu kontener dla modeli uczenia
 ## <a name="how-to-customize-the-docker-image"></a>Sposobu dostosowywania obrazu Docker
 Dostosowanie obrazu Docker, która wdraża uczenie Maszynowe Azure przy użyciu:
 
-1. Plik depenencies.yml: Zarządzanie zależności, które mogą zostać zainstalowane z [PyPi]( https://pypi.python.org/pypi), można użyć pliku conda_dependencies.yml z projektu Workbench lub Utwórz swój własny. Jest to metoda zaleca się instalowanie zależności Python, które mogą zostać zainstalowane narzędzia pip.
+1. A `dependencies.yml` plik: Zarządzanie zależności, które mogą zostać zainstalowane z [PyPi]( https://pypi.python.org/pypi), można użyć `conda_dependencies.yml` plik z projektu Workbench lub Utwórz swój własny. Jest to metoda zaleca się instalowanie zależności Python, które mogą zostać zainstalowane narzędzia pip.
 
    Przykład polecenia interfejsu wiersza polecenia:
    ```azurecli

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3eb6f08d89daec063841eeb5fff8479c9f2f41fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Używanie parametrów usługi sieci Web Azure Machine Learning
 Usługi sieci web Azure Machine Learning jest tworzony przez publikowanie eksperymentu, która zawiera moduły można skonfigurować parametrów. W niektórych przypadkach możesz zmienić to zachowanie modułu jest uruchomiona usługa sieci web. *Parametry usługi sieci Web* umożliwiają wykonywanie tego zadania. 
@@ -52,7 +52,7 @@ Na przykład załóżmy, że mamy doświadczenia z [eksportowanie danych] [ writ
    * W obszarze **określ miejsce docelowe danych**, wybierz pozycję "Magazyn obiektów Blob Azure".
    * W obszarze **Określ typ uwierzytelniania**, wybierz "Konto".
    * Wprowadź informacje o koncie magazynu obiektów blob platformy Azure. 
-     <p />
+
 3. Kliknij ikonę z prawej strony **ścieżki do obiektu blob, począwszy od parametru kontenera**. Wygląda następująco:
    
    ![Ikona parametr usługi sieci Web][icon]

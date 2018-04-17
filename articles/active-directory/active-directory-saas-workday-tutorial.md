@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Azure Active Directory integracji z produktem Workday | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i dzień roboczy."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i dzień roboczy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 1dfe319e708e6a4e815413da1a7bf635f4d0a53d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Samouczek: Azure Active Directory integracji z produktem Workday
 
@@ -108,15 +108,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny WORKDAY pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-workday-tutorial/tutorial_workday_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL:`http://www.workday.com`
+    b. W **identyfikator** tekstowym, wpisz adres URL: `http://www.workday.com`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonaj następujące kroki:
 
     ![Adresy URL i domeny WORKDAY pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-workday-tutorial/tutorial_workday_url1.png)
 
-    W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://impl.workday.com/<tenant>/login-saml.htmld`
+    W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://impl.workday.com/<tenant>/login-saml.htmld`
      
     > [!NOTE] 
     > Wartości te nie są rzeczywistych. Rzeczywisty adres URL logowania i adres URL odpowiedzi, należy zaktualizować te wartości. Adres URL odpowiedzi muszą mieć poddomeny na przykład: www, wd2, wd3, wd3 impl, wd5, wd5 impl). Przy użyciu przypominać "*http://www.myworkday.com*" działa, ale "*http://myworkday.com*" nie ma. Skontaktuj się z [zespołem pomocy technicznej klienta produktu Workday](https://www.workday.com/en-us/partners-services/services/support.html) uzyskać te wartości.  
@@ -147,13 +147,13 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     b. W **Przekierowywanie adresu URL logowania do** pole tekstowe i **adresem URL przekierowania Mobile** pole tekstowe, typ **adres URL logowania** zostały wprowadzone na **produktu Workday domeny i adres URL** części portalu Azure.
    
-    d. W portalu Azure na **konfigurowania rejestracji** okna, kopiowania **Sign-Out adres URL**, a następnie wklej go do **adresem URL przekierowania wylogowania** pola tekstowego.
+    c. W portalu Azure na **konfigurowania rejestracji** okna, kopiowania **Sign-Out adres URL**, a następnie wklej go do **adresem URL przekierowania wylogowania** pola tekstowego.
 
     d. W **używane dla środowisk** pole tekstowe, wybierz nazwę środowiska.  
 
     >[!NOTE]
     > Wartość atrybutu środowisko jest powiązany z wartością adres URL dzierżawy:  
-    >— Czy nazwy domeny adresu URL dzierżawy produktu Workday rozpoczyna się od impl na przykład: *https://impl.workday.com/\<dzierżawy\>/login-saml2.htmld*), **środowiska** atrybutu należy wybrać opcję implementacji.  
+    >— Czy nazwy domeny adresu URL dzierżawy produktu Workday rozpoczyna się od impl na przykład:  *https://impl.workday.com/ \<dzierżawy\>/login-saml2.htmld*), **środowiska** należy ustawić atrybut do wykonania.  
     >— Jeśli nazwa domeny rozpoczynają się od czegoś innego, należy skontaktować się [zespołem pomocy technicznej klienta produktu Workday](https://www.workday.com/en-us/partners-services/services/support.html) uzyskanie odpowiedniego **środowiska** wartość.
 
 11. W **Instalatora SAML** sekcji, wykonaj następujące czynności:
@@ -172,9 +172,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     b. W portalu Azure na **Konfigurowanie logowania jednokrotnego** okna, kopiowania **identyfikator jednostki SAML** wartość, a następnie wklej ją do **wystawcy** pola tekstowego.
 
-    ![Dostawców tożsamości SAML](./media/active-directory-saas-workday-tutorial/IC7829271(1).png "dostawców tożsamości SAML")
+    ![Dostawców tożsamości SAML](./media/active-directory-saas-workday-tutorial/IC7829272.png "dostawców tożsamości SAML")
    
-    d. Wybierz **włączyć Workday wylogowania inicjowane**.
+    c. Wybierz **włączyć idp zainicjował wylogowania**.
    
     d. W portalu Azure na **Konfigurowanie logowania jednokrotnego** okna, kopiowania **Sign-Out URL** wartość, a następnie wklej ją do **adres URL wylogowania odpowiedzi** pola tekstowego.
 
@@ -198,7 +198,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     b. W **ważny od** tekstowym, wpisz poprawna wartość atrybutu certyfikatu.
    
-    d.  W **ważny do** tekstowym, wpisz prawidłową wartość atrybutu certyfikatu.
+    c.  W **ważny do** tekstowym, wpisz prawidłową wartość atrybutu certyfikatu.
    
     > [!NOTE]
     > Możesz uzyskać prawidłową z datę i poprawna data z pobranego certyfikatu, kliknij go dwukrotnie.  Daty są wyświetlane w obszarze **szczegóły** kartę.
@@ -219,16 +219,13 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
    
     b. Wybierz **nie Deflate żądania uwierzytelnienia zainicjowane SP**.
    
-    d. Jako **podpisu żądania uwierzytelnienia**, wybierz pozycję **SHA256**. 
+    c. Jako **podpisu żądania uwierzytelnienia**, wybierz pozycję **SHA256**. 
    
     ![Metoda podpisu żądania uwierzytelniania](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguration.png "metoda podpisu żądania uwierzytelniania") 
    
     d. Kliknij przycisk **OK**. 
    
     ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -258,7 +255,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
  
@@ -309,7 +306,6 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-workday-tutorial/tutorial_general_01.png
@@ -323,4 +319,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-workday-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workday-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workday-tutorial/tutorial_general_203.png
-

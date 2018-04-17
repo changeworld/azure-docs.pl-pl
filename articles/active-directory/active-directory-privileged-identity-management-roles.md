@@ -1,11 +1,11 @@
 ---
 title: Role w programie Azure AD Privileged Identity Management | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jakie role są używane dla tożsamości uprzywilejowanych z rozszerzeniem Azure Privileged Identity Management."
+description: Dowiedz się, jakie role są używane dla tożsamości uprzywilejowanych z rozszerzeniem Azure Privileged Identity Management.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/04/2018
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 500fb11627fa0ce7ac838c650a582dd9d49b598c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 94a066c43d1b04161a46dac15e5b373d97cc063d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Innej roli administracyjnej w usłudze Azure Active Directory PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -67,7 +67,7 @@ Jeśli chcesz udostępnić innego użytkownika do zarządzania w PIM sam ról, k
 ## <a name="roles-not-managed-in-pim"></a>Role nie są zarządzane w PIM
 Role w ramach usługi Exchange Online lub SharePoint Online, z wyjątkiem wymienionych powyżej, nie są reprezentowane w usłudze Azure AD i dlatego nie są widoczne w PIM. Aby uzyskać więcej informacji na temat zmieniania przypisań ról szczegółowych w tych usług Office 365, zobacz [uprawnienia w usłudze Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Subskrypcje platformy Azure i grup zasobów również nie są reprezentowane w usłudze Azure AD. Aby zarządzać subskrypcjami platformy Azure, zobacz [jak dodać lub zmienić role administratora platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md) i uzyskać więcej informacji o Azure RBAC, zobacz [kontroli dostępu](role-based-access-control-configure.md).
+Subskrypcje platformy Azure i grup zasobów również nie są reprezentowane w usłudze Azure AD. Aby zarządzać subskrypcjami platformy Azure, zobacz [jak dodać lub zmienić role administratora platformy Azure](../billing/billing-add-change-azure-subscription-administrator.md) i uzyskać więcej informacji o Azure RBAC, zobacz [kontroli dostępu](../role-based-access-control/role-assignments-portal.md).
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 

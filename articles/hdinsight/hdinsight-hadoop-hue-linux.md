@@ -1,26 +1,24 @@
 ---
-title: "HUE z platformą Hadoop w klastrach opartych na systemie Linux usługi HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak instalowanie aplikacji Hue w klastrach HDInsight i Użyj tunelowania można przekierować żądania do aplikacji Hue. Odcienia, który umożliwia przeglądanie magazynu i uruchom Hive i Pig."
+title: HUE z platformą Hadoop w klastrach opartych na systemie Linux usługi HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak instalowanie aplikacji Hue w klastrach HDInsight i Użyj tunelowania można przekierować żądania do aplikacji Hue. Odcienia, który umożliwia przeglądanie magazynu i uruchom Hive i Pig.
 keywords: HUE hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9e57fcca-e26c-479d-a745-7b80a9290447
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 829f309fa66bc548b9f74cca8112c244cc88775e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Zainstalować i używać Hue w klastrach HDInsight Hadoop
 
@@ -100,7 +98,7 @@ Tunelowanie SSH jest jedynym sposobem na dostęp do aplikacji Hue w klastrze po 
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Jest nazwą hosta headnode głównej, gdzie znajduje się Hue witryny sieci Web.
-4. Umożliwia otwieranie portalu Hue pod adresem http://HOSTNAME:8888 przeglądarki. Zastąp nazwę hosta nazwą uzyskanego w poprzednim kroku.
+4. Umożliwia otwieranie portalu Hue w przeglądarce http://HOSTNAME:8888. Zastąp nazwę hosta nazwą uzyskanego w poprzednim kroku.
 
    > [!NOTE]
    > Po zalogowaniu się po raz pierwszy, pojawi się monit Aby utworzyć konto, aby zalogować się do portalu Hue. Poświadczenia określone w tym miejscu będzie ograniczony do portalu i nie są związane z administratora lub poświadczeń użytkownika SSH określony podczas udostępniania klastra.

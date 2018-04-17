@@ -3,8 +3,8 @@ title: Azure DB rozwiązania Cosmos rejestrowania diagnostycznego | Dokumentacja
 description: Użyj w tym samouczku ułatwią rozpoczęcie pracy z bazy danych Azure rozwiązania Cosmos rejestrowania.
 services: cosmos-db
 documentationcenter: ''
-author: mimig1
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: cosmos-db
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: mimig
-ms.openlocfilehash: 3b7c9f1acd79a2f170ecead9dedd200ad37d9388
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: sngun
+ms.openlocfilehash: 0b49a23de62385a8aa362680dde845512d9302fc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure DB rozwiązania Cosmos rejestrowania diagnostycznego
 
@@ -447,7 +447,7 @@ W poniższej tabeli opisano zawartości każdego wpisu dziennika.
 | **category** | **Kategoria** | W przypadku dzienników bazy danych Azure rozwiązania Cosmos **DataPlaneRequests** jest jedyną dostępną wartością. |
 | **OperationName** | **OperationName** | Nazwa operacji. Ta wartość może być dowolną z następujących operacji: tworzenia, aktualizacji, odczytu, ReadFeed, Usuń, Zastąp, Execute, SqlQuery, zapytania, JSQuery, Head, HeadFeed lub Upsert.   |
 | **właściwości** | Nie dotyczy | Zawartość tego pola są opisane w kolejnych wierszach. |
-| **activityId** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
+| **Identyfikator działania** | **activityId_g** | Unikatowy identyfikator GUID dla zarejestrowanych operacji. |
 | **userAgent** | **userAgent_s** | Ciąg określający agent użytkownika klienta, który wykonuje żądanie. Format to {nazwa agenta użytkownika} / {wersja}.|
 | **resourceType** | **ResourceType** | Typ dostęp do zasobów. Ta wartość może być dowolny z następujących zasobów: bazy danych, kolekcji, dokument, załącznika, użytkownika, uprawnienia, procedura składowana, wyzwalacz, UserDefinedFunction lub oferty. |
 | **statusCode** | **statusCode_s** | Stan odpowiedzi operacji. |

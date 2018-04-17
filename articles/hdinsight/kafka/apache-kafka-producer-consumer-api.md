@@ -1,8 +1,8 @@
 ---
-title: "Użyj Apache Kafka producentów i interfejsów API klienta — usługa Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie korzystania z Kafka w usłudze HDInsight Apache Kafka producentów i interfejsów API klienta. Te interfejsy API umożliwiają tworzenie aplikacji, które zapisywania i odczytywania z Apache Kafka."
+title: Użyj Apache Kafka producentów i interfejsów API klienta — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: Informacje o sposobie korzystania z Kafka w usłudze HDInsight Apache Kafka producentów i interfejsów API klienta. Te interfejsy API umożliwiają tworzenie aplikacji, które zapisywania i odczytywania z Apache Kafka.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: b57745d6bd993a993e923c964327d9071e745413
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 01592401c4c88adeed49b11df4e7963e27b1bcee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-kafka-producer-and-consumer-apis"></a>Producent Kafka Apache i interfejsów API klienta
 
@@ -43,7 +43,7 @@ W tym przykładzie wymaga Kafka na 3,6 HDInsight. Aby dowiedzieć się, jak utwo
 
 ## <a name="build-and-deploy-the-example"></a>Tworzenie i wdrażanie przykładu
 
-1. Pobierz przykłady ze strony [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
+1. Pobierz przykłady z [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
 2. Zmień katalogi na lokalizację `Producer-Consumer` katalogu i użyj następującego polecenia:
 
@@ -61,7 +61,7 @@ W tym przykładzie wymaga Kafka na 3,6 HDInsight. Aby dowiedzieć się, jak utwo
    
     Zamień ciąg **SSHUSER** na nazwę użytkownika SSH klastra i zamień ciąg **CLUSTERNAME** na nazwę klastra. Po wyświetleniu monitu wprowadź hasło użytkownika SSH.
 
-## <a id="run"></a>Uruchomić przykład
+## <a id="run"></a> Uruchomić przykład
 
 1. Aby otworzyć połączenie SSH do klastra, użyj następującego polecenia:
 
@@ -144,9 +144,9 @@ W tym dokumencie przedstawiono sposób korzystania z Kafka w usłudze HDInsight 
 
 * [Analizowanie dzienników Kafka](apache-kafka-log-analytics-operations-management.md)
 * [Replicate data between Kafka clusters (Replikowanie danych między klastrami Kafka)](apache-kafka-mirroring.md)
-* [Strumienie Kafka interfejsu API z usługą HDInsight](apache-kafka-streams-api.md)
+* [Kafka Streams API with HDInsight](apache-kafka-streams-api.md) (Interfejs API strumieni platformy Kafka w usłudze HDInsight)
 * [Use Apache Spark streaming (DStream) with Kafka on HDInsight (Używanie strumieni (DStream) platformy Apache Spark z platformą Kafka w usłudze HDInsight)](../hdinsight-apache-spark-with-kafka.md)
 * [Use Apache Spark Structured Streaming with Kafka on HDInsight (Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight)](../hdinsight-apache-kafka-spark-structured-streaming.md)
-* [Użyj Apache Spark strukturalnych przesyłania strumieniowego do przenoszenia danych z Kafka w usłudze HDInsight do rozwiązania Cosmos bazy danych.](../apache-kafka-spark-structured-streaming-cosmosdb.md)
+* [Use Apache Spark Structured Streaming to move data from Kafka on HDInsight to Cosmos DB](../apache-kafka-spark-structured-streaming-cosmosdb.md) (Korzystanie z przesyłania strumieniowego ze strukturą w systemie Apache Spark w celu przenoszenia danych z platformy Kafka w usłudze HDInsight do usługi Cosmos DB)
 * [Używanie systemu Apache Storm z platformą Kafka w usłudze HDInsight](../hdinsight-apache-storm-with-kafka.md)
 * [Nawiązywanie połączenia z platformą Kafka za pośrednictwem sieci wirtualnej platformy Azure](apache-kafka-connect-vpn-gateway.md)

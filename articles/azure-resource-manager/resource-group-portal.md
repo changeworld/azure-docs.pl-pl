@@ -1,8 +1,8 @@
 ---
-title: "Użyj portalu Azure do zarządzania zasobami Azure | Dokumentacja firmy Microsoft"
-description: "Użyj portalu Azure i usługi Azure Resource Manager do zarządzania zasobami. Pokazuje, jak pracować z pulpitów nawigacyjnych do monitorowania zasobów."
+title: Użyj portalu Azure do zarządzania zasobami Azure | Dokumentacja firmy Microsoft
+description: Użyj portalu Azure i usługi Azure Resource Manager do zarządzania zasobami. Pokazuje, jak pracować z pulpitów nawigacyjnych do monitorowania zasobów.
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>Zarządzania zasobami Azure za pośrednictwem portalu
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono sposób użycia [portalu Azure](https://portal.azur
 
 ## <a name="manage-resource-groups"></a>Zarządzanie grupami zasobów
 
-Grupa zasobów jest kontenerem, który zawiera powiązane zasoby Azure rozwiązania. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji. Ogólnie rzecz biorąc można dodać zasobów, które mają taki sam cykl życia do tej samej grupy zasobów, dlatego łatwo wdrożyć, aktualizować i usuwać je jako grupa. 
+Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Grupa zasobów może zawierać wszystkie zasoby dla rozwiązania lub tylko te zasoby, które mają być zarządzane jako grupa. Użytkownik decyduje o sposobie przydziału zasobów do grup zasobów pod kątem tego, co jest najbardziej odpowiednie dla danej organizacji. Ogólnie rzecz biorąc można dodać zasobów, które mają taki sam cykl życia do tej samej grupy zasobów, dlatego łatwo wdrożyć, aktualizować i usuwać je jako grupa. 
 
 Grupa zasobów przechowuje metadane dotyczące zasobów. Z tego powodu określając lokalizację dla grupy zasobów, określasz miejsce, w którym przechowywane są metadane. Dla zachowania zgodności może być konieczne upewnienie się, że dane są przechowywane w odpowiednim regionie.
 
@@ -123,10 +123,10 @@ Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w nim zawarte.
 
 ![Usuwanie grupy](./media/resource-group-portal/delete-group.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby wyświetlić dzienniki aktywności, zobacz [inspekcji operacji za pomocą Menedżera zasobów](resource-group-audit.md).
 * Aby wyświetlić szczegółowe informacje o wdrożeniu, zobacz [wyświetlić operacje wdrażania](resource-manager-deployment-operations.md).
 * Aby wdrożyć zasobów za pośrednictwem portalu, zobacz [wdrożenie zasobów z szablonami usługi Resource Manager i portalu Azure](resource-group-template-deploy-portal.md).
-* Aby zarządzać dostępem do zasobów, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../active-directory/role-based-access-control-configure.md).
+* Aby zarządzać dostępem do zasobów, zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
 

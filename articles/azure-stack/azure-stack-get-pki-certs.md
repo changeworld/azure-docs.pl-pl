@@ -1,6 +1,6 @@
 ---
 title: Generowanie certyfikatów infrastruktury kluczy publicznych stosu Azure stosu Azure zintegrowanych systemów wdrożenia | Dokumentacja firmy Microsoft
-description: Zawiera opis systemów stosu Azure zintegrowanych processfor wdrażania certyfikatu PKI stosu Azure.
+description: Zawiera opis procesu wdrażania certyfikatu PKI stosu Azure stosu Azure zintegrowanych systemów.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,67 +12,104 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/11/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: fc2ec96113310f54d32a67ea5fa31725600046c9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fbf3c66979730a9162c56e8583f0a32977a0310d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Generowanie certyfikaty PKI dla wdrożenia usługi Azure stosu
-Teraz, znając [wymagania dotyczące certyfikatu PKI](azure-stack-pki-certs.md) wdrożeń stosu Azure, należy uzyskać tych certyfikatów z urzędu certyfikacji, wybranych przez użytkownika. 
+# <a name="azure-stack-certificates-signing-request-generation"></a>Azure stosu certyfikaty podpisywania generowania żądania
 
-## <a name="request-certificates-using-an-inf-file"></a>Żądanie certyfikatów przy użyciu pliku INF
-Jest jednym ze sposobów żądania certyfikatów z publicznego urzędu certyfikacji lub z wewnętrznego urzędu certyfikacji przy użyciu pliku INF. Narzędzie certreq.exe wbudowanych systemu Windows umożliwia określanie szczegółów certyfikatów, plik INF Generowanie pliku żądania zgodnie z opisem w tej sekcji. 
+Narzędzie sprawdzania gotowości stosu Azure opisano w tym artykule jest dostępny [z galerii programu PowerShell](https://aka.ms/AzsReadinessChecker). Narzędzie tworzy odpowiedni w przypadku wdrożenia usługi Azure stosu żądania podpisania certyfikatu (CSR). Certyfikaty powinny żądanie, generowane i zweryfikowana za pomocą wystarczająco dużo czasu na test przed przystąpieniem do wdrożenia. 
 
-### <a name="sample-inf-file"></a>Przykładowy plik INF 
-Plik INF żądania certyfikatu przykład można utworzyć pliku żądania certyfikatu w trybie offline do przesłania do urzędu certyfikacji (wewnętrzny lub publiczny). Plik INF obejmuje wszystkie wymagane punkty końcowe (w tym usługi opcjonalne PaaS) w certyfikacie jeden symbol wieloznaczny. 
+Narzędzie sprawdzania gotowości stosu Azure (AzsReadinessChecker) wykonuje następujące żądania certyfikatu:
 
-Przykładowy plik INF przyjęto założenie, że region jest taki sam **sea** i wartości zewnętrznej nazwy FQDN jest **sea&#46;contoso&#46;com**. Zmiana tych wartości przed wygenerowaniem do danego środowiska. Plik INF dla danego wdrożenia. 
+ - **Standardowy certyfikat żądań**  
+    Żądania zgodnie z [wygenerować certyfikaty PKI dla wdrożenia stosu Azure](azure-stack-get-pki-certs.md). 
+ - **Typ żądania**  
+    Żądanie wiele symboli wieloznacznych sieci SAN, wiele certyfikatów w domenie, żądania certyfikatów jeden symbol wieloznaczny.
+ - **Platforma jako usługa**  
+    Opcjonalnie żądania platforma jako usługa (PaaS) nazwy z certyfikatami określonymi w [wymagania certyfikatów infrastruktury kluczy publicznych stosu Azure - opcjonalne certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
 
-    
-    [Version] 
-    Signature="$Windows NT$"
+## <a name="prerequisites"></a>Wymagania wstępne
 
-    [NewRequest] 
-    Subject = "C=US, O=Microsoft, L=Redmond, ST=Washington, CN=portal.sea.contoso.com"
+System powinna spełniać następujące wymagania wstępne, przed wygenerowaniem CSR(s) dla certyfikatów PKI dla wdrożenia usługi Azure stosu:
 
-    Exportable = TRUE                   ; Private key is not exportable 
-    KeyLength = 2048                    ; Common key sizes: 512, 1024, 2048, 4096, 8192, 16384 
-    KeySpec = 1                         ; AT_KEYEXCHANGE 
-    KeyUsage = 0xA0                     ; Digital Signature, Key Encipherment 
-    MachineKeySet = True                ; The key belongs to the local computer account 
-    ProviderName = "Microsoft RSA SChannel Cryptographic Provider" 
-    ProviderType = 12 
-    SMIME = FALSE 
-    RequestType = PKCS10
-    HashAlgorithm = SHA256
+ - Narzędzie sprawdzania gotowości stosu platformy Microsoft Azure
+ - Atrybuty certyfikatu:
+    - Nazwa regionu
+    - Zewnętrzne w pełni kwalifikowana nazwa domeny (FQDN)
+    - Temat
+ - Windows 10 lub Windows Server 2016
 
-    ; At least certreq.exe shipping with Windows Vista/Server 2008 is required to interpret the [Strings] and [Extensions] sections below
+## <a name="generate-certificate-signing-requests"></a>Generowanie żądania podpisania certyfikatu
 
-    [Strings] 
-    szOID_SUBJECT_ALT_NAME2 = "2.5.29.17" 
-    szOID_ENHANCED_KEY_USAGE = "2.5.29.37" 
-    szOID_PKIX_KP_SERVER_AUTH = "1.3.6.1.5.5.7.3.1" 
-    szOID_PKIX_KP_CLIENT_AUTH = "1.3.6.1.5.5.7.3.2"
+Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykonaj następujące kroki: 
 
-    [Extensions] 
-    %szOID_SUBJECT_ALT_NAME2% = "{text}dns=*.sea.contoso.com&dns=*.blob.sea.contoso.com&dns=*.queue.sea.contoso.com&dns=*.table.sea.contoso.com&dns=*.vault.sea.contoso.com&dns=*.adminvault.sea.contoso.com&dns=*.dbadapter.sea.contoso.com&dns=*.appservice.sea.contoso.com&dns=*.scm.appservice.sea.contoso.com&dns=api.appservice.sea.contoso.com&dns=ftp.appservice.sea.contoso.com&dns=sso.appservice.sea.contoso.com&dns=adminportal.sea.contoso.com&dns=management.sea.contoso.com&dns=adminmanagement.sea.contoso.com" 
-    %szOID_ENHANCED_KEY_USAGE% = "{text}%szOID_PKIX_KP_SERVER_AUTH%,%szOID_PKIX_KP_CLIENT_AUTH%"
+1.  Zainstaluj AzsReadinessChecker w wierszu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
-    [RequestAttributes]
-    
+    ````PowerShell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker
+    ````
 
-## <a name="generate-and-submit-request-to-the-ca"></a>Generowanie i prześlij żądanie do urzędu certyfikacji
-Poniższy przepływ pracy w tym artykule opisano sposób dostosowywania i Użyj przykładowego pliku INF wygenerowany wcześniej, aby zażądać certyfikatu od urzędu certyfikacji:
+2.  Deklarowanie **podmiotu** jako słownik uporządkowanej. Na przykład: 
 
-1. **Edytuj i zapisuj pliku INF**. Kopiowanie próbki podane i zapisać go do nowego pliku tekstowego. Zamień wartości, która pasuje do wdrożenia i Zapisz plik jako nazwa podmiotu i nazwy FQDN zewnętrznej. Plik INF.
-2. **Generuje żądanie przy użyciu certreq**. Przy użyciu komputera z systemem Windows, uruchom wiersz polecenia jako Administrator i uruchom następujące polecenie, aby wygenerować plik żądania (.req): `certreq -new <yourinffile>.inf <yourreqfilename>.req`.
-3. **Przesłania do urzędu certyfikacji**. Prześlij. Liczba ŻĄDAŃ pliku wygenerowane do urzędu certyfikacji (może być wewnętrznego lub publicznego).
-4. **Import. CER**. Zwraca urzędu certyfikacji. Plik CER. Przy użyciu tego samego komputera z systemem Windows, z którego są generowane z pliku żądania, zaimportować. Plik CER zwrócona w magazynie komputera/personal. 
-5. **Wyeksportować i skopiować. PFX do folderów wdrożenia**. Wyeksportuj certyfikat (łącznie z kluczem prywatnym) jako. PFX pliku i skopiować. Plik PFX do folderów wdrożenia opisanego w [wymagania dotyczące infrastruktury kluczy publicznych wdrażania stosu Azure](azure-stack-pki-certs.md).
+    ````PowerShell  
+    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
+    ````
+    > [!note]  
+    > Jeśli zostanie podana nazwa pospolita (CN) to zostanie zastąpiony nazwą DNS pierwszego żądania certyfikatu.
+
+3.  Deklarowanie katalog wyjściowy, który już istnieje:
+
+    ````PowerShell  
+    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    ````
+
+4. Deklarowanie **nazwa regionu** i **nazwy FQDN zewnętrznej** przeznaczonych do wdrożenia usługi Azure stosu.
+
+    ```PowerShell  
+    $regionName = 'east'
+    $externalFQDN = 'azurestack.contoso.com'
+    ````
+
+    > [!note]  
+    > `<regionName>.<externalFQDN>` stanowi podstawę, w którym zewnętrznych nazw DNS w stosie Azure są tworzone w tym przykładzie, portalu będzie `portal.east.azurestack.contoso.com`.
+
+5. Do wygenerowania żądania certyfikatu jednego z wieloma nazwami alternatywnej podmiotu potrzebne dla usług PaaS w tym:
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleSAN -OutputRequestPath $OutputDirectory -IncludePaaS
+    ````
+
+6. Aby wygenerować certyfikat podpisywania żądań dla każdej nazwy DNS bez PaaS usług:
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleSAN -OutputRequestPath $OutputDirectory
+    ````
+
+7. Przejrzyj dane wyjściowe:
+
+    ````PowerShell  
+    AzsReadinessChecker v1.1803.405.3 started
+    Starting Certificate Request Generation
+
+    CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
+    oso.com&dns=*.vault.east.azurestack.contoso.com&dns=*.adminvault.east.azurestack.contoso.com&dns=portal.east.azurestack.contoso.com&dns=adminportal.east.azurestack.contoso.com&dns=ma
+    nagement.east.azurestack.contoso.com&dns=adminmanagement.east.azurestack.contoso.com
+    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\username\Documents\AzureStackCSR\wildcard_east_azurestack_contoso_com_CertRequest_20180405233530.req
+    Certreq.exe output: CertReq: Request Created
+
+    Finished Certificate Request Generation
+
+    AzsReadinessChecker Log location: C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\1.1803.405.3\AzsReadinessChecker.log
+    AzsReadinessChecker Completed
+    ````
+
+8.  Przedstawia **. Liczba ŻĄDAŃ** pliku wygenerowane do urzędu certyfikacji (wewnętrzny lub publiczny).  Katalog wyjściowy **Start AzsReadinessChecker** zawiera CSR(s) niezbędne do przesłania do urzędu certyfikacji.  Zawiera ona także podrzędnych katalog zawierający pliki INF używane podczas generowania żądania certyfikatu, jako odwołanie. Pamiętaj, że urząd certyfikacji generuje certyfikaty przy użyciu wygenerowanego żądania, które spełnia [wymagań dotyczących infrastruktury kluczy publicznych stosu Azure](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Przygotuj certyfikaty PKI stosu Azure](azure-stack-prepare-pki-certs.md)

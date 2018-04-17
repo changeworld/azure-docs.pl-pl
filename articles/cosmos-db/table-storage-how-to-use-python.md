@@ -1,24 +1,23 @@
 ---
-title: "Rozpoczynanie pracy z magazynem tabel Azure przy użyciu języka Python | Dokumentacja firmy Microsoft"
-description: "Przechowywanie danych strukturalnych w chmurze za pomocą Magazynu tabel Azure, magazyn danych NoSQL."
+title: Rozpoczynanie pracy z magazynem tabel Azure przy użyciu języka Python | Dokumentacja firmy Microsoft
+description: Przechowywanie danych strukturalnych w chmurze za pomocą Magazynu tabel Azure, magazyn danych NoSQL.
 services: cosmos-db
 documentationcenter: python
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 7ddb9f3e-4e6d-4103-96e6-f0351d69a17b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/08/2018
-ms.author: mimig
-ms.openlocfilehash: 455479c9eb77093dd5611263fe5bdcf699b9d026
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: c8f35656e9db07b596cd24ecb570fa0960f540b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-python"></a>Rozpoczynanie pracy z magazynem tabel Azure przy użyciu języka Python
 
@@ -45,22 +44,14 @@ Do pomyślnego ukończenia samouczka niezbędne są:
 - [Rozwiązania Cosmos Azure DB tabeli zestawu SDK dla języka Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Zestaw SDK połączy się z magazynu tabel Azure i interfejsu API Azure rozwiązania Cosmos bazy danych tabeli.
 - [Konto usługi Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#create-a-storage-account) lub [konta bazy danych Azure rozwiązania Cosmos](https://azure.microsoft.com/en-us/try/cosmosdb/)
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
-
 ## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
-
-Możesz pracować z tabel za pomocą magazynu tabel Azure lub bazy danych Azure rozwiązania Cosmos. Dowiedz się więcej na temat różnic między usługami, odczytując [tabeli ofert](table-introduction.md#table-offerings). Musisz utworzyć konto usługi ma być używana. 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
-Najprościej jest utworzyć pierwsze konto usługi Azure Storage przy użyciu witryny [Azure Portal](https://portal.azure.com). Więcej informacji można znaleźć w temacie [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account).
-
-Można również utworzyć konto magazynu platformy Azure przy użyciu [programu Azure PowerShell](../storage/common/storage-powershell-guide-full.md) lub [interfejsu wiersza polecenia Azure](../storage/common/storage-azure-cli.md).
-
-Jeśli nie chcesz teraz tworzyć konta magazynu, możesz także użyć emulatora usługi Azure Storage do uruchomienia i testowania kodu w środowisku lokalnym. Więcej informacji można znaleźć w temacie [Use the Azure Storage Emulator for Development and Testing](../storage/common/storage-use-emulator.md) (Używanie emulatora usługi Azure Storage do programowania i testowania).
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Tworzenie konta usługi interfejsu API Azure rozwiązania Cosmos DB tabeli
-
-Aby uzyskać instrukcje dotyczące tworzenia konta interfejsu API Azure rozwiązania Cosmos DB tabeli, zobacz [Utwórz konto interfejsu API tabeli](create-table-dotnet.md#create-a-database-account).
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>Zainstaluj tabeli bazy danych rozwiązania Cosmos Azure SDK dla języka Python
 
