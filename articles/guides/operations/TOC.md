@@ -24,7 +24,7 @@
 ###[Wdrażanie szablonów przy użyciu interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Zabezpieczenia (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Zarządzanie zasobami za pomocą przypisań ról](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[Zarządzanie zasobami za pomocą przypisań ról](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Maszyny wirtualne](azure-operations-guide.md#azure-virtual-machines)
 ### [Rozmiary maszyn wirtualnych dla systemu Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 

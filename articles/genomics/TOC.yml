@@ -25,6 +25,8 @@
       href: frequently-asked-questions-genomics.md
     - name: Historia wersji
       href: version-release-history-genomics.md
+    - name: Ciągłość działalności biznesowej
+      href: business-continuity-genomics.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: Cennik

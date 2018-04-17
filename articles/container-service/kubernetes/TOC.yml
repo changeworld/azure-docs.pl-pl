@@ -23,7 +23,7 @@
       href: container-service-tutorial-kubernetes-scale.md
     - name: 6 — Aktualizowanie aplikacji
       href: container-service-tutorial-kubernetes-app-update.md
-    - name: 7 — Monitorowanie za pomocą usługi OMS
+    - name: 7 —Monitorowanie za pomocą usługi Log Analytics
       href: container-service-tutorial-kubernetes-monitor.md
 - name: Pojęcia
   items:
@@ -45,7 +45,7 @@
       href: container-service-scale.md
     - name: Monitorowanie
       items:
-        - name: Monitorowanie za pomocą usługi OMS
+        - name: Monitorowanie za pomocą usługi Log Analytics
           href: container-service-kubernetes-oms.md
         - name: Monitorowanie za pomocą usługi Datadog
           href: container-service-kubernetes-datadog.md

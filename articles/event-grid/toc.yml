@@ -29,6 +29,10 @@
       href: ensure-tags-exists-on-new-virtual-machines.md
 - name: Przykłady
   items:
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
     - name: Szablony usługi Resource Manager
       href: template-samples.md
 - name: Pojęcia

@@ -16,7 +16,7 @@
 ## Zarządzanie
 ### [Włączanie dużego kontrastu lub zmienianie motywu](azure-portal-change-theme-high-contrast.md)
 ### [Zarządzanie zasobami w portalu](../azure-resource-manager/resource-group-portal.md)
-### [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-configure.md)
+### [Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md)
 ### [Udostępnianie pulpitów nawigacyjnych przy użyciu kontroli dostępu opartej na rolach](azure-portal-dashboard-share-access.md)
 ### [Organizowanie zasobów przy użyciu tagów](../azure-resource-manager/resource-group-using-tags.md)
 ### [Skalowanie zasobów](../monitoring-and-diagnostics/insights-how-to-scale.md)
