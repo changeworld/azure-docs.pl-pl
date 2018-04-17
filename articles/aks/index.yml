@@ -2,9 +2,9 @@
 documentType: LandingData
 title: Usługa Azure Container Service (AKS)
 metadata:
-  document_id: null
+  document_id: 
   title: Dokumentacja usługi Azure Container Service (AKS) — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
+  meta.description: AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.
   services: container-service
   author: carolz
   manager: carolz
@@ -14,42 +14,47 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
+  ms.openlocfilehash: a381697e27a2d85d99fcbb1eb54bd7c0ab7d743a
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 04/16/2018
 abstract:
-  description: 'Usługa Azure Container Service (AKS) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.'
+  description: Usługa Azure Container Service (AKS) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
 sections:
-  - title: 5-minutowe przewodniki Szybki start
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: 'Dowiedz się, jak wdrożyć klaster usługi AKS:'
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wdrożyć klaster usługi AKS:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/media/index/ContainerService.svg
-            text: Tworzenie klastra AKS
-            href: /azure/aks/kubernetes-walkthrough
-  - title: Samouczki krok po kroku
+    - image:
+        src: /azure/media/index/ContainerService.svg
+      text: Tworzenie klastra AKS
+      href: /azure/aks/kubernetes-walkthrough
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak wdrażać i aktualizować aplikacje w klastrze AKS i zarządzać nimi.
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wdrażać i aktualizować aplikacje w klastrze AKS i zarządzać nimi.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Tworzenie obrazów kontenera z poziomu aplikacji</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Przekazywanie obrazów kontenera do usługi Azure Container Registry</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">Wdrażanie klastra AKS</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Uruchamianie obrazów kontenera w rozwiązaniu Kubernetes</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-scale">Skalowanie aplikacji i infrastruktury rozwiązania Kubernetes</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Aktualizowanie aplikacji uruchomionej w rozwiązaniu Kubernetes</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-monitor">Monitorowanie rozwiązania Kubernetes za pomocą pakietu OMS</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Aktualizowanie klastra AKS</a>
-  - title: Dokumentacja
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Tworzenie obrazów kontenera z poziomu aplikacji</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Przekazywanie obrazów kontenera do usługi Azure Container Registry</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">Wdrażanie klastra AKS</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Uruchamianie obrazów kontenera w rozwiązaniu Kubernetes</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-scale">Skalowanie aplikacji i infrastruktury rozwiązania Kubernetes</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Aktualizowanie aplikacji uruchomionej w rozwiązaniu Kubernetes</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-monitor">Monitorowanie rozwiązania Kubernetes za pomocą usługi Log Analytics</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Aktualizowanie klastra AKS</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/cli/azure/aks">Interfejs wiersza polecenia platformy Azure</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/aks">Interfejs API REST</a></p>
+    - title: Wiersz polecenia
+      html: <p><a href="/cli/azure/aks">Interfejs wiersza polecenia platformy Azure</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/aks">Interfejs API REST</a></p>

@@ -55,7 +55,7 @@
 
 # Powiązane
 ## [Azure Active Directory](/azure/active-directory/)
-## [Kontrola dostępu oparta na rolach](../role-based-access-control-what-is.md)
+## [Kontrola dostępu oparta na rolach](../../role-based-access-control/overview.md)
 # Zasoby
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
