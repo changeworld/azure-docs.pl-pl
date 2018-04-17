@@ -1,12 +1,12 @@
 ---
-title: "Transfer własności subskrypcji platformy Azure na inne konto | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób transferu subskrypcji platformy Azure do innego użytkownika, a niektóre często zadawane pytania (FAQ) dotyczące procesu"
-keywords: "przenieść subskrypcję transferu subskrypcji platformy azure, azure, Przenieś subskrypcji platformy azure do innego konta azure Zmień właściciela subskrypcji, transfer subskrypcji platformy azure na inne konto"
-services: 
-documentationcenter: 
+title: Transfer własności subskrypcji platformy Azure na inne konto | Dokumentacja firmy Microsoft
+description: Opisuje sposób transferu subskrypcji platformy Azure do innego użytkownika, a niektóre często zadawane pytania (FAQ) dotyczące procesu
+keywords: przenieść subskrypcję transferu subskrypcji platformy azure, azure, Przenieś subskrypcji platformy azure do innego konta azure Zmień właściciela subskrypcji, transfer subskrypcji platformy azure na inne konto
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
 ms.service: billing
@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e81037aeb3a8aee4f70eaf33280b1dc0d483332
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Transfer własności subskrypcji platformy Azure do innego konta
 
@@ -29,7 +29,7 @@ Przenieść subskrypcję do innego użytkownika w Centrum konta, aby zmienić ko
 
 > [!IMPORTANT]
 > 
-> W przypadku przeniesienia subskrypcji do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-what-is.md) są trwale usuwane z dzierżawy źródła i nie są migrowane do dzierżawy docelowej.
+> W przypadku przeniesienia subskrypcji do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) są trwale usuwane z dzierżawy źródła i nie są migrowane do dzierżawy docelowej.
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Transfer własności subskrypcji platformy Azure
 
@@ -51,7 +51,7 @@ Przenieść subskrypcję do innego użytkownika w Centrum konta, aby zmienić ko
 
    > [!IMPORTANT]
    > 
-   > W przypadku przeniesienia subskrypcji do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-what-is.md) są trwale usuwane z dzierżawy źródła i nie są migrowane do dzierżawy docelowej.
+   > W przypadku przeniesienia subskrypcji do nowej usługi Azure AD dzierżawy, wszystkie przypisania roli w [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/overview.md) są trwale usuwane z dzierżawy źródła i nie są migrowane do dzierżawy docelowej.
 
    ![Okno dialogowe transfer subskrypcji](./media/billing-subscription-transfer/image2.PNG)
 
@@ -90,10 +90,10 @@ Przenoszenie Samoobsługa subskrypcji jest dostępna dla oferty lub typów subsk
 | Nazwa oferty                                                                             | Numer oferty |
 |----------------------------------------------------------------------------------------|--------------|
 | [Umowa Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
-| [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
+| [Sieci Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
 | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
 | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
-| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
+| [Płatność za rzeczywiste użycie: tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
 | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
 | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
 | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
@@ -115,7 +115,7 @@ Konto administratora jest osobą, która utworzył konto na lub zakupiono subskr
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Wszystko transferu? Łącznie z grupami zasobów, maszyn wirtualnych, dysków i inne uruchomione usługi?
 
-Wszystkie zasoby, takie jak maszyn wirtualnych, dysków i transfer witryn sieci Web dla nowego właściciela. Jednak wszystkie [ról administratora](billing-add-change-azure-subscription-administrator.md) i [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-configure.md) po skonfigurowaniu zasad nie są przenoszone w różnych katalogach. Ponadto [rejestracji aplikacji](../active-directory//develop/active-directory-integrating-applications.md) i innych usług specyficznego dla dzierżawy nie transfer wzdłuż.
+Wszystkie zasoby, takie jak maszyn wirtualnych, dysków i transfer witryn sieci Web dla nowego właściciela. Jednak wszystkie [ról administratora](billing-add-change-azure-subscription-administrator.md) i [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) po skonfigurowaniu zasad nie są przenoszone w różnych katalogach. Ponadto [rejestracji aplikacji](../active-directory//develop/active-directory-integrating-applications.md) i innych usług specyficznego dla dzierżawy nie transfer wzdłuż.
 
 ### <a id="no-button"></a> Dlaczego nie widzę przycisku "Przenieść subskrypcję"?
 

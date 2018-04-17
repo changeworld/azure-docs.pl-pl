@@ -1,9 +1,9 @@
 ---
 title: Klaster Instalatora dla platformy Hadoop, Spark, Kafka, HBase lub R Server - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Skonfigurowanie usługi Hadoop, Kafka, Spark, HBase, R Server lub klastry Storm dla usługi HDInsight z przeglądarki, interfejsu wiersza polecenia Azure, programu Azure PowerShell, REST lub zestawu SDK."
-keywords: "Konfiguracja klastra usługi hadoop, kafka klastra Instalatora, konfiguracja klastra spark, co to jest klaster usługi hadoop"
+description: Skonfigurowanie usługi Hadoop, Kafka, Spark, HBase, R Server lub klastry Storm dla usługi HDInsight z przeglądarki, interfejsu wiersza polecenia Azure, programu Azure PowerShell, REST lub zestawu SDK.
+keywords: Konfiguracja klastra usługi hadoop, kafka klastra Instalatora, konfiguracja klastra spark, co to jest klaster usługi hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -12,16 +12,14 @@ ms.assetid: 23a01938-3fe5-4e2e-8e8b-3368e1bbe2ca
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: jgao
-ms.openlocfilehash: 39c1be51d7aa54691a6ff55483138a603c3fabed
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 54c88b25911ddfa4ed9ecf6ea4b28278c2d9aac2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Ustawianie klastrów w usłudze HDInsight Hadoop, Spark, Kafka i
 
@@ -40,7 +38,7 @@ W poniższej tabeli przedstawiono różne metody, których można użyć do skon
 
 | Klastry utworzone za pomocą | Przeglądarki sieci Web | Wiersz polecenia | Interfejs API REST | SDK | 
 | --- |:---:|:---:|:---:|:---:|
-| [Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Interfejs wiersza polecenia platformy Azure (wersja 1.0)](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -68,7 +66,7 @@ Wykonaj instrukcje wyświetlane na ekranie przeprowadzenie instalacji podstawowy
 
 [Usługa Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pomaga w pracy z zasobami w aplikacji w grupie, określany jako grupy zasobów platformy Azure. Można wdrożyć, zaktualizować, monitorować lub usunąć wszystkie zasoby aplikacji w ramach jednej skoordynowanej operacji.
 
-## <a name="cluster-types">Typy klastrów i konfiguracji</a>
+## <a name="cluster-types"></a> Typy klastrów i konfiguracji
 Usługa Azure HDInsight aktualnie zawiera następujące typy klastrów, każde z nich zestaw składników, aby zapewnić użycie pewnych funkcji.
 
 > [!IMPORTANT]
@@ -84,7 +82,7 @@ Usługa Azure HDInsight aktualnie zawiera następujące typy klastrów, każde z
 | [Kafka](kafka/apache-kafka-introduction.md) | Rozproszonej platformy przesyłania strumieniowego, który może służyć do tworzenia w czasie rzeczywistym przesyłania strumieniowego potoki danych i aplikacji |
 | [R Server](r-server/r-server-overview.md) |Różne statystyki danych big data, modelowania predykcyjnego i możliwości uczenia maszynowego |
 | [Spark](spark/apache-spark-overview.md) |Przetwarzanie w pamięci, interakcyjnych zapytań przetwarzania wsadowego micro strumienia |
-| [Storm](storm/apache-storm-overview.md) |Przetwarzanie zdarzeń w czasie rzeczywistym |
+| [STORM](storm/apache-storm-overview.md) |Przetwarzanie zdarzeń w czasie rzeczywistym |
 
 
 ### <a name="hdinsight-version"></a>Wersja usługi HDInsight

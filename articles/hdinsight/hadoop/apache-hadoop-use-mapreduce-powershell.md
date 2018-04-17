@@ -1,8 +1,8 @@
 ---
-title: "Należy użyć programu PowerShell i MapReduce z Hadoop — usługa Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zdalne uruchamianie zadań MapReduce z Hadoop w usłudze HDInsight przy użyciu programu PowerShell."
+title: Należy użyć programu PowerShell i MapReduce z Hadoop — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zdalne uruchamianie zadań MapReduce z Hadoop w usłudze HDInsight przy użyciu programu PowerShell.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 21b56d32-1785-4d44-8ae8-94467c12cfba
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
-ms.openlocfilehash: ba4a2dfc6a69e9ab18948bc9e33597a56bdd3bd9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b6e68b4c93e6385367b5aab01bebe1d29b7b9d13
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>Uruchamianie zadań MapReduce z Hadoop w usłudze HDInsight przy użyciu programu PowerShell
 
@@ -30,7 +28,7 @@ Ten dokument zawiera przykładowy uruchomienie zadania MapReduce w usługi Hadoo
 
 ## <a id="prereq"></a>Wymagania wstępne
 
-* Klaster usługi Azure HDInsight (Hadoop w usłudze HDInsight)
+* **Klaster usługi Azure HDInsight (Hadoop w usłudze HDInsight)**
 
   > [!IMPORTANT]
   > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

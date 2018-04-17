@@ -5,7 +5,7 @@ keywords: Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, kon
 services: cosmos-db
 documentationcenter: ''
 author: LalithaMV
-manager: jhubbard
+manager: kfile
 editor: monicar
 ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 725dfa2e76ae03f17a17991c523e85e9c69a69ec
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Zapytania SQL dla bazy danych Azure rozwiązania Cosmos
 
@@ -357,7 +357,7 @@ W poniższej tabeli przedstawiono wynik porównania równości w interfejsie API
             <strong>Niezdefiniowana</strong>
          </td>
          <td valign="top">
-            <strong>Null</strong>
+            <strong>Wartość null</strong>
          </td>
          <td valign="top">
             <strong>Wartość logiczna</strong>
@@ -396,7 +396,7 @@ Niezdefiniowane </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Null<strong>
+            <strong>Wartość null<strong>
          </td>
          <td valign="top">
 Niezdefiniowane </td>
@@ -933,7 +933,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych funkcji agregujących w 
 | Sposób użycia | Opis |
 |-------|-------------|
 | LICZBA | Zwraca liczbę elementów w wyrażeniu. |
-| SUM   | Zwraca sumę wszystkich wartości w wyrażeniu. |
+| SUMA   | Zwraca sumę wszystkich wartości w wyrażeniu. |
 | MIN.   | Zwraca minimalną wartość wyrażenia. |
 | MAKS.   | Zwraca maksymalną wartość wyrażenia. |
 | ŚREDNIA   | Zwraca średnią z wartości wyrażenia. |

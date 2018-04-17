@@ -1,6 +1,6 @@
 ---
 title: Zasady usługi Azure CDN aparat funkcji | Dokumentacja firmy Microsoft
-description: Dokumentacja referencyjna dla usługi Azure CDN zasady warunków dopasowania aparatu i funkcje.
+description: Dokumentacja referencyjna dla usługi Azure CDN zasady funkcje aparatu.
 services: cdn
 documentationcenter: ''
 author: Lichard
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/10/2018
 ms.author: rli
-ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fd670e3b01812b7fa8fc708a02d02210b598ac6a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Zasady usługi Azure CDN aparat funkcji
 W tym artykule przedstawiono szczegółowe opisy funkcji dostępnych dla Azure Content Delivery Network (CDN) [aparatu reguł](cdn-rules-engine.md).
@@ -49,7 +49,7 @@ Name (Nazwa) | Przeznaczenie
 [Pomiń pamięć podręczną](#bypass-cache) | Określa, czy żądanie należy pominąć buforowanie.
 [Traktowanie nagłówek Cache-Control](#cache-control-header-treatment) | Kontroluje Generowanie `Cache-Control` nagłówki przez POP, gdy funkcja zewnętrznych Max-Age jest aktywny.
 [Cache-Key Query String](#cache-key-query-string) | Określa, czy klucz pamięci podręcznej zawiera, czy wyklucza parametrów ciągu zapytania skojarzonego z żądaniem.
-[Cache-Key Rewrite](#cache-key-rewrite) | Ponownie zapisuje klucz pamięci podręcznej skojarzonej z żądaniem.
+[Napisz ponownie klucz pamięci podręcznej](#cache-key-rewrite) | Ponownie zapisuje klucz pamięci podręcznej skojarzonej z żądaniem.
 [Zakończenie wypełnienie pamięci podręcznej](#complete-cache-fill) | Określa, co się stanie, gdy żądanie powoduje Chybienie pamięci podręcznej częściowe na punktu obecności.
 [Kompresuj typów plików](#compress-file-types) | Definiuje formatach plików, które są kompresowane na serwerze.
 [Max-Age wewnętrzny domyślne](#default-internal-max-age) | Określa domyślny interwał maksymalny wiek dla punktu obecności ponowna Walidacja buforu serwera pochodzenia.
@@ -428,14 +428,32 @@ Chybienia pamięci podręcznej częściowe zazwyczaj występuje po użytkownik p
 
 Zachowaj konfigurację domyślną dla dużych HTTP platformy, ponieważ zmniejsza obciążenie serwera pochodzenia klienta i przyspiesza, w którym klienci pobierania zawartości.
 
-Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone, ta funkcja nie może być skojarzony z następujących warunków dopasowania: Cname krawędzi, literału nagłówka żądania wieloznaczny nagłówek żądania, adres URL zapytania literału i adres URL zapytania z symboli wieloznacznych.
-
 Wartość|Wynik
 --|--
 Enabled (Włączony)|Przywraca domyślne zachowanie. Domyślnym zachowaniem jest wymuszenie POP, aby zainicjować pobieranie w tle zasobu z serwera pochodzenia. Po upływie którego będzie elementu zawartości w lokalnej pamięci podręcznej punktu obecności.
 Disabled (Wyłączony)|POP uniemożliwia wykonywanie pobieranie w tle dla elementu zawartości. Wynik jest, że przy następnym żądaniu dla tego zasobu z tego regionu powoduje POP żądania do serwera pochodzenia klienta.
 
 **Domyślne zachowanie:** włączone.
+
+#### <a name="compatibility"></a>Zgodność
+Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
+- JAKO liczba
+- Adres IP klienta
+- Parametr pliku cookie
+- Wyrażenie regularne parametru pliku cookie
+- Kraj
+- Urządzenie
+- Krawędź Cname
+- Odwoływanie domeny
+- Literał nagłówka żądania
+- Wyrażenie regularne nagłówka żądania
+- Symbol wieloznaczny nagłówka żądania
+- Request — metoda
+- Schemat żądania
+- Adres URL zapytania literału
+- Adres URL zapytania Regex
+- Adres URL zapytania z symboli wieloznacznych
+- Adres URL parametru zapytania
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
 
@@ -538,16 +556,28 @@ Informacje o kluczu:
     - Określanie wartość całkowitą, a następnie wybierając jednostkę żądany czas (na przykład sekundy, minuty, godziny itd.). Ta wartość Określa domyślny interwał maksymalny wiek wewnętrznego.
 
 - Ustawienie jednostkę czasu na wartość "Off" przypisze domyślny wewnętrzny maksymalny wiek interwał 7 dni dla żądań, które nie zostały przypisane oznaczenie maksymalny wiek w ich `Cache-Control` lub `Expires` nagłówka.
-- Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
-    - Brzeg 
-    - CNAME
-    - Literał nagłówka żądania
-    - Symbol wieloznaczny nagłówka żądania
-    - Request — metoda
-    - Adres URL zapytania literału
-    - Adres URL zapytania z symboli wieloznacznych
 
 **Wartość domyślna:** 7 dni
+
+#### <a name="compatibility"></a>Zgodność
+Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
+- JAKO liczba
+- Adres IP klienta
+- Parametr pliku cookie
+- Wyrażenie regularne parametru pliku cookie
+- Kraj
+- Urządzenie
+- Krawędź Cname
+- Odwoływanie domeny
+- Literał nagłówka żądania
+- Wyrażenie regularne nagłówka żądania
+- Symbol wieloznaczny nagłówka żądania
+- Request — metoda
+- Schemat żądania
+- Adres URL zapytania literału
+- Adres URL zapytania Regex
+- Adres URL zapytania z symboli wieloznacznych
+- Adres URL parametru zapytania
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
 
@@ -642,16 +672,28 @@ Informacje o kluczu:
     - Określanie całkowitą i wybierając jednostkę żądany czas (na przykład sekundy, minuty, godziny itd.). Ta wartość Określa interwał maksymalny wiek żądania.
 
 - Ustawienie jednostkę czasu na wartość "Off" powoduje wyłączenie tej funkcji. Wewnętrzny interwał maksymalny wiek nie zostanie przypisana do żądanych zasobów. Jeśli oryginalny nagłówek nie zawiera instrukcji buforowania, zasobu będą buforowane zgodnie z ustawieniem active w funkcji domyślne wewnętrzny Max-Age.
-- Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
-    - Brzeg 
-    - CNAME
-    - Literał nagłówka żądania
-    - Symbol wieloznaczny nagłówka żądania
-    - Request — metoda
-    - Adres URL zapytania literału
-    - Adres URL zapytania z symboli wieloznacznych
 
 **Domyślne zachowanie:** wyłączone
+
+#### <a name="compatibility"></a>Zgodność
+Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
+- JAKO liczba
+- Adres IP klienta
+- Parametr pliku cookie
+- Wyrażenie regularne parametru pliku cookie
+- Kraj
+- Urządzenie
+- Krawędź Cname
+- Odwoływanie domeny
+- Literał nagłówka żądania
+- Wyrażenie regularne nagłówka żądania
+- Symbol wieloznaczny nagłówka żądania
+- Request — metoda
+- Schemat żądania
+- Adres URL zapytania literału
+- Adres URL zapytania Regex
+- Adres URL zapytania z symboli wieloznacznych
+- Adres URL parametru zapytania
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
 
@@ -707,16 +749,28 @@ Informacje o kluczu:
 - Tej funkcji można skonfigurować, definiując rozdzieloną spacjami listę kodów stanu, dla których zostaną zignorowane powyżej dyrektywy.
 - Zestaw kodów stanu prawidłowy dla tej funkcji: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 i 505.
 - Wyłączyć tę funkcję, ustawiając wartość pustą.
-- Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
-    - Brzeg 
-    - CNAME
-    - Literał nagłówka żądania
-    - Symbol wieloznaczny nagłówka żądania
-    - Request — metoda
-    - Adres URL zapytania literału
-    - Adres URL zapytania z symboli wieloznacznych
 
 **Domyślne zachowanie:** domyślne zachowanie to uwzględnić dyrektywy powyżej.
+
+#### <a name="compatibility"></a>Zgodność
+Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
+- JAKO liczba
+- Adres IP klienta
+- Parametr pliku cookie
+- Wyrażenie regularne parametru pliku cookie
+- Kraj
+- Urządzenie
+- Krawędź Cname
+- Odwoływanie domeny
+- Literał nagłówka żądania
+- Wyrażenie regularne nagłówka żądania
+- Symbol wieloznaczny nagłówka żądania
+- Request — metoda
+- Schemat żądania
+- Adres URL zapytania literału
+- Adres URL zapytania Regex
+- Adres URL zapytania z symboli wieloznacznych
+- Adres URL parametru zapytania
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
 
@@ -758,16 +812,28 @@ Informacje o kluczu:
     - Określanie wartość całkowitą, a następnie wybierając jednostkę żądany czas (na przykład sekundy, minuty, godziny itd.). Ta wartość określa wewnętrzny max odświeżona które zostaną zastosowane.
 
 - Ustawienie jednostkę czasu na wartość "Off" spowoduje wyłączenie tej funkcji. Zasobów pamięci podręcznej nie zostanie obsłużona poza jego czas wygaśnięcia normalnego.
-- Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
-    - Brzeg 
-    - CNAME
-    - Literał nagłówka żądania
-    - Symbol wieloznaczny nagłówka żądania
-    - Request — metoda
-    - Adres URL zapytania literału
-    - Adres URL zapytania z symboli wieloznacznych
 
 **Domyślne zachowanie:** dwie minuty
+
+#### <a name="compatibility"></a>Zgodność
+Ze względu na sposób, w których pamięci podręcznej ustawienia są śledzone ta funkcja nie może być skojarzony z następujących warunków dopasowania: 
+- JAKO liczba
+- Adres IP klienta
+- Parametr pliku cookie
+- Wyrażenie regularne parametru pliku cookie
+- Kraj
+- Urządzenie
+- Krawędź Cname
+- Odwoływanie domeny
+- Literał nagłówka żądania
+- Wyrażenie regularne nagłówka żądania
+- Symbol wieloznaczny nagłówka żądania
+- Request — metoda
+- Schemat żądania
+- Adres URL zapytania literału
+- Adres URL zapytania Regex
+- Adres URL zapytania z symboli wieloznacznych
+- Adres URL parametru zapytania
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
 
@@ -836,7 +902,7 @@ Informacje o kluczu:
     - host
     - za pomocą
     - ostrzeżenie
-    - x-forwarded-for
+    - x przekazywane do
     - Wszystkie nazwy nagłówka rozpoczynających się od "x WE" są zastrzeżone.
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
@@ -994,7 +1060,7 @@ Upewnij się, że nazwa określonego nagłówka nie pasuje do żadnego z następ
     - różnią się
     - za pomocą
     - ostrzeżenie
-    - x-forwarded-for
+    - x przekazywane do
     - Wszystkie nazwy nagłówka rozpoczynających się od "x WE" są zastrzeżone.
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
@@ -1041,12 +1107,17 @@ Włączenie uwierzytelniania opartego na tokenie tylko żądania, które zapewni
 
 Klucz szyfrowania, który jest używany do szyfrowania i odszyfrowywania tokenów wartości jest określana przez klucz podstawowy i opcje tworzenia kopii zapasowej klucza na stronie tokenu uwierzytelniania. Należy pamiętać, że klucze szyfrowania są specyficzne dla platformy.
 
+**Domyślne zachowanie:** wyłączone.
+
+Ta funkcja ma pierwszeństwo przed większość funkcji, z wyjątkiem funkcja ponowne zapisywanie adresów URL.
+
 Wartość | Wynik
 ------|---------
 Enabled (Włączony) | Chroni żądanej zawartości przy użyciu uwierzytelniania opartego na tokenie. Tylko żądania od klientów, podaj prawidłowy token, które spełniają jej wymagań dotyczących będą honorowane. Transakcje FTP są wykluczone z uwierzytelniania opartego na tokenie.
 Disabled (Wyłączony)| Przywraca domyślne zachowanie. Domyślnym zachowaniem jest umożliwienie konfiguracji uwierzytelniania opartego na tokenie, aby ustalić, czy żądanie zostanie zabezpieczone.
 
-**Domyślne zachowanie:** wyłączone.
+#### <a name="compatibility"></a>Zgodność
+Nie należy używać tokenu uwierzytelniania z warunkiem zawsze dopasowania. 
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
 
@@ -1056,8 +1127,6 @@ Disabled (Wyłączony)| Przywraca domyślne zachowanie. Domyślnym zachowaniem j
 ### <a name="token-auth-denial-code"></a>Kod odmowa tokenu uwierzytelniania
 **Cel:** Określa typ odpowiedzi, który zostanie zwrócony użytkownikowi, gdy żądanie zostanie odrzucone z powodu uwierzytelniania opartego na tokenie.
 
-Nie można użyć kodu odmowa tokenu uwierzytelniania z warunkiem dopasowania zawsze. Zamiast tego należy użyć **niestandardowe odmowa obsługi** sekcji **Token uwierzytelniania** strony **Zarządzaj** portalu. Aby uzyskać więcej informacji, zobacz [zasobów Zabezpieczanie usługi Azure CDN z tokenu uwierzytelniania](cdn-token-auth.md).
-
 Kody odpowiedzi dostępne są wymienione w poniższej tabeli.
 
 Kod odpowiedzi|Nazwa odpowiedzi|Opis
@@ -1066,8 +1135,11 @@ Kod odpowiedzi|Nazwa odpowiedzi|Opis
 302|Znaleziono|Ten kod stanu przekierowania nieautoryzowanym użytkownikom na adres URL określony w nagłówku lokalizacji. Ten kod stanu jest branży standardową metodą wykonania przekierowania.
 307|Przekierowanie tymczasowe|Ten kod stanu przekierowania nieautoryzowanym użytkownikom na adres URL określony w nagłówku lokalizacji.
 401|Brak autoryzacji|Łączenie z nagłówka WWW-Authenticate odpowiedzi ten kod stanu umożliwia Monituj użytkownika do uwierzytelniania.
-403|Zabroniony|Jest to standardowy 403 Zabroniony komunikat o stanie nieautoryzowany użytkownik zostanie wyświetlony podczas próby dostępu do chronionej zawartości.
+403|Zabroniony|Ten komunikat jest standardowe 403 Zabroniony komunikat o stanie nieautoryzowany użytkownik zostanie wyświetlony podczas próby dostępu do chronionej zawartości.
 404|Nie znaleziono pliku|Ten kod stanu wskazuje, że klient HTTP był w stanie komunikować się z serwerem, ale nie można odnaleźć żądanej zawartości.
+
+#### <a name="compatibility"></a>Zgodność
+Nie używaj kodu odmowa tokenu uwierzytelniania z warunkiem zawsze dopasowania. Zamiast tego należy użyć **niestandardowe odmowa obsługi** sekcji **Token uwierzytelniania** strony **Zarządzaj** portalu. Aby uzyskać więcej informacji, zobacz [zasobów Zabezpieczanie usługi Azure CDN z tokenu uwierzytelniania](cdn-token-auth.md).
 
 #### <a name="url-redirection"></a>Adres URL przekierowania
 
@@ -1152,7 +1224,7 @@ Konfiguracja ta funkcja wymaga ustawienia następujących opcji:
 Opcja|Opis
 -|-
 Kod|Wybierz kod odpowiedzi, który zostanie zwrócony do zleceniodawcy.
-Wzorzec & źródła| Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą zostać przekierowane. Nastąpi przekierowanie tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/> <br/> **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Jest to sekcja "/XXXX/" i nazwa punktu końcowego. <br/> **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> -Upewnij się, że żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z warunkom dopasowania zdefiniowane dla tej funkcji. <br/> -Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane.
+Wzorzec & źródła| Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą zostać przekierowane. Nastąpi przekierowanie tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/> <br/> **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Ta ścieżka jest _/XXXX/_ sekcji i nazwa punktu końcowego. <br/> **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> -Upewnij się, że żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z warunkom dopasowania zdefiniowane dla tej funkcji. <br/> -Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane.
 Element docelowy| Zdefiniuj adres URL, do którego zostanie przekierowany żądań powyżej. <br/> Dynamicznie utworzyć przy użyciu tego adresu URL: <br/> -Wzorzec wyrażenia regularnego <br/>-Zmienne HTTP <br/> Zastąp wartości przechwytywane we wzorcu źródła do wzorca docelowego przy użyciu $_n_ gdzie _n_ identyfikuje wartość według kolejności, w którym została przechwycona. Na przykład $1 reprezentuje pierwszą wartość przechwycone we wzorcu źródła, podczas gdy druga wartość reprezentuje $2. <br/> 
 Zdecydowanie zaleca się używania bezwzględnego adresu URL. Użycie względny adres URL może przekierować CDN adresy URL do nieprawidłowej ścieżki.
 
@@ -1177,7 +1249,7 @@ Ten adres URL przekierowania można osiągnąć za pomocą następującej konfig
     - Przykładowy scenariusz #3: 
         - Przykładowe żądanie (krawędzi CNAME adres URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
         - Adres URL żądania (po przekierowania): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
-- Zmienna żądania schematu (% {schemat}) była wykorzystywana w opcji docelowej. Dzięki temu, że schemat żądania nie jest zmieniany po przekierowaniu.
+- Zmienna schemat żądania (% {schemat}) jest wykorzystywana w opcji docelowego, który zapewnia, że schemat żądania nie jest zmieniany po przekierowaniu.
 - Segmenty adresu URL, które są przechwytywane żądania są dołączane do nowego adresu URL za pośrednictwem "$1."
 
 [Powrót do początku](#azure-cdn-rules-engine-features)
@@ -1194,9 +1266,9 @@ Informacje o kluczu:
 
 Opcja|Opis
 -|-
- Wzorzec & źródła | Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą być napisany od nowa. Zostanie ponownego napisania tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/>     - **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Jest to sekcja "/XXXX/" i nazwa punktu końcowego. <br/> - **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> Sprawdź, czy żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z jednego z warunków dopasowania zdefiniowane dla tej funkcji. Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane. 
+ Wzorzec & źródła | Te ustawienia definiują wzorzec identyfikatora URI żądania, który identyfikuje typ żądania, które mogą być napisany od nowa. Zostanie ponownego napisania tylko żądania, którego adres URL spełnia oba następujące kryteria: <br/>     - **Źródło (lub punktu dostępu do zawartości):** wybierz ścieżkę względną, którą identyfikuje serwer pochodzenia. Ta ścieżka jest _/XXXX/_ sekcji i nazwa punktu końcowego. <br/> - **Źródło (wzorzec):** wzorca, który identyfikuje żądania za pomocą ścieżki względnej musi być zdefiniowany. Ten wzorzec wyrażenia regularnego musi definiować ścieżki, która rozpoczyna się bezpośrednio po poprzednio wybranego dostępu do zawartości punktu (zobacz powyżej). <br/> Sprawdź, czy żądanie identyfikatora URI kryteria (to znaczy źródła & wzorzec) wcześniej zdefiniowane nie koliduje to z jednego z warunków dopasowania zdefiniowane dla tej funkcji. Określ wzorzec; Jeśli wartość pusta jest używany jako wzorzec, wszystkie ciągi są dopasowywane. 
  Element docelowy  |Określ względny adres URL, do którego powyżej żądania będą ulegną przez: <br/>    1. Wybieranie punktu dostępu do zawartości, który identyfikuje serwer pochodzenia. <br/>    2. Definiowanie za pomocą ścieżki względnej: <br/>        -Wzorzec wyrażenia regularnego <br/>        -Zmienne HTTP <br/> <br/> Zastąp wartości przechwytywane we wzorcu źródła do wzorca docelowego przy użyciu $_n_ gdzie _n_ identyfikuje wartość według kolejności, w którym została przechwycona. Na przykład $1 reprezentuje pierwszą wartość przechwycone we wzorcu źródła, podczas gdy druga wartość reprezentuje $2. 
- Ta funkcja umożliwia POP zmodyfikować adres URL bez wykonywania tradycyjnych przekierowania. Oznacza to, osoby żądającej otrzyma ten sam kod odpowiedzi tak, jakby zażąda ponownie zapisane adresu URL.
+ Ta funkcja umożliwia POP zmodyfikować adres URL bez wykonywania tradycyjnych przekierowania. Oznacza to osoby żądającej odbiera ten sam kod odpowiedzi tak, jakby zażąda ponownie zapisane adresu URL.
 
 **Przykładowy scenariusz 1**
 
@@ -1220,7 +1292,6 @@ Ten adres URL przekierowania można osiągnąć za pomocą następującej konfig
 - Segmenty adresu URL, które są przechwytywane żądania są dołączane do nowego adresu URL za pośrednictwem "$1."
 
 #### <a name="compatibility"></a>Zgodność
-
 Ta funkcja obejmuje spełniających kryteria, które muszą zostać spełnione, aby można było zastosować na żądanie. Aby uniknąć konfigurowania kryteriów powodujących konflikt, ta funkcja jest niezgodny z następujące warunki dopasowania:
 
 - JAKO liczba

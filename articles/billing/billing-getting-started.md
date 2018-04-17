@@ -1,11 +1,11 @@
 ---
-title: "Uniknąć kosztów nieoczekiwany, Zarządzanie rozliczeniami - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zapobiec zmianom nieoczekiwany na rachunku platformy Azure. Przy użyciu funkcji Śledzenie kosztów i zarządzania dla subskrypcji Microsoft Azure."
-services: 
-documentationcenter: 
+title: Uniknąć kosztów nieoczekiwany, Zarządzanie rozliczeniami - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zapobiec zmianom nieoczekiwany na rachunku platformy Azure. Przy użyciu funkcji Śledzenie kosztów i zarządzania dla subskrypcji Microsoft Azure.
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zapobiegaj nieoczekiwany opłat rozliczenia Azure i kosztów zarządzania
 
@@ -62,7 +62,7 @@ Skonfiguruj alerty dotyczące rozliczeń, aby otrzymywać wiadomości e-mail po 
 
 Można użyć szacowania kosztów z Kalkulator cen przyjąć pierwszy alertu.
 
-### <a name="spending-limit"></a>Sprawdź, czy istnieje limit wydatków
+### <a name="spending-limit"></a> Sprawdź, czy istnieje limit wydatków
 
 Jeśli masz subskrypcję, która używa środków następnie limit wydatków jest dla Ciebie domyślnie włączona. Dzięki temu, gdy spędzają z środków karty kredytowej nie zostały naliczone opłaty. Zobacz [pełną listę oferty Azure i dostępność limit wydatków](https://azure.microsoft.com/support/legal/offer-details/).
 
@@ -76,7 +76,7 @@ Kliknij transparent i postępuj zgodnie z monitami, aby usunąć limit wydatków
 
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Sposoby monitorowania koszty podczas korzystania z usług Azure
 
-### <a name="tags"></a>Dodawanie tagów do zasobów do grupowania danych rozliczeń
+### <a name="tags"></a> Dodawanie tagów do zasobów do grupowania danych rozliczeń
 
 Można użyć znaczników do grupowania danych rozliczeń obsługiwanych usług. Na przykład po uruchomieniu wielu maszyn wirtualnych dla różnych zespołów, następnie służy tagi kategoryzację koszty przez Centrum kosztów (HR marketingu finance) lub środowiska (środowiska produkcyjnego, produkcji wstępnej, test). 
 
@@ -86,7 +86,7 @@ Znaczniki są wyświetlane w różnych koszt raportowania widoków. Na przykład
 
 Aby uzyskać więcej informacji, zobacz [organizowania zasobów na platformie Azure przy użyciu tagów](../azure-resource-manager/resource-group-using-tags.md).
 
-### <a name="costs"></a>Regularnie Sprawdź portalu do podziału kosztów i ocena
+### <a name="costs"></a> Regularnie Sprawdź portalu do podziału kosztów i ocena
 
 Po uzyskaniu usługi uruchomione regularnie sprawdzać, ile ich jest wyceny należy. Możesz wyświetlić bieżący wydatków i ocena wydajności w portalu Azure. 
 
@@ -138,20 +138,20 @@ Po zakończeniu Twojej cyklu rozliczeniowego faktury staną się dostępne. Moż
 
 Programowo Pobierz dane użycia za pomocą naszych rozliczeń interfejsu API. Użyć interfejsu API RateCard i użycia interfejsu API można pobrać rachunku użycie. Aby uzyskać więcej informacji, zobacz [uzyskać wgląd w Microsoft Azure użycia zasobów](billing-usage-rate-card-overview.md).
 
-## <a name="other-offers"></a>Zasoby dodatkowe i szczególnych przypadkach
+## <a name="other-offers"></a> Zasoby dodatkowe i szczególnych przypadkach
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>Umowa EA, dostawca usług Kryptograficznych i dostęp sponsorowany klientów
 Skontaktuj się z menedżerem lub partnera Azure, aby rozpocząć.
 
 | Oferta | Zasoby |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| Umowa Enterprise Agreement (EA) | [EA portal](https://ea.azure.com/), [pomocy docs](https://ea.azure.com/helpdocs), i [raportu usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
+| Enterprise Agreement (EA) | [EA portal](https://ea.azure.com/), [pomocy docs](https://ea.azure.com/helpdocs), i [raportu usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Cloud Solution Provider (CSP) | Komunikować się z dostawcą |
 | Sponsorowanie systemu Azure | [Dostęp sponsorowany portalu](https://www.microsoftazuresponsorships.com/) |
 
 Jeśli zarządzasz IT dla dużych organizacji zalecamy odczytu [szkieletu Azure enterprise](../azure-resource-manager/resource-manager-subscription-governance.md) i [organizacji IT oficjalny dokument](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (do pobrania PDF, tylko w języku angielskim).
 
-#### <a name="EA"></a>Podgląd umowy Enterprise Agreement koszt widoków w portalu Azure 
+#### <a name="EA"></a> Podgląd umowy Enterprise Agreement koszt widoków w portalu Azure 
 
 Enterprise koszt widoków obecnie znajdują się w publicznej wersji zapoznawczej. Elementy należy pamiętać:
 - Koszty subskrypcji są na podstawie użycia i bez uwzględnienia przedpłacone kwoty, nadwyżki ilości dołączone, dostosowania i podatki. Rzeczywiste opłaty są obliczane na poziomie rejestrowania. 
@@ -172,7 +172,7 @@ Aby sprawdzić, czy jesteś administratorem konta, przejdź do [bloku subskrypcj
 
 ![Zrzut ekranu przedstawiający roli użytkownika w widoku subskrypcji w portalu Azure](./media/billing-getting-started/sub-blade-view.PNG)
 
-Jeśli nie jesteś administratorem konta, a następnie ktoś prawdopodobnie udostępniła Ci częściowy dostęp za pośrednictwem [kontroli dostępu opartej na roli Azure Active Directory](../active-directory/role-based-access-control-configure.md) (RBAC). Do zarządzania subskrypcjami i rozliczeń info, zmień [znaleźć administrator konta](billing-subscription-transfer.md#whoisaa) i poproś go do wykonywania zadań lub [przenieść subskrypcję na Twoje](billing-subscription-transfer.md).
+Jeśli nie jesteś administratorem konta, a następnie ktoś prawdopodobnie udostępniła Ci częściowy dostęp za pośrednictwem [kontroli dostępu opartej na roli Azure Active Directory](../role-based-access-control/role-assignments-portal.md) (RBAC). Do zarządzania subskrypcjami i rozliczeń info, zmień [znaleźć administrator konta](billing-subscription-transfer.md#whoisaa) i poproś go do wykonywania zadań lub [przenieść subskrypcję na Twoje](billing-subscription-transfer.md).
 
 Jeśli administrator konta nie jest już w swojej organizacji i trzeba zarządzać rozliczeń, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną

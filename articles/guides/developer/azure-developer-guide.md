@@ -1,12 +1,12 @@
 ---
-title: "Get przewodnika dla deweloperów na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Ten temat zawiera ważne informacje dla deweloperów chcących rozpocząć korzystanie z platformy Microsoft Azure dla swoich potrzeb."
-services: 
-cloud: 
-documentationcenter: 
+title: Get przewodnika dla deweloperów na platformie Azure | Dokumentacja firmy Microsoft
+description: Ten temat zawiera ważne informacje dla deweloperów chcących rozpocząć korzystanie z platformy Microsoft Azure dla swoich potrzeb.
+services: ''
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: erikre
-ms.assetid: 
+ms.assetid: ''
 ms.service: na
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b1cda302636d8bd4d0f14536f186c7b4951c09c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -295,7 +295,7 @@ Jeśli zezwolisz na dostęp do zasobów platformy Azure, zawsze jest najlepszym 
 
     >**Kiedy należy używać**: Jeśli wymagane jest precyzyjne zarządzanie dostępem dla użytkowników i grup.
 
-    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [wprowadzenie do zarządzania dostępem w portalu Azure](../../active-directory/role-based-access-control-what-is.md).
+    >**Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [wprowadzenie do zarządzania dostępem w portalu Azure](../../role-based-access-control/overview.md).
 
 -   **Obiekty główne usługi**: oprócz zapewnienia dostępu do podmiotów zabezpieczeń użytkowników i grup, można udzielić dostępu tej samej nazwy głównej usługi.
 

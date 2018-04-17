@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 94a039ab1973cbd4112ddd0cd7548baa69924d26
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3ee70c3784205a70f455bd7ef147467e4547d167
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure powiązania HTTP funkcje i elementu webhook
 
@@ -138,7 +138,6 @@ public static string Run(CustomObject req, TraceWriter log)
 
 public class CustomObject {
      public String name {get; set;}
-}
 }
 ```
 
@@ -389,12 +388,12 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **Typ** | Nie dotyczy| Wymagana — musi być ustawiona `httpTrigger`. |
-| **Kierunek** | Nie dotyczy| Wymagana — musi być ustawiona `in`. |
+| **type** | Nie dotyczy| Wymagana — musi być ustawiona `httpTrigger`. |
+| **direction** | Nie dotyczy| Wymagana — musi być ustawiona `in`. |
 | **Nazwa** | Nie dotyczy| Wymagana — nazwa zmiennej używane w kodzie funkcji żądania lub treści żądania. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Określa, jakie klucze, jeśli taki występuje, musi być obecny na żądanie, aby można było wywołać funkcję. Poziom dostępu może być jedną z następujących wartości: <ul><li><code>anonymous</code>&mdash;Brak klucza interfejsu API jest wymagana.</li><li><code>function</code>&mdash;Wymagany jest klucz interfejsu API właściwe dla funkcji. Jeśli nie zostanie podana jest wartość domyślna.</li><li><code>admin</code>&mdash;Klucz główny jest wymagany.</li></ul> Aby uzyskać więcej informacji, zobacz sekcję [klucze autoryzacji](#authorization-keys). |
-| **Metody** |**Metody** | Tablica metod HTTP, na które odpowiada funkcji. Jeśli nie zostanie określony, funkcja odpowiada na wszystkich metod HTTP. Zobacz [dostosować punkt końcowy http](#trigger---customize-the-http-endpoint). |
-| **route** | **Route** | Określa szablon trasy, kontrolowanie, do której żądanie odpowiada funkcji adresów URL. Jeśli nie zostanie podana wartość domyślna to `<functionname>`. Aby uzyskać więcej informacji, zobacz [dostosować punkt końcowy http](#customize-the-http-endpoint). |
+| **Metody** |**Metody** | Tablica metod HTTP, na które odpowiada funkcji. Jeśli nie zostanie określony, funkcja odpowiada na wszystkich metod HTTP. Zobacz [dostosować punkt końcowy http](#customize-the-http-endpoint). |
+| **Trasy** | **Trasy** | Określa szablon trasy, kontrolowanie, do której żądanie odpowiada funkcji adresów URL. Jeśli nie zostanie podana wartość domyślna to `<functionname>`. Aby uzyskać więcej informacji, zobacz [dostosować punkt końcowy http](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** |Konfiguruje wyzwalacz protokołu HTTP do działania jako [webhook](https://en.wikipedia.org/wiki/Webhook) odbiornika dla podanego dostawcy. Nie należy ustawiać `methods` właściwości, jeśli ta właściwość jest ustawiona. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;Punkt końcowy elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych przy użyciu protokołu HTTP POST i z `application/json` typ zawartości.</li><li><code>github</code>&mdash;Funkcja odpowiada [elementów webhook GitHub](https://developer.github.com/webhooks/). Nie używaj _authLevel_ właściwości z elementów webhook GitHub. Aby uzyskać więcej informacji zobacz sekcję elementów webhook GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;Funkcja odpowiada [Slack elementów webhook](https://api.slack.com/outgoing-webhooks). Nie używaj _authLevel_ właściwości z elementów webhook Slack. Aby uzyskać więcej informacji zobacz sekcję Slack elementów webhook w dalszej części tego artykułu.</li></ul>|
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
@@ -568,8 +567,8 @@ W poniższej tabeli opisano powiązania właściwości konfiguracyjne, które mo
 
 |Właściwość  |Opis  |
 |---------|---------|
-| **Typ** |należy wybrać opcję `http`. |
-| **Kierunek** | należy wybrać opcję `out`. |
+| **type** |należy wybrać opcję `http`. |
+| **direction** | należy wybrać opcję `out`. |
 |**Nazwa** | Nazwa zmiennej używane w kodzie funkcji dla odpowiedzi. |
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie

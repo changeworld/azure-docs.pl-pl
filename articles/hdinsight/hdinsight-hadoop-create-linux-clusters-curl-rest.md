@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie klastrów platformy Hadoop za pomocą usługi Azure API REST - Azure | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia klastrów usługi HDInsight poprzez przesłanie szablonów usługi Azure Resource Manager w interfejsie API REST Azure."
+title: Tworzenie klastrów platformy Hadoop za pomocą usługi Azure API REST - Azure | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia klastrów usługi HDInsight poprzez przesłanie szablonów usługi Azure Resource Manager w interfejsie API REST Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: 4fcdde200fa9d54c7eb5b0ffe151aff3fbd0ed85
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a71a73d8d54e6a24c9a491bd02c7270f56823003
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Tworzenie klastrów Hadoop przy użyciu interfejsu API REST Azure
 
@@ -34,13 +32,13 @@ Interfejs API REST Azure umożliwia wykonywanie operacji zarządzania na usługi
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
 
 > [!NOTE]
-> Użyj dokumentów z krokami w tym [curl (https://curl.haxx.se/)](https://curl.haxx.se/) narzędzie do komunikowania się z interfejsu API REST Azure.
+> Użyj dokumentów z krokami w tym [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) narzędzie do komunikowania się z interfejsu API REST Azure.
 
 ## <a name="create-a-template"></a>Tworzenie szablonu
 
 Szablony usługi Azure Resource Manager są dokumentów JSON, które opisują **grupy zasobów** i wszystkie zasoby w niej (np. usługi HDInsight). Takie podejście oparty na szablonie można zdefiniować zasoby potrzebne dla usługi HDInsight w jednym szablonie.
 
-Następujący dokument JSON jest połączenie z plików szablonu i parametry [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), który jest tworzony klaster opartych na systemie Linux przy użyciu hasła, aby zabezpieczyć konto użytkownika SSH.
+Następujący dokument JSON jest połączenie z plików szablonu i parametry [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), który jest tworzony klaster opartych na systemie Linux przy użyciu hasła, aby zabezpieczyć konto użytkownika SSH.
 
    ```json
    {

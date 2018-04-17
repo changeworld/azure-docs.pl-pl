@@ -1,8 +1,8 @@
 ---
-title: "Samouczek przez analityka w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Krótki próbki wszystkie główne zapytania w module analiz, narzędzie zaawansowane wyszukiwanie usługi Application insights."
+title: Samouczek przez analityka w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Krótki próbki wszystkie główne zapytania w module analiz, narzędzie zaawansowane wyszukiwanie usługi Application insights.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 271ccc126eeb9411646b68b32fd30ce32b5eef5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f82e436e25d01bbfa09ec1e8a2efcdf0be8c006
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Samouczek analizy w usłudze Application Insights
 [Analiza](app-insights-analytics.md) to funkcja wyszukiwania zaawansowanego [usługi Application Insights](app-insights-overview.md). Te strony opisano język zapytań usługi Analiza dzienników.
@@ -69,7 +69,7 @@ Jeśli chcesz połączyć dane z wielu aplikacji usługi Application Insights, u
 ```
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[TOP](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) i [sortowania](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
-`take`przydaje się uzyskać szybki próbki wyniku, ale zawiera wiersze z tabeli w losowej kolejności. Aby uporządkowane wyświetlać, użyj `top` (na przykład) lub `sort` (za pośrednictwem całej tabeli).
+`take` przydaje się uzyskać szybki próbki wyniku, ale zawiera wiersze z tabeli w losowej kolejności. Aby uporządkowane wyświetlać, użyj `top` (na przykład) lub `sort` (za pośrednictwem całej tabeli).
 
 Pokaż pierwsze n wierszy, uporządkowanych według określonej kolumny:
 
@@ -79,11 +79,11 @@ Pokaż pierwsze n wierszy, uporządkowanych według określonej kolumny:
 ```
 
 * *Składnia:* większość operatorów mieć — słowo kluczowe parametrów, takich jak `by`.
-* `desc`= w kolejności malejącej `asc` = rosnąca.
+* `desc` = w kolejności malejącej `asc` = rosnąca.
 
 ![](./media/app-insights-analytics-tour/260.png)
 
-`top...`więcej możliwości wydajności z informacją o tym `sort ... | take...`. Firma Microsoft może mieć zapisane:
+`top...` więcej możliwości wydajności z informacją o tym `sort ... | take...`. Firma Microsoft może mieć zapisane:
 
 ```AIQL
 
@@ -146,7 +146,7 @@ Zastąpienie przedział czasu pisząc każde zapytanie operacji uwzględniając�
 
 Funkcja zakresu czasu jest odpowiednikiem klauzula "where" po każdym informację o jednej tabeli źródłowej.
 
-`ago(3d)`oznacza, że "trzy dni temu". Inne jednostki czasu obejmują godzin (`2h`, `2.5h`), minut (`25m`), a sekund (`10s`).
+`ago(3d)` oznacza, że "trzy dni temu". Inne jednostki czasu obejmują godzin (`2h`, `2.5h`), minut (`25m`), a sekund (`10s`).
 
 Inne przykłady:
 
@@ -170,7 +170,7 @@ Inne przykłady:
 
 ```
 
-[Daty i godziny odwołanie](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html).
+[Daty i godziny odwołanie](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
 ## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): Wybierz, Zmień nazwę, a kolumny obliczeniowe
@@ -199,10 +199,10 @@ Można również zmienić nazwy kolumny i zdefiniować nowe:
 
 ![wynik](./media/app-insights-analytics-tour/270.png)
 
-* Nazwy kolumny może zawierać spacje lub symbole, jeśli są one oddzielona podobnie do następującej: `['...']` lub`["..."]`
-* `%`jest zwykle operatora modulo.
-* `1d`(to cyfrę, jedną, a następnie miał ") jest wartość typu timespan literału oznacza jeden dzień. Poniżej przedstawiono niektóre więcej literały timespan: `12h`, `30m`, `10s`, `0.01s`.
-* `floor`(alias `bin`) powoduje zaokrąglenie do najbliższej wielokrotności wartości podstawowej, musisz podać wartość. Dlatego `floor(aTime, 1s)` zaokrągla czasu w dół do najbliższej sekundy.
+* Nazwy kolumny może zawierać spacje lub symbole, jeśli są one oddzielona podobnie do następującej: `['...']` lub `["..."]`
+* `%` jest zwykle operatora modulo.
+* `1d` (to cyfrę, jedną, a następnie miał ") jest wartość typu timespan literału oznacza jeden dzień. Poniżej przedstawiono niektóre więcej literały timespan: `12h`, `30m`, `10s`, `0.01s`.
+* `floor` (alias `bin`) powoduje zaokrąglenie do najbliższej wielokrotności wartości podstawowej, musisz podać wartość. Dlatego `floor(aTime, 1s)` zaokrągla czasu w dół do najbliższej sekundy.
 
 Wyrażenia mogą zawierać zwykłych operatorów (`+`, `-`,...), a istnieje szereg przydatne funkcje.
 
@@ -231,7 +231,7 @@ Sygnatury czasowe są zawsze w formacie UTC. Dlatego jeśli używasz wybrzeże P
 
 
 ## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Podsumuj](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): agregacji grupy wierszy
-`Summarize`zastosowanie określonej *funkcji agregacji* za pośrednictwem grupy wierszy.
+`Summarize` zastosowanie określonej *funkcji agregacji* za pośrednictwem grupy wierszy.
 
 Na przykład czas życia aplikacji sieci web, odpowiadanie na żądanie jest zgłaszana w polu `duration`. Zobaczmy, Średni czas odpowiedzi na wszystkie żądania:
 
@@ -241,13 +241,13 @@ Lub można oddzielić wynik do żądań różne nazwy elementu:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize`zbiera punktów danych w strumieniu w grupach, dla którego `by` klauzuli ocenia jednakowo. Każda wartość w `by` wyrażenie - nazwy operacji unikatowy w powyższym przykładzie - powoduje wiersz w tabeli wyników.
+`Summarize` zbiera punktów danych w strumieniu w grupach, dla którego `by` klauzuli ocenia jednakowo. Każda wartość w `by` wyrażenie - nazwy operacji unikatowy w powyższym przykładzie - powoduje wiersz w tabeli wyników.
 
 Lub firma Microsoft może grupowania wyników według pora dnia:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Zwróć uwagę, jak firma Microsoft korzysta z `bin` — funkcja (alias `floor`). Jeśli będziemy używać `by timestamp`, co wejściowych wiersza pojawiłyby w niewielkim grupy. Dla dowolnego ciągłego skalarną, takie jak czas lub numery, musimy Podziel ciągły zakres na zarządzaniu liczbę wartości dyskretnych. `bin`— co jest po prostu zapoznać zaokrąglania dół `floor` funkcji — jest najprostszym sposobem, w tym celu.
+Zwróć uwagę, jak firma Microsoft korzysta z `bin` — funkcja (alias `floor`). Jeśli będziemy używać `by timestamp`, co wejściowych wiersza pojawiłyby w niewielkim grupy. Dla dowolnego ciągłego skalarną, takie jak czas lub numery, musimy Podziel ciągły zakres na zarządzaniu liczbę wartości dyskretnych. `bin` — co jest po prostu zapoznać zaokrąglania dół `floor` funkcji — jest najprostszym sposobem, w tym celu.
 
 Możemy użyć tę samą metodę, aby zmniejszyć zakresy ciągów:
 
@@ -256,7 +256,7 @@ Możemy użyć tę samą metodę, aby zmniejszyć zakresy ciągów:
 Należy zauważyć, że można użyć `name=` można ustawić nazwy kolumny wynik, w wyrażeniach agregacji lub klauzuli by.
 
 ## <a name="counting-sampled-data"></a>Zliczanie próbce danych
-`sum(itemCount)`jest zalecana agregacji do obliczenia zdarzenia. W wielu przypadkach wartość elementu itemCount == 1, dlatego funkcja po prostu liczy w górę liczbę wierszy w grupie. Ale jeśli [próbkowania](app-insights-sampling.md) jest operacji, tylko część oryginalnego zdarzenia są przechowywane jako punkty danych w usłudze Application Insights, aby dla każdego punktu danych, zostanie wyświetlony, `itemCount` zdarzenia.
+`sum(itemCount)` jest zalecana agregacji do obliczenia zdarzenia. W wielu przypadkach wartość elementu itemCount == 1, dlatego funkcja po prostu liczy w górę liczbę wierszy w grupie. Ale jeśli [próbkowania](app-insights-sampling.md) jest operacji, tylko część oryginalnego zdarzenia są przechowywane jako punkty danych w usłudze Application Insights, aby dla każdego punktu danych, zostanie wyświetlony, `itemCount` zdarzenia.
 
 Na przykład, jeśli próbkowania odrzuca 75% oryginalnego zdarzenia, a następnie wartość elementu itemCount == 4 w rekordach zachowanych - oznacza to, dla każdego rekordu zachowanych, były cztery oryginalnego rekordy.
 
@@ -661,7 +661,7 @@ Aby znaleźć żądanie HTTP, które aplikacji został obsługi, gdy wyjątek zo
 ![Dołącz do wyjątków z żądaniami operation_Id](./media/app-insights-analytics-tour/analytics-exception-request.png)
 
 ### <a name="browser-timings-table"></a>Tabela chronometrażu przeglądarki
-`browserTimings`przedstawia dane ładowania stron zebrane w przeglądarce użytkownika.
+`browserTimings` przedstawia dane ładowania stron zebrane w przeglądarce użytkownika.
 
 [Konfigurowanie aplikacji dla telemetrii po stronie klienta](app-insights-javascript.md) aby zobaczyć te metryki.
 
@@ -672,7 +672,7 @@ Pokaż popularities różnych stron i załadować razy dla każdej strony:
 ![Czas ładowania strony w module analiz](./media/app-insights-analytics-tour/analytics-page-load.png)
 
 ### <a name="availability-results-table"></a>W tabeli wyników dostępność
-`availabilityResults`Pokazuje wyniki z [testów sieci web](app-insights-monitor-web-app-availability.md). Każdy Uruchom testy z każdej lokalizacji testu jest zgłaszana oddzielnie.
+`availabilityResults` Pokazuje wyniki z [testów sieci web](app-insights-monitor-web-app-availability.md). Każdy Uruchom testy z każdej lokalizacji testu jest zgłaszana oddzielnie.
 
 ![Czas ładowania strony w module analiz](./media/app-insights-analytics-tour/analytics-availability.png)
 

@@ -1,25 +1,18 @@
 ---
-title: "Zarządzanie usług Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzać serwerem usług Analysis Services na platformie Azure."
-services: analysis-services
-documentationcenter: 
+title: Zarządzanie usług Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać serwerem usług Analysis Services na platformie Azure.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 79491d0b-b00d-4e02-9ca7-adc99bc02fdb
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 11aa42fbe15dd68dfac128b707fd6bdbfd0b24d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 0cad50788eeb4a31d1e3f6f7e6c038ba2a8d4d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-analysis-services"></a>Zarządzanie usług Analysis Services
 Po utworzeniu serwerem usług Analysis Services na platformie Azure, może to być niektórych zadań administracji i zarządzania, które należy wykonać od razu lub jakimś występujących. Na przykład uruchom odświeżanie danych, kontrolowania, kto może uzyskać dostępu modeli na serwerze lub monitorowania kondycji serwera przetwarzania. Niektóre zadania zarządzania można wykonać tylko w portalu Azure, inne osoby w programu SQL Server Management Studio (SSMS), a niektóre zadania można to zrobić na dwa.
@@ -47,13 +40,18 @@ Aby uzyskać najnowsze funkcje i daje płynne środowisko podczas nawiązywania 
    
     ![Pobieranie nazwy serwera z systemu Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. W programie SSMS > **Eksplorator obiektów**, kliknij przycisk **Connect** > **usług Analysis Services**.
-3. W **Połącz z serwerem** okno dialogowe, Wklej w polu Nazwa serwera, a następnie w **uwierzytelniania**, wybierz jedną z następujących typów uwierzytelniania:
-   
+3. W **Połącz z serwerem** okno dialogowe, Wklej w polu Nazwa serwera, a następnie w **uwierzytelniania**, wybierz jedną z następujących typów uwierzytelniania:   
+    > [!NOTE]
+    > Typ uwierzytelniania **usługi Active Directory - uniwersalnego z obsługą uwierzytelniania Wieloskładnikowego**, jest zalecane.
+
+    > [!NOTE]
+    > Jeśli zalogujesz się przy użyciu Account Microsoft Live ID, Yanoo, Gmail, itp., pole jest puste hasło. Zostanie wyświetlony monit o podanie hasła po kliknięciu przycisku Połącz.
+
     **Uwierzytelnianie systemu Windows** do korzystania z poświadczeń domena azwa_użytkownika i hasło systemu Windows.
 
     **Uwierzytelnianie hasłem usługi Active Directory** używanie konta organizacyjnego. Na przykład podczas nawiązywania połączenia ze spoza domeny przyłączone do komputera.
 
-    **Uwierzytelnianie usługi Active Directory uniwersalnych** do używania [nieinterakcyjnym lub usługi Multi-Factor authentication](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Usługi Active Directory - uniwersalnego z obsługą uwierzytelniania Wieloskładnikowego** do używania [nieinterakcyjnym lub usługi Multi-Factor authentication](../sql-database/sql-database-ssms-mfa-authentication.md). 
    
     ![Połącz w programie SSMS](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

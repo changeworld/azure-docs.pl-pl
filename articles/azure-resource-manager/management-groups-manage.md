@@ -1,10 +1,10 @@
 ---
-title: "Jak zmienić, usunąć lub zarządzać grupami zarządzania - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak obsługa oraz aktualizowanie hierarchii grupy zarządzania."
+title: Jak zmienić, usunąć lub zarządzać grupami zarządzania - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak obsługa oraz aktualizowanie hierarchii grupy zarządzania.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 33797ddcd2a6ff083c5fb4b2fa7ddb8f9d6bd76c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cba3f9290aff1808133b9d7780e4169fa25a10b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami z grupy zarządzania 
-Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Można zmienić, usuwanie i zarządzanie kontenery do hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [Azure na podstawie ról dostęp do formantów (RBAC)](../active-directory/role-based-access-control-what-is.md). Aby dowiedzieć się więcej na temat grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md).
+Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Można zmienić, usuwanie i zarządzanie kontenery do hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [Azure na podstawie ról dostęp do formantów (RBAC)](../role-based-access-control/overview.md). Aby dowiedzieć się więcej na temat grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md).
 
 Funkcja grupy zarządzania jest dostępna w publicznej wersji zapoznawczej. Aby rozpocząć korzystanie z zarządzania grupy, zaloguj się do [portalu Azure](https://portal.azure.com) lub użyć [programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), lub [interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) do Zarządzanie grupami zarządzania.
 
-Aby wprowadzić zmiany w grupie zarządzania, musi mieć rolę właściciela lub współautora w grupie zarządzania. Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby dowiedzieć się więcej o rolach RBAC, zobacz [zarządzać dostępem i uprawnieniami RBAC](../active-directory/role-based-access-control-what-is.md).
+Aby wprowadzić zmiany w grupie zarządzania, musi mieć rolę właściciela lub współautora w grupie zarządzania. Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby dowiedzieć się więcej o rolach RBAC, zobacz [zarządzać dostępem i uprawnieniami RBAC](../role-based-access-control/overview.md).
 
 ## <a name="change-the-name-of-a-management-group"></a>Zmień nazwę grupy zarządzania 
 Za pomocą portalu, programu PowerShell lub interfejsu wiersza polecenia Azure, można zmienić nazwę grupy zarządzania.
@@ -64,7 +64,7 @@ Aby usunąć grupę zarządzania, muszą być spełnione następujące wymagania
 1. Nie ma żadnych grup zarządzania podrzędnych ani subskrypcje w grupie zarządzania. 
     - Aby przenieść subskrypcję, poza grupą zarządzania, zobacz [przenieść subskrypcję do innej grupy managemnt](#Move-subscriptions-in-the-hierarchy). 
     - Aby przenieść grupy zarządzania do innej grupy zarządzania, zobacz [przeniesienie grup zarządzania w hierarchii](#Move-management-groups-in-the-hierarchy). 
-2. Masz uprawnienia do zapisu w grupie właścicielem lub współautorem roli zarządzania w grupie zarządzania. Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby uzyskać więcej informacji na temat role RBAC, zobacz [zarządzać dostępem i uprawnieniami RBAC](../active-directory/role-based-access-control-what-is.md).  
+2. Masz uprawnienia do zapisu w grupie właścicielem lub współautorem roli zarządzania w grupie zarządzania. Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby uzyskać więcej informacji na temat role RBAC, zobacz [zarządzać dostępem i uprawnieniami RBAC](../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Usuwanie w portalu
 
@@ -139,7 +139,7 @@ Aby przenieść subskrypcję, istnieje kilka uprawnienia, które muszą mieć:
 - Rola "Właściciela" w subskrypcji podrzędnych.
 - Rola "Właściciela" lub "Współautora" w grupie zarządzania nadrzędnej. 
 - Rola "Właściciela" lub "Współautora" na starym nadrzędnej grupy zarządzania.
-Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby uzyskać więcej informacji na temat role RBAC, zobacz [zarządzać dostępem i uprawnieniami RBAC](../active-directory/role-based-access-control-what-is.md). 
+Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby uzyskać więcej informacji na temat role RBAC, zobacz [zarządzać dostępem i uprawnieniami RBAC](../role-based-access-control/overview.md). 
 
 ### <a name="move-subscriptions-in-the-portal"></a>Przenoszenie subskrypcji w portalu
 

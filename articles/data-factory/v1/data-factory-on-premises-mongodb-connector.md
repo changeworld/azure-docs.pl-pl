@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0afdfb7b7d1f74d3df40b22bb97afc0f39bcc6d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Przenoszenie danych z bazy danych MongoDB przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Można skopiować danych z magazynu danych bazy danych MongoDB lokalnymi żadnyc
 ## <a name="prerequisites"></a>Wymagania wstępne
 Dla usługi fabryka danych Azure można było nawiązać połączenia z lokalną bazą danych MongoDB należy zainstalować następujące składniki:
 
-- Obsługiwane wersje bazy danych MongoDB: 2.4, 2.6 3.0 i 3.2.
+- Obsługiwane wersje bazy danych MongoDB: 2.4, 2.6, 3.0, 3.2 3.4 i 3,6.
 - Brama zarządzania danymi na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze w celu uniknięcia konkurowanie o zasoby z bazą danych. Brama zarządzania danymi to oprogramowanie, które łączy lokalnych źródeł danych do usługi w chmurze w sposób bezpieczny i zarządzanie nimi. Zobacz [brama zarządzania danymi](data-factory-data-management-gateway.md) artykułu, aby uzyskać więcej informacji dotyczących bramy zarządzania danymi. Zobacz [przenoszenia danych z lokalnymi do chmury](data-factory-move-data-between-onprem-and-cloud.md) artykułu, aby uzyskać instrukcje krok po kroku dotyczące konfigurowania bramy danych potoku do przenoszenia danych.
 
     Po zainstalowaniu bramy, automatycznie instaluje sterownik Microsoft MongoDB ODBC używany do łączenia z bazy danych MongoDB.
@@ -69,7 +69,7 @@ Poniższa tabela zawiera opis elementów JSON specyficzne dla **OnPremisesMongoD
 | type |Właściwość type musi mieć ustawioną: **OnPremisesMongoDb** |Yes |
 | serwer |Adres IP lub hosta nazwę serwera bazy danych MongoDB. |Yes |
 | port |Port TCP używany przez serwer bazy danych MongoDB do nasłuchiwania dla połączeń klienta. |Opcjonalne, wartość domyślna: 27017 |
-| authenticationType |Podstawowy, lub anonimowe. |Yes |
+| Typ authenticationType |Podstawowy, lub anonimowe. |Yes |
 | nazwa użytkownika |Konto użytkownika do bazy danych MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | hasło |Hasło dla użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, który ma być używany w celu sprawdzenia poświadczeń dla uwierzytelniania. |Opcjonalnie (jeśli jest używane uwierzytelnianie podstawowe). domyślne: używa konta administratora i baza danych określona za pomocą właściwości databaseName. |
@@ -303,7 +303,7 @@ Podczas przenoszenia danych do bazy danych MongoDB z bazy danych MongoDB typy s�
 | NumberLong |Int64 |
 | ObjectID |Ciąg |
 | Ciąg |Ciąg |
-| UUID |Identyfikator GUID |
+| IDENTYFIKATOR UUID |Identyfikator GUID |
 | Obiekt |Renormalized do spłaszczenia kolumn z "_" jako separatora zagnieżdżonych |
 
 > [!NOTE]
@@ -327,7 +327,7 @@ Na przykład "ExampleTable" poniżej znajduje się tabela bazy danych MongoDB o 
 | _id | Nazwa klienta | Faktury | Poziom usług | Klasyfikacje |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: elementu "123",: "tostera", cena: Rabat "456",: "0,2"}, {invoice_id: "124", element: "piec", cena: Zniżka "1235": "0,2"}] |Srebrny |[5,6] |
-| 2222 |XYZ |[{invoice_id:”135”, item:”fridge”, price: ”12543”, discount: ”0.0”}] |Złoty |[1,2] |
+| 2222 |XYZ |[{invoice_id: element "135": "lodówko", cena: Rabat "12543": "0,0"}] |Złoty |[1,2] |
 
 Sterownik przetwarzający generuje wiele tabel wirtualnego do reprezentowania tej pojedynczej tabeli. Pierwszy tabeli wirtualnej jest tabela podstawowa o nazwie "ExampleTable", pokazano poniżej. Podstawowa tabela zawiera wszystkie dane z oryginalnej tabeli, ale dane z macierzami została pominięta i jest rozwinięta w tabelach wirtualnych.
 

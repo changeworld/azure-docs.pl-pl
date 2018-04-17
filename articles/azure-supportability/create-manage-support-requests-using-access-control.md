@@ -7,15 +7,15 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure opartej na rolach kontroli dostępu (RBAC) na kontrolowanie uprawnień dostępu do tworzenia i obsługi żądań pomocy technicznej
 
-[Kontrola dostępu oparta na rolach (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure.
+[Kontrola dostępu oparta na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure.
 Obsługuje tworzenia żądania w portalu Azure [portal.azure.com](https://portal.azure.com), używa modelu RBAC platformy Azure, aby zdefiniować, kto może tworzyć i zarządzanie żądaniami obsługi.
 Dostęp przez przypisanie odpowiednie role RBAC dla użytkowników, grup i aplikacji na niektórych zakresu, który może być subskrypcji, grupy zasobów lub zasobu.
 

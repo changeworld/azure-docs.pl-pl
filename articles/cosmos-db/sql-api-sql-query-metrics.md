@@ -4,9 +4,8 @@ description: Więcej informacji na temat sposobu Instrumentacja i debugowania wy
 keywords: Składnia SQL, zapytanie sql, zapytania sql, język zapytań json, koncepcje bazy danych i zapytania sql, funkcje agregujące
 services: cosmos-db
 documentationcenter: ''
-author: arramac
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 ms.assetid: b2fa8e8f-7291-45a3-9bd1-7284ed9077f8
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
-ms.author: arramac
-ms.openlocfilehash: c0ba9934afef6cb4d546e315c271cc19b6d3fa02
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: sngun
+ms.openlocfilehash: 00e50c3b2f4dc50e43aac03b162bc637f0821656
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Dostrajanie wydajności kwerend z bazy danych Azure rozwiązania Cosmos
 

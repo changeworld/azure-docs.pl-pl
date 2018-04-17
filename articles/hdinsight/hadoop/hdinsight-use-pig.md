@@ -1,8 +1,8 @@
 ---
-title: "Korzystanie z języka Pig Hadoop w usłudze HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight."
+title: Korzystanie z języka Pig Hadoop w usłudze HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: acfeb52b-4b81-4a7d-af77-3e9908407404
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: ca68391db99d882887e41005928a30610c7cb930
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d6d42a1e0edb038f6d4cc9c8149768bdb698cafc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>Korzystanie z języka Pig z usługą Hadoop w usłudze HDInsight
 
@@ -33,7 +31,7 @@ Pig to platforma do tworzenia programów dla platformy Hadoop przy użyciu języ
 | [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X lub systemu Windows |
 | [Interfejs API REST](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux lub Windows |Linux, Unix, Mac OS X lub systemu Windows |
 | [Zestaw SDK dla platformy .NET usługi Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux lub Windows |Systemu Windows (na razie) |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux lub Windows |Windows |
+| [Środowisko Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux lub Windows |Windows |
 
 > [!IMPORTANT]
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -102,7 +100,7 @@ HDInsight można uruchamiać zadania Pig Latin przy użyciu różnych metod. Sko
 | [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X lub systemu Windows |
 | [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux lub Windows |Linux, Unix, Mac OS X lub systemu Windows |
 | [Zestaw SDK dla platformy .NET usługi Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux lub Windows |Systemu Windows (na razie) |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux lub Windows |Windows |
+| [Środowisko Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux lub Windows |Windows |
 
 > [!IMPORTANT]
 > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).

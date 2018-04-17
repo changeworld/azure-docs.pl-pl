@@ -1,6 +1,6 @@
 ---
-title: "Klucz tajny usługi Key Vault przy użyciu szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Przedstawia sposób przekazywania klucza tajnego z magazynu kluczy jako parametr podczas wdrażania."
+title: Klucz tajny usługi Key Vault przy użyciu szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Przedstawia sposób przekazywania klucza tajnego z magazynu kluczy jako parametr podczas wdrażania.
 services: azure-resource-manager,key-vault
 documentationcenter: na
 author: tfitzmac
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2017
+ms.date: 04/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e02bd9c6130ef8b120282fafa9f0ee517890d0d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 2643f79bb1e5e2603b1bd50b04c8ee3e7496f1f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Przekaż wartość parametru bezpieczne podczas wdrażania za pomocą usługi Azure Key Vault
 
@@ -62,7 +62,7 @@ Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue
 
 ## <a name="enable-access-to-the-secret"></a>Zapewnianie dostępu do klucza tajnego
 
-Czy używasz nowego magazynu kluczy lub istniejącego upewnij się, że użytkownik wdrażanie szablonu może uzyskać dostęp klucz tajny. Wdrażanie szablonu, który odwołuje się do klucza tajnego użytkownik musi mieć `Microsoft.KeyVault/vaults/deploy/action` uprawnienia dla magazynu kluczy. [Właściciela](../active-directory/role-based-access-built-in-roles.md#owner) i [współautora](../active-directory/role-based-access-built-in-roles.md#contributor) ról zarówno udzielić dostępu.
+Czy używasz nowego magazynu kluczy lub istniejącego upewnij się, że użytkownik wdrażanie szablonu może uzyskać dostęp klucz tajny. Wdrażanie szablonu, który odwołuje się do klucza tajnego użytkownik musi mieć `Microsoft.KeyVault/vaults/deploy/action` uprawnienia dla magazynu kluczy. [Właściciela](../role-based-access-control/built-in-roles.md#owner) i [współautora](../role-based-access-control/built-in-roles.md#contributor) ról zarówno udzielić dostępu.
 
 ## <a name="reference-a-secret-with-static-id"></a>Odwołanie klucza tajnego o identyfikatorze statyczne
 
@@ -131,6 +131,13 @@ Teraz Utwórz plik parametrów dla poprzedniego szablonu. W pliku parametrów na
 }
 ```
 
+Aby użyć wersji klucza tajnego innej niż bieżąca wersja, należy użyć `secretVersion` właściwości.
+
+```json
+"secretName": "examplesecret",
+"secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
+```
+
 Teraz wdrożyć szablon i podaj pliku parametrów. Można użyć szablonu przykład z witryny GitHub, ale należy użyć pliku lokalnego parametr z wartościami ustawionymi dla danego środowiska.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
@@ -157,7 +164,7 @@ New-AzureRmResourceGroupDeployment `
 
 ## <a name="reference-a-secret-with-dynamic-id"></a>Odwołanie klucza tajnego o identyfikatorze dynamiczne
 
-Poprzedniej sekcji pokazano, jak przekazać Identyfikatora zasobu statycznych dla klucza tajnego klucza magazynu. Jednak w niektórych scenariuszach, należy odwoływać magazynu kluczy klucz tajny, który jest różny oparte na bieżącym wdrożeniu. W takim przypadku nie można trwale kodować identyfikator zasobu w pliku parametrów. Niestety, nie można dynamicznie wygenerować identyfikator zasobu w pliku parametrów, ponieważ szablon wyrażenia są niedozwolone w pliku parametrów.
+Poprzedniej sekcji pokazano, jak przekazać Identyfikatora zasobu statycznych dla klucza tajnego klucza magazynu. Jednak w niektórych scenariuszach, należy odwoływać magazynu kluczy klucz tajny, który jest różny oparte na bieżącym wdrożeniu. W takim przypadku nie można trwale kodować identyfikator zasobu w pliku parametrów. Niestety, nie można dynamicznie wygenerować identyfikator zasobu w pliku parametrów, ponieważ szablon wyrażenia nie są dozwolone w pliku parametrów.
 
 Można dynamicznie wygenerować identyfikator zasobu magazynu kluczy klucz tajny, należy przenieść zasobu, który wymaga klucza tajnego do połączonego szablonu. W szablonie nadrzędnego Dodaj połączony szablon i podaj parametr, który zawiera identyfikator dynamicznie generowanym zasobu. Na poniższej ilustracji przedstawiono, jak parametr w szablonie połączonego odwołuje się do klucza tajnego.
 
@@ -241,6 +248,6 @@ New-AzureRmResourceGroupDeployment `
   -vaultName <your-vault> -vaultResourceGroup examplegroup -secretName examplesecret -adminLogin exampleadmin -sqlServerName <server-name>
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać ogólne informacje o magazynów kluczy, zobacz [wprowadzenie do usługi Azure Key Vault](../key-vault/key-vault-get-started.md).
 * Przykłady pełną odwołujące się do kluczy tajnych kluczy, zobacz [przykłady Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

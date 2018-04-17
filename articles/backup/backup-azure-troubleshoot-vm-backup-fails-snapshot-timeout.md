@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 194b8237ce1bff6ac18878bc7eca6e0d3891aa33
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z usługi Kopia zapasowa Azure awarii: problemy z agentem lub rozszerzenia
 
@@ -29,7 +29,8 @@ Ten artykuł zawiera kroki rozwiązywania problemów, które mogą pomóc rozwi�
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Agent maszyny Wirtualnej nie można nawiązać połączenia z usługą kopia zapasowa Azure
 
-Komunikat o błędzie: "Agent maszyny Wirtualnej nie można nawiązać połączenia z kopii zapasowej systemu Azure"
+Komunikat o błędzie: "Agent maszyny Wirtualnej nie można nawiązać połączenia z kopii zapasowej systemu Azure"<br>
+Kod błędu: "UserErrorGuestAgentStatusUnavailable"
 
 Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi tworzenia kopii zapasowej, kopia zapasowa inicjuje zadania komunikując się z migawki w chwili agenta maszyny Wirtualnej. Jeden z następujących warunków może uniemożliwić migawki są wyzwalane. Po wyzwoleniu nie jest migawka kopii zapasowej może zakończyć się niepowodzeniem. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:
 
@@ -41,7 +42,8 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi tworzenia kopii z
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Operacja migawki nie powiedzie się, ponieważ maszyna wirtualna nie jest połączony z siecią
 
-Komunikat o błędzie: "Migawki: operacja nie powiodła się ze względu na brak łączności sieciowej na maszynie wirtualnej"
+Komunikat o błędzie: "Migawki: operacja nie powiodła się ze względu na brak łączności sieciowej na maszynie wirtualnej"<br>
+Kod błędu: "ExtensionSnapshotFailedNoNetwork"
 
 Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure kopii zapasowej inicjuje zadania komunikując się z rozszerzenia kopii zapasowej maszyny Wirtualnej do tworzenia migawki punktu w czasie. Jeden z następujących warunków może uniemożliwić migawki są wyzwalane. Jeśli migawka nie jest wyzwalany, może wystąpić błąd tworzenia kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:    
 **Przyczyna 1: [maszyny Wirtualnej nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**  
@@ -50,7 +52,8 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Az
 
 ## <a name="vmsnapshot-extension-operation-failed"></a>Operacja rozszerzenia VMSnapshot kończy się niepowodzeniem
 
-Komunikat o błędzie: "VMSnapshot rozszerzenia operacja nie powiodła się."
+Komunikat o błędzie: "VMSnapshot rozszerzenia operacja nie powiodła się."<br>
+Kod błędu: "ExtentionOperationFailed"
 
 Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure kopii zapasowej inicjuje zadania komunikując się z rozszerzenia kopii zapasowej maszyny Wirtualnej do tworzenia migawki punktu w czasie. Jeden z następujących warunków może uniemożliwić migawki są wyzwalane. Jeśli migawka nie jest wyzwalany, może wystąpić błąd tworzenia kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:  
 **Przyczyna 1: [nie można pobrać stanu migawki lub migawka nie można pobrać](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -60,7 +63,7 @@ Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Az
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Kopii zapasowej nie powiedzie się, ponieważ nie odpowiada, agent maszyny Wirtualnej
 
-Błąd messagae: "Nie można wykonać operacji, ponieważ Agent maszyny Wirtualnej nie jest elastyczny"
+Komunikat o błędzie: "Nie można wykonać operacji, ponieważ Agent maszyny Wirtualnej nie jest elastyczny"
 
 Po zarejestrować i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa Azure kopii zapasowej inicjuje zadania komunikując się z rozszerzenia kopii zapasowej maszyny Wirtualnej do tworzenia migawki punktu w czasie. Jeden z następujących warunków może uniemożliwić migawki są wyzwalane. Jeśli migawka nie jest wyzwalany, może wystąpić błąd tworzenia kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:  
 **Przyczyna 1: [agent jest zainstalowany na Maszynie wirtualnej, ale odpowiadać (dla maszyn wirtualnych systemu Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -177,6 +180,8 @@ Aby odinstalować rozszerzenia:
 3. Wybierz **rozszerzenia**.
 4. Wybierz **Vmsnapshot rozszerzenia**.
 5. Wybierz **odinstalować**.
+
+Dla maszyny Wirtualnej systemu Linux, jeśli rozszerzenie VMSnapshot nie są wyświetlane w portalu Azure [zaktualizować agenta systemu Linux Azure](../virtual-machines/linux/update-agent.md), a następnie uruchomić tworzenie kopii zapasowej. 
 
 Wykonanie tych kroków powoduje, że rozszerzenie, należy zainstalować ponownie podczas następnej kopii zapasowej.
 

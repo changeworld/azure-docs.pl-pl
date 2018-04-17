@@ -1,7 +1,7 @@
 ---
-title: "Kontrola dostępu oparta na rolach w usłudze Azure Automation"
-description: "Funkcja kontroli dostępu opartej na rolach (role-based access control, RBAC) umożliwia zarządzanie dostępem do zasobów platformy Azure. Ten artykuł zawiera opis sposobu konfigurowania funkcji RBAC w usłudze Azure Automation."
-keywords: "automation rbac, kontrola dostępu oparta na rolach, azure rbac"
+title: Kontrola dostępu oparta na rolach w usłudze Azure Automation
+description: Funkcja kontroli dostępu opartej na rolach (role-based access control, RBAC) umożliwia zarządzanie dostępem do zasobów platformy Azure. Ten artykuł zawiera opis sposobu konfigurowania funkcji RBAC w usłudze Azure Automation.
+keywords: automation rbac, kontrola dostępu oparta na rolach, azure rbac
 services: automation
 ms.service: automation
 author: georgewallace
@@ -9,15 +9,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 9fb77f3b435491b5ac5b16327d6ce74f90664a79
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c9cdebd2fb7f650b042fa04f345ac440e0b41cb8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
-Funkcja kontroli dostępu opartej na rolach (role-based access control, RBAC) umożliwia zarządzanie dostępem do zasobów platformy Azure. Przy użyciu [RBAC](../active-directory/role-based-access-control-configure.md), możesz rozdzielenie obowiązków w obrębie organizacji i udzielić tylko takiego dostępu użytkowników, grup i aplikacji potrzebnych im do wykonywania swoich zadań. Prawo dostępu oparte na rolach może zostać przydzielone użytkownikom za pomocą witryny Azure Portal, narzędzi wiersza polecenia platformy Azure lub interfejsów API zarządzania platformy Azure.
+Funkcja kontroli dostępu opartej na rolach (role-based access control, RBAC) umożliwia zarządzanie dostępem do zasobów platformy Azure. Przy użyciu [RBAC](../role-based-access-control/role-assignments-portal.md), możesz rozdzielenie obowiązków w obrębie organizacji i udzielić tylko takiego dostępu użytkowników, grup i aplikacji potrzebnych im do wykonywania swoich zadań. Prawo dostępu oparte na rolach może zostać przydzielone użytkownikom za pomocą witryny Azure Portal, narzędzi wiersza polecenia platformy Azure lub interfejsów API zarządzania platformy Azure.
 
 ## <a name="roles-in-automation-accounts"></a>Role w ramach kont automatyzacji
 W usłudze Azure Automation prawo dostępu jest nadawane poprzez przypisywanie użytkownikom, grupom i aplikacjom odpowiednich ról RBAC w zakresie konta usługi. Poniżej przedstawiono wbudowane role obsługiwane przez konto automatyzacji:
@@ -307,7 +307,7 @@ Użytkownik nie ma także dostępu do funkcji wyświetlania elementów webhook s
 ![Brak dostępu do elementów webhook](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)  
 
 ## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>Konfigurowanie RBAC dla konta automatyzacji za pomocą programu Azure PowerShell
-Można również skonfigurować opartej na rolach dostępu do konta automatyzacji za pomocą następujących [poleceń cmdlet programu Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
+Można również skonfigurować opartej na rolach dostępu do konta automatyzacji za pomocą następujących [poleceń cmdlet programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 • [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) wyświetla wszystkie role RBAC, które są dostępne w usłudze Azure Active Directory. Można użyć tego polecenia z właściwością **Nazwa**, aby wyświetlić listę wszystkich akcji, które mogą być wykonywane przez określoną rolę.
 
@@ -380,7 +380,7 @@ Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remov
 W powyższych przykładach, Zastąp **zaloguj identyfikator**, **identyfikator subskrypcji**, **Nazwa grupy zasobów**, i **nazwa konta automatyzacji** z sieci Szczegóły konta. Gdy zostanie wyświetlony monit o potwierdzenie usunięcia przypisania roli do użytkownika, wybierz pozycję **Tak**.   
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Więcej informacji dotyczących różnych sposobów konfigurowania funkcji RBAC w usłudze Azure Automation można znaleźć w artykule [Manage RBAC with Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md) (Zarządzanie funkcją RBAC przy użyciu programu Azure PowerShell).
+* Więcej informacji dotyczących różnych sposobów konfigurowania funkcji RBAC w usłudze Azure Automation można znaleźć w artykule [Manage RBAC with Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) (Zarządzanie funkcją RBAC przy użyciu programu Azure PowerShell).
 * Szczegółowe informacje dotyczące różnych sposobów uruchamiania elementu Runbook można znaleźć w artykule [Uruchamianie elementu Runbook](automation-starting-a-runbook.md).
 * Informacje dotyczące różnych typów elementów Runbook można znaleźć w artykule [Azure Automation runbook types](automation-runbook-types.md) (Typy elementów Runbook w usłudze Azure Automation)
 

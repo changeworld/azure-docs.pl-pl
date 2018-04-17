@@ -1,25 +1,23 @@
 ---
-title: "Dodawanie bibliotek technologii Hive podczas tworzenia klastra usługi HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać biblioteki gałąź (pliki jar), do klastra usługi HDInsight podczas tworzenia klastra."
+title: Dodawanie bibliotek technologii Hive podczas tworzenia klastra usługi HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać biblioteki gałąź (pliki jar), do klastra usługi HDInsight podczas tworzenia klastra.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2fd74b8d-c006-45c6-a9e2-72ff5d2d978a
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 434c7d24f55c20cc763df3b83429e039bb5e8541
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 71e2859085dc4a9f4fa327d88faff4fecf5108ef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Dodawanie niestandardowych bibliotek technologii Hive, podczas tworzenia klastra usługi HDInsight
 
@@ -41,7 +39,7 @@ Podczas tworzenia klastra, skrypt wylicza pliki, kopiuje je do `/usr/lib/customh
 
 **Lokalizacja skryptu**
 
-For **Linux-based clusters**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
+Aby uzyskać **opartych na systemie Linux klastrów**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
 
 Aby uzyskać **klastry z systemem Windows**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
@@ -56,7 +54,7 @@ Aby uzyskać **klastry z systemem Windows**: [https://hdiconfigactions.blob.core
 
 * Konto magazynu zawierające biblioteki pliki jar **musi** można połączyć się z klastrem usługi HDInsight podczas tworzenia. Musi być domyślne konto magazynu, lub dodać konta za pośrednictwem __konfiguracji opcjonalnej__.
 
-* Jako parametr akcji skryptu można określić ścieżkę WASB do kontenera. Na przykład, jeśli słoików są przechowywane w kontenerze o nazwie **libs** na konto magazynu o nazwie **mystorage**, będzie parametr  **wasb://libs@mystorage.blob.core.windows.net/** .
+* Jako parametr akcji skryptu można określić ścieżkę WASB do kontenera. Na przykład, jeśli słoików są przechowywane w kontenerze o nazwie **libs** na konto magazynu o nazwie **mystorage**, będzie parametr **wasb://libs@mystorage.blob.core.windows.net/**.
 
   > [!NOTE]
   > Tym dokumencie przyjęto założenie, że masz już utworzone konto magazynu, kontenera obiektów blob, a przekazać pliki do niego.
@@ -76,7 +74,7 @@ Aby uzyskać **klastry z systemem Windows**: [https://hdiconfigactions.blob.core
 
    * **Nazwa**: Wprowadź przyjazną nazwę dla akcji skryptu.
 
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
+   * **IDENTYFIKATOR URI SKRYPTU**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
 
    * **HEAD**: Zaznaczenie tego pola wyboru.
 
@@ -84,7 +82,7 @@ Aby uzyskać **klastry z systemem Windows**: [https://hdiconfigactions.blob.core
 
    * **DOZORCY**: to pole pozostanie puste.
 
-   * **Parametry**: Wprowadź adres WASB do wybranego konta magazynu i kontenera zawiera słoików. Na przykład  **wasb://libs@mystorage.blob.core.windows.net/** .
+   * **Parametry**: Wprowadź adres WASB do wybranego konta magazynu i kontenera zawiera słoików. Na przykład **wasb://libs@mystorage.blob.core.windows.net/**.
 
 3. W dolnej części **akcji skryptu**, użyj **wybierz** przycisk, aby zapisać konfigurację.
 

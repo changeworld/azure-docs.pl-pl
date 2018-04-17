@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bac1e679aa46b280596ab09ba40da780c81cac5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8b5869e44e22fab1e996fcd58b4258849603a711
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu poleceń cmdlet AzureRM.RecoveryServices.Backup
 
@@ -132,7 +132,7 @@ Poniższe kroki prowadzi przez proces tworzenia magazynu usług odzyskiwania. Ma
     ```
 
    > [!TIP]
-   > Wiele poleceń cmdlet narzędzia Kopia zapasowa Azure wymaga obiektu magazynu usług odzyskiwania jako danych wejściowych. Z tego powodu jest wygodne do przechowywania obiektów magazynu usług odzyskiwania kopii zapasowej w zmiennej.
+   > Wiele poleceń cmdlet usługi Azure Backup wymaga obiektu magazynu usługi Recovery Services jako danych wejściowych. Z tego powodu wygodne jest przechowywanie obiektu magazynu usługi Backup Recovery Services w zmiennej.
    >
    >
 
@@ -164,7 +164,7 @@ PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecovery
 ```
 
 ### <a name="create-a-protection-policy"></a>Tworzenie zasad ochrony
-Podczas tworzenia magazynu usług odzyskiwania jest dostarczany z domyślną ochronę i zasady przechowywania. Domyślne zasady ochrony wyzwala zadanie tworzenia kopii zapasowej każdego dnia o określonej godzinie. Domyślne zasady przechowywania zachowuje punkt odzyskiwania codziennie przez 30 dni. Zasada domyślna służy do szybko zapewnić ochronę maszyny Wirtualnej i edytować zasady później przy użyciu różnych szczegółów.
+Podczas tworzenia magazynu usługi Recovery Services jest on dostarczany z domyślnymi zasadami ochrony i przechowywania. Domyślne zasady ochrony wyzwalają zadanie tworzenia kopii zapasowej każdego dnia o określonej godzinie. Domyślne zasady przechowywania zachowują codzienny punkt odzyskiwania przez 30 dni. Zasada domyślna służy do szybko zapewnić ochronę maszyny Wirtualnej i edytować zasady później przy użyciu różnych szczegółów.
 
 Użyj **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)** Aby wyświetlić zasady ochrony w magazynie. Aby uzyskać szczegółowe zasady lub wyświetlić zasady skojarzone z typem obciążenie, można użyć tego polecenia cmdlet. Poniższy przykład pobiera zasady dla obciążeń typu AzureVM.
 
@@ -362,7 +362,7 @@ Po przywróceniu dyski, przejdź do następnej sekcji, aby utworzyć maszynę Wi
 Po przywróceniu dyski te kroki umożliwiają tworzenie i konfigurowanie maszyny wirtualnej z dysku.
 
 > [!NOTE]
-> Aby utworzyć zaszyfrowany maszyn wirtualnych z przywróconą dysków, roli użytkownika Azure musi mieć uprawnienia do wykonania tej akcji, **Microsoft.KeyVault/vaults/deploy/action**. Jeśli rola użytkownika nie ma to uprawnienie, utworzyć niestandardową rolę za pomocą tej akcji. Aby uzyskać więcej informacji, zobacz [niestandardowych ról w Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+> Aby utworzyć zaszyfrowany maszyn wirtualnych z przywróconą dysków, roli użytkownika Azure musi mieć uprawnienia do wykonania tej akcji, **Microsoft.KeyVault/vaults/deploy/action**. Jeśli rola użytkownika nie ma to uprawnienie, utworzyć niestandardową rolę za pomocą tej akcji. Aby uzyskać więcej informacji, zobacz [niestandardowych ról w Azure RBAC](../role-based-access-control/custom-roles.md).
 >
 >
 

@@ -1,10 +1,10 @@
 ---
-title: "Importowanie danych do użycia z interfejsu API Azure rozwiązania Cosmos DB tabeli | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zaimportować dane do użycia z interfejsu API Azure rozwiązania Cosmos bazy danych tabeli."
+title: Importowanie danych do użycia z interfejsu API Azure rozwiązania Cosmos DB tabeli | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zaimportować dane do użycia z interfejsu API Azure rozwiązania Cosmos bazy danych tabeli.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: b60743e2-0227-43ab-965a-0ae3ebacd917
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: mimig
-ms.openlocfilehash: 1c53be736ad65a53767626033be27f0891de06ba
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Importowanie danych do użycia z interfejsu API Azure rozwiązania Cosmos DB tabeli
 
@@ -131,7 +131,7 @@ Aby przeprowadzić migrację z tabeli interfejsu API (wersja zapoznawcza) ogóln
 
 3. Migrację danych klienta z wersji zapoznawczej tabel do tabel GA przy użyciu narzędzia do migracji danych. Instrukcje dotyczące używania narzędzia migracji danych w tym celu są opisane w [narzędzia migracji danych](#data-migration-tool). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

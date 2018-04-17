@@ -1,26 +1,24 @@
 ---
-title: "Zainstaluj opublikowana aplikacja — moduł zbierający dane o StreamSets - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Instalowanie i korzystanie z aplikacji przez moduł zbierający dane StreamSets innych firm Hadoop."
+title: Zainstaluj opublikowana aplikacja — moduł zbierający dane o StreamSets - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Instalowanie i korzystanie z aplikacji przez moduł zbierający dane StreamSets innych firm Hadoop.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 90775452c58457ae8ecc73687a375606474158f5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e433de82576f8b943988881ed0b6673c0dccd77e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>Instalowanie aplikacji opublikowanych - StreamSets modułów zbierających dane
 
@@ -40,7 +38,7 @@ Moduł zbierający dane StreamSets zaprojektowano w celu logicznie izolować ka�
 * [Blog](https://streamsets.com/blog/)
 * [Samouczki](https://github.com/streamsets/tutorials)
 * [Forum pomocy technicznej Developer](https://groups.google.com/a/streamsets.com/forum/#!forum/sdc-user)
-* [Slack Public StreamSets Channel](https://streamsetters.slack.com/)
+* [Kanał StreamSets publicznego zapas czasu](https://streamsetters.slack.com/)
 * [Kod źródłowy](https://github.com/streamsets)
 
 ## <a name="prerequisites"></a>Wymagania wstępne

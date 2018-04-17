@@ -1,8 +1,8 @@
 ---
-title: "Zarządzaj rozwiązaniami Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Użyj programu Azure PowerShell i Menedżera zasobów do zarządzania zasobami."
+title: Zarządzaj rozwiązaniami Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Użyj programu Azure PowerShell i Menedżera zasobów do zarządzania zasobami.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 96206482195cdcbd06ee2dafdc551f7b1f81d319
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9521a9be1d2bdc91836830dbb6471d2ffcb4daaf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Zarządzanie zasobami za pomocą programu Azure PowerShell
 
@@ -51,9 +51,9 @@ Grupa zasobów jest obecnie pusta.
 
 W tym artykule możesz wdrożyć maszyny wirtualnej i jej powiązane sieci wirtualnej. Do zarządzania rozwiązań maszyny wirtualnej, istnieją trzy role określonych zasobów, które zapewniają dostęp do potrzebnych:
 
-* [Współautor maszyny wirtualnej](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Współautor sieci](../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Współautor konta magazynu](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Współautor maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor)
+* [Współautor konta magazynu](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Zamiast przypisywać role poszczególnym użytkownikom, łatwiej często [utworzyć grupy usługi Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy potrzebują podjęcia działań podobne. Następnie przypisać do odpowiedniej roli. Aby uprościć w tym artykule, należy utworzyć grupy usługi Azure Active Directory bez członków. Nadal można przypisać tej grupy do roli dla zakresu. 
 

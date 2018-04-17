@@ -1,12 +1,12 @@
 ---
-title: "Funkcje szablonów Menedżera zasobów Azure - zasobów | Dokumentacja firmy Microsoft"
-description: "Zawiera opis funkcji można użyć w szablonie usługi Azure Resource Manager można pobrać wartości o zasobach."
+title: Funkcje szablonów Menedżera zasobów Azure - zasobów | Dokumentacja firmy Microsoft
+description: Zawiera opis funkcji można użyć w szablonie usługi Azure Resource Manager można pobrać wartości o zasobach.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: f92afd27540e935ed901151d980377b9b34ea8f5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f2ff44fc6644f3a4294f7b2c752a7f3ab05f351d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
 Usługa Resource Manager zapewnia następujące funkcje do pobierania wartości zasobu:
 
-* [listKeys i listy {Value}](#listkeys)
+* [listKeys](#listkeys)
+* [listSecrets](#list)
+* [Lista *](#list)
 * [dostawców](#providers)
 * [Odwołanie](#reference)
 * [resourceGroup](#resourcegroup)
@@ -36,12 +38,14 @@ Aby uzyskać wartości z parametrów, zmiennych lub bieżącego wdrożenia, zoba
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listkeys-and-listvalue"></a>listKeys i listy {Value}
+## <a name="listkeys-listsecrets-and-list"></a>listKeys, listSecrets i listy *
 `listKeys(resourceName or resourceIdentifier, apiVersion)`
+
+`listSecrets(resourceName or resourceIdentifier, apiVersion)`
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-Zwraca wartości dla dowolnego typu zasobu, który obsługuje operacja listy. Najbardziej typowe obciążenie jest `listKeys`. 
+Zwraca wartości dla dowolnego typu zasobu, który obsługuje operacja listy. Najbardziej typowe zastosowania to `listKeys` i `listSecrets`. 
 
 ### <a name="parameters"></a>Parametry
 
@@ -154,7 +158,7 @@ Zwraca informacje o dostawcy zasobów i jego obsługiwane typy zasobów. Jeśli 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Yes |ciąg |Namespace dostawcy |
-| resourceType |Nie |ciąg |Typ zasobu w określonej przestrzeni nazw. |
+| Typ zasobu |Nie |ciąg |Typ zasobu w określonej przestrzeni nazw. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -243,7 +247,7 @@ Zwraca obiekt reprezentujący stan czasu wykonywania zasobu.
 |:--- |:--- |:--- |:--- |
 | resourceName lub resourceIdentifier |Yes |ciąg |Nazwa lub identyfikator zasobu. |
 | apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. Obejmują tego parametru, gdy zasób nie zostanie zainicjowana w ramach tego samego szablonu. Zazwyczaj w formacie **rrrr mm-dd**. |
-| 'Full' |Nie |ciąg |Wartość określająca, czy mają być zwracane obiektu pełne zasobów. Jeśli nie określisz `'Full'`, zwracany jest tylko obiekt właściwości zasobu. Obiekt pełne zawiera wartości, takie jak identyfikator zasobu i lokalizacji. |
+| "Pełny" |Nie |ciąg |Wartość określająca, czy mają być zwracane obiektu pełne zasobów. Jeśli nie określisz `'Full'`, zwracany jest tylko obiekt właściwości zasobu. Obiekt pełne zawiera wartości, takie jak identyfikator zasobu i lokalizacji. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -535,7 +539,7 @@ Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zaso
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nie |ciąg (format identyfikatora GUID w) |Wartość domyślna to bieżącej subskrypcji. Należy podać tę wartość, gdy trzeba pobrać zasobu w innej subskrypcji. |
 | resourceGroupName |Nie |ciąg |Wartość domyślna to bieżącej grupie zasobów. Należy podać tę wartość, gdy trzeba pobrać zasobu w innej grupie zasobów. |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
+| Typ zasobu |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
 | resourceName1 |Yes |ciąg |Nazwa zasobu. |
 | resourceName2 |Nie |ciąg |Następny nazwy segmentu zasobu, jeśli zasób jest zagnieżdżony. |
 
@@ -654,8 +658,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| sameRGOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| sameRGOutput | Ciąg | /Subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Ciąg | /Subscriptions/{Current-Sub-ID}/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentSubOutput | Ciąg | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 

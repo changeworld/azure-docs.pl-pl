@@ -3,22 +3,21 @@ title: Jak używać usługi tabel magazynu Azure lub interfejsu API tabeli bazy 
 description: Informacje o sposobie tworzenia i usuwania tabeli, za pomocą interfejsu API usługi tabeli za pomocą języka PHP i wstawianie, usuwanie i zapytanie tabeli.
 services: cosmos-db
 documentationcenter: php
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 1e57f371-6208-4753-b2a0-05db4aede8e3
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mimig
-ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: af193c5ec7993d44fe67216843eb18f459718cfe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Jak używać usługi tabel magazynu Azure lub rozwiązania Cosmos interfejsu API tabeli bazy danych z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,23 +26,18 @@ ms.lasthandoff: 04/06/2018
 ## <a name="overview"></a>Przegląd
 W tym przewodniku przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługi tabel magazynu Azure i interfejsu API Azure rozwiązania Cosmos bazy danych tabeli. Przykłady są napisane w PHP i użyj [biblioteki klienta usługi Azure Storage tabeli PHP][download]. Omówione scenariusze obejmują **tworzenia i usuwania tabeli**, i **Wstawianie, usuwanie i badania jednostek w tabeli**. Aby uzyskać więcej informacji w usłudze tabel Azure, zobacz [następne kroki](#next-steps) sekcji.
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 ## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
 
-Możesz pracować z tabel za pomocą magazynu tabel Azure lub interfejsu API Azure rozwiązania Cosmos bazy danych tabeli. Dowiedz się więcej na temat różnic między usługami, odczytując [tabeli ofert](table-introduction.md#table-offerings). Musisz utworzyć konto usługi ma być używana. 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
-Najprostszym sposobem tworzenia pierwsze konto magazynu jest przy użyciu [portalu Azure](https://portal.azure.com). Więcej informacji można znaleźć w temacie [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-Można również utworzyć konto magazynu przy użyciu [programu Azure PowerShell](../storage/common/storage-powershell-guide-full.md) lub [interfejsu wiersza polecenia Azure](../storage/common/storage-azure-cli.md).
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Tworzenie konta usługi interfejsu API Azure rozwiązania Cosmos DB tabeli
 
-Jeśli nie chcesz utworzyć konto magazynu w tym momencie, umożliwia także emulatora magazynu Azure do uruchomienia i testowania kodu w środowisku lokalnym. Aby uzyskać więcej informacji, zobacz [Używanie emulatora usługi Azure Storage do programowania i testowania](../storage/common/storage-use-emulator.md).
-
-### <a name="create-an-azure-cosmos-db-account"></a>Tworzenie konta usługi Azure Cosmos DB
-
-Aby uzyskać instrukcje dotyczące tworzenia konta bazy danych rozwiązania Cosmos platformy Azure, zobacz [Utwórz konto interfejsu API tabeli](create-table-dotnet.md#create-a-database-account).
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-php-application"></a>Tworzenie aplikacji PHP
 

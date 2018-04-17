@@ -1,25 +1,25 @@
 ---
-title: "Wdrożenia usługi Azure odłączonego decyzje dotyczące stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft"
-description: "Określ decyzje dotyczące wdrożeniach z wieloma węzłami połączone Azure Azure stosu dotyczących planowania wdrażania."
+title: Wdrożenia usługi Azure odłączonego decyzje dotyczące stosu Azure zintegrowanych systemów | Dokumentacja firmy Microsoft
+description: Określ decyzje dotyczące wdrożeniach z wieloma węzłami połączone Azure Azure stosu dotyczących planowania wdrażania.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8fbc489bacb3c8592ee99fc5a4486fd864f498ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Rozłączona wdrożenia usługi Azure planowania decyzje dotyczące stosu Azure zintegrowanych systemów
 Po ustaleniu [jak zintegruje stosu Azure do środowiska chmury hybrydowej](azure-stack-connection-models.md), można następnie zakończyć swoje decyzje dotyczące wdrażania usługi Azure stosu.
@@ -45,7 +45,7 @@ Stos Azure została zaprojektowana by najlepiej pracować po podłączeniu do pl
 |Wdrażanie maszyny Wirtualnej z rozszerzeniem Docker na potrzeby uruchamiania poleceń Docker|Ograniczona — Docker sprawdzi Internet najnowszej wersji i ten test zakończy się niepowodzeniem.|
 |Łącza dokumentacji w portalu Azure stosu|Niedostępna — łącza, takie jak uzyskać pomoc, Przekaż opinię szybkiego startu, itp. używające internetowy adres URL nie będzie działać.|
 |Alert korygowania/ograniczenie, która odwołuje się przewodnik online korygowania|Niedostępny — żadnych alertów korygowania łączy używające internetowy adres URL nie będzie działać.|
-|Syndykacja Marketplace — możliwości, aby wybrać i dodać pakiety galerii bezpośrednio z poziomu portalu Azure Marketplace|Niedostępny — ta funkcja wymaga łączności na platformie Azure oraz konta usługi Azure Active Directory.|
+|Syndykacja Marketplace — możliwości, aby wybrać i dodać pakiety galerii bezpośrednio z poziomu portalu Azure Marketplace|Ograniczona — wdrażając stosu Azure w trybie rozłączonym (bez żadnych łączności z Internetem), nie można pobrać elementów marketplace przy użyciu portalu Azure stosu. Można jednak użyć [marketplace zespolonego narzędzia](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) pobierania elementów marketplace na komputerze, na którym ma połączenie z Internetem i przesyła je do środowiska Azure stosu.|
 |Zarządzanie wdrożenia stosu Azure za pomocą usługi Azure Active Directory federation kont|Niedostępny — ta funkcja wymaga połączenia do platformy Azure. Zamiast tego należy użyć usług AD FS z lokalnym wystąpieniem usługi Active Directory.|
 |Dostawców zasobów, takich jak SQL i używanie|Niedostępne - dostawców zasobów, takich jak SQL i używanie wymagają dostępu do Internetu dla zawartości.|
 |Interfejs wiersza polecenia (CLI)|Ograniczona — CLI ma ograniczone funkcje w zakresie uwierzytelniania i dostarczania zasad usługi.|

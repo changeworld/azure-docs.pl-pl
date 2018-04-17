@@ -1,28 +1,26 @@
 ---
-title: "Monitorowanie wydajności klastra - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Jak monitorować klastra usługi HDInsight na pojemność i wydajność."
+title: Monitorowanie wydajności klastra - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Jak monitorować klastra usługi HDInsight na pojemność i wydajność.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: maxluk
-ms.openlocfilehash: f2333202cdccc82edea649ff1c295752a414c8b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9bf49631da58de86ffa1881bca976cab86677805
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="monitor-cluster-performance"></a>Monitor wydajności klastra
+# <a name="monitor-cluster-performance"></a>Monitorowanie wydajności klastra
 
 Monitorowanie kondycji i wydajności klastra usługi HDInsight jest istotne dla maksymalnej wydajności i wykorzystania zasobów. Monitorowanie może też pomóc Ci adres kodu lub błędy konfiguracji klastra.
 
@@ -89,7 +87,7 @@ Magazynu zapasowego klastra w przypadku usługi Azure Data Lake przechowywania (
 * [Wskazówki dotyczące dostrajania wydajności oprogramowania MapReduce w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Wskazówki dotyczące dostrajania wydajności oprogramowania Storm w usługach HDInsight i Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Odwiedź poniższe łącza, aby uzyskać więcej informacji na temat rozwiązywania problemów i monitorowania klastrów:
 

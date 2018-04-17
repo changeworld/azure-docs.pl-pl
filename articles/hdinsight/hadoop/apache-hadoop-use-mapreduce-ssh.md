@@ -1,26 +1,26 @@
 ---
-title: "MapReduce i SSH połączenia z platformą Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać SSH do uruchomienia zadań MapReduce przy użyciu platformy Hadoop w usłudze HDInsight."
+title: MapReduce i SSH połączenia z platformą Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać SSH do uruchomienia zadań MapReduce przy użyciu platformy Hadoop w usłudze HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlunb
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: 08c67168cde60c1b7551806da8542c98dcb82f55
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 67e1bf6cee04eda51f5dbfc51a95614347fc2b7f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>Używanie MapReduce z usługą Hadoop w usłudze HDInsight przy użyciu protokołu SSH
 
@@ -42,16 +42,16 @@ Dowiedz się, jak można przesłać zadania MapReduce z połączenia protokołu 
 
 ## <a id="ssh"></a>Połącz przy użyciu protokołu SSH
 
-Połącz z klastrem przy użyciu protokołu SSH. Na przykład następujące polecenie nawiązuje połączenie z klastra o nazwie **myhdinsight**:
+Połącz z klastrem przy użyciu protokołu SSH. Na przykład następujące polecenie nawiązuje połączenie z klastra o nazwie **myhdinsight** jako **sshuser** konta:
 
 ```bash
-ssh admin@myhdinsight-ssh.azurehdinsight.net
+ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **Jeśli używasz klucza certyfikatu dla uwierzytelniania SSH**, może być konieczne na przykład określ lokalizację klucza prywatnego w systemie klienta:
 
 ```bash
-ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **Jeśli używasz hasła dla uwierzytelniania SSH**, musisz podać hasło po wyświetleniu monitu.

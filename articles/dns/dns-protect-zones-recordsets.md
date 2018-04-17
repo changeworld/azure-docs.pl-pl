@@ -1,6 +1,6 @@
 ---
 title: Ochrona strefy DNS i rekordy | Dokumentacja firmy Microsoft
-description: "Jak chronić stref DNS i zestawy rekordów w systemie Microsoft Azure DNS."
+description: Jak chronić stref DNS i zestawy rekordów w systemie Microsoft Azure DNS.
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a23f5fa296be6d883229d3810e0387224b6708ff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chronić stref DNS i rekordów
 
 Strefy DNS i rekordy są kluczowych zasobów. Usunięcie strefy DNS lub nawet tylko pojedynczego rekordu DNS może spowodować awarię usług całkowitej.  Dlatego ważne jest krytyczne strefy DNS i rekordy są chronione przed nieautoryzowanym lub przypadkowe zmiany.
 
-W tym artykule opisano, jak usługi Azure DNS umożliwia ochronę stref DNS oraz rekordów na takie zmiany.  Trwa stosowanie dwie funkcje zaawansowane zabezpieczenia udostępniane przez usługi Azure Resource Manager: [kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-what-is.md) i [blokowania zasobów](../azure-resource-manager/resource-group-lock-resources.md).
+W tym artykule opisano, jak usługi Azure DNS umożliwia ochronę stref DNS oraz rekordów na takie zmiany.  Trwa stosowanie dwie funkcje zaawansowane zabezpieczenia udostępniane przez usługi Azure Resource Manager: [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) i [blokowania zasobów](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Azure opartej na rolach kontroli dostępu (RBAC) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure użytkowników, grup i zasobów. Przy użyciu funkcji RBAC, można przyznać dokładnie takiego dostępu użytkownicy muszą wykonać swoje zadania. Aby uzyskać więcej informacji o sposobie RBAC ułatwia zarządzanie dostępem, zobacz [co to jest kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md).
+Azure opartej na rolach kontroli dostępu (RBAC) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure użytkowników, grup i zasobów. Przy użyciu funkcji RBAC, można przyznać dokładnie takiego dostępu użytkownicy muszą wykonać swoje zadania. Aby uzyskać więcej informacji o sposobie RBAC ułatwia zarządzanie dostępem, zobacz [co to jest kontrola dostępu oparta na rolach](../role-based-access-control/overview.md).
 
 ### <a name="the-dns-zone-contributor-role"></a>Roli "Współautor strefę DNS"
 
@@ -35,18 +35,18 @@ Roli "Współautor strefę DNS" to wbudowana rola dostarczany przez platformę A
 
 Na przykład załóżmy, że grupa zasobów "myzones" zawiera pięć stref dla Contoso Corporation. Udzielenie DNS administrator "Współautora strefę DNS" uprawnień do tej grupy zasobów, umożliwia pełną kontrolę nad tych stref DNS. Ponadto pozwala uniknąć, udzielanie niepotrzebnych uprawnień, na przykład administrator usługi DNS nie można utworzyć ani zatrzymać maszyn wirtualnych.
 
-Najprostszym sposobem, aby przypisać uprawnienia RBAC jest [za pośrednictwem portalu Azure](../active-directory/role-based-access-control-configure.md).  Otwarcie bloku "Kontrola dostępu (IAM)" dla grupy zasobów, następnie kliknij przycisk "Dodaj", a następnie wybierz roli "Współautor strefę DNS" i wybierz wymagane użytkowników lub grupy, aby udzielić uprawnień.
+Najprostszym sposobem, aby przypisać uprawnienia RBAC jest [za pośrednictwem portalu Azure](../role-based-access-control/role-assignments-portal.md).  Otwarcie bloku "Kontrola dostępu (IAM)" dla grupy zasobów, następnie kliknij przycisk "Dodaj", a następnie wybierz roli "Współautor strefę DNS" i wybierz wymagane użytkowników lub grupy, aby udzielić uprawnień.
 
 ![Poziom grupy zasobów RBAC za pośrednictwem portalu Azure](./media/dns-protect-zones-recordsets/rbac1.png)
 
-Uprawnienia można również [przyznane przy użyciu programu Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
+Uprawnienia można również [przyznane przy użyciu programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-Odpowiednik polecenia jest także [dostępne za pośrednictwem interfejsu wiersza polecenia Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Odpowiednik polecenia jest także [dostępne za pośrednictwem interfejsu wiersza polecenia Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
@@ -63,14 +63,14 @@ Uprawnienia na poziomie strefy RBAC można otrzymać za pośrednictwem portalu A
 
 ![Strefa DNS RBAC poziomu portalu Azure](./media/dns-protect-zones-recordsets/rbac2.png)
 
-Uprawnienia można również [przyznane przy użyciu programu Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
+Uprawnienia można również [przyznane przy użyciu programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-Odpowiednik polecenia jest także [dostępne za pośrednictwem interfejsu wiersza polecenia Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Odpowiednik polecenia jest także [dostępne za pośrednictwem interfejsu wiersza polecenia Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
@@ -85,14 +85,14 @@ Zestaw rekordów uprawnień na poziomie RBAC można skonfigurować za pośrednic
 
 ![Poziom RBAC za pośrednictwem portalu Azure zestawu rekordów](./media/dns-protect-zones-recordsets/rbac3.png)
 
-Zestaw rekordów uprawnień na poziomie RBAC można też [przyznane przy użyciu programu Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
+Zestaw rekordów uprawnień na poziomie RBAC można też [przyznane przy użyciu programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```powershell
 # Grant permissions to a specific record set
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-Odpowiednik polecenia jest także [dostępne za pośrednictwem interfejsu wiersza polecenia Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Odpowiednik polecenia jest także [dostępne za pośrednictwem interfejsu wiersza polecenia Azure](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant permissions to a specific record set
@@ -133,10 +133,10 @@ W poniższym przykładzie przedstawiono niestandardową definicję roli do zarz�
 
 Właściwość akcje definiuje następujące uprawnienia dotyczące DNS:
 
-* `Microsoft.Network/dnsZones/CNAME/*`przyznaje pełną kontrolę nad rekordy CNAME
-* `Microsoft.Network/dnsZones/read`udziela uprawnień do odczytu stref DNS, ale nie można zmodyfikować, umożliwiając Zobacz strefy, w którym jest tworzona CNAME.
+* `Microsoft.Network/dnsZones/CNAME/*` przyznaje pełną kontrolę nad rekordy CNAME
+* `Microsoft.Network/dnsZones/read` udziela uprawnień do odczytu stref DNS, ale nie można zmodyfikować, umożliwiając Zobacz strefy, w którym jest tworzona CNAME.
 
-Pozostałe akcje są kopiowane z [wbudowana Rola współautora strefy DNS](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor).
+Pozostałe akcje są kopiowane z [wbudowana Rola współautora strefy DNS](../role-based-access-control/built-in-roles.md#dns-zone-contributor).
 
 > [!NOTE]
 > Aby zapobiec usuwanie zestawów rekordów podczas jednocześnie ich aktualizacji nie jest skuteczną kontrolę przy użyciu niestandardowej roli zabezpieczeń RBAC. Uniemożliwia zestawy rekordów usuwany, ale go nie uniemożliwia ich jest modyfikowany.  Dozwolone modyfikacje obejmują dodawanie i usuwanie rekordów z zestawu rekordów, łącznie z usunięciem wszystkich rekordów, aby pozostawić "empty" zestawu rekordów. Jest to ten sam efekt co usunięcie zestawu z punktu widzenia rozpoznawania DNS rekordów.
@@ -157,9 +157,9 @@ azure role create -inputfile <file path>
 
 Następnie można przypisać rolę w taki sam sposób jak wbudowane role, zgodnie z opisem we wcześniejszej części tego artykułu.
 
-Aby uzyskać więcej informacji na temat sposobu tworzenia, zarządzania i przypisz role niestandardowe, zobacz [role niestandardowe w Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+Aby uzyskać więcej informacji na temat sposobu tworzenia, zarządzania i przypisz role niestandardowe, zobacz [role niestandardowe w Azure RBAC](../role-based-access-control/custom-roles.md).
 
-## <a name="resource-locks"></a>Blokowania zasobów
+## <a name="resource-locks"></a>Blokady zasobów
 
 Oprócz RBAC usługi Azure Resource Manager obsługuje innego rodzaju kontrolę zabezpieczeń, to znaczy możliwość zasobów 'lock'. Gdzie RBAC zasady umożliwiają kontrolowanie akcji konkretnych użytkowników i grup, blokowania zasobów są stosowane do zasobu i obowiązują we wszystkich użytkowników i ról. Aby uzyskać więcej informacji, zobacz [Lock resources with Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md) (Blokowanie zasobów w usłudze Azure Resource Manager).
 
@@ -217,8 +217,8 @@ Takie podejście drugi ma tę zaletę, jego działanie dla wszystkich stref, kt�
 
 Istnieje możliwość użycia obu podejść — blokowania zasobów i role niestandardowe — w tym samym czasie jako podejściu obrony zabezpieczeń do ochrony strefy DNS.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać więcej informacji na temat pracy z RBAC, zobacz [wprowadzenie do zarządzania dostępem w portalu Azure](../active-directory/role-based-access-control-what-is.md).
+* Aby uzyskać więcej informacji na temat pracy z RBAC, zobacz [wprowadzenie do zarządzania dostępem w portalu Azure](../role-based-access-control/overview.md).
 * Aby uzyskać więcej informacji na temat pracy z blokowania zasobów, zobacz [blokowania zasobów z usługi Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
 

@@ -1,11 +1,11 @@
 ---
-title: "Wykorzystanie pętle T-SQL w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Porady dotyczące języka Transact-SQL pętli i zastąpienie kursory w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań."
+title: Przy użyciu pętli T-SQL w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Porady dotyczące przy użyciu pętli T-SQL i zastępowanie kursory w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: f3384b81-b943-431b-bc73-90e47e4c195f
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,19 +15,23 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 40a872ff310f48bfd543ac184fe7301b85b50258
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e49a0de0e4a6aba6639f7f3100f41c8db254220
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="loops-in-sql-data-warehouse"></a>W przypadku usługi SQL Data Warehouse pętle
-Magazyn danych SQL obsługuje [podczas][podczas] pętli wielokrotnie wykonywania bloków instrukcji. Operacja będzie kontynuowana dla tak długo, jak określone warunki są spełnione, lub do kodu w szczególności kończy się za pomocą pętli `BREAK` — słowo kluczowe. Pętle są szczególnie użyteczne w przypadku zastępowania kursory zdefiniowany w języku SQL. Na szczęście prawie wszystkie kursorów, które zostały napisane w języku SQL są szybkie przewijanie do przodu, odczytać tylko odmiany. W związku z tym [podczas] pętle są doskonałą alternatywę, jeśli okaże się, że konieczności zastąpić jeden.
+# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Przy użyciu pętli T-SQL w usłudze SQL Data Warehouse
+Porady dotyczące przy użyciu pętli T-SQL i zastępowanie kursory w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 
-## <a name="leveraging-loops-and-replacing-cursors-in-sql-data-warehouse"></a>Wykorzystanie pętle i zastępowanie kursory w usłudze SQL Data Warehouse
-Jednak przed rozpoczęciem pracy w head należy poprosić samodzielnie następujące zapytania: "Można tego kursora można ponownie napisać z wykorzystaniem operacje na zestawie na podstawie?". W wielu przypadkach odpowiedzi będzie tak oraz jest często najlepszym rozwiązaniem. Na podstawie operację często wykonuje się znacznie szybciej niż przy użyciu metody iteracyjne, wiersz po wierszu.
+## <a name="purpose-of-while-loops"></a>Celem podczas pętle
 
-Przewijanie kursory tylko do odczytu mogą łatwo zastępowane z konstrukcji pętli. Poniżej przedstawiono prosty przykład. Ten przykładowy kod aktualizuje statystyki dla każdej tabeli w bazie danych. Iterowanie po tabel w pętli możemy można wykonać każdego polecenia w sekwencji.
+Magazyn danych SQL obsługuje [podczas](/sql/t-sql/language-elements/while-transact-sql) pętli wielokrotnie wykonywania bloków instrukcji. Pętla WHILE kontynuuje dla tak długo, jak określone warunki są w szczególności wartość PRAWDA lub dopóki kod kończy pętlę za pomocą słowa kluczowego podziału. Pętle są przydatne do zastępowania kursory zdefiniowany w języku SQL. Na szczęście prawie wszystkie kursorów, które zostały napisane w języku SQL są różne do przodu, tylko do odczytu. W związku z tym [pętle są doskonałą alternatywę do zastępowania kursory a].
+
+## <a name="replacing-cursors-in-sql-data-warehouse"></a>Zastępowanie kursory w usłudze SQL Data Warehouse
+Jednak przed rozpoczęciem pracy w head należy poprosić samodzielnie następujące zapytania: "można ulegną tego kursora do użycia na podstawie zestawu operations?." W wielu przypadkach odpowiedź tak i jest często najlepszym rozwiązaniem. Na podstawie zestawu często wykonywane szybciej niż przy użyciu metody iteracyjne, wiersz po wierszu.
+
+Przewijanie kursory tylko do odczytu mogą łatwo zastępowane z konstrukcji pętli. Poniżej przedstawiono prosty przykład. Ten przykładowy kod aktualizuje statystyki dla każdej tabeli w bazie danych. Każde polecenie przez Iterowanie po tabel w pętli, wykonuje sekwencji.
 
 Najpierw utwórz tabeli tymczasowej zawierającą liczbę unikatowych wiersza używany do identyfikowania poszczególnych instrukcji:
 
@@ -69,19 +73,6 @@ Na koniec porzucić tabeli tymczasowej utworzonego w pierwszym kroku
 DROP TABLE #tbl;
 ```
 
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia](sql-data-warehouse-overview-develop.md).
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-
-## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia][development overview].
-
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[podczas]: https://msdn.microsoft.com/library/ms178642.aspx
-
-
-<!--Other Web references-->

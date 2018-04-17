@@ -5,7 +5,7 @@ services: cosmos-db
 documentationcenter: ''
 keywords: Emulator usługi Azure rozwiązania Cosmos bazy danych
 author: David-Noble-at-work
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
 ms.author: danoble
-ms.openlocfilehash: e0d23a163f16763dd4764eb7857dec8076f4754c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 810e3e8af5295348ba73b4f7433e3203f47f4554
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Użyj emulatora usługi Azure rozwiązania Cosmos bazy danych dla lokalnych projektowania i testowania
 
@@ -206,9 +206,9 @@ Aby wyświetlić listę opcji, należy wpisać `CosmosDB.Emulator.exe /?` w wier
   <td></td>
 </tr>
 <tr>
-  <td>DataPath</td>
+  <td>Ścieżki danych</td>
   <td>Określa ścieżkę, w której chcesz przechowywać pliki danych. Domyślnie jest to % LocalAppdata%\CosmosDBEmulator.</td>
-  <td>CosmosDB.Emulator.exe /DataPath=&lt;datapath&gt;</td>
+  <td>CosmosDB.Emulator.exe /DataPath =&lt;ścieżki danych&gt;</td>
   <td>&lt;ścieżki danych&gt;: dostępną ścieżkę</td>
 </tr>
 <tr>
@@ -262,19 +262,19 @@ Aby wyświetlić listę opcji, należy wpisać `CosmosDB.Emulator.exe /?` w wier
 <tr>
   <td>Liczba partycji</td>
   <td>Określa maksymalną liczbę kolekcji partycjonowanych. Zobacz [zmienić liczby kolekcji](#set-partitioncount) Aby uzyskać więcej informacji.</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;partitioncount&gt;</td>
+  <td>CosmosDB.Emulator.exe /PartitionCount =&lt;liczba partycji&gt;</td>
   <td>&lt;Liczba partycji&gt;: Maksymalna liczba dozwolonych kolekcje z jedną partycją. Domyślna to 25. Maksymalna dozwolona wartość to 250.</td>
 </tr>
 <tr>
   <td>DefaultPartitionCount</td>
   <td>Określa domyślny numer partycji dla kolekcji partycjonowanych.</td>
-  <td>CosmosDB.Emulator.exe /DefaultPartitionCount=&lt;defaultpartitioncount&gt;</td>
+  <td>CosmosDB.Emulator.exe /DefaultPartitionCount =&lt;defaultpartitioncount&gt;</td>
   <td>&lt;defaultpartitioncount&gt; domyślna to 25.</td>
 </tr>
 <tr>
   <td>AllowNetworkAccess</td>
   <td>Zapewnia dostęp do emulatora za pośrednictwem sieci. Należy także podać następujący/key =&lt;key_string&gt; lub/KeyFile =&lt;nazwa_pliku&gt; umożliwiające dostęp do sieci.</td>
-  <td>CosmosDB.Emulator.exe /AllowNetworkAccess /Key=&lt;key_string&gt;<br><br>lub<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=&lt;file_name&gt;</td>
+  <td>CosmosDB.Emulator.exe AllowNetworkAccess następujący/key =&lt;key_string&gt;<br><br>lub<br><br>/ KeyFile /AllowNetworkAccess CosmosDB.Emulator.exe =&lt;nazwa_pliku&gt;</td>
   <td></td>
 </tr>
 <tr>

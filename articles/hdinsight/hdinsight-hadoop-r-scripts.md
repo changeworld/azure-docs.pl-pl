@@ -1,32 +1,30 @@
 ---
-title: "Użyj języka R w usłudze HDInsight, aby dostosować klastry - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zainstalować język R za pomocą akcji skryptu, a następnie użyj języka R w klastrach usługi HDInsight."
+title: Użyj języka R w usłudze HDInsight, aby dostosować klastry - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować język R za pomocą akcji skryptu, a następnie użyj języka R w klastrach usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: be851270-afa5-4af0-a69e-2d343a4deeb7
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 666b51970bf04634708cbf65b8bca0c05412934b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c5fb38de8b1023a05709d07ba17b0c776c87957e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie języka R w klastrach usługi Hadoop w usłudze HDInsight
 
 Dowiedz się, dostosowywanie systemu Windows na podstawie klastra usługi HDInsight przy użyciu akcji skryptu języka R i sposobu użycia języka R w usłudze HDInsight clusters. [Oferty HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) obejmuje R Server w ramach klastra usługi HDInsight. Dzięki temu R skryptów na potrzeby uruchamiania rozproszone obliczenia MapReduce i Spark. Aby uzyskać więcej informacji, zobacz temat [Rozpoczęcie pracy z platformą R Server w usłudze HDInsight](r-server/r-server-get-started.md). Uzyskać informacji na temat używania R z systemem Linux klastrem, zobacz [instalacji i używania R w klastrach HDinsight Hadoop (Linux)](hdinsight-hadoop-r-scripts-linux.md).
 
-Można zainstalować język R w klastrze (na platformie Hadoop, Storm, HBase, Spark) w usłudze Azure HDInsight dowolnego typu za pomocą *akcji skryptu*. Przykładowy skrypt, aby zainstalować język R w klastrze usługi HDInsight jest dostępna z obiektu blob magazynu Azure w trybie tylko do odczytu w [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
+Można zainstalować język R w klastrze (na platformie Hadoop, Storm, HBase, Spark) w usłudze Azure HDInsight dowolnego typu za pomocą *akcji skryptu*. Przykładowy skrypt, aby zainstalować język R w klastrze usługi HDInsight jest dostępna z obiektu blob magazynu Azure w trybie tylko do odczytu w [ https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 ](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
 
 **Pokrewne artykuły**
 
@@ -55,7 +53,7 @@ A [przykładowy skrypt](https://hdiconfigactions.blob.core.windows.net/rconfigac
 
     <table border='1'>
         <tr><th>Właściwość</th><th>Wartość</th></tr>
-        <tr><td>Nazwa</td>
+        <tr><td>Name (Nazwa)</td>
             <td>Na przykład określić nazwę akcji skryptu <b>zainstalować R</b>.</td></tr>
         <tr><td>Identyfikator URI skryptu</td>
             <td>Określ identyfikator URI do skryptu, które jest wywoływane, aby dostosować klastra, na przykład <i>https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1</i></td></tr>
@@ -95,12 +93,12 @@ Pierwsze dwa wiersze wywołania bibliotek RHadoop, które są instalowane z R. K
 
 
 ## <a name="install-r-using-aure-powershell"></a>Zainstalować język R przy użyciu programu Azure PowerShell
-Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Przykład pokazuje, jak zainstalować Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, aby użyć [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
+Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Przykład pokazuje, jak zainstalować Spark przy użyciu programu Azure PowerShell. Należy dostosować skrypt, aby użyć [ https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 ](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
 
 ## <a name="install-r-using-net-sdk"></a>Zainstalować język R przy użyciu zestawu .NET SDK
-Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Przykład pokazuje, jak zainstalować Spark przy użyciu zestawu .NET SDK. Należy dostosować skrypt, aby użyć [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps11).
+Zobacz [HDInsight dostosować klastry za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Przykład pokazuje, jak zainstalować Spark przy użyciu zestawu .NET SDK. Należy dostosować skrypt, aby użyć [ https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 ](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps11).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 * [Zainstaluj i użyj języka R w klastrach HDinsight Hadoop (Linux)](hdinsight-hadoop-r-scripts-linux.md)
 * [Tworzenie klastrów Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md): ogólne informacje na temat tworzenia klastrów usługi HDInsight
 * [Dostosowywanie klastrów usługi HDInsight przy użyciu akcji skryptu][hdinsight-cluster-customize]: ogólne informacje na temat Dostosowywanie klastrów usługi HDInsight przy użyciu akcji skryptu

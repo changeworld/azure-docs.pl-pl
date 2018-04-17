@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj protokół HTTPS na domeny niestandardowej Azure Content Delivery Network | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć lub wyłączyć HTTPS na punkt końcowy usługi Azure CDN z domeny niestandardowej.
+title: Skonfiguruj protokół HTTPS na domenę niestandardową Azure CDN | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączyć lub wyłączyć HTTPS na domenę niestandardową Azure CDN punktu końcowego.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ca3dad18973197f63e69e6568b8ea5988b279e01
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Skonfiguruj protokół HTTPS na Azure Content Delivery Network domeny niestandardowej
+# <a name="configure-https-on-an-azure-cdn-custom-domain"></a>Skonfiguruj protokół HTTPS na domenę niestandardową Azure CDN
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Firma Microsoft obsługuje protokół HTTPS dla domen niestandardowych na platformie Azure sieci dostarczania zawartości (CDN). Z obsługą domeny niestandardowej HTTPS może zapewnić bezpieczne zawartości za pomocą protokołu SSL przy użyciu nazwy domeny w celu zwiększenia bezpieczeństwa danych podczas przesyłania. Przepływ pracy, aby włączyć protokół HTTPS dla domeny niestandardowej jest uproszczone, za pomocą jednego kliknięcia aktywacji i pełnego zarządzania certyfikatami, wszystkie bez dodatkowych kosztów.
+Azure sieci dostarczania zawartości (CDN) obsługuje protokół HTTPS dla domeny niestandardowej na punktu końcowego usługi CDN. Przy użyciu protokołu HTTPS na domenę niestandardową, upewnieniu się, że poufne dane jest dostarczany z bezpiecznego za pomocą szyfrowania SSL, gdy są wysyłane przez internet. Protokół HTTPS oferuje zaufania, uwierzytelniania i chroni przed atakami aplikacji sieci web. Ponadto dostarczania zawartości bezpiecznej przy użyciu nazwy domeny (na przykład https:\//www.contoso.com). Przepływ pracy, aby włączyć protokół HTTPS jest uproszczone, za pomocą jednego kliknięcia aktywacji i pełnego zarządzania certyfikatami, wszystkie bez dodatkowych kosztów.
 
-Jest krytyczne, aby zapewnić prywatność i integralność danych poufnych danych aplikacji sieci web podczas przesyłania. Przy użyciu protokołu HTTPS, należy zapewnić, że poufne dane są szyfrowane, gdy są wysyłane przez internet. Zapewnia zaufania, uwierzytelniania i chroni przed atakami aplikacji sieci web. Domyślnie usługi Azure CDN obsługuje protokół HTTPS na punktu końcowego usługi CDN. Na przykład w przypadku utworzenia punktu końcowego usługi CDN z usługi Azure CDN (taki jak https:\//contoso.azureedge.net), protokół HTTPS jest automatycznie włączone. Ponadto z obsługą protokołu HTTPS domeny niestandardowej, można również włączyć bezpieczne dostarczanie dla domeny niestandardowej (na przykład https:\//www.contoso.com). 
+Usługi Azure CDN obsługuje również HTTPS na hosta punktu końcowego CDN, domyślnie. Na przykład w przypadku utworzenia punktu końcowego usługi CDN (taki jak https:\//contoso.azureedge.net), protokół HTTPS jest automatycznie włączone.  
 
 Niektóre z kluczowych atrybutów funkcję HTTPS są:
 
@@ -77,6 +77,8 @@ Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [utworzyć reko
 
 Jeśli Twoje rekord CNAME jest w nieprawidłowym formacie, DigiCert automatycznie sprawdza niestandardową nazwę domeny i dodaje go do nazwy alternatywnej podmiotu (SAN) certyfikatu. DigitCert nie będzie wysyłać wiadomość e-mail z weryfikacji i nie musisz zatwierdzić Twoje żądanie. Certyfikat jest ważny przez jeden rok i był auto odnawiany przed jego wygaśnięciem. Przejdź do [krok 3: Poczekaj, aż propagacji](#step-3-wait-for-propagation). 
 
+Automatyczne sprawdzanie poprawności zwykle trwa kilka minut. Jeśli nie widzisz domeny zweryfikowane w ciągu jednej godziny, otwórz bilet pomocy technicznej.
+
 #### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>Rekord CNAME nie jest zamapowany na punkt końcowy CDN
 
 Jeśli wpis rekord CNAME dla punktu końcowego już nie istnieje lub zawiera on poddomeny cdnverify, postępuj zgodnie z dalszymi instrukcjami, w tym kroku.
@@ -124,7 +126,7 @@ W poniższej tabeli przedstawiono postęp operacji, gdy włączyć protokół HT
 | Żądanie Submitting 1 | Przesyłanie żądania |
 | | Trwa przesyłanie żądania HTTPS. |
 | | Żądanie HTTPS zostało pomyślnie przesłane. |
-| 2 weryfikacji domeny | Ma Ci Wysłaliśmy wiadomość e-mail z pytaniem, aby zweryfikować własność domeny. Oczekiwanie na potwierdzenie. ** |
+| 2 weryfikacji domeny | Domeny automatycznie została sprawdzona, jeśli jest zamapowany na punkt końcowy CDN CNAME. W przeciwnym razie żądania weryfikacji będą wysyłane na adres e-mail w danej domenie rekord rejestracji (WHOIS rejestratorem) na liście. Sprawdź, czy domena tak szybko, jak to możliwe. |
 | | Własność domeny została pomyślnie zweryfikowana. |
 | | Żądanie sprawdzania poprawności własność domeny wygasło (klienta, prawdopodobnie nie odpowiedział w ciągu 6 dni). Protokół HTTPS nie zostaną włączone w domenie. * |
 | | Domeny własność weryfikacji żądanie zostało odrzucone przez klienta. Protokół HTTPS nie zostaną włączone w domenie. * |
@@ -135,7 +137,6 @@ W poniższej tabeli przedstawiono postęp operacji, gdy włączyć protokół HT
 
 \* Ten komunikat jest wyświetlany tylko wystąpił błąd. 
 
-\** Ten komunikat nie jest widoczna, jeśli wpis CNAME dla domeny niestandardowej wskazujące bezpośrednio z hosta punktu końcowego CDN.
 
 Jeśli wystąpi błąd przed przesłaniem żądania, zostanie wyświetlony następujący komunikat o błędzie:
 
@@ -189,7 +190,7 @@ W poniższej tabeli przedstawiono postęp operacji, gdy wyłączenie protokołu 
 
 3. *Co zrobić, jeśli I nie otrzymywać wiadomości e-mail weryfikacji domeny firmy DigiCert?*
 
-    Jeśli użytkownik nie otrzyma wiadomość e-mail w ciągu 24 godzin, skontaktuj się z pomocy technicznej firmy Microsoft. Jeśli masz wpis CNAME dla domeny niestandardowej wskazujące bezpośrednio z hosta punktu końcowego (i nie jest używana nazwa poddomeny cdnverify), nie będziesz otrzymywać wiadomość e-mail z domeny weryfikacji. Sprawdzanie poprawności jest wykonywane automatycznie.
+    Jeśli masz wpis CNAME dla domeny niestandardowej wskazujące bezpośrednio z hosta punktu końcowego (i nie jest używana nazwa poddomeny cdnverify), nie będziesz otrzymywać wiadomość e-mail z domeny weryfikacji. Sprawdzanie poprawności jest wykonywane automatycznie. W przeciwnym razie jeśli nie masz wpis CNAME nie otrzymasz wiadomość e-mail w ciągu 24 godzin, skontaktuj się z pomocy technicznej firmy Microsoft.
 
 4. *Używa mniej bezpieczna niż certyfikat dedykowanych certyfikat SAN?*
     

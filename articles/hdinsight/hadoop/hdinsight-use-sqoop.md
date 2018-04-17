@@ -1,26 +1,24 @@
 ---
-title: "Uruchamianie zadań Apache Sqoop w usłudze Azure HDInsight (Hadoop) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej uruchom Sqoop importowania i eksportowania między klastrem Hadoop i bazy danych Azure SQL."
+title: Uruchamianie zadań Apache Sqoop w usłudze Azure HDInsight (Hadoop) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać programu Azure PowerShell na stacji roboczej uruchom Sqoop importowania i eksportowania między klastrem Hadoop i bazy danych Azure SQL.
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2c9d708144ee10a7f55a6ffff33925e865ecd415
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Używanie Sqoop z platformą Hadoop w usłudze HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -49,7 +47,7 @@ Klaster usługi HDInsight jest dostarczany z przykładowymi danymi. Można uży�
   | --- | --- |
   | ClientID |ciąg |
   | querytime |ciąg |
-  | market |ciąg |
+  | rynku |ciąg |
   | deviceplatform |ciąg |
   | devicemake |ciąg |
   | devicemodel |ciąg |
@@ -96,7 +94,7 @@ Jeśli wolisz korzystać z programu Azure PowerShell do tworzenia klastra i bazy
         
         |Name (Nazwa)|Wartość|
         |----|-----|
-        | Domyślna nazwa konta magazynu | &lt;CluterName>store |
+        | Domyślna nazwa konta magazynu | &lt;CluterName > przechowywania |
         | Nazwa serwera bazy danych SQL Azure | &lt;ClusterName>dbserver |
         | Nazwa bazy danych SQL Azure | &lt;ClusterName>db |
      

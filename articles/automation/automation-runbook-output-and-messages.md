@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d4b8d485906701b4f05e057996bc31232a29e620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d4931c710bebc5e6c3ee23fb58e1432bb86da4a5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Element Runbook danych wyjściowych i komunikatów w usłudze Automatyzacja Azure
 Większość elementów runbook automatyzacji Azure ma dane wyjściowe, np. komunikat o błędzie dla użytkownika lub obiekt złożony przeznaczony do użycia przez inny przepływ pracy. Środowisko Windows PowerShell udostępnia [wiele strumieni](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) do wysyłania danych wyjściowych w skrypcie lub przepływ pracy. Automatyzacja Azure działa z każdym z tych strumieni inaczej, a należy stosować najlepsze rozwiązania dotyczące sposobu używania każdej podczas tworzenia elementu runbook.
@@ -33,29 +33,32 @@ Strumień wyjściowy jest przeznaczony dla danych wyjściowych obiektów utworzo
 
 Można zapisać danych do strumienia wyjściowego przy użyciu [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) lub umieszczając obiekt w osobnym wierszu w elemencie runbook.
 
-    #The following lines both write an object to the output stream.
-    Write-Output –InputObject $object
-    $object
+```PowerShell
+#The following lines both write an object to the output stream.
+Write-Output –InputObject $object
+$object
+```
 
 ### <a name="output-from-a-function"></a>Dane wyjściowe funkcji
 Podczas zapisywania do strumienia wyjściowego w funkcji, który znajduje się w elemencie runbook, dane wyjściowe są przekazywane z powrotem do elementu runbook. Jeśli element runbook przypisuje te dane wyjściowe do zmiennej, następnie go nie jest zapisywany do strumienia wyjściowego. Zapisywanie do wszelkich innych strumieni w funkcji zapisuje do odpowiedniego strumienia elementu runbook.
 
 Rozważmy następujący przykładowy element runbook:
 
-    Workflow Test-Runbook
-    {
-        Write-Verbose "Verbose outside of function" -Verbose
-        Write-Output "Output outside of function"
-        $functionOutput = Test-Function
-        $functionOutput
+```PowerShell
+Workflow Test-Runbook
+{
+  Write-Verbose "Verbose outside of function" -Verbose
+  Write-Output "Output outside of function"
+  $functionOutput = Test-Function
+  $functionOutput
 
-    Function Test-Function
-     {
-        Write-Verbose "Verbose inside of function" -Verbose
-        Write-Output "Output inside of function"
-      }
-    }
-
+  Function Test-Function
+  {
+    Write-Verbose "Verbose inside of function" -Verbose
+    Write-Output "Output inside of function"
+  }
+}
+```
 
 Strumień wyjściowy dla zadania elementu runbook należy:
 
@@ -81,13 +84,15 @@ W tym miejscu znajduje się lista przykładowe typy danych wyjściowych:
 
 Następujący przykładowy element runbook generuje obiekt ciągu i zawiera deklarację typu jego danych wyjściowych. Jeśli element runbook generuje tablicę pewnego typu, należy także określić typu, a nie tablicę typu.
 
-    Workflow Test-Runbook
-    {
-       [OutputType([string])]
+```PowerShell
+Workflow Test-Runbook
+{
+  [OutputType([string])]
 
-       $output = "This is some string output."
-       Write-Output $output
-    }
+  $output = "This is some string output."
+  Write-Output $output
+}
+ ```
 
 Aby zadeklarować typ danych wyjściowych w elementach runbook graficzny lub graficzny przepływ pracy programu PowerShell, można wybrać **wejściowa i wyjściowa** opcji menu i wpisz nazwę typu danych wyjściowych. Zaleca się, że używasz Pełna nazwa klasy .NET, aby ułatwić jego identyfikację podczas odwoływania się do nadrzędnego elementu runbook. Opisuje właściwości tej klasy w magistrali danych w elemencie runbook i zapewnia dużą elastyczność w przypadku, gdy ich użycie jako logikę warunkową, rejestrowania i odwołuje się do wartości dla innych działań w elemencie runbook.<br> ![Opcja Runbook dane wejściowe i wyjściowe](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
@@ -115,11 +120,13 @@ Strumienie ostrzeżeń i błędów są przeznaczone do rejestrowania problemów 
 
 Utwórz ostrzeżenia lub błędu komunikat przy użyciu [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) lub [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) polecenia cmdlet. Działania mogą także zapisywać do tych strumieni.
 
-    #The following lines create a warning message and then an error message that will suspend the runbook.
+```PowerShell
+#The following lines create a warning message and then an error message that will suspend the runbook.
 
-    $ErrorActionPreference = "Stop"
-    Write-Warning –Message "This is a warning message."
-    Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
+$ErrorActionPreference = "Stop"
+Write-Warning –Message "This is a warning message."
+Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
+```
 
 ### <a name="verbose-stream"></a>Strumień pełny
 Strumień komunikatów pełnych jest ogólne informacje o działaniu elementu runbook. Ponieważ [strumienia debugowania](#Debug) jest niedostępny w elemencie runbook, komunikaty pełne należy używać dla informacji debugowania. Domyślnie komunikaty pełne z opublikowanych elementów runbook nie są przechowywane w historii zadań. Aby zapisywać komunikaty pełne, skonfiguruj opublikowane elementy runbook do rejestrowania rekordów pełnych na karcie Konfigurowanie elementu runbook w portalu Azure. W większości przypadków należy pozostawić domyślne ustawienie nie rejestrowania rekordów pełnych dla elementu runbook ze względu na wydajność. Włącz tę opcję tylko do rozwiązania lub debugowania elementu runbook.
@@ -128,9 +135,11 @@ Gdy [testowania elementu runbook](automation-testing-runbook.md), komunikaty pe�
 
 Tworzenie przy użyciu komunikat trybu informacji pełnej [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) polecenia cmdlet.
 
-    #The following line creates a verbose message.
+```PowerShell
+#The following line creates a verbose message.
 
-    Write-Verbose –Message "This is a verbose message."
+Write-Verbose –Message "This is a verbose message."
+```
 
 ### <a name="debug-stream"></a>Strumień debugowania
 Strumień debugowania jest przeznaczony dla użytkownika interaktywnego i nie należy używać w elementach runbook.
@@ -168,24 +177,25 @@ W programie Windows PowerShell można pobrać dane wyjściowe i komunikaty z ele
 
 Poniższy przykład uruchamiany Przykładowy element runbook, a następnie oczekiwanie na jej zakończenie. Po zakończeniu jego strumień wyjściowy jest zbierany z zadania.
 
-    $job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+```PowerShell
+$job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 
-    $doLoop = $true
-    While ($doLoop) {
-       $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
-       –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
-       $status = $job.Status
-       $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
-    }
+$doLoop = $true
+While ($doLoop) {
+  $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
+    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
+  $status = $job.Status
+  $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
+}
 
-    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
-    
-    # For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
-    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
-    
+Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
+
+# For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
+Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
+``` 
 
 ### <a name="graphical-authoring"></a>Tworzenie graficznych
 Graficznych elementów runbook bardzo rejestrowania jest dostępna w formie śledzenie poziom aktywności. Istnieją dwa poziomy śledzenia: Basic i szczegółowe. W śledzenia, można sprawdzić rozpoczęcia i godzina zakończenia działania każdego elementu runbook oraz informacje dotyczące ponownych prób wszystkie działania, takie jak liczba prób i godzina rozpoczęcia działania. W szczegółowego śledzenia, należy uzyskać śledzenia plus danych wejściowych i danych wyjściowych dla każdego działania. Obecnie rekordów śledzenia są zapisywane przy użyciu strumień pełny, więc musisz włączyć pełne rejestrowanie, podczas włączania śledzenia. Dla graficznych elementów runbook z włączonym śledzeniem jest niepotrzebna pod kątem rejestrowania rekordów postępu, ponieważ śledzenie podstawowe pełni tę samą funkcję i więcej informacji.

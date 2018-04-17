@@ -1,10 +1,10 @@
 ---
-title: "Rozwiązywanie problemów z enterprise koszt widoków - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązać problemy mogą się z widokami koszt organizacji w portalu Azure."
+title: Rozwiązywanie problemów z enterprise koszt widoków - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązać problemy mogą się z widokami koszt organizacji w portalu Azure.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 527e12cdcc4eaebf98708c389dd21e8ac6ae4ac7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Rozwiązywanie problemów z enterprise koszt widoków 
 
-W ramach rejestracji enterprise istnieje wiele ustawień, które może spowodować, że użytkownicy nie będą mogli wyświetlić kosztów w ramach rejestracji.  Jeśli rejestracja nie została zakupiona bezpośrednio z firmą Microsoft, te ustawienia są zarządzane przez administratora rejestracji lub przez partnera.  Ten artykuł pomaga w zrozumieniu ustawienia są oraz ich wpływ na rejestracji. Te ustawienia są niezależne od [role RBAC Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure). 
+W ramach rejestracji enterprise istnieje wiele ustawień, które może spowodować, że użytkownicy nie będą mogli wyświetlić kosztów w ramach rejestracji.  Jeśli rejestracja nie została zakupiona bezpośrednio z firmą Microsoft, te ustawienia są zarządzane przez administratora rejestracji lub przez partnera.  Ten artykuł pomaga w zrozumieniu ustawienia są oraz ich wpływ na rejestracji. Te ustawienia są niezależne od [role RBAC Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
 
 
 ## <a name="enabling-access-to-costs"></a>Włączanie dostępu do kosztów
@@ -44,4 +44,4 @@ Jeśli wyświetlany jest komunikat o błędzie "ten zasób jest niedostępny" po
 ![zasobów nie można odnaleźć](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Skontaktuj się z Administruj grup subskrypcji lub zarządzania, aby uzyskać dostęp.  
-* Subskrypcji, odwołanie [based kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) dokumentu, aby uzyskać pomoc, na którym rola jest wymagana.
+* Subskrypcji, odwołanie [based kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) dokumentu, aby uzyskać pomoc, na którym rola jest wymagana.

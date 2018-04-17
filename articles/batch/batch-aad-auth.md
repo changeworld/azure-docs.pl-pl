@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 2479701174086ddf680e0ecb1da4a9d13b32b76e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie partii rozwiązań usług w usłudze Active Directory
 
@@ -139,7 +139,7 @@ Do uwierzytelniania za pomocą nazwy głównej usługi, należy przypisać rolę
 1. W portalu Azure przejdź do konta usługi partia zadań używanych przez aplikację.
 2. W **ustawienia** bloku dla konta usługi partia zadań, wybierz opcję **kontroli dostępu (IAM)**.
 3. Kliknij przycisk **Dodaj**. 
-4. Z **roli** listy rozwijanej, wybierz opcję _współautora_ lub _czytnika_ roli aplikacji. Aby uzyskać więcej informacji o tych ról, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](../active-directory/role-based-access-control-what-is.md).  
+4. Z **roli** listy rozwijanej, wybierz opcję _współautora_ lub _czytnika_ roli aplikacji. Aby uzyskać więcej informacji o tych ról, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](../role-based-access-control/overview.md).  
 5. W **wybierz** wprowadź nazwę aplikacji. Wybierz aplikację z listy, a następnie kliknij przycisk **zapisać**.
 
 Aplikacja powinien zostać wyświetlony w ustawieniach kontroli dostępu z rolą RBAC przypisane. 

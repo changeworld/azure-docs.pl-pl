@@ -1,25 +1,23 @@
 ---
-title: "Rozwiązywanie problemów z YARN za pomocą usługi Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania na temat pracy z Apache Hadoop YARN i usłudze Azure HDInsight."
-keywords: "Azure HDInsight, YARN, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania"
+title: Rozwiązywanie problemów z YARN za pomocą usługi Azure HDInsight | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania na temat pracy z Apache Hadoop YARN i usłudze Azure HDInsight.
+keywords: Azure HDInsight, YARN, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: fbcb4807aa7f6a3d6227cd630c77714c4d2834b3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z YARN za pomocą usługi Azure HDInsight
 
@@ -28,7 +26,7 @@ Dowiedz się więcej o Najważniejsze problemy i rozwiązania ich podczas pracy 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak utworzyć nową kolejkę YARN w klastrze?
 
 
-### <a name="resolution-steps"></a>Kroki rozwiązania 
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
 Wykonaj następujące kroki w Ambari, aby utworzyć nową kolejkę YARN, a następnie saldo alokacji pojemności wśród wszystkich kolejek. 
 
@@ -73,7 +71,7 @@ Te zmiany są widoczne natychmiast na Interfejsie użytkownika YARN harmonogramu
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>W jaki sposób pobierać dzienników YARN z klastra?
 
 
-### <a name="resolution-steps"></a>Kroki rozwiązania 
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
 1. Połącz się z klastrem usługi HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-2).
 

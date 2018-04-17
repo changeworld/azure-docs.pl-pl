@@ -1,8 +1,8 @@
 ---
-title: "Korzystanie z języka Pig Hadoop przy użyciu pulpitu zdalnego w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać polecenia Pig do uruchomienia instrukcji Pig Latin połączenie pulpitu zdalnego do klastra z systemem Windows Hadoop w usłudze HDInsight."
+title: Korzystanie z języka Pig Hadoop przy użyciu pulpitu zdalnego w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać polecenia Pig do uruchomienia instrukcji Pig Latin połączenie pulpitu zdalnego do klastra z systemem Windows Hadoop w usłudze HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: e034a286-de0f-465f-8bf1-3d085ca6abed
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8b5e8e7f400a4494549c997e969a46ca90eb0ba5
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Uruchamianie zadań Pig połączenie pulpitu zdalnego
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -64,7 +62,7 @@ Włączenie pulpitu zdalnego dla klastra usługi HDInsight, a następnie nawiąz
 
     <table>
     <tr>
-    <th>— Instrukcja</th><th>Wyniki działania</th>
+    <th>Oświadczenie</th><th>Wyniki działania</th>
     </tr>
     <tr>
     <td>FILTEREDLEVELS = poziomy filtru przez LOGLEVEL nie ma wartości null;</td><td>Usuwa wiersze, które zawierają wartość null dla poziomu dziennika i przechowuje wyniki w FILTEREDLEVELS.</td>
@@ -79,7 +77,7 @@ Włączenie pulpitu zdalnego dla klastra usługi HDInsight, a następnie nawiąz
     <td>WYNIK = kolejności częstotliwości przez liczbę desc;</td><td>Porządkuje poziomy dziennika według liczby (malejąco) i są przechowywane w wyniku</td>
     </tr>
     </table>
-6.Można także zapisać wyniki przekształcania za pomocą `STORE` instrukcji. Na przykład następujące polecenie zapisuje `RESULT` do **/example/data/pigout** katalogu w domyślnego kontenera magazynu dla klastra:
+6. Można także zapisać wyniki przekształcania za pomocą `STORE` instrukcji. Na przykład następujące polecenie zapisuje `RESULT` do **/example/data/pigout** katalogu w domyślnego kontenera magazynu dla klastra:
 
         STORE RESULT into 'wasb:///example/data/pigout'
 

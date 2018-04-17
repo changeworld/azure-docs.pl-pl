@@ -1,6 +1,6 @@
 ---
-title: "Scenariusze i przykłady dotyczące ładu subskrypcji | Dokumentacja firmy Microsoft"
-description: "Przykłady sposobu implementacji ładu subskrypcji platformy Azure dla typowych scenariuszy."
+title: Scenariusze i przykłady dotyczące ładu subskrypcji | Dokumentacja firmy Microsoft
+description: Przykłady sposobu implementacji ładu subskrypcji platformy Azure dla typowych scenariuszy.
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Przykłady stosowania szkieletu Azure enterprise
 W tym temacie przedstawiono przykłady sposobu przedsiębiorstwa można zaimplementować zalecenia dotyczące [szkieletu Azure enterprise](resource-manager-subscription-governance.md). Aby zilustrować najlepsze rozwiązania dotyczące typowych scenariuszy używa fikcyjnej firmy o nazwie Contoso.
 
-## <a name="background"></a>Tła
+## <a name="background"></a>Tło
 Contoso to firma na całym świecie, która zapewnia rozwiązania łańcucha dostaw dla klientów w wszystkie elementy z modelu "Oprogramowanie jako usługa" do modelu spakowanych wdrożonych lokalnie.  Opracowują one oprogramowania na całym świecie z produkcyjnymi znaczących Programowanie w Indie, Stanów Zjednoczonych i Kanady.
 
 Część niezależnego dostawcy oprogramowania firmy jest podzielona na kilka jednostek biznesowych niezależne, zarządzających produktów w znaczący biznesowych. Poszczególnych jednostek biznesowych ma własną deweloperów, menedżerów produktu i architektów.
@@ -43,7 +43,7 @@ Firma Contoso jest kompilowany systemu zarządzania kodu źródłowego (BitBucke
 ### <a name="naming-standards--resource-groups"></a>Standardy nazewnictwa & grup zasobów
 Dave tworzy subskrypcję do obsługi narzędzia deweloperskie, które są wspólne dla wszystkich jednostek biznesowych. Musi utworzyć łatwy do rozpoznania nazwy dla subskrypcji i zasobu grup (dla aplikacji i sieci). Tworzy następujące grupy subskrypcji i zasobu:
 
-| Element | Nazwa | Opis |
+| Element | Name (Nazwa) | Opis |
 | --- | --- | --- |
 | Subskrypcja |Contoso ETS DeveloperTools produkcji |Obsługuje typowych narzędzi deweloperskich |
 | Grupa zasobów |bitbucket produkcyjną-zarządcy zasobów |Zawiera serwer aplikacji sieci web i serwera bazy danych |
@@ -56,10 +56,10 @@ Dave przypisuje następujące role dla subskrypcji:
 
 | Rola | Przypisane do | Opis |
 | --- | --- | --- |
-| [Właściciel](../active-directory/role-based-access-built-in-roles.md#owner) |Zarządzane identyfikator z firmy Contoso AD |Ten identyfikator jest kontrolowany przy użyciu tylko w czasie (JIT) dostęp za pomocą narzędzia do zarządzania tożsamościami firmy Contoso i zapewnia, że pełni podlega inspekcji dostępu do właściciela subskrypcji |
-| [Menedżer zabezpieczeń](../active-directory/role-based-access-built-in-roles.md#security-manager) |Bezpieczeństwo i ryzyka działu zarządzania |Ta rola pozwala użytkownikom wyświetlać w Centrum zabezpieczeń Azure i stan zasobów |
-| [Współautor sieci](../active-directory/role-based-access-built-in-roles.md#network-contributor) |Zespół sieci |Ta rola umożliwia zespołu sieci firmy Contoso do zarządzania sieci VPN między lokacjami i sieci wirtualnych |
-| *Rola niestandardowa* |Właściciel aplikacji |Dave tworzy rolę, która przyznaje uprawnienia do modyfikowania zasobów w grupie zasobów. Aby uzyskać więcej informacji, zobacz [niestandardowych ról w Azure RBAC](../active-directory/role-based-access-control-custom-roles.md) |
+| [Właściciel](../role-based-access-control/built-in-roles.md#owner) |Zarządzane identyfikator z firmy Contoso AD |Ten identyfikator jest kontrolowany przy użyciu tylko w czasie (JIT) dostęp za pomocą narzędzia do zarządzania tożsamościami firmy Contoso i zapewnia, że pełni podlega inspekcji dostępu do właściciela subskrypcji |
+| [Menedżer zabezpieczeń](../role-based-access-control/built-in-roles.md#security-manager) |Bezpieczeństwo i ryzyka działu zarządzania |Ta rola pozwala użytkownikom wyświetlać w Centrum zabezpieczeń Azure i stan zasobów |
+| [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor) |Zespół sieci |Ta rola umożliwia zespołu sieci firmy Contoso do zarządzania sieci VPN między lokacjami i sieci wirtualnych |
+| *Rola niestandardowa* |Właściciel aplikacji |Dave tworzy rolę, która przyznaje uprawnienia do modyfikowania zasobów w grupie zasobów. Aby uzyskać więcej informacji, zobacz [niestandardowych ról w Azure RBAC](../role-based-access-control/custom-roles.md) |
 
 ### <a name="policies"></a>Zasady
 Dave ma następujące wymagania dotyczące zarządzania zasobami subskrypcji:
@@ -86,7 +86,7 @@ Dodaje następujące [tagi](resource-group-using-tags.md) do grupy zasobów i za
 | Nazwa tagu | Wartość tagu |
 | --- | --- |
 | ApplicationOwner |Nazwa osoby, która zarządza tej aplikacji |
-| CostCenter |Centrum kosztów grupy, która jest płatności wykorzystania platformy Azure |
+| Centrum kosztów |Centrum kosztów grupy, która jest płatności wykorzystania platformy Azure |
 | Jednostką biznesową |**ETS** (skojarzone z subskrypcją jednostki biznesowej) |
 
 ### <a name="core-network"></a>Sieci podstawowej
@@ -94,13 +94,13 @@ Contoso ETS informacji zabezpieczeń i ryzyka kadra kierownicza przegląda firmy
 
 Tworzy on następujące zasoby:
 
-| Typ zasobu | Nazwa | Opis |
+| Typ zasobu | Name (Nazwa) | Opis |
 | --- | --- | --- |
 | Virtual Network |wewnętrzna sieć wirtualna |Używane z aplikacją BitBucket i jest połączony za pośrednictwem usługi do sieci firmowej firmy Contoso.  Podsieć (`bitbucket`) udostępnia aplikacji z określonych przestrzeni adresów IP |
 | Virtual Network |sieć wirtualna zewnętrzne |Dostępne dla przyszłych aplikacji, które wymagają publicznych punktów końcowych |
 | Sieciowa grupa zabezpieczeń |Grupa nsg bitbucket |Zapewnia, że ataku to obciążenie jest zminimalizowany przez zezwala na połączenia tylko na porcie 443 dla podsieci, gdzie znajduje się aplikacja (`bitbucket`) |
 
-### <a name="resource-locks"></a>Blokowania zasobów
+### <a name="resource-locks"></a>Blokady zasobów
 Dave rozpoznaje, że łączność z siecią firmową firmy Contoso wewnętrzna sieć wirtualna musi być zabezpieczony przed dowolny skrypt wayward lub przypadkowym usunięciem.
 
 Tworzy następujące [Blokada zasobu](resource-group-lock-resources.md):
@@ -123,7 +123,7 @@ Kierowniczej biznesowych w jednostce biznesowej łańcucha dostaw zidentyfikowa�
 ### <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 Dave logowania witrynie Enterprise Portal Azure i widzi dział łańcucha dostaw już istnieje.  Jednak ten projekt jest projektem pierwszej dla zespołu łańcucha dostaw na platformie Azure, Dave rozpoznaje potrzebę nowego konta, aby zespół deweloperów Alicji.  ADAM tworzy konto "R & D" dla swojego zespołu i przypisuje dostęp do Alicji. Alicja zaloguje się za pośrednictwem portalu Azure i utworzenie dwóch subskrypcje: jeden do przechowywania programowanie serwery i jeden do przechowywania serwerów produkcyjnych.  Uprzednio ustanowionym Standardy nazewnictwa ona zgodna podczas tworzenia następujących subskrypcji:
 
-| Użyj subskrypcji | Nazwa |
+| Użyj subskrypcji | Name (Nazwa) |
 | --- | --- |
 | Opracowywanie zawartości |Programowanie ResearchDevelopment LoyaltyCard SupplyChain firmy Contoso |
 | Produkcja |Contoso SupplyChain operacji LoyaltyCard produkcji |
@@ -164,18 +164,18 @@ Contoso ETS informacji zabezpieczeń i ryzyka kadra kierownicza przegląda firmy
 
 Dla **subskrypcji programowanie**, tworzenia:
 
-| Typ zasobu | Nazwa | Opis |
+| Typ zasobu | Name (Nazwa) | Opis |
 | --- | --- | --- |
 | Virtual Network |wewnętrzna sieć wirtualna |Służy środowisko projektowe karty lojalność Contoso i jest połączony za pośrednictwem usługi do sieci firmowej firmy Contoso |
 
 Dla **subskrypcji produkcji**, tworzenia:
 
-| Typ zasobu | Nazwa | Opis |
+| Typ zasobu | Name (Nazwa) | Opis |
 | --- | --- | --- |
 | Virtual Network |sieć wirtualna zewnętrzne |Obsługuje aplikację lojalność karty i nie jest podłączony bezpośrednio do firmy Contoso ExpressRoute. Kod spoczywa bezpośrednio z usługami PaaS za pośrednictwem ich systemu kodu źródłowego |
 | Sieciowa grupa zabezpieczeń |Grupa nsg loyaltycard |Zapewnia, że ataku to obciążenie jest zminimalizowany, zezwalając tylko komunikatu przychodzącego na porcie TCP 443.  Contoso również bada dodatkową ochronę za pomocą zapory aplikacji sieci Web |
 
-### <a name="resource-locks"></a>Blokowania zasobów
+### <a name="resource-locks"></a>Blokady zasobów
 Dave Alicja przyznaje i dodaną do blokowania zasobów na niektóre z kluczowych zasobów w środowisku zapobiega przypadkowemu usunięciu podczas wypychania wadliwe kodu.
 
 Tworzenia następującej blokady:
@@ -194,5 +194,5 @@ Zarządzanie usługami IT firmy Contoso musi szybko zidentyfikować i obsługiwa
 
 Aby spełnić te wymagania, Dave umożliwia Centrum zabezpieczeń Azure. Zapewnia on, Centrum zabezpieczeń Azure jest monitorowanie zasobów i zapewnia dostęp do zespołu DevOps i zabezpieczeń.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby uzyskać informacje dotyczące tworzenia szablonów usługi Resource Manager, zobacz [najlepszych rozwiązań dotyczących tworzenia szablonów usługi Azure Resource Manager](resource-manager-template-best-practices.md).

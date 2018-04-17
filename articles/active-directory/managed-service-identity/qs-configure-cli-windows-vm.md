@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować MSI w maszynie Wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure"
-description: "Krok kroku instrukcje dotyczące konfigurowania zarządzane tożsamości usługi (MSI) na maszynie Wirtualnej platformy Azure, przy użyciu wiersza polecenia platformy Azure."
+title: Jak skonfigurować MSI w maszynie Wirtualnej platformy Azure przy użyciu wiersza polecenia platformy Azure
+description: Krok kroku instrukcje dotyczące konfigurowania zarządzane tożsamości usługi (MSI) na maszynie Wirtualnej platformy Azure, przy użyciu wiersza polecenia platformy Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 0863d5bec71a79f28017582eaa111f6c4a97c1ec
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c76d53d32b297ff106c05bdd717a80a9f4b98814
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-azure-cli"></a>Konfigurowanie maszyny Wirtualnej zarządzane usługi tożsamości (MSI) przy użyciu wiersza polecenia platformy Azure
 
@@ -71,10 +71,10 @@ Jeśli musisz włączyć MSI na już istniejącej maszynie wirtualnej:
    az login
    ```
 
-2. Użyj [tożsamość Przypisz az maszyny wirtualnej](/cli/azure/vm/#az_vm_assign_identity) z `--assign-identity` parametru dodawanego MSI do istniejącej maszyny Wirtualnej:
+2. Użyj [przypisać tożsamość maszyny wirtualnej az](/cli/azure/vm/identity/#az_vm_identity_assign) z `identity assign` polecenie, aby dodać instalatora MSI do istniejącej maszyny Wirtualnej:
 
    ```azurecli-interactive
-   az vm assign-identity -g myResourceGroup -n myVm
+   az vm identity assign -g myResourceGroup -n myVm
    ```
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Usuń MSI w maszynie Wirtualnej platformy Azure

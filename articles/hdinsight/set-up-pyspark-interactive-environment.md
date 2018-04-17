@@ -1,26 +1,24 @@
 ---
-title: "Usługa Azure HDInsight Tools — Konfigurowanie środowiska interakcyjne PySpark dla kodu programu Visual Studio | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak za pomocą narzędzi HDInsight Azure dla programu Visual Studio Code tworzenie i przesyłanie zapytań i skryptów."
+title: Usługa Azure HDInsight Tools — Konfigurowanie środowiska interakcyjne PySpark dla kodu programu Visual Studio | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak za pomocą narzędzi HDInsight Azure dla programu Visual Studio Code tworzenie i przesyłanie zapytań i skryptów.
 Keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 5a64023df813262c461b9d772b722ebd613369ed
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 4ab7b95861fcd1ff75f8ac84e4f00aedb6e526f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Konfigurowanie środowiska interakcyjne PySpark dla programu Visual Studio Code
 
@@ -94,7 +92,7 @@ Jeśli używasz **python 3.x**, należy użyć polecenia **pip3** dla następuj�
 
 8. Uruchom ponownie kodzie VS, a następnie wróć do edytora skryptów, który działa **HDInsight: PySpark interakcyjne**.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 ### <a name="demo"></a>Demonstracja
 * HDInsight dla wersji programu VS kodu: [wideo](https://go.microsoft.com/fwlink/?linkid=858706)
@@ -110,5 +108,5 @@ Jeśli używasz **python 3.x**, należy użyć polecenia **pip3** dla następuj�
 * [Jądra dostępne dla notesu Jupyter w klastrze Spark w usłudze HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Wizualizacja gałęzi przy użyciu usługi Microsoft Power BI w usłudze Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Umożliwia uruchamianie zapytań Hive w usłudze Azure HDInsight Zeppelin](hdinsight-connect-hive-zeppelin.md)
+* [Visualize Hive data with Microsoft Power BI in Azure HDInsight (Wizualizowanie danych programu Hive przy użyciu usługi Microsoft Power BI w usłudze Azure HDInsight)](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Umożliwia uruchamianie zapytań Hive w usłudze Azure HDInsight Zeppelin ](hdinsight-connect-hive-zeppelin.md)

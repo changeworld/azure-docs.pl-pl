@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie klastrów Hadoop na żądanie przy użyciu fabryki danych - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć na żądanie klastrów platformy Hadoop w usłudze HDInsight przy użyciu fabryki danych Azure."
+title: Tworzenie klastrów Hadoop na żądanie przy użyciu fabryki danych - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć na żądanie klastrów platformy Hadoop w usłudze HDInsight przy użyciu fabryki danych Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: spelluru
 manager: jhubbard
@@ -11,16 +11,14 @@ ms.assetid: 1f3b3a78-4d16-4d99-ba6e-06f7bb185d6a
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.openlocfilehash: b9b73f6691af957e42236ef9a223411a0296f96f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 213f1122dc9f616474005070ae3aefa45641fecc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Tworzenie na żądanie klastrów platformy Hadoop w usłudze HDInsight przy użyciu fabryki danych Azure
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -83,7 +81,7 @@ W tym scenariuszu można użyć do trzech kont magazynu:
 
 Aby uprościć samouczek, służy do służą do celów trzy jedno konto magazynu. Przykładowy skrypt programu PowerShell systemu Azure w tej sekcji wykonuje następujące zadania:
 
-1. Logowanie do platformy Azure.
+1. Loguje się do platformy Azure.
 2. Utwórz grupę zasobów platformy Azure.
 3. Tworzenie konta usługi Azure Storage.
 4. Tworzenie kontenera obiektów Blob na koncie magazynu
@@ -189,7 +187,7 @@ Jeśli potrzebujesz pomocy przy użyciu skryptu programu PowerShell, zobacz [prz
 ## <a name="create-a-data-factory-using-resource-manager-template"></a>Tworzenie fabryki danych przy użyciu szablonu usługi Resource Manager
 Konto magazynu, dane wejściowe i skrypt HiveQL przygotowany można przystąpić do utworzenia fabryki danych Azure. Istnieje kilka metod tworzenia fabryki danych. Przez wdrożenie szablonu usługi Azure Resource Manager przy użyciu portalu Azure, w tym samouczku tworzenie fabryki danych. Można także wdrożyć przy użyciu szablonu usługi Resource Manager [interfejsu wiersza polecenia Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) i [programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy-local-template). Dla innych metod tworzenia fabryki danych, zobacz [samouczek: Tworzenie pierwszego fabrykę danych](../data-factory/quickstart-create-data-factory-dot-net.md).
 
-1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon usługi Resource Manager w witrynie Azure Portal. Szablon znajduje się w https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json. Zobacz [jednostek fabryki danych w szablonie](#data-factory-entities-in-the-template) sekcji, aby uzyskać szczegółowe informacje na temat jednostek zdefiniowanych w szablonie. 
+1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon usługi Resource Manager w witrynie Azure Portal. Szablon znajduje się pod adresem https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json. Zobacz [jednostek fabryki danych w szablonie](#data-factory-entities-in-the-template) sekcji, aby uzyskać szczegółowe informacje na temat jednostek zdefiniowanych w szablonie. 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Wybierz **Użyj istniejącego** opcja dla **grupy zasobów** ustawienie i wybierz nazwę grupy zasobów utworzonej w poprzednim kroku (przy użyciu skryptu programu PowerShell).
@@ -561,7 +559,7 @@ W przypadku, gdy nie chcesz usunąć konto magazynu podczas usuwania grupy zasob
         }
     },            
     ```
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule ma przedstawiono sposób tworzenia klastra usługi HDInsight na żądanie do przetworzenia zadań Hive za pomocą fabryki danych Azure. Aby dowiedzieć się więcej:
 
 * [Samouczek Hadoop: rozpoczynanie pracy z opartą na systemie Linux platformą Hadoop w usłudze HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)

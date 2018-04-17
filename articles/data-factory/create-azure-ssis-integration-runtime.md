@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: c8804dce7dd8291b65f704ba36aaa1cd05eb4518
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8995689be7467553069e056347f6dec7378fd186
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska uruchomieniowego integracji usług SSIS Azure w fabryce danych Azure
 Ten artykuł zawiera kroki do inicjowania obsługi środowiska uruchomieniowego integracji usług SSIS Azure w fabryce danych Azure. Następnie możesz użyć programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS) do wdrożenia pakietów usług SQL Server Integration Services (SSIS) w tym środowisku uruchomieniowym na platformie Azure.
@@ -39,12 +39,12 @@ W tym artykule przedstawiono różne sposoby udostępniania IR Azure SSIS:
 
 Po utworzeniu IR Azure SSIS fabryki danych łączy się z bazy danych SQL Azure do przygotowania bazy danych usług SSIS katalogu (SSISDB). Skrypt konfiguruje również uprawnienia i ustawienia Twojej sieci wirtualnej, jeśli zostanie określona, i dołącza nowe wystąpienie środowiska Azure SSIS Integration Runtime do sieci wirtualnej.
 
-Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR są instalowane również pakiety Azure Feature Pack for SSIS i Access Redistributable. Te składniki zapewniają łączność z plikami programów Excel i Access oraz z różnymi źródłami danych platformy Azure (oprócz źródeł danych obsługiwanych przez wbudowane składniki). Aktualnie nie można instalować składników innych firm dla usług SSIS (w tym składników innych firm dostarczanych przez firmę Microsoft, takich jak składniki Oracle i Teradata firmy Attunity i składniki SAP BI).
+Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR są instalowane również pakiety Azure Feature Pack for SSIS i Access Redistributable. Te składniki zapewniają łączność z plikami programów Excel i Access oraz z różnymi źródłami danych platformy Azure (oprócz źródeł danych obsługiwanych przez wbudowane składniki). Można także zainstalować dodatkowe składniki. Aby uzyskać więcej informacji, zobacz [Instalacja niestandardowa środowiska uruchomieniowego integracji usług SSIS Azure](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji, możesz utworzyć konto [bezpłatnej wersji próbnej](http://azure.microsoft.com/pricing/free-trial/).
-- **Serwer bazy danych SQL Azure** lub **zarządzane wystąpienie programu SQL Server (wersja zapoznawcza) (Extended prywatnej wersji zapoznawczej)**. Jeśli nie masz jeszcze serwera bazy danych, utwórz go w witrynie Azure Portal, zanim zaczniesz. Ten serwer hostuje bazę danych katalogu usług SSIS (SSISDB). Zaleca się utworzenie serwera bazy danych w tym samym regionie platformy Azure, co środowisko Integration Runtime. Ta konfiguracja pozwala środowisku Integration Runtime zapisywać dzienniki wykonywania SSISDB bez wykraczania poza granice regionów świadczenia usług platformy Azure. Zapamiętaj warstwy cenowej serwera Azure SQL. Aby uzyskać listę obsługiwanych warstw cenowych bazy danych SQL Azure, zobacz [limity zasobów bazy danych SQL](../sql-database/sql-database-resource-limits.md).
+- **Serwer bazy danych SQL Azure** lub **zarządzane wystąpienie programu SQL Server (wersja zapoznawcza)**. Jeśli nie masz jeszcze serwera bazy danych, utwórz go w witrynie Azure Portal, zanim zaczniesz. Ten serwer hostuje bazę danych katalogu usług SSIS (SSISDB). Zaleca się utworzenie serwera bazy danych w tym samym regionie platformy Azure, co środowisko Integration Runtime. Ta konfiguracja pozwala środowisku Integration Runtime zapisywać dzienniki wykonywania SSISDB bez wykraczania poza granice regionów świadczenia usług platformy Azure. Zapamiętaj warstwy cenowej serwera Azure SQL. Aby uzyskać listę obsługiwanych warstw cenowych bazy danych SQL Azure, zobacz [limity zasobów bazy danych SQL](../sql-database/sql-database-resource-limits.md).
 
     Upewnij się, że serwer bazy danych SQL Azure lub zarządzane wystąpienie programu SQL Server (wersja zapoznawcza) nie ma katalogu SSIS (SSIDB bazy danych). Aprowizacja środowiska IR Azure-SSIS nie obsługuje istniejącego katalogu usług SSIS.
 - **Klasycznym lub usługi Azure Resource Manager wirtualnego Network(VNet) (opcjonalnie)**. Jeśli co najmniej jeden z poniższych warunków jest spełniony, musisz mieć sieć Azure Virtual Network:
@@ -54,7 +54,7 @@ Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR są instalowane ró
 
 > [!NOTE]
 > - Fabrykę danych w wersji 2 możesz utworzyć w następujących regionach: Wschodnie stany USA, Wschodnie stany USA 2, Azja Południowo-Wschodnia i Europa Zachodnia. 
-> - Środowisko Azure-SSIS IR możesz utworzyć w następujących regionach: Wschodnie stany USA, Wschodnie stany USA 2, Środkowe stany USA, Europa Północna, Europa Zachodnia i Australia Wschodnia.
+> - Można utworzyć IR Azure SSIS w następujących regionach: wschodnie stany USA, wschodnie stany USA 2 środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Wielka Brytania Południowa i Australia Wschodnia.
 
 ## <a name="azure-portal"></a>Azure Portal
 W tej sekcji Użyj portalu Azure, w szczególności danych fabryki interfejsu użytkownika, można utworzyć IR. Azure SSIS 
@@ -73,6 +73,7 @@ W tej sekcji Użyj portalu Azure, w szczególności danych fabryki interfejsu u�
    Nazwa fabryki danych platformy Azure musi być **globalnie unikatowa**. Jeśli wystąpi poniższy błąd, zmień nazwę fabryki danych (np. twojanazwaMyAzureSsisDataFactory) i spróbuj utworzyć ją ponownie. Artykuł [Data Factory — Naming Rules (Usługa Data Factory — reguły nazewnictwa)](naming-rules.md) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
+
 3. Wybierz **subskrypcję** Azure, w której chcesz utworzyć fabrykę danych. 
 4. Dla opcji **Grupa zasobów** wykonaj jedną z następujących czynności:
      
@@ -170,8 +171,10 @@ $DataFactoryLocation = "EastUS"
 # Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[your Azure-SSIS integration runtime name]"
 $AzureSSISDescription = "This is my Azure-SSIS integration runtime"
+# Azure-SSIS IR edition/license info: Standard or Enterprise 
+$AzureSSISEdition = "Standard" # Enterprise Edition supports advanced/premium features
 
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, North Europe, West Europe, and Australia East.
+# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # In public preview, only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D3_v2"
@@ -179,6 +182,9 @@ $AzureSSISNodeSize = "Standard_D3_v2"
 $AzureSSISNodeNumber = 2 
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
+
+# Custom setup info
+$SetupScriptContainerSasUri = "" # OPTIONAL: SAS URI of blob container where your custom setup script and its associated files are stored
 
 # SSISDB info
 $SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (Preview) server endpoint]"
@@ -278,10 +284,12 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -CatalogAdminCredential $serverCreds `
                                             -CatalogPricingTier $SSISDBPricingTier `
                                             -Description $AzureSSISDescription `
+                                            -Edition $AzureSSISEdition ` 
                                             -Location $AzureSSISLocation `
                                             -NodeSize $AzureSSISNodeSize `
                                             -NodeCount $AzureSSISNodeNumber `
-                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode
+                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri
 ```
 
 Nie trzeba przekazać wartości VNetId i podsieć, jeśli nie potrzebujesz dostępu do danych lokalnych, oznacza to, że masz lokalnych źródeł/miejsca docelowe danych w pakietów SSIS. Należy podać wartość parametru CatalogPricingTier. Aby uzyskać listę obsługiwanych warstw cenowych bazy danych SQL Azure, zobacz [limity zasobów bazy danych SQL](../sql-database/sql-database-resource-limits.md).
@@ -298,10 +306,12 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -CatalogServerEndpoint $SSISDBServerEndpoint `
                                             -CatalogAdminCredential $serverCreds `
                                             -Description $AzureSSISDescription `
+                                            -Edition $AzureSSISEdition ` 
                                             -Location $AzureSSISLocation `
                                             -NodeSize $AzureSSISNodeSize `
                                             -NodeCount $AzureSSISNodeNumber `
                                             -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri `
                                             -VnetId $VnetId `
                                             -Subnet $SubnetName
 ```
@@ -339,6 +349,9 @@ $DataFactoryLocation = "EastUS"
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "<Specify a name for your Azure-SSIS (IR)>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
+# Azure-SSIS IR edition/license info: Standard or Enterprise 
+$AzureSSISEdition = "Standard" # Enterprise Edition supports advanced/premium features
+
 $AzureSSISLocation = "EastUS" 
  # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_D3_v2"
@@ -346,6 +359,9 @@ $AzureSSISNodeSize = "Standard_D3_v2"
 $AzureSSISNodeNumber = 2 
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
+
+# Custom setup info
+$SetupScriptContainerSasUri = "" # OPTIONAL: SAS URI of blob container where your custom setup script and its associated files are stored
 
 # SSISDB info
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
@@ -389,10 +405,12 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -CatalogAdminCredential $serverCreds `
                                             -CatalogPricingTier $SSISDBPricingTier `
                                             -Description $AzureSSISDescription `
+                                            -Edition $AzureSSISEdition ` 
                                             -Location $AzureSSISLocation `
                                             -NodeSize $AzureSSISNodeSize `
                                             -NodeCount $AzureSSISNodeNumber `
-                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode
+                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri
 
 write-host("##### Starting your Azure-SSIS integration runtime. This command takes 20 to 30 minutes to complete. #####")
 Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

@@ -1,26 +1,24 @@
 ---
-title: "Zainstaluj opublikowana aplikacja — H2O musujących wody - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Zainstalować i używać aplikacji Hadoop H2O musujących wody innych firm."
+title: Zainstaluj opublikowana aplikacja — H2O musujących wody - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Zainstalować i używać aplikacji Hadoop H2O musujących wody innych firm.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8734daa5303aa76e9f8a074b5f709727cabb58b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9a03588b3327c3ab231f5c2cae17488f4d63bde7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Instalowanie aplikacji opublikowanych - wody musujących H2O
 
@@ -40,7 +38,7 @@ Udostępnia H2O musujących wody:
 ### <a name="resource-links"></a>Linki do zasobów
 
 * [H2O.ai Engineering Roadmap](https://jira.h2o.ai/)
-* [H2O.ai Home](http://www.h2o.ai/)
+* [Strona główna H2O.AI](http://www.h2o.ai/)
 * [Dokumentacja H2O.AI](http://docs.h2o.ai/)
 * [Obsługa H2O.AI](https://support.h2o.ai/)
 * [Codebase typu Open Source H2O.AI](https://github.com/h2oai/)
@@ -73,7 +71,7 @@ Aby uzyskać instrukcje krok po kroku dotyczące instalowania tego i innych apli
 
     ![Uruchom klastra](./media/hdinsight-apps-install-h2o/start-cluster.png)
 
-5. Po skonfigurowaniu i uruchomieniu klastra H2O Otwórz H2O przepływu, przechodząc do  **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`** .
+5. Po skonfigurowaniu i uruchomieniu klastra H2O Otwórz H2O przepływu, przechodząc do **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`**.
 
     > [!NOTE]
     > Jeśli nie można otworzyć H2O przepływu, spróbuj wyczyścić pamięć podręczną przeglądarki. Jeśli jednak nie można uzyskać do niej dostęp, prawdopodobnie nie masz za mało zasobów w klastrze. Spróbuj zwiększyć liczbę węzłów procesu roboczego w obszarze **klaster w skali** opcji w okienku klastra.
@@ -84,7 +82,7 @@ Aby uzyskać instrukcje krok po kroku dotyczące instalowania tego i innych apli
 
     ![Wybierz Million_Songs.flow](./media/hdinsight-apps-install-h2o/million-songs.png)
 
-7. Znajdź ścieżkę zawierającą **milsongs-cls-train.csv.gz**i Zastąp całą ścieżkę z **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz** .
+7. Znajdź ścieżkę zawierającą **milsongs-cls-train.csv.gz**i Zastąp całą ścieżkę z **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz**.
 
 8. Znajdź ścieżkę zawierającą **milsongs-cls-test.csv.gz** i zastąpić go ciągiem **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz**.
 

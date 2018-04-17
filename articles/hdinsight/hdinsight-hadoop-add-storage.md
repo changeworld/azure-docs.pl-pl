@@ -1,25 +1,23 @@
 ---
-title: "Dodaj konta dodatkowego magazynu Azure do usługi HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać dodatkowe Azure konta magazynu w istniejącym klastrze usługi HDInsight."
+title: Dodaj konta dodatkowego magazynu Azure do usługi HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać dodatkowe Azure konta magazynu w istniejącym klastrze usługi HDInsight.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 569a41dfdbf2f9d911e67f283f413130ba7e1f79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Dodać dodatkowe konta magazynu w usłudze HDInsight
 
@@ -55,7 +53,7 @@ Podczas przetwarzania skryptu wykonuje następujące czynności:
 
 ## <a name="the-script"></a>Skrypt
 
-__Script location__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
+__Lokalizacja skryptu__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
 __Wymagania dotyczące__:
 
@@ -68,7 +66,7 @@ Ten skrypt można z portalu Azure, programu Azure PowerShell lub 1.0 interfejsu 
 > [!IMPORTANT]
 > Korzystając z krokami opisanymi w dokumencie dostosowania, skorzystaj z poniższych informacji, aby zastosować ten skrypt:
 >
-> * Zastąp żadnych akcji skryptu przykład URI identyfikatora URI dla tego skryptu (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
+> * Zamień na identyfikator URI dla tego skryptu żadnych akcji skryptu przykład identyfikatora URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
 > * Wszystkie parametry przykład zastąpić nazwę konta magazynu platformy Azure i klucza konta magazynu, które mają zostać dodane do klastra. Jeśli używasz portalu Azure, te parametry muszą być oddzielone spacją.
 > * Nie należy oznaczyć skrypt jako __Persisted__, bezpośrednio aktualizacji konfiguracji Ambari w klastrze.
 
@@ -100,7 +98,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Ustaw `$PASSWORD` hasło konta logowania (Administrator) klastra. Ustaw `$CLUSTERNAME` do nazwy klastra usługi HDInsight. Ustaw `$STORAGEACCOUNTNAME` do nazwy konta magazynu.
 >
-> W tym przykładzie użyto [curl (http://curl.haxx.se/)](http://curl.haxx.se/) i [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) pobierania i analizy danych JSON.
+> W tym przykładzie użyto [curl (http://curl.haxx.se/) ](http://curl.haxx.se/) i [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) pobierania i analizy danych JSON.
 
 Korzystając z tego polecenia, Zastąp __CLUSTERNAME__ z nazwą klastra usługi HDInsight. Zastąp __hasło__ przy użyciu hasła logowania HTTP dla klastra. Zastąp __STORAGEACCOUNT__ z nazwą konta magazynu, dodać za pomocą akcji skryptu. Informacje zwrócone z tego polecenia jest podobny do następującego tekstu:
 

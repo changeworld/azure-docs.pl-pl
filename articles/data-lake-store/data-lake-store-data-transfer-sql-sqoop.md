@@ -1,8 +1,8 @@
 ---
-title: "Kopiowanie danych między Data Lake Store i bazy danych Azure SQL przy użyciu Sqoop | Dokumentacja firmy Microsoft"
-description: "Sqoop umożliwia kopiowanie danych między bazą danych SQL Azure i usługi Data Lake Store"
+title: Kopiowanie danych między Data Lake Store i bazy danych Azure SQL przy użyciu Sqoop | Dokumentacja firmy Microsoft
+description: Sqoop umożliwia kopiowanie danych między bazą danych SQL Azure i usługi Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 2611b50114a9fae003fe6e77300780a9af0698cc
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 2e68f74976c25a5c2db32867dabca147f5c30e80
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>Kopiowanie danych między Data Lake Store i za pomocą Sqoop bazy danych Azure SQL
 Dowiedz się, jak używać narzędzia Apache Sqoop umożliwia importowanie i eksportowanie danych między bazą danych SQL Azure i usługi Data Lake Store.
@@ -48,7 +48,7 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
         [ID] [int] NOT NULL,
         [FName] [nvarchar](50) NOT NULL,
         [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_4] PRIMARY KEY CLUSTERED
+         CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
             (
                    [ID] ASC
             )
@@ -61,7 +61,7 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
         [ID] [int] NOT NULL,
         [FName] [nvarchar](50) NOT NULL,
         [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_4] PRIMARY KEY CLUSTERED
+         CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
             (
                    [ID] ASC
             )

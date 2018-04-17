@@ -16,11 +16,11 @@ ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 25b3e47b013cbcd99a39d128cca733709b7a1bb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Utwórz zasady na podstawie atrybutów dynamiczne członkostwo w grupie w usłudze Azure Active Directory
 W usłudze Azure Active Directory (Azure AD) można utworzyć reguł zaawansowanych, aby włączyć złożonych opartych na atrybutach dynamiczne zarządzanie członkostwem w grupach. W tym artykule szczegółowo atrybuty i składni, aby utworzyć reguły członkostwa dynamicznych dla użytkowników lub urządzeń. Możesz skonfigurować reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub w grupach usługi Office 365.
@@ -86,7 +86,7 @@ W poniższej tabeli wymieniono wszystkie operatory obsługiwane wyrażenie regu�
 | Contains |-zawiera |
 | Nie pasują do siebie |-notMatch |
 | dopasowanie |-zgodne |
-| W | -in |
+| W | -w |
 | Nie w | -notIn |
 
 ## <a name="operator-precedence"></a>Kolejność wykonywania działań
@@ -151,7 +151,7 @@ Dozwolonych operatorów
 * -notContains
 * -zgodne
 * -notMatch
-* -in
+* -w
 * -notIn
 
 | Właściwości | Dozwolone wartości | Sposób użycia |
@@ -164,11 +164,11 @@ Dozwolonych operatorów
 | Identyfikator pracownika |Dowolną wartością ciągu |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Dowolną wartość ciągu lub *wartości null* |(user.facsimileTelephoneNumber - eq "value") |
 | givenName |Dowolną wartość ciągu lub *wartości null* |(user.givenName - eq "value") |
-| jobTitle |Dowolną wartość ciągu lub *wartości null* |(user.jobTitle - eq "value") |
+| Stanowisko |Dowolną wartość ciągu lub *wartości null* |(user.jobTitle - eq "value") |
 | Poczty |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
 | mailNickName |Dowolną wartość ciągu (poczty alias użytkownika) |(user.mailNickName - eq "value") |
 | Telefon komórkowy |Dowolną wartość ciągu lub *wartości null* |(user.mobile - eq "value") |
-| Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
+| Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Lokalny identyfikator zabezpieczeń (SID) dla użytkowników, którzy zostały zsynchronizowane z lokalnymi do chmury. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Brak DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Dowolną wartość ciągu lub *wartości null* |(user.physicalDeliveryOfficeName - eq "value") |
@@ -176,8 +176,8 @@ Dozwolonych operatorów
 | preferredLanguage |Kod ISO 639-1 |(user.preferredLanguage - eq "pl pl") |
 | sipProxyAddress |Dowolną wartość ciągu lub *wartości null* |(user.sipProxyAddress - eq "value") |
 | state |Dowolną wartość ciągu lub *wartości null* |(user.state - eq "value") |
-| streetAddress |Dowolną wartość ciągu lub *wartości null* |(user.streetAddress - eq "value") |
-| surname |Dowolną wartość ciągu lub *wartości null* |(user.surname - eq "value") |
+| Adres |Dowolną wartość ciągu lub *wartości null* |(user.streetAddress - eq "value") |
+| nazwisko |Dowolną wartość ciągu lub *wartości null* |(user.surname - eq "value") |
 | TelephoneNumber |Dowolną wartość ciągu lub *wartości null* |(user.telephoneNumber - eq "value") |
 | usageLocation |Kod kraju własną literą dwóch |(user.usageLocation - eq "PL") |
 | userPrincipalName |Dowolną wartością ciągu |(user.userPrincipalName - eq "alias@domain") |
@@ -273,17 +273,17 @@ Można również utworzyć regułę, która wybiera obiekty urządzeń do człon
  ----- | ----- | ----------------
  accountEnabled | wartość true, false | (device.accountEnabled - eq true)
  Nazwa wyświetlana | Dowolną wartością ciągu |(device.displayName - eq "Tomasz Iphone")
- deviceOSType | Dowolną wartością ciągu | (device.deviceOSType - eq "iPad")- lub (device.deviceOSType - eq "iPhone")
+ DeviceOSType | Dowolną wartością ciągu | (device.deviceOSType - eq "iPad")- lub (device.deviceOSType - eq "iPhone")
  DeviceOSVersion | Dowolną wartością ciągu | (urządzenia. OSVersion - eq "9.1")
  deviceCategory | Nazwa kategorii prawidłowe urządzenie | (device.deviceCategory - eq "BYOD")
- deviceManufacturer | Dowolną wartością ciągu | (device.deviceManufacturer - eq "Samsung")
+ DeviceManufacturer | Dowolną wartością ciągu | (device.deviceManufacturer - eq "Samsung")
  deviceModel | Dowolną wartością ciągu | (device.deviceModel - eq "iPad lotniczego")
  deviceOwnership | Osobiste, firma, nieznane | (device.deviceOwnership - eq "Firmy")
  domainName | Dowolną wartością ciągu | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Nazwa profilu rejestracji urządzeń firmy Apple | (device.enrollmentProfileName - eq "DEP iPhone")
  isRooted | wartość true, false | (device.isRooted - eq true)
  managementType | Zarządzanie urządzeniami Przenośnymi (dla urządzeń przenośnych)<br>Komputer (w przypadku komputerów zarządzanych przez agenta Komputerami z usługą Intune) | (device.managementType - eq "MDM")
- organizationalUnit | dowolną wartością ciągu pasującego do nazwy jednostki organizacyjnej, ustawione przez lokalnej usługi Active Directory | (device.organizationalUnit -eq "US PCs")
+ Jednostka organizacyjna | dowolną wartością ciągu pasującego do nazwy jednostki organizacyjnej, ustawione przez lokalnej usługi Active Directory | (device.organizationalUnit -eq "US PCs")
  deviceId | prawidłowy identyfikator urządzenia usługi Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Identyfikator obiektu | Identyfikator obiektu: nieprawidłowy usługi Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
 

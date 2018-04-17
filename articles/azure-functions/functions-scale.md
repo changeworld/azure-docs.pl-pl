@@ -1,13 +1,13 @@
 ---
 title: Skalowanie funkcji platformy Azure i hosting | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak wybrać planowania użycia funkcji Azure i plan usługi aplikacji."
+description: Dowiedz się, jak wybrać planowania użycia funkcji Azure i plan usługi aplikacji.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkcje, funkcje, użycie planu, plan usługi aplikacji, przetwarzania zdarzeń, elementów webhook, dynamiczne obliczeń, architektura niekorzystającą"
+editor: ''
+tags: ''
+keywords: Azure funkcje, funkcje, użycie planu, plan usługi aplikacji, przetwarzania zdarzeń, elementów webhook, dynamiczne obliczeń, architektura niekorzystającą
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5be2fe57287f816434b6d6fdf40dbbcb0dd435f4
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skala funkcji platformy Azure i hostingu
 
@@ -74,7 +74,7 @@ Jeśli planujesz uruchamianie funkcji JavaScript na plan usługi aplikacji, nale
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
-###Zawsze włączone
+### Zawsze włączone
 
 Jeśli zostanie uruchomione na plan usługi aplikacji, należy włączyć **zawsze na** tak, aby aplikacja funkcja działa poprawnie. W planie usługi aplikacji — środowisko uruchomieniowe functions przejdzie bezczynności, po upływie kilku minut braku aktywności, tak tylko wyzwalaczy HTTP "wzbudzania" funkcji. Efekt jest podobny do sposobu zadania Webjob musi mieć zawsze włączone. 
 
@@ -86,7 +86,7 @@ Plan zużycia lub plan usługi aplikacji aplikacji funkcji wymaga ogólne konto 
 
 <!-- JH: Does using a PRemium Storage account improve perf? -->
 
-Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [wprowadzenie do usługi Azure Storage](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
+Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [wprowadzenie do usługi Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
 
 ## <a name="how-the-consumption-plan-works"></a>Jak działa planu zużycie
 

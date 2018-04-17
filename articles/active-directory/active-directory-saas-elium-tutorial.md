@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a72cc1829b7b8a5c7c588543d0b5c91f9f36bf5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c41b2c297d8d89554950e8c77201ff5bedf743e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Samouczek: Integracji Azure Active Directory z Elium
 
@@ -117,7 +117,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: ` https://<platform-domain>.elium.com/login/saml2/login`
      
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Otrzymasz te wartości z **pliku metadanych SP** można pobrać `https://<platform-domain>/login/saml2/metadata`, który znajduje się w dalszej części tego samouczka.
+    > Wartości te nie są prawdziwe. Otrzymasz te wartości z **pliku metadanych SP** można pobrać `https://<platform-domain>.elium.com/login/saml2/metadata`, który znajduje się w dalszej części tego samouczka.
 
 5. Aplikacja Elium oczekuje potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do konfiguracji atrybuty tokenu SAML. Skonfiguruj następujące oświadczeń dla tej aplikacji. Możesz zarządzać wartości tych atrybutów z "**atrybuty użytkownika**" sekcji na stronie integracji aplikacji.
 

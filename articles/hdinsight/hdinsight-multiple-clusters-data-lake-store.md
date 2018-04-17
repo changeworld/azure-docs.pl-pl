@@ -1,31 +1,29 @@
 ---
-title: "Użyj wielu klastrów usługi HDInsight przy użyciu konta usługi Azure Data Lake Store - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać więcej niż jednego klastra usługi HDInsight przy użyciu pojedynczego konta usługi Data Lake Store"
-keywords: "magazynu usługi hdinsight, system plików hdfs, danych strukturalnych, bez struktury danych, data lake — Magazyn"
+title: Użyj wielu klastrów usługi HDInsight przy użyciu konta usługi Azure Data Lake Store - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać więcej niż jednego klastra usługi HDInsight przy użyciu pojedynczego konta usługi Data Lake Store
+keywords: magazynu usługi hdinsight, system plików hdfs, danych strukturalnych, bez struktury danych, data lake — Magazyn
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: c306c66354f34fc945a5fe0ffa11d63bce4d7005
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Użyj wielu klastrów usługi HDInsight przy użyciu konta usługi Azure Data Lake Store
 
 Począwszy od usługi HDInsight w wersji 3.5, można utworzyć klastry usługi HDInsight przy użyciu kont usługi Azure Data Lake Store jako domyślny system plików.
-Data Lake Store obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. można jednak również hostingu HDInsight wielu klastrów korzystających z jednego konta magazynu Data Lake. Aby uzyskać instructionson do tworzenia klastra usługi HDInsight z danymi Lake przechowywane jako magazynu, zobacz [Tworzenie klastrów usługi HDInsight z usługą Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. można jednak również hostingu HDInsight wielu klastrów korzystających z jednego konta magazynu Data Lake. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight z usługą Data Lake Store jako magazynu, zobacz [Tworzenie klastrów usługi HDInsight z usługą Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 Ten artykuł zawiera zalecenia dotyczące usługi Data Lake administratora magazynu do konfigurowania pojedynczego i udostępnionych przechowywania konta usługi Data Lake używany w wielu **active** klastrów usługi HDInsight. Te zalecenia dotyczą hosting wielu klastrów platformy Hadoop bezpieczny, a także niezabezpieczonego udostępnionego konta sklepu usługi Data Lake.
 
@@ -94,7 +92,7 @@ Wiadomo, że te ustawienia mają wpływ na jednego określonego HDInsight przypa
 Zgodnie z JIRA YARN połączone wcześniej, podczas lokalizowania publicznego zasobów lokalizatora sprawdza, czy wszystkie wymagane zasoby są rzeczywiście publiczny, sprawdzając uprawnień w zdalnym systemie plików. Lokalizacja odrzucenia żadnych LocalResource, który nie mieści się tego warunku. Sprawdzanie uprawnień, obejmuje dostęp do odczytu do pliku "inne". W tym scenariuszu nie działa poza pole odnośnie do hostowania klastrów HDInsight w usłudze Azure Data Lake, ponieważ usługa Azure Data Lake nie zezwala na dostęp do "inne" na poziomie folderu głównego.
 
 #### <a name="workaround"></a>Obejście problemu
-Zestaw odczytu-uprawnienia do uruchamiania **innym** w hierarchii, na przykład  **/** , **/klastrów** i   **/klastrów/finance** opisane w powyższej tabeli.
+Zestaw odczytu-uprawnienia do uruchamiania **innym** w hierarchii, na przykład **/**, **/klastrów** i   **/klastrów/finance** opisane w powyższej tabeli.
 
 ## <a name="see-also"></a>Zobacz także
 

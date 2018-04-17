@@ -1,8 +1,8 @@
 ---
-title: "Uaktualnienia klastra usługi HDInsight do nowszej wersji-Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak uaktualnić klaster usługi HDInsight do nowszej wersji."
+title: Uaktualnienia klastra usługi HDInsight do nowszej wersji-Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uaktualnić klaster usługi HDInsight do nowszej wersji.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bhanupr
 manager: asadk
 editor: bhanupr
@@ -11,15 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/04/2017
 ms.author: bhanupr
-ms.openlocfilehash: fa2e37bd922690322ccc3d8f68128180d013b701
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6cd0dd8b326f5340e5014bba4babc6dd945744d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Uaktualnij do nowszej wersji klastra usługi HDInsight
 Aby móc korzystać z najnowszych funkcji usługi HDInsight, zaleca się, że klastry usługi HDInsight można uaktualnić do najnowszej wersji. Postępuj zgodnie z poniższych wytycznych, aby uaktualnić Twoje HDInsight cluster wersji.

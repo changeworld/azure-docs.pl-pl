@@ -1,25 +1,18 @@
 ---
-title: "Samouczek Azure Analysis Services: lekcja 3 — oznaczanie jako tabeli dat | Microsoft Docs"
-description: "Opisuje sposób oznaczania jako tabeli dat w projekcie samouczka usług Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Samouczek Azure Analysis Services: lekcja 3 — oznaczanie jako tabeli dat | Microsoft Docs'
+description: Opisuje sposób oznaczania jako tabeli dat w projekcie samouczka usług Azure Analysis Services.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 25e4475c77a25e4dcdcb90729f8633656bb186ff
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 1b7f6252faef02676be6ccb22653f5d4805020df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mark-as-date-table"></a>Oznacz jako tabelę dat
 

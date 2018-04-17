@@ -1,10 +1,10 @@
 ---
-title: "Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak tworzyć grupy zarządzania platformy Azure do zarządzania wieloma zasobami."
+title: Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzyć grupy zarządzania platformy Azure do zarządzania wieloma zasobami.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: ae91ad29b867ad4ab00831ee40102bcec2fc890c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 48af0bd566f8250e47e03ae45c8ba1c06e5a6792
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Utwórz grupy zarządzania dla organizacji zasobów i zarządzanie
-Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Tworzenie tych kontenerów do tworzenia wydajny i efektywny hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [kontroli dostępu na podstawie roli Azure](../active-directory/role-based-access-control-what-is.md). Aby uzyskać więcej informacji dotyczących grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md). 
+Grupy zarządzania to kontenery ułatwiające zarządzanie dostępu, zasad i zgodności między wieloma subskrypcjami. Tworzenie tych kontenerów do tworzenia wydajny i efektywny hierarchii, które mogą być używane z [zasadami Azure](../azure-policy/azure-policy-introduction.md) i [kontroli dostępu na podstawie roli Azure](../role-based-access-control/overview.md). Aby uzyskać więcej informacji dotyczących grup zarządzania, zobacz [organizowania zasobów z grupami zarządzania platformy Azure ](management-groups-overview.md). 
 
 Funkcja grupy zarządzania jest dostępna w publicznej wersji zapoznawczej. Aby rozpocząć korzystanie z zarządzania grupy, zaloguj się do [portalu Azure](https://portal.azure.com) lub użyć [programu Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), lub [interfejsu API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) do Utwórz grupy zarządzania.   
 

@@ -1,11 +1,9 @@
 ---
-title: "Typowe przypadki użycia i scenariusze dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o górnej pięć zastosowań bazy danych Azure rozwiązania Cosmos: utworzona przez użytkownika zawartość, rejestrowanie zdarzeń, danych katalogu, danych preferencje użytkownika i Internetu rzeczy (IoT)."
+title: Typowe przypadki użycia i scenariusze dla bazy danych Azure rozwiązania Cosmos | Dokumentacja firmy Microsoft
+description: 'Dowiedz się więcej o górnej pięć zastosowań bazy danych Azure rozwiązania Cosmos: utworzona przez użytkownika zawartość, rejestrowanie zdarzeń, danych katalogu, danych preferencje użytkownika i Internetu rzeczy (IoT).'
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: 
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
 ms.assetid: eca68a58-1a8c-4851-8cf8-6e4d2b889905
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: c85aa1a010ea9ccac807d676fd69473de07abca9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Typowe przypadki użycia bazy danych Azure rozwiązania Cosmos
 Ten artykuł zawiera omówienie kilka typowe przypadki użycia dla bazy danych Azure rozwiązania Cosmos.  Zalecenia przedstawione w tym artykule służyć jako punktu wyjścia podczas opracowywania aplikacji DB rozwiązania Cosmos.   
@@ -104,7 +102,7 @@ JSON, format jest obsługiwany przez DB rozwiązania Cosmos jest skuteczne forma
 
 ![Architektura referencyjna aplikacji sieci web Azure DB rozwiązania Cosmos](./media/use-cases/personalization.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby rozpocząć pracę z bazy danych rozwiązania Cosmos platformy Azure, wykonaj naszych [Szybki Start](create-sql-api-dotnet.md), który przeprowadzi użytkownika przez proces tworzenia konta i wprowadzenie do korzystania z bazy danych rozwiązania Cosmos. 
 
 Lub, jeśli chcesz dowiedzieć się więcej o klienci korzystający z rozwiązania Cosmos DB, dostępne są następujące scenariusze klienta:

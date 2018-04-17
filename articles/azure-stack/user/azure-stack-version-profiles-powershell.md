@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/12/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 890237ff40f9c9893c57f49c96e6ddc99849c2bd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b09799fe102522e1ad91f4983cf4f5fa8122b2c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Profile w wersji interfejsu API środowiska PowerShell w stosie Azure
 
@@ -34,15 +34,10 @@ Profile w wersji interfejsu API umożliwiają zarządzanie różnice wersji plat
 ```PowerShell
 Install-Module -Name AzureRm.BootStrapper
 ```
-Moduł AzureRM.Bootstrapper jest w wersji zapoznawczej; Szczegóły i funkcje mogą ulec zmianie. Aby pobrać i zainstalować najnowszą wersję tego modułu z galerii programu PowerShell, uruchom następujące polecenie cmdlet:
-
-```PowerShell
-Update-Module -Name "AzureRm.BootStrapper"
-```
 
 ## <a name="install-a-profile"></a>Instalowanie profilu
 
-Użyj **AzureRmProfile instalacji** polecenia cmdlet z **2017-03-09-profilu** profilu wersji interfejsu API, aby zainstalować moduły AzureRM wymagane przez stos Azure. Należy pamiętać, że moduły operator Azure stosu nie są zainstalowane z tym profilem wersji interfejsu API i powinny być instalowane osobno jak określono w kroku 3 [Zainstaluj program PowerShell Azure stosu](azure-stack-powershell-install.md) artykułu.
+Użyj **AzureRmProfile instalacji** polecenia cmdlet z **2017-03-09-profilu** profilu wersji interfejsu API, aby zainstalować moduły AzureRM wymagane przez stos Azure. Moduły operator Azure stosu nie są zainstalowane z tym profilem wersji interfejsu API. Powinny być instalowane osobno jak określono w kroku 3 [Zainstaluj program PowerShell Azure stosu](azure-stack-powershell-install.md) artykułu.
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

@@ -1,27 +1,25 @@
 ---
-title: "Dowiedz się przy użyciu piaskownicy — emulator — Azure HDInsight Hadoop | Dokumentacja firmy Microsoft"
-description: "Aby rozpocząć, informacje o użyciu ekosystemu Hadoop, skonfigurowaniem piaskownicy Hadoop z Hortonworks na maszynie wirtualnej platformy Azure. "
-keywords: "emulator usługi hadoop, piaskownicy hadoop"
+title: Dowiedz się przy użyciu piaskownicy — emulator — Azure HDInsight Hadoop | Dokumentacja firmy Microsoft
+description: 'Aby rozpocząć, informacje o użyciu ekosystemu Hadoop, skonfigurowaniem piaskownicy Hadoop z Hortonworks na maszynie wirtualnej platformy Azure. '
+keywords: emulator usługi hadoop, piaskownicy hadoop
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
 author: nitinme
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: d7df18a80470beb8dc25cf6add6b7a61f45dcfe7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0b4daa8c832d40457b19ffe4aee1a365796b2435
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Rozpoczynanie pracy z piaskownicą Hadoop, emulator na maszynie wirtualnej
 
@@ -52,14 +50,14 @@ Aby pobrać starsze piaskownicy wersji HDP, rozwiń archiwum:
 1. Wybierz piaskownicy Hortonworks, kliknij przycisk **Start**, a następnie **Start normalny**. Po zakończeniu procesu rozruchu maszyny wirtualnej zawiera instrukcje dotyczące logowania.
    
     ![Normalnego uruchomienia](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Otwórz przeglądarkę sieci web i przejdź do wyświetlany adres URL (zazwyczaj http://127.0.0.1:8888).
+2. Otwórz przeglądarkę sieci web i przejdź do adresu URL wyświetlane (zazwyczaj http://127.0.0.1:8888).
 
 ## <a name="set-sandbox-passwords"></a>Ustawianie hasła piaskownicy
 
 1. Z **wprowadzenie** krok piaskownicy Hortonworks stronie wybierz **zaawansowane opcje wyświetlania**. Skorzystaj z informacji na tej stronie, aby zalogować się do piaskownicy przy użyciu protokołu SSH. Użyj nazwy i hasła.
    
    > [!NOTE]
-   > Jeśli nie ma zainstalowanego klienta SSH, możesz użyć SSH opartych na sieci web, dostępnych na przez maszynę wirtualną na **http://localhost:4200 /**.
+   > Jeśli nie ma zainstalowanego klienta SSH, możesz użyć SSH opartych na sieci web, dostępnych na przez maszynę wirtualną na **http://localhost:4200/**.
    > 
    
     Podczas pierwszego, gdy nawiązujesz połączenie przy użyciu protokołu SSH, monit o zmianę hasła dla konta głównego. Wprowadź nowe hasło, które zostaną użyte podczas logowania przy użyciu protokołu SSH.
@@ -82,7 +80,7 @@ Aby pobrać starsze piaskownicy wersji HDP, rozwiń archiwum:
    
         select * from sample_07 limit 10;
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Dowiedz się, jak używać programu Visual Studio z piaskownicy Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
 * [Learning liny piaskownicy Hortonworks](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Samouczek Hadoop — wprowadzenie HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

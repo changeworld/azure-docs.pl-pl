@@ -3,7 +3,7 @@ title: Partycjonowanie i skalowania w usłudze Azure DB rozwiązania Cosmos | Do
 description: Więcej informacji na temat działa jak partycjonowania bazy danych rozwiązania Cosmos Azure, jak skonfigurować partycje i kluczy partycji i Wybieranie klucza prawego partycji aplikacji.
 services: cosmos-db
 author: rafats
-manager: jhubbard
+manager: kfile
 documentationcenter: ''
 ms.assetid: 702c39b4-1798-48dd-9993-4493a2f6df9e
 ms.service: cosmos-db
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe78289938e752731ff2e830fb62ad210e12111e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 50be809df0938272a3e1d710b879ca3dd5de9428
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Podział na partycje w usłudze Azure DB rozwiązania Cosmos przy użyciu interfejsu API SQL
 
@@ -144,7 +144,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Umożliwia odczytać elementu przez identyfikator i klucz partycji, zaktualizować go, a następnie jako ostatni krok, usuń go przez klucz partycji i identyfikator. Należy pamiętać, że odczyty obejmują wartość PartitionKey (odpowiadający `x-ms-documentdb-partitionkey` nagłówek żądania w interfejsie API REST).
+Umożliwia odczytać elementu przez identyfikator i klucz partycji, zaktualizować go, a następnie jako ostatni krok, usuń go przez klucz partycji i identyfikator. Należy pamiętać, że odczyty obejmują wartość PartitionKey (odpowiadającą nagłówkowi żądania `x-ms-documentdb-partitionkey` w interfejsie API REST).
 
 ```csharp
 // Read document. Needs the partition key and the ID to be specified
@@ -169,7 +169,7 @@ await client.DeleteDocumentAsync(
 ```
 
 ### <a name="querying-partitioned-containers"></a>Wykonywanie zapytania kontenery podzielonym na partycje
-Kwerendy danych w kontenerach podzielonym na partycje, DB rozwiązania Cosmos automatycznie rozsyła kwerendy do partycji odpowiadający wartości klucza partycji podana w filtrze (jeśli istnieją). Na przykład to zapytanie jest kierowany do właśnie partycji zawierającej klucz partycji "XMS 0001".
+Kwerendy danych w kontenerach podzielonym na partycje, DB rozwiązania Cosmos automatycznie rozsyła kwerendy do partycji odpowiadający wartości klucza partycji podana w filtrze (jeśli istnieją). Na przykład to zapytanie jest kierowane tylko do partycji zawierającej klucz partycji „XMS 0001”.
 
 ```csharp
 // Query using partition key
@@ -178,7 +178,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
     
-Następujące zapytanie nie ma filtr klucza partycji (DeviceId) i jest rozwiniętym do wszystkich partycji, w którym jest przeprowadzana z partycji indeksu. Należy pamiętać, że trzeba określić EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` w interfejsie API REST) ma zestaw SDK, aby wykonać zapytania na partycje.
+Poniższe zapytanie nie ma filtra klucza partycji (DeviceId) i jest rozsyłane do wszystkich partycji, w których jest wykonywane względem indeksu partycji. Należy pamiętać, że trzeba określić element EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` w interfejsie API REST), aby zestaw SDK wykonał zapytanie w partycjach.
 
 ```csharp
 // Query across partition keys
@@ -190,8 +190,8 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 Obsługuje rozwiązania cosmos DB [funkcje agregujące](sql-api-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`, `SUM` i `AVG` over podzielona na partycje przy użyciu programu SQL z zestawów SDK 1.12.0 i powyżej uruchomienia kontenerów. Zapytania musi zawierać pojedynczy operatora agregacji i musi zawierać jedną wartość w projekcji.
 
-### <a name="parallel-query-execution"></a>Równoległego wykonywania zapytań
-Zestawy SDK DB rozwiązania Cosmos 1.9.0 i powyżej opcje wykonywania zapytania równoległe pomocy technicznej, które umożliwiają wykonywanie zapytań o małych opóźnieniach dotyczących kolekcji partycjonowanych nawet wtedy, gdy konieczne jest touch dużą liczbę partycji. Na przykład następujące zapytanie jest skonfigurowany do uruchomienia równoległego na partycje.
+### <a name="parallel-query-execution"></a>Równoległe wykonywanie zapytań
+Zestawy SDK DB rozwiązania Cosmos 1.9.0 i powyżej opcje wykonywania zapytania równoległe pomocy technicznej, które umożliwiają wykonywanie zapytań o małych opóźnieniach dotyczących kolekcji partycjonowanych nawet wtedy, gdy konieczne jest touch dużą liczbę partycji. Na przykład poniższe zapytanie zostało skonfigurowane do uruchomienia równoległego w ramach partycji.
 
 ```csharp
 // Cross-partition Order By Queries
@@ -202,12 +202,12 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .OrderBy(m => m.MetricValue);
 ```
     
-Możesz zarządzać równoległego wykonywania zapytań przez dostrajanie następujące parametry:
+Możesz zarządzać równoległym wykonywaniem zapytań przez dostrojenie następujących parametrów:
 
-* Przez ustawienie `MaxDegreeOfParallelism`, można kontrolować stopień równoległości tj., maksymalną liczbę równoczesnych połączeń sieciowych do kontenera partycji. Jeśli ustawisz to-1, stopień równoległości jest zarządzany przez zestaw SDK. Jeśli `MaxDegreeOfParallelism` nie jest określony lub ustawiona na 0, co jest to wartość domyślna, będzie jednego połączenia sieciowego z partycjami kontenera.
-* Przez ustawienie `MaxBufferedItemCount`, można kompromis wykorzystanie pamięci zapytania opóźnienia i po stronie klienta. Jeśli ten parametr lub ustaw tę wartość-1, liczba elementów buforowane podczas równoległego wykonywania zapytań jest zarządzany przez zestaw SDK.
+* Przez ustawienie `MaxDegreeOfParallelism`, można kontrolować stopień równoległości tj., maksymalną liczbę równoczesnych połączeń sieciowych do kontenera partycji. Jeśli ustawisz ten element na -1, stopień równoległości będzie zarządzany przez zestaw SDK. Jeśli `MaxDegreeOfParallelism` nie jest określony lub ustawiona na 0, co jest to wartość domyślna, będzie jednego połączenia sieciowego z partycjami kontenera.
+* Ustawiając element `MaxBufferedItemCount`, można osiągnąć kompromis między opóźnieniem zapytania i wykorzystaniem pamięci po stronie klienta. Pominięcie tego parametru lub ustawienie go na -1 spowoduje, że liczba elementów buforowanych podczas równoległego wykonywania zapytań będzie zarządzana przez zestaw SDK.
 
-Podana takim samym stanie kolekcji, zapytań równoległych zwróci wyniki w tej samej kolejności jak wykonanie szeregowego. Podczas wykonywania kwerendy między partycji zawierającej, sortowanie (ORDER BY i/lub góry), zestaw SDK usługi Azure rozwiązania Cosmos DB wystawia zapytania równolegle na partycje i scala częściowo sortowane wyniki w po stronie klienta, aby wygenerować globalnie uporządkowanych wyników.
+Jeśli kolekcja będzie mieć taki sam stan, zapytanie równoległe zwróci wyniki w tej samej kolejności jak wykonanie szeregowe. Podczas wykonywania kwerendy między partycji zawierającej, sortowanie (ORDER BY i/lub góry), zestaw SDK usługi Azure rozwiązania Cosmos DB wystawia zapytania równolegle na partycje i scala częściowo sortowane wyniki w po stronie klienta, aby wygenerować globalnie uporządkowanych wyników.
 
 ### <a name="executing-stored-procedures"></a>Wykonywanie procedury składowane
 Można również wykonywać atomic transakcji względem dokumentów mających taki sam identyfikator urządzenia, np. Jeśli jest utrzymanie agreguje lub najnowszy stan urządzeń w jeden element. 

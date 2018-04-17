@@ -1,8 +1,8 @@
 ---
-title: "Korzystania z usługi Azure HDInsight ScaleR i SparkR | Dokumentacja firmy Microsoft"
-description: "Użyj ScaleR i SparkR z serwerem R i HDInsight"
+title: Korzystania z usługi Azure HDInsight ScaleR i SparkR | Dokumentacja firmy Microsoft
+description: Użyj ScaleR i SparkR z serwerem R i HDInsight
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -10,37 +10,37 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Łączenie ScaleR i SparkR w usłudze HDInsight
 
-W tym artykule przedstawiono sposób przewidzieć opóźnienia przyjęcia transmitowane przy użyciu **ScaleR** Regresja logistyczna model danych w locie opóźnienia i pogody połączony z **SparkR**. Ten scenariusz pokazuje możliwości ScaleR manipulowania danymi na Spark używane z programem Microsoft R Server w celu wykonania analizy. Kombinacja tych technologii umożliwiają stosowanie najnowszych możliwości przetwarzania rozproszonego.
+Ten dokument przedstawia sposób przewidzieć opóźnienia przyjęcia transmitowane przy użyciu **ScaleR** Regresja logistyczna modelu. W przykładzie użyto transmitowane opóźnienie pogody danymi i łączone za pomocą **SparkR**.
 
 Mimo że oba pakiety uruchomione na aparat wykonywania platformy Spark w Hadoop, jest blokowane udostępnianie, ponieważ wymagają one każdego własnych odpowiednich sesji Spark danych w pamięci. Dopóki ten problem został rozwiązany w nadchodzącej wersji serwera R, obejście jest obsługa nienakładający sesji Spark i wymiany danych za pośrednictwem plików pośrednich. Instrukcje w tym miejscu pokazują, że te wymagania są oczywiste osiągnąć.
 
-Używamy przykład tutaj początkowo udostępniony w rozmawiać na Strata 2016 Mario Inchiosa i Roni Burd, który jest również dostępny za pośrednictwem webinar [tworzenie skalowalnych platformy nauki danych z R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio). W przykładzie użyto SparkR sprzęgać airlines dobrze znanego zestawu danych opóźnienie przyjęcia z danymi pogody na lotniskach wyjścia i przyjęcia. Danych przyłączony jest następnie używane jako dane wejściowe modelu Regresja logistyczna ScaleR do prognozowania transmitowane przyjęcia opóźnienia.
+W tym przykładzie początkowo został udostępniony w rozmawiać na Strata 2016 Mario Inchiosa i Roni Burd. Możesz znaleźć tego poproś o [tworzenie skalowalnych platformy nauki danych z R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
-Kod możemy wskazówki pierwotnie sformatowano platformy R Server działającej w Spark w klaster usługi HDInsight w systemie Azure. Ale koncepcja mieszania stosowania SparkR i ScaleR w jednym skrypcie również jest nieprawidłowy w kontekście lokalnych środowisk. Poniższa możemy zakładają poziom pośredni wiedzy R i są [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) biblioteki R Server. Wprowadzeniu użycie [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) podczas tego scenariusza.
+Kod pierwotnie sformatowano platformy R Server działającej w Spark w klaster usługi HDInsight w systemie Azure. Ale koncepcja mieszania stosowania SparkR i ScaleR w jednym skrypcie również jest nieprawidłowy w kontekście lokalnych środowisk. 
+
+Kroki opisane w tym dokumencie założono, że istnieje poziom pośredni wiedzy R i są [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) biblioteki R Server. Zostały wprowadzone do [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) podczas tego scenariusza.
 
 ## <a name="the-airline-and-weather-datasets"></a>Lotniczych i pogody zbiory danych
 
-**AirOnTime08to12CSV** airlines publiczny zestaw danych zawiera informacje o wejściu i wyjściu szczegóły transmitowane dla wszystkich lotach komercyjnych w USA, od 1987 października 2012 grudnia. Jest to dużego zestawu danych: Całkowita liczba są prawie 150 miliony rekordów. Jest tylko mniej niż 4 GB, rozpakowane. Jest ona dostępna z [archiwa dla instytucji rządowych USA](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Ułatwia, jest dostępny jako plik zip (AirOnTimeCSV.zip) zawierający zestaw 303 oddzielnych miesięczne plików CSV, z [Analytics obrotów repozytorium zestawu danych](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)
+Dane transmitowane są dostępne z [archiwa dla instytucji rządowych USA](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Jest również dostępny jako zip z [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Aby zobaczyć efekty pogody transmitowane opóźnienia, potrzebne są także danych pogody w każdej lotniskach. Te dane można pobrać jako pliki zip w formie raw, według miesięcy, z [National Oceanu i administrowanie atmosferycznych repozytorium](http://www.ncdc.noaa.gov/orders/qclcd/). Na potrzeby tego przykładu możemy pogody ściągania z maja 2007 — grudzień 2012 i używać co godzinę pliki danych w ramach każdy 68 zips miesięcznych. Miesięczne plików zip również zawierać mapowania (YYYYMMstation.txt) od stacji pogody identyfikator (WBAN), port jest skojarzony z (CallSign), czy przesunięcie strefy czasowej na lotnisku w formacie UTC (strefa czasowa). Wszystkie te informacje jest potrzebne podczas sprzęgania z danymi opóźnienie i pogody linii lotniczych.
+Dane pogodzie, który można pobrać jako pliki zip w formie raw, według miesięcy, z [National Oceanu i administrowanie atmosferycznych repozytorium](http://www.ncdc.noaa.gov/orders/qclcd/). Na przykład pobierania danych dla maja 2007 — grudzień 2012. Używanie co godzinę plików danych i `YYYYMMMstation.txt` pliku w ramach każdej zips. 
 
 ## <a name="setting-up-the-spark-environment"></a>Konfigurowanie środowiska Spark
 
-Pierwszym krokiem jest ustanowienie środowiska Spark. Zaczniemy wskazuje katalog, który zawiera katalogi naszych danych wejściowych, tworzenia kontekstu obliczeń Spark i tworzenie funkcji rejestrowania informacyjną logowania do konsoli:
+Aby skonfigurować środowisko Spark, należy użyć poniższego kodu:
 
 ```
 workDir        <- '~'  
@@ -85,7 +85,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Następnie dodamy "Spark_Home" do ścieżki wyszukiwania dla pakietów języka R dzięki czemu możemy użyć SparkR i zainicjować sesję SparkR:
+Następnie dodaj `Spark_Home` do ścieżki wyszukiwania dla pakietów języka R. Dodanie go do ścieżki wyszukiwania można używać SparkR i zainicjować sesję SparkR:
 
 ```
 #..setup for use of SparkR  
@@ -108,7 +108,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 ## <a name="preparing-the-weather-data"></a>Przygotowywanie danych pogody
 
-Aby przygotować dane pogody firma Microsoft podzestawu go do kolumn potrzebne do modelowania: 
+Aby przygotować dane pogodzie, podzbiór, go do kolumn wymagane dla modelowania: 
 
 - "Widoczność"
 - "DryBulbCelsius"
@@ -117,17 +117,9 @@ Aby przygotować dane pogody firma Microsoft podzestawu go do kolumn potrzebne d
 - "Prędkość wiatru"
 - "Wysokościomierza"
 
-Następnie możemy dodać kod lotnisku skojarzony z stacji pogody i przekonwertować pomiarów od lokalnego czasu na czas UTC.
+Następnie dodaj kod lotnisku skojarzone z stacji pogody i przekonwertować pomiarów od lokalnego czasu na czas UTC.
 
-Zaczniemy przez utworzenie pliku do mapowania informacji o pogodzie station (WBAN) na lotnisku kodu. Firma Microsoft może uzyskać korelacji ten od uwzględnionych w danych pogody pliku mapowania. Przez mapowanie *CallSign* (na przykład LAX) w pliku danych pogody *pochodzenia* linii lotniczych danych. Jednak firma Microsoft tylko stało się ma innego mapowania dostępnych mapujący *WBAN* do *AirportID* (na przykład 12892 dla LAX) i obejmuje *strefy czasowej* który został zapisany w pliku CSV o nazwie "wban do lotnisku id-tz. CSV", które możemy użyć. Na przykład:
-
-| AirportID | WBAN | Strefa czasowa
-|-----------|------|---------
-| 10685 | 54831 | -6
-| 14871 | 24232 | -8
-| .. | .. | ..
-
-Poniższy kod odczytuje każdego pliku, co godzinę pogody nieprzetworzone dane, podzbiorów do kolumn, które firma Microsoft musi, scala plik mapowania stacji pogodzie, można dostosować daty i godziny pomiarów na czas UTC, a następnie zapisuje nowej wersji pliku:
+Rozpocznij od utworzenia pliku do mapowania informacji o pogodzie station (WBAN) na lotnisku kodu. Poniższy kod odczytuje każdego pliku, co godzinę pogody nieprzetworzone dane, podzbiorów do kolumn, które firma Microsoft musi, scala plik mapowania stacji pogodzie, można dostosować daty i godziny pomiarów na czas UTC, a następnie zapisuje nowej wersji pliku:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time

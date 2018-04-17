@@ -1,24 +1,18 @@
 ---
-title: "Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Zarządzanie Azure Analysis Services przy użyciu programu PowerShell."
-services: analysis-services
-documentationcenter: 
+title: Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+description: Zarządzanie Azure Analysis Services przy użyciu programu PowerShell.
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: reference
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 0e154c7789b38843cd3784daa8cf60d078bdc546
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: c7315835bca446c4cae592f4bdd58a733b203655
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Zarządzanie usług Azure Analysis Services przy użyciu programu PowerShell
 
@@ -29,7 +23,7 @@ Zadania zarządzania serwerem, takie jak tworzenie lub usuwanie serwera, wstrzym
 ## <a name="permissions"></a>Uprawnienia
 Większość zadań programu PowerShell wymaga uprawnień administratora na serwerze usług Analysis Services, którym zarządzasz. Zaplanowane zadania programu PowerShell są operacje instalacji nienadzorowanej. Konta, na którym działa planista musi mieć uprawnienia administratora na serwerze usług Analysis Services. 
 
-Dla operacji serwera za pomocą poleceń cmdlet AzureRm, konta lub konta, na którym działa harmonogramu musi również należeć do roli właściciela zasobu w [based kontroli dostępu (RBAC)](../active-directory/role-based-access-control-what-is.md). 
+Dla operacji serwera za pomocą poleceń cmdlet AzureRm, konta lub konta, na którym działa harmonogramu musi również należeć do roli właściciela zasobu w [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="server-operations"></a>Operacji serwera 
 Polecenia cmdlet systemu Azure Analysis Services są uwzględnione w [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) składnika modułu. Aby zainstalować AzureRM moduły poleceń cmdlet, zobacz [poleceń cmdlet usługi Azure Resource Manager](/powershell/azure/overview) w galerii programu PowerShell.

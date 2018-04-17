@@ -9,17 +9,21 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4294169e89533150cade700fb89e14c4121c4404
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1fe8a52a946b7e70a845e26b80dec94176c346f0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Ruch przychodzący HTTPS w usłudze kontenera platformy Azure (AKS)
 
 Kontroler transfer danych przychodzących jest oprogramowaniem udostępniający zwrotnego serwera proxy, routingu ruchu można konfigurować i zakończenie TLS Kubernetes usług. Kubernetes wejściowych zasobów są używane do konfigurowania tras dla poszczególnych usług Kubernetes i transfer danych przychodzących reguł. Przy użyciu kontrolera wejściowych i transfer danych przychodzących reguł, pojedynczy adres zewnętrzny można kierować ruchem do wielu usług w klastrze Kubernetes.
 
 Ten dokument przeprowadzi Cię przez wdrożenie próbki [kontrolera wejściowych NGINX] [ nginx-ingress] w klastrze usługi kontenera platformy Azure (AKS). Ponadto [— LEGO KUBE] [ kube-lego] projektu służy do automatycznego generowania i skonfigurować [umożliwia szyfrowanie] [ lets-encrypt] certyfikatów. Na koniec kilka aplikacji są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem jednego adresu.
+
+## <a name="prerequisite"></a>Wymagania wstępne
+
+Instalowanie interfejsu wiersza polecenia Helm — Zobacz CLI Helm [dokumentacji] [helm-cli] Aby uzyskać instrukcje instalacji.
 
 ## <a name="install-an-ingress-controller"></a>Instalowanie kontrolera wejściowych
 
@@ -183,6 +187,7 @@ Dowiedz się więcej na temat oprogramowania zostało to pokazane w tym dokumenc
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
+[helm-client]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

@@ -14,13 +14,18 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e8cb5df31a87f72c9947f78c25a41b74399b3727
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b54138c5197d1c5870eed6fd4782e47c6a8b0300
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności działania i dostrajania przewodnik
+
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [Wersja 1 — ogólnie dostępna](data-factory-copy-activity-performance.md)
+> * [Wersja 2 — wersja zapoznawcza](../copy-activity-performance.md)
+
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory, która jest ogólnie dostępna (GA). Jeśli używasz wersji 2 usługi fabryka danych, która jest w wersji zapoznawczej, zobacz [skopiuj dostrajania przewodnik dla fabryki danych w wersji 2 i wydajności działania](../copy-activity-performance.md).
 

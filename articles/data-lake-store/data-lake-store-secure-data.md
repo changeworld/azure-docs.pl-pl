@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5d91d8d00a37422dcead195354447d602b801f9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake Store
 Zabezpieczanie danych w usłudze Azure Data Lake Store jest podejście trzech etapów.  Zarówno opartej na rolach kontrola (RBAC) dostępu i listy kontroli dostępu (ACL) musi być ustawiona do pełnego włączenia dostępu do danych użytkowników i grup zabezpieczeń.
 
-1. Rozpocznij od utworzenia grupy zabezpieczeń w usłudze Azure Active Directory (AAD). Te grupy zabezpieczeń są używane do implementowania kontroli dostępu opartej na rolach (RBAC) w portalu Azure. Aby uzyskać więcej informacji, zobacz [opartej na rolach kontroli dostępu w systemie Microsoft Azure](../active-directory/role-based-access-control-configure.md).
+1. Rozpocznij od utworzenia grupy zabezpieczeń w usłudze Azure Active Directory (AAD). Te grupy zabezpieczeń są używane do implementowania kontroli dostępu opartej na rolach (RBAC) w portalu Azure. Aby uzyskać więcej informacji, zobacz [opartej na rolach kontroli dostępu w systemie Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
 2. Grup zabezpieczeń usługi AAD przypisane do konta usługi Azure Data Lake Store. Kontroluje dostęp do konta usługi Data Lake Store z portalu i zarządzanie operacjami z portalu lub interfejsów API.
 3. Przypisz grup zabezpieczeń usługi AAD dostęp formantu listy (kontroli dostępu ACL) w systemie plików usługi Data Lake Store.
 4. Ponadto można również ustawić zakresu adresów IP dla klientów, którzy mają dostęp do danych w usłudze Data Lake Store.

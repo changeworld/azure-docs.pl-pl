@@ -9,18 +9,16 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 9295a988-bd88-453a-8c8b-55fa103bf39c
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0b34f861b306dc62cbdbf97378a1c370494bbb20
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 78541feda8c82be143f91fdde88eac179cf0b1a5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie systemem Windows klastrów platformy Hadoop w usłudze HDInsight przy użyciu portalu Azure
 
@@ -132,7 +130,7 @@ Instalacja oprogramowania niestandardowych w klastrze za pomocą usługi Podłą
    * **Region**: Lokalizacja platformy Azure. Aby uzyskać listę obsługiwanych lokalizacji platformy Azure, zobacz **Region** lista rozwijana na [cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Dane utworzone**.
    * **System operacyjny**: albo **Windows** lub **Linux**.
-   * **Type**: Hadoop, HBase, Storm, Spark.
+   * **Typ**: Hadoop, HBase, Storm, Spark.
    * **Wersja**. Zobacz [wersji usługi HDInsight](hdinsight-component-versioning.md)
    * **Subskrypcja**: Nazwa subskrypcji.
    * **Identyfikator subskrypcji**.

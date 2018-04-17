@@ -1,25 +1,23 @@
 ---
-title: "Analizowanie danych Twitter przy użyciu platformy Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać gałęzi do analizowania danych Twitter na platformie Hadoop w usłudze HDInsight można znaleźć częstotliwości użycia określonego wyrazu."
+title: Analizowanie danych Twitter przy użyciu platformy Hadoop w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać gałęzi do analizowania danych Twitter na platformie Hadoop w usłudze HDInsight można znaleźć częstotliwości użycia określonego wyrazu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: a5f97dfa084291cefde9bf27b5639926de1bc80e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1d3f00658c836eaba41b7ab3d1c065991a2c12a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analizowanie danych Twitter przy użyciu Hive w usłudze HDInsight
 Społecznościowych witryn sieci Web są jednym z głównych wymusza pobudzenie przyjmowania danych big data. Publiczny interfejsów API dostarczonych przez witryn, takie jak Twitter są użyteczne źródło danych do analizowania i zrozumienie trendów popularnych.
@@ -77,13 +75,13 @@ Pierwszym krokiem do używania uwierzytelniania OAuth jest aby utworzyć nową a
 
 **Aby utworzyć aplikację usługi Twitter**
 
-1. Zaloguj się do [https://apps.twitter.com/](https://apps.twitter.com/). Kliknij przycisk **Zamów teraz** łącza, jeśli nie masz konta w usłudze Twitter.
+1. Zaloguj się do [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kliknij przycisk **Zamów teraz** łącza, jeśli nie masz konta w usłudze Twitter.
 2. Kliknij przycisk **Utwórz nową aplikację**.
 3. Wprowadź **nazwa**, **opis**, **witryny sieci Web**. Można uzupełnić adres URL dla **witryny sieci Web** pola. W poniższej tabeli przedstawiono niektóre przykładowe wartości do użycia:
 
    | Pole | Wartość |
    | --- | --- |
-   |  Nazwa |MyHDInsightApp |
+   |  Name (Nazwa) |MyHDInsightApp |
    |  Opis |MyHDInsightApp |
    |  Witryna sieci Web |http://www.myhdinsightapp.com |
 4. Sprawdź **tak, zgadzam się**, a następnie kliknij przycisk **tworzenie aplikacji Twitter**.
@@ -539,7 +537,7 @@ Write-Host "==================================" -ForegroundColor Green
 
 Po wyniki analizy zostały umieszczone w magazynie obiektów Blob platformy Azure, można wyeksportować dane do serwera SQL/bazy danych Azure SQL, wyeksportować dane do programu Excel za pomocą dodatku Power Query lub połączyć aplikację z danych za pomocą sterownika ODBC Hive. Aby uzyskać więcej informacji, zobacz [Sqoop użycia z usługą HDInsight][hdinsight-use-sqoop], [analizowanie danych opóźnienie transmitowane przy użyciu usługi HDInsight][hdinsight-analyze-flight-delay-data], [łączenie programu Excel do usługi HDInsight za pomocą dodatku Power Query][hdinsight-power-query], i [łączenie programu Excel do usługi HDInsight za pomocą sterownika Microsoft Hive ODBC][hdinsight-hive-odbc].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku zaobserwowano sposób przekształcania zestaw danych JSON bez struktury w strukturze tabeli Hive zapytania Eksplorowanie i analizowanie danych z serwisem Twitter, za pomocą usługi HDInsight w systemie Azure. Aby dowiedzieć się więcej, zobacz:
 
 * [Rozpoczynanie pracy z usługą HDInsight][hdinsight-get-started]

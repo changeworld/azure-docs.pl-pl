@@ -3,7 +3,7 @@ title: Dystrybucja danych globalnie z bazy danych Azure rozwiązania Cosmos | Do
 description: Więcej informacji na temat skali planety — replikacja geograficzna, trybu failover i odzyskiwanie danych za pomocą globalnej bazy danych z bazy danych z rozwiązania Cosmos platformy Azure, usługa globalnie rozproszone, mutli modelu bazy danych.
 services: cosmos-db
 documentationcenter: ''
-author: arramac
+author: SnehaGunda
 manager: kfile
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2018
-ms.author: arramac
-ms.openlocfilehash: 588eb4df9555f20fe4193e8ae34ad51c17921db2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sngun
+ms.openlocfilehash: 54eac2f3a95ecd37af357c933ba03f6c59bb241f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Sposób rozpowszechniania danych globalnie z bazy danych Azure rozwiązania Cosmos
 Azure to powszechny — ma wpływu globalnych w regionach geograficznych 30 + i jest stale rozszerzanie. Z jego obecność na całym świecie jeden zróżnicowanych funkcji, które platforma Azure oferuje deweloperom jego jest możliwość tworzenia, wdrażania i łatwo Zarządzaj aplikacjami globalnie rozproszone. 

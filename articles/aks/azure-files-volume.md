@@ -1,6 +1,6 @@
 ---
-title: "Użyj plików na platformę Azure z AKS"
-description: "Używać dysków Azure AKS"
+title: Użyj plików na platformę Azure z AKS
+description: Używać dysków Azure AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1def417f97a94fa0770b99606cd3a68189d1d51b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04380e5e9e0f1f9b0c88fdba8d21b3e7e8e8a358
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="volumes-with-azure-files"></a>Woluminy zawierające pliki Azure
 
@@ -21,7 +21,7 @@ Aplikacje kontenera często muszą uzyskać dostęp do utrwalenia danych w wolum
 
 Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [woluminów Kubernetes][kubernetes-volumes].
 
-## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików na platformę Azure
+## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
 
 Przed użyciem udział plików Azure jako wolumin Kubernetes, należy utworzyć konto usługi Azure Storage i udziału plików. Poniższy skrypt może służyć do wykonania tych zadań. Zwróć uwagę, lub zaktualizuj wartości parametrów, niektóre z nich są potrzebne podczas tworzenia woluminu Kubernetes.
 
@@ -66,7 +66,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-file-share-as-volume"></a>Instalowanie udziału plików jako wolumin
 
-Można zainstalować na udział plików Azure w sieci pod przez skonfigurowanie woluminu w jego specyfikację. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartość. Aktualizacja `aksshare` nazwa nadana plików Azure udostępnianie.
+Zainstaluj na udział plików Azure w sieci pod przez skonfigurowanie woluminu w jego specyfikację. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartość. Aktualizacja `aksshare` nazwa nadana plików Azure udostępnianie.
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ Umożliwia utworzenie pod kubectl.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Masz teraz kontenera uruchomiony z udziału plików Azure zainstalowany w `/mnt/azure` katalogu. Widać instalacji podczas sprawdzania z pod za pośrednictwem woluminu `kubectl describe pod azure-files-pod`.
+Masz teraz kontenera uruchomiony z udziału plików Azure zainstalowany w `/mnt/azure` katalogu.  Widać instalacji podczas sprawdzania z pod za pośrednictwem woluminu `kubectl describe pod azure-files-pod`.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,12 +1,12 @@
 ---
-title: "Słownik platformy Azure — słownik platformy Azure | Dokumentacja firmy Microsoft"
-description: "Słownik Azure umożliwia zrozumieć terminologii chmurze na platformie Azure. To krótkie słownika Azure definicje typowe terminy w chmurze dla platformy Azure."
-keywords: "Słownik platformy Azure, terminologii chmury, słownik platformy Azure, definicje terminów, warunki chmury"
+title: Słownik platformy Azure — słownik platformy Azure | Dokumentacja firmy Microsoft
+description: Słownik Azure umożliwia zrozumieć terminologii chmurze na platformie Azure. To krótkie słownika Azure definicje typowe terminy w chmurze dla platformy Azure.
+keywords: Słownik platformy Azure, terminologii chmury, słownik platformy Azure, definicje terminów, warunki chmury
 services: na
 documentationcenter: na
 author: MonicaRush
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d7ac12f7-24b5-4bcd-9e4d-3d76fbd8d297
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 953320734c1601c411144bd7a6496716a65e452e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik Microsoft Azure: słownik terminów w chmurze na platformie Azure
 
@@ -111,7 +111,7 @@ Zobacz [Omówienie usługi Azure Resource Manager](azure-resource-manager/resour
 
 ## <a name="role"></a>rola
 Sposób kontrolowania dostępu, które mogą być przypisane do użytkowników, grup i usług. Role są w stanie wykonać akcje, takie jak tworzenie, zarządzanie i odczytu zasobów platformy Azure.  
-Zobacz [RBAC: role wbudowane](active-directory/role-based-access-built-in-roles.md)
+Zobacz [RBAC: role wbudowane](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>Umowa dotycząca poziomu usług (SLA)
 Umowa opisujący zobowiązania firmy Microsoft dla przestojów i łączności. Każda usługa Azure ma określonych umowy SLA.  

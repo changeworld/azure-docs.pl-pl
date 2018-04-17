@@ -1,8 +1,8 @@
 ---
-title: "Używanie widoków Ambari do pracy z Hive w usłudze Azure HDInsight (Hadoop) - | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Hive View z przeglądarki sieci web umożliwia wysyłanie zapytań programu Hive. Widok Hive jest częścią interfejsie użytkownika sieci Web Ambari, które zostały dostarczone z klastrem usługi HDInsight opartej na systemie Linux."
+title: Używanie widoków Ambari do pracy z Hive w usłudze Azure HDInsight (Hadoop) - | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Hive View z przeglądarki sieci web umożliwia wysyłanie zapytań programu Hive. Widok Hive jest częścią interfejsie użytkownika sieci Web Ambari, które zostały dostarczone z klastrem usługi HDInsight opartej na systemie Linux.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 1abe9104-f4b2-41b9-9161-abbc43de8294
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: larryfr
-ms.openlocfilehash: af5fe44b611e8ff9d93aba8a30c71213c452aff9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 78fee8e3b3e4c0e0c02fa5e1c85bdef58c9cd543
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Użyj widoku Hive narzędzia Ambari z platformą Hadoop w usłudze HDInsight
 
@@ -108,7 +106,7 @@ Aby wyświetlić wizualizacji planu zapytania, zaznacz **wyjaśnić Visual** kar
 
 **Wyjaśnić Visual** widoku zapytania mogą być pomocne w opis przepływu złożonych zapytań. Odpowiednika tekstową tego widoku można wyświetlić za pomocą **Wyjaśnij** przycisk w edytorze zapytań.
 
-### <a name="tez-ui"></a>Tez UI
+### <a name="tez-ui"></a>Interfejs użytkownika aplikacji tez
 
 Aby wyświetlić interfejs użytkownika aplikacji Tez dla zapytania, zaznacz **Tez** kartę poniżej arkusza.
 
@@ -158,7 +156,7 @@ Na przykład, jeśli zdefiniowano UDF z następującymi właściwościami:
 
 * Nazwa funkcji zdefiniowanej przez użytkownika: myawesomeudf
 
-* UDF class name: com.myudfs.Awesome
+* Nazwa klasy funkcji zdefiniowanej przez użytkownika: com.myudfs.Awesome
 
 Przy użyciu **Wstaw funkcje UDF** przycisk zawiera wpis o nazwie **myudfs**, z innej listy rozwijanej dla każdej funkcji zdefiniowanej przez użytkownika zdefiniowane dla tego zasobu. W takim przypadku jest **myawesomeudf**. Wybranie tego wpisu dodaje następujące na początku zapytania:
 

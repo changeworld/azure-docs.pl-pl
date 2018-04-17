@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4bdbf48030dda18e6698a7731989ec2de2319b35
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowej maszyny wirtualnej w wersji 2
 Uaktualnienie kopii zapasowej stosu V2 maszyny wirtualnej (VM) zapewnia następujące udoskonalenia:
@@ -49,7 +49,9 @@ Domyślnie migawki zostaną zachowane na siedem dni. Dzięki temu przywracania m
 * To uaktualnienie jednokierunkową stos kopii zapasowej maszyny Wirtualnej. Tak wszystkie kopie zapasowe w przyszłości zostaną umieszczone w tym przepływie. Ponieważ **jest włączona na poziomie subskrypcji, wszystkie maszyny wirtualne przechodzą na ten przepływ**. Wszystkie nowe informacje będą funkcji będą oparte na tym samym stosie. Możliwość kontrolowania, które to na poziomie zasad pochodzi w przyszłych wersjach. 
 * Dla maszyn wirtualnych z dysków w warstwie premium, podczas pierwszej kopii zapasowej upewnij się, miejsca do magazynowania odpowiednikiem rozmiar maszyny wirtualnej jest dostępna w ramach konta magazynu, aż do zakończenia pierwszej kopii zapasowej. 
 * Ponieważ migawki są przechowywane lokalnie do zwiększania Tworzenie punktu odzyskiwania, a także aby przyspieszyć przywracania, zobaczysz kosztów magazynowania odpowiadający migawek w ciągu siedmiu dni.
+* Przyrostowe migawki są przechowywane jako stronicowych obiektów blob. Wszystkich klientów przy użyciu niezarządzanych dysków zostanie naliczona opłata za migawki 7 dni przechowywane na koncie magazynu lokalnego klienta. Zgodnie z bieżącym modelu cenowego nie ma żadnych kosztów dla klientów na dyskach zarządzanych.
 * Jeśli przeprowadzasz przywracania z migawki punktu odzyskiwania dla maszyny Wirtualnej — wersja Premium, zobaczysz lokalizacji magazyn tymczasowy używany, gdy maszyna wirtualna jest tworzony jako część przywracania. 
+* W przypadku kont magazynu premium migawki poświęcony natychmiastowe przywrócenie zajmie ilość 10 TB miejsca przydzielonego na koncie magazynu premium.
 
 ## <a name="how-to-upgrade"></a>Jak uaktualnić?
 ### <a name="the-azure-portal"></a>Portalu Azure

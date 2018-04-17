@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu w przypadku wdrożeń hybrydowymi i w chmurze w usłudze Azure AD
 
@@ -154,9 +154,9 @@ Jeśli nie zostało to jeszcze zrobione, Utwórz oddzielne konta dla użytkownik
 
 Upewnij się, że wszyscy użytkownicy zalogowaniem się do swojego konta z uprawnieniami administracyjnymi i zmienić swoje hasła co najmniej raz w ciągu ostatnich 90 dni. Upewnij się również, że miały który kont udostępnionych w wielu użytkowników, którzy znać hasło zostało niedawno zmienione haseł.
 
-#### <a name="turn-on-password-synchronization"></a>Włączanie synchronizacji haseł
+#### <a name="turn-on-password-hash-synchronization"></a>Włączanie synchronizacji skrótu hasła
 
-Synchronizacja haseł to funkcja używane do synchronizowania skrótów skrótów haseł użytkowników z lokalnego wystąpienia usługi Active Directory na platformie Azure opartej na chmurze wystąpienia usługi AD. Nawet jeśli zdecydujesz się używać federacyjnego z usługi Active Directory Federation Services (AD FS) lub innych dostawców tożsamości, możesz opcjonalnie skonfigurować synchronizacji haseł na nazwę kopii zapasowej w przypadku infrastruktury lokalnej, takich jak usługi AD lub serwerów usług ADFS nie powieść lub staje się tymczasowo niedostępna. Dzięki temu użytkownicy mogą logować się do usługi przy użyciu tego samego hasła, używanego do logowania się w ich lokalnym wystąpieniem usługi AD. Ponadto umożliwia ochronę tożsamości do wykrywania przejęcie poświadczeń przez porównanie tych skrótów haseł z hasłami znane naruszenia, jeśli użytkownik ma wykorzystać ich tego samego adresu e-mail i hasło na inne usługi nie jest połączony z usługą Azure AD.  Aby uzyskać więcej informacji, zobacz [Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
+Synchronizacja skrótów haseł to funkcja używane do synchronizowania skrótów skrótów haseł użytkowników z lokalnego wystąpienia usługi Active Directory na platformie Azure opartej na chmurze wystąpienia usługi AD. Nawet jeśli zdecydujesz się używać federacyjnego z usługi Active Directory Federation Services (AD FS) lub innych dostawców tożsamości, możesz opcjonalnie skonfigurować synchronizacji skrótu hasła jako kopia zapasowa w przypadku infrastruktury lokalnej, takich jak usługi AD lub serwerów usług ADFS nie powieść lub staje się tymczasowo niedostępna. Dzięki temu użytkownicy mogą logować się do usługi przy użyciu tego samego hasła, używanego do logowania się w ich lokalnym wystąpieniem usługi AD. Ponadto umożliwia ochronę tożsamości do wykrywania przejęcie poświadczeń przez porównanie tych skrótów haseł z hasłami znane naruszenia, jeśli użytkownik ma wykorzystać ich tego samego adresu e-mail i hasło na inne usługi nie jest połączony z usługą Azure AD.  Aby uzyskać więcej informacji, zobacz [Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Wymagane uwierzytelnianie wieloskładnikowe (MFA) dla użytkowników w wszystkich ról uprzywilejowanych, a także narażonych użytkowników
 
@@ -282,11 +282,11 @@ Jeśli w usłudze Azure Active Directory jest połączony z lokalnej usługi Act
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Spis uprzywilejowanych kontach w hostowanej maszyny wirtualne
 
-W większości przypadków nie należy udzielić nieograniczonych uprawnień użytkowników do subskrypcji platformy Azure lub zasobów. Role administratora usługi Azure AD umożliwia rozdzielenie obowiązków w organizacji i udzielić tylko takiego dostępu użytkowników, którzy potrzebują do wykonania określonego zadania. Na przykład użyć ról administratora usługi Azure AD pozwala jeden administrator zarządzać tylko maszyny wirtualne w ramach subskrypcji, gdy inny można zarządzać baz danych w ramach tej samej subskrypcji. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](role-based-access-control-what-is.md).
+W większości przypadków nie należy udzielić nieograniczonych uprawnień użytkowników do subskrypcji platformy Azure lub zasobów. Role administratora usługi Azure AD umożliwia rozdzielenie obowiązków w organizacji i udzielić tylko takiego dostępu użytkowników, którzy potrzebują do wykonania określonego zadania. Na przykład użyć ról administratora usługi Azure AD pozwala jeden administrator zarządzać tylko maszyny wirtualne w ramach subskrypcji, gdy inny można zarządzać baz danych w ramach tej samej subskrypcji. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Wdrożenie usługi PIM dla ról administratora usługi Azure AD
 
-Umożliwia zarządzanie tożsamościami uprzywilejowanymi z ról administratora usługi Azure AD zarządzanie, sterowanie i monitorowanie dostępu do zasobów platformy Azure. Przy użyciu usługi PIM chroni kont uprzywilejowanych przed atakami przez co zmniejsza czas ekspozycji uprawnień i zwiększając wydajność sieci wgląd w ich za pośrednictwem raporty i alerty. Aby uzyskać więcej informacji, zobacz [Zarządzanie RBAC dostęp do zasobów platformy Azure z Privileged Identity Management](pim-azure-resource.md).
+Umożliwia zarządzanie tożsamościami uprzywilejowanymi z ról administratora usługi Azure AD zarządzanie, sterowanie i monitorowanie dostępu do zasobów platformy Azure. Przy użyciu usługi PIM chroni kont uprzywilejowanych przed atakami przez co zmniejsza czas ekspozycji uprawnień i zwiększając wydajność sieci wgląd w ich za pośrednictwem raporty i alerty. Aby uzyskać więcej informacji, zobacz [Zarządzanie RBAC dostęp do zasobów platformy Azure z Privileged Identity Management](../role-based-access-control/pim-azure-resource.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Umożliwia wysłanie odpowiednich integracji dzienników Azure dzienniki platformy Azure z systemów SIEM 
 

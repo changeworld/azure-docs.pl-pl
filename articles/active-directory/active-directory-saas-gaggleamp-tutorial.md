@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z GaggleAMP | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i GaggleAMP."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i GaggleAMP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: ffa6a3d6cc1377277591de63c7224b23796b53d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f68fdd84acd95ccd2a400e02303247f246d876b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Samouczek: Integracji Azure Active Directory z GaggleAMP
 
@@ -36,7 +36,7 @@ Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w 
 Aby skonfigurować integrację usługi Azure AD z GaggleAMP, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- GaggleAMP jednokrotnego włączone subskrypcji
+- GaggleAMP logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
@@ -44,7 +44,7 @@ Aby skonfigurować integrację usługi Azure AD z GaggleAMP, potrzebne są nast�
 Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 - Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
@@ -106,44 +106,48 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
  
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_samlbase.png)
 
-3. Na **GaggleAMP domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **GaggleAMP domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url.png)
 
-     W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.gaggleamp.com`
+     W **identyfikator** tekstowym, wpisz adres URL: `https://accounts.gaggleamp.com/auth/saml/callback`
 
-    > [!NOTE] 
-    > Wartość nie jest prawdziwe. Zaktualizuj tę wartość z adresem URL logowania rzeczywistych. Skontaktuj się z [zespołem pomocy technicznej klienta GaggleAMP](mailto:sales@gaggleamp.com) można uzyskać wartość. 
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url1.png)
+
+     W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://gaggleamp.com/i/<customerid>`
+
+    > [!NOTE]
+    > Wartość adres URL logowania nie jest prawdziwe. Zaktualizuj tę wartość przy rzeczywisty adres URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta GaggleAMP](mailto:sales@gaggleamp.com) aby zyskać tę wartość.
  
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+5. Na **certyfikat podpisywania SAML** kliknij **certyfikatu (Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **zapisać** przycisku.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_400.png)
 
-6. Na **konfiguracji GaggleAMP** , kliknij przycisk **skonfigurować GaggleAMP** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+7. Na **konfiguracji GaggleAMP** , kliknij przycisk **skonfigurować GaggleAMP** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_configure.png) 
 
-7. W innym wystąpieniu przeglądarki, przejdź do strony logowania jednokrotnego SAML utworzone przez Gaggle obsługuje team (na przykład: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
+8. W innym wystąpieniu przeglądarki, przejdź do strony logowania jednokrotnego SAML utworzone przez Gaggle obsługuje team (na przykład: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
 
-8. W Twojej **logowania jednokrotnego SAML** wykonaj następujące czynności:  
+9. W Twojej **logowania jednokrotnego SAML** wykonaj następujące czynności:  
    
-    ![GaggleAMP rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png) 
- 
-    a. W **wystawcy dostawcy tożsamości** pole tekstowe, Wklej wartość **adres URL wystawcy** którego została skopiowana z portalu Azure. 
- 
-    b. W **tożsamości dostawcy pojedynczy adres URL logowania** pole tekstowe, Wklej wartość **pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure. 
+    ![GaggleAMP rejestracji jednokrotnej](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
-    c. Kliknij przycisk **Zapisz**      
-
-    d. Wyślij **certyfikatu (Base64)** z certyfikatów z [zespołem pomocy technicznej GaggleAMP](mailto:sales@gaggleamp.com).
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Wybierz **innych** formularza **dostawcy tożsamości** menu rozwijanym.
+    
+    b. W **wystawcy dostawcy tożsamości** pole tekstowe, Wklej wartość **adres URL wystawcy** którego została skopiowana z portalu Azure.
+    
+    c. W **tożsamości dostawcy pojedynczy adres URL logowania** pole tekstowe, Wklej wartość **pojedynczy znak na adres URL usługi** którego została skopiowana z portalu Azure.
+    
+    d. Otwórz z pobranego **Certificate(Base64)** plików w programie Notatnik, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu X.509** pola tekstowego.
+    
+    e. Kliknij pozycję **Zapisz**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -218,12 +222,10 @@ Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowani
 
 Po kliknięciu kafelka GaggleAMP w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji GaggleAMP.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 
@@ -238,4 +240,3 @@ Po kliknięciu kafelka GaggleAMP w panelu dostępu użytkownik powinien pobrać 
 [201]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_203.png
-

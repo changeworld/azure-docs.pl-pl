@@ -4,7 +4,7 @@ description: Dowiedz się wszystkiego o interfejsu API SQL .NET Core i zestawu S
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: f899b314-26ac-4ddb-86b2-bfdf05c2abf2
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b26a06f1dfba6124254f42c216891596b118d4d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 447c07a5a5e75c5f70a2310c596d52ce439f6033
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure rozwiązania Cosmos DB .NET Core SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -190,7 +190,7 @@ Jeśli masz pytania dotyczące tego zestawu SDK, opublikuj wpis na [StackOverflo
 | [1.1.1](#1.1.1) |14 marca 2017 r. |--- |
 | [1.1.0](#1.1.0) |16 lutego 2017 r. |--- |
 | [1.0.0](#1.0.0) |21 grudnia 2016 r. |--- |
-| [0.1.0-preview](#0.1.0-preview) |15 listopada 2016 r. |31 grudnia 2016 r. |
+| [0.1.0-Preview](#0.1.0-preview) |15 listopada 2016 r. |31 grudnia 2016 r. |
 
 ## <a name="see-also"></a>Zobacz też
 Aby dowiedzieć się więcej na temat rozwiązania Cosmos bazy danych, zobacz [bazy danych programu Microsoft Azure rozwiązania Cosmos](https://azure.microsoft.com/services/cosmos-db/) stronę usługi. 

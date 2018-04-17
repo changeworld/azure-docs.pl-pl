@@ -1,25 +1,18 @@
 ---
-title: "Odświeżanie asynchroniczne dla modeli usług Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak kod Odświeżanie asynchroniczne przy użyciu interfejsu API REST."
-services: analysis-services
-documentationcenter: 
+title: Odświeżanie asynchroniczne dla modeli usług Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak kod Odświeżanie asynchroniczne przy użyciu interfejsu API REST.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: minewiskan
+ms.openlocfilehash: 74ef8ae45215badf2b5a83cc2d82c3db1eef8980
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne przy użyciu interfejsu API REST
 Przy użyciu języka programowania, który obsługuje wywołania REST, można wykonywać operacje asynchroniczne odświeżanie danych w sieci modele tabelaryczne usług Azure Analysis Services. W tym synchronizacji repliki tylko do odczytu dla zapytania skalowania w poziomie. 
@@ -107,7 +100,7 @@ Określanie parametrów nie jest wymagane. Wartość domyślna została zastosow
 |Typ     |  wyliczenia       |  Typ przetwarzanie ma zostać wykonane. Typy są zgodne z TMSL [Odśwież polecenia](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typy: pełne, clearValues, obliczenia tylko dane automatyczne, dodawanie i defragmentacji.       |   Automatyczne      |
 |CommitMode     |  wyliczenia       |  Określa, czy obiekty zostaną również zatwierdzone w partiach lub po zakończeniu. Tryby obejmują: partialBatch transakcyjna, domyślnie.  |  transakcyjne       |
 |MaxParallelism     |   Int      |  Ta wartość określa maksymalną liczbę wątków, na którym do uruchomienia polecenia przetwarzania równoległego. Ta wartość jest wyrównywana z właściwości MaxParallelism, które można ustawić w TMSL [sekwencji polecenia](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
-|RetryCount    |    Int     |   Wskazuje, ile razy ponowi operację przed niepowodzeniem.      |     0    |
+|retryCount    |    Int     |   Wskazuje, ile razy ponowi operację przed niepowodzeniem.      |     0    |
 |Obiekty     |   Tablica      |   Tablica obiektów do przetworzenia. Każdy obiekt obejmuje: "table" podczas przetwarzania całą tabelę lub "table" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, jest odświeżany całego modelu. |   Proces całego modelu      |
 
 CommitMode jest równa partialBatch. Jest używany podczas operacją ładowania początkowego dużych zestawów danych może potrwać do godziny. W przypadku niepowodzenia operacji odświeżania po pomyślnie zatwierdzania jednego lub więcej instancji pomyślnie zatwierdzony partii pozostaną zatwierdzone (go nie cofnie pomyślnie zatwierdzony partie).

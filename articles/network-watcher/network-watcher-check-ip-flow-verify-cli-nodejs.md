@@ -1,11 +1,11 @@
 ---
-title: "Weryfikacja ruchu Azure sieci obserwatora IP przepływ weryfikacji - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób sprawdzania, jeśli ruch do i z maszyny wirtualnej jest dozwolona lub odmowa przy użyciu wiersza polecenia platformy Azure"
+title: Weryfikacja ruchu Azure sieci obserwatora IP przepływ weryfikacji - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób sprawdzania, jeśli ruch do i z maszyny wirtualnej jest dozwolona lub odmowa przy użyciu wiersza polecenia platformy Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 92b857ed-c834-4c1b-8ee9-538e7ae7391d
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f1355cd861722848211277250155c434da1e774d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8681118e55d8ddddf17ebac3bae63486446c70e9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Sprawdź, czy ruch jest dozwolony lub odmowa dostępu do lub z maszyny Wirtualnej z przepływem Sprawdź IP składnik Azure obserwatora sieciowego
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-check-ip-flow-verify-portal.md)
+> - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 > - [Program PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 > - [Interfejs wiersza polecenia 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 > - [Interfejs wiersza polecenia 2.0](network-watcher-check-ip-flow-verify-cli.md)
@@ -53,7 +53,7 @@ azure vm show -g resourceGroupName -n virtualMachineName
 
 ## <a name="get-the-nics"></a>Pobierz karty interfejsu Sieciowego
 
-Adres IP karty sieciowej na maszynie wirtualnej jest potrzebne w tym przykładzie Pobieramy kart sieciowych w maszynie wirtualnej. Jeśli znasz już adres IP, który ma zostać przetestowana na maszynie wirtualnej, można pominąć ten krok.
+Wymagany jest adres IP karty sieciowej na maszynie wirtualnej. Pobrać kart sieciowych maszyny wirtualnej przy użyciu polecenia, który jest zgodny. Jeśli znasz już adres IP, który ma zostać przetestowana na maszynie wirtualnej, można pominąć ten krok.
 
 ```
 azure network nic show -g resourceGroupName -n nicName
@@ -61,7 +61,7 @@ azure network nic show -g resourceGroupName -n nicName
 
 ## <a name="run-ip-flow-verify"></a>Sprawdź uruchomienia przepływu IP
 
-Teraz, gdy mamy informacje potrzebne do uruchomienia polecenia cmdlet, możemy uruchomić `network watcher ip-flow-verify` polecenia cmdlet, aby przetestować ruchu. W tym przykładzie użyto pierwszego adresu IP na pierwszej karcie sieciowej.
+Uruchom `network watcher ip-flow-verify` polecenia cmdlet, aby przetestować ruchu. W tym przykładzie używany jest pierwszy adres IP z pierwszej karty Sieciowej:
 
 ```
 azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName -t targetResourceId -d directionInboundorOutbound -p protocolTCPorUDP -o localPort -m remotePort -l localIpAddr -r remoteIpAddr
@@ -82,7 +82,7 @@ info:    network watcher ip-flow-verify command OK
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/virtual-network-manage-nsg-arm-portal.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń zdefiniowane.
+Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń zdefiniowane.
 
 Dowiedz się, jak inspekcji ustawienia grupy NSG, odwiedzając [inspekcji sieci zabezpieczeń grupy (NSG) z obserwatora sieciowego](network-watcher-nsg-auditing-powershell.md).
 

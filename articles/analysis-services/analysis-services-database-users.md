@@ -1,25 +1,18 @@
 ---
-title: "Zarządzanie ról bazy danych i użytkowników w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zarządzać ról bazy danych i użytkowników na serwerze usług Analysis Services na platformie Azure."
-services: analysis-services
-documentationcenter: 
+title: Zarządzanie ról bazy danych i użytkowników w usłudze Azure Analysis Services | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać ról bazy danych i użytkowników na serwerze usług Analysis Services na platformie Azure.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 38bad0641d97028b435e05458d597bda378a8363
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3c35fb1ee70544b8b01bbadaf72ee38145179b27
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie ról bazy danych i użytkowników
 

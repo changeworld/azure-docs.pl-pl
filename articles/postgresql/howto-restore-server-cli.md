@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 8ca129640db862f6031325279cc98c1e08dcef59
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5c5cc1fdbe48fb93eea204e4619038052e685f1f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwera w bazie danych Azure PostgreSQL przy użyciu wiersza polecenia platformy Azure
 
@@ -52,7 +52,7 @@ Zwracany kod JSON powinien zawierać następujące informacje:
 }
 ```
 
-Jeśli wersja 0.0.5 nie zostanie zwrócone, uruchom następujące polecenie, aby zaktualizować rozszerzenia: 
+Jeśli nie jest zwracana wersja 0.0.5, uruchom następujące polecenie, aby zaktualizować rozszerzenie: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -114,6 +114,10 @@ Skonfigurowanie serwera na potrzeby geograficznie nadmiarowy kopii zapasowych mo
 
 Aby utworzyć serwer przy użyciu kopii zapasowej z magazynu geograficznie nadmiarowego, użyj interfejsu wiersza polecenia Azure `az postgres server georestore` polecenia.
 
+> [!NOTE]
+> Podczas tworzenia serwera nie może być dostępne od razu do przywracania geo. Może upłynąć kilka godzin metadane potrzebne do wypełnienia.
+>
+
 Do przywrócenia geograficznie serwera, w wierszu polecenia interfejsu wiersza polecenia Azure wprowadź następujące polecenie:
 
 ```azurecli-interactive
@@ -143,6 +147,6 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 Po ukończeniu procesu przywracania, zlokalizuj nowy serwer i sprawdź, czy dane są przywracane zgodnie z oczekiwaniami.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o usłudze [kopii zapasowych](concepts-backup.md).
 - Dowiedz się więcej o [ciągłość prowadzenia działalności biznesowej](concepts-business-continuity.md) opcje.

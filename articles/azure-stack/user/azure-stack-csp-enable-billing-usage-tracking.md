@@ -1,11 +1,11 @@
 ---
-title: "Włącz dostawcy usług w chmurze do zarządzania subskrypcją Azure stosu | Dokumentacja firmy Microsoft"
-description: "Włączenie subskrypcji Azure stosu dostępu do dostawcy usług."
+title: Włącz dostawcy usług w chmurze do zarządzania subskrypcją Azure stosu | Dokumentacja firmy Microsoft
+description: Włączenie subskrypcji Azure stosu dostępu do dostawcy usług.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 4bc5644425aa11fb210d81095e4166baefc6432e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 26ba68be6d4932da77befaf7c968525393c0a033
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>Włącz dostawcy usług w chmurze do zarządzania subskrypcją Azure stosu
 
@@ -41,7 +41,7 @@ Jeśli używasz stosu Azure z dostawcy usług chmury (CSP), dostęp do zasobów 
 Dodawanie dostawcy usług Kryptograficznych jako właściciela do subskrypcji. 
 
 1. Dodaj do dostawcy usług Kryptograficznych jako Gość. przy użyciu roli właściciela do katalogu dzierżawcy.  Aby uzyskać instrukcje dotyczące dodawania użytkownika, zobacz [Dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)
-2. Dodaj rolę właściciela na użytkownika gościa dostawcy usług Kryptograficznych. Aby uzyskać instrukcje dotyczące dodawania użytkownika dostawcy usług Kryptograficznych do subskrypcji, zobacz [Use Role-Based kontroli dostępu, aby zarządzać dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
+2. Dodaj rolę właściciela na użytkownika gościa dostawcy usług Kryptograficznych. Aby uzyskać instrukcje dotyczące dodawania użytkownika dostawcy usług Kryptograficznych do subskrypcji, zobacz [Use Role-Based kontroli dostępu, aby zarządzać dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 3. Dostawca usług Kryptograficznych, spowoduje to utworzenie lokalnego subskrypcji Azure stosu dla Ciebie.
 4. Wszystko jest gotowe rozpocząć korzystanie z usługi Azure stosu.
 5. Dostawca usług Kryptograficznych należy następnie utwórz zasób w ramach subskrypcji, aby sprawdzić, czy mogą zarządzać zasobami. 

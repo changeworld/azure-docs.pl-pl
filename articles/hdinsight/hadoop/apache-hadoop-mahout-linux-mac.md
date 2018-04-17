@@ -1,8 +1,8 @@
 ---
-title: "Generowanie zaleceń przy użyciu Mahout i HDInsight (SSH) - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać biblioteki uczenia maszynowego Apache Mahout do generowania zaleceń filmu z usługą HDInsight (Hadoop)."
+title: Generowanie zaleceń przy użyciu Mahout i HDInsight (SSH) - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać biblioteki uczenia maszynowego Apache Mahout do generowania zaleceń filmu z usługą HDInsight (Hadoop).
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: c78ec37c-9a8c-4bb6-9e38-0bdb9e89fbd7
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 4674008523704b9b1fb86de8606641f6140e2910
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 357df033c4d3fd0da84ea595d68802546aee3e9a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>Generowanie zaleceń filmu przy użyciu Apache Mahout z opartą na systemie Linux platformą Hadoop w HDInsight (SSH)
 
@@ -49,9 +47,9 @@ Jedną z funkcji, które są udostępniane przez Mahout jest aparatem zalecenia.
 
 Poniższy przepływ pracy jest uproszczony przykład korzystający z danych film:
 
-* **Wystąpienie wspólnej**: Jan, Alicja i Robert wszystkie zbędne *słów*, *ponownie ataki Empire*, i *powrotu Jedi*. Mahout Określa, że użytkownicy, którzy także, takich jak jeden z tych filmów, takich jak pozostałe dwa.
+* **wystąpienie wspólnej**: Jan, Alicja i Robert wszystkie zbędne *słów*, *ponownie ataki Empire*, i *powrotu Jedi*. Mahout Określa, że użytkownicy, którzy także, takich jak jeden z tych filmów, takich jak pozostałe dwa.
 
-* **Wystąpienie wspólnej**: Robert i Alicja również zbędne *zagrożenie fantom*, *ataku klonów*, i *zemsty Sith*. Mahout Określa, że użytkownicy, którzy także zbędne poprzednie trzy filmów, takich jak te trzy filmów.
+* **wystąpienie wspólnej**: Robert i Alicja również zbędne *zagrożenie fantom*, *ataku klonów*, i *zemsty Sith*. Mahout Określa, że użytkownicy, którzy także zbędne poprzednie trzy filmów, takich jak te trzy filmów.
 
 * **Zalecenie podobieństwa**: ponieważ Jan zbędne pierwsze trzy filmów, Mahout analizuje filmy tej osoby z podobne preferencje zbędne, ale Jan nie ma obserwowane (zbędne/klasyfikowane). W takim przypadku zaleca Mahout *zagrożenie fantom*, *ataku klonów*, i *zemsty Sith*.
 

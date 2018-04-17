@@ -1,24 +1,23 @@
 ---
-title: "Jak używać magazynu tabel platformy Azure i bazy danych Azure rozwiązania Cosmos z C++ | Dokumentacja firmy Microsoft"
-description: "Przechowywanie danych strukturalnych w chmurze za pomocą Magazynu tabel Azure, magazyn danych NoSQL."
+title: Jak używać magazynu tabel platformy Azure i bazy danych Azure rozwiązania Cosmos z C++ | Dokumentacja firmy Microsoft
+description: Przechowywanie danych strukturalnych w chmurze za pomocą Magazynu tabel Azure, magazyn danych NoSQL.
 services: cosmos-db
 documentationcenter: .net
-author: mimig1
-manager: jahogg
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: f191f308-e4b2-4de9-85cb-551b82b1ea7c
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
-ms.author: mimig
-ms.openlocfilehash: 69d56c79320931419ff8d71373ec578af2dec921
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: 60c419a45e795d5968b58fbb6b469d06750a0679
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak używać magazynu tabel Azure i interfejsu API Azure rozwiązania Cosmos DB tabeli z C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -30,11 +29,15 @@ W tym przewodniku opisano sposób wykonywania typowych scenariuszy przy użyciu 
 > [!NOTE]
 > Ten przewodnik jest przeznaczony dla biblioteki klienta magazynu Azure dla języka C++ w wersji 1.0.0 i powyżej. Zalecana wersja jest biblioteka klienta usługi Storage 2.2.0, który jest dostępny za pośrednictwem [NuGet](http://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp/).
 > 
-> 
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Tworzenie konta usługi interfejsu API Azure rozwiązania Cosmos DB tabeli
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-c-application"></a>Tworzenie aplikacji C++
 W tym przewodniku użyje funkcji magazynu, które mogą być uruchamiane w ramach aplikacji C++. Aby to zrobić, należy zainstalować bibliotekę klienta usługi Azure Storage dla języka C++ i Utwórz konto magazynu Azure w ramach subskrypcji platformy Azure.  

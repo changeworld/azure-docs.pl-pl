@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Aktualizacja rozwiązania do zarządzania na platformie Azure
 
@@ -51,7 +51,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 |System operacyjny  |Uwagi  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko zaktualizować ocen         |
-|Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |.NET framework 4.5 i WMF 5.0 lub nowszej, które są potrzebne dla systemu Windows Server 2008 R2 z dodatkiem SP1        |
+|Windows Server 2008 R2 z dodatkiem SP1 lub nowszy     |Windows PowerShell 4.0 lub nowszy jest wymagany ([Pobierz WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).<br> Windows PowerShell w wersji 5.1 ([Pobierz 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) jest zalecane w przypadku bardziej niezawodne.         |
 |CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |

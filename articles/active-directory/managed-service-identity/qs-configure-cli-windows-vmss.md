@@ -1,11 +1,11 @@
 ---
-title: "Skonfiguruj MSI skali maszyny wirtualnej platformy Azure, ustawić za pomocą wiersza polecenia platformy Azure"
-description: "Krok kroku instrukcje dotyczące konfigurowania zarządzane tożsamości usługi (MSI) na platformie Azure zestawu skalowania maszyn wirtualnych, przy użyciu wiersza polecenia platformy Azure."
+title: Skonfiguruj MSI skali maszyny wirtualnej platformy Azure, ustawić za pomocą wiersza polecenia platformy Azure
+description: Krok kroku instrukcje dotyczące konfigurowania zarządzane tożsamości usługi (MSI) na platformie Azure zestawu skalowania maszyn wirtualnych, przy użyciu wiersza polecenia platformy Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: d7a7b0c8b3f9bf0279282dbf1fed4fc8163d9170
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9cdf5225f2d87fffa2290e3edd09d4ae829aee21
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurowanie maszyny wirtualnej zestawu skalowania zarządzane usługi tożsamości (MSI) przy użyciu wiersza polecenia platformy Azure
 
@@ -71,10 +71,10 @@ Jeśli musisz włączyć MSI na podstawie istniejącego zestawu skalowania maszy
    az login
    ```
 
-2. Użyj [vmss az Przypisz identity](/cli/azure/vm/#az_vmss_assign_identity) z `--assign-identity` parametru dodawanego MSI do istniejącej maszyny Wirtualnej:
+2. Użyj [przypisać tożsamość vmss az](/cli/azure/vmss/identity/#az_vmss_identity_assign) polecenie, aby dodać instalatora MSI do istniejącej maszyny Wirtualnej:
 
    ```azurecli-interactive
-   az vmss assign-identity -g myResourceGroup -n myVMSS
+   az vmss identity assign -g myResourceGroup -n myVMSS
    ```
 
 ## <a name="remove-msi-from-an-azure-virtual-machine-scale-set"></a>Usuń MSI z zestawu skalowania maszyny wirtualnej platformy Azure
@@ -87,10 +87,10 @@ Jeśli masz zestaw skali maszyny wirtualnej, który nie będzie już potrzebowa�
    az login
    ```
 
-2. Użyj `--identities` przełącznik z [vmss az remove-identity](/cli/azure/vmss/#az_vmss_remove_identity) usunąć MSI:
+2. Użyj [usunąć tożsamości vmss az](/cli/azure/vmss/identity/#az_vmss_remove_identity) polecenie, aby usunąć plik MSI:
 
    ```azurecli-interactive
-   az vmss remove-identity -g myResourceGroup -n myVMSS --identities readerID writerID
+   az vmss identity remove -g myResourceGroup -n myVMSS --identities readerID writerID
    ```
 
 ## <a name="next-steps"></a>Kolejne kroki

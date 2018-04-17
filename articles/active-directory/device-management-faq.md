@@ -1,8 +1,8 @@
 ---
-title: "Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Azure Active Directory Zarządzanie urządzeniami — często zadawane pytania."
+title: Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Azure Active Directory Zarządzanie urządzeniami — często zadawane pytania.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0ef5b84820cfcaf86f526ddd0565463e12b96331
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 4358b57284721642957d56ad8cfeea2b0f53fd89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -41,47 +41,44 @@ ms.lasthandoff: 01/16/2018
 
 **Pytanie: czy mogę ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje użytkownika w portalu Azure?**
 
-**Odpowiedź:** urządzeń z systemem Windows 10, które są przyłączone do domeny z automatycznej rejestracji urządzeń nie są wyświetlane w obszarze informacje o użytkowniku.
+**Odpowiedź:** urządzenia systemu Windows 10, które są hybrydowego przyłączonych do usługi Azure AD nie są wyświetlane w obszarze urządzenia użytkowników.
 Należy użyć programu PowerShell, aby wyświetlić wszystkie urządzenia. 
 
-Informacje o użytkowniku należą następujące urządzenia:
+Urządzenia użytkowników należą następujące urządzenia:
 
-- Wszystkich urządzeń osobistych, które nie są przyłączone do przedsiębiorstwa 
-- Wszystkie z systemem innym niż Windows 10 / Windows Server 2016 
+- Przyłączony do wszystkich urządzeń osobistych, które nie są hybrydowej usługi Azure AD. 
+- Wszystkie z systemem innym niż Windows 10 / urządzeń z systemem Windows Server 2016.
 - Wszystkie urządzenia z systemem innym niż Windows 
 
 ---
 
 **Pytanie: Dlaczego nie można wyświetlić wszystkich urządzeń zarejestrowanych w usłudze Azure Active Directory w portalu Azure?** 
 
-**Odpowiedź:** obecnie nie istnieje sposób, aby zobaczyć wszystkie zarejestrowane urządzenia w portalu Azure. Przy użyciu programu Azure PowerShell można znaleźć wszystkie urządzenia. Aby uzyskać więcej informacji, zobacz [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
+**Odpowiedź:** można przeglądać je w obszarze Katalog usługi Azure AD -> wszystkie urządzenia menu. Za pomocą programu PowerShell Azure można również znaleźć wszystkie urządzenia. Aby uzyskać więcej informacji, zobacz [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
 
 --- 
 
 **Pytanie: jak sprawdzić, co to jest stan rejestracji urządzenia klienta?**
 
-**Odpowiedź:** zależy od stanu rejestracji urządzenia:
+**Odpowiedź:** dla systemu Windows 10 i Windows Server 2016 lub urządzenia z nowszymi wersjami, uruchom dsregcmd.exe/status.
 
-- Co to jest urządzenia
-- Jak został zarejestrowany 
-- Wszystkie szczegóły z nim związane. 
- 
+Dla wcześniejszych wersji systemu operacyjnego uruchom "%programFiles%\Microsoft Join\autoworkplace.exe obszar roboczy"
 
 ---
 
 **Pytanie: Dlaczego jest to urządzenie I został usunięty w portalu Azure lub nadal przy użyciu programu Windows PowerShell wymienione w zarejestrowany?**
 
-**Odpowiedź:** to jest celowe. Urządzenie nie ma dostępu do zasobów w chmurze. Jeśli chcesz usunąć urządzenie i ponownie zarejestrować akcji ręcznej musi być podejmowane na urządzeniu. 
+**Odpowiedź:** to jest celowe. Urządzenie nie ma dostępu do zasobów w chmurze. Jeśli chcesz ponownie zarejestrować ponownie akcji ręcznej musi być podejmowane na urządzeniu. 
 
-Dla systemu Windows 10 i Windows Server 2016, które są lokalne AD przyłączonych do domeny:
+Wyczyść stan przyłączenia z systemem Windows 10 i Windows Server 2016, które są lokalne przyłączonych do domeny usługi AD:
 
 1.  Otwórz wiersz polecenia jako administrator.
 
-2.  Typ`dsregcmd.exe /debug /leave`
+2.  Typ `dsregcmd.exe /debug /leave`
 
-3.  Wyloguj się i zaloguj się do wyzwolenia zaplanowane zadanie, które ponownie zarejestrowanie urządzenia. 
+3.  Wyloguj się i zaloguj się do wyzwolenia zaplanowane zadanie, które rejestruje urządzenia z usługą Azure AD ponownie. 
 
-Dla innych platform systemu Windows, które znajdują się na obszarze AD przyłączonych do domeny:
+Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD przyłączonych do domeny:
 
 1.  Otwórz wiersz polecenia jako administrator.
 2.  Wpisz polecenie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
@@ -93,13 +90,13 @@ Dla innych platform systemu Windows, które znajdują się na obszarze AD przył
 
 **ODP.:**
 
--   Dla systemu Windows 10 i Windows Server 2016 jeśli są one kolejnych nieudanych prób Odłączanie i dołączyć ponownie do tego samego urządzenia mogą istnieć zduplikowane wpisy. 
+-   Dla systemu Windows 10 i Windows Server 2016 w przypadku kolejnych nieudanych prób Odłączanie i dołączyć ponownie do tego samego urządzenia mogą istnieć zduplikowane wpisy. 
 
 -   Jeśli używasz konta Dodaj firmowego lub szkolnego każdego użytkownika systemu windows, który używa konta Dodaj firmowego lub szkolnego utworzy nowy rekord urządzenia z tę samą nazwę urządzenia.
 
--   Inne platformy systemu Windows, które znajdują się na obszarze AD przyłączonych do domeny za pomocą automatycznej rejestracji utworzy nowy rekord urządzenia o takiej samej nazwie urządzeń dla każdego użytkownika domeny, który loguje się do urządzenia. 
+-   Dla wersji systemu operacyjnego Windows niższego poziomu, które są lokalne AD przyłączonych do domeny za pomocą automatycznej rejestracji utworzy nowy rekord urządzenia tę samą nazwę urządzenia dla każdego użytkownika domeny, który loguje się do urządzenia. 
 
--   Maszyny AADJ została wyczyszczona, ponowna instalacja i ponownie połączony z tej samej nazwie, zostaną wyświetlone jako inny rekord z tą samą nazwą urządzenia.
+-   Komputerze dołączonym do usługi Azure AD, zostały wyczyszczone, ponowna instalacja i ponownie połączony z tej samej nazwie, zostaną wyświetlone jako inny rekord z tą samą nazwą urządzenia.
 
 ---
 
@@ -108,21 +105,21 @@ Dla innych platform systemu Windows, które znajdują się na obszarze AD przył
 **Odpowiedź:** może potrwać do godziny dla odwołania do zastosowania.
 
 >[!Note] 
->Dla urządzeń utracone zaleca się czyszczenie urządzenia, aby upewnić się, że użytkownicy nie mogą uzyskać dostęp do urządzenia. Aby uzyskać więcej informacji, zobacz [rejestrowanie urządzeń do zarządzania w usłudze Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>Dla zarejestrowanych urządzeń zaleca się czyszczenie urządzenia, aby upewnić się, że użytkownicy nie mogą uzyskać dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [rejestrowanie urządzeń do zarządzania w usłudze Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 
 ---
 
 **Pytanie: Dlaczego Moi użytkownicy widzą "Nie można pobrać istnieje w tym miejscu"?**
 
-**Odpowiedź:** Jeśli został skonfigurowany, niektóre zasady dostępu warunkowego będą musieli stanu określonego urządzenia, a urządzenie nie spełnia kryteriów, użytkownicy są blokowane, a ten komunikat zostanie wyświetlony. Oszacowanie reguł i upewnij się, że urządzenie jest w stanie spełnia kryteria, aby uniknąć występowania tego komunikatu.
+**Odpowiedź:** Jeśli został skonfigurowany, niektóre zasady dostępu warunkowego będą musieli stanu określonego urządzenia, a urządzenie nie spełnia kryteriów, użytkownicy są blokowane, a ten komunikat zostanie wyświetlony. Oszacowanie reguł zasad dostępu warunkowego i upewnij się, że urządzenie jest w stanie spełnia kryteria, aby uniknąć występowania tego komunikatu.
 
 ---
 
 
 **Pytanie: Zobacz rekordem urządzenia w obszarze informacje o użytkowniku w portalu Azure i można zobaczyć stan zarejestrowany na kliencie. Czy prawidłowo skonfigurować do korzystania z dostępu warunkowego?**
 
-**Odpowiedź:** rekord urządzenia (deviceID) i stan w portalu Azure należy zgodny klient i spełniać żadnych kryteriów oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestracji urządzeń usługi Azure Active Directory](active-directory-device-registration.md).
+**Odpowiedź:** stan przyłączenia urządzenia, sprawdzając deviceID, musi zgodne ze specyfikacją na usługi Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [wprowadzenie do rejestracji urządzeń usługi Azure Active Directory](active-directory-device-registration.md).
 
 ---
 
@@ -140,9 +137,9 @@ Dla innych platform systemu Windows, które znajdują się na obszarze AD przył
 
 ---
 
-**Pytanie: Dlaczego zobacz "Oops... Wystąpił błąd!" okna dialogowego podczas próby dołączenia komputera?**
+**Pytanie: Dlaczego zobacz "Oops... Wystąpił błąd!" okna dialogowego przy próbie, czy usługi Azure AD join komputer?**
 
-**Odpowiedź:** jest to wynik konfigurowania rejestracji usługi Azure Active Directory z usługą Intune. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zarządzania urządzeniami z systemem Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+**Odpowiedź:** jest to wynik konfigurowania rejestracji usługi Azure Active Directory z usługą Intune. Upewnij się, że użytkownik próby przyłączenia usługi Azure AD ma poprawne przypisanej licencji usługi Intune. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zarządzania urządzeniami z systemem Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 

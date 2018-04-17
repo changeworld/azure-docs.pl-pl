@@ -1,8 +1,8 @@
 ---
 title: Data Lake tools dla programu Visual Studio z Hortonworks piaskownicy - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak za pomocą usługi Azure Data Lake tools dla programu Visual Studio piaskownicy Hortonworks uruchomiony na lokalnej maszynie wirtualnej. Z tych narzędzi można tworzyć i uruchamiania zadań Hive i Pig na piaskownicy, a dane wyjściowe zadania w widoku i historii."
+description: Dowiedz się, jak za pomocą usługi Azure Data Lake tools dla programu Visual Studio piaskownicy Hortonworks uruchomiony na lokalnej maszynie wirtualnej. Z tych narzędzi można tworzyć i uruchamiania zadań Hive i Pig na piaskownicy, a dane wyjściowe zadania w widoku i historii.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: e3434c45-95d1-4b96-ad4c-fb59870e2ff0
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 7c79e66c6ee4d5aa3ffd052306f57666df866313
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 51438f70fa5ab4a3ee088033ec2da51697f8e273
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Użyj usługi Azure Data Lake tools dla programu Visual Studio z piaskownicy Hortonworks
 

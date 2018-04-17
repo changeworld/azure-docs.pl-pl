@@ -1,25 +1,23 @@
 ---
-title: "Rozwiązywanie problemów z Hive za pomocą usługi Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania na temat pracy z Apache Hive i usłudze Azure HDInsight."
-keywords: "Azure HDInsight, Hive, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania"
+title: Rozwiązywanie problemów z Hive za pomocą usługi Azure HDInsight | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania na temat pracy z Apache Hive i usłudze Azure HDInsight.
+keywords: Azure HDInsight, Hive, często zadawane pytania, rozwiązywanie problemów z przewodnika, często zadawane pytania
 services: Azure HDInsight
 documentationcenter: na
 author: dharmeshkakadia
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 15B8D0F3-F2D3-4746-BDCB-C72944AA9252
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d397552285466dc038fe580a084e2d1d0d69bfe2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Hive za pomocą usługi Azure HDInsight
 
@@ -29,7 +27,7 @@ Dowiedz się więcej o najczęściej zadawane pytania i ich rozwiązania podczas
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Jak wyeksportować na potrzeby magazynu metadanych Hive i zaimportuj go w innym klastrze?
 
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Połącz się z klastrem usługi HDInsight przy użyciu klienta Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
@@ -56,7 +54,7 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Jak znaleźć gałęzi dzienniki w klastrze?
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz **dodatkowe materiały**.
 
@@ -85,7 +83,7 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Jak uruchomić powłokę programu Hive o określonej konfiguracji w klastrze?
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Określ parę klucz wartość konfiguracji podczas uruchamiania powłokę programu Hive. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
@@ -113,7 +111,7 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 ## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak analizować dane Tez DAG na ścieżkę krytyczną klastra?
 
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
  
 1. Do analizowania Apache Tez ukierunkowanego wykresu acyklicznego (DAG) na wykresie klastra o znaczeniu krytycznym, połącz się z klastrem usługi HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz [dodatkowe materiały](#additional-reading-end).
 
@@ -153,7 +151,7 @@ Kod w kroki rozwiązania przyjęto założenie, że ścieżki danych w nowym kla
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>W jaki sposób pobierać dane Tez DAG z klastra?
 
 
-#### <a name="resolution-steps"></a>Kroki rozwiązania
+#### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 Istnieją dwa sposoby zbierania danych Tez DAG:
 

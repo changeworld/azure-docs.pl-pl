@@ -1,25 +1,18 @@
 ---
-title: "Samouczek Azure Analysis Services: lekcja uzupełniająca — wiersze szczegółów | Microsoft Docs"
-description: "Opisuje sposób tworzenia wyrażenia wierszy szczegółów w samouczku usług Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Samouczek Azure Analysis Services: lekcja uzupełniająca — wiersze szczegółów | Microsoft Docs'
+description: Opisuje sposób tworzenia wyrażenia wierszy szczegółów w samouczku usług Azure Analysis Services.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 02e9edd966e64c0bfa32e2b80f4c26f797e58582
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Lekcja uzupełniająca — wiersze szczegółów
 
@@ -31,19 +24,19 @@ Szacowany czas trwania lekcji: **10 minut**
 Ta lekcja uzupełniająca stanowi część samouczka modelowania tabelarycznego. Przed wykonaniem zadań w tej lekcji uzupełniającej należy ukończyć wszystkie poprzednie lekcje lub wykonać przykładowy projekt modelu Adventure Works Internet Sales.  
   
 ## <a name="whats-the-issue"></a>Na czym polega problem?
-Przed dodaniem wyrażenia wierszy szczegółów przyjrzyjmy się szczegółowym informacjom na temat miary InternetTotalSales.
+Przyjrzyjmy się szczegóły miary InternetTotalSales przed dodaniem wyrażenia do szczegółów wierszy.
 
 1.  W programie SSDT kliknij menu **Model** > **Analiza w programie Excel**, aby otworzyć program Excel i utworzyć pustą tabelę przestawną.
   
-2.  W obszarze **Pola tabeli przestawnej** dodaj miarę **InternetTotalSales** z tabeli FactInternetSales do pola **Wartości**, element **CalendarYear** z tabeli DimDate do pola **Kolumny** oraz element **EnglishCountryRegionName** do pola **Wiersze**. Tabela przestawna zawiera teraz zagregowane wyniki miary InternetTotalSales według regionów i lat. 
+2.  W obszarze **Pola tabeli przestawnej** dodaj miarę **InternetTotalSales** z tabeli FactInternetSales do pola **Wartości**, element **CalendarYear** z tabeli DimDate do pola **Kolumny** oraz element **EnglishCountryRegionName** do pola **Wiersze**. Tabelę przestawną daje obecnie wyników zagregowany z miary InternetTotalSales regiony i roku. 
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. W tabeli przestawnej kliknij dwukrotnie zagregowaną wartość dla roku i nazwy regionu. W przykładzie dwukrotnie kliknęliśmy wartość dla Australii i roku 2014. Otwarty został nowy arkusz zawierający dane, które jednak nie są użyteczne.
+3. W tabeli przestawnej kliknij dwukrotnie zagregowaną wartość dla roku i nazwy regionu. Wartość dla Australii i 2014 roku. Otwarty został nowy arkusz zawierający dane, które jednak nie są użyteczne.
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   
-Chcielibyśmy uzyskać tabelę zawierającą kolumny i wiersze danych składające się na zagregowany wynik naszej miary InternetTotalSales. W tym celu możemy dodać wyrażenie wierszy szczegółów jako właściwość miary.
+Celem jest tabelę zawierającą kolumn i wierszy danych, które przyczyniają się do wyniku zagregowanych InternetTotalSales miary. W tym celu Dodaj wyrażenie wiersze szczegółów jako właściwość miary.
 
 ## <a name="add-a-detail-rows-expression"></a>Dodawanie wyrażenia wierszy szczegółów
 
@@ -79,7 +72,9 @@ Chcielibyśmy uzyskać tabelę zawierającą kolumny i wiersze danych składają
 5. Wykonaj ponowne wdrożenie modelu.
 
   
-## <a name="see-also"></a>Zobacz też  
-[Funkcja SELECTCOLUMNS (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
-[Lekcja uzupełniająca — zabezpieczenia dynamiczne](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
-[Lekcja uzupełniająca — niewyrównane hierarchie](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+## <a name="see-also"></a>Zobacz także  
+
+[Funkcja SELECTCOLUMNS (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+[Uzupełniające lekcji - dynamiczne zabezpieczeń](../tutorials/aas-supplemental-lesson-dynamic-security.md)   
+[Lekcja uzupełniająca — niewyrównane hierarchie](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)   
+ 

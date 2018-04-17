@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bd11ec7c8a32792853e60b4bb14d4ed52f53f4a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Wyświetl dzienniki aktywności inspekcji akcje zasobów
 
@@ -30,7 +30,7 @@ Za pomocą działania dzienniki można określić:
 * Stan operacji
 * Wartości innych właściwości, które mogą ułatwić badania operacji
 
-Dziennik zawiera wszystkie operacje zapisu (PUT, POST, DELETE) w Twoich zasobów. Nie ma operacji odczytu (GET). Lista zasobów akcji, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../active-directory/role-based-access-control-resource-provider-operations.md). Dzienniki inspekcji można użyć do znalezienia błędu podczas rozwiązywania problemów z lub do monitorowania, jak użytkownik w organizacji zmienić zasobu.
+Dziennik zawiera wszystkie operacje zapisu (PUT, POST, DELETE) w Twoich zasobów. Nie ma operacji odczytu (GET). Lista zasobów akcji, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../role-based-access-control/resource-provider-operations.md). Dzienniki inspekcji można użyć do znalezienia błędu podczas rozwiązywania problemów z lub do monitorowania, jak użytkownik w organizacji zmienić zasobu.
 
 Dzienniki aktywności są przechowywane przez 90 dni. Mogą wykonywać kwerendę o dowolnym zakres dat, tak długo, jak Data początkowa nie jest więcej niż 90 dni w przeszłości.
 
@@ -154,8 +154,8 @@ Operacje REST do pracy z dziennika aktywności są częścią [interfejsu API RE
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dzienniki aktywności platformy Azure może służyć przy użyciu usługi Power BI, aby uzyskać bardziej szczegółowe analizy o akcjach w ramach subskrypcji. Zobacz [widoku i analizować Dzienniki aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Aby dowiedzieć się więcej na temat ustawiania zasad zabezpieczeń, zobacz [kontroli dostępu opartej na roli Azure](../active-directory/role-based-access-control-configure.md).
+* Aby dowiedzieć się więcej na temat ustawiania zasad zabezpieczeń, zobacz [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md).
 * Informacje na temat polecenia do wyświetlania operacji wdrażania, zobacz [wyświetlić operacje wdrażania](resource-manager-deployment-operations.md).
 * Aby dowiedzieć się uniknąć usunięcia zasobu dla wszystkich użytkowników, zobacz [blokowania zasobów z usługi Azure Resource Manager](resource-group-lock-resources.md).
-* Aby wyświetlić listę działań, które są dostępne dla każdego dostawcy Microsoft Azure Resource Manager, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](~/articles/active-directory/role-based-access-control-resource-provider-operations.md)
+* Aby wyświetlić listę działań, które są dostępne dla każdego dostawcy Microsoft Azure Resource Manager, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](../role-based-access-control/resource-provider-operations.md)
 

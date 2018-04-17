@@ -4,9 +4,8 @@ description: TTL bazy danych programu Microsoft Azure rozwiązania Cosmos zapewn
 services: cosmos-db
 documentationcenter: ''
 keywords: czas wygaśnięcia
-author: arramac
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
-ms.author: arramac
-ms.openlocfilehash: 6f8ce4e270b94bf1043c27ba879878e20372ffe7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: sngun
+ms.openlocfilehash: 61db8f85e73d2c071bdec0ace60911813fa4f0e8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Ważność danych w kolekcjach bazy danych rozwiązania Cosmos Azure automatycznie z czasu wygaśnięcia
 Aplikacje można tworzyć i przechowywania dużych ilości danych. Niektóre z tych danych, takich jak machine generowane zdarzenie danych, dzienników i użytkownika sesji informacji przydaje się tylko ograniczone okres czasu. Gdy dane będą nadwyżka na potrzeby aplikacji jest bezpieczne przeczyścić tych danych i zmniejszyć wymagania dotyczące magazynu aplikacji.

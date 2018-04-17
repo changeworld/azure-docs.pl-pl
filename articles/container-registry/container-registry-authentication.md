@@ -1,6 +1,6 @@
 ---
-title: "Uwierzytelniania za pomocą rejestru kontenera platformy Azure"
-description: "Opcje uwierzytelniania dla rejestru kontenera platformy Azure, w tym usługi Azure Active Directory usługi podmiotów bezpośrednio i rejestru do logowania."
+title: Uwierzytelniania za pomocą rejestru kontenera platformy Azure
+description: Opcje uwierzytelniania dla rejestru kontenera platformy Azure, w tym usługi Azure Active Directory usługi podmiotów bezpośrednio i rejestru do logowania.
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 349d4f8cba2967edcedb202979695d271283fa8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Uwierzytelniania za pomocą prywatnego rejestru kontenera Docker
 
@@ -31,11 +31,11 @@ Podczas pracy z rejestrem bezpośrednio, takie jak ściąganie obrazów i wypych
 az acr login --name <acrName>
 ```
 
-Podczas logowania przy użyciu `az acr login`, interfejsu wiersza polecenia używa tokenu tworzone podczas wykonania `az login` bezproblemowe uwierzytelnianie sesji z rejestru. Po logujesz się w ten sposób, poświadczenia są buforowane, a kolejne `docker` polecenia nie wymagają nazwy użytkownika i hasła. Jeśli token wygaśnie, można go odświeżyć przy użyciu `az acr login` polecenia ponownie w celu ponownego uwierzytelnienia. Przy użyciu `az acr login` z tożsamościami Azure udostępnia [dostępu opartej na rolach](../active-directory/role-based-access-control-configure.md).
+Podczas logowania przy użyciu `az acr login`, interfejsu wiersza polecenia używa tokenu tworzone podczas wykonania `az login` bezproblemowe uwierzytelnianie sesji z rejestru. Po logujesz się w ten sposób, poświadczenia są buforowane, a kolejne `docker` polecenia nie wymagają nazwy użytkownika i hasła. Jeśli token wygaśnie, można go odświeżyć przy użyciu `az acr login` polecenia ponownie w celu ponownego uwierzytelnienia. Przy użyciu `az acr login` z tożsamościami Azure udostępnia [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="service-principal"></a>Jednostka usługi
 
-Można przypisać [nazwy głównej usługi](../active-directory/develop/active-directory-application-objects.md) do rejestru, a usługi lub aplikacji może być używany do uwierzytelniania bezobsługowe. Zezwalaj na nazwy główne usług [dostępu opartej na rolach](../active-directory/role-based-access-control-configure.md) do rejestru, i wiele podmiotów usługi można przypisać do rejestru. Wiele podmiotów usługi umożliwiają definiowanie różnych dostępu dla różnych aplikacji.
+Można przypisać [nazwy głównej usługi](../active-directory/develop/active-directory-application-objects.md) do rejestru, a usługi lub aplikacji może być używany do uwierzytelniania bezobsługowe. Zezwalaj na nazwy główne usług [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md) do rejestru, i wiele podmiotów usługi można przypisać do rejestru. Wiele podmiotów usługi umożliwiają definiowanie różnych dostępu dla różnych aplikacji.
 
 Dostępne role są:
 

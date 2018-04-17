@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 3180b24454fc49a34a40bdf2873fad1d56173e3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja Azure datacenter stosu - tożsamości
 Stos Azure za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) można wdrożyć jako dostawcy tożsamości. Wybór należy przed wdrożeniem stosu Azure. Wdrożenia przy użyciu usług AD FS jest również nazywany wdrażanie stosu Azure w trybie rozłączonym.
@@ -262,6 +262,9 @@ Jeśli zdecydujesz się ręcznie uruchom polecenia, wykonaj następujące kroki:
    > Przystawka programu MMC programu AD FS należy użyć do konfigurowania reguł autoryzacji wystawiania, korzystając z systemu Windows Server 2012 lub 2012 R2 AD FS.
 
 4. Użycie programu Internet Explorer lub przeglądarki Edge można uzyskać dostępu do stosu Azure, należy zignorować tokenu powiązania. W przeciwnym razie próby logowania się niepowodzeniem. Wystąpienie usług AD FS lub element członkowski farmy uruchom następujące polecenie:
+
+   > [!note]  
+   > Ten krok nie ma zastosowania w przypadku korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS. Jest bezpieczne pominąć to polecenie, a następnie kontynuuj integracji.
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true

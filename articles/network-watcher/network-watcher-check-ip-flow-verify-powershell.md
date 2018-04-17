@@ -1,11 +1,11 @@
 ---
-title: "Sprawdź ruchu z adresem IP obserwatora sieci Azure przepływ weryfikacji - programu PowerShell | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób sprawdzania, jeśli ruch do i z maszyny wirtualnej jest dozwolona lub odmowa przy użyciu programu PowerShell"
+title: Sprawdź ruchu z adresem IP obserwatora sieci Azure przepływ weryfikacji - programu PowerShell | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób sprawdzania, jeśli ruch do i z maszyny wirtualnej jest dozwolona lub odmowa przy użyciu programu PowerShell
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: e1dad757-8c5d-467f-812e-7cc751143207
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 5257a70aa2dbc25bfe4eca5e2e0db87ca5e6b6fe
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 7c2d5e0811f7a5e1f865992be1d5a2c189f10374
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Sprawdź, czy ruch jest dozwolony lub odrzucany do lub z maszyny Wirtualnej z przepływem IP Sprawdź składnik Azure obserwatora sieciowego
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-check-ip-flow-verify-portal.md)
+> - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 > - [Program PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 > - [Interfejs wiersza polecenia 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 > - [Interfejs wiersza polecenia 2.0](network-watcher-check-ip-flow-verify-cli.md)
@@ -59,7 +59,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="get-the-nics"></a>Pobierz karty interfejsu Sieciowego
 
-Adres IP karty sieciowej na maszynie wirtualnej jest potrzebne w tym przykładzie Pobieramy kart sieciowych w maszynie wirtualnej. Jeśli znasz już adres IP, który ma zostać przetestowana na maszynie wirtualnej, można pominąć ten krok.
+Wymagany jest adres IP karty sieciowej na maszynie wirtualnej. Pobrać dołączony do maszyny wirtualnej, w poleceniu występującym karty interfejsu sieciowego. Jeśli znasz już adres IP, który ma zostać przetestowana na maszynie wirtualnej, można pominąć ten krok.
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -67,7 +67,7 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.Networ
 
 ## <a name="run-ip-flow-verify"></a>Sprawdź uruchomienia przepływu IP
 
-Teraz, gdy mamy informacje potrzebne do uruchomienia polecenia cmdlet, możemy uruchomić `Test-AzureRmNetworkWatcherIPFlow` polecenia cmdlet, aby przetestować ruchu. W tym przykładzie użyto pierwszego adresu IP na pierwszej karcie sieciowej.
+Uruchom `Test-AzureRmNetworkWatcherIPFlow` polecenia cmdlet, aby przetestować ruchu. W tym przykładzie pierwszego adresu IP na karcie Sieciowej pierwszy jest używany.
 
 ```powershell
 Test-AzureRmNetworkWatcherIPFlow -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id `
@@ -90,7 +90,7 @@ Allow  defaultSecurityRules/AllowInternetOutBound
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/virtual-network-manage-nsg-arm-portal.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń zdefiniowane.
+Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń zdefiniowane.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

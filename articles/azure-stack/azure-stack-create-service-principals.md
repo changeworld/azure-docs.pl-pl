@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie nazwy głównej usługi Azure stosu | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób tworzenia nowej nazwy głównej usługi, który może służyć z kontroli dostępu opartej na rolach w usłudze Azure Resource Manager do zarządzania dostępem do zasobów."
+title: Tworzenie nazwy głównej usługi Azure stosu | Dokumentacja firmy Microsoft
+description: Opisuje sposób tworzenia nowej nazwy głównej usługi, który może służyć z kontroli dostępu opartej na rolach w usłudze Azure Resource Manager do zarządzania dostępem do zasobów.
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7b7028a92b93f29af10c5e4bc9ab4f671ca23961
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 833efa7f24d01346525af3dd9ca37012ab0ba3c4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Zapewnianie dostępu aplikacji do stosu Azure
 
@@ -46,7 +46,7 @@ W tej sekcji utworzysz aplikację (nazwy głównej usługi) w usłudze Azure AD,
 
 1. Zaloguj się do konta platformy Azure za pośrednictwem [portalu Azure](https://portal.azure.com).
 2. Wybierz **usługi Azure Active Directory** > **rejestracji aplikacji** > **Dodaj**   
-3. Podaj nazwę i adres URL dla aplikacji. Wybierz opcję **aplikacji sieci Web / interfejs API** lub **natywnego** dla typu aplikacji, w którym chcesz utworzyć. Po ustawieniu wartości, wybierz **Utwórz**.
+3. Podaj nazwę i adres URL aplikacji. Wybierz opcję **aplikacji sieci Web / interfejs API** lub **natywnego** dla typu aplikacji, w którym chcesz utworzyć. Po ustawieniu wartości, wybierz **Utwórz**.
 
 Utworzono nazwy głównej usługi dla aplikacji.
 
@@ -55,16 +55,16 @@ Podczas logowania programowo, użyj Identyfikatora aplikacji i dla aplikacji sie
 
 1. Z **rejestracji aplikacji** w usłudze Active Directory, wybierz aplikację.
 
-2. Kopiuj **identyfikator aplikacji** i zapisze go w kodzie aplikacji. Aplikacje w [przykładowe aplikacje](#sample-applications) sekcji odnoszą się do tej wartości jako identyfikator klienta.
+2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Aplikacje w [przykładowe aplikacje](#sample-applications) sekcji odnoszą się do tej wartości jako identyfikator klienta.
 
      ![identyfikator klienta](./media/azure-stack-create-service-principal/image12.png)
 3. Aby wygenerować klucz uwierzytelniania dla aplikacji sieci Web / interfejs API, wybierz **ustawienia** > **klucze**. 
 
-4. Podaj opis klucza i czas trwania dla klucza. Po zakończeniu wybierz **zapisać**.
+4. Podaj opis i czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
 
-Po zapisaniu klucza, wyświetlana jest wartość klucza. Skopiuj tę wartość, ponieważ nie można pobrać klucza później. Musisz podać wartość tego klucza z Identyfikatorem aplikacji do podpisania co aplikacja. Przechowywanie wartości klucza, gdzie aplikacja je pobrać.
+Po zapisaniu klucza zostanie wyświetlona jego wartość. Skopiuj tę wartość, ponieważ później nie będzie można pobrać klucza. Musisz podać wartość tego klucza z Identyfikatorem aplikacji do podpisania co aplikacja. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
-![zapisano klucza](./media/azure-stack-create-service-principal/image15.png)
+![Zapisany klucz](./media/azure-stack-create-service-principal/image15.png)
 
 
 Po wykonaniu tych czynności, przejdź do [przypisywanie roli aplikacji](azure-stack-create-service-principals.md#assign-role-to-service-principal).
@@ -136,7 +136,7 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 ```
 
 ## <a name="assign-role-to-service-principal"></a>Przypisz rolę do nazwy głównej usługi
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, które roli reprezentuje odpowiednich uprawnień dla aplikacji. Aby dowiedzieć się więcej o dostępnych ról, zobacz [RBAC: Built in Roles](../active-directory/role-based-access-built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, które roli reprezentuje odpowiednich uprawnień dla aplikacji. Aby dowiedzieć się więcej o dostępnych ról, zobacz [RBAC: Built in Roles](../role-based-access-control/built-in-roles.md).
 
 Na poziomie subskrypcji, grupy zasobów lub zasobów można ustawić zakresu. Uprawnienia są dziedziczone na niższe poziomy zakresu. Na przykład dodawanie aplikacji do roli czytnik dla grupy zasobów oznacza, że mogą odczytywać, grupy zasobów i wszystkie zasoby, które zawiera.
 

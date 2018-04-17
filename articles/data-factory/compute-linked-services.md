@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shengc
-ms.openlocfilehash: fe4a4962acce06a6448cef8d5c1af398e3965a33
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 806d0db3536a00dea4e421f847cf0f75bcfc218c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Obliczenia bazy danych środowiskach obsługiwanych przez usługi fabryka danych Azure
 W tym artykule opisano różne środowiska obliczeniowe, w których można użyć do procesu lub przekształcenia danych. Podano również szczegółowe informacje o różnych konfiguracjach (na żądanie i użycie własnego) obsługiwane przez fabrykę danych podczas konfigurowania usług połączonych łączenia tych obliczeniowe środowisk do fabryki danych Azure.
@@ -26,7 +26,7 @@ Poniższa tabela zawiera listę środowiska obliczeniowe obsługiwane przez fabr
 | Środowisko obliczeniowe                      | activities                               |
 | ---------------------------------------- | ---------------------------------------- |
 | [Klaster usługi HDInsight na żądanie](#azure-hdinsight-on-demand-linked-service) lub [klastrem usługi HDInsight](#azure-hdinsight-linked-service) | [Gałąź rejestru](transform-data-using-hadoop-hive.md), [Pig](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [przesyłania strumieniowego usługi Hadoop](transform-data-using-hadoop-streaming.md) |
-| [Azure Batch](#azure-batch-linked-service) | [Custom](transform-data-using-dotnet-custom-activity.md) |
+| [Azure Batch](#azure-batch-linked-service) | [Niestandardowe](transform-data-using-dotnet-custom-activity.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](transform-data-using-machine-learning.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Język U-SQL usługi Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [magazyn danych Azure SQL](#azure-sql-data-warehouse-linked-service), [programu SQL Server](#sql-server-linked-service) | [Procedura składowana](transform-data-using-stored-procedure.md) |
@@ -104,7 +104,7 @@ Następujące JSON definiuje opartych na systemie Linux usługi HDInsight połą
 | clusterSize                  | Liczba węzłów procesu roboczego/danych w klastrze. Klaster usługi HDInsight jest tworzony z głównymi węzłami 2 wraz z liczbą węzłów procesu roboczego, które określisz dla tej właściwości. Węzły mają rozmiar Standard_D3, który ma 4 rdzenie, więc klastra z węzłem procesu roboczego 4 przyjmuje 24 rdzenie (4\*4 = 16 rdzenie dla węzłów procesu roboczego, a także 2\*rdzenie 4 = 8 dla węzłów głównych). Zobacz [Ustawianie klastrów w usłudze HDInsight Hadoop, Spark, Kafka i](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) szczegółowe informacje. | Yes      |
 | linkedServiceName            | Azure połączonej usługi magazynu do użycia przez klaster na żądanie do przechowywania i przetwarzania danych. W tym samym regionie co konto usługi Azure Storage jest tworzenie klastra usługi HDInsight. Usługa Azure HDInsight ma ograniczenia całkowitej liczby rdzeni, których możesz użyć w każdym obsługiwanym przez nią regionie platformy Azure. Upewnij się, że masz wystarczająco dużo przydziały core w tym regionie Azure, aby spełnić wymagana wartość clusterSize. Aby uzyskać więcej informacji, zapoznaj się [Ustawianie klastrów w usłudze HDInsight Hadoop, Spark, Kafka i](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Obecnie nie można utworzyć klastra usługi HDInsight na żądanie, która używa usługi Azure Data Lake Store jako magazynu. Jeśli chcesz przechowywać dane wynikowe z HDInsight przetwarzania w usłudze Azure Data Lake Store, umożliwia działanie kopiowania skopiować dane z magazynu obiektów Blob Azure do usługi Azure Data Lake Store. </p> | Yes      |
 | clusterResourceGroup         | Klaster usługi HDInsight jest tworzony w tej grupie zasobów. | Yes      |
-| timetolive                   | Limit czasu bezczynności klastra usługi HDInsight na żądanie. Określa, jak długo klastra usługi HDInsight na żądanie pozostaje aktywne po zakończeniu działania uruchamiania, jeśli w klastrze nie ma żadnych aktywnych działań. Minimalne dozwolone wartości to 5 minut (00: 05:00).<br/><br/>Na przykład jeśli uruchomienia działania trwa 6 minut i timetolive jest ustawiony na 5 minut, klaster pozostanie aktywności 5 minut po uruchomieniu 6 minut przetwarzania działania. Jeśli inny uruchamiania działania jest wykonywane z okna 6 minut, jednak jest przetwarzany przez tego samego klastra.<br/><br/>Tworzenie klastra usługi HDInsight na żądanie jest kosztowna operacja (może to potrwać pewien czas), użyj tak, to ustawienie jako potrzebne do zwiększenia wydajności fabryki danych przez ponowne użycie klastra usługi HDInsight na żądanie.<br/><br/>Jeśli wartość timetolive jest ustawiona na 0, klastra jest usuwany natychmiast po zakończeniu wykonywania działania. Natomiast jeśli ustawisz wysokiej wartości, klaster może pozostać bezczynny logowania na rozwiązywanie niektórych problemów z celem, ale może spowodować wysokich kosztów. Dlatego jest ważne, aby ustawić odpowiednią wartość, na podstawie Twoich potrzeb.<br/><br/>Jeśli skonfigurowana wartość timetolive właściwości wielu potoki można udostępniać wystąpienia klastra usługi HDInsight na żądanie. | Yes      |
+| wartość TimeToLive                   | Limit czasu bezczynności klastra usługi HDInsight na żądanie. Określa, jak długo klastra usługi HDInsight na żądanie pozostaje aktywne po zakończeniu działania uruchamiania, jeśli w klastrze nie ma żadnych aktywnych działań. Minimalne dozwolone wartości to 5 minut (00: 05:00).<br/><br/>Na przykład jeśli uruchomienia działania trwa 6 minut i timetolive jest ustawiony na 5 minut, klaster pozostanie aktywności 5 minut po uruchomieniu 6 minut przetwarzania działania. Jeśli inny uruchamiania działania jest wykonywane z okna 6 minut, jednak jest przetwarzany przez tego samego klastra.<br/><br/>Tworzenie klastra usługi HDInsight na żądanie jest kosztowna operacja (może to potrwać pewien czas), użyj tak, to ustawienie jako potrzebne do zwiększenia wydajności fabryki danych przez ponowne użycie klastra usługi HDInsight na żądanie.<br/><br/>Jeśli wartość timetolive jest ustawiona na 0, klastra jest usuwany natychmiast po zakończeniu wykonywania działania. Natomiast jeśli ustawisz wysokiej wartości, klaster może pozostać bezczynny logowania na rozwiązywanie niektórych problemów z celem, ale może spowodować wysokich kosztów. Dlatego jest ważne, aby ustawić odpowiednią wartość, na podstawie Twoich potrzeb.<br/><br/>Jeśli skonfigurowana wartość timetolive właściwości wielu potoki można udostępniać wystąpienia klastra usługi HDInsight na żądanie. | Yes      |
 | clusterType                  | Typ klastra usługi HDInsight, który ma zostać utworzony. Dozwolone wartości to "hadoop" i "spark". Jeśli nie zostanie określony, wartością domyślną jest hadoop. | Nie       |
 | wersja                      | Wersja klastra usługi HDInsight. Jeśli nie zostanie określony, jest przy użyciu bieżącej wersji usługi HDInsight w zdefiniowanej wartości domyślnej. | Nie       |
 | hostSubscriptionId           | Identyfikator subskrypcji platformy Azure, używany do tworzenia klastra usługi HDInsight. Jeśli nie zostanie określony, używany identyfikator subskrypcji kontekst logowania do systemu Azure. | Nie       |
@@ -426,6 +426,65 @@ Możesz utworzyć **Azure Data Lake Analytics** połączonej usługi, aby połą
 | dzierżawa               | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można go pobrać, ustawiając kursor myszy w prawym górnym rogu portalu Azure. | Yes                                      |
 | connectVia           | Środowisko uruchomieniowe integracji ma być używany do wysyłania działania do tej połączonej usługi. Możesz użyć środowiska uruchomieniowego integracji Azure lub Self-hosted integracji w czasie wykonywania. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. | Nie                                       |
 
+
+
+## <a name="azure-databricks-linked-service"></a>Usługa Azure Databricks połączone
+Można utworzyć **Azure Databricks połączona usługa** zarejestrować Databricks obszaru roboczego, który zostanie użyty do uruchomienia Databricks workloads(notebooks).
+
+### <a name="example---using-new-job-cluster-in-databricks"></a>Przykład — przy użyciu nowego klastra zadania w Databricks
+
+```json
+{
+    "name": "AzureDatabricks_LS",
+    "properties": {
+        "type": "AzureDatabricks",
+        "typeProperties": {
+            "domain": "eastus.azuredatabricks.net",
+            "newClusterNodeType": "Standard_D3_v2",
+            "newClusterNumOfWorker": "1:10",
+            "newClusterVersion": "4.0.x-scala2.11",
+            "accessToken": {
+                "type": "SecureString",
+                "value": "dapif33c9c721144c3a790b35000b57f7124f"
+            }
+        }
+    }
+}
+
+```
+
+### <a name="example---using-existing-interactive-cluster-in-databricks"></a>Przykład — przy użyciu istniejącego klastra interakcyjnego w Databricks
+
+```json
+{
+    "name": " AzureDataBricksLinedService",
+    "properties": {
+      "type": " AzureDatabricks",
+      "typeProperties": {
+        "domain": "https://westeurope.azuredatabricks.net",
+        "accessToken": {
+            "type": "SecureString", 
+            "value": "dapif33c9c72344c3a790b35000b57f7124f"
+          },
+        "existingClusterId": "{clusterId}"
+        }
+}
+
+```
+
+### <a name="properties"></a>Właściwości
+
+| Właściwość             | Opis                              | Wymagane                                 |
+| -------------------- | ---------------------------------------- | ---------------------------------------- |
+| name                 | Nazwa połączonej usługi               | Yes   |
+| type                 | Powinien mieć ustawioną właściwość type: **AzureDatabricks**. | Yes                                      |
+| domena               | Określ Region platformy Azure, odpowiednio oparte na obszaru roboczego Databricks. Przykład: https://eastus.azuredatabricks.net | Yes                                 |
+| accessToken          | Token dostępu jest wymagane dla fabryki danych do uwierzytelniania Azure Databricks. Token dostępu musi być uzyskane z obszaru roboczego databricks. Szczegółowe kroki, aby znaleźć tokenu dostępu można znaleźć [tutaj](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Yes                                       |
+| existingClusterId    | Identyfikator klastra z istniejącego klastra do uruchamiania wszystkich zadań na tym. Powinno to być już utworzonego klastra interaktywnego. Może być konieczne ręczne ponowne uruchomienie klastra, jeśli przestaje odpowiadać. Databricks sugeruje uruchomionych zadań na nowych klastrów zwiększa niezawodność. Identyfikator klastra można znaleźć interakcyjne klastra na Databricks -> obszar roboczy klastrów -> interaktywnego nazwa klastra -> Konfiguracja -> tagów. [więcej informacji](https://docs.databricks.com/user-guide/clusters/tags.html) | Nie 
+| newClusterVersion    | Wersja klastra Spark. Klaster zadania zostanie utworzony w databricks. | Nie  |
+| newClusterNumOfWorker| Liczba węzłów procesu roboczego, które powinny mieć tego klastra. Klaster ma jeden sterownika Spark i num_workers z modułów wykonujących dla danych całkowitych num_workers + 1 węzłów Spark. Ciąg sformatowany Int32, jak jest "1" oznacza numOfWorker 1 lub "1:10" oznacza automatycznego skalowania z 1 min i 10 jako max.  | Nie                |
+| newClusterNodeType   | To pole koduje za pośrednictwem pojedynczej wartości zasoby dostępne dla każdego z węzłów Spark, w tym klastrze. Na przykład Spark węzłów może być udostępniane i zoptymalizowane pod kątem pamięci lub obliczeniowych intensywnych obciążeń to pole jest wymagane dla nowego klastra                | Nie               |
+| newClusterSparkConf  | zestaw par klucz wartość konfiguracji Spark opcjonalne, określone przez użytkownika. Użytkownicy mogą również przenosić w ciągu dodatkowe opcje JVM do sterownika i modułów za pośrednictwem spark.driver.extraJavaOptions i spark.executor.extraJavaOptions odpowiednio. | Nie  |
 
 
 ## <a name="azure-sql-database-linked-service"></a>Połączona usługa Azure SQL Database

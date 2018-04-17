@@ -1,11 +1,11 @@
 ---
-title: "Sprawdź ruchu z przepływem IP obserwatora sieci platformy Azure Sprawdź — REST | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób sprawdzania, jeśli ruch do i z maszyny wirtualnej jest dozwolona lub odmowa"
+title: Sprawdź ruchu z przepływem IP obserwatora sieci platformy Azure Sprawdź — REST | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób sprawdzania, jeśli ruch do i z maszyny wirtualnej jest dozwolona lub odmowa
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3307a79f-03be-46a0-aaaf-b2079cb5f3b2
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 3ccef9ef521b86ffc1eb6047174f4f9e5d9e4296
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c3d38f776db63e777174b7dca8b09a0d19c387e8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Sprawdź, czy ruch jest dozwolony lub odrzucany z przepływem IP Sprawdź składnik Azure obserwatora sieciowego
 
 > [!div class="op_single_selector"]
-> - [Azure portal](network-watcher-check-ip-flow-verify-portal.md)
+> - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 > - [Program PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 > - [Interfejs wiersza polecenia 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 > - [Interfejs wiersza polecenia 2.0](network-watcher-check-ip-flow-verify-cli.md)
@@ -165,7 +165,7 @@ Odpowiedź, wracając informuje, czy ruch jest dozwolony lub niedozwolony. Odpow
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/virtual-network-manage-nsg-arm-portal.md) Aby dowiedzieć się więcej na temat grup zabezpieczeń sieci.
+Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) Aby dowiedzieć się więcej na temat grup zabezpieczeń sieci.
 
 
 

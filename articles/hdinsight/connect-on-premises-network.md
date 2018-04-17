@@ -1,23 +1,21 @@
 ---
-title: "HDInsight nawiązać połączenia z siecią lokalną - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia klastra usługi HDInsight w sieci wirtualnej platformy Azure, a następnie połącz go z sieci lokalnej. Dowiedz się, jak skonfigurować rozpoznawanie nazw między HDInsight i siecią lokalną przy użyciu niestandardowego serwera DNS."
-documentationcenter: 
+title: HDInsight nawiązać połączenia z siecią lokalną - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia klastra usługi HDInsight w sieci wirtualnej platformy Azure, a następnie połącz go z sieci lokalnej. Dowiedz się, jak skonfigurować rozpoznawanie nazw między HDInsight i siecią lokalną przy użyciu niestandardowego serwera DNS.
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ea793af7fc4565c054675af7cbf88b74722690f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>HDInsight nawiązać połączenie z siecią lokalną
 
@@ -74,7 +72,7 @@ Do utworzenia maszyny Wirtualnej systemu Linux, który używa [powiązać](https
 > * [Tworzenie maszyny wirtualnej — interfejs wiersza polecenia platformy Azure](../virtual-machines/linux/quick-create-cli.md)
 > * [Tworzenie maszyny Wirtualnej — program Azure PowerShell](../virtual-machines/linux/quick-create-portal.md)
 
-1. Z [portalu Azure](https://portal.azure.com), wybierz pozycję  __+__ , __obliczeniowe__, i __Ubuntu Server 16.04 LTS__.
+1. Z [portalu Azure](https://portal.azure.com), wybierz pozycję __+__, __obliczeniowe__, i __Ubuntu Server 16.04 LTS__.
 
     ![Tworzenie maszyny wirtualnej systemu Ubuntu](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
@@ -126,7 +124,7 @@ Do utworzenia maszyny Wirtualnej systemu Linux, który używa [powiązać](https
     > * [Powłoka w chmurze Azure](../cloud-shell/quickstart.md)
     > * [Bash na Ubuntu w systemie Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. Aby zainstalować Bind, użyj następujących poleceń w sesji SSH:
 
@@ -297,7 +295,7 @@ Wykonaj kroki w [tworzenia klastra usługi HDInsight przy użyciu portalu Azure]
 
 ## <a name="connecting-to-hdinsight"></a>Nawiązywanie połączenia z usługi HDInsight
 
-Większość dokumentacji w usłudze HDInsight założono, że dostęp do klastra za pośrednictwem Internetu. Na przykład czy możesz połączyć się z klastrem w https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego brama nie jest dostępna w przypadku użycia grup NSG lub Udr ograniczyć dostęp z Internetu.
+Większość dokumentacji w usłudze HDInsight założono, że dostęp do klastra za pośrednictwem Internetu. Na przykład możesz połączyć się z klastrem pod adresem https://CLUSTERNAME.azurehdinsight.net. Ten adres używa publicznego brama nie jest dostępna w przypadku użycia grup NSG lub Udr ograniczyć dostęp z Internetu.
 
 Odwołujący się części dokumentacji `headnodehost` podczas nawiązywania połączenia z klastrem w sesji SSH. Ten adres jest dostępna wyłącznie z węzłów w klastrze, a nie jest używany na klientów połączonych za pośrednictwem sieci wirtualnej.
 

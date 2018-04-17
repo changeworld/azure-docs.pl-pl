@@ -1,26 +1,24 @@
 ---
-title: "Python funkcji zdefiniowanej przez użytkownika z Apache Hive i wieprzowa — usługa Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać języka Python użytkownika określone funkcje (UDF) z Hive i Pig w usłudze HDInsight Hadoop stosu technologii na platformie Azure."
+title: Python funkcji zdefiniowanej przez użytkownika z Apache Hive i wieprzowa — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać języka Python użytkownika określone funkcje (UDF) z Hive i Pig w usłudze HDInsight Hadoop stosu technologii na platformie Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: c44d6606-28cd-429b-b535-235e8f34a664
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f98fe82a9637cfdddf7af1dcb6aaf979bffcad6f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c508ffcdd5cccaad5c7b0717d33e2ea1449ab522
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Funkcje (UDF) za pomocą technologii Hive i Pig zdefiniowane przez użytkownika Python użycia w usłudze HDInsight
 
@@ -381,7 +379,7 @@ Informacje o błędzie (STDERR) oraz wyniku zadania (STDOUT) również są rejes
 | Dla tego zadania... | Przyjrzyj się te pliki w kontenerze obiektów blob |
 | --- | --- |
 | Hive |/ HivePython/stderr<p>/ HivePython/stdout |
-| Pig |/PigPython/stderr<p>/ PigPython/stdout |
+| Pig |/ PigPython/stderr<p>/ PigPython/stdout |
 
 ## <a name="next"></a>Następne kroki
 

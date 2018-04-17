@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ea5b19abed0b9d2a2b8131f2be3be14e94e17405
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Hadoop w usłudze HDInsight przy użyciu portalu Azure
 
@@ -63,7 +61,7 @@ Należy określić subskrypcji platformy Azure, podczas tworzenia klastra usług
     1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
     2. Kliknij przycisk **subskrypcji** z menu po lewej stronie. Ma ona żółta ikona klucza. Zostanie wyświetlona lista subskrypcji.
     3. Kliknij subskrypcję, która służy do tworzenia klastrów. 
-    4. Kliknij przycisk **Moje uprawnienia**.  Widoczny jest Twoje [roli](../active-directory/role-based-access-control-what-is.md#built-in-roles) dla tej subskrypcji. Należy co najmniej współautora dostęp do tworzenia klastra usługi HDInsight.
+    4. Kliknij przycisk **Moje uprawnienia**.  Widoczny jest Twoje [roli](../role-based-access-control/overview.md#built-in-roles) dla tej subskrypcji. Należy co najmniej współautora dostęp do tworzenia klastra usługi HDInsight.
 
 - Aby użyć istniejącej grupy zasobów:
 
@@ -89,7 +87,7 @@ Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionR
 
     **Menu po lewej stronie:**
     * **Dzienniki aktywności**: Pokaż i zapytania Dzienniki aktywności.
-    * **Kontrola (IAM) dostępu**: za pomocą przypisań ról.  Zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../active-directory/role-based-access-control-configure.md).
+    * **Kontrola (IAM) dostępu**: za pomocą przypisań ról.  Zobacz [zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../role-based-access-control/role-assignments-portal.md).
     * **Tagi**: umożliwia ustawienie pary klucz wartość do definiowania niestandardowych taksonomii usług w chmurze. Na przykład może utworzyć klucz o nazwie **projektu**, a następnie użyć wspólną wartość wszystkie usługi powiązane z określonego projektu.
     * **Diagnozowanie i rozwiązywanie problemów**: Wyświetl informacje dotyczące rozwiązywania problemów.
     * **Blokuje**: Dodaj blokady, aby zapobiec, przy czym klastra, zmodyfikowane lub usunięte.
@@ -121,7 +119,7 @@ Jeśli wystąpi błąd NoRegisteredProviderFound lub błąd MissingSubscriptionR
    * **Region**: Lokalizacja platformy Azure. Aby uzyskać listę obsługiwanych lokalizacji platformy Azure, zobacz **Region** lista rozwijana na [cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    * **Data utworzenia**: Data klastra została wdrożona.
    * **System operacyjny**: albo **Windows** lub **Linux**.
-   * **Type**: Hadoop, HBase, Storm, Spark.
+   * **Typ**: Hadoop, HBase, Storm, Spark.
    * **Wersja**. Zobacz [wersji usługi HDInsight](hdinsight-component-versioning.md).
    * **Subskrypcja**: Nazwa subskrypcji.
    * **Domyślne źródło danych**: domyślny system plików klastra.

@@ -1,13 +1,13 @@
 ---
-title: "Samoobsługowego resetowania hasła często zadawane pytania — Azure Active Directory"
-description: "Często zadawane pytania dotyczące usługi Azure AD samoobsługi hasła resetowania"
+title: Samoobsługowego resetowania hasła często zadawane pytania — Azure Active Directory
+description: Często zadawane pytania dotyczące usługi Azure AD samoobsługi hasła resetowania
 services: active-directory
-keywords: "Zarządzanie hasłami w usłudze Active directory, zarządzanie hasłami, usługi Azure AD samodzielnego resetowania hasła usługi"
-documentationcenter: 
+keywords: Zarządzanie hasłami w usłudze Active directory, zarządzanie hasłami, usługi Azure AD samodzielnego resetowania hasła usługi
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d30e3f099f497f35938b702d5fbb3ca38565f7c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>Często zadawane pytania dotyczące zarządzania hasłami
 
@@ -105,7 +105,7 @@ Często zadawane pytania jest podzielony na następujące sekcje:
     >Jeśli użytkownik nie otrzyma powiadomienie w tym czasie:
         > * Sprawdź folder wiadomości-śmieci.
         > * Sprawdź, czy numer lub adres e-mail jest nawiązywane połączenie, którego można spodziewać się.
-        > * Sprawdź, czy dane uwierzytelniania w katalogu jest poprawnie sformatowana, na przykład 4255551234 + 1 lub  *user@contoso.com* . 
+        > * Sprawdź, czy dane uwierzytelniania w katalogu jest poprawnie sformatowana, na przykład 4255551234 + 1 lub *user@contoso.com*. 
   >
   >
 * **Pytanie: jakie języki są obsługiwane przez resetowania hasła?**
@@ -190,7 +190,7 @@ Często zadawane pytania jest podzielony na następujące sekcje:
   >
 * **Pytanie: czy można zablokować użytkownikom zresetowania hasła?**
 
-  > **Odpowiedź:** tak, jeśli używasz grupy w celu włączenia funkcji SSPR, można usunąć użytkownika z grupy, który umożliwia użytkownikom resetowania hasła.
+  > **Odpowiedź:** tak, jeśli używasz grupy w celu włączenia funkcji SSPR, można usunąć użytkownika z grupy, który umożliwia użytkownikom resetowania hasła. Jeśli użytkownik jest administratorem globalnym będzie zachowują możliwość resetowania hasła i nie można wyłączyć.
   >
   >
 

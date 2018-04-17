@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 6f141fc03b64d0ca922d003f6352b7751ab9967d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b8b0b8934b51080c3583281673183c1498c26417
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia deweloperskie na maszynie wirtualnej nauki danych
 
@@ -60,7 +60,7 @@ Maszyna wirtualna nauki danych (DSVM) zapewnia wydajne środowisko do programowa
 | DSVM obsługiwane wersje      | Linux      |
 | Typowe zastosowania      |  Programowanie R     |
 | Jak używać / uruchom go?      | Włącz usługę z _systemctl włączenia serwera programu rstudio_, następnie uruchom usługę za pomocą _systemctl start serwera programu rstudio_. Możesz następnie zalogować się do serwera programu RStudio na http://your-vm-ip:8787.       |
-| Pokrewne narzędzia na DSVM      |   Visual Studio 2017, Visual Studio Code, RStudio Desktop      |
+| Pokrewne narzędzia na DSVM      |   Visual Studio 2017, kod programu Visual Studio, programu RStudio pulpitu      |
 
 ## <a name="juno"></a>Juno 
 |    |           |

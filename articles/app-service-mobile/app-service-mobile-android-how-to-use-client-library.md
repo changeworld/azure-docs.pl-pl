@@ -1,6 +1,6 @@
 ---
-title: "Jak używać zestawu Azure Mobile Apps SDK dla systemu Android | Dokumentacja firmy Microsoft"
-description: "Jak używać zestawu Azure Mobile Apps SDK dla systemu Android"
+title: Jak używać zestawu Azure Mobile Apps SDK dla systemu Android | Dokumentacja firmy Microsoft
+description: Jak używać zestawu Azure Mobile Apps SDK dla systemu Android
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: f04f3fc7d2ff2e01baa78571b2ba267f8e4905c6
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 868ce171206fcd74ee0ecb099b67bf81970bc9ae
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu Azure Mobile Apps SDK dla systemu Android
 
@@ -224,8 +224,8 @@ public class ToDoItem
 
     @com.google.gson.annotations.SerializedName("createdAt")
     private DateTimeOffset mCreatedAt;
-    public DateTimeOffset getUpdatedAt() { return mCreatedAt; }
-    protected DateTimeOffset setUpdatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
+    public DateTimeOffset getCreatedAt() { return mCreatedAt; }
+    protected DateTimeOffset setCreatedAt(DateTimeOffset createdAt) { mCreatedAt = createdAt; }
 
     @com.google.gson.annotations.SerializedName("updatedAt")
     private DateTimeOffset mUpdatedAt;
@@ -290,7 +290,7 @@ Najpierw należy uzyskać odwołania do tabeli.  Następnie można wykonać zapy
 
 Klauzule musi być podana w wyżej wymieniona kolejność.
 
-### <a name="filter"></a>Filtrowanie wyników
+### <a name="filter"></a> Filtrowanie wyników
 
 Formularz ogólny kwerendy jest:
 

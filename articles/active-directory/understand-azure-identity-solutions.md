@@ -1,23 +1,23 @@
 ---
-title: "Zrozumienie tożsamość platformy Azure | Dokumentacja firmy Microsoft"
-description: "Uzyskaj podstawową wiedzę na temat warunków rozwiązania tożsamości Microsoft Azure, pojęcia i zalecenia dotyczące najlepszych decyzji ładu tożsamości dla Twojej organizacji."
-keywords: 
+title: Zrozumienie tożsamość platformy Azure | Dokumentacja firmy Microsoft
+description: Uzyskaj podstawową wiedzę na temat warunków rozwiązania tożsamości Microsoft Azure, pojęcia i zalecenia dotyczące najlepszych decyzji ładu tożsamości dla Twojej organizacji.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.date: 7/17/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 4438917db93c37ddbba3e7ee692b2e3c065d2beb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Zrozumienie Azure tożsamościach
 Microsoft Azure Active Directory (Azure AD) to rozwiązanie chmury zarządzania tożsamościami i dostępem, który udostępnia usługi katalogowe, Zarządzanie tożsamościami i zarządzania dostępem do aplikacji. Usługi Azure AD szybko [umożliwia logowanie jednokrotne (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) do 1 000 na wstępnie zintegrowanych aplikacji handlowych i niestandardowych w [galerii aplikacji Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Wiele z tych aplikacji prawdopodobnie już używasz usługi Office 365, witryny Salesforce.com, pola, usługi ServiceNow i produktu Workday.
@@ -37,7 +37,7 @@ Przed podjęciem decyzji na rozwiązanie tożsamość platformy Azure dla organi
 |Subskrypcja platformy Azure |Subskrypcje są używane w celu opłacenia usług w chmurze Azure i zwykle są połączone z karty kredytowej. Może mieć kilka subskrypcji, ale może być trudne do udostępniania zasobów między subskrypcjami.|
 |Dzierżawą platformy Azure | Dzierżawa usługi Azure AD jest reprezentatywna dla pojedynczej organizacji. Jest dedykowany zaufanych wystąpienie usługi Azure AD, który jest automatycznie tworzony, gdy organizacja rejestruje się w subskrypcji usługi chmury firmy Microsoft, takich jak Azure, Intune lub usługi Office 365. Dzierżawcy mogą uzyskać dostęp do usług w dedykowanym środowisku (pojedynczej dzierżawy) lub współużytkowanego środowiska z innymi organizacjami (wielodostępnej).|
 |Katalog usługi Azure AD | Poszczególne dzierżawy Azure zawierają Azure dedykowanym, zaufany katalog AD, który zawiera użytkowników, grup i aplikacji dzierżawcy. Służy do wykonywania tożsamości i dostępu do funkcji zarządzania dla zasobów dzierżawy. Ponieważ unikatowego katalogu usługi Azure AD jest udostępniany automatycznie do reprezentowania organizacji po utworzeniu konta dla usługi w chmurze Microsoft Azure, Microsoft Intune lub usługi Office 365, zobaczysz czasami warunki *dzierżawy*,  *Usługi Azure AD*, i *katalog usługi Azure AD* używane zamiennie. |
-|Domena niestandardowa | Po utworzeniu najpierw konta dla subskrypcji usługi Microsoft cloud, dzierżawy (organizacja) używa *. onmicrosoft.com* nazwy domeny. Jednak większość organizacji ma jedną lub więcej nazw domen, które są używane do działalności biznesowej i przez użytkowników końcowych umożliwia dostęp do zasobów firmy. Można dodać niestandardową nazwę domeny do usługi Azure AD, aby nazwa domeny jest znajome dla użytkowników, takich jak  *alice@contoso.com*  zamiast  *alice@contoso.onmicrosoft.com* . |
+|Domena niestandardowa | Po utworzeniu najpierw konta dla subskrypcji usługi Microsoft cloud, dzierżawy (organizacja) używa *. onmicrosoft.com* nazwy domeny. Jednak większość organizacji ma jedną lub więcej nazw domen, które są używane do działalności biznesowej i przez użytkowników końcowych umożliwia dostęp do zasobów firmy. Można dodać niestandardową nazwę domeny do usługi Azure AD, aby nazwa domeny jest znajome dla użytkowników, takich jak *alice@contoso.com* zamiast *alice@contoso.onmicrosoft.com*. |
 |Konto Azure AD | Są to tożsamości, które są tworzone za pomocą usługi Azure AD lub innej usługi chmury firmy Microsoft, takich jak Office 365. Są one przechowywane w usłudze Azure AD i dostępny dla żadnego z subskrypcji usługi w chmurze w organizacji. |
 |Administratorem subskrypcji platformy Azure| Konto administratora jest osobą, która utworzył konto na lub zakupiono subskrypcję platformy Azure. Mogą używać [Centrum konta](https://account.azure.com/Subscriptions) do wykonywania różnych zadań zarządzania, takich jak tworzyć subskrypcje, anulowanie subskrypcji, zmienić rozliczeń dla subskrypcji lub zmienić administratora usługi. |
 |Administrator globalny usługi Azure AD | Administratorzy globalni usługi Azure AD mają pełny dostęp do wszystkich funkcji administracyjnych usługi Azure AD. Osoba, która zarejestruje się w subskrypcji usługi Microsoft cloud automatycznie staje się administratorem globalnym domyślnie. Może mieć więcej niż jednego administratora globalnego, ale wyłącznie administratorzy globalni mogą przypisywać każdą z [innych ról administratora](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) dla użytkowników. |
@@ -53,7 +53,7 @@ Teraz, znając postanowienia podstawowe tożsamość platformy Azure można nale
 |-----|-----|
 |[Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) |Każda subskrypcja platformy Azure ma relację zaufania z katalogiem Azure AD do uwierzytelniania użytkowników, usług i urządzeń. *Wiele subskrypcji może ufać ten sam katalog usługi Azure AD, ale subskrypcji będą ufać tylko jeden katalog usługi Azure AD*. Relacja zaufania między różni się od relacji, która subskrypcji z innych zasobów platformy Azure (witrynami sieci Web, baz danych i tak dalej), które przypominają bardziej podrzędne zasoby subskrypcji. Jeśli subskrypcja wygaśnie, dostęp do zasobów związanych z subskrypcji innych niż Azure AD również zatrzymywany. Jednak katalog usługi Azure AD pozostanie na platformie Azure, dzięki czemu można skojarzyć z nim inną subskrypcję oraz kontynuować zarządzanie zasoby dzierżawcy.|
 |[Jak Azure AD licencjonowania działania](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-get-started-azure-portal) | Katalog materiałów szkoleniowych Enterprise Mobility Suite, Azure AD Premium lub usługi Azure AD podstawowa, zostaje zaktualizowany z subskrypcją, w tym jego okresu ważności i przedpłaty licencji. Gdy subskrypcja jest aktywna, można zarządza Administratorzy globalni usługi Azure AD i używane przez licencjonowani użytkownicy usługi. Informacje o Twojej subskrypcji, wraz z liczbą przydzielonych lub dostępnych licencji, jest dostępna w portalu Azure z **usługi Azure Active Directory** > **licencji** bloku. Jest to również najlepszym miejscem, aby zarządzać przypisaniami licencji.|
-|[Oparta na rolach kontrola dostępu w portalu Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)|Azure opartej na rolach kontroli dostępu (RBAC) zapewnia precyzyjne zarządzanie dostępem do zasobów platformy Azure. Zbyt wiele uprawnienia można ujawnić i konta dla atakujących. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. Przy użyciu funkcji RBAC, zapewnić pracownikom dokładne uprawnienia, których potrzebują oparte na trzy podstawowe role, które są stosowane do wszystkich grup zasobów: właściciela, współautora, czytnika. Można również utworzyć maksymalnie 2000 własny [niestandardowe role RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) do konkretnych potrzeb. |
+|[Oparta na rolach kontrola dostępu w portalu Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)|Azure opartej na rolach kontroli dostępu (RBAC) zapewnia precyzyjne zarządzanie dostępem do zasobów platformy Azure. Zbyt wiele uprawnienia można ujawnić i konta dla atakujących. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. Przy użyciu funkcji RBAC, zapewnić pracownikom dokładne uprawnienia, których potrzebują oparte na trzy podstawowe role, które są stosowane do wszystkich grup zasobów: właściciela, współautora, czytnika. Można również utworzyć maksymalnie 2000 własny [niestandardowe role RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) do konkretnych potrzeb. |
 |[Tożsamość hybrydowa](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)|Tożsamość hybrydowa jest osiągane dzięki integracji z lokalnymi Windows Server Active Directory (AD DS) przy użyciu usługi Azure AD [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect). Dzięki temu można posługiwać się wspólną tożsamością dla użytkowników usługi Office 365, Azure i aplikacjami lokalnymi lub aplikacji SaaS zintegrowanych z usługą Azure AD. Tożsamość hybrydowa można skutecznie rozszerzanie środowiska lokalnego do chmury na potrzeby tożsamościami i dostępem.|
 
 ### <a name="the-difference-between-windows-server-ad-ds-and-azure-ad"></a>Różnica między systemu Windows Server AD DS i Azure AD
@@ -118,7 +118,7 @@ Będziemy mieć ogromne dużą zasobów online ułatwiające Dowiedz się wszyst
 * [Co to jest licencjonowania usługi Microsoft Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
 * [Jak odnajdywać niezatwierdzone aplikacje w chmurze używanych mojej organizacji](active-directory-cloudappdiscovery-whatis.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Znasz koncepcji tożsamość platformy Azure i dostępne opcje można użyć następujących zasobów, aby rozpocząć wdrażanie, wybrana opcja:
 

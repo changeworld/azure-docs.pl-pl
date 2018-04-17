@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
 ms.author: billmath
-ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: edf22ea0cfe60cb734b4339363d50af050466000
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="pim-for-azure-resources"></a>PIM dla zasobów platformy Azure
 
@@ -43,7 +43,7 @@ Azure AD PIM można zarządzać wbudowane role zasobów Azure, a także niestand
 - Menedżer zabezpieczeń i inne
 
 >[!NOTE]
-Użytkowników lub członków grupy przypisane do ról właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy może Przypisz role, skonfiguruj ustawienia roli, a następnie przejrzyj dostępu do zasobów Azure przy użyciu usługi PIM. Wyświetl listę [wbudowane role zasobów Azure](../role-based-access-built-in-roles.md).
+Użytkowników lub członków grupy przypisane do ról właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy może Przypisz role, skonfiguruj ustawienia roli, a następnie przejrzyj dostępu do zasobów Azure przy użyciu usługi PIM. Wyświetl listę [wbudowane role zasobów Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="tasks"></a>Zadania
 
@@ -193,6 +193,6 @@ Wybierz z menu nawigacji po lewej stronie Moje ról, a następnie wybierz odpowi
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wbudowane role zasobów platformy Azure](../role-based-access-built-in-roles.md)
+- [Wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md)
 - Dowiedz się więcej o [aktywowanie tutaj ról usługi Azure AD](../active-directory-privileged-identity-management-how-to-activate-role.md)
 - [PIM przepływów pracy](azure-ad-pim-approval-workflow.md)

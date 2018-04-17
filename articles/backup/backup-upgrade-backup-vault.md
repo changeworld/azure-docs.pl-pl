@@ -1,11 +1,11 @@
 ---
-title: "Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania usługi Azure Backup | Dokumentacja firmy Microsoft"
-description: "Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania, aby uzyskać nowe funkcje, takie jak kopii zapasowej Menedżera zasobów maszyn wirtualnych, zwiększone zabezpieczenia, kopii zapasowej maszyny Wirtualnej VMware i kopii zapasowej stanu systemu dla serwerów systemu Windows"
+title: Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania usługi Azure Backup | Dokumentacja firmy Microsoft
+description: Uaktualnienia magazynu kopii zapasowych w magazynie usług odzyskiwania, aby uzyskać nowe funkcje, takie jak kopii zapasowej Menedżera zasobów maszyn wirtualnych, zwiększone zabezpieczenia, kopii zapasowej maszyny Wirtualnej VMware i kopii zapasowej stanu systemu dla serwerów systemu Windows
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: 
+editor: ''
 keyword: backup vault; upgrade vault; recovery services vault
 ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Magazyn kopii zapasowych uaktualnione do magazynu usług odzyskiwania
 Ten artykuł zawiera omówienie magazynu usług odzyskiwania, jakie udostępnia, często zadawane pytania na temat uaktualniania istniejącej kopii zapasowej magazynu do magazynu usług odzyskiwania i czynności po uaktualnieniu. Magazyn usług odzyskiwania jest odpowiednikiem usługi Azure Resource Manager w magazynie kopii zapasowej, która przechowuje dane kopii zapasowej. Dane są zwykle kopii danych lub informacje o konfiguracji dla maszyn wirtualnych (VM), obciążenia, serwerach lub stacjach roboczych, czy lokalnie lub na platformie Azure.
@@ -34,7 +34,7 @@ Magazyny usług odzyskiwania są oparte na modelu usługi Azure Resource Manager
 
 - **Centralne monitorowanie sieci hybrydowe środowiska IT**: magazynów z usług odzyskiwania, można monitorować nie tylko z [maszyn wirtualnych IaaS platformy Azure](backup-azure-manage-vms.md) , ale także z [zasoby lokalne](backup-azure-manage-windows-server.md#manage-backup-items) z centralnej portalu. [Dowiedz się więcej](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Kontrola dostępu oparta na rolach (RBAC)**: RBAC zapewnia szczegółowej zarządzania kontroli dostępu na platformie Azure. [Platforma Azure oferuje różne role wbudowane](../active-directory/role-based-access-built-in-roles.md), a kopia zapasowa Azure ma trzy [wbudowane role, aby zarządzać punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usług odzyskiwania są zgodne z RBAC, który ogranicza możliwość użycia kopii zapasowej i przywracania dostępu do zdefiniowanego zestawu ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
+- **Kontrola dostępu oparta na rolach (RBAC)**: RBAC zapewnia szczegółowej zarządzania kontroli dostępu na platformie Azure. [Platforma Azure oferuje różne role wbudowane](../role-based-access-control/built-in-roles.md), a kopia zapasowa Azure ma trzy [wbudowane role, aby zarządzać punktami odzyskiwania](backup-rbac-rs-vault.md). Magazyny usług odzyskiwania są zgodne z RBAC, który ogranicza możliwość użycia kopii zapasowej i przywracania dostępu do zdefiniowanego zestawu ról użytkownika. [Dowiedz się więcej](backup-rbac-rs-vault.md)
 
 - **Chroń wszystkie konfiguracje maszyn wirtualnych Azure**: Magazyny usług odzyskiwania chronić maszyny wirtualne oparte na Menedżera zasobów, w tym dyski Premium, dysków zarządzanych i szyfrowane maszyn wirtualnych. Uaktualnianie magazynu kopii zapasowych do magazynu usług odzyskiwania daje możliwość uaktualnienia programu Service Manager na podstawie maszyn wirtualnych do maszyn wirtualnych w Menedżerze zasobów. Podczas uaktualniania magazynu, można zachować punktów odzyskiwania maszyny Wirtualnej opartej na programu Service Manager i skonfiguruj ochronę uaktualnionego maszyn wirtualnych (włączone Resource Manager). [Dowiedz się więcej](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 

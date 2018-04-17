@@ -1,24 +1,24 @@
 ---
-title: "Utwórz Power BI Embedded pojemności w portalu Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule przedstawiono sposób tworzenia Power BI Embedded pojemności w Microsoft Azure."
+title: Utwórz Power BI Embedded pojemności w portalu Azure | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono sposób tworzenia Power BI Embedded pojemności w Microsoft Azure.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: bf7eb967760338626cd7e0465b16dc570e5f582a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: maghan
+ms.openlocfilehash: 2fadfde13aee3aaf965c6ba30188544a8a075b9d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-power-bi-embedded-capacity-in-the-azure-portal"></a>Utwórz Power BI Embedded pojemności w portalu Azure
 
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
 * **Subskrypcja platformy Azure:** odwiedź [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/free/) tworzenia konta.
-* **Azure Active Directory:** subskrypcji musi być skojarzony z dzierżawy usługi Azure Active Directory (AAD). A ***musisz być zalogowany na platformie Azure przy użyciu konta w tej dzierżawie***. Konta Microsoft nie są obsługiwane. Aby dowiedzieć się więcej, zobacz uprawnienia do uwierzytelniania i użytkownika.
+* **Azure Active Directory:** subskrypcji musi być skojarzony z dzierżawy usługi Azure Active Directory (AAD). A ***musisz być zalogowany na platformie Azure przy użyciu konta w tej dzierżawie***. Konta Microsoft nie są obsługiwane. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](../analysis-services/analysis-services-manage-users.md).
 * **Power BI dzierżawy:** co najmniej jedno konto w dzierżawie usługi AAD muszą utworzyli konto usługi Power BI.
 * **Grupa zasobów:** Użyj masz już grupę zasobów lub [Utwórz nową](../azure-resource-manager/resource-group-overview.md).
 

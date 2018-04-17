@@ -1,22 +1,22 @@
 ---
-title: "Jak to zrobić dowód z posiadania dla certyfikatów urzędów certyfikacji X.509 przy użyciu usługi inicjowania obsługi urządzeń Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "Sposób weryfikacji certyfikatów X.509 urzędu certyfikacji z usługą punktu dystrybucji"
+title: Jak to zrobić dowód z posiadania dla certyfikatów urzędów certyfikacji X.509 przy użyciu usługi inicjowania obsługi urządzeń Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: Sposób weryfikacji certyfikatów X.509 urzędu certyfikacji z usługą punktu dystrybucji
 services: iot-dps
-keywords: 
-author: JimacoMS
+keywords: ''
+author: bryanla
 ms.author: v-jamebr
 ms.date: 02/26/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 07fe5f975e59c10fcd716db6585e2ae0fefc90e4
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: dd54ca5a172bdb65b7781f2fb764b00f50e5df28
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak to zrobić dowód z posiadania dla certyfikatów urzędów certyfikacji X.509 przy użyciu usługi inicjowania obsługi urządzeń
 
@@ -70,7 +70,7 @@ Skrypty programu PowerShell i Bash, znajdujące się w dokumentacji i zestawy SD
 
 1. Przekaż wynikowy podpisu jako certyfikat weryfikacji do inicjowania obsługi usługi w portalu. W **szczegóły certyfikatu** w portalu Azure za pomocą _Eksploratora plików_ obok opcji **plik PEM lub .cer certyfikatu weryfikacji** pola, aby przekazać podpisany certyfikat weryfikacji z systemu.
 
-2. Po pomyślnym przekazaniu certyfikat, kliknij przycisk **Sprawdź**. **Stan** zmian certyfikatu  **_zweryfikowano_**  w **Explorer certyfikatu** listy. Kliknij przycisk **Odśwież** nie automatycznie aktualizacji.
+2. Po pomyślnym przekazaniu certyfikat, kliknij przycisk **Sprawdź**. **Stan** zmian certyfikatu **_zweryfikowano_** w **Explorer certyfikatu** listy. Kliknij przycisk **Odśwież** nie automatycznie aktualizacji.
 
    ![Przekaż certyfikat weryfikacji](./media/how-to-verify-certificates/upload-cert-verification.png)  
 

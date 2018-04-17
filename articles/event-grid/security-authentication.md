@@ -1,6 +1,6 @@
 ---
-title: "Azure siatki zdarzeń zabezpieczeń i uwierzytelniania"
-description: "Opisuje Azure zdarzeń siatki i jego pojęcia."
+title: Azure siatki zdarzeń zabezpieczeń i uwierzytelniania
+description: Opisuje Azure zdarzeń siatki i jego pojęcia.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f97de4e93c9330206ed22c071d8ade0821bf6691
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Zdarzenie siatki zabezpieczeń i uwierzytelniania 
 
@@ -154,7 +154,7 @@ Siatka zdarzeń platformy Azure obsługuje następujące akcje:
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Ostatnie trzy operacje zwracać potencjalnie poufne informacje, które pobiera przefiltrowane z normalnych operacji odczytu. Jest najlepszym rozwiązaniem, można ograniczyć dostęp do tych operacji. Role niestandardowe można tworzyć przy użyciu [programu Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md), [Azure interfejsu wiersza polecenia (CLI)](../active-directory/role-based-access-control-manage-access-azure-cli.md)i [interfejsu API REST](../active-directory/role-based-access-control-manage-access-rest.md).
+Ostatnie trzy operacje zwracać potencjalnie poufne informacje, które pobiera przefiltrowane z normalnych operacji odczytu. Jest najlepszym rozwiązaniem, można ograniczyć dostęp do tych operacji. Role niestandardowe można tworzyć przy użyciu [programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md), [Azure interfejsu wiersza polecenia (CLI)](../role-based-access-control/role-assignments-cli.md)i [interfejsu API REST](../role-based-access-control/role-assignments-rest.md).
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>Wymuszanie roli na podstawie sprawdzanie dostępu (RBAC)
 

@@ -1,8 +1,8 @@
 ---
-title: "Udostępnić pulpity nawigacyjne portalu Azure za pomocą RBAC | Dokumentacja firmy Microsoft"
-description: "W tym artykule wyjaśniono, jak udostępniać pulpitu nawigacyjnego w portalu Azure przy użyciu kontroli dostępu opartej na rolach."
+title: Udostępnić pulpity nawigacyjne portalu Azure za pomocą RBAC | Dokumentacja firmy Microsoft
+description: W tym artykule wyjaśniono, jak udostępniać pulpitu nawigacyjnego w portalu Azure przy użyciu kontroli dostępu opartej na rolach.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: 33ddfef1e23a6ff0c2cb8e359d408d2c42cbcf3a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 75f06e49aa317fc887831a9e04861d9a7989bdb2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Udostępnianie pulpitów nawigacyjnych Azure przy użyciu kontroli dostępu opartej na rolach
-Po skonfigurowaniu pulpitu nawigacyjnego, można ją opublikować i udostępnić go innym użytkownikom w organizacji. Możesz zezwolić na wyświetlanie pulpitu nawigacyjnego za pomocą usługi Azure [kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-configure.md). Przypisanie użytkownika lub grupy użytkowników do roli, a ta rola definiuje, czy tym użytkownikom można wyświetlać lub modyfikować opublikowane pulpitu nawigacyjnego. 
+Po skonfigurowaniu pulpitu nawigacyjnego, można ją opublikować i udostępnić go innym użytkownikom w organizacji. Możesz zezwolić na wyświetlanie pulpitu nawigacyjnego za pomocą usługi Azure [kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md). Przypisanie użytkownika lub grupy użytkowników do roli, a ta rola definiuje, czy tym użytkownikom można wyświetlać lub modyfikować opublikowane pulpitu nawigacyjnego. 
 
 Wszystkie opublikowane pulpity nawigacyjne są zaimplementowane jako zasobów platformy Azure, co oznacza istnieje jako elementy można zarządzać w ramach subskrypcji i znajdują się w grupie zasobów.  Z perspektywy kontroli dostępu pulpity nawigacyjne są nie różni się od innych zasobów, takich jak maszyny wirtualnej lub konto magazynu.
 
@@ -73,7 +73,7 @@ Pulpit nawigacyjny zostały opublikowane. Jeśli uprawnienia dziedziczone z subs
    
      ![przypisane role](./media/azure-portal-dashboard-share-access/assigned-roles.png)
 
-## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać listę ról, zobacz [RBAC: role wbudowane](../active-directory/role-based-access-built-in-roles.md).
+## <a name="next-steps"></a>Kolejne kroki
+* Aby uzyskać listę ról, zobacz [RBAC: role wbudowane](../role-based-access-control/built-in-roles.md).
 * Aby uzyskać informacje dotyczące zarządzania zasobami, zobacz [zasobów Azure zarządzania za pośrednictwem portalu](resource-group-portal.md).
 
