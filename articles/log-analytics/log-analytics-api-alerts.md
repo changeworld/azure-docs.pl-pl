@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 04/10/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed0ac6e2041ef503470f7317a5736deecd1d2b8f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 642b27405c703aa7a30d9fc544009d70b5d1b2df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w analizy dzienników z interfejsu API REST
 Dziennik analizy alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w Operations Management Suite (OMS).  Ten artykuł zawiera szczegółowe informacje o interfejsie API i kilka przykładów do wykonywania różnych operacji.
@@ -101,7 +101,7 @@ Wszystkie działania mają właściwości w poniższej tabeli.  Różne typy ale
 ### <a name="retrieving-actions"></a>Pobieranie akcji
 
 > [!NOTE]
-> Począwszy od 23 kwietnia 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 23 kwietnia 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 Pobierz wszystkie akcje dla harmonogramu za pomocą metody Get.
 
@@ -124,7 +124,7 @@ Format żądania do tworzenia nowej akcji zależy od typu akcji, te przykłady z
 ### <a name="deleting-actions"></a>Usuwanie akcji
 
 > [!NOTE]
-> Począwszy od 23 kwietnia 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 23 kwietnia 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 Za pomocą metody Delete identyfikator akcji można usunąć akcji.
 
@@ -144,7 +144,7 @@ Harmonogram ma jeden i tylko jeden Alert akcji.  Akcje alertu występuje jeden l
 | Akcje elementu Webhook | Wypychanie danych z alertami, do żądanej usługi w formacie JSON |Nie jest to wymagane, jeśli alerty zostały rozszerzone na platformie Azure|
 
 > [!NOTE]
-> Począwszy od 23 kwietnia 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 23 kwietnia 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
 
 #### <a name="thresholds"></a>Progi
 Akcja alertu powinna mieć jeden i tylko jeden próg.  Jeśli wyniki zapisanego kryterium wyszukiwania zgodne próg w akcji skojarzonej z tym wyszukiwania, są uruchamiane żadnych innych procesów w tej akcji.  Akcja może również zawierać tylko wartości progowej, aby mogą być używane z akcjami innych typów, które nie zawierają wartości progowe.
@@ -322,7 +322,7 @@ Za pomocą metody Put istniejącego Identyfikatora akcji można zmodyfikować gr
 Powiadomienia e-mail wysyłanie poczty do co najmniej jednego adresata.  Obejmują one właściwości w poniższej tabeli.
 
 > [!NOTE]
-> Począwszy od 23 kwietnia 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 23 kwietnia 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcji, takich jak powiadomienia E-Mail teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcji, takich jak powiadomienia E-Mail teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
    
 
 | Właściwość | Opis |
@@ -366,7 +366,7 @@ Aby zmodyfikować działanie poczty e-mail dla harmonogramu, należy użyć meto
 Korygowaniami uruchomienia elementu runbook w automatyzacji Azure, które próbuje naprawić problem identyfikowana na podstawie alertu.  Należy utworzyć elementu webhook dla elementu runbook, używany w Akcja korygowania i następnie określ identyfikator URI we właściwości WebhookUri.  Podczas tworzenia tej akcji, używając konsoli OMS nowego elementu webhook jest tworzona automatycznie dla elementu runbook.
 
 > [!NOTE]
-> Począwszy od 23 kwietnia 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 23 kwietnia 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcji, takich jak korygowania przy użyciu elementu runbook teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcji, takich jak korygowania przy użyciu elementu runbook teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 Korygowaniami obejmują właściwości w poniższej tabeli.
 
@@ -425,7 +425,7 @@ Poniżej znajduje się pełny przykład można utworzyć nowy alert e-mail.  Spo
 Akcje elementu Webhook uruchomienia procesu podczas wywoływania adresu URL i opcjonalnie podając ładunku do wysłania.  Są one podobne do akcji korygowania, z wyjątkiem są przeznaczone dla elementów webhook, które może wywołać procesy inne niż elementy runbook automatyzacji Azure.  Zawierają także dodatkowe opcja podania ładunku mają zostać dostarczone do zdalnego procesu.
 
 > [!NOTE]
-> Począwszy od 23 kwietnia 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 23 kwietnia 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcji, takich jak Webhook teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym zostanie automatycznie rozszerzony do platformy Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcji, takich jak Webhook teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [API grupy akcji](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 
 Akcje elementu Webhook nie mają tego progu, ale zamiast tego powinni zostać dodani do harmonogram, który ma akcję alertu o progu.  

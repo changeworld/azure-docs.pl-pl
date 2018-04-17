@@ -1,11 +1,11 @@
 ---
-title: "Najlepsze rozwiązania maszyny wirtualnej platformy Azure"
-description: "Ten artykuł zawiera szereg najlepszych rozwiązań dotyczących zabezpieczeń do użycia w przypadku maszyn wirtualnych znajdujących się na platformie Azure."
+title: Najlepsze rozwiązania maszyny wirtualnej platformy Azure
+description: Ten artykuł zawiera szereg najlepszych rozwiązań dotyczących zabezpieczeń do użycia w przypadku maszyn wirtualnych znajdujących się na platformie Azure.
 services: security
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5e757abe-16f6-41d5-b1be-e647100036d8
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ddddf72d1ded0fb7952a641c287a4a5696e3aaef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Najlepsze rozwiązania dotyczące zabezpieczeń maszyny Wirtualnej Azure
 
@@ -49,14 +49,14 @@ Artykuł sprawdza następujące najlepsze rozwiązania zabezpieczeń maszyny Wir
 
 Pierwszym środkiem ochrony maszyny Wirtualnej jest zapewnienie, że tylko autoryzowani użytkownicy będą mogli skonfigurować nowe maszyny wirtualne. Można użyć [zasady Azure](../azure-policy/azure-policy-introduction.md) nawiązywania konwencje dla zasobów w organizacji, tworzenie zasad niestandardowych i zastosować te zasady do zasobów, takich jak [grup zasobów](../azure-resource-manager/resource-group-overview.md).
 
-Maszyny wirtualne, które należą do grupy zasobów naturalnie dziedziczą jego zasadami. Mimo że firma Microsoft zaleca to rozwiązanie do zarządzania maszynami wirtualnymi, można także kontrolować dostęp do poszczególnych zasad maszyny Wirtualnej za pomocą [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-configure.md).
+Maszyny wirtualne, które należą do grupy zasobów naturalnie dziedziczą jego zasadami. Mimo że firma Microsoft zaleca to rozwiązanie do zarządzania maszynami wirtualnymi, można także kontrolować dostęp do poszczególnych zasad maszyny Wirtualnej za pomocą [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
 Po włączeniu zasady Resource Manager i RBAC kontrolować dostęp do maszyny Wirtualnej, można zwiększyć ogólne bezpieczeństwo maszyny Wirtualnej. Firma Microsoft zaleca konsolidować maszyn wirtualnych z tego samego cyklu życia w tej samej grupie zasobów. Za pomocą grup zasobów, można wdrożyć, monitorowania i rzutowanie rozliczeń kosztów zasobów. Aby umożliwić użytkownikom dostęp i konfigurowanie maszyn wirtualnych, należy użyć [najniższych uprawnień podejście](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models). A jeśli uprawnienia są przypisane do użytkowników, będą używane następujące role wbudowane Azure:
 
-- [Maszyny wirtualnej współautora](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor): można zarządzać maszynami wirtualnymi, ale nie wirtualnych sieci lub magazynu konto z którym jest połączony.
-- [Klasycznym współautora maszyny wirtualnej](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor): można zarządzać maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania, ale nie z wirtualnych sieci lub magazynu konta połączenie maszyn wirtualnych.
-- [Menedżer zabezpieczeń](../active-directory/role-based-access-built-in-roles.md#security-manager): Zarządzanie składniki zabezpieczeń, zasady zabezpieczeń i maszyn wirtualnych.
-- [DevTest Labs użytkownika](../active-directory/role-based-access-built-in-roles.md#devtest-labs-user): można przeglądać wszystko i połączyć, uruchom ponownie uruchom i zamknij maszyny wirtualne.
+- [Maszyny wirtualnej współautora](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): można zarządzać maszynami wirtualnymi, ale nie wirtualnych sieci lub magazynu konto z którym jest połączony.
+- [Klasycznym współautora maszyny wirtualnej](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): można zarządzać maszyny wirtualne utworzone przy użyciu klasycznego modelu wdrażania, ale nie z wirtualnych sieci lub magazynu konta połączenie maszyn wirtualnych.
+- [Menedżer zabezpieczeń](../role-based-access-control/built-in-roles.md#security-manager): Zarządzanie składniki zabezpieczeń, zasady zabezpieczeń i maszyn wirtualnych.
+- [DevTest Labs użytkownika](../role-based-access-control/built-in-roles.md#devtest-labs-user): można przeglądać wszystko i połączyć, uruchom ponownie uruchom i zamknij maszyny wirtualne.
 
 Nie udostępniaj kont i haseł innym administratorom, a nie ponownie użyć hasła w wielu kont użytkowników lub usług, szczególnie hasła związanych z mediami społecznościowymi lub innymi działaniami innych niż administracyjne. W idealnym przypadku należy użyć [usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) następujące szablony maszyn wirtualnych bezpieczny sposób. Przy użyciu tej metody, można wzmocnienie wybrane opcje wdrażania oraz wymusi ustawienia zabezpieczeń w całym wdrożeniu.
 

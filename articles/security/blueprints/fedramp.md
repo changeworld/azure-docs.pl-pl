@@ -1,6 +1,6 @@
 ---
-title: "Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web FedRAMP"
-description: "Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web FedRAMP"
+title: Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web FedRAMP
+description: Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web FedRAMP
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 10ed297180f68fcaf006f2778990879be02f994d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web FedRAMP
 
@@ -76,10 +76,9 @@ To rozwiązanie wymaga następujących usług platformy Azure. Szczegółowe inf
 * **Azure Active Directory**
 * **Azure Resource Manager**
 * **Program Azure Log Analytics**
+    - (1) obszar roboczy analizy dzienników
 * **Azure Automation**
     - (1) konto automatyzacji
-* **Operations Management Suite**
-    - (1) obszar roboczy OMS
 
 ## <a name="deployment-architecture"></a>Architektura wdrażania
 
@@ -136,7 +135,7 @@ Szyfrowanie dysków Azure umożliwia zaszyfrowanych dysków maszyny wirtualnej s
 
 ### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) zapewnia szczegółowe rejestrowanie działania systemu i użytkownika, a także kondycji systemu. 
+[Zaloguj się Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) zapewnia szczegółowe rejestrowanie działania systemu i użytkownika, a także kondycji systemu. 
 
 - **Dzienniki aktywności:**[Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobów w ramach subskrypcji.
 - **Dzienniki diagnostyczne:**[dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są wszystkie dzienniki emitowane przez każdego zasobu. Dzienniki te obejmują dzienniki systemu zdarzeń systemu Windows, dzienniki usługi Azure storage, dzienników inspekcji usługi Key Vault i dzienniki bramy aplikacji dostępu i zapory.
@@ -154,7 +153,7 @@ Rozwiązanie używa usługi Azure Key Vault do zarządzania kluczy i kluczy tajn
 Następujące technologie potwierdzenie tożsamości możliwości zarządzania w środowisku platformy Azure.
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) jest wielodostępne oparte na chmurze katalogami i tożsamościami zarządzania usługi Microsoft.
 - Używanie programu Azure AD można wykonać uwierzytelniania do aplikacji sieci web wdrożonych przez klienta. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
-- [Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Subskrypcja dostęp jest ograniczony do administratora subskrypcji, a dostęp do zasobów można ograniczyć na podstawie roli użytkownika.
+- [Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Subskrypcja dostęp jest ograniczony do administratora subskrypcji, a dostęp do zasobów można ograniczyć na podstawie roli użytkownika.
 - Wdrożone wystąpienie IaaS usługi Active Directory umożliwia zarządzanie tożsamości na poziomie systemu operacyjnego dla wdrożonych maszyn wirtualnych IaaS.
    
 ### <a name="compute-resources"></a>Zasoby obliczeniowe
@@ -182,17 +181,17 @@ Jumpbox zarządzania (host bastionu) zapewnia bezpieczne połączenie, Administr
 
 ### <a name="patch-management"></a>Zarządzanie poprawkami
 
-Maszyny wirtualne systemu Windows wdrożone przez Azure zabezpieczeń i zgodności plan automatyzacji są domyślnie skonfigurowane, odbierania automatycznych aktualizacji z usługi Windows Update. To rozwiązanie również wdraża rozwiązanie OMS usługi Automatyzacja Azure za pomocą których można utworzyć wdrożenia aktualizacji do wdrożenia poprawki na serwerach z systemem Windows w razie potrzeby.
+Maszyny wirtualne systemu Windows wdrożone przez Azure zabezpieczeń i zgodności plan automatyzacji są domyślnie skonfigurowane, odbierania automatycznych aktualizacji z usługi Windows Update. To rozwiązanie również wdraża rozwiązanie Automatyzacja Azure za pomocą których można utworzyć wdrożenia aktualizacji do wdrożenia poprawki na serwerach z systemem Windows w razie potrzeby.
 
 ### <a name="operations-management"></a>Zarządzanie operacjami
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics/) jest usługą w operacji pakiet zarządzania (OMS), który umożliwia zbieranie i analiza danych wygenerowanych przez zasobami na platformie Azure i lokalnego środowiska.
+[Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics/) to usługa, która umożliwia zbieranie i analiza danych wygenerowanych przez zasobami na platformie Azure i lokalnego środowiska.
 
-#### <a name="oms-solutions"></a>Rozwiązania pakietu OMS
+#### <a name="management-solutions"></a>Rozwiązania do zarządzania
 
-Następujące rozwiązania OMS są wstępnie zainstalowane w ramach tego rozwiązania:
+Następujące rozwiązania do zarządzania są wstępnie zainstalowane w ramach tego rozwiązania:
 - [Ocena usługi AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)
 - [Ocena oprogramowania chroniącego przed złośliwym kodem](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)
 - [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)

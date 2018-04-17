@@ -1,6 +1,6 @@
 ---
-title: "Najważniejsze wskazówki dotyczące bezpieczeństwa danych i szyfrowania | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące bezpieczeństwa danych i szyfrowania za pomocą wbudowanych funkcji platformy Azure."
+title: Najważniejsze wskazówki dotyczące bezpieczeństwa danych i szyfrowania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące bezpieczeństwa danych i szyfrowania za pomocą wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0cebc7ae5279b720e8fd0d6c986e1706d944476f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 159bdf681761b9fc46f77cbcf25a210db11d1d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Dobre praktyki dotyczące zabezpieczeń danych platformy Azure i szyfrowania
 Jeden z kluczy do ochrony danych w chmurze jest księgowanie możliwe stany, w których może wystąpić danych oraz kontrolki są dostępne dla tego stanu. Danych Azure na potrzeby szyfrowania najlepsze praktyki dotyczące zabezpieczeń i zalecenia będą wokół stanów następujące dane:
@@ -63,11 +63,11 @@ Aby uzyskać więcej informacji dotyczących usługi Azure MFA, przeczytaj artyk
 ## <a name="use-role-based-access-control-rbac"></a>Kontrola dostępu (RBAC) oparta na rolach użycia
 Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) zasad zabezpieczeń. Jest to konieczne w przypadku organizacji, które mają być wymuszać zasady zabezpieczeń dla dostępu do danych. Azure opartej na rolach kontroli dostępu (RBAC) może służyć do przypisywania uprawnień do użytkowników, grup i aplikacji w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji.
 
-Można wykorzystać [wbudowane role RBAC](../active-directory/role-based-access-built-in-roles.md) na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie *współautora konta magazynu* dla operatorów chmury, które muszą zarządzać kontami magazynu i *klasycznego współautora konta magazynu* roli do zarządzania klasycznych kont magazynu. Operatorzy chmury, które musi zarządzać maszynami wirtualnymi i konto magazynu, należy rozważyć dodanie ich do *Współautor·maszyny·wirtualnej* roli.
+Można wykorzystać [wbudowane role RBAC](../role-based-access-control/built-in-roles.md) na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie *współautora konta magazynu* dla operatorów chmury, które muszą zarządzać kontami magazynu i *klasycznego współautora konta magazynu* roli do zarządzania klasycznych kont magazynu. Operatorzy chmury, które musi zarządzać maszynami wirtualnymi i konto magazynu, należy rozważyć dodanie ich do *Współautor·maszyny·wirtualnej* roli.
 
 Organizacje, które nie wymusić kontrolę dostępu danych dzięki wykorzystaniu możliwości, takie jak RBAC może nadanie więcej uprawnień niż jest to niezbędne dla użytkowników. Może to prowadzić do naruszenia danych dzięki użyciu niektórzy użytkownicy mieli dostęp do danych, które nie powinny mieć w pierwszej kolejności.
 
-Użytkownik może dowiedzieć się więcej o Azure RBAC przeczytaj artykuł [kontroli dostępu](../active-directory/role-based-access-control-configure.md).
+Użytkownik może dowiedzieć się więcej o Azure RBAC przeczytaj artykuł [kontroli dostępu](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="encrypt-azure-virtual-machines"></a>Szyfrowanie maszyn wirtualnych platformy Azure
 W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) jest obowiązkowy krok na drodze suwerenności dane, zgodności i ochrony prywatności danych. Szyfrowanie dysków Azure umożliwia administratorom IT szyfrowanie dysków systemu Windows i Linux IaaS maszyn wirtualnych (VM). Szyfrowanie dysków Azure korzysta z branży funkcje BitLocker standardowych systemu Windows i DM-Crypt systemu Linux w celu zapewnienia szyfrowania woluminów systemu operacyjnego i dysków z danymi.

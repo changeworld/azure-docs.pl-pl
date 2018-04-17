@@ -1,10 +1,10 @@
 ---
-title: "Typy adresów IP na platformie Azure (klasyczne) | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat publiczne i prywatne adresy IP (klasyczne) na platformie Azure."
+title: Typy adresów IP na platformie Azure (klasyczne) | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat publiczne i prywatne adresy IP (klasyczne) na platformie Azure.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 2f8664ab-2daf-43fa-bbeb-be9773efc978
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
-ms.author: jdial
-ms.openlocfilehash: d5eea5e4499b9de40002ce2fc6aac39239c41b19
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.author: genli
+ms.openlocfilehash: f9e36abd44c2012d96a6ead8659197dcf66c6032
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Typy adresów IP i metod alokacji (klasyczne) na platformie Azure
 Do zasobów platformy Azure można przypisać adresy IP w celu komunikowania się z innymi zasobami platformy Azure, siecią lokalną i Internetem. Istnieją dwa typy adresów IP można używać w Azure: prywatnych i publicznych.
@@ -91,10 +91,10 @@ W poniższej tabeli przedstawiono każdy typ zasobu z metod możliwe alokacji (d
 
 | Zasób | Dynamiczny | Statyczny | Wiele adresów IP |
 | --- | --- | --- | --- |
-| Usługi w chmurze |Tak |Tak |Tak |
-| Wystąpienia roli maszyny Wirtualnej IaaS i PaaS |Tak |Nie |Nie |
-| Brama sieci VPN |Tak |Nie |Nie |
-| Brama aplikacji |Tak |Nie |Nie |
+| Usługa w chmurze |Yes |Yes |Yes |
+| Wystąpienia roli maszyny Wirtualnej IaaS i PaaS |Yes |Nie |Nie |
+| Brama sieci VPN |Yes |Nie |Nie |
+| Brama aplikacji |Yes |Nie |Nie |
 
 ## <a name="private-ip-addresses"></a>Prywatne adresy IP
 Prywatne adresy IP umożliwiają zasobom platformy Azure do komunikowania się z innymi zasobami w usłudze w chmurze lub [sieci wirtualnej](virtual-networks-overview.md)(VNet), lub do sieci lokalnej (za pośrednictwem bramy sieci VPN lub obwodu ExpressRoute), bez użycia Internet dostępny adres IP.
@@ -141,10 +141,10 @@ W poniższej tabeli przedstawiono każdy typ zasobu z metod możliwe alokacji (d
 
 | Zasób | Dynamiczny | Statyczny | Wiele adresów IP |
 | --- | --- | --- | --- |
-| Maszyna wirtualna (w *autonomiczny* usługi lub sieci wirtualnej w chmurze) |Tak |Tak |Tak |
-| Wystąpienia roli PaaS (w *autonomiczny* usługi lub sieci wirtualnej w chmurze) |Tak |Nie |Nie |
-| Frontonu modułu równoważenia obciążenia wewnętrznego |Tak |Tak |Tak |
-| Frontonu bramy aplikacji |Tak |Tak |Tak |
+| Maszyna wirtualna (w *autonomiczny* usługi lub sieci wirtualnej w chmurze) |Yes |Yes |Yes |
+| Wystąpienia roli PaaS (w *autonomiczny* usługi lub sieci wirtualnej w chmurze) |Yes |Nie |Nie |
+| Frontonu modułu równoważenia obciążenia wewnętrznego |Yes |Yes |Yes |
+| Frontonu bramy aplikacji |Yes |Yes |Yes |
 
 ## <a name="limits"></a>Limity
 W poniższej tabeli przedstawiono ograniczenia narzucone na IP adresowania na platformie Azure dla subskrypcji. [Kontaktując się z pomocą techniczną](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), możesz zwiększyć domyślne limity do maksimum w zależności od potrzeb biznesowych.
@@ -166,15 +166,15 @@ Poniżej przedstawiono porównanie funkcji adresów IP w programie Resource Mana
 
 |  | Zasób | Wdrożenie klasyczne | Resource Manager |
 | --- | --- | --- | --- |
-| **Publiczny adres IP** |***MASZYNA WIRTUALNA*** |Określone jako ILPIP (tylko dynamiczny) |Określone jako publiczny adres IP (dynamiczna lub statyczna) |
+| **Publiczny adres IP** |***VM*** |Określone jako ILPIP (tylko dynamiczny) |Określone jako publiczny adres IP (dynamiczna lub statyczna) |
 |  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Skojarzone do karty Sieciowej maszyny Wirtualnej | |
 |  |***Internet równoważenia obciążenia*** |Nazywane VIP (dynamiczny) lub zastrzeżonego adresu IP (statyczny) |Określone jako publiczny adres IP (dynamiczna lub statyczna) | |
 |  ||Przypisane do usługi w chmurze |Skojarzonego z konfiguracji frontonu modułu równoważenia obciążenia | |
 |  | | | |
-| **Prywatny adres IP** |***MASZYNA WIRTUALNA*** |Określone jako DIP |Określone jako prywatnego adresu IP |
+| **Prywatny adres IP** |***VM*** |Określone jako DIP |Określone jako prywatnego adresu IP |
 |  ||Przypisane do maszyn wirtualnych IaaS lub wystąpień roli PaaS |Przypisane do karty Sieciowej maszyny Wirtualnej | |
 |  |***Wewnętrzny moduł równoważenia obciążenia (ILB)*** |Przypisane do ILB (dynamiczna lub statyczna) |Przypisane do konfiguracji frontonu ILB (dynamiczna lub statyczna) | |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Wdróż maszynę Wirtualną za pomocą statycznego prywatnego adresu IP](virtual-networks-static-private-ip-classic-pportal.md) przy użyciu portalu Azure.
 

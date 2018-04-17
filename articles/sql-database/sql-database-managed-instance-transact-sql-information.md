@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0fe0b5d3120833b8472fcdaee366a5d1f2818600
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL bazy danych zarządzanych wystąpienia T-SQL różnice z programu SQL Server 
 
@@ -239,7 +239,7 @@ Aby uzyskać więcej informacji, zobacz [FILESTREAM](https://docs.microsoft.com/
 ### <a name="linked-servers"></a>Serwery połączone
  
 Połączone serwery w wystąpieniu zarządzane obsługują ograniczoną liczbę elementów docelowych: 
-- Obsługiwane elementy docelowe: SQL Server, bazy danych SQL, zarządzane wystąpienia i serwera SQL na maszynie wirtualnej.
+- Obsługiwane elementy docelowe: SQL Server i bazy danych SQL
 - Nieobsługiwane elementy docelowe: pliki usług Analysis Services i innych RDBMS.
 
 Operacje
@@ -280,7 +280,7 @@ Replikacja nie jest jeszcze obsługiwana. Aby uzyskać informacje o replikacji, 
  - `FROM DISK`/`TAPE`/ urządzenie kopii zapasowej nie jest obsługiwane.
  - Zestawy kopii zapasowych nie są obsługiwane. 
 - `WITH` Opcje nie są obsługiwane (nr `DIFFERENTIAL`, `STATS`itp.)     
-- `ASYNC RESTORE` -Restore będzie kontynuowane, nawet w przypadku przerwania połączenia klienta. Jeśli połączenie zostanie porzucone, można sprawdzić `sys.dm_operation_status` widok stanu operacji przywracania (a także tworzenie i PORZUCENIA bazy danych). See [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
+- `ASYNC RESTORE` -Restore będzie kontynuowane, nawet w przypadku przerwania połączenia klienta. Jeśli połączenie zostanie porzucone, można sprawdzić `sys.dm_operation_status` widok stanu operacji przywracania (a także tworzenie i PORZUCENIA bazy danych). Zobacz [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
  
 Następujące opcje bazy danych są zastąpione/zestawu i nie można zmienić później:  
 - `NEW_BROKER` (Jeśli plik bak nie jest włączony broker)  
@@ -419,4 +419,4 @@ Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `
 
 - Aby uzyskać więcej informacji o zarządzanych wystąpienia, zobacz [co to jest wystąpieniem zarządzane?](sql-database-managed-instance.md)
 - Dla funkcji i listy porównanie, zobacz [wspólne funkcje SQL](sql-database-features.md).
-- Samouczek, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-tutorial-portal.md).
+- Samouczek pokazuje sposób tworzenia nowego wystąpienia zarządzane, zobacz [Tworzenie wystąpienia zarządzane](sql-database-managed-instance-create-tutorial-portal.md).

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Omówienie monitorowania sieci platformy Azure
 
@@ -51,7 +51,7 @@ Obserwatora sieciowego ma obecnie następujące możliwości:
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Kontrola dostępu oparta na rolach (RBAC) w obserwatora sieciowego
 
-Sieć obserwatora [modelu based kontroli dostępu (RBAC)](../active-directory/role-based-access-control-what-is.md). Następujące uprawnienia są wymagane przez obserwatora sieciowego. Należy się upewnić, że rola używane do inicjowania interfejsów API obserwatora sieciowego lub za pomocą Monitora sieci z portalu ma wymagane uprawnienia dostępu.
+Sieć obserwatora [modelu based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). Następujące uprawnienia są wymagane przez obserwatora sieciowego. Należy się upewnić, że rola używane do inicjowania interfejsów API obserwatora sieciowego lub za pomocą Monitora sieci z portalu ma wymagane uprawnienia dostępu.
 
 |Zasób| Uprawnienie|
 |---|---| 
@@ -115,7 +115,7 @@ Rozwiązywania problemów z bloku obsługi w portalu jest dostarczany z zasobów
 
 Kondycja zasobu sieciowego znajduje się w regularnych odstępach czasu. Takie zasoby obejmują bramy sieci VPN i tunel VPN. Kondycja zasobów są dostępne w portalu Azure. Aby dowiedzieć się więcej na temat kondycji zasobów, odwiedź stronę [Przegląd kondycji zasobów](../resource-health/resource-health-overview.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Po zapoznawanie obserwatora sieciowego, aby dowiedzieć się do:
 

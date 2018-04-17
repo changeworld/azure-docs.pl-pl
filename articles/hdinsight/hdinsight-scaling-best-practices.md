@@ -1,26 +1,24 @@
 ---
 title: Skalowanie klastra rozmiary - Azure HDInsight | Dokumentacja firmy Microsoft
-description: "Skalowanie klastra usługi HDInsight w taki sposób, aby obciążenie."
+description: Skalowanie klastra usługi HDInsight w taki sposób, aby obciążenie.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 7e9ee660c07d6265e55e94cf79ed13334fcb3d16
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 8b76d7d0441a5c1c25ad17b73083ec0e4feef1fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-hdinsight-clusters"></a>Klastry HDInsight skali
 
@@ -125,7 +123,7 @@ Po opuszczeniu trybu awaryjnego, można ręcznie usunąć pliki tymczasowe lub p
 
 * Pokaż H100 nie można przesłać instrukcji baz danych: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: nawiązać hn0-clustername.servername.internal.cloudapp.net:10001 [hn0 clustername.servername . internal.cloudapp.NET/1.1.1.1] nie powiodła się: **połączenie zostało odrzucone**
 
-* Nie można H020 ustanowić połączenie .net hn0 hdisrv.servername.bx.internal.cloudapp: 10001: org.apache.thrift.transport.TTransportException: nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 /. org.apache.http.conn.HttpHostConnectException: nawiązać hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodła się: połączenie zostało odrzucone: org.apache.thrift.transport.TTransportException: nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 /. org.apache.http.conn.HttpHostConnectException: nawiązać hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodła się: **połączenie zostało odrzucone**
+* Nie można H020 ustanowić połączenie .net hn0 hdisrv.servername.bx.internal.cloudapp: 10001: org.apache.thrift.transport.TTransportException: nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: nawiązać hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodła się: połączenie zostało odrzucone: org.apache.thrift.transport.TTransportException: nie można utworzyć połączenia http http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: nawiązać hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nie powiodła się: **połączenie zostało odrzucone**
 
 * Z dzienników Hive: Ostrzeżenie [main]: serwera. Serwera HiveServer2 (HiveServer2.java:startHiveServer2(442)) — błąd podczas uruchamiania serwera HiveServer2 21, próba zostanie ponowiona w java.lang.RuntimeException 60 sekund: Wystąpił błąd podczas stosowania zasad autoryzacji w konfiguracji hive: org.apache.hadoop.ipc.RemoteException () org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **nie może utworzyć katalogu** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Nazwa węzła jest w trybie awaryjnym**.
     Bloki zgłoszone 0 musi dodatkowe bloki 9 do osiągnięcia wartości progowej 0.9900 całkowita liczba bloków 9.
@@ -156,7 +154,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 ![Wyłączony tryb awaryjny](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
 > [!NOTE]
-> `-D` Przełącznik jest konieczne, ponieważ domyślny system plików w usłudze HDInsight jest magazynu Azure lub usługi Azure Data Lake Store. `-D`Określa, że polecenie zostanie wykonane przeciwko lokalny system plików HDFS.
+> `-D` Przełącznik jest konieczne, ponieważ domyślny system plików w usłudze HDInsight jest magazynu Azure lub usługi Azure Data Lake Store. `-D` Określa, że polecenie zostanie wykonane przeciwko lokalny system plików HDFS.
 
 Następnie można wyświetlić raportu, który zawiera szczegółowe informacje o stanie systemu plików HDFS:
 

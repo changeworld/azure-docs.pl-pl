@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 89575f94e95c5ae378d95220d63c162e53158069
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9a04f6ebbca60e969d608e0ad92839b5e04d772
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Dostrajanie wydajności w bazie danych SQL Azure
 
@@ -28,7 +28,7 @@ Są to ręcznej metody, ponieważ potrzebne do podejmowania decyzji [warstw usł
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Zwiększenie poziomu wydajności bazy danych
 
-Baza danych SQL Azure oferuje cztery [warstw usług](sql-database-service-tiers.md) wybraną z: podstawowa, standardowa i Premium (mierzona jest wydajność w jednostek przepływności bazy danych, lub [Dtu](sql-database-what-is-a-dtu.md). Każdej warstwy usług izoluje ściśle zasobów można używać bazy danych SQL i zapewnia przewidywalną wydajność tego poziomu usług. W tym artykule firma Microsoft oferuje wskazówki, które ułatwiają wybieranie warstwy usługi dla aplikacji. Omówiono także sposoby dostroić aplikacji maksymalne z bazy danych SQL Azure.
+Baza danych SQL Azure oferuje dwa modele zakupów, model kupna vCore i systemem Core v model kupna. Każdy model ma wiele [warstw usług](sql-database-service-tiers.md) , które są dostępne. Każdej warstwy usług izoluje ściśle zasobów można używać bazy danych SQL i zapewnia przewidywalną wydajność tego poziomu usług. W tym artykule firma Microsoft oferuje wskazówki, które ułatwiają wybieranie warstwy usługi dla aplikacji. Omówiono także sposoby dostroić aplikacji maksymalne z bazy danych SQL Azure.
 
 > [!NOTE]
 > Ten artykuł skupia się na wytyczne dotyczące wydajności dla pojedynczej bazy danych w bazie danych SQL Azure. Aby uzyskać wskazówki dotyczące wydajności związane z pule elastyczne, zobacz [zagadnienia dotyczące cen i wydajności dla pul elastycznych](sql-database-elastic-pool-guidance.md). Należy pamiętać, jednak wiele dostrajania zaleceń w tym artykule dotyczą baz danych w puli elastycznej i uzyskiwanie podobnego zwiększenia wydajności.

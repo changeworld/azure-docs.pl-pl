@@ -1,5 +1,5 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania dotyczące zapory"
+title: Plan Azure przetwarzania płatności — wymagania dotyczące zapory
 description: PCI DSS wymaganie 1
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 995ecd5ef876695145fc6313aba2a46d2cc085cc
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 4e04d6417f1468c1bafada1a93ab63a73e39653d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące zapory dla środowisk standardem PCI DSS 
 ## <a name="pci-dss-requirement-1"></a>PCI DSS wymaganie 1
@@ -42,8 +42,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso zapory CDE z izolacją PaaS i implementacja interfejsu środowiska usługi aplikacji zapewnia CRP przychodzące i wychodzące danych jest chroniona.<br /><br />[Środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) jest planu usług Premium używane dla zachowania zgodności. Aby uzyskać więcej informacji na formanty ASE oraz konfiguracji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso zapory CDE z izolacją PaaS i implementacja interfejsu środowiska usługi aplikacji zapewnia CRP przychodzące i wychodzące danych jest chroniona.<br /><br />[Środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) jest planu usług Premium używane dla zachowania zgodności. Aby uzyskać więcej informacji na formanty ASE oraz konfiguracji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -56,8 +56,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Wystąpienie magazynu sieci Web firmy Contoso ustanawia modelu elementu konfiguracji/CD DevOps za zapewnienie, że wszystkie zmiany są poprawnie zarządzane. [Operations Management Suite (OMS)](/azure/operations-management-suite/) zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - usługi Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) zapewnia scentralizowane widok stanu zabezpieczeń wszystkich zasobów platformy Azure. Jeden rzut oka należy sprawdzić, czy odpowiednie środki zabezpieczające są stosowane i poprawnie skonfigurowany i można szybko zidentyfikować wszystkie zasoby, które wymagają uwagi.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Wystąpienie magazynu sieci Web firmy Contoso ustanawia modelu elementu konfiguracji/CD DevOps za zapewnienie, że wszystkie zmiany są poprawnie zarządzane. Analiza dzienników zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - usługi Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) zapewnia scentralizowane widok stanu zabezpieczeń wszystkich zasobów platformy Azure. Jeden rzut oka należy sprawdzić, czy odpowiednie środki zabezpieczające są stosowane i poprawnie skonfigurowany i można szybko zidentyfikować wszystkie zasoby, które wymagają uwagi.|
 
 
 
@@ -69,8 +69,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Zajrzyj do dokumentacji architektury i projektu odwołanie magazynu sieci Web firmy Contoso w ramach instalacji wzorca rozwiązania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Zajrzyj do dokumentacji architektury i projektu odwołanie magazynu sieci Web firmy Contoso w ramach instalacji wzorca rozwiązania.|
 
 
 
@@ -82,8 +82,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Zobacz magazynu sieci Web firmy Contoso DPD i modelu zagrożeń.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Zobacz magazynu sieci Web firmy Contoso DPD i modelu zagrożeń.|
 
 
 
@@ -95,8 +95,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje granic ochrony urządzeń, takich jak bramy, listy kontroli dostępu w sieci i zapory aplikacji do obsługi komunikacji sterowania na granicach wewnętrznych i zewnętrznych na poziomie platformy. Klient skonfiguruje je do ich specyfikacjach i wymaganiach. Microsoft Azure filtruje komunikacji po wznowieniu na platformie. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zapewnia strefą DMZ z izolacją PaaS i implementacja interfejsu środowiska usługi aplikacji zapewnia CRP przychodzące i wychodzące danych jest chroniona.<br /><br />[Środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) jest planu usług Premium używane dla zachowania zgodności. Aby uzyskać więcej informacji na formanty ASE oraz konfiguracji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje granic ochrony urządzeń, takich jak bramy, listy kontroli dostępu w sieci i zapory aplikacji do obsługi komunikacji sterowania na granicach wewnętrznych i zewnętrznych na poziomie platformy. Klient skonfiguruje je do ich specyfikacjach i wymaganiach. Microsoft Azure filtruje komunikacji po wznowieniu na platformie. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zapewnia strefą DMZ z izolacją PaaS i implementacja interfejsu środowiska usługi aplikacji zapewnia CRP przychodzące i wychodzące danych jest chroniona.<br /><br />[Środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) jest planu usług Premium używane dla zachowania zgodności. Aby uzyskać więcej informacji na formanty ASE oraz konfiguracji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -108,8 +108,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [based kontroli dostępu (RBAC)](/azure/active-directory/role-based-access-control-configure) do izolowania ról użytkownika. RBAC umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Konfiguracja istnieje dla subskrypcji dostępu i dostępu do usługi Azure Key Vault.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [based kontroli dostępu (RBAC)](/azure/role-based-access-control/role-assignments-portal) do izolowania ról użytkownika. RBAC umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Konfiguracja istnieje dla subskrypcji dostępu i dostępu do usługi Azure Key Vault.|
 
 
 
@@ -121,8 +121,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso otwiera tylko porty i protokoły wymagane w całej projektowania urzędu Rejestrowania. Szczegółowe informacje o przepływ danych są widoczne w modelu DPD i zagrożeń.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso otwiera tylko porty i protokoły wymagane w całej projektowania urzędu Rejestrowania. Szczegółowe informacje o przepływ danych są widoczne w modelu DPD i zagrożeń.|
 
 
 
@@ -134,8 +134,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | W Contoso Webstore zestawów reguł zapory są kontrolowane w celu zapewnienia, że żadne niepotrzebne lub nieużywane reguły są dołączone. Zgodnie z projektem pokaz jest wdrażana z najniższych uprawnień najmniejszy wpływ ścieżki.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | W Contoso Webstore zestawów reguł zapory są kontrolowane w celu zapewnienia, że żadne niepotrzebne lub nieużywane reguły są dołączone. Zgodnie z projektem pokaz jest wdrażana z najniższych uprawnień najmniejszy wpływ ścieżki.|
 
 
 
@@ -150,8 +150,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | CRP Contoso Webstore jest zdefiniowany w dokumentacji urząd Rejestrowania i wdrażania. Niezaufanych sieci są odrzucane przez projekt.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | CRP Contoso Webstore jest zdefiniowany w dokumentacji urząd Rejestrowania i wdrażania. Niezaufanych sieci są odrzucane przez projekt.|
 
 
 
@@ -163,8 +163,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | CRP Contoso Webstore jest zdefiniowany w dokumentacji urząd Rejestrowania i wdrażania. Niezaufanych sieci są odrzucane przez projekt. Wersja demonstracyjna magazynu sieci Web firmy Contoso konfiguruje zaporę aplikacji Microsoft Azure, aby umożliwić tylko określonych zakresów adresów IP dostępu do usług Microsoft Azure. Magazynu sieci Web firmy Contoso zawiera Odmów wszelkie zapory na wszystkich granic CRP. Wszystkie konfiguracje odbywa się podczas początkowej konfiguracji wdrożenia.
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | CRP Contoso Webstore jest zdefiniowany w dokumentacji urząd Rejestrowania i wdrażania. Niezaufanych sieci są odrzucane przez projekt. Wersja demonstracyjna magazynu sieci Web firmy Contoso konfiguruje zaporę aplikacji Microsoft Azure, aby umożliwić tylko określonych zakresów adresów IP dostępu do usług Microsoft Azure. Magazynu sieci Web firmy Contoso zawiera Odmów wszelkie zapory na wszystkich granic CRP. Wszystkie konfiguracje odbywa się podczas początkowej konfiguracji wdrożenia.
 
 > [!NOTE]
 > Środowisko usługi aplikacji (ASE) służy w tym rozwiązaniu do izolacji CRP jednak jest niezbędne, że Twoje kwalifikowaną doświadczeniem zabezpieczeń (QSA) daje w wyniku tego rozwiązania, ponieważ ASE implementuje izolacji DMZ, który zezwala na połączenia wychodzące przez ASE. PCI-DSS wymaga wszystkich połączeń przychodzących i wychodzących, które nie są wymagane musi być zablokowany. Dla ASE działał poprawnie, ASE będzie nawiązywać wychodzące połączenia jako potrzebne zgodnie z definicją w ["Zagadnienia dotyczące sieci dla środowiska usługi App Service"](/azure/app-service/app-service-environment/network-info). Klienci powinni sprawdzić połączenia wychodzące z Twojej QSA przed wdrożeniem rozwiązania w środowisku produkcyjnym w celu zapewnienia, że będzie spełniać wymagania. |
@@ -179,8 +179,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web zawiera konfiguracje synchronizowane dla formantów natywnego sieci Microsoft Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web zawiera konfiguracje synchronizowane dla formantów natywnego sieci Microsoft Azure.|
 
 
 
@@ -192,8 +192,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie ma żadnych rozwiązań sieci bezprzewodowej lub włączony.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie ma żadnych rozwiązań sieci bezprzewodowej lub włączony.|
 
 
 
@@ -205,8 +205,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje granic sieci i oparta na hoście ochrony urządzeń, takich jak zapory, moduły równoważenia obciążenia i listy kontroli dostępu. Te urządzenia używają mechanizmów, takich jak izolacji sieci VLAN, NAT i filtrowanie ruchu oddzielne klientów z Internetu i ruch związany z zarządzaniem pakietów. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia w czasie wdrażania, konfiguracji zapory aplikacji Azure umożliwia tylko określonych zakresów adresów IP, aby uzyskać dostęp do witryny, Dołącz bastionu maszynach wirtualnych platformy Azure w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje granic sieci i oparta na hoście ochrony urządzeń, takich jak zapory, moduły równoważenia obciążenia i listy kontroli dostępu. Te urządzenia używają mechanizmów, takich jak izolacji sieci VLAN, NAT i filtrowanie ruchu oddzielne klientów z Internetu i ruch związany z zarządzaniem pakietów. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia w czasie wdrażania, konfiguracji zapory aplikacji Azure umożliwia tylko określonych zakresów adresów IP, aby uzyskać dostęp do witryny, Dołącz bastionu maszynach wirtualnych platformy Azure w ich CRP.|
 
 
 
@@ -219,8 +219,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego DMZ gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego DMZ gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
 
 
 
@@ -232,8 +232,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego DMZ gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego DMZ gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
 
 
 
@@ -245,8 +245,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrowanie, aby zapobiec fałszywych ruchu i ograniczania ruchu przychodzącego i wychodzącego do TPM składników sieciowych. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrowanie, aby zapobiec fałszywych ruchu i ograniczania ruchu przychodzącego i wychodzącego do TPM składników sieciowych. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -259,8 +259,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Architektura magazynu sieci Web firmy Contoso uniemożliwia nieautoryzowany ruch wychodzący z poziomu środowiska w zakresie z Internetem. Jest to osiągane przez konfigurowanie ruchu wychodzącego listy ACL dla zatwierdzonych portów i protokołów w Microsoft Azure. Należą do nich dostęp do CDE w bazie danych programu SQL Server. <br /><br />Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Architektura magazynu sieci Web firmy Contoso uniemożliwia nieautoryzowany ruch wychodzący z poziomu środowiska w zakresie z Internetem. Jest to osiągane przez konfigurowanie ruchu wychodzącego listy ACL dla zatwierdzonych portów i protokołów w Microsoft Azure. Należą do nich dostęp do CDE w bazie danych programu SQL Server. <br /><br />Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -273,8 +273,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrowanie, aby zapobiec fałszywych ruchu i ograniczania ruchu przychodzącego i wychodzącego do TPM składników sieciowych. Sieci Microsoft Azure jest rozdzielone do rozdzielania ruchu klientów z ruch związany z zarządzaniem. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrowanie, aby zapobiec fałszywych ruchu i ograniczania ruchu przychodzącego i wychodzącego do TPM składników sieciowych. Sieci Microsoft Azure jest rozdzielone do rozdzielania ruchu klientów z ruch związany z zarządzaniem. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -287,8 +287,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure używa podział sieci i translacji adresów Sieciowych do rozdzielania ruchu klientów z ruch związany z zarządzaniem. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Architektura magazynu sieci Web firmy Contoso uniemożliwia nieautoryzowany ruch wychodzący z poziomu środowiska w zakresie z Internetem. Jest to osiągane przez konfigurowanie ruchu wychodzącego listy ACL dla zatwierdzonych portów i protokołów w Microsoft Azure. Należą do nich dostęp do CDE w bazie danych programu SQL Server. <br /><br />Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure używa podział sieci i translacji adresów Sieciowych do rozdzielania ruchu klientów z ruch związany z zarządzaniem. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Architektura magazynu sieci Web firmy Contoso uniemożliwia nieautoryzowany ruch wychodzący z poziomu środowiska w zakresie z Internetem. Jest to osiągane przez konfigurowanie ruchu wychodzącego listy ACL dla zatwierdzonych portów i protokołów w Microsoft Azure. Należą do nich dostęp do CDE w bazie danych programu SQL Server. <br /><br />Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -308,8 +308,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure używa translatora adresów sieciowych (NAT) i podział sieci do rozdzielania ruchu klientów z ruch związany z zarządzaniem. Urządzenia platformy Azure są identyfikowane przez ich UUID i uwierzytelniania przy użyciu protokołu Kerberos. Azure zarządzane sieci, które urządzenia są identyfikowane za pomocą IP RFC 1918 problemu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso umieszcza wszystkie dane posiadacza serwerów proxy/zapory i przestrzeń adresową RFC1918 jest używane wewnętrznie.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure używa translatora adresów sieciowych (NAT) i podział sieci do rozdzielania ruchu klientów z ruch związany z zarządzaniem. Urządzenia platformy Azure są identyfikowane przez ich UUID i uwierzytelniania przy użyciu protokołu Kerberos. Azure zarządzane sieci, które urządzenia są identyfikowane za pomocą IP RFC 1918 problemu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso umieszcza wszystkie dane posiadacza serwerów proxy/zapory i przestrzeń adresową RFC1918 jest używane wewnętrznie.|
 
 
 
@@ -323,8 +323,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie zapewnia ochrony użytkownik końcowy urządzenia. [Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) może służyć do zarządzania urządzeniami przenośnymi pracowników używa dostępu do danych firmowych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie zapewnia ochrony użytkownik końcowy urządzenia. [Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) może służyć do zarządzania urządzeniami przenośnymi pracowników używa dostępu do danych firmowych.|
 
 
 
@@ -336,8 +336,8 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia w czasie wdrażania, konfiguracji zapory aplikacji Azure umożliwia tylko określonych zakresów adresów IP, aby uzyskać dostęp do witryny, Dołącz bastionu maszynach wirtualnych platformy Azure w ich CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia w czasie wdrażania, konfiguracji zapory aplikacji Azure umożliwia tylko określonych zakresów adresów IP, aby uzyskać dostęp do witryny, Dołącz bastionu maszynach wirtualnych platformy Azure w ich CRP.|
 
 
 

@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 26204d5bd61d193a3d08e26f98faf77ecc367a94
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0eda9012e6b6c7207d200a6e550b6bc0b0b09882
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Użyj repliki tylko do odczytu, aby załadować równoważenie obciążeń zapytania tylko do odczytu (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ Po odczytu skalowalnego w poziomie jest włączona dla bazy danych, aplikacji na
 
 ## <a name="data-consistency"></a>Spójność danych
 
-Jedną z zalet AlwasyON jest replik zawsze znajdują się w stanie spójna transakcyjnie, że w różnych punktach w czasie mogą istnieć niektóre małe opóźnienia między innej repliki. Odczyt skalowalnego w poziomie obsługuje spójności z poziomu sesji. Oznacza to, połączenie sesji tylko do odczytu po wystąpieniu błędu połączenia spowodowane niedostępności replik, może zostać przekierowane do repliki, który nie jest aktualny repliki do odczytu / zapisu w 100%. Podobnie jeśli aplikacja zapisuje dane przy użyciu sesji odczytu i zapisu i natychmiast odczytuje go przy użyciu sesji tylko do odczytu, jest to możliwe, że najnowsze aktualizacje nie są od razu widoczne. Jest to spowodowane Powtórz dziennika transakcji w replikach jest asynchroniczne.
+Jedną z zalet funkcji AlwaysON jest replik zawsze znajdują się w stanie spójna transakcyjnie, że w różnych punktach w czasie mogą istnieć niektóre małe opóźnienia między innej repliki. Odczyt skalowalnego w poziomie obsługuje spójności z poziomu sesji. Oznacza to, połączenie sesji tylko do odczytu po wystąpieniu błędu połączenia spowodowane niedostępności replik, może zostać przekierowane do repliki, który nie jest aktualny repliki do odczytu / zapisu w 100%. Podobnie jeśli aplikacja zapisuje dane przy użyciu sesji odczytu i zapisu i natychmiast odczytuje go przy użyciu sesji tylko do odczytu, jest to możliwe, że najnowsze aktualizacje nie są od razu widoczne. Jest to spowodowane Powtórz dziennika transakcji w replikach jest asynchroniczne.
 
 > [!NOTE]
 > Brakuje opóźnienia replikacji w obrębie regionu i ta sytuacja jest rzadko.

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bfbcf8ff3f24b69b49b9a2bd5d567e1ead57d974
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Zmodyfikuj zestaw skali maszyny wirtualnej
 W całym cyklu życia aplikacji należy zmodyfikować lub zaktualizować zestawu skalowania maszyny wirtualnej. Aktualizacje te mogą obejmować jak zaktualizować konfigurację zestawu skali lub zmienić konfigurację aplikacji. W tym artykule opisano sposób modyfikowania istniejących zestaw interfejsów API REST, programu Azure PowerShell lub Azure CLI 2.0 skalowania.
@@ -347,6 +347,7 @@ Niektóre właściwości można ustawić tylko podczas tworzenia zestawu skalowa
 - Strefy dostępności
 - Obraz odwołanie wydawcy
 - Oferta odwołanie do obrazu
+- Typ konta magazynu dysku systemu operacyjnego zarządzania
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Właściwości, które można zmienić tylko na podstawie bieżącej wartości
 Niektóre właściwości mogą zmienić wyjątków w zależności od bieżącej wartości. Te właściwości obejmują:
@@ -400,7 +401,7 @@ Może być zestaw skalowania, który działa starsza wersja programu Ubuntu LTS 
 ### <a name="update-the-load-balancer-for-your-scale-set"></a>Aktualizacja usługi równoważenia obciążenia dla zestawu skalowania
 Załóżmy, że masz skali ustawić usługi równoważenia obciążenia Azure i chcesz zastąpić modułu równoważenia obciążenia Azure z bramy aplikacji Azure. Moduł równoważenia obciążenia i właściwości bramy aplikacji dla zestawu skalowania są częścią listy, dzięki czemu można użyć polecenia Usuń lub Dodaj elementy listy zamiast bezpośrednie modyfikowanie właściwości:
 
-- Azure Powershell:
+- Program Azure Powershell:
 
     ```powershell
     # Get the current model of the scale set and store it in a local PowerShell object named $vmss

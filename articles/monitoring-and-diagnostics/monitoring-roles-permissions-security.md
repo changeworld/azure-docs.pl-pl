@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 81f083b799e359f69605de22c30d3adc4480e44b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 248d45a59fa2769c4cfcc4b169bd9e61059f11b0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń z monitorem Azure
 Wiele zespołów należy ściśle regulowania dostępu do danych i ustawienia monitorowania. Na przykład, jeśli masz członków zespołu, którzy używają wyłącznie na monitorowanie (pracowników działu pomocy technicznej, metodyki devops engineers) lub jeśli korzystasz z dostawcą usługi zarządzanej, można przyznać im dostęp do danych tylko do monitorowania podczas ograniczania możliwość tworzenia, modyfikowania, lub Usuwanie zasobów. W tym artykule pokazano, jak szybko zastosować wbudowane monitorowania roli RBAC użytkownikowi na platformie Azure lub tworzenie własnych niestandardowych ról dla użytkownika, który wymaga ograniczonych uprawnień monitorowania. Następnie zawiera omówienie zagadnienia dotyczące zabezpieczeń dla zasobów związanych z monitora Azure i jak można ograniczyć dostęp do danych, które zawierają.
@@ -71,12 +71,12 @@ Osoby przypisano rolę współautora monitorowania można wyświetlić wszystkie
 > 
 
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Monitorowanie uprawnienia i niestandardowe role RBAC
-Jeśli powyższe wbudowane role nie dokładną potrzeb zespołu, możesz [utworzyć niestandardową rolę RBAC](../active-directory/role-based-access-control-custom-roles.md) z uprawnieniami bardziej szczegółowego. Poniżej przedstawiono typowe operacje Azure RBAC monitora z ich opisy.
+Jeśli powyższe wbudowane role nie dokładną potrzeb zespołu, możesz [utworzyć niestandardową rolę RBAC](../role-based-access-control/custom-roles.md) z uprawnieniami bardziej szczegółowego. Poniżej przedstawiono typowe operacje Azure RBAC monitora z ich opisy.
 
 | Operacja | Opis |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |Akcja odczytu/zapisu/usuwania grupy. |
-| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Alerty dziennika aktywności odczytu/zapisu/usuwania. |
+| Usuń Microsoft.Insights/ActivityLogAlerts/[Read, zapisu] |Alerty dziennika aktywności odczytu/zapisu/usuwania. |
 | Microsoft.Insights/AlertRules/[Read, Write, Delete] |Reguły alertów odczytu/zapisu/usuwania (od alertów klasycznego). |
 | Microsoft.Insights/AlertRules/Incidents/Read |Lista zdarzeń (Historia reguły alertów są wyzwalane) dla reguł alertów. Ma zastosowanie tylko do portalu. |
 | Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Ustawienia skalowania automatycznego odczytu/zapisu/usuwania. |
@@ -125,7 +125,7 @@ Wszystkie trzy z następujących typów danych może przechowywane na koncie mag
 
 * Użyj konta magazynu jednego, przeznaczonego dla danych monitorowania. Jeśli chcesz podzielić monitorowanie na wiele kont magazynu, nigdy nie udostępniaj użycia konta magazynu między monitorowania i -monitorowania danych, jak to przypadkowo może dać tych, którzy potrzebują tylko dostępu do monitorowania danych (na przykład SIEM innych firm) dostęp do innych niż monitorowania danych.
 * Użyj jednego, przeznaczonego nazw usługi Service Bus lub Centrum zdarzeń na wszystkich ustawień diagnostycznych z tej samej przyczyny jak wyżej.
-* Ograniczanie dostępu do kont magazynu związanych z monitorowaniem lub event hubs trzymając je w oddzielnej grupie zasobów, i [Użyj zakresu](../active-directory/role-based-access-control-what-is.md#basics-of-access-management-in-azure) na poszczególnych ról monitorowania, aby ograniczyć dostęp do tej grupy zasobów.
+* Ograniczanie dostępu do kont magazynu związanych z monitorowaniem lub event hubs trzymając je w oddzielnej grupie zasobów, i [Użyj zakresu](../role-based-access-control/overview.md#basics-of-access-management-in-azure) na poszczególnych ról monitorowania, aby ograniczyć dostęp do tej grupy zasobów.
 * Nigdy nie należy przyznać uprawnienia ListKeys dla konta magazynu lub centra zdarzeń w zakresie subskrypcji, gdy użytkownik potrzebuje tylko dostęp do danych monitorowania. Zamiast tego należy przekazać te uprawnienia użytkownika na zasób lub grupa zasobów (Jeśli masz dedykowane monitorowania grupy zasobów) zakresu.
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Ograniczanie dostępu do kont magazynu związanych z monitorowaniem
@@ -178,6 +178,6 @@ Z usługą event hubs można wykonać tego samego typu, ale najpierw należy utw
    ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Przeczytaj informacje o RBAC i uprawnienia w programie Menedżer zasobów](../active-directory/role-based-access-control-what-is.md)
+* [Przeczytaj informacje o RBAC i uprawnienia w programie Menedżer zasobów](../role-based-access-control/overview.md)
 * [Zapoznanie się z omówieniem monitorowania na platformie Azure](monitoring-overview.md)
 

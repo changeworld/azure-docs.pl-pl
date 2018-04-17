@@ -1,11 +1,11 @@
 ---
-title: "Zabezpieczanie klastra sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat scenariusze zabezpieczeń klastra sieci szkieletowej usług Azure i różnych technologii, używanych do ich wdrażania."
+title: Zabezpieczanie klastra sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat scenariusze zabezpieczeń klastra sieci szkieletowej usług Azure i różnych technologii, używanych do ich wdrażania.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2017
-ms.author: chackdan
-ms.openlocfilehash: f0fdbd7fc4ec48037371ffa296cf668897e45b70
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.author: aljo
+ms.openlocfilehash: f60b428ba7fe93713af68851a3e9d246a3b1641b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra sieci szkieletowej usług
 Klastra usługi sieć szkieletowa usług Azure jest zasobem, którego jesteś właścicielem. Jest obowiązek Zabezpieczanie klastrów w celu zapobiegania nieautoryzowanemu połączyć się z nimi. Bezpieczne klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć klastra niezabezpieczoną, jeśli klaster przedstawia punkty końcowe zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim połączyć. Niezabezpieczona klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 
@@ -103,7 +103,7 @@ Certyfikaty klienta nie są zwykle wydawane przez urząd certyfikacji innych fir
 > [!NOTE]
 > Wszystkie operacje zarządzania w klastrze usługi sieć szkieletowa usług wymagają certyfikatów serwera. Nie można używać certyfikatów klienta do zarządzania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie klastra na platformie Azure przy użyciu szablonu usługi Resource Manager](service-fabric-cluster-creation-via-arm.md) 
 * [Tworzenie klastra przy użyciu portalu Azure](service-fabric-cluster-creation-via-portal.md)
 

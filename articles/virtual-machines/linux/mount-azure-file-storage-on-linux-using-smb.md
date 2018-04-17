@@ -3,7 +3,7 @@ title: Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux z
 description: Jak zainstalować magazyn plików Azure na maszynach wirtualnych systemu Linux za pomocą protokołu SMB 2.0 interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: vlivech
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
-ms.author: v-livech
-ms.openlocfilehash: de200c9b18b9d27325bcb92e0d27e83ad7c65811
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: iainfou
+ms.openlocfilehash: 01e18103f9e94615357ff3b9c4be7f2473763a57
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Magazyn plików Azure instalacji na maszynach wirtualnych systemu Linux za pomocą protokołu SMB
 
-W tym artykule przedstawiono sposób korzystać z usługą Magazyn plików Azure na maszynie Wirtualnej systemu Linux przy użyciu instalacji SMB 2.0 interfejsu wiersza polecenia platformy Azure. Magazyn plików Azure oferuje udziały plików w chmurze przy użyciu standardowego protokołu SMB. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Wymagania są następujące:
+W tym artykule przedstawiono sposób korzystać z usługą Magazyn plików Azure na maszynie Wirtualnej systemu Linux przy użyciu instalacji SMB 2.0 interfejsu wiersza polecenia platformy Azure. Magazyn plików Azure oferuje udziały plików w chmurze przy użyciu standardowego protokołu SMB. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md). Wymagania są następujące:
 
 - [Konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/)
 - [Pliki kluczy publicznych i prywatnych SSH](mac-create-ssh-keys.md)
@@ -36,7 +36,7 @@ W tym artykule przedstawiono sposób korzystać z usługą Magazyn plików Azure
 * Konto magazynu platformy Azure
 * Klucze konta magazynu platformy Azure
 * Udział magazynu plików Azure
-* A Linux VM
+* Maszynę wirtualną systemu Linux
 
 Przykładami należy zastąpić własnymi ustawieniami.
 
@@ -49,14 +49,14 @@ mkdir -p /mnt/mymountpoint
 ### <a name="mount-the-file-storage-smb-share-to-the-mount-point"></a>Zainstaluj magazyn plików udziału SMB do punktu instalacji
 
 ```bash
-sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ### <a name="persist-the-mount-after-a-reboot"></a>Utrwalanie instalacji po ponownym uruchomieniu
 Aby to zrobić, Dodaj następujący wiersz do `/etc/fstab`:
 
 ```bash
-//myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+//myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ## <a name="detailed-walkthrough"></a>Szczegółowy przewodnik
@@ -121,7 +121,7 @@ W ramach tego przewodnika szczegółowe możemy utworzyć wymagania wstępne nie
     Tworzenie katalogu lokalnego w systemie plików Linux należy zainstalować udział SMB. Cokolwiek zapisu lub odczytu z katalogu instalacji lokalnej jest przekazywany do udziału SMB, który znajduje się w pliku magazynu. Aby utworzyć katalogu lokalnego na /mnt/mymountdirectory, skorzystaj z następującego przykładu:
 
     ```bash
-    sudo mkdir -p /mnt/mymountdirectory
+    sudo mkdir -p /mnt/mymountpoint
     ```
 
 6. Instalowanie udziału SMB do katalogu lokalnego.
@@ -129,7 +129,7 @@ W ramach tego przewodnika szczegółowe możemy utworzyć wymagania wstępne nie
     Podaj własne nazwy użytkownika konta magazynu i klucz konta magazynu na potrzeby poświadczeń instalacji:
 
     ```azurecli
-    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountdirectory -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
+    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountpoint -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
     ```
 
 7. Zachowanie instalacji SMB podczas ponownych rozruchów.
@@ -137,11 +137,11 @@ W ramach tego przewodnika szczegółowe możemy utworzyć wymagania wstępne nie
     Po ponownym uruchomieniu maszyny Wirtualnej systemu Linux, podczas zamykania odinstalowane jest zainstalowany udział SMB. Ponownie zainstalować udziale SMB podczas rozruchu, należy dodać wiersz do /etc/fstab systemu Linux. Linux używa pliku fstab pojawi się lista systemów plików, które należy zainstalować podczas uruchamiania. Dodawanie udziału SMB zapewnia, że udział magazynu plików jest trwale zainstalowany system plików dla maszyny Wirtualnej systemu Linux. Dodawanie magazynu plików udziału SMB do nowej maszyny Wirtualnej jest możliwe, gdy używasz init chmury.
 
     ```bash
-    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Dostosowywanie maszyny Wirtualnej systemu Linux podczas tworzenia za pomocą init chmury](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Dodawanie dysku do maszyny wirtualnej z systemem Linux](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Szyfrowanie dysków na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Dostosowywanie maszyny Wirtualnej systemu Linux podczas tworzenia za pomocą init chmury](using-cloud-init.md)
+- [Dodawanie dysku do maszyny wirtualnej z systemem Linux](add-disk.md)
+- [Szyfrowanie dysków na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure](encrypt-disks.md)

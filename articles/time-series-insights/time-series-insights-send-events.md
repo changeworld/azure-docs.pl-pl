@@ -1,6 +1,6 @@
 ---
-title: "Sposób wysyłania zdarzeń do środowiska Azure czas serii Insights | Dokumentacja firmy Microsoft"
-description: "W tym samouczku wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchomić przykładową aplikację do wypychania zdarzeń ma być wyświetlany w usłudze Azure czas serii Insights."
+title: Sposób wysyłania zdarzeń do środowiska Azure czas serii Insights | Dokumentacja firmy Microsoft
+description: W tym samouczku wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchomić przykładową aplikację do wypychania zdarzeń ma być wyświetlany w usłudze Azure czas serii Insights.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -11,12 +11,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 2c1b91fb87857eee8ca938be193b61e01bbdb886
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 04/09/2018
+ms.openlocfilehash: c29b90e703a66cbbc25227f9a4307c74d82b03b5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Wysyłanie zdarzeń do środowiska usługi Time Series Insights za pomocą centrum zdarzeń
 W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchom przykładową aplikację do wypychania zdarzeń. Jeśli masz istniejące Centrum zdarzeń z zdarzenia w formacie JSON, Pomiń tego samouczka i wyświetlić środowiska w [Insights serii czas](https://insights.timeseries.azure.com).
@@ -48,6 +48,18 @@ W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i ur
   ![Wybieranie zasad dostępu współdzielonego i klikanie przycisku Dodaj](media/send-events/shared-access-policy.png)  
 
   ![Dodawanie nowej zasady dostępu współdzielonego](media/send-events/shared-access-policy-2.png)  
+
+## <a name="add-time-series-insights-reference-data-set"></a>Dodaj zestaw danych odwołania Insights serii czasu 
+Przy użyciu danych referencyjnych w TSI contextualizes danych telemetrii.  Tego kontekstu dodaje znaczenie danych i ułatwia filtru i agregacji.  Sprzężenia TSI odwoływał się do danych w czasie wejściowych i Wstecz nie można połączyć te dane.  W związku z tym jest krytyczny można dodać danych referencyjnych przed dodaniem źródła zdarzenia z danymi.  Dane, takie jak typ lokalizacji lub czujnik są przydatne wymiarów, które można dołączyć do urządzenia/tagu/czujnika ID, aby ułatwić wycinka i filtru.  
+
+> [!IMPORTANT]
+> Bardzo ważne jest posiadanie zestawem danych odwołania skonfigurowane, podczas przekazywania danych historycznych.
+
+Sprawdź, czy mają danych referencyjnych w miejscu przypadku zbiorczego przekazywania danych historycznych w celu TSI.  Należy pamiętać, TSI zostanie od razu rozpocząć odczytywanie od źródła zdarzeń przyłączone do Jeśli źródła zdarzenia zawiera dane.  Warto czekać do dołączania źródła zdarzenia do TSI aż do uzyskania danych odwołania w miejscu, zwłaszcza, jeśli źródła zdarzenia zawiera dane w nim. Alternatywnie można poczekać do dystrybuowania danych do źródła zdarzeń, dopóki nie jest odwołanie do zestawu danych w miejscu.
+
+Aby zarządzać danych referencyjnych, w Eksploratorze TSI jest interfejs użytkownika sieci web, a istnieje programowe API języka C#. TSI Eksploratora ma visual interfejs do przekazywania plików lub wklejania w istniejącej relacji zestawów danych w formacie JSON lub CSV użytkownika. Przy użyciu interfejsu API można tworzyć niestandardowych aplikacji w razie potrzeby.
+
+Aby uzyskać więcej informacji na temat zarządzania danych referencyjnych w czasie serii Insights, zobacz [danych artykule](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="create-time-series-insights-event-source"></a>Tworzenie źródła zdarzeń usługi Time Series Insights
 1. Jeśli nie utworzono źródła zdarzeń, postępuj zgodnie z [tymi instrukcjami](time-series-insights-how-to-add-an-event-source-eventhub.md), aby je utworzyć.
@@ -143,7 +155,7 @@ Prosty obiekt JSON.
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---1-event"></a>Dane wyjściowe — jedno zdarzenie
+#### <a name="output---one-event"></a>Dane wyjściowe — jedno zdarzenie
 
 |id|sygnatura czasowa|
 |--------|---------------|
@@ -165,7 +177,7 @@ Tablica JSON z dwoma obiektami JSON. Każdy obiekt JSON zostanie przekształcony
     }
 ]
 ```
-#### <a name="output---2-events"></a>Dane wyjściowe — dwa zdarzenia
+#### <a name="output---two-events"></a>Dane wyjściowe — dwa zdarzenia
 
 |id|sygnatura czasowa|
 |--------|---------------|
@@ -176,7 +188,7 @@ Tablica JSON z dwoma obiektami JSON. Każdy obiekt JSON zostanie przekształcony
 
 #### <a name="input"></a>Dane wejściowe
 
-Obiekt JSON z zagnieżdżoną tablicą JSON zawierającą dwa obiekty JSON.
+Obiekt JSON z zagnieżdżonych tablicy JSON, który zawiera dwa obiekty JSON:
 ```json
 {
     "location":"WestUs",
@@ -193,8 +205,8 @@ Obiekt JSON z zagnieżdżoną tablicą JSON zawierającą dwa obiekty JSON.
 }
 
 ```
-#### <a name="output---2-events"></a>Dane wyjściowe — dwa zdarzenia
-Zwróć uwagę na to, że właściwość „location” jest kopiowana do każdego zdarzenia.
+#### <a name="output---two-events"></a>Dane wyjściowe — dwa zdarzenia
+Należy zauważyć, że właściwość "Lokalizacja" są kopiowane do każdego zdarzenia.
 
 |location|events.id|events.timestamp|
 |--------|---------------|----------------------|
@@ -236,13 +248,186 @@ Obiekt JSON z zagnieżdżoną tablicą JSON zawierającą dwa obiekty JSON. Te d
     ]
 }
 ```
-#### <a name="output---2-events"></a>Dane wyjściowe — dwa zdarzenia
+#### <a name="output---two-events"></a>Dane wyjściowe — dwa zdarzenia
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-## <a name="next-steps"></a>Następne kroki
+### <a name="json-shaping-strategies"></a>Strategie kształtowania JSON
+Użyjmy poniższy przykład przedstawia zdarzenia jako początkowy punkt, a następnie omówić problemy związane z jego i strategii łagodzenia tych problemów.
+
+#### <a name="payload-1"></a>Ładunek 1:
+```json
+[{
+            "messageId": "LINE_DATA",
+            "deviceId": "FXXX",
+            "timestamp": 1522355650620,
+            "series": [{
+                        "chId": 3,
+                        "value": -3750.0
+                  }, {
+                        "chId": 13,
+                        "value": 0.58015072345733643
+                  }, {
+                        "chId": 11,
+                        "value": 800.0
+                  }, {
+                        "chId": 21,
+                        "value": 0.0
+                  }, {
+                        "chId": 14,
+                        "value": -999.0
+                  }, {
+                        "chId": 37,
+                        "value": 2.445906400680542
+                  }, {
+                        "chId": 39,
+                        "value": 0.0
+                  }, {
+                        "chId": 40,
+                        "value": 1.0
+                  }, {
+                        "chId": 1,
+                        "value": 1.0172575712203979
+                  }
+            ],
+            "EventProcessedUtcTime": "2018-03-29T20:36:21.3245900Z",
+            "PartitionId": 2,
+            "EventEnqueuedUtcTime": "2018-03-29T20:34:11.0830000Z",
+            "IoTHub": {
+                  "MessageId": "<17xxx2xx-36x0-4875-9x1x-x428x41x1x68>",
+                  "CorrelationId": "<x253x5xx-7xxx-4xx3-91x4-xxx3bx2xx0x3>",
+                  "ConnectionDeviceId": "AAAA-ZZ-001",
+                  "ConnectionDeviceGenerationId": "<123456789012345678>",
+                  "EnqueuedTime": "2018-03-29T20:34:10.7990000Z",
+                  "StreamId": null
+            }
+      }
+]
+ ```
+
+Jeśli naciśnięciu tej tablicy zdarzeń jako ładunek do TSI będą przechowywane jako jedno zdarzenie dla każdej wartości miary. W ten sposób można utworzyć nadmiar zdarzenia, które mogą nie być idealne. Zwróć uwagę, że dane referencyjne można użyć w TSI do dodania jako właściwości łatwy do rozpoznania nazwy.  Na przykład można utworzyć odwołanie do zestawu danych z właściwością klucza = chId:  
+
+chId miary jednostki 24 aparat wydobycie ropy naftowej wykorzystania PSI 25 obliczenia pompa szybkość bbl na minutę
+
+Aby uzyskać więcej informacji na temat zarządzania danych referencyjnych w czasie serii Insights, zobacz [danych artykule](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+
+Inny problem z pierwszego ładunku jest tego znacznika czasu w milisekundach. TSI akceptuje tylko sygnatur czasowych w formacie ISO. Jedynym rozwiązaniem jest pozostawienie domyślne zachowanie sygnatury czasowej w TSI, który jest użycie sygnatury czasowej umieszczonych w kolejce.
+
+Alternatywą wobec ładunku powyżej Przyjrzyjmy się innym przykładem.  
+
+#### <a name="payload-2"></a>Ładunek 2:
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "STATE Engine State": 1,
+      "unit": "NONE"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "MPC_AAAA-ZZ-001",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Well Head Px 1": -494162.8515625,
+      "unit": "psi"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate": 0,
+      "unit": "bbl/min"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Engine Fuel Pressure": 0,
+      "unit": "psi"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Engine Oil Pressure": 0.58015072345733643,
+      "unit": "psi"
+}
+```
+
+Jak 1 ładunku TSI zapisze co zmierzone wartości jako unikatowy zdarzenie.  Jest znacząca różnica odczyta TSI *sygnatury czasowej* jako poprawnie tutaj jako ISO.  
+
+Jeśli musisz zmniejszyć liczbę zdarzeń wysłanych może wysłać informacje następujące parametry.  
+
+#### <a name="payload-3"></a>Ładunek 3:
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate": 0,
+      "CALC Pump Rate.unit": "bbl/min"
+      "Engine Oil Pressure": 0.58015072345733643,
+      "Engine Oil Pressure.unit": "psi"
+      "Engine Fuel Pressure": 0,
+      "Engine Fuel Pressure.unit": "psi"
+}
+```
+Według jednego końcowego sugestii poniżej.
+
+#### <a name="payload-4"></a>Ładunek 4:
+```json
+{
+              "line": "Line01",
+              "station": "Station 11",
+              "gatewayid": "AAAA-ZZ-001",
+              "deviceid": "F12XX",
+              "timestamp": "2018-03-29T20:34:15.0000000Z",
+              "CALC Pump Rate": {
+                           "value": 0,
+                           "unit": "bbl/min"
+              },
+              "Engine Oil Pressure": {
+                           "value": 0.58015072345733643,
+                           "unit": "psi"
+              },
+              "Engine Fuel Pressure": {
+                           "value": 0,
+                           "unit": "psi"
+              }
+}
+```
+
+W tym przykładzie przedstawiono dane wyjściowe po spłaszczanie JSON:
+
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",,
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate.value": 0,
+      "CALC Pump Rate.unit": "bbl/min"
+      "Engine Oil Pressure.value": 0.58015072345733643,
+      "Engine Oil Pressure.unit": "psi"
+      "Engine Fuel Pressure.value": 0,
+      "Engine Fuel Pressure.unit": "psi"
+}
+```
+
+Masz swobody zdefiniuj inne właściwości dla każdego z kanałów wewnątrz własnego obiektu json, jednocześnie zachowując niskiej liczby zdarzeń. Takie podejście spłaszczoną zajmują więcej miejsca, w którym należy rozważyć. Pojemność TSI opiera się na zdarzenia i rozmiar, zależnie od zostanie osiągnięty jako pierwszy.
+
+## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Wyświetl środowiska w Eksploratorze Insights serii czas](https://insights.timeseries.azure.com).

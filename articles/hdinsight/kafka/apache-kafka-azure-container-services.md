@@ -1,24 +1,24 @@
 ---
-title: "Usługa kontenera platformy Azure za pomocą Kafka w usłudze HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać Kafka w usłudze HDInsight z obrazów kontenera hostowanej w usługi kontenera platformy Azure (AKS)."
+title: Usługa kontenera platformy Azure za pomocą Kafka w usłudze HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać Kafka w usłudze HDInsight z obrazów kontenera hostowanej w usługi kontenera platformy Azure (AKS).
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 53342e11476a307bb6af356eb40fe51928041822
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Użyj usługi kontenera platformy Azure z Kafka w usłudze HDInsight
 
@@ -158,7 +158,7 @@ W tym momencie Kafka i usługi kontenera platformy Azure znajdują się w komuni
 
 1. Utwórz temat Kafka, który jest używany przez aplikację testu. Informacje dotyczące tworzenia Kafka tematów, zobacz [utworzyć klaster Kafka](apache-kafka-get-started.md) dokumentu.
 
-2. Pobieranie przykładowej aplikacji z [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test). 
+2. Pobieranie przykładowej aplikacji z [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test). 
 
 3. Edytuj `index.js` plików i Zmień następujące wiersze:
 

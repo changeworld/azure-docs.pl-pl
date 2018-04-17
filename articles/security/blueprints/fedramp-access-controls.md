@@ -1,6 +1,6 @@
 ---
-title: "Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP — kontrola dostępu"
-description: "Automatyzacja aplikacji sieci Web FedRAMP — kontroli dostępu"
+title: Plan zabezpieczeń platformy Azure i zgodność — automatyzacji aplikacji sieci Web FedRAMP — kontrola dostępu
+description: Automatyzacja aplikacji sieci Web FedRAMP — kontroli dostępu
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 73ce33bc6136b9b76661dc9e29b3a11c3eabc5f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3d30f889c4d7ed0dafcf8559e8987090c03f4d5e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-ac"></a>Kontrola dostępu (AC)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasady kontroli dostępu, którego dotyczy cel, zakres, ról, obowiązki zobowiązań zarządzania, koordynacji wśród jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji zasad kontroli dostępu i kontroli dostępu skojarzone; przegląda i aktualizuje bieżące zasady kontroli dostępu [przypisania: zdefiniowane przez organizację częstotliwość]; i procedur kontroli dostępu [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak 2.a** identyfikuje i wybiera następujące typy informacji kont systemowych do obsługi funkcji organizacji misji/biznesowe organizacji: [przypisania: typy kont systemu zdefiniowane przez organizację informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.b** organizacji przypisuje konta menedżerów kont systemowych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.c** organizacji ustanawia warunki członkostwa grup i ról.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.d** organizacji określa autoryzowanych użytkowników systemu informacji, członkostwo grup i ról i dostępu autoryzacje (tj. uprawnienia) i innych atrybutów (zgodnie z wymaganiami) dla poszczególnych kont.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.e** Organizacja wymaga zatwierdzenia przez [przypisania: techniczną zdefiniowany przez organizację lub ról] dla żądań kierowanych do utworzenia informacji kont systemowych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.f** organizacji tworzy, umożliwia modyfikuje, wyłącza i usuwania kont systemu informacji zgodnie z [przypisania: procedury zdefiniowane przez organizację lub warunków].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,11 +129,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.g** organizacji monitoruje informacji systemu kont.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania OMS zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta do monitorowania informacji systemu kont. |
+| **Klienta** | Ten plan implementuje rozwiązania zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta do monitorowania informacji systemu kont. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.h** organizacji powiadamia menedżerowie kont, gdy konta nie są już wymagane; gdy użytkownicy są zakończone lub przeniesione; i gdy obciążenie systemu poszczególnych informacji lub do ograniczonego zmiany.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.i** organizacji zezwala na dostęp do systemu informacji, w oparciu o autoryzacji dostępu prawidłowe; system zamierzone użycie; i inne atrybuty zgodnie z wymaganiami organizacji lub funkcje skojarzone misji/biznesowych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.j** organizacji monitoruje konta dla zgodności z wymaganiami zarządzania konta [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.k** organizacji ustanawia proces ponownego wystawienia poświadczeń konta udostępnionego grupy (jeśli je wdrożono) po usunięciu osób z grupy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,11 +199,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (1)** automatyczne mechanizmy do obsługi zarządzania kont systemowych informacji jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania OMS zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta do monitorowania informacji systemu kont. OMS można skonfigurować do wysyłania alertów, gdy podejrzewa się nietypowe działania lub występują inne zdarzenia, wstępnie zdefiniowanych. |
+| **Klienta** | Ten plan implementuje rozwiązania zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta do monitorowania informacji systemu kont. Może być skonfigurowana do wysyłania alertów, gdy podejrzewa się nietypowe działania lub występują inne zdarzenia, wstępnie zdefiniowanych. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (2)** systemu informacji automatycznie [zaznaczenia: usuwa; wyłącza] tymczasowe i awaryjnego konta po [przypisania: organizacji zdefiniowane przez okres czasu dla każdego typu konta].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (3)** system informacji automatycznie wyłącza nieaktywne konta po [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,11 +241,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (4)** systemu informacji automatycznie kontroli konta tworzenie, modyfikowanie, włączanie, wyłączenie i usuwania działań i powiadamia, [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje następujące typy kont systemu: użytkowników usługi Azure Active Directory, użytkowników systemu Windows, konto usługi programu SQL Server. Akcje zarządzania konta w usłudze Azure Active Directory generują zdarzenie w dzienniku aktywności platformy Azure; Poziom systemu operacyjnego konta akcji zarządzania generują zdarzenie w dzienniku systemu. Te dzienniki zbieranych przez usługi Analiza dzienników i przechowywane w repozytorium OMS. OMS można skonfigurować do wysyłania alertów w przypadku wystąpienia zdarzeń wstępnie zdefiniowane.  |
+| **Klienta** | Ten plan implementuje następujące typy kont systemu: użytkowników usługi Azure Active Directory, użytkowników systemu Windows, konto usługi programu SQL Server. Akcje zarządzania konta w usłudze Azure Active Directory generują zdarzenie w dzienniku aktywności platformy Azure; Poziom systemu operacyjnego konta akcji zarządzania generują zdarzenie w dzienniku systemu. Te dzienniki są zbierane przez analizy dzienników i przechowywane w obszarze roboczym analizy dzienników. Analiza dzienników można skonfigurować do wysyłania alertów w przypadku wystąpienia zdarzeń wstępnie zdefiniowane.  |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (5)** organizacja wymaga, że limit podczas logowania użytkowników [przypisania: zdefiniowane przez organizację okres aktywności oczekiwano lub podczas logowania opis].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (7) .a** ustanawia i zarządza kontami użytkowników uprzywilejowanych zgodnie z schemat dostępu opartej na rolach, który organizuje informacji dozwolony dostęp do systemu oraz uprawnień do ról w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -283,11 +283,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (7) b** organizacji monitoruje przypisań ról uprzywilejowanych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje OMS zabezpieczeń i inspekcji rozwiązania tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta do monitorowania informacji systemu kont. To rozwiązanie może być badana zgłoszenia przypisań ról uprzywilejowanych. |
+| **Klienta** | Ten plan implementuje zabezpieczeń i inspekcji rozwiązania tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta do monitorowania informacji systemu kont. To rozwiązanie może być badana zgłoszenia przypisań ról uprzywilejowanych. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **.C AC-2 (7)** przyjmuje organizacji [przypisania: akcje zdefiniowane przez organizację] Jeśli przypisań ról uprzywilejowanych nie są już odpowiednie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (9)** organizacji tylko zezwala na używanie kont udostępnionych grupy, które spełniają [przypisania: warunków zdefiniowanych przez organizację tworzenia kont udostępnionych grup].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (10)** systemu informacji kończy poświadczenia konta udostępnionego grupy po członków pozostaw grupę.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (11)** wymusza systemu informacji [przypisania: okoliczności zdefiniowany przez organizację i/lub warunków użytkowania] do [przypisania: kont systemowych informacje zdefiniowane przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,11 +353,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (12), tj.** organizacji monitoruje kont systemowych informacji dla [przypisania: zdefiniowane przez organizację nietypowe użycia].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania OMS zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta na potrzeby monitorowania prób dostępu przed wdrożonych zasobów. |
+| **Klienta** | Ten plan implementuje rozwiązania zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta na potrzeby monitorowania prób dostępu przed wdrożonych zasobów. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -367,11 +367,11 @@ ms.lasthandoff: 02/11/2018
 
 **B AC-2 (12)** organizacji raporty nietypowe użycie kont systemowych informacji do [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania OMS zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta na potrzeby monitorowania prób dostępu przed wdrożonych zasobów. To rozwiązanie można skonfigurować do wysyłania alertów, gdy podejrzewa się nietypowe działania lub występują inne zdarzenia, wstępnie zdefiniowanych. |
+| **Klienta** | Ten plan implementuje rozwiązania zabezpieczeń i kontrola tożsamości i dostępu do pulpitu nawigacyjnego. Ten pulpit nawigacyjny umożliwia menedżerów konta na potrzeby monitorowania prób dostępu przed wdrożonych zasobów. To rozwiązanie można skonfigurować do wysyłania alertów, gdy podejrzewa się nietypowe działania lub występują inne zdarzenia, wstępnie zdefiniowanych. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-2 (13)** organizacji wyłącza konta użytkowników stwarza duże ryzyko w [przypisania: organizacji zdefiniowane przez okres] odnajdowania ryzyka.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak 3** systemu informacji wymusza zatwierdzonych zezwolenia na logicznego dostępu do informacji i zasobów systemowych zgodnie z zasad kontroli dostępu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 4** systemu informacji wymusza zatwierdzonych zezwolenia na sterowanie przepływem informacji w ramach systemu i między systemami połączonych na podstawie [przypisania: zasad sterowania przepływem informacji zdefiniowanych przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-4 (8)** wymusza systemu informacji za pomocą sterowania przepływem informacji [przypisania: filtry zasad zabezpieczeń zdefiniowany przez organizację] jako podstawę decyzje dotyczące kontroli przepływu dla [przypisania: przepływów informacje zdefiniowane przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-4 (21)** systemu informacji oddziela przepływ informacji logicznie lub fizycznie przy użyciu [przypisania: mechanizmów zdefiniowany przez organizację i/lub techniki] celu [przypisania: zdefiniowany organizacji wymagane rozbarwień przez typy informacje o].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 5.a** oddziela organizacji [przypisania: zdefiniowane przez organizację obowiązków osób].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak 5.b** organizacji dokumentów podział obowiązków osób.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 5.c** organizacji definiuje informacje zezwolenia na dostęp do systemu do obsługi rozdzielenia obowiązków.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 6** organizacji jest stosowana zasada minimalnych uprawnień, dzięki czemu tylko autoryzowani uzyskuje dostęp do użytkowników (lub procesów działających w imieniu użytkowników), które są niezbędne do wykonania zadania zgodnie z organizacyjnej misji i znaczenie biznesowe.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (1)** organizacji jawnie zezwala na dostęp do [przypisania: funkcje zdefiniowane przez organizację zabezpieczeń (wdrożenie w sprzętu, oprogramowania i oprogramowanie układowe) i informacji związanych z zabezpieczeniami].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (2)** organizacja wymaga, aby użytkowników kont systemu informacje lub role mają dostęp do [przypisania: funkcje zabezpieczeń zdefiniowany przez organizację lub informacji związanych z zabezpieczeniami], użyj konta nieuprzywilejowanego lub ról, gdy Uzyskiwanie dostępu do funkcji niezwiązana z zabezpieczeniami.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (3)** organizacji zezwala na dostęp do sieci [przypisania: zdefiniowany przez organizację uprzywilejowanych polecenia] tylko w przypadku [przypisania: organizacji zdefiniowanych ważnych wymagań operacyjnych] i dokumenty uzasadnienie takiego dostępu w Planowanie zabezpieczeń systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (5)** organizacji ogranicza uprzywilejowanych kont w systemie informacji [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (7), tj.** przeglądy organizacji [przypisania: częstotliwość zdefiniowany przez organizację] uprawnienia przypisane do [przypisania: zdefiniowany przez organizację ról lub grup użytkowników] do sprawdzania poprawności potrzebę takich uprawnień.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (7) b** organizacji następuje zmiana przypisania lub usuwa uprawnienia, jeśli to konieczne poprawnie odzwierciedlić potrzeb organizacji misji/biznesowych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (8)** uniemożliwia systemu informacji [przypisania: oprogramowania zdefiniowane przez organizację] wykonywanie na wyższym poziomie uprawnień niż użytkowników wykonywania oprogramowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -605,11 +605,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (9)** systemu informacji inspekcji wykonywania uprzywilejowanych funkcji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje usługę Analiza dzienników w OMS. Wdrożone maszyny wirtualne i usługi Azure kont magazynu diagnostyki są połączonych źródeł do analizy dzienników zapewnienie, że wykonanie funkcji uprzywilejowanych podlega inspekcji. |
+| **Klienta** | Ten plan implementuje usługę Analiza dzienników. Wdrożone maszyny wirtualne i usługi Azure kont magazynu diagnostyki są połączonych źródeł do analizy dzienników zapewnienie, że wykonanie funkcji uprzywilejowanych podlega inspekcji. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak – 6 (10)** systemu informacji uniemożliwia użytkownikom bez uprawnień wykonywania uprzywilejowanych funkcji to wyłączenie obejścia, lub zmienianie zaimplementowana zabezpieczenia zabezpieczeń metodach przeciwdziałania im.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 7.a** systemu informacji wymusza limit [przypisania: liczba zdefiniowanych przez organizację] kolejnych nieprawidłowe próby logowania przez użytkownika podczas [przypisania: organizacji zdefiniowane przez okres].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **Od 7.b AC** systemu informacji automatycznie [zaznaczenia: blokuje konta/węzeł [przypisania: okres zdefiniowany organizacji]; blokady konta/węzła do czasu zwolnienia przez administratora; opóźnienia dalej monit logowania zgodnie z [ Przypisania: algorytm zdefiniowany przez organizację opóźnienia]] Jeśli Przekroczono maksymalną liczbę nieudanych prób.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-7 (2)** systemu informacji powoduje usunięcie/czyszczenia informacji z [przypisania: zdefiniowane przez organizację urządzeń przenośnych] na podstawie [przypisania: organizacji zdefiniowane wymagania/techniki przeczyszczanie/czyszczenie] po [przypisania: próby logowania kolejnych nieudanych urządzeń zdefiniowany przez organizację numer].
 
-**Obowiązki:**`Not Applicable`
+**Obowiązki:** `Not Applicable`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 8.a** Wyświetla systemu informacje dla użytkowników [przypisania: system zdefiniowane w organizacji używać powiadomienie lub transparentu] przed udzieleniem im dostępu do sieci, który zapewnia spójne z odpowiednich federalne powiadomienia prywatności i bezpieczeństwa ustawowych, zamówienia wykonawczego, dyrektywy, zasady, wykonawczych, standardy i wskazówki i stanów, że użytkownicy uzyskują dostęp do stany USA Rządowych systemu informacji; użycie systemu informacji może być monitorowany, zarejestrowane i może ulec inspekcji; nieautoryzowanym użyciem systemu informacji jest zabronione i może ulec karne oraz cywilnego kary; i korzystanie z informacji oznacza zgodę na monitorowanie i rejestrowanie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 8.b** informacji system ma zachowywać powiadomienie lub banera na ekranie, dopóki użytkownicy potwierdzić warunki użytkowania i podjęcie odpowiednich działań jawne Zaloguj się do lub dalsze dostęp do systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 8.c** systemu informacji dla systemów publicznie Wyświetla informacje o systemie Użyj [przypisania: warunki zdefiniowane w organizacji], zanim zostanie przyznany dostęp dalsze; Wyświetla odwołania do monitorowania, rejestrowania, lub inspekcji, które są zgodne z dostosowania prywatności dla tych systemów, które zazwyczaj Zabroń używania tych działań; i zawiera opis autoryzowanych używa systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 10** systemu informacji ogranicza liczbę jednoczesnych sesji dla każdego [przypisania: konto zdefiniowane przez organizację i/lub typ konta] do [przypisania: liczba zdefiniowanych przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 11.a** systemu informacji uniemożliwia dalsze dostęp do systemu inicjując blokady sesji po [przypisania: okres zdefiniowany organizacji] czas braku aktywności lub po odebraniu żądania od użytkownika.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 11.b** system informacji ma zachowywać blokady sesji, dopóki użytkownik ustanawia ponownie dostęp przy użyciu określone procedury identyfikacji i uwierzytelniania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-11 (1)** systemu informacji za pośrednictwem blokady sesji zawiera informacje o poprzednio widoczne na ekranie z obrazem publicznie dostępnej.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 12** systemu informacji automatycznie kończy sesję użytkownika po [przypisania: zdefiniowane przez organizację warunki lub zdarzenia wyzwalacza wymagające rozłączenia sesji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-12 (1), tj.** systemu informacji udostępnia funkcję wylogowania komunikacji zainicjowane przez użytkownika sesji zawsze, gdy jest używane uwierzytelnianie w celu uzyskania dostępu do [przypisania: zasoby zdefiniowane przez organizację informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -801,7 +801,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-12 (1) b** systemu informacji zostanie wyświetlony komunikat jawne wylogowania użytkownikom wskazujący przerwanie niezawodnej sesji, uwierzytelnionym komunikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -815,7 +815,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 14.a** identyfikuje organizacji [przypisania: akcje zdefiniowane przez organizację użytkownika] który można wykonać bez identyfikacji i uwierzytelniania zgodne z organizacyjnej misji/firm funkcje w systemie informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -829,7 +829,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 14.b** organizacji dokumentów i zapewnia obsługi uzasadnienie w planie ochrony informacji w systemie nie wymaga uwierzytelniania lub identyfikator akcji użytkownika.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -843,7 +843,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 17.a** organizacji ustanawia i dokumenty ograniczenia użycia, wymagań dotyczących konfiguracji/połączenia i wskazówki dotyczące implementacji dla każdego typu dostępu zdalnego są dozwolone.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -857,7 +857,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 17.b** organizacji zezwala na zdalny dostęp do systemu informacji przed przyznaniem takich połączeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -871,11 +871,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-17 (1)** systemu informacji monitoruje i kontroluje metody dostępu zdalnego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan zapewnia dostęp zdalny do systemu informacji za pośrednictwem portalu Azure za pomocą połączeń usług pulpitu zdalnego za pośrednictwem jumpbox i za pośrednictwem aplikacji sieci web zaimplementowana przez klienta. Dostęp za pośrednictwem portalu Azure i sesji pulpitu zdalnego są poddawane inspekcji i mogą być monitorowane przez OMS. Klient musi implementować kontroli dostępu zdalnego, w razie potrzeby do aplikacji sieci web. |
+| **Klienta** | Ten plan zapewnia dostęp zdalny do systemu informacji za pośrednictwem portalu Azure za pomocą połączeń usług pulpitu zdalnego za pośrednictwem jumpbox i za pośrednictwem aplikacji sieci web zaimplementowana przez klienta. Dostęp za pośrednictwem portalu Azure i sesji pulpitu zdalnego są poddawane inspekcji i monitorować za pomocą analizy dzienników. Klient musi implementować kontroli dostępu zdalnego, w razie potrzeby do aplikacji sieci web. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -885,7 +885,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-17 (2)** system informacji implementuje mechanizmów kryptograficznych ochrony poufności i integralności sesji dostępu zdalnego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -899,7 +899,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-17 (3)** systemu informacji kieruje wszystkie dostępu zdalnego za pośrednictwem [przypisania: liczba zdefiniowanych przez organizację] zarządzane punkty kontroli dostępu do sieci.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -913,7 +913,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-17 (4), tj.** organizacji zezwala na wykonanie polecenia uprzywilejowanych i dostęp do informacji związanych z zabezpieczeniami za pośrednictwem zdalnego dostępu tylko dla [przypisania: organizacji zdefiniowanych wymaga].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -927,7 +927,7 @@ ms.lasthandoff: 02/11/2018
 
 **B AC-17 (4)** organizacji dokumentów uzasadnienie takiego dostępu w sekcji Planowanie zabezpieczeń systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -941,7 +941,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-17 (9)** organizacji zapewnia możliwość szybkiego odłączyć i wyłączyć dostępu zdalnego do systemu informacji w [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -955,7 +955,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18.a** organizacji ustanawia ograniczenia użycia, wymagań dotyczących konfiguracji/połączenia i wykonania wskazówki dotyczące dostępu bezprzewodowego.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -969,7 +969,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18.b** organizacji zezwala na dostęp bezprzewodowy do systemu informacji przed przyznaniem takich połączeń.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -983,7 +983,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-18 (1)** system informacji chroni dostępu bezprzewodowego do sieci przy użyciu uwierzytelniania [wybór (jeden lub więcej): użytkownicy; urządzenia] i szyfrowania.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -997,7 +997,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-18 (3)** wyłącza organizacji, gdy nie jest przeznaczony do użycia, bezprzewodowej sieci możliwości wewnętrznie osadzone w składnikach systemu informacji przed wystawiania i wdrażania.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -1011,7 +1011,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-18 (4)** organizacji identyfikuje i jawnie zezwala na użytkowników, którzy mogą niezależnej konfiguracji funkcji sieci bezprzewodowej.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -1025,7 +1025,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-18 (5)** organizacji wybiera anten radiowych i kalibruje transmisji poziomu Aby zmniejszyć prawdopodobieństwo, że można używać sygnały mogą być odbierane poza granice kontrolowane przez organizację.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -1039,7 +1039,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 19.a** organizacji ustanawia ograniczenia użycia, wymagania dotyczące konfiguracji, wymagania dotyczące połączenia i wskazówki dotyczące implementacji dla urządzeń przenośnych kontrolowane przez organizację.
 
-**Obowiązki:**`Not Applicable`
+**Obowiązki:** `Not Applicable`
 
 |||
 |---|---|
@@ -1053,7 +1053,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 19.b** organizacji zezwala na połączenia z urządzeniami przenośnymi z systemami informacji organizacyjnych.
 
-**Obowiązki:**`Not Applicable`
+**Obowiązki:** `Not Applicable`
 
 |||
 |---|---|
@@ -1067,7 +1067,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-19 [5]** organizacja stosuje [zaznaczenia: szyfrowanie urządzenia pełnej; szyfrowania kontenera] do ochrony poufności i integralności informacji na [przypisania: zdefiniowany przez organizację urządzeń przenośnych].
 
-**Obowiązki:**`Not Applicable`
+**Obowiązki:** `Not Applicable`
 
 |||
 |---|---|
@@ -1081,7 +1081,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 20.a** organizacji ustanawia warunków i postanowień, zgodne z bez relacji zaufania nawiązać z innych organizacji będącej właścicielem, działają, i/lub utrzymanie systemów informacyjnych zewnętrznego, dzięki czemu autoryzowane osoby dostęp do systemu informacji z systemów zewnętrznych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1095,7 +1095,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 20.b** organizacji ustanawia warunków i postanowień, zgodne z bez relacji zaufania nawiązać z innych organizacji będącej właścicielem, działają, i/lub utrzymanie systemów informacyjnych zewnętrznego, dzięki czemu autoryzowane osoby do przetwarzania, przechowywania lub przesyłać informacje kontrolowane organizacji korzystających z systemów zewnętrznych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1109,7 +1109,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-20 (1)** uprawnionych osób na potrzeby systemu zewnętrznego informacji do uzyskania dostępu do systemu informacje lub przetwarzania, przechowywania lub przesyłać informacje kontrolowane organizacji, tylko wtedy, gdy organizacja sprawdza pozwala organizacji Implementacja kontroli zabezpieczeń wymagane w systemie zewnętrznym, jak określono w zasadami zabezpieczeń informacji w organizacji oraz plan ochrony; lub zachowuje umowy połączenie lub przetwarzania systemu zatwierdzonych informacji z jednostką organizacyjną hosting systemu zewnętrznego informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1123,7 +1123,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ak-20 (2)** organizacji [zaznaczenia: ogranicza; zabrania] korzystanie z urządzenia przenośnego urządzenia pamięci masowej kontrolowane przez organizację według uprawnionych osób w systemach zewnętrznych informacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -1137,7 +1137,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 21.a** organizacji ułatwia udostępnianie przez włączenie autoryzowanych użytkowników w celu ustalenia, czy przypisane do udostępniania partnera autoryzacji dostępu są takie same ograniczenia dostępu do informacji dla informacji [przypisania: zdefiniowany przez organizację udostępniania informacji okoliczności, w którym wymagany jest uznania użytkownika].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1151,7 +1151,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 21.b** organizacja stosuje [przypisania: zdefiniowane przez organizację automatycznego mechanizmów lub procesów ręcznych] do świadczenia użytkownikom pomocy w informacji udostępnianie współpracy podejmowaniu decyzji co do.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1165,7 +1165,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.a** organizacji oznacza osoby upoważnione do publikowania informacji o systemie publicznie dostępnych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1179,7 +1179,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.b** organizacji przygotowuje uprawnionych osób, aby upewnić się, publicznie dostępnych informacji nie zawiera niepubliczne informacje.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1193,7 +1193,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.c** organizacji przegląda proponowanych zawartość informacji przed publikowanie do systemu publicznie dostępnych informacji, aby upewnić się, że niepubliczne informacje nie są uwzględniane.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -1207,7 +1207,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.d** organizacji przegląda zawartość w systemie publicznie dostępnych informacji dla niepublicznych informacji [przypisania: zdefiniowany przez organizację częstotliwość] i usuwa takie informacje, jeśli odnaleziony.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

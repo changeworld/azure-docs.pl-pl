@@ -1,11 +1,11 @@
 ---
-title: "Migracja sieci wirtualnej platformy Azure (klasyczne) z grupą koligacji w regionie | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przeprowadzić migrację sieci wirtualnej (klasyczne) z grupą koligacji do regionu."
+title: Migracja sieci wirtualnej platformy Azure (klasyczne) z grupą koligacji w regionie | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przeprowadzić migrację sieci wirtualnej (klasyczne) z grupą koligacji do regionu.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 84febcb9-bb8b-4e79-ab91-865ad9de41cb
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: b9b3bd0f2184ac85261166d5fe2ab67e1bf319d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: b8b4fbdbf92e49a0287cd6c440513213279d24d0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migracji sieci wirtualnej (klasyczne) z grupą koligacji w regionie
 

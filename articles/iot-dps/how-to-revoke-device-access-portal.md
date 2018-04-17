@@ -1,28 +1,28 @@
 ---
-title: "Zarządzanie dostępem do urządzeń inicjowania obsługi usługi Azure IoT Hub urządzenia | Dokumentacja firmy Microsoft"
-description: "Jak odwołać dostęp do urządzeń z usługą punktu dystrybucji w portalu Azure"
+title: Jak disenroll urządzenia z usługi udostępniania urządzenia Centrum IoT Azure
+description: Jak disenroll urządzenia, aby zapobiec inicjowania obsługi administracyjnej za pośrednictwem usługi inicjowania obsługi urządzeń Centrum IoT Azure
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 12/22/2017
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/05/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 12aebf3a56aa7469a765ab6fc67aa65b254db71a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="revoke-device-access-to-your-provisioning-service-in-the-azure-portal"></a>Odwołaj dostęp urządzenia do inicjowania obsługi usługi w portalu Azure
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Jak disenroll urządzenia z usługi udostępniania urządzenia Centrum IoT Azure
 
-Właściwego zarządzania poświadczenia urządzeń ma podstawowe znaczenie dla systemów wysokiej jakości, takie jak rozwiązania IoT. Najlepszym rozwiązaniem dla takich systemów ma Wyczyść plan jak odwołać dostęp do urządzeń po ich poświadczeń, czy token dostępu współdzielonego podpisów (SAS) lub certyfikatu X.509, jest zagrożona. W tym artykule opisano sposób odwołać dostęp do urządzeń w kroku inicjowania obsługi administracyjnej.
+Właściwego zarządzania poświadczenia urządzeń ma podstawowe znaczenie dla systemów wysokiej jakości, takie jak rozwiązania IoT. Najlepszym rozwiązaniem dla takich systemów ma Wyczyść plan jak odwołać dostęp do urządzeń po ich poświadczeń, czy token dostępu współdzielonego podpisów (SAS) lub certyfikatu X.509, jest zagrożona. 
 
-Informacje na temat odwoływanie dostępu urządzenia do Centrum IoT po zainicjowano urządzenia, zobacz [Wyłącz urządzenia](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices).
+Rejestracji w usłudze udostępniania urządzenia pozwala na urządzeniu można [elastycznie automatycznie](concepts-auto-provisioning.md). Udostępnione urządzenia to taki, który został zarejestrowany z Centrum IoT, dzięki któremu otrzymywać jego początkowego [dwie urządzenia](~/articles/iot-hub/iot-hub-devguide-device-twins.md) stanu i zacząć od raportowania danych telemetrycznych. W tym artykule opisano sposób disenroll urządzenia z inicjowania obsługi administracyjnej wystąpienia usługi, uniemożliwia zainicjowanie obsługi ponownie w przyszłości.
 
 > [!NOTE] 
 > Należy pamiętać o zasady ponawiania urządzeń, które odwołać dostęp. Na przykład urządzenie ma zasady ponawiania nieskończone stale może podjąć próbę zarejestrować w usłudze udostępniania. Taka sytuacja wykorzystuje zasoby usługi i prawdopodobnie wpływa na wydajność.
@@ -37,10 +37,10 @@ Aby tymczasowo wyeliminować urządzenia przez wyłączenie jego wpisu rejestrac
 2. Na liście zasobów wybierz opcję inicjowania obsługi usługi, który chcesz wyeliminować urządzenia z.
 3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **poszczególnych rejestracji** kartę.
 4. Wybierz wpis rejestracji dla urządzenia, którego chcesz wyeliminować. 
-5. Wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**.  
+5. Przewiń w dół i wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**.  
 
-   ![Wyłącz wpis poszczególnych rejestracji w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
-    
+   [![Wyłącz wpis poszczególnych rejestracji w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+
 Aby trwale wyeliminować urządzenia przez usunięcie jego wpisu rejestracji:
 
 1. Logowanie do platformy Azure, portalu i wybierz pozycję **wszystkie zasoby** z menu po lewej stronie.
@@ -64,9 +64,8 @@ Aby tymczasowo wyeliminować certyfikatu przez wyłączenie jej grupy rejestracj
 1. Logowanie do platformy Azure, portalu i wybierz pozycję **wszystkie zasoby** z menu po lewej stronie.
 2. Na liście zasobów wybierz opcję inicjowania obsługi usługi, który chcesz wyeliminować certyfikatu podpisywania z.
 3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **grup rejestracji** kartę.
-4. Wybierz grupę rejestracji certyfikatu, który chcesz wyeliminować.
-5. W pozycji grupy rejestracji, wybierz **Edytuj grupę**.
-6. Wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**.  
+4. Wybierz grupę rejestracji, używa certyfikatu, który chcesz wyeliminować.
+5. Wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**.  
 
    ![Wyłączenie rejestracji grupy wpisu w portalu](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
@@ -96,12 +95,15 @@ Aby wyeliminować poszczególne urządzenia w grupie rejestracji, wykonaj nastę
 2. Z listy zasobów wybierz usługę inicjowania obsługi administracyjnej, która zawiera grupę rejestracji dla urządzenia, którego chcesz wyeliminować.
 3. Inicjowania obsługi usługi, wybierz **Zarządzanie rejestracji**, a następnie wybierz **poszczególnych rejestracji** kartę.
 4. Wybierz **Dodaj** na górze. 
-5. Wybierz **X.509** jako mechanizm zabezpieczeń urządzenia i przekazywanie certyfikatu tego urządzenia. Jest to certyfikat podpisany jednostki końcowej zainstalowana na urządzeniu. Urządzenia używane do generowania certyfikatów dla uwierzytelniania.
+5. Wybierz **X.509** jako mechanizm zaświadczania dla urządzenia i przekazywanie certyfikatu tego urządzenia. Jest to certyfikat podpisany jednostki końcowej zainstalowana na urządzeniu. Urządzenia używane do generowania certyfikatów dla uwierzytelniania.
 6. Aby uzyskać **identyfikator urządzenia IoT Hub**, wprowadź identyfikator urządzenia. 
 7. Wybierz **wyłączyć** na **włączyć wpis** przełącznik, a następnie wybierz **zapisać**. 
 
-   ![Wyłącz wpis poszczególnych rejestracji w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
+    [![Użyj wyłączone wpisu rejestracji poszczególnych można wyłączyć urządzenia z rejestracji grupy, w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
 Po utworzeniu pomyślnie informacji o rejestracji, powinny pojawić się urządzenia są wyświetlane na **poszczególnych rejestracji** kartę.
 
+## <a name="next-steps"></a>Kolejne kroki
+
+Disenrollment jest również częścią większego procesu anulowania obsługi. Anulowania obsługi urządzenia obejmuje zarówno disenrollment z usługi udostępniania i wyrejestrowywanie z Centrum IoT. Aby zapoznać się z pełną procesu, zobacz [jak anulowanie zastrzeżenia urządzenia, które wcześniej były udostępniane do automatycznego](how-to-unprovision-devices.md) 
 

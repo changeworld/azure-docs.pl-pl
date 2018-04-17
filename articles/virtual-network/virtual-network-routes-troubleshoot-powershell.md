@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z tras - PowerShell | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy z trasy w modelu wdrażania usługi Azure Resource Manager przy użyciu programu Azure PowerShell."
+title: Rozwiązywanie problemów z tras - PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z trasy w modelu wdrażania usługi Azure Resource Manager przy użyciu programu Azure PowerShell.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: bf7dc5e7-9399-460e-8e0d-8992dbed98a6
 ms.service: virtual-network
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: ac7f8ddaf84ba94075a9c9c3195bd57534c6821b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2d501419dde633f89a5760af9f82604006de6b6f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Rozwiązywanie problemów z tras za pomocą programu Azure PowerShell
 > [!div class="op_single_selector"]
-> * [Azure portal](virtual-network-routes-troubleshoot-portal.md)
+> * [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
 > * [Program PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 > 
 > 
@@ -57,7 +57,7 @@ Aby wyświetlić trasy agregacji, które są stosowane do maszyny Wirtualnej, wy
 ### <a name="view-effective-routes-for-a-network-interface"></a>Widok skuteczne trasy dla interfejsu sieciowego
 Aby wyświetlić trasy agregacji, które są stosowane do interfejsu sieciowego, wykonaj następujące kroki:
 
-1. Uruchom sesję programu PowerShell systemu Azure i logowania do platformy Azure. Jeśli nie masz doświadczenia w obsłudze programu Azure PowerShell, przeczytaj [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) artykułu. Konto musi mieć przypisaną *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operacji interfejsu sieciowego. Aby dowiedzieć się, jak przypisać operacje do kont, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Uruchom sesję programu PowerShell systemu Azure i logowania do platformy Azure. Jeśli nie masz doświadczenia w obsłudze programu Azure PowerShell, przeczytaj [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) artykułu. Konto musi mieć przypisaną *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operacji interfejsu sieciowego. Aby dowiedzieć się, jak przypisać operacje do kont, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Poniższe polecenie zwraca wszystkie trasy stosowany do karty sieciowej o nazwie *VM1 NIC1* w grupie zasobów *RG1*.
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

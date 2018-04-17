@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b0a704a6ac4a317e0d8e280a9353b04f9b4d919b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Zestawach skali maszyny wirtualnej platformy Azure — często zadawane pytania
 
@@ -337,7 +337,7 @@ Dokumentacja usługi Azure Key Vault stany, Pobierz klucz tajny interfejsu API R
  
 Metoda | Adres URL
 --- | ---
-GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
+POBIERZ | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
 
 Zastąp {*nazwa klucza tajnego*} o nazwie i Zastąp {*wersja klucza tajnego*} przy użyciu wersji klucza tajnego do pobrania. Może zostać wyłączone wersję klucza tajnego. W takim przypadku jest pobierana bieżącej wersji.
   
@@ -402,9 +402,9 @@ Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vms
  
 Możesz znaleźć wartość extensionName `$vmss`.
    
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-operations-management-suite"></a>Istnieje już zestawu skalowania maszyny wirtualnej na przykład szablon, która integruje się z pakietem Operations Management Suite?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Jest przykład szablonu, która integruje się z analizy dzienników zestawu skalowania maszyny wirtualnej?
 
-Na przykład szablon, która integruje się z pakietem Operations Management Suite zestawu skalowania maszyn wirtualnych, zobacz drugi przykład w [wdrażanie klastra usługi sieć szkieletowa usług Azure i Włącz monitorowanie przy użyciu analizy dzienników](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
+Na przykład szablon, która integruje się z analizy dzienników zestawu skalowania maszyn wirtualnych, zobacz drugi przykład w [wdrażanie klastra usługi sieć szkieletowa usług Azure i Włącz monitorowanie przy użyciu analizy dzienników](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
    
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Rozszerzenia wydają się równolegle na zestawy skalowania maszyny wirtualnej. Powoduje to, że moje rozszerzenie skryptu niestandardowego się niepowodzeniem. Co można zrobić, aby rozwiązać ten problem?
 
@@ -693,9 +693,9 @@ Za pomocą operacji odtworzenia z obrazu można tak, zresetuj maszyny Wirtualnej
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie wszystkich maszyn wirtualnych w zestawie skalowania maszyn wirtualnych](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set).
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-oms-operations-management-suite"></a>Czy jest możliwe do integracji z usługą OMS Azure (Operations Management Suite) zestawy skalowania?
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>Czy jest możliwe zestawy skalowania jest integrowana z Azure Log Analytics?
 
-Tak, można zainstalować rozszerzenia OMS na skali ustawić maszyn wirtualnych. Oto przykład wiersza polecenia platformy Azure:
+Tak, można zainstalować rozszerzenia analizy dzienników na skali ustawić maszyn wirtualnych. Oto przykład wiersza polecenia platformy Azure:
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```

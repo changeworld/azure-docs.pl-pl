@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/18/2017
-ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: 8d984c17ab373428b13ed59a598ca8ae4e88136a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>Wyniki analizy strumienia: opcje magazynu i analiza
 Podczas tworzenia zadania usługi analiza strumienia, należy wziąć pod uwagę sposób używania danych. Jak można wyświetlić wyniki zadania usługi analiza strumienia i gdzie należy go przechowywać?
@@ -21,18 +21,19 @@ Podczas tworzenia zadania usługi analiza strumienia, należy wziąć pod uwagę
 Aby włączyć różnych wzorców aplikacji, usługi Azure Stream Analytics ma inne opcje do przechowywania danych wyjściowych i wyświetlania wyników analizy. To ułatwia wyświetlić dane wyjściowe zadania i zapewnia elastyczność w użycie i przechowywania danych wyjściowych zadania dla magazynów danych i innych celów. Żadnych danych wyjściowych konfigurowane w zadaniu musi istnieć przed rozpoczęcia zadania i uruchomić zdarzeń przepływu. Na przykład jeśli używasz magazynu obiektów Blob jako dane wyjściowe zadania nie tworzy konto magazynu automatycznie. Utwórz konto magazynu, przed uruchomieniem zadania usługi analiza strumienia.
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Strumienia Analytics obsługuje [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Ten magazyn umożliwia przechowywanie danych dowolnego rozmiar, typ i wprowadzanie szybkość analiz operacyjnych i poznawczych. Ponadto analiza strumienia musi mieć możliwość dostępu do usługi Data Lake Store. Więcej informacji dotyczących autoryzacji i jak zarejestrować się do usługi Data Lake Store (w razie potrzeby), omówiono w [usługi Data Lake output artykułu](stream-analytics-data-lake-output.md).
+Strumienia Analytics obsługuje [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store to repozytorium w hiperskali obsługujące całe przedsiębiorstwo na potrzeby obciążeń analizy dużych ilości danych (big data). Data Lake Store można przechowywać dane dowolnego rozmiar, typ i wprowadzanie szybkość analiz operacyjnych i poznawczych. Ponadto analiza strumienia musi mieć możliwość dostępu do usługi Data Lake Store.
 
-### <a name="authorize-an-azure-data-lake-store"></a>Autoryzowanie usługi Azure Data Lake Store
-Po wybraniu jako dane wyjściowe w portalu Azure Data Lake Storage monit autoryzować połączenia do istniejącej usługi Data Lake Store.  
+### <a name="authorize-an-azure-data-lake-store-account"></a>Autoryzuj konto usługi Azure Data Lake Store
 
-![Autoryzowanie usługi Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+1. Po wybraniu jako dane wyjściowe w portalu Azure Data Lake Storage monit autoryzować połączenia do istniejącej usługi Data Lake Store.  
 
-Wypełnij właściwości dla danych wyjściowych usługi Data Lake Store jak pokazano poniżej:
+   ![Autoryzowanie usługi Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
-![Autoryzowanie usługi Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+2. Jeśli masz już dostępu do usługi Data Lake Store, kliknij przycisk "Autoryzuj teraz", a strona zostanie wyskakujące wskazujący "Przekierowanie do autoryzacji". Po autoryzacji zakończy się powodzeniem, jest wyświetlana strona, która pozwala na skonfigurowanie danych wyjściowych usługi Data Lake Store.  
 
-W poniższej tabeli wymieniono nazwy właściwości i ich opisy niezbędny do utworzenia wyjście usługi Data Lake Store.
+3. Po utworzeniu konta usługi Data Lake Store uwierzytelnionego, można skonfigurować właściwości dla danych wyjściowych usługi Data Lake Store. W poniższej tabeli jest listą nazw właściwości i ich opis, aby skonfigurować dane wyjściowe usługi Data Lake Store.
+
+   ![Autoryzowanie usługi Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 <table>
 <tbody>
@@ -46,11 +47,11 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy niezbędny do ut
 </tr>
 <tr>
 <td>Nazwa konta</td>
-<td>Nazwa konta usługi Data Lake Storage, gdzie wysyłania danych wyjściowych. Jest wyświetlana z listy rozwijanej, do których użytkownik zalogował się do portalu ma dostęp do kont usługi Data Lake Store.</td>
+<td>Nazwa konta usługi Data Lake Storage, gdzie wysyłania danych wyjściowych. Jest wyświetlana z listy rozwijanej, kont usługi Data Lake Store, które są dostępne w Twojej subskrypcji.</td>
 </tr>
 <tr>
 <td>Wzorzec ścieżki prefiksu</td>
-<td>Następującej konwencji nazewnictwa plików są następujące: <BR>{Ścieżka prefiks Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR>Przykład danych wyjściowych plików:<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>Ponadto w tym miejscu są sytuacje, w którym zostanie utworzony nowy plik:<BR>1. Zmiany w schemacie danych wyjściowych <BR>2. Zewnętrznym lub wewnętrznym ponownego uruchomienia zadania<BR><BR>Ponadto jeśli wzorzec ścieżki plików nie zawiera końcowe "/", ostatni wzorca w ścieżce pliku jest traktowany jako prefiksu nazwy pliku.<BR><BR>Przykład:<BR>Dla wzorzec ścieżki: folder1/dzienniki/HH wygenerowanego pliku może wyglądać tak: folder1/logs/02_134343_gguid_1.csv</td>
+<td>Ścieżka do pliku używany do zapisywania plików w ramach określonego konta magazynu usługi Data Lake. Można określić co najmniej jedno wystąpienie elementu {date} i {time} zmiennych.<BR> Przykład 1: folder1/dzienniki / {date} / {time}<BR>Przykład 2: folder1/dzienniki / {date}<BR>Ponadto w tym miejscu są sytuacje, w którym zostanie utworzony nowy plik:<BR>1. Zmiany w schemacie danych wyjściowych <BR>2. Zewnętrznym lub wewnętrznym ponownego uruchomienia zadania<BR><BR>Ponadto jeśli wzorzec ścieżki plików nie zawiera końcowe "/", ostatni wzorca w ścieżce pliku jest traktowany jako prefiksu nazwy pliku.<BR></td>
 </tr>
 <tr>
 <td>Data w formacie [<I>opcjonalne</I>]</td>
@@ -80,12 +81,14 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opisy niezbędny do ut
 </table>
 
 ### <a name="renew-data-lake-store-authorization"></a>Odnów autoryzacji usługi Data Lake Store
-Musisz ponownie uwierzytelniać konta usługi Data Lake Store, jeśli jego hasło uległ zmianie od czasu utworzenia lub ostatniej uwierzytelniony zadania.
+Musisz ponownie uwierzytelniać konta usługi Data Lake Store, jeśli jego hasło uległ zmianie od czasu utworzenia lub ostatniej uwierzytelniony zadania. Jeśli nie ponownego uwierzytelnienia, zadania nie będą dane wyjściowe wyników i dzienniki operacji jest rejestrowany błąd wskazujący potrzebę ponownej autoryzacji. Obecnie jest to ograniczenie gdzie token uwierzytelniania musi być ręcznie odświeżyć co 90 dni, dla wszystkich zadań usługi Data Lake Store w danych wyjściowych. 
+
+Odnowić autoryzacji, **zatrzymać** zadania > Przejdź do usługi Data Lake Store dane wyjściowe > kliknij **odnowić autoryzacji** link i krótki czas strony będzie wyskakujące wskazujący "Przekierowanie do autoryzacji...". Strona zostanie automatycznie zamknięte i w razie powodzenia wskaże "Autoryzacji został pomyślnie odnowiony". Następnie należy kliknąć pozycję **zapisać** w dolnej części strony i są przetwarzane przez ponowne uruchomienie zadania z **czas ostatniego zatrzymania** w celu uniknięcia utraty danych.
 
 ![Autoryzowanie usługi Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
-[Baza danych SQL Azure](https://azure.microsoft.com/services/sql-database/) może służyć jako dane wyjściowe, w charakterze relacyjnym lub aplikacje zależne od hostowanych w relacyjnej bazie danych. Zadania usługi analiza strumienia zapisu do istniejącej tabeli w bazie danych SQL Azure.  Schemat tabeli musi dokładnie odpowiadać pola i ich typy są dane wyjściowe z zadania. [Magazyn danych SQL Azure](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) można również określić jako dane wyjściowe za pośrednictwem bazy danych SQL opcji output również (jest to funkcja w wersji zapoznawczej). W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenie wyjścia bazy danych SQL.
+[Baza danych SQL Azure](https://azure.microsoft.com/services/sql-database/) może służyć jako dane wyjściowe, w charakterze relacyjnym lub aplikacje zależne od hostowanych w relacyjnej bazie danych. Zadania usługi analiza strumienia zapisu do istniejącej tabeli w bazie danych SQL Azure.  Schemat tabeli musi dokładnie odpowiadać pola i ich typy są dane wyjściowe z zadania. [Magazyn danych SQL Azure](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) można również określić jako dane wyjściowe za pośrednictwem także opcji output bazy danych SQL. W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenie wyjścia bazy danych SQL.
 
 | Nazwa właściwości | Opis |
 | --- | --- |
@@ -232,7 +235,7 @@ datetime | Data/godzina
 Float | Podwójnej precyzji
 Tablica rekordu | Ciąg typu, wartości stałej "IRecord" lub "IArray"
 
-### <a name="schema-update"></a>Schema Update
+### <a name="schema-update"></a>Aktualizacja schematu
 Analiza strumienia wnioskuje schemat modelu danych, na podstawie pierwszego zestawu zdarzeń w danych wyjściowych. Później w razie potrzeby schematu modelu danych zostało zaktualizowane do uwzględnienia zdarzeń przychodzących, które mogą nie pasować do oryginalnego schematu.
 
 `SELECT *` Zapytania należy unikać zapobiec aktualizacji dynamicznej schematu w wierszach. Oprócz potencjalnego wpływu na wydajność również może powodować niedokładność czas poświęcony na wyniki. Należy wybrać dokładnie pola, które muszą być wyświetlane na pulpicie nawigacyjnym usługi Power BI. Ponadto wartości danych powinny być zgodne z wybranym typem danych.
@@ -304,19 +307,24 @@ W poniższej tabeli wymieniono nazwy właściwości i ich opis tworzenia tabeli 
 | Ogranicznik |Dotyczy tylko serializacji woluminów CSV. Usługa Stream Analytics obsługuje różne ograniczniki dla serializacji danych w formacie CSV. Obsługiwane wartości to przecinek, średnik, miejsca, karta i pionowy pasek. |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure DB rozwiązania Cosmos](https://azure.microsoft.com/services/documentdb/) jest globalnie rozproszone i wiele modeli bazy danych usługi zagwarantowanie oferty nieograniczona elastycznego skalowania wokół globu, zaawansowane zapytania i automatycznego indeksowania za pośrednictwem modeli danych pochodzącego od dowolnego schematu, małe opóźnienia i branży kompleksowe umów SLA.
+[Azure DB rozwiązania Cosmos](https://azure.microsoft.com/services/documentdb/) jest globalnie rozproszone i wiele modeli bazy danych usługi zagwarantowanie oferty nieograniczona elastycznego skalowania wokół globu, zaawansowane zapytania i automatycznego indeksowania za pośrednictwem modeli danych pochodzącego od dowolnego schematu, małe opóźnienia i branży kompleksowe umów SLA. Aby dowiedzieć się więcej o opcjach kolekcji DB rozwiązania Cosmos Stream Analytics, zapoznaj się [analiza strumienia rozwiązania Cosmos DB jako dane wyjściowe](stream-analytics-documentdb-output.md) artykułu.
 
-Poniższa lista zawiera szczegóły nazwy właściwości i ich opis tworzenia bazy danych Azure rozwiązania Cosmos danych wyjściowych.
+> [!Note]
+> W tej chwili Azure Stream Analytics obsługuje tylko połączenia za pomocą CosmosDB **interfejsu API SQL**.
+> Innych interfejsów API Azure rozwiązania Cosmos bazy danych nie są jeszcze obsługiwane. Jeśli punkt Azure Stream Analytics do kont Azure DB rozwiązania Cosmos tworzone za pomocą innych interfejsów API, dane mogą nie być poprawnie przechowywane. 
 
-* **Dane wyjściowe Alias** — jako alias, aby znaleźć te dane wyjściowe w kwerendzie Stream Analytics  
-* **Nazwa konta** — nazwa lub identyfikator URI konta DB rozwiązania Cosmos punktu końcowego.  
-* **Klucz konta** — współużytkowanego klucza dostępu dla konta DB rozwiązania Cosmos.  
-* **Baza danych** — Nazwa bazy danych DB rozwiązania Cosmos.  
-* **Wzorzec nazwy kolekcji** — Nazwa kolekcji lub ich wzorca kolekcji do użycia. Format nazw kolekcji można skonstruować przy użyciu tokenu opcjonalne {partition}, gdzie partycje zaczynają się od 0. Poniżej przedstawiono przykładowe prawidłowe wartości wejściowe:  
-  1\) MyCollection — jedną kolekcję o nazwie "MyCollection" musi istnieć.  
-  2\) MyCollection {partition} — takie kolekcje muszą istnieć — "MyCollection0", "MyCollection1", "MyCollection2" itd.  
-* **Klucz partycji** — jest to opcjonalne. Jest to potrzebne tylko, jeśli używasz token partycji w Twojej wzorzec nazwy kolekcji. Nazwa pola w zdarzeniach wyjściowych służąca do określenia klucza do partycjonowania danych wyjściowych na kolekcje. Dla danych wyjściowych jednej kolekcji na przykład PartitionId można użyć dowolnej kolumny dowolne dane wyjściowe.  
-* **Identyfikator dokumentu** — jest to opcjonalne. Nazwa pola w zdarzeniach wyjściowych służąca do określenia klucza podstawowego, na które insert lub update bazują operacje.  
+W poniższej tabeli opisano właściwości do utworzenia bazy danych Azure rozwiązania Cosmos danych wyjściowych.
+| Nazwa właściwości | Opis |
+| --- | --- |
+| Alias wyjściowy | Odwoływanie się aliasu to dane wyjściowe w kwerendzie Stream Analytics. |
+| Ujście | Cosmos DB |
+| Opcja importu | Wybierz opcję "Wybierz DB rozwiązania Cosmos z subskrypcji", lub "Ustawienia rozwiązania Cosmos Podaj DB ręcznie".
+| Identyfikator konta | Nazwa lub identyfikator URI konta DB rozwiązania Cosmos punktu końcowego. |
+| Klucz konta | Klucz dostępu współdzielonego dla konta DB rozwiązania Cosmos. |
+| Database (Baza danych) | Nazwa bazy danych DB rozwiązania Cosmos. |
+| Wzorzec nazw kolekcji | Nazwa kolekcji lub ich wzorca kolekcji do użycia. <br/>Format nazw kolekcji można skonstruować przy użyciu tokenu opcjonalne {partition}, gdzie partycje zaczynają się od 0. Dwa przykłady:  <br/>1. _MyCollection_ — jedną kolekcję o nazwie "MyCollection" musi istnieć.  <br/>2. _MyCollection {partition}_ — na podstawie kolumny partycjonowania. <br/>Musi istnieć partycjonowania kolekcji kolumny — "MyCollection0", "MyCollection1", "MyCollection2" itd. |
+| Klucz partycji | Opcjonalny. Jest to potrzebne tylko, jeśli używasz tokenu {partition} we wzorcu nazwy Twojej kolekcji.<br/> Klucz partycji to nazwa pola w zdarzeniach wyjściowych służąca do określenia klucza do partycjonowania danych wyjściowych na kolekcje.<br/> Dla danych wyjściowych jednej kolekcji na przykład PartitionId można użyć dowolnej kolumny dowolne dane wyjściowe. |
+| Identyfikator dokumentu |Opcjonalny. Nazwa pola w zdarzeniach wyjściowych służąca do określenia klucza podstawowego, na które insert lub update bazują operacje.  
 
 ## <a name="azure-functions-in-preview"></a>Środowisko Azure Functions (w wersji zapoznawczej)
 Azure Functions to bezserwerowa usługa obliczeniowa, która umożliwia uruchamianie kodu na żądanie bez konieczności jawnego przydzielania infrastruktury ani zarządzania tą infrastrukturą. Umożliwia ona implementowania kodu wyzwalane przez zdarzenia występujące w Azure lub usług innych firm.  Tę możliwość usługi Azure Functions odpowiedzieć wyzwalaczy ułatwia fizycznych dane wyjściowe do usługi Azure Stream Analytics. Ta karta danych wyjściowych umożliwia użytkownikom Stream Analytics nawiązać połączenia z usługi Azure Functions, a następnie uruchom skrypt lub fragmentu kodu w odpowiedzi na szereg zdarzeń.

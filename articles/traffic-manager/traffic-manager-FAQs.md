@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Często zadawane pytania (FAQ) Menedżera ruchu
 
@@ -233,7 +233,7 @@ Ruch Wyświetl cennik zależy od liczby punktów danych używany do tworzenia da
 
 Za pomocą punktów końcowych z wieloma subskrypcjami nie jest możliwe z aplikacjami sieci Web platformy Azure. Aplikacje sieci Web platformy Azure wymaga dowolną nazwę domeny niestandardowej, używany w aplikacjach sieci Web jest używana tylko w ramach jednej subskrypcji. Nie jest możliwe korzystanie z aplikacji sieci Web z wieloma subskrypcjami z tą samą nazwą domeny.
 
-Dla innych typów punktu końcowego jest możliwe za pomocą Menedżera ruchu z punktami końcowymi z więcej niż jedną subskrypcję. W Menedżerze zasobów punktów końcowych z dowolnej subskrypcji można dodać do usługi Traffic Manager, tak długo, jak osoby konfigurowania profilu usługi Traffic Manager ma dostęp do odczytu do punktu końcowego. Te uprawnienia można otrzymać za pomocą [usługi Azure Resource Manager kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-configure.md).
+Dla innych typów punktu końcowego jest możliwe za pomocą Menedżera ruchu z punktami końcowymi z więcej niż jedną subskrypcję. W Menedżerze zasobów punktów końcowych z dowolnej subskrypcji można dodać do usługi Traffic Manager, tak długo, jak osoby konfigurowania profilu usługi Traffic Manager ma dostęp do odczytu do punktu końcowego. Te uprawnienia można otrzymać za pomocą [usługi Azure Resource Manager kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Czy można używać Menedżera ruchu z miejsc "Przemieszczania" usługi w chmurze?

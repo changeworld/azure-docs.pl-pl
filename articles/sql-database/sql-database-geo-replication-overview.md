@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d241bfb6245eb5a70f1e4fcedc86c969766019f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fc3dca82bea17b44f66b433f59e5861da3bb0ca2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Omówienie: Grup trybu Failover i aktywna replikacja geograficzna
 Aktywna replikacja geograficzna można skonfigurować maksymalnie cztery czytelny dodatkowej bazy danych w centrach danych tego samego lub innego (regiony). Pomocniczych baz danych dostępnych do wykonywania zapytań i pracy awaryjnej w przypadku awarii centrum danych lub brakiem możliwości nawiązania połączenia podstawowej bazy danych. Tryb failover musi być inicjowana ręcznie przez użytkownika aplikacji. Po przejściu w tryb failover nową podstawową ma końcowego innego połączenia. 
@@ -131,7 +131,7 @@ Ze względu na duże opóźnienia sieci rozległej ciągła kopia używa mechani
 ## <a name="programmatically-managing-failover-groups-and-active-geo-replication"></a>Programowe zarządzanie grupami trybu failover i aktywna replikacja geograficzna
 Zgodnie z opisem wcześniej, pracy awaryjnej automatycznie grupy (w — wersja zapoznawcza) i aktywne — replikacja geograficzna może być także zarządzane programowo przy użyciu programu Azure PowerShell i interfejsu API REST. W poniższych tabelach opisano zestaw dostępnych poleceń.
 
-**Interfejs API Menedżera zasobów Azure i zabezpieczenia oparte na rolach**: aktywna replikacja geograficzna zawiera zestaw interfejsów API usługi Azure Resource Manager do zarządzania, w tym [interfejsu API REST bazy danych SQL Azure](https://docs.microsoft.com/rest/api/sql/) i [Azure Polecenia cmdlet programu PowerShell](https://docs.microsoft.com/powershell/azure/overview). Te interfejsy API wymaga korzystania z grup zasobów i obsługuje zabezpieczeń opartych na rolach (RBAC). Aby uzyskać więcej informacji dotyczących sposobu wdrażania ról dostępu, zobacz [kontroli dostępu](../active-directory/role-based-access-control-what-is.md).
+**Interfejs API Menedżera zasobów Azure i zabezpieczenia oparte na rolach**: aktywna replikacja geograficzna zawiera zestaw interfejsów API usługi Azure Resource Manager do zarządzania, w tym [interfejsu API REST bazy danych SQL Azure](https://docs.microsoft.com/rest/api/sql/) i [Azure Polecenia cmdlet programu PowerShell](https://docs.microsoft.com/powershell/azure/overview). Te interfejsy API wymaga korzystania z grup zasobów i obsługuje zabezpieczeń opartych na rolach (RBAC). Aby uzyskać więcej informacji dotyczących sposobu wdrażania ról dostępu, zobacz [kontroli dostępu](../role-based-access-control/overview.md).
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>Zarządzanie trybu failover bazy danych SQL przy użyciu języka Transact-SQL
 

@@ -1,28 +1,27 @@
 ---
-title: "Korzystanie z etykiet do dokumentu zapytania w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Porady dotyczące korzystania z etykiet do dokumentu zapytania w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań."
+title: Za pomocą etykiety do dokumentu zapytania w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Porady dotyczące korzystania z etykiet do dokumentu zapytania w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 44988de8-04c1-4fed-92be-e1935661a4e8
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 9e75bbe528a427724a623305fbd45e2277e9d0af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 48fe625573639c0ec98e672f02a35e4a9ae268e8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="use-labels-to-instrument-queries-in-sql-data-warehouse"></a>Korzystanie z etykiet do dokumentu zapytania w usłudze SQL Data Warehouse
-Magazyn danych SQL obsługuje pojęcie o nazwie etykiety zapytania. Przed przejściem do dowolnej głębokości teraz wyglądać na przykład jeden:
+# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Za pomocą etykiety do dokumentu zapytania w usłudze Azure SQL Data Warehouse
+Porady dotyczące korzystania z etykiet do dokumentu zapytania w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+
+
+## <a name="what-are-labels"></a>Co to są etykiety?
+Magazyn danych SQL obsługuje pojęcie o nazwie etykiety zapytania. Przed przejściem do dowolnej głębokości, Przyjrzyjmy się przykładem:
 
 ```sql
 SELECT *
@@ -31,11 +30,11 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Ten ostatni wiersz znaczniki ciąg "Moje zapytania etykieta" w zapytaniu. Jest to szczególnie przydatne, ponieważ etykieta to zapytanie może przy użyciu widoków DMV. To zapewnia mechanizm do śledzenia zapytań problem, a także ułatwiają identyfikację postęp do uruchomienia ETL.
+Ostatni wiersz znaczniki ciąg "Moje zapytania etykieta" w zapytaniu. Ten tag jest szczególnie przydatne, ponieważ etykieta to zapytanie może przy użyciu widoków DMV. Wykonanie zapytania dotyczącego etykiety udostępnia mechanizm lokalizowania problem zapytania i pomaga w identyfikacji postępu za pośrednictwem ELT Uruchom.
 
-Dobrym konwencji nazewnictwa korzystnie tutaj. Na przykład coś, takich jak "projektu: procedura: instrukcja: komentarz" byłaby pomocna do jednoznacznej identyfikacji zapytania w między cały kod w kontroli źródła.
+Dobrym konwencji nazewnictwa naprawdę pomaga. Na przykład etykieta począwszy od projektu, procedury, instrukcji lub komentarz pomaga do jednoznacznej identyfikacji zapytania między cały kod w kontroli źródła.
 
-Aby przeprowadzić wyszukiwanie według etykiety można Użyj następującego zapytania, który używa dynamicznych widoków zarządzania:
+Następujące zapytanie używa widoku dynamicznego zarządzania, aby przeprowadzić wyszukiwanie według etykiety.
 
 ```sql
 SELECT  *
@@ -45,18 +44,11 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Istotne jest zawijany nawiasy kwadratowe lub cudzysłowów wokół etykiety word podczas wykonywania zapytania. Etykieta jest słowem zastrzeżonym i będzie spowodowała błąd, jeśli nie został ograniczony.
+> Istotne jest umieścić nawiasy kwadratowe lub cudzysłowów wokół etykiety word podczas wykonywania zapytania. Etykieta jest słowem zastrzeżonym i powoduje błąd, gdy nie są rozdzielone. 
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia][development overview].
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
 
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

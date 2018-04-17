@@ -10,13 +10,13 @@ ms.component: manage
 ms.date: 04/02/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6ea45398b0bf7fca43c75797313b7e683972b1ab
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 724f027f3f43cd0ad846210b511c8fc1af27153f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizacja wydajności przez uaktualnienie magazynu danych SQL
+# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 
 Teraz można bezproblemowo uaktualnić zoptymalizowane dla warstwy wydajności obliczeniowej w portalu Azure. Jeśli masz zoptymalizowane dla magazynu danych elastyczność zaleca się uaktualnienie najnowszej generacji Azure sprzętu i architektura magazynu rozszerzonego. Będzie można korzystać z większą wydajność, skalowalności i nieograniczony magazyn kolumnowym. 
 
@@ -70,9 +70,9 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
    
    Pierwszym krokiem procesu uaktualniania przechodzi przez operację skalowania ("Uaktualnianie — w trybie Offline") gdzie wszystkie sesje zostaną skasowane i połączenia zostaną usunięte. 
    
-   Drugi etap procesu uaktualniania jest migracji danych ("Uaktualnianie - Online"). Migracja danych jest strumieniem online proces w tle, które wolno przenosi dane kolumnowy z architekturą starego magazynu Gen1 do nowej architektury magazynu Gen2 na lepsze wykorzystanie pamięci podręcznej Gen2 lokalnych dysków SSD. W tym czasie będzie online wykonywania kwerend i ładowania magazynu danych. Wszystkie dane będą dostępne dla zapytań niezależnie od tego, czy został już zmigrowany, czy nie. Migracja danych odbywa się z szybkością różne w zależności od tego, że rozmiar danych, poziom wydajności i liczby segmentów magazynu kolumn. 
+   Drugi etap procesu uaktualniania jest migracji danych ("Uaktualnianie - Online"). Migracja danych jest strumieniem online proces w tle, co wolno przenosi kolumnowy danych z architektury starego magazynu, do korzystania z lokalnej pamięci podręcznej SSD Architektura magazynu. W tym czasie będzie online wykonywania kwerend i ładowania magazynu danych. Wszystkie dane będą dostępne dla zapytań niezależnie od tego, czy został już zmigrowany, czy nie. Migracja danych odbywa się z szybkością różne w zależności od tego, że rozmiar danych, poziom wydajności i liczby segmentów magazynu kolumn. 
 
-5. **Opcjonalne zalecenie:** aby przyspieszyć proces migracji danych w tle, zaleca się natychmiast wymusić przenoszenia danych, uruchamiając [Alter Index rebuild](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) dla wszystkich tabel magazynu kolumn w większych SLO i zasobów Klasa. Ta operacja jest w trybie offline w porównaniu do strumieniem proces w tle; jednak migracji danych będzie znacznie szybsza, bo gdzie następnie mogą w pełni korzystać architektury magazynu Gen2 raz wraz z rowgroups wysokiej jakości. 
+5. **Opcjonalne zalecenie:** aby przyspieszyć proces migracji danych w tle, zaleca się natychmiast wymusić przenoszenia danych, uruchamiając [Alter Index rebuild](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) dla wszystkich tabel magazynu kolumn w większych SLO i zasobów Klasa. Ta operacja jest w trybie offline w porównaniu do strumieniem proces w tle; jednak migracji danych będzie znacznie szybsza, bo gdzie następnie mogą w pełni korzystać nowej architektury magazynu rozszerzonego raz wraz z rowgroups wysokiej jakości. 
 
 To następujące zapytanie generuje wymagane polecenia Alter Index Rebuild aby przyspieszyć proces migracji danych:
 

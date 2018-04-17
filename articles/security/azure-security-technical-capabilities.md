@@ -1,12 +1,12 @@
 ---
-title: "Możliwości techniczne zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa."
+title: Możliwości techniczne zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 536745d869ea3bcd0beedad3712597b00e600796
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 489b2a66cadb77a338f9ae00443c072a4e19edfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -100,7 +100,7 @@ Poniżej przedstawiono podstawowe możliwości zarządzania Azure tożsamości:
 
 W wielu organizacjach opierają się na oprogramowania jako aplikacje usługi (SaaS), takich jak Office 365, pole i Salesforce na produktywność użytkownika końcowego. W przeszłości personel działu informatycznego jest niezbędne do indywidualnie tworzenie i aktualizowanie kont użytkowników w każdej aplikacji SaaS, a użytkownicy będą musieli Zapamiętaj hasło dla każdej aplikacji SaaS.
 
-[Usługi Azure AD rozszerza lokalnej usługi Active Directory do chmury](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), umożliwiając użytkownikom używanie ich podstawowego konta organizacyjnego, nie tylko Zaloguj się do swoich urządzeń dołączonych do domeny i zasobów firmy, ale również wszystkich aplikacji sieci web i aplikacji SaaS potrzebne do ich pracy.
+[Usługi Azure AD rozszerza lokalnej usługi Active Directory do chmury](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), umożliwiając użytkownikom używanie ich podstawowego konta organizacyjnego, nie tylko Zaloguj się do swoich urządzeń dołączonych do domeny i zasobów firmy, ale również wszystkich aplikacji sieci web i aplikacji SaaS potrzebne do ich zadania.
 
 Nie tylko użytkowników nie trzeba zarządzać wiele zestawów nazwy użytkowników i hasła, dostęp do aplikacji mogą być automatycznie udostępnione lub cofnąć elastycznie na podstawie grupy organizacyjne i ich stan jako pracownika. [Usługi Azure AD wprowadza formanty Zarządzanie zabezpieczeniami i dostępem](https://docs.microsoft.com/azure/active-directory/active-directory-sso-integrate-saas-apps) umożliwiające centralne zarządzanie dostępem użytkowników do aplikacji SaaS.
 
@@ -166,7 +166,7 @@ Kontrola dostępu na platformie Azure rozpoczyna się z punktu widzenia rozlicze
 
 Subskrypcje mają również skojarzenie z katalogiem. Katalog definiuje zestaw użytkowników. Mogą to być użytkownikom pracy lub nauki, który utworzył katalog lub można je użytkowników zewnętrznych (to znaczy Accounts firmy Microsoft). Subskrypcje są dostępne dla podzbioru użytkowników katalogu, na których został przypisany jako usługi administratora lub administratora współpracującego (CA); Jedynym wyjątkiem jest w starszej wersji ze względu na Accounts Microsoft (dawniej identyfikator Windows Live ID) można przypisać jako administratora systemu lub urzędu certyfikacji nie jest obecny w katalogu.
 
-Nastawionych zabezpieczeń należy skoncentrować się na zapewniając pracownikom dokładne uprawnienia potrzebne. Za dużo uprawnienia mogą uwidaczniać konta na ataki. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. [Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) pomaga rozwiązać ten problem, oferując precyzyjne zarządzanie dostępem dla platformy Azure.
+Nastawionych zabezpieczeń należy skoncentrować się na zapewniając pracownikom dokładne uprawnienia potrzebne. Za dużo uprawnienia mogą uwidaczniać konta na ataki. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. [Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) pomaga rozwiązać ten problem, oferując precyzyjne zarządzanie dostępem dla platformy Azure.
 
 ![Dostęp do zabezpieczonych zasobów ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
@@ -516,7 +516,7 @@ Dowiedz się więcej o zabezpieczeń, odczytując niektóre nasze tematy szczeg�
 
 - [Inspekcja i rejestrowanie](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
 
-- [Cybercrime](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
+- [Wzrost cyberprzestępczości](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
 
 - [Projektowanie i bezpieczeństwa operacyjnego](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
 

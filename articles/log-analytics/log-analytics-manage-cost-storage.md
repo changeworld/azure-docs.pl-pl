@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 865b0e485480f5ee7d676d3a6c90cb51fd50d19c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Zarządzanie koszt kontrolując ilość danych i przechowywania w analizy dzienników
 Analiza dzienników jest przeznaczone do skali i pomocy technicznej zbierania, indeksowanie i przechowywania dużych ilości danych dziennie z dowolnego źródła w przedsiębiorstwie lub wdrożona na platformie Azure.  Może to być podstawowy sterownik dla Twojej organizacji, niskich kosztów jest ostatecznie sterownika. W tym celu jego wziąć pod uwagę, że koszt obszaru roboczego Analytisc dziennika po prostu nie jest oparty na ilość danych zebranych, również jest zależny od plan wybrany, i jak długo został wybrany do przechowywania danych generowanych przez połączone źródła.  
@@ -33,15 +33,14 @@ Koszt danych mogą być znaczące w zależności od następujących czynników:
 - Okresu dane są przechowywane w obszarze roboczym  
 - Liczba rozwiązań do zarządzania włączone, źródła danych i częstotliwość kolekcji 
 
+Zapoznaj się z dokumentacją, dla każdego rozwiązania, ponieważ zapewnia szacunkową ilość danych, które zbiera.   
+
+Jeśli na "" warstwy cenowej bezpłatna, dane są ograniczone do przechowywania 7 dni. "Na GB (autonomiczna)" lub "Na węzłami (OMS)" warstw zebranych danych jest dostępna w ciągu ostatnich 31 dni i przechowywania można zwiększyć do 2 lata. Opłaty za wybranie dłuższy okres przechowywania. Planu Free ma dzienny limit wprowadzanie 500 MB, a Jeśli znajdziesz spójnie przekroczyć kwoty dozwolone woluminu, można zmienić obszaru roboczego GB na lub warstw węzłów na zbieranie danych po przekroczeniu tego limitu. Możesz zmienić typ planu w dowolnym momencie, a także aby uzyskać więcej informacji o cenach, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/log-analytics/). 
+
 > [!NOTE]
-> Zapoznaj się z dokumentacją, dla każdego rozwiązania, ponieważ zapewnia szacunkową ilość danych, które zbiera.   
+> W kwietniu 2018 firma Microsoft [wprowadzone](https://azure.microsoft.com/en-us/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nowego modelu cenowego monitorowania Azure. Ten model przyjmuje prostego modelu "z" między pełną gamę monitorowanie usług. Dowiedz się więcej o [nowy model cenowy](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak do [ocenić wpływ przenoszenia do tego modelu](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) oparte na Twoich wzorców użycia i [jak zgłosić do nowego modelu do](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
 
-Jeśli pracujesz w *wolne* planu, dane są ograniczone do przechowywania 7 dni. Aby uzyskać *autonomiczny* lub *zapłacone* warstwy, dane zbierane są dostępne w ciągu ostatnich 31 dni. *Wolne* plan ma 500 MB dzienny limit wprowadzanie i odnalezienie stale przekracza dozwolone woluminu kwoty obszaru roboczego można zmienić na plan płatnej do zbierania danych po przekroczeniu tego limitu. 
-
-> [!NOTE]
-> Opłaty za wybranie opcji wybierz dłuższy okres przechowywania dla warstwy płatną. Możesz zmienić typ planu w dowolnym momencie, a także aby uzyskać więcej informacji o cenach, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/log-analytics/). 
-
-Istnieją takie dwa sposoby, w których ilość danych może być ograniczona i pomóc kontrolować koszty, są codziennie przechowywania danych i zakończenia.  
+Niezależnie od tego modelu lub warstwy cenowej fundmental kontrolowanie kosztów jest zarządzanie ilość danych. Jako uzupełnienie testowych i konfiguracji konkretne rozwiązanie w ramach analizy dzienników znajdują się dwa sposoby, w których ilość danych może być ograniczona i pomóc kontrolować koszty są codziennie przechowywania danych i zakończenia.  
 
 ## <a name="review-estimated-cost"></a>Przejrzyj szacowany koszt
 Sprawia, że analiza dziennika go łatwo zrozumieć, co prawdopodobnie koszty oparte na najnowszych wzorców użycia.  Aby to zrobić, wykonaj następujące czynności.  

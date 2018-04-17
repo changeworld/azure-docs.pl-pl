@@ -1,22 +1,22 @@
 ---
-title: "Do usługi uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET"
-description: "Biblioteka Microsoft.Azure.Services.AppAuthentication służy do uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET."
-keywords: "lokalne poświadczenia uwierzytelniania magazyn kluczy Azure"
+title: Do usługi uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
+description: Biblioteka Microsoft.Azure.Services.AppAuthentication służy do uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET.
+keywords: lokalne poświadczenia uwierzytelniania magazyn kluczy Azure
 author: lleonard-msft
 manager: mbaldwin
 services: key-vault
 ms.author: alleonar
 ms.date: 11/15/2017
 ms.topic: article
-ms.prod: 
-ms.service: microsoft-keyvault
-ms.technology: 
+ms.prod: ''
+ms.service: key-vault
+ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: bff4b15ca2f1c985c4b4e27d159adaa5fd039553
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db0b0ca72f41c68e19db6635d9ba0e9144183204
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Do usługi uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
 
@@ -113,7 +113,7 @@ Aby użyć wiersza polecenia platformy Azure dla rozwoju lokalnych:
 
 Użyj `az account get-access-token` Aby zweryfikować dostęp.  Jeśli wystąpi błąd, sprawdź, czy krok 1 zakończyła się pomyślnie. 
 
-Jeśli nie zainstalowano wiersza polecenia platformy Azure do domyślnego katalogu, może zostać wyświetlony błąd informujący, że `AzureServiceTokenProvider` nie można odnaleźć ścieżki dla wiersza polecenia platformy Azure.  Użyj **AzureCLIPath**zmiennej środowiskowej, aby zdefiniować folder instalacyjny wiersza polecenia platformy Azure. `AzureServiceTokenProvider`Dodaje określony w katalogu **AzureCLIPath** zmienną środowiskową **ścieżki** zmiennej środowiskowej, gdy jest to konieczne.
+Jeśli nie zainstalowano wiersza polecenia platformy Azure do domyślnego katalogu, może zostać wyświetlony błąd informujący, że `AzureServiceTokenProvider` nie można odnaleźć ścieżki dla wiersza polecenia platformy Azure.  Użyj **AzureCLIPath**zmiennej środowiskowej, aby zdefiniować folder instalacyjny wiersza polecenia platformy Azure. `AzureServiceTokenProvider` Dodaje określony w katalogu **AzureCLIPath** zmienną środowiskową **ścieżki** zmiennej środowiskowej, gdy jest to konieczne.
 
 Jeśli użytkownik jest zalogowany do wiersza polecenia platformy Azure przy użyciu wielu kont lub konto użytkownika ma dostęp do wielu subskrypcji, należy określić określonej subskrypcji do użycia.  Aby to zrobić, należy użyć:
 
@@ -211,7 +211,7 @@ Aby zalogować się przy użyciu usługi Azure AD udostępnionej tajnego poświa
 
 3. Uruchom aplikację. 
 
-Gdy wszystko zostało skonfigurowane prawidłowo, żadne dalsze zmiany kodu są konieczne.  `AzureServiceTokenProvider`używa zmiennej środowiskowej i certyfikat do uwierzytelniania usługi Azure AD. 
+Gdy wszystko zostało skonfigurowane prawidłowo, żadne dalsze zmiany kodu są konieczne.  `AzureServiceTokenProvider` używa zmiennej środowiskowej i certyfikat do uwierzytelniania usługi Azure AD. 
 
 <a name="connectionstrings"></a>
 ## <a name="connection-string-support"></a>Obsługa ciągu połączenia
@@ -228,12 +228,12 @@ Obsługiwane są następujące opcje:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Lokalne działania projektowe | AzureServiceTokenProvider używa programu Visual Studio w celu uzyskania tokenu. |
 | `RunAs=CurrentUser;` | Lokalne działania projektowe | AzureServiceTokenProvider używa zintegrowanego uwierzytelniania systemu Azure AD w celu uzyskania tokenu. |
 | `RunAs=App;` | Tożsamość usługi zarządzanej | AzureServiceTokenProvider używa zarządzane tożsamości usługi w celu uzyskania tokenu. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | Nazwy głównej usługi | `AzureServiceTokenProvider`używa certyfikatu, aby uzyskać token z usługi Azure AD. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | Nazwy głównej usługi | `AzureServiceTokenProvider`używa certyfikatu w celu uzyskania tokenu z usługi Azure AD|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Nazwy głównej usługi |`AzureServiceTokenProvider`używa hasła w celu uzyskania tokenu z usługi Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | Jednostka usługi | `AzureServiceTokenProvider` używa certyfikatu, aby uzyskać token z usługi Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | Jednostka usługi | `AzureServiceTokenProvider` używa certyfikatu w celu uzyskania tokenu z usługi Azure AD|
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Jednostka usługi |`AzureServiceTokenProvider` używa hasła w celu uzyskania tokenu z usługi Azure AD. |
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [zarządzane tożsamość usługi](/azure/app-service/app-service-managed-service-identity).
 

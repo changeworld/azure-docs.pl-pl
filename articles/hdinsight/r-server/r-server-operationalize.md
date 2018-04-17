@@ -1,24 +1,22 @@
 ---
 title: Operacjonalizuj R Server w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak operacjonalizacji R Server w usłudze Azure HDInsight.
-services: HDInsight
+services: hdinsight
 documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
-ms.service: HDInsight
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: nitinme
-ms.openlocfilehash: 93957b7ee10527039bf2e96cc5470420cdef0651
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>Operacjonalizuj klastra R Server w usłudze Azure HDInsight
 
@@ -193,6 +191,6 @@ Po skonfigurowaniu wszystkich węzłów procesu roboczego wycofany z eksploatacj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zarządzanie klastrem R Server w usłudze HDInsight](r-server-hdinsight-manage.md)
-* [Obliczenia bazy danych opcji kontekstu dla klastra serwera R w usłudze HDInsight](r-server-compute-contexts.md)
-* [Opcje magazynu systemu Azure dla klastra serwera R w usłudze HDInsight](r-server-storage.md)
+* [Manage R Server cluster on HDInsight (Zarządzanie klastrem oprogramowania R Server w usłudze HDInsight)](r-server-hdinsight-manage.md)
+* [Compute context options for R Server on HDInsight (Opcje kontekstu obliczeniowego dla oprogramowania R Server w usłudze HDInsight)](r-server-compute-contexts.md)
+* [Azure Storage options for R Server on HDInsight (Opcje usługi Azure Storage dla oprogramowania R Server w usłudze HDInsight)](r-server-storage.md)

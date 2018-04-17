@@ -1,6 +1,6 @@
 ---
-title: "Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług finansowych podlegającymi ochronie obciążeń"
-description: "Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług finansowych podlegającymi ochronie obciążeń"
+title: Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług finansowych podlegającymi ochronie obciążeń
+description: Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług finansowych podlegającymi ochronie obciążeń
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Zabezpieczeń platformy Azure i plan zgodności - FFIEC branży usług finansowych podlegającymi ochronie obciążeń
 
@@ -122,7 +122,7 @@ To rozwiązanie użyć następujących usług platformy Azure. Szczegółowe inf
 >- Application Gateway
 >- Usługa Azure Active Directory
 >- V2 środowiska usługi aplikacji
->- OMS analizy dzienników
+>- Log Analytics
 >- W usłudze Azure Key Vault
 >- Grupy zabezpieczeń sieci
 >- Azure SQL DB
@@ -177,7 +177,7 @@ Każdy z grup NSG mieć określone porty i protokoły otwarty do bezpiecznego i 
 Ponadto następujące konfiguracje są włączone dla każdej grupy NSG:
 
 - Włączone [dzienników diagnostycznych oraz zdarzenia](/azure/virtual-network/virtual-network-nsg-manage-log) są przechowywane na koncie magazynu 
-- Połączone OMS analizy dzienników do [NSG dla diagnostyki](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- Połączenia analizy dzienników do [NSG dla diagnostyki](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
  
 #### <a name="subnets"></a>Podsieci
@@ -208,12 +208,12 @@ Wystąpienie bazy danych SQL Azure używa następujących środków zabezpiecze�
 
 ### <a name="logging-and-auditing"></a>Rejestrowanie i inspekcja
 
-[Operations Management Suite (OMS)](/azure/operations-management-suite/) można udostępnić magazynu sieci Web firmy Contoso szczegółowe rejestrowanie całą aktywność systemu i użytkownika, obejmują rejestrowania danych finansowych. Zmiany można przejrzeć i sprawdzić dokładność. 
+[Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics) można udostępnić magazynu sieci Web firmy Contoso szczegółowe rejestrowanie całą aktywność systemu i użytkownika, obejmują rejestrowania danych finansowych. Zmiany można przejrzeć i sprawdzić dokładność. 
 
 - **Dzienniki aktywności.**  [Dzienniki aktywności](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobów w ramach subskrypcji.
 - **Dzienniki diagnostyczne.**  [Dzienniki diagnostyczne](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) są wszystkie dzienniki emitowane przez każdego zasobu. Dzienniki te obejmują dzienniki systemu zdarzeń systemu Windows, dzienniki magazynu obiektów Blob platformy Azure, tabele i kolejki dzienników.
 - **Dzienniki zapory.**  Brama aplikacji w pełnej diagnostyki i uzyskać dostępu do dzienników. Dzienniki zapory są dostępne dla bramy aplikacji zasoby, które mają zapory aplikacji sieci Web jest włączona.
-- **Archiwizowanie dziennika.**  Wszystkie dzienniki diagnostyczne są skonfigurowane do zapisywania scentralizowany i zaszyfrowane koncie magazynu Azure dla archiwizacji z okresu przechowywania określonych (2 dni). Dzienniki są następnie połączonych z Analiza dzienników Azure na potrzeby przetwarzania, przechowywania i dashboarding. [Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics) jest usługą OMS, która umożliwia zbieranie i analizowanie danych wygenerowanych przez zasobów w chmurze i lokalnych środowiskach.
+- **Archiwizowanie dziennika.**  Wszystkie dzienniki diagnostyczne są skonfigurowane do zapisywania scentralizowany i zaszyfrowane koncie magazynu Azure dla archiwizacji z okresu przechowywania określonych (2 dni). Dzienniki są następnie połączonych z Analiza dzienników Azure na potrzeby przetwarzania, przechowywania i dashboarding. [Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics) to usługa, która umożliwia zbieranie i analizowanie danych wygenerowanych przez zasobów w chmurze i lokalnych środowiskach.
 
 ### <a name="encryption-and-secrets-management"></a>Szyfrowanie i kluczy tajnych zarządzania
 
@@ -230,7 +230,7 @@ Następujące technologie potwierdzenie tożsamości możliwości zarządzania w
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) jest wielodostępne oparte na chmurze katalogami i tożsamościami zarządzania usługi Microsoft. Wszyscy użytkownicy dla rozwiązania zostały utworzone w usłudze Azure Active Directory, w tym użytkownikom dostęp do bazy danych SQL.
 - Aby aplikacja uwierzytelniania przy użyciu usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications). Ponadto szyfrowania kolumny bazy danych również używa usługi Azure AD do uwierzytelniania aplikacji z bazą danych SQL Azure. Aby uzyskać więcej informacji, zobacz [zawsze zaszyfrowane: ochrona poufnych danych w bazie danych SQL](/azure/sql-database/sql-database-always-encrypted-azure-key-vault). 
 - [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) wykrywa potencjalnych luk w zabezpieczeniach, które mogą wpłynąć na tożsamości organizacji, konfiguruje automatyczne odpowiedzi wykryte podejrzane działania związane z tożsamości organizacji i sprawdza podejrzane zdarzenia i podejmuje odpowiednie działania w celu ich rozwiązywania.
-- [Azure opartej na rolach kontroli dostępu (RBAC)](/azure/active-directory/role-based-access-control-configure) umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Subskrypcja dostęp jest ograniczony do administratora subskrypcji i usługi Azure Key Vault dostęp jest ograniczony do wszystkich użytkowników.
+- [Azure opartej na rolach kontroli dostępu (RBAC)](/azure/role-based-access-control/role-assignments-portal) umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Subskrypcja dostęp jest ograniczony do administratora subskrypcji i usługi Azure Key Vault dostęp jest ograniczony do wszystkich użytkowników.
 
 Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń bazy danych SQL Azure, zobacz [aplikacja demonstracyjna Clinic Contoso](https://github.com/Microsoft/azure-sql-security-sample) próbki.
    
@@ -263,7 +263,7 @@ Ponieważ środowisko usługi aplikacji jest zabezpieczony i zablokowane, musi i
 Maszyna wirtualna została utworzona jako jumpbox (host bastionu) z następujących konfiguracji:
 
 -   [Rozszerzenie ochrony przed złośliwym oprogramowaniem](/azure/security/azure-security-antimalware)
--   [Rozszerzenie pakietu OMS](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Rozszerzenia analizy dzienników](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Rozszerzenie Diagnostyka Azure](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   [Szyfrowanie dysków Azure](/azure/security/azure-security-disk-encryption) przy użyciu usługi Azure Key Vault 
 -   [Zasad automatyczne zamykanie](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) można ograniczyć zużycie zasobów maszyny wirtualnej nieużywane
@@ -284,11 +284,11 @@ Użyj [usługi Application Insights](https://azure.microsoft.com/services/applic
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics/) jest usługą w operacji pakietu zarządzania (OMS), ułatwiające zbieranie i analizowanie danych wygenerowanych przez zasobów w chmurze i lokalnych środowiskach.
+[Zaloguj się Analytics](https://azure.microsoft.com/services/log-analytics/) to usługa, która pomaga zbieranie i analizowanie danych wygenerowanych przez zasobów w chmurze i lokalnych środowiskach.
 
-#### <a name="oms-solutions"></a>Rozwiązania pakietu OMS
+#### <a name="managment-solutions"></a>Rozwiązania do zarządzania
 
-Te dodatkowe rozwiązania OMS powinien został uznany za i skonfigurowane: 
+Takie rozwiązania do zarządzania dodatkowe powinien został uznany za i skonfigurowane: 
 - [Activity Log Analytics](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Analiza sieci platformy Azure](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL Analytics](/azure/log-analytics/log-analytics-azure-sql)
@@ -344,9 +344,9 @@ Firma Microsoft zaleca, że czystą instalację programu PowerShell można uży�
     
     Szczegółowe instrukcje dotyczące obsługi, zobacz [instrukcje skryptu — wdrażanie i konfigurowanie zasobów Azure](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
     
-3. OMS rejestrowania i monitorowania. Podczas wdrażania rozwiązania [programu Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) można otworzyć obszaru roboczego i przykładowe szablony w repozytorium rozwiązania może służyć do zilustrowania konfiguracji monitorowania pulpitu nawigacyjnego . Przykładowe szablony OMS, można znaleźć w temacie [folderu omsDashboards](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Należy pamiętać, że należy zbierać dane w OMS dla szablonów, aby wdrożyć poprawnie. To może potrwać godzinę lub dłużej w zależności od działania lokacji.
+3. Dziennik analizy rejestrowania i monitorowania. Po wdrożeniu rozwiązania można otworzyć obszaru roboczego analizy dzienników i przykładowe szablony w repozytorium rozwiązania może służyć do zilustrowania konfiguracji monitorowania pulpitu nawigacyjnego. Przykładowe szablony, można znaleźć w temacie [folderu omsDashboards](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Należy pamiętać, że należy zbierać dane w analizy dzienników dla szablonów do wdrożenia poprawnie. To może potrwać godzinę lub dłużej w zależności od działania lokacji.
  
-    Podczas konfigurowania sieci rejestrowania OMS, należy rozważyć umieszczenie tych zasobów:
+    Podczas konfigurowania sieci rejestrowania analizy dzienników, należy rozważyć umieszczenie tych zasobów:
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups
@@ -375,7 +375,7 @@ Klienci są zobowiązani do zachowania kopię [odpowiedzialność podsumowanie m
 
 ## <a name="disclaimer-and-acknowledgments"></a>Zastrzeżenie i potwierdzenia
 
-2017 września
+*2017 września*
 
 - Ten dokument jest tylko do celów informacyjnych. FIRMA MICROSOFT I AVYAN NALEŻY UDZIELANIA ŻADNYCH GWARANCJI, WYRAŻONYCH, DOROZUMIANYCH LUB USTAWOWYCH, ODNOŚNIE DO INFORMACJI W TYM DOKUMENCIE. Niniejszy dokument jest udostępniany "jako — jest." Informacje i poglądy wyrażone w tym dokumencie, w tym adresy URL i innymi odwołaniami do witryn internetowych, mogą ulec zmianie bez uprzedzenia. Klienci odczytu ten dokument ponosi ryzyko związane z użyciem jej.  
 - Ten dokument nie zawiera klientów z żadnych praw do jakiejkolwiek własności intelektualnej w dowolnym produkt firmy Microsoft lub Avyan lub rozwiązania.  

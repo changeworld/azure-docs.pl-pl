@@ -11,17 +11,15 @@ editor: cgronlun
 ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: ddb6291cdff7e2b65f54e89196c2b07dd6e4aaff
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3fb08a18fea056bc06eed797a2da809d25109cae
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Przekazywanie danych dla zadań Hadoop w usłudze HDInsight
 
@@ -198,7 +196,7 @@ Istnieje kilka aplikacji, które zapewniają interfejs graficzny służący do p
 #### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools dla usługi HDInsight
 Aby uzyskać więcej informacji, zobacz [Przejdź połączonych zasobów](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
-#### <a id="storageexplorer"></a>Azure Storage Explorer
+#### <a id="storageexplorer"></a>Eksplorator usługi Storage platformy Azure
 *Eksplorator usługi Storage Azure* stanowi przydatne narzędzie do sprawdzania i zmiany danych w obiektach blob. To narzędzie wolnego typu open source, który można pobrać z [ http://storageexplorer.com/ ](http://storageexplorer.com/). Kod źródłowy jest dostępny z tego łącza, a także.
 
 Przed użyciem tego narzędzia, musisz znać Azure klucz konta magazynu nazwy i konta. Instrukcje dotyczące pobierania tych informacji, zobacz temat "porady: wyświetlanie, kopiowanie i regenerate magazynu, klucze dostępu" sekcji [tworzenia, zarządzania i usuwania konta magazynu][azure-create-storage-account].

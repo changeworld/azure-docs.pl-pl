@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: cosmos-db
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: sngun
+ms.custom: include file
+ms.openlocfilehash: f8ef3070c318293af59a8f22d271b9c836c06f69
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
+---
 1. W nowym oknie przeglądarki zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 2. Kliknij kolejno pozycje **Utwórz zasób** > **Bazy danych** > **Azure Cosmos DB**.
    
@@ -17,7 +33,7 @@
 
     Następnie kliknij pozycję **Utwórz**.
 
-    ![Nowa strona konta dla bazy danych Azure rozwiązania Cosmos](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+    ![Nowa strona konta dla bazy danych Azure rozwiązania Cosmos](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account.png)
 
 4. Tworzenie konta potrwa kilka minut. Poczekaj na portalu, aby wyświetlić **Gratulacje! Utworzono konto bazy danych Azure rozwiązania Cosmos** strony.
 

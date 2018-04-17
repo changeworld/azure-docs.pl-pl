@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f87705ebbdd14b1bbf7cade481a7dbe7dd3d5131
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ce295c449b01de4fa99df9198805a6b0727c0d18
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorowanie użycia i szacowanych kosztów
 
@@ -61,12 +61,16 @@ W tym miejscu zobaczysz inny zestaw liczników — liczniki, które odpowiadają
 3. Nadwyżkowe danych Insights\Basic aplikacji
 4. Dane Insights\Included aplikacji
 
-są łączone w nowy licznik wprowadzanie wspólnych danych o nazwie **udostępnionych wprowadzanie Services\Data** od nowego modelu cenowego nie ma alokacji danych dołączone opartych na węźle.
+są łączone w nowy licznik wprowadzanie wspólnych danych o nazwie **udostępnionych wprowadzanie Services\Data** od nowego modelu cenowego nie ma uprawnienia do danych uwzględnione na węzeł.
 
 Inna zmiana zobaczysz jest pozyskanych do analizy dzienników danych lub usługi Application Insights w regionach z wyższe koszty będą wyświetlane nowe liczniki regionalnych uwzględnienie prawidłowo, na przykład **"wprowadzanie danych (środkowe zachodnie stany USA)**.
 
 > [!NOTE]
-> Jeśli masz subskrypcję Operations Management Suite (OMS), pojawi się analizy dzienników i usługi Application Insights alokacji wprowadzanie danych dla każdego węzła zakupu. Ponieważ to jest stosowana na poziomie konta (nie w subskrypcji), ta szacowana nie można wyświetlić wpływu tych przydziałów. Zapoznaj się z przedstawicielem konta bardziej szczegółowym omówieniem nowego modelu cenowego w takim przypadku.
+> Koszty szacowane na subskrypcji nie uwzględnić uprawnień do poziomu każdego węzła konta subskrypcji Operations Management Suite (OMS). Zapoznaj się z przedstawicielem konta bardziej szczegółowym omówieniem nowego modelu cenowego w takim przypadku.
+
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Cennik nowego modelu i uprawnienia do subskrypcji usługi Operations Management Suite
+
+Klienci, którzy kupili E1 programu Microsoft Operations Management Suite i E2 kwalifikują się do każdego węzła danych wprowadzanie uprawnień dla [analizy dzienników](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) i [usługi Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans). Aby otrzymywać te uprawnienia dla analizy dzienników obszarów roboczych lub zasobów w ramach danej subskrypcji, że subskrypcja na model cenowy muszą pozostać w wersji pre kwietnia 2018 cenową usługi Application Insights modelu where analizy dzienników "na węzłami (OMS)" warstwy cenowej i Usługa Application Insights "Przedsiębiorstwa" cennik planu są dostępne. W zależności od liczby węzłów pakietu nabytym przez organizację przeniesienie niektórych subskrypcji do nowego modelu cenowego nadal może być korzystne, ale wymaga dokładne brany pod uwagę. 
 
 ## <a name="changes-when-moving-to-the-new-pricing-model"></a>Zmiany podczas przenoszenia do nowego modelu cenowego
 

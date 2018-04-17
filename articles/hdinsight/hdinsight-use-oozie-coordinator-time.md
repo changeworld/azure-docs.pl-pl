@@ -1,8 +1,8 @@
 ---
-title: "Użyj oparte na czasie koordynatora Hadoop Oozie w usłudze HDInsight | Dokumentacja firmy Microsoft"
-description: "Użyj oparte na czasie koordynatora Hadoop Oozie w usłudze HDInsight, Usługa danych big data. Dowiedz się, jak zdefiniować przepływy pracy Oozie i koordynatora i przesyłanie zadań."
+title: Użyj oparte na czasie koordynatora Hadoop Oozie w usłudze HDInsight | Dokumentacja firmy Microsoft
+description: Użyj oparte na czasie koordynatora Hadoop Oozie w usłudze HDInsight, Usługa danych big data. Dowiedz się, jak zdefiniować przepływy pracy Oozie i koordynatora i przesyłanie zadań.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -10,18 +10,16 @@ editor: cgronlun
 ms.assetid: 00c3a395-d51a-44ff-af2d-1f116c4b1c83
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0fa8e3630610913d909a75bf76236d120c8f1a2b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: db7f1f85601cfcf4531bb11176a21126625ce7f0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Za pomocą opartego na czasie Oozie coordinator Hadoop w usłudze HDInsight do definiowania przepływów pracy i koordynowania zadania
 W tym artykule dowiesz się, jak zdefiniować przepływy pracy i koordynatora i sposób włączania zadania koordynatora, w oparciu o czas. Warto przeprowadzić [Oozie użycia z usługą HDInsight] [ hdinsight-use-oozie] przed przeczytaniem tego artykułu. Oprócz Oozie można również zaplanować zadania przy użyciu fabryki danych Azure. Aby uzyskać fabryki danych Azure, zobacz [Use Pig i Hive z fabryką danych](../data-factory/transform-data.md).
@@ -712,7 +710,7 @@ $cmd.executenonquery()
 $conn.close()
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób definiowania przepływów pracy Oozie i Oozie coordinator i jak uruchamiać zadanie Oozie coordinator przy użyciu programu Azure PowerShell. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą HDInsight][hdinsight-get-started]

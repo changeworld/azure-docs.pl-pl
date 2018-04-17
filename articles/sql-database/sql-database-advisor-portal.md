@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Znajdź i stosować zalecenia wydajności
 
@@ -21,7 +21,7 @@ Aby znaleźć zalecenia dotyczące wydajności, które można zoptymalizować wy
 
 ## <a name="viewing-recommendations"></a>Przeglądanie zaleceniami
 
-Aby wyświetlić i stosować zalecenia wydajności, należy poprawny [kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-what-is.md) uprawnienia na platformie Azure. **Czytnik**, **Współautor bazy danych SQL** są wymagane uprawnienia, aby wyświetlić zalecenia, i **właściciela**, **Współautor bazy danych SQL** wymagane są uprawnienia do wykonywać żadnych akcji; Utwórz lub Porzuć indeksy i anulowanie tworzenia indeksu.
+Aby wyświetlić i stosować zalecenia wydajności, należy poprawny [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) uprawnienia na platformie Azure. **Czytnik**, **Współautor bazy danych SQL** są wymagane uprawnienia, aby wyświetlić zalecenia, i **właściciela**, **Współautor bazy danych SQL** wymagane są uprawnienia do wykonywać żadnych akcji; Utwórz lub Porzuć indeksy i anulowanie tworzenia indeksu.
 
 Aby znaleźć zalecenia dotyczące wydajności w portalu Azure, wykonaj następujące kroki:
 
@@ -154,5 +154,5 @@ Monitorowanie zalecenia i zastosować je do ograniczania wydajności w dalszym c
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Magazyn zapytań](https://msdn.microsoft.com/library/dn817826.aspx)
 * [TWORZENIE INDEKSU](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-what-is.md)
+* [Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md)
 

@@ -1,6 +1,22 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-network
+author: jimdial
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: 1febadbbf7821988600d6feddc94fce25d15e989
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="os-config"></a>Adresy IP do systemu operacyjnego maszyny wirtualnej
 
-Z utworzoną maszyną wirtualną można nawiązywać połączenie oraz logować się na niej za pomocą wielu prywatnych adresów IP. Wszystkie prywatne adresy IP (w tym podstawowy) dodane do maszyny wirtualnej muszą zostać wprowadzone ręcznie. Wykonaj poniższe kroki w odpowiednim systemie operacyjnym maszyny wirtualnej:
+Z utworzoną maszyną wirtualną można nawiązywać połączenie oraz logować się na niej za pomocą wielu prywatnych adresów IP. Wszystkie prywatne adresy IP (w tym podstawowy) dodane do maszyny wirtualnej muszą zostać wprowadzone ręcznie. Wykonaj kroki następujących systemu operacyjnego maszyny Wirtualnej.
 
 ### <a name="windows"></a>Windows
 
@@ -13,17 +29,16 @@ Z utworzoną maszyną wirtualną można nawiązywać połączenie oraz logować 
     * **Adres IP**: wprowadź *podstawowy* prywatny adres IP.
     * **Maska podsieci**: ustaw na podstawie swojej sieci. Na przykład jeśli podsieć jest podsiecią typu /24, wprowadź maską podsieci 255.255.255.0.
     * **Brama domyślna**: pierwszy adres IP w podsieci. Jeśli podsieć jest typu 10.0.0.0/24, adresem IP bramy będzie 10.0.0.1.
-    * Kliknij pozycję **Użyj następujących adresów serwerów DNS** i wprowadź następujące wartości:
+    * Wybierz **Użyj następujących adresów serwerów DNS** i wprowadź następujące wartości:
         * **Preferowany serwer DNS**: jeśli nie używasz własnego serwera DNS, wprowadź adres 168.63.129.16.  Jeśli używasz własnego serwera DNS, wprowadź jego adres IP.
-    * Kliknij przycisk **Zaawansowane** i dodaj dodatkowe adresy IP. Dodaj wszystkie pomocnicze prywatne adresy IP wymienione w kroku 8 do karty sieciowej z tą samą podsiecią, jaką określono dla podstawowego adresu IP.
-        >[!WARNING] 
-        >Jeśli nie wykonasz poprawnie powyższych czynności, możesz utracić łączność z maszyną wirtualną. Przed kontynuowaniem upewnij się, że informacje wprowadzone w kroku 5 są dokładne.
+    * Wybierz **zaawansowane** przycisk i dodawania dodatkowych adresów IP. Każdej dodatkowej prywatnych adresów IP, które zostały dodane do interfejsu sieci platformy Azure w poprzednim kroku, należy dodać do interfejsu sieciowego systemu Windows, który przypisano podstawowy adres IP przypisany do interfejsu sieci platformy Azure.
+
+        Ręcznie nigdy nie należy przypisywać publiczny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej. Podczas ręcznie ustawić adres IP w ramach systemu operacyjnego, upewnij się, że jest ten sam adres prywatny adres IP przypisany do platformy Azure [interfejsu sieciowego](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), lub można utracić łączność z maszyną wirtualną. Dowiedz się więcej o [prywatnego adresu IP](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) ustawienia. Nigdy nie należy przypisywać Azure publicznego adresu IP w ramach systemu operacyjnego.
 
     * Kliknij przycisk **OK**, aby zamknąć ustawienia TCP/IP, a następnie kliknij ponownie przycisk **OK**, aby zamknąć ustawienia karty. Połączenie RDP zostanie ponownie nawiązane.
 
 6. W wierszu polecenia wpisz *ipconfig /all*. Zostaną wyświetlone wszystkie dodane adresy IP, a protokół DHCP będzie wyłączony.
 7. Skonfiguruj system Windows do użycia jako podstawowy adres IP prywatnego adresu IP w konfiguracji podstawowego adresu IP na platformie Azure dla systemu Windows. Zobacz [dostęp do Internetu nie z maszyny Wirtualnej systemu Windows Azure, który ma wiele adresów IP](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) szczegółowe informacje. 
-
 
 ### <a name="validation-windows"></a>Walidacja (Windows)
 

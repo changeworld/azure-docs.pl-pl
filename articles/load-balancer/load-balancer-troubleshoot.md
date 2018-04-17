@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Rozwiązywanie problemów z usługą równoważenia obciążenia Azure
 
@@ -103,9 +103,7 @@ Jeśli maszyna wirtualna nie odpowiada na ruch danych, może to być spowodowane
 
 Jeśli co najmniej jedną grupę zabezpieczeń sieci skonfigurowane w podsieci lub na maszynie Wirtualnej, blokuje źródłowy adres IP lub portu, a następnie maszyna wirtualna jest w stanie odpowiedzieć.
 
-* Lista grupy zabezpieczeń sieci skonfigurowane do wewnętrznej bazy danych maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz:
-    -  [Zarządzanie grupami zabezpieczeń sieci przy użyciu portalu](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
-    -  [Zarządzanie grupami zabezpieczeń sieci przy użyciu programu PowerShell](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
+* Lista grupy zabezpieczeń sieci skonfigurowane do wewnętrznej bazy danych maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Zarządzanie grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md).
 * Z listy grup zabezpieczeń sieci Sprawdź, czy:
     - przychodzący lub wychodzący ruch na porcie danych ma zakłóceń. 
     - **Odmów wszystkich** reguły grupy zabezpieczeń na karcie Sieciowej maszyny Wirtualnej lub podsieci, która ma wyższy priorytet, który sondy domyślna reguła, która umożliwia równoważenia obciążenia sieciowego i ruchu (grup zabezpieczeń sieci Zezwalaj IP usługi równoważenia obciążenia z 168.63.129.16, który jest port sondy) 

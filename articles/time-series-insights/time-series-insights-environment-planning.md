@@ -1,6 +1,6 @@
 ---
-title: "Planowanie skali środowiska Azure czas serii Insights | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób planowania środowiska Azure Insights serii czas, tym pojemności, przechowywanie danych, ruch przychodzący wydajność i monitorowania, należy stosować najlepsze rozwiązania."
+title: Planowanie skali środowiska Azure czas serii Insights | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób planowania środowiska Azure Insights serii czas, tym pojemności, przechowywanie danych, ruch przychodzący wydajność i monitorowania, należy stosować najlepsze rozwiązania.
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 5fb158ba162dd199f419f9568de08a7a18c833dd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planowanie środowiska Azure czas serii Insights
 
@@ -32,11 +32,13 @@ Weź pod uwagę następujące atrybuty do planu najlepsze środowisko dla długo
 - Pojemność magazynu
 - Okres przechowywania danych
 - Ruch przychodzący wydajność 
+- Kształtowania zdarzeń
+- Sprawdzając, czy jest odwołanie do danych w miejscu
 
 ## <a name="understand-storage-capacity"></a>Zrozumienie pojemność magazynu
 Domyślnie czas serii Insights zachowuje danych, w oparciu o ilość miejsca w magazynie, które zostały udostępnione (jednostek raza ilość pamięci masowej na jednostkę) i transfer danych przychodzących.
 
-## <a name="understand-data-retention"></a>Zrozumienie przechowywania danych
+## <a name="understand-data-retention"></a>Omówienie przechowywania danych
 Można skonfigurować środowisko czasu serii Insights **czas przechowywania danych** ustawienie umożliwiające maksymalnie 400 dni przechowywania.  Czas serii wgląd w dwóch trybach, który optymalizuje zapewniających środowiska zawiera najbardziej aktualne dane (na domyślnie), a innego, który jest zoptymalizowany do zapewnienia przechowywania limitów, gdy transfer danych przychodzących jest wstrzymana, jeśli ogólną pojemność środowisko zostaje trafiony.  Można dostosować, przechowywania i przełączania między dwa tryby na stronie konfiguracji w środowisku, w portalu Azure.
 
 Można skonfigurować maksymalnie 400 dni przechowywania danych w środowisku Insights serii czasu.
@@ -74,16 +76,27 @@ Na przykład jeśli masz jednej jednostki SKU S1 i danych wejściowych z szybko�
 
 Może nie wiedzieć z wyprzedzeniem ilość danych można było się spodziewać push. W takim przypadku można znaleźć dane telemetryczne dla [Centrum IoT Azure](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) i [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) w portalu Azure. Ten telemetrii ułatwia określenie sposobu udostępnienia środowiska. Użyj **metryki** strony w portalu Azure źródła odpowiednie zdarzenie wyświetlić jego telemetrii. Jeśli znasz Twoje metryki źródła zdarzeń można efektywniej planowanie i udostępnić środowiska Insights serii czasu.
 
-## <a name="calculate-ingress-requirements"></a>Oblicz wymagania wejściowych
+### <a name="calculate-ingress-requirements"></a>Oblicz wymagania wejściowych
 
 - Upewnij się, czy pojemność transfer danych przychodzących jest powyżej średnia szybkość na minutę oraz czy środowisko jest wystarczająco duża do obsługi sieci przychodzący przewidywanego odpowiednikiem 2 x możliwości poniżej 1 godziny.
 
 - Po wystąpieniu nagłego transfer danych przychodzących który ostatnio przez czas dłuższy niż 1 godzina; Użyj szybkość, z kolekcji jako Twoja średnia i środowisko o pojemności do obsługi kolekcji częstotliwość udostępnić.
  
-## <a name="mitigate-throttling-and-latency"></a>Ograniczenia przepustowości i opóźnień
+### <a name="mitigate-throttling-and-latency"></a>Ograniczenia przepustowości i opóźnień
 
 Aby dowiedzieć się, jak zapobiec ograniczania przepustowości i opóźnień, zobacz [zmniejszyć opóźnienia i ograniczania przepustowości](time-series-insights-environment-mitigate-latency.md). 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="shaping-your-events"></a>Kształtowania zdarzeń
+Należy koniecznie upewnij się, jak wysyłać zdarzenia do TSI obsługuje rozmiar środowiska w przypadku udostępniania (z drugiej strony, możesz mapować rozmiar środowiska do liczby zdarzeń odczytuje TSI, a rozmiar każdego zdarzenia).  Podobnie warto pomyśleć o atrybuty, które może zajść potrzeba wycinka i Filtruj według podczas wykonywania zapytań dotyczących danych.  Pamiętając o tym, zaleca się przegląd JSON kształtowania sekcji naszych *wysyłać zdarzenia* dokumentacji [dokumentacji] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events).  Jest w dolnej części strony.  
+
+## <a name="ensuring-you-have-reference-data-in-place"></a>Sprawdzając, czy jest odwołanie do danych w miejscu
+Odwołanie do zestawu danych to kolekcja elementów, które rozszerzyć zdarzenia ze źródła zdarzeń. Czas Insights serii wejściowych aparat łączy każdego zdarzenia ze źródła zdarzeń z odpowiednich wiersza danych w zestawie danych odwołania. To rozszerzone zdarzenie jest następnie dostępne dla zapytania. Tego sprzężenia jest oparta na kolumny klucza podstawowego zdefiniowany w zestawie danych odwołania.
+
+Uwaga: odwołanie do danych nie jest dołączony Wstecz. Oznacza to, że tylko danych wejściowych aktualnych i przyszłych jest zgodny i dołączony do zestawu odwołania data po jej skonfigurowaniu i przekazać.  Jeśli planujesz do wysyłania dużej ilości danych historycznych do TSI i nie przekazać lub tworzenie danych referencyjnych w TSI pierwszy, konieczne może być ponownie pracy (wskazówki, nie fun).  
+
+Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i zarządzać danymi odwołania w TSI, przejdź do naszego *danych referencyjnych* dokumentacji [dokumentacji] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+
+
+## <a name="next-steps"></a>Kolejne kroki
 - [Jak dodać źródła zdarzenia Centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md)
 - [Jak dodać źródła zdarzenia Centrum IoT](time-series-insights-how-to-add-an-event-source-iothub.md)

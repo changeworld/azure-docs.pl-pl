@@ -1,9 +1,9 @@
 ---
 title: SQL Server Business Intelligence | Dokumentacja firmy Microsoft
-description: "W tym temacie używa zasobów utworzone za pomocą klasycznym modelu wdrażania i zawiera opis funkcji analizy biznesowej (BI) dostępnej dla programu SQL Server uruchomionego na maszynach wirtualnych Azure (VM)."
+description: W tym temacie używa zasobów utworzone za pomocą klasycznym modelu wdrażania i zawiera opis funkcji analizy biznesowej (BI) dostępnej dla programu SQL Server uruchomionego na maszynach wirtualnych Azure (VM).
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
-ms.author: asaxton
-ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: maghan
+ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Analiza biznesowa programu SQL Server w usłudze Azure Virtual Machines
 > [!IMPORTANT] 
@@ -71,7 +71,7 @@ Poniższa tabela zawiera podsumowanie funkcji analizy biznesowej zainstalowane n
 * SQL Server 2016 SP1 Enterprise
 * SQL Server 2016 z dodatkiem SP1 Standard
 * SQL Server 2014 SP2 Enterprise
-* SQL Server 2014 SP2 Standard
+* SQL Server 2014 z dodatkiem SP2 Standard
 * SQL Server 2012 SP3 Enterprise
 * SQL Server 2012 SP3 Standard
 
@@ -83,7 +83,7 @@ Poniższa tabela zawiera podsumowanie funkcji analizy biznesowej zainstalowane n
 | **Tabelaryczne usług Analysis Services** |Nie |Obsługiwane w programie SQL Server 2012, 2014 i 2016 obrazów, ale go nie zainstalowano domyślnie. Zainstalować inne wystąpienie usług Analysis Services. Zobacz sekcję zainstalowanie innych usług SQL Server i funkcji w tym temacie. |
 | **Dodatek Power Pivot usług analizy dla programu SharePoint** |Nie |Obraz galerii maszyny wirtualnej platformy Microsoft Azure nie ma programu SharePoint lub SharePoint plików instalacyjnych. <sup>1</sup> |
 
-<sup>1</sup> dodatkowe informacje na temat programu SharePoint i maszyn wirtualnych platformy Azure, zobacz [Microsoft Azure architektury programu SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) i [wdrożenia programu SharePoint na maszynach wirtualnych Azure Microsoft](https://www.microsoft.com/download/details.aspx?id=34598).
+<sup>1</sup> dodatkowe informacje na temat programu SharePoint i maszyn wirtualnych platformy Azure, zobacz [Microsoft Azure architektury programu SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) i [wdrożenia programu SharePoint w Microsoft Azure Virtual Machines](https://www.microsoft.com/download/details.aspx?id=34598).
 
 ![PowerShell](./media/virtual-machines-windows-classic-ps-sql-bi/IC660119.gif) Uruchom następujące polecenie programu PowerShell, aby uzyskać listę zainstalowanych usług, które zawierają "SQL" w nazwie usługi.
 
@@ -225,7 +225,7 @@ Jeśli chcesz połączyć z portalu sieci web lub Menedżera raportów 2014 i 20
 2. Otwórz port 80 w zaporze maszyny wirtualnej.
 3. Przejdź do portalu sieci web lub zgłosić manager przy użyciu maszyny wirtualnej Azure **nazwy DNS** jako nazwę serwera w adresie URL. Na przykład:
    
-    **Serwer raportów**: http://uebi.cloudapp.net/reportserver **portalu sieci Web**: http://uebi.cloudapp.net/reports
+    **Serwer raportów**: http://uebi.cloudapp.net/reportserver **portalu sieci Web**:   http://uebi.cloudapp.net/reports
    
     [Skonfiguruj zaporę dostępu do serwera raportów](https://msdn.microsoft.com/library/bb934283.aspx)
 
@@ -257,7 +257,7 @@ Aby zainstalować dodatkowy serwer SQL usług, takich jak usługi Analysis Servi
 2. Kliknij przycisk **Microsoft SQL Server 2016**, **programu Microsoft SQL Server 2014** lub **programu Microsoft SQL Server 2012** , a następnie kliknij przycisk **narzędzia do konfiguracji**.
 3. Kliknij przycisk **Centrum instalacji programu SQL Server**.
 
-Or run C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe or C:\SQLServer_11.0_full\setup.exe
+Lub uruchom C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe lub C:\SQLServer_11.0_full\setup.exe
 
 > [!NOTE]
 > Po uruchomieniu Instalatora programu SQL Server po raz pierwszy więcej plików instalacji może zostać pobrana i wymaga ponownego uruchomienia maszyny wirtualnej i ponownie uruchomić Instalatora programu SQL Server.

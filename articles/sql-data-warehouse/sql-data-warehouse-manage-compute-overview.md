@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ddd80f2ebfa9d06fcd47c41d337348e01ac112e9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Zarządzanie obliczeniowych w magazynie danych SQL Azure
 Informacje o zarządzaniu zasobów obliczeniowych w magazynie danych SQL Azure. Niższe koszty wstrzymując hurtowni danych albo skalować w hurtowni danych w celu spełnienia wymagań dotyczących wydajności. 
@@ -28,7 +28,7 @@ Informacje o zarządzaniu zasobów obliczeniowych w magazynie danych SQL Azure. 
 Architektura usługi SQL Data Warehouse oddziela magazynu i zasobów obliczeniowych, umożliwiając niezależne skalowanie. W związku z tym można skalować obliczeń do wymagań dotyczących wydajności niezależne od magazynu danych. Można też wstrzymywać i wznawiać zasoby obliczeniowe. Fizyczne konsekwencją tej architektury jest to, że [rozliczeń](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) dla zasobów obliczeniowych i magazynu jest oddzielona. Jeśli nie musisz użyć magazynu danych przez pewien czas, można zmniejszyć koszty obliczeń wstrzymując obliczeń. 
 
 ## <a name="scaling-compute"></a>Skalowanie obliczeń
-Można skalować w poziomie lub skalować obliczeń wstecz przez dostosowanie wartości właściwości [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) ustawienie dla magazynu danych. Ładowanie i zapytań wydajności może zwiększyć liniowo jak dodać więcej jednostek magazynu danych. Magazyn danych SQL oferuje [poziomów usług](performance-tiers.md#service-levels) danych magazynu jednostki, zapewniający zauważalne zmiany wydajności podczas skalowania out lub utworzyć ich kopię. 
+Można skalować w poziomie lub skalować obliczeń wstecz przez dostosowanie wartości właściwości [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) ustawienie dla magazynu danych. Ładowanie i zapytań wydajności może zwiększyć liniowo jak dodać więcej jednostek magazynu danych. 
 
 Skalowalny w poziomie kroki opisane w artykule [portalu Azure](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), lub [T-SQL](quickstart-scale-compute-tsql.md) Przewodniki Szybki Start. Można również wykonywać operacje skalowania w poziomie przy użyciu [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
@@ -103,19 +103,19 @@ Firma Microsoft zaleca stosowanie istniejących transakcji zakończyć przed roz
 
 Gdy ma zostać przeprowadzona procedura wstrzymania lub skalowania usługi SQL Data Warehouse, po zainicjowaniu odpowiedniego żądania następuje anulowanie zapytań w tle.  Anulowanie prostego zapytania typu SELECT to szybka operacja, która nie ma prawie żadnego wpływu na czas wstrzymywania lub skalowania wystąpienia.  Może jednak nie być możliwe szybkie zatrzymanie zapytań transakcyjnych, które modyfikują dane lub ich strukturę.  **Zapytania transakcyjne należy z założenia wykonać w całości lub wycofać ich zmiany.**  Całkowite cofnięcie wyników działania zapytania transakcyjnego może trwać równie długo lub nawet dłużej niż pierwotna zmiana wprowadzona przez zapytanie.  Na przykład w przypadku anulowania zapytania, którego zadaniem było usunięcie wierszy i które było uruchomione przez godzinę, może upłynąć kolejna godzina, zanim system z powrotem wstawi wiersze, które zostały usunięte.  W przypadku uruchomienia procedury wstrzymywania lub skalowania w toku transakcji operacja wstrzymywania lub skalowania może zająć dużo czasu, ponieważ zanim będzie możliwe jej wykonanie, zmiany muszą zostać w pełni cofnięte.
 
-Zobacz też [opis transakcji](sql-data-warehouse-develop-transactions.md)i [optymalizacji transakcji][optymalizacji transakcji](sql-data-warehouse-develop-best-practices-transactions.md).
+Zobacz też [opis transakcji](sql-data-warehouse-develop-transactions.md), i [optymalizacji transakcji](sql-data-warehouse-develop-best-practices-transactions.md).
 
 ## <a name="automating-compute-management"></a>Automatyzacja zarządzania obliczeń
 Aby zautomatyzować operacje zarządzania obliczeniowe, zobacz [Zarządzaj obliczeniowe o usługę Azure functions](manage-compute-with-azure-functions.md).
 
 Każdego skalowalnego w poziomie, Wstrzymaj i operacje wznawiania może potrwać kilka minut. Czy możesz skalowania, wstrzymywanie, wznawianie automatycznie, zaleca się wdrożenie logiki, aby upewnić się, że niektóre operacje została ukończona przed wykonaniem innej akcji. Sprawdzanie stanu magazynu danych przy użyciu różnych punktów końcowych umożliwia prawidłowo zaimplementować automatyzacji takich operacji. 
 
-Aby sprawdzić stan magazynu danych, se [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) lub [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) Szybki Start. Możesz również sprawdzić stan magazynu danych z [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Aby sprawdzić stan magazynu danych, zobacz [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) lub [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) Szybki Start. Możesz również sprawdzić stan magazynu danych z [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 
 ## <a name="permissions"></a>Uprawnienia
 
-Skalowanie w magazynie danych wymaga uprawnienia opisane w [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md).  Wstrzymywanie i wznawianie wymagają [Współautor bazy danych SQL](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor) uprawnienia, w szczególności Microsoft.Sql/servers/databases/action.
+Skalowanie w magazynie danych wymaga uprawnienia opisane w [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Wstrzymywanie i wznawianie wymagają [Współautor bazy danych SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) uprawnienia, w szczególności Microsoft.Sql/servers/databases/action.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

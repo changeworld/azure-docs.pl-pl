@@ -1,12 +1,12 @@
 ---
-title: "Azure Usługa sieci szkieletowej programowe skalowanie | Dokumentacja firmy Microsoft"
-description: "Skalowanie klastra usługi sieć szkieletowa usług Azure lub programistycznie, zgodnie z wyzwalaczy niestandardowych"
+title: Azure Usługa sieci szkieletowej programowe skalowanie | Dokumentacja firmy Microsoft
+description: Skalowanie klastra usługi sieć szkieletowa usług Azure lub programistycznie, zgodnie z wyzwalaczy niestandardowych
 services: service-fabric
 documentationcenter: .net
 author: mjrousos
 manager: jonjung
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,46 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bfa020e29a9bb67f0634d220725bc11279e1565c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b875351ef80050687fcf85e35da132cf37bab83b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programowo skalowanie klastra sieci szkieletowej usług 
 
-Podstawowe informacje na temat skalowania klastra sieci szkieletowej usług na platformie Azure opisano w dokumentacji na [skalowanie klastra](./service-fabric-cluster-scale-up-down.md). Tym artykule opisano sposób klastrów sieci szkieletowej usług są zbudowane na podstawie zestawy skalowania maszyny wirtualnej i mogą być skalowane ręcznie lub przy użyciu reguł automatycznego skalowania. Ten dokument analizuje metod programistycznych koordynujący Azure operacji skalowania dla bardziej zaawansowanych scenariuszy. 
+Klastrów sieci szkieletowej usług działających na platformie Azure są wbudowane zestawy skalowania maszyny wirtualnej.  [Skalowanie klastra](./service-fabric-cluster-scale-up-down.md) w tym artykule opisano, jak mogą być skalowane klastrów sieci szkieletowej usług ręcznie lub przy użyciu reguł automatycznego skalowania. W tym artykule opisano sposób zarządzania poświadczeniami i skalowania klastra w lub wychodzących za pomocą fluent Azure obliczeniowe zestaw SDK, który jest bardziej zaawansowanym scenariuszu. Aby uzyskać ogólne informacje, przeczytaj [metod programistycznych koordynacji Azure skalowanie operacji](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
-## <a name="reasons-for-programmatic-scaling"></a>Przyczyny skalowanie programowe
-W wielu scenariuszach skalowanie ręcznie lub za pomocą reguł automatycznego skalowania są dobrym rozwiązania. W innych sytuacjach jednak mogą nie być rozwiązanie właściwe. Wady do tych metod uwzględnić:
-
-- Ręcznie skalowanie należy zalogować się i jawne żądanie operacji skalowania. Operacje skalowania wymagane są często lub w czasie nieprzewidywalne, ta metoda nie może być dobrym rozwiązaniem.
-- Usunięcie reguły automatycznego skalowania wystąpienia z zestawu skalowania maszyn wirtualnych, ich nie automatycznie usuwaj wiedzę na temat tego węzła z klastra usługi sieć szkieletowa skojarzone chyba, że typ węzła ma poziom trwałości Silver lub Gold. Ponieważ reguły automatycznego skalowania działają na dużą skalę, Ustaw poziom (a nie na poziomie sieci szkieletowej usług), reguły automatycznego skalowania można usunąć węzłów sieci szkieletowej usług bez zamykania bezpiecznie zamknąć. Usunięcie węzła niegrzeczny pozostawi "widma" stan węzła sieci szkieletowej usług po operacji w skali. Osoby (lub usługą) należy okresowo Wyczyść stan usuniętym węźle w klastrze usługi sieć szkieletowa usług.
-  - Typ węzła z poziomu trwałości Gold lub Silver automatycznie oczyszcza usuniętych węzłów, więc nie jest wymagane nie dodatkowe oczyszczanie.
-- Mimo że istnieją [wiele metryk](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) obsługiwane przez reguły automatycznego skalowania, nadal jest ograniczony zestaw. Jeśli scenariusz wymaga skalowanie oparte na niektóre metryki nieuwzględnionego w tym zestawie, następnie reguły automatycznego skalowania nie może być dobrym rozwiązaniem.
-
-W oparciu o te ograniczenia, można zaimplementować więcej dostosowane automatycznego skalowania modeli. 
-
-## <a name="scaling-apis"></a>Skalowanie interfejsów API
-Interfejsy API Azure istnieje, co umożliwia aplikacjom programowo pracować z maszyną wirtualną skalowanie zestawów i klastrów sieci szkieletowej usług. Jeśli istniejących opcji automatycznego skalowania nie działa dla danego scenariusza, te interfejsy API umożliwiają wdrożenie niestandardowej logiki skalowania. 
-
-Jednym z podejść do wykonania tej "wprowadzone głównej" funkcji skalowania automatycznego jest dodania nowej usługi bezstanowej do aplikacji sieci szkieletowej usług do zarządzania operacjami skalowania. W ramach usługi `RunAsync` metody, zestawu wyzwalaczy można określić, czy skalowanie jest wymagana (w tym sprawdzanie parametry, takie jak maksymalna wielkość klastra i skalowanie cooldowns).   
-
-Interfejs API, używany do interakcji zestaw skali maszyny wirtualnej, (zarówno do sprawdzenia bieżąca liczba wystąpień maszyn wirtualnych, a następnie zmodyfikować go) jest [fluent biblioteki Azure zarządzania obliczeniowe](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Biblioteka fluent obliczeń zapewnia łatwy w użyciu interfejsu API do interakcji z zestawy skalowania maszyny wirtualnej.
-
-Aby pracować interaktywnie z klastra usługi sieć szkieletowa, użyj [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient).
-
-Oczywiście skalowania kodu nie trzeba uruchamiać jako usługi w klastrze, który ma być skalowana w. Zarówno `IAzure` i `FabricClient` mogą łączyć się z zasobami platformy Azure skojarzone zdalnie, więc skalowania usługi można łatwo aplikacji konsoli lub usługa systemu Windows uruchomiony za pośrednictwem poza aplikacją sieci szkieletowej usług. 
-
-## <a name="credential-management"></a>Zarządzanie poświadczeniami
+## <a name="manage-credentials"></a>Zarządzanie poświadczeniami
 Jednym z wyzwań zapisywania usługi do obsługi skalowania jest, że usługi musi być możliwy dostęp do zasobów zestawu skali maszyny wirtualnej bez logowania interakcyjnego. Uzyskiwanie dostępu do klastra usługi sieć szkieletowa jest proste, jeśli skalowania usługi modyfikuje własnej aplikacji usługi Service Fabric, ale poświadczenia są wymagane do zestawu skalowania. Aby zalogować się, można użyć [nazwy głównej usługi](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) utworzone za pomocą [Azure CLI 2.0](https://github.com/azure/azure-cli).
 
 Nazwy głównej usługi mogą być tworzone z następujących kroków:
 
 1. Zaloguj się do wiersza polecenia platformy Azure (`az login`) jako użytkownik z dostępem do skalowania maszyny wirtualnej ustawić
-2. Tworzenie nazwy głównej z usługi`az ad sp create-for-rbac`
+2. Tworzenie nazwy głównej z usługi `az ad sp create-for-rbac`
     1. Zanotuj identyfikator aplikacji (nazywane "identyfikator klienta" w innym miejscu), nazwa, hasło i dzierżawy w celu późniejszego użycia.
-    2. Należy również identyfikator subskrypcji można wyświetlić w programie`az account list`
+    2. Należy również identyfikator subskrypcji można wyświetlić w programie `az account list`
 
 Biblioteka fluent obliczeń zalogować się przy użyciu tych poświadczeń w następujący sposób (należy pamiętać, że fluent Azure typów podstawowych, takich jak `IAzure` w [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) pakietu):
 
@@ -85,7 +64,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternatywnie rozmiaru zestawu skali maszyny wirtualnej, można też zarządzać za pomocą poleceń cmdlet programu PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss)można pobrać obiektu zestawu skali maszyny wirtualnej. Pojemność bieżąca jest dostępna za pośrednictwem `.sku.capacity` właściwości. Po zmianie pojemność na żądaną wartość, skalowania maszyny wirtualnej w usłudze Azure można zaktualizować za pomocą [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) polecenia.
+Alternatywnie rozmiaru zestawu skali maszyny wirtualnej, można też zarządzać za pomocą poleceń cmdlet programu PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) można pobrać obiektu zestawu skali maszyny wirtualnej. Pojemność bieżąca jest dostępna za pośrednictwem `.sku.capacity` właściwości. Po zmianie pojemność na żądaną wartość, skalowania maszyny wirtualnej w usłudze Azure można zaktualizować za pomocą [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) polecenia.
 
 Podczas dodawania węzła ręcznie, dodając wystąpienia zestawu skalowania powinny być wszystkie punkty, które ma potrzebne do uruchomienia nowego węzła sieci szkieletowej usług, ponieważ szablon zestawu skalowania obejmują rozszerzenia automatycznie dołączy do klastra usługi sieć szkieletowa nowych wystąpień. 
 
@@ -140,12 +119,6 @@ Jako ze skalowania poleceń cmdlet programu PowerShell modyfikowania skalowania 
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
-
-## <a name="potential-drawbacks"></a>Wady
-
-Jak pokazano w poprzedzających fragmentów kodu, tworzenia własnego skalowania usługi zapewnia najwyższy stopień kontroli i dostosowywalności za pośrednictwem aplikacji na skalowanie. Może to być przydatne w scenariuszach wymagających precyzyjną kontrolę, kiedy i jak aplikacja skaluje przychodzący lub wychodzący. Jednak ten formant pochodzi z zależnościami złożoności kodu. Przy użyciu tej metody oznacza, że konieczne do własnych skalowania kod, który jest nieuproszczony.
-
-Jak powinna wynosić skalowania usługi Service Fabric, zależy od danego scenariusza. W przypadku skalowania rzadko, możliwość dodawania lub usuwania węzłów ręcznie jest prawdopodobnie wystarczający. Dla bardziej złożonymi scenariuszami reguły automatyczne skalowanie i zestawy SDK udostępnia możliwość skalowania programowo oferują zaawansowane alternatyw.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

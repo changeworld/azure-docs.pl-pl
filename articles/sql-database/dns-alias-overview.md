@@ -1,6 +1,6 @@
 ---
-title: "Alias systemu DNS dla usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: "Aplikacje mogą łączyć się aliasu dla nazwy serwera bazy danych SQL Azure. W tym samym czasie można zmienić bazy danych SQL alias wskazuje w dowolnym momencie, aby ułatwić testowanie i tak dalej."
+title: Alias systemu DNS dla usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Aplikacje mogą łączyć się aliasu dla nazwy serwera bazy danych SQL Azure. W tym samym czasie można zmienić bazy danych SQL alias wskazuje w dowolnym momencie, aby ułatwić testowanie i tak dalej.
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;ayolubek
 ms.author: dmalik
-ms.openlocfilehash: c2a2bce3b385bd5700bf327f283289cf4d94b057
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1793f44026db55d17fabde5fb92bc46795109418
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias systemu DNS dla bazy danych SQL Azure
 
@@ -63,7 +63,7 @@ Następujące właściwości dotyczą każdego alias systemu DNS dla serwera baz
 - *Nie jest powiązany z dowolnym regionie:* aliasów DNS nie są powiązane z obszarem. Wszystkie aliasy systemu DNS może zostać zaktualizowana do odwoływania się do serwera bazy danych SQL Azure, która znajduje się w dowolnym regionie geograficznym.
     - Jednak podczas aktualizowania alias do odwoływania się do innego serwera, oba serwery muszą istnieć w tej samej Azure *subskrypcji*.
 
-- *Uprawnienia:* do zarządzania DNS alias, użytkownik musi mieć *współautora serwera* uprawnienia lub nowszej. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](../active-directory/role-based-access-control-what-is.md).
+- *Uprawnienia:* do zarządzania DNS alias, użytkownik musi mieć *współautora serwera* uprawnienia lub nowszej. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](../role-based-access-control/overview.md).
 
 
 

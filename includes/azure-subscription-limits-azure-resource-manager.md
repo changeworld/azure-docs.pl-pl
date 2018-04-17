@@ -5,7 +5,7 @@
 | Liczba rdzeni maszyn wirtualnych na serię (Dv2, F itp.) na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region | Kontakt z pomocą techniczną |
 | [Współadministratorzy](../articles/billing-add-change-azure-subscription-administrator.md) na subskrypcję |Nieograniczona liczba |Nieograniczona liczba |
 | [Konta magazynu](../articles/storage/common/storage-create-storage-account.md) na subskrypcję |200 |200<sup>2</sup> |
-| [Grupy kontenerów](../articles/azure-resource-manager/resource-group-overview.md) na subskrypcję |800 |800 |
+| [Grupy kontenerów](../articles/azure-resource-manager/resource-group-overview.md) na subskrypcję |980 |980 |
 | [Zestawy dostępności](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na subskrypcję |2000 na region |2000 na region |
 | Odczyty interfejsu API usługi Resource Manager |15 000 na godzinę |15 000 na godzinę |
 | Zapisy interfejsu API usługi Resource Manager |1200 na godzinę |1200 na godzinę |

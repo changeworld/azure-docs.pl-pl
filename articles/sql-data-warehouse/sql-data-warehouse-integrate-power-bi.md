@@ -1,11 +1,11 @@
 ---
-title: "Użyj usługi Power BI z usługą Magazyn danych SQL | Dokumentacja firmy Microsoft"
-description: "Porady dotyczące korzystania z usługi Power BI z usługą Magazyn danych SQL Azure związane z opracowywaniem rozwiązań."
+title: Użyj usługi Power BI z usługą Magazyn danych SQL | Dokumentacja firmy Microsoft
+description: Porady dotyczące korzystania z usługi Power BI z usługą Magazyn danych SQL Azure związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
 documentationcenter: NA
 author: mlee3gsd
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b12bee87-2268-40c2-81bf-ab27588b32e8
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
 ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>Użyj usługi Power BI z usługą Magazyn danych SQL
 Jako z bazy danych SQL Azure SQL danych magazynu bezpośrednie połączenie umożliwia użytkownikom korzystać z zaawansowanych przekazywanie logicznej obok możliwości analityczne usługi Power BI.  Za pomocą bezpośrednich Connect zapytania są wysyłane do usługi Azure SQL Data Warehouse w czasie rzeczywistym Ci poznać platformę danych.  Połączone, skali usługi SQL Data Warehouse umożliwia użytkownikom tworzenie dynamicznych raportów w minutach przed terabajtów danych.  Ponadto wprowadzenie przycisku Otwórz w usłudze Power BI umożliwia użytkownikom bezpośrednio z usługi Power BI bez zbierania informacji z innych części Azure ich SQL Data Warehouse.

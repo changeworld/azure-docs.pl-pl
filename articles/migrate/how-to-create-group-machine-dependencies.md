@@ -1,16 +1,16 @@
 ---
-title: "Grupowanie maszyn przy użyciu zależności maszyny w usłudze Azure migracji | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób tworzenia ocenę przy użyciu zależności komputera z usługą Azure migracji."
+title: Grupowanie maszyn przy użyciu zależności maszyny w usłudze Azure migracji | Dokumentacja firmy Microsoft
+description: Opisuje sposób tworzenia ocenę przy użyciu zależności komputera z usługą Azure migracji.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 720380fd14d9eaf4856ad75269a80f2b63a4725f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Grupy maszyn przy użyciu mapowania zależności maszyny
 
@@ -33,8 +33,8 @@ Aby zainstalować agenta na komputerze z systemem Windows:
 1. Kliknij dwukrotnie pobrany agenta.
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**. Na **postanowień licencyjnych** kliknij przycisk **zgadzam się** do akceptowania licencji.
 3. W **Folder docelowy**, Zachowaj lub zmienić domyślny folder instalacji > **dalej**. 
-4. W **opcje instalacji agenta**, wybierz pozycję **Analiza dzienników Azure (OMS)** > **dalej**. 
-5. Kliknij przycisk **Dodaj** Aby dodać nowy obszar roboczy OMS. Wklej identyfikator i klucz, który został skopiowany z portalu. Kliknij przycisk **Dalej**.
+4. W **opcje instalacji agenta**, wybierz pozycję **Azure Log Analytics** > **dalej**. 
+5. Kliknij przycisk **Dodaj** Aby dodać nowy obszar roboczy analizy dzienników. Wklej identyfikator i klucz, który został skopiowany z portalu. Kliknij przycisk **Dalej**.
 
 
 Aby zainstalować agenta na komputerze z systemem Linux:
@@ -82,4 +82,4 @@ Po utworzeniu grupy, zaleca się instalowania agentów na wszystkich komputerach
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Dowiedz się, jak](how-to-create-group-dependencies.md) Aby zawęzić kryteria do grupy przez wizualizowanie zależności grupy
-- [Dowiedz się więcej](concepts-assessment-calculation.md) o obliczania oceny.
+- [Dowiedz się więcej](concepts-assessment-calculation.md) na temat sposobu obliczania ocen.

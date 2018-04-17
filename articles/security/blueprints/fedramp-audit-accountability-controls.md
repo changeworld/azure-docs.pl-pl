@@ -1,6 +1,6 @@
 ---
-title: "Zabezpieczeń platformy Azure i zgodności plan - automatyzacji aplikacji sieci Web FedRAMP - inspekcji i odpowiedzialności"
-description: "Automatyzacja aplikacji FedRAMP Web — kontroli i odpowiedzialności"
+title: Zabezpieczeń platformy Azure i zgodności plan - automatyzacji aplikacji sieci Web FedRAMP - inspekcji i odpowiedzialności
+description: Automatyzacja aplikacji FedRAMP Web — kontroli i odpowiedzialności
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: c37d027882882c637585d745ce81111ba30f6257
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: acb0677d48084108a9a5219f92dead10948228c8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="audit-and-accountability-au"></a>Inspekcja i Accountability (AU)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] zasad inspekcji i odpowiedzialności, którego dotyczy cel, zakres, ról, obowiązki, zobowiązań zarządzania Współpraca między jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji inspekcji i accountability zasady i skojarzona inspekcji i kontrolek accountability; przegląda i aktualizuje bieżące zasady inspekcji i odpowiedzialności [przypisania: zdefiniowane przez organizację częstotliwość]; i procedur kontroli i odpowiedzialności [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,11 +45,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 2.a** organizacji określa, czy system informacji obsługuje następujące zdarzenia inspekcji: [przypisania: zdefiniowane przez organizację występowaniu zdarzeń].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Funkcja inspekcji dla tego planu są udostępniane przez Azure Monitor i usługi Analiza dzienników w OMS. Azure Monitor udostępnia dzienniki inspekcji szczegółowych dotyczących działań związanych z zasobami wdrożone. Te i dzienniki na poziomie systemu operacyjnego są zbierane przez analizy dzienników i przechowywane w repozytorium OMS. Analiza dzienników danych inspekcji są powiązane z różnych zasobów wdrożone przez to rozwiązanie i może zostać rozszerzony do aplikacji wdrożonych przez klienta sieci web. |
+| **Klienta** | Funkcja inspekcji dla tego planu są udostępniane przez Azure Monitor i usługą analizy dzienników. Azure Monitor udostępnia dzienniki inspekcji szczegółowych dotyczących działań związanych z zasobami wdrożone. Te i dzienniki na poziomie systemu operacyjnego są zbierane przez analizy dzienników i przechowywane w obszarze roboczym analizy dzienników. Analiza dzienników danych inspekcji są powiązane z różnych zasobów wdrożone przez to rozwiązanie i może zostać rozszerzony do aplikacji wdrożonych przez klienta sieci web. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 2.b** organizacji koordynuje funkcji inspekcji zabezpieczeń z inne jednostki organizacyjnej wymaga informacji związanych z inspekcji w celu zwiększenia wzajemnego pomocy technicznej i w celu ułatwienia zaznaczenie występowaniu zdarzeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 2.c** organizacji przewiduje uzasadnienie, dlaczego podlegającą inspekcji zdarzeń są uważane za odpowiednie do obsługi dochodzenia po faktu naruszenia zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 2.d** organizacji ustali, że następujące zdarzenia są określane w ramach systemu informacje: [przypisania: zdefiniowane przez organizację inspekcji zdarzeń (podzbiorem występowaniu zdarzeń zdefiniowanych w a. Australia 2) oraz częstotliwość (lub situation requiring) inspekcji dla każdego zdarzenia zidentyfikowanych].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-2 (3)** organizacji przegląda i aktualizuje inspekcji zdarzeń [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 3** system informacji generuje rekordów inspekcji zawierające informacje, które określa, jaki typ zdarzenia wystąpiły po wystąpieniu zdarzenia, w którym wystąpiło zdarzenie, źródło zdarzenia, wynik zdarzenia i tożsamości dowolnego osoby lub tematy skojarzone ze zdarzeniem.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,11 +129,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-3 (1)** system informacji generuje rekordów inspekcji, zawierający poniższe informacje dodatkowe: [przypisania: organizacji zdefiniowane dodatkowe, szczegółowe informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Zdarzenia dziennika aktywności platformy Azure, użyj szczegółowe schemat, który zawiera pola więcej niż 20 rodzaje informacji inspekcji. Oprócz dziennik aktywności ten plan wdraża rozwiązania analizy dzienników w OMS, który obsługuje różnorodnych źródeł danych, takich jak dzienniki systemu Windows, Linux dzienniki dzienników diagnostyki Azure i dzienników klienta.  |
+| **Klienta** | Zdarzenia dziennika aktywności platformy Azure, użyj szczegółowe schemat, który zawiera pola więcej niż 20 rodzaje informacji inspekcji. Oprócz dziennik aktywności ten plan wdraża rozwiązania analizy dzienników, które obsługuje zestaw źródeł danych, takich jak dzienniki systemu Windows, Linux dzienniki dzienników diagnostyki Azure i dzienników klienta.  |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-3 (2)** system informacji zapewnia scentralizowanego zarządzania i konfiguracji zawartości do przechwycenia w rekordach inspekcji generowanych przez [przypisania: składniki systemowe zdefiniowane przez organizację informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 4** organizacji przydziela pojemność magazynu rekordów inspekcji przy użyciu [przypisania: wymagania dotyczące magazynu rekordów inspekcji zdefiniowany przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 5.a** alerty systemu informacji [przypisania: techniczną zdefiniowany przez organizację lub ról] w przypadku inspekcji niepowodzenie przetwarzania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 5.b** systemu informacji przyjmuje następujące dodatkowe czynności: [przypisania: zdefiniowane przez organizację akcje do wykonania (np. Zamknij system informacji, zastępować najstarsze rekordów inspekcji, zatrzymać generowanie rekordów inspekcji)].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-5 (1)** system informacji zapewnia ostrzeżenie [przypisania: personelu zdefiniowany przez organizację, ról i/lub lokalizacje] w [przypisania: organizacji zdefiniowane przez okres] gdy wolumin magazynu rekordów inspekcji przydzielone osiągnie [ Przypisania: procent zdefiniowany przez organizację] maksymalna repozytorium inspekcji rekordów pojemności.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-5 (2)** system informacji zapewnia alert w [przypisania: zdefiniowane przez organizację w czasie rzeczywistym okres] do [przypisania: personelu zdefiniowany przez organizację, ról i/lub lokalizacje] sytuacje są następujące zdarzenia inspekcji w błąd: [przypisania: zdefiniowany przez organizację błąd zdarzeń inspekcji wymagające alertów w czasie rzeczywistym].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 6.a** organizacji przegląda i analizuje rekordów inspekcji systemu informacji [przypisania: częstotliwość zdefiniowany przez organizację] do oznaczenia [przypisania: zdefiniowany przez organizację nieodpowiednie lub nietypowe działanie].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 6.b** organizacji raporty wyników [przypisania: techniczną zdefiniowany przez organizację lub ról].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia – 6 (1)** organizacja stosuje automatycznych mechanizmy do integracji inspekcji przeglądu, analizy i raportowania procesów do obsługi procesów organizacyjnych do badania i reagowania na podejrzane działania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,11 +269,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia – 6 (3)** analizuje organizacji i odpowiada inspekcji rekordów w różnych repozytoria uzyskanie świadomości oparty na analizie sytuacji w całej organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika w OMS, można scentralizować dane inspekcji przez wdrożone zasoby obsługujące oparty na analizie sytuacji świadomości całej organizacji. Klienci mogą wybrać do dalszej integracji z innymi systemami analizy dzienników. |
+| **Klienta** | Ten plan implementuje rozwiązania analizy dzienników, można scentralizować dane inspekcji przez wdrożone zasoby obsługujące oparty na analizie sytuacji świadomości całej organizacji. Klienci mogą wybrać do dalszej integracji z innymi systemami analizy dzienników. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -283,11 +283,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia – 6 (4)** systemu informacji oferuje możliwość centralnie Przejrzyj i analizować rekordów inspekcji z wielu składników w systemie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika w OMS, można scentralizować dane inspekcji wdrożonych zasobów, pomocnicze scentralizowane przeglądu, analizy i raportowania. |
+| **Klienta** | Ten plan implementuje rozwiązania analizy dzienników, można scentralizować dane inspekcji wdrożonych zasobów, pomocnicze scentralizowane przeglądu, analizy i raportowania. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -297,11 +297,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia – 6 (5)** analizy rekordów inspekcji w organizacji jest zintegrowany z analizy [wybór (jeden lub więcej): Luka w zabezpieczeniach skanowanie informacji; dane wydajności systemu informacji monitorowania informacji; [Przypisania: zdefiniowane przez organizację danych/informacje zbierane z innych źródeł]] Aby zwiększyć możliwość identyfikacji nieodpowiednie lub nietypowe działania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan wdraża rozwiązanie OMS zabezpieczeń i inspekcji. To rozwiązanie zapewnia kompleksowy przegląd stan zabezpieczeń. Pulpit nawigacyjny zabezpieczeń i kontrola zapewnia wysokiego poziomu wgląd w stan zabezpieczeń zasobów wdrożone przy użyciu danych dostępnych w wdrożonej rozwiązań OMS, integrowanie danych dzienników i danych luki w zabezpieczeniach z oceny linii bazowej i poprawki. |
+| **Klienta** | Ten plan wdraża rozwiązanie zabezpieczeń i inspekcji. To rozwiązanie zapewnia kompleksowy przegląd stan zabezpieczeń. Pulpit nawigacyjny zabezpieczeń i kontrola zapewnia wysokiego poziomu wgląd w stan zabezpieczeń zasobów wdrożone przy użyciu danych dostępnych w wdrożonej rozwiązań analizy dzienników, integrowanie danych dzienników i danych luki w zabezpieczeniach z oceny linii bazowej i poprawki. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia – 6 (6)** informacji z rekordów inspekcji z informacjami uzyskanymi z monitorowania fizycznego dostępu do zwiększenia możliwość identyfikacji podejrzane nieodpowiednie, nietypowe albo groźniejszym działania są powiązane z organizacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia – 6 (7)** organizacji określa akcje dozwolone dla każdego [wybór (jeden lub więcej): informacje o procesie systemu; roli użytkownika] skojarzony z przeglądu, analizy i raportowania informacje inspekcji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia – 6 (10)** organizacji ustawia poziom inspekcji przeglądu, analizy i raportowania w systemie informacji po zmiany na podstawie informacji egzekwowania prawa, informacje dotyczące analizy lub inne wiarygodnego źródła ryzyka informacje.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,11 +353,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 7.a** systemu informacji zapewnia inspekcja redukcji inspekcji i możliwości generowania raportu, który obsługuje na żądanie przeglądu, analizy i raportowania wymagania i badania po faktu naruszenia zabezpieczeń.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika w OMS. Analiza dzienników umożliwia monitorowanie OMS przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. |
+| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika. Analiza dzienników umożliwia monitorowanie Azure przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -367,11 +367,11 @@ ms.lasthandoff: 02/11/2018
 
 **Od 7.b AU** system informacji zapewnia inspekcji raport i zmniejszenie generacji możliwość, która nie zmienia oryginalnej zawartości lub czas kolejność rekordów inspekcji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika w OMS. Analiza dzienników umożliwia monitorowanie OMS przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Zawartość i czas kolejność rekordów inspekcji nie zostaną zmodyfikowane, jeśli zebrane przez analizy dzienników. |
+| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika. Analiza dzienników umożliwia monitorowanie Azure przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Zawartość i czas kolejność rekordów inspekcji nie zostaną zmodyfikowane, jeśli zebrane przez analizy dzienników. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -381,11 +381,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-7 (1)** system informacji zapewnia możliwość przetwarzania rekordów inspekcji dla zdarzeń na podstawie [przypisania: pól zdefiniowanych przez organizację inspekcji w rekordach inspekcji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika w OMS. Analiza dzienników umożliwia monitorowanie OMS przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Usługa Log Analytics obejmuje zaawansowany język zapytań umożliwiający wyodrębnianie danych przechowywanych w repozytorium. |
+| **Klienta** | Ten plan implementuje rozwiązania analizy dziennika. Analiza dzienników umożliwia monitorowanie Azure przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Usługa Log Analytics obejmuje zaawansowany język zapytań umożliwiający wyodrębnianie danych przechowywanych w repozytorium. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 8.a** system informacji za pomocą systemu wewnętrznego zegary Generowanie sygnatury czasowe dla rekordów inspekcji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -403,13 +403,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-au-8b"></a>NIST 800-53 Control AU-8.b
+ ## <a name="nist-800-53-control-au-8b"></a>Australia kontroli NIST 800 53-8.b
 
 #### <a name="time-stamps"></a>Sygnatury czasowe
 
 **Australia 8.b** systemu informacji rejestruje sygnatury czasowe dla rekordów inspekcji, które mogą być mapowane na uniwersalny czas koordynowany (UTC) lub czas uniwersalny Greenwich (GMT) i spełnia [przypisania: pomiar czasu zdefiniowany przez organizację poziom szczegółowości].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-8 (1), tj.** zegarami systemowymi informacji wewnętrznych porównuje informacje o systemie [przypisania: częstotliwość zdefiniowany przez organizację] z [przypisania: zdefiniowane przez organizację autorytatywne źródło czasu].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-8 (1) b** system informacji synchronizuje zegarami systemowymi wewnętrzny, aby autorytatywne źródło czasu, gdy odstęp czasu jest większy niż [przypisania: organizacji zdefiniowane przez okres czasu].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 9** systemu informacji chroni inspekcji informacji i inspekcji narzędzi przed nieautoryzowanym dostępem, modyfikowanie i usuwanie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -465,11 +465,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-9 (2)** systemu informacji kopię zapasową rekordów inspekcji [przypisania: zdefiniowany przez organizację częstotliwość] na fizycznie innego systemu lub składnik systemu niż system lub składnika jest sprawdzana.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje usługę Analiza dzienników w OMS. Wdrożone maszyny wirtualne i usługi Azure konta magazynu diagnostyki połączonych źródeł do analizy dzienników i przechowywane oddzielnie od ich źródła. Dane są zbierane przez OMS w niemal w czasie rzeczywistym. |
+| **Klienta** | Ten plan implementuje usługę Analiza dzienników. Wdrożone maszyny wirtualne i usługi Azure konta magazynu diagnostyki połączonych źródeł do analizy dzienników i przechowywane oddzielnie od ich źródła. Dane są zbierane przez analizy dzienników w niemal w czasie rzeczywistym. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -479,11 +479,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-9 (3)** system informacji implementuje mechanizmów kryptograficznych, aby chronić integralność inspekcji informacji i inspekcji narzędzi.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje usługę Analiza dzienników w OMS. Analiza dzienników zapewnia, że dane przychodzące jest z zaufanego źródła, weryfikując certyfikaty i integralności danych za pomocą uwierzytelniania systemu Azure. |
+| **Klienta** | Ten plan implementuje usługę Analiza dzienników. Analiza dzienników zapewnia, że dane przychodzące jest z zaufanego źródła, weryfikując certyfikaty i integralności danych za pomocą uwierzytelniania systemu Azure. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-9 (4)** organizacji zezwala na dostęp do zarządzania funkcja inspekcji tylko [przypisania: zdefiniowane przez organizację podzbiór użytkownicy o odpowiednich uprawnieniach].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -508,11 +508,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 10** systemu informacji chroni przed fałszywie odmawianie o wykonać osoba (lub proces działają w imieniu osoby) [przypisania: akcje zdefiniowane w organizacji mają być objęte bez odrzucania].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Funkcja inspekcji dla tego planu są udostępniane przez Azure Monitor i usługi Analiza dzienników w OMS. Azure Monitor udostępnia dzienniki inspekcji szczegółowych dotyczących działań związanych z zasobami wdrożone. Te i dzienniki na poziomie systemu operacyjnego są zbierane przez analizy dzienników i przechowywane w repozytorium OMS. Te dzienniki zawierał rekordy szczegółowe informacje o systemie zdarzeń i może pomóc w ochronie przed bez odrzucania. Ponadto dostęp do rejestrowania danych jest ograniczony przy użyciu kontroli dostępu opartej na rolach, aby zapobiec unauthored modyfikacja lub usunięcie danych dziennika. |
+| **Klienta** | Funkcja inspekcji dla tego planu są udostępniane przez Azure Monitor i usługą analizy dzienników. Azure Monitor udostępnia dzienniki inspekcji szczegółowych dotyczących działań związanych z zasobami wdrożone. Te i dzienniki na poziomie systemu operacyjnego są zbierane przez analizy dzienników i przechowywane w obszarze roboczym analizy dzienników. Te dzienniki zawierał rekordy szczegółowe informacje o systemie zdarzeń i może pomóc w ochronie przed bez odrzucania. Ponadto dostęp do rejestrowania danych jest ograniczony przy użyciu kontroli dostępu opartej na rolach, aby zapobiec unauthored modyfikacja lub usunięcie danych dziennika. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -522,11 +522,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 11** Organizacja zachowuje rekordów inspekcji do [przypisania: organizacji zdefiniowane przez okres czasu zgodnie z zasadami przechowywania rekordów] zapewnia obsługę dochodzenia po faktu naruszenia zabezpieczeń i w celu spełnienia przepisami i wymagania dotyczące przechowywania informacji organizacyjnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje usługę Analiza dzienników w OMS. Analiza dzienników umożliwia monitorowanie OMS przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Po zebraniu danych, dane przechowywane przez jeden rok na konfiguracji analizy dzienników. |
+| **Klienta** | Ten plan implementuje usługę Analiza dzienników. Analiza dzienników umożliwia monitorowanie Azure przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Po zebraniu danych, dane przechowywane przez jeden rok na konfiguracji analizy dzienników. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -536,7 +536,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 12.a** system informacji zapewnia możliwości generowania rekordów inspekcji dla podlegającą inspekcji zdarzeń zdefiniowanych w Australia-2. w [przypisania: składniki systemowe zdefiniowane przez organizację informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -550,7 +550,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 12.b** umożliwia systemowi informacji [przypisania: techniczną zdefiniowany przez organizację lub ról] wybierz zdarzenia podlegającą inspekcji, które są określane przez określone składniki systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -564,7 +564,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia 12.c** rekordów inspekcji dla zdarzeń zdefiniowanych w 2.d Australia wygenerowany przez system informacji. z zawartością zdefiniowane w Australia-3.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -578,11 +578,11 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-12 (1)** rekordów inspekcji z kompilacją systemu informacji [przypisania: składniki systemowe zdefiniowane przez organizację informacje] do dziennik inspekcji (logiczny lub fizyczny) całego systemu, będący czas korelowane w [przypisania: zdefiniowany przez organizację poziom tolerancji dla relacji między sygnaturą czasową poszczególne rekordy w dzienniku inspekcji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan implementuje usługę Analiza dzienników w OMS. Analiza dzienników umożliwia monitorowanie OMS przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Sygnatury czasowe rekordów inspekcji nie są zmieniane, w związku z tym dziennik inspekcji skorelowane czasu. |
+| **Klienta** | Ten plan implementuje usługę Analiza dzienników. Analiza dzienników umożliwia monitorowanie Azure przez zbieranie danych z zarządzanych zasobów w centralnym repozytorium. Sygnatury czasowe rekordów inspekcji nie są zmieniane, w związku z tym dziennik inspekcji skorelowane czasu. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -592,7 +592,7 @@ ms.lasthandoff: 02/11/2018
 
 **Australia-12 (3)** system informacji zapewnia funkcje [przypisania: zdefiniowany przez organizację konkretnych osób lub ról] zmienić inspekcji na [przypisania: składniki systemowe zdefiniowane przez organizację informacje] [w oparciu Przypisania: kryteria zdefiniowane w organizacji wybieranych zdarzenia] w [przypisania: czas zdefiniowany przez organizację progi].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

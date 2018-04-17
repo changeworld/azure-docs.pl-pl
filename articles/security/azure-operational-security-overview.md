@@ -1,12 +1,12 @@
 ---
-title: "Omówienie usługi Azure operational zabezpieczeń | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera omówienie usługi Azure operational zabezpieczeń."
+title: Omówienie usługi Azure operational zabezpieczeń | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie usługi Azure operational zabezpieczeń.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f656edee1460ce2bb17a582ca240e3bb4089b708
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie usługi Azure operational zabezpieczeń
-Azure bezpieczeństwa operacyjnego odwołuje się do usług, formanty i funkcje dostępne dla użytkowników do ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. [Azure bezpieczeństwa operacyjnego](https://docs.microsoft.com/azure/security/azure-operational-security) jest platforma, która zawiera informacje o wiedzy uzyskane przy użyciu różnych funkcji, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development Lifecycle (SDL), program Microsoft Security Response Center i głębokie świadomości bezpieczeństwa przez zagrożeń.
+Azure bezpieczeństwa operacyjnego odwołuje się do usług, formanty i funkcje dostępne dla użytkowników do ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. [Azure bezpieczeństwa operacyjnego](https://docs.microsoft.com/azure/security/azure-operational-security) jest platforma, która zawiera informacje o wiedzy uzyskane przy użyciu różnych funkcji, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Center program i głębokie świadomości bezpieczeństwa przez zagrożeń.
 
 W tym artykule operacyjne Omówienie zabezpieczeń usługi Azure skupia się wokół następujących obszarów:
 
@@ -65,7 +65,7 @@ Usługa [Azure Site Recovery](http://azure.microsoft.com/documentation/services/
 -   Umożliwia zarządzanie dostępu, jednokrotnego (SSO) i raportowania
 -   Obsługuje zarządzanie zintegrowanego dostępu dla [tysięcy aplikacji](https://azure.microsoft.com/marketplace/active-directory/) w galerii aplikacji w tym usług Salesforce, Google Apps, pole i Concur.
 
-Usługi Azure AD zawiera również pełny pakiet [możliwości zarządzania tożsamościami](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports) tym [uwierzytelnianie wieloskładnikowe](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), [Rejestracja urządzenia]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview), [zarządzania hasłami samoobsługi](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/), [Samoobsługowe zarządzanie grupami](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password), [uprzywilejowane konto zarządzania](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is), [monitorowania użycia aplikacji](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health), [sformatowanego inspekcji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), i [monitorowania i alertów zabezpieczeń](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts).
+Usługi Azure AD zawiera również pełny pakiet [możliwości zarządzania tożsamościami](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports) tym [uwierzytelnianie wieloskładnikowe](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), [Rejestracja urządzenia]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview), [zarządzania hasłami samoobsługi](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/), [Samoobsługowe zarządzanie grupami](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password), [uprzywilejowane konto zarządzania](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview), [monitorowania użycia aplikacji](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health), [sformatowanego inspekcji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), i [monitorowania i alertów zabezpieczeń](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts).
 
 Z usługą Azure Active Directory wszystkie aplikacje publikowania dla partnerów i klientów (biznesowe lub klienta) ma taką samą tożsamość oraz dostęp do możliwości zarządzania. Dzięki temu można znacznie zmniejszyć koszty operacyjne.
 
@@ -80,7 +80,7 @@ Usługa [Azure Security Center](https://docs.microsoft.com/azure/security-center
 -   Weryfikowanie szyfrowania dysków
 -   Ataki sieciowe
 
-Centrum zabezpieczeń Azure używa [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure), która zapewnia [wbudowane role](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) który można przypisać do użytkowników, grup i usług Azure.
+Centrum zabezpieczeń Azure używa [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), która zapewnia [wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) który można przypisać do użytkowników, grup i usług Azure.
 
 Centrum zabezpieczeń ocenia konfiguracji zasobów, aby zidentyfikować problemy z zabezpieczeniami i luk w zabezpieczeniach. W Centrum zabezpieczeń widoczne są tylko informacje związane z zasobem, jeśli przypisano rolę właściciela, współautora lub czytelnika subskrypcji lub grupy zasobów, do której należy zasób.
 
@@ -109,7 +109,7 @@ Jest dziennika, który zapewnia wgląd w operacje wykonywane na zasobów w ramac
 
 Na przykład dzienniki systemu zdarzeń systemu Windows są jedną kategorię dzienników diagnostycznych dla maszyn wirtualnych i obiektów blob, tabeli, a dzienniki kolejki są kategorii dzienników diagnostycznych dla kont magazynu.
 
-Dzienniki diagnostyczne różnią się od [dziennik aktywności (wcześniej znane jako dziennik inspekcji lub dziennik operacyjny)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Dziennik aktywności zapewnia wgląd w operacje wykonywane na zasobów w ramach subskrypcji. Dzienniki diagnostyczne zapewniają wgląd w operacje, w zasobie wykonanie samego.
+Dzienniki diagnostyczne różnią się od [dziennik aktywności (wcześniej znane jako dziennik inspekcji lub dziennik operacyjny)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Dziennik aktywności zapewnia wgląd w operacje wykonywane na zasobów w ramach subskrypcji. Dzienniki diagnostyczne udostępniają szczegółowe dane operacji wykonanych przez sam zasób.
 
 ### <a name="metrics"></a>Metryki
 Azure Monitor umożliwia korzystanie z telemetrię, aby uzyskać wgląd w wydajności i kondycji obciążeń na platformie Azure. Typ najważniejszych danych telemetrycznych platformy Azure jest metryki (nazywanych również liczniki wydajności) emitowane przez zasoby najbardziej platformy Azure. Azure Monitor udostępnia kilka sposobów konfigurowania i korzystania z tych [metryki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) do monitorowania i rozwiązywania problemów.

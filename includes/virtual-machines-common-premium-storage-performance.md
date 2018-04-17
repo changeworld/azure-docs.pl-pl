@@ -1,5 +1,5 @@
 # <a name="azure-premium-storage-design-for-high-performance"></a>Magazynu Azure Premium: Projekt o wysokiej wydajności
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji wysokiej wydajności przy użyciu usługi Azure Premium Storage. Korzystając z instrukcjami podanymi w tym dokumencie łączyć się z najlepszymi rozwiązaniami wydajności mające zastosowanie do technologii używanych przez aplikację. Aby zilustrować wytyczne, użyliśmy program SQL Server uruchomiony na magazyn w warstwie Premium, na przykład w tym dokumencie.
 
 Natomiast scenariusze wydajności warstwy magazynu w tym artykule można rozwiązać, konieczne będzie optymalizacji warstwy aplikacji. Na przykład jeśli przechowujesz farmy programu SharePoint w usłudze Azure Premium Storage umożliwia przykłady programu SQL Server z tego artykułu zoptymalizować serwer bazy danych. Ponadto zoptymalizować serwera sieci Web farmy programu SharePoint i serwera aplikacji, aby uzyskać większości wydajności.
@@ -64,7 +64,7 @@ Następnie zmierzyć wymagania maksymalną wydajność aplikacji przez cały cyk
 | Min. Opóźnienie | | | |
 | Średni czas oczekiwania | | | |
 | Maksymalnie z Procesor CPU | | | |
-| Średnie wykorzystanie Procesora | | | |
+| Średnie użycie procesora CPU | | | |
 | Maksymalnie z Memory (Pamięć) | | | |
 | Średnia pamięci | | | |
 | Głębokość kolejki | | | |
@@ -87,14 +87,14 @@ Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dy
 | --- | --- | --- | --- |
 | **Liczba IOPS lub transakcje na sekundę** |Liczba żądań We/Wy wystawiony dla dysku magazynu na sekundę. |Odczyty dysku/s <br> Zapisy dysku/s |tps <br> r/s <br> p/s |
 | **Dysk odczyty i zapisy** |% operacji odczytu i zapisu operacji wykonywanych na dysku. |Czas odczytu dysku (%) <br> Czas zapisu na dysku % |r/s <br> p/s |
-| **Przepływność** |Ilość danych odczytu lub zapisu na dysku na sekundę. |Bajty odczytu dysku/s <br> Bajty zapisu dysku/s |kB_read/s <br> kB_wrtn/s |
+| **Przepływność** |Ilość danych odczytu lub zapisu na dysku na sekundę. |Bajty odczytu z dysku/s <br> Bajty zapisu na dysku/s |kB_read/s <br> kB_wrtn/s |
 | **Opóźnienie** |Łączny czas wymagany do ukończenia żądania We/Wy dysku. |Średnia dysku w s/Odczyt <br> Średnia dysku w s/Zapis |await <br> svctm |
 | **Rozmiar operacji We/Wy** |Rozmiar operacji We/Wy żądań problemy z dyskami magazynu. |Bajty odczytu dysku <br> Bajty zapisu dysku |avgrq sz |
 | **Głębokość kolejki** |Liczba oczekujących operacji We/Wy żądań oczekujących do odczytu formularza lub zapisane na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu sz |
 | **Maks. Pamięci** |Ilość pamięci wymaganą do bezproblemowe działanie aplikacji |Zadeklarowane bajty w użyciu (%) |Użyj vmstat |
 | **Maks. PROCESOR CPU** |Ilość procesorów wymaganych bezproblemowe działanie aplikacji |Czas procesora (%) |% util |
 
-Dowiedz się więcej o [iostat](http://linuxcommand.org/man_pages/iostat1.html) i [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
+Dowiedz się więcej o [iostat](https://linux.die.net/man/1/iostat) i [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
 ## <a name="optimizing-application-performance"></a>Optymalizacja wydajności aplikacji
 Główne czynniki wpływające na wydajność aplikacji uruchomionych na magazyn w warstwie Premium są charakter z żądania We/Wy, rozmiar maszyny Wirtualnej, rozmiar dysku, liczbę dysków, dysku pamięci podręcznej, Multithreading i głębokość kolejki. Niektóre z nich można kontrolować z pokrętła obsługiwanych przez system. Większość aplikacji może nie zapewniają możliwość zmiany rozmiaru we/wy i głębokość kolejki bezpośrednio. Na przykład jeśli używasz programu SQL Server, nie można wybrać głębokość rozmiaru i kolejki we/wy. SQL Server wybiera optymalną we/wy rozmiaru i kolejki głębokość wartości do większości wydajność. Ważne jest zrozumienie wpływu obu typów czynników na wydajność aplikacji, dzięki czemu można udostępnić odpowiednie zasoby, aby spełnić potrzeby w zakresie wydajności.
@@ -140,10 +140,10 @@ Oto przykład na obliczenie IOPS i przepływności/przepustowość dla aplikacji
 
 | Wymagania aplikacji | Rozmiar operacji We/Wy | Operacje wejścia/wyjścia | Przepływność/przepustowość |
 | --- | --- | --- | --- |
-| Maksymalna liczba IOPS |8 KB |5,000 |40 MB na sekundę |
+| Maks. IOPS |8 KB |5000 |40 MB na sekundę |
 | Przepustowość maksymalna |1024 KB |200 |200 MB / s |
 | Maksymalna przepustowość + wysokiej IOPS |64 KB |3,200 |200 MB / s |
-| Maksymalna liczba IOPS + wysokiej przepływności |32 KB. |5,000 |160 MB na sekundę |
+| Maksymalna liczba IOPS + wysokiej przepływności |32 KB. |5000 |160 MB na sekundę |
 
 Aby uzyskać IOPS i wyższa niż wartość maksymalna dysku magazynu premium pojedynczego przepustowości, użyj wielu dysków w warstwie premium rozkładane razem. Na przykład usługi stripe dwóch P30 dysków, aby uzyskać łączna liczba IOPS z 10 000 IOPS lub łączna przepustowość 400 MB na sekundę. Zgodnie z objaśnieniem w następnej sekcji, musisz użyć rozmiaru maszyny Wirtualnej, która obsługuje połączonych IOPS i przepływność dysku.
 
@@ -236,13 +236,13 @@ Należy włączyć pamięć podręczną dla prawidłowego zestawu dysków. Okre�
 | **Typ dysku** | **Domyślne ustawienie pamięci podręcznej** |
 | --- | --- |
 | Dysk systemu operacyjnego |ReadWrite |
-| Dysk z danymi |Brak |
+| Dysk z danymi |None |
 
 Poniżej przedstawiono ustawienia pamięci podręcznej dysku zalecanych dla dysków z danymi
 
 | **Ustawienia buforowania na dysku** | **Zalecenie na użycie tego ustawienia** |
 | --- | --- |
-| Brak |Konfigurowanie hosta pamięci podręcznej None tylko do zapisu i intensywnie zapisu dysków. |
+| None |Konfigurowanie hosta pamięci podręcznej None tylko do zapisu i intensywnie zapisu dysków. |
 | Tylko do odczytu |Skonfiguruj pamięci podręcznej hosta jako tylko do odczytu dla dysków tylko do odczytu i zapisu i odczytu. |
 | ReadWrite |Konfigurowanie pamięci podręcznej hosta jako ReadWrite tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych z pamięci podręcznej na stałe dyski w razie potrzeby. |
 
@@ -326,7 +326,7 @@ Dla woluminu rozłożonego Obsługa głębokości kolejki wystarczająco wysoka,
 ## <a name="throttling"></a>Ograniczanie przepływności
 Azure Premium Storage przepisy określona liczba IOPS i Przepływność w zależności od rozmiarów maszyn wirtualnych i rozmiary dysków, którą wybierzesz. W dowolnym momencie aplikacja próbuje dysku IOPS lub przepływności powyżej tych limitów co maszyna wirtualna lub dysk może obsłużyć, będzie ograniczane przez Magazyn w warstwie Premium. To manifesty w formie pogorszenie wydajności w aplikacji. To oznacza większego opóźnienia, zmniejszenia przepustowości lub zmniejszyć liczbę IOPS. Jeśli magazyn w warstwie Premium nie ograniczenie przepustowości, aplikacji całkowicie może zakończyć się niepowodzeniem przekroczenia co jej zasoby są w stanie realizacji. Tak aby uniknąć problemów z wydajnością z powodu dławienia, zawsze dostarczać wystarczających zasobów dla aplikacji. Wziąć pod uwagę, omówiono w sekcjach rozmiary dysku powyżej i rozmiarów maszyn wirtualnych. Przeprowadzenia testów porównawczych, to najlepszy sposób, aby dowiedzieć się, jakie zasoby potrzebne do obsługi aplikacji.
 
-## <a name="benchmarking"></a>Przeprowadzenia testów porównawczych
+## <a name="benchmarking"></a>Benchmarking
 Przeprowadzenia testów porównawczych, to proces symulowanie różnych obciążeń w swojej aplikacji i pomiaru wydajności aplikacji dla poszczególnych obciążeń. Korzystając z procedury opisanej w sekcji wcześniej, po zebraniu wymagania dotyczące wydajności aplikacji. Przez uruchomienie narzędzia najlepszymi na maszynach wirtualnych hosting aplikacji, należy określić, że poziomy wydajności, które aplikacji można uzyskać z magazyn w warstwie Premium. W tej sekcji możemy umożliwiają przykłady przeprowadzenia testów porównawczych standardowa maszyna VM DS14 udostępniane z dysków Azure Premium Storage.
 
 Odpowiednio użyliśmy najlepszymi narzędziom Iometer i FIO, systemu Windows i Linux. Te narzędzia zduplikować wiele wątków symulując produkcji, takich jak obciążenie i mierzyć wydajność systemu. Za pomocą narzędzi można również skonfigurować parametry, takie jak głębokość bloku rozmiar i kolejki, które normalnie nie można zmienić dla aplikacji. Zapewnia większą elastyczność i możliwość dysków maksymalnej wydajności na dużą skalę udostępniane z dysków w warstwie premium dla różnych typów aplikacji obciążeń maszyny Wirtualnej. Aby dowiedzieć się więcej na temat każdego z najlepszymi narzędzi można znaleźć w [Iometer](http://www.iometer.org/) i [FIO](http://freecode.com/projects/fio).
@@ -374,24 +374,24 @@ Wykonaj poniższe kroki, aby rozgrzewki pamięci podręcznej
 
 1. Utwórz dwa specyfikacje dostępu z wartościami pokazano poniżej,
 
-   | Nazwa | Rozmiar żądania | Losowe % | % Odczytu |
+   | Name (Nazwa) | Rozmiar żądania | Losowe % | % Odczytu |
    | --- | --- | --- | --- |
    | RandomWrites\_1 MB |1MB |100 |0 |
    | RandomReads\_1 MB |1MB |100 |100 |
 2. Uruchom test Iometer inicjowania dysku pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" 2hrs na karcie "Testowania instalacji".
 
-   | Scenariusz | Wolumin docelowy | Nazwa | Czas trwania |
+   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Czas trwania |
    | --- | --- | --- | --- |
    | Inicjowanie dysku pamięci podręcznej |CacheReads |RandomWrites\_1 MB |2hrs |
 3. Uruchom test Iometer rozgrzewania dysku pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" 2hrs na karcie "Testowania instalacji".
 
-   | Scenariusz | Wolumin docelowy | Nazwa | Czas trwania |
+   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Czas trwania |
    | --- | --- | --- | --- |
    | Ciepłych dysk pamięci podręcznej |CacheReads |RandomReads\_1 MB |2hrs |
 
 Po pamięci podręcznej dysku jest przygotowaniu miejsca, przejdź do scenariuszy testowania wymienionych poniżej. Aby uruchomić Iometer test, należy użyć co najmniej trzech wątków roboczych dla **każdego** woluminu docelowego. Dla każdego wątku roboczego wybierz wolumin docelowy, Ustawia głębokość kolejki, a następnie wybierz jedno specyfikacji zapisane testu, jak pokazano w poniższej tabeli, do uruchamiania odpowiednich scenariusza testu. W tabeli przedstawiono również oczekiwanych rezultatów IOPS i przepływności podczas uruchamiania tych testów. W przypadku wszystkich scenariuszy mały rozmiar we/wy 8 KB i głębokości kolejki wysoki 128 jest używany.
 
-| Scenariusz testów | Wolumin docelowy | Nazwa | wynik |
+| Scenariusz testów | Wolumin docelowy | Name (Nazwa) | Wynik |
 | --- | --- | --- | --- |
 | Maksymalnie z IOPS odczytu |CacheReads |RandomWrites\_8 kilobajtów |50 000 IOPS |
 | Maksymalnie z Zapis IOPS |NoCacheWrites |RandomReads\_8 kilobajtów |IOPS 64 000 |

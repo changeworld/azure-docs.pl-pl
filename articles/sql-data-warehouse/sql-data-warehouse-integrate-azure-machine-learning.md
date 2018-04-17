@@ -1,11 +1,11 @@
 ---
-title: "Uczenie maszynowe Azure za pomocą usługi SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Samouczek korzystania z usługi Azure Machine Learning z usługą Azure SQL Data Warehouse w celu opracowywania rozwiązań."
+title: Uczenie maszynowe Azure za pomocą usługi SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Samouczek korzystania z usługi Azure Machine Learning z usługą Azure SQL Data Warehouse w celu opracowywania rozwiązań.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: ac6bc731-6add-47a9-b3fe-68996e656f4d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>Użyj usługi Azure Machine Learning z usługą Magazyn danych SQL
 Usługa Azure Machine Learning jest usługą analizy predykcyjnej w pełni zarządzana, która służy do tworzenia modeli predykcyjnych względem danych w magazynie danych SQL, a następnie opublikować jako gotowe do użycia usług sieci web. Możesz nauczyć się podstaw analizy predykcyjnej i uczenia maszynowego, odczytując [wprowadzenie do usługi Machine Learning na platformie Azure][Introduction to Machine Learning on Azure].  Następnie Dowiedz się jak tworzenie, uczenie, wynik i testowanie machine learning model przy użyciu [tworzenie eksperymentu samouczek][Create experiment tutorial].
@@ -109,7 +109,7 @@ Wybierz moduł, zapisywania i Wypełnij w okienku właściwości.
 1. Uruchom eksperyment, klikając polecenie Uruchom na kanwie eksperymentu.
 2. Po zakończeniu eksperymentu, wszystkie moduły będą mieć zielony znacznik wyboru, aby wskazać, że zostały ukończone pomyślnie.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Więcej porad dla deweloperów znajduje się w artykule [Omówienie programowania w usłudze SQL Data Warehouse][SQL Data Warehouse development overview].
 
 <!--Image references-->

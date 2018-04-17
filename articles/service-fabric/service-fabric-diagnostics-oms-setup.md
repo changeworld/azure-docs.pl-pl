@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric — skonfiguruj monitorowanie za pomocą analizy dzienników OMS | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować usługi Operations Management Suite do wizualizacji i analizowania zdarzeń do monitorowania klastrów sieci szkieletowej usług Azure.
+title: Konfigurowanie monitorowania za pomocą usługi Analiza dzienników Azure Service Fabric — | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować analizy dzienników dla wizualizacji i analizowania zdarzeń do monitorowania klastrów sieci szkieletowej usług Azure.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/30/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 807c703eccf336236846212b8a0cadc20ec2bc4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Konfigurowanie Operations Management Suite Log Analytics dla klastra
+# <a name="set-up-log-analytics-for-a-cluster"></a>Konfigurowanie analizy dzienników dla klastra
 
-Obszar roboczy Operations Management Suite (OMS) za pośrednictwem usługi Azure Resource Manager, programu PowerShell lub portalu Azure Marketplace można skonfigurować. Jeśli obsługa zaktualizowany szablon usługi Resource Manager wdrożenia do użycia w przyszłości, należy użyć tego samego szablonu do konfigurowania środowiska OMS. Wdrożenia za pośrednictwem portalu Marketplace jest łatwiejsze, jeśli masz już wdrożone z włączoną diagnostykę klastra. Jeśli nie masz dostępu na poziomie subskrypcji w ramach konta, w której wdrażasz OMS, wdrożyć przy użyciu programu PowerShell lub szablonu usługi Resource Manager.
+Można skonfigurować obszaru roboczego analizy dzienników za pośrednictwem usługi Azure Resource Manager, programu PowerShell lub portalu Azure Marketplace. Jeśli obsługa zaktualizowany szablon usługi Resource Manager wdrożenia do użycia w przyszłości, należy użyć tego samego szablonu do konfigurowania środowiska OMS. Wdrożenia za pośrednictwem portalu Marketplace jest łatwiejsze, jeśli masz już wdrożone z włączoną diagnostykę klastra. Jeśli nie masz dostępu na poziomie subskrypcji w ramach konta, w której wdrażasz OMS, wdrożyć przy użyciu programu PowerShell lub szablonu usługi Resource Manager.
 
 > [!NOTE]
-> Można skonfigurować OMS, aby monitorować klastra, musisz mieć włączone, aby wyświetlić zdarzenia klastra platformy poziomie lub diagnostyki.
+> Można skonfigurować analizy dzienników, aby monitorować klastra, należy mieć włączone, aby wyświetlić zdarzenia klastra platformy poziomie lub diagnostyki.
 
 ## <a name="deploy-oms-by-using-azure-marketplace"></a>Wdrażanie pakietu OMS przy użyciu portalu Azure Marketplace
 

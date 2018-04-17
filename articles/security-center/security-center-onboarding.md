@@ -1,11 +1,11 @@
 ---
-title: "Dołączenie do usługi Azure Security Center Standard poziom zabezpieczeń | Dokumentacja firmy Microsoft"
+title: Dołączenie do usługi Azure Security Center Standard poziom zabezpieczeń | Dokumentacja firmy Microsoft
 description: " Dowiedz się, jak do dołączenia do usługi Azure Security Center Standard dla zwiększonych zabezpieczeń. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: terrylan
-ms.openlocfilehash: a6394b1b02ebfe518dc2f2b7f65eb677bb0ba5f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d83beecfc5a8f6b8a01c64e809bc84c6fd0238bf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączenie do usługi Azure Security Center Standard poziom zabezpieczeń
 Uaktualnij do Security Center Standard, aby skorzystać z rozszerzonymi funkcjami zabezpieczeń, zarządzania i ochrony przed zagrożeniami dla obciążeń chmury hybrydowej.  Możesz spróbować Standard bezpłatnie do 60 dni. Zobacz temat w Centrum zabezpieczeń [cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Aby uzyskać więcej informacji.
@@ -30,7 +30,7 @@ Standard Centrum zabezpieczeń obejmują:
 - **Kontroli dostępu i aplikacji** — blok przed złośliwym oprogramowaniem i innych niechciane aplikacje, stosując zalecenia listę dozwolonych podobnej dostosowane do określonych obciążeń i obsługiwane przez usługę uczenie maszynowe. Zmniejsz sieci ataku just in time, kontrolowany dostęp do zarządzania porty na maszynach wirtualnych Azure, co znacznie zmniejsza podatność na ataki siłowe i inne ataki sieciowe.
 
 ## <a name="detecting-unprotected-resources"></a>Wykrywanie niechronione zasobów     
-Centrum zabezpieczeń automatycznie wykrywa wszystkie subskrypcje platformy Azure lub obszarów roboczych nie jest włączona dla standardowych Centrum zabezpieczeń. W tym subskrypcji platformy Azure przy użyciu wolnego Centrum zabezpieczeń i obszarów roboczych, które nie mają włączonej funkcji zabezpieczeń.
+Usługa Security Center automatycznie wykrywa wszelkie subskrypcje i obszary robocze platformy Azure nie włączone do standardu usługi Security Center. Obejmuje to subskrypcje platformy Azure korzystające z usługi Security Center w warstwie bezpłatnej oraz obszary robocze, które nie mają włączonego rozwiązania w zakresie zabezpieczeń.
 
 Można uaktualnić całą subskrypcji platformy Azure do warstwy standardowa, która jest dziedziczona przez wszystkie zasoby w ramach subskrypcji, lub można określić unikatowe zasady, aby uaktualnić tylko grupy zasobów dla określonych. Jeśli ustawienia zasad grupy zasobów są unikatowe, Centrum zabezpieczeń nie spowoduje zastąpienia zasady cenowej po uaktualnieniu subskrypcji do warstwy standardowa. Stosowanie standardowego warstwy do subskrypcji ma zastosowanie tylko do maszyn wirtualnych w ramach subskrypcji, które są raportowania do obszarów roboczych utworzonych przez Centrum zabezpieczeń. Stosowanie standardowego warstwy do obszaru roboczego dotyczą wszystkich zasobów raportowania do obszaru roboczego.
 
@@ -84,7 +84,7 @@ Usługa Security Center może monitorować stan bezpieczeństwa komputerów nien
 1. Wróć do **dołączania**.   
 2. Wybierz **czy chcesz dodać nowe komputery z systemem innym niż Azure**.
 
-  ![Dodać komputer z systemem innym niż Azure][3]
+  ![Dodawanie komputera spoza platformy Azure][3]
 
 Jeśli masz istniejące obszarów roboczych, są one wyświetlane w obszarze **dodać nowe komputery Non-Azure**. Można dodać komputery do istniejący obszar roboczy lub utworzyć nowy obszar roboczy. Aby utworzyć nowy obszar roboczy, wybierz łącze **Dodaj nowy obszar roboczy**.
 
@@ -110,12 +110,12 @@ Można dodać komputer, wykonując działania przepływu pracy od **dołączania
 
 1. Wróć do Centrum zabezpieczeń w menu głównym i **omówienie** pulpitu nawigacyjnego.
 
-   ![Omówienie][5]
+   ![Przegląd][5]
 
 2. Wybierz **obliczeniowe** kafelka.
 3. W obszarze **obliczeniowe**, wybierz pozycję **dodać komputery**.
 
-   ![Obliczenia bazy danych bloku][6]
+   ![Blok Obliczanie][6]
 
 4. W obszarze **dodać nowe komputery z systemem innym niż Azure**, wybierz obszar roboczy, aby połączyć komputer, a następnie kliknij przycisk **Dodaj komputery**.
 
@@ -123,7 +123,7 @@ Można dodać komputer, wykonując działania przepływu pracy od **dołączania
 
  **Bezpośredniego agenta** bloku zawiera również link do pobierania agenta systemu Windows lub Linux, a klucze dla Identyfikatora obszaru roboczego do użycia podczas konfigurowania agenta.   
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób dołączyć Azure i zasobów innych niż Azure, aby można było korzystać z zaawansowanych zabezpieczeń w Centrum zabezpieczeń.  Aby zrobić więcej z zasobów został załadowany, zobacz
 
 - [Włączanie zbierania danych](security-center-enable-data-collection.md)

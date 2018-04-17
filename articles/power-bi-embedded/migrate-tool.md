@@ -1,24 +1,24 @@
 ---
-title: "Narzędzie migracji Power BI Embedded | Dokumentacja firmy Microsoft"
-description: "Narzędzie do migracji Power BI Embedded może służyć do skopiowania do Power BI Embedded kolekcje Power BI obszaru roboczego raportów."
+title: Narzędzie migracji Power BI Embedded | Dokumentacja firmy Microsoft
+description: Narzędzie do migracji Power BI Embedded może służyć do skopiowania do Power BI Embedded kolekcje Power BI obszaru roboczego raportów.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 0b7b5089045daf6dd88fcd84e316b2bd44f8c927
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4f76b1efb509745653bfde0926f56032030f7d47
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-power-bi-embedded-migration-tool"></a>Narzędzie migracji Power BI Embedded
 
@@ -262,7 +262,7 @@ Następnie można zaktualizować parametry połączenia dla zestawu danych w ram
 * [Zaktualizuj parametry połączenia zapytania bezpośredniego w usłudze Power BI Embedded](migrate-code-snippets.md#update-directquery-connection-string-in-power-bi-embedded)
 * [Ustaw poświadczenia zapytania bezpośredniego w usłudze Power BI Embedded](migrate-code-snippets.md#set-directquery-credentials-in-power-bi-embedded)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, raporty zostały poddane migracji z kolekcji obszaru roboczego programu Power BI do Power BI Embedded, należy teraz zaktualizować aplikację i zacząć od osadzania raportów w tym obszarze roboczym aplikacji.
 

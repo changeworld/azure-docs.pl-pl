@@ -1,6 +1,6 @@
 ---
-title: "Utwórz grupy zabezpieczeń sieci - Azure szablonu usługi Resource Manager | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć i wdrożyć przy użyciu szablonu usługi Azure Resource Manager grup zabezpieczeń sieci."
+title: Utwórz grupy zabezpieczeń sieci - Azure szablonu usługi Resource Manager | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i wdrożyć przy użyciu szablonu usługi Azure Resource Manager grup zabezpieczeń sieci.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1fc210ac5e28efe10be27f8b5a752788d3d5a5a3
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Tworzenie sieci za pomocą szablonu usługi Azure Resource Manager grup zabezpieczeń
 
@@ -104,7 +104,7 @@ Przykładowy szablon dostępny w repozytorium publicznym korzysta z pliku parame
 Aby wdrożyć pobrany szablon ARM przy użyciu programu PowerShell, wykonaj poniższe kroki.
 
 1. Jeśli nie znasz programu Azure PowerShell, postępuj zgodnie z instrukcjami [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) do instalowania i konfigurowania jej.
-2. Uruchom  **`New-AzureRmResourceGroup`**  polecenia cmdlet, aby utworzyć grupę zasobów, przy użyciu szablonu.
+2. Uruchom **`New-AzureRmResourceGroup`** polecenia cmdlet, aby utworzyć grupę zasobów, przy użyciu szablonu.
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location uswest `

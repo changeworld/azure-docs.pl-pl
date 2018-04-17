@@ -1,6 +1,6 @@
 ---
-title: "Utwórz sieciowej grupy zabezpieczeń - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć i wdrożyć grup zabezpieczeń sieci przy użyciu portalu Azure."
+title: Utwórz sieciowej grupy zabezpieczeń - portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć i wdrożyć grup zabezpieczeń sieci przy użyciu portalu Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd05df542327f9d8dae924b7097d247980a0558b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-portal"></a>Tworzenie grup zabezpieczeń za pomocą portalu Azure w sieci
 
@@ -39,7 +39,7 @@ W powyższym scenariuszu na podstawie próbek PowerShell poniższe polecenia ocz
 ## <a name="create-the-nsg-frontend-nsg"></a>Tworzenie grupy NSG frontonu NSG
 Aby utworzyć **frontonu NSG** NSG, jak pokazano w scenariuszu powyżej, wykonaj poniższe kroki.
 
-1. W przeglądarce przejdź do strony http://portal.azure.com i w razie potrzeby zaloguj się przy użyciu konta platformy Azure.
+1. W przeglądarce przejdź do witryny http://portal.azure.com i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
 2. Kliknij przycisk **Przeglądaj >** > **sieciowej grupy zabezpieczeń**.
    
     ![Portal Azure — grup NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
@@ -92,6 +92,6 @@ Aby utworzyć **zaplecza NSG** NSG i powiązać ją do **wewnętrznej bazy danyc
 3. Powtórz kroki [kojarzenie grupy NSG do podsieci frontonu](#Associate-the-NSG-to-the-FrontEnd-subnet) do skojarzenia **zaplecza NSG** grupy NSG **zaplecza** podsieci.
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się, jak [Zarządzanie istniejących grup NSG](virtual-network-manage-nsg-arm-portal.md)
+* Dowiedz się, jak [Zarządzanie istniejących grup NSG](manage-network-security-group.md)
 * [Włącz rejestrowanie](virtual-network-nsg-manage-log.md) dla grup NSG.
 

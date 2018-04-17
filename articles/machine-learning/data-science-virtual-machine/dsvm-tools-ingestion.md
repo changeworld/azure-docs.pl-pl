@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 4ba735f1a6019938c8fc270ab98d7e6f8254471b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7aeb0476fffb8c9e5cf2b0b5d89a2a387bd6364a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Narzędzia wprowadzanie danych maszyny wirtualnej nauki danych
 
@@ -36,7 +36,7 @@ Poniżej przedstawiono niektóre narzędzia przepływu danych, które firma Micr
 | Typowe zastosowania      | Importowanie wielu obiektów blob magazynu Azure do usługi Azure Data Lake Store.      |
 |  Jak używać / uruchom go?    |   Otwórz wiersz polecenia, wpisz `adlcopy` Aby uzyskać pomoc.    |
 | Łącza do próbek      | [Korzystanie z narzędzia AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
-| Pokrewne narzędzia na DSVM      | AzCopy, Azure Command Line     |
+| Pokrewne narzędzia na DSVM      | Narzędzia AzCopy, wiersza polecenia platformy Azure     |
 
 ## <a name="azure-command-line"></a>Wiersza polecenia platformy Azure
 
@@ -83,7 +83,7 @@ Poniżej przedstawiono niektóre narzędzia przepływu danych, które firma Micr
 | Typowe zastosowania      | Importowanie pliku CSV do tabeli programu SQL Server, eksportowanie tabeli programu SQL Server do pliku.      |
 |  Jak używać / uruchom go?    |   Otwórz wiersz polecenia, wpisz `bcp` Aby uzyskać pomoc.    |
 | Łącza do próbek      | [Bulk Copy Utility](https://docs.microsoft.com/sql/tools/bcp-utility)      |
-| Pokrewne narzędzia na DSVM      | SQL Server, sqlcmd      |
+| Pokrewne narzędzia na DSVM      | SQL Server, narzędzia sqlcmd      |
 
 ## <a name="blobfuse"></a>blobfuse
 

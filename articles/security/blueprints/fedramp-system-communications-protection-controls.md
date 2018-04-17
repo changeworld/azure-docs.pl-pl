@@ -1,6 +1,6 @@
 ---
-title: "Ochrona komunikacji i systemu plan - automatyzacji aplikacji sieci Web FedRAMP - zgodności i zabezpieczeń platformy Azure"
-description: "Automatyzacji aplikacji sieci Web FedRAMP — systemu i ochronę komunikacji"
+title: Ochrona komunikacji i systemu plan - automatyzacji aplikacji sieci Web FedRAMP - zgodności i zabezpieczeń platformy Azure
+description: Automatyzacji aplikacji sieci Web FedRAMP — systemu i ochronę komunikacji
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ce0917cec67612736103932903eab18d7f0f21bb
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 6749ad50cd1ea1cd4ec6ca2f86fef43a9f1515d9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="system-and-communications-protection-sc"></a>System i ochronę komunikacji (SC)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] systemu i komunikacji zasady ochrony, którego dotyczy cel, zakres, ról, obowiązki, zarządzania zobowiązań, koordynacji między jednostki organizacyjnej i zgodności; i procedury w celu ułatwienia implementacji systemu i zasady ochrony komunikacji i skojarzonego z nim systemu i kontrolek ochrony komunikacji; przegląda i aktualizuje bieżące zasady ochrony systemu i komunikacji [przypisania: zdefiniowane przez organizację częstotliwość]; i procedur ochrony systemu i komunikacji [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 2** systemu informacji oddziela funkcji użytkownika (w tym usług interfejsu użytkownika) od funkcji zarządzania systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-3** systemu informacji izoluje funkcji zabezpieczeń z funkcji niezwiązana z zabezpieczeniami.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-4** systemu informacji uniemożliwia informacji nieautoryzowanym i niezamierzone transfer za pośrednictwem udostępnionych zasobów systemowych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-5** system informacji chroni przed lub ogranicza skutki następujących typów ataki: [przypisania: typy danych zdefiniowane przez organizację odmowy usługi lub odwołania do źródła tych informacji] przez wykorzystanie [przypisania: zabezpieczeń zdefiniowany przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 6** system informacji chroni dostępność zasobów przydzielając [przypisania: zasoby zdefiniowane przez organizację] przez [wybór (jeden lub więcej); priorytet przydziału; [Przypisania: zabezpieczeń zdefiniowany przez organizację]].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,21 +115,21 @@ ms.lasthandoff: 02/11/2018
 
 **SC 7.a** systemu informacji monitorów i kontroluje komunikację na granicy zewnętrznego systemu i na klucza wewnętrzny granic w ramach systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan wdraża bramy aplikacji, usługi równoważenia obciążenia i konfiguruje reguły grupy zabezpieczeń sieci w celu kontrolowania commutations na granicach zewnętrznych i między podsieciami wewnętrznego. Brama aplikacji, usługi równoważenia obciążenia i zdarzeń grupy zabezpieczeń sieci i dzienników diagnostycznych są zbierane przez OMS Log Analytics umożliwia monitorowanie klienta. |
+| **Klienta** | Ten plan wdraża bramy aplikacji, usługi równoważenia obciążenia i konfiguruje reguły grupy zabezpieczeń sieci w celu kontrolowania commutations na granicach zewnętrznych i między podsieciami wewnętrznego. Brama aplikacji, usługi równoważenia obciążenia i zdarzeń grupy zabezpieczeń sieci i dzienników diagnostycznych są zbierane przez analityka dziennika umożliwia monitorowanie klienta. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-sc-7b"></a>NIST 800-53 Control SC-7.b
+ ## <a name="nist-800-53-control-sc-7b"></a>Formant SC NIST 800 53-od 7.b
 
 #### <a name="boundary-protection"></a>Ochrona granic
 
 **Od 7.b SC** system informacji implementuje podsieci dla składników systemu publicznie, które są [zaznaczenia: fizycznie; logicznie] oddzielona od sieci organizacji wewnętrznych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -137,13 +137,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-sc-7c"></a>NIST 800-53 Control SC-7.c
+ ## <a name="nist-800-53-control-sc-7c"></a>NIST 800 53 kontroli SC-7.c
 
 #### <a name="boundary-protection"></a>Ochrona granic
 
 **SC 7.c** systemu informacji łączy sieci zewnętrznych lub systemów informacyjnych tylko przez zarządzane interfejsy składające się z urządzenia ochrony granic rozmieszczone zgodnie z architektury zabezpieczeń organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (3)** organizacji ogranicza liczbę połączeń sieci zewnętrznej do systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A SC-7 (4)** organizacji implementuje interfejs zarządzanego dla każdej usługi telekomunikacyjnych zewnętrznych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **B SC-7 (4)** organizacji ustanawia zasadę przepływu ruchu dla każdego zarządzanego interfejsu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (4) .c** organizacji zapewnia ochronę poufności i integralności informacje przesyłane między każdego interfejsu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (4) .d** każdego wyjątku do zasady przepływ ruchu z pomocniczych misji/potrzeb i czas trwania wymagających dokumentów organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -225,9 +225,9 @@ ms.lasthandoff: 02/11/2018
 
 #### <a name="boundary-protection--external-telecommunications-services"></a>Ochrona granic | Usług telekomunikacyjnych zewnętrznych
 
-**SC-7 (4).e** Organizacja przegląda wyjątki od zasad przepływu ruchu [przypisania: częstotliwość zdefiniowany przez organizację] i usuwa wyjątki, które nie są już obsługiwane przez jawne muszą misji/biznesowych.
+**.E SC-7 (4)** Organizacja przegląda wyjątki od zasad przepływu ruchu [przypisania: częstotliwość zdefiniowany przez organizację] i usuwa wyjątki, które nie są już obsługiwane przez jawne muszą misji/biznesowych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (5)** systemu informacji o zarządzanych interfejsów nie zezwala na ruch sieciowy komunikacyjnych domyślnie i zezwala na ruch łączności sieciowej przez wyjątek (tj., Odmów wszystkich, przez wyjątek).
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (7)** system informacji, w połączeniu z urządzeniem zdalnym uniemożliwia urządzenia z jednocześnie nawiązywanie połączeń z systemem innym niż zdalnego w systemie i komunikacji za pośrednictwem niektóre inne połączenie z zasobami w sieciach zewnętrznych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (8)** tras systemowych informacji [przypisania: ruchu zdefiniowany przez organizację komunikacji wewnętrznej] do [przypisania: zdefiniowane przez organizację sieci zewnętrznych] przy użyciu uwierzytelnianego serwerów proxy w zarządzanych interfejsów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (10)** organizacji uniemożliwia nieautoryzowanym exfiltration informacji między zarządzane interfejsy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (12)** implementuje organizacji [przypisania: mechanizmy ochrony zdefiniowany przez organizację granic oparta na hoście] na [przypisania: składniki systemowe zdefiniowane przez organizację informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 [13]** izoluje organizacji [przypisania: narzędzia zabezpieczeń informacje zdefiniowane przez organizację, mechanizmów i składników obsługi] z innymi składnikami systemu informacji wewnętrznych zaimplementowanie fizycznie oddzielne podsieci z zarządzane interfejsy z innymi składnikami systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (18)** operacyjne awarii urządzenia ochrony granic bezpiecznie awarii systemu informacji.
 
-**Obowiązki:**`Azure Only`
+**Obowiązki:** `Azure Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (20)** system informacji zapewnia możliwość dynamicznie isolate/segregowanie [przypisania: składniki systemowe zdefiniowane przez organizację informacje] z innymi składnikami systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (21)** organizacja stosuje mechanizmy ochrony granic do oddzielania [przypisania: składniki systemowe zdefiniowane przez organizację informacje] pomocniczych [przypisania: zdefiniowany przez organizację misji i/lub business funkcje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-8** system informacji chroni [wybór (jeden lub więcej): poufności; integralność] przekazywanych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-8 (1)** system informacji implementuje mechanizmów kryptograficznych [wybór (jeden lub więcej): uniemożliwić nieuprawnionym ujawnieniem informacji; wykrywa zmiany danych] podczas przesyłania, chyba że w przeciwnym razie chronione przez [przypisania: zdefiniowany przez organizację alternatywnych fizycznych zabezpieczenia].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 10** systemu informacji kończy połączenie sieciowe skojarzone z sesji komunikacji z końcem sesji lub po [przypisania: organizacji zdefiniowane przez okres] czas braku aktywności.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12** organizacji ustanawia i zarządza nimi klucze kryptograficzne wymagane kryptografii stosowanych w ramach systemu informacji zgodnie z [przypisania: zdefiniowane przez organizację wymagania dotyczące generowania kluczy, dystrybucji, Magazyn, dostępu i zniszczenie].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (1)** organizacji przechowuje dostępności informacji w przypadku utraty kluczy kryptograficznych przez użytkowników.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (2)** organizacji tworzy formanty i dystrybuuje kryptograficzne klucze symetryczne, za pomocą [zaznaczenia: NIST zgodne ze standardem FIPS; Technologia zarządzania kluczami zatwierdzone NSA] i procesów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (3)** organizacji tworzy formanty i dystrybuuje kryptograficzne klucze asymetryczne przy użyciu [zaznaczenia: technologii zatwierdzone NSA zarządzania kluczami i procesów; zatwierdzone certyfikaty infrastruktury kluczy publicznych klasy 3 lub przewidzianego materiał; zatwierdzone certyfikaty infrastruktury kluczy publicznych klasy 3 lub 4 klasy i sprzętu tokeny zabezpieczające, które zapewniają ochronę klucza prywatnego użytkownika].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-13** system informacji implementuje [przypisania: zdefiniowany organizacji używa kryptograficznych i typ kryptografii wymagane dla każdego zastosowania] zgodnie z dyrektywy obowiązujących przepisów federalne zamówień wykonawczego, zasady, przepisy, i standardów.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 15.a** informacji zabronione aktywacji zdalnej współpracy urządzeń komputerowych z następującymi wyjątkami: [przypisania: wyjątki zdefiniowane przez organizację zdalnej aktywacji w przypadku mogą być].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 15.b** systemu informacji udostępnia wskazanie jawne użycie fizycznej obecności na urządzeniach użytkowników.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-17** organizacji wystawia certyfikaty klucze publiczne w obszarze [przypisania: zasady dotyczące certyfikatów zdefiniowanych przez organizację] lub uzyskuje dostęp do kluczy publicznych z dostawcą usług zatwierdzone.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 18.a** organizacji definiuje dopuszczalne, a nie do przyjęcia dostępu mobilnego i technologii dostępu mobilnego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -529,13 +529,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-sc-18b"></a>NIST 800-53 Control SC-18.b
+ ## <a name="nist-800-53-control-sc-18b"></a>NIST 800 53 kontroli SC-18.b
 
 #### <a name="mobile-code"></a>Dostępu mobilnego
 
 **SC 18.b** organizacji ustanawia ograniczenia użycia i wskazówki dotyczące implementacji dopuszczalne dostępu mobilnego i technologii dostępu mobilnego.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -543,13 +543,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-sc-18c"></a>NIST 800-53 Control SC-18.c
+ ## <a name="nist-800-53-control-sc-18c"></a>NIST 800 53 kontroli SC-18.c
 
 #### <a name="mobile-code"></a>Dostępu mobilnego
 
 **SC 18.c** organizacji autoryzuje, monitoruje i steruje użyciem dostępu mobilnego w ramach systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 19.a** organizacji ustanawia ograniczenia użycia i wskazówki dotyczące implementacji na głos przez Internet Protocol (VoIP) technologie oparte na może spowodować uszkodzenie systemu informacji użycie złośliwy.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 19.b** organizacji autoryzuje, monitoruje i steruje użyciem VoIP w ramach systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 20.a** system informacji udostępnia dodatkowe dane ze źródła — wersja uwierzytelniania i integralności artefakty weryfikacji wraz z danymi rozpoznawania nazwy autorytatywne system zwraca w odpowiedzi na zapytania Rozpoznawanie zewnętrznych nazwę lub adres.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 20.b** systemu informacji w celu dostarczania środków wskazują stan zabezpieczeń stref podrzędnych i (Jeśli obiekt podrzędny obsługuje usługi rozpoznawania bezpieczny) umożliwiające weryfikacji łańcuch zaufania między domenami nadrzędnych i podrzędnych, gdy działają w ramach rozproszone, hierarchicznej przestrzeni nazw.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-21** systemu informacje żądania i przeprowadza uwierzytelnianie pochodzenia danych oraz Weryfikacja integralności danych na nazwę lub adres odpowiedzi rozwiązania system odbiera z autorytatywnych źródeł.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-22** systemów informacyjnych, zbiorczo zapewniające usługi rozpoznawania nazwę lub adres organizacji są odpornej na uszkodzenia i wdrożenie separacji ról wewnętrznej/zewnętrznej.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-23** system informacji chroni autentyczności sesje komunikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-23 (1)** systemu informacji unieważnia identyfikatory sesji wylogowania użytkownika lub zakończenia sesji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-24** systemu informacji nie powiedzie się [przypisania: stan znane zdefiniowany przez organizację] dla [przypisania: typy danych zdefiniowane przez organizację niepowodzeń] zachowania [przypisania: informacje o stanie systemu zdefiniowany przez organizację] uszkodzenie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-28** system informacji chroni [wybór (jeden lub więcej): poufności; integralność] z [przypisania: zdefiniowane przez organizację informacje w stanie spoczynku].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-28 (1)** system informacji implementuje mechanizmów kryptograficznych, aby uniknąć nieuprawnionym ujawnieniem i modyfikacji [przypisania: zdefiniowane przez organizację informacje] na [przypisania: informacje zdefiniowane przez organizację systemu składniki].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 39** system informacji obsługuje domeny wykonywania osobne dla każdego procesu wykonywania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

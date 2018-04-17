@@ -1,5 +1,5 @@
 ---
-title: "Azure plan przetwarzania płatności — wymagania dotyczące monitorowania"
+title: Azure plan przetwarzania płatności — wymagania dotyczące monitorowania
 description: Wymaganie PCI DSS 10
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 5fa1d17e68ce04b1f67081479518279be6cca099
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 708c57c1d7b79d3fd3c129de9a7ce4099ab6ac36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące monitorowania dla środowisk standardem PCI DSS 
 ## <a name="pci-dss-requirement-10"></a>Wymaganie PCI DSS 10
@@ -38,8 +38,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ogranicza dostęp do narzędzi administracyjnych i diagnostycznych do autoryzowanego personelu odpowiada odpowiedniego zadania. Microsoft Azure ogranicza uprzywilejowany dostęp do narzędzia używane w środowisku produkcyjnym, oparta na zasadach uprawnienia co najmniej. Microsoft Azure rejestruje i przechowuje dziennik użytkownikowi dostęp do składników systemu Microsoft Azure w środowisku platformy.<br /><br />Składniki platformy Microsoft Azure (w tym systemu operacyjnego, CloudNet sieci szkieletowej i tak dalej) są skonfigurowane do logowania i zbieranie zdarzeń zabezpieczeń. Działania administratora na platformie Microsoft Azure jest rejestrowane. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ogranicza dostęp do narzędzi administracyjnych i diagnostycznych do autoryzowanego personelu odpowiada odpowiedniego zadania. Microsoft Azure ogranicza uprzywilejowany dostęp do narzędzia używane w środowisku produkcyjnym, oparta na zasadach uprawnienia co najmniej. Microsoft Azure rejestruje i przechowuje dziennik użytkownikowi dostęp do składników systemu Microsoft Azure w środowisku platformy.<br /><br />Składniki platformy Microsoft Azure (w tym systemu operacyjnego, CloudNet sieci szkieletowej i tak dalej) są skonfigurowane do logowania i zbieranie zdarzeń zabezpieczeń. Działania administratora na platformie Microsoft Azure jest rejestrowane. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -58,8 +58,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ogranicza dostęp do narzędzi administracyjnych i diagnostycznych do autoryzowanego personelu odpowiada odpowiedniego zadania. Microsoft Azure ogranicza uprzywilejowany dostęp do narzędzia używane w środowisku produkcyjnym, oparta na zasadach uprawnienia co najmniej. Microsoft Azure rejestruje i przechowuje dziennik użytkownikowi dostęp do składników systemu Microsoft Azure w środowisku platformy.<br /><br />Składniki platformy Microsoft Azure (w tym systemu operacyjnego, CloudNet sieci szkieletowej i tak dalej) są skonfigurowane do logowania i zbieranie zdarzeń zabezpieczeń. Działania administratora na platformie Microsoft Azure jest rejestrowane. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie całą aktywność systemu i użytkownika, w tym CHD rejestrowania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ogranicza dostęp do narzędzi administracyjnych i diagnostycznych do autoryzowanego personelu odpowiada odpowiedniego zadania. Microsoft Azure ogranicza uprzywilejowany dostęp do narzędzia używane w środowisku produkcyjnym, oparta na zasadach uprawnienia co najmniej. Microsoft Azure rejestruje i przechowuje dziennik użytkownikowi dostęp do składników systemu Microsoft Azure w środowisku platformy.<br /><br />Składniki platformy Microsoft Azure (w tym systemu operacyjnego, CloudNet sieci szkieletowej i tak dalej) są skonfigurowane do logowania i zbieranie zdarzeń zabezpieczeń. Działania administratora na platformie Microsoft Azure jest rejestrowane. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie całą aktywność systemu i użytkownika, w tym CHD rejestrowania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -77,8 +77,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury, aby zsynchronizować serwerów i urządzeń sieciowych w środowisku Microsoft Azure z serwerów czasu NTP warstwy 1 zsynchronizowane do globalnego pozycjonowanie systemu GPS satelity. Synchronizacja jest realizowane automatycznie co pięć minut. Microsoft Azure jest odpowiedzialny za egzekwowanie hosty usługi prawidłowo czas synchronizacji. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso rejestruje identyfikacji użytkownika, typu zdarzenia, sygnatury czasowej, zdarzeń pomyślnego nie powiodło się, źródło zdarzeń i nazwa zasobu, co jest wymagane przez 10.3 kontroli.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury, aby zsynchronizować serwerów i urządzeń sieciowych w środowisku Microsoft Azure z serwerów czasu NTP warstwy 1 zsynchronizowane do globalnego pozycjonowanie systemu GPS satelity. Synchronizacja jest realizowane automatycznie co pięć minut. Microsoft Azure jest odpowiedzialny za egzekwowanie hosty usługi prawidłowo czas synchronizacji. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso rejestruje identyfikacji użytkownika, typu zdarzenia, sygnatury czasowej, zdarzeń pomyślnego nie powiodło się, źródło zdarzeń i nazwa zasobu, co jest wymagane przez 10.3 kontroli.|
 
 
 
@@ -92,8 +92,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury, aby zsynchronizować serwerów i urządzeń sieciowych w środowisku Microsoft Azure z serwerów czasu NTP warstwy 1 zsynchronizowane do globalnego pozycjonowanie systemu GPS satelity. Synchronizacja jest realizowane automatycznie co pięć minut. Microsoft Azure jest odpowiedzialny za egzekwowanie hosty usługi prawidłowo czas synchronizacji. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure opracowała procedury, aby zsynchronizować serwerów i urządzeń sieciowych w środowisku Microsoft Azure z serwerów czasu NTP warstwy 1 zsynchronizowane do globalnego pozycjonowanie systemu GPS satelity. Synchronizacja jest realizowane automatycznie co pięć minut. Microsoft Azure jest odpowiedzialny za egzekwowanie hosty usługi prawidłowo czas synchronizacji. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
 
 
 
@@ -105,8 +105,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.4 wymaganie](#pci-dss-requirement-10-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.4 wymaganie](#pci-dss-requirement-10-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
 
 
 
@@ -118,8 +118,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.4 wymaganie](#pci-dss-requirement-10-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.4 wymaganie](#pci-dss-requirement-10-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
 
 
 
@@ -131,8 +131,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.4 wymaganie](#pci-dss-requirement-10-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.4 wymaganie](#pci-dss-requirement-10-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Synchronizacja czasu usługi PaaS jest wykonywane przez platformę Azure.|
 
 
 
@@ -144,8 +144,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | FIM i narzędzia Identyfikatory są implementowane w środowisku Microsoft Azure. Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. <br /><br />Rejestrowanie usługi, użytkownika i zabezpieczeń zdarzeń (dzienniki serwera sieci web, dzienniki serwera FTP itd.) jest włączona i przechowywane w centralnie. Azure ogranicza dostęp do dziennika inspekcji w celu autoryzowanego personelu w oparciu o obowiązków. Dzienniki zdarzeń zostaną zarchiwizowane w infrastrukturze Azure archiwizacji bezpiecznego i są przechowywane przez 180 dni. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów z usługą OMS. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | FIM i narzędzia Identyfikatory są implementowane w środowisku Microsoft Azure. Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. <br /><br />Rejestrowanie usługi, użytkownika i zabezpieczeń zdarzeń (dzienniki serwera sieci web, dzienniki serwera FTP itd.) jest włączona i przechowywane w centralnie. Azure ogranicza dostęp do dziennika inspekcji w celu autoryzowanego personelu w oparciu o obowiązków. Dzienniki zdarzeń zostaną zarchiwizowane w infrastrukturze Azure archiwizacji bezpiecznego i są przechowywane przez 180 dni. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów na platformie Azure. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -157,8 +157,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów z usługą OMS. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów na platformie Azure. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -170,8 +170,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów z usługą OMS. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów na platformie Azure. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -183,8 +183,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów z usługą OMS. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów na platformie Azure. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -196,8 +196,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów z usługą OMS. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów na platformie Azure. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -209,8 +209,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów z usługą OMS. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.5 wymaganie](#pci-dss-requirement-10-5). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Udostępnia magazynu sieci Web firmy Contoso inspekcji wszystkich elementów na platformie Azure. Wykonywanie kopii zapasowych na zewnętrzne źródło może być wykonane przez [kopia zapasowa Azure](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -225,8 +225,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | FIM i narzędzia Identyfikatory są implementowane w środowisku Microsoft Azure. Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. <br /><br />Rejestrowanie usługi, użytkownika i zabezpieczeń zdarzeń (dzienniki serwera sieci web, dzienniki serwera FTP itd.) jest włączona i przechowywane w centralnie. Azure ogranicza dostęp do dziennika inspekcji w celu autoryzowanego personelu w oparciu o obowiązków. Dzienniki zdarzeń zostaną zarchiwizowane w infrastrukturze Azure archiwizacji bezpiecznego i są przechowywane przez 180 dni. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | FIM i narzędzia Identyfikatory są implementowane w środowisku Microsoft Azure. Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. <br /><br />Rejestrowanie usługi, użytkownika i zabezpieczeń zdarzeń (dzienniki serwera sieci web, dzienniki serwera FTP itd.) jest włączona i przechowywane w centralnie. Azure ogranicza dostęp do dziennika inspekcji w celu autoryzowanego personelu w oparciu o obowiązków. Dzienniki zdarzeń zostaną zarchiwizowane w infrastrukturze Azure archiwizacji bezpiecznego i są przechowywane przez 180 dni. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
 
 
 
@@ -242,8 +242,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.6 wymaganie](#pci-dss-requirement-10-6). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.6 wymaganie](#pci-dss-requirement-10-6). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
 
 
 
@@ -255,8 +255,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.6 wymaganie](#pci-dss-requirement-10-6). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.6 wymaganie](#pci-dss-requirement-10-6). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
 
 
 
@@ -268,8 +268,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.6 wymaganie](#pci-dss-requirement-10-6). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [10.6 wymaganie](#pci-dss-requirement-10-6). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Używa magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) do monitorowania, raport i zapobiec anomalii. [Klasyfikator Azure](/azure/advisor/advisor-security-recommendations) zapewnia spójne, skonsolidowanego widoku zaleceń dla wszystkich zasobów na platformie Azure.|
 
 
 
@@ -281,8 +281,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zachowuje dzienniki inspekcji przez jeden rok z ostatnich miesięcy 3 natychmiast dostępna za pośrednictwem ich wewnętrzny portalu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zachowuje dzienniki inspekcji przez jeden rok z ostatnich miesięcy 3 natychmiast dostępna za pośrednictwem ich wewnętrzny portalu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -307,8 +307,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -330,8 +330,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje EWS umożliwiających analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym. Niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu generowane mAs i cele. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso ma szczegółowe rejestrowanie wszystkich systemu i aktywność użytkowników (w tym CHD rejestrowanie). Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rejestrowanie](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -344,8 +344,8 @@ Mechanizmy rejestrowania i możliwość śledzenia działań użytkownika są ni
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web udostępnia przypadek użycia i opis sposób zarządzania i chronione CHD.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web udostępnia przypadek użycia i opis sposób zarządzania i chronione CHD.|
 
 
 

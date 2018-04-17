@@ -1,29 +1,22 @@
 ---
-title: "Jak używać magazynu obiektów Blob z Xamarin | Dokumentacja firmy Microsoft"
-description: "Biblioteka klienta magazynu Azure dla platformy Xamarin umożliwia deweloperom tworzenie systemu iOS, Android i aplikacji ze Sklepu Windows z ich interfejsy macierzystego użytkownika. W tym samouczku pokazano, jak program Xamarin, aby utworzyć aplikację, która korzysta z magazynu obiektów Blob platformy Azure."
+title: Jak używać magazynu obiektów (Blob) z Xamarin | Dokumentacja firmy Microsoft
+description: Biblioteka klienta usługi Azure Storage dla platformy Xamarin umożliwia deweloperom tworzenie systemu iOS, Android i aplikacji ze Sklepu Windows z ich interfejsy macierzystego użytkownika. W tym samouczku pokazano, jak program Xamarin, aby utworzyć aplikację, która korzysta z magazynu obiektów Blob platformy Azure.
 services: storage
 documentationcenter: xamarin
 author: michaelhauss
-manager: vamshik
-editor: tysonn
-ms.assetid: 44cb845d-cf78-4942-95b8-952da4f9a2c2
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: c7b4d0e7d7d95f2e3f8c5a97b78c60c52cc862a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31dbaeb1dd998d8d27af5eff0fa293117ef7f471
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Jak używać magazynu obiektów Blob z Xamarin
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-## <a name="overview"></a>Omówienie
 Aby utworzyć systemu iOS, Android i aplikacji ze Sklepu Windows za pomocą ich interfejsów użytkownika natywnego bazy kodu Xamarin umożliwiają deweloperom Użyj udostępnionych C#. Ten samouczek pokazuje, jak używać magazynu obiektów Blob platformy Azure przy użyciu aplikacji Xamarin. Jeśli chcesz dowiedzieć się więcej na temat usługi Azure Storage, przed rozpoczęciem pracy z kodem, zobacz [wprowadzenie do usługi Microsoft Azure Storage](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
@@ -43,7 +36,7 @@ Wykonaj następujące kroki, aby utworzyć aplikację:
 Teraz powinien mieć aplikację, która umożliwia kliknięcie przycisku, który zwiększa licznik.
 
 ## <a name="create-container-and-upload-blob"></a>Tworzenie kontenera i przekazania obiektu blob
-Następnie w obszarze Twojej `(Portable)` projektu, dodasz kod służący do `MyClass.cs`. Ten kod tworzy kontener i wysyła do tego kontenera obiektu blob. `MyClass.cs`powinna wyglądać następująco:
+Następnie w obszarze Twojej `(Portable)` projektu, dodasz kod służący do `MyClass.cs`. Ten kod tworzy kontener i wysyła do tego kontenera obiektu blob. `MyClass.cs` powinna wyglądać następująco:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -84,7 +77,7 @@ namespace XamarinApp
 
 Upewnij się zastąpić "your_account_name_here" i "your_account_key_here" Nazwa rzeczywista konta i klucz konta. 
 
-Z systemu iOS, Android i Windows Phone, wszystkie projekty odwołują się do projektu przenośnych — co oznacza, że pisania kodu udostępnionych w jednej Umieść i używać go we wszystkich projektach. Następujący wiersz kodu można teraz dodać do każdego projektu, aby uruchomić wykorzystaniu:`MyClass.performBlobOperation()`
+Z systemu iOS, Android i Windows Phone, wszystkie projekty odwołują się do projektu przenośnych — co oznacza, że pisania kodu udostępnionych w jednej Umieść i używać go we wszystkich projektach. Następujący wiersz kodu można teraz dodać do każdego projektu, aby uruchomić wykorzystaniu: `MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -240,7 +233,7 @@ Można teraz uruchomić tę aplikację w emulatorze systemu Android i Windows Ph
 
 Po uruchomieniu aplikacji będzie utworzyć kontener `mycontainer` na koncie magazynu. Powinien on zawierać obiektów blob, `myblob`, który ma tekstu, `Hello, world!`. Można to sprawdzić za pomocą [Eksploratora usługi Microsoft Azure Storage](http://storageexplorer.com/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób tworzenia aplikacji i platform w Xamarin, która używa usługi Azure Storage, w szczególności koncentrujących się na jednym ze scenariuszy w magazynie obiektów Blob. Jednak możesz to zrobić dużo więcej nie tylko magazynu obiektów Blob, lecz również z tabeli, plików i magazynowania kolejki. Sprawdź następujące artykuły, aby dowiedzieć się więcej:
 
 * [Rozpoczynanie pracy z usługą Azure Blob Storage przy użyciu platformy .NET](storage-dotnet-how-to-use-blobs.md)

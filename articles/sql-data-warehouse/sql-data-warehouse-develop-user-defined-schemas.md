@@ -1,27 +1,26 @@
 ---
-title: "Schematy zdefiniowane przez użytkownika w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Porady dotyczące używania schematów języka Transact-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań."
+title: Przy użyciu schematów zdefiniowane przez użytkownika w usłudze SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Porady dotyczące używania schematów użytkownika T-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 52af5bd5-d5d3-4f9b-8704-06829fb924e3
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d30434bf3c5e5f27f3a95bcb70bddaf3d92967bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="user-defined-schemas-in-sql-data-warehouse"></a>Schematy zdefiniowane przez użytkownika w usłudze SQL Data Warehouse
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>W usłudze SQL Data Warehouse przy użyciu schematów zdefiniowane przez użytkownika
+Porady dotyczące używania schematów użytkownika T-SQL w usłudze Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
+
+## <a name="schemas-for-application-boundaries"></a>Schematy dla granic aplikacji
+
 Magazyny danych tradycyjnych często używają oddzielne bazy danych do tworzenia aplikacji granic na podstawie obciążenia, domeny lub zabezpieczeń. Na przykład tradycyjnego magazynu danych programu SQL Server może obejmować tymczasowej bazy danych, bazy danych magazynu danych i niektóre bazy danych składnicy danych. W tej topologii każda baza danych działa jako obciążenia i granicy zabezpieczeń w architekturze.
 
 Z kolei SQL Data Warehouse uruchamia obciążeniu magazynu danych w ramach jednej bazy danych. Sprzężenia między bazy danych nie są dozwolone. W związku z tym usługa SQL Data Warehouse oczekuje, że wszystkie tabele używane w magazynie, aby były przechowywane w ramach jednej bazy danych.
@@ -120,14 +119,6 @@ FROM    [edw].customer
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia][development overview].
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

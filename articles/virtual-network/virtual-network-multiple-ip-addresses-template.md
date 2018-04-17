@@ -1,12 +1,12 @@
 ---
-title: "Wiele adresów IP dla maszyn wirtualnych platformy Azure — szablon | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu szablonu usługi Azure Resource Manager."
-documentationcenter: 
+title: Wiele adresów IP dla maszyn wirtualnych platformy Azure — szablon | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu szablonu usługi Azure Resource Manager.
+documentationcenter: ''
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Przypisz wielu adresów IP do maszyn wirtualnych przy użyciu szablonu usługi Azure Resource Manager
 
@@ -34,7 +34,7 @@ Wdrażanie szablonu umożliwia szybkie i spójne tworzenie zasobów Azure o wart
 
 <a name="resources"></a>Wdrażanie szablonu tworzy następujące zasoby:
 
-|Zasób|Nazwa|Opis|
+|Zasób|Name (Nazwa)|Opis|
 |---|---|---|
 |Interfejs sieciowy|*myNic1*|Trzy konfiguracje adresów IP, opisane w sekcji scenariusza w tym artykule są tworzone i przypisywane do tej karty sieciowej.|
 |Publiczny zasobu adresu IP|2 są tworzone: *myPublicIP* i *myPublicIP2*|Te zasoby są przypisane statyczne publiczne adresy IP i są przypisane do *IPConfig 1* i *IPConfig 2* opisany w scenariuszu konfiguracji adresów IP.|
@@ -44,7 +44,7 @@ Wdrażanie szablonu umożliwia szybkie i spójne tworzenie zasobów Azure o wart
 
 <a name="parameters"></a>Podczas wdrażania szablonu, podaj wartości następujących parametrów:
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |adminUsername|Nazwa użytkownika administratora. Nazwa użytkownika musi być zgodne z [wymagania Azure username](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |adminPassword|Hasło musi spełniać hasło administratora [wymagania dotyczące hasła Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -68,7 +68,7 @@ Aby wdrożyć szablon przy użyciu portalu Azure, wykonaj następujące kroki:
 1. W razie potrzeby zmodyfikuj szablon. Szablon wdraża zasoby i ustawienia na liście [zasobów](#resources) sekcji tego artykułu. Aby dowiedzieć się więcej o szablonach i sposobie ich tworzyć, odczytywać [szablonów Authoring Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)artykułu.
 2. Wdrażanie szablonu z jedną z następujących metod:
     - **Wybierz szablon w portalu:** wykonaj kroki [wdrażanie zasobów z szablonu niestandardowego](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template) artykułu. Wybierz istniejące szablon o nazwie *101-vm wiele ipconfig*.
-    - **Bezpośrednio:** kliknij poniższy przycisk, aby otworzyć szablon bezpośrednio w portalu:<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+    - **Bezpośrednio:** kliknij poniższy przycisk, aby otworzyć szablon bezpośrednio w portalu: <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
 Niezależnie od metody wybierzesz, musisz podać wartości dla [parametry](#parameters) wymienione wcześniej w tym artykule. Po wdrożeniu maszyny Wirtualnej, połączenie z maszyną Wirtualną i Dodaj prywatnych adresów IP do systemu operacyjnego została wdrożona, wykonując kroki opisane w [adresów IP Dodaj do systemu operacyjnego maszyny Wirtualnej](#os-config) sekcji tego artykułu. Nie dodawaj publiczne adresy IP do systemu operacyjnego.
 

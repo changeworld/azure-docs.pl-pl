@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Przewodnik dotyczący wydawcy witrynę Azure Marketplace i AppSource
 
@@ -121,8 +121,7 @@ Każdy sklepu obsługuje wiele typów publikowania opcje i oferty. Wybierz typ o
 Wersja próbna poziomie transakcji lub udział nie jest możliwe, należy użyć kontaktu mnie. Zaletą tej metody jest możliwość wydawców z rozwiązanie na rynek natychmiast rozpocząć potencjalni klienci, którzy mogą nurtured do podstawowych transakcji można uruchomić Twojej zamachowym biznesowe odbierania. Jednak wadą jest, że zaangażowanie klientów jest ograniczona w porównaniu z innych typów ofert.
 
 >[!IMPORTANT]
-<<<<<<< Zaangażowanie klientów HEAD jest najlepiej z wersji próbnej i oferuje Transact. Wartość kontaktu mnie jest potencjalnego klienta, który zostanie wyświetlony, więc wybranie tego typu listy, sprawdź, czy skonfigurowano folderu docelowego potencjalnych klientów i wszystko jest gotowe do zmaksymalizowania potencjalnego klienta. === Nie zalecamy kontakt mnie typ oferty. Należy go używać tylko w sytuacji, w których nie istnieje sposób ustanowienie środowisko wersji próbnej. Zaangażowanie klientów najlepiej z ofertami wersji próbnej i transakcji. Jeśli masz środowisko wersji próbnej dowolnego typu procesu dołączania przeprowadzi Cię do jednej z tych opcji, w zależności od danego scenariusza.
->>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
+>Zaangażowanie klientów jest najlepiej z wersji próbnej i oferuje Transact. Wartość kontaktu mnie jest potencjalnego klienta, który zostanie wyświetlony, więc wybranie tego typu listy, sprawdź, czy skonfigurowano folderu docelowego potencjalnych klientów i wszystko jest gotowe do zmaksymalizowania potencjalnego klienta. 
 
 Gdy oferta obejmuje głównie profesjonalne usługi (na przykład badań, implementacji, zakładów), użyj usługi konsultingowe oferują typu. Zakres oferty, czas trwania i cen musi być stałą, musi być jednego odbiorcy i musi być przeprowadzane w witrynie.
 
@@ -245,7 +244,7 @@ Każdy klient mający umowę Enterprise Agreement może dodać do niej opcję ko
 |---------|---------|---------|
 |**Zasady udziału**    | Przegląd portalu Azure Marketplace [zasady udziału](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Listy wersji próbnej i transakcji        |
 |**Integracja z programem Microsoft**    | Azure ofert witryny Marketplace, należy użyć lub rozszerzyć typów usług Microsoft Azure, takich jak obliczeniowych, sieci lub magazynu. Powinny one wyrównane do istniejącej kategorii portalu Azure Marketplace, takie jak bazy danych, zabezpieczeń i sieci. Zobacz [pełną listę](https://azuremarketplace.microsoft.com/marketplace/apps).        | Listy wersji próbnej i transakcji        |
-|**Audience**    | Azure ofert witryny Marketplace musi być dla specjalistów IT, deweloperów chmury lub innych ról technicznej klienta.       |  Listy wersji próbnej i transakcji 
+|**grupy odbiorców**    | Azure ofert witryny Marketplace musi być dla specjalistów IT, deweloperów chmury lub innych ról technicznej klienta.       |  Listy wersji próbnej i transakcji 
 |**Zarządzanie potencjalnymi klientami**    | Aby otrzymywać potencjalnych klientów z witryny Marketplace, należy włączyć programu CRM (Marketo, Microsoft Dynamics lub Salesforce) akceptować dane potencjalnych klientów.        |   Listy wersji próbnej i transakcji      |
 |**Zasady zachowania poufności informacji i warunki użytkowania**     |   Zasady zachowania poufności musi być dostępny za pośrednictwem publicznego adresu URL. Podczas publikowania wpisany jako tekst warunków użytkowania.      |   Listy wersji próbnej i transakcji      |
 |**Pomoc techniczna**     |  Ofertę musi zawierać adres URL pomocy technicznej publicznie dostępnych gdzie klienci mogą znaleźć Pomoc. W przypadku wersji próbnej należy podać obsługi bez ponoszenia dodatkowych kosztów okresu próbnego.       |  Wersja próbna, transakcji       |
@@ -413,7 +412,7 @@ W tej sekcji możemy opisano kroki, aby:
 
 |Kroku rejestracji w portalu Marketplace  |Time  |Opis  |
 |---------|---------|---------|
-| Rejestrowanie w sieci Microoft partnerów | 15 min | Należy zarejestrować w sieci partnera firmy Microsoft (MPN) ma pierwszy poziom sprawdzanie poprawności konta i dodatkowe korzyści i odbierania obsługę trwa Azure Marketplace wydawcy wydawcy |
+| Rejestrowanie w sieci Microsoft Partner Network | 15 min | Należy zarejestrować w sieci partnera firmy Microsoft (MPN) ma pierwszy poziom sprawdzanie poprawności konta i dodatkowe korzyści i odbierania obsługę trwa Azure Marketplace wydawcy wydawcy |
 |Utwórz identyfikator firmy Microsoft     |   15 minut      |   Partnerzy muszą mieć ID. firmy Microsoft Ten identyfikator Microsoft będzie służyć do dostępu do portalu partnerów chmury.       |
 |Prześlij formularz wyznaczenie marketplace     |  1-3 dni       |  Partnerzy muszą Walidacja wyznaczenie, aby rozpocząć proces zatwierdzania witryny marketplace. Po przesłaniu formularza zespół organizujący dołączanie marketplace aplikacji i wkrótce weryfikacji żądania.       |
 |Zarejestruj w Centrum deweloperów     |    5 – 10 dni     | Rejestracji w usłudze Microsoft Developer Center jest wymagany dla firmy Microsoft, aby sprawdzić, czy partner ten jest prawidłowy firmy z Identyfikatorem prawidłowe podatku dla kraju, w którym jest on zarejestrowany. Centrum deweloperów umożliwi partnera w zarejestrowany Microsoft developer i zapewnić użytkownikom dostęp do programu Azure developer. <br><br>Należy pamiętać, że jeśli nie zostało ukończone formularza wyznaczenie marketplace, użytkownik zostanie zapytany dokonać opłaty rejestracji $99. Aby zrezygnować opłata, wypełnij formularz wyznaczenie marketplace i otrzymasz kod promocyjny za pośrednictwem poczty e-mail.  |
@@ -493,7 +492,6 @@ Jest to lista opcje pomocy technicznej dla portalu Azure Marketplace:
 
 |Obsługa kanału  |Opis  |
 |---------|---------|
-|Zapas czasu: [Join Marketplace Slack](https://join.marketplace.azure.com)    |   Slack środowiska w celu obsługi partnerom problemów technicznych. Istnieje więcej niż 350 partnerów pracujących w tym środowisku.        |
 |Fora MSDN: [Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Forum w witrynie Microsoft Developer Network.         |
 |Przepełnienie stosu: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    Stos przepełnienie środowiska do rozwiązania, a następnie zadać pytania dotyczące wszystko, co jest powiązane z platformy Azure i witryny Marketplace:<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure Virtual Machines](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
 

@@ -16,21 +16,19 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 89a4216a3893892eedd6c216c7e0e5d51cf64749
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zapisu klawisz skrótu dla wdrożenia SAP
 Azure akceleratora zapisu jest funkcje, które jest pierwsze wprowadzanie dla maszyn wirtualnych, M serii wyłącznie. Accelerator zapisu Azure nie jest dostępna z żadnych innych maszyn wirtualnych serii na platformie Azure, z wyjątkiem serii M. Jako nazwa stany, celem funkcji jest zwiększyć czas oczekiwania operacji We/Wy zapisu w usłudze Azure Premium Storage. 
 
->[!NOTE]
-> W tym momencie akceleratora zapisu Azure znajduje się w publicznej wersji zapoznawczej i wymaga białe listy identyfikator subskrypcji platformy Azure
-
 Funkcja Azure akceleratora zapisu jest dostępna dla wdrażania serii M publicznej wersji zapoznawczej w:
 
 - US2 zachodnie
+- Wschodnie US2
 - Europa Zachodnia
 - Azja Południowo-Wschodnia
 
@@ -44,8 +42,15 @@ Azure akceleratora zapisu działa tylko w połączeniu z [dyskach zarządzanych 
 
 Istnieją ograniczenia Azure Premium magazynu wirtualne dyski twarde dla maszyny Wirtualnej, która może być obsługiwana przez akceleratora zapisu Azure. Bieżące ograniczenia są:
 
-- 16 dysków VHD dla M128xx maszyny Wirtualnej
-- 8 dysków VHD dla M64xx maszyny Wirtualnej
+
+| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Liczba dysków zapisu klawiszy skrótów | Zapis akceleratora IOPS dla maszyny Wirtualnej |
+| --- | --- | --- |
+| M128ms | 16 | 8000 |
+| M128s | 16 | 8000 |
+| M64ms | 8 | 4000 |
+| M64s | 8 | 4000 | 
+
+
 
 > [!IMPORTANT]
 > Jeśli chcesz włączyć lub wyłączyć Azure zapisu akceleratora dla istniejącego woluminu, który składa się z wielu dysków Azure Premium Storage i rozłożone przy użyciu menedżerów dysk lub wolumin systemu Windows, do magazynowania systemu Windows, Windows skalowalnego w poziomie pliku server (SOFS) Linux LVM lub MDADM, wszystkie dyski tworzenia woluminu musi być włączone lub wyłączone dla zapisu akceleratora w oddzielne kroki. **Przed Włączanie lub wyłączanie akceleratora zapisu w przypadku takiej konfiguracji, zamykania maszyny Wirtualnej Azure**. 

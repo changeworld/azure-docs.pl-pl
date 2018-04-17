@@ -1,13 +1,13 @@
 ---
-title: "Interfejsy sieciowe, aby dodać lub usunąć z maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak dodać interfejsów sieciowych lub usunąć interfejsów sieciowych z maszyn wirtualnych."
+title: Interfejsy sieciowe, aby dodać lub usunąć z maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać interfejsów sieciowych lub usunąć interfejsów sieciowych z maszyn wirtualnych.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: jdial
-ms.openlocfilehash: bb21690865cd9384fe3d3c82e60f11e0fc64114c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: abccfed6f335ed7febb4fb2f17ad71fa153e3ed6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Dodawanie interfejsów sieciowych lub usuwanie interfejsów sieciowych z maszyn wirtualnych
 
@@ -32,9 +32,9 @@ Aby dodać, zmienić, lub usunąć adresy IP dla interfejsu sieciowego, zobacz [
 Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać następujące zadania:
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
-- Jeśli przy użyciu portalu, otwórz https://portal.azure.com i zaloguj się za pomocą konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom `Get-Module -ListAvailable AzureRM` można odnaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
-- Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom `az --version` można odnaleźć zainstalowanej wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
+- Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Dodawanie istniejących interfejsów sieciowych do nowej maszyny Wirtualnej
 
@@ -46,7 +46,7 @@ Przed utworzeniem maszyny Wirtualnej, należy utworzyć interfejsu sieciowego pr
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[Tworzenie maszyny wirtualnej az](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#az_vm_create)|
+|Interfejs wiersza polecenia|[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#az_vm_create)|
 |PowerShell|[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vm-add-nic"></a>Dodaj do istniejącej maszyny Wirtualnej karty sieciowej
@@ -75,7 +75,7 @@ Przed utworzeniem maszyny Wirtualnej, należy utworzyć interfejsu sieciowego pr
 
 Można wyświetlić interfejsów sieciowych podłączonych do maszyn wirtualnych, aby dowiedzieć się więcej na temat konfiguracji każdego interfejsu sieciowego i adresy IP przypisane do każdego interfejsu sieciowego. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com) przy użyciu konta, którego przypisano rolę właściciela, współautora lub współautora sieci dla Twojej subskrypcji. Aby dowiedzieć się więcej na temat sposobu przypisywania ról do kont, zobacz [wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com) przy użyciu konta, którego przypisano rolę właściciela, współautora lub współautora sieci dla Twojej subskrypcji. Aby dowiedzieć się więcej na temat sposobu przypisywania ról do kont, zobacz [wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. W polu zawierająca tekst, który **wyszukiwania zasobów** w górnej części portalu Azure, wpisz **maszyn wirtualnych**. Gdy **maszyn wirtualnych** pojawia się w wynikach wyszukiwania, wybierz go.
 3. Wybierz nazwę maszyny Wirtualnej, dla którego chcesz wyświetlić interfejsów sieciowych.
 4. W **ustawienia** sekcji dla maszyny Wirtualnej została wybrana, wybierz **sieci**. Informacje na temat ustawienia interfejsu sieciowego oraz sposobu zmiany ich, zobacz [Zarządzanie interfejsów sieciowych](virtual-network-network-interface.md). Aby dowiedzieć się więcej na temat Dodawanie, zmienianie lub usuwanie adresów IP przypisanych do interfejsu sieciowego, zobacz [zarządzania adresami IP interfejsu sieci](virtual-network-network-interface-addresses.md).
@@ -84,7 +84,7 @@ Można wyświetlić interfejsów sieciowych podłączonych do maszyn wirtualnych
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[Pokaż wirtualna az](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#az_vm_show)|
+|Interfejs wiersza polecenia|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#az_vm_show)|
 |PowerShell|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-a-network-interface-from-a-vm"></a>Usunąć interfejsu sieciowego z maszyny Wirtualnej

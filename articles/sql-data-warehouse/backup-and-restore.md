@@ -1,23 +1,23 @@
 ---
 title: Azure SQL Data Warehouse w kopii zapasowej i przywracania - migawki geograficznie nadmiarowego | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Umożliwia przywrócenie magazynu danych do punktu przywracania w regionie podstawowym kopii zapasowych magazynu danych, lub użyj geograficznie nadmiarowego kopii zapasowych do przywrócenia w innym regionie geograficznym.
+description: Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj magazynu kopii zapasowych danych do przywrócenia magazynu danych do punktu przywracania w regionie podstawowym. Użyj geograficznie nadmiarowego kopii zapasowych do przywrócenia w innym regionie geograficznym.
 services: sql-data-warehouse
 author: ronortloff
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f540bca0d2eb2c9009a386bd14a5beda2912014
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 21708f51d09d640721af196d2ffa91aede97ffb3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie w magazynie danych SQL Azure
-Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Umożliwia przywrócenie magazynu danych do punktu przywracania w regionie podstawowym kopii zapasowych magazynu danych, lub użyj geograficznie nadmiarowego kopii zapasowych do przywrócenia w innym regionie geograficznym. 
+Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj magazynu kopii zapasowych danych do przywrócenia magazynu danych do punktu przywracania w regionie podstawowym. Użyj geograficznie nadmiarowego kopii zapasowych do przywrócenia w innym regionie geograficznym. 
 
 ## <a name="what-is-backup-and-restore"></a>Co to jest kopia zapasowa i przywracanie?
 A *kopii zapasowej magazynu danych* jest kopii bazy danych używanej do przywrócenia hurtowni danych.  Ponieważ Magazyn danych SQL to Rozproszony system, kopia zapasowa magazynu danych składa się z wielu plików, które znajdują się w magazynie Azure. Kopia zapasowa magazynu danych zawiera migawki lokalnej bazy danych i geograficzna kopie zapasowe baz danych i pliki, które są skojarzone z magazynu danych. 

@@ -17,15 +17,15 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: dfda95d2340d7dd57ac7b4d7ed7b0665c8e9294e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 11dc0e5f6ee398b2a745ed60cbc166e2a1697c3e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrowanie ruchu sieciowego za pomocą grupy zabezpieczeń sieci przy użyciu wiersza polecenia platformy Azure
 
-Można filtrować ruchu sieciowego przychodzącego i wychodzącego z podsieci sieci wirtualnej z sieciową grupą zabezpieczeń. Grupy zabezpieczeń sieci zawiera zasady zabezpieczeń, które filtrowania ruchu sieciowego według adresu IP, portu i protokołu. Reguły zabezpieczeń są stosowane do zasobów wdrożone w podsieci. W tym artykule dowiesz się, jak:
+Można filtrować ruchu sieciowego przychodzącego i wychodzącego z podsieci sieci wirtualnej z sieciową grupą zabezpieczeń. Grupy zabezpieczeń sieci zawiera zasady zabezpieczeń, które filtrowania ruchu sieciowego według adresu IP, portu i protokołu. Reguły zabezpieczeń są stosowane do zasobów wdrożone w podsieci. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 * Tworzenie zasad grupy i zabezpieczeń zabezpieczenia sieci
 * Tworzenie sieci wirtualnej i skojarzenia sieciowej grupy zabezpieczeń do podsieci
@@ -239,8 +239,8 @@ Gdy nie są już potrzebne, użyj [usunięcie grupy az](/cli/azure/group#az_grou
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule utworzyć grupę zabezpieczeń sieci i jego skojarzone z podsiecią sieci wirtualnej. Aby dowiedzieć się więcej na temat grup zabezpieczeń sieci, zobacz [omówienie grupy zabezpieczeń sieci](security-overview.md) i [Zarządzanie sieciowej grupy zabezpieczeń](virtual-network-manage-nsg-arm-ps.md).
+W tym artykule utworzyć grupę zabezpieczeń sieci i jego skojarzone z podsiecią sieci wirtualnej. Aby dowiedzieć się więcej na temat grup zabezpieczeń sieci, zobacz [omówienie grupy zabezpieczeń sieci](security-overview.md) i [Zarządzanie sieciowej grupy zabezpieczeń](manage-network-security-group.md).
 
 Azure tras ruchu między podsieciami domyślnie. Zamiast tego można kierować ruchem między podsieciami przez maszynę Wirtualną, uznawany za zaporą, np. Aby dowiedzieć się więcej, zobacz temat [utworzyć tabelę tras](tutorial-create-route-table-cli.md).

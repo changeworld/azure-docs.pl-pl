@@ -1,11 +1,11 @@
 ---
-title: "Śledzenie wiadomości B2B w Operations Management Suite — usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Śledzenie komunikacji B2B dla aplikacji logiki i konta integracji w Operations Management Suite (OMS) z usługi Analiza dzienników Azure"
+title: Śledzenie wiadomości B2B z Azure Log Analytics — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Śledzenie komunikacji B2B dla aplikacji logiki i konta integracji z usługi Analiza dzienników Azure
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 48523e1f1bc8d5b810cc7c9d1a7308f1aaadf8bb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Śledzenie komunikacji B2B pakiet zarządzania Operations (OMS) firmy Microsoft
+# <a name="track-b2b-communication-with-azure-log-analytics"></a>Śledzenie komunikacji B2B z usługi Analiza dzienników Azure
 
-Po skonfigurowaniu B2B komunikacji między dwiema uruchomionych procesów biznesowych lub aplikacji za pośrednictwem konta integracji tych jednostek mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy komunikaty te są przetwarzane prawidłowo, można śledzić AS2, X12, a EDIFACT wiadomości z [Azure Log Analytics](../log-analytics/log-analytics-overview.md) w [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Na przykład można użyć tych możliwości śledzenia opartych na sieci web do śledzenia komunikatów:
+Po skonfigurowaniu B2B komunikacji między dwiema uruchomionych procesów biznesowych lub aplikacji za pośrednictwem konta integracji tych jednostek mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy komunikaty te są przetwarzane prawidłowo, można śledzić AS2, X12, a EDIFACT wiadomości z [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Na przykład można użyć tych możliwości śledzenia opartych na sieci web do śledzenia komunikatów:
 
 * Liczba komunikatów i stanu
 * Stan potwierdzenia
@@ -36,30 +36,30 @@ Po skonfigurowaniu B2B komunikacji między dwiema uruchomionych procesów biznes
 
 * Konta integracji, które skonfigurowano przy użyciu rejestrowania i monitorowania. Dowiedz się [sposobu tworzenia konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i [jak skonfigurować monitorowanie i rejestrowanie dla tego konta](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Jeśli nie jest jeszcze, [publikowania danych diagnostycznych do analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) w OMS.
+* Jeśli nie jest jeszcze, [publikowania danych diagnostycznych do analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Po zostały spełnione wymagania poprzedniej, powinien mieć obszar roboczy [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Należy używać tego samego obszaru roboczego OMS śledzenia komunikacji B2B w OMS. 
+> Po zostały spełnione wymagania poprzedniej, powinien mieć obszar roboczy w analizy dzienników. Do komunikacji B2B w analizy dzienników śledzenia, należy używać tego samego obszaru roboczego. 
 >  
-> Dowiedz się, jeśli nie masz obszar roboczy OMS [jak Utwórz obszar roboczy OMS](../log-analytics/log-analytics-get-started.md).
+> Dowiedz się, jeśli nie masz obszaru roboczego analizy dzienników [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-the-operations-management-suite-oms"></a>Dodaj rozwiązanie B2B aplikacji logiki do Operations Management Suite (OMS)
+## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Dodaj rozwiązanie B2B aplikacji logiki do analizy dzienników
 
-Aby OMS śledzenie wiadomości B2B aplikacji logiki, należy dodać **B2B aplikacje logiki** rozwiązania do portalu OMS. Dowiedz się więcej o [Dodawanie rozwiązania do pakietu OMS](../log-analytics/log-analytics-get-started.md).
+Aby analizy dzienników, śledzenie wiadomości B2B aplikacji logiki, należy dodać **B2B aplikacje logiki** rozwiązania do portalu OMS. Dowiedz się więcej o [Dodawanie rozwiązań do analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. W [portalu Azure](https://portal.azure.com), wybierz **wszystkie usługi**. Wyszukaj "analizy dzienników", a następnie wybierz pozycję **analizy dzienników** w sposób pokazany poniżej:
 
    ![Znajdź analizy dzienników](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
-2. W obszarze **analizy dzienników**, Znajdź i wybierz obszar roboczy OMS. 
+2. W obszarze **analizy dzienników**, Znajdź i zaznacz pozycję obszaru roboczego analizy dzienników. 
 
-   ![Wybierz obszar roboczy OMS](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Wybierz obszar roboczy analizy dzienników](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
 3. W obszarze **zarządzania**, wybierz **portalu OMS**.
 
    ![Wybierz portalu OMS](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Po otwarciu strony głównej OMS wybierz **galerii rozwiązań**.    
+4. Po otwarciu strony głównej wybierz **galerii rozwiązań**.    
 
    ![Wybierz galerii rozwiązań](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
 
@@ -71,21 +71,21 @@ Aby OMS śledzenie wiadomości B2B aplikacji logiki, należy dodać **B2B aplika
 
    ![Wybierz opcję Dodaj](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-   Na stronie głównej OMS Kafelek **wiadomości B2B aplikacje logiki** pojawi się teraz. 
+   Na stronie głównej Kafelek **wiadomości B2B aplikacje logiki** pojawi się teraz. 
    Ten Kafelek aktualizuje liczba komunikatów podczas przetwarzania wiadomości B2B.
 
-   ![Strona główna OMS, kafelka wiadomości B2B aplikacje logiki](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
+   ![Strona główna, kafelka wiadomości B2B aplikacje logiki](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-the-operations-management-suite"></a>Śledzenie stanu i szczegółów wiadomości w Operations Management Suite
+## <a name="track-message-status-and-details-in-log-analytics"></a>Śledzenie stanu komunikat i szczegóły analizy dzienników
 
-1. Po przetworzeniu wiadomości B2B można wyświetlić stan i szczegółowe informacje dla tych wiadomości. Na stronie głównej OMS wybierz **wiadomości B2B aplikacje logiki** kafelka.
+1. Po przetworzeniu wiadomości B2B można wyświetlić stan i szczegółowe informacje dla tych wiadomości. Na stronie głównej wybierz **wiadomości B2B aplikacje logiki** kafelka.
 
    ![Liczba komunikatów zaktualizowane](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
 
    > [!NOTE]
-   > Domyślnie **wiadomości B2B aplikacje logiki** kafelka zawiera dane oparte na jeden dzień. Aby zmienić zakres danych na inny interwał, wybierz kontrola zakresu w górnej części strony OMS:
+   > Domyślnie **wiadomości B2B aplikacje logiki** kafelka zawiera dane oparte na jeden dzień. Aby zmienić zakres danych na inny interwał, wybierz kontrola zakresu w górnej części strony:
    > 
    > ![Zmień zakres danych](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
    >
@@ -201,7 +201,7 @@ Poniżej przedstawiono formatów nazwy każdego pobierane X12 folderów i plikó
 
 | Folder lub plik | Format nazwy |
 | :------------- | :---------- |
-| Folder wiadomości | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
+| Folder wiadomości | [nadawcy] \_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_[numer globalnych kontroli]\_[-zestaw kontroli — numer transakcji]\_[sygnatury czasowej] |
 | Dane wejściowe, dane wyjściowe i jeśli skonfigurować potwierdzenia plików | **Wprowadzony ładunek**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_input_payload.txt </p>**Ładunek danych wyjściowych**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_dane wyjściowe\_payload.txt </p></p>**Dane wejściowe**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_inputs.txt </p></p>**Dane wyjściowe**: [nadawcy]\_[odbiornika]\_X12\_[ruch numer wymiany formantu]\_outputs.txt |
 |          |             |
 
@@ -240,7 +240,7 @@ Poniżej przedstawiono formatów nazwy dla każdego folderu wiadomości EDIFACT 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Kwerenda dotycząca wiadomości B2B usługi Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Kwerenda dotycząca wiadomości B2B analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [Schematy śledzenia AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Schematy śledzenia X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Śledzenie niestandardowych schematów](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

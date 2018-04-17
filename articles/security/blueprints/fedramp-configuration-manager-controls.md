@@ -1,6 +1,6 @@
 ---
-title: "Plan zarządzania konfiguracją - automatyzacji aplikacji sieci Web FedRAMP - Azure zabezpieczeń i zgodności"
-description: "Automatyzacji aplikacji sieci Web FedRAMP — Zarządzanie konfiguracją"
+title: Plan zarządzania konfiguracją - automatyzacji aplikacji sieci Web FedRAMP - Azure zabezpieczeń i zgodności
+description: Automatyzacji aplikacji sieci Web FedRAMP — Zarządzanie konfiguracją
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6566783769d37ee829df3894fdb5673b4edafd2c
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 356eccac6af2780c02d1cd935d41891b5f89f1a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-management-cm"></a>Zarządzanie konfiguracją (CM)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 1** organizacji rozwija, dokumentów i upowszechnia do [przypisania: techniczną zdefiniowany przez organizację lub ról] konfiguracji zasad zarządzania, którego przeznaczenie, zakres, ról, obowiązki, zobowiązań zarządzania Współpraca między jednostki organizacyjnej i zgodności; i procedur w celu ułatwienia stosowania zasad zarządzania konfiguracji oraz możliwościami zarządzania skojarzony konfiguracji; przegląda i aktualizuje bieżące zasady zarządzania konfiguracji [przypisania: zdefiniowane przez organizację częstotliwość]; i procedury zarządzania konfiguracji [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 2** organizacji rozwija, dokumentów i przechowuje pod kontrolą konfiguracja bieżącej podstawowej konfiguracji systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A CM-2 (1)** organizacji przegląda i aktualizuje linii bazowej konfiguracji systemu informacji [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **B CM-2 (1)** organizacji przegląda i aktualizuje linii bazowej konfiguracji systemu informacji wymaganych z powodu [przypisania zdefiniowany przez organizację okoliczności].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **.C CM-2 (1)** organizacji przegląda i aktualizuje linii bazowej konfiguracji systemu informacji w ramach instalacji składnika systemu informacji i uaktualnień.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (2)** automatyczne mechanizmy do obsługi aktualne, kompletne, dokładne i łatwo dostępne podstawowej konfiguracji systemu informacji jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (3)** Organizacja zachowuje [przypisania: zdefiniowane przez organizację poprzednie wersje linii bazowej konfiguracji systemu informacji] do obsługi wycofywania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A CM-2 (7)** problemów organizacji [przypisania: systemów informacje zdefiniowane przez organizację, składniki systemu lub urządzenia] z [przypisania: konfiguracje zdefiniowany przez organizację] osobom podróży do lokalizacji który organizacji uzna za znaczące zagrożenie.
 
-**Obowiązki:**`Not Applicable`
+**Obowiązki:** `Not Applicable`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **B CM-2 (7)** organizacja stosuje [przypisania: zabezpieczeń zdefiniowany przez organizację] do urządzenia, gdy zwróci osób.
 
-**Obowiązki:**`Not Applicable`
+**Obowiązki:** `Not Applicable`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.a** organizacji określa typy zmiany w systemie informacje, które są kontrolowane przez konfigurację.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.b** organizacji przegląda proponowanych zmian konfiguracji pod kontrolą systemu informacji i zatwierdza lub nie uwzględni takie zmiany, z uwzględnieniem jawne zabezpieczeń analizy wpływu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.c** Konfiguracja dokumentów organizacji zmiany decyzji skojarzoną z systemem informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.d** organizacji implementuje zatwierdzone zmiany konfiguracji pod kontrolą systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.e** Organizacja zachowuje rekordów kontrolą konfiguracji zmiany w systemie informacji dla [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.f** organizacji inspekcji i monitoruje działania związane z kontrolą konfiguracji zmiany w systemie informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.g** organizacji koordynuje i zapewnia nadzoru działań kontroli zmian konfiguracji za pomocą [przypisania: element kontroli zmian konfiguracji zdefiniowane w organizacji (np. Komitetu, tablicy)] który convenes [wybór () jeden lub więcej): [przypisania: zdefiniowane przez organizację częstotliwość]; [Przypisania: warunki zmiany konfiguracji zdefiniowany przez organizację]].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A CM – 3 (1)** automatyczne mechanizmy dokumentu proponowanych zmian do systemu informacji jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **B CM – 3 (1)** organizacja stosuje automatycznych mechanizmy powiadamiania o [przypisania: zdefiniowanych zorganizowane zatwierdzania] proponowanych zmian do informacji systemu i żądania zmiany zatwierdzenia.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **.C CM – 3 (1)** organizacja stosuje automatycznych mechanizmy, aby wyróżnić proponowanych zmian w systemie informacje, które nie zostały zatwierdzone lub odrzucone przez [przypisania: okres zdefiniowany organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **.D CM – 3 (1)** uniemożliwiają zmiany w systemie informacje do momentu otrzymania są wyznaczone zatwierdzenia automatyczne mechanizmy jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1).e** Automatyczne mechanizmy dokumentu wszystkie zmiany do systemu informacji jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **.F CM – 3 (1)** organizacja stosuje automatycznych mechanizmy powiadamiania o [przypisania: zdefiniowany przez organizację personelu] ukończenia zatwierdzone zmiany do systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM – 3 (2)** organizacji testów, weryfikuje i dokumenty zmiany w systemie informacji przed wdrożeniem zmian na system operacyjny.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM – 3 (4)** organizacja wymaga reprezentatywny zabezpieczeń informacji ma być członkiem [przypisania: element kontroli zmian konfiguracji zdefiniowanej w organizacji].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM – 3 (6)** organizacji gwarantuje, że mechanizmów kryptograficznych używany w celu zapewnienia [przypisania: zabezpieczeń zdefiniowany przez organizację] są w obszarze Zarządzanie konfiguracją.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 4** organizacji analizuje zmiany w systemie informacji, aby określić potencjalny wpływ zabezpieczeń przed implementacji zmian.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-4 (1)** organizacji analizuje zmiany w systemie informacji w środowisku testowym oddzielne przed implementacją w środowisku operacyjnym, wyszukiwanie wpływ zabezpieczeń z powodu wady, słabe strony algorytmu, niezgodności lub zamierzone malice.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 5** organizacji definiuje, dokumentów i zatwierdza oraz wymusza ograniczenia dostępu fizycznych i logicznych skojarzone z zmiany w systemie informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (1)** systemu informacji wymusza ograniczenia dostępu i obsługuje inspekcję akcjach wymuszania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (2)** organizacji monitoruje zmiany w systemie informacji [przypisania: częstotliwość zdefiniowany przez organizację] i [przypisania: zdefiniowany przez organizację okoliczności] Aby ustalić, czy wystąpiły nieautoryzowane zmiany.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (3)** systemu informacji zapobiega instalacji [przypisania: składniki oprogramowania układowego i oprogramowania zdefiniowane przez organizację] bez weryfikacji czy składnik jest podpisany cyfrowo za pomocą certyfikatu, który jest rozpoznawany i zatwierdzone przez organizację.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A CM-5 (5)** organizacji ogranicza uprawnienia, aby zmienić informacji na składniki systemowe i informacje związane z systemu, w środowisku produkcyjnym lub w środowisku operacyjnym.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **B CM-5 (5)** organizacji monitoruje i reevaluates uprawnień [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 6.a** organizacji ustanawia i dokumenty ustawienia konfiguracji dla informacji produktów technologii stosowanych w ramach przy użyciu systemu informacji [przypisania: listy kontrolne konfiguracji zabezpieczeń zdefiniowany przez organizację] które odzwierciedlać Tryb najbardziej restrykcyjne zgodne z wymagań operacyjnych.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 6.b** Organizacja wdraża ustawienia konfiguracji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 6.c** organizacji identyfikuje, dokumentów i zatwierdza wszelkie odchylenia od ustawień konfiguracji ustalonych [przypisania: składniki systemowe zdefiniowane przez organizację informacje] na podstawie [przypisania: zdefiniowane przez organizację wymagań operacyjnych].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 6.d** monitorów organizacji i kontroli zmiany w ustawieniach konfiguracji zgodnie z zasadami organizacji i procedur.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM – 6 (1)** organizacja stosuje automatycznych mechanizmy centralnie zarządzać, zastosuj i sprawdź ustawienia konfiguracji dla [przypisania: składniki systemowe zdefiniowane przez organizację informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -563,11 +563,11 @@ ms.lasthandoff: 02/11/2018
 
 **CM – 6 (2)** organizacja stosuje [przypisania: zabezpieczeń zdefiniowany przez organizację] odpowiedzieć nieautoryzowane zmiany [przypisania: ustawienia konfiguracji zdefiniowany przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
-| **Klienta** | Ten plan wdraża Konfiguracja DSC automatyzacji Azure. Część z platformy Azure Operations Management Suite (OMS), usługi Konfiguracja DSC automatyzacji można skonfigurować do generowania alertu lub błędy konfiguracji w przypadku wykrycia naprawienia. |
+| **Klienta** | Ten plan wdraża Konfiguracja DSC automatyzacji Azure. Automation DSC można skonfigurować do generowania alertu lub błędy konfiguracji w przypadku wykrycia naprawienia. |
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 7.a** organizacji konfiguruje system informacji, aby zapewnić tylko podstawowe możliwości.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **Od 7.b CM** organizacji zabrania lub ogranicza korzystanie z funkcji następujące porty, protokołów i usług: [przypisania: zabronione lub ograniczone funkcje zdefiniowane przez organizację, portów, protokołów i/lub usług].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A CM-7 (1)** organizacji przegląda informacje o systemie [przypisania: zdefiniowane przez organizację częstotliwość] do identyfikowania funkcji niepotrzebnych i/lub niezabezpieczone, portów, protokołów i usług.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **B CM-7 (1)** wyłącza organizacji [przypisania: funkcje zdefiniowane przez organizację, portów, protokołów i usług w ramach systemu informacji uznane za niepotrzebne i/lub niezabezpieczone].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (2)** systemu informacji uniemożliwia wykonania programu zgodnie z [wybór (jeden lub więcej): [przypisania: zdefiniowany w organizacji zasad dotyczących oprogramowania program użycia i ograniczenia]; reguły autoryzacji warunki i warunki użytkowania programu software].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A CM-7 (5)** identyfikuje organizacji [przypisania: zdefiniowane przez organizację programów autoryzacji do wykonania w systemie informacje].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **B CM-7 (5)** Odmów all, zezwolenia przez wyjątek zasady umożliwiające wykonywanie autoryzowanych programów w systemie informacji jest stosowana w organizacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **.C CM-7 (5)** organizacji przegląda i aktualizuje listę autoryzowanych programów [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 8.a** rozwija i dokumenty spis informacji na składniki systemowe dokładnie odzwierciedla bieżący system informacji; obejmuje wszystkie składniki w obrębie granicy autoryzacji systemu informacji; jest w organizacji poziom szczegółowości uważane za niezbędne do monitorowania i raportowania; i zawiera [przypisania: informacje zdefiniowane przez organizację uznany za należy uzyskać informacje o systemie składnika accountability].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 8.b** organizacji przegląda i aktualizuje spis składnik systemu informacji [przypisania: częstotliwość zdefiniowany przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (1)** organizacji aktualizacji spisu informacji na składniki systemu w ramach instalacji składnika, usuwania i aktualizacji systemu informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (2)** organizacja stosuje automatycznych mechanizmów Aby zachować aktualne, kompletne, dokładne i łatwo dostępne spis informacji na składniki systemu.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A CM-8 (3)** organizacja stosuje mechanizmów automatyczne [przypisania: zdefiniowany przez organizację częstotliwość] do wykrycia obecności nieautoryzowanego sprzętu, oprogramowania i oprogramowania układowego składników w systemie informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **B CM-8 (3)** organizacji wykonuje następujące akcje po wykryciu nieautoryzowanego składniki: [wybór (jeden lub więcej): wyłącza dostępu do sieci przez takie składniki; izoluje składniki; powiadamia [przypisania: zdefiniowane przez organizację "personel lub ról]].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (4)** organizacji zawiera informacje składnik spisu informacji o systemie, sposób identyfikowania przez [wybór (jeden lub więcej): Nazwa pozycji; roli], osoby odpowiedzialne/odpowiedzialny za administrowanie tych składników .
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (5)** organizacji sprawdza, czy wszystkie składniki w obrębie granicy autoryzacji systemu informacje nie są duplikowane w zasobach składnik systemu innych informacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -801,7 +801,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 9.a** organizacji rozwija, dokumentów i implementuje planu zarządzania konfiguracji dla systemu informacje dotyczące ról, obowiązki i konfiguracji zarządzania procesy i procedury.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -809,13 +809,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-cm-9b"></a>NIST 800-53 Control CM-9.b
+ ## <a name="nist-800-53-control-cm-9b"></a>Formant NIST 800 53 CM-9.b
 
 #### <a name="configuration-management-plan"></a>Plan zarządzania konfiguracji
 
 **CM 9.b** organizacji rozwija, dokumentów i implementuje planu zarządzania konfiguracji ustanawia procesem cyklu identyfikujące elementów konfiguracji w całym cyklu życia rozwoju systemu i do systemu informacji Zarządzanie konfiguracją elementów konfiguracji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -829,7 +829,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 9.c** organizacji rozwija, dokumentów i implementuje planu zarządzania konfiguracji systemu informacji definiujący konfigurację elementy systemu informacji i umieszcza elementy konfiguracji, w obszarze Konfiguracja Zarządzanie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -837,13 +837,13 @@ ms.lasthandoff: 02/11/2018
 | **Dostawca (Microsoft Azure)** | Nie dotyczy |
 
 
- ## <a name="nist-800-53-control-cm-9d"></a>NIST 800-53 Control CM-9.d
+ ## <a name="nist-800-53-control-cm-9d"></a>Formant NIST 800 53 CM-9.d
 
 #### <a name="configuration-management-plan"></a>Plan zarządzania konfiguracji
 
 **CM 9.d** organizacji rozwija, dokumentów i implementuje planu zarządzania konfiguracji systemu informacji, który chroni plan zarządzania konfiguracji przed nieuprawnionym ujawnieniem i modyfikacji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -857,7 +857,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 10.a** organizacja korzysta z oprogramowania i skojarzone dokumentacji zgodnie z warunkami umowy kontraktu i prawa autorskie.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -871,7 +871,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 10.b** organizacji śledzi korzystanie z oprogramowania i skojarzone dokumentacji chronione przez liczbę licencji do kontrolowania, kopiowanie i dystrybucji.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -885,7 +885,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 10.c** organizacja kontroluje i dokumenty korzystanie z technologii, aby upewnić się, że ta funkcja nie jest używany przez nieautoryzowanych dystrybucji, wyświetlania, wydajność lub reprodukowania dziełami udostępnianie pliku peer-to-peer.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -899,7 +899,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-10 (1)** organizacji ustanawia następujące ograniczenia dotyczące użycia oprogramowania typu open source: [przypisania: ograniczenia zdefiniowane przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -913,7 +913,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 11.a** ustanawia organizacji [przypisania: zasady zdefiniowane przez organizację] dotyczących instalacji oprogramowania przez użytkowników.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -927,7 +927,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 11.b** organizacja wymusza zasady instalacji oprogramowania przy użyciu [przypisania: metody zdefiniowane przez organizację].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -941,7 +941,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 11.c** organizacji monitoruje zgodność z zasadami w [przypisania: zdefiniowane przez organizację częstotliwość].
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|
@@ -955,7 +955,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-11 (1)** alerty systemu informacji [przypisania: techniczną zdefiniowany przez organizację lub ról] po wykryciu nieautoryzowanych instalacji oprogramowania.
 
-**Obowiązki:**`Customer Only`
+**Obowiązki:** `Customer Only`
 
 |||
 |---|---|

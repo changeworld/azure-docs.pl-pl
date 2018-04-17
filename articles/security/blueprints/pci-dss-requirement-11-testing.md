@@ -1,5 +1,5 @@
 ---
-title: "Azure plan przetwarzania płatności — wymagania dotyczące testowania"
+title: Azure plan przetwarzania płatności — wymagania dotyczące testowania
 description: Wymaganie PCI DSS 11
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 57429741afd2ffd16c09a0f1485cb1cfbdda5571
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: db9f1022ecb3b727f08bb6f232a8df55476e0755
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące środowiska standardem PCI DSS 
 ## <a name="pci-dss-requirement-11"></a>Wymaganie PCI DSS 11
@@ -43,8 +43,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Azure nie zezwala na lub połączeń bezprzewodowych w środowisku sieci platformy Azure. Zespoły zabezpieczenia wewnętrzne regularnie skanuje w poszukiwaniu nieautoryzowanych sygnały sieci bezprzewodowej, co kwartał i sygnały nieautoryzowanego się zbadana i usunięte. Klienci nie są dozwolone wdrażania technologii bezprzewodowej w środowisku platformy Azure. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure nie zezwala na lub połączeń bezprzewodowych w środowisku sieci platformy Azure. Zespoły zabezpieczenia wewnętrzne regularnie skanuje w poszukiwaniu nieautoryzowanych sygnały sieci bezprzewodowej, co kwartał i sygnały nieautoryzowanego się zbadana i usunięte. Klienci nie są dozwolone wdrażania technologii bezprzewodowej w środowisku platformy Azure. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
 
 
 
@@ -56,8 +56,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [11.1 wymaganie](#pci-dss-requirement-11-1). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [11.1 wymaganie](#pci-dss-requirement-11-1). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
 
 
 
@@ -70,8 +70,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [11.1 wymaganie](#pci-dss-requirement-11-1). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [11.1 wymaganie](#pci-dss-requirement-11-1). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
 
 
 
@@ -88,8 +88,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Azure wykonuje skanowanie co kwartał luki w zabezpieczeniach wewnętrznych i zewnętrznych. Skanowania są wykonywane przez wykwalifikowanych pracowników. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure wykonuje skanowanie co kwartał luki w zabezpieczeniach wewnętrznych i zewnętrznych. Skanowania są wykonywane przez wykwalifikowanych pracowników. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
 
 
 
@@ -101,8 +101,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykonuje skanowanie w poszukiwaniu luk w infrastrukturze podstawowej-scope. Microsoft Azure wykonuje skanowanie na systemy operacyjne serwera baz danych i urządzeń sieciowych przy użyciu narzędzi do skanowania właściwe usterki luki w zabezpieczeniach. Aplikacje sieci web platformy Azure są skanowane z branży odpowiednie skanowania rozwiązania. Luki w zabezpieczeniach przeskanowane co kwartał.<br /><br />Skanuje są wykonywane zgodnie z potrzebami względem wszystkich systemów, do momentu rozwiązania wszystkich "wysokiego ryzyka" luk w zabezpieczeniach (określone w wymaganie 6.1). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykonuje skanowanie w poszukiwaniu luk w infrastrukturze podstawowej-scope. Microsoft Azure wykonuje skanowanie na systemy operacyjne serwera baz danych i urządzeń sieciowych przy użyciu narzędzi do skanowania właściwe usterki luki w zabezpieczeniach. Aplikacje sieci web platformy Azure są skanowane z branży odpowiednie skanowania rozwiązania. Luki w zabezpieczeniach przeskanowane co kwartał.<br /><br />Skanuje są wykonywane zgodnie z potrzebami względem wszystkich systemów, do momentu rozwiązania wszystkich "wysokiego ryzyka" luk w zabezpieczeniach (określone w wymaganie 6.1). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
 
 
 
@@ -118,8 +118,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykonuje skanowanie zewnętrznych luk w infrastrukturze podstawowej-scope, który jest dostępny zewnętrznie. Skanowania są wykonywane przez zatwierdzone skanowania dostawcy (ASV).<br /><br />Microsoft Azure subskrybuje MSRC/OSSC comiesięcznych powiadomień poprawki i skanowanie w poszukiwaniu luk w zabezpieczeniach przynajmniej raz na kwartał. Luki w zabezpieczeniach zidentyfikowanych są oceniane i skorygowanym na osi ustalonych na podstawie poziomu ryzyka.<br /><br />Aby zidentyfikować luki w zabezpieczeniach odbywa się każdego kwartału docelowe kompleksowe bezpieczeństwo skanowane priorytetową składniki środowiska Microsoft Azure. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Podczas wdrażania Webstore firmy Contoso, klienci pokaz są zobowiązani do wykonywania co kwartał luki w zabezpieczeniach zewnętrznych skanowania i skanuje zgodnie z potrzebami względem wszystkich wystąpień PaaS w swoim środowisku danych posiadacza (CRP) przy użyciu zatwierdzonych skanowanie dostawcy (ASV) zatwierdzone przez Radę standardów zabezpieczeń branży karty płatności.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykonuje skanowanie zewnętrznych luk w infrastrukturze podstawowej-scope, który jest dostępny zewnętrznie. Skanowania są wykonywane przez zatwierdzone skanowania dostawcy (ASV).<br /><br />Microsoft Azure subskrybuje MSRC/OSSC comiesięcznych powiadomień poprawki i skanowanie w poszukiwaniu luk w zabezpieczeniach przynajmniej raz na kwartał. Luki w zabezpieczeniach zidentyfikowanych są oceniane i skorygowanym na osi ustalonych na podstawie poziomu ryzyka.<br /><br />Aby zidentyfikować luki w zabezpieczeniach odbywa się każdego kwartału docelowe kompleksowe bezpieczeństwo skanowane priorytetową składniki środowiska Microsoft Azure. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Podczas wdrażania Webstore firmy Contoso, klienci pokaz są zobowiązani do wykonywania co kwartał luki w zabezpieczeniach zewnętrznych skanowania i skanuje zgodnie z potrzebami względem wszystkich wystąpień PaaS w swoim środowisku danych posiadacza (CRP) przy użyciu zatwierdzonych skanowanie dostawcy (ASV) zatwierdzone przez Radę standardów zabezpieczeń branży karty płatności.<br /><br />|
 
 
 
@@ -131,8 +131,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Wyniki są zgłaszane osobom zainteresowanym i korygowania jest śledzony przez zespół zabezpieczeń Azure za pośrednictwem zamknięcia. Wyniki testu Azure mogą być udostępniane klientom pod rygorem umowy NDA. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Klienci są zobowiązani do przeprowadzania skanowania co kwartał luki w zabezpieczeniach wewnętrznych i zewnętrznych i skanuje zgodnie z potrzebami względem wszystkich wystąpień PaaS w ich CRP. Powinny zostać przeskanowane po wprowadzeniu znaczących zmian w środowisku w zakresie.<br /><br />Musi zostać przeskanowane za ASV lub personel w sposób niezależny organizacji.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Wyniki są zgłaszane osobom zainteresowanym i korygowania jest śledzony przez zespół zabezpieczeń Azure za pośrednictwem zamknięcia. Wyniki testu Azure mogą być udostępniane klientom pod rygorem umowy NDA. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Klienci są zobowiązani do przeprowadzania skanowania co kwartał luki w zabezpieczeniach wewnętrznych i zewnętrznych i skanuje zgodnie z potrzebami względem wszystkich wystąpień PaaS w ich CRP. Powinny zostać przeskanowane po wprowadzeniu znaczących zmian w środowisku w zakresie.<br /><br />Musi zostać przeskanowane za ASV lub personel w sposób niezależny organizacji.|
 
 
 
@@ -152,8 +152,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure weryfikuje usług przy użyciu innej penetracji testowania ustalane na podstawie OWASP (Otwórz projekt aplikacji sieci Web zabezpieczeń) 10 przy użyciu certyfikowane SZCZYTU testerów najważniejszych. Wyniki testów są śledzone za pomocą rejestru ryzyka, który jest sprawdzana i przejrzeć regularnie w celu zapewnienia zgodności do rozwiązania w zakresie zabezpieczeń. <br /><br />Firma Microsoft również korzysta z zespołu kart interfejsu sieciowego Red względem infrastruktury zarządzany przez firmę Microsoft, usług i aplikacji. Brak danych odbiorcy końcowego celowo podlega podczas czerwony zespołu kart interfejsu sieciowego i testowania penetracji działającą witrynę. Testy są sprzeczne z infrastruktury Microsoft Azure i platformy, a także aplikacji firmy Microsoft i danych. Nigdy nie są stosowane dzierżaw klienta, aplikacji i danych hostowana na platformie Azure.<br /><br />Microsoft Azure ma zastosować niezależne doświadczeniem aby opracować plan oceny systemu i przeprowadzenia oceny kontrolki. Formanty oceny są wykonywane co roku i wyniki przekazywane są odpowiednie osoby. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure weryfikuje usług przy użyciu innej penetracji testowania ustalane na podstawie OWASP (Otwórz projekt aplikacji sieci Web zabezpieczeń) 10 przy użyciu certyfikowane SZCZYTU testerów najważniejszych. Wyniki testów są śledzone za pomocą rejestru ryzyka, który jest sprawdzana i przejrzeć regularnie w celu zapewnienia zgodności do rozwiązania w zakresie zabezpieczeń. <br /><br />Firma Microsoft również korzysta z zespołu kart interfejsu sieciowego Red względem infrastruktury zarządzany przez firmę Microsoft, usług i aplikacji. Brak danych odbiorcy końcowego celowo podlega podczas czerwony zespołu kart interfejsu sieciowego i testowania penetracji działającą witrynę. Testy są sprzeczne z infrastruktury Microsoft Azure i platformy, a także aplikacji firmy Microsoft i danych. Nigdy nie są stosowane dzierżaw klienta, aplikacji i danych hostowana na platformie Azure.<br /><br />Microsoft Azure ma zastosować niezależne doświadczeniem aby opracować plan oceny systemu i przeprowadzenia oceny kontrolki. Formanty oceny są wykonywane co roku i wyniki przekazywane są odpowiednie osoby. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
 
 
 
@@ -165,8 +165,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [11.3 wymaganie](#pci-dss-requirement-11-3). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [11.3 wymaganie](#pci-dss-requirement-11-3). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
 
 
 
@@ -178,8 +178,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Umowy Microsoft Azure z niezależnych ekspertów do testowania penetracji granic Microsoft Azure. Ćwiczenia zespołu czerwony również regularnie są wykonywane i wyników użyć w celu dokonania poprawek zabezpieczeń. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Umowy Microsoft Azure z niezależnych ekspertów do testowania penetracji granic Microsoft Azure. Ćwiczenia zespołu czerwony również regularnie są wykonywane i wyników użyć w celu dokonania poprawek zabezpieczeń. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso został przetestowany pióra i skanowania luki w zabezpieczeniach w ramach działań zmierzających "jak jest". Wyniki testu pióra można duplikować, za pomocą wspólnych narzędzi, takich jak nmap lub pentest tools.com. Wyniki testu pióra zapewni niejednoznaczny ataku z kończona elementów. Ponadto [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) udostępniają informacje luki w zabezpieczeniach i korygowania.|
 
 
 
@@ -191,8 +191,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Procedury zostały utworzone w celu monitorowania składników platformy Microsoft Azure dla znane luki w zabezpieczeniach. <br /><br /><br /><br />Aby zidentyfikować luki w zabezpieczeniach odbywa się każdego kwartału docelowe kompleksowe bezpieczeństwo skanowane priorytetową składniki w środowisku Azure środowiska produkcyjnego. Wyniki są zgłaszane osobom zainteresowanym i korygowania jest śledzony przez zespół za pośrednictwem zamknięcia. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations), które dostarczają informacji luki w zabezpieczeniach i korygowania, zostały już użyte do zapewnienia, że wszystkie nierozwiązane problemy zostały skorygowana pod kątem pokaz Contoso magazynu sieci Web CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Procedury zostały utworzone w celu monitorowania składników platformy Microsoft Azure dla znane luki w zabezpieczeniach. <br /><br /><br /><br />Aby zidentyfikować luki w zabezpieczeniach odbywa się każdego kwartału docelowe kompleksowe bezpieczeństwo skanowane priorytetową składniki w środowisku Azure środowiska produkcyjnego. Wyniki są zgłaszane osobom zainteresowanym i korygowania jest śledzony przez zespół za pośrednictwem zamknięcia. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations), które dostarczają informacji luki w zabezpieczeniach i korygowania, zostały już użyte do zapewnienia, że wszystkie nierozwiązane problemy zostały skorygowana pod kątem pokaz Contoso magazynu sieci Web CRP.|
 
 
 
@@ -204,8 +204,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Procedury zostały utworzone w celu monitorowania składników platformy Microsoft Azure dla znane luki w zabezpieczeniach. <br /><br /><br /><br />Aby zidentyfikować luki w zabezpieczeniach odbywa się każdego kwartału docelowe kompleksowe bezpieczeństwo skanowane priorytetową składniki w środowisku Azure środowiska produkcyjnego. Wyniki są zgłaszane osobom zainteresowanym i korygowania jest śledzony przez zespół za pośrednictwem zamknięcia. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations), które dostarczają informacji luki w zabezpieczeniach i korygowania, zostały już użyte do zapewnienia, że wszystkie nierozwiązane problemy zostały skorygowana pod kątem pokaz Contoso magazynu sieci Web CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Procedury zostały utworzone w celu monitorowania składników platformy Microsoft Azure dla znane luki w zabezpieczeniach. <br /><br /><br /><br />Aby zidentyfikować luki w zabezpieczeniach odbywa się każdego kwartału docelowe kompleksowe bezpieczeństwo skanowane priorytetową składniki w środowisku Azure środowiska produkcyjnego. Wyniki są zgłaszane osobom zainteresowanym i korygowania jest śledzony przez zespół za pośrednictwem zamknięcia. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations), które dostarczają informacji luki w zabezpieczeniach i korygowania, zostały już użyte do zapewnienia, że wszystkie nierozwiązane problemy zostały skorygowana pod kątem pokaz Contoso magazynu sieci Web CRP.|
 
 
 
@@ -221,8 +221,8 @@ Niezależnie od metody są używane, muszą być wystarczające wykrywa i identy
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [wymaganie 11.3.4](#pci-dss-requirement-11-3-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations), które dostarczają informacji luki w zabezpieczeniach i korygowania, zostały już użyte do zapewnienia, że wszystkie nierozwiązane problemy zostały skorygowana pod kątem pokaz Contoso magazynu sieci Web CRP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [wymaganie 11.3.4](#pci-dss-requirement-11-3-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations), które dostarczają informacji luki w zabezpieczeniach i korygowania, zostały już użyte do zapewnienia, że wszystkie nierozwiązane problemy zostały skorygowana pod kątem pokaz Contoso magazynu sieci Web CRP.|
 
 
 
@@ -235,8 +235,8 @@ Aktualizuj wszystkie wykrywania nieautoryzowanego dostępu i zapobiegania aparat
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure przeprowadza analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym i Identyfikatory systemy generują niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso jest usługą PaaS i nieautoryzowanego dostępu i zapobiegania sieci można znaleźć odpowiedzialność platformy Azure. [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) alerty nieautoryzowanego dostępu i korygowania.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure przeprowadza analizę w czasie rzeczywistym zdarzeń w jego środowisku operacyjnym i Identyfikatory systemy generują niemal w czasie rzeczywistym alertów dotyczących zdarzeń, które potencjalnie może naruszyć bezpieczeństwo systemu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso jest usługą PaaS i nieautoryzowanego dostępu i zapobiegania sieci można znaleźć odpowiedzialność platformy Azure. [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/) i [Azure Advisor](/azure/advisor/advisor-security-recommendations) alerty nieautoryzowanego dostępu i korygowania.|
 
 
 
@@ -251,8 +251,8 @@ Aktualizuj wszystkie wykrywania nieautoryzowanego dostępu i zapobiegania aparat
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure obsługuje i powiadamia klientów o potencjalnych zmiany i zdarzeń, które mogą mieć wpływ na zabezpieczenia lub dostępności usług za pośrednictwem online pulpit nawigacyjny usługi. Zmiany zabezpieczeń zobowiązań i obowiązków zabezpieczeń Microsoft Azure klienci są aktualizowane w witrynie sieci Web Microsoft Azure w odpowiednim czasie.<br /><br />Instalacja lub zmian w oprogramowaniu Microsoft Azure jest ograniczony do środowiska produkcyjnego autoryzowane personelu administracji i następuje zmiana procedury zarządzania. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Wersja demonstracyjna dla magazynu sieci Web firmy Contoso to usługa PaaS i wykrywania zmian została zaimplementowana przy użyciu pakietu OMS. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązań OMS preinstalowany](payment-processing-blueprint.md#oms-solutions).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure obsługuje i powiadamia klientów o potencjalnych zmiany i zdarzeń, które mogą mieć wpływ na zabezpieczenia lub dostępności usług za pośrednictwem online pulpit nawigacyjny usługi. Zmiany zabezpieczeń zobowiązań i obowiązków zabezpieczeń Microsoft Azure klienci są aktualizowane w witrynie sieci Web Microsoft Azure w odpowiednim czasie.<br /><br />Instalacja lub zmian w oprogramowaniu Microsoft Azure jest ograniczony do środowiska produkcyjnego autoryzowane personelu administracji i następuje zmiana procedury zarządzania. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Wersja demonstracyjna dla magazynu sieci Web firmy Contoso to usługa PaaS i wykrywania zmian została zaimplementowana przy użyciu analizy dzienników. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązania do zarządzania preinstalowany](payment-processing-blueprint.md#management-solutions).<br /><br />|
 
 
 
@@ -264,8 +264,8 @@ Aktualizuj wszystkie wykrywania nieautoryzowanego dostępu i zapobiegania aparat
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Azure reguły zdarzeń monitorowania zapewniają zwiększony poziom monitorowania dla operacji wysokiego ryzyka i zasoby. Urządzenia sieciowe zarządzane Azure są monitorowane pod kątem zgodności ze standardami ustalonych zabezpieczeń. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Alerty magazynu sieci Web firmy Contoso zmiany są dostarczonej przez implementację OMS. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązań OMS preinstalowany](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure reguły zdarzeń monitorowania zapewniają zwiększony poziom monitorowania dla operacji wysokiego ryzyka i zasoby. Urządzenia sieciowe zarządzane Azure są monitorowane pod kątem zgodności ze standardami ustalonych zabezpieczeń. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Alerty magazynu sieci Web firmy Contoso zmiany są dostarczonej przez implementację analizy dzienników. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązania do zarządzania preinstalowany](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 
@@ -277,8 +277,8 @@ Aktualizuj wszystkie wykrywania nieautoryzowanego dostępu i zapobiegania aparat
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Alerty magazynu sieci Web firmy Contoso zmiany są dostarczonej przez implementację OMS. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązań OMS preinstalowany](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Alerty magazynu sieci Web firmy Contoso zmiany są dostarczonej przez implementację analizy dzienników. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązania do zarządzania preinstalowany](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 

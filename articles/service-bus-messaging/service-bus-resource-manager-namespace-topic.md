@@ -1,24 +1,24 @@
 ---
-title: "Utwórz subskrypcję tematu przestrzeni nazw usługi Azure Service Bus przy użyciu szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Tworzenie przestrzeni nazw usługi Service Bus z tematów i subskrypcji przy użyciu szablonu Azure Resource Manager"
+title: Utwórz subskrypcję tematu przestrzeni nazw usługi Azure Service Bus przy użyciu szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Tworzenie przestrzeni nazw usługi Service Bus z tematów i subskrypcji przy użyciu szablonu Azure Resource Manager
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d3d55200-5c60-4b5f-822d-59974cafff0e
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: sethm;shvija
-ms.openlocfilehash: 7f854b4f1331cf1272371e1cc7574d40b6b39efd
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 04/11/2018
+ms.author: sethm
+ms.openlocfilehash: ee9990cb9a112dffe1a7c2980315146c2a1d7ca5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus z tematów i subskrypcji przy użyciu szablonu usługi Azure Resource Manager
 
@@ -105,8 +105,7 @@ Tworzy standardowe przestrzeni nazw usługi Service Bus typu **wiadomości**, te
         "location": "[variables('location')]",
         "kind": "Messaging",
         "sku": {
-            "name": "StandardSku",
-            "tier": "Standard"
+            "name": "Standard",
         },
         "resources": [{
             "apiVersion": "[variables('sbVersion')]",
@@ -146,7 +145,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Po utworzeniu i wdrożeniu zasobów przy użyciu usługi Azure Resource Manager, Dowiedz się, jak nimi zarządzać, przeglądając następujące artykuły:
 
 * [Zarządzanie usługi Service Bus przy użyciu programu PowerShell](service-bus-manage-with-ps.md)

@@ -1,20 +1,20 @@
 ---
-title: "Baza danych Azure SQL zarządzane wystąpienia konfigurację sieci wirtualnej | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano opcje konfiguracji dla sieci wirtualnej (VNet) z wystąpienia zarządzane bazy danych SQL Azure."
+title: Baza danych Azure SQL zarządzane wystąpienia konfigurację sieci wirtualnej | Dokumentacja firmy Microsoft
+description: W tym temacie opisano opcje konfiguracji dla sieci wirtualnej (VNet) z wystąpienia zarządzane bazy danych SQL Azure.
 services: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: e724a660f8ba2373cefdabe8595908b7bb42f4d6
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bccc2d52c592101a23338e57791a992441e80047
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie sieci wirtualnej dla zarządzanego wystąpienia bazy danych Azure SQL
 
@@ -66,13 +66,13 @@ Jeśli planujesz wdrożyć wiele wystąpień zarządzany wewnątrz podsieci i do
 Tworzenie sieci wirtualnej platformy Azure jest wymagane w przypadku utworzenia wystąpienia usługi zarządzania. Mogą korzystać z portalu Azure, [PowerShell](../virtual-network/quick-create-powershell.md), lub [interfejsu wiersza polecenia Azure](../virtual-network/quick-create-cli.md). Poniższa sekcja przedstawia kroki przy użyciu portalu Azure. Szczegóły omówione w tym miejscu mają zastosowanie do każdej z tych metod.
 
 1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
-2. Zlokalizuj i kliknij **sieci wirtualnej**, sprawdź **Resource Manager** został wybrany jako tryb wdrożenia, a następnie kliknij przycisk **Utwórz**.
+2. Zlokalizuj i kliknij opcję **Sieć wirtualna**, upewnij się, że wybrano opcję **Resource Manager** jako tryb wdrożenia, a następnie kliknij opcję **Utwórz**.
 
-   ![Tworzenie sieci wirtualnej](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
+   ![tworzenie sieci wirtualnej](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
 
 3. Wypełnij formularz sieci wirtualnej z żądane informacje w sposób podobny do następującego zrzutu ekranu:
 
-   ![Tworzenie sieci wirtualnej formularza](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
+   ![formularz tworzenia sieci wirtualnej](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
 
 4. Kliknij przycisk **Utwórz**.
 
@@ -88,28 +88,28 @@ Tworzenie sieci wirtualnej platformy Azure jest wymagane w przypadku utworzenia 
 
    Upewnij się, że punkty końcowe usługi opcję pozostaje **wyłączone**. 
 
-   ![Tworzenie sieci wirtualnej formularza](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
+   ![formularz tworzenia sieci wirtualnej](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
 ## <a name="create-the-required-route-table-and-associate-it"></a>Utwórz tabelę wymagane trasy i powiązać ją
 
 1. Logowanie się do witryny Azure Portal  
-2. Zlokalizuj i kliknij **tabeli tras**, a następnie kliknij przycisk **Utwórz** na stronie tabeli tras.
+2. Zlokalizuj i kliknij opcję **Tabela tras**, a następnie kliknij opcję **Utwórz** na stronie tabeli tras.
 
-   ![Tworzenie tabeli tras formularza](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
+   ![formularz tworzenia tabeli tras](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
 
 3. Utwórz trasę następnego przeskoku Internet 0.0.0.0/0 w sposób, jak poniższe zrzuty ekranu:
 
-   ![Dodaj tabelę tras](./media/sql-database-managed-instance-tutorial/route-table-add.png)
+   ![dodawanie tabeli tras](./media/sql-database-managed-instance-tutorial/route-table-add.png)
 
-   ![Trasy](./media/sql-database-managed-instance-tutorial/route.png)
+   ![trasa](./media/sql-database-managed-instance-tutorial/route.png)
 
 4. Skojarz tej trasy dla podsieci dla wystąpienia zarządzane w sposób, jak poniższe zrzuty ekranu:
 
     ![podsieć](./media/sql-database-managed-instance-tutorial/subnet.png)
 
-    ![Tabela tras zestawu](./media/sql-database-managed-instance-tutorial/set-route-table.png)
+    ![ustawianie tabeli tras](./media/sql-database-managed-instance-tutorial/set-route-table.png)
 
-    ![Zapisywanie tabeli tras zestawu](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
+    ![zapisywanie ustawionej tabeli tras](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
 
 
 Po utworzeniu sieci wirtualnej, możesz przystąpić do tworzenia wystąpienia zarządzane.  
@@ -145,5 +145,5 @@ Jeśli tak, zobacz [Konfigurowanie niestandardowe DNS](sql-database-managed-inst
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać ogólne informacje, zobacz [co to jest wystąpieniem zarządzane](sql-database-managed-instance.md)
-- Samouczek przedstawiający sposób utworzyć sieć wirtualną, Utwórz wystąpienie zarządzane i przywracanie bazy danych z kopii zapasowej bazy danych, zobacz [tworzenia wystąpienia zarządzane bazy danych SQL Azure](sql-database-managed-instance-tutorial-portal.md).
+- Samouczek przedstawiający sposób utworzyć sieć wirtualną, Utwórz wystąpienie zarządzane i przywracanie bazy danych z kopii zapasowej bazy danych, zobacz [tworzenia wystąpienia zarządzane bazy danych SQL Azure](sql-database-managed-instance-create-tutorial-portal.md).
 - W przypadku problemów DNS, zobacz [Konfigurowanie niestandardowe DNS](sql-database-managed-instance-custom-dns.md)

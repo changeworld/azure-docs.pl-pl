@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5d6118a47e10763373c9376ca08d328cf22ab3c8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8782befb1548606fe649909a7841eb648c15f1c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak wykonywanie kopii zapasowych i przywracania serwera w bazie danych Azure dla programu MySQL przy użyciu portalu Azure
 
@@ -86,12 +86,16 @@ Skonfigurowanie serwera na potrzeby geograficznie nadmiarowy kopii zapasowych mo
 2. W formularzu **wybierz źródło** listy rozwijanej wybierz **kopii zapasowej**. Ta akcja spowoduje załadowanie listę serwerów, które mają nadmiarowe kopie zapasowe geograficznie włączone. Wybierz jedną z tych kopii zapasowych jako źródło nowego serwera.
    ![Wybierz źródło: Kopia zapasowa i listę z magazynu geograficznie nadmiarowego kopii zapasowych](./media/howto-restore-server-portal/2-georestore.png)
 
+   > [!NOTE]
+   > Podczas tworzenia serwera nie może być dostępne od razu do przywracania geo. Może upłynąć kilka godzin metadane potrzebne do wypełnienia.
+   >
+
 3. Wypełnij pozostałej części formularza z swoje preferencje. Można wybrać dowolny **lokalizacji**. Po wybraniu lokalizacji, możesz wybrać **warstwy cenowej**. Domyślnie są wyświetlane parametry dla istniejącego serwera, który przywracasz z. Możesz kliknąć **OK** bez wprowadzania żadnych zmian, aby te ustawienia były dziedziczone. Lub zmienić **obliczeniowe generowania** (jeśli dostępna w regionie wybrano), liczba **vCores**, **okres przechowywania kopii zapasowej**, i **kopii zapasowej Opcja nadmiarowość**. Zmiana **warstwy cenowej** (podstawowe, ogólnego przeznaczenia lub zoptymalizowanych pod kątem pamięci) lub **magazynu** rozmiar podczas przywracania nie jest obsługiwany.
 
 >[!Note]
 >Nowy serwer tworzone przez przywrócenie geograficznie ma taką samą nazwę logowania administratora serwera i hasło, które jest prawidłowa dla istniejącego serwera w czasie przywracania została zainicjowana. Hasło można zmienić z nowego serwera **omówienie** strony.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o usłudze [kopii zapasowych](concepts-backup.md).
 - Dowiedz się więcej o [ciągłość prowadzenia działalności biznesowej](concepts-business-continuity.md) opcje.

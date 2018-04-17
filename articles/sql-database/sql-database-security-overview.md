@@ -1,6 +1,6 @@
 ---
-title: "Omówienie zabezpieczeń usługi Azure SQL Database | Microsoft Docs"
-description: "Więcej informacji na temat zabezpieczeń usługi Azure SQL Database i programu SQL Server, w tym różnice w chmurze i lokalnej instalacji programu SQL Server."
+title: Omówienie zabezpieczeń usługi Azure SQL Database | Microsoft Docs
+description: Więcej informacji na temat zabezpieczeń usługi Azure SQL Database i programu SQL Server, w tym różnice w chmurze i lokalnej instalacji programu SQL Server.
 services: sql-database
 author: giladm
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-your-sql-database"></a>Zabezpieczanie bazy danych SQL
 
@@ -48,7 +48,7 @@ Aby uzyskać więcej informacji, zobacz [wprowadzenie odnajdywanie danych bazy d
 Usługa SQL Database zabezpiecza dane przez ograniczenie dostępu do bazy danych przy użyciu reguł zapory, mechanizmów uwierzytelniania wymagających od użytkowników potwierdzenia tożsamości oraz funkcji autoryzacji do danych za pośrednictwem członkostw i uprawnień opartych na rolach, a także zabezpieczeń na poziomie wiersza i dynamicznego maskowania danych. Omówienie korzystania z funkcji kontroli dostępu w usłudze SQL Database zawiera artykuł dotyczący [kontroli dostępu](sql-database-control-access.md).
 
 > [!IMPORTANT]
-> Zarządzanie bazami danych i serwerami logicznymi na platformie Azure jest kontrolowane przez przypisania do ról konta użytkownika portalu. Aby uzyskać więcej informacji na ten artykuł, zobacz [kontroli dostępu opartej na rolach w portalu Azure](../active-directory/role-based-access-control-what-is.md).
+> Zarządzanie bazami danych i serwerami logicznymi na platformie Azure jest kontrolowane przez przypisania do ról konta użytkownika portalu. Aby uzyskać więcej informacji na ten artykuł, zobacz [kontroli dostępu opartej na rolach w portalu Azure](../role-based-access-control/overview.md).
 >
 
 ### <a name="firewall-and-firewall-rules"></a>Zapora i reguły zapory

@@ -1,17 +1,17 @@
 ---
 title: Użyj obrazu portalu Azure Marketplace do utworzenia maszyny wirtualnej systemu Terraform Linux zarządzane tożsamości usługi
 description: Aby utworzyć maszyny wirtualnej systemu Terraform Linux z zarządzanych tożsamość usługi i zdalne zarządzanie stanem łatwe wdrażanie zasobów na platformie Azure, Użyj obrazu z witryny Marketplace.
-keywords: terraform, devops, MSI, virtual machine, remote state, azure
+keywords: terraform, devops, MSI, maszyny wirtualnej, stanu zdalnej, azure
 author: VaijanathB
 manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Użyj obrazu portalu Azure Marketplace do utworzenia maszyny wirtualnej systemu Terraform Linux zarządzane tożsamości usługi
 
@@ -88,7 +88,7 @@ Poprzedni skrypt używa [AZ CLI v 2.0 interakcyjnego logowania](https://docs.mic
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- Aby uzyskać więcej informacji na temat zdalnego zarządzania stanem, zobacz [tę stronę o stanie zdalnego Terraform](https://www.terraform.io/docs/state/remote.html). Klucz dostępu do magazynu jest widoczne w tym pliku i musi zostać dokładnie sprawdzony pod kontrolą źródła.  
+ Aby uzyskać więcej informacji na temat zdalnego zarządzania stanem, zobacz [tę stronę o stanie zdalnego Terraform](https://www.terraform.io/docs/state/remote.html). Klucz dostępu do magazynu jest widoczna w tym pliku i musi zostać wyłączone przed zatwierdzanie Terraform konfiguracji plików do kontroli źródła.
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób konfigurowania maszyny wirtualnej systemu Terraform Linux na platformie Azure. Poniżej przedstawiono dodatkowe zasoby ułatwiające Dowiedz się więcej o Terraform na platformie Azure: 

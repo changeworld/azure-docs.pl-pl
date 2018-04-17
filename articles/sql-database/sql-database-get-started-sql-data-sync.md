@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 72e0ed535139c088c4235b43a12ea96da080dc8a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 86b0e78f362d1cf3c2480aad97ef5281c5f3bc95
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>Konfigurowanie synchronizacji danych SQL (wersja zapoznawcza)
 Z tego samouczka dowiesz się sposobu konfigurowania synchronizacji danych SQL Azure, tworząc grupy synchronizacji hybrydowych, zawierającej wystąpienia zarówno usługi Azure SQL Database i programu SQL Server. Nowa grupa synchronizacji jest w pełni skonfigurowane i synchronizuje się zgodnie z harmonogramem, które można ustawić.
@@ -24,7 +24,7 @@ W tym samouczku założono, że co najmniej pewne doświadczenie z bazy danych S
 Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync — wersja zapoznawcza)](sql-database-sync-data.md).
 
 Aby uzyskać pełną przykładów programu PowerShell, które przedstawiają sposób konfigurowania synchronizacji danych SQL, zobacz następujące artykuły:
--   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)
+-   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
 -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 ## <a name="step-1---create-sync-group"></a>Krok 1 — Tworzenie grupy synchronizacji
@@ -151,7 +151,7 @@ Na **Konfigurowanie lokalnego** wykonaj następujące czynności:
         ![Wprowadź poświadczenia agenta klucza i serwera](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         >   [!NOTE] 
-        >   Jeśli w tym momencie zostanie wyświetlony błąd zapory, należy utworzyć regułę zapory na platformie Azure, aby zezwolić na ruch przychodzący z komputera programu SQL Server. Regułę można utworzyć ręcznie w portalu, ale użytkownik może ułatwić ją utworzyć w programu SQL Server Management Studio (SSMS). W programie SSMS próby nawiązania połączenia z bazą danych Centrum na platformie Azure. Wpisz jej nazwę jako \<hub_database_name\>. database.windows.net. Aby skonfigurować regułę zapory platformy Azure, wykonaj czynności opisane w oknie dialogowym. Następnie wróć do aplikacji agenta klienta synchronizacji.
+        >   Jeśli w tym momencie zostanie wyświetlony błąd zapory, należy utworzyć regułę zapory na platformie Azure, aby zezwolić na ruch przychodzący z komputera programu SQL Server. Regułę można utworzyć ręcznie w portalu, ale użytkownik może ułatwić ją utworzyć w programu SQL Server Management Studio (SSMS). W programie SSMS próby nawiązania połączenia z bazą danych Centrum na platformie Azure. Wpisz jej nazwę jako < hub_database_name >. database.windows.net. Aby skonfigurować regułę zapory platformy Azure, wykonaj czynności opisane w oknie dialogowym. Następnie wróć do aplikacji agenta klienta synchronizacji.
 
     9.  W aplikacji klienta synchronizacji agenta, kliknij przycisk **zarejestrować** zarejestrować bazy danych programu SQL Server z agentem. **Konfiguracji serwera SQL** zostanie otwarte okno dialogowe.
 
@@ -225,7 +225,16 @@ Niekoniecznie. Grupy synchronizacji przy użyciu koncentratora i trzy partnerzy 
 
 ### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>Jak uzyskać zmiany schematu do grupy synchronizacji?
 
-Należy ręcznie wykonać zmiany schematu.
+Należy wprowadzić i ręcznie propagację wszystkie zmiany schematu.
+1. Ręcznie replikować zmiany schematu do koncentratora i dla wszystkich członków synchronizacji.
+2. Aktualizacja schematu synchronizacji.
+
+**Dodawanie nowych tabel i kolumn**. Nowe tabele i kolumny nie mieć wpływ na bieżącej synchronizacji. Synchronizacja danych ignoruje nowe tabele i kolumny, dopóki nie zostaną dodane do schematu synchronizacji. Po dodaniu nowych obiektów bazy danych jest to najlepsze sekwencji do wykonania:
+1. Dodaj nowe tabele lub kolumny do koncentratora i dla wszystkich członków synchronizacji.
+2. Dodaj nowe tabele lub kolumny do schematu synchronizacji.
+3. Początek w celu wstawienia wartości do nowych tabel i kolumn.
+
+**Zmiana typu danych kolumny**. Jeśli zmienisz typ danych kolumny istniejącej synchronizacji danych w dalszym ciągu działać tak długo, jak nowe wartości dopasowania oryginalnego typu danych zdefiniowanego w schemacie synchronizacji. Na przykład, jeśli zmienisz typ źródłowej bazy danych z **int** do **bigint**, synchronizacja danych w dalszym ciągu działać, dopóki Wstaw wartość, która jest za duża dla **int** — typ danych . Aby ukończyć zmianę, ręcznie replikować zmiany schematu do koncentratora i dla wszystkich członków synchronizacji, a następnie zaktualizuj schematu synchronizacji.
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Jak wyeksportować i zaimportować bazę danych z opcją synchronizacji danych?
 Po wyeksportowaniu bazy danych jako `.bacpac` pliku i zaimportować plik, aby utworzyć nową bazę danych, należy wykonać następujące czynności dwa na synchronizację danych do nowej bazy danych:
@@ -279,7 +288,7 @@ Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 -   [Troubleshoot issues with Azure SQL Data Sync (Rozwiązywanie problemów z usługą Azure SQL Data Sync)](sql-database-troubleshoot-data-sync.md)
 
 -   Pełne przykładowe skrypty programu PowerShell przedstawiające sposób konfigurowania usługi SQL Data Sync:
-    -   [Synchronizacja między wiele baz danych Azure SQL przy użyciu programu PowerShell](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [Pobierz dokumentację interfejsu API REST usługi SQL Data Sync](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

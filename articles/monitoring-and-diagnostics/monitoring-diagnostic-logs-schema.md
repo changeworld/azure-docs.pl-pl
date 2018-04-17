@@ -1,9 +1,9 @@
 ---
-title: "Diagnostyka Azure dzienniki obsługiwane usługi i schematów | Dokumentacja firmy Microsoft"
-description: "Zrozumienie obsługiwanych schematu usług i zdarzeń do dzienników diagnostycznych platformy Azure."
+title: Diagnostyka Azure dzienniki obsługiwane usługi i schematów | Dokumentacja firmy Microsoft
+description: Zrozumienie obsługiwanych schematu usług i zdarzeń do dzienników diagnostycznych platformy Azure.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/24/2018
+ms.date: 4/12/2018
 ms.author: johnkem
-ms.openlocfilehash: 3e2b5305b969c96e6b14122af03da9249373094a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 91c3f1507bb4fb64d5395917e8e431951f77e72b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematy i kategorie dzienników diagnostycznych platformy Azure
 
@@ -73,6 +73,7 @@ Schemat dla dzienników diagnostycznych zasobu różni się w zależności od ka
 |Microsoft.DataLakeAnalytics/accounts|Żądania|Dzienniki żądań|
 |Microsoft.DataLakeStore/accounts|Inspekcja|Dzienniki inspekcji|
 |Microsoft.DataLakeStore/accounts|Żądania|Dzienniki żądań|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Dzienniki serwera PostgreSQL|
 |Microsoft.Devices/IotHubs|Połączenia|Połączenia|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Telemetrii urządzenia|
 |Microsoft.Devices/IotHubs|C2DCommands|Polecenia C2D|
@@ -84,6 +85,7 @@ Schemat dla dzienników diagnostycznych zasobu różni się w zależności od ka
 |Microsoft.Devices/IotHubs|TwinQueries|Dwie zapytań|
 |Microsoft.Devices/IotHubs|JobsOperations|Operacje zadania|
 |Microsoft.Devices/IotHubs|DirectMethods|Bezpośrednie metody|
+|Microsoft.Devices/IotHubs|E2EDiagnostics|Diagnostyka E2E (wersja zapoznawcza)|
 |Microsoft.Devices/provisioningServices|DeviceOperations|Operacje urządzenia|
 |Microsoft.Devices/provisioningServices|Serviceoperation|Operacje usługi|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -96,7 +98,6 @@ Schemat dla dzienników diagnostycznych zasobu różni się w zależności od ka
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Zdarzenia śledzenia konta integracji|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Zdarzenie sieciowej grupy zabezpieczeń|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Licznik reguł sieciowej grupy zabezpieczeń|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Zdarzenie przepływu reguł sieciowej grupy zabezpieczeń|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Zdarzenia alertu modułu równoważenia obciążenia|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Stan kondycji sondę modułu równoważenia obciążenia|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|Powiadomienia ochrony przed atakami DDoS|
@@ -107,6 +108,8 @@ Schemat dla dzienników diagnostycznych zasobu różni się w zależności od ka
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|Dzienniki diagnostyczne bramy|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|Dzienniki diagnostyczne tunelu|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|Dzienniki diagnostyczne trasy|
+|Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|Dzienniki diagnostyczne IKE|
+|Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|Dzienniki diagnostyczne P2S|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Menedżer ruchu sondy kondycji wyniki zdarzenia|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabela GWM liczników|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Kopia zapasowa Azure danych raportowania|
@@ -127,7 +130,8 @@ Schemat dla dzienników diagnostycznych zasobu różni się w zależności od ka
 |Microsoft.Sql/servers/databases|Bloki|Bloki|
 |Microsoft.Sql/servers/databases|SQLInsights|Informacje na temat technologii SQL|
 |Microsoft.Sql/servers/databases|Inspekcja|Dzienniki inspekcji|
-|Microsoft.StreamAnalytics/streamingjobs|Wykonywanie|Wykonywanie|
+|Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Zdarzenia inspekcji zabezpieczeń SQL|
+|Microsoft.StreamAnalytics/streamingjobs|Wykonanie|Wykonanie|
 |Microsoft.StreamAnalytics/streamingjobs|Tworzenie|Tworzenie|
 
 ## <a name="next-steps"></a>Następne kroki

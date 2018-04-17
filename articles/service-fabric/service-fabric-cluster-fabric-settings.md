@@ -1,11 +1,11 @@
 ---
-title: "Zmień ustawienia klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano ustawienia sieci szkieletowej i zasad uaktualniania sieci szkieletowej, które można dostosować."
+title: Zmień ustawienia klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano ustawienia sieci szkieletowej i zasad uaktualniania sieci szkieletowej, które można dostosować.
 services: service-fabric
 documentationcenter: .net
-author: chackdan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
-ms.author: chackdan
-ms.openlocfilehash: e55dbe4bd8fde8293c7fcd681bb18967dc4edad6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: aljo
+ms.openlocfilehash: 7d32ebd54d501a2eb5d6e353d38834546200c813
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Dostosowywanie ustawień klastra sieci szkieletowej usług i zasady uaktualniania sieci szkieletowej
 Ten dokument zawiera informacje dotyczące dostosować różne ustawienia sieci szkieletowej i sieci szkieletowej uaktualniania zasad dla klastra usługi sieć szkieletowa usług. Możesz dostosować je za pomocą [portalu Azure](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
@@ -30,7 +30,7 @@ Ten dokument zawiera informacje dotyczące dostosować różne ustawienia sieci 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Dostosowywanie ustawień klastra przy użyciu szablonów usługi Resource Manager
 Poniższe kroki zilustrować dodać nowe ustawienie *MaxDiskQuotaInMB* do *diagnostyki* sekcji.
 
-1. Przejdź do https://resources.azure.com
+1. Przejdź do strony https://resources.azure.com
 2. Przejdź do subskrypcji, rozwijając **subskrypcje** -> **\<Twojej subskrypcji >** -> **resourceGroups**  ->   **\<Your grupa zasobów >** -> **dostawców** -> **Microsoft.ServiceFabric**  ->  **klastrów** -> **\<Your nazwa klastra >**
 3. W prawym górnym rogu, wybierz **odczytu/zapisu.**
 4. Wybierz **Edytuj** i zaktualizuj `fabricSettings` elementu JSON i Dodaj nowy element:
@@ -50,7 +50,7 @@ Poniższe kroki zilustrować dodać nowe ustawienie *MaxDiskQuotaInMB* do *diagn
 Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostosować, uporządkowane według sekcji.
 
 ### <a name="section-name-diagnostics"></a>Nazwa sekcji: Diagnostyka
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | ConsumerInstances |Ciąg | Dynamiczny |Lista wystąpień konsumenta DCA. |
 | ProducerInstances |Ciąg | Dynamiczny |Lista wystąpień producent DCA. |
@@ -64,12 +64,12 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | EnableCircularTraceSession |Wartość logiczna, wartość domyślna to false | Statyczny |Flaga wskazuje, czy ma być używane sesje cykliczne śledzenia. |
 
 ### <a name="section-name-traceetw"></a>Nazwa sekcji: Trace/Etw
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | Poziom |Int, domyślna to 4 | Dynamiczny |Poziom śledzenia zdarzeń systemu Windows może przyjmować wartości 1, 2, 3, 4. Obsługiwany poziom śledzenia musi przechowywać 4 |
 
 ### <a name="section-name-performancecounterlocalstore"></a>Nazwa sekcji: PerformanceCounterLocalStore
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | IsEnabled |Wartość logiczna, domyślna to true | Dynamiczny |Flaga wskazuje, czy włączono zbieranie danych licznika wydajności w węźle lokalnym. |
 | SamplingIntervalInSeconds |Int, domyślna to 60 | Dynamiczny |Interwał próbkowania dla liczniki wydajności są zbierane. |
@@ -78,7 +78,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | NewCounterBinaryFileCreationIntervalInMinutes |Int, domyślna to 10 | Dynamiczny |Maksymalny interwał (w sekundach), po którym zostanie utworzony nowy plik binarny licznika wydajności. |
 
 ### <a name="section-name-setup"></a>Nazwa sekcji: Instalatora
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | FabricDataRoot |Ciąg | Niedozwolone |Katalog główny danych sieci szkieletowej usług. Domyślny dla platformy Azure jest d:\svcfab |
 | FabricLogRoot |Ciąg | Niedozwolone |Katalog główny usługi sieć szkieletowa dziennika. Jest to rozmieszczenia rz dzienników i danych śledzenia. |
@@ -89,7 +89,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ContainerNetworkName|ciąg, domyślny jest L""| Statyczny |Nazwa sieciowa używana podczas konfigurowania sieci kontenera.|
 
 ### <a name="section-name-transactionalreplicator"></a>Nazwa sekcji: TransactionalReplicator
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | MaxCopyQueueSize |Uint — wartość domyślna to 16384 | Statyczny |Jest to maksymalna wartość Określa początkowy rozmiar kolejki, co umożliwia utrzymywanie operacji replikacji. Należy pamiętać, że musi być potęgą liczby 2. Jeśli w czasie wykonywania kolejki rozwoju na tę operację rozmiar zostanie zdławionych między replikatorów podstawowego i pomocniczego. |
 | BatchAcknowledgementInterval | Czas w sekundach, domyślnie jest 0,015 | Statyczny | Określ zakres czasu w sekundach. Określa czas oczekiwania po otrzymaniu operacji przed odsyła potwierdzenia replikatora. Inne operacje otrzymanych w tym czasie będzie miał ich potwierdzeń wysyłane z powrotem w pojedynczym komunikacie -> ograniczenia ruchu sieciowego, ale potencjalnie zmniejszenie przepływności replikatora. |
@@ -113,7 +113,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | MinLogSizeInMB |Int, domyślna to 0 |Statyczny|Minimalny rozmiar dziennika transakcyjnych. Dziennik nie będzie można obciąć rozmiar poniżej tego ustawienia. wartość 0 wskazuje, czy replikatora Określa minimalny rozmiar dziennika zgodnie z innymi ustawieniami. Zwiększenie tej wartości zwiększa możliwości wykonywania częściowej kopii i przyrostowe kopie zapasowe od szanse rekordów dziennika odpowiednich obcięcie jest obniżony. |
 
 ### <a name="section-name-fabricclient"></a>Nazwa sekcji: klienta fabricclient z rolą
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | NodeAddresses |ciąg, domyślna to "" |Statyczny|Kolekcja adresów (parametry połączenia) w różnych węzłach, które mogą służyć do komunikacji z Naming Service. Początkowo klient nawiązuje połączenie, wybierając jedną z adresów losowo. Jeśli podano więcej niż jeden ciąg połączenia i połączenia kończy się niepowodzeniem z powodu komunikacji lub błąd upływu limitu czasu; przełączniki klienta do korzystania z adresu następnego sekwencyjnie. Zobacz adres usługi nazewnictwa, spróbuj ponownie, aby uzyskać szczegółowe informacje na semantykę ponownych prób. |
 | ConnectionInitializationTimeout |Czas w sekundach, domyślna to 2 |Dynamiczny|Określ zakres czasu w sekundach. Interwał limitu czasu połączenia dla każdego klienta czasu próbuje nawiązać połączenie z bramą. |
@@ -127,33 +127,33 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | MaxFileSenderThreads |Uint — wartość domyślna to 10 |Statyczny|Maksymalna liczba plików, które są transferowane równolegle. |
 
 ### <a name="section-name-common"></a>Nazwa sekcji: wspólnej
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | PerfMonitorInterval |Czas w sekundach, wartość domyślna to 1 |Dynamiczny|Określ zakres czasu w sekundach. Interwał monitorowania wydajności. Ustawienie wartości 0 ani ujemna powoduje wyłączenie monitorowania. |
 
 ### <a name="section-name-healthmanager"></a>Nazwa sekcji: HealthManager
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | EnableApplicationTypeHealthEvaluation |Wartość logiczna, wartość domyślna to false |Statyczny|Klaster zasad oceny kondycji: Włączanie oceny kondycji typu aplikacji. |
 
 ### <a name="section-name-nodedomainids"></a>Nazwa sekcji: NodeDomainIds
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | UpgradeDomainId |ciąg, domyślna to "" |Statyczny|Opisuje węzeł należy do domeny uaktualnienia. |
 | PropertyGroup |NodeFaultDomainIdCollection |Statyczny|W tym artykule opisano domen błędów, do której należy dany węzeł. Domena błędów jest zdefiniowany przez identyfikator URI, który określa lokalizację węzła w centrum danych.  Identyfikatory URI domeny błędów są w formacie fd: / fd/następuje segment ścieżki identyfikatora URI.|
 
 ### <a name="section-name-nodeproperties"></a>Nazwa sekcji: NodeProperties
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | PropertyGroup |NodePropertyCollectionMap |Statyczny|Kolekcja par klucz wartość ciągu dla właściwości węzła. |
 
 ### <a name="section-name-nodecapacities"></a>Nazwa sekcji: NodeCapacities
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | PropertyGroup |NodeCapacityCollectionMap |Statyczny|Kolekcja węzła pojemności dla różnych metryk. |
 
 ### <a name="section-name-fabricnode"></a>Nazwa sekcji: FabricNode
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | StateTraceInterval |Czas w sekundach, domyślna to 300 |Statyczny|Określ zakres czasu w sekundach. Interwał śledzenia stanu węzła w każdym węźle oraz węzły FM/FMM. |
 | StartApplicationPortRange |Int, domyślna to 0 |Statyczny|Początek portów aplikacji zarządzanych przez hosting podsystemu. Wymagane, jeśli EndpointFilteringEnabled ma wartość true w hostingu. |
@@ -176,12 +176,12 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | UserRoleClientX509FindValueSecondary |ciąg, domyślna to "" |Dynamiczny|Wartość filtru wyszukiwania używana do lokalizowania certyfikatu dla roli użytkownika domyślnego klienta fabricclient z rolą. |
 
 ### <a name="section-name-paas"></a>Nazwa sekcji: Paas
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | ClusterId |ciąg, domyślna to "" |Niedozwolone|X509 certyfikatów Magazyn używany przez sieci szkieletowej dla ochrony konfiguracji. |
 
 ### <a name="section-name-fabrichost"></a>Nazwa sekcji: elementu FabricHost
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | StopTimeout |Czas w sekundach, domyślna to 300 |Dynamiczny|Określ zakres czasu w sekundach. Limit czasu w celu aktywacji usługi hostowanej. Dezaktywacja i uaktualniania. |
 | StartTimeout |Czas w sekundach, domyślna to 300 |Dynamiczny|Określ zakres czasu w sekundach. Limit czasu uruchamiania fabricactivationmanager. |
@@ -194,7 +194,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 
 
 ### <a name="section-name-failovermanager"></a>Nazwa sekcji: FailoverManager
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | UserReplicaRestartWaitDuration |Czas w sekundach, wartość domyślna to 60.0 * 30 |Dynamiczny|Określ zakres czasu w sekundach. Gdy replika utrwalonego spadnie; Windows Fabric czeka na ten czas trwania na repliki przywracane przed utworzeniem nowej repliki zastąpienia (które wymagają kopii stanu). |
 | QuorumLossWaitDuration |Czas w sekundach, domyślnie jest MaxValue |Dynamiczny|Określ zakres czasu w sekundach. Jest to maksymalny czas trwania, dla którego zezwolimy partycji stanu utraty kworum. Jeśli partycja jest nadal w wyniku utraty kworum po tym okresie; partycja jest odzyskała sprawność działania po utraty kworum przy uwzględnieniu dół repliki jako utracone. Należy pamiętać, że to potencjalnie ponieść utraty danych. |
@@ -202,7 +202,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | UserMaxStandByReplicaCount |Int, wartość domyślna to 1 |Dynamiczny|Domyślna maksymalna liczba replik stan wstrzymania, które system przechowuje usługi użytkownika. |
 | ExpectedClusterSize|Int, wartość domyślna to 1|Dynamiczny|Po początkowym uruchomieniu klastra FM będzie czekać w tym wiele węzłów do zgłaszania samodzielnie się przed rozpoczęciem wprowadzania do innych usług. w tym usług systemowych, takich jak nazewnictwa.  Zwiększenie tej wartości zwiększa czas uruchomienia; klastra ale uniemożliwia wczesne węzłów z przeciążenia, a także dodatkowe przenosi, które będą potrzebne, ponieważ więcej węzłów do trybu online.  Ta wartość zazwyczaj powinien mieć ustawioną niektórych ułamku rozmiaru klastra. |
 |ClusterPauseThreshold|Int, wartość domyślna to 1|Dynamiczny|Jeśli liczba węzłów w systemie zejść poniżej tej wartości, a następnie umieszczania; Równoważenie; obciążenia i trybu failover zostanie zatrzymana. |
-|TargetReplicaSetSize|Int, domyślna to 7|Niedozwolone|Jest to liczba docelowych FM replik, które mają być przechowywane w sieci szkieletowej systemu Windows.  Większa liczba powoduje wyższy niezawodność danych FM; z zależnościami wydajność. |
+|Wartość TargetReplicaSetSize|Int, domyślna to 7|Niedozwolone|Jest to liczba docelowych FM replik, które mają być przechowywane w sieci szkieletowej systemu Windows.  Większa liczba powoduje wyższy niezawodność danych FM; z zależnościami wydajność. |
 |MinReplicaSetSize|Int, domyślna to 3|Niedozwolone|Jest to minimalny rozmiar zestawu replik FM.  Jeśli liczba aktywnych replik FM spada poniżej tej wartości; FM spowoduje odrzucenie zmian w klastrze, dopóki co najmniej minimalną liczbę replik jest odzyskiwana |
 |ReplicaRestartWaitDuration|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(60.0 * 30)|Niedozwolone|Określ zakres czasu w sekundach. Jest to ReplicaRestartWaitDuration dla FMService |
 |StandByReplicaKeepDuration|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|Niedozwolone|Określ zakres czasu w sekundach. Jest to StandByReplicaKeepDuration dla FMService |
@@ -217,9 +217,9 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |PlacementTimeLimit|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(600)|Dynamiczny|Określ zakres czasu w sekundach. Limit czasu osiągnięcia docelowa liczba replik; Po upływie którego ostrzeżenie raportu kondycji zostanie zainicjowana |
 
 ### <a name="section-name-namingservice"></a>Nazwa sekcji: NamingService
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |Int, domyślna to 7 |Niedozwolone|Liczba zestawów replik dla każdej partycji magazynu Naming Service. Zwiększenie liczby zestawów replik powoduje podwyższenie poziomu niezawodności informacji w magazynie usługi nazewnictwa; zmniejszenie zmiany informacje zostaną utracone w wyniku awarii węzła; przy koszcie zwiększenie obciążenia sieci szkieletowej systemu Windows i czas potrzebny do przeprowadzania aktualizacji do nazewnictwa danych.|
+| Wartość TargetReplicaSetSize |Int, domyślna to 7 |Niedozwolone|Liczba zestawów replik dla każdej partycji magazynu Naming Service. Zwiększenie liczby zestawów replik powoduje podwyższenie poziomu niezawodności informacji w magazynie usługi nazewnictwa; zmniejszenie zmiany informacje zostaną utracone w wyniku awarii węzła; przy koszcie zwiększenie obciążenia sieci szkieletowej systemu Windows i czas potrzebny do przeprowadzania aktualizacji do nazewnictwa danych.|
 |MinReplicaSetSize | Int, domyślna to 3 |Niedozwolone| Minimalna liczba replik Naming Service wymagane do zapisania w celu ukończenia aktualizacji. W przypadku replik mniej niż to aktywnych w systemie niezawodności systemu nie zezwala na aktualizacje w magazynie usługi nazewnictwa dopóki repliki zostaną przywrócone. Ta wartość nigdy nie powinna być większa niż wartość TargetReplicaSetSize. |
 |ReplicaRestartWaitDuration | Czas w sekundach, wartość domyślna to (60.0 * 30)|Niedozwolone| Określ zakres czasu w sekundach. Gdy replika Naming Service spadnie; Ten czasomierz uruchamia.  Po jego wygaśnięciu FM rozpocznie się zastąpić replik, które są w dół (nie jeszcze uważa ich zgubienia). |
 |QuorumLossWaitDuration | Czas w sekundach, domyślnie jest MaxValue |Niedozwolone| Określ zakres czasu w sekundach. Gdy pobiera Naming Service w wyniku utraty kworum; Ten czasomierz uruchamia.  Po jego wygaśnięciu FM uwzględni dół repliki jako utraconych; i podjęcie próby odzyskania kworum. Nie, że może to spowodować utratę danych. |
@@ -239,35 +239,35 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | Liczba partycji |Int, domyślna to 3 |Niedozwolone|Liczba partycji Naming Service magazynu do utworzenia. Każda partycja jest właścicielem klucza jednej partycji, odpowiadający jej indeks; klucze partycji tak [0; Liczba partycji) istnieje. Zwiększenie liczby Naming Service partycje zwiększa skali, do której Naming Service mogą wykonywać na dzięki skróceniu średnia ilość danych przechowywanych przez repliką zapasowy ustawić; Koszt zwiększenie użycia zasobów (od momentu PartitionCount * ReplicaSetSize repliki usługi muszą zostać zachowane).|
 
 ### <a name="section-name-runas"></a>Nazwa sekcji: Uruchom jako
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | RunAsAccountName |ciąg, domyślna to "" |Dynamiczny|Wskazuje nazwę konta Uruchom jako. Jest to potrzebne tylko dla konta "DomainUser" lub "ManagedServiceAccount" typu. Prawidłowe wartości to "domena\użytkownik" lub "user@domain". |
 |RunAsAccountType|ciąg, domyślna to "" |Dynamiczny|Wskazuje typ konta Uruchom jako. Jest to potrzebne dla dowolnego RunAs sekcji prawidłowe wartości to "DomainUser/NetworkService/ManagedServiceAccount/LocalSystem".|
 |RunAsPassword|ciąg, domyślna to "" |Dynamiczny|Wskazuje hasło do konta Uruchom jako. Jest to potrzebne tylko dla typu konta "DomainUser". |
 
 ### <a name="section-name-runasfabric"></a>Nazwa sekcji: RunAs_Fabric
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | RunAsAccountName |ciąg, domyślna to "" |Dynamiczny|Wskazuje nazwę konta Uruchom jako. Jest to potrzebne tylko dla konta "DomainUser" lub "ManagedServiceAccount" typu. Prawidłowe wartości to "domena\użytkownik" lub "user@domain". |
 |RunAsAccountType|ciąg, domyślna to "" |Dynamiczny|Wskazuje typ konta Uruchom jako. Jest to potrzebne dla dowolnego RunAs sekcji prawidłowe wartości to "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|ciąg, domyślna to "" |Dynamiczny|Wskazuje hasło do konta Uruchom jako. Jest to potrzebne tylko dla typu konta "DomainUser". |
 
 ### <a name="section-name-runashttpgateway"></a>Nazwa sekcji: RunAs_HttpGateway
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | RunAsAccountName |ciąg, domyślna to "" |Dynamiczny|Wskazuje nazwę konta Uruchom jako. Jest to potrzebne tylko dla konta "DomainUser" lub "ManagedServiceAccount" typu. Prawidłowe wartości to "domena\użytkownik" lub "user@domain". |
 |RunAsAccountType|ciąg, domyślna to "" |Dynamiczny|Wskazuje typ konta Uruchom jako. Jest to potrzebne dla dowolnego RunAs sekcji prawidłowe wartości to "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|ciąg, domyślna to "" |Dynamiczny|Wskazuje hasło do konta Uruchom jako. Jest to potrzebne tylko dla typu konta "DomainUser". |
 
 ### <a name="section-name-runasdca"></a>Nazwa sekcji: RunAs_DCA
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | RunAsAccountName |ciąg, domyślna to "" |Dynamiczny|Wskazuje nazwę konta Uruchom jako. Jest to potrzebne tylko dla konta "DomainUser" lub "ManagedServiceAccount" typu. Prawidłowe wartości to "domena\użytkownik" lub "user@domain". |
 |RunAsAccountType|ciąg, domyślna to "" |Dynamiczny|Wskazuje typ konta Uruchom jako. Jest to potrzebne dla dowolnego RunAs sekcji prawidłowe wartości to "LocalUser/DomainUser/NetworkService/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|ciąg, domyślna to "" |Dynamiczny|Wskazuje hasło do konta Uruchom jako. Jest to potrzebne tylko dla typu konta "DomainUser". |
 
 ### <a name="section-name-httpgateway"></a>Nazwa sekcji: HttpGateway
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |IsEnabled|Wartość logiczna, wartość domyślna to false |Statyczny| Włącza/wyłącza HttpGateway. HttpGateway jest domyślnie wyłączona. |
 |ActiveListeners |Uint, domyślną wartością jest 50 |Statyczny| Liczba odczytów do wysłania do kolejki serwera http. Kontroluje to liczbę żądań, które mogą być spełnione przez HttpGateway. |
@@ -275,7 +275,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |HttpGatewayHealthReportSendInterval |Czas w sekundach, wartość domyślna to 30 |Statyczny|Określ zakres czasu w sekundach. Interwał wysyła Http bramy kondycji wszystkich raportów do Menedżera kondycji. |
 
 ### <a name="section-name-ktllogger"></a>Nazwa sekcji: KtlLogger
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |AutomaticMemoryConfiguration |Int, wartość domyślna to 1 |Dynamiczny|Flaga wskazująca, czy ustawienia pamięci należy dynamicznego i automatycznie skonfigurować. Jeśli zero, a następnie ustawienia konfiguracji pamięci są używane bezpośrednio i nie należy zmieniać na podstawie systemu warunków. Jeśli jeden to ustawienia pamięci są konfigurowane automatycznie i mogą ulec zmianie na podstawie systemu warunków. |
 |WriteBufferMemoryPoolMinimumInKB |Int, domyślnie jest 8388608 |Dynamiczny|Liczba KB można wstępnie przydzielić dla puli pamięci buforu zapisu. Użycie wartości 0, aby wskazać, brak limitu domyślnego powinny być zgodne z SharedLogSizeInMB poniżej. |
@@ -286,7 +286,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |SharedLogSizeInMB |Int, domyślnie jest 8192 |Statyczny|Liczba MB do przydzielenia w kontenerze dziennika udostępniony. |
 
 ### <a name="section-name-applicationgatewayhttp"></a>Nazwa sekcji: Bramy aplikacji/Http
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |IsEnabled |Wartość logiczna, wartość domyślna to false |Statyczny| Włącza/wyłącza HttpApplicationGateway. HttpApplicationGateway jest domyślnie wyłączona i tej konfiguracji musi być ustawiona, aby je włączyć. |
 |NumberOfParallelOperations | Uint — wartość domyślna to 5000 |Statyczny|Liczba odczytów do wysłania do kolejki serwera http. Kontroluje to liczbę żądań, które mogą być spełnione przez HttpGateway. |
@@ -302,18 +302,18 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |RemoveServiceResponseHeaders|ciąg, domyślny jest L "Data; Serwer"|Statyczny|Średnikiem / rozdzielana przecinkami lista nagłówków odpowiedzi, które zostaną usunięte z odpowiedzi usługi; przed przekazaniem ich do klienta. Jeśli ustawiono to ciąg pusty; Przekaż wszystkie nagłówki, które są zwracane przez usługę jako — jest. tj Nie zastępuj datę i serwera |
 |ApplicationCertificateValidationPolicy|ciąg, domyślny jest L "None"|Statyczny| ApplicationCertificateValidationPolicy: Brak: nie zweryfikować certyfikatu serwera; powiodło się żądanie. ServiceCertificateThumbprints: Odwoływać się do konfiguracji ServiceCertificateThumbprints rozdzielana przecinkami lista odciski palców certyfikatów zdalnego ufające zwrotnego serwera proxy. ServiceCommonNameAndIssuer: Odwoływać się do konfiguracji ServiceCommonNameAndIssuer dla podmiotu nazwy i wystawców odcisk palca certyfikatów zdalnego ufające zwrotnego serwera proxy. |
 |ServiceCertificateThumbprints|ciąg, domyślny jest L""|Dynamiczny| |
-|CrlCheckingFlag|uint, domyślny jest 0x40000000 |Dynamiczny| Flagi weryfikacji łańcucha certyfikatu aplikacji/usługi; np. sprawdzania listy CRL 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 ustawienie CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 0 Wyłącza listy CRL sprawdzanie pełną listę obsługiwanych wartości jest udokumentowany przez wartość elementu dwFlags z CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078 (v=vs.85).aspx  |
+|CrlCheckingFlag|uint, domyślny jest 0x40000000 |Dynamiczny| Flagi weryfikacji łańcucha certyfikatu aplikacji/usługi; np. sprawdzania listy CRL 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 ustawienie CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 0 Wyłącza listy CRL sprawdzanie pełną listę obsługiwanych wartości jest opisane przez wartość elementu dwFlags z CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |IgnoreCrlOfflineError|wartość logiczna, domyślna ma wartość TRUE|Dynamiczny|Określa, czy zignorować błąd w trybie offline listy CRL na potrzeby weryfikacji certyfikatu aplikacji/usługi. |
 |SecureOnlyMode|wartość logiczna, domyślna to FALSE|Dynamiczny| SecureOnlyMode: true: zwrotny serwer Proxy tylko przekazać dalej do usług, które publikują bezpieczne punkty końcowe. false: zwrotny serwer Proxy może przekazywać żądania do bezpiecznego/niezabezpieczonego punktów końcowych.  |
 |ForwardClientCertificate|wartość logiczna, domyślna to FALSE|Dynamiczny| |
 
 ### <a name="section-name-applicationgatewayhttpservicecommonnameandissuer"></a>Nazwa sekcji: Bramy aplikacji/Http/ServiceCommonNameAndIssuer
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|  |
 
 ### <a name="section-name-management"></a>Nazwa sekcji: zarządzania
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | ImageStoreConnectionString |SecureString |Statyczny|Parametry połączenia z katalogiem głównym do magazynu ImageStore. |
 | ImageStoreMinimumTransferBPS | Int, domyślny to 1024 |Dynamiczny|Szybkość przesyłu minimalna między klastrem i magazynu ImageStore. Ta wartość jest używana do określenia wartości limitu czasu podczas uzyskiwania dostępu do zewnętrznych składniku ImageStore. Zmień tę wartość tylko wtedy, gdy opóźnienie między klastrem i magazynu ImageStore jest wysoka, aby poczekać klaster, aby pobrać z magazynu zewnętrznego ImageStore. |
@@ -325,22 +325,22 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |DisableServerSideCopy | Wartość logiczna, wartość domyślna to false |Statyczny|Ta konfiguracja Włącza lub wyłącza po stronie serwera kopię pakietu aplikacji w składniku ImageStore podczas inicjowania obsługi aplikacji. |
 
 ### <a name="section-name-healthmanagerclusterhealthpolicy"></a>Nazwa sekcji: HealthManager/ClusterHealthPolicy
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | Elementów ConsiderWarningAsError |Wartość logiczna, wartość domyślna to false |Statyczny|Klaster zasad oceny kondycji: ostrzeżenia są traktowane jako błędy. |
 | MaxPercentUnhealthyNodes | Int, domyślna to 0 |Statyczny|Klaster zasad oceny kondycji: dozwolone maksymalny procent węzłów w złej kondycji, aby klaster mógł być w dobrej kondycji. |
 | MaxPercentUnhealthyApplications | Int, domyślna to 0 |Statyczny|Klaster zasad oceny kondycji: maksymalny procent złej kondycji aplikacji mogą aby klaster mógł być w dobrej kondycji. |
 
 ### <a name="section-name-healthmanagerclusterupgradehealthpolicy"></a>Nazwa sekcji: HealthManager/ClusterUpgradeHealthPolicy
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |Elementów MaxPercentDeltaUnhealthyNodes|Int, domyślna to 10|Statyczny|Zasady oceny kondycji uaktualnienia klastra: dozwolony maksymalny procent złej kondycji węzłów różnicowych aby klaster mógł być w dobrej kondycji |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, domyślną jest 15|Statyczny|Zasady oceny kondycji uaktualnienia klastra: dozwolone maksymalny procent różnicowych węzłów w złej kondycji w domenie uaktualnienia, aby klaster mógł być w dobrej kondycji |
 
 ### <a name="section-name-faultanalysisservice"></a>Nazwa sekcji: FaultAnalysisService
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |Int, domyślna to 0 |Statyczny|NOT_PLATFORM_UNIX_START TargetReplicaSetSize dla FaultAnalysisService. |
+| Wartość TargetReplicaSetSize |Int, domyślna to 0 |Statyczny|NOT_PLATFORM_UNIX_START TargetReplicaSetSize dla FaultAnalysisService. |
 | MinReplicaSetSize |Int, domyślna to 0 |Statyczny|MinReplicaSetSize dla FaultAnalysisService. |
 | ReplicaRestartWaitDuration |Czas w sekundach, domyślna to 60 minut|Statyczny|Określ zakres czasu w sekundach. ReplicaRestartWaitDuration dla FaultAnalysisService. |
 | QuorumLossWaitDuration | Czas w sekundach, domyślnie jest MaxValue |Statyczny|Określ zakres czasu w sekundach. QuorumLossWaitDuration dla FaultAnalysisService. |
@@ -354,7 +354,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ReplicaDropWaitDurationInSeconds|int, domyślny to 600|Statyczny|Ten parametr jest używany, gdy jest wywoływana utraty danych interfejsu api.  Określa, jak długo system będzie oczekiwał na replikę w celu pobrania porzucona po Usuń replikę wewnętrznie jest wywoływana na nim. |
 
 ### <a name="section-name-filestoreservice"></a>Nazwa sekcji: FileStoreService
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | NamingOperationTimeout |Czas w sekundach, domyślna to 60 |Dynamiczny|Określ zakres czasu w sekundach. Limit czasu dla operacji nazewnictwa. |
 | QueryOperationTimeout | Czas w sekundach, domyślna to 60 |Dynamiczny|Określ zakres czasu w sekundach. Limit czasu dla operacji zapytania. |
@@ -388,10 +388,10 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |GenerateV1CommonNameAccount| wartość logiczna, domyślna ma wartość TRUE|Statyczny|Określa, czy do generowania konta z algorytmu generowania V1 nazwy użytkownika. Począwszy od platformy Service Fabric w wersji 6.1; zawsze zostanie utworzone konto w wersji 2 generacji. Konto V1 jest niezbędne do uaktualnienia z/do wersji, które nie obsługują generowanie V2 (przed 6.1).|
 
 ### <a name="section-name-imagestoreservice"></a>Nazwa sekcji: ImageStoreService
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | Enabled (Włączony) |Wartość logiczna, wartość domyślna to false |Statyczny|Flaga włączone dla ImageStoreService. Domyślnie: false |
-| TargetReplicaSetSize | Int, domyślna to 7 |Statyczny|TargetReplicaSetSize dla ImageStoreService. |
+| Wartość TargetReplicaSetSize | Int, domyślna to 7 |Statyczny|TargetReplicaSetSize dla ImageStoreService. |
 | MinReplicaSetSize | Int, domyślna to 3 |Statyczny|MinReplicaSetSize dla ImageStoreService. |
 | ReplicaRestartWaitDuration | Czas w sekundach, wartość domyślna to 60.0 * 30 |Statyczny|Określ zakres czasu w sekundach. ReplicaRestartWaitDuration dla ImageStoreService. |
 | QuorumLossWaitDuration | Czas w sekundach, domyślnie jest MaxValue |Statyczny| Określ zakres czasu w sekundach. QuorumLossWaitDuration dla ImageStoreService. |
@@ -399,7 +399,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | PlacementConstraints | ciąg, domyślna to "" |Statyczny| PlacementConstraints dla ImageStoreService. |
 
 ### <a name="section-name-imagestoreclient"></a>Nazwa sekcji: ImageStoreClient
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | ClientUploadTimeout |Czas w sekundach, domyślną jest 1800 |Dynamiczny|Określ zakres czasu w sekundach. Wartość limitu czasu dla żądania przekazywania najwyższego poziomu do usługi magazynu obrazów. |
 | ClientCopyTimeout | Czas w sekundach, domyślną jest 1800 |Dynamiczny| Określ zakres czasu w sekundach. Wartość limitu czasu dla żądania kopiowania najwyższego poziomu do usługi magazynu obrazów. |
@@ -408,14 +408,14 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ClientDefaultTimeout | Czas w sekundach, domyślna to 180 |Dynamiczny| Określ zakres czasu w sekundach. Wartość limitu czasu dla wszystkich żądań bez przekazywania/z systemem innym niż — pobierania (np. istnieje, Usuń) do usługi magazynu obrazów. |
 
 ### <a name="section-name-tokenvalidationservice"></a>Nazwa sekcji: TokenValidationService
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | Dostawcy |ciąg, domyślną jest "DSTS" |Statyczny|Rozdzielana przecinkami lista dostawców weryfikacji tokenu, aby umożliwić (prawidłowych dostawców usług są: DSTS; AAD). Obecnie tylko jednego dostawcę można włączyć w dowolnej chwili. |
 
 ### <a name="section-name-upgradeorchestrationservice"></a>Nazwa sekcji: UpgradeOrchestrationService
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |Int, domyślna to 0 |Statyczny |TargetReplicaSetSize dla UpgradeOrchestrationService. |
+| Wartość TargetReplicaSetSize |Int, domyślna to 0 |Statyczny |TargetReplicaSetSize dla UpgradeOrchestrationService. |
 | MinReplicaSetSize |Int, domyślna to 0 |Statyczny |MinReplicaSetSize dla UpgradeOrchestrationService.
 | ReplicaRestartWaitDuration | Czas w sekundach, domyślna to 60 minut|Statyczny| Określ zakres czasu w sekundach. ReplicaRestartWaitDuration dla UpgradeOrchestrationService. |
 | QuorumLossWaitDuration | Czas w sekundach, domyślnie jest MaxValue |Statyczny| Określ zakres czasu w sekundach. QuorumLossWaitDuration dla UpgradeOrchestrationService. |
@@ -425,10 +425,10 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | UpgradeApprovalRequired | Wartość logiczna, wartość domyślna to false | Statyczny|Ustawienie, aby wymagają zatwierdzenia przez administratora przed kontynuowaniem uaktualniania kodu. |
 
 ### <a name="section-name-upgradeservice"></a>Nazwa sekcji: UpgradeService
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | PlacementConstraints |ciąg, domyślna to "" |Niedozwolone|PlacementConstraints uaktualnienia usługi. |
-| TargetReplicaSetSize | Int, domyślna to 3 |Niedozwolone| TargetReplicaSetSize dla UpgradeService. |
+| Wartość TargetReplicaSetSize | Int, domyślna to 3 |Niedozwolone| TargetReplicaSetSize dla UpgradeService. |
 | MinReplicaSetSize | Int, domyślna to 2 |Niedozwolone| MinReplicaSetSize dla UpgradeService. |
 | CoordinatorType | ciąg, domyślną jest "WUTest"|Niedozwolone|CoordinatorType dla UpgradeService. |
 | BaseUrl | ciąg, domyślna to "" |Statyczny|BaseUrl dla UpgradeService. |
@@ -442,7 +442,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | TestCabFolder | ciąg, domyślna to "" |Statyczny| TestCabFolder dla UpgradeService. |
 
 ### <a name="section-name-security"></a>Nazwa sekcji: zabezpieczeń
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |ClusterCredentialType|ciąg, domyślny jest L "None"|Niedozwolone|Wskazuje typ poświadczenia zabezpieczeń używane w celu zabezpieczania klastra. Prawidłowe wartości to "Brak/X509/systemu Windows" |
 |ServerAuthCredentialType|ciąg, domyślny jest L "None"|Statyczny|Wskazuje typ poświadczeń zabezpieczeń do użycia w celu zabezpieczenia komunikacji między klienta fabricclient z rolą i klastra. Prawidłowe wartości to "Brak/X509/systemu Windows" |
@@ -451,7 +451,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ServerCertThumbprints|ciąg, domyślny jest L""|Dynamiczny|Odciski palców certyfikatów serwera używane przez klaster do komunikowania się klientów. Klienci używają tego do uwierzytelniania w klastrze. Jest listy rozdzielanej przecinkami nazw. |
 |ClientCertThumbprints|ciąg, domyślny jest L""|Dynamiczny|Odciski palców certyfikatów używanych przez klientów do komunikowania się z klastrem; klaster używa to autoryzować połączenia przychodzącego. Jest listy rozdzielanej przecinkami nazw. |
 |AdminClientCertThumbprints|ciąg, domyślny jest L""|Dynamiczny|Odciski palców certyfikatów używanych przez klientów w roli administratora. Jest listy rozdzielanej przecinkami nazw. |
-|CrlCheckingFlag|uint, domyślny jest 0x40000000|Dynamiczny|Domyślne flagi weryfikacji łańcucha certyfikatu; może być zastąpiona przez flagi specyficzne dla składników; np. federacyjnego/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ TYLKO ustawienie na wartość 0 wyłącza sprawdzanie listy CRL pełną listę obsługiwanych wartości jest udokumentowany przez wartość elementu dwFlags z CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078 (v=vs.85).aspx |
+|CrlCheckingFlag|uint, domyślny jest 0x40000000|Dynamiczny|Domyślne flagi weryfikacji łańcucha certyfikatu; może być zastąpiona przez flagi specyficzne dla składników; np. federacyjnego/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ TYLKO ustawienie na 0 spowoduje wyłączenie listy CRL sprawdzanie pełną listę obsługiwanych wartości jest opisane przez wartość elementu dwFlags z CertGetCertificateChain: http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
 |IgnoreCrlOfflineError|wartość logiczna, domyślna to FALSE|Dynamiczny|Czy należy zignorować błąd w trybie offline listy CRL, gdy przychodzący certyfikaty klienta sprawdzi po stronie serwera |
 |IgnoreSvrCrlOfflineError|wartość logiczna, domyślna ma wartość TRUE|Dynamiczny|Czy należy zignorować błąd w trybie offline listy CRL, gdy po stronie klienta sprawdza, czy certyfikaty serwera przychodzące; Domyślna wartość true. Ataki z serwera odwołane certyfikaty wymagają naruszenie DNS; trudniejsze niż z certyfikatów odwołanych przez klienta. |
 |CrlDisablePeriod|Zakres czasu, domyślnie jest Common::TimeSpan::FromMinutes(15)|Dynamiczny|Określ zakres czasu w sekundach. Jak długo sprawdzanie listy CRL jest wyłączone dla danego certyfikatu po napotkaniu błędu w trybie offline; Jeśli listy CRL w trybie offline błąd można zignorować. |
@@ -476,42 +476,42 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |SettingsX509StoreName| ciąg, domyślny jest L "MY"| Dynamiczny|X509 certyfikatu Magazyn używany przez sieci szkieletowej dla ochrony konfiguracji |
 
 ### <a name="section-name-securityadminclientx509names"></a>Nazwa sekcji: Zabezpieczeń/AdminClientX509Names
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
 
 ### <a name="section-name-securityclientx509names"></a>Nazwa sekcji: Zabezpieczeń/ClientX509Names
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
 
 ### <a name="section-name-securityclusterx509names"></a>Nazwa sekcji: Zabezpieczeń/ClusterX509Names
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
 
 ### <a name="section-name-securityserverx509names"></a>Nazwa sekcji: Zabezpieczeń/ServerX509Names
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny| |
 
 ### <a name="section-name-securityclientcertificateissuerstores"></a>Nazwa sekcji: Zabezpieczeń/ClientCertificateIssuerStores
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, domyślna wartość to Brak |Dynamiczny|X509 przechowuje wystawcy certyfikatu dla certyfikatów klienta; Nazwa = clientIssuerCN; Wartość = rozdzielana przecinkami lista magazynów |
 
 ### <a name="section-name-securityclustercertificateissuerstores"></a>Nazwa sekcji: Zabezpieczeń/ClusterCertificateIssuerStores
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, domyślna wartość to Brak |Dynamiczny|X509 magazyny certyfikatów wystawców certyfikatów klastra; Nazwa = clusterIssuerCN; Wartość = rozdzielana przecinkami lista magazynów |
 
 ### <a name="section-name-securityservercertificateissuerstores"></a>Nazwa sekcji: Zabezpieczeń/ServerCertificateIssuerStores
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, domyślna wartość to Brak |Dynamiczny|X509 magazyny certyfikatów wystawców certyfikatów serwera; Nazwa = serverIssuerCN; Wartość = rozdzielana przecinkami lista magazynów |
 
 ### <a name="section-name-securityclientaccess"></a>Nazwa sekcji: Zabezpieczeń/ClientAccess
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | CreateName |ciąg, domyślną jest "Admin" |Dynamiczny|Konfiguracja zabezpieczeń do utworzenia identyfikatora URI nazewnictwa. |
 | DeleteName |ciąg, domyślną jest "Admin" |Dynamiczny|Konfiguracja zabezpieczeń do usunięcia identyfikatora URI nazewnictwa. |
@@ -604,7 +604,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |SetUpgradeOrchestrationServiceState|ciąg, domyślny jest L "Admin"| Dynamiczny|Wywołuje SetUpgradeOrchestrationServiceState na partycji |
 
 ### <a name="section-name-reconfigurationagent"></a>Nazwa sekcji: ReconfigurationAgent
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | ApplicationUpgradeMaxReplicaCloseDuration | Czas w sekundach, domyślna to 900 |Dynamiczny|Określ zakres czasu w sekundach. Czas, dla którego system będzie oczekiwał przed zakończeniem hostów usługi, które mają repliki są nadal w zamknięte podczas uaktualniania aplikacji.|
 | ServiceApiHealthDuration | Czas w sekundach, domyślna to 30 minut |Dynamiczny| Określ zakres czasu w sekundach. ServiceApiHealthDuration definiuje, jak długo poczekamy interfejsu API usługi, do uruchomienia przed rozpoczęciem możemy raportu złej kondycji. |
@@ -613,11 +613,11 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 | NodeDeactivationMaxReplicaCloseDuration | Czas w sekundach, domyślna to 900 |Dynamiczny|Określ zakres czasu w sekundach. Czas, dla którego system będzie oczekiwał przed zakończeniem hostów usługi, które mają repliki są nadal w zamknięte podczas dezaktywacji węzła. |
 | FabricUpgradeMaxReplicaCloseDuration | Czas w sekundach, domyślna to 900 |Dynamiczny| Określ zakres czasu w sekundach. Czas, dla którego system będzie oczekiwał przed zakończeniem hostów usługi, które mają repliki są nadal w zamknięte podczas uaktualnienia programu fabric. |
 |GracefulReplicaShutdownMaxDuration|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(120)|Dynamiczny|Określ zakres czasu w sekundach. Czas, dla którego system będzie oczekiwał przed zakończeniem hostów usługi, które mają repliki są nadal w Zamknij. Jeśli ta wartość jest równa 0, nie należy poinstruować replik zamknięcia.|
-|ReplicaChangeRoleFailureRestartThreshold|Int, domyślna to 10|Dynamiczny| Integer. Określ liczbę błędów interfejsu API podczas podwyższania poziomu podstawowego, po którym zostaną zastosowane automatycznie ograniczenie akcji (ponowne uruchomienie repliki). |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, domyślna to 2147483647|Dynamiczny| Integer. Określ liczbę błędów interfejsu API podczas podwyższania poziomu podstawowego, po którym ostrzeżenie raport o kondycji zostanie wygenerowany.|
+|ReplicaChangeRoleFailureRestartThreshold|Int, domyślna to 10|Dynamiczny| Liczba całkowita. Określ liczbę błędów interfejsu API podczas podwyższania poziomu podstawowego, po którym zostaną zastosowane automatycznie ograniczenie akcji (ponowne uruchomienie repliki). |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, domyślna to 2147483647|Dynamiczny| Liczba całkowita. Określ liczbę błędów interfejsu API podczas podwyższania poziomu podstawowego, po którym ostrzeżenie raport o kondycji zostanie wygenerowany.|
 
 ### <a name="section-name-placementandloadbalancing"></a>Nazwa sekcji: PlacementAndLoadBalancing
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | TraceCRMReasons |Wartość logiczna, domyślna to true |Dynamiczny|Określa, czy śledzenie przyczyn CRM wystawiony przemieszczania do kanału zdarzenia operacyjne. |
 | ValidatePlacementConstraint | Wartość logiczna, domyślna to true |Dynamiczny| Określa, czy wyrażenie PlacementConstraint usługi sprawdzania poprawności po zaktualizowaniu usługi ServiceDescription. |
@@ -672,7 +672,7 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |AutoDetectAvailableResources|wartość logiczna, domyślna ma wartość TRUE|Statyczny|Tej konfiguracji wyzwoli automatyczne wykrywanie dostępnych zasobów w węźle (Procesora i pamięci) Jeśli ta konfiguracja jest równa true — firma Microsoft będzie odczytać rzeczywistej pojemności i popraw je, jeśli użytkownika określono nieprawidłowy węzeł pojemności lub nie zostały zdefiniowane je na wszystkich Jeśli tej konfiguracji jest ustawiona na false - zostaną wykonane następujące czynności  Śledzenie ostrzeżenia użytkownika określono nieprawidłowy węzeł możliwości; ale możemy nie poprawi oznacza ten użytkownik chce mieć możliwości określony jako > niż rzeczywiście ma węzeł lub jeśli pojemności to Niezdefiniowany; zakłada nieograniczone pojemności |
 
 ### <a name="section-name-hosting"></a>Nazwa sekcji: hostingu
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | ServiceTypeRegistrationTimeout |Czas w sekundach, domyślna to 300 |Dynamiczny|Maksymalny dozwolony czas realizacji ServiceType rejestrowana z sieci szkieletowej |
 | ServiceTypeDisableFailureThreshold |Liczby całkowitej, domyślna to 1 |Dynamiczny|To jest próg liczby awarii, po upływie którego FailoverManager (FM) jest powiadamiany o konieczności Wyłącz typ usługi, w tym węźle i spróbuj inny węzeł do umieszczania. |
@@ -705,20 +705,20 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |EnableDockerHealthCheckIntegration|wartość logiczna, domyślna ma wartość TRUE|Statyczny|Umożliwia integrację docker test kondycji zdarzeń o raport o kondycji systemu sieci szkieletowej usług |
 
 ### <a name="section-name-federation"></a>Nazwa sekcji: federacyjnego
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | LeaseDuration |Czas w sekundach, wartość domyślna to 30 |Dynamiczny|Czas trwania dzierżawy ważny między węzłem a jego sąsiadów. |
 | LeaseDurationAcrossFaultDomain |Czas w sekundach, wartość domyślna to 30 |Dynamiczny|Czas trwania dzierżawy ważny między węzłem a jego sąsiadów domen błędów. |
 
 ### <a name="section-name-clustermanager"></a>Nazwa sekcji: ClusterManager
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 | UpgradeStatusPollInterval |Czas w sekundach, domyślna to 60 |Dynamiczny|Częstotliwość sondowania stanu uaktualniania aplikacji. Ta wartość określa częstotliwość aktualizacji dla każde wywołanie GetApplicationUpgradeProgress |
 | UpgradeHealthCheckInterval |Czas w sekundach, domyślna to 60 |Dynamiczny|Częstotliwość stan kondycji sprawdza podczas uaktualniania monitorowanej aplikacji |
 | FabricUpgradeStatusPollInterval |Czas w sekundach, domyślna to 60 |Dynamiczny|Stan uaktualnienia częstotliwość sondowania sieci szkieletowej. Ta wartość określa częstotliwość aktualizacji dla każde wywołanie GetFabricUpgradeProgress |
 | FabricUpgradeHealthCheckInterval |Czas w sekundach, domyślna to 60 |Dynamiczny|Częstotliwość stan kondycji Sprawdź podczas uaktualniania monitorowanych sieci szkieletowej |
 |InfrastructureTaskProcessingInterval | Czas w sekundach, domyślna to 10 |Dynamiczny|Określ zakres czasu w sekundach. Interwał przetwarzania używane przez zadanie infrastruktury przetwarzania komputera stanu. |
-|TargetReplicaSetSize |Int, domyślna to 7 |Niedozwolone|TargetReplicaSetSize dla ClusterManager. |
+|Wartość TargetReplicaSetSize |Int, domyślna to 7 |Niedozwolone|TargetReplicaSetSize dla ClusterManager. |
 |MinReplicaSetSize |Int, domyślna to 3 |Niedozwolone|MinReplicaSetSize dla ClusterManager. |
 |ReplicaRestartWaitDuration |Czas w sekundach, wartość domyślna to (60.0 * 30)|Niedozwolone|Określ zakres czasu w sekundach. ReplicaRestartWaitDuration dla ClusterManager. |
 |QuorumLossWaitDuration |Czas w sekundach, domyślnie jest MaxValue |Niedozwolone| Określ zakres czasu w sekundach. QuorumLossWaitDuration dla ClusterManager. |
@@ -739,43 +739,43 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |ReplicaSetCheckTimeoutRollbackOverride |Czas w sekundach, domyślnie jest 1200 |Dynamiczny| Określ zakres czasu w sekundach. Jeśli wartości ReplicaSetCheckTimeout jest równa wartości maksymalnej DWORD; następnie zostanie on przesłonięty przez wartość tej konfiguracji na potrzeby wycofywania. Wartość używaną do przewijaniem do nigdy nie zostanie zastąpiona. |
 
 ### <a name="section-name-defragmentationemptynodedistributionpolicy"></a>Nazwa sekcji: DefragmentationEmptyNodeDistributionPolicy
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyIntegerValueMap, domyślna wartość to Brak|Dynamiczny|Określa, że defragmentacja zasad następuje podczas opróżniania węzłów. Dla danej metryki 0 wskazuje, że rz należy dążyć do defragmentacji węzłów równomiernie między UDs i FDs; wartość 1 oznacza tylko węzły muszą defragmentacji |
 
 ### <a name="section-name-defragmentationmetrics"></a>Nazwa sekcji: DefragmentationMetrics
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyBoolValueMap, domyślna wartość to Brak|Dynamiczny|Określa zestaw metryk, które mają być używane do defragmentacji, a nie równoważenia obciążenia. |
 
 ### <a name="section-name-defragmentationmetricspercentornumberofemptynodestriggeringthreshold"></a>Nazwa sekcji: DefragmentationMetricsPercentOrNumberOfEmptyNodesTriggeringThreshold
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, domyślna wartość to Brak|Dynamiczny|Określa liczbę wolne węzły, które są potrzebne do uwzględnienia klastra defragmentacji, określając albo procent w zakresie [0.0-1.0) lub liczbę węzłów pusty jako liczbę > = 1.0 |
 
 ### <a name="section-name-dnsservice"></a>Nazwa sekcji: DnsService
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |IsEnabled|wartość logiczna, domyślna to FALSE|Statyczny| |
-|InstanceCount|int, domyślna wynosi -1|Statyczny|  |
+|Wartość InstanceCount|int, domyślna wynosi -1|Statyczny|  |
 
 ### <a name="section-name-metricactivitythresholds"></a>Nazwa sekcji: MetricActivityThresholds
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyIntegerValueMap, domyślna wartość to Brak|Dynamiczny|Określa zbiór MetricActivityThresholds metryki w klastrze. Równoważenie będzie działać, jeśli maxNodeLoad jest większa niż MetricActivityThresholds. Do defragmentowania metryki definiuje ilość równości obciążenia lub poniżej którego usługi sieć szkieletowa będzie uwzględniać węzeł pusty |
 
 ### <a name="section-name-metricbalancingthresholds"></a>Nazwa sekcji: MetricBalancingThresholds
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, domyślna wartość to Brak|Dynamiczny|Określa zbiór MetricBalancingThresholds metryki w klastrze. Równoważenie będzie działać, jeśli maxNodeLoad/minNodeLoad jest większa niż MetricBalancingThresholds. Defragmentacja będzie działać, jeśli jest mniejszy niż MetricBalancingThresholds maxNodeLoad/minNodeLoad w co najmniej jednym FD lub UD. |
 
 ### <a name="section-name-nodebufferpercentage"></a>Nazwa sekcji: NodeBufferPercentage
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, domyślna wartość to Brak|Dynamiczny|Procent przepustowości węzła na nazwę metryki; używane jako buforu, aby zachować niektóre wolnego miejsca w węźle w przypadku trybu failover. |
 
 ### <a name="section-name-replication"></a>Nazwa sekcji: replikacji
-| **Parameter** | **Dozwolone wartości** | **Zasady uaktualniania**| **Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania**| **Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |MaxCopyQueueSize|Uint, domyślny to 1024|Statyczny|Jest to maksymalna wartość Określa początkowy rozmiar kolejki, co umożliwia utrzymywanie operacji replikacji.  Należy pamiętać, że musi być potęgą liczby 2.  Jeśli w czasie wykonywania kolejki rozwoju na tę operację rozmiar zostanie zdławionych między replikatorów podstawowego i pomocniczego.|
 |BatchAcknowledgementInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromMilliseconds(15)|Statyczny|Określ zakres czasu w sekundach. Określa czas oczekiwania po otrzymaniu operacji przed odsyła potwierdzenia replikatora. Inne operacje otrzymanych w tym czasie będzie miał ich potwierdzeń wysyłane z powrotem w pojedynczym komunikacie -> ograniczenia ruchu sieciowego, ale potencjalnie zmniejszenie przepływności replikatora.|
@@ -789,10 +789,10 @@ Poniżej znajduje się lista sieci szkieletowej ustawień, które można dostoso
 |MaxSecondaryReplicationQueueMemorySize|Uint — wartość domyślna to 0|Statyczny|Jest to maksymalna wartość kolejki dodatkowej replikacji w bajtach.|
 |QueueHealthMonitoringInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(30)|Statyczny|Określ zakres czasu w sekundach. Ta wartość określa okres czasu, używany przez Replikator do monitorowania kondycji ostrzeżenie/błąd zdarzeń kolejki operacji replikacji. Wartość "0" powoduje wyłączenie monitorowania kondycji |
 |QueueHealthWarningAtUsagePercent|uint, domyślny to 80|Statyczny|Ta wartość Określa użycie kolejki replikacji (w procentach) po upływie którego możemy zgłaszanie ostrzeżenie kolejki wysokiego użycia. Firma Microsoft zrobić po okresie prolongaty, o QueueHealthMonitoringInterval. Jeśli użycie kolejki spada poniżej tej wartości procentowej w okresie prolongaty|
-|RetryInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(5)|Statyczny|Określ zakres czasu w sekundach. Podczas operacji zostało utracone lub odrzucone ten czasomierz Określa, jak często replikatora ponowi operację wysyłania.|
+|retryInterval|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(5)|Statyczny|Określ zakres czasu w sekundach. Podczas operacji zostało utracone lub odrzucone ten czasomierz Określa, jak często replikatora ponowi operację wysyłania.|
 
 ### <a name="section-name-transport"></a>Nazwa sekcji: transportu
-| **Parameter** | **Dozwolone wartości** |**Zasady uaktualniania** |**Wskazówki lub krótki opis** |
+| **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania** |**Wskazówki lub krótki opis** |
 | --- | --- | --- | --- |
 |ResolveOption|ciąg, jest domyślną L "nieokreślony"|Statyczny|Określa, jak nazwa FQDN został rozwiązany.  Prawidłowe wartości to "nieokreślonych/ipv4 i ipv6". |
 |ConnectionOpenTimeout|Zakres czasu, domyślnie jest Common::TimeSpan::FromSeconds(60)|Statyczny|Określ zakres czasu w sekundach. Upłynął limit czasu połączenia instalacji po stronie przychodzących i odbierać (w tym negocjacji zabezpieczeń w trybie zabezpieczonym) |

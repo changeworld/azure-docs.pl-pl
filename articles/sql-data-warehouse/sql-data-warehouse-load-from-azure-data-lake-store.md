@@ -1,56 +1,50 @@
 ---
-title: "Obciążenie — usługi Azure Data Lake Store SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak ładowanie danych z usługi Azure Data Lake Store do usługi Azure SQL Data Warehouse przy użyciu programu PolyBase tabel zewnętrznych."
+title: 'Samouczek: Ładowanie z usługi Azure Data Lake — magazyn Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
+description: Użyj programu PolyBase tabel zewnętrznych do ładowania danych z usługi Azure Data Lake Store do usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
-manager: barbkess
-editor: 
-ms.assetid: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 3/14/2018
-ms.author: cakarst;barbkess
-ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 3c6907e8eb4ae4bbfae76a5a220d670427afd703
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Ładowanie danych z usługi Azure Data Lake Store do magazynu danych SQL
-Ten dokument stanowi wszystkie kroki potrzebne do ładowania danych z usługi Azure Data Lake magazyn (ADLS) do usługi SQL Data Warehouse przy użyciu programu PolyBase.
-Gdy jesteś w stanie uruchamianie zapytań ad hoc przez dane przechowywane w ADLS przy użyciu tabel zewnętrznych, zalecamy importowania danych do magazynu danych SQL, aby uzyskać najlepszą wydajność.
+# <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Ładowanie danych z usługi Azure Data Lake Store SQL Data Warehouse
+Użyj programu PolyBase tabel zewnętrznych do ładowania danych z usługi Azure Data Lake Store do usługi Azure SQL Data Warehouse. Mimo że można uruchomić zapytania ad hoc na dane przechowywane w ADLS, zaleca się importowania danych do magazynu danych SQL, aby uzyskać najlepszą wydajność.
 
-W tym samouczku przedstawiono sposób:
+> [!div class="checklist"]
+> * Tworzenie obiektów bazy danych, wymagane do załadowania z usługi Azure Data Lake Store.
+> * Nawiązać katalog usługi Azure Data Lake Store.
+> * Ładowanie danych do usługi Azure SQL Data Warehouse.
 
-1. Tworzenie obiektów bazy danych, wymagane do załadowania z usługi Azure Data Lake Store.
-2. Nawiązać katalog usługi Azure Data Lake Store.
-3. Ładowanie danych do usługi Azure SQL Data Warehouse.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
+Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+
 Aby uruchomić ten samouczek, potrzebne są:
 
-* Azure aplikacji usługi Active Directory do użycia na potrzeby uwierzytelniania do usługi. Aby utworzyć, wykonaj [uwierzytelniania usługi Active directory](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)
+* Azure aplikacji usługi Active Directory do użycia na potrzeby uwierzytelniania do usługi. Aby utworzyć, wykonaj [uwierzytelniania usługi Active directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 >[!NOTE] 
-> Potrzebujesz Identyfikatora klienta, klucz i wartość tokenu punktu końcowego OAuth2.0 aplikacji Active Directory do nawiązania połączenia z usługi Azure Data Lake z magazynu danych SQL. Szczegóły dotyczące sposobu uzyskania tych wartości znajdują się w łącze powyżej.
->Uwaga dotycząca rejestracji aplikacji Azure Active Directory, użyj Identyfikatora aplikacji jako identyfikator klienta.
+> Potrzebujesz Identyfikatora klienta, klucz i wartość tokenu punktu końcowego OAuth2.0 aplikacji Active Directory do nawiązania połączenia z usługi Azure Data Lake z magazynu danych SQL. Szczegóły dotyczące sposobu uzyskania tych wartości znajdują się w łącze powyżej. Dla rejestracji aplikacji Azure Active Directory należy użyć Identyfikatora aplikacji jako identyfikator klienta.
+> 
 
-* SQL Server Management Studio lub SQL Server Data Tools, aby pobrać narzędzia SSMS i połączyć zobacz [SSMS zapytania](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
+* Magazyn danych Azure SQL. Zobacz [tworzenie i zapytań i magazyn danych SQL Azure](create-data-warehouse-portal.md).
 
-* Magazyn danych SQL Azure, aby utworzyć wykonaj jedną: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
+* Azure Data Lake Store. Zobacz [wprowadzenie do usługi Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md). 
 
-* Azure Data Lake Store, aby utworzyć wykonaj jedną: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
+##  <a name="create-a-credential"></a>Utwórz poświadczenia
+Aby uzyskać dostęp do usługi Azure Data Lake Store, należy utworzyć klucz główny bazy danych, aby zaszyfrować klucz tajny poświadczenie użyte w następnym kroku. Następnie można utworzyć poświadczenia o zakresie bazy danych, która przechowuje poświadczenia główne usługi skonfigurowane w usłudze AAD. Dla osób, które użyto który można podłączyć do obiektów blob magazynu Azure z systemem Windows, należy pamiętać, że składnia poświadczeń różnych PolyBase.
 
-
-###  <a name="create-a-credential"></a>Utwórz poświadczenia
-Aby uzyskać dostęp do usługi Azure Data Lake Store, należy utworzyć klucz główny bazy danych, aby zaszyfrować klucz tajny poświadczenie użyte w następnym kroku.
-Następnie można utworzyć poświadczenia o zakresie bazy danych, która przechowuje poświadczenia główne usługi skonfigurowane w usłudze AAD. Dla osób, które użyto który można podłączyć do obiektów blob magazynu Azure z systemem Windows, należy pamiętać, że składnia poświadczeń różnych PolyBase.
-Aby połączyć się z usługi Azure Data Lake Store, należy najpierw **pierwszy** tworzenie aplikacji Azure Active Directory Utwórz klucz dostępu i umożliwić aplikacji dostęp do zasobów usługi Azure Data Lake. Instrukcje, aby wykonać te czynności znajdują się [tutaj](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
+Aby połączyć się z usługi Azure Data Lake Store, należy najpierw **pierwszy** tworzenie aplikacji Azure Active Directory Utwórz klucz dostępu i umożliwić aplikacji dostęp do zasobów usługi Azure Data Lake. Aby uzyskać instrukcje, zobacz [Uwierzytelnij, aby usługi Azure Data Lake magazynu przy użyciu usługi Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -80,9 +74,8 @@ WITH
 ;
 ```
 
-
-### <a name="create-the-external-data-source"></a>Tworzenie zewnętrznego źródła danych
-Użyj tej [Tworzenie zewnętrznego źródła danych] [ CREATE EXTERNAL DATA SOURCE] polecenia do przechowywania lokalizacji danych. 
+## <a name="create-the-external-data-source"></a>Tworzenie zewnętrznego źródła danych
+Użyj tej [Tworzenie zewnętrznego źródła danych](/sql/t-sql/statements/create-external-data-source-transact-sql) polecenia do przechowywania lokalizacji danych. 
 
 ```sql
 -- C: Create an external data source
@@ -100,7 +93,7 @@ WITH (
 
 ## <a name="configure-data-format"></a>Skonfiguruj format danych
 Aby zaimportować dane z ADLS, należy określić External File Format. Ten obiekt definiuje, jak pliki są zapisywane w ADLS.
-Pełną listę można znaleźć w naszej dokumentacji T-SQL [utworzyć FORMAT pliku zewnętrznego][CREATE EXTERNAL FILE FORMAT]
+Pełną listę można znaleźć w naszej dokumentacji T-SQL [utworzyć FORMAT pliku zewnętrznego](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
 ```sql
 -- D: Create an external file format
@@ -160,7 +153,7 @@ Opcje REJECT_TYPE i REJECT_VALUE umożliwiają definiowanie, ile wierszy lub war
  Azure Data Lake store używa kontroli dostępu na podstawie ról (RBAC) w celu kontroli dostępu do danych. Oznacza to, że nazwy głównej usługi musi mieć uprawnienia odczytu do katalogów określonych w parametrze lokalizacji i element podrzędny elementu końcowego katalogów i plików. Dzięki temu PolyBase w celu uwierzytelniania i załadować danych. 
 
 ## <a name="load-the-data"></a>Ładowanie danych
-Aby załadować dane z użycia usługi Azure Data Lake Store [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] instrukcji. 
+Aby załadować dane z użycia usługi Azure Data Lake Store [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) instrukcji. 
 
 CTAS tworzy nową tabelę i wypełnia wyników w instrukcji select. CTAS definiuje nowa tabela na tej samej kolumny i typy danych wyników w instrukcji select. Po wybraniu wszystkich kolumn z tabeli zewnętrznej nowa tabela jest repliką kolumn i typy danych w tabeli zewnętrznej.
 
@@ -177,7 +170,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Optymalizacja magazynu kolumn kompresji
-Domyślnie usługa SQL Data Warehouse przechowuje tabeli jako klastrowany indeks magazynu kolumn. Po zakończeniu obciążenia niektóre wiersze danych może nie można skompresować do magazynu kolumn.  Brak z różnych powodów, dlaczego jest to możliwe. Aby dowiedzieć się więcej, zobacz [Zarządzaj indeksami magazynu kolumn][manage columnstore indexes].
+Domyślnie usługa SQL Data Warehouse przechowuje tabeli jako klastrowany indeks magazynu kolumn. Po zakończeniu obciążenia niektóre wiersze danych może nie można skompresować do magazynu kolumn.  Brak z różnych powodów, dlaczego jest to możliwe. Aby dowiedzieć się więcej, zobacz [Zarządzaj indeksami magazynu kolumn](sql-data-warehouse-tables-index.md).
 
 Aby zoptymalizować wydajność zapytań i ich kompresji magazynu kolumn po załadowaniu, Odbuduj tabelę, aby wymusić indeksu magazynu kolumn do skompresowania wszystkie wiersze.
 
@@ -187,41 +180,31 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ```
 
-Aby uzyskać więcej informacji na temat zachowania indeksy magazynu kolumn, zobacz [Zarządzaj indeksami magazynu kolumn] [ manage columnstore indexes] artykułu.
-
 ## <a name="optimize-statistics"></a>Optymalizacja statystyki
 Najlepiej utworzyć statystyki dla pojedynczej kolumny natychmiast po załadowaniu. Dostępne są niektóre opcje wyboru statystyk. Na przykład jeśli tworzenie statystyk pojedynczej kolumny w każdej kolumnie go może zająć dużo czasu odbudować wszystkie statystyki. Jeśli wiesz, że niektóre kolumny nie będą znajdować się w predykatach kwerendy, można pominąć tworzenie statystyk na podstawie tych kolumn.
 
-Jeśli zdecydujesz się tworzenie statystyk pojedynczej kolumny w każdej kolumnie każdej tabeli, można użyć procedury składowanej przykładowy kod `prc_sqldw_create_stats` w [statystyki] [ statistics] artykułu.
+Jeśli zdecydujesz się tworzenie statystyk pojedynczej kolumny w każdej kolumnie każdej tabeli, można użyć procedury składowanej przykładowy kod `prc_sqldw_create_stats` w [statystyki](sql-data-warehouse-tables-statistics.md) artykułu.
 
 Poniższy przykład jest dobry punkt wyjścia do tworzenia statystyk. Tworzy statystyki pojedynczej kolumny w każdej kolumnie w tabeli wymiarów i w każdej kolumnie łącząca w tabelach faktów. Można dodać jednego lub wielu kolumn statystyki do kolumn tabeli faktów później.
-
 
 ## <a name="achievement-unlocked"></a>Osiągnięcia odblokowane!
 Dane zostały pomyślnie załadowane do magazynu danych SQL Azure. Dobra robota!
 
-## <a name="next-steps"></a>Następne kroki
-Podczas ładowania danych jest pierwszy krok projektowania rozwiązania magazynu danych przy użyciu usługi SQL Data Warehouse. Zobacz nasze zasoby projektowe na [tabel](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) i [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops).
+## <a name="next-steps"></a>Kolejne kroki 
+W tym samouczku utworzono tabel zewnętrznych do definiowania struktury danych przechowywanych w usłudze Azure Data Lake Store, a następnie użyć instrukcji PolyBase CREATE TABLE AS SELECT ładowanie danych do magazynu danych. 
+
+Zostały wykonane następujące zadania:
+> [!div class="checklist"]
+> * Utworzono bazę danych obiekty wymagane do załadowania z usługi Azure Data Lake Store.
+> * Połączenie z katalogiem usługi Azure Data Lake Store.
+> * Załadować dane do magazynu danych SQL Azure.
+> 
+
+Podczas ładowania danych jest pierwszy krok projektowania rozwiązania magazynu danych przy użyciu usługi SQL Data Warehouse. Zapoznaj się z naszym zasoby projektowe.
+
+> [!div class="nextstepaction"]
+>[Dowiedz się, jak tworzenie tabel w usłudze SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
 
 
-<!--Image references-->
 
-<!--Article references-->
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
-[manage columnstore indexes]: sql-data-warehouse-tables-index.md
-[Statistics]: sql-data-warehouse-tables-statistics.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[label]: sql-data-warehouse-develop-label.md
 
-<!--MSDN references-->
-[CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/library/dn935026.aspx
-[CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
-
-<!--Other Web references-->
-[Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
-[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md

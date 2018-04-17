@@ -1,26 +1,24 @@
 ---
-title: "Rozwiązywanie problemów z powolnym działaniem lub awarie klastra usługi HDInsight - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Diagnozowanie i rozwiązywanie problemów z powolnym działaniem lub awarie klastra usługi HDInsight."
+title: Rozwiązywanie problemów z powolnym działaniem lub awarie klastra usługi HDInsight - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Diagnozowanie i rozwiązywanie problemów z powolnym działaniem lub awarie klastra usługi HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 00c4ac0e2ac059efebbfbe0b2426b27361ad8e37
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: bd026169062788fa7587cb6357b3764fbfdb24fb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
 
@@ -209,7 +207,7 @@ Aby zdiagnozować te problemy:
 
     Może to być przypadki, w których interakcji z usługą WebHCat zostały wykonane pomyślnie, ale zadania kończą się niepowodzeniem.
 
-    Templeton zbiera dane wyjściowe zadania konsoli jako `stderr` w `statusdir`, która jest często przydatne podczas rozwiązywania problemów. `stderr`zawiera identyfikator aplikacji YARN rzeczywiste zapytania.
+    Templeton zbiera dane wyjściowe zadania konsoli jako `stderr` w `statusdir`, która jest często przydatne podczas rozwiązywania problemów. `stderr` zawiera identyfikator aplikacji YARN rzeczywiste zapytania.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Krok 4: Przejrzyj stos środowiska i wersje
 

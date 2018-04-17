@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf54c789d766c4bd3d353028e75e34c961470070
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wprowadzenie do wielodostępnych aplikacji SaaS, który korzysta ze wzorca bazy danych na dzierżawcy z bazy danych SQL
 
@@ -24,7 +24,7 @@ Skrypty zarządzania i kodu źródłowego aplikacji są dostępne w [WingtipTick
 
 ## <a name="application-architecture"></a>Architektura aplikacji
 
-Aplikacja Wingtip SaaS korzysta z modelu bazy danych dla dzierżawy. Aby zmaksymalizować wydajność używa puli elastycznej SQL. Dla dzierżawcy mapowania do swoich danych i udostępniania bazy danych katalogu jest używany. Podstawowe aplikacji Wingtip SaaS używa puli z trzech dzierżawcami próbki oraz baza danych katalogu. Kończenie wiele wyników samouczki Wingtip SaaS w dodatki do momentu pierwszego wdrożenia. Dodatki, takie jak analityczne baz danych i schemat bazy danych między zarządzania zostały wprowadzone.
+Aplikacja Wingtip SaaS korzysta z modelu bazy danych dla dzierżawy. Aby zmaksymalizować wydajność używa puli elastycznej SQL. Dla dzierżawcy mapowania do swoich danych i udostępniania bazy danych katalogu jest używany. Podstawowe aplikacji Wingtip SaaS używa puli z trzech dzierżawcami próbki oraz baza danych katalogu. Z aliasów DNS zostały udostępnione serwerów wykazu i dzierżawcy. Aliasy te służą do utrzymania active zasoby używane przez aplikację Wingtip. Aliasy te są aktualizowane w celu punktu odzyskiwania zasobów w samouczkach odzyskiwania po awarii. Kończenie wiele wyników samouczki Wingtip SaaS w dodatki do momentu pierwszego wdrożenia. Dodatki, takie jak analityczne baz danych i schemat bazy danych między zarządzania zostały wprowadzone.
 
 
 ![Architektura SaaS Wingtip](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)

@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 85f25946974b7ede64f9f8fb0009eed42c55c25a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c0cff73e8164bd493554b663d4ffbbf20f5155cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Wgląd wydajności kwerendy bazy danych Azure SQL
 Zarządzanie i dostrajania wydajności relacyjnych baz danych jest trudne zadanie, które wymaga znaczących wiedzę i czas inwestycji. Szczegółowe informacje o wydajności zapytań umożliwia poświęcają mniej czasu Rozwiązywanie problemów z bazy danych wydajności przez korzystanie z następujących:
@@ -29,7 +29,7 @@ Zarządzanie i dostrajania wydajności relacyjnych baz danych jest trudne zadani
 * Szczegółowe informacje o wydajności wymaga, aby zapytania [magazyn zapytań](https://msdn.microsoft.com/library/dn817826.aspx) jest aktywny w bazie danych. Jeśli Magazyn zapytań nie jest uruchomiona, monituje o portalu, możesz ją włączyć.
 
 ## <a name="permissions"></a>Uprawnienia
-Następujące [kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-what-is.md) wymagane są uprawnienia do używania szczegółowe informacje o wydajności zapytań: 
+Następujące [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md) wymagane są uprawnienia do używania szczegółowe informacje o wydajności zapytań: 
 
 * **Czytnik**, **właściciela**, **współautora**, **Współautor bazy danych SQL**, lub **programu SQL Server współautora** uprawnienia są wymagane Aby wyświetlić zasobu najwyższego wykorzystywanie kwerend i wykresy. 
 * **Właściciel**, **współautora**, **Współautor bazy danych SQL**, lub **programu SQL Server współautora** wymagane są uprawnienia do wyświetlania tekstu zapytania.

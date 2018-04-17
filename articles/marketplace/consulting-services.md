@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8d414a7a2ad46fbe63cc6eb8e6a6a41bb76aa432
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c8966f3dfa16010b82d1fe9cd02c63bdde65463c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace usługi doradcze
 Mając na celu połączenia klientów z usługi do obsługi i rozszerzanie ich użycia usługi Azure w portalu Azure Marketplace obsługuje listę ofert usługi konsultacji systemu Integrator (SI) partnerów firmy Microsoft. 
@@ -33,9 +33,9 @@ Partnerzy również muszą mieć kompetencja silver lub gold w obszarze odpowied
 
 |Kompetencja  |Obszar rozwiązania  |
 |---------|---------|
-|Infrastruktura i platformy w chmurze     |   Cloud Platform, Data Center      |
+|Infrastruktura i platformy w chmurze     |   Platforma chmury i centrum danych      |
 |Tworzenie aplikacji i niezależnego dostawcy oprogramowania     |  DevOps programowanie, integracji aplikacji aplikacji       |
-|Zarządzanie danymi i analiza    |  Data Analytics, Data Platform       |
+|Zarządzanie danymi i analiza    |  Analizowanie danych platformy danych       |
 
 Oferty musi mieć jeden z następujących pięć typów usługi (można wyświetlić więcej niż jedną): 
 
@@ -48,6 +48,9 @@ Oferty musi mieć jeden z następujących pięć typów usługi (można wyświet
 Z wyjątkiem *widoków* typ usługi, usługi doradcze mogą być oferowane w osoby (to znaczy siedzibie w lokalizacji klienta lub partnera zakładzie) lub praktycznie (oznacza to, za pośrednictwem telekonferencji, sieci web konferencji lub zdalnego Implementacja). Dostarczał muszą być dostarczane osobiście.
 
 Aby uzyskać więcej informacji, zobacz [umiejętności za pośrednictwem sieci Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
+
+>[!TIP]
+>Te informacje są tylko usług Azure Marketplace. Aby opublikować sklepu portalu Azure Marketplace, będzie to pole wyboru, wybierając z menu rozwijanego "Produkt podstawowy" w chmurze Portal dla partnerów "Azure". Aby opublikować AppSource, można utworzyć tego zaznaczenia, wybierając pozycję "Dynamics 365", "Power BI" lub "Power aplikacje" z menu rozwijanego "Produkt podstawowy" w chmurze Portal dla partnerów. 
 
 ## <a name="supported-countries"></a>Obsługiwanych krajach
 
@@ -95,3 +98,31 @@ Wyświetlanie listy ofertę usługi konsultacji w witrynie Azure Marketplace obe
 4. **Przegląd**: działu marketingu i redagowanie monitoruje Twoje zgłoszenie i optymalizuje go, aby zwiększyć czytelność, gramatyki i skuteczności. 
 5. **Przemieszczania**: Twoje zgłoszenie są przygotowywane do zapoznania się z nimi. 
 6. **Publikowanie**: gdy Tobą a firmą Microsoft są spełnione zawartością przemieszczanego, z listy jest gotowa do użytku na żywo w witrynie Azure Marketplace. Data wygaśnięcia Przejdź dla Twojej listy zależy od kraju, który jest określony w Twojej oferty. Jeśli katalog dla wybranego kraju już jest na żywo w witrynie Azure Marketplace, z listy pojawią się w ciągu kilku godzin. W przeciwnym razie listę pojawi się natychmiast katalogu przechodzi na żywo.
+
+## <a name="content-review-criteria"></a>Kryteria przeglądu zawartości
+
+Po skonfigurowaniu wymaganych elementów wymienionych powyżej zespołu przeglądu zawartości będzie sprawdzić, czy opis oferty jest szczegółowy i pełny dla użytkowników docelowych. 
+
+Warto zauważyć, że w polu Tytuł ma ograniczenie do 50 znaków należy przesyłać czas trwania i usługi typu oferty. To zmaksymalizować optymalizacji dla aparatów wyszukiwania. Wymagany format jest następujący: Nazwa: typ czas trwania
+
+Przykłady:
+
+
+|Próbka Title  |Nieprawidłowy Format  |
+|---------|---------|
+|Wprowadzenie do korzystania z usługi Azure IoT w produkcji    |   IoT produkcyjnym: ocena 2-dniowego      |
+|Workshop na tostery inteligentne        |  Inteligentne tostery: 1-Wk Workshop       |
+|  Aby zapewnić migracji serwera SQL    | Migracja SQL: 3 Wk Weryfikacja koncepcji        |
+
+ 
+Podczas przeglądania oferują opisy i oferować podsumowania, zespół mają zastosowanie następujące kryteria:
+
+|Typ oferty  |Wymagane |Zalecane  |
+|---------|---------|---------|
+|Ocena    |   Zawierają szczegółowe planu dla wielu dnia lub tygodnia wielu ocen i nieznajdującej co dostarczanego klienta można spodziewać się      |    Optymalizacja ofertę podsumowania z najwyższym słowa kluczowe optymalizacji dla aparatów wyszukiwania     |
+|Odprawa    |   Zwrócone co dostarczanego klienta można spodziewać się. Należy pamiętać, że dostarczał muszą być dostarczane osobiście. Jeśli wirtualne usługi, wybierz typ inną ofertę    |  Optymalizacja ofertę podsumowania z najwyższym słowa kluczowe optymalizacji dla aparatów wyszukiwania       |
+|Wdrażanie    |  Zawierają szczegółowe planu dla wielu dnia lub tygodnia wielu wdrożeń i nieznajdującej, jakie zmiany engineering, artefakty techniczne lub pozostałych artefaktów, które klient może spodziewać się jako wyniki stopnia zaangażowania       |    Optymalizacja ofertę podsumowania z najwyższym słowa kluczowe optymalizacji dla aparatów wyszukiwania     |
+|Weryfikacja koncepcji    |    Zwrócone, jakie zmiany engineering, artefakty techniczne lub pozostałych artefaktów, które klient może spodziewać się jako wyniki stopnia zaangażowania     | Optymalizacja ofertę podsumowania z najwyższym słowa kluczowe optymalizacji dla aparatów wyszukiwania        |
+|Warsztaty    |   Zawiera szczegółowe planu codziennie, co tydzień lub co miesiąc, w zależności od wybranego czas trwania Twojej oferty. Zwrócone cele uczenia lub innych materiałów są z Twojej workshop     |   Optymalizacja ofertę podsumowania z najwyższym słowa kluczowe optymalizacji aparatu wyszukiwania      |
+
+W portalu dla partnerów chmury, można dodać formatowanie do Twojej listy przy użyciu [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Jest język lekkie projektu, który pomoże dodać Polski do Twojej listy. 

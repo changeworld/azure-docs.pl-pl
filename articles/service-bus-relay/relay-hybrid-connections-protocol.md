@@ -1,11 +1,11 @@
 ---
-title: "Azure połączeń hybrydowych przekazywania protokołu przewodnik | Dokumentacja firmy Microsoft"
-description: "Przewodnik protokołu Azure przekazywania połączeń hybrydowych było możliwe."
+title: Azure połączeń hybrydowych przekazywania protokołu przewodnik | Dokumentacja firmy Microsoft
+description: Przewodnik protokołu Azure przekazywania połączeń hybrydowych było możliwe.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 43c40baa74b3f7c1f5c9d6626b25bcd45c2f9a10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1979746d143dbf8c3f4bca3f9a3a7925fe8e3f0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure protokołu przekazywania połączeń hybrydowych
-Przekazywania Azure to jedna z kolumn klucza możliwości platformy Azure Service Bus. Nowy *połączeń hybrydowych* możliwość przekazywania jest bezpieczne, protokołu open zmiany, na podstawie HTTP i protokołu WebSockets. Zastępuje ona poprzedniego jednakowo o nazwie *usługi BizTalk Services* funkcji, który został utworzony na podstawie zastrzeżonym protokołem. Integrację usługi aplikacji Azure połączeń hybrydowych było możliwe będzie działać jako — jest.
+Przekazywania Azure to jedna z kolumn klucza możliwości platformy Azure Service Bus. Nowy *połączeń hybrydowych* możliwość przekazywania jest bezpieczne, protokołu open zmiany, na podstawie HTTP i protokołu WebSockets. Zastępuje ona poprzedniego o identycznej nazwie *usługi BizTalk Services* funkcji, który został utworzony na podstawie zastrzeżonym protokołem. Integrację usługi aplikacji Azure połączeń hybrydowych było możliwe będzie działać jako — jest.
 
 Połączeń hybrydowych umożliwia strumienia dwukierunkowe, binarnych komunikacji między dwiema aplikacjami sieciowym, w których jedną lub obie strony może znajdować się za NAT lub zaporą. W tym artykule opisano interakcje przekazywania połączeń hybrydowych nawiązywania połączeń klientów w odbiornik i ról nadawcy i jak odbiorników akceptować nowych połączeń po stronie klienta.
 
 ## <a name="interaction-model"></a>Model interakcji
 Przekazywania połączeń hybrydowych łączy dwie strony zapewniając punkt spotkania w chmurze Azure, który zarówno strony mogą odnaleźć i nawiązać połączenie z punktu widzenia własnych sieci. Tego punktu spotkania nazywa się "Połączenia hybrydowego" w tym i innych dokumentacji interfejsy API, a także w portalu Azure. Punkt końcowy usługi połączeń hybrydowych było możliwe jest określana jako "Usługa" dla pozostałej części tego artykułu. Model interakcji leans na nomenklaturę wyznaczane przez wiele innych sieci interfejsów API.
 
-Brak odbiornika, najpierw wskazuje gotowości do obsługi połączeń przychodzących, a następnie akceptuje, zgodnie z ich odbierania. Z drugiej strony Brak połączenia klienta, który łączy do odbiornika, oczekiwano takiego połączenia akceptację ustalania ścieżki komunikacja dwukierunkowa.
+Brak odbiornika, najpierw wskazuje gotowości do obsługi połączeń przychodzących, a następnie akceptuje, zgodnie z ich odbierania. Z drugiej strony Brak połączenia klienta, który udostępnia połączenie do odbiornika, oczekiwano takiego połączenia akceptację ustalania ścieżki komunikacja dwukierunkowa.
 "Połącz", "Nasłuchiwania" i "Zaakceptuj" są tego samego postanowienia, które możesz znaleźć w gnieździe większość interfejsów API.
 
-Każdy model komunikacji obsługiwanych przez przekaźnik ma albo strony wykonywania połączeń wychodzących na punkt końcowy usługi, co sprawia, że "odbiornika" również "client" w użyciu potocznej i może również spowodować inne przeciążenia terminologii. Terminologia dokładne, w związku z tym używanych dla połączeń hybrydowych było możliwe jest następujący:
+Każdy model komunikacji obsługiwanych przez przekaźnik ma obie strony wykonywania połączeń wychodzących na punkt końcowy usługi, dzięki czemu "odbiornika" również "client" potocznej używana i może również spowodować inne przeciążenia terminologii. Terminologia dokładne, w związku z tym używanych dla połączeń hybrydowych było możliwe jest następujący:
 
 Programy po obu stronach połączenia są nazywane "klientów", ponieważ są one klientów do usługi. Czeka, który akceptuje połączenia klienta jest "odbiornika" lub jest określany jako "roli odbiornika." Klienta, który inicjuje nowe połączenie do odbiornika za pomocą usługi jest nazywany "sender" lub "rolą nadawcy."
 
@@ -40,10 +40,10 @@ Odbiornik ma cztery interakcji z usługą; w dalszej części tego artykułu zam
 
 #### <a name="listen"></a>Nasłuchuj
 Aby wskazać gotowość do usługi, która jest odbiornik gotowy do akceptowania połączeń, tworzy wychodzące połączenia obiektu WebSocket. Uzgadnianie połączenia przyjmuje nazwę połączenie hybrydowe skonfigurowany na przestrzeń nazw przekazywania i token zabezpieczający, który przyznaje "Nasłuchiwania" zgodny z nazwą.
-Gdy protokół WebSocket jest akceptowane przez usługę, rejestracja została zakończona i ustalonych sieci web protokołu WebSocket jest utrzymywane jako "kanał kontrolny" włączania wszystkich kolejnych interakcji. Usługa umożliwia połączenie hybrydowe maksymalnie 25 równoczesnych odbiorników. W przypadku co najmniej dwa odbiorniki aktywnego połączenia przychodzące są równoważone między je w kolejności losowej. odpowiedni dystrybucji nie jest gwarantowana.
+Gdy protokół WebSocket jest akceptowane przez usługę, rejestracja została zakończona i ustanowić protokołu WebSocket jest utrzymywane jako "kanał kontrolny" włączania wszystkich kolejnych interakcji. Usługa umożliwia połączenie hybrydowe maksymalnie 25 równoczesnych odbiorników. W przypadku co najmniej dwa odbiorniki aktywnego połączenia przychodzące są równoważone między je w kolejności losowej. odpowiedni dystrybucji nie jest gwarantowana.
 
 #### <a name="accept"></a>Zaakceptuj
-Po otwarciu nowego połączenia w usłudze nadawcy usługa wybierze i powiadamia jednej aktywnej odbiorników na połączenia hybrydowego. To powiadomienie jest wysyłane do odbiornika za pośrednictwem kanału open kontroli jako wiadomość JSON zawierający adres URL punktu końcowego protokołu WebSocket, który odbiornika należy nawiązać połączenie do akceptowania połączeń.
+Po otwarciu nowego połączenia w usłudze nadawcy usługa wybierze i powiadamia jednej aktywnej odbiorników na połączenia hybrydowego. To powiadomienie jest wysyłane do odbiornika za pośrednictwem kanału open kontroli jako wiadomość JSON zawierający adres URL punktu końcowego protokołu WebSocket, który odbiornika musi łączyć się w celu akceptowania połączenia.
 
 Adres URL może i mogą być używane bezpośrednio przez odbiornik bez konieczności wykonywania dodatkowych działań.
 Dane zakodowane jest prawidłowa tylko krótki okres czasu, zasadniczo tak długo, jak nadawca jest gotowa oczekiwania dla połączenia nawiązane end-to-end można, ale maksymalnie 30 sekund. Adres URL można używać tylko dla jednego pomyślnego połączenia. Natychmiast po nawiązaniu połączenia obiektu WebSocket z adresem URL spotkania wszystkich dalszych działań w tym protokołu WebSocket jest przekazywany z i do nadawcy, bez konieczności interwencji lub interpretacji przez usługę.
@@ -52,7 +52,7 @@ Dane zakodowane jest prawidłowa tylko krótki okres czasu, zasadniczo tak dług
 Token zabezpieczający, który musi być używany do rejestrowania odbiornika i obsługa kanał kontrolny może wygaśnie, gdy odbiornika jest aktywny. Wygaśnięcia tokenu nie ma wpływu na bieżące połączenia, ale powodować kanału kontroli ma być przerwane przez usługę w lub wkrótce po chwili wygaśnięcia. Operacja "odnowić" jest komunikat JSON, który odbiornika można wysyłać do Zamień token skojarzony z kanału kontroli, tak aby kanał kontrolny mogą być obsługiwane przez dłuższy czas.
 
 #### <a name="ping"></a>Ping
-Jeśli kanał kontrolny pozostanie bezczynny przez długi czas pośredników w taki sposób, takie jak obciążenia równoważenia lub NAT może porzucić połączenie TCP. Operacja "ping" pozwala uniknąć który wysyłając niewielką ilość danych w kanale, który przypomina o tym, wszyscy członkowie trasę sieciową, która ma być aktywne połączenie i służy również jako "na żywo" testu dla odbiornika. Jeśli polecenie ping nie powiedzie się, kanał kontrolny należy traktować jako bezużyteczne i odbiornika powinni połączyć się ponownie.
+Jeśli kanał kontrolny pozostanie bezczynny przez długi czas, pośredników w taki sposób, takie jak moduły równoważenia obciążenia lub translatory adresów sieciowych, mogą porzucić połączenie TCP. Operacja "ping" pozwala uniknąć który wysyłając niewielką ilość danych w kanale, który przypomina o tym, wszyscy członkowie trasę sieciową, która ma być aktywne połączenie i służy również jako "na żywo" testu dla odbiornika. Jeśli polecenie ping nie powiedzie się, kanał kontrolny należy traktować jako bezużyteczne i odbiornika powinni połączyć się ponownie.
 
 ### <a name="sender-interaction"></a>Nadawca interakcji
 Nadawca ma tylko jeden interakcji z usługą: nawiązuje połączenie.
@@ -75,7 +75,7 @@ Wszystkie połączenia obiektu WebSocket są wykonane na porcie 443 uaktualnieni
 Protokół odbiornika składa się z dwóch gestów połączenia i trzy operacje dotyczące komunikatów.
 
 #### <a name="listener-control-channel-connection"></a>Połączenie kanału kontroli odbiornika
-Kanał kontrolny jest otwarty z tworzenia połączenia obiektu WebSocket:
+Kanał kontrolny jest otwarty przez utworzenie połączenia obiektu WebSocket:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...
@@ -147,11 +147,11 @@ Adres URL musi być używany jako — jest ustalania gniazda Akceptuj, ale zawie
 
 | Parametr | Wymagane | Opis |
 | --- | --- | --- |
-| `sb-hc-action` |Yes |Akceptowania gniazda, parametr musi być`sb-hc-action=accept` |
+| `sb-hc-action` |Yes |Akceptowania gniazda, parametr musi być `sb-hc-action=accept` |
 | `{path}` |Yes |(zobacz następujący ustęp) |
 | `sb-hc-id` |Nie |Zobacz opis poprzedniego **identyfikator**. |
 
-`{path}`to ścieżka zakodowane w adresie URL przestrzeni nazw wstępnie skonfigurowane połączenia hybrydowego, w którym można zarejestrować tego odbiornika. To wyrażenie jest dołączany do stałej `$hc/` części ścieżki. 
+`{path}` to ścieżka zakodowane w adresie URL przestrzeni nazw wstępnie skonfigurowane połączenia hybrydowego, w którym można zarejestrować tego odbiornika. To wyrażenie jest dołączany do stałej `$hc/` części ścieżki. 
 
 `path` Wyrażenie może zostać rozszerzona z sufiksem i następującym po oddzielający ukośnik zarejestrowaną nazwę wyrażenia ciągu zapytania. Dzięki temu klient nadawcy przekazać argumenty wysyłania akceptują odbiornika, gdy nie jest możliwe podanie nagłówków HTTP. Oczekuje się, że framework odbiornika analizuje części stałym ścieżki i nazwy zarejestrowane ze ścieżki i sprawia, że pozostała, prawdopodobnie bez żadnych argumentów ciągu zapytania poprzedzony `sb-`, dostępne dla aplikacji dotyczących decydowania, czy akceptować połączenia.
 
@@ -195,7 +195,7 @@ Po zakończeniu poprawnie, to uzgadnianie celowo kończy się niepowodzeniem z k
 | 500 |Błąd wewnętrzny |Wystąpił problem w usłudze. |
 
 ### <a name="listener-token-renewal"></a>Odbiornik odnowienia tokenu
-Gdy token odbiornika jest wygaśnie, go można zastąpić, wysyłając wiadomość SMS ramki za pośrednictwem kanału kontroli ustanowionych z usługą. Komunikat zawiera obiekt JSON o nazwie `renewToken`, który definiuje następującą właściwość w tym czasie:
+Gdy token odbiornika jest wygaśnie, odbiornika można zastąpić go, wysyłając wiadomość SMS ramki za pośrednictwem kanału kontroli ustanowionych z usługą. Komunikat zawiera obiekt JSON o nazwie `renewToken`, który definiuje następującą właściwość w tym czasie:
 
 * **Token** — tokenu dostępu udostępnionego magistrali usługi prawidłowy, zakodowane w adresie URL dla przestrzeni nazw lub połączenie hybrydowe, który przyznaje **nasłuchiwania** prawo.
 

@@ -1,8 +1,8 @@
 ---
-title: "Obraz klasyfikacji CNTK wewnątrz Azure Machine Learning Workbench | Dokumentacja firmy Microsoft"
-description: "Szkolenie, oceny i wdrażania przy użyciu usługi Azure ML Workbench model klasyfikacji niestandardowego obrazu."
+title: Obraz klasyfikacji CNTK wewnątrz Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
+description: Szkolenie, oceny i wdrażania przy użyciu usługi Azure ML Workbench model klasyfikacji niestandardowego obrazu.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: PatrickBue
 ms.author: pabuehle
 manager: mwinkle
@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 03fdd1265464355a2787eff897eb4f70faa095b0
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c585609ec8854045e943ae7cd33089021f8f1f2f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Za pomocą usługi Azure Machine Learning Workbench klasyfikacji obrazu
 
@@ -54,7 +54,7 @@ Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 4. Dedykowanego procesora GPU nie jest wymagana do wykonania w część 1, szkolenia SVM, jednak wymagana jest uściślenie z DNN opisanych w części 2. Jeśli brakuje silne procesora GPU, aby uczenia na wiele procesorów graficznych lub nie masz komputera z systemem Windows należy rozważyć przy użyciu platformy Azure głębokie Learning maszyny wirtualnej z systemem operacyjnym Windows. Zobacz [tutaj](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) Przewodnik wdrożenia kliknij 1. Po wdrożeniu, połączenie z maszyną Wirtualną za pomocą Podłączania pulpitu zdalnego, zainstaluj istnieje Workbench i wykonywania kodu lokalnie z maszyny Wirtualnej.
 5. Różne bibliotek języka Python, takie jak OpenCV muszą być zainstalowane. Kliknij przycisk *Otwórz okno wiersza polecenia* z *pliku* menu Narzędzia Workbench i uruchom następujące polecenia, aby zainstalować te zależności:  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-win_amd64.whl`  
-    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` Po pobraniu koło OpenCV z http://www.lfd.uci.edu/~gohlke/pythonlibs/ (dokładnej nazwy pliku i wersja zmienić)
+    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` Po pobraniu OpenCV kółka z http://www.lfd.uci.edu/~gohlke/pythonlibs/ (dokładnej nazwy pliku i wersja zmienić)
     - `conda install pillow`
     - `pip install -U numpy`
     - `pip install bqplot`
@@ -73,7 +73,7 @@ Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
 Aby utworzyć nowy projekt za pomocą tego przykładu jako szablon:
 1.  Otwórz program Azure Machine Learning Workbench.
-2.  Na **projekty** kliknij przycisk  **+**  podpisywania i wybierz **nowy projekt**.
+2.  Na **projekty** kliknij przycisk **+** podpisywania i wybierz **nowy projekt**.
 3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu.
 4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz "Obrazu klasyfikacji" i wybierz szablon.
 5.  Kliknij przycisk **Utwórz**.
@@ -215,7 +215,7 @@ Firma Microsoft teraz istnieje kilka sposobów poprawy dokładności model, czę
 
 Zamiast SVM co można zrobić klasyfikacji bezpośrednio w sieci neuronowej. Jest to osiągane przez dodanie ostatniego nową warstwę do wstępnie przeszkolone DNN, która przyjmuje 512-elementów przestawnych z warstwy przedostatni jako dane wejściowe. Zaletą tej klasyfikacji w DNN jest teraz mogą być retrained całej sieci przy użyciu backpropagation. Takie podejście, często prowadzi do znacznie lepszą dokładność klasyfikacji porównaniu z użyciem wstępnie przeszkolone DNN jako — jest jednak kosztem znacznie dłużej szkolenia (nawet w przypadku procesora GPU).
 
-Uczenie sieci Neuronowej zamiast SVM odbywa się przez zmianę zmiennej `classifier` w `PARAMETERS.py` z `svm` do `dnn`. Następnie zgodnie z opisem w części 1, wszystkich skryptach z wyjątkiem Przygotowanie danych (krok 1) i szkolenia SVM (krok 3) trzeba ponownie uruchamiać. Uszczegółowienie DNN wymaga procesora GPU. Jeśli GPU nie został znaleziony lub zablokowaniu procesora GPU (na przykład przez poprzedniego uruchomienia CNTK) następnie skryptu `2_refineDNN.py` zgłasza błąd. Szkolenia DNN może zgłosić błąd braku pamięci na niektórych procesorach GPU, które można uniknąć przez zmniejszenie rozmiaru minibatch (zmiennej `cntk_mb_size` w `PARAMETERS.py`).
+Uczenie sieci Neuronowej zamiast SVM odbywa się przez zmianę zmiennej `classifier` w `PARAMETERS.py` z `svm` do `dnn`. Następnie zgodnie z opisem w części 1, wszystkich skryptach z wyjątkiem Przygotowanie danych (krok 1) i szkolenia SVM (krok 4) trzeba ponownie uruchamiać. Uszczegółowienie DNN wymaga procesora GPU. Jeśli GPU nie został znaleziony lub zablokowaniu procesora GPU (na przykład przez poprzedniego uruchomienia CNTK) następnie skryptu `2_refineDNN.py` zgłasza błąd. Szkolenia DNN może zgłosić błąd braku pamięci na niektórych procesorach GPU, które można uniknąć przez zmniejszenie rozmiaru minibatch (zmiennej `cntk_mb_size` w `PARAMETERS.py`).
 
 Po zakończeniu szkolenia precyzyjnych modelu są zapisywane *DATA_DIR/proc/fashionTexture/cntk_refined.model*, oraz które pokazuje, jak zmienić błędy klasyfikacji szkoleniowych i testów podczas uczenia wykresu. Należy pamiętać, że powierzchni, że błąd na zestaw szkoleniowy jest znacznie mniejszy niż w zestawie testów. To zachowanie nadmiernie dopasowane tak zwane można zmniejszyć, na przykład za pomocą wyższa wartość dla szybkości przerwany `rf_dropoutRate`.
 <p align="center">
@@ -234,8 +234,7 @@ W magazynie Azure Machine Learning Workbench historii każdego uruchamiania na p
 W pierwszym zrzut ekranu Uszczegółowienie DNN prowadzi do umożliwiające lepsze niż szkolenia SVM dla wszystkich klas. Drugi zrzut ekranu przedstawia wszystkie metryki, które są śledzone, łącznie z klasyfikatora został. To śledzenie odbywa się w skrypcie `5_evaluate.py` przez wywołanie metody Azure Machine Learning Workbench rejestratora. Ponadto skrypt zapisuje ROC krzywej i nieporozumień macierzy *generuje* folderu. To *generuje* folder jest specjalne, w tym jego zawartości jest również śledzona przez funkcję historii Workbench, a więc pliki wyjściowe są dostępne w dowolnym momencie, niezależnie od tego, czy zostały zastąpione kopiami lokalnymi.
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>  
-</p>
+<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>

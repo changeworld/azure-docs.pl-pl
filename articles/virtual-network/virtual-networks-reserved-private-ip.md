@@ -1,10 +1,10 @@
 ---
-title: "Statyczne wewnętrzne prywatnej klasycznym IP - Azure VM-"
-description: "Opis statyczne wewnętrzne adresy IP (DIP) i zarządzanie nimi"
+title: Statyczne wewnętrzne prywatnej klasycznym IP - Azure VM-
+description: Opis statyczne wewnętrzne adresy IP (DIP) i zarządzanie nimi
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 93444c6f-af1b-41f8-a035-77f5c0302bf0
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2016
-ms.author: jdial
-ms.openlocfilehash: cf9ee59ca4e44ed01836c2efb1f4df5f073bf6e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: b668a06b91a5fcb1dd08737e0422b599bdb3e27f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak ustawić statyczne wewnętrzne prywatny adres IP za pomocą programu PowerShell (klasyczne)
 W większości przypadków nie trzeba określić statyczny adres IP wewnętrznego dla maszyny wirtualnej. Maszyn wirtualnych w sieci wirtualnej zostanie automatycznie otrzymują wewnętrzny adres IP z zakresu, który określisz. Jednak w niektórych przypadkach Określanie statycznego adresu IP dla określonej maszyny Wirtualnej ma sens. Na przykład, jeśli maszyna wirtualna jest, aby uruchomić DNS lub będzie kontroler domeny. Statyczny adres IP wewnętrznego utrzymane maszyny Wirtualnej, nawet za pośrednictwem stanu zatrzymania/deprovision. 
@@ -101,7 +101,7 @@ Można dodać wewnętrzny statycznego adresu IP do maszyny Wirtualnej utworzone 
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
     | Update-AzureVM
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Zastrzeżony adres IP](virtual-networks-reserved-public-ip.md)
 
 [Poziom wystąpienia publicznego adresu IP (ILPIP)](virtual-networks-instance-level-public-ip.md)

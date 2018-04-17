@@ -1,32 +1,32 @@
 ---
-title: "OpenShift Azure zadań po wdrożeniu | Dokumentacja firmy Microsoft"
-description: "Dodatkowe zadania po OpenShift wdrożeniu klastra."
+title: OpenShift Azure zadań po wdrożeniu | Dokumentacja firmy Microsoft
+description: Dodatkowe zadania po OpenShift wdrożeniu klastra.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 77c4719b5cee7f5736d73ee10cf6abf12229ea11
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1fe44f6d18199fe1a37db566f8b30eeaa4fbfab2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="post-deployment-tasks"></a>Zadania po wdrożeniu
 
 Po wdrożeniu klastra OpenShift, można skonfigurować dodatkowe elementy. W tym artykule omówiono następujące czynności:
 
 - Jak skonfigurować logowanie jednokrotne za pomocą usługi Azure Active Directory (Azure AD)
-- Jak skonfigurować usługi Operations Management Suite do monitorowania OpenShift
+- Jak skonfigurować analizy dzienników do monitorowania OpenShift
 - Jak skonfigurować rejestrowanie i metryki
 
 ## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego przy użyciu usługi Azure Active Directory
@@ -38,9 +38,9 @@ Do uwierzytelniania usługi Azure Active Directory, należy najpierw utworzyć r
 Kroki tworzenia rejestracji aplikacji i (portal) graficznego interfejsu użytkownika można ustawić uprawnień przy użyciu wiersza polecenia platformy Azure. Aby utworzyć rejestracji aplikacji, należy pięć rodzajów informacji:
 
 - Nazwa wyświetlana: Nazwa rejestracji aplikacji (na przykład OCPAzureAD)
-- Strona główna: adres URL konsoli OpenShift (na przykład https://masterdns343khhde.westus.cloudapp.azure.com:8443/konsoli)
-- Identyfikatora URI: Adres URL OpenShift konsoli (na przykład https://masterdns343khhde.westus.cloudapp.azure.com:8443/konsoli)
-- Adres URL odpowiedzi: Wzorzec publiczny adres URL i nazwa rejestracji aplikacji (na przykład https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
+- Strona główna: OpenShift konsoli (na przykład adres URL https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- Identyfikator URI: Adres URL konsoli OpenShift (np. https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- Adres URL odpowiedzi: Głównego (na przykład publiczny adres URL i nazwa rejestracji aplikacji https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
 - Hasło: Bezpieczne hasło (Użyj silnego hasła)
 
 Poniższy przykład tworzy rejestracji aplikacji przy użyciu powyższych informacji:
@@ -145,7 +145,7 @@ Wstaw następujące wiersze bezpośrednio po poprzednich wierszy:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Znajdź identyfikator dzierżawcy przy użyciu interfejsu wiersza polecenia następujące polecenie:```az account show```
+Znajdź identyfikator dzierżawcy przy użyciu interfejsu wiersza polecenia następujące polecenie: ```az account show```
 
 Uruchom ponownie usługi głównej OpenShift we wszystkich węzłach wzorca:
 
@@ -171,11 +171,11 @@ sudo systemctl restart atomic-openshift-master
 
 W konsoli OpenShift pojawi się dwie opcje uwierzytelniania: htpasswd_auth i [rejestracji aplikacji].
 
-## <a name="monitor-openshift-with-operations-management-suite"></a>Monitor OpenShift w usłudze Operations Management Suite
+## <a name="monitor-openshift-with-log-analytics"></a>Monitor OpenShift z analizy dzienników
 
-Aby monitorować OpenShift w usłudze Operations Management Suite, można użyć jednej z dwóch opcji: Instalacja agenta pakietu OMS na hoście maszyny Wirtualnej lub kontener OMS. Ten artykuł zawiera instrukcje dotyczące wdrażania kontenera OMS.
+Aby monitorować OpenShift z analizy dzienników, można użyć jednej z dwóch opcji: Instalacja agenta pakietu OMS na hoście maszyny Wirtualnej lub kontener OMS. Ten artykuł zawiera instrukcje dotyczące wdrażania kontenera OMS.
 
-## <a name="create-an-openshift-project-for-operations-management-suite-and-set-user-access"></a>Tworzenie projektu OpenShift dla usługi Operations Management Suite i ustaw dostępu użytkownika
+## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>Tworzenie projektu OpenShift dla analizy dzienników i ustaw dostępu użytkownika
 
 ```bash
 oadm new-project omslogging --node-selector='zone=default'
@@ -244,7 +244,7 @@ spec:
 
 ## <a name="create-a-secret-yaml-file"></a>Utwórz plik tajny yaml programu
 
-Aby utworzyć plik tajny yaml programu, potrzebne informacje: OMS identyfikator i klucz udostępniony obszar roboczy OMS. 
+Aby utworzyć plik tajny yaml programu, potrzebne informacje: identyfikator obszaru roboczego analizy dzienników i klucz wstępny obszaru roboczego analizy dziennika. 
 
 Przykładowy plik ocp secret.yml następująco: 
 
@@ -258,7 +258,7 @@ data:
   KEY: key_data
 ```
 
-Zamień wsid_data z Base64 kodowany identyfikator obszaru roboczego OMS. Następnie zastąp key_data algorytmem Base64 OMS obszaru roboczego klucza wspólnego.
+Zamień wsid_data z Base64 kodowany identyfikator obszaru roboczego analizy dzienników. Następnie zastąp key_data algorytmem Base64 Analytics obszaru roboczego udostępniony klucz dziennika.
 
 ```bash
 wsid_data='11111111-abcd-1111-abcd-111111111111'
@@ -347,7 +347,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cl
 -e openshift_logging_install_logging=True 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - [Rozpoczynanie pracy z platformą kontenera OpenShift](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
 - [Wprowadzenie do platformy OpenShift Origin](https://docs.openshift.org/latest/getting_started/index.html)

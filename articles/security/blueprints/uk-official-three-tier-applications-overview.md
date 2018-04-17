@@ -1,6 +1,6 @@
 ---
-title: "Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web trójwarstwowa UK oficjalne"
-description: "Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web trójwarstwowa UK oficjalne"
+title: Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web trójwarstwowa UK oficjalne
+description: Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web trójwarstwowa UK oficjalne
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Zabezpieczeń platformy Azure i plan zgodności - automatyzacji aplikacji sieci Web oficjalnego UK trójwarstwowej
 
@@ -185,7 +185,7 @@ Te sieci wirtualne są nadal zarządzane jako oddzielne zasoby, ale pojawia się
 
 ### <a name="identity"></a>Tożsamość
 
-**Usługi domenowe Active Directory**: tej architektury zapewnia wdrażania usług domenowych w usłudze Active Directory na platformie Azure. Aby uzyskać szczegółowe zalecenia dotyczące implementacji usługi Active Directory na platformie Azure zobacz następujące artykuły:
+**Usługi domenowe Active Directory**: tej architektury zapewnia wdrażania usług domenowych w usłudze Active Directory na platformie Azure. Aby uzyskać szczegółowe zalecenia dotyczące implementowania usługi Active Directory na platformie Azure, zobacz następujące artykuły:
 
 [Rozszerzenie usług domenowych Active Directory (AD DS) na platformie Azure](https://docs.microsoft.com/azure/guidance/guidance-identity-adds-extend-domain).
 
@@ -211,7 +211,7 @@ Klienci mogą również wziąć pod uwagę przy użyciu [modelu administracyjneg
 
 **Zarządzanie zasobami**: zasobów platformy Azure, takich jak maszyn wirtualnych, sieci wirtualnych i usług równoważenia obciążenia są zarządzane przez ich grupowanie razem w [grup zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Następnie można przypisać ról kontroli dostępu na podstawie zasobów do każdej grupy zasobów można ograniczyć dostęp tylko do autoryzowanych użytkowników.
 
-**Ograniczeń kontroli dostępu**: Użyj [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) do zarządzania zasobami w aplikacji za pomocą [role niestandardowe](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) RBAC może być używany do ograniczania operacje który DevOps można wykonywać w każdej warstwie. Podczas udzielania uprawnień, użyj [zasadą najniższych uprawnień](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Zaloguj się wszystkie operacje administracyjne i wykonać regularne inspekcje, aby upewnić się, że zmiany konfiguracji zostały zaplanowane.
+**Ograniczeń kontroli dostępu**: Użyj [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) do zarządzania zasobami w aplikacji za pomocą [role niestandardowe](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC może być używany do ograniczania operacje który DevOps można wykonywać w każdej warstwie. Podczas udzielania uprawnień, użyj [zasadą najniższych uprawnień](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Rejestruj wszystkie operacje administracyjne i przeprowadzaj regularne inspekcje, aby mieć pewność, że wszelkie zmiany konfiguracji są planowane.
 
 **Dostęp do Internetu**: wykorzystuje informacje o architekturze wzorcowej [brama aplikacji w usłudze Azure](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) jako internetowy równoważenia bramy i obciążenia. Niektórzy klienci mogą również wziąć pod uwagę przy użyciu innej sieci wirtualnych urządzeń dla dodatkowych warstw zabezpieczeń, zamiast sieci [brama aplikacji w usłudze Azure](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
 

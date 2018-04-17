@@ -1,12 +1,12 @@
 ---
-title: "Ochrona danych osobowych z Azure formanty tożsamościami i dostępem | Dokumentacja firmy Microsoft"
-description: "Tożsamość platformy Azure i dostęp kontroluje pomocy ochrony danych osobowych i mogą być pomocne, zgodnych z ogólnych danych ochrony rozporządzenia (GDPR)"
+title: Ochrona danych osobowych z Azure formanty tożsamościami i dostępem | Dokumentacja firmy Microsoft
+description: Tożsamość platformy Azure i dostęp kontroluje pomocy ochrony danych osobowych i mogą być pomocne, zgodnych z ogólnych danych ochrony rozporządzenia (GDPR)
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: ''
+ms.openlocfilehash: 45b148a9ccbd7c801821f23586810872a4a0d50d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory i uwierzytelniania wieloskładnikowego: ochrony danych osobowych z formantami tożsamościami i dostępem
 
@@ -39,7 +39,7 @@ Firmy muszą chronić prywatność danych osobowych pracowników i klientów prz
 
 ## <a name="company-goal"></a>Celem firmy
 
-Firmy celem jest zapewnienie ścisłą kontrolę dostępu do danych osobowych. Istotne jest, że tożsamości użytkowników z dostępem do danych osobowych być chronione przez silnego uwierzytelniania. Zasady [najniższych uprawnień] (https://en.wikipedia.org/wiki/Principle_of_least_privilege) musi odbywać się tak, że istnieje tylko poziom dostępu potrzebują i nie więcej.
+Firmy celem jest zapewnienie ścisłą kontrolę dostępu do danych osobowych. Istotne jest, że tożsamości użytkowników z dostępem do danych osobowych być chronione przez silnego uwierzytelniania. Zasady [najniższych uprawnień] (https://en.wikipedia.org/wiki/Principle_of_least_privilege) musi zostać wymuszone tak, że istnieje tylko poziom dostępu potrzebują i nie więcej.
 
 ## <a name="solutions"></a>Rozwiązania
 
@@ -83,11 +83,11 @@ Aby uzyskać więcej informacji oraz instrukcje dotyczące wprowadzenie do korzy
 
 ### <a name="azure-role-based-access-control"></a>Kontrola dostępu oparta na rolach na platformie Azure
 
-[Kontrola dostępu oparta na rolach Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) pomaga Azure administratorom zarządzanie dostępem do zasobów platformy Azure, należy włączyć udzielanie dostępu na podstawie przypisanej roli użytkownika. Możesz rozdzielenie obowiązków w zespole i udzielić tylko takiego dostępu użytkowników, grup i aplikacji, które są niezbędne do wykonywania swoich zadań.
+[Kontrola dostępu oparta na rolach Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) pomaga Azure administratorom zarządzanie dostępem do zasobów platformy Azure, należy włączyć udzielanie dostępu na podstawie przypisanej roli użytkownika. Możesz rozdzielenie obowiązków w zespole i udzielić tylko takiego dostępu użytkowników, grup i aplikacji, które są niezbędne do wykonywania swoich zadań.
 
 Prawo dostępu oparte na rolach może zostać przydzielone użytkownikom za pomocą portalu Azure, narzędzia wiersza polecenia platformy Azure lub interfejsów API zarządzania platformy Azure.
 
-Aby uzyskać więcej informacji dotyczących podstaw Azure RBAC, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure.](https://docs.microsoft.com/active-directory/role-based-access-control-what-is)
+Aby uzyskać więcej informacji dotyczących podstaw Azure RBAC, zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure.](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 #### <a name="how-do-i-manage-azure-rbac-with-powershell"></a>Jak zarządzać Azure RBAC przy użyciu programu PowerShell?
 
@@ -111,7 +111,7 @@ Polecenia cmdlet programu PowerShell umożliwiają zarządzanie Azure RBAC, wł�
 
 - Lista ról niestandardowych
 
-Aby uzyskać instrukcje na temat zarządzania Azure RBAC przy użyciu programu PowerShell, zobacz [opartej na rolach Zarządzanie dostępu przy użyciu programu Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell).
+Aby uzyskać instrukcje na temat zarządzania Azure RBAC przy użyciu programu PowerShell, zobacz [opartej na rolach Zarządzanie dostępu przy użyciu programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -135,7 +135,7 @@ Jeśli obecnie nie masz licencji, które muszą przejść przez proces określan
 
     ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-4. Kliknij przycisk **Zapisz**
+4. Kliknij pozycję **Zapisz**
 
 W tym oknie również mieć możliwość pobrania serwera usługi MFA. Można uzyskać dodatkowe szczegóły dotyczące rozmiaru i Zaplanuj wdrożenie, przeglądając artykuł [wprowadzenie do korzystania z serwera usługi Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)
 
@@ -184,6 +184,6 @@ Aby uzyskać informacje na temat konfigurowania ustawień usługi Azure MFA do k
 
 - [Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-faq)
 
-- [Oparta na rolach kontrola dostępu do rozwiązywania problemów](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
+- [Oparta na rolach kontrola dostępu do rozwiązywania problemów](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)
 
 - [Ochronę tożsamości usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)

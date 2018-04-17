@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6bc2c63e75e9c750da852b77e4486666c3fc8561
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczeń platformy Azure i plan zgodności - dane kondycji HIPAA/HITRUST i AI
 
@@ -79,14 +79,14 @@ Architektura podstawowych składa się z następujących składników:
 ## <a name="roles"></a>Role
 
 
-Plan definiuje dwie role dla użytkowników administracyjnych (Operatorzy) i trzy role dla użytkowników w zarządzaniu szpital Twoich i nad pacjentem. Szóstym roli jest zdefiniowany dla audytorzy do oceny zgodności z HIPAA i innych rozporządzeń. Azure opartej na rolach kontroli dostępu (RBAC) umożliwia precyzyjne ukierunkowanych zarządzanie dostępem dla każdego użytkownika rozwiązania za pomocą wbudowanych i niestandardowych ról. Zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) i [wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) szczegółowe informacje o RBAC, role i uprawnienia.
+Plan definiuje dwie role dla użytkowników administracyjnych (Operatorzy) i trzy role dla użytkowników w zarządzaniu szpital Twoich i nad pacjentem. Szóstym roli jest zdefiniowany dla audytorzy do oceny zgodności z HIPAA i innych rozporządzeń. Azure opartej na rolach kontroli dostępu (RBAC) umożliwia precyzyjne ukierunkowanych zarządzanie dostępem dla każdego użytkownika rozwiązania za pomocą wbudowanych i niestandardowych ról. Zobacz [wprowadzenie opartej na rolach kontroli dostępu w portalu Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) i [wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) szczegółowe informacje o RBAC, role i uprawnienia.
 
 ### <a name="site-administrator"></a>Administrator lokacji
 
 
 Administrator lokacji jest odpowiedzialny za klienta subskrypcji platformy Azure. One kontrolować ogólne wdrażanie, ale nie mają dostępu do pacjenta rekordów.
 
--   Domyślne przypisania roli: [właściciela](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#owner)
+-   Domyślne przypisania roli: [właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   Przypisania ról niestandardowych: Brak
 
@@ -97,7 +97,7 @@ Administrator lokacji jest odpowiedzialny za klienta subskrypcji platformy Azure
 Analityk bazy danych służy do administrowania wystąpienia programu SQL Server i bazy danych.
 Ich nie mają dostępu do pacjenta rekordów.
 
--   Przypisania ról wbudowanych: [Współautor bazy danych SQL](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-db-contributor), [współautora serwera SQL](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-server-contributor)
+-   Przypisania ról wbudowanych: [Współautor bazy danych SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [współautora serwera SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   Przypisania ról niestandardowych: Brak
 
@@ -108,7 +108,7 @@ Ich nie mają dostępu do pacjenta rekordów.
 
 Naukowca danych działa usługa Azure Machine Learning. One importować, eksportować i zarządzanie danymi i uruchamianie raportów. Naukowca danych ma dostęp do danych pacjenta, ale nie ma uprawnień administracyjnych.
 
--   Przypisania ról wbudowanych: [współautora konta magazynu](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#storage-account-contributor)
+-   Przypisania ról wbudowanych: [współautora konta magazynu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
 -   Przypisania ról niestandardowych: Brak
 
@@ -138,7 +138,7 @@ Ta rola wymaga monitorowania stanu poszczególnych pacjentów oraz zapewniania, 
 
 Audytor ocenia zgodność w zakresie. Ich nie mają bezpośredniego dostępu do sieci.
 
--   Przypisania ról wbudowanych: [czytnika](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#reader)
+-   Przypisania ról wbudowanych: [czytnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   Przypisania ról niestandardowych: Brak
 
@@ -222,7 +222,7 @@ W tej sekcji zawiera szczegóły domyślnych konfiguracji i środki bezpieczeńs
 
 -   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) wykryje potencjalne luki tożsamości organizacji, konfiguruje automatyczne odpowiedzi wykryte podejrzane działania związane z tożsamości organizacji i sprawdza podejrzane zdarzenia i podejmuje odpowiednie działania w celu ich rozwiązywania.
 
--   [Azure opartej na rolach kontroli dostępu (RBAC)](/azure/active-directory/role-based-access-control-configure) umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Subskrypcja dostęp jest ograniczony do administratora subskrypcji i usługi Azure Key Vault dostęp jest ograniczony do administratora witryny. Silne hasła (12 znaków minimalne z co najmniej jedną literę wielkich/małych, liczby i znak specjalny) są wymagane.
+-   [Azure opartej na rolach kontroli dostępu (RBAC)](/azure/role-based-access-control/role-assignments-portal) umożliwia precyzyjne zarządzanie dostępem ukierunkowanych na platformie Azure. Subskrypcja dostęp jest ograniczony do administratora subskrypcji i usługi Azure Key Vault dostęp jest ograniczony do administratora witryny. Silne hasła (12 znaków minimalne z co najmniej jedną literę wielkich/małych, liczby i znak specjalny) są wymagane.
 
 -   Uwierzytelnianie wieloskładnikowe jest obsługiwana po włączeniu przełącznika - enableMFA podczas wdrażania.
 
@@ -230,7 +230,7 @@ W tej sekcji zawiera szczegóły domyślnych konfiguracji i środki bezpieczeńs
 
 **Role:**
 
--   Rozwiązanie sprawia, że użycie [wbudowane role](/azure/active-directory/role-based-access-built-in-roles) do zarządzania dostępem do zasobów.
+-   Rozwiązanie sprawia, że użycie [wbudowane role](/azure/role-based-access-control/built-in-roles) do zarządzania dostępem do zasobów.
 
 -   Domyślnie wszyscy użytkownicy są przypisane określonych ról wbudowanych.
 
@@ -242,7 +242,7 @@ W tej sekcji zawiera szczegóły domyślnych konfiguracji i środki bezpieczeńs
     -   Pacjenta klucz dostępu do magazynu danych
     -   Parametry połączenia pacjenta
     -   Nazwa tabeli danych pacjenta
-    -   Azure ML Web Service Endpoint
+    -   Punkt końcowy usługi sieci Web uczenie Maszynowe Azure
     -   Klucz interfejsu API usługi Azure ML
 
 -   Zasady dostępu zaawansowane są konfigurowane na potrzeby

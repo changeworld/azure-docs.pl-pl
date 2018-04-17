@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 78449a527f5ee1410530ded18a11cb8c6a5dded5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/28/2018
 12.  Jeśli wyświetlany jest następujący komunikat: "1) Twoje NSG analizowanie przepływać dzienników po raz pierwszy. Ten proces może potrwać 20-30 minut. Sprawdź ponownie za jakiś czas. 2) Jeśli nie działa powyższy krok i obszaru roboczego znajduje się w bezpłatnej wersji produktu, a następnie sprawdź wykorzystanie sieci obszaru roboczego można zweryfikować za pośrednictwem przydziału, w przeciwnym wypadku zapoznaj na często zadawane pytania dla dalszych informacji", jak I usunąć go?
 
         Ten błąd może pojawić się z następujących powodów:
-        - Analizy ruchu może ostatnio włączone i może być agregowania wystarczającej ilości danych dla niej pochodzić wgląd w istotne dane, można było wygenerować wszystkie raporty. W takim przypadku spróbuj ponownie po 30 minutach
+        - Analiza ruchu może ostatnio włączone i może nie jeszcze ma łączy wystarczającej ilości danych dla niej pochodzić wgląd w istotne dane.
         - Obszar roboczy OMS jest bezpłatna jednostki SKU i jego naruszenie limitów przydziału. W takim przypadku może być konieczne użycie obszaru roboczego w jednostce SKU o większej pojemności.
     
         Jeśli problemy będą się powtarzać, Zgłoś problemy w [forum głos użytkownika](https://feedback.azure.com/forums/217313-networking?category_id=195844).

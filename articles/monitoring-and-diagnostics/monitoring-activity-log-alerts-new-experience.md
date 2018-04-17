@@ -1,9 +1,9 @@
 ---
-title: "Utwórz działanie dziennika alerty i zarządzaj nimi przy użyciu nowego środowiska alerty (wersja zapoznawcza) w monitorze Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera informacje o sposobie tworzenia działania dziennika alertów na karcie alerty (wersja zapoznawcza) w obszarze Azure Monitor. Ten artykuł zawiera szczegóły dotyczące nowego środowiska użytkownika dla tej funkcji."
+title: Utwórz działanie dziennika alerty i zarządzaj nimi przy użyciu nowego środowiska alerty (wersja zapoznawcza) w monitorze Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje o sposobie tworzenia działania dziennika alertów na karcie alerty (wersja zapoznawcza) w obszarze Azure Monitor. Ten artykuł zawiera szczegóły dotyczące nowego środowiska użytkownika dla tej funkcji.
 author: JYOTHIRMAISURI
 manager: vvithal
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: aabc0e57-78cd-44dd-a8d1-af5e1e567360
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
-ms.custom: 
-ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: ''
+ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Utwórz dziennik aktywności, które występować alertów za pomocą nowych alertów (wersja zapoznawcza)
 
@@ -103,13 +103,13 @@ Postępuj zgodnie z następującą procedurą:
 
     **Alert logiki**:
 
-        - **Event Level**- The severity level of the event.**Verbose,Informational, Warning, Error**, or **Critical**.
-        - **Status**: The status of the event.**Started, Failed**, or **Succeeded**.
-        - **Event initiated by**: Also known as the caller; The email address or Azure Active Directory identifier of the user who performed the operation.
+     - **Poziom zdarzenia**-poziom ważności zdarzenia. **Pełne, ostrzeżenie, informacyjny błąd**, lub **krytyczne**.
+     - **Stan**: stan zdarzenia. **Uruchomiona, nie powiodło się**, lub **zakończyło się pomyślnie**.
+     - **Zdarzenie inicjowane przez**: znany także jako wywołującego Adres e-mail lub identyfikator użytkownika, który wykonał działanie usługi Azure Active Directory.
 
-        **Sample signal graph with alert logic applied** :
+        **Wykres sygnału próbki z logiką alertu stosowane** :
 
-        ![ criteria selected](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ wybrane kryteria](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
 
 4. W obszarze **Zdefiniuj szczegóły reguły alertów**, należy podać następujące dane:
 

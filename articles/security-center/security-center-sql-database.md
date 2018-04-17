@@ -1,11 +1,11 @@
 ---
-title: "Usługa Centrum zabezpieczeń Azure i usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak Centrum zabezpieczeń można zabezpieczyć baz danych w bazie danych SQL Azure."
+title: Usługa Centrum zabezpieczeń Azure i usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak Centrum zabezpieczeń można zabezpieczyć baz danych w bazie danych SQL Azure.
 services: sql-database
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Usługa Centrum zabezpieczeń Azure i bazy danych SQL Azure
 Usługa [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -38,7 +38,7 @@ Oprócz ochrony zasobów bazy danych SQL, Centrum zabezpieczeń zawiera także m
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do rozpoczęcia korzystania z usługi Security Center wymagana jest subskrypcja usługi Microsoft Azure. Warstwa bezpłatna Centrum zabezpieczeń jest włączone w ramach subskrypcji. Aby uzyskać więcej informacji na wolne Centrum zabezpieczeń i warstwy standardowa, zobacz [cennik Centrum zabezpieczeń](https://azure.microsoft.com/pricing/details/security-center/).
 
-Centrum zabezpieczeń obsługuje dostęp opartej na rolach. Aby dowiedzieć się więcej na temat kontroli dostępu opartej na rolach (RBAC) na platformie Azure, zobacz [kontroli dostępu opartej na roli Azure Active Directory](../active-directory/role-based-access-control-configure.md). Często zadawane pytania z Centrum zabezpieczeń zawiera informacje na temat [obsługi uprawnienia w Centrum zabezpieczeń](security-center-faq.md#permissions).
+Centrum zabezpieczeń obsługuje dostęp opartej na rolach. Aby dowiedzieć się więcej na temat kontroli dostępu opartej na rolach (RBAC) na platformie Azure, zobacz [kontroli dostępu opartej na roli Azure Active Directory](../role-based-access-control/role-assignments-portal.md). Często zadawane pytania z Centrum zabezpieczeń zawiera informacje na temat [obsługi uprawnienia w Centrum zabezpieczeń](security-center-faq.md#permissions).
 
 ## <a name="access-security-center"></a>Dostęp do usługi Security Center
 Usługa Security Center jest dostępna w witrynie [Azure Portal](https://azure.microsoft.com/features/azure-portal/). [Zaloguj się do portalu](https://portal.azure.com/) i wybierz **opcji Centrum zabezpieczeń**.
@@ -77,7 +77,7 @@ Aby wyświetlić zalecenia dotyczące zasobów platformy Azure, wybierz **zalece
 ![Zalecenia][4]
 
 Jak pokazano poniżej, Centrum zabezpieczeń zawiera serwerów SQL, których nie włączono inspekcji i wykrywania zagrożeń. Po włączeniu inspekcji można skonfigurować ustawienia wykrywanie zagrożeń i ustawienia poczty e-mail, aby otrzymywać alerty zabezpieczeń. Wykrywanie zagrożeń alerty po wykryciu nietypowe działania bazy danych, które wskazują możliwe zagrożenia bezpieczeństwa bazy danych. Alerty są wyświetlane na pulpicie nawigacyjnym Centrum zabezpieczeń.
-![Inspekcja i wykrywania zagrożeń][5]
+![Inspekcja i wykrywanie zagrożeń][5]
 
 Postępuj zgodnie z instrukcjami [wykrywanie zagrożeń bazy danych SQL w portalu Azure](../sql-database/sql-database-threat-detection-portal.md) włączać i konfigurować wykrywanie zagrożeń i skonfigurować listę wiadomości e-mail, które będą wysyłane alerty zabezpieczeń po wykryciu nietypowych działań.
 
@@ -100,7 +100,7 @@ Jak pokazano poniżej, Centrum zabezpieczeń zawiera dodatkowe szczegóły, któ
 
 Aby dowiedzieć się więcej, zobacz [reagowanie na alerty zabezpieczeń i zarządzanie nimi](security-center-managing-and-responding-alerts.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Często zadawane pytania dotyczące Centrum zabezpieczeń](security-center-faq.md) — często zadawane pytania dotyczące korzystania z usługi wyszukiwania.
 * [Przewodnik dotyczący planowania i operacji Centrum zabezpieczeń](security-center-planning-and-operations-guide.md) — Wykonaj zestaw kroków i zadań, aby zoptymalizować korzystanie z Centrum zabezpieczeń w oparciu o wymagania dotyczące zabezpieczeń oraz modelu zarządzania chmurą w organizacji.
 * [Bezpieczeństwo danych Centrum zabezpieczeń](security-center-data-security.md) — Dowiedz się, jak Centrum zabezpieczeń zbiera i przetwarza dane dotyczące zasobów platformy Azure, w tym informacje o konfiguracji, metadane, dzienniki zdarzeń i pliki zrzutu awaryjnego.

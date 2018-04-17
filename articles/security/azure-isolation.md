@@ -1,12 +1,12 @@
 ---
 title: Izolacja w chmurze publicznej Azure | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa."
+description: Więcej informacji na temat przetwarzania danych usług w chmurze zawierających szeroką gamę wystąpienia obliczeniowe i usług, które można skalować w górę i w dół automatycznie na potrzeby aplikacji lub przedsiębiorstwa.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a153d70e077ad63a042e76d0c4ae40e3cc067a2a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej systemu Azure
 ##  <a name="introduction"></a>Wprowadzenie
-### <a name="overview"></a>Omówienie
+### <a name="overview"></a>Przegląd
 Ułatwienie Azure bieżących i przyszłych klientów zrozumieć i korzystanie z różnych funkcji zabezpieczeń dostępnych w i otaczającego platformy Azure, firma Microsoft wprowadziła serii oficjalne dokumenty, omówienie zabezpieczeń, najlepsze rozwiązania i Listy kontrolne.
 Tematy zakresu pod względem szerokości i głębokość i są okresowo aktualizowane. Ten dokument jest częścią tej serii, zgodnie z opisem w następującej sekcji abstrakcyjny.
 
@@ -52,7 +52,7 @@ W przypadku miejsca pracy w chmurze dzierżawę można zdefiniować jako klienta
 Każdy katalog usługi Azure AD jest odrębny i oddzielony od innych katalogów usługi Azure AD. Podobnie jak budynek biurowy, który jest zabezpieczonym zasobem przeznaczonym tylko dla Twojej organizacji, katalog Azure AD został zaprojektowany jako zabezpieczony zasób do użytku tylko Twojej organizacji. Architektura usługi Azure AD chroni dane klientów i informacje o tożsamości przez zmieszaniem. Oznacza to, że użytkownicy i administratorzy jednego katalogu usługi Azure AD nie mogą przypadkowo ani złośliwie uzyskać dostępu do danych w innym katalogu.
 
 ### <a name="azure-tenancy"></a>Dzierżawy usługi Azure
-Dzierżawy Azure (Azure Subscription) odwołuje się do relacji "odbiorcy/billing" oraz unikatową [dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) w [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Poziom izolacji dzierżawców w Microsoft Azure jest osiągane przy użyciu usługi Azure Active Directory i [opartej na rolach kontroli](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) oferowane przez nią. Każda subskrypcja platformy Azure jest skojarzony z jednego katalogu usługi Azure Active Directory (AD).
+Dzierżawy Azure (Azure Subscription) odwołuje się do relacji "odbiorcy/billing" oraz unikatową [dzierżawy](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) w [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Poziom izolacji dzierżawców w Microsoft Azure jest osiągane przy użyciu usługi Azure Active Directory i [opartej na rolach kontroli](https://docs.microsoft.com/azure/role-based-access-control/overview) oferowane przez nią. Każda subskrypcja platformy Azure jest skojarzony z jednego katalogu usługi Azure Active Directory (AD).
 
 Użytkownicy, grupy i aplikacje z katalogu mogą zarządzać zasobami w subskrypcji platformy Azure. Można przypisać te prawa dostępu przy użyciu portalu Azure, narzędzi wiersza polecenia platformy Azure i interfejsów API zarządzania platformy Azure. Dzierżawa usługi Azure AD jest logicznie odizolowane za pomocą granic zabezpieczeń, dzięki czemu klienta można uzyskać dostępu do lub naruszyć wspólnej dzierżaw złośliwe lub przypadkowo. Usługi Azure AD jest uruchamiany na serwerach "od zera" izolowany w segmencie sieci rozdzielone, gdzie filtrowanie pakietów na poziomie hosta i zapory systemu Windows blokować ruchu i niechciane połączenia.
 
@@ -71,7 +71,7 @@ Użytkownicy, grupy i aplikacje z katalogu mogą zarządzać zasobami w subskryp
 
 Diagnostyka i konserwacyjnych modelu operacyjnego infrastruktury używającego systemu podniesienia uprawnień w czasie jest wymagany i używać. Azure AD Privileged Identity Management (PIM) pojęcia związane z kwalifikujących się uprawnień administratora. [Administratorzy kwalifikujących się](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) powinna być użytkowników, które wymagają uprzywilejowanego dostępu teraz, a następnie, ale nie każdego dnia. Rola jest nieaktywny, dopóki użytkownik będzie potrzebował dostępu, a następnie zakończyć proces aktywacji i stają się aktywne administratora dla wstępnie określoną ilość czasu.
 
-![Usługa Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
+![Azure AD Privileged Identity Management](./media/azure-isolation/azure-isolation-fig2.png)
 
 Usługa Azure Active Directory obsługuje każdego dzierżawcy w jego własnej kontenerze chronionych, zasady i uprawnienia do oraz w kontenerze wyłącznie własnością i zarządzane przez dzierżawcę.
 
@@ -80,7 +80,7 @@ Pojęcie kontenery dzierżawy jest głęboko ingrained w usłudze katalogowej na
 Nawet wtedy, gdy metadane z wieloma dzierżawcami usługi Azure Active Directory są przechowywane na tym samym dysku fizycznego, nie ma żadnej zależności między kontenery niż zdefiniowana przez usługę katalogową, który z kolei jest definiowane przez administratora dzierżawy.
 
 ### <a name="azure-role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach na platformie Azure (RBAC)
-[Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) ułatwia udostępnianie różnych składników dostępnych w ramach subskrypcji platformy Azure, zapewniając precyzyjne zarządzanie dostępem dla platformy Azure. Azure RBAC umożliwia segregowanie opłat w ramach organizacji i przyznać dostęp oparty na użytkowników należy do wykonywania swoich zadań. Zamiast nadanie każdy nieograniczonych uprawnień w subskrypcji platformy Azure lub zasobów, można zezwolić tylko pewne akcje.
+[Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) ułatwia udostępnianie różnych składników dostępnych w ramach subskrypcji platformy Azure, zapewniając precyzyjne zarządzanie dostępem dla platformy Azure. Azure RBAC umożliwia segregowanie opłat w ramach organizacji i przyznać dostęp oparty na użytkowników należy do wykonywania swoich zadań. Zamiast nadanie każdy nieograniczonych uprawnień w subskrypcji platformy Azure lub zasobów, można zezwolić tylko pewne akcje.
 
 Azure RBAC ma trzy podstawowe role, które są stosowane do wszystkich typów zasobów:
 
@@ -94,7 +94,7 @@ Azure RBAC ma trzy podstawowe role, które są stosowane do wszystkich typów za
 
 Pozostałe role RBAC na platformie Azure umożliwiają zarządzanie określonych zasobów platformy Azure. Na przykład Rola współautora maszyny wirtualnej zezwala użytkownikowi na tworzenie i zarządzanie maszynami wirtualnymi. Nie daje im dostępu do sieci wirtualnej platformy Azure lub podsieci, która łączy się z maszyny wirtualnej.
 
-[Wbudowane role RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) listy ról dostępnej na platformie Azure. Określa operacje i zakresem, który każdego wbudowana rola przyznaje użytkownikom. Jeśli szukasz definiować własne role, aby uzyskać większą kontrolę, zobacz sposób tworzenia [niestandardowych ról w Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
+[Wbudowane role RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) listy ról dostępnej na platformie Azure. Określa operacje i zakresem, który każdego wbudowana rola przyznaje użytkownikom. Jeśli szukasz definiować własne role, aby uzyskać większą kontrolę, zobacz sposób tworzenia [niestandardowych ról w Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
 Niektóre inne możliwości usługi Azure Active Directory obejmują:
 - Usługi Azure AD umożliwia logowanie Jednokrotne do aplikacji SaaS, niezależnie od tego, gdzie są obsługiwane. Niektóre aplikacje są sfederowane z usługą Azure AD, a inne korzystają z logowania jednokrotnego z użyciem hasła. Aplikacji federacyjnych można również obsługę użytkowników i [archiwizowanie haseł](https://www.techopedia.com/definition/31415/password-vault).

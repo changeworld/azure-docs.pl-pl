@@ -7,14 +7,14 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 04/04/2018
+ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 6c2e4e7f99aeec3028e8df520dc6896234b5c969
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 930b5607f343b87adc253cc99d74ddf28235a50b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastyczne pule pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -74,7 +74,7 @@ Następujące reguły akceptacji powiązane z liczbą baz danych i użyciem baz 
 
 ### <a name="minimum-number-of-databases"></a>Minimalna liczba baz danych
 
-Jeśli ilość zasobów dla pojedynczej bazy danych jest więcej niż 1,5 x zasobów niezbędnych do puli, pula elastyczna jest tańsze.
+Jeśli łączna ilość zasobów dla pojedynczej bazy danych jest więcej niż 1,5 x zasobów niezbędnych do puli, pula elastyczna jest tańsze.
 
 ***Na podstawie jednostek dtu w warstwie zakupów przykład modelu***<br>
 Aby pula 100 eDTU była bardziej opłacalna niż korzystanie z poziomów wydajności dla pojedynczych baz danych, potrzebne są co najmniej dwie baz danych S3 lub co najmniej 15 baz danych S0.

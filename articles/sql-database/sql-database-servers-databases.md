@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Utwórz i Zarządzaj serwerami bazy danych SQL Azure i baz danych
 
@@ -46,7 +46,7 @@ Serwer logiczny bazy danych Azure:
 - Jest zasobem nadrzędnym dla baz danych, pul elastycznych i magazynów danych
 - Obejmuje przestrzeń nazw dla bazy danych, pule elastyczne i magazyny danych
 - Jest kontenerem logicznym z semantyki silne istnienia — usuwanie serwera i usuwa zawartych baz danych, pule elastyczne i magazyny danych
-- Uczestniczy w [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](/active-directory/role-based-access-control-what-is) -baz danych, pule elastyczne i hurtowni danych w ramach serwera dziedziczą prawa dostępu z serwera
+- Uczestniczy w [kontroli dostępu opartej na rolach na platformie Azure (RBAC)](/azure/role-based-access-control/overview) -baz danych, pule elastyczne i hurtowni danych w ramach serwera dziedziczą prawa dostępu z serwera
 - Jest elementem znaczących tożsamości baz danych, pule elastyczne i magazynów danych dla zasobów platformy Azure (Zobacz Schemat adresu URL dla baz danych i pul) do celów zarządzania
 - Rozmieszcza zasoby w regionie
 - Udostępnia punkt końcowy połączenia dla dostępu do baz danych (<serverName>.database.windows.net)
@@ -79,9 +79,8 @@ Do utworzenia bazy danych Azure SQL przy użyciu [portalu Azure](https://portal.
 
 > [!IMPORTANT]
 > Aby uzyskać informacje dotyczące wybierania warstwy cenowej bazy danych, zobacz [warstw usług](sql-database-service-tiers.md).
->
 
-Aby utworzyć wystąpienie zarządzanych, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-tutorial-portal.md)
+Aby utworzyć wystąpienie zarządzanych, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-create-tutorial-portal.md)
 
 ### <a name="manage-an-existing-sql-server"></a>Zarządzanie istniejącego serwera SQL
 
@@ -133,7 +132,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapory z [interfejs
 |[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Tworzy bazę danych|
 |[Lista bazy danych sql az](/cli/azure/sql/db#az_sql_db_list)|Wyświetla listę wszystkich baz danych i magazynów danych na serwerze lub wszystkie bazy danych w puli elastycznej|
 |[Lista wersje az bazy danych sql](/cli/azure/sql/db#az_sql_db_list_editions)|Wyświetla dostępne usługi cele i limity magazynu|
-|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Zwraca bazy danych użycia|
+|[bazy danych sql az listy użycia](/cli/azure/sql/db#az_sql_db_list_usages)|Zwraca bazy danych użycia|
 |[Pokaż bazy danych sql az](/cli/azure/sql/db#az_sql_db_show)|Pobiera Magazyn bazy danych lub danych|
 |[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualizuje bazę danych|
 |[Usuwanie bazy danych sql az](/cli/azure/sql/db#az_sql_db_delete)|Usuwa z bazy danych|
@@ -176,7 +175,7 @@ Tworzenie i zarządzanie nimi Azure SQL server, baz danych i zapór z Transact-S
 |[procedurę składowaną sp_set_firewall_rule (baza danych SQL Azure)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje ustawienia zapory poziomu serwera dla serwera bazy danych SQL. Ta procedura składowana jest dostępna tylko w bazie danych master do głównego identyfikatora logowania poziomu serwera. Reguły zapory poziomu serwera można tworzyć tylko za pomocą języka Transact-SQL, po utworzeniu pierwszej reguły zapory poziomu serwera przez użytkownika z uprawnienia na poziomie Azure|
 |[sys.firewall_rules (baza danych SQL Azure)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Zwraca informacje na temat ustawień zapory na poziomie serwera, skojarzonych z bazy danych SQL Microsoft Azure.|
 |[sp_delete_firewall_rule (baza danych SQL Azure)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Usuwa ustawienia zapory poziomu serwera z serwerem bazy danych SQL. Ta procedura składowana jest dostępna tylko w bazie danych master do głównego identyfikatora logowania poziomu serwera.|
-|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje reguły zapory poziomu bazy danych dla bazy danych SQL Azure lub usługi SQL Data Warehouse. Można skonfigurować reguł zapory bazy danych dla bazy danych master i baz danych użytkowników w bazie danych SQL. Reguły zapory bazy danych są przydatne, gdy przy użyciu zawarte bazy danych użytkowników. |
+|[sp_set_database_firewall_rule (baza danych SQL Azure)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje reguły zapory poziomu bazy danych dla bazy danych SQL Azure lub usługi SQL Data Warehouse. Można skonfigurować reguł zapory bazy danych dla bazy danych master i baz danych użytkowników w bazie danych SQL. Reguły zapory bazy danych są przydatne, gdy przy użyciu zawarte bazy danych użytkowników. |
 |[sys.database_firewall_rules (baza danych SQL Azure)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Zwraca informacje na temat ustawień zapory na poziomie bazy danych, skojarzonych z bazy danych SQL Microsoft Azure. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Ustawienia zapory na poziomie bazy danych usuwa z bazy danych SQL Azure lub SQL Data Warehouse. |
 

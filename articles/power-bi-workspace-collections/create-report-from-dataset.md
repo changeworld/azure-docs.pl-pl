@@ -1,26 +1,26 @@
 ---
 title: Tworzenie nowego raportu z zestawu danych w kolekcjach obszaru roboczego programu Power BI | Dokumentacja firmy Microsoft
-description: "Teraz można tworzyć raportami programu Power BI kolekcji obszarów roboczych z zestawu danych w aplikacji."
+description: Teraz można tworzyć raportami programu Power BI kolekcji obszarów roboczych z zestawu danych w aplikacji.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: aa902cbc4992292420948b36d85e52fafc7224de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 5c6a52edd708b6077820f2004e83ac7dee945610
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Tworzenie nowego raportu z zestawu danych w kolekcjach obszaru roboczego programu Power BI
 
@@ -63,7 +63,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Tworzenie nowego raportu puste
 
-Aby utworzyć nowy raport, należy podać Tworzenie konfiguracji. Powinno to obejmować tokenu dostępu, embedURL i datasetID, który chcemy, aby utworzyć raport z. Wymaga to zainstalowania nuget [pakietu Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl będą tylko https://embedded.powerbi.com/appTokenReportEmbed.
+Aby utworzyć nowy raport, należy podać Tworzenie konfiguracji. Powinno to obejmować tokenu dostępu, embedURL i datasetID, który chcemy, aby utworzyć raport z. Wymaga to zainstalowania nuget [pakietu Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Po prostu będzie embedUrl https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Można użyć [próbki osadzić raport JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) Aby przetestować funkcje. Udostępnia także przykłady kodu dla różnych operacji, które są dostępne.
@@ -199,7 +199,7 @@ var embedCreateConfiguration = {
     });
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Rozpoczęcie pracy z przykładem](get-started-sample.md)  
 [Zapisywanie raportów](save-reports.md)  

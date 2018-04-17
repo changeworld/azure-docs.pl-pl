@@ -1,23 +1,23 @@
 ---
-title: "Przygotowanie wdrażania autonomicznej klastra sieci szkieletowej usługi Azure | Dokumentacja firmy Microsoft"
-description: "Dokumentację dotyczącą przygotowania środowiska i Tworzenie konfiguracji klastra, należy wziąć pod uwagę przed wdrożeniem klastra przeznaczone do obsługi obciążeń produkcyjnych."
+title: Przygotowanie wdrażania autonomicznej klastra sieci szkieletowej usługi Azure | Dokumentacja firmy Microsoft
+description: Dokumentację dotyczącą przygotowania środowiska i Tworzenie konfiguracji klastra, należy wziąć pod uwagę przed wdrożeniem klastra przeznaczone do obsługi obciążeń produkcyjnych.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
-ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;maburlik;aljo
+ms.openlocfilehash: 62673025f5c597f6ed958ad523190d937a52c912
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 <a id="preparemachines"></a>
 
@@ -49,11 +49,11 @@ Po określeniu UDs w pliku ClusterConfig.json, można wybrać nazwę dla każdeg
 
 Aby uzyskać szczegółowe informacje o FDs i UDs, zobacz [opisujące klastra sieci szkieletowej usług](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Klastra w środowisku produkcyjnym powinien obejmować co najmniej trzy FDs aby mogły być obsługiwane w środowisku produkcyjnym, jeśli masz pełną kontrolę nad konserwacji i zarządzania węzłów, tj. ponosisz odpowiedzialność za aktualizowania i zastępowanie maszyny. W przypadku klastrów uruchomieni w środowiskach (np. Amazon Web Services wirtualna wystąpienia), w którym nie ma pełną kontrolę nad maszyn powinien mieć co najmniej pięć FDs w klastrze. Każdy FD może mieć co najmniej jeden węzeł. Ma to zapobiec występowaniu problemów spowodowanych maszyny uaktualnienia i aktualizacje, które w zależności od ich terminy mogą intefere z uruchomioną aplikacji i usług w klastrach.
+Klastra w środowisku produkcyjnym powinien obejmować co najmniej trzy FDs aby mogły być obsługiwane w środowisku produkcyjnym, jeśli masz pełną kontrolę nad konserwacji i zarządzania węzłów, oznacza to, jest odpowiedzialny za aktualizowanie i zastępowanie maszyny. W przypadku klastrów uruchomieni w środowiskach (to znaczy wystąpienia Amazon Web Services VM), w którym nie ma pełną kontrolę nad maszyn powinien mieć co najmniej pięć FDs w klastrze. Każdy FD może mieć co najmniej jeden węzeł. Ma to zapobiec występowaniu problemów spowodowanych maszyny uaktualnienia i aktualizacje, które w zależności od ich czas trwania może zakłócać działanie aplikacji i usług w klastrach.
 
 ## <a name="determine-the-initial-cluster-size"></a>Określa rozmiar klastra
 
-Ogólnie rzecz biorąc liczba węzłów w klastrze jest określany na podstawie potrzeb biznesowych, tj., jak wiele usług i kontenery będą uruchomione w klastrze i liczby zasobów jest potrzebne do obsługi obciążeń. Dla klastrów produkcyjnych zaleca się o co najmniej 5 węzłów w klastrze, obejmujących 5 FDs. Jednak zgodnie z powyższym opisem, jeśli mają pełną kontrolę nad węzły mogą znajdować się na trzech FDs następnie trzy węzły należy również wykonać zadanie.
+Ogólnie rzecz biorąc liczba węzłów w klastrze jest oparte na potrzeby biznesowe, które jest, jak wiele usług i kontenerów zostanie uruchomione w klastrze i liczby zasobów jest potrzebne do obsługi obciążeń. Dla klastrów produkcyjnych zaleca się o co najmniej pięć węzłów w klastrze, obejmujących 5 FDs. Jednak zgodnie z powyższym opisem, jeśli mają pełną kontrolę nad węzły mogą znajdować się na trzech FDs następnie trzy węzły należy również wykonać zadanie.
 
 Obciążenia stanowe z klastrów testowych powinien mieć trzy węzły klastrów testowych tylko uruchomione tylko w przypadku obciążeń bezstanowych muszą jeden węzeł. Należy również zauważyć, do celów programistycznych, może występować więcej niż jeden węzeł na danym komputerze. W środowisku produkcyjnym usługi sieć szkieletowa obsługuje jednak tylko jeden węzeł na maszynie fizycznej lub wirtualnej.
 
@@ -99,7 +99,7 @@ Gdy administrator klastrów konfiguruje klaster sieci szkieletowej usług autono
 * Odinstalowano zestawu SDK sieci szkieletowej usług
 * Ma środowisko uruchomieniowe usługi sieć szkieletowa odinstalowane 
 * Czy włączono usługi Zapora systemu Windows (mpssvc)
-* Czy włączono usługi Rejestr zdalny (remoteregistry)
+* Czy włączono usługi Rejestr zdalny (Rejestr zdalny)
 * Plik włączona udostępniania (SMB)
 * Ma niezbędne porty otwarty, na podstawie portów konfiguracji klastra
 * Mieć niezbędne porty otworzyć usługi systemu Windows protokołu SMB i Rejestr zdalny: 135, 137 138, 139 i 445
@@ -115,7 +115,7 @@ Gdy administrator klastrów konfiguruje klaster sieci szkieletowej usług autono
 
 | **Katalogi wykluczone antywirusowe** |
 | --- |
-| Program Files\Microsoft usługi sieć szkieletowa |
+| Program Files\Microsoft Service Fabric |
 | Zmiennej FabricDataRoot (z konfiguracji klastra) |
 | Lokalizacji FabricLogRoot (z konfiguracji klastra) |
 
@@ -165,5 +165,5 @@ Obecnie ten moduł testowania konfiguracji nie można zweryfikować konfiguracji
 > 
 > 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Tworzenie autonomicznych klastra w systemie Windows Server](service-fabric-cluster-creation-for-windows-server.md)

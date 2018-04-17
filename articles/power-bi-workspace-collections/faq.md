@@ -1,12 +1,12 @@
 ---
-title: "Power BI roboczym kolekcje — często zadawane pytania"
-description: "Często zadawane pytania związane z kolekcji programu Power BI obszaru roboczego."
+title: Power BI roboczym kolekcje — często zadawane pytania
+description: Często zadawane pytania związane z kolekcji programu Power BI obszaru roboczego.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1475ed4f-fc84-4865-b243-e8a47d8bda59
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 6b33f497a5dbc889945e2147586f79edf1bd9aeb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 6915538e47207ee9a45f2647a84924d79c7b2851
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI roboczym kolekcje — często zadawane pytania
 
@@ -43,7 +43,7 @@ Aplikacje są znacznie większe możliwości w przypadku mogą korzystać z niez
 Power BI obszaru roboczego kolekcje są przeznaczone dla aplikacji dostępnych do użycia innych firm. Jeśli chcesz korzystać z usługi Power BI obszaru roboczego kolekcje do tworzenia aplikacji biznesowych wewnętrzny każdego z użytkowników w sieci wewnętrznej należy Power BI Pro USL i organizacji będą naliczane opłaty ich wykorzystania usługi Power BI obszaru roboczego kolekcje Oprócz opłat Power BI Pro USL. Aby uniknąć ponoszenia zarówno Power BI Pro USL opłat, jak i koszty zużycia Power BI obszaru roboczego kolekcje wewnętrznych aplikacji, usługi Power BI udostępnia własną zawartość osadzanie możliwości poza Power BI obszaru roboczego kolekcji bez żadnych dodatkowych kosztów Power BI USL posiadaczy (dev.powerbi.com).
 
 ## <a name="can-power-bi-workspace-collections-be-used-to-create-internal-applications"></a>Power BI obszaru roboczego kolekcji można utworzyć wewnętrznych aplikacji?
-Nie, Power BI obszaru roboczego kolekcje są przeznaczone tylko dla użytkowników zewnętrznych, nie powinien być używany w aplikacjach biznesowych wewnętrznego. W celu osadzenia zawartości usługi Power BI do użytku w wewnętrznych aplikacjach biznesowych należy użyć usługi Power BI, a wszyscy użytkownicy korzystający z tej zawartości muszą mieć ważną licencję subskrypcji użytkownika usługi Power BI Free lub Power BI Pro. Więcej informacji na temat sposobu integracji z usługą Power BI wewnętrznych aplikacji znajduje się w temacie [https://dev.powerbi.com](https://dev.powerbi.com).
+Nie, Power BI obszaru roboczego kolekcje są przeznaczone tylko dla użytkowników zewnętrznych, nie powinien być używany w aplikacjach biznesowych wewnętrznego. W celu osadzenia zawartości usługi Power BI do użytku w wewnętrznych aplikacjach biznesowych należy użyć usługi Power BI, a wszyscy użytkownicy korzystający z tej zawartości muszą mieć ważną licencję subskrypcji użytkownika usługi Power BI Free lub Power BI Pro. Więcej informacji na temat sposobu integracji z usługą Power BI wewnętrznych aplikacji znajduje się w temacie [ https://dev.powerbi.com ](https://dev.powerbi.com).
 
 ## <a name="is-this-service-available-globally"></a>Jest dostępna usługa globalnie?
 Usługa Power BI obszaru roboczego kolekcji jest teraz dostępna w większości centrów danych. Można sprawdzać dostępność najnowszych [tutaj](https://azure.microsoft.com/status/).
@@ -87,7 +87,7 @@ Użytkownik może odwiedzić [stronę dokumentacji Power BI obszaru roboczego ko
 ## <a name="how-do-i-get-started"></a>Jak rozpocząć?
 Możesz rozpocząć pracę teraz bezpłatnie! Jeśli masz subskrypcję platformy Azure, można teraz udostępnić Power BI obszaru roboczego kolekcje z portalu Azure bezpośrednio. Można również utworzyć Twoje [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Po po zainicjowaniu obsługi usługi Power BI obszaru roboczego kolekcje, można łatwo użyć interfejsów API REST programu Power BI bezpośrednio, lub developer SDK dostępnego na [GitHub](http://go.microsoft.com/fwlink/?LinkID=746472). Przykłady są udostępniane w sposób korzystania z zestawu SDK dewelopera.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Co to jest Microsoft Power BI obszaru roboczego kolekcje](what-are-power-bi-workspace-collections.md)
 [wprowadzenie do programu Microsoft Power BI obszaru roboczego kolekcje](get-started.md)

@@ -1,24 +1,24 @@
 ---
-title: "Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób replikowania SQL Server przy użyciu usługi Azure Site Recovery dla funkcji po awarii programu SQL Server."
+title: Replikowanie aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób replikowania SQL Server przy użyciu usługi Azure Site Recovery dla funkcji po awarii programu SQL Server.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: prateek9us
 manager: gauravd
-editor: 
+editor: ''
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 04/09/2018
 ms.author: pratshar
-ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: f0c43eee127857edfd1692dce825ef295be09f7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrona programu SQL Server przy użyciu odzyskiwanie po awarii programu SQL Server i usługi Azure Site Recovery
 
@@ -45,7 +45,7 @@ Wiele obciążeń Użyj programu SQL Server jako podstawę i może być zintegro
 ### <a name="supported-scenarios"></a>Obsługiwane scenariusze
 Usługa Site Recovery może chronić programu SQL Server, zgodnie z opisem w tabeli.
 
-**Scenariusz** | **Do lokacji dodatkowej** | **Na platformie Azure**
+**Scenariusz** | **Do lokacji dodatkowej** | **Platforma Azure**
 --- | --- | ---
 **Funkcja Hyper-V** | Yes | Yes
 **VMware** | Yes | Yes

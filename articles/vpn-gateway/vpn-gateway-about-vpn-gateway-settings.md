@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: dfa116981cb0ce912ee83fade54f2502262178bc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9ecd8dc40e168c2fd37e3d58ee588a0d9626a04a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Ustawienia konfiguracji bramy sieci VPN — informacje
 
@@ -79,9 +79,9 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
 
-###  <a name="resizechange"></a>Zmiana rozmiaru, a zmiana jednostki SKU
+###  <a name="resizechange"></a>Zmiana rozmiaru lub zmiana jednostki SKU
 
-Zmiana rozmiaru bramy jednostka SKU jest dość proste. Będą mieć bardzo mało przestoju, które zmienia rozmiar bramy. Istnieją jednak zasady dotyczące zmiany rozmiaru:
+Jeśli masz bramy sieci VPN, i chcesz użyć innego jednostka SKU bramy, opcje są albo zmiany rozmiaru jednostka SKU bramy lub zmiana na inny identyfikator takiej jednostki. Po przejściu do innego jednostka SKU bramy, całkowicie usunąć istniejącą bramę i utworzyć nowy. Może to potrwać do 45 minut kompilacji. W porównaniu podczas zmiany rozmiaru bramy jednostka SKU, konieczne będzie bardzo mało przestoju, ponieważ nie masz Usuń i skompiluj ponownie bramę. Jeśli masz możliwość zmiany rozmiaru jednostka SKU bramy, zamiast je zmienić, należy to zrobić. Istnieją jednak zasady dotyczące zmiany rozmiaru:
 
 1. Można zmienić rozmiar jednostek SKU, wybierając z opcji VpnGw1, VpnGw2 i VpnGw3.
 2. Podczas pracy ze starymi jednostkami SKU bramy można zmienić rozmiar, wybierając z opcji Basic, Standard i HighPerformance.

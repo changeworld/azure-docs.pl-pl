@@ -1,12 +1,12 @@
 
-## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
+## <a name="open-azure-cloud-shell"></a>Otwórz chmury Azure powłoki
 
-Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po prostu kliknij **kopiowania** przycisk skopiować kod, wklej go do powłoki chmury, a następnie naciśnij klawisz enter, aby uruchomić go.  Istnieje kilka sposobów uruchomienia usługi Cloud Shell:
+Powłoka chmury Azure jest bezpłatne, interaktywnych powłoka, która umożliwia wykonanie kroków w tym artykule. Typowe narzędzia Azure są wstępnie zainstalowane i skonfigurowane w powłoce chmury można użyć z Twoim kontem. Po prostu wybierz **kopiowania** przycisk, aby skopiować kod, wklej go w powłoce chmury i naciśnij klawisz Enter, aby go uruchomić. Istnieje kilka sposobów Otwórz powłokę chmury:
 
 |  |   |
 |-----------------------------------------------|---|
-| Kliknij przycisk **Wypróbuj** w prawym górnym rogu bloku kodu. | ![Usługa Cloud Shell w tym artykule](./media/cloud-shell-try-it/cli-try-it.png) |
+| Wybierz **spróbuj on** w prawym górnym rogu bloku kodu. | ![Usługa Cloud Shell w tym artykule](./media/cloud-shell-try-it/cli-try-it.png) |
 | Otwórz usługę Cloud Shell w swojej przeglądarce. | [![https://shell.azure.com/bash](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
-| Kliknij przycisk **Cloud Shell** w menu w prawym górnym rogu witryny [Azure Portal](https://portal.azure.com). |    ![Usługa Cloud Shell w portalu](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| Wybierz **powłoki chmury** przycisk menu w prawym górnym rogu [portalu Azure](https://portal.azure.com). |    ![Usługa Cloud Shell w portalu](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 |  |  |
 
