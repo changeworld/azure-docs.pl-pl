@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1d5bc55b132b449ebc2964ef95016a6a4780c19
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, konfigurowanie rejestrowania diagnostyki i Włącz alerty dla usługi Azure Logic Apps
 
@@ -66,7 +66,7 @@ Aby otrzymywać powiadomień o awarii lub innych możliwych problemów, skonfigu
    ![Szczegółowe informacje krok](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
    > [!NOTE]
-   > Wszystkie szczegóły środowiska uruchomieniowego i zdarzenia są szyfrowane w ramach usługi Logic Apps. Są one odszyfrowane tylko wtedy, gdy użytkownik zażąda do wyświetlania tych danych. Można też kontrolować dostęp do tych zdarzeń o [based kontroli dostępu (RBAC)](../active-directory/role-based-access-control-what-is.md).
+   > Wszystkie szczegóły środowiska uruchomieniowego i zdarzenia są szyfrowane w ramach usługi Logic Apps. Są one odszyfrowane tylko wtedy, gdy użytkownik zażąda do wyświetlania tych danych. Można też kontrolować dostęp do tych zdarzeń o [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md).
 
 6. Aby uzyskać szczegółowe informacje o zdarzeniu określonego wyzwalacza, przejdź wstecz do **omówienie** okienka. W obszarze **wyzwolenia historii**, wybierz zdarzenia wyzwalacza. Teraz można przejrzeć szczegóły, takie jak wejściach i wyjściach, na przykład:
 
@@ -217,7 +217,7 @@ Aby skonfigurować alerty bez [Azure Log Analytics](../log-analytics/log-analyti
 
 ## <a name="azure-diagnostics-event-settings-and-details"></a>Ustawienia zdarzeń diagnostyki Azure i szczegóły
 
-Każde zdarzenie diagnostyczne zawiera szczegółowe informacje o aplikacji logiki oraz czy zdarzenie, na przykład stan i godzina rozpoczęcia, godziny zakończenia, itp. Aby programowo skonfigurować monitorowanie i śledzenie i rejestrowanie, jednostki organizacyjnej można użyć tych informacji z [interfejsu API REST dla usługi Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) i [interfejsu API REST Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
+Każde zdarzenie diagnostyczne zawiera szczegółowe informacje o aplikacji logiki oraz czy zdarzenie, na przykład stan i godzina rozpoczęcia, godziny zakończenia, itp. Aby programowo skonfigurować monitorowanie, śledzenia i rejestrowania, można użyć tych informacji z [interfejsu API REST dla usługi Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) i [interfejsu API REST Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
 
 Na przykład `ActionCompleted` zdarzenie ma `clientTrackingId` i `trackedProperties` właściwości, które służą do monitorowania i śledzenia:
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure tożsamościami i dostępem najlepszych rozwiązań dotyczących zabezpieczeń | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw najlepsze rozwiązania w zakresie zarządzania tożsamościami i kontroli dostępu przy użyciu wbudowanych funkcji platformy Azure."
+title: Azure tożsamościami i dostępem najlepszych rozwiązań dotyczących zabezpieczeń | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw najlepsze rozwiązania w zakresie zarządzania tożsamościami i kontroli dostępu przy użyciu wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ec8eb8759e310e31c7798c54cc95f0170e95cf50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Zarządzanie tożsamościami i dostępem kontrolować najlepszych rozwiązań dotyczących zabezpieczeń
 Rozważ wiele tożsamości jako nową warstwę granic zabezpieczeń przejęcia tej roli z tradycyjnego perspektywy skoncentrowane sieci. Ten rozwój pivot głównej dla uwagi bezpieczeństwa i inwestycje pochodzą z faktu, że stały się coraz bardziej porowaty strefy sieci i obrony ten obwód nie może być tak skuteczne, jak ich raz zostały przed rozbicie [BYOD ](http://aka.ms/byodcg) urządzenia i aplikacje w chmurze.
@@ -52,7 +52,7 @@ Jeden ważnym krokiem do zabezpieczania tożsamości jest upewnij się, że dzia
 W tym celu [tożsamość hybrydowa](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) scenariuszu zaleca się dwie opcje:
 
 * Synchronizacji katalogu lokalnego z katalogiem chmury, za pomocą programu Azure AD Connect
-* Utworzenie federacji tożsamości lokalnych z katalogu chmurze przy użyciu [Active Directory Federation Services](https://msdn.microsoft.com/library/bb897402.aspx) (AD FS)
+* Włącz logowanie jednokrotne z [synchronizacji skrótu hasła](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [uwierzytelniania przekazywanego](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) lub Federację tożsamości lokalnych z katalogu chmurze przy użyciu [usługi Active Directory Usługi federacyjne](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (AD FS)
 
 Organizacje, które nie integrowanie tożsamości lokalnych z ich tożsamość w chmurze może wystąpić Zwiększa nakład pracy administracyjnej przy zarządzaniu kontami, co zwiększa prawdopodobieństwo wystąpienia błędów i naruszeń zabezpieczeń.
 
@@ -95,11 +95,11 @@ Aby uzyskać więcej informacji dotyczących usługi Azure MFA, przeczytaj artyk
 ## <a name="use-role-based-access-control-rbac"></a>Kontrola dostępu (RBAC) oparta na rolach użycia
 Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) jest zasad zabezpieczeń dla organizacji, które mają zostać wymuszone zasady zabezpieczeń dla dostępu do danych. Azure opartej na rolach kontroli dostępu (RBAC) może służyć do przypisywania uprawnień do użytkowników, grup i aplikacji w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji.
 
-Można wykorzystać [wbudowane RBAC](../active-directory/role-based-access-built-in-roles.md) ról na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie *współautora konta magazynu* dla operatorów chmury, które muszą zarządzać kontami magazynu i *klasycznego współautora konta magazynu* roli do zarządzania klasycznych kont magazynu. Operatorzy chmury, które musi zarządzać maszynami wirtualnymi i konto magazynu, należy rozważyć dodanie ich do *Współautor·maszyny·wirtualnej* roli.
+Można wykorzystać [wbudowane RBAC](../role-based-access-control/built-in-roles.md) ról na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie *współautora konta magazynu* dla operatorów chmury, które muszą zarządzać kontami magazynu i *klasycznego współautora konta magazynu* roli do zarządzania klasycznych kont magazynu. Operatorzy chmury, które musi zarządzać maszynami wirtualnymi i konto magazynu, należy rozważyć dodanie ich do *Współautor·maszyny·wirtualnej* roli.
 
 Organizacje, które nie wymusić kontrolę dostępu danych dzięki wykorzystaniu możliwości, takie jak RBAC może nadanie więcej uprawnień niż jest to niezbędne do ich użytkowników. Może to prowadzić do danych naruszenia przez zezwolić użytkownikom na dostęp do niektórych typów danych (np. duże znaczenie biznesowe), które nie powinny mieć w pierwszej kolejności.
 
-Użytkownik może dowiedzieć się więcej o Azure RBAC przeczytaj artykuł [kontroli dostępu](../active-directory/role-based-access-control-configure.md).
+Użytkownik może dowiedzieć się więcej o Azure RBAC przeczytaj artykuł [kontroli dostępu](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>Lokalizacje kontroli, gdy zasoby są tworzone za pomocą Menedżera zasobów
 Bardzo ważne jest włączenie operatorom chmury do wykonywania zadań podczas uniemożliwia zasady, które są wymagane do zarządzania zasobami organizacji dzielenia. Organizacje, które chcesz kontrolować lokalizacje, w którym zasoby są tworzone twarde powinny kodu tych lokalizacji.

@@ -1,6 +1,6 @@
 ---
-title: "Rozpoczynanie pracy z rozwiązaniem do symulacji urządzenia - Azure | Dokumentacja firmy Microsoft"
-description: "Pakiet IoT rozwiązania symulacji to narzędzie, które mogą służyć do celów w zakresie projektowania i testowania rozwiązania IoT. Usługa symulacji jest autonomicznym oferty, który może być używany w połączeniu z innymi wstępnie skonfigurowanych rozwiązań lub używana o rozwiązaniach niestandardowych."
+title: Rozpoczynanie pracy z rozwiązaniem do symulacji urządzenia - Azure | Dokumentacja firmy Microsoft
+description: Pakiet IoT rozwiązania symulacji to narzędzie, które mogą służyć do celów w zakresie projektowania i testowania rozwiązania IoT. Usługa symulacji jest autonomicznym oferty, który może być używany w połączeniu z innymi wstępnie skonfigurowanych rozwiązań lub używana o rozwiązaniach niestandardowych.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 2a9a6f3387b7f9fb4e3896fc55a06ac4a902ad24
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Wskazówki symulacji urządzenia
 
@@ -69,22 +69,22 @@ Model urządzenia umożliwia wybranie odpowiedniego typu urządzenia, aby symulo
 
 Symulacji urządzenia udostępnia trzy modele wstępnie skonfigurowanych urządzeń. Modele urządzeń dla chłodniach, windy i pojazdów są dostępne.
 
-Modele urządzeń wstępnie skonfigurowane zawiera wiele czujniki z częstotliwością ustalonej telemetrii. Nie można dostosować częstotliwość telemetrii dla tych urządzeń.
+Modele urządzeń wstępnie skonfigurowane zawiera wiele czujniki z zaawansowanych zachowania zdefiniowanego w pliku języka JavaScript. Te niestandardowe zachowania nie są obsługiwane w interfejsie użytkownika sieci web. 
 
 W poniższej tabeli przedstawiono listę konfiguracji dla każdego modelu wstępnie skonfigurowanych urządzeń:
 
-| Model urządzenia | Czujnik | Jednostka | Częstotliwość telemetrii
-| -------------| ------ | -----| --------------------|
-| Chłodnica | wilgotność | % | 5 sekund |
-| | pressure | psig | 5 sekund |
-| | Temperatury | F | 5 sekund |
-| Krótka | FLOOR | | 5 sekund |
-| | wibrację | mm | 5 sekund |
-| | Temperatura | F | 5 sekund |
-| Ciężarówka | Szerokość geograficzna | | 3 sekundy |
-| | Długość geograficzna | | 3 sekundy |
-| | Szybkość | mil na godzinę | 5 sekund |
-| | cargotemperature | F | 5 sekund |
+| Model urządzenia | Czujnik | Jednostka | 
+| -------------| ------ | -----| 
+| Chłodnica | wilgotność | % |
+| | pressure | psig | 
+| | Temperatury | F | 
+| Krótka | FLOOR | 
+| | wibrację | mm | 
+| | Temperatura | F | 
+| Ciężarówka | Szerokość geograficzna | |
+| | Długość geograficzna | | 
+| | Szybkość | mil na godzinę | 
+| | cargotemperature | F | 
 
 #### <a name="custom-device-model"></a>Model urządzenia niestandardowe
 
@@ -106,7 +106,7 @@ Niestandardowe czujników mieć następujące właściwości:
 
 ### <a name="number-of-devices"></a>Liczba urządzeń
 
-Symulacji urządzenia umożliwia obecnie symulować maksymalnie 1000 urządzeń.
+Symulacji urządzenia umożliwia obecnie symulować maksymalnie 20 000 urządzeń.
 
 ![Liczba urządzeń](media/iot-suite-device-simulation-explore/numberofdevices.png)
 

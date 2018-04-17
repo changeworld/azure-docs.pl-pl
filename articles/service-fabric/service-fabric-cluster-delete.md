@@ -1,11 +1,11 @@
 ---
 title: Usuwanie klastra platformy Azure i jej zasobach | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak Aby całkowicie usunąć klastra usługi sieć szkieletowa, usunięcie grupy zasobów, zawierającą klaster lub selektywne usuwanie zasobów."
+description: Dowiedz się, jak Aby całkowicie usunąć klastra usługi sieć szkieletowa, usunięcie grupy zasobów, zawierającą klaster lub selektywne usuwanie zasobów.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de422950-2d22-4ddb-ac47-dd663a946a7e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
-ms.author: chackdan
-ms.openlocfilehash: 7672aa12421fbe4ad86e7315d6a7a06c2ff5124d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: aljo
+ms.openlocfilehash: 7da2277fef224ff7859cac1ad5a2290c9dc56a85
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Usuwanie klastra sieci szkieletowej usług na platformie Azure i zasobów, które są używane
 Klastra usługi sieć szkieletowa składa się z wielu innych zasobów platformy Azure oprócz samego zasobu klastra. Dlatego też, aby całkowicie usunąć klaster usługi Service Fabric, musisz również usunąć wszystkie zasoby, z których się składa.
@@ -43,10 +43,10 @@ Login-AzureRmAccount
 Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 ```
 
-Zostanie wyświetlony monit o potwierdzenie usunięcia, jeśli nie używasz *-Force* opcji. Na potwierdzenie zarządcy zasobów i wszystkie zasoby, które zawiera zostaną usunięte.
+Zostanie wyświetlony monit o potwierdzenie usunięcia, jeśli nie używasz *-Force* opcji. Na potwierdzenie grupy zasobów i wszystkie zasoby, które zawiera zostaną usunięte.
 
 ### <a name="delete-a-resource-group-in-the-azure-portal"></a>Usuń grupę zasobów, w portalu Azure
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Przejdź do klastra usługi Service Fabric, który chcesz usunąć.
 3. Kliknij nazwę grupy zasobów na stronie essentials klastra.
 4. Spowoduje to wyświetlenie **Essentials grupy zasobów** strony.
@@ -65,7 +65,7 @@ Jeśli wdrożono klastra za pomocą portalu lub przy użyciu jednego z szablonó
 ***Tag #2:*** klucz = resourceName, wartość = ServiceFabric
 
 ### <a name="delete-specific-resources-in-the-azure-portal"></a>Usuwanie określonych zasobów w portalu Azure
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Przejdź do klastra usługi Service Fabric, który chcesz usunąć.
 3. Przejdź do **wszystkie ustawienia** w bloku essentials.
 4. Polecenie **tagi** w obszarze **zarządzanie zasobami** w bloku ustawienia.
@@ -84,19 +84,19 @@ Otwórz okno programu PowerShell i uruchom następujące polecenia cmdlet PS:
 ```powershell
 Login-AzureRmAccount
 ```
-Dla każdego z zasobów chcesz usunąć, uruchom następujące polecenie:
+Dla każdego z zasobów, które chcesz usunąć Uruchom następujący skrypt:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "<Resource Type>" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-Aby usunąć zasobu klastra, uruchom następujące polecenie:
+Aby usunąć zasobu klastra, uruchom następujący skrypt:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Microsoft.ServiceFabric/clusters" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przeczytaj następujące również informacje na temat uaktualniania klastra i partycjonowanie usług:
 
 * [Więcej informacji na temat uaktualnienia klastra](service-fabric-cluster-upgrade.md)

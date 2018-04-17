@@ -1,19 +1,19 @@
 ---
 title: Importowanie pliku pliku BACPAC w celu utworzenia bazy danych Azure SQL | Dokumentacja firmy Microsoft
-description: "Utwórz bazę danych SQL newAzure przez zaimportowanie pliku pliku BACPAC."
+description: Utwórz bazę danych SQL newAzure przez zaimportowanie pliku pliku BACPAC.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.date: 01/29/2018
+ms.date: 04/10/2018
 ms.author: carlrab
 ms.topic: article
-ms.openlocfilehash: 9d829bd312bb1ae2468258bc2ec8619b2858394e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4279630816b6d5f7cf15b7555bf951d3f2a5f95a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Importowanie pliku pliku BACPAC do nowej bazy danych SQL Azure
 
@@ -31,6 +31,9 @@ Aby zaimportować bazę danych przy użyciu portalu Azure, otwórz stronę dla s
    ![Importowanie bazy danych](./media/sql-database-import/import.png)
 
 Aby monitorować postęp operacji importowania, otwórz stronę dla serwera logicznego zawierającego bazę danych zostały zaimportowane. Przewiń w dół do **operacji** , a następnie kliknij przycisk **importu/eksportu** historii.
+
+> [!NOTE]
+> [Azure wystąpienia bazy danych SQL zarządzane](sql-database-managed-instance.md) obsługiwane importowania z pliku pliku BACPAC przy użyciu innych metod, w tym artykule, ale obecnie nie obsługuje migracji przy użyciu portalu Azure.
 
 ### <a name="monitor-the-progress-of-an-import-operation"></a>Monitoruj postęp operacji importowania
 
@@ -98,6 +101,13 @@ $importStatus
 
 > [!TIP]
 Na przykład innego skryptu, zobacz [zaimportować bazę danych z pliku pliku BACPAC](scripts/sql-database-import-from-bacpac-powershell.md).
+
+## <a name="import-using-other-methods"></a>Import za pomocą innych metod
+
+Można także użyć tych kreatorów:
+
+- [Kreator aplikacji warstwy danych w programie SQL Server Management Studio importu](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
+- [Kreator eksportu i importu serwera SQL](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się, jak nawiązać połączenie i zapytanie importowanych bazy danych SQL, zobacz [Połącz z bazą danych SQL za pomocą programu SQL Server Management Studio i wykonywanie przykładowego zapytania T-SQL](sql-database-connect-query-ssms.md).

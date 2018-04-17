@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f8d7fff30d5f5289c362d78ad89027b8141bbbe6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cf73f792bcce906a673da0c6fb2eec099239c1c2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Narzędzia nauki maszyny uczenie i danych
 Maszyna wirtualna nauki danych (DSVM) zawiera bogaty zestaw narzędzi i bibliotek do uczenia maszynowego dostępnych w popularnych języków, takich jak Julia Python, R. 
@@ -48,7 +48,7 @@ Poniżej przedstawiono niektóre machine learning narzędzia i bibliotek w DSVM.
 | Jak jest on skonfigurowany / zainstalowanym DSVM?      |  System Windows — Instalator msi, Linux — stanie get |
 | Jak używać / uruchom go?      | Jako narzędzie wiersza polecenia na ścieżkę (`C:\Program Files\VowpalWabbit\vw.exe` w systemie Windows, `/usr/bin/vw` w systemie Linux)    |
 | Łącza do próbek      | [Przykłady VowPal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
-| Pokrewne narzędzia na DSVM      |LightGBM, MXNet, XGBoost   |
+| Pokrewne narzędzia na DSVM      |XGBoost LightGBM, MXNet,   |
 
 
 ## <a name="weka"></a>Weka

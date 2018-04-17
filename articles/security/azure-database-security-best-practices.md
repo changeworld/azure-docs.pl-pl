@@ -1,12 +1,12 @@
 ---
-title: "Najlepsze rozwiązania bazy danych platformy Azure | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure."
+title: Najlepsze rozwiązania bazy danych platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące zabezpieczeń bazy danych platformy Azure.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3c019e8e1518c661eb75065f061ee681f0231efa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-database-security-best-practices"></a>Najlepsze rozwiązania Azure bazy danych
 
@@ -112,7 +112,7 @@ Ważne jest, aby zrozumieć, że pliki związane z [(BPE). rozszerzenie puli buf
 Od autoryzowanym użytkownikiem, takie jak administrator zabezpieczeń lub administrator bazy danych ma dostęp do danych, nawet jeśli bazy danych jest szyfrowany przy funkcji TDE, należy również postępować zgodnie z poniższymi zaleceniami:
 
 -   Włącz uwierzytelnianie SQL na poziomie bazy danych.
--   Użyj usługi Azure AD uwierzytelnianie przy użyciu [role RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is).
+-   Użyj usługi Azure AD uwierzytelnianie przy użyciu [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
 -   Użytkownicy i aplikacje powinny używać osobnych kont do uwierzytelniania. W ten sposób można ograniczyć uprawnień użytkowników i aplikacje i zmniejszenia ryzyka złośliwych działań.
 -   Implementowanie zabezpieczeń na poziomie bazy danych przy użyciu ról stałej bazy danych (takich jak db_datareader lub db_datawriter), lub można utworzyć niestandardowe role w aplikacji można przyznać uprawnienia jawne do zaznaczonych obiektów bazy danych.
 
@@ -166,7 +166,7 @@ Aby dowiedzieć się więcej na temat wykrywania zagrożeń bazy danych oraz jak
 ## <a name="conclusion"></a>Podsumowanie
 Bazy danych platformy Azure to platforma niezawodne bazy danych, z pełnym zakresem funkcji zabezpieczeń, które spełniają wymagania organizacyjne i przepisami zgodności wiele. Możesz pomóc w ochronie danych przez kontrolowanie fizyczny dostęp do danych i za pomocą różnych opcji zabezpieczeń danych w pliku, kolumny lub poziom wiersza niewidocznego szyfrowania danych, szyfrowanie na poziomie komórki lub zabezpieczenia na poziomie wiersza. Zawsze zaszyfrowane umożliwia również operacji względem zaszyfrowane dane, uproszczeniu procesu aktualizacji aplikacji. Z kolei dostęp do inspekcji Dzienniki aktywności bazy danych SQL zawiera informacje, które są potrzebne, co należy wiedzieć, jak i kiedy jest uzyskiwany dostęp do danych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Aby dowiedzieć się więcej na temat reguł zapory, zobacz [reguły zapory](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure).
 - Aby dowiedzieć się więcej o użytkownikach i danych logowania, zobacz [Zarządzanie danymi logowania](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 - Samouczek, zobacz [zabezpieczenia bazy danych SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial).

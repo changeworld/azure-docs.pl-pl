@@ -1,26 +1,26 @@
 ---
-title: Jak połączyć się z usługą Azure IoT Hub urządzenia inicjowania obsługi administracyjnej przy użyciu zestaw deweloperski IoT MXChip | Dokumentacja firmy Microsoft
-description: Jak połączyć się z usługą Azure IoT Hub urządzenia inicjowania obsługi administracyjnej przy użyciu zestaw deweloperski IoT MXChip
+title: Jak używać usługi inicjowania obsługi urządzeń Centrum IoT Azure automatycznego inicjowania obsługi można zarejestrować zestaw deweloperski IoT MXChip z Centrum IoT | Dokumentacja firmy Microsoft
+description: Jak używać usługi inicjowania obsługi urządzeń Centrum IoT Azure automatycznego inicjowania obsługi można zarejestrować zestaw deweloperski IoT MXChip z Centrum IoT.
 services: iot-dps
 keywords: ''
 author: liydu
 ms.author: liydu
-ms.date: 02/20/2018
+ms.date: 04/04/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 502f22a39622e9a8341e1daca8c9899fd8b7d7d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d60c5766b22e31c33d0dd4a743fa297470109ac6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="connect-the-mxchip-iot-devkit-to-the-azure-iot-hub-device-provisioning-service"></a>Połącz zestaw deweloperski IoT MXChip do inicjowania obsługi usługi urządzeń Centrum IoT Azure
+# <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Użyj obsługi automatycznego inicjowania obsługi usługi Azure IoT Hub urządzenia do zarejestrowania zestaw deweloperski IoT MXChip z Centrum IoT
 
-W tym artykule opisano sposób konfigurowania zestaw deweloperski IoT MXChip, aby była automatycznego rejestrowania w usłudze Azure IoT Hub za pomocą usługi Azure IoT urządzenia inicjowania obsługi usługi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule opisano sposób korzystania z usługi udostępniania urządzenia Centrum IoT Azure [automatycznego inicjowania obsługi administracyjnej](concepts-auto-provisioning.md), aby zarejestrować zestaw deweloperski IoT MXChip z Centrum IoT Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 * Skonfiguruj punkt końcowy globalnej urządzenia świadczenie usługi na urządzeniu.
 * Unikatowy klucz tajny (UDS) umożliwia generowanie certyfikatu X.509.
@@ -33,11 +33,11 @@ W tym artykule opisano sposób konfigurowania zestaw deweloperski IoT MXChip, ab
 
 Aby wykonać kroki opisane w tym samouczku, należy wykonać następujące zadania:
 
-* Przygotowanie Twojego zestaw deweloperski, wykonując kroki opisane w [połączyć AZ3166 zestaw deweloperski IoT z Centrum IoT Azure w chmurze](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Przygotowanie Twojego zestaw deweloperski, wykonując kroki opisane w [połączyć AZ3166 zestaw deweloperski IoT z Centrum IoT Azure w chmurze](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 * Uaktualnij do najnowszego oprogramowania układowego (1.3.0 lub nowszym) z [zestaw deweloperski aktualizacji oprogramowania układowego](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) samouczka.
-* Utwórz i Połącz z urządzeniem inicjowania obsługi administracyjnej wystąpienie usługi, wykonując kroki opisane w Centrum IoT [Konfigurowanie IoT Hub urządzenia inicjowania obsługi usługi, z portalu Azure](https://docs.microsoft.com/en-us/azure/iot-dps/quick-setup-auto-provision).
+* Utwórz i Połącz z urządzeniem inicjowania obsługi administracyjnej wystąpienie usługi, wykonując kroki opisane w Centrum IoT [Konfigurowanie IoT Hub urządzenia inicjowania obsługi usługi, z portalu Azure](/azure/iot-dps/quick-setup-auto-provision).
 
-## <a name="set-up-the-device-provisioning-service-configuration-on-the-device"></a>Konfigurowanie inicjowania obsługi konfiguracji usługi na urządzeniu urządzeń
+## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>Tworzenie i wdrażanie automatyczne Inicjowanie obsługi oprogramowania rejestracji urządzenia
 
 Aby podłączyć zestaw deweloperski do inicjowania obsługi utworzone wystąpienie usługi urządzeń:
 
@@ -51,7 +51,7 @@ Aby podłączyć zestaw deweloperski do inicjowania obsługi utworzone wystąpie
   git clone https://github.com/DevKitExamples/DevKitDPS.git
   ```
 
-4. Otwórz program Visual Studio Code i łączenie się z komputerem zestaw deweloperski, a następnie otwórz folder, który zawiera kod, który można sklonować.
+4. Otwórz program Visual Studio Code, podłącz zestaw deweloperski do komputera, a następnie otwórz folder, który zawiera kod, który można sklonować.
 
 5. Otwórz **DevKitDPS.ino**. Znajdź i Zamień `[Global Device Endpoint]` i `[ID Scope]` z wartościami zapisany w dół.
   ![Punkt końcowy punktu dystrybucji](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) można pozostawić **registrationId** puste. Aplikacja generuje go na podstawie wersji MAC adres i oprogramowania układowego. Jeśli chcesz dostosować identyfikator rejestracji, należy użyć tylko, alfanumeryczne, małe litery i łącznika kombinacji z maksymalnie 128 znaków. Aby uzyskać więcej informacji, zobacz [Zarządzanie rejestracji urządzenia z portalu Azure](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments).
@@ -62,7 +62,7 @@ Aby podłączyć zestaw deweloperski do inicjowania obsługi utworzone wystąpie
 
 ## <a name="save-a-unique-device-secret-on-an-stsafe-security-chip"></a>Zapisz hasło unikatowych urządzeń w układzie zabezpieczeń STSAFE
 
-Urządzenie usługi inicjowania obsługi administracyjnej można skonfigurować na urządzeniu, na podstawie jego [sprzętowego modułu zabezpieczeń](https://azure.microsoft.com/en-us/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). Używa zestaw deweloperski IoT MXChip [aparat kompozycji tożsamości urządzenia](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) z [Trusted Computing Group](https://trustedcomputinggroup.org). A *Unikatowy klucz tajny* (UDS) zapisywane w zabezpieczeń STSAFE mikroukładu na zestaw deweloperski służy do generowania urządzenia na unikatowy [X.509](https://docs.microsoft.com/en-us/azure/iot-dps/tutorial-set-up-device#select-a-hardware-security-module) certyfikatu. Certyfikat można później dla procesu rejestracji na urządzeniu, inicjowania obsługi usługi.
+Automatyczne inicjowanie obsługi administracyjnej można skonfigurować na urządzeniu oparty na urządzeniu [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism). Używa zestaw deweloperski IoT MXChip [aparat kompozycji tożsamości urządzenia](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) z [Trusted Computing Group](https://trustedcomputinggroup.org). A *Unikatowy klucz tajny* (UDS) zapisywane w zabezpieczeń STSAFE mikroukładu na zestaw deweloperski służy do generowania urządzenia na unikatowy [certyfikatu X.509](concepts-security.md#x509-certificates). Certyfikat jest później używany dla procesu rejestracji na urządzeniu, inicjowania obsługi usługi, a podczas rejestracji w czasie wykonywania.
 
 Typowe urządzenie Unikatowy klucz tajny jest ciągiem 64 znaków, jak pokazano w następującym przykładzie:
 
@@ -82,7 +82,7 @@ Aby zapisać klucz tajny unikatowych urządzeń na zestaw deweloperski:
 
 4. W oknie Monitora serial wpisz *set_dps_uds [your_own_uds_value]* i wybierz Enter.
   > [!NOTE]
-  > Na przykład jeśli ustawisz własne UDS zmieniając ostatnie dwa znaki `f`, należy wprowadzić polecenie następująco: set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff.
+  > Na przykład jeśli ustawisz własne UDS zmieniając ostatnie dwa znaki `f`, należy wprowadzić polecenie następująco: `set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff`.
 
 5. Bez zamykania okna monitora szeregowych, naciśnij klawisz **zresetować** przycisk na zestaw deweloperski.
 
@@ -100,23 +100,24 @@ Aby zapisać klucz tajny unikatowych urządzeń na zestaw deweloperski:
 
 2. Wklej tych plików do **narzędzia** folderu na tym samym poziomie z **.kompilacja** folderu.
 
-3. Run **dps_cert_gen.exe**. Postępuj zgodnie z monitami o wprowadzenie Twojej **UDS**, **adres MAC** dla zestaw deweloperski i **wersja oprogramowania układowego** można wygenerować certyfikatu X.509.
+3. Uruchom **dps_cert_gen.exe**. Postępuj zgodnie z monitami o wprowadzenie Twojej **UDS**, **adres MAC** dla zestaw deweloperski i **wersja oprogramowania układowego** można wygenerować certyfikatu X.509.
   ![Run dps-cert-gen.exe](./media/how-to-connect-mxchip-iot-devkit/dps-cert-gen.png)
 
 4. Po wygenerowaniu certyfikatu X.509, **PEM** certyfikat zostanie zapisana w tym samym folderze.
 
 ## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Tworzenie wpisu rejestracji urządzenia w urządzeniu usługi inicjowania obsługi administracyjnej
 
-1. W portalu Azure przejdź do inicjowania obsługi usługi. Wybierz **Zarządzanie rejestracji**, a następnie wybierz **poszczególnych rejestracji** kartę. ![Poszczególne rejestracji](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
+1. W portalu Azure przejdź do Twojego wystąpienia usługi inicjowania obsługi urządzeń. Wybierz **Zarządzanie rejestracji**, a następnie wybierz **poszczególnych rejestracji** kartę. ![Poszczególne rejestracji](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
 
 2. Wybierz pozycję **Dodaj**.
 
-3. W **mechanizmu**, wybierz pozycję **X.509**.
-  ![Przekazywanie certyfikatu](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
+3. W panelu "Dodaj rejestracji":
+   - Wybierz **X.509** w obszarze **mechanizmu**
+   - Kliknij przycisk "Wybierz plik" w obszarze **plik PEM lub .cer podstawowego certyfikatu**
+   - w oknie dialogowym Otwieranie pliku, przejdź do i przekaż **PEM** wygenerowane przed chwilą certyfikatu
+   - Pozostaw rest jako domyślny i kliknij przycisk **Zapisz**
 
-4. W **plik PEM lub .cer certyfikatu**, Przekaż **PEM** wygenerowany certyfikat.
-
-5. Pozostaw domyślne, a następnie wybierz pozostałe **zapisać**.
+   ![Przekazywanie certyfikatu](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
 ## <a name="start-the-devkit"></a>Uruchom zestaw deweloperski
 

@@ -1,11 +1,11 @@
 ---
-title: "Generowanie i eksportowania certyfikatów dla lokacji punktu: środowiska PowerShell: Azure | Dokumentacja firmy Microsoft"
-description: "Utwórz certyfikat z podpisem własnym głównego, wyeksportować klucz publiczny i wygenerować certyfikaty klienta przy użyciu programu PowerShell w systemie Windows 10 lub Windows Server 2016."
+title: 'Generowanie i eksportowania certyfikatów dla lokacji punktu: środowiska PowerShell: Azure | Dokumentacja firmy Microsoft'
+description: Utwórz certyfikat z podpisem własnym głównego, wyeksportować klucz publiczny i wygenerować certyfikaty klienta przy użyciu programu PowerShell w systemie Windows 10 lub Windows Server 2016.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 27b99f7c-50dc-4f88-8a6e-d60080819a43
 ms.service: vpn-gateway
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/23/2018
+ms.date: 04/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 410fe05e0a545905024f223e6f7297066b326d14
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 385b6ed2e8104fd2e15e6e55d46dcd12b963ec6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10-or-windows-server-2016"></a>Generowanie i eksportowania certyfikatów połączeń punkt-lokacja za pomocą programu PowerShell w systemie Windows 10 lub Windows Server 2016
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generowanie i eksportowania certyfikatów dla punkt-lokacja za pomocą programu PowerShell
 
 Połączenia punkt-lokacja używa certyfikatów w celu uwierzytelniania. W tym artykule pokazano, jak utworzyć certyfikat z podpisem własnym głównego i generować certyfikaty klienta przy użyciu programu PowerShell w systemie Windows 10 lub Windows Server 2016. Jeśli szukasz punkt-lokacja kroków konfiguracji, takich jak sposób przekazywania certyfikatów głównych, wybierz jedną z artykułów "Konfiguruj punkt-lokacja" z następującej listy:
 

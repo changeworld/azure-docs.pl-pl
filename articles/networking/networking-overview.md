@@ -1,13 +1,13 @@
 ---
-title: "Sieć platformy Azure | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat usługi sieciowe Azure i możliwości."
+title: Sieć platformy Azure | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat usługi sieciowe Azure i możliwości.
 services: networking
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-networking"></a>Sieć platformy Azure
 
@@ -138,7 +138,7 @@ Platforma Azure oferuje następujące narzędzia do monitorowania i zarządzania
 - **Dzienniki diagnostyczne:** okresowo i spontanicznych zdarzenia są tworzone przez zasobów sieciowych i rejestrowane na kontach magazynu Azure, wysyłane do usługi Azure Event Hub lub wysyłane do usługi Analiza dzienników Azure. Dzienniki diagnostyczne zapewniają wgląd w kondycję zasobu. Dzienniki diagnostyczne są dostępne dla usługi równoważenia obciążenia (internetowy), grup zabezpieczeń sieci tras i bramy aplikacji. Aby dowiedzieć się więcej na temat dzienników diagnostycznych, przeczytaj [Przegląd dzienników diagnostycznych](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Metryki:** metryki są miar wydajności i liczniki zebrane w danym okresie czasu na zasobach. Metryki może służyć do wyzwalania na podstawie progów alertów. Obecnie dostępne dla bramy aplikacji są metryki. Aby dowiedzieć się więcej na temat metryki, przeczytaj [omówienie metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Rozwiązywanie problemów:** informacje dotyczące rozwiązywania problemów jest dostępny bezpośrednio w portalu Azure. Informacje te pomagają zdiagnozować typowych problemów z usługi ExpressRoute, Brama sieci VPN bramy aplikacji, dzienniki zabezpieczeń sieci, tras, DNS, usługi równoważenia obciążenia i Menedżera ruchu.
-- **Kontrola dostępu oparta na rolach (RBAC):** kontrolowania, kto może utworzyć zasobów i zarządzanie nimi sieci przy użyciu kontroli dostępu opartej na rolach (RBAC). Dowiedz się więcej o RBAC odczytując [wprowadzenie RBAC](../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu. 
+- **Kontrola dostępu oparta na rolach (RBAC):** kontrolowania, kto może utworzyć zasobów i zarządzanie nimi sieci przy użyciu kontroli dostępu opartej na rolach (RBAC). Dowiedz się więcej o RBAC odczytując [wprowadzenie RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu. 
 - **Przechwytywania pakietów:** usługa obserwatora sieciowego Azure oferuje możliwość uruchamiania przechwytywania pakietów na maszynie Wirtualnej za pomocą rozszerzenia w Maszynie wirtualnej. Ta funkcja jest dostępna dla systemów Linux i maszyn wirtualnych systemu Windows. Aby dowiedzieć się więcej na temat przechwytywania pakietów, przeczytaj [omówienie przechwytywania pakietów](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Sprawdź IP przepływów:** obserwatora sieciowego pozwala sprawdzić przepływów IP między maszyny Wirtualnej platformy Azure i zdalnego zasobu, aby określić, czy pakiety zezwolono na dostęp lub odmowa dostępu. Ta funkcja umożliwia administratorom szybkie diagnozowanie problemów z łącznością. Aby dowiedzieć się więcej o tym, jak można zweryfikować przepływów IP, przeczytaj [przepływu IP sprawdzić Przegląd](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.
 - **Rozwiązywania problemów z połączeniami sieci VPN:** do rozwiązywania problemów z sieci VPN z obserwatora sieciowego umożliwia zapytanie połączenia lub bramy i sprawdzić kondycję zasobów. Aby dowiedzieć się więcej na temat rozwiązywania problemów z połączenia sieci VPN, należy przeczytać [połączenie z siecią VPN Rozwiązywanie problemów — omówienie](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) artykułu.

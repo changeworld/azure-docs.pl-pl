@@ -1,13 +1,13 @@
 ---
-title: "Adresy maszynę Wirtualną za pomocą wielu IP przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)."
+title: Adresy maszynę Wirtualną za pomocą wielu IP przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: aa0f84299dcb4800cd332d8276785f6b08152060
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: a1e78f7fa892586385e1dbd186125630ee1fb307
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Przypisz wielu adresów IP do maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure
 
@@ -167,7 +167,7 @@ Dodaj prywatnych adresów IP do systemu operacyjnego maszyny Wirtualnej, wykonuj
 
 ## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
 
-Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącej karty NIC, wykonując kroki, które należy wykonać. Przykłady opracowano na [scenariusza](#Scenario) opisane w tym artykule.
+Dodatkowe prywatne i publiczne adresy IP można dodać do istniejącego interfejsu sieci platformy Azure, wykonując kroki, które należy wykonać. Przykłady opracowano na [scenariusza](#Scenario) opisane w tym artykule.
 
 1. Otwórz powłokę poleceń i wykonaj pozostałe kroki w tej sekcji w ramach jednej sesji. Jeśli nie masz jeszcze interfejsu wiersza polecenia Azure zainstalowany i skonfigurowany, wykonaj kroki [instalacji Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu i logowania do platformy Azure konta `az-login` polecenia.
 

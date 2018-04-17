@@ -1,19 +1,19 @@
 ---
-title: "Azure wystąpienia bazy danych SQL zarządzane połączenia aplikacji | Dokumentacja firmy Microsoft"
-description: "W tym artykule omówiono sposób połączyć aplikację z wystąpienia zarządzane bazy danych SQL Azure."
+title: Azure wystąpienia bazy danych SQL zarządzane połączenia aplikacji | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono sposób połączyć aplikację z wystąpienia zarządzane bazy danych SQL Azure.
 ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: f02311026e3f28d4cf41dfe9b155f928885ae938
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1eecd28d5e7043acae5cfd52edf93e8d301bd31e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połączyć aplikację z wystąpienia zarządzane bazy danych SQL Azure
 
@@ -79,4 +79,4 @@ Skonfiguruj połączenie punkt-lokacja sieci wirtualnej za pomocą natywnego cer
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Informacji o zarządzanych wystąpienie znajduje się w temacie [co to jest wystąpieniem zarządzane](sql-database-managed-instance.md).
-- Samouczek, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-tutorial-portal.md).
+- Samouczek pokazuje sposób tworzenia nowego wystąpienia zarządzane, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-create-tutorial-portal.md).

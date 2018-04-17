@@ -1,11 +1,11 @@
 ---
-title: "Skalowanie klastra usługi sieć szkieletowa przychodzący lub wychodzący | Dokumentacja firmy Microsoft"
-description: "Skalowanie klastra usługi sieć szkieletowa przychodzący lub wychodzący odpowiadające żądanie przez ustawienie zasady automatycznego skalowania dla zestawu skalowania maszyn typu/wirtualnej każdego węzła. Dodaj lub usuń węzły do klastra sieci szkieletowej usług"
+title: Skalowanie klastra usługi sieć szkieletowa przychodzący lub wychodzący | Dokumentacja firmy Microsoft
+description: Skalowanie klastra usługi sieć szkieletowa przychodzący lub wychodzący odpowiadające żądanie przez ustawienie zasady automatycznego skalowania dla zestawu skalowania maszyn typu/wirtualnej każdego węzła. Dodaj lub usuń węzły do klastra sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
-ms.author: chackdan
-ms.openlocfilehash: 4813276ea8180aa8bdd385da289e6073f08d400e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: aljo
+ms.openlocfilehash: 506877e12d12ff3b1372cc0360a8df1a1d52744a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Skalowanie klastra usługi sieć szkieletowa przychodzący lub wychodzący przy użyciu reguł automatycznego skalowania
-Zestawy skalowania maszyny wirtualnej są zasobu obliczeń platformy Azure, który służy do wdrażania i zarządzania nimi jako zestaw kolekcji maszyn wirtualnych. Każdy typ węzła który jest zdefiniowany w klastrze usługi sieć szkieletowa jest skonfigurowany jako osobny zestaw skali maszyny wirtualnej. Każdy typ węzła można skalować w lub wychodzących niezależnie, mają różne zestawy otwartych portów i może mieć inną pojemność metryki. Dowiedz się więcej o w [elementów sieci szkieletowej usług NodeType](service-fabric-cluster-nodetypes.md) dokumentu. Ponieważ sieci szkieletowej usług typy węzłów w klastrze składają się z zestawy skalowania maszyny wirtualnej w wewnętrznej bazie danych, należy skonfigurować reguły automatycznego skalowania dla zestawu skali maszyny każdego węzła typu/wirtualnej.
+# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Skalowanie klastra usługi sieć szkieletowa przychodzący lub wychodzący przy użyciu reguł automatycznego skalowania lub ręcznie
+Zestawy skalowania maszyny wirtualnej są zasobu obliczeń platformy Azure, który służy do wdrażania i zarządzania nimi jako zestaw kolekcji maszyn wirtualnych. Każdy typ węzła który jest zdefiniowany w klastrze usługi sieć szkieletowa jest skonfigurowany jako zestaw skali oddzielnej maszynie wirtualnej. Każdy typ węzła można skalować w lub wychodzących niezależnie, mają różne zestawy otwartych portów i może mieć inną pojemność metryki. Dowiedz się więcej o w [elementów sieci szkieletowej usług NodeType](service-fabric-cluster-nodetypes.md) dokumentu. Ponieważ sieci szkieletowej usług typy węzłów w klastrze składają się z zestawy skalowania maszyny wirtualnej w wewnętrznej bazie danych, należy skonfigurować reguły automatycznego skalowania dla zestawu skali maszyny każdego węzła typu/wirtualnej.
 
 > [!NOTE]
 > Subskrypcja musi mieć za mało rdzeni, aby dodać nowe maszyny wirtualne wchodzące w skład tego klastra. Nie ma Weryfikacja modelu nie, aby uzyskać awaria czas wdrażania, jeśli dowolne limity przydziału są osiągane.
@@ -40,7 +40,7 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine sca
 ```
 
 ## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Ustawianie reguł automatycznego skalowania dla węzła typu/wirtualnej zestawu skali maszyny
-Jeśli klaster ma wiele typów węzła, następnie powtarzać dla każdego węzła typy/wirtualnej skalowania maszyny ustawia chcesz skalować (przychodzący lub wychodzący). Wziąć pod uwagę liczbę węzłów potrzebne przed skonfigurowaniem Skalowanie automatyczne. Minimalna liczba węzłów, które muszą mieć dla typu węzła podstawowego jest wymuszany przez wybranego poziomu niezawodności. Przeczytaj więcej na temat [poziomów niezawodności](service-fabric-cluster-capacity.md).
+Jeśli klaster ma wiele typów węzła, następnie powtarzać dla każdego węzła typy/wirtualnej skalowania maszyny ustawia chcesz skalować (przychodzący lub wychodzący). Przed skonfigurowaniem skalowania automatycznego należy wziąć pod uwagę potrzebną liczbę węzłów. Minimalna liczba węzłów wymagana dla typu węzła podstawowego zależy od wybranego poziomu niezawodności. Przeczytaj więcej na temat [poziomów niezawodności](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
 > Skalowania węzła podstawowego wpisz, aby była mniejsza niż minimalna liczba upewnij, niestabilny klastra lub przełączyć go w dół. Może to spowodować utratę danych dla aplikacji i usług systemowych.
@@ -74,7 +74,7 @@ Trzeba wykonać następujące kroki jednego wystąpienia maszyny Wirtualnej w cz
 
 1. Uruchom [ServiceFabricNode Wyłącz](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) z zamiarem "RemoveNode", aby wyłączyć węzła zamierzasz usunąć (najwyższy wystąpienia tego typu węzła).
 2. Uruchom [Get ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aby upewnić się, że węzeł w rzeczywistości przeszła na wyłączone. Jeśli nie, poczekaj, aż węzła jest wyłączone. Nie można Pospiesz się w tym kroku.
-3. Wykonaj przykładowe/instrukcje [galerię szablonów szybki start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Aby zmienić liczbę maszyn wirtualnych o jeden w tym typie Nodetype. Wystąpienie usunięte jest najwyższym wystąpienia maszyny Wirtualnej. 
+3. Wykonaj przykładowe/instrukcje [galerię szablonów szybki start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Aby zmienić liczbę maszyn wirtualnych o jeden w ramach tego typu węzła. Wystąpienie usunięte jest najwyższym wystąpienia maszyny Wirtualnej. 
 4. Powtórz kroki od 1 do 3 zgodnie z potrzebami, ale nigdy nie skalować liczbę wystąpień w typach węzła podstawowego mniej niż gwarantuje warstwa niezawodności. Zapoznaj się [szczegółowe informacje w tym miejscu warstwach niezawodności](service-fabric-cluster-capacity.md). 
 
 ## <a name="manually-remove-vms-from-the-non-primary-node-typevirtual-machine-scale-set"></a>Ręcznie usuń maszyny wirtualne z węzła innego niż podstawowy typ/wirtualnej zestawu skali maszyny
@@ -86,8 +86,8 @@ Trzeba wykonać następujące kroki jednego wystąpienia maszyny Wirtualnej w cz
 Wykonaj następujące kroki jednego wystąpienia maszyny Wirtualnej należy naraz. Dzięki temu usługi systemowe (i usługi stanowej) można zamknąć bezpiecznie w wystąpieniu maszyny Wirtualnej, które są usuwane i nowej repliki utworzony else where.
 
 1. Uruchom [ServiceFabricNode Wyłącz](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) z zamiarem "RemoveNode", aby wyłączyć węzła zamierzasz usunąć (najwyższy wystąpienia tego typu węzła).
-2. Uruchom [Get ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aby upewnić się, że węzeł w rzeczywistości przeszła na wyłączone. Jeśli nie, zaczekaj węzła jest wyłączone. Nie można Pospiesz się w tym kroku.
-3. Wykonaj przykładowe/instrukcje [galerię szablonów szybki start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Aby zmienić liczbę maszyn wirtualnych o jeden w tym typie Nodetype. Spowoduje to usunięcie teraz najwyższy wystąpienia maszyny Wirtualnej. 
+2. Uruchom [Get ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aby upewnić się, że węzeł w rzeczywistości przeszła na wyłączone. Jeśli nie, poczekaj, aż węzła jest wyłączone. Nie można Pospiesz się w tym kroku.
+3. Wykonaj przykładowe/instrukcje [galerię szablonów szybki start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Aby zmienić liczbę maszyn wirtualnych o jeden w ramach tego typu węzła. Spowoduje to usunięcie teraz najwyższy wystąpienia maszyny Wirtualnej. 
 4. Powtórz kroki od 1 do 3 zgodnie z potrzebami, ale nigdy nie skalować liczbę wystąpień w typach węzła podstawowego mniej niż gwarantuje warstwa niezawodności. Zapoznaj się [szczegółowe informacje w tym miejscu warstwach niezawodności](service-fabric-cluster-capacity.md).
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Zachowania można zaobserwować w narzędziu Service Fabric Explorer

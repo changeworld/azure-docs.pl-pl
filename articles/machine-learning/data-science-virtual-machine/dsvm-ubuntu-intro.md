@@ -2,23 +2,23 @@
 title: Aprowizowanie maszyny wirtualnej systemu Linux (Ubuntu) danych nauki na platformie Azure | Dokumentacja firmy Microsoft
 description: Konfigurowanie i tworzenie danych nauki maszyny wirtualnej dla systemu Linux (Ubuntu) na platformie Azure analytics i uczenia maszynowego.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f3ddebdd02d4766b83f0834979a54552f88179cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej nauki danych dla systemu Linux (Ubuntu)
 
@@ -159,7 +159,7 @@ Caffe2 to platforma głębokie uczenia z usługi Facebook, który jest oparty na
 Niektóre komputery przenośne przykładzie są dostępne w JupyterHub.
 
 #### <a name="h2o"></a>H2O
-H2O jest uczenie maszynowe szybkiego, w pamięci, rozproszone i platformy analizy predykcyjnej. Pakiet języka Python jest instalowane w środowiskach Anaconda główny i py35. Pakiet języka R jest również instalowany. Aby uruchomić H2O z wiersza polecenia, `java -jar /dsvm/tools/h2o/current/h2o.jar`; istnieją różne [opcje wiersza polecenia](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , który chcesz skonfigurować. Przechodząc do http://localhost:54321, aby rozpocząć można uzyskać dostępu do interfejsu użytkownika sieci Web przepływu. Przykładowe notesów są także dostępne w JupyterHub.
+H2O jest uczenie maszynowe szybkiego, w pamięci, rozproszone i platformy analizy predykcyjnej. Pakiet języka Python jest instalowane w środowiskach Anaconda główny i py35. Pakiet języka R jest również instalowany. Aby uruchomić H2O z wiersza polecenia, `java -jar /dsvm/tools/h2o/current/h2o.jar`; istnieją różne [opcje wiersza polecenia](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , który chcesz skonfigurować. Interfejs sieci Web przepływu mogą uzyskiwać przechodząc do http://localhost:54321 rozpocząć pracę. Przykładowe notesów są także dostępne w JupyterHub.
 
 #### <a name="keras"></a>Keras
 Keras jest ogólny sieci neuronowej interfejsu API środowiska Python, którą można uruchomić na początku TensorFlow lub Theano. Jest ona dostępna w środowiskach Python głównego i py35. 
@@ -170,7 +170,7 @@ MXNet to platforma głębokie nauki przeznaczony dla wydajność i elastycznoś�
 #### <a name="nvidia-digits"></a>NVIDIA CYFR
 NVIDIA głębokie uczenia GPU szkolenia System, znany jako CYFR, jest systemu, aby uprościć typowe zadania uczenia głębokie takich jak zarządzanie danych, projektowanie i szkolenia sieci neuronowe w systemach procesora GPU i monitorowania wydajności w czasie rzeczywistym z wizualizacji zaawansowane. 
 
-CYFR jest dostępna jako usługa o nazwie cyfr. Uruchom usługę i przejdź do http://localhost: 5000, aby rozpocząć pracę.
+CYFR jest dostępna jako usługa o nazwie cyfr. Uruchom usługę i przejdź do http://localhost:5000 rozpocząć pracę.
 
 Jako moduł Python w środowisku głównego Conda instalowany jest także CYFR.
 
@@ -221,7 +221,7 @@ Aby zainstalować dodatkowych bibliotek języka Python, należy uruchomić ```co
 ### <a name="jupyter-notebook"></a>Notesu Jupyter
 Rozkład Anaconda zawiera również notesu Jupyter, środowisko, aby udostępnić kodu i analizy. Notesu Jupyter jest dostępny za pośrednictwem JupyterHub. Zaloguj się przy użyciu lokalnego nazwę użytkownika systemu Linux i hasło.
 
-Wstępnie skonfigurowano serwer notesu Jupyter z języka Python, 2, Python 3 i jądra R. Brak ikony pulpitu o nazwie "Notesu Jupyter" można uruchomić przeglądarki do uzyskiwania dostępu do serwera notesu. Jeśli na maszynie Wirtualnej za pośrednictwem protokołu SSH lub X2Go klienta, możesz również odwiedzić [https://localhost:8000 /](https://localhost:8000/) dostęp do serwera notesu Jupyter.
+Wstępnie skonfigurowano serwer notesu Jupyter z języka Python, 2, Python 3 i jądra R. Brak ikony pulpitu o nazwie "Notesu Jupyter" można uruchomić przeglądarki do uzyskiwania dostępu do serwera notesu. Jeśli na maszynie Wirtualnej za pośrednictwem protokołu SSH lub X2Go klienta, możesz również odwiedzić [ https://localhost:8000/ ](https://localhost:8000/) dostęp do serwera notesu Jupyter.
 
 > [!NOTE]
 > Kontynuuj, jeśli możesz uzyskać wyświetlania ostrzeżeń dotyczących certyfikatów.
@@ -404,7 +404,7 @@ Teraz interfejsu graficznego otwartej z zestawu kart. Poniżej przedstawiono kro
 7. Kliknij przycisk **Evaluate** kartę.
 8. Kliknij przycisk **ryzyka** przycisk radiowy, a następnie kliknij przycisk **Execute** do wyświetlenia dwa wykresy wydajności ryzyka (skumulowany).
 9. Kliknij przycisk **dziennika** kartę, aby wyświetlić kod Generuj R poprzedniej operacji.
-   (Z powodu błędów w bieżącej wersji Rattle, należy wstawić  *#*  znak przed *wyeksportować ten dziennik...*  w tekście dziennika.)
+   (Z powodu błędów w bieżącej wersji Rattle, należy wstawić *#* znak przed *wyeksportować ten dziennik...*  w tekście dziennika.)
 10. Kliknij przycisk **wyeksportować** przycisk, aby zapisać plik skryptu języka R o nazwie *weather_script. R* do folderu macierzystego.
 
 Można zamknąć Rattle i R. Teraz możesz zmodyfikować wygenerowany skrypt języka R lub go użyć, ponieważ jest go w każdej chwili uruchomić ponownie wszystkie czynności, które zostało zrobione w Interfejsie użytkownika Rattle. Szczególnie dla początkujących użytkowników w R to prosty sposób na szybkie czy analizy i komputera learning prostego interfejsu graficznego, podczas automatycznego generowania kodu w R, aby zmodyfikować i/lub Dowiedz się więcej.

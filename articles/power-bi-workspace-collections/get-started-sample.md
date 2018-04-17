@@ -1,12 +1,12 @@
 ---
-title: "Rozpoczynanie pracy przy użyciu przykładu"
-description: "W tym artykule firma Microsoft będzie przedstawiono przykładowe uruchomiono get Power BI obszaru roboczego kolekcji."
+title: Rozpoczynanie pracy przy użyciu przykładu
+description: W tym artykule firma Microsoft będzie przedstawiono przykładowe uruchomiono get Power BI obszaru roboczego kolekcji.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 9049f95c9f81c0217c96469a45561b6cd0b33ae9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4daa675092bed1788025e7e3f7e7e11d02ef1671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem Power BI obszaru roboczego kolekcje
 
@@ -71,7 +71,7 @@ Checking import state... Succeeded
 
 W tym momencie masz raport programu Power BI PBIX zaimportowane do programu **obszaru roboczego**. Teraz zobaczmy, jak uruchomić **Power BI obszaru roboczego kolekcje** Pobierz wprowadzenie przykładową aplikację sieci web.
 
-## <a name="run-the-sample-web-app"></a>Uruchom przykładową aplikację sieci web
+## <a name="run-the-sample-web-app"></a>Uruchamianie przykładowej aplikacji internetowej
 
 Przykładowej aplikacji sieci web, to przykładowa aplikacja renderujący raporty zaimportowane do programu **obszaru roboczego**. Poniżej przedstawiono sposób konfigurowania przykładowej aplikacji sieci web.
 
@@ -143,7 +143,7 @@ Przy użyciu wspólnej serwera i bazy danych atrybutów kończyć się niepowodz
 
 | Część | Opis |
 | --- | --- |
-| Tytuł |Nazwa raportu. |
+| Stanowisko |Nazwa raportu. |
 | Ciąg zapytania |Łącze do raportu identyfikatora. |
 
     <div id="reports-nav" class="panel-collapse collapse">
@@ -171,7 +171,7 @@ Report.cshtml: Ustaw **Model.AccessToken**, a wyrażenie Lambda **PowerBIReportF
         @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
     </div>
 
-### <a name="controller"></a>Kontrolera
+### <a name="controller"></a>Kontroler
 
 **DashboardController.cs**: tworzy przekazywanie PowerBIClient **tokenu aplikacji**. JSON tokenów sieci Web (JWT) są generowane na podstawie **klucza podpisywania** uzyskanie **poświadczenia**. **Poświadczenia** są używane do tworzenia wystąpienia **PowerBIClient**. Po utworzeniu wystąpienia **PowerBIClient**, można wywołać GetReports() i GetReportsAsync().
 
@@ -254,7 +254,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > [!NOTE]
 > {tableName/fieldName} nie może zawierać spacji ani znaków specjalnych. {fieldValue} akceptuje pojedyncze wartości kategorii.  
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Typowe scenariusze kolekcji obszarów roboczych programu Microsoft Power BI](scenarios.md)  
 [Authenticating and authorizing with Power BI Workspace Collections (Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI)](app-token-flow.md)  

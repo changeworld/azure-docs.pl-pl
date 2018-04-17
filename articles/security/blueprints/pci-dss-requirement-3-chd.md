@@ -1,5 +1,5 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania CHD"
+title: Plan Azure przetwarzania płatności — wymagania CHD
 description: PCI DSS wymaganie 3
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 356599cbe1e4e1948a5ec16d0d504835fa7dcd43
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 3bbed692bfccaa2a3296ba4697c66e9069b6e914
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące CHD dla środowisk standardem PCI DSS
 ## <a name="pci-dss-requirement-3"></a>PCI DSS wymaganie 3
@@ -43,8 +43,8 @@ Zapoznaj się PCI DSS i PA-DSS terminów, skrótów i akronimów dla definicji "
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Azure jest odpowiedzialny za zapewnienie, że są bezpiecznie wycofany z eksploatacji przy użyciu NIST 800 88 protokołów zgodne określone w zasadach jego bezpiecznego usuwania danych klienta oznaczonego do usunięcia. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie usuwać ani zniszczyć wszystkie przechowywane CHD. Jednak wszystkie dane są zaszyfrowane i nie podstawowego konta numer (PRZESUWANIE) dane są przechowywane.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure jest odpowiedzialny za zapewnienie, że są bezpiecznie wycofany z eksploatacji przy użyciu NIST 800 88 protokołów zgodne określone w zasadach jego bezpiecznego usuwania danych klienta oznaczonego do usunięcia. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie usuwać ani zniszczyć wszystkie przechowywane CHD. Jednak wszystkie dane są zaszyfrowane i nie podstawowego konta numer (PRZESUWANIE) dane są przechowywane.<br /><br />|
 
 
 
@@ -60,8 +60,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie usuwać ani zniszczyć wszystkie przechowywane CHD; Przykładowe dane są przechowywane dla celów demonstracyjnych tylko. Jednak wszystkie dane są zaszyfrowane i nie głównej konto, które są przechowywane dane numer (przesunięcie).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie usuwać ani zniszczyć wszystkie przechowywane CHD; Przykładowe dane są przechowywane dla celów demonstracyjnych tylko. Jednak wszystkie dane są zaszyfrowane i nie głównej konto, które są przechowywane dane numer (przesunięcie).<br /><br />|
 
 
 
@@ -82,8 +82,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie przechowuje żadnych CHD pełnej zawartości.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie przechowuje żadnych CHD pełnej zawartości.|
 
 
 
@@ -95,8 +95,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso szyfruje wszystkie dane w tym przykłady CVV.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso szyfruje wszystkie dane w tym przykłady CVV.|
 
 
 
@@ -108,8 +108,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie przechowuje informacji o numerach PIN.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie przechowuje informacji o numerach PIN.|
 
 
 
@@ -124,8 +124,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso maski numer podstawowego konta (PRZESUWANIE) przy użyciu przezroczystego szyfrowania danych, zawsze zaszyfrowanych kolumn i maskowania danych dynamicznych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso maski numer podstawowego konta (PRZESUWANIE) przy użyciu przezroczystego szyfrowania danych, zawsze zaszyfrowanych kolumn i maskowania danych dynamicznych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -144,8 +144,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso szyfruje wszystkie dane karty kredytowej, a następnie używa usługi Azure Key Vault zarządzać kluczami, co uniemożliwia pobieranie CHD.<br /><br />Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso szyfruje wszystkie dane karty kredytowej, a następnie używa usługi Azure Key Vault zarządzać kluczami, co uniemożliwia pobieranie CHD.<br /><br />Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -160,8 +160,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wszystkie przechowywane dane są szyfrowane i dzieli ruch, aby zapobiec uprzywilejowanych podniesienia uprawnień funkcji DevOps.<br /><br />Środowiska usługi aplikacji jest zabezpieczona i zablokowane, musi istnieć mechanizm umożliwia wersjach opracowywania oprogramowania lub zmiany, które mogą być wymagane, takie jak możliwość monitorowania aplikacji sieci Web przy użyciu Kudu.<br /><br />Maszyna wirtualna zostanie ustanowiony jako jumpbox (host bastionu) z następujących konfiguracji:<br /><br /><ul><li>[Rozszerzenie ochrony przed złośliwym oprogramowaniem](/azure/security/azure-security-antimalware)</li><li>[Rozszerzenie monitorowania OMS](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[Rozszerzenia diagnostyki maszyny Wirtualnej](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Dysku zaszyfrowanego funkcją BitLocker](/azure/security/azure-security-disk-encryption)</li></ul>Za pomocą usługi Azure Key Vault wyrównana z Azure dla instytucji rządowych, wymagania dotyczące HIPAA i PCI DSS.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wszystkie przechowywane dane są szyfrowane i dzieli ruch, aby zapobiec uprzywilejowanych podniesienia uprawnień funkcji DevOps.<br /><br />Środowiska usługi aplikacji jest zabezpieczona i zablokowane, musi istnieć mechanizm umożliwia wersjach opracowywania oprogramowania lub zmiany, które mogą być wymagane, takie jak możliwość monitorowania aplikacji sieci Web przy użyciu Kudu.<br /><br />Maszyna wirtualna zostanie ustanowiony jako jumpbox (host bastionu) z następujących konfiguracji:<br /><br /><ul><li>[Rozszerzenie ochrony przed złośliwym oprogramowaniem](/azure/security/azure-security-antimalware)</li><li>[Rozszerzenie monitorowania analizy dzienników](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[Rozszerzenia diagnostyki maszyny Wirtualnej](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Dysku zaszyfrowanego funkcją BitLocker](/azure/security/azure-security-disk-encryption)</li></ul>Za pomocą usługi Azure Key Vault wyrównana z Azure dla instytucji rządowych, wymagania dotyczące HIPAA i PCI DSS.|
 
 
 
@@ -176,8 +176,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Microsoft Azure gwarantuje, że magazynów kluczy klienta są logicznie odizolowane od siebie i logicznie odizolowane od płaszczyzny zarządzania w usłudze Key Vault. Key Vault jest zaprojektowana tak, aby firmy Microsoft nie ma stały dostęp do magazynu kluczy klienta. <br /><br />Klucze są chronione przez Microsoft Azure, przy użyciu branżowych standardów dotyczących algorytmów, długości kluczy i sprzętowych modułów zabezpieczeń (HSM).<br /><br />Klucza przechowywanego w Microsoft Azure Key Vault może służyć do ochrony inny klucz. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zawiera dokumentację w celu przedstawienia i wdrażać chronionego klucza rozwiązania do ochrony pokaz CHD.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Microsoft Azure gwarantuje, że magazynów kluczy klienta są logicznie odizolowane od siebie i logicznie odizolowane od płaszczyzny zarządzania w usłudze Key Vault. Key Vault jest zaprojektowana tak, aby firmy Microsoft nie ma stały dostęp do magazynu kluczy klienta. <br /><br />Klucze są chronione przez Microsoft Azure, przy użyciu branżowych standardów dotyczących algorytmów, długości kluczy i sprzętowych modułów zabezpieczeń (HSM).<br /><br />Klucza przechowywanego w Microsoft Azure Key Vault może służyć do ochrony inny klucz. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zawiera dokumentację w celu przedstawienia i wdrażać chronionego klucza rozwiązania do ochrony pokaz CHD.|
 
 
 
@@ -195,8 +195,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Microsoft Azure gwarantuje, że magazynów kluczy klienta są logicznie odizolowane od siebie i logicznie odizolowane od płaszczyzny zarządzania w usłudze Key Vault. Key Vault jest zaprojektowana tak, aby firmy Microsoft nie ma stały dostęp do magazynu kluczy klienta. <br /><br />Klucze są chronione przez Microsoft Azure, przy użyciu branżowych standardów dotyczących algorytmów, długości kluczy i sprzętowych modułów zabezpieczeń (HSM).<br /><br />Klucza przechowywanego w Microsoft Azure Key Vault może służyć do ochrony inny klucz. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zawiera dokumentację w celu przedstawienia i wdrażać chronionego klucza rozwiązania do ochrony pokaz CHD.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Microsoft Azure gwarantuje, że magazynów kluczy klienta są logicznie odizolowane od siebie i logicznie odizolowane od płaszczyzny zarządzania w usłudze Key Vault. Key Vault jest zaprojektowana tak, aby firmy Microsoft nie ma stały dostęp do magazynu kluczy klienta. <br /><br />Klucze są chronione przez Microsoft Azure, przy użyciu branżowych standardów dotyczących algorytmów, długości kluczy i sprzętowych modułów zabezpieczeń (HSM).<br /><br />Klucza przechowywanego w Microsoft Azure Key Vault może służyć do ochrony inny klucz. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zawiera dokumentację w celu przedstawienia i wdrażać chronionego klucza rozwiązania do ochrony pokaz CHD.|
 
 
 
@@ -209,8 +209,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Magazyn kluczy obsługuje zasady dostępu szczegółowego, umożliwiające właściciela usługi Key Vault udzielić dostępu do określonych funkcji do wykonywania określonych operacji do konkretnych obiektów. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Zarządzanie kluczami magazynu sieci Web firmy Contoso dotyczy tylko jedno konto użytkownika (admin ##@contosowebstore.com).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Magazyn kluczy obsługuje zasady dostępu szczegółowego, umożliwiające właściciela usługi Key Vault udzielić dostępu do określonych funkcji do wykonywania określonych operacji do konkretnych obiektów. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Zarządzanie kluczami magazynu sieci Web firmy Contoso dotyczy tylko jedno konto użytkownika (admin ##@contosowebstore.com).|
 
 
 
@@ -228,8 +228,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucze są przechowywane w określonych magazynów kluczy zidentyfikowane przez klienta.<br /><br />Magazyn kluczy mogą uzyskiwać równocześnie i globalnie wielu aplikacji, co zmniejsza potrzebę skopiować klucz i przechowywane w wielu lokalizacjach. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucze są przechowywane w określonych magazynów kluczy zidentyfikowane przez klienta.<br /><br />Magazyn kluczy mogą uzyskiwać równocześnie i globalnie wielu aplikacji, co zmniejsza potrzebę skopiować klucz i przechowywane w wielu lokalizacjach. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -242,8 +242,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucze są przechowywane w określonych magazynów kluczy zidentyfikowane przez klienta. <br /><br />Magazyn kluczy mogą uzyskiwać równocześnie i globalnie wielu aplikacji, co zmniejsza potrzebę skopiować klucz i przechowywane w wielu lokalizacjach. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucze są przechowywane w określonych magazynów kluczy zidentyfikowane przez klienta. <br /><br />Magazyn kluczy mogą uzyskiwać równocześnie i globalnie wielu aplikacji, co zmniejsza potrzebę skopiować klucz i przechowywane w wielu lokalizacjach. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -258,8 +258,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -271,8 +271,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:** <br /><br />Podczas generowania kluczy w magazynie kluczy, Azure jest odpowiedzialny za Generowanie kluczy dla specyfikacji klienta. Klucze są generowane przy użyciu modułu HSM. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:** <br /><br />Podczas generowania kluczy w magazynie kluczy, Azure jest odpowiedzialny za Generowanie kluczy dla specyfikacji klienta. Klucze są generowane przy użyciu modułu HSM. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -284,8 +284,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Użyj narzędzia do własnego klucza (BYOK) hermetyzuje klucz klienta i elementów docelowych w magazynie zabezpieczeń, który jest powiązany z określonej subskrypcji platformy Azure. Klucz można importować tylko do określonych subskrypcji magazynu kluczy w wybranym regionie. Ten proces wykorzystuje procedury szyfrowania dostarczone przez producenta sprzętu. Klienci otrzymywać powiadomienie o pomyślnym transferu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Użyj narzędzia do własnego klucza (BYOK) hermetyzuje klucz klienta i elementów docelowych w magazynie zabezpieczeń, który jest powiązany z określonej subskrypcji platformy Azure. Klucz można importować tylko do określonych subskrypcji magazynu kluczy w wybranym regionie. Ten proces wykorzystuje procedury szyfrowania dostarczone przez producenta sprzętu. Klienci otrzymywać powiadomienie o pomyślnym transferu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -297,8 +297,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucze są przechowywane w modułach HSM i są chronione przy użyciu zabezpieczeń kryptograficznych producenta sprzętu. Metadane kluczy są przechowywane w usłudze Azure Storage w stanie zaszyfrowany, co jest unikatowy dla każdego magazynu kluczy. <br /><br /> |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucze są przechowywane w modułach HSM i są chronione przy użyciu zabezpieczeń kryptograficznych producenta sprzętu. Metadane kluczy są przechowywane w usłudze Azure Storage w stanie zaszyfrowany, co jest unikatowy dla każdego magazynu kluczy. <br /><br /> |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -310,8 +310,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Magazyn kluczy obsługuje funkcje do uaktualniania lub przywracania kluczy, który jest zdefiniowany przez klienta. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Magazyn kluczy obsługuje funkcje do uaktualniania lub przywracania kluczy, który jest zdefiniowany przez klienta. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -326,8 +326,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Magazyn kluczy obsługuje funkcje do wycofania lub zastąpić, która jest zdefiniowana przez klienta. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Magazyn kluczy obsługuje funkcje do wycofania lub zastąpić, która jest zdefiniowana przez klienta. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -342,8 +342,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -355,8 +355,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucz magazynów logicznie są rozdzielone i nie obsługują autoryzacji między katalogu. W związku z tym nie będzie mógł nieautoryzowanego podstawienia. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Użytkownicy usługi Key Vault:**<br /><br />Klucz magazynów logicznie są rozdzielone i nie obsługują autoryzacji między katalogu. W związku z tym nie będzie mógł nieautoryzowanego podstawienia. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -368,8 +368,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Zarządzanie kluczami magazynu sieci Web firmy Contoso dotyczy tylko jedno konto użytkownika (admin ##@contosowebstore.com).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Zarządzanie kluczami magazynu sieci Web firmy Contoso dotyczy tylko jedno konto użytkownika (admin ##@contosowebstore.com).|
 
 
 
@@ -381,8 +381,8 @@ Dane poufne uwierzytelniania obejmuje dane jako cytowane w 3.2.1 za pośrednictw
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso używa usługi Azure Key Vault wszystkich zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - szyfrowania](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 

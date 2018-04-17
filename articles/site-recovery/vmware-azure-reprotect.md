@@ -1,6 +1,6 @@
 ---
-title: "Włącz ponownie ochronę maszyn wirtualnych z platformy Azure do lokacji lokalnej | Dokumentacja firmy Microsoft"
-description: "Po przełączeniu maszyn wirtualnych na platformie Azure można zainicjować powrotu po awarii, aby przywrócić maszyn wirtualnych do lokalnego. Dowiedz się, jak i włącz ponownie ochronę przed powrotu po awarii."
+title: Włącz ponownie ochronę maszyn wirtualnych z platformy Azure do lokacji lokalnej | Dokumentacja firmy Microsoft
+description: Po przełączeniu maszyn wirtualnych na platformie Azure można zainicjować powrotu po awarii, aby przywrócić maszyn wirtualnych do lokalnego. Dowiedz się, jak i włącz ponownie ochronę przed powrotu po awarii.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: cd5e53b49a850acf851e8351b5e14e2993176435
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Włącz ponownie ochronę maszyny z platformy Azure do lokacji lokalnej
 
@@ -79,7 +79,7 @@ Po utworzeniu głównego serwera docelowego, wykonaj następujące czynności:
 - Należy dodać nowy dysk, jeśli używasz istniejącej maszyny serwera konfiguracji serwera/procesu lub skali lub proces serwera/główną maszynę docelową, na serwerze. Nowy dysk powinna spełniać wymagania poprzedniej. Jeśli nie ma dysk przechowywania, nie zostanie wyświetlone na liście rozwijanej wyboru w portalu. Po dodaniu dysku do głównego celu lokalnymi potrzebny do 15 minut dysku pojawią się w zaznaczenia w portalu. Jeśli dysk nie jest wyświetlany po 15 minutach, można również odświeżyć serwera konfiguracji.
 - Zainstaluj narzędzia VMware na głównym serwerze docelowym. Bez narzędzia VMware nie można wykryć datastores na hoście ESXi głównego celu.
 - Ustaw `disk.EnableUUID=true` ustawienie parametrów konfiguracji maszyny wirtualnej główny serwer docelowy w środowisku programu VMware. Jeśli ten wiersz nie istnieje, dodaj ją. To ustawienie jest wymagane do zapewnia spójny UUID dysku maszyny wirtualnej (VMDK), dzięki czemu jego instaluje poprawnie.
-- Główny cel powinien mieć co najmniej jeden datastore VMFS dołączony. Jeśli brak, **Datastore** dane wejściowe na stronie ponownej ochrony jest pusta, i nie może kontynuować.
+- Host ESX, na której została utworzona główny cel powinien mieć co najmniej jeden VMFS magazynu danych do niego dołączony. Jeśli brak, **Datastore** dane wejściowe na stronie ponownej ochrony jest pusta, i nie może kontynuować.
 - Główny serwer docelowy nie może mieć migawek na dyskach. W przypadku migawki nie przełączonej i powrotu po awarii.
 - Główny cel nie może mieć zdefiniowany kontroler Paravirtual SCSI. Kontroler może być tylko kontrolera LSI Logic. Bez kontrolera LSI Logic przełączonej kończy się niepowodzeniem.
 - W danym przypadku główny cel może mieć atmst dyski 60 dołączone do niego. Jeśli liczba maszyn wirtualnych jest przełączona do trybu do głównego celu lokalnymi sumy całkowitej liczby więcej niż 60 dysków, a następnie reprotects do głównego celu rozpocznie się niepowodzeniem. Upewnij się, że masz wystarczająco dużo głównego dysku miejsc docelowych lub wdrożyć dodatkowe głównych serwerów docelowych.
@@ -92,7 +92,7 @@ Po uruchomieniu maszyny wirtualnej na platformie Azure, dopiero po pewnym czasie
 
 1. W **magazynu** > **elementy replikowane**, kliknij prawym przyciskiem myszy maszynę wirtualną, która jest Failover, a następnie wybierz **ponownego włączenia ochrony**. Możesz również kliknij maszynę i wybierz **ponownego włączenia ochrony** z przyciski poleceń.
 2. Sprawdź kierunek ochrony, **Azure do środowiska lokalnego**, jest już wybrana.
-3. W **główny serwer docelowy** i **serwera przetwarzania**, wybierz lokalny główny serwer docelowy i serwera przetwarzania.
+3. W **główny serwer docelowy** i **serwera przetwarzania**, wybierz lokalny główny serwer docelowy i serwera przetwarzania.  
 4. Aby uzyskać **Datastore**, wybierz magazyn danych, do której chcesz odzyskać dyski lokalną. Ta opcja jest używana, gdy na lokalnej maszynie wirtualnej zostanie usunięta, a następnie musisz utworzyć nowe dyski. Ta opcja jest ignorowana, jeśli dyski już istnieje, ale nadal należy określić wartość.
 5. Wybierz dysk przechowywania.
 6. Zasady powrotu po awarii są wybierane automatycznie.

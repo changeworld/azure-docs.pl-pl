@@ -1,34 +1,30 @@
 ---
-title: "Architektura MPP — magazyn danych SQL Azure? | Microsoft Docs"
-description: "Dowiedz się, jak magazyn danych SQL Azure łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności."
+title: Usługa Azure SQL Data Warehouse — architektura MPP | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak magazyn danych SQL Azure łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
+author: acomet
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: architecture
-ms.date: 11/15/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: 4c230eb0633b2917b90a5c1f9f4176882bfd0290
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/11/2018
+ms.author: acomet
+ms.reviewer: mausher
+ms.openlocfilehash: a0dad8afa87b3424c8561b2aaf44fbe0f5d5dae6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Usługa Azure SQL Data Warehouse — równoległemu przetwarzaniu architektura (MPP)
 Dowiedz się, jak magazyn danych SQL Azure łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności. 
 
-## <a name="mpp-architecture-components"></a>Architektura MPP składników
-Usługi SQL Data Warehouse używa skalowania w poziomie architekturę do dystrybucji obliczeniową przetwarzania danych w wielu węzłach. Jednostka skalowania jest poboru mocy obliczeniowej, znany jako jednostki magazynu danych. Oddziela SQL Data Warehouse obliczeniowe z magazynu, co pozwoli obliczeń jako użytkownika można skalować niezależnie od danych w systemie.
+## <a name="mpp-architecture-components"></a>Składniki architektury MPP
+Usługi SQL Data Warehouse używa skalowania w poziomie architekturę do dystrybucji obliczeniową przetwarzania danych w wielu węzłach. Jednostka skalowania jest poboru mocy obliczeniowej, znany jako jednostki magazynu danych. Usługa SQL Data Warehouse oddziela obliczeniowe z magazynu, co pozwoli na skalowanie obliczeń niezależnie od danych w systemie.
 
 ![Architektura usługi SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Usługa SQL Data Warehouse korzysta z architektury na podstawie węzła. Aplikacje połączenia i wydać polecenia T-SQL węzeł kontrolny, który jest pojedynczy punkt wejścia dla magazynu danych. Węzeł kontrolny uruchamia aparat MPP, który optymalizuje zapytania w celu równoległego przetwarzania, a następnie przekazuje operacje z węzłami obliczeniowymi w pracy równolegle. Węzły obliczeniowe przechowywane są wszystkie dane użytkownika w usłudze Azure Storage i uruchamiania zapytań równoległych. Usługi przenoszenia danych (DMS) to usługa wewnętrzny poziom systemu, która przenosi dane między węzły w razie potrzeby uruchom zapytania równolegle i zwracać prawidłowych wyników. 
+Usługa SQL Data Warehouse korzysta z architektury oparte na węzłach. Aplikacje połączenia i wydać polecenia T-SQL węzeł kontrolny, który jest pojedynczy punkt wejścia dla magazynu danych. Węzeł kontrolny uruchamia aparat MPP, który optymalizuje zapytania w celu równoległego przetwarzania, a następnie przekazuje operacje z węzłami obliczeniowymi w pracy równolegle. Węzły obliczeniowe przechowywane są wszystkie dane użytkownika w usłudze Azure Storage i uruchamiania zapytań równoległych. Usługi przenoszenia danych (DMS) to usługa wewnętrzny poziom systemu, która przenosi dane między węzły w razie potrzeby uruchom zapytania równolegle i zwracać prawidłowych wyników. 
 
 Dzięki oddzieleniu magazynu od zasobów obliczeniowych usługa SQL Data Warehouse może wykonywać następujące zadania:
 
@@ -40,7 +36,7 @@ Dzięki oddzieleniu magazynu od zasobów obliczeniowych usługa SQL Data Warehou
 ### <a name="azure-storage"></a>Azure Storage
 Usługa SQL Data Warehouse używa magazynu Azure do zapewniania bezpieczeństwa danych użytkownika.  Ponieważ dane są przechowywane i zarządzane przez usługę Magazyn Azure, Magazyn danych SQL oddzielnie opłaty za wykorzystania magazynu. Dane są podzielonej na **dystrybucje** w celu zoptymalizowania wydajności systemu. Można wybrać wzorzec dzielenia na fragmenty, które do użycia przy dystrybucji danych podczas definiowania tabeli. Magazyn danych SQL obsługuje tych wzorców dzielenia na fragmenty:
 
-* Wyznaczania wartości skrótu
+* Skrót
 * Działanie okrężne
 * Replikowanie
 
@@ -91,7 +87,7 @@ Na poniższym diagramie przedstawiono zreplikowanej tabeli. Dla usługi SQL Data
 
 ![Tabela zreplikowane](media/sql-data-warehouse-distributed-data/replicated-table.png "zreplikowane tabeli") 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy masz już podstawową wiedzę na temat usługi SQL Data Warehouse, możesz dowiedzieć się, jak szybko [utworzyć bazę danych w usłudze SQL Data Warehouse][create a SQL Data Warehouse] i [ładowanie danych przykładowych][load sample data]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
 
 * [Historie sukcesu klientów]

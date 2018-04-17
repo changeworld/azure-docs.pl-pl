@@ -3,8 +3,8 @@ title: Jak przeprowadzić migrację kolekcji obszarów roboczych usługi Power B
 description: Dowiedz się, jak przeprowadzić migrację z programu Power BI obszaru roboczego kolekcji do Power BI Embedded i wykorzystać przechodzi do osadzenia w aplikacji.
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.service: power-bi-embedded
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: maghan
+ms.openlocfilehash: d138b0c26ffc0a44947f79811fd586dda7df4509
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Jak przeprowadzić migrację kolekcji obszarów roboczych usługi Power BI zawartości do Power BI Embedded
 
@@ -107,7 +107,7 @@ Istnieje kilka typów raportów, wymagających przepływu różnych migracji.
 
 Pamięci podręcznej zestawów danych można znaleźć plików PBIX, które było zaimportować danych, w przeciwieństwie do połączenia na żywo lub połączenie zapytania bezpośredniego.
 
-**Flow**
+**Przepływ**
 
 1. Wywołania API Pobierz plik PBIX z obszaru roboczego kolekcji obszarów roboczych usługi Power BI.
 2. Zapisz plik PBIX.
@@ -115,7 +115,7 @@ Pamięci podręcznej zestawów danych można znaleźć plików PBIX, które był
 
 #### <a name="directquery-dataset-and-report"></a>Zestaw danych zapytania bezpośredniego i raport
 
-**Flow**
+**Przepływ**
 
 1. Wywołanie GET https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources i zapisać parametry połączenia odebrane.
 2. Wywołania API Pobierz plik PBIX z obszaru roboczego kolekcji obszarów roboczych usługi Power BI.
@@ -129,7 +129,7 @@ Pamięci podręcznej zestawów danych można znaleźć plików PBIX, które był
 
 Raporty przekazany, zanim października 2016 nie obsługuje funkcji Pobierz plik PBIX.
 
-**Flow**
+**Przepływ**
 
 1. Pobierz plik PBIX z środowiska projektowego (kontroli źródła wewnętrznego).
 2. Wywołania PBIX importu dla obszaru roboczego funkcji Power BI Embedded.
@@ -138,7 +138,7 @@ Raporty przekazany, zanim października 2016 nie obsługuje funkcji Pobierz plik
 
 Pobierz plik PBIX nie obsługuje *Push interfejsu API* zestawów danych. Przekazywaniu interfejsu API zestawu danych danych nie może być przenoszone z kolekcji obszaru roboczego programu Power BI do Power BI Embedded.
 
-**Flow**
+**Przepływ**
 
 1. Wywołanie "Utwórz zestaw danych" interfejsu API z zestawem danych Json można utworzyć zestawu danych obszaru roboczego Power BI Embedded.
 2. Skompiluj ponownie raport dla zestawu danych utworzone *.

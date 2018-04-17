@@ -1,6 +1,6 @@
 ---
-title: "Punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: "Oznacz podsieci jako punkt końcowy usługi sieci wirtualnej. Następnie punktu końcowego, co sieć wirtualna reguł do listy ACL bazy danych SQL Azure. Bazy danych SQL można następnie akceptuje komunikację z wszystkich maszyn wirtualnych i inne węzły w podsieci."
+title: Punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Oznacz podsieci jako punkt końcowy usługi sieci wirtualnej. Następnie punktu końcowego, co sieć wirtualna reguł do listy ACL bazy danych SQL Azure. Bazy danych SQL można następnie akceptuje komunikację z wszystkich maszyn wirtualnych i inne węzły w podsieci.
 services: sql-database
 ms.service: sql-database
 author: MightyPen
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b15b3c7f50c23a1c11b2467bfdd2794d52b451ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Użyj punktów końcowych usługi sieci wirtualnej i reguł bazy danych SQL Azure
 
@@ -140,7 +140,7 @@ Bazy danych SQL Azure funkcja reguł sieć wirtualna ma następujące ograniczen
 W przypadku używania punktów końcowych usługi dla bazy danych SQL Azure, należy przejrzeć następujące zagadnienia:
 
 - **Wychodzące do publicznych adresów IP usługi Azure SQL bazy danych jest wymagana**: grup zabezpieczeń sieci (NSG) muszą być otwarte do adresów IP bazy danych SQL Azure zezwalająca na łączności. Można to zrobić za pomocą NSG [tagi usługi](../virtual-network/security-overview.md#service-tags) bazy danych SQL Azure.
-- **Bazy danych platformy Azure, PostgreSQL i MySQL nie są obsługiwane**: punktów końcowych usługi nie są obsługiwane w bazie danych Azure PostgreSQL lub MySQL. Włączenie punktów końcowych usługi do bazy danych SQL spowoduje przerwanie połączenia do tych usług. Mamy środki zaradcze dla tego; Skontaktuj się z  *dmalik@microsoft.com* .
+- **Bazy danych platformy Azure, PostgreSQL i MySQL nie są obsługiwane**: punktów końcowych usługi nie są obsługiwane w bazie danych Azure PostgreSQL lub MySQL. Włączenie punktów końcowych usługi do bazy danych SQL spowoduje przerwanie połączenia do tych usług. Mamy środki zaradcze dla tego; Skontaktuj się z *dmalik@microsoft.com*.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -178,7 +178,7 @@ Usługa Azure Storage zaimplementowała tej samej funkcji, która umożliwia ogr
 Jeśli wybierzesz użyć tej funkcji przy użyciu konta magazynu, który jest używany przez serwer SQL platformy Azure, można uruchomić na problemy. Jest obok listy oraz omówienie funkcji Azure SQLDB, które ma wpływ na to.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQLDW z kont magazynu. Jeśli konto magazynu, które są podczas ładowania danych z ogranicza dostęp tylko do wielu podsieci sieci wirtualnej, spowoduje przerwanie połączenia z programu PolyBase do konta. Istnieje łagodzenia tego; Skontaktuj się z  *dmalik@microsoft.com*  Aby uzyskać więcej informacji.
+Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQLDW z kont magazynu. Jeśli konto magazynu, które są podczas ładowania danych z ogranicza dostęp tylko do wielu podsieci sieci wirtualnej, spowoduje przerwanie połączenia z programu PolyBase do konta. Istnieje łagodzenia tego; Skontaktuj się z *dmalik@microsoft.com* Aby uzyskać więcej informacji.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Obiekt Blob Azure SQLDB inspekcji
 Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. Jeśli to konto magazynu jest używana funkcja punktów końcowych usługi zdarzenie spowoduje przerwanie połączenia z Azure SQLDB do konta magazynu.
@@ -315,7 +315,7 @@ Funkcja reguły sieci wirtualnej dla bazy danych SQL Azure stały się dostępne
 
 [expressroute-indexmd-744v]: ../expressroute/index.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 

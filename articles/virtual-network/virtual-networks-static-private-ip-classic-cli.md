@@ -1,10 +1,10 @@
 ---
-title: "Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych (klasyczne) - Azure CLI 1.0 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować prywatnych adresów IP maszyn wirtualnych (klasyczne) za pomocą interfejsu wiersza polecenia platformy Azure (CLI) 1.0."
+title: Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych (klasyczne) - Azure CLI 1.0 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować prywatnych adresów IP maszyn wirtualnych (klasyczne) za pomocą interfejsu wiersza polecenia platformy Azure (CLI) 1.0.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 17386acf-c708-4103-9b22-ff9bf04b778d
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed0fe2fea20671063395b9ff089599853278989d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c23419fdee7330d091d4699714f4ec08e72be2df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-cli-10"></a>Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej (klasyczne) przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 
@@ -115,7 +115,11 @@ Oczekiwane dane wyjściowe:
     info:    Updating network configuration
     info:    vm static-ip set command OK
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="set-ip-addresses-within-the-operating-system"></a>Ustawianie adresów IP w ramach systemu operacyjnego
+
+Zaleca się, że nie zostanie statycznie przypisany prywatny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny Wirtualnej, o ile to konieczne. Jeśli ręcznie ustawić prywatnego adresu IP w ramach systemu operacyjnego, upewnij się, że jest ten sam adres prywatny adres IP przypisany do maszyny Wirtualnej platformy Azure lub można utracić łączność z maszyną wirtualną. Ręcznie nigdy nie należy przypisywać publiczny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej.
+
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [zastrzeżone publicznego adresu IP](virtual-networks-reserved-public-ip.md) adresów.
 * Dowiedz się więcej o [poziomie wystąpienia publicznego adresu IP (ILPIP)](virtual-networks-instance-level-public-ip.md) adresów.
 * Zapoznaj się [zastrzeżone interfejsów API REST IP](https://msdn.microsoft.com/library/azure/dn722420.aspx).

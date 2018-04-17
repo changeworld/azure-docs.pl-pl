@@ -1,6 +1,6 @@
 ---
-title: "Usługi zabezpieczeń platformy Azure i technologie | Dokumentacja firmy Microsoft"
-description: "Artykuł zawiera listę wyselekcjonowanych technologii i usług zabezpieczeń Azure."
+title: Usługi zabezpieczeń platformy Azure i technologie | Dokumentacja firmy Microsoft
+description: Artykuł zawiera listę wyselekcjonowanych technologii i usług zabezpieczeń Azure.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1ea707d3d149734dad2d5c76d853ddd667cbf73b
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 838987e7fa5e638a980c592f5cdf775d3110fab0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Usługi zabezpieczeń platformy Azure i technologii
 W naszych rozmów z aktualnych i przyszłych klientów platformy Azure jest firma Microsoft często zadawane "masz listę wszystkich zabezpieczeń związane z usług i technologii, które platforma Azure ma oferować?"
@@ -54,10 +54,10 @@ Poniżej znajduje się dążenia początkowej zapewnienie listy. Wraz z upływem
 * [Baza danych Azure SQL inspekcji](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Tożsamość platformy Azure i zarządzanie dostępem
-* [Kontrola dostępu oparta na roli Azure](../active-directory/role-based-access-control-configure.md)
+* [Kontrola dostępu oparta na roli Azure](../role-based-access-control/role-assignments-portal.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Usługi domenowe Azure Active Directory](../active-directory-domain-services/active-directory-ds-overview.md)
+* [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)
 * [Uwierzytelnianie wieloskładnikowe platformy Azure](../multi-factor-authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>Kopii zapasowych i odzyskiwania po awarii
@@ -66,7 +66,7 @@ Poniżej znajduje się dążenia początkowej zapewnienie listy. Wraz z upływem
 
 ## <a name="azure-networking"></a>Sieci systemu Azure
 * [Grupy zabezpieczeń sieci](../virtual-network/virtual-networks-nsg.md)
-* [Brama sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+* [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 * [Brama aplikacji Azure](../application-gateway/application-gateway-introduction.md)
 * [Azure Load Balancer](../load-balancer/load-balancer-overview.md)
 * [Usługa Azure ExpressRoute](../expressroute/expressroute-introduction.md)

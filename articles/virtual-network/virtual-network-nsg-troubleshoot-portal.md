@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z grup zabezpieczeń sieci - Portal | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy z grup zabezpieczeń sieci w modelu wdrażania usługi Azure Resource Manager przy użyciu portalu Azure."
+title: Rozwiązywanie problemów z grup zabezpieczeń sieci - Portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z grup zabezpieczeń sieci w modelu wdrażania usługi Azure Resource Manager przy użyciu portalu Azure.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: b053993bec74d358dd7a0a8889fa05885b563b16
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Rozwiązywanie problemów z grup zabezpieczeń sieci przy użyciu portalu Azure
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Wykonaj poniższe kroki, aby rozwiązać grup NSG dla maszyny Wirtualnej:
 
 Pełna lista reguł efektywnym elementem systemu zabezpieczeń można wyświetlić karty sieciowej, z samej maszyny Wirtualnej. Można także dodawanie, modyfikowanie i usuwanie reguły NSG podsieci i karty w bloku skuteczne reguły, jeśli masz uprawnienia do wykonania tych operacji.
 
-1. Zaloguj się do portalu Azure pod adresem https://portal.azure.com przy użyciu konta platformy Azure. Konto musi mieć przypisaną *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* operacji interfejsu sieciowego. Aby dowiedzieć się, jak przypisać operacje do kont, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Zaloguj się do portalu Azure pod adresem https://portal.azure.com przy użyciu konta platformy Azure. Konto musi mieć przypisaną *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* operacji interfejsu sieciowego. Aby dowiedzieć się, jak przypisać operacje do kont, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Kliknij przycisk **wszystkie usługi**, następnie kliknij przycisk **maszyn wirtualnych** na liście.
 3. Wybierz maszynę Wirtualną, aby rozwiązać problemy z listy, która pojawia się i zostanie wyświetlony blok maszyny Wirtualnej, z opcjami.
 4. Kliknij przycisk **Diagnozuj & rozwiązywania problemów** , a następnie wybierz powszechny problem. Na przykład **nie mogę połączyć się z maszyną Wirtualną z systemem Windows** jest zaznaczone. 

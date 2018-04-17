@@ -1,24 +1,24 @@
 ---
-title: "Replikowanie wielowarstwowej aplikacji programu SharePoint przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób replikowania wielowarstwowej aplikacji programu SharePoint przy użyciu możliwości usługi Azure Site Recovery."
+title: Replikowanie wielowarstwowej aplikacji programu SharePoint przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób replikowania wielowarstwowej aplikacji programu SharePoint przy użyciu możliwości usługi Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: sujayt
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/23/2017
+ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3610409691b71fcce0c36a3af94184dbe6db8661
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replikowanie wielowarstwowej aplikacji programu SharePoint przy użyciu usługi Azure Site Recovery odzyskiwania po awarii
 
@@ -66,7 +66,7 @@ Do tworzenia w tym artykule, użyto maszyn wirtualnych VMware z systemem Windows
 
 ### <a name="source-and-target"></a>Źródłowa i docelowa
 
-**Scenariusz** | **Do lokacji dodatkowej** | **Na platformie Azure**
+**Scenariusz** | **Do lokacji dodatkowej** | **Platforma Azure**
 --- | --- | ---
 **Funkcja Hyper-V** | Yes | Yes
 **VMware** | Yes | Yes
@@ -115,9 +115,9 @@ Postępuj zgodnie z [w tych wskazówkach](site-recovery-vmware-to-azure.md) do r
 Dla witryn, internetowy [tworzenia profilu usługi Traffic Manager typu 'Priority'](../traffic-manager/traffic-manager-create-profile.md) w subskrypcji platformy Azure. A następnie skonfiguruj profil DNS i usługi Traffic Manager w następujący sposób.
 
 
-| **Gdzie** | **Źródło** | **Docelowy**|
+| **Where** | **Źródło** | **docelowy**|
 | --- | --- | --- |
-| Public DNS | Publicznym systemie DNS dla witryny programu SharePoint <br/><br/> Przykład: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Publicznym systemie DNS | Publicznym systemie DNS dla witryny programu SharePoint <br/><br/> Przykład: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | DNS lokalnego | sharepointonprem.contoso.com | Publiczny adres IP w farmie lokalnej |
 
 

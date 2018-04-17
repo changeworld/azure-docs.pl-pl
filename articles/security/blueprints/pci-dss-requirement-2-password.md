@@ -1,5 +1,5 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania dotyczące hasła"
+title: Plan Azure przetwarzania płatności — wymagania dotyczące hasła
 description: PCI DSS wymaganie 2
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 4ae9fc7d5b53d33f9feb98c450970e0560afa2af
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 8fafc277d7410ab3f8f54b0defee127fd6ec2f4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące hasła dla środowisk standardem PCI DSS 
 ## <a name="pci-dss-requirement-2"></a>PCI DSS wymaganie 2
@@ -39,8 +39,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Wymagania dotyczące zasad haseł Microsoft Azure Active Directory są wymuszane dla nowych haseł dostarczonych przez klientów w portalu AADUX. Zmiany hasła samoobsługi inicjowane przez klienta wymaga weryfikacji poprzednich haseł. Administrator resetowania hasła jest wymagane można zmienić na kolejne logowania. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymaga od użytkowników użyć zestawu silnych haseł dla wszystkich użytkowników. Brak kont przykładowa lub Gość są włączone w pokaz.<br /><br />W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Wymagania dotyczące zasad haseł Microsoft Azure Active Directory są wymuszane dla nowych haseł dostarczonych przez klientów w portalu AADUX. Zmiany hasła samoobsługi inicjowane przez klienta wymaga weryfikacji poprzednich haseł. Administrator resetowania hasła jest wymagane można zmienić na kolejne logowania. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso wymaga od użytkowników użyć zestawu silnych haseł dla wszystkich użytkowników. Brak kont przykładowa lub Gość są włączone w pokaz.<br /><br />W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
 
 
 
@@ -52,8 +52,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | W rozwiązaniu nie zostały zaimplementowane sieci bezprzewodowej i SNMP.|
 
 
 
@@ -70,8 +70,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zespołu OSSC technicznej zabezpieczeń rozwija standardami konfiguracji zabezpieczeń dla systemów w środowisku Microsoft Azure, które są zgodne z branży akceptowane przez ograniczenie funkcjonalności standardów. Te konfiguracje są udokumentowane w linii bazowych systemu i istotne zmiany są przekazywane do ryzyko zespoły (np. zespół IPAK). Procedury są wdrażane do monitorowania zgodności ze standardami konfiguracji zabezpieczeń. Standardami konfiguracji zabezpieczeń dla systemów w środowisku Microsoft Azure są zgodne ze standardami zaakceptowane branży ograniczania funkcjonalności i są kontrolowane w co najmniej raz. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web udostępnia ograniczania funkcjonalności wszystkich usług w zakresie środowiska danych posiadacza (CRP). <br /><br />Ponadto wdraża magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/), który zapewnia scentralizowane widok stanu zabezpieczeń wszystkich zasobów platformy Azure. Jeden rzut oka należy sprawdzić, czy odpowiednie środki zabezpieczające są stosowane i poprawnie skonfigurowany i można szybko zidentyfikować wszystkie zasoby, które wymagają uwagi.<br /><br />Magazynu sieci Web firmy Contoso korzysta z usługi Operations Management Suite do rejestrowania wszystkich zmian w systemie. [Operations Management Suite (OMS)](/azure/operations-management-suite/) zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - usługi Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zespołu OSSC technicznej zabezpieczeń rozwija standardami konfiguracji zabezpieczeń dla systemów w środowisku Microsoft Azure, które są zgodne z branży akceptowane przez ograniczenie funkcjonalności standardów. Te konfiguracje są udokumentowane w linii bazowych systemu i istotne zmiany są przekazywane do ryzyko zespoły (np. zespół IPAK). Procedury są wdrażane do monitorowania zgodności ze standardami konfiguracji zabezpieczeń. Standardami konfiguracji zabezpieczeń dla systemów w środowisku Microsoft Azure są zgodne ze standardami zaakceptowane branży ograniczania funkcjonalności i są kontrolowane w co najmniej raz. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web udostępnia ograniczania funkcjonalności wszystkich usług w zakresie środowiska danych posiadacza (CRP). <br /><br />Ponadto wdraża magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/), który zapewnia scentralizowane widok stanu zabezpieczeń wszystkich zasobów platformy Azure. Jeden rzut oka należy sprawdzić, czy odpowiednie środki zabezpieczające są stosowane i poprawnie skonfigurowany i można szybko zidentyfikować wszystkie zasoby, które wymagają uwagi.<br /><br />Magazynu sieci Web firmy Contoso korzysta z usługi Operations Management Suite do rejestrowania wszystkich zmian w systemie. Analiza dzienników zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - usługi Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -86,8 +86,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Usługi magazynu sieci Web firmy Contoso są wdrażane jako PaaS usług. Wszystkie usługi są izolowane oraz segmentowanych zastosowanie segmentacji sieci.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Usługi magazynu sieci Web firmy Contoso są wdrażane jako PaaS usług. Wszystkie usługi są izolowane oraz segmentowanych zastosowanie segmentacji sieci.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -99,8 +99,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure konfiguracjach sprzętu i oprogramowania zostaną zweryfikowane co najmniej raz na kwartał do identyfikowania i usunąć niepotrzebne funkcje, portów, protokołów i usług. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Usługi magazynu sieci Web firmy Contoso są wdrażane jako PaaS usług. Wszystkie usługi są izolowane oraz segmentowanych zastosowanie segmentacji sieci.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure konfiguracjach sprzętu i oprogramowania zostaną zweryfikowane co najmniej raz na kwartał do identyfikowania i usunąć niepotrzebne funkcje, portów, protokołów i usług. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Usługi magazynu sieci Web firmy Contoso są wdrażane jako PaaS usług. Wszystkie usługi są izolowane oraz segmentowanych zastosowanie segmentacji sieci.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -116,8 +116,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Usługi magazynu sieci Web firmy Contoso są wdrażane jako PaaS usług. Wszystkie usługi są izolowane oraz segmentowanych zastosowanie segmentacji sieci. Wdrożenie zawiera również Ograniczanie funkcjonalności wszystkich usług w zakresie CDE. <br /><br />Ponadto wdraża magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/), który zapewnia scentralizowane widok stanu zabezpieczeń wszystkich zasobów platformy Azure. Jeden rzut oka należy sprawdzić, czy odpowiednie środki zabezpieczające są stosowane i poprawnie skonfigurowany i można szybko zidentyfikować wszystkie zasoby, które wymagają uwagi.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Usługi magazynu sieci Web firmy Contoso są wdrażane jako PaaS usług. Wszystkie usługi są izolowane oraz segmentowanych zastosowanie segmentacji sieci. Wdrożenie zawiera również Ograniczanie funkcjonalności wszystkich usług w zakresie CDE. <br /><br />Ponadto wdraża magazynu sieci Web firmy Contoso [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/), który zapewnia scentralizowane widok stanu zabezpieczeń wszystkich zasobów platformy Azure. Jeden rzut oka należy sprawdzić, czy odpowiednie środki zabezpieczające są stosowane i poprawnie skonfigurowany i można szybko zidentyfikować wszystkie zasoby, które wymagają uwagi.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -129,8 +129,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Azure gwarantuje, że tylko do autoryzowanego personelu będą mogli jej konfigurować opcje zabezpieczeń platformy Azure, przy użyciu kontroli dostępu w usłudze Multi-Factor i potrzeby biznesowe udokumentowane. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso korzysta z usługi AAD i RBAC AD do zarządzania parametrami zabezpieczeń są poprawnie wdrożone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure gwarantuje, że tylko do autoryzowanego personelu będą mogli jej konfigurować opcje zabezpieczeń platformy Azure, przy użyciu kontroli dostępu w usłudze Multi-Factor i potrzeby biznesowe udokumentowane. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso korzysta z usługi AAD i RBAC AD do zarządzania parametrami zabezpieczeń są poprawnie wdrożone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -142,8 +142,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Jak granice są ustalane magazynu sieci Web firmy Contoso zawiera dokumentację. Model zagrożeń firmy Contoso i diagram przepływu danych ilustrują wszystkich usług używanych i formanty włączone.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Jak granice są ustalane magazynu sieci Web firmy Contoso zawiera dokumentację. Model zagrożeń firmy Contoso i diagram przepływu danych ilustrują wszystkich usług używanych i formanty włączone.|
 
 
 
@@ -158,8 +158,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zapewnia, że korzystać z silnej kryptografii jest wymuszana podczas uzyskiwania dostępu do infrastruktury funkcji hypervisor. Microsoft Azure gwarantuje również, że klientów za pomocą portalu zarządzania Microsoft Azure mogą uzyskiwać dostęp ich konsoli usługi/IaaS z silnej kryptografii. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso pokazuje, jak silne hasła można zaimplementować w rozwiązaniu; Ponadto do zweryfikowania, że szyfrowanie jest zaimplementowana w całym rozwiązaniu można wykonać wszystkie testy.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zapewnia, że korzystać z silnej kryptografii jest wymuszana podczas uzyskiwania dostępu do infrastruktury funkcji hypervisor. Microsoft Azure gwarantuje również, że klientów za pomocą portalu zarządzania Microsoft Azure mogą uzyskiwać dostęp ich konsoli usługi/IaaS z silnej kryptografii. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso pokazuje, jak silne hasła można zaimplementować w rozwiązaniu; Ponadto do zweryfikowania, że szyfrowanie jest zaimplementowana w całym rozwiązaniu można wykonać wszystkie testy.<br /><br />Także używa magazynu sieci Web firmy Contoso [środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) do rozwiązania kluczy wymuszania. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -171,8 +171,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | W dokumentacji podana można wyświetlić spis rozwiązanie typu PaaS pokaz magazynu sieci Web firmy Contoso. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązań OMS preinstalowany](payment-processing-blueprint.md#oms-solutions).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | W dokumentacji podana można wyświetlić spis rozwiązanie typu PaaS pokaz magazynu sieci Web firmy Contoso. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - rozwiązania do zarządzania preinstalowany](payment-processing-blueprint.md#management-solutions).|
 
 
 
@@ -184,8 +184,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Dokumentacji, która zapewnia wgląd w parametry zabezpieczeń zawiera magazynu sieci Web firmy Contoso i dokumentów usługi elementów. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Dokumentacji, która zapewnia wgląd w parametry zabezpieczeń zawiera magazynu sieci Web firmy Contoso i dokumentów usługi elementów. |
 
 
 
@@ -197,8 +197,8 @@ Dotyczy to wszystkich hasła domyślny, w tym między innymi do tych używanych 
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. Microsoft Azure nie jest udostępnionej przez dostawcę hostingu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy. Microsoft Azure nie jest udostępnionej przez dostawcę hostingu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. Microsoft Azure nie jest udostępnionej przez dostawcę hostingu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy. Microsoft Azure nie jest udostępnionej przez dostawcę hostingu.|
 
 
 

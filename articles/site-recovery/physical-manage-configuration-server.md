@@ -1,17 +1,17 @@
 ---
 title: " Zarządzanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego na platformie Azure, z usługą Azure Site Recovery."
+description: W tym artykule opisano sposób zarządzania istniejącego serwera konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego na platformie Azure, z usługą Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 84969ff04684003a04f99b4fbf7f03be4140a277
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwera konfiguracji na potrzeby odzyskiwania po awarii serwera fizycznego
 
@@ -24,7 +24,7 @@ W tabeli przedstawiono wymagania wstępne dotyczące wdrażania na lokalnej masz
 | **Składnik** | **Wymaganie** |
 | --- |---|
 | Rdzenie procesora CPU| 8 |
-| Pamięć RAM | 12 GB|
+| Pamięć RAM | 16 GB|
 | Liczba dysków | 3, w tym dysku systemu operacyjnego, dysku pamięci podręcznej serwera przetwarzania i przechowywania dysku powrotu po awarii |
 | Wolne miejsce na dysku (pamięć podręczna serwera przetwarzania) | 600 GB
 | Wolne miejsce na dysku (dysk przechowywania) | 600 GB|
@@ -36,7 +36,7 @@ W tabeli przedstawiono wymagania wstępne dotyczące wdrażania na lokalnej masz
 | IIS | -Brak istniejącego domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br> -Brak istniejącego witryny sieci Web/aplikacja nasłuchuje na porcie 443<br>|
 | Typ karty Sieciowej | VMXNET3 (jeśli są wdrażane jako maszyny Wirtualnej VMware) |
 | Typ adresu IP | Statyczny |
-| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nie jest to wymagane w przypadku serwerów przetwarzania używanych do skalowania w poziomie) <br> - time.nist.gov <br> - time.windows.com |
+| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nie wymaga proces skalowania w poziomie serwerów) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych)|
 
 ## <a name="download-the-latest-installation-file"></a>Pobierz najnowszy plik instalacyjny

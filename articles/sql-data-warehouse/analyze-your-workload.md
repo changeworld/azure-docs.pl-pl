@@ -3,23 +3,23 @@ title: Analiza obciążenia - Azure SQL Data Warehouse | Dokumentacja firmy Micr
 description: Techniki analizowanie priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: sqlmojo
-manager: jhubbard
+manager: craigg-msft
 ms.topic: conceptual
 ms.component: manage
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: joeyong
 ms.reviewer: jrj
-ms.openlocfilehash: 7fa5bbd8d9a50bb1dcd1ab5be73f4e248cbbf8fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 609a0d72aa646054273e1a8ea8e02e3c3ae95dc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="analyze-your-workload"></a>Analizowanie obciążenia
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analiza obciążenia w usłudze Azure SQL Data Warehouse
 Techniki analizowanie priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
 
 ## <a name="workload-groups"></a>Grupy obciążenia 
-Usługa SQL Data Warehouse implementuje klasy zasobów za pomocą grupy obciążenia. Składa się łącznie osiem grup obciążenia, które kontrolują zachowanie klasy zasobu w różnych rozmiarach DWU. Dla dowolnego DWU SQL Data Warehouse używa tylko czterech grup osiem obciążenia. To rozwiązanie ma sens, ponieważ każda grupa obciążenia jest przypisany do czterech grup zasobów: smallrc, mediumrc, largerc, lub xlargerc. Opis grupy obciążenia znaczenie jest, że niektóre z tych grup obciążenia są ustawione na wyższy *znaczenie*. Znaczenie jest używany dla Procesora planowania. Uruchom o wysokiej ważności zapytania pobierze trzy razy więcej cykli Procesora niż jednostki o średnim znaczeniu. W związku z tym mapowania miejsca współbieżności również określić priorytet procesora CPU. Jeśli zapytanie wykorzystuje co najmniej 16 miejsc, jest on uruchamiany jako wysokiej ważności.
+Usługa SQL Data Warehouse implementuje klasy zasobów za pomocą grupy obciążenia. Składa się łącznie osiem grup obciążenia, które kontrolują zachowanie klasy zasobu w różnych rozmiarach DWU. Dla dowolnego DWU SQL Data Warehouse używa tylko czterech grup osiem obciążenia. Takie podejście ma sens, ponieważ każda grupa obciążenia jest przypisany do czterech grup zasobów: smallrc, mediumrc, largerc, lub xlargerc. Opis grupy obciążenia znaczenie jest, że niektóre z tych grup obciążenia są ustawione na wyższy *znaczenie*. Znaczenie jest używany dla Procesora planowania. Uruchom o wysokiej ważności zapytania uzyskać trzy razy więcej cykli Procesora niż kwerend o średnim znaczeniu. W związku z tym mapowania miejsca współbieżności również określić priorytet procesora CPU. Jeśli zapytanie wykorzystuje co najmniej 16 miejsc, jest on uruchamiany jako wysokiej ważności.
 
 W poniższej tabeli przedstawiono znaczenie mapowania dla każdej grupy obciążenia.
 
@@ -38,7 +38,7 @@ W poniższej tabeli przedstawiono znaczenie mapowania dla każdej grupy obciąż
 | SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | Wysoka               |
 
 <!-- where are the allocation and consumption of concurrency slots charts? -->
-Z **alokacja i użycie gniazd współbieżności** wykresu, można sprawdzić, czy DW500 używa 1, 4, 8 i współbieżność 16 miejsc dla smallrc, mediumrc largerc i xlargerc, odpowiednio. Te wartości można wyszukiwać, na wykresie można znaleźć znaczenie dla każdej klasy zasobów.
+**Alokacja i użycie gniazd współbieżności** wykres pokazuje DW500 używa 1, 4, 8 i współbieżność 16 miejsc smallrc, mediumrc largerc i xlargerc, odpowiednio. Aby znaleźć znaczenie dla każdej klasy zasobu, można wyszukiwać tych wartości na wykresie.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>Mapowanie DW500 klasy zasobu znaczenia
 | Klasa zasobów | Grupy obciążenia | Używać miejsc współbieżności | MB / dystrybucji | Ważność |
@@ -57,7 +57,7 @@ Z **alokacja i użycie gniazd współbieżności** wykresu, można sprawdzić, c
 | staticrc80     | SloDWGroupC03  | 16                     | 1,600             | Wysoka       |
 
 ## <a name="view-workload-groups"></a>Widok grupy obciążenia
-Aby przyjrzeć się różnic w alokacji zasobów pamięci szczegółowo z punktu widzenia zarządcy zasobów lub do analizowania active i historyczne użycia grup obciążenia podczas rozwiązywania problemu, można użyć następującego zapytania DMV.
+Następujące zapytanie Wyświetla szczegóły alokacji zasobów pamięci z punktu widzenia zarządcy zasobów. Jest to przydatne do analizowania active i historyczne użycia grup obciążenia podczas rozwiązywania problemów.
 
 ```sql
 WITH rg
@@ -106,7 +106,7 @@ ORDER BY
 ```
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Zapytania w kolejce wykrywania i innych widoków DMV
-Można użyć `sys.dm_pdw_exec_requests` DMV do identyfikacji zapytania, które czekają w kolejce współbieżności. Wysyła zapytanie oczekiwanie na gnieździe współbieżności będzie mieć stan **zawieszone**.
+Można użyć `sys.dm_pdw_exec_requests` DMV do identyfikacji zapytania, które czekają w kolejce współbieżności. Oczekiwanie na gnieździe współbieżności zapytania będą miały stan **zawieszone**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -146,7 +146,7 @@ Magazyn danych SQL zawiera następujące typy oczekiwania:
 * **LocalQueriesConcurrencyResourceType**: zapytania, które znajdują się poza framework miejsca współbieżności. Zapytania DMV i systemu, takich jak funkcje `SELECT @@VERSION` przedstawiono przykłady lokalnego zapytań.
 * **UserConcurrencyResourceType**: zapytania, które znajdują się w ramach miejsca współbieżności. Zapytania dotyczące tabel użytkownika końcowego przedstawiają przykłady używających tego typu zasobu.
 * **DmsConcurrencyResourceType**: czeka, wynikające z operacji przenoszenia danych.
-* **BackupConcurrencyResourceType**: ten oczekiwania wskazuje, że bazy danych jest tworzona kopia zapasowa. Maksymalna wartość dla tego typu zasobu jest 1. Jeśli wiele kopii zapasowych żądano w tym samym czasie, Dodaj pozostałe kolejki.
+* **BackupConcurrencyResourceType**: ten oczekiwania wskazuje, że bazy danych jest tworzona kopia zapasowa. Maksymalna wartość dla tego typu zasobu jest 1. Jeśli zażądano wiele kopii zapasowych, w tym samym czasie, innych kolejki.
 
 `sys.dm_pdw_waits` DMV może służyć do wyświetlania zasobów, które oczekuje żądanie.
 

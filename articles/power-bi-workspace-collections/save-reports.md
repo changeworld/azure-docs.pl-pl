@@ -1,26 +1,26 @@
 ---
-title: "Zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI. Wymaga odpowiednich uprawnień, aby działało poprawnie."
+title: Zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI. Wymaga odpowiednich uprawnień, aby działało poprawnie.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 94a72ba4478aa317b4a1930b2894c1346d0590c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: c5512584531c9f5c8a13e9a50161eb6b5a1f8a7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Zapisywanie raportów w kolekcjach obszaru roboczego programu Power BI
 
@@ -131,7 +131,7 @@ var embedConfiguration = {
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Rozpoczęcie pracy z przykładem](get-started-sample.md)  
 [Embed a report](embed-report.md) (Osadzanie raportu)  

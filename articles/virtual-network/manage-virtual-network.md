@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ac0b15f120071093fd81de1d83cf2067ecbac269
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c5f3dbd1aa26cbe656b2ff89106819d228cf447d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 
@@ -167,7 +167,7 @@ Tylko wtedy, gdy nie ma żadnych zasobów dołączone do niego, można usunąć 
 
 ## <a name="permissions"></a>Uprawnienia
 
-Do wykonywania zadań w sieciach wirtualnych, Twoje konto musi mieć przypisaną do [współautora sieci](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie uprawnienia są wymienione w poniższej tabeli:
+Do wykonywania zadań w sieciach wirtualnych, Twoje konto musi mieć przypisaną do [współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rola przypisana odpowiednie uprawnienia są wymienione w poniższej tabeli:
 
 |Operacja                                    |   Nazwa operacji                    |
 |-------------------------------------------  |   --------------------------------  |

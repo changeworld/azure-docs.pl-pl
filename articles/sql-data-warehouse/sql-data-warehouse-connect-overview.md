@@ -1,31 +1,26 @@
 ---
-title: "Nawiązywanie połączenia z usługą Azure SQL Data Warehouse | Microsoft Docs"
-description: "Jak znaleźć nazwę serwera i parametry połączenia dla usługi Azure SQL Data Warehouse"
+title: Nawiązywanie połączenia z usługą Azure SQL Data Warehouse | Microsoft Docs
+description: Łączność z usługą Magazyn danych SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: e52872ca-ae74-4e25-9c56-d49c85c8d0f0
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 12/14/2017
-ms.author: anvang;barbkess;kevin
-ms.openlocfilehash: 804d91d309fcce42f0ac50ac98dbad9c5648b4eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a575bc4f57c3b1dbcf3846b1246b338621e4d720
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Nawiązywanie połączenia z usługą Azure SQL Data Warehouse
-W tym artykule opisano, jak nawiązać połączenie z usługą SQL Data Warehouse.
+Łączność z usługą Magazyn danych SQL Azure.
 
 ## <a name="find-your-server-name"></a>Znajdowanie nazwy serwera
-Pierwszym krokiem do nawiązania połączenia z usługą SQL Data Warehouse jest wiedza, jak znaleźć nazwę serwera.  Na przykład w poniższym przykładzie nazwa serwera to samplesvr.database.windows.net. Aby znaleźć w pełni kwalifikowaną nazwę serwera:
+Nazwa serwera w poniższym przykładzie jest samplesvr.database.windows.net. Aby znaleźć w pełni kwalifikowaną nazwę serwera:
 
 1. Przejdź do witryny [Azure Portal][Azure portal].
 2. Kliknij pozycję **Magazyny danych SQL**.
@@ -35,7 +30,7 @@ Pierwszym krokiem do nawiązania połączenia z usługą SQL Data Warehouse jest
     ![Pełna nazwa serwera][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Obsługiwane sterowniki i parametry połączenia
-Usługa Azure SQL Data Warehouse obsługuje sterowniki [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] i [JDBC][JDBC]. Kliknij jeden z powyższych sterowników, aby znaleźć najnowszą wersję i dokumentację. Aby automatycznie wygenerować parametry połączenia dla używanego sterownika z poziomu witryny Azure Portal, można kliknąć pozycję **Pokaż parametry połączenia bazy danych** z poprzedniego przykładu.  Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
+Usługa Azure SQL Data Warehouse obsługuje sterowniki [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] i [JDBC][JDBC]. Aby uzyskać najnowszą wersję i dokumentacji, kliknij jeden z poprzednim sterowniki. Aby automatycznie wygenerować ciąg połączenia dla sterownika, którego używasz z portalu Azure, polecenie **Pokaż parametry połączenia bazy danych** z poprzedniego przykładu. Poniżej przedstawiono również przykłady parametrów połączenia dla każdego sterownika.
 
 > [!NOTE]
 > Rozważ ustawienie limitu czasu połączenia na wartość 300 sekund, aby połączenie nie zostało zakończone mimo krótkich okresów niedostępności.
@@ -72,7 +67,7 @@ Usługa SQL Data Warehouse standaryzuje niektóre ustawienia podczas tworzenia p
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby nawiązać połączenie i rozpocząć tworzenie zapytań przy użyciu programu Visual Studio, zobacz artykuł [Query with Visual Studio][Query with Visual Studio] (Wykonywanie zapytań przy użyciu programu Visual Studio). Aby dowiedzieć się więcej na temat opcji uwierzytelniania, zobacz [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Uwierzytelnianie w usłudze Azure SQL Data Warehouse).
 
 <!--Articles-->

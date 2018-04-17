@@ -1,8 +1,8 @@
 ---
-title: "Za pomocą interfejsu API strumienie Kafka Apache — usługa Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak korzystać z interfejsu API Apache Kafka strumieni z Kafka w usłudze HDInsight. Ten interfejs API umożliwia przeprowadzanie przetwarzania między tematami w Kafka strumieni."
+title: Za pomocą interfejsu API strumienie Kafka Apache — usługa Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z interfejsu API Apache Kafka strumieni z Kafka w usłudze HDInsight. Ten interfejs API umożliwia przeprowadzanie przetwarzania między tematami w Kafka strumieni.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: be6ed6d4c0c3a5fa55166b84b128881d434c4ab2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 36d67cdb99871f3948db1f6497b1a4638df4f3f1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-kafka-streams-api"></a>Strumienie Apache Kafka interfejsu API
 
@@ -45,7 +45,7 @@ W tym przykładzie wymaga Kafka na 3,6 HDInsight. Aby dowiedzieć się, jak utwo
 
 Tworzenie i wdrażanie projektu sieci Kafka w klastrze usługi HDInsight, wykonaj następujące kroki.
 
-1. Pobierz przykłady ze strony [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
+1. Pobierz przykłady z [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
 2. Przejdź do `Streaming` katalogu, a następnie użyć następujące polecenie, aby utworzyć pakiet jar:
 
@@ -114,14 +114,14 @@ Tworzenie i wdrażanie projektu sieci Kafka w klastrze usługi HDInsight, wykona
 
     To polecenie dzieli wyświetlania SSH na trzy części:
 
-    * Lewej sekcji uruchamia konsumenta konsoli, które odczytuje komunikaty z `wordcounts` tematu:`/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer`
+    * Lewej sekcji uruchamia konsumenta konsoli, które odczytuje komunikaty z `wordcounts` tematu: `/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer`
 
         > [!NOTE]
         > `--property` Parametry Poinformuj użytkownika konsoli do drukowania klucza (word) wraz z count (wartość). Ten parametr konfiguruje również deserializatora do użycia podczas odczytu z Kafka tych wartości.
 
-    * Pierwsza sekcja prawo uruchamia rozwiązania strumieni interfejsu API:`java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS`
+    * Pierwsza sekcja prawo uruchamia rozwiązania strumieni interfejsu API: `java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS`
 
-    * Prawej dolnej części uruchamia producent konsoli i oczekuje na wprowadzenie komunikatów do wysłania do `test` tematu:`/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test`
+    * Prawej dolnej części uruchamia producent konsoli i oczekuje na wprowadzenie komunikatów do wysłania do `test` tematu: `/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test`
  
 6. Po `tmux` polecenia dzieli wyświetlania, kursor znajduje się w prawej dolnej części. Rozpocznij wprowadzanie zdań. Po każdym zdaniu okienka po lewej stronie jest aktualizowana w celu wyświetlenia liczbę unikatowych słów. Dane wyjściowe będą podobne do następującego tekstu:
    

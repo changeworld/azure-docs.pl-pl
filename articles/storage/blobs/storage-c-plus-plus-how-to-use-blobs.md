@@ -1,39 +1,27 @@
 ---
-title: "Jak używać magazynu obiektów blob (magazyn obiektu) z C++ | Dokumentacja firmy Microsoft"
-description: "Przechowuj dane niestrukturalne w chmurze za pomocą Magazynu obiektów blob Azure."
+title: Jak używać magazynu obiektów (Blob) z C++ - Azure | Dokumentacja firmy Microsoft
+description: Przechowuj dane niestrukturalne w chmurze za pomocą magazynu obiektów Blob platformy Azure (obiekt).
 services: storage
-documentationcenter: .net
 author: MichaelHauss
-manager: vamshik
-editor: tysonn
-ms.assetid: 53844120-1c48-4e2f-8f77-5359ed0147a4
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.openlocfilehash: 9fe2112370f7d29eb0fde856995768660f9871e6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: d3297ae7bc4a5ac7e2a43d9d44a05365004b685f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Jak używać magazynu obiektów Blob w języku C++
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
-
-## <a name="overview"></a>Omówienie
-Magazyn obiektów blob Azure jest usługą służącą do przechowywania danych niestrukturalnych w chmurze w postaci obiektów blob. Magazyn obiektów blob umożliwia przechowywanie dowolnego typu danych tekstowych lub binarnych, takich jak dokumenty, pliki multimedialne lub instalatory aplikacji. Magazyn obiektów blob jest również nazywany magazynem obiektów.
-
-W tym przewodniku przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługi magazynu obiektów Blob platformy Azure. Przykłady są napisane w C++ i użyj [biblioteki klienta usługi Azure Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Omówione scenariusze obejmują **przekazywania**, **wyświetlania**, **pobieranie**, i **usuwanie** obiektów blob.  
+W tym przewodniku przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługi magazynu obiektów Blob platformy Azure. Przykłady są napisane w C++ i użyj [biblioteki klienta usługi Azure Storage dla języka C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Omówione scenariusze obejmują przekazywanie, wyświetlanie, pobieranie i usuwanie obiektów blob.  
 
 > [!NOTE]
-> Ten przewodnik jest przeznaczony dla biblioteki klienta magazynu Azure dla języka C++ w wersji 1.0.0 i powyżej. Zalecana wersja jest biblioteka klienta usługi Storage 2.2.0, który jest dostępny za pośrednictwem [NuGet](http://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp).
-> 
-> 
+> Ten przewodnik jest przeznaczony dla biblioteki klienta magazynu Azure dla języka C++ w wersji 1.0.0 i powyżej. Firma Microsoft zaleca używanie najnowszej wersji biblioteki klienta usługi Storage dla języka C++, dostępne za pośrednictwem [NuGet](http://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp).
+
+## <a name="what-is-blob-storage"></a>Co to jest magazyn obiektów Blob?
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -88,7 +76,7 @@ Można użyć **cloud_storage_account** klasy do reprezentowania informacje o ko
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Następnie należy pobrać odwołanie do **cloud_blob_client** klasa umożliwia pobieranie obiektów, które reprezentują kontenery i obiekty BLOB przechowywane w ramach usługi magazynu obiektów Blob. Poniższy kod tworzy **cloud_blob_client** przy użyciu obiektu konta magazynu, możemy pobrać powyżej:  
+Następnie należy pobrać odwołanie do **cloud_blob_client** klasa umożliwia pobieranie obiektów, które reprezentują kontenery i obiekty BLOB przechowywane w magazynie obiektów Blob. Poniższy kod tworzy **cloud_blob_client** przy użyciu obiektu konta magazynu, możemy pobrać powyżej:  
 
 ```cpp
 // Create the blob client.
@@ -133,7 +121,7 @@ container.upload_permissions(permissions);
 Wszyscy użytkownicy Internetu mogą wyświetlać obiekty BLOB w kontenerze publicznym, ale można zmodyfikować lub usunąć je tylko wtedy, gdy klucz dostępu.  
 
 ## <a name="how-to-upload-a-blob-into-a-container"></a>Porady: przekazywanie obiektu blob do kontenera
-Azure Blob Storage obsługuje blokowe i stronicowe obiekty blob. W większości przypadków zalecane jest użycie blokowych obiektów blob.  
+Azure obsługuje magazynu obiektów Blob blokować obiektów blob i stronicowe obiekty BLOB. W większości przypadków zalecane jest użycie blokowych obiektów blob.  
 
 Aby przekazać plik do blokowego obiektu blob, pobierz odwołanie do kontenera i uzyskaj za jego pomocą odwołanie do blokowego obiektu blob. Po utworzeniu odwołanie do obiektu blob, dowolny strumień danych można przekazać do niej przez wywołanie metody **upload_from_stream** metody. Ta operacja spowoduje utworzenie obiektu blob, jeśli jeszcze nie istnieje, lub jego zastąpienie, jeśli już istnieje. W poniższym przykładzie przedstawiono, jak przekazać obiekt blob do kontenera, zakładając, że kontener został już utworzony.  
 
@@ -265,7 +253,7 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy znasz już podstawy magazynu obiektów blob, skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat usługi Azure Storage.  
 
 * [Jak używać magazynu kolejek w języku C++](../storage-c-plus-plus-how-to-use-queues.md)

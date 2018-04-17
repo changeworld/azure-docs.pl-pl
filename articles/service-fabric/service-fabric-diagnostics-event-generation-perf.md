@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3784cb6f713c5ce476ab980122ee6ec9fa3ebc59
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="performance-metrics"></a>Metryki wydajności
 
@@ -30,10 +30,10 @@ Dla maszyn w klastrze należy wziąć pod uwagę następujące liczniki wydajno�
 
 | Kategoria licznika | Nazwa licznika |
 | --- | --- |
-| Dysk fizyczny (na dysku) | Avg. Długość kolejki odczytu dysku |
-| Dysk fizyczny (na dysku) | Avg. Długość kolejki dysku zapisu |
-| Dysk fizyczny (na dysku) | Avg. Czas dysku w s/Odczyt |
-| Dysk fizyczny (na dysku) | Avg. Dysku w s/Zapis |
+| Dysk fizyczny (na dysku) | Średni Długość kolejki odczytu dysku |
+| Dysk fizyczny (na dysku) | Średni Długość kolejki dysku zapisu |
+| Dysk fizyczny (na dysku) | Średni Czas dysku w s/Odczyt |
+| Dysk fizyczny (na dysku) | Średni Dysku w s/Zapis |
 | Dysk fizyczny (na dysku) | Odczyty dysku/s |
 | Dysk fizyczny (na dysku) | Bajty odczytu z dysku/s |
 | Dysk fizyczny (na dysku) | Zapisy dysku/s |
@@ -75,7 +75,7 @@ Sieć szkieletowa usług generuje rozległe niestandardowe liczniki wydajności.
 
 W aplikacjach wdrażasz do klastra, jeśli używasz Reliable Actors, Dodaj countes z `Service Fabric Actor` i `Service Fabric Actor Method` kategorii (zobacz [usługi sieć szkieletowa niezawodnej podmiotów diagnostyki](service-fabric-reliable-actors-diagnostics.md)).
 
-Jeśli używasz usługi niezawodnego podobnie mamy `Service Fabric Service` i `Service Fabric Service Method` kategorii licznika, które należy zebrać liczników z. 
+Jeśli używasz Service Remoting, podobnie mamy `Service Fabric Service` i `Service Fabric Service Method` kategorii licznika, które należy zebrać liczników z. 
 
 Użycie niezawodnej kolekcje, zaleca się dodawania `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` zbierać opóźnienie zatwierdzania średni na Metryka transakcji.
 

@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3a4026b56522da6c6efede4b8b7a542efc8a776d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Dowiedz się, jak udostępnić nowi dzierżawcy i zarejestruj je w katalogu
 
@@ -63,7 +63,7 @@ Inicjowanie obsługi administracyjnej musi być częścią strategii zarządzani
 
 Bilety Wingtip aplikacji bazy danych na dzierżawcy udostępnia nowi dzierżawcy przez kopiowanie szablonu bazy danych o nazwie _basetenantdb_, który jest wdrożony na serwerze wykazu. Inicjowanie obsługi administracyjnej można zintegrować aplikacji w ramach obsługi rejestracji. On również może być obsługiwany w trybie offline za pomocą skryptów. W tym samouczku Eksploruje inicjowania obsługi administracyjnej za pomocą programu PowerShell. 
 
-Inicjowanie obsługi skryptów kopiowania _basetenantdb_ bazy danych, aby utworzyć nową bazę danych dzierżawy w puli elastycznej. Skrypty następnie zainicjuj bazę danych z informacje specyficzne dla dzierżawy i zarejestruj go w katalogu niezależnych mapy. Bazy danych dzierżawy są podanej nazwy na podstawie nazwy dzierżawy. Ten schemat nazewnictwa jest krytyczną częścią wzorzec. Katalog mapuje klucza dzierżawy Nazwa bazy danych dzięki mogą być używane wszystkie konwencji nazewnictwa. 
+Inicjowanie obsługi skryptów kopiowania _basetenantdb_ bazy danych, aby utworzyć nową bazę danych dzierżawy w puli elastycznej. Baza danych dzierżawy została utworzona na serwerze dzierżawy mapowane na _newtenant_ alias systemu DNS. Ten alias obsługuje odwołania do serwera używanego do obsługi administracyjnej nowych dzierżaw i są aktualizowane, aby wskazywały serwer dzierżawy odzyskiwania w samouczkach odzyskiwania po awarii ([odzyskiwania po awarii przy użyciu georestore](saas-dbpertenant-dr-geo-restore.md), [przy użyciu replikacji geograficznejDR](saas-dbpertenant-dr-geo-replication.md)). Skrypty następnie zainicjuj bazę danych z informacje specyficzne dla dzierżawy i zarejestruj go w katalogu niezależnych mapy. Bazy danych dzierżawy są podanej nazwy na podstawie nazwy dzierżawy. Ten schemat nazewnictwa jest krytyczną częścią wzorzec. Katalog mapuje klucza dzierżawy Nazwa bazy danych dzięki mogą być używane wszystkie konwencji nazewnictwa. 
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Pobierz skrypty bazy danych dla dzierżawy aplikacji SaaS biletów Wingtip

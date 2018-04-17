@@ -1,11 +1,11 @@
 ---
-title: "Bezpieczny dostęp do usługi Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Dodawanie zabezpieczeń dla ochrony dostępu do wyzwalaczy, danych wejściowych i wyjściowych parametry akcji i usług używanych wraz z przepływów pracy w programie Azure Logic Apps."
+title: Bezpieczny dostęp do usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Dodawanie zabezpieczeń dla ochrony dostępu do wyzwalaczy, danych wejściowych i wyjściowych parametry akcji i usług używanych wraz z przepływów pracy w programie Azure Logic Apps.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042fdaa037fe1928fdb81727968a532ddfae0a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-access-to-your-logic-apps"></a>Bezpieczny dostęp do aplikacji logiki
 
@@ -77,7 +77,7 @@ Oprócz sygnatura dostępu współdzielonego można ograniczyć wywoływanie apl
 To ustawienie można skonfigurować w ustawieniach aplikacji logiki:
 
 1. W portalu Azure Otwórz aplikację logiki, aby dodać ograniczenia adresu IP
-1. Kliknij przycisk **konfiguracji kontroli dostępu** elementu menu pod **ustawienia**
+1. Kliknij przycisk **ustawienia przepływu pracy** elementu menu pod **ustawienia**
 1. Określ listę zakresów adresów IP na zatwierdzenie przez wyzwalacz
 
 Prawidłowy zakres IP przybiera format `192.168.1.1/255`. Tylko uruchomienie jako aplikacji logiki zagnieżdżonych aplikację logiki, wybierz opcję **tylko innych aplikacji logiki** opcji. Ta opcja powoduje zapisanie pustą tablicę do zasobu, znaczenie tylko wywołania z samej (aplikacje logiki nadrzędnego) usługi wyzwalać pomyślnie.
@@ -119,7 +119,7 @@ Aby dodać więcej protokołów autoryzacji na podstawie aplikacji logiki, [Azur
 
 ## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Bezpieczny dostęp do zarządzania i edytowania aplikacji logiki
 
-Można ograniczyć dostęp do operacji zarządzania na aplikację logiki, tak aby były tylko przez określonych użytkowników lub grupy mogą wykonywać operacje na zasobie. Aplikacje logiki korzystać z platformy Azure [kontroli dostępu opartej na rolach (RBAC)](../active-directory/role-based-access-control-configure.md) funkcji i można dostosować za pomocą tych samych narzędzi.  Istnieje kilka wbudowanych ról, które można przypisać członkami subskrypcją również:
+Można ograniczyć dostęp do operacji zarządzania na aplikację logiki, tak aby były tylko przez określonych użytkowników lub grupy mogą wykonywać operacje na zasobie. Aplikacje logiki korzystać z platformy Azure [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/role-assignments-portal.md) funkcji i można dostosować za pomocą tych samych narzędzi.  Istnieje kilka wbudowanych ról, które można przypisać członkami subskrypcją również:
 
 * **Współautor aplikacji logiki** — zapewnia dostęp do wyświetlania, edytowania i aktualizowanie aplikacji logiki.  Nie można usunąć zasobu lub wykonywać operacje administracyjne.
 * **Operator aplikacji logiki** — można wyświetlić aplikację logiki Historia uruchomień i włączanie/wyłączanie.  Nie można edytować ani aktualizacji definicji.
@@ -268,7 +268,7 @@ Wiele łączników zarządzanych dla usługi logic apps udostępnia bezpieczne p
 
 [Zarządzanie interfejsami API Azure](https://azure.microsoft.com/services/api-management/) ma opcji łączności lokalnych, włącznie z integracją sieci VPN i ExpressRoute lokacja lokacja dla zabezpieczonych serwera proxy oraz komunikacji z systemami lokalnymi. W Projektancie aplikacji logiki możesz szybko zaznaczyć interfejs API widoczne z usługi Azure API Management w przepływie pracy, zapewniając szybki dostęp do systemów lokalnych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 [Tworzenie szablonu wdrożenia](logic-apps-create-deploy-template.md)  
 [Obsługa wyjątków](logic-apps-exception-handling.md)  
 [Monitorowanie aplikacji logiki](logic-apps-monitor-your-logic-apps.md)  

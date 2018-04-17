@@ -10,11 +10,11 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c755d171b34d59d2746a965ab3511a0df00c98db
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d464bbfb9f38b184e47911a7224be8ec8679f0be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Przechowywanie danych na krawędzi, z baz danych programu SQL Server
 
@@ -35,11 +35,11 @@ Następujące artykuły nie są wymagane do pomyślnego ukończenia tego samoucz
 Po ukończeniu wymagane samouczki powinny mieć wymagania wstępne gotowy na komputerze: 
 * Aktywnym Centrum Azure IoT.
 * Urządzenie brzegowe IoT z co najmniej 2 GB pamięci RAM i dysku 2 GB.
-* [Visual Studio Code](https://code.visualstudio.com/). 
-* [Rozszerzenie krawędzi IoT Azure dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
-* [C# dla rozszerzenia Visual Studio Code (obsługiwane przez OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
+* [Program Visual Studio Code](https://code.visualstudio.com/) 
+* [Rozszerzenie usługi Azure IoT Edge dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
+* [Rozszerzenie C# for Visual Studio Code (obsługiwane przez technologię OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 * [Docker](https://docs.docker.com/engine/installation/)
-* [.NET core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd). 
+* [Zestaw .NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd) 
 * [Python 2.7](https://www.python.org/downloads/)
 * [IoT krawędzią formantu skryptu](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 * Szablon AzureIoTEdgeFunction (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
@@ -98,7 +98,7 @@ W kroku 3, możesz dodać utworzyć opcje do kontenera programu SQL Server, któ
 3. Zastąp `<docker registry address>` z adresem w samouczku ukończone [wdrażanie funkcji platformy Azure jako moduł krawędzi IoT - preview](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function)
 
    >[!NOTE]
-   >Adres rejestru kontenera jest taki sam jak serwer logowania, które zostały skopiowane z rejestru. Powinna być w formie `<your container registry name>.azurecr.io`
+   >Adres rejestru kontenera jest taki sam jak adres serwera logowania skopiowany z rejestru. Powinna być w formie `<your container registry name>.azurecr.io`
 
 4. W zależności od systemu operacyjnego, której używasz należy zaktualizować ustawienia modułu SQL z następującym kodem: 
 
@@ -106,7 +106,7 @@ W kroku 3, możesz dodać utworzyć opcje do kontenera programu SQL Server, któ
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
    * Linux:
@@ -297,7 +297,7 @@ Aby zastosować zmiany, które zostały wprowadzone, aktualizacja kontenera obra
 2. Oparte na platformie, rozwiń pozycję **windows nano** lub **linux x64** folderu. 
 3. Kliknij prawym przyciskiem myszy **plik Dockerfile** plik i wybierz **krawędzi IoT Tworzenie modułu Docker obrazu**.
 4. Przejdź do **funkcji FilterFunction** folderu projektu i kliknij przycisk **wybierz folder jako EXE_DIR**.
-5. W polu tekstowym wyskakujących w górnej części okna kodu programu VS wprowadź nazwę obrazu. Na przykład `<your container registry address>/filterfunction:latest`. Jeśli są wdrażane w lokalnym rejestrze, nazwa powinna być `<localhost:5000/filterfunction:latest>`.
+5. W wyskakującym polu tekstowym w górnej części okna kodu programu VS Code wprowadź nazwę obrazu. Na przykład `<your container registry address>/filterfunction:latest`. Jeśli są wdrażane w lokalnym rejestrze, nazwa powinna być `<localhost:5000/filterfunction:latest>`.
 6. W kodzie VS palety polecenia, wybierz **krawędzi: Push krawędzi IoT modułu Docker obrazu**. 
 7. W polu tekstowym wyskakujących wprowadzić taką samą nazwę obrazu. 
 8. W kodzie VS palety polecenia, wybierz **krawędzi: Uruchom ponownie krawędzi**.

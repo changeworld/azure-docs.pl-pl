@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/12/2018
-ms.openlocfilehash: cda5c26d4256720a8cf9af0e9abd604c979422a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w Azure Stream Analytics
 
@@ -65,6 +65,8 @@ Aby wyodrębnić poszczególne wartości poza rekordu, użyj **funkcji GetRecord
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 Anomalii typu została wykryta, gdy jeden z wyników anomalii przekracza próg. Próg, może być dowolna liczba zmiennoprzecinkowa > = 0. Próg wynosi zależności między czułość i zaufania. Na przykład niższego progu wprowadzić bardziej podatna na zmiany wykrywania i generowanie więcej alertów wyższa wartość progową można wprowadzić wykrywania mniej poufne i większa pewność, ale zamaskować niektórych anomalii. Wartość progowa dokładnie do użycia zależy od scenariusza. Nie ma żadnego limitu górnego, ale zalecane zakres jest 3,25 5. 
+
+Wartość 3,25 pokazano w przykładzie jest po prostu sugerowane punkt początkowy. Dostosowywanie wartość uruchamiając operacje na zestawie danych i sprawdź wartość wyjściowa, aż do dopuszczalnych wartości progowej.
 
 ## <a name="anomaly-detection-algorithm"></a>Algorytm wykrywania anomalii
 
@@ -118,19 +120,19 @@ Umożliwia przeglądanie obliczeń strangeness szczegółowo (przyjmowane jest, 
    - Jeśli event_value/90th_percentile event_value > 90th_percentile  
    - 10th_percentile/event_value, jeśli jest event_value < 10th_percentile  
 
-2. **Powolne trend dodatnią:** linię trendu wartości zdarzeń w oknie historii jest obliczana i szukamy dodatnią trendu w wierszu. Wartość strangeness jest obliczana jako:  
+2. **Powolne trend dodatnią:** linię trendu wartości zdarzeń w oknie historii jest obliczana i operacji sprawdza pozytywne trendu w wierszu. Wartość strangeness jest obliczana jako:  
 
    - Kąt nachylenia, jeśli nachylenie jest dodatnia  
    - 0, w przeciwnym razie 
 
-1. **Powolne trend ujemna:** linię trendu wartości zdarzeń w oknie historii jest obliczana i szukamy ujemna trendu w wierszu. Wartość strangeness jest obliczana jako: 
+3. **Powolne trend ujemna:** linię trendu wartości zdarzeń w oknie historii jest obliczana i operacji szuka ujemna trendu w wierszu. Wartość strangeness jest obliczana jako: 
 
    - Kąt nachylenia, jeśli nachylenie jest ujemna.  
    - 0, w przeciwnym razie  
 
 Po jest obliczana wartość strangeness zdarzenia przychodzącego, wartość martingale jest obliczana na podstawie wartości strangeness (zobacz [blogu uczenia maszynowego](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) szczegółowe informacje na temat sposobu jest obliczana wartość martingale). Ta wartość martingale jest zwracany jako wynik anomalii. Wartość martingale zwiększa się powoli w odpowiedzi na wartości dziwne, co umożliwia detektora pozostaje niezawodne sporadyczne zmiany i zmniejsza fałszywe alerty. Ma ona również przydatne właściwości: 
 
-Prawdopodobieństwo [istnieje t takie tego M<sub>t</sub> > λ] < 1/λ, gdzie M<sub>t</sub> -wartość martingale t błyskawiczne i λ jest rzeczywistą wartość. Na przykład, jeśli firma Microsoft alert M<sub>t</sub>> 100, a następnie prawdopodobieństwo fałszywych alarmów jest mniejsza niż 1-100.  
+Prawdopodobieństwo [istnieje t takie tego M<sub>t</sub> > λ] < 1/λ, gdzie M<sub>t</sub> -wartość martingale t błyskawiczne i λ jest rzeczywistą wartość. Na przykład, jeśli istnieje alert po M<sub>t</sub>> 100, a następnie prawdopodobieństwo fałszywych alarmów jest mniejsza niż 1-100.  
 
 ## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Wskazówki dotyczące korzystania z poziomu dwukierunkowe zmienić detektora 
 
@@ -140,7 +142,7 @@ Korzystając z tego detektora, należy rozważyć następujące punkty:
 
 1. Gdy szeregów czasowych nagle widzi zwiększenia lub porzucić wartości, AnomalyDetection operator wykryje. Ale wykrywanie powrotu do normalnego wymaga więcej planowania. Jeśli szeregów czasowych była w stanie stabilności przed anomalii, które uzyskuje się przez ustawienie okna wykrywania AnomalyDetection operator co najwyżej połowa długości anomalii. W tym scenariuszu założono, że wcześniejsze można oszacować minimalny czas trwania anomalii i ma za mało zdarzeń w tym czasie do nauczenia modelu wystarczająco (co najmniej 50 zdarzeń). 
 
-   Przedstawiono na rysunku 1 i 2 poniżej przy użyciu zmian górny limit (ta sama logika dotyczy niższy limit zmiany). W obu wartości kształty fali są nietypowe zmiany poziomu. Pionowych linii pomarańczowy oznaczenia granice przeskoku i rozmiar przeskoku jest taki sam, jak określono w operatorze AnomalyDetection okna wykrywania. Zielone linie wskazuje rozmiar okna szkolenia. Na rysunku 1 rozmiar przeskoku jest taka sama jak czasu, dla których okresu anomalii. Na rysunku 2 rozmiar przeskoku jest połowy czasu, dla których trwa anomalii. We wszystkich przypadkach wykryciu górę zmiany, ponieważ z modelem użytym do oceniania uczenia został na normalne danych. Ale w oparciu o sposób działania detektora zmiany poziomu dwukierunkowe, firma Microsoft musi wykluczyć wartości normalnych okna szkolenia użyty dla modelu, który wyników na powrót do normalnego. Na rysunku 1 uczenia modelu oceniania obejmuje niektóre zdarzenia normalne, więc nie można wykryć powrotu do normalnego. Jednak na rysunku 2, szkolenia zawiera tylko nietypowych strony, która pozwala na wykrycie powrotu do normalnego. Mniejszego niż połowy działa także dla tego samego powodu, podczas gdy większe niczego zakończą się łącznie z bitowego normalne zdarzeń. 
+   Przedstawiono na rysunku 1 i 2 poniżej przy użyciu zmian górny limit (ta sama logika dotyczy niższy limit zmiany). W obu wartości kształty fali są nietypowe zmiany poziomu. Pionowych linii pomarańczowy oznaczenia granice przeskoku i rozmiar przeskoku jest taki sam, jak określono w operatorze AnomalyDetection okna wykrywania. Zielone linie wskazuje rozmiar okna szkolenia. Na rysunku 1 rozmiar przeskoku jest taka sama jak czasu, dla których okresu anomalii. Na rysunku 2 rozmiar przeskoku jest połowy czasu, dla których trwa anomalii. We wszystkich przypadkach wykryciu górę zmiany, ponieważ z modelem użytym do oceniania uczenia został na normalne danych. Ale w oparciu o sposób działania detektora zmiany poziomu dwukierunkowe, go wykluczyć wartości normalnych z okna szkolenia użyty dla modelu, który wyników na powrót do normalnego. Na rysunku 1 uczenia modelu oceniania obejmuje niektóre zdarzenia normalne, więc nie można wykryć powrotu do normalnego. Jednak na rysunku 2, szkolenia zawiera tylko nietypowych strony, która pozwala na wykrycie powrotu do normalnego. Mniejszego niż połowy działa także dla tego samego powodu, podczas gdy większe niczego zakończą się łącznie z bitowego normalne zdarzeń. 
 
    ![Usługi AD o długości anomalii taki sam rozmiar okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
 

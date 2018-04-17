@@ -24,7 +24,7 @@ Dyski platformy Azure zaprojektowano tak, aby zapewniały 99,999% dostępności.
 
 ### <a name="granular-access-control"></a>Precyzyjną kontrolę dostępu
 
-Można użyć [based kontroli dostępu (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) Aby przypisać uprawnienia określone dla dysków zarządzanych do co najmniej jednego użytkownika. Zarządzane dyski ujawnia różne operacje, w tym do odczytu, zapisu (Utwórz/Aktualizuj), usuwania i pobierania [sygnatury dostępu współdzielonego (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) dla dysku. Można przyznać dostęp do działań osoby musi wykonać swoje zadania. Na przykład jeśli nie chcesz, aby osoby w celu kopiowania dysków zarządzanych na konto magazynu, możesz nie udzielić dostępu do akcji eksportu dla tego dysku zarządzanego. Podobnie jeśli nie chcesz, aby osoby na potrzeby kopiowania dysków zarządzanych przez identyfikator URI sygnatury dostępu Współdzielonego, można nie przyznać uprawnienie do dysków zarządzanych.
+Można użyć [based kontroli dostępu (RBAC)](../articles/role-based-access-control/overview.md) Aby przypisać uprawnienia określone dla dysków zarządzanych do co najmniej jednego użytkownika. Zarządzane dyski ujawnia różne operacje, w tym do odczytu, zapisu (Utwórz/Aktualizuj), usuwania i pobierania [sygnatury dostępu współdzielonego (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) dla dysku. Można przyznać dostęp do działań osoby musi wykonać swoje zadania. Na przykład jeśli nie chcesz, aby osoby w celu kopiowania dysków zarządzanych na konto magazynu, możesz nie udzielić dostępu do akcji eksportu dla tego dysku zarządzanego. Podobnie jeśli nie chcesz, aby osoby na potrzeby kopiowania dysków zarządzanych przez identyfikator URI sygnatury dostępu Współdzielonego, można nie przyznać uprawnienie do dysków zarządzanych.
 
 ### <a name="azure-backup-service-support"></a>Obsługa usługi Kopia zapasowa Azure
 Tworzenie zadania tworzenia kopii zapasowej na podstawie czasu tworzenia kopii zapasowych, łatwe przywrócenie maszyny Wirtualnej i zasady przechowywania kopii zapasowych za pomocą usługi Kopia zapasowa Azure z zarządzania dyskami. Dyski zarządzane obsługują tylko lokalnie nadmiarowego magazynu (LRS) jako opcję replikacji; oznacza to, że przechowuje trzy kopie danych w pojedynczym regionie. Regionalnej awarii, należy wykonać kopię zapasową dysków maszyny Wirtualnej w innym regionie przy użyciu [usługi Kopia zapasowa Azure](../articles/backup/backup-introduction-to-azure-backup.md) i konto magazynu GRS jako magazynu kopii zapasowych. Obecnie dysk danych w usłudze Kopia zapasowa Azure obsługuje rozmiar maksymalnie 1TB dla kopii zapasowej. Dowiedz się więcej o tym w [usługi przy użyciu kopii zapasowej Azure dla maszyn wirtualnych z dyskami zarządzane](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
@@ -53,14 +53,14 @@ W tym miejscu są dostępne dla dysków zarządzanych w warstwie premium rozmiar
 
 | **Premium zarządzane <br>typ dysku** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
 |------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Rozmiar dysku        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 GiB (1 TiB) | GiB 2048 (2 TiB) | GiB 4095 (4 TiB) | 
+| Rozmiar dysku        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 giB (1 TiB) | GiB 2048 (2 TiB) | GiB 4095 (4 TiB) | 
 
 
 W tym miejscu są dostępne dla standardowych dysków zarządzanych rozmiary dysków:
 
 | **Standard zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
 |------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Rozmiar dysku        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 GiB (1 TiB) | GiB 2048 (2 TiB) | GiB 4095 (4 TiB) | 
+| Rozmiar dysku        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 giB (1 TiB) | GiB 2048 (2 TiB) | GiB 4095 (4 TiB) | 
 
 
 **Liczba transakcji**: rozliczenie jest liczba transakcji, które można wykonywać na standardowych dysków zarządzanych. Nie ma żadnych kosztów transakcji dla dysków zarządzanych w warstwie premium.
@@ -104,8 +104,7 @@ Istnieją dwa rodzaje szyfrowania omówimy w odniesieniu do zarządzanych dyskó
 
 ### <a name="storage-service-encryption-sse"></a>Szyfrowanie usługi Magazyn (SSE)
 
-[Szyfrowanie usługi Magazyn Azure](../articles/storage/common/storage-service-encryption.md) zapewnia szyfrowanie na rest i ochrony danych w celu spełnienia Twojej organizacji zobowiązań zabezpieczeń i zgodności. SSE jest domyślnie włączona dla wszystkich dysków zarządzanych, migawki i obrazów we wszystkich regionach, gdzie dostępna jest opcja dysków zarządzanych. Uruchamianie 10 czerwca 2017 wszystkie nowe zarządzane dyski/migawek/obrazów i nowych danych istniejących dysków zarządzanych są automatycznie szyfrowane podczas spoczynku z kluczami zarządzany przez firmę Microsoft, domyślnie. Istnieje możliwość własnego klucza szyfrowania dla plików i obiektów blob Azure. Microsoft zarządzanych kluczy zawsze będzie korzystać z szyfrowania dla tabel i kolejek.
-Należy pamiętać, że po włączeniu szyfrowanie usługi Magazyn tylko nowe dane będą szyfrowane, a wszystkie istniejące pliki na tym koncie magazynu będzie pobrać zaszyfrowana wstecz przez proces szyfrowania w tle. Odwiedź stronę [strony często zadawane pytania dotyczące dysków zarządzanych](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) więcej szczegółów.
+[Szyfrowanie usługi Magazyn Azure](../articles/storage/common/storage-service-encryption.md) zapewnia szyfrowanie na rest i ochrony danych w celu spełnienia Twojej organizacji zobowiązań zabezpieczeń i zgodności. SSE jest domyślnie włączona dla wszystkich dysków zarządzanych, migawki i obrazów we wszystkich regionach, gdzie dostępna jest opcja dysków zarządzanych. Uruchamianie 10 czerwca 2017 wszystkie nowe zarządzane dyski/migawek/obrazów i nowych danych istniejących dysków zarządzanych są automatycznie szyfrowane podczas spoczynku z kluczami zarządzany przez firmę Microsoft, domyślnie. Odwiedź stronę [strony często zadawane pytania dotyczące dysków zarządzanych](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) więcej szczegółów.
 
 
 ### <a name="azure-disk-encryption-ade"></a>Szyfrowanie dysków Azure (ADE)

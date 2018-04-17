@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z tras - Portal | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak rozwiązywać problemy z trasy w modelu wdrażania usługi Azure Resource Manager przy użyciu portalu Azure."
+title: Rozwiązywanie problemów z tras - Portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z trasy w modelu wdrażania usługi Azure Resource Manager przy użyciu portalu Azure.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: bdd8b6dc-02fb-4057-bb23-8289caa9de89
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: e0b835f4cbad9855bfb7ddccf2d9bf5b4bf88231
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 67da2eae5ea04962cd5adeff8edd070c1a3cf95a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Rozwiązywanie problemów z tras przy użyciu portalu Azure
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Podczas w przykładzie użyto tylko tras systemowych, te same kroki może służ
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Widok skuteczne trasy dla maszyny wirtualnej
 Aby wyświetlić trasy agregacji, które są stosowane do maszyny Wirtualnej, wykonaj następujące kroki:
 
-1. Zaloguj się do portalu Azure pod adresem https://portal.azure.com. Konto musi mieć przypisaną *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operacji interfejsu sieciowego. Aby dowiedzieć się, jak przypisać operacje do kont, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Zaloguj się do portalu Azure pod adresem https://portal.azure.com. Konto musi mieć przypisaną *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operacji interfejsu sieciowego. Aby dowiedzieć się, jak przypisać operacje do kont, zobacz [Tworzenie niestandardowych ról dla kontroli dostępu](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Kliknij przycisk **wszystkie usługi**, następnie kliknij przycisk **maszyn wirtualnych** na liście.
 3. Wybierz maszynę Wirtualną, aby rozwiązać problemy z listy, która pojawia się i zostanie wyświetlony blok maszyny Wirtualnej, z opcjami.
 4. Kliknij przycisk **Diagnozuj & rozwiązywania problemów** , a następnie wybierz powszechny problem. Na przykład **nie mogę połączyć się z maszyną Wirtualną z systemem Windows** jest zaznaczone.

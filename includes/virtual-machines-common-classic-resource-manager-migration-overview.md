@@ -16,12 +16,12 @@ Te zasoby klasyczne IaaS są obsługiwane podczas migracji
 * Sieci wirtualne
 * Bramy VPN Gateway
 * Express Route bram _(w tej samej subskrypcji co sieć wirtualna tylko)_
-* Grupy zabezpieczeń sieci 
-* Tabele tras 
-* Zastrzeżone adresy IP 
+* Grupy zabezpieczeń sieci
+* Tabele tras
+* Zastrzeżone adresy IP
 
 ## <a name="supported-scopes-of-migration"></a>Obsługiwane zakresy migracji
-Istnieją różne sposoby 4 do ukończenia migracji zasobów obliczeniowych, sieci i magazynu. Są to 
+Istnieją różne sposoby 4 do ukończenia migracji zasobów obliczeniowych, sieci i magazynu. Są to
 
 * Migracja maszyn wirtualnych (nie w sieci wirtualnej)
 * Migracja maszyn wirtualnych (w sieci wirtualnej)
@@ -77,7 +77,7 @@ Następujące funkcje nie są obecnie obsługiwane. Można opcjonalnie usunąć 
 | Wystąpienia obliczeniowe | Obrazy maszyny wirtualnej. | Obiekty BLOB dysków VHD za tych dyskach zostaną uzyskać migracji podczas migracji konta magazynu |
 | Sieć | Listy ACL punktu końcowego. | Usuń listy ACL punktu końcowego, a następnie ponów próbę wykonania migracji. |
 | Sieć | Application Gateway | Usuń bramę aplikacji przed rozpoczęciem migracji, a następnie utwórz ponownie bramę aplikacji, po zakończeniu migracji. |
-| Sieć | Sieci wirtualne przy użyciu sieci wirtualnej komunikacji równorzędnej. | Migracja sieci wirtualnej do Resource Manager, a następnie elementu równorzędnego. Dowiedz się więcej o [sieci wirtualnej komunikacji równorzędnej](../articles/virtual-network/virtual-network-peering-overview.md). | 
+| Sieć | Sieci wirtualne przy użyciu sieci wirtualnej komunikacji równorzędnej. | Migracja sieci wirtualnej do Resource Manager, a następnie elementu równorzędnego. Dowiedz się więcej o [sieci wirtualnej komunikacji równorzędnej](../articles/virtual-network/virtual-network-peering-overview.md). |
 
 ### <a name="unsupported-configurations"></a>Nieobsługiwane konfiguracje
 Następujące konfiguracje nie są obecnie obsługiwane.
@@ -85,7 +85,7 @@ Następujące konfiguracje nie są obecnie obsługiwane.
 | Usługa | Konfigurowanie | Zalecenie |
 | --- | --- | --- |
 | Resource Manager |Na podstawie dostępu kontroli ról (RBAC) w przypadku klasycznych zasobów |Ponieważ identyfikator URI zasobów jest zmodyfikowane po migracji, zaleca się zaplanowanie aktualizacji zasad RBAC, które wymagają po migracji. |
-| Wystąpienia obliczeniowe |Wiele podsieci skojarzone z maszyny Wirtualnej |Zaktualizuj konfigurację podsieci, aby odwoływać się tylko z podsieci. |
+| Wystąpienia obliczeniowe |Wiele podsieci skojarzone z maszyny Wirtualnej |Zaktualizuj konfigurację podsieci, aby odwoływać się tylko jedną podsieć. Może to wymagać usunięcia dodatkowej karty Sieciowej (do którego odwołuje się do innej podsieci) z maszyny Wirtualnej i dołączyć go ponownie po zakończeniu migracji. |
 | Wystąpienia obliczeniowe |Maszyny wirtualne, które należą do sieci wirtualnej, ale nie ma jawnego podsieci przypisane |Opcjonalnie można usunąć maszyny Wirtualnej. |
 | Wystąpienia obliczeniowe |Maszyny wirtualne, które mają alertów, zasad automatycznego skalowania |Migracja przechodzi przez i te ustawienia są usuwane. Zdecydowanie zaleca się dokonanie oceny środowiska przed wykonaniem migracji. Alternatywnie po zakończeniu migracji można ponownie skonfigurować ustawienia alertów. |
 | Wystąpienia obliczeniowe |Rozszerzenia maszyny Wirtualnej XML (BGInfo 1.*, debuger programu Visual Studio Web Deploy i zdalnego debugowania) |Jest to nieobsługiwane. Zalecane jest, usuń te rozszerzenia z maszyny wirtualnej, aby kontynuować migrację lub ich zostaną usunięte automatycznie podczas procesu migracji. |
@@ -98,7 +98,7 @@ Następujące konfiguracje nie są obecnie obsługiwane.
 | Sieć | Klasycznym obwody Express Route |To nie jest obecnie obsługiwane. Te obwody należy migrować do usługi Azure Resource Manager przed rozpoczęciem migracji IaaS. Aby dowiedzieć się więcej na ten temat, zobacz [obwody przenoszenie usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Sieci wirtualne, które zawierają środowiska usługi aplikacji |To nie jest obecnie obsługiwane. |
 | Azure HDInsight |Sieci wirtualne, które zawierają usługi HDInsight |To nie jest obecnie obsługiwane. |
-| Microsoft Dynamics Lifecycle Services |Sieci wirtualne, które zawierają maszyny wirtualne, które są zarządzane przez usługi cyklu życia Dynamics |To nie jest obecnie obsługiwane. |
+| Usługi cyklu życia Microsoft Dynamics |Sieci wirtualne, które zawierają maszyny wirtualne, które są zarządzane przez usługi cyklu życia Dynamics |To nie jest obecnie obsługiwane. |
 | Azure AD Domain Services |Sieci wirtualne, które zawierają usługi domenowe Azure AD |To nie jest obecnie obsługiwane. |
 | Azure RemoteApp |Sieci wirtualne zawierające wdrożenia usługi Azure RemoteApp |To nie jest obecnie obsługiwane. |
 | Usługa Azure API Management |Sieci wirtualne zawierające wdrożenia usługi Azure API Management |To nie jest obecnie obsługiwane. Aby przeprowadzić migrację sieci Wirtualnej IaaS, zmień sieci Wirtualnej wdrożenia usługi API Management, czyli żadna operacja przestoju. |

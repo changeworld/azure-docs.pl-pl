@@ -1,5 +1,5 @@
 ---
-title: "Funkcje zabezpieczeń, które mogą być używane z usługą Azure Storage | Dokumentacja firmy Microsoft"
+title: Funkcje zabezpieczeń, które mogą być używane z usługą Azure Storage | Dokumentacja firmy Microsoft
 description: " Ten artykuł zawiera omówienie podstawowe funkcje zabezpieczeń platformy Azure, które mogą być używane z usługą Azure Storage. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: a118bde2290e68c9a741e40cda210d47db918047
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8160ede71930bf4c15969044deb3fced855f03e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure storage
 Usługa Azure Storage to rozwiązanie magazynu w chmurze dla nowoczesnych aplikacji, które polegają na trwałości, dostępności i skalowalności, aby spełniać potrzeby klientów. Magazyn Azure oferuje rozbudowany zestaw funkcji zabezpieczeń:
@@ -44,11 +44,11 @@ Poniżej przedstawiono podstawowe funkcje powinny być zawarte w tym artykule:
 * W usłudze Azure Key Vault
 
 ## <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
-Można zabezpieczyć konto magazynu z kontroli dostępu opartej na rolach (RBAC). Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) jest zasad zabezpieczeń dla organizacji, które mają zostać wymuszone zasady zabezpieczeń dla dostępu do danych. Te prawa dostępu są udzielane przez przypisywanie odpowiednie role RBAC do grup i aplikacji w określonego zakresu. Można użyć [wbudowane role RBAC](../active-directory/role-based-access-built-in-roles.md), takich jak współautora konta magazynu, aby przypisać uprawnienia do użytkowników.
+Można zabezpieczyć konto magazynu z kontroli dostępu opartej na rolach (RBAC). Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) jest zasad zabezpieczeń dla organizacji, które mają zostać wymuszone zasady zabezpieczeń dla dostępu do danych. Te prawa dostępu są udzielane przez przypisywanie odpowiednie role RBAC do grup i aplikacji w określonego zakresu. Można użyć [wbudowane role RBAC](../role-based-access-control/built-in-roles.md), takich jak współautora konta magazynu, aby przypisać uprawnienia do użytkowników.
 
 Więcej informacji:
 
-* [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../active-directory/role-based-access-control-configure.md)
+* [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="delegated-access-to-storage-objects"></a>Delegowany dostęp do magazynu obiektów
 Sygnatury dostępu współdzielonego (SAS) umożliwiają dostęp delegowany do zasobów na koncie magazynu. Sygnatury dostępu Współdzielonego oznacza, że można udzielać się, że klient ograniczone uprawnienia do obiektów na koncie magazynu w określonym przedziale czasu i z określonym zestawem uprawnień. Ograniczone uprawnienia można przyznać bez konieczności udostępniania kluczy dostępu konta. Sygnatury dostępu Współdzielonego to identyfikator URI, który obejmuje w jego parametrów zapytania, wszystkie informacje niezbędne do uwierzytelniony dostęp do zasobów magazynu. Aby uzyskać dostęp do zasobów magazynu przy użyciu sygnatury dostępu Współdzielonego, klient tylko należy podać SAS odpowiedniego konstruktora lub metody.

@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: a84b31d64f8f9900d342e245ca66cde3c0395be1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>Jak utworzyć sieć wirtualną przy użyciu pliku konfiguracji sieci z programu PowerShell
 Azure używa pliku xml definiującego wszystkie sieci wirtualne dostępne do subskrypcji. Można pobrać tego pliku, edytować go, aby zmodyfikować lub usunąć istniejące sieci wirtualne i utworzyć nowe sieci wirtualnej. W tym samouczku Dowiedz się, jak pobrać ten plik, określonych w pliku konfiguracji (lub netcfg) sieci i edytowanie go w celu utworzenia nowej sieci wirtualnej. Aby dowiedzieć się więcej na temat pliku konfiguracji sieci, zobacz [schemat konfiguracji sieci wirtualnej platformy Azure](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 
@@ -18,8 +34,8 @@ Aby utworzyć sieć wirtualną przy użyciu pliku netcfg przy użyciu programu P
       <?xml version="1.0" encoding="utf-8"?>...
       ```
 
-3. Otwórz plik zapisany w kroku 2, za pomocą dowolnej aplikacji edytora XML lub tekst i poszukaj  **<VirtualNetworkSites>**  elementu. Jeśli masz już utworzone sieci każda sieć jest wyświetlana jako własnego  **<VirtualNetworkSite>**  elementu.
-4. Aby utworzyć sieć wirtualną opisane w tym scenariuszu, Dodaj następujący kod XML tylko w obszarze  **<VirtualNetworkSites>**  elementu:
+3. Otwórz plik zapisany w kroku 2, za pomocą dowolnej aplikacji edytora XML lub tekst i poszukaj **<VirtualNetworkSites>** elementu. Jeśli masz już utworzone sieci każda sieć jest wyświetlana jako własnego **<VirtualNetworkSite>** elementu.
+4. Aby utworzyć sieć wirtualną opisane w tym scenariuszu, Dodaj następujący kod XML tylko w obszarze **<VirtualNetworkSites>** elementu:
 
    ```xml
          <?xml version="1.0" encoding="utf-8"?>

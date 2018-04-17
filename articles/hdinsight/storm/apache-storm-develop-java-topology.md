@@ -1,27 +1,25 @@
 ---
-title: "Apache Storm przykładową topologię Java - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak utworzyć topologii Apache Storm w języku Java, tworząc przykładową topologię liczba programu word."
+title: Apache Storm przykładową topologię Java - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć topologii Apache Storm w języku Java, tworząc przykładową topologię liczba programu word.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-keywords: "Apache storm, przykład storm apache storm w języku java, przykład topologii storm"
+keywords: Apache storm, przykład storm apache storm w języku java, przykład topologii storm
 ms.assetid: a8838f29-9c08-4fd9-99ef-26655d1bf6d7
 ms.service: hdinsight
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 2403261f05d9e5aab2e50939720b3eb007aecd6e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Tworzenie topologii Apache Storm w języku Java
 
@@ -30,7 +28,7 @@ Dowiedz się, jak utworzyć topologię, opartych na języku Java Apache STORM. M
 Po wykonaniu tych kroków w tym dokumencie, można wdrożyć topologii Apache Storm w usłudze HDInsight.
 
 > [!NOTE]
-> Ukończoną wersję przykłady topologii Storm utworzone w tym dokumencie znajduje się w temacie [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
+> Ukończoną wersję przykłady topologii Storm utworzone w tym dokumencie znajduje się w temacie [ https://github.com/Azure-Samples/hdinsight-java-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -169,7 +167,7 @@ Maven dodatków plug-in umożliwiają dostosowanie etapach kompilacji projektu. 
 </build>
 ```
 
-W tej sekcji służy do dodawania wtyczek, zasobów i innych opcji konfiguracji kompilacji. Pełną dokumentację z **pom.xml** plików, zobacz [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
+W tej sekcji służy do dodawania wtyczek, zasobów i innych opcji konfiguracji kompilacji. Pełną dokumentację z **pom.xml** plików, zobacz [ http://maven.apache.org/pom.html ](http://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Dodawanie wtyczki
 
@@ -565,10 +563,10 @@ Plik XML Konfiguruje nowy rejestratora dla `com.microsoft.example` klasy, która
 
 `<Root level="error">` Sekcji konfiguruje główny poziom rejestrowania (wszystko poza `com.microsoft.example`) do logowania tylko informacje o błędzie.
 
-Aby uzyskać więcej informacji na temat konfigurowania rejestrowanie dla narzędzia Log4j, zobacz [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).
+Aby uzyskać więcej informacji na temat konfigurowania rejestrowanie dla narzędzia Log4j, zobacz [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
-> STORM w wersji 0.10.0 i wyższe użycie narzędzia Log4j 2.x. Starsze wersje storm używane Log4j 1.x, którego użyć innego formatu dla konfiguracji dziennika. Uzyskać informacji o konfiguracji starsze, zobacz [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
+> STORM w wersji 0.10.0 i wyższe użycie narzędzia Log4j 2.x. Starsze wersje storm używane Log4j 1.x, którego użyć innego formatu dla konfiguracji dziennika. Uzyskać informacji o konfiguracji starsze, zobacz [ http://wiki.apache.org/logging-log4j/Log4jXmlFormat ](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
 
 ## <a name="test-the-topology-locally"></a>Testowanie topologii lokalnie
 
@@ -601,7 +599,7 @@ Plik yaml programu określa składniki do użycia na potrzeby topologii oraz dan
 Aby uzyskać więcej informacji na strumienia, zobacz [framework strumienia (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 > [!WARNING]
-> Ze względu na [usterek (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) z systemu Storm 1.0.1, należy zainstalować [środowisko projektowe Storm](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) do uruchomienia lokalnie topologie strumienia.
+> Ze względu na [usterek (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) z systemu Storm 1.0.1, należy zainstalować [środowisko projektowe Storm](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) do uruchomienia lokalnie topologie strumienia.
 
 1. Przenieś `WordCountTopology.java` pliku poza projektu. Wcześniej ten plik zdefiniowany topologii, ale nie jest wymagane ze strumienia.
 
@@ -720,7 +718,7 @@ Aby uzyskać więcej informacji na strumienia, zobacz [framework strumienia (htt
     ```
 
     > [!WARNING]
-    > Jeśli topologii korzysta z usługi bits Storm 1.0.1, to polecenie nie powiedzie się. Ten błąd jest spowodowany przez [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). Zamiast tego [zainstalować Storm w środowisku projektowania](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) i wykonaj następujące czynności:
+    > Jeśli topologii korzysta z usługi bits Storm 1.0.1, to polecenie nie powiedzie się. Ten błąd jest spowodowany przez [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Zamiast tego [zainstalować Storm w środowisku projektowania](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) i wykonaj następujące czynności:
     >
     > Jeśli masz [zainstalowane Storm w środowisku projektowania](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), można użyć następujących poleceń:
     >

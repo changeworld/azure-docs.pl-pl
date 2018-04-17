@@ -28,8 +28,8 @@ Po podłączeniu do maszyn wirtualnych, należy używać kryptografii klucza pub
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../articles/active-directory/role-based-access-control-what-is.md), możesz rozdzielenie obowiązków w obrębie organizacji i udzielać użytkownikom tylko takiego dostępu na maszynie Wirtualnej, które są niezbędne do wykonywania swoich zadań. Zamiast nadanie każdy nieograniczonych uprawnień na Maszynie wirtualnej, można zezwolić tylko pewne akcje. Kontrola dostępu można skonfigurować dla maszyny Wirtualnej w [portalu Azure](../articles/active-directory/role-based-access-control-configure.md)za pomocą [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/role), lub[programu Azure PowerShell](../articles/active-directory/role-based-access-control-manage-access-powershell.md).
+Przy użyciu [kontroli dostępu opartej na rolach (RBAC)](../articles/role-based-access-control/overview.md), możesz rozdzielenie obowiązków w obrębie organizacji i udzielać użytkownikom tylko takiego dostępu na maszynie Wirtualnej, które są niezbędne do wykonywania swoich zadań. Zamiast nadanie każdy nieograniczonych uprawnień na Maszynie wirtualnej, można zezwolić tylko pewne akcje. Kontrola dostępu można skonfigurować dla maszyny Wirtualnej w [portalu Azure](../articles/role-based-access-control/role-assignments-portal.md)za pomocą [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/role), lub[programu Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 - Zapoznaj się z artykułem kroki procedury monitorowania zabezpieczeń maszyny wirtualnej przy użyciu Centrum zabezpieczeń Azure dla [Linux](../articles/virtual-machines/linux/tutorial-azure-security.md) lub [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md).

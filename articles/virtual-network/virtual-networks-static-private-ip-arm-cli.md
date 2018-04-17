@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować prywatnych adresów IP maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure (CLI)."
+title: Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych - wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować prywatnych adresów IP maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej przy użyciu wiersza polecenia platformy Azure
 
@@ -158,6 +158,7 @@ Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci w
 
    * `--nics`: Nazwa karty Sieciowej, do której jest dołączona maszyna wirtualna.
    
+Zaleca się, że nie zostanie statycznie przypisany prywatny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny Wirtualnej, o ile to konieczne, takie jak kiedy [przypisywanie wielu adresów IP do maszyny Wirtualnej systemu Windows](virtual-network-multiple-ip-addresses-cli.md). Jeśli ręcznie ustawić prywatnego adresu IP w ramach systemu operacyjnego, upewnij się, czy jest ten sam adres prywatny adres IP przypisany do platformy Azure [interfejsu sieciowego](virtual-network-network-interface-addresses.md#change-ip-address-settings), lub można utracić łączność z maszyną wirtualną. Dowiedz się więcej o [prywatnego adresu IP](virtual-network-network-interface-addresses.md#private) ustawienia.
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Pobrać statycznych prywatne informacje o adresie IP dla maszyny Wirtualnej
 
@@ -267,9 +268,7 @@ Aby zmienić karty Sieciowej dla maszyny Wirtualnej, używany w powyższych pole
 
     > [!NOTE]
     > Jeśli maszyna wirtualna jest wystarczająco duży, aby mieć więcej niż jedną kartę Sieciową, uruchom **usunąć kart interfejsu sieciowego azure** polecenie, aby usunąć stare karty sieciowej.
-   
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [zastrzeżone publicznego adresu IP](virtual-networks-reserved-public-ip.md) adresów.
-* Dowiedz się więcej o [poziomie wystąpienia publicznego adresu IP (ILPIP)](virtual-networks-instance-level-public-ip.md) adresów.
-* Zapoznaj się [zastrzeżone interfejsów API REST IP](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
+## <a name="next-steps"></a>Kolejne kroki
+
+Więcej informacji o zarządzaniu [ustawienia adresu IP](virtual-network-network-interface-addresses.md).

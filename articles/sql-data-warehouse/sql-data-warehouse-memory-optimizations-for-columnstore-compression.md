@@ -1,11 +1,11 @@
 ---
-title: "Poprawianie wydajności indeksu magazynu kolumn - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje do każdej grupy wierszy."
+title: Poprawianie wydajności indeksu magazynu kolumn - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zmniejsz wymagania dotyczące pamięci lub zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy indeksu magazynu kolumn kompresuje do każdej grupy wierszy.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6484f457731bb1b97f01df339eaf1b0aebf924c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości i dla magazynu kolumn
 
@@ -121,7 +121,7 @@ Bazy danych może mieć przydział pamięci dla zapytania wśród wszystkich ope
 
 Projektowanie zapytania ładowania skupić się tylko na podczas ładowania zapytania. Jeśli musisz uruchomić przekształcenia danych, należy uruchomić je oddzielnie od zapytania obciążenia. Na przykład przemieszczanie danych w tabeli sterty, uruchom przekształceń, a następnie załadować do indeksu magazynu kolumn tabeli przemieszczania. Można również najpierw załadować dane, a następnie używać systemu MPP do przekształcania danych.
 
-### <a name="adjust-maxdop"></a>Adjust MAXDOP
+### <a name="adjust-maxdop"></a>Dostosuj MAXDOP
 
 Każdy dystrybucji kompresuje rowgroups do magazynu kolumn równoległe, gdy jest dostępna więcej niż jednego rdzenia procesora CPU na dystrybucji. Równoległość wymaga dodatkowych zasobów pamięci, co może prowadzić do wykorzystania pamięci i przycinanie grupy wierszy.
 
@@ -139,7 +139,7 @@ OPTION (MAXDOP 1);
 Rozmiar wartości DWU i klasa zasobów użytkownika razem określić ilość pamięci dostępnej dla zapytania użytkownika. Aby zwiększyć przydział pamięci dla zapytania obciążenia, należy zwiększyć liczbę jednostek dwu lub zwiększ klasy zasobów.
 
 - Aby zwiększyć liczbę jednostek dwu, zobacz [sposób skalowania wydajności?](quickstart-scale-compute-portal.md)
-- Aby zmienić klasy zasobów dla zapytania, zobacz [zmienić przykład klasy zasobów użytkownika](resource-classes-for-workload-management.md#assigning-resource-classes).
+- Aby zmienić klasy zasobów dla zapytania, zobacz [zmienić przykład klasy zasobów użytkownika](resource-classes-for-workload-management.md#change-a-users-resource-class).
 
 Na przykład na DWU 100 użytkownika w klasie zasobu smallrc służy 100 MB pamięci dla poszczególnych dystrybucji. Aby uzyskać więcej informacji, zobacz [współbieżność w usłudze SQL Data Warehouse](resource-classes-for-workload-management.md).
 

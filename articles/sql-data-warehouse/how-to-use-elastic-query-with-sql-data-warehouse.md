@@ -1,31 +1,26 @@
 ---
-title: "Pojęcia elastycznej zapytania z usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Elastyczne pojęcia zapytania z usługą Magazyn danych SQL Azure"
+title: Zapytanie elastycznej — uzyskiwanie dostępu do danych w magazynie danych SQL Azure z bazy danych SQL Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, najlepsze rozwiązania dotyczące korzystania z bazy danych SQL Azure przy użyciu elastycznej zapytania uzyskują dostęp do danych w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 09/18/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/11/2018
 ms.author: elbutter
-ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.reviewer: jrj
+ms.openlocfilehash: 909271792b73b5fdc517847db7cfd6c8cf2092bc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>Jak używać elastycznej zapytania z usługą Magazyn danych SQL
+# <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące uzyskują dostęp do danych w usłudze Azure SQL Data Warehouse przy użyciu elastycznej kwerendy w bazie danych SQL Azure
+Dowiedz się, najlepsze rozwiązania dotyczące używania elastycznej zapytania uzyskują dostęp do danych w magazynie danych SQL Azure z bazy danych SQL Azure. 
 
-
-
-Elastyczne zapytanie z usługi Azure SQL Data Warehouse pozwala na zapis języka Transact-SQL w bazie danych SQL, zdalnie wysyłany do wystąpienia usługi Azure SQL Data Warehouse przy użyciu tabel zewnętrznych. Ta funkcja zapewnia oszczędności kosztów i więcej architektur wydajności w zależności od scenariusza.
+## <a name="what-is-an-elastic-query"></a>Co to jest elastyczny zapytania?
+Elastyczny zapytania umożliwia zapisywanie kwerendy w bazie danych Azure SQL zdalnie wysyłany do usługi Azure SQL data warehouse przy użyciu T-SQL i tabel zewnętrznych. Za pomocą tej funkcji zawiera oszczędności kosztów i więcej architektur wydajności, w zależności od scenariusza.
 
 Ta funkcja umożliwia dwa podstawowe scenariusze:
 
@@ -46,10 +41,7 @@ Elastyczne zapytań zapewniają możliwość łatwo wybrać podzbiór danych mag
 
 Elastyczne zapytania umożliwia wykonanie zapytania zdalnego w wystąpieniu magazynu danych SQL. Jeden wykorzystywać najlepsze bazy danych SQL i magazyn danych SQL oddzielając gorącego i zimnych danych między dwiema bazami danych. Użytkownicy mogą zachować nowych danych w bazie danych SQL, który może obsługiwać raporty i dużej liczby użytkowników biznesowych średnia. Jednak gdy potrzebny jest więcej danych lub obliczeń, użytkownik może odciążania części zapytania do wystąpienia magazynu danych SQL, gdzie na dużą skalę agreguje mogą być przetwarzane znacznie szybciej i bardziej efektywnie.
 
-
-
-## <a name="elastic-query-overview"></a>Elastyczne zapytań — omówienie
-
+## <a name="elastic-query-process"></a>Proces elastycznej zapytania
 Elastyczne zapytania można udostępnić danych znajdujących się w danych serwera SQL magazynu wystąpień bazy danych programu SQL. Umożliwia elastyczne zapytania kwerend z bazy danych SQL odwołujące się do tabel w zdalnym wystąpieniu magazynu danych SQL. 
 
 Pierwszym krokiem jest do tworzenia definicji źródła danych zewnętrznych, która odwołuje się do wystąpienia magazynu danych SQL, która używa istniejących poświadczeń użytkownika w usłudze SQL data warehouse. Żadne zmiany nie są niezbędne w wystąpieniu zdalnym magazynu danych SQL. 
@@ -58,13 +50,12 @@ Pierwszym krokiem jest do tworzenia definicji źródła danych zewnętrznych, kt
 > 
 > Musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączany uprawnienie ALTER DATABASE. Aby odwołać się do zdalnych źródeł danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
 
-Następnie utworzymy definicji tabeli zewnętrznej zdalnej w wystąpieniu bazy danych SQL, wskazujący na tabeli zdalnej w usłudze SQL data warehouse. Użycie kwerendy korzystającej z tabeli zewnętrznej, część zapytań odwołujących się do tabeli zewnętrznej są wysyłane do wystąpienia serwera SQL magazynu danych do przetworzenia. Po ukończeniu zapytania zestawu wyników są wysyłane do wywoływania wystąpienia bazy danych SQL. Krótki samouczek konfigurowania elastycznej zapytania między bazą danych SQL i magazyn danych SQL, zobacz [skonfigurować elastycznej zapytania SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
+Następnie można utworzyć definicji tabeli zewnętrznej zdalnego w wystąpieniu bazy danych SQL, wskazujący na tabeli zdalnej w usłudze SQL data warehouse. Zapytanie używa tabelę zewnętrzną, część zapytań odwołujących się do tabeli zewnętrznej są wysyłane do wystąpienia magazynu danych SQL do przetworzenia. Po ukończeniu zapytania zestawu wyników są wysyłane do wywoływania wystąpienia bazy danych SQL. Krótki samouczek konfigurowania elastycznej zapytania między bazą danych SQL i magazyn danych SQL, zobacz [skonfigurować elastycznej zapytania SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
 
 Aby uzyskać więcej informacji na elastyczne zapytania z bazy danych SQL, zobacz [omówienie zapytania elastycznej bazy danych SQL Azure][Azure SQL Database elastic query overview].
 
-
-
 ## <a name="best-practices"></a>Najlepsze praktyki
+Użyj następujące najlepsze rozwiązania, aby efektywnie korzystać z zapytania elastycznej.
 
 ### <a name="general"></a>Ogólne
 
@@ -78,9 +69,9 @@ Aby uzyskać więcej informacji na elastyczne zapytania z bazy danych SQL, zobac
 
 ### <a name="elastic-querying"></a>Elastyczne zapytań
 
-- W wielu przypadkach przydatne może być zarządzanie typu rozciąganej tabeli, gdzie część tabeli znajduje się w bazie danych SQL jako buforowanych danych dotyczących wydajności z resztą danych przechowywanych w usłudze SQL Data Warehouse. Konieczne będzie mieć dwa obiekty w bazie danych SQL: tabeli zewnętrznej w bazie danych SQL, który odwołuje się do tabeli podstawowej w magazynie danych programu SQL i "pamięci podręcznej" część tabeli w bazie danych SQL. Należy wziąć pod uwagę tworzenia widoku w górnej części pamięci podręcznej tabeli i tabeli zewnętrznej które unie zarówno tabele i stosuje filtry, których dane zmaterializowany w ramach bazy danych SQL i usługi SQL Data Warehouse danych za pośrednictwem tabel zewnętrznych.
+- W wielu przypadkach przydatne może być zarządzanie typu rozciąganej tabeli, gdzie część tabeli znajduje się w bazie danych SQL jako buforowanych danych dotyczących wydajności z resztą danych przechowywanych w usłudze SQL Data Warehouse. Należy dwa obiekty w bazie danych SQL: tabeli zewnętrznej w bazie danych SQL, który odwołuje się do tabeli podstawowej w magazynie danych programu SQL i "pamięci podręcznej" część tabeli w bazie danych SQL. Należy wziąć pod uwagę tworzenia widoku w górnej części pamięci podręcznej tabeli i tabeli zewnętrznej które unie zarówno tabele i stosuje filtry, których dane zmaterializowany w ramach bazy danych SQL i usługi SQL Data Warehouse danych za pośrednictwem tabel zewnętrznych.
 
-  Załóżmy, że chcemy zachować roku najnowszych danych w wystąpieniu bazy danych SQL. Mamy dwie tabele **zewnętrznego Zamówienia**, który odwołuje się do magazynu danych porządkuje tabel, i **dbo. Zamówienia** reprezentuje najbardziej aktualną wartość lat danych w wystąpieniu bazy danych SQL. Zamiast prosząc użytkowników o podjęcie decyzji o zapytanie jednej tabeli lub innego, utworzymy widoku w górnej części obu tabel na punkcie partycji w ostatnim roku.
+  Załóżmy, że chcesz zachować roku najnowszych danych w wystąpieniu bazy danych SQL. **Zewnętrzne Zamówienia** odwołania do tabeli w magazynie danych porządkuje tabel. **Dbo. Zamówienia** reprezentuje najbardziej aktualną wartość lat danych w wystąpieniu bazy danych SQL. Zamiast prosząc użytkowników o podjęcie decyzji o zapytanie jednej tabeli lub innych, należy utworzyć widok w górnej części obu tabel na punkcie partycji w ostatnim roku.
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS
@@ -115,29 +106,27 @@ Aby uzyskać więcej informacji na elastyczne zapytania z bazy danych SQL, zobac
 ### <a name="moving-data"></a>Przenoszenie danych 
 
 - Jeśli to możliwe należy zachować zarządzanie danymi łatwiejsze w przypadku tabel źródłowych tylko Dołącz tak, aby aktualizacje były łatwego w utrzymaniu między wystąpieniami danych magazynu oraz bazy danych.
-- Przenoszenie danych na poziomie partycji z semantyki opróżnienia i wypełnienia do minimalizuje to koszt zapytanie na poziomie magazynu danych oraz ilość danych, przenieść aktualności wystąpienie bazy danych. 
+- Przenosi dane na poziomie partycji z opróżnić i poziom i ilość danych, przenieść, aby zapewnić aktualność wystąpienie bazy danych magazynu semantyki wypełnienia do minimalizuje to koszt zapytania na danych. 
 
 ### <a name="when-to-choose-azure-analysis-services-vs-sql-database"></a>Kiedy należy wybrać w porównaniu bazy danych SQL Azure Analysis Services
 
-#### <a name="azure-analysis-services"></a>Azure Analysis Services
+Użyj usługi Azure Analysis Services, przy:
 
 - Planowanie przy użyciu pamięci podręcznej z narzędziem BI prześle dużą liczbę małych zapytań
 - Należy subsecond opóźnienia zapytania
 - Masz doświadczenie w zarządzaniu/tworzenie modeli dla usług Analysis Services 
 
-#### <a name="sql-database"></a>SQL Database
+Użyj usługi Azure SQL bazy danych, gdy:
 
 - Aby wysłać zapytanie danych pamięci podręcznej za pomocą programu SQL
 - Zdalne wykonywanie kodu jest wymagane dla niektórych kwerend
 - Mieć większe wymagania w pamięci podręcznej
 
-
-
 ## <a name="faq"></a>Często zadawane pytania
 
 Pytanie: czy w puli elastycznej zapytania o elastycznej można używać baz danych?
 
-Odpowiedź: tak. Baz danych w puli elastycznej za pomocą elastycznych kwerendy. 
+Odp. Tak. Baz danych w puli elastycznej za pomocą elastycznych kwerendy. 
 
 Pytanie: czy istnieje limit liczby baz danych I można użyć dla elastycznej zapytania?
 
@@ -161,19 +150,11 @@ Odpowiedź: można przechowywać typy przestrzenne w usłudze SQL Data Warehouse
 
 ![typy przestrzenne](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 
-
-
-
-
-<!--Image references-->
-
 <!--Article references-->
 
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop/
-[Configure Elastic Query with SQL Data Warehouse]: ./tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Configure Elastic Query with SQL Data Warehouse]: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
 [Feedback Page]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Database elastic query overview]: ../sql-database/sql-database-elastic-query-overview.md
 
-<!--MSDN references-->
 
-<!--Other Web references-->

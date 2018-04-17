@@ -1,45 +1,93 @@
 ---
-title: "Klasy zasobów dla obciążenia zarządzania - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące zarządzania współbieżności i obliczeniowe zasobów dla zapytań w usłudze Azure SQL Data Warehouse przy użyciu klasy zasobów."
+title: Klasy zasobów dla obciążenia zarządzania - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące zarządzania współbieżności i obliczeniowe zasobów dla zapytań w usłudze Azure SQL Data Warehouse przy użyciu klasy zasobów.
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
-ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/23/2017
-ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+author: kevinvngo
+manager: craigg-msft
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/11/2018
+ms.author: kevin
+ms.reviewer: jrj
+ms.openlocfilehash: 289281567eff7f2575f26f1ae7ec2f9ee4389461
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="resource-classes-for-workload-management"></a>Klasy zasobów do zarządzania obciążenia
-Wskazówki dotyczące liczby równoczesnych zapytań, uruchamiać jednocześnie, które zasoby zapytań w usłudze Azure SQL Data Warehouse obliczeniowe zarządzanie za pomocą klasy zasobów.
+# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążenia za pomocą klasy zasobu w magazynie danych SQL Azure
+Wskazówki dotyczące Zarządzanie pamięci i zapytań w magazynie danych SQL Azure za pomocą klasy zasobów.  
  
 ## <a name="what-is-workload-management"></a>Co to jest zarządzanie obciążenie?
-Zarządzanie obciążenie jest możliwość optymalizacji ogólną wydajność wszystkich zapytań. Dobrze Zaczekaj obciążenie działa zapytań i operacji obciążenia wydajnie niezależnie od tego, czy są one obliczeniowych lub intensywnie wykonujących operacje We/Wy. 
+Zarządzanie obciążenie jest możliwość optymalizacji ogólną wydajność wszystkich zapytań. Dobrze Zaczekaj obciążenie działa zapytań i operacji obciążenia wydajnie niezależnie od tego, czy są one obliczeniowych lub intensywnie wykonujących operacje We/Wy.  Usługa SQL Data Warehouse zapewnia funkcje zarządzania obciążenia w środowiskach wielu użytkowników. Magazyn danych nie jest przeznaczony dla wielu dzierżawców obciążeń.
 
-Usługa SQL Data Warehouse zapewnia funkcje zarządzania obciążenia w środowiskach wielu użytkowników. Magazyn danych nie jest przeznaczony dla wielu dzierżawców obciążeń.
+Pojemność wydajności magazynu danych jest określana przez [warstwę wydajności](memory-and-concurrency-limits.md#performance-tiers) i [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). 
+
+- Aby wyświetlić limitów pamięci i we wszystkich profilach wydajności, zobacz [limity pamięci i](memory-and-concurrency-limits.md).
+- Aby dostosować wydajności, można [skalować w górę lub w dół](quickstart-scale-compute-portal.md).
+
+Pojemność wydajności zapytania jest określana przez kwerendy klasy zasobów. Ta dalszej części tego artykułu opisano klasy zasobów są oraz dostosować je.
+
 
 ## <a name="what-are-resource-classes"></a>Co to są klasy zasobu?
-Klasy zasobów są limity wstępnie określonych zasobów, które określają sposób wykonywania zapytania. Usługa SQL Data Warehouse ogranicza zasoby obliczeniowe dla każdego zapytania według klasy zasobów. 
+Klasy zasobów są wstępnie ustalił, że limity zasobów w usłudze Azure SQL Data Warehouse rządzących zasobów obliczeniowych i współbieżność w celu wykonywania zapytań. Klasy zasobu ułatwia zarządzanie obciążenie przez ustawienie limitów liczby zapytania uruchamiane jednocześnie oraz zasoby obliczeniowe przypisane do każdego zapytania. Brak zależności między pamięci i współbieżności.
 
-Zasób klas ułatwia zarządzanie usługą ogólną wydajność obciążenia magazynu danych. Efektywne korzystanie z zasobów klas pomaga w zarządzaniu obciążenie przez ustawienie limitów liczby zapytania uruchamiane jednocześnie oraz zasoby obliczeniowe przypisane do każdego zapytania. 
+- Mniejsze klasy zasobu zmniejszyć maksymalną ilość pamięci na zapytanie, ale zwiększyć współbieżność.
+- Większe grupy zasobów zwiększa maksymalną ilość pamięci na zapytanie, ale zmniejszają. 
 
-- Mniejsze klasy zasobu zużywać mniej zasobów obliczeniowych, ale włączyć większa ogólną współbieżności zapytania
-- Większe grupy zasobów zapewniają więcej zasoby obliczeniowe, ale ograniczyć współbieżności zapytania
+Pojemność wydajności zapytania jest określana przez użytkownika klasy zasobów.
 
-Klasy zasobów są przeznaczone dla działania zarządzania i manipulowania nimi danych. Niektóre bardzo złożonych zapytań będzie również skorzystać w przypadku dużych sprzężenia i sortowanie, aby system wykonuje zapytania w pamięci, a nie przechodzeniu na dysku.
+- Aby wyświetlić wykorzystania zasobów dla klas zasobów, zobacz [limity pamięci i](memory-and-concurrency-limits.md#concurrency-maximums).
+- Aby dostosować klasy zasobu, można uruchomić zapytanie pod innego użytkownika lub [Zmiana klasy zasobu bieżącego użytkownika](#change-a-user-s-resource-class) członkostwa. 
 
-Klasy zasobów zależą następujące operacje:
+Klasy zasobu używać miejsc współbieżności do mierzenia zużycia zasobów.  [Współbieżność miejsc](#concurrency-slots) opisano szczegółowo w dalszej części tego artykułu. 
+
+### <a name="static-resource-classes"></a>Klasy statyczne zasobów
+Klasy statyczne zasobów przydzielić tego samego ilość pamięci, niezależnie od tego, bieżący poziom wydajności, która jest mierzona w [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ponieważ zapytania pobierają tego samego alokacji pamięci niezależnie od poziomu wydajności [skalowanie w poziomie magazynu danych](quickstart-scale-compute-portal.md) umożliwia więcej kwerend do uruchomienia w ramach klasy zasobów.
+
+Klasy statyczne zasobów są implementowane przy użyciu tych ról wstępnie zdefiniowanych bazy danych:
+
+- staticrc10
+- staticrc20
+- staticrc30
+- staticrc40
+- staticrc50
+- staticrc60
+- staticrc70
+- staticrc80
+
+Te klasy zasobów są najlepiej nadaje się do rozwiązania, które zwiększają klasy zasobów, aby uzyskać dodatkowe zasoby obliczeniowe zasobów.
+
+### <a name="dynamic-resource-classes"></a>Klasy zasobu dynamicznego
+Dynamiczne klasy zasobu przydzielić zmiennej ilość pamięci w zależności od bieżącego poziomu usługi. Skalowanie w górę na większy poziom usługi, kwerend automatycznie Pobierz więcej pamięci. 
+
+Klasy zasobu dynamicznego są implementowane przy użyciu tych ról wstępnie zdefiniowanych bazy danych:
+
+- smallrc
+- mediumrc
+- largerc
+- xlargerc. 
+
+Te klasy zasobów są najbardziej odpowiednie do skalowania, aby uzyskać dodatkowe zasoby obliczeniowe które wzrost rozwiązań. 
+
+
+### <a name="default-resource-class"></a>Domyślna klasa zasobów
+Domyślnie każdy użytkownik jest członkiem klasy zasobu dynamicznego **smallrc**. 
+
+Klasa zasobu administratora usługi jest stała i nie można zmienić.  Administrator usługi jest użytkownika utworzonym podczas procesu inicjowania obsługi administracyjnej.
+
+> [!NOTE]
+> Użytkowników lub grup zdefiniowanych jako administratora usługi Active Directory są również administratorami usługi.
+>
+>
+
+## <a name="resource-class-operations"></a>Operacje klasy zasobu
+
+Klasy zasobów pozwalają poprawić wydajność działania zarządzania i manipulowania nimi danych. Złożonych zapytań można również korzystać z działania pod klasy dużych zasobów. Na przykład zapytanie wydajności dla dużych sprzężeń i sortuje można zwiększyć, gdy klasa zasobów jest wystarczająco duży, aby umożliwić wykonanie zapytania w celu wykonania w pamięci.
+
+### <a name="operations-governed-by-resource-classes"></a>Operacji postanowieniom klasy zasobu
+
+Operacje te są regulowane przez klasy zasobu:
 
 * WYBIERZ OPCJĘ INSERT, UPDATE, DELETE
 * Wybierz (podczas wykonywania zapytania tabele użytkownika)
@@ -56,50 +104,7 @@ Klasy zasobów zależą następujące operacje:
 > 
 > 
 
-## <a name="static-and-dynamic-resource-classes"></a>Klas statycznych i dynamicznych zasobów
-
-Istnieją dwa typy klasy zasobu: dynamiczną i statyczną.
-
-- **Klasy statyczne zasobów** przydzielić tego samego ilość pamięci, niezależnie od bieżącego poziomu usługi, która jest mierzona w [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ten przydział statycznych oznacza na większych poziomów usług można uruchomić zapytania więcej w każdej klasy zasobów.  Klasy statyczne zasobów są nazywane staticrc10, staticrc20 staticrc30, staticrc40, staticrc50, staticrc60, staticrc70 i staticrc80. Te klasy zasobów są najlepiej nadaje się do rozwiązania, które zwiększają klasy zasobów, aby uzyskać dodatkowe zasoby obliczeniowe zasobów.
-
-- **Dynamiczne klasy zasobu** przydzielić zmiennej ilość pamięci w zależności od bieżącego poziomu usługi. Skalowanie w górę na większy poziom usługi, kwerend automatycznie Pobierz więcej pamięci. Klasy zasobu dynamicznego są nazywane smallrc, mediumrc largerc i xlargerc. Te klasy zasobów są najbardziej odpowiednie do skalowania, aby uzyskać dodatkowe zasoby obliczeniowe które wzrost rozwiązań. 
-
-[Warstwy wydajności](performance-tiers.md) używać tych samych nazw klasy zasobów, ale mają różne [pamięci i specyfikacje](performance-tiers.md). 
-
-
-## <a name="assigning-resource-classes"></a>Przypisywanie klasy zasobu
-
-Klasy zasobów są implementowane przez przypisywania użytkowników do ról bazy danych. Gdy użytkownik uruchamia kwerendy, kwerenda działa klasy zasobów użytkownika. Na przykład jeśli użytkownik jest członkiem roli bazy danych smallrc lub staticrc10, ich zapytania uruchamiane z małej ilości pamięci. Gdy użytkownik bazy danych jest elementem członkowskim xlargerc lub staticrc80 ról bazy danych, ich zapytania uruchamiane z dużą ilością pamięci. 
-
-Aby zwiększyć klasy zasobów użytkownika, użyj procedury składowanej [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). 
-
-```sql
-EXEC sp_addrolemember 'largerc', 'loaduser';
-```
-
-Aby zmniejszyć klasy zasobów, użyj [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  
-
-```sql
-EXEC sp_droprolemember 'largerc', 'loaduser';
-```
-
-Klasa zasobu administratora usługi jest stała i nie można zmienić.  Administrator usługi jest użytkownika utworzonym podczas procesu inicjowania obsługi administracyjnej.
-
-> [!NOTE]
-> Użytkowników lub grup zdefiniowanych jako administratora usługi Active Directory są również administratorami usługi.
->
->
-
-### <a name="default-resource-class"></a>Domyślna klasa zasobów
-Domyślnie każdy użytkownik jest członkiem klasy zasobu małych **smallrc**. 
-
-### <a name="resource-class-precedence"></a>Pierwszeństwo klasy zasobu
-Użytkownicy mogą być członkami wielu klas zasobów. Jeśli użytkownik należy do więcej niż jedną klasę zasobów:
-
-- Klasy zasobu dynamicznego mają pierwszeństwo przed klas statycznych zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc(dynamic) i staticrc80 (statyczny), zapytania uruchamiane z mediumrc.
-- Większe klasy zasobu mają pierwszeństwo przed mniejszych klasy zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc i largerc, zapytania uruchamiane z largerc. Podobnie jeśli użytkownik jest członkiem staticrc20 i statirc80, zapytania uruchamiane z staticrc80 alokacji zasobów.
-
-### <a name="queries-exempt-from-resource-classes"></a>Zapytania wykluczone z klasy zasobu
+### <a name="operations-not-governed-by-resource-classes"></a>Operacje nie podlega postanowieniom klasy zasobu
 Niektóre kwerendy są zawsze uruchamiane w klasie zasobu smallrc nawet, jeśli użytkownik jest członkiem większych klasy zasobów. Te wykluczone zapytania nie wchodzą w skład limit współbieżności. Na przykład jeśli limit współbieżności 16, wielu użytkowników może wybierając z widoków systemowych bez wpływu na gniazd dostępnych współbieżności.
 
 Poniższe instrukcje są wykluczone z klasy zasobów i są zawsze uruchamiane w smallrc:
@@ -126,6 +131,45 @@ Removed as these two are not confirmed / supported under SQLDW
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
 -->
+
+## <a name="concurrency-slots"></a>Gniazda współbieżności
+Współbieżność miejsca są wygodnym sposobem śledzenia zasoby dostępne w celu wykonywania zapytań. Są one podobne bilety zakupu do zarezerwowania licencje na stanowiska w porozumieniu, ponieważ wzorcowy jest ograniczona. Całkowita liczba gniazd współbieżności na magazyn danych zależy od poziomu usługi. Przed rozpoczęciem zapytania podczas wykonywania, musi być w stanie zarezerwować wystarczającej ilości miejsca współbieżności. Po zakończeniu pracy kwerendy zwalnia jego miejsc współbieżności.  
+
+- Zapytanie uruchomione z 10 miejsc współbieżności można uzyskać dostępu do 5 razy więcej zasobów obliczeniowych niż zapytanie uruchomione z 2 miejsc współbieżności.
+- Jeśli brak 40 gniazd współbieżności każdego zapytania wymaga 10 miejsc współbieżności, tylko 4 kwerendy można uruchamiać jednocześnie.
+ 
+Tylko zapytań dotyczących zasobów postanowieniom zużywać miejsc współbieżności. System zapytań i niektóre trivial kwerendy nie zajmują żadnych gniazd. Dokładna liczba zużywane gniazd współbieżności zależy od klasy zasobów kwerendy.
+
+## <a name="view-the-resource-classes"></a>Wyświetlić klasy zasobu
+
+Klasy zasobów są zaimplementowane jako role wstępnie zdefiniowane bazy danych. Istnieją dwa typy klasy zasobu: dynamiczną i statyczną. Aby wyświetlić listę klas zasobów, użyj następującego zapytania:
+
+    ```sql
+    SELECT name FROM sys.database_principals
+    WHERE name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
+    ```
+
+## <a name="change-a-users-resource-class"></a>Zmiana klasy zasobów użytkownika
+
+Klasy zasobów są implementowane przez przypisywania użytkowników do ról bazy danych. Gdy użytkownik uruchamia kwerendy, kwerenda działa klasy zasobów użytkownika. Na przykład jeśli użytkownik jest członkiem roli bazy danych smallrc lub staticrc10, ich zapytania uruchamiane z małej ilości pamięci. Gdy użytkownik bazy danych jest elementem członkowskim xlargerc lub staticrc80 ról bazy danych, ich zapytania uruchamiane z dużą ilością pamięci. 
+
+Aby zwiększyć klasy zasobów użytkownika, użyj procedury składowanej [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). 
+
+```sql
+EXEC sp_addrolemember 'largerc', 'loaduser';
+```
+
+Aby zmniejszyć klasy zasobów, użyj [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  
+
+```sql
+EXEC sp_droprolemember 'largerc', 'loaduser';
+```
+
+## <a name="resource-class-precedence"></a>Pierwszeństwo klasy zasobu
+Użytkownicy mogą być członkami wielu klas zasobów. Jeśli użytkownik należy do więcej niż jedną klasę zasobów:
+
+- Klasy zasobu dynamicznego mają pierwszeństwo przed klas statycznych zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc(dynamic) i staticrc80 (statyczny), zapytania uruchamiane z mediumrc.
+- Większe klasy zasobu mają pierwszeństwo przed mniejszych klasy zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc i largerc, zapytania uruchamiane z largerc. Podobnie jeśli użytkownik jest członkiem staticrc20 i statirc80, zapytania uruchamiane z staticrc80 alokacji zasobów.
 
 ## <a name="recommendations"></a>Zalecenia
 Firma Microsoft zaleca się tworzenie użytkownika służącego do uruchamiania określonego typu zapytania lub załadować operacji. Następnie nadaj użytkownika klasę zasobu o stały zamiast klasy zasobów częste zmiany. Biorąc pod uwagę, że klas statycznych zasobów zapewniają większą kontrolę ogólną obciążenia pracą również sugerować się przy użyciu tych pierwszy przed uwzględnieniu klasy zasobu dynamicznego.

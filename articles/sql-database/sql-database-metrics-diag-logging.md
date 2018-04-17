@@ -1,8 +1,8 @@
 ---
 title: Metryki bazy danych SQL Azure i rejestrowanie danych diagnostycznych | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat sposobu konfigurowania bazy danych SQL Azure do przechowywania użycia zasobów, łączności i statystyki wykonania zapytania."
+description: Więcej informacji na temat sposobu konfigurowania bazy danych SQL Azure do przechowywania użycia zasobów, łączności i statystyki wykonania zapytania.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: veljko-msft
 manager: craigg
 ms.service: sql-database
@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki bazy danych SQL Azure i rejestrowanie danych diagnostycznych 
 Baza danych SQL Azure może emitować metryki i informacji diagnostycznych dzienników łatwiejsze monitorowania. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
@@ -191,11 +191,11 @@ Najprostszym sposobem konfigurowania, gdzie baz danych rejestrowania ich metryki
 
 ### <a name="install-the-sql-analytics-solution-from-the-gallery"></a>Instalowanie rozwiązania analizy SQL z galerii
 
-1. Po utworzeniu zasobu analizy dzienników i danych jest przepływać do niego, należy zainstalować rozwiązania analizy SQL. Na stronie głównej usługi Operations Management Suite, w menu po stronie wybierz **galerii rozwiązań**. W galerii, wybierz **analiza SQL Azure** rozwiązania, a następnie wybierz **Dodaj**.
+1. Po utworzeniu zasobu analizy dzienników i danych jest przepływać do niego, należy zainstalować rozwiązania analizy SQL. Na stronie głównej w menu po stronie wybierz **galerii rozwiązań**. W galerii, wybierz **analiza SQL Azure** rozwiązania, a następnie wybierz **Dodaj**.
 
    ![rozwiązanie monitorowania](./media/sql-database-metrics-diag-logging/monitoring-solution.png)
 
-2. Na stronie głównej usługi Operations Management Suite **analiza SQL Azure** pojawi się Kafelek. Wybierz ten Kafelek, aby otworzyć pulpitu nawigacyjnego SQL Analytics.
+2. Na stronie głównej **analiza SQL Azure** pojawi się Kafelek. Wybierz ten Kafelek, aby otworzyć pulpitu nawigacyjnego SQL Analytics.
 
 ### <a name="use-the-sql-analytics-solution"></a>Użyj rozwiązania analizy SQL
 

@@ -1,12 +1,12 @@
 ---
-title: "Zabezpieczanie aplikacji PaaS przy użyciu usługi Azure Storage | Dokumentacja firmy Microsoft"
+title: Zabezpieczanie aplikacji PaaS przy użyciu usługi Azure Storage | Dokumentacja firmy Microsoft
 description: " Więcej informacji na temat zabezpieczeń usługi Azure Storage najlepsze rozwiązania dotyczące zabezpieczania PaaS w sieci web i aplikacji dla urządzeń przenośnych. "
 services: security
 documentationcenter: na
 author: TomShinder
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomShinder
-ms.openlocfilehash: 16ee6d9d2f02c758d7682626a8b71a3ff17f841c
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Zabezpieczanie PaaS w sieci web i aplikacji dla urządzeń przenośnych przy użyciu usługi Azure Storage
 W tym artykule omówiono kolekcję usługi Azure Storage zabezpieczeń najlepsze rozwiązania dotyczące zabezpieczania PaaS w sieci web i aplikacji dla urządzeń przenośnych. Następujące najlepsze rozwiązania są uzyskiwane z wiemy z doświadczenia z platformy Azure i doświadczenia klientów, takie jak samodzielnie.
@@ -75,7 +75,7 @@ Aby dowiedzieć się więcej, zobacz [— często zadawane pytania o zarządzany
 
 Wcześniej wspomniano, aby przyznać ograniczony dostęp do obiektów na koncie magazynu innym klientom bez narażania klucz konta magazynu konta przy użyciu dostępu sygnatury dostępu Współdzielonego. Czasami ryzyko związane z określoną operację względem konta magazynu przeważają korzyści wynikające z sygnatury dostępu Współdzielonego. Czasami jest łatwiejsze zarządzanie dostępem w inny sposób.
 
-Inny sposób, aby zarządzać dostępem jest użycie [kontroli dostępu](../active-directory/role-based-access-control-what-is.md) (RBAC). Z RBAC, skupić się na zapewniając pracownikom dokładne uprawnienia, które są im potrzebne, na podstawie musi znać i co najmniej uprawnień zabezpieczeń zasad. Za dużo uprawnienia mogą uwidaczniać konta na ataki. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. RBAC pomaga rozwiązać ten problem, oferując precyzyjne zarządzanie dostępem dla platformy Azure. Jest to konieczne w przypadku organizacji, które mają być wymuszać zasady zabezpieczeń dla dostępu do danych.
+Inny sposób, aby zarządzać dostępem jest użycie [kontroli dostępu](../role-based-access-control/overview.md) (RBAC). Z RBAC, skupić się na zapewniając pracownikom dokładne uprawnienia, które są im potrzebne, na podstawie musi znać i co najmniej uprawnień zabezpieczeń zasad. Za dużo uprawnienia mogą uwidaczniać konta na ataki. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. RBAC pomaga rozwiązać ten problem, oferując precyzyjne zarządzanie dostępem dla platformy Azure. Jest to konieczne w przypadku organizacji, które mają być wymuszać zasady zabezpieczeń dla dostępu do danych.
 
 Można wykorzystać wbudowane role RBAC na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie współautora konta magazynu dla operatorów chmury, które muszą zarządzać konta magazynu i roli klasycznego współautora konta magazynu do zarządzania klasycznych kont magazynu. Dla operatorów chmury, które muszą zarządzać maszyn wirtualnych, ale nie z wirtualnych sieci lub magazynu konta do którego są podłączeni, należy rozważyć dodanie ich do roli współautora maszyny wirtualnej.
 
@@ -83,8 +83,8 @@ Organizacje, które nie wymusić kontrolę dostępu danych dzięki wykorzystaniu
 
 Aby dowiedzieć się więcej o RBAC, zobacz:
 
-- [Kontrola dostępu oparta na rolach na platformie Azure](../active-directory/role-based-access-control-configure.md)
-- [Wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](../active-directory/role-based-access-built-in-roles.md)
+- [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)
+- [Wbudowanych ról dla kontroli dostępu opartej na rolach na platformie Azure](../role-based-access-control/built-in-roles.md)
 - [Przewodnik po zabezpieczeniach magazynu Azure](../storage/common/storage-security-guide.md) szczegółowe informacje na temat sposobu zabezpieczenia konta magazynu o RBAC
 
 ## <a name="storage-encryption"></a>Szyfrowanie w usłudze Storage
@@ -104,7 +104,7 @@ Zobacz [szyfrowania dysków Azure dla systemu Windows oraz maszyny wirtualne sys
 ### <a name="storage-service-encryption"></a>Szyfrowanie usługi Storage
 Gdy [szyfrowanie usługi Magazyn](../storage/storage-service-encryption.md) magazyn plików jest włączona, dane są szyfrowane automatycznie przy użyciu szyfrowania AES 256. Firma Microsoft podchodzi do szyfrowania, odszyfrowywania i zarządzania kluczami. Ta funkcja jest dostępna dla typów nadmiarowość LRS i GRS.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym artykule wprowadzona w kolekcji usługi Azure Storage zabezpieczeń najlepsze rozwiązania dotyczące zabezpieczania PaaS w sieci web i aplikacji dla urządzeń przenośnych. Aby dowiedzieć się więcej na temat zabezpieczania wdrożeń typu PaaS, zobacz:
 
 - [Zabezpieczanie wdrożeń typu PaaS](security-paas-deployments.md)

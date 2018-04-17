@@ -1,5 +1,5 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania systemowe bezpieczne"
+title: Plan Azure przetwarzania płatności — wymagania systemowe bezpieczne
 description: Wymaganie PCI DSS 6
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 24c8d90d3fec27258165472e99ba3d36ffcba733
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: cd9054afc359d7568fcd08f983f374e0b2bc3792
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-system-requirements-for-pci-dss-compliant-environments"></a>Wymagania systemowe dla środowisk standardem PCI DSS Secure 
 ## <a name="pci-dss-requirement-6"></a>Wymaganie PCI DSS 6
@@ -46,8 +46,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Procedury zostały ustalone i wdrożone w celu skanowania w poszukiwaniu luk w zabezpieczeniach na hostach funkcji hypervisor w granicy zakresu. Luki w zabezpieczeniach skanowanie jest wykonywane na systemy operacyjne serwera baz danych i urządzeń sieciowych z luki w zabezpieczeniach odpowiednich narzędzi do skanowania. Luki w zabezpieczeniach skanowania są wykonywane co kwartał, co najmniej. Umowy Microsoft Azure z niezależnych ekspertów do testowania penetracji granic Microsoft Azure. Ćwiczenia zespołu czerwony również regularnie są wykonywane i wyników użyć w celu dokonania poprawek zabezpieczeń. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji z zapory aplikacji sieci Web i zestaw reguł OWASP włączone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - zmniejsza ryzyko związane z luki w zabezpieczeniach](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Procedury zostały ustalone i wdrożone w celu skanowania w poszukiwaniu luk w zabezpieczeniach na hostach funkcji hypervisor w granicy zakresu. Luki w zabezpieczeniach skanowanie jest wykonywane na systemy operacyjne serwera baz danych i urządzeń sieciowych z luki w zabezpieczeniach odpowiednich narzędzi do skanowania. Luki w zabezpieczeniach skanowania są wykonywane co kwartał, co najmniej. Umowy Microsoft Azure z niezależnych ekspertów do testowania penetracji granic Microsoft Azure. Ćwiczenia zespołu czerwony również regularnie są wykonywane i wyników użyć w celu dokonania poprawek zabezpieczeń. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji z zapory aplikacji sieci Web i zestaw reguł OWASP włączone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - zmniejsza ryzyko związane z luki w zabezpieczeniach](payment-processing-blueprint.md#application-gateway).|
 
 
 
@@ -62,8 +62,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za egzekwowanie wszystkich urządzeń sieciowych i funkcji hypervisor oprogramowania systemu operacyjnego jest chroniony przed znanych luk w zabezpieczeniach, instalując poprawki stosowane zabezpieczeń dostarczonego przez dostawcę. Chyba, że klient żąda nie korzystać z usługi, proces zarządzania poprawki istnieje zapewnić uniemożliwił i skorygować w odpowiednim czasie poziomu luk w zabezpieczeniach systemu operacyjnego. Serwerów produkcyjnych są skanowane w celu zweryfikowania zgodności poprawki co miesiąc. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso to rozwiązanie typu PaaS usługi. Platforma Azure udostępnia obsługi wszystkich poprawek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za egzekwowanie wszystkich urządzeń sieciowych i funkcji hypervisor oprogramowania systemu operacyjnego jest chroniony przed znanych luk w zabezpieczeniach, instalując poprawki stosowane zabezpieczeń dostarczonego przez dostawcę. Chyba, że klient żąda nie korzystać z usługi, proces zarządzania poprawki istnieje zapewnić uniemożliwił i skorygować w odpowiednim czasie poziomu luk w zabezpieczeniach systemu operacyjnego. Serwerów produkcyjnych są skanowane w celu zweryfikowania zgodności poprawki co miesiąc. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso to rozwiązanie typu PaaS usługi. Platforma Azure udostępnia obsługi wszystkich poprawek.|
 
 
 
@@ -81,8 +81,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Aplikacje Microsoft Azure i punkty końcowe są tworzone zgodnie z metodologii Microsoft Security Development Lifecycle (SDL), która jest zgodna z wymaganiami DSS. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web została zaprojektowana w celu postępuj zgodnie z branży najlepsze rozwiązania w zakresie ochrony CHD. Wskazówki dotyczące wdrażania zawiera szczegółowe informacje o meassures zabezpieczeń i rejestrowanie jest włączone.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Aplikacje Microsoft Azure i punkty końcowe są tworzone zgodnie z metodologii Microsoft Security Development Lifecycle (SDL), która jest zgodna z wymaganiami DSS. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web została zaprojektowana w celu postępuj zgodnie z branży najlepsze rozwiązania w zakresie ochrony CHD. Wskazówki dotyczące wdrażania zawiera szczegółowe informacje o meassures zabezpieczeń i rejestrowanie jest włączone.|
 
 
 
@@ -94,8 +94,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Przegląd zabezpieczeń końcowego (FRS) jest przeprowadzane dla wersjach głównych przed ich wdrożeniem w środowisku produkcyjnym przez wyznaczonych Advisor zabezpieczeń poza zespół deweloperów platformy Azure, aby upewnić się, że są wydawane tylko aplikacje gotowe do produkcji. W ramach przeglądu ostatecznego zapewnia się, że wszystkie konta testowe i dane testowe zostały usunięte. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Przegląd zabezpieczeń końcowego (FRS) jest przeprowadzane dla wersjach głównych przed ich wdrożeniem w środowisku produkcyjnym przez wyznaczonych Advisor zabezpieczeń poza zespół deweloperów platformy Azure, aby upewnić się, że są wydawane tylko aplikacje gotowe do produkcji. W ramach przeglądu ostatecznego zapewnia się, że wszystkie konta testowe i dane testowe zostały usunięte. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -116,8 +116,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Aplikacje Microsoft Azure i punkty końcowe są tworzone zgodnie z metodologii Microsoft Security Development Lifecycle (SDL). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Aplikacje Microsoft Azure i punkty końcowe są tworzone zgodnie z metodologii Microsoft Security Development Lifecycle (SDL). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -129,8 +129,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft następuje NIST wskazówki dotyczące zagadnienia dotyczące zabezpieczeń w rozwoju oprogramowania, w tym bezpieczeństwa informacji muszą zostać włączone do SDLC od rozpoczęcia systemu. Umożliwia ciągłej integracji praktyk związanych z zabezpieczeniami w SDL firmy Microsoft:<ul><li>Wczesne identyfikacji i środki zaradcze luk w zabezpieczeniach i błędy konfiguracji</li><li>Świadomość potencjalnych oprogramowania kodowania wyzwanie spowodowane kontroli zabezpieczeń</li><li>Identyfikacja usług udostępnionych zabezpieczeń i ponowne użycie narzędzia najlepsze rozwiązania w zakresie zabezpieczeń, co zwiększa stan zabezpieczeń za pomocą sprawdzonych metod i technik</li><li>Wymuszanie firmy Microsoft już ryzyka zarządzania programu</li></ul>Microsoft Azure została ustanowiona zmiany i zwolnij procesów zarządzania do kontroli wykonania istotne zmiany w tym:<ul><li>Identyfikowanie i dokumentacji planowane zmiany</li><li>Określenie celów biznesowych, priorytetów i scenariuszy podczas planowania produktu</li><li>Specyfikacja funkcji/składnika projektu</li><li>Sprawdź gotowość do działania na podstawie wstępnie zdefiniowane kryteria/wyboru listy do oceny ryzyka ogólnego/wpływu</li><li>Testowanie, autoryzacji i zarządzanie zmianami oparte na kryteriach wejścia/wyjścia dla deweloperów (Programowanie), INT (Testowanie integracji), etap (przedprodukcyjnej) i produkcyjną (środowisko produkcyjne) środowisk zależnie od potrzeb. Klienci są zobowiązani do własnych aplikacji hostowanej na platformie Microsoft Azure.</li></ul> |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Pokaz magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. <br /><br />Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).<br /><br />Zmiany są rejestrowane za pomocą usługi Operations Management Suite i elementy Runbook są używane do zbierania dzienników. [Operations Management Suite (OMS)](/azure/operations-management-suite/) zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - usługi Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft następuje NIST wskazówki dotyczące zagadnienia dotyczące zabezpieczeń w rozwoju oprogramowania, w tym bezpieczeństwa informacji muszą zostać włączone do SDLC od rozpoczęcia systemu. Umożliwia ciągłej integracji praktyk związanych z zabezpieczeniami w SDL firmy Microsoft:<ul><li>Wczesne identyfikacji i środki zaradcze luk w zabezpieczeniach i błędy konfiguracji</li><li>Świadomość potencjalnych oprogramowania kodowania wyzwanie spowodowane kontroli zabezpieczeń</li><li>Identyfikacja usług udostępnionych zabezpieczeń i ponowne użycie narzędzia najlepsze rozwiązania w zakresie zabezpieczeń, co zwiększa stan zabezpieczeń za pomocą sprawdzonych metod i technik</li><li>Wymuszanie firmy Microsoft już ryzyka zarządzania programu</li></ul>Microsoft Azure została ustanowiona zmiany i zwolnij procesów zarządzania do kontroli wykonania istotne zmiany w tym:<ul><li>Identyfikowanie i dokumentacji planowane zmiany</li><li>Określenie celów biznesowych, priorytetów i scenariuszy podczas planowania produktu</li><li>Specyfikacja funkcji/składnika projektu</li><li>Sprawdź gotowość do działania na podstawie wstępnie zdefiniowane kryteria/wyboru listy do oceny ryzyka ogólnego/wpływu</li><li>Testowanie, autoryzacji i zarządzanie zmianami oparte na kryteriach wejścia/wyjścia dla deweloperów (Programowanie), INT (Testowanie integracji), etap (przedprodukcyjnej) i produkcyjną (środowisko produkcyjne) środowisk zależnie od potrzeb. Klienci są zobowiązani do własnych aplikacji hostowanej na platformie Microsoft Azure.</li></ul> |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Pokaz magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. <br /><br />Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).<br /><br />Zmiany są rejestrowane za pomocą usługi Operations Management Suite i elementy Runbook są używane do zbierania dzienników. Analiza dzienników zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - usługi Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -142,8 +142,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -155,8 +155,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso udostępnia usługę tymczasowej, która jest rejestrowane i samodzielnie. Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń [NSG]. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - grupy zabezpieczeń sieci](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -168,8 +168,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie kontem podstawowym numer (PRZESUWANIE) danych dynamicznych.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie kontem podstawowym numer (PRZESUWANIE) danych dynamicznych.|
 
 
 
@@ -181,8 +181,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie ma żadnych testowe konta.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso nie ma żadnych testowe konta.|
 
 
 
@@ -198,8 +198,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso to rozwiązanie typu PaaS usługi. I platforma Azure udostępnia obsługi wszystkich poprawek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso to rozwiązanie typu PaaS usługi. I platforma Azure udostępnia obsługi wszystkich poprawek.|
 
 
 
@@ -215,8 +215,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso to rozwiązanie typu PaaS usługi. I platforma Azure udostępnia obsługi wszystkich poprawek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso to rozwiązanie typu PaaS usługi. I platforma Azure udostępnia obsługi wszystkich poprawek.|
 
 
 
@@ -247,8 +247,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Pokaz magazynu sieci Web firmy Contoso zawiera wskazówki dotyczące bezpiecznego programowania, DPD i zagrożeń modelu ilustrujący bezpiecznego programowania rozwiązań.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zobacz sekcję "Microsoft Azure" dla [6.4 wymaganie](#pci-dss-requirement-6-4). |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Pokaz magazynu sieci Web firmy Contoso zawiera wskazówki dotyczące bezpiecznego programowania, DPD i zagrożeń modelu ilustrujący bezpiecznego programowania rozwiązań.|
 
 
 
@@ -267,8 +267,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure testów aplikacji sieci web publicznych w ramach procesu tworzenia oprogramowania przed wdrożeniem aplikacji do środowiska produkcyjnego. Ponadto Microsoft skanowanie wszystkich publicznych aplikacji sieci web w środowisku produkcyjnym regularnie wykrywać wszelkie możliwe luki w zabezpieczeniach. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Odwołanie rozwiązanie zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji z zapory aplikacji sieci Web i zestaw reguł OWASP włączone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - zmniejsza ryzyko związane z luki w zabezpieczeniach](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure testów aplikacji sieci web publicznych w ramach procesu tworzenia oprogramowania przed wdrożeniem aplikacji do środowiska produkcyjnego. Ponadto Microsoft skanowanie wszystkich publicznych aplikacji sieci web w środowisku produkcyjnym regularnie wykrywać wszelkie możliwe luki w zabezpieczeniach. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Odwołanie rozwiązanie zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji z zapory aplikacji sieci Web i zestaw reguł OWASP włączone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - zmniejsza ryzyko związane z luki w zabezpieczeniach](payment-processing-blueprint.md#application-gateway).|
 
 
 
@@ -280,8 +280,8 @@ Osoby nieuczciwe umożliwia uzyskanie uprzywilejowanego dostępu do systemów lu
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Odwołanie rozwiązanie zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji z zapory aplikacji sieci Web i zestaw reguł OWASP włączone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - zmniejsza ryzyko związane z luki w zabezpieczeniach](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Odwołanie rozwiązanie zmniejsza ryzyko luk w zabezpieczeniach przy użyciu bramy aplikacji z zapory aplikacji sieci Web i zestaw reguł OWASP włączone. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - zmniejsza ryzyko związane z luki w zabezpieczeniach](payment-processing-blueprint.md#application-gateway).|
 
 
 

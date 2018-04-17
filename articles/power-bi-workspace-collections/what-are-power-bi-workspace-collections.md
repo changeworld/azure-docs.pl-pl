@@ -1,12 +1,12 @@
 ---
-title: "Co to są Power BI obszaru roboczego kolekcji?"
-description: "Usługa Power BI Embedded umożliwia integrację raportów usługi Power BI do sieci web lub aplikacji dla urządzeń przenośnych, dzięki czemu nie trzeba tworzyć niestandardowe rozwiązania."
+title: Co to są Power BI obszaru roboczego kolekcji?
+description: Usługa Power BI Embedded umożliwia integrację raportów usługi Power BI do sieci web lub aplikacji dla urządzeń przenośnych, dzięki czemu nie trzeba tworzyć niestandardowe rozwiązania.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 7df172895bb926f1715370b941964e2c29ab393d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 0bd6ba74d176ed1db1e8f1f1b38646182da2c379
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Co to są Power BI obszaru roboczego kolekcji?
 
@@ -81,7 +81,7 @@ Tokeny te służą do różnych faz interakcji z **Microsoft Power BI obszaru ro
 
 Można teraz edytować istniejące raporty lub tworzenia nowych raportów bezpośrednio w aplikacji bez konieczności używania Power BI Desktop. Wymaga to, czy zestaw danych istnieją w obszarze roboczym.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Typowe scenariusze Microsoft Power BI obszaru roboczego kolekcje](scenarios.md)  
 [Wprowadzenie do programu Microsoft Power BI obszaru roboczego kolekcje](get-started.md)  

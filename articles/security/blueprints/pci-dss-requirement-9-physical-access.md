@@ -1,5 +1,5 @@
 ---
-title: "Plan Azure przetwarzania płatności — wymagania dotyczące fizycznego dostępu"
+title: Plan Azure przetwarzania płatności — wymagania dotyczące fizycznego dostępu
 description: Wymaganie PCI DSS 9
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 89f7b20a130e988bfe4964d50ae97de788ca4623
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2dbf4d9e2f4ff7b6cdf8e48c24eeee4d036fe195
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>Wymagania dotyczące fizycznego dostępu dla środowisk standardem PCI DSS 
 ## <a name="pci-dss-requirement-9"></a>Wymaganie PCI DSS 9
@@ -38,8 +38,8 @@ Wszelkie fizyczna dostęp do danych lub systemów tego posiadacza DOM danych zap
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za wdrażanie, wymuszanie i monitorowanie zabezpieczeń fizyczny dostęp do centrów danych. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za wdrażanie, wymuszanie i monitorowanie zabezpieczeń fizyczny dostęp do centrów danych. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -54,8 +54,8 @@ Wszelkie fizyczna dostęp do danych lub systemów tego posiadacza DOM danych zap
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za wdrażanie, wymuszanie i monitorowanie systemu telewizji przemysłowej i mechanizmy kontroli dostępu biometryczne centrach danych. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za wdrażanie, wymuszanie i monitorowanie systemu telewizji przemysłowej i mechanizmy kontroli dostępu biometryczne centrach danych. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -69,8 +69,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie ma żadnych gniazda publicznie dostępnej sieci w ramach platformy Microsoft Azure. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie ma żadnych gniazda publicznie dostępnej sieci w ramach platformy Microsoft Azure. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -82,8 +82,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Fizyczny dostęp do systemu Microsoft Azure sprzęt sieciowy jest ściśle kontrolowane przez listy dostępu do wielu metod uwierzytelniania, bariery fizyczne wejścia i wymagania dla firm należy zatwierdzić do uzyskiwania dostępu do urządzenia. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Fizyczny dostęp do systemu Microsoft Azure sprzęt sieciowy jest ściśle kontrolowane przez listy dostępu do wielu metod uwierzytelniania, bariery fizyczne wejścia i wymagania dla firm należy zatwierdzić do uzyskiwania dostępu do urządzenia. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -98,8 +98,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za wdrażanie, wymuszanie i monitorowania identyfikator zabezpieczeń i pracowników lub wykonawcy fizycznego dostępu podczas odwiedzania centrach danych. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za wdrażanie, wymuszanie i monitorowania identyfikator zabezpieczeń i pracowników lub wykonawcy fizycznego dostępu podczas odwiedzania centrach danych. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -113,8 +113,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Autoryzacji dostępu w centrach danych firmy Microsoft jest kontrolowany przy użyciu listy autoryzowanych dostępu zatwierdzone przez zespół centrum danych w oparciu o zasadę najniższych uprawnień. Listy kontroli dostępu jest sprawdzone, weryfikacji i aktualizowane co kwartał.<br /><br />Centrów danych Microsoft Azure wykorzystywać urządzenia fizycznego dostępu, takich jak obwodowej bramy, czytniki dostępu elektronicznego czytników biometrycznych, man pułapek/portali i uruchomiony przebieg urządzenia kopii. Urządzenia wskaźnika dostępu są stale monitorowane. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Autoryzacji dostępu w centrach danych firmy Microsoft jest kontrolowany przy użyciu listy autoryzowanych dostępu zatwierdzone przez zespół centrum danych w oparciu o zasadę najniższych uprawnień. Listy kontroli dostępu jest sprawdzone, weryfikacji i aktualizowane co kwartał.<br /><br />Centrów danych Microsoft Azure wykorzystywać urządzenia fizycznego dostępu, takich jak obwodowej bramy, czytniki dostępu elektronicznego czytników biometrycznych, man pułapek/portali i uruchomiony przebieg urządzenia kopii. Urządzenia wskaźnika dostępu są stale monitorowane. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -126,8 +126,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny dla wymuszenie dostaw wstępnie zatwierdzonych są odbierane w bay bezpieczne ładowania, fizycznie izolowane od urządzeń przetwarzania informacji i są monitorowane przez autoryzowanego personelu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny dla wymuszenie dostaw wstępnie zatwierdzonych są odbierane w bay bezpieczne ładowania, fizycznie izolowane od urządzeń przetwarzania informacji i są monitorowane przez autoryzowanego personelu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -140,8 +140,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny dla wymuszenie dostaw wstępnie zatwierdzonych są odbierane w bay bezpieczne ładowania, fizycznie izolowane od urządzeń przetwarzania informacji i są monitorowane przez autoryzowanego personelu. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny dla wymuszenie dostaw wstępnie zatwierdzonych są odbierane w bay bezpieczne ładowania, fizycznie izolowane od urządzeń przetwarzania informacji i są monitorowane przez autoryzowanego personelu. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -153,8 +153,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Dostęp do centrum danych firmy Microsoft musi być wstępnie zatwierdzone i osoby upoważnione są wymagane do zaewidencjonowania przy zabezpieczeń fizycznych w punkcie odbioru i podaj prawidłowy dowód identyfikator przed wejściem. Identyfikatory wyraźnie wskazuje pracowników. Wykonawców i gości otrzymywać tymczasowego identyfikatory, które muszą zostać przekazana po wyjściu z funkcji. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Dostęp do centrum danych firmy Microsoft musi być wstępnie zatwierdzone i osoby upoważnione są wymagane do zaewidencjonowania przy zabezpieczeń fizycznych w punkcie odbioru i podaj prawidłowy dowód identyfikator przed wejściem. Identyfikatory wyraźnie wskazuje pracowników. Wykonawców i gości otrzymywać tymczasowego identyfikatory, które muszą zostać przekazana po wyjściu z funkcji. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -166,8 +166,8 @@ Na przykład gniazda sieci znajduje się w obszarach publiczny i obszarów dost�
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Osoby odwiedzające są wymagane do przekazania identyfikatory po wyjściu z dowolnego obiektu Microsoft. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Osoby odwiedzające są wymagane do przekazania identyfikatory po wyjściu z dowolnego obiektu Microsoft. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -181,8 +181,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za konserwację dziennika dla gości, jako dziennik inspekcji fizycznych działania odwiedzający do, a także pomieszczenia komputera i centrów danych, gdzie przechowywane lub przekazywanych danych imię. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure jest odpowiedzialny za konserwację dziennika dla gości, jako dziennik inspekcji fizycznych działania odwiedzający do, a także pomieszczenia komputera i centrów danych, gdzie przechowywane lub przekazywanych danych imię. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -194,8 +194,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -207,8 +207,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -220,8 +220,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -233,8 +233,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -246,8 +246,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -259,8 +259,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -272,8 +272,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -286,8 +286,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -299,8 +299,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -312,8 +312,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Contoso magazynu sieci Web przechowuje wszystkie dane w bazie danych SQL Azure. Wystąpienie bazy danych SQL PaaS służy do pokazują środki bezpieczeństwa bazy danych. Aby uzyskać więcej informacji, zobacz [wskazówki PCI - bazy danych SQL Azure](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -325,8 +325,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Techniki zniszczenie danych różnią się w zależności od typu obiektu danych niszczone, czy będzie subskrypcji, magazynu, maszyn wirtualnych i baz danych. W środowisku wielodostępnym Microsoft Azure dokładne, że uwagi jest podjąć w celu zapewnienia danych jednego klienta nie może albo "przeciek" na dane z innego klienta lub gdy klient usuwa dane, inne klienta (w tym, w większości przypadków klienta kto raz własność danych) można uzyskać dostęp do usuniętych danych.<br /><br />Microsoft Azure wynika NIST wytyczne 800 88 na nośniku ich oczyszczania, które rozwiązania główna problemu zapewniania, że dane nie zostaje zwolniony przypadkowo. Niniejsze wytyczne obejmują ich oczyszczania zarówno elektronicznych, jak i fizycznych. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Całkowicie przez usunięcie grupy zasobów, używane podczas wdrażania można usunąć magazynu sieci Web firmy Contoso.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Techniki zniszczenie danych różnią się w zależności od typu obiektu danych niszczone, czy będzie subskrypcji, magazynu, maszyn wirtualnych i baz danych. W środowisku wielodostępnym Microsoft Azure dokładne, że uwagi jest podjąć w celu zapewnienia danych jednego klienta nie może albo "przeciek" na dane z innego klienta lub gdy klient usuwa dane, inne klienta (w tym, w większości przypadków klienta kto raz własność danych) można uzyskać dostęp do usuniętych danych.<br /><br />Microsoft Azure wynika NIST wytyczne 800 88 na nośniku ich oczyszczania, które rozwiązania główna problemu zapewniania, że dane nie zostaje zwolniony przypadkowo. Niniejsze wytyczne obejmują ich oczyszczania zarówno elektronicznych, jak i fizycznych. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Całkowicie przez usunięcie grupy zasobów, używane podczas wdrażania można usunąć magazynu sieci Web firmy Contoso.|
 
 
 
@@ -341,8 +341,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Korzysta z magazynu sieci Web firmy Contoso OMS do rejestrowania wszystkich zmian w systemie.<br /><br />[Operations Management Suite (OMS)](/azure/operations-management-suite/) zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - usługi Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso korzysta z platformy Azure do rejestrowania wszystkich zmian w systemie.<br /><br />Analiza dzienników zapewnia szczegółowe rejestrowanie zmian. Zmiany można przejrzeć i sprawdzić dokładność. Aby uzyskać bardziej szczegółowe wskazówki, zobacz [wskazówki PCI - rejestrowanie i inspekcja](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -357,8 +357,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zawiera architektura referencyjna oraz listę wszystkich usług używanych w dokumentacji wdrożenia.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zawiera architektura referencyjna oraz listę wszystkich usług używanych w dokumentacji wdrożenia.|
 
 
 
@@ -373,8 +373,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -390,8 +390,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 
@@ -403,8 +403,8 @@ Zachować ten dziennik na co najmniej trzy miesiące, chyba że w przeciwnym raz
 
 |||
 |---|---|
-| **Dostawca<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI &#8209; DSS&nbsp;plan)** | Nie dotyczy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Nie dotyczy.|
 
 
 

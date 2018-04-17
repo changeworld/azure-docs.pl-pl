@@ -1,36 +1,24 @@
 ---
-title: "Obciążenia na platformie Azure blob do magazynu danych Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać programu PolyBase do ładowania danych z magazynu obiektów blob platformy Azure do usługi SQL Data Warehouse. Ładowanie kilku tabel z danych publicznej do schematu magazynu danych sprzedaży detalicznej Contoso."
+title: Ładowanie danych sprzedaży detalicznej Contoso Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Polecenia T-SQL i PolyBase można załadować tabel z danych sprzedaży detalicznej Contoso do usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: barbkess
-editor: 
-ms.assetid: faca0fe7-62e7-4e1f-a86f-032b4ffcb06e
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 10/31/2016
-ms.author: barbkess
-ms.openlocfilehash: 4221bcd5a50fad680427a500e32837c1e75dd990
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c32068c965810da8e9072094b5832c7943f2841d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Ładowanie danych z magazynu obiektów blob platformy Azure do usługi SQL Data Warehouse (PolyBase)
-> [!div class="op_single_selector"]
-> * [Fabryka danych](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
-> * [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-> 
-> 
+# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Ładowanie danych sprzedaży detalicznej Contoso Azure SQL Data Warehouse
 
-Polecenia programu PolyBase i T-SQL do ładowania danych z magazynu obiektów blob platformy Azure do usługi Azure SQL Data Warehouse. 
-
-Do uproszczenia, w tym samouczku ładuje dwóch tabel z publicznego obiektu Blob magazynu Azure do schematu magazynu danych sprzedaży detalicznej Contoso. Załadować pełny zestaw danych, należy uruchomić przykład [załadować pełne hurtowni danych sprzedaży detalicznej Contoso] [ Load the full Contoso Retail Data Warehouse] z repozytorium przykłady serwera SQL firmy Microsoft.
+Polecenia T-SQL i PolyBase można załadować tabel z danych sprzedaży detalicznej Contoso do usługi Azure SQL Data Warehouse. Załadować pełny zestaw danych, należy uruchomić przykład [załadować pełne hurtowni danych sprzedaży detalicznej Contoso](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) z repozytorium przykłady serwera SQL firmy Microsoft.
 
 W tym samouczku obejmują:
 

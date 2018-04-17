@@ -1,6 +1,6 @@
 ---
 title: Przygotowanie serwera funkcji Hyper-V lokalnego odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do platformy Azure | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak przygotować maszyn wirtualnych funkcji Hyper-V lokalnych nie są zarządzane przez program System Center VMM, odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery."
+description: Dowiedz się, jak przygotować maszyn wirtualnych funkcji Hyper-V lokalnych nie są zarządzane przez program System Center VMM, odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1290a186ca8e83b09f53b286e80c5ce75f08d88c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7e0219a662483ef123bdc2889a43dd3d93d23ac2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie serwerów funkcji Hyper-V lokalnych do odzyskiwania awaryjnego na platformie Azure
 
@@ -35,8 +35,8 @@ Upewnij się, że hosty funkcji Hyper-V i maszyny wirtualne są zgodne z wymagan
 1. [Sprawdź](hyper-v-azure-support-matrix.md#on-premises-servers) lokalne wymagania dotyczące serwera.
 2. [Sprawdź wymagania](hyper-v-azure-support-matrix.md#replicated-vms) dla maszyn wirtualnych funkcji Hyper-V, którą chcesz replikować do platformy Azure.
 3. Sprawdź hosta funkcji Hyper-V [sieci](hyper-v-azure-support-matrix.md#hyper-v-network-configuration); i hosta, jak i gościa [magazynu](hyper-v-azure-support-matrix.md#hyper-v-host-storage) obsługę lokalnymi hostami funkcji Hyper-V.
-4. Sprawdź, co jest obsługiwana w przypadku [sieci Azure](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [magazynu](hyper-v-azure-support-matrix.md#azure-storage), i [obliczeniowe](hyper-v-azure-support-matrix.md#azure-compute-features), po pracy awaryjnej.
-5. Lokalnych maszyn wirtualnych można replikować do platformy Azure musi być zgodne z [wymagania maszyny Wirtualnej Azure](hyper-v-azure-support-matrix.md#azure-vm-requirements).
+4. Sprawdź obsługę [sieci](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [magazynu](hyper-v-azure-support-matrix.md#azure-storage) i [usług obliczeniowych](hyper-v-azure-support-matrix.md#azure-compute-features) platformy Azure po przejściu do trybu failover.
+5. Lokalne maszyny wirtualne replikowane na platformę Azure muszą spełniać [wymagania dotyczące maszyn wirtualnych platformy Azure](hyper-v-azure-support-matrix.md#azure-vm-requirements).
 
 
 ## <a name="prepare-vmm-optional"></a>Przygotowanie programu VMM (opcjonalnie)
@@ -58,14 +58,13 @@ Przygotowanie programu VMM do mapowania sieci w następujący sposób:
 
 ## <a name="verify-internet-access"></a>Sprawdź dostęp do Internetu
 
-1. Na potrzeby tego samouczka najprostsza konfiguracja jest dla hostów funkcji Hyper-V i serwera programu VMM, jeśli to konieczne, aby mieć bezpośredni dostęp do Internetu bez użycia serwera proxy. 
+1. Na potrzeby tego samouczka najprostsza konfiguracja jest dla hostów funkcji Hyper-V i serwer VMM ma bezpośredni dostęp do Internetu bez użycia serwera proxy. 
 2. Upewnij się, że hosta funkcji Hyper-V i serwer programu VMM, jeśli jest to istotne, mogą uzyskiwać dostęp do tych adresów URL: 
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-3. Upewnij się, że:
-    - Wszystkie reguły zapory oparte na adresie IP powinna zezwalać na komunikację z platformą Azure.
-    - Zezwól na użycie [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) oraz portu 443 protokołu HTTPS.
+3. Jeśli jest kontrola dostępu za pomocą adresu IP, upewnij się, że:
+    - Reguły zapory oparte na adresie IP mogą łączyć się z [zakresów IP centrum danych Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)oraz numer portu HTTPS (port 443).
     - Zezwalaj na zakresy adresów IP dla regionu Azure Twojej subskrypcji i zachodnie stany USA (używanych do zarządzania tożsamości i kontroli dostępu).
 
 

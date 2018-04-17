@@ -1,5 +1,5 @@
 ---
-title: "Zabezpieczeń platformy Azure, zarządzania i monitorowania — omówienie | Dokumentacja firmy Microsoft"
+title: Zabezpieczeń platformy Azure, zarządzania i monitorowania — omówienie | Dokumentacja firmy Microsoft
 description: " Azure zapewnia mechanizmy zabezpieczeń ułatwiające zarządzanie i monitorowanie usług w chmurze Azure i maszyn wirtualnych.  W tym artykule omówiono te podstawowe funkcje zabezpieczeń i usług. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 6787877deabafd0b7308e190cb45b4036049b05b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99e7a7746ae3f229614c8ac3d059b422a4ee6f74
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Zabezpieczeń platformy Azure, zarządzania i monitorowania — omówienie
 Azure zapewnia mechanizmy zabezpieczeń ułatwiające zarządzanie i monitorowanie usług w chmurze Azure i maszyn wirtualnych. W tym artykule omówiono te podstawowe funkcje zabezpieczeń i usług. Zostały podane linki do artykułów, które zapewniają informacje na temat każdej, aby dowiedzieć się więcej.
@@ -50,7 +50,7 @@ Kontrola dostępu oparta na rolach (RBAC) umożliwia precyzyjne zarządzanie dos
 Więcej informacji:
 
 * [Blog zespołu usługi Active Directory na RBAC](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
-* [Kontrola dostępu oparta na rolach na platformie Azure](../active-directory/role-based-access-control-configure.md)
+* [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
 Przy użyciu platformy Azure ochrony przed złośliwym oprogramowaniem z dostawców głównych zabezpieczeń, takich jak Microsoft, firmy Symantec, Trend Micro, McAfee i Kaspersky służy do ochrony maszyn wirtualnych z złośliwych plików, adware i innymi zagrożeniami.
@@ -125,7 +125,7 @@ Centrum zabezpieczeń ułatwia optymalizacji i monitorowania zabezpieczeń zasob
 
 Więcej informacji:
 
-* [Wprowadzenie do Centrum zabezpieczeń Azure](../security-center/security-center-intro.md)
+* [Wprowadzenie do usługi Azure Security Center](../security-center/security-center-intro.md)
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png

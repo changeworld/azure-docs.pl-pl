@@ -1,11 +1,11 @@
 ---
-title: "Śledzenie schematy B2B X12 monitorowania - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Użyj X12 śledzenia schematów, aby monitorować wiadomości B2B transakcji na koncie Azure integracji."
+title: Śledzenie schematy B2B X12 monitorowania - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Użyj X12 śledzenia schematów, aby monitorować wiadomości B2B transakcji na koncie Azure integracji.
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3782c0a76ea8728a146b3d73774f74c31187cbfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5a43b9bdf522b6b26f27c082f5cb623f7a76a8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Początkowy lub Włącz śledzenie X12 komunikaty sukcesu monitora, błędy i właściwości wiadomości
 Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwiają monitorowanie transakcji między firmami (B2B):
@@ -69,7 +69,7 @@ Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwia
 | receiverQualifier | Ciąg | Odbieranie kwalifikator partnera. (Wymagane) |
 | receiverIdentifier | Ciąg | Wyświetlony identyfikator partnera. (Wymagane) |
 | agreementName | Ciąg | Nazwa X12 umowy, do którego zostaną rozwiązane wiadomości. (Opcjonalnie) |
-| Kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
+| kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
 | interchangeControlNumber | Ciąg | Wymiany formantu. (Opcjonalnie) |
 | functionalGroupControlNumber | Ciąg | Numer funkcjonalności formantu. (Opcjonalnie) |
 | transactionSetControlNumber | Ciąg | Transakcja Ustaw numer formantu. (Opcjonalnie) |
@@ -124,7 +124,7 @@ Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwia
 | receiverQualifier | Ciąg | Odbieranie kwalifikator partnera. (Wymagane) |
 | receiverIdentifier | Ciąg | Wyświetlony identyfikator partnera. (Wymagane) |
 | agreementName | Ciąg | Nazwa X12 umowy, do którego zostaną rozwiązane wiadomości. (Opcjonalnie) |
-| Kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
+| kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
 | interchangeControlNumber | Ciąg | Wymiany numer formantu funkcjonalności potwierdzenia. Wypełnia wartości tylko na stronie wysyłania, gdzie otrzymania funkcjonalności potwierdzenia dla wiadomości wysyłanych do partnera. (Opcjonalnie) |
 | functionalGroupControlNumber | Ciąg | Liczba kontroli grupy funkcjonalnej funkcjonalności potwierdzenia. Wypełnia wartości tylko na stronie wysyłania, gdzie otrzymania funkcjonalności potwierdzenia dla wiadomości wysyłanych do partnera. (Opcjonalnie) |
 | isaSegment | Ciąg | Segment ISA wiadomości. Wypełnia wartości tylko na stronie wysyłania, gdzie otrzymania funkcjonalności potwierdzenia dla wiadomości wysyłanych do partnera. (Opcjonalnie) |
@@ -181,7 +181,7 @@ Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwia
 | receiverQualifier | Ciąg | Odbieranie kwalifikator partnera. (Wymagane) |
 | receiverIdentifier | Ciąg | Wyświetlony identyfikator partnera. (Wymagane) |
 | agreementName | Ciąg | Nazwa X12 umowy, do którego zostaną rozwiązane wiadomości. (Opcjonalnie) |
-| Kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
+| kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
 | interchangeControlNumber | Ciąg | Wymiany formantu. (Opcjonalnie) |
 | isaSegment | Ciąg | Segment ISA wiadomości. (Opcjonalnie) |
 | isTechnicalAcknowledgmentExpected | Wartość logiczna | Czy techniczne potwierdzenia jest skonfigurowany w X12 umowy. (Wymagane) |
@@ -230,7 +230,7 @@ Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwia
 | receiverQualifier | Ciąg | Odbieranie kwalifikator partnera. (Wymagane) |
 | receiverIdentifier | Ciąg | Wyświetlony identyfikator partnera. (Wymagane) |
 | agreementName | Ciąg | Nazwa X12 umowy, do którego zostaną rozwiązane wiadomości. (Opcjonalnie) |
-| Kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
+| kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
 | interchangeControlNumber | Ciąg | Wymiany numer kontroli technicznej potwierdzenia otrzymania przez partnerów. (Opcjonalnie) |
 | isaSegment | Ciąg | Segment ISA na potwierdzenie technicznych, odebrany od partnerów. (Opcjonalnie) |
 | respondingInterchangeControlNumber |Ciąg | Wymiany numer kontroli technicznej potwierdzenia odebrane z partnerami. (Opcjonalnie) |
@@ -282,7 +282,7 @@ Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwia
 | receiverQualifier | Ciąg | Odbieranie kwalifikator partnera. (Wymagane) |
 | receiverIdentifier | Ciąg | Wyświetlony identyfikator partnera. (Wymagane) |
 | agreementName | Ciąg | Nazwa X12 umowy, do którego zostaną rozwiązane wiadomości. (Opcjonalnie) |
-| Kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
+| kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
 | interchangeControlNumber | Ciąg | Wymiany formantu. (Opcjonalnie) |
 | functionalGroupControlNumber | Ciąg | Numer funkcjonalności formantu. (Opcjonalnie) |
 | gsSegment | Ciąg | Komunikat GS segment. (Opcjonalnie) |
@@ -336,7 +336,7 @@ Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwia
 | receiverQualifier | Ciąg | Odbieranie kwalifikator partnera. (Wymagane) |
 | receiverIdentifier | Ciąg | Wyświetlony identyfikator partnera. (Wymagane) |
 | agreementName | Ciąg | Nazwa X12 umowy, do którego zostaną rozwiązane wiadomości. (Opcjonalnie) |
-| Kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
+| kierunek | wyliczenia | Kierunek przepływu wiadomości odbierać lub wysyłać. (Wymagane) |
 | interchangeControlNumber | Ciąg | Wymiany numer formant, który wypełnia na stronie wysyłającej po otrzymaniu potwierdzenia techniczne od partnerów. (Opcjonalnie) |
 | functionalGroupControlNumber | Ciąg | Numer kontroli grupy funkcjonalnej potwierdzenia technicznych, który wypełnia na stronie wysyłającej po otrzymaniu potwierdzenia techniczne od partnerów. (Opcjonalnie) |
 | isaSegment | Ciąg | Identyczny wymiany kontrolować numerem, ale tylko w szczególnych przypadkach wypełnione. (Opcjonalnie) |
@@ -350,9 +350,9 @@ Można użyć tych X12 śledzenia schematów na koncie Azure integracji ułatwia
 | ak904 | Ciąg | Liczba transakcji zestawów przyjęte w grupie zidentyfikowane funkcjonalne. (Opcjonalnie) |
 | ak9Segment | Ciąg | Czy grupy funkcjonalne, określonych w segmencie AK1 jest zaakceptowane lub odrzucone i dlaczego. (Opcjonalnie) |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [monitorowanie wiadomości B2B](logic-apps-monitor-b2b-message.md).
 * Dowiedz się więcej o [AS2 śledzenia schematy](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md).
 * Dowiedz się więcej o [B2B niestandardowych schematów śledzenia](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md).
-* Dowiedz się więcej o [śledzenie wiadomości B2B w portalu usługi Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Dowiedz się więcej o [śledzenie wiadomości B2B w analizy dzienników](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 * Dowiedz się więcej o [pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md).  

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8db6857ba40f128c78e42eedba80e0d0062bbb27
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie rozrusznik w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -396,7 +396,7 @@ Urządzenie STONITH używa nazwy głównej usługi do autoryzacji przed Microsof
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć niestandardową rolę agenta odgradzania
 
-Nazwy głównej usługi nie ma uprawnień do domyślnie dostęp do zasobów platformy Azure. Należy podać nazwę główną usługi uprawnień do uruchamiania i zatrzymywania (deallocate) wszystkich maszyn wirtualnych klastra. Jeśli rola niestandardowa nie został jeszcze utworzony, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell#create-a-custom-role) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli#create-a-custom-role)
+Nazwy głównej usługi nie ma uprawnień do domyślnie dostęp do zasobów platformy Azure. Należy podać nazwę główną usługi uprawnień do uruchamiania i zatrzymywania (deallocate) wszystkich maszyn wirtualnych klastra. Jeśli rola niestandardowa nie został jeszcze utworzony, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role)
 
 Użyj zawartości pliku wejściowego. Należy dostosować zawartość do subskrypcji, Zastąp c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatorów subskrypcji. Jeśli masz tylko jedną subskrypcję, usuń drugi wpis w AssignableScopes.
 

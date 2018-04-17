@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bca2629ea4a0c859e92d829b49072fbdf3f9ffe2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bf9069df55352b4d7884e989be741fc42e06bfdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database i programu SQL Server 
 
@@ -85,7 +85,7 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [Optymalizacja w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Tak — [tylko warstwy Premium i firm krytyczna](sql-database-in-memory.md) | Nie |
 | [Obsługa danych JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Yes | Yes |
 | [Elementy języka](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Większość — Zobacz poszczególne elementy |  Tak — zobacz [różnice T-SQL](sql-database-managed-instance-transact-sql-information.md) |
-| [Połączonych serwerów](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nie — zobacz [elastycznej zapytania](sql-database-elastic-query-horizontal-partitioning.md) | Tylko z programem SQL Server |
+| [Połączonych serwerów](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nie — zobacz [elastycznej zapytania](sql-database-elastic-query-horizontal-partitioning.md) | Tylko do programu SQL Server i bazy danych SQL |
 | [Wysyłanie dziennika](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Wysoka dostępność](sql-database-high-availability.md) znajduje się w każdej bazie danych. Odzyskiwanie po awarii jest omówiona w [omówienie ciągłości działalności biznesowej z bazy danych SQL Azure](sql-database-business-continuity.md) |[Wysoka dostępność](sql-database-high-availability.md) znajduje się w każdej bazie danych. Odzyskiwanie po awarii jest omówiona w [omówienie ciągłości działalności biznesowej z bazy danych SQL Azure](sql-database-business-continuity.md) |
 | [Usług Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Nie | Nie |
 | [Minimalny logowania za pomocą importowania zbiorczego](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nie | Nie |
@@ -114,17 +114,17 @@ Poniższa tabela zawiera listę głównych funkcji programu SQL Server oraz info
 | [Set — instrukcje](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | Większość — zobacz instrukcje poszczególnych | Tak — zobacz [różnice T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | Yes | Yes |
 | [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Yes | Yes |
-| [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Yes | Nie |
+| [Synchronizacja danych SQL](sql-database-get-started-sql-data-sync.md) | Yes | Nie |
 | [SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/what-is) | Yes | Yes |
 | [Program SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nie — zobacz [zadania elastyczne](sql-database-elastic-jobs-getting-started.md) | Tak — zobacz [różnice programu SQL Server Agent](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nie — zobacz [usług Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nie — zobacz [usług Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
 | [Inspekcja programu SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nie — zobacz [inspekcji bazy danych SQL](sql-database-auditing.md) | Tak — zobacz [inspekcji różnic](sql-database-managed-instance-transact-sql-information.md#auditing) |
-| [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes | Yes |
+| [Program SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes | Yes |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Tak, z zarządzanego SSIS w środowisku fabryki danych Azure (ADF), gdy pakiety są przechowywane w SSISDB obsługiwana przez bazę danych SQL Azure i wykonywane na [środowiska uruchomieniowego integracji usług SSIS Azure](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). | Tak, z zarządzanego SSIS w środowisku fabryki danych Azure (ADF), gdy pakiety są przechowywane w SSISDB hostowane przez zarządzane wystąpienia i wykonać na [środowiska uruchomieniowego integracji usług SSIS Azure](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Yes |
 | [SQL Server w programie PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Yes | Yes |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nie — zobacz [rozszerzone zdarzenia](sql-database-xevent-db-diff-from-svr.md) | Yes |
-| [SQL Server Replication](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Tylko dla subskrybentów replikacji transakcyjnej i replikacji migawki](sql-database-cloud-migrate.md) | Nie |
+| [Replikacja programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Tylko dla subskrybentów replikacji transakcyjnej i replikacji migawki](sql-database-cloud-migrate.md) | Nie |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nie - [Zobacz usługi Power BI](https://docs.microsoft.com/power-bi/) | Nie - [Zobacz usługi Power BI](https://docs.microsoft.com/power-bi/) |
 | [Procedury składowane](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Yes | Yes |
 | [Funkcje przechowywana w systemie](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Większość — Zobacz poszczególnych funkcji | Tak — zobacz [procedury przechowywane i funkcje, wyzwala różnic](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

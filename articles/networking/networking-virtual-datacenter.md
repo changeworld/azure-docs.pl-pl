@@ -9,13 +9,13 @@ ms.service: virtual-network
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Wirtualne centrum danych platformy Microsoft Azure: Perspektywy sieci
 **Microsoft Azure**: szybszą, oszczędności, integracja danych i aplikacji lokalnych
@@ -97,7 +97,7 @@ Przedsiębiorstwa często muszą nawiązać VDC lokalnych centrów danych lub in
 Wdrażanie połączenia ExpressRoute obejmuje współpraca przy użyciu dostawcy usługi ExpressRoute. Klienci, którzy mają szybko rozpocząć początkowo Nawiąż łączność programów vDC przy użyciu sieci VPN typu lokacja-lokacja i zasobów lokalnych i jest następnie przeprowadzić migrację do połączenia ExpressRoute.
 
 ##### <a name="connectivity-within-the-cloud"></a>*Łączność w chmurze*
-[Sieci wirtualne] [ VNet] i [sieci wirtualnej komunikacji równorzędnej] [ VNetPeering] są podstawowych usług sieciowych łączności wewnątrz vDC. Fizyczne granic izolacji zasobów vDC gwarantuje sieci wirtualnej i sieci wirtualnej komunikacji równorzędnej pozwala wzajemnego komunikowania między różnych sieci wirtualnych w tym samym regionie Azure. Kontrola ruchu w sieci wirtualnej i między sieciami wirtualnymi musi być zgodny zestaw reguł zabezpieczeń określone za pomocą list kontroli dostępu ([sieciowej grupy zabezpieczeń][NSG]), [wirtualnych urządzeń sieciowych ] [ NVA]i niestandardowe tabele routingu ([przez][UDR]).
+[Sieci wirtualne] [ VNet] i [sieci wirtualnej komunikacji równorzędnej] [ VNetPeering] są podstawowych usług sieciowych łączności wewnątrz vDC. Fizyczne granic izolacji zasobów vDC gwarantuje sieci wirtualnej i sieci wirtualnej komunikacji równorzędnej pozwala wzajemnego komunikowania między różnych sieci wirtualnych w obrębie tego samego regionu Azure, lub nawet w różnych regionach. Kontrola ruchu w sieci wirtualnej i między sieciami wirtualnymi musi być zgodny zestaw reguł zabezpieczeń określone za pomocą list kontroli dostępu ([sieciowej grupy zabezpieczeń][NSG]), [wirtualnych urządzeń sieciowych ] [ NVA]i niestandardowe tabele routingu ([przez][UDR]).
 
 ## <a name="virtual-data-center-overview"></a>Omówienie wirtualnych centrum danych
 
@@ -124,7 +124,7 @@ Rola każdego gwiazdy może być do różnych rodzajów obciążeń hosta. Klien
 ##### <a name="subscription-limits-and-multiple-hubs"></a>Limity subskrypcji i wiele centrów
 Na platformie Azure co składnik, niezależnie od typu, jest wdrażana w subskrypcji platformy Azure. Izolacja składników platformy Azure w ramach różnych subskrypcji platformy Azure można spełnić ich wymagań w różnych obiektów LOB, takich jak konfigurowanie różne poziomy dostępu i autoryzacja.
 
-Pojedynczy vDC można zwiększać dużej liczby partnerów, mimo że, podobnie jak w przypadku każdego systemu IT są limity platform. Wdrożenia Centrum jest powiązany z określonej subskrypcji Azure, który ma ograniczenia i limity (na przykład, zobacz maksymalna liczba komunikacji równorzędnych sieci wirtualnej - [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia] [ Limits] szczegółowe informacje). W przypadku, gdy limity może się problemu, architektury można skalować się dalsze przez rozszerzanie modelu z jednym partnerzy koncentratora do klastra koncentratora i klienci. Wiele koncentratorów w co najmniej jeden regiony platformy Azure mogą wzajemnie połączone za pomocą Express Route lub sieci VPN typu lokacja lokacja.
+Pojedynczy vDC można zwiększać dużej liczby partnerów, mimo że, podobnie jak w przypadku każdego systemu IT są limity platform. Wdrożenia Centrum jest powiązany z określonej subskrypcji Azure, który ma ograniczenia i limity (na przykład, zobacz maksymalna liczba komunikacji równorzędnych sieci wirtualnej - [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia] [ Limits] szczegółowe informacje). W przypadku, gdy limity może się problemu, architektury można skalować się dalsze przez rozszerzanie modelu z jednym partnerzy koncentratora do klastra koncentratora i klienci. Wiele koncentratorów w co najmniej jeden regiony platformy Azure mogą wzajemnie połączone przy użyciu sieci wirtualnej komunikacji równorzędnej ExpressRoute i sieci VPN typu lokacja lokacja.
 
 [![2]][2]
 
@@ -189,12 +189,12 @@ Składniki infrastruktury zawiera następujące funkcje:
 
 -   [**Tożsamości i usługi katalogowe**][AAD]. Dostęp do wszystkich typów zasobów na platformie Azure jest kontrolowany przez tożsamości przechowywane w usłudze katalogowej. Usługa katalogowa przechowuje nie tylko listę użytkowników, ale również prawa dostępu do zasobów w określonej subskrypcji platformy Azure. Te usługi może istnieć tylko na chmurze lub mogą być synchronizowane z tożsamością lokalnie przechowywane w usłudze Active Directory.
 -   [**Sieć wirtualna**][VPN]. Sieci wirtualne są jednym z głównych składników vDC i umożliwiają tworzenie granic izolacji ruchu na platformie Azure. Sieć wirtualna składa się z jednym lub wielu segmentach sieci wirtualnej, każda z określonego adresu IP prefiksu sieci (podsieci). Sieci wirtualnej definiuje obszar obwodowej wewnętrznego, gdy maszyny wirtualne IaaS i PaaS usługi może nawiązać komunikacji prywatnej. Maszyny wirtualne (i usługi PaaS) w jednej sieci wirtualnej nie może komunikować się bezpośrednio do maszyn wirtualnych (i usługi PaaS) w innej sieci wirtualnej, nawet jeśli obie sieci wirtualne są tworzone przez tego samego klienta w ramach tej samej subskrypcji. Izolacja jest krytyczne właściwość, która zapewnia klienta maszyn wirtualnych i komunikacja pozostanie prywatnej sieci wirtualnej.
--   [**UDR**][UDR]. Ruch w sieci wirtualnej jest kierowany przez domyślne na podstawie tabeli routingu systemu. Zdefiniuj użytkownika trasy jest niestandardowe tabele routingu, które administratorzy sieci można kojarzyć z co najmniej jednej podsieci, aby zastąpić zachowania tabeli routingu systemu oraz zdefiniować ścieżki komunikacji w ramach sieci wirtualnej. Obecność Udr gwarancje ruch wychodzący z przesyłania gwiazdy przez określone niestandardowe maszyny wirtualne i/lub wirtualnych urządzeń sieciowych i występuje w Centrum i klienci usługi równoważenia obciążenia.
+-   [**PRZEZ**][UDR]. Ruch w sieci wirtualnej jest kierowany przez domyślne na podstawie tabeli routingu systemu. Zdefiniuj użytkownika trasy jest niestandardowe tabele routingu, które administratorzy sieci można kojarzyć z co najmniej jednej podsieci, aby zastąpić zachowania tabeli routingu systemu oraz zdefiniować ścieżki komunikacji w ramach sieci wirtualnej. Obecność Udr gwarancje ruch wychodzący z przesyłania gwiazdy przez określone niestandardowe maszyny wirtualne i/lub wirtualnych urządzeń sieciowych i występuje w Centrum i klienci usługi równoważenia obciążenia.
 -   [**NSG**][NSG]. Grupa zabezpieczeń sieci znajduje się lista reguł zabezpieczeń, które działają jako ruchu filtrowania portów IP źródła, docelowego adresu IP, protokołów, portów IP źródłowego i docelowego adresu IP. Grupy NSG można zastosować do podsieci, karty wirtualnej karty Sieciowej, skojarzonych z maszyny Wirtualnej platformy Azure lub oba. Grupy NSG są niezbędne do zaimplementowania kontroli prawidłowego przepływu w Centrum i klienci. Poziom zabezpieczeń oferowanych przez grupa NSG jest funkcja otwierania portów i w jaki celu. Klienci powinni zastosować filtry wirtualna dodatkowych zapór oparta na hoście, takie jak IPtables lub Zapora systemu Windows.
--   **DNS**. Rozpoznawanie nazw zasobów w sieci wirtualnych z vDC podano przy użyciu systemu DNS. Zakres rozpoznawania nazw DNS domyślnej jest ograniczona do sieci wirtualnej. Zazwyczaj niestandardowe usługi DNS musi zostać wdrożony w Centrum w ramach wspólnych usług, ale głównego korzystającym z usługi DNS znajdują się w gwiazdy. Jeśli to konieczne, klienci mogą tworzyć strukturę hierarchiczną DNS z delegowania strefy DNS, aby klienci.
+-   [**DNS**][DNS]. Rozpoznawanie nazw zasobów w sieci wirtualnych z vDC podano przy użyciu systemu DNS. Platforma Azure udostępnia usługi DNS dla obu [publicznego][DNS] i [prywatnej] [ PrivateDNS] rozpoznawanie nazw. Strefy prywatnej zapewniają rozpoznawania nazw w obrębie sieci wirtualnej i sieci wirtualnych. Masz prywatnej strefy nie tylko zakresu między sieciami wirtualnymi w tym samym regionie, ale także w różnych regionach i subskrypcje. Rozpoznanie publiczne usługi Azure DNS udostępnia usługę hostingu domen DNS, rozpoznawania nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 -   [** Subskrypcji] [ SubMgmt] i [zarządzania grupy zasobów][RGMgmt]**. Subskrypcja definiuje fizycznych granic można utworzyć wiele grup zasobów na platformie Azure. Zasobów w subskrypcji są łączone ze sobą w kontenerach logiczną o nazwie grupy zasobów. Grupa zasobów reprezentuje grupę logiczną do organizowania zasobów vDC.
 -   [**RBAC**][RBAC]. Za pomocą RBAC jest możliwość mapy ról organizacyjnych wraz z prawa dostępu do określonych zasobów Azure, umożliwiając Ogranicz użytkowników do pewnych podzestaw akcje. Z RBAC można przyznać dostęp, przypisując odpowiednią rolę dla użytkowników, grup i aplikacji w obrębie odpowiedniego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji platformy Azure. RBAC umożliwia dziedziczenie uprawnień. Rola przypisana w zakresie nadrzędnej również udziela dostępu do podrzędnych w nim zawarte. Przy użyciu funkcji RBAC, można rozdzielenie obowiązków i udzielić tylko takiego dostępu dla użytkowników, które są niezbędne do wykonywania swoich zadań. Na przykład użycie funkcji RBAC, aby umożliwić jednego pracownika zarządzać maszyn wirtualnych w ramach subskrypcji, gdy inny Zarządzanie bazami danych SQL w ramach tej samej subskrypcji.
--   [**Sieci wirtualnej komunikacji równorzędnej**][VNetPeering]. Funkcji podstawowych, używany do tworzenia infrastruktury vDC jest sieci wirtualnej komunikacji równorzędnej, mechanizm, który łączy dwie sieci wirtualnych (sieci wirtualne) w tym samym regionie, w sieci centrum danych Azure.
+-   [**Sieci wirtualnej komunikacji równorzędnej**][VNetPeering]. Funkcja podstawowych używany do tworzenia infrastruktury vDC jest sieci wirtualnej komunikacji równorzędnej, mechanizm, który łączy dwie sieci wirtualnych (sieci wirtualne), w tym samym regionie za pośrednictwem sieci centrum danych Azure lub przy użyciu platformy Azure szkieletu na całym świecie w regionach.
 
 #### <a name="component-type-perimeter-networks"></a>Typ składnika: Sieci obwodowej
 [Sieć obwodowa] [ DMZ] składników (znanej także jako sieci DMZ) pozwalają zapewnić łączność w sieci lokalnej lub w sieci centrum danych fizycznych, wraz z dowolnego łączności do i z Internetu. Istnieje również gdy zespoły sieciowe i zabezpieczeń może poświęcać większość czasu.
@@ -203,7 +203,7 @@ Pakiety przychodzące powinny przepływać przez urządzenia zabezpieczeń w Cen
 
 Składniki sieci obwodowej zapewniają następujące funkcje:
 
--   [Virtual Networks][VNet], [UDR][UDR], [NSG][NSG]
+-   [Sieci wirtualne][VNet], [przez][UDR], [NSG][NSG]
 -   [Urządzenie wirtualne sieci][NVA]
 -   [Usługa równoważenia obciążenia][ALB]
 -   [Brama aplikacji w][AppGW] / [zapory aplikacji sieci Web][WAF]
@@ -244,6 +244,8 @@ Składniki monitorowania zapewniają wgląd i alertów z innych typów składnik
 
 Azure oferuje różne typy rejestrowania i monitorowania usług do śledzenia zachowania Azure hostowanych zasobów. Zarządzanie i sterowanie obciążeń na platformie Azure jest oparte na nie tylko na zbieranie danych dziennika, ale także możliwość na podstawie określonych zdarzeń zgłoszonych akcje wyzwalacza.
 
+[**Azure Monitor** ] [ Monitor] -Azure zawiera wiele usług, wykonujących indywidualnie określonych ról i zadań w obszarze monitorowania. Te usługi dostarczania ze sobą, kompleksowe rozwiązanie umożliwiające obsługę zbierania, analizowanie i działające na podstawie danych telemetrycznych z aplikacji i zasobów platformy Azure, które je obsługują. Może również współpracować do monitorowania zasobów lokalnych krytyczne zapewnić monitorowanie środowiska hybrydowego. Opis narzędzi i dane, które są dostępne jest pierwszym etapem opracowanie pełnej strategii monitorowania aplikacji.
+
 Istnieją dwa główne typy dzienników na platformie Azure:
 
 -   [**Dzienniki aktywności** ] [ ActLog] (określane również jako "Dziennik operacyjny") zapewniają wgląd w operacje wykonywane na zasobów w subskrypcji platformy Azure. Te dzienniki zgłaszać zdarzenia płaszczyzny kontroli dla subskrypcji. Każdy zasób Azure tworzy dzienniki inspekcji.
@@ -259,9 +261,11 @@ W vDC jest bardzo ważne, aby śledzić dzienniki grup NSG, szczególnie tych in
 
 Wszystkie dzienniki mogą być przechowywane na kontach magazynu Azure do inspekcji, analizę statyczną lub wykonywania kopii zapasowych. Gdy dzienniki są przechowywane na koncie magazynu platformy Azure, klientów można pobrać, przygotowywanie, analizowanie przy użyciu różne typy struktur, a następnie wizualizacji tych danych do raportowania stanu i kondycji zasobów w chmurze.
 
-Duże przedsiębiorstwa powinna już zostały nabyte standardowych ramy do monitorowania systemów lokalnych i można rozszerzyć tego framework do integracji dzienniki generowane przez wdrożenia chmury. W przypadku organizacji, które chcesz zachować wszystkie rejestrowania w chmurze [analizy dzienników] [ LogAnalytics] jest doskonałym wyborem. Ponieważ analizy dzienników jest zaimplementowany jako usługa w chmurze, można mieć on działa szybko z minimalnym inwestycji w infrastrukturę usług. Analiza dzienników można również zintegrować z składników programu System Center, takich jak System Center Operations Manager, aby rozszerzyć istniejące inwestycje w technologie zarządzania w chmurze.
+Duże przedsiębiorstwa powinna już zostały nabyte standardowych ramy do monitorowania systemów lokalnych i można rozszerzyć tego framework do integracji dzienniki generowane przez wdrożenia chmury. Dla organizacji, które chcesz zachować wszystkie rejestrowania w chmurze, — Log Analytics [LogAnalytics] jest doskonałym wyborem. Ponieważ analizy dzienników jest zaimplementowany jako usługa w chmurze, można mieć on działa szybko z minimalnym inwestycji w infrastrukturę usług. Analiza dzienników można również zintegrować z składników programu System Center, takich jak System Center Operations Manager, aby rozszerzyć istniejące inwestycje w technologie zarządzania w chmurze.
 
 Analiza dzienników jest usługą platformy Azure, która pomaga zbierania, korelowania wyszukiwania i działają na dane dziennika i wydajności, które są generowane przez systemów operacyjnych, aplikacji i składników infrastruktury chmury. Udostępnia klientom w czasie rzeczywistym operational insights przy użyciu wyszukiwanie zintegrowane i niestandardowe pulpity nawigacyjne, aby analizować wszystkie rekordy we wszystkich obciążeń w vDC.
+
+[Sieci monitora wydajności (NPM)] [ NPM] rozwiązania wewnątrz OMS zapewniają szczegółowe sieci informacji end-to-end, łącznie z pojedynczego widoku sieci platformy Azure i lokalnymi sieciami. Z monitorami określonych ExpressRoute, jak i usługi publiczne.
 
 #### <a name="component-type-workloads"></a>Typ składnika: obciążeń
 Składniki obciążenia są, gdzie znajdują się rzeczywista aplikacji i usług. Istnieje również gdzie zespołów deweloperów aplikacji spędzają większość czasu.
@@ -276,7 +280,7 @@ Aplikacji biznesowych z są krytyczne aplikacji komputera do pracy przedsiębior
 -   **Opartych na danych**. Aplikacje LOB są znacznym częste dostęp do bazy danych lub innych magazynów danych.
 -   **Zintegrowane**. BIZNESOWE aplikacje oferta integracji z innymi systemami, w obrębie lub poza organizacją.
 
-**Klientów witryn sieci web (skierowany do Internetu lub wewnętrzne)** większość aplikacji, które współdziałają z Internetu są witryn sieci web. Platforma Azure oferuje możliwość uruchomienia witryny sieci web na maszynie Wirtualnej IaaS lub z [Azure Web Apps] [ WebApps] lokacji (PaaS). Aplikacje sieci Web platformy Azure obsługuje integrację z sieciami wirtualnymi, umożliwiająca wdrażanie aplikacji sieci Web w gwiazdy z vDC. Dzięki integracji sieci Wirtualnej, nie trzeba ujawniać punkt końcowy aplikacji internetowych, ale można zamiast tego użyj zasobów z systemem innym niż internet routingu adres prywatny z sieci prywatnej.
+**Klientów witryn sieci web (skierowany do Internetu lub wewnętrzne)** większość aplikacji, które współdziałają z Internetu są witryn sieci web. Platforma Azure oferuje możliwość uruchomienia witryny sieci web na maszynie Wirtualnej IaaS lub z [Azure Web Apps] [ WebApps] lokacji (PaaS). Aplikacje sieci Web platformy Azure obsługuje integrację z sieciami wirtualnymi, umożliwiająca wdrażanie aplikacji sieci Web w gwiazdy z vDC. Podczas przeglądania wewnętrzne połączonej witryny sieci web, dzięki integracji sieci Wirtualnej, nie trzeba ujawniać punkt końcowy aplikacji internetowych, ale można zamiast tego użyj zasobów za pośrednictwem prywatne adresy routingu — do Internetu z sieci prywatnej.
 
 **Big Data/Analytics** podczas konieczne skalowanie w górę do bardzo dużych ilości danych bazy danych może nie skalowanie w górę poprawnie. Technologia Hadoop oferuje systemu równolegle zapytania rozproszone na wielu węzłach. Klienci mają opcję uruchamiania obciążeń danych w maszyny wirtualne IaaS i PaaS ([HDInsight][HDI]). HDInsight obsługuje wdrażanie na podstawie lokalizacji sieci wirtualnej, można wdrożyć w klastrze w gwiazdy vDC.
 
@@ -308,11 +312,12 @@ Wykonanie planu odzyskiwania po awarii silnie powiązany jest typ obciążenia d
 
 Synchronizacji lub Puls monitorowania aplikacji w różnych VDC wymaga komunikacji między nimi. Dwa VDC w różnych regionach, mogą zostać połączone za pomocą:
 
+-   Komunikacja równorzędna VNet - równorzędna sieci wirtualnej można połączyć koncentratory w regionach
 -   ExpressRoute prywatnej komunikacji równorzędnej, gdy koncentratory vDC są połączone z tym samym obwodu usługi expressroute
 -   obwody usługi ExpressRoute wiele połączonych za pośrednictwem sieci firmowej sieci szkieletowej i połączony z siatki vDC obwody usługi ExpressRoute
 -   Połączenia sieci VPN lokacja-lokacja między Twojej koncentratorów vDC w każdym regionie Azure
 
-Zwykle połączenie ExpressRoute jest to preferowany powodu większej przepustowości i opóźnień spójne, gdy przejeżdżających przez za pośrednictwem sieci szkieletowej firmy Microsoft.
+Połączenia sieci wirtualnej komunikacji równorzędnej lub ExpressRoute są zwykle preferowany powodu większej przepustowości i opóźnień spójne podczas przejeżdżających przez za pośrednictwem sieci szkieletowej firmy Microsoft.
 
 Nie ma żadnych magic przepisu, aby zweryfikować aplikacji rozdzielone między dwa (lub więcej), różnych VDC znajdujących się w różnych regionach. Klienci powinni uruchamiać testy sieci kwalifikacji do weryfikowania opóźnienia i przepustowości połączenia i docelowej, czy Replikacja synchroniczna lub asynchroniczna danych jest odpowiedni i cel czas optymalnego odzyskiwania (RTO) można dla obciążeń.
 
@@ -330,9 +335,9 @@ Następujące funkcje zostały omówione w tym dokumencie. Kliknij łącza, aby 
 | | | |
 |-|-|-|
 |Funkcje sieci|Równoważenie obciążenia|Łączność|
-|[Azure Virtual Networks][VNet]</br>[Grupy zabezpieczeń sieci][NSG]</br>[NSG Logs][NSGLog]</br>[Routing zdefiniowane przez użytkownika][UDR]</br>[Urządzenie wirtualne sieci][NVA]</br>[Publiczny adres IP][PIP]|[Moduł równoważenia obciążenia Azure (L3) ][ALB]</br>[Brama aplikacji (P7) ][AppGW]</br>[Zapora aplikacji sieci Web][WAF]</br>[Usługi Azure Traffic Manager][TM] |[Komunikacja równorzędna sieci wirtualnej][VNetPeering]</br>[Wirtualna sieć prywatna][VPN]</br>[ExpressRoute][ExR]
+|[Sieci wirtualnych platformy Azure][VNet]</br>[Grupy zabezpieczeń sieci][NSG]</br>[NSG Logs][NSGLog]</br>[Routing zdefiniowane przez użytkownika][UDR]</br>[Urządzenie wirtualne sieci][NVA]</br>[Publiczny adres IP][PIP]</br>[DNS]|[Moduł równoważenia obciążenia Azure (L3) ][ALB]</br>[Brama aplikacji (P7) ][AppGW]</br>[Zapora aplikacji sieci Web][WAF]</br>[Usługi Azure Traffic Manager][TM] |[Komunikacja równorzędna sieci wirtualnej][VNetPeering]</br>[Wirtualna sieć prywatna][VPN]</br>[ExpressRoute][ExR]
 |Tożsamość</br>|Monitorowanie</br>|Najlepsze rozwiązania</br>|
-|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[Rola dostępu bazowego formantów][RBAC]</br>[Domyślne role usługi AAD][Roles] |[Dzienniki aktywności][ActLog]</br>[Dzienniki diagnostyczne][DiagLog]</br>[Log Analytics][LogAnalytics]</br> |[Najlepsze rozwiązania w zakresie sieci obwodowej][DMZ]</br>[Zarządzanie subskrypcją][SubMgmt]</br>[Zarządzanie grupami zasobów][RGMgmt]</br>[Limity subskrypcji platformy Azure][Limits] |
+|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[Rola dostępu bazowego formantów][RBAC]</br>[Domyślne role usługi AAD][Roles] |[Monitor systemu Azure][Monitor]</br>[Dzienniki aktywności][ActLog]</br>[Dzienniki diagnostyczne][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br>[Monitor wydajności sieci][NPM]|[Najlepsze rozwiązania w zakresie sieci obwodowej][DMZ]</br>[Zarządzanie subskrypcją][SubMgmt]</br>[Zarządzanie grupami zasobów][RGMgmt]</br>[Limity subskrypcji platformy Azure][Limits] |
 |Innymi usługami platformy Azure|
 |[Aplikacje sieci Web Azure][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
@@ -358,12 +363,14 @@ Następujące funkcje zostały omówione w tym dokumencie. Kliknij łącza, aby 
 
 <!--Link References-->
 [Limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits
-[Roles]: https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles
+[Roles]: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 [VNet]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview
-[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg 
+[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg
+[DNS]: https://docs.microsoft.com/azure/dns/dns-overview
+[PrivateDNS]: https://docs.microsoft.com/azure/dns/private-dns-overview
 [VNetPeering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview 
 [UDR]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview 
-[RBAC]: https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is
+[RBAC]: https://docs.microsoft.com/azure/role-based-access-control/overview
 [MFA]: https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication
 [AAD]: https://docs.microsoft.com/azure/active-directory/active-directory-whatis
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways 
@@ -376,10 +383,12 @@ Następujące funkcje zostały omówione w tym dokumencie. Kliknij łącza, aby 
 [PIP]: https://docs.microsoft.com/azure/virtual-network/resource-groups-networking#public-ip-address
 [AppGW]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
 [WAF]: https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview
+[Monitor]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
+[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[NPM]: https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

@@ -10,16 +10,14 @@ ms.assetid: 6dc21bf5-4429-435f-a0fb-eea856e0ea96
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: nitinme
-ms.openlocfilehash: 19334e78124d1e388bc760659385388d89953644
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 19c286db9a8a2aa537badc83d98a1b74b73e9873
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>Wprowadzenie do języka R Server i open source możliwości R w usłudze HDInsight
 
@@ -147,5 +145,5 @@ Ceny, które są skojarzone z klastrem usługi HDInsight, z serwerem R mają str
 Aby dowiedzieć się więcej o sposobie używania R Server w klastrach HDInsight, zobacz następujące tematy:
 
 * [Wprowadzenie do korzystania z klastra serwera R w usłudze HDInsight](r-server-get-started.md)
-* [Obliczenia bazy danych opcji kontekstu dla klastra serwera R w usłudze HDInsight](r-server-compute-contexts.md)
-* [Opcje magazynu systemu Azure dla klastra serwera R w usłudze HDInsight](r-server-storage.md)
+* [Compute context options for R Server on HDInsight (Opcje kontekstu obliczeniowego dla oprogramowania R Server w usłudze HDInsight)](r-server-compute-contexts.md)
+* [Azure Storage options for R Server on HDInsight (Opcje usługi Azure Storage dla oprogramowania R Server w usłudze HDInsight)](r-server-storage.md)

@@ -1,8 +1,24 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: edfcd4d59eceada9e1c6014dad9afa7fe8ab3c8f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Tworzenie klasycznej sieci wirtualnej w portalu Azure
 Aby utworzyć sieć wirtualną oparta na powyższym scenariuszu klasyczny, wykonaj następujące kroki.
 
-1. W przeglądarce przejdź do strony http://portal.azure.com i w razie potrzeby zaloguj się przy użyciu konta platformy Azure.
-2. Kliknij przycisk **Utwórz zasób** > **sieci** > **sieci wirtualnej**. Zwróć uwagę, że **wybierz model wdrożenia** listy już pokazuje **klasycznego**. 3. Kliknij przycisk **Utwórz** jak pokazano na poniższej ilustracji.
+1. W przeglądarce przejdź do witryny http://portal.azure.com i, jeśli to konieczne, zaloguj się przy użyciu konta platformy Azure.
+2. Kliknij pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**. Zwróć uwagę, że **wybierz model wdrożenia** listy już pokazuje **klasycznego**. 3. Kliknij przycisk **Utwórz** jak pokazano na poniższej ilustracji.
    
     ![Tworzenie sieci wirtualnej w portalu Azure](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
 4. Na **sieci wirtualnej** okienka, typ **nazwa** sieci wirtualnej, a następnie kliknij przycisk **przestrzeni adresów**. Skonfiguruj ustawienia przestrzeni adresów sieci wirtualnej i jej pierwszej podsieci, a następnie kliknij przycisk **OK**. Na poniższej ilustracji przedstawiono ustawienia bloku CIDR do naszego scenariusza.

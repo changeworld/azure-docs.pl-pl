@@ -1,11 +1,11 @@
 ---
-title: "Skalowalność usługi sieć szkieletowa usług | Dokumentacja firmy Microsoft"
-description: "Opis zmiany skali usługi sieci szkieletowej usług"
+title: Skalowalność usługi sieć szkieletowa usług | Dokumentacja firmy Microsoft
+description: Opis zmiany skali usługi sieci szkieletowej usług
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: aeda1184610398c0445238ea2e7ccbea866ed418
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d8484a4c30fdd17cbb4773e6ff822b73efd5c4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scaling-in-service-fabric"></a>Skalowanie w sieci szkieletowej usług
 Sieć szkieletowa usług Azure ułatwia tworzenie skalowalnych aplikacji dzięki zarządzaniu usług, partycji i replik w węzłach klastra. Uruchamianie wielu obciążeń na tym samym sprzęcie umożliwia wykorzystanie zasobów maksymalna, ale również zapewnia elastyczność pod względem sposobu wybranego skalowania obciążeń. To wideo z witryny Channel 9 opisano, jak w przypadku tworzenia aplikacji skalowalnych mikrousług:
@@ -117,12 +117,7 @@ Zwiększenie liczby węzłów sieci szkieletowej usług przeniesie niektórych i
 ## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Skalowanie przez dodawanie i usuwanie węzłów z klastra 
 Inną opcją w przypadku skalowania z sieci szkieletowej usług jest zmiana rozmiaru klastra. Zmiana rozmiaru klastra oznacza dodawania lub usuwania węzłów z co najmniej jednego z typów węzłów w klastrze. Rozważmy na przykład przypadek, gdzie są wszystkie węzły w klastrze dynamicznej. Oznacza to, czy zasoby klastra są prawie wszystkie używane. W przypadku dodawania więcej węzłów do klastra jest najlepszym sposobem skalowania. Po nowe węzły dołączą do klastra Menedżera zasobów klastra sieci szkieletowej usług przenosi usług, co mniej całkowita obciążenie istniejących węzłów. Dla usług bezstanowych z liczbą wystąpień = -1, usługa więcej wystąpień są tworzone automatycznie. Dzięki temu niektóre połączenia przenieść z istniejących węzłów do nowych węzłów. 
 
-Dodawanie i usuwanie węzłów do klastra można wykonać za pośrednictwem modułu programu PowerShell usługi Service Fabric Azure Resource Manager.
-
-```posh
-Add-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName  -NumberOfNodesToAdd 5 
-Remove-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName -NumberOfNodesToRemove 5
-```
+Aby uzyskać więcej informacji, zobacz [skalowanie klastra](service-fabric-cluster-scaling.md).
 
 ## <a name="putting-it-all-together"></a>Składanie wszystkiego razem
 Rozwiąż wszystkie pomysły, które firma Microsoft zostały omówione w tym miejscu i komunikują się za pośrednictwem przykładem. Należy wziąć pod uwagę następujące usługi: próbujesz kompilacji usługi, który działa jako książkę adresową, zawierający nazwy i informacje kontaktowe. 

@@ -1,6 +1,6 @@
 ---
-title: Reagowanie na zdarzenia magazynu obiektów Blob Azure | Dokumentacja firmy Microsoft
-description: Użyj siatki zdarzeń platformy Azure, aby subskrybować zdarzenia magazynu obiektów Blob.
+title: Reagowanie na zdarzenia magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft
+description: Zasubskrybuj zdarzenia usługi Blob Storage przy użyciu usługi Azure Event Grid.
 services: storage,event-grid
 keywords: ''
 author: cbrooksmsft
@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia magazynu obiektów Blob
 
@@ -92,7 +92,7 @@ Subskrypcje zdarzeń obiektu blob można filtrować na podstawie typu zdarzenia 
 
 Podmiot zdarzenia magazynu obiektów Blob w formacie:
 
-```json
+```
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
 
@@ -100,19 +100,19 @@ Aby uwzględnić wszystkie zdarzenia dla konta magazynu, można pozostawić filt
 
 Aby dopasować zdarzenia z utworzone w zestawie kontenery udostępnianie prefiks obiektów blob, użyj `subjectBeginsWith` filtrowania, takie jak:
 
-```json
+```
 /blobServices/default/containers/containerprefix
 ```
 
 Aby dopasować zdarzenia z utworzone w określonym kontenerze obiektów blob, użyj `subjectBeginsWith` filtrowania, takie jak:
 
-```json
+```
 /blobServices/default/containers/containername/
 ```
 
 Aby dopasować zdarzenia z obiektów blob utworzone w określonym kontenerze udostępnianie prefiksu nazwy obiektu blob, użyj `subjectBeginsWith` filtrowania, takie jak:
 
-```json
+```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 

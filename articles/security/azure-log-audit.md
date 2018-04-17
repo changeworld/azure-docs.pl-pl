@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie platformy Azure i inspekcji
 ## <a name="introduction"></a>Wprowadzenie
@@ -101,7 +101,7 @@ Scenariusze integracji
 
 -   Eksportuj Dziennik aktywności przy użyciu profilów dziennika do [dziennika analizy](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).
 
-Można użyć konta magazynu lub [przestrzeni nazw zdarzenia koncentratora](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) nie jest w tej samej subskrypcji co jeden dziennik emisji. Użytkownik, który konfiguruje ustawienie musi mieć odpowiednie [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) dostęp do obu subskrypcji
+Można użyć konta magazynu lub [przestrzeni nazw zdarzenia koncentratora](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive) nie jest w tej samej subskrypcji co jeden dziennik emisji. Użytkownik, który konfiguruje ustawienie musi mieć odpowiednie [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) dostęp do obu subskrypcji
 ### <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 Azure dzienników diagnostycznych są emitowane przez zasób zawierają rozbudowane, często dane dotyczące operacji tego zasobu. Zawartość tych dzienników jest zależna od typu zasobu (na przykład [dzienniki systemu zdarzeń systemu Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)są jedną kategorię dzienników diagnostycznych dla maszyn wirtualnych i [obiektów blob, tabel i dzienniki kolejki](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account) kategorii dzienników diagnostycznych dla kont magazynu) i różnią się w dzienniku aktywności zapewnia wgląd w operacje wykonywane na zasobów w ramach subskrypcji.
 
@@ -376,10 +376,10 @@ Istnieją cztery różne sposoby [zbieranie dzienników i metryki dla usług Azu
 |SQL (v12)| Microsoft.Sql/<br>serwery /<br>bazy danych||       Diagnostyka||
 ||Microsoft.Sql/<br>serwery /<br>elasticPools||||
 |Magazyn|||         Skrypt| [Usługa Azure Storage Analytics (wersja zapoznawcza)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Maszyny wirtualne|  Microsoft.Compute/<br>virtualMachines|  Wewnętrzny|  Wewnętrzny||
+|Maszyny wirtualne|  Microsoft.Compute/<br>maszyn wirtualnych|  Wewnętrzny|  Wewnętrzny||
 ||||Diagnostyka||
-|Zestawy skalowania maszyn wirtualnych|   Microsoft.Compute/<br>virtualMachines    ||Diagnostyka||
-||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||
+|Zestawy skalowania maszyn wirtualnych|   Microsoft.Compute/<br>maszyn wirtualnych    ||Diagnostyka||
+||Microsoft.Compute/<br>virtualMachineScaleSets/<br>maszyn wirtualnych||||
 |Farmach serwerów sieci Web|Microsoft.Web/<br>serverfarms||   Diagnostyka
 |Witryny sieci Web| Microsoft.Web/<br>Lokacje ||      Diagnostyka|    [Więcej informacji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>Lokacje /<br>gniazda|||||

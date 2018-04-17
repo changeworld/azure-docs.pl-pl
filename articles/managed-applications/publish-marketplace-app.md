@@ -1,6 +1,6 @@
 ---
-title: "Azure zarządzanych aplikacji w witrynie Marketplace | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano Azure zarządzane aplikacje, które są dostępne na rynku."
+title: Azure zarządzanych aplikacji w witrynie Marketplace | Dokumentacja firmy Microsoft
+description: W tym artykule opisano Azure zarządzane aplikacje, które są dostępne na rynku.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Azure zarządzanych aplikacji w witrynie Marketplace
 
@@ -107,7 +107,7 @@ Jednostka SKU jest wyświetlany w obszarze oferta nadrzędnego w witrynie market
 
 Można dodać wiele zezwolenia. Zaleca się utworzenie grupy użytkowników usługi AD i określić jej identyfikator w **PrincipalId**. W ten sposób można dodać więcej użytkowników do grupy użytkowników, bez konieczności aktualizacji jednostki SKU.
 
-Aby uzyskać więcej informacji o RBAC, zobacz [wprowadzenie RBAC w portalu Azure](../active-directory/role-based-access-control-what-is.md).
+Aby uzyskać więcej informacji o RBAC, zobacz [wprowadzenie RBAC w portalu Azure](../role-based-access-control/overview.md).
 
 ## <a name="marketplace-form"></a>Formularz Marketplace
 

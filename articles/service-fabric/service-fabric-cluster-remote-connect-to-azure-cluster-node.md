@@ -3,7 +3,7 @@ title: Zdalne połączenia do węzła klastra usługi sieć szkieletowa usług A
 description: Dowiedz się, jak zdalne połączenia z wystąpieniem zestaw skalowania (węzłem klastra usługi sieć szkieletowa).
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: chackdan
-ms.openlocfilehash: 8c7d5446429089a0fc931175b55e81e1ad0c97a0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: aljo
+ms.openlocfilehash: 68e3b8ae5bdaa3ad9f1c470294ef5c3bcf0c1893
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Połączenie zdalne wystąpienie zestawu skali maszyny wirtualnej lub węzła klastra
 W sieci szkieletowej usług klastra z systemem Azure, każdy typ węzła klastra, który należy zdefiniować [konfiguruje oddzielne skali maszyny wirtualnej](service-fabric-cluster-nodetypes.md).  Użytkownik może zdalnego połączyć się z określoną zestaw wystąpień (lub węzły klastra).  W przeciwieństwie do maszyn wirtualnych z jednego wystąpienia wystąpienia zestawu skali nie mają własne wirtualne adresy IP. To może być wyzwaniem, jeśli szukasz adres IP i port, który umożliwia zdalne połączenia z określonego wystąpienia.

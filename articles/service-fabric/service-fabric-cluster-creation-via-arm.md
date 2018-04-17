@@ -3,7 +3,7 @@ title: Tworzenie klastra usługi sieć szkieletowa usług Azure na podstawie sza
 description: W tym artykule opisano, jak skonfigurować bezpieczny klastra sieci szkieletowej usług na platformie Azure przy użyciu usługi Azure Resource Manager, magazyn kluczy Azure i usługi Azure Active Directory (Azure AD) do uwierzytelniania klientów.
 services: service-fabric
 documentationcenter: .net
-author: chackdan
+author: aljo-microsoft
 manager: timlt
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
-ms.author: chackdan
-ms.openlocfilehash: b245c9e46c994d40a6d0f75eb8494828d0d4d165
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: aljo
+ms.openlocfilehash: 02ff0a8d2b7f594a7e1def23f91426639f52b150
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Tworzenie klastra sieci szkieletowej usług za pomocą usługi Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -381,7 +381,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 Zostanie wyświetlony monit Zaloguj się do konta z uprawnieniami administratora dla dzierżawy usługi Azure AD. Po zalogowaniu, skrypt tworzy sieć web i natywnych aplikacji do reprezentowania klastra sieci szkieletowej usług. Jeśli przyjrzymy się aplikacji dzierżawcy w [portalu Azure][azure-portal], powinny pojawić się dwa nowe wpisy:
 
    * *ClusterName*\_klastra
-   * *ClusterName*\_Client
+   * *ClusterName*\_klienta
 
 Skrypt drukuje JSON wymagane przez szablon Menedżera zasobów Azure, podczas tworzenia klastra w następnej sekcji, dlatego warto nie zamykaj okna programu PowerShell.
 

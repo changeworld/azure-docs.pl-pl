@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: ''
-ms.openlocfilehash: cd458b1f6d26fbd5f5821a04cd01be5c3a4e4514
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="auto-provisioning-concepts"></a>Pojęcia automatycznego inicjowania obsługi administracyjnej
 
@@ -31,7 +31,7 @@ Azure IoT automatycznego inicjowania obsługi może być dzielony na trzech etap
    > [!NOTE]
    > Niezależnie od rozmiaru rozwiązania IoT, nawet jeśli planuje się obsługiwać miliony urządzeń, to **jednorazowej konfiguracji**.
 
-2. **Rejestracja urządzeń** — proces uświadamiania wystąpienia usługi inicjowania obsługi urządzeń urządzeń, które będzie podejmować próby zarejestrowania w przyszłości. Rejestracja odbywa się przez skonfigurowanie informacji o tożsamości urządzenia w usłudze inicjowania obsługi administracyjnej jako "poszczególnych rejestrowanie" pojedynczej lub "rejestrowanie grupy" dla wielu urządzeń. Tożsamość na podstawie [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) urządzenia jest przeznaczony do użycia, które umożliwia usłudze inicjowania obsługi administracyjnej potwierdzają autentyczności urządzenia podczas rejestracji:
+2. **Rejestracja urządzeń** — proces uświadamiania wystąpienia usługi inicjowania obsługi urządzeń urządzeń, które będzie podejmować próby zarejestrowania w przyszłości. [Rejestracja](concepts-service.md#enrollment) odbywa się przez skonfigurowanie informacji o tożsamości urządzenia w usłudze inicjowania obsługi administracyjnej jako "poszczególnych rejestrowanie" pojedynczej lub "rejestrowanie grupy" dla wielu urządzeń. Tożsamość na podstawie [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) urządzenia jest przeznaczony do użycia, które umożliwia usłudze inicjowania obsługi administracyjnej potwierdzają autentyczności urządzenia podczas rejestracji:
 
    - **Moduł TPM**: skonfigurowany jako "Rejestrowanie poszczególnych", tożsamości urządzenia opiera się na identyfikator rejestracji modułu TPM i klucz publiczny poręczenia. Biorąc pod uwagę, że moduł TPM jest [specyfikacji]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)), usługa oczekuje tylko poświadczanie według specyfikacji, niezależnie od implementacji modułu TPM (sprzętowego lub programowego). Zobacz [Inicjowanie obsługi administracyjnej urządzeń: zaświadczanie o tożsamości z modułem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) szczegółowe informacje dotyczące zaświadczania opartych na modułach TPM. 
 

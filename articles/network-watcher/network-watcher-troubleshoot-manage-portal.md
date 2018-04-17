@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów z bramy sieci wirtualnej platformy Azure i połączenia — Portal | Dokumentacja firmy Microsoft"
-description: "Ta strona wyjaśniono, jak użyć obserwatora sieciowego Azure Rozwiązywanie problemów z portalu"
+title: Rozwiązywanie problemów z bramy sieci wirtualnej platformy Azure i połączenia — Portal | Dokumentacja firmy Microsoft
+description: Ta strona wyjaśniono, jak użyć obserwatora sieciowego Azure Rozwiązywanie problemów z portalu
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: becc4f799e34aabba5c703f09e51a4b7d497c45a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>Rozwiązywanie problemów z Brama sieci wirtualnej i połączeń za pomocą Monitora sieci z portalu Azure
 
@@ -74,7 +74,7 @@ W **szczegóły** okna, **stan** karta przedstawia stan ostatniego rozwiązywani
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli ustawienia zostały zmienione które zatrzymania połączenia sieci VPN, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/virtual-network-manage-nsg-arm-portal.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń, które mogą być zagrożona.
+Jeśli ustawienia zostały zmienione które zatrzymania połączenia sieci VPN, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń, które mogą być zagrożona.
 
 
 [2]: ./media/network-watcher-troubleshoot-manage-portal/2.png

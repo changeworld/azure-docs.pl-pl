@@ -1,11 +1,11 @@
 ---
 title: Tworzenie obrazu maszyny wirtualnej dla portalu Azure Marketplace | Dokumentacja firmy Microsoft
-description: "Szczegółowe instrukcje dotyczące sposobu tworzenia obrazu maszyny wirtualnej do portalu Azure Marketplace innym osobom do zakupu."
+description: Szczegółowe instrukcje dotyczące sposobu tworzenia obrazu maszyny wirtualnej do portalu Azure Marketplace innym osobom do zakupu.
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
 ms.service: marketplace
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb1d529f8e3eaabb4d49e8bbea03cab8e838cfa2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Przewodnik dotyczący tworzenia obrazu maszyny wirtualnej do portalu Azure Marketplace
 W tym artykule **krok 2**, przeprowadzi Cię przez przygotowanie wirtualnych dysków twardych (VHD), które zostaną wdrożone w portalu Azure Marketplace. Dyski VHD są podstawę sieci jednostki SKU. Proces jest różny w zależności od tego, czy udostępniasz SKU opartych na systemie Linux lub z systemem Windows. W tym artykule przedstawiono oba scenariusze. Ten proces można przeprowadzić równolegle z [o tworzeniu konta i rejestracji][link-acct-creation].
@@ -430,7 +430,7 @@ Poniżej przedstawiono kroki podczas generowania adresu URL SAS za pomocą Ekspl
 
 Poniżej przedstawiono kroki podczas generowania adresu URL sygnatury dostępu Współdzielonego przy użyciu wiersza polecenia platformy Azure
 
-1.  Pobierz program Microsoft Azure CLI z [tutaj](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Możesz również znaleźć różnych łączy dla  **[Windows](http://aka.ms/webpi-azure-cli)**  i  **[systemu MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Pobierz program Microsoft Azure CLI z [tutaj](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Możesz również znaleźć różnych łączy dla **[Windows](http://aka.ms/webpi-azure-cli)** i  **[systemu MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Po pobraniu jej Zainstaluj
 
@@ -446,7 +446,7 @@ Poniżej przedstawiono kroki podczas generowania adresu URL sygnatury dostępu W
 
     b. **`<Storage Account Key>`**: Podać klucz konta magazynu
 
-    c. **`<Permission Start Date>`**: Aby chronić dla czasu UTC, wybierz dzień przed bieżącą datą. Na przykład, jeśli bieżąca data jest 26 października 2016 r. następnie wartość powinna być 2016-10-25. Jeśli za pomocą usługi Azure CLI 2.0 (polecenie az), podaj datę i godzinę rozpoczęcia oraz datę zakończenia, na przykład: 10-25-2016T00:00:00Z.
+    c. **`<Permission Start Date>`**: Aby chronić dla czasu UTC, wybierz dzień przed bieżącą datą. Na przykład, jeśli bieżąca data jest 25 października 2016 r. następnie wartość powinna być 2016-10-25. Jeśli za pomocą usługi Azure CLI 2.0 (polecenie az), podaj datę i godzinę rozpoczęcia oraz datę zakończenia, na przykład: 10-25-2016T00:00:00Z.
 
     d. **`<Permission End Date>`**: Wybierz datę, która jest co najmniej 3 tygodni po **Data rozpoczęcia**. Wartość powinna być **2016-11-02**. Jeśli za pomocą usługi Azure CLI 2.0 (polecenie az), podaj datę i godzinę rozpoczęcia oraz datę zakończenia, na przykład: 11-02-2016T00:00:00Z.
 

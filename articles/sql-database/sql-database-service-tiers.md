@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/09/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: a4474aec212084006becd02f317dabae6e731d98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5ac9623b9089fc0aa8a440196fb7f48cb4963a64
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Co to są warstwach usług bazy danych SQL Azure?
 
@@ -100,6 +100,12 @@ W podstawie vCore zakupów modelu klientów płatności dla:
 
 > [!IMPORTANT]
 > Obliczeniowe, IOs, danych i przechowywanie dziennika są naliczane na bazę danych lub puli elastycznej. Magazyn kopii zapasowych jest pobierana dla każdej bazy danych. Szczegóły wystąpienia zarządzane opłat można znaleźć [wystąpienia zarządzane bazy danych SQL Azure](sql-database-managed-instance.md).
+
+> [!IMPORTANT]
+> Ograniczenia regionu: 
+>
+> Model kupna vCore nie jest jeszcze dostępna w Australia południowo-wschodnia. Wersja zapoznawcza nie jest dostępna w następujących regionach: Europa Zachodnia, Francja centralnej Wielka Brytania Południowa i Zjednoczone Królestwo zachodnie.
+> 
 
 ### <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług, obliczeniowych, pamięci, magazynu i zasobów we/wy
 

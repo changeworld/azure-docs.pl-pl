@@ -1,28 +1,56 @@
-## <a name="what-is-blob-storage"></a>Co to jest magazyn obiektów Blob?
-Azure Blob Storage to usługa do przechowywania dużych ilości danych obiektów niestrukturalnych, takich jak dane tekstowe lub binarne, do których można uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Magazyn obiektów Blob może być użyty do udostępniania danych publicznie lub do przechowywania danych aplikacji prywatnie.
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 203f5a766c4c8a8f1e577f6be1e18d0f9ac95403
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
+---
+Magazyn obiektów Blob Azure to rozwiązanie magazynu obiektu firmy Microsoft w chmurze. Magazyn obiektów blob jest zoptymalizowana pod kątem przechowywania dużych ilości danych bez struktury, takich jak tekst lub dane binarne.
 
-Najczęstsze zastosowania usługi Blob Storage obejmują:
+Magazyn obiektów BLOB to idealne rozwiązanie w przypadku:
 
 * Obsługiwanie obrazów i dokumentów bezpośrednio do przeglądarki.
 * Przechowywanie plików do dostępu rozproszonego.
 * Przesyłanie strumieniowe audio i wideo.
+* Zapisywanie w plikach dziennika.
 * Zapisywanie danych dla kopii zapasowej i przywracania, odzyskiwania po awarii i archiwizowania.
 * Zapisywanie danych do analizy przez lokalną lub usługi hostowanej platformy Azure.
 
+Obiekty w magazynie obiektów Blob można uzyskać z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS. Użytkownicy lub aplikacje klienckie mogą uzyskiwać dostęp do obiektów blob za pomocą adresów URL, [interfejsu API REST magazynu Azure](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), [interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/storage), lub biblioteka klienta magazynu Azure. Biblioteki klienta magazynu są dostępne dla wielu języków, w tym [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/en/latest/index.html), [PHP](http://azure.github.io/azure-storage-php/), i [Ruby](http://azure.github.io/azure-storage-ruby).
+
 ## <a name="blob-service-concepts"></a>Pojęcia dotyczące usługi Blob
-Usługa Blob obejmuje następujące składniki:
 
-![Diagram architektury usługi Blob](./media/storage-blob-concepts-include/blob1.png)
+Magazyn obiektów blob udostępnia trzy zasoby: Twoje konto magazynu, kontenery w ramach konta, a obiekty BLOB w kontenerze. Na poniższym diagramie przedstawiono relacje między tych zasobów.
 
-* **Konto magazynu:** dostęp do usługi Azure Storage odbywa się za pośrednictwem konta magazynu. Konto magazynu może być **konta magazynu ogólnego przeznaczenia** lub **kontem magazynu obiektów Blob**, które jest przeznaczone do przechowywania obiektów lub obiekty BLOB. Aby uzyskać więcej informacji, zobacz [About Azure storage accounts](../articles/storage/common/storage-create-storage-account.md) (Informacje o kontach usługi Azure Storage).
-* **Kontener:** kontener zawiera grupowanie zestawu obiektów blob. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob. Pamiętaj, że wszystkie litery w nazwie kontenera muszą być małymi literami.
-* **Obiekt blob:** plik dowolnego typu o dowolnym rozmiarze. Usługa Azure Storage udostępnia trzy typy obiektów blob: blokowe obiekty BLOB, uzupełnialnych obiektów blob i stronicowe.
+![Diagram architektury magazynu obiektów Blob (obiekt)](./media/storage-blob-concepts-include/blob1.png)
+
+### <a name="storage-account"></a>Konto magazynu
+
+Dostęp do danych obiektów w usłudze Azure Storage odbywa się za pomocą konta magazynu. Aby uzyskać więcej informacji, zobacz [kont magazynu Azure o](../articles/storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+### <a name="container"></a>Kontener
+
+Kontener organizuje zestawu obiektów blob, podobnie jak folder w systemie plików. Wszystkie obiekty BLOB znajdują się w kontenerze. Konto magazynu może zawierać nieograniczoną liczbę kontenerów, a kontener może przechowywać nieograniczoną liczbę obiektów blob. Pamiętaj, że wszystkie litery w nazwie kontenera muszą być małymi literami.
+
+### <a name="blob"></a>Obiekt blob
+ 
+Usługa Azure Storage udostępnia trzy typy obiektów blob — blokowych obiektów blob, uzupełnialne i [stronicowe](../articles/storage/blobs/storage-blob-pageblob-overview.md) (używanych do plików VHD).
+
+* Blokowe obiekty BLOB przechowywania tekstu i dane binarne do około 4,7 TB. Blokowe obiekty BLOB składają się z bloków danych, który może być zarządzany indywidualnie.
+* Dołącz obiekty BLOB składają się z bloków, takich jak blokowych obiektów blob, ale są zoptymalizowane pod kątem operacji dołączania. Dołącz obiekty BLOB są idealne rozwiązanie w przypadku scenariuszy, takich jak rejestrowanie danych z maszyn wirtualnych.
+* Dostęp losowy magazynu obiektów blob strona pliki do 8 TB rozmiarze. Stronicowe obiekty BLOB przechowywane pliki VHD, które wykonują kopie maszyn wirtualnych.
+
+Wszystkie obiekty BLOB znajdują się w kontenerze. Kontener jest podobna do folderu w systemie plików. Pozwala dodatkowo organizowania obiekty BLOB w katalogów wirtualnych i ich przenoszenie, jak w przypadku systemu plików. 
+
+W przypadku bardzo dużych zestawów danych, gdy ograniczenia sieci mogą w praktyce uniemożliwić przekazanie lub pobranie danych do usługi Blob Storage, możesz przesłać zestaw dysków twardych do firmy Microsoft, aby zaimportować dane bezpośrednio do centrum danych lub wyeksportować je stamtąd. Aby uzyskać więcej informacji, zobacz [korzystanie z usługi Microsoft Azure importu/eksportu przesyłanie danych do magazynu obiektów Blob](../articles/storage/common/storage-import-export-service.md).
   
-    *Blokowe obiekty blob* idealnie nadają się do przechowywania tekstu lub plików binarnych, takich dokumenty czy pliki multimedialne. Pojedynczy blokowy obiekt blob może zawierać do 50 000 bloków do 100 MB każdy, których rozmiar całkowity może nieco przekraczać 4.75 TB (100 MB X 50 000). 
-
-    *Uzupełnialne obiekty blob* są podobne do obiektów blokowych, ponieważ składają się z bloków, ale zoptymalizowane do operacji uzupełnialnych, więc przydatne w scenariuszach logowania. Pojedynczy uzupełniany obiekt blob może zawierać do 50 000 bloków do 4 MB każdy, których rozmiar całkowity może nieco przekraczać 195 GB (4 MB X 50 000).
-  
-    *Stronicowe obiekty blob* mogą mieć rozmiar maksymalnie 1 TB i są bardziej efektywne w przypadku operacji częstego odczytu/zapisu. Usługa Azure Virtual Machines używa stronicowych obiektów blob jako systemu operacyjnego i dysków z danymi.
-  
-    Aby uzyskać szczegółowe informacje o nazewnictwie kontenerów i obiektów blob, zobacz [nazewnictwa i odwołuje się do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata).
-
+Aby uzyskać szczegółowe informacje o nazewnictwie kontenerów i obiektów blob, zobacz temat [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) (Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych).

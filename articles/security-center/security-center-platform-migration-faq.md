@@ -1,11 +1,11 @@
 ---
-title: "Centrum zabezpieczeń platformy migracji — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania odpowiedzi na pytania dotyczące migracji platform Centrum zabezpieczeń Azure."
+title: Centrum zabezpieczeń platformy migracji — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania odpowiedzi na pytania dotyczące migracji platform Centrum zabezpieczeń Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2017
 ms.author: terrylan
-ms.openlocfilehash: 6ccf104ea09dc1fbce1dd34a06168205d6f5fac8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 197b1a844291f2bef2dd35001d1e6b8807ac9805
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>Centrum zabezpieczeń platformy migracji — często zadawane pytania
 W wczesne 2017 czerwca Centrum zabezpieczeń Azure rozpoczęło się przy użyciu programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracji Platform Centrum zabezpieczeń Azure](security-center-platform-migration.md). Często zadawane pytania odpowiedzi na pytania dotyczące migracji platform.
@@ -34,7 +34,7 @@ Centrum zabezpieczeń używa programu Microsoft Monitoring Agent zbierania danyc
 Dane zebrane przez agenta są przechowywane w istniejącym obszarem roboczym analizy dzienników podłączony do maszyny Wirtualnej lub nowy obszar roboczy utworzony przez Centrum zabezpieczeń. W Centrum zabezpieczeń tworzy nowy obszar roboczy, używanie funkcji geolokalizacji maszyny wirtualnej jest brana pod uwagę.
 
 > [!NOTE]
-> Microsoft Monitoring Agent jest tego samego agenta używane przez Operations Management Suite (OMS), usługi Analiza dzienników i System Center Operations Manager (SCOM).
+> Microsoft Monitoring Agent jest tego samego agenta używany przez usługę Analiza dzienników i System Center Operations Manager (SCOM).
 >
 >
 
@@ -64,8 +64,8 @@ Lokalizacja obszaru roboczego jest oparta na lokalizacji maszyny wirtualnej. Aby
 >
 >
 
-### <a name="am-i-billed-for-log-analytics-or-oms-on-the-workspaces-created-by-security-center"></a>Jestem rozliczane analizy dzienników lub OMS na obszary robocze tworzone przez Centrum zabezpieczeń?
-Nie. Obszary robocze tworzone przez Centrum zabezpieczeń podczas skonfigurowane dla pakietu OMS na rozliczenia węzła nie wiąże się z OMS opłatami. Rozliczeń Centrum zabezpieczeń jest zawsze na podstawie zasad zabezpieczeń Centrum zabezpieczeń i rozwiązań zainstalowanym obszaru roboczego:
+### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Jestem rozliczane dla analizy dzienników na obszarów roboczych, utworzonych przez Centrum zabezpieczeń?
+Nie. Obszary robocze tworzone przez Centrum zabezpieczeń, konfigurować dla analizy dzienników dla poszczególnych węzła rozliczeń, nie wiąże się z analizy dzienników opłatami. Rozliczeń Centrum zabezpieczeń jest zawsze na podstawie zasad zabezpieczeń Centrum zabezpieczeń i rozwiązań zainstalowanym obszaru roboczego:
 
 - **Warstwa bezpłatna** — Centrum zabezpieczeń umożliwia rozwiązanie "SecurityCenterFree" na domyślny obszar roboczy. Nie są opłaty naliczane w warstwie bezpłatna.
 - **Warstwy standardowa** — Centrum zabezpieczeń umożliwia rozwiązanie "Zabezpieczenia" na domyślny obszar roboczy.
@@ -73,7 +73,7 @@ Nie. Obszary robocze tworzone przez Centrum zabezpieczeń podczas skonfigurowane
 Aby uzyskać więcej informacji o cenach, zobacz [cennik Centrum zabezpieczeń](https://azure.microsoft.com/pricing/details/security-center/). Stronie cen adresów zmiany do magazynu danych zabezpieczeń i proporcjonalnie rozliczeń począwszy od czerwca 2017 r.
 
 > [!NOTE]
-> OMS cenowym obszarów roboczych utworzonych przez Centrum zabezpieczeń nie ma wpływu na rozliczenia Centrum zabezpieczeń.
+> Analiza dzienników cenowym obszarów roboczych utworzonych przez Centrum zabezpieczeń nie ma wpływu na rozliczenia Centrum zabezpieczeń.
 >
 >
 
@@ -204,12 +204,12 @@ Aby ręcznie usunąć agenta:
 >
 >
 
-## <a name="existing-oms-customers"></a>Istniejących klientów OMS
+## <a name="existing-log-analytics-customers"></a>Istniejących klientów usługi analizy dzienników
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Centrum zabezpieczeń zastąpienie istniejących połączeń między maszynami wirtualnymi i obszary robocze?
 Jeśli maszyna wirtualna ma już zainstalowany jako rozszerzenie Azure Microsoft Monitoring Agent, Centrum zabezpieczeń nie zastępują istniejące połączenie obszaru roboczego. Zamiast tego Centrum zabezpieczeń korzysta z istniejącym obszarem roboczym.
 
-Rozwiązanie Centrum zabezpieczeń jest zainstalowany w obszarze roboczym Jeśli nie znajduje się już i rozwiązanie jest stosowane tylko do odpowiednich maszyn wirtualnych. Po dodaniu rozwiązania jest automatycznie wdrażane domyślnie do wszystkich agentów systemu Windows i Linux podłączone do obszaru roboczego analizy dzienników. [Rozwiązanie docelowych](../operations-management-suite/operations-management-suite-solution-targeting.md), która jest funkcją OMS umożliwia stosowanie zakresu do rozwiązań.
+Rozwiązanie Centrum zabezpieczeń jest zainstalowany w obszarze roboczym Jeśli nie znajduje się już i rozwiązanie jest stosowane tylko do odpowiednich maszyn wirtualnych. Po dodaniu rozwiązania jest automatycznie wdrażane domyślnie do wszystkich agentów systemu Windows i Linux podłączone do obszaru roboczego analizy dzienników. [Rozwiązanie docelowych](../operations-management-suite/operations-management-suite-solution-targeting.md) pozwala zastosować zakres do rozwiązań.
 
 Po zainstalowaniu programu Microsoft Monitoring Agent bezpośrednio na Maszynie wirtualnej (nie jako rozszerzenie Azure) Centrum zabezpieczeń nie instaluje program Microsoft Monitoring Agent oraz monitorowanie zabezpieczeń jest ograniczony.
 
@@ -220,18 +220,13 @@ To nie powinno się zdarzyć. Jeśli to się zdarzyć, następnie [utworzyć ż�
 - Identyfikator zasobów platformy Azure w obszarze roboczym skonfigurowane na rozszerzenia przed połączenie zostało przerwane
 - Agent i wersji, który został wcześniej zainstalowany
 
-### <a name="does-security-center-install-solutions-on-my-existing-oms-workspaces-what-are-the-billing-implications"></a>Centrum zabezpieczeń instaluje rozwiązań na mój istniejących obszarów roboczych OMS? Jakie są skutki rozliczeniowym?
+### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Centrum zabezpieczeń instaluje rozwiązań na mój istniejących obszarów roboczych analizy dzienników Jakie są skutki rozliczeniowym?
 Gdy Centrum zabezpieczeń rozpozna, że maszyna wirtualna jest już połączona z obszaru roboczego, który został utworzony, Centrum zabezpieczeń umożliwia rozwiązań na ten obszar roboczy zgodnie z warstwy cenowej. Rozwiązania są stosowane tylko do odpowiednich maszynach wirtualnych platformy Azure za pośrednictwem [przeznaczonych dla rozwiązania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting), więc rozliczenia jest taka sama.
 
 - **Warstwa bezpłatna** — Centrum zabezpieczeń instaluje rozwiązanie "SecurityCenterFree" w obszarze roboczym. Nie są opłaty naliczane w warstwie bezpłatna.
 - **Warstwy standardowa** — Centrum zabezpieczeń instaluje rozwiązanie "Zabezpieczenia" w obszarze roboczym.
 
    ![Rozwiązania na domyślny obszar roboczy][4]
-
-> [!NOTE]
-> Rozwiązanie "Zabezpieczenia" w Log Analytics to rozwiązanie zabezpieczeń i inspekcji w OMS.
->
->
 
 ### <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Mam już obszarów roboczych w mojej środowisku, można z nich korzystać do zbierania danych zabezpieczeń?
 Jeśli maszyna wirtualna ma już zainstalowany jako rozszerzenie Azure Microsoft Monitoring Agent, Centrum zabezpieczeń używa istniejącego połączenia obszaru roboczego. Rozwiązanie Centrum zabezpieczeń jest zainstalowany w obszarze roboczym Jeśli nie znajduje się już i rozwiązanie jest stosowane tylko do odpowiednich maszyn wirtualnych za pośrednictwem [przeznaczonych dla rozwiązania](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting).
@@ -241,7 +236,7 @@ Podczas instalowania programu Microsoft Monitoring Agent na maszynach wirtualnyc
 ### <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Mam już rozwiązanie z zakresu zabezpieczeń na mój obszarów roboczych. Jakie są skutki rozliczeniowym?
 Aby włączyć funkcje warstwy standardowa Centrum zabezpieczeń dla maszyn wirtualnych platformy Azure jest używane rozwiązanie zabezpieczające i inspekcji. Jeśli rozwiązania zabezpieczeń i inspekcji jest już zainstalowany w obszarze roboczym, Centrum zabezpieczeń używa istniejącego rozwiązania. Nie została zmieniona w rozliczeń.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat migracji platform Centrum zabezpieczeń, zobacz
 
 - [Centrum zabezpieczeń Azure platformy migracji](security-center-platform-migration.md)

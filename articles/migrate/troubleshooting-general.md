@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: troubleshooting
 ms.date: 03/19/2018
 ms.author: raynew
-ms.openlocfilehash: b2c89a980411cac02f46bc91d53620bc94fa845b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bba52534c534ea33c2939d0d9b76b7b4138e13cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -37,7 +37,7 @@ Upewnij się, zostały skopiowane i wklejone odpowiednie informacje. Aby rozwią
 2. Aby rozpocząć instalację, kliknij dwukrotnie pobrany plik.
 3. W Instalatorze na **powitalnej** kliknij przycisk **dalej**. Na **postanowień licencyjnych** kliknij przycisk **zgadzam się** do akceptowania licencji.
 4. W **Folder docelowy**, Zachowaj lub zmienić domyślny folder instalacji > **dalej**.
-5. W **opcje instalacji agenta**, wybierz pozycję **Analiza dzienników Azure (OMS)** > **dalej**.
+5. W **opcje instalacji agenta**, wybierz pozycję **Azure Log Analytics** > **dalej**.
 6. Kliknij przycisk **Dodaj** Aby dodać nowy obszar roboczy analizy dzienników. Wklej identyfikator projektu i klucz skopiowane. Następnie kliknij przycisk **Next** (Dalej).
 7. Sprawdź, czy agent może połączyć się z projektem. Jeśli nie, sprawdź ustawienia. Jeśli agent może połączyć, ale nie przez moduł zbierający, skontaktuj się z pomocą techniczną.
 
@@ -62,7 +62,7 @@ Aby włączyć zbieranie danych wydajności dysku i sieci, należy zmienić pozi
 
 **Agenci zostali zainstalowani i używane do tworzenia grup wizualizacji zależności. Teraz po pracy w trybie failover maszyny Pokaż akcji "Zainstaluj agentów" zamiast "Wyświetl zależności"**
 * Post planowane lub nieplanowane przełączenie awaryjne, lokalne maszyny są wyłączone i maszyny równoważne są uruchomione na platformie Azure. Te maszyny uzyskać inny adres MAC. Mogą one uzyskać inny adres IP w oparciu Określa, czy użytkownik wybrał opcję zachowania lokalny adres IP, czy nie. Jeżeli różnią się adresy IP i MAC, Azure migracji nie wiąże lokalnymi maszynami z żadnych danych zależności mapy usług i pyta użytkownika, aby zainstalować agentów zamiast wyświetlanie zależności.
-* Opublikuj testowania trybu failover maszyny lokalnej pozostają włączone zgodnie z oczekiwaniami. Odpowiednik maszyny przejścia na platformie Azure uzyskać inny adres MAC oraz może uzyskać inny adres IP. Chyba że użytkownik blokuje ruch wychodzący OMS z urządzeń, Azure migracji nie Skojarz lokalnymi maszynami z żadnych danych zależności mapy usług i pyta użytkownika, aby zainstalować agentów zamiast wyświetlanie zależności.
+* Opublikuj testowania trybu failover maszyny lokalnej pozostają włączone zgodnie z oczekiwaniami. Odpowiednik maszyny przejścia na platformie Azure uzyskać inny adres MAC oraz może uzyskać inny adres IP. Chyba że użytkownik blokuje ruch wychodzący analizy dzienników z urządzeń, Azure migracji nie wiąże lokalnymi maszynami z żadnych danych zależności mapy usług i pyta użytkownika, aby zainstalować agentów zamiast wyświetlania zależności.
 
 
 ## <a name="troubleshoot-readiness-issues"></a>Rozwiązywanie problemów gotowości

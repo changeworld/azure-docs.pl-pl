@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie pamięci podręcznej Redis Azure | Dokumentacja firmy Microsoft"
-description: "Omówienie domyślną konfigurację pamięci podręcznej Redis w pamięci podręcznej Redis Azure i Dowiedz się, jak skonfigurować swoich wystąpień w pamięci podręcznej Redis Azure"
+title: Konfigurowanie pamięci podręcznej Redis Azure | Dokumentacja firmy Microsoft
+description: Omówienie domyślną konfigurację pamięci podręcznej Redis w pamięci podręcznej Redis Azure i Dowiedz się, jak skonfigurować swoich wystąpień w pamięci podręcznej Redis Azure
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0cd21c0367a95d3e866137797ac32fc5bdd196c0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Konfigurowanie pamięci podręcznej Redis Azure
 W tym temacie opisano konfiguracje, które są dostępne dla swoich wystąpień w pamięci podręcznej Redis Azure. W tym temacie omówiono również domyślną konfigurację serwera Redis wystąpienia pamięci podręcznej Redis Azure.
@@ -79,7 +79,7 @@ Kliknij przycisk **dziennik aktywności** Aby wyświetlić akcje wykonywane w pa
 
 ### <a name="access-control-iam"></a>Kontrola dostępu (IAM)
 
-**(IAM) kontroli dostępu** sekcji zapewnia obsługę kontroli dostępu opartej na rolach (RBAC) w portalu Azure. Taka konfiguracja pozwala organizacjom, które spełnia ich wymagania dotyczące zarządzania dostępu, wystarczy i dokładnie. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach w portalu Azure](../active-directory/role-based-access-control-configure.md).
+**(IAM) kontroli dostępu** sekcji zapewnia obsługę kontroli dostępu opartej na rolach (RBAC) w portalu Azure. Taka konfiguracja pozwala organizacjom, które spełnia ich wymagania dotyczące zarządzania dostępu, wystarczy i dokładnie. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach w portalu Azure](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Tagi
 

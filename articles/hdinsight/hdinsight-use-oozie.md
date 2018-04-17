@@ -1,8 +1,8 @@
 ---
-title: "Użyj Hadoop Oozie w usłudze HDInsight | Dokumentacja firmy Microsoft"
-description: "Użyj Hadoop Oozie w usłudze HDInsight, Usługa danych big data. Dowiedz się, jak zdefiniować Oozie przepływu pracy i przesłać zadanie Oozie."
+title: Użyj Hadoop Oozie w usłudze HDInsight | Dokumentacja firmy Microsoft
+description: Użyj Hadoop Oozie w usłudze HDInsight, Usługa danych big data. Dowiedz się, jak zdefiniować Oozie przepływu pracy i przesłać zadanie Oozie.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -10,18 +10,16 @@ editor: cgronlun
 ms.assetid: 870098f0-f416-4491-9719-78994bf4a369
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 73d8a26945be05ac0131148b5c0ffdd5f8053bcd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a3c7252be926c6e6b2f9116efb652b888154e46a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Za pomocą Oozie Hadoop do definiowania i uruchomić przepływ pracy w usłudze HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -617,7 +615,7 @@ Poniżej przedstawiono przykładowy skrypt programu PowerShell, którego można 
 
     $conn.close()
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym samouczku przedstawiono sposób definiowania Oozie przepływu pracy i sposób uruchamiania zadania Oozie przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Korzystanie z usługą HDInsight oparte na czasie Oozie Coordinator][hdinsight-oozie-coordinator-time]

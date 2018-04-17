@@ -1,12 +1,12 @@
 ---
-title: "Wdrażanie w usłudze Azure App Service za pomocą wtyczki Wpięć | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak umożliwia wdrażanie aplikacji sieci web Java na platformie Azure w Wpięć wtyczki Wpięć usługi aplikacji Azure"
+title: Wdrażanie w usłudze Azure App Service za pomocą wtyczki Wpięć | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak umożliwia wdrażanie aplikacji sieci web Java na platformie Azure w Wpięć wtyczki Wpięć usługi aplikacji Azure
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service za pomocą wtyczki Wpięć 
 
@@ -39,7 +39,7 @@ Jeśli nie masz jeszcze wzorca Wpięć, rozpoczynać [szablon rozwiązania](inst
 * [Dodatek klienta Git Wpięć](https://plugins.jenkins.io/git-client) wersji 2.4.6 w brzmieniu 
 * [Dodatek docker Commons](https://plugins.jenkins.io/docker-commons) wersji 1.4.0
 * [Poświadczenia Azure](https://plugins.jenkins.io/azure-credentials) w wersji 1.2
-* [Usługa aplikacji Azure](https://plugins.jenkins.io/azure-app-server) wersji 0,1
+* [Usługa aplikacji Azure](https://plugins.jenkins.io/azure-app-service) wersji 0,1
 
 Dodatek Wpięć umożliwia wdrażanie aplikacji sieci web, w dowolnym języku, który jest obsługiwany przez aplikacje sieci Web, takich jak C#, PHP, Java i Node.js. W tym samouczku używamy [prostej aplikacji sieci web Java na platformie Azure](https://github.com/azure-devops/javawebappsample). Do rozwidlania repozytorium na koncie usługi GitHub, wybierz **rozwidlenia** przycisk w prawym górnym rogu interfejsu GitHub.  
 > [!NOTE]
@@ -54,7 +54,7 @@ sudo apt-get install -y maven
 
 Aby wdrożyć aplikację sieci Web dla kontenerów, należy zainstalować Docker na wzorcu Wpięć lub agenta maszyny Wirtualnej, który jest używany dla kompilacji. Aby uzyskać instrukcje, zobacz [zainstalować Docker na Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-##<a name="service-principal"></a>Dodaj nazwę główną usługi Azure poświadczenia Wpięć
+##<a name="service-principal"></a> Dodaj nazwę główną usługi Azure poświadczenia Wpięć
 
 Należy nazwy głównej usługi Azure, aby wdrożyć na platformie Azure. 
 
@@ -90,7 +90,7 @@ Przed skonfigurowaniem zadania w Wpięć należy plan usługi aplikacji Azure i 
 ### <a name="set-up-the-jenkins-job"></a>Konfigurowanie zadania Wpięć
 
 1. Utwórz nową **dowolne** projektu na pulpicie nawigacyjnym Wpięć.
-2. Skonfiguruj **zarządzania kodem źródłowym** pola do użycia lokalnego rozwidlenia z [prostej aplikacji sieci web Java na platformie Azure](https://github.com/azure-devops/javawebappsample). Podaj **adres URL repozytorium** wartość. Na przykład: http://github.com/&lt;your_ID > / javawebappsample.
+2. Skonfiguruj **zarządzania kodem źródłowym** pola do użycia lokalnego rozwidlenia z [prostej aplikacji sieci web Java na platformie Azure](https://github.com/azure-devops/javawebappsample). Podaj **adres URL repozytorium** wartość. Na przykład: http://github.com/ &lt;your_ID > / javawebappsample.
 3. Dodaj krok, aby skompilować projekt za pomocą narzędzia Maven, dodając **wykonywania powłoki** polecenia. W tym przykładzie potrzebne dodatkowe polecenia, aby zmienić nazwę \*.war plik w folderze docelowym, aby **ROOT.war**:   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Przed skonfigurowaniem zadania w Wpięć, należy w aplikacji sieci web w system
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Konfigurowanie zadania Wpięć for Docker
 
 1. Utwórz nową **dowolne** projektu na pulpicie nawigacyjnym Wpięć.
-2. Skonfiguruj **zarządzania kodem źródłowym** pola do użycia lokalnego rozwidlenia z [prostej aplikacji sieci web Java na platformie Azure](https://github.com/azure-devops/javawebappsample). Podaj **adres URL repozytorium** wartość. Na przykład: http://github.com/&lt;your_ID > / javawebappsample.
+2. Skonfiguruj **zarządzania kodem źródłowym** pola do użycia lokalnego rozwidlenia z [prostej aplikacji sieci web Java na platformie Azure](https://github.com/azure-devops/javawebappsample). Podaj **adres URL repozytorium** wartość. Na przykład: http://github.com/ &lt;your_ID > / javawebappsample.
 3. Dodaj krok, aby skompilować projekt za pomocą narzędzia Maven, dodając **wykonywania powłoki** polecenia. Dołącz następujący wiersz polecenia:
     ```bash
     mvn clean package

@@ -1,8 +1,8 @@
 ---
 title: Odpowiedzi na alerty w Azure Log Analytics | Dokumentacja firmy Microsoft
-description: "Alerty w analizy dzienników zidentyfikować ważne informacje w obszarze roboczym Azure i aktywne powiadamia użytkownika o problemy lub akcji, aby je poprawić.  W tym artykule opisano sposób tworzenia reguły alertu i szczegóły dla różnych działań podejmowanych przez nich."
+description: Alerty w analizy dzienników zidentyfikować ważne informacje w obszarze roboczym Azure i aktywne powiadamia użytkownika o problemy lub akcji, aby je poprawić.  W tym artykule opisano sposób tworzenia reguły alertu i szczegóły dla różnych działań podejmowanych przez nich.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 6a48e4c0ab61e5dcf526bb8b1d8bdc6b0d16f9e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Dodawanie akcji do reguły alertów w analizy dzienników
 Gdy [alert jest tworzony w analizy dzienników](log-analytics-alerts.md), masz możliwość [konfigurowanie reguły alertu](log-analytics-alerts.md) przeprowadzenie jedną lub więcej akcji.  W tym artykule opisano różne akcje, które są dostępne i szczegółowe informacje na temat konfigurowania każdego rodzaju.
@@ -28,7 +28,7 @@ Gdy [alert jest tworzony w analizy dzienników](log-analytics-alerts.md), masz m
 |:--|:--|
 | [Wiadomość e-mail](#email-actions) | Wyślij wiadomość e-mail ze szczegółami alertu do co najmniej jednego adresata. |
 | [Element Webhook](#webhook-actions) | Wywołaj procesu zewnętrznego przez pojedyncze żądanie HTTP POST. |
-| [Element Runbook](#runbook-actions) | Uruchom element runbook automatyzacji Azure. |
+| [Runbook](#runbook-actions) | Uruchom element runbook automatyzacji Azure. |
 
 
 ## <a name="email-actions"></a>Akcje poczty e-mail
@@ -39,7 +39,7 @@ Akcje poczty e-mail wymaga właściwości w poniższej tabeli.
 | Właściwość | Opis |
 |:--- |:--- |
 | Temat |Podmiotu w wiadomości e-mail.  Nie można zmodyfikować treści wiadomości. |
-| Adresaci |Adresy wszystkich adresatów wiadomości e-mail.  Jeśli określono więcej niż jeden adres, oddziel adresy średnikiem (;). |
+| Adresaci |Adresy wszystkich adresatów wiadomości e-mail.  Jeśli określasz więcej niż jeden adres, oddziel je przy użyciu średnika (;). |
 
 
 ## <a name="webhook-actions"></a>Akcje elementu Webhook
@@ -603,6 +603,7 @@ Poniżej przedstawiono przykładowe ładunku dla działania elementu runbook w o
                 "a4e29a95-5b4c-408b-80e3-113f9410566e",
                 "00000000-0000-0000-0000-000000000000",
                 "Usage"
+            ]
             ]
         }
         ]

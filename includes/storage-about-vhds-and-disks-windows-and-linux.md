@@ -1,4 +1,19 @@
-
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="about-vhds"></a>Informacje o wirtualnych dyskach twardych
 
 Wirtualne dyski twarde używane na platformie Azure to pliki vhd przechowywane jako stronicowe obiekty blob na koncie magazynu w warstwie Standardowa lub Premium na platformie Azure. Aby uzyskać informacje na temat stronicowych obiektów blob, zobacz [Understanding block blobs and page blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/) (Omówienie blokowych i stronicowych obiektów blob). Aby uzyskać szczegółowe informacje na temat magazynu w warstwie Premium, zobacz [High-performance premium storage and Azure VMs](../articles/virtual-machines/windows/premium-storage.md) (Magazyn w warstwie Premium o wysokiej wydajności i maszyny wirtualne platformy Azure).
@@ -10,10 +25,10 @@ Wszystkie pliki VHD na platformie Azure, który ma być używany jako źródło 
 Gdy tworzysz maszynę wirtualną na podstawie obrazu, platforma Azure tworzy dysk dla maszyny wirtualnej, który jest kopią źródłowego pliku vhd. Platforma Azure umieszcza dzierżawę na każdym pliku vhd używanym do utworzenia obrazu, dysku systemu operacyjnego lub dysku danych, aby chronić ten plik przed przypadkowym usunięciem.
 
 Zanim będzie możliwe usunięcie źródłowego pliku vhd, trzeba będzie usunąć tę dzierżawę, usuwając dysk lub obraz. Aby usunąć plik vhd, który jest używany przez maszynę wirtualną jako dysk systemu operacyjnego, można jednocześnie usunąć maszynę wirtualną, dysk systemu operacyjnego i źródłowy plik vhd, usuwając maszynę wirtualną i wszystkie skojarzone dyski. Usunięcie pliku vhd będącego źródłem dysku danych wymaga jednak wykonania kilku kroków w ustalonej kolejności. Najpierw należy odłączyć dysk od maszyny wirtualnej, później usunąć dysk, a następnie usunąć plik vhd.
-
 > [!WARNING]
 > Jeśli usuniesz źródłowy plik vhd z magazynu albo usuniesz swoje konto magazynu, firma Microsoft nie będzie mogła odzyskać usuniętych danych.
 > 
+> Stronicowe obiekty BLOB w warstwie Premium Storage są przeznaczone do użytku jako wirtualne dyski twarde tylko. Firma Microsoft zaleca przechowywanie innych typów danych w stronicowe obiekty BLOB w warstwie Premium Storage, jak koszt może być znacznie większą. Użyj blokowych obiektów blob do przechowywania danych, który nie jest dysku VHD.
 
 ## <a name="types-of-disks"></a>Typy dysków 
 
@@ -30,7 +45,7 @@ Aby uzyskać więcej informacji na temat korzystania z magazynu Standard Storage
 
 ### <a name="premium-storage"></a>Premium Storage 
 
-Magazyn Premium Storage bazuje na dyskach półprzewodnikowych (SSD) i oferuje dyski o wysokiej wydajności i małych opóźnieniach dla maszyn wirtualnych, na których działają obciążenia intensywnie korzystające z operacji wejścia/wyjścia. Magazyn w warstwie Premium mogą używających DS, DSv2, GS, Ls lub maszynach wirtualnych platformy Azure serii FS. Aby uzyskać więcej informacji, zobacz [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
+Magazyn Premium Storage bazuje na dyskach półprzewodnikowych (SSD) i oferuje dyski o wysokiej wydajności i małych opóźnieniach dla maszyn wirtualnych, na których działają obciążenia intensywnie korzystające z operacji wejścia/wyjścia. Zwykle służy magazyn w warstwie Premium o rozmiarze, które obejmują "s" w nazwie serii. Na przykład brak serii Dv3 i Dsv3 serii, serie Dsv3 może być używany z magazyn w warstwie Premium.  Aby uzyskać więcej informacji, zobacz [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Dyski niezarządzane
 

@@ -9,16 +9,16 @@ editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 15107a0fbcd6242ac13f366b16be10efaeaad6bb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a373ef5cc71d5ae69c83555dc71525aa2188233e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla Kafka Apache na HDInsight
 
@@ -65,7 +65,7 @@ Procedurę włączania analizy dzienników dla usługi HDInsight są takie same 
     | Typ dziennika | Opis |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Server.log brokera Kafka |
-    | log\_kafkacontroller\_CL | Controller.log brokera Kafka |
+    | Dziennik\_kafkacontroller\_CL | Controller.log brokera Kafka |
     | metryki\_kafka\_CL | Metryki Kafka JMX |
 
     ![Obraz wyszukiwania użycia procesora CPU](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)

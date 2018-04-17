@@ -1,5 +1,5 @@
 ---
-title: "Zabezpieczenia najlepszych rozwiązań IaaS obciążeń na platformie Azure | Dokumentacja firmy Microsoft"
+title: Zabezpieczenia najlepszych rozwiązań IaaS obciążeń na platformie Azure | Dokumentacja firmy Microsoft
 description: " Migracji obciążeń do IaaS platformy Azure oferuje możliwości, aby obliczyć ponownie nasze projekty "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 376a3e47e5099aa4d74732e0b6ed14ed9af14091
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące IaaS obciążeń na platformie Azure
 
@@ -83,7 +83,7 @@ Można użyć [Privileged Identity Management](../active-directory/active-direct
 
 Laboratoria i środowisk deweloperskich przy użyciu usługi Azure umożliwia organizacjom uzyskać elastyczność w badania i rozwój wykonując optymalizacji opóźnień, które wprowadza nabywania sprzętu. Niestety Brak znajomość Azure lub chęć pomocy przyspieszenia przyjęciu może prowadzić administratorowi być nadmiernie ograniczająca z Przypisywanie praw. To zagrożenie przypadkowo może narazić organizacji atakami wewnętrznymi. Niektórzy użytkownicy mogą otrzymać znacznie szerszy dostęp niż powinny mieć.
 
-[Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) usługi używa [kontroli dostępu](../active-directory/role-based-access-control-what-is.md) (RBAC). Za pomocą RBAC, można rozdzielenie obowiązków w obrębie organizacji do ról, które udzielić tylko poziom dostępu, które są niezbędne dla użytkowników do wykonywania zadań. RBAC zawiera wstępnie zdefiniowane role (właściciel, użytkownik laboratorium i współautor). Te role umożliwia nawet przypisać prawa do partnerami zewnętrznymi i znacznie upraszcza współpracy.
+[Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) usługi używa [kontroli dostępu](../role-based-access-control/overview.md) (RBAC). Za pomocą RBAC, można rozdzielenie obowiązków w obrębie organizacji do ról, które udzielić tylko poziom dostępu, które są niezbędne dla użytkowników do wykonywania zadań. RBAC zawiera wstępnie zdefiniowane role (właściciel, użytkownik laboratorium i współautor). Te role umożliwia nawet przypisać prawa do partnerami zewnętrznymi i znacznie upraszcza współpracy.
 
 Ponieważ DevTest Labs używa RBAC, istnieje możliwość utworzenia dodatkowych, [role niestandardowe](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nie tylko ułatwia zarządzanie uprawnienia, takie rozwiązanie upraszcza proces konfigurowania środowiska obsługi administracyjnej. Pomaga również postępowania w przypadku innych typowych wyzwań związanych z zespołów, które pracują na środowisk projektowania i testowania. Wymaga on pewne przygotowania, ale w długim okresie, jego będzie ułatwienia dla zespołu.
 
@@ -224,7 +224,7 @@ Poniższy zrzut ekranu przedstawia przykład informacje, które można wyświetl
 
 ![Plany bazowe zabezpieczeń programu Operations Management Suite](./media/azure-security-iaas/oms-security-baseline.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Blog zespołu ds. zabezpieczeń platformy Azure](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Centrum zabezpieczeń firmy Microsoft](https://technet.microsoft.com/library/dn440717.aspx)

@@ -8,17 +8,18 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: f11aff2231a5ae6a58d5c9a3f53379a6849d226a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 09c48b92e39aa347c97d42358b50c338851fa59b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych
 

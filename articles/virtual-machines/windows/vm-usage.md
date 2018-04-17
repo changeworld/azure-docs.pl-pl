@@ -1,31 +1,31 @@
 ---
-title: "Opis użycia maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Zrozumienie Szczegóły obciążenia maszyny wirtualnej"
+title: Opis użycia maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Zrozumienie Szczegóły obciążenia maszyny wirtualnej
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-virtual-machine
-ms.assetid: 
-ms.service: 
-ms.devlang: 
+ms.assetid: ''
+ms.service: ''
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: c87c4256aa193a4971b75c3230d1996c2efdc352
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 9980650008e2d2c2f768dcb3256ea5344119fa13
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Określenie użycia maszyny wirtualnej platformy Azure
-Za analizowanie danych użycia usługi Azure, można uzyskać wgląd zaawansowanych zużycia — szczegółowe informacje, które umożliwiają lepsze kosztów zarządzania i alokacji w całej organizacji. Ten dokument zawiera nowości w szczegóły zużycie rozwiązań usługi obliczenia Azure. Więcej szczegółów na ogólne użycie platformy Azure, przejdź do [Opis rachunku](/billing/billing-understand-your-bill.md).
+Za analizowanie danych użycia usługi Azure, można uzyskać wgląd zaawansowanych zużycia — szczegółowe informacje, które umożliwiają lepsze kosztów zarządzania i alokacji w całej organizacji. Ten dokument zawiera nowości w szczegóły zużycie rozwiązań usługi obliczenia Azure. Więcej szczegółów na ogólne użycie platformy Azure, przejdź do [Opis rachunku](../../billing/billing-understand-your-bill.md).
 
 ## <a name="download-your-usage-details"></a>Pobierz szczegóły użycia
-Aby rozpocząć, [Pobierz szczegóły użycia](/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv.md). Poniższa tabela zawiera wartości definicji oraz przykład użycia dla maszyn wirtualnych wdrożonych za pośrednictwem usługi Azure Resource Manager. Ten dokument zawiera szczegółowe informacje dotyczące maszyn wirtualnych wdrożonych za pośrednictwem klasycznego modelu.
+Aby rozpocząć, [Pobierz szczegóły użycia](../../billing/billing-download-azure-invoice-daily-usage-date.md). Poniższa tabela zawiera wartości definicji oraz przykład użycia dla maszyn wirtualnych wdrożonych za pośrednictwem usługi Azure Resource Manager. Ten dokument zawiera szczegółowe informacje dotyczące maszyn wirtualnych wdrożonych za pośrednictwem klasycznego modelu.
 
 
 | Pola             | Znaczenie                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Przykładowe wartości                                                                                                                                                                                                                                                                                                                                                   |
@@ -39,7 +39,7 @@ Aby rozpocząć, [Pobierz szczegóły użycia](/billing/billing-download-azure-i
 | Zużyte           | Ilość zasobu, który został zużyty za ten dzień. Obliczania obciążony dla każdego minutę, którą uruchomiono maszyny Wirtualnej dla godziny (do 6 cyfr dziesiętnych dokładności).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    “1”, “0.5”                                                                                                                                                                                                                                                                                                                                                    |
 | Lokalizacja zasobu  | Identyfikuje centrum danych, w którym jest uruchamiany zasób.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "Japonia wschodnia"                                                                                                                                                                                                                                                                                                                                                        |
 | Użyta usługa   | Usługi platformy Azure, który został użyty.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft.Compute"                                                                                                                                                                                                                                                                                                                                              |
-| Grupa zasobów     | Grupa zasobów, w której działa wdrożony zasób. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager.](/azure-resource-manager/resource-group-overview.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    "MyRG"                                                                                                                                                                                                                                                                                                                                                        |
+| Grupa zasobów     | Grupa zasobów, w której działa wdrożony zasób. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager.](../../azure-resource-manager/resource-group-overview.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    "MyRG"                                                                                                                                                                                                                                                                                                                                                        |
 | Identyfikator wystąpienia        | Identyfikator zasobu. Identyfikator zawiera nazwę, która została określona dla zasobu, gdy został on utworzony. Dla maszyn wirtualnych identyfikator wystąpienia będzie zawierać identyfikator subskrypcji, grupy zasobów o nazwie i VMName (lub nazwę użycia zestawu skali zestawu skalowania).                                                                                                                                                                                                                                                                                                                                                                                                                    | "/ subskrypcji/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx / resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1"<br><br>lub<br><br>"/ subskrypcji/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx / resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1"                                                                                           |
 | Tagi               | Tag przypisanej do zasobu. Używaj tagów do grupowania rekordów rozliczeń. Dowiedz się, jak [tagu maszyn wirtualnych.](tag.md) To jest dostępna dla maszyn wirtualnych Menedżera zasobów tylko.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{"myDepartment":"Usług pulpitu zdalnego","myUser":"Mójużytkownik"}"                                                                                                                                                                                                                                                                                                                        |
 | Dodatkowe informacje    | Metadane specyficzne dla usługi. Dla maszyn wirtualnych możemy wypełnić następujące pola dodatkowe informacje: <ul><li>Obraz określonego typu obrazu, który został wywołany. Znajdź pełną listę obsługiwanych ciągów poniżej w obszarze typy obrazów.</li><li>Typ usługi: rozmiar wdrożony.</li><li>VMName: Nazwa maszyny Wirtualnej. Znajduje to tylko dla zestawu skalowania maszyn wirtualnych. Jeśli potrzebujesz nazwę maszyny Wirtualnej dla skali ustawić maszyn wirtualnych, można stwierdzisz, że w ciągu Identyfikatora wystąpienia powyżej.</li><li>UsageType: Określa typ użycia, który reprezentuje.<ul><li>ComputeHR jest użycie godzina obliczeniowe dla podstawowej maszyny Wirtualnej, takie jak Standard_D1_v2.</li><li>ComputeHR_SW jest opłata oprogramowania premium, jeśli maszyna wirtualna używa oprogramowania premium, takich jak Microsoft R Server.</li></ul></li></ul>    | Maszyny wirtualne {"ImageType": "Canonical", "ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR"}<br><br>Zestawy skalowania maszyny wirtualnej {"ImageType": "Canonical", "ServiceType": "Standard_DS1_v2", "VMName": "myVM1", "UsageType": "ComputeHR"}<br><br>Oprogramowanie Premium {"ImageType": "","ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR_SW"} |
@@ -71,24 +71,24 @@ Nazwa regionu wypełnione pola Lokalizacja zasobu w szczegóły użycia zależą
 
 |    **Nazwa regionu Menedżera zasobów**       |    **Lokalizacja zasobu w szczegóły użycia**    |
 |--------------------------|------------------------------------------|
-|    australiaeast         |    Wschodnia Australia                               |
-|    australiasoutheast    |    Południowo-Wschodnia Australia                          |
+|    australiaeast         |    Australia Wschodnia                               |
+|    australiasoutheast    |    Australia Południowo-Wschodnia                          |
 |    brazilsouth           |    Brazylia Południowa                              |
 |    CanadaCentral         |    Kanada Środkowa                            |
 |    CanadaEast            |    Kanada Wschodnia                               |
-|    CentralIndia          |    Indie środkowe                            |
+|    CentralIndia          |    Indie Środkowe                            |
 |    centralus             |    Środkowe stany USA                            |
 |    chinaeast             |    Chiny Wschodnie                            |
 |    chinanorth            |    Chiny Północne                           |
 |    eastasia              |    Azja Wschodnia                             |
 |    eastus                |    Wschodnie stany USA                               |
 |    eastus2               |    Wschodnie stany USA 2                             |
-|    GermanyCentral        |    Niemcy środkowe                            |
-|    GermanyNortheast      |    Niemcy północno-wschodnie                          |
+|    GermanyCentral        |    Niemcy Środkowe                            |
+|    GermanyNortheast      |    Niemcy Północno-Wschodnie                          |
 |    japaneast             |    Japonia Wschodnia                               |
 |    japanwest             |    Japonia Zachodnia                               |
-|    KoreaCentral          |    KR środkowe                            |
-|    KoreaSouth            |    KR Południowa                              |
+|    KoreaCentral          |    Korea Środkowa                            |
+|    KoreaSouth            |    Korea Południowa                              |
 |    northcentralus        |    Środkowo-północne stany USA                      |
 |    northeurope           |    Europa Północna                          |
 |    southcentralus        |    Środkowo-południowe stany USA                      |
@@ -100,11 +100,11 @@ Nazwa regionu wypełnione pola Lokalizacja zasobu w szczegóły użycia zależą
 |    ukwest                |    Zachodnie Zjednoczone Królestwo                               |
 |    USDoDCentral          |    US DoD — środkowe stany                        |
 |    USDoDEast             |    US DoD — wschodnie stany                           |
-|    USGovArizona          |    USGov Arizona                         |
+|    USGovArizona          |    Administracja USA — Arizona                         |
 |    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    USGov Texas                           |
+|    USGovTexas            |    Administracja USA — Texas                           |
 |    usgovvirginia         |    USGov Virginia                        |
-|    westcentralus         |    Środkowe zachodnie stany USA                       |
+|    westcentralus         |    Zachodnio-środkowe stany USA                       |
 |    westeurope            |    Europa Zachodnia                           |
 |    WestIndia             |    Indie Zachodnie                               |
 |    westus                |    Zachodnie stany USA                               |
@@ -131,7 +131,7 @@ Godziny obliczeniowe, reprezentujący zdarzenia użycia podstawowej kosztów inf
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Jak sprawdzić, jeśli mam naliczona opłata oprogramowania — wersja premium
 Podczas eksplorowania obrazu maszyny Wirtualnej, która najlepiej odpowiada potrzebom użytkownika, należy koniecznie zapoznaj się z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). Obraz ma szybkość planu oprogramowania. Jeśli zobaczysz częstotliwość "Wolne", nie ma żadnych dodatkowych kosztów, oprogramowania. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Jaka jest różnica między obszar Microsoft.ClassicCompute i Microsoft.Compute w usłudze zużyto?
-Obszar Microsoft.ClassicCompute reprezentuje zasoby klasyczne wdrożone za pośrednictwem usługi Azure Service Manager. Jeśli wdrożono za pomocą Menedżera zasobów Microsoft.Compute jest wypełniana w usłudze wykorzystanych. Dowiedz się więcej o [modele wdrażania Azure](/azure-resource-manager/resource-manager-deployment-model.md).
+Obszar Microsoft.ClassicCompute reprezentuje zasoby klasyczne wdrożone za pośrednictwem usługi Azure Service Manager. Jeśli wdrożono za pomocą Menedżera zasobów Microsoft.Compute jest wypełniana w usłudze wykorzystanych. Dowiedz się więcej o [modele wdrażania Azure](../../azure-resource-manager/resource-manager-deployment-model.md).
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>W polu InstanceID jest puste w przypadku użycia maszyny wirtualnej
 W przypadku wdrożenia przy użyciu klasycznego modelu wdrażania ciąg InstanceID nie jest dostępna.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Dlaczego są tagi nie są przesyłane do Szczegóły obciążenia maszyn wirtualnych?
@@ -141,6 +141,6 @@ W klasycznym modelu rozliczeń dla zasobów są agregowane na poziomie usługi w
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>Dlaczego jest nie ceny na stronie cen dostępnych rozmiarów DS/FS/GS/LS?
 Magazyn w warstwie Premium obsługuje maszyny wirtualne są rozliczane na tym samym poziomie jak inne niż premium magazynu obsługujących maszyny wirtualne. Różnią się tylko kosztów magazynowania. Odwiedź stronę [magazynu cennikiem](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) Aby uzyskać więcej informacji.
 
-## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat swoje szczegóły dotyczące użycia, zobacz [zrozumieć rachunku platformy Microsoft Azure.](/billing/billing-understand-your-bill.md)
+## <a name="next-steps"></a>Kolejne kroki
+Aby dowiedzieć się więcej na temat swoje szczegóły dotyczące użycia, zobacz [zrozumieć rachunku platformy Microsoft Azure.](../../billing/billing-understand-your-bill.md)
 

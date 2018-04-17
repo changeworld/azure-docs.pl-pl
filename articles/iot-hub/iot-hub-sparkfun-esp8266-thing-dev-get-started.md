@@ -1,25 +1,25 @@
 ---
-title: "ESP8266 do chmury — Połącz Sparkfun ESP8266 operacją deweloperów do Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować i deweloperów operacją ESP8266 Sparkfun nawiązać połączenia z Centrum IoT Azure go do przesyłania danych do platformy w chmurze platformy Azure, w tym samouczku."
+title: ESP8266 do chmury — Połącz Sparkfun ESP8266 operacją deweloperów do Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować i deweloperów operacją ESP8266 Sparkfun nawiązać połączenia z Centrum IoT Azure go do przesyłania danych do platformy w chmurze platformy Azure, w tym samouczku.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.assetid: 587fe292-9602-45b4-95ee-f39bba10e716
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
-ms.author: xshi
-ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: e6837d0312217d8e27e3639b8220f5016a2505a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Sparkfun ESP8266 operacją deweloperów nawiązać połączenia z Centrum IoT Azure w chmurze
 
@@ -119,7 +119,7 @@ Jeśli używasz Ubuntu, upewnij się, że zwykłego użytkownika ma uprawnienia 
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>`jest to nazwa właściciela grupy uzyskanego w poprzednim kroku. `<username>`to nazwa użytkownika Ubuntu.
+   `<group-owner-name>` jest to nazwa właściciela grupy uzyskanego w poprzednim kroku. `<username>` to nazwa użytkownika Ubuntu.
 
 1. Wyloguj się Ubuntu i logowania go ponownie, aby zmiany zaczęły obowiązywać.
 
@@ -208,7 +208,7 @@ Po pomyślnym ukończeniu przekazywania, wykonaj kroki, aby wprowadzić swoje po
 1. Wybierz **nie zakończenia wiersza** po lewej stronie listy rozwijanej.
 1. Wybierz **transmisji 115200** na liście po prawej listy rozwijanej.
 1. W odpowiednim polu znajduje się w górnej części okna monitora szeregowych, wprowadź następujące informacje, jeśli zostanie wyświetlona prośba o Podaj je, a następnie kliknij przycisk **wysyłania**.
-   * Identyfikator SSID sieci Wi-Fi
+   * Wi-Fi SSID
    * Hasło sieci Wi-Fi
    * Ciąg połączenia urządzenia
 
@@ -221,7 +221,7 @@ Jeśli widzisz następujące dane wyjściowe z okna monitora szeregowe i migają
 
 ![ostateczne dane wyjściowe w arduino ide](media/iot-hub-sparkfun-thing-dev-get-started/14_arduino-ide-final-output.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Pomyślnie połączony deweloperów operacją ESP8266 Sparkfun Centrum IoT i wysyłane dane czujników przechwyconych do Centrum IoT. 
 

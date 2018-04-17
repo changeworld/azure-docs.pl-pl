@@ -1,24 +1,24 @@
 ---
-title: "Użyj usługi Azure Functions do wysyłania danych do Kafka w usłudze HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać funkcji platformy Azure można zapisać danych do Kafka w usłudze HDInsight."
+title: Użyj usługi Azure Functions do wysyłania danych do Kafka w usłudze HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać funkcji platformy Azure można zapisać danych do Kafka w usłudze HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: larryfr
-ms.openlocfilehash: c1c03cfcbcb7e0bfdb4a631b9e2ae568f0684069
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6c462f9fe5e152c82be1a2b8643ee35d260a90f6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-kafka-on-hdinsight-from-an-azure-function-app"></a>Użyj Kafka w usłudze HDInsight z aplikacji Azure — funkcja
 

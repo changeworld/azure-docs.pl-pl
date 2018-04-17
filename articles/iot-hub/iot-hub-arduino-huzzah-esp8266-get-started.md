@@ -1,25 +1,25 @@
 ---
-title: "ESP8266 do chmury - nawiązać Centrum IoT Azure piór HUZZAH ESP8266 | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować i Adafruit piór HUZZAH ESP8266 nawiązać połączenia z Centrum IoT Azure go do przesyłania danych do platformy w chmurze platformy Azure, w tym samouczku."
+title: ESP8266 do chmury - nawiązać Centrum IoT Azure piór HUZZAH ESP8266 | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować i Adafruit piór HUZZAH ESP8266 nawiązać połączenia z Centrum IoT Azure go do przesyłania danych do platformy w chmurze platformy Azure, w tym samouczku.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.assetid: c505aacf-89a8-40ed-a853-493b75bec524
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2017
-ms.author: xshi
-ms.openlocfilehash: e8f0397797d8f4c3349afcdfb02de071a6593c72
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: b850bb25d7a6d06a2d0f55ed915321badf76bb39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit piór HUZZAH ESP8266 nawiązać połączenia z Centrum IoT Azure w chmurze
 
@@ -210,7 +210,7 @@ Przykładową aplikację można symulować danych temperatury i wilgotności, w 
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>Wdrażanie przykładowej aplikacji do ESP8266 HUZZAH piór
 
-1. W programie Visual Studio Code kliknij  **<Select Serial Port>**  stan pasek, a następnie kliknij przycisk portu szeregowego ESP8266 HUZZAH piór.
+1. W programie Visual Studio Code kliknij **<Select Serial Port>** stan pasek, a następnie kliknij przycisk portu szeregowego ESP8266 HUZZAH piór.
 1. Wprowadź `F1`, wpisz **Arduino** i wybierz **Arduino: Przekaż** do tworzenia i wdrażania przykładowej aplikacji do ESP8266 HUZZAH piór.
 
 ### <a name="enter-your-credentials"></a>Wprowadź swoje poświadczenia

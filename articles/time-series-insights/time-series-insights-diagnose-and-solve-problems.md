@@ -1,6 +1,6 @@
 ---
-title: "Diagnozowanie i rozwiązywanie problemów w usłudze Azure czas serii Insights | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób diagnozowania, rozwiązywanie problemów i rozwiązywania typowych problemów, które mogą wystąpić w środowisku Azure czas serii Insights."
+title: Diagnozowanie i rozwiązywanie problemów w usłudze Azure czas serii Insights | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób diagnozowania, rozwiązywanie problemów i rozwiązywania typowych problemów, które mogą wystąpić w środowisku Azure czas serii Insights.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/15/2017
-ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/09/2018
+ms.openlocfilehash: f0c1b8aa99e9ac9c73f57af17490dd3a465a9cac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w środowisku Insights serii czasu
 
@@ -45,6 +45,11 @@ Podczas rejestracji am Centrum IoT i Centrum zdarzeń można określić grupy od
 Zostaną wyświetlone dane częściowo, ale opóźnionych danych, istnieje kilka możliwości należy wziąć pod uwagę:
 
 ### <a name="possible-cause-a-your-environment-is-getting-throttled"></a>Możliwa przyczyna A: środowiska jest pobieranie ograniczany.
+Jest to powszechny problem, podczas przydzielania środowiskach po utworzeniu źródła zdarzenia z danymi.  Azure centra IoT i centrów zdarzeń maksymalnie danych siedem dni.  Zawsze TSI rozpocznie się od najstarszych zdarzenia (FIFO) w źródle zdarzeń.  Dlatego jeśli masz pięć milionów zdarzenia w źródle zdarzeń podczas łączenia z S1 środowiska TSI jednostkowy, TSI odczyta około miliona zdarzeń na dzień.  To może się wydawać, wyglądać tak, jakby TSI występują na pierwszy rzut oka pięć dni opóźnienia.  Faktycznie wykonywane jest środowisko jest ograniczane.  Jeśli masz starych zdarzeń w źródle zdarzeń mogą ustalić jeden z dwóch sposobów:
+
+- Zmiana źródła zdarzeń przechowywania limity, aby ułatwić usuwanie starych zdarzeń, które nie mają być wyświetlane w TSI
+- Udostępnić większy rozmiar środowiska (pod względem liczby jednostek) w celu zwiększenia przepływności starych zdarzeń.  Środowisko przy użyciu powyższego przykładu po zwiększeniu tym samym środowisku S1 pięciu sztuk przez jeden dzień, powinien przechwycenie się teraz w ciągu dnia.  W przypadku 1M lub mniej zdarzeń/dzień produkcyjnego zdarzeń stanie stabilności następnie można zmniejszyć pojemność zdarzeń wstecz do jednej jednostki po przechwyciło w.  
+
 Limit ograniczania są wymuszane na podstawie typu jednostki SKU w środowisku i pojemności. Wszystkie źródła zdarzeń w środowisku udostępnianie tej pojemności. Jeśli źródło zdarzenia z Centrum IoT i Centrum zdarzeń jest przekazywanie danych poza granicami wymuszone, zobacz ograniczania przepustowości i opóźnienia.
 
 Na poniższym diagramie przedstawiono środowisku czasu serii Insights SKU S1 i pojemności 3. Może on ruch przychodzący 3 miliony zdarzeń na dzień.
@@ -77,6 +82,12 @@ Upewnij się, że nazw i wartości są zgodne z następujących reguł:
 * Nazwa właściwości sygnatury czasowej jest _z uwzględnieniem wielkości liter_.
 * Wartość właściwości sygnatury czasowej pochodzące ze źródła zdarzenia w postaci ciągu JSON, powinien mieć format _RRRR-MM-Ddtgg. FFFFFFFK_. Na przykład taki ciąg "2008-04-12T12:53Z".
 
-## <a name="next-steps"></a>Następne kroki
+Najprostszym sposobem upewnij się, że Twoje *nazwa właściwości sygnatury czasowej* są przechwytywane i działa poprawnie za pomocą Eksploratora TSI.  W Eksploratorze TSI za pomocą wykresu, wybierz okres czasu po podane *nazwa właściwości sygnatury czasowej*.  Kliknij prawym przyciskiem myszy zaznaczenie, a następnie wybierz pozycję *Eksploruj zdarzenia* opcji.  Pierwszy nagłówek kolumny powinien być z *nazwa właściwości sygnatury czasowej* i powinien mieć *($ts)* obok wyraz *sygnatury czasowej*, zamiast:
+- *(abc)* , który może wskazywać TSI odczytywania wartości danych jako ciągi
+- *Ikona kalendarza*, który może wskazywać TSI odczytuje wartość danych, jak *daty i godziny*
+- *#*, które wskazują TSI odczytuje wartości danych jako liczba całkowita
+
+
+## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać dodatkową pomoc, należy rozpocząć konwersację na [MSDN forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) lub [przepełnienie stosu](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 
 - Można również użyć [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) opcji z pomocą techniczną.

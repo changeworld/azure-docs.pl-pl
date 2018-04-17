@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
-ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 5219ebc22e56ad4b5cdfc125f7fa5882c61adb9f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: devtiw
+ms.openlocfilehash: f42f20893a815640378b9d18186c88b782e61284
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Szyfrowanie dysków Azure dla systemu Windows i maszyn wirtualnych systemu Linux IaaS
 Microsoft Azure jest silnie zobowiązane do zapewnienia prywatności danych, suwerenności danych i umożliwia sterowanie platformy Azure hostowanej danych za pomocą wielu zaawansowanych technologii szyfrowania, sterowania i zarządzania kluczami szyfrowania, inspekcji i kontroli dostępu do danych. Klienci Azure zapewnia elastyczność wyboru rozwiązania, które będzie najlepiej odpowiadać ich potrzeb biznesowych. W tym dokumencie firma Microsoft podstawowe informacje na temat nowego rozwiązania technologii "Szyfrowania dysków Azure dla systemu Windows i Linux IaaS maszyny Wirtualnej na" Aby chronić i ochrony danych w celu spełnienia organizacji bezpieczeństwa i zgodności zobowiązań. Papieru zapewnia napotka szczegółowe wskazówki dotyczące sposobu używania funkcji szyfrowania dysków Azure w tym obsługiwane scenariusze i użytkownika.
@@ -572,7 +572,7 @@ Poniższa tabela zawiera listę parametrów szablonu usługi Resource Manager dl
 | volumeType | Typ operacji szyfrowania jest wykonywana na wolumin. Nieprawidłowa obsługiwane wartości to _OS_ lub _wszystkie_ (zobacz obsługiwanych dystrybucjach systemu Linux i ich wersje systemu operacyjnego i dysków z danymi w sekcji prerequisiteis wcześniej). |
 | sequenceVersion | Wersja sekwencji operacji funkcji BitLocker. Zwiększ numer wersji, za każdym razem, gdy operacja szyfrowania dysków jest wykonywana na tej samej maszyny Wirtualnej. |
 | vmName | Nazwa maszyny Wirtualnej, można wykonać w operacji szyfrowania. |
-| passPhrase | Wpisz silne hasło klucza szyfrowania danych. |
+| Hasło | Wpisz silne hasło klucza szyfrowania danych. |
 
 > [!NOTE]
 > _KeyEncryptionKeyURL_ jest parametrem opcjonalnym. Będzie można przełączyć własne KEK do dalszego zabezpieczenie klucza szyfrowania danych (klucz tajny hasło) w magazynie kluczy.
@@ -665,7 +665,7 @@ Można wyłączyć szyfrowania na uruchomionej maszyny Wirtualnej systemu Linux 
 ##### <a name="windows-vm"></a>Maszyna wirtualna z systemem Windows
 Wyłącz szyfrowanie krok wyłącza funkcję szyfrowania systemu operacyjnego i/lub ilość danych na Maszynie wirtualnej uruchomionej IaaS systemu Windows. Nie można wyłączyć woluminu systemu operacyjnego i pozostawić ilość danych zaszyfrowanych. Po wykonaniu kroku Wyłącz szyfrowanie Azure klasycznym modelu wdrażania aktualizacji modelu usług maszyny Wirtualnej i maszyn wirtualnych IaaS systemu Windows jest oznaczony jako odszyfrowany. Zawartość maszyny Wirtualnej nie są szyfrowane, gdy. Odszyfrowywanie nie powoduje usunięcia magazynu kluczy i materiału klucza szyfrowania (klucze szyfrowania funkcji BitLocker dla systemów Windows i hasło dla systemu Linux).
 
-##### <a name="linux-vm"></a>Linux VM
+##### <a name="linux-vm"></a>Maszyny Wirtualnej systemu Linux
 Wyłącz szyfrowanie krok wyłącza szyfrowanie danych woluminu na Maszynie wirtualnej uruchomionej IaaS systemu Linux. Ten krok działa tylko, jeśli nie jest zaszyfrowany dysk systemu operacyjnego.
 
 > [!NOTE]
@@ -786,7 +786,7 @@ Użyj [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) pole
 * Maszyna wirtualna musi być przy użyciu rozkładu zgodne z szyfrowania dysku systemu operacyjnego wymienionych w [FAQ szyfrowania dysków Azure](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
 * Maszyna wirtualna musi zostać utworzony z obrazu witryny Marketplace usługi Azure Resource Manager.
 * Maszyna wirtualna platformy Azure z co najmniej 4 GB pamięci RAM (zalecany rozmiar to 7 GB).
-* (W przypadku RHEL i CentOS) Wyłącz SELinux. To disable SELinux, see "4.4.2. Wyłączanie SELinux"w [Przewodnik administratora i użytkownika SELinux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) na maszynie Wirtualnej.
+* (W przypadku RHEL i CentOS) Wyłącz SELinux. Aby wyłączyć SELinux, zobacz "4.4.2. Wyłączanie SELinux"w [Przewodnik administratora i użytkownika SELinux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) na maszynie Wirtualnej.
 * Po wyłączeniu SELinux co najmniej raz ponowny rozruch maszyny Wirtualnej.
 
 ##### <a name="steps"></a>Kroki
@@ -868,23 +868,23 @@ Skonfigurować szyfrowanie podczas instalacji dystrybucji, wykonując następuj�
 
 1. Wybierz **skonfigurować zaszyfrowanych woluminach** po partycji dysków.
 
- ![Ubuntu 16.04 Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+ ![Instalator Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. Utwórz dysk rozruchowy oddzielne, nie muszą być szyfrowane. Szyfrowanie dysku głównym.
 
- ![Ubuntu 16.04 Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+ ![Instalator Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. Należy podać hasło. Jest to hasło, które można przekazać do magazynu kluczy.
 
- ![Ubuntu 16.04 Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+ ![Instalator Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. Zakończ partycjonowania.
 
- ![Ubuntu 16.04 Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+ ![Instalator Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. Po rozruchu maszyny Wirtualnej i są wyświetlane pytanie o hasło, należy używać hasło podane w kroku 3.
 
- ![Ubuntu 16.04 Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+ ![Instalator Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. Przygotowywanie maszyny Wirtualnej do przekazywania do platformy Azure przy użyciu [tych instrukcji](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Nie należy uruchamiać w ostatnim kroku (anulowania obsługi maszyny Wirtualnej) jeszcze.
 
@@ -950,7 +950,7 @@ Konfigurowanie szyfrowania do pracy z platformy Azure, wykonując następujące 
 
 7. Teraz można anulowanie zastrzeżenia maszyny Wirtualnej.
 
- ![Ubuntu 16.04 Setup](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+ ![Instalator Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. Przejdź do następnego kroku i [przekazać dysk VHD](#upload-encrypted-vhd-to-an-azure-storage-account) na platformie Azure.
 

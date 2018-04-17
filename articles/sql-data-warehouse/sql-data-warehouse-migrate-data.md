@@ -1,11 +1,11 @@
 ---
-title: "Migrowanie danych do usługi SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Wskazówki dotyczące migrowania danych Azure SQL Data Warehouse związane z opracowywaniem rozwiązań."
+title: Migrowanie danych do usługi SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące migrowania danych Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d78f954a-f54c-4aa4-9040-919bc6414887
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fbab223963989eab16cecea2facd9c15ba646d4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-your-data"></a>Migrowanie danych
 Można przenieść dane z różnych źródeł do magazynu danych SQL przy użyciu różnych narzędzi.  Kopiuj ADF, SSIS i bcp wszystkie umożliwia osiągnięcie tego celu. Jako ilość danych zwiększa należy traktować o podziału na etapy procesu migracji danych. Daje to możliwość optymalizacji każdy krok, wydajności i odporności zapewnić migrację danych smooth.
@@ -90,7 +90,7 @@ Proces migracji danych SQLDW mogą skutecznie podzielone na trzy osobne kroki:
 Każdy krok mogą być optymalizowane indywidualnie można utworzyć procesu migracji niezawodny, będzie można ponownie uruchomić systemu i elastyczne, które pozwala zmaksymalizować wydajność w każdym kroku.
 
 ## <a name="optimizing-data-load"></a>Optymalizacja ładowania danych
-Spojrzenie na ich w kolejności odwrotnej do chwili; jest to najszybszy sposób, aby załadować dane przy użyciu programu PolyBase. Optymalizacja dla proces ładowania PolyBase umieszcza wymagań wstępnych na powyższych kroków, najlepiej to zrozumieć góry. Są to:
+Spojrzenie na ich w kolejności odwrotnej do chwili; jest to najszybszy sposób, aby załadować dane przy użyciu programu PolyBase. Optymalizacja dla proces ładowania PolyBase umieszcza wymagań wstępnych na powyższych kroków, najlepiej to zrozumieć góry. Oto one:
 
 1. Kodowanie plików danych
 2. Format plików danych
@@ -178,7 +178,7 @@ Aparat PolyBase obsługuje również funkcją znana jako "Przechodzenie folderu 
 
 Aby dowiedzieć się więcej na temat ładowanie danych przy użyciu programu PolyBase, zobacz [Użyj PolyBase, aby załadować dane do usługi SQL Data Warehouse][Use PolyBase to load data into SQL Data Warehouse].
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na temat migracji, zobacz [migracja rozwiązania do usługi SQL Data Warehouse][Migrate your solution to SQL Data Warehouse].
 Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia][development overview].
 
@@ -190,10 +190,11 @@ Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia][deve
 [ADF samples]: ../data-factory/v1/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
+[migracji schemat]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
-[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
+[Use PolyBase to load data into SQL Data Warehouse]: load-data-wideworldimportersdw.md
 
 
 <!--MSDN references-->

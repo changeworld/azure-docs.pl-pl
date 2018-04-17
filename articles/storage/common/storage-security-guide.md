@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2debe3bb06f00741100883ff7c9978f11f5be799
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu Azure
 
@@ -85,16 +85,16 @@ Poniżej przedstawiono główne punkty, które musisz wiedzieć o dostęp do ope
 * Można utworzyć raport, który przyznane/odwołany jakiego rodzaju dostępu do i z którego i na jakie zakresu przy użyciu programu PowerShell lub interfejsu wiersza polecenia Azure.
 
 #### <a name="resources"></a>Zasoby
-* [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../../active-directory/role-based-access-control-configure.md)
+* [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   W tym artykule objaśniono funkcję kontroli dostępu opartej na rolach w usłudze Azure Active Directory i sposób jej działania.
-* [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../../active-directory/role-based-access-built-in-roles.md)
+* [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../../role-based-access-control/built-in-roles.md)
 
   Ten artykuł zawiera szczegóły dotyczące wszystkich dostępnych w RBAC ról wbudowanych.
 * [Omówienie wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../../azure-resource-manager/resource-manager-deployment-model.md)
 
   W tym artykule opisano wdrożenie usługi Resource Manager i klasycznych modeli wdrażania, a opis korzyści przy użyciu grup Resource Manager i zasobów. Wyjaśniono, jak działają rozwiązań usługi obliczenia Azure, sieci i dostawcy magazynu w modelu Resource Manager.
-* [Zarządzanie kontrolą dostępu opartą na rolach za pomocą interfejsu API REST](../../active-directory/role-based-access-control-manage-access-rest.md)
+* [Zarządzanie kontrolą dostępu opartą na rolach za pomocą interfejsu API REST](../../role-based-access-control/role-assignments-rest.md)
 
   W tym artykule przedstawiono sposób zarządzania kontrolą dostępu opartą na rolach (RBAC) za pomocą interfejsu API REST.
 * [Dokumentacja interfejsu API REST dostawcy zasobów magazynu Azure](https://msdn.microsoft.com/library/azure/mt163683.aspx)

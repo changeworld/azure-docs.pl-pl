@@ -7,14 +7,14 @@ manager: jhubbard
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 13189bfe2e2e6db6185c798065dc3bea1fd3d537
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Projektowanie wyodrębniania, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse
 
@@ -48,8 +48,8 @@ Aby załadować dane przy użyciu programu PolyBase, można użyć dowolnej z ty
 
 - [Program PolyBase z T-SQL](load-data-from-azure-blob-storage-using-polybase.md) działa poprawnie, gdy dane pochodzą z magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Store. Umożliwia sterowanie za pośrednictwem procesu ładowania, ale wymaga również do definiowania obiektów danych zewnętrznych. Inne metody Definiuj Mapowanie tabel źródłowych do tabel docelowych tych obiektów w tle.  Do organizowania obciążeń T-SQL, można użyć usługi fabryka danych Azure, SSIS lub usługę Azure functions. 
 - [Program PolyBase z SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) działa poprawnie, gdy źródło danych jest w programie SQL Server, SQL Server lokalnie lub w chmurze. SSIS definiuje źródłowej do docelowej tabeli mapowania, a także organizuje obciążenia. Jeśli masz już pakiety usług SSIS, można zmodyfikować pakiety do pracy z nowego miejsca docelowego magazynu danych. 
-- [Program PolyBase z fabryki danych Azure (ADF)](sql-data-warehouse-load-with-data-factory.md) jest inne narzędzie do aranżacji.  Definiuje potoku i harmonogramy zadań. ADF służy do analizowania danych JSON i załaduj go do usługi SQL Data Warehouse.
-- [Program PolyBase z Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) transferu danych z usługi Azure Data Lake Store do usługi SQL Data Warehouse. Azure DataBricks umożliwia analizowanie danych JSON i ładowanie danych do usługi SQL Data Warehouse. 
+- [Program PolyBase z fabryki danych Azure (ADF)](sql-data-warehouse-load-with-data-factory.md) jest inne narzędzie do aranżacji.  Definiuje potoku i harmonogramy zadań. 
+- [Program PolyBase z Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) przeniesienia danych z tabeli SQL Data Warehouse Databricks dataframe i/lub zapisuje dane z Databricks dataframe do tabeli SQL Data Warehouse.
 
 ### <a name="polybase-external-file-formats"></a>Program PolyBase formatów plików zewnętrznych
 
@@ -70,11 +70,8 @@ Aby trafić dane w magazynie Azure, należy przenieść go do [magazynu obiektó
 Są to narzędzia i usługi, który służy do przenoszenia danych do magazynu Azure.
 
 - [Usługa Azure ExpressRoute](../expressroute/expressroute-introduction.md) usługa zwiększa przepustowość sieci, wydajność oraz przewidywalności. ExpressRoute to usługa, która przekierowuje dane za pomocą dedykowanego połączenia prywatnego na platformie Azure. Połączenia ExpressRoute kierować danych za pośrednictwem publicznej sieci internet. Połączenia oferują więcej niezawodności, szybkości szybsze niższe opóźnienia i lepsze zabezpieczenia niż typowe połączenia za pośrednictwem publicznej sieci internet.
-- [Narzędzie AZCopy](../storage/common/storage-use-azcopy.md) przenosi dane do magazynu Azure za pośrednictwem publicznej sieci internet. To działanie, jeśli Twoje dane są mniej niż 10 TB. Aby wykonać obciążeń na bieżąco z narzędzia AZCopy, przetestować szybkość sieci, aby sprawdzić, czy jest dopuszczalne. 
-- [Fabryka danych Azure (ADF)](../data-factory/introduction.md) ma bramę, którą można zainstalować na serwerze lokalnym. Następnie można utworzyć potoku do przenoszenia danych z serwera lokalnego do usługi Azure Storage.
-
-Aby uzyskać więcej informacji, zobacz [przenoszenie danych do i z usługi Azure Storage](../storage/common/storage-moving-data.md)
-
+- [Narzędzie AZCopy](../storage/common/storage-moving-data.md) przenosi dane do magazynu Azure za pośrednictwem publicznej sieci internet. To działanie, jeśli Twoje dane są mniej niż 10 TB. Aby wykonać obciążeń na bieżąco z narzędzia AZCopy, przetestować szybkość sieci, aby sprawdzić, czy jest dopuszczalne. 
+- [Fabryka danych Azure (ADF)](../data-factory/introduction.md) ma bramę, którą można zainstalować na serwerze lokalnym. Następnie można utworzyć potoku do przenoszenia danych z serwera lokalnego do usługi Azure Storage. Aby używać fabryka danych z magazynu danych SQL, zobacz [ładowanie danych do usługi SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 ## <a name="prepare-data"></a>Przygotowywanie danych
 

@@ -1,6 +1,6 @@
 ---
-title: "Plan sieci wirtualnej platformy Azure (VNet) oraz przewodnik dotyczący projektowania | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak zaplanować i zaprojektować sieci wirtualnych na platformie Azure, w zależności od wymagań izolacji, łączności i lokalizacji."
+title: Plan sieci wirtualnej platformy Azure (VNet) oraz przewodnik dotyczący projektowania | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zaplanować i zaprojektować sieci wirtualnych na platformie Azure, w zależności od wymagań izolacji, łączności i lokalizacji.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Planowanie i projektowanie sieci wirtualnych Azure
 Tworzenie sieci wirtualnej do eksperymentów z jest dość proste, ale prawdopodobnie, wdrażania wielu sieci wirtualnych w czasie, aby obsługiwały produkcyjnym wymagania organizacji. Z pewnego planowania i projektowania będzie mógł wdrożyć sieci wirtualnych i połączyć zasoby, których potrzebujesz bardziej efektywnie. Jeśli nie masz doświadczenia z sieciami wirtualnymi, jest zalecane możesz [Dowiedz się więcej o sieci wirtualnych](virtual-networks-overview.md) i [wdrażanie](quick-create-portal.md) jeden przed kontynuowaniem.
@@ -78,7 +78,7 @@ Podsieci obejmują następujące właściwości.
 | **addressPrefix** |Prefiks pojedynczy adres, który tworzą podsieci w notacji CIDR |Musi być jeden blok CIDR, który wchodzi w skład jednej z przestrzeni adresów sieci wirtualnej. |
 | **networkSecurityGroup** |Grupa NSG stosowana do podsieci | |
 | **routeTable** |Tabela tras stosowane do podsieci | |
-| **ipConfigurations** |Kolekcja obiektów konfiguracji IP używane przez karty sieciowe podłączone do podsieci | |
+| **elementy Ipconfiguration** |Kolekcja obiektów konfiguracji IP używane przez karty sieciowe podłączone do podsieci | |
 
 ### <a name="name-resolution"></a>Rozpoznawanie nazw
 Domyślnie korzysta z sieci wirtualnej [rozpoznawania nazw platformy Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md) do rozpoznawania nazw w sieci wirtualnej, a w publicznej sieci Internet. Jednak jeśli łączysz się z sieciami wirtualnymi w centrach danych w sieci lokalnej, należy podać [serwer DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md) do rozpoznawania nazw między sieci.  
@@ -87,16 +87,16 @@ Domyślnie korzysta z sieci wirtualnej [rozpoznawania nazw platformy Azure](virt
 Przejrzyj ograniczenia sieci [Azure ogranicza](../azure-subscription-service-limits.md#networking-limits) artykuł, aby upewnić się, że projektu nie koliduje to z tych limitów. Niektóre limity można zwiększyć przez otwarcie biletu pomocy technicznej.
 
 ### <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
-Można użyć [Azure RBAC](../active-directory/role-based-access-built-in-roles.md) kontrolować poziom dostępu różni użytkownicy mogą używać do różnych zasobów platformy Azure. W ten sposób może też oddzielić pracy przez zespół na podstawie swoich potrzeb.
+Można użyć [Azure RBAC](../role-based-access-control/built-in-roles.md) kontrolować poziom dostępu różni użytkownicy mogą używać do różnych zasobów platformy Azure. W ten sposób może też oddzielić pracy przez zespół na podstawie swoich potrzeb.
 
 Jeżeli sieci wirtualne są dane użytkowników w **współautora sieci** roli mają pełną kontrolę nad zasobami sieci wirtualnej Azure Resource Manager. Podobnie, użytkownicy w **klasycznego współautora sieci** rola ma pełną kontrolę nad zasoby klasyczne sieci wirtualnej.
 
 > [!NOTE]
-> Możesz również [tworzyć własne role](../active-directory/role-based-access-control-configure.md) do oddzielania potrzeb administracyjnych.
+> Możesz również [tworzyć własne role](../role-based-access-control/role-assignments-portal.md) do oddzielania potrzeb administracyjnych.
 >
 >
 
-## <a name="design"></a>Projektowanie
+## <a name="design"></a>Projekt
 Jeśli znasz już odpowiedzi na pytania w [Planowanie](#Plan) Przejrzyj następujące przed zdefiniowaniem Twojej sieci wirtualnych.
 
 ### <a name="number-of-subscriptions-and-vnets"></a>Liczba subskrypcji i sieci wirtualnych
@@ -188,7 +188,7 @@ Należy rozpocząć planowanie o udzielenie odpowiedzi na pytania w projekcie [o
 
     Tak. Zespół sieci musi pełnej kontroli dla ustawień sieci wirtualnej, gdy deweloperzy tylko powinien mieć możliwość wdrażania ich maszyn wirtualnych do istniejącego podsieci.
 
-### <a name="design"></a>Projektowanie
+### <a name="design"></a>Projekt
 Należy stosować projektu określenie subskrypcji, sieci wirtualnych, podsieci i grup NSG. W tym miejscu omówimy grup NSG, ale powinien więcej informacji o [grup NSG](virtual-networks-nsg.md) przed zakończeniem projektu.
 
 **Liczba subskrypcji i sieci wirtualnych**

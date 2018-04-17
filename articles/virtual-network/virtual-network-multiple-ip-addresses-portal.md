@@ -1,11 +1,11 @@
 ---
-title: "Wiele adresów IP dla maszyn wirtualnych platformy Azure - Portal | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu portalu Azure | Menedżer zasobów."
+title: Wiele adresów IP dla maszyn wirtualnych platformy Azure - Portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można przypisać wiele adresów IP do maszyny wirtualnej przy użyciu portalu Azure | Menedżer zasobów.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3a8cae97-3bed-430d-91b3-274696d91e34
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 906105e737087de91e7393861e9057f8acb06aa4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 85eefd0d15ed08eaa82983c6901faa0aa1ff303c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Przypisz wielu adresów IP do maszyn wirtualnych za pomocą portalu Azure
 
@@ -35,7 +35,7 @@ Jeśli chcesz utworzyć Maszynę wirtualną z wielu adresów IP lub statycznego 
 
 ## <a name="add"></a>Dodaj adresy IP do maszyny Wirtualnej
 
-Prywatne i publiczne adresy IP można dodać do karty Sieciowej, wykonując kroki, które należy wykonać. Przykłady w poniższych sekcjach założono, że już istnieje maszyna wirtualna z tych trzech konfiguracji adresu IP, opisane w [scenariusza](#Scenario), ale nie jest to wymagane.
+Prywatne i publiczne adresy IP można dodać do interfejsu sieci platformy Azure, wykonując kroki, które należy wykonać. Przykłady w poniższych sekcjach założono, że już istnieje maszyna wirtualna z tych trzech konfiguracji adresu IP, opisane w [scenariusza](#Scenario), ale nie jest to wymagane.
 
 ### <a name="coreadd"></a>Podstawowe kroki
 

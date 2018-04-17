@@ -1,25 +1,25 @@
 ---
-title: "Nawiązać połączenie przy użyciu sieci wirtualnych - Azure HDInsight Kafka | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak nawiązać bezpośrednie Kafka w usłudze HDInsight przy użyciu sieci wirtualnej platformy Azure. Dowiedz się, jak połączyć się z Kafka z klientów Programowanie przy użyciu bramy sieci VPN lub klienci w sieci lokalnej za pomocą urządzenia bramy sieci VPN."
+title: Nawiązać połączenie przy użyciu sieci wirtualnych - Azure HDInsight Kafka | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać bezpośrednie Kafka w usłudze HDInsight przy użyciu sieci wirtualnej platformy Azure. Dowiedz się, jak połączyć się z Kafka z klientów Programowanie przy użyciu bramy sieci VPN lub klienci w sieci lokalnej za pomocą urządzenia bramy sieci VPN.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
+ms.devlang: ''
 ms.custom: hdinsightactive
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 53502257d85c88195a40b7bda033483bd97ff3f4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Nawiązać Kafka w usłudze HDInsight przy użyciu sieci wirtualnej platformy Azure
 
@@ -62,7 +62,7 @@ HDInsight nie zezwala na bezpośrednie połączenie Kafka za pośrednictwem publ
 
 Aby uzyskać więcej informacji na temat używania usługi HDInsight w sieci wirtualnej, zobacz [rozszerzyć HDInsight przy użyciu sieci wirtualnych Azure](../hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a>Nawiązywanie połączenia z siecią lokalną do Kafka
+## <a id="on-premises"></a> Nawiązywanie połączenia z siecią lokalną do Kafka
 
 Aby utworzyć klaster Kafka, który komunikuje się z sieci lokalnej, postępuj zgodnie z instrukcjami [HDInsight połączyć się z siecią lokalną](./../connect-on-premises-network.md) dokumentu.
 
@@ -78,7 +78,7 @@ Te kroki Utwórz następującą konfigurację:
 
 Aby sprawdzić, czy klient Kafka łączy do klastra z lokalnych, wykonaj czynności w [przykład: Python klienta](#python-client) sekcji.
 
-## <a id="vpnclient"></a>Połączenie z Kafka z klienta sieci VPN
+## <a id="vpnclient"></a> Połączenie z Kafka z klienta sieci VPN
 
 Wykonaj kroki w tej sekcji, aby utworzyć następującej konfiguracji:
 
@@ -292,7 +292,7 @@ Domyślnie dozorcy zwraca nazwę domeny brokerzy Kafka do klientów. Ta konfigur
 
 Aby połączyć się z bramą sieci VPN, należy użyć __Connect Azure__ sekcji [skonfigurować połączenie punkt-lokacja](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) dokumentu.
 
-## <a id="python-client"></a>Przykład: Python klienta
+## <a id="python-client"></a> Przykład: Python klienta
 
 Do sprawdzania poprawności łączności Kafka, należy użyć do tworzenia i uruchamiania producent Python i konsumentów następujące czynności:
 

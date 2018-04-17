@@ -1,26 +1,26 @@
 ---
 title: Osadzanie raportu w kolekcjach obszaru roboczego programu Azure Power BI | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak osadzanie raportu, który znajduje się w kolekcji programu Power BI obszaru roboczego do aplikacji."
+description: Dowiedz się, jak osadzanie raportu, który znajduje się w kolekcji programu Power BI obszaru roboczego do aplikacji.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 56e7ca90132527c0ef9d4bd478e99b75ca055272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: b6fa46b1cf3a251d6116e7de6ef41a9e6d265c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Osadzanie raportu w kolekcjach obszaru roboczego programu Power BI
 
@@ -116,7 +116,7 @@ Osadź tokeny, można ograniczyć użycie zasobów, które zapewniają dostęp d
 
 ## <a name="embed-using-javascript"></a>Osadź przy użyciu języka JavaScript
 
-Po umieszczeniu token dostępu i identyfikator raportu, możemy osadzić raport przy użyciu języka JavaScript. Wymaga to zainstalowania NuGet [pakietu Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl będą tylko https://embedded.powerbi.com/appTokenReportEmbed.
+Po umieszczeniu token dostępu i identyfikator raportu, możemy osadzić raport przy użyciu języka JavaScript. Wymaga to zainstalowania NuGet [pakietu Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Po prostu będzie embedUrl https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Można użyć [próbki osadzić raport JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) Aby przetestować funkcje. Udostępnia także przykłady kodu dla różnych operacji, które są dostępne.
@@ -148,7 +148,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 Raport zostanie automatycznie osadzony na podstawie rozmiaru swojego kontenera. Aby zastąpić domyślny rozmiar element osadzony, po prostu Dodaj klasy atrybutu lub wbudowane style CSS szerokość i wysokość.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Rozpoczęcie pracy z przykładem](get-started-sample.md)  
 [Authenticating and authorizing with Power BI Workspace Collections (Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI)](app-token-flow.md)  

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 30f5fe83c46f2dbe1933e8347242be7fbb30a3e3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3c32b5ce90d4e5aafacb8211ff8f432bc3c78db8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>Zarządzanie maszyny wirtualnej przy użyciu programu Azure PowerShell
 
@@ -43,15 +43,15 @@ Grupa zasobów jest obecnie pusta.
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
-Chcesz upewnić się, że użytkownicy w organizacji mają odpowiedni poziom dostępu do tych zasobów. Nie chcesz udzielić nieograniczonego dostępu do użytkowników, ale należy również upewnij się, że mogą je z siecią firmową. [Kontrola dostępu oparta na rolach](../../active-directory/role-based-access-control-what-is.md) pozwala na zarządzanie, którzy użytkownicy mają uprawnienia do wykonania określonych czynności w zakresie.
+Chcesz upewnić się, że użytkownicy w organizacji mają odpowiedni poziom dostępu do tych zasobów. Nie chcesz udzielić nieograniczonego dostępu do użytkowników, ale należy również upewnij się, że mogą je z siecią firmową. [Kontrola dostępu oparta na rolach](../../role-based-access-control/overview.md) pozwala na zarządzanie, którzy użytkownicy mają uprawnienia do wykonania określonych czynności w zakresie.
 
 Aby utworzyć i usunąć przypisania roli, użytkownicy muszą mieć `Microsoft.Authorization/roleAssignments/*` dostępu. Ten dostęp za pomocą ról właściciel lub Administrator dostępu użytkowników.
 
 Do zarządzania rozwiązań maszyny wirtualnej, istnieją trzy role określonych zasobów, które zapewniają dostęp do potrzebnych:
 
-* [Współautor maszyny wirtualnej](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Współautor sieci](../../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Współautor konta magazynu](../../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Współautor sieci](../../role-based-access-control/built-in-roles.md#network-contributor)
+* [Współautor konta magazynu](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Zamiast przypisywać role poszczególnym użytkownikom, łatwiej często [utworzyć grupy usługi Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md) dla użytkowników, którzy potrzebują podjęcia działań podobne. Następnie przypisać do odpowiedniej roli. Aby uprościć w tym artykule, należy utworzyć grupy usługi Azure Active Directory bez członków. Nadal można przypisać tej grupy do roli dla zakresu. 
 

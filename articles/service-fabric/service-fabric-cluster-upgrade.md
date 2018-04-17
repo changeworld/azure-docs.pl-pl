@@ -1,11 +1,11 @@
 ---
-title: "Uaktualnienia klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft"
-description: "Uaktualnienie kodu sieci szkieletowej usług i/lub konfigurację, która działa w klastrze usługi sieć szkieletowa usług, w tym ustawieniu trybu aktualizacji klastra, certyfikaty, dodawanie portów aplikacji, sposób poprawek systemu operacyjnego, uaktualnienie i tak dalej. Czego można oczekiwać po uaktualnienia są wykonywane?"
+title: Uaktualnienia klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
+description: Uaktualnienie kodu sieci szkieletowej usług i/lub konfigurację, która działa w klastrze usługi sieć szkieletowa usług, w tym ustawieniu trybu aktualizacji klastra, certyfikaty, dodawanie portów aplikacji, sposób poprawek systemu operacyjnego, uaktualnienie i tak dalej. Czego można oczekiwać po uaktualnienia są wykonywane?
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/10/2017
-ms.author: chackdan
-ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: aljo
+ms.openlocfilehash: 22dae85c4125c54003f65aba3ef112ffcec9b76d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Uaktualnianie klastra usługi sieć szkieletowa usług Azure
 > [!div class="op_single_selector"]

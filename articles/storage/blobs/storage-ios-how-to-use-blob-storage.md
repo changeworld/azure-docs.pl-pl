@@ -1,32 +1,26 @@
 ---
-title: "Jak używać magazynu obiektów Blob platformy Azure z systemem iOS | Dokumentacja firmy Microsoft"
-description: "Przechowuj dane niestrukturalne w chmurze za pomocą Magazynu obiektów blob Azure."
+title: Jak używać magazynu obiektów (Blob) z systemem iOS - Azure | Dokumentacja firmy Microsoft
+description: Przechowuj dane niestrukturalne w chmurze za pomocą Magazynu obiektów blob Azure.
 services: storage
 documentationcenter: ios
 author: michaelhauss
-manager: vamshik
-editor: tysonn
-ms.assetid: df188021-86fc-4d31-a810-1b0e7bcd814b
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15ba7409b4c5f75729b1b40cd2f333c44ae0368
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak używać magazynu obiektów Blob z systemem iOS
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
+W tym artykule przedstawiono sposób wykonywania typowych scenariuszy przy użyciu magazynu obiektów Blob Microsoft Azure. Przykłady są napisane w języku Objective C i użyj [biblioteki klienta magazynu Azure dla systemu iOS](https://github.com/Azure/azure-storage-ios). Omówione scenariusze obejmują przekazywanie, wyświetlanie, pobieranie i usuwanie obiektów blob. Aby uzyskać więcej informacji dotyczących obiektów blob, zobacz [następne kroki](#next-steps) sekcji. Możesz również pobrać [Przykładowa aplikacja](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) szybko wyświetlić korzystanie z usługi Azure Storage w aplikacji systemu iOS.
 
-## <a name="overview"></a>Omówienie
-W tym artykule opisano sposób wykonywania typowych scenariuszy przy użyciu magazynu obiektów Blob Microsoft Azure. Przykłady są napisane w języku Objective C i użyj [biblioteki klienta magazynu Azure dla systemu iOS](https://github.com/Azure/azure-storage-ios). Omówione scenariusze obejmują **przekazywania**, **wyświetlania**, **pobieranie**, i **usuwanie** obiektów blob. Aby uzyskać więcej informacji dotyczących obiektów blob, zobacz [następne kroki](#next-steps) sekcji. Możesz również pobrać [Przykładowa aplikacja](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) szybko wyświetlić korzystanie z usługi Azure Storage w aplikacji systemu iOS.
+## <a name="what-is-blob-storage"></a>Co to jest magazyn obiektów Blob?
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -91,7 +85,7 @@ Jeśli używasz Swift, konieczne będzie Utwórz nagłówek mostkowania i zaimpo
 
 1. Utwórz plik nagłówka `Bridging-Header.h`i Dodaj powyżej instrukcję import.
 2. Przejdź do *ustawieniach kompilacji* , a następnie wyszukaj *nagłówków mostkowania języka Objective-C*.
-3. Kliknij dwukrotnie w zakresie *nagłówków mostkowania języka Objective-C* i Dodaj ścieżkę do pliku nagłówka:`ProjectName/Bridging-Header.h`
+3. Kliknij dwukrotnie w zakresie *nagłówków mostkowania języka Objective-C* i Dodaj ścieżkę do pliku nagłówka: `ProjectName/Bridging-Header.h`
 4. Kompilacji projektu (⌘ + B), aby sprawdzić, czy nagłówek mostkowania została pobrana przez Xcode.
 5. Rozpoczynanie korzystania z biblioteki bezpośrednio w żadnym pliku Swift, nie istnieje potrzeba dla instrukcje importu.
 
@@ -222,7 +216,7 @@ Poniższy przykład przedstawia sposób wyświetlania wszystkich obiektów blob 
 
 * **continuationToken** -reprezentuje token kontynuacji gdzie powinien rozpocząć operację wyświetlania listy. Jeśli token nie zostanie podany, będzie zawierała listę obiektów BLOB od początku. Dowolną liczbę obiektów blob może być wymieniona od zera do maksymalnej zestaw. Nawet jeśli ta metoda zwraca wyników, jeśli `results.continuationToken` nie jest tokenem nil, może być więcej obiektów blob w usłudze, które nie zostały wymienione.
 * **prefiks** — można określić prefiks do użycia na potrzeby listę obiektów blob. Zostaną wyświetlone tylko te obiekty BLOB, zaczynające się z tym prefiksem.
-* **useFlatBlobListing** — jak wspomniano w [nazewnictwa i odwołuje się do kontenerów i obiektów blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) sekcji, chociaż usługa Blob jest schemat płaskiej magazynu można utworzyć wirtualnego hierarchii za pomocą nazw obiektów blob z informacje o ścieżce. Jednak lista-flat nie jest obecnie obsługiwane. Ta funkcja będzie dostępna wkrótce. Obecnie ta wartość powinna być **tak**.
+* **useFlatBlobListing** — jak wspomniano w [nazewnictwa i odwołuje się do kontenerów i obiektów blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) sekcji, mimo że usługa Blob jest schemat płaskiej magazynu można utworzyć wirtualnego hierarchii za pomocą nazw obiektów blob ze ścieżką informacje. Jednak lista-flat nie jest obecnie obsługiwane. Ta funkcja będzie dostępna wkrótce. Obecnie ta wartość powinna być **tak**.
 * **blobListingDetails** — można określić elementów do uwzględnienia podczas wyświetlania obiektów blob
   * _AZSBlobListingDetailsNone_: wyświetlanie tylko zatwierdzone obiektów blob, a nie zwracać metadane obiektu blob.
   * _AZSBlobListingDetailsSnapshots_: wyświetlanie obiektów blob zatwierdzone i migawki obiektu blob.
@@ -382,7 +376,7 @@ Poniższy przykład pokazuje, jak można usunąć kontenera.
 }
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, kiedy znasz, jak używać magazynu obiektów Blob z systemem iOS, skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat biblioteki z systemem iOS i usługi magazynu.
 
 * [Biblioteka klienta usługi Azure Storage dla systemu iOS](https://github.com/azure/azure-storage-ios)

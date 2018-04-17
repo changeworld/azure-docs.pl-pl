@@ -5,37 +5,57 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: 28ddecc45faa213d1fd536b5ad8690e151037505
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2a6e3052c64ab6a2865a0c24a4876cb2b98d1a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Tabela wsparcia dla VMware i replikacja serwerów fizycznych do platformy Azure
 
 Ten artykuł zawiera podsumowanie obsługiwanych składników i ustawienia odzyskiwania po awarii maszyn wirtualnych VMware do platformy Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="supported-scenarios"></a>Obsługiwane scenariusze
+## <a name="replication-scenario"></a>Scenariusz replikacji
 
 **Scenariusz** | **Szczegóły**
 --- | ---
-Maszyny wirtualne VMware | Można wykonać odzyskiwania po awarii do platformy Azure dla maszyn wirtualnych VMware lokalnymi. Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell.
-Serwerów fizycznych | Można wykonać odzyskiwania po awarii do platformy Azure dla lokalnych serwerów fizycznych systemu Windows i Linux. Można wdrożyć ten scenariusz, w portalu Azure.
+Maszyny wirtualne VMware | Replikacja lokalnych maszyn wirtualnych VMware do platformy Azure. Można wdrożyć ten scenariusz, w portalu Azure lub za pomocą programu PowerShell.
+Serwerów fizycznych | Replikacja serversto fizycznych lokalnego systemu Windows i Linux Azure. Można wdrożyć ten scenariusz, w portalu Azure.
 
 ## <a name="on-premises-virtualization-servers"></a>Lokalnych serwerów wirtualizacji
 
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-VMware | vCenter Server 6.5 w wersji 6.0 lub 5.5 lub vSphere 6.5, 6.0 lub 5.5 | Firma Microsoft zaleca użycie serwera vCenter.
+VMware | vCenter Server 6.5 w wersji 6.0 lub 5.5 lub vSphere 6.5, 6.0 lub 5.5 | Firma Microsoft zaleca użycie serwera vCenter.<br/><br/> Zaleca się, że hostach vSphere i vCenter Server znajdują się w tej samej sieci co serwer przetwarzania. Domyślnie proces składniki serwera jest uruchamiany na serwerze konfiguracji, chyba że jest skonfigurowanie serwera dedykowanego procesu będzie sieci, w którym skonfigurować serwer konfiguracji. 
 Fizyczne | ND
 
+## <a name="site-recovery-configuration-server"></a>Serwer konfiguracji odzyskiwania lokacji
+
+Serwer konfiguracji jest na lokalnej maszynie z systemem składników usługi Site Recovery, w tym konfiguracji serwera, serwer przetwarzania i główny serwer docelowy. Dla replikacji maszyn wirtualnych VMware należy skonfigurować serwer konfiguracji wszystkich wymagań, za pomocą szablonu pakietu OVF do utworzenia maszyny Wirtualnej VMware. Replikacja serwerów fizycznych należy skonfigurować z maszyną serwera konfiguracji ręcznie.
+
+**Składnik** | **Wymagania**
+--- |---
+Rdzenie procesora CPU | 8 
+Pamięć RAM | 12 GB
+Liczba dysków | 3 dysków<br/><br/> Dyski zawierają dysku systemu operacyjnego, dysku pamięci podręcznej serwera przetwarzania i przechowywania dysku powrotu po awarii.
+Wolne miejsce na dysku | 600 GB miejsca wymaganego dla pamięci podręcznej serwera przetwarzania.
+Wolne miejsce na dysku | 600 GB miejsca wymaganego dla dysku przechowywania.
+System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 | 
+Ustawienia regionalne systemu operacyjnego | Angielski (en-us) 
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") powinna zostać zainstalowana.
+Role systemu Windows Server | Nie włączaj: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
+Zasady grupy| Nie włączaj: <br> -Uniemożliwić dostęp do wiersza polecenia. <br> -Uniemożliwić dostęp do narzędzia do edycji rejestru. <br> — Logika zaufania dla załączników. <br> -Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | Upewnij się, że:<br/><br/> -Nie masz istniejących domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br> -Nie masz istniejących witryny sieci Web/aplikacja nasłuchuje na porcie 443<br>
+Typ karty Sieciowej | VMXNET3 (jeśli są wdrażane jako maszyny Wirtualnej VMware) 
+Typ adresu IP | Statyczny 
+Porty | używane do sterowania kanału aranżacji 443)<br>9443 używany do transportu danych
 
 ## <a name="replicated-machines"></a>Replikowane maszyny
 
-W poniższej tabeli przedstawiono obsługę replikacji maszyn wirtualnych VMware oraz serwerach fizycznych. Usługa Site Recovery obsługuje replikację dowolne obciążenia uruchomione na komputerze z obsługiwanym systemem operacyjnym.
+Usługa Site Recovery obsługuje replikację dowolne obciążenia uruchomione na obsługiwanej maszynie.
 
 **Składnik** | **Szczegóły**
 --- | ---
@@ -58,11 +78,11 @@ System operacyjny Linux | Red Hat Enterprise Linux: 5.2-5.11, 6.1-6.9, 7.0 do 7,
 14.04 LTS | 9.11 | 3.13.0-24-Generic do 3.13.0-128-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-91-generic |
 14.04 LTS | 9.12 | 3.13.0-24-Generic do 3.13.0-132-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-Generic do 3.13.0-137-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-104-generic |
-14.04 LTS | 9.14 | 3.13.0-24-Generic do 3.13.0-142-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-116-generic |
+14.04 LTS | : 9,14 | 3.13.0-24-Generic do 3.13.0-142-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-116-generic |
 16.04 LTS | 9.11 | 4.4.0-21-Generic do 4.4.0-91-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-32-generic |
 16.04 LTS | 9.12 | 4.4.0-21-Generic do 4.4.0-96-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-Generic do 4.4.0-104-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic |
-16.04 LTS | 9.14 | 4.4.0-21-Generic do 4.4.0-116-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-36-generic,<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1011-azure |
+16.04 LTS | : 9,14 | 4.4.0-21-Generic do 4.4.0-116-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-36-generic,<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1011-azure |
 
 
 ### <a name="debian-kernel-versions"></a>Wersje debian jądra
@@ -70,8 +90,8 @@ System operacyjny Linux | Red Hat Enterprise Linux: 5.2-5.11, 6.1-6.9, 7.0 do 7,
 
 **Obsługiwana wersja** | **Wersja usługi mobilności odzyskiwania lokacji Azure** | **Wersja jądra** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-AMD64 do 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 to 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.5-amd64 |
+Debian 7 | : 9,14 | 3.2.0-4-AMD64 do 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 8 | : 9,14 | 3.16.0-4-AMD64 do 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.5-amd64 |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Magazyn gościa/systemy plików systemu Linux

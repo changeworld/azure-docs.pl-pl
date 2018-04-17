@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: b7d6e48a6f34472bc38947fd70e850b1c3bf6f8a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Maszyna wirtualna konsoli szeregowej (wersja zapoznawcza) 
 
@@ -32,7 +32,7 @@ Konsoli szeregowej maszyny wirtualnej na platformie Azure zapewnia dostęp do ko
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 * Maszyna wirtualna musi mieć [diagnostyki rozruchu](boot-diagnostics.md) włączone 
-* Konto, przy użyciu konsoli szeregowej musi mieć [roli współautora](../../active-directory/role-based-access-built-in-roles.md) dla maszyny Wirtualnej i [diagnostyki rozruchu](boot-diagnostics.md) konta magazynu. 
+* Konto, przy użyciu konsoli szeregowej musi mieć [roli współautora](../../role-based-access-control/built-in-roles.md) dla maszyny Wirtualnej i [diagnostyki rozruchu](boot-diagnostics.md) konta magazynu. 
 * Dla ustawienia właściwe dla systemu Linux distro, zobacz [podczas uzyskiwania dostępu do konsoli szeregowej dla systemu Linux](#accessing-serial-console-for-linux)
 
 
@@ -56,7 +56,7 @@ Wyłączenie ustawienia diagnostyki rozruchu tej maszyny Wirtualnej dla określo
 ## <a name="serial-console-security"></a>Zabezpieczenia konsoli szeregowej 
 
 ### <a name="access-security"></a>Zabezpieczenia dostępu 
-Dostęp do konsoli szeregowej jest ograniczony do użytkowników, którzy mają [współautorzy wirtualna](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) lub powyżej dostęp do maszyny wirtualnej. Jeśli uwierzytelnianie wieloskładnikowe wymaga dzierżawę usługi AAD, dostęp do konsoli szeregowej będzie również konieczne MFA, zgodnie z jego dostęp odbywa się za pośrednictwem [portalu Azure](https://portal.azure.com).
+Dostęp do konsoli szeregowej jest ograniczony do użytkowników, którzy mają [współautorzy wirtualna](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) lub powyżej dostęp do maszyny wirtualnej. Jeśli uwierzytelnianie wieloskładnikowe wymaga dzierżawę usługi AAD, dostęp do konsoli szeregowej będzie również konieczne MFA, zgodnie z jego dostęp odbywa się za pośrednictwem [portalu Azure](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Zabezpieczenia kanału
 Wszystkie dane są wysyłane Wstecz i określonymi zaszyfrowane w trakcie przesyłania.

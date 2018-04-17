@@ -4,22 +4,22 @@ description: Data Platform dla maszyny wirtualnej analizy danych.
 keywords: narzędzia do analizy danych, maszyny wirtualnej analizy danych, narzędzia do analizy danych, nauki danych systemu linux
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c9c85ebed6382a4188db028fbfb35675751bce76
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b3f340006801287383c2afb2924706affbd77a51
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-platforms"></a>Platformy danych
 
@@ -35,7 +35,7 @@ Poniżej zostały wymienione narzędzia platformy danych obsługiwane w DSVM.
 | DSVM obsługiwane wersje      | Windows      |
 | Typowe zastosowania      | Szybkie opracowywanie lokalnie z mniejszym zestawu danych <br/> Uruchom R w bazie danych   |
 | Łącza do próbek      |    Próbki tego zestawu danych z nowego Jorku jest ładowany do bazy danych SQL `nyctaxi`. <br/> Przykładowe Jupyter przedstawiający Microsoft R i analiza w bazie danych można znaleźć w folderze:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| Pokrewne narzędzia na DSVM       | SQL Server Management Studio <br/> Sterowniki ODBC/JDBC<br/> pyodbc, RODBC<br />Apache Drill      |
+| Pokrewne narzędzia na DSVM       | SQL Server Management Studio <br/> Sterowniki ODBC/JDBC<br/> pyodbc, RODBC<br />Apache Przechodzenie do szczegółów      |
 
 > [!NOTE]
 > Edycja dewelopera programu SQL Server 2016 służy tylko do prac deweloperskich i celów testowych. Potrzebujesz licencji lub jednej z maszyn wirtualnych serwera SQL go uruchomić w środowisku produkcyjnym. 
@@ -70,7 +70,7 @@ Serwer SQL jest zainstalowany w sposób standardowy. Można je znaleźć w `C:\P
 | DSVM obsługiwane wersje      | Linux <br /> Systemu Windows (eksperymentalne)      |
 | Typowe zastosowania      | * Szybkiego opracowywania aplikacji Spark/PySpark lokalnie z mniejszym zestawu danych lub nowszym należy ją wdrożyć na dużych klastry Spark, takich jak Azure HDInsight<br/> * Testów Microsoft R Server Spark kontekstu <br />* Użyj typu open source SparkML lub firmy Microsoft [MMLSpark](https://github.com/Azure/mmlspark) biblioteki, aby tworzyć aplikacje ML  |
 | Łącza do próbek      |    Przykład Jupyter: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Serwer R firmy Microsoft (Spark kontekst): /dsvm/samples/MRS/MRSSparkContextSample.R |
-| Pokrewne narzędzia na DSVM       | PySpark, Scala<br/>Jupyter (jądra Spark/PySpark)<br/>Microsoft R Server, SparkR, Sparklyr <br />Apache Drill      |
+| Pokrewne narzędzia na DSVM       | PySpark, Scala<br/>Jupyter (jądra Spark/PySpark)<br/>Microsoft R Server, SparkR, Sparklyr <br />Apache Przechodzenie do szczegółów      |
 
 ### <a name="how-to-use-it"></a>Jak z niego korzystać
 Możesz uruchamiać Spark, przesyłania zadań Spark w wierszu polecenia z `spark-submit` lub `pyspark` poleceń. Tworząc nowy notes o jądrze Spark można również utworzyć notesu Jupyter. 

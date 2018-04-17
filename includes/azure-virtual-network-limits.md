@@ -26,12 +26,12 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Podsieci na sieć wirtualną |1000 |10 000 |
 | Komunikacji równorzędnych sieci wirtualnych dla sieci wirtualnej |10 |50 |
 | Serwery DNS na sieć wirtualną |9 |25 |
-| Prywatne adresy IP na sieć wirtualną |4096 |8192 |
+| Prywatne adresy IP na sieć wirtualną |16384 ** |16384 |
 | Prywatne adresy IP na interfejs sieciowy |256 |1024 |
 | Współbieżne TCP lub UDP przepływów na kartę Sieciową maszyny wirtualnej lub wystąpienia roli |500 000 |500 000 |
-| Interfejsy sieciowe (karta sieciowa) |350 |20000 |
+| Interfejsy sieciowe (karta sieciowa) |24000 ** |24000 |
 | Sieciowe grupy zabezpieczeń (NSG) |100 |5000 |
-| Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |200 |1000 |
+| Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |1000 ** |1000 |
 | Adresy IP i zakresów określony dla źródła lub miejsca docelowego w grupie zabezpieczeń |2000 |4000 |
 | Grupy zabezpieczeń aplikacji |200 |500 |
 | Stosowanie grup zabezpieczeń dla konfiguracji IP dla karty Sieciowej |10 |20 |
@@ -39,10 +39,12 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Grupy zabezpieczeń aplikacji, które można określić w ramach wszystkich reguł zabezpieczeń grupy zabezpieczeń sieci |50 |100 |
 | Zdefiniowane przez użytkownika tabele tras |100 |200 |
 | Zdefiniowane przez użytkownika trasy na tabelę tras |100 |400 |
-| Publiczne adresy IP — dynamiczne |(Basic) 60 |kontakt z pomocą techniczną |
+| Publiczne adresy IP — dynamiczne |60 (podstawowe) |kontakt z pomocą techniczną |
 | Publiczne adresy IP — statyczne |(Basic) 20 |kontakt z pomocą techniczną |
-| Publiczne adresy IP — statyczne |(Standard) 20 |kontakt z pomocą techniczną |
+| Publiczne adresy IP — statyczne |20 (standardowy) |kontakt z pomocą techniczną |
 | Certyfikaty główne typu punkt-lokacja na bramę VPN Gateway |20 |20 |
+
+** Te domyślne limity dotyczą subskrypcje, które wcześniej nie było te limity zwiększona za pomocą techniczną
 
 #### <a name="load-balancer"></a>Limity usługi równoważenia obciążenia
 

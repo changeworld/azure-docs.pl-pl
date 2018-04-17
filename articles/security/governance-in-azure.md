@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: af011cb3eea27498107cdfd650518552cd63bdf3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="governance-in-azure"></a>Ład na platformie Azure
 
@@ -147,7 +147,7 @@ Gdy Azure pierwotnie został wydany, kontroli dostępu do subskrypcji zostały p
 
 Mnożenie tej subskrypcji nie jest już potrzebne. Przy użyciu kontroli dostępu opartej na rolach można przypisać użytkowników do ról standardowych (takich jak "" i "zapisu" typowych ról). Można również zdefiniować role niestandardowe.
 
-[Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Korzystając z modelu RBAC, można udzielić użytkownikom tylko takiego dostępu, jakiego potrzebują do wykonania swoich zadań. Nastawionych zabezpieczeń należy skoncentrować się na zapewniając pracownikom dokładne uprawnienia potrzebne. Za dużo uprawnienia ujawnia konta na ataki. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. Azure opartej na rolach kontroli dostępu (RBAC) pomaga rozwiązać ten problem, oferując precyzyjne zarządzanie dostępem dla platformy Azure. RBAC ułatwia rozdzielenie obowiązków w obrębie organizacji i udzielić tylko takiego dostępu dla użytkowników, które są niezbędne do wykonywania swoich zadań. Zamiast nadanie każdy nieograniczonych uprawnień w Twojej subskrypcji platformy Azure lub zasobów, można zezwolić tylko pewne akcje.
+[Azure opartej na rolach kontroli dostępu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Korzystając z modelu RBAC, można udzielić użytkownikom tylko takiego dostępu, jakiego potrzebują do wykonania swoich zadań. Nastawionych zabezpieczeń należy skoncentrować się na zapewniając pracownikom dokładne uprawnienia potrzebne. Za dużo uprawnienia ujawnia konta na ataki. Za mało uprawnienia oznacza, że pracownicy nie można pobrać ich pracować wydajnie. Azure opartej na rolach kontroli dostępu (RBAC) pomaga rozwiązać ten problem, oferując precyzyjne zarządzanie dostępem dla platformy Azure. RBAC ułatwia rozdzielenie obowiązków w obrębie organizacji i udzielić tylko takiego dostępu dla użytkowników, które są niezbędne do wykonywania swoich zadań. Zamiast nadanie każdy nieograniczonych uprawnień w Twojej subskrypcji platformy Azure lub zasobów, można zezwolić tylko pewne akcje.
 
 Na przykład użycie funkcji RBAC, aby umożliwić jednego pracownika zarządzać maszyn wirtualnych w ramach subskrypcji, gdy inny można zarządzać baz danych w ramach tej samej subskrypcji.
 
@@ -161,7 +161,7 @@ Azure RBAC ma trzy podstawowe role, które są stosowane do wszystkich typów za
 
 Pozostałe role RBAC na platformie Azure umożliwiają zarządzanie określonych zasobów platformy Azure. Na przykład Rola współautora maszyny wirtualnej zezwala użytkownikowi na tworzenie i zarządzanie maszynami wirtualnymi. Nie daje im dostępu do sieci wirtualnej lub podsieci, która łączy się z maszyny wirtualnej.
 
-[Wbudowane role RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) Wyświetla listę ról, które są dostępne w systemie Azure. Określa operacje i zakresem, który każdego wbudowana rola przyznaje użytkownikom.
+[Wbudowane role RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) Wyświetla listę ról, które są dostępne w systemie Azure. Określa operacje i zakresem, który każdego wbudowana rola przyznaje użytkownikom.
 
 Udziel dostępu, przypisując odpowiednie role RBAC do użytkowników, grup i aplikacji w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji. Rola przypisana w zakresie nadrzędnej również udziela dostępu do podrzędnych w nim zawarte.
 
@@ -169,9 +169,9 @@ Na przykład użytkownik z dostępem do grupy zasobów można zarządzać wszyst
 
 Azure RBAC obsługuje tylko operacje zarządzania zasobami Azure w portalu Azure i interfejsów API usługi Azure Resource Manager. Nie można go autoryzacji wszystkie operacje poziomu danych zasobów platformy Azure. Na przykład ktoś może zarządzać kontami magazynu autoryzacji, ale nie do obiektów blob lub tabel w ramach konta magazynu nie. Podobnie bazy danych SQL mogą być zarządzane, ale nie tabele w niej.
 
-Jeśli chcesz uzyskać więcej szczegółowych informacji na temat sposobu, w jaki RBAC ułatwia zarządzanie dostępem, zobacz [Co to jest kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is).
+Jeśli chcesz uzyskać więcej szczegółowych informacji na temat sposobu, w jaki RBAC ułatwia zarządzanie dostępem, zobacz [Co to jest kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
-Możesz również [utworzyć niestandardową rolę](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) based kontroli dostępu (RBAC), jeśli żadna z wbudowanych ról nie spełnia określonych dostępu wymaga. Role niestandardowe można tworzyć przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell), [Azure interfejsu wiersza polecenia (CLI)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli)i [interfejsu API REST](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest). Podobnie jak role wbudowane role niestandardowe można przypisać do użytkowników, grup i aplikacji w subskrypcji, grupy zasobów i zakresy zasobów.
+Możesz również [utworzyć niestandardową rolę](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) based kontroli dostępu (RBAC), jeśli żadna z wbudowanych ról nie spełnia określonych dostępu wymaga. Role niestandardowe można tworzyć przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [Azure interfejsu wiersza polecenia (CLI)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)i [interfejsu API REST](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Podobnie jak role wbudowane role niestandardowe można przypisać do użytkowników, grup i aplikacji w subskrypcji, grupy zasobów i zakresy zasobów.
 
 W ramach każdej subskrypcji można przyznać maksymalnie 2000 przypisań ról.
 
@@ -271,7 +271,7 @@ Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, po
 
 Innym przykładem wprowadzenie blokady tylko do odczytu na zasób usługi aplikacji — uniemożliwia Eksploratora serwera w usłudze Visual Studio wyświetlanie plików dla zasobu, ponieważ interakcji wymaga dostępu do zapisu.
 
-W przeciwieństwie do kontroli dostępu opartej na rolach blokady zarządzania służy do stosowania ograniczenia we wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [kontroli dostępu opartej na roli Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+W przeciwieństwie do kontroli dostępu opartej na rolach blokady zarządzania służy do stosowania ograniczenia we wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [kontroli dostępu opartej na roli Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 Po zastosowaniu blokady w zakresie nadrzędnym, wszystkie zasoby w ramach tego zakresu dziedziczą tego samego blokady. Nawet zasoby, które później zostaną dodane dziedziczą blokady z obiektu nadrzędnego. Najbardziej restrykcyjne blokady w dziedziczenia ma pierwszeństwo.
 

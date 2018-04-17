@@ -1,24 +1,20 @@
 ---
-title: "Projekt, wskazówki dotyczące zreplikowanych tabelach - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft"
-description: "Wskazówek dotyczących projektowania zreplikowane tabele w schemat magazyn danych SQL Azure."
+title: Projekt, wskazówki dotyczące zreplikowanych tabelach - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wskazówek dotyczących projektowania zreplikowane tabele w schemat magazyn danych SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ronortloff
-manager: jhubbard
-editor: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 10/23/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 575b3c5710d744e99c6e02439577a362eb17c67e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/11/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 271b832f329e33b68f60fbc62005c6ee36bafe69
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania dotyczące używania zreplikowane tabele w magazynie danych SQL Azure
 Ten artykuł zawiera zalecenia dotyczące projektowania zreplikowanych tabel w schematu SQL Data Warehouse. Użyj te zalecenia, aby poprawić wydajność zapytań, zmniejsza się złożoność danych przemieszczania i zapytań.
@@ -84,7 +80,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Konwertuj istniejące tabele okrężnego zreplikowanych tabelach
 Jeśli masz już okrężnego tabel, firma Microsoft zaleca konwersji je na zreplikowane tabele, jeśli spełniają kryteria opisane w tym artykule. Zreplikowane tabele zwiększyć wydajność w przypadku tabel okrężnego, ponieważ eliminuje potrzebę przenoszenia danych.  Tabela okrężnego zawsze wymaga przenoszenia danych sprzężenia. 
 
-W tym przykładzie użyto [CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) można zmienić tabeli DimSalesTerritory na zreplikowanej tabeli. W tym przykładzie działa niezależnie od tego, czy DimSalesTerritory rozpowszechniane skrót lub okrężnego.
+W tym przykładzie użyto [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) można zmienić tabeli DimSalesTerritory na zreplikowanej tabeli. W tym przykładzie działa niezależnie od tego, czy DimSalesTerritory rozpowszechniane skrót lub okrężnego.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
@@ -112,7 +108,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Przykład wydajności kwerendy okrężnego i replikowane 
 
-Zreplikowanej tabeli nie wymaga przenoszenia żadnych danych do sprzężenia, ponieważ cała tabela jest już obecny w każdym węźle obliczeń. Jeśli tabele wymiarów okrężnego rozproszonych, sprzężenia kopiuje tabeli wymiarów w pełni do każdego węzła obliczeń. Aby przenieść dane, plan zapytania zawiera operacji o nazwie BroadcastMoveOperation. Ten typ operacji przenoszenia danych zmniejsza wydajność zapytań i wyeliminowania przy użyciu zreplikowanych tabelach. Aby wyświetlić czynności planu zapytania, użyj [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) widoku wykazu systemu. 
+Zreplikowanej tabeli nie wymaga przenoszenia żadnych danych do sprzężenia, ponieważ cała tabela jest już obecny w każdym węźle obliczeń. Jeśli tabele wymiarów okrężnego rozproszonych, sprzężenia kopiuje tabeli wymiarów w pełni do każdego węzła obliczeń. Aby przenieść dane, plan zapytania zawiera operacji o nazwie BroadcastMoveOperation. Ten typ operacji przenoszenia danych zmniejsza wydajność zapytań i wyeliminowania przy użyciu zreplikowanych tabelach. Aby wyświetlić czynności planu zapytania, użyj [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) widoku wykazu systemu. 
 
 Na przykład w następującej kwerendy względem schematu AdventureWorks ` FactInternetSales` tabela jest dystrybuowane wyznaczania wartości skrótu. `DimDate` i `DimSalesTerritory` tabele są mniejsze tabele wymiarów. Ta kwerenda zwraca całkowitej sprzedaży w Ameryce Północnej, dla roku obrachunkowego 2004:
  
@@ -140,7 +136,7 @@ Usługa SQL Data Warehouse implementuje zreplikowanej tabeli dzięki utrzymywani
 
 Odtwarza są wymagane po:
 - Dane są ładowane lub zmodyfikowane
-- Magazyn danych jest skalowana do innej [poziomu usługi](performance-tiers.md#service-levels)
+- Magazyn danych jest skalowana inny poziom
 - Definicja tabeli jest aktualizowany
 
 Odtwarza nie są wymagane po:
@@ -178,7 +174,7 @@ Na przykład tego wzorca obciążenia ładuje z czterech źródeł danych, ale t
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Odbuduj zreplikowanej tabeli po załadowaniu partii
 Aby zapewnić czas na wykonanie zapytania spójne, zaleca się wymuszanie odświeżanie w zreplikowanych tabelach po załadowaniu partii. W przeciwnym razie wartość pierwszego zapytania należy poczekać tabele, aby odświeżyć, która obejmuje ponowne tworzenie indeksów. W zależności od rozmiaru i liczby zreplikowanych tabel, których to dotyczy jego wpływ na wydajność może być istotne.  
 
-To zapytanie używa [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV zreplikowanych tabel, które zostały zmodyfikowane, ale nie został odbudowany.
+To zapytanie używa [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV zreplikowanych tabel, które zostały zmodyfikowane, ale nie został odbudowany.
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -197,11 +193,11 @@ Aby wymusić kompilowania, uruchom następującą instrukcję w każdej tabeli w
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
  
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 Aby utworzyć zreplikowanej tabeli, użyj jednej z tych instrukcji:
 
-- [Utwórz tabelę (magazyn danych Azure SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [Utwórz TABLE AS SELECT (magazyn danych Azure SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [Utwórz tabelę (magazyn danych Azure SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [Utwórz TABLE AS SELECT (magazyn danych Azure SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 Omówienie rozproszonej tabel, zobacz [rozproszonych tabel](sql-data-warehouse-tables-distribute.md).
 

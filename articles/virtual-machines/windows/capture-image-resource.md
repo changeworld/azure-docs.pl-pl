@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 0b0bd48b95ad9393b4cd82081436e561326df6da
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8195c5e86e6e8d7e2a0bd059820998692667eca8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie zarządzanego obrazu uogólniony maszyny wirtualnej na platformie Azure
 
@@ -66,12 +66,11 @@ Upewnij się, że ról serwera uruchomionych na komputerze są obsługiwane prze
 Tworzenie obrazu bezpośrednio z maszyny Wirtualnej sprawdza, czy obraz zawiera wszystkie dyski skojarzonych z maszyną Wirtualną, w tym dysku systemu operacyjnego i dysków z danymi. W tym przykładzie przedstawiono sposób tworzenia zarządzanego obrazu z maszyny Wirtualnej używa dyskach zarządzanych.
 
 
-Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu programu AzureRM.Compute PowerShell. Uruchom następujące polecenie, aby go zainstalować. (Użyj `Get-Module` Aby sprawdzić wersję, jakie masz.)
+Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu programu AzureRM.Compute PowerShell. W tym artykule wymaga AzureRM wersji modułu 5.7.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
-```azurepowershell-interactive
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-Aby uzyskać więcej informacji, zobacz [przechowywanie wersji programu Azure PowerShell](/powershell/azure/overview).
+
+> [!NOTE]
+> Jeśli chcesz przechowywać obrazu w strefie odporność pamięci masowej, należy go utworzyć w regionie, który obsługuje [stref dostępności](../../availability-zones/az-overview.md) i obejmują `-ZoneResilient` parametr w konfiguracji obrazu.
 
 
 1. Utwórz niektóre zmienne.

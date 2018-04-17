@@ -1,24 +1,24 @@
 ---
-title: "Pi malinowe do chmury (Python) - Połącz Pi malina z Centrum IoT Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować i Pi malina nawiązać połączenia z Centrum IoT Azure pi malina do wysyłania danych do platformy w chmurze platformy Azure, w tym samouczku."
+title: Pi malinowe do chmury (Python) - Połącz Pi malina z Centrum IoT Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować i Pi malina nawiązać połączenia z Centrum IoT Azure pi malina do wysyłania danych do platformy w chmurze platformy Azure, w tym samouczku.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "pi Azure iot malinowe, Centrum iot malinowe pi, pi malinowe wysyłania danych do chmury, malinowe pi do chmury"
+tags: ''
+keywords: pi Azure iot malinowe, Centrum iot malinowe pi, pi malinowe wysyłania danych do chmury, malinowe pi do chmury
 ms.service: iot-hub
 ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/31/2017
-ms.author: xshi
-ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 7069748c10f7c98f80fadc008f43a3aa02f7ac0e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Pi malinowe nawiązać połączenia z Centrum IoT Azure (Python)
 
@@ -169,7 +169,7 @@ Aby nawiązać połączenie z Pi malina, użyj jednej z następujących klientó
    nano config.py
    ```
 
-   Istnieje 5 makra w tym pliku mogą configurate. Pierwsza z nich jest `MESSAGE_TIMESPAN`, która określa przedział czasu (w milisekundach) między dwa komunikaty, które wysyłają do chmury. Drugi `SIMULATED_DATA`, która jest wartość logiczna, czy należy użyć danych czujnika symulowane lub nie. `I2C_ADDRESS`jest to adres I2C, które z czujnika BME280 jest połączony. `GPIO_PIN_ADDRESS`jest to adres interfejs GPIO dla Twojego LED. Jest ostatnim blokiem `BLINK_TIMESPAN`, który zdefiniowany zakres czasu, po włączeniu LED sieci w milisekundach.
+   Istnieje 5 makra w tym pliku mogą configurate. Pierwsza z nich jest `MESSAGE_TIMESPAN`, która określa przedział czasu (w milisekundach) między dwa komunikaty, które wysyłają do chmury. Drugi `SIMULATED_DATA`, która jest wartość logiczna, czy należy użyć danych czujnika symulowane lub nie. `I2C_ADDRESS` jest to adres I2C, które z czujnika BME280 jest połączony. `GPIO_PIN_ADDRESS` jest to adres interfejs GPIO dla Twojego LED. Jest ostatnim blokiem `BLINK_TIMESPAN`, który zdefiniowany zakres czasu, po włączeniu LED sieci w milisekundach.
 
    Jeśli użytkownik **nie ma czujnika**, ustaw `SIMULATED_DATA` do wartości `True` dokonanie przykładowej aplikacji, tworzenia i używania danych czujnika symulowane.
 
@@ -204,7 +204,7 @@ Aby nawiązać połączenie z Pi malina, użyj jednej z następujących klientó
    ![Dane wyjściowe — dane czujników wysłanych z Pi malina Centrum IoT](media/iot-hub-raspberry-pi-kit-c-get-started/success.png
 )
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Uruchomiono przykładowej aplikacji do zbierania danych czujników i wysyłania go do Centrum IoT. Wyświetlanie komunikatów wysłanych z Pi malina do IoT koncentratora lub wysłania wiadomości do Twojej Pi malina za pomocą interfejsu wiersza polecenia, zobacz [Zarządzaj chmury urządzenia wiadomości z Centrum iothub explorer samouczek](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 
