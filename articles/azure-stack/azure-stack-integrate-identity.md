@@ -261,7 +261,7 @@ Jeśli zdecydujesz się ręcznie uruchom polecenia, wykonaj następujące kroki:
    > [!IMPORTANT]
    > Przystawka programu MMC programu AD FS należy użyć do konfigurowania reguł autoryzacji wystawiania, korzystając z systemu Windows Server 2012 lub 2012 R2 AD FS.
 
-4. Użycie programu Internet Explorer lub przeglądarki Edge można uzyskać dostępu do stosu Azure, należy zignorować tokenu powiązania. W przeciwnym razie próby logowania się niepowodzeniem. Wystąpienie usług AD FS lub element członkowski farmy uruchom następujące polecenie:
+4. Użycie programu Internet Explorer lub przeglądarki Microsoft Edge można uzyskać dostępu do stosu Azure, należy zignorować tokenu powiązania. W przeciwnym razie próby logowania się niepowodzeniem. Wystąpienie usług AD FS lub element członkowski farmy uruchom następujące polecenie:
 
    > [!note]  
    > Ten krok nie ma zastosowania w przypadku korzystania z systemu Windows Server 2012 lub 2012 R2 AD FS. Jest bezpieczne pominąć to polecenie, a następnie kontynuuj integracji.

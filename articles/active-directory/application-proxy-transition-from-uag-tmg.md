@@ -1,11 +1,11 @@
 ---
-title: "Uaktualnij do serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft"
-description: "Wybierz, jakie rozwiązanie do serwera proxy jest najlepsze w przypadku uaktualniania z programu Microsoft Forefront lub Unified bramy dostępu."
+title: Uaktualnij do serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Wybierz, jakie rozwiązanie do serwera proxy jest najlepsze w przypadku uaktualniania z programu Microsoft Forefront lub Unified bramy dostępu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -45,7 +45,7 @@ Użyj tej tabeli, aby zrozumieć, jak Threat Management Gateway (TMG), Unified A
 | Uwierzytelnianie za pomocą nagłówków | - | Yes | - | Tak, z PingAccess | 
 | Zabezpieczenia w skali chmury | - | - | - | Yes | 
 | Dostęp warunkowy | - | Yes | - | Yes |
-| Brak składników w strefą zdemilitaryzowaną (DMZ) | - | - | - | Yes |
+| Brak składników w sieci obwodowej | - | - | - | Yes |
 | Nie połączenia przychodzące | - | - | - | Yes |
 
 W przypadku większości scenariuszy zalecamy aplikacji usługi Azure AD jako nowoczesnego rozwiązania. Serwer Proxy aplikacji sieci Web jest tylko preferowane w scenariuszach wymagających serwera proxy usług AD FS i nie można używać niestandardowych domen w usłudze Azure Active Directory. 

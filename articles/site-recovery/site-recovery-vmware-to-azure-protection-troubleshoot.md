@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów z błędami ochrony VMware/fizycznych do platformy Azure | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano typowe błędy replikacji maszyny VMware i sposoby ich rozwiązywania"
+title: Rozwiązywanie problemów z błędami ochrony VMware/fizycznych do platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano typowe błędy replikacji maszyny VMware i sposoby ich rozwiązywania
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: asgang
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -35,7 +35,7 @@ W większości przypadków można rozwiązać te problemy, wykonując kroki opis
 > [!NOTE]
     > Użyj Telnet, nie za pomocą polecenia PING do testowania łączności.  Jeśli nie zainstalowano programu Telnet, wykonaj listę kroków [tutaj](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)
 
-Jeśli nie można połączyć, Zezwalaj na port wejściowy 9443 na serwerze przetwarzania i sprawdź, czy problem nadal kończy działanie. Było w niej niektórych przypadkach, gdy serwer przetwarzania został za strefą DMZ, która była przyczyną tego problemu.
+Jeśli nie można połączyć, Zezwalaj na port wejściowy 9443 na serwerze przetwarzania i sprawdź, czy problem nadal kończy działanie. Było w niej niektórych przypadkach, gdy serwer przetwarzania został za siecią obwodową, która była przyczyną tego problemu.
 
 * Sprawdź stan usługi `InMage Scout VX Agent – Sentinel/OutpostStart` Jeśli nie jest uruchomiona i sprawdź, czy problem nadal występuje.   
 

@@ -89,14 +89,14 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 ### <a name="pci-dss-requirement-114"></a>Wymaganie PCI DSS 1.1.4
 
-**1.1.4** wymagania dotyczące zapory na każdym połączenie internetowe oraz między żadnych strefą zdemilitaryzowaną (DMZ) i sieci wewnętrznej strefy
+**1.1.4** wymagania dotyczące zapory na każdym połączenie internetowe oraz między żadnych siecią obwodową i sieci wewnętrznej strefy
 
 **Obowiązki:&nbsp;&nbsp;`Shared`**
 
 |||
 |---|---|
 | **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure wykorzystuje granic ochrony urządzeń, takich jak bramy, listy kontroli dostępu w sieci i zapory aplikacji do obsługi komunikacji sterowania na granicach wewnętrznych i zewnętrznych na poziomie platformy. Klient skonfiguruje je do ich specyfikacjach i wymaganiach. Microsoft Azure filtruje komunikacji po wznowieniu na platformie. |
-| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zapewnia strefą DMZ z izolacją PaaS i implementacja interfejsu środowiska usługi aplikacji zapewnia CRP przychodzące i wychodzące danych jest chroniona.<br /><br />[Środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) jest planu usług Premium używane dla zachowania zgodności. Aby uzyskać więcej informacji na formanty ASE oraz konfiguracji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Magazynu sieci Web firmy Contoso zapewnia sieć obwodową z izolacją PaaS i implementacja interfejsu środowiska usługi aplikacji zapewnia CRP przychodzące i wychodzące danych jest chroniona.<br /><br />[Środowiska usługi aplikacji (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) jest planu usług Premium używane dla zachowania zgodności. Aby uzyskać więcej informacji na formanty ASE oraz konfiguracji, zobacz [wskazówki PCI - środowiska usługi aplikacji](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -167,7 +167,7 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 | **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | CRP Contoso Webstore jest zdefiniowany w dokumentacji urząd Rejestrowania i wdrażania. Niezaufanych sieci są odrzucane przez projekt. Wersja demonstracyjna magazynu sieci Web firmy Contoso konfiguruje zaporę aplikacji Microsoft Azure, aby umożliwić tylko określonych zakresów adresów IP dostępu do usług Microsoft Azure. Magazynu sieci Web firmy Contoso zawiera Odmów wszelkie zapory na wszystkich granic CRP. Wszystkie konfiguracje odbywa się podczas początkowej konfiguracji wdrożenia.
 
 > [!NOTE]
-> Środowisko usługi aplikacji (ASE) służy w tym rozwiązaniu do izolacji CRP jednak jest niezbędne, że Twoje kwalifikowaną doświadczeniem zabezpieczeń (QSA) daje w wyniku tego rozwiązania, ponieważ ASE implementuje izolacji DMZ, który zezwala na połączenia wychodzące przez ASE. PCI-DSS wymaga wszystkich połączeń przychodzących i wychodzących, które nie są wymagane musi być zablokowany. Dla ASE działał poprawnie, ASE będzie nawiązywać wychodzące połączenia jako potrzebne zgodnie z definicją w ["Zagadnienia dotyczące sieci dla środowiska usługi App Service"](/azure/app-service/app-service-environment/network-info). Klienci powinni sprawdzić połączenia wychodzące z Twojej QSA przed wdrożeniem rozwiązania w środowisku produkcyjnym w celu zapewnienia, że będzie spełniać wymagania. |
+> Środowisko usługi aplikacji (ASE) służy w tym rozwiązaniu do izolacji CRP jednak jest niezbędne, że Twoje kwalifikowaną doświadczeniem zabezpieczeń (QSA) daje w wyniku tego rozwiązania, ponieważ ASE implementuje izolacji sieci obwodowej, który zezwala na połączenia wychodzące przez ASE. PCI-DSS wymaga wszystkich połączeń przychodzących i wychodzących, które nie są wymagane musi być zablokowany. Dla ASE działał poprawnie, ASE będzie nawiązywać wychodzące połączenia jako potrzebne zgodnie z definicją w ["Zagadnienia dotyczące sieci dla środowiska usługi App Service"](/azure/app-service/app-service-environment/network-info). Klienci powinni sprawdzić połączenia wychodzące z Twojej QSA przed wdrożeniem rozwiązania w środowisku produkcyjnym w celu zapewnienia, że będzie spełniać wymagania. |
 
 
 
@@ -212,7 +212,7 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 ### <a name="pci-dss-requirement-131"></a>Wymaganie PCI DSS 1.3.1
 
-**1.3.1** zaimplementować strefą DMZ, aby ograniczyć ruch przychodzący tylko składników systemu, które zapewniają autoryzowanym usługom publicznie, protokoły i porty.
+**1.3.1** zaimplementować sieć obwodową, aby ograniczyć ruch przychodzący tylko składników systemu, które zapewniają autoryzowanym usługom publicznie, protokoły i porty.
 
 
 **Obowiązki:&nbsp;&nbsp;`Customer Only`**
@@ -220,20 +220,20 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 |||
 |---|---|
 | **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego DMZ gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego sieć obwodowa gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
 
 
 
 ### <a name="pci-dss-requirement-132"></a>Wymaganie PCI DSS 1.3.2
 
-**1.3.2** limit ruchu przychodzącego ruchu internetowego do adresów IP w strefie DMZ.
+**1.3.2** limit ruchu przychodzącego ruchu internetowego do adresów IP w sieci obwodowej.
 
 **Obowiązki:&nbsp;&nbsp;`Customer Only`**
 
 |||
 |---|---|
 | **Provider<br />(Microsoft&nbsp;Azure)** | Nie dotyczy. |
-| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego DMZ gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
+| **Odbiorcy<br />(PCI&#8209;DSS&nbsp;plan)** | Implementacja magazynu sieci Web firmy Contoso jego sieć obwodowa gwarantuje, że tylko autoryzowanym usługom mogą łączyć się z CDE.|
 
 
 
@@ -280,7 +280,7 @@ Innymi składnikami systemu może udostępnić funkcji zapory tak długo, jak sp
 
 ### <a name="pci-dss-requirement-136"></a>Wymaganie PCI DSS 1.3.6
 
-**1.3.6** składników systemu miejscu przechowujących dane posiadacza (na przykład w bazie danych) w strefie sieci wewnętrznej, rozdzielone w strefie DMZ i innych niezaufanych sieci.
+**1.3.6** składników systemu miejscu przechowujących dane posiadacza (na przykład w bazie danych) w strefie sieci wewnętrznej, rozdzielone w sieci obwodowej i innych niezaufanych sieci.
 
 
 **Obowiązki:&nbsp;&nbsp;`Shared`**

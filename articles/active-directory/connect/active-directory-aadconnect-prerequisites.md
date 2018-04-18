@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Wymagania wstępne i sprzętu | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect"
+title: 'Azure AD Connect: Wymagania wstępne i sprzętu | Dokumentacja firmy Microsoft'
+description: W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
 ms.workload: identity
@@ -158,7 +158,7 @@ Wdrażanie usług federacyjnych Active Directory lub serwer Proxy aplikacji siec
   * Na komputerze, na którym działa Kreator (Jeśli komputer docelowy jest domeny z systemem innym niż sprzężone lub niezaufanej domeny):
     * W oknie polecenia z podwyższonym poziomem uprawnień Psh — polecenie `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
     * W Menedżerze serwera:
-      * Dodaj hosta DMZ WAP do puli maszyn (Menedżer serwera -> Zarządzaj -> Dodaj serwery... karta DNS)
+      * Dodaj hosta sieci obwodowej WAP do puli maszyn (Menedżer serwera -> Zarządzaj -> Dodaj serwery... karta DNS)
       * Karta serwery wszystkie Menedżera serwera: kliknij prawym przyciskiem myszy serwer proxy i wybierz polecenie Zarządzaj jako..., wprowadź poświadczenia lokalnego (nie domeny) dla komputera WAP
       * Można sprawdzić poprawności połączenia zdalnego PSH, na karcie w Menedżerze serwera wszystkie serwery: kliknij prawym przyciskiem myszy serwer proxy i wybierz polecenie programu Windows PowerShell. Sesję zdalną PSH należy otworzyć do upewnij się, że można nawiązać sesji zdalnego programu PowerShell.
 

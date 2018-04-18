@@ -109,7 +109,7 @@ W projekcie **FabrikamFiber.Web** zaktualizuj parametry połączenia w pliku **w
 
 Naciśnij klawisz **F5**, aby uruchomić i zdebugować aplikację w kontenerze.
 
-W przeglądarce Edge zostanie otwarta zdefiniowana strona uruchamiania Twojej aplikacji przy użyciu adresu IP kontenera w sieci wewnętrznej translatora adresów sieciowych (zazwyczaj 172.x.x.x). Aby dowiedzieć się więcej na temat debugowania aplikacji w kontenerach przy użyciu programu Visual Studio 2017, zobacz [ten artykuł][link-debug-container].
+W przeglądarce Microsoft Edge zostanie otwarta zdefiniowana strona uruchamiania Twojej aplikacji przy użyciu adresu IP kontenera w sieci wewnętrznej translatora adresów sieciowych (zazwyczaj 172.x.x.x). Aby dowiedzieć się więcej na temat debugowania aplikacji w kontenerach przy użyciu programu Visual Studio 2017, zobacz [ten artykuł][link-debug-container].
 
 ![Przykładowa aplikacja Fabrikam w kontenerze][image-web-preview]
 

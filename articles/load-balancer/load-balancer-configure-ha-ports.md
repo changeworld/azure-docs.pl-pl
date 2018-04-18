@@ -17,7 +17,7 @@ ms.date: 03/21/20178
 ms.author: kumud
 ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
 ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 03/23/2018
 ---
@@ -31,7 +31,7 @@ W tym artykule przedstawiono przykładowe wdrożenie wysokiej dostępności port
 Na ilustracji przedstawiono następującą konfigurację przykład wdrożenia, opisane w tym artykule:
 
 - NVAs są wdrażane w puli zaplecza modułu równoważenia obciążenia wewnętrznego za konfiguracji wysokiej dostępności portów. 
-- Trasy zdefiniowane przez użytkownika (przez) stosowane na trasach podsieci DMZ cały ruch do NVAs dokonując następnego przeskoku jako wewnętrznego wirtualnego adresu IP usługi równoważenia obciążenia. 
+- Trasy zdefiniowane przez użytkownika (przez) stosowane na trasach podsieci sieci obwodowej cały ruch do NVAs dokonując następnego przeskoku jako wewnętrznego wirtualnego adresu IP usługi równoważenia obciążenia. 
 - Wewnętrzny moduł równoważenia obciążenia dystrybuuje ruch do jednego z active NVAs zgodnie z algorytmem usługi równoważenia obciążenia.
 - Analizę NVA przetwarza ruchu i przekazuje je do początkowego miejsca docelowego w podsieci wewnętrznej.
 - Ścieżka zwracanego może zająć tej samej ścieżki, jeśli odpowiednie przez jest skonfigurowany w podsieci wewnętrznej. 

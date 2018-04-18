@@ -1,12 +1,12 @@
 ---
-title: "Używana przez typ routingu Azure Traffic Manager geograficznego hierarchii Kraj/Region | Dokumentacja firmy Microsoft"
-description: "W tym artykule wymieniono używana przez typ routingu Azure Traffic Manager geograficznego hierarchii Kraj/Region"
+title: Używana przez typ routingu Azure Traffic Manager geograficznego hierarchii Kraj/Region | Dokumentacja firmy Microsoft
+description: W tym artykule wymieniono używana przez typ routingu Azure Traffic Manager geograficznego hierarchii Kraj/Region
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -100,7 +100,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - ME(Montenegro)
 
-        - MK (Macedonia, była Jugosłowiańska Republika)
+        - MK (Macedonia, BJR)
 
         - MT(Malta)
 
@@ -408,7 +408,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - GE(Georgia)
 
-        - HK (Hongkong SAR)
+        - HK (SRA Hongkong)
 
         - ID(Indonesia)
 
@@ -436,7 +436,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - MN(Mongolia)
 
-        - MO (Makau SAR)
+        - MO (SRA Makau)
 
         - MV(Maldives)
 
@@ -484,7 +484,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
         - CG(Congo)
 
-        - CI (Wybrzeże Kości Słoniowej)
+        - CI (Wybrzeże Kości Słoniowej — Côte d’Ivoire)
 
         - CM(Cameroon)
 
@@ -622,7 +622,7 @@ W tym artykule wymieniono innych krajów i regionów używane przez **Geographic
 
     - GEO AP(Australia / Pacific)
 
-        - AS(American Samoa)
+        - AS(Samoa Amerykańskie)
 
         - AU(Australia)
 

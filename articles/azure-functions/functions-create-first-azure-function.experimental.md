@@ -62,7 +62,7 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 2. Wklej adres URL funkcji do paska adresu przeglądarki. Dodaj wartość ciągu zapytania `&name=<yourname>` na końcu tego adresu URL, a następnie naciśnij klawisz `Enter` na klawiaturze, aby wykonać żądanie. W przeglądarce powinna zostać wyświetlona odpowiedź zwrócona przez funkcję.  
 
-    Poniżej przedstawiono przykład odpowiedzi w przeglądarce Edge (odpowiedź w innych przeglądarkach może zawierać kod XML):
+    Poniżej przedstawiono przykład odpowiedzi w przeglądarce Microsoft Edge (odpowiedź w innych przeglądarkach może zawierać kod XML):
 
     ![Odpowiedź funkcji wyświetlona w przeglądarce.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 

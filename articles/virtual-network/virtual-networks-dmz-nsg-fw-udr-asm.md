@@ -1,11 +1,11 @@
 ---
-title: "Przykład DMZ — tworzenie DMZ do ochrony sieci z zapory, przez i NSG | Dokumentacja firmy Microsoft"
-description: "Tworzenie DMZ za pomocą zapory, zdefiniowane przez użytkownika routingu (przez) i grupy zabezpieczeń sieci (NSG)"
+title: Przykład sieci obwodowej — tworzenie sieci obwodowej do ochrony sieci z zapory, przez i NSG | Dokumentacja firmy Microsoft
+description: Tworzenie sieci obwodowej za pomocą zapory, zdefiniowane przez użytkownika routingu (przez) i grupy zabezpieczeń sieci (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: dc01ccfb-27b0-4887-8f0b-2792f770ffff
 ms.service: virtual-network
 ms.devlang: na
@@ -20,12 +20,12 @@ ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Przykład 3 — Tworzenie DMZ do ochrony sieci z zapory, przez i grupy NSG
+# <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Przykład 3 — Tworzenie sieci obwodowej do ochrony sieci z zapory, przez i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
 
-W tym przykładzie utworzy strefą DMZ z zapory, cztery serwery z systemem windows, użytkownik zdefiniowane routingu, przesyłania dalej protokołu IP i grup zabezpieczeń sieci. On również przeprowadzi wszystkich odpowiednich poleceń, aby zapewnić głębsze zrozumienie każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w strefie DMZ. Ponadto w odwołaniach sekcja jest kompletny kod i instrukcje do tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
+W tym przykładzie utworzy sieć obwodową z zapory, cztery serwery z systemem windows, użytkownik zdefiniowane routingu, przesyłania dalej protokołu IP i grup zabezpieczeń sieci. On również przeprowadzi wszystkich odpowiednich poleceń, aby zapewnić głębsze zrozumienie każdego kroku. Jest również sekcji scenariusza ruchu zapewnienie szczegółowe instrukcje, jak ruchu obejmującego warstw zabezpieczeń w sieci obwodowej. Ponadto w odwołaniach sekcja jest kompletny kod i instrukcje do tworzenia tego środowiska, aby przetestować i wypróbować różne scenariusze. 
 
-![Dwukierunkowe DMZ NVA, NSG i przez][1]
+![Dwukierunkowe sieci obwodowe NVA, NSG i przez][1]
 
 ## <a name="environment-setup"></a>Konfigurowanie środowiska
 W tym przykładzie jest subskrypcji, która zawiera następujące elementy:
@@ -50,7 +50,7 @@ Aby utworzyć środowiska:
 Po pomyślnym uruchomieniu skryptu może podjąć następujące kroki skryptu po:
 
 1. Konfigurowanie reguł zapory, ten temat znajdują się w sekcji poniżej: opis reguły zapory.
-2. Opcjonalnie w sekcji odwołań są dwa skrypty do konfiguracji serwera sieci web oraz serwer aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji DMZ.
+2. Opcjonalnie w sekcji odwołań są dwa skrypty do konfiguracji serwera sieci web oraz serwer aplikacji z prostą aplikację sieci web umożliwia testowanie za pomocą tej konfiguracji sieci obwodowej.
 
 Po uruchomieniu skryptu pomyślnie zapory, zasady zostaną muszą zostać wykonane zostało to opisane w sekcji: reguł zapory.
 
@@ -958,10 +958,10 @@ Zapisz ten plik xml z lokalizacji zaktualizowane i dodać link do tego pliku do 
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
-Jeśli chcesz zainstalować przykładową aplikację dla tego i innych przykłady DMZ, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
+Jeśli chcesz zainstalować przykładową aplikację dla tego i innych przykładowych sieci obwodowych, jeden podano przy użyciu następującego łącza: [przykładowy skrypt aplikacji][SampleApp]
 
 <!--Image References-->
-[1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "Dwukierunkowe DMZ NVA, NSG i przez"
+[1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "Dwukierunkowe sieci obwodowe NVA, NSG i przez"
 [2]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3firewalllogical.png "Widok logiczny reguł zapory"
 [3]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectfrontend.png "Utwórz obiekt sieci frontonu"
 [4]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectdns.png "Utwórz obiekt serwera DNS"

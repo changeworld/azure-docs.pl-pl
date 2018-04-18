@@ -1,14 +1,14 @@
 ---
-title: "Usługi na podstawie zapotrzebowania routingu w lokalizacji platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o routingu usługi na podstawie zapotrzebowania w lokalizacji platformy Azure"
+title: Usługi na podstawie zapotrzebowania routingu w lokalizacji platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o routingu usługi na podstawie zapotrzebowania w lokalizacji platformy Azure
 services: location-based-services
-keywords: 
+keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 3/6/2018
 ms.topic: article
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
@@ -133,7 +133,7 @@ Poniższa tabela zawiera informacje o pokryciu Azure lokalizacji na podstawie us
 | Liechtenstein                  |        ✓       |
 | Litwa                      |        ✓       |
 | Luksemburg                     |        ✓       |
-| Macedonia                      |        ✓       |
+| BJR Macedonia                      |        ✓       |
 | Malta                          |        ✓       |
 | Mołdawia                        |        ✓       |
 | Monako                         |        ✓       |

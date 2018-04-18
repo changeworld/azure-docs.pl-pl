@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Connect: Rozwiązywanie problemów z bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft"
-description: "W tym temacie opisano sposoby rozwiązywania problemów z usługi Azure Active Directory bezproblemowe logowanie jednokrotne"
+title: 'Azure Active Directory Connect: Rozwiązywanie problemów z bezproblemowe logowanie jednokrotne | Dokumentacja firmy Microsoft'
+description: W tym temacie opisano sposoby rozwiązywania problemów z usługi Azure Active Directory bezproblemowe logowanie jednokrotne
 services: active-directory
-keywords: "Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on"
-documentationcenter: 
+keywords: Co to jest usługa Azure AD Connect, zainstaluj usługę Active Directory, wymaganych składników dla usługi Azure AD, SSO, Single Sign-on
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -28,7 +28,7 @@ Ten artykuł pomaga informacje o typowych problemów dotyczących usługi Azure 
 
 - W niektórych przypadkach włączenie logowania jednokrotnego bezproblemowe może potrwać do 30 minut.
 - Jeśli Wyłącz i ponownie włącz bezproblemowe logowanie Jednokrotne dzierżawy, użytkownicy nie otrzymywali pojedynczego środowisko logowania, dopóki wygasły pamięci podręcznej bilet protokołu Kerberos, zwykle dotyczy 10 godzin.
-- Obsługa przeglądarki Edge nie jest dostępna.
+- Obsługa przeglądarki Microsoft Edge nie jest dostępna.
 - Jeśli bezproblemowe logowanie Jednokrotne zakończy się powodzeniem, użytkownik nie ma możliwość wybierz **wylogowuj mnie**. Ze względu na to zachowanie scenariuszy mapowania programu SharePoint i usługi OneDrive nie działają.
 - Klienci Office poniżej 16.0.8730.xxxx wersji nie obsługują nieinterakcyjnym logowania z bezproblemowe logowania jednokrotnego. Na tych klientach użytkownicy muszą wprowadzić ich nazw użytkowników, ale nie hasła do logowania.
 - Bezproblemowe logowanie Jednokrotne nie działa w trybie przeglądania prywatnym w programie Firefox.
