@@ -192,7 +192,7 @@ Te kroki można można zautomatyzować za pomocą zadania uruchamiania, dzięki 
 Po przeprowadzeniu, można sprawdzić, czy włączono HTTP/2 nie przy użyciu jednej z następujących metod:
 
 - Włącz wersja protokołu w dziennikach usług IIS i poszukaj w dziennikach usług IIS. Wyświetli HTTP/2 w dziennikach. 
-- Włącz narzędzia dla deweloperów F12 w Internet Explorer/Edge i przejść do karty sieciowej można zweryfikować protokołu. 
+- Włącz narzędzia dla deweloperów F12 w Internet Explorer/Microsoft Edge i przejść do karty sieciowej można zweryfikować protokołu. 
 
 Aby uzyskać więcej informacji, zobacz [HTTP/2 w usługach IIS](https://blogs.iis.net/davidso/http2).
 

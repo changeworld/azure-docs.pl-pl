@@ -1,11 +1,11 @@
 ---
-title: "Azure przykładowej aplikacji do użycia z sieci DMZ | Dokumentacja firmy Microsoft"
-description: "Wdrażanie to prostą aplikację sieci web po utworzeniu strefą DMZ do testowania scenariuszy przepływu ruchu"
+title: Azure przykładowej aplikacji do użycia z sieci obwodowej | Dokumentacja firmy Microsoft
+description: Wdrażanie to prostą aplikację sieci web po utworzeniu sieci obwodowej do testowania scenariuszy przepływu ruchu
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
@@ -20,12 +20,12 @@ ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="sample-application-for-use-with-dmzs"></a>Przykładowa aplikacja do użycia z sieci DMZ
+# <a name="sample-application-for-use-with-dmzs"></a>Przykładowa aplikacja do użycia z sieci obwodowej
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
 
 Te skrypty programu PowerShell można uruchomić lokalnie na serwerach IIS01 i AppVM01, aby zainstalować i skonfigurować prostą aplikację sieci web wyświetlający stronę html, na serwerze frontonu IIS01 zawartością z wewnętrznego serwera AppVM01.
 
-Ta aplikacja zawiera prostym środowisku testowym dla wielu przykłady DMZ i w jaki sposób zmiany punktów końcowych, grup NSG, przez i zapory reguły mogą mieć wpływ na ruch.
+Ta aplikacja zawiera prostym środowisku testowym dla wielu przykłady sieci obwodowej i w jaki sposób zmiany punktów końcowych, grup NSG, przez i zapory reguły mogą mieć wpływ na ruch.
 
 ## <a name="firewall-rule-to-allow-icmp"></a>Reguły zapory, aby umożliwić protokołu ICMP
 Proste niniejszych PowerShell można uruchomić na dowolnej maszyny Wirtualnej systemu Windows, aby zezwolić na ruch protokołu ICMP (Ping). Ta aktualizacja zapory umożliwia łatwiejsze Rozwiązywanie problemów i testowanie, zezwalając na polecenie ping protokołu przekazywanie przez zaporę systemu windows (w przypadku większości dystrybucjach systemu Linux, które ICMP jest domyślnie włączona).

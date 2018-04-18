@@ -1,11 +1,11 @@
 ---
-title: "CENC z wieloma DRM i kontrola dostępu: odwołanie do projektu i wdrożenia na platformie Azure i usługi Azure Media Services | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat sposobu licencjonowania Microsoft Smooth Streaming klienta Eksportowanie zestawu."
+title: 'CENC z wieloma DRM i kontrola dostępu: odwołanie do projektu i wdrożenia na platformie Azure i usługi Azure Media Services | Dokumentacja firmy Microsoft'
+description: Więcej informacji na temat sposobu licencjonowania Microsoft Smooth Streaming klienta Eksportowanie zestawu.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: willzhan
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 7814739b-cea9-4b9b-8370-538702e5c615
 ms.service: media-services
 ms.workload: media
@@ -98,7 +98,7 @@ Na poniższym diagramie przedstawiono ogólny interakcji między składnikami w 
 Projekt zawiera trzy warstwy podstawowej:
 
 * Warstwa zaplecza (czarny) nie jest uwidaczniana zewnętrznie.
-* Warstwa DMZ (ciemny niebieski) zawiera wszystkie punkty końcowe, które stają przed publicznego.
+* Warstwa sieci obwodowej (ciemny niebieski) zawiera wszystkie punkty końcowe, które stają przed publicznego.
 * Warstwę publiczny internet (niebieski światła) zawiera CDN i odtwarzacze z ruchem w publicznej sieci internet.
 
 Również powinien być narzędziem do zarządzania zawartością do kontroli ochrony DRM, niezależnie od tego, czy jest statyczny lub dynamiczny szyfrowania. Dane wejściowe do szyfrowania DRM obejmują:

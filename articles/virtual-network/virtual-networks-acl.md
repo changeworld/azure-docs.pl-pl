@@ -33,7 +33,7 @@ Listy kontroli dostępu można skonfigurować przy użyciu programu PowerShell l
 Za pomocą listy kontroli dostępu w sieci, można wykonać następujące czynności:
 
 * Selektywnie akceptowanie lub odrzucanie ruchu przychodzącego na podstawie podsieci zdalne zakres adresów IPv4 do wejściowy punkt końcowy maszyny wirtualnej.
-* Czarna lista adresów IP
+* Lista zablokowanych adresów IP
 * Tworzenie wielu reguł dla punktu końcowego maszyny wirtualnej
 * Użyj reguł kolejności zapewnienie poprawny zestaw reguł są stosowane w punkcie końcowym podanej maszyny wirtualnej (najniższy najwyższe)
 * Określ listy ACL dla określonej podsieci zdalnego adresu IPv4.

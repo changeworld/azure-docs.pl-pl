@@ -102,7 +102,7 @@ Profilów usługi Traffic Manager można skonfigurować tak, aby użytkownicy s�
 Po skonfigurowaniu profilu geograficznego routingu każdego punktu końcowego skojarzone z profilu musi mieć zestaw regionów geograficznych przypisane do niej. W następujących poziomów szczegółowości może być regionu geograficznego 
 - World — dowolny region
 - Regionalne grupowania — na przykład Afryka Bliski Wschód, Australia/pacyficzny itp. 
-- Kraj/Region — na przykład Irlandii Peru, Hongkong SAR itp. 
+- Kraj/Region — na przykład Irlandia, Peru, SRA Hongkong itp. 
 - Województwo — na przykład Kalifornijskiej USA, Australia-Queensland, Kanada Alberta itp. (Uwaga: ten poziom szczegółowości jest obsługiwana tylko w przypadku stanów / prowincje w Australii, Kanady UK i USA).
 
 Jeśli region lub zestawie regionów jest przypisana do punktu końcowego, wszystkie żądania z tych regionów kierowania tylko do określonego punktu końcowego. Menedżer ruchu używa źródłowy adres IP zapytanie DNS do określić region, w którym pyta użytkownika z — zazwyczaj jest to adres IP wykonywania zapytań w imieniu użytkownika lokalnego rozpoznawania nazw DNS.  

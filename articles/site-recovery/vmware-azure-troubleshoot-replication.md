@@ -1,6 +1,6 @@
 ---
-title: "Rozwiązywanie problemów z replikacją dla maszyny Wirtualnej VMware i replikacja serwerów fizycznych do platformy Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera Rozwiązywanie problemów dotyczących typowych problemów z replikacją podczas replikowania maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure z usługą Azure Site Recovery."
+title: Rozwiązywanie problemów z replikacją dla maszyny Wirtualnej VMware i replikacja serwerów fizycznych do platformy Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera Rozwiązywanie problemów dotyczących typowych problemów z replikacją podczas replikowania maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure z usługą Azure Site Recovery.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -29,7 +29,7 @@ W wielu przypadkach niepowodzenia replikacji początkowej, napotykane w witrynie
 > [!NOTE]
     > Użyj Telnet, nie za pomocą polecenia PING do testowania łączności.  Jeśli nie zainstalowano programu Telnet, wykonaj listę kroków [tutaj](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)
 
-Jeśli nie można połączyć, Zezwalaj na port wejściowy 9443 na serwerze przetwarzania i sprawdź, czy problem nadal kończy działanie. Było w niej niektórych przypadkach, gdy serwer przetwarzania został za strefą DMZ, która była przyczyną tego problemu.
+Jeśli nie można połączyć, Zezwalaj na port wejściowy 9443 na serwerze przetwarzania i sprawdź, czy problem nadal kończy działanie. Było w niej niektórych przypadkach, gdy serwer przetwarzania został za siecią obwodową, która była przyczyną tego problemu.
 
 * Sprawdź stan usługi `InMage Scout VX Agent – Sentinel/OutpostStart` Jeśli nie jest uruchomiona i sprawdź, czy problem nadal występuje.   
 

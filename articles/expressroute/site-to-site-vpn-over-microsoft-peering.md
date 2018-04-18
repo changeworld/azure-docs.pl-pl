@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie sieci VPN lokacja lokacja za pośrednictwem komunikacji równorzędnej dla usługi Azure ExpressRoute Microsoft | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie połączenia IPsec i IKE na platformie Azure za pośrednictwem komunikacji równorzędnej obwodu ExpressRoute Microsoft przy użyciu bramy sieci VPN typu lokacja lokacja."
+title: Konfigurowanie sieci VPN lokacja lokacja za pośrednictwem komunikacji równorzędnej dla usługi Azure ExpressRoute Microsoft | Dokumentacja firmy Microsoft
+description: Konfigurowanie połączenia IPsec i IKE na platformie Azure za pośrednictwem komunikacji równorzędnej obwodu ExpressRoute Microsoft przy użyciu bramy sieci VPN typu lokacja lokacja.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -42,7 +42,7 @@ Wysoka dostępność i nadmiarowość można skonfigurować wiele tuneli za poś
 Przy użyciu bramy sieci VPN, albo za pomocą odpowiedniej sieci wirtualne urządzenia (NVA) dostępnych za pośrednictwem portalu Azure Marketplace można przerywać działanie tuneli VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft. Użytkownik może wymieniać trasy statycznie lub dynamicznie za pośrednictwem tuneli zaszyfrowanych bez narażania exchange trasy do podstawowej komunikacji równorzędnej firmy Microsoft. W przykładach w niniejszym artykule protokołu BGP (niezależne od sesji BGP pozwala utworzyć komunikacji równorzędnej firmy Microsoft) służy do dynamicznej wymiany prefiksy za pośrednictwem tuneli zaszyfrowane.
 
 >[!IMPORTANT]
->Dla strony lokalnymi zwykle komunikacji równorzędnej firmy Microsoft jest został przerwany w strefie DMZ i prywatnej komunikacji równorzędnej jest zakończony w strefie sieci podstawowej. Dwie strefy zostałby rozdzielony za pomocą zapory. Jeśli konfigurujesz Microsoft równorzędna wyłącznie na włączenie tunelowania bezpiecznego za pośrednictwem usługi ExpressRoute, pamiętaj, aby odfiltrować wyłącznie publicznych adresów IP odsetek są pobierania anonsowane za pomocą komunikacji równorzędnej firmy Microsoft.
+>Dla strony lokalnymi zwykle komunikacji równorzędnej firmy Microsoft jest został przerwany w sieci obwodowej i prywatnej komunikacji równorzędnej jest zakończony w strefie sieci podstawowej. Dwie strefy zostałby rozdzielony za pomocą zapory. Jeśli konfigurujesz Microsoft równorzędna wyłącznie na włączenie tunelowania bezpiecznego za pośrednictwem usługi ExpressRoute, pamiętaj, aby odfiltrować wyłącznie publicznych adresów IP odsetek są pobierania anonsowane za pomocą komunikacji równorzędnej firmy Microsoft.
 >
 >
 
@@ -70,7 +70,7 @@ Po skonfigurowaniu obwodu i komunikacji równorzędnej firmy Microsoft, można �
 
 ## <a name="routefilter"></a>2. Konfigurowanie filtrów tras
 
-Filtr tras umożliwia zidentyfikowanie usług, które chcesz korzystać za pośrednictwem komunikacji równorzędnej firmy Microsoft obwodu usługi ExpressRoute. Jest zasadniczo biała lista wszystkich wartości społeczności protokołu BGP. 
+Filtr tras umożliwia zidentyfikowanie usług, które chcesz korzystać za pośrednictwem komunikacji równorzędnej firmy Microsoft obwodu usługi ExpressRoute. Jest zasadniczo lista wszystkich dozwolonych wartości społeczności protokołu BGP. 
 
 ![filtr tras](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 

@@ -168,7 +168,7 @@ Architektura podstawowych definiuje prywatnej sieci wirtualnej z 10.0.0.0/16 prz
 
 Każdy z warstw sieci ma dedykowany sieciowej grupy zabezpieczeń (NSG):
 
-- Grupa zabezpieczeń sieci DMZ dla zapory i zapory aplikacji sieci Web dla bramy aplikacji
+- Grupa zabezpieczeń sieci obwodowej dla zapory i zapory aplikacji sieci Web dla bramy aplikacji
 - Grupa NSG do zarządzania jumpbox (bastionu hosta)
 - Grupa NSG dla środowiska usługi aplikacji
 

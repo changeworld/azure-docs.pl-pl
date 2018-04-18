@@ -188,7 +188,7 @@ W środowisku ASE z wewnętrznym modułem równoważenia obciążenia jest obsł
 
 W trakcie używania usługi Azure Functions w środowisku ASE z wewnętrznym modułem równoważenia obciążenia może pojawić się komunikat o błędzie „Nie możemy teraz pobrać funkcji. Spróbuj ponownie później”. Ten błąd występuje, ponieważ interfejs użytkownika usługi Functions korzysta z witryny SCM za pośrednictwem protokołu HTTPS, a w łańcuchu zaufania przeglądarki nie ma certyfikatu głównego. Podobny problem występuje w przypadku zadań Web Job. Aby uniknąć tego problemu, możesz wykonać jedną z następujących czynności:
 
-- Dodaj certyfikat do magazynu zaufanych certyfikatów. Odblokowuje to obsługę w przeglądarkach Edge i Internet Explorer.
+- Dodaj certyfikat do magazynu zaufanych certyfikatów. Odblokowuje to obsługę w przeglądarkach Microsoft Edge i Internet Explorer.
 - W przeglądarce Chrome przejdź najpierw do witryny SCM, zaakceptuj niezaufany certyfikat, a następnie przejdź do portalu.
 - Użyj komercyjnego certyfikatu obecnego w łańcuchu zaufania przeglądarki.  Jest to najlepsze rozwiązanie.  
 
