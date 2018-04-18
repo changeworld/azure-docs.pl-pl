@@ -36,7 +36,7 @@ Jeśli zasady zabezpieczeń IT nie zezwalaj na niektórych komputerach w sieci, 
 
 Gdy grupy zarządzania programu Operations Manager jest zintegrowany z analizy dzienników, serwery zarządzania można skonfigurować do nawiązania połączenia bramy OMS do odbierania informacji o konfiguracji i wysyłania zebranych danych. Agenci programu Operations Manager wysłać niektórych danych, takich jak alerty programu Operations Manager, oceny konfiguracji, miejsce zajmowane przez wystąpienia i pojemności danych na serwerze zarządzania. Inne dane dużych, takich jak dzienniki programu IIS, informacje o wydajności i zdarzeń zabezpieczeń są wysyłane bezpośrednio do bramy OMS.  
 
-Jeśli jeden lub więcej serwerów bramę programu Operations Manager, które są wdrażane w strefa DMZ lub innych izolowaną sieć, do monitorowania systemów niezaufanych, nie mogą komunikować się z bramą OMS. Serwery programu Operations Manager bramy tylko może raportować do serwera zarządzania. 
+Jeśli jeden lub więcej serwerów bramę programu Operations Manager, które są wdrażane w w sieci obwodowej lub innych izolowaną sieć, do monitorowania systemów niezaufanych, nie mogą komunikować się z bramą OMS. Serwery programu Operations Manager bramy tylko może raportować do serwera zarządzania. 
 
 Po skonfigurowaniu grupy zarządzania programu Operations Manager do komunikowania się z bramą OMS informacje o konfiguracji serwera proxy jest automatycznie dystrybuowana do co komputer zarządzany przez agenta, który jest skonfigurowany do zbierania danych do analizy dzienników nawet wtedy, gdy ustawienie jest puste.    
 

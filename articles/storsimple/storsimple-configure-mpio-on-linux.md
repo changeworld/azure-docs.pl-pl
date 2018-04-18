@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie wielościeżkowego wejścia/wyjścia na hoście z systemem StorSimple Linux | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie wielościeżkowego wejścia/wyjścia w połączeniu z hostem Linux uruchomiony CentOS 6.6 StorSimple"
+title: Konfigurowanie wielościeżkowego wejścia/wyjścia na hoście z systemem StorSimple Linux | Dokumentacja firmy Microsoft
+description: Konfigurowanie wielościeżkowego wejścia/wyjścia w połączeniu z hostem Linux uruchomiony CentOS 6.6 StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -56,7 +56,7 @@ Plik konfiguracji `/etc/multipath.conf` udostępnia wiele funkcji wielu ścieże
 Multipath.conf zawiera pięć sekcje:
 
 - **Poziomu domyślnych ustawień systemowych** *(wartość domyślna)*: można zastąpić poziomu ustawień domyślnych systemu.
-- **Urządzenia na liście zabronionych numerów** *(czarna lista)*: można określić listę urządzeń, które nie powinny być kontrolowane na podstawie mapowania urządzenia.
+- **Urządzenia na liście zabronionych numerów** *(lista zablokowanych)*: można określić listę urządzeń, które nie powinny być kontrolowane na podstawie mapowania urządzenia.
 - **Wyeliminować wyjątki** *(blacklist_exceptions)*: może rozpoznać określonego urządzenia powinien być traktowany jako wielościeżkowe urządzeń, nawet jeśli na liście zabronionych.
 - **Określone ustawienia kontrolera magazynu** *(urządzeń)*: można określić ustawienia konfiguracji, które zostaną zastosowane do urządzenia, które mają dostawcy i informacje o produkcie.
 - **Określone ustawienia urządzenia** *(multipaths)*: Ta sekcja umożliwia dostosowywanie ustawień konfiguracji poszczególne jednostki LUN.
@@ -210,7 +210,7 @@ Automatycznie odnalezione urządzenia obsługiwane wielościeżkowe i skonfiguro
         }
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Krok 2: Konfigurowanie wielu ścieżek dla woluminów StorSimple
-Domyślnie wszystkie urządzenia są czarny wymienione w pliku multipath.conf i będą pomijane. Musisz utworzyć wyjątki czarna lista, aby umożliwić wielu ścieżek dla woluminów z urządzenia StorSimple.
+Domyślnie wszystkie urządzenia są czarny wymienione w pliku multipath.conf i będą pomijane. Musisz utworzyć listę zablokowanych wyjątków, aby umożliwić wielu ścieżek dla woluminów z urządzenia StorSimple.
 
 1. Edytuj `/etc/mulitpath.conf` pliku. Wpisz:
    

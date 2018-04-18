@@ -123,7 +123,7 @@ To ustawienie działa z przeglądarki. Jednak do zaspokojenia zasad urządzenia,
 
 | System operacyjny                     | Przeglądarki                            | Pomoc techniczna     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer, Edge, Chrome     | ![Zaznacz][1] |
+| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     | ![Zaznacz][1] |
 | Windows 8 / 8.1        | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | Windows 7              | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | iOS                    | Safari, Intune Managed Browser      | ![Zaznacz][1] |

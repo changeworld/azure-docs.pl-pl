@@ -1,8 +1,8 @@
 ---
-title: "Jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych"
-description: "Uwzględniono również sposób Użyj serwera Proxy aplikacji usługi Azure AD, aby zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych."
+title: Jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych
+description: Uwzględniono również sposób Użyj serwera Proxy aplikacji usługi Azure AD, aby zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
@@ -23,7 +23,7 @@ ms.lasthandoff: 02/01/2018
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak zapewnić bezpieczny zdalny dostęp do aplikacji lokalnych
 
-Obecnie pracownicy chcą produktywność w dowolnym miejscu w dowolnym momencie i na dowolnym urządzeniu. Chcą pracy na ich własnych urządzeń, czy są to tablety, telefony lub komputery przenośne. I ich oczekują mogły uzyskiwać dostęp do swoich aplikacji, obie aplikacje SaaS w chmurze i lokalne aplikacje firmowe. Zapewniając dostęp do aplikacji lokalnych tradycyjnie został użyty, wirtualnych sieci prywatnych (VPN) lub stref zdemilitaryzowaną (sieci DMZ). Nie tylko są tych rozwiązań, złożone i trudne do zwiększania bezpieczeństwa, ale są kosztowne do konfigurowania i zarządzania nią.
+Obecnie pracownicy chcą produktywność w dowolnym miejscu w dowolnym momencie i na dowolnym urządzeniu. Chcą pracy na ich własnych urządzeń, czy są to tablety, telefony lub komputery przenośne. I ich oczekują mogły uzyskiwać dostęp do swoich aplikacji, obie aplikacje SaaS w chmurze i lokalne aplikacje firmowe. Zapewniając dostęp do aplikacji lokalnych tradycyjnie został użyty, wirtualnych sieci prywatnych (VPN) lub stref zdemilitaryzowaną (sieci obwodowej). Nie tylko są tych rozwiązań, złożone i trudne do zwiększania bezpieczeństwa, ale są kosztowne do konfigurowania i zarządzania nią.
 
 Brak lepiej!
 
@@ -46,7 +46,7 @@ Serwer Proxy aplikacji usługi Azure AD jest:
    * Podczas publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD, możesz można korzystać z formantów sformatowanego autoryzacji i analiza zabezpieczeń w usłudze Azure. Otrzymasz skali chmury zabezpieczeń i funkcji zabezpieczeń platformy Azure, takich jak warunkowego dostępu i dwuetapowej weryfikacji.
    * Nie masz otworzyć wszystkie połączenia przychodzące za zaporą, aby zapewnić użytkownikom dostęp zdalny. 
 * **Cost-effective**
-   * Serwer Proxy aplikacji działa w chmurze, więc można oszczędzić czas i pieniądze. Lokalnymi rozwiązaniami zwykle wymagają konfiguracji i utrzymania sieci DMZ, serwery krawędzi lub innych złożonych infrastruktury.  
+   * Serwer Proxy aplikacji działa w chmurze, więc można oszczędzić czas i pieniądze. Lokalnymi rozwiązaniami zwykle wymagają konfiguracji i utrzymania sieci obwodowej, serwery krawędzi lub innych złożonych infrastruktury.  
 
 ## <a name="what-kind-of-applications-work-with-application-proxy"></a>Jakiego rodzaju aplikacje korzystają z serwera Proxy aplikacji?
 Serwer Proxy aplikacji usługi Azure AD umożliwia dostęp do różnych typów wewnętrznych aplikacji:
@@ -60,7 +60,7 @@ Serwer Proxy aplikacji usługi Azure AD umożliwia dostęp do różnych typów w
 ## <a name="how-does-application-proxy-work"></a>Jak działa serwer Proxy aplikacji?
 Istnieją dwa składniki, które trzeba skonfigurować, aby serwer Proxy aplikacji działa: łącznika i zewnętrznego punktu końcowego. 
 
-Łącznik jest lekki agenta, która znajduje się w systemie Windows Server w sieci. Łącznik umożliwia przepływ ruchu z usługi Serwer Proxy aplikacji w chmurze do aplikacji lokalnej. Funkcja ta używa tylko połączeń wychodzących, dzięki czemu nie trzeba otworzyć żadnych portów przychodzących lub umieść niczego w strefie DMZ. Łączniki są bezstanowych i pobierania informacji o chmurze odpowiednio do potrzeb. Aby uzyskać więcej informacji na temat łączników, takich jak jak one Równoważenie obciążenia i uwierzytelniania, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](application-proxy-understand-connectors.md). 
+Łącznik jest lekki agenta, która znajduje się w systemie Windows Server w sieci. Łącznik umożliwia przepływ ruchu z usługi Serwer Proxy aplikacji w chmurze do aplikacji lokalnej. Funkcja ta używa tylko połączeń wychodzących, dzięki czemu nie trzeba otworzyć żadnych portów przychodzących lub umieść niczego w sieci obwodowej. Łączniki są bezstanowych i pobierania informacji o chmurze odpowiednio do potrzeb. Aby uzyskać więcej informacji na temat łączników, takich jak jak one Równoważenie obciążenia i uwierzytelniania, zobacz [łączniki serwera Proxy aplikacji usługi AD zrozumieć Azure](application-proxy-understand-connectors.md). 
 
 Zewnętrznego punktu końcowego jest, jak użytkownicy osiągnąć aplikacji znajduje się poza siecią. Albo może przejść bezpośrednio do zewnętrznego adresu URL, który należy określić lub za pośrednictwem portalu MyApps one dostęp do aplikacji. Użytkownicy, przejdź do jednego z tych punktów końcowych, uwierzytelniania w usłudze Azure AD i następnie są kierowane za pośrednictwem łącznika do aplikacji lokalnych.
 

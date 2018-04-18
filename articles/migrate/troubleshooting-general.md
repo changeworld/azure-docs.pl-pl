@@ -115,14 +115,14 @@ Aby zbierać zdarzenia śledzenia systemu Windows, wykonaj następujące czynno�
 2. Naciśnij klawisz F12, aby uruchomić narzędzia deweloperskie. Jeśli to konieczne, wyczyść ustawienie **Wyczyść wpisy w nawigacji**.
 3. Kliknij przycisk **sieci** , a następnie uruchomić Przechwytywanie ruchu sieciowego:
  - W przeglądarce Chrome, wybierz **dziennika Preserve**. Rejestrowanie powinna być uruchamiana automatycznie. Czerwone koło wskazuje, że ruch jest przechwytywania. Jeśli nie zostanie wyświetlone, kliknij przycisk czarny okręgu do uruchomienia
- - W programie Edge/IE rejestrowania powinna być uruchamiana automatycznie. W przeciwnym razie kliknij przycisk Odtwórz zielony.
+ - W programie Microsoft Edge/IE rejestrowania powinna być uruchamiana automatycznie. W przeciwnym razie kliknij przycisk Odtwórz zielony.
 4. Spróbuj odtwarzania błędu.
 5. Po zostały napotkał błąd podczas rejestrowania, Zatrzymaj rejestrowanie i zapisać kopię zarejestrowanej czynności:
  - W przeglądarce Chrome, kliknij prawym przyciskiem myszy, a następnie kliknij przycisk **Zapisz jako HAR z zawartością**. To zips i eksportuje dzienniki w postaci pliku .har.
- - W programie Edge/IE, kliknij przycisk **eksportu przechwycone ruchu** ikony. To zips i eksportuje dziennika.
+ - W programie Microsoft Edge/IE, kliknij przycisk **eksportu przechwycone ruchu** ikony. To zips i eksportuje dziennika.
 6. Przejdź do **konsoli** kartę, aby sprawdzić wszelkie ostrzeżenia lub błędy. Aby zapisać dziennik konsoli:
  - W przeglądarce Chrome kliknij prawym przyciskiem myszy w dzienniku konsoli. Wybierz **Zapisz jako**, aby wyeksportować i zip dziennika.
- - W programie Edge/IE, kliknij prawym przyciskiem myszy na błędy i wybierz **skopiuj wszystkie**.
+ - W programie Microsoft Edge/IE, kliknij prawym przyciskiem myszy na błędy i wybierz **skopiuj wszystkie**.
 7. Zamknij narzędzia dla deweloperów.
 
 

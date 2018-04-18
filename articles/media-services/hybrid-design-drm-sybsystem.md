@@ -1,11 +1,11 @@
 ---
-title: "Projekt hybrydowego subsystem(s) DRM przy użyciu usługi Azure Media Services | Dokumentacja firmy Microsoft"
-description: "W tym temacie omówiono hybrydowego projekt subsystem(s) DRM przy użyciu usługi Azure Media Services."
+title: Projekt hybrydowego subsystem(s) DRM przy użyciu usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: W tym temacie omówiono hybrydowego projekt subsystem(s) DRM przy użyciu usługi Azure Media Services.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: willzhan
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
 ms.workload: media
@@ -101,7 +101,7 @@ W oparciu o wyjaśnienia w poprzedniej sekcji, w następujących scenariuszach h
 |AMS|Innych firm|Poza|Nie|Nie|Przykład 4|
 |Innych firm|Innych firm|AMS|Tak|Nie|    
 
-W przykładach działa ochrona PlayReady kreska i smooth streaming. Wideo poniżej adresy URL są smooth streaming adresów URL. Aby uzyskać odpowiednie adresy URL DASH, Dołącz tylko "(format = mpd-time-csf)". Można użyć [azure media test player](http://aka.ms/amtest) do testowania w przeglądarce. Umożliwia konfigurowanie który przesyłania strumieniowego protokół do użycia, w ramach których techniczna. Obsługuje PlayReady za pośrednictwem EME, IE11 i MS Edge w systemie Windows 10. Aby uzyskać więcej informacji, zobacz [szczegółowe informacje na temat narzędzia test](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+W przykładach działa ochrona PlayReady kreska i smooth streaming. Wideo poniżej adresy URL są smooth streaming adresów URL. Aby uzyskać odpowiednie adresy URL DASH, Dołącz tylko "(format = mpd-time-csf)". Można użyć [azure media test player](http://aka.ms/amtest) do testowania w przeglądarce. Umożliwia konfigurowanie który przesyłania strumieniowego protokół do użycia, w ramach których techniczna. Obsługuje PlayReady za pośrednictwem EME, IE11 i Microsoft Edge w systemie Windows 10. Aby uzyskać więcej informacji, zobacz [szczegółowe informacje na temat narzędzia test](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Przykład 1
 

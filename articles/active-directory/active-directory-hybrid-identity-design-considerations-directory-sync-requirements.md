@@ -1,11 +1,11 @@
 ---
-title: "Tożsamość hybrydowym - wymagań synchronizacji katalogu Azure | Dokumentacja firmy Microsoft"
-description: "Określenie, jakie wymagania niezbędne do synchronizowania wszystkich użytkowników między on = lokalnych i w chmurze dla przedsiębiorstw."
-documentationcenter: 
+title: Tożsamość hybrydowym - wymagań synchronizacji katalogu Azure | Dokumentacja firmy Microsoft
+description: Określenie, jakie wymagania niezbędne do synchronizowania wszystkich użytkowników między on = lokalnych i w chmurze dla przedsiębiorstw.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
 ms.devlang: na
@@ -57,7 +57,7 @@ Należy również określić synchronizacji katalogów wymagań i ograniczeń za
 
 * Której zostaną umieszczone serwera synchronizacji?
 * Będzie on zostać przyłączone do domeny?
-* Serwer zostanie umieszczony w sieci z ograniczeniami za zaporą, takich jak strefą DMZ?
+* Serwer zostanie umieszczony w sieci z ograniczeniami za zaporą, takich jak sieć obwodowa?
   * Użytkownik będzie mógł otworzyć porty zapory wymagane do obsługi synchronizacji?
 * Czy organizacja ma plan odzyskiwania po awarii dla serwera synchronizacji?
 * Masz konto z odpowiednie uprawnienia do wszystkich lasów, które chcesz zsynchronizować z?

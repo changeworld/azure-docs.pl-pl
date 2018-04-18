@@ -1,11 +1,11 @@
 ---
-title: "Problemy przy logowaniu do aplikacji Azure AD galerii skonfigurowane hasło logowanie jednokrotne | Dokumentacja firmy Microsoft"
-description: "W tym artykule omówiono obszarów problemów, które zapewniają wskazówki dotyczące rozwiązywania problemów związanych z rejestrowanie w galerii Azure AD skonfigurowaną pod kątem hasło logowania jednokrotnego"
+title: Problemy przy logowaniu do aplikacji Azure AD galerii skonfigurowane hasło logowanie jednokrotne | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono obszarów problemów, które zapewniają wskazówki dotyczące rozwiązywania problemów związanych z rejestrowanie w galerii Azure AD skonfigurowaną pod kątem hasło logowania jednokrotnego
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -38,7 +38,7 @@ Logowanie Jednokrotne opartego na hasłach można przeglądarki przez użytkowni
 -   Firefox 26.0 lub później — w systemie Windows XP z dodatkiem SP2 lub nowszy oraz w systemie Mac OS X 10,6 lub nowszy
 
 >[!NOTE]
->Rozszerzenie logowania jednokrotnego opartego na hasłach stają się dostępne Edge w systemie Windows 10, gdy staną się również obsługiwany rozszerzenia przeglądarki Edge.
+>Rozszerzenie logowania jednokrotnego opartego na hasłach stają się dostępne w Microsoft Edge w systemie Windows 10, gdy staną się również obsługiwany rozszerzenia przeglądarki Microsoft Edge.
 >
 >
 

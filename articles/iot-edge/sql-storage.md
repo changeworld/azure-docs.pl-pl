@@ -120,7 +120,7 @@ W kroku 3, możesz dodać utworzyć opcje do kontenera programu SQL Server, któ
 6. W palecie VS kod polecenia Wybierz **krawędzi: tworzenie wdrożenia dla urządzenie brzegowe**. 
 7. Wybierz identyfikatora urządzenia IoT krawędzi
 8. Wybierz `deployment.json` plików, które zostało zaktualizowane. W oknie danych wyjściowych widać odpowiednie dane wyjściowe dla danego wdrożenia. 
-9. Aby uruchomić środowisko uruchomieniowe programu Edge, zaznacz **krawędzi: Start krawędzi** w palecie polecenia.
+9. Aby uruchomić środowisko uruchomieniowe programu Microsoft Edge, zaznacz **krawędzi: Start krawędzi** w palecie polecenia.
 
 >[!TIP]
 >Należy utworzyć kontener programu SQL Server w środowisku produkcyjnym za każdym razem [zmienić domyślne hasło administratora systemu](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).

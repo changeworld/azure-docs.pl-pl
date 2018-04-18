@@ -1,9 +1,9 @@
 ---
-title: "Nie można dostać się tam z tego miejsca w witrynie Azure Portal na urządzeniu z systemem Windows | Microsoft Docs"
-description: "Dowiedz się, dlaczego występuje sytuacja, w której nie można dostać się do danej lokalizacji z tego miejsca, i co można sprawdzić, aby to okno dialogowe nie było wyświetlane."
+title: Nie można dostać się tam z tego miejsca w witrynie Azure Portal na urządzeniu z systemem Windows | Microsoft Docs
+description: Dowiedz się, dlaczego występuje sytuacja, w której nie można dostać się do danej lokalizacji z tego miejsca, i co można sprawdzić, aby to okno dialogowe nie było wyświetlane.
 services: active-directory
-keywords: "dostęp warunkowy oparty na urządzeniach, rejestracja urządzenia, włączanie rejestracji urządzenia, rejestracja urządzenia i MDM"
-documentationcenter: 
+keywords: dostęp warunkowy oparty na urządzeniach, rejestracja urządzenia, włączanie rejestracji urządzenia, rejestracja urządzenia i MDM
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
@@ -40,7 +40,7 @@ Jeśli używasz urządzenia z systemem **Windows**, sprawdź następujące eleme
 
 ## <a name="supported-browser"></a>Obsługiwana przeglądarka
 
-Jeśli administrator skonfigurował zasady dostępu warunkowego, dostęp do zasobów organizacji można uzyskiwać tylko za pomocą obsługiwanej przeglądarki. Na urządzeniu z systemem Windows są obsługiwane tylko przeglądarki **Internet Explorer** i **Edge**.
+Jeśli administrator skonfigurował zasady dostępu warunkowego, dostęp do zasobów organizacji można uzyskiwać tylko za pomocą obsługiwanej przeglądarki. Na urządzeniu z systemem Windows są obsługiwane tylko przeglądarki **Internet Explorer** i **Microsoft Edge**.
 
 Możesz łatwo sprawdzić, czy dostęp do zasobu jest niemożliwy z powodu nieobsługiwanej przeglądarki, w sekcji szczegółów na stronie błędu:
 

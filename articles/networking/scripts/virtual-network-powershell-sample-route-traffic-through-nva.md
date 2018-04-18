@@ -1,17 +1,17 @@
 ---
-title: "Azure przykładowy skrypt programu PowerShell — kierować ruchem przez urządzenie wirtualne sieci | Dokumentacja firmy Microsoft"
-description: "Przykład skryptu usługi Azure PowerShell — ruch trasy przez urządzenie wirtualne zapory w sieci."
+title: Azure przykładowy skrypt programu PowerShell — kierować ruchem przez urządzenie wirtualne sieci | Dokumentacja firmy Microsoft
+description: Przykład skryptu usługi Azure PowerShell — ruch trasy przez urządzenie wirtualne zapory w sieci.
 services: virtual-network
 documentationcenter: virtual-network
 author: georgewallace
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
@@ -49,7 +49,7 @@ Ten skrypt używa następujących poleceń do utworzenia grupy zasobów, sieć w
 |---|---|
 | [Nowe AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)  | Tworzy grupę zasobów, w którym przechowywane są wszystkie zasoby. |
 | [Nowy AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | Tworzy sieć wirtualna platformy Azure i podsieci frontonu. |
-| [Nowe AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Tworzy zaplecza i strefą DMZ podsieci. |
+| [Nowe AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Tworzy zaplecza i sieć obwodową podsieci. |
 | [Nowe AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Tworzy publiczny adres IP na dostęp do maszyny Wirtualnej z Internetu. |
 | [Nowe AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Tworzy interfejs sieci wirtualnej i Włącz przesyłanie dalej IP dla niego. |
 | [Nowe AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) | Tworzy sieciową grupę zabezpieczeń (NSG). |

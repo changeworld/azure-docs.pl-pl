@@ -44,7 +44,7 @@ W tym artykule wymieniono bieżącej lokalizacji punktu z obecności (POP), poso
 | Europa Południowa | Mediolan, Włochy<br />Madryt, Hiszpania | Włochy<br />Hiszpania |
 | Afryka | Johannesburg, Republika Południowej Afryki | |
 | Bliski Wschód | Maskat, Oman<br />Fujirah, Zjednoczone Emiraty Arabskie | Katar |
-| Azja | Hongkong<br />Bangalur, Indie<br />Chennai, Indie<br />Delhi, Indie<br />Bombaj, Indie<br />Nowe Delhi, Indie<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Seoul, Korea Południowa<br />Kaohsiung, Taiwan | Hongkong<br />Indie<br />Indonezja<br />Japonia<br />Malezja<br />Filipiny<br />Singapur<br />Tajwan<br />Tajlandia<br />Wietnam |
+| Azja | Hongkong<br />Bangalur, Indie<br />Chennai, Indie<br />Delhi, Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Seoul, Korea Południowa<br />Kaohsiung, Taiwan | Hongkong<br />Indie<br />Indonezja<br />Japonia<br />Malezja<br />Filipiny<br />Singapur<br />Tajwan<br />Tajlandia<br />Wietnam |
 | Australia i Nowa Zelandia | Melbourne, Australia<br />Sydney, Australia<br />Auckland, Nowa Zelandia | Australia<br />Nowa Zelandia |
 
 

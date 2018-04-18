@@ -85,7 +85,7 @@ Podczas łączników zostanie automatycznie równoważyć obciążenie spowodowa
 
 ## <a name="security-and-networking"></a>Zabezpieczenia i sieci
 
-Łączniki można zainstalować dowolne miejsce w sieci, która pozwala na ich do wysyłania żądań do serwera Proxy aplikacji usługi. Ważne jest czy komputer z uruchomionym łącznik również ma dostęp do aplikacji. Wewnątrz sieci firmowej lub na maszynie wirtualnej, która działa w chmurze, można zainstalować łączniki. Łączniki mogą być uruchamiane w strefą zdemilitaryzowaną (DMZ), ale nie jest konieczne, ponieważ cały ruch jest wychodzący, dlatego sieci pozostają bezpieczne.
+Łączniki można zainstalować dowolne miejsce w sieci, która pozwala na ich do wysyłania żądań do serwera Proxy aplikacji usługi. Ważne jest czy komputer z uruchomionym łącznik również ma dostęp do aplikacji. Wewnątrz sieci firmowej lub na maszynie wirtualnej, która działa w chmurze, można zainstalować łączniki. Łączniki mogą być uruchamiane w sieci obwodowej, ale nie jest konieczne, ponieważ cały ruch jest wychodzący, dlatego sieci pozostają bezpieczne.
 
 Łączniki tylko wysyłać żądania wychodzącego. Ruch wychodzący jest wysyłane do serwera Proxy aplikacji usługi i do opublikowanych aplikacji. Nie trzeba otworzyć porty dla ruchu przychodzącego, ponieważ ruch przepływa obu kierunkach po ustanowieniu sesji. Nie trzeba ustawić zrównoważenia obciążenia między łączniki lub skonfigurować dostęp przychodzących na zaporach. 
 

@@ -1,11 +1,11 @@
 ---
-title: "Utwórz ruchu sieciowego trasy do trasy zdefiniowane przez użytkownika za pośrednictwem sieci urządzenie wirtualne - portalu Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak tworzona jest trasa zdefiniowana przez użytkownika, aby zastąpić domyślny Azure routingu przez routingu ruchu sieciowego przez urządzenie wirtualne sieci."
+title: Utwórz ruchu sieciowego trasy do trasy zdefiniowane przez użytkownika za pośrednictwem sieci urządzenie wirtualne - portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzona jest trasa zdefiniowana przez użytkownika, aby zastąpić domyślny Azure routingu przez routingu ruchu sieciowego przez urządzenie wirtualne sieci.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
@@ -28,7 +28,7 @@ Po utworzeniu podsieci w sieci wirtualnej Azure tworzy domyślne [tras systemowy
 
 ![Trasy domyślne](./media/create-user-defined-route/default-routes.png)
 
-W tym samouczku utworzysz sieć wirtualną z publiczne, prywatne i strefą DMZ podsieci, jak pokazano na rysunku poniżej. Zwykle serwery sieci web mógł zostać wdrożony do publicznego podsieci i aplikacji lub serwer bazy danych może być wdrożona w sieci prywatnej. Utwórz maszynę wirtualną na działanie jako urządzenie wirtualne sieci w podsieci DMZ i opcjonalnie, utwórz maszynę wirtualną w każdej podsieci, które komunikują się za pośrednictwem sieci urządzenia wirtualnego. Cały ruch między podsieciami publiczne i prywatne jest kierowany przez urządzenia, jak pokazano na poniższej ilustracji:
+W tym samouczku utworzysz sieć wirtualną z publiczne, prywatne i sieć obwodową podsieci, jak pokazano na rysunku poniżej. Zwykle serwery sieci web mógł zostać wdrożony do publicznego podsieci i aplikacji lub serwer bazy danych może być wdrożona w sieci prywatnej. Utwórz maszynę wirtualną na działanie jako urządzenie wirtualne sieci w podsieci obwodowej i opcjonalnie, utwórz maszynę wirtualną w każdej podsieci, które komunikują się za pośrednictwem sieci urządzenia wirtualnego. Cały ruch między podsieciami publiczne i prywatne jest kierowany przez urządzenia, jak pokazano na poniższej ilustracji:
 
 ![Trasy definiowane przez użytkownika](./media/create-user-defined-route/user-defined-routes.png)
 
@@ -92,7 +92,7 @@ Ten artykuł zawiera kroki umożliwiające utworzenie trasy zdefiniowanej przez 
     - Kliknij przycisk **statycznych** dla **przypisania** prywatnego adresu IP w obszarze **ipconfig1**, jak pokazano na poniższej ilustracji:
 
         ![Konfiguracja adresu IP](./media/create-user-defined-route/ip-configuration.png)
-    - Jak pokazano na rysunku powyżej, wprowadź *10.0.2.4* w obszarze **adres IP** w **ustawienia prywatnego adresu IP**. Przypisanie statycznego adresu IP do interfejsu sieciowego zapewnia, że adres nie ulega zmianie przez cały okres istnienia interfejs sieciowy jest dołączony do maszyny wirtualnej. Wprowadzony adres nie jest aktualnie przypisany do innego zasobu w podsieci DMZ, która jest interfejs sieciowy. 
+    - Jak pokazano na rysunku powyżej, wprowadź *10.0.2.4* w obszarze **adres IP** w **ustawienia prywatnego adresu IP**. Przypisanie statycznego adresu IP do interfejsu sieciowego zapewnia, że adres nie ulega zmianie przez cały okres istnienia interfejs sieciowy jest dołączony do maszyny wirtualnej. Wprowadzony adres nie jest aktualnie przypisany do innego zasobu w podsieci sieci obwodowej, która jest interfejs sieciowy. 
     - Aby zapisać konfigurację, kliknij przycisk **zapisać** w obszarze **ipconfig1**. Pozostaw pole ipconfig1, dopóki nie zostanie wyświetlone powiadomienie w portalu interfejs sieciowy jest zapisywany.
  
 8. Utwórz dwie tabele tras. Tabele tras zawierać zero lub więcej trasy:

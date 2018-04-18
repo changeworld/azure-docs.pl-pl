@@ -1,8 +1,8 @@
 ---
-title: "Nowości w sposób przewidzieć vehicle kondycji i zwiększa zwyczaje - Azure | Dokumentacja firmy Microsoft"
-description: "Korzystanie z możliwości Cortana Intelligence, aby uzyskać wgląd w czasie rzeczywistym oraz predykcyjnej na vehicle kondycji i wspierającym zwyczaje."
+title: Nowości w sposób przewidzieć vehicle kondycji i zwiększa zwyczaje - Azure | Dokumentacja firmy Microsoft
+description: Korzystanie z możliwości Cortana Intelligence, aby uzyskać wgląd w czasie rzeczywistym oraz predykcyjnej na vehicle kondycji i wspierającym zwyczaje.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -541,7 +541,7 @@ Fuelefficientdriving.hql skryptu Hive jest używany do analizowania obniżające
     where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND parking_brake_status = '0' AND brake_pedal_status = '0' AND speed <= '60' AND accelerator_pedal_position >= '50'
 
 
-Skrypt używa kombinacji pozycji koło zębate transmisji vehicle, stan szkła hamulca, szybkości, akceleratora pedał wykryć obniżające zużycie paliwa działanie pobudzenie przyspieszenie hamowania i szybkości wzorce. 
+Skrypt używa kombinacji pozycji koło zębate transmisji vehicle, stan szkła hamulca, szybkości, dźwignia przyspieszenia wykryć obniżające zużycie paliwa działanie pobudzenie przyspieszenie hamowania i szybkości wzorce. 
 
 Po potoku została wykonana pomyślnie, zostaną wyświetlone następujące partycje, które są generowane na koncie magazynu w kontenerze connectedcar:
 

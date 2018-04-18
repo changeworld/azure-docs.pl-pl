@@ -1,11 +1,11 @@
 ---
-title: "Projektowania tożsamości hybrydowej — strategii wdrażania usługi Azure | Dokumentacja firmy Microsoft"
-description: "Z kontroli dostępu warunkowego usługi Azure Active Directory sprawdza określonych warunków, można wybrać podczas uwierzytelniania użytkownika i przed zezwoleniem na dostęp do aplikacji. Gdy te warunki są spełnione, użytkownik jest uwierzytelniony i zezwolenie na dostęp do aplikacji."
-documentationcenter: 
+title: Projektowania tożsamości hybrydowej — strategii wdrażania usługi Azure | Dokumentacja firmy Microsoft
+description: Z kontroli dostępu warunkowego usługi Azure Active Directory sprawdza określonych warunków, można wybrać podczas uwierzytelniania użytkownika i przed zezwoleniem na dostęp do aplikacji. Gdy te warunki są spełnione, użytkownik jest uwierzytelniony i zezwolenie na dostęp do aplikacji.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
@@ -124,7 +124,7 @@ Jeśli to wielkość liter, a następnie topologii kilku-forest-pojedynczej usł
 * Użytkownicy mają tylko 1 tożsamości we wszystkich lasach — jednoznacznego identyfikowania użytkowników poniższej sekcji opisano to bardziej szczegółowo.
 * Użytkownik jest uwierzytelniany w lesie, w którym znajduje się tożsamości
 * UPN i zakotwiczenie źródła (niezmienialnego identyfikatora) będą pochodzić z tego lasu
-* Wszystkich lasach są dostępne przy użyciu usługi Azure AD Connect-oznacza to, że nie musi być przyłączony do domeny i można umieścić w strefie DMZ Jeśli ułatwia to.
+* Wszystkich lasach są dostępne przy użyciu usługi Azure AD Connect-oznacza to, że nie musi być przyłączony do domeny i można umieścić w sieci obwodowej Jeśli ułatwia to.
 * Użytkowników ma tylko jedną skrzynkę pocztową
 * Lasu, który hostuje skrzynki pocztowej użytkownika ma najlepszą jakość danych dla atrybutów widoczne w globalnej listy adresów (GAL) programu Exchange
 * Jeśli użytkownik jest nie skrzynek pocztowych, następnie dowolnym lesie może służyć do ich współtworzenia te wartości
