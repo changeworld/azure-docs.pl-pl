@@ -26,7 +26,7 @@ Ten samouczek to druga część serii samouczków na temat usługi Storage. Stan
 
 Aby dodać funkcję zmiany rozmiaru do istniejącej aplikacji do przekazywania obrazów, używane są interfejs wiersza polecenia platformy Azure i witryna Azure Portal.
 
-![Opublikowana aplikacja internetowa w przeglądarce Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Opublikowana aplikacja internetowa w przeglądarce Microsoft Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -157,7 +157,7 @@ Kliknij region **Upload photos** (Przekazywanie zdjęć), aby wybrać i przekaza
 
 Zwróć uwagę, że gdy przekazany obraz zniknie, jego kopia jest wyświetlana na karuzeli **Generated thumbnails** (Wygenerowane miniatury). Rozmiar obrazu został zmieniony przez funkcję, obraz został dodany do kontenera *thumbnails* i pobrany przez klienta internetowego.
 
-![Opublikowana aplikacja internetowa w przeglądarce Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Opublikowana aplikacja internetowa w przeglądarce Microsoft Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 
 ## <a name="next-steps"></a>Następne kroki
 
