@@ -31,12 +31,12 @@ Oprócz usługi Azure Application Gateway istnieje wiele innych opcji, takich ja
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>Konfiguracja
-W przypadku tego dokumentu konfigurujemy środowisko App Service Environment za wieloma wystąpieniami zapory aplikacji internetowych Barracuda ze zrównoważonym obciążeniem tak, aby tylko ruch z zapory aplikacji internetowych mógł docierać do środowiska App Service Environment i był niedostępny ze strefy DMZ. Mamy również usługę Azure Traffic Manager przed wystąpieniami zapory aplikacji internetowych Barracuda w celu zrównoważenia obciążenia w centrach danych i regionach platformy Azure. Diagram konfiguracji wysokiego poziomu będzie wyglądać podobnie jak na poniższej ilustracji:
+W przypadku tego dokumentu konfigurujemy środowisko App Service Environment za wieloma wystąpieniami zapory aplikacji internetowych Barracuda ze zrównoważonym obciążeniem tak, aby tylko ruch z zapory aplikacji internetowych mógł docierać do środowiska App Service Environment i był niedostępny od sieci obwodowej. Mamy również usługę Azure Traffic Manager przed wystąpieniami zapory aplikacji internetowych Barracuda w celu zrównoważenia obciążenia w centrach danych i regionach platformy Azure. Diagram konfiguracji wysokiego poziomu będzie wyglądać podobnie jak na poniższej ilustracji:
 
 ![Architektura][Architecture] 
 
 > [!NOTE]
-> Dzięki wprowadzeniu [obsługi wewnętrznego modułu równoważenia obciążenia dla środowiska App Service Environment](app-service-environment-with-internal-load-balancer.md) można skonfigurować środowisko ASE tak, aby było niedostępne ze strefy DMZ i było dostępne wyłącznie w sieci prywatnej. 
+> Dzięki wprowadzeniu [obsługi wewnętrznego modułu równoważenia obciążenia dla środowiska App Service Environment](app-service-environment-with-internal-load-balancer.md) można skonfigurować ASE niedostępny od sieci obwodowej i udostępniane wyłącznie do sieci prywatnej. 
 > 
 > 
 
