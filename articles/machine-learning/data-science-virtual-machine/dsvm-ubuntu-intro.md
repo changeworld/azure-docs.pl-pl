@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: f3ddebdd02d4766b83f0834979a54552f88179cb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej nauki danych dla systemu Linux (Ubuntu)
 
-Maszyna wirtualna nauki danych dla systemu Linux jest obraz maszyny wirtualnej z systemem Ubuntu, który ułatwia szybkie wprowadzenie głębokie learning na platformie Azure. Narzędzia głębokie learning obejmują:
+Maszyna wirtualna nauki danych dla systemu Linux jest obraz maszyny wirtualnej z systemem Ubuntu, który ułatwia szybkie wprowadzenie do uczenia maszynowego, w tym głębokie learning na platformie Azure. Narzędzia głębokie learning obejmują:
 
   * [Caffe](http://caffe.berkeleyvision.org/): platforma głębokie learning skompilowany dla szybkości, expressivity i Modułowość
   * [Caffe2](https://github.com/caffe2/caffe2): wersja wieloplatformowych Caffe
@@ -31,6 +31,7 @@ Maszyna wirtualna nauki danych dla systemu Linux jest obraz maszyny wirtualnej z
   * [Keras](https://keras.io/): wysokiego poziomu sieci neuronowej interfejsu API języka Python dla Theano i TensorFlow
   * [MXNet](http://mxnet.io/): Biblioteka elastyczne, wydajne learning głębokie o wiele powiązań języka
   * [CYFR NVIDIA](https://developer.nvidia.com/digits): graficznego systemu, które upraszcza typowe zadania uczenia głębokiego
+  * [PyTorch](http://pytorch.org/): wysokiego poziomu biblioteka języka Python z obsługą dynamicznej sieci
   * [TensorFlow](https://www.tensorflow.org/): Biblioteka open source dla analizy maszyny z Google
   * [Theano](http://deeplearning.net/software/theano/): biblioteka języka Python A definiowanie, optymalizacja i efektywnie obliczenia matematyczne wyrażeń zawierających tablice wielowymiarowe
   * [Latarka](http://torch.ch/): naukowych framework przetwarzania danych z szeroką obsługę algorytmów uczenia maszynowego
@@ -113,6 +114,14 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie maszyny wirtualnej nauk
 Udostępnianie powinno zająć około 5 – 10 minut. Stan inicjowania obsługi administracyjnej jest wyświetlana w portalu Azure.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Jak dostęp do maszyny wirtualnej nauki danych dla systemu Linux
+
+Aby dostęp do DSVM Ubuntu za pomocą trzech metod:
+1. SSH przez sesje usług terminalowych
+2. X2Go graficzny sesji
+3. JupyterHub i JupyterLab notesów Jupyter
+
+### <a name="ssh"></a>Protokół SSH
+
 Po utworzeniu maszyny Wirtualnej można logowania się do go przy użyciu protokołu SSH. Korzystać z poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows, możesz pobrać narzędzie klienta SSH, takie jak [Putty](http://www.putty.org). Jeśli wolisz pulpitu graficznego (X Windows System), można użyć X11 przekazywania na Putty lub instalowanie klienta X2Go.
 
 > [!NOTE]
@@ -120,7 +129,7 @@ Po utworzeniu maszyny Wirtualnej można logowania się do go przy użyciu protok
 > 
 > 
 
-## <a name="installing-and-configuring-x2go-client"></a>Instalowanie i konfigurowanie klienta X2Go
+### <a name="x2go"></a>X2Go
 Maszyny Wirtualnej systemu Linux jest już zainicjowane z serwerem X2Go i gotowa do akceptowania połączeń klienta. Nawiązać pulpitu graficznego maszyny Wirtualnej systemu Linux, wykonaj następującą procedurę na komputerze klienckim:
 
 1. Pobierz i zainstaluj klienta X2Go dla danej platformy klienta z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
@@ -134,6 +143,14 @@ Maszyny Wirtualnej systemu Linux jest już zainicjowane z serwerem X2Go i gotowa
    * **Foldery udostępnione**: katalogi z z komputerów klienckich zainstalowane na Maszynie wirtualnej systemu Linux, należy dodać katalogi komputera klienta, które chcesz udostępnić Maszynie wirtualnej na tej karcie.
 
 Po zalogowaniu się z maszyną Wirtualną przy użyciu klienta SSH lub XFCE graficznego pulpitu za pomocą klienta X2Go, można przystąpić do uruchomienia przy użyciu narzędzia, które są zainstalowane i skonfigurowane na maszynie Wirtualnej. Na XFCE Zobacz aplikacje menu skrótów i ikony pulpitu dla wielu narzędzi.
+
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub i JupyterLab
+
+Uruchamia Ubuntu DSVM [JupyterHub](https://github.com/jupyterhub/jupyterhub), serwer Jupyter przez wielu użytkowników. Aby połączyć, należy przejść do https://your-vm-ip:8000 na komputerze przenośnym lub pulpit, wprowadź nazwę użytkownika i hasło używane do tworzenia maszyny Wirtualnej i zaloguj się. Wiele przykładowych notesów dostępnych Przeglądaj i wypróbować usługę.
+
+JupyterLab, generacji notesów Jupyter i JupyterHub, jest również dostępna. Do niego dostęp, zaloguj się do JupyterHub, a następnie przejdź do adresu URL https://your-vm-ip:8000/lab. JupyterLab można ustawić jako domyślny serwer notesu, dodając ten wiersz do /etc/jupyterhub/jupyterhub_config.py:
+
+    c.Spawner.default_url = '/lab'
 
 ## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Narzędzia są zainstalowane na maszynie wirtualnej nauki danych dla systemu Linux
 ### <a name="deep-learning-libraries"></a>Głębokie Learning bibliotek
@@ -193,30 +210,32 @@ Do uruchamiania R konsoli, wystarczy wpisać **R** w powłoce. Powoduje to przej
 Jest także skrypt języka R do zainstalowania [pakietów języka R z góry 20](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) Jeśli chcesz. Ten skrypt może działać po w interfejsie interakcyjne R, który można wprowadzić (jak wspomniano), wpisując **R** w powłoce.  
 
 ### <a name="python"></a>Python
-Do tworzenia aplikacji przy użyciu języka Python dystrybucja Anaconda Python 2.7 i 3.5 została zainstalowana. Rozkład ten zawiera podstawowe języka Python oraz około 300 najbardziej popularnych pakietów analytics matematyczne, inżynieria i danych. Możesz użyć domyślnego edytory tekstów. Ponadto można użyć Spyder, IDE języka Python, który jest powiązany z dystrybucji Anaconda Python. Spyder wymaga graficznego pulpitu lub X11 przekazywania. Skrót do Spyder znajduje się w graficznym pulpitu.
+Anaconda Python jest instalowany z Python 2.7 i środowisk 3.5. 2.7 środowisko jest nazywany _głównego_, i nosi nazwę wersji 3.5 środowiska _py35_. Rozkład ten zawiera podstawowe języka Python oraz około 300 najbardziej popularnych pakietów analytics matematyczne, inżynieria i danych. 
 
-Ponieważ istnieje zarówno Python 2.7 i 3.5, należy w szczególności aktywować żądanej wersji języka Python (środowisko conda) chcesz pracować w bieżącej sesji. Proces aktywacji ustawia zmiennej PATH żądanej wersji języka Python.
+W środowisku py35 jest ustawieniem domyślnym. Aby aktywować środowiska głównego (2.7):
 
-Aby aktywować środowisko Python 2.7 conda, uruchom następujące polecenie z poziomu powłoki:
+    source activate root
 
-    source /anaconda/bin/activate root
+Aby ponownie aktywować py35 środowiska:
 
-Python 2.7 jest zainstalowany na */anaconda/bin*.
+    source activate py35
 
-Aby aktywować conda środowiska Python, 3.5, uruchom następujące polecenie z poziomu powłoki:
+Aby wywołać sesja interaktywna Python, wystarczy wpisać **python** w powłoce. 
 
-    source /anaconda/bin/activate py35
+Instalowanie dodatkowych bibliotek języka Python za pomocą ```conda``` lub ````pip```` . Dla narzędzia pip należy najpierw aktywować poprawne środowisko, jeśli nie chcesz, aby wartość domyślna:
 
+    source activate root
+    pip install <package>
 
-Python 3.5 jest zainstalowana w */anaconda/envs/py35/bin*.
+Lub określ pełną ścieżkę do narzędzia pip:
 
-Aby wywołać sesja interaktywna Python, wystarczy wpisać **python** w powłoce. Jeśli w graficznym interfejsie lub mieć X11 przekazywania zestawu w górę, można wpisać **pycharm** można uruchomić PyCharm IDE języka Python.
+    /anaconda/bin/pip install <package>
+    
+Dla conda, należy zawsze podać nazwę środowiska (_py35_ lub _głównego_):
 
-Aby zainstalować dodatkowych bibliotek języka Python, należy uruchomić ```conda``` lub ````pip```` polecenia w obszarze sudo i podaj pełną ścieżkę (conda lub pip), aby zainstalować poprawną środowiska Python Menedżera pakietów języka Python. Na przykład:
+    conda install <package> -n py35
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
-
+Jeśli w graficznym interfejsie lub mieć X11 przekazywania zestawu w górę, można wpisać **pycharm** można uruchomić PyCharm IDE języka Python. Możesz użyć domyślnego edytory tekstów. Ponadto można użyć Spyder, IDE języka Python, który jest powiązany z dystrybucji Anaconda Python. Spyder wymaga graficznego pulpitu lub X11 przekazywania. Skrót do Spyder znajduje się w graficznym desktop.s
 
 ### <a name="jupyter-notebook"></a>Notesu Jupyter
 Rozkład Anaconda zawiera również notesu Jupyter, środowisko, aby udostępnić kodu i analizy. Notesu Jupyter jest dostępny za pośrednictwem JupyterHub. Zaloguj się przy użyciu lokalnego nazwę użytkownika systemu Linux i hasło.

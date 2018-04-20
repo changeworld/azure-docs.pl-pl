@@ -1,11 +1,11 @@
 ---
 title: Problemy przy logowaniu do galerii aplikacji skonfigurowana dla federacyjnych logowanie jednokrotne | Dokumentacja firmy Microsoft
-description: "Wskazówki dotyczące określonych błędów podczas logowania do aplikacji, które zostały skonfigurowane na podstawie SAML federacyjne logowanie jednokrotne z usługą Azure AD"
+description: Wskazówki dotyczące określonych błędów podczas logowania do aplikacji, które zostały skonfigurowane na podstawie SAML federacyjne logowanie jednokrotne z usługą Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: fa1387c3eb11899bb74418b2ff1af4a5d22a73d9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemy przy logowaniu do galerii aplikacji skonfigurowana dla federacyjnego logowania jednokrotnego
 
@@ -31,7 +31,7 @@ Aby rozwiązać problem, należy sprawdzić konfigurację aplikacji w usłudze A
 
 ## <a name="application-not-found-in-directory"></a>Nie można odnaleźć w katalogu aplikacji
 
-*Błąd AADSTS70001: Nie znaleziono aplikacji o identyfikatorze "https://contoso.com" w katalogu*.
+*Błąd AADSTS70001: Aplikacji o identyfikatorze "https://contoso.com" nie został znaleziony w katalogu*.
 
 **Możliwa przyczyna**
 
@@ -63,7 +63,7 @@ Po jego jest dopasowanie wysyła wartości przez aplikację w żądaniu SAML i w
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres, który jest niezgodny z adresów odpowiedzi skonfigurowanych dla aplikacji.
 
-*Błąd AADSTS50011: Adres zwrotny "https://contoso.com" pasują do adresów odpowiedzi, skonfigurowana dla aplikacji.*
+*Błąd AADSTS50011: Adreshttps://contoso.com"nie pasują do adresów odpowiedzi, skonfigurowana dla aplikacji.*
 
 **Możliwa przyczyna**
 

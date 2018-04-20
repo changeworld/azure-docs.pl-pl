@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
 ms.openlocfilehash: bd2bb0d05029237242b42225a2c846c78a7c6de9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
-# <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Uruchom skrypt uruchamiania usługi jako konto użytkownika lub systemu lokalnego
+# <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Uruchamianie skryptu uruchamiania usługi za pomocą użytkownika lokalnego lub konta systemowego
 Przed uruchamiania pliku wykonywalnego usługi Service Fabric może być konieczne uruchomienie dodatkowych czynności konfiguracyjnych lub ustawień.  Na przykład Konfigurowanie zmiennych środowiskowych. Można określić skrypt do uruchomienia przed rozpoczęciem plik wykonywalny usługi uruchamiania w manifeście usługi dla usługi. Konfigurując zasady Uruchom jako dla usługi punktu wejścia instalacji można zmienić konto, które wykonywalnego konfiguracji jest uruchamiana.  Punkt wejścia oddzielne ustawienia umożliwia uruchamianie konfigurację wysokiej privilged krótkim czasie, więc pliku wykonywalnego hosta usługi, nie trzeba uruchomić z wysokiego poziomu uprawnień przez dłuższy czas.
 
 Punkt wejścia instalacji (**SetupEntryPoint** w [manifestu usługi](service-fabric-application-and-service-manifests.md)) jest punktem wejścia uprzywilejowanych wykonywana domyślnie z tymi samymi poświadczeniami, jak sieć szkieletowa usług (zazwyczaj  *Usługa sieciowa* konta) przed innymi punktu wejścia. Plik wykonywalny, który jest określony przez **punktu wejścia** jest zazwyczaj długotrwałe hosta usługi. **Punktu wejścia** plik wykonywalny jest uruchamiany **SetupEntryPoint** plik wykonywalny kończy się pomyślnie. Wynikowy proces jest monitorowane i ponownie uruchomione i ponownie rozpoczyna się od **SetupEntryPoint** Jeśli kiedykolwiek kończy lub ulegnie awarii. 

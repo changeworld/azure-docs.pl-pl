@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f4323c4e68c639af9a5959af512c1cdd07cdf0c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>POST do tematu niestandardowych dla usługi Azure Event siatki
 
@@ -73,7 +73,7 @@ Niestandardowe tematy najwyższego poziomu dane zawierają tych samych polach ja
 ]
 ```
 
-Aby uzyskać opis tych właściwości, zobacz [schematu zdarzeń siatki zdarzeń Azure](event-schema.md).
+Aby uzyskać opis tych właściwości, zobacz [schematu zdarzeń siatki zdarzeń Azure](event-schema.md). Zaksięgowania zdarzenia do zdarzenia tematu siatki, Tablica może mieć całkowity rozmiar maksymalnie 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB.
 
 Na przykład schemat danych ważne jest:
 
@@ -98,9 +98,10 @@ Po publikowanie do punktu końcowego tematu, otrzymasz odpowiedź. Odpowiedź je
 |Wynik  |Odpowiedź  |
 |---------|---------|
 |Powodzenie  | 200 OK  |
-|Nieprawidłowy punkt końcowy | 404 — Nie odnaleziono |
-|Nieprawidłowy klucz dostępu. | 401 nieautoryzowane |
 |Dane zdarzenia mają niepoprawny format | 400 Niewłaściwe żądanie |
+|Nieprawidłowy klucz dostępu. | 401 nieautoryzowane |
+|Nieprawidłowy punkt końcowy | 404 — Nie odnaleziono |
+|Tablica lub zdarzeń przekracza limity rozmiaru | Ładunek 413 za duży |
 
 Błędy treść komunikatu ma następujący format:
 

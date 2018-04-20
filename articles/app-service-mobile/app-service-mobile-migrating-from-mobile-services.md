@@ -1,11 +1,11 @@
 ---
-title: "Migracja z usług mobilnych do aplikacji mobilnej usługi aplikacji"
-description: "Dowiedz się, jak łatwo przeprowadzić migrację aplikacji usługi Mobile Services do aplikacji usługi Mobile App Service"
+title: Migracja z usług mobilnych do aplikacji mobilnej usługi aplikacji
+description: Dowiedz się, jak łatwo przeprowadzić migrację aplikacji usługi Mobile Services do aplikacji usługi Mobile App Service
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
 ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="article-top"></a>Migracji istniejącej usługi mobilnej Azure w usłudze Azure App Service
 Z [ogólnej dostępności usługi Azure App Service], lokacji usług Azure Mobile Services można łatwo migracji w miejscu, aby korzystać ze wszystkich funkcji usługi Azure App Service.  W tym dokumencie opisano, czego można oczekiwać podczas migracji lokacji z usług Azure Mobile Services w usłudze Azure App Service.
@@ -68,7 +68,7 @@ Warto zaplanować testowanie witryny z klienta mobilnego po zakończeniu procesu
 ### <a name="update-app-service-tier"></a>Wybierz odpowiednią usługę aplikacji warstwy cenowej
 Uzyskuje się większą elastyczność w cenowej po zakończeniu migracji do usługi Azure App Service.
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Domyślnie zostanie otwarty blok ustawień.
 4. Kliknij przycisk **planu usługi App Service** w menu Ustawienia.
@@ -94,7 +94,7 @@ Brak dużą elastyczność w wyborze prawo warstwę cenową dla aplikacji.  Zapo
 Harmonogram zadań nie będą widoczne dopiero po zakończeniu migracji około 30 minut.  Zaplanowane zadania nadal uruchomione w tle.
 Aby wyświetlić Twoje zaplanowane zadania są widoczne ponownie:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **Przeglądaj >**, wprowadź **harmonogram** w *filtru* polu, a następnie wybierz **kolekcje harmonogramu**.
 
 Istnieje ograniczona liczba wolnych harmonogram zadania dostępne po migracji.  Przejrzyj użycie i [plany harmonogramu Azure].
@@ -104,7 +104,7 @@ Współużytkowanie zasobów między źródłami to technika, aby umożliwić do
 
 Zmigrowane ustawienia mechanizmu CORS są dostępne jako **MS_CrossDomainWhitelist** ustawienia aplikacji.  Aby przeprowadzić migrację witryny w obiekcie mechanizmu CORS usługi App Service:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Domyślnie zostanie otwarty blok ustawień.
 4. Kliknij przycisk **CORS** w menu interfejsu API.
@@ -119,7 +119,7 @@ Zmigrowane ustawienia mechanizmu CORS są dostępne jako **MS_CrossDomainWhiteli
 ### <a name="download-publish-profile"></a>Pobierz nowy profil publikowania
 Profil publikowania witryny jest zmieniany podczas migracji do usługi Azure App Service.  Zamierzasz opublikować witrynę sieci z poziomu programu Visual Studio, należy najpierw profilu publikowania.  Aby pobrać nowy profil publikowania:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Kliknij przycisk **profilu publikowania Get**.
 
@@ -133,12 +133,12 @@ Plik ustawień publikacji zostanie pobrana do komputera.  Jest to zwykle *sitena
 6. Kliknij przycisk **publikowania** opublikowanie witryny.
 
 ## <a name="working-with-your-site"></a>Praca z Twojej lokacji po migracji
-Rozpocząć pracę z usługą nowych aplikacji w [Azure Portal] po migracji.  Poniżej przedstawiono niektóre informacje o na określonych operacji, które zostały użyte do wykonania w [klasycznego portalu Azure], wraz z ich odpowiedniki usługi aplikacji.
+Rozpocząć pracę z usługą nowych aplikacji w [portalu Azure] po migracji.  Poniżej przedstawiono niektóre informacje o na określonych operacji, które zostały użyte do wykonania w [klasycznego portalu Azure], wraz z ich odpowiedniki usługi aplikacji.
 
 ### <a name="publishing-your-site"></a>Pobieranie i publikowanie migrowanych witryny
 Witryna jest dostępna za pośrednictwem git i ftp i należy ponownie opublikować z różnych mechanizmów różne, w tym WebDeploy, TFS Mercurial, GitHub i FTP.  Poświadczenia wdrożenia są migrowane z resztą witryny.  Jeśli nie określono poświadczeń wdrożenia lub nie pamiętać, można zresetować je:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Domyślnie zostanie otwarty blok ustawień.
 4. Kliknij przycisk **poświadczenia wdrażania** w publikacji menu.
@@ -147,10 +147,10 @@ Witryna jest dostępna za pośrednictwem git i ftp i należy ponownie opublikowa
 Te poświadczenia można użyć do witryny za pomocą narzędzia git clone lub konfigurowanie zautomatyzowanych wdrożeń z usługi GitHub, TFS lub Mercurial.  Aby uzyskać więcej informacji zobacz [dokumentacja wdrażania usługi aplikacji Azure].
 
 ### <a name="appsettings"></a>Ustawienia aplikacji
-Większość ustawień zmigrowanych usługi mobilnej są dostępne za pośrednictwem ustawień aplikacji.  Zostanie wyświetlona lista ustawień aplikacji z [Azure Portal].
+Większość ustawień zmigrowanych usługi mobilnej są dostępne za pośrednictwem ustawień aplikacji.  Zostanie wyświetlona lista ustawień aplikacji z [portalu Azure].
 Aby wyświetlić lub zmienić ustawienia aplikacji:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Domyślnie zostanie otwarty blok ustawień.
 4. Kliknij przycisk **ustawienia aplikacji** w menu Ogólne.
@@ -187,7 +187,7 @@ Uwaga: **MS\_AadTenants** jest przechowywana jako rozdzielanej przecinkami listy
 ### <a name="easytables"></a>Dane
 *Danych* karty w usłudze Mobile Services została zastąpiona przez *łatwe tabel* w portalu Azure.  Aby uzyskać dostęp do tabel łatwe:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Domyślnie zostanie otwarty blok ustawień.
 4. Kliknij przycisk **łatwe tabel** w przenośnych menu.
@@ -204,7 +204,7 @@ Tabelę można dodać, klikając **Dodaj** przycisk lub dostępu do istniejącyc
 ### <a name="easyapis"></a>API
 *Interfejsu API* karty w usłudze Mobile Services została zastąpiona przez *łatwe interfejsów API* w portalu Azure.  Aby uzyskać dostęp do interfejsów API łatwe:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Domyślnie zostanie otwarty blok ustawień.
 4. Kliknij przycisk **łatwe interfejsów API** w przenośnych menu.
@@ -215,7 +215,7 @@ Za pomocą nowego bloku można dostosowanie uprawnień i edytowania skryptów dl
 ### <a name="on-demand-jobs"></a>Zadania harmonogramu
 Wszystkie zadania harmonogramu są dostępne za pośrednictwem sekcji kolekcji zadań harmonogramu.  Aby uzyskać dostęp do harmonogramu zadań:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **Przeglądaj >**, wprowadź **harmonogram** w *filtru* polu, a następnie wybierz **kolekcje harmonogramu**.
 3. Wybierz kolekcję zadań dla witryny.  Szablon ma nazwę *sitename*-zadania.
 4. Kliknij przycisk **ustawienia**.
@@ -240,21 +240,21 @@ Mobile Services używa centra powiadomień dla powiadomień wypychanych.  Nastę
 | **MS\_NotificationHubConnectionString** |Parametry połączenia Centrum powiadomień |
 | **MS\_NamespaceName** |Alias MS_PushEntityNamespace |
 
-Centrum powiadomień jest zarządzana za pomocą [Azure Portal].  Zanotuj nazwę Centrum powiadomień (można go znaleźć za pomocą ustawień aplikacji):
+Centrum powiadomień jest zarządzana za pomocą [portalu Azure].  Zanotuj nazwę Centrum powiadomień (można go znaleźć za pomocą ustawień aplikacji):
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **Przeglądaj**>, a następnie wybierz pozycję **centra powiadomień**
 3. Kliknij nazwę Centrum powiadomień, skojarzone z usługi mobilnej.
 
 > [!NOTE]
-> Jeśli Centrum powiadomień jest typu "Mixed", nie jest widoczne.  "Mieszany" wpisz powiadomień koncentratory wykorzystywać zarówno usługi Notification Hubs i starszych funkcji usługi Service Bus.  [Konwertuj mieszanych obszary nazw] przed kontynuowaniem.  Po zakończeniu konwersji Centrum powiadomień zostanie wyświetlony w [Azure Portal].
+> Jeśli Centrum powiadomień jest typu "Mixed", nie jest widoczne.  "Mieszany" wpisz powiadomień koncentratory wykorzystywać zarówno usługi Notification Hubs i starszych funkcji usługi Service Bus.  [Konwertuj mieszanych obszary nazw] przed kontynuowaniem.  Po zakończeniu konwersji Centrum powiadomień zostanie wyświetlony w [portalu Azure].
 >
 >
 
 Aby uzyskać więcej informacji, przejrzyj [usługi Notification Hubs] dokumentacji.
 
 > [!TIP]
-> Funkcje zarządzania centra powiadomień w [Azure Portal] są nadal w wersji zapoznawczej.  [klasycznego portalu Azure] pozostaje dostępna, zarządzanie centrów powiadomień.
+> Funkcje zarządzania centra powiadomień w [portalu Azure] są nadal w wersji zapoznawczej.  [klasycznego portalu Azure] pozostaje dostępna, zarządzanie centrów powiadomień.
 >
 >
 
@@ -278,7 +278,7 @@ Klucz aplikacji i klucz główny są identyczne z kluczy aplikacji z oryginalneg
 ### <a name="cliequivalents"></a>Odpowiedniki wiersza polecenia
 Można już używać *azure przenośnych* polecenia do zarządzania witryną usług Azure Mobile Services.  Zamiast tego zostały zastąpione wiele funkcji *usługi azure site* polecenia.  Skorzystaj z poniższej tabeli, aby znaleźć odpowiedniki dla typowych poleceń:
 
-| *Azure Mobile* Command | Odpowiednik *usługi Azure Site* polecenia |
+| *Azure Mobile* polecenia | Odpowiednik *usługi Azure Site* polecenia |
 |:--- |:--- |
 | lokalizacje przenośnych |Lista lokalizacji lokacji |
 | listy dla urządzeń przenośnych |Lista witryn |
@@ -305,17 +305,17 @@ Edytowanie plików i opublikować swoją witrynę przy użyciu protokołu ftp lu
 ### <a name="diagnostics"></a>Rejestrowanie i Diagnostyka
 Rejestrowanie diagnostyczne zwykle jest wyłączony w usłudze Azure App Service.  Aby włączyć rejestrowanie diagnostyczne:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Domyślnie zostanie otwarty blok ustawień.
 4. Wybierz **dzienników diagnostycznych** w menu funkcji.
 5. Kliknij przycisk **ON** dla następujące dzienniki: **rejestrowania aplikacji (systemu plików)**, **szczegółowe komunikaty o błędach**, i **śledzenie nieudanych żądań**
 6. Kliknij przycisk **systemu plików** dla rejestrowania serwera sieci Web
-7. Kliknij przycisk **Zapisz**
+7. Kliknij pozycję **Zapisz**
 
 Aby wyświetlić dzienniki:
 
-1. Zaloguj się do witryny [Azure Portal].
+1. Zaloguj się do witryny [portalu Azure].
 2. Wybierz **wszystkie zasoby** lub **usługi aplikacji** następnie kliknij nazwę zmigrowane usługi mobilnej.
 3. Kliknij przycisk **narzędzia** przycisku
 4. Wybierz **strumienia dziennika** w OBSERVE menu.
@@ -377,7 +377,7 @@ Teraz, gdy aplikacja jest migrowana do usługi App Service, istnieją nawet wię
 [Automatyczne skalowanie]: ../app-service/web-sites-scale.md
 [usłudze Azure App Service]: ../app-service/app-service-web-overview.md
 [klasycznego portalu Azure]: https://manage.windowsazure.com
-[Azure Portal]: https://portal.azure.com
+[portalu Azure]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/en-us/regions/
 [plany harmonogramu Azure]: ../scheduler/scheduler-plans-billing.md
 [stale wdrażanie]: ../app-service/app-service-continuous-deployment.md

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: yushwang
 ms.openlocfilehash: b3d9d45da0fb62445867d13c9dff7502af77e8a8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informacje na temat urządzeń sieci VPN i parametrów protokołu IPsec/IKE dla połączeń bramy VPN typu lokacja-lokacja
 
@@ -162,7 +162,7 @@ W poniższej tabeli znajduje się lista ofert skojarzeń zabezpieczeń protokoł
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Brak         |
 | 2 |AES256        |SHA1              |Brak         |
-| 3 |3DES          |SHA1              |None         |
+| 3 |3DES          |SHA1              |Brak         |
 | 4 |AES256        |SHA256            |None         |
 | 5 |AES128        |SHA1              |Brak         |
 | 6 |3DES          |SHA256            |Brak         |
@@ -173,10 +173,10 @@ W poniższej tabeli znajduje się lista ofert skojarzeń zabezpieczeń protokoł
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Brak         |
 | 2 |AES256        |SHA1              |Brak         |
-| 3 |3DES          |SHA1              |Brak         |
-| 4 |AES256        |SHA256            |Brak         |
-| 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |Brak         |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |Brak         |
+| 6 |3DES          |SHA256            |None         |
 | 7 |DES           |SHA1              |None         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
@@ -192,7 +192,7 @@ W poniższej tabeli znajduje się lista ofert skojarzeń zabezpieczeń protokoł
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |None         |
+| 22|AES128        |SHA256            |Brak         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

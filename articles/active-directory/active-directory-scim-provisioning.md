@@ -1,11 +1,11 @@
 ---
-title: "Automatyzowanie Inicjowanie obsługi aplikacji w usłudze Azure Active Directory przy użyciu SCIM | Dokumentacja firmy Microsoft"
-description: "Usługa Azure Active Directory mogą automatycznie obsługiwać użytkowników i grup do aplikacji lub tożsamości magazynu, który jest fronted przez usługę sieci web przy użyciu interfejsu zdefiniowane w specyfikacji protokołu SCIM"
+title: Automatyzowanie Inicjowanie obsługi aplikacji w usłudze Azure Active Directory przy użyciu SCIM | Dokumentacja firmy Microsoft
+description: Usługa Azure Active Directory mogą automatycznie obsługiwać użytkowników i grup do aplikacji lub tożsamości magazynu, który jest fronted przez usługę sieci web przy użyciu interfejsu zdefiniowane w specyfikacji protokołu SCIM
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
 ms.workload: identity
@@ -17,10 +17,10 @@ ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu do innej domeny zarządzania tożsamościami do automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -144,7 +144,7 @@ Najprostszym sposobem wykonania SCIM punktu końcowego, który może zaakceptowa
   ![][2]
   *Rysunek 4: Konfigurowanie inicjowania obsługi w portalu Azure*
     
-6. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego SCIM dostępne za pośrednictwem Internetu. Będzie to coś jak http://testmachine.contoso.com:9000 lub http://<ip-address>:9000/, gdzie < adres ip > jest internet IP udostępniany adres.  
+6. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego SCIM dostępne za pośrednictwem Internetu. Będzie to wyglądać mniej więcej tak http://testmachine.contoso.com:9000 lub http://<ip-address>:9000/, gdzie < adres ip > jest internet narażona adresu IP.  
 7. Jeśli punkt końcowy SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innego niż Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD będą zawierać tokenu elementu nośnego OAuth wystawione przez usługi Azure AD z każdym żądaniem. Aplikacje, które używają usługi Azure AD jako dostawca tożsamości może sprawdzić poprawność tej usługi Azure AD-wystawiony token.
 8. Kliknij przycisk **Testuj połączenie** przycisk, aby podejmować próby nawiązania połączenia z punktem końcowym SCIM usługi Azure Active Directory. W przypadku awarii próby, wyświetlane informacje o błędzie.  
 9. Jeśli próby połączenia się pomyślnie aplikacji, należy kliknąć **zapisać** można zapisać poświadczeń administratora.
@@ -288,7 +288,7 @@ Do obsługi usługi w usługach IIS, deweloper może kompilacji w zestawie CLA k
     }
 
 ### <a name="handling-endpoint-authentication"></a>Obsługa punktu końcowego uwierzytelniania
-Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa żądania odbierania powinna uwierzytelniać wystawca jako imieniu oczekiwanego dzierżawy usługi Azure Active Directory, do uzyskiwania dostępu do usługi sieci web Azure Active Directory Graph usługi Azure Active Directory.  W tokenie, wystawca jest identyfikowany przez oświadczenie iss, takich jak "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  W tym przykładzie adres podstawowy wartość oświadczenia https://sts.windows.net, identyfikuje usługi Azure Active Directory jako wystawcy, podczas gdy segment adres względny, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, jest unikatowym identyfikatorem usługi Azure Active Directory Dzierżawca imieniu którego token został wystawiony.  Jeśli token został wystawiony na uzyskiwanie dostępu do usługi sieci web Azure Active Directory Graph, identyfikator tej usługi, 00000002-0000-0000-c000-000000000000, powinien być w wartości oświadczenia lub tokenu.  
+Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa żądania odbierania powinna uwierzytelniać wystawca jako imieniu oczekiwanego dzierżawy usługi Azure Active Directory, do uzyskiwania dostępu do usługi sieci web Azure Active Directory Graph usługi Azure Active Directory.  W tokenie, wystawca jest identyfikowany przez oświadczenie iss, takich jak "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  W tym przykładzie adres podstawowy wartość oświadczenia https://sts.windows.net, identyfikuje usługi Azure Active Directory jako wystawca względnej dotyczy segmentu, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, znajduje się na unikatowy identyfikator dzierżawy usługi Azure Active Directory w imieniu którego token został wystawiony.  Jeśli token został wystawiony na uzyskiwanie dostępu do usługi sieci web Azure Active Directory Graph, identyfikator tej usługi, 00000002-0000-0000-c000-000000000000, powinien być w wartości oświadczenia lub tokenu.  
 
 Deweloperzy przy użyciu bibliotek CLA obsługiwane przez firmę Microsoft do tworzenia usługi SCIM może uwierzytelnić żądania z usługi Azure Active Directory przy użyciu pakietu Microsoft.Owin.Security.ActiveDirectory, wykonując następujące czynności: 
 
@@ -352,23 +352,23 @@ Zasoby użytkownika są identyfikowane za pomocą identyfikatora schematu, urn: 
 Grupy zasobów są identyfikowane za pomocą identyfikatora schematu http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Tabela 2, poniżej przedstawiono domyślne mapowanie atrybutów grup w usłudze Azure Active Directory w atrybutach http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group zasobów.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>Tabela 1: Domyślne mapowanie atrybutu użytkownika
-| Azure użytkownika usługi Active Directory | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
+| Azure użytkownika usługi Active Directory | urn: ietf:params:scim:schemas:extension:enterprise:2.0:User |
 | --- | --- |
 | IsSoftDeleted |aktywne |
 | Nazwa wyświetlana |Nazwa wyświetlana |
 | Facsimile-TelephoneNumber |.value phoneNumbers [eq typu "faks"] |
 | givenName |name.givenName |
-| jobTitle |tytuł |
+| Stanowisko |tytuł |
 | Poczty |.value wiadomości e-mail [eq typu "Praca"] |
 | mailNickname |externalId |
-| manager |manager |
+| Menedżer |Menedżer |
 | Telefon komórkowy |.value phoneNumbers [eq typu "mobile"] |
 | Identyfikator obiektu |id |
 | postalCode |.postalCode adresów [eq typu "Praca"] |
 | proxy-Addresses |wiadomości e-mail [Wpisz eq "other"]. Wartość |
 | physical-Delivery-OfficeName |adresy [Wpisz eq "other"]. Sformatowany |
-| streetAddress |.streetAddress adresów [eq typu "Praca"] |
-| surname |name.familyName |
+| Adres |.streetAddress adresów [eq typu "Praca"] |
+| nazwisko |name.familyName |
 | Numer telefonu |.value phoneNumbers [eq typu "Praca"] |
 | user-PrincipalName |userName |
 
@@ -443,7 +443,7 @@ Na poniższej ilustracji pokazano komunikatów wysyła usługi Azure Active Dire
   ````
   W poniższym przykładzie zapytanie dla użytkownika z danej wartości dla atrybutu externalId wartości Argumenty przekazane do metody zapytania są: 
   * parameters.AlternateFilters.Count: 1
-  * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
+  * Parametry. AlternateFilters.ElementAt(0). AttributePath: "externalId"
   * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
   * Parametry. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
@@ -544,7 +544,7 @@ Na poniższej ilustracji pokazano komunikatów wysyła usługi Azure Active Dire
   * Parametry. AlternateFilter.ElementAt(x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
   * parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
-  * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
+  * Parametry. AlternateFilter.ElementAt(y). ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
   * Parametry. RequestedAttributePaths.ElementAt(0): "id"
   * Parametry. SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 

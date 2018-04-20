@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric interfejsu wiersza polecenia sfctl repliki | Dokumentacja firmy Microsoft
-description: "Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl repliki."
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl repliki.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
 ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Zarządzanie replik, które należą do partycji usługi.
@@ -58,7 +58,7 @@ Pobiera szczegóły repliki wdrożone w węźle sieci szkieletowej usług. Infor
 | --debug               | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h             | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o           | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose             | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-replica-health"></a>sfctl repliki kondycji
@@ -82,7 +82,7 @@ Pobiera kondycji sieci szkieletowej usług repliki. Filtr EventsHealthStateFilte
 | --debug                  | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h                | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o              | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                  | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania                  | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose                | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-replica-info"></a>informacje o repliki sfctl
@@ -106,7 +106,7 @@ Odpowiedź zawiera identyfikator, roli, stanu, kondycji, nazwa węzła, czas pra
 | --debug               | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h             | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o           | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji zobacz http://jmespath.org/.|
+| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji, zobacz http://jmespath.org/.|
 | -verbose             | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-replica-list"></a>Lista repliki sfctl

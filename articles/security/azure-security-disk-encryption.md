@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: f42f20893a815640378b9d18186c88b782e61284
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: df13f23908aa787bfcc579340ed0aa6cb0d5ed29
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Szyfrowanie dysków Azure dla systemu Windows i maszyn wirtualnych systemu Linux IaaS
 Microsoft Azure jest silnie zobowiązane do zapewnienia prywatności danych, suwerenności danych i umożliwia sterowanie platformy Azure hostowanej danych za pomocą wielu zaawansowanych technologii szyfrowania, sterowania i zarządzania kluczami szyfrowania, inspekcji i kontroli dostępu do danych. Klienci Azure zapewnia elastyczność wyboru rozwiązania, które będzie najlepiej odpowiadać ich potrzeb biznesowych. W tym dokumencie firma Microsoft podstawowe informacje na temat nowego rozwiązania technologii "Szyfrowania dysków Azure dla systemu Windows i Linux IaaS maszyny Wirtualnej na" Aby chronić i ochrony danych w celu spełnienia organizacji bezpieczeństwa i zgodności zobowiązań. Papieru zapewnia napotka szczegółowe wskazówki dotyczące sposobu używania funkcji szyfrowania dysków Azure w tym obsługiwane scenariusze i użytkownika.
@@ -665,7 +665,7 @@ Można wyłączyć szyfrowania na uruchomionej maszyny Wirtualnej systemu Linux 
 ##### <a name="windows-vm"></a>Maszyna wirtualna z systemem Windows
 Wyłącz szyfrowanie krok wyłącza funkcję szyfrowania systemu operacyjnego i/lub ilość danych na Maszynie wirtualnej uruchomionej IaaS systemu Windows. Nie można wyłączyć woluminu systemu operacyjnego i pozostawić ilość danych zaszyfrowanych. Po wykonaniu kroku Wyłącz szyfrowanie Azure klasycznym modelu wdrażania aktualizacji modelu usług maszyny Wirtualnej i maszyn wirtualnych IaaS systemu Windows jest oznaczony jako odszyfrowany. Zawartość maszyny Wirtualnej nie są szyfrowane, gdy. Odszyfrowywanie nie powoduje usunięcia magazynu kluczy i materiału klucza szyfrowania (klucze szyfrowania funkcji BitLocker dla systemów Windows i hasło dla systemu Linux).
 
-##### <a name="linux-vm"></a>Maszyny Wirtualnej systemu Linux
+##### <a name="linux-vm"></a>Maszyna wirtualna z systemem Linux
 Wyłącz szyfrowanie krok wyłącza szyfrowanie danych woluminu na Maszynie wirtualnej uruchomionej IaaS systemu Linux. Ten krok działa tylko, jeśli nie jest zaszyfrowany dysk systemu operacyjnego.
 
 > [!NOTE]
@@ -720,7 +720,7 @@ Przed kontynuowaniem należy przejrzeć *wymagania wstępne* w tym artykule. Po 
 
 1. Uruchom sesję programu PowerShell Azure i zaloguj się do konta platformy Azure przy użyciu następującego polecenia:
 
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 
 2. Jeśli masz wiele subskrypcji i chcesz określić, należy użyć, wpisz następujące polecenie, aby zobaczyć subskrypcje dla swojego konta:
 

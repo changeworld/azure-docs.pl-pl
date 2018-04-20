@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: b15b3c7f50c23a1c11b2467bfdd2794d52b451ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Użyj punktów końcowych usługi sieci wirtualnej i reguł bazy danych SQL Azure
 
@@ -129,8 +129,8 @@ Bazy danych SQL Azure funkcja reguł sieć wirtualna ma następujące ograniczen
 
 - Reguły sieci wirtualnej mają zastosowanie tylko do sieci wirtualnych Azure Resource Manager. i nie [klasycznego modelu wdrażania] [ arm-deployment-model-568f] sieci.
 
-- Włączanie ON punktów końcowych usługi sieci wirtualnej do bazy danych SQL Azure umożliwia również punktów końcowych usługi MySQL i PostGres Azure. Jednak z ON punktów końcowych próby połączenia się z punktów końcowych wystąpień programu MySQL lub Postgres zakończy się niepowodzeniem.
-    - Podstawowej przyczyn jest to, że MySQL i PostGres nie obsługują obecnie ACLing.
+- Włączanie ON punktów końcowych usługi sieci wirtualnej do bazy danych SQL Azure umożliwia również punktów końcowych usługi MySQL i PostgreSQL Azure. Jednak z ON punktów końcowych próby połączenia się z punktów końcowych wystąpień programu MySQL lub PostgreSQL zakończy się niepowodzeniem.
+    - Podstawowy przyczyną jest to, że MySQL i PostgreSQL nie obecnie obsługują ACLing.
 
 - W zaporze zakresów adresów IP są stosowane do następujących elementów sieci, ale zasady sieci wirtualnej nie:
     - [Lokacja-lokacja (S2S) wirtualnej sieci prywatnej (VPN)][vpn-gateway-indexmd-608y]
@@ -225,6 +225,10 @@ Lista komunikaty o błędach bazy danych SQL jest udokumentowany [tutaj][sql-dat
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portal można utworzyć regułę sieci wirtualnej
 
 W tej części przedstawiono, jak używasz [portalu Azure] [ http-azure-portal-link-ref-477t] utworzyć *reguły sieci wirtualnej* w bazie danych SQL Azure. Reguła określa, że baza danych SQL do akceptowania komunikacji od określonej podsieci, które zostały oznaczone jako *punkt końcowy usługi sieci wirtualnej*.
+
+> [!NOTE]
+> Upewnij się, czy usługa punkty końcowe są włączone dla sieci Wirtualnej podsieci użytkownik planuje dodanie sieci Wirtualnej reguł zapory serwera.
+> Punkty końcowe usługi nie są włączone dla sieci Wirtualnej podsieci poprosimy Cię w portalu, aby je włączyć, kliknij przycisk Włącz bloku, w którym można dodać regułę.
 
 #### <a name="powershell-alternative"></a>Zamiast programu PowerShell
 

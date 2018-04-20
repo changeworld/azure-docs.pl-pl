@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować hybrydowe usługi Azure Active Directory przyłączone do urządzeń | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania hybrydowych urządzeń przyłączonych do usługi Azure Active Directory."
+title: Jak skonfigurować hybrydowe usługi Azure Active Directory przyłączone do urządzeń | Dokumentacja firmy Microsoft
+description: Informacje o sposobie konfigurowania hybrydowych urządzeń przyłączonych do usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurowanie hybrydowego urządzeń przyłączonych do usługi Azure Active Directory
 
@@ -526,7 +526,7 @@ W usługach AD FS należy dodać reguły przekształcania wystawiania, który pr
 
     `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-8. Na serwerze federacyjnym, wpisz poniższe polecenie programu PowerShell po zastąpieniu  **\<RPObjectName\>**  nazwą jednostki uzależnionej strony obiektu dla obiekt zaufania jednostki uzależnionej strony usługi Azure AD. Ten obiekt zwykle nosi nazwę **Microsoft Office 365 tożsamość platformy**.
+8. Na serwerze federacyjnym, wpisz poniższe polecenie programu PowerShell po zastąpieniu **\<RPObjectName\>** nazwą jednostki uzależnionej strony obiektu dla obiekt zaufania jednostki uzależnionej strony usługi Azure AD. Ten obiekt zwykle nosi nazwę **Microsoft Office 365 tożsamość platformy**.
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 

@@ -1,12 +1,12 @@
 ---
-title: "Zbieranie danych ze środowiska z Azure Log Analytics | Dokumentacja firmy Microsoft"
-description: "Ten temat ułatwia zrozumienie, jak zbierać dane i monitorować komputery hostowanej w lokalnej lub w innym środowisku chmury z analizy dzienników."
+title: Zbieranie danych ze środowiska z Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Ten temat ułatwia zrozumienie, jak zbierać dane i monitorować komputery hostowanej w lokalnej lub w innym środowisku chmury z analizy dzienników.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: magoedte
 ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Zbieranie danych z komputerów w środowisku z analizy dzienników
 

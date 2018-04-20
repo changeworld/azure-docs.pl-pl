@@ -1,11 +1,11 @@
 ---
-title: "Informacje o wersji usługi Media Services | Dokumentacja firmy Microsoft"
-description: "Informacje o wersji usługi Media Services"
+title: Informacje o wersji usługi Media Services | Dokumentacja firmy Microsoft
+description: Informacje o wersji usługi Media Services
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 20a24aa19989370c6ce82a738193a78f24b0eba9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji usługi Azure Media Services
 Te informacje o wersji dla usługi Azure Media Services podsumowano zmiany z poprzednich wersji i znane problemy.
@@ -47,7 +47,7 @@ Informacje o historii wersji interfejsu API REST usług nośnika, zobacz [dokume
 
 ## <a name="october-2017-release"></a>2017 października zlecenia
 > [!IMPORTANT] 
-> Wycofano obsługę kluczy uwierzytelniania w usłudze kontroli dostępu w usłudze Azure Media Services. Na 1 czerwca 2018 nie mogą uwierzytelniać z usługi Media Services zaplecza za pośrednictwem kodu za pomocą kluczy usługi kontroli dostępu. Zaktualizuj swój kod, aby używać usługi Azure Active Directory (Azure AD) na [Azure uwierzytelniania w usłudze AD](media-services-use-aad-auth-to-access-ams-api.md). Obejrzyj ostrzeżenia o tej zmianie w portalu Azure.
+> Wycofano obsługę kluczy uwierzytelniania w usłudze kontroli dostępu w usłudze Azure Media Services. Na 22 czerwca 2018 nie mogą uwierzytelniać z usługi Media Services zaplecza za pośrednictwem kodu za pomocą kluczy usługi kontroli dostępu. Zaktualizuj swój kod, aby używać usługi Azure Active Directory (Azure AD) na [Azure uwierzytelniania w usłudze AD](media-services-use-aad-auth-to-access-ams-api.md). Obejrzyj ostrzeżenia o tej zmianie w portalu Azure.
 
 ### <a name="updates-for-october-2017"></a>Aktualizacje dla 2017 października
 #### <a name="sdks"></a>Zestawy SDK
@@ -95,7 +95,7 @@ Uruchamianie 1 kwietnia 2017 r dowolnego rekordu zadania konta starsze niż 90 d
 
 W usłudze Media Services punktu końcowego przesyłania strumieniowego reprezentuje przesyłania strumieniowego usługa, która może dostarczać zawartość bezpośrednio do aplikacji klienckiej player lub sieci dostarczania zawartości (CDN) w celu dalszej dystrybucji. Usługa Media Services udostępnia również bezproblemową integrację Azure Content Delivery Network. Strumienia wychodzącego z usługi StreamingEndpoint może być strumień na żywo, wideo na żądanie lub pobierania progresywnego zawartości na koncie usługi Media Services. Każde konto usługi Media Services zawiera domyślnego punktu końcowego przesyłania strumieniowego. Można utworzyć dodatkowe punkty końcowe przesyłania strumieniowego na koncie. 
 
-Istnieją dwie wersje punkty końcowe, przesyłania strumieniowego 1.0 i 2.0. Uruchamianie 10 stycznia 2017 wszelkie nowo utworzonego konta usługi Media Services zawierają domyślne w wersji 2.0 punktu końcowego przesyłania strumieniowego. Dodatkowe punktów końcowych przesyłania strumieniowego dodanych do tego konta są także w wersji 2.0. Ta zmiana nie ma wpływu na istniejących kont. Istniejące punkty końcowe przesyłania strumieniowego są w wersji 1.0 i może zostać uaktualnione do wersji 2.0. Brak zachowania, rozliczeń i funkcji zmian z tą zmianą. Aby uzyskać więcej informacji, zobacz [Omówienie punktów końcowych przesyłania strumieniowego](media-services-streaming-endpoints-overview.md).
+Istnieją dwie wersje punkty końcowe, przesyłania strumieniowego 1.0 i 2.0. Uruchamianie 10 stycznia 2017 wszelkie nowo utworzonego konta usługi Media Services zawierają domyślne w wersji 2.0 punktu końcowego przesyłania strumieniowego. Dodatkowe punktów końcowych przesyłania strumieniowego dodanych do tego konta są także w wersji 2.0. Ta zmiana nie ma wpływu na istniejących kont. Istniejące punkty końcowe przesyłania strumieniowego są w wersji 1.0 i może zostać uaktualnione do wersji 2.0. Brak zachowania, rozliczeń i funkcji zmian z tą zmianą. Aby uzyskać więcej informacji, zobacz [Streaming endpoints overview (Omówienie punktów końcowych przesyłania strumieniowego)](media-services-streaming-endpoints-overview.md).
 
 Począwszy od wersji 2.15 Media Services dodano następujące właściwości jednostki przesyłania strumieniowego punktu końcowego:
 

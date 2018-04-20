@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie wyrażeń na potrzeby mapowań atrybutów w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać wyrażenia mapowania do przekształcania dozwolonego formatu wartości atrybutów podczas automatycznego inicjowania obsługi obiektów aplikacji SaaS w usłudze Azure Active Directory."
+title: Tworzenie wyrażeń na potrzeby mapowań atrybutów w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać wyrażenia mapowania do przekształcania dozwolonego formatu wartości atrybutów podczas automatycznego inicjowania obsługi obiektów aplikacji SaaS w usłudze Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Tworzenie wyrażeń na potrzeby mapowań atrybutów w usłudze Azure Active Directory
 Po skonfigurowaniu udostępniania do aplikacji SaaS, jest jeden z typów mapowań atrybutów, które można określić mapowanie wyrażenia. W tym przypadku należy napisać wyrażenie przypominającej skryptu, które pozwala na przekształcanie danych użytkowników do formatów, które są bardziej dozwolone dla aplikacji SaaS.
@@ -77,7 +77,7 @@ Jeśli jedna z wartości źródła jest atrybutu wielowartościowego, każda war
 
 | Name (Nazwa) | Wymagane / powtarzanej | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **separator** |Wymagane |Ciąg |Ciąg używany do rozdzielania wartości źródła, gdy są one połączone w jeden ciąg. Może być "" Jeśli separator nie jest wymagane. |
+| **Separator** |Wymagane |Ciąg |Ciąg używany do rozdzielania wartości źródła, gdy są one połączone w jeden ciąg. Może być "" Jeśli separator nie jest wymagane. |
 | ** źródło1... źródłoN ** |Wymagana zmienna — liczba |Ciąg |Ciąg wartości, które mają zostać połączone ze sobą. |
 
 - - -
@@ -91,8 +91,8 @@ Jeśli jedna z wartości źródła jest atrybutu wielowartościowego, każda war
 | Name (Nazwa) | Wymagane / powtarzanej | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu. |
-| **start** |Wymagane |integer |Indeks w **źródła** ciąg, gdzie powinna zaczynać się podciąg. Pierwszy znak w ciągu ma indeks równy 1, drugi ma indeks 2 i tak dalej. |
-| **length** |Wymagane |integer |Długość podciąg. Jeśli długość kończy się poza **źródła** ciągu, funkcja zwraca podciąg z **start** indeksu do końca **źródła** ciągu. |
+| **start** |Wymagane |liczba całkowita |Indeks w **źródła** ciąg, gdzie powinna zaczynać się podciąg. Pierwszy znak w ciągu ma indeks równy 1, drugi ma indeks 2 i tak dalej. |
+| **długość** |Wymagane |liczba całkowita |Długość podciąg. Jeśli długość kończy się poza **źródła** ciągu, funkcja zwraca podciąg z **start** indeksu do końca **źródła** ciągu. |
 
 - - -
 ### <a name="not"></a>nie
@@ -161,7 +161,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametry podane:
 
 | Name (Nazwa) | Wymagane / powtarzanej | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |**źródło** wartość do aktualizacji. |
+| **source** |Wymagane |Ciąg |**Źródło** wartość do aktualizacji. |
 
 - - -
 ### <a name="switch"></a>Przełącznik
@@ -174,9 +174,9 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametry podane:
 | Name (Nazwa) | Wymagane / powtarzanej | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |**Źródło** wartość do aktualizacji. |
-| **defaultValue** |Optional (Opcjonalność) |Ciąg |Wartość domyślna ma być używany podczas źródłowym nie odpowiada żadnych kluczy. Może być pustym ciągiem (""). |
+| **Wartość domyślna** |Optional (Opcjonalność) |Ciąg |Wartość domyślna ma być używany podczas źródłowym nie odpowiada żadnych kluczy. Może być pustym ciągiem (""). |
 | **Klucz** |Wymagane |Ciąg |**Klucz** do porównania **źródła** wartości z. |
-| **Wartość** |Wymagane |Ciąg |Wartość zastąpienia **źródła** pasujących do klucza. |
+| **value** |Wymagane |Ciąg |Wartość zastąpienia **źródła** pasujących do klucza. |
 
 ## <a name="examples"></a>Przykłady
 ### <a name="strip-known-domain-name"></a>Nazwa domeny znane taśmy
@@ -251,7 +251,7 @@ Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należ
 * **Dane wejściowe** (stan): "QLD"
 * **Dane wyjściowe**: "Australii/Brisbane"
 
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Powiązane artykuły
 * [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
 * [Automatyzowanie użytkownika udostępniania/anulowania obsługi do aplikacji SaaS](active-directory-saas-app-provisioning.md)
 * [Dostosowywanie mapowań atrybutów do inicjowania obsługi użytkowników](active-directory-saas-customizing-attribute-mappings.md)

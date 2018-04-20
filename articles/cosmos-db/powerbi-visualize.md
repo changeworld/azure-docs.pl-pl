@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: sngun
 ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI samouczek dla bazy danych Azure rozwiązania Cosmos: wizualizuj dane przy użyciu łącznika usługi Power BI
 [Witrynie PowerBI.com](https://powerbi.microsoft.com/) to usługa online, których można tworzyć i udostępniać pulpity nawigacyjne i raporty z danych, które są istotne dla Ciebie i Twojej organizacji.  Power BI Desktop jest dedykowany raport narzędziu, która umożliwia pobieranie danych z różnych źródeł danych, scalić przekształcania danych, tworzenie zaawansowanych raportów i wizualizacje i opublikować raporty do usługi Power BI.  Do najnowszej wersji programu Power BI Desktop można teraz nawiązać konta bazy danych rozwiązania Cosmos Azure za pomocą łącznika usługi Azure DB rozwiązania Cosmos dla usługi Power BI.   

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 538d31f5b50ee22c06ba22c78e1aa92281a3b212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9391072159f26ae8c7d3eba9f023a8e7d62a4e26
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Usługi aplikacji — informacje o wersji 1 update Azure stosu
 
@@ -39,7 +39,7 @@ Usługa aplikacji Azure stosu Update 1 numer kompilacji jest **69.0.13698.9**
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 > [!IMPORTANT]
-> Nowe wdrożenia usługi Azure App Service na stosie Azure wymaga [certyfikat uniwersalny podmiotu trzech](azure-stack-app-service-before-you-get-started.md#get-certificates) ze względu na ulepszenia w taki sposób, w jaki usługa rejestracji Jednokrotnej dla Kudu teraz obsługiwane w usłudze Azure App Service.  Nowy temat jest ** *. sso.appservice.<region>. <domainname>.<extension>**
+> Nowe wdrożenia usługi Azure App Service na stosie Azure wymaga [certyfikat uniwersalny podmiotu trzech](azure-stack-app-service-before-you-get-started.md#get-certificates) ze względu na ulepszenia w taki sposób, w jaki usługa rejestracji Jednokrotnej dla Kudu teraz obsługiwane w usłudze Azure App Service. Nowy temat jest ** *.sso.appservice.<region>.<domainname>.<extension>**
 >
 >
 
@@ -49,11 +49,11 @@ Zapoznaj się [przed rozpoczęciem pracy dokumentacji](azure-stack-app-service-b
 
 Usługa aplikacji Azure na Azure stosu Update 1 zawiera następujące ulepszenia i poprawki:
 
-- **Wysokiej dostępności z usługi Azure App Service** -1802 stosu Azure obciążeń włączone aktualizacje do wdrożenia na fault domen.  W związku z tym infrastruktury usługi aplikacji jest w stanie się odporność na uszkodzenia, co zostanie ona wdrożona w domenach awarii.  Domyślnie wszystkie nowe wdrożenia usługi Azure App Service zostanie mają tę możliwość, jednak wdrożeń ukończone przed 1802 stosu Azure zastosowanych aktualizacji można znaleźć w temacie [dokumentacji domena awarii usługi aplikacji](azure-stack-app-service-fault-domain-update.md)
+- **Wysokiej dostępności z usługi Azure App Service** -1802 stosu Azure obciążeń włączone aktualizacje do wdrożenia na fault domen. W związku z tym infrastruktury usługi aplikacji jest w stanie się odporność na uszkodzenia, co zostanie ona wdrożona w domenach awarii. Domyślnie wszystkie nowe wdrożenia usługi Azure App Service ma tę możliwość, jednak wdrożeń ukończone przed 1802 stosu Azure zastosowanych aktualizacji można znaleźć w temacie [dokumentacji domena awarii usługi aplikacji](azure-stack-app-service-fault-domain-update.md)
 
-- **Wdrażanie w istniejącej sieci wirtualnej** — klienci mogą teraz wdrożyć usługi aplikacji na stosie Azure w ramach istniejącej sieci wirtualnej.  Wdrażanie w istniejącej sieci wirtualnej umożliwia klientom łączenie się z programu SQL Server i serwer plików, wymaganych do usługi Azure App Service za pośrednictwem portów prywatnych.  Podczas wdrażania klientów można wybrać do wdrożenia w istniejącej sieci wirtualnej, jednak [należy utworzyć podsieci do użycia przez usługę App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) przed ich wdrożeniem.
+- **Wdrażanie w istniejącej sieci wirtualnej** — klienci mogą teraz wdrożyć usługi aplikacji na stosie Azure w ramach istniejącej sieci wirtualnej. Wdrażanie w istniejącej sieci wirtualnej umożliwia klientom łączenie się z programu SQL Server i serwer plików, wymaganych do usługi Azure App Service za pośrednictwem portów prywatnych. Podczas wdrażania klientów można wybrać do wdrożenia w istniejącej sieci wirtualnej, jednak [należy utworzyć podsieci do użycia przez usługę App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) przed ich wdrożeniem.
 
-- Aktualizacje **dzierżawa usługi aplikacji, administrator, portali funkcje i narzędzia Kudu**.  Spójne z wersją zestawu SDK usługi Azure stosu portalu.
+- Aktualizacje **dzierżawa usługi aplikacji, administrator, portali funkcje i narzędzia Kudu**. Spójne z wersją zestawu SDK usługi Azure stosu portalu.
 
 - **Aktualizacje następujące struktury aplikacji i narzędzi**:
     - Dodaje **.Net Core 2.0** obsługuje
@@ -105,11 +105,11 @@ Usługa aplikacji Azure na Azure stosu Update 1 zawiera następujące ulepszenia
 
 - Błędy sprawdzania poprawności certyfikatu
 
-Niektórzy klienci wystąpić problemy podczas dostarczania certyfikatów Instalatora usługi aplikacji podczas wdrażania w systemie zintegrowane z powodu zbyt restrykcyjne weryfikacji w Instalatorze.  Instalator usługi aplikacji została ponownie wydana, jeżeli klienci [Pobierz zaktualizowany Instalator](https://aka.ms/appsvconmasinstaller).  Jeśli nadal występują problemy dotyczące sprawdzania poprawności certyfikatów przy użyciu zaktualizowanych Instalatora, należy się z pomocą techniczną.
+Niektórzy klienci wystąpić problemy podczas dostarczania certyfikatów Instalatora usługi aplikacji podczas wdrażania w systemie zintegrowane z powodu zbyt restrykcyjne weryfikacji w Instalatorze. Instalator usługi aplikacji została ponownie wydana, jeżeli klienci [Pobierz zaktualizowany Instalator](https://aka.ms/appsvconmasinstaller). Jeśli nadal występują problemy dotyczące sprawdzania poprawności certyfikatów przy użyciu zaktualizowanych Instalatora, należy się z pomocą techniczną.
 
 - Problem podczas pobierania certyfikatu głównego stosu Azure z zintegrowany system.
 
-Błąd w Get AzureStackRootCert.ps1 spowodował klientów nie można pobrać certyfikat główny stos Azure podczas wykonywania skryptu na komputerze, na którym nie ma zainstalowany certyfikat główny.  Skrypt teraz również opublikowano ponownie, rozwiązywanie tego problemu, a żądania klientów [Pobierz skrypty zaktualizowane Pomocnika](https://aka.ms/appsvconmashelpers).  Jeśli nadal występują problemy podczas pobierania certyfikatu głównego z zaktualizowany skrypt, skontaktuj się z pomocą techniczną.
+Błąd w Get AzureStackRootCert.ps1 spowodował klientów nie można pobrać certyfikat główny stos Azure podczas wykonywania skryptu na komputerze, na którym nie ma zainstalowany certyfikat główny. Skrypt teraz również opublikowano ponownie, rozwiązywanie tego problemu, a żądania klientów [Pobierz skrypty zaktualizowane Pomocnika](https://aka.ms/appsvconmashelpers). Jeśli nadal występują problemy podczas pobierania certyfikatu głównego z zaktualizowany skrypt, skontaktuj się z pomocą techniczną.
 
 ### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
 
@@ -119,12 +119,12 @@ Błąd w Get AzureStackRootCert.ps1 spowodował klientów nie można pobrać cer
 
 - Wymiany gniazd nie działa.
 
-Wymiany gniazd lokacji są dzielone w tej wersji.  Aby przywrócić funkcjonalność, wykonaj następujące kroki:
+Wymiany gniazd lokacji są dzielone w tej wersji. Aby przywrócić funkcjonalność, wykonaj następujące kroki:
 
-1. Modyfikowanie grupy zabezpieczeń sieci ControllersNSG do **Zezwalaj** połączeń pulpitu zdalnego do wystąpień kontrolera usługi aplikacji.  Zamień na nazwę grupy zasobów, wdrożonej usługi aplikacji w AppService.local.
+1. Modyfikowanie grupy zabezpieczeń sieci ControllersNSG do **Zezwalaj** połączeń pulpitu zdalnego do wystąpień kontrolera usługi aplikacji. Zamień na nazwę grupy zasobów, wdrożonej usługi aplikacji w AppService.local.
 
     ```powershell
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
 
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 
@@ -146,7 +146,7 @@ Wymiany gniazd lokacji są dzielone w tej wersji.  Aby przywrócić funkcjonalno
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
       ```
 
-2. Przejdź do **CN0-VM** w obszarze maszyn wirtualnych w portalu Azure stosu administratora i **kliknij przycisk Połącz** otworzyć sesję pulpitu zdalnego z wystąpienie kontrolera.  Użyj poświadczeń określonych podczas wdrażania usługi aplikacji.
+2. Przejdź do **CN0-VM** w obszarze maszyn wirtualnych w portalu Azure stosu administratora i **kliknij przycisk Połącz** otworzyć sesję pulpitu zdalnego z wystąpienie kontrolera. Użyj poświadczeń określonych podczas wdrażania usługi aplikacji.
 3. Uruchom **programu PowerShell jako Administrator** i uruchom następujący skrypt
 
     ```powershell
@@ -171,11 +171,11 @@ Wymiany gniazd lokacji są dzielone w tej wersji.  Aby przywrócić funkcjonalno
     ```
 
 4. Zamykanie sesji usług pulpitu zdalnego.
-5. Przywróć ControllersNSG sieciową grupę zabezpieczeń do **Odmów** połączeń pulpitu zdalnego do wystąpień kontrolera usługi aplikacji.  Zamień na nazwę grupy zasobów, wdrożonej usługi aplikacji w AppService.local.
+5. Przywróć ControllersNSG sieciową grupę zabezpieczeń do **Odmów** połączeń pulpitu zdalnego do wystąpień kontrolera usługi aplikacji. Zamień na nazwę grupy zasobów, wdrożonej usługi aplikacji w AppService.local.
 
     ```powershell
 
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
 
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 
@@ -196,6 +196,18 @@ Wymiany gniazd lokacji są dzielone w tej wersji.  Aby przywrócić funkcjonalno
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
+- Nie można osiągnąć serwera plików, gdy wdrażana jest usługa aplikacji w ramach istniejącej sieci wirtualnej i serwer plików jest dostępna w sieci prywatnej tylko są pracowników.
+ 
+Jeśli wybierzesz do wdrożenia w ramach istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z plików, należy dodać reguły zabezpieczeń dla ruchu wychodzącego, włączanie ruchu SMB między podsieci procesu roboczego i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+ * Źródło: wszystkie
+ * Zakres portów źródłowych: *
+ * Miejsce docelowe: Adresy IP
+ * Docelowy zakres adresów IP: zakres adresów IP dla serwera plików
+ * Zakres portów docelowych: 445
+ * Protokół: TCP
+ * Akcja: Zezwalaj
+ * Priorytet: 700
+ * Nazwa: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Znane problemy dotyczące działania usługi Azure App Service na stosie Azure Administratorzy chmury
 

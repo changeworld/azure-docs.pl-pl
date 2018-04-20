@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 8f0cd8aad2d5c5142fc66c78393b57ff210a7b83
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Proces dużych zestawów danych przy użyciu fabryki danych i usługi partia zadań
 > [!NOTE]
@@ -42,7 +42,7 @@ W usłudze Batch definiuje się zasoby obliczeniowe Azure do wykonywania aplikac
 
 Opcjonalnie, aby dowiedzieć się więcej na temat usługi partia zadań, zobacz [ścieżka szkoleniowa dotycząca partii](https://azure.microsoft.com/documentation/learning-paths/batch/).
 
-## <a name="why-azure-data-factory"></a>Dlaczego fabryki danych Azure?
+## <a name="why-azure-data-factory"></a>Dlaczego warto wybrać usługę Azure Data Factory?
 Fabryka danych jest usługą integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych. Fabryka danych służy do tworzenia potoki zarządzanych danych, które przenoszenia danych z lokalnego i w chmurze magazyny danych w magazynie danych scentralizowane. Przykładem jest magazynu obiektów Blob platformy Azure. Fabryka danych służy do procesu/Przekształcanie danych za pomocą usług, takich jak Azure HDInsight i uczenia maszynowego Azure. Można również zaplanować potoki danych do uruchamiania w zaplanowanym czasie (na przykład co godzinę, codziennie i co tydzień). Można monitorować i zarządzać nimi potoki jeden rzut oka do identyfikowania problemów i podejmij akcję.
 
   Jeśli nie znasz z fabryką danych, następujące artykuły ułatwić zrozumienie architektury/implementacji rozwiązania opisane w tym artykule:  
@@ -171,7 +171,7 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
   * **linkedServices**. Ten parametr jest wyliczalny lista połączonych usług połączonych źródeł danych wejścia/wyjścia (na przykład magazynu obiektów blob) z fabryką danych. W tym przykładzie istnieje tylko jeden połączonej usługi typu usługi Azure Storage używane dla danych wejściowych i wyjściowych.
   * **zestawy danych**. Ten parametr jest wyliczalny listę zestawów danych. Ten parametr umożliwia pobieranie lokalizacji i schematy wynika z zestawów danych wejściowych i wyjściowych.
   * **działanie**. Tego parametru reprezentuje bieżącego obiektu obliczeń. W takim przypadku jest usługa partia zadań.
-  * **logger**. Rejestrator służy do zapisania tej powierzchni komentarze debugowania jako dziennika "Użytkownika" dla potoku.
+  * **Rejestrator**. Rejestrator służy do zapisania tej powierzchni komentarze debugowania jako dziennika "Użytkownika" dla potoku.
 * Metoda zwraca słownik, który może służyć do łańcuch niestandardowych działań w przyszłości. Ta funkcja nie jest jeszcze zaimplementowana, więc po prostu zwraca pusty słownik z metody.
 
 #### <a name="procedure-create-the-custom-activity"></a>Procedura: Tworzenie niestandardowego działania

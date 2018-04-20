@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie zasad IPsec i IKE dla połączeń sieci VPN S2S lub do wirtualnymi: usługi Azure Resource Manager: programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Skonfiguruj zasady IPsec i IKE dla połączeń S2S lub do wirtualnymi z bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i programu PowerShell."
+title: 'Konfigurowanie zasad IPsec i IKE dla połączeń sieci VPN S2S lub do wirtualnymi: usługi Azure Resource Manager: programu PowerShell | Dokumentacja firmy Microsoft'
+description: Skonfiguruj zasady IPsec i IKE dla połączeń S2S lub do wirtualnymi z bramy sieci VPN platformy Azure przy użyciu usługi Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 19233ccd306f507ef2e36bee878aa9705c115780
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fa1aed76f63e500a6c2849fb9b62a918e85c9fb0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurowanie zasad IPsec i IKE dla połączeń S2S sieci VPN lub sieć wirtualną do sieci wirtualnej
 
@@ -162,7 +162,7 @@ Upewnij się, że program PowerShell został przełączony do trybu umożliwiaj�
 Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```

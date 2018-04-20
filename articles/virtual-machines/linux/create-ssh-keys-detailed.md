@@ -1,6 +1,6 @@
 ---
-title: Szczegółowe instrukcje dotyczące tworzenia pary kluczy SSH dla maszyn wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
-description: Poznaj dodatkowe czynności dotyczące tworzenia pary publicznych i prywatnych kluczy SSH dla maszyn wirtualnych z systemem Linux na platformie Azure wraz z określonymi certyfikatami dla różnych przypadków zastosowań.
+title: Szczegółowy opis kroków - SSH parę kluczy dla maszyn wirtualnych systemu Linux platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się szczegółowy opis kroków, aby utworzyć i zarządzać SSH publiczne i prywatne parę kluczy dla maszyn wirtualnych systemu Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
@@ -13,67 +13,75 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 6/28/2017
+ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: 20d36f5e377f2d5af588319cee2be1808571f905
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 827c80a70047fd0f1ad67e4f19cb2300e45b2c6b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
-# <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Szczegółowy przewodnik tworzenia pary kluczy SSH oraz dodatkowe certyfikaty dla maszyn wirtualnych z systemem Linux na platformie Azure
-Para kluczy SSH umożliwia tworzenie na platformie Azure maszyn wirtualnych, które domyślnie używają kluczy SSH do uwierzytelniania, eliminując konieczność logowania przy użyciu haseł. Hasła można złamać i narażają one maszyny wirtualne na bezlitosne próby ataków siłowych w celu odgadnięcia hasła. Maszyny wirtualne tworzone za pomocą interfejsu wiersza polecenia platformy Azure lub szablonów usługi Resource Manager mogą mieć dołączony publiczny klucz SSH w ramach wdrożenia, co eliminuje potrzebę wykonania po wdrożeniu kroku konfiguracji polegającego na wyłączeniu logowania przy użyciu haseł dla protokołu SSH. Ten artykuł zawiera szczegółowe kroki i dodatkowe przykłady generowania certyfikatów, takich jak do użycia z maszyn wirtualnych systemu Linux. Jeśli chcesz szybko utworzyć parę prywatnych i publicznych kluczy SSH i używać ich, zobacz [Jak utworzyć parę kluczy publicznych i prywatnych dla maszyn wirtualnych z systemem Linux na platformie Azure](mac-create-ssh-keys.md).
+# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Szczegółowe kroki: tworzenie i zarządzanie nimi kluczy SSH do uwierzytelniania Maszynę wirtualną systemu Linux na platformie Azure 
+Przy użyciu pary kluczy bezpiecznej powłoki (SSH) można utworzyć maszyny wirtualnej systemu Linux na platformie Azure, który domyślnie przy użyciu kluczy SSH do uwierzytelnienia, eliminując konieczność hasła do logowania. Maszyny wirtualne utworzone za pomocą portalu Azure, interfejsu wiersza polecenia Azure Resource Manager szablonów lub innych narzędzi może zawierać klucz publiczny SSH jako część wdrożenia, który konfiguruje uwierzytelniania klucza SSH dla połączenia SSH. 
 
-## <a name="understanding-ssh-keys"></a>Informacje o kluczach SSH
+Ten artykuł zawiera szczegółowe tła i kroki tworzenia i zarządzania nimi parę pliku klucza publicznego i prywatnego SSH RSA dla połączeń klienta SSH. Szybkie polecenia, zobacz [tworzenie pary kluczy publicznych i prywatnych SSH dla maszyn wirtualnych systemu Linux na platformie Azure](mac-create-ssh-keys.md).
 
-Publiczne i prywatne klucze SSH umożliwiają logowanie do serwerów z systemem Linux w najłatwiejszy sposób. [Kryptografia klucza publicznego](https://en.wikipedia.org/wiki/Public-key_cryptography) zapewnia znacznie bezpieczniejsze logowanie do maszyn wirtualnych z systemem Linux lub BSD na platformie Azure niż hasła, które mogą być dużo łatwiej złamane za pomocą ataków siłowych.
+Aby uzyskać dodatkowe sposoby Generowanie i używanie kluczy SSH na komputerze z systemem Windows, zobacz [kluczy sposobu korzystania z protokołu SSH z systemem Windows Azure](ssh-from-windows.md).
 
-Klucz publiczny można udostępniać wszystkim, ale tylko Ty (lub lokalna infrastruktura zabezpieczeń) posiadasz klucz prywatny.  Prywatny klucz SSH powinien być zabezpieczony [bardzo bezpiecznym hasłem](https://www.xkcd.com/936/) (źródło:[xkcd.com](https://xkcd.com)).  To hasło służy wyłącznie do uzyskiwania dostępu do pliku prywatnego klucza SSH i **nie jest** hasłem do konta użytkownika.  Dodanie hasła do klucza SSH spowoduje zaszyfrowanie klucza prywatnego przy użyciu 128-bitowego standardu AES, aby odszyfrowanie i użycie klucza nie było możliwe bez podania hasła.  Jeżeli osobie niepowołanej udałoby się wykraść Twój klucz prywatny, który nie został zabezpieczony hasłem, osoba ta mogłaby użyć tego klucza w celu zalogowania się na dowolne serwery z odpowiadającym mu kluczem publicznym.  Zabezpieczenie klucza prywatnego hasłem zapewnia dodatkową warstwę ochronną dla infrastruktury na platformie Azure, a osoba niepowołana nie może go użyć.
+[!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
-W tym artykule utworzono parę plików prywatnych i publicznych kluczy RSA protokołu SSH w wersji 2 (zwanych także kluczami „shh-rsa”), które są zalecane w przypadku wdrożeń z usługą Azure Resource Manager. Klucze *ssh-rsa* są wymagane w [portalu](https://portal.azure.com) w przypadku zarówno wdrożeń klasycznych, jak i wdrożeń przy użyciu usługi Resource Manager.
+### <a name="private-key-passphrase"></a>Hasło klucza prywatnego
+Klucz prywatny SSH powinna mieć bardzo bezpiecznego hasła w celu zabezpieczenia go. To hasło jest po prostu Aby uzyskać dostęp do pliku klucza prywatnego SSH i *nie jest* hasło do konta użytkownika. Po dodaniu hasło do klucza SSH koduje klucza prywatnego za pomocą 128-bitowego szyfrowania AES, tak, aby klucz prywatny jest bezużyteczny bez hasła do odszyfrowania. Jeśli osoba atakująca kraść klucz prywatny tego klucza nie ma hasła, będzie mógł używać tego klucza prywatnego na logowanie się do żadnych serwerów, które mają odpowiedni klucz publiczny. Jeśli klucz prywatny jest chroniony hasłem, nie można użyć, a osoba niepowołana, zapewniając dodatkową warstwę zabezpieczeń dla infrastruktury na platformie Azure.
+
+[!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="ssh-keys-use-and-benefits"></a>Korzystanie z kluczy SSH i ich zalety
 
-Platforma Azure wymaga co najmniej 2048-bitowych publicznych i prywatnych kluczy RSA protokołu SSH w wersji 2, przy czym format kontenera pliku klucza publicznego to `.pub`. Aby utworzyć klucze, należy użyć funkcji `ssh-keygen`, która najpierw zadaje szereg pytań, a następnie zapisuje klucz prywatny i dopasowany klucz publiczny. Po utworzeniu maszyny wirtualnej platformy Azure klucz publiczny jest kopiowany do folderu `~/.ssh/authorized_keys` na maszynie wirtualnej. Klucze SSH w katalogu `~/.ssh/authorized_keys` są używane jako wezwania klienta do dopasowania odpowiedniego klucza prywatnego w celu zalogowania za pomocą połączenia przy użyciu protokołu SSH.  W przypadku tworzenia maszyny wirtualnej platformy Azure z systemem Linux i możliwością uwierzytelniania za pomocą kluczy SSH platforma Azure konfiguruje serwer SSHD tak, aby zezwalał na użycie tylko kluczy SSH, a nie na logowanie przy użyciu hasła.  W związku z tym utworzenie maszyny wirtualnej platformy Azure z systemem Linux przy użyciu kluczy SSH może ułatwić zabezpieczenie wdrożenia maszyny wirtualnej i nie trzeba będzie wtedy wykonywać typowego kroku konfiguracji po wdrażaniu, czyli wyłączenia haseł w pliku **sshd_config**.
+Po utworzeniu maszyny Wirtualnej platformy Azure, określając klucz publiczny Azure kopiuje klucza publicznego (w `.pub` format) do `~/.ssh/authorized_keys` folderu na maszynie Wirtualnej. Klucze SSH w katalogu `~/.ssh/authorized_keys` są używane jako wezwania klienta do dopasowania odpowiedniego klucza prywatnego w celu zalogowania za pomocą połączenia przy użyciu protokołu SSH. W Azure Linux maszynę Wirtualną, która używa kluczy SSH do uwierzytelniania Azure pozwala na skonfigurowanie serwera SSHD nie zezwalaj na hasło logowania, tylko kluczy SSH. W związku z tym, tworząc maszyny Wirtualnej systemu Linux platformy Azure z kluczy SSH, możesz pomóc bezpiecznego wdrażania maszyny Wirtualnej i Zapisz sobie krok typowej konfiguracji po wdrożeniu wyłączenia haseł w `sshd_config` pliku.
 
-## <a name="using-ssh-keygen"></a>Korzystanie z programu ssh-keygen
+Jeśli nie chcesz używać kluczy SSH, można skonfigurować sieci maszyny Wirtualnej systemu Linux do uwierzytelniania za pomocą hasła. Jeśli maszyna wirtualna nie jest połączenie z Internetem, przy użyciu hasła mogą być wystarczające. Jednak nadal należy zarządzać hasła dla każdej maszyny Wirtualnej systemu Linux i obsługiwać zasady haseł w dobrej kondycji i rozwiązań, takich jak minimalna długość hasła i regularnego aktualizacje. Przy użyciu kluczy SSH, zmniejsza się złożoność zarządzania poszczególnych poświadczeń między wieloma maszynami wirtualnymi.
 
-To polecenie umożliwia utworzenie zabezpieczonej (zaszyfrowanej) pary kluczy SSH o długości 2048 bitów w standardzie RSA. W celu dokonania łatwej identyfikacji zostanie ona opatrzona komentarzem.  
+## <a name="generate-keys-with-ssh-keygen"></a>Generuj klucze ssh-keygen
+
+Do tworzenia kluczy, jest preferowanym polecenia `ssh-keygen`, który jest dostępny z narzędzia OpenSSH w powłoce chmury Azure, macOS lub hoście z systemem Linux, [podsystemu systemu Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/about)i inne narzędzia. `ssh-keygen` zadaje szereg pytań, a następnie zapisuje klucz prywatny i dopasowany klucz publiczny. 
 
 Klucze SSH są domyślnie przechowywane w katalogu `~/.ssh`.  Jeśli nie masz katalogu `~/.ssh`, polecenie `ssh-keygen` tworzy ten katalog z odpowiednimi uprawnieniami.
+
+### <a name="basic-example"></a>Podstawowy przykład
+
+Następujące `ssh-keygen` polecenie generuje 2048-bitowego SSH RSA publicznego i prywatnego klucza pliki domyślnie w `~/.ssh` katalogu. Jeśli istnieje parę kluczy SSH w bieżącej lokalizacji, te pliki zostaną zastąpione.
+
+```bash
+ssh-keygen -t rsa -b 2048
+```
+
+### <a name="detailed-example"></a>Szczegółowy przykład
+W poniższym przykładzie przedstawiono polecenie dodatkowe opcje, aby utworzyć parę kluczy SSH RSA. Jeśli istnieje parę kluczy SSH w bieżącej lokalizacji, te pliki zostaną zastąpione. 
 
 ```bash
 ssh-keygen \
     -t rsa \
-    -b 2048 \
+    -b 4096 \
     -C "azureuser@myserver" \
-    -f ~/.ssh/id_rsa \
-    -N mypassword
+    -f ~/.ssh/mykeys/myprivatekey \
+    -N mypassphrase
 ```
 
-*Opis polecenia*
+**Opis polecenia**
 
 `ssh-keygen` — program używany do tworzenia kluczy
 
-`-t rsa` = Typ klucza do utworzenia, która jest [formacie RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) 
- `-b 2048` = liczba bitów klucza
+`-t rsa` = Typ klucza do utworzenia w takim przypadku w formacie RSA
 
-`-C "azureuser@myserver"` — komentarz dodany na końcu pliku klucza publicznego, aby umożliwić jego łatwą identyfikację.  Zwykle jako komentarz używany jest adres e-mail, ale można też użyć innych informacji, które sprawdzą się najlepiej w danej infrastrukturze.
+`-b 4096` Liczba bitów w kluczu, w tym przypadku 4096
 
-## <a name="classic-deploy-using-asm"></a>Wdrażanie klasyczne przy użyciu programu `asm`
+`-C "azureuser@myserver"` — komentarz dodany na końcu pliku klucza publicznego, aby umożliwić jego łatwą identyfikację. Zwykle jako komentarz używany jest adres e-mail, ale użyj sprawdzą się najlepiej dla infrastruktury.
 
-Jeśli używasz klasycznym modelu wdrażania (`asm` tryb interfejsu wiersza polecenia), można użyć klucza publicznego SSH-RSA lub sformatowany RFC4716 klucza w kontenerze pem.  Klucz publiczny SSH-RSA utworzono wcześniej w tym artykule przy użyciu polecenia `ssh-keygen`.
+`-f ~/.ssh/mykeys/myprivatekey` = Nazwa pliku klucza prywatnego, jeśli nie chcesz używać domyślnej nazwy. Dołączany plik odpowiedniego klucza publicznego z `.pub` jest generowany w tym samym katalogu. Ten katalog musi istnieć.
 
-Aby utworzyć klucz w formacie RFC4716 przy użyciu istniejącego publicznego klucza SSH:
+`-N mypassphrase` = dodatkowe hasło używane do dostępu do pliku klucza prywatnego. 
 
-```bash
-ssh-keygen \
--f ~/.ssh/id_rsa.pub \
--e \
--m RFC4716 > ~/.ssh/id_ssh2.pem
-```
-
-## <a name="example-of-ssh-keygen"></a>Przykład polecenia ssh-keygen
+### <a name="example-of-ssh-keygen"></a>Przykład polecenia ssh-keygen
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
@@ -99,13 +107,13 @@ The keys randomart image is:
 +-----------------+
 ```
 
-Zapisane pliki klucza:
+#### <a name="saved-key-files"></a>Zapisane pliki klucza
 
 `Enter file in which to save the key (/home/azureuser/.ssh/id_rsa): ~/.ssh/id_rsa`
 
-Nazwa pary kluczy dla potrzeb tego artykułu.  Para kluczy o nazwie **id_rsa** jest domyślna. Niektóre narzędzia mogą wymagać podania nazwy **id_rsa** pliku klucza prywatnego, dlatego zaleca się jego utworzenie. Katalog `~/.ssh/` jest domyślną lokalizacją par kluczy SSH oraz pliku konfiguracyjnego SSH.  Jeśli nie określono pełnej ścieżki, polecenie `ssh-keygen` spowoduje utworzenie kluczy w bieżącym katalogu roboczym, a nie domyślnym katalogu `~/.ssh`.
+Nazwa pary kluczy dla potrzeb tego artykułu. Para kluczy o nazwie `id_rsa` domyślny; niektóre narzędzia mogą wymagać `id_rsa` nazwę pliku klucza prywatnego, dobrym pomysłem jest o jeden. Katalog `~/.ssh/` jest domyślną lokalizacją par kluczy SSH oraz pliku konfiguracyjnego SSH. Jeśli nie określono pełnej ścieżki, polecenie `ssh-keygen` spowoduje utworzenie kluczy w bieżącym katalogu roboczym, a nie domyślnym katalogu `~/.ssh`.
 
-Lista plików w katalogu `~/.ssh`.
+#### <a name="list-of-the-ssh-directory"></a>Lista `~/.ssh` katalogu
 
 ```bash
 ls -al ~/.ssh
@@ -113,17 +121,59 @@ ls -al ~/.ssh
 -rw-r--r-- 1 azureuser staff   410 Aug 25 18:04 id_rsa.pub
 ```
 
-Hasło klucza:
+#### <a name="key-passphrase"></a>Hasło klucza
 
 `Enter passphrase (empty for no passphrase):`
 
-Polecenie `ssh-keygen` odnosi się do hasła pliku klucza prywatnego.  *Zdecydowanie* zalecane jest dodanie hasła do klucza prywatnego. Bez hasła chroniącego plik klucza każda osoba mająca ten plik może użyć go do logowania na dowolnym serwerze, który ma odpowiadający mu klucz publiczny. Dodanie hasła zwiększa ochronę w przypadku, gdy osoba niepowołana jest w stanie uzyskać dostęp do Twojego pliku klucza prywatnego. Dzięki temu zabezpieczeniu masz czas na dokonanie zmiany kluczy używanych do uwierzytelnienia.
+Jest *silnie* zaleca się dodanie hasła do klucza prywatnego. Bez hasła, aby chronić plik klucza każdy użytkownik z pliku można użyć logować się do dowolnego serwera, który ma odpowiedni klucz publiczny. Dodawanie hasło oferuje lepszą ochronę w przypadku, gdy ktoś jest w stanie uzyskać dostęp do Twojego pliku klucza prywatnego nadanie czasu dokonanie zmiany kluczy.
 
-## <a name="using-ssh-agent-to-store-your-private-key-password"></a>Korzystanie z programu ssh-agent do przechowywania hasła klucza prywatnego
+## <a name="generate-keys-automatically-during-deployment"></a>Generuj klucze automatycznie podczas wdrażania
 
-Aby uniknąć wpisywania hasła do pliku klucza prywatnego przy każdym logowaniu przez protokół SSH, można skorzystać z programu `ssh-agent`, który przechowuje hasło w pamięci podręcznej. Jeśli korzystasz z komputera Mac, pęk kluczy systemu OS X bezpiecznie przechowa Twoje hasła do klucza prywatnego po wywołaniu programu `ssh-agent`.
+Jeśli używasz [Azure CLI 2.0](/cli/azure) do utworzenia maszyny Wirtualnej, może opcjonalnie generować SSH publicznego i prywatnego klucza pliki, uruchamiając [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create) polecenie z `--generate-ssh-keys` opcji. Klucze są przechowywane w katalogu ~/.ssh. Należy pamiętać, że to polecenie nie powoduje zastąpienia klucze Jeśli już istnieją w tej lokalizacji.
 
-Zweryfikuj program ssh-agent oraz ssh-add i użyj ich w celu poinformowania systemu SSH o plikach kluczy, aby nie trzeba było używać hasła interaktywnie.
+## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>Podaj klucz publiczny SSH, podczas wdrażania maszyny Wirtualnej
+
+Aby utworzyć maszynę Wirtualną systemu Linux, która używa kluczy SSH do uwierzytelnienia, podaj klucz publiczny SSH podczas tworzenia maszyny Wirtualnej przy użyciu portalu Azure, interfejsu wiersza polecenia, szablony usługi Resource Manager lub innych metod. Podczas korzystania z portalu, należy wprowadzić samego klucza publicznego. Jeśli używasz [Azure CLI 2.0](/cli/azure) do utworzenia maszyny Wirtualnej z istniejącego klucza publicznego, określ wartość lub lokalizacji tego klucza publicznego, uruchamiając [tworzenia maszyny wirtualnej az](/cli/azure/vm#az_vm_create) z `--ssh-key-value` opcji. 
+
+Jeśli nie masz doświadczenia w obsłudze format klucz publiczny SSH, można wyświetlić klucz publiczny, uruchamiając `cat` , zastępując `~/.ssh/id_rsa.pub` lokalizację pliku klucza publicznego:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+Dane wyjściowe są podobne do następujących (w tym miejscu zredagowanego):
+
+```
+ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eShZzaXnt75gUmT1I2f75zFn2hlAIDGKWf4g12KWcZxy81TniUOTjUsVlwPymXUXxESL/UfJKfbdstBhTOdy5EG9rYWA0K43SJmwPhH28BpoLfXXXXXG+/ilsXXXXXKgRLiJ2W19MzXHp8z3Lxw7r9wx3HaVlP4XiFv9U4hGcp8RMI1MP1nNesFlOBpG4pV2bJRBTXNXeY4l6F8WZ3C4kuf8XxOo08mXaTpvZ3T1841altmNTZCcPkXuMrBjYSJbA8npoXAXNwiivyoe3X2KMXXXXXdXXXXXXXXXXCXXXXX/ azureuser@myserver
+```
+
+Jeśli skopiuj i Wklej zawartość pliku klucza publicznego w portalu Azure lub w szablonie usługi Resource Manager, upewnij się, nie skopiować wszystkie dodatkowe odstępem lub wprowadzić dodatkowe znaki końca linii. Na przykład, jeśli używasz macOS, możesz przekazać plik klucza publicznego (domyślnie `~/.ssh/id_rsa.pub`) do **pbcopy** Aby skopiować zawartość (istnieją inne programy systemu Linux, które wykonują tę samą operację, takich jak **xclip**).
+
+Jeśli wolisz korzystać w formacie wielowierszowy klucz publiczny, można wygenerować klucz sformatowany RFC4716 w kontenerze pem z klucza publicznego, który został wcześniej utworzony.
+
+Aby utworzyć klucz w formacie RFC4716 przy użyciu istniejącego publicznego klucza SSH:
+
+```bash
+ssh-keygen \
+-f ~/.ssh/id_rsa.pub \
+-e \
+-m RFC4716 > ~/.ssh/id_ssh2.pem
+```
+
+## <a name="ssh-to-your-vm-with-an-ssh-client"></a>SSH do maszyny Wirtualnej za pomocą klienta SSH
+Z kluczem publicznym wdrożone na maszynie Wirtualnej platformy Azure i klucza prywatnego w systemie lokalnym SSH do maszyny Wirtualnej przy użyciu adresu IP lub nazwę DNS maszyny Wirtualnej. Zastąp *azureuser* i *myvm.westus.cloudapp.azure.com* w poniższym poleceniu z nazwą użytkownika administratora i pełną nazwę domeny (lub adres IP):
+
+```bash
+ssh azureuser@myvm.westus.cloudapp.azure.com
+```
+
+Jeśli podczas tworzenia pary kluczy podano hasło, wprowadź je, gdy podczas logowania zostanie wyświetlony odpowiedni monit. (Serwer zostanie dodany do folderu `~/.ssh/known_hosts` i monit o ponowne połączenie nie zostanie wyświetlony, dopóki klucz publiczny na maszynie wirtualnej nie ulegnie zmianie lub nazwa serwera nie zostanie usunięta z folderu `~/.ssh/known_hosts`).
+
+## <a name="use-ssh-agent-to-store-your-private-key-passphrase"></a>Użyj ssh-agent do przechowywania hasła klucza prywatnego
+
+Aby uniknąć wpisywania hasła pliku klucza prywatnego przy każdym logowaniu przez protokół SSH, można użyć `ssh-agent` do pamięci podręcznej hasło pliku klucza prywatnego. Jeśli używasz Mac macOS łańcucha kluczy bezpiecznie przechowuje hasło klucza prywatnego po wywołaniu `ssh-agent`.
+
+Sprawdź i użyj `ssh-agent` i `ssh-add` informowanie o plików kluczy systemu SSH, dzięki czemu nie trzeba używać interakcyjnie hasło.
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -135,20 +185,20 @@ Następnie dodaj klucz prywatny do programu `ssh-agent` przy użyciu polecenia `
 ssh-add ~/.ssh/id_rsa
 ```
 
-Hasło klucza prywatnego jest teraz przechowywane w programie `ssh-agent`.
+Hasło klucza prywatnego jest teraz przechowywane w `ssh-agent`.
 
-## <a name="using-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>Kopiowanie klucza do istniejącej maszyny wirtualnej przy użyciu polecenia `ssh-copy-id`
-Jeśli już utworzono maszynę wirtualną, można zainstalować nowy publiczny klucz SSH na maszynie wirtualnej z systemem Linux przy użyciu polecenia:
+## <a name="use-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>Użyj ssh kopiowania id, aby skopiować klucz do istniejącej maszyny Wirtualnej
+Jeśli utworzono już maszyny Wirtualnej, można zainstalować nowego klucza publicznego SSH do maszyny Wirtualnej systemu Linux za pomocą polecenia podobny do następującego:
 
 ```bash
-ssh-copy-id -i ~/.ssh/id_rsa.pub ahmet@myserver
+ssh-copy-id -i ~/.ssh/id_rsa.pub azureuser@myserver
 ```
 
 ## <a name="create-and-configure-an-ssh-config-file"></a>Tworzenie i konfigurowanie pliku konfiguracyjnego SSH
 
-Zalecanym najlepszym rozwiązaniem jest utworzenie i skonfigurowanie pliku `~/.ssh/config` w celu przyspieszenia logowania i optymalizacji zachowania klienta SSH.
+Można tworzyć i konfigurować pliku konfiguracyjnego SSH (`~/.ssh/config`) w celu przyspieszenia dziennika dodatków i zoptymalizować Twoje zachowanie klienta SSH. 
 
-W poniższym przykładzie pokazano standardową konfigurację. 
+Poniższy przykład przedstawia prostą konfigurację której można szybko zalogować się jako użytkownik do określonej maszyny Wirtualnej przy użyciu klucza prywatnego SSH domyślne. 
 
 ### <a name="create-the-file"></a>Utwórz plik
 
@@ -156,62 +206,38 @@ W poniższym przykładzie pokazano standardową konfigurację.
 touch ~/.ssh/config
 ```
 
-### <a name="edit-the-file-to-add-the-new-ssh-configuration"></a>Edytuj plik, aby dodać nową konfigurację SSH:
+### <a name="edit-the-file-to-add-the-new-ssh-configuration"></a>Edytuj plik, aby dodać nową konfigurację SSH
 
 ```bash
 vim ~/.ssh/config
 ```
 
-### <a name="example-sshconfig-file"></a>Przykład pliku `~/.ssh/config`:
+### <a name="example-configuration"></a>Przykładowa konfiguracja
+
+Dodaj odpowiednie dla hosta maszyny Wirtualnej, ustawienia konfiguracji.
 
 ```bash
 # Azure Keys
-Host fedora22
+Host myvm
   Hostname 102.160.203.241
-  User ahmet
+  User azureuser
 # ./Azure Keys
-# Default Settings
-Host *
-  PubkeyAuthentication=yes
-  IdentitiesOnly=yes
-  ServerAliveInterval=60
-  ServerAliveCountMax=30
-  ControlMaster auto
-  ControlPath ~/.ssh/SSHConnections/ssh-%r@%h:%p
-  ControlPersist 4h
-  IdentityFile ~/.ssh/id_rsa
 ```
 
-Ta konfiguracja protokołu SSH udostępnia sekcje dla każdego serwera, aby umożliwić każdemu z nich posiadanie własnej pary kluczy. Ustawienia domyślne (`Host *`) są stosowane do hostów, które nie są zgodne z żadnym z określonych hostów we wcześniejszej części pliku konfiguracyjnego.
+Można dodać konfiguracje dla dodatkowych hostów umożliwić każdej z nich korzystać z własnej pary kluczy. Zobacz [pliku konfiguracyjnego SSH](https://www.ssh.com/ssh/config/) przypadku bardziej zaawansowanych opcji konfiguracji.
 
-### <a name="config-file-explained"></a>Opis pliku konfiguracji
-
-`Host` — nazwa hosta wywołanego na terminalu.  Polecenie `ssh fedora22` informuje protokół `SSH`, aby użyć wartości z bloku ustawień z etykietą `Host fedora22`. UWAGA: hostem może być jakakolwiek etykieta zrozumiała dla Ciebie, która jednocześnie nie jest faktyczną nazwą hosta żadnego serwera.
-
-`Hostname 102.160.203.241` — adres IP lub nazwa DNS serwera, do którego uzyskiwany jest dostęp.
-
-`User ahmet` — konto użytkownika zdalnego używane podczas logowania do serwera.
-
-`PubKeyAuthentication yes` — informuje protokół SSH, że chcesz użyć klucza SSH do logowania.
-
-`IdentityFile /home/ahmet/.ssh/id_id_rsa` — prywatny klucz SSH i odpowiedni klucz publiczny, który ma zostać użyty do uwierzytelniania.
-
-## <a name="ssh-into-linux-without-a-password"></a>Korzystanie z protokołu SSH w systemie Linux bez użycia hasła
-
-Jeśli masz już parę kluczy SSH i skonfigurowany plik konfiguracji SSH, możesz szybko i bezpiecznie zalogować się do maszyny wirtualnej systemu Linux. Podczas pierwszego logowania do serwera przy użyciu klucza SSH polecenie monituje o wpisanie hasła do pliku danego klucza.
+Jeśli masz już parę kluczy SSH i skonfigurowany plik konfiguracji SSH, możesz szybko i bezpiecznie zalogować się do maszyny wirtualnej systemu Linux. Po uruchomieniu poniższego polecenia SSH lokalizuje i ładuje wszystkie ustawienia z `Host myvm` bloku w pliku konfiguracyjnego SSH.
 
 ```bash
-ssh fedora22
+ssh myvm
 ```
 
-### <a name="command-explained"></a>Opis polecenia
+Podczas pierwszego logowania do serwera przy użyciu klucza SSH polecenie monituje o możesz hasła dla tego pliku klucza.
 
-Gdy polecenie `ssh fedora22` jest wykonywane, protokół SSH najpierw lokalizuje i ładuje wszystkie ustawienia z bloku `Host fedora22`, a następnie ładuje wszystkie pozostałe ustawienia z ostatniego bloku `Host *`.
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="next-steps"></a>Następne kroki
+W dalszej kolejności należy utworzyć maszyny wirtualne systemu Linux platformy Azure przy użyciu nowego klucza publicznego SSH. Maszyny wirtualne platformy Azure, które zostały utworzone z publicznym kluczem SSH jako loginem, są lepiej chronione niż maszyny wirtualne utworzone z hasłami stosowanymi w domyślnej metodzie logowania.
 
-W dalszej kolejności należy utworzyć maszyny wirtualne systemu Linux platformy Azure przy użyciu nowego klucza publicznego SSH.  Maszyny wirtualne platformy Azure, które zostały utworzone z publicznym kluczem SSH jako loginem, są lepiej chronione niż maszyny wirtualne utworzone z hasłami stosowanymi w domyślnej metodzie logowania.  W domyślnej konfiguracji maszyn wirtualnych platformy Azure utworzonych przy użyciu kluczy SSH hasła są wyłączone, aby uniknąć prób odgadnięcia hasła za pomocą ataków siłowych.
-
-* [Tworzenie bezpiecznej maszyny wirtualnej systemu Linux przy użyciu szablonu platformy Azure](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Tworzenie bezpiecznej maszyny wirtualnej systemu Linux przy użyciu witryny Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Tworzenie bezpiecznej maszyny wirtualnej systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Utwórz maszynę wirtualną systemu Linux przy użyciu portalu Azure](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Utwórz maszynę wirtualną systemu Linux z wiersza polecenia platformy Azure](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Utwórz Maszynę wirtualną systemu Linux przy użyciu szablonu platformy Azure](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

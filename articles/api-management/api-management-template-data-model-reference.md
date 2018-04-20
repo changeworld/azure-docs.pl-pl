@@ -1,11 +1,11 @@
 ---
-title: "Odwołanie do modelu danych szablonu usługi Azure API Management | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat jednostki i typu oświadczenia dla najczęściej używane w modelach danych szablonów portalu deweloperów w usłudze Azure API Management."
+title: Odwołanie do modelu danych szablonu usługi Azure API Management | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat jednostki i typu oświadczenia dla najczęściej używane w modelach danych szablonów portalu deweloperów w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
 ms.service: api-management
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
 ms.openlocfilehash: 0f27b6b529c2591e37d48e3386190077fc8efc32
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Odwołanie modelu danych Azure API Management szablonu
 W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane w modelach danych szablonów portalu deweloperów w usłudze Azure API Management.  
@@ -40,7 +40,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 -   [Operacja menu](#Menu)  
 -   [Operacja elementu menu](#MenuItem)  
 -   [Stronicowania](#Paging)  
--   [Parameter](#Parameter)  
+-   [Parametr](#Parameter)  
 -   [Produktu](#Product)  
 -   [Dostawca](#Provider)  
 -   [Reprezentacja wartości](#Representation)  
@@ -50,7 +50,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 -   [Logowanie użytkownika](#UseSignIn)  
 -   [Tworzenia konta użytkownika](#UserSignUp)  
   
-##  <a name="API"></a> API  
+##  <a name="API"></a> INTERFEJS API  
  `API` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -64,7 +64,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |authenticationSettings|[Ustawienia uwierzytelniania serwera autoryzacji](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Kolekcja ustawień uwierzytelniania zawarte w tym interfejsie API.|  
 |subscriptionKeyParameterNames|obiekt|Opcjonalna właściwość, który może służyć do określenia nazwy niestandardowych parametrów zapytania lub nagłówek zawierający klucz subskrypcji. Gdy ta właściwość jest obecny, musi zawierać co najmniej jeden z dwóch następujących właściwości.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="APISummary">Podsumowanie interfejsu API</a>  
+##  <a name="APISummary"></a> Podsumowanie interfejsu API  
  `API summary` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -73,7 +73,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |name|ciąg|Nazwa interfejsu API. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
 |description|ciąg|Opis interfejsu API. Nie może być pusta. Może obejmować formatowanie tagów HTML. Maksymalna długość wynosi 1000 znaków.|  
   
-##  <a name="Application">Aplikacji</a>  
+##  <a name="Application"></a> Aplikacji  
  `application` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -91,7 +91,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Załączniki|Kolekcja [załącznika](#Attachment) jednostek.|Wszystkie załączniki dla aplikacji, takie jak zrzuty ekranu lub ikony.|  
 |Ikona|[Załącznika](#Attachment)|Ikona dla aplikacji.|  
   
-##  <a name="Attachment">Załącznika</a>  
+##  <a name="Attachment"></a> Załącznika  
  `attachment` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -101,7 +101,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Typ|ciąg|Typ załącznika.|  
 |Typ zawartości|ciąg|Typ nośnika załącznika.|  
   
-##  <a name="Sample">Przykładowy kod</a>  
+##  <a name="Sample"></a> Przykładowy kod  
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
@@ -110,7 +110,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Pędzel|ciąg|Składnia kodu kolorowania szablon ma być używany podczas wyświetlania przykładowy kod. Dozwolone wartości to `plain`, `php`, `java`, `xml`, `objc`, `python`, `ruby`, i `csharp`.|  
 |szablon|ciąg|Nazwa tego kod przykładowy szablon.|  
 |treść|ciąg|Symbolu zastępczego dla części próbki kodu fragmentu.|  
-|metoda|ciąg|Metoda HTTP operacji.|  
+|method|ciąg|Metoda HTTP operacji.|  
 |Schemat|ciąg|Protokół do użycia dla żądania operacji.|  
 |ścieżka|ciąg|Ścieżka operacji.|  
 |query|ciąg|Przykład zdefiniowanych parametrów ciągu zapytania.|  
@@ -118,7 +118,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |nagłówki|Kolekcja [nagłówka](#Header) jednostek.|Nagłówki dla tej operacji.|  
 |parameters|Kolekcja [parametru](#Parameter) jednostek.|Parametry, które są zdefiniowane dla tej operacji.|  
   
-##  <a name="Comment">Komentarz</a>  
+##  <a name="Comment"></a> Komentarz  
  `API` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -144,7 +144,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Załączniki|Kolekcja [załącznika](api-management-template-data-model-reference.md#Attachment) jednostek.|Załączniki do problemu.|  
 |Usługi|Kolekcja [interfejsu API](#API) jednostek.|Interfejsy API subskrybowana przez użytkownika, który zgłosić problem.|  
   
-##  <a name="Filtering">Filtrowanie</a>  
+##  <a name="Filtering"></a> Filtrowanie  
  `filtering` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -160,12 +160,12 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |name|ciąg|Nazwa parametru.|  
 |description|ciąg|Opis parametru.|  
 |wartość|ciąg|Wartość nagłówka.|  
-|typeName|ciąg|Typ danych wartości nagłówka.|  
+|Właściwość TypeName|ciąg|Typ danych wartości nagłówka.|  
 |opcje|ciąg|Opcje.|  
 |Wymagane|wartość logiczna|Określa, czy nagłówek jest wymagana.|  
 |Tylko do odczytu|wartość logiczna|Określa, czy nagłówek jest tylko do odczytu.|  
   
-##  <a name="HTTPRequest">Żądania HTTP</a>  
+##  <a name="HTTPRequest"></a> Żądania HTTP  
  W tej sekcji opisano `request` reprezentacji.  
   
 |Właściwość|Typ|Opis|  
@@ -175,7 +175,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |parameters|Tablica [parametru](#Parameter)|Kolekcja parametrów żądania operacji.|  
 |oświadczenia|Tablica [reprezentacja](#Representation)|Kolekcja reprezentacje żądania operacji.|  
   
-##  <a name="HTTPResponse">Odpowiedź HTTP</a>  
+##  <a name="HTTPResponse"></a> Odpowiedź HTTP  
  W tej sekcji opisano `response` reprezentacji.  
   
 |Właściwość|Typ|Opis|  
@@ -199,7 +199,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Żądanie|[Żądania HTTP](#HTTPRequest)|Obiekt zawierający informacje dotyczące żądania.|  
 |odpowiedzi|Tablica [odpowiedzi HTTP](#HTTPResponse)|Tablica operacji [odpowiedzi HTTP](#HTTPResponse) jednostek.|  
   
-##  <a name="Menu">Operacja menu</a>  
+##  <a name="Menu"></a> Operacja menu  
  `operation menu` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -209,7 +209,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Akcja|ciąg|Typ menu.|  
 |Elementy MenuItem|Kolekcja [element menu operacji](#MenuItem) jednostek.|Operacje dla bieżącego interfejsu API.|  
   
-##  <a name="MenuItem">Operacja elementu menu</a>  
+##  <a name="MenuItem"></a> Operacja elementu menu  
  `operation menu item` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -218,7 +218,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Stanowisko|ciąg|Opis operacji.|  
 |HttpMethod|ciąg|Metoda Http operacji.|  
   
-##  <a name="Paging">Stronicowania</a>  
+##  <a name="Paging"></a> Stronicowania  
  `paging` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -240,9 +240,9 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |opcje|Tablica ciągów|Wartości zdefiniowane dla wartości parametrów zapytania.|  
 |Wymagane|wartość logiczna|Określa, czy parametr jest wymagany.|  
 |rodzaj|numer|Określa, czy ten parametr jest parametr path (1) lub parametr querystring (2).|  
-|typeName|ciąg|Typ parametru.|  
+|Właściwość TypeName|ciąg|Typ parametru.|  
   
-##  <a name="Product">Produktu</a>  
+##  <a name="Product"></a> Produktu  
  `product` Jednostka ma następujące właściwości:  
   
 |Właściwość|Typ|Opis|  
@@ -264,7 +264,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Typ authenticationType|ciąg|Typ dostawcy. (Azure Active Directory, Facebook logowania, konta Google, Microsoft Account, Twitter).|  
 |Podpis|ciąg|Nazwa wyświetlana dostawcy.|  
   
-##  <a name="Representation">Reprezentacja wartości</a>  
+##  <a name="Representation"></a> Reprezentacja wartości  
  W tej sekcji opisano `representation`.  
   
 |Właściwość|Typ|Opis|  
@@ -312,8 +312,8 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
 |Imię|ciąg|Imię. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|LastName|ciąg|Nazwisko. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|Adres e-mail|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w ramach wystąpienia usługi. Maksymalna długość to 254 znaków.|  
+|Nazwisko|ciąg|Nazwisko. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
+|Email|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w ramach wystąpienia usługi. Maksymalna długość to 254 znaków.|  
 |Hasło|ciąg|Hasło do konta użytkownika.|  
 |NameIdentifier|ciąg|Identyfikator konta, taki sam jak adres e-mail użytkownika.|  
 |ProviderName|ciąg|Nazwa dostawcy uwierzytelniania.|  
@@ -324,7 +324,7 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|Adres e-mail|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w ramach wystąpienia usługi. Maksymalna długość to 254 znaków.|  
+|Email|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w ramach wystąpienia usługi. Maksymalna długość to 254 znaków.|  
 |Hasło|ciąg|Hasło do konta użytkownika.|  
 |ReturnUrl|ciąg|Adres URL strony, gdy użytkownik kliknął Zaloguj się.|  
 |RememberMe|wartość logiczna|Określa, czy zapisać informacji o bieżącym użytkowniku.|  
@@ -348,9 +348,9 @@ W tym temacie opisano jednostki i typu oświadczenia dla najczęściej używane 
 |UserRegistrationTerms|ciąg|Warunki, które użytkownik musi wyrazić zgodę na przed zarejestrowaniem się.|  
 |UserRegistrationTermsOptions|numer|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
 |ConsentAccepted|wartość logiczna|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
-|Adres e-mail|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w ramach wystąpienia usługi. Maksymalna długość to 254 znaków.|  
+|Email|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w ramach wystąpienia usługi. Maksymalna długość to 254 znaków.|  
 |Imię|ciąg|Imię. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|LastName|ciąg|Nazwisko. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
+|Nazwisko|ciąg|Nazwisko. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
 |Danych użytkownika|ciąg|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up) formantu.|  
 |NameIdentifier|ciąg|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
 |ProviderName|ciąg|Nazwa dostawcy uwierzytelniania.|

@@ -1,12 +1,12 @@
 ---
-title: "Usługa sieci szkieletowej interfejsu wiersza polecenia - sfctl usługi Azure | Dokumentacja firmy Microsoft"
-description: "Opis poleceń usługi sfctl interfejsu wiersza polecenia usługi sieci szkieletowej."
+title: Usługa sieci szkieletowej interfejsu wiersza polecenia - sfctl usługi Azure | Dokumentacja firmy Microsoft
+description: Opis poleceń usługi sfctl interfejsu wiersza polecenia usługi sieci szkieletowej.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
 ms.openlocfilehash: 5b30d3732ff00e5bb79e2d58a9f0b3e5b29dedf8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-service"></a>sfctl service
 Tworzenie, usuwanie i zarządzanie usługi, typów usług i pakietów usług.
@@ -39,14 +39,14 @@ Tworzenie, usuwanie i zarządzanie usługi, typów usług i pakietów usług.
 |    Informacje o           | Pobiera informacje o określonej usługi należące do aplikacji sieci szkieletowej usług.|
 |    lista           | Pobiera informacje o wszystkich usług należących do aplikacji określonej przez identyfikator aplikacji.|
 |    Manifest       | Pobiera manifest opisujące typ usługi.|
-|    package-deploy | Pobiera pakiety skojarzone z określoną usługą manifestu do pamięci podręcznej obrazu na określony węzeł.|
+|    Wdrażanie pakietu | Pobiera pakiety skojarzone z określoną usługą manifestu do pamięci podręcznej obrazu na określony węzeł.|
 |    package-health | Pobiera informacje o kondycji pakiet usługi dla określonej aplikacji wdrożone dla węzła sieci szkieletowej usług i aplikacji.|
 |    package-info   | Pobiera listę pakietów usług wdrożone w węźle sieci szkieletowej usług dopasowania określonej nazwy.|
 |    package-list   | Pobiera listę pakietów usług wdrożone w węźle sieci szkieletowej usług.|
 |    Odzyskiwanie        | Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzyskać określonej usługi, która jest obecnie zablokowane w wyniku utraty kworum.|
 |    report-health  | Wysyła raport o kondycji usługi sieć szkieletowa usług.|
 |    rozwiąż        | Rozwiąż partycji usługi sieć szkieletowa usług.|
-|    type-list      | Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ elastycznie aplikacji w klastrze usługi sieć szkieletowa usług.|
+|    Lista typów      | Pobiera listę zawierającą informacje o typach usługi, które są obsługiwane przez typ elastycznie aplikacji w klastrze usługi sieć szkieletowa usług.|
 |    Aktualizacja         | Aktualizuje określonej usługi przy użyciu opisu danego aktualizacji.|
 
 
@@ -65,7 +65,7 @@ Tworzy określony usługi sieć szkieletowa usług z opisu.
 | --correlated-service  | Nazwa usługi docelowej, aby mieć związek z.|
 | --Korelacja         | Korelowanie usługę za pomocą istniejącej usługi za pomocą koligacji wyrównania.|
 | --dns-name            | Nazwa DNS usługa ma zostać utworzony. To ustawienie, można włączyć usługę systemu DNS sieci szkieletowej usług.|
-| --instance-count      | Liczba wystąpień. Dotyczy to tylko w przypadku usług bezstanowych.|
+| — Liczba wystąpień      | Liczba wystąpień. Dotyczy to tylko w przypadku usług bezstanowych.|
 | --int-scheme          | Wskazuje, że usługa powinna być jednolicie podzielonym na partycje w zakres liczb całkowitych bez znaku.|
 | --int-scheme-count    | Liczba partycji wewnątrz liczb całkowitych klucza zakres (schemat partycji uniform liczba całkowita) można utworzyć.|
 | --int-scheme-high     | Koniec zakresu klucza liczba całkowita, jeśli przy użyciu schematu partycji uniform liczby całkowitej.|
@@ -83,7 +83,7 @@ Tworzy określony usługi sieć szkieletowa usług z opisu.
 | --wstrzymania przez repliki zachować  | Maksymalny czas trwania w sekundach, w których stan wstrzymania repliki są obsługiwane przed usuwana. Dotyczy to tylko usług stanowych.|
 | --stateful            | Wskazuje, że usługa jest usługą stanowych.|
 | --bezstanowych           | Wskazuje, że usługa jest usługą bezstanowe.|
-| --target-replica-set-size| Repliki docelowej Ustaw rozmiar jako liczba. Dotyczy to tylko usług stanowych.|
+| --docelowy —-rozmiar zestawu replik| Repliki docelowej Ustaw rozmiar jako liczba. Dotyczy to tylko usług stanowych.|
 | limit czasu — -t          | W sekundach limit czasu serwera.  Domyślnie: 60.|
 
 ### <a name="global-arguments"></a>Argumenty globalne
@@ -93,7 +93,7 @@ Tworzy określony usługi sieć szkieletowa usług z opisu.
 | --debug               | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h             | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o           | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose             | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-service-delete"></a>Usuń usługi sfctl
@@ -116,7 +116,7 @@ Usuwa istniejącą usługę sieć szkieletowa usług. Usługa musi zostać utwor
 | --debug             | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h           | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o         | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose           | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-service-description"></a>Opis usługi sfctl
@@ -138,7 +138,7 @@ Pobiera opis istniejącej usługi sieć szkieletowa usług. Usługi należy utwo
 | --debug             | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h           | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o         | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose           | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-service-health"></a>Kondycja usługi sfctl
@@ -152,7 +152,7 @@ Pobiera informacje o kondycji określonej usługi. Filtr EventsHealthStateFilter
 | --- | --- |
 | — Identyfikator usługi [wymagane]| Tożsamość usługi. Zazwyczaj jest to pełna nazwa tej usługi bez "fabric:" schemat identyfikatora URI. Począwszy od wersji 6.0, hierarchicznych nazwy są rozdzielane "~" znaków. Na przykład, jeśli nazwa usługi jest "fabric: / myapp/app1/svc1", będzie tożsamość usługi "moja_aplikacja ~ app1 ~ svc1" w wersji 6.0 + i "myapp/app1/svc1" w poprzednich wersjach.|
 | --events-health-state-filter | Umożliwia filtrowanie kolekcji zwracanych obiektów HealthEvent oparte na stanie kondycji. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji. Zwracane są tylko zdarzenia, które są zgodne z filtrem. Wszystkie zdarzenia są używane do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest 6 następnie wszystkie zdarzenia o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane. -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState. Wartość wynosi zero. -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1. -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2. — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4. -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8. -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535.|
-|--exclude-health-statistics     | Wskazuje, czy statystyki kondycji powinny być zwracane w ramach wyniku zapytania. Wartość false, domyślnie. Statystyki zawierają liczbę elementów podrzędnych obiektów w kondycja Ok, ostrzeżeń i błędów.|
+|— Wyklucz kondycji statystyk     | Wskazuje, czy statystyki kondycji powinny być zwracane w ramach wyniku zapytania. Wartość false, domyślnie. Statystyki zawierają liczbę elementów podrzędnych obiektów w kondycja Ok, ostrzeżeń i błędów.|
 | --partitions-health-state-filter| Umożliwia filtrowanie obiekty stanu kondycji partycje zwrócone w wyniku zapytania kondycji usługi na podstawie ich stanu kondycji. Możliwe wartości tego parametru obejmują liczbę całkowitą jednego z następujących stanów kondycji. Zwracane są tylko partycje, które są zgodne z filtrem. Wszystkie partycje służą do oceny stanu kondycji zagregowanych. Jeśli nie zostanie określona, zwracane są wszystkie wpisy. Wartości stanu są oparte na flagi wyliczenie, może to być kombinacją te wartości uzyskanych przy użyciu bitowego operatora "Lub". Na przykład jeśli podana wartość jest "6" następnie kondycja partycji o wartości atrybutu HealthState OK (2) i ostrzeżenia (4) są zwracane. -Domyślnie — wartość domyślna. Dopasowuje wszystkie właściwości HealthState.                  Wartość wynosi zero. -None - filtr, który nie odpowiada żadnej wartości właściwości HealthState. Używany, aby nie zwracała żadnych wyników w danej kolekcji stanów. Wartość to 1. -Ok - filtru, że dopasowań danych wejściowych o wartości atrybutu HealthState Ok. Wartość jest równa 2. — Ostrzeżenie - filtru, że dane wejściowe zgodna z atrybutem HealthState wartość ostrzeżenie. Wartość to 4. -Błąd filtru pasującego do danych wejściowych o wartości atrybutu HealthState błędu. Wartość jest 8. -All - filtru pasującego do danych wejściowych z dowolną wartością właściwości HealthState. Wartość jest 65535.|
 | limit czasu — -t                 | W sekundach limit czasu serwera.  Domyślnie: 60.|
 
@@ -186,7 +186,7 @@ Zwraca informacje o określonej usługi należące do określonej aplikacji siec
 | --debug                 | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h               | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o             | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose               | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-service-list"></a>Lista usług sfctl
@@ -210,7 +210,7 @@ Zwraca informacje dotyczące wszystkich usług należących do aplikacji określ
 | --debug                 | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h               | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o             | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose               | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-service-manifest"></a>sfctl manifestu usługi
@@ -256,7 +256,7 @@ Wskazuje, aby klaster sieci szkieletowej usług mają podejmować próbę odzysk
 | --debug             | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h           | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o         | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose           | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-service-resolve"></a>Usuń usługi sfctl
@@ -281,7 +281,7 @@ Rozwiąż partycji usługi sieć szkieletowa usług, można pobrać punkty końc
 | --debug             | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h           | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o         | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania             | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose           | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-service-update"></a>Aktualizacja usługi sfctl
@@ -295,7 +295,7 @@ Aktualizuje określonej usługi przy użyciu opisu danego aktualizacji.
 | — ograniczenia         | Ograniczenia dotyczące umieszczania jako ciąg. Ograniczenia dotyczące umieszczania są wyrażeń logicznych na właściwości węzła i umożliwiają ograniczenie usługi dla określonych węzłów na podstawie wymagań usługi. Na przykład, aby umieścić usługi na węzłach, gdzie jest niebieska NodeType określ następujące: "NodeColor == niebieski".|
 | --correlated-service  | Nazwa usługi docelowej, aby mieć związek z.|
 | --Korelacja         | Korelowanie usługę za pomocą istniejącej usługi za pomocą koligacji wyrównania.|
-| --instance-count      | Liczba wystąpień. Dotyczy to tylko w przypadku usług bezstanowych.|
+| — Liczba wystąpień      | Liczba wystąpień. Dotyczy to tylko w przypadku usług bezstanowych.|
 | --metryki obciążenia        | Kodowany w formacie JSON listy metryki używane podczas ładowania równoważenia między węzłami.|
 | --min-replica-set-size| Minimalna repliki Ustaw rozmiar jako liczba. Dotyczy to tylko usług stanowych.|
 | --move-cost           | Określa koszt przeniesienia dla usługi. Możliwe wartości to: "0", "Od", "Średni", "High".|
@@ -305,7 +305,7 @@ Aktualizuje określonej usługi przy użyciu opisu danego aktualizacji.
 | --wstrzymania przez repliki zachować  | Maksymalny czas trwania w sekundach, w których stan wstrzymania repliki są obsługiwane przed usuwana. Dotyczy to tylko usług stanowych.|
 | --stateful            | Wskazuje, że Usługa docelowa jest usługi stanowej.|
 | --bezstanowych           | Wskazuje, że Usługa docelowa jest usługę bezstanową.|
-| --target-replica-set-size| Repliki docelowej Ustaw rozmiar jako liczba. Dotyczy to tylko usług stanowych.|
+| --docelowy —-rozmiar zestawu replik| Repliki docelowej Ustaw rozmiar jako liczba. Dotyczy to tylko usług stanowych.|
 | limit czasu — -t          | W sekundach limit czasu serwera.  Domyślnie: 60.|
 
 ### <a name="global-arguments"></a>Argumenty globalne
@@ -315,7 +315,7 @@ Aktualizuje określonej usługi przy użyciu opisu danego aktualizacji.
 | --debug               | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h             | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o           | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania               | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose             | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="next-steps"></a>Kolejne kroki
