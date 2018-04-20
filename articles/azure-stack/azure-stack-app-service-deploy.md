@@ -1,12 +1,12 @@
 ---
-title: "Wdrażanie aplikacji usług: Azure stosu | Dokumentacja firmy Microsoft"
-description: "Szczegółowe wskazówki dotyczące wdrażania usługi aplikacji Azure stosu"
+title: 'Wdrażanie aplikacji usług: Azure stosu | Dokumentacja firmy Microsoft'
+description: Szczegółowe wskazówki dotyczące wdrażania usługi aplikacji Azure stosu
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 2d26aedf37727a4e3d687cdc6c748268d546f60f
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 330b8015bdddbbcf27e4325b97e8b734c4d98d12
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodawanie dostawcy zasobów usługi aplikacji Azure stosu
 
@@ -168,6 +168,18 @@ Aby wdrożyć dostawcy zasobów usługi aplikacji, wykonaj następujące kroki:
 2. W przeglądzie w stanie, sprawdź, który **stan** pokazuje **wszystkie role są gotowe**.
 
     ![Zarządzanie usługami aplikacji](media/azure-stack-app-service-deploy/image12.png)
+    
+> [!NOTE]
+> Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP do conenct do plików użytkownika, należy dodać reguły zabezpieczeń dla ruchu wychodzącego, włączanie ruchu SMB między podsieci procesu roboczego i serwerze plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
+> * Źródło: wszystkie
+> * Zakres portów źródłowych: *
+> * Miejsce docelowe: Adresy IP
+> * Docelowy zakres adresów IP: zakres adresów IP dla sieci plików
+> * Zakres portów docelowych: 445
+> * Protokół: TCP
+> * Akcja: Zezwalaj
+> * Priorytet: 700
+> * Nazwa: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Przetestuj aplikację usługi Azure stosu
 
@@ -198,9 +210,9 @@ Do tworzenia sieci web, interfejsu API i Azure funkcje aplikacji, należy użyć
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>Wdrażanie witryny WordPress, DNN lub Django (opcjonalnie)
 
-1. W portalu Azure stosu dzierżawy kliknij  **+** , przejdź do portalu Azure Marketplace, wdrożyć witrynę sieci Web Django i poczekaj na pomyślne zakończenie. Platforma sieci web Django korzysta z bazy danych w oparciu o system plików. Nie wymaga żadnych dostawców dodatkowych zasobów, takich jak SQL lub MySQL.
+1. W portalu Azure stosu dzierżawy kliknij **+**, przejdź do portalu Azure Marketplace, wdrożyć witrynę sieci Web Django i poczekaj na pomyślne zakończenie. Platforma sieci web Django korzysta z bazy danych w oparciu o system plików. Nie wymaga żadnych dostawców dodatkowych zasobów, takich jak SQL lub MySQL.
 
-2. Jeśli wdrożono również dostawcy zasobów MySQL, można wdrażać witryny sieci Web WordPress z poziomu portalu Marketplace. Gdy zostanie wyświetlony monit o parametry bazy danych, wprowadź nazwę użytkownika jako  *User1@Server1* , z nazwą użytkownika i nazwę serwera.
+2. Jeśli wdrożono również dostawcy zasobów MySQL, można wdrażać witryny sieci Web WordPress z poziomu portalu Marketplace. Gdy zostanie wyświetlony monit o parametry bazy danych, wprowadź nazwę użytkownika jako *User1@Server1*, z nazwą użytkownika i nazwę serwera.
 
 3. Jeśli wdrożono również dostawcy zasobów programu SQL Server, można wdrożyć DNN witryny sieci Web z witryny Marketplace. Gdy zostanie wyświetlony monit o parametry bazy danych, wybierz bazę danych na komputerze z uruchomionym programem SQL Server, połączoną z dostawcą zasobów.
 

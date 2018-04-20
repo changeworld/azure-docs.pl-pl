@@ -19,8 +19,8 @@ W przypadku tego samouczka konfiguracji te parametry połączenia iothubowner ni
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) otwórz swoje centrum IoT Hub.
 
-2. Kliknij pozycję **Device Explorer**.
-3. W okienku Device Explorer kliknij pozycję **Dodaj**, aby dodać urządzenie do centrum IoT Hub. Następnie wykonaj poniższe czynności:
+2. Kliknij przycisk **urządzenia IoT**.
+3. W okienku urządzenia IoT kliknij **Dodaj** do dodania urządzenia do Centrum IoT. Następnie wykonaj poniższe czynności:
 
    **Identyfikator urządzenia**: wprowadź identyfikator nowego urządzenia. W identyfikatorach urządzeń jest uwzględniana wielkość liter.
 
@@ -30,12 +30,15 @@ W przypadku tego samouczka konfiguracji te parametry połączenia iothubowner ni
 
    **Połącz urządzenie z IoT Hub**: kliknij pozycję **Włącz**.
 
-   ![Dodawanie urządzeń do centrum IoT Hub w programie Device Explorer](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   ![Dodaj urządzenie urządzenia IoT z Centrum IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-iot-devices-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. Kliknij pozycję **Zapisz**.
-5. Po utworzeniu urządzenia otwórz je w okienku **Device Explorer**.
+5. Po utworzeniu urządzenia, należy otworzyć urządzenia w **urządzenia IoT** okienka.
+
+   ![Lista urządzeń IoT w Centrum IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_device-list-in-iot-devices-portal.png)
+
 6. Zanotuj klucz podstawowy parametrów połączenia.
 
-   ![Pobieranie parametrów połączenia urządzenia](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![Pobieranie parametrów połączenia urządzenia](../articles/iot-hub/media/iot-hub-create-hub-and-device/8_get-device-connection-string-in-iot-devices-portal.png)

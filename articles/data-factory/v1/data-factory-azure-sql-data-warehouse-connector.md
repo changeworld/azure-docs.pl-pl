@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Data Warehouse przy użyciu fabryki danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -147,7 +147,7 @@ GO
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Określ kwerendę dla działania kopiowania do wykonania w taki sposób, że dane określonych wycinek jest wyczyszczone. Aby uzyskać więcej informacji, zobacz [sekcji powtarzalności](#repeatability-during-copy). |Instrukcja zapytania. |Nie |
 | allowPolyBase |Wskazuje, czy do użycia zamiast mechanizmu BULKINSERT PolyBase (jeśli jest to wymagane). <br/><br/> **Przy użyciu programu PolyBase jest zalecanym sposobem ładowanie danych do usługi SQL Data Warehouse.** Zobacz [Użyj programu PolyBase, aby załadować dane do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji dla ograniczenia i szczegółów. |True <br/>Wartość FAŁSZ (ustawienie domyślne) |Nie |
-| polyBaseSettings |Grupy właściwości, które można określić, kiedy **allowPolybase** właściwość jest ustawiona na **true**. |&nbsp; |Nie |
+| Usługi |Grupy właściwości, które można określić, kiedy **allowPolybase** właściwość jest ustawiona na **true**. |&nbsp; |Nie |
 | rejectValue |Określa liczbę lub odsetek wierszy, które można odrzucić przed zapytanie nie powiedzie się. <br/><br/>Dowiedz się więcej o opcjach Odrzuć PolyBase **argumenty** sekcji [Tworzenie tabeli zewnętrznej (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) tematu. |0 (domyślnie), 1, 2... |Nie |
 | dla właściwości rejectType |Określa, czy opcja rejectValue jest określona jako wartość literału lub wartość procentowa. |Wartość (ustawienie domyślne), wartość procentowa |Nie |
 | rejectSampleValue |Określa liczbę wierszy do pobrania przed PolyBase ponownie oblicza procent odrzuconych wierszy. |1, 2, … |Tak, jeśli **dla właściwości rejectType** jest **procent** |
@@ -306,7 +306,7 @@ Fabryka danych tworzy tabeli w magazynie docelowym o takiej samej nazwie tabeli 
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
-| Bit | Bit |
+| bitowe | bitowe |
 | Decimal | Decimal |
 | numeryczne | Decimal |
 | Float | Float |
@@ -363,17 +363,17 @@ Mapowanie jest taka sama jak [mapowanie typu danych serwera SQL dla ADO.NET](htt
 | ntext |Ciąg, Char] |
 | numeryczne |Decimal |
 | nvarchar |Ciąg, Char] |
-| rzeczywiste |Kawaler/panna |
+| rzeczywiste |Pojedyncze |
 | ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Obiekt * |
 | Tekst |Ciąg, Char] |
-| time |TimeSpan |
+| time |Zakres czasu |
 | sygnatura czasowa |Byte[] |
 | tinyint |Bajtów |
-| uniqueidentifier |Identyfikator GUID |
+| Unikatowy identyfikator |Identyfikator GUID |
 | varbinary |Byte[] |
 | varchar |Ciąg, Char] |
 | xml |Xml |

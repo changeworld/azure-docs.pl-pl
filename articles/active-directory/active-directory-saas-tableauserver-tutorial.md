@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Azure Active Directory integrację z serwerem Tableau | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i serwera Tableau."
+title: 'Samouczek: Azure Active Directory integrację z serwerem Tableau | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i serwera Tableau.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
 ms.openlocfilehash: 3b0390c8b95a46b2c134252532bef118ea4df52d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Samouczek: Azure Active Directory integrację z serwerem Tableau
 
@@ -158,7 +158,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
   
    b. Zaznacz pole wyboru z **SAML używana dla logowania jednokrotnego**.
    
-   c. Serwer TABLEAU adres zwrotny URL — adres URL, który serwer Tableau użytkownicy będą uzyskiwać dostęp do, takich jak http://tableau_server. Nie zaleca się przy użyciu http://localhost. Przy użyciu adresu URL znakiem ukośnika (na przykład http://tableau_server/) nie jest obsługiwana. Kopia **serwera Tableau zwrotnego adresu URL** i wklej go do usługi Azure AD **na adres URL logowania** textbox w **adresy URL i domeną serwera Tableau** sekcji.
+   c. Serwer TABLEAU adres zwrotny URL — adres URL, który serwer Tableau użytkownicy będą uzyskiwać dostęp do, takich jak http://tableau_server. Przy użyciu http://localhost nie jest zalecane. Przy użyciu adresu URL znakiem ukośnika (na przykład http://tableau_server/) nie jest obsługiwane. Kopia **serwera Tableau zwrotnego adresu URL** i wklej go do usługi Azure AD **na adres URL logowania** textbox w **adresy URL i domeną serwera Tableau** sekcji.
    
    d. Identyfikator jednostki SAML — identyfikator jednostki jednoznacznie identyfikuje instalacją serwera Tableau do dostawców tożsamości. Możesz wprowadzić adres URL serwera Tableau ponownie, jeśli chcesz, ale nie musi być adres URL serwera Tableau. Kopiuj **SAML identyfikator jednostki** i wklej go do usługi Azure AD **identyfikator** textbox w **adresy URL i domeną serwera Tableau** sekcji.
      

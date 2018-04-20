@@ -1,12 +1,12 @@
 ---
 title: Redagowanie Azure Service Fabric interfejsu wiersza polecenia - sfctl | Dokumentacja firmy Microsoft
-description: "Zawiera opis usługi sieci szkieletowej interfejsu wiersza polecenia sfctl tworzą poleceń."
+description: Zawiera opis usługi sieci szkieletowej interfejsu wiersza polecenia sfctl tworzą poleceń.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 19afd35248cc0796eddbb50db4f38b813f5d568e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Tworzenie, usuwanie i zarządzanie wdrożeniami rozwiązania Docker Compose.
@@ -32,7 +32,7 @@ Tworzenie, usuwanie i zarządzanie wdrożeniami rozwiązania Docker Compose.
 |   usuń| Usuwa istniejące sieci szkieletowej usług utworzyć wdrożenia z klastra.|
 |   status| Pobiera informacje o sieci szkieletowej usług utworzyć wdrożenia.|
 |Uaktualnienie       | Uruchamia uaktualniania wdrożenia tworzenia klastra usługi sieć szkieletowa usług.|
-|    upgrade-status| Pobiera szczegóły dla najnowszą aktualizację w tej sieci szkieletowej usług utworzyć wdrożenia.|
+|    Stan uaktualnienia| Pobiera szczegóły dla najnowszą aktualizację w tej sieci szkieletowej usług utworzyć wdrożenia.|
 
 
 ## <a name="sfctl-compose-create"></a>Redagowanie sfctl tworzenie
@@ -56,7 +56,7 @@ Tworzy usługi sieć szkieletowa tworzą wdrożenia.
 | --debug                 | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h               | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o             | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose               | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-compose-list"></a>sfctl utworzenie listy
@@ -79,7 +79,7 @@ Pobiera stan o wdrożeniach Redaguj, które zostały utworzone lub właśnie trw
 | --debug          | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h        | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o      | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania          | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania          | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose        | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-compose-remove"></a>Usuń tworzą sfctl
@@ -101,7 +101,7 @@ Usuwa istniejące sieci szkieletowej usług utworzyć wdrożenia.
 | --debug                 | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h               | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o             | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose               | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-compose-status"></a>Stan tworzenia sfctl
@@ -123,7 +123,7 @@ Zwraca stan tworzenia wdrożenia, który został utworzony lub właśnie tworzon
 | --debug                 | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h               | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o             | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania                 | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose               | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl tworzą uaktualnienia
@@ -145,7 +145,7 @@ Weryfikuje podane parametry uaktualniania i uruchamia uaktualniania wdrożenia.
 |    --health-check-stable        | Sprawdzanie kondycji stabilna czas w milisekundach.|
 |    --health-check-wait          | Czas trwania oczekiwania sprawdzania kondycji mierzony w milisekundach.|
 |    --repliki zestaw sprawdzania          | Sprawdzenie limitu czasu mierzony w sekundach zestawu replik uaktualnienia.|
-|    --svc-type-health-map        | Lista obiektów, które opisano zasady dotyczące kondycji używane do oceny kondycji usługi różnych typów zakodowane JSON.|
+|    -svc--kondycji mapy typu        | Lista obiektów, które opisano zasady dotyczące kondycji używane do oceny kondycji usługi różnych typów zakodowane JSON.|
 |    limit czasu — -t                 | Limit czasu serwera w sekundach.  Domyślnie: 60.|
 |    --unhealthy-app              | Maksymalna dozwolona wartość procentowa w złej kondycji aplikacji przed zgłoszeniem błędu.        Na przykład aby umożliwić 10% aplikacji jest zła, ta wartość wynosi 10. Wartość procentowa reprezentuje maksymalny procent tolerowaną aplikacje, które mogą być zła, zanim klaster zostanie uznane za błąd. Jeśli wartość procentowa jest przestrzegana, ale istnieje co najmniej jednej aplikacji w złej kondycji, kondycji jest szacowana jako ostrzeżenia. Ta wartość jest obliczana przez podzielenie liczby złej kondycji aplikacji za pośrednictwem całkowita liczba wystąpień aplikacji w klastrze.|
 |    — limit czasu domeny uaktualnienia     | Limit czasu domeny uaktualnień mierzony w milisekundach.|

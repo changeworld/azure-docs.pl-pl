@@ -1,25 +1,25 @@
 ---
-title: "Zarządzane tożsamości usługi (MSI) dla usługi Azure Active Directory"
-description: "Przegląd zarządzane tożsamości usługi dla zasobów platformy Azure."
+title: Zarządzane tożsamości usługi (MSI) dla usługi Azure Active Directory
+description: Przegląd zarządzane tożsamości usługi dla zasobów platformy Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ms.reviewer: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 95980c082b09ad959ab8bbaae0250b40ac08d2c8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/20/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Zarządzane tożsamości usługi (MSI) dla zasobów platformy Azure
 
@@ -47,7 +47,7 @@ Oto przykład działania Instalatora MSI przypisane system z maszyn wirtualnych 
 2. Usługa Azure Resource Manager tworzy nazwy głównej usługi w usłudze Azure AD do reprezentowania tożsamości maszyny wirtualnej. Nazwy głównej usługi jest tworzony w dzierżawie usługi Azure AD, który jest zaufany dla tej subskrypcji.
 3. Usługa Azure Resource Manager konfiguruje szczegóły nazwy głównej usługi w pliku MSI rozszerzenia maszyny Wirtualnej maszyny wirtualnej. Ten krok obejmuje Konfigurowanie identyfikator klienta i certyfikat używany przez rozszerzenie do uzyskania dostępu do tokenów z usługi Azure AD.
 4. Teraz, nosi nazwę główną usługi tożsamość maszyny Wirtualnej, może zostać przydzielony dostęp do zasobów platformy Azure. Na przykład jeśli kod wymaga wywołań usługi Azure Resource Manager, następnie należy przypisywanej nazwy głównej usługi maszyny Wirtualnej odpowiednią rolę przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD.  Kod musi wywołać Key Vault, czy udzielić kodu dostępu do określonego hasła lub klucza w magazynie kluczy.
-5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z lokalnego punktu końcowego, który jest obsługiwany przez rozszerzenie maszyny Wirtualnej MSI: http://localhost:50342/oauth2/token. Parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu = https://management.azure.com/.
+5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z lokalnego punktu końcowego, który jest obsługiwany przez rozszerzenie maszyny Wirtualnej MSI: http://localhost:50342/oauth2/token. Parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu =https://management.azure.com/.
 6. MSI rozszerzenia maszyny Wirtualnej używa Identyfikatora klienta skonfigurowanego i certyfikatu poproś token dostępu z usługi Azure AD.  Usługi Azure AD zwraca token dostępu tokenu Web JSON (JWT).
 7. Kod wysyła ten token dostępu na wywołanie do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
 
@@ -59,7 +59,7 @@ Przy użyciu tego samego diagramu, tutaj przykład działania Instalatora MSI pr
 2. Usługa Azure Resource Manager tworzy nazwy głównej usługi w usłudze Azure AD do reprezentowania tożsamości tego MSI. Nazwy głównej usługi jest tworzony w dzierżawie usługi Azure AD, który jest zaufany dla tej subskrypcji.
 3. Usługa Azure Resource Manager odbierze komunikat, aby skonfigurować szczegóły nazwy głównej usługi w pliku MSI rozszerzenia maszyny Wirtualnej maszyny wirtualnej. Ten krok obejmuje Konfigurowanie identyfikator klienta i certyfikat używany przez rozszerzenie do uzyskania dostępu do tokenów z usługi Azure AD.
 4. Teraz, gdy tożsamość nazwy głównej usługi MSI jest znana, będzie można mu przyznać dostęp do zasobów platformy Azure. Na przykład jeśli kod wymaga wywołań usługi Azure Resource Manager, następnie należy przypisywanej nazwy głównej usługi MSI odpowiednią rolę przy użyciu kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD. Kod musi wywołać Key Vault, czy udzielić kodu dostępu do określonego hasła lub klucza w magazynie kluczy. Uwaga: Nie jest wymagane do wykonania kroku 4 krok 3. Gdy istnieje MSI, będzie można mu przyznać dostęp do zasobów, niezależnie od tego, są skonfigurowane na maszynie Wirtualnej, lub nie.
-5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z lokalnego punktu końcowego, który jest obsługiwany przez rozszerzenie maszyny Wirtualnej MSI: http://localhost:50342/oauth2/token. Z parametru Identyfikatora klienta Określa nazwę pliku MSI tożsamości do użycia. Ponadto parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu = https://management.azure.com/.
+5. Kod uruchomiony na maszynie Wirtualnej żądania tokenu z lokalnego punktu końcowego, który jest obsługiwany przez rozszerzenie maszyny Wirtualnej MSI: http://localhost:50342/oauth2/token. Z parametru Identyfikatora klienta Określa nazwę pliku MSI tożsamości do użycia. Ponadto parametr zasobu określa usługi, do którego wysyłane jest token. Na przykład, jeśli chcesz, aby kod do uwierzytelniania w usłudze Azure Resource Manager, można skorzystać zasobu =https://management.azure.com/.
 6. Rozszerzenia maszyny Wirtualnej MSI sprawdza, jeśli certyfikat dla tego Identyfikatora klienta żądanego jest skonfigurowany i żądania tokenu dostępu z usługi Azure AD. Usługi Azure AD zwraca token dostępu tokenu Web JSON (JWT).
 7. Kod wysyła ten token dostępu na wywołanie do usługi, która obsługuje uwierzytelnianie w usłudze Azure AD.
 

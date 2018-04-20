@@ -1,10 +1,10 @@
 ---
-title: "Usługi Azure Data Lake Tools: Użycia usługi Azure Data Lake Tools dla programu Visual Studio Code | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Azure Data Lake Tools dla Visual Studio Code umożliwia tworzenie, testowanie i uruchamianie skryptów U-SQL. "
+title: 'Usługi Azure Data Lake Tools: Użycia usługi Azure Data Lake Tools dla programu Visual Studio Code | Dokumentacja firmy Microsoft'
+description: 'Dowiedz się, jak Azure Data Lake Tools dla Visual Studio Code umożliwia tworzenie, testowanie i uruchamianie skryptów U-SQL. '
 Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
+documentationcenter: ''
+author: Jejiang
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: 7e1e2c0a5481a81e9267bcf87076076b377a1496
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Użyj usługi Azure Data Lake Tools dla programu Visual Studio Code
 
@@ -32,19 +32,19 @@ Omówienie narzędzi Azure Data Lake Tools dla programu Visual Studio (kod VS) d
 
 Azure Data Lake Tools for VSCode obsługuje Windows, Linux lub MacOS.  
 
-- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
+- [Program Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
 System MacOS i Linux:
-- [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core). 
+- [Oprogramowanie .NET core SDK 2.0](https://www.microsoft.com/net/download/core). 
 - [Mono 5.2.x](http://www.mono-project.com/download/).
 
-## <a name="install-data-lake-tools"></a>Instalowania narzędzi Data Lake Tools
+## <a name="install-data-lake-tools"></a>Instalowanie narzędzi Data Lake Tools
 
 Po zainstalowaniu wymagań wstępnych, można zainstalować narzędzi Data Lake Tools dla programu VS kodu.
 
 **Aby zainstalować narzędzia Data Lake Tools**
 
-1. Otwórz kod programu Visual Studio.
+1. Otwórz program Visual Studio Code.
 2. Kliknij przycisk **rozszerzenia** w okienku po lewej stronie. Wprowadź **usługi Azure Data Lake** w polu wyszukiwania.
 3. Kliknij przycisk **zainstalować** obok **usługi Azure Data Lake tools**. Po kilku sekundach **zainstalować** przycisk zostanie zmieniony na **Załaduj ponownie**.
 4. Kliknij przycisk **Załaduj ponownie** aktywować **usługi Azure Data Lake tools** rozszerzenia.
@@ -356,13 +356,13 @@ Stan jest wyświetlany w dolnej części paska stanu, po zakończeniu pobierania
 
 **Integracja Azure** 
 
-- Przed logowania do platformy Azure, zawsze można rozwinąć **DATALAKE EXPLORER**, następnie kliknij przycisk **Zaloguj się do Azur** do logowania do platformy Azure. Po logowania, będą widzieli wszystkie subskrypcje w ramach konta platformy Azure są wyświetlane w lewym panelu **DATALAKE EXPLORER**. 
+- Przed logowania do platformy Azure, zawsze można rozwinąć **AZURE DATALAKE**, następnie kliknij przycisk **logowanie do platformy Azure** do logowania do platformy Azure. Po logowania, będą widzieli wszystkie subskrypcje w ramach konta platformy Azure są wyświetlane w lewym panelu **AZURE DATALAKE**. 
 
    ![Usługa DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
 
    ![Usługa DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-**ADLA metadanych nawigacji** 
+**ADLA metadanych nawigacji**
 
 - Rozwiń subskrypcji platformy Azure, można przejść U-SQL bazy danych, widok **schematy**, **poświadczenia**, **zestawy**, **tabeli**, **Indeksu**i tak dalej w węźle U-SQL bazy danych.
 
@@ -382,11 +382,31 @@ Stan jest wyświetlany w dolnej części paska stanu, po zakończeniu pobierania
 
 **Integracja ADLS** 
 
- - Przejdź do **konta magazynu**, możesz **Podgląd**, **Pobierz**, **usunąć**, **Kopiuj ścieżkę względną**, **Kopiuj pełną ścieżkę** przez menu kontekstowego w węźle pliku. Możesz **Odśwież**, **przekazać**, **przekazać folderu**, **usunąć** klikając prawym przyciskiem myszy węzeł folderu menu kontekstowe.
+Przejdź do **usługi Data Lake Store**
+
+ - W węźle folderu można **Odśwież**, **usunąć**, **przekazać**, **przekazać folderu**, **Kopiuj ścieżkę względną**, **Kopiuj pełną ścieżkę** w menu kontekstowym kliknij prawym przyciskiem myszy.
 
    ![Usługa DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
+ - W węźle pliku możesz **Pobierz**, **Podgląd**, **usunąć**, **Kopiuj ścieżkę względną**, **Kopiuj pełną ścieżkę**w menu kontekstowym kliknij prawym przyciskiem myszy. 
+
    ![Usługa DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+
+**Integracja WASB**
+
+Przejdź do **magazynu obiektów Blob**
+
+- W węźle kontenera obiektów blob można **Odśwież**, **usunąć kontener obiektów Blob**, **przekazania obiektu Blob** w menu kontekstowym kliknij prawym przyciskiem myszy.
+
+    ![Węzeł kontenera obiektów blob magazynu obiektów blob](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
+
+- W węźle folderu można **Odśwież**, **przekazania obiektu Blob** w menu kontekstowym kliknij prawym przyciskiem myszy.
+
+    ![Węzeł folderu magazynu obiektów blob](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
+
+- W węźle pliku możesz **Podgląd i edytować**, **Pobierz**, **usunąć**, **Kopiuj ścieżkę względną**, **Kopiuj pełną ścieżkę** w menu kontekstowym kliknij prawym przyciskiem myszy.
+
+    ![Węzeł pliku magazynu obiektów blob](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-file-node.png)
 
 ## <a name="open-adl-storage-explorer-in-portal"></a>Otwórz Eksploratora usługi storage ADL w portalu
 1. Wybierz kombinację klawiszy Ctrl + Shift + P, aby otworzyć paletę polecenia.

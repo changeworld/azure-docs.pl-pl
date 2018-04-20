@@ -1,12 +1,12 @@
 ---
-title: "Azure Usługa sieci szkieletowej interfejsu wiersza polecenia sfctl węzłami | Dokumentacja firmy Microsoft"
-description: "Informacje dotyczące poleceń węzła sfctl interfejsu wiersza polecenia usługi sieci szkieletowej."
+title: Azure Usługa sieci szkieletowej interfejsu wiersza polecenia sfctl węzłami | Dokumentacja firmy Microsoft
+description: Informacje dotyczące poleceń węzła sfctl interfejsu wiersza polecenia usługi sieci szkieletowej.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 Zarządzanie węzły, które tworzą klaster.
@@ -60,7 +60,7 @@ Dezaktywowanie z docelowa dezaktywacji określonego węzła klastra sieci szkiel
 | --debug            | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h          | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o        | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose          | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-node-enable"></a>Włącz węzła sfctl
@@ -82,7 +82,7 @@ Aktywuje węzła klastra sieci szkieletowej usług, który jest obecnie wyłącz
 | --debug            | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h          | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o        | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose          | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-node-health"></a>sfctl węzła kondycji
@@ -127,7 +127,7 @@ Pobiera informacje o określonym węźle Cluster.The sieci szkieletowej usług o
 | --debug            | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h          | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o        | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose          | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-node-list"></a>sfctl węzła listy
@@ -150,7 +150,7 @@ Pobiera listę węzłów w klastrze usługi sieć szkieletowa usług. Odpowiedź
 | --debug          | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h        | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o      | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania          | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania          | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose        | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-node-load"></a>sfctl węzła obciążenia
@@ -172,7 +172,7 @@ Pobiera informacje o obciążenia węzła sieci szkieletowej usług dla wszystki
 | --debug            | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h          | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o        | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose          | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-node-restart"></a>ponowne uruchomienie węzła sfctl
@@ -196,7 +196,7 @@ Uruchamia ponownie usługi sieć szkieletowa węzła klastra, który jest już u
 | --debug            | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 | — Pomoc -h          | Pokaż ten komunikat pomocy i Zakończ.|
 | --output -o        | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne: json.|
-| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady zobacz http://jmespath.org/.|
+| — zapytania            | Ciąg zapytania JMESPath. Aby uzyskać dodatkowe informacje i przykłady, zobacz http://jmespath.org/.|
 | -verbose          | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 
 ## <a name="sfctl-node-transition"></a>Przejście węzła sfctl

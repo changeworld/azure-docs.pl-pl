@@ -1,6 +1,6 @@
 ---
-title: "Szyfrowanie po stronie klienta z językiem Java dla magazynu Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Biblioteka klienta magazynu Azure dla języka Java obsługuje szyfrowanie po stronie klienta i integracja z usługą Azure Key Vault dla zapewnienia maksymalnego poziomu bezpieczeństwa dla aplikacji usługi Azure Storage."
+title: Szyfrowanie po stronie klienta z językiem Java dla magazynu Microsoft Azure | Dokumentacja firmy Microsoft
+description: Biblioteka klienta magazynu Azure dla języka Java obsługuje szyfrowanie po stronie klienta i integracja z usługą Azure Key Vault dla zapewnienia maksymalnego poziomu bezpieczeństwa dla aplikacji usługi Azure Storage.
 services: storage
 documentationcenter: java
 author: lakasa
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.openlocfilehash: b4f3814ac2dbc8b74cef8f5fcb0540b7509efa0d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta i usługi Azure Key Vault z językiem Java dla magazynu Microsoft Azure
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5de227e5de5ef9b41f6e0f64db86b7195259f7d6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/20/2018
 ---
 * **PolicyBased:** VPN PolicyBased wcześniej były nazywane statycznymi bramami routingu w klasycznym modelu wdrażania. Sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec skonfigurowanych przy użyciu kombinacji prefiksów adresów między siecią lokalną a sieci wirtualnej platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji urządzenia sieci VPN. Wartość dla typu PolicyBased sieci VPN jest *PolicyBased*. Korzystając z PolicyBased sieci VPN, należy pamiętać o następujących ograniczeniach:
   

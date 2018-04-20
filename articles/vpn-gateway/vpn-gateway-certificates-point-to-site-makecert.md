@@ -1,13 +1,13 @@
 ---
-title: "Generowanie i eksportowania certyfikatów dla lokacji punktu: MakeCert: Azure | Dokumentacja firmy Microsoft"
-description: "Utwórz certyfikat z podpisem własnym głównego, wyeksportować klucz publiczny i generowania certyfikatów klientów za pomocą narzędzia MakeCert."
+title: 'Generowanie i eksportowania certyfikatów dla lokacji punktu: MakeCert: Azure | Dokumentacja firmy Microsoft'
+description: Utwórz certyfikat z podpisem własnym głównego, wyeksportować klucz publiczny i generowania certyfikatów klientów za pomocą narzędzia MakeCert.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generowanie i eksportowania certyfikatów połączeń punkt-lokacja za pomocą narzędzia MakeCert
 
@@ -100,4 +100,4 @@ Kontynuuj konfigurację punkt-lokacja.
 * Dla **Resource Manager** kroków modelu wdrażania, zobacz [P2S skonfigurować przy użyciu uwierzytelniania certyfikatu Azure natywnego](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * Dla **klasycznego** kroków modelu wdrażania, zobacz [skonfigurować połączenie sieci VPN typu punkt-lokacja sieci wirtualnej (klasyczne)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
-Aby uzyskać informacje dotyczące rozwiązywania problemów P2S [połączenia punkt lokacja Azure Rozwiązywanie problemów z](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+Aby uzyskać informacje dotyczące rozwiązywania problemów z połączeniem typu punkt-lokacja, zobacz [Troubleshooting Azure point-to-site connections (Rozwiązywanie problemów z połączeniami typu punkt-lokacja na platformie Azure)](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

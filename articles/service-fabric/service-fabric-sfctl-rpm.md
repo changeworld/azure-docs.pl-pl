@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric interfejsu wiersza polecenia sfctl obr | Dokumentacja firmy Microsoft
-description: "Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl obr. / min."
+description: Zawiera opis poleceń interfejsu wiersza polecenia usługi sieć szkieletowa sfctl obr. / min.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 34e7693ea40df2bf12fd6e9be2ef627f30748bcd
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Zapytania i wysyłać polecenia do naprawy service manager.
@@ -68,7 +68,7 @@ Ten interfejs API obsługuje platformy Service Fabric; nie jest przeznaczona do 
 | --- | --- |
 |    --debug          | Zwiększenie szczegółowości rejestrowania, aby pokazać wszystkie debugowania dzienniki.|
 |    — Pomoc -h        | Pokaż ten komunikat pomocy i Zakończ.|
-|    --output -o      | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne| json.|
+|    --output -o      | Format danych wyjściowych.  Dozwolone wartości: json, jsonc, tabeli, tsv.  Domyślne| JSON.|
 |    — zapytania          | Ciąg zapytania JMESPath. Zobacz http://jmespath.org/ dodatkowe informacje i przykłady.|
 |    -verbose        | Zwiększ poziom szczegółowości rejestrowania. Użycie--debugowania dla dzienników debugowania pełna.|
 

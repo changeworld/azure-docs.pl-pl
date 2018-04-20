@@ -9,10 +9,10 @@ ms.date: 03/30/2018
 ms.author: danlep;azcspmt;jonbeck
 ms.custom: include file
 ms.openlocfilehash: 5457ac8bd229889ed2b96354c44066959c00c64f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/20/2018
 ---
 Procesor GPU zoptymalizowanych pod kątem maszyny Wirtualnej są dostępne z jednego lub wielu procesorów graficznych NVIDIA specjalne maszyn wirtualnych. Rozmiary są przeznaczone dla obciążeń obliczeniowych, dużą ilością grafiki i wizualizacji. Ten artykuł zawiera informacje o liczbę i typ procesorów graficznych, Vcpu, dyski danych i karty sieciowe, jak również przepustowości przepływności i sieć magazynu dla każdego rozmiaru w tej metodzie grupowania. 
 

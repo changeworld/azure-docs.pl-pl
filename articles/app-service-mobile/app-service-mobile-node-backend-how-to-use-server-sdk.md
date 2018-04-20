@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu Mobile Apps Node.js SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -334,7 +334,7 @@ Firma Microsoft zaleca, Dodaj azureMobile.js do pliku .gitignore (lub innych kon
 ### <a name="howto-appsettings"></a>Konfiguruj ustawienia aplikacji dla aplikacji mobilnej
 Większość ustawień w pliku azureMobile.js ma ustawienia aplikacji odpowiednik [portalu Azure]. Skorzystaj z poniższej listy, aby skonfigurować aplikację w **ustawień aplikacji**:
 
-| Ustawienia aplikacji | azureMobile.js setting | Opis | Prawidłowe wartości |
+| Ustawienia aplikacji | Ustawienie azureMobile.js | Opis | Prawidłowe wartości |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |name |Nazwa aplikacji |ciąg |
 | **MS_MobileLoggingLevel** |logging.level |Poziom minimalna dziennika komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje o verbose, debug, niemądre |
@@ -822,7 +822,7 @@ Aplikacje środowiska node.js mają dostęp do szeroką gamę narzędzi diagnost
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Praca z tabelami łatwy w portalu Azure
 Łatwe tabel umożliwia tworzenie i Praca z tabelami bezpośrednio w portalu. Możesz przekazać do tabel łatwe zestawu danych w formacie CSV. Należy pamiętać, że nie można użyć nazwy właściwości (w zestawie danych CSV), które są w konflikcie z nazwami właściwości systemu zaplecza aplikacji mobilnej. Nazwy właściwości systemu są:
-* createdAt
+* CreatedAt
 * updatedAt
 * usunięte
 * wersja
@@ -872,7 +872,7 @@ Za pomocą portalu Azure, można edytować pliki skryptów zaplecza Node.js w ed
 [Szybki Start Apache Cordova klienta]: app-service-mobile-cordova-get-started.md
 [iOS — Szybki Start klienta]: app-service-mobile-ios-get-started.md
 [Szybki Start klienta platformy Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md
-[Xamarin.Android Client quickstart]: app-service-mobile-xamarin-android-get-started.md
+[Szybki Start klienta platformy Xamarin.Android]: app-service-mobile-xamarin-android-get-started.md
 [Szybki Start klienta platformy Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
 [Szybki Start klienta Sklepu Windows]: app-service-mobile-windows-store-dotnet-get-started.md
 [synchronizacji danych w trybie offline]: app-service-mobile-offline-data-sync.md

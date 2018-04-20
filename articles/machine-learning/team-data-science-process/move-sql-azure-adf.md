@@ -1,8 +1,8 @@
 ---
-title: "Przenoszenie danych z lokalnego programu SQL Server SQL Azure z fabryką danych Azure | Dokumentacja firmy Microsoft"
-description: "Skonfiguruj potok fabryki danych AZURE, który Redaguj dwa działania migracji danych, które razem przenoszenia danych w trybie dziennym między bazami danych lokalnych i w chmurze."
+title: Przenoszenie danych z lokalnego programu SQL Server SQL Azure z fabryką danych Azure | Dokumentacja firmy Microsoft
+description: Skonfiguruj potok fabryki danych AZURE, który Redaguj dwa działania migracji danych, które razem przenoszenia danych w trybie dziennym między bazami danych lokalnych i w chmurze.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
 ms.openlocfilehash: 05884fd39db284e268f31987e5ad7a47b9f87ebf
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Przenoszenie danych z lokalnego programu SQL server SQL Azure z fabryką danych Azure
 W tym temacie pokazano, jak przenieść dane z lokalną bazą danych serwera SQL z bazą danych SQL Azure za pomocą usługi Azure Blob Storage przy użyciu fabryki danych Azure (ADF).
@@ -113,7 +113,7 @@ Trzy definicje tabel są wymagane dla tego potoku ADF:
 >
 >
 
-### <a name="adf-table-onprem-sql">SQL lokalnej tabeli</a>
+### <a name="adf-table-onprem-sql"></a>SQL lokalnej tabeli
 Definicja tabeli dla lokalnego programu SQL Server jest określona w następującym pliku JSON:
 
         {
@@ -148,7 +148,7 @@ Kopiuj do pliku definicji JSON tabeli o nazwie *onpremtabledef.json* pliku i zap
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
-### <a name="adf-table-blob-store">Tabela obiektów blob </a>
+### <a name="adf-table-blob-store"></a>Tabela obiektów blob
 Definicja tabeli dla lokalizacji obiektu blob danych wyjściowych jest w następującej (mapuje pozyskiwane danych z lokalnego do obiektów blob platformy Azure):
 
         {
@@ -178,7 +178,7 @@ Kopiuj do pliku definicji JSON tabeli o nazwie *bloboutputtabledef.json* pliku i
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
 
-### <a name="adf-table-azure-sql">SQL tabeli platformy Azure</a>
+### <a name="adf-table-azure-sql"></a>SQL tabeli platformy Azure
 Definicja tabeli SQL Azure jest poniżej (w tym schemacie mapowania danych z obiektu blob) wyjściowy:
 
     {

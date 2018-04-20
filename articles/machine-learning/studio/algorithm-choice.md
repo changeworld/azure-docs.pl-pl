@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
 ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Wybór algorytmów dla usługi Microsoft Azure Machine Learning
 Odpowiedź na pytanie "Jakie Algorytm uczenia maszynowego należy używać?" jest zawsze "Zależy." To zależy od rozmiaru, jakości i charakter danych. To zależy co chcesz zrobić z odpowiedzią. To zależy jak matematyczne algorytmu był przekształcić instrukcje dla komputera, którego używasz. I jest ono zależne na czas, jaki ma. Nawet najbardziej doświadczeni analityków danych nie wiadomo, który algorytm będzie wykonywać najlepiej przed podjęciem próby je.
@@ -121,7 +121,7 @@ Niektóre algorytmów uczenia zakładają określonej struktury danych lub zakł
 | [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Możliwe jest dodatkowe dostosowanie](http://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobacz właściwości wybrano metodę dwa — klasa |
 | **Regression** | | | | | |
-| [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
+| [liniowy](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [Estymacja Bayesian liniowy](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
 | [decyzja lasu](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [drzewo decyzyjne boosted](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Zużycie pamięci |

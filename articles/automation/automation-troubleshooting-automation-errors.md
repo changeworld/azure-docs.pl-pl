@@ -10,18 +10,18 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Błąd automatyzacji, rozwiązywania problemów, problem
-ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Rozwiązywanie typowych problemów w usłudze Automatyzacja Azure 
 Ten artykuł zawiera pomoc w rozwiązywaniu typowych błędów mogą wystąpić w automatyzacji Azure, a także sugeruje możliwe rozwiązania, aby je rozwiązać.
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Błędy uwierzytelniania podczas pracy z elementami runbook usługi Automatyzacja Azure
 ### <a name="scenario-sign-in-to-azure-account-failed"></a>Scenariusz: Zaloguj się do konta platformy Azure nie powiodło się
-**Błąd:** podczas pracy z poleceniami cmdlet Add-AzureAccount lub Login-AzureRmAccount zostanie wyświetlony błąd "Unknown_user_type: Nieznany typ użytkownika".
+**Błąd:** podczas pracy z poleceniami cmdlet Add-AzureAccount lub Connect-AzureRmAccount zostanie wyświetlony błąd "Unknown_user_type: Nieznany typ użytkownika".
 
 **Przyczyną tego błędu:** ten błąd występuje, jeśli nazwa zasobu poświadczeń jest nieprawidłowa lub nie są prawidłową nazwę użytkownika i hasło używane do konfigurowania zasób poświadczenia usługi Automatyzacja.
 
@@ -34,7 +34,7 @@ Ten artykuł zawiera pomoc w rozwiązywaniu typowych błędów mogą wystąpić 
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
-        Login-AzureRmAccount –Credential $Cred
+        Connect-AzureRmAccount –Credential $Cred
 3. Jeśli uwierzytelnianie nie powiedzie się lokalnie, oznacza to, że nie skonfigurowano poświadczeń usługi Azure Active Directory poprawnie. Zapoznaj się [uwierzytelnianie na platformie Azure przy użyciu usługi Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) wpis w blogu można uzyskać konta usługi Azure Active Directory są nieprawidłowo skonfigurowane.  
 
 ### <a name="scenario-unable-to-find-the-azure-subscription"></a>Scenariusz: Nie można odnaleźć subskrypcji platformy Azure

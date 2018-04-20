@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z ContractWorks | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ContractWorks."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ContractWorks.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 97e5ad805bbb25d2431944e2ede1f22630956356
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3c986810f3d994b956d4c81fd80b38d9dfee4f50
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>Samouczek: Integracji Azure Active Directory z ContractWorks
 
@@ -99,7 +99,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_samlbase.png)
 
 3. Na **ContractWorks domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
@@ -121,7 +121,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 6. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
     | Nazwa atrybutu | Wartość atrybutu |
-    | ---------------| --------------- |    
+    | ---------------| --------------- |
     | Poczty | User.mail |
     | Nazwa wyświetlana | user.displayname |
 
@@ -139,34 +139,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     d. Kliknij przycisk **Ok**
 
-7. Kliknij przycisk **zapisać** przycisku.
+7. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-contractworks-tutorial/tutorial_metadataurl.png)
+     
+8. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-contractworks-tutorial/tutorial_general_400.png)
 
-8. Aby wygenerować **adres URL metadanych**, wykonaj następujące czynności:
-
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_endpointicon.png)
-
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **contractworks** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. Aby skonfigurować logowanie jednokrotne w **ContractWorks** stronie, musisz wysłać wygenerowany **adres URL metadanych** do [ContractWorks obsługuje zespołu](mailto:support@contractworks.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+9. Aby skonfigurować logowanie jednokrotne w **ContractWorks** stronie, musisz wysłać wygenerowany **adres Url metadanych Federacji aplikacji** do [ContractWorks obsługuje zespołu](mailto:support@contractworks.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

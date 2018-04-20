@@ -1,11 +1,11 @@
 ---
-title: "Przepływ pracy wyzwalacze i akcje - Azure Logic Apps | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o wyzwalacze i akcje tworzenia automatycznych przepływów pracy i procesy z usługą logic apps"
+title: Przepływ pracy wyzwalacze i akcje - Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o wyzwalacze i akcje tworzenia automatycznych przepływów pracy i procesy z usługą logic apps
 services: logic-apps
 author: divyaswarnkar
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
 ms.service: logic-apps
 ms.workload: integration
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: klam; LADocs
 ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>Wyzwalacze i akcje dla przepływów pracy aplikacji logiki
 
@@ -192,7 +192,7 @@ Tego wyzwalacza określony punkt końcowy sonduje i sprawdza odpowiedzi, aby okr
 
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
-| metoda | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
+| method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
 | identyfikator URI | Yes| Ciąg | Końcowy HTTP lub HTTPs, który sprawdza zgodność wyzwalacza. Maksymalny rozmiar ciągu: 2 KB | 
 | — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
 | nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -268,7 +268,7 @@ Podstawowa funkcjonalność tego wyzwalacza działa jak wyzwalacza HTTP. Jednak 
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
 | host | Yes | Obiekt | Hostowanej bramy i identyfikator dla aplikacji interfejsu API | 
-| metoda | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
+| method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
 | — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
 | nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
@@ -280,7 +280,7 @@ Aby uzyskać `host` obiektu, w tym miejscu są właściwości:
   
 | Nazwa elementu | Wymagane | Opis | 
 | ------------ | -------- | ----------- | 
-| api runtimeUrl | Yes | Punkt końcowy dla zarządzanego interfejsu API | 
+| runtimeUrl interfejsu API | Yes | Punkt końcowy dla zarządzanego interfejsu API | 
 | Nazwa połączenia |  | Nazwa zarządzanego połączenia interfejsu API, używanych przez przepływ pracy. Musi odwoływać się do parametru o nazwie `$connection`. |
 |||| 
 
@@ -524,7 +524,7 @@ Istnieje wiele typów działań, każde z nich unikatowe zachowanie. Każdy typ 
 | **If** | Oszacować wyrażenia i na podstawie wyniku, uruchamia odpowiednie gałęzi. | 
 | **Przełącznik** | Wykonaj różne akcje na podstawie wartości określonego obiektu. | 
 | **ForEach** | Ta akcja pętli iteruje tablicy i wykonuje akcje wewnętrzne na każdy element tablicy. | 
-| **do czasu** | Ta akcja pętli wykonuje akcje wewnętrzny dopóki warunek wyników do wartości true. | 
+| **Until** | Ta akcja pętli wykonuje akcje wewnętrzny dopóki warunek wyników do wartości true. | 
 | **Zakres** | Służy do logicznego grupowania innych działań. | 
 |||  
 
@@ -546,7 +546,7 @@ W tym miejscu `inputs` obiektu przyjmuje tych parametrów wymaganych do konstruo
 
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
-| metoda | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
+| method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
 | identyfikator URI | Yes| Ciąg | Końcowy HTTP lub HTTPs, który sprawdza zgodność wyzwalacza. Maksymalny rozmiar ciągu: 2 KB | 
 | — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
 | nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -650,7 +650,7 @@ Ta akcja odwołuje się do łącznika zarządzany przez firmę Microsoft, wymaga
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
 | host | Yes | Obiekt | Reprezentuje informacje łącznika, takich jak `runtimeUrl` i odwołania do obiektu połączenia. | 
-| metoda | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
+| method | Yes | Ciąg | Użyto jednego z tych metod HTTP: "GET", "POST", "PUT", "DELETE", "Poprawka" ani "HEAD" | 
 | ścieżka | Yes | Ciąg | Ścieżka dla operacji interfejsu API | 
 | — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
 | nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -793,7 +793,7 @@ Ta akcja umożliwia reprezentują i wywołanie [funkcji Azure](../azure-function
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- |  
 | id — funkcja | Yes | Ciąg | Identyfikator zasobu dla funkcji platformy Azure, która ma zostać wywołana. | 
-| metoda | Nie | Ciąg | Metoda HTTP używana do wywołania tej funkcji. Jeśli nie zostanie określony, "POST" jest domyślną metodą. | 
+| method | Nie | Ciąg | Metoda HTTP używana do wywołania tej funkcji. Jeśli nie zostanie określony, "POST" jest domyślną metodą. | 
 | — zapytania | Nie | Obiekt | Reprezentuje wszystkie parametry zapytania, które chcesz uwzględnić w adresie URL. <p>Na przykład `"queries": { "api-version": "2015-02-01" }` dodaje `?api-version=2015-02-01` do adresu URL. | 
 | nagłówki | Nie | Obiekt | Reprezentuje każdy nagłówek, który jest wysyłany w żądaniu. <p>Na przykład, aby ustawić język i typ żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | treść | Nie | Obiekt | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | 
@@ -990,7 +990,7 @@ Można również czekać, aż do określonego momentu w czasie, można użyć w 
 
 | Nazwa elementu | Wymagane | Typ | Opis | 
 | ------------ | -------- | ---- | ----------- | 
-| do czasu | Nie | Obiekt | Czas trwania oczekiwania na podstawie punktu w czasie | 
+| do | Nie | Obiekt | Czas trwania oczekiwania na podstawie punktu w czasie | 
 | do sygnatury czasowej | Yes | Ciąg | Do punktu w czasie w [format daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) wygaśnięcia czas oczekiwania | 
 | interval | Nie | Obiekt | Czas oczekiwania na podstawie jednostkę interwału i liczby | 
 | Interwał | Yes | Ciąg | Jednostka czasu. Użyj tylko jedną z następujących wartości: "drugi", "min", "Godzina", "day", "tygodnia" lub "miesiąc" | 
@@ -1161,7 +1161,7 @@ Tę akcję, która jest instrukcji switch, wykonuje różne akcje na podstawie o
 | Przypadków | Yes | Obiekt | Zawiera zestawy wewnętrzny akcje, które są uruchamiane na podstawie wyniku wyrażenia. | 
 | Case | Yes | Ciąg | Wartość do dopasowania z wynikami | 
 | Akcje | Yes | Obiekt | Wewnętrzny akcje, które są uruchamiane w przypadku pasującego do wyniku wyrażenia | 
-| domyślny | Nie | Obiekt | Wewnętrzny akcje uruchamiane po przypadkach nie pasował do wyniku | 
+| domyślnie | Nie | Obiekt | Wewnętrzny akcje uruchamiane po przypadkach nie pasował do wyniku | 
 ||||| 
 
 Na przykład:

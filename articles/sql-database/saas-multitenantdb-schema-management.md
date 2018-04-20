@@ -1,7 +1,7 @@
 ---
-title: "Zarządzanie schematami usługi Azure SQL Database w aplikacji z wieloma dzierżawami | Microsoft Docs"
-description: "Zarządzanie schematami wielu dzierżaw w aplikacji z wieloma dzierżawami, która korzysta z usługi Azure SQL Database"
-keywords: "samouczek usługi sql database"
+title: Zarządzanie schematami usługi Azure SQL Database w aplikacji z wieloma dzierżawami | Microsoft Docs
+description: Zarządzanie schematami wielu dzierżaw w aplikacji z wieloma dzierżawami, która korzysta z usługi Azure SQL Database
+keywords: samouczek usługi sql database
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -12,10 +12,10 @@ ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
 ms.openlocfilehash: 474b7842c8295be0dd30c2c03b92dc68ce40630d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematu w aplikacji SaaS, która używa podzielonej wielodostępnych baz danych SQL
 
@@ -51,7 +51,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 - Musi być zainstalowany program Azure PowerShell. Aby uzyskać więcej informacji, zobacz [wprowadzenie do programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> W tym samouczku korzysta z funkcji usługi baza danych SQL Azure, które są w podglądzie ograniczone ([zadania elastycznej bazy danych](sql-database-elastic-database-client-library.md)). Jeśli chcesz zrobić w tym samouczku, podaj identyfikator subskrypcji do  *SaaSFeedback@microsoft.com*  z podmiotem = elastycznej Podgląd zadania. Po otrzymaniu potwierdzenia, że Twoja subskrypcja została włączona, [pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej](https://github.com/jaredmoo/azure-powershell/releases). Ta wersja zapoznawcza jest ograniczony, więc skontaktuj się z  *SaaSFeedback@microsoft.com*  pytania związane z lub pomocy technicznej.
+> W tym samouczku korzysta z funkcji usługi baza danych SQL Azure, które są w podglądzie ograniczone ([zadania elastycznej bazy danych](sql-database-elastic-database-client-library.md)). Jeśli chcesz zrobić w tym samouczku, podaj identyfikator subskrypcji do *SaaSFeedback@microsoft.com* z podmiotem = elastycznej Podgląd zadania. Po otrzymaniu potwierdzenia, że Twoja subskrypcja została włączona, [pobierz i zainstaluj najnowsze polecenia cmdlet zadań w wersji wstępnej](https://github.com/jaredmoo/azure-powershell/releases). Ta wersja zapoznawcza jest ograniczony, więc skontaktuj się z *SaaSFeedback@microsoft.com* pytania związane z lub pomocy technicznej.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Wprowadzenie do wzorców Zarządzanie schematu SaaS
 

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi użytkowników
 
@@ -372,13 +372,13 @@ W tej sekcji skonfigurujesz, jak dane użytkownika wypływających z produktu Wo
 | **PreferredNameData**  |  Nazwa wyświetlana |     |   Tworzenie i aktualizowanie |
 | **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
 | **SupervisoryOrganization**  | Dział  |     |  Tworzenie i aktualizowanie |
-| **ManagerReference**   | manager  |     |  Tworzenie i aktualizowanie |
+| **ManagerReference**   | Menedżer  |     |  Tworzenie i aktualizowanie |
 | **BusinessTitle**   |  tytuł     |     |  Tworzenie i aktualizowanie | 
-| **AddressLineData**    |  streetAddress  |     |   Tworzenie i aktualizowanie |
+| **AddressLineData**    |  Adres  |     |   Tworzenie i aktualizowanie |
 | **Jednostki administracyjnej**   |   l   |     | Tworzenie i aktualizowanie |
 | **CountryReferenceTwoLetter**      |   co |     |   Tworzenie i aktualizowanie |
 | **CountryReferenceTwoLetter**    |  c  |     |         Tworzenie i aktualizowanie |
-| **CountryRegionReference** |  st     |     | Tworzenie i aktualizowanie |
+| **CountryRegionReference** |  St     |     | Tworzenie i aktualizowanie |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Tworzenie i aktualizowanie |
 | **PostalCode**  |   postalCode  |     | Tworzenie i aktualizowanie |
 | **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Tworzenie i aktualizowanie |
@@ -435,7 +435,7 @@ Po zainstalowaniu agenta, uruchom poniższe polecenia programu Powershell do kon
 >
 > Przetwarzający: False
 >
-> Identifier    : WDAYdnAppDelta.c2ef8d247a61499ba8af0a29208fb853.4725aa7b-1103-41e6-8929-75a5471a5203
+> Identyfikator: WDAYdnAppDelta.c2ef8d247a61499ba8af0a29208fb853.4725aa7b-1103-41e6-8929-75a5471a5203
 
 **Polecenie #5**
 

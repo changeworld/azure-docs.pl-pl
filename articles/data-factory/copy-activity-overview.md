@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/16/2018
 ms.author: jingwang
 ms.openlocfilehash: 3b92aed83e01d223b33f269f0202355836f806c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w fabryce danych Azure
 
@@ -136,7 +136,7 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 | Dane wejściowe | Określ zestaw danych został utworzony wskazującą na źródło danych. Działanie kopiowania obsługuje tylko jeden danych wejściowych. | Yes |
 | wyjścia | Określ zestaw danych został utworzony wskazującą na obiekt sink danych. Działanie kopiowania obsługuje tylko pojedynczego wyjścia. | Yes |
 | typeProperties | Grupa właściwości, aby skonfigurować działanie Kopiuj. | Yes |
-| źródło | Określ typ źródła kopiowania i odpowiednie właściwości na temat pobierania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Kopiuj właściwości działania" w artykule łącznika na liście [obsługiwane formaty i magazyny danych](#supported-data-stores-and-formats). | Yes |
+| source | Określ typ źródła kopiowania i odpowiednie właściwości na temat pobierania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Kopiuj właściwości działania" w artykule łącznika na liście [obsługiwane formaty i magazyny danych](#supported-data-stores-and-formats). | Yes |
 | obiekt sink | Określ typ ujścia kopiowania i odpowiednie właściwości na temat zapisywania danych.<br/><br/>Dowiedz się więcej szczegółów w sekcji "Kopiuj właściwości działania" w artykule łącznika na liście [obsługiwane formaty i magazyny danych](#supported-data-stores-and-formats). | Yes |
 | translator | Określ mapowania kolumn jawne ze źródła do zbiornika. Ma zastosowanie, gdy domyślne zachowanie kopiowania nie może spełnić potrzeby.<br/><br/>Dowiedz się więcej szczegółów z [schemat i dane mapowania typu](copy-activity-schema-and-type-mapping.md). | Nie |
 | cloudDataMovementUnits | Określ powerfulness z [środowiska uruchomieniowego integracji Azure](concepts-integration-runtime.md) upoważnienie kopię danych.<br/><br/>Dowiedz się więcej szczegółów z [jednostki przepływu danych w chmurze](copy-activity-performance.md). | Nie |

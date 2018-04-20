@@ -1,11 +1,11 @@
 ---
-title: "Zarządzanie obrazu maszyny wirtualnej w portalu Azure Marketplace | Dokumentacja firmy Microsoft"
-description: "Szczegółowy przewodnik na temat zarządzania po opublikowaniu początkowej obrazu maszyny wirtualnej w portalu Azure Marketplace"
+title: Zarządzanie obrazu maszyny wirtualnej w portalu Azure Marketplace | Dokumentacja firmy Microsoft
+description: Szczegółowy przewodnik na temat zarządzania po opublikowaniu początkowej obrazu maszyny wirtualnej w portalu Azure Marketplace
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
 ms.service: marketplace
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/03/2016
 ms.author: mbaldwin;
 ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Przewodnik po produkcyjnych w przypadku ofert maszyny wirtualnej w portalu Azure Marketplace
 W tym artykule opisano sposób aktualizowania maszyny wirtualnej na żywo z tej oferty w portalu Azure Marketplace. Go prowadzi użytkownika przez proces dodawania jednego lub więcej nowe jednostki SKU do istniejącej oferty. On również prowadzi użytkownika przez proces usuwania oferty na żywo maszyny wirtualnej lub wersji z witryny Marketplace.
@@ -47,7 +47,7 @@ Aby dodać nową wersję do wymienionych wersji i ponownie opublikować ofertę,
 2. Przejdź do **maszyn wirtualnych** , a następnie wybierz ofertę.
 3. W menu po lewej stronie kliknij **obrazów maszyn wirtualnych** kartę.
 4. W **jednostki SKU** sekcji, Znajdź jednostka SKU, który chcesz zaktualizować.
-5. Dodaj nowy numer wersji jednostki SKU i kliknij przycisk  **+**  przycisku. Nowa wersja powinna mieć format X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi. Powinien mieć tylko przyrostowe zmiany wersji.
+5. Dodaj nowy numer wersji jednostki SKU i kliknij przycisk **+** przycisku. Nowa wersja powinna mieć format X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi. Powinien mieć tylko przyrostowe zmiany wersji.
 6. W **adres URL dysku VHD systemu operacyjnego** , wprowadź sygnatury dostępu współdzielonego, identyfikator URI utworzony dla wirtualnego dysku twardego systemu operacyjnego i Zapisz zmiany.
 
    > [!IMPORTANT]
