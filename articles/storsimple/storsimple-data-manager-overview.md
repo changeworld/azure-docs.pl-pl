@@ -1,12 +1,12 @@
 ---
-title: "Omówienie programu Microsoft Azure StorSimple Data | Dokumentacja firmy Microsoft"
-description: "Zawiera omówienie usługi Menedżer StorSimple danych"
+title: Omówienie programu Microsoft Azure StorSimple Data | Dokumentacja firmy Microsoft
+description: Zawiera omówienie usługi Menedżer StorSimple danych
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article

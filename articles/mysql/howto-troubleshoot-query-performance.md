@@ -1,6 +1,6 @@
 ---
-title: "Jak rozwiązywać problemy z wydajność zapytań w bazie danych systemu Azure dla programu MySQL"
-description: "W tym artykule opisano sposób użycia WYJAŚNIJ Rozwiązywanie problemów z wydajnością kwerendy w bazie danych Azure dla programu MySQL."
+title: Jak rozwiązywać problemy z wydajność zapytań w bazie danych systemu Azure dla programu MySQL
+description: W tym artykule opisano sposób użycia WYJAŚNIJ Rozwiązywanie problemów z wydajnością kwerendy w bazie danych Azure dla programu MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela

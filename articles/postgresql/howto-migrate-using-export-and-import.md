@@ -1,6 +1,6 @@
 ---
-title: "Migrowanie bazy danych za pomocą importowania i eksportowania w bazie danych Azure dla PostgreSQL"
-description: "Opisuje sposób wyodrębnić bazy danych programu PostgreSQL do pliku skryptu i zaimportuj dane do docelowej bazy danych z tego pliku."
+title: Migrowanie bazy danych za pomocą importowania i eksportowania w bazie danych Azure dla PostgreSQL
+description: Opisuje sposób wyodrębnić bazy danych programu PostgreSQL do pliku skryptu i zaimportuj dane do docelowej bazy danych z tego pliku.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

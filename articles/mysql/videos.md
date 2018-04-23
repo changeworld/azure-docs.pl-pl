@@ -1,6 +1,6 @@
 ---
 title: Azure bazy danych MySQL wideo
-description: "Ta strona zawiera listę zawartości wideo dotyczące uczenia bazy danych platformy Azure dla programu MySQL, MySQL oferty na platformie Azure zarządzanego przez firmę Microsoft."
+description: Ta strona zawiera listę zawartości wideo dotyczące uczenia bazy danych platformy Azure dla programu MySQL, MySQL oferty na platformie Azure zarządzanego przez firmę Microsoft.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

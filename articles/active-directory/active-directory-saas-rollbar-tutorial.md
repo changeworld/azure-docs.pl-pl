@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z pałąka zabezpieczającego | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i pałąka zabezpieczającego."
+title: 'Samouczek: Integracji Azure Active Directory z pałąka zabezpieczającego | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i pałąka zabezpieczającego.
 services: active-directory
 documentationCenter: na
 author: jeevansd

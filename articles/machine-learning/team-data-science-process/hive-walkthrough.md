@@ -1,8 +1,8 @@
 ---
-title: "Eksplorowanie danych klastra usługi Hadoop i tworzenia modeli w usłudze Azure Machine Learning | Dokumentacja firmy Microsoft"
-description: "Scenariusz end-to-end, wykorzystujących klastra platformy Hadoop w usłudze HDInsight do tworzenia i wdrażania modelu przy użyciu procesu nauki danych zespołu."
+title: Eksplorowanie danych klastra usługi Hadoop i tworzenia modeli w usłudze Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Scenariusz end-to-end, wykorzystujących klastra platformy Hadoop w usłudze HDInsight do tworzenia i wdrażania modelu przy użyciu procesu nauki danych zespołu.
 services: machine-learning,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun

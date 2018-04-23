@@ -1,6 +1,6 @@
 ---
-title: "Migracja minimalnym czasem przestojów PostgreSQL bazą danych Azure"
-description: "W tym artykule opisano, jak przeprowadzić migrację minimalnym czasem przestojów wyodrębniania bazy danych programu PostgreSQL w pliku zrzutu, przywracanie bazy danych programu PostgreSQL z pliku archiwum utworzone przez pg_dump w bazie danych Azure dla PostgreSQL i konfigurowania ładowania początkowego i Synchronizacja danych ciągłego źródłowej bazy danych do docelowej bazy danych przy użyciu replikacji Attunity Migrations firmy Microsoft."
+title: Migracja minimalnym czasem przestojów PostgreSQL bazą danych Azure
+description: W tym artykule opisano, jak przeprowadzić migrację minimalnym czasem przestojów wyodrębniania bazy danych programu PostgreSQL w pliku zrzutu, przywracanie bazy danych programu PostgreSQL z pliku archiwum utworzone przez pg_dump w bazie danych Azure dla PostgreSQL i konfigurowania ładowania początkowego i Synchronizacja danych ciągłego źródłowej bazy danych do docelowej bazy danych przy użyciu replikacji Attunity Migrations firmy Microsoft.
 services: postgresql
 author: HJToland3
 ms.author: jtoland

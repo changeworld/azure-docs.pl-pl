@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie tabel programu Hive i ładowanie danych z magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft"
-description: "Tworzenie tabel programu Hive i ładowania danych w obiekcie blob do tabel"
+title: Tworzenie tabel programu Hive i ładowanie danych z magazynu obiektów Blob platformy Azure | Dokumentacja firmy Microsoft
+description: Tworzenie tabel programu Hive i ładowania danych w obiekcie blob do tabel
 services: machine-learning,storage
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun

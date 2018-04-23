@@ -1,6 +1,6 @@
 ---
-title: "Pojęcia dotyczące serwera bazy danych Azure dla programu MySQL"
-description: "Ten temat zawiera zagadnienia i wskazówki dotyczące pracy z bazą danych Azure dla serwerów MySQL."
+title: Pojęcia dotyczące serwera bazy danych Azure dla programu MySQL
+description: Ten temat zawiera zagadnienia i wskazówki dotyczące pracy z bazą danych Azure dla serwerów MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela

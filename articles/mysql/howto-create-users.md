@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie użytkowników w bazie danych Azure dla serwera MySQL"
-description: "W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z bazą danych Azure dla serwera MySQL."
+title: Tworzenie użytkowników w bazie danych Azure dla serwera MySQL
+description: W tym artykule opisano sposób tworzenia nowych kont użytkowników do interakcji z bazą danych Azure dla serwera MySQL.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

@@ -1,6 +1,6 @@
 ---
-title: "Połączenie SSL w bazie danych Azure dla programu MySQL"
-description: "Informacje dotyczące konfiguracji bazy danych Azure MySQL i skojarzone aplikacje prawidłowe korzystanie z połączeń SSL"
+title: Połączenie SSL w bazie danych Azure dla programu MySQL
+description: Informacje dotyczące konfiguracji bazy danych Azure MySQL i skojarzone aplikacje prawidłowe korzystanie z połączeń SSL
 services: mysql
 author: JasonMAnderson
 ms.author: janders

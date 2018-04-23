@@ -1,12 +1,12 @@
 ---
-title: "Za pomocą pulpitu zdalnego do maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak instalowanie i konfigurowanie pulpitu zdalnego (xrdp), aby nawiązać połączenie Maszynę wirtualną systemu Linux na platformie Azure za pomocą narzędzi graficznych"
+title: Za pomocą pulpitu zdalnego do maszyny Wirtualnej systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak instalowanie i konfigurowanie pulpitu zdalnego (xrdp), aby nawiązać połączenie Maszynę wirtualną systemu Linux na platformie Azure za pomocą narzędzi graficznych
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux

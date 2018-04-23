@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -99,7 +99,7 @@ Usługi w chmurze Azure są konfigurowane przy użyciu witryny Azure Portal, int
 
 Aplikacje wdrożone na maszynie wirtualnej zapewniają własne narzędzia i interfejsy klienckie zgodnie z potrzebami, takie jak program Microsoft Management Console (MMC), konsolę zarządzania przedsiębiorstwem (na przykład Microsoft System Center lub Windows Intune) albo inne aplikacje do zarządzania (na przykład Microsoft SQL Server Management Studio). Te narzędzia zazwyczaj znajdują się w środowisku przedsiębiorstwa lub sieci klienta. Mogą być one zależne od określonych protokołów sieciowych, takich jak protokół Remote Desktop Protocol (RDP), wymagających stanowych połączeń bezpośrednich. Niektóre mogą mieć interfejsy sieci Web, które nie powinny być jawnie publikowane ani dostępne za pośrednictwem Internetu.
 
-Dostęp do infrastruktury i zarządzania usługami platformy Azure można ograniczyć, korzystając z [uwierzytelniania wieloskładnikowego](../multi-factor-authentication/multi-factor-authentication.md), [certyfikatów zarządzania X.509](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) i reguł zapory. Witryna Azure Portal i interfejs SMAPI wymagają protokołu Transport Layer Security (TLS). Usługi i aplikacje wdrażane na platformie Azure wymagają jednak stosowania zabezpieczeń odpowiednich dla aplikacji. Te mechanizmy często można zapewnić łatwiej przy użyciu standardowej konfiguracji stacji roboczej ze wzmocnionymi zabezpieczeniami.
+Dostęp do infrastruktury i zarządzania usługami platformy Azure można ograniczyć, korzystając z [uwierzytelniania wieloskładnikowego](../active-directory/authentication/multi-factor-authentication.md), [certyfikatów zarządzania X.509](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) i reguł zapory. Witryna Azure Portal i interfejs SMAPI wymagają protokołu Transport Layer Security (TLS). Usługi i aplikacje wdrażane na platformie Azure wymagają jednak stosowania zabezpieczeń odpowiednich dla aplikacji. Te mechanizmy często można zapewnić łatwiej przy użyciu standardowej konfiguracji stacji roboczej ze wzmocnionymi zabezpieczeniami.
 
 ### <a name="management-gateway"></a>Brama zarządzania
 Aby scentralizować cały dostęp administracyjny oraz uprościć monitorowanie i rejestrowanie, w sieci lokalnej można wdrożyć dedykowany serwer [bramy usług pulpitu zdalnego](https://technet.microsoft.com/library/dd560672) połączony ze środowiskiem platformy Azure.
@@ -110,7 +110,7 @@ Brama usług pulpitu zdalnego jest opartą na zasadach usługą serwera proxy RD
 * Bramę usług pulpitu zdalnego przyłącz do tej samej [domeny zarządzania](http://technet.microsoft.com/library/bb727085.aspx), do której są przyłączone stacje robocze administratorów. Jest to konieczne, gdy jest używana sieć VPN między lokacjami z zabezpieczeniami IPsec lub usługa ExpressRoute w domenie z jednokierunkową relacją zaufania do usługi Azure AD, albo w przypadku federacji poświadczeń między lokalnym wystąpieniem usług AD DS a usługą Azure AD.
 * Skonfiguruj [zasady autoryzacji połączeń klientów](http://technet.microsoft.com/library/cc753324.aspx), aby umożliwić bramie usług pulpitu zdalnego sprawdzanie, czy maszyna kliencka ma prawidłową nazwę (jest przyłączona do domeny) i jest uprawniona do dostępu do witryny Azure Portal.
 * Aby zapewnić lepszą ochronę ruchu związanego z zarządzaniem przed podsłuchem i kradzieżą tokenów, używaj zabezpieczeń IPsec dla [Sieci VPN Azure](https://azure.microsoft.com/documentation/services/vpn-gateway/) albo rozważ możliwość utworzenia izolowanego łącza internetowego za pośrednictwem usługi [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
-* Zapewnij uwierzytelnianie wieloskładnikowe (za pomocą usługi [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)) lub uwierzytelnianie przy użyciu kart inteligentnych dla administratorów logujących się przy użyciu bramy usług pulpitu zdalnego.
+* Zapewnij uwierzytelnianie wieloskładnikowe (za pomocą usługi [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)) lub uwierzytelnianie przy użyciu kart inteligentnych dla administratorów logujących się przy użyciu bramy usług pulpitu zdalnego.
 * Skonfiguruj [ograniczenia źródłowych adresów IP](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) lub [sieciowe grupy zabezpieczeń](../virtual-network/virtual-networks-nsg.md) na platformie Azure, aby zminimalizować liczbę punktów końcowych uprawnionych do zarządzania.
 
 ## <a name="security-guidelines"></a>Zalecenia dotyczące zabezpieczeń

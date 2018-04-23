@@ -1,6 +1,6 @@
 ---
-title: "Omówienie tworzenia aplikacji bazy danych dla bazy danych Azure dla programu MySQL"
-description: "Wprowadza zagadnienia dotyczące projektowania, które dewelopera należy stosować podczas pisania kodu aplikacji do łączenia z bazą danych Azure dla programu MySQL"
+title: Omówienie tworzenia aplikacji bazy danych dla bazy danych Azure dla programu MySQL
+description: Wprowadza zagadnienia dotyczące projektowania, które dewelopera należy stosować podczas pisania kodu aplikacji do łączenia z bazą danych Azure dla programu MySQL
 services: mysql
 author: ajlam
 ms.author: andrela

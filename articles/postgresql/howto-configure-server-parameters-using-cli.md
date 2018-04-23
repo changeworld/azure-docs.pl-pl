@@ -1,6 +1,6 @@
 ---
-title: "Skonfiguruj parametry usługi w bazie danych Azure dla PostgreSQL"
-description: "W tym artykule opisano, jak skonfigurować parametry usługi w bazie danych Azure dla PostgreSQL przy użyciu wiersza polecenia wiersza polecenia platformy Azure."
+title: Skonfiguruj parametry usługi w bazie danych Azure dla PostgreSQL
+description: W tym artykule opisano, jak skonfigurować parametry usługi w bazie danych Azure dla PostgreSQL przy użyciu wiersza polecenia wiersza polecenia platformy Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

@@ -1,12 +1,12 @@
 ---
-title: "Ochrona za pomocą usługi Azure Site Recovery wdrożenia aplikacji wielowarstwowych SAP NetWeaver | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak chronić SAP NetWeaver wdrożenia aplikacji za pomocą usługi Azure Site Recovery."
+title: Ochrona za pomocą usługi Azure Site Recovery wdrożenia aplikacji wielowarstwowych SAP NetWeaver | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak chronić SAP NetWeaver wdrożenia aplikacji za pomocą usługi Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na

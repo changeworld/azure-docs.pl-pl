@@ -1,7 +1,7 @@
 ---
-title: "Zaawansowane monitorowanie zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft"
-description: "W tym samouczku przedstawiono sposób monitorowania urządzeń ze zdalnego pulpitu nawigacyjnego monitorowania rozwiązania."
-services: 
+title: Zaawansowane monitorowanie zdalnego rozwiązanie monitorowania - Azure | Dokumentacja firmy Microsoft
+description: W tym samouczku przedstawiono sposób monitorowania urządzeń ze zdalnego pulpitu nawigacyjnego monitorowania rozwiązania.
+services: ''
 suite: iot-suite
 author: dominicbetts
 manager: timlt

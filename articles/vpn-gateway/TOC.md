@@ -3,7 +3,6 @@
 # Omówienie
 ## [VPN Gateway — informacje](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway — często zadawane pytania](vpn-gateway-vpn-faq.md)
-## [Limity usług i subskrypcji](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # Rozpoczęcie pracy
 ## Tworzenie bramy sieci VPN opartej na trasie
@@ -122,6 +121,7 @@
 ## [Harmonogram działania dla platformy Azure](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
+## [Limity usług i subskrypcji](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## [Cennik](https://azure.microsoft.com/pricing/details/vpn-gateway)
 ## [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)
 ## [Umowa SLA](https://azure.microsoft.com/support/legal/sla)

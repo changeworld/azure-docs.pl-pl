@@ -1,11 +1,11 @@
 ---
-title: "Za pomocą usługi Zarządzanie interfejsami API do generowania żądań HTTP"
-description: "Dowiedz się, jak użyć zasad żądań i odpowiedzi w usłudze API Management do wywołania usług zewnętrznych z interfejsu API"
+title: Za pomocą usługi Zarządzanie interfejsami API do generowania żądań HTTP
+description: Dowiedz się, jak użyć zasad żądań i odpowiedzi w usłudze API Management do wywołania usług zewnętrznych z interfejsu API
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
 ms.service: api-management
 ms.devlang: dotnet

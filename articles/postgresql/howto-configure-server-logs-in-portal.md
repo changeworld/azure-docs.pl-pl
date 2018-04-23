@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie i uzyskiwać dostęp do dzienników serwera dla PostgreSQL w portalu Azure"
-description: "W tym artykule opisano sposób konfigurowania i uzyskiwać dostęp do dzienników serwera w bazie danych Azure dla PostgreSQL z portalu Azure."
+title: Konfigurowanie i uzyskiwać dostęp do dzienników serwera dla PostgreSQL w portalu Azure
+description: W tym artykule opisano sposób konfigurowania i uzyskiwać dostęp do dzienników serwera w bazie danych Azure dla PostgreSQL z portalu Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

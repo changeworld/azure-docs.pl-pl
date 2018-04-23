@@ -29,6 +29,8 @@
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
+    - name: Szablony usługi Resource Manager
+      href: backup-rm-template-samples.md
 - name: Pojęcia
   items:
     - name: Często zadawane pytania

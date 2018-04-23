@@ -1,6 +1,6 @@
 ---
-title: "Istniejąca usługa aplikacji Azure połączyć się z bazą danych Azure dla programu MySQL"
-description: "Instrukcje dotyczące sposobu prawidłowo istniejącej usługi aplikacji Azure połączyć się z bazą danych Azure dla programu MySQL"
+title: Istniejąca usługa aplikacji Azure połączyć się z bazą danych Azure dla programu MySQL
+description: Instrukcje dotyczące sposobu prawidłowo istniejącej usługi aplikacji Azure połączyć się z bazą danych Azure dla programu MySQL
 services: mysql
 author: ajlam
 ms.author: andrela

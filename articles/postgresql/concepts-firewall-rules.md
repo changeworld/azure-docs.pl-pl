@@ -1,6 +1,6 @@
 ---
-title: "Bazy danych platformy Azure dla reguł zapory serwera PostgreSQL"
-description: "W tym artykule opisano reguły zapory bazy danych Azure, aby serwer PostgreSQL."
+title: Bazy danych platformy Azure dla reguł zapory serwera PostgreSQL
+description: W tym artykule opisano reguły zapory bazy danych Azure, aby serwer PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

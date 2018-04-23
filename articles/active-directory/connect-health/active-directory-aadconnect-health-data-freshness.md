@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Health — dane usługi kondycji nie jest do alertu Data | Dokumentacja firmy Microsoft"
-description: "W tym dokumencie opisano przyczyny alertu \"dane usługi kondycji nie jest aktualny\" i jak rozwiązać problemy."
+title: Azure AD Connect Health — dane usługi kondycji nie jest do alertu Data | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano przyczyny alertu "dane usługi kondycji nie jest aktualny" i jak rozwiązać problemy.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhiweiw
 manager: maheshu
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na

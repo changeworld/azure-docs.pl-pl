@@ -1,6 +1,6 @@
 ---
-title: "Biblioteki połączeń dla bazy danych Azure dla programu MySQL"
-description: "W tym artykule wymieniono każdej biblioteki lub sterownik programów klienckich można używany do łączenia z bazą danych Azure dla programu MySQL."
+title: Biblioteki połączeń dla bazy danych Azure dla programu MySQL
+description: W tym artykule wymieniono każdej biblioteki lub sterownik programów klienckich można używany do łączenia z bazą danych Azure dla programu MySQL.
 services: mysql
 author: mswutao
 ms.author: wutao
