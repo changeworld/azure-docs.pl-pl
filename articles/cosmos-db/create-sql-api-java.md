@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 99b400d17164881f75cb8313c939d713610c221e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5be05ebd201796707934eac665793dd2c1dc8f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie bazy danych dokumentów przy użyciu języka Java i witryny Azure Portal
 
@@ -54,43 +54,11 @@ Przed utworzeniem bazy danych dokumentów należy utworzyć konto interfejsu API
 <a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>Dodawanie danych przykładowych
 
-Teraz można dodać dane do nowej kolekcji za pomocą Eksploratora danych.
-
-1. Rozwiń kolekcję **Elementy**, kliknij pozycję **Dokumenty** > **Nowy dokument**.
-
-   ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/create-sql-api-java/azure-cosmosdb-data-explorer-new-document.png)
-  
-2. Teraz dodaj dokument do kolekcji o następującej strukturze i kliknij przycisk **Zapisz**. Użyj przycisku **Kopiuj** w polu z kodem, aby skopiować dane JSON do schowka.
-
-     ```json
-     {
-         "id": "1",
-         "category": "personal",
-         "name": "groceries",
-         "description": "Pick up apples and strawberries.",
-         "isComplete": false
-     }
-     ```
-
-    ![Kopiowanie danych json i klikanie pozycji Zapisz w Eksploratorze danych w witrynie Azure Portal](./media/create-sql-api-java/azure-cosmosdb-data-explorer-save-document.png)
-
-3.  Utwórz i zapisz jeszcze jeden dokument, w którym wartość `id` została zmieniona na 2, i zmień inne właściwości wedle uznania. Nowe dokumenty mogą mieć dowolną strukturę, ponieważ usługa Azure Cosmos DB nie wymusza żadnego schematu danych.
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
 
 ## <a name="query-your-data"></a>Wysyłanie zapytań dotyczących danych
 
-Teraz można użyć zapytań w Eksploratorze danych w celu pobrania i filtrowania danych.
-
-1. Domyślnie zapytanie jest ustawione na `SELECT * FROM c`. To domyślne zapytanie pobiera i wyświetla wszystkie dokumenty w kolekcji. 
-
-    ![Domyślne zapytanie w Eksploratorze danych to „SELECT * FROM c”](./media/create-sql-api-java/azure-cosmosdb-data-explorer-query.png)
-
-2. Pozostań na karcie **Dokumenty**, zmień zapytanie, klikając przycisk **Edytuj filtr**, dodając wartość `ORDER BY c._ts DESC` do pola predykatu zapytania, a następnie klikając pozycję **Zastosuj filtr**.
-
-    ![Zmień zapytanie domyślne przez dodanie ORDER BY c._ts DESC i kliknij pozycję Zastosuj filtr](./media/create-sql-api-java/azure-cosmosdb-data-explorer-edit-query.png)
-
-To zmodyfikowane zapytanie wyświetla dokumenty w kolejności malejącej według ich sygnatury czasowej, więc drugi dokument jest wyświetlany na początku listy. Jeśli znasz składnię SQL, w tym polu możesz wprowadzić dowolne obsługiwane [zapytanie SQL](sql-api-sql-query.md). 
-
-Na tym kończy się praca w Eksploratorze danych. Przed przejściem do pracy z kodem należy zapamiętać, że Eksplorator danych umożliwia również tworzenie procedur składowanych, funkcji definiowanych przez użytkownika (UDF) i wyzwalaczy w celu wykonania logiki biznesowej po stronie serwera oraz skalowania przepływności. Eksplorator danych udostępnia wszystkie wbudowane programowe procedury dostępu do danych w interfejsach API, ale umożliwia łatwy dostęp do danych za pośrednictwem witryny Azure Portal.
+[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 

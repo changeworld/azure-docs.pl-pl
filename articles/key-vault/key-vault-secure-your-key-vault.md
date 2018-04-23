@@ -1,8 +1,8 @@
 ---
-title: "Zabezpieczanie własnego magazynu kluczy | Microsoft Docs"
-description: "Zarządzaj uprawnieniami dostępu do magazynu kluczy na potrzeby zarządzania magazynami, kluczami i wpisami tajnymi. Model uwierzytelniania i autoryzacji dla magazynu kluczy i sposób zabezpieczania własnego magazynu kluczy"
+title: Zabezpieczanie własnego magazynu kluczy | Microsoft Docs
+description: Zarządzaj uprawnieniami dostępu do magazynu kluczy na potrzeby zarządzania magazynami, kluczami i wpisami tajnymi. Model uwierzytelniania i autoryzacji dla magazynu kluczy i sposób zabezpieczania własnego magazynu kluczy
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
 Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia, hasła) dla aplikacji w chmurze. Ponieważ te dane są poufne i mają krytyczne znaczenie dla prowadzonej działalności, wskazane jest zabezpieczenie dostępu do własnego magazynu kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mogli uzyskiwać do niego dostęp. Ten artykuł zawiera omówienie modelu dostępu do magazynu kluczy, wyjaśnia uwierzytelnianie i autoryzację oraz na przykładzie opisuje sposób zabezpieczania dostępu do magazynu kluczy dla aplikacji w chmurze.
@@ -76,7 +76,7 @@ Każda subskrypcja platformy Azure zawiera usługę Azure Active Directory. Uży
 
 W modelu usługi Azure Resource Manager można utworzyć magazyn kluczy w grupie zasobów i kontrolować dostęp do płaszczyzny zarządzania tego magazynu kluczy przy użyciu usługi Azure Active Directory. Na przykład można przyznać użytkownikom lub grupie możliwość zarządzania magazynami kluczy w określonej grupie zasobów.
 
-Przypisując odpowiednie role RBAC, można udzielić użytkownikom, grupom i aplikacjom dostępu w konkretnym zakresie. Aby na przykład udzielić użytkownikowi dostępu do zarządzania magazynami kluczy, można przypisać wstępnie zdefiniowaną rolę „Współautor magazynu kluczy” do tego użytkownika w określonym zakresie. Zakres w tym przypadku będzie subskrypcją, grupą zasobów lub określonym magazynem kluczy. Rola przypisana na poziomie subskrypcji ma zastosowanie do wszystkich grup zasobów i zasobów w tej subskrypcji. Rola przypisana na poziomie grupy zasobów ma zastosowanie do wszystkich zasobów w tej grupie zasobów. Rola przypisana dla określonego zasobu dotyczy tylko tego zasobu. Istnieje kilka wstępnie zdefiniowanych ról (zobacz [RBAC: wbudowane role](../active-directory/role-based-access-built-in-roles.md)), a jeśli wstępnie zdefiniowane role nie odpowiadają potrzebom, można także zdefiniować własne role.
+Przypisując odpowiednie role RBAC, można udzielić użytkownikom, grupom i aplikacjom dostępu w konkretnym zakresie. Aby na przykład udzielić użytkownikowi dostępu do zarządzania magazynami kluczy, można przypisać wstępnie zdefiniowaną rolę „Współautor magazynu kluczy” do tego użytkownika w określonym zakresie. Zakres w tym przypadku będzie subskrypcją, grupą zasobów lub określonym magazynem kluczy. Rola przypisana na poziomie subskrypcji ma zastosowanie do wszystkich grup zasobów i zasobów w tej subskrypcji. Rola przypisana na poziomie grupy zasobów ma zastosowanie do wszystkich zasobów w tej grupie zasobów. Rola przypisana dla określonego zasobu dotyczy tylko tego zasobu. Istnieje kilka wstępnie zdefiniowanych ról (zobacz [RBAC: wbudowane role](../role-based-access-control/built-in-roles.md)), a jeśli wstępnie zdefiniowane role nie odpowiadają potrzebom, można także zdefiniować własne role.
 
 > [!IMPORTANT]
 > Należy pamiętać, że jeśli użytkownik ma uprawnienia współautora (RBAC) do płaszczyzny zarządzania magazynu kluczy, może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu magazynu kluczy, które kontrolują dostęp do płaszczyzny danych. Dlatego zalecane jest ścisłe kontrolowanie, kto ma dostęp z uprawnieniami współautora do magazynów kluczy, aby tylko upoważnione osoby mogły uzyskiwać dostęp do magazynów kluczy, kluczy, wpisów tajnych i certyfikatów oraz zarządzać nimi.
@@ -134,8 +134,8 @@ Teraz zobaczmy, jakich uprawnień dostępu do magazynu kluczy wymagają poszczeg
 | Rola użytkownika | Uprawnienia do płaszczyzny zarządzania | Uprawnienia do płaszczyzny danych |
 | --- | --- | --- |
 | Zespół ds. zabezpieczeń |Współautor magazynu kluczy |Klucze: wykonywanie kopii zapasowej, tworzenie, usuwanie, pobieranie, importowanie, wyświetlanie, przywracanie <br> Wpisy tajne: wszystkie |
-| Deweloperzy/operatorzy |Uprawnienia do wdrażania magazynu kluczy, tak aby wdrażane przez nich maszyny wirtualne mogły pobierać wpisy tajne z magazynu kluczy |None |
-| Audytorzy |None |Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie |
+| Deweloperzy/operatorzy |Uprawnienia do wdrażania magazynu kluczy, tak aby wdrażane przez nich maszyny wirtualne mogły pobierać wpisy tajne z magazynu kluczy |Brak |
+| Audytorzy |Brak |Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie |
 | Aplikacja |None |Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
 
 > [!NOTE]
@@ -204,19 +204,19 @@ W tym przykładzie przedstawiono prosty scenariusz. Rzeczywiste scenariusze mog�
 > 
 
 ## <a name="resources"></a>Zasoby
-* [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../active-directory/role-based-access-control-configure.md)
+* [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
   
   W tym artykule objaśniono funkcję kontroli dostępu opartej na rolach w usłudze Azure Active Directory i sposób jej działania.
-* [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../active-directory/role-based-access-built-in-roles.md)
+* [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../role-based-access-control/built-in-roles.md)
   
   W tym artykule omówiono szczegółowo wszystkie wbudowane role dostępne w RBAC.
 * [Omówienie wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md)
   
   W tym artykule opisano model wdrażania przy użyciu usługi Azure Resource Manager i klasyczny model wdrażania oraz wyjaśniono zalety korzystania z usługi Resource Manager i grup zasobów.
-* [Zarządzanie kontrolą dostępu opartą na rolach za pomocą programu Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
+* [Zarządzanie kontrolą dostępu opartą na rolach za pomocą programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
   
   W tym artykule wyjaśniono, jak zarządzać kontrolą dostępu opartą na rolach przy użyciu programu Azure PowerShell
-* [Zarządzanie kontrolą dostępu opartą na rolach za pomocą interfejsu API REST](../active-directory/role-based-access-control-manage-access-rest.md)
+* [Zarządzanie kontrolą dostępu opartą na rolach za pomocą interfejsu API REST](../role-based-access-control/role-assignments-rest.md)
   
   W tym artykule przedstawiono sposób zarządzania kontrolą dostępu opartą na rolach (RBAC) za pomocą interfejsu API REST.
 * [Kontrola dostępu oparta na rolach dla platformy Microsoft Azure — konferencja Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)

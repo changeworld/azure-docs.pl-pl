@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 2b77167992704bd342d67dc03b66af1e55955532
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 761013ad82fb8fa7d84e7929341d2e7d9e2d724c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Zarządzanie tożsamościami i dostępem kontrolować najlepszych rozwiązań dotyczących zabezpieczeń
 Rozważ wiele tożsamości jako nową warstwę granic zabezpieczeń przejęcia tej roli z tradycyjnego perspektywy skoncentrowane sieci. Ten rozwój pivot głównej dla uwagi bezpieczeństwa i inwestycje pochodzą z faktu, że stały się coraz bardziej porowaty strefy sieci i obrony ten obwód nie może być tak skuteczne, jak ich raz zostały przed rozbicie [BYOD ](http://aka.ms/byodcg) urządzenia i aplikacje w chmurze.
@@ -88,7 +88,7 @@ Przez włączenie usługi Azure MFA dla użytkowników, dodajesz drugą warstwę
 
 Na przykład: Wymuszanie usługi Azure MFA dla użytkowników i skonfigurować go do korzystania z połączenia telefonicznego lub wiadomości tekstowej jako weryfikacji. Jeśli poświadczenia użytkownika są uszkodzone, osoba atakująca nie będzie mógł dostęp do dowolnych zasobów, ponieważ nie mają dostępu do telefon użytkownika. Organizacje, które nie należy dodawać dodatkowych warstw ochrony tożsamości są bardziej narażony na atak kradzieży poświadczeń, co może prowadzić do naruszenia danych.
 
-Jeden alternatywą dla organizacji, które mają być zachowane cały proces uwierzytelniania sterowania lokalnej jest użycie [serwera usługi Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), nazywany również lokalne usługi MFA. Za pomocą tej metody, nadal będzie mógł wymusić uwierzytelnianie wieloskładnikowe, przy zachowaniu MFA serwera lokalnego.
+Jeden alternatywą dla organizacji, które mają być zachowane cały proces uwierzytelniania sterowania lokalnej jest użycie [serwera usługi Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfaserver-deploy.md), nazywany również lokalne usługi MFA. Za pomocą tej metody, nadal będzie mógł wymusić uwierzytelnianie wieloskładnikowe, przy zachowaniu MFA serwera lokalnego.
 
 Aby uzyskać więcej informacji dotyczących usługi Azure MFA, zobacz artykuł [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](../active-directory/authentication/howto-mfa-getstarted.md).
 

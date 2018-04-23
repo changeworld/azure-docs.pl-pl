@@ -14,8 +14,12 @@
     - name: Konfigurowanie zasad technologii
       href: apache-domain-joined-run-hive.md
       maintainContext: true
-    - name: Zarządzanie klastrami przyłączonymi do domeny
-      href: apache-domain-joined-manage.md
+    - name: Łączenie z klastrem przyłączonym do domeny za pomocą programu VSCode
+      href: ../hdinsight-for-vscode.md
+    - name: Łączenie z klastrem przyłączonym do domeny za pomocą środowiska IntelliJ
+      href: ../spark/apache-spark-intellij-tool-plugin.md
+    - name: Łączenie z klastrem przyłączonym do domeny za pomocą programu Eclipse
+      href: ../spark/apache-spark-eclipse-tool-plugin.md
 - name: Zabezpieczanie danych
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true

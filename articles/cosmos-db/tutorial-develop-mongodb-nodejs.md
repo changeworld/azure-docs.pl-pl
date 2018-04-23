@@ -1,25 +1,25 @@
 ---
-title: "Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure | Microsoft Doc"
-description: "Dowiedz się, jak utworzyć aplikację bazy danych MongoDB w usłudze Angular i języku Node dla usługi Azure Cosmos DB przy użyciu tych samych interfejsów API, co używane w usłudze MongoDB, oglądając tę serię samouczków opartą na filmach wideo."
+title: Samouczek bazy danych MongoDB, usługi Angular i języka Node dla platformy Azure | Microsoft Doc
+description: Dowiedz się, jak utworzyć aplikację bazy danych MongoDB w usłudze Angular i języku Node dla usługi Azure Cosmos DB przy użyciu tych samych interfejsów API, co używane w usłudze MongoDB, oglądając tę serię samouczków opartą na filmach wideo.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 37bc34c470190f3acb1f0f2e9bed5e0a4918405b
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: c7eaa7a5240f58cb3858de037bb74a1191182c13
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>Tworzenie aplikacji bazy danych MongoDB przy użyciu usług Angular i Azure Cosmos DB 
 

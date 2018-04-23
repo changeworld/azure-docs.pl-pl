@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 3b935d3a3c37b63386dfb2cbd25ceba59d91a998
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f57a4b87c239126d248cba5106e005103d8372b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="network-security"></a>Bezpieczeństwo sieci
 
@@ -35,7 +35,7 @@ Sposób stosowania grup zabezpieczeń sieci w przypadku skojarzenia grup zabezpi
 - **Ruch przychodzący**: grupa zabezpieczeń sieci skojarzona z podsiecią, w której znajduje się interfejs sieciowy, jest stosowana jako pierwsza. Cały ruch dozwolony przez grupę zabezpieczeń sieci skojarzoną z podsiecią jest następnie oceniany przez grupę zabezpieczeń sieci skojarzoną z interfejsem sieciowym. Na przykład możesz wymagać dostępu ruchu przychodzącego do maszyny wirtualnej za pośrednictwem portu 80 z Internetu. Jeśli grupa zabezpieczeń sieci została skojarzona z interfejsem sieciowym i podsiecią, w której znajduje się interfejs sieciowy, grupa zabezpieczeń sieci skojarzona z podsiecią i interfejsem sieciowym musi zezwalać na port 80. Jeśli port 80 jest dozwolony tylko przez grupę zabezpieczeń sieci skojarzoną z podsiecią lub interfejsem sieciowym, w której znajduje się podsieć, komunikacja zakończy się niepowodzeniem z powodu domyślnych reguł zabezpieczeń. Zobacz [domyślne reguły zabezpieczeń](#default-security-rules), aby uzyskać szczegółowe informacje. Jeśli grupa zabezpieczeń sieci została zastosowana tylko do podsieci lub tylko do interfejsu sieciowego i zawiera regułę, która zezwala na ruch przychodzący na porcie port 80, komunikacja zakończy się pomyślnie. 
 - **Ruch wychodzący**: grupa zabezpieczeń sieci skojarzona z interfejsem sieciowym jest stosowana jako pierwsza. Cały ruch dozwolony przez grupę zabezpieczeń sieci skojarzoną z interfejsem sieciowym jest następnie oceniany przez grupę zabezpieczeń sieci skojarzoną z podsiecią.
 
-Możesz czasami nie wiedzieć, że grupy zabezpieczeń sieci są stosowane do interfejsu sieciowego i podsieci. Reguły agregowane stosowane do interfejsu sieciowego można łatwo wyświetlić, wyświetlając [obowiązujące reguły zabezpieczeń](virtual-network-nsg-troubleshoot-portal.md) dla interfejsu sieciowego. Możesz również skorzystać z możliwości [weryfikowania przepływu protokołu IP](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w celu ustalenia, czy komunikacja z lub do interfejsu sieciowego jest dozwolona. Narzędzie informuje, czy komunikacja jest dozwolona, oraz która reguła zabezpieczeń sieci zezwala lub nie zezwala na ruch.
+Możesz czasami nie wiedzieć, że grupy zabezpieczeń sieci są stosowane do interfejsu sieciowego i podsieci. Reguły agregowane stosowane do interfejsu sieciowego można łatwo wyświetlić, wyświetlając [obowiązujące reguły zabezpieczeń](virtual-network-network-interface.md#view-effective-security-rules) dla interfejsu sieciowego. Możesz również skorzystać z możliwości [weryfikowania przepływu protokołu IP](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) w celu ustalenia, czy komunikacja z lub do interfejsu sieciowego jest dozwolona. Narzędzie informuje, czy komunikacja jest dozwolona, oraz która reguła zabezpieczeń sieci zezwala lub nie zezwala na ruch.
  
 > [!NOTE]
 > Grupy zabezpieczeń sieci są skojarzone z podsieciami lub maszynami wirtualnymi i usługami w chmurze wdrożonymi w klasycznym modelu wdrażania, a nie z interfejsami sieciowymi w modelu wdrażania przy użyciu usługi Resource Manager. Aby dowiedzieć się więcej na temat modeli wdrażania platformy Azure, zapoznaj się z artykułem [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Informacje na temat modeli wdrażania platformy Azure).

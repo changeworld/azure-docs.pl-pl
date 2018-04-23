@@ -11,6 +11,12 @@
 ### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
 ### [Interfejs wiersza polecenia platformy Azure](create-routebased-vpn-gateway-cli.md)
 
+# Przykłady
+## [Tworzenie bramy VPN](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md)
+## [Punkt-lokacja — uwierzytelnianie za pomocą protokołu RADIUS](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md)
+## [Punkt-lokacja — uwierzytelnianie za pomocą certyfikatu](./scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md)
+## [Lokacja-lokacja](./scripts/vpn-gateway-sample-site-to-site-powershell.md)
+
 # Pojęcia
 ## [Planowanie i projektowanie dla usługi VPN Gateway](vpn-gateway-plan-design.md)
 ## [Informacje na temat ustawień usługi VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md)
@@ -19,8 +25,9 @@
 ## [Informacje o protokole BGP i usłudze VPN Gateway](vpn-gateway-bgp-overview.md)
 ## [Informacje o połączeniach z elementami o wysokiej dostępności](vpn-gateway-highlyavailable.md)
 ## [Informacje o połączeniach typu punkt-lokacja](point-to-site-about.md)
+## [Informacje o routingu typu punkt-lokacja](vpn-gateway-about-point-to-site-routing.md)
 
-# Instrukcje
+# Przewodniki z instrukcjami
 ## Konfigurowanie połączeń typu lokacja-lokacja
 ### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)

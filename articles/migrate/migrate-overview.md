@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 03/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8f6c2c54dd20b663eb43c716a2bd82310cf0256a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 283a505f9e16b081e0eb2e51d935c9b12e8721cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -78,7 +78,7 @@ Poniższa tabela zawiera podsumowanie portów wymaganych do komunikacji usługi 
 |-------------------|------------------------|---------------|---------|
 |Moduł zbierający          |Usługa Azure Migrate   |TCP 443        |Moduł zbierający łączy się z usługą za pośrednictwem protokołu SSL przez port 443|
 |Moduł zbierający          |Program vCenter Server          |Domyślnie: 9443   | Domyślnie moduł zbierający łączy się z programem vCenter Server przez port 9443. Jeśli serwer nasłuchuje na innym porcie, powinien on zostać skonfigurowany jako port wychodzący na maszynie wirtualnej modułu zbierającego. |
-|Lokalna maszyna wirtualna     | Obszar roboczy pakietu Operations Management Suite (OMS)          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |Agent MMA łączy się z usługą Log Analytics za pośrednictwem portu TCP 443. Ten port jest potrzebny tylko wtedy, gdy używasz funkcji wizualizacji zależności i instalujesz agenta MMA (Microsoft Monitoring Agent). |
+|Lokalna maszyna wirtualna     | Obszar roboczy usługi Log Analytics          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |Agent MMA łączy się z usługą Log Analytics za pośrednictwem portu TCP 443. Ten port jest potrzebny tylko wtedy, gdy używasz funkcji wizualizacji zależności i instalujesz agenta MMA (Microsoft Monitoring Agent). |
 
 
   

@@ -12,10 +12,10 @@ ms.date: 03/14/2018
 ms.author: bonova
 manager: craigg
 ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Tworzenie wystąpienia zarządzanego usługi Azure SQL Database w witrynie Azure Portal
 
@@ -205,7 +205,7 @@ Poniższe kroki pokazują sposób utworzenia drugiej podsieci w sieci wirtualnej
    |**Zakres adresów (blok CIDR)**|Dowolny prawidłowy zakres adresów w sieci wirtualnej (użyj wartości domyślnej)||
    |**Sieciowa grupa zabezpieczeń**|None||
    |**Tabela tras**|None||
-   |**Punkty końcowe usługi**|None||
+   |**Punkty końcowe usługi**|Brak||
 
    ![szczegóły podsieci maszyny wirtualnej](./media/sql-database-managed-instance-tutorial/vm-subnet-details.png)
 

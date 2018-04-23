@@ -47,6 +47,7 @@
 ### [Azure Portal](resource-group-portal.md)
 ### [Organizowanie zasobów przy użyciu tagów](resource-group-using-tags.md)
 ### [Przenoszenie zasobów do nowej grupy lub subskrypcji](resource-group-move-resources.md)
+### [Programowe tworzenie subskrypcji EA](programmatically-create-subscription.md)
 ### [Tworzenie grupy zarządzania](management-groups-create.md)
 ### [Zarządzanie grupami zarządzania](management-groups-manage.md)
 ### [Przykłady nadzoru](resource-manager-subscription-examples.md)

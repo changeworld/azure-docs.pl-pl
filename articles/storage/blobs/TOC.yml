@@ -170,6 +170,8 @@
               href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Włączanie i wyświetlanie metryk
               href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Migrowanie do nowych metryk magazynowania
+              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: Instrukcje
   items:
     - name: Tworzenie konta magazynu

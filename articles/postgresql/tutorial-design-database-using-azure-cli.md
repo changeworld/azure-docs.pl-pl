@@ -1,5 +1,21 @@
---Tytuł: "samouczek: Projektowanie bazy danych Azure do PostgreSQL przy użyciu wiersza polecenia platformy Azure" Opis: w tym samouczku przedstawiono sposób tworzenia, konfigurowania i zapytania pierwszą bazę danych Azure dla serwera PostgreSQL przy użyciu wiersza polecenia platformy Azure.
-services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
+---
+title: 'Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure'
+description: W tym samouczku przedstawiono, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć i skonfigurować pierwszy serwer usługi Azure Database for PostgreSQL oraz wykonywać względem niego zapytania.
+services: postgresql
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
+editor: jasonwhowell
+ms.service: postgresql
+ms.custom: mvc
+ms.devlang: azure-cli
+ms.topic: tutorial
+ms.date: 04/01/2018
+ms.openlocfilehash: acba480631ba69a81da3029aadfb9cb51797549a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Samouczek: projektowanie bazy danych usługi Azure Database for PostgreSQL za pomocą interfejsu wiersza polecenia platformy Azure 
 W tym samouczku dowiesz się, jak wykonywać następujące czynności, używając interfejsu wiersza polecenia platformy Azure:
@@ -27,31 +43,6 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myresourcegroup` w lokalizacji `westus`.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-
-## <a name="add-the-extension"></a>Dodawanie rozszerzenia
-Dodaj zaktualizowane rozszerzenie zarządzania usługi Azure Database for PostgreSQL za pomocą następującego polecenia:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Sprawdź, czy masz zainstalowaną poprawną wersję rozszerzenia. 
-```azurecli-interactive
-az extension list
-```
-
-Zwracany kod JSON powinien zawierać następujące informacje: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Jeśli wersja 0.0.5 nie zostanie zwrócone, uruchom następujące polecenie, aby zaktualizować rozszerzenia: 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Tworzenie serwera usługi Azure Database for PostgreSQL
@@ -209,7 +200,7 @@ Przywrócenie serwera do określonego punktu w czasie powoduje utworzenie nowego
 Polecenie jest synchroniczne i zostanie zakończone po przywróceniu serwera. Po zakończeniu przywracania zlokalizuj nowy serwer, który został utworzony. Sprawdź, czy dane zostały przywrócone zgodnie z oczekiwaniami.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku omówiono sposób użycia interfejsu wiersza polecenia platformy Azure i innych narzędzi w celu wykonania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for PostgreSQL

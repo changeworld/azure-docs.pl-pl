@@ -8,6 +8,7 @@
 ## [Często zadawane pytania na temat systemu DNS](dns-faq.md)
 ## [Przy użyciu prywatnych stref DNS](private-dns-overview.md)
 ## [Scenariusze prywatnej strefy DNS](private-dns-scenarios.md)
+## [Alerty i metryki DNS](dns-alerts-metrics.md)
 
 
 # Rozpoczęcie pracy

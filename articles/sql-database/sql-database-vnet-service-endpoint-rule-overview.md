@@ -7,14 +7,14 @@ author: MightyPen
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/19/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d6b8ddaa0eaf560352bc0aa0127b33f32ee4574a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Użyj punktów końcowych usługi sieci wirtualnej i reguł bazy danych SQL Azure
 
@@ -140,7 +140,7 @@ Bazy danych SQL Azure funkcja reguł sieć wirtualna ma następujące ograniczen
 W przypadku używania punktów końcowych usługi dla bazy danych SQL Azure, należy przejrzeć następujące zagadnienia:
 
 - **Wychodzące do publicznych adresów IP usługi Azure SQL bazy danych jest wymagana**: grup zabezpieczeń sieci (NSG) muszą być otwarte do adresów IP bazy danych SQL Azure zezwalająca na łączności. Można to zrobić za pomocą NSG [tagi usługi](../virtual-network/security-overview.md#service-tags) bazy danych SQL Azure.
-- **Bazy danych platformy Azure, PostgreSQL i MySQL nie są obsługiwane**: punktów końcowych usługi nie są obsługiwane w bazie danych Azure PostgreSQL lub MySQL. Włączenie punktów końcowych usługi do bazy danych SQL spowoduje przerwanie połączenia do tych usług. Mamy środki zaradcze dla tego; Skontaktuj się z *dmalik@microsoft.com*.
+- **Bazy danych platformy Azure, PostgreSQL i MySQL nie są obsługiwane**: punktów końcowych usługi nie są obsługiwane w bazie danych Azure PostgreSQL lub MySQL. Włączenie punktów końcowych usługi do bazy danych SQL spowoduje przerwanie połączenia do tych usług. Mamy środki zaradcze dla tego i może skontaktować się z *dmalik@microsoft.com* Aby uzyskać więcej informacji.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -178,7 +178,7 @@ Usługa Azure Storage zaimplementowała tej samej funkcji, która umożliwia ogr
 Jeśli wybierzesz użyć tej funkcji przy użyciu konta magazynu, który jest używany przez serwer SQL platformy Azure, można uruchomić na problemy. Jest obok listy oraz omówienie funkcji Azure SQLDB, które ma wpływ na to.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQLDW z kont magazynu. Jeśli konto magazynu, które są podczas ładowania danych z ogranicza dostęp tylko do wielu podsieci sieci wirtualnej, spowoduje przerwanie połączenia z programu PolyBase do konta. Istnieje łagodzenia tego; Skontaktuj się z *dmalik@microsoft.com* Aby uzyskać więcej informacji.
+Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQLDW z kont magazynu. Jeśli konto magazynu, które są podczas ładowania danych z ogranicza dostęp tylko do wielu podsieci sieci wirtualnej, spowoduje przerwanie połączenia z programu PolyBase do konta. Istnieje łagodzenia dla tego i może skontaktować się z *dmalik@microsoft.com* Aby uzyskać więcej informacji.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Obiekt Blob Azure SQLDB inspekcji
 Inspekcja obiektów blob wypchnięcia dzienników inspekcji na koncie magazynu. Jeśli to konto magazynu jest używana funkcja punktów końcowych usługi zdarzenie spowoduje przerwanie połączenia z Azure SQLDB do konta magazynu.
@@ -227,8 +227,9 @@ Lista komunikaty o błędach bazy danych SQL jest udokumentowany [tutaj][sql-dat
 W tej części przedstawiono, jak używasz [portalu Azure] [ http-azure-portal-link-ref-477t] utworzyć *reguły sieci wirtualnej* w bazie danych SQL Azure. Reguła określa, że baza danych SQL do akceptowania komunikacji od określonej podsieci, które zostały oznaczone jako *punkt końcowy usługi sieci wirtualnej*.
 
 > [!NOTE]
-> Upewnij się, czy usługa punkty końcowe są włączone dla sieci Wirtualnej podsieci użytkownik planuje dodanie sieci Wirtualnej reguł zapory serwera.
-> Punkty końcowe usługi nie są włączone dla sieci Wirtualnej podsieci poprosimy Cię w portalu, aby je włączyć, kliknij przycisk Włącz bloku, w którym można dodać regułę.
+> Jeśli planujesz dodać punkt końcowy usługi sieci wirtualnej reguł zapory serwera bazy danych SQL Azure, najpierw upewnij się, tej usługi, które punkty końcowe są włączone dla tej podsieci.
+>
+> Jeśli punkty końcowe usługi nie są włączone dla tej podsieci, portalu zapyta, możesz je włączyć. Kliknij przycisk **włączyć** przycisk na tym samym bloku, w którym można dodać regułę.
 
 #### <a name="powershell-alternative"></a>Zamiast programu PowerShell
 

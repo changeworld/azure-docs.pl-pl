@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory-b2c
+author: davidmu1
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: davidmu
+ms.custom: include file
+ms.openlocfilehash: 8363d023e89c77aabc0d123f19264c9a0758a656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/18/2018
+---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
 Aby zarejestrować swoją mobilną lub natywną aplikację, użyj ustawień określonych w tabeli.
@@ -7,8 +23,8 @@ Aby zarejestrować swoją mobilną lub natywną aplikację, użyj ustawień okre
 | Ustawienie      | Wartość przykładowa  | Opis                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **Nazwa** | Aplikacja Contoso B2C | Wprowadź **Nazwę**, która będzie opisywać aplikację użytkownikom. |
-| **Natywny klient** | Tak | Wybierz pozycję **Tak** dla aplikacji mobilnej lub natywnej. |
-| **Niestandardowy identyfikator URI przekierowania** | `com.onmicrosoft.contoso.appname://redirect/path` | Wprowadź identyfikator URI przekierowania ze schematem niestandardowym. Pamiętaj, aby wybrać [właściwy identyfikator URI przekierowywania](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-native-application-redirect-uri). Nie powinien on zawierać znaków specjalnych, takich jak podkreślenia. |
+| **Natywny klient** | Yes | Wybierz pozycję **Tak** dla aplikacji mobilnej lub natywnej. |
+| **Niestandardowy identyfikator URI przekierowania** | `com.onmicrosoft.contoso.appname://redirect/path` | Wprowadź identyfikator URI przekierowania ze schematem niestandardowym. Pamiętaj, aby wybrać [właściwy identyfikator URI przekierowywania](../articles/active-directory-b2c/active-directory-b2c-app-registration.md). Nie powinien on zawierać znaków specjalnych, takich jak podkreślenia. |
 
 Kliknij pozycję **Utwórz**, aby zarejestrować aplikację.
 

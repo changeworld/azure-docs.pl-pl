@@ -1,22 +1,22 @@
 ---
-title: "Rejestrowanie urządzenia X.509 w usłudze Azure Device Provisioning przy użyciu kodu C# | Microsoft Docs"
-description: "Szybki start na platformie Azure — rejestrowanie urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu zestawu SDK usługi C#"
+title: Rejestrowanie urządzenia X.509 w usłudze Azure Device Provisioning przy użyciu kodu C# | Microsoft Docs
+description: Szybki start na platformie Azure — rejestrowanie urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu zestawu SDK usługi C#
 services: iot-dps
-keywords: 
-author: JimacoMS2
+keywords: ''
+author: bryanla
 ms.author: v-jamebr
 ms.date: 01/21/2018
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 62b699e3f41fbb6fdaa0f07d7c9e0a18acd0dfc7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 51fd3e12344fb20056012c00d6b38edf0355b0a4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Rejestrowanie urządzeń X.509 w usłudze IoT Hub Device Provisioning przy użyciu zestawu SDK usługi C#
 

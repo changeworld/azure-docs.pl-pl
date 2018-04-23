@@ -18,6 +18,12 @@
       href: concepts-dependency-visualization.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Migrowanie zasobów lokalnych na platformę Azure
+      items:
+        - name: Omówienie scenariusza — migrowanie zasobów lokalnych na platformę Azure
+          href: migrate-scenarios-overview.md
+        - name: Scenariusz 1 — ocena zasobów lokalnych pod kątem migracji na platformę Azure
+          href: migrate-scenarios-assessment.md
     - name: Odnajdywanie i ocenianie w dużym środowisku
       href: how-to-scale-assessment.md
     - name: Grupowanie maszyn

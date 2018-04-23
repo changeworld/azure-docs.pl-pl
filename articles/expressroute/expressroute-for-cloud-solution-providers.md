@@ -1,11 +1,11 @@
 ---
-title: "Usługa Azure ExpressRoute dla dostawców rozwiązań w chmurze | Microsoft Docs"
-description: "Ten artykuł zawiera informacje dla dostawców usług w chmurze, którzy chcą włączyć do oferty usługi Azure i ExpressRoute."
+title: Usługa Azure ExpressRoute dla dostawców rozwiązań w chmurze | Microsoft Docs
+description: Ten artykuł zawiera informacje dla dostawców usług w chmurze, którzy chcą włączyć do oferty usługi Azure i ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: richcar
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Usługa ExpressRoute dla dostawców rozwiązań w chmurze (CSP)
 Firma Microsoft oferuje usługi w hiperskali dla tradycyjnych odsprzedawców i dystrybutorów (CSP), dzięki czemu użytkownicy mogą szybko aprowizować nowe usługi i rozwiązania dla klientów bez konieczności inwestowania w ich opracowywanie. Aby umożliwić dostawcy rozwiązań w chmurze (CSP) bezpośrednie zarządzanie tymi nowymi usługami, firma Microsoft udostępnia programy oraz interfejsy API, które pozwalają dostawcy CSP na zarządzanie zasobami Microsoft Azure w imieniu klientów. Jednym z tych zasobów jest usługa ExpressRoute. Usługa ExpressRoute umożliwia dostawcy CSP łączenie istniejących zasobów klienta z usługami Azure. Usługa ExpressRoute jest prywatnym łączem komunikacyjnym o dużej szybkości do usług w ramach platformy Azure. 
@@ -65,7 +65,7 @@ Ten scenariusz dotyczący łączności wymaga, by klient łączył się bezpośr
 
 Wybór między tymi dwoma opcjami zależy od potrzeb klienta i bieżącej potrzeby świadczenia usług Azure. Szczegółowe informacje dotyczące tych modeli oraz powiązanych z nimi opartych na rolach wzorów projektu kontroli dostępu, sieci i tożsamości znajdują się w artykułach, do których odwołują się poniższe linki:
 
-* **Kontrola dostępu na podstawie ról (RBAC)** — RBAC opiera się na usłudze Azure Active Directory.  Więcej informacji na temat funkcji Azure RBAC znajduje się [tutaj](../active-directory/role-based-access-control-configure.md).
+* **Kontrola dostępu na podstawie ról (RBAC)** — RBAC opiera się na usłudze Azure Active Directory.  Więcej informacji na temat funkcji Azure RBAC znajduje się [tutaj](../role-based-access-control/role-assignments-portal.md).
 * **Sieć** — obejmuje różne tematy dotyczące sieci na platformie Microsoft Azure.
 * **Azure Active Directory (Azure AD)** — usługa Azure AD zapewnia zarządzanie tożsamościami dla platformy Microsoft Azure i aplikacji SaaS innych firm. Więcej informacji na temat usługi Azure AD znajduje się [tutaj](https://azure.microsoft.com/documentation/services/active-directory/).  
 

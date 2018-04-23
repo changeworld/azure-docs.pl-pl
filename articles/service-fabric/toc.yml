@@ -238,6 +238,8 @@
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Przenoszenie usług
               href: service-fabric-cluster-resource-manager-movement-cost.md
+            - name: Skalowanie automatyczne usług
+              href: service-fabric-cluster-resource-manager-autoscaling.md
     - name: Monitorowanie i diagnostyka
       items:
         - name: Omówienie monitorowania
@@ -261,8 +263,6 @@
           href: service-fabric-health-introduction.md
         - name: Zgłaszanie zdarzeń dotyczących kondycji
           href: service-fabric-report-health.md
-        - name: Monitorowanie za pomocą usługi OMS
-          href: service-fabric-diagnostics-event-analysis-oms.md
     - name: Integracja z usługą API Management
       href: service-fabric-api-management-overview.md
 - name: Przewodniki z instrukcjami
@@ -405,6 +405,10 @@
               href: service-fabric-securing-containers.md
             - name: Konfigurowanie konta gMSA dla kontenerów systemu Windows
               href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: Konfigurowanie okresowych kopii zapasowych (klastry na platformie Azure)
+          href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
+        - name: Konfigurowanie okresowych kopii zapasowych (klastry autonomiczne)
+          href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Migrowanie starej aplikacji Java w celu obsługi narzędzia Maven
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Praca w środowisku deweloperskim Windows/VS
@@ -555,6 +559,8 @@
               href: service-fabric-diagnostics-oms-setup.md
             - name: Dodawanie agenta pakietu OMS
               href: service-fabric-diagnostics-oms-agent.md
+            - name: Monitorowanie za pomocą usługi OMS
+              href: service-fabric-diagnostics-event-analysis-oms.md
             - name: Monitorowanie kontenerów
               href: service-fabric-diagnostics-oms-containers.md
         - name: Analizowanie za pomocą usługi Application Insights

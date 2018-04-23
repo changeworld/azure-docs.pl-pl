@@ -1,8 +1,8 @@
 ---
-title: "Integracja katalogu między usługami Azure Multi-Factor Authentication i Active Directory"
-description: "To jest strona usługi Azure Multi-Factor Authentication, na której opisano integrację serwera tej usługi z usługą Active Directory, w wyniku której możliwa jest synchronizacja katalogów."
+title: Integracja katalogu między usługami Azure Multi-Factor Authentication i Active Directory
+description: To jest strona usługi Azure Multi-Factor Authentication, na której opisano integrację serwera tej usługi z usługą Active Directory, w wyniku której możliwa jest synchronizacja katalogów.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 9d06da0d15bfeffb17da81e4b5ae4423d01ed770
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integracja katalogu między serwerem Azure MFA i usługą Active Directory
 Sekcja Integracja katalogu serwera usługi Azure MFA umożliwia przeprowadzenie integracji z usługą Active Directory lub innym katalogiem LDAP. Pozwala ona skonfigurować atrybuty w celu ich dostosowania do schematu katalogu oraz ustawić automatyczną synchronizację użytkowników.
@@ -29,7 +29,7 @@ Domyślnie serwer usługi Azure Multi-Factor Authentication (MFA) jest skonfigur
 
 ![Ustawienia](./media/multi-factor-authentication-get-started-server-dirint/dirint.png)
 
-| Funkcja | Opis |
+| Cecha | Opis |
 | --- | --- |
 | Użyj usługi Active Directory |Wybierz opcję Użyj usługi Active Directory, aby użyć tej usługi do importowania i synchronizacji.  Jest to ustawienie domyślne. <br>Uwaga: aby integracja z usługą Active Directory działała prawidłowo, przyłącz komputer do domeny i zaloguj się przy użyciu konta domeny. |
 | Uwzględnij domeny zaufane |Zaznacz pole wyboru **Uwzględnij domeny zaufane**, jeśli chcesz, aby agent podejmował próbę nawiązania połączenia z domenami ustawionymi jako zaufane dla bieżącej domeny lub innej domeny w lesie albo domenami zaufanymi lasu.  Jeśli nie zachodzi importowanie ani synchronizowanie użytkowników z żadnej z zaufanych domen, usuń zaznaczenie pola wyboru, aby poprawić wydajność.  Pole jest domyślnie zaznaczone. |
@@ -68,7 +68,7 @@ Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na l
 
 ![Atrybuty](./media/multi-factor-authentication-get-started-server-dirint/dirint3.png)
 
-| Funkcja | Opis |
+| Cecha | Opis |
 | --- | --- |
 | Unikatowy identyfikator |Wprowadź nazwę atrybutu, która pełni rolę unikatowego identyfikatora rekordów kontenera, grupy zabezpieczeń i użytkowników.  W katalogu Active Directory jest to zazwyczaj wartość elementu objectGUID. Inne implementacje katalogu LDAP mogą używać wartości entryUUID lub podobnej.  Wartość domyślna to objectGUID. |
 | Typ unikatowego identyfikatora |Wybierz typ atrybutu unikatowego identyfikatora.  W katalogu Active Directory atrybut objectGUID ma typ GUID. Inne implementacje katalogu LDAP mogą używać typu tablicy bajtowej znaków ASCII lub ciągu.  Wartość domyślna to GUID. <br><br>Poprawne ustawienie tego typu jest istotne, ponieważ elementy synchronizacji są przywoływane przy użyciu ich unikatowych identyfikatorów. Typ unikatowego identyfikatora jest używany do bezpośredniego odnajdywania obiektu w katalogu.  Ustawienie typu ciągu w przypadku, gdy wartość jest przechowywana w katalogu jako tablica bajtowa znaków ASCII, uniemożliwia prawidłową synchronizację. |
@@ -112,7 +112,7 @@ Jeśli katalog LDAP obsługuje narzędzie DirSync i jest skonfigurowany do jego 
 
 Poniższa tabela zawiera dodatkowe informacje na temat każdego ustawienia na karcie Synchronizacja.
 
-| Funkcja | Opis |
+| Cecha | Opis |
 | --- | --- |
 | Włącz synchronizację z usługą Active Directory |W przypadku zaznaczenia tej opcji usługa serwera Multi-Factor Authentication okresowo sonduje pod kątem zmian w katalogu Active Directory. <br><br>Uwaga: zanim usługa Multi-Factor Auth Server zacznie przetwarzać zmiany, należy dodać co najmniej jeden element synchronizacji i wybrać opcję Synchronizuj teraz. |
 | Synchronizuj co |Określ interwał czasu oczekiwania usługi Multi-Factor Auth Server między sondowaniem pod kątem zmian oraz przetwarzaniem zmian. <br><br> Uwaga: wskazany interwał to czas, jaki mija przed rozpoczęciem każdego kolejnego cyklu.  Jeśli czas przetwarzania zmian przekracza interwał, nastąpi natychmiastowe rozpoczęcie kolejnego sondowania. |

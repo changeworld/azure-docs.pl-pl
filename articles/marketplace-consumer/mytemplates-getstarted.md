@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mbaldwin
-ms.openlocfilehash: e3a0bbe75177ac25a0aeff89d171dfe88bd0880f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c716f54a1361d41dbad00e2e45562d5fbf8fd6ca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Rozpoczynanie pracy z szablonami prywatnymi w witrynie Azure Portal
 Szablon usługi [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) to deklaracyjny szablon używany do definiowania wdrożenia. Można zdefiniować zasoby w celu wdrożenia rozwiązania oraz określić parametry i zmienne, które umożliwią wprowadzanie wartości dla różnych środowisk. Szablon składa się z kodu JSON i wyrażeń, których można używać do tworzenia wartości na potrzeby wdrożenia.
@@ -103,7 +103,7 @@ Możesz wdrożyć dowolny **szablon**, do którego masz uprawnienia do **odczytu
 ![Wdrażanie szablonu](media/deploy-template-portal1b.png)
 
 ## <a name="share-a-template-resource"></a>Udostępnianie zasobu Szablon
-Zasób **Szablon** można udostępniać innym użytkownikom. Udostępnianie działa w sposób podobny do [przypisywania roli dla dowolnego zasobu na platformie Azure](../active-directory/role-based-access-control-configure.md). Właściciel **szablonu** zapewnia uprawnienia innym użytkownikom, którzy mogą współdziałać z zasobem Szablon. Osoba lub grupa osób, której udostępniono **szablon**, może zobaczyć właściwości szablonu usługi Resource Manager i galerii.
+Zasób **Szablon** można udostępniać innym użytkownikom. Udostępnianie działa w sposób podobny do [przypisywania roli dla dowolnego zasobu na platformie Azure](../role-based-access-control/role-assignments-portal.md). Właściciel **szablonu** zapewnia uprawnienia innym użytkownikom, którzy mogą współdziałać z zasobem Szablon. Osoba lub grupa osób, której udostępniono **szablon**, może zobaczyć właściwości szablonu usługi Resource Manager i galerii.
 
 ### <a name="access-control-for-the-microsoftgallery-resources"></a>Kontrola dostępu do zasobów Microsoft.Gallery
 | Rola | Uprawnienia |
