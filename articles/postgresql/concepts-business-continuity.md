@@ -1,6 +1,6 @@
 ---
-title: "Omówienie ciągłości działalności biznesowej z bazą danych Azure dla PostgreSQL"
-description: "Omówienie ciągłości działalności biznesowej z bazą danych Azure dla PostgreSQL."
+title: Omówienie ciągłości działalności biznesowej z bazą danych Azure dla PostgreSQL
+description: Omówienie ciągłości działalności biznesowej z bazą danych Azure dla PostgreSQL.
 services: postgresql
 author: kamathsun
 ms.author: sukamat

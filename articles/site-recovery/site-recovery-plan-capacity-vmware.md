@@ -1,6 +1,6 @@
 ---
-title: "Planowanie wydajności i skalowania dla replikacji maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "Użyj w tym artykule Planowanie wydajności i skalowania podczas replikowania maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery"
+title: Planowanie wydajności i skalowania dla replikacji maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: Użyj w tym artykule Planowanie wydajności i skalowania podczas replikowania maszyn wirtualnych VMware do platformy Azure z usługą Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

@@ -1,6 +1,6 @@
 ---
-title: "Sterowniki MySQL i zgodność z narzędziami narzędzia do zarządzania"
-description: "W tym artykule opisano sterowniki MySQL i narzędzia do zarządzania, które są zgodne z bazą danych Azure dla programu MySQL."
+title: Sterowniki MySQL i zgodność z narzędziami narzędzia do zarządzania
+description: W tym artykule opisano sterowniki MySQL i narzędzia do zarządzania, które są zgodne z bazą danych Azure dla programu MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela

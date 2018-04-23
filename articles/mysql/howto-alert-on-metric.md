@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie alertów metryki dla bazy danych Azure dla programu MySQL w portalu Azure"
-description: "W tym artykule opisano sposób konfigurowania i uzyskiwanie dostępu do alertów metryki dla bazy danych Azure dla programu MySQL z portalu Azure."
+title: Konfigurowanie alertów metryki dla bazy danych Azure dla programu MySQL w portalu Azure
+description: W tym artykule opisano sposób konfigurowania i uzyskiwanie dostępu do alertów metryki dla bazy danych Azure dla programu MySQL z portalu Azure.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

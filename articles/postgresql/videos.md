@@ -1,6 +1,6 @@
 ---
 title: Bazy danych platformy Azure dla PostgreSQL wideo
-description: "Ta strona zawiera listę zawartości wideo dotyczące uczenia dla PostgreSQL bazy danych Azure."
+description: Ta strona zawiera listę zawartości wideo dotyczące uczenia dla PostgreSQL bazy danych Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

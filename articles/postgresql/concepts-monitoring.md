@@ -1,6 +1,6 @@
 ---
 title: Monitorowanie bazy danych platformy Azure dla PostgreSQL
-description: "W tym artykule opisano metryki monitorowania oraz alertów dla bazy danych Azure dla PostgreSQL, w tym statystyk Procesora, pamięci masowej i połączenia."
+description: W tym artykule opisano metryki monitorowania oraz alertów dla bazy danych Azure dla PostgreSQL, w tym statystyk Procesora, pamięci masowej i połączenia.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

@@ -1,6 +1,6 @@
 ---
-title: "Biblioteki połączeń dla bazy danych Azure dla PostgreSQL"
-description: "W tym artykule opisano kilka bibliotek i sterowniki, deweloperzy mogą używać podczas kodowania aplikacji do nawiązywania połączeń i PostgreSQL kwerendy bazy danych Azure."
+title: Biblioteki połączeń dla bazy danych Azure dla PostgreSQL
+description: W tym artykule opisano kilka bibliotek i sterowniki, deweloperzy mogą używać podczas kodowania aplikacji do nawiązywania połączeń i PostgreSQL kwerendy bazy danych Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

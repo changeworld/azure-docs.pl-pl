@@ -1,6 +1,6 @@
 ---
-title: "Pojęcia dotyczące serwera bazy danych Azure PostgreSQL"
-description: "Ten artykuł zawiera zagadnienia i zalecenia dotyczące konfigurowania i zarządzania dla serwerów PostgreSQL bazy danych Azure."
+title: Pojęcia dotyczące serwera bazy danych Azure PostgreSQL
+description: Ten artykuł zawiera zagadnienia i zalecenia dotyczące konfigurowania i zarządzania dla serwerów PostgreSQL bazy danych Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

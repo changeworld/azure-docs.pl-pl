@@ -69,6 +69,8 @@
       items:
         - name: JavaScript
           href: app-insights-javascript.md
+    - name: Monitorowanie usługi Azure Functions
+      href: 'https://docs.microsoft.com/azure/azure-functions/functions-monitoring'
     - name: Monitorowanie innych platform
       items:
         - name: Witryny programu SharePoint

@@ -1,6 +1,6 @@
 ---
-title: "Eksploruj dzienniki śledzenia w usłudze Azure Application Insights w języku Java | Dokumentacja firmy Microsoft"
-description: "Wyszukiwanie narzędzia Log4J lub Logback dane śledzenia w usłudze Application Insights"
+title: Eksploruj dzienniki śledzenia w usłudze Azure Application Insights w języku Java | Dokumentacja firmy Microsoft
+description: Wyszukiwanie narzędzia Log4J lub Logback dane śledzenia w usłudze Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle

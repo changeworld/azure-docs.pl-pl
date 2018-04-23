@@ -1,13 +1,13 @@
 ---
-title: "Konfiguracja połączenia SSL w bazie danych Azure dla PostgreSQL"
-description: "Instrukcje i informacje do konfigurowania bazy danych Azure do PostgreSQL i skojarzone aplikacje prawidłowe korzystanie z połączeń SSL."
+title: Konfiguracja połączenia SSL w bazie danych Azure dla PostgreSQL
+description: Instrukcje i informacje do konfigurowania bazy danych Azure do PostgreSQL i skojarzone aplikacje prawidłowe korzystanie z połączeń SSL.
 services: postgresql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
 manager: kfile
 ms.service: postgresql
-ms.custom: 
+ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
 ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966

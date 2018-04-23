@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie alertów metryki dla bazy danych Azure w programie PostgreSQL w portalu Azure"
-description: "W tym artykule opisano sposób konfigurowania i uzyskiwanie dostępu do alertów metryki dla bazy danych Azure dla PostgreSQL z portalu Azure."
+title: Konfigurowanie alertów metryki dla bazy danych Azure w programie PostgreSQL w portalu Azure
+description: W tym artykule opisano sposób konfigurowania i uzyskiwanie dostępu do alertów metryki dla bazy danych Azure dla PostgreSQL z portalu Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

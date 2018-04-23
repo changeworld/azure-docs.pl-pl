@@ -1,6 +1,6 @@
 ---
-title: "Minimalizująca przestoje migracji do bazy danych Azure dla programu MySQL"
-description: "W tym artykule opisano sposób przeprowadzenia migracji minimalnym czasem przestojów bazy danych programu MySQL do bazy danych platformy Azure dla programu MySQL i konfigurowanie ładowania początkowego i synchronizacji danych ciągłego źródłowej bazy danych do docelowej bazy danych przy użyciu replikacji Attunity firmy Microsoft Migracji."
+title: Minimalizująca przestoje migracji do bazy danych Azure dla programu MySQL
+description: W tym artykule opisano sposób przeprowadzenia migracji minimalnym czasem przestojów bazy danych programu MySQL do bazy danych platformy Azure dla programu MySQL i konfigurowanie ładowania początkowego i synchronizacji danych ciągłego źródłowej bazy danych do docelowej bazy danych przy użyciu replikacji Attunity firmy Microsoft Migracji.
 services: mysql
 author: HJToland3
 ms.author: jtoland

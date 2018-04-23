@@ -1,6 +1,6 @@
 ---
 title: Dzienniki serwera bazy danych Azure dla programu MySQL
-description: "Opisuje dzienników dostępnych w programie Azure bazy danych MySQL i dostępne parametry włączenie rejestrowania różnych poziomów."
+description: Opisuje dzienników dostępnych w programie Azure bazy danych MySQL i dostępne parametry włączenie rejestrowania różnych poziomów.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

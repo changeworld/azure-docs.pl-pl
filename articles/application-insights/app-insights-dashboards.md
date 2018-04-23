@@ -1,8 +1,8 @@
 ---
-title: "Pulpity nawigacyjne i nawigacja w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Utwórz widoki kwerend i wykresy APM klucza."
+title: Pulpity nawigacyjne i nawigacja w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Utwórz widoki kwerend i wykresy APM klucza.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd

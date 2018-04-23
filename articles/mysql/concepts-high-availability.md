@@ -1,6 +1,6 @@
 ---
-title: "Pojęcia dotyczące wysokiej dostępności w bazie danych Azure dla programu MySQL"
-description: "Ten temat zawiera informacje o wysokiej dostępności, podczas korzystania z bazy danych platformy Azure dla programu MySQL"
+title: Pojęcia dotyczące wysokiej dostępności w bazie danych Azure dla programu MySQL
+description: Ten temat zawiera informacje o wysokiej dostępności, podczas korzystania z bazy danych platformy Azure dla programu MySQL
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

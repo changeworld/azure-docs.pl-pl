@@ -1,6 +1,6 @@
 ---
-title: "Konfiguracja połączenia SSL bezpiecznie łączyć się z bazą danych Azure dla programu MySQL"
-description: "Instrukcje poprawnie skonfigurować bazy danych Azure MySQL i skojarzonych aplikacji, aby poprawnie używać połączeń SSL"
+title: Konfiguracja połączenia SSL bezpiecznie łączyć się z bazą danych Azure dla programu MySQL
+description: Instrukcje poprawnie skonfigurować bazy danych Azure MySQL i skojarzonych aplikacji, aby poprawnie używać połączeń SSL
 services: mysql
 author: ajlam
 ms.author: andrela

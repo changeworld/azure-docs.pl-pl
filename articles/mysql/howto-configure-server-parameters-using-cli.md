@@ -1,6 +1,6 @@
 ---
-title: "Skonfiguruj parametry usługi w bazie danych Azure dla programu MySQL"
-description: "W tym artykule opisano sposób konfigurowania parametrów usługi w bazie danych Azure dla programu MySQL za pomocą narzędzia wiersza polecenia wiersza polecenia platformy Azure."
+title: Skonfiguruj parametry usługi w bazie danych Azure dla programu MySQL
+description: W tym artykule opisano sposób konfigurowania parametrów usługi w bazie danych Azure dla programu MySQL za pomocą narzędzia wiersza polecenia wiersza polecenia platformy Azure.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

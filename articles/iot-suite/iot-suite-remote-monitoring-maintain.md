@@ -1,7 +1,7 @@
 ---
-title: "Rozwiązywanie problemów z urządzeń w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft"
-description: "Ten samouczek pokazuje, jak rozwiązywanie problemów i Korygowanie problemów z urządzeniami w zdalnym rozwiązanie monitorowania."
-services: 
+title: Rozwiązywanie problemów z urządzeń w rozwiązaniu monitorowania zdalnego - Azure | Dokumentacja firmy Microsoft
+description: Ten samouczek pokazuje, jak rozwiązywanie problemów i Korygowanie problemów z urządzeniami w zdalnym rozwiązanie monitorowania.
+services: ''
 suite: iot-suite
 author: dominicbetts
 manager: timlt

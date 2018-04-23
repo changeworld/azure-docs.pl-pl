@@ -1,11 +1,11 @@
 ---
-title: "Zasady zarządzania interfejsu API platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się więcej o zasadach dostępne do użycia w usłudze Azure API Management."
+title: Zasady zarządzania interfejsu API platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o zasadach dostępne do użycia w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na

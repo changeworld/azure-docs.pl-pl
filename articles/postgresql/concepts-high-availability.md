@@ -1,6 +1,6 @@
 ---
-title: "Pojęcia dotyczące wysokiej dostępności w bazie danych PostgreSQL Azure"
-description: "Ten artykuł zawiera informacje o wysokiej dostępności, korzystając z bazy danych Azure PostgreSQL."
+title: Pojęcia dotyczące wysokiej dostępności w bazie danych PostgreSQL Azure
+description: Ten artykuł zawiera informacje o wysokiej dostępności, korzystając z bazy danych Azure PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie i zarządzanie nimi MySQL reguły zapory w bazie danych Azure dla programu MySQL"
-description: "Tworzenie i zarządzanie nimi Azure bazy danych MySQL reguł zapory przy użyciu portalu Azure"
+title: Tworzenie i zarządzanie nimi MySQL reguły zapory w bazie danych Azure dla programu MySQL
+description: Tworzenie i zarządzanie nimi Azure bazy danych MySQL reguł zapory przy użyciu portalu Azure
 services: mysql
 author: ajlam
 ms.author: andrela

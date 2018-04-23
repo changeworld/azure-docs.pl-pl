@@ -1,11 +1,11 @@
 ---
-title: "Zasady w usłudze Azure API Management | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie tworzenia, edytowania i konfigurowania zasad w usłudze API Management."
+title: Zasady w usłudze Azure API Management | Dokumentacja firmy Microsoft
+description: Informacje o sposobie tworzenia, edytowania i konfigurowania zasad w usłudze API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na

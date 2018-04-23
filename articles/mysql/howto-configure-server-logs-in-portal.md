@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie i dostępu do dzienników serwera bazy danych Azure dla programu MySQL w portalu Azure"
-description: "W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w bazie danych Azure dla programu MySQL z portalu Azure."
+title: Konfigurowanie i dostępu do dzienników serwera bazy danych Azure dla programu MySQL w portalu Azure
+description: W tym artykule opisano sposób konfigurowania i dostęp do dzienników serwera w bazie danych Azure dla programu MySQL z portalu Azure.
 services: mysql
 author: rachel-msft
 ms.author: raagyema

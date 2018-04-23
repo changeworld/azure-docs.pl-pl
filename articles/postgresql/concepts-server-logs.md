@@ -1,6 +1,6 @@
 ---
-title: "Dzienników serwera w bazie danych Azure PostgreSQL"
-description: "W tym artykule opisano, jak Azure skonfigurowano bazę danych PostgreSQL generuje dzienniki zapytania i błąd i zaloguj się sposób przechowywania."
+title: Dzienników serwera w bazie danych Azure PostgreSQL
+description: W tym artykule opisano, jak Azure skonfigurowano bazę danych PostgreSQL generuje dzienniki zapytania i błąd i zaloguj się sposób przechowywania.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

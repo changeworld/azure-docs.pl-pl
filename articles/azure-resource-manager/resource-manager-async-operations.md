@@ -1,12 +1,12 @@
 ---
 title: Operacje asynchroniczne platformy Azure | Dokumentacja firmy Microsoft
-description: "Informacje dotyczące śledzenia operacji asynchronicznych na platformie Azure."
+description: Informacje dotyczące śledzenia operacji asynchronicznych na platformie Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article

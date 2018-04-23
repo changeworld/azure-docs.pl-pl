@@ -1,6 +1,6 @@
 ---
-title: "Tworzenie i zarządzanie reguły zapory w bazie danych Azure dla PostgreSQL"
-description: "Tworzenie i zarządzanie bazą danych Azure dla reguł zapory PostgreSQL przy użyciu portalu Azure"
+title: Tworzenie i zarządzanie reguły zapory w bazie danych Azure dla PostgreSQL
+description: Tworzenie i zarządzanie bazą danych Azure dla reguł zapory PostgreSQL przy użyciu portalu Azure
 services: postgresql
 author: rachel-msft
 ms.author: raagyema

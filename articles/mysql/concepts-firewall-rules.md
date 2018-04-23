@@ -1,6 +1,6 @@
 ---
-title: "Bazy danych platformy Azure dla reguł zapory serwera MySQL"
-description: "Opisuje reguły zapory bazy danych Azure, aby serwer MySQL."
+title: Bazy danych platformy Azure dla reguł zapory serwera MySQL
+description: Opisuje reguły zapory bazy danych Azure, aby serwer MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela

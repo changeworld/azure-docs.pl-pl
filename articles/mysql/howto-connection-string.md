@@ -1,6 +1,6 @@
 ---
-title: "Łączenie aplikacji bazy danych platformy Azure dla programu MySQL"
-description: "Ten dokument zawiera listę ciągów połączenia aktualnie obsługiwane dla aplikacji, aby połączyć się z bazą danych Azure dla programu MySQL, w tym ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python i Ruby."
+title: Łączenie aplikacji bazy danych platformy Azure dla programu MySQL
+description: Ten dokument zawiera listę ciągów połączenia aktualnie obsługiwane dla aplikacji, aby połączyć się z bazą danych Azure dla programu MySQL, w tym ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python i Ruby.
 services: mysql
 author: mswutao
 ms.author: wuta
