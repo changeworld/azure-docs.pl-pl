@@ -69,7 +69,7 @@ Po kryteria dopasowania jest określony, będzie można dołączyć do sondowani
 > [!NOTE]
 > Port jest tym samym porcie ustawienia HTTP zaplecza.
 
-Domyślnego badania analizuje tylko http://127.0.0.1: \<portu\> do określenia stanu kondycji. Jeśli trzeba skonfigurować sondy kondycji, aby przejść do niestandardowy adres URL lub zmodyfikuj inne ustawienia, należy użyć niestandardowego sond zgodnie z opisem w poniższych krokach:
+Domyślnego badania analizuje tylko http://127.0.0.1:\<portu\> do określenia stanu kondycji. Jeśli trzeba skonfigurować sondy kondycji, aby przejść do niestandardowy adres URL lub zmodyfikuj inne ustawienia, należy użyć niestandardowego sond zgodnie z opisem w poniższych krokach:
 
 ## <a name="custom-health-probe"></a>Sondy kondycji niestandardowych
 
