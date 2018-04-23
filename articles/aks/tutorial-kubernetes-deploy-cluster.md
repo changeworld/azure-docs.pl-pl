@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a28f2f3e397c33e8bd98fcee68c5a051432cb3db
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 99b65ba5e5f0be40e464fd6565db40fda4170a0f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>Samouczek: wdrażanie klastra usługi Azure Container Service (AKS)
 
@@ -65,7 +65,7 @@ az aks install-cli
 Aby skonfigurować narzędzie kubectl w celu łączenia się z klastrem Kubernetes, uruchom następujące polecenie:
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Aby sprawdzić połączenie z klastrem, uruchom polecenie [kubectl get nodes][kubectl-get].

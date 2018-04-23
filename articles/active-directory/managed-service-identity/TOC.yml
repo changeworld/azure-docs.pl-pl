@@ -9,6 +9,34 @@
               href: tutorial-windows-vm-access-arm.md
             - name: Maszyna wirtualna z systemem Linux
               href: tutorial-linux-vm-access-arm.md
+    - name: Samouczki
+      items:
+        - name: Zestaw skalowania maszyn wirtualnych / maszyna wirtualna z systemem Windows
+          items:
+            - name: Uzyskiwanie dostępu do usługi Azure Data Lake Store
+              href: tutorial-windows-vm-access-datalake.md
+            - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu
+              href: tutorial-windows-vm-access-storage.md
+            - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą sygnatury dostępu współdzielonego
+              href: tutorial-windows-vm-access-storage-sas.md
+            - name: Uzyskiwanie dostępu do usługi Azure SQL
+              href: tutorial-windows-vm-access-sql.md
+            - name: Uzyskiwanie dostępu do usługi Azure Key Vault
+              href: tutorial-windows-vm-access-nonaad.md
+            - name: Uzyskiwanie dostępu do usługi Azure Cosmos DB
+              href: tutorial-windows-vm-access-cosmos-db.md
+        - name: Zestaw skalowania maszyn wirtualnych / maszyna wirtualna z systemem Linux
+          items:
+            - name: Uzyskiwanie dostępu do usługi Azure Data Lake Store
+              href: tutorial-linux-vm-access-datalake.md
+            - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu
+              href: tutorial-linux-vm-access-storage-access-key.md
+            - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą sygnatury dostępu współdzielonego
+              href: tutorial-linux-vm-access-storage-sas.md
+            - name: Uzyskiwanie dostępu do usługi Azure Key Vault
+              href: tutorial-linux-vm-access-nonaad.md
+            - name: Uzyskiwanie dostępu do usługi Azure Cosmos DB
+              href: tutorial-linux-vm-access-cosmos-db.md
     - name: Konfigurowanie pliku MSI dla maszyny wirtualnej platformy Azure
       items:
         - name: Korzystanie z witryny Azure Portal
@@ -45,30 +73,6 @@
           href: how-to-use-vm-sign-in.md
         - name: Używanie z zestawami SDK platformy Azure
           href: how-to-use-vm-sdk.md
-    - name: Korzystania z tożsamości zarządzanej maszyny wirtualnej z systemem Windows/usługi VMSS
-      items:
-        - name: Uzyskiwanie dostępu do usługi Azure Data Lake Store
-          href: tutorial-windows-vm-access-datalake.md
-        - name: Uzyskiwanie dostępu do usługi Azure SQL
-          href: tutorial-windows-vm-access-sql.md
-        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu
-          href: tutorial-windows-vm-access-storage.md
-        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą sygnatury dostępu współdzielonego
-          href: tutorial-windows-vm-access-storage-sas.md
-        - name: Uzyskiwanie dostępu do usługi Azure Key Vault
-          href: tutorial-windows-vm-access-nonaad.md
-    - name: Korzystanie z tożsamości zarządzanej maszyny wirtualnej z systemem Linux/programu VMSS
-      items:
-        - name: Uzyskiwanie dostępu do usługi Azure Data Lake Store
-          href: tutorial-linux-vm-access-datalake.md
-        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą klucza dostępu
-          href: tutorial-linux-vm-access-storage.md
-        - name: Uzyskiwanie dostępu do usługi Azure Storage za pomocą sygnatury dostępu współdzielonego
-          href: tutorial-linux-vm-access-storage-sas.md
-        - name: Uzyskiwanie dostępu do usługi Azure Key Vault
-          href: tutorial-linux-vm-access-nonaad.md
-        - name: Uzyskiwanie dostępu do usługi Azure Cosmos DB
-          href: tutorial-linux-vm-access-cosmos-db.md
     - name: Często zadawane pytania i znane problemy
       href: known-issues.md
     - name: Dokumentacja

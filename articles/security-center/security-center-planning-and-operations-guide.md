@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: e07e6792c74e1bdb5c5839e8c6bd9efbedf10170
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b9198f7621c74ae6cbe98fd526cc9bf8eadc9e70
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury, których organizacje planują wdrożenie usługa Azure Security Center.
@@ -75,7 +75,7 @@ Usługa Security Center umożliwia tym osobom wypełnianie różnych obowiązkó
 * Bada ataki
 * Praca z właścicielem obciążenia chmury w celu zastosowania rozwiązania 
 
-Usługa Security Center używa [kontroli dostępu opartej na rolach](../active-directory/role-based-access-control-configure.md) udostępniającej [wbudowane role](../active-directory/role-based-access-built-in-roles.md), które można przypisać do użytkowników, grup i usług na platformie Azure. Gdy użytkownik otwiera usługę Security Center, widzi tylko informacje dotyczące zasobów, do których ma dostęp. Oznacza to, że użytkownik ma przypisaną rolę właściciela, współautora lub czytelnika subskrypcji albo grupy zasobów, do której należy zasób. Oprócz tych ról istnieją dwie określone role usługi Security Center:
+Usługa Security Center używa [kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md) udostępniającej [wbudowane role](../role-based-access-control/built-in-roles.md), które można przypisać do użytkowników, grup i usług na platformie Azure. Gdy użytkownik otwiera usługę Security Center, widzi tylko informacje dotyczące zasobów, do których ma dostęp. Oznacza to, że użytkownik ma przypisaną rolę właściciela, współautora lub czytelnika subskrypcji albo grupy zasobów, do której należy zasób. Oprócz tych ról istnieją dwie określone role usługi Security Center:
 
 - **Czytelnik zabezpieczeń**: użytkownik, który należy do tej roli, może wyświetlać tylko konfiguracje usługi Security Center, co obejmuje zalecenia, alerty, zasady i kondycję, ale nie może wprowadzać zmian.
 - **Administrator zabezpieczeń**: użytkownik ma takie same uprawnienia, jak w przypadku roli Czytelnik zabezpieczeń, ale ma również możliwość aktualizowania zasad zabezpieczeń oraz odrzucania zaleceń i alertów.

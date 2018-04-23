@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: 680e70ce572e182aa35c736f61036415d8714ea0
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](active-directory-aadconnect-get-started-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
@@ -166,7 +166,7 @@ Na tym ekranie można wybrać funkcje opcjonalne dla określonych scenariuszy.
 | Foldery publiczne poczty programu Exchange | Funkcja Foldery publiczne poczty programu Exchange umożliwia synchronizowanie obiektów z folderu publicznego wykorzystującego pocztę z lokalnej usługi Active Directory do usługi Azure AD. |
 | Filtrowanie atrybutów i aplikacji usługi Azure AD |Przez włączenie filtrowania atrybutów i aplikacji usługi Azure AD można dostosować zestaw synchronizowanych atrybutów. Ta opcja dodaje do kreatora dwie dodatkowe strony konfiguracji. Więcej informacji znajduje się w temacie [Filtrowanie atrybutów i aplikacji usługi Azure AD](#azure-ad-app-and-attribute-filtering). |
 | Synchronizacja skrótów haseł |Te opcję można włączyć, jeśli jako metodę logowania wybrano federację. Synchronizacja skrótów haseł może być następnie użyta jako opcja tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md). </br></br>W przypadku wybrania uwierzytelniania przekazywanego tę opcję można również włączyć, aby zapewnić obsługę starszych klientów i opcję tworzenia kopii zapasowych. Dodatkowe informacje znajdują się w temacie [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md).|
-| Zapisywanie zwrotne haseł |Po włączeniu zapisywania zwrotnego haseł zmiany hasła, które pochodzą z usługi Azure AD, są ponownie zapisywane w katalogu lokalnym. Więcej informacji można znaleźć w temacie [Wprowadzenie do zarządzania hasłami](../active-directory-passwords-getting-started.md) |
+| Zapisywanie zwrotne haseł |Po włączeniu zapisywania zwrotnego haseł zmiany hasła, które pochodzą z usługi Azure AD, są ponownie zapisywane w katalogu lokalnym. Więcej informacji można znaleźć w temacie [Wprowadzenie do zarządzania hasłami](../authentication/quickstart-sspr.md) |
 | Zapisywanie zwrotne grup |Jeśli używana jest funkcja **Grupy usługi Office 365**, grupy te mogą być reprezentowane w lokalnej usłudze Active Directory. Ta opcja jest dostępna tylko, jeśli w lokalnej usłudze Active Directory jest dostępny program Exchange. Więcej informacji znajduje się w temacie [Zapisywanie zwrotne grup](active-directory-aadconnect-feature-preview.md#group-writeback). |
 | Zapisywanie zwrotne urządzeń |Umożliwia zapisywanie zwrotne obiektów urządzeń w usłudze Azure AD do lokalnej usługi Active Directory dla scenariuszy dostępu warunkowego. Więcej informacji znajduje się w temacie [Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md). |
 | Synchronizacja atrybutów rozszerzeń katalogów |Po włączeniu synchronizacji atrybutów rozszerzeń katalogów określone atrybuty są synchronizowane z usługą Azure AD. Więcej informacji znajduje się w temacie [Rozszerzenia katalogów](active-directory-aadconnectsync-feature-directory-extensions.md). |
@@ -259,7 +259,7 @@ Należy wprowadzić serwery, na których mają być zainstalowane usługi AD FS.
 ![Serwery usług AD FS](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
 
 ### <a name="specify-the-web-application-proxy-servers"></a>Określanie serwerów proxy aplikacji sieci Web
-Należy wprowadzić serwery, które mają służyć jako serwery proxy aplikacji sieci Web. Serwer proxy aplikacji sieci web jest wdrażany w sieci obwodowej (ukierunkowanej na sieć ekstranet) i obsługuje żądania uwierzytelniania z ekstranetu. Można dodać jeden serwer lub większą ich liczbę w zależności od tego, jakie są potrzeby związane z planowaniem wydajności. Firma Microsoft zaleca instalowanie jednego serwera proxy aplikacji sieci Web do celów wdrożeń testowych i pilotażowych. Następnie można dodać i wdrożyć więcej serwerów w zależności od potrzeb związanych ze skalowaniem przez ponowne uruchomienie programu Azure AD Connect po wstępnej konfiguracji. Zaleca się równoważną liczbę serwerów proxy, aby spełnić wymagania uwierzytelniania z sieci intranet.
+Należy wprowadzić serwery, które mają służyć jako serwery proxy aplikacji sieci Web. Serwer proxy aplikacji sieci web jest wdrażany w strefie DMZ (ukierunkowanej na sieć ekstranet) i obsługuje żądania uwierzytelniania z ekstranetu. Można dodać jeden serwer lub większą ich liczbę w zależności od tego, jakie są potrzeby związane z planowaniem wydajności. Firma Microsoft zaleca instalowanie jednego serwera proxy aplikacji sieci Web do celów wdrożeń testowych i pilotażowych. Następnie można dodać i wdrożyć więcej serwerów w zależności od potrzeb związanych ze skalowaniem przez ponowne uruchomienie programu Azure AD Connect po wstępnej konfiguracji. Zaleca się równoważną liczbę serwerów proxy, aby spełnić wymagania uwierzytelniania z sieci intranet.
 
 > [!NOTE]
 > <li> Jeśli używane konto nie jest lokalnym kontem administratora na serwerach WAP, zostanie wyświetlony monit o podanie poświadczeń administratora.</li>

@@ -421,6 +421,8 @@
           href: troubleshoot-activation-problems.md
         - name: Błędy alokacji
           href: allocation-failure.md
+        - name: Błędy alokacji — klasyczna maszyna wirtualna
+          href: allocation-failure-classic.md
         - name: Ponowne wdrażanie maszyny wirtualnej
           href: redeploy-to-new-node.md
         - name: Typowe komunikaty o błędach

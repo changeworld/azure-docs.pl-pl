@@ -1,11 +1,11 @@
 ---
-title: "Łączenie komputera z siecią wirtualną platformy Azure przy użyciu połączenia typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: PowerShell | Microsoft Docs"
-description: "Bezpieczne łączenie klientów systemu Windows i Mac OS X z siecią wirtualną platformy Azure przy użyciu połączeń typu punkt-lokacja oraz certyfikatów z podpisem własnym lub wystawionych przez urząd certyfikacji. W tym artykule używany jest program PowerShell."
+title: 'Łączenie komputera z siecią wirtualną platformy Azure przy użyciu połączenia typu punkt-lokacja i natywnego uwierzytelniania certyfikatu platformy Azure: PowerShell | Microsoft Docs'
+description: Bezpieczne łączenie klientów systemu Windows i Mac OS X z siecią wirtualną platformy Azure przy użyciu połączeń typu punkt-lokacja oraz certyfikatów z podpisem własnym lub wystawionych przez urząd certyfikacji. W tym artykule używany jest program PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3eddadf6-2e96-48c4-87c6-52a146faeec6
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: ab171a97855090302148651e8e9c3d0d8b91a33a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 42afdee5ac58db005a7ecfb6388c88a974704a03
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną za pomocą natywnego uwierzytelniania certyfikatu platformy Azure: PowerShell
 
@@ -70,7 +70,7 @@ W tej sekcji należy zalogować się i zadeklarować wartości używane dla tej 
 1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i zaloguj się na konto platformy Azure. Polecenie cmdlet wyświetla monit o poświadczenia logowania. Po zalogowaniu pobiera ono ustawienia konta, aby były dostępne dla programu Azure PowerShell.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 2. Pobierz listę subskrypcji platformy Azure.
 

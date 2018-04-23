@@ -1,13 +1,13 @@
 ---
-title: "Przewodnik Szybki start platformy Azure — Tworzenie kopii zapasowej maszyny wirtualnej za pomocą programu PowerShell | Microsoft Docs"
-description: "Informacje na temat tworzenia kopii zapasowych maszyn wirtualnych przy użyciu programu Azure PowerShell"
+title: Przewodnik Szybki start platformy Azure — Tworzenie kopii zapasowej maszyny wirtualnej za pomocą programu PowerShell | Microsoft Docs
+description: Informacje na temat tworzenia kopii zapasowych maszyn wirtualnych przy użyciu programu Azure PowerShell
 services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 55de58770bd91e000c12b42c8eeac92fb8c0a710
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91303368f96b477f0756e4d3b9d19601797f0ba8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Tworzenie kopii zapasowej maszyny wirtualnej za pomocą programu PowerShell
 Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia lub skryptów. Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Usługa Azure Backup tworzy punkty odzyskiwania, które można przechowywać w geograficznie nadmiarowych magazynach odzyskiwania. Ten artykuł szczegółowo opisuje sposób tworzenia kopii zapasowej maszyny wirtualnej za pomocą modułu Azure PowerShell. Te czynności można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure](quick-backup-vm-cli.md) lub [witryny Azure Portal](quick-backup-vm-portal.md).
@@ -31,10 +31,10 @@ Dla tego przewodnika Szybki start jest wymagany moduł Azure PowerShell w wersji
 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
-Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Login-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzureRmAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Przy pierwszym użyciu usługi Azure Backup należy zarejestrować dostawcę usługi Azure Recovery Service w ramach subskrypcji za pomocą polecenia [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider).

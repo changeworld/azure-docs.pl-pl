@@ -121,7 +121,7 @@
 #### [Zaplecze środowiska .NET/urządzenie środowiska .NET](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Zaplecze środowiska Java/urządzenie środowiska Java](iot-hub-java-java-twin-how-to-configure.md)
 #### [Zaplecze języka Python/urządzenie języka Python](iot-hub-python-python-twin-how-to-configure.md)
-### Aktualizowanie oprogramowania układowego urządzenia za pomocą zadań urządzeń
+### Aktualizowanie oprogramowania układowego urządzenia za pomocą bliźniaczej reprezentacji urządzenia
 #### [Zaplecze środowiska Node/urządzenie środowiska Node](iot-hub-node-node-firmware-update.md)
 #### [Zaplecze środowiska .NET/urządzenie środowiska Node.js](iot-hub-csharp-node-firmware-update.md)
 #### [Zaplecze środowiska .NET/urządzenie środowiska .NET](iot-hub-csharp-csharp-firmware-update.md)

@@ -1,23 +1,17 @@
 ---
-title: "Tworzenie zapytań względem indeksu (portal — usługa Azure Search) | Dokumentacja firmy Microsoft"
-description: "Generowanie zapytań wyszukiwania w Eksploratorze wyszukiwania witryny Azure Portal."
-services: search
-manager: jhubbard
-documentationcenter: 
-author: ashmaka
-ms.assetid: 8e524188-73a7-44db-9e64-ae8bf66b05d3
+title: Tworzenie zapytań względem indeksu (portal — usługa Azure Search) | Dokumentacja firmy Microsoft
+description: Generowanie zapytań wyszukiwania w Eksploratorze wyszukiwania witryny Azure Portal.
+manager: cgronlun
+author: HeidiSteen
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 07/10/2017
-ms.author: ashmaka
-ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: heidist
+ms.openlocfilehash: f952587150fa2d49709bdce6cbc5fe1a7aea16b1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Tworzenie zapytań względem indeksu usługi Azure Search przy użyciu Eksploratora wyszukiwania w witrynie Azure Portal
 > [!div class="op_single_selector"]

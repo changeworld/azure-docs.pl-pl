@@ -1,6 +1,6 @@
 ---
-title: "Omówienie usługi Azure Resource Manager | Microsoft Docs"
-description: "Opis wdrażania zasobów na platformie Azure, kontrolowania dostępu do tych zasobów oraz zarządzania nimi za pomocą usługi Azure Resource Manager."
+title: Omówienie usługi Azure Resource Manager | Microsoft Docs
+description: Opis wdrażania zasobów na platformie Azure, kontrolowania dostępu do tych zasobów oraz zarządzania nimi za pomocą usługi Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: cc3402b56b12e82653f673d7a5ab527231599c5b
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a7e3d817923b0f9a691d5acaba606bdcd0012e60
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja sieci Web, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
@@ -215,7 +215,7 @@ Platforma Azure udostępnia kilka ról specyficznych dla zasobów. Niektóre typ
 4. Współautor serwera SQL — może zarządzać bazami danych i serwerami SQL, ale nie ich zasadami związanymi z zabezpieczeniami
 5. Współautor witryny sieci Web — może zarządzać witrynami sieci Web, ale nie planami sieci Web, do których są podłączone
 
-Aby uzyskać pełną listę ról i dozwolonych akcji, zobacz [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../active-directory/role-based-access-built-in-roles.md). Aby uzyskać więcej informacji na temat kontroli dostępu na podstawie ról, zobacz temat [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md) (Kontrola dostępu na podstawie ról na platformie Azure). 
+Aby uzyskać pełną listę ról i dozwolonych akcji, zobacz [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../role-based-access-control/built-in-roles.md). Aby uzyskać więcej informacji na temat kontroli dostępu na podstawie ról, zobacz temat [Azure Role-Based Access Control](../role-based-access-control/role-assignments-portal.md) (Kontrola dostępu na podstawie ról na platformie Azure). 
 
 W niektórych przypadkach istnieje potrzeba uruchomienia kodu lub skryptu, który uzyskuje dostęp do zasobów, ale nie ma zostać uruchomiony w ramach poświadczeń użytkownika. Zamiast tego ma zostać utworzona jednostka usługi dla aplikacji. Do tej jednostki usługi ma następnie zostać przypisana odpowiednia rola. Usługa Resource Manager umożliwia tworzenie poświadczeń dla aplikacji i programowe uwierzytelnianie aplikacji. Aby dowiedzieć się więcej o tworzeniu jednostek usług, zobacz jeden z następujących tematów:
 

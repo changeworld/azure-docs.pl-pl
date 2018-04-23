@@ -12,15 +12,15 @@
 ## [Metryki i diagnostyka usługi Load Balancer w warstwie Standardowa](load-balancer-standard-diagnostics.md)
 
 # Rozpoczęcie pracy
-## [Tworzenie usługi Load Balancer warstwie Podstawowa](load-balancer-get-started-internet-portal.md)
-### [Tworzenie usługi Load Balancer w warstwie Podstawowa (interfejs wiersza polecenia)](load-balancer-get-started-internet-arm-cli.md)
-### [Tworzenie usługi Load Balancer w warstwie Podstawowa (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-## [Tworzenie usługi Load Balancer w warstwie Standardowa](load-balancer-standard-public-portal.md)
-### [Tworzenie usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](load-balancer-standard-public-cli.md)
+## [Tworzenie usługi Load Balancer warstwie Podstawowa](quickstart-create-basic-load-balancer-portal.md)
+### [Tworzenie usługi Load Balancer w warstwie Podstawowa (interfejs wiersza polecenia)](quickstart-create-basic-load-balancer-cli.md)
+### [Tworzenie usługi Load Balancer w warstwie Podstawowa (PowerShell)](quickstart-create-basic-load-balancer-powershell.md)
+## [Tworzenie usługi Load Balancer w warstwie Standardowa](quickstart-load-balancer-standard-public-portal.md)
+### [Tworzenie usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](quickstart-load-balancer-standard-public-cli.md)
 
 # Instrukcje
 
-## [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa](load-balancer-get-started-internet-az-portal.md)
+## [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 ### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [Tworzenie strefowo nadmiarowej publicznej usługi Load Balancer w warstwie Standardowa (interfejs wiersza polecenia)](load-balancer-get-started-internet-az-cli.md)
 ## [Tworzenie strefowej publicznej usługi Load Balancer w warstwie Standardowa](load-balancer-get-started-internet-availability-zones-zonal-portal.md)

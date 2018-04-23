@@ -100,7 +100,7 @@
         - name: Tworzenie kopii zapasowej maszyn wirtualnych
           items:
             - name: Tworzenie kopii zapasowych maszyn wirtualnych w magazynie usługi Recovery Services
-              href: backup-azure-arm-vms.md
+              href: backup-azure-vms-first-look-arm.md
             - name: Tworzenie kopii zapasowej zaszyfrowanych maszyn wirtualnych
               href: backup-azure-vms-encryption.md
             - name: Włączanie kopii zapasowej maszyny wirtualnej podczas tworzenia maszyny wirtualnej
@@ -179,9 +179,9 @@
           href: backup-azure-delete-vault.md
     - name: Rozwiązywanie problemów
       items:
-        - name: Komunikaty o błędach kopii zapasowych maszyn wirtualnych IaaS
+        - name: Maszyna wirtualna platformy Azure
           href: backup-azure-vms-troubleshoot.md
-        - name: Upłynął limit czasu rozszerzenia maszyny wirtualnej lub agenta usługi Azure Backup (MARS)
+        - name: Upłynął limit czasu rozszerzenia maszyny wirtualnej lub agenta usługi Azure Backup
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Tworzenie kopii zapasowej plików i folderów odbywa się wolno
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
@@ -189,16 +189,22 @@
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Agent usługi Azure Backup (MARS)
+        - name: Agent usługi Azure Backup
           href: backup-azure-mars-troubleshoot.md
-        - name: Kopia zapasowa udziałów plików platformy Azure
+        - name: Udział plików platformy Azure
           href: troubleshoot-azure-files.md
 - name: Dokumentacja
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+    - name: Interfejs wiersza polecenia platformy Azure 2.0
+      href: /cli/azure/backup?view=azure-cli-latest
+    - name: PowerShell
+      href: /powershell/module/azurerm.recoveryservices.backup
+    - name: REST — kopia zapasowa
+      href: /rest/api/backup/
+    - name: REST — magazyn usługi Recovery Services
+      href: /rest/api/recoveryservices/
 - name: Zasoby
   items:
     - name: Harmonogram działania dla platformy Azure

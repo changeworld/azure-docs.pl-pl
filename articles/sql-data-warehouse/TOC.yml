@@ -11,6 +11,8 @@
   items:
     - name: Tworzenie i łączenie — portal
       href: create-data-warehouse-portal.md
+    - name: Tworzenie — PowerShell
+      href: create-data-warehouse-powershell.md
     - name: Wstrzymywanie i wznawianie obliczeń
       items:
         - name: Portal

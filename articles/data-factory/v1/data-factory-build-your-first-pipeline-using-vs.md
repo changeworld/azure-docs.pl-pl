@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8497e8f7b268c52878648d08f94dde6bb81ff94
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca8d5a26205e65668d46be6b558d596ab066c5f8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Samouczek: Tworzenie fabryki danych za pomocą programu Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -60,7 +60,7 @@ Poniżej przedstawiono kroki do wykonania w ramach tego przewodnika:
   
 ### <a name="prerequisites"></a>Wymagania wstępne
 1. Przeczytanie artykułu [Omówienie samouczka](data-factory-build-your-first-pipeline.md) oraz wykonanie kroków **wymagań wstępnych**. Aby przejść do artykułu, możesz również wybrać opcję **Przegląd i wymagania wstępne** z listy rozwijanej w górnej części strony. Po spełnieniu wymagań wstępnych przejdź z powrotem do tego artykułu, wybierając opcję **Visual Studio** z listy rozwijanej.
-2. Aby utworzyć wystąpienia usługi Data Factory, użytkownik musi być członkiem roli [współautora usługi Data Factory](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) na poziomie subskrypcji/grupy zasobów.  
+2. Aby utworzyć wystąpienia usługi Data Factory, użytkownik musi być członkiem roli [współautora usługi Data Factory](../../role-based-access-control/built-in-roles.md#data-factory-contributor) na poziomie subskrypcji/grupy zasobów.  
 3. Na komputerze muszą być zainstalowane następujące elementy:
    * Visual Studio 2013 lub Visual Studio 2015
    * Pobierz zestaw Azure SDK dla programu Visual Studio 2013 lub Visual Studio 2015. Przejdź do [strony plików do pobrania Azure](https://azure.microsoft.com/downloads/) i kliknij pozycję **VS 2013** lub **VS 2015** w sekcji **.NET**.

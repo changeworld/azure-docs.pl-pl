@@ -1,8 +1,8 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu programu PowerShell | Microsoft Docs"
-description: "Tworzenie konta usługi Data Lake Store i wykonywanie podstawowych operacji przy użyciu programu Azure PowerShell"
+title: Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu programu PowerShell | Microsoft Docs
+description: Tworzenie konta usługi Data Lake Store i wykonywanie podstawowych operacji przy użyciu programu Azure PowerShell
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 31c98b930ccb8203316e3a3b13c3c0dc7d74dd9c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 57b7755bda499cd7113f84d9950b1b06175e11b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Rozpoczynanie pracy z usługą Azure Data Lake Store przy użyciu programu Azure PowerShell
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ W tym artykule użyto prostszej metody uwierzytelniania w usłudze Data Lake Sto
 1. Z poziomu pulpitu otwórz nowe okno programu Windows PowerShell. Wprowadź poniższy fragment kodu, aby zalogować się na konto platformy Azure, skonfigurować subskrypcję i zarejestrować dostawcę usługi Data Lake Store. Po wyświetleniu monitu zaloguj się jako jeden z administratorów/właścicieli subskrypcji:
 
         # Log in to your Azure account
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 
         # List all the subscriptions associated to your account
         Get-AzureRmSubscription

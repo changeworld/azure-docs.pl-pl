@@ -374,7 +374,9 @@
           href: manage-azure-ssis-integration-runtime.md
         - name: Konfigurowanie ustawień wydajności środowiska uruchomieniowego integracji usług Azure SSIS
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Wywoływanie pakietów SSIS za pomocą działania procedury składowanej
+        - name: Uruchamianie pakietów SSIS za pomocą działania SSIS
+          href: how-to-invoke-ssis-package-ssis-activity.md
+        - name: Uruchamianie pakietów SSIS za pomocą działania procedury składowanej
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Harmonogram środowiska Azure SSIS Integration Runtime
           href: how-to-schedule-azure-ssis-integration-runtime.md

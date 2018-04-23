@@ -17,11 +17,11 @@ ms.workload: database
 ms.date: 01/10/2018
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 6b117484eaa1a9ac3ed85dfe547b3f6163d702cf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f306eba91adf574f8bb20b2aa459f890b97bb732
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>Używanie programu PowerShell do zaktualizowania schematu synchronizacji w istniejącej grupie synchronizacji
 
@@ -34,7 +34,7 @@ Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud 
 
 Ten przykładowy skrypt wymaga modułu Azure PowerShell w wersji 4.2 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
  
-Uruchom polecenie `Login-AzureRmAccount`, aby utworzyć połączenia z platformą Azure.
+Uruchom polecenie `Connect-AzureRmAccount`, aby utworzyć połączenia z platformą Azure.
 
 ## <a name="examples"></a>Przykłady
 

@@ -134,24 +134,24 @@
 #### [Używanie certyfikatów](active-directory-reporting-api-with-certificates.md)
 
 ## Zarządzanie hasłami
-### [Omówienie haseł](active-directory-passwords-overview.md)
+### [Omówienie haseł](authentication/active-directory-passwords-overview.md)
 ### Dokumenty użytkowników
 #### [Resetowanie lub zmienianie hasła](active-directory-passwords-update-your-own-password.md)
 #### [Najlepsze rozwiązania w zakresie haseł](active-directory-secure-passwords.md)
 #### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](active-directory-passwords-reset-register.md)
-### [Samoobsługowe resetowanie haseł — zobacz, jak to działa](active-directory-passwords-how-it-works.md)
-### [Podręcznik wdrażania samoobsługowego resetowania haseł](active-directory-passwords-best-practices.md)
+### [Samoobsługowe resetowanie haseł — zobacz, jak to działa](authentication/concept-sspr-howitworks.md)
+### [Podręcznik wdrażania samoobsługowego resetowania haseł](authentication/howto-sspr-deployment.md)
 ### [SSPR i Windows 10](active-directory-passwords-login.md)
-### [Zasady samoobsługowego resetowania haseł](active-directory-passwords-policy.md)
-### [Dostosowywanie samoobsługowego resetowania haseł](active-directory-passwords-customize.md)
-### [Wymagania dotyczące danych związane z samoobsługowym resetowaniem haseł](active-directory-passwords-data.md)
-### [Raportowanie samoobsługowego resetowania haseł](active-directory-passwords-reporting.md)
+### [Zasady samoobsługowego resetowania haseł](authentication/concept-sspr-policy.md)
+### [Dostosowywanie samoobsługowego resetowania haseł](authentication/concept-sspr-customization.md)
+### [Wymagania dotyczące danych związane z samoobsługowym resetowaniem haseł](authentication/howto-sspr-authenticationdata.md)
+### [Raportowanie samoobsługowego resetowania haseł](authentication/howto-sspr-reporting.md)
 ### Administratorzy IT: resetowanie haseł
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-### [Licencjonowanie funkcji samoobsługowego resetowania haseł](active-directory-passwords-licensing.md)
+### [Licencjonowanie funkcji samoobsługowego resetowania haseł](authentication/concept-sspr-licensing.md)
 ### [Zapisywanie zwrotne haseł](active-directory-passwords-writeback.md)
-### [Rozwiązywanie problemów](active-directory-passwords-troubleshoot.md)
-### [Często zadawane pytania](active-directory-passwords-faq.md)
+### [Rozwiązywanie problemów](authentication/active-directory-passwords-troubleshoot.md)
+### [Często zadawane pytania](authentication/active-directory-passwords-faq.md)
 
 
 ## Zarządzanie urządzeniami

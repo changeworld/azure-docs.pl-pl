@@ -1,12 +1,12 @@
 ---
-title: "Jak utworzyć udział plików Azure | Microsoft Docs"
-description: "Jak utworzyć udział plików na platformie Azure w usłudze Azure Files przy użyciu witryny Azure Portal, programu PowerShell i interfejsu wiersza polecenia Azure."
+title: Jak utworzyć udział plików Azure | Microsoft Docs
+description: Jak utworzyć udział plików na platformie Azure w usłudze Azure Files przy użyciu witryny Azure Portal, programu PowerShell i interfejsu wiersza polecenia Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: bc01e5427f32e9532e39694f6de9f0b1146eda35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Tworzenie udziału plików w usłudze Azure Files
 Udziały plików platformy Azure można tworzyć przy użyciu witryny [Azure Portal](https://portal.azure.com/), poleceń cmdlet programu PowerShell usługi Azure Storage, bibliotek klienckich usługi Azure Storage lub interfejsu API REST usługi Azure Storage. Z tego samouczka dowiesz się:
@@ -69,7 +69,7 @@ Aby przygotować się do użycia programu Azure PowerShell, pobierz i zainstaluj
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>Tworzenie udziału plików za pomocą interfejsu wiersza polecenia (CLI)
 1. **Aby przygotować się do użycia interfejsu wiersza polecenia (CLI), pobierz i zainstaluj wiersz polecenia platformy Azure.**  
-    Zobacz artykuły [Install Azure CLI 2.0](/cli/azure/install-az-cli2.md) (Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0) i [Get started with Azure CLI 2.0](/cli/azure/get-started-with-azure-cli.md) (Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure w wersji 2.0).
+    Zobacz artykuły [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0) i [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) (Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure w wersji 2.0).
 
 2. **Utwórz parametry połączenia z kontem magazynu, w którym chcesz utworzyć udział.**  
     W poniższym przykładzie zastąp zmienne ```<storage-account>``` i ```<resource_group>``` nazwą konta magazynu i grupą zasobów:

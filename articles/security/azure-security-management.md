@@ -1,6 +1,6 @@
 ---
-title: "Poprawianie bezpieczeństwa zdalnego zarządzania na platformie Azure | Microsoft Docs"
-description: "W tym artykule opisano kroki związane z poprawianiem zabezpieczeń zdalnego zarządzania podczas administrowania środowiskami Microsoft Azure, w tym usługami w chmurze, usługą Virtual Machines i aplikacjami niestandardowymi."
+title: Poprawianie bezpieczeństwa zdalnego zarządzania na platformie Azure | Microsoft Docs
+description: W tym artykule opisano kroki związane z poprawianiem zabezpieczeń zdalnego zarządzania podczas administrowania środowiskami Microsoft Azure, w tym usługami w chmurze, usługą Virtual Machines i aplikacjami niestandardowymi.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 026a22355ab1d35fa1fe6b7ba624fed5d10b3e38
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -64,7 +64,7 @@ Konsolidacja zasobów umożliwiających dostęp i eliminacja niezarządzanych pu
 ### <a name="providing-security-for-azure-remote-management"></a>Zapewnianie bezpieczeństwa zdalnego zarządzania na platformie Azure
 Platforma Azure zapewnia mechanizmy zabezpieczeń ułatwiające administratorom zarządzanie usługami w chmurze i maszynami wirtualnymi Azure. Te mechanizmy to m.in.:
 
-* Uwierzytelnianie i [kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-configure.md).
+* Uwierzytelnianie i [kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md).
 * Monitorowanie, rejestrowanie i inspekcje.
 * Certyfikaty i szyfrowanie komunikacji.
 * Portal zarządzania w sieci Web.

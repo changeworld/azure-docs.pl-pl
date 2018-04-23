@@ -1,11 +1,11 @@
 ---
-title: "Łączenie sieci wirtualnej platformy Azure z inną siecią wirtualną za pomocą połączenia sieć wirtualna-sieć wirtualna: program PowerShell | Microsoft Docs"
-description: "Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz programu PowerShell."
+title: 'Łączenie sieci wirtualnej platformy Azure z inną siecią wirtualną za pomocą połączenia sieć wirtualna-sieć wirtualna: program PowerShell | Microsoft Docs'
+description: Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8f2ecf4f10c5506b79adb033c67c41a4b1e17777
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a96326e23a2ed913ccab8a23666a4f408157d3da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu programu PowerShell
 
@@ -28,7 +28,7 @@ Ten artykuł pomoże Ci połączyć sieci wirtualne przy użyciu typu połączen
 Kroki podane w tym artykule mają zastosowanie do modelu wdrażania przy użyciu usługi Resource Manager i używania programu PowerShell. Tę konfigurację możesz również utworzyć przy użyciu innego narzędzia wdrażania lub modelu wdrażania, wybierając inną opcję z następującej listy:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Program PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Interfejs wiersza polecenia platformy Azure](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Portal Azure (klasyczny)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -153,7 +153,7 @@ W przykładach stosujemy następujące wartości:
 2. Połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Sprawdź subskrypcje dostępne na koncie.
@@ -349,7 +349,7 @@ Ten krok należy wykonać w kontekście nowej subskrypcji. Tę część procedur
 2. Połącz z subskrypcją 5. Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Sprawdź subskrypcje dostępne na koncie.

@@ -51,10 +51,10 @@
         - name: Klasyfikowanie opinii
           href: predict-twitter-sentiment.md
         - name: Klasyfikacja dochodu USA
-          href: ../preview/scenario-tdsp-classifying-us-incomes.md
+          href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: Rozpoznawanie jednostek biomedycznych
-          href: ../preview/scenario-tdsp-biomedical-recognition.md
+          href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
     - name: Platforma Spark z interfejsem PySpark i środowiskiem Scala
       href: walkthroughs-spark.md
@@ -82,7 +82,7 @@
 - name: Instrukcje
   items:
     - name: Używanie przetwarzania TDSP w usłudze Azure ML
-      href: ../preview/how-to-use-tdsp-in-azure-ml.md
+      href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
       maintainContext: true
     - name: Konfigurowanie środowiska nauki o danych
       href: environment-setup.md
