@@ -43,6 +43,8 @@
       href: batch-apis-tools.md
     - name: Limity przydziału i ograniczenia
       href: batch-quota-limit.md
+    - name: Obsługiwane rozmiary maszyn wirtualnych
+      href: batch-pool-vm-sizes.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Zarządzanie kontami usługi Batch
@@ -108,10 +110,13 @@
           href: batch-rendering-service.md
         - name: Przetwarzanie danych za pomocą usług Batch i Data Factory
           href: ../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json
-    - name: Monitorowanie zasobów
+    - name: Monitorowanie rozwiązań usługi Batch
+      href: monitoring-overview.md
       items:
-        - name: Rejestrowanie diagnostyczne
+        - name: Używanie metryk i dzienników diagnostycznych
           href: batch-diagnostics.md
+        - name: Monitorowanie za pomocą usługi Application Insights
+          href: monitor-application-insights.md
         - name: Wydajne zapytania dotyczące list
           href: batch-efficient-list-queries.md
     - name: Korzystanie z narzędzi deweloperskich

@@ -48,6 +48,7 @@
 ### [Przewodnik po rozwiązaniu do konserwacji zapobiegawczej](iot-suite-predictive-walkthrough.md)
 
 ## Połączona fabryka
+### [Co to jest połączona fabryka?](iot-suite-connected-factory-features.md)
 ### [Omówienie rozwiązania połączonej fabryki](iot-suite-connected-factory-overview.md)
 ### [Przewodnik po rozwiązaniu połączonej fabryki](iot-suite-connected-factory-sample-walkthrough.md)
 
