@@ -31,6 +31,7 @@
 ### [Zarządzanie administratorami serwerów](analysis-services-server-admins.md)
 ### [Monitorowanie metryk serwera](analysis-services-monitor.md)
 ### [Setup diagnostic logging (Konfigurowanie rejestrowania diagnostycznego)](analysis-services-logging.md)
+### [Używanie bramy dla źródeł danych w sieci wirtualnej](analysis-services-vnet-gateway.md)
 ## Połączenie
 ### [Pobieranie bibliotek klienckich](analysis-services-data-providers.md)
 ### [Łączenie z programem Excel](analysis-services-connect-excel.md)

@@ -43,6 +43,8 @@
       href: container-instances-environment-variables.md
     - name: Rozwiązywanie problemów z wdrożeniami
       href: container-instances-troubleshooting.md
+    - name: Agenci kompilacji usługi Jenkins w usłudze ACI
+      href: container-instances-jenkins.md
     - name: Konfigurowanie woluminów danych
       items:
         - name: Azure Files

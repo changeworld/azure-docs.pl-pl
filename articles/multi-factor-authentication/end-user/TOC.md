@@ -12,4 +12,5 @@
 ## Korzystanie z aplikacji Microsoft Authenticator
 ### [Rozpoczynanie pracy z aplikacją](microsoft-authenticator-app-how-to.md)
 ### [Logowanie przy użyciu telefonu](microsoft-authenticator-app-phone-signin-faq.md)
+### [Wykonywanie kopii zapasowych i odzyskiwanie poświadczeń konta](microsoft-authenticator-app-backup-and-recovery.md)
 ### [Często zadawane pytania](microsoft-authenticator-app-faq.md)

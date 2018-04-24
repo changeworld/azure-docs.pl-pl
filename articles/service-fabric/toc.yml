@@ -27,9 +27,11 @@
           href: service-fabric-tutorial-create-dotnet-app.md
         - name: 2 — Wdrażanie aplikacji
           href: service-fabric-tutorial-deploy-app-to-party-cluster.md
-        - name: 3 — Konfigurowanie ciągłej integracji/ciągłego wdrażania
+        - name: 3 — Włączanie protokołu HTTPS
+          href: service-fabric-tutorial-dotnet-app-enable-https-endpoint.md
+        - name: 4 — Konfigurowanie ciągłej integracji/ciągłego dostarczania
           href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
-        - name: 4 — Monitorowanie i diagnozowanie
+        - name: 5 — Monitorowanie i diagnozowanie
           href: service-fabric-tutorial-monitoring-aspnet.md
     - name: Wdrażanie aplikacji Java
       items:
@@ -553,36 +555,40 @@
           href: service-fabric-patch-orchestration-application-linux.md
     - name: Monitorowanie i diagnozowanie
       items:
-        - name: Analizowanie za pomocą pakietu OMS
+        - name: Monitorowanie aplikacji
           items:
-            - name: Konfigurowanie usługi OMS Log Analytics
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: Dodawanie agenta pakietu OMS
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: Monitorowanie za pomocą usługi OMS
-              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: Analizowanie za pomocą usługi Application Insights
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: Dodawanie rejestrowania do aplikacji
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: Agregowanie zdarzeń przy użyciu struktury EventFlow
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
             - name: Monitorowanie kontenerów
               href: service-fabric-diagnostics-oms-containers.md
-        - name: Analizowanie za pomocą usługi Application Insights
-          href: service-fabric-diagnostics-event-analysis-appinsights.md
-        - name: Agregowanie zdarzeń — EventFlow
-          href: service-fabric-diagnostics-event-aggregation-eventflow.md
-        - name: Agregowanie zdarzeń — Diagnostyka Azure
+        - name: Monitorowanie klastrów
           items:
-            - name: Windows
+            - name: Diagnostyka Azure dla systemu Windows
               href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux
+            - name: Diagnostyka Azure dla systemu Linux
               href: service-fabric-diagnostics-event-aggregation-lad.md
-        - name: Monitorowanie wydajności za pomocą funkcji WAD
-          href: service-fabric-diagnostics-perf-wad.md
-        - name: Tworzenie raportów i sprawdzanie kondycji
-          href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-        - name: Dodawanie rejestrowania w usłudze
-          href: service-fabric-how-to-diagnostics-log.md
-        - name: Rozwiązywanie problemów z raportami kondycji systemu
-          href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-        - name: Wyświetlanie raportów o kondycji
-          href: service-fabric-view-entities-aggregated-health.md
+            - name: Konfigurowanie usługi OMS Log Analytics
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Monitorowanie za pomocą usługi OMS
+              href: service-fabric-diagnostics-event-analysis-oms.md
+        - name: Monitorowanie infrastruktury
+          items:
+            - name: Monitorowanie wydajności za pomocą funkcji WAD
+              href: service-fabric-diagnostics-perf-wad.md
+            - name: Monitorowanie wydajności za pomocą agenta pakietu OMS
+              href: service-fabric-diagnostics-oms-agent.md
+        - name: Monitorowanie kondycji
+          items:
+            - name: Tworzenie raportów i sprawdzanie kondycji
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: Rozwiązywanie problemów z raportami kondycji systemu
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: Wyświetlanie raportów o kondycji
+              href: service-fabric-view-entities-aggregated-health.md
         - name: Rozwiązywanie problemów z klastrem lokalnym
           href: service-fabric-troubleshoot-local-cluster-setup.md
 - name: Dokumentacja

@@ -17,7 +17,7 @@
 ## [Configure company branding (Konfigurowanie oznaczenia marką firmy)](customize-branding.md)
 ## [Dodawanie użytkowników do usługi Azure AD](add-users-azure-active-directory.md)
 ## [Assign licenses to users (Przypisywanie licencji do użytkowników)](license-users-groups.md)
-## [Configure Self-service password reset (Konfigurowanie samoobsługowego resetowania haseł)](active-directory-passwords-getting-started.md)
+## [Configure Self-service password reset (Konfigurowanie samoobsługowego resetowania haseł)](authentication/quickstart-sspr.md)
 
 
 # Instrukcje
@@ -63,6 +63,8 @@
 #### [Grupy dynamiczne i użytkownicy B2B](active-directory-b2b-dynamic-groups.md)
 #### [Inspekcja i raporty](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B dla organizacji hybrydowych](active-directory-b2b-hybrid-organizations.md)
+##### [Udzielanie użytkownikom B2B dostępu do aplikacji lokalnych](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+##### [Udzielanie użytkownikom lokalnym dostępu do aplikacji w chmurze](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 #### [B2B i udostępnianie zewnętrzne w usłudze Office 365](active-directory-b2b-o365-external-user.md)
 #### [Licencjonowanie B2B](active-directory-b2b-licensing.md)
 #### [Bieżące ograniczenia](active-directory-b2b-current-limitations.md)
@@ -119,6 +121,7 @@
 #### [Przechowywanie](active-directory-reporting-retention.md)
 #### [Czasy oczekiwania](active-directory-reporting-latencies-azure-portal.md)
 #### [Powiadomienia](active-directory-reporting-notifications.md)
+#### [Dokumentacja działań inspekcji](active-directory-reporting-activity-audit-reference.md)
 #### [Sign-in activity error codes (Kody błędów działań logowania)](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 ### Rozwiązywanie problemów
@@ -141,7 +144,7 @@
 #### [Rejestrowanie na potrzeby samoobsługowego resetowania haseł](active-directory-passwords-reset-register.md)
 ### [Samoobsługowe resetowanie haseł — zobacz, jak to działa](authentication/concept-sspr-howitworks.md)
 ### [Podręcznik wdrażania samoobsługowego resetowania haseł](authentication/howto-sspr-deployment.md)
-### [SSPR i Windows 10](active-directory-passwords-login.md)
+### [SSPR i Windows 10](authentication/tutorial-sspr-windows.md)
 ### [Zasady samoobsługowego resetowania haseł](authentication/concept-sspr-policy.md)
 ### [Dostosowywanie samoobsługowego resetowania haseł](authentication/concept-sspr-customization.md)
 ### [Wymagania dotyczące danych związane z samoobsługowym resetowaniem haseł](authentication/howto-sspr-authenticationdata.md)
@@ -149,7 +152,7 @@
 ### Administratorzy IT: resetowanie haseł
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 ### [Licencjonowanie funkcji samoobsługowego resetowania haseł](authentication/concept-sspr-licensing.md)
-### [Zapisywanie zwrotne haseł](active-directory-passwords-writeback.md)
+### [Zapisywanie zwrotne haseł](authentication/howto-sspr-writeback.md)
 ### [Rozwiązywanie problemów](authentication/active-directory-passwords-troubleshoot.md)
 ### [Często zadawane pytania](authentication/active-directory-passwords-faq.md)
 

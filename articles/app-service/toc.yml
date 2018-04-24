@@ -29,7 +29,7 @@
       href: app-service-web-get-started-html.md
 - name: Samouczki
   items:
-    - name: 1 — Aplikacja z bazą danych
+    - name: Aplikacja z bazą danych
       items:
         - name: .NET Core z bazą danych SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
@@ -43,15 +43,17 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python z bazą danych PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1 — Hostowanie interfejsu API RESTful
+    - name: Bezpieczne uzyskiwanie dostępu do bazy danych SQL
+      href: app-service-web-tutorial-connect-msi.md
+    - name: Hostowanie interfejsu API RESTful
       href: app-service-web-tutorial-rest-api.md
-    - name: 2 — Mapowanie domeny niestandardowej
+    - name: Mapowanie domeny niestandardowej
       href: app-service-web-tutorial-custom-domain.md
-    - name: 3 — Powiązywanie certyfikatu SSL
+    - name: Wiązanie certyfikatu protokołu SSL
       href: app-service-web-tutorial-custom-ssl.md
-    - name: 4 — Dodawanie usługi CDN
+    - name: Dodawanie usługi CDN
       href: app-service-web-tutorial-content-delivery-network.md
-    - name: 5 — Uwierzytelnianie użytkowników
+    - name: Uwierzytelnianie użytkowników
       href: app-service-web-tutorial-auth-aad.md
 - name: Przykłady
   items:
@@ -69,6 +71,8 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: Funkcjonalność systemu operacyjnego
       href: web-sites-available-operating-system-functionality.md
+    - name: Przychodzące i wychodzące adresy IP
+      href: app-service-ip-addresses.md
     - name: Uwierzytelnianie i autoryzacja
       href: app-service-authentication-overview.md
     - name: Połączenia hybrydowe
@@ -143,6 +147,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: Dostosowywanie aplikacji
           href: app-service-authentication-how-to.md
+        - name: Ograniczanie adresów IP
+          href: app-service-ip-restrictions.md
         - name: Używanie tożsamości usługi zarządzanej
           href: app-service-managed-service-identity.md
         - name: Używanie certyfikatu SSL w kodzie aplikacji
