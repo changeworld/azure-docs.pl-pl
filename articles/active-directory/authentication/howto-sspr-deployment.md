@@ -16,19 +16,19 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 22086a0d9fc774b75e1b0873188b16fc548d0791
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e34bf6ec106976c1c3aab0f2b5c4ebf4b6ccc54b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Jak pomyślnie wdrożyć funkcję samoobsługowego resetowania haseł
 
 Aby zapewnić bezproblemowe wdrożenie funkcji samoobsługowego resetowania haseł (SSPR, self-service password reset) usługi Azure Active Directory (Azure AD), większość klientów wykonuje następujące czynności:
 
-1. [Włącz resetowanie haseł w katalogu](../active-directory-passwords-getting-started.md).
-2. [Skonfiguruj lokalne uprawnienia usługi Active Directory do zapisywania zwrotnego haseł](../active-directory-passwords-writeback.md#active-directory-permissions).
-3. [Konfigurowanie zapisywania zwrotnego haseł](../active-directory-passwords-writeback.md#configure-password-writeback) w celu zapisywania haseł z usługi Azure AD z powrotem w katalogu lokalnym.
+1. [Włącz resetowanie haseł w katalogu](quickstart-sspr.md).
+2. [Skonfiguruj lokalne uprawnienia usługi Active Directory do zapisywania zwrotnego haseł](howto-sspr-writeback.md#active-directory-permissions).
+3. [Konfigurowanie zapisywania zwrotnego haseł](howto-sspr-writeback.md#configure-password-writeback) w celu zapisywania haseł z usługi Azure AD z powrotem w katalogu lokalnym.
 4. [Przypisz i zweryfikuj wymagane licencje](concept-sspr-licensing.md).
 5. Określ, czy chcesz zastosować wdrażanie stopniowe. Jeśli chcesz przeprowadzić stopniowe wdrażanie funkcji samoobsługowego resetowania haseł, możesz ograniczyć dostęp do jednej grupy użytkowników i przeprowadzić dla tej grupy pilotażowe wdrożenie programu. Aby przeprowadzić wdrożenie dla określonej grupy, ustaw przełącznik **Funkcja samoobsługowego resetowania hasła jest włączona** na pozycję **Wybrano** i wybierz grupę zabezpieczeń, której chcesz umożliwić resetowanie haseł. 
 6. Wypełnij [dane uwierzytelniania](howto-sspr-authenticationdata.md) potrzebne do zarejestrowania użytkowników, takie jak ich numer telefonu służbowego, numer telefonu komórkowego i alternatywny adres e-mail.
@@ -41,7 +41,7 @@ Aby zapewnić bezproblemowe wdrożenie funkcji samoobsługowego resetowania hase
    > [!NOTE]
    > Zmiana tego ustawienia z opcji Wybrana grupa na Wszyscy nie powoduje unieważnienia istniejących danych uwierzytelniania, zarejestrowanych przez użytkownika w grupie testowej. Skonfigurowani użytkownicy z zarejestrowanymi prawidłowymi danymi uwierzytelniania będą nadał działać.
 
-12. [Umożliwianie użytkownikom systemu Windows 10 resetowania hasła na ekranie logowania](../active-directory-passwords-login.md).
+12. [Umożliwianie użytkownikom systemu Windows 10 resetowania hasła na ekranie logowania](tutorial-sspr-windows.md).
 
    > [!IMPORTANT]
    > Przetestuj samoobsługowe resetowanie haseł na koncie użytkownika, a nie na koncie administratora, ponieważ firma Microsoft narzuca silne wymagania w zakresie uwierzytelniania dla kont administratorów platformy Azure. Aby uzyskać więcej informacji na temat zasad haseł administratorów, zobacz nasz [artykuł dotyczący zasad haseł](concept-sspr-policy.md#administrator-password-policy-differences).
@@ -90,7 +90,7 @@ Samoobsługowe resetowanie haseł można w łatwy sposób wyłączyć. Otwórz d
 * [Czy masz pytanie dotyczące licencjonowania?](concept-sspr-licensing.md)
 * [Jakie dane są używane przez funkcję samoobsługowego resetowania haseł i jakie dane powinny zostać wypełnione dla użytkowników?](howto-sspr-authenticationdata.md)
 * [Jakie są opcje zasad dla funkcji samoobsługowego resetowania haseł?](concept-sspr-policy.md)
-* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](../active-directory-passwords-writeback.md)
+* [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](howto-sspr-writeback.md)
 * [Jak zgłosić działanie funkcji samoobsługowego resetowania haseł?](howto-sspr-reporting.md)
 * [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one służą?](concept-sspr-howitworks.md)
 * [Myślę, że coś działa niewłaściwie. Jak rozwiązywać problemy z funkcją samoobsługowego resetowania haseł?](active-directory-passwords-troubleshoot.md)

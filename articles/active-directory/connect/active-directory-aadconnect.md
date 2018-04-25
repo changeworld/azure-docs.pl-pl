@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 02849fb63a8d696fa4296f5ec885a2d24f9adca1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7112b8af792dc245c1a2a68e130328d82b4958b3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrowanie katalogów lokalnych z usługą Azure Active Directory
 Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD. W tym temacie przedstawiono kroki związane z planowaniem, wdrażaniem i obsługą. Zawiera on zbiór linków do tematów związanych z tym obszarem.
@@ -97,7 +97,7 @@ Program Azure AD Connect zawiera szereg funkcji, które są domyślnie włączon
 
 [Synchronizacja skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md) umożliwia synchronizowanie skrótów haseł w usłudze Active Directory z usługą Azure AD. Użytkownik końcowy może korzystać z tego samego hasła lokalnie i w chmurze, zarządzając nim w jednej lokalizacji. Ponieważ źródłem jest lokalna usługa Active Directory, można używać również własnych zasad haseł.
 
-[Zapisywanie zwrotne haseł](../active-directory-passwords-getting-started.md) umożliwia użytkownikom zmienianie i resetowanie haseł w chmurze i stosowanie lokalnych zasad haseł.
+[Zapisywanie zwrotne haseł](../authentication/quickstart-sspr.md) umożliwia użytkownikom zmienianie i resetowanie haseł w chmurze i stosowanie lokalnych zasad haseł.
 
 [Zapisywanie zwrotne urządzeń](active-directory-aadconnect-feature-device-writeback.md) umożliwia zapisywanie w lokalnej usłudze Active Directory urządzeń zarejestrowanych w usłudze Azure AD w celu użycia ich na potrzeby dostępu warunkowego.
 
@@ -110,7 +110,7 @@ Funkcja [zapobiegania przypadkowemu usuwaniu](active-directory-aadconnectsync-fe
 | --- | --- |
 |Konfigurowanie filtrowania | [Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania](active-directory-aadconnectsync-configure-filtering.md)|
 |Synchronizacja skrótów haseł | [Synchronizacja programu Azure AD Connect: implementowanie synchronizacji skrótów haseł](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
-|Zapisywanie zwrotne haseł | [Wprowadzenie do zarządzania hasłami](../active-directory-passwords-getting-started.md)|
+|Zapisywanie zwrotne haseł | [Wprowadzenie do zarządzania hasłami](../authentication/quickstart-sspr.md)|
 |Zapisywanie zwrotne urządzeń | [Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md)|
 |Zapobieganie przypadkowemu usuwaniu | [Synchronizacja programu Azure AD Connect: zapobieganie przypadkowemu usuwaniu](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|
 |Automatycznie uaktualnianie | [Azure AD Connect: automatyczne uaktualnianie](active-directory-aadconnect-feature-automatic-upgrade.md)|
