@@ -1,11 +1,11 @@
 ---
-title: "Dokumentacja usługi Azure Key Vault — samouczki i dokumentacja interfejsu API | Microsoft Docs"
-description: "Dowiedz się, jak za pomocą usługi Key Vault tworzyć i obsługiwać klucze, które umożliwiają uzyskiwanie dostępu do zasobów, aplikacji i rozwiązań przechowywanych w chmurze oraz ich szyfrowanie. Samouczki, dokumentacja interfejsu API i inne materiały."
+title: Dokumentacja usługi Azure Key Vault — samouczki i dokumentacja interfejsu API | Microsoft Docs
+description: Dowiedz się, jak za pomocą usługi Key Vault tworzyć i obsługiwać klucze, które umożliwiają uzyskiwanie dostępu do zasobów, aplikacji i rozwiązań przechowywanych w chmurze oraz ich szyfrowanie. Samouczki, dokumentacja interfejsu API i inne materiały.
 services: key-vault
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: key-vault
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.openlocfilehash: 86ac748d1c4a253b26cab426a72eb9f29545d86a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="key-vault-documentation"></a>Dokumentacja usługi Key Vault
 
