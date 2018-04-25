@@ -1,11 +1,11 @@
 ---
-title: "Często zadawane pytania dotyczące usługi Azure Active Directory | Microsoft Docs"
-description: "Często zadawane pytania dotyczące usługi Azure Active Directory zawierają odpowiedzi na typowe pytania związane z platformą Azure i usługą Azure Active Directory, zarządzaniem hasłami i uzyskiwaniem dostępu do aplikacji."
+title: Często zadawane pytania dotyczące usługi Azure Active Directory | Microsoft Docs
+description: Często zadawane pytania dotyczące usługi Azure Active Directory zawierają odpowiedzi na typowe pytania związane z platformą Azure i usługą Azure Active Directory, zarządzaniem hasłami i uzyskiwaniem dostępu do aplikacji.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 80df81f365ac884bc1f44268e615975407f485f0
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 83586cff59d5beb7c48bc6bb8b72fd09e4d37bf8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-active-directory-faq"></a>Często zadawane pytania dotyczące usługi Azure Active Directory
 Azure Active Directory (Azure AD) jest kompleksowym rozwiązaniem typu tożsamość jako usługa (IDaaS, Identity as a Service), które obejmuje wszystkie aspekty tożsamości, zarządzania dostępem i bezpieczeństwa.
@@ -119,11 +119,11 @@ Więcej informacji można znaleźć w temacie [Wprowadzenie do zarządzania has�
 
 **Odpowiedź:** tak, jeśli włączysz funkcję zapisywania zwrotnego haseł, operacje na hasłach wykonywane przez administratora będą zwrotnie zapisywane w środowisku lokalnym.  
 
-Aby uzyskać więcej odpowiedzi na pytania związane z hasłami, zobacz [Często zadawane pytania dotyczące zarządzania hasłami](active-directory-passwords-faq.md).
+Aby uzyskać więcej odpowiedzi na pytania związane z hasłami, zobacz [Często zadawane pytania dotyczące zarządzania hasłami](authentication/active-directory-passwords-faq.md).
 - - -
 **Pytanie: co zrobić, jeśli chcę zmienić hasło usługi Office 365/Azure AD, a nie pamiętam istniejącego hasła?**
 
-**Odpowiedź:** w takiej sytuacji istnieje kilka opcji.  Użyj funkcji samoobsługowego resetowania haseł (SSPR), jeśli jest dostępna.  To, czy funkcja samoobsługowego resetowania haseł działa, zależy od tego, jak została skonfigurowana.  Aby uzyskać więcej informacji, zobacz [Jak działa portal resetowania haseł](active-directory-passwords-best-practices.md).
+**Odpowiedź:** w takiej sytuacji istnieje kilka opcji.  Użyj funkcji samoobsługowego resetowania haseł (SSPR), jeśli jest dostępna.  To, czy funkcja samoobsługowego resetowania haseł działa, zależy od tego, jak została skonfigurowana.  Aby uzyskać więcej informacji, zobacz [Jak działa portal resetowania haseł](authentication/howto-sspr-deployment.md).
 
 Jeśli jesteś użytkownikiem usługi Office 365, Twój administrator może zresetować hasło, wykonując kroki opisane w artykule [Resetowanie haseł użytkowników](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US).
 

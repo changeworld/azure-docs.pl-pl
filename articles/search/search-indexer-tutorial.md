@@ -1,25 +1,18 @@
 ---
-title: "Samouczek dotyczący indeksowania baz danych Azure SQL Database w usłudze Azure Search | Microsoft Docs"
-description: "Bazę danych Azure SQL Database można przeszukiwać w celu wyodrębniania danych z możliwością wyszukiwania i wypełniania indeksu usługi Azure Search."
-services: search
-documentationcenter: 
+title: Samouczek dotyczący indeksowania baz danych Azure SQL Database w usłudze Azure Search | Microsoft Docs
+description: Bazę danych Azure SQL Database można przeszukiwać w celu wyodrębniania danych z możliwością wyszukiwania i wypełniania indeksu usługi Azure Search.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: cgronlun
 ms.service: search
 ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: tutorial
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f123b4f5d0a51a4ab5015a2a0008a76fbfa0318e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Jak przeszukiwać bazę danych Azure SQL Database przy użyciu indeksatorów usługi Azure Search
 
@@ -95,7 +88,7 @@ Klucz i punkt końcowy usługi wyszukiwania można znaleźć w portalu. Klucz za
 4. Skopiuj i wklej ją jako pierwszy wpis do pliku **appsettings.json** w programie Visual Studio.
 
   > [!Note]
-  > Nazwa usługi jest częścią punktu końcowego, który obejmuje element search.windows.net. Jeśli Cię to interesuje, możesz zobaczyć pełen adres URL w obszarze **Podstawy** na stronie przeglądu. Adres URL wygląda podobnie do następującego przykładu: https://nazwa-usługi.search.windows.net
+  > Nazwa usługi jest częścią punktu końcowego, który obejmuje element search.windows.net. Jeśli Cię to interesuje, możesz zobaczyć pełen adres URL w obszarze **Podstawy** na stronie przeglądu. Adres URL wygląda podobnie do następującego przykładu: https://your-service-name.search.windows.net
 
 5. Po lewej stronie w obszarze **Ustawienia** > **Klucze** skopiuj jeden z kluczy administratora i wklej go jako drugi wpis w pliku **appsettings.json**. Klucze to ciągi znaków alfanumerycznych, które są generowane podczas aprowizowania usługi i są wymagane do uzyskiwania autoryzowanego dostępu do operacji usługi. 
 

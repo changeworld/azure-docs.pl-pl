@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7c14b241155e10f0bb325b50819e2277622e4dff
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Samouczek: wiązanie istniejącego niestandardowego certyfikatu protokołu SSL z usługą Azure Web Apps
 
@@ -149,7 +149,7 @@ Jeśli używasz usług IIS lub programu _Certreq.exe_ do wygenerowania swojego �
 
 ### <a name="upload-your-ssl-certificate"></a>Przekazywanie certyfikatu protokołu SSL
 
-Aby przekazać certyfikat protokołu SSL, kliknij przycisk **Certyfikaty SSL** w lewym obszarze nawigacji aplikacji internetowej.
+Aby przekazać certyfikat protokołu SSL, kliknij pozycję **Ustawienia protokołu SSL** w lewym obszarze nawigacji aplikacji internetowej.
 
 Kliknij pozycję **Przekaż certyfikat**. 
 
@@ -159,7 +159,7 @@ Kliknij pozycję **Przekaż**.
 
 ![Przekazywanie certyfikatu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
-Po zakończeniu przekazywania Twojego certyfikatu przez usługę App Service zostanie on wyświetlony na stronie **Certyfikaty protokołu SSL**.
+Po zakończeniu przekazywania certyfikatu przez usługę App Service zostanie on wyświetlony na stronie **Ustawienia protokołu SSL**.
 
 ![Przekazano certyfikat](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
@@ -216,7 +216,7 @@ Teraz pozostało tylko upewnienie się, że protokół HTTPS działa dla domeny 
 
 Domyślnie każda osoba nadal może uzyskać dostęp do Twojej aplikacji internetowej przy użyciu protokołu HTTP. Możesz przekierować wszystkie żądania HTTP do portu HTTPS.
 
-Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Domeny niestandardowe**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
+Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Ustawienia protokołu SSL**. Następnie w pozycji **Tylko HTTPS** wybierz opcję **Włączone**.
 
 ![Wymuszanie protokołu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -225,6 +225,16 @@ Po zakończeniu operacji przejdź do dowolnego adresu URL protokołu HTTP, któr
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
 - `http://www.contoso.com`
+
+## <a name="enforce-tls-1112"></a>Wymuszanie protokołu TLS 1.1/1.2
+
+Aplikacja domyślnie umożliwia korzystanie z protokołu [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0, który nie jest już uznawany za bezpieczny przez standardy branżowe, takie jak [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). Aby wymusić nowsze wersje protokołu TLS, wykonaj następujące kroki:
+
+Na stronie aplikacji internetowej, w obszarze nawigacji po lewej stronie, wybierz pozycję **Ustawienia protokołu SSL**. Następnie w obszarze **wersji protokołu TLS** wybierz minimalną wersję protokołu TLS do użycia.
+
+![Wymuszanie protokołu HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+
+Po ukończeniu operacji aplikacja odrzuca wszystkie połączenia z niższymi wersjami protokołu TLS.
 
 ## <a name="automate-with-scripts"></a>Automatyzowanie przy użyciu skryptów
 

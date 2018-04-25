@@ -1,25 +1,20 @@
 ---
-title: "Tworzenie indeksu (portal — usługi Azure Search) | Dokumentacja firmy Microsoft"
-description: "Tworzenie indeksu za pomocą portalu Azure."
-services: search
-manager: jhubbard
+title: Tworzenie indeksu (portal — usługa Azure Search) | Microsoft Docs
+description: Tworzenie indeksu przy użyciu witryny Azure Portal.
+manager: cgronlun
 author: heidisteen
-documentationcenter: 
-ms.assetid: 
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: heidist
-ms.openlocfilehash: a7d98ab0937a7d3f932d5df34c19ae091129804e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.openlocfilehash: ab0352b8c830e875afc9b1d1b006ba4d2a512d7a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Tworzenie indeksu usługi Azure Search przy użyciu portalu Azure
+# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Tworzenie indeksu usługi Azure Search przy użyciu witryny Azure Portal
 > [!div class="op_single_selector"]
 > * [Omówienie](search-what-is-an-index.md)
 > * [Portal](search-create-index-portal.md)
@@ -28,86 +23,86 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-W portalu Azure, aby prototypu za pomocą projektanta wbudowanych indeks lub Utwórz [indeksu wyszukiwania](search-what-is-an-index.md) do uruchamiania w usłudze Azure Search. 
+Użyj wbudowanego projektanta indeksów w witrynie Azure Portal, aby utworzyć [indeks wyszukiwania](search-what-is-an-index.md) lub jego prototyp w celu uruchomienia w usłudze Azure Search. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym artykule przyjęto [subskrypcji platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) i [usługi Azure Search](search-create-service-portal.md).  
+Ten artykuł zakłada, że użytkownik posiada [subskrypcję platformy Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) i [usługę Azure Search](search-create-service-portal.md).  
 
 ## <a name="find-your-search-service"></a>Znajdowanie usługi wyszukiwania
-1. Zaloguj się do strony portalu systemu Azure i przejrzyj [wyszukiwania usługi dla subskrypcji](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
+1. Zaloguj się na stronie witryny Azure Portal i zapoznaj z [usługami wyszukiwania powiązanymi z Twoją subskrypcją](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 2. Wybierz swoją usługę Azure Search.
 
-## <a name="name-the-index"></a>Nazwa indeksu
+## <a name="name-the-index"></a>Nazywanie indeksu
 
-1. Kliknij przycisk **Dodaj indeks** przycisku w pasku poleceń u góry strony.
-2. Nazwa indeksu usługi Azure Search. 
-   * Zaczynać się literą.
-   * Użyj tylko małe litery, cyfry i łączniki ("-").
-   * Ogranicz nazwę do 60 znaków.
+1. Kliknij przycisk **Dodaj indeks** na pasku poleceń u góry strony.
+2. Nadaj nazwę indeksowi usługi Azure Search. 
+   * Wpisywanie zacznij od litery.
+   * Użyj tylko małych liter, cyfr i łączników („-”).
+   * Ogranicz długość nazwy do 60 znaków.
 
-  Nazwa indeksu staje się częścią adresu URL punktu końcowego używane w przypadku połączeń do indeksu i wysyłania żądań HTTP w interfejsu API REST usługi Azure Search.
+  Nazwa indeksu staje się częścią adresu URL punktu końcowego używanego w przypadku połączeń z indeksem i wysyłania żądań HTTP za pomocą interfejsu API REST usługi Azure Search.
 
 ## <a name="define-the-fields-of-your-index"></a>Definiowanie pól indeksu
 
-Skład indeksu obejmuje *pola kolekcji* definiuje danych z możliwością wyszukiwania w indeksie. W szczególności określa struktury dokumentów, które można przekazać oddzielnie. Kolekcja pól zawiera wymagane i opcjonalne pola o nazwie i wypełniana atrybuty indeksu, aby określić, jak można użyć pola.
+Kompozycja indeksu obejmuje *kolekcję pól*, która definiuje dane z możliwością wyszukiwania w indeksie. Dokładniej mówiąc, określa strukturę dokumentów, które są przekazywane oddzielnie. Kolekcja pól zawiera wymagane i opcjonalne pola (nazwane i wpisane) z atrybutami indeksu określającymi, w jaki sposób pole może zostać użyte.
 
-1. W **Dodawanie indeksu** bloku, kliknij przycisk **pola >** Aby wysunąć blok definicji pola. 
+1. W bloku **Dodawanie indeksu** kliknij pozycję **Pola**, aby wysunąć blok definicji pola. 
 
-2. Zaakceptuj wygenerowany *klucza* pola typu typem Edm.String. Domyślnie pole o nazwie *identyfikator* , ale można ją zmienić, tak długo, jak spełnia ciąg [reguły nazewnictwa](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Pole klucza jest wymagana dla każdego indeksu usługi Azure Search i musi być ciągiem.
+2. Zaakceptuj wygenerowane pole *klucza* typu Edm.String. Domyślnie pole nosi nazwę *id*, ale można ją zmienić, o ile ciąg spełnia [reguły nazewnictwa](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Pole klucza jest wymagane dla każdego indeksu usługi Azure Search i musi mieć postać ciągu.
 
-3. Dodaj pola, aby w pełni określić dokumenty, które możesz przekazać. Jeśli dokumenty składają się z *identyfikator*, *nazwa hoteli*, *adres*, *miasta*, i *region*, utworzyć odpowiednie pole dla każdej z nich w indeksie. Przegląd [projektowania wskazówki zawarte w poniższej sekcji](#design) pomocy podczas ustawiania atrybutów.
+3. Dodaj pola, aby w pełni określić dokumenty, które chcesz przekazać. Jeśli dokumenty składają się z pól *id*, *nazwa hotelu*, *adres*, *miasto* i *region*, utwórz odpowiednie pole dla każdego z nich w indeksie. Zapoznaj się ze [wskazówkami projektowania zawartymi w poniższej sekcji](#design), aby uzyskać pomoc podczas ustawiania atrybutów.
 
-4. Opcjonalnie dodaj pola, które są używane wewnętrznie w wyrażeniach filtru. Można ustawić atrybutów pola do wykluczenia pola z operacji wyszukiwania.
+4. Opcjonalnie dodaj dowolne pola, które są używane wewnętrznie w wyrażeniach filtru. Atrybuty pola można ustawić w taki sposób, aby wykluczały pola z operacji wyszukiwania.
 
-5. Gdy skończysz, kliknij przycisk **OK** zapisu i tworzenia indeksu.
+5. Po zakończeniu kliknij przycisk **OK**, aby zapisać i utworzyć indeks.
 
-## <a name="tips-for-adding-fields"></a>Porady dotyczące — Dodawanie pól
+## <a name="tips-for-adding-fields"></a>Porady dotyczące dodawania pól
 
-Tworzenie indeksu w portalu jest znacznym klawiatury. Wykonując ten przepływ pracy, należy zminimalizować kroki:
+Tworzenie indeksu w portalu jest czasochłonne. Aby maksymalnie ograniczyć liczbę wykonywanych kroków, postępuj według następującego przepływu pracy:
 
-1. Najpierw należy utworzyć w oknie Lista pól, wprowadzając nazwy i ustawianie typów danych.
+1. Najpierw utwórz listę pól, wprowadzając nazwy i ustawienia typów danych.
 
-2. Następnie użyj pól wyboru w górnej części każdego atrybutu w celu zbiorczego ustawienie dla wszystkich pól i selektywnie wyczyścić pola kilka pól, które nie wymagają. Na przykład ciąg pola są zazwyczaj można wyszukiwać. Tak, można kliknąć **pobieranie** i **wyszukiwanie** zarówno zwracać wartości pola w wynikach wyszukiwania, a także umożliwia wyszukiwanie pełnotekstowe pola. 
+2. Użyj pól wyboru w górnej części każdego atrybutu w celu zbiorczego włączenia ustawień dla wszystkich pól, a następnie wyczyść kilka wybranych pól wyboru, które tego nie wymagają. Na przykład pola ciągów zazwyczaj mogą być wyszukiwane. W związku z tym możesz kliknąć pozycje **Możliwość pobierania** i **Możliwość wyszukiwania**, aby zwrócić wartości pól w wynikach wyszukiwania, a także umożliwić wyszukiwanie pełnotekstowe pola. 
 
 <a name="design"></a>
-## <a name="design-guidance-for-setting-attributes"></a>Wskazówki dotyczące projektowania do ustawiania atrybutów
+## <a name="design-guidance-for-setting-attributes"></a>Wskazówki dotyczące projektowania ustawień atrybutów
 
-Chociaż w dowolnym momencie można dodawać nowe pola, istniejące definicje pól są zablokowane na indeks przez czas ich istnienia. Z tego powodu Deweloperzy zazwyczaj korzystanie z portalu Tworzenie prostego indeksów, testy pomysłów lub za pomocą portalu stron do odszukania ustawienie. Częste iteracji w projekt indeksu jest bardziej wydajne, jeśli wykonujesz podejście oparte na kodzie, dzięki czemu można łatwo odtworzyć indeksu.
+Chociaż możesz w dowolnym momencie dodać nowe pola, istniejące definicje pól są zablokowane przez cały czas istnienia indeksu. Z tego powodu deweloperzy zazwyczaj używają portalu do tworzenia prostych indeksów, testowania pomysłów lub używania stron portalu w celu wyszukania ustawień. Częsta iteracja po projekcie indeksu jest bardziej wydajna, jeśli stosujesz podejście oparte na kodzie, które pozwala na odbudowanie indeksu w prosty sposób.
 
-Analizatory i sugestorów są skojarzone z polami przed zapisaniem indeksu. Należy kliknąć przycisk za pośrednictwem każdej karty stronę, aby dodać analizatorów języka lub sugestorów do definicji indeksu.
+Analizatory i sugestory są kojarzone z polami przed zapisaniem indeksu. Aby dodać analizatory lub sugestory języka do definicji indeksu, należy kliknąć każdą stronę z kartami.
 
-Pól ciągów często są oznaczone jako **wyszukiwanie** i **pobieranie**.
+Pola ciągów są często oznaczone jako **Możliwość sortowania** i **Możliwość pobierania**.
 
-Pola używane, aby zawęzić wyniki wyszukiwania zawierają **sortowanie**, **Filterable**, i **aspektów**.
+Pola używane w celu zawężenia wyników wyszukiwania zawierają oznaczenia **Możliwość sortowania**, **Możliwość filtrowania** i **Możliwość tworzenia aspektów**.
 
-Atrybuty pól określają, jak używane pola, np. czy jest używana w wyszukiwania pełnotekstowego, nawigacji aspektowej, sortowanie i tak dalej. W poniższej tabeli opisano każdy atrybut.
+Atrybuty pól określają, jak używane jest dane pole, np. czy jest używane w wyszukiwaniu pełnotekstowym, nawigacji aspektowej, operacjach sortowania i tak dalej. Następująca tabela zawiera opis każdego atrybutu.
 
 |Atrybut|Opis|  
 |---------------|-----------------|  
-|**Wyszukiwanie**|Pełnotekstowe wyszukiwanie może ulec leksykalne analizy, takich jak dzielenia wyrazów podczas indeksowania. Jeśli ustawisz wyszukiwanie pola wartości, takich jak "day słoneczna" wewnętrznie go zostanie podzielony na poszczególnych tokeny "Słoneczna" i "day". Aby uzyskać więcej informacji, zobacz [jak Pełna działa wyszukiwania tekstu](search-lucene-query-architecture.md).|  
-|**Filtrowanie**|Zawartymi w **$filter** zapytania. Można filtrować polami typu `Edm.String` lub `Collection(Edm.String)` nie zostały poddane dzielenia wyrazów, więc porównania dla tylko dokładne dopasowania. Na przykład jeśli ustawisz takiego pola f "słoneczna dzień" `$filter=f eq 'sunny'` znajdziesz żadnych wyników, ale `$filter=f eq 'sunny day'` będzie. |  
-|**Sortowanie**|Domyślnie system sortujące wyniki według wyników, ale można skonfigurować sortowania na podstawie pól w dokumentach. Pola typu `Collection(Edm.String)` nie może być **sortowanie**. |  
-|**Tworzenie aspektów**|Zwykle używanych w prezentacji wyników wyszukiwania, która zawiera liczby trafień według kategorii (na przykład hotele w określonym mieście). Nie można użyć tej opcji z polami typu `Edm.GeographyPoint`. Pola typu `Edm.String` , które są **filtrowanie**, **sortowanie**, lub **aspektów** może mieć maksymalnie 32 kilobajty długości. Aby uzyskać więcej informacji, zobacz [Create Index (interfejsu API REST)](https://docs.microsoft.com/rest/api/searchservice/create-index).|  
-|**klucz**|Unikatowy identyfikator dla dokumentów w indeksie. Należy wybrać dokładnie jedno pole jako pole klucza i musi być typu `Edm.String`.|  
-|**Pobieranie**|Określa, czy pole może być zwracany w wynikach wyszukiwania. Jest to przydatne, jeśli chcesz użyć pola (takich jak *marża*) jako filtru, sortowania, lub oceniania mechanizmu, ale nie ma pola, które mają być widoczne dla użytkownika końcowego. Ten atrybut musi być `true` dla `key` pola.|  
+|**Wyszukiwanie**|Wyszukiwanie pełnotekstowe, które można poddawać analizie leksykalnej, takiej jak dzielenie wyrazów podczas indeksowania. Ustawienie wartości „sunny day” dla pola z możliwością wyszukiwania spowoduje podział na dwa oddzielne tokeny „sunny” i „day”. Aby uzyskać więcej informacji, zobacz [Jak działa wyszukiwanie pełnotekstowe](search-lucene-query-architecture.md).|  
+|**Filtrowanie**|Odwołania do tego atrybutu znajdują się w zapytaniach **$filter**. Pola z możliwością filtrowania typu `Edm.String` lub `Collection(Edm.String)` nie są poddawane dzieleniu wyrazów, więc porównania dotyczą tylko dokładnych dopasowań. Ustawienie pola filtrowania na wartość „sunny day” spowoduje, że pole typu `$filter=f eq 'sunny'` nie wyświetli żadnych wyników, ale `$filter=f eq 'sunny day'` już tak. |  
+|**Sortowanie**|Domyślnie system sortuje pozycje według wyników, ale można również ustawić sortowanie według poszczególnych pól w dokumentach. Pola typu `Collection(Edm.String)` nie mogą być **sortowane**. |  
+|**Tworzenie aspektów**|Zwykle używany w prezentacji wyników wyszukiwania, która zawiera liczbę trafień według kategorii (na przykład hotele znajdujące się w określonym mieście). Nie można używać tej opcji z polami typu `Edm.GeographyPoint`. Pola typu `Edm.String` z możliwością **filtrowania**, **sortowania** lub **tworzenia aspektów** mogą mieć maksymalnie 32 kilobajty długości. Aby uzyskać więcej informacji, zobacz [Create Index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Tworzenie indeksu [interfejs REST API]).|  
+|**Klucz**|Unikatowy identyfikator dokumentów w indeksie. Można wybrać tylko jedno pole klucza i musi ono być typu `Edm.String`.|  
+|**Pobieranie**|Określa, czy pole może być zwracane w wynikach wyszukiwania. Jest przydatny, jeśli chcesz użyć pola (np. *marża zysku*) z możliwością filtrowania, sortowania lub oceniania, ale nie chcesz, aby to pole było widoczne dla użytkownika końcowego. Ten atrybut musi przyjmować wartość `true` dla pól typu `key`.|  
 
-## <a name="create-the-hotels-index-used-in-example-api-sections"></a>Tworzenie indeksu hotels używane w sekcjach interfejsu API przykład
+## <a name="create-the-hotels-index-used-in-example-api-sections"></a>Tworzenie indeksu „hotele” używanego w przykładowych sekcjach dotyczących interfejsu API
 
-Azure dokumentacji interfejsu API Search przykłady kodu, oferujący funkcje prostą *hotele* indeksu. Poniższe zrzuty ekranu, zawiera definicję indeksu, łącznie z analizatora języka francuskiego, określona w definicji indeksu, który można odtworzyć jako ćwiczenia, w portalu.
+Dokumentacja interfejsu API usługi Azure Search zawiera przykłady kodu korzystającego z prostego indeksu *hotele*. Na poniższych zrzutach ekranu przedstawiono definicję indeksu, w tym analizator języka francuskiego określony podczas definiowania indeksu, który można odtworzyć jako ćwiczenie praktyczne w portalu.
 
 ![](./media/search-create-index-portal/field-definitions.png)
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu indeksu usługi Azure Search, można przenieść do następnego kroku: [przekazywanie danych z możliwością wyszukiwania w indeksie](search-what-is-data-import.md).
+Po utworzeniu indeksu usługi Azure Search można przejść do następnego kroku: [przekazywanie danych z możliwością wyszukiwania do indeksu](search-what-is-data-import.md).
 
-Alternatywnie możesz można również Przyjrzyjmy się głębiej indeksów. Oprócz kolekcji pól Indeks określa również analizatory, sugestorów oceniania profile i ustawienia specyfikacji CORS. Portal zawiera karty do definiowania często spotykanych elementów: pola, analizatory i sugestorów. Aby utworzyć lub zmodyfikować inne elementy, można użyć interfejsu API REST lub zestawu .NET SDK.
+Można również dowiedzieć się więcej na temat indeksów. Oprócz kolekcji pól indeks określa również analizatory, sugestory, profile oceniania i ustawienia specyfikacji CORS. Portal zawiera strony z kartami umożliwiające definiowanie najczęściej występujących elementów: pól, analizatorów i sugestorów. Aby utworzyć lub zmodyfikować inne elementy, można użyć interfejsu API REST lub zestawu .NET SDK.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
  [Jak działa wyszukiwanie pełnotekstowe](search-lucene-query-architecture.md)  
- [Usługi interfejsu API REST wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/) [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [Interfejs API REST usługi Search](https://docs.microsoft.com/rest/api/searchservice/) [Zestaw .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
 

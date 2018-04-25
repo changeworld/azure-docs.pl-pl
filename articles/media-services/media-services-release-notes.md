@@ -554,7 +554,7 @@ Nowość w wersji listopada zestawu SDK to następujące funkcje:
 [omówienie szablon licencji PlayReady usług Media]: http://msdn.microsoft.com/library/azure/dn783459.aspx
 [Stream storage-encrypted content]: http://msdn.microsoft.com/library/azure/dn783451.aspx
 [Azure portal]: https://portal.azure.com
-[Dynamiczne tworzenie pakietów]: http://msdn.microsoft.com/library/azure/jj889436.aspx
+[dynamicznego tworzenia pakietów]: http://msdn.microsoft.com/library/azure/jj889436.aspx
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: http://msdn.microsoft.com/library/azure/dn189154.aspx
 [ponów logikę w zestawie SDK usługi multimediów dla platformy .NET]: http://msdn.microsoft.com/library/azure/dn745650.aspx

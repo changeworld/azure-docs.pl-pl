@@ -11,14 +11,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2fb966d92dec713d5bf5ca48e8d15ae489227739
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c0db53a8eadefe661837ab0dbc84fd2eb4bf6057
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Samouczek: tworzenie aplikacji internetowej platformy .NET Core i usługi SQL Database w usłudze Azure App Service
 
@@ -46,8 +46,8 @@ Omawiane kwestie:
 
 W celu ukończenia tego samouczka:
 
-1. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
-1. [Zainstaluj zestaw SDK 1.1.2 platformy .NET Core](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.2-download.md)
+* [Zainstaluj oprogramowanie Git](https://git-scm.com/)
+* [Zainstaluj program .NET Core](https://www.microsoft.com/net/core/)
 
 ## <a name="create-local-net-core-app"></a>Tworzenie lokalnej aplikacji .NET Core
 
@@ -146,7 +146,7 @@ az sql db create --resource-group myResourceGroup --server <server_name> --name 
 Zastąp poniższe parametry użytym wcześniej ciągiem *\<nazwa_serwera>*, *\<nazwa_bazy_danych>* i *\<hasło_bazy_danych>*.
 
 ```
-Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persist Security Info=False;User ID=<db_username>;Password=<db_password>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
 ```
 
 To są parametry połączenia dla aplikacji .NET Core. Skopiuj je w celu późniejszego użycia.
@@ -201,7 +201,7 @@ if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
             options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
 else
     services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlite("Data Source=MvcMovie.db"));
+            options.UseSqlite("Data Source=localdatabase.db"));
 
 // Automatically perform database migration
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
@@ -214,7 +214,8 @@ Wywołanie `Database.Migrate()` jest pomocne, gdy działa na platformie Azure, p
 Zapisz zmiany, a następnie zatwierdź je w repozytorium Git. 
 
 ```bash
-git commit -am "connect to SQLDB in Azure"
+git add .
+git commit -m "connect to SQLDB in Azure"
 ```
 
 ### <a name="push-to-azure-from-git"></a>Wypychanie z narzędzia Git na platformę Azure
@@ -293,7 +294,7 @@ Wprowadź zmiany kodu, aby użyć właściwości `Done`. Dla uproszczenia w tym 
 
 Otwórz plik _Controllers\TodosController.cs_.
 
-Znajdź metodę `Create()` i dodaj element `Done` do listy właściwości w atrybucie `Bind`. Po zakończeniu podpis metody `Create()` będzie wyglądać podobnie do następującego kodu:
+Znajdź metodę `Create([Bind("ID,Description,CreatedDate")] Todo todo)` i dodaj element `Done` do listy właściwości w atrybucie `Bind`. Po zakończeniu podpis metody `Create()` będzie wyglądać podobnie do następującego kodu:
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -346,7 +347,8 @@ W przeglądarce przejdź do `http://localhost:5000/`. Teraz możesz dodać eleme
 ### <a name="publish-changes-to-azure"></a>Publikowanie zmian na platformie Azure
 
 ```bash
-git commit -am "added done field"
+git add .
+git commit -m "added done field"
 git push azure master
 ```
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e70e3d7b4cfd37cb28bda7df6210ad45415d9673
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dd2ff95c23b149cd8d5becf086c021060b0ec5a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: tworzenie aplikacji .NET Framework lub Core za pomocą interfejsu API programu Graph
 
@@ -46,19 +46,29 @@ Jeśli masz już zainstalowany program Visual Studio 2017, upewnij się, że zai
 
 Teraz sklonujemy aplikację interfejsu API programu Graph z repozytorium GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
 
-1. Otwórz okno terminalu narzędzia git, na przykład git bash, i za pomocą polecenia `cd` przejdź do katalogu roboczego.  
+1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
 
-2. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-gremlindotnet-getting-started.git
     ```
 
-3. Następnie otwórz program Visual Studio i otwórz plik rozwiązania.
+4. Następnie otwórz program Visual Studio i otwórz plik rozwiązania.
 
-4. Przywróć pakiety NuGet w projekcie. Powinny one obejmować sterownik Gremlin.Net, a także pakiet Newtonsoft.Json.
+5. Przywróć pakiety NuGet w projekcie. Powinny one obejmować sterownik Gremlin.Net, a także pakiet Newtonsoft.Json.
 
-5. Możesz także zainstalować sterownik Gremlin.Net 3.2.7 — ręcznie, za pomocą menedżera pakietów Nuget lub [narzędzia wiersza polecenia nuget](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools): 
+6. Możesz także zainstalować sterownik Gremlin.Net 3.2.7 — ręcznie, za pomocą menedżera pakietów Nuget lub [narzędzia wiersza polecenia nuget](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools): 
 
     ```bash
     nuget install Gremlin.Net -Version 3.2.7
@@ -66,7 +76,9 @@ Teraz sklonujemy aplikację interfejsu API programu Graph z repozytorium GitHub,
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Dokonajmy szybkiego przeglądu działań wykonywanych w aplikacji. Otwórz plik Program.cs i zobacz, że następujące wiersze kodu tworzą zasoby usługi Azure Cosmos DB. 
+Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string). 
+
+Wszystkie poniższe fragmenty kodu pochodzą z pliku Program.cs.
 
 * Ustaw parametry połączenia na podstawie konta utworzonego powyżej (wiersz 19): 
 
@@ -196,10 +208,7 @@ Teraz możesz wrócić do Eksploratora danych w witrynie Azure Portal, aby przeg
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego przewodnika Szybki start: 
-
-1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij nazwę utworzonego zasobu. 
-2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę zasobu do usunięcia, a następnie kliknij pozycję **Usuń**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

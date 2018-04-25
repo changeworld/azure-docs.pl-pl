@@ -11,11 +11,11 @@ ms.devlang: PowerShell
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 9649b79a8100597c73d9082e1314fc47e811b95c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 205e2c075f98ebb6fe7bd6156fd255d25c434681
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-single-azure-sql-database-using-powershell"></a>Tworzenie pojedynczej bazy danych Azure SQL Database za pomocą programu PowerShell
 
@@ -23,14 +23,14 @@ Program PowerShell umożliwia tworzenie zasobów Azure i zarządzanie nimi z poz
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 4.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 4.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-variables"></a>Tworzenie zmiennych
@@ -100,7 +100,7 @@ New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Inne samouczki Szybki start w tej kolekcji bazują na tym przewodniku Szybki start. 
+Inne samouczki Szybki start w tej kolekcji bazują na tym przewodniku Szybki start.
 
 > [!TIP]
 > Jeśli planujesz kontynuować pracę z kolejnymi samouczkami Szybki start, nie usuwaj zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego przewodnika Szybki start.
@@ -112,7 +112,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Teraz, gdy już masz bazę danych, możesz [nawiązać z nią połączenie i uruchamiać zapytania](sql-database-connect-query.md) za pomocą jednego z Twoich ulubionych narzędzi lub języków. 
+- Teraz, gdy już masz bazę danych, możesz [nawiązać z nią połączenie i uruchamiać zapytania](sql-database-connect-query.md) za pomocą jednego z Twoich ulubionych narzędzi lub języków.
 - Aby dowiedzieć się, jak zaprojektować pierwszą bazę danych, tworzyć tabele i wstawiać dane, zapoznaj się z jednym z następujących samouczków:
  - [Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS](sql-database-design-first-database.md)
   - [Projektowanie bazy danych Azure SQL Database i nawiązywanie połączenia za pomocą języka C# i narzędzia ADO.NET](sql-database-design-first-database-csharp.md)
