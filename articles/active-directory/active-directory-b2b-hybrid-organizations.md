@@ -1,47 +1,53 @@
 ---
-title: "Azure współpracy B2B usługi Active Directory dla organizacji hybrydowe | Dokumentacja firmy Microsoft"
-description: "Nadaj partnerom dostęp do lokalnego i zasobów w chmurze przy współpracy B2B usługi Azure AD"
+title: Współpraca B2B dla organizacji hybrydowego — Azure Active Directory | Dokumentacja firmy Microsoft
+description: Udostępnij partnerów lokalnie i w chmurze zasobów o współpracy B2B usługi Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.date: 12/15/2017
+ms.date: 04/20/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 2e690eeea6a9f7e1cc10830a913774daa3c66689
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
-ms.translationtype: MT
+ms.openlocfilehash: 0ccf3eb381f42849b48f3d149942be13380b3670
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure współpracy B2B usługi Active Directory dla organizacji hybrydowego
 
-W hybrydowego organizacji, w którym znajduje się zarówno lokalnie i w chmurze zasobów, możesz chcieć zapewnia partnerami zewnętrznymi dostęp do lokalnego i zasobów w chmurze. Aby uzyskać dostęp do zasobów lokalnych można zarządzać partnera kont lokalnie w lokalnym środowisku usługi Active Directory. Partnerzy Zaloguj się przy użyciu swoich poświadczeń konta partnera dostęp do zasobów organizacji. Aby udostępnić partnerów zasobów w chmurze przy użyciu tych samych poświadczeń, teraz umożliwia łączenie usługi Azure Active Directory (Azure AD) zsynchronizować konta partnera w chmurze jako użytkowników B2B usługi Azure AD (to znaczy użytkownikom UserType = gościa).
+Azure współpracy B2B usługi Active Directory (Azure AD) ułatwia zapewniają dostęp do aplikacji i zasobów w organizacji z partnerami zewnętrznymi. Dotyczy to nawet w konfiguracji hybrydowego którym znajduje się zarówno lokalnie, jak i zasobów w chmurze. Nie ma znaczenia, jeśli obecnie zarządzasz kont partner zewnętrznej lokalnie w systemie lokalnym tożsamości lub jeśli zarządzasz kont zewnętrznych w chmurze jako użytkowników B2B usługi Azure AD. Można teraz przyznać tym użytkownikom dostęp do zasobów w dowolnej lokalizacji przy użyciu tych samych poświadczeń logowania dla obu środowiskach.
 
-## <a name="identify-unique-attributes-for-usertype"></a>Identyfikowanie unikatowych atrybutach UserType
+## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych
 
-Przed włączeniem synchronizacji atrybut UserType, najpierw należy zdecydować, jak pochodzi ten atrybut UserType z lokalnej usługi Active Directory. Innymi słowy jakich parametrów w danym środowisku lokalnych są unikatowe dla sieci zewnętrznych współpracowników? Określ parametr, który odróżnia tych zewnętrznych współpracowników od członków organizacji.
+Jeśli Twoja organizacja korzysta z możliwości współpracy B2B usługi Azure AD z zaproszeniem dla gości z organizacji partnera do usługi Azure AD, możesz podać teraz te B2B użytkownikom dostępu do aplikacji lokalnych.
 
-Typowe są dwa podejścia dla tego celu:
+W przypadku aplikacji korzystających z uwierzytelniania opartego na SAML udostępnieniem tych aplikacji użytkownikom B2B za pośrednictwem portalu Azure do uwierzytelniania przy użyciu serwera Proxy aplikacji usługi Azure AD.
 
-- Należy określić atrybut usługi Active Directory nieużywane lokalnymi (na przykład extensionAttribute1) do użycia jako atrybutu źródłowego. 
-- Można również pochodzić atrybut UserType od innych właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako Gość, jeśli ich lokalne atrybut UserPrincipalName usługi Active Directory kończy się z domeną  *@partners.fabrikam123.org* .
+W przypadku aplikacji używających zintegrowanego uwierzytelniania systemu Windows (IWA) z ograniczonego delegowania protokołu Kerberos (KCD) również użyć do uwierzytelniania serwera Proxy usługi Azure AD. Jednak do autoryzacji do pracy, obiekt użytkownika jest wymagany w lokalnej Windows Server Active Directory. Istnieją dwie metody, w którym można tworzyć obiektów użytkownika lokalnego, które reprezentują użytkownika gościa B2B.
+
+- Można użyć programu Microsoft Identity Manager (MIM) 2016 z dodatkiem SP1 i agenta zarządzania programu MIM dla programu Microsoft Graph. (Wymaga subskrypcji usługi Azure AD Premium 1).
+- Możesz użyć skryptu programu PowerShell. (To rozwiązanie nie wymagają MIM i AD Premium).
+
+Aby uzyskać więcej informacji dotyczących sposobu wdrażania tych rozwiązań, zobacz [użytkowników Grant B2B w usłudze Azure AD dostęp do aplikacji lokalnych](active-directory-b2b-hybrid-cloud-to-on-premises.md).
+
+## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Udziel zarządzane lokalnie partnera kont dostępu do zasobów w chmurze
+
+Przed usługi Azure AD organizacje z lokalnych systemów tożsamości tradycyjnie udało partnera kont w ich katalogu lokalnego. Jeśli organizacja ma upewnij się, że partnerów nadal mieć dostęp podczas przenoszenia aplikacji i innych zasobów w chmurze. Najlepiej, jeśli chcesz tych użytkowników, aby użyć tego samego zestawu poświadczeń dostępu do zasobów w chmurze, jak i dla lokalnego. 
+
+Mamy teraz oferta metody, których można użyć Azure AD Connect do synchronizowania tych kont lokalnych do chmury "gości", gdzie kont zachowują się podobnie, takich jak użytkownicy B2B usługi Azure AD. To rozwiązanie działa, nawet jeśli masz system tożsamości lokalnych, umożliwiający partnerów użyć własnych zewnętrzne adresy e-mail jako nazwy logowania.
+
+Aby chronić dane firmy, można kontrolować dostęp do odpowiednich zasobów i konfigurowanie zasad autoryzacji, które traktować te gości inaczej niż pracowników.
+
+Aby uzyskać szczegóły implementacji, zobacz [Grant zarządzane lokalnie partnera kont dostępu do zasobów w chmurze przy użyciu współpracy B2B usługi Azure AD](active-directory-b2b-hybrid-on-premises-to-cloud.md).
  
-Atrybut szczegółowe wymagania można znaleźć [Włącz synchronizację UserType](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
+## <a name="next-steps"></a>Kolejne kroki
 
-## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Konfigurowanie usługi Azure AD Connect do synchronizacji użytkowników w chmurze
-
-Po zidentyfikowaniu unikatowy atrybut można skonfigurować usługi Azure AD Connect do synchronizowania tych użytkowników zdalnych do chmury jako użytkowników B2B usługi Azure AD (to znaczy użytkownikom UserType = gościa). Z punktu widzenia autoryzacji użytkownicy są nierozróżnialne od użytkowników B2B została utworzona za pośrednictwem procesu zaproszenia współpracy B2B usługi Azure AD.
-
-Aby uzyskać instrukcje dotyczące wdrażania, zobacz [Włącz synchronizację UserType](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype).
-
-## <a name="next-steps"></a>Następne kroki
-
-- Przegląd współpracy B2B usługi Azure AD, zobacz [co to jest współpraca B2B usługi Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-- Omówienie programu Azure AD Connect zobacz [integrację katalogów lokalnych z usługą Azure Active Directory](connect/active-directory-aadconnect.md).
+- [Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+- [Udziel zarządzane lokalnie partnera kont dostępu do zasobów w chmurze przy użyciu współpracy B2B usługi Azure AD](active-directory-b2b-hybrid-on-premises-to-cloud.md).
 

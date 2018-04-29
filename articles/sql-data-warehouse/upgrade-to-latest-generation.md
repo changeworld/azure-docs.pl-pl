@@ -1,24 +1,26 @@
 ---
 title: Uaktualnij do najnowszej generacji Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Kroki niezbędne do uaktualnienia usługi Azure SQL Data Warehouse najnowszej generacji Azure architektury sprzętu i magazynowania.
+description: Magazyn danych SQL Azure należy uaktualnić do najnowszej generacji Azure architektura sprzętu i magazynowania.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
-ms.services: sql-data-warehouse
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/02/2018
+ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 724f027f3f43cd0ad846210b511c8fc1af27153f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 673386ad236f596aa4c64fe2e8c885fb86afe170
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
+Magazyn danych SQL Azure należy uaktualnić do najnowszej generacji Azure architektura sprzętu i magazynowania.
 
-Teraz można bezproblemowo uaktualnić zoptymalizowane dla warstwy wydajności obliczeniowej w portalu Azure. Jeśli masz zoptymalizowane dla magazynu danych elastyczność zaleca się uaktualnienie najnowszej generacji Azure sprzętu i architektura magazynu rozszerzonego. Będzie można korzystać z większą wydajność, skalowalności i nieograniczony magazyn kolumnowym. 
+## <a name="why-upgrade"></a>Dlaczego uaktualnienie?
+Teraz można bezproblemowo uaktualnić zoptymalizowane dla warstwy wydajności obliczeniowej w portalu Azure. Jeśli masz zoptymalizowane dla magazynu danych elastyczność uaktualniania jest zalecane. Uaktualniając, można użyć najnowszej generacji Azure sprzętu i magazynu architektura rozszerzona. Można korzystać z większą wydajność, skalowalności i nieograniczony magazyn kolumnowym. 
 
 ## <a name="applies-to"></a>Dotyczy
 To uaktualnienie dotyczy hurtowni danych w zoptymalizowane dla warstwy wydajności elastyczność.
@@ -28,12 +30,6 @@ To uaktualnienie dotyczy hurtowni danych w zoptymalizowane dla warstwy wydajnoś
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-> [!NOTE]
-> Począwszy od 3 30, musi mieć [inspekcji na poziomie serwera](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing#subheading-8) wyłączone przed rozpoczęciem uaktualniania.
-> 
->
-
 > [!NOTE]
 > Jeśli istniejące zoptymalizowane pod kątem elastyczność magazynu danych nie jest w regionie, w przypadku, gdy zoptymalizowany pod kątem obliczeniowe jest dostępny, możesz [geograficznie — po ukończeniu przywracania zoptymalizowane dla obliczeń](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) za pomocą programu PowerShell do obsługiwanym regionie.
 > 

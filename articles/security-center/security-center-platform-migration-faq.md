@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 04/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 197b1a844291f2bef2dd35001d1e6b8807ac9805
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6a88fbadd8fbf05a4942e42b535770f6f068af28
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>Centrum zabezpieczeń platformy migracji — często zadawane pytania
 W wczesne 2017 czerwca Centrum zabezpieczeń Azure rozpoczęło się przy użyciu programu Microsoft Monitoring Agent do gromadzenia i przechowywania danych. Aby dowiedzieć się więcej, zobacz [migracji Platform Centrum zabezpieczeń Azure](security-center-platform-migration.md). Często zadawane pytania odpowiedzi na pytania dotyczące migracji platform.
@@ -122,8 +122,6 @@ Aby wybrać istniejący obszar roboczy analizy dzienników:
    >
 
    - Wybierz **anulować** Aby anulować operację.
-
-      ![Skonfiguruj ponownie monitorowanych maszyny wirtualne][6]
 
 ### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Co w przypadku programu Microsoft Monitoring Agent została już zainstalowana jako rozszerzenie na maszynie Wirtualnej?
 Centrum zabezpieczeń nie zastępują istniejące połączenia do użytkownika obszarów roboczych. Centrum zabezpieczeń przechowuje dane zabezpieczeń z maszyny Wirtualnej w obszarze roboczym już połączone. Centrum zabezpieczeń aktualizuje wersję rozszerzenia, aby uwzględnić identyfikator maszyny Wirtualnej do obsługi użycia Centrum zabezpieczeń zasobów platformy Azure.
@@ -248,4 +246,3 @@ Aby dowiedzieć się więcej na temat migracji platform Centrum zabezpieczeń, z
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/solutions.png
 [5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
-[6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png

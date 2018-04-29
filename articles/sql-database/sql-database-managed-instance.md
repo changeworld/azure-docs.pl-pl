@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: ba57530c5708216ca7c990025d513144dcdf82a4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -42,8 +42,6 @@ Wytyczne tabeli klucza różnice i Zaplanowaliśmy scenariusze użycia między S
 |Baza danych SQL Azure (pojedyncza lub puli) |**Pule elastyczne**: dla klientów, tworzenie nowych aplikacji z wieloma dzierżawcami SaaS lub celowo Przekształcanie istniejącej lokalnej aplikacji do wielodostępnych aplikacji SaaS, zaproponować elastyczne pule. Zalety tego modelu to: <br><ul><li>Konwersja modelu biznesowego, ze sprzedaży licencji sprzedaży subskrypcji usługi (dla ISV)</li></ul><ul><li>Łatwe i dowód punktor dzierżawy izolacji</li></ul><ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul><ul><li>Możliwość skalowania bez naciśnięcie twardych limitu</li></ul>**Pojedyncze bazy danych**: dla klientów, tworzenie nowych aplikacji innych niż wielodostępne SaaS, której obciążenie jest stabilne i przewidywalne, zaproponować pojedynczych baz danych. Zalety tego modelu to:<ul><li>Uproszczony model programowania skoncentrowane bazy danych</li></ul>  <ul><li>Przewidywalna wydajność dla każdej bazy danych</li></ul>|
 |Maszyny wirtualne SQL IaaS|W przypadku konieczności dostosowywania systemu operacyjnego lub serwer bazy danych, jak również klientów mających określone wymagania w zakresie uruchamianie aplikacji innych firm siebie z programem SQL Server (w tej samej maszyny Wirtualnej), klienci zaproponować maszyn wirtualnych SQL / IaaS jako najlepszego rozwiązania|
 |||
-
-<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>Jak zidentyfikować programowo wystąpienie usługi zarządzania
 
@@ -224,5 +222,5 @@ Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co jes
 
 - Dla funkcji i listy porównanie, zobacz [wspólne funkcje SQL](sql-database-features.md).
 - Aby uzyskać więcej informacji o konfiguracji sieci wirtualnej, zobacz [Konfiguracja sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-vnet-configuration.md).
-- Samouczek, która tworzy wystąpienie zarządzane i przywrócenie bazy danych z pliku kopii zapasowej, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-tutorial-portal.md).
+- Samouczek, która tworzy wystąpienie zarządzane i przywrócenie bazy danych z pliku kopii zapasowej, zobacz [utworzyć wystąpienia zarządzanego](sql-database-managed-instance-create-tutorial-portal.md).
 - Aby skorzystać z samouczka w zakresie używania usługi Azure Database Migration Service (DMS) do celów migracji, zobacz [Migracja wystąpień zarządzanych przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 502e3cefca5e2e60efe6a9875de0b63413bc4578
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5c37a693e1594f9afe40effba45d7b05a68fd49c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="restore-an-app-in-azure"></a>Przywracanie aplikacji na platformie Azure
 W tym artykule przedstawiono sposób przywracania aplikacji w [usłudze Azure App Service](../app-service/app-service-web-overview.md) , która została wcześniej utworzona kopia zapasowa (zobacz [kopii zapasowych aplikacji na platformie Azure](web-sites-backup.md)). Możesz przywrócić poprzedni stan aplikacji za pomocą jego połączonej bazy danych na żądanie lub Utwórz nową aplikację na podstawie jednej z aplikacji oryginalne kopie zapasowe. Usługa aplikacji Azure obsługuje następujące bazy danych dla kopii zapasowej i przywracania:
-- [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-- [Azure bazy danych MySQL)](https://azure.microsoft.com/en-us/services/mysql)
-- [Azure Database for PostgreSQL](https://azure.microsoft.com/en-us/services/postgres)
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [Azure bazy danych MySQL)](https://azure.microsoft.com/services/mysql)
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgres)
 - [MySQL w aplikacji](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 Przywracanie z kopii zapasowych jest dostępne dla aplikacji działających **standardowe** i **Premium** warstwy. Aby uzyskać informacji na temat skalowania aplikacji w górę, zobacz [skalowanie w górę aplikacji na platformie Azure](web-sites-scale.md). **Premium** warstwy pozwala większa liczba codziennych kopii zapasowych wykonywanych niż **standardowe** warstwy.

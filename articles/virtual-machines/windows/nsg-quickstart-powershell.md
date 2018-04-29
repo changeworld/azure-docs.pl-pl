@@ -1,11 +1,11 @@
 ---
-title: "Otwieranie portów z maszyną wirtualną przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak otworzyć port / utworzyć punktu końcowego maszyny Wirtualnej systemu Windows przy użyciu wdrożeń w trybie Menedżera zasobów platformy Azure i programu Azure PowerShell"
+title: Otwieranie portów z maszyną wirtualną przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak otworzyć port / utworzyć punktu końcowego maszyny Wirtualnej systemu Windows przy użyciu wdrożeń w trybie Menedżera zasobów platformy Azure i programu Azure PowerShell
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d9918992ef1ac46b3b000480b6be7e984f0858e1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b8eb36e4abad12cb46493846a024da00f9146d40
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Jak otworzyć porty i punktów końcowych do maszyny Wirtualnej na platformie Azure przy użyciu programu PowerShell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -29,7 +29,7 @@ Aby utworzyć grupę zabezpieczeń sieci i listy ACL zasady należy [najnowszą 
 Zaloguj się do konta platformy Azure:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 W poniższych przykładach zastąpić parametr własne wartości. Przykład nazwy parametrów uwzględnione *myResourceGroup*, *myNetworkSecurityGroup*, i *myVnet*.
@@ -92,7 +92,7 @@ Szybkie polecenia tutaj pozwala rozpocząć pracę z ruchem przepływać do masz
 
 Dla aplikacji sieci web wysokiej dostępności należy umieszczać maszyny wirtualne za usługą równoważenia obciążenia Azure. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, który umożliwia filtrowanie ruchu. Aby uzyskać więcej informacji, zobacz [jak załadować saldo maszyn wirtualnych systemu Linux na platformie Azure, aby utworzyć aplikację wysokiej dostępności](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 W tym przykładzie utworzono prosta Reguła zezwalająca na ruch HTTP. Można znaleźć informacje dotyczące tworzenia środowisk bardziej szczegółowe zawierają następujące artykuły:
 
 * [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)

@@ -1,11 +1,11 @@
 ---
 title: Wprowadzenie do uwierzytelniania dla aplikacji mobilnych w systemu Xamarin iOS
-description: "Dowiedz się, jak używać Mobile Apps do uwierzytelniania użytkowników aplikacji platformy Xamarin iOS za pomocą różnych dostawców tożsamości, obejmującej AAD, Google, Facebook, Twitter i Microsoft."
+description: Dowiedz się, jak używać Mobile Apps do uwierzytelniania użytkowników aplikacji platformy Xamarin iOS za pomocą różnych dostawców tożsamości, obejmującej AAD, Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.service: app-service-mobile
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: 1649d2bf4f3429f2f5f56bdabdfe9a015a115893
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: c2b77d7c9caab1c7ac13af5ccd50e992bcce1caf
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -116,7 +116,7 @@ W tej sekcji należy zmodyfikować aplikację, aby wyświetlić ekran logowania 
             return ResumeWithURL != null && ResumeWithURL(url);
         }
 6. Otwórz **Info.plist** pliku, przejdź do **typy adresu URL** w **zaawansowane** sekcji. Teraz skonfigurować **identyfikator** i **Schematy adresów URL** typ adresu URL i kliknij przycisk **Dodawanie adresu URL typu**. **Schematy adresów URL** powinna być taka sama jak Twoje {url_scheme_of_your_app}.
-7. W programie Visual Studio lub Xamarin Studio połączony z hostem Xamarin kompilacji na komputerze Mac, uruchamianie projektu klienta przeznaczonych dla określonego urządzenia lub emulatora. Sprawdź, czy aplikacja nie wyświetla żadnych danych.
+7. W programie Visual Studio, podłączone do hostów Mac lub Visual Studio dla komputerów Mac uruchamianie projektu klienta przeznaczonych dla określonego urządzenia lub emulatora. Sprawdź, czy aplikacja nie wyświetla żadnych danych.
    
     Wykonuje gestu odświeżania ściąganie w dół listę elementów, co spowoduje wyświetlenie ekranu logowania. Po pomyślnie zostały wprowadzone prawidłowe poświadczenia, aplikacja będzie wyświetlana lista zadań do wykonania i mogą wysyłać aktualizacje do danych.
 

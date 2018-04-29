@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/10/2018
-ms.openlocfilehash: f78a68704f1670b4670384931a07d9651cd646e3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6628ea218c4c7a9aacc0c2899c1ea4e5b6169b51
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Migrowanie serwera SQL do Azure wystąpienia bazy danych SQL zarządzane przy użyciu DMS
 Usługa Azure bazy danych migracji umożliwia migrację bazy danych z lokalnego wystąpienia programu SQL Server do [wystąpienia zarządzane bazy danych SQL Azure](../sql-database/sql-database-managed-instance.md) przestojów bliskie zeru. Aby uzyskać dodatkowe metody, które wymagają pewien Przestój, zobacz [migracji wystąpienie programu SQL Server do wystąpienia zarządzane bazy danych SQL Azure](../sql-database/sql-database-managed-instance-migrate.md).
@@ -43,7 +43,7 @@ Do ukończenia tego samouczka, musisz:
 - Utwórz udział sieciowy, który usługa migracji bazy danych Azure umożliwia tworzenie kopii zapasowej źródłowej bazy danych.
 - Upewnij się, że konto usługi uruchomione wystąpienie programu SQL Server źródła ma uprawnienia zapisu w udziale sieciowym, który został utworzony.
 - Zwróć uwagę użytkownika systemu Windows (i hasło), które ma uprawnienia pełnej kontroli w udziale sieciowym, utworzoną wcześniej. Usługa Azure bazy danych migracji personifikuje poświadczenia użytkownika, aby przekazać pliki kopii zapasowej do kontenera magazynu systemu Azure dla operacji przywracania.
-- Tworzenie kontenera obiektów blob i pobrać jego identyfikatora URI połączenia SAS, wykonując kroki opisane w artykule [zasobów Zarządzanie magazynu obiektów Blob Azure przy użyciu Eksploratora usługi Storage (wersja zapoznawcza)](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), należy wybrać wszystkie uprawnienia (Odczyt, zapis, usuwanie, listy) w oknie zasad Podczas tworzenia identyfikatora URI połączenia SAS. Zapewnia to usługa migracji bazy danych Azure dostęp do Twojego kontenera konta magazynu o przekazywaniu używany do migracji plików kopii zapasowej baz danych do wystąpienia zarządzane bazy danych SQL Azure
+- Tworzenie kontenera obiektu blob i pobrać jego identyfikatora URI, wykonując kroki opisane w artykule [zasobów zarządzania magazynu obiektów Blob Azure Eksplorator magazynu](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), pamiętaj zaznaczyć wszystkie uprawnienia (Odczyt, zapis, usuwanie, listy) w oknie zasad podczas Tworzenie Identyfikatora URI. Zapewnia to usługa migracji bazy danych Azure dostęp do Twojego kontenera konta magazynu o przekazywaniu używany do migracji plików kopii zapasowej baz danych do wystąpienia zarządzane bazy danych SQL Azure
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Rejestrowanie dostawcy zasobów Microsoft.DataMigration
 

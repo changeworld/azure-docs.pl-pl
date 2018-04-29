@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5b11c3cdf3eb457ade111d0908a2dac867ac1278
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 6dc5ce87e1e7a8629e96426701d4ac691fa4c687
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorowanie klastra usługi Kubernetes przy użyciu usługi Log Analytics
 
@@ -27,8 +27,8 @@ Ten samouczek (część 7 z 7) obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Pobieranie ustawień obszaru roboczego usługi Log Analytics
-> * Konfigurowanie agentów pakietu OMS w węzłach Kubernetes
-> * Uzyskiwanie dostępu do informacji monitorowania w portalu pakietu OMS lub witrynie Azure Portal
+> * Konfigurowanie agentów usługi Log Analytics w węzłach Kubernetes
+> * Uzyskiwanie dostępu do informacji monitorowania w portalu usługi Log Analytics lub w witrynie Azure Portal
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -38,7 +38,7 @@ Jeśli nie wykonano tych kroków, a chcesz kontynuować pracę, wróć do częś
 
 ## <a name="get-workspace-settings"></a>Pobieranie ustawień obszaru roboczego
 
-Gdy [portal pakietu OMS](https://mms.microsoft.com) będzie dostępny, przejdź do pozycji **Ustawienia** > **Połączone źródła** > **Serwery z systemem Linux**. Tu możesz znaleźć *identyfikator obszaru roboczego* i podstawowy lub pomocniczy *klucz obszaru roboczego*. Zanotuj te wartości. Będą one potrzebne do skonfigurowania agentów pakietu OMS w klastrze.
+Po uzyskaniu dostępu do [portalu usługi Log Analytics](https://mms.microsoft.com) przejdź do pozycji **Ustawienia** > **Połączone źródła** > **Serwery z systemem Linux**. Tu możesz znaleźć *identyfikator obszaru roboczego* i podstawowy lub pomocniczy *klucz obszaru roboczego*. Zanotuj te wartości. Będą one potrzebne do skonfigurowania agentów usługi Log Analytics w klastrze.
 
 ## <a name="create-kubernetes-secret"></a>Tworzenie wpisu tajnego rozwiązania Kubernetes
 
@@ -48,7 +48,7 @@ Zapisz ustawienia obszaru roboczego usługi Log Analytics we wpisie tajnym rozwi
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
 ```
 
-## <a name="set-up-oms-agents"></a>Konfigurowanie agentów pakietu OMS
+## <a name="set-up-log-analytics-agents"></a>Konfigurowanie agentów usługi Log Analytics
 
 Do skonfigurowania agentów monitorowania kontenerów w klastrze Kubernetes można użyć następującego pliku manifestu usługi Kubernetes. Umożliwia on utworzenie elementu [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) usługi Kubernetes, który uruchamia pojedyncze, identyczne zasobniki w każdym węźle klastra.
 
@@ -142,11 +142,11 @@ Po uruchomieniu agentów pozyskanie i przetworzenie danych przez usługę Log An
 
 ## <a name="access-monitoring-data"></a>Dostęp do danych monitorowania
 
-Dane monitorowania kontenera można wyświetlać i analizować za pomocą [rozwiązania Containers](../../log-analytics/log-analytics-containers.md) w portalu pakietu OMS lub w witrynie Azure Portal.
+Dane monitorowania kontenera można wyświetlać i analizować za pomocą [rozwiązania Containers](../../log-analytics/log-analytics-containers.md) w portalu usługi Log Analytics lub w witrynie Azure Portal.
 
-Aby zainstalować rozwiązanie Containers przy użyciu [portalu pakietu OMS](https://mms.microsoft.com), przejdź do **Galerii rozwiązań**. Następnie dodaj element **Rozwiązanie Containers**. Rozwiązanie Containers możesz też dodać z witryny [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
+Aby zainstalować rozwiązanie Containers przy użyciu [portalu usługi Log Analytics](https://mms.microsoft.com), przejdź do **Galerii rozwiązań**. Następnie dodaj element **Rozwiązanie Containers**. Rozwiązanie Containers możesz też dodać z witryny [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
-W portalu pakietu OMS poszukaj kafelka podsumowania **Containers** na pulpicie nawigacyjnym. Kliknij kafelek, aby wyświetlić szczegółowe informacje, w tym zdarzenia kontenera, błędy, stan, spis obrazów oraz użycie procesora i pamięci. Aby uzyskać bardziej szczegółowe informacje, kliknij wiersz w dowolnym kafelku lub [przeszukaj dzienniki](../../log-analytics/log-analytics-log-searches.md).
+W portalu usługi Log Analytics wyszukaj kafelek podsumowania **Containers** na pulpicie nawigacyjnym. Kliknij kafelek, aby wyświetlić szczegółowe informacje, w tym zdarzenia kontenera, błędy, stan, spis obrazów oraz użycie procesora i pamięci. Aby uzyskać bardziej szczegółowe informacje, kliknij wiersz w dowolnym kafelku lub [przeszukaj dzienniki](../../log-analytics/log-analytics-log-searches.md).
 
 ![Pulpit nawigacyjny rozwiązania Containers w portalu pakietu OMS](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
@@ -160,8 +160,8 @@ W tym samouczku przedstawiono sposób monitorowania klastra Kubernetes za pomoc�
 
 > [!div class="checklist"]
 > * Pobieranie ustawień obszaru roboczego usługi Log Analytics
-> * Konfigurowanie agentów pakietu OMS w węzłach Kubernetes
-> * Uzyskiwanie dostępu do informacji monitorowania w portalu pakietu OMS lub witrynie Azure Portal
+> * Konfigurowanie agentów usługi Log Analytics w węzłach Kubernetes
+> * Uzyskiwanie dostępu do informacji monitorowania w portalu usługi Log Analytics lub w witrynie Azure Portal
 
 
 Kliknij ten link, aby wyświetlić wstępnie utworzone przykładowe skrypty dla usługi Container Service.

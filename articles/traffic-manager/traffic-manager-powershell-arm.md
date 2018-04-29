@@ -1,6 +1,6 @@
 ---
-title: "Zarządzanie Menedżera ruchu na platformie Azure za pomocą programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Przy użyciu programu PowerShell dla Menedżera ruchu z usługi Azure Resource Manager"
+title: Zarządzanie Menedżera ruchu na platformie Azure za pomocą programu PowerShell | Dokumentacja firmy Microsoft
+description: Przy użyciu programu PowerShell dla Menedżera ruchu z usługi Azure Resource Manager
 services: traffic-manager
 documentationcenter: na
 author: kumudd
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 951e845e23a1ed0cbdc83fc24a97a545f00c52ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Przy użyciu programu PowerShell do zarządzania Menedżer ruchu
 
@@ -58,8 +58,8 @@ W poniższej tabeli opisano parametry:
 
 | Parametr | Opis |
 | --- | --- |
-| Nazwa |Nazwa zasobu dla zasobu profilu Menedżera ruchu. Profile w tej samej grupie zasobów muszą mieć unikatowe nazwy. Ta nazwa jest oddzielony od nazwy DNS dla zapytań DNS. |
-| Grupy zasobów o nazwie |Nazwa grupy zasobów zawiera zasób profilu. |
+| Name (Nazwa) |Nazwa zasobu dla zasobu profilu Menedżera ruchu. Profile w tej samej grupie zasobów muszą mieć unikatowe nazwy. Ta nazwa jest oddzielony od nazwy DNS dla zapytań DNS. |
+| ResourceGroupName |Nazwa grupy zasobów zawiera zasób profilu. |
 | TrafficRoutingMethod |Określa metodę routingu ruchu używany w celu określenia, który punkt końcowy jest zwracany w odpowiedzi do zapytania DNS. Możliwe wartości to "Performance", 'Ważone' lub 'Priority'. |
 | RelativeDnsName |Określa nazwę hosta część nazwy DNS podane przez ten profil Menedżera ruchu. Ta wartość jest połączona z nazwą domeny DNS, które są używane przez usługę Azure Traffic Manager do utworzenia w pełni kwalifikowaną nazwę (FQDN) profilu. Na przykład ustawienie wartości "contoso" staje się "contoso.trafficmanager.net." |
 | CZAS WYGAŚNIĘCIA |Określa DNS Time-to-Live (TTL), w sekundach. Ten czas wygaśnięcia informuje rozpoznawania nazw lokalnych DNS i klientów DNS, jak długo pamięci podręcznej odpowiedzi DNS dla tego profilu usługi Traffic Manager. |
@@ -122,7 +122,7 @@ W każdym przypadku:
 * Określanie "waga" jest opcjonalne. Wagi są używane tylko, jeśli profil jest skonfigurowany przy użyciu metody routingu ruchu "Ważone". W przeciwnym razie są ignorowane. Jeśli jest określony, wartość musi być liczbą z zakresu od 1 do 1000. Wartość domyślna to "1".
 * Określanie 'Priority' jest opcjonalna. Priorytety są używane tylko, jeśli profil jest skonfigurowany przy użyciu metody routingu ruchu 'Priority'. W przeciwnym razie są ignorowane. Prawidłowe są wartości z zakresu od 1 do 1000 o niższych wartościach, wskazując wyższy priorytet. Jeśli określone dla punktów końcowych, musi być określona dla wszystkich punktów końcowych. Pominięcie wartości domyślne, zaczynając od "1" są stosowane w kolejności, czy są wyświetlane punkty końcowe.
 
-### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Przykład 1: Dodawanie punktów końcowych aplikacji sieci Web przy użyciu`Add-AzureRmTrafficManagerEndpointConfig`
+### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Przykład 1: Dodawanie punktów końcowych aplikacji sieci Web przy użyciu `Add-AzureRmTrafficManagerEndpointConfig`
 
 W tym przykładzie, możemy utworzyć profil Menedżera ruchu i dodaj dwa punkty końcowe aplikacji sieci Web, przy użyciu `Add-AzureRmTrafficManagerEndpointConfig` polecenia cmdlet.
 
@@ -134,7 +134,7 @@ $webapp2 = Get-AzureRMWebApp -Name webapp2
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Przykład 2: Dodawanie punktu końcowego publicznego adresu IP za pomocą`New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Przykład 2: Dodawanie punktu końcowego publicznego adresu IP za pomocą `New-AzureRmTrafficManagerEndpoint`
 
 W tym przykładzie zasób publiczny adres IP jest dodane do profilu usługi Traffic Manager. Publiczny adres IP musi mieć nazwę DNS skonfigurowane i może być powiązana do karty Sieciowej maszyny wirtualnej lub równoważenia obciążenia.
 
@@ -153,7 +153,7 @@ Podczas określania zewnętrzne punkty końcowe:
 * Jeśli używana jest metoda routingu ruchu "Performance", "EndpointLocation" jest wymagany. W przeciwnym razie jest opcjonalne. Wartość musi być [Nazwa Nieprawidłowa regionu Azure](https://azure.microsoft.com/regions/).
 * "Waga" i 'Priority' są opcjonalne.
 
-### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Przykład 1: Dodawanie zewnętrzne punkty końcowe przy użyciu `Add-AzureRmTrafficManagerEndpointConfig` i`Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Przykład 1: Dodawanie zewnętrzne punkty końcowe przy użyciu `Add-AzureRmTrafficManagerEndpointConfig` i `Set-AzureRmTrafficManagerProfile`
 
 W tym przykładzie możemy utworzyć profil Menedżera ruchu, dodaj dwa zewnętrzne punkty końcowe i zatwierdzić zmiany.
 
@@ -164,7 +164,7 @@ Add-AzureRmTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManage
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Przykład 2: Dodawanie zewnętrzne punkty końcowe przy użyciu`New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Przykład 2: Dodawanie zewnętrzne punkty końcowe przy użyciu `New-AzureRmTrafficManagerEndpoint`
 
 W tym przykładzie dodamy zewnętrznego punktu końcowego do istniejącego profilu. Profil zostanie określona przy użyciu nazwy grupy profilu i zasobów.
 
@@ -183,7 +183,7 @@ Zagnieżdżone punkty końcowe zostały skonfigurowane w profilu nadrzędnej, pr
 * "Waga" i "Priority" są opcjonalne, jak w przypadku punkty końcowe systemu Azure.
 * Parametr "MinChildEndpoints" jest opcjonalny. Wartość domyślna to "1". Jeśli liczba dostępnych punktów końcowych spadnie poniżej tego progu, profil nadrzędnego uwzględnia profilu podrzędny "niższa" i przekierowywanie ruchu do punktów końcowych w profilu nadrzędnej.
 
-### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Przykład 1: Dodawanie zagnieżdżonych punktów końcowych przy użyciu `Add-AzureRmTrafficManagerEndpointConfig` i`Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Przykład 1: Dodawanie zagnieżdżonych punktów końcowych przy użyciu `Add-AzureRmTrafficManagerEndpointConfig` i `Set-AzureRmTrafficManagerProfile`
 
 W tym przykładzie firma Microsoft Tworzenie nowej usługi Traffic Manager nadrzędnym a podrzędnym profilów, Dodaj dziecko jako punktu końcowego zagnieżdżonych do nadrzędnego i zatwierdzić zmiany.
 
@@ -196,13 +196,25 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 Jednak w tym przykładzie firma Microsoft nie dodano żadnych punktów końcowych profilów podrzędnej lub nadrzędnej.
 
-### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Przykład 2: Dodawanie zagnieżdżonych punktów końcowych przy użyciu`New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Przykład 2: Dodawanie zagnieżdżonych punktów końcowych przy użyciu `New-AzureRmTrafficManagerEndpoint`
 
 W tym przykładzie dodania istniejący profil podrzędnych jako punktu końcowego zagnieżdżonych do istniejącego profilu nadrzędnej. Profil zostanie określona przy użyciu nazwy grupy profilu i zasobów.
 
 ```powershell
 $child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
 New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
+```
+
+## <a name="adding-endpoints-from-another-subscription"></a>Dodawanie punktów końcowych z innej subskrypcji
+
+Menedżer ruchu może współpracować z punktów końcowych z różnych subskrypcji. Musisz przełączyć się do subskrypcji z punktem końcowym, który chcesz dodać do pobierania danych wejściowych wymaganych do usługi Traffic Manager. Następnie należy przełączyć się do subskrypcji z profilem Menedżera ruchu i Dodaj do niej encpoint. Poniższym przykładzie pokazano, jak to zrobić za pomocą publicznego adresu IP.
+
+```powershell
+Set-AzureRmContext -SubscriptionId $EndpointSubscription
+$ip = Get-AzureRmPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
+
+Set-AzureRmContext -SubscriptionId $trafficmanagerSubscription
+New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
 ## <a name="update-a-traffic-manager-endpoint"></a>Aktualizowanie punktu końcowego Menedżera ruchu
@@ -212,7 +224,7 @@ Istnieją dwa sposoby aktualizacji istniejącego punktu końcowego Menedżera ru
 1. Przy użyciu profilu Menedżera ruchu `Get-AzureRmTrafficManagerProfile`, zaktualizować właściwości punktu końcowego w profilu i zatwierdź zmiany przy użyciu `Set-AzureRmTrafficManagerProfile`. Ta metoda ma tę zaletę, można zaktualizować więcej niż jeden punkt końcowy w ramach jednej operacji.
 2. Przy użyciu punktu końcowego Menedżera ruchu `Get-AzureRmTrafficManagerEndpoint`, zaktualizować właściwości punktu końcowego i zatwierdź zmiany przy użyciu `Set-AzureRmTrafficManagerEndpoint`. Ta metoda jest prostsza, ponieważ nie jest wymagane, przeprowadzane jest indeksowanie do tablicy punktów końcowych w profilu.
 
-### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>Przykład 1: Aktualizowanie punktów końcowych przy użyciu `Get-AzureRmTrafficManagerProfile` i`Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>Przykład 1: Aktualizowanie punktów końcowych przy użyciu `Get-AzureRmTrafficManagerProfile` i `Set-AzureRmTrafficManagerProfile`
 
 W tym przykładzie mamy zmodyfikować priorytet na dwa punkty końcowe w ramach istniejącego profilu.
 
@@ -223,7 +235,7 @@ $profile.Endpoints[1].Priority = 1
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>Przykład 2: Aktualizowanie punktu końcowego za pomocą `Get-AzureRmTrafficManagerEndpoint` i`Set-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>Przykład 2: Aktualizowanie punktu końcowego za pomocą `Get-AzureRmTrafficManagerEndpoint` i `Set-AzureRmTrafficManagerEndpoint`
 
 W tym przykładzie mamy zmodyfikować wagę jeden punkt końcowy w istniejącego profilu.
 
@@ -306,7 +318,7 @@ Ta sekwencja również mogą być przekazywane w potoku:
 Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzureRmTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 [Monitorowanie Menedżera ruchu](traffic-manager-monitoring.md)
 

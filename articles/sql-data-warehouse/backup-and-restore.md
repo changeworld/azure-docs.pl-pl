@@ -2,19 +2,19 @@
 title: Azure SQL Data Warehouse w kopii zapasowej i przywracania - migawki geograficznie nadmiarowego | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj magazynu kopii zapasowych danych do przywrócenia magazynu danych do punktu przywracania w regionie podstawowym. Użyj geograficznie nadmiarowego kopii zapasowych do przywrócenia w innym regionie geograficznym.
 services: sql-data-warehouse
-author: ronortloff
+author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
-ms.date: 04/11/2018
-ms.author: rortloff
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 21708f51d09d640721af196d2ffa91aede97ffb3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4f24aad95f13315eaeac790c9006ca00f61af69
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie w magazynie danych SQL Azure
 Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj magazynu kopii zapasowych danych do przywrócenia magazynu danych do punktu przywracania w regionie podstawowym. Użyj geograficznie nadmiarowego kopii zapasowych do przywrócenia w innym regionie geograficznym. 
@@ -55,9 +55,9 @@ Po upuszczeniu magazyn danych SQL Data Warehouse tworzy migawkę końcowego i za
 > 
 
 ## <a name="geo-backups"></a>Kopie zapasowe Geo
-Usługa SQL Data Warehouse wykonuje kopię zapasową geograficznie raz dziennie w celu [centrum danych sparowanego](../best-practices-availability-paired-regions.md). Cel punktu odzyskiwania dla przywracaniem geograficznym wynosi 24 godziny. Można przywrócić kopii zapasowej z magazynu geograficznie do serwera w regionie łączyć geo. Kopia zapasowa geograficznie gwarantuje, że można przywrócić magazynu danych, w przypadku, gdy nie masz dostępu do migawki w danym regionie podstawowym.
+Usługa SQL Data Warehouse wykonuje kopię zapasową geograficznie raz dziennie w celu [centrum danych sparowanego](../best-practices-availability-paired-regions.md). Cel punktu odzyskiwania dla przywracaniem geograficznym wynosi 24 godziny. Geograficznie kopii zapasowej można przywrócić do serwera w innym regionie, których Magazyn danych SQL jest obsługiwana. Kopia zapasowa geograficznie gwarantuje, że można przywrócić magazynu danych, w przypadku, gdy nie masz dostępu do migawki w danym regionie podstawowym.
 
-Kopie zapasowe geograficznie są domyślnie. Jeśli magazyn danych jest zoptymalizowana pod kątem elastyczność, możesz [zrezygnować](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) w razie potrzeby. Nie można zrezygnować z geograficznie kopii zapasowych z zoptymalizowane dla warstwy wydajności obliczeniowej.
+Kopie zapasowe geograficznie są domyślnie. Jeśli magazyn danych jest Gen1, możesz [zrezygnować](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) w razie potrzeby. Ochrona danych jest wbudowana gwarancji, nie można zrezygnować kopii zapasowych geograficznie dla Gen2.
 
 ## <a name="backup-costs"></a>Koszty kopii zapasowej
 Zauważ, że rachunku Azure ma elementu wiersza dla usługi Azure Premium Storage i elementu wiersza dla magazynu geograficznie nadmiarowego. Magazyn w warstwie Premium jest całkowity koszt przechowywania danych w regionie podstawowym, w tym migawki.  Opłata geograficznie nadmiarowego obejmuje koszt przechowywania kopii zapasowych geo.  

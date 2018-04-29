@@ -1,24 +1,18 @@
 ---
-title: "Usługa Azure Search Obsługa wielu języków | Dokumentacja firmy Microsoft"
-description: "Usługa Azure Search obsługuje języki 56 wykorzystaniu analizatorów języka z Lucene i przetwarzania języka naturalnego technologii firmy Microsoft."
-services: search
-documentationcenter: 
+title: Indeksowanie języka multi wyszukiwania Azure | Dokumenty Microsoft
+description: Usługa Azure Search obsługuje języki 56 wykorzystaniu analizatorów języka z Lucene i przetwarzania języka naturalnego technologii firmy Microsoft.
 author: yahnoosh
-manager: pablocas
-editor: 
-ms.assetid: 55a00b44-804d-41bb-9c96-e6ea498616f5
+manager: jlembicz
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: jlembicz
-ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.openlocfilehash: cb011ee54894f53cda81d9d116899dcaeb558b6d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Tworzenie indeksu dla dokumentów w wielu językach w usłudze Azure Search
 > [!div class="op_single_selector"]

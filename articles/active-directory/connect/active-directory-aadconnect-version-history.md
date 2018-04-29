@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2018
+ms.date: 04/17/2018
 ms.author: billmath
-ms.openlocfilehash: 5308803bb36024ee2373cf07ec46f798eb7192c5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect z nowych funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich grup odbiorców.
 
+
 W tym artykule jest przeznaczona do informacji o wersji, które zostały wydane i zrozumieć, czy należy zaktualizować do najnowszej wersji, czy nie.
 
 Jest to lista Tematy pokrewne:
-
-
 
 Temat |  Szczegóły
 --------- | --------- |
@@ -35,6 +34,21 @@ Kroki do uaktualnienia programu Azure AD Connect | Różnych metod na [uaktualni
 Wymagane uprawnienia | Uprawnienia wymagane do zastosowania aktualizacji, zobacz [konta i uprawnienia](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Pobierz | [Pobieranie programu Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="117510"></a>1.1.751.0
+Stan 4/12/2018: wydane dla pobierania tylko
+
+>[!NOTE]
+>Jest to poprawki programu Azure AD Connect
+
+### <a name="azure-ad-connect-sync"></a>Synchronizacja programu Azure AD Connect
+#### <a name="fixed-issues"></a>Rozwiązane problemy
+Rozwiązany problem, gdy od czasu do czasu sprawdzano odnajdywanie automatyczne wystąpienia platformy Azure dla dzierżaw Chin.  
+
+### <a name="ad-fs-management"></a>Zarządzanie usługami AD FS
+#### <a name="fixed-issues"></a>Rozwiązane problemy
+
+Wystąpił problem w Logika ponawiania konfiguracji, który spowoduje ArgumentException, podając "element z tym samym kluczem już został dodany."  To spowoduje, że wszystkie operacje ponawiania się niepowodzeniem.
 
 ## <a name="117500"></a>1.1.750.0
 Stan 2018-3/22: wydane dla automatycznego uaktualnienia i pobierania.
@@ -99,8 +113,7 @@ Stan: Wydane do wybranych klientów
 Zmiany zajmie się poniżej:
 1. Instalacji ekspresowej
 2. Instalacje niestandardowe automatyczne tworzenie konta
-
-* Zmieniony Instalator, więc nie wymaga uprawnień administratora systemu w czystej instalacji programu Azure AD Connect
+3. Zmieniony Instalator, więc nie wymaga uprawnień administratora systemu w czystej instalacji programu Azure AD Connect
 
 * Dodano nowe narzędzia do rozwiązywania problemów z synchronizacją dla konkretnego obiektu. Jest on dostępny w obszarze opcji "Rozwiązywanie problemów z synchronizacji obiektu" Azure AD Connect kreatora Rozwiązywanie problemów z dodatkowe zadania. Obecnie to narzędzie sprawdza, czy:
 
@@ -145,9 +158,9 @@ Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obie
 Zezwalaj    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Wyświetlanie zawartości        | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Wyświetlanie zawartości        | Ten obiekt  |
+Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
 Zezwalaj    | Użytkownicy uwierzytelnieni           | Wyświetlanie zawartości        | Ten obiekt  |
 Zezwalaj    | Użytkownicy uwierzytelnieni           | Odczyt wszystkich właściwości  | Ten obiekt  |
 Zezwalaj    | Użytkownicy uwierzytelnieni           | Uprawnienia do odczytu     | Ten obiekt  |

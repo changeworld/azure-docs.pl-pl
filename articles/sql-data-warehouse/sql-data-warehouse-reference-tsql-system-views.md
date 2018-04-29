@@ -1,27 +1,24 @@
 ---
-title: Widoki systemowe SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Łącza do systemu widokach zawartości dla usługi SQL Data Warehouse.
+title: Widoki systemowe - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Łączy się z dokumentacją dotyczącą widoków systemowych obsługiwane przez Magazyn danych SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
-ms.assetid: 21ec594b-d270-4202-a8cd-bb150e5ae12c
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 01/22/2018
-ms.author: barbkess
-ms.openlocfilehash: 96bd74a9c68cc77d35832836afa966958ed37264
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 59929a851bca967e36e5d4cf9a02a20dae117928
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="system-views"></a>Widoki systemowe
+# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Widoki systemowe obsługiwane przez Magazyn danych SQL Azure
+Łączy się z dokumentacją dotyczącą instrukcje T-SQL obsługiwane przez Magazyn danych SQL Azure.
+
 ## <a name="sql-data-warehouse-catalog-views"></a>Widoków wykazu SQL Data Warehouse
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
@@ -107,7 +104,7 @@ Następujące widoków DMV mają zastosowanie do usługi SQL Data Warehouse, ale
 * [sys.partition_range_values](http://msdn.microsoft.com/library/ms187780.aspx)
 * [sys.partition_schemes](http://msdn.microsoft.com/library/ms189752.aspx)
 * [sys.PARTITIONS](http://msdn.microsoft.com/library/ms175012.aspx)
-* [sys.procedures](http://msdn.microsoft.com/library/ms188737.aspx)
+* [sys.Procedures](http://msdn.microsoft.com/library/ms188737.aspx)
 * [sys.schemas](http://msdn.microsoft.com/library/ms176011.aspx)
 * [sys.securable_classes](http://msdn.microsoft.com/library/ms408301.aspx)
 * [sys.sql_expression_dependencies](http://msdn.microsoft.com/library/bb677315.aspx)
@@ -224,7 +221,7 @@ Następujące widoków DMV mają zastosowanie do usługi SQL Data Warehouse, ale
 ## <a name="sql-server-informationschema-views"></a>Widoki programu SQL Server INFORMATION_SCHEMA
 * [CHECK_CONSTRAINTS](http://msdn.microsoft.com/library/ms189772.aspx)
 * [COLUMNS](http://msdn.microsoft.com/library/ms188348.aspx)
-* [PARAMETERS](http://msdn.microsoft.com/library/ms173796.aspx)
+* [PARAMETRY](http://msdn.microsoft.com/library/ms173796.aspx)
 * [PROCEDURY](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHEMATA](https://msdn.microsoft.com/library/ms182642.aspx)
 * [TABLES](http://msdn.microsoft.com/library/ms186224.aspx)
@@ -233,14 +230,4 @@ Następujące widoków DMV mają zastosowanie do usługi SQL Data Warehouse, ale
 * [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacje, zobacz [omówienie odwołania usługi SQL Data Warehouse] [SQL Data Warehouse omówienie].
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
+Aby uzyskać więcej informacje, zobacz [instrukcje T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), i [elementy języka T-SQL w usłudze Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).

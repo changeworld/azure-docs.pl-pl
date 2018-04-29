@@ -1,9 +1,9 @@
 ---
-title: "Ochronę tożsamości usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Azure AD Identity Protection umożliwia ograniczenie możliwości osoby atakującej, która wykorzystać, którego bezpieczeństwo zostało naruszone tożsamości lub urządzenie i secure tożsamości lub urządzeń, które wcześniej podejrzenia lub znane naruszenia."
+title: Ochronę tożsamości usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Azure AD Identity Protection umożliwia ograniczenie możliwości osoby atakującej, która wykorzystać, którego bezpieczeństwo zostało naruszone tożsamości lub urządzenie i secure tożsamości lub urządzeń, które wcześniej podejrzenia lub znane naruszenia.
 services: active-directory
-keywords: "ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń"
-documentationcenter: 
+keywords: ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e66d033d95efccf53ea2de889b5811fe2eafb76a
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: b8ae865e06e085ebe1bb71b35d812024190e2b21
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection"></a>Ochrona tożsamości w usłudze Azure Active Directory
 
@@ -249,7 +249,7 @@ W trakcie badania można wykonać dowolną z tych akcji, aby zmienić stan zdarz
 * **Rozwiąż** — Jeśli po zbadaniu zdarzenia ryzyka, trwało akcji korygowania odpowiednie poza ochrony tożsamości i uważasz, że zdarzenie ryzyka należy traktować jako zamknięty, oznaczenia zdarzeń jako rozwiązane. Rozwiązane zdarzeń ustawi stan zdarzenia ryzyka zamknięte i zdarzenia ryzyka już przyczyniają się do użytkownika ryzyka.
 * **Oznacz jako fałszywie dodatnich** — w niektórych przypadkach można zbadać zdarzenia ryzyka i wykryć, czy został niepoprawnie oznaczone jako ryzykowne. Można ograniczyć liczbę wystąpień takich przez oznaczenie zdarzeń ryzyka jako fałszywie dodatnich. Dzięki temu algorytmów, aby zwiększyć w przyszłości klasyfikacji zdarzenia podobne uczenia maszynowego. Status zdarzenia fałszywie dodatnich **zamknięte** i nie wpływają one ryzyko użytkownika.
 * **Ignoruj** — Jeśli nie miały żadnych działań korygujących, ale można usunąć z listy aktywne zdarzenie ryzyka można oznaczyć zdarzeniem ryzyka Ignoruj i stan zdarzenia zostanie zamknięty. Zignorowano zdarzenia nie przyczyniają się ryzyko użytkownika. Tej opcji należy używać tylko w niezwykłych okolicznościach.
-* **Uaktywnij ponownie** -ryzyka zdarzenia, które zostały ręcznie zamknięty (wybierając **rozwiązać**, **wynik fałszywie dodatni**, lub **Ignoruj**) można ponownie uaktywnić, ustawienie stanu zdarzenia do **Active**. Zdarzenia ponownie uaktywnione ryzyka przyczyniają się do obliczania poziomu ryzyka użytkownika. Nie można ponownie uaktywnić zamknięte przy użyciu funkcji korygowania (takie jak resetowania hasła bezpiecznego) zdarzenia ryzyka.
+* **Uaktywnij ponownie** -ryzyka zdarzenia, które zostały ręcznie zamknięty (przez wybranie **rozwiązać**, **wynik fałszywie dodatni**, lub **Ignoruj**) można ponownie uaktywnić, ustawienia zdarzenia stanu z powrotem do **Active**. Zdarzenia ponownie uaktywnione ryzyka przyczyniają się do obliczania poziomu ryzyka użytkownika. Nie można ponownie uaktywnić zamknięte przy użyciu funkcji korygowania (takie jak resetowania hasła bezpiecznego) zdarzenia ryzyka.
 
 **Aby otworzyć okno dialogowe elementami konfiguracji**:
 
@@ -368,7 +368,7 @@ Firma Microsoft zaleca wymagane uwierzytelnianie wieloskładnikowe platformy Azu
 
 ![Zasady użytkownika ridk](./media/active-directory-identityprotection/1019.png "zasady ridk użytkownika")
 
-Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe Azure?](../multi-factor-authentication/multi-factor-authentication.md)
+Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe Azure?](authentication/multi-factor-authentication.md)
 
 Azure AD Identity Protection pomaga w zarządzaniu wdrożenie uwierzytelniania wieloskładnikowego rejestracji przez skonfigurowanie zasad, które umożliwia:
 

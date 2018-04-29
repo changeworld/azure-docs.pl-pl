@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: eb2035f6e667a9b3ab642d42cb9bb5ecf5c86fb1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 3680777439678a93b1283cf94b9f8a173965feeb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz niestandardowy maszyny wirtualnej Azure stosu
 
@@ -81,7 +81,7 @@ Aby dodać obraz do portalu Azure Marketplace stosu, wykonaj następujące czynn
         -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
         -EnvironmentName AzureStackAdmin
 
-      Login-AzureRmAccount `
+      Connect-AzureRmAccount `
         -EnvironmentName "AzureStackAdmin" `
         -TenantId $TenantID
       ```
@@ -109,7 +109,7 @@ Aby dodać obraz do portalu Azure Marketplace stosu, wykonaj następujące czynn
           -ADFS `
           -EnvironmentName AzureStackAdmin
 
-        Login-AzureRmAccount `
+        Connect-AzureRmAccount `
           -EnvironmentName "AzureStackAdmin" `
           -TenantId $TenantID
         ```
@@ -162,7 +162,7 @@ Remove-AzsVMImage `
 | **osDiskLocalPath** |Ścieżka lokalna do wirtualnego dysku twardego, czy przekazywany jako obraz maszyny Wirtualnej Azure stos dysk systemu operacyjnego. |
 | **dataDiskLocalPaths** |Opcjonalną tablicę ścieżki lokalne dla dysków z danymi, które mogą być przekazywane jako część obrazu maszyny Wirtualnej. |
 | **CreateGalleryItem** |Flaga wartości logicznej, która określa, czy utworzyć nowy element w witrynie Marketplace. Domyślnie jest ustawiona **true**. |
-| **title** |Nazwa wyświetlana elementu portalu Marketplace. Domyślnie jest ustawiona `Publisher-Offer-Sku` wartość obrazu maszyny Wirtualnej. |
+| **Tytuł** |Nazwa wyświetlana elementu portalu Marketplace. Domyślnie jest ustawiona `Publisher-Offer-Sku` wartość obrazu maszyny Wirtualnej. |
 | **Opis elementu** |Opis elementu portalu Marketplace. |
 | **location** |Lokalizacja, w którym powinien zostać opublikowany obrazu maszyny Wirtualnej. Domyślnie ta wartość jest równa **lokalnego**.|
 | **osDiskBlobURI** |(Opcjonalnie) Ten skrypt akceptuje również magazynu obiektów Blob identyfikatora URI dla `osDisk`. |
@@ -186,7 +186,7 @@ Obrazy można musi odwoływać się do magazynu obiektów Blob identyfikatora UR
 
    * Po przekazaniu [obrazu maszyny Wirtualnej systemu Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), upewnij się zastąpić **logowania do platformy Azure** krok z [konfigurowania środowiska PowerShell operator stosu Azure](azure-stack-powershell-configure-admin.md) kroku.  
 
-   * Zanotuj magazynu obiektów Blob identyfikatora URI, których przekazaniem obrazu. Magazyn obiektów Blob identyfikatora URI ma następujący format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*VHD.
+   * Zanotuj magazynu obiektów Blob identyfikatora URI, których przekazaniem obrazu. Magazyn obiektów Blob identyfikatora URI ma następujący format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
 
    * Aby udostępnić obiektu blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie obrazu wirtualnego dysku twardego maszyny Wirtualnej został przekazany. Wybierz **obiektu Blob**, a następnie wybierz **zasad dostępu**. Opcjonalnie można zamiast tego Generowanie sygnatury dostępu współdzielonego dla kontenera i dołącz ją jako część identyfikator URI obiektu blob.
 

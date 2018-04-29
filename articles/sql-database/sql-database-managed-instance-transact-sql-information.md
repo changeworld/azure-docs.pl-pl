@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 0fe0b5d3120833b8472fcdaee366a5d1f2818600
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL bazy danych zarządzanych wystąpienia T-SQL różnice z programu SQL Server 
 
@@ -393,7 +393,7 @@ Następujące zmienne, funkcje i widoki zwraca różne wyniki:
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Powyżej miejsca do magazynowania z plikami małych baz danych
 
-Każde wystąpienie zarządzania ma do 35 TB magazynu zarezerwowane dla miejsca na dysku Premium Azure i wszystkich plików bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest pobierana, ale suma rozmiarów dysków Premium Azure nie może przekraczać 35 TB. W niektórych przypadkach zarządzane wystąpienia, które nie wymagają 8 TB w sumie może przekroczyć 35 TB Azure limit rozmiaru magazynu z powodu wewnętrznego fragmentacji. 
+Każde wystąpienie zarządzania ma do 35 TB magazynu zarezerwowane dla miejsca na dysku Premium Azure i wszystkich plików bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest pobierana, ale suma rozmiarów dysków Premium Azure nie może przekraczać 35 TB. W niektórych przypadkach nie jest konieczne 8 TB w sumie wystąpienie zarządzane może przekroczyć 35 TB Azure limit rozmiaru magazynu z powodu wewnętrznego fragmentacji. 
 
 Na przykład wystąpieniem zarządzane może mieć jeden plik o rozmiarze 1,2 TB, który używa dysku 4 TB i 248 pliki z 1 GB każda są umieszczane na dyskach 248 o rozmiarze 128 GB. W tym przykładzie rozmiar całkowitą dysku magazynu jest 1 x 4 TB + 248 x 128 GB = 35 TB. Jednakże rozmiar całkowitą wystąpienia zarezerwowana dla baz danych jest 1 x 1.2 TB + 248 x 1 GB = 1,4 TB. Potwierdza to, że w pewnych okolicznościach, ze względu na bardzo szczegółowej rozkład plików, wystąpienie usługi zarządzania może osiągnąć limit magazynu Azure Premium dysku, gdzie może nie oczekujesz. 
 

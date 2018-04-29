@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2017
+ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4f82e436e25d01bbfa09ec1e8a2efcdf0be8c006
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 81c5b6051b8e1b1812e47cfcb64538c25ee8bfe5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Samouczek analizy w usłudze Application Insights
 [Analiza](app-insights-analytics.md) to funkcja wyszukiwania zaawansowanego [usługi Application Insights](app-insights-overview.md). Te strony opisano język zapytań usługi Analiza dzienników.
@@ -33,7 +33,7 @@ Otwórz Analytics z aplikacji [bloku omówienie](app-insights-dashboards.md) w u
 
 ![Otwórz portal.azure.com otworzyć zasobu usługi Application Insights, a następnie kliknij przycisk Analytics.](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[Podejmij](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): Pokaż n wierszy
+## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[Podejmij](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators): Pokaż n wierszy
 Punkty danych, którzy logują się operacji użytkownika (zwykle żądania HTTP odebrane przez aplikację sieci web) są przechowywane w tabeli o nazwie `requests`. Każdy wiersz jest punkt danych telemetrycznych otrzymanych od zestawu SDK usługi Application Insights w aplikacji.
 
 Zacznijmy od badanie kilka przykładowych wiersze w tabeli:
@@ -68,7 +68,7 @@ Jeśli chcesz połączyć dane z wielu aplikacji usługi Application Insights, u
     
 ```
 
-## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[TOP](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) i [sortowania](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
+## <a name="tophttpsdocsloganalyticsiodocslanguage-referencetabular-operatorstop-operator-and-sorthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssort-operator"></a>[TOP](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) i [sortowania](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
 `take` przydaje się uzyskać szybki próbki wyniku, ale zawiera wiersze z tabeli w losowej kolejności. Aby uporządkowane wyświetlać, użyj `top` (na przykład) lub `sort` (za pośrednictwem całej tabeli).
 
 Pokaż pierwsze n wierszy, uporządkowanych według określonej kolumny:
@@ -94,7 +94,7 @@ Wynik będzie taki sam, ale może działać nieco wolniej. (Można również nap
 
 Nagłówki kolumn w widoku tabeli można również sortowanie wyników na ekranie. Oczywiście jeśli był używany, ale `take` lub `top` można pobrać tylko część tabeli, klikając nagłówek kolumny zostanie tylko zmienić kolejność rekordów zostały pobrane.
 
-## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Gdzie](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): filtrowanie warunek
+## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[Gdzie](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator): filtrowanie warunek
 
 Zobaczmy, po prostu żądań, które zwróciło kod określonego wyniku:
 
@@ -173,7 +173,7 @@ Inne przykłady:
 [Daty i godziny odwołanie](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
-## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): Wybierz, Zmień nazwę, a kolumny obliczeniowe
+## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): Wybierz, Zmień nazwę, a kolumny obliczeniowe
 Użyj [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) do wybierania tylko kolumny, które chcesz:
 
 ```AIQL
@@ -207,7 +207,7 @@ Można również zmienić nazwy kolumny i zdefiniować nowe:
 Wyrażenia mogą zawierać zwykłych operatorów (`+`, `-`,...), a istnieje szereg przydatne funkcje.
 
 ## <a name="extend"></a>Rozszerzanie
-Jeśli chcesz dodać kolumny do istniejące, użyj [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
+Jeśli chcesz dodać kolumny do istniejące, użyj [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator):
 
 ```AIQL
 
@@ -216,7 +216,7 @@ Jeśli chcesz dodać kolumny do istniejące, użyj [ `extend` ](https://docs.log
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-Przy użyciu [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) mniej szczegółowe niż [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) Jeśli chcesz zachować istniejące kolumny.
+Przy użyciu [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) mniej szczegółowe niż [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) Jeśli chcesz zachować istniejące kolumny.
 
 ### <a name="convert-to-local-time"></a>Konwertuj na czas lokalny
 
@@ -229,8 +229,7 @@ Sygnatury czasowe są zawsze w formacie UTC. Dlatego jeśli używasz wybrzeże P
     | extend localTime = timestamp - 8h
 ```
 
-
-## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Podsumuj](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): agregacji grupy wierszy
+## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Podsumuj](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): agregacji grupy wierszy
 `Summarize` zastosowanie określonej *funkcji agregacji* za pośrednictwem grupy wierszy.
 
 Na przykład czas życia aplikacji sieci web, odpowiadanie na żądanie jest zgłaszana w polu `duration`. Zobaczmy, Średni czas odpowiedzi na wszystkie żądania:
@@ -268,7 +267,7 @@ W związku z tym sumowania wartość elementu itemCount zapewnia dobre oszacowan
 
 Istnieje również `count()` agregacji (i operacji liczby), w przypadku których na pewno chcesz ustalić liczbę wierszy w grupie.
 
-Istnieje szereg [funkcje agregacji](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
+Istnieje szereg [funkcje agregacji](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
 
 ## <a name="charting-the-results"></a>Wykresy wyników
 ```AIQL
@@ -409,7 +408,7 @@ Ostatni wiersz jest wymagany do przekonwertowania na typ datetime. Obecnie osi x
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[Percentylu](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
+## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[Percentylu](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
 Jakie zakresów czasu trwania obejmują różne wartości procentowe sesji?
 
 Użyj powyższego zapytania, ale zastępuje ostatni wiersz:
@@ -470,7 +469,7 @@ Aby znaleźć wyjątki związane z żądania, który zwrócił odpowiedź awarii
 Jest dobrym rozwiązaniem jest użycie `project` zaznacz tylko kolumny, potrzebujemy przed wykonaniem sprzężenia.
 W tym samym klauzulach możemy zmienić nazwy kolumny znaczników czasu.
 
-## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[Let](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): Przypisz wynik do zmiennej
+## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Let](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): Przypisz wynik do zmiennej
 
 Użyj `let` do rozdzielania części poprzedniego wyrażenia. Wyniki są bez zmian:
 
@@ -541,7 +540,7 @@ Na przykład, jeśli aplikacja zawiera:
 ```csharp
 
     var dimensions = new Dictionary<string, string>
-                     {{"p1", "v1"},{"p2", "v2"}};
+                     {{"p1", "v1"},{"p2.d2", "v2"}};
     var measurements = new Dictionary<string, double>
                      {{"m1", 42.0}, {"m2", 43.2}};
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
@@ -554,7 +553,6 @@ Aby wyodrębnić te wartości w module analiz:
     customEvents
     | extend p1 = customDimensions.p1,
       m1 = todouble(customMeasurements.m1) // cast to expected type
-
 ```
 
 Aby sprawdzić, czy wymiar niestandardowe określonego typu:
@@ -565,6 +563,18 @@ Aby sprawdzić, czy wymiar niestandardowe określonego typu:
     | extend p1 = customDimensions.p1,
       iff(notnull(todouble(customMeasurements.m1)), ...
 ```
+
+### <a name="special-characters"></a>Znaki specjalne
+
+Znaki specjalne lub słowa kluczowe języka w nazwach identyfikatorów należy dostępu do nich za pośrednictwem `['` i `']` lub przy użyciu `["` i `"]`.
+
+```AIQL
+
+    customEvents
+    | extend p2d2 = customDimensions.['p2.d2'], ...
+```
+
+[Identyfikator reguły nazewnictwa odwołania](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
 
 ## <a name="dashboards"></a>Pulpity nawigacyjne
 Wyniki do pulpitu nawigacyjnego można przypiąć w celu zebrania razem wszystkich najważniejszych wykresów i tabel.

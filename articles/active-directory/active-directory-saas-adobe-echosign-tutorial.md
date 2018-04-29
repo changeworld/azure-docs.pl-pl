@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory przy użyciu konta Adobe | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Adobe logowania."
+title: 'Samouczek: Integracji Azure Active Directory przy użyciu konta Adobe | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Adobe logowania.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2017
+ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f68701cc345ee1bb04cde265ac4e2d6a402da557
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Samouczek: Integracji Azure Active Directory przy użyciu konta Adobe
 
@@ -110,9 +110,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<companyname>.echosign.com/`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.echosign.com/`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<companyname>.echosign.com`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<companyname>.echosign.com`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta logowania Adobe](https://helpx.adobe.com/in/contact/support.html) uzyskać te wartości. 
@@ -129,40 +129,31 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
 
-
 7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Adobe logowania.
 
-8. W menu u góry kliknij **konta**, a następnie w okienku nawigacji po lewej stronie kliknij **ustawienia SAML** w obszarze **ustawienia konta**.
+8. W SAML menu kliknij **ustawienia konta**, a następnie kliknij **SAML ustawienia**.
    
-   ![Konto](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "konta")
+    ![Konto](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "konta")
 
-9. W sekcji Ustawienia SAML wykonaj następujące czynności:
+9. W **ustawienia SAML** sekcji, wykonaj następujące czynności:
+  
+    ![Ustawienia SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "ustawienia SAML")
    
-   ![Ustawienia SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "ustawienia SAML")
+    a. Jako **tryb SAML**, wybierz pozycję **SAML obowiązkowe**.
    
-   a. Jako **tryb SAML**, wybierz pozycję **SAML obowiązkowe**.
+    b. Wybierz **Zezwalaj Adobe znak Administratorzy konta logowania przy użyciu swoich poświadczeń logowania Adobe**.
    
-   b. Wybierz **Zezwalaj Administratorzy EchoSign konta logowania przy użyciu swoich poświadczeń EchoSign**.
-   
-   c. Jako **Tworzenie użytkownika**, wybierz pozycję **automatyczne dodawanie użytkowników uwierzytelnionych za pośrednictwem SAML**.
+    c. Jako **Tworzenie użytkownika**, wybierz pozycję **automatyczne dodawanie użytkowników uwierzytelnionych za pośrednictwem SAML**.
 
-10. Przenieś na, wykonując następujące czynności:
-
-       ![Ustawienia SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789522.png "ustawienia SAML")
-
-    a. Wklej **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure do **IdP identyfikator jednostki** pola tekstowego.
+    d. Wklej **identyfikator jednostki SAML**, które zostały skopiowane z portalu Azure do **adres URL Identyfikatora/wystawcy jednostki** pola tekstowego.
     
-    b. Wklej **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure do **adres URL logowania IdP** pola tekstowego.
+    e. Wklej **SAML pojedynczy znak na adres URL usługi**, które zostały skopiowane z portalu Azure do **punktu końcowego adresu URL/logowania jednokrotnego logowania** pola tekstowego.
    
-    c. Wklej **Sign-Out URL**, które zostały skopiowane z portalu Azure do **adresu URL wylogowania IdP** pole tekstowe.
+    f. Wklej **Sign-Out URL**, które zostały skopiowane z portalu Azure do **punktu końcowego adresu URL/SLO wylogowania** pola tekstowego.
 
-    d. Otwórz z pobranego **Certificate(Base64)** plików w programie Notatnik, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu IdP** pole tekstowe
+    g. Otwórz z pobranego **Certificate(Base64)** plików w programie Notatnik, skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikatu IdP** pole tekstowe
 
-    e. Kliknij przycisk **zapisać zmiany**.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    h. Kliknij przycisk **zapisać zmiany**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -208,15 +199,15 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do logowania Adob
 
 2. W menu u góry kliknij **konta**, a następnie w okienku nawigacji po lewej stronie kliknij **użytkownicy i grupy**, a następnie kliknij przycisk **utworzenie nowego użytkownika**.
    
-   ![Konto](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "konta")
+    ![Konto](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "konta")
    
 3. W **Tworzenie nowego użytkownika** sekcji, wykonaj następujące czynności:
    
-   ![Utwórz użytkownika](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "Tworzenie użytkownika")
+    ![Utwórz użytkownika](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "Tworzenie użytkownika")
    
-   a. Typ **adres E-mail**, **imię**, i **nazwisko** poprawnego konta usługi AAD ustanawiane do powiązanych pól tekstowych.
+    a. Typ **adres E-mail**, **imię**, i **nazwisko** poprawnego konta usługi AAD ustanawiane do powiązanych pól tekstowych.
    
-   b. Kliknij przycisk **Utwórz użytkownika**.
+    b. Kliknij przycisk **Utwórz użytkownika**.
 
 >[!NOTE]
 >Właściciel konta usługi Azure Active Directory otrzymuje wiadomość e-mail zawierającą łącze do potwierdzenia konta, zanim staje się aktywny. 
@@ -256,7 +247,7 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 Po kliknięciu kafelka Adobe logowania w panelu dostępu należy należy pobrać automatycznie zalogowane do aplikacji Adobe logowania.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

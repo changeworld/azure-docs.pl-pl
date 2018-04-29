@@ -1,8 +1,8 @@
 ---
-title: "Uaktualnianie programu Azure serwera usługi MFA | Dokumentacja firmy Microsoft"
-description: "Kroki i wskazówki dotyczące uaktualnienia do nowszej wersji serwera usługi Azure Multi-Factor Authentication."
+title: Uaktualnianie programu Azure serwera usługi MFA | Dokumentacja firmy Microsoft
+description: Kroki i wskazówki dotyczące uaktualnienia do nowszej wersji serwera usługi Azure Multi-Factor Authentication.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 50bb8ac3-5559-4d8b-a96a-799a74978b14
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 456f2c64c91249f3ec2de4f2d79a2f77cc7598da
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Uaktualnij do najnowszej Azure aplikacji serwer Multi-Factor Authentication
 
@@ -106,7 +106,7 @@ Te instrukcje stosowane tylko wtedy, jeśli serwer Multi-Factor Authentication n
 9. Powtórz krok 2, aby zaktualizować serwery teraz usunięte z farmy usług AD FS i uruchom ponownie usługę AD FS na tych serwerach.
 10. Dodaj tych serwerów do farmy usług AD FS.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Pobierz przykłady [zaawansowanych scenariuszy z usługi Azure Multi-Factor Authentication i sieci VPN innych firm](multi-factor-authentication-advanced-vpn-configurations.md)
 

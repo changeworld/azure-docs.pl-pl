@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e6c9cbc4f158e62092c7a9e401e618880e5ea3b6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla hybrydowych rozwiązań tożsamości do spełnienia wymagań biznesowych, które zostały omówione w:
@@ -90,7 +90,7 @@ Należy wziąć pod uwagę jakie funkcje przestaną być dostępne:
 * Przejście pakietu Office do uwierzytelnianiem pasywnym umożliwia im to obsługuje czysty SAML 2.0 IdPs, ale nadal będzie pomocy technicznej na podstawie klienta przez klienta
 
 > [!NOTE]
-> Listę najnowszych odczytać https://aka.ms/ssoproviders artykułu.
+> Dla większości zaktualizowanej listy, przeczytaj artykuł na temat https://aka.ms/ssoproviders.
 > 
 > 
 
@@ -196,7 +196,7 @@ Nawet jeśli użytkownik może mieć rozliczenia na rozwiązanie dla strategii, 
 | Lokalne usługi AD |Serwer Multi-Factor Authentication |
 
 > [!NOTE]
-> Ponadto upewnij się, że wybrany opcji Projekt usługi Multi-Factor authentication obsługuje funkcje, które są wymagane dla projektu.  Aby uzyskać więcej informacji, przeczytaj [wybierz rozwiązanie zabezpieczeń wieloskładnikowego](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure).
+> Ponadto upewnij się, że wybrany opcji Projekt usługi Multi-Factor authentication obsługuje funkcje, które są wymagane dla projektu.  Aby uzyskać więcej informacji, przeczytaj [wybierz rozwiązanie zabezpieczeń wieloskładnikowego](authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure).
 > 
 > 
 

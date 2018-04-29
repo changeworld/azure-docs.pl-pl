@@ -2,23 +2,20 @@
 title: Uaktualnianie projektów do bieżącej wersji narzędzi platformy Azure | Dokumentacja firmy Microsoft
 description: Informacje o sposobie uaktualniania projektu platformy Azure w programie Visual Studio do bieżącej wersji narzędzi platformy Azure
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 1d64070a-078d-468a-87f4-e6715de6475f
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 1d64070a-078d-468a-87f4-e6715de6475f
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/18/2016
 ms.author: ghogen
-ms.openlocfilehash: baa85d8f525701e8e9c23324e9d2619a2c50360b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 738c9d12beed6ba73872d520cb16bd3a6c813a35
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>Jak uaktualnić projekty na bieżącą wersję narzędzia Azure dla programu Visual Studio
 ## <a name="overview"></a>Przegląd

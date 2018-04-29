@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/20/2018
 ms.author: larryfr
-ms.openlocfilehash: b96f457bc13ae3e412580096a1f9be865e64cb74
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 970ccf19b5668bd57118fcabc5018c60352ebde7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Apache Hive za pomocą klienta Beeline
 
@@ -252,10 +252,17 @@ Aby znaleźć nazwę FQDN headnode, skorzystaj z informacji w [Zarządzanie HDIn
 
 Platforma Spark zawiera własną implementację serwera HiveServer2, która czasami jest nazywany serwera Spark Thrift. Ta usługa używa programu Spark SQL do rozpoznania zapytania zamiast gałęzi i może zapewnić lepszą wydajność, w zależności od tego zapytania.
 
-Aby nawiązać połączenie serwera Spark Thrift platformy Spark w klastrze usługi HDInsight, należy użyć portu `10002` zamiast `10001`. Na przykład `beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`.
+__Ciąg połączenia__ używane podczas łączenia się za pośrednictwem Internetu różni się nieznacznie. Zamiast zawierający `httpPath=/hive2` jest `httpPath/sparkhive2`. Poniżej przedstawiono przykład łączenie za pośrednictwem Internetu:
 
-> [!IMPORTANT]
-> Serwera Spark Thrift nie jest bezpośrednio dostępny za pośrednictwem Internetu. Będzie można połączyć wyłącznie do niego w sesji SSH lub wewnątrz tej samej sieci wirtualnej platformy Azure jako klastra usługi HDInsight.
+```bash 
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Gdy połączenie bezpośrednio z głównym węzłem klastra lub zasobów w tej samej sieci wirtualnej platformy Azure jako klastra usługi HDInsight, port `10002` powinna być używana do serwera Spark Thrift zamiast `10001`. Poniżej przedstawiono przykład nawiązywania bezpośrednio do węzła głównego:
+
+```bash
+beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
+```
 
 ## <a id="summary"></a><a id="nextsteps"></a>Następne kroki
 

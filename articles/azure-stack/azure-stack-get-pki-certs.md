@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: fbf3c66979730a9162c56e8583f0a32977a0310d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 349661352d17b015d4c605b39f1e42aa482949ac
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure stosu certyfikaty podpisywania generowania żądania
 
@@ -112,4 +112,6 @@ Do przygotowania i sprawdzania poprawności certyfikatów PKI stosu Azure, wykon
 8.  Przedstawia **. Liczba ŻĄDAŃ** pliku wygenerowane do urzędu certyfikacji (wewnętrzny lub publiczny).  Katalog wyjściowy **Start AzsReadinessChecker** zawiera CSR(s) niezbędne do przesłania do urzędu certyfikacji.  Zawiera ona także podrzędnych katalog zawierający pliki INF używane podczas generowania żądania certyfikatu, jako odwołanie. Pamiętaj, że urząd certyfikacji generuje certyfikaty przy użyciu wygenerowanego żądania, które spełnia [wymagań dotyczących infrastruktury kluczy publicznych stosu Azure](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Przygotuj certyfikaty PKI stosu Azure](azure-stack-prepare-pki-certs.md)
+

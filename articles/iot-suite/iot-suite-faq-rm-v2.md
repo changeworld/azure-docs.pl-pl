@@ -1,12 +1,12 @@
 ---
-title: "Pakiet IoT Azure zdalne monitorowanie — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Często zadawane pytania dotyczące zdalnego wstępnie skonfigurowane rozwiązanie monitorujące, pakiet IoT"
+title: Pakiet IoT Azure zdalne monitorowanie — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące zdalnego wstępnie skonfigurowane rozwiązanie monitorujące, pakiet IoT
 services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 3885e40eb4ddbf61b03a467a71d4dd97d00a9042
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite"></a>Często zadawane pytania dotyczące Pakietu IoT
+# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>Często zadawane pytania dotyczące zdalnego wstępnie skonfigurowane rozwiązanie monitorujące, pakiet IoT
 
 Zobacz też ogólne [— często zadawane pytania](iot-suite-faq.md).
 

@@ -13,60 +13,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 54eac2f3a95ecd37af357c933ba03f6c59bb241f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 967e7458d43dccd4601440138b7445eb876b9f01
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Sposób rozpowszechniania danych globalnie z bazy danych Azure rozwiązania Cosmos
-Azure to powszechny — ma wpływu globalnych w regionach geograficznych 30 + i jest stale rozszerzanie. Z jego obecność na całym świecie jeden zróżnicowanych funkcji, które platforma Azure oferuje deweloperom jego jest możliwość tworzenia, wdrażania i łatwo Zarządzaj aplikacjami globalnie rozproszone. 
+Azure to powszechny — ma wpływu globalnych w regionach geograficznych 50 + i jest stale rozszerzanie. Z jego obecność globalnych jeden zróżnicowanych funkcji, które platforma Azure oferuje deweloperom jego jest możliwość tworzenia, wdrażania i łatwo Zarządzaj aplikacjami globalnie rozproszone. 
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft do aplikacji o krytycznym znaczeniu. Azure DB rozwiązania Cosmos zapewnia gotowe dystrybucję globalnych, [elastyczne skalowanie przepływność i magazyn](../cosmos-db/partition-data.md) na całym świecie, jednocyfrowej milisekundy opóźnienia w 99-ty percentyl [pięć dobrze zdefiniowane poziomy spójności](consistency-levels.md), zagwarantować wysokiej dostępności, wszystkie kopie przez [SLA branży](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Usługa Azure Cosmos DB [automatycznie indeksuje dane](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez konieczności zarządzania schematami i indeksami. To usługa wielomodelowa, obsługująca modele dokumentowe, klucz-wartość, wykresy i kolumny. Jako usługa urodzony chmury Azure DB rozwiązania Cosmos jest dokładnie odtwarzane z wielu dzierżawców i globalnych dystrybucji od podstaw się.
+[Azure Cosmos DB](../cosmos-db/introduction.md) to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft do aplikacji o krytycznym znaczeniu. Azure DB rozwiązania Cosmos zapewnia gotowe dystrybucję globalnych, [elastyczne skalowanie przepływność i magazyn](../cosmos-db/partition-data.md) na całym świecie, jednocyfrowej milisekundy opóźnienia w 99-ty percentyl [pięć dobrze zdefiniowany spójności modele](consistency-levels.md), zagwarantować wysokiej dostępności, wszystkie kopie przez [SLA kompleksowe branży](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Azure DB rozwiązania Cosmos [automatycznie indeksuje wszystkie dane](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez konieczności postępowania w przypadku zarządzania schematu lub indeksu. Jest wiele modeli usługi i obsługuje dokumentu, klucz wartość, wykres i modeli danych rodziny kolumn. Jako natywnie urodzony w usłudze w chmurze bazy danych Azure rozwiązania Cosmos jest dokładnie odtwarzane z wielu dzierżawców i globalnych dystrybucji od podstaw się.
 
-**Jednej kolekcji bazy danych Azure rozwiązania Cosmos podzielona na partycje i rozpowszechniane w różnych regionach platformy Azure**
 
 ![Azure DB rozwiązania Cosmos kolekcji podzielone na partycje i rozproszone na trzech regionów](./media/distribute-data-globally/global-apps.png)
 
-Jak ma dowiedzieliśmy się podczas tworzenia bazy danych Azure rozwiązania Cosmos, Dodawanie globalnego dystrybucji nie może być zbagatelizowane — nie może być "skręcania w" nad system bazy danych "w jednej lokacji". Możliwości oferowane przez globalnie rozproszoną bazę danych span poza z tradycyjnego geograficzne po awarii odzyskiwania (geograficznie DR) oferowane przez "pojedynczej lokacji" baz danych. Baz danych w jednej lokacji oferty DR geograficznie możliwości są podzbiorem strict globalnie rozproszone baz danych. 
+**Jeden kontener bazy danych Azure rozwiązania Cosmos podzielona na partycje i rozpowszechniane w różnych regionach platformy Azure**
 
-Z rozkładem globalne gotowe Azure rozwiązania Cosmos DB, programiści nie muszą do tworzenia własnych szkieletów replikacji przez wykorzystanie jednej wzorzec Lambda (na przykład [DynamoDB usług AWS replikacji](https://github.com/awslabs/dynamodb-cross-region-library/blob/master/README.md)) za pośrednictwem dziennika bazy danych lub za pomocą ćwiczeń " Podwójna zapisuje"w różnych regionach. Nie zaleca się zastosowanie powyższych strategii ponieważ nie jest możliwe zapewnić poprawność takiego podejścia i podaj SLA dźwięku. 
+Jak ma dowiedzieliśmy się podczas tworzenia bazy danych Azure rozwiązania Cosmos, Dodawanie globalnego dystrybucji nie może być zbagatelizowane. Nie można go "skręcania w" nad system bazy danych "w jednej lokacji". Możliwości oferowane przez globalnie rozproszoną bazę danych span poza z tradycyjnego geograficzne po awarii odzyskiwania (geograficznie DR) oferowane przez "pojedynczej lokacji" baz danych. Baz danych w jednej lokacji oferty DR geograficznie możliwości są podzbiorem strict globalnie rozproszone baz danych. 
+
+Z rozkładem globalne gotowe Azure rozwiązania Cosmos DB, programiści nie muszą do tworzenia własnych szkieletów replikacji przez wykorzystanie jednej wzorzec Lambda (na przykład [DynamoDB usług AWS replikacji](https://github.com/awslabs/dynamodb-cross-region-library/blob/master/README.md)) za pośrednictwem dziennika bazy danych lub przez wykonywanie "zapisy double" w różnych regionach. Jak *nie* zaleca tych metod, ponieważ nie jest możliwe zapewnić poprawność takiego podejścia i podaj SLA dźwięku. 
 
 W tym artykule udostępniamy omówienie funkcji globalnych dystrybucji Azure rozwiązania Cosmos DB. Opisano również Azure rozwiązania Cosmos DB unikatowy podejście do zapewnienia kompleksowej umów SLA. 
 
 ## <a id="EnableGlobalDistribution"></a>Włączanie gotowe dystrybucji globalne
-Azure DB rozwiązania Cosmos udostępnia następujące funkcje do tworzenia aplikacji w skali planety. Te funkcje są dostępne za pośrednictwem opartej na dostawcy zasobów Azure DB rozwiązania Cosmos [interfejsów API REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) oraz portalu Azure.
+Azure DB rozwiązania Cosmos są dostępne następujące funkcje do tworzenia aplikacji rozproszonych globalnie. Te funkcje są dostępne za pośrednictwem opartej na dostawcy zasobów Azure DB rozwiązania Cosmos [interfejsów API REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) oraz portalu Azure.
 
-W poniższego klipu wideo Andrew Liu Menedżera programów DB rozwiązania Cosmos Azure przedstawiono funkcje gotowe dystrybucji globalnego.
+Obejrzyj następujące wideo, aby zobaczyć funkcji gotowe dystrybucji globalne w usłudze Azure DB rozwiązania Cosmos w akcji.
 
 > [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
 >
 
 ### <a id="RegionalPresence"></a>Wszechobecne regionalne 
-Azure stale rośnie jego obecność geograficzne przełączając [nowych regionów](https://azure.microsoft.com/regions/) online. Azure DB rozwiązania Cosmos jest dostępna we wszystkich regionach platformy Azure nowe domyślnie. Dzięki temu można skojarzyć z konta bazy danych Azure DB rozwiązania Cosmos region geograficzny, jak Azure zostanie otwarty nowy region dla firm.
+Azure stale rośnie jego obecność geograficzne przełączając [nowych regionów](https://azure.microsoft.com/regions/) online. Azure DB rozwiązania Cosmos jest sklasyfikowany jako *podstawowych usługi* na platformie Azure i jest dostępna we wszystkich regionach platformy Azure nowe domyślnie. Dzięki temu można skojarzyć z konta bazy danych Azure DB rozwiązania Cosmos region geograficzny, jak Azure zostanie otwarty nowy region dla firm.
 
 ### <a id="UnlimitedRegionsPerAccount"></a>Kojarzenie nieograniczoną liczbę regionów z konta bazy danych Azure DB rozwiązania Cosmos
 Azure DB rozwiązania Cosmos można skojarzyć dowolną liczbę regiony platformy Azure przy użyciu konta bazy danych Azure DB rozwiązania Cosmos. Poza ograniczenia grodzenia (na przykład Chin, Niemcy) nie istnieją ograniczenia liczby regionów, które mogą być powiązane z Twoim kontem bazy danych Azure DB rozwiązania Cosmos. Na poniższej ilustracji przedstawiono konta bazy danych skonfigurowane zakresu w 25 regionach platformy Azure.  
 
-**Dzierżawy Azure rozwiązania Cosmos DB bazy danych konta rozszerzania regiony platformy Azure 25**
-
 ![Konto bazy danych DB rozwiązania Cosmos Azure spanning 25 regiony platformy Azure](./media/distribute-data-globally/spanning-regions.png)
 
+**Dzierżawy Azure rozwiązania Cosmos DB bazy danych konta rozszerzania regiony platformy Azure 25**
+
+
 ### <a id="PolicyBasedGeoFencing"></a>Oparte na zasadach grodzenia
-Azure DB rozwiązania Cosmos jest przeznaczona do mają możliwości grodzenia opartych na zasadach. Grodzenia jest istotnym elementem do zapewnienia ograniczenia dotyczące zarządzania i zgodności danych i spowodować, że skojarzenie określonego regionu z Twoim kontem. Przykłady grodzenia obejmują (ale nie są ograniczone do), zakresu globalnego dystrybucji do regionów, w chmurze suwerennych (na przykład Chin i Niemczech) lub w obrębie granicy podatkowych dla instytucji rządowych (na przykład Australia). Zasady są kontrolowane przy użyciu metadanych subskrypcji platformy Azure.
+Azure DB rozwiązania Cosmos jest przeznaczona do obsługi opartych na zasadach grodzenia. Grodzenia jest istotnym elementem do zapewnienia ograniczenia dotyczące zarządzania i zgodności danych i spowodować, że skojarzenie określonego regionu z Twoim kontem. Przykłady grodzenia obejmują (ale nie są ograniczone do) zakresu globalnego dystrybucji do regionów, w chmurze suwerennych (na przykład Chin i Niemczech) lub w obrębie granicy podatkowych dla instytucji rządowych (na przykład Australia). Zasady są kontrolowane przy użyciu metadanych subskrypcji platformy Azure.
 
 ### <a id="DynamicallyAddRegions"></a>Dynamicznie dodawać i usuwać regionów
-Azure DB rozwiązania Cosmos umożliwia (skojarzenia) Dodaj lub Usuń (skojarzenie) regionów konta bazy danych w dowolnym momencie (zobacz [powyższej ilustracji](#UnlimitedRegionsPerAccount)). Ze względu na replikację danych między partycjami równolegle, bazy danych rozwiązania Cosmos Azure zapewnia, że gdy nowy region do trybu online, Azure DB rozwiązania Cosmos jest dostępny w ciągu 30 minut wszędzie na świecie dla maksymalnie 100 tabel. 
+Azure DB rozwiązania Cosmos umożliwia (skojarzenia) Dodaj lub Usuń (skojarzenie) regionów, z Twojego konta bazy danych w dowolnym momencie (zobacz [powyższej ilustracji](#UnlimitedRegionsPerAccount)). Z równoległą replikację danych na partycji bazy danych Azure rozwiązania Cosmos zapewnia, że po dodaniu nowego regionu pobiera on jest dostępnych dla operacji w ciągu 30 minut dowolnego miejsca na świecie (przy założeniu danych jest 100 tabel lub mniej). 
 
 ### <a id="FailoverPriorities"></a>Priorytetów trybu failover
-Do sterowania dokładna kolejność regionalnej pracy w trybie Failover, po wielu regionalnej awarii, bazy danych rozwiązania Cosmos Azure umożliwia skojarzenie priorytet do różnych regionach skojarzone z bazy danych konta (zobacz poniższy rysunek). Azure DB rozwiązania Cosmos gwarantuje, że sekwencja automatycznej pracy awaryjnej występuje w podanej kolejności priorytet. Aby uzyskać więcej informacji na temat regionalnej pracy w trybie Failover, zobacz [automatyczne regionalnej pracy w trybie Failover dla ciągłość prowadzenia działalności biznesowej w usłudze Azure DB rozwiązania Cosmos](regional-failover.md).
+Aby kontrolować dokładna kolejność regionalnej pracy w trybie Failover w przypadku awarii, bazy danych rozwiązania Cosmos Azure umożliwia kojarzenie *priorytet* z różnych regionów skojarzone z bazy danych konta (zobacz rysunek poniżej). Azure DB rozwiązania Cosmos gwarantuje, że sekwencja automatycznej pracy awaryjnej występuje w podanej kolejności priorytet. Aby uzyskać więcej informacji na temat regionalnej pracy w trybie Failover, zobacz [automatyczne regionalnej pracy w trybie Failover dla ciągłość prowadzenia działalności biznesowej w usłudze Azure DB rozwiązania Cosmos](regional-failover.md).
 
-**Dzierżawy Azure DB rozwiązania Cosmos można skonfigurować kolejność priorytetów trybu failover (po prawej) dla regionów skojarzone z kontem bazy danych**
 
 ![Konfigurowanie priorytetów trybu failover z bazy danych Azure rozwiązania Cosmos](./media/distribute-data-globally/failover-priorities.png)
 
-### <a id="ConsistencyLevels"></a>Wiele, modeli spójności dobrze zdefiniowany dla globalnie zreplikowanych baz danych
-Udostępnia bazę danych systemu Azure rozwiązania Cosmos [wielu dobrze zdefiniowane poziomy spójności](consistency-levels.md) przez umowy SLA. Można wybrać model określonych spójności (z listy dostępnych opcji) w zależności od obciążenia/scenariuszy. 
+**Dzierżawy Azure DB rozwiązania Cosmos można skonfigurować kolejność priorytetów trybu failover (po prawej) dla regionów skojarzone z kontem bazy danych**
+
+### <a id="ConsistencyLevels"></a>Wiele, modeli dobrze zdefiniowany spójności globalnie rozproszone baz danych
+Obsługuje bazę danych systemu Azure rozwiązania Cosmos [wielu modeli dobrze zdefiniowany, intuicyjne i praktyczne spójności](consistency-levels.md) przez umowy SLA. Można wybrać model określonych spójności (z listy dostępnych opcji) w zależności od obciążenia/scenariuszy. 
 
 ### <a id="TunableConsistency"></a>Dostosowywalne spójności globalnie zreplikowanych baz danych
 Azure DB rozwiązania Cosmos umożliwia programowo zastąpienia i zwalnia domyślny wybór spójności na podstawie danego żądania w czasie wykonywania. 
@@ -75,73 +78,63 @@ Azure DB rozwiązania Cosmos umożliwia programowo zastąpienia i zwalnia domyś
 Azure DB rozwiązania Cosmos umożliwia konfigurowanie regionów (skojarzonego z bazą danych) "do odczytu", "write" lub "odczytu/zapisu" regionów. 
 
 ### <a id="ElasticallyScaleThroughput"></a>Elastycznie skalować przepływność w regionach platformy Azure
-Kolekcja bazy danych Azure rozwiązania Cosmos można elastycznie skalować przez przepływności inicjowania obsługi administracyjnej programowo. Przepływność jest stosowany do wszystkich regionów, które kolekcji jest dystrybuowane w.
+Kontener bazy danych Azure rozwiązania Cosmos można elastycznie skalować przez inicjowania obsługi administracyjnej przepływności programowo. Przepływność jest stosowany do wszystkich regionów, które kontenera Azure DB rozwiązania Cosmos jest dystrybuowane w.
 
 ### <a id="GeoLocalReadsAndWrites"></a>Lokalnych Geo odczyty i zapisy
-Najważniejszą korzyścią globalnie rozproszoną bazę danych jest oferowanie małe opóźnienia dostępu do danych o miejscu na świecie. Azure DB rozwiązania Cosmos zapewnia małe opóźnienia gwarancji P99 dla różnych operacji bazy danych. Gwarantuje, że wszystkie operacje odczytu są kierowane do najbliższego lokalny region odczytu. Do obsługi żądań odczytu, kworum lokalnego regionu, w którym zostało wystawione odczytu jest używany; to samo dotyczy zapisywania. Zapis zostaje potwierdzony tylko wtedy, gdy większość replik trwale przeprowadziła zapisu lokalnie, ale bez jest uzyskiwany w replikach zdalnego potwierdzić zapisy. Umieść inaczej, protokół replikacji bazy danych Azure rozwiązania Cosmos działa z założeniem, że kworum odczytu i zapisu zawsze znajdują się lokalnie do odczytu i zapisu regionach, odpowiednio wygenerowania żądania.
+Najważniejszą korzyścią globalnie rozproszoną bazę danych jest oferowane małe opóźnienia dostępu do danych w dowolnym miejscu na świecie. Azure DB rozwiązania Cosmos zapewnia małe opóźnienia odczytuje i zapisuje w 99-ty percentyl na całym świecie. Gwarantuje, że wszystkie operacje odczytu są obsługiwane z najbliżej regionu (local). Aby obsłużyć żądanie odczytu, kworum lokalnego regionu, w którym zostało wystawione odczytu jest używany. To samo dotyczy zapisów. Zapis zostaje potwierdzony tylko wtedy, gdy większość replik trwale popełnienie zapisu lokalnie, ale bez jest uzyskiwany w replikach zdalnego potwierdzić zapisy. Aby ją inaczej, protokół replikacji bazy danych Azure rozwiązania Cosmos działa przy założeniu, że kworum odczytu i zapisu zawsze znajdują się lokalnie do regionu, w którym żądanie zostało wydane.
 
-### <a id="ManualFailover"></a>Ręcznie zainicjować regionalnej pracy awaryjnej
-Azure DB rozwiązania Cosmos pozwala na zainicjowanie pracy awaryjnej konta bazy danych, aby sprawdzić poprawność *kompleksowe* właściwości dostępności dla całej aplikacji (poza bazą danych). Ponieważ ma gwarancji bezpieczeństwa i liveness właściwości wyborów wykrywania i wiodące awarii, bazy danych Azure rozwiązania Cosmos gwarantuje *utracie zero* operacji zainicjował dzierżawy ręcznego przełączania trybu failover.
+### <a id="ManualFailover"></a>Ręcznego przełączania trybu failover
+Azure DB rozwiązania Cosmos pozwala na zainicjowanie pracy awaryjnej konta bazy danych, aby sprawdzić poprawność *kompleksowe* właściwości dostępności dla całej aplikacji (poza bazą danych). Ponieważ dotrą zarówno bezpieczeństwa, jak i właściwości liveness wyboru wykrywania i wiodące błąd bazy danych Azure rozwiązania Cosmos gwarantuje *utracie zero* operacji zainicjował dzierżawy ręcznego przełączania trybu failover.
 
 ### <a id="AutomaticFailover"></a>Automatycznej pracy awaryjnej
-Azure DB rozwiązania Cosmos obsługuje automatycznej pracy awaryjnej w przypadku co najmniej jeden regionalnej awarii. Podczas regionalnej pracy awaryjnej bazy danych Azure rozwiązania Cosmos przechowuje opóźnienie odczytu, dostępność przestojów, spójność i przepływności umów SLA. Azure DB rozwiązania Cosmos zapewnia górna granica czasu na ukończenie operacji automatycznej pracy awaryjnej. To okno o utracie danych podczas regionalnej awarii.
+Azure DB rozwiązania Cosmos obsługuje automatycznej pracy awaryjnej w przypadku co najmniej jeden regionalnej awarii. Podczas regionalnej pracy awaryjnej bazy danych Azure rozwiązania Cosmos przechowuje opóźnienie odczytu, dostępność przestojów, spójność i przepływności umów SLA. Azure DB rozwiązania Cosmos zapewnia górna granica na czas trwania na zakończenie operacji automatycznej pracy awaryjnej. To okno o utracie danych podczas regionalnej awarii.
 
 ### <a id="GranularFailover"></a>Przeznaczona dla innego trybu failover szczegółowości
-Obecnie funkcji automatycznej i ręcznej pracy awaryjnej są widoczne na poziom szczegółowości konta bazy danych. Uwaga: wewnętrznie rozwiązania Cosmos bazy danych Azure oferuje proste *automatyczne* pracy awaryjnej dokładniej bazy danych, kolekcji lub nawet partycji (kolekcji będącej właścicielem, jeśli zakres kluczy). 
+Obecnie funkcji automatycznej i ręcznej pracy awaryjnej są widoczne na poziom szczegółowości konta bazy danych. Uwaga: wewnętrznie rozwiązania Cosmos bazy danych Azure oferuje proste *automatyczne* pracy awaryjnej dokładniej bazy danych, kontenera lub nawet partycji (kontener będącej właścicielem, jeśli zakres kluczy). 
 
-### <a id="MultiHomingAPIs"></a>Wielu interfejsów API w Azure rozwiązania Cosmos bazy danych
-Azure DB rozwiązania Cosmos pozwala korzystać z bazą danych przy użyciu jednej logicznej (niezależny od regionu) lub fizycznych (określonego regionu) punktów końcowych. Użycie logiczne punkty końcowe gwarantuje, czy aplikacja może być przezroczysty wieloadresowego w przypadku trybu failover. Ostatnie fizycznego punktów końcowych, podaj szczegółową kontrolę do aplikacji, aby przekierować odczytuje i zapisuje określonych regionach.
+### <a id="MultiHomingAPIs"></a>Wiele homing w Azure rozwiązania Cosmos bazy danych
+Azure DB rozwiązania Cosmos pozwala korzystać z bazą danych przy użyciu *logicznej* (niezależny od regionu) lub *fizycznych* punktów końcowych (określonego regionu). Użycie logiczne punkty końcowe gwarantuje, że aplikacja może być przezroczysty wieloadresowego podczas pracy awaryjnej. Drugie, fizycznych punktu końcowego, zapewnia precyzyjną kontrolę do aplikacji w celu przekierowania odczyty i zapisuje określonych regionach.
 
-Informacje dotyczące sposobu konfigurowania preferencji odczytu można znaleźć [interfejsu API SQL](../cosmos-db/tutorial-global-distribution-sql-api.md), [interfejsu API programu Graph](../cosmos-db/tutorial-global-distribution-graph.md), [API tabeli](../cosmos-db/tutorial-global-distribution-table.md), i [API bazy danych MongoDB](../cosmos-db/tutorial-global-distribution-mongodb.md) w ich odpowiednich połączonych artykułów.
+Informacje dotyczące sposobu konfigurowania preferencji odczytu można znaleźć [interfejsu API SQL](../cosmos-db/tutorial-global-distribution-sql-api.md), [Gremlin API](../cosmos-db/tutorial-global-distribution-graph.md), [API tabeli](../cosmos-db/tutorial-global-distribution-table.md), i [API bazy danych MongoDB](../cosmos-db/tutorial-global-distribution-mongodb.md) w te artykuły.
 
 ### <a id="TransparentSchemaMigration"></a>Migracja schematu i indeksu przejrzyste i spójności bazy danych 
-Azure DB rozwiązania Cosmos jest w pełni [niezależny od schematu](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Unikatowa konstrukcja jego aparatu bazy danych pozwala na automatyczne i synchronicznie indeks wszystkich danych, który wysyła strumień go bez żadnego schematu lub indeksów pomocniczych od użytkownika. Dzięki temu można szybko przejść aplikacji rozproszonych globalnie bez obaw o migracji schematu i indeks bazy danych lub koordynowanie wdrożenia aplikacji fazy wielu zmian schematu. Azure DB rozwiązania Cosmos gwarantuje, że wszystkie zmiany do indeksowania jawnie wprowadzonych przez Ciebie zasad nie powoduje do pogorszenia się wydajności i dostępności.  
+Azure DB rozwiązania Cosmos jest w pełni [niezależny od schematu](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Unikatowa konstrukcja aparatu bazy danych umożliwia DB rozwiązania Cosmos Azure, aby automatycznie i synchronicznie indeks wszystkie dane na pozyskiwania bez żadnego schematu lub indeksów pomocniczych od użytkownika. Dzięki temu można szybko przejść aplikacji rozproszonych globalnie bez obaw o migracji schematu i indeks bazy danych lub koordynowanie wdrożenia aplikacji fazy wielu zmian schematu. Azure DB rozwiązania Cosmos gwarantuje, że wszystkie zmiany do indeksowania jawnie wprowadzonych przez Ciebie zasad powoduje spadek wydajności i dostępności.  
 
 ### <a id="ComprehensiveSLAs"></a>Kompleksowe umów SLA (poza tylko wysokiej dostępności)
-Jako usługa globalnie rozproszoną bazę danych, bazy danych rozwiązania Cosmos Azure oferuje dobrze zdefiniowany umowy SLA dla **utraty danych**, **dostępności**, **czas oczekiwania na P99**, **przepływności**  i **spójności** dla bazy danych jako całości, niezależnie od liczby regionów skojarzonego z bazą danych.  
+Jako usługa globalnie rozproszoną bazę danych, bazy danych rozwiązania Cosmos Azure oferuje dobrze zdefiniowany i wszechstronne umowy SLA dla **dostępności**, **opóźnienia**, **przepływności** i **spójności** dla bazy danych, systemem w skali globalnej, niezależnie od liczby regionów skojarzonego z bazą danych.  
 
 ## <a id="LatencyGuarantees"></a>Gwarancje opóźnienia
-Najważniejszą korzyścią usług globalnie rozproszoną bazę danych, takich jak bazy danych Azure rozwiązania Cosmos jest oferowanie małe opóźnienia dostępu do danych w dowolnym miejscu na świecie. Azure DB rozwiązania Cosmos oferuje gwarantowane małe opóźnienia w P99 dla różnych operacji bazy danych. Protokół replikacji bazy danych Azure rozwiązania Cosmos używającego zapewnia, że operacje bazy danych (w idealnym przypadku odczytuje i zapisuje) są zawsze wykonywane w regionie lokalnego do klienta. Opóźnienie umowy SLA platformy Azure DB rozwiązania Cosmos obejmuje P99 odczytów, zapisów (synchronicznie) indeksowane i zapytania o różnych rozmiarach żądań i odpowiedzi. Gwarancje opóźnienia zapisów obejmują zatwierdzeń kworum Większość trwałe w lokalnym centrum danych.
+Najważniejszą korzyścią usług globalnie rozproszoną bazę danych, takich jak bazy danych Azure rozwiązania Cosmos jest oferowanie małe opóźnienia dostępu do danych w dowolnym miejscu na świecie. Azure DB rozwiązania Cosmos oferuje gwarantowane małe opóźnienia w 99-ty percentyl dla różnych operacji bazy danych. Protokół replikacji bazy danych Azure rozwiązania Cosmos używającego gwarantuje, że operacje bazy danych (odczyty i zapisy) są zawsze wykonywane w regionie lokalnego do klienta. Opóźnienie umowy SLA platformy Azure DB rozwiązania Cosmos zapewnia gwarancje na 99-ty percentyl dla odczytów, zapisów (synchronicznie) indeksowane i zapytania o różnych rozmiarach żądań i odpowiedzi. Gwarancje opóźnienia zapisów obejmują zatwierdzeń kworum Większość trwałe w ramach lokalnego regionu.
 
 ### <a id="LatencyAndConsistency"></a>Czas oczekiwania w relacji z spójności 
-Globalnie rozproszone usługi zapewniające wysoki poziom spójności w Instalatorze globalnie rozproszone, należy go replikowane synchronicznie zapisuje lub synchroniczne wykonać odczyty między region — szybkości jasny i niezawodność sieci rozległej dyktowania to strong spójność powoduje zmniejszenie dostępności operacji bazy danych i większych opóźnień. W związku z tym w celu dostarczenia małych opóźnień w P99 i dostępności 99,99% dla wszystkich kont w pojedynczym regionie i wszystkich kont w przypadku dzięki zastosowaniu swobodna spójności i 99,999% odczyt dostępności na wszystkich kontach w przypadku bazy danych, należy stosować usługę asynchroniczną replikację. Wymaga to w Włącz usługę musi oferują [choice(s) spójności dobrze zdefiniowany, swobodna](consistency-levels.md) — mniejsze niż silne (oferowanie niski gwarancje dostępności i opóźnienia), jak i w idealnym przypadku mocniejszy niż element spójność "ostateczna" (do oferuje intuicyjny model programowania).
+Globalnie rozproszone usługi zapewniające wysoki poziom spójności w Instalatorze globalnie rozproszone wymaga synchroniczny replikacji zapisami lub przeprowadzić synchronicznie odczyty między regionu. Szybkość jasnym i dyktować niezawodności sieci rozległej, która spowoduje wysoki poziom spójności w większych opóźnień i powoduje zmniejszoną dostępność operacji w bazie danych. W związku z tym oferują zagwarantować małe opóźnienia 99-ty percentyl i dostępności 99,99% dla wszystkich kont w pojedynczym regionie i wszystkich kont w przypadku z swobodna spójności i 99,999% dostępności na wszystkich kontach w przypadku bazy danych, usługi należy stosować asynchroniczną replikację. Wymaga to w Włącz usługę musi oferują [modele spójności dobrze zdefiniowany, swobodna](consistency-levels.md) — mniejsze niż silne (oferowanie niskich opóźnień i dostępności gwarancje) i najlepiej mocniejszy niż element spójność "ostateczna" (z intuicyjne model programowania).
 
-Azure DB rozwiązania Cosmos zapewnia operacja odczytu nie jest wymagane do kontaktowania się z replik w różnych regionach dostarczać gwarancji poziomu spójności określone. Podobnie zapewnia, że operacja zapisu nie pobrać blokowane podczas replikacji danych we wszystkich regionach (tj. zapisy są asynchronicznie replikowane w regionach). Dla konta bazy danych w przypadku wielu poziomów spójności swobodna są dostępne. 
+Azure DB rozwiązania Cosmos zapewnia operacja odczytu nie jest wymagane do kontaktowania się z replik w różnych regionach dostarczać gwarancję poziomu spójności określone. Podobnie, gwarantuje, że operacja zapisu nie pobrać blokowane podczas replikacji danych we wszystkich regionach (tj. zapisy są asynchronicznie replikowane w regionach). Dla konta bazy danych w przypadku obu silne oraz wiele poziomów spójności swobodna są dostępne. 
 
 ### <a id="LatencyAndAvailability"></a>Czas oczekiwania w relacji o dostępności 
-Opóźnienia i dostępności są dwie strony tego samego monety. Omawianiu opóźnienia operacji w stanie stabilności i dostępności w wypadku awarii. Z punktu widzenia aplikacji powolne uruchomioną operację bazy danych jest nierozróżnialne z bazy danych, która jest niedostępna. 
+Opóźnienia i dostępności są dwie strony tego samego monety. Omawianiu opóźnienia operacji w stanie stabilności i dostępności obecności partycje sieci i błędów. Z punktu widzenia aplikacji powolne uruchomioną operację bazy danych jest nierozróżnialne z bazy danych, która jest niedostępna. 
 
-Aby odróżnić duże opóźnienie od niedostępności, bazy danych Azure rozwiązania Cosmos umożliwia bezwzględną górna granica opóźnienia różne operacje bazy danych. Jeśli operacja bazy danych trwa dłużej niż górna granica do ukończenia, bazy danych Azure rozwiązania Cosmos zwraca błąd upływu limitu czasu. SLA dostępności bazy danych Azure rozwiązania Cosmos gwarantuje, że limity czasu są uwzględniane dostępności umowy dotyczącej poziomu usług. 
+Aby odróżnić duże opóźnienie od niedostępności, bazy danych Azure rozwiązania Cosmos zapewnia bezwzględną górna granica opóźnienia różne operacje bazy danych. Jeśli operacja bazy danych trwa dłużej niż górna granica do ukończenia, bazy danych Azure rozwiązania Cosmos zwraca błąd upływu limitu czasu. SLA dostępności bazy danych Azure rozwiązania Cosmos gwarantuje, że limity czasu są uwzględniane dostępności umowy dotyczącej poziomu usług. 
 
 ### <a id="LatencyAndThroughput"></a>Czas oczekiwania w relacji o przepływności
-Azure DB rozwiązania Cosmos nie powoduje możesz wybrać opóźnienia i przepływności. Uwzględnia ona zdefiniowane umowy SLA dla obu opóźnienia P99 i dostarczyć przepływności, które zostały udostępnione. 
+Azure DB rozwiązania Cosmos nie powoduje możesz wybrać opóźnienia i przepływności. Honoruje umowy SLA dla obu opóźnienia w 99-ty percentyl, a zapewnia przepływność, które zostały udostępnione. 
 
 ## <a id="ConsistencyGuarantees"></a>Gwarancje spójności
-Gdy [modelu wysoki poziom spójności](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) jest standardem złota z programowaniem, znajduje się na problemy z ich opanowaniem ceny większego opóźnienia (w stanie stabilności) i zmniejszona dostępność (w wypadku awarii). 
+Gdy [modelu wysoki poziom spójności](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) jest standardem złota z programowania danych znajduje się na problemy z ich opanowaniem ceny większego opóźnienia (w stanie stabilności) i zmniejszona dostępność (w wypadku awarii). 
 
-Azure DB rozwiązania Cosmos oferuje dobrze zdefiniowany model programowania użytkownikowi przeglądanie informacji o spójności replikowanych danych. Aby włączyć tworzenie aplikacji wieloadresowych, modeli spójności udostępnianych przez bazy danych Azure rozwiązania Cosmos są przeznaczone do być niezależny od regionu i nie zależą od regionu, z którym odczyty i zapisy są obsługiwane. 
+Azure DB rozwiązania Cosmos zapewnia model programowania dobrze zdefiniowany możesz przeglądanie informacji o spójności replikowanych danych. Celu umożliwiają łatwe tworzenie aplikacji rozproszonych globalnie możliwości podłączonej do wielu sieci, mają być niezależny od regionu i niezależne od regionu, z którym są odczyty i zapisy modeli spójności udostępnianych przez bazy danych Azure rozwiązania Cosmos obsługiwane. 
 
-Spójności Azure DB rozwiązania Cosmos umowy dotyczącej poziomu usług gwarantuje, że 100% żądań odczytu spełniającą gwarancji spójności dla poziomu spójności żądanie użytkownika (domyślny poziom spójności na konto bazy danych) albo wartość zastąpiona na żądanie. Żądanie odczytu jest uważana za osiągnięcia SLA spójności, jeśli spełnione są wszystkie skojarzone z poziomu spójności gwarancje spójności. Poniższa tabela zawiera spójność gwarantuje, które odpowiadają poziomy spójności określonych oferowane przez bazy danych Azure rozwiązania Cosmos.
-
-**Gwarancje spójności skojarzone z poziomu danego spójności w usłudze Azure DB rozwiązania Cosmos**
+Azure DB rozwiązania Cosmos spójności umowy dotyczącej poziomu usług gwarantuje, że 100% żądań odczytu spełniającą gwarancji spójności dla modelu spójności określonego przez użytkownika (albo na poziomie żądania lub konto bazy danych). Żądanie odczytu jest uważana za osiągnięcia spójności umowy SLA, jeśli spełnione są wszystkie skojarzone z poziomu spójności gwarancje spójności. Poniższa tabela umożliwia przechwytywanie gwarancje spójności odpowiadające modeli określonego spójności oferowane przez bazy danych Azure rozwiązania Cosmos.
 
 <table>
     <tr>
-        <td><strong>Poziomu spójności</strong></td>
+        <td><strong>Model spójności</strong></td>
         <td><strong>Właściwości spójności</strong></td>
         <td><strong>Umowa SLA</strong></td>
     </tr>
-    <tr>
-        <td rowspan="3">Sesja</td>
-        <td>Przeczytaj własne zapisu</td>
-        <td>100%</td>
-    </tr>
-    <tr>
-        <td>Monotoniczna odczytu</td>
-        <td>100%</td>
-    </tr>
-    <tr>
-        <td>Prefiks spójne</td>
+        <tr>
+        <td>Silna</td>
+        <td>Linearizable</td>
         <td>100%</td>
     </tr>
     <tr>
@@ -157,70 +150,80 @@ Spójności Azure DB rozwiązania Cosmos umowy dotyczącej poziomu usług gwaran
         <td>Nieaktualności powiązany &lt; K, T</td>
         <td>100%</td>
     </tr>
+<tr>
+        <td rowspan="3">Sesja</td>
+        <td>Przeczytaj własne zapisu</td>
+        <td>100%</td>
+    </tr>
     <tr>
-        <td>Prefiks spójne</td>
+        <td>Monotoniczna odczytu</td>
+        <td>100%</td>
+    </tr>
+    <tr>
         <td>Prefiks spójne</td>
         <td>100%</td>
     </tr>
     <tr>
-        <td>Silna</td>
-        <td>Linearizable</td>
+        <td>Prefiks spójne</td>
+        <td>Prefiks spójne</td>
         <td>100%</td>
     </tr>
 </table>
 
+**Gwarancje spójności skojarzone z modelem danego spójności w usłudze Azure DB rozwiązania Cosmos**
+
+
 ### <a id="ConsistencyAndAvailability"></a>Relacji w spójności z dostępności
-[Wynik niemożności](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf) z [Newtona zakończenia](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf) potwierdza, że jest to niemożliwe do pozostają dostępne i oferują linearizable spójności w wypadku awarii systemu. Usługa bazy danych należy wybrać region lub CP - systemów CP zrezygnujesz z dostępności na rzecz linearizable spójności podczas zrezygnujesz z systemów region [linearizable spójności](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) na rzecz dostępności. Azure DB rozwiązania Cosmos nigdy nie narusza poziomu spójności żądanego, dzięki czemu formalnie systemu CP. Jednak w praktyce spójności nie jest wszystkie lub żadne oferty — istnieją wielu modeli dobrze zdefiniowany spójności wzdłuż spektrum spójności między linearizable i ewentualnej spójności. W usłudze Azure DB rozwiązania Cosmos próbowaliśmy zostały pokazane kilka modeli swobodna spójności z zastosowania rzeczywistych i intuicyjne modelu programowania. Azure DB rozwiązania Cosmos przechodzi skutków ubocznych spójności dostępności, oferując [wielu rozluźnić jeszcze dobrze zdefiniowane poziomy spójności](consistency-levels.md) i o dostępności 99,99% dla wszystkich kont w pojedynczym regionie i wszystkich kont w przypadku z rozluźnić spójności i 99,999% odczytu dostępności na wszystkich kontach w przypadku bazy danych. 
+[Wynik niemożności](http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf) z [Newtona zakończenia](https://people.eecs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf) potwierdza, że jest w rzeczywistości możliwości systemu pozostają dostępne i oferowanie linearizable spójności w wypadku awarii. Usługa bazy danych należy wybrać CP lub region, w którym CP systemów zrezygnujesz z dostępności na rzecz linearizable spójności, gdy zrezygnujesz z systemów region [linearizable spójności](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) na rzecz dostępności. Azure DB rozwiązania Cosmos nigdy nie narusza modelu żądanego spójności formalnie ułatwia systemu CP. W praktyce spójności nie jest jednak wszystkie lub żadne oferty; istnieje wiele modeli dobrze zdefiniowany spójności wzdłuż spektrum spójności między linearizable i ewentualnej spójności. W usłudze Azure DB rozwiązania Cosmos mieć próby zidentyfikować kilka swobodna spójności modeli, które są stosowane, do rzeczywistych scenariuszach i intuicyjne do użycia. Azure DB rozwiązania Cosmos przechodzi skutków ubocznych spójności dostępności, oferując [wielu rozluźnić spójności jeszcze dobrze zdefiniowanego, modele](consistency-levels.md) i o dostępności 99,99% dla wszystkich pojedynczy region konta bazy danych i 99,999% odczytu i zapisu dostępność dla wszystkich kont w przypadku bazy danych. 
 
 ### <a id="ConsistencyAndAvailability"></a>Relacja w spójności z opóźnieniem
-Bardziej zaawansowane odmianą zakończenia został podanymi przez Abadi Danielowi Prof. i jest ona wywoływana [PACELC](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf), która uwzględnia również wpływ na opóźnienie i spójności w stanie stabilności. Stany go, że w stanie stabilności system bazy danych należy wybrać opcję spójności i opóźnień. Z wielu modeli swobodna spójności (obsługiwana przez asynchroniczną replikację i lokalne odczytu, zapisu kworum) bazy danych Azure rozwiązania Cosmos zapewnia wszystkie odczyty i zapisy są lokalne do odczytu i zapisu odpowiednio regionów.  Dzięki temu Azure DB rozwiązania Cosmos oferowanie gwarancje małe opóźnienia w obrębie regionu poziomów spójności.  
+Bardziej zaawansowane odmianą Newtona zakończenia jest wywoływana [PACELC](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf), która uwzględnia również wpływ na opóźnienie i spójności w stanie stabilności. Stany go, że w stanie stabilności, system bazy danych należy wybrać opcję spójności i opóźnień. Z wielu modeli swobodna spójności (obsługiwana przez asynchroniczną replikację i lokalne odczytu i zapisu kworum) bazy danych Azure rozwiązania Cosmos zapewnia wszystkie odczyty i zapisy są lokalne do odczytu i zapisu odpowiednio regionów. Dzięki temu Azure DB rozwiązania Cosmos oferowanie gwarancje małe opóźnienia w obrębie regionu dla modeli danej spójności.  
 
 ### <a id="ConsistencyAndThroughput"></a>Relacji w spójności z przepływnością
-Ponieważ wybór zależy od implementacji modelu określonego spójności [typu kworum](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf), przepływność również w zależności od wyboru spójności. Na przykład w usłudze Azure DB rozwiązania Cosmos, RU dla odczytów silnie spójne jest około dwa razy, że z ostatecznie spójne odczytuje. W takim przypadku należy udostępnić double RUs w kolekcji do osiągnięcia tej samej przepływności.
- 
-**Relacja odczytu pojemności dla poziomu spójności określonych w usłudze Azure DB rozwiązania Cosmos**
+Ponieważ wybór zależy od implementacji modelu określonego spójności [typu kworum](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf), przepływności również w zależności od wyboru modelu spójności. Na przykład w usłudze Azure DB rozwiązania Cosmos, RU dla odczytów silnie spójne jest około *podwójne* który ostatecznie spójności odczytów. W takim przypadku należy udostępnić double RUs do osiągnięcia tej samej przepływności.
+
 
 ![Relacja między spójności i przepustowość](./media/distribute-data-globally/consistency-and-throughput.png)
 
-## <a id="ThroughputGuarantees"></a>Gwarancje przepustowości 
-Azure DB rozwiązania Cosmos pozwala na skali przepływności (a także, magazynu), elastycznie w różnych regionach, w zależności od zapotrzebowania. 
+**Relacja odczytu pojemności dla modelu określonego spójności w usłudze Azure DB rozwiązania Cosmos**
 
-**Jednej kolekcji bazy danych Azure rozwiązania Cosmos podzielonym na partycje (w trzech odłamków), a następnie dystrybuowana do trzech regiony platformy Azure**
+## <a id="ThroughputGuarantees"></a>Gwarancje przepustowości 
+Azure DB rozwiązania Cosmos pozwala na skali przepływności (a także, magazynu), elastycznie przez dowolną liczbę regionów, zależnie od potrzeb i żądanie. 
 
 ![Azure DB rozwiązania Cosmos rozproszonych i na partycje w kolekcjach](../cosmos-db/media/introduction/azure-cosmos-db-global-distribution.png)
 
-Kolekcji usługi Azure DB rozwiązania Cosmos pobiera dystrybuowane za pomocą dwóch wymiarów — w obrębie regionu, a następnie w regionach. Oto kroki tej procedury: 
+**Jeden kontener bazy danych Azure rozwiązania Cosmos poziomie podzielonym na partycje (trzy partycje zasobów w obrębie regionu) za pośrednictwem, a następnie globalnie rozproszonych w trzech regionach platformy Azure**
 
-* W jednym regionie kolekcji usługi Azure DB rozwiązania Cosmos jest skalowana w poziomie pod względem zasobów partycji. Każda partycja zasobów zarządza zestawu kluczy i jest silnie spójne i wysokiej dostępności, ze względu na stan replikacji maszyny z zestawu replik. Azure DB rozwiązania Cosmos jest systemem zasobów postanowieniom pełni której partycję zasobu jest odpowiedzialny za dostarczanie swój udział przepływności budżet przydzielony zasobów systemowych. Skalowanie kolekcji usługi Azure DB rozwiązania Cosmos jest całkowicie niewidoczne — bazy danych Azure rozwiązania Cosmos zarządza partycje zasobów i dzieli i scala go zgodnie z potrzebami. 
-* Każdej partycji zasobów jest dystrybuowane w różnych regionach. Partycje zasobów będący właścicielem tego samego zestawu kluczy w różnych regionach tworzą zestaw partycji (zobacz [powyższej ilustracji](#ThroughputGuarantees)).  Partycje zasobów w ramach zestawu partycji są koordynowane przy użyciu stan replikacji maszyny w różnych regionach. W zależności od poziomu spójności skonfigurowana partycje zasobów w ramach zestawu partycji są skonfigurowane dynamicznie za pomocą różnych topologiach (na przykład gwiazdka, łańcucha, drzewa itp.). 
+Kontener bazy danych Azure rozwiązania Cosmos pobiera dystrybuowane w dwóch wymiarów i w obrębie regionu i (ii) w regionach. Oto kroki tej procedury: 
 
-Na podstawie zarządzania szybkiego partycji, równoważenia obciążenia i zarządzanie ograniczeniami zasobów bazy danych Azure rozwiązania Cosmos umożliwia elastycznie skalowalnego przepływności w różnych regionach platformy Azure w kolekcji usługi Azure DB rozwiązania Cosmos. Zmiana przepływności na kolekcję jest operacja czasu wykonywania w usłudze Azure DB rozwiązania Cosmos — tak jak z innymi operacjami bazy danych Azure DB rozwiązania Cosmos gwarantuje bezwzględną górna granica na czas oczekiwania na żądanie zmiany przepływności. Na przykład na poniższej ilustracji przedstawiono kolekcji klienta z elastycznie udostępnionej przepływności (z zakresu od 1M - 10M żądań na sekundę w dwóch regionach) na podstawie zapotrzebowania.
- 
-**Kolekcja klienta o elastycznie udostępnionej przepływności (1 mln 10M żądania/s)**
+* **Lokalnej dystrybucji**: W pojedynczym regionie kontenera Azure DB rozwiązania Cosmos jest poziomo skalowana w poziomie na podstawie *partycje zasobów*. Każda partycja zasobów zarządza zestawu kluczy i silnie spójne i wysokiej dostępności fizycznie reprezentowanego przez cztery repliki skrót *zestawu replik* i stan replikacji maszyny wśród tych replik. Azure DB rozwiązania Cosmos jest systemem pełni postanowieniom zasobów, których partycję zasobu odpowiada dostarczać swój udział przepływności budżet przydzielony zasobów systemowych. Skalowanie kontenera Azure DB rozwiązania Cosmos jest całkowicie niewidoczne dla użytkowników. Azure DB rozwiązania Cosmos zarządza partycje zasobów i dzieli scala je w razie potrzeby przechowywania danych i zmienić wymagania dotyczące przepływności. 
+* **Globalne dystrybucji**: Jeśli jest bazą danych w przypadku każdej partycji zasobów jest następnie dystrybuowana do tych regionów. Partycje zasobów będący właścicielem tego samego zestawu kluczy w różnych regionach formularza *zestawem partycji* (zobacz [powyższej ilustracji](#ThroughputGuarantees)).  Partycje zasobów w ramach zestawu partycji są koordynowane w różnych regionach skojarzonego z bazą danych przy użyciu replikacji maszyny stanu. W zależności od poziomu spójności skonfigurowana partycje zasobów w ramach zestawu partycji są skonfigurowane dynamicznie za pomocą różnych topologiach (na przykład gwiazdka, łańcucha, drzewa itp.). 
+
+Na podstawie zarządzania szybkiego partycji, równoważenia obciążenia i zarządzanie ograniczeniami zasobów bazy danych Azure rozwiązania Cosmos umożliwia elastycznie skalowalnego przepływności w różnych regionach platformy Azure skojarzone z bazy danych Azure rozwiązania Cosmos kontener lub bazy danych. Zmiana udostępnionej przepływności jest operacja czasu wykonywania w usłudze Azure DB rozwiązania Cosmos. Podobnie jak inne operacje bazy danych, bazy danych Azure rozwiązania Cosmos gwarantuje bezwzględną górna granica na czas oczekiwania na żądanie zmiany udostępnionej przepływności. Na przykład na poniższej ilustracji przedstawiono kontenera klienta z elastycznie udostępnionej przepływności (z zakresu od 1M - 10M żądań na sekundę w dwóch regionach) na podstawie zapotrzebowania.
 
 ![Azure DB rozwiązania Cosmos elastycznie elastycznie przepływności](./media/distribute-data-globally/elastic-throughput.png)
 
+**Kontener klienta z elastycznie udostępnionej przepływności (różnią się między 1M - 10M żądania/s)**
+
 ### <a id="ThroughputAndConsistency"></a>Przepływność w relacji z spójności 
-Taki sam jak [relacji w spójności z przepływnością](#ConsistencyAndThroughput).
+Jest to ten sam zgodnie z opisem w [relacji w spójności z przepływnością](#ConsistencyAndThroughput).
 
 ### <a id="ThroughputAndAvailability"></a>Przepływność w relacji o dostępności
-Azure DB rozwiązania Cosmos w dalszym ciągu Obsługa jego dostępność podczas wprowadzania zmian przepływności. Azure DB rozwiązania Cosmos niewidocznie zarządza partycji (na przykład podziału, scalenie, operacji klonowania) i zapewnia, że operacje zmniejsza wydajność i dostępność, gdy aplikacja elastycznie zwiększa lub zmniejsza przepływności. 
+Azure DB rozwiązania Cosmos w dalszym ciągu obsługi jego wysokiej dostępności podczas wprowadzania zmian do udostępnionej przepływności. Azure DB rozwiązania Cosmos niewidocznie zarządza partycje zasobów (i wykonuje operacje podziału, scalania i klonowania) i zapewnia, że operacje zmniejsza wydajność i dostępność, gdy aplikacja elastycznie zwiększa lub zmniejsza przepływności. 
 
 ## <a id="AvailabilityGuarantees"></a>Gwarancje dostępności
-Azure DB rozwiązania Cosmos oferuje dostępności 99,99% umowy SLA dla wszystkich kont w pojedynczym regionie i wszystkich kont w przypadku z swobodna spójności i 99,999% odczytać dostępności na wszystkich kontach w przypadku bazy danych. Zgodnie z wcześniejszym opisem gwarancje dostępności Azure rozwiązania Cosmos DB obejmują bezwzględną górna granica opóźnienie dla każdej operacji płaszczyzna danych i kontroli. Gwarancje dostępności są steadfast i nie zmienia się wiele regionów lub położenia geograficznego między regionami. Gwarancje dostępności zastosowanie zarówno ręcznego jak również, automatycznej pracy awaryjnej. Azure DB rozwiązania Cosmos oferuje przezroczysty wielu interfejsów API, które Sprawdź, czy aplikacja może działać względem punktów końcowych logicznych i niewidocznie może kierować żądań do nowego regionu w przypadku trybu failover. Umieść inaczej, aplikacja nie potrzeba ponownego wdrożenia na regionalnej pracy awaryjnej i umów SLA dostępności, które są obsługiwane.
+Azure DB rozwiązania Cosmos oferuje dostępności 99,99% umowy SLA dla wszystkich kont bazy danych w pojedynczym regionie i wszystkich kont w przypadku swobodna spójności i 99,999% dostępności na wszystkich kontach w przypadku bazy danych. Zgodnie z wcześniejszym opisem gwarancje dostępności Azure rozwiązania Cosmos DB obejmują bezwzględną górna granica opóźnienie dla każdej operacji płaszczyzna danych i kontroli. Gwarancje dostępności nie zmienia się wiele regionów lub położenia geograficznego między regionami. Gwarancje dostępności są stosowane względem zarówno ręcznego jak i automatycznego przechodzenia w tryb failover. Azure DB rozwiązania Cosmos oferuje przezroczysty wielu interfejsów API, które Sprawdź, czy aplikacja może działać względem punktów końcowych logicznych i niewidocznie może kierować żądań do nowego regionu podczas pracy awaryjnej. Aplikacja nie potrzeba ponownego wdrożenia w przypadku regionalnej pracy awaryjnej i dostępność SLA są zachowywane przez cały czas.
 
 ### <a id="AvailabilityAndConsistency"></a>Relacja dostępności w spójności, opóźnienia i przepływności
-Relacja dostępności w spójności, opóźnienia i przepływność jest opisana w [relacji w spójności z dostępności](#ConsistencyAndAvailability), [relacji czas oczekiwania na dostępność](#LatencyAndAvailability) i [Przepływności w relacji z dostępnością](#ThroughputAndAvailability). 
-
-## <a id="GuaranteesAgainstDataLoss"></a>Gwarancje i zachowanie systemowe dla "utraty danych"
-W usłudze Azure DB rozwiązania Cosmos każdej partycji (kolekcja) jest udostępniane dużej liczby replik, które są rozkładane między co najmniej 10-20 domen błędów. Zapisuje wszystkie są synchronicznie i trwałym zatwierdzeniu przez większość kworum replik przed uznanych do klienta. Replikacji asynchronicznej jest stosowana z koordynacji między partycjami rozprzestrzeniać się w różnych regionach. Azure DB rozwiązania Cosmos gwarantuje, że istnieje nie powoduje utraty danych ręcznej pracy awaryjnej zainicjował dzierżawy. Podczas automatycznej pracy awaryjnej bazy danych Azure rozwiązania Cosmos gwarantuje górna granica zakresu skonfigurowanych spójność powiązanej nieaktualności okno utraty danych w ramach jego umowy dotyczącej poziomu usług.
+Relacja dostępności w spójności, opóźnienia i przepływność jest opisane w sekcjach [relacji w spójności z dostępności](#ConsistencyAndAvailability), [relacji czas oczekiwania na dostępność](#LatencyAndAvailability) i [Przepływności w relacji z dostępnością](#ThroughputAndAvailability). 
 
 ## <a id="CustomerFacingSLAMetrics"></a>Metryki umowy SLA skierowane do klienta
-Azure DB rozwiązania Cosmos niewidocznie przedstawia metryki przepływności, opóźnienia, spójność i dostępności. Te metryki są dostępne programowo i za pośrednictwem portalu Azure (patrz niżej rysunku). Można również Konfigurowanie alertów dla różnych progów przy użyciu usługi Azure Application Insights.
+Azure DB rozwiązania Cosmos niewidocznie przedstawia metryki przepływności, opóźnienia, spójność i dostępności. Te metryki są dostępne programowo i za pośrednictwem portalu Azure (zobacz rysunek poniżej). Można również Konfigurowanie alertów dla różnych progów przy użyciu usługi Azure Application Insights.
  
-**Metryki spójności, czas oczekiwania, przepływności i dostępności są niewidocznie dostępne dla każdego dzierżawcy**
 
 ![Azure DB rozwiązania Cosmos widoczne klienta metryki umowy dotyczącej poziomu usług](./media/distribute-data-globally/customer-slas.png)
+
+**Metryki spójności, czas oczekiwania, przepływności i dostępności są niewidocznie dostępne dla każdego dzierżawcy**
 
 ## <a id="Next Steps"></a>Następne kroki
 * Aby zaimplementować globalnej replikacji na Twoim koncie Azure DB rozwiązania Cosmos przy użyciu portalu Azure, zobacz [sposób wykonywania replikacji globalna baza danych bazy danych rozwiązania Cosmos Azure przy użyciu portalu Azure](tutorial-global-distribution-sql-api.md).

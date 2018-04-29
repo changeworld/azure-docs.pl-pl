@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d57c80e8e965e15d92736ec482247f02064f6009
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Samouczek: Integracji Azure Active Directory z OpsGenie
 
@@ -112,33 +112,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     W **adres URL logowania** tekstowym, wpisz adres URL: `https://app.opsgenie.com/auth/login`
 
-4. Kliknij przycisk **zapisać** przycisku.
+4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
+
+    ![Łącze pobierania certyfikatu](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png)
+
+5. Kliknij przycisk **zapisać** przycisku.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-5. Na **konfiguracji OpsGenie** , kliknij przycisk **skonfigurować OpsGenie** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z sekcji krótkimi opisami.
+6. Na **konfiguracji OpsGenie** , kliknij przycisk **skonfigurować OpsGenie** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z sekcji krótkimi opisami.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
-
-6. Aby wygenerować **adres URL metadanych**, wykonaj następujące czynności:
-
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
-
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **OpsGenie** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. Otwórz inne wystąpienie przeglądarki, a następnie zaloguj się do OpsGenie jako administrator.
 
@@ -160,13 +144,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     
     a. W **SAML 2.0 Endpoint** pole tekstowe, Wklej **pojedynczy znak na adres URL usługi**wartość, która została skopiowana z portalu Azure.
     
-    b. W **adres Url metadanych:** pole tekstowe, Wklej **adres URL metadanych**wartość, która została skopiowana z portalu Azure.
+    b. W **adres Url metadanych:** pole tekstowe, Wklej **adres Url metadanych Federacji aplikacji** wartość, która została skopiowana z portalu Azure.
     
     c. Kliknij przycisk **zapisać zmiany**.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.

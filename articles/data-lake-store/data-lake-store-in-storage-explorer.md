@@ -16,15 +16,15 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a02844c678c08d8aefbceb16d3908faeffd755fb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Zarządzanie zasobami usługi Azure Data Lake Store przy użyciu Eksploratora usługi Azure Storage
 
-[Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) to usługa umożliwiająca przechowywanie dużych ilości danych bez struktury, na przykład danych tekstowych lub binarnych. Możesz uzyskać dostęp do danych z dowolnego miejsca za pośrednictwem protokołu HTTP lub HTTPS. Usługa Azure Data Lake Store w Eksploratorze usługi Azure Storage umożliwia dostęp do danych i zasobów usługi Azure Data Lake Store oraz zarządzanie nimi wraz z innymi jednostkami platformy Azure, takimi jak obiekty blob i kolejki. Za pomocą jednego narzędzia można teraz centralnie zarządzać różnymi jednostkami platformy Azure.
+[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) to usługa umożliwiająca przechowywanie dużych ilości danych bez struktury, na przykład danych tekstowych lub binarnych. Możesz uzyskać dostęp do danych z dowolnego miejsca za pośrednictwem protokołu HTTP lub HTTPS. Usługa Azure Data Lake Store w Eksploratorze usługi Azure Storage umożliwia dostęp do danych i zasobów usługi Azure Data Lake Store oraz zarządzanie nimi wraz z innymi jednostkami platformy Azure, takimi jak obiekty blob i kolejki. Za pomocą jednego narzędzia można teraz centralnie zarządzać różnymi jednostkami platformy Azure.
 
 Inną zaletą jest to, że nie musisz mieć uprawnień subskrypcji, aby zarządzać danymi usługi Azure Data Lake Store. W Eksploratorze usługi Storage możesz dołączyć ścieżkę usługi Data Lake Store do węzła **Lokalne i dołączone**, jeśli ktoś przyznaje uprawnienia.
 
@@ -32,7 +32,7 @@ Inną zaletą jest to, że nie musisz mieć uprawnień subskrypcji, aby zarządz
 Do wykonania kroków opisanych w tym artykule potrzebne jest spełnienie następujących wymagań wstępnych:
 
 *   Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial).
-*   Konto usługi Azure Data Lake Store. Aby uzyskać instrukcje dotyczące jego tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal).
+*   Konto usługi Azure Data Lake Store. Aby uzyskać instrukcje dotyczące jego tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
 ## <a name="install-storage-explorer"></a>Instalowanie Eksploratora usługi Storage
 
@@ -197,7 +197,7 @@ Jeśli masz adres URL, możesz wprowadzić go do ścieżki adresu w Eksploratorz
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](http://www.storageexplorer.com).
-* Dowiedz się, jak [zarządzać usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer).
-* [Wprowadzenie do Eksploratora usługi Storage](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Wprowadzenie do usługi Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview).
+* Dowiedz się, jak [zarządzać usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
+* [Wprowadzenie do Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* [Wprowadzenie do usługi Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
 * Obejrzyj [wideo w serwisie YouTube dotyczące korzystania z usługi Azure Cosmos DB w Eksploratorze usługi Storage Azure](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

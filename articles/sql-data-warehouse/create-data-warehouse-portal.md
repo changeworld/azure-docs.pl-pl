@@ -1,20 +1,20 @@
 ---
-title: Tworzenie magazynu danych Azure SQL Data Warehouse i wykonywanie zapytania skierowanego do niego — Azure Portal | Microsoft Docs
-description: Tworzenie magazynu Azure SQL Data Warehouse w witryny Azure Portal i wykonywanie zapytania skierowanego do niego.
+title: 'Szybki Start: Tworzenie i zapytania magazyn danych SQL Azure - Azure Portal | Dokumentacja firmy Microsoft'
+description: Utwórz i magazynu danych z usługi Azure SQL Data Warehouse w portalu Azure.
 services: sql-data-warehouse
-author: hirokib
-manager: jhubbard
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.topic: quickstart
-ms.component: implement
-ms.date: 03/28/2018
-ms.author: elbutter
-ms.reviewer: jrj
-ms.openlocfilehash: 97738b37f81cac3e7eef263fecc2095c9ef4b7ff
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 284cfd3562a951da928697c91aa8234719056fa4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: tworzenie magazynu danych Azure SQL Data Warehouse w witrynie Azure Portal i wykonywanie zapytania skierowanego do niego
 
@@ -22,9 +22,14 @@ Szybko utwórz magazyn danych Azure SQL Data Warehouse i wykonaj zapytania skier
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
+> [!NOTE]
+> Utworzenie bazy danych w usłudze SQL Data Warehouse może skutkować powstaniem nowej usługi płatnej.  Aby uzyskać więcej informacji, zobacz [Cennik usługi SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+>
+>
+
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS).
+Pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -32,7 +37,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Tworzenie magazynu danych
 
-Magazyn danych Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](performance-tiers.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
+Magazyn danych Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-and-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-servers-databases.md#what-is-an-azure-sql-logical-server). 
 
 Wykonaj następujące kroki, aby utworzyć magazyn danych SQL Data Warehouse zawierający przykładowe dane AdventureWorksDW. 
 
@@ -197,7 +202,7 @@ Wykonaj następujące kroki, aby wyczyścić zasoby zgodnie z potrzebami.
 4. Aby usunąć grupę zasobów, kliknij pozycję **myResourceGroup**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Został utworzony magazyn danych i reguła zapory, nawiązano połączenie z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 > [!div class="nextstepaction"]
 >[Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

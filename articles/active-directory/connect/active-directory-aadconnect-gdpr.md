@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect i rozporządzenia ochrony danych ogólne | Dokumentacja firmy Microsoft
+title: Azure AD Connect i użytkownika prywatności | Dokumentacja firmy Microsoft
 description: Ten dokument zawiera opis sposobu uzyskiwania GDPR zgodności z programem Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -11,36 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR zgodności i Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>Zasady zachowania poufności użytkownika i Azure AD Connect 
 
-W 2018 maja, prawa Europejskiego prywatności, [rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), przypada zaczęły obowiązywać. GDPR nakłada nowe zasady dotyczące firmy, agencji rządowych z systemem innym niż zysków i innymi organizacjami, że oferta towarów i usług do osób w Unii Europejskiej (UE), lub że zbieranie i analizowanie danych powiązane mieszkańców Unii Europejskiej. Stosuje GDPR niezależnie od tego, w którym znajduje się. 
-
-Usług i produktów firmy Microsoft dostępnych dzisiaj ułatwić spełniają wymagania GDPR. Dowiedz się więcej o zasady Privacy firmy Microsoft pod adresem [Centrum zaufania](https://www.microsoft.com/trustcenter)
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Ten artykuł dotyczy usługi Azure AD Connect i GDPR zgodności.  Aby uzyskać informacje dotyczące usługi Azure AD Connect Health i GDPR zgodności, zobacz artykuł [tutaj](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
+>Ten artykuł dotyczy usługi Azure AD Connect i użytkownika prywatności.  Aby uzyskać informacje dotyczące usługi Azure AD Connect Health i użytkownika prywatności, zobacz artykuł [tutaj](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
 
-Ogólne dane zgodności rozporządzenia ochrony w przypadku instalacji usługi Azure AD Connect można połączyć się z dwóch sposobów:
+Zgodność prywatności użytkownika dla instalacji usługi Azure AD Connect można połączyć się z na dwa sposoby:
 
 1.  Na żądanie wyodrębniania danych osoby i usuwanie danych z tej osoby z instalacji
 2.  Upewnij się, że żadne dane nie są przechowywane poza 48 godzin.
 
 Zespół usługi Azure AD Connect zaleca druga opcja, ponieważ jest znacznie łatwiejsze do wdrożenia i konserwacji.
 
-Następujące dane, który znajduje się w zakresie zgodności GDPR przechowywane na serwerze synchronizacji Azure AD Connect:
+Następujące dane prywatności użytkownika przechowywane na serwerze synchronizacji Azure AD Connect:
 1.  Dane dotyczące osoby w **bazy danych Azure AD Connect**
 2.  Dane w **dziennika zdarzeń systemu Windows** pliki zawierające informacje dotyczące osoby.
 3.  Dane w **pliki dziennika instalacji Azure AD Connect** zawierających temat osoby
 
-GDPR zgodne, klientów Azure AD Connect powinny używać następujących wytycznych:
+Klienci usługi Azure AD Connect usunięcie danych użytkownika należy używać następujących wytycznych:
 1.  Usuń zawartość folderu, który zawiera pliki dziennika instalacji Azure AD Connect na bieżąco — co najmniej raz 48 godzin.
 2.  Ten produkt może także utworzyć dzienników zdarzeń.  Aby dowiedzieć się więcej o dziennikach dzienników zdarzeń, zobacz [dokumentacji tutaj](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
 
@@ -82,5 +80,5 @@ Wykonaj następujące kroki, aby zaplanować uruchomienie skryptu co 48 godzin.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md).
-- [Azure AD Connect Health i GDPR](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)
+* [Przejrzyj zasady Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
+- [Azure AD Connect Health i zasady zachowania poufności użytkownika](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)

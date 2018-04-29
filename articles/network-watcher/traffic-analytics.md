@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -42,7 +42,7 @@ Dzienniki przepływu NSG, zapewniających informacji na temat ruch przychodzący
 - **Dzienniki przepływu grupa zabezpieczeń sieci**: umożliwia wyświetlanie informacji o przychodzące i wychodzące ruchu IP za pośrednictwem grupy zabezpieczeń sieci. Grupy NSG przepływu dzienniki są zapisywane w formacie json i Pokaż wychodzących i przepływów przychodzących na podstawie reguł na, przepływ karty interfejsu Sieciowego dotyczy, 5-elementowej informacji na temat przepływu (źródłowego i docelowego adresu IP, portu źródłowego i docelowego i protocol), a jeśli ruch jest dozwolone, lub Odmowa dostępu. Aby uzyskać więcej informacji o dziennikach przepływu NSG, zobacz [dzienniki przepływu NSG](network-watcher-nsg-flow-logging-overview.md).
 - **Zaloguj się Analytics**: Usługa Azure, która służy do zbierania danych monitorowania i przechowuje dane w centralnym repozytorium. Dane te mogą obejmować zdarzeń, danych wydajności lub niestandardowe dane przekazane za pośrednictwem interfejsu API platformy Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Monitorowanie aplikacji, takich jak analizy ruchu i monitor wydajności sieci są tworzone przy użyciu analizy dzienników jako podstawę. Aby uzyskać więcej informacji, zobacz [dziennika analizy](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Obszar roboczy analizy dziennika**: wystąpienie analizy dzienników, w którym są przechowywane dane dotyczące konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych usługi Analiza dzienników, zobacz [Tworzenie obszaru roboczego analizy dzienników](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Monitor sieci**: regionalnych usługa, która umożliwia monitorowanie i diagnozowanie warunki na poziomie scenariusz sieci na platformie Azure. Można włączyć NSG przepływu dzienniki włączać i wyłączać z obserwatora sieciowego. Aby uzyskać więcej informacji, zobacz [obserwatora sieciowego](network-watcher-monitoring-overview.md#network-watcher).
+- **Monitor sieci**: regionalnych usługa, która umożliwia monitorowanie i diagnozowanie warunki na poziomie scenariusz sieci na platformie Azure. Można włączyć NSG przepływu dzienniki włączać i wyłączać z obserwatora sieciowego. Aby uzyskać więcej informacji, zobacz [obserwatora sieciowego](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Jak działa analizy ruchu 
 

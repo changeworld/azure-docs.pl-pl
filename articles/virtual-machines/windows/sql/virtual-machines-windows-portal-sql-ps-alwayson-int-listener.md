@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie zawsze na odbiorniki grupy dostępności — Microsoft Azure | Dokumentacja firmy Microsoft"
-description: "Skonfiguruj odbiorniki grupy dostępności w modelu usługi Azure Resource Manager, używając wewnętrznego modułu równoważenia obciążenia z co najmniej jeden adres IP."
+title: Konfigurowanie zawsze na odbiorniki grupy dostępności — Microsoft Azure | Dokumentacja firmy Microsoft
+description: Skonfiguruj odbiorniki grupy dostępności w modelu usługi Azure Resource Manager, używając wewnętrznego modułu równoważenia obciążenia z co najmniej jeden adres IP.
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 5efb72f450261e098b638af023001ddb2a5015cf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden zawsze na dostępność odbiorniki grupy - Resource Manager
 W tym temacie przedstawiono sposób:
@@ -48,10 +48,10 @@ Konfigurowanie Zapory systemu Windows, aby zezwolić na dostęp do programu SQL 
 > 
 > 
 
-Poniższy skrypt programu PowerShell tworzy wewnętrznego modułu równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP usługi równoważenia obciążenia. Aby uruchomić skrypt, Otwórz program Windows PowerShell ISE, a następnie wklej skrypt w okienku skryptów. Użyj `Login-AzureRMAccount` logować się do programu PowerShell. Jeśli masz wiele subskrypcji Azure, użyj `Select-AzureRmSubscription ` można ustawić subskrypcji. 
+Poniższy skrypt programu PowerShell tworzy wewnętrznego modułu równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP usługi równoważenia obciążenia. Aby uruchomić skrypt, Otwórz program Windows PowerShell ISE, a następnie wklej skrypt w okienku skryptów. Użyj `Connect-AzureRmAccount` logować się do programu PowerShell. Jeśli masz wiele subskrypcji Azure, użyj `Select-AzureRmSubscription ` można ustawić subskrypcji. 
 
 ```powershell
-# Login-AzureRmAccount
+# Connect-AzureRmAccount
 # Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<Resource Group Name>" # Resource group name
@@ -112,7 +112,7 @@ Frontonu jest port aplikacje używają do nawiązania połączenia z wystąpieni
 Poniższy skrypt dodaje nowy adres IP do istniejącej usługi równoważenia obciążenia. ILB korzysta z portu odbiornika dla portów frontonu równoważenia obciążenia. Ten port może być port, którego nasłuchuje program SQL Server. Dla domyślnego wystąpienia programu SQL Server numer portu to 1433. Reguły dla grupy dostępności równoważenia obciążenia wymaga pływającego adresu IP (bezpośredni zwrot serwera), więc portu zaplecza jest taki sam jak port frontonu. Zaktualizuj zmienne w danym środowisku. 
 
 ```powershell
-# Login-AzureRmAccount
+# Connect-AzureRmAccount
 # Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<ResourceGroup>"          # Resource group name

@@ -1,11 +1,11 @@
 ---
-title: "Zasady ograniczeń dostępu w usłudze Azure zarządzanie interfejsami API | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat zasad ograniczeń dostępu dostępne do użycia w usłudze Azure API Management."
+title: Zasady ograniczeń dostępu w usłudze Azure zarządzanie interfejsami API | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zasad ograniczeń dostępu dostępne do użycia w usłudze Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 11cc5841d2f804f0d120dddda226bf05a0612607
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu do interfejsu API zarządzania
 W tym temacie znajdują się informacje na następujące zasady usługi API Management. Aby uzyskać informacje dotyczące dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -66,7 +66,7 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 |----------|-----------------|--------------|-------------|  
 |nie powiodło się wyboru komunikatów o błędach|Komunikat o błędzie zwracany w treści odpowiedzi HTTP, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość. Ta wiadomość musi mieć żadnych znaków specjalnych prawidłowo wpisywany.|Yes|ND|  
 |nie powiodło się wyboru httpcode|Kod stanu HTTP do zwrócenia, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość.|Yes|ND|  
-|header-name|Nazwa nagłówka HTTP do sprawdzenia.|Yes|ND|  
+|Nazwa nagłówka|Nazwa nagłówka HTTP do sprawdzenia.|Yes|ND|  
 |Ignoruj case|Można ustawić na wartość True lub False. Jeśli jest ustawiona na True przypadek jest ignorowane w przypadku wartość nagłówka jest porównywana zbiór dopuszczalnych wartości.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
@@ -88,8 +88,8 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
   
 ```xml  
 <rate-limit calls="number" renewal-period="seconds">  
-    <api name="name" calls="number" renewal-period="seconds">  
-        <operation name="name" calls="number" renewal-period="seconds" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </rate-limit>  
 ```  
@@ -113,8 +113,8 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |set-limit|Element główny.|Yes|  
-|api|Dodaj co najmniej jeden z tych elementów do narzuca ograniczenia szybkości wywołania interfejsów API w obrębie produktu. Produktu i interfejsu API wywołać szybkość, z jaką ograniczenia są stosowane niezależnie.|Nie|  
-|Operacja|Dodaj co najmniej jeden z tych elementów do narzuca ograniczenia szybkości wywołania operacji w obrębie interfejsu API. Produkt, interfejsu API i operacji należy wywołać szybkość, z jaką ograniczenia są stosowane niezależnie.|Nie|  
+|api|Dodaj co najmniej jeden z tych elementów do narzuca ograniczenia szybkości wywołania interfejsów API w obrębie produktu. Produktu i interfejsu API wywołać szybkość, z jaką ograniczenia są stosowane niezależnie. Interfejs API może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
+|Operacja|Dodaj co najmniej jeden z tych elementów do narzuca ograniczenia szybkości wywołania operacji w obrębie interfejsu API. Produkt, interfejsu API i operacji należy wywołać szybkość, z jaką ograniczenia są stosowane niezależnie. Operacja może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
   
 ### <a name="attributes"></a>Atrybuty  
   
@@ -243,8 +243,8 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
   
 ```xml  
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">  
-    <api name="name" calls="number" bandwidth="kilobytes">  
-        <operation name="name" calls="number" bandwidth="kilobytes" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </quota>  
 ```  
@@ -268,8 +268,8 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |quota|Element główny.|Yes|  
-|api|Dodaj co najmniej jeden z tych elementów do nakładają limit przydziału na interfejsy API w obrębie produktu. Przydziały produktu i interfejsu API są stosowane niezależnie.|Nie|  
-|Operacja|Dodaj co najmniej jeden z tych elementów do nakładają limit przydziału na operacje w interfejsie API. Przydziały produktu, interfejsu API i operacji są stosowane niezależnie.|Nie|  
+|api|Dodaj co najmniej jeden z tych elementów do nakładania przydział wywołania interfejsów API w obrębie produktu. Produktu i przydziały wywołania interfejsu API są stosowane niezależnie. Interfejs API może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
+|Operacja|Dodaj co najmniej jeden z tych elementów nakładanie przydział wywołanie w operacji w obrębie interfejsu API. Przydziały wywołania produktu, interfejsu API i operacji są stosowane niezależnie. Operacja może być przywoływany albo za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
   
 ### <a name="attributes"></a>Atrybuty  
   
@@ -489,7 +489,7 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 |grupy odbiorców|Zawiera listę oświadczeń dopuszczalne odbiorców, które mogą być obecne w tokenie. Jeśli wiele wartości odbiorców są obecne, a następnie sprawdzane są poszczególne wartości do momentu wszystkie wyczerpania (w takim przypadku niepowodzenia weryfikacji) lub aż do znalezienia właściwego konta. Należy określić co najmniej jednego odbiorcy.|Nie|  
 |podpisywania klucze wystawcy|Lista kluczy algorytmem Base64 zabezpieczeń używany do weryfikowania podpisanych tokenów. Jeśli wiele kluczy zabezpieczeń są obecne, a następnie sprawdzane są poszczególne klucze do momentu wszystkie wyczerpania (w takim przypadku niepowodzenia weryfikacji) lub do chwili pomyślnego jedną (przydatne w przypadku przerzucania token). Kluczowe elementy mają opcjonalny `id` atrybut używany do dopasowywania `kid` oświadczeń.|Nie|  
 |wystawcy|Lista dopuszczalne podmiotów zabezpieczeń, które wystawiony token. Jeśli występują wiele wartości wystawcy, a następnie sprawdzane są poszczególne wartości do momentu wszystkie wyczerpania (w takim przypadku niepowodzenia weryfikacji) lub aż do znalezienia właściwego konta.|Nie|  
-|openid-config|Element używany do określania zgodne endpoint konfiguracji Open ID, z którego podpisywania kluczy i wystawcy można uzyskać.|Nie|  
+|Konfiguracja protokołu openid|Element używany do określania zgodne endpoint konfiguracji Open ID, z którego podpisywania kluczy i wystawcy można uzyskać.|Nie|  
 |wymagane oświadczenia|Zawiera listę oświadczeń powinien znajdować się na token, aby były uważane za prawidłowe. Gdy `match` atrybut ma ustawioną `all` każdej wartości oświadczeń w zasadzie musi znajdować się w tokenem Weryfikacja powiodła się. Gdy `match` atrybut ma ustawioną `any` co najmniej jedno oświadczenie musi być obecny w tokenie Weryfikacja powiodła się.|Nie|  
 |zumo głównego klucza|Klucz główny dla tokenów wystawionych przez usługi Azure Mobile Services|Nie|  
   
@@ -500,15 +500,15 @@ W tym temacie znajdują się informacje na następujące zasady usługi API Mana
 |niedokładność zegara|Zakres czasu. Umożliwia określenie maksymalna oczekiwana różnica czasu między zegarami systemowymi wystawcy tokenów i wystąpienia interfejsu API zarządzania.|Nie|0 sekund|  
 |nie powiodło się weryfikacji komunikatów o błędach|Komunikat o błędzie do zwrócenia w treści odpowiedzi HTTP, jeśli token JWT nie przeszedł pomyślnie weryfikacji. Ta wiadomość musi mieć żadnych znaków specjalnych prawidłowo wpisywany.|Nie|Domyślnego komunikatu o błędzie jest zależny od weryfikacji problem, na przykład "token JWT nie istnieje."|  
 |nie powiodło się weryfikacji httpcode|Kod stanu HTTP do zwrócenia, jeśli token JWT nie przeszedł pomyślnie weryfikacji.|Nie|401|  
-|header-name|Nazwa nagłówka HTTP zawierający token.|Albo `header-name` lub `query-parameter-name` musi być określony; ale nie oba.|ND|  
+|Nazwa nagłówka|Nazwa nagłówka HTTP zawierający token.|Albo `header-name` lub `query-parameter-name` musi być określony; ale nie oba.|ND|  
 |id|`id` Atrybutu `key` element umożliwia określenie ciąg, który będzie dopasowywane `kid` oświadczenia w tokenie (jeśli istnieje) dowiedzieć się, odpowiedni klucz do użycia w celu weryfikacji podpisu.|Nie|ND|  
 |dopasowanie|`match` Atrybutu `claim` element określa, czy każda wartość oświadczenia w zasadach musi być obecny w tokenie Weryfikacja powiodła się. Możliwe wartości:<br /><br /> -                          `all` -każdej wartości oświadczeń w zasadzie musi znajdować się w tokenem Weryfikacja powiodła się.<br /><br /> -                          `any` — wartość co najmniej jedno oświadczenie musi być obecny w tokenie Weryfikacja powiodła się.|Nie|all|  
 |Nazwa zapytania — paremeter|Nazwa parametru zapytania zawierający token.|Albo `header-name` lub `query-paremeter-name` musi być określony; ale nie oba.|ND|  
-|Wymagaj — wygasa|Boolean. Określa, czy oświadczenie wygaśnięcia jest wymagany w tokenie.|Nie|prawda|
+|Wymagaj — wygasa|Wartość logiczna. Określa, czy oświadczenie wygaśnięcia jest wymagany w tokenie.|Nie|true|
 |Wymagaj schematu|Nazwa tokenu schemat, np. "Bearer". Gdy tego atrybutu jest ustawiona, zasady zapewni określony schemat jest obecny w wartość nagłówka uwierzytelnienia.|Nie|ND|
-|Wymagaj podpisany — tokeny|Boolean. Określa, czy token jest wymagany do podpisania.|Nie|prawda|  
+|Wymagaj podpisany — tokeny|Wartość logiczna. Określa, czy token jest wymagany do podpisania.|Nie|true|  
 |Separator|Ciąg. Określa separatora (np. ",") do zastosowania w przypadku wyodrębniania zestawu wartości z oświadczeń wielowartościowych.|Nie|ND| 
-|adres url|Otwórz adres URL punktu końcowego konfiguracji identyfikator, z której można uzyskać metadanych konfiguracji Open ID. Odpowiedź musi być zgodny specyfikacji, zgodnie z definicją pod adresem URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Dla usługi Azure Active Directory, użyj następującego adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` podstawiając nazwa dzierżawy katalogu, np. `contoso.onmicrosoft.com`.|Yes|ND|  
+|url|Otwórz adres URL punktu końcowego konfiguracji identyfikator, z której można uzyskać metadanych konfiguracji Open ID. Odpowiedź musi być zgodny specyfikacji, zgodnie z definicją pod adresem URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Dla usługi Azure Active Directory, użyj następującego adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` podstawiając nazwa dzierżawy katalogu, np. `contoso.onmicrosoft.com`.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
  Te zasady służą następujące zasady [sekcje](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

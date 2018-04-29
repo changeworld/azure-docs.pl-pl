@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a340cb3d73e0aaa86a5b7beb555133daed39d8b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowalne usług Azure Analysis Services
 
@@ -22,7 +22,7 @@ Z skalowalnego w poziomie, zapytań klienta mogą być dystrybuowane między wie
 
 We wdrożeniu serwera typowe jeden serwer służy jako serwer przetwarzania i serwer kwerend. Jeśli liczba zapytań klienta dotyczących modeli na serwerze przekracza zapytania przetwarzania jednostki (QPU) dla serwera planu, lub modelu przetwarzanie odbywa się w tym samym czasie jako wysoki zapytania obciążeń, może obniżyć wydajność. 
 
-Z skalowalnego w poziomie można utworzyć pulę zapytania z replikami dodatkowe zapytania do siedmiu (łącznie osiem, łącznie z serwera). Liczba replik zapytania do spełnienia wymagań QPU w czasie krytyczne można skalować i w dowolnym momencie można oddzielić serwer przetwarzania z puli zapytania. 
+Z skalowalnego w poziomie można utworzyć pulę zapytania z replikami dodatkowe zapytania do siedmiu (łącznie osiem, łącznie z serwera). Liczba replik zapytania do spełnienia wymagań QPU w czasie krytyczne można skalować i w dowolnym momencie można oddzielić serwer przetwarzania z puli zapytania. Wszystkie repliki zapytania są tworzone w tym samym regionie co serwer.
 
 Niezależnie od liczby replik zapytania, znajdującym się w puli zapytania obciążenia przetwarzaniem danych nie są dystrybuowane między replikami zapytania. Pojedynczy serwer służy jako serwer przetwarzania. Zapytanie replik służyć tylko kwerend dotyczących modeli synchronizowane między każdej replice w puli zapytania. 
 
@@ -73,7 +73,13 @@ Użyj **synchronizacji** operacji.
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-Aby można było uruchomić synchronizacji w programie PowerShell, [aktualizacji do najnowszej](https://github.com/Azure/azure-powershell/releases) modułu AzureRM 5.01 lub nowszej. Use [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+Przed rozpoczęciem korzystania z programu PowerShell, [Zainstaluj lub zaktualizuj moduł najnowsze AzureRM](https://github.com/Azure/azure-powershell/releases). 
+
+Aby ustawić liczbę replik zapytanie, należy użyć [AzureRmAnalysisServicesServer zestawu](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Określ opcjonalny `-ReadonlyReplicaCount` parametru.
+
+Aby uruchomić synchronizację, należy użyć [AzureAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+
+
 
 ## <a name="connections"></a>Połączenia
 

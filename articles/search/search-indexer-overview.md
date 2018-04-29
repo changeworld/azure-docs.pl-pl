@@ -1,25 +1,19 @@
 ---
-title: "Indeksatory w usłudze Azure Search | Microsoft Docs"
-description: "Usługi Azure SQL Database, Azure Cosmos DB i Azure Storage można przeszukiwać w celu wyodrębniania danych z możliwością wyszukiwania i wypełnienia indeksu usługi Azure Search."
-services: search
-documentationcenter: 
+title: Indeksatory w usłudze Azure Search | Microsoft Docs
+description: Usługi Azure SQL Database, Azure Cosmos DB i Azure Storage można przeszukiwać w celu wyodrębniania danych z możliwością wyszukiwania i wypełnienia indeksu usługi Azure Search.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: a51aa48a9a2c3c062c374885d45f08ae0b397ce1
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.openlocfilehash: 8def65c15d631909c69428a1cb5f100beb1f9b08
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexers-in-azure-search"></a>Indeksatory w usłudze Azure Search
 > [!div class="op_single_selector"]
@@ -72,7 +66,7 @@ Indeksator automatyzuje niektóre zadania związane z pozyskiwaniem danych, ale 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Krok 3. Tworzenie indeksatora i ustawianie jego harmonogramu
 Definicja indeksatora to konstrukcja określająca indeks, źródło danych i harmonogram. Indeksator może odwoływać się do źródła danych z innej usługi pod warunkiem, że źródło danych jest z tej samej subskrypcji. Aby uzyskać więcej informacji dotyczących tworzenia struktury indeksatora, zobacz [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Tworzenie indeksatora — interfejs API REST usługi Azure Search).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy masz już podstawowe informacje, następnym krokiem jest przegląd wymagań i zadań specyficznych dla poszczególnych typów źródeł danych.
 
 * [Usługa Azure SQL Database lub program SQL Server na maszynie wirtualnej platformy Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

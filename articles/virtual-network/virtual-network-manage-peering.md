@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 55de110c61b2b7603c2f01483e28d12032b732c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 52c910609930bbeecd21b75549c71ee9ed4e1e3b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usunąć sieci wirtualnej komunikacji równorzędnej
 
@@ -31,7 +31,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta, które ma [niezbędne uprawnienia](#permissions) do pracy z komunikacji równorzędnych.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.5.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, należy uruchomić `Login-AzureRmAccount` przy użyciu konta, które ma [niezbędne uprawnienia](#permissions) do pracy z komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.5.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, należy uruchomić `Connect-AzureRmAccount` przy użyciu konta, które ma [niezbędne uprawnienia](#permissions) do pracy z komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.29 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` przy użyciu konta, które ma [niezbędne uprawnienia](#permissions) do pracy z komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-a-peering"></a>Utwórz element równorzędny
@@ -42,7 +42,7 @@ Przed utworzeniem komunikacji równorzędnej, warto zapoznać się z [wymagań i
 2. Wybierz z listy, który chcesz utworzyć komunikacji równorzędnej dla sieci wirtualnej.
 3. Z listy sieci wirtualnych wybierz chcesz utworzyć komunikacji równorzędnej dla sieci wirtualnej.
 4. W obszarze **ustawienia**, wybierz pozycję **komunikacji równorzędnych**.
-5. Wybierz **+ Dodaj**. 
+5. Wybierz pozycję **+ Dodaj**. 
 6. <a name="add-peering"></a>Wprowadź lub wybierz wartości poniższych ustawień:
     - **Nazwa:** nazwa dla komunikacji równorzędnej musi być unikatowa w ramach sieci wirtualnej.
     - **Model wdrażania sieci wirtualnej:** wybierz sieci wirtualnej, aby równorzędny model wdrożenia, które zostało wdrożone za pośrednictwem.
@@ -129,8 +129,8 @@ Jeśli chcesz sieci wirtualne do komunikowania się czasami, ale nie zawsze, zam
 - Subskrypcje, które są obie sieci wirtualne, które mają być elementów równorzędnych, musi być skojarzony z tej samej dzierżawy usługi Azure Active Directory. Jeśli nie masz już dzierżawę AD, możesz szybko [utworzyć](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Można użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) Aby połączyć dwie sieci wirtualne, które istnieją w ramach różnych subskrypcji skojarzonych z różnych dzierżawców usługi Active Directory.
 - Sieć wirtualną można połączyć za pomocą do innej sieci wirtualnej, a także być podłączony do innej sieci wirtualnej z bramą sieci wirtualnej platformy Azure. Jeśli sieci wirtualne są połączone za pośrednictwem komunikacji równorzędnej i bramy, ruchu między sieciami wirtualnymi przechodzi przez konfiguracji komunikacji równorzędnej, a nie bramy.
 - Istnieje nominalna opłata za ruch przychodzący i wychodzący w wirtualnych sieciach równorzędnych. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/virtual-network).
-* <a name="cross-region"></a>Można elementów równorzędnych sieci wirtualnych w tym samym lub różnych regionach. Następujące ograniczenia nie są stosowane, gdy obie sieci wirtualne są w *tego samego* region, ale są stosowane w przypadku sieci wirtualne są w *różnych* regionów: 
-    - Sieci wirtualne mogą istnieć tylko w następujących regionach: Korei Południowej, Wielka Brytania Południowa, Wielka Brytania Zachodnia, Kanada Wschodnia, Indie Południowe, Indie środkowe, Indie Zachodnie, nam zachodnie centralnej, Kanada centralnej i nam zachodnie 2.
+* <a name="cross-region"></a>Można elementów równorzędnych sieci wirtualnych w tym samym regionie lub różnych regionach. Następujące ograniczenia nie są stosowane, gdy obie sieci wirtualne są *tego samego* region, ale są stosowane w przypadku sieci wirtualnych globalnie są połączyć za pomocą: 
+    - Sieci wirtualne mogą istnieć tylko w następujących regionach: zachodnie centralnej nam (Wyoming), zachodnie stany USA 2 (Waszyngton) środkowe stany USA (Iowa), nam wschodnie 2 (Virginia), centralnej Kanada (naszej), Wschodnia Kanada (Quebec miejscowości), Azja południowo-wschodnia (Singapur) Południowej Korei (Buscan), południe Indie (Chennai), (Pune) Indie środkowe, Indie Zachodnie (Bombaj), UK południe (Londynie), UK zachód (Cardiff), Europa Zachodnia (Holandia)
     - Zasoby w jednej sieci wirtualnej nie może komunikować się z adresem IP Azure wewnętrznego modułu równoważenia obciążenia w sieci wirtualnej peered. Moduł równoważenia obciążenia i zasobów, które komunikują się z nim muszą być w tej samej sieci wirtualnej.
     - Nie można użyć bramy zdalnego lub zezwolić przesyłania bramy. Aby użyć bramy zdalnego lub zezwolić przesyłania bramy, obie sieci wirtualne w komunikacji równorzędnej musi istnieć w tym samym regionie. 
 

@@ -1,30 +1,26 @@
 ---
-title: Wprowadzenie projektu tabeli - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: "Wprowadzenie do projektowania tabel w usłudze Azure SQL Data Warehouse."
+title: Projektowanie tabelach - Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Wprowadzenie do projektowania tabel w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 5c163880a7508d69bce0019cc5379bca8c704d59
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d299ff0d8e719040d503852af6056d9d87738b7d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="introduction-to-designing-tables-in-azure-sql-data-warehouse"></a>Wprowadzenie do projektowania tabel w magazynie danych SQL Azure
+# <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabelach w magazynie danych SQL Azure
 
 Dowiedz się, podstawowe pojęcia dotyczące projektowania tabel w usłudze Azure SQL Data Warehouse. 
 
-## <a name="determining-table-category"></a>Określanie kategorii tabeli 
+## <a name="determine-table-category"></a>Określenia kategorii tabeli 
 
 A [schemat gwiazdy](https://en.wikipedia.org/wiki/Star_schema) organizuje dane w tabelach faktów i wymiarów. Niektóre tabele są używane do integracji lub przemieszczania danych przed przesyłane do tabeli faktów lub wymiaru. Podczas projektowania tabeli zdecyduj, czy dane w tabeli, należy w faktów, wymiarów lub tabeli integracji. Ta decyzja informuje struktura tabeli odpowiednie i dystrybucji. 
 
@@ -46,7 +42,7 @@ CREATE SCHEMA wwi;
 Aby pokazać organizacji tabel w usłudze SQL Data Warehouse, int, faktów i wymiar może być używany jako prefiksy do nazwy tabeli. W poniższej tabeli przedstawiono niektóre nazwy schematu i tabeli dla WideWorldImportersDW. Porównuje nazw w programie SQL Server z nazw w usłudze SQL Data Warehouse. 
 
 | Tabela WideWorldImportersDW  | Typ tabeli | Oprogramowanie SQL Server | SQL Data Warehouse |
-|:-----|:-----|:------|
+|:-----|:-----|:------|:-----|
 | Miasto | Wymiar | Dimension.City | wwi.DimCity |
 | Kolejność | Fakt | Fact.Order | wwi.FactOrder |
 
@@ -70,7 +66,7 @@ Czas trwania sesji istnieje tylko tabeli tymczasowej. Używając tabeli tymczaso
 Wskazuje tabelę zewnętrzną danych znajdujących się w obiektu blob magazynu Azure lub usługi Azure Data Lake Store. W przypadku używania w połączeniu z instrukcji CREATE TABLE AS SELECT, wybierając z tabeli zewnętrznej importuje dane do usługi SQL Data Warehouse. Tabele zewnętrzne w związku z tym są przydatne do ładowania danych. Samouczek ładowania, zobacz [PolyBase używana do ładowania danych z magazynu obiektów blob Azure](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Typy danych
-Magazyn danych SQL obsługuje najczęściej używane typy danych. Aby uzyskać listę obsługiwanych typów danych, zobacz [typów danych w odwołaniu do utworzenia tabeli](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) w instrukcji CREATE TABLE. Minimalizując rozmiar typów danych o pomaga zwiększyć wydajność przeszukiwania. Aby uzyskać instrukcje na używanie typów danych, zobacz [typy danych](sql-data-warehouse-tables-data-types.md).
+Magazyn danych SQL obsługuje najczęściej używane typy danych. Aby uzyskać listę obsługiwanych typów danych, zobacz [typów danych w odwołaniu do utworzenia tabeli](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) w instrukcji CREATE TABLE. Minimalizując rozmiar typów danych o pomaga zwiększyć wydajność przeszukiwania. Aby uzyskać instrukcje na używanie typów danych, zobacz [typy danych](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Rozproszone tabele
 Podstawowych funkcji usługi SQL Data Warehouse jest sposób można przechowywać i działającego w tabelach przez 60 [dystrybucje](massively-parallel-processing-mpp-architecture.md#distributions).  Tabele są dystrybuowane za pomocą metody okrężnego, skrótu lub replikacji.
@@ -106,7 +102,7 @@ Tabeli partycjonowanej przechowuje i wykonuje operacje w wierszach tabeli zgodni
 ## <a name="columnstore-indexes"></a>Indeksy magazynu kolumn
 Domyślnie usługa SQL Data Warehouse przechowuje tabeli jako klastrowany indeks magazynu kolumn. Ten formularz magazyn danych uzyskuje kompresji danych wysokiej i wydajność zapytań, na dużych tabel.  Klastrowany indeks magazynu kolumn jest zwykle najlepszym wyborem, ale w niektórych przypadkach indeksu klastrowanego lub sterty jest strukturą odpowiedniego magazynu.
 
-Aby uzyskać listę funkcji magazynu kolumn, zobacz [Nowości dla indeksów magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Aby zwiększyć wydajność indeksu magazynu kolumn, zobacz [maksymalizacja jakości i dla indeksów magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Aby uzyskać listę funkcji magazynu kolumn, zobacz [Nowości dla indeksów magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-whats-new). Aby zwiększyć wydajność indeksu magazynu kolumn, zobacz [maksymalizacja jakości i dla indeksów magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statystyki
 Optymalizator zapytań używa statystyki na poziomie kolumny, podczas tworzenia planu wykonania zapytania. Aby zwiększyć wydajność zapytań, ważne jest tworzenie statystyk dotyczących poszczególnych kolumn, szczególnie kolumn używana w sprzężeniach zapytania. Tworzenie i aktualizowanie statystyk nie odbywa się automatycznie. [Tworzenie statystyk](/sql/t-sql/statements/create-statistics-transact-sql) po utworzeniu tabeli. Aktualizowanie statystyk po znacznej liczby wierszy są dodane lub zmienione. Na przykład aktualizowanie statystyk po obciążenia. Aby uzyskać więcej informacji, zobacz [wskazówki statystyki](sql-data-warehouse-tables-statistics.md).
@@ -143,7 +139,7 @@ Magazyn danych SQL obsługuje wiele, ale nie wszystkie funkcje tabeli oferowanyc
 - [Typy definiowane przez użytkownika](/sql/relational-databases/native-client/features/using-user-defined-types)
 
 ## <a name="table-size-queries"></a>Zapytania o rozmiar tabeli
-Prosty sposób identyfikacji miejsca i używane przez tabelę w każdym z 60 dystrybucje wierszy ma używać — DBCC PDW_SHOWSPACEUSED [DBCC PDW_SHOWSPACEUSED].
+Prosty sposób identyfikacji miejsca i używane przez tabelę w każdym z 60 dystrybucje wierszy jest użycie [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql).
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -342,4 +338,4 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po utworzeniu tabel dla magazynu danych, następnym krokiem jest ładowanie danych do tabeli.  Samouczek ładowania, zobacz [ładowania danych z magazynu obiektów blob platformy Azure przy użyciu programu PolyBase](load-data-from-azure-blob-storage-using-polybase.md).
+Po utworzeniu tabel dla magazynu danych, następnym krokiem jest ładowanie danych do tabeli.  Samouczek ładowania, zobacz [podczas ładowania danych do usługi SQL Data Warehouse](load-data-wideworldimportersdw.md).

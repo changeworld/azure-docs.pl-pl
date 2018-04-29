@@ -1,24 +1,19 @@
 ---
-title: "Uaktualnianie do usługi Azure Search interfejsu API REST usługi wersji 2016-09-01 | Dokumentacja firmy Microsoft"
-description: "Uaktualnianie do usługi Azure Search interfejsu API REST usługi wersji 2016-09-01"
-services: search
-documentationcenter: 
+title: Uaktualnianie do usługi Azure Search interfejsu API REST usługi wersji 2016-09-01 | Dokumentacja firmy Microsoft
+description: Uaktualnianie do usługi Azure Search interfejsu API REST usługi wersji 2016-09-01
 author: brjohnstmsft
-manager: pablocas
-editor: 
-ms.assetid: 6183fa6c-48bb-4af7-adae-4be3bc43c3ed
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/27/2016
 ms.author: brjohnst
-ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: ea901462677d42d90007a2130825bd3b382407f2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>Uaktualnianie do usługi Azure Search interfejsu API REST usługi wersji 2016-09-01
 Jeśli używasz wersji 2015-02-28 lub 2015-02-28-Preview z [interfejsu API REST usługi Azure Search](https://msdn.microsoft.com/library/azure/dn798935.aspx), ten artykuł pomoże Ci uaktualnienie aplikacji używać dalej ogólnie dostępna wersja interfejsu API 2016-09-01.

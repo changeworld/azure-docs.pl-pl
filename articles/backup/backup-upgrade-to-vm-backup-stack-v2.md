@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 4bdbf48030dda18e6698a7731989ec2de2319b35
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 7e092dc1448a45277e01b1a8c6d2bc0e2a8a22a3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>Uaktualnianie do stosu kopii zapasowej maszyny wirtualnej w wersji 2
 Uaktualnienie kopii zapasowej stosu V2 maszyny wirtualnej (VM) zapewnia następujące udoskonalenia:
@@ -68,7 +68,7 @@ Wykonaj następujące polecenia cmdlet z terminala PowerShell z podwyższonym po
 1.  Zaloguj się do konta platformy Azure. 
 
 ```
-PS C:> Login-AzureRmAccount
+PS C:> Connect-AzureRmAccount
 ```
 
 2.  Wybierz subskrypcję, który chcesz zarejestrować podglądu:
@@ -80,14 +80,14 @@ PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select
 3.  Zarejestruj tę subskrypcję w prywatnej wersji zapoznawczej:
 
 ```
-PS C:>  Register-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ## <a name="verify-whether-the-upgrade-is-complete"></a>Sprawdź, czy uaktualnienie zostało ukończone
 W terminalu programu PowerShell z podwyższonym poziomem uprawnień uruchom następujące polecenie cmdlet:
 
 ```
-Get-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 Informacja zarejestrowane, subskrypcja jest uaktualniany do stos kopii zapasowej maszyny Wirtualnej w wersji 2. 

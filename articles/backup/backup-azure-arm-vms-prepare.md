@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 70c1553c166cc334f9db03c78139181c6f5c0553
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: caf2c54c986f8c4dd951628fd6908d42e7ddd281
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
-Ten artykuł zawiera kroki przygotowania środowiska do utworzenia kopii zapasowej maszyny wirtualnej (VM) wdrożone usługi Azure Resource Manager. Kroki opisane w procedurach za pomocą portalu Azure. Przechowywanie danych kopii zapasowej maszyny wirtualnej w magazynie usług odzyskiwania. Magazyn przechowuje dane kopii zapasowej dla maszyn wirtualnych klasycznego i wdrożeniu usługi Resource Manager.
+Ten artykuł zawiera kroki przygotowania środowiska do utworzenia kopii zapasowej maszyny wirtualnej (VM) wdrożone usługi Azure Resource Manager. Kroki opisane w procedurach za pomocą portalu Azure. Podczas wykonywania kopii zapasowej maszyny wirtualnej kopii zapasowej danych lub punktów odzyskiwania są przechowywane w magazynie usług odzyskiwania. Magazyny usług odzyskiwania przechowywać dane kopii zapasowej dla maszyn wirtualnych klasycznego i wdrożeniu usługi Resource Manager.
 
 > [!NOTE]
 > Platforma Azure ma dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Przed ochrony (lub utworzyć kopię zapasową) maszyny wirtualnej wdrożone usługi Resource Manager, upewnij się, że istnieją następujące wymagania wstępne:
 
-* Tworzenie magazynu usług odzyskiwania (lub Zidentyfikuj istniejącego magazynu usług odzyskiwania) *w tym samym regionie co maszyna wirtualna*.
+* Tworzenie lub identyfikowanie magazynu usług odzyskiwania *w tym samym regionie co na komputerze wirtualnym*.
 * Wybierz scenariusz, definiowanie zasad tworzenia kopii zapasowej i zdefiniuj elementy do ochrony.
-* Sprawdź instalację agenta maszyny Wirtualnej na maszynie wirtualnej.
+* Sprawdź instalację agenta maszyny Wirtualnej (rozszerzenie) na maszynie wirtualnej.
 * Sprawdź łączność sieciową.
 * Dla maszyn wirtualnych systemu Linux, jeśli chcesz dostosować środowisko tworzenia kopii zapasowych spójnych z aplikacją kopii zapasowych, wykonaj [kroki, aby skonfigurować skrypty migawki przed i po utworzeniu migawki](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
@@ -51,7 +51,7 @@ Aby przygotować środowisko, należy zrozumieć następujące ograniczenia:
 * Tworzenie kopii zapasowych maszyn wirtualnych z więcej niż 16 dysków danych nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych z zastrzeżonego adresu IP i nie zdefiniowanych punktów końcowych nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux zaszyfrowany za pomocą szyfrowania Linux Unified klucz instalacji (LUKS) nie jest obsługiwana.
-* Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają konfigurację udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie. Wymagają one, obejmujące wszystkich maszyn wirtualnych uwzględnione w konfiguracji klastra podczas zadania migawki. Kopia zapasowa Azure nie obsługuje wielu maszyn wirtualnych. 
+* Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają konfigurację udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie. Gotowe, oczekiwano awarii składników zapisywania CSV. Wymagają one, obejmujące wszystkich maszyn wirtualnych uwzględnione w konfiguracji klastra podczas zadania migawki. Kopia zapasowa Azure nie obsługuje wielu maszyn wirtualnych. 
 * Dane kopii zapasowej nie zawiera dyski sieciowe zainstalowane dołączony do maszyny Wirtualnej.
 * Zamiana istniejącej maszyny wirtualnej podczas przywracania nie jest obsługiwana. Jeśli podjęto próbę przywrócenia maszyny Wirtualnej, gdy maszyna wirtualna istnieje, operacja przywracania kończy się niepowodzeniem.
 * Region między tworzenie kopii zapasowej i przywracania nie są obsługiwane.
@@ -167,7 +167,7 @@ Przed zarejestrowaniem maszyny wirtualnej z magazynu usług odzyskiwania, należ
 
    ![Przycisk "Włącz kopii zapasowej"](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-Po pomyślnym włączeniu kopii zapasowej zasad tworzenia kopii zapasowej zostanie uruchomiony zgodnie z harmonogramem. Jeśli chcesz wygenerować zadanie tworzenia kopii zapasowej na żądanie do kopii zapasowych maszyn wirtualnych, zobacz [wyzwalając zadanie tworzenia kopii zapasowej](./backup-azure-arm-vms.md#triggering-the-backup-job).
+Po pomyślnym włączeniu kopii zapasowej zasad tworzenia kopii zapasowej zostanie uruchomiony zgodnie z harmonogramem. Jeśli chcesz wygenerować zadanie tworzenia kopii zapasowej na żądanie do kopii zapasowych maszyn wirtualnych, zobacz [wyzwalając zadanie tworzenia kopii zapasowej](./backup-azure-vms-first-look-arm.md#initial-backup).
 
 Jeśli masz problemy z zarejestrowaniem maszyny wirtualnej, zobacz poniższe informacje na temat instalowania agenta maszyny Wirtualnej oraz łączność sieciową. Prawdopodobnie nie potrzebujesz następujących informacji w przypadku ochrony maszyn wirtualnych utworzonych na platformie Azure. Jednak po migracji maszyn wirtualnych na platformie Azure, należy poprawnie zainstalowany agent maszyny Wirtualnej i maszyny wirtualnej mogą komunikować się z siecią wirtualną.
 
@@ -208,6 +208,10 @@ Do listy dozwolonych zakresy IP centrum danych Azure, zobacz [witryny sieci Web 
 Umożliwia połączenia z magazynem określonego regionu za pomocą [usługi tagi](../virtual-network/security-overview.md#service-tags). Upewnij się, że reguła, która umożliwia uzyskanie dostępu do konta magazynu ma wyższy priorytet niż regułę, która blokuje dostęp do Internetu. 
 
 ![Grupy NSG z tagami magazynu dla regionu](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+Poniższe wideo przedstawiono procedury krok po kroku, aby skonfigurować numery seryjne usług: 
+
+>[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 > [!WARNING]
 > Tagi usługi magazynu są dostępne tylko w określonych regionach i są w wersji zapoznawczej. Aby uzyskać listę regionów, zobacz [usługi tagi dla magazynu](../virtual-network/security-overview.md#service-tags).

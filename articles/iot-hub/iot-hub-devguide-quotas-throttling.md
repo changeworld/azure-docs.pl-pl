@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ef86af61284bb208cc8c469e3fe75bd4f4bdc5bf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 37d1397b0601e09b12c0c05ff0adc6a916d66d70
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie - Centrum IoT przydziały i ograniczenia przepustowości
 
@@ -39,14 +39,14 @@ W poniższej tabeli przedstawiono limity wymuszone. Wartości odnoszą się do p
 | Ograniczenie | Wolne B1 i S1 | B2 i S2 | B3 i S3 | 
 | -------- | ------- | ------- | ------- |
 | Operacje rejestru tożsamości (Tworzenie, pobieranie, listy, aktualizowanie i usuwanie) | 1.67/sec/Unit (jednostka/100/min) | 1.67/sec/Unit (jednostka/100/min) | 83.33/sec/Unit (jednostka-5000/min) |
-| Połączenia urządzenia | Wyższy 100 na sekundę lub jednostki-12/s <br/> Na przykład dwie jednostki S1 są 2\*12 = 24/s, ale mają co najmniej 100 na sekundę przez jednostek. W przypadku dziewięć S1, masz 108 na sekundę (9\*12) między jednostek. | 120/sec/unit | 6000/sec/unit |
-| Liczba elementów wysłanych z urządzenia do chmury | Wyższy 100 na sekundę lub jednostki-12/s <br/> Na przykład dwie jednostki S1 są 2\*12 = 24/s, ale mają co najmniej 100 na sekundę przez jednostek. W przypadku dziewięć S1, masz 108 na sekundę (9\*12) między jednostek. | 120/sec/unit | 6000/sec/unit |
+| Połączenia urządzenia | Wyższy 100 na sekundę lub jednostki-12/s <br/> Na przykład dwie jednostki S1 są 2\*12 = 24/s, ale mają co najmniej 100 na sekundę przez jednostek. W przypadku dziewięć S1, masz 108 na sekundę (9\*12) między jednostek. | Jednostka-120/s | Jednostka-6000/s |
+| Liczba elementów wysłanych z urządzenia do chmury | Wyższy 100 na sekundę lub jednostki-12/s <br/> Na przykład dwie jednostki S1 są 2\*12 = 24/s, ale mają co najmniej 100 na sekundę przez jednostek. W przypadku dziewięć S1, masz 108 na sekundę (9\*12) między jednostek. | Jednostka-120/s | Jednostka-6000/s |
 | Wysyła chmury do urządzenia<sup>1</sup> | 1.67/sec/Unit (jednostka/100/min) | 1.67/sec/Unit (jednostka/100/min) | 83.33/sec/Unit (jednostka-5000/min) |
 | Chmura urządzenie odbiera<sup>1</sup> <br/> (tylko kiedy urządzenie korzysta z protokołu HTTPS)| 16.67/sec/Unit (jednostka-1000/min) | 16.67/sec/Unit (jednostka-1000/min) | 833.33/sec/Unit (jednostka-50000/min) |
 | Przekazywanie pliku | 1.67 pliku przekazywania powiadomień na sekundę/jednostkę (jednostka/100/min) | 1.67 pliku przekazywania powiadomień na sekundę/jednostkę (jednostka/100/min) | 83.33 pliku przekazywania powiadomień/s/jednostek (jednostka-5000/min) |
 | Bezpośrednie metody<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
-| Odczytuje dwie urządzenia<sup>1</sup> | 10 na sekundę | Wyższy 10 na sekundę lub jednostki-1/s | Jednostka-50/s |
-| Aktualizacje dwie urządzeń<sup>1</sup> | 10 na sekundę | Wyższy 10 na sekundę lub jednostki-1/s | Jednostka-50/s |
+| Dwie (urządzenia i modułu) odczyty<sup>1</sup> | 10 na sekundę | Wyższy 10 na sekundę lub jednostki-1/s | Jednostka-50/s |
+| Dwie aktualizacji (urządzenia i modułu)<sup>1</sup> | 10 na sekundę | Wyższy 10 na sekundę lub jednostki-1/s | Jednostka-50/s |
 | Zadania operacje<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 1.67/sec/Unit (jednostka/100/min) | 1.67/sec/Unit (jednostka/100/min) | 83.33/sec/Unit (jednostka-5000/min) |
 | Zadania na urządzenie operacji przepływności<sup>1</sup> | 10 na sekundę | Wyższy 10 na sekundę lub jednostki-1/s | Jednostka-50/s |
 
@@ -92,7 +92,7 @@ Centrum IoT dokłada starań zapewnić małe opóźnienia dla wszystkich operacj
 Wiele jednostek Centrum IoT wpłynąć na ograniczenia przepustowości, jak opisano wcześniej, ale nie udostępniają wszystkie korzyści dodatkowe opóźnienia lub gwarancji.
 Jeśli widzisz zwiększa nieoczekiwane opóźnienia operacji, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Inne tematy dokumentacji, w tym przewodniku deweloperów Centrum IoT obejmują:
 
 * [Punkty końcowe Centrum IoT][lnk-devguide-endpoints]

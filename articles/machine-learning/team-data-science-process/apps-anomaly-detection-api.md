@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: e3f6f0de16fcb84872fe7b420eb0d54e86682f23
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7633d2bd15e5bc4620a4980623f3883c162f4331
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Wykrywanie anomalii interfejsu API uczenia maszynowego
 ## <a name="overview"></a>Przegląd
@@ -47,7 +47,7 @@ Wykrywanie anomalii oferty jest dostarczany z przydatnych narzędzi ułatwiając
 Aby korzystać z interfejsu API, należy ją wdrożyć do Twojej subskrypcji platformy Azure, w którym będzie obsługiwana jako usługi sieci web uczenie maszynowe Azure.  Można to zrobić z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Będzie to wdrożenie dwóch usług sieci Web uczenie maszynowe Azure (i ich powiązane zasoby) do subskrypcji platformy Azure — jeden do wykrywania anomalii z wykrywaniem sezonowości, a drugi bez wykrywania sezonowości.  Po zakończeniu wdrożenia będzie mógł zarządzać swoje interfejsy API z [usług sieci web uczenie maszynowe Azure](https://services.azureml.net/webservices/) strony.  Na tej stronie można znaleźć z punktami końcowymi, klucze interfejsu API, a także przykładowy kod wywołanie interfejsu API.  Bardziej szczegółowe informacje są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Skalowanie interfejsu API
-Domyślnie wdrożenia mają bezpłatne i testowania plan rozliczeniowy obejmującej 1000 transakcji miesięcznie i obliczeń 2 godziny/miesiąc.  Można uaktualnić do innego planu, zgodnie z potrzebami.  Nie są dostępne informacje o cenach różne plany [tutaj](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) w obszarze "Cennik produkcji interfejsu API sieci Web".
+Domyślnie wdrożenia mają bezpłatne i testowania plan rozliczeniowy obejmującej 1000 transakcji miesięcznie i obliczeń 2 godziny/miesiąc.  Można uaktualnić do innego planu, zgodnie z potrzebami.  Nie są dostępne informacje o cenach różne plany [tutaj](https://azure.microsoft.com/pricing/details/machine-learning/) w obszarze "Cennik produkcji interfejsu API sieci Web".
 
 ## <a name="managing-aml-plans"></a>Zarządzanie AML plany 
 Możesz zarządzać planu rozliczeniowego [tutaj](https://services.azureml.net/plans/).  Nazwa planu będzie opierać się na nazwę grupy zasobów, wybrana podczas wdrażania interfejsu API, a także ciąg, który jest unikatowy dla Twojej subskrypcji.  Instrukcje dotyczące uaktualniania planu są dostępne [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) w sekcji "Zarządzanie planami rozliczeń".
@@ -120,13 +120,13 @@ Bardziej szczegółowe informacje dotyczące tych parametrów wejściowych jest 
 
 | Parametry wejściowe | Opis | Ustawienie domyślne | Typ | Prawidłowy zakres | Sugerowany zakres |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |integer |10-2000 |Zależne od szeregu czasowego |
+| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |liczba całkowita |10-2000 |Zależne od szeregu czasowego |
 | detectors.spikesdips | Czy można wykryć tylko wzrósł, tylko DIP i/lub |Oba |Wyliczenie |Oba nagłego, DIP |Oba |
-| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| trenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |integer |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
+| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| trenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
 
 ### <a name="output"></a>Dane wyjściowe
 Interfejs API uruchamia wszystkie detektory na podstawie czasu serii danych i zwraca wyniki anomalii i wskaźniki kolekcji binarne dla każdego punktu w czasie. W poniższej tabeli przedstawiono dane wyjściowe z interfejsu API. 
@@ -156,20 +156,20 @@ Bardziej szczegółowe informacje dotyczące tych parametrów wejściowych jest 
 
 | Parametry wejściowe | Opis | Ustawienie domyślne | Typ | Prawidłowy zakres | Sugerowany zakres |
 | --- | --- | --- | --- | --- | --- |
-| preprocess.aggregationInterval |Interwał agregacji w sekundach do agregowania danych wejściowych szeregów czasowych |0 (nie agregacji jest wykonywane) |integer |0: w przeciwnym razie Pomiń agregacji, > 0 |5 minut do 1 dnia, zależne od szeregu czasowego |
+| preprocess.aggregationInterval |Interwał agregacji w sekundach do agregowania danych wejściowych szeregów czasowych |0 (nie agregacji jest wykonywane) |liczba całkowita |0: w przeciwnym razie Pomiń agregacji, > 0 |5 minut do 1 dnia, zależne od szeregu czasowego |
 | preprocess.aggregationFunc |Funkcja używana do agregowania danych w określonym AggregationInterval |Średnia |Wyliczenie |Średnia, sum, długość |ND |
 | preprocess.replaceMissing |Wartości używane do przypisują brakujących danych |lkv (Ostatnia znana wartość) |Wyliczenie |zero, lkv, średnia |ND |
-| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |integer |10-2000 |Zależne od szeregu czasowego |
+| detectors.historyWindow |Historia (w # punktów danych) używane do obliczeń wynik anomalii |500 |liczba całkowita |10-2000 |Zależne od szeregu czasowego |
 | detectors.spikesdips | Czy można wykryć tylko wzrósł, tylko DIP i/lub |Oba |Wyliczenie |Oba nagłego, DIP |Oba |
-| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |O podwójnej precyzji |None |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| postrenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| negtrenddetector.sensitivity |Czułość dla detektora trend ujemna. |3.25 |O podwójnej precyzji |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
-| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
-| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |integer |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| bileveldetector.sensitivity |Czułość na poziomie dwukierunkowego zmienić detektora. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| postrenddetector.sensitivity |Czułość dla detektora trend dodatnią. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| negtrenddetector.sensitivity |Czułość dla detektora trend ujemna. |3.25 |double |Brak |3,25-5 (mniejsze wartości oznaczają więcej liter) |
+| tspikedetector.sensitivity |Czułość dla detektora TSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
+| zspikedetector.sensitivity |Czułość dla detektora ZSpike |3 |liczba całkowita |1-10 |3 – 5 (mniejsze wartości oznaczają więcej liter) |
 | seasonality.enable |Określa, czy ma być wykonywane sezonowości analizy |true |wartość logiczna |wartość true, false |Zależne od szeregu czasowego |
-| seasonality.numSeasonality |Maksymalna liczba cykli okresowe wykrycie |1 |integer |1, 2 |1-2 |
+| seasonality.numSeasonality |Maksymalna liczba cykli okresowe wykrycie |1 |liczba całkowita |1, 2 |1-2 |
 | seasonality.transform |Czy okresach trend części należy usunąć przed zastosowaniem wykrywania anomalii (i) |deseason |Wyliczenie |Brak, deseason deseasontrend |ND |
-| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |integer |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
+| postprocess.tailRows |Liczba najnowszych punktów danych przechowywanych w wynikach danych wyjściowych |0 |liczba całkowita |0 (Zachowaj wszystkie punkty danych), lub określ liczbę punktów do zachowania w wynikach |ND |
 
 ### <a name="output"></a>Dane wyjściowe
 Interfejs API uruchamia wszystkie detektory na podstawie czasu serii danych i zwraca wyniki anomalii i wskaźniki kolekcji binarne dla każdego punktu w czasie. W poniższej tabeli przedstawiono dane wyjściowe z interfejsu API. 

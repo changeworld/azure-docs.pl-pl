@@ -1,6 +1,6 @@
 ---
-title: "Jak zarządzać środowiska Azure czas serii Insights przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób zarządzania środowiska Azure czas serii Insights programowo przy użyciu usługi Azure Resource Manager."
+title: Jak zarządzać środowiska Azure czas serii Insights przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób zarządzania środowiska Azure czas serii Insights programowo przy użyciu usługi Azure Resource Manager.
 services: time-series-insights
 ms.service: time-series-insights
 author: sandshadow
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 12/08/2017
-ms.openlocfilehash: b09d4a1aea56a4e306f80a1b43d519d313fd73ab
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8355248f28a019ef4712f542c8eac731362330ce
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Utwórz zasoby Insights serii czasu za pomocą szablonów usługi Azure Resource Manager
 
@@ -153,7 +153,7 @@ Aby uzyskać więcej informacji, zobacz [parametry](../azure-resource-manager/re
 Z wiersza polecenia programu PowerShell, uruchom następujące polecenie:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Zostanie wyświetlony monit logowania do konta platformy Azure. Po zalogowaniu, uruchom następujące polecenie, aby wyświetlić dostępne subskrypcji:
@@ -266,9 +266,10 @@ Outputs                 :
 
 Zawiera również strony głównej szablon szybkiego startu w serwisie GitHub **wdrażanie na platformie Azure** przycisku. Kliknięcie spowoduje otwarcie strony wdrożenie niestandardowe w portalu Azure. Na tej stronie, wprowadź lub wybierz wartości dla każdego z parametrów z [wymagane parametry](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) lub [następujące parametry opcjonalne](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) tabel. Po wypełnieniu ustawienia, klikając polecenie **zakupu** przycisk zainicjuje wdrażania szablonu.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać informacje na programowego zarządzania zasobami Insights serii czasu przy użyciu interfejsów API REST, zobacz [Zarządzanie Insights serii czasem](https://docs.microsoft.com/rest/api/time-series-insights-management/).

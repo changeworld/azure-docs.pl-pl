@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6520da6b866ebddd66604dd8f27acfc5a9bcef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Utwórz połączenie sieci VPN lokacja lokacja między dwoma sieciami wirtualnymi w różnych środowiskach Azure stosu Development Kit
 ## <a name="overview"></a>Przegląd
@@ -34,7 +34,7 @@ Na poniższym diagramie przedstawiono, jak powinna wyglądać konfiguracji poł�
 Aby ukończyć konfigurację połączenia, upewnij się, że masz następujące elementy, przed rozpoczęciem:
 
 * Dwa serwery i inne wymagania wstępne, które spełniają wymagania sprzętowe Azure stosu Development Kit, zgodnie z opisem w [Szybki Start: ocena Azure stosu Development Kit](azure-stack-deploy-overview.md). 
-* [Azure stosu Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) pakietu wdrożeniowego.
+* [Azure stosu Development Kit](https://azure.microsoft.com/overview/azure-stack/try/) pakietu wdrożeniowego.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Wdrażanie środowiska Azure stosu Development Kit
 Aby ukończyć konfigurację połączenia, należy wdrożyć dwóch środowisk Azure stosu Development Kit.

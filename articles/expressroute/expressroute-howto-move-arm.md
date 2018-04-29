@@ -1,11 +1,11 @@
 ---
-title: "Przenieś obwody usługi ExpressRoute ze środowiska klasycznego do Menedżera zasobów: środowiska PowerShell: Azure | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera opis sposobu przenieść obwodu klasycznego modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell."
+title: 'Przenieś obwody usługi ExpressRoute ze środowiska klasycznego do Menedżera zasobów: środowiska PowerShell: Azure | Dokumentacja firmy Microsoft'
+description: Ta strona zawiera opis sposobu przenieść obwodu klasycznego modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
 ms.service: expressroute
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: c407e01e6d881cb8adcfe55faa246468669be883
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37db218010288912bf75d00fd5868aab171aef71
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Przenieść obwody usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell
 
@@ -71,7 +71,7 @@ Zaloguj się do środowiska usługi Resource Manager i utworzyć nową grupę za
 1. Zaloguj się do środowiska usługi Azure Resource Manager.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
 2. Wybierz odpowiednią subskrypcję platformy Azure.
@@ -157,7 +157,7 @@ Uruchom następujące polecenia cmdlet, aby wyłączyć dostęp do klasycznego m
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute](expressroute-howto-routing-arm.md)
 * [Link sieci wirtualnej do obwodu usługi ExpressRoute](expressroute-howto-linkvnet-arm.md)

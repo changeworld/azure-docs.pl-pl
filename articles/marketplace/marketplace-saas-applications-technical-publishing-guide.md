@@ -1,29 +1,29 @@
 ---
-title: "Technical aplikacji SaaS witrynę Azure Marketplace Podręcznik publikowania"
+title: Technical aplikacji SaaS witrynę Azure Marketplace Podręcznik publikowania
 description: Przewodnik krok po kroku i publikowanie list kontrolnych publikowanie aplikacji SaaS w portalu Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: 
+documentationcenter: ''
 author: BrentL-Collabera
-manager: 
+manager: ''
 editor: BrentL-Collabera
-ms.assetid: 
+ms.assetid: ''
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: pabutler
-ms.openlocfilehash: 64becc80192e69bd332d6657637c845acf93748b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: eb6db45ca0fcb6879aeaeaaf70715691cac438b0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>Podręcznik techniczny publikowania aplikacji SaaS
 
 Witamy w portalu Azure Marketplace techniczne aplikacji SaaS Podręcznik publikowania. Ten przewodnik ułatwia candidate i istniejących wydawców, aby wyświetlić listę aplikacji i usług w portalu Azure Marketplace przy użyciu aplikacji SaaS oferty.  
-Chcesz użyć oferty aplikacji SaaS, gdy rozwiązanie zostanie wdrożone w ramach własnej subskrypcji platformy Azure, a klienci powinni zalogować się za pośrednictwem interfejsu, który projektowania i zarządzania nimi przetestować aplikację. Robi to przy użyciu [usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis) wykorzystać istniejące środowisko wersji próbnej. Innymi słowy jest doprowadziły klienta, u partnera bezpłatnej wersji próbnej. Podstawowe znaczenie ma ich ujawniać rozwiązania w taki sposób, który daje możliwość wystąpić rozwiązaniu niezależnie nie dodatkowych opłat lub opłata kupujący chmury, a więc ten typ oferta zapewnia środowisko wersji próbnej, które odpowiadają jak klienci poszukać rozwiązań w chmurze.  
+Chcesz użyć oferty aplikacji SaaS, gdy rozwiązanie zostanie wdrożone w ramach własnej subskrypcji platformy Azure, a klienci powinni zalogować się za pośrednictwem interfejsu, który projektowania i zarządzania nimi przetestować aplikację. Robi to przy użyciu [usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) wykorzystać istniejące środowisko wersji próbnej. Innymi słowy jest doprowadziły klienta, u partnera bezpłatnej wersji próbnej. Podstawowe znaczenie ma ich ujawniać rozwiązania w taki sposób, który daje możliwość wystąpić rozwiązaniu niezależnie nie dodatkowych opłat lub opłata kupujący chmury, a więc ten typ oferta zapewnia środowisko wersji próbnej, które odpowiadają jak klienci poszukać rozwiązań w chmurze.  
 
 Przegląd wszystkich ofert witryny Marketplace, można znaleźć na stronie [Marketplace wydawca przewodnika](https://aka.ms/sellerguide).
 
@@ -31,8 +31,8 @@ Przegląd wszystkich ofert witryny Marketplace, można znaleźć na stronie [Mar
 Wymagania techniczne dla aplikacji SaaS są proste. Wydawcy tylko są wymagane do można zintegrować z usługą Azure AD do opublikowania.  Integracja usługi Azure AD z aplikacjami jest dobrze udokumentowane i firma Microsoft udostępnia wiele zestawów SDK i zasobów, w tym celu.  
 
 Aby rozpocząć, firma Microsoft zaleca mających subskrypcję przeznaczonego do publikowania portalu Azure Marketplace, co umożliwia izolowanie pracy z innych inicjatyw. Ponadto, jeśli nie są już zainstalowane, zaleca się ma następujące narzędzia jako część środowiska programowania: 
-- [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)  
-- [Program Azure powerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-5.0.0)  
+- [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)  
+- [Program Azure powerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)  
 - [Narzędzia dla deweloperów platformy Azure (Sprawdź, co jest dostępne)](https://azure.microsoft.com/tools/)  
 - [Visual Studio Code](https://code.visualstudio.com/)  
 
@@ -41,11 +41,11 @@ Następujące listy zawierają łącza do najlepszych zasobów usługi Azure AD 
 
 **Dokumentacja**
 
-- [Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+- [Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-- [Integracja z usługą Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+- [Integracja z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-- [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+- [Integrowanie aplikacji z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 - [Mapa usługi Azure - bezpieczeństwo i tożsamość](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -64,7 +64,7 @@ Następujące listy zawierają łącza do najlepszych zasobów usługi Azure AD 
 **Szkolenia**  
 - [Microsoft Azure dla serii zawartości specjalistom IT: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
-**Azure Active Directory Service Updates**  
+**Aktualizacje usługi Azure Active Directory**  
 - [Aktualizacje usługi Azure AD](https://azure.microsoft.com/updates/?product=active-directory)
 
 Aby uzyskać pomoc można użyć następujących zasobów:

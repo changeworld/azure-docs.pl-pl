@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: edd13e9372643769060f43e952737154d812292d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e55438c629b861e8dc095892c6c519855cd5e632
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="alias-server-names"></a>Nazwy serwerów aliasu
 
@@ -25,7 +25,7 @@ Alias serwera nazw są odpowiednie dla:
 - Bezpośrednie użytkownikom na różnych serwerach w różnych porach dnia. 
 - Bezpośrednie użytkowników w różnych regionach z wystąpieniami, które są od siebie lokalizacjach geograficznych bliżej, podobnie jak przy użyciu usługi Azure Traffic Manager. 
 
-Punkt końcowy HTTP, która zwraca prawidłową nazwę serwera usług Azure Analysis Services może służyć jako alias.
+Punkt końcowy HTTPS, która zwraca prawidłową nazwę serwera usług Azure Analysis Services może służyć jako alias. Punkt końcowy musi obsługiwać HTTPS przez port 443 i numer portu nie może być określony w identyfikatorze URI.
 
 ![Alias przy użyciu formatu łącza](media/analysis-services-alias/aas-alias-browser.png)
 

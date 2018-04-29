@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 7a775b6d23c144c81650bb3608ee6a117475a9ba
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1de7e58eecc80e306920ab17884290dfddf8efa8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Kontenery monitora z analizy dzienników
  
-W tym artykule opisano kroki wymagane do skonfigurowania kontenera monitorowania dla klastra. Aby uzyskać więcej informacji o tym, zobacz [monitorowania kontenerów w sieci szkieletowej usług](service-fabric-diagnostics-event-analysis-oms.md#monitoring-containers). Aby wyświetlić to samouczek krok po kroku, można również wykonać [kontenerami Monitor systemu Windows w sieci szkieletowej usług](service-fabric-tutorial-monitoring-wincontainers.md).
+W tym artykule opisano kroki wymagane do skonfigurowania kontenera analizy dzienników OMS rozwiązanie monitorujące, aby wyświetlić zdarzenia kontenera. Aby skonfigurować klaster służąca do gromadzenia zdarzeń kontenera, zobacz [samouczek krok po kroku](service-fabric-tutorial-monitoring-wincontainers.md).
 
 ## <a name="set-up-the-container-monitoring-solution"></a>Skonfiguruj kontener monitorowania rozwiązania
 
@@ -35,9 +35,22 @@ W tym artykule opisano kroki wymagane do skonfigurowania kontenera monitorowania
 
     ![Dodawanie rozwiązania kontenerów](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Tworzenie rozwiązania wewnątrz tego samego obszaru roboczego, który został już utworzony dla klastra. Ta zmiana automatyczne wyzwolenie procesu agenta, aby rozpocząć gromadzenie danych docker na kontenerów. W około 15 minut lub to powinna zostać wyświetlona światła się z dziennikami przychodzące i statystyka rozwiązania.
+3. Tworzenie rozwiązania wewnątrz tego samego obszaru roboczego, który został już utworzony dla klastra. Ta zmiana automatyczne wyzwolenie procesu agenta, aby rozpocząć gromadzenie danych docker na kontenerów. W około 15 minut lub to powinna zostać wyświetlona światła się z dziennikami przychodzące i statystyka rozwiązania. jak pokazano na poniższej ilustracji.
+
+    ![Pulpit nawigacyjny podstawowe OMS](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+
+Agent umożliwia zbieranie kilka dzienników specyficzne dla kontenera, które można wykonać zapytania w OMS, lub używany do wizualizowanego wskaźników. Typy dziennika, które są zbierane są:
+
+* ContainerInventory: zawiera informacje o lokalizacji kontenera, nazwy i obrazów
+* ContainerImageInventory: informacje o wdrożonej obrazów, w tym identyfikatory lub rozmiary
+* ContainerLog: dzienniki błędu, dzienniki docker (stdout itp.) i innych pozycji
+* ContainerServiceLog: docker demon poleceń, które zostały uruchomione
+* O wydajności: liczniki wydajności w tym kontenerze procesora cpu, pamięć, ruch sieciowy na dysku We/Wy i metryki niestandardowe z maszyn hosta
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
+* Dowiedz się więcej o [rozwiązania kontenery w OMS](../log-analytics/log-analytics-containers.md).
 * Dowiedz się więcej o aranżacji kontenera w sieci szkieletowej usług - [sieci szkieletowej usług i kontenerów](service-fabric-containers-overview.md)
 * Pobierz zapoznaniu się z [wyszukiwania i badania dziennika](../log-analytics/log-analytics-log-searches.md) funkcje dostępne w ramach analizy dzienników
 * Konfigurowanie analizy dzienników, aby skonfigurować [automatycznego alerty](../log-analytics/log-analytics-alerts.md) reguły, aby pomóc w wykrywaniu i Diagnostyka

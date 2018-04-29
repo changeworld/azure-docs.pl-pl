@@ -1,6 +1,6 @@
 ---
-title: "Projekty grup zasobów platformy Azure programu Visual Studio | Microsoft Docs"
-description: "Tworzenie projektu grupy zasobów platformy Azure przy użyciu programu Visual Studio i wdrażanie zasobów na platformie Azure."
+title: Projekty grup zasobów platformy Azure programu Visual Studio | Microsoft Docs
+description: Tworzenie projektu grupy zasobów platformy Azure przy użyciu programu Visual Studio i wdrażanie zasobów na platformie Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2017
+ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d647206b882059e0651223dc84f2ad2a314f8a87
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio
 Program Visual Studio i zestaw [Azure SDK](https://azure.microsoft.com/downloads/) umożliwiają utworzenie projektu służącego do wdrażania infrastruktury i kodu na platformie Azure. Można na przykład zdefiniować host sieci Web, witrynę sieci Web i bazę danych dla aplikacji, a następnie wdrożyć tę infrastrukturę wraz z kodem. Można również zdefiniować maszynę wirtualną, usługę Virtual Network i konto usługi Storage, a następnie wdrożyć tę infrastrukturę wraz ze skryptem wykonywanym na maszynie wirtualnej. Projekt wdrożenia **grupy zasobów platformy Azure** umożliwia wdrożenie wszystkich niezbędnych zasobów w ramach pojedynczej i powtarzalnej operacji. Aby uzyskać więcej informacji dotyczących wdrażania zasobów i zarządzania nimi, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
@@ -148,7 +148,7 @@ Teraz można przystąpić do wdrażania projektu. Projekt grupy zasobów platfor
 5. Wybierz przycisk **Wdróż**, aby wdrożyć projekt na platformie Azure. Konsola programu PowerShell zostanie otwarta poza wystąpieniem programu Visual Studio. Po wyświetleniu monitu wprowadź hasło administratora programu SQL Server w konsoli programu PowerShell. **Konsola programu PowerShell może być ukryta za innymi elementami lub zminimalizowana na pasku zadań.** Odszukaj tę konsolę i wybierz ją, aby podać hasło.
    
    > [!NOTE]
-   > W programie Visual Studio może pojawić się monit o zainstalowanie poleceń cmdlet programu Azure PowerShell. Polecenia te są niezbędne do pomyślnego wdrożenia grup zasobów. Jeśli zostanie wyświetlony monit, zainstaluj je.
+   > W programie Visual Studio może pojawić się monit o zainstalowanie poleceń cmdlet programu Azure PowerShell. Polecenia te są niezbędne do pomyślnego wdrożenia grup zasobów. Jeśli zostanie wyświetlony monit, zainstaluj je. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
    > 
    > 
 6. Wdrożenie może potrwać kilka minut. W oknach **Dane wyjściowe** jest wyświetlany stan wdrożenia. Po zakończeniu wdrażania ostatni komunikat wskazuje pomyślne wdrożenie i jest podobny do następującego:
@@ -216,6 +216,102 @@ Do tej pory wdrożono infrastrukturę aplikacji, ale z projektem nie został wdr
     
      ![wyświetlanie wdrożonej aplikacji](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
+## <a name="add-an-operations-dashboard-to-your-deployment"></a>Dodawanie pulpitu nawigacyjnego operacji do wdrożenia
+Po utworzeniu rozwiązania można wykonać ostatni krok — sprawić, aby działało. Możesz korzystać nie tylko z zasobów dostępnych z poziomu interfejsu programu Visual Studio. Możesz wykorzystać udostępnione pulpity nawigacyjne, które są definiowane jako zasoby w formacie JSON. Odbywa się to przez edycję szablonu i dodanie zasobu niestandardowego. 
+
+1. Otwórz plik WebsiteSqlDeploy.json i dodaj następujący blok kodu w formacie JSON po zasobie konta magazynu, ale przed zamykającym znakiem „]” sekcji zasobów.
+
+```json
+    ,{
+      "properties": {
+        "lenses": {
+          "0": {
+            "order": 0,
+            "parts": {
+              "0": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "colSpan": 4,
+                  "rowSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "resourceGroup",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "id",
+                      "value": "[resourceGroup().id]",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/ResourceGroupMapPinnedPart"
+                }
+              },
+              "1": {
+                "position": {
+                  "x": 4,
+                  "y": 0,
+                  "rowSpan": 3,
+                  "colSpan": 4
+                },
+                "metadata": {
+                  "inputs": [],
+                  "type": "Extension[azure]/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "__Customizations__\n\nUse this dashboard to create and share the operational views of services critical to the application performing. To customize simply pin components to the dashboard and then publish when you're done. Others will see your changes when you publish and share the dashboard.\n\nYou can customize this text too. It supports plain text, __Markdown__, and even limited HTML like images <img width='10' src='https://portal.azure.com/favicon.ico'/> and <a href='https://azure.microsoft.com' target='_blank'>links</a> that open in a new tab.\n",
+                        "title": "Operations",
+                        "subtitle": "[resourceGroup().name]"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "metadata": {
+          "model": {
+            "timeRange": {
+              "value": {
+                "relative": {
+                  "duration": 24,
+                  "timeUnit": 1
+                }
+              },
+              "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+            }
+          }
+        }
+      },
+      "apiVersion": "2015-08-01-preview",
+      "name": "[concat('ARM-',resourceGroup().name)]",
+      "type": "Microsoft.Portal/dashboards",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "hidden-title": "[concat('OPS-',resourceGroup().name)]"
+      }
+    }
+}
+```
+
+2. Ponownie wdróż grupę zasobów, a na pulpicie nawigacyjnym w witrynie Azure Portal udostępniony pulpit nawigacyjny będzie widoczny jako dodany do listy wyborów. 
+
+    ![Niestandardowy pulpit nawigacyjny](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+
+
+
+   > [!NOTE] 
+   > Dostępem do pulpitu nawigacyjnego można zarządzać przy użyciu grup kontroli dostępu opartej na rolach, a dostosowania można publikować w ramach zasobu po jego wdrożeniu. Należy pamiętać, że ponowne wdrożenie grupy zasobów spowoduje zresetowanie jej do wartości domyślnych w szablonie. Należy rozważyć aktualizowanie szablonu za pomocą dostosowań. Aby uzyskać pomoc dotyczącą sposobu wykonywania tych czynności, zobacz [Programowe tworzenie pulpitów nawigacyjnych platformy Azure](../azure-portal/azure-portal-dashboards-create-programmatically.md)
+
+
+    ![Niestandardowy pulpit nawigacyjny](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
+    
+    
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać informacje dotyczące zarządzania zasobami przy użyciu portalu, zobacz [Korzystanie z witryny Azure Portal do zarządzania zasobami Azure](resource-group-portal.md).
 * Aby uzyskać więcej informacji o szablonach, zobacz [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md) (Tworzenie szablonów usługi Azure Resource Manager).

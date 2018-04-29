@@ -1,8 +1,8 @@
 ---
-title: "Użyj Apache Phoenix i SQLLine z bazy danych HBase w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać Apache Phoenix w usłudze HDInsight. Ponadto informacje o sposobie instalowania i konfigurowania SQLLine komputera do nawiązania połączenia klastra HBase w usłudze HDInsight."
+title: Użyj Apache Phoenix i SQLLine z bazy danych HBase w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać Apache Phoenix w usłudze HDInsight. Ponadto informacje o sposobie instalowania i konfigurowania SQLLine komputera do nawiązania połączenia klastra HBase w usłudze HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: cda0f33b-a2e8-494c-972f-ae0bb482b818
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 12791da56f32ffffa4b1131c408829f50f6e9124
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 64700567b8acf816f42e6bf8cdc5386b6c65fe3f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Apache Phoenix za pomocą klastrów HBase opartych na systemie Linux w usłudze HDInsight
 Dowiedz się, jak używać [Apache Phoenix](http://phoenix.apache.org/) w usłudze Azure HDInsight i sposobu użycia SQLLine. Aby uzyskać więcej informacji na temat Phoenix, zobacz [Phoenix w ciągu 15 minut lub mniej](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Dla gramatyki Phoenix [gramatyki Phoenix](http://phoenix.apache.org/language/index.html).
@@ -30,12 +28,12 @@ Dowiedz się, jak używać [Apache Phoenix](http://phoenix.apache.org/) w usłud
 >
 
 ## <a name="use-sqlline"></a>Użyj SQLLine
-[SQLLine](http://sqlline.sourceforge.net/) to narzędzie wiersza polecenia do wykonania SQL.
+[SQLLine](http://sqlline.sourceforge.net/) jest narzędziem wiersza polecenia, aby wykonać SQL.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Przed użyciem SQLLine, musi mieć następujące elementy:
 
-* **Klaster HBase w usłudze HDInsight**. Aby go utworzyć, zobacz [Rozpoczynanie pracy z bazy danych Apache HBase w usłudze HDInsight](./apache-hbase-tutorial-get-started-linux.md).
+* **Strumieniowego w HDInsight**. Aby go utworzyć, zobacz [Rozpoczynanie pracy z bazy danych Apache HBase w usłudze HDInsight](./apache-hbase-tutorial-get-started-linux.md).
 
 Po podłączeniu do klastra HBase, należy połączyć się z jedną dozorcy maszyn wirtualnych. Każdy klaster HDInsight ma trzy dozorcy maszyn wirtualnych.
 
@@ -71,11 +69,11 @@ Aby uzyskać więcej informacji, zobacz [ręcznego SQLLine](http://sqlline.sourc
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób użycia Apache Phoenix w usłudze HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Omówienie HDInsight HBase][hdinsight-hbase-overview].
+* [Omówienie usługi HDInsight HBase][hdinsight-hbase-overview].
   HBase jest Apache, bazy danych NoSQL open source opartą na platformie Hadoop, która zapewnia dostęp losowy i wysoki poziom spójności w przypadku dużych ilości danych z częściową strukturą i bez struktury.
-* [Udostępnianie klastrów HBase w sieci wirtualnej Azure][hdinsight-hbase-provision-vnet].
+* [Zapewnij HBase klastrów na Azure wirtualnej sieci][hdinsight-hbase-provision-vnet].
   Dzięki integracji sieci wirtualnej można wdrożyć klastrów HBase do tej samej sieci wirtualnej jako aplikacji, więc aplikacje mogą komunikować się bezpośrednio z bazy danych HBase.
-* [Konfigurowanie replikacji bazy danych HBase w usłudze HDInsight](apache-hbase-replication.md). Informacje o sposobie konfigurowania replikacji bazy danych HBase między dwoma centrami danych Azure.
+* [Konfigurowanie replikacji HBase w HDInsight](apache-hbase-replication.md). Informacje o sposobie konfigurowania replikacji bazy danych HBase między dwoma centrami danych Azure.
 
 
 [azure-portal]: https://portal.azure.com

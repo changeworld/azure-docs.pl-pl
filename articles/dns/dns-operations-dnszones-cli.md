@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: kumud
-ms.openlocfilehash: d384f8867ddfd28acaf78a47a7d32729e87c5580
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3fee44e282424caa0a9e57dae1228d8af075e4a6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Jak zarządzać stref DNS w usłudze Azure DNS za pomocą 2.0 interfejsu wiersza polecenia platformy Azure
 
@@ -47,7 +47,7 @@ Przed rozpoczęciem konfiguracji sprawdź, czy dysponujesz następującymi eleme
 
 ### <a name="sign-in-to-your-azure-account"></a>Zaloguj się do swojego konta platformy Azure
 
-Otwórz okno konsoli i uwierzytelnij się przy użyciu swoich poświadczeń. Aby uzyskać więcej informacji, zobacz [Log in to Azure from the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest) (Logowanie do platformy Azure z poziomu wiersza polecenia platformy Azure)
+Otwórz okno konsoli i uwierzytelnij się przy użyciu swoich poświadczeń. Aby uzyskać więcej informacji, zobacz [Log in to Azure from the Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) (Logowanie do platformy Azure z poziomu wiersza polecenia platformy Azure)
 
 ```
 az login
@@ -68,7 +68,7 @@ az account set --subscription "subscription name"
 ```
 
 ### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Opcjonalnie: Do użycia instalacji stref DNS prywatnego Azure funkcji (publicznej wersji zapoznawczej)
-Funkcja strefy DNS prywatnego Azure jest wydane w publicznej wersji zapoznawczej za pośrednictwem rozszerzenia dla wiersza polecenia platformy Azure. Zainstaluj rozszerzenie interfejsu wiersza polecenia Azure "dns" 
+Funkcja Azure DNS Private Zones została wydana w publicznej wersji zapoznawczej i udostępniona za pomocą rozszerzenia wiersza polecenia platformy Azure. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi „dns” 
 ```
 az extension add --name dns
 ``` 
@@ -143,30 +143,30 @@ Odpowiedzią jest poniższy przykład.
 }
 ```
 
-Należy pamiętać, że rekordy DNS nie są zwracane przez `az network dns zone show`. Aby wyświetlić listę rekordów DNS, użyj `az network dns record-set list`.
+Należy pamiętać, że rekordy DNS nie są zwracane przez polecenie `az network dns zone show`. Aby wyświetlić listę rekordów DNS, użyj polecenia `az network dns record-set list`.
 
 
-## <a name="list-dns-zones"></a>Lista stref DNS
+## <a name="list-dns-zones"></a>Wyświetlanie listy stref DNS
 
-Aby wyliczyć stref DNS, należy użyć `az network dns zone list`. Aby uzyskać pomoc, zobacz `az network dns zone list --help`.
+Aby wyliczyć strefy DNS, należy użyć polecenia `az network dns zone list`. Aby uzyskać pomoc, zobacz `az network dns zone list --help`.
 
-Określenie grupy zasobów zawiera tylko tych stref w grupie zasobów:
+Określenie grupy zasobów powoduje wyświetlenie listy tylko następujących stref w grupie zasobów:
 
 ```azurecli
 az network dns zone list --resource-group MyResourceGroup
 ```
 
-Pominięcie grupa zasobów zawiera listę wszystkich stref w subskrypcji:
+Pominięcie grupy zasobów powoduje wyświetlenie listy wszystkich stref w subskrypcji:
 
 ```azurecli
 az network dns zone list 
 ```
 
-## <a name="update-a-dns-zone"></a>Zaktualizuj strefę DNS
+## <a name="update-a-dns-zone"></a>Aktualizowanie strefy DNS
 
-Można wprowadzać zmiany do zasobu strefy DNS przy użyciu `az network dns zone update`. Aby uzyskać pomoc, zobacz `az network dns zone update --help`.
+Zmiany w zasobie strefy DNS można wprowadzić przy użyciu polecenia `az network dns zone update`. Aby uzyskać pomoc, zobacz `az network dns zone update --help`.
 
-To polecenie nie powoduje aktualizacji zestawów rekordów DNS w strefie (zobacz [jak rekordy DNS zarządzanie](dns-operations-recordsets-cli.md)). Jest używane wyłącznie do właściwości zasobu strefy samej aktualizacji. Te właściwości są obecnie ograniczone do [usługi Azure Resource Manager "tagi"](dns-zones-records.md#tags) dla zasobu strefy.
+To polecenie nie powoduje aktualizacji żadnego z zestawów rekordów DNS w strefie (zobacz [Jak zarządzać rekordami DNS](dns-operations-recordsets-cli.md)). Służy ono wyłącznie do aktualizacji właściwości samego zasobu strefy. Te właściwości są obecnie ograniczone do [usługi Azure Resource Manager "tagi"](dns-zones-records.md#tags) dla zasobu strefy.
 
 Poniższy przykład przedstawia sposób aktualizowania elementów tag w strefie DNS. Istniejące znaczniki zostały zastąpione przez określona wartość.
 
@@ -174,16 +174,16 @@ Poniższy przykład przedstawia sposób aktualizowania elementów tag w strefie 
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
 ```
 
-## <a name="delete-a-dns-zone"></a>Usuń strefę DNS
+## <a name="delete-a-dns-zone"></a>Usuwanie strefy DNS
 
-Można usunąć strefy DNS przy użyciu `az network dns zone delete`. Aby uzyskać pomoc, zobacz `az network dns zone delete --help`.
+Strefy DNS można usunąć przy użyciu polecenia `az network dns zone delete`. Aby uzyskać pomoc, zobacz `az network dns zone delete --help`.
 
 > [!NOTE]
-> Usunięcie strefy DNS powoduje usunięcie wszystkich rekordów DNS w strefie. Tej operacji nie można cofnąć. Strefa DNS jest używana, usług za pomocą strefie zakończy się niepowodzeniem po usunięciu strefy.
+> Usunięcie strefy DNS powoduje również usunięcie wszystkich rekordów DNS w strefie. Tej operacji nie można cofnąć. Jeśli strefa DNS jest używana, po jej usunięciu usługi korzystające z tej strefy będą kończyć się niepowodzeniem.
 >
->Aby chronić przed usunięciem strefy przypadkowe, zobacz [jak chronić strefy DNS i rekordy](dns-protect-zones-recordsets.md).
+>Aby zapobiec przypadkowemu usunięciu strefy, zobacz [jak chronić strefy i rekordy DNS](dns-protect-zones-recordsets.md).
 
-To polecenie wyświetla monit o potwierdzenie. Opcjonalny `--yes` przełącznik pomija tego wiersza.
+To polecenie wyświetla monit o potwierdzenie. Opcjonalny przełącznik `--yes` pomija ten monit.
 
 Poniższy przykład przedstawia sposób usunięcia strefy *contoso.com* z grupy zasobów *MyResourceGroup*.
 

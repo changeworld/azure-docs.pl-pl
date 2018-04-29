@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Identity Protection podręcznika dotyczącego | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak Azure AD Identity Protection umożliwia ograniczenie możliwości osoby atakującej, która wykorzystać, którego bezpieczeństwo zostało naruszone tożsamości lub urządzenie i secure tożsamości lub urządzeń, które wcześniej podejrzenia lub znane naruszenia."
+title: Azure Active Directory Identity Protection podręcznika dotyczącego | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak Azure AD Identity Protection umożliwia ograniczenie możliwości osoby atakującej, która wykorzystać, którego bezpieczeństwo zostało naruszone tożsamości lub urządzenie i secure tożsamości lub urządzeń, które wcześniej podejrzenia lub znane naruszenia.
 services: active-directory
-keywords: "ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń"
-documentationcenter: 
+keywords: ochronę tożsamości usługi Azure active directory, usługa cloud app discovery, zarządzanie aplikacjami, zabezpieczeń, ryzyka, poziom ryzyka, luki w zabezpieczeniach, zasady zabezpieczeń
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f4240c9196796c2e83c408271fe81b20842ab722
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure podręcznikowym ochronę tożsamości w usłudze Active Directory
 
@@ -50,7 +50,7 @@ Wykonanie poniższej procedury wymaga użycia:
 
 **Aby symulować logowanie z anonimowego adresu IP, wykonaj następujące kroki**:
 
-1. Przy użyciu [przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en), przejdź do [https://myapps.microsoft.com](https://myapps.microsoft.com).   
+1. Przy użyciu [przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en), przejdź do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).   
 2. Wprowadź poświadczenia konta, która ma być wyświetlana w **logowania z anonimowych adresów IP** raportu.
 
 Przy logowaniu są wyświetlane na pulpicie nawigacyjnym ochronę tożsamości w ciągu 10 – 15 minut. 
@@ -76,7 +76,7 @@ Wykonanie poniższej procedury można używać konta użytkownika, które ma wym
 **Aby symulować logowania z nieznanych lokalizacji, wykonaj następujące kroki**:
 
 1. Podczas logowania się przy użyciu konta testu, nie żądanie uwierzytelniania MFA nie przekazując żądanie uwierzytelniania MFA.
-2. Przy użyciu nowego sieć VPN, przejdź do [https://myapps.microsoft.com](https://myapps.microsoft.com) , a następnie wprowadź poświadczenia konta testowego.
+2. Przy użyciu nowego sieć VPN, przejdź do [ https://myapps.microsoft.com ](https://myapps.microsoft.com) , a następnie wprowadź poświadczenia konta testowego.
    
 
 Przy logowaniu są wyświetlane na pulpicie nawigacyjnym ochronę tożsamości w ciągu 10 – 15 minut.
@@ -90,18 +90,18 @@ Symuluje warunku niemożliwa podróż jest trudne, ponieważ algorytm chwastów 
 
 **Aby symulować niemożliwa podróż do nietypowych lokalizacji, wykonaj następujące kroki**:
 
-1. Za pomocą przeglądarki standardowe, przejdź do [https://myapps.microsoft.com](https://myapps.microsoft.com).  
+1. Za pomocą przeglądarki standardowe, przejdź do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).  
 2. Wprowadź poświadczenia konta, które mają zostać wygenerowane zdarzenie niemożliwa podróż ryzyka dla.
 3. Zmień agenta użytkownika. Można zmienić agenta użytkownika w programie Internet Explorer z Developer Tools, lub zmień agenta użytkownika przeglądarki Firefox lub Chrome przy użyciu dodatku przełącznik agenta użytkownika.
 4. Zmienianie adresu IP. Adres IP można zmienić za pomocą sieci VPN, dodatek Tor, lub kręci się nowego komputera na platformie Azure w centrum danych.
-5. Zaloguj się do [https://myapps.microsoft.com](https://myapps.microsoft.com) przy użyciu tych samych poświadczeń jako przed i za kilka minut po poprzednim logowanie.
+5. Zaloguj się do [ https://myapps.microsoft.com ](https://myapps.microsoft.com) przy użyciu tych samych poświadczeń jako przed i za kilka minut po poprzednim logowanie.
 
 Rejestrowanie zostaną wyświetlone na pulpicie nawigacyjnym ochronę tożsamości w ciągu 2-4 godzin.
 
 ## <a name="simulating-vulnerabilities"></a>Symuluje luk w zabezpieczeniach
 Luki w zabezpieczeniach występują słabych w środowisku usługi Azure AD, które mogą być używane przez aktora nieprawidłowy. Obecnie 3 typy luk w zabezpieczeniach są udostępniane w Azure AD Identity Protection, zwiększają inne funkcje usługi Azure AD. Te luki w zabezpieczeniach będą wyświetlane na pulpicie nawigacyjnym Identity Protection automatycznie po skonfigurowaniu tych funkcji.
 
-* Usługi Azure AD [uwierzytelnianie wieloskładnikowe](../multi-factor-authentication/multi-factor-authentication.md)
+* Usługi Azure AD [uwierzytelnianie wieloskładnikowe](authentication/multi-factor-authentication.md)
 * Usługi Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
 * Usługi Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
@@ -120,7 +120,7 @@ Aby uzyskać więcej informacji, zobacz [zasady zabezpieczeń użytkownika ryzyk
 
 **Aby przetestować zasad zabezpieczeń dla użytkownika ryzyka, wykonaj następujące kroki**:
 
-1. Zaloguj się do [https://portal.azure.com](https://portal.azure.com) przy użyciu poświadczeń administratora globalnego dla dzierżawy.
+1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com) przy użyciu poświadczeń administratora globalnego dla dzierżawy.
 2. Przejdź do **ochronę tożsamości**. 
 3. Na **Azure AD Identity Protection** kliknij przycisk **zasad ryzyka użytkownika**.
 4. W **przypisania** wybierz odpowiednich użytkowników (i grup) i poziom ryzyka użytkownika.
@@ -145,7 +145,7 @@ Aby uzyskać więcej informacji, zobacz [zasady zabezpieczeń użytkownika ryzyk
 
 **Aby przetestować znak w zasadzie ryzyka, należy wykonać następujące czynności:**
 
-1. Zaloguj się do [https://portal.azure.com ](https://portal.azure.com) przy użyciu poświadczeń administratora globalnego dla dzierżawy.
+1. Zaloguj się do [ https://portal.azure.com ](https://portal.azure.com) przy użyciu poświadczeń administratora globalnego dla dzierżawy.
 
 2. Przejdź do **Azure AD Identity Protection**.
 

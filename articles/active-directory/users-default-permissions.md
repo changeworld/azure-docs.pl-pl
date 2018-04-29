@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 7465486109af773403c61f6b4505d932949009df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c4f6ef9d934a414ef805ddba6d2602b03bcbf16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Domyślne uprawnienia użytkowników w usłudze Azure Active Directory
 
-W usłudze Azure Active Directory (Azure AD) wszyscy użytkownicy otrzymują zestaw domyślnych uprawnień. Typ użytkownika, składa się dostępu użytkownika ich [członkostwo w rolach](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-assign-role-azure-portal)i ich prawa własności poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne i zawiera porównanie domyślnych ustawień użytkownika elementu członkowskiego, jak i gościa.
+W usłudze Azure Active Directory (Azure AD) wszyscy użytkownicy otrzymują zestaw domyślnych uprawnień. Typ użytkownika, składa się dostępu użytkownika ich [członkostwo w rolach](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)i ich prawa własności poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne i zawiera porównanie domyślnych ustawień użytkownika elementu członkowskiego, jak i gościa.
 
 ## <a name="member-and-guest-users"></a>Element członkowski i gościa użytkowników
 Zestaw domyślnych uprawnień Odebrano zależy, jeśli użytkownik jest członkiem natywnego dzierżawy (elementu członkowskiego użytkownika), lub jeśli użytkownik jest Gość współpracy B2B (Gość). Aby uzyskać więcej informacji o współpracy B2B, zobacz [co to jest współpraca B2B usługi Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md) Aby uzyskać więcej informacji o użytkownikach gościa). 

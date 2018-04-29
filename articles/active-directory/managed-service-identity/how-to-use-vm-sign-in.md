@@ -1,11 +1,11 @@
 ---
-title: "Jak używać Azure VM zarządzane tożsamości usługi w celu logowania się"
-description: "Krok po kroku instrukcje i przykłady dotyczące przy użyciu zarejestrować nazwę główną usługi Azure VM MSI dla skryptu klienta i zasobów dostępu."
+title: Jak używać Azure VM zarządzane tożsamości usługi w celu logowania się
+description: Krok po kroku instrukcje i przykłady dotyczące przy użyciu zarejestrować nazwę główną usługi Azure VM MSI dla skryptu klienta i zasobów dostępu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4df404bbf56efbc3bb68f006f8aa0c7cdf0e86ac
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ec8c9de6ecd81900c4104abf58ecbe032e43fad9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Jak używać usługi Azure VM zarządzane usługi tożsamości (MSI) w celu logowania się 
 
@@ -51,7 +51,7 @@ Poniższy skrypt pokazuje, jak:
 2. Wywołanie usługi Azure Resource Manager i Pobierz identyfikator podmiotu zabezpieczeń usługi maszyny Wirtualnej Interfejs wiersza polecenia odpowiada on za zarządzanie tokenu użycia nabycia zostanie automatycznie. Pamiętaj zastąpić nazwę maszyny wirtualnej dla `<VM-NAME>`.  
 
    ```azurecli
-   az login --msi
+   az login --identity
    
    spID=$(az resource list -n <VM-NAME> --query [*].identity.principalId --out tsv)
    echo The MSI service principal ID is $spID
@@ -61,20 +61,11 @@ Poniższy skrypt pokazuje, jak:
 
 Poniższy skrypt pokazuje, jak:
 
-1. Należy uzyskać token dostępu MSI dla maszyny Wirtualnej.  
-2. Użyj tokenu dostępu do logowania do usługi Azure AD w odpowiedniej nazwy głównej usługi MSI.   
-3. Wywołanie polecenia cmdlet usługi Azure Resource Manager, aby uzyskać informacje dotyczące maszyny Wirtualnej. Zarządzanie tokenu użycie automatycznie zapewnia obsługę programu PowerShell.  
+1. Zaloguj się do usługi Azure AD w obszarze nazwy głównej usługi MSI maszyny Wirtualnej  
+2. Wywołanie polecenia cmdlet usługi Azure Resource Manager, aby uzyskać informacje dotyczące maszyny Wirtualnej. Zarządzanie tokenu użycie automatycznie zapewnia obsługę programu PowerShell.  
 
    ```azurepowershell
-   # Get an access token for the MSI
-   $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token `
-                                 -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
-   $content =$response.Content | ConvertFrom-Json
-   $access_token = $content.access_token
-   echo "The MSI access token is $access_token"
-
-   # Use the access token to sign in under the MSI service principal. -AccountID can be any string to identify the session.
-   Login-AzureRmAccount -AccessToken $access_token -AccountId "MSI@50342"
+   Add-AzureRmAccount -identity
 
    # Call Azure Resource Manager to get the service principal ID for the VM's MSI. 
    $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
@@ -84,7 +75,7 @@ Poniższy skrypt pokazuje, jak:
 
 ## <a name="resource-ids-for-azure-services"></a>Identyfikatory zasobów dla usług Azure
 
-Zobacz [uwierzytelniania pomocy technicznej usługi Azure AD z usług Azure](overview.md#azure-services-that-support-azure-ad-authentication) listę zasobów, które obsługują usługi Azure AD i zostały przetestowane msi, a ich odpowiednich identyfikatorów zasobów.
+Zobacz [uwierzytelniania pomocy technicznej usługi Azure AD z usług Azure](services-support-msi.md#azure-services-that-support-azure-ad-authentication) listę zasobów, które obsługują usługi Azure AD i zostały przetestowane msi, a ich odpowiednich identyfikatorów zasobów.
 
 ## <a name="error-handling-guidance"></a>Wskazówki dotyczące obsługi błędów 
 

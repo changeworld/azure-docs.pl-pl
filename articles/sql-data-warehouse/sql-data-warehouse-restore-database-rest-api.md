@@ -1,87 +1,51 @@
 ---
-title: "Przywróć magazyn danych Azure SQL (interfejsu API REST) | Dokumentacja firmy Microsoft"
-description: "Interfejs API REST zadania przywracania usługi Azure SQL Data Warehouse."
+title: Przywróć magazyn danych Azure SQL - interfejsu API REST | Dokumentacja firmy Microsoft
+description: Przywrócenie magazynu danych SQL Azure przy użyciu interfejsów API REST.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: fca922c6-b675-49c7-907e-5dcf26d451dd
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: backup-restore
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: 8739429342d3c8bbe0f09041976758276a9c3228
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 2e1874fdf7c11d98d369072739c5937caffe6e96
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="restore-an-azure-sql-data-warehouse-rest-api"></a>Przywróć magazyn danych Azure SQL (interfejsu API REST)
-> [!div class="op_single_selector"]
-> * [Omówienie][Overview]
-> * [Portal][Portal]
-> * [Środowiska PowerShell][PowerShell]
-> * [REST][REST]
-> 
-> 
-
-W tym artykule dowiesz się, jak przywrócić Azure SQL Data Warehouse przy użyciu interfejsu API REST.
+# <a name="restore-an-azure-sql-data-warehouse-with-rest-apis"></a>Przywróć magazyn danych Azure SQL z interfejsów API REST
+Przywrócenie magazynu danych SQL Azure przy użyciu interfejsów API REST.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-**Sprawdź, czy pojemność jednostek dtu w warstwie.** Każdy magazyn danych SQL jest obsługiwana przez serwer SQL (np. myserver.database.windows.net), który ma domyślnego przydziału jednostek dtu w warstwie.  Zanim będzie można przywrócić magazyn danych SQL, upewnij się, że program SQL server ma wystarczającą ilość pozostałych limit przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak można obliczyć jednostek dtu w warstwie potrzebne również z prośbami więcej jednostek dtu w warstwie, zobacz [żądanie zmiany limitu przydziału jednostek dtu w warstwie][Request a DTU quota change].
+**Sprawdź, czy pojemność jednostek dtu w warstwie.** Każdy magazyn danych SQL jest obsługiwana przez serwer logiczny SQL (np. myserver.database.windows.net), który ma wartość domyślną [limit przydziału jednostek DTU](../sql-database/sql-database-what-is-a-dtu.md).  Zanim będzie można przywrócić magazyn danych SQL, upewnij się, że program SQL server ma wystarczającą ilość pozostałych limit przydziału jednostek DTU dla przywracanej bazy danych. Aby zażądać więcej jednostek dtu w warstwie, możesz [Utwórz bilet pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md).
 
-## <a name="restore-an-active-or-paused-database"></a>Przywróć bazę danych aktywnej lub wstrzymana
-Przywracanie bazy danych:
+## <a name="restore-an-active-or-paused-data-warehouse"></a>Przywróć hurtowni danych aktywnych lub wstrzymana
+Aby przywrócić magazynu danych:
 
 1. Pobierz listę punktów przywracania bazy danych przy użyciu operacji punkty przywracania bazy danych Get.
-2. Rozpocznij przywracania przy użyciu [żądanie przywracania bazy danych utwórz] [ Create database restore request] operacji.
-3. Śledź stan przywracania przy użyciu [operacji stan bazy danych] [ Database operation status] operacji.
+2. Rozpocznij przywracania przy użyciu [żądanie przywracania bazy danych utwórz](https://msdn.microsoft.com/library/azure/dn509571.aspx) operacji.
+3. Śledź stan przywracania przy użyciu [operacji stan bazy danych](https://msdn.microsoft.com/library/azure/dn720371.aspx) operacji.
 
 > [!NOTE]
-> Po ukończeniu przywracania można skonfigurować odzyskanej bazy danych, wykonując [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
+> Po ukończeniu przywracania, można skonfigurować Magazyn odzyskane dane, postępując [konfiguracji bazy danych po odzyskaniu](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
 > 
 > 
 
-## <a name="restore-a-deleted-database"></a>Przywracanie usuniętej bazy danych
-Aby przywrócić usunięte bazy danych:
+## <a name="restore-a-deleted-data-warehouse"></a>Przywracanie usuniętych danych magazynu
+Aby przywrócić usunięte dane magazynu:
 
-1. Lista wszystkich dostępnych usuniętych baz danych przy użyciu [listy dostępnych porzucić bazy danych] [ List restorable dropped databases] operacji.
-2. Szczegółowe informacje dla usuniętej bazy danych, aby przywrócić za pomocą [Get dostępnych porzucić bazy danych] [ Get restorable dropped database] operacji.
-3. Rozpocznij przywracania przy użyciu [żądanie przywracania bazy danych utwórz] [ Create database restore request] operacji.
-4. Śledź stan przywracania przy użyciu [operacji stan bazy danych] [ Database operation status] operacji.
+1. Listę wszystkich magazynów umożliwiająca przywrócenie usuniętych danych przy użyciu [listy dostępnych porzucić bazy danych](https://msdn.microsoft.com/library/azure/dn509562.aspx) operacji.
+2. Szczegółowe informacje dla magazynu danych usuniętych, który chcesz przywrócić za pomocą operacji [Get dostępnych usuwanej bazy danych] [Get dostępnych usuwanej bazy danych].
+3. Rozpocznij przywracania przy użyciu [żądanie przywracania bazy danych utwórz](https://msdn.microsoft.com/library/azure/dn509571.aspx) operacji.
+4. Śledź stan przywracania przy użyciu [operacji stan bazy danych](https://msdn.microsoft.com/library/azure/dn720371.aspx) operacji.
 
 > [!NOTE]
-> Aby skonfigurować bazę danych, po ukończeniu przywracania, zobacz [konfiguracji bazy danych po odzyskaniu][Configure your database after recovery].
+> Aby skonfigurować Magazyn danych po zakończeniu przywracania, zobacz [konfiguracji bazy danych po odzyskaniu](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
 > 
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o funkcjach ciągłości biznesowej wersji bazy danych SQL Azure, przeczytaj [omówienie ciągłości działalności biznesowej usługi Azure SQL Database][Azure SQL Database business continuity overview].
-
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-
-<!--MSDN references-->
-[Create database restore request]: https://msdn.microsoft.com/library/azure/dn509571.aspx
-[Database operation status]: https://msdn.microsoft.com/library/azure/dn720371.aspx
-[Get restorable dropped database]: https://msdn.microsoft.com/library/azure/dn509574.aspx
-[List restorable dropped databases]: https://msdn.microsoft.com/library/azure/dn509562.aspx
-[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/
-[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
+Aby dowiedzieć się więcej o funkcjach ciągłości biznesowej wersji bazy danych SQL Azure, przeczytaj [omówienie ciągłości działalności biznesowej usługi Azure SQL Database](../sql-database/sql-database-business-continuity.md).

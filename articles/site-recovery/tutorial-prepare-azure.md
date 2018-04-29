@@ -1,18 +1,18 @@
 ---
-title: "Tworzenie zasobów do używania z usługą Azure Site Recovery | Microsoft Docs"
-description: "Dowiedz się, jak przygotować platformę Azure do replikacji maszyn lokalnych przy użyciu usługi Azure Site Recovery."
+title: Tworzenie zasobów do używania z usługą Azure Site Recovery | Microsoft Docs
+description: Dowiedz się, jak przygotować platformę Azure do replikacji maszyn lokalnych przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2f6ff1d30eef1fe34e55457d9bdd4295804ec16a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 0aec94ce4d53e1d0f5ecfbc7c667f7d4ceea1d2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure do replikacji maszyn lokalnych
 
@@ -21,8 +21,9 @@ ms.lasthandoff: 02/23/2018
 W tym samouczku przedstawiono sposób przygotowania składników platformy Azure w przypadku replikowania lokalnych maszyn wirtualnych (korzystających z funkcji Hyper-V lub oprogramowania VMware) bądź serwerów fizycznych z systemami Windows i Linux do platformy Azure. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Sprawdzanie, czy konto ma uprawnienia do replikacji.
-> * Utworzenie konta magazynu platformy Azure.
+> * Sprawdzanie, czy konto platformy Azure ma uprawnienia do replikacji.
+> * Utworzenie konta magazynu platformy Azure. Na nim przechowywane są replikowane dane.
+> * Utwórz magazyn usługi Recovery Services.
 > * Konfigurowanie sieci platformy Azure. Gdy maszyny wirtualne są tworzone po przejściu w tryb failover, dołączają one do sieci platformy Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
@@ -39,7 +40,7 @@ Jeśli bezpłatne konto platformy Azure zostało właśnie utworzone, jesteś ad
 - Tworzenie maszyny wirtualnej w wybranej sieci wirtualnej.
 - Zapis na wybranym koncie magazynu.
 
-Wbudowana rola „Współautor maszyny wirtualnej” ma te uprawnienia. Musisz mieć również uprawnienie do zarządzania operacjami usługi Site Recovery. Rola „Współautor usługi Site Recovery” ma wszystkie uprawnienia wymagane do zarządzania operacjami usługi Site Recovery w magazynie usługi Recovery Services.
+Aby można było wykonać te zadania, do konta musi być przypisana wbudowana rola Współautor maszyny wirtualnej. Ponadto na potrzeby zarządzania operacjami usługi Site Recovery w magazynie do konta powinna być przypisana wbudowana rola Współautor usługi Site Recovery.
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 

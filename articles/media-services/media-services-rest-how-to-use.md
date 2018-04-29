@@ -1,11 +1,11 @@
 ---
-title: "Przegląd interfejsu API REST operacji usługi Media Services | Dokumentacja firmy Microsoft"
-description: "Przegląd interfejsu API REST usługi multimediów"
+title: Przegląd interfejsu API REST operacji usługi Media Services | Dokumentacja firmy Microsoft
+description: Przegląd interfejsu API REST usługi multimediów
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: juliako;johndeu
-ms.openlocfilehash: 066959058576af830103aa98a12f0c36acfdbb14
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 472408f1c367984d5f4e0e435366c4a0af2e5b34
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Przegląd interfejsu API REST operacji usługi Media Services
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -42,7 +42,7 @@ Następujące kwestie przy użyciu REST.
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
         x-ms-version: 2.17
-        Authorization: Bearer <token> 
+        Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
         {
@@ -76,7 +76,7 @@ Oto zestaw opcjonalne nagłówki:
 | Zaakceptuj języka |"en", "es" i tak dalej. |Określa preferowany język dla odpowiedzi. |
 | Accept-Charset |Typ zestawu znaków, takich jak "UTF-8" |Domyślne to UTF-8. |
 | X-HTTP-Method |Metoda HTTP |Umożliwia klientom lub zapory, które nie obsługują metody HTTP, takie jak PUT lub Usuń, aby użyć tych metod, tunneled za pośrednictwem wywołania GET. |
-| Content-Type |Typ zawartości |Żądania typu zawartości w treści żądania PUT lub POST. |
+| Typ zawartości |Typ zawartości |Żądania typu zawartości w treści żądania PUT lub POST. |
 | Client-request-id |Ciąg |Wartość zdefiniowane przez obiekt wywołujący, która identyfikuje danego żądania. Jeśli jest określony, ta wartość będą uwzględniane w komunikacie odpowiedzi jako mapują żądania. <p><p>**Ważne**<p>Wartości powinny być ograniczone do 2096b (2 KB). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardowych nagłówków odpowiedzi HTTP obsługiwane przez usługę Media Services
@@ -87,7 +87,7 @@ Oto zestaw nagłówki, które mogą być zwracane w zależności od zasobów, kt
 | Identyfikator żądania |Ciąg |Unikatowy identyfikator dla bieżącej operacji usługi wygenerowany. |
 | Client-request-id |Ciąg |Identyfikator określony przez obiekt wywołujący w oryginalnego żądania, jeśli jest obecny. |
 | Date |RFC 1123 daty |Data/czas przetwarzania żądania. |
-| Content-Type |Zmienia się |Typ zawartości w treści odpowiedzi. |
+| Typ zawartości |Zmienia się |Typ zawartości w treści odpowiedzi. |
 | Kodowanie zawartości |Zmienia się |Gzip i deflate, gdzie to właściwe. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Standardowa zleceń HTTP obsługiwane przez usługę Media Services
@@ -116,7 +116,7 @@ Aby uzyskać więcej informacji na temat uzyskać szczegółowe informacje wymag
 
 Aby uzyskać więcej informacji na temat pisania kodu, który łączy się z interfejsu API REST przy użyciu uwierzytelniania usługi Azure AD, zobacz artykuł [uwierzytelnianie usługi Azure AD na dostęp do interfejsu API usługi multimediów Azure z POZOSTAŁĄ](media-services-rest-connect-with-aad.md).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się, jak korzystać z interfejsu API REST usług Media uwierzytelniania usługi Azure AD, zobacz [uwierzytelnianie usługi Azure AD na dostęp do interfejsu API usługi multimediów Azure z POZOSTAŁĄ](media-services-rest-connect-with-aad.md).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services

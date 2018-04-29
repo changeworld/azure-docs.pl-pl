@@ -1,8 +1,8 @@
 ---
-title: "Tworzenie aplikacji do uczenia maszynowego Apache Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Instrukcje krok po kroku dotyczące tworzenia aplikacji platformy Apache Spark uczenia maszynowego Spark w usłudze HDInsight clusters za pomocą notesu Jupyter"
+title: Tworzenie aplikacji do uczenia maszynowego Apache Spark w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Instrukcje krok po kroku dotyczące tworzenia aplikacji platformy Apache Spark uczenia maszynowego Spark w usłudze HDInsight clusters za pomocą notesu Jupyter
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: f584ca5e-abee-4b7c-ae58-2e45dfc56bf4
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 2f7dcb9bea05a79a6647b549896c8107f9e830af
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 95daab2bd7bc57d01bc9e3c05404958edd71eecc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Tworzenie aplikacji do uczenia maszynowego Apache Spark w usłudze Azure HDInsight
 
@@ -185,7 +183,7 @@ W tej aplikacji, użyj Spark [potoku ML](https://spark.apache.org/docs/2.2.0/ml-
 10. Zamknij aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie kliknij polecenie **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zamknięta i zamknięcie notesu.
 
 ## <a name="anaconda"></a>Użyj Anaconda scikit — Dowiedz się biblioteki Spark uczenia maszynowego
-Klastry platformy Apache Spark w usłudze HDInsight obejmują bibliotekami Anaconda. Obejmuje to także **scikit — Dowiedz się** biblioteki uczenia maszynowego. Biblioteka zawiera także różne zestawy danych, które służą do tworzenia przykładowej aplikacji bezpośrednio z notesu Jupyter. Przykłady dotyczące używania scikit — Dowiedz się, biblioteka, zobacz [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
+Klastry platformy Apache Spark w usłudze HDInsight obejmują bibliotekami Anaconda. Obejmuje to także **scikit — Dowiedz się** biblioteki uczenia maszynowego. Biblioteka zawiera także różne zestawy danych, które służą do tworzenia przykładowej aplikacji bezpośrednio z notesu Jupyter. Przykłady dotyczące używania scikit — Dowiedz się, biblioteka, zobacz [ http://scikit-learn.org/stable/auto_examples/index.html ](http://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="seealso"></a>Zobacz też
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)

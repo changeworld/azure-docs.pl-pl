@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2016
+ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: d415c3eb540056dc7ad6f1ab14fc8250903d6744
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 905eb170d2458f92469034b1cbf38ccd017d8f58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse
 Eclipse jest jednym z najczęściej używanych zintegrowanych środowisk projektowych (IDE, integrated development environment) przez programistów języka Java. W tym artykule omówiono konfigurowanie środowiska projektowego Eclipse do pracy z usługą Azure Service Fabric. Dowiedz się, jak zainstalować wtyczkę usługi Service Fabric oraz utworzyć aplikację usługi Service Fabric i wdrożyć ją w lokalnym lub zdalnym klastrze usługi Service Fabric w środowisku Eclipse. 
@@ -34,20 +34,22 @@ W środowisku Eclipse można zainstalować wtyczkę usługi Service Fabric. Wtyc
 > 
 > W systemie Ubuntu zaleca się instalowanie bezpośrednio z witryny środowiska Eclipse, a nie za pomocą instalatora pakietu (`apt` lub `apt-get`). Gwarantuje to uzyskanie najnowszej wersji środowiska Eclipse. 
 
-1.  Upewnij się, że masz zainstalowane środowisko Eclipse Neon lub nowsze oraz najnowszą wersję zestawu Buildship (wersję 1.0.17 lub nowszą):
-    -   Aby sprawdzić wersje zainstalowanych składników, w środowisku Eclipse wybierz pozycję **Help** > **Installation Details** (Pomoc — Szczegóły instalacji).
-    -   Aby zaktualizować zestaw Buildship, zobacz [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: wtyczki środowiska Eclipse dla narzędzia Gradle).
-    -   Aby sprawdzić i zainstalować aktualizacje środowiska Eclipse, wybierz opcję **Help** > **Check for Updates** (Pomoc — Sprawdź dostępność aktualizacji).
+Zainstaluj program Eclipse Neon lub nowszy z [witryny programu Eclipse](https://www.eclipse.org).  Zainstaluj także wersję 2.2.1 lub nowszą wtyczki Buildship (wtyczka usługi Service Fabric nie jest zgodna ze starszymi wersjami wtyczki Buildship):
+-   Aby sprawdzić wersje zainstalowanych składników, w środowisku Eclipse przejdź do pozycji **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji).
+-   Aby zaktualizować zestaw Buildship, zobacz [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: wtyczki środowiska Eclipse dla narzędzia Gradle).
+-   Aby sprawdzić i zainstalować aktualizacje środowiska Eclipse, wybierz opcję **Help** > **Check for Updates** (Pomoc — Sprawdź dostępność aktualizacji).
 
-2.  Aby zainstalować wtyczkę usługi Service Fabric, w środowisku Eclipse wybierz pozycję **Help** > **Install New Software** (Pomoc — Instaluj nowe oprogramowanie).
-  1.    W polu **Work with** (Praca z) wpisz adres **http://dl.microsoft.com/eclipse**.
-  2.    Kliknij pozycję **Add** (Dodaj).
-
-         ![Wtyczka usługi Service Fabric dla środowiska Eclipse][sf-eclipse-plugin-install]
-  3.    Wybierz wtyczkę usługi Service Fabric, a następnie kliknij przycisk **Next** (Dalej).
-  4.    Wykonaj kroki instalacji, a następnie zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft.
-
-Jeśli wtyczka usługi Service Fabric jest już zainstalowana, upewnij się, że używasz najnowszej wersji. Aby sprawdzić, czy są dostępne aktualizacje, wybierz pozycję **Help** > **Installation Details** (Pomoc — Szczegóły instalacji). Na liście zainstalowanych wtyczek wybierz usługę Service Fabric, a następnie kliknij pozycję **Update** (Aktualizuj). Dostępne aktualizacje zostaną zainstalowane.
+Zainstaluj wtyczkę usługi Service Fabric: w środowisku Eclipse przejdź do pozycji **Help** > **Install New Software** (Pomoc > Instaluj nowe oprogramowanie).
+1. W polu **Work with** (Praca z) wpisz adres **http://dl.microsoft.com/eclipse**.
+2. Kliknij pozycję **Add** (Dodaj).
+    ![Wtyczka usługi Service Fabric dla środowiska Eclipse][sf-eclipse-plugin-install]
+3. Wybierz wtyczkę usługi Service Fabric, a następnie kliknij przycisk **Next** (Dalej).
+4. Wykonaj kroki instalacji, a następnie zaakceptuj postanowienia licencyjne dotyczące oprogramowania firmy Microsoft.
+  
+Jeśli wtyczka usługi Service Fabric jest już zainstalowana, zainstaluj najnowszą wersję. 
+1. Aby sprawdzić, czy są dostępne aktualizacje, przejdź do pozycji **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji). 
+2. Na liście zainstalowanych wtyczek wybierz usługę Service Fabric, a następnie kliknij pozycję **Update** (Aktualizuj). Dostępne aktualizacje zostaną zainstalowane.
+3. Po zaktualizowaniu wtyczki usługi Service Fabric odśwież także projekt narzędzia Gradle.  Kliknij prawym przyciskiem myszy pozycję **build.gradle**, a następnie wybierz polecenie **Odśwież**.
 
 > [!NOTE]
 > Jeśli instalowanie lub aktualizowanie wtyczki usługi Service Fabric przebiega wolno, przyczyną może być ustawienie środowiska Eclipse. Środowisko Eclipse zbiera metadane dotyczące wszystkich zmian w witrynach aktualizowania, które są zarejestrowane w wystąpieniu środowiska Eclipse. Aby przyspieszyć proces sprawdzania i instalowania aktualizacji wtyczki usługi Service Fabric, wybierz pozycję **Available Software Sites** (Dostępne witryny z oprogramowaniem). Usuń zaznaczenie pól wyboru dla wszystkich witryn poza witryną wskazującą lokalizację wtyczki usługi Service Fabric (http://dl.microsoft.com/eclipse/azure/servicefabric).

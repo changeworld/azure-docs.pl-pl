@@ -3,7 +3,7 @@ title: Microsoft Azure danych szyfrowania podczas spoczynku | Dokumentacja firmy
 description: Ten artykuł zawiera omówienie Microsoft Azure danych szyfrowania podczas spoczynku, ogólną możliwości i zagadnienia ogólne.
 services: security
 documentationcenter: na
-author: YuriDio
+author: barclayn
 manager: mbaldwin
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: c0bc3c8774b68b49be95d5df86319a2e0463e6ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Danych Azure szyfrowania na Rest
 Istnieje wiele narzędzi w systemie Microsoft Azure w celu zabezpieczenia danych zgodnie z potrzebami firmy zabezpieczeń i zgodności. Ten dokument koncentruje się na:
@@ -246,19 +246,19 @@ Obiektów Blob platformy Azure i plików obsługuje szyfrowanie przechowywanych 
 
 Usługi SQL Azure obecnie obsługuje szyfrowanie przechowywanych dla scenariuszy szyfrowania po stronie klienta i po stronie usługi zarządzany przez firmę Microsoft.
 
-Obsługa sever szyfrowanie jest obecnie obsługiwane za pomocą funkcji SQL o nazwie przezroczystego szyfrowania danych. Po klienta SQL Azure umożliwia klucz funkcji TDE automatycznie są tworzone i zarządzane dla nich. Można włączyć szyfrowanie przechowywanych na poziomie bazy danych i serwera. Począwszy od czerwca 2017 r. [funkcji przezroczystego szyfrowania danych (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) zostanie włączona domyślnie na nowo utworzone bazy danych.
+Obsługa szyfrowania obecnie jest zapewniana za pomocą funkcji SQL o nazwie przezroczystego szyfrowania danych. Po klienta SQL Azure umożliwia klucz funkcji TDE automatycznie są tworzone i zarządzane dla nich. Można włączyć szyfrowanie przechowywanych na poziomie bazy danych i serwera. Począwszy od czerwca 2017 r. [funkcji przezroczystego szyfrowania danych (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) zostanie włączona domyślnie na nowo utworzone bazy danych.
 
 Szyfrowanie po stronie klienta danych SQL Azure jest obsługiwane przez [zawsze zaszyfrowane](https://msdn.microsoft.com/library/mt163865.aspx) funkcji. Zawsze zaszyfrowane używa klucza tworzone i przechowywane przez klienta. Klientów można przechowywać klucz główny w magazynie certyfikatów systemu Windows, usługi Azure Key Vault lub lokalnego sprzętowego modułu zabezpieczeń. Użytkowników SQL przy użyciu programu SQL Server Management Studio, wybierz jakie klucza chce używać do szyfrowania, która kolumna.
 
 |                                  |                |                     | **Model szyfrowania**             |                              |        |
 |----------------------------------|----------------|---------------------|------------------------------|------------------------------|--------|
-|                                  |                |                     |                              |                              | **Client** |
+|                                  |                |                     |                              |                              | **Klienta** |
 |                                  | **Zarządzanie kluczami** | **Usługa zarządzania klucza** | **Klientów zarządzanych w magazynie kluczy** | **Klient zarządzany lokalnie** |        |
 | **Magazyn i baz danych**            |                |                     |                              |                              |        |
 | Dysku (IaaS)                      |                | -                   | Yes                          | Tak*                         | -      |
 | Program SQL Server (IaaS)                |                | Yes                 | Yes                          | Yes                          | Yes    |
-| Azure SQL (PaaS)                 |                | Yes                 | Wersja zapoznawcza                      | -                            | Yes    |
-| Usługa Azure Storage (bloku/stronicowych obiektów blob) |                | Yes                 | Wersja zapoznawcza                      | -                            | Yes    |
+| Azure SQL (PaaS)                 |                | Yes                 | Yes                          | -                            | Yes    |
+| Usługa Azure Storage (bloku/stronicowych obiektów blob) |                | Yes                 | Yes                          | -                            | Yes    |
 | Magazyn Azure (pliki)            |                | Yes                 | -                            | -                            | -      |
 | Usługa Azure Storage (tabel, kolejek)   |                | -                   | -                            | -                            | Yes    |
 | Rozwiązania cosmos bazy danych (dokument DB)          |                | Yes                 | -                            | -                            | -      |
@@ -275,7 +275,7 @@ Szyfrowanie po stronie klienta danych SQL Azure jest obsługiwane przez [zawsze 
 | Power BI                         |                | Yes                 | -                            | -                            | -      |
 | **Usługi IoT**                     |                |                     |                              |                              |        |
 | Usługa IoT Hub                          |                | -                   | -                            | -                            | Yes    |
-| Service Bus                      |                | Tak (warstwy Premium)              | -                            | -                            | Yes    |
+| Service Bus                      |                | Yes              | -                            | -                            | Yes    |
 | Event Hubs                       |                | Yes             | -                            | -                            | -      |
 
 

@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea76bc4cc182902fb5618d23358579ec229a5ef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="securing-your-sql-database"></a>Zabezpieczanie bazy danych SQL
 
@@ -28,7 +28,7 @@ Pełne omówienie funkcji zabezpieczeń dostępnych we wszystkich wersjach bazy 
 Baza danych SQL zabezpiecza dane przez zapewnienie szyfrowanie danych w ruchu z [Transport Layer Security](https://support.microsoft.com/kb/3135244), dla danych magazynowanych z [przezroczystego szyfrowania danych](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)i dla danych w użyciu [ Zawsze zaszyfrowane](https://msdn.microsoft.com/library/mt163865.aspx). 
 
 > [!IMPORTANT]
->Wszystkie połączenia z usługą Azure SQL Database wymagają szyfrowania (SSL/TLS) podczas całego okresu, w którym dane są przesyłane do i z bazy danych. W parametrach połączenia aplikacji, należy określić parametry do szyfrowania połączenia oraz *nie* zaufania certyfikatu serwera (odbywa się automatycznie po skopiowaniu parametrów połączenia z portalu Azure), w przeciwnym razie połączenie nie weryfikuje tożsamość serwera i jest narażony na ataki "man-in--middle". Na przykład w przypadku sterownika ADO.NET te parametry połączenia mają wartość **Encrypt = True** i **TrustServerCertificate = False**. 
+>Wszystkie połączenia z usługą Azure SQL Database wymagają szyfrowania (SSL/TLS) podczas całego okresu, w którym dane są przesyłane do i z bazy danych. W parametrach połączenia aplikacji, należy określić parametry do szyfrowania połączenia oraz *nie* zaufania certyfikatu serwera (odbywa się automatycznie po skopiowaniu parametrów połączenia z portalu Azure), w przeciwnym razie połączenie nie weryfikuje tożsamość serwera i jest narażony na ataki "man-in--middle". Na przykład w przypadku sterownika ADO.NET te parametry połączenia mają wartość **Encrypt = True** i **TrustServerCertificate = False**. Uzyskać informacji dotyczących łączności i TLS, zobacz [zagadnienia dotyczące protokołu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
 Można również rozważyć inne sposoby szyfrowania danych:
 
@@ -39,7 +39,7 @@ Można również rozważyć inne sposoby szyfrowania danych:
 Dane odnajdywania & klasyfikacji (obecnie w wersji zapoznawczej) zapewnia zaawansowane funkcje wbudowane w bazie danych SQL Azure dla odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Wykrywanie i klasyfikowania największe poufne dane (biznesowe i finansowe, opieki zdrowotnej, dane osobowe, itp.) mogą odgrywać istotną rolę w Twojej organizacji stature ochrony informacji. Może służyć jako infrastruktury:
 
 - Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując o nietypowych dostęp do poufnych danych.
-- Kontrolowanie dostępu do i wzmacniania ochrony baz danych zawierających bardzo ważne dane.
+- Kontrolowanie dostępu do i wzmacniania zabezpieczeń, baz danych zawierającego bardzo ważne dane.
 - Pomaga spełnić wymagania dotyczące zgodności z przepisami i standardy prywatności danych.
 
 Aby uzyskać więcej informacji, zobacz [wprowadzenie odnajdywanie danych bazy danych SQL i klasyfikacji](sql-database-data-discovery-and-classification.md). 
@@ -66,7 +66,7 @@ Autoryzacja określa, co użytkownik może zrobić w usłudze Azure SQL Database
 Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (np. członkostwa w grupie lub kontekstu wykonania). Aby uzyskać więcej informacji, zobacz [Zabezpieczenia na poziomie wierszy](https://msdn.microsoft.com/library/dn765131).
 
 ### <a name="dynamic-data-masking"></a>Dynamiczne maskowanie danych 
-Baza danych SQL dane dynamiczne maskowanie ogranicza ujawnienie danych poufnych przez maskowania go użytkownikom bez uprawnień. Dane dynamiczne maskowanie automatycznie wykryje potencjalnie poufnych danych w bazie danych SQL Azure i udostępnia praktyczne zalecenia do zamaskowania te pola z minimalnym wpływem na warstwie aplikacji. Jego działanie polega na zaciemnianiu poufnych danych w wyznaczonych polach bazy danych w zestawie wyników zapytania, przy czym dane w bazie danych pozostają bez zmian. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z bazy danych SQL dane dynamiczne maskowanie](sql-database-dynamic-data-masking-get-started.md) można użyć w celu ograniczenia narażenia poufnych danych.
+Baza danych SQL dane dynamiczne maskowanie ogranicza ujawnienie danych poufnych przez maskowania go użytkownikom bez uprawnień. Dane dynamiczne maskowanie automatycznie wykryje potencjalnie poufnych danych w bazie danych SQL Azure i udostępnia praktyczne zalecenia do zamaskowania te pola z minimalnym wpływem na warstwie aplikacji. Jego działanie polega na zaciemnianiu poufnych danych w wyznaczonych polach bazy danych w zestawie wyników zapytania, przy czym dane w bazie danych pozostają bez zmian. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z bazy danych SQL dane dynamiczne maskowanie](sql-database-dynamic-data-masking-get-started.md).
 
 ## <a name="proactive-monitoring"></a>Aktywne monitorowanie
 Usługa SQL Database zabezpiecza dane, udostępniając możliwości inspekcji i wykrywania zagrożeń. 

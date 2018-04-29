@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f6d8b8773719a59ad5326196f32a69a13a9a5d34
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4c7046c335039f5bc689790aaf53f5dff65991d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: tworzenie bazy danych grafów przy użyciu języka PHP i witryny Azure Portal
 
@@ -42,24 +42,7 @@ Przed utworzeniem bazy danych grafów musisz utworzyć konto bazy danych Gremlin
 
 ## <a name="add-a-graph"></a>Dodawanie grafu
 
-Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby utworzyć bazę danych grafów. 
-
-1. Kliknij pozycję **Eksplorator danych** > **Nowy graf**.
-
-    Obszar **Dodaj graf** jest wyświetlany po prawej stronie i konieczne może być przewinięcie w prawo w celu wyświetlenia go.
-
-    ![Eksplorator danych witryny Azure Portal, strona Dodaj graf](./media/create-graph-php/azure-cosmosdb-data-explorer-graph.png)
-
-2. Na stronie **Dodaj graf** wprowadź ustawienia dla nowego grafu.
-
-    Ustawienie|Sugerowana wartość|Opis
-    ---|---|---
-    Identyfikator bazy danych|sample-database|Wprowadź *sample-database* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/ \ # ?` ani mieć spacji na końcu.
-    Identyfikator grafu|sample-graph|Wprowadź *sample-graph* jako nazwę nowej kolekcji. W przypadku nazw grafów obowiązują takie same wymagania dotyczące znaków jak dla identyfikatorów baz danych.
-    Pojemność magazynu|Stała (10 GB)|Pozostaw wartość domyślną **Stała (10 GB)**. Ta wartość to pojemność magazynu bazy danych.
-    Przepływność|400 jednostek żądania|Zmień przepływność na 400 jednostek żądania na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.
-
-3. Po wypełnieniu formularza kliknij przycisk **OK**.
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
@@ -85,7 +68,7 @@ Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API programu
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. Wszystkie fragmenty kodu pochodzą z pliku `connect.php` w folderze C:\git-samples\azure-cosmos-db-graph-php-getting-started\. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-information). 
+Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. Wszystkie fragmenty kodu pochodzą z pliku connect.php w folderze C:\git-samples\azure-cosmos-db-graph-php-getting-started\. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-information). 
 
 * Obiekt `connection` bazy danych Gremlin jest inicjowany na początku pliku `connect.php` przy użyciu obiektu `$db`.
 
@@ -122,7 +105,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
     ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, strona Klucze](./media/create-graph-php/keys.png)
 2. Otwórz plik `connect.php` i w wierszu 8 wklej wartość identyfikatora URI w lokalizacji `your_server_address`.
 
-    Inicjowanie obiektu połączenia powinno teraz wyglądać podobnie do:
+    Inicjowanie obiektu Connection powinno teraz wyglądać podobnie do poniższego kodu:
 
     ```php
     $db = new Connection([
@@ -136,13 +119,13 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
     ]);
     ```
 
-3. Jeśli konto bazy danych programu Graph zostało utworzone przed 20 grudnia 2017, zmień wartość `graphs.azure.com` w nazwie hosta na `gremlin.cosmosdb.azure.com`.
+3. Jeśli konto bazy danych programu Graph zostało utworzone przed 20 grudnia 2017 r., zmień wartość `graphs.azure.com` w nazwie hosta na `gremlin.cosmosdb.azure.com`.
 
-4. Zamień parametr `username` w obiekcie połączenia na nazwę bazy danych i nazwę grafu. Jeśli zostały użyte zalecane wartości `sample-database` i `sample-graph`, powinno to wyglądać następująco:
+4. Zamień parametr `username` w obiekcie połączenia na nazwę bazy danych i nazwę grafu. Jeśli zostały użyte zalecane wartości `sample-database` i `sample-graph`, powinno to wyglądać podobnie do poniższego kodu:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
-    Oto jak powinien teraz wyglądać cały obiekt połączenia:
+    Cały obiekt Connection powinien w tym momencie wyglądać podobnie do poniższego fragmentu kodu:
 
     ```php
     $db = new Connection([
@@ -158,7 +141,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o połączeniu i s
 
 5. W witrynie Azure Portal użyj przycisku kopiowania, aby skopiować wartość KLUCZ PODSTAWOWY, i wklej ją w lokalizacji `your_primary_key` w parametrze password.
 
-    Inicjowanie obiektu połączenia powinno teraz wyglądać podobnie do:
+    Inicjowanie obiektu Connection powinno teraz wyglądać podobnie do poniższego kodu:
 
     ```php
     $db = new Connection([
@@ -228,7 +211,7 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
     techniczne | java | 
 
     > [!NOTE]
-    > W tym przewodniku Szybki start tworzymy kolekcję niepartycjonowaną. Niemniej jednak, jeśli utworzysz kolekcję partycjonowaną poprzez określenie klucza partycji podczas tworzenia kolekcji, musisz uwzględnić klucz partycji jako klucz w każdym nowym wierzchołku. 
+    > W tym przewodniku Szybki start tworzona jest kolekcja niepartycjonowana. Niemniej jednak, jeśli utworzysz kolekcję partycjonowaną poprzez określenie klucza partycji podczas tworzenia kolekcji, musisz uwzględnić klucz partycji jako klucz w każdym nowym wierzchołku. 
 
 6. Kliknij przycisk **OK**. Może być konieczne rozszerzenie ekranu w celu wyświetlenia przycisku **OK** u dołu ekranu.
 
@@ -250,7 +233,7 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
     W miarę dodawania większej ilości danych można używać filtrów do ograniczania wyników. Domyślnie Eksplorator danych korzysta z zapytania `g.V()` w celu pobrania wszystkich wierzchołków grafu. Można je zmienić na inne [zapytanie o graf](tutorial-query-graph.md), takie jak`g.V().count()`, aby zwrócić liczbę wszystkich wierzchołków grafu w formacie JSON. W przypadku zmiany filtru zmień filtr ponownie na `g.V()` i kliknij pozycję **Zastosuj filtr**, aby ponownie wyświetlić wszystkie wyniki.
 
-12. Teraz możemy połączyć użytkowników rakesh i ashley. Upewnij się, że użytkownik **ashley** został wybrany na liście **Wyniki**, a następnie kliknij przycisk edycji obok pozycji **Cele** u dołu po prawej. Może być konieczne rozszerzenie okna w celu wyświetlenia obszaru **Właściwości**.
+12. Teraz możesz połączyć użytkowników rakesh i ashley. Upewnij się, że użytkownik **ashley** został wybrany na liście **Wyniki**, a następnie kliknij przycisk edycji obok pozycji **Cele** u dołu po prawej. Może być konieczne rozszerzenie okna w celu wyświetlenia obszaru **Właściwości**.
 
    ![Zmiana celu wierzchołka w grafie](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
 
@@ -262,7 +245,7 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
    ![Dwa wierzchołki połączone w Eksploratorze danych](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
 
-   Na tym kończy się część tego samouczka poświęcona tworzeniu zasobów. Możesz dodać do grafu kolejne wierzchołki, zmodyfikować istniejące wierzchołki lub zmienić zapytania. Teraz przejrzyjmy metryki udostępniane przez usługę Azure Cosmos DB, a następnie wyczyśćmy zasoby. 
+   Na tym kończy się część tego przewodnika Szybki start poświęcona tworzeniu zasobów. Możesz dodać do grafu kolejne wierzchołki, zmodyfikować istniejące wierzchołki lub zmienić zapytania. Teraz przejrzyjmy metryki udostępniane przez usługę Azure Cosmos DB, a następnie wyczyśćmy zasoby. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Przeglądanie umów SLA w witrynie Azure Portal
 

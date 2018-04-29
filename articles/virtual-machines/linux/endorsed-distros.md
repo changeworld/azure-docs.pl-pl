@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 8ea768c6ba8b404978b78f2cbd272f98af3fa70b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c2233ab32314655c510c8c884641293ae3325ef5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Linux na dystrybucje zatwierdzone przez platformę Azure
-Partnerzy Podaj Linux obrazów w portalu Azure Marketplace. Pracujemy nad różne społeczności Linux można dodać więcej odmian do listy dystrybucyjnej zatwierdzone. Tymczasem dystrybucji, które nie są dostępne z poziomu portalu Marketplace, zawsze przełączeniem własne Linux przez zgodnie z wytycznymi na [tworzenie i przekazywanie wirtualnego dysku twardego, który zawiera system operacyjny Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic).
+Partnerzy Podaj Linux obrazów w portalu Azure Marketplace. Pracujemy nad różne społeczności Linux można dodać więcej odmian do listy dystrybucyjnej zatwierdzone. Tymczasem dystrybucji, które nie są dostępne z poziomu portalu Marketplace, zawsze przełączeniem własne Linux przez zgodnie z wytycznymi na [tworzenie i przekazywanie wirtualnego dysku twardego, który zawiera system operacyjny Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Obsługiwane dystrybucje i wersje
 W poniższej tabeli wymieniono dystrybucje systemu Linux i wersje, które są obsługiwane na platformie Azure. Zapoznaj się [obsługę obrazów systemu Linux na platformie Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) bardziej szczegółowe informacje o pomocy technicznej dla systemów Linux i technologii typu open source na platformie Azure.

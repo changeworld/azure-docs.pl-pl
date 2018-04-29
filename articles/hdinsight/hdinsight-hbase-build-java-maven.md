@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7ec84260a72b2745630087ceac24c8c00ff3f04f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 84facb99b2264b48ede7306ae87a79605e6e8bed
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Używanie programu Maven do tworzenia aplikacji Java, które używają bazy danych HBase z systemem Windows HDInsight (Hadoop)
 Dowiedz się, jak utworzyć i kompilacji [bazy danych Apache HBase](http://hbase.apache.org/) aplikacji w języku Java za pomocą Apache Maven. Następnie użyj aplikacji w usłudze Azure HDInsight (Hadoop).
@@ -522,7 +522,7 @@ Istnieje wiele sposobów w celu przekazania pliku do klastra usługi HDInsight, 
             $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
             if(-not($sub))
             {
-                throw "No active Azure subscription found! If you have a subscription, use the Login-AzureRmAccount cmdlet to login to your subscription."
+                throw "No active Azure subscription found! If you have a subscription, use the Connect-AzureRmAccount cmdlet to login to your subscription."
             }
         }
 

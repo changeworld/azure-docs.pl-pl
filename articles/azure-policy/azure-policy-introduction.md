@@ -3,19 +3,19 @@ title: Omówienie usługi Azure Policy | Microsoft Docs
 description: Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie definicji zasad oraz zarządzanie nimi w środowisku platformy Azure.
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
+author: DCtheGeek
+ms.author: dacoulte
 ms.reviewer: nini
-ms.date: 03/29/2018
+ms.date: 04/18/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f9cd00aec025748170a6576fe3ee4dbf794edfdb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 886026f8548cf3d7416b5034995399368de8c419
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-policy"></a>Co to jest Azure Policy?
 
@@ -53,13 +53,17 @@ Usługa Azure Policy oferuje wbudowane zasady, które są domyślnie dostępne. 
 - **Wymuszaj tag i jego wartość**: ta zasada wymusza wymagany tag i jego wartość w zasobie.
 - **Niedozwolone typy zasobów**: ta zasada umożliwia określanie typów zasobów, których organizacja nie może wdrażać.
 
-Dowolną z tych zasad można przypisać za pośrednictwem witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Dowolną z tych zasad można przypisać za pośrednictwem witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia platformy Azure. Po wprowadzeniu zmian w definicji zasad ponowna ocena zasad jest przeprowadzana mniej więcej co godzinę.
 
 Aby dowiedzieć się więcej o strukturach definicji zasad, zapoznaj się z artykułem [Struktura definicji zasad](policy-definition.md).
 
 ## <a name="policy-assignment"></a>Przypisywanie zasad
 
-Przypisywanie zasad to definicja zasad, która została przypisana do określonego zakresu. Zakresem tym może być zarówno grupa zarządzania, jak i grupa zasobów. Termin *zakres* odnosi się do wszystkich grup zasobów, subskrypcji i grup zarządzania, do których przypisano definicję zasad. Przypisania zasad są dziedziczone przez wszystkie zasoby podrzędne. Tak więc jeśli zasady stosują się do grupy zasobów, stosują się do wszystkich zasobów w tej grupie zasobów. Z przypisania zasad można jednak wyłączyć zakres podrzędny. Na przykład przy zakresie subskrypcji można określić zasady, które zapobiegają tworzeniu zasobów sieciowych. Można jednak wyłączyć jedną grupę zasobów w ramach subskrypcji, która jest przeznaczona dla infrastruktury sieciowej. Dostęp do tej grupy zasobów sieciowych można przyznać użytkownikom, którym powierzono tworzenie zasobów sieciowych.
+Przypisywanie zasad to definicja zasad, która została przypisana do określonego zakresu. Zakresem tym może być zarówno grupa zarządzania, jak i grupa zasobów. Termin *zakres* odnosi się do wszystkich grup zasobów, subskrypcji i grup zarządzania, do których przypisano definicję zasad. Przypisania zasad są dziedziczone przez wszystkie zasoby podrzędne. Tak więc jeśli zasady stosują się do grupy zasobów, stosują się do wszystkich zasobów w tej grupie zasobów. Z przypisania zasad można jednak wyłączyć zakres podrzędny.
+
+Na przykład przy zakresie subskrypcji można określić zasady, które zapobiegają tworzeniu zasobów sieciowych. Można jednak wyłączyć jedną grupę zasobów w ramach subskrypcji, która jest przeznaczona dla infrastruktury sieciowej. Dostęp do tej grupy zasobów sieciowych można przyznać użytkownikom, którym powierzono tworzenie zasobów sieciowych.
+
+W innym przykładzie można przypisać zasady listy dozwolonych typów zasobów na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady (zezwalające na większą liczbę typów zasobów) w podrzędnej grupie zarządzania lub nawet bezpośrednio w subskrypcji. Jednak ten przykład nie działa, ponieważ zasady to system z wyraźnym zabranianiem. Zamiast tego należy wykluczyć podrzędną grupę zarządzania lub subskrypcję z przypisania zasad na poziomie grupy zarządzania. Następnie można przypisać mniej ograniczające zasady na poziomie podrzędnej grupy zarządzania lub subskrypcji. Jeśli zatem w wyniku zasad następuje odmowa zasobu, jedynym sposobem na zezwolenie na zasób jest zmodyfikowanie zasad odmowy.
 
 Dodatkowe informacje na temat tworzenia definicji zasad i przypisań zamieszczono w artykule [Tworzenie przypisania zasad w celu identyfikowania niezgodnych zasobów w środowisku platformy Azure](assign-policy-definition.md).
 

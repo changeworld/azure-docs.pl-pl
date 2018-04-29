@@ -1,11 +1,11 @@
 ---
-title: "Kopia zapasowa maszyny wirtualnej platformy Azure — często zadawane pytania | Microsoft Docs"
-description: "Odpowiedzi na często zadawane pytania dotyczące działania funkcji tworzenia kopii zapasowej maszyny wirtualnej platformy Azure, ograniczeń i konsekwencji zmian zasad"
+title: Kopia zapasowa maszyny wirtualnej platformy Azure — często zadawane pytania | Microsoft Docs
+description: Odpowiedzi na często zadawane pytania dotyczące działania funkcji tworzenia kopii zapasowej maszyny wirtualnej platformy Azure, ograniczeń i konsekwencji zmian zasad
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
+editor: ''
 keywords: azure vm backup, azure vm restore, backup policy
 ms.assetid: c4cd7ff6-8206-45a3-adf5-787f64dbd7e1
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 9a08495c1b395871c04c0c2b06a6efbdb4bfeaa2
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Pytania dotyczące usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure
 W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników usługi tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ Przejdź przez [obsługiwanych systemów operacyjnych](backup-azure-arm-vms-prep
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>Dlaczego nie widzę swojej maszyny wirtualnej w kreatorze konfigurowania kopii zapasowych?
 W kreatorze tworzenia kopii zapasowej Konfigurowanie usługi Kopia zapasowa Azure znajduje się tylko maszyny wirtualne, które są:
-  * Nie jest już chroniona można zweryfikować stanu kopii zapasowej maszyny wirtualnej, przechodząc do bloku maszyny Wirtualnej i sprawdzanie stanu kopii zapasowej z Menu ustawień. Dowiedz się więcej na temat [sprawdzania stanu tworzenia kopii zapasowych maszyny wirtualnej](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)
+  * Nie jest już chroniona można zweryfikować stanu kopii zapasowej maszyny wirtualnej, przechodząc do bloku maszyny Wirtualnej i sprawdzanie stanu kopii zapasowej z Menu ustawień. Dowiedz się więcej na temat [sprawdzania stanu tworzenia kopii zapasowych maszyny wirtualnej](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu)
   * Przynależność do tego samego regionu co maszyna wirtualna
 
 ## <a name="backup"></a>Tworzenie kopii zapasowych
@@ -78,7 +78,7 @@ Polecenia cmdlet programu Powershell, można znaleźć w temacie [tutaj](backup-
 
 ## <a name="manage-vm-backups"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Co się stanie po zmianie zasad kopii zapasowych na maszynach wirtualnych?
-Podczas stosowania nowej zasady na wirtualne, harmonogram i przechowywania nowych zasad jest zakończony. Jeśli przechowywania zostanie rozszerzony, istniejące punkty odzyskiwania są oznaczone zachować je zgodnie z harmonogramem nowych zasad. W przypadku przechowywania, są oznaczone do oczyszczania w ramach następnego zadania oczyszczania i usuwane. 
+Podczas stosowania nowej zasady na wirtualne, harmonogram i przechowywania nowych zasad jest zakończony. Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania zostaną oznaczone, aby przechowywać je zgodnie z nowymi zasadami. W przypadku skrócenia okresu przechowywania zostaną one oznaczone do oczyszczenia w ramach następnego zadania oczyszczania, a następnie usunięte. 
 
 ### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Jak można przenieść Maszynę wirtualną zarejestrowaniu w kopii zapasowej systemu Azure między grupami zasobów?
 Wykonaj następujące czynności, aby pomyślnie przenieść kopii zapasowej maszyny Wirtualnej do docelowej grupy zasobów 

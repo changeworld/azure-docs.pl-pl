@@ -1,13 +1,13 @@
 ---
-title: "Skrypt programu PowerShell Azure przykładowe — Dodawanie certyfikatu aplikacji do klastra | Dokumentacja firmy Microsoft"
-description: "Skrypt programu PowerShell Azure przykładowe — Dodawanie certyfikatu aplikacji do klastra usługi sieć szkieletowa usług."
+title: Przykładowy skrypt programu Azure PowerShell — dodawanie certyfikatu aplikacji do klastra | Microsoft Docs
+description: Przykładowy skrypt programu Azure PowerShell — dodawanie certyfikatu aplikacji do klastra usługi Service Fabric.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -15,32 +15,32 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: c9cf6485c2621f839b93da162e5f4d82a8d287a4
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: be097f88f774df9e4a6429af444c6c742737f4c9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Dodaj certyfikat aplikacji do klastra sieci szkieletowej usług
+# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Dodawanie certyfikatu aplikacji do klastra usługi Service Fabric
 
-Ten przykładowy skrypt tworzy certyfikat z podpisem własnym w określonej usługi Azure key vault i instaluje je na wszystkich węzłach klastra sieci szkieletowej usług. Certyfikat jest również pobiera do folderu lokalnego. Nazwa pobranego certyfikatu jest taka sama jak nazwa certyfikatu w magazynie kluczy. Dostosuj parametry zgodnie z potrzebami.
+Ten przykładowy skrypt tworzy certyfikat z podpisem własnym w określonym magazynie Azure Key Vault i instaluje go we wszystkich węzłach klastra usługi Service Fabric. Certyfikat jest również pobierany do folderu lokalnego. Nazwa pobranego certyfikatu jest taka sama jak nazwa certyfikatu w magazynie kluczy. Dostosuj parametry zgodnie z potrzebami.
 
-W razie potrzeby zainstalować program Azure PowerShell przy użyciu instrukcji w [Przewodnik programu Azure PowerShell](/powershell/azure/overview) , a następnie uruchom `Login-AzureRmAccount` można utworzyć połączenia z platformą Azure. 
+W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
 [!code-powershell[main](../../../powershell_scripts/service-fabric/add-application-certificate/add-new-application-certificate.ps1 "Add an application certificate to a cluster")]
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń: każde polecenie w tabeli łącza do dokumentacji określonego polecenia.
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [Add-AzureRmServiceFabricApplicationCertificate](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | Dodaj nowy certyfikat aplikacji do zestawu skalowania maszyn wirtualnych, które tworzą klastra.  |
+| [Add-AzureRmServiceFabricApplicationCertificate](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | Dodaj nowy certyfikat aplikacji do zestawu skalowania maszyn wirtualnych, który tworzy klaster.  |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji dotyczących modułu Azure PowerShell, zobacz [dokumentacji programu Azure PowerShell](/powershell/azure/overview).
+Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 
-Dodatkowe przykłady programu Azure Powershell dla usługi sieć szkieletowa usług Azure można znaleźć w [przykłady programu Azure PowerShell](../service-fabric-powershell-samples.md).
+Więcej przykładów programu Azure PowerShell dla usługi Azure Service Fabric można znaleźć w [przykładach programu Azure PowerShell](../service-fabric-powershell-samples.md).

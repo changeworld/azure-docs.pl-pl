@@ -1,48 +1,48 @@
 ---
-title: Instrukcje dotyczące platformy Azure — jak korzystać z innego sprzętowego modułu zabezpieczeń z zestawem SDK klienta usługi Device Provisioning na platformie Azure
-description: Instrukcje dotyczące platformy Azure — jak korzystać z innego sprzętowego modułu zabezpieczeń z zestawem SDK klienta usługi Device Provisioning na platformie Azure
+title: Instrukcje platformy Azure — Jak korzystać z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service na platformie Azure
+description: Instrukcje platformy Azure — Jak korzystać z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service na platformie Azure
 services: iot-dps
 keywords: ''
 author: yzhong94
 ms.author: yizhon
-ms.date: 03/28/2018
+ms.date: 03/30/2018
 ms.topic: hero-article
 ms.service: iot-dps
 documentationcenter: ''
 manager: ''
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0d392f4a8d935cb37b6f4cfcd69826de58b33880
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 14c9bc0dd82575783a5af7293b48f56b36110f9a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-use-different-hardware-security-modules-with-device-provisioning-service-client-sdk-for-c"></a>Jak używać różnych sprzętowych modułów zabezpieczeń z zestawem SDK klienta usługi Device Provisioning Service dla języka C
+# <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Instrukcje dotyczące korzystania z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service dla języka C
 
-W tym artykule przedstawiono sposób korzystania z różnych [sprzętowych modułów zabezpieczeń (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) przy użyciu zestawu SDK klienta usługi Device Provisioning dla języka C. Można użyć urządzenia fizycznego lub symulatora. Usługa aprowizowania obsługuje uwierzytelnianie dwóch typów mechanizmów zaświadczania: X**.**509 i modułu TPM.
+W tym artykule przedstawiono sposób korzystania z różnych [mechanizmów zaświadczania](concepts-security.md#attestation-mechanism) przy użyciu zestawu SDK klienta usługi Device Provisioning Service dla języka C. Istnieje możliwość użycia urządzenia fizycznego lub symulatora. Usługa aprowizowania obsługuje uwierzytelnianie dwóch typów mechanizmów zaświadczania: X **.** 509 i modułu TPM.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przygotuj środowisko deweloperskie zgodnie z sekcją „Prepare the development environment” (Przygotowywanie środowiska deweloperskiego) w przewodniku[Create and provision simulated device (Tworzenie i aprowizowanie symulowanego urządzenia)](./quick-create-simulated-device.md).
 
-### <a name="choose-a-hardware-security-module"></a>Wybieranie sprzętowego modułu zabezpieczeń
+### <a name="choose-an-attestation-mechanism"></a>Wybieranie mechanizmu zaświadczania
 
-Jako producent urządzenia musisz najpierw wybrać sprzętowe moduły zabezpieczeń (moduły HSM) oparte na jednym z obsługiwanych typów. Obecnie [zestaw SDK klienta usługi Deivce Provisioning dla języka C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) oferuje obsługę następujących sprzętowych modułów zabezpieczeń: 
+Jako producent urządzenia musisz najpierw wybrać mechanizm zaświadczania oparty na jednym z obsługiwanych typów. Aktualnie [zestaw SDK klienta usługi Device Provisioning Service dla języka C](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) oferuje obsługę następujących mechanizmów zaświadczania: 
 
-- [Moduł TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM to standard ustanowiony dla większości platform urządzeń z systemem Windows, a także dla kilku urządzeń z systemem Linux/Ubuntu. Jako producent urządzenia możesz wybrać ten moduł HSM, jeśli na Twoich urządzeniach działa jeden z tych systemów operacyjnych i szukasz sprawdzonego standardu dla modułów HSM. Używając mikroukładów modułów TPM, możesz tylko rejestrować każde urządzenie indywidualnie w usłudze Device Provisioning. Do celów programistycznych można użyć symulatora modułu TPM na maszynie deweloperskiej z systemem Windows lub Linux.
+- [Moduł TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM to standard ustanowiony dla większości platform urządzeń z systemem Windows, a także dla kilku urządzeń z systemem Linux/Ubuntu. Jako producent urządzenia możesz wybrać ten mechanizm zaświadczania, jeśli na Twoich urządzeniach działa jeden z tych systemów operacyjnych i szukasz sprawdzonego standardu. Używając mikroukładów modułów TPM, możesz tylko rejestrować każde urządzenie indywidualnie w usłudze Device Provisioning Service. Do celów programistycznych można użyć symulatora modułu TPM na maszynie deweloperskiej z systemem Windows lub Linux.
 
-- [X.509](https://cryptography.io/en/latest/x509/): moduły HSM oparte na X.509 oferują stosunkowo nowsze mikroukłady. W firmie Microsoft trwa również praca nad mikroukładami RIoT i DICE, które implementują certyfikaty X.509. W przypadku mikroukładów X.509 można przeprowadzić zbiorczą rejestrację w portalu. Obsługuje ona również niektóre systemy operacyjne inne niż Windows, takie jak embedOS. Dla celów programistycznych zestaw SDK klienta usługi Device Provisioning obsługuje symulator urządzeń X.509. 
+- [X.509](https://cryptography.io/en/latest/x509/): certyfikaty X.509 można przechowywać w stosunkowo nowszych mikroukładach nazywanych [sprzętowymi modułami zabezpieczeń (HSM)](concepts-security.md#hardware-security-module). W firmie Microsoft trwa również praca nad mikroukładami RIoT i DICE, które implementują certyfikaty X.509. W przypadku mikroukładów X.509 można przeprowadzić zbiorczą rejestrację w portalu. Obsługuje ona również niektóre systemy operacyjne inne niż Windows, takie jak embedOS. Dla celów programistycznych zestaw SDK klienta usługi Device Provisioning Service obsługuje symulator urządzeń X.509. 
 
-Aby uzyskać więcej informacji, zobacz [IoT Hub Device Provisioning Service security concepts (Pojęcia dotyczące zabezpieczeń usługi IoT Hub Device Provisioning)](concepts-security.md). 
+Aby uzyskać więcej informacji, zobacz [pojęcia związane z zabezpieczeniami](concepts-security.md) i [pojęcia związane z automatyczną aprowizacją](/azure/iot-dps/concepts-auto-provisioning) dotyczące usługi IoT Hub Device Provisioning Service.
 
-## <a name="enable-authentication-for-supported-hsms"></a>Włączanie uwierzytelniania obsługiwanych sprzętowych modułów zabezpieczeń
+## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>Włączanie uwierzytelniania dla obsługiwanych mechanizmów zaświadczania
 
-Aby można było zarejestrować urządzenie fizyczne lub symulator w witrynie Azure Portal, należy dla niego włączyć tryb uwierzytelniania (X**.**509 lub moduł TPM). Przejdź do folderu głównego elementu azure-iot-sdk-c. Następnie uruchom odpowiednie polecenie, w zależności od wybranego trybu uwierzytelniania:
+Aby można było zarejestrować urządzenie fizyczne lub symulator w witrynie Azure Portal, należy dla niego włączyć tryb uwierzytelniania zestawu SDK (X **.** 509 lub Moduł TPM). Przejdź do folderu głównego elementu azure-iot-sdk-c. Następnie uruchom odpowiednie polecenie, w zależności od wybranego trybu uwierzytelniania:
 
-### <a name="use-x509-with-simulator"></a>Używanie trybu X**.**509 z symulatorem
+### <a name="use-x509-with-simulator"></a>Używanie trybu X **.** 509 z symulatorem
 
-Usługa aprowizowania jest publikowana z emulatorem DICE (Device Identity Composition Engine), który generuje certyfikat X**.**509 na potrzeby uwierzytelniania urządzenia. Aby włączyć uwierzytelnianie X**.**509, uruchom następujące polecenie: 
+Usługa aprowizowania jest publikowana z emulatorem DICE (Device Identity Composition Engine), który generuje certyfikat X **.** 509 na potrzeby uwierzytelniania urządzenia. Aby włączyć uwierzytelnianie X **.** 509, uruchom następujące polecenie: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -50,9 +50,9 @@ cmake -Ddps_auth_type=x509 ..
 
 Informacje na temat sprzętu z aparatem DICE można znaleźć [tutaj](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/).
 
-### <a name="use-x509-with-hardware"></a>Używanie trybu X**.**509 ze sprzętem
+### <a name="use-x509-with-hardware"></a>Używanie trybu X **.** 509 ze sprzętem
 
-Usługa aprowizowania może być używana z trybem X**.**509 na innym sprzęcie. Do ustanowienia połączenia niezbędny jest interfejs między sprzętem i zestawem SDK. Skontaktuj się z producentem modułu HSM, aby uzyskać informacje na temat interfejsu.
+Usługa aprowizowania może być używana z trybem X **.** 509 na innym sprzęcie. Do ustanowienia połączenia niezbędny jest interfejs między sprzętem i zestawem SDK. Skontaktuj się z producentem modułu HSM, aby uzyskać informacje na temat interfejsu.
 
 ### <a name="use-tpm"></a>Używanie modułu TPM
 
@@ -139,37 +139,37 @@ Skompiluj zestaw SDK przed utworzeniem rejestracji urządzeń.
     - Usługa aprowizowania: dps_http_transport, dps_client, dps_security_client
     - Zabezpieczenia IoTHub: iothub_security_client
 
-## <a name="create-a-device-enrollment-entry-in-device-provisioning-services"></a>Tworzenie wpisu rejestracji urządzenia w usłudze Device Provisioning
+## <a name="create-a-device-enrollment-entry-in-device-provisioning-services"></a>Tworzenie wpisu rejestracji urządzenia w usłudze Device Provisioning Service
 
 ### <a name="tpm"></a>Moduł TPM
-Jeśli korzystasz z modułu TPM, postępuj zgodnie z instrukcjami z sekcji [„Create and provision a simulated device using IoT Hub Device Provisioning Service” (Tworzenie i aprowizowanie symulowanego urządzenia za pomocą usługi IoT Hub Device Provisioning)](./quick-create-simulated-device.md), aby utworzyć wpis rejestracji urządzenia w usłudze Device Provisioning i symulować pierwsze uruchomienie.
+Jeśli korzystasz z modułu TPM, postępuj zgodnie z instrukcjami z sekcji [„Create and provision a simulated device using IoT Hub Device Provisioning Service” (Tworzenie i aprowizowanie symulowanego urządzenia za pomocą usługi IoT Hub Device Provisioning Service)](./quick-create-simulated-device.md), aby utworzyć wpis rejestracji urządzenia w usłudze Device Provisioning Service i symulować pierwsze uruchomienie.
 
-### <a name="x509"></a>X**.**509
-1. Aby zarejestrować urządzenie w usłudze aprowizowania, należy zanotować klucz poręczenia i identyfikator rejestracji każdego urządzenia. Te informacje są wyświetlane w narzędziu aprowizowania dostępnym w zestawie SDK klienta. Uruchom następujące polecenie, aby wydrukować certyfikat głównego urzędu certyfikacji (dla grup rejestracji) i certyfikat osoby podpisującej (dla indywidualnej rejestracji):
+### <a name="x509"></a>X **.** 509
+1. Aby zarejestrować urządzenie w usłudze aprowizowania, należy zanotować klucz poręczenia i identyfikator rejestracji każdego urządzenia. Te informacje są wyświetlane w narzędziu aprowizowania dostępnym w zestawie SDK klienta. Uruchom następujące polecenie, aby wydrukować certyfikat głównego urzędu certyfikacji (dla grup rejestracji) i certyfikat liścia (dla indywidualnej rejestracji):
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Zaloguj się w witrynie Azure Portal, kliknij przycisk **Wszystkie zasoby** w menu po lewej stronie i otwórz swoją usługę DPS.
-   - Indywidualna rejestracja w trybie X**.**509: w bloku podsumowania usługi aprowizowania wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Indywidualne rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz pozycję **X**.**509** jako *mechanizm* zaświadczania tożsamości i przekaż certyfikat osoby podpisującej zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
-   - Grupowa rejestracja w trybie X**.**509: w bloku podsumowania usługi aprowizowania wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Grupowe rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz pozycję **X**.**509** jako *mechanizm* zaświadczania tożsamości, wprowadź nazwę grupy i nazwę certyfikacji, a następnie przekaż certyfikat głównego urzędu certyfikacji zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - Indywidualna rejestracja w trybie X **.** 509: w bloku podsumowania usługi aprowizowania wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Indywidualne rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości i przekaż certyfikat liścia zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
+   - Grupowa rejestracja w trybie X **.** 509: w bloku podsumowania usługi aprowizowania wybierz pozycję **Zarządzaj rejestracjami**. Wybierz kartę **Grupowe rejestracje** i kliknij u góry przycisk **Dodaj**. Wybierz wartość **X**.**509** dla pozycji *Mechanizm* zaświadczania tożsamości, podaj nazwę grupy i nazwę certyfikacji, a następnie przekaż certyfikat głównego urzędu certyfikacji lub pośredniczący zgodnie z wymaganiami bloku. Gdy skończysz, kliknij przycisk **Zapisz**. 
 
-## <a name="enable-authentication-for-custom-tpm-and-x509-devices-optional"></a>Włączanie uwierzytelniania urządzeń niestandardowego modułu TPM i X.509 (opcjonalnie)
+## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Włączanie uwierzytelniania urządzeń przy użyciu niestandardowego mechanizmu zaświadczania (opcjonalnie)
 
 > [!NOTE]
-> Ta sekcja ma zastosowanie tylko w przypadku urządzeń, które wymagają obsługi niestandardowej platformy lub modułu HSM, który nie jest obecnie obsługiwany przez zestaw SDK klienta usługi Device Provisioning dla języka C.
+> Ta sekcja dotyczy tylko urządzeń wymagających obsługi niestandardowej platformy lub niestandardowych mechanizmów zaświadczania, które nie są aktualnie obsługiwane przez zestaw SDK klienta usługi Device Provisioning Service dla języka C. Należy również zauważyć, że w ramach zestawu SDK skrót „HSM” jest często używany jako ogólny zamiennik pojęcia „mechanizm zaświadczania”.
 
-Najpierw musisz utworzyć niestandardowe repozytorium i bibliotekę modułów HSM:
+Najpierw należy utworzyć repozytorium i bibliotekę na potrzeby niestandardowego mechanizmu zaświadczania:
 
-1. Utwórz bibliotekę, aby uzyskać dostęp do modułu HSM. Ten projekt wymaga utworzenia biblioteki statycznej do użycia przez zestaw Device Provisioning SDK.
+1. Opracuj bibliotekę, aby uzyskać dostęp do mechanizmu zaświadczania. Ten projekt wymaga utworzenia biblioteki statycznej do użycia przez zestaw Device Provisioning SDK.
 
 2. Zaimplementuj funkcje zdefiniowane w poniższym pliku nagłówka w bibliotece: 
 
-    - W przypadku niestandardowego modułu TPM: zaimplementuj funkcje niestandardowego modułu HSM zdefiniowane w obszarze [interfejsu API TPM modułu HSM](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api).  
-    - W przypadku niestandardowego certyfikatu X.509: zaimplementuj funkcje niestandardowego modułu HSM zdefiniowane w obszarze [interfejsu API X509 modułu HSM](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api). 
+    - W przypadku niestandardowego modułu TPM zaimplementuj funkcje zdefiniowane w obszarze [interfejsu API TPM modułu HSM](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api).  
+    - W przypadku niestandardowego certyfikatu X.509 zaimplementuj funkcje zdefiniowane w obszarze [interfejsu API X509 modułu HSM](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api). 
 
-Gdy biblioteka zostanie pomyślnie skompilowana, będzie trzeba zintegrować ją z zestawem SDK klienta usługi Device Provisioning przez połączenie z biblioteką. :
+Gdy biblioteka zostanie pomyślnie skompilowana, trzeba będzie ją zintegrować z zestawem SDK klienta usługi Device Provisioning Service przez skonsolidowanie z biblioteką. :
 
-1. Określ niestandardowe repozytorium GitHub modułów HSM, ścieżkę biblioteki i jej nazwę w następującym poleceniu `cmake`:
+1. Określ niestandardowe repozytorium GitHub i bibliotekę w poleceniu `cmake`:
     ```cmd/sh
     cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=<path_and_name_of_library> <PATH_TO_AZURE_IOT_SDK>
     ```
@@ -177,13 +177,13 @@ Gdy biblioteka zostanie pomyślnie skompilowana, będzie trzeba zintegrować ją
 2. Otwórz plik rozwiązania Visual Studio skompilowany przez narzędzie CMake (`\azure-iot-sdk-c\cmake\azure_iot_sdks.sln`) i skompiluj je. 
 
     - Ten proces polega na skompilowaniu biblioteki zestawu SDK.
-    - Zestaw SDK próbuje połączyć się z niestandardowym modułem HSM zdefiniowanym w poleceniu `cmake`.
+    - Zestaw SDK spróbuje wykonać konsolidację z niestandardową biblioteką zdefiniowaną w poleceniu `cmake`.
 
-3. Uruchom przykładową aplikację „prov_dev_client_ll_sample” w obszarze „Provision_Samples” (w obszarze `\azure-iot-sdk-c\cmake\provisioning_client\samples\prov_dev_client_ll_sample`), aby sprawdzić, czy moduł HSM został prawidłowo zaimplementowany.
+3. Aby zweryfikować, czy niestandardowy mechanizm zaświadczania zaimplementowano poprawnie, uruchom przykładową aplikację „prov_dev_client_ll_sample” w obszarze „Provision_Samples” (`\azure-iot-sdk-c\cmake\provisioning_client\samples\prov_dev_client_ll_sample`).
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Łączenie z usługą IoT Hub po zakończeniu aprowizacji
 
-Po zakończeniu aprowizacji urządzenia przy użyciu usługi aprowizowania ten interfejs API nawiązuje połączenie z usługą IoT Hub w trybie uwierzytelniania modułu HSM: 
+Po zakończeniu aprowizacji urządzenia przy użyciu usługi aprowizowania ten interfejs API nawiązuje połączenie z usługą IoT Hub w określonym trybie uwierzytelniania (X **.** 509 lub Moduł TPM): 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a6a9b4d2fa0f9baa751c74e3444f44b4013265fe
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 79b84e3231886f62bf5978195562339d5c3275b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie lub usuwanie adresów IP dla interfejsu sieci platformy Azure
 
@@ -34,7 +34,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
 ## <a name="add-ip-addresses"></a>Dodaj adresy IP
@@ -129,7 +129,7 @@ Oprócz konfiguracji podstawowego adresu IP karty sieciowej może być zero lub 
 
 Następujące adresy IP można przypisać [konfiguracji IP](#ip-configurations):
 
-### <a name="private"></a>Prywatne
+### <a name="private"></a>Private
 
 Prywatne [IPv4](#ipv4) adresy umożliwiają maszynie wirtualnej do komunikowania się z innych zasobów w sieci wirtualnej lub innych połączonych sieci. Maszyny wirtualnej nie może być przekazywane ruchu przychodzącego, ani można maszyny wirtualnej komunikowania się wychodzące z prywatnej [IPv6](#ipv6) adres, z jednym wyjątkiem. Maszyny wirtualnej mogą komunikować się z usługą równoważenia obciążenia Azure przy użyciu adresu IPv6. Aby uzyskać więcej informacji, zobacz [szczegółowe informacje i ograniczenia dotyczące IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations). 
 
@@ -150,7 +150,7 @@ Poprzednie kroki, prywatnego adresu IP przypisanego do interfejsu sieciowego w s
 
 Oprócz włączenia maszyny wirtualnej do komunikowania się z innych zasobów w ramach tego samego lub połączonych sieci wirtualnych, prywatnego adresu IP umożliwia także maszyny wirtualnej do komunikowania się ruch wychodzący do Internetu. Połączenia wychodzące są źródłowego adresu sieciowego przetłumaczony przez platformę Azure nieprzewidywalne publicznego adresu IP. Aby dowiedzieć się więcej na temat usługi Azure wychodzące połączenie z Internetem, przeczytaj [Azure wychodzące połączenie z Internetem](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu. Użytkownik nie może komunikować się przychodzących prywatny adres IP maszyny wirtualnej z Internetu. Jeśli połączeń wychodzących wymagają przewidywalnej publicznego adresu IP, należy skojarzyć publicznego zasobu adresu IP do karty sieciowej.
 
-### <a name="public"></a>Publiczne
+### <a name="public"></a>Public
 
 Publiczne adresy IP przypisane przez zasób publiczny adres IP Włącz połączenia przychodzące do maszyny wirtualnej z Internetu. Połączenia wychodzące z Internetem użyć przewidywalną adresu IP. Zobacz [Opis połączeń wychodzących na platformie Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szczegółowe informacje. Może przypisać publicznego adresu IP do konfiguracji adresu IP, ale nie są wymagane. Nie przypisuj publicznego adresu IP do maszyny wirtualnej, kojarząc zasób publiczny adres IP, maszyna wirtualna może nadal komunikacji w ruch wychodzący do Internetu. W takim przypadku prywatnego adresu IP jest adres sieciowy źródła przetłumaczony przez platformę Azure nieprzewidywalne publicznego adresu IP. Aby dowiedzieć się więcej na temat zasobów publicznych adresów IP, zobacz [publicznego adresu IP zasobu adresu](virtual-network-public-ip-address.md).
 

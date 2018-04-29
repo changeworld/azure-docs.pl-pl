@@ -1,23 +1,23 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z FreshGrade | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i FreshGrade."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i FreshGrade.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f9cdf73643a8aa18506e59eff513b98282f60832
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4062f7c7a0f789cef6d0c415d73127d13e646f7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Samouczek: Integracji Azure Active Directory z FreshGrade
 
@@ -103,66 +103,41 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Konfigurowanie rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_samlbase.png)
 
 3. Na **FreshGrade domeny i adres URL** sekcji, wykonaj następujące czynności:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
+    a. W **adres URL logowania** tekstowym, wpisz adres URL za pomocą następujących wzorców:
       | |
       |--|
-      | `https://<subdomain>.freshgrade.com/login` |    
+      | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
-    b. W **identyfikator** tekstowym, wpisz adres URL za pomocą następujących wzorców: 
+    b. W **identyfikator** tekstowym, wpisz adres URL za pomocą następujących wzorców:
       | |
       |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |      
+      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
       | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
 
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta FreshGrade](mailTo:support@freshgrade.com) uzyskać te wartości. 
- 
+    > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta FreshGrade](mailTo:support@freshgrade.com) uzyskać te wartości.
 
-
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_certificate.png) 
-
+4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_metadataurl.png)
+     
 5. Kliknij przycisk **zapisać** przycisku.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_general_400.png)
 
 6. Na **konfiguracji FreshGrade** , kliknij przycisk **skonfigurować FreshGrade** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png)
 
-7. Aby wygenerować **metadanych** adres url, wykonaj następujące czynności:
-
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpointicon.png)
-
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **FreshGrade** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-8. Aby skonfigurować logowanie jednokrotne w **FreshGrade** stronie, musisz wysłać **adres URL metadanych** i **SAML pojedynczy znak na adres URL usługi** do [FreshGrade zespołem pomocy technicznej](mailTo:support@freshgrade.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. Aby skonfigurować logowanie jednokrotne w **FreshGrade** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** i **SAML pojedynczy znak na adres URL usługi** do [ Zespołem pomocy technicznej FreshGrade](mailTo:support@freshgrade.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
@@ -236,7 +211,7 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka FreshGrade w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane do aplikacji FreshGrade.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: hero-article
-ms.date: 01/29/2018
+ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: aca9f822bf3fd3b26e554240a4fee2474b89143d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cc0c26d83794cfb0b398e668ae89e268901df345
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>Wdrażanie pakietów usług SQL Server Integration Services na platformie Azure
 Ten samouczek zawiera instrukcje aprowizacji środowiska Azure SSIS Integration Runtime (IR) w usłudze Azure Data Factory przy użyciu witryny Azure Portal. Następnie możesz za pomocą narzędzi SQL Server Data Tools lub programu SQL Server Management Studio wdrożyć pakiety usług SQL Server Integration Services (SSIS) w tym środowisku uruchomieniowym na platformie Azure. Aby uzyskać informacje koncepcyjne dotyczące środowisk Azure SSIS IR, zobacz [Omówienie środowiska Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
@@ -41,7 +41,7 @@ W tym samouczku wykonasz następujące czynności:
 
 > [!NOTE]
 > - Fabrykę danych w wersji 2 możesz utworzyć w następujących regionach: Wschodnie stany USA, Wschodnie stany USA 2, Azja Południowo-Wschodnia i Europa Zachodnia. 
-> - Środowisko Azure-SSIS IR możesz utworzyć w następujących regionach: Wschodnie stany USA, Wschodnie stany USA 2, Środkowe stany USA, Europa Północna, Europa Zachodnia i Australia Wschodnia. 
+> - Środowisko Azure-SSIS IR możesz utworzyć w następujących regionach: Wschodnie stany USA, Wschodnie stany USA 2, Środkowe stany USA, Zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Południowe Zjednoczone Królestwo i Australia Wschodnia. 
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
@@ -128,7 +128,7 @@ W tym samouczku wykonasz następujące czynności:
    >
    > Usługa Data Factory łączy się z bazą danych SQL Azure w celu przygotowania katalogu usług SSIS (bazy danych SSISDB). Skrypt konfiguruje także uprawnienia i ustawienia sieci wirtualnej, jeśli je określono. Ponadto przyłącza nowe wystąpienie środowiska Azure SSIS Integration Runtime do sieci wirtualnej.
    > 
-   > Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR instalowany jest również pakiet Azure Feature Pack dla usług SSIS i pakiet redystrybucyjny programu Access. Te składniki zapewniają łączność z plikami programów Excel i Access oraz z różnymi źródłami danych platformy Azure (oprócz źródeł danych obsługiwanych przez wbudowane składniki). W tej chwili nie ma możliwości zainstalowania składników innych firm dla usług SSIS. (To ograniczenie dotyczy także składników innych firm dostarczanych przez firmę Microsoft, takich jak składniki Oracle i Teradata firmy Attunity oraz składniki SAP BI).
+   > Podczas aprowizowania wystąpienia środowiska Azure-SSIS IR instalowany jest również pakiet Azure Feature Pack dla usług SSIS i pakiet redystrybucyjny programu Access. Te składniki zapewniają łączność z plikami programów Excel i Access oraz z różnymi źródłami danych platformy Azure (oprócz źródeł danych obsługiwanych przez wbudowane składniki). Możesz też zainstalować dodatkowe składniki. Aby uzyskać więcej informacji, zobacz [Niestandardowa konfiguracja środowiska Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 7. Na karcie **Połączenia** w razie potrzeby przełącz na opcję **Środowiska Integration Runtime**. Wybierz pozycję **Odśwież**, aby odświeżyć stan. 
 

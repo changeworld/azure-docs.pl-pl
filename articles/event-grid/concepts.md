@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.author: babanisa
-ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e5499fca98118de6ef8e08c8ce278b90520425e6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event siatki
 
@@ -20,7 +20,7 @@ Główne pojęcia w siatce zdarzeń Azure są:
 
 ## <a name="events"></a>Zdarzenia
 
-Zdarzenie jest najmniejsza ilość danych opisujący pełni coś się stało w systemie.  Każde zdarzenie zawiera typowe informacje, takie jak: źródło zdarzenia, czas zdarzenia miały miejsce i unikatowym identyfikatorem.  Każde zdarzenie ma również informacje, na które jest tylko istotne dla określonego typu zdarzenia. Na przykład zdarzenia o nowy plik tworzony w usłudze Azure Storage zawiera szczegółowe informacje o pliku, takie jak `lastTimeModified` wartość. Lub zdarzenia o ponowny rozruch maszyny wirtualnej zawiera nazwę maszyny wirtualnej i przyczynę ponownego uruchomienia. Każde wydarzenie jest ograniczony do 64 KB danych.
+Zdarzenie jest najmniejsza ilość danych opisujący pełni coś się stało w systemie. Każde zdarzenie zawiera typowe informacje, takie jak: źródło zdarzenia, czas zdarzenia miały miejsce i unikatowym identyfikatorem. Każde zdarzenie ma również informacje, na które jest tylko istotne dla określonego typu zdarzenia. Na przykład zdarzenia o nowy plik tworzony w usłudze Azure Storage zawiera szczegółowe informacje o pliku, takie jak `lastTimeModified` wartość. Lub zdarzenia o ponowny rozruch maszyny wirtualnej zawiera nazwę maszyny wirtualnej i przyczynę ponownego uruchomienia. Każde wydarzenie jest ograniczony do 64 KB danych.
 
 ## <a name="event-sourcespublishers"></a>Wydawcy źródła zdarzeń
 
@@ -32,7 +32,7 @@ Wydawcy kategoryzowanie zdarzeń do tematów. Temat zawiera punkt końcowy, gdzi
 
 System tematy dotyczą wbudowanych udostępnionego przez usługi Azure. Tematy niestandardowe są tematy innych firm i aplikacji.
 
-Podczas projektowania aplikacji, należy utworzyć niestandardowego tematu dla każdej kategorii powiązanych zdarzeń. Rozważmy na przykład aplikacja, która wysyła zdarzenia związane z modyfikowanie kont użytkowników i przetwarzania zamówienia. Jest mało prawdopodobne, wszelkie obsługi zdarzeń oczekuje, że oba rodzaje zdarzeń. Utwórz dwa tematy niestandardowych i pozwól subskrybować ten interesującego ich obsługi zdarzeń. Podczas subskrybowania niestandardowego tematu, program obsługi zdarzeń można filtrować według typu zdarzenia.
+W przypadku projektowania aplikacji, istnieje elastyczność podczas podejmowania decyzji o ile tematy, aby utworzyć. W przypadku dużych rozwiązaniach utworzyć niestandardowego tematu dla każdej kategorii powiązanych zdarzeń. Rozważmy na przykład aplikacja, która wysyła zdarzenia związane z modyfikowanie kont użytkowników i przetwarzania zamówienia. Jest mało prawdopodobne, wszelkie obsługi zdarzeń oczekuje, że oba rodzaje zdarzeń. Utwórz dwa tematy niestandardowych i pozwól subskrybować ten interesującego ich obsługi zdarzeń. Dla małych rozwiązań można wybrać do wysłania wszystkich zdarzeń do jednego tematu. Typy zdarzeń, które mają można filtrować zdarzenia subskrybentów.
 
 ## <a name="event-subscriptions"></a>Subskrypcja zdarzeń
 
@@ -40,7 +40,7 @@ Subskrypcję nakazuje siatki zdarzeń na zdarzenia na temat otrzymywać jest sub
 
 ## <a name="event-handlers"></a>Uchwyty zdarzeń
 
-Z perspektywy siatki zdarzeń program obsługi zdarzeń jest miejscem wysyłania zdarzenia. Program obsługi ma niektórych dalszych kroków w celu przetworzenia zdarzenia.  Siatka zdarzeń obsługuje wiele typów subskrybenta. W zależności od typu subskrybenta siatki zdarzeń wykonuje różne mechanizmy gwarantujące dostarczania zdarzenia.  Dla programów obsługi zdarzeń elementu webhook HTTP, zdarzenie jest ponawiana dopóki obsługi zwraca kod stanu `200 – OK`. Dla kolejki magazynu Azure zdarzenia są ponawiana dopóki usługa kolejki jest może pomyślnie przetworzyć wypychania wiadomości do kolejki.
+Z perspektywy siatki zdarzeń program obsługi zdarzeń jest miejscem wysyłania zdarzenia. Program obsługi ma niektórych dalszych kroków w celu przetworzenia zdarzenia. Siatka zdarzeń obsługuje wiele typów subskrybenta. W zależności od typu subskrybenta siatki zdarzeń wykonuje różne mechanizmy gwarantujące dostarczania zdarzenia. Dla programów obsługi zdarzeń elementu webhook HTTP, zdarzenie jest ponawiana dopóki obsługi zwraca kod stanu `200 – OK`. Dla kolejki magazynu Azure zdarzenia są ponawiana dopóki usługa kolejki jest może pomyślnie przetworzyć wypychania wiadomości do kolejki.
 
 ## <a name="filters"></a>Filtry
 

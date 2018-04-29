@@ -1,11 +1,11 @@
 ---
-title: "Umożliwia dostęp do usługi Azure Data Lake Store zarządzane tożsamości usługi dla maszyny Wirtualnej systemu Linux"
-description: "Samouczek przedstawiający sposób użycia zarządzane usługi tożsamości (MSI) dla maszyny Wirtualnej systemu Linux można uzyskać dostępu do usługi Azure Data Lake Store."
+title: Umożliwia dostęp do usługi Azure Data Lake Store zarządzane tożsamości usługi dla maszyny Wirtualnej systemu Linux
+description: Samouczek przedstawiający sposób użycia zarządzane usługi tożsamości (MSI) dla maszyny Wirtualnej systemu Linux można uzyskać dostępu do usługi Azure Data Lake Store.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: bef549a0cb8a876bbf8fbf281a6c2d1d489736af
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8b7e6cbd4bc7cfef349e9cebd9e4db537701a877
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Umożliwia dostęp do usługi Azure Data Lake Store zarządzane tożsamości usługi dla maszyny Wirtualnej systemu Linux
 
@@ -58,16 +58,13 @@ W tym samouczku utworzymy nową maszynę Wirtualną systemu Linux. Można równi
 
 ## <a name="enable-msi-on-your-vm"></a>Włącz MSI na maszynie Wirtualnej
 
-MSI dla maszyny wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności wprowadzone poświadczenia w kodzie. Włączanie MSI instaluje rozszerzenia maszyny Wirtualnej MSI na maszynie Wirtualnej, i umożliwia korzystanie z pliku MSI usługi Azure Resource Manager.  
+MSI maszyny Wirtualnej umożliwia pobieranie tokenów dostępu z usługi Azure AD bez konieczności umieścić poświadczeń w kodzie. Włączanie zarządzania tożsamości usługi na maszynie Wirtualnej, wykonuje dwie czynności: rejestrów maszyny Wirtualnej z usługi Azure Active Directory do utworzenia zarządzanej tożsamości, a konfiguruje tożsamości na maszynie Wirtualnej.
 
 1. Aby uzyskać **maszyny wirtualnej**, wybierz maszynę wirtualną, którą chcesz włączyć MSI.
 2. W okienku po lewej stronie wybierz **konfiguracji**.
 3. Zostanie wyświetlony **tożsamość usługi zarządzanej**. Aby zarejestrować i włączyć MSI, wybierz **tak**. Jeśli chcesz ją wyłączyć, wybierz **nr**.
    ![Wybór "Rejestrowanie w usłudze Azure Active Directory"](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Wybierz pozycję **Zapisz**.
-5. Jeśli chcesz sprawdzić, które rozszerzenia znajdują się na tej maszynie Wirtualnej systemu Linux, wybierz **rozszerzenia**. Po włączeniu MSI **ManagedIdentityExtensionforLinux** pojawią się na liście.
-
-   ![Lista rozszerzeń](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udziel dostępu maszyny Wirtualnej do usługi Azure Data Lake Store
 
@@ -105,7 +102,7 @@ Aby wykonać te kroki, należy klient SSH. Jeśli korzystasz z systemu Windows, 
 3. W oknie terminalu przy użyciu zwinięcie, Utwórz żądanie lokalnego punktu końcowego MSI, aby uzyskać token dostępu dla usługi Data Lake Store systemu plików. Identyfikator zasobu usługi Data Lake Store jest "https://datalake.azure.net/".  Należy dołączyć końcowy ukośnik w identyfikator zasobu.
     
    ```bash
-   curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   
+   curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
    ```
     
    Odpowiedź oznaczająca Powodzenie zwraca tokenu dostępu, którego używasz do uwierzytelniania do usługi Data Lake Store:

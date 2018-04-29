@@ -3,7 +3,7 @@ title: Analiza zdarzeń sieci szkieletowej usług Azure z analizy dzienników | 
 description: Więcej informacji na temat wizualizacji i analizowania zdarzeń za pomocą analizy dzienników dla monitorowania i diagnostyki klastrów sieci szkieletowej usług Azure.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,68 +12,102 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 290b1d594cc1f874bcfdd0cef728fc78af96f702
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/16/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 8efbc1d400f1d32e6aee2c1e2d78847bea786940
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analiza zdarzeń i wizualizacji z analizy dzienników
 
-Rozwiązania do zarządzania platformy Azure to zbiór usług zarządzania, które pomagają w monitorowania i diagnostyki dla aplikacji i usług hostowanych w chmurze. Aby uzyskać bardziej szczegółowe omówienie analizy dzienników, jakie oferuje, przeczytaj [co to jest analiza dziennika?](../operations-management-suite/operations-management-suite-overview.md)
+Analiza dzienników, znanej także jako OMS (Operations Management Suite), to zbiór usług zarządzania, które pomagają w monitorowania i diagnostyki dla aplikacji i usług hostowanych w chmurze. W tym artykule opisano sposób uruchamiania kwerend w analizy dzienników, aby uzyskać wgląd i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
+
+* Jak rozwiązywać zdarzenia kondycji?
+* Jak sprawdzić, gdy węzeł ulegnie awarii?
+* Jak sprawdzić, czy Moja aplikacja usług ma została zatrzymana lub uruchomiona?
 
 ## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
 
-Analiza dzienników zbiera dane z zarządzanych zasobów, włącznie z tabeli magazynu systemu Azure lub agenta i przechowuje ją w centralnym repozytorium. Dane można następnie używana do analizy, alerty i wizualizacji lub dodatkowe eksportowanie. Analiza dzienników obsługuje zdarzeń, danych wydajności lub innych danych niestandardowych.
+Analiza dzienników zbiera dane z zarządzanych zasobów, włącznie z tabeli magazynu systemu Azure lub agenta i przechowuje ją w centralnym repozytorium. Dane można następnie używana do analizy, alerty i wizualizacji lub dodatkowe eksportowanie. Analiza dzienników obsługuje zdarzeń, danych wydajności lub innych danych niestandardowych. Zapoznaj się z [kroki, aby skonfigurować rozszerzenia diagnostyki w celu agregowania zdarzeń](service-fabric-diagnostics-event-aggregation-wad.md) i [kroki, aby utworzyć obszaru roboczego analizy dzienników można odczytać ze zdarzeń w magazynie](service-fabric-diagnostics-oms-setup.md) się upewnić, że dane jest otrzymywanych analizy dzienników .
 
-Po skonfigurowaniu analizy dzienników mają dostęp do określonego *obszaru roboczego analizy dzienników*, z którym danych można wykonać zapytania lub wizualizowane w pulpitach nawigacyjnych.
+Po odebraniu danych przez analizy dzienników, platforma Azure ma kilka *rozwiązań do zarządzania* , które są opakowaniach jednostkowych rozwiązań do przychodzących danych, dostosować, tak aby kilka scenariuszy monitorowania. Obejmują one *usługi sieć szkieletowa Analytics* rozwiązania i *kontenery* rozwiązania, które są najbardziej odpowiednie dwóch te Diagnostyka i monitorowanie w przypadku używania klastrów sieci szkieletowej usług. W tym artykule opisano sposób użycia rozwiązania analizy sieci szkieletowej usług, który jest tworzony z obszaru roboczego.
 
-Po odebraniu danych przez analizy dzienników, platforma Azure ma kilka *rozwiązań do zarządzania* , które są opakowaniach jednostkowych rozwiązań do przychodzących danych, dostosować, tak aby kilka scenariuszy monitorowania. Obejmują one *usługi sieć szkieletowa Analytics* rozwiązania i *kontenery* rozwiązania, które są najbardziej odpowiednie dwóch te Diagnostyka i monitorowanie w przypadku używania klastrów sieci szkieletowej usług. Istnieje kilka innych oraz które warto eksploracji i analizy dzienników umożliwia również tworzenie rozwiązań niestandardowych, które można uzyskać więcej informacji [tutaj](../operations-management-suite/operations-management-suite-solutions.md). W tym samym obszarze roboczym analizy dzienników, obok analizy dzienników można skonfigurować każdego rozwiązania, które chcesz użyć dla klastra. Obszary robocze umożliwiają dla niestandardowych pulpitów nawigacyjnych i wizualizacja danych i modyfikacji danych, które chcesz gromadzenie i przetwarzanie i analizowanie danych.
+## <a name="access-the-service-fabric-analytics-solution"></a>Dostęp do rozwiązania analizy sieci szkieletowej usług
 
-## <a name="setting-up-a-log-analytics-workspace-with-the-service-fabric-analytics-solution"></a>Konfigurowanie obszaru roboczego analizy dzienników z rozwiązania analizy sieci szkieletowej usług
-Zaleca się, że obejmują rozwiązania usługi sieci szkieletowej w obszarze roboczym analizy dzienników — zawiera pulpit nawigacyjny, który zawiera różne kanały dzienników przychodzące z poziomu platformy i aplikacji, a także możliwość wykonywania kwerend platformy Service Fabric dzienniki. W tym miejscu jest stosunkowo proste rozwiązania sieci szkieletowej usługi wygląd, z jednej aplikacji wdrożonych w klastrze:
+1. Przejdź do grupy zasobów, w której utworzono rozwiązania analizy sieci szkieletowej usług. Wybierz zasób **ServiceFabric\<nameOfOMSWorkspace\>**  i przejdź do strony Przegląd.
 
-![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
+2. Na stronie przeglądu kliknij łącze u góry, aby przejść do portalu OMS
 
-Zobacz [Konfigurowanie analizy dzienników](service-fabric-diagnostics-oms-setup.md) rozpocząć pracę z tym dla klastra.
+    ![Łącze do portalu OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-portal-link.png)
 
-## <a name="using-the-oms-agent"></a>Za pomocą agenta pakietu OMS
+3. Jesteś teraz w portalu OMS i można wyświetlić rozwiązania, które aktywowano. Kliknij na wykresie zatytułowany sieci szkieletowej usług (pierwszy obraz poniżej) do pobrania podjąć w celu rozwiązania sieci szkieletowej usług (drugi obraz poniżej)
 
-Jest zalecane, aby użyć EventFlow i WAD jako rozwiązania agregacji, ponieważ pozwalają one na bardziej podejściu Diagnostyka i monitorowanie. Na przykład jeśli chcesz zmienić Twoje dane wyjściowe z EventFlow wymaga nie zmieniono Twojego rzeczywiste Instrumentacji tylko prostą modyfikację do pliku konfiguracji. Jeśli jednak użytkownik zdecyduje się inwestycji w przy użyciu analizy dzienników, należy skonfigurować [agent pakietu OMS](../log-analytics/log-analytics-windows-agent.md). Należy też używać agent pakietu OMS podczas wdrażania kontenerów do klastra, zgodnie z opisem poniżej. 
+    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-workspace-all-solutions.png)
 
-HEAD za pośrednictwem do [dodać do klastra Agent pakietu OMS](service-fabric-diagnostics-oms-agent.md) dotyczące kroków związanych z tym.
+    ![Rozwiązanie rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new.png)
 
-Zalety tego są następujące:
+Powyższy obraz jest stroną główną rozwiązania analizy sieci szkieletowej usług. Jest to widok miniatur, co się dzieje w klastrze. Jeśli włączono diagnostyki po utworzeniu klastra można przejrzeć zdarzenia dla 
 
-* Bardziej rozbudowane dane po stronie liczników i metryki wydajności
-* Łatwa w konfigurowaniu metryki zbieranych z klastra i bez konieczności aktualizacji konfiguracji sieci klastra. Zmiany ustawień agenta może odbywać się w portalu OMS i do dopasowania ustawień konfiguracji niezbędnych do automatycznego uruchomienia agenta. Aby skonfigurować agenta pakietu OMS do pobrania konkretnych licznikach wydajności, przejdź do obszaru roboczego **strona główna > Ustawienia > danych > liczników wydajności systemu Windows** i wybierz dane, które chcesz wyświetlić zebrane
-* Dane zostaną wyświetlone szybciej niż musi być przechowywany przed odbierany przez analizy dzienników
-* Monitorowanie kontenery jest znacznie łatwiejsze, ponieważ jego mogą odbierać dzienniki docker (stdout, stderr) oraz statystyka (metryki wydajności na poziomach kontenera i węzła)
+* [Kanał operacyjne](service-fabric-diagnostics-event-generation-operational.md): operacje wyższego poziomu, które wykonuje platformy Service Fabric (kolekcja usługi systemowe).
+* [Reliable Actors zdarzeń modelu programowania](service-fabric-reliable-actors-diagnostics.md)
+* [Niezawodne usługi zdarzeń modelu programowania](service-fabric-reliable-services-diagnostics.md)
 
-Główne w tym miejscu to, ponieważ agent zostanie wdrożony w klastrze z wszystkich aplikacji, może wystąpić pewne wpływ na wydajność aplikacji w klastrze.
+>[!NOTE]
+>Oprócz operacyjne kanału bardziej szczegółowe zdarzenia systemowe mogą być zbierane przez [aktualizowania konfiguracji rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
 
-## <a name="monitoring-containers"></a>Kontenery monitorowania
+### <a name="view-operational-events-including-actions-on-nodes"></a>Wyświetl zdarzenia operacyjne łącznie z czynności w węzłach
 
-Podczas wdrażania kontenerów do klastra usługi sieć szkieletowa, zaleca się, że klaster został skonfigurowany z agentem pakietu OMS i czy rozwiązania kontenery został dodany do obszaru roboczego analizy dzienników, aby włączyć monitorowanie i diagnostyki. Oto, jak wygląda rozwiązania kontenery w obszarze roboczym:
+1. Na stronie usługi sieć szkieletowa Analytics w portalu OMS kliknij na wykresie dla kanału działa
 
-![Pulpit nawigacyjny podstawowe OMS](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Kanał operacyjne rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
 
-Agent umożliwia zbieranie kilka dzienników specyficzne dla kontenera, które można wykonać zapytania w analizy dzienników, lub używany do wizualizowanego wskaźników. Typy dziennika, które są zbierane są:
+2. Kliknij przycisk tabeli, aby wyświetlić zdarzenia na liście. Gdy w tym miejscu zobaczysz wszystkich zdarzeń systemowych, które zostały zebrane. Odwołania są one z WADServiceFabricSystemEventsTable na koncie magazynu Azure, a podobnie reliable services i zdarzeń podmiotów, które widać obok są z tych tabel odpowiednich.
+    
+    ![Kanał operacyjny kwerendy OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
 
-* ContainerInventory: zawiera informacje o lokalizacji kontenera, nazwy i obrazów
-* ContainerImageInventory: informacje o wdrożonej obrazów, w tym identyfikatory lub rozmiary
-* ContainerLog: dzienniki błędu, dzienniki docker (stdout itp.) i innych pozycji
-* ContainerServiceLog: docker demon poleceń, które zostały uruchomione
-* O wydajności: liczniki wydajności w tym kontenerze procesora cpu, pamięć, ruch sieciowy na dysku We/Wy i metryki niestandardowe z maszyn hosta
+Można kliknąć Lupa po lewej stronie i używać języka kwerend Kusto można znaleźć, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane w węzłach w klastrze, używając następujące zapytanie. Identyfikatory zdarzeń, poniżej znajdują się w [dotyczące zdarzeń operacyjnych kanału](service-fabric-diagnostics-event-generation-operational.md)
 
-[Monitorowanie kontenery z analizy dzienników](service-fabric-diagnostics-oms-containers.md) opisano kroki wymagane do skonfigurowania kontenera monitorowania dla klastra. Aby dowiedzieć się więcej o rozwiązaniu kontenery analizy dzienników, zapoznaj się ich [dokumentacji](../log-analytics/log-analytics-containers.md).
+```kusto
+ServiceFabricOperationalEvent
+| where EventId < 25627 and EventId > 25619 
+```
+
+Umożliwia wysyłanie zapytań o wiele więcej pól, takich jak określonych węzłów (komputer) w usłudze system (TaskName).
+
+### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Usługa widoku sieci szkieletowej usług niezawodnych i aktora zdarzenia
+
+1. Na stronie usługi sieć szkieletowa Analytics w portalu OMS kliknij wykres dla niezawodne usługi
+
+    ![Niezawodne usługi rozwiązania rz OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
+
+2. Kliknij przycisk tabeli, aby wyświetlić zdarzenia na liście. Tutaj można zobaczyć zdarzenia z niezawodne usługi. Widoczny różnych zdarzeń dla runasync usługi zostanie rozpoczęte i zakończone, zwykle nastąpi na wdrożenia i uaktualnienia. 
+
+    ![OMS zapytania niezawodne usługi](media/service-fabric-diagnostics-event-analysis-oms/oms-query-reliable-services.png)
+
+W podobny sposób można wyświetlać zdarzenia niezawodnego aktora. Aby skonfigurować więcej szczegółowych informacji o zdarzeniach dla elementów reliable actors, musisz zmienić `scheduledTransferKeywordFilter` w pliku config diagnostycznych rozszerzenia (pokazana poniżej). Szczegółowe informacje o wartości te są w [niezawodnej złośliwych użytkowników dotyczące zdarzeń](service-fabric-reliable-actors-diagnostics.md#keywords)
+
+```json
+"EtwEventSourceProviderConfiguration": [
+                {
+                    "provider": "Microsoft-ServiceFabric-Actors",
+                    "scheduledTransferKeywordFilter": "1",
+                    "scheduledTransferPeriod": "PT5M",
+                    "DefaultEvents": {
+                    "eventDestination": "ServiceFabricReliableActorEventTable"
+                    }
+                },
+```
+
+Język kwerendy Kusto jest zaawansowanym. Inne przydatne zapytanie można uruchamiać jest aby dowiedzieć się węzły, które generują najwięcej zdarzeń. Zapytanie na poniższym zrzucie ekranu wyświetla zagregowane z określonej usługi i węzła zdarzeń niezawodne usługi
+
+![Zdarzenia OMS na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms-query-events-per-node.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaj się z następujących narzędzi analizy dzienników i opcji, aby dostosować obszar roboczy do potrzeb:
-
-* W przypadku klastrów lokalnymi analizy dzienników oferuje bramy (do przodu serwer Proxy HTTP), która może służyć do wysyłania danych do analizy dzienników. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z analizy dzienników przy użyciu bramy OMS](../log-analytics/log-analytics-oms-gateway.md)
-* Konfigurowanie analizy dzienników, aby skonfigurować [automatycznego alerty](../log-analytics/log-analytics-alerts.md) do pomocy w wykrywaniu i Diagnostyka
+* Aby włączyć monitorowanie, tj. liczniki wydajności infrastruktury, przejdź do [Dodawanie agent pakietu OMS](service-fabric-diagnostics-oms-agent.md). Agent zbiera dane liczników wydajności i dodaje je do swojego istniejącego obszaru roboczego.
+* W przypadku klastrów lokalnymi OMS oferuje bramy (do przodu serwer Proxy HTTP), która może służyć do wysyłania danych z usługą OMS. Dowiedz się więcej o tym, że w [łączenia komputerów bez dostępu do Internetu z usługą OMS przy użyciu bramy OMS](../log-analytics/log-analytics-oms-gateway.md)
+* Skonfiguruj OMS, aby skonfigurować [automatycznego alerty](../log-analytics/log-analytics-alerts.md) ułatwiających wykrywania i Diagnostyka
 * Pobierz zapoznaniu się z [wyszukiwania i badania dziennika](../log-analytics/log-analytics-log-searches.md) funkcje dostępne w ramach analizy dzienników
+* Uzyskać bardziej szczegółowy przegląd analizy dzienników, jakie oferuje, przeczytaj [co to jest analiza dziennika?](../operations-management-suite/operations-management-suite-overview.md)

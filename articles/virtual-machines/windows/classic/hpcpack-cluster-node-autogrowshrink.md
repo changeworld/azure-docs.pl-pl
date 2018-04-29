@@ -1,10 +1,10 @@
 ---
-title: "Węzły klastra skalowania automatycznego HPC Pack | Dokumentacja firmy Microsoft"
-description: "Automatycznie zwiększyć lub zmniejszyć liczbę węzłów obliczeniowych klastra HPC Pack na platformie Azure"
+title: Węzły klastra skalowania automatycznego HPC Pack | Dokumentacja firmy Microsoft
+description: Automatycznie zwiększyć lub zmniejszyć liczbę węzłów obliczeniowych klastra HPC Pack na platformie Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: 
+manager: ''
 editor: tysonn
 ms.assetid: 38762cd1-f917-464c-ae5d-b02b1eb21e3f
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 4a2350183bc0cb9360e9315cd8a351be20b66584
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>Automatycznie zwiększyć lub zmniejszyć zasobów klastra HPC Pack na platformie Azure zgodnie z obciążenie klastra
 Jeśli wdrażania platformy Azure "serii" węzłów w klastrze HPC Pack lub utworzyć klaster HPC Pack w maszynach wirtualnych platformy Azure, możesz sposób, aby automatycznie zwiększać i zmniejszać zasoby klastra, takie jak węzłów lub rdzeni w zależności od obciążenia w klastrze. Skalowanie zasobów klastra w ten sposób pozwala na bardziej efektywnie korzystać z zasobów platformy Azure i kontrolę kosztów ich.
@@ -50,13 +50,13 @@ Obecnie tylko automatycznie można zwiększyć lub zmniejszyć węzły obliczeni
     ```powershell
         cd $env:CCP_HOME\bin
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     ```
         
     Jeśli konto użytkownika należy do więcej niż jednej dzierżawy usługi Azure Active Directory lub subskrypcji platformy Azure, można uruchomić następujące polecenie, aby wybrać poprawny dzierżawy i subskrypcję:
   
     ```powershell
-        Login-AzureRMAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
+        Connect-AzureRmAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
     ```     
        
     Uruchom następujące polecenie, aby wyświetlić aktualnie wybranej dzierżawy i subskrypcji:
@@ -186,19 +186,19 @@ Domyślnie **SoaJobGrowThreshold** ustawiono 50000 i **SoaRequestsPerCore** usta
 * **HPC Pack 2012 R2 Update 1 lub nowszym klastra** - **AzureAutoGrowShrink.ps1** skryptów jest zainstalowany w folderze % CCP_HOME % bin. Węzła głównego klastra może być wdrożona lokalnie lub w maszynie Wirtualnej platformy Azure. Zobacz [Konfigurowanie klastra hybrydowego pakietem HPC](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) rozpocząć pracę z węzłem głównym lokalnymi i węzły platformy Azure "serii". Zobacz [skrypt wdrożenia HPC Pack IaaS](hpcpack-cluster-powershell-script.md) szybkie wdrożenie klastra HPC Pack w maszynach wirtualnych platformy Azure lub użyj [szablonie Szybki Start Azure](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/).
 * **Program Azure PowerShell 1.4.0** -skrypt zależy od obecnie tę konkretną wersję programu Azure PowerShell.
 * **Dla klastra przy użyciu platformy Azure serii węzłów** -uruchomić skrypt na komputerze klienckim, na których zainstalowano pakiet HPC lub w węźle głównym. Jeśli uruchomiony na komputerze klienckim, upewnij się, że ustawienia zmiennej $env: CCP_SCHEDULER, aby wskazywał węzła głównego. Węzły platformy Azure "serii" musi zostać dodany do klastra, ale mogą być w stanie wdrożyć nie.
-* **Dla klastra wdrożone w maszynach wirtualnych platformy Azure (modelu wdrażania usługi Resource Manager)** — dla klastra Azure maszyn wirtualnych wdrożonych w modelu wdrażania usługi Resource Manager, skrypt obsługuje dwie metody uwierzytelniania systemu Azure: Zaloguj się do konta platformy Azure, aby uruchomić skrypt zawsze (uruchamiając `Login-AzureRmAccount`, lub skonfiguruj nazwę główną usługi do uwierzytelniania przy użyciu certyfikatu. HPC Pack dostarcza skrypt **ConfigARMAutoGrowShrinkCert.ps** można utworzyć nazwy głównej usługi o certyfikat. Skrypt tworzy aplikację usługi Azure Active Directory (Azure AD) i nazwy głównej usługi i przypisanie roli współautora do nazwy głównej usługi. Aby uruchomić skrypt, uruchom program Azure PowerShell jako administrator i uruchom następujące polecenia:
+* **Dla klastra wdrożone w maszynach wirtualnych platformy Azure (modelu wdrażania usługi Resource Manager)** — dla klastra Azure maszyn wirtualnych wdrożonych w modelu wdrażania usługi Resource Manager, skrypt obsługuje dwie metody uwierzytelniania systemu Azure: Zaloguj się do konta platformy Azure, aby uruchomić skrypt zawsze (uruchamiając `Connect-AzureRmAccount`, lub skonfiguruj nazwę główną usługi do uwierzytelniania przy użyciu certyfikatu. HPC Pack dostarcza skrypt **ConfigARMAutoGrowShrinkCert.ps** można utworzyć nazwy głównej usługi o certyfikat. Skrypt tworzy aplikację usługi Azure Active Directory (Azure AD) i nazwy głównej usługi i przypisanie roli współautora do nazwy głównej usługi. Aby uruchomić skrypt, uruchom program Azure PowerShell jako administrator i uruchom następujące polecenia:
 
     ```powershell
     cd $env:CCP_HOME\bin
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     .\ConfigARMAutoGrowShrinkCert.ps1 -DisplayName “YourHpcPackAppName” -HomePage "https://YourHpcPackAppHomePage" -IdentifierUri "https://YourHpcPackAppUri" -PfxFile "d:\yourcertificate.pfx"
     ```
 
     Aby uzyskać więcej informacji o **ConfigARMAutoGrowShrinkCert.ps1**Uruchom `Get-Help .\ConfigARMAutoGrowShrinkCert.ps1 -Detailed`,
 
-* **Dla klastra wdrożone w maszynach wirtualnych platformy Azure (klasycznego modelu wdrażania)** — Uruchom skrypt w węźle głównym maszyny Wirtualnej, ponieważ zależy on od **Start HpcIaaSNode.ps1** i **Stop-HpcIaaSNode.ps1** skrypty, które są zainstalowane na. Ponadto te skrypty wymagają certyfikatu zarządzania platformy Azure lub plik ustawień publikowania (zobacz [Zarządzaj węzłów obliczeniowych w HPC Pack klastra w systemie Azure](hpcpack-cluster-node-manage.md)). Sprawdź, czy wszystkie węźle obliczeń maszyny wirtualne, konieczne są już dodane do klastra. Mogą być w stanie zatrzymania.
+* **Dla klastra wdrożone w maszynach wirtualnych platformy Azure (klasycznego modelu wdrażania)** — Uruchom skrypt w węźle głównym maszyny Wirtualnej, ponieważ zależy on od **Start HpcIaaSNode.ps1** i **Stop HpcIaaSNode.ps1** skryptów Brak zainstalowanych. Ponadto te skrypty wymagają certyfikatu zarządzania platformy Azure lub plik ustawień publikowania (zobacz [Zarządzaj węzłów obliczeniowych w HPC Pack klastra w systemie Azure](hpcpack-cluster-node-manage.md)). Sprawdź, czy wszystkie węźle obliczeń maszyny wirtualne, konieczne są już dodane do klastra. Mogą być w stanie zatrzymania.
 
 
 

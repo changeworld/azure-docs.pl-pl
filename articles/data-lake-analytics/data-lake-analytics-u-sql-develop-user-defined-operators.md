@@ -1,8 +1,8 @@
 ---
-title: "Opracowywanie operatorów języka U-SQL zdefiniowane przez użytkownika (udo) | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak opracowywanie operatorów zdefiniowanych przez użytkownika używanych i użyć ponownie w zadań usługi Data Lake Analytics. "
+title: Opracowywanie operatorów języka U-SQL zdefiniowane przez użytkownika (udo) | Dokumentacja firmy Microsoft
+description: 'Dowiedz się, jak opracowywanie operatorów zdefiniowanych przez użytkownika używanych i użyć ponownie w zadań usługi Data Lake Analytics. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: kfile
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c0164d9f1e40778d3ce0dc7e947f6d2807234468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Opracowywanie operatorów języka U-SQL zdefiniowane przez użytkownika (udo)
 Dowiedz się, jak opracowywanie operatorów zdefiniowanych przez użytkownika do przetwarzania danych w ramach zadania skryptu U-SQL.
@@ -130,5 +130,5 @@ Aby uzyskać instrukcje na temat tworzenia ogólnego przeznaczenia zestawy dla U
 2. Rozwiń węzeł próbek, rozwiń dane wyjściowe, a następnie kliknij dwukrotnie ikonę **Drivers.csv**.
 
 ## <a name="see-also"></a>Zobacz także
-* [Rozszerzanie wyrażenia języka U-SQL z kodu użytkownika](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)
+* [Rozszerzanie wyrażenia języka U-SQL z kodu użytkownika](https://msdn.microsoft.com/library/azure/mt621316.aspx)
 * [Użyj narzędzi Data Lake Tools dla programu Visual Studio do tworzenia aplikacji U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

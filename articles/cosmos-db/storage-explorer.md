@@ -17,17 +17,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 18f580f1eae31c9bf3626e100217467bb48ca881
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Zarządzanie usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage (wersja zapoznawcza)
+# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Zarządzanie usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage
 
 Korzystanie z usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage pozwala użytkownikom zarządzać jednostkami usługi Azure Cosmos DB, wykonywać operacje na danych oraz aktualizować procedury składowane i wyzwalacze, a także inne jednostki platformy Azure, takie jak obiekty blob i kolejki usługi Storage. Za pomocą jednego narzędzia można teraz centralnie zarządzać różnymi jednostkami platformy Azure. Aktualnie Eksplorator usługi Azure Storage obsługuje konta baz danych SQL i MongoDB, programu Graph oraz tabel.
-
-Ten artykuł zawiera informacje dotyczące zarządzania usługą Azure Cosmos DB za pomocą Eksploratora usługi Storage.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -75,8 +73,11 @@ Alternatywna metoda połączenia się z usługą Azure Cosmos DB polega na użyc
     ![Parametry połączenia](./media/storage-explorer/connection-string.png)
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>Nawiązywanie połączenia z usługą Azure Cosmos DB za pomocą emulatora lokalnego
+
 Wykonaj następujące kroki, aby nawiązać połączenie z usługą Azure Cosmos DB za pomocą emulatora. Obecnie obsługiwane jest tylko konto bazy danych SQL.
+
 1. Zainstaluj emulator i uruchom go. Aby uzyskać informacje dotyczące instalowania emulatora, zobacz [Emulator usługi Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator)
+
 2. Znajdź pozycję **Lokalne i dołączone** w drzewie po lewej stronie, kliknij prawym przyciskiem myszy pozycję **Konta usługi Cosmos DB**, a następnie wybierz pozycję **Połącz z emulatorem usługi Cosmos DB...**
 
     ![Nawiązywanie połączenia z usługą Cosmos DB za pomocą emulatora](./media/storage-explorer/emulator-entry.png)
@@ -84,7 +85,6 @@ Wykonaj następujące kroki, aby nawiązać połączenie z usługą Azure Cosmos
 3. Aktualnie obsługiwany jest tylko interfejs API SQL. Wklej **parametry połączenia**, wprowadź wartość **Etykieta konta**, kliknij przycisk **Dalej**, aby sprawdzić podsumowanie, a następnie kliknij pozycję **Połącz**, aby nawiązać połączenie z kontem usługi Azure Cosmos DB. Aby uzyskać informacje dotyczące pobierania parametrów połączenia, zobacz [Get the connection string (Pobieranie parametrów połączenia)](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![Nawiązywanie połączenia z usługą Cosmos DB za pomocą okna dialogowego emulatora](./media/storage-explorer/emulator-dialog.png)
-
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Zarządzanie zasobami usługi Azure Cosmos DB
@@ -208,8 +208,111 @@ Po kliknięciu prawym przyciskiem myszy subskrypcji w okienku Eksploratora pojaw
     ![Procedura składowana](./media/storage-explorer/stored-procedure.png)
 * Operacje dotyczące **wyzwalaczy** i **funkcji definiowanych przez użytkownika** są podobne do **procedur składowanych**.
 
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+[Azure Cosmos DB w Eksploratorze usługi Azure Storage](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) jest aplikacją autonomiczną, która umożliwia nawiązanie połączenia z kontami usługi Azure Cosmos DB hostowanymi na platformie Azure i suwerennych chmurach w systemie Windows, macOS lub Linux. Umożliwia ona zarządzanie jednostkami usługi Azure Cosmos DB, wykonywanie operacji na danych oraz aktualizowanie procedur składowanych i wyzwalaczy, a także innych jednostek platformy Azure, takich jak obiekty blob i kolejki usługi Storage.
+
+Są to rozwiązania typowych problemów występujących w ramach usługi Azure Cosmos DB w Eksploratorze usługi Storage.
+
+### <a name="sign-in-issues"></a>Problemy z logowaniem
+
+Przed kontynuacją spróbuj ponownie uruchomić aplikację i zobacz, czy problemy mogą zostać usunięte.
+
+#### <a name="self-signed-certificate-in-certificate-chain"></a>Certyfikat z podpisem własnym w łańcuchu certyfikatów
+
+Istnieje kilka przyczyn wyświetlenia tego błędu, przy czym dwoma najbardziej typowymi są:
+
++ Znajdujesz się za „przezroczystym serwerem proxy”, co oznacza, że ktoś (na przykład dział IT) przechwytuje ruch HTTPS, odszyfrowuje go, a następnie szyfruje za pomocą certyfikatu z podpisem własnym.
+
++ Używasz oprogramowania, takiego jak oprogramowanie antywirusowe, które wprowadza certyfikaty SSL z podpisem własnym do wiadomości protokołu HTTPS, które otrzymujesz.
+
+Gdy Eksplorator usługi Storage napotka jeden z tych „certyfikatów z podpisem własnym”, nie będzie już wiedział, czy odbierany komunikat HTTPS został naruszony. Jeśli jednak masz kopię certyfikatu z podpisem własnym, możesz poinformować Eksploratora usługi Storage, aby mu zaufał. Jeśli nie masz pewności, kto wprowadza certyfikat, możesz spróbować go znaleźć samodzielnie, wykonując następujące czynności:
+
+1. Zainstaluj protokół Open SSL
+     - [System Windows](https://slproweb.com/products/Win32OpenSSL.html) (dowolna z wersji uproszczonych jest OK)
+     - Komputery Mac i system Linux: powinien być dołączony do systemu operacyjnego
+2. Uruchom protokół Open SSL
+    - System Windows: przejdź do katalogu instalacyjnego, a następnie **/bin/**, po czym kliknij dwukrotnie plik **openssl.exe**.
+    - Komputery Mac i system Linux: wykonaj polecenie **openssl** z terminala
+3. Wykonaj polecenie `s_client -showcerts -connect microsoft.com:443`
+4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie wiesz, które z nich są z podpisem własnym, wówczas poszukaj pozycji, gdzie podmiot („s:”) i wystawca („i:”) są identyczni.
+5.  Po znalezieniu jakichkolwiek certyfikatów z podpisem własnym skopiuj i wklej wszystko, poczynając od **---BEGIN CERTIFICATE---** do **---END CERTIFICATE---**, do nowego pliku cer dla każdego z nich.
+6.  Otwórz Eksploratora usługi Storage, a następnie przejdź do pozycji **Edytuj** > **Certyfikaty SSL** > **Importuj certyfikaty**. Za pomocą selektora plików znajdź, wybierz i otwórz utworzony plik cer.
+
+Jeśli nie możesz odnaleźć żadnych certyfikatów z podpisem własnym za pomocą powyższych kroków, możesz wysłać opinię, aby uzyskać dalszą pomoc.
+
+#### <a name="unable-to-retrieve-subscriptions"></a>Brak możliwości pobrania subskrypcji
+
+Jeśli nie możesz pobrać subskrypcji po pomyślnym zalogowaniu:
+
+- Sprawdź, czy Twoje konto użytkownika ma dostęp do subskrypcji, logując się do witryny [Azure Portal](http://portal.azure.com/)
+- Upewnij się, że podczas logowania używasz poprawnego środowiska ([Azure](http://portal.azure.com/), [Azure — Chiny](https://portal.azure.cn/), [Azure — Niemcy](https://portal.microsoftazure.de/), [Azure — instytucje rządowe USA](http://portal.azure.us/) lub niestandardowe środowisko/usługa Azure Stack)
+- Jeśli znajdujesz się za serwerem proxy, upewnij się, że masz poprawnie skonfigurowany serwer proxy Eksploratora usługi Storage
+- Spróbuj usunąć i ponownie dodać konto
+- Spróbuj usunąć następujące pliki z katalogu macierzystego (takiego jak: C:\Users\ContosoUser), a następnie ponownie dodać konto:
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- Podczas logowania obejrzyj wszystkie komunikaty o błędach na konsoli narzędzi dla deweloperów (f12)
+
+![console](./media/storage-explorer/console.png)
+
+#### <a name="unable-to-see-the-authentication-page"></a>Nie można wyświetlić strony uwierzytelniania 
+
+Jeśli nie możesz wyświetlić strony uwierzytelniania:
+
+- W zależności od prędkości połączenia załadowanie strony logowania może potrwać trochę czasu, więc poczekaj co najmniej jedną minutę przed zamknięciem okna dialogowego uwierzytelniania
+- Jeśli znajdujesz się za serwerem proxy, upewnij się, że masz poprawnie skonfigurowany serwer proxy Eksploratora usługi Storage
+- Wywołaj konsolę dla deweloperów, naciskając klawisz F12. Obejrzyj odpowiedzi z konsoli dla deweloperów i zobacz, czy możesz znaleźć jakieś wskazówki dotyczące tego, dlaczego uwierzytelnianie nie działa
+
+#### <a name="cannot-remove-account"></a>Nie można usunąć konta
+
+Jeśli nie możesz usunąć konta lub jeśli link do ponownego uwierzytelniania nie działa
+
+- Spróbuj usunąć następujące pliki ze swojego katalogu macierzystego, a następnie ponownie dodaj konto:
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- Jeśli chcesz usunąć zasoby usługi Storage dołączone do systemu SAS, usuń:
+  - Folder %AppData%/StorageExplorer dla systemu Windows
+  - /Users/<Twoja_nazwa>/Library/Application Support/StorageExplorer dla komputerów Mac
+  - ~/.config/StorageExplorer dla systemu Linux
+  - Po usunięciu tych plików **trzeba będzie ponownie wprowadzić wszystkie poświadczenia**
+
+
+### <a name="httphttps-proxy-issue"></a>Problem z serwerem proxy HTTP/HTTPS
+
+Podczas konfigurowania serwera proxy HTTP/HTTPS w środowisku ASE nie możesz wyświetlać listy węzłów usługi Azure Cosmos DB w drzewie po lewej stronie. Jest to znany problem i zostanie rozwiązany w następnej wersji. Jako obejścia w tej chwili możesz użyć eksploratora danych usługi Azure Cosmos DB w witrynie Azure Portal. 
+
+### <a name="development-node-under-local-and-attached-node-issue"></a>Problem z węzłem „Programowanie” w węźle „Lokalne i dołączone”
+
+Nie ma odpowiedzi po kliknięciu węzła „Programowanie” w węźle „Lokalne i dołączone” drzewa po lewej stronie.  Zachowanie jest oczekiwane. Emulator lokalny usługi Azure Cosmos DB będzie obsługiwany w następnej wersji.
+
+![Węzeł projektowania](./media/storage-explorer/development.png)
+
+### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>Błąd dołączania konta usługi Azure Cosmos DB w węźle „Lokalne i dołączone”
+
+Jeśli poniższy błąd zostanie wyświetlony po dołączeniu konta usługi Azure Cosmos DB w węźle „Lokalne i dołączone”, sprawdź, czy używasz właściwych parametrów połączenia.
+
+![Błąd dołączania usługi Azure Cosmos DB w węźle Lokalne i dołączone](./media/storage-explorer/attached-error.png)
+
+### <a name="expand-azure-cosmos-db-node-error"></a>Błąd rozwijania węzła usługi Azure Cosmos DB
+
+Podczas próby rozwinięcia węzłów drzewa z lewej strony możesz zobaczyć poniższy błąd. 
+
+![Błąd rozwijania](./media/storage-explorer/expand-error.png)
+
+Spróbuj wykonać poniższe sugestie:
+
+- Sprawdź, czy konto usługi Azure Cosmos DB nie jest aktualnie na etapie aprowizacji, a następnie ponów próbę po pomyślnym utworzeniu konta.
+- Jeśli konto znajduje się w węźle „Szybki dostęp” lub węzłach „Lokalne i dołączone”, sprawdź, czy konto zostało usunięte. Jeśli tak, należy ręcznie usunąć węzeł.
+
+## <a name="contact-us"></a>Skontaktuj się z nami
+
+Jeśli te rozwiązania nie działają w Twoim przypadku, wyślij wiadomość e-mail do zespołu narzędzi dla deweloperów usługi Cosmos Azure DB ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) zawierającą szczegółowe informacje o problemach w celu ich rozwiązania.
+
 ## <a name="next-steps"></a>Następne kroki
 
 * Obejrzyj ten film wideo, aby dowiedzieć się, jak używać usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage: [Use Azure Cosmos DB in Azure Storage Explorer (Używanie usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage)](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* Aby dowiedzieć się więcej o Eksploratorze usługi Storage i sposobach łączenia się z dodatkowymi usługami, zobacz [Wprowadzenie do programu Storage Explorer (wersja zapoznawcza)](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* Aby dowiedzieć się więcej o Eksploratorze usługi Storage i sposobach łączenia się z dodatkowymi usługami, zobacz [Wprowadzenie do Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

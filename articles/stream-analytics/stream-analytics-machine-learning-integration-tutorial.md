@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.openlocfilehash: 93397e5370863b11b7c153bbf234d6bfdd808718
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/16/2018
+ms.openlocfilehash: 63648dfe02a0b5ed00d0a7206a6aabbe200f94c4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Wykonywanie analiz wskaźniki nastrojów klientów przy użyciu usługi Azure Stream Analytics i usługi Azure Machine Learning
 W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi analiza strumienia Azure, której zintegrowano usługi Azure Machine Learning. Umożliwia modelu uczenia maszynowego analytics wskaźniki nastrojów klientów z Cortana Intelligence Gallery analizować dane przesyłane strumieniowo tekstu i określić wynik wskaźniki nastrojów klientów w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence Suite pozwala wykonać to zadanie, nie martwiąc się o mogli dokładnie zapoznać się tworzenia modelu analizy wskaźniki nastrojów klientów.
@@ -25,7 +25,7 @@ Możesz zastosować uzyskanych informacji z tego artykułu do scenariuszy, takic
 * Ocena komentarze dotyczące fora, blogi i wideo. 
 * Wiele innych w czasie rzeczywistym, predykcyjnej oceniania scenariuszy.
 
-W przypadku rzeczywistych jak dane bezpośrednio z serwisem Twitter strumienia danych. Aby uprościć samouczek, możemy napisanych go tak, aby zadanie analizy przesyłania strumieniowego pobiera tweetów z pliku CSV w magazynie obiektów Blob Azure. Można utworzyć pliku CSV lub przykładowy plik CSV, można użyć, jak pokazano na poniższej ilustracji:
+W przypadku rzeczywistych jak dane bezpośrednio z serwisem Twitter strumienia danych. Aby uprościć samouczek, jest ona zapisywana tak, aby zadanie analizy przesyłania strumieniowego pobiera tweetów z pliku CSV w magazynie obiektów Blob Azure. Można utworzyć pliku CSV lub przykładowy plik CSV, można użyć, jak pokazano na poniższej ilustracji:
 
 ![Przykładowe tweetów w pliku CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
@@ -39,7 +39,7 @@ Na poniższym rysunku pokazano tej konfiguracji. Jak wspomniano, dla scenariusza
 Przed rozpoczęciem upewnij się, że należy dysponować następującymi elementami:
 
 * Aktywna subskrypcja platformy Azure.
-* Plik CSV z niektórych danych. Możesz pobrać plik przedstawiona wcześniej z [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), lub można utworzyć własny plik. W tym artykule przyjęto założenie, że używany jest plik z usługi GitHub.
+* Plik CSV z niektórych danych. Możesz pobrać plik przedstawiona wcześniej z [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), lub można utworzyć własny plik. W tym artykule zakłada się, że używany jest plik z usługi GitHub.
 
 Na wysokim poziomie Aby wykonać zadania zostało to pokazane w tym artykule wykonano następujące czynności:
 
@@ -107,7 +107,7 @@ Teraz, dane przykładowe są w obiekcie blob, można włączyć model analizy ws
 
 7. W **aplikacje** kolumny, kliknij przycisk **programu Excel 2010 lub starszych skoroszytu** łącze, aby pobrać skoroszytu programu Excel. Skoroszyt zawiera klucz interfejsu API i adres URL, który trzeba później skonfigurować zadanie usługi Stream Analytics.
 
-    ![Stream Analytics Machine Learning, quick glance](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Machine Learning, szybkiego dostępu](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
 
 ## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Utwórz zadanie usługi Stream Analytics, która korzysta z modelu uczenia maszynowego
@@ -157,7 +157,7 @@ Zadanie wysyła wyniki do tego samego magazynu obiektów blob, których pobiera 
 
    |Pole  |Wartość  |
    |---------|---------|
-   |**Alias wyjściowy** | Użyj nazwy `datainput` i wybierz **wybierz obiektu blob magazynu z subskrypcji**       |
+   |**Alias wyjściowy** | Użyj nazwy `datamloutput` i wybierz **wybierz obiektu blob magazynu z subskrypcji**       |
    |**Konto magazynu**  |  Wybierz utworzone wcześniej konto magazynu.  |
    |**Kontener**  | Wybierz kontener utworzonym wcześniej (`azuresamldemoblob`)        |
    |**Format serializacji zdarzeń**  |  Wybierz **CSV**       |
@@ -168,7 +168,7 @@ Zadanie wysyła wyniki do tego samego magazynu obiektów blob, których pobiera 
 
 
 ### <a name="add-the-machine-learning-function"></a>Dodawanie funkcji Machine Learning 
-Wcześniej publikowane modelu usługi Machine Learning z usługą sieci web. W naszym scenariuszu po uruchomieniu zadania analizy strumienia wysyła każdego tweet próbki z danych wejściowych z usługą sieci web do analizy wskaźniki nastrojów klientów. Usługa sieci web uczenie maszynowe zwraca wskaźniki nastrojów klientów (`positive`, `neutral`, lub `negative`) i prawdopodobieństwo tweet jest dodatnia. 
+Wcześniej publikowane modelu usługi Machine Learning z usługą sieci web. W tym scenariuszu gdy zostanie uruchomione zadanie analizy strumienia, wysyła każdego tweet próbki z danych wejściowych z usługą sieci web do analizy wskaźniki nastrojów klientów. Usługa sieci web uczenie maszynowe zwraca wskaźniki nastrojów klientów (`positive`, `neutral`, lub `negative`) i prawdopodobieństwo tweet jest dodatnia. 
 
 W tej części samouczka można zdefiniować funkcję zadanie analizy strumienia. Funkcja może być wywoływany publikowała tweet z usługą sieci web i wrócić odpowiedzi. 
 
@@ -200,12 +200,13 @@ Analiza strumienia używa deklaratywne, SQL na podstawie zapytania do badania da
 
     ```
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result from datainput  
+    SELECT text, sentiment(text) as result 
+    FROM datainput  
     )  
 
-    Select text, result.[Score]  
-    Into datamloutput
-    From sentiment  
+    SELECT text, result.[Score]  
+    INTO datamloutput
+    FROM sentiment  
     ```    
 
     Zapytanie wywołuje funkcję utworzonym wcześniej (`sentiment`) w celu wykonywania analizy wskaźniki nastrojów klientów na każdym tweet w danych wejściowych. 

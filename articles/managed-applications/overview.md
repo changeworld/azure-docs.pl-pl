@@ -1,6 +1,6 @@
 ---
-title: "Omówienie usługi Azure zarządzane aplikacje | Dokumentacja firmy Microsoft"
-description: "Zawiera opis pojęć dla platformy Azure zarządzanych aplikacji"
+title: Omówienie usługi Azure zarządzane aplikacje | Dokumentacja firmy Microsoft
+description: Zawiera opis pojęć dla platformy Azure zarządzanych aplikacji
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: a26cfc632dacb41435b3755409d3e91630f5f3eb
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 35e30700270fb5757a80c4a6b8f231042f7640f3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie aplikacji zarządzanych platformy Azure
 
@@ -52,7 +52,7 @@ Informacje o publikowaniu zarządzanej aplikacji do witryny Marketplace, zobacz 
 
 ## <a name="resource-groups-for-managed-applications"></a>Grupy zasobów zarządzanych aplikacji
 
-Zazwyczaj zasobów zarządzanych aplikacji znajdują się w dwie grupy zasobów. Użytkownik zarządza jedna grupa zasobów oraz wydawcy zarządza grupie zasobów. Podczas definiowania zarządzanej aplikacji, wydawca Określa poziomy dostępu. Na poniższej ilustracji przedstawiono scenariusz, w którym wydawcy żądań rolę właściciela grupy zasobów zarządzanych. Wydawcy umieścić blokady tylko do odczytu w tej grupie zasobów dla konsumentów.
+Zazwyczaj zasobów zarządzanych aplikacji znajdują się w dwie grupy zasobów. Użytkownik zarządza jedna grupa zasobów oraz wydawcy zarządza grupie zasobów. Podczas definiowania zarządzanej aplikacji, wydawca Określa poziomy dostępu. Na poniższej ilustracji przedstawiono scenariusz, w którym wydawcy żądań rolę właściciela grupy zasobów zarządzanych. Wydawcy umieścić blokady tylko do odczytu w tej grupie zasobów dla konsumentów. Tożsamości wydawcy, które mają prawo dostępu do grupy zasobów zarządzanych są wykluczone blokady.
 
 ![Dostęp do grupy zasobów](./media/overview/access.png)
 

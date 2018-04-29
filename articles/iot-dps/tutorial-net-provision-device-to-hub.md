@@ -1,69 +1,69 @@
 ---
-title: "Zapewnij urządzenia przy użyciu Azure IoT Hub urządzenia inicjowania obsługi usługi (.NET) | Dokumentacja firmy Microsoft"
-description: "Obsługi administracyjnej urządzeniu do jednego centrum IoT przy użyciu Azure IoT Hub urządzenia inicjowania obsługi usługi (.NET)"
+title: Aprowizacja urządzenia przy użyciu usługi Azure IoT Hub Device Provisioning (.NET) | Microsoft Docs
+description: Aprowizacja urządzenia w jednym centrum IoT przy użyciu usługi Azure IoT Hub Device Provisioning (.NET)
 services: iot-dps
-keywords: 
-author: msebolt
+keywords: ''
+author: bryanla
 ms.author: v-masebo
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 6919f962d853faa572ee7ad5d0cb9aeacd3bd2b6
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
-ms.translationtype: MT
+ms.openlocfilehash: ec08d617b461240062190ec7fdb919f051675798
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Rejestrowanie urządzenia z Centrum IoT przy użyciu Azure IoT Hub inicjowania obsługi usługi klienta (.NET)
+# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Rejestrowanie urządzenia w centrum IoT przy użyciu klienta usługi Azure IoT Hub Device Provisioning (.NET)
 
-Poprzednie samouczka przedstawiono sposób konfigurowania urządzenia do nawiązania połączenia z usługą Inicjowanie obsługi administracyjnej urządzeń. Z tego samouczka, dowiesz się jak używać tej usługi do obsługi administracyjnej urządzeniu do jednego centrum IoT, za pomocą obu  **_poszczególnych rejestracji_**  i  **_rejestracji grup_**. Ten samouczek przedstawia sposób wykonania następujących czynności:
+W poprzednim samouczku omówiono sposób konfigurowania urządzenia do nawiązywania połączenia z usługą Device Provisioning. W tym samouczku dowiesz się, jak używać tej usługi do aprowizacji urządzenia w jednym centrum IoT za pomocą zarówno **_rejestracji indywidualnej_**, jak i **_grup rejestracji_**. Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 > [!div class="checklist"]
-> * Zarejestrowanie urządzenia
-> * Start urządzenia
-> * Sprawdź, czy urządzenie jest zarejestrowane
+> * Rejestrowanie urządzenia
+> * Uruchamianie urządzenia
+> * Sprawdzanie, czy urządzenie zostało zarejestrowane
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed kontynuowaniem upewnij się móc skonfigurować urządzenie i jego *sprzętowego modułu zabezpieczeń* zgodnie z opisem w samouczku [Konfigurowanie urządzenia do obsługi administracyjnej przy użyciu inicjowania obsługi usługi Azure IoT Hub urządzenia](./tutorial-set-up-device.md).
+Przed kontynuowaniem upewnij się, że urządzenie oraz jego *sprzętowy moduł zabezpieczeń* zostały skonfigurowane zgodnie z zaleceniami z samouczka [Konfigurowanie urządzenia do aprowizacji przy użyciu usługi Azure IoT Hub Device Provisioning](./tutorial-set-up-device.md).
 
-* Visual Studio 2015 lub Visual Studio 2017 r.
+* Program Visual Studio 2015 lub Visual Studio 2017
 
 > [!NOTE]
-> Program Visual Studio nie jest wymagane. Instalacja [.NET](https://www.microsoft.com/net) jest wystarczająca i deweloperzy mogą używać edytora preferowane w systemie Windows lub Linux.  
+> Program Visual Studio nie jest wymagany. Wystarczy zainstalować platformę [.NET](https://www.microsoft.com/net). Deweloperzy mogą używać preferowanego edytora w systemie Windows lub Linux.  
 
-W tym samouczku symuluje okres, podczas lub bezpośrednio po sprzętu procesu produkcyjnego, gdy informacje o urządzeniu zostanie dodany do inicjowania obsługi usługi. Ten kod jest zwykle uruchamiane na komputerze lub urządzeniu fabryki, można uruchomić kodu platformy .NET, który nie należy dodawać z samymi urządzeniami.
+Ten samouczek symuluje okres podczas procesu produkcji sprzętu lub bezpośrednio po nim, gdy informacje o urządzeniu są dodawane do usługi aprowizowania. Ten kod jest zwykle uruchamiany na komputerze osobistym lub urządzeniu fabrycznym, które może uruchamiać kod .NET, i nie powinien być dodawany do samych urządzeń.
 
 
-## <a name="enroll-the-device"></a>Zarejestrowanie urządzenia
+## <a name="enroll-the-device"></a>Rejestrowanie urządzenia
 
-Ten krok obejmuje dodawanie artefakty unikatowe zabezpieczeń urządzenia do usługi inicjowania obsługi urządzeń. Te artefakty zabezpieczeń są następujące:
+Ten krok obejmuje dodawanie unikatowych artefaktów zabezpieczeń urządzenia do usługi Device Provisioning. Te artefakty zabezpieczeń są następujące:
 
-- Opartych na modułach TPM urządzenia:
-    - *Klucz poręczenia* jest unikatowa każdy moduł TPM lub symulacji. Odczyt [zrozumieć klucza poręczenia modułu TPM](https://technet.microsoft.com/library/cc770443.aspx) Aby uzyskać więcej informacji.
-    - *Identyfikator rejestracji* używany do jednoznacznego identyfikowania urządzeń w zakresie/przestrzeni nazw. To może lub nie może być taki sam jak identyfikator urządzenia. Identyfikator jest wymagane dla każdego urządzenia. Dla urządzeń z systemem modułu TPM identyfikator rejestracji może pochodzić od modułu TPM, na przykład skrótu SHA-256 klucza poręczenia modułu TPM.
+- W przypadku urządzeń opartych na modułach TPM:
+    - *Klucz poręczenia*, który jest unikatowy dla każdego modułu TPM lub symulacji. Aby uzyskać więcej informacji, zobacz [Understand TPM Endorsement Key](https://technet.microsoft.com/library/cc770443.aspx) (Informacje o kluczu poręczenia modułu TPM).
+    - *Identyfikator rejestracji* używany do jednoznacznego identyfikowania urządzenia w zakresie/przestrzeni nazw. Może, ale nie musi być taki sam jak identyfikator urządzenia. Identyfikator jest wymagany dla każdego urządzenia. W przypadku urządzeń opartych na modułach TPM identyfikator rejestracji może pochodzić od samego modułu TPM, na przykład może to być skrót SHA-256 klucza poręczenia modułu TPM.
 
-- Na podstawie X.509 urządzenia:
-    - [Certyfikatu X.509 wystawiony dla urządzenia](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx), w postaci *PEM* lub *.cer* pliku. Dla poszczególnych rejestracji, należy użyć *certyfikatu liścia* systemu X.509, natomiast w przypadku grup rejestracji, należy użyć *certyfikat główny* lub równoważnej *osoby podpisującej certyfikat*.
-    - *Identyfikator rejestracji* używany do jednoznacznego identyfikowania urządzeń w zakresie/przestrzeni nazw. To może lub nie może być taki sam jak identyfikator urządzenia. Identyfikator jest wymagane dla każdego urządzenia. W przypadku urządzeń X.509 na podstawie Identyfikatora rejestracji jest pochodną certyfikatu nazwa pospolita (CN). Więcej informacji na temat tych wymagań, zobacz [pojęcia urządzenia](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device).
+- W przypadku urządzeń opartych na standardzie X.509:
+    - [Certyfikat X.509 wystawiony dla urządzenia](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) w postaci pliku *pem* lub *cer*. W przypadku rejestracji indywidualnej należy użyć *certyfikatu liścia* dla systemu X.509, natomiast w przypadku grup rejestracji należy użyć *certyfikatu głównego* lub odpowiedniego *certyfikatu osoby podpisującej*.
+    - *Identyfikator rejestracji* używany do jednoznacznego identyfikowania urządzenia w zakresie/przestrzeni nazw. Może, ale nie musi być taki sam jak identyfikator urządzenia. Identyfikator jest wymagany dla każdego urządzenia. W przypadku urządzeń opartych na standardzie X.509 identyfikator rejestracji jest pochodną nazwy pospolitej certyfikatu. Aby uzyskać więcej informacji na temat tych wymagań, zobacz [Pojęcia dotyczące urządzeń](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device).
 
-Istnieją dwa sposoby zarejestrowanie urządzenia w usłudze inicjowania obsługi urządzeń:
+Istnieją dwa sposoby rejestrowania urządzenia w usłudze Device Provisioning:
 
-- **Poszczególne rejestracji** reprezentuje ten wpis dla pojedynczego urządzenia, które mogą rejestrować w usłudze inicjowania obsługi urządzeń. Poszczególne rejestracji może używać certyfikatów X.509 lub tokeny sygnatury dostępu Współdzielonego (w module TPM rzeczywistymi lub wirtualnymi) jako mechanizmy zaświadczania. Zalecamy używanie poszczególnych rejestracji dla urządzeń, które wymagają szczególnej konfiguracji początkowej, lub dla urządzeń, których można używać tylko tokeny sygnatury dostępu Współdzielonego, za pomocą modułu TPM jako mechanizm zaświadczania. Poszczególne rejestracji może mieć identyfikator urządzenia żądaną Centrum IoT określony.
+- **Rejestracje indywidualne** — jest to reprezentacja wpisu dla pojedynczego urządzenia, które może zostać zarejestrowane w usłudze Device Provisioning. Rejestracje indywidualne mogą używać certyfikatów X.509 lub tokenów SAS (w rzeczywistym lub wirtualnym module TPM) jako mechanizmów zaświadczania. Zalecamy używanie rejestracji indywidualnych w przypadku urządzeń, które wymagają unikatowej konfiguracji początkowej lub urządzeń, które jako mechanizmu zaświadczania mogą używać tylko tokenów SAS za pośrednictwem modułu TPM. W przypadku rejestracji indywidualnych można określić identyfikatory urządzeń wymaganego centrum IoT.
 
-- **Grupy rejestracji** to reprezentuje grupę urządzeń, których udostępnianie mechanizm określone poświadczenie. Firma Microsoft zaleca używanie grupy rejestracji dla dużej liczby urządzeń, które mają żądanej konfiguracji początkowej, lub urządzeń wszystkich przejść do tej samej dzierżawy. Grupy rejestracji są tylko X.509 i wszystkie mają certyfikat podpisywania w ich łańcucha certyfikatu X.509.
+- **Grupy rejestracji** — jest to reprezentacja grupy urządzeń, które współużytkują specyficzny mechanizm zaświadczania. Firma Microsoft zaleca używanie grupy rejestracji w przypadku dużej liczby urządzeń, które współużytkują pożądaną konfigurację początkową, lub urządzeń przeznaczonych dla tej samej dzierżawy. W przypadku grup rejestracji można stosować tylko certyfikat X.509, a wszystkie te grupy współdzielą certyfikat podpisywania w łańcuchu certyfikatów X.509.
 
-### <a name="enroll-the-device-using-individual-enrollments"></a>Rejestrowanie urządzenia za pomocą poszczególnych rejestracji
+### <a name="enroll-the-device-using-individual-enrollments"></a>Rejestrowanie urządzenia za pomocą rejestracji indywidualnych
 
-1. W programie Visual Studio, należy utworzyć projekt Visual C# Console aplikacji za pomocą **aplikacji konsoli** szablonu projektu. Nazwij projekt **DeviceProvisioning**.
+1. W programie Visual Studio utwórz projekt aplikacji konsolowej Visual C# za pomocą szablonu projektu **Aplikacja konsolowa**. Nadaj projektowi nazwę **DeviceProvisioning**.
     
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **DeviceProvisioning** projektu, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** .
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **DeviceProvisioning**, a następnie kliknij polecenie **Zarządzaj pakietami NuGet...**.
 
-1. W **Menedżera pakietów NuGet** wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices.provisioning.service**. Zaznacz wpis, a następnie kliknij przycisk **zainstalować** do zainstalowania **Microsoft.Azure.Devices.Provisioning.Service** pakietu, a następnie zaakceptuj warunki użytkowania. Ta procedura pliki do pobrania, instaluje i dodaje odwołanie do [świadczenie usługi SDK urządzenia Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet pakiet i jego zależności.
+1. W oknie **Menedżer pakietów NuGet** wybierz pozycję **Przeglądaj** i wyszukaj ciąg **microsoft.azure.devices.provisioning.service**. Zaznacz wpis i kliknij przycisk **Instaluj**, aby zainstalować pakiet **Microsoft.Azure.Devices.Provisioning.Service**, a następnie zaakceptuj warunki użytkowania. Ta procedura spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK usługi Azure IoT Device Provisioning](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) oraz jego zależności.
 
 1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
    
@@ -71,7 +71,7 @@ Istnieją dwa sposoby zarejestrowanie urządzenia w usłudze inicjowania obsług
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zamień wartość symbol zastępczy parametrów połączenia punktu dystrybucji zanotowanym w poprzedniej sekcji.
+1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia usługi Device Provisioning zanotowanymi w poprzedniej sekcji.
    
     ```csharp
     static readonly string ServiceConnectionString = "{DPS connection string}";
@@ -87,7 +87,7 @@ Istnieją dwa sposoby zarejestrowanie urządzenia w usłudze inicjowania obsług
     private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
     ```
 
-1. Dodaj następujący kod do wykonania rejestracji dla urządzenia:
+1. Dodaj następujący kod w celu zaimplementowania rejestracji urządzenia:
 
     ```csharp
     static async Task SetRegistrationDataAsync()
@@ -112,7 +112,7 @@ Istnieją dwa sposoby zarejestrowanie urządzenia w usłudze inicjowania obsług
     }
     ```
 
-1. Na koniec należy dodać następujący kod, aby **Main** metodę, aby otworzyć połączenia z Centrum IoT i rozpocząć rejestracji:
+1. Na koniec dodaj następujący kod do metody **Main**, aby otworzyć połączenie z centrum IoT i rozpocząć rejestrację:
    
     ```csharp
     try
@@ -131,22 +131,22 @@ Istnieją dwa sposoby zarejestrowanie urządzenia w usłudze inicjowania obsług
     }
     ```
         
-1. W Eksploratorze rozwiązań programu Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij przycisk **Ustaw projekty startowe...** . Wybierz **jednego projektu startowego**, a następnie wybierz **DeviceProvisioning** projektu w menu rozwijanym.  
+1. W Eksploratorze rozwiązań programu Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij polecenie **Ustaw projekty startowe...**. Wybierz pozycję **Pojedynczy projekt startowy**, a następnie wybierz projekt **DeviceProvisioning** w menu rozwijanym.  
 
-1. Uruchamianie aplikacji .NET urządzenia **DeviceProvisiong**. Należy skonfigurować inicjowania obsługi administracyjnej dla urządzenia: 
+1. Uruchom aplikację urządzenia platformy .NET **DeviceProvisioning**. Powinno to spowodować skonfigurowanie aprowizacji dla urządzenia: 
 
-    ![Poszczególne rejestracji Uruchom](./media/tutorial-net-provision-device-to-hub/individual.png)
+    ![Uruchamianie rejestracji indywidualnej](./media/tutorial-net-provision-device-to-hub/individual.png)
 
-Jeśli urządzenie zostało pomyślnie zarejestrowane, powinny pojawić się ona wyświetlana w portalu w następujący:
+Po pomyślnym zarejestrowaniu urządzenia powinno ono być widoczne w portalu w następujący sposób:
 
-   ![Pomyślnej rejestracji w portalu](./media/tutorial-net-provision-device-to-hub/individual-portal.png)
+   ![Pomyślna rejestracja w portalu](./media/tutorial-net-provision-device-to-hub/individual-portal.png)
 
-### <a name="enroll-the-device-using-enrollment-groups"></a>Zarejestrowanie urządzenia przy użyciu grup rejestracji
+### <a name="enroll-the-device-using-enrollment-groups"></a>Rejestrowanie urządzenia przy użyciu grup rejestracji
 
 > [!NOTE]
 > Przykład grupy rejestracji wymaga certyfikatu X.509.
 
-1. Otwórz w Eksploratorze rozwiązań programu Visual Studio **DeviceProvisioning** projektu utworzone powyżej. 
+1. W Eksploratorze rozwiązań programu Visual Studio otwórz projekt **DeviceProvisioning** utworzony powyżej. 
 
 1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
     
@@ -154,14 +154,14 @@ Jeśli urządzenie zostało pomyślnie zarejestrowane, powinny pojawić się ona
     using System.Security.Cryptography.X509Certificates;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zamień wartość symbolu zastępczego X509 lokalizacja certyfikatów.
+1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego lokalizacją certyfikatu X.509.
    
     ```csharp
     private const string X509RootCertPathVar = "{X509 Certificate Location}";
     private const string SampleEnrollmentGroupId = "sample-group-csharp";
     ```
 
-1. Dodaj następujący kod do **Program.cs** wykonania rejestracji dla grupy:
+1. Dodaj następujący kod do pliku **Program.cs**, aby zaimplementować rejestrację grupy:
 
     ```csharp
     public static async Task SetGroupRegistrationDataAsync()
@@ -191,7 +191,7 @@ Jeśli urządzenie zostało pomyślnie zarejestrowane, powinny pojawić się ona
     }
     ```
 
-1. Ponadto Zastąp następujący kod, aby **Main** metodę, aby otworzyć połączenia z Centrum IoT i rozpocząć rejestrowanie grupy:
+1. Na koniec zastąp kod w metodzie **Main** następującym kodem, aby otworzyć połączenie z centrum IoT i rozpocząć rejestrację grupy:
    
     ```csharp
     try
@@ -210,46 +210,46 @@ Jeśli urządzenie zostało pomyślnie zarejestrowane, powinny pojawić się ona
     }
     ```
 
-1. Uruchamianie aplikacji .NET urządzenia **DeviceProvisiong**. Należy skonfigurować grupy inicjowania obsługi administracyjnej dla urządzenia: 
+1. Uruchom aplikację urządzenia platformy .NET **DeviceProvisioning**. Powinno to spowodować skonfigurowanie aprowizacji grupy dla urządzenia: 
 
-    ![Uruchom rejestracji grupy](./media/tutorial-net-provision-device-to-hub/group.png)
+    ![Uruchamianie rejestracji grupy](./media/tutorial-net-provision-device-to-hub/group.png)
 
-    Jeśli grupa urządzeń jest pomyślnie zarejestrowane, powinny pojawić się ona wyświetlana w portalu w następujący:
+    Po pomyślnym zarejestrowaniu grupy urządzeń powinna ona być widoczna w portalu w następujący sposób:
 
-   ![Grupy pomyślnej rejestracji w portalu](./media/tutorial-net-provision-device-to-hub/group-portal.png)
-
-
-## <a name="start-the-device"></a>Start urządzenia
-
-W tym momencie następujące ustawienia jest gotowe do rejestracji urządzeń:
-
-1. Urządzenie lub grupy urządzeń zarejestrowanych w usłudze udostępniania urządzenia i 
-2. Urządzenie jest gotowy z zabezpieczeniami skonfigurowane i dostępne za pośrednictwem aplikacji przy użyciu zestawu SDK klienta usługi inicjowania obsługi urządzeń.
-
-Uruchom urządzenia, aby umożliwić aplikacji klienckiej można uruchomić rejestracji przy użyciu usługi inicjowania obsługi urządzeń.  
+   ![Pomyślna rejestracja grupy w portalu](./media/tutorial-net-provision-device-to-hub/group-portal.png)
 
 
-## <a name="verify-the-device-is-registered"></a>Sprawdź, czy urządzenie jest zarejestrowane
+## <a name="start-the-device"></a>Uruchamianie urządzenia
 
-Po rozruchu z urządzenia, powinien zostaną wykonane następujące czynności. Zobacz przykładową aplikację symulatora modułu TPM [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) więcej szczegółów. 
+Na tym etapie następujące konfiguracje są gotowe do rejestracji urządzenia:
 
-1. Urządzenie wysyła żądanie rejestracji w usłudze Inicjowanie obsługi administracyjnej urządzeń.
-2. Dla urządzeń z modułem TPM usługi inicjowania obsługi urządzeń przesyła żądanie rejestracji, na które odpowiada urządzenia. 
-3. Na pomyślną rejestrację usługi inicjowania obsługi urządzeń wysyła Centrum IoT identyfikatora URI, identyfikator urządzenia i zaszyfrowanego klucza z powrotem do urządzenia. 
-4. Centrum IoT aplikacja klienta na urządzeniu łączy do Centrum. 
-5. Na udane połączenie z koncentratorem, powinna zostać wyświetlona urządzenia są wyświetlane w Centrum IoT **Explorer urządzenia**. 
+1. Zarejestrowano urządzenie (lub grupę urządzeń) w usłudze Device Provisioning. 
+2. Urządzenie jest gotowe, ma skonfigurowane zabezpieczenia i można do niego uzyskać dostęp za pośrednictwem aplikacji przy użyciu zestawu SDK klienta usługi Device Provisioning.
 
-    ![Udane połączenie do koncentratora, w portalu](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
+Uruchom urządzenie, aby umożliwić aplikacji klienckiej rozpoczęcie rejestracji w usłudze Device Provisioning.  
 
-## <a name="next-steps"></a>Kolejne kroki
+
+## <a name="verify-the-device-is-registered"></a>Sprawdzanie, czy urządzenie zostało zarejestrowane
+
+Po uruchomieniu urządzenia powinny zostać wykonane następujące działania. Więcej szczegółowych informacji można uzyskać, analizując przykładową aplikację symulatora modułu TPM [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c). 
+
+1. Urządzenie wysyła żądanie rejestracji do usługi Device Provisioning.
+2. W przypadku urządzeń z modułem TPM usługa Device Provisioning przesyła z powrotem wezwanie do rejestracji, na które odpowiada urządzenie. 
+3. Po pomyślnej rejestracji usługa Device Provisioning przesyła z powrotem do urządzenia identyfikator URI centrum IoT, identyfikator urządzenia i zaszyfrowany klucz. 
+4. Następnie aplikacja kliencka usługi IoT Hub na urządzeniu łączy się z centrum. 
+5. Po pomyślnym nawiązaniu połączenia z centrum urządzenie powinno pojawić się w narzędziu **Device Explorer** w centrum IoT. 
+
+    ![Pomyślne połączenie z centrum w portalu](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
+
+## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Zarejestrowanie urządzenia
-> * Start urządzenia
-> * Sprawdź, czy urządzenie jest zarejestrowane
+> * Rejestrowanie urządzenia
+> * Uruchamianie urządzenia
+> * Sprawdzanie, czy urządzenie zostało zarejestrowane
 
-Przejście do dalej samouczkiem, aby dowiedzieć się, jak udostępnić wieloma urządzeniami przez koncentratory równoważeniem obciążenia. 
+Przejdź do następnego samouczka, aby dowiedzieć się, jak aprowizować wiele urządzeń w obrębie centrów ze zrównoważonym obciążeniem. 
 
 > [!div class="nextstepaction"]
-> [Zainicjować obsługę administracyjną urządzeń między centra IoT równoważeniem obciążenia](./tutorial-provision-multiple-hubs.md)
+> [Aprowizuj urządzenia w centrach IoT Hub ze zrównoważonym obciążeniem](./tutorial-provision-multiple-hubs.md)

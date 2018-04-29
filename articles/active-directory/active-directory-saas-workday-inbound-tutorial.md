@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi użytkowników
 
@@ -468,7 +468,7 @@ Jeśli dzierżawy usługi Azure Active Directory znajduje się w jednym z centr�
 
 **Rozwiązywanie problemów z agentem**
 
-[Dziennika zdarzeń systemu Windows](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) w systemie Windows Server komputerze hostującym agenta zawiera zdarzenia dla wszystkich operacji wykonywanych przez agenta. Aby wyświetlić te zdarzenia:
+[Dziennika zdarzeń systemu Windows](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) w systemie Windows Server komputerze hostującym agenta zawiera zdarzenia dla wszystkich operacji wykonywanych przez agenta. Aby wyświetlić te zdarzenia:
     
 1. Otwórz **Eventvwr.msc**.
 2. Wybierz **dzienniki systemu Windows > Aplikacja**.
@@ -491,7 +491,7 @@ Po zakończeniu części 1-3, można uruchomić usługę inicjowania obsługi ad
 
 4. W każdej chwili sprawdzić **dzienniki inspekcji** kartę w portalu Azure, aby zobaczyć, jakie akcje wykonał inicjowania obsługi usługi. Dzienniki inspekcji wymieniono wszystkie zdarzenia synchronizacji poszczególnych wykonywane przez usługę inicjowania obsługi administracyjnej, takie jak użytkownicy są poza produktu Workday do odczytu i następnie później dodane lub zaktualizowane do usługi Active Directory. **[W podręczniku obsługi administracyjnej raportowania szczegółowe instrukcje na temat sposobu czytanie dzienników inspekcji](active-directory-saas-provisioning-reporting.md)**
 
-5.  Sprawdź [dziennika zdarzeń systemu Windows](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) na komputerze z serwerem systemu Windows uruchomiony jest agent nowe błędy lub ostrzeżenia. Te zdarzenia są widoczne, uruchamiając **Eventvwr.msc** na serwerze i wybranie **dzienniki systemu Windows > Aplikacja**. Wszystkie wiadomości dotyczące inicjowania obsługi administracyjnej są rejestrowane w lokalizacji source **AADSyncAgent**. 
+5.  Sprawdź [dziennika zdarzeń systemu Windows](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) na komputerze z serwerem systemu Windows uruchomiony jest agent nowe błędy lub ostrzeżenia. Te zdarzenia są widoczne, uruchamiając **Eventvwr.msc** na serwerze i wybranie **dzienniki systemu Windows > Aplikacja**. Wszystkie wiadomości dotyczące inicjowania obsługi administracyjnej są rejestrowane w lokalizacji source **AADSyncAgent**. 
     
 
 6. Jeden ukończone, będą zapisywane podsumowanie inspekcji **inicjowania obsługi administracyjnej** karcie, jak pokazano poniżej.
@@ -819,7 +819,7 @@ Istnieją dwa sposoby pozostać GDPR zgodnych:
 1. Na żądanie wyodrębnić dane dla osoby i usuwanie danych z tej osoby z dzienników zdarzeń systemu Windows. 
 2. Zachowaj przechowywania dzienników zdarzeń systemu Windows, pochodzących z procesu AADSyncAgent w obszarze 48 godzin.
 
-Aby uzyskać informacje na temat konfigurowania przechowywania danych dzienników zdarzeń systemu Windows, temacie [ustawienia dzienników zdarzeń](https://technet.microsoft.com/en-us/library/cc952132.aspx). Aby uzyskać ogólne informacje w dzienniku zdarzeń systemu Windows, temacie [w tym artykule](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx).
+Aby uzyskać informacje na temat konfigurowania przechowywania danych dzienników zdarzeń systemu Windows, temacie [ustawienia dzienników zdarzeń](https://technet.microsoft.com/library/cc952132.aspx). Aby uzyskać ogólne informacje w dzienniku zdarzeń systemu Windows, temacie [w tym artykule](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 52843c926248627e4e530612cfe9326d4302eb95
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Uwierzytelniania za pomocą interfejsów API REST usługi Mobile Engagement
 > [!IMPORTANT]
-> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
 > 
 
 ## <a name="overview"></a>Przegląd
@@ -67,7 +67,7 @@ Opcjonalnie można również wykonać instrukcje w [instalacji ręcznej](mobile-
         Import-Module Azure
 3. Zaloguj się do usługi Azure Resource Manager z programu PowerShell, uruchamiając następujące polecenie. Podaj nazwę użytkownika i hasło dla konta platformy Azure: 
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 4. Jeśli masz wiele subskrypcji, należy wykonać następujące czynności:
 
     a. Pobranie listy wszystkich subskrypcji. Następnie skopiuj **SubscriptionId** subskrypcji, która ma być używany. Upewnij się, że ta subskrypcja ma aplikację usługi Mobile Engagement. Zamierzasz korzystać z tej aplikacji na interakcję z interfejsów API. 
@@ -85,7 +85,7 @@ Opcjonalnie można również wykonać instrukcje w [instalacji ręcznej](mobile-
 
 7. Po zakończeniu skrypt wyświetla następujące cztery wartości. Pamiętaj skopiować je, ponieważ potrzebne do uwierzytelnienia programowo z usługą Active Directory: 
 
-   - **TenantId**
+   - **Dla identyfikatora dzierżawcy**
    - **Identyfikator subskrypcji**
    - **Identyfikator aplikacji**
    - **Wpis tajny**

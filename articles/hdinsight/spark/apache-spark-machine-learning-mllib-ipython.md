@@ -1,9 +1,9 @@
 ---
-title: "Maszyna przykład learning MLlib Spark w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak umożliwia tworzenie aplikacji learning maszyny, która analizuje zestawu danych za pomocą funkcji klasyfikacji za pośrednictwem Regresja logistyczna Spark MLlib."
-keywords: "Platforma Spark uczenia maszynowego, spark machine learning przykład"
+title: Maszyna przykład learning MLlib Spark w usłudze HDInsight - Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak umożliwia tworzenie aplikacji learning maszyny, która analizuje zestawu danych za pomocą funkcji klasyfikacji za pośrednictwem Regresja logistyczna Spark MLlib.
+keywords: Platforma Spark uczenia maszynowego, spark machine learning przykład
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,17 +11,15 @@ tags: azure-portal
 ms.assetid: c0fd4baa-946d-4e03-ad2c-a03491bd90c8
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/13/2018
 ms.author: jgao
-ms.openlocfilehash: ec9852cb47ab57736edadecf38173c314195f324
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0689f9e3bf63e8ff842bb440d8a68d84a77aa5b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Użyj Spark MLlib do tworzenia aplikacji uczenia maszynowego i analizować zestawu danych
 

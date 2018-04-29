@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 99595eb1f9a1eab1db51796632d58df35bf45be6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4a303db638b8ea304db5cba4075b0b102eedd0f3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>Dostęp do interfejsów API usługi Azure Mobile Engagement Service przy użyciu zestawu .NET SDK
 > [!IMPORTANT]
-> Usługa Azure Mobile Engagement wycofaniu na 3/31/2018. Ta strona zostanie usunięta wkrótce po.
+> Usługa Azure Mobile Engagement zostanie wycofana w dniu 31-03-2018. Ta strona zostanie usunięta wkrótce potem.
 > 
 
 Usługa Azure Mobile Engagement udostępnia zestaw interfejsów API do zarządzania urządzeniami, kampanie Zasięgowe lub wypchnąć itp. Wchodzić w interakcje z poniższych interfejsów API, firma Microsoft udostępnia również możesz [plik struktury Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) której można z narzędzia do generowania zestawów SDK preferowany język. Firma Microsoft zaleca używanie [AutoRest](https://github.com/Azure/AutoRest) narzędzie do generowania zestawu SDK z naszych plik struktury Swagger.
 
 > [!NOTE]
-> Usługa Azure Mobile Engagement zostanie wycofana w marcu 2018 r. i jest obecnie dostępna wyłącznie dla dotychczasowych klientów. Aby uzyskać więcej informacji, zobacz [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Usługa Azure Mobile Engagement zostanie wycofana w marcu 2018 r. i jest obecnie dostępna wyłącznie dla dotychczasowych klientów. Aby uzyskać więcej informacji, zobacz [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/).
 
 Zestaw .NET SDK został utworzony w podobny sposób, co pozwala na interakcję z poniższych interfejsów API przy użyciu otoki C# i nie masz negocjacji token uwierzytelniania i Odśwież samodzielnie.  
 
@@ -54,7 +54,7 @@ W tym przykładzie przechodzi przez zestaw kroków, które należy wykonać, aby
         const string SUBSCRIPTION_ID = "<Your Subscription Id>";
    
         // This is the Azure Resource group concept for grouping together resources 
-        //  see here: https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/
+        //  see here: https://azure.microsoft.com/documentation/articles/resource-group-portal/
         const string RESOURCE_GROUP = "";
    
         // For Mobile Engagement operations
@@ -104,7 +104,7 @@ W tym przykładzie przechodzi przez zestaw kroków, które należy wykonać, aby
         private async static Task CreateCampaign()
         {
             //  Refer to the Announcement Campaign format from here - 
-            //      https://msdn.microsoft.com/en-us/library/azure/mt683751.aspx
+            //      https://msdn.microsoft.com/library/azure/mt683751.aspx
             // Make sure you are passing all the non-optional parameters
             Campaign parameters = new Campaign(
                 name:"WelcomeCampaign",
@@ -114,7 +114,7 @@ W tym przykładzie przechodzi przez zestaw kroków, które należy wykonać, aby
                 deliveryTime:"any"
                 );
    
-            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/en-us/library/azure/mt683742.aspx
+            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/library/azure/mt683742.aspx
             CampaignStateResult result = 
                 await engagementClient.Campaigns.CreateAsync(CampaignKinds.Announcements, parameters);
             Console.WriteLine("Campaign Id '{0}' was created successfully and it is in '{1}' state", result.Id, result.State);

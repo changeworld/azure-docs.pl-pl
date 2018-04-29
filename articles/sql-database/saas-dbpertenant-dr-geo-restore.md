@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/16/2018
 ms.author: ayolubek
-ms.openlocfilehash: 928ff9b2519f6e92b091d9fd6b4ea0a7bca94d2b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: a677e6eb583e293f83df824804aa4cd6f8f5d778
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="recover-a-multi-tenant-saas-application-using-geo-restore-from-database-backups"></a>Odzyskaj wielodostępnych aplikacji SaaS przy użyciu geograficznie — Przywracanie z kopii zapasowych bazy danych
 
@@ -68,7 +68,7 @@ W tym samouczku są opisane te problemy przy użyciu funkcji bazy danych SQL Azu
 
 ## <a name="get-the-disaster-recovery--scripts"></a>Pobierz skrypty odzyskiwania po awarii 
 
-Skrypty DR używane w tym samouczku są dostępne w [SaaS biletów Wingtip bazy danych, dla każdego dzierżawcy repozytorium GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/tree/feature-DR-georestore). Zapoznaj się z [ogólne wskazówki](saas-tenancy-wingtip-app-guidance-tips.md) dla czynności, aby pobrać i odblokować skrypty zarządzania Wingtip biletów.
+Skrypty DR używane w tym samouczku są dostępne w [SaaS biletów Wingtip bazy danych, dla każdego dzierżawcy repozytorium GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Zapoznaj się z [ogólne wskazówki](saas-tenancy-wingtip-app-guidance-tips.md) dla czynności, aby pobrać i odblokować skrypty zarządzania Wingtip biletów.
 > [!IMPORTANT]
 > Podobnie jak wszystkie bilety Wingtip zarządzania skrypty skrypty DR są przykładowe jakości i nie powinna być używana w środowisku produkcyjnym.   
 

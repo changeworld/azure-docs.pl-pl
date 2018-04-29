@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 0074486d3d7fb58bc6e3adcbe4245ec53e7e4cde
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e8dc802d67b4cd2e38ab195b771ceeaa07876e58
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj narzędzia Azure HDInsight dla kodu programu Visual Studio
 
@@ -29,7 +29,7 @@ Dowiedz się, jak za pomocą narzędzi HDInsight Azure dla programu Visual Studi
 
 Następujące elementy są wymagane dla wykonaniu kroków w tym artykule:
 
-- Klaster usługi HDInsight.  Aby utworzyć klaster, zobacz [Rozpoczynanie pracy z usługą HDInsight]( hdinsight-hadoop-linux-tutorial-get-started.md).
+- Klaster usługi HDInsight. Aby utworzyć klaster, zobacz [Rozpoczynanie pracy z usługą HDInsight]( hdinsight-hadoop-linux-tutorial-get-started.md).
 - [Program Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 - [Mono](http://www.mono-project.com/docs/getting-started/install/). Mono jest tylko wymagane dla systemów Linux i macOS.
 
@@ -100,7 +100,7 @@ Przed skryptów można przesłać do klastrów usługi HDInsight w kodzie VS, na
     - Przedstawia PySpark partii skryptów
     - Ustaw konfiguracje
 
-**Aby połączyć klastra**
+<a id="linkcluster"></a>**Aby połączyć klastra**
 
 Można połączyć normalne klastra przy użyciu Ambari zarządzane username, także połączyć zabezpieczeń klastra usługi hadoop przy użyciu nazwy użytkownika domeny (takich jak: user1@contoso.com).
 1. Otwórz palety polecenia, wybierając **CTRL + SHIFT + P**, a następnie wprowadź **HDInsight: Link klastra**.
@@ -112,7 +112,7 @@ Można połączyć normalne klastra przy użyciu Ambari zarządzane username, ta
    ![okno dialogowe klastra łącza](./media/hdinsight-for-vscode/link-cluster-process.png)
 
    > [!NOTE]
-   > Używamy połączonej nazwy użytkownika i hasła, jeśli klaster rejestrowane w subskrypcji platformy Azure i połączone klastra. 
+   > Nazwa połączonego użytkownika i hasło są używane, jeśli klaster rejestrowane w subskrypcji platformy Azure i połączone klastra. 
    
 3. Widać klastra połączone za pomocą polecenia **klaster listą**. Teraz możesz przesłać skrypt do tego klastra połączony.
 
@@ -275,8 +275,50 @@ Narzędzia HDInsight Tools for VS kod umożliwia także przesłać interakcyjnyc
 
 Po przesłaniu zadania Python przesyłanie dzienników pojawia się w **dane wyjściowe** okna w kodzie VS. **URL interfejsu użytkownika Spark** i **URL interfejsu użytkownika Yarn** są również wyświetlane. Adres URL można otworzyć w przeglądarce sieci web, aby śledzić stan zadania.
 
-
+>[!NOTE]
+>PySpark3 nie jest już obsługiwany w Livy 0,4 (czyli HDI klastra spark 2.2). Tylko "PySpark" jest obsługiwana dla języka python. Jest znany, problem, który przedstawia spark 2.2 niepowodzenie python3.
    
+## <a name="livy-configuration"></a>Konfiguracja programu Livy
+Konfiguracja programu Livy jest obsługiwana, mógł zostać ustawiony w ustawieniach projektu w folderze miejsca pracy. Więcej informacji, zobacz [Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
+
++ Ustawienia projektu:
+
+    ![Konfiguracja programu Livy](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
++ Obsługiwane konfiguracje programu Livy:   
+
+    **POST /batches**   
+    Treść żądania
+
+    | name | description | type | 
+    | :- | :- | :- | 
+    | plik | Plik zawierający aplikację do wykonania | Ścieżka (wymagane) | 
+    | proxyUser | Personifikację podczas uruchamiania zadania | ciąg | 
+    | className | Klasy głównym aplikacji Java/Spark | ciąg |
+    | argumentów | Argumenty wiersza polecenia dla aplikacji | Lista ciągów | 
+    | słoików | jars używanego w tej sesji | Listy parametrów | 
+    | pyFiles | Pliki języka Python do użycia w tej sesji | Listy parametrów |
+    | plików | pliki do użycia w tej sesji | Listy parametrów |
+    | driverMemory | Ilość pamięci dla procesu sterownika | ciąg |
+    | driverCores | Liczba rdzeni do użycia na potrzeby procesu sterownika | int |
+    | executorMemory | Ilość pamięci na działaniu proces wykonujący testy | ciąg |
+    | executorCores | Liczba rdzeni do użycia dla każdego modułu wykonującego | int |
+    | numExecutors | Liczba modułów, aby uruchomić dla tej sesji | int |
+    | Archiwa | Archiwa używanego w tej sesji | Listy parametrów |
+    | Kolejki | Nazwa kolejki YARN, do której przesłano | ciąg |
+    | name | Nazwa tej sesji | ciąg |
+    | conf | Właściwości konfiguracji Spark | Mapa klucza = val |
+
+    Treść odpowiedzi   
+    Utworzony obiekt partii.
+
+    | name | description | type | 
+    | :- | :- | :- | 
+    | id | Identyfikator sesji | int | 
+    | appId | Identyfikator sesji |  Ciąg |
+    | appInfo | Informacje szczegółowe aplikacji | Mapa klucza = val |
+    | Dziennik | Wiersze dziennika | Lista ciągów |
+    | state |   Stan usługi partia zadań | ciąg |
 
 
 ## <a name="additional-features"></a>Dodatkowe funkcje

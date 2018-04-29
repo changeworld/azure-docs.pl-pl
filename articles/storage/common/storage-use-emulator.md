@@ -1,8 +1,8 @@
 ---
-title: "Użyć emulatora magazynu Azure do programowania i testowania | Dokumentacja firmy Microsoft"
-description: "Emulatora magazynu Azure udostępnia wolnego lokalne Środowisko deweloperskie do tworzenia i testowania aplikacji usługi Azure Storage. Dowiedz się, sposób uwierzytelniania żądań, sposób nawiązywania połączenia z emulatora z aplikacji i jak używać narzędzia wiersza polecenia."
+title: Użyć emulatora magazynu Azure do programowania i testowania | Dokumentacja firmy Microsoft
+description: Emulatora magazynu Azure udostępnia wolnego lokalne Środowisko deweloperskie do tworzenia i testowania aplikacji usługi Azure Storage. Dowiedz się, sposób uwierzytelniania żądań, sposób nawiązywania połączenia z emulatora z aplikacji i jak używać narzędzia wiersza polecenia.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Użyć emulatora magazynu Azure do programowania i testowania
 
@@ -27,7 +27,7 @@ Emulator magazynu Microsoft Azure zapewnia środowisko lokalne, które emuluje u
 ## <a name="get-the-storage-emulator"></a>Pobierz emulator magazynu
 Emulator magazynu jest dostępny jako część [Microsoft Azure SDK](https://azure.microsoft.com/downloads/). Można także zainstalować emulator magazynu przy użyciu [Autonomiczny Instalator rozszerzenia](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (bezpośrednie pobieranie). Aby zainstalować emulator magazynu, musi mieć uprawnienia administratora na tym komputerze.
 
-Emulator magazynu jest obecnie działa tylko w systemie Windows. Dla osób, biorąc pod uwagę emulatora magazynu, dla systemu Linux, jedną z opcji jest społeczności utrzymywane emulatora magazynu typu open source [Azurite](https://github.com/arafato/azurite).
+Emulator magazynu jest obecnie działa tylko w systemie Windows. Dla osób, biorąc pod uwagę emulatora magazynu, dla systemu Linux, jedną z opcji jest społeczności utrzymywane emulatora magazynu typu open source [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
 > Dane utworzone w jednej wersji emulatora magazynu nie jest gwarantowana była dostępna, gdy w innej wersji. Jeśli musisz utrwalić danych długoterminowym, zaleca się przechowywania tych danych na koncie magazynu platformy Azure, a nie w emulatorze magazynu.

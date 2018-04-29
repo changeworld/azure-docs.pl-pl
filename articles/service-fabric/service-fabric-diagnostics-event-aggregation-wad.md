@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/03/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 65e5e45300e66cd8c3acc44a91335de45a919eb5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: 2682054dd132e33897602b60f0799b7cc10ea5f1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregacja zdarzeń i kolekcji przy użyciu systemu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -32,44 +32,46 @@ Jeśli korzystasz z klastra usługi sieć szkieletowa usług Azure, jest dobrym 
 Jednym ze sposobów przekazywania i zbierania dzienników jest używane rozszerzenie systemu Windows Azure Diagnostics (WAD), który przekazuje dzienniki usługi Azure Storage, a także ma możliwość przesyłania dzienników usługi Application Insights dla platformy Azure lub usługi Event Hubs. Umożliwia także procesu zewnętrznego do odczytywania zdarzenia z magazynu i umieścić w produkcie platformy analizy, takich jak [analizy dzienników](../log-analytics/log-analytics-service-fabric.md) lub innego rozwiązania do analizowania dziennika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Te narzędzia są używane do wykonywania niektórych operacji w tym dokumencie:
+W tym artykule używane są następujące narzędzia:
 
-* [Diagnostyka Azure](../cloud-services/cloud-services-dotnet-diagnostics.md) (związane z usług Azure Cloud Services, ale ma dobrej informacje i przykłady)
 * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Klient usługi Azure Resource Manager](https://github.com/projectkudu/ARMClient)
 * [Szablon usługi Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="log-and-event-sources"></a>Źródła dziennika i zdarzenie
-
-### <a name="service-fabric-platform-events"></a>Zdarzenia platformy Service Fabric
-Zgodnie z opisem w [w tym artykule](service-fabric-diagnostics-event-generation-infra.md), Service Fabric konfiguruje możesz z kilku kanałów poza pole rejestrowania, w których następujące kanały łatwo są skonfigurowane przy użyciu WAD do wysłania, monitorowania i diagnostyki danych do tabeli magazynu lub w innym miejscu:
-  * Zdarzenia operacyjne: operacje wyższego poziomu, które wykonuje platformy sieć szkieletowa usług. Tworzenie aplikacji i usług, zmian stanu węzła i informacje o uaktualnianiu przykładami. Te są emitowane jako dzienniki zdarzeń śledzenia dla systemu Windows (ETW)
+## <a name="service-fabric-platform-events"></a>Zdarzenia platformy Service Fabric
+Sieć szkieletowa usług konfiguruje możesz z kilku [kanałów rejestrowania poza pole](service-fabric-diagnostics-event-generation-infra.md), o następujących kanałów są wstępnie skonfigurowane z rozszerzenia, aby wysłać monitorowania i diagnostyki danych do tabeli magazynu lub w innym miejscu:
+  * [Zdarzenia operacyjne](service-fabric-diagnostics-event-generation-operational.md): operacje wyższego poziomu, które wykonuje platformy sieć szkieletowa usług. Tworzenie aplikacji i usług, zmian stanu węzła i informacje o uaktualnianiu przykładami. Te są emitowane jako dzienniki zdarzeń śledzenia dla systemu Windows (ETW)
   * [Reliable Actors zdarzeń modelu programowania](service-fabric-reliable-actors-diagnostics.md)
   * [Niezawodne usługi zdarzeń modelu programowania](service-fabric-reliable-services-diagnostics.md)
 
-### <a name="application-events"></a>Zdarzenia aplikacji
- Zdarzenia wysyłanego z Twojej aplikacji i usług kodu i zapisany przy użyciu Pomocnika EventSource — klasa w szablony programu Visual Studio. Aby uzyskać więcej informacji na temat zapisywania dzienników źródła zdarzeń z aplikacji, zobacz [monitora i diagnozowania usług w Instalatorze programowanie komputera lokalnego](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-
-## <a name="deploy-the-diagnostics-extension"></a>Wdrażanie rozszerzenia diagnostyki
-Pierwszym etapem zbierania dzienników jest wdrażanie rozszerzenia diagnostyki na wszystkich maszynach wirtualnych w klastrze usługi sieć szkieletowa usług. Rozszerzenie diagnostycznych zbiera dzienniki na każdej maszynie Wirtualnej i przekazuje je do konta magazynu, który określisz. Kroki zależą od nieco przy użyciu portalu Azure lub usługi Azure Resource Manager. Kroki również różnić w zależności od tego, czy wdrożenie jest częścią tworzenia klastra lub jest dla klastra, który już istnieje. Oto kroki dla każdego scenariusza.
+## <a name="deploy-the-diagnostics-extension-through-the-portal"></a>Wdrażanie rozszerzenia Diagnostyka za pośrednictwem portalu
+Pierwszym etapem zbierania dzienników jest wdrażanie rozszerzenia diagnostyki w węzłach zestaw skali maszyny wirtualnej w klastrze usługi sieć szkieletowa usług. Rozszerzenie diagnostycznych zbiera dzienniki na każdej maszynie Wirtualnej i przekazuje je do konta magazynu, który określisz. Poniższe kroki przedstawiają sposób, w tym celu dla nowych i istniejących klastrów za pośrednictwem portalu Azure i szablony usługi Azure Resource Manager.
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Wdrażanie rozszerzenia diagnostyki w ramach tworzenia klastra za pośrednictwem portalu Azure
-Aby wdrożyć rozszerzenie diagnostyki maszyny wirtualne w klastrze, w ramach tworzenia klastra, użyj panelu Ustawienia diagnostyki pokazano na poniższej ilustracji — upewnij się, że diagnostyki jest ustawiona na **na** (ustawienie domyślne). Po utworzeniu klastra, nie możesz zmienić te ustawienia przy użyciu portalu.
+Podczas tworzenia klastra, w kroku konfiguracji klastra, rozwiń węzeł opcjonalne ustawienia i upewnij się, że diagnostyki jest ustawiona na **na** (ustawienie domyślne).
 
-![Azure ustawień diagnostycznych w portalu do tworzenia klastra](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics.png)
+![Azure ustawień diagnostycznych w portalu do tworzenia klastra](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
-Podczas tworzenia klastra przy użyciu portalu, zalecamy pobranie szablonu **przed kliknięciem przycisku OK** do utworzenia klastra. Aby uzyskać więcej informacji, zapoznaj się [Konfigurowanie klastra sieci szkieletowej usług za pomocą szablonu usługi Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Musisz szablonu, aby wprowadzić zmiany później, ponieważ nie można wprowadzić kilka zmian za pomocą portalu.
+Zdecydowanie zaleca się pobieranie szablonu **przed kliknięciem przycisku Utwórz** w ostatnim kroku. Aby uzyskać więcej informacji, zapoznaj się [Konfigurowanie klastra sieci szkieletowej usług za pomocą szablonu usługi Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Wymagany jest szablon wprowadzać zmiany na kanały (wymienionych powyżej) do zbierania danych z.
 
-### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Wdrażanie rozszerzenia diagnostyki w ramach tworzenia klastra przy użyciu usługi Azure Resource Manager
-Aby utworzyć klaster przy użyciu usługi Resource Manager, należy dodać konfiguracji diagnostyki JSON do szablonu usługi Resource Manager pełne klastra przed utworzeniem klastra. Udostępniamy przykładowy szablon Menedżera zasobów klastra maszyny Wirtualnej pięciu o konfiguracji diagnostyki dodana jako część nasze przykłady szablonu usługi Resource Manager. Można to sprawdzić w tej lokalizacji w galerii Azure przykładów: [pięcioma węzłami klastra z przykładowy szablon Menedżera zasobów diagnostyki](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+![Szablon klastra](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
+
+Teraz, gdy jest agregowania zdarzeń w usłudze Azure Storage [Konfigurowanie analizy dzienników](service-fabric-diagnostics-oms-setup.md) Uzyskaj informacje i wyszukiwać w nich w portalu usługi Analiza dzienników
+
+>[!NOTE]
+>Nie ma można filtrować lub czyścić zdarzenia, które są wysyłane do tabel. Jeśli użytkownik nie należy wdrożyć proces Usuń zdarzenia z tabeli, tabeli będą w dalszym ciągu wzrostu (zakończenie domyślną jest 50 GB). Instrukcje dotyczące zmiany są [dalsze poniżej w tym artykule](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Ponadto jest przykładem usługi pielęgnacji danych w [próbki programu alarmowego](https://github.com/Azure-Samples/service-fabric-watchdog-service), i zaleca zapisu jedną dla siebie również, chyba że powody do przechowywania dzienników poza przedział czasu dnia 30 lub 90.
+
+## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Wdrażanie rozszerzenia diagnostyki za pomocą usługi Azure Resource Manager
+
+### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Tworzenie klastra z rozszerzeniem diagnostyki
+Aby utworzyć klaster przy użyciu usługi Resource Manager, należy dodać konfiguracji diagnostyki JSON do pełnego szablonu usługi Resource Manager, przed utworzeniem klastra. Udostępniamy przykładowy szablon Menedżera zasobów klastra maszyny Wirtualnej pięciu o konfiguracji diagnostyki dodana jako część nasze przykłady szablonu usługi Resource Manager. Można to sprawdzić w tej lokalizacji w galerii Azure przykładów: [pięcioma węzłami klastra z przykładowy szablon Menedżera zasobów diagnostyki](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Aby wyświetlić ustawienia diagnostyki w szablonie usługi Resource Manager, otwórz plik azuredeploy.json i wyszukaj **IaaSDiagnostics**. Aby utworzyć klaster przy użyciu tego szablonu, wybierz **wdrażanie na platformie Azure** przycisk dostępny w poprzedniej konsolidacji.
 
 Alternatywnie można pobrać przykładowych Menedżera zasobów, wprowadzić zmiany i utworzyć klaster przy użyciu szablonu modyfikacji, przy użyciu `New-AzureRmResourceGroupDeployment` polecenie w oknie programu PowerShell systemu Azure. Zobacz poniższy kod dla parametrów, które przekazujesz do polecenia. Aby uzyskać szczegółowe informacje na temat wdrażania grupy zasobów za pomocą programu PowerShell, zobacz artykuł [wdrażanie grupy zasobów przy użyciu szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
-### <a name="deploy-the-diagnostics-extension-to-an-existing-cluster"></a>Wdrażanie rozszerzenia diagnostyki do istniejącego klastra
-Jeśli masz istniejący klaster nie ma wdrożonych diagnostyki lub jeśli chcesz zmodyfikować istniejącą konfigurację, można dodać lub zaktualizować. Zmodyfikuj szablonu usługi Resource Manager, który służy do tworzenia istniejącego klastra lub pobrać szablonu z portalu zgodnie z wcześniejszym opisem. Zmodyfikuj plik template.json, wykonując następujące zadania.
+### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Dodaj rozszerzenie diagnostyki do istniejącego klastra
+Jeśli masz istniejący klaster nie ma wdrożonych diagnostyki, można dodawać lub zmodyfikuj go przy użyciu szablonu klastra. Zmodyfikuj szablonu usługi Resource Manager, który służy do tworzenia istniejącego klastra lub pobrać szablonu z portalu zgodnie z wcześniejszym opisem. Należy zmodyfikować plik template.json przy wykonywaniu następujących zadań:
 
 Dodaj nowy zasób magazynu do szablonu przez dodanie do sekcji zasobów.
 
@@ -79,7 +81,7 @@ Dodaj nowy zasób magazynu do szablonu przez dodanie do sekcji zasobów.
   "type": "Microsoft.Storage/storageAccounts",
   "name": "[parameters('applicationDiagnosticsStorageAccountName')]",
   "location": "[parameters('computeLocation')]",
-  "properties": {
+  "sku": {
     "accountType": "[parameters('applicationDiagnosticsStorageAccountType')]"
   },
   "tags": {
@@ -89,7 +91,7 @@ Dodaj nowy zasób magazynu do szablonu przez dodanie do sekcji zasobów.
 },
 ```
 
- Następnie dodaj do sekcji Parametry zaraz po definicji konta magazynu, między `supportLogStorageAccountName` i `vmNodeType0Name`. Zastąp tekst zastępczy *nazwy konta magazynu tu* z nazwą konta magazynu.
+ Następnie dodaj do sekcji Parametry zaraz po definicji konta magazynu, między `supportLogStorageAccountName`. Zastąp tekst zastępczy *nazwy konta magazynu tu* z nazwą konta magazynu, które chcesz.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -105,7 +107,7 @@ Dodaj nowy zasób magazynu do szablonu przez dodanie do sekcji zasobów.
     },
     "applicationDiagnosticsStorageAccountName": {
       "type": "string",
-      "defaultValue": "storage account name goes here",
+      "defaultValue": "**STORAGE ACCOUNT NAME GOES HERE**",
       "metadata": {
         "description": "Name for the storage account that contains application diagnostics data from the cluster"
       }
@@ -182,6 +184,14 @@ Po zmodyfikowaniu pliku template.json zgodnie z opisem, ponownie opublikować sz
 >},
 >```
 
+### <a name="update-storage-quota"></a>Zaktualizuj przydział magazynowania
+
+Ponieważ tabele wypełnione przez rozszerzenie rozwoju aż jest osiągnęła limit przydziału, może zajść potrzeba warto rozważyć zmniejszenie rozmiaru przydziału. Wartością domyślną jest 50 GB i można skonfigurować w szablonie w obszarze `overallQuotainMB` pole w obszarze `DiagnosticMonitorConfiguration`
+
+```json
+"overallQuotaInMB": "50000",
+```
+
 ## <a name="log-collection-configurations"></a>Konfiguracje zbierania dzienników
 Dzienniki z dodatkowych kanałów są również dostępne dla kolekcji, Oto niektóre spośród najbardziej typowe konfiguracje wprowadzone w szablonie dla klastrów działających na platformie Azure.
 
@@ -196,7 +206,7 @@ Dzienniki z dodatkowych kanałów są również dostępne dla kolekcji, Oto niek
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Dane i kanał wiadomości - Base: dzienniki krytyczne i zdarzenia generowane w wiadomości (obecnie tylko ReverseProxy) oraz ścieżki danych oprócz szczegółowe kanału operacyjnych dziennikach. Te zdarzenia są przetwarzania błędów i innych zagadnień krytycznych ReverseProxy i żądań przetwarzanych żądań. **To Nasze zalecenia dla rejestrowania kompleksowe**. Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych programu Visual Studio, należy dodać "Microsoft-ServiceFabric:4:0x4000000000000010" do listy dostawców ETW.
+* Dane i kanał wiadomości - Base: dzienniki krytyczne i zdarzenia generowane w wiadomości (obecnie tylko ReverseProxy) oraz ścieżki danych oprócz szczegółowe kanału operacyjnych dziennikach. Te zdarzenia są przetwarzania błędów i innych zagadnień krytycznych w ReverseProxy żądania, a także przetwarzania żądań. **To Nasze zalecenia dla rejestrowania kompleksowe**. Aby wyświetlić te zdarzenia w Podglądzie zdarzeń diagnostycznych programu Visual Studio, należy dodać "Microsoft-ServiceFabric:4:0x4000000000000010" do listy dostawców ETW.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
@@ -281,7 +291,7 @@ Jeśli używasz zbiornika usługi Application Insights zgodnie z opisem w poniż
 
 ## <a name="send-logs-to-application-insights"></a>Wysyłanie dzienników do usługi Application Insights
 
-Wysyłanie danych monitorowania i diagnostyki Insights aplikacji (AI) może zostać wykonane jako część konfiguracji WAD. Jeśli zdecydujesz się używać AI do analizy zdarzeń i wizualizacji, przeczytaj [analiza zdarzeń i wizualizacji z usługą Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) ustanowienie zbiornika AI jako część programu "WadCfg".
+Wysyłanie danych monitorowania i diagnostyki Insights aplikacji (AI) może zostać wykonane jako część konfiguracji WAD. Jeśli zdecydujesz się używać AI do analizy zdarzeń i wizualizacji, przeczytaj [sposobu konfigurowania zbiornika AI](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template) jako część programu "WadCfg".
 
 ## <a name="next-steps"></a>Kolejne kroki
 

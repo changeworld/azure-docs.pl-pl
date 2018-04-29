@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do przepływu rejestrowania dla grup zabezpieczeń sieci z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft"
-description: "Ta strona opisano sposób korzystania NSG przepływu dzienniki funkcji Azure obserwatora sieciowego"
+title: Wprowadzenie do rejestrowania przepływu na stronie zabezpieczenia sieci grupy z obserwatora sieciowego Azure | Dokumentacja firmy Microsoft
+description: W tym artykule wyjaśniono, jak korzystać z funkcji grupy NSG przepływu dzienniki obserwatora sieci platformy Azure.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4eaffba08ccf601e440709d804891668340a376d
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: c6a24fbca37d6aa1d775a70c708a139dfb70b813
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do przepływu rejestrowania dla grup zabezpieczeń sieci
 
-Dzienniki przepływu sieciowej grupy zabezpieczeń są funkcją obserwatora sieciowego, który służy do wyświetlania informacji na temat przychodzące i wychodzące ruchu IP za pośrednictwem grupy zabezpieczeń sieci. Te dzienniki przepływu są zapisywane w formacie json i Pokaż przepływów wychodzącego i przychodzącego na podstawie reguły w poszczególnych kart przepływ dotyczy 5-elementowej informacji o przepływie (źródłowego i docelowego adresu IP, portu źródłowego i docelowego Protocol), i jeśli ruch został dozwolony lub niedozwolony.
+Dzienniki przepływu grupa zabezpieczeń sieci są funkcją obserwatora sieciowego, który służy do wyświetlania informacji na temat przychodzące i wychodzące ruch IP za pośrednictwem grupy NSG. Przepływ dzienniki są zapisywane w formacie json i Pokaż przepływów wychodzącego i przychodzącego na zasadzie na reguły, interfejsu sieciowego (NIC) dotyczy przepływ, 5-elementowej informacji o przepływie (źródłowego i docelowego adresu IP, portu źródłowego i docelowego i protocol), a jeśli ruch został dozwolony lub niedozwolony.
 
-![Przegląd dzienników przepływu][1]
+![Przegląd dzienników przepływu](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
-Podczas przepływu rejestruje grup zabezpieczeń sieci docelowej, nie są wyświetlane takie same jak inne dzienniki. Przepływ dzienniki są przechowywane tylko w ramach konta magazynu i po ścieżce rejestrowania, jak pokazano w poniższym przykładzie:
+Podczas przepływu rejestruje docelowych grup NSG, nie są wyświetlane takie same jak inne dzienniki. Przepływ dzienniki są przechowywane tylko w ramach konta magazynu i ścieżki rejestrowania pokazano w poniższym przykładzie:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-Te same zasady przechowywania wyświetlanego na inne dzienniki dotyczą dzienniki przepływu. Dzienniki ma zasady przechowywania, które można ustawić od dnia 1 do 365 dni. Jeśli zasady przechowywania nie są ustawione, dzienniki będą obsługiwane przez czas nieokreślony.
+Te same zasady przechowywania widoczne dla innych dzienników dotyczą dzienniki przepływu. Można ustawić zasad przechowywania dziennika od 1 dnia do 365 dni. Jeśli zasady przechowywania nie są ustawione, dzienniki będą obsługiwane przez czas nieokreślony.
 
 ## <a name="log-file"></a>Plik dziennika
 
-Dzienniki przepływu ma wiele właściwości. Poniżej znajduje się lista właściwości, które są zwracane w dzienniku przepływu NSG:
+Dzienniki przepływu obejmują następujące właściwości:
 
 * **czas** — jest to czas, gdy zdarzenie zostało zarejestrowane
 * **systemId** — identyfikator zasobu grupy zabezpieczeń sieci.
-* **Kategoria** -kategorię zdarzenia, to jest zawsze być NetworkSecurityGroupFlowEvent
+* **Kategoria** -kategorii zdarzenia. Kategoria jest zawsze **NetworkSecurityGroupFlowEvent**
 * **RESOURCEID** — identyfikator grupy NSG zasobu
 * **operationName** -zawsze NetworkSecurityGroupFlowEvents
 * **właściwości** -zbiór właściwości przepływu
@@ -59,15 +59,14 @@ Dzienniki przepływu ma wiele właściwości. Poniżej znajduje się lista wła�
                     * **Przepływu ruchu** -kierunek przepływu ruchu. Prawidłowe wartości to **I** dla ruchu przychodzącego i **O** dla ruchu wychodzącego.
                     * **Ruch** — czy też odmówiono ruchu. Prawidłowe wartości to **A** dla dozwolone i **D** dla odmowa.
 
-
-Poniżej przedstawiono przykładowy dziennik przepływu. Jak widać, że ma wiele rekordów, które należy wykonać na liście właściwości opisanych w poprzedniej sekcji. 
+Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istnieje wiele rekordów, które należy wykonać na liście właściwości opisanych w poprzedniej sekcji.
 
 > [!NOTE]
-> Wartości właściwości flowTuples to rozdzielana przecinkami lista.
+> Wartości w **flowTuples* właściwości są listę rozdzielaną przecinkami.
  
 ```json
 {
-    "records": 
+    "records":
     [
         
         {
@@ -102,12 +101,6 @@ Poniżej przedstawiono przykładowy dziennik przepływu. Jak widać, że ma wiel
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak włączyć dzienniki przepływu odwiedzając [przepływ włączenie rejestrowania](network-watcher-nsg-flow-logging-portal.md).
-
-Więcej informacji na temat rejestrowania NSG, odwiedzając [dziennika analizy grup zabezpieczeń sieci (NSG)](../virtual-network/virtual-network-nsg-manage-log.md).
-
-Dowiedzieć się, jeśli ruch jest dozwolony lub zabroniony na maszynie Wirtualnej, odwiedzając [Sprawdź, sprawdź, czy ruch z przepływem IP](network-watcher-check-ip-flow-verify-portal.md)
-
-<!-- Image references -->
-[1]: ./media/network-watcher-nsg-flow-logging-overview/figure1.png
-
+- Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [NSG włączenie rejestrowania przepływu](network-watcher-nsg-flow-logging-portal.md).
+- Aby dowiedzieć się więcej na temat rejestrowania NSG, zobacz [dziennika analizy grup zabezpieczeń sieci (NSG)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- Aby określić, czy ruch jest dozwolony lub zabroniony do lub z maszyny Wirtualnej, zobacz [zdiagnozować problem filtru ruchu sieciowego maszyny Wirtualnej](diagnose-vm-network-traffic-filtering-problem.md)

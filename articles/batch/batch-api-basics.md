@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/28/2018
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch
 
@@ -79,10 +79,15 @@ Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch
 
 ## <a name="azure-storage-account"></a>Konto usługi Azure Storage
 
-Większość rozwiązań partii usługi Batch używa usługi Azure Storage do przechowywania plików zasobów i plików wyjściowych.  
+Większość rozwiązań partii usługi Batch używa usługi Azure Storage do przechowywania plików zasobów i plików wyjściowych. Na przykład zadania podrzędne usługi Batch (w tym standardowe, uruchamiania oraz przygotowania i zwolnienia zadań) muszą określać pliki zasobów, które znajdują się na koncie magazynu.
 
-Usługa Batch obsługuje obecnie tylko typ konta magazynu ogólnego przeznaczenia, zgodnie z opisem w kroku 5 [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) w temacie [Informacje o kontach usługi Azure Storage](../storage/common/storage-create-storage-account.md). Zadania podrzędne usługi Batch (w tym standardowe, uruchamiania oraz przygotowania i zwolnienia zadań) muszą określać pliki zasobów, które znajdują się na kontach magazynu ogólnego przeznaczenia.
+Usługa Batch obsługuje następujące [opcje konta](../storage/common/storage-account-options.md) usługi Azure Storage:
 
+* Konta ogólnego przeznaczenia, wersja 2 (GPv2) 
+* Konta ogólnego przeznaczenia, wersja 1 (GPv1)
+* Konta usługi Blob Storage
+
+Konto magazynu można skojarzyć z kontem usługi Batch podczas tworzenia konta usługi Batch lub później. Wybierając konto magazynu, należy wziąć pod uwagę wymagania dotyczące kosztów i wydajności. Na przykład opcje konta magazynu GPv2 i Blob Storage obsługują większe [limity wydajności i skalowalności](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) w porównaniu z wersją GPv1. (Aby poprosić o zwiększenie limitu magazynu, skontaktuj się z działem pomocy technicznej platformy Azure). Te opcje konta mogą poprawić wydajność rozwiązań usługi Batch, które zawierają dużą liczbę równoległych zadań podrzędnych odczytywanych z lub zapisywanych do konta magazynu.
 
 ## <a name="compute-node"></a>Węzeł obliczeniowy
 Węzeł obliczeniowy jest maszyną wirtualną platformy Azure lub maszyną wirtualną dla usługi w chmurze przeznaczoną do przetwarzania części obciążenia danej aplikacji. Rozmiar węzła określa liczbę rdzeni procesora, pojemność pamięci oraz rozmiar lokalnego systemu plików przydzielony do tego węzła. Pule węzłów systemu Windows lub Linux można tworzyć przy użyciu usługi Azure Cloud Services, obrazów z witryny [Marketplace usługi Azure Virtual Machines][vm_marketplace] lub przygotowanych samodzielnie obszarów niestandardowych. Aby uzyskać więcej informacji na temat tych opcji, zobacz poniżej sekcję [Pula](#pool).
@@ -252,7 +257,7 @@ Podczas tworzenia zadania podrzędnego można określić:
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
     Jeśli w ramach zadań podrzędnych należy uruchomić aplikację lub skrypt, który nie należy do elementu `PATH` lub zmiennych środowiskowych odwołania, wywołaj powłokę jawnie w wierszu polecenia zadania podrzędnego.
-* **Plików zasobów** zawierających dane do przetworzenia. Te pliki są automatycznie kopiowane do węzła z usługi Blob Storage na koncie usługi Azure Storage ogólnego przeznaczenia przed wykonaniem wiersza polecenia zadania podrzędnego. Więcej informacji znajduje się w sekcjach [Zadanie podrzędne uruchamiania](#start-task) oraz [Pliki i katalogi](#files-and-directories).
+* **Plików zasobów** zawierających dane do przetworzenia. Te pliki są automatycznie kopiowane do węzła z usługi Blob Storage na koncie usługi Azure Storage przed wykonaniem wiersza polecenia zadania podrzędnego. Więcej informacji znajduje się w sekcjach [Zadanie podrzędne uruchamiania](#start-task) oraz [Pliki i katalogi](#files-and-directories).
 * **Zmienne środowiskowe** wymagane w aplikacji. Więcej informacji znajduje się w sekcji [Ustawienia środowiska dla zadań podrzędnych](#environment-settings-for-tasks).
 * **Ograniczenia**, zgodnie z którymi powinno działać zadanie podrzędne. Na przykład ograniczenia obejmują maksymalny czas działania zadania podrzędnego, maksymalna liczba prób ponownego wykonania zadania podrzędnego zakończonego niepowodzeniem i maksymalny czas przechowywania plików w katalogu roboczym zadania podrzędnego.
 * **Pakiety aplikacji** do wdrożenia w obrębie węzła obliczeniowego, w których zgodnie z harmonogramem będzie uruchamiane zadanie podrzędne. [Pakiety aplikacji](#application-packages) umożliwiają uproszczone wdrażanie aplikacji uruchamianych w ramach zadań podrzędnych oraz zarządzanie ich wersjami. Pakiety aplikacji na poziomie zadania podrzędnego są szczególnie użyteczne w środowiskach z udostępnioną pulą, w których różne zadania są uruchamiane w jednej puli, a pula nie jest usuwana po ukończeniu zadania. Jeśli liczba zadań podrzędnych w zadaniu jest mniejsza niż liczba węzłów w puli, pakiety aplikacji zadania podrzędnego mogą minimalizować ilość transferowanych danych, ponieważ aplikacja jest wdrażana tylko dla węzłów, w których odbywa się uruchamianie zadań podrzędnych.

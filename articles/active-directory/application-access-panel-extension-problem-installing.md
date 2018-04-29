@@ -1,11 +1,11 @@
 ---
-title: "Zainstaluj aplikację dostępu panelu przeglądarki rozszerzenie - Azure | Dokumentacja firmy Microsoft"
-description: "Rozwiąż typowe błędy podczas instalowania rozszerzenia przeglądarki panelu dostępu."
+title: Zainstaluj aplikację dostępu panelu przeglądarki rozszerzenie - Azure | Dokumentacja firmy Microsoft
+description: Rozwiąż typowe błędy podczas instalowania rozszerzenia przeglądarki panelu dostępu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: c49cfad5f362f4402be476066f0e8c0158f20d73
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Zainstaluj rozszerzenie przeglądarki panelu dostępu
 
@@ -37,7 +37,6 @@ Dla logowania jednokrotnego opartego na hasłach można użyć dowolnego z poni�
 - **Krawędź**: w systemie Windows 10 Anniversary Edition lub nowszy. 
 - **Chrome**: w systemie Windows 7 lub nowszym i System MacOS x lub później.
 - **Firefox 26.0 lub nowsze**: w systemie Windows XP SP2 lub nowszy i Mac OS X 10.6 lub później.
-- **Internet Explorer 8, 9, 10, 11**: w systemie Windows 7 lub nowszy (obsługa ograniczona).
 
 ## <a name="install-the-access-panel-browser-extension"></a>Zainstaluj rozszerzenie przeglądarki panelu dostępu
 

@@ -1,12 +1,11 @@
 ---
-title: "Samouczek usługi Azure globalne dystrybucji rozwiązania Cosmos DB dla bazy danych MongoDB interfejsu API | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak skonfigurować bazy danych Azure rozwiązania Cosmos dystrybucji globalnego przy użyciu interfejsu API bazy danych MongoDB."
+title: Samouczek dotyczący dystrybucji globalnej usługi Azure Cosmos DB dla interfejsu API bazy danych MongoDB | Microsoft Docs
+description: Dowiedz się, jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu API bazy danych MongoDB.
 services: cosmos-db
-keywords: globalne dystrybucji, bazy danych MongoDB
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: cgronlun
+keywords: global distribution, MongoDB
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,30 +13,30 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d051c648ac66a42cefe0113d2571fe0a3050a237
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
-ms.translationtype: MT
+ms.openlocfilehash: 8bd86c5e66fdf2431e3db12a43e953b022a3770a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Konfigurowanie bazy danych Azure rozwiązania Cosmos dystrybucji globalnego przy użyciu interfejsu API bazy danych MongoDB
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Jak skonfigurować dystrybucję globalną usługi Azure Cosmos DB przy użyciu interfejsu API bazy danych MongoDB
 
-W tym artykule zostanie przedstawiony sposób użycia portalu Azure do instalacji bazy danych Azure rozwiązania Cosmos globalne dystrybucji, a następnie nawiąż połączenie przy użyciu interfejsu API bazy danych MongoDB.
+W tym artykule przedstawiono, jak za pomocą witryny Azure Portal skonfigurować dystrybucję globalną usługi Azure Cosmos DB, a następnie nawiązać połączenie przy użyciu interfejsu API bazy danych MongoDB.
 
 W tym artykule opisano następujące zadania: 
 
 > [!div class="checklist"]
-> * Skonfiguruj globalne dystrybucji przy użyciu portalu Azure
-> * Skonfigurować globalne dystrybucji za pomocą [API bazy danych MongoDB](mongodb-introduction.md)
+> * Konfigurowanie dystrybucji globalnej przy użyciu witryny Azure Portal
+> * Konfigurowanie dystrybucji globalnej przy użyciu [interfejsu API bazy danych MongoDB](mongodb-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup-using-the-mongodb-api"></a>Weryfikowanie ustawień regionalnych przy użyciu interfejsu API bazy danych MongoDB
-Najprostszym sposobem sprawdzanie globalnej konfiguracji w obrębie interfejsu API dla bazy danych MongoDB ma być uruchamiany o podwójnej precyzji *isMaster()* polecenie z poziomu powłoki Mongo.
+## <a name="verifying-your-regional-setup-using-the-mongodb-api"></a>Weryfikowanie konfiguracji regionalnej przy użyciu interfejsu API bazy danych MongoDB
+Najprostszym sposobem dokładnego sprawdzenia konfiguracji globalnej w ramach interfejsu API dla bazy danych MongoDB jest uruchomienie polecenia *isMaster()* z poziomu powłoki Mongo.
 
-Z powłoki Mongo:
+Z poziomu powłoki Mongo:
 
    ```
       db.isMaster()
@@ -69,23 +68,23 @@ Przykładowe wyniki:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region-using-the-mongodb-api"></a>Łączenie z preferowanego regionu przy użyciu interfejsu API bazy danych MongoDB
+## <a name="connecting-to-a-preferred-region-using-the-mongodb-api"></a>Nawiązywanie połączenia z preferowanym regionem przy użyciu interfejsu API bazy danych MongoDB
 
-Interfejs API bazy danych MongoDB umożliwia określenie preferencji odczytu kolekcji globalnie rozproszone bazy danych. Dla obu małe opóźnienia odczytów, jak i globalnego wysokiej dostępności, firma Microsoft zaleca ustawienie preferencji odczytu kolekcji *najbliższej*. Przeczytaj preferencję *najbliższej* jest skonfigurowany do odczytu z najbliżej regionu.
+Interfejs API bazy danych MongoDB umożliwia określenie preferencji odczytu kolekcji dla globalnie rozproszonej bazy danych. Na potrzeby odczytów z małymi opóźnieniami i wysokiej dostępności globalnej zaleca się ustawienie preferencji odczytu kolekcji na wartość *najbliższe*. Preferencja odczytu *najbliższe* jest skonfigurowana do odczytu z najbliższego regionu.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
 ```
 
-Dla aplikacji za pomocą podstawowego odczytu/zapisu regionu i regionu pomocniczego do odzyskiwania awaryjnego (DR) scenariuszy, firma Microsoft zaleca ustawienie preferencji odczytu kolekcji *pomocniczy preferowane*. Odczytu preferencję *pomocniczy preferowane* jest skonfigurowany do odczytu z regionu pomocniczego, gdy region podstawowy jest niedostępny.
+Dla aplikacji z podstawowym regionem odczytu/zapisu i pomocniczym regionem na potrzeby scenariuszy odzyskiwania awaryjnego zalecamy ustawienie preferencji odczytu na wartość *preferowane pomocnicze*. Preferencja odczytu *preferowane pomocnicze* jest skonfigurowana do odczytu z regionu pomocniczego, gdy region podstawowy jest niedostępny.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.SecondaryPreferred));
 ```
 
-Ponadto jeśli chcesz ręcznie określić Twojej odczytu regionów. Można ustawić regionu tagu w swoich preferencji odczytu.
+Ponadto jeśli chcesz ręcznie określić regiony odczytu, możesz ustawić tag regionu w swoich preferencjach odczytu. You can set the region Tag within your read preference.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -93,17 +92,17 @@ var tag = new Tag("region", "Southeast Asia");
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Secondary, new[] { new TagSet(new[] { tag }) }));
 ```
 
-To wszystko, która kończy w tym samouczku. Znajdują się informacje dotyczące zarządzania spójności konta globalnie replikowanych odczytując [poziomów spójności w usłudze Azure DB rozwiązania Cosmos](consistency-levels.md). I uzyskać więcej informacji na temat sposobu globalnej replikacji bazy danych działa w usłudze Azure DB rozwiązania Cosmos, zobacz [dystrybucji danych globalnie z bazy danych Azure rozwiązania Cosmos](distribute-data-globally.md).
+To wszystko — na tym kończy się ten samouczek. Aby dowiedzieć się, jak zarządzać spójnością globalnie replikowanego konta, przeczytaj [Poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md). Natomiast aby uzyskać więcej informacji na temat sposobu działania globalnej replikacji w usłudze Azure Cosmos DB, zobacz [Dystrybuowanie danych globalnie za pomocą usługi Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Skonfiguruj globalne dystrybucji przy użyciu portalu Azure
-> * Skonfiguruj globalne dystrybucji przy użyciu interfejsów API SQL
+> * Konfigurowanie dystrybucji globalnej przy użyciu witryny Azure Portal
+> * Konfigurowanie dystrybucji globalnej przy użyciu interfejsów API SQL
 
-Możesz teraz przejść do następnym samouczku, aby dowiedzieć się, jak opracowywać lokalnie przy użyciu emulatora lokalnej bazy danych Azure rozwiązania Cosmos.
+Teraz możesz przejść do następnego samouczka, aby dowiedzieć się, jak programować lokalnie przy użyciu lokalnego emulatora usługi Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Opracowywanie lokalnie w emulatorze](local-emulator.md)
+> [Programowanie lokalnie za pomocą emulatora](local-emulator.md)

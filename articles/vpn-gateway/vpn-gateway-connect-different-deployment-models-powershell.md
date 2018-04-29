@@ -1,11 +1,11 @@
 ---
-title: "Połącz klasycznych sieci wirtualnych do sieci wirtualnych Menedżera zasobów Azure: programu PowerShell | Dokumentacja firmy Microsoft"
-description: "Utwórz połączenie sieci VPN między klasycznych sieci wirtualnych i sieci wirtualnych Menedżera zasobów przy użyciu bramy sieci VPN i programu PowerShell."
+title: 'Połącz klasycznych sieci wirtualnych do sieci wirtualnych Menedżera zasobów Azure: programu PowerShell | Dokumentacja firmy Microsoft'
+description: Utwórz połączenie sieci VPN między klasycznych sieci wirtualnych i sieci wirtualnych Menedżera zasobów przy użyciu bramy sieci VPN i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Łączenie sieci wirtualnych z różnych modeli wdrażania za pomocą programu PowerShell
 
@@ -176,7 +176,7 @@ Aby utworzyć bramę sieci VPN RM sieci wirtualnej, wykonaj poniższe instrukcje
 1. Zaloguj się do konta platformy Azure, w konsoli programu PowerShell. Następujące polecenie cmdlet monituje o poświadczenia logowania dla konta platformy Azure. Po zalogowaniu ustawienia konta są pobierane, tak aby były dostępne dla programu Azure PowerShell.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ``` 
    
   Pobierz listę subskrypcji platformy Azure.

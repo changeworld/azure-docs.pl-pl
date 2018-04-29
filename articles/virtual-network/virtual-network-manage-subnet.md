@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 550fe16c5997947b528d284b7afdce9af0b7a56b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 00b0635d894ff8a41c810345cfa94363029e78e8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieć sieci wirtualnej
 
@@ -31,14 +31,14 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
 ## <a name="add-a-subnet"></a>Dodaj podsieć
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Z listy sieci wirtualnych wybierz chcesz dodać podsieci do sieci wirtualnej.
-3. W obszarze **ustawienia**, wybierz pozycję **podsieci**.
+3. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**.
 4. Wybierz **+ podsieci**.
 5. Wprowadź wartości dla następujących parametrów:
     - **Nazwa**: Nazwa musi być unikatowa w ramach sieci wirtualnej.
@@ -57,7 +57,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Z listy sieci wirtualnych wybierz sieć wirtualną, która zawiera podsieci, aby zmienić ustawienia.
-3. W obszarze **ustawienia**, wybierz pozycję **podsieci**.
+3. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**.
 4. Na liście podsieci Wybierz podsieć, aby zmienić ustawienia. Można zmienić następujące ustawienia:
 
     - **Zakres adresów:** zasobów nie są wdrażane w podsieci, można zmienić zakresu adresów. Jeśli istnieje wszystkie zasoby w tej podsieci, przeniesienie zasobów do innej podsieci, albo usuń je najpierw z podsieci. Czynności, które należy wykonać, aby przenieść lub usunąć zasób zależy od zasobu. Aby dowiedzieć się, jak przenieść lub usunąć zasoby, które znajdują się w podsieci, przeczytaj dokumentację dla każdego typu zasobu, który chcesz przenieść lub usunąć. Zobacz ograniczenia **zakres adresów** w kroku 5 [Dodaj podsieć](#add-a-subnet).
@@ -76,7 +76,7 @@ Tylko wtedy, gdy nie ma żadnych zasobów w podsieci, można usunąć podsieci. 
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualnych** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz sieć wirtualną, która zawiera podsieć, którą chcesz usunąć z listy sieci wirtualnych.
-3. W obszarze **ustawienia**, wybierz pozycję **podsieci**.
+3. W obszarze **USTAWIENIA** wybierz pozycję **Podsieci**.
 4. Na liście podsieci, wybierz **...** , po prawej stronie podsieci chcesz usunąć
 5. Wybierz **usunąć**, a następnie wybierz **tak**.
 

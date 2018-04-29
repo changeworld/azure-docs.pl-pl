@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: sujayt
-ms.openlocfilehash: 4ddad2d8e5c5323b632b65efaf87d3df7ce8d707
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: a20ec14181e49443b5caf6ed0bcfaedcd4601b1c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji z jednego regionu Azure do innego
 
@@ -98,19 +98,19 @@ Poniżej Obsługa dotyczy dowolne obciążenia uruchomione na wymienione systemu
 14.04 LTS | 9.11 | 3.13.0-24-Generic do 3.13.0-125-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-83-generic |
 14.04 LTS | 9.12 | 3.13.0-24-Generic do 3.13.0-132-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-Generic do 3.13.0-137-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-104-generic |
-14.04 LTS | 9.14 | 3.13.0-24-Generic do 3.13.0-141-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-112-generic |
+14.04 LTS | : 9,14 | 3.13.0-24-Generic do 3.13.0-141-generic,<br/>3.16.0-25-Generic do 3.16.0-77-generic,<br/>3.19.0-18-Generic do 3.19.0-80-generic,<br/>4.2.0-18-Generic do 4.2.0-42-generic,<br/>4.4.0-21-Generic do 4.4.0-112-generic |
 16.04 LTS | 9.11 | 4.4.0-21-Generic do 4.4.0-83-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-27-generic |
 16.04 LTS | 9.12 | 4.4.0-21-Generic do 4.4.0-96-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-Generic do 4.4.0-104-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic |
-16.04 LTS | 9.14 | 4.4.0-21-Generic do 4.4.0-112-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-32-generic,<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1009-azure |
+16.04 LTS | : 9,14 | 4.4.0-21-Generic do 4.4.0-112-generic,<br/>4.8.0-34-Generic do 4.8.0-58-generic,<br/>4.10.0-14-Generic do 4.10.0-42-generic,<br/>4.11.0-13-Generic do 4.11.0-14-generic,<br/>4.13.0-16-Generic do 4.13.0-32-generic,<br/>4.11.0-1009-Azure do 4.11.0-1016-azure,<br/>4.13.0-1005-Azure do 4.13.0-1009-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Obsługiwane wersje Debian jądra dla maszyn wirtualnych platformy Azure
 
 **Zlecenia** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-AMD64 do 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 to 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.5-amd64 |
+Debian 7 | : 9,14 | 3.2.0-4-AMD64 do 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 8 | : 9,14 | 3.16.0-4-AMD64 do 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.5-amd64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Obsługiwanych systemów plików i konfiguracje magazynu gościa na maszynach wirtualnych Azure systemem operacyjnym Linux
 
@@ -127,10 +127,10 @@ Można replikować i odzyskiwania maszyn wirtualnych między żadnych dwóch reg
 Ameryka | Kanada Wschodnia, środkowe stany USA Kanada centralnej, Południowej, zachodnie środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, północno środkowe stany USA
 Europa | Wielka Brytania Zachodnia, Wielka Brytania Południowa, Europa Północna, Europa Zachodnia
 Azja | Indie Południowa, Indie środkowe, Azja południowo-wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowe, Korea południe
-Australia   | Australia East, Australia Southeast
+Australia   | Australia Wschodnia, Australia południowo-wschodnia
 Azure Government    | Virginia wersji dla instytucji rządowych USA, Iowa wersji dla instytucji rządowych USA, Arizona wersji dla instytucji rządowych USA, Texas wersji dla instytucji rządowych USA, wschód DOD USA, środkowe stany USA DOD
 Niemcy | Niemcy środkowe, Niemcy północno-wschodnie
-Chiny | China East, China North
+Chiny | Wschodnia Chin, Chiny Północna
 
 >[!NOTE]
 >
@@ -168,6 +168,8 @@ Szyfrowanie magazynowanych (SSE) | Obsługiwane | W przypadku kont magazynu pami
 Szyfrowanie dysków Azure (ADE) | Nieobsługiwane |
 Dodaj lub usuń gorących dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
 Wykluczanie dysku | Nieobsługiwane|   Domyślnie jest wykluczony dysku tymczasowym.
+Bezpośrednie miejsca do magazynowania  | Nieobsługiwane|
+Serwer plików skalowalny w poziomie  | Nieobsługiwane|
 LRS | Obsługiwane |
 GRS | Obsługiwane |
 RA-GRS | Obsługiwane |
@@ -190,7 +192,7 @@ Grupa NSG w karcie Sieciowej (Resource Manager)| Obsługiwane | Musisz skojarzy�
 NSG podsieci (Resource Manager i model klasyczny)| Obsługiwane | Musisz skojarzyć grupę NSG do podsieci za pomocą skryptu automatyzacji azure w planie odzyskiwania.
 Grupy NSG na maszynie Wirtualnej (klasyczne)| Obsługiwane | Musisz skojarzyć grupę NSG z kartą sieciową w planie odzyskiwania przy użyciu skryptu automatyzacji azure.
 Zastrzeżony adres IP (statyczny adres IP) / zachować źródłowy adres IP | Obsługiwane | Jeśli karty interfejsu Sieciowego na źródłowej maszyny Wirtualnej ma konfiguracji statycznych adresów IP i podsieci docelowej ma tego samego adresu IP dostępne, jest przypisany do trybu failover maszyny Wirtualnej. Jeśli w podsieci docelowej nie ma tego samego adresu IP dostępne, jeden z dostępnych adresów IP w podsieci jest zarezerwowany dla tej maszyny Wirtualnej. Można określić stałego adresu IP w wybranym "elementu zreplikowane > Ustawienia > obliczenia i sieć > interfejsów sieciowych. Można wybrać kartę Sieciową i podaj podsieć lub adres IP wybranego.
-Dynamic IP| Obsługiwane | Jeśli karta sieciowa na źródłowej maszyny Wirtualnej ma dynamicznej konfiguracji IP, karty Sieciowej w tryb failover maszyny Wirtualnej jest również dynamiczne domyślnie. Można określić stałego adresu IP w wybranym "elementu zreplikowane > Ustawienia > obliczenia i sieć > interfejsów sieciowych. Można wybrać kartę Sieciową i podaj podsieć lub adres IP wybranego.
+Dynamicznego adresu IP| Obsługiwane | Jeśli karta sieciowa na źródłowej maszyny Wirtualnej ma dynamicznej konfiguracji IP, karty Sieciowej w tryb failover maszyny Wirtualnej jest również dynamiczne domyślnie. Można określić stałego adresu IP w wybranym "elementu zreplikowane > Ustawienia > obliczenia i sieć > interfejsów sieciowych. Można wybrać kartę Sieciową i podaj podsieć lub adres IP wybranego.
 Integracja z usługą Traffic Manager | Obsługiwane | Można wstępnie skonfigurować Menedżera ruchu w taki sposób, że ruch jest kierowany do punktu końcowego w regionie źródłowym w sposób regularny do punktu końcowego w region docelowy w przypadku trybu failover.
 Azure zarządzanych DNS | Obsługiwane |
 Niestandardowe DNS  | Obsługiwane |    

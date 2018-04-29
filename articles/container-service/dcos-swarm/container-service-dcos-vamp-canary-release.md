@@ -1,19 +1,19 @@
 ---
-title: "Mozgi zlecenia przy użyciu Vamp w klastrze Azure DC/OS"
-description: "Jak używać Vamp mozgi wersji usług i zastosować filtrowanie w klastrze usługi kontenera platformy Azure DC/OS inteligentne ruchu"
+title: Mozgi zlecenia przy użyciu Vamp w klastrze Azure DC/OS
+description: Jak używać Vamp mozgi wersji usług i zastosować filtrowanie w klastrze usługi kontenera platformy Azure DC/OS inteligentne ruchu
 services: container-service
 author: gggina
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: e23b316311ff88d1587da8d5ef777b91bfe0a2e9
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 339864f6261d031a21b138f880654bcd6ef51855
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Mikrousług mozgi wersji z Vamp w klastrze usługi kontenera platformy Azure DC/OS
 
@@ -132,7 +132,7 @@ W tym scenariuszu przykładowej aplikacji wbudowanymi o nazwie [ **sava**](https
 
 1. Przejdź do **wdrożeń**.
 
-2. Kliknij pozycję **Dodaj**.
+2. Kliknij pozycję **Add** (Dodaj).
 
 3. Wklej następujący plan yaml programu. Ten plan zawiera jednego klastra z tylko jedną usługę variant, który możemy zmienić w późniejszym kroku:
 
@@ -286,7 +286,7 @@ Ten artykuł został szybkie wprowadzenie do Vamp w klastrze DC/OS. Po pierwsze 
 Możemy również dotknięciu na niektóre zaawansowane funkcje Vamp: scalanie nowych wariant usługi do uruchomionego wdrożenia i wprowadzenie do przyrostowo, a następnie filtrowania ruchu, aby rozwiązać znany narażony.
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Więcej informacji o zarządzaniu Vamp akcji za pomocą [Vamp interfejsu API REST](http://vamp.io/documentation/api/api-reference/).
 

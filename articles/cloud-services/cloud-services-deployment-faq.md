@@ -1,11 +1,11 @@
 ---
-title: "Problemy z wdrażaniem Microsoft Azure Cloud Services często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "Ten artykuł zawiera listę często zadawanych pytań dotyczących wdrażania usługi w chmurze Microsoft Azure."
+title: Problemy z wdrażaniem Microsoft Azure Cloud Services często zadawane pytania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera listę często zadawanych pytań dotyczących wdrażania usługi w chmurze Microsoft Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: 61d1cc511bf541e75ffda3e84b116f78a434f6f1
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: effc0eb872a1f63e32c1958234c173a53c381620
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z wdrażaniem usług Azure Cloud Services: często zadawane pytania (FAQ)
 
@@ -79,4 +79,4 @@ Ponieważ usługa w chmurze jest zasobem klasycznym, które nie są bezpośredni
 
 W klasycznym portalu pakiet został przekazany do warstwy interfejsu API zarządzania bezpośrednio, a następnie warstwę interfejsu API tymczasowo czy umieść pakiet do konta wewnętrznego magazynu.  Ten proces powoduje problemy z wydajnością i skalowalnością, ponieważ warstwę interfejsu API nie został zaprojektowany jako usługa przekazywania plików.  W portalu Azure (modelu wdrażania usługi Resource Manager) firma Microsoft ma pominąć tymczasowe kroku wcześniejszego przekazania do warstwy interfejsu API, co w przypadku wdrożeń szybszy i bardziej niezawodny. 
 
-Podobnie jak w przypadku koszt jest bardzo mała i we wszystkich wdrożeniach można ponownie użyć tego samego konta magazynu. Można użyć [Kalkulator magazynu koszt](https://azure.microsoft.com/en-us/pricing/calculator/#storage1) ustalić koszt do przekazania pakietu usługi (CSPKG), Pobierz CSPKG, a następnie usuń CSPKG. 
+Podobnie jak w przypadku koszt jest bardzo mała i we wszystkich wdrożeniach można ponownie użyć tego samego konta magazynu. Można użyć [Kalkulator magazynu koszt](https://azure.microsoft.com/pricing/calculator/#storage1) ustalić koszt do przekazania pakietu usługi (CSPKG), Pobierz CSPKG, a następnie usuń CSPKG. 

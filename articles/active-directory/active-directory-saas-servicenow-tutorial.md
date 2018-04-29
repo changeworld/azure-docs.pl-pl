@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z usługi ServiceNow | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usługi ServiceNow."
+title: 'Samouczek: Integracji Azure Active Directory z usługi ServiceNow | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i usługi ServiceNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: d893b55e2e771035bbd1097da678830fafb24e7a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bc5b41da83f183aaf62723212f7197fb50dc536d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Samouczek: Integracji Azure Active Directory z usługi ServiceNow
 
@@ -119,37 +119,21 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Musisz zaktualizować te wartości z rzeczywisty adres URL logowania i identyfikator, który znajduje się w dalszej części tego samouczka.
 
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** sekcji, wykonaj następujące czynności: 
 
-    ![Łącze pobierania certyfikatu](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png) 
+    ![Łącze pobierania certyfikatu](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+
+    a. Kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika, jak ten adres Url metadanych Federacji aplikacji będzie można użyć później w samouczku.
+
+    b. Kliknij przycisk **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
 5. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-servicenow-tutorial/tutorial_general_400.png)
 
-6. Aby wygenerować **metadanych** adres url, wykonaj następujące czynności:
+6. Zaloguj się do aplikacji usługi ServiceNow jako administrator.
 
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-servicenow-tutorial/appregistrations.png)
-
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-servicenow-tutorial/endpointicon.png)
-    
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-servicenow-tutorial/endpoint.png)
-
-    d. Teraz przejdź do **ServiceNow** właściwości i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-servicenow-tutorial/appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.  Skopiuj wartość wygenerowany w programie Notatnik jako adres URL, które będą używane w dalszej części samouczka metadanych.
-
-7. Zaloguj się do aplikacji usługi ServiceNow jako administrator.
-
-8. Aktywuj **integracja — wiele pojedynczego logowania Instalatora dostawcy** wtyczki dalej wykonaj czynności:
+7. Aktywuj **integracja — wiele pojedynczego logowania Instalatora dostawcy** wtyczki dalej wykonaj czynności:
 
     a. W okienku nawigacji po lewej stronie Wyszukaj **definicji systemu** sekcji na pasku wyszukiwania, a następnie kliknij przycisk **wtyczek**.
 
@@ -163,9 +147,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     d. Kliknij przycisk **Aktywuj** przycisku.
 
-9. Istnieją dwa sposoby, w którym **ServiceNow** może być skonfigurowane automatyczne i ręczne.
+8. Istnieją dwa sposoby, w którym **ServiceNow** może być skonfigurowane automatyczne i ręczne.
 
-10. Do konfigurowania **ServiceNow** automatycznie wykonaj następujące czynności
+9. Do konfigurowania **ServiceNow** automatycznie wykonaj następujące czynności
 
     a. Wróć do **ServiceNow** Signle Zaloguj się na stronie w portalu Azure.
 
@@ -201,15 +185,15 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     * Polecenie **Aktywuj** w prawym górnym rogu strony.
 
-11. Do konfigurowania **ServiceNow** ręcznie wykonaj następujące czynności
+10. Do konfigurowania **ServiceNow** ręcznie wykonaj następujące czynności
 
-12. Zaloguj się do aplikacji usługi ServiceNow jako administrator.
+11. Zaloguj się do aplikacji usługi ServiceNow jako administrator.
 
-13. W okienku nawigacji po lewej stronie Wyszukaj **dostawcy usługi logowania jednokrotnego** sekcji na pasku wyszukiwania, a następnie kliknij przycisk **właściwości**.
+12. W okienku nawigacji po lewej stronie Wyszukaj **dostawcy usługi logowania jednokrotnego** sekcji na pasku wyszukiwania, a następnie kliknij przycisk **właściwości**.
 
     ![Skonfiguruj adres URL aplikacji](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "skonfigurować adres URL aplikacji")
 
-14. Na **wiele właściwości logowania jednokrotnego dostawcy** okna dialogowego, wykonaj następujące czynności:
+13. Na **wiele właściwości logowania jednokrotnego dostawcy** okna dialogowego, wykonaj następujące czynności:
 
     ![Skonfiguruj adres URL aplikacji](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "skonfigurować adres URL aplikacji")
 
@@ -265,7 +249,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     a. Wybierz **adres URL** opcji **Importuj metadane dostawcy tożsamości** okno dialogowe.
 
-    b. Wprowadź **adres URL metadanych** wygenerowane z portalu Azure.
+    b. Wprowadź **adres Url metadanych Federacji aplikacji** którego została skopiowana z portalu Azure.
 
     c. Kliknij przycisk **Importuj**.
 
@@ -358,7 +342,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificates.png)
 
 5. Kliknij przycisk **zapisać** przycisku.
 
@@ -459,11 +443,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     > Można skonfigurować usługi Azure AD, aby emitować identyfikator użytkownika usługi Azure AD (główna nazwa użytkownika) lub adres e-mail jako unikatowy identyfikator w tokenie SAML, przechodząc do **ServiceNow > atrybuty > logowanie jednokrotne** części portalu Azure mapowania odpowiednie pola i **nameidentifier** atrybutu. Wartość przechowywana wybranego atrybutu w usłudze Azure AD (na przykład główna nazwa użytkownika) musi odpowiadać wartości przechowywane w usługi ServiceNow wprowadzone pola (na przykład nazwa_użytkownika)
 
     f. Kliknij pozycję **Zapisz**.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji! Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
+ 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
 Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.

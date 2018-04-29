@@ -1,9 +1,9 @@
 ---
-title: "Rozwiązywanie problemów z weryfikacji dwuetapowej | Dokumentacja firmy Microsoft"
-description: "Ten dokument dostarcza użytkowników informacji o tym, co należy zrobić, jeśli są uruchamiane na problem z usługi Azure Multi-Factor Authentication."
+title: Rozwiązywanie problemów z weryfikacji dwuetapowej | Dokumentacja firmy Microsoft
+description: Ten dokument dostarcza użytkowników informacji o tym, co należy zrobić, jeśli są uruchamiane na problem z usługi Azure Multi-Factor Authentication.
 services: multi-factor-authentication
-keywords: "Klient uwierzytelniania wieloskładnikowego, problem z uwierzytelnianiem, identyfikator korelacji"
-documentationcenter: 
+keywords: Klient uwierzytelniania wieloskładnikowego, problem z uwierzytelnianiem, identyfikator korelacji
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
@@ -16,11 +16,11 @@ ms.date: 07/06/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 20a90aa36b727b18fb37aaf658da884b5997cd44
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 736a1f03ef87850fdaaee7ce636d8dd0f3ae1a84
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-help-with-two-step-verification"></a>Uzyskaj pomoc dotyczącą weryfikacji dwuetapowej
 Ten artykuł zawiera odpowiedzi na często zadawane pytania, które osoby poproś o weryfikacji dwuetapowej. 
@@ -86,7 +86,7 @@ Jeśli nie masz innej metody skonfigurowane, skontaktuj się z działem pomocy t
 Jeśli masz często opóźnienia z powodu nieprawidłowych komórki sygnału, zalecane jest użycie [aplikacji Microsoft Authenticator](microsoft-authenticator-app-how-to.md) na smartfonie. Aplikacji mogą generować kody zabezpieczeń losowych, których używasz do logowania i kody te nie wymagają żadnych połączenia sygnał lub internet komórki.
 
 ## <a name="app-passwords-are-not-working"></a>Hasła aplikacji nie działają.
-Najpierw upewnij się, że poprawnie wprowadzono hasła aplikacji. Hasła aplikacji wygenerowane zastępuje normalne hasła, ale tylko w przypadku starszych aplikacji klasycznych, które nie obsługują weryfikacji dwuetapowej. Jeśli nadal nie działa, spróbuj logowanie się i [utworzyć nowe hasło aplikacji](multi-factor-authentication-end-user-app-passwords.md).  Jeśli nadal nie działa, skontaktuj się z działem pomocy technicznej firmy oraz je [usunąć istniejące hasła aplikacji](../multi-factor-authentication-manage-users-and-devices.md) , a następnie można utworzyć nowy.
+Najpierw upewnij się, że poprawnie wprowadzono hasła aplikacji. Hasła aplikacji wygenerowane zastępuje normalne hasła, ale tylko w przypadku starszych aplikacji klasycznych, które nie obsługują weryfikacji dwuetapowej. Jeśli nadal nie działa, spróbuj logowanie się i [utworzyć nowe hasło aplikacji](multi-factor-authentication-end-user-app-passwords.md).  Jeśli nadal nie działa, skontaktuj się z działem pomocy technicznej firmy oraz je [usunąć istniejące hasła aplikacji](../../active-directory/authentication/howto-mfa-userdevicesettings.md) , a następnie można utworzyć nowy.
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nie można znaleźć odpowiedzi na problem.
 Jeśli podjęto następujące kroki rozwiązywania problemów, ale są nadal uruchomione w problemów, skontaktuj się z działem pomocy technicznej firmy. Powinien być może pomóc.

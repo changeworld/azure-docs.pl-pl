@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: saveenr
-ms.openlocfilehash: f37a4563a758d442760f4a6be3c11bb9a9ddfc28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 332b6c90ea51d16a439bfb21222bb753e93a02b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Wprowadzenie do pracy z usługą Azure Data Lake Analytics przy użyciu programu Azure PowerShell
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,13 +39,13 @@ W tym samouczku założono, że użytkownik wie już, jak korzystać z programu 
 Aby zalogować się przy użyciu nazwy subskrypcji:
 
 ```
-Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+Connect-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
 Podczas logowania zamiast nazwy subskrypcji można także użyć identyfikatora subskrypcji:
 
 ```
-Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Connect-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 Jeśli to się powiedzie, dane wyjściowe tego polecenia mają mniej więcej taką formę:
@@ -96,13 +96,13 @@ OUTPUT @a
 "@
 ```
 
-Prześlij skrypt.
+Prześlij tekst skryptu przy użyciu polecenia cmdlet `Submit-AdlJob` i parametru `-Script`.
 
 ```
 $job = Submit-AdlJob -Account $adla -Name "My Job" –Script $script
 ```
 
-Możesz również zapisać skrypt jako plik i przesłać go za pomocą następującego polecenia:
+Alternatywnie możesz przesłać plik skryptu przy użyciu parametru `-ScriptPath`:
 
 ```
 $filename = "d:\test.usql"
@@ -110,20 +110,19 @@ $script | out-File $filename
 $job = Submit-AdlJob -Account $adla -Name "My Job" –ScriptPath $filename
 ```
 
-
-Uzyskaj stan określonego zadania. Używaj tego polecenia cmdlet, dopóki zadanie nie zostanie wykonane.
+Pobierz stan zadania przy użyciu polecenia `Get-AdlJob`. 
 
 ```
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Zamiast wielokrotnie wykonywać polecenie Get-AdlAnalyticsJob do momentu zakończenia zadania, możesz użyć polecenia cmdlet Wait-AdlJob.
+Zamiast wielokrotnie wykonywać polecenie Get-AdlJob do momentu zakończenia zadania, użyj polecenia cmdlet `Wait-AdlJob`.
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Pobierz plik wyjściowy.
+Pobierz plik wyjściowy przy użyciu polecenia `Export-AdlStoreItem`.
 
 ```
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"

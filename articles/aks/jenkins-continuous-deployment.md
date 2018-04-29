@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b0adf5098b1be9f245b22c859dbb86a14335e435
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Ciągłe wdrażanie w środowisku z Wpięć usługi kontenera platformy Azure
 
@@ -160,20 +160,6 @@ Open a browser to http://52.166.118.64:8080
 Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
-
-Jeśli występują problemy dotyczące logowania się do Wpięć, tworzenia sesji SSH z maszyną Wirtualną Wpięć i uruchom ponownie usługę Wpięć. Adres IP maszyny wirtualnej jest tego samego adresu, który został dostarczony przez skrypt kompilacji. Nazwa użytkownika administratora maszyny Wirtualnej jest `azureuser`.
-
-```bash
-ssh azureuser@52.166.118.64
-```
-
-Uruchom ponownie usługę Wpięć.
-
-```bash
-sudo service jenkins restart
-```
-
-Odśwież przeglądarkę i Wpięć formularz logowania będzie wyświetlany.
 
 ## <a name="jenkins-environment-variables"></a>Zmienne środowiskowe Wpięć
 

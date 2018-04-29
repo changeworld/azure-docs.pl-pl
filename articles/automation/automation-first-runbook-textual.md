@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b29fd8a576b4360b8465cc59db606fb1a8f2a02d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 33e9b68973aa399123fa9e62a2d0eea77c55add0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mój pierwszy element Runbook przepływu pracy programu PowerShell
 
@@ -97,7 +97,7 @@ Nowo utworzony element runbook nadal działa w trybie roboczym. Należy opubliko
 12. Kliknięcie tego zadania, aby otworzyć okienko zadania tego samego wyświetlane przy uruchamianiu elementu runbook. Dzięki temu możesz cofnąć się w czasie i wyświetlić szczegóły dowolnego zadania, które zostało utworzone dla określonego elementu Runbook.
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Krok 5. Dodawanie uwierzytelniania w celu zarządzania zasobami platformy Azure
-Zostały przetestowane i publikowane elementu runbook, ale do tej pory nie niczego przydatne. Ma ona zarządzania zasobami Azure. Nie będzie można to zrobić, jeśli w przypadku braku uwierzytelniania przy użyciu poświadczeń, które są określone w [wymagania wstępne](#prerequisites). Można to zrobić z **Add-AzureRMAccount** polecenia cmdlet.
+Zostały przetestowane i publikowane elementu runbook, ale do tej pory nie niczego przydatne. Ma ona zarządzania zasobami Azure. Nie będzie można to zrobić, jeśli w przypadku braku uwierzytelniania przy użyciu poświadczeń, które są określone w [wymagania wstępne](#prerequisites). Można to zrobić z **Connect-AzureRmAccount** polecenia cmdlet.
 
 1. Otwórz edytor tekstów, klikając pozycję **Edytuj** w okienku MyFirstRunbook-Workflow.
 2. nie ma potrzeby **Write-Output** wiersz już, więc Przejdź dalej i usuń go.
@@ -106,7 +106,7 @@ Zostały przetestowane i publikowane elementu runbook, ale do tej pory nie nicze
 
    ```powershell-interactive
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
 5. Kliknij przycisk **okienku testu** tak, aby przetestować element runbook.
@@ -115,13 +115,13 @@ Zostały przetestowane i publikowane elementu runbook, ale do tej pory nie nicze
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Krok 6. Dodawanie kodu w celu uruchomienia maszyny wirtualnej
 Teraz, gdy element runbook jest uwierzytelniania do subskrypcji platformy Azure, mogą zarządzać zasobami. Możesz dodać polecenie można uruchomić maszyny wirtualnej. Można wybrać żadnej maszyny wirtualnej w ramach subskrypcji platformy Azure, a obecnie są hardcoding, czy nazwa elementu runbook.
 
-1. Po poleceniu *Add-AzureRmAccount* wpisz polecenie *Start-AzureRmVM -Name 'nazwa_maszyny_wirtualnej' -ResourceGroupName 'nazwa_grupy_zasobów'*, podając nazwę maszyny wirtualnej do uruchomienia i nazwę jej grupy zasobów.  
+1. Po *Connect-AzureRmAccount*, typu *Start AzureRmVM-Name "VMName" - ResourceGroupName "NameofResourceGroup"* podanie nazwy i nazwy grupy zasobów można uruchomić maszyny wirtualnej.  
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
    {
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    }
    ```
@@ -141,7 +141,7 @@ Element runbook aktualnie uruchamia maszynę wirtualną tego zostanie zapisane n
      [string]$ResourceGroupName
     )  
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
    }
    ```

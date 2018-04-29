@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3c32b5ce90d4e5aafacb8211ff8f432bc3c78db8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: d4e09eb11ea04c31b7e302b7f66f8e67c13e8252
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>Zarządzanie maszyny wirtualnej przy użyciu programu Azure PowerShell
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/16/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli użytkownik chce zainstalować i lokalnie przy użyciu programu PowerShell, zobacz [modułu instalacji programu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. W przypadku instalacji lokalnej, należy również [Pobierz moduł Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) Aby utworzyć nową grupę w usłudze Azure Active Directory.
+Jeśli użytkownik chce zainstalować i lokalnie przy użyciu programu PowerShell, zobacz [modułu instalacji programu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. W przypadku instalacji lokalnej, należy również [Pobierz moduł Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) Aby utworzyć nową grupę w usłudze Azure Active Directory.
 
 ## <a name="understand-scope"></a>Zrozumieć zakres
 

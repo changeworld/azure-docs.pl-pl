@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0476865b19cd078b05e5def4a51c2df17315daa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzowanie konta dewelopera przy użyciu usługi Azure Active Directory w usłudze Azure API Management
 
@@ -100,6 +100,11 @@ W tym artykule przedstawiono sposób umożliwić dostęp do portalu dla dewelope
 31. Przełącz się do aplikacji interfejsu API zarządzania. 
 
     W **dostawcy tożsamości Dodaj** okna, Wklej klucz w **klucz tajny klienta** pola tekstowego.
+
+    > [!IMPORTANT]
+    > Upewnij się zaktualizować **klucz tajny klienta** przed wygaśnięciem klucza. 
+    >  
+    >
 32. **Dostawcy tożsamości Dodaj** okno zawiera również **dozwolone dzierżaw** pola tekstowego. Określ domeny wystąpień usługi Azure AD, do których chcesz udzielić dostępu do interfejsów API wystąpienia usługi Zarządzanie interfejsami API. Wiele domen można oddzielić newlines, spacjami lub przecinkami.
 
     Można określić wiele domen w **dozwolone dzierżaw** sekcji. Aby każdy użytkownik może zalogować się z innej domeny niż domena oryginalnego rejestracji aplikacji, administrator globalny innej domeny musi udzielić uprawnień do dostępu do danych katalogu aplikacji. Aby udzielić uprawnień, administrator globalny następujące czynności:

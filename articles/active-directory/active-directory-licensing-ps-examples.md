@@ -1,25 +1,25 @@
 ---
-title: "Przykłady programu PowerShell oparta na grupy licencjonowania w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "Scenariusze programu PowerShell dla usługi Azure Active Directory na podstawie grupy licencji"
+title: Przykłady programu PowerShell oparta na grupy licencjonowania w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: Scenariusze programu PowerShell dla usługi Azure Active Directory na podstawie grupy licencji
 services: active-directory
-keywords: "Licencjonowanie usługi Azure AD"
-documentationcenter: 
+keywords: Licencjonowanie usługi Azure AD
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 04/23/2018
 ms.author: curtand
-ms.openlocfilehash: 6a518f9c7ddb11de2b459d5d28c404316eb62355
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60387840b9a155c3d8494efb2d41cc094d05504b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Przykłady programu PowerShell oparta na grupy licencjonowania w usłudze Azure AD
 
@@ -28,8 +28,8 @@ Pełna funkcjonalność licencjonowania na podstawie grupy jest dostępna za po�
 > [!NOTE]
 > Przed rozpoczęciem uruchamiania poleceń cmdlet, upewnij się, możesz nawiązać dzierżawy, uruchamiając `Connect-MsolService` polecenia cmdlet.
 
->[!WARNING]
->Ten kod stanowi przykład dla celów demonstracyjnych. Jeśli zamierzasz używać go w środowisku, należy wziąć pod uwagę testowanie go najpierw na małą skalę lub w dzierżawie oddzielne testu. Może być konieczne dostosowanie kod w celu spełnienia specyficznych potrzeb danego środowiska.
+> [!WARNING]
+> Ten kod stanowi przykład dla celów demonstracyjnych. Jeśli zamierzasz używać go w środowisku, należy wziąć pod uwagę testowanie go najpierw na małą skalę lub w dzierżawie oddzielne testu. Może być konieczne dostosowanie kod w celu spełnienia specyficznych potrzeb danego środowiska.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Przypisane do grupy licencji produktu widoku
 [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) polecenia cmdlet można pobrać obiektu grupy, a następnie sprawdź *licencji* właściwości: Wyświetla listę wszystkich licencji produktu aktualnie przypisane do grupy.
@@ -202,17 +202,17 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 W tym miejscu jest inna wersja tego skryptu, który wyszukuje tylko za pośrednictwem grupy zawierające błędy licencji. Go może być bardziej zoptymalizowany pod kątem scenariuszy, w którym oczekujesz ma kilka grup z problemami.
 
 ```
-Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
-    $user = $_;
-    $user.IndirectLicenseErrors | % {
-            New-Object Object |
-                Add-Member -NotePropertyName UserName -NotePropertyValue $user.DisplayName -PassThru |
-                Add-Member -NotePropertyName UserId -NotePropertyValue $user.ObjectId -PassThru |
-                Add-Member -NotePropertyName GroupId -NotePropertyValue $_.ReferencedObjectId -PassThru |
-                Add-Member -NotePropertyName LicenseError -NotePropertyValue $_.Error -PassThru
-        }
-    }
-```
+$groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
+    foreach ($groupId in $groupIds) {
+    Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
+        Get-MsolUser -ObjectId {$_.ObjectId} |
+        Where {$_.IndirectLicenseErrors -and $_.IndirectLicenseErrors.ReferencedObjectId -eq $groupId.ObjectID} |
+        Select DisplayName, `
+               ObjectId, `
+               @{Name="LicenseError";Expression={$_.IndirectLicenseErrors | Where {$_.ReferencedObjectId -eq $groupId.ObjectID} | Select -ExpandProperty Error}}
+ 
+    } 
+``` 
 
 ## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Sprawdź, czy licencji użytkownika jest przypisane bezpośrednio lub odziedziczone po grupie
 

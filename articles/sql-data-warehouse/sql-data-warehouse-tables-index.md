@@ -1,38 +1,29 @@
 ---
-title: Indeksowanie tabel w usłudze SQL Data Warehouse | Microsoft Azure
-description: Wprowadzenie do korzystania z tabeli indeksowanie w usłudze Azure SQL Data Warehouse.
+title: Indeksowanie tabel w usłudze Azure SQL Data Warehouse | Microsoft Azure
+description: Zalecenia i przykłady dotyczące indeksowania tabel w usłudze Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: ''
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 03/15/2018
-ms.author: barbkess
-ms.openlocfilehash: 96d4bb91fabe6b962d1fe4d5b2dc26f6342012b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 75d3638326bc1bf2f72997fa9d5d5feabc837a62
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indeksowanie tabel w usłudze SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Omówienie][Overview]
-> * [Typy danych][Data Types]
-> * [Dystrybuuj][Distribute]
-> * [Indeks][Index]
-> * [Partycji][Partition]
-> * [Statystyki][Statistics]
-> * [Tymczasowe][Temporary]
-> 
-> 
+Zalecenia i przykłady dotyczące indeksowania tabel w usłudze Azure SQL Data Warehouse.
 
-Magazyn danych SQL oferuje kilka opcji indeksowania tym [klastrowane indeksy magazynu kolumn][clustered columnstore indexes], [klastrowane indeksy i nieklastrowanych indeksów] [ clustered indexes and nonclustered indexes].  Ponadto zapewnia ona również nie opcji indeksu znanej także jako [sterty][heap].  W tym artykule omówiono zalety każdego typu indeksu, a także wskazówek dotyczących uzyskiwania większości wydajności poza z indeksów. Zobacz [Tworzenie tabeli składni] [ create table syntax] uzyskać więcej szczegółowych informacji na temat tworzenia tabeli w usłudze SQL Data Warehouse.
+## <a name="what-are-index-choices"></a>Jakie są opcje indeks?
+
+Magazyn danych SQL oferuje kilka opcji indeksowania tym [klastrowane indeksy magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-overview), [klastrowane indeksy i nieklastrowanych indeksów](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), i z systemem innym niż indeksu znanej także jako opcję [sterty ](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
+
+Aby utworzyć tabeli z indeksem, zobacz [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentacji.
 
 ## <a name="clustered-columnstore-indexes"></a>Klastrowane indeksy magazynu kolumn
 Domyślnie usługi SQL Data Warehouse tworzy klastrowany indeks magazynu kolumn, czy nie indeksu określono opcji dla tabeli. Tabel klastrowanego magazynu kolumn oferują zarówno najwyższy poziom kompresji danych, a także ogólną najlepszą wydajność zapytań.  Tabel klastrowanego magazynu kolumn będą zazwyczaj przewyższyć klastrowanego indeksu lub sterty tabel i są zazwyczaj najlepszym rozwiązaniem w przypadku dużych tabel.  Z tego względu klastrowanego magazynu kolumn jest najlepszym miejscem, aby rozpocząć, gdy wiadomo, jak indeksu tabeli.  
@@ -51,12 +42,12 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 Istnieje kilka scenariuszy, w którym klastrowanego magazynu kolumn nie może być dobrym rozwiązaniem:
 
-* Tabele magazynu kolumn nie obsługują varchar(max), nvarchar(max) i varbinary(max).  Zamiast tego należy rozważyć stosu lub indeksu klastrowanego.
-* Tabele magazynu kolumn mogą być mniej wydajne przejściowej danych.  Należy wziąć pod uwagę sterty, a czasami nawet tymczasowych tabel.
-* Mała tabele zawierające mniej niż 100 milionów wierszy.  Należy wziąć pod uwagę sterty tabel.
+- Tabele magazynu kolumn nie obsługują varchar(max), nvarchar(max) i varbinary(max). Zamiast tego należy rozważyć stosu lub indeksu klastrowanego.
+- Tabele magazynu kolumn mogą być mniej wydajne przejściowej danych. Należy wziąć pod uwagę sterty, a czasami nawet tymczasowych tabel.
+- Mała tabele zawierające mniej niż 100 milionów wierszy. Należy wziąć pod uwagę sterty tabel.
 
 ## <a name="heap-tables"></a>Tabele sterty
-W przypadku tymczasowego kierowania danych do usługi SQL Data Warehouse może okazać się, że użycie tabeli stosu przyśpieszy cały proces.  Jest to spowodowane obciążeń do stosów są szybsze niż tabele indeksu, a w niektórych przypadkach można wykonać kolejne odczytu z pamięci podręcznej.  Jeśli dane są ładowane tylko pod kątem przygotowania do uruchomienia kolejnych przekształceń, załadowanie tabeli do stosu będzie znacznie szybsze niż załadowanie danych do tabeli klastrowanego magazynu kolumn. Ponadto podczas ładowania danych do [tabeli tymczasowej] [ Temporary] również załaduje znacznie szybciej niż podczas ładowania tabeli w magazynie trwałym.  
+Gdy dane są tymczasowo kierowanych na SQL Data Warehouse, może się okazać, że przy użyciu tabeli sterty sprawia, że proces szybsze. Jest to spowodowane obciążeń do stosów są szybsze niż tabele indeksu, a w niektórych przypadkach można wykonać kolejne odczytu z pamięci podręcznej.  Jeśli czy ładowanie danych tylko do etapu go przed uruchomieniem więcej przekształcenia, ładowania do sterty tabeli jest znacznie szybsza niż podczas ładowania danych do klastrowanego magazynu kolumn tabeli. Ponadto podczas ładowania danych do [tabeli tymczasowej](sql-data-warehouse-tables-temporary.md) ładuje szybciej niż podczas ładowania tabeli w magazynie trwałym.  
 
 Dla tabel odnośników małych, wiersze mniej niż 100 milionów często sterty tabel sensu.  Rozpocznij klastra magazynu kolumn tabel do osiągnięcia optymalnej kompresji po więcej niż 100 milionów wierszy.
 
@@ -73,7 +64,7 @@ WITH ( HEAP );
 ```
 
 ## <a name="clustered-and-nonclustered-indexes"></a>Klastrowanych i nieklastrowanych indeksów
-Indeksy klastrowane może przewyższyć tabel klastrowanego magazynu kolumn, gdy trzeba szybko pobrać pojedynczy wiersz.  Dla zapytania, gdy jeden lub kilka bardzo wyszukiwania wiersza jest wymagany do wydajność i szybkość skrajne należy wziąć pod uwagę indeksu klastra lub dodatkowej indeks nieklastrowany.  Wadą korzystania indeks klastrowany jest skorzystają tylko zapytania, które korzystać z wysokiej selektywnego filtru kolumny indeksu klastrowanego.  Do poprawy filtr na innych kolumn indeksu nieklastrowanego na indeks mogą być dodawane do innych kolumn.  Jednak każdy indeks, który zostanie dodany do tabeli doda zarówno miejsce i czas przetwarzania na obciążenia.
+Indeksy klastrowane może przewyższyć tabel klastrowanego magazynu kolumn, gdy trzeba szybko pobrać pojedynczy wiersz. Dla zapytania, gdy jeden lub kilka bardzo wyszukiwania wiersza jest wymagany do wydajność i szybkość skrajne należy wziąć pod uwagę indeksu klastra lub dodatkowej indeks nieklastrowany. Wadą korzystania z indeksu klastrowanego są tylko zapytania, które korzystają te, które korzystać z wysokiej selektywnego filtru kolumny indeksu klastrowanego. Do poprawy filtr na innych kolumn indeksu nieklastrowanego na indeks mogą być dodawane do innych kolumn. Jednak każdy indeks, który zostanie dodany do tabeli dodaje zarówno miejsce i czas przetwarzania na obciążenia.
 
 Aby utworzyć tabelę indeks klastrowany, po prostu określić INDEKSU KLASTROWANEGO w klauzuli WITH:
 
@@ -96,7 +87,7 @@ CREATE INDEX zipCodeIndex ON myTable (zipCode);
 ## <a name="optimizing-clustered-columnstore-indexes"></a>Optymalizacja klastrowane indeksy magazynu kolumn
 Tabel klastrowanego magazynu kolumn są zorganizowane w danych na segmenty.  Krytyczne znaczenie dla osiągnięcia optymalnego działania zapytań w tabeli magazynu kolumn jest posiadanie segmentu wysokiej jakości.  Jakość segmentu można zmierzyć przez liczbę wierszy w grupie skompresowany wiersza.  Jakość segmentu jest optymalny, gdy istnieją co najmniej 100 KB wiersze na wiersz skompresowany grupy i uzyskanie wydajności jako liczba wierszy przypadających na wiersz podejścia dotyczącego grupy 1 048 576 wierszy, czyli większości wiersze, które mogą zawierać grupę wierszy.
 
-Poniżej widoku można tworzyć i używanych w systemie do obliczenia średniej wiersze na wiersz grupy i zidentyfikować indeksach magazynu kolumn nieoptymalnych klastra.  Ostatnia kolumna, w tym widoku wygeneruje jako instrukcji SQL, która może służyć do reorganizacji indeksów: sieci.
+Poniżej widoku można tworzyć i używanych w systemie do obliczenia średniej wiersze na wiersz grupy i zidentyfikować indeksach magazynu kolumn nieoptymalnych klastra.  Ostatnia kolumna, w tym widoku generuje instrukcję SQL, która może służyć do reorganizacji indeksów: sieci.
 
 ```sql
 CREATE VIEW dbo.vColumnstoreDensity
@@ -145,7 +136,7 @@ GROUP BY
 ;
 ```
 
-Teraz, po utworzeniu widoku, uruchom to zapytanie do identyfikacji tabel z grupy wierszy jest mniejsza niż 100 KB wierszy.  Oczywiście można zwiększenie progu k 100, jeśli szukasz więcej jakości optymalne segmentu. 
+Teraz, po utworzeniu widoku, uruchom to zapytanie do identyfikacji tabel z grupy wierszy jest mniejsza niż 100 KB wierszy. Oczywiście można zwiększenie progu k 100, jeśli szukasz więcej jakości optymalne segmentu. 
 
 ```sql
 SELECT    *
@@ -180,14 +171,14 @@ Po uruchomieniu zapytania, które można rozpocząć przyjrzeć się dane i anal
 | [Rebuild_Index_SQL] |SQL do odbudowywania indeksu magazynu kolumn dla tabeli |
 
 ## <a name="causes-of-poor-columnstore-index-quality"></a>Przyczyny jakości indeksu magazynu kolumn niska
-Po zidentyfikowaniu tabel z jakością niską segmentu, należy zidentyfikować przyczynę.  Poniżej przedstawiono niektóre typowe przyczyny segmentu słabą jakość:
+Po zidentyfikowaniu tabel z jakością niską segmentu, chcesz zidentyfikować przyczynę.  Poniżej przedstawiono niektóre typowe przyczyny segmentu słabą jakość:
 
 1. Wykorzystania pamięci, gdy indeks został skompilowany.
 2. Duża liczba operacji DML
 3. Mała lub ścieknie operacji obciążenia
 4. Zbyt wiele partycji
 
-Te czynniki mogą powodować indeksu magazynu kolumn, aby znacznie mniejsza niż optymalne 1 miliona wierszy dla każdej grupy wierszy.  Może również spowodować wiersze przejść do grupy wierszy delta zamiast grupy skompresowany wiersza. 
+Te czynniki mogą powodować indeksu magazynu kolumn, aby znacznie mniejsza niż optymalne 1 miliona wierszy dla każdej grupy wierszy. Może również spowodować wiersze przejść do grupy wierszy delta zamiast grupy skompresowany wiersza. 
 
 ### <a name="memory-pressure-when-index-was-built"></a>Wykorzystania pamięci, gdy indeks został skompilowany.
 Liczba wierszy w grupę skompresowany wierszy są bezpośrednio związane z szerokość wiersza i ilość dostępnej pamięci, aby przetworzyć grupę wierszy.  Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystaniu pamięci, może to spowodować obniżenie jakości segmentów w magazynie kolumn.  W związku z tym najlepszym rozwiązaniem jest zapewnienie sesji, który zapisuje dostęp tabel indeksu magazynu kolumn do ilości pamięci, jak to możliwe.  Ponieważ istnieje zależność między pamięcią i współbieżności, wskazówki dotyczące alokacji pamięci prawo zależy od danych w każdym wierszu tabeli, jednostki magazynu danych, które są przydzielone do systemu i liczbę gniazd współbieżności można nadawać sesji którego zapisuje dane do tabeli.  Najlepszym rozwiązaniem zaleca się uruchomienie z xlargerc, jeśli używasz DW300 lub mniej largerc, jeśli używasz DW400 DW600 i mediumrc, jeśli używasz DW1000 lub nowszym.
@@ -195,11 +186,11 @@ Liczba wierszy w grupę skompresowany wierszy są bezpośrednio związane z szer
 ### <a name="high-volume-of-dml-operations"></a>Duża liczba operacji DML
 Duża liczba operacji DML, które aktualizować i usuwać wiersze można wprowadzać nieefektywne podejście do magazynu kolumn. Dotyczy to zwłaszcza po zmodyfikowaniu większość wiersze, grupy wierszy.
 
-* Usuwanie wiersza z grupy wierszy skompresowany tylko logicznie oznacza wiersza jako usunięte. Wiersz pozostaje w grupie wiersza skompresowany, dopóki odbudowaniu partycji lub tabeli.
-* Wstawienie wiersza dodaje do wiersza do tabeli wewnętrznej magazynu wierszy o nazwie grupy wierszy delta. Wstawionego wiersza nie jest konwertowany na magazynu kolumn, aż grupy wierszy delta jest zapełniony i jest oznaczone jako zamknięte. Grupy wierszy zostaną zamknięte po upływie maksymalną pojemność 1 048 576 wierszy. 
-* Aktualizacja wiersza w formacie magazynu kolumn jest przetwarzany jako delete logicznej, a następnie insert. Wstawionego wiersza mogą być przechowywane w magazynie delta.
+- Usuwanie wiersza z grupy wierszy skompresowany tylko logicznie oznacza wiersza jako usunięte. Wiersz pozostaje w grupie wiersza skompresowany, dopóki odbudowaniu partycji lub tabeli.
+- Wstawienie wiersza dodaje wiersz do tabeli wewnętrznej magazynu wierszy o nazwie grupy wierszy delta. Wstawionego wiersza nie jest konwertowany na magazynu kolumn, aż grupy wierszy delta jest zapełniony i jest oznaczone jako zamknięte. Grupy wierszy zostaną zamknięte po upływie maksymalną pojemność 1 048 576 wierszy. 
+- Aktualizacja wiersza w formacie magazynu kolumn jest przetwarzany jako delete logicznej, a następnie insert. Wstawionego wiersza mogą być przechowywane w magazynie delta.
 
-Umieścić w zadaniu wsadowym aktualizacji i Wstaw operacje przekraczające próg zbiorczego 102 400 wierszy przypadających na partycję wyrównany dystrybucji będą zapisywane bezpośrednio do formatu magazynu kolumn. Jednak przy założeniu Rozdziel, konieczne będzie można modyfikować ponad milion 6.144 wierszy w ramach jednej operacji w tym celu włączone. Jeśli liczba wierszy w danej partycji wyrównane dystrybucji znajduje się mniej niż 102400 wiersze nastąpi przejście do sklepu różnicowych i pozostaną dostępne do momentu wystarczające wiersze zostały wstawione lub zmodyfikowane zamknąć grupy wierszy lub indeks został ponownie skompilowany.
+Aktualizacja wsadów i operacje przekraczające próg zbiorczego 102 400 wierszy na wyrównany do partycji dystrybucji przejść bezpośrednio do formatu magazynu kolumn. Jednak przy założeniu Rozdziel, konieczne będzie można modyfikować ponad milion 6.144 wierszy w ramach jednej operacji w tym celu włączone. Liczba wierszy do danego punktu dystrybucji wyrównany do partycji jest mniejsza niż 102400 należy wiersze przejść do istnieje andstay magazynu zmian dopóki wystarczające wiersze zostały wstawione lub zmodyfikowane zamknąć grupy wierszy lub indeks został ponownie skompilowany.
 
 ### <a name="small-or-trickle-load-operations"></a>Mała lub ścieknie operacji obciążenia
 Mała liczba godzin ładuje, że przepływ do usługi SQL Data Warehouse czasami nazywa się ścieknie obciążeń. Zazwyczaj reprezentują near stały strumień danych jest pozyskanych przez system. Jednak ponieważ ten strumień jest bliski ciągłego wolumin wierszy nie jest szczególnie duże. Najczęściej danych znacznie jest poniżej wartości progowej, wymaganych do bezpośredniego obciążenia do formatu magazynu kolumn.
@@ -207,24 +198,24 @@ Mała liczba godzin ładuje, że przepływ do usługi SQL Data Warehouse czasami
 W takich sytuacjach warto często najpierw trafić dane w magazynie obiektów blob platformy Azure i pozwól mu gromadzone przed załadowaniem. Ta metoda jest często nazywany *przetwarzanie wsadowe micro*.
 
 ### <a name="too-many-partitions"></a>Zbyt wiele partycji
-Innym czynnikiem, który należy wziąć pod uwagę jest wpływ partycjonowania na tabel klastrowanego magazynu kolumn.  Przed partycje, SQL Data Warehouse już dzieli dane 60 baz danych.  Dodatkowo partycjonowania dzieli dane.  Jeśli partycji danych, a następnie należy wziąć pod uwagę, że **każdego** partycji musi mieć co najmniej 1 milion wierszy do korzystania z klastrowanego indeksu magazynu kolumn.  Jeśli partycji tabeli na partycje 100, a następnie tabela musi mieć co najmniej 6 miliardy wierszy do korzystania z klastrowanego indeksu magazynu kolumn (60 dystrybucje * partycje 100 * 1 milion wierszy). Jeśli tabela 100 partycji nie ma 6 miliardy wierszy, Zmniejsz liczbę partycji lub tabeli sterty zamiast tego Rozważ użycie.
+Innym czynnikiem, który należy wziąć pod uwagę jest wpływ partycjonowania na tabel klastrowanego magazynu kolumn.  Przed partycje, SQL Data Warehouse już dzieli dane 60 baz danych.  Dodatkowo partycjonowania dzieli dane.  Jeśli partycji danych, rozważ który **każdego** partycja wymaga co najmniej 1 milion wierszy do korzystania z klastrowanego indeksu magazynu kolumn.  Jeśli partycji tabeli na partycje 100, a następnie tabeli wymaga co najmniej 6 miliardy wierszy do korzystania z klastrowanego indeksu magazynu kolumn (60 dystrybucje * partycje 100 * 1 milion wierszy). Jeśli tabela partycji 100 nie ma 6 miliardy wierszy, Zmniejsz liczbę partycji lub tabeli sterty zamiast tego Rozważ użycie.
 
-Po tabele zostały załadowane z niektórych danych, wykonaj następujące czynności, aby zidentyfikować i Przebuduj tabele z indeksami magazynu kolumn nieoptymalnych klastra.
+Po tabele zostały załadowane z niektórych danych, wykonaj następujące czynności, aby zidentyfikować i Przebuduj tabele z nieoptymalnych klastrowane indeksy magazynu kolumn.
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Ponowne tworzenie indeksów do poprawy jakości segmentu
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: Określenie lub Utwórz użytkownika, który używa klasy zasobu prawo
-Szybki sposób natychmiast poprawić jakość segmentu jest odbudowanie indeksu.  SQL zwrócone przez widok powyżej zwróci błąd instrukcji ALTER INDEX REBUILD, która może służyć do reorganizacji indeksów: sieci.  Ponowne tworzenie indeksów sieci, należy pamiętać, że można przydzielić wystarczającej ilości pamięci do sesji, który będzie odbudowanie indeksu.  Aby to zrobić, należy zwiększyć klasa zasobów użytkownika, który ma uprawnienia do odbudowywania indeksu w tej tabeli do minimum, zalecane.  Nie można zmienić klasy zasobów użytkownika właściciela bazy danych, więc jeśli nie utworzono użytkownika w systemie, należy w tym celu najpierw.  Zalecanym przez nas minimum jest xlargerc Jeśli używasz DW300 lub mniej, largerc Jeśli używasz DW400 DW600 i mediumrc, jeśli używasz DW1000 lub nowszym.
+Szybki sposób natychmiast poprawić jakość segmentu jest odbudowanie indeksu.  SQL zwrócone przez widok powyżej zwraca instrukcji ALTER INDEX REBUILD, która może służyć do reorganizacji indeksów: sieci. Ponowne tworzenie indeksów sieci, należy pamiętać, że można przydzielić wystarczającej ilości pamięci do sesji, która spowoduje odbudowanie indeksu.  Aby to zrobić, należy zwiększyć klasa zasobów użytkownika, który ma uprawnienia do odbudowywania indeksu w tej tabeli do minimum, zalecane. Nie można zmienić klasy zasobów użytkownika właściciela bazy danych, więc jeśli nie utworzono użytkownika w systemie, należy w tym celu najpierw. Klasa minimalną zalecaną zasobów jest xlargerc Jeśli używasz DW300 lub mniej, largerc Jeśli używasz DW400 DW600 i mediumrc, jeśli używasz DW1000 lub nowszym.
 
-Poniżej przedstawiono przykładowy sposób przydzielania większej ilości pamięci do użytkownika przez odpowiednie zwiększenie ich klasy zasobów.  Aby uzyskać więcej informacji o zasobie klasy oraz sposobu tworzenia nowego użytkownika można znaleźć w [zarządzania współbieżności i obciążenia] [ Concurrency] artykułu.
+Poniżej przedstawiono przykładowy sposób przydzielania większej ilości pamięci do użytkownika przez odpowiednie zwiększenie ich klasy zasobów. Aby pracować z klasy zasobów, zobacz [klasy zasobów do zarządzania obciążenia](resource-classes-for-workload-management.md).
 
 ```sql
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Ponownie klastrowane indeksy magazynu kolumn za pomocą nowszej użytkownika klasy zasobu
-Logowania jako użytkownik z kroku 1 (np. LoadUser), który jest teraz za pomocą nowszej klasy zasobów i wykonywania instrukcji ALTER INDEX.  Pamiętaj, że ten użytkownik ma uprawnienia ALTER tabel, w którym jest odbudować indeksu.  Poniższe przykłady prezentują sposób odbudowywania indeksu magazynu kolumn całą lub sposobie odbudowania jednej partycji. W dużych tabel jest więcej praktyczne odbudowy indeksów jednej partycji naraz.
+Zaloguj się jako użytkownik z kroku 1 (np. LoadUser), która jest teraz przy użyciu nowszej klasy zasobów, i wykonywanie instrukcji ALTER INDEX. Pamiętaj, że ten użytkownik ma uprawnienia ALTER tabel, w którym jest odbudować indeksu. Poniższe przykłady prezentują sposób odbudowywania indeksu magazynu kolumn całą lub sposobie odbudowania jednej partycji. W dużych tabel jest więcej praktyczne odbudowy indeksów jednej partycji naraz.
 
-Alternatywnie w zamiast odbudowanie indeksu, nowa za pomocą tabeli można skopiować tabeli [CTAS][CTAS].  Jaki sposób jest najlepsza? Dla dużych ilości danych [CTAS] [ CTAS] jest zwykle szybsze niż [ALTER INDEX][ALTER INDEX]. W przypadku mniejszych woluminów danych [ALTER INDEX] [ ALTER INDEX] jest łatwiejsza w użyciu i nie będzie trzeba wymienić tabeli.  Zobacz **ponowne tworzenie indeksów CTAS i przełączanie partycji** poniżej więcej szczegółów na temat sposobu Odbuduj indeksy z CTAS.
+Alternatywnie w zamiast odbudowanie indeksu, do nowej tabeli można skopiować tabeli [przy użyciu CTAS](sql-data-warehouse-develop-ctas.md). Jaki sposób jest najlepsza? Dla dużych ilości danych, jest zwykle szybsze niż CTAS [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). W przypadku mniejszych woluminów danych ALTER INDEX jest łatwiejsza w użyciu i nie będzie trzeba wymienić tabeli. Zobacz **ponowne tworzenie indeksów CTAS i przełączanie partycji** poniżej więcej szczegółów na temat sposobu Odbuduj indeksy z CTAS.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -246,13 +237,13 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Ponowne tworzenie indeksu w usłudze SQL Data Warehouse jest operacją w trybie offline.  Aby uzyskać więcej informacji na temat ponowne tworzenie indeksów w sekcji ALTER INDEX REBUILD w [defragmentacji indeksy magazynu kolumn][Columnstore Indexes Defragmentation], i [ALTER INDEX] [ ALTER INDEX].
+Ponowne tworzenie indeksu w usłudze SQL Data Warehouse jest operacją w trybie offline.  Aby uzyskać więcej informacji na temat ponowne tworzenie indeksów w sekcji ALTER INDEX REBUILD w [defragmentacji indeksy magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-defragmentation), i [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Sprawdź, czy uległa poprawie jakości segmentu klastrowanego magazynu kolumn
 Ponownie uruchom zapytanie, które zidentyfikowanych tabeli z słaby segment jakości i sprawdź jakości segmentu została ulepszona.  Jeżeli nie poprawy jakości segmentu, może to być, czy wiersze w tabeli są bardzo szeroki.  Należy rozważyć użycie nowszej klasy zasobu lub DWU podczas odbudowywania z indeksów.
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Ponowne tworzenie indeksów CTAS i przełączanie partycji
-W tym przykładzie użyto [CTAS] [ CTAS] i przełączania w celu odbudowania partycji tabeli partycji. 
+W tym przykładzie użyto [Tworzenie tabeli jako wybierz (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) instrukcji i przełączania w celu odbudowania partycji tabeli partycji. 
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -292,31 +283,8 @@ ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternet
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
 ```
 
-Aby uzyskać więcej informacji o ponowne tworzenie partycji przy użyciu `CTAS`, zobacz [partycji] [ Partition] artykułu.
+Aby uzyskać więcej informacji na temat ponownego tworzenia partycje przy użyciu CTAS zobacz [za pomocą partycji w usłudze SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej, zobacz artykuły w [omówienie tabeli][Overview], [typy danych tabeli][Data Types], [Dystrybucja tabeli] [ Distribute], [Partycjonowania tabeli][Partition], [utrzymania statystyk tabeli] [ Statistics] i [Tabel tymczasowych][Temporary].  Aby dowiedzieć się więcej o najlepszych rozwiązaniach, zobacz [najlepsze rozwiązania magazynu danych SQL][SQL Data Warehouse Best Practices].
+Aby uzyskać więcej informacji na temat tworzenia tabel, zobacz [projektowanie tabelach](sql-data-warehouse-tables-overview.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Concurrency]: ./resource-classes-for-workload-management.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-[ALTER INDEX]: https://msdn.microsoft.com/library/ms188388.aspx
-[heap]: https://msdn.microsoft.com/library/hh213609.aspx
-[clustered indexes and nonclustered indexes]: https://msdn.microsoft.com/library/ms190457.aspx
-[create table syntax]: https://msdn.microsoft.com/library/mt203953.aspx
-[Columnstore Indexes Defragmentation]: https://msdn.microsoft.com/library/dn935013.aspx#Anchor_1
-[clustered columnstore indexes]: https://msdn.microsoft.com/library/gg492088.aspx
-
-<!--Other Web references-->

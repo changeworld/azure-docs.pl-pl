@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9968d18f9e27d7a138831394658b40a483b66709
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dbd96187ad73a9c7e27b28f137e25fe66e2944ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Rozpoczynanie tworzenia rozwiązań za pomocą biblioteki klienta usługi Batch dla platformy .NET
 
@@ -40,12 +40,8 @@ W tym artykule założono, że masz praktyczną wiedzę na temat języka C# i pr
 ### <a name="accounts"></a>Konta
 * **Konto platformy Azure**: jeśli nie masz jeszcze subskrypcji platformy Azure, [utwórz bezpłatne konto platformy Azure][azure_free_account].
 * **Konto usługi Batch**: po uzyskaniu subskrypcji platformy Azure [utwórz konto usługi Azure Batch](batch-account-create-portal.md).
-* **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) w temacie [Informacje o kontach magazynu Azure](../storage/common/storage-create-storage-account.md).
+* **Konto usługi Storage**: opis opcji konta magazynu w usłudze Batch można znaleźć w temacie [Omówienie funkcji usługi Batch](batch-api-basics.md#azure-storage-account).
 
-> [!IMPORTANT]
-> Usługa Batch obsługuje obecnie *tylko* typ konta magazynu **ogólnego przeznaczenia**, zgodnie z opisem w kroku 5 [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account) w temacie [Informacje o kontach magazynu Azure](../storage/common/storage-create-storage-account.md).
->
->
 
 ### <a name="visual-studio"></a>Visual Studio
 Do utworzenia przykładowego projektu potrzebny jest program **Visual Studio 2015 lub nowszy**. Bezpłatne i próbne wersje programu Visual Studio można znaleźć w [omówieniu produktów Visual Studio][visual_studio].
@@ -101,11 +97,6 @@ private const string BatchAccountUrl  = "";
 private const string StorageAccountName = "";
 private const string StorageAccountKey  = "";
 ```
-
-> [!IMPORTANT]
-> Jak wspomniano powyżej, musisz określić poświadczenia dla konta magazynu **ogólnego przeznaczenia** w usłudze Azure Storage. Aplikacje usługi Batch korzystają z magazynu obiektów blob w ramach konta magazynu **ogólnego przeznaczenia**. Nie określaj poświadczeń dla konta usługi Storage, które zostało utworzone przez wybranie typu konta *Magazyn obiektów Blob*.
->
->
 
 Poświadczenia konta usług Batch i Storage znajdziesz w blokach konta poszczególnych usług w witrynie [Azure Portal][azure_portal]:
 

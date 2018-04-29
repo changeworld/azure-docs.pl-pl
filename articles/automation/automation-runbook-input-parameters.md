@@ -1,6 +1,6 @@
 ---
-title: "Parametry wejściowe elementu Runbook"
-description: "Parametry wejściowe elementu Runbook zwiększyć elastyczność elementów runbook, umożliwiając przekazywania danych do elementu runbook, gdy jest ona uruchamiana. W tym artykule opisano różne scenariusze, w których są używane parametry wejściowe w elementach runbook."
+title: Parametry wejściowe elementu Runbook
+description: Parametry wejściowe elementu Runbook zwiększyć elastyczność elementów runbook, umożliwiając przekazywania danych do elementu runbook, gdy jest ona uruchamiana. W tym artykule opisano różne scenariusze, w których są używane parametry wejściowe w elementach runbook.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a2ce87c300d3e9092794e6e437dc9919c7eb0f3c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 19b0e17807adc0e7a4522fd13cd85779cdbcafd6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="runbook-input-parameters"></a>Parametry wejściowe elementu Runbook
 
@@ -37,16 +37,16 @@ Program Windows PowerShell obsługuje więcej atrybutów parametrów wejściowyc
 
 Definicję parametrów w elementach runbook przepływu pracy programu PowerShell ma następujący format Ogólne, gdzie wiele parametrów są oddzielone przecinkami.
 
-   ```powershell
-     Param
-     (
-         [Parameter (Mandatory= $true/$false)]
-         [Type] Name1 = <Default value>,
+```powershell
+Param
+(
+  [Parameter (Mandatory= $true/$false)]
+  [Type] $Name1 = <Default value>,
 
-         [Parameter (Mandatory= $true/$false)]
-         [Type] Name2 = <Default value>
-     )
-   ```
+  [Parameter (Mandatory= $true/$false)]
+  [Type] $Name2 = <Default value>
+)
+```
 
 > [!NOTE]
 > Podczas definiowania parametrów, jeśli nie określisz **obowiązkowe** atrybutu, a następnie domyślnie parametr są traktowane jako opcjonalne. Ponadto jeśli ustawisz wartość domyślną dla parametru w elementach runbook przepływu pracy programu PowerShell, będzie traktowane przez programu PowerShell jako opcjonalny parametr niezależnie od tego **obowiązkowe** wartość atrybutu.
@@ -61,13 +61,16 @@ W definicji tego parametru, parametry **$VMName** i **$resourceGroupName** prost
 
 Jeśli element runbook ma parametru wejściowego typu obiektu, użyj tablicy skrótów programu PowerShell z (nazwa, wartość) pary do przekazania wartości. Na przykład, jeśli masz następującego parametru w elemencie runbook:
 
-     [Parameter (Mandatory = $true)]
-     [object] $FullName
+```powershell
+[Parameter (Mandatory = $true)]
+[object] $FullName
+```
 
 Następnie można przekazać następującą wartość parametru:
 
-    @{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
-
+```powershell
+@{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
+```
 
 ## <a name="configure-input-parameters-in-graphical-runbooks"></a>Skonfiguruj parametry wejściowe w graficznych elementów runbook
 
@@ -146,7 +149,7 @@ Etykieta poniżej pola wejściowego zawiera atrybuty, które zostały ustawione 
   
   **Przykład:**
   
-  ```
+  ```powershell
   $params = @{“VMName”=”WSVMClassic”;”resourceGroupeName”=”WSVMClassicSG”}
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
@@ -155,7 +158,7 @@ Etykieta poniżej pola wejściowego zawiera atrybuty, które zostały ustawione 
   
   **Przykład:**
   
-  ```
+  ```powershell
   $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
   
   Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
@@ -170,7 +173,7 @@ Etykieta poniżej pola wejściowego zawiera atrybuty, które zostały ustawione 
 
 * **Metoda Menedżera zasobów Azure:** można uruchomić elementu runbook przy użyciu zestawu SDK języka programowania. Poniżej przedstawiono fragment kodu C# dla uruchamianie elementu runbook na Twoim koncie automatyzacji. Można wyświetlić wszystkie kodu w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
   
-  ```
+  ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -189,7 +192,7 @@ Etykieta poniżej pola wejściowego zawiera atrybuty, które zostały ustawione 
   ```
 * **Metoda modelu wdrożenia usługi Azure classic:** można uruchomić elementu runbook przy użyciu zestawu SDK języka programowania. Poniżej przedstawiono fragment kodu C# dla uruchamianie elementu runbook na Twoim koncie automatyzacji. Można wyświetlić wszystkie kodu w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
   
-  ```      
+  ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -209,7 +212,7 @@ Etykieta poniżej pola wejściowego zawiera atrybuty, które zostały ustawione 
   
   Aby uruchomić tę metodę, utworzyć słownika do przechowywania parametrów elementu runbook **VMName** i **resourceGroupName**i ich wartości. Następnie można uruchomić elementu runbook. Poniżej znajduje się fragment kodu C# dla wywołania metody, który jest zdefiniowany powyżej.
   
-  ```
+  ```csharp
   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
   // Add parameters to the dictionary.
@@ -239,7 +242,7 @@ W celu przekazania parametrów do zadania elementu runbook, użyj treści żąda
 
 Jeśli chcesz uruchomić **Get-AzureVMTextual** elementu runbook, który został utworzony wcześniej **VMName** i **resourceGroupName** jako parametry, użyj następującego formatu JSON w treści żądania.
 
-   ```
+   ```json
     {
       "properties":{
         "runbook":{
@@ -268,7 +271,7 @@ Można utworzyć [webhook](automation-webhooks.md) dla elementu runbook i skonfi
 
 ![Utwórz element webhook i przypisz parametrów](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Podczas wykonywania elementu runbook przy użyciu elementu webhook wstępnie zdefiniowanych parametrów wejściowych  **[Webhookdata](automation-webhooks.md#details-of-a-webhook)**  jest wysyłany razem z zdefiniowanych parametrów wejściowych. Można kliknąć, aby rozwinąć **WebhookData** parametr, aby uzyskać więcej informacji.
+Podczas wykonywania elementu runbook przy użyciu elementu webhook wstępnie zdefiniowanych parametrów wejściowych **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** jest wysyłany razem z zdefiniowanych parametrów wejściowych. Można kliknąć, aby rozwinąć **WebhookData** parametr, aby uzyskać więcej informacji.
 
 ![Parametr WebhookData](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 

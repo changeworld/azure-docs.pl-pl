@@ -1,11 +1,11 @@
 ---
-title: "Usługa Azure Service Fabric Docker Compose (wersja zapoznawcza) | Dokumentacja firmy Microsoft"
-description: "Sieć szkieletowa usług Azure akceptuje format rozwiązania Docker Compose ułatwiające organizowania istniejących kontenerów przy użyciu sieci szkieletowej usług. Obsługa rozwiązania Docker Compose jest obecnie w wersji zapoznawczej."
+title: Usługa Azure Service Fabric Docker Compose (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Sieć szkieletowa usług Azure akceptuje format rozwiązania Docker Compose ułatwiające organizowania istniejących kontenerów przy użyciu sieci szkieletowej usług. Obsługa rozwiązania Docker Compose jest obecnie w wersji zapoznawczej.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 79b4700b0b0b6897c19117044d37623a2f6ea8df
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 72ff8e99453d3067492d50c3e35396dba9f23c12
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>Użyj Docker woluminu dodatków plug-in i sterowniki rejestrowania w sieci kontenera
 Sieć szkieletowa usług Azure obsługuje określanie [Docker woluminu dodatków plug-in](https://docs.docker.com/engine/extend/plugins_volume/) i [sterowniki rejestrowania Docker](https://docs.docker.com/engine/admin/logging/overview/) dla usługi kontenera. Można ją utrwalić danych w [plików Azure](https://azure.microsoft.com/services/storage/files/) podczas przeniesienia z kontenera lub uruchomiona ponownie na innym hoście.
@@ -41,7 +41,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 ```
 
 > [!NOTE]
-> Windows Server 2016 w centrum danych nie obsługuje instalacji SMB mapowania do kontenerów ([która jest tylko obsługiwana w systemie Windows Server w wersji 1709](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage)). Tego ograniczenia zapobiega mapowania woluminu sieci i plików Azure woluminu sterowników w wersjach starszych niż 1709. 
+> Windows Server 2016 w centrum danych nie obsługuje instalacji SMB mapowania do kontenerów ([która jest tylko obsługiwana w systemie Windows Server w wersji 1709](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-storage)). Tego ograniczenia zapobiega mapowania woluminu sieci i plików Azure woluminu sterowników w wersjach starszych niż 1709. 
 >   
 
 

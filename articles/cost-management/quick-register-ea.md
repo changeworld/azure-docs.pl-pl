@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 75ae3aabf51a14ceb3326e7f3cee3e20d9b98579
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f0769340ca15f2b60cbcb2669e1a5cf9beef6b8e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Rejestracja umowy Enterprise Agreement platformy Azure i wyświetlanie danych kosztów
 
@@ -22,9 +22,9 @@ Do rejestrowania w usłudze Azure Cost Management służy umowa Enterprise Agree
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-- Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+- Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
-## <a name="create-a-trial-registration"></a>Tworzenie rejestracji wersji próbnej
+## <a name="register-with-azure-cost-management"></a>Rejestrowanie w usłudze Azure Cost Management
 
 1. W witrynie Azure Portal kliknij pozycję **Zarządzanie kosztami i rozliczenia** na liście usług.
 2. W obszarze **Przegląd** kliknij pozycję **Zarządzanie kosztami**  

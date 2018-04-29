@@ -1,12 +1,12 @@
 ---
-title: "Rozpoczynanie pracy z dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Testowanie dostępu warunkowego za pomocą warunku lokalizacji."
+title: Rozpoczynanie pracy z dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Testowanie dostępu warunkowego za pomocą warunku lokalizacji.
 services: active-directory
-keywords: "dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego"
-documentationcenter: 
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Rozpoczynanie pracy z dostępu warunkowego w usłudze Azure Active Directory
 
@@ -30,7 +30,7 @@ Ten temat zawiera instrukcje dotyczące testowania dostępu warunkowego na podst
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-Jednym z typowych wymagań w wielu organizacjach jest wymagane tylko uwierzytelnianie wieloskładnikowe dla dostępu do aplikacji, która nie jest wykonywane od firmowego intranetu. Z usługą Azure Active Directory można łatwo realizację tego celu, konfigurując zasady dostępu warunkowego na podstawie lokalizacji. W tym temacie przedstawiono szczegółowe instrukcje dotyczące konfigurowania pokrewnych zasad. Wykorzystanie zasad [zaufanych adresów IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) odróżnienie z firmowej prób dostępu do wszystkich innych lokalizacji w intranecie i.
+Jednym z typowych wymagań w wielu organizacjach jest wymagane tylko uwierzytelnianie wieloskładnikowe dla dostępu do aplikacji, która nie jest wykonywane od firmowego intranetu. Z usługą Azure Active Directory można łatwo realizację tego celu, konfigurując zasady dostępu warunkowego na podstawie lokalizacji. W tym temacie przedstawiono szczegółowe instrukcje dotyczące konfigurowania pokrewnych zasad. Wykorzystanie zasad [zaufanych adresów IP](authentication/howto-mfa-mfasettings.md#trusted-ips) odróżnienie z firmowej prób dostępu do wszystkich innych lokalizacji w intranecie i.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -47,7 +47,7 @@ Do przetestowania tego scenariusza, należy:
 
 - Skonfiguruj listę zaufanych adresów IP
 
-Aby uzyskać więcej informacji na temat zaufanych adresów IP, zobacz [zaufanych adresów IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
+Aby uzyskać więcej informacji na temat zaufanych adresów IP, zobacz [zaufanych adresów IP](authentication/howto-mfa-mfasettings.md#trusted-ips).
 
 
 ## <a name="policy-configuration-steps"></a>Kroki konfiguracji zasad
@@ -82,7 +82,7 @@ Aby uzyskać więcej informacji na temat zaufanych adresów IP, zobacz [zaufanyc
 
     b. Kliknij pozycję **Wybierz**.
 
-    d. Na **wybierz** bloku, wybierz użytkownika testowego, a następnie kliknij przycisk **wybierz**.
+    c. Na **wybierz** bloku, wybierz użytkownika testowego, a następnie kliknij przycisk **wybierz**.
 
     d. Na **użytkowników i grup** bloku, kliknij przycisk **gotowe**.
 
@@ -98,7 +98,7 @@ Aby uzyskać więcej informacji na temat zaufanych adresów IP, zobacz [zaufanyc
 
     b. Kliknij pozycję **Wybierz**.
 
-    d. Na **wybierz** bloku, wybierz aplikacji w chmurze, a następnie kliknij przycisk **wybierz**.
+    c. Na **wybierz** bloku, wybierz aplikacji w chmurze, a następnie kliknij przycisk **wybierz**.
 
     d. Na **aplikacji w chmurze** bloku, kliknij przycisk **gotowe**.
 
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji na temat zaufanych adresów IP, zobacz [zaufanyc
 
     b. W obszarze **Include**, kliknij przycisk **wszystkie lokalizacje**.
 
-    d. Kliknij przycisk **wykluczyć**, a następnie kliknij przycisk **wszystkich zaufanych adresów IP**.
+    c. Kliknij przycisk **wykluczyć**, a następnie kliknij przycisk **wszystkich zaufanych adresów IP**.
 
     ![Dostęp warunkowy](./media/active-directory-conditional-access-azure-portal-get-started/12.png)
 

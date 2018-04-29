@@ -1,8 +1,8 @@
 ---
-title: "Rozpoczęcie pracy z usługą Azure Key Vault | Microsoft Docs"
-description: "Ten samouczek ułatwi Ci rozpoczęcie pracy usługą Azure Key Vault w celu utworzenia wzmocnionego kontenera na platformie Azure do przechowywania kluczy kryptograficznych i kluczy tajnych na platformie Azure oraz zarządzania nimi."
+title: Rozpoczęcie pracy z usługą Azure Key Vault | Microsoft Docs
+description: Ten samouczek ułatwi Ci rozpoczęcie pracy usługą Azure Key Vault w celu utworzenia wzmocnionego kontenera na platformie Azure do przechowywania kluczy kryptograficznych i kluczy tajnych na platformie Azure oraz zarządzania nimi.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/20/2017
 ms.author: barclayn
-ms.openlocfilehash: 1b70802945b710059e93b54607996ccf74510d1f
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: d082241ee5151b199376a0c2c9baccc242ece12e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-key-vault"></a>Rozpoczynanie pracy z usługą Azure Key Vault
 Ten artykuł ułatwia rozpoczęcie pracy z usługą Azure Key Vault przy użyciu programu PowerShell i zawiera omówienie następujących działań:
@@ -49,10 +49,10 @@ Aby uzyskać szczegółowe informacje na temat każdego polecenia cmdlet, które
 Get-Help <cmdlet-name> -Detailed
 ```
     
-Na przykład aby uzyskać pomoc dotyczącą polecenia cmdlet **Login-AzureRmAccount**, wpisz:
+Na przykład aby uzyskać pomoc dotyczącą polecenia cmdlet **Connect-AzureRmAccount**, wpisz polecenie:
 
 ```PowerShell
-Get-Help Login-AzureRmAccount -Detailed
+Get-Help Connect-AzureRmAccount -Detailed
 ```
 
 Aby zapoznać się z modelem wdrażania usługi Azure Resource Manager w programie Azure PowerShell, możesz też przeczytać następujące artykuły:
@@ -64,13 +64,13 @@ Aby zapoznać się z modelem wdrażania usługi Azure Resource Manager w program
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 >[!NOTE]
  Jeśli używasz konkretnego wystąpienia platformy Azure, użyj parametru -Environment. Na przykład: 
  ```powershell
- Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
+ Connect-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
  ```
 
 W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Program Azure PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem, i domyślnie użyje pierwszej.
@@ -138,7 +138,7 @@ Aby wyświetlić identyfikator URI dla tego klucza, wpisz polecenie:
 $key.id
 ```
 
-Możesz odwoływać się do klucza, który został utworzony lub przekazany do usługi Azure Key Vault, za pomocą jego identyfikatora URI. Użyj adresu **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**, aby uzyskać bieżącą wersję, oraz adresu **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**, aby uzyskać tę konkretną wersję.  
+Możesz odwoływać się do klucza, który został utworzony lub przekazany do usługi Azure Key Vault, za pomocą jego identyfikatora URI. Aby uzyskać bieżącą wersję, możesz użyć identyfikatora **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**, a aby uzyskać tę konkretną wersję, możesz użyć identyfikatora **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**.  
 
 ### <a name="importing-an-existing-pfx-file-into-azure-key-vault"></a>Importowanie istniejącego pliku PFX do usługi Azure Key Vault
 
@@ -187,7 +187,7 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPasswor
 ```
 
 
-Teraz możesz odwoływać się do hasła dodanego do usługi Azure Key Vault za pomocą jego identyfikatora URI. Użyj adresu **https://ContosoVault.vault.azure.net/secrets/SQLPassword**, aby zawsze uzyskać bieżącą wersję, oraz adresu **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**, aby uzyskać tę konkretną wersję.
+Teraz możesz odwoływać się do hasła dodanego do usługi Azure Key Vault za pomocą jego identyfikatora URI. Użyj identyfikatora **https://ContosoVault.vault.azure.net/secrets/SQLPassword**, aby zawsze pobierać bieżącą wersję, a identyfikatora **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**, aby pobierać tę konkretną wersję.
 
 Aby wyświetlić identyfikator URI dla tego klucza tajnego, wpisz polecenie:
 
@@ -241,7 +241,10 @@ Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure uży
 10. Informacje dotyczące **identyfikatora aplikacji** i **klucza** zostaną użyte w następnym kroku w celu ustawienia uprawnień dotyczących magazynu.
 
 ## <a id="authorize"></a>Zezwalanie aplikacji na używanie klucza lub klucza tajnego
-Aby przyznać aplikacji dostęp do klucza lub klucza tajnego w magazynie, użyj polecenia cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
+Istnieją dwa sposoby autoryzowania aplikacji na potrzeby uzyskiwania dostępu do klucza lub wpisu tajnego w magazynie.
+
+### <a name="using-powershell"></a>Korzystanie z programu PowerShell
+Aby użyć programu PowerShell, wpisz polecenie cmdlet [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy).
 
 Na przykład jeśli nazwa Twojego magazynu to **ContosoKeyVault**, a identyfikator klienta aplikacji, której chcesz przyznać dostęp, to 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed i chcesz zezwolić aplikacji na odszyfrowywanie oraz logowanie przy użyciu kluczy w magazynie, uruchom następujące polecenie:
 
@@ -254,6 +257,13 @@ Jeśli chcesz zezwolić tej samej aplikacji na odczyt kluczy tajnych w magazynie
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 ```
+### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
+Aby zmienić autoryzację aplikacji do używania kluczy lub wpisów tajnych:
+1. Wybierz opcję **Zasady dostępu** z bloku zasobów usługi Key Vault
+2. Kliknij przycisk [+ Dodaj nowy] u góry bloku
+3. Kliknij pozycję **Wybierz podmiot zabezpieczeń**, aby wybrać wcześniej utworzoną aplikację
+4. Z listy rozwijanej **Uprawnienia klucza** wybierz opcję „Odszyfruj” i „Podpisz”, aby autoryzować aplikację do odszyfrowywania i podpisywania przy użyciu kluczy z magazynu
+5. Z listy rozwijanej **Uprawnienia wpisu tajnego** wybierz opcję „Pobierz”, aby zezwolić aplikacji na odczytywanie wpisów tajnych w magazynie
 
 ## <a id="HSM"></a>Praca ze sprzętowym modułem zabezpieczeń (HSM, hardware security module)
 W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają granicy modułów HSM. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Jeżeli te wymagania nie odnoszą się do Ciebie, pomiń tę sekcję i przejdź do sekcji [Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych](#delete).

@@ -1,23 +1,21 @@
 ---
-title: "Rozwiązywanie problemów z bazy danych HBase przy użyciu usługi Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Odpowiedzi na często zadawane pytania na temat pracy z bazy danych HBase i usłudze Azure HDInsight."
+title: Rozwiązywanie problemów z bazy danych HBase przy użyciu usługi Azure HDInsight | Dokumentacja firmy Microsoft
+description: Odpowiedzi na często zadawane pytania na temat pracy z bazy danych HBase i usłudze Azure HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinver
 manager: ashitg
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: cd6315c192ad3c33d43406993b1a3e6bd6ec7e4d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 04d8e37791c12078754a661f7a1aa8a76a6b3c44
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z bazy danych HBase przy użyciu usługi Azure HDInsight
 
@@ -47,7 +45,7 @@ Aby przywrócić regionów nieprzypisane do normalnego stanu, wykonaj następuj�
 
 Potencjalną przyczyną problemów limitu czasu, gdy używasz `hbck` polecenie może być kilka regiony są przez długi czas w stanie "w ramach przejścia". Regionach jest widoczny jako w trybie offline w Interfejsie użytkownika głównego HBase. Ponieważ dużej liczby regiony są próby przejścia, głównego HBase może limitu czasu i nie można wyświetlić regionach ponownie do trybu online.
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Zaloguj się do klastra HDInsight HBase przy użyciu protokołu SSH.
 2. Aby połączyć się z powłoki dozorcy, uruchom `hbase zkcli` polecenia.
@@ -128,7 +126,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Liczba węzłów to poniżej lub bliski współczynnik replikacji systemu plików HDFS.
 
-### <a name="resolution-steps"></a>Kroki rozwiązania 
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów 
 
 1. Pobierz stan systemu plików HDFS w klastrze usługi HDInsight, uruchamiając następujące polecenia:
 
@@ -213,7 +211,7 @@ Klaster usługi HDInsight był skalowany w dół do bardzo kilku węzłów. Licz
 
 ## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Jak rozwiązać łączności JDBC lub SQLLine problemy z Apache Phoenix?
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 Aby połączyć się z Phoenix, należy podać adres IP w aktywnym węźle dozorcy. Upewnij się, że usługi dozorcy, do których sqlline.py próbuje nawiązać połączenie jest uruchomiona.
 1. Zaloguj się do klastra usługi HDInsight przy użyciu protokołu SSH.
@@ -278,7 +276,7 @@ Podczas uruchamiania HMaster jest podstawowy `list` polecenia w tych folderach. 
 
 W dziennikach serwera region spróbuj zidentyfikować osi czasu utworzenia pliku, a następnie sprawdź, czy został awarii procesu w czasie zbliżonym do utworzenia pliku. (Się z pomocą techniczną bazy danych HBase, aby pomóc w ten sposób). Dzięki temu nam zapewniają bardziej niezawodne mechanizmy, tak, aby uniknąć naciśnięcie tego błędu i upewnij się, proces bezpiecznego zamknięcia systemu.
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 Stos wywołań i spróbuj ustalenie, który folder może być przyczyną problemu (na przykład może to być WALs folder lub TMP). Następnie w Eksploratorze chmury lub za pomocą poleceń systemu plików HDFS próbę zlokalizuj plik problem. Zazwyczaj jest to \*-renamePending.json pliku. ( \*-RenamePending.json plik jest używany do wykonania operacji zmiany nazwy atomic w sterowniku WASB pliku dziennika. Z powodu błędów w tej implementacji te pliki mogą pozostać za pośrednictwem po awarii procesów itd.) Wymuś Usuń ten plik w Eksploratorze chmury lub za pomocą poleceń systemu plików HDFS. 
 
@@ -294,7 +292,7 @@ Po uruchomieniu tych poleceń, HMaster należy zacząć od razu.
 
 W klastrze systemu Linux, który wskazuje, że może zostać wyświetlony komunikat *hbase: meta* tabeli nie jest w trybie online. Uruchomiona `hbck` może raportować który "hbase: meta tabeli replicaId 0 nie została znaleziona na dowolny region." Może to oznaczać HMaster nie można zainicjować po ponownym uruchomieniu bazy danych HBase. W dziennikach HMaster, zostanie wyświetlony komunikat: "nie adres serwera na liście hbase: meta dla regionu hbase: kopii zapasowej \<nazwa regionu\>".  
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Powłoka HBase wprowadź następujące polecenia (zmiana wartości rzeczywistych zgodnie z wymaganiami):  
 
@@ -333,7 +331,7 @@ Ten problem może wystąpić, jeśli masz wiele tabel i regionów, które nie zo
 
 Jest to znany problem z usługą HMaster. Zadania uruchamiania ogólne klastra może zająć dużo czasu. HMaster zamknięty, ponieważ w tabeli nazw nie jest jeszcze przypisana. Dzieje się tak tylko w scenariuszach, w którym dużych ilości danych unflushed istnieje i nie wystarcza limitem czasu równym 5 minut.
   
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. W Interfejsie użytkownika narzędzia Ambari, przejdź do **HBase** > **Configs**. W pliku niestandardowej bazy danych hbase-site.xml Dodaj następujące ustawienia: 
 
@@ -411,7 +409,7 @@ Z powodu niespodziewane wyłączanie portu skojarzonych z procesem może nie zos
    ... 15 more
    ```
 
-### <a name="resolution-steps"></a>Kroki rozwiązania
+### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
 1. Spróbuj zmniejszyć obciążenie serwerów region HBase przed rozpoczęciem ponownego uruchomienia komputera. 
 2. Możesz też (Jeśli krok 1 nie Pomoc), spróbuj ręcznie ponownie uruchomić serwery region na węzłów procesu roboczego przy użyciu następujących poleceń:

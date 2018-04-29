@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: df97d2020309fa9af7f67170729ce9c2d723572d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7800c2e72b1bfd78f83bf7b90a35e47f6109a014
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
@@ -32,22 +32,13 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 
 | Język | Obsługiwane wersje |
 |---|---|
-| Node.js | 4.4, 4.5, 6.2, 6.6, 6.9-6.11, 8.0, 8.1 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
 | Java * | 8.0 |
-| PHP | 5.6, 7.0 |
+| PHP | 5.6, 7.0, 7.2 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
-
-* Obsługa funkcji w wersji zapoznawczej
-
-### <a name="preview-supported-java-runtimes"></a>Wersja zapoznawcza: obsługiwane środowiska uruchomieniowe Java
-
-W usłudze App Service w systemie Linux są dostępne następujące środowiska uruchomieniowe Java:
-
-| Środowisko uruchomieniowe | Wersja |
-|---|---|
-| Apache Tomcat | 8.5 |
-| Apache Tomcat | 9.0 |
+| Przejdź | 1.0 |
+| Apache Tomcat | 8.5, 9.0 |
 
 Więcej szczegółów można znaleźć w temacie [Tworzenie aplikacji internetowej w języku Java w usłudze App Service w systemie Linux](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-java).
 
@@ -84,10 +75,7 @@ Witryna Azure Portal wyświetla tylko te funkcje, które obecnie działają dla 
 
 Niektóre funkcje, takie jak integracja sieci wirtualnej, uwierzytelnianie w usłudze Azure Active Directory/innej firmy lub rozszerzenia lokacji usługi Kudu, nie są jeszcze dostępne. Po udostępnieniu tych funkcji zaktualizujemy naszą dokumentację i powiadomimy w blogu o zmianach.
 
-Usługa App Service w systemie Linux jest obsługiwana tylko w planach usługi App Service [Podstawowa i Standardowa](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma warstwy [Bezpłatna lub Współdzielona](https://azure.microsoft.com/pricing/details/app-service/plans/). Poniżej przedstawiono również ważne ograniczenia dotyczące usługi App Service w systemie Linux:
-
-* Nie można utworzyć usługi Web App for Containers w planie usługi App Service już hostującym usługę Web Apps w systemie innym niż Linux.
-* W przypadku tworzenia usługi Web App for Containers w grupie zasobów zawierającej usługę Web Apps dla systemu innego niż Linux, należy utworzyć plan usługi App Service w grupie zasobów innej niż istniejący plan usługi App Service.
+Usługa App Service w systemie Linux jest obsługiwana tylko w planach usługi App Service [Podstawowa i Standardowa](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma warstwy [Bezpłatna lub Współdzielona](https://azure.microsoft.com/pricing/details/app-service/plans/). Nie można utworzyć usługi Web App for Containers w planie usługi App Service już hostującym usługę Web Apps w systemie innym niż Linux.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 930b5607f343b87adc253cc99d74ddf28235a50b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 33f4430baacbe50f3d4c7da857ee4345d4f74928
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastyczne pule pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -32,9 +32,9 @@ Pule elastyczne rozwiązać ten problem, zapewniając, że bazy danych uzyskać 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Pule elastyczne Włączanie deweloperowi zakupu zasobów dla puli współużytkowane przez wiele baz danych do uwzględnienia nieprzewidywalne okresów użycia przez pojedyncze bazy danych. Można skonfigurować zasoby puli albo na podstawie [na podstawie jednostek dtu w warstwie model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#dtu-based-purchasing-model) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview). Wymaganie zasobów w puli jest określany przez łączny wykorzystania jej baz danych. Liczba dostępnych do puli zasobów jest kontrolowana przez budżet developer. Deweloper po prostu dodaje baz danych do puli, ustawia zasobów minimalną i maksymalną dla baz danych (Dtu minumumn i maksymalnej lub minimalnej lub maksymalna vCores w zależności od dokonanego resourceing modelu), a następnie ustawia na podstawie puli zasobów ich budżetu. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
+Pule elastyczne Włączanie deweloperowi zakupu zasobów dla puli współużytkowane przez wiele baz danych do uwzględnienia nieprzewidywalne okresów użycia przez pojedyncze bazy danych. Można skonfigurować zasoby puli albo na podstawie [na podstawie jednostek dtu w warstwie model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#dtu-based-purchasing-model) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview). Wymaganie zasobów w puli jest określany przez łączny wykorzystania jej baz danych. Liczba dostępnych do puli zasobów jest kontrolowana przez budżet developer. Deweloper po prostu dodaje baz danych do puli, ustawia zasobów minimalną i maksymalną dla baz danych (minimalna i maksymalna liczba jednostek Dtu lub minimalna lub maksymalna vCores w zależności od wybranych resourcing modelu), a następnie ustawia na podstawie puli zasobów ich budżetu. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
 
-Poszczególne bazy danych w ramach puli mają możliwość elastycznego skalowania automatycznego w określonym zakresie parametrów. Duże obciążenie bazy danych mogą zużywać więcej zasobów, aby spełnić wymagania. Bazy danych w ramach lekkie ładunki zużywają mniej i baz danych w ramach obciążenia korzystać z żadnych zasobów. Aprowizacja zasobów dla całej puli zamiast pojedynczych baz danych upraszcza zadania związane z zarządzaniem. Ponadto pule mają przewidywalny budżet. Dodatkowe zasoby można dodać do istniejącej puli bez przestojów bazy danych, z wyjątkiem tego, że bazy danych może być konieczne do przeniesienia do zapewnienia zasoby obliczeniowe dodatkowe nowe zastrzeżenie eDTU. Podobnie jeśli dodatkowe zasoby nie są już potrzebne one można usunąć z istniejącej puli w dowolnym momencie w czasie. Można również dodawać bazy danych do puli lub odejmować je z niej. Jeśli baza danych przewidywalnie niewystarczająco wykorzystuje zasoby, należy ją przenieść.
+Poszczególne bazy danych w ramach puli mają możliwość elastycznego skalowania automatycznego w określonym zakresie parametrów. Duże obciążenie bazy danych mogą zużywać więcej zasobów, aby spełnić wymagania. Bazy danych w ramach lekkie ładunki zużywają mniej i baz danych w ramach obciążenia korzystać z żadnych zasobów. Aprowizacja zasobów dla całej puli zamiast pojedynczych baz danych upraszcza zadania związane z zarządzaniem. Ponadto należy przewidywalną budżetu puli. Dodatkowe zasoby można dodać do istniejącej puli bez przestojów bazy danych, z wyjątkiem tego, że bazy danych może być konieczne do przeniesienia do zapewnienia zasoby obliczeniowe dodatkowe nowe zastrzeżenie eDTU. Podobnie jeśli dodatkowe zasoby nie są już potrzebne one można usunąć z istniejącej puli w dowolnym momencie w czasie. Można również dodawać bazy danych do puli lub odejmować je z niej. Jeśli baza danych przewidywalnie niewystarczająco wykorzystuje zasoby, należy ją przenieść.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Kiedy należy rozważyć puli elastycznej bazy danych SQL
 
@@ -81,7 +81,7 @@ Aby pula 100 eDTU była bardziej opłacalna niż korzystanie z poziomów wydajno
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maksymalna liczba baz danych z równoczesnymi szczytami użycia
 
-Za pomocą udostępniania zasoby, nie wszystkie bazy danych w puli można jednocześnie używać zasoby w granicach dostępne dla pojedynczej bazy danych. Mniej baz danych, która jednocześnie szczytu, tym niższy puli zasobów można ustawić i bardziej ekonomiczne rozwiązanie staje się puli. Ogólnie nie więcej niż 2/3 (lub 67%) w puli baz danych powinien jednocześnie szczytowa ich limit zasobów.
+Dzięki udostępnieniu zasobów nie wszystkie bazy danych w puli można jednocześnie używać zasobów w granicach dostępne dla pojedynczej bazy danych. Mniej baz danych, która jednocześnie szczytu, tym niższy puli zasobów można ustawić i bardziej ekonomiczne rozwiązanie staje się puli. Ogólnie nie więcej niż 2/3 (lub 67%) w puli baz danych powinien jednocześnie szczytowa ich limit zasobów.
 
 ***Na podstawie jednostek dtu w warstwie zakupów przykład modelu***<br>
 Aby zmniejszyć koszty dla trzech baz danych S3 w puli 200 eDTU, co najwyżej dwie z tych baz danych mogą jednocześnie osiągać szczytowe użycie. W przeciwnym razie, jeśli więcej niż dwie z tych czterech baz danych S3 jednocześnie osiągają szczytowe użycie, rozmiar puli musiałby zostać zwiększony do ponad 200 eDTU. Jeśli rozmiar puli będzie większy niż 200 eDTU, konieczne będzie dodanie większej liczby baz danych S3, aby koszty puli pozostały niższe niż w przypadku poziomów wydajności dla pojedynczych baz danych.
@@ -98,7 +98,7 @@ Baza danych S3, która osiąga szczytowe użycie do 100 DTU, a przeciętnie uży
 
 Najlepszy rozmiar puli zależy od łącznej zasobów niezbędnych do wszystkich baz danych w puli. Obejmuje to określenie następujących czynności:
 
-* Maksymalna zasoby wykorzystywane przez wszystkie bazy danych w puli (maksymalna Dtu lub maksymalna vCores w zależności od dokonanego resourceing modelu).
+* Maksymalna zasoby wykorzystywane przez wszystkie bazy danych w puli (maksymalna Dtu lub maksymalna vCores w zależności od wybranych resourcing modelu).
 * Maksymalna liczba bajtów magazynu wykorzystana przez wszystkie bazy danych w puli.
 
 W warstwach usług dostępne dla każdego modelu zasobu, zobacz [na podstawie jednostek dtu w warstwie model kupna](sql-database-service-tiers.md#dtu-based-purchasing-model) lub [na podstawie vCore model kupna (wersja zapoznawcza)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
@@ -177,7 +177,7 @@ Jeśli chcesz monitorować baz danych w puli użytkownika, możesz kliknąć **b
 
 Wykres i metryki strony, aby wyświetlić innych metryk, takich jak procent, procent we/wy danych i dziennika we/wy procent wykorzystania procesora CPU można edytować.
 
-Na **Edytuj wykres** formularza, możesz wybrać stały czas należeć do zakresu, lub kliknij przycisk **niestandardowych** wybierz dowolnego okna 24-godzinnym, w ciągu ostatnich dwóch tygodni, a następnie wybierz zasoby do monitorowania.
+Na **Edytuj wykres** formularza, możesz wybrać stały czas należeć do zakresu, lub kliknij przycisk **niestandardowych** wybierz wszystkie okna 24-godzinnym, w ciągu ostatnich dwóch tygodni, a następnie wybierz zasoby do monitorowania.
 
 #### <a name="to-select-databases-to-monitor"></a>Aby wybrać baz danych do monitorowania
 
@@ -269,17 +269,17 @@ Tworzenie i zarządzanie nimi elastyczna baza danych SQL pule Użyj te żądania
 |[Pule elastyczne - Get](/rest/api/sql/elasticpools/get)|Pobiera puli elastycznej.|
 |[Pule elastyczne — lista przez serwer](/rest/api/sql/elasticpools/listbyserver)|Zwraca listę pul elastycznych na serwerze.|
 |[Pule elastyczne - aktualizacji](/rest/api/sql/elasticpools/update)|Aktualizuje istniejącej puli elastycznej.|
-|[Zalecana liczba elastycznych pul - Get](/rest/api/sql/recommendedelasticpools/get)|Pobiera recommented puli elastycznej.|
+|[Zalecana liczba elastycznych pul - Get](/rest/api/sql/recommendedelasticpools/get)|Pobiera zalecanej puli elastycznej.|
 |[Zalecana liczba elastycznych pul — lista przez serwer](/rest/api/sql/recommendedelasticpools/listbyserver)|Zwraca zalecana liczba elastycznych pul.|
-|[Zalecana liczba elastycznych pul - metryki listy](/rest/api/sql/recommendedelasticpools/listmetrics)|Zwraca recommented metryki puli elastycznej.|
+|[Zalecana liczba elastycznych pul - metryki listy](/rest/api/sql/recommendedelasticpools/listmetrics)|Zwraca zalecane metryki puli elastycznej.|
 |[Działania puli elastycznej](/rest/api/sql/elasticpoolactivities)|Zwraca działania puli elastycznej.|
 |[Działania bazy danych w puli elastycznej](/rest/api/sql/elasticpooldatabaseactivities)|Zwraca działania bazy danych, w ramach puli elastycznej.|
 |[Bazy danych — Tworzenie lub aktualizowanie](/rest/api/sql/databases/createorupdate)|Tworzy nową bazę danych lub aktualizuje istniejącą bazę danych.|
 |[Bazy danych - Get](/rest/api/sql/databases/get)|Pobiera bazy danych.|
 |[Bazy danych — uzyskać za pomocą puli elastycznej](/rest/api/sql/databases/getbyelasticpool)|Pobiera bazy danych w puli elastycznej.|
-|[Bazy danych — uzyskać za pomocą zalecana liczba elastycznych pul](/rest/api/sql/databases/getbyrecommendedelasticpool)|Pobiera bazy danych wewnątrz recommented puli elastycznej.|
+|[Bazy danych — uzyskać za pomocą zalecana liczba elastycznych pul](/rest/api/sql/databases/getbyrecommendedelasticpool)|Pobiera bazy danych wewnątrz zalecanej puli elastycznej.|
 |[Bazy danych — lista według puli elastycznej](/rest/api/sql/databases/listbyelasticpool)|Zwraca listę baz danych w puli elastycznej.|
-|[Bazy danych — lista według zalecana liczba elastycznych pul](/rest/api/sql/databases/listbyrecommendedelasticpool)|Zwraca listę baz danych wewnątrz recommented puli elastycznej.|
+|[Bazy danych — lista według zalecana liczba elastycznych pul](/rest/api/sql/databases/listbyrecommendedelasticpool)|Zwraca listę baz danych wewnątrz zalecanej puli elastycznej.|
 |[Bazy danych — lista przez serwer](/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
 |[Bazy danych — aktualizacja](/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
 

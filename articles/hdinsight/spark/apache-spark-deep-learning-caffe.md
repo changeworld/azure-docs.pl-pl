@@ -1,8 +1,8 @@
 ---
-title: "Użyj Caffe Azure HDInsight Spark dla rozproszonych głębokie learning | Dokumentacja firmy Microsoft"
-description: "Użyj Caffe Azure HDInsight Spark dla rozproszonych learning bezpośrednich"
+title: Użyj Caffe Azure HDInsight Spark dla rozproszonych głębokie learning | Dokumentacja firmy Microsoft
+description: Użyj Caffe Azure HDInsight Spark dla rozproszonych learning bezpośrednich
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: xiaoyongzhu
 manager: asadk
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 71dcd1ad-4cad-47ad-8a9d-dcb7fa3c2ff9
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 7565efd82945f21b83471ee66098cd476b7bb59f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 27ce89f205efa6b8f2d29e034c6e5002065879fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Użyj Caffe Azure HDInsight Spark dla rozproszonych learning bezpośrednich
 
@@ -31,27 +29,27 @@ Głębokie learning jest wpływające na od opieki zdrowotnej do transportu do w
 
 Brak [wielu popularnych środowisk](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), takie jak [kognitywnych zestaw narzędzi firmy Microsoft](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, itp. Caffe jest jednym z Najpopularniejsza struktur-symboliczne sieci neuronowej (nadrzędnych), a powszechnie używany w wielu obszarach, w tym komputerze wizji. Ponadto [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) łączy Caffe z platformy Apache Spark w takim przypadku głębokość uczenia, które mogą być łatwo używane istniejącego klastra usługi Hadoop. Głębokie learning potoki Spark ETL, zmniejszenie złożoności systemu i opóźnienia służy do uczenia kompletnego rozwiązania.
 
-[HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) chmury Hadoop oferuje zapewnia zoptymalizowane typu open source analityczne klastrów w Spark, Hive, Hadoop, HBase, Storm, Kafka i R Server. HDInsight nie jest obsługiwana przez SLA 99,9%. Każdy z tych technologii danych big data i aplikacji niezależnego dostawcy oprogramowania jest łatwo można wdrożyć jako zarządzane klastry z zabezpieczeniami i monitorowania dla przedsiębiorstw.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) chmury Hadoop oferuje zapewnia zoptymalizowane klastrów analityczne open source dla platformy Spark, Hive, Hadoop, HBase, Storm, Kafka i R Server. HDInsight nie jest obsługiwana przez SLA 99,9%. Każdy z tych technologii danych big data i aplikacji niezależnego dostawcy oprogramowania jest łatwo można wdrożyć jako zarządzane klastry z zabezpieczeniami i monitorowania dla przedsiębiorstw.
 
 W tym artykule przedstawiono sposób instalowania [Caffe na Spark](https://github.com/yahoo/CaffeOnSpark) dla klastra usługi HDInsight. W tym artykule używa również wbudowane pokaz MNIST do pokazują, jak używać rozproszonego przy użyciu HDInsight Spark na procesorach głębokie Learning.
 
-Istnieją cztery główne kroki, aby pracować w usłudze HDInsight.
+Istnieją cztery kroki do wykonania zadania:
 
 1. Instalowanie wymaganych zależności na wszystkich węzłach
 2. Tworzenie Caffe na Spark dla usługi HDInsight w węźle głównym
 3. Dystrybuuj wymaganych bibliotek do wszystkich węzłów procesu roboczego
 4. Utwórz Caffe model i uruchomić go w sposób rozproszony.
 
-Ponieważ HDInsight to rozwiązanie typu PaaS, oferuje funkcje platformy dużą — tak łatwe do wykonania niektórych zadań. Jedną z funkcji, które firma Microsoft intensywnie korzystają w tym wpisie w blogu jest wywoływana [akcji skryptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), z której można wykonać polecenia powłoki, aby dostosować węzły klastra (węzła głównego węzła procesu roboczego i węzłem krawędzi).
+Ponieważ HDInsight to rozwiązanie typu PaaS, oferuje funkcje platformy dużą — tak łatwe do wykonania niektórych zadań. Jedną z funkcji używane w tym wpisie w blogu jest wywoływana [akcji skryptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), z której można wykonać polecenia powłoki, aby dostosować węzły klastra (węzła głównego węzła procesu roboczego i węzłem krawędzi).
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Krok 1: Instalowanie wymaganych zależności na wszystkich węzłach
 
-Aby rozpocząć, potrzebujemy zależności, które należy zainstalować. Witryna Caffe i [lokacji CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) oferuje niektóre przydatne wiki do instalowania zależności platformy Spark w trybie YARN. HDInsight używa również Spark w trybie YARN. Jednak należy dodać kilka zależności więcej HDInsight platformy. W tym celu możemy użyć akcji skryptu i uruchom go na wszystkich węzłach głównych i węzłów procesu roboczego. Tę akcję skryptu trwa około 20 minut, jak te zależności również są zależne od innych pakietów. Należy umieścić go w określonej lokalizacji dostępnej z klastrem usługi HDInsight, takie jak lokalizacja GitHub lub domyślne konto magazynu obiektów BLOB.
+Aby rozpocząć pracę, musisz zainstalować zależności. Witryna Caffe i [lokacji CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) oferuje niektóre przydatne wiki do instalowania zależności platformy Spark w trybie YARN. HDInsight używa również Spark w trybie YARN. Jednak należy dodać kilka zależności więcej HDInsight platformy. Aby to zrobić, należy użyć akcji skryptu i uruchom go na wszystkich węzłach głównych i węzłów procesu roboczego. Tę akcję skryptu trwa około 20 minut, jak te zależności również są zależne od innych pakietów. Należy umieścić go w określonej lokalizacji dostępnej z klastrem usługi HDInsight, takie jak lokalizacja GitHub lub domyślne konto magazynu obiektów BLOB.
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
     #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
-    #It seems numpy will only needed during compilation time, but for safety purpose we install them on all the nodes
+    #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
@@ -67,9 +65,9 @@ Aby rozpocząć, potrzebujemy zależności, które należy zainstalować. Witryn
     echo "protobuf installation done"
 
 
-Istnieją dwa kroki w akcji skryptu. Pierwszym krokiem jest instalowanie wymaganych bibliotek. Te biblioteki zawierają wymagane biblioteki dla kompilacji Caffe (na przykład gflags, glog) i systemem Caffe (na przykład numpy). Używamy libatlas optymalizacji Procesora, ale CaffeOnSpark wiki zawsze można wykonać na temat instalowania innych bibliotek optymalizacji, takie jak MKL lub CUDA (dla procesora GPU).
+Istnieją dwa kroki w akcji skryptu. Pierwszym krokiem jest instalowanie wymaganych bibliotek. Te biblioteki zawierają wymagane biblioteki dla kompilacji Caffe (na przykład gflags, glog) i systemem Caffe (na przykład numpy). używasz libatlas optymalizacji Procesora, ale CaffeOnSpark wiki zawsze można wykonać na temat instalowania innych bibliotek optymalizacji, takie jak MKL lub CUDA (dla procesora GPU).
 
-Drugim krokiem jest pobrać, kompilowania i zainstaluj protobuf 2.5.0 dla Caffe w czasie wykonywania. Protobuf 2.5.0 [wymagana jest](https://github.com/yahoo/CaffeOnSpark/issues/87), ale ta wersja nie jest dostępny jako pakiet na Ubuntu 16, więc musimy go skompilować z kodu źródłowego. Istnieją również kilka zasobów w Internecie dotyczące go skompilować. Aby uzyskać więcej informacji, zobacz [tutaj](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
+Drugim krokiem jest pobrać, kompilowania i zainstaluj protobuf 2.5.0 dla Caffe w czasie wykonywania. Protobuf 2.5.0 [wymagana jest](https://github.com/yahoo/CaffeOnSpark/issues/87), ale ta wersja nie jest dostępna jako pakiet na Ubuntu 16, dlatego należy go skompilować z kodu źródłowego. Istnieją również kilka zasobów w Internecie dotyczące go skompilować. Aby uzyskać więcej informacji, zobacz [tutaj](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
 Aby rozpocząć pracę, możesz po prostu uruchamiać tę akcję skryptu na klastra do wszystkich węzłów procesu roboczego i węzłów głównych (dla usługi HDInsight 3.5). Możesz uruchomić akcji skryptu istniejącego klastra lub użyć akcji skryptu podczas tworzenia klastra. Aby uzyskać więcej informacji dotyczących akcji skryptu, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
 
@@ -155,7 +153,7 @@ W trakcie końcowego sprawdzanie CaffeOnSpark prawdopodobnie wyświetlony błąd
 
 ## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>Krok 3: Dystrybucji wymaganych bibliotek do wszystkich węzłów procesu roboczego
 
-Następnym krokiem jest dystrybucji bibliotek (zasadniczo bibliotek w CaffeOnSpark/caffe publicznego/dystrybucji/lib/i CaffeOnSpark/caffe dystry/dystrybucji/lib /) do wszystkich węzłów. W kroku 2 testujemy tych bibliotek w magazynie obiektów BLOB, a w tym kroku używamy akcji skryptu, aby skopiować go do wszystkich węzłów głównych i węzłów procesu roboczego.
+Następnym krokiem jest dystrybucji bibliotek (zasadniczo bibliotek w CaffeOnSpark/caffe publicznego/dystrybucji/lib/i CaffeOnSpark/caffe dystry/dystrybucji/lib /) do wszystkich węzłów. W kroku 2 umieszcza te biblioteki magazynu obiektów BLOB, a w tym kroku używasz akcji skryptu, aby skopiować go do wszystkich węzłów głównych i węzłów procesu roboczego.
 
 Aby to zrobić, Uruchom akcję skryptu, jak pokazano w poniższy fragment kodu:
 
@@ -164,7 +162,7 @@ Aby to zrobić, Uruchom akcję skryptu, jak pokazano w poniższy fragment kodu:
 
 Upewnij się, że należy punkt do odpowiedniej lokalizacji określonej do klastra)
 
-Ponieważ w kroku 2, firma Microsoft umieszcza je w magazynie obiektów BLOB, który jest dostępny dla wszystkich węzłów, w tym kroku będziemy po prostu skopiuj go do wszystkich węzłów.
+Ponieważ w kroku 2, został on umieszczony w magazynie obiektów BLOB, który jest dostępny dla wszystkich węzłów, w tym kroku możesz po prostu skopiuj go do wszystkich węzłów.
 
 ## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>Krok 4: Utworzenie modelu Caffe i uruchom go w sposób Rozproszony
 
@@ -172,13 +170,13 @@ Caffe jest instalowana po wykonaniu powyższych kroków. Następnym krokiem jest
 
 Caffe przy użyciu "obszerne architektury", gdy do tworzenia modelu, wystarczy określić plik konfiguracji i bez kodowania w ogóle (w większości przypadków). Dlatego Spójrzmy istnieje. 
 
-Firma Microsoft uczenia modelu jest modelem próbki MNIST szkolenia. Baza danych MNIST odręcznie cyfr ma zestaw szkolenia 60 000 przykłady i zbiór przykłady 10 000. Jest ona podzbiorem większy zestaw dostępnej w sklepie NIST. Cyfry zostały znormalizowany rozmiar i wyśrodkowany w obrazie stałym rozmiarze. CaffeOnSpark ma niektóre skrypty w celu pobrania zestawu danych i przekształcić ją w prawidłowym formacie.
+Model, który możesz później jest przykładowy model MNIST szkolenia. Baza danych MNIST odręcznie cyfr ma zestaw szkolenia 60 000 przykłady i zbiór przykłady 10 000. Jest ona podzbiorem większy zestaw dostępnej w sklepie NIST. Cyfry zostały znormalizowany rozmiar i wyśrodkowany w obrazie stałym rozmiarze. CaffeOnSpark ma niektóre skrypty w celu pobrania zestawu danych i przekształcić ją w prawidłowym formacie.
 
 CaffeOnSpark zawiera przykładowe topologie sieci MNIST szkolenia. Ma ona nieuprzywilejowany projektowania podziału architektura sieci (topologia sieci) i optymalizacji. W takim przypadku istnieją dwa pliki wymagane: 
 
 Plik "Solver" (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) służy do nadzorowaniu optymalizacji i generowania parametru aktualizacji. Na przykład, określa czy Procesora GPU są używane lub co to jest tempa są jak dużo iteracji, itp. Definiuje także które neuronu topologii sieci należy używana (czyli drugiego pliku, który należy). Aby uzyskać więcej informacji na temat Solver, zobacz [dokumentacji Caffe](http://caffe.berkeleyvision.org/tutorial/solver.html).
 
-Na przykład ponieważ używamy Procesora niż procesora GPU, możemy należy zmienić ostatni wiersz, aby:
+W tym przykładzie ponieważ używasz Procesora niż procesora GPU, należy zmienić ostatni wiersz, aby:
 
     # solver mode: CPU or GPU
     solver_mode: CPU
@@ -187,7 +185,7 @@ Na przykład ponieważ używamy Procesora niż procesora GPU, możemy należy zm
 
 W razie potrzeby można zmienić innych wierszy.
 
-Drugi plik (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definiuje sposób sieci neuronu wygląda i odpowiednie dane wejściowe i pliku wyjściowego. Ponadto należy zaktualizować plik w celu uwzględnienia lokalizacji danych szkoleniowych. Zmień poniższe części w lenet_memory_train_test.prototxt (należy wskazać lokalizację prawo właściwe dla klastra):
+Drugi plik (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definiuje sposób sieci neuronu wygląda i odpowiednie dane wejściowe i pliku wyjściowego. należy również zaktualizować plik, aby odzwierciedlić lokalizacji danych szkoleniowych. Zmień poniższe części w lenet_memory_train_test.prototxt (należy wskazać lokalizację prawo właściwe dla klastra):
 
 - Zmień "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" na "wasb: / / / projektów/machine_learning/image_dataset/mnist_train_lmdb"
 - Zmień "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" na "wasb: / / / projektów/machine_learning/image_dataset/mnist_test_lmdb"
@@ -196,7 +194,7 @@ Drugi plik (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definiuje s
 
 Aby uzyskać więcej informacji na temat sposobu definiowania sieci Sprawdź [Caffe dokumentacja MNIST zestawu danych](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
-W tym przykładzie MNIST używamy na potrzeby tego artykułu. Uruchom następujące polecenia z węzłem głównym:
+Na potrzeby tego artykułu należy użyć tego przykładu MNIST. Uruchom następujące polecenia z węzłem głównym:
 
     spark-submit --master yarn --deploy-mode cluster --num-executors 8 --files ${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt,${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt --conf spark.driver.extraLibraryPath="${LD_LIBRARY_PATH}" --conf spark.executorEnv.LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" --class com.yahoo.ml.caffe.CaffeOnSpark ${CAFFE_ON_SPARK}/caffe-grid/target/caffe-grid-0.1-SNAPSHOT-jar-with-dependencies.jar -train -features accuracy,loss -label label -conf lenet_memory_solver.prototxt -devices 1 -connection ethernet -model wasb:///mnist.model -output wasb:///mnist_features_result
 
@@ -204,7 +202,7 @@ Poprzednie polecenie dystrybuuje wymaganych plików (lenet_memory_solver.prototx
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorowanie i rozwiązywanie problemów
 
-Ponieważ używamy YARN tryb klastra, w takim przypadku sterownika Spark zostanie zaplanowane do dowolnego kontenera (i węzła procesu roboczego dowolnego) powinien widoczne są tylko w konsoli Generowanie wyglądać mniej więcej tak:
+Ponieważ używasz tryb klastra YARN w takim przypadku sterownika Spark zostanie zaplanowane do dowolnego kontenera (i węzła procesu roboczego dowolnego) powinien widoczne są tylko w konsoli Generowanie wyglądać mniej więcej tak:
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
@@ -214,7 +212,7 @@ Jeśli chcesz dowiedzieć się, co się stało, zwykle koniecznych do uzyskania 
    
 ![YARN INTERFEJSU UŻYTKOWNIKA](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
 
-Użytkownik może Spójrz na ile zasoby są przydzielane dla konkretnej aplikacji. Można kliknąć łącze "Harmonogramu" i zostanie wyświetlona dla tej aplikacji, czy 9 kontenery uruchomiona. Prosimy YARN zapewnienie modułów 8, a innego kontenera jest procesu sterownika. 
+Użytkownik może Spójrz na ile zasoby są przydzielane dla konkretnej aplikacji. Można kliknąć łącze "Harmonogramu" i zostanie wyświetlona dla tej aplikacji, czy dziewięć kontenery uruchomiona. Poproś YARN zapewnienie osiem modułów, a innego kontenera jest procesu sterownika. 
 
 ![YARN harmonogramu](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
 
@@ -271,7 +269,7 @@ z headnode. Po sprawdzeniu kontenera awarii, jest on spowodował przy użyciu tr
 
 ## <a name="getting-results"></a>Uzyskiwanie wyników
 
-Ponieważ firma Microsoft jest alokowany 8 modułów i topologii sieci jest proste, go tylko zająć około 30 minut, w celu uruchomienia wyniku. W wierszu polecenia widać, że możemy umieścić modelu do wasb:///mnist.model, a wyniki do folderu o nazwie wasb: / / / mnist_features_result.
+Ponieważ jest alokowany 8 modułów i topologii sieci jest proste, go tylko zająć około 30 minut, w celu uruchomienia wyniku. W wierszu polecenia widoczne put modelu do wasb:///mnist.model i umieścić wyniki do folderu o nazwie wasb: / / / mnist_features_result.
 
 Wyniki można uzyskać, uruchamiając
 

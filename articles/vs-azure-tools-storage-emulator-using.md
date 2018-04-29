@@ -2,23 +2,20 @@
 title: Konfigurowanie i używanie emulatora magazynu z programem Visual Studio | Dokumentacja firmy Microsoft
 description: Konfigurowanie i używanie emulatora magazynu z programem Visual Studio
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: c8e7996f-6027-4762-806e-614b93131867
-ms.service: storage
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: c8e7996f-6027-4762-806e-614b93131867
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: ecf9df0d94f34df69750a8baa7f5502764cf9b06
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c502d5e0869d35ded5c3ba7e790da0558d219e0e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurowanie i używanie emulatora magazynu z programem Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -54,5 +51,5 @@ Podczas pierwszego uruchamiania lub debugowania usługi z programu Visual Studio
 Emulator magazynu udostępnia interfejs użytkownika, aby wyświetlić stan usługi Magazyn lokalny i uruchomić, zatrzymać, a ich ponownie. Po rozpoczęciu usługę emulatora magazynu można wyświetlić interfejs użytkownika lub rozpocząć lub zatrzymać usługi przez kliknięcie prawym przyciskiem myszy ikonę w obszarze powiadomień Microsoft Azure Emulator na pasku zadań systemu Windows.
 
 ## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Wyświetlanie danych emulatora magazynu w Eksploratorze serwera
-Węzeł magazynu Azure w Eksploratorze serwera umożliwia przeglądanie danych i zmienianie ustawień danych obiektów blob i tabeli na kontach magazynu, w tym emulatora magazynu. Zobacz [zasobów Zarządzanie magazynu obiektów Blob Azure przy użyciu Eksploratora usługi Storage (wersja zapoznawcza)](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) Aby uzyskać więcej informacji.
+Węzeł magazynu Azure w Eksploratorze serwera umożliwia przeglądanie danych i zmienianie ustawień danych obiektów blob i tabeli na kontach magazynu, w tym emulatora magazynu. Zobacz [zasobów Zarządzanie magazynu obiektów Blob Azure przy użyciu Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) Aby uzyskać więcej informacji.
 

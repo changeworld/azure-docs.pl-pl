@@ -1,8 +1,8 @@
 ---
-title: "Odwołanie ApplicationInsights.config - Azure | Dokumentacja firmy Microsoft"
-description: "Włącz lub wyłącz modułów zbierania danych i Dodaj liczniki wydajności i innych parametrów."
+title: Odwołanie ApplicationInsights.config - Azure | Dokumentacja firmy Microsoft
+description: Włącz lub wyłącz modułów zbierania danych i Dodaj liczniki wydajności i innych parametrów.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: OlegAnaniev-MSFT
 editor: mrbullwinkle
 manager: carmonm
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: a35da5c84e4e79d7bc6f2167ec7e172970992612
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
-ms.translationtype: MT
+ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurowanie zestawu SDK usługi Application Insights za pomocą pliku ApplicationInsights.config lub xml
 Zestaw SDK usługi Application Insights .NET składa się z liczby pakietów NuGet. [Pakiet podstawowy](http://www.nuget.org/packages/Microsoft.ApplicationInsights) udostępnia interfejs API wysyłania danych telemetrycznych do usługi Application Insights. [Dodatkowe pakiety](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) Podaj dane telemetryczne *modułów* i *inicjatory* automatycznie śledzenia dane telemetryczne z aplikacji i jej kontekstu. Dostosowując plik konfiguracji, można włączyć lub wyłączyć inicjatory i moduły danych telemetrycznych i ustaw parametry dla niektórych z nich.
@@ -32,7 +32,7 @@ W tym dokumencie opisano sekcje, które widać w konfiguracji plików i sposobu 
 > [!NOTE]
 > ApplicationInsights.config i XML instrukcje nie dotyczą zestawu SDK .NET Core. Wprowadzenie zmian w aplikacji platformy .NET Core używamy są zazwyczaj plik appsettings.json. Na przykład można znaleźć w [dokumentacją debugera migawki.](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
 
-## <a name="telemetry-modules-aspnet"></a>Telemetry Modules (ASP.NET)
+## <a name="telemetry-modules-aspnet"></a>Moduły danych telemetrycznych (ASP.NET)
 Każdy moduł telemetrii zbiera określonego typu danych i wysyła dane przy użyciu core interfejsu API. Moduły są instalowane przez różne pakiety NuGet, które również dodać wymagane wiersze do pliku .config.
 
 Brak węzła w pliku konfiguracji dla każdego modułu. Aby wyłączyć moduł, Usuń węzeł lub komentarz go.
@@ -51,11 +51,11 @@ Można również napisać własny zależności śledzenia kodu za pomocą [Track
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet package.
 
-### <a name="application-insights-diagnostics-telemetry"></a>Application Insights Diagnostics Telemetry
+### <a name="application-insights-diagnostics-telemetry"></a>Diagnostyka Telemetrię usługi Application Insights
 `DiagnosticsTelemetryModule` Raporty błędów w kodzie Instrumentacji usługi Application Insights samej siebie. Na przykład jeśli kod nie może uzyskać dostępu do liczników wydajności lub `ITelemetryInitializer` zgłasza wyjątek. Dane telemetryczne śledzenia śledzone przez ten moduł jest wyświetlana w [diagnostycznych wyszukiwania][diagnostic]. Wysyła dane diagnostyczne do dc.services.vsallin.net.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet package. Po zainstalowaniu tylko ten pakiet, plik ApplicationInsights.config nie jest tworzony automatycznie.
+* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) pakietu NuGet. Po zainstalowaniu tylko ten pakiet, plik ApplicationInsights.config nie jest tworzony automatycznie.
 
 ### <a name="developer-mode"></a>Tryb dewelopera
 `DeveloperModeWithDebuggerAttachedTelemetryModule` Wymusza usługi Application Insights `TelemetryChannel` Aby wysłać dane od razu, telemetrii jeden element w czasie, gdy debuger jest dołączony do procesu aplikacji. Zmniejsza to ilość czasu od chwili, gdy aplikacja śledzi telemetrii i wyświetlanym na portalu Application Insights. Powoduje znaczne obciążenie procesora CPU i sieci przepustowości.
@@ -94,7 +94,7 @@ Raporty [kod odpowiedzi czasu i wynik](app-insights-asp-net.md) żądań HTTP.
 Udostępnia pakiet Microsoft.ApplicationInsights [core API](https://msdn.microsoft.com/library/mt420197.aspx) zestawu SDK. Użyj innych modułów telemetrii i można również [użyj go do zdefiniowania własnych telemetrii](app-insights-api-custom-events-metrics.md).
 
 * Nie wpisu w ApplicationInsights.config.
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet package. Po zainstalowaniu właśnie ta NuGet, nie pliku .config jest generowany.
+* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) pakietu NuGet. Po zainstalowaniu właśnie ta NuGet, nie pliku .config jest generowany.
 
 ## <a name="telemetry-channel"></a>Kanał telemetrii
 Kanał danych telemetrycznych zarządza buforowania i przekazywania telemetrii usługi Application Insights.
@@ -263,6 +263,91 @@ Jeśli chcesz wysłać określonych zdarzeń do różnych zasobów, można ustaw
 ```
 
 Aby uzyskać nowy klucz [utworzyć nowy zasób w portalu usługi Application Insights][new].
+
+
+
+## <a name="applicationid-provider"></a>Identyfikator aplikacji dostawcy
+
+_Dostępne od wersji v2.6.0_
+
+Ten dostawca ma na celu wyszukania identyfikator aplikacji na podstawie klucza instrumentacji. Identyfikator aplikacji jest włączona RequestTelemetry DependencyTelemetry oraz używane do określenia korelacji w portalu.
+
+Ten element jest dostępny przez ustawienie `TelemetryConfiguration.ApplicationIdProvider` w kodzie, lub w pliku konfiguracyjnym.
+
+### <a name="interface-iapplicationidprovider"></a>Interfejs: IApplicationIdProvider
+
+```csharp
+public interface IApplicationIdProvider
+{
+    bool TryGetApplicationId(string instrumentationKey, out string applicationId);
+}
+```
+
+
+Firma Microsoft udostępnia dwa implementacje w [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) zestawu sdk: `ApplicationInsightsApplicationIdProvider` i `DictionaryApplicationIdProvider`.
+
+### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
+
+Jest to otokę interfejsach Api profilu. Będzie ona ograniczenie przepustowości żądań i wyniki pamięci podręcznej.
+
+Ten dostawca został dodany do pliku konfiguracji po zainstalowaniu albo [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) lub [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
+
+Ta klasa ma właściwość Opcjonalna `ProfileQueryEndpoint`.
+Domyślnie ta jest równa `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
+Jeśli musisz skonfigurować serwer proxy dla tej konfiguracji, zalecamy pośredniczenie adres podstawowy i włączając "/ api/profile / {0} / appId". Należy pamiętać, że "{0}" jest zastępowana w czasie wykonywania na żądanie klucza instrumentacji.
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Przykładowa konfiguracja za pomocą ApplicationInsights.config:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>Przykładowa konfiguracja za pomocą kodu:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApplicationIdProvider();
+```
+
+### <a name="dictionaryapplicationidprovider"></a>DictionaryApplicationIdProvider
+
+Jest to statyczne dostawcy, który będzie zależeć skonfigurowany klucz Instrumentacji / pary identyfikator aplikacji.
+
+Ta klasa ma właściwość `Defined` czyli słownik < string, string > klucza Instrumentacji z parami identyfikator aplikacji.
+
+Ta klasa ma właściwość Opcjonalna `Next` które mogą służyć do konfigurowania innego dostawcy do użycia podczas klucza Instrumentacji jest żądane, który nie istnieje w konfiguracji.
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Przykładowa konfiguracja za pomocą ApplicationInsights.config:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.DictionaryApplicationIdProvider, Microsoft.ApplicationInsights">
+        <Defined>
+            <Type key="InstrumentationKey_1" value="ApplicationId_1"/>
+            <Type key="InstrumentationKey_2" value="ApplicationId_2"/>
+        </Defined>
+        <Next Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights" />
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>Przykładowa konfiguracja za pomocą kodu:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationIdProvider{
+ Defined = new Dictionary<string, string>
+    {
+        {"InstrumentationKey_1", "ApplicationId_1"},
+        {"InstrumentationKey_2", "ApplicationId_2"}
+    }
+};
+```
+
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Dowiedz się więcej o interfejsie API][api].

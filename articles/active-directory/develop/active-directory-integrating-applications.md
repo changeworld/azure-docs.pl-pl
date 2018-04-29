@@ -3,7 +3,7 @@ title: Integrowanie aplikacji z usługą Azure Active Directory
 description: Jak dodać, zaktualizować lub usunąć aplikacji w usłudze Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
-author: PatAltimore
+author: mtillman
 manager: mtillman
 editor: mbaldwin
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/04/2017
-ms.author: bryanla
+ms.date: 04/18/2018
+ms.author: mtillman
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 472a1746a338857d457a7b8d5e7fec3ddbf65895
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ebf6653fada0897c23ebb84ab14de1040a963552
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrowanie aplikacji z usługą Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -56,7 +56,7 @@ Każda aplikacja, która chce korzystać z funkcji usługi Azure AD musi najpier
 5. Gdy skończysz, kliknij przycisk **Utwórz**. Usługi Azure AD przypisuje unikatowy identyfikator aplikacji do aplikacji i jest przekierowanie do strony głównej rejestracji aplikacji. W zależności od tego, czy aplikacja jest sieci web lub aplikacji natywnej Aby dodać dodatkowe funkcje do aplikacji znajdują się różne opcje. W następnej sekcji Omówienie zgody i szczegółowe informacje na temat włączania funkcji dodatkowa konfiguracja w rejestracji aplikacji (poświadczeń, uprawnień, Włącz logowanie użytkowników od pozostałych dzierżawców.)
 
   > [!NOTE]
-  > Domyślnie nowo zarejestrowanych aplikacji jest skonfigurowane i umożliwiają **tylko** użytkowników z tej samej dzierżawy logować się do aplikacji.
+  > Domyślnie, aplikacji sieci web nowo zarejestrowanych jest skonfigurowane i umożliwiają **tylko** użytkowników z tej samej dzierżawy logować się do aplikacji.
   > 
   > 
 
@@ -65,7 +65,7 @@ Po zarejestrowaniu aplikacji z usługą Azure AD może być konieczne zostać za
 
 ### <a name="overview-of-the-consent-framework"></a>Omówienie struktury zgody
 
-Framework zgody usługi Azure AD można łatwo rozwijać wielodostępnej sieci web i aplikacji natywnej klienta, w tym aplikacje wielowarstwowe. Te aplikacje zezwalanie logowania według konta użytkowników z dzierżawy usługi Azure AD, innego niż ten, na którym aplikacja jest zarejestrowany. Może muszą uzyskać dostępu do sieci web API innych usług firmy Microsoft, oprócz własnego interfejsów API sieci web i interfejsów API, np. interfejsu API programu Microsoft Graph (Aby uzyskać dostęp do usługi Azure Active Directory, Intune i usług w usłudze Office 365). Platformę opiera się na użytkownika lub administratora wyrażenia zgody do aplikacji, która żąda rejestrowana w ich katalogu, które mogą dotyczyć uzyskiwanie dostępu do danych katalogu.
+Framework zgody usługi Azure AD ułatwia opracowywanie wielodostępnej sieci web i aplikacje klienckie natywnego. Te aplikacje zezwalanie logowania według konta użytkowników z dzierżawy usługi Azure AD, innego niż ten, na którym aplikacja jest zarejestrowany. Może muszą uzyskać dostępu do sieci web API innych usług firmy Microsoft, oprócz własnego interfejsów API sieci web i interfejsów API, np. interfejsu API programu Microsoft Graph (Aby uzyskać dostęp do usługi Azure Active Directory, Intune i usług w usłudze Office 365). Platformę opiera się na użytkownika lub administratora wyrażenia zgody do aplikacji, która żąda rejestrowana w ich katalogu, które mogą dotyczyć uzyskiwanie dostępu do danych katalogu.
 
 Na przykład jeśli wymaga aplikacji klienta sieci web odczytać kalendarza informacji o użytkowniku z usługi Office 365, ten użytkownik będzie musiał wyrazić zgodę na kliencie. Po zgody, aplikacja kliencka będzie można wywołać interfejsu API programu Microsoft Graph w imieniu użytkownika i użyć tych informacji kalendarza, zgodnie z potrzebami. [Interfejsu API programu Microsoft Graph](https://graph.microsoft.io) zapewnia dostęp do danych w usłudze Office 365 (na przykład kalendarzy i komunikaty z programu Exchange, witryn i list programu SharePoint, dokumentów z usługi OneDrive, komputery przenośne z programu OneNote, zadania planowania, skoroszyty programu Excel, itp.), a także użytkowników i grup z usługi Azure AD i innych obiektów danych z więcej usług chmurowych firmy Microsoft. 
 
@@ -93,17 +93,17 @@ W poniższej procedurze pokazano, jak zgody wystąpić działa dla deweloperów 
 
 5. Po użytkownika przyznaje zgody, Kod autoryzacji jest zwracana do aplikacji, co jest zrealizowane uzyskać token dostępu i token odświeżania. Aby uzyskać więcej informacji na temat tego przepływu, zobacz [sieci web aplikacji sieci web interfejsu API części scenariusze uwierzytelniania dla usługi Azure AD](active-directory-authentication-scenarios.md#web-application-to-web-api).
 
-6. Administrator może również wyrażenia zgody na aplikacji uprawnień delegowanych w imieniu wszystkich użytkowników w dzierżawie. Administracyjne zgody uniemożliwia okna dialogowego zgody pojawiające się dla wszystkich użytkowników w dzierżawie i odbywa się do aplikacji w obszarze [portalu Azure](https://portal.azure.com). Z **ustawienia** aplikacji kliknij pozycję **wymagane uprawnienia** i wybierz polecenie **udzielanie uprawnień** przycisku. 
+6. Administrator może również wyrażenia zgody na aplikacji uprawnień delegowanych w imieniu wszystkich użytkowników w dzierżawie. Administracyjne zgody uniemożliwia okna dialogowego zgody pojawiające się dla wszystkich użytkowników w dzierżawie i może odbywać się [portalu Azure](https://portal.azure.com) przez użytkowników z rolą administratora. Z **ustawienia** aplikacji kliknij pozycję **wymagane uprawnienia** i wybierz polecenie **udzielanie uprawnień** przycisku. 
 
   ![Udzielanie uprawnień o wyrażenie zgody jawnej administratora](./media/active-directory-integrating-applications/grantpermissions.png)
     
   > [!NOTE]
-  > Udzielanie jawne zgodę za pomocą **udzielanie uprawnień** przycisk jest obecnie wymagane dla aplikacji jednej strony (SPA), które używają ADAL.js. W przeciwnym razie aplikacja kończy się niepowodzeniem podczas żądania tokenu dostępu.   
+  > Udzielanie jawne zgodę za pomocą **udzielanie uprawnień** przycisk jest obecnie wymagane dla aplikacji jednej strony (SPA), które używają ADAL.js. W przeciwnym razie aplikacja kończy się niepowodzeniem podczas żądania tokenu dostępu. 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Skonfigurować aplikację klienta do dostępu do interfejsów API sieci web
 Aby sieci web/poufnych aplikacji klienckiej można było uczestniczyć w przepływie grant autoryzacji, który wymaga uwierzytelniania (i Uzyskaj token dostępu) jego ustanawiania bezpiecznych poświadczeń. Domyślną metodą uwierzytelniania obsługiwanych przez Azure portal jest identyfikator klienta i klucz tajny. W tej sekcji opisano kroki konfiguracji, wymagane jest podanie klucza tajnego przy użyciu poświadczeń klienta.
 
-Ponadto, zanim klient może uzyskać dostęp do składnika web API udostępnianych przez aplikację zasobów (takich jak Microsoft Graph API), framework zgody zapewnia klient uzyskuje Udziel uprawnienia wymagane, na podstawie uprawnień żądanie. Domyślnie wszystkie aplikacje dostępne uprawnienia "Systemu Windows Azure Active Directory" (interfejs API programu Graph) i "Systemu Windows Azure interfejs API zarządzania usługami". [Uprawnienie "Logowanie i profilu użytkownika odczytu" interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) również jest domyślnie zaznaczona. Jeśli klient jest rejestrowana w dzierżawie z konta subskrypcji usługi Office 365, interfejsów API sieci Web i uprawnienia do usługi Exchange Online i SharePoint są dostępne do wyboru. Możesz wybrać z [dwa typy uprawnień](active-directory-dev-glossary.md#permissions) dla każdego żądanego interfejsu API sieci web:
+Ponadto, zanim klient może uzyskać dostęp do składnika web API udostępnianych przez aplikację zasobów (takich jak Microsoft interfejsu API programu Graph), framework zgody zapewnia klient uzyskuje Udziel uprawnienia wymagane, na podstawie uprawnień żądanie. Domyślnie wszystkie aplikacje dostępne uprawnienia "Systemu Windows Azure Active Directory" (interfejs API programu Graph) i "Systemu Windows Azure interfejs API zarządzania usługami". [Uprawnienie "Logowanie i profilu użytkownika odczytu" interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) również jest domyślnie zaznaczona. Jeśli klient jest rejestrowana w dzierżawie z konta subskrypcji usługi Office 365, interfejsów API sieci web i uprawnienia do usługi Exchange Online i SharePoint są dostępne do wyboru. Możesz wybrać z [dwa typy uprawnień](active-directory-dev-glossary.md#permissions) dla każdego żądanego interfejsu API sieci web:
 
 - Uprawnienia aplikacji: Aplikacja kliencka musi uzyskać dostępu do interfejsu API sieci web bezpośrednio jako samego (bez kontekstu użytkownika). Ten typ uprawnień wymaga zgody administratora i nie jest również dostępna dla aplikacji klienckich natywnego.
 
@@ -120,7 +120,7 @@ Ponadto, zanim klient może uzyskać dostęp do składnika web API udostępniany
    ![Zaktualizuj rejestrację aplikacji](./media/active-directory-integrating-applications/update-app-registration.png)
 
 4. Zostają przeniesieni do strony głównej rejestracji aplikacji, która otwiera **ustawienia** strony dla aplikacji. Aby dodać klucz tajny dla aplikacji sieci web poświadczeń:
-  - Kliknij przycisk **klucze** sekcji na **ustawienia** strony.  
+  - Kliknij przycisk **klucze** sekcji na **ustawienia** strony. 
   - Dodaj opis klucza.
   - Wybierz jednego lub dwóch lat czasu trwania.
   - Kliknij pozycję **Zapisz**. Kolumna prawej będzie zawierać wartości klucza, po zapisaniu zmian konfiguracji. **Pamiętaj skopiować klucz** do użycia w kodzie aplikacji klienta, ponieważ nie jest dostępny jeden raz opuścisz tę stronę.
@@ -141,7 +141,7 @@ Ponadto, zanim klient może uzyskać dostęp do składnika web API udostępniany
 6. Po zakończeniu kliknij przycisk **wybierz** znajdującego się na **Włącz dostęp** strony, a następnie **gotowe** znajdującego się na **dostępu Dodaj interfejsu API** strony. Nastąpi powrót do **wymagane uprawnienia** strony, w którym nowy zasób został dodany do listy interfejsów API.
 
   > [!NOTE]
-  > Kliknięcie przycisku **gotowe** przycisk automatycznie ustawia uprawnienia dla aplikacji w katalogu na podstawie uprawnień do innych aplikacji, które można skonfigurować.  Te uprawnienia aplikacji można wyświetlić, sprawdzając aplikacji **ustawienia** strony.
+  > Kliknięcie przycisku **gotowe** przycisk automatycznie ustawia uprawnienia dla aplikacji w katalogu na podstawie uprawnień do innych aplikacji, które można skonfigurować. Te uprawnienia aplikacji można wyświetlić, sprawdzając aplikacji **ustawienia** strony.
   > 
   > 
 
@@ -182,7 +182,7 @@ Poniższej sekcji przedstawiono sposób ujawniać zakresy dostępu, modyfikując
   > Pozwala udostępnić dodatkowe zakresy, później niezbędne. Należy wziąć pod uwagę, że interfejs API sieci web może udostępniać wielu zakresów skojarzone z wieloma różnymi funkcjami. Zasób kontrolować dostęp do interfejsu API sieci web w czasie wykonywania, oceniając zakresu (`scp`) co najmniej jedno oświadczenie odebranego tokenu dostępu protokołu OAuth 2.0.
   > 
 
-6. Gdy skończysz, kliknij przycisk **zapisać**. Teraz Twój interfejs API sieci web jest skonfigurowana do użycia przez inne aplikacje w katalogu.  
+6. Gdy skończysz, kliknij przycisk **zapisać**. Teraz Twój interfejs API sieci web jest skonfigurowana do użycia przez inne aplikacje w katalogu. 
 
   ![Zaktualizuj rejestrację aplikacji](./media/active-directory-integrating-applications/update-app-registration-manifest.png)
 
@@ -210,7 +210,7 @@ Aby uzyskać więcej informacji na temat aplikacji manifestu pojęcia ogólnie r
 
 Jak wspomniano wcześniej, oprócz udostępnianie/dostęp do interfejsów API dla własnej aplikacji, można zarejestrować aplikacji klienta dostępu do interfejsów API udostępnianych przez zasoby firmy Microsoft. Microsoft interfejsu API programu Graph, określane jako "Microsoft Graph" na liście zasobów/interfejsu API w portalu jest dostępny dla wszystkich aplikacji, które są zarejestrowane w usłudze Azure AD. W przypadku rejestracji aplikacji klienckiej w dzierżawie zawierającą konta, które jest zarejestrowany w subskrypcji usługi Office 365, można także przejść zakresy udostępnianych przez różnych zasobów usługi Office 365.
 
-Pełne omówienie na zakresy udostępnianych przez interfejs API programu Graph firmy Microsoft, zobacz [zakresy uprawnień | Pojęcia dotyczące interfejsu API programu Microsoft Graph](https://graph.microsoft.io/docs/authorization/permission_scopes) artykułu.
+Pełne omówienie na zakresy udostępnianych przez interfejs API programu Graph firmy Microsoft, zobacz [odwołania uprawnień Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) artykułu.
 
 > [!NOTE]
 > Ze względu na to aktualne ograniczenie natywnego klienta aplikacji można wywołać tylko do interfejsu API programu Azure AD Graph użycie uprawnienia "Dostęp do katalogu organizacji". To ograniczenie nie ma zastosowania dla aplikacji sieci web.
@@ -289,7 +289,7 @@ Domyślnie niejawne Przyznaj OAuth 2.0 jest wyłączone dla aplikacji. Można w�
 W tej sekcji opisano, jak do usunięcia rejestracji aplikacji z dzierżawy usługi Azure AD.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>Usuwanie aplikacji przypisany przez organizację
-Pokaż aplikacjom w Twojej organizacji został zarejestrowany w obszarze "Moje aplikacje" filtru na stronie głównej "rejestracji aplikacji" swojej dzierżawy. Te aplikacje są te, które należy ręcznie zarejestrować za pomocą portalu Azure lub programistycznie za pomocą programu PowerShell lub interfejsu API programu Graph. W szczególności są one reprezentowane przez zarówno aplikacji i nazwy głównej usługi obiekt w dzierżawie. Aby uzyskać więcej informacji, zobacz [obiekty aplikacji i nazwy głównej usługi](active-directory-application-objects.md).
+Aplikacje, które zostało zarejestrowane w Twojej organizacji są wyświetlane w obszarze "Moje aplikacje" filtru na stronie głównej "rejestracji aplikacji" swojej dzierżawy. Te aplikacje są te, które należy ręcznie zarejestrować za pomocą portalu Azure lub programistycznie za pomocą programu PowerShell lub interfejsu API programu Graph. W szczególności są one reprezentowane przez zarówno aplikacji i nazwy głównej usługi obiekt w dzierżawie. Aby uzyskać więcej informacji, zobacz [obiekty aplikacji i nazwy głównej usługi](active-directory-application-objects.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>Aby usunąć aplikację pojedynczej dzierżawy z katalogu
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -307,15 +307,15 @@ Pokaż aplikacjom w Twojej organizacji został zarejestrowany w obszarze "Moje a
 6. Kliknij przycisk **tak** w komunikacie potwierdzenia.
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Usuwanie aplikacji wielodostępnych, autoryzowany w innej organizacji
-Część aplikacji, które Pokaż w filtrze "Wszystkie aplikacje" (z wyłączeniem rejestracji "Moje aplikacje") na stronie głównej "Rejestracji aplikacji" Twojej dzierżawy są aplikacje wielodostępne. Te aplikacje wielodostępne pochodzą z innego dzierżawcę pod względem technicznym, a podczas procesu zgody zostały zarejestrowane w dzierżawie. W szczególności są one reprezentowane przez tylko usługa główna obiektu w dzierżawie, bez odpowiedniego obiektu aplikacji. Aby uzyskać więcej informacji na temat różnic między aplikacją a obiekty główne usług, zobacz [aplikacji i usług obiektów principal w usłudze Azure AD](active-directory-application-objects.md).
+Część aplikacji, które są wyświetlane w polu filtru "Wszystkie aplikacje" (z wyłączeniem rejestracji "Moje aplikacje") na stronie głównej "Rejestracji aplikacji" Twojej dzierżawy są aplikacje wielodostępne. Te aplikacje wielodostępne pochodzą z innego dzierżawcę pod względem technicznym, a podczas procesu zgody zostały zarejestrowane w dzierżawie. W szczególności są one reprezentowane przez tylko usługa główna obiektu w dzierżawie, bez odpowiedniego obiektu aplikacji. Aby uzyskać więcej informacji na temat różnic między aplikacją a obiekty główne usług, zobacz [aplikacji i usług obiektów principal w usłudze Azure AD](active-directory-application-objects.md).
 
-Aby usunąć aplikację wielodostępne dostępu do katalogu (po udzielenia zgody), administrator firmy, należy usunąć jego nazwy głównej usługi. Administrator musi mieć dostęp administratora globalnego i można usunąć za pomocą portalu Azure lub użyj [poleceń cmdlet programu Azure AD PowerShell](http://go.microsoft.com/fwlink/?LinkId=294151) Aby usunąć dostęp.
+Aby usunąć aplikację wielodostępne dostępu do katalogu (po udzielenia zgody), administrator firmy, należy usunąć jego nazwy głównej usługi. Administrator musi mieć dostęp administratora globalnego i można go usunąć za pomocą portalu Azure lub użyj [poleceń cmdlet programu Azure AD PowerShell](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby uzyskać więcej informacji dotyczących działania uwierzytelniania w usłudze Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](active-directory-authentication-scenarios.md).
 - Zobacz [znakowanie wytyczne dotyczące zintegrowanych aplikacji](active-directory-branding-guidelines.md) dotyczące visual wskazówki dotyczące aplikacji.
 - Aby uzyskać więcej informacji na relacje między obiektów aplikacji i nazwę główną usługi dla aplikacji, zobacz [obiekty aplikacji i nazwy głównej usługi](active-directory-application-objects.md).
 - Aby dowiedzieć się więcej na temat roli pełni manifestu aplikacji, zobacz [opis manifestu aplikacji usługi Azure Active Directory](active-directory-application-manifest.md)
-- Zobacz [słownik dewelopera usługi Azure AD](active-directory-dev-glossary.md) definicje niektóre podstawowe koncepcje dewelopera usługi Azure Active Directory (AD).
+- Zobacz [słownik dewelopera usługi Azure AD](active-directory-dev-glossary.md) definicje niektóre pojęcia, deweloper podstawowe usługi Azure AD.
 - Odwiedź stronę [przewodnik dewelopera usługi Active Directory](active-directory-developers-guide.md) omówienie związane z programowaniem całą jego zawartość.
 

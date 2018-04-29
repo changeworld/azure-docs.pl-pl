@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie logowania aplikacji sieci web usługi Azure AD 2.0 .NET | Dokumentacja firmy Microsoft"
-description: "Sposób tworzenia aplikacji sieci Web .NET MVC logujący się użytkowników przy użyciu obu Account firmy Microsoft i konta służbowego."
+title: Wprowadzenie logowania aplikacji sieci web usługi Azure AD 2.0 .NET | Dokumentacja firmy Microsoft
+description: Sposób tworzenia aplikacji sieci Web .NET MVC logujący się użytkowników przy użyciu obu Account firmy Microsoft i konta służbowego.
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c8b97ac6-0a06-4367-81b6-7d1d98152b14
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>Dodaj logowanie do aplikacji sieci web platformy .NET MVC
 Z punktem końcowym v2.0 można szybko dodać konta służbowego i uwierzytelniania do aplikacji sieci web z obsługą oba osobistego konta Microsoft.  W aplikacji sieci web ASP.NET można to zrobić za pomocą oprogramowania pośredniczącego OWIN firmy Microsoft włączone w programie .NET Framework 4.5.

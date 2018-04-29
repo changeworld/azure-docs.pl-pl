@@ -1,24 +1,19 @@
 ---
-title: "Azure zagadnienia wydajności i optymalizacji wyszukiwania | Dokumentacja firmy Microsoft"
-description: "Dostrajanie wydajności usługi Azure Search i skonfigurować optymalnej skali"
-services: search
-documentationcenter: 
+title: Azure zagadnienia wydajności i optymalizacji wyszukiwania | Dokumentacja firmy Microsoft
+description: Dostrajanie wydajności usługi Azure Search i skonfigurować optymalnej skali
 author: LiamCavanagh
-manager: pablocas
-editor: 
-ms.assetid: 4d3cd864-29d2-4921-be0d-a3f1a819de46
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89c0352723f1ed00784250b566902028af853d10
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure zagadnienia wydajności i optymalizacji wyszukiwania
 Wyszukiwanie dużą jest kluczem do powodzenia dla wielu urządzeń przenośnych i aplikacji sieci web. Z nieruchomości używane rynków samochodu online wykazów szybkiego wyszukiwania i odpowiednie wyniki będzie miało wpływ na wrażenia użytkowników. Ten dokument jest przeznaczony pomocy odnajdywanie obsługę najlepsze rozwiązania dotyczące sposobu uzyskania maksymalne wykorzystanie usługi Azure Search, szczególnie w przypadku zaawansowanych scenariuszy z zaawansowanymi wymaganiami skalowalności, obsługi wielu języków lub niestandardowych klasyfikacji.  Ponadto ten dokument przedstawia ustawienia wewnętrzne i obejmuje metodami działał efektywnie w aplikacjach rzeczywistych klientów.
@@ -98,7 +93,7 @@ Usługa Azure Search udostępnia możliwość analizować i monitorować wydajno
 
 STA jest przydatnym narzędziem do zrozumienia stawki opóźnienia z punktu widzenia tej usługi Azure Search.  Ponieważ metryki wydajności kwerendy rejestrowane są oparte na czas kwerendy pełnego przetworzenia w usłudze Azure Search (od momentu, gdy jest wymagane, gdy zostaną wysłane), to można użyć do ustalenia, czy istnieją problemy z opóźnieniem są po stronie usługi Azure Search lub dokumentów IDE usługi, takie od opóźnienia sieci.  
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat cen limitów warstw i usług dla każdego z nich, zobacz [usługi limity w usłudze Azure Search](search-limits-quotas-capacity.md).
 
 Odwiedź stronę [planowania pojemności](search-capacity-planning.md) Aby dowiedzieć się więcej na temat kombinacji partycji i replik.

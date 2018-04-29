@@ -1,24 +1,24 @@
 ---
-title: "Często zadawane pytania i znane problemy z zarządzania usługi tożsamości (MSI) dla usługi Azure Active Directory"
-description: "Znane problemy z zarządzanych tożsamości usługi dla usługi Azure Active Directory."
+title: Często zadawane pytania i znane problemy z zarządzania usługi tożsamości (MSI) dla usługi Azure Active Directory
+description: Znane problemy z zarządzanych tożsamości usługi dla usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: a50854b2e12db9a202d769f9e5feebee8e5f9395
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Często zadawane pytania i znane problemy z zarządzania usługi tożsamości (MSI) dla usługi Azure Active Directory
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
-### <a name="is-there-a-private-preview-available-for-additional-features"></a>Dostępne dla dodatkowych funkcji jest prywatnej wersji zapoznawczej?
+### <a name="is-there-a-private-preview-program-available-for-upcoming-msi-features-and-integrations"></a>Dostępne dla kolejnych funkcji MSI i integracji to program prywatnej wersji zapoznawczej?
 
-Tak. Jeśli chcesz wziąć pod uwagę dla rejestracji w prywatnej wersji zapoznawczej [odwiedź naszą stronę tworzenia konta](https://aka.ms/azuremsiprivatepreview).
+Tak. Jeśli chcesz wziąć pod uwagę dla rejestracji w prywatnej wersji zapoznawczej programu, [odwiedź naszą stronę tworzenia konta](https://aka.ms/azuremsiprivatepreview).
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>MSI działa z usługami w chmurze Azure?
 
@@ -42,10 +42,24 @@ Nie, MSI nie jest jeszcze zintegrowana z biblioteką ADAL lub MSAL. Aby uzyskać
 
 Granica bezpieczeństwa tożsamości jest zasobów, do której jest dołączona do. Na przykład granicy zabezpieczeń MSI maszyny wirtualnej, jest maszyny wirtualnej. Dowolnego kodu uruchomionego na danej maszynie Wirtualnej jest w stanie połączenia punktu końcowego MSI i żądań tokenów. Jest podobne możliwości z innych zasobów, które obsługują MSI.
 
+### <a name="should-i-use-the-msi-vm-imds-endpoint-or-the-msi-vm-extension-endpoint"></a>Należy użyć punktu końcowego MSI IMDS maszyny Wirtualnej lub punktu końcowego rozszerzenia maszyny Wirtualnej MSI?
+
+Korzystając z pliku MSI z maszynami wirtualnymi, zaleca się przy użyciu punktu końcowego MSI IMDS. Usługa Azure wystąpienie metadanych jest punkt końcowy REST jest dostępny dla wszystkich maszyn wirtualnych IaaS utworzone za pomocą Menedżera zasobów Azure. Korzyści wynikające ze stosowania MSI za pośrednictwem IMDS należą:
+
+1. Wszystkie systemy operacyjne obsługiwane IaaS platformy Azure można użyć MSI za pośrednictwem IMDS. 
+2. Nie trzeba zainstalować rozszerzenie na maszynie Wirtualnej, aby włączyć MSI. 
+3. Certyfikaty używane przez Instalatora MSI nie są już obecny w maszynie Wirtualnej. 
+4. Punkt końcowy IMDS jest dobrze znanego nierutowalny adresu IP, dostępne tylko z poziomu maszyny Wirtualnej. 
+
+Rozszerzenia maszyny Wirtualnej MSI jest nadal dostępne do użycia oprogramowania; jednak następnych firma Microsoft będzie domyślnie korzysta z punktu końcowego IMDS. Rozszerzenia maszyny Wirtualnej MSI rozpocznie planu amortyzacja wkrótce. 
+
+Aby uzyskać więcej informacji w usłudze Metada wystąpienia platformy Azure, zobacz [IMDS dokumentacji](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service)
+
 ### <a name="what-are-the-supported-linux-distributions"></a>Co to są obsługiwane dystrybucje systemu Linux?
 
-Następujące dystrybucje systemu Linux obsługują MSI: 
+Wszystkie dystrybucje systemu Linux obsługiwane przez IaaS platformy Azure może służyć msi za pośrednictwem punktu końcowego IMDS. 
 
+Uwaga: MSI rozszerzenia maszyny Wirtualnej obsługuje tylko następujące dystrybucje systemu Linux:
 - Stały CoreOS
 - CentOS 7.1
 - RedHat 7.2

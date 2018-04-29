@@ -1,13 +1,13 @@
 ---
-title: "Dokumentacja dla deweloperów języka JavaScript dla usługi Azure Functions | Dokumentacja firmy Microsoft"
-description: "Zrozumienie sposobu tworzenia funkcji przy użyciu języka JavaScript."
+title: Dokumentacja dla deweloperów języka JavaScript dla usługi Azure Functions | Dokumentacja firmy Microsoft
+description: Zrozumienie sposobu tworzenia funkcji przy użyciu języka JavaScript.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bez serwera"
+editor: ''
+tags: ''
+keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bez serwera
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: functions
 ms.devlang: nodejs
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: 9d63c95c849c8ef6011557c72240e56071ba614f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e593f58f6b92e562067401381cfce06d5fb18e29
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dewelopera usługi Azure funkcji JavaScript
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Obsługi języka JavaScript dla usługi Azure Functions można łatwo eksportować funkcję, która jest przekazywany jako `context` obiekt do komunikowania się ze środowiskiem uruchomieniowym i odbieranie i wysyłanie danych za pośrednictwem powiązania.
 

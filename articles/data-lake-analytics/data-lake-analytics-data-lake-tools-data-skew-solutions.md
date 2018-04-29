@@ -1,12 +1,12 @@
 ---
-title: "Rozwiązywanie problemów zegara danych za pomocą usługi Azure Data Lake Tools dla programu Visual Studio | Dokumentacja firmy Microsoft"
-description: "Potencjalne rozwiązania problemów zegara danych za pomocą usługi Azure Data Lake Tools dla programu Visual Studio."
+title: Rozwiązywanie problemów zegara danych za pomocą usługi Azure Data Lake Tools dla programu Visual Studio | Dokumentacja firmy Microsoft
+description: Potencjalne rozwiązania problemów zegara danych za pomocą usługi Azure Data Lake Tools dla programu Visual Studio.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
-ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1d33b5d2392832899fd30636e9d40231fc74ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Rozwiązywanie problemów zegara danych za pomocą usługi Azure Data Lake Tools dla programu Visual Studio
 
@@ -49,13 +49,13 @@ Zamiast używać tylko _stanu_ jako klucza partycji, można użyć więcej niż 
 
 ### <a name="option-4-use-round-robin-distribution"></a>Opcja 4: Użycie rozdzielanie
 
-Jeśli nie możesz znaleźć odpowiedniego klucza partycji i dystrybucji, możesz spróbować użyć rozdzielanie. Rozdzielanie traktuje wszystkie wiersze jednakowo i losowo umieszcza je w odpowiednich zasobników. Równomiernie pobiera dane, ale utraty miejscowości informacji zwrotnych, może również zmniejszyć wydajność zadania dla niektórych operacji. Ponadto jeśli mimo to czynności agregacji dla klucza spowodowałoby zafałszowanie problem zegara danych będzie umieszczony. Aby dowiedzieć się więcej na temat rozdzielanie, zobacz sekcję dystrybucje tabeli U-SQL w [CREATE TABLE (U-SQL): Tworzenie tabeli ze schematem](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch).
+Jeśli nie możesz znaleźć odpowiedniego klucza partycji i dystrybucji, możesz spróbować użyć rozdzielanie. Rozdzielanie traktuje wszystkie wiersze jednakowo i losowo umieszcza je w odpowiednich zasobników. Równomiernie pobiera dane, ale utraty miejscowości informacji zwrotnych, może również zmniejszyć wydajność zadania dla niektórych operacji. Ponadto jeśli mimo to czynności agregacji dla klucza spowodowałoby zafałszowanie problem zegara danych będzie umieszczony. Aby dowiedzieć się więcej na temat rozdzielanie, zobacz sekcję dystrybucje tabeli U-SQL w [CREATE TABLE (U-SQL): Tworzenie tabeli ze schematem](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch).
 
 ## <a name="solution-2-improve-the-query-plan"></a>2 — rozwiązanie: Poprawy planu zapytania
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>Opcja 1: Użycie instrukcji CREATE STATISTICS
 
-U-SQL zawiera instrukcję CREATE STATISTICS dla tabel. Ta instrukcja zawiera więcej informacji, aby optymalizator zapytań dotyczących właściwości danych, np. rozkład wartości, które są przechowywane w tabeli. Dla większości zapytań Optymalizator zapytań generuje już konieczne statystyki dotyczące planu zapytania wysokiej jakości. Czasami może być konieczne poprawiać wydajność zapytań, tworząc dodatkowe statystyki z instrukcji CREATE STATISTICS lub modyfikując projektu zapytania. Aby uzyskać więcej informacji, zobacz [instrukcji CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx) strony.
+U-SQL zawiera instrukcję CREATE STATISTICS dla tabel. Ta instrukcja zawiera więcej informacji, aby optymalizator zapytań dotyczących właściwości danych, np. rozkład wartości, które są przechowywane w tabeli. Dla większości zapytań Optymalizator zapytań generuje już konieczne statystyki dotyczące planu zapytania wysokiej jakości. Czasami może być konieczne poprawiać wydajność zapytań, tworząc dodatkowe statystyki z instrukcji CREATE STATISTICS lub modyfikując projektu zapytania. Aby uzyskać więcej informacji, zobacz [instrukcji CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) strony.
 
 Przykład kodu:
 

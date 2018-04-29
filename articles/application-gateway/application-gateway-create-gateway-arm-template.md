@@ -1,6 +1,6 @@
 ---
-title: "Utwórz bramę aplikacji Azure — szablony | Dokumentacja firmy Microsoft"
-description: "Ta strona zawiera instrukcje dotyczące tworzenia bramy aplikacji platformy Azure za pomocą szablonu usługi Azure Resource Manager"
+title: Utwórz bramę aplikacji Azure — szablony | Dokumentacja firmy Microsoft
+description: Ta strona zawiera instrukcje dotyczące tworzenia bramy aplikacji platformy Azure za pomocą szablonu usługi Azure Resource Manager
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ba100189cec2060efa97914a2c90f7b0cccbc33f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Tworzenie bramy aplikacji przy użyciu szablonu usługi Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure portal](application-gateway-create-gateway-portal.md)
+> * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager — program PowerShell](application-gateway-create-gateway-arm.md)
 > * [Klasyczny portal Azure — program PowerShell](application-gateway-create-gateway.md)
 > * [Szablon usługi Azure Resource Manager](application-gateway-create-gateway-arm-template.md)
@@ -76,7 +76,7 @@ Z witryny GitHub można pobrać istniejący szablon usługi Azure Resource Manag
    * **name**. Nazwa zasobu. Zwróć uwagę na `[parameters('applicationGatewayName')]`, co oznacza, że nazwa jest podana jako dane wejściowe przez Ciebie lub pliku parametrów podczas wdrażania.
    * **properties**. Lista właściwości zasobu. Ten szablon korzysta z sieci wirtualnej i publicznego adresu IP podczas tworzenia aplikacji bramy.
 
-1. Przejdź z powrotem do [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
+1. Przejdź z powrotem do [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Kliknij przycisk **parameters.JSON następującym kodem azuredeploy**, a następnie kliknij przycisk **RAW**.
 1. Zapisz plik w folderze lokalnym na komputerze.
 1. Otwórz zapisany plik i edytuj wartości parametrów. Do wdrożenia opisanej w scenariuszu bramy aplikacji użyj poniższych wartości.
@@ -129,7 +129,7 @@ Jeśli nie znasz programu Azure PowerShell, odwiedź stronę: [jak instalowanie 
 1. Logowanie do programu PowerShell
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Sprawdź subskrypcje dostępne na koncie.

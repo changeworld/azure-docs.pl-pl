@@ -1,19 +1,19 @@
 ---
-title: "Ochrona usługi Active Directory i DNS z usługą Azure Site Recovery | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano, jak wdrożyć rozwiązanie odzyskiwania po awarii dla usługi Active Directory przy użyciu usługi Azure Site Recovery."
+title: Ochrona usługi Active Directory i DNS z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak wdrożyć rozwiązanie odzyskiwania po awarii dla usługi Active Directory przy użyciu usługi Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ebddd3f68605df94bd06bef1fec785f740c3b023
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Użyj usługi Azure Site Recovery do ochrony usługi Active Directory i DNS
 
@@ -57,16 +57,16 @@ Dla maszyny wirtualnej, która obsługuje kontrolera domeny lub DNS w usłudze S
 Tworzenie kontrolera domeny w lokacji dodatkowej. Podczas podwyższania poziomu serwera do roli kontrolera domeny, określ nazwę tej samej domeny, który jest używany w lokacji głównej. Można użyć **Lokacje usługi Active Directory i usługi** przystawki można skonfigurować ustawienia na obiekt łącza lokacji, do której są dodawane witryny. Konfigurując ustawienia dla łącza lokacji, możesz kontrolować termin replikacji między co najmniej dwóch lokacji, i jak często występuje. Aby uzyskać więcej informacji, zobacz [planowanie replikacji między lokacjami](https://technet.microsoft.com/library/cc731862.aspx).
 
 ### <a name="site-to-azure-protection"></a>Ochrona lokacji do platformy Azure
-Najpierw [utworzyć kontroler domeny w sieci wirtualnej platformy Azure](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Podczas podwyższania poziomu serwera do roli kontrolera domeny, określ tej samej nazwy domeny, który jest używany w lokacji głównej.
+Najpierw należy utworzyć kontroler domeny w sieci wirtualnej platformy Azure. Podczas podwyższania poziomu serwera do roli kontrolera domeny, określ tej samej nazwy domeny, który jest używany w lokacji głównej.
 
-Następnie [zmienić konfigurację serwera DNS dla sieci wirtualnej](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network) do używania serwera DNS w systemie Azure.
+Następnie zmienić konfigurację serwera DNS dla sieci wirtualnej do używania serwera DNS w systemie Azure.
 
 ![Azure Network](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Ochrona Azure do platformy Azure
-Najpierw [utworzyć kontroler domeny w sieci wirtualnej platformy Azure](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Podczas podwyższania poziomu serwera do roli kontrolera domeny, określ tej samej nazwy domeny, który jest używany w lokacji głównej.
+Najpierw należy utworzyć kontroler domeny w sieci wirtualnej platformy Azure. Podczas podwyższania poziomu serwera do roli kontrolera domeny, określ tej samej nazwy domeny, który jest używany w lokacji głównej.
 
-Następnie [zmienić konfigurację serwera DNS dla sieci wirtualnej](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network) do używania serwera DNS w systemie Azure.
+Następnie zmienić konfigurację serwera DNS dla sieci wirtualnej do używania serwera DNS w systemie Azure.
 
 ## <a name="test-failover-considerations"></a>Zagadnienia dotyczące trybu failover testu
 Aby uniknąć wpływu na obciążeń produkcyjnych, test pracy awaryjnej w sieci, która jest odizolowana od sieci produkcyjnej.

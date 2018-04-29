@@ -1,13 +1,13 @@
 ---
-title: "Konfigurowanie filtrów trasy dla komunikacji równorzędnej platformy Azure ExpressRoute Microsoft: programu PowerShell | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu programu PowerShell"
+title: 'Konfigurowanie filtrów trasy dla komunikacji równorzędnej platformy Azure ExpressRoute Microsoft: programu PowerShell | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu programu PowerShell
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 9d953ea68e1e14ae12aa401af935d207f0747e8c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6e767166ecf248aa0e7fc16dc21361394e03107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurowanie filtrów trasy dla komunikacji równorzędnej firmy Microsoft: środowiska PowerShell
 > [!div class="op_single_selector"]
-> * [Azure portal](how-to-routefilter-portal.md)
+> * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure](how-to-routefilter-cli.md)
 > 
@@ -53,7 +53,7 @@ Aby można było dołączyć filtry tras z usługami Office 365 na nich, musi mi
 > 
 > 
 
-### <a name="workflow"></a>Przepływ pracy
+### <a name="workflow"></a>przepływ pracy
 
 Aby móc nawiązywać połączeń z usługami za pomocą komunikacji równorzędnej firmy Microsoft, wykonaj następujące kroki konfiguracji:
 
@@ -91,7 +91,7 @@ Przed rozpoczęciem tej konfiguracji musisz zalogować się na koncie platformy 
 Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Jeśli masz wiele subskrypcji platformy Azure, wyświetl subskrypcje dla konta.

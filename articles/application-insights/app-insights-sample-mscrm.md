@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Dynamics CRM i usługa Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Pobierz dane telemetryczne z programu Microsoft Dynamics CRM Online przy użyciu usługi Application Insights. Pobieranie danych, wizualizacji i eksportowanie Przewodnik instalacji."
+title: Microsoft Dynamics CRM i usługa Azure Application Insights | Dokumentacja firmy Microsoft
+description: Pobierz dane telemetryczne z programu Microsoft Dynamics CRM Online przy użyciu usługi Application Insights. Pobieranie danych, wizualizacji i eksportowanie Przewodnik instalacji.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mazharmicrosoft
 manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ced4f62b4f27ede28c61e8d2670432ddd7b76f9b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Wskazówki: Włączanie dane telemetryczne dla programu Microsoft Dynamics CRM Online przy użyciu usługi Application Insights
 W tym artykule przedstawiono sposób pobierać dane telemetryczne [Microsoft Dynamics CRM Online](https://www.dynamics.com/) przy użyciu [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Zostanie omówiony Zakończ proces dodawania skryptów usługi Application Insights do aplikacji, przechwytywania danych i wizualizacji danych.
@@ -60,7 +60,7 @@ Do monitorowania aplikacji, należy dodać zestaw SDK usługi Application Insigh
     ![Otwórz Edytor tekstu](./media/app-insights-sample-mscrm/00004.png)
 2. Skopiuj kod z usługi Application Insights. Podczas kopiowania, upewnij się, że zignorowanie tagów skryptu. Zapoznaj się poniżej zrzut ekranu:
 
-    ![Ustaw klucz Instrumentacji](./media/app-insights-sample-mscrm/00005.png)
+    ![Ustaw klucz Instrumentacji](./media/app-insights-sample-mscrm/000005.png)
 
     Kod zawiera klucz instrumentacji, który identyfikuje z zasobu usługi Application insights.
 3. Zapisz i opublikuj.

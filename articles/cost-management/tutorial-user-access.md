@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/09/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: db5cdecc57cf07876ca8d4e981860615643cfd79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Mimo że Ty masz już prawa dostępu administratora, współpracownicy z organizacji mogą również potrzebować takich praw. W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Zarządzanie użytkownikami**. Kliknij pozycję **Dodaj nowego użytkownika**, aby dodać nowego użytkownika.
 
-Wprowadź wymagane informacje o użytkowniku. Pole hasła może pozostać puste, dzięki czemu użytkownik będzie mógł ustawić nowe hasło podczas pierwszego logowania. Link z informacjami logowania jest wysyłany do użytkownika pocztą e-mail z platformy Cloudyn po wybraniu pozycji **Powiadom użytkownika pocztą e-mail**. Wybierz uprawnienia, aby zezwolić na zarządzanie użytkownikami, co pozwoli użytkownikowi na tworzenie i modyfikowanie innych użytkowników. Zarządzanie listami adresatów umożliwia użytkownikowi edytowanie list adresatów.
+Wprowadź wymagane informacje o użytkowniku. Identyfikator logowania musi być prawidłowym adresem e-mail. Wybierz uprawnienia, aby zezwolić na zarządzanie użytkownikami, co pozwoli użytkownikowi na tworzenie i modyfikowanie innych użytkowników. Zarządzanie listami adresatów umożliwia użytkownikowi edytowanie list adresatów. Link z informacjami logowania jest wysyłany do użytkownika pocztą e-mail z platformy Cloudyn po wybraniu pozycji **Powiadom użytkownika pocztą e-mail**. Podczas pierwszego logowania użytkownik ustawia hasło.
 
 W obszarze **Użytkownik ma dostęp administratora** wybrano jednostkę główną organizacji. Pozostaw zaznaczoną jednostkę główną i zapisz informacje o użytkowniku. Wybranie jednostki głównej pozwoli użytkownikowi na posiadanie uprawnień administratora nie tylko do jednostki głównej w drzewie, ale także do wszystkich jednostek, które znajdują się pod nią.  
   ![dodawanie nowego użytkownika z prawami dostępu administratora](.\media\tutorial-user-access\new-admin-access.png)
@@ -64,7 +64,7 @@ Podczas tworzenia drzewa zastanów się, jak musisz lub chcesz wyświetlać swoj
 
 Po zarejestrowaniu konta lub umowy związanej z platformą Azure na platformie Cloudyn dane zasobów platformy Azure, w tym dane użycia, wydajności, rozliczeń i tagów, z subskrypcji zostały skopiowane do konta platformy Cloudyn. Drzewo jednostek trzeba jednak utworzyć ręcznie. W przypadku pominięcia rejestracji usługi Azure Resource Manager tylko dane rozliczeń i pewne raporty zasobów są dostępne w portalu Cloudyn.
 
-W portalu Cloudyn kliknij pozycję **Ustawienia** w górnym prawym rogu i wybierz pozycję **Konta w chmurze**. Rozpoczynasz od pojedynczej jednostki (głównej) i tworzysz drzewo jednostek pod tą jednostką główną. Oto przykład hierarchii jednostek, która po ukończeniu drzewa może przypominać wiele organizacji IT:
+W portalu Cloudyn kliknij symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Konta w chmurze**. Rozpoczynasz od pojedynczej jednostki (głównej) i tworzysz drzewo jednostek pod tą jednostką główną. Oto przykład hierarchii jednostek, która po ukończeniu drzewa może przypominać wiele organizacji IT:
 
 ![drzewo jednostki](.\media\tutorial-user-access\entity-tree.png)
 

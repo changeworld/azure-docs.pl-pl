@@ -1,25 +1,18 @@
 ---
-title: "Filmy wideo, przykłady i samouczki w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Centralną listę wszystkich wideo, próbek, demonstracji i samouczki utworzonych dla usługi Azure Search, usługa w chmurze hostowanej w systemie MIcrosoft Azure."
-services: search
-documentationcenter: 
+title: Filmy wideo, przykłady i samouczki w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Centralną listę wszystkich wideo, próbek, demonstracji i samouczki utworzonych dla usługi Azure Search, usługa w chmurze hostowanej w systemie Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: heidist
-ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71a8abcebb95f2d34dee2f26dc2c7f341465a55
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Wyszukiwanie Azure: przykłady kodu, pokazów wideo i samouczków
 Dowiedz się wszystkiego szybciej następujące filmy wideo, pokazy, samouczki i przykładowe aplikacje.
@@ -28,10 +21,10 @@ Dowiedz się wszystkiego szybciej następujące filmy wideo, pokazy, samouczki i
 
 Jeśli jesteś nowym użytkownikiem usługi Azure Search, zacznij tutaj. Możesz przejrzeć wszystkich tych zasobów w około godzinę.
 
-| Tytuł | Opis | Date |
+| Stanowisko | Opis | Date |
 |-------|-------------|------|
 | [Obejrzyj ten film wideo zawierający wprowadzenie](https://channel9.msdn.com/Events/Connect/2016/138) | 9m38s wprowadzenie do funkcji, tworzenia usługi i zapytań. | Listopada 2016 |
-| [Tworzenie usługi](search-get-started-portal.md) | Kroki konfigurowania usługi Azure Search w portalu. | Lutego 2017 |
+| [ Tworzenie usługi](search-get-started-portal.md) | Kroki konfigurowania usługi Azure Search w portalu. | Lutego 2017 |
 | [Tworzenie zapytań względem indeksu](search-get-started-portal.md) | Utwórz i tworzenie zapytań względem indeksu przy użyciu wbudowanych przykładowych danych. Narzędzia w portalu są szybką wyszukiwania parametrów i informacje o typach zapytania. | Lutego 2017 |
 | [Następny krok:<br/> kodu w .NET](search-howto-dotnet-sdk.md) | C# przewodniku przedstawiono, jak połączyć, indeksu i zapytań przy użyciu biblioteki usługi Azure Search .NET. | Listopada 2016 |
 | [Następny krok:<br/> kodu w REST](search-create-index-rest-api.md) | Przejrzyj wywołań REST i ładunek JSON do tworzenia indeksu usługi Azure Search na dowolnej platformie i język programowania. | Grudnia 2016 |

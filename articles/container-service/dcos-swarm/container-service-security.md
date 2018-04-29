@@ -1,18 +1,18 @@
 ---
-title: "Kontener zabezpieczeń w usłudze kontenera platformy Azure"
-description: "Zagadnienia dotyczące zabezpieczania kontenerów Docker wdrożony w usłudze kontenera platformy Azure i związane z usługami Azure."
+title: Kontener zabezpieczeń w usłudze kontenera platformy Azure
+description: Zagadnienia dotyczące zabezpieczania kontenerów Docker wdrożony w usłudze kontenera platformy Azure i związane z usługami Azure.
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 2e6da46cf99b46ab69ae2b2b910a6361effd69fd
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 12b1df2d2e6ff9196540972c58cc9a307ee4b80d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 [!INCLUDE [container-service-security.md](../../../includes/container-service-security.md)]

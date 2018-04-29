@@ -1,25 +1,19 @@
 ---
-title: "Przykłady zapytań Lucene dla usługi Azure Search | Dokumentacja firmy Microsoft"
-description: "Składnia zapytań Lucene dla Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie zwiększania termin, wyrażenie regularne wyszukiwania i wyszukiwania symboli wieloznacznych."
-services: search
-documentationcenter: 
+title: Przykłady zapytań Lucene dla usługi Azure Search | Dokumentacja firmy Microsoft
+description: Składnia zapytań Lucene dla Wyszukiwanie rozmyte, wyszukiwanie w sąsiedztwie zwiększania termin, wyrażenie regularne wyszukiwania i wyszukiwania symboli wieloznacznych.
 author: LiamCa
-manager: pablocas
-editor: 
+manager: jlembicz
 tags: Lucene query analyzer syntax
-ms.assetid: 147f360d-a5ce-4d7b-a909-c8b65bfb748c
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: liamca
-ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: c83b3b0d9c0cc99ba8a76dc4a6b2f83ed6de49dc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Przykłady składni zapytań Lucene do tworzenia zapytań w usłudze Azure Search
 Podczas tworzenia zapytań dla usługi wyszukiwanie Azure, można użyć albo domyślnie [prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) lub alternatywnej [analizator składni zapytań Lucene w usłudze Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Analizator składni zapytań Lucene obsługuje bardziej złożonych konstrukcje zapytania, takie jak zapytania należące do zakresu pola, Wyszukiwanie rozmyte wyszukiwanie w sąsiedztwie, termin zwiększania i wyrażeń regularnych wyszukiwania.
@@ -117,7 +111,7 @@ Wyszukaj wyrażenie regularne znalezienia dopasowania na podstawie zawartości m
 
 * `&queryType=full&$select=business_title&search=business_title:/(Sen|Jun)ior/`
 
-W tym przykładzie adres URL nie będzie zwracał poprawnie na tej stronie. Jako obejście Skopiuj poniższy adres URL i wklej go w przeglądarce adres URL:`http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
+W tym przykładzie adres URL nie będzie zwracał poprawnie na tej stronie. Jako obejście Skopiuj poniższy adres URL i wklej go w przeglądarce adres URL: `http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
 
 ## <a name="wildcard-search-example"></a>Przykład wyszukiwania symboli wieloznacznych
 Za pomocą składni powszechnie wielu (\*) lub pojedynczego wyszukiwania symboli wieloznacznych znaku (?). Należy pamiętać, że analizator składni zapytań Lucene obsługuje korzystanie z tych symboli z pojedynczy termin, a nie frazę.
@@ -128,12 +122,12 @@ Za pomocą składni powszechnie wielu (\*) lub pojedynczego wyszukiwania symboli
 
 Nie można użyć * i? symbol jako pierwszy znak wyszukiwania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Spróbuj określić analizator składni zapytań Lucene w kodzie. Poniższe linki wyjaśniono, jak skonfigurować zapytania wyszukiwania dla środowiska .NET i interfejsu API REST. Łącza, użyj składni proste domyślne, należy zastosować znasz z tego artykułu, aby określić **kwerendami typu**.
 
 * [Tworzenie zapytań względem indeksu wyszukiwania Azure przy użyciu zestawu .NET SDK](search-query-dotnet.md)
 * [Tworzenie zapytań względem indeksu wyszukiwania Azure przy użyciu interfejsu API REST](search-query-rest-api.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
  [Ile wyszukiwanie pełnotekstowe działa w usłudze Azure Search](search-lucene-query-architecture.md)

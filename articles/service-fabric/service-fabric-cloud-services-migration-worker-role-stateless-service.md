@@ -1,11 +1,11 @@
 ---
-title: "Konwertowanie aplikacji usługi w chmurze Azure do mikrousług | Dokumentacja firmy Microsoft"
-description: "Ten przewodnik zawiera porównanie bezstanowych usługi sieci Web usługi w chmurze i roli proces roboczy i sieci szkieletowej usług ułatwia migrację z usług chmury do sieci szkieletowej usług."
+title: Konwertowanie aplikacji usługi w chmurze Azure do mikrousług | Dokumentacja firmy Microsoft
+description: Ten przewodnik zawiera porównanie bezstanowych usługi sieci Web usługi w chmurze i roli proces roboczy i sieci szkieletowej usług ułatwia migrację z usług chmury do sieci szkieletowej usług.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Przewodnik po konwersji sieci Web i proces roboczy usług bezstanowych sieci szkieletowej usług
 W tym artykule opisano sposób migracji z usług chmury w sieci Web i proces roboczy do usługi sieć szkieletowa usług bezstanowych. Jest to najprostsza ścieżka migracji z usług w chmurze sieci szkieletowej usług dla aplikacji, których ogólna architektura ma około pozostają takie same.
@@ -53,7 +53,7 @@ Rola proces roboczy i sieci szkieletowej usług usługi interfejsów API oferta 
 | Przetwarzanie |`Run()` |`RunAsync()` |
 | Początek maszyny Wirtualnej |`OnStart()` |ND |
 | Zatrzymanie maszyny Wirtualnej |`OnStop()` |ND |
-| Otwórz odbiornika dla żądań klientów |ND |<ul><li> `CreateServiceInstanceListener()`Aby uzyskać bezstanowych</li><li>`CreateServiceReplicaListener()`dla stateful</li></ul> |
+| Otwórz odbiornika dla żądań klientów |ND |<ul><li> `CreateServiceInstanceListener()` Aby uzyskać bezstanowych</li><li>`CreateServiceReplicaListener()` dla stateful</li></ul> |
 
 ### <a name="worker-role"></a>Rola Proces roboczy
 ```csharp
@@ -121,7 +121,7 @@ Interfejs API środowiska usługi w chmurze zawiera informacje oraz funkcje dla 
 | --- | --- | --- |
 | Ustawienia konfiguracji i powiadomienia o zmianie |`RoleEnvironment` |`CodePackageActivationContext` |
 | Magazyn lokalny |`RoleEnvironment` |`CodePackageActivationContext` |
-| Informacje o punkcie końcowym |`RoleInstance` <ul><li>Bieżące wystąpienie:`RoleEnvironment.CurrentRoleInstance`</li><li>Inne role i wystąpienie:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`dla bieżącego adresu węzła</li><li>`FabricClient`i `ServicePartitionResolver` do odnajdywania punktu końcowego usługi</li> |
+| Informacje o punkcie końcowym |`RoleInstance` <ul><li>Bieżące wystąpienie: `RoleEnvironment.CurrentRoleInstance`</li><li>Inne role i wystąpienie: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` dla bieżącego adresu węzła</li><li>`FabricClient` i `ServicePartitionResolver` do odnajdywania punktu końcowego usługi</li> |
 | Emulacja środowiska |`RoleEnvironment.IsEmulated` |ND |
 | Zdarzenie zmiany jednoczesnych |`RoleEnvironment` |ND |
 
@@ -207,7 +207,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>Zadania uruchamiania
 Uruchamianie zadania są działaniach wykonywanych przed uruchomieniem aplikacji. Zadanie uruchamiania jest zwykle używany do uruchamiania skryptów instalacji, korzystając z podwyższonym poziomem uprawnień. Usługa Service Fabric i usług w chmurze obsługuje zadania uruchamiania. Główna różnica polega na tym, że usług w chmurze, zadanie uruchamiania jest związany z maszyny Wirtualnej, ponieważ jest ona częścią wystąpienia roli, natomiast w sieci szkieletowej usług zadanie uruchamiania jest związany z usługą, które nie są powiązane do żadnej określonej maszyny Wirtualnej.
 
-| Cloud Services | Service Fabric |
+| Service Fabric | Cloud Services |
 | --- | --- | --- |
 | Lokalizacja konfiguracji |ServiceDefinition.csdef |
 | Przywileje |"ograniczony" lub "z podwyższonym poziomem uprawnień" |

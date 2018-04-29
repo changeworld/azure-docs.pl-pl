@@ -1,59 +1,59 @@
 ---
-title: "Azure rozwiązania Cosmos bazy danych: Interfejs API Graph w .NET opracowywania | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak tworzyć aplikacje za pomocą interfejsu API SQL Azure rozwiązania Cosmos DB przy użyciu platformy .NET"
+title: 'Azure Cosmos DB: programowanie za pomocą interfejsu SQL programu Graph na platformie .NET | Microsoft Docs'
+description: Dowiedz się, jak tworzyć aplikacje za pomocą interfejsu SQL API usługi Azure Cosmos DB przy użyciu platformy .NET
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: cc8df0be-672b-493e-95a4-26dd52632261
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: ddbfe11e4415e1c240914142f4daf54b3032f5d8
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure rozwiązania Cosmos bazy danych: Interfejs API Graph w .NET opracowywania
+# <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: programowanie za pomocą interfejsu API programu Graph na platformie .NET
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
-W tym samouczku przedstawiono tworzenie konta bazy danych rozwiązania Cosmos Azure przy użyciu portalu Azure oraz do tworzenia bazy danych wykresu i kontenera. Następnie aplikacja tworzy prosty sieci społecznościowych cztery osoby korzystające z [interfejsu API programu Graph](graph-sdk-dotnet.md), następnie przechodzi przez i wysyła zapytanie do wykresu za pomocą Gremlin.
+W tym samouczku przedstawiono sposób tworzenia konta usługi Azure Cosmos DB za pomocą witryny Azure Portal oraz sposób tworzenia bazy danych grafów i kontenera. Następnie aplikacja tworzy prostą sieć społecznościową z czterema osobami za pomocą [interfejsu API programu Graph](graph-sdk-dotnet.md), po czym ma miejsce przechodzenie grafu i wykonywanie względem niego zapytań za pomocą języka Gremlin.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Azure Cosmos DB 
-> * Tworzenie bazy danych wykresu i kontenera
-> * Serializować wierzchołki i krawędzi obiekty .NET
-> * Dodaj wierzchołki i krawędzi.
-> * Wykres przy użyciu Gremlin zapytania
+> * Tworzenie bazy danych grafów i kontenera
+> * Serializowanie wierzchołków i krawędzi do obiektów platformy .NET
+> * Dodawanie wierzchołków i krawędzi
+> * Wykonywanie zapytań względem grafu za pomocą języka Gremlin
 
-## <a name="graphs-in-azure-cosmos-db"></a>Wykresy w Azure rozwiązania Cosmos bazy danych
-Bazy danych rozwiązania Cosmos Azure umożliwia tworzenie, aktualizowanie i zapytania przy użyciu wykresów [Microsoft.Azure.Graphs](graph-sdk-dotnet.md) biblioteki. Biblioteka Microsoft.Azure.Graph udostępnia metody rozszerzenia pojedynczego `CreateGremlinQuery<T>` nad `DocumentClient` klasy na wykonanie kwerend Gremlin.
+## <a name="graphs-in-azure-cosmos-db"></a>Grafy w usłudze Azure Cosmos DB
+Usługi Azure Cosmos DB można użyć do tworzenia i aktualizowania grafów oraz wykonywania względem nich zapytań za pomocą biblioteki [Microsoft.Azure.Graphs](graph-sdk-dotnet.md). Biblioteka Microsoft.Azure.Graph udostępnia pojedynczą metodę rozszerzenia `CreateGremlinQuery<T>` na podstawie klasy `DocumentClient` służącą do wykonywania zapytań w języku Gremlin.
 
-Gremlin jest funkcjonalny język programowania, który obsługuje zapisu operacji zapytań i przechodzenie i operacje (DML). Firma Microsoft obejmuje kilka przykładów w tym artykule można pobrać z wprowadzeniem z Gremlin. Zobacz [zapytania Gremlin](gremlin-support.md) Aby uzyskać szczegółowe wskazówki Gremlin funkcji dostępnych w usłudze Azure DB rozwiązania Cosmos. 
+Język Gremlin to funkcjonalny język programowania, który obsługuje operacje zapisu (DML) oraz operacje tworzenia zapytań i przechodzenia. W tym artykule znajduje się kilka przykładów stanowiących wprowadzenie do języka Gremlin. Aby uzyskać szczegółowe wskazówki dotyczące funkcji języka Gremlin dostępnych w usłudze Azure Cosmos DB, zobacz [Zapytania w języku Gremlin](gremlin-support.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Upewnij się, że masz:
 
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/free/). 
-    * Alternatywnie można użyć [lokalnym emulatorze](local-emulator.md) w tym samouczku.
+    * Na potrzeby tego samouczka możesz także użyć [emulatora lokalnego](local-emulator.md).
 * Program [Visual Studio](http://www.visualstudio.com/).
 
 ## <a name="create-database-account"></a>Tworzenie konta bazy danych
 
-Zacznijmy od utworzenia konta Azure DB rozwiązania Cosmos w portalu Azure.  
+Zacznijmy od utworzenia konta usługi Azure Cosmos DB w witrynie Azure Portal.  
 
 > [!TIP]
-> * Masz już konto bazy danych rozwiązania Cosmos Azure? Jeśli tak, przejdź do [konfigurowanie rozwiązania Visual Studio](#SetupVS)
-> * Jeśli używasz emulatora usługi Azure rozwiązania Cosmos bazy danych, wykonaj kroki opisane w temacie [Azure rozwiązania Cosmos DB emulatora](local-emulator.md) skonfigurować emulatora i przejść od razu do [konfigurowanie rozwiązania Visual Studio](#SetupVS). 
+> * Masz już konto usługi Azure Cosmos DB? Jeśli tak, przejdź do sekcji [Konfigurowanie rozwiązania programu Visual Studio](#SetupVS)
+> * Jeśli używasz emulatora usługi Azure Cosmos DB, wykonaj czynności opisane w temacie [Emulator usługi Azure Cosmos DB](local-emulator.md), aby skonfigurować emulator, a następnie przejdź do sekcji [Konfigurowanie rozwiązania programu Visual Studio](#SetupVS). 
 >
 > 
 
@@ -62,32 +62,32 @@ Zacznijmy od utworzenia konta Azure DB rozwiązania Cosmos w portalu Azure.
 ## <a id="SetupVS"></a>Konfigurowanie rozwiązania programu Visual Studio
 1. Otwórz program **Visual Studio** na komputerze.
 2. W menu **Plik** wybierz polecenie **Nowy**, a następnie wybierz pozycję **Projekt**.
-3. W **nowy projekt** okno dialogowe, wybierz opcję **szablony** / **Visual C#** / **aplikacji konsoli (.NET Framework)** , nazwę projektu, a następnie kliknij przycisk **OK**.
+3. W oknie dialogowym **Nowy projekt** wybierz pozycję **Szablony** / **Visual C#** / **Aplikacja konsolowa (.NET Framework)**, podaj nazwę projektu, a następnie kliknij przycisk **OK**.
 4. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy nową aplikację konsolową, która znajduje się w ramach rozwiązania Visual Studio, a następnie kliknij pozycję **Zarządzaj pakietami NuGet...**
-5. W **NuGet** , kliknij pozycję **Przeglądaj**i wpisz **Microsoft.Azure.Graphs** w polu wyszukiwania, a także sprawdź **obejmują wersje wstępne**.
-6. W wynikach, Znajdź **Microsoft.Azure.Graphs** i kliknij przycisk **zainstalować**.
+5. Na karcie **NuGet** kliknij pozycję **Przeglądaj**, wpisz wartość **Microsoft.Azure.Graphs** w polu wyszukiwania, a następnie pole **Obejmuje wersje wstępne**.
+6. W wynikach znajdź pozycję **Microsoft.Azure.Graphs**, a następnie kliknij przycisk **Zainstaluj**.
    
    Jeśli zostanie wyświetlony komunikat dotyczący przejrzenia zmian wprowadzonych w rozwiązaniu, kliknij przycisk **OK**. Jeśli wyświetlany jest komunikat o akceptacji licencji, kliknij pozycję **Akceptuję**.
    
-    `Microsoft.Azure.Graphs` Biblioteka udostępnia metody rozszerzenia pojedynczego `CreateGremlinQuery<T>` do wykonywania operacji Gremlin. Gremlin jest funkcjonalny język programowania, który obsługuje zapisu operacji zapytań i przechodzenie i operacje (DML). Firma Microsoft obejmuje kilka przykładów w tym artykule można pobrać z wprowadzeniem z Gremlin. [Zapytania gremlin](gremlin-support.md) ma szczegółowy przewodnik na temat możliwości Gremlin w usłudze Azure DB rozwiązania Cosmos.
+    Biblioteka `Microsoft.Azure.Graphs` udostępnia pojedynczą metodę rozszerzenia `CreateGremlinQuery<T>` służącą do wykonywania operacji w języku Gremlin. Język Gremlin to funkcjonalny język programowania, który obsługuje operacje zapisu (DML) oraz operacje tworzenia zapytań i przechodzenia. W tym artykule znajduje się kilka przykładów stanowiących wprowadzenie do języka Gremlin. [Zapytań Gremlin](gremlin-support.md) dotyczą szczegółowe wskazówki opisujące możliwości języka Gremlin w usłudze Azure Cosmos DB.
 
 ## <a id="add-references"></a>Łączenie aplikacji
 
-Dodaj te dwie stałe i *klienta* zmiennej w aplikacji. 
+Dodaj te dwie stałe i zmienną *client* do aplikacji. 
 
 ```csharp
 string endpoint = ConfigurationManager.AppSettings["Endpoint"]; 
 string authKey = ConfigurationManager.AppSettings["AuthKey"]; 
 ``` 
-Następnie z powrotem do head [portalu Azure](https://portal.azure.com) można pobrać adresu URL punktu końcowego, a klucz podstawowy. Adres URL punktu końcowego i klucz podstawowy są niezbędne, aby aplikacja wiedziała, z jakim elementem ma się połączyć, oraz aby usługa Azure Cosmos DB ufała połączeniu aplikacji. 
+Następnie wróć do witryny [Azure Portal](https://portal.azure.com), aby pobrać adres URL punktu końcowego i klucz podstawowy. Adres URL punktu końcowego i klucz podstawowy są niezbędne, aby aplikacja wiedziała, z jakim elementem ma się połączyć, oraz aby usługa Azure Cosmos DB ufała połączeniu aplikacji. 
 
-W portalu Azure, przejdź do swojego konta bazy danych rozwiązania Cosmos platformy Azure, kliknij przycisk **klucze**, a następnie kliknij przycisk **odczytu i zapisu kluczy**. 
+W witrynie Azure Portal przejdź do konta usługi Azure Cosmos DB, kliknij pozycję **Klucze**, a następnie kliknij pozycję **Klucze odczytu i zapisu**. 
 
-Skopiuj identyfikator URI z portalu i wklej go za pośrednictwem `Endpoint` we właściwości punktu końcowego powyżej. Następnie skopiuj podstawowy klucz z portalu i wklej ją do `AuthKey` właściwości powyżej. 
+Skopiuj identyfikator URI z portalu i wklej go w miejsce elementu `Endpoint` w powyższej właściwości punktu końcowego. Następnie skopiuj KLUCZ PODSTAWOWY z portalu i wklej go w miejsce powyższej właściwości `AuthKey`. 
 
-![Zrzut ekranu przedstawiający portal Azure używany przez samouczek tworzenia aplikacji C#. Pokazuje bazy danych Azure rozwiązania Cosmos konta, przyciskiem KLUCZE wyróżnionym w nawigacji bazy danych Azure rozwiązania Cosmos i wartości URI oraz PRIMARY KEY wyróżnionym w bloku klucze](./media/tutorial-develop-graph-dotnet/keys.png) 
+![Zrzut ekranu przedstawiający witrynę Azure Portal używaną w ramach samouczka do tworzenia aplikacji w języku C#. Przedstawia konto usługi Azure Cosmos DB z przyciskiem KLUCZE wyróżnionym w remach nawigacji usługi Azure Cosmos DB oraz wartościami IDENTYFIKATOR URI i KLUCZ PODSTAWOWY wyróżnionymi w bloku Klucze](./media/tutorial-develop-graph-dotnet/keys.png) 
  
-## <a id="instantiate"></a>Utwórz wystąpienie obiektu DocumentClient 
+## <a id="instantiate"></a>Tworzenie wystąpienia klasy DocumentClient 
 Następnie utwórz nowe wystąpienie klasy **DocumentClient**.  
 
 ```csharp 
@@ -96,15 +96,15 @@ DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
 
 ## <a id="create-database"></a>Tworzenie bazy danych 
 
-Teraz Utwórz bazę danych Azure rozwiązania Cosmos [bazy danych](sql-api-resources.md#databases) za pomocą [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metody lub [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metody  **DocumentClient** klasę z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md).  
+Teraz utwórz [bazę danych](sql-api-resources.md#databases) usługi Azure Cosmos DB za pomocą metody [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) lub metody [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) klasy  **DocumentClient** z zestawu [SQL SDK na platformie .NET](sql-api-sdk-dotnet.md).  
 
 ```csharp 
 Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "graphdb" }); 
 ``` 
  
-## <a name="create-a-graph"></a>Tworzenie wykresu. 
+## <a name="create-a-graph"></a>Tworzenie grafu 
 
-Następnie należy utworzyć kontener wykresu przy użyciu przy użyciu [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metody lub [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metody **DocumentClient** klasy. Kolekcja jest kontenerem jednostek wykresu. 
+Następnie utwórz kontener grafów za pomocą metody [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) lub metody [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) klasy **DocumentClient**. Kolekcja to kontener jednostek grafów. 
 
 ```csharp 
 DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync( 
@@ -113,15 +113,15 @@ DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync
     new RequestOptions { OfferThroughput = 1000 }); 
 ``` 
 
-## <a id="serializing"></a>Serializować wierzchołki i krawędzi obiekty .NET
-Używa Azure DB rozwiązania Cosmos [formacie łańcuchowym GraphSON](gremlin-support.md), który definiuje schematu JSON dla wierzchołków, krawędzie i właściwości. Zestaw .NET SDK usługi Azure rozwiązania Cosmos DB zawiera struktury JSON.NET jako zależność i pozwala na serializacji/deserializacji GraphSON na obiekty .NET, które firma Microsoft może współpracować w kodzie.
+## <a id="serializing"></a>Serializowanie wierzchołków i krawędzi do obiektów platformy .NET
+Usługa Azure Cosmos DB używa [formatu przewodowego GraphSON](gremlin-support.md), który definiuje schemat JSON dla wierzchołków, krawędzi i właściwości. Zestaw SDK platformy .NET usługi Azure Cosmos DB zawiera program JSON.NET jako zależność, co pozwala na serializację i deserializację elementów GraphSON do obiektów platformy .NET, których można używać w ramach kodu.
 
-Na przykład załóżmy współpracować z prostego sieci społecznościowych z czterech osób. Opisano, jak utworzyć `Person` wierzchołków, Dodaj `Knows` relacji między nimi, a następnie zapytań i przechodzenia wykres można znaleźć relacji "friend friend". 
+W ramach przykładu użyjmy prostej sieci społecznościowej składającej się z czterech osób. Opisany zostanie sposób tworzenia wierzchołków `Person`, dodawania relacji `Knows` między nimi, a następnie tworzenia zapytań względem grafu i przechodzenia go w celu znalezienia relacji „znajomy znajomych”. 
 
-`Microsoft.Azure.Graphs.Elements` Przestrzeń nazw zawiera `Vertex`, `Edge`, `Property` i `VertexProperty` klasy do deserializacji odpowiedzi GraphSON dobrze zdefiniowany obiekty .NET.
+Przestrzeń nazw `Microsoft.Azure.Graphs.Elements` udostępnia klasy `Vertex`, `Edge`, `Property` i `VertexProperty` do deserializacji odpowiedzi w formacie GraphSON do dobrze zdefiniowanych obiektów platformy .NET.
 
-## <a name="run-gremlin-using-creategremlinquery"></a>Uruchom przy użyciu CreateGremlinQuery Gremlin
-Gremlin, takiego jak SQL, obsługuje odczytu, zapisu i operacje zapytań. Na przykład poniższy fragment kodu przedstawia sposób tworzenia wierzchołków, krawędzi, wykonać niektóre przykładowe zapytania przy użyciu `CreateGremlinQuery<T>`i asynchronicznie iterację te wyniki za pomocą `ExecuteNextAsync` i "HasMoreResults.
+## <a name="run-gremlin-using-creategremlinquery"></a>Uruchamianie zapytań w języku Gremlin za pomocą metody CreateGremlinQuery
+Język Gremlin, podobnie jak język SQL, obsługuje operacje odczytu, zapisu i wykonywania zapytań. Na przykład poniższy fragment kodu przedstawia sposób tworzenia wierzchołków, krawędzi, wykonywania pewnych przykładowych zapytań przy użyciu metody `CreateGremlinQuery<T>` oraz asynchronicznego iterowania się po tych wynikach za pomocą metod `ExecuteNextAsync` i HasMoreResults.
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>
@@ -166,9 +166,9 @@ foreach (KeyValuePair<string, string> gremlinQuery in gremlinQueries)
 }
 ```
 
-## <a name="add-vertices-and-edges"></a>Dodaj wierzchołki i krawędzi.
+## <a name="add-vertices-and-edges"></a>Dodawanie wierzchołków i krawędzi
 
-Oto instrukcje Gremlin wyświetlany w poprzedniej sekcji więcej szczegółów. Pierwszy możemy niektórych wierzchołków przy użyciu jego Gremlin `addV` metody. Na przykład poniższy fragment kodu tworzy wierzchołek "Blogu Thomasa Andersen" typu "Osoba" z właściwości imię i nazwisko, wiek.
+Przyjrzyjmy się bliżej instrukcjom języka Gremlin wyświetlanym w poprzedniej sekcji. Najpierw dodajemy kilka wierzchołków przy użyciu metody `addV` języka Gremlin. Na przykład poniższy fragment kodu służy do tworzenia wierzchołka „Thomas Andersen” typu „Person” z właściwościami na potrzeby imienia, nazwiska i wieku.
 
 ```cs
 // Create a vertex
@@ -182,7 +182,7 @@ while (createVertexQuery.HasMoreResults)
 }
 ```
 
-Następnie utworzymy niektórych krawędzi między te wierzchołków przy użyciu jego Gremlin `addE` metody. 
+Następnie dodajemy kilka krawędzi między tymi wierzchołkami przy użyciu metody `addE` języka Gremlin. 
 
 ```cs
 // Add a "knows" edge
@@ -196,7 +196,7 @@ while (create.HasMoreResults)
 }
 ```
 
-Możemy zaktualizować istniejące wierzchołków przy użyciu `properties` krok w Gremlin. Firma Microsoft pominąć wywołania do wykonania zapytania za pomocą `HasMoreResults` i `ExecuteNextAsync` dla pozostałych przykładach.
+Istniejący wierzchołek można zaktualizować przy użyciu krok `properties` w języku Gremlin. Pomijamy wywołanie, aby wykonać zapytanie za pomocą metod `HasMoreResults` i `ExecuteNextAsync` dla pozostałych przykładów.
 
 ```cs
 // Update a vertex
@@ -205,7 +205,7 @@ client.CreateGremlinQuery<Vertex>(
     "g.V('thomas').property('age', 45)");
 ```
 
-Można usunąć krawędzi oraz wierzchołków przy użyciu jego Gremlin `drop` kroku. Oto fragment, pokazujący sposób usuwania wierzchołek i krawędzi. Należy pamiętać, że porzucenie wierzchołek wykonuje kaskadowych Usuń skojarzone krawędzi.
+Krawędzie i wierzchołki można usunąć przy użyciu kroku `drop` w języku Gremlin. W poniższym fragmencie kodu przedstawiono sposób usuwania wierzchołka i krawędzi. Należy pamiętać, że usunięcie wierzchołka spowoduje wykonanie kaskadowego usuwania skojarzonych krawędzi.
 
 ```cs
 // Drop an edge
@@ -215,15 +215,15 @@ client.CreateGremlinQuery(graphCollection, "g.E('thomasKnowsRobin').drop()");
 client.CreateGremlinQuery(graphCollection, "g.V('robin').drop()");
 ```
 
-## <a name="query-the-graph"></a>Zapytanie wykresu
+## <a name="query-the-graph"></a>Tworzenie zapytań względem grafu
 
-Można wykonać zapytania, a także za pomocą Gremlin traversals. Na przykład poniższy fragment kodu przedstawia sposób liczbę wierzchołki na wykresie:
+Za pomocą języka Gremlin można również wykonywać zapytania i przejścia. Na przykład w poniższym fragmencie kodu przedstawiono sposób obliczania liczby wierzchołków grafu:
 
 ```cs
 // Run a query to count vertices
 IDocumentQuery<int> countQuery = client.CreateGremlinQuery<int>(graphCollection, "g.V().count()");
 ```
-Można wykonywać przy użyciu jego Gremlin filtry `has` i `hasLabel` kroki i połączenie ich za pomocą `and`, `or`, i `not` do tworzenia bardziej złożonych filtrów:
+Filtry można wykonywać przy użyciu kroków `has` i `hasLabel`, a także łączyć je przy użyciu operatorów `and`, `or` i `not` w celu utworzenia bardziej złożonych filtrów:
 
 ```cs
 // Run a query with filter
@@ -232,7 +232,7 @@ IDocumentQuery<Vertex> personsByAge = client.CreateGremlinQuery<Vertex>(
   "g.V().hasLabel('person').has('age', gt(40))");
 ```
 
-Niektóre właściwości wyników zapytania za pomocą można projektu `values` krok:
+Pewne właściwości wyników zapytania można poddawać projekcji za pomocą kroku `values`:
 
 ```cs
 // Run a query with projection
@@ -241,7 +241,7 @@ IDocumentQuery<string> firstNames = client.CreateGremlinQuery<string>(
   $"g.V().hasLabel('person').values('firstName')");
 ```
 
-Firma Microsoft do tej pory tylko przedstawiono operatorów zapytań, które działają w dowolnej bazy danych. Wykresy są szybkie i wydajne dla operacji przechodzenia, gdy musisz przejść do krawędzi pokrewne i wierzchołków. Spróbujmy wszystkich znajomych blogu Thomasa. Firma Microsoft to zrobić przy użyciu jego Gremlin `outE` krok, aby znaleźć wszystkie wyjściowego krawędzi blogu Thomasa, a następnie przechodzenie do wierzchołków w z tych krawędzi przy użyciu jego Gremlin `inV` krok:
+Jak dotąd przedstawiono tylko operatory zapytań, które działają w dowolnej bazie danych. Grafy są szybkie i wydajne dla operacji przechodzenia, gdy trzeba przejść do powiązanych krawędzi i wierzchołków. Znajdźmy wszystkich znajomych Thomasa. Możemy to zrobić, używając kroku `outE` języka Gremlin w celu znalezienia wszystkich krawędzi wychodzących od Thomasa, a następnie przechodząc do wierzchołków z tych krawędzi przy użyciu kroku `inV` języka Gremlin:
 
 ```cs
 // Run a traversal (find friends of Thomas)
@@ -250,7 +250,7 @@ IDocumentQuery<Vertex> friendsOfThomas = client.CreateGremlinQuery<Vertex>(
   "g.V('thomas').outE('knows').inV().hasLabel('person')");
 ```
 
-Zapytanie dalej wykonuje dwie przeskoków w celu znalezienia wszystkich blogu Thomasa "znajomych przyjaciół", wywołując `outE` i `inV` dwa razy. 
+Następne zapytanie wykonuje dwa przeskoki w celu znalezienia wszystkich „znajomych znajomych” Thomasa, wywołując `outE` i `inV` dwa razy. 
 
 ```cs
 // Run a traversal (find friends of friends of Thomas)
@@ -259,9 +259,9 @@ IDocumentQuery<Vertex> friendsOfFriendsOfThomas = client.CreateGremlinQuery<Vert
   "g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')");
 ```
 
-Można tworzyć bardziej złożone kwerendy i wdrożyć logikę przechodzenie zaawansowanych wykresu przy użyciu Gremlin, tym wyrażeniach filtru mieszanie wykonywania pętli przy użyciu `loop` krok i wykonawcze przy użyciu warunkowego nawigacji `choose` kroku. Dowiedz się więcej o co można zrobić z [Obsługa Gremlin](gremlin-support.md)!
+Możesz tworzyć bardziej złożone zapytania i implementować zaawansowaną logikę przechodzenia grafu za pomocą języka Gremlin, w tym mieszanie wyrażeń filtrowania, wykonywanie zapętlenia przy użyciu kroku `loop` i implementowanie nawigacji warunkowej przy użyciu kroku `choose`. Dowiedz się więcej o tym, co można zrobić dzięki [obsłudze języka Gremlin](gremlin-support.md).
 
-To wszystko, ten samouczek bazy danych Azure rozwiązania Cosmos została zakończona! 
+To wszystko, ten samouczek usługi Azure Cosmos DB został ukończony. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -272,14 +272,14 @@ Jeśli nie zamierzasz w przyszłości korzystać z tej aplikacji, wykonaj nastę
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku wykonaniu następujących czynności:
+W tym samouczku wykonano następujące czynności:
 
 > [!div class="checklist"]
-> * Utworzone konto bazy danych Azure rozwiązania Cosmos 
-> * Utworzony wykres bazy danych i kontener
-> * Zserializowany wierzchołki i krawędzi obiekty .NET
-> * Dodano wierzchołków i krawędzi.
-> * Zapytanie wykresu przy użyciu Gremlin
+> * Utworzenie konta usługi Azure Cosmos DB 
+> * Utworzono bazę danych grafów i kontener
+> * Przeprowadzono serializację wierzchołków i krawędzi do obiektów platformy .NET
+> * Utworzono wierzchołki i krawędzie
+> * Wykonano zapytanie względem grafu za pomocą języka Gremlin
 
 Teraz możesz tworzyć bardziej złożone zapytania i implementować zaawansowaną logikę przechodzenia grafu za pomocą języka Gremlin. 
 

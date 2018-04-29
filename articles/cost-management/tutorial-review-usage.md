@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 558dcd65051c0134a87205dcd8bbf432d7763fd2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 820fea1aa2eb93fb383dca4def9ed607515c29b8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -41,7 +41,7 @@ Wszystkie informacje o użyciu i kosztach można przeglądać w portalu Cloudyn.
 
 ## <a name="track-usage-and-cost-trends"></a>Śledzenie trendów użycia i kosztów
 
-Możesz śledzić rzeczywiste pieniądze wydawane na użycie i koszty za pomocą raportów Over Time (Na przestrzeni czasu), aby identyfikować trendy. Aby rozpocząć przyglądanie się trendom, skorzystaj z raportu Actual Cost Over Time (Koszt rzeczywisty na przestrzeni czasu). W menu raportów w górnej części portalu kliknij pozycję **Cost** (Koszty) > **Cost Analysis** (Analiza kosztów) > **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu). Przy pierwszym otwarciu raportu nie są do niego zastosowane żadne grupy ani filtry.
+Możesz śledzić rzeczywiste pieniądze wydawane na użycie i koszty za pomocą raportów Over Time (Na przestrzeni czasu), aby identyfikować trendy. Aby rozpocząć przyglądanie się trendom, skorzystaj z raportu Actual Cost Over Time (Koszt rzeczywisty na przestrzeni czasu). W menu w górnej części portalu kliknij pozycję **Cost** (Koszty) > **Cost Analysis** (Analiza kosztów) > **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu). Przy pierwszym otwarciu raportu nie są do niego zastosowane żadne grupy ani filtry.
 
 Oto przykład raportu:
 
@@ -69,7 +69,7 @@ Problem polega na tym, że za istniejącą infrastrukturę już zapłacono. Uży
 
 Raport Cost Effective Sizing Recommendations (Zalecenia dotyczące ekonomicznych rozmiarów) pozwala zidentyfikować potencjalne oszczędności roczne przez porównanie pojemności typów wystąpień maszyn wirtualnych z ich danymi historycznymi dotyczącymi użycia pamięci i procesorów.  
 
-W menu raportów w górnej części portalu kliknij pozycję **Optimizer** (Optymalizator) > **Pricing Optimization** (Optymalizacja cen) > **Cost Effective Sizing Recommendations** (Zalecenia dotyczące ekonomicznych rozmiarów). Odfiltruj dostawcę Azure, aby przejrzeć tylko maszyny wirtualne platformy Azure. Oto przykładowa ilustracja.
+W menu w górnej części portalu kliknij pozycję **Optimizer** (Optymalizator) > **Sizing Optimization** (Optymalizacja rozmiarów) > **Cost Effective Sizing Recommendations** (Zalecenia dotyczące ekonomicznych rozmiarów). Odfiltruj dostawcę Azure, aby przejrzeć tylko maszyny wirtualne platformy Azure. Oto przykładowa ilustracja.
 
 ![Maszyny wirtualne platformy Azure](./media/tutorial-review-usage/sizing01.png)
 
@@ -87,9 +87,9 @@ Aby obejrzeć samouczek wideo dotyczące wykrywania przypadków niewydajnego uż
 
 Alerty automatycznie powiadamiają uczestników projektu o anomaliach wydatków i ryzykach związanych z nadmiarowymi wydatkami. Alerty można szybko i łatwo tworzyć za pomocą raportów obsługujących alerty oparte na budżecie i progach kosztów.
 
-Alert dotyczący dowolnego wydatku można utworzyć za pomocą dowolnego raportu kosztów. W tym przykładzie skorzystasz z raportu Actual Cost Over Time (Koszt rzeczywisty na przestrzeni czasu), aby uzyskać powiadomienie, gdy wydatki na maszyny wirtualne platformy Azure zbliżą się do poziomu budżetu całkowitego. W menu raportów w górnej części portalu kliknij pozycję **Cost** (Koszty) > **Cost Analysis** (Analiza kosztów) > **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu). Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**. W prawym górnym rogu raportu kliknij pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
+Alert dotyczący dowolnego wydatku można utworzyć za pomocą dowolnego raportu kosztów. W tym przykładzie skorzystasz z raportu Actual Cost Over Time (Koszt rzeczywisty na przestrzeni czasu), aby uzyskać powiadomienie, gdy wydatki na maszyny wirtualne platformy Azure zbliżą się do poziomu budżetu całkowitego. Wszystkie poniższe kroki są wymagane do utworzenia alertu. W menu w górnej części portalu kliknij pozycję **Cost** (Koszty) > **Cost Analysis** (Analiza kosztów) > **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu). Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**. W prawym górnym rogu raportu kliknij pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
 
-Skorzystaj z karty **Scheduling** (Planowanie), aby wysyłać do siebie informacje z raportu w wiadomości e-mail z wybraną częstotliwością. Wszystkie użyte tagi, grupowania i filtrowania będą uwzględnione w raporcie wysłanym w wiadomości e-mail. Kliknij kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). Jeśli budżet całkowity wynosi 500 000 USD i chcesz, aby powiadomienie zostało wysłane, gdy koszty zbliżą się do jego połowy, utwórz alert **Red alert** (Czerwony alert) o wartości 250 000 USD i **Yellow alert** (Żółty alert) o wartości 240 000 USD. Następnie wybierz liczbę kolejnych alertów. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. Zapisz zaplanowany raport.
+Skorzystaj z karty **Scheduling** (Planowanie), aby wysyłać do siebie informacje z raportu w wiadomości e-mail z wybraną częstotliwością. Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtrowania będą uwzględnione w raporcie wysłanym w wiadomości e-mail. Kliknij kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). Jeśli budżet całkowity wynosi 500 000 USD i chcesz, aby powiadomienie zostało wysłane, gdy koszty zbliżą się do jego połowy, utwórz alert **Red alert** (Czerwony alert) o wartości 250 000 USD i **Yellow alert** (Żółty alert) o wartości 240 000 USD. Nie uwzględniaj przecinków we wprowadzanych wartościach. Następnie wybierz liczbę kolejnych alertów. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. Zapisz zaplanowany raport.
 
 ![przykładowy raport](./media/tutorial-review-usage/schedule-alert01.png)
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 2c201af6b1c14553e31ca71e28fc22d99ec900bd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: ebb9fab63d57f880e8b556bf6e3a1c9c8934527d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Użyj sygnatury dostępu współdzielonego magazynu Azure, aby ograniczyć dostęp do danych w usłudze HDInsight
 
@@ -163,7 +163,7 @@ Przykład tworzenia klastra usługi HDInsight, która używa sygnatury dostępu 
 1. W wierszu polecenia wpisz następujące polecenie do uwierzytelniania do subskrypcji platformy Azure:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
     Po wyświetleniu monitu zaloguj się za pomocą konta dla subskrypcji platformy Azure.

@@ -1,11 +1,11 @@
 ---
-title: "Opis elementu klastra Menedżera zasobów klastra | Dokumentacja firmy Microsoft"
-description: "Określając domen błędów, uaktualnienia domen, właściwości węzła i pojemności węzła dla Menedżera zasobów klastra, opisujący klastra sieci szkieletowej usług."
+title: Opis elementu klastra Menedżera zasobów klastra | Dokumentacja firmy Microsoft
+description: Określając domen błędów, uaktualnienia domen, właściwości węzła i pojemności węzła dla Menedżera zasobów klastra, opisujący klastra sieci szkieletowej usług.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
 ms.service: Service-Fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 26ce9e96dd4df170e80c2c61dcc08c70357eec22
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
-ms.translationtype: MT
+ms.openlocfilehash: 396f1d3d8c69ba3204d16f06d49656fd138a1126
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klastra sieci szkieletowej usług
 Usługa sieci szkieletowej klastra Resource Manager zapewnia kilka mechanizmów opisujące klastra. W czasie wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usługi działające w klastrze. Wymuszając te reguły ważne również próbuje optymalizacji zużycia zasobów w klastrze.
@@ -95,7 +95,8 @@ Ma nie najlepiej odpowiedzieć wyboru układu, aby wybrać, każdy ma kilka zale
 Najbardziej typowe model jest macierzy FD/UD, gdzie FDs i UDs tworzą tabeli i węzły są umieszczane uruchamianie wzdłuż przekątnej. Jest to model używany domyślnie w klastrach usługi sieć szkieletowa na platformie Azure. W przypadku klastrów z węzłami wiele wszystko, co kończy się wyszukiwanie like wzór dense macierzy powyżej.
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Ograniczenia usterek i domeny uaktualnienia i efekty
-Menedżer zasobów klastra traktuje dążenia do zachowania usługi równoważone awarii i uaktualniania domeny jako ograniczenia. Można znaleźć więcej informacji na temat ograniczeń [w tym artykule](service-fabric-cluster-resource-manager-management-integration.md). Stan ograniczenia usterek i domeny uaktualnienia: "dla partycji dana usługa nigdy nie należy różnica *więcej niż jeden* liczby obiektów usługi (repliki usługi stanowej lub wystąpienia usługi bezstanowej) między dwie domeny." Zapobiega to niektórych przenosi lub zasady, które naruszają to ograniczenie.
+### <a name="default-approach"></a>*Podejście domyślne*
+Domyślnie Menedżer zasobów klastra zachowuje równoważone usterek i domen uaktualnienia usługi. Jest to modelowane jako [ograniczenia](service-fabric-cluster-resource-manager-management-integration.md). Stany ograniczenia usterek i domeny uaktualnienia: "dla partycji danej usługi, nigdy nie należy różnicy większej niż jeden liczby obiektów usługi (repliki usługi stanowej lub wystąpienia usługi bezstanowej) między dwoma domenami na tym samym poziomie w hierarchii". Załóżmy, że to ograniczenie zapewnia gwarancję "maksymalnego różnica". Ograniczenie usterek i domeny uaktualnienia zapobiega niektórych przenosi i ustalenia, które naruszają zasady podanych powyżej. 
 
 Oto przykład. Załóżmy, że mamy klastra z sześciu węzłów skonfigurowany z pięciu domen błędów i pięć domen uaktualnienia.
 
@@ -106,6 +107,8 @@ Oto przykład. Załóżmy, że mamy klastra z sześciu węzłów skonfigurowany 
 | **UD2** | | |N3 | | |
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
+
+*Konfiguracja 1*
 
 Teraz załóżmy, że firma Microsoft Tworzenie usługi z TargetReplicaSetSize (lub dla usługi bezstanowej jako wartość InstanceCount) pięć. Ziemia replik na N1 N5. W rzeczywistości N6 nie jest nigdy używane niezależnie od tego, ile usługi, takie jak ta, którą utworzysz. Ale Dlaczego? Przyjrzyjmy się różnica między bieżący układ i co się stanie, jeśli wybrano opcję N6.
 
@@ -120,6 +123,9 @@ Poniżej przedstawiono układu dotarliśmy i całkowitej liczby replik na ustere
 | **UD4** | | | | |R5 |1 |
 | **FDTotal** |1 |1 |1 |1 |1 |- |
 
+*Układ 1*
+
+
 Ten układ jest równoważony pod względem węzłów na domenie błędów i domeny uaktualnienia. Jest on również równoważony pod względem liczby replik na usterek i domeny uaktualnienia. Każda domena ma taką samą liczbę węzłów i taką samą liczbę replik.
 
 Teraz Przyjrzyjmy się co się stanie, jeśli ma użyliśmy N6 zamiast N2. Jak będzie replik rozdzielona następnie?
@@ -133,7 +139,10 @@ Teraz Przyjrzyjmy się co się stanie, jeśli ma użyliśmy N6 zamiast N2. Jak b
 | **UD4** | | | | |R4 |1 |
 | **FDTotal** |2 |0 |1 |1 |1 |- |
 
-Ten układ narusza naszych definicji ograniczenia domeny błędów. FD0 ma dwie repliki podczas FD1 ma wartość zero, co różnica między FD0 i FD1 sumę dwóch. Menedżer zasobów klastra nie zezwala na to rozmieszczenie. Podobnie jeśli mamy pobrane N2 i N6 (zamiast N1, jak i N2) możemy uzyskać:
+*Układ 2*
+
+
+Ten układ narusza naszych definicji gwarancji "maksymalnego różnica" ograniczenia domeny błędów. FD0 ma dwie repliki podczas FD1 ma wartość zero, co różnica między FD0 i FD1 sumę dwóch, która jest większa niż maksymalna różnica jednego. Ponieważ nastąpiło naruszenie ograniczenia, Menedżer zasobów klastra nie zezwala na to rozmieszczenie. Podobnie jeśli mamy pobrane N2 i N6 (zamiast N1, jak i N2) możemy uzyskać:
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -144,7 +153,85 @@ Ten układ narusza naszych definicji ograniczenia domeny błędów. FD0 ma dwie 
 | **UD4** | | | | |R4 |1 |
 | **FDTotal** |1 |1 |1 |1 |1 |- |
 
-Ten układ jest równoważony pod względem domen błędów. Jednak obecnie go narusza ograniczenie domeny uaktualnienia. Jest to spowodowane UD0 nie zero replik UD1 ma dwa. W związku z tym ten układ również jest nieprawidłowy i nie można pobrać przez Menedżera zasobów klastra. 
+*Układ 3*
+
+
+Ten układ jest równoważony pod względem domen błędów. Jednak obecnie go narusza ograniczenie domeny uaktualnienia ponieważ UD0 nie zero replik UD1 ma dwa. W związku z tym ten układ również jest nieprawidłowy i nie można pobrać przez Menedżera zasobów klastra.
+
+Takie podejście do dystrybucji replik stanowego lub bezstanowego wystąpień zapewnia najlepsze możliwe odporność na uszkodzenia. W przypadku systemowi jedną domenę, minimalnej liczby replikami/wystąpień jest utracone. 
+
+Z drugiej strony takie podejście może być zbyt rygorystyczne i nie zezwalaj klastrowi na korzystanie z wszystkich zasobów. W przypadku niektórych konfiguracji klastra nie można używać niektórych węzłów. Może to prowadzić do sieci szkieletowej usług nie wprowadzenie do usług, co powoduje komunikaty ostrzegawcze. W poprzednim przykładzie niektóre węzły klastra nie może być używane (N6 w danym przykładzie). Nawet jeśli do tego klastra (N7 — N10) należy dodać węzłów, repliki/wystąpień będzie można umieścić tylko w N1 — N5 ze względu na ograniczenia usterek i domeny uaktualnienia. 
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+| --- |:---:|:---:|:---:|:---:|:---:|
+| **UD0** |N1 | | | |N10 |
+| **UD1** |N6 |N2 | | | |
+| **UD2** | |N7 |N3 | | |
+| **UD3** | | |N8 |N4 | |
+| **UD4** | | | |N9 |N5 |
+
+*Konfiguracja 2*
+
+
+### <a name="alternative-approach"></a>*Informacje o innym podejściu*
+
+Menedżer zasobów klastra obsługuje inna wersja tego ograniczenia awarii i uaktualniania domeny, dzięki czemu umieszczania nadal zapewniając minimalnego poziomu bezpieczeństwa. Alternatywne ograniczenia usterek i domeny uaktualnienia może być wyrażona w następujący sposób: "Dla partycji danej usługi dystrybucji repliki między domenami powinien upewnij się, że partycji problem występuje w przypadku utraty kworum". Załóżmy, że to ograniczenie zapewnia gwarancję "bezpieczne kworum". 
+
+> [!NOTE]
+>Dla usługi stanowej, definiujemy *utraty kworum* w sytuacji, gdy większość replik partycji działają w tym samym czasie. Na przykład jeśli TargetReplicaSetSize jest pięć, zbiór wszystkie trzy repliki reprezentuje kworum. Podobnie jeśli wartość TargetReplicaSetSize 6, czterech replik są niezbędne dla kworum. W obu przypadkach nie więcej niż dwóch replik można być wyłączone w tym samym czasie Jeśli partycji chce nadal działa prawidłowo. Dla usługi bezstanowej, nie istnieje coś takiego jak *utraty kworum* jako conitnue usług bezstanowych do functionate normalnie, nawet jeśli w większości przypadków przestaną działać jednocześnie. W związku z tym firma Microsoft będzie skupić się na stanowych usług w pozostałej części tekstu.
+>
+
+Przejdź wstecz do poprzedniego przykładu. W wersji "bezpiecznej kworum" ograniczenia wszystkie trzy układy danego będzie ważny. Jest to spowodowane nawet wtedy, gdy będzie błąd FD0 w drugim układu lub UD1 w układzie trzeci, partycji nadal będzie miał kworum (większość jego replik nadal będą się). Z tą wersją ograniczenia N6 prawie zawsze może zostać użyte.
+
+Podejście "kworum bezpieczne" zapewniają większą elastyczność niż metoda "maksymalnego różnica" jako łatwiej znaleźć dystrybucje replik, które są prawidłowe w praktycznie każdej Topologia klastra. Jednak takie podejście nie może zagwarantować błędów najlepsze cechy tolerancji ponieważ niektóre błędy są gorsza niż inne. W scenariusz większość replik mogą zostać utracone z błędem w jednej domenie i jednej replice dodatkowe. Na przykład zamiast konieczności utratę kworum z 5 repliki lub wystąpienia błędów 3, można teraz utratę większości z błędami dwóch. 
+
+### <a name="adaptive-approach"></a>*Podejście adaptacyjną*
+Ponieważ obu podejść mocne i słabe strony, dodaliśmy adaptacyjną metody, która łączy tych dwóch strategii.
+
+> [!NOTE]
+>Są to domyślne zachowanie, począwszy od usługi sieć szkieletowa wersję 6.2. 
+>
+Podejście adaptacyjną domyślnie używa logiki "maksymalnego różnica" i przełączniki logiki "kworum bezpieczne" tylko wtedy, gdy jest to konieczne. Menedżer zasobów klastra automatycznie liczb dotyczących strategii, która jest niezbędne, analizując konfiguracji klastra i usług. Dla danej usługi: *przypadku podzielna przez liczbę domen błędów i liczba domen uaktualnienia TargetReplicaSetSize **i** liczba węzłów jest mniejsza niż lub równa (liczba domen błędów) * ( Liczba domen uaktualnienia), należy korzystać z Menedżera zasobów klastra logiki "na podstawie kworum" dla tej usługi.* Przy tym pamiętać, że Menedżera zasobów klastra będzie używać tej metody zarówno bezstanowych i stanowych usług, mimo utraty kworum nie są istotne dla usług bezstanowych.
+
+Wróć do poprzedniego przykładu i założono, że klaster ma teraz 8 węzłów (klaster nadal jest skonfigurowany z pięciu domen błędów i pięć domen uaktualnienia i TargetReplicaSetSize usług hostowanych na tym pozostaje klastra, pięć). 
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+| --- |:---:|:---:|:---:|:---:|:---:|
+| **UD0** |N1 | | | | |
+| **UD1** |N6 |N2 | | | |
+| **UD2** | |N7 |N3 | | |
+| **UD3** | | |N8 |N4 | |
+| **UD4** | | | | |N5 |
+
+*Konfiguracja 3*
+
+Ponieważ wszystkie niezbędne warunki są spełnione, Menedżer zasobów klastra korzystają usługi dystrybucji logikę "na podstawie kworum". Dzięki temu obciążenie N6 — N8. Jeden dystrybucji usługę w tym przypadku może wyglądać jak:
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+| --- |:---:|:---:|:---:|:---:|:---:|:---:|
+| **UD0** |R1 | | | | |1 |
+| **UD1** |R2 | | | | |1 |
+| **UD2** | |R3 |R4 | | |2 |
+| **UD3** | | | | | |0 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |2 |1 |1 |0 |1 |- |
+
+*Układ 4*
+
+W przypadku usługi TargetReplicaSetSize cztery (na przykład), Menedżer zasobów klastra należy zauważyć, że zmiany i wznowić przy użyciu logiki "maksymalnego różnica", ponieważ nie TargetReplicaSetSize dividable przez liczbę FDs UDs już. W związku z tym niektóre przeniesień repliki zostanie przeprowadzona w celu dystrybucji pozostałych czterech replik w węzłach N1 N5 tak, aby nie naruszenia wersja "maksymalnego różnica" Logika domeny w domenie awarii i uaktualniania. 
+
+Wyszukiwania wstecz na czwarte układ i TargetReplicaSetSize pięć. Jeśli N1 zostanie usunięty z klastra, liczba domen uaktualnienia staje się 4. Menedżer zasobów klastra uruchamia ponownie, liczba UDs równomiernie nie dzielenia TargetReplicaSetSize usługi już przy użyciu logiki "maksymalnego różnica". W związku z tym repliki R1, podczas tworzenia ponownie, musi trafić na N4 tak, aby nie naruszenia usterek i ograniczenia domeny uaktualnienia.
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+| --- |:---:|:---:|:---:|:---:|:---:|:---:|
+| **UD0** |ND |ND |ND |ND |ND |ND |
+| **UD1** |R2 | | | | |1 |
+| **UD2** | |R3 |R4 | | |2 |
+| **UD3** | | | |R1 | |1 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
+
+*Układ 5*
 
 ## <a name="configuring-fault-and-upgrade-domains"></a>Konfigurowanie usterek i domen uaktualnienia
 Definiowanie domen błędów i uaktualnienia domeny odbywa się automatycznie w Azure obsługiwane wdrożenia usługi sieć szkieletowa usług. Sieć szkieletowa usług przejmuje i używa informacji o środowisku z platformy Azure.
@@ -271,7 +358,7 @@ Wartości określonej we właściwości węzła może być typu string, bool, lu
 
 1) warunkowe sprawdza, czy tworzenie konkretnego instrukcje
 
-| — Instrukcja | Składnia |
+| Oświadczenie | Składnia |
 | --- |:---:|
 | "równe" | "==" |
 | "nie równa się" | "!=" |
@@ -282,7 +369,7 @@ Wartości określonej we właściwości węzła może być typu string, bool, lu
 
 2) wartość logiczna instrukcje dla operacji grupowania i logicznych
 
-| — Instrukcja | Składnia |
+| Oświadczenie | Składnia |
 | --- |:---:|
 | "i" | "&&" |
 | "lub" | "&#124;&#124;" |
@@ -514,8 +601,8 @@ LoadMetricInformation     :
                             MaxNodeLoadNodeId     : 2cc648b6770be1bc9824fa995d5b68b1
 ```
 
-## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać informacje dotyczące przepływu architektury i informacji w ramach Menedżera zasobów klastra, zapoznaj się [w tym artykule](service-fabric-cluster-resource-manager-architecture.md)
+## <a name="next-steps"></a>Kolejne kroki
+* Aby uzyskać informacje dotyczące przepływu architektury i informacji w ramach Menedżera zasobów klastra, zapoznaj się [w tym artykule ](service-fabric-cluster-resource-manager-architecture.md)
 * Definiowanie metryki defragmentacji jest jednym ze sposobów skonsolidować węzłów zamiast go rozkładanie obciążenia. Aby dowiedzieć się, jak skonfigurować defragmentacji, zajrzyj do [w tym artykule](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * Rozpocznij od początku i [wprowadzenie do usługi sieci szkieletowej klastra Menedżera zasobów](service-fabric-cluster-resource-manager-introduction.md)
 * Aby dowiedzieć się o jak Menedżer zasobów klastra zarządza i równoważy obciążenie w klastrze, zobacz artykuł na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)

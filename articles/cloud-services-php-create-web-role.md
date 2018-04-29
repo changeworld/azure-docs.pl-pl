@@ -1,27 +1,26 @@
 ---
-title: Tworzenie Azure role sieci web i proces roboczy dla PHP | Dokumentacja firmy Microsoft
-description: "Przewodnik dotyczący tworzenia ról sieci web i proces roboczy PHP w usłudze w chmurze platformy Azure i konfigurowania środowiska uruchomieniowego języka PHP."
-services: 
+title: Tworzenie Azure role sieci web i proces roboczy dla PHP
+description: Przewodnik dotyczący tworzenia ról sieci web i proces roboczy PHP w usłudze w chmurze platformy Azure i konfigurowania środowiska uruchomieniowego języka PHP.
+services: ''
 documentationcenter: php
-author: rmcmurray
-manager: erikre
-editor: 
+author: msangapu
+manager: cfowler
 ms.assetid: 9f7ccda0-bd96-4f7b-a7af-fb279a9e975b
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
-ms.openlocfilehash: 214fdcfe20f3fa4ebcbe41308404f8b7e7d15310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/11/2018
+ms.author: msangapu
+ms.openlocfilehash: b9f350870dde71666d269aaae9cb7c14aaac5aad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-create-php-web-and-worker-roles"></a>Jak utworzyć role sieci web i proces roboczy języka PHP
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym przewodniku opisano sposób tworzyć role sieci web lub procesu roboczego PHP w środowisku projektowym systemu Windows, wybierz określonej wersji programu PHP w wersjach "wbudowanych" dostępne zmiany konfiguracji PHP, Włącz rozszerzenia i na koniec wdrażanie na platformie Azure. Zawiera również opis sposobu konfigurowania roli sieci web lub procesu roboczego do używania środowiska uruchomieniowego języka PHP (z konfiguracji niestandardowej i rozszerzenia) podane.
 
 ## <a name="what-are-php-web-and-worker-roles"></a>Co to są role sieć web i proces roboczy PHP?
@@ -202,7 +201,7 @@ Aby zatrzymać emulatorów, wykonanie tego polecenia:
 ## <a name="publish-your-application"></a>Publikowanie aplikacji
 Aby opublikować aplikację, należy najpierw zaimportować Twoje ustawienia publikowania za pomocą [AzurePublishSettingsFile importu](https://msdn.microsoft.com/library/azure/dn790370.aspx) polecenia cmdlet. Następnie można opublikować aplikację przy użyciu [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) polecenia cmdlet. Informacje logowania, zobacz [jak instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji, zobacz [Centrum deweloperów języka PHP](/develop/php/).
 
 [Zestaw Azure SDK for PHP]: /develop/php/common-tasks/download-php-sdk/

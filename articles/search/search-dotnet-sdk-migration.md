@@ -1,23 +1,19 @@
 ---
-title: "Uaktualnianie do usługi Azure Search .NET SDK w wersji 3 | Dokumentacja firmy Microsoft"
-description: "Uaktualnianie do usługi Azure Search .NET SDK w wersji 3"
-services: search
-documentationcenter: 
+title: Uaktualnianie do usługi Azure Search .NET SDK w wersji 3 | Dokumentacja firmy Microsoft
+description: Uaktualnianie do usługi Azure Search .NET SDK w wersji 3
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 48238788e06057ccaba41d1d3f500b5c10c93cb7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 161d22e0ff4ec4ab28107919a80ecc48cd027967
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Uaktualnianie do usługi Azure Search .NET SDK w wersji 3
 Jeśli używasz wersji 2.0 — wersja zapoznawcza lub starszy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnienie aplikacji w wersji 3.
@@ -56,7 +52,7 @@ W przypadku niepowodzenia kompilacji powinien zostać wyświetlony błąd kompil
 
 Następnym krokiem jest, aby naprawić ten błąd kompilacji. Zobacz [fundamentalne zmiany w wersji 3](#ListOfChanges) szczegółowe informacje o to, co powoduje błąd i sposobu jego usunięcia.
 
-Może pojawić się dodatkowe kompilacji ostrzeżenia dotyczące przestarzałe metody lub właściwości. Ostrzeżenia zawiera instrukcje dotyczące sposobu użycia zamiast przestarzałych funkcji. Na przykład, jeśli aplikacja używa `IndexingParameters.Base64EncodeKeys` właściwość, należy pobrać ostrzeżenie informujące,`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Może pojawić się dodatkowe kompilacji ostrzeżenia dotyczące przestarzałe metody lub właściwości. Ostrzeżenia zawiera instrukcje dotyczące sposobu użycia zamiast przestarzałych funkcji. Na przykład, jeśli aplikacja używa `IndexingParameters.Base64EncodeKeys` właściwość, należy pobrać ostrzeżenie informujące, `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Gdy problem został rozwiązany błędy kompilacji, można wprowadzić zmiany do aplikacji, aby móc korzystać z nowych funkcji, jeśli chcesz. Nowe funkcje w zestawie SDK wyszczególnione w [nowości w wersji 3](#WhatsNew).
 
@@ -125,7 +121,7 @@ index.Analyzers = new Analyzer[]
 
 Może zostać wyświetlony kompilacji błędy związane z metodami lub właściwościami, które były oznaczone jako przestarzałe w wersji 2.0 w wersji zapoznawczej i później usunięte w wersji 3. Jeśli wystąpią błędy takie, poniżej przedstawiono sposób ich rozwiązywania:
 
-- W przypadku używania tego konstruktora: `ScoringParameter(string name, string value)`, zamiast tego użyj tego:`ScoringParameter(string name, IEnumerable<string> values)`
+- W przypadku używania tego konstruktora: `ScoringParameter(string name, string value)`, zamiast tego użyj tego: `ScoringParameter(string name, IEnumerable<string> values)`
 - W przypadku używania `ScoringParameter.Value` właściwości, należy zastosować `ScoringParameter.Values` właściwości lub `ToString` metody zamiast tego.
 - W przypadku używania `SearchRequestOptions.RequestId` właściwości, należy zastosować `ClientRequestId` właściwości zamiast tego.
 

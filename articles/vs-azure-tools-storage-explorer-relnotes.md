@@ -1,12 +1,12 @@
 ---
-title: "Informacje o wersji Eksploratora usługi Microsoft Azure Storage (wersja zapoznawcza)"
-description: "Informacje o wersji dla Eksploratora usługi Microsoft Azure Storage (wersja zapoznawcza)"
+title: Informacje o wersji Eksploratora magazynu Microsoft Azure
+description: Informacje o wersji dla Eksploratora magazynu Microsoft Azure
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 0e5523e297979a89ffd4b4ed51c8476fb1354419
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
-ms.translationtype: MT
+ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Informacje o wersji Eksploratora usługi Microsoft Azure Storage (wersja zapoznawcza)
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>Informacje o wersji Eksploratora magazynu Microsoft Azure
 
 Ten artykuł zawiera zlecenia, które uwagi 0.9.6 Eksploratora usługi Azure Storage (wersja zapoznawcza) wersji, a także informacje o wersji w poprzednich wersjach.
 
-[Eksploratora usługi Microsoft Azure Storage (wersja zapoznawcza)](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która pozwala łatwo pracować z danymi usługi Azure Storage w systemie Windows, macOS i Linux.
+[Eksplorator magazynu Microsoft Azure](./vs-azure-tools-storage-manage-with-storage-explorer.md) jest aplikacją autonomiczną, która pozwala łatwo pracować z danymi usługi Azure Storage w systemie Windows, macOS i Linux.
 
 ## <a name="version-096"></a>Wersja 0.9.6
 02/28/2018
@@ -92,7 +92,7 @@ Ten artykuł zawiera zlecenia, które uwagi 0.9.6 Eksploratora usługi Azure Sto
 * [Wersja 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-095"></a>Wersja 0.9.5
-02/06/2018
+2018-02/06
 
 ### <a name="download-azure-storage-explorer-095-preview"></a>Pobierz Eksploratora usługi Azure Storage 0.9.5 (wersja zapoznawcza)
 - [Eksplorator usługi Azure Storage 0.9.5 (wersja zapoznawcza) dla systemu Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
@@ -146,7 +146,7 @@ Ten artykuł zawiera zlecenia, które uwagi 0.9.6 Eksploratora usługi Azure Sto
     ```
 
 ## <a name="version-094-and-093"></a>Wersja 0.9.4 i 0.9.3
-01/21/2018
+2018-01/21
 
 ### <a name="download-azure-storage-explorer-094-preview"></a>Pobierz Eksploratora usługi Azure Storage 0.9.4 (wersja zapoznawcza)
 * [Pobierz Eksploratora usługi Azure Storage 0.9.4 (wersja zapoznawcza) dla systemu Windows](https://go.microsoft.com/fwlink/?LinkId=809306)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 0694c45363eb2534416f1dad59196ecfa1dacd17
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b4d99fe883cf52ca7f1ef98e70b7f3a1bccd5ae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kondycji sprawdza w kondycji zasobów platformy Azure
 Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja zasobów według typów zasobów.
@@ -113,7 +113,7 @@ Poniżej przedstawiono pełną listę wszystkie testy wykonane przez kondycja za
 ## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
 |Wykonanie testów|
 |---|
-|<ul><li>Jest serwerem hosta działa prawidłowo?</li><li>Internetowe usługi informacyjne jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Planowanie usługi sieci Web jest osiągalna z w centrum danych?</li><li>Konto magazynu jest hostem zawartość witryny serverFarm dostępne?</li></ul>|
+|<ul><li>Jest serwerem hosta działa prawidłowo?</li><li>Internetowe usługi informacyjne jest uruchomiona?</li><li>Moduł równoważenia obciążenia jest uruchomiona?</li><li>Plan usługi aplikacji jest osiągalna z wewnątrz centrum danych?</li><li>Konto magazynu jest hostem zawartość witryny serverFarm dostępne?</li></ul>|
 
 ## <a name="microsoftwebsites"></a>Microsoft.web/sites
 |Wykonanie testów|

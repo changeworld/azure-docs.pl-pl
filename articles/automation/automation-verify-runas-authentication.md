@@ -1,6 +1,6 @@
 ---
-title: "Sprawdź poprawność konfiguracji konta usługi Automatyzacja Azure"
-description: "W tym artykule został opisany sposób potwierdzania, że konfiguracja konta usługi Automation jest poprawna."
+title: Sprawdź poprawność konfiguracji konta usługi Automatyzacja Azure
+description: W tym artykule został opisany sposób potwierdzania, że konfiguracja konta usługi Automation jest poprawna.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 5359a12d5b241eff80203c9e9bf04107ce4d3159
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6b8e1f2923657965f4bab89e7a0f5f08faa1d27e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Sprawdzanie uwierzytelniania konta Uruchom jako usługi Azure Automation
 Po pomyślnym utworzeniu konta usługi Automation możesz wykonać prosty test, aby potwierdzić, że możesz poprawnie przeprowadzić uwierzytelnienie w usłudze Azure Resource Manager lub klasycznym wdrożeniu platformy Azure przy użyciu nowo utworzonego lub zaktualizowanego konta Uruchom jako usługi Automation.    
@@ -27,7 +27,7 @@ Poniżej przedstawiono kod przykładowy umożliwiający [utworzenie elementu run
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
         "Logging in to Azure..."
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
            -ServicePrincipal `
            -TenantId $servicePrincipalConnection.TenantId `
            -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -58,7 +58,7 @@ Poniżej przedstawiono kod przykładowy umożliwiający [utworzenie elementu run
        Write-Output ("")
     } 
 
-Zwróć uwagę, że polecenie cmdlet służące do uwierzytelniania w elemencie Runbook — **Add-AzureRmAccount** — używa zestawu parametrów *ServicePrincipalCertificate*.  Uwierzytelnia się ono za pomocą certyfikatu nazwy głównej usługi, a nie poświadczeń.  
+Zwróć uwagę, polecenia cmdlet używane do uwierzytelniania w elemencie runbook - **Connect-AzureRmAccount**, używa *ServicePrincipalCertificate* zestaw parametrów.  Uwierzytelnia się ono za pomocą certyfikatu nazwy głównej usługi, a nie poświadczeń.  
 
 Gdy możesz [uruchamiania elementu runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) można sprawdzić poprawności konta Uruchom jako [zadanie elementu runbook](automation-runbook-execution.md) utworzeniu zadania zostanie wyświetlona strona i wyświetlić stan zadania w **Podsumowanie zadania** kafelka. Zadanie będzie miało początkowy stan *W kolejce*, wskazujący, że trwa oczekiwanie na udostępnienie procesu roboczego elementu Runbook w chmurze. Następnym stanem będzie *Uruchamianie*, gdy proces roboczy wywołuje zadanie, a następnie *Uruchomiono*, gdy element Runbook faktycznie zacznie działać.  Po zakończeniu zadania elementu Runbook powinniśmy zobaczyć stan **Ukończono**.
 

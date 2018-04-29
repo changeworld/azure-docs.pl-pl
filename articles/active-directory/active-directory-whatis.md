@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.custom: it-pro
-ms.openlocfilehash: 003ce2edda3e2069eb7e05f58ecc2e208c818946
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01183a2c85b748d593146f6b52a7d4dbd34524cb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
 Azure Active Directory (Azure AD) jest katalogu wielodostępnej, oparte na chmurze firmy Microsoft i usługa identity management, łączącą usługi katalogowe core, zarządzania dostępem do aplikacji i ochronę tożsamości w ramach jednego rozwiązania. Usługi Azure AD oferuje rozbudowane, opartych na standardach platforma, która umożliwia deweloperom tworzenie kontroli dostępu do aplikacji, na podstawie scentralizowanych zasad i reguł.
@@ -55,7 +55,7 @@ Aby ulepszyć usługi Azure Active Directory, możesz dodać płatnych funkcji p
 > Wiele możliwości usługi Azure Active Directory są dostępne wersje "płatności zgodnie z rzeczywistym użyciem":
 >
 > * Active Directory B2C to rozwiązanie zarządzania tożsamościami i dostępem dla aplikacji dla użytkownika. Aby uzyskać więcej informacji, zobacz [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
-> * Usługa Azure Multi-Factor Authentication może służyć za pośrednictwem dla użytkownika lub dla dostawców uwierzytelniania. Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe Azure?](../multi-factor-authentication/multi-factor-authentication.md)
+> * Usługa Azure Multi-Factor Authentication może służyć za pośrednictwem dla użytkownika lub dla dostawców uwierzytelniania. Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe Azure?](authentication/multi-factor-authentication.md)
 >
 
 ## <a name="how-can-i-get-started"></a>Jak można rozpocząć pracę?

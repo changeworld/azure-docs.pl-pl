@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b304a198ce1791a14094eea4cad3b6de870c80ce
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: df0b578448e1f943d45233f7d36ebf4b9cb09fad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Samouczek: Integracji Azure Active Directory z SafetyNet
 
@@ -117,33 +117,17 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.predictivesolutions.com`
      
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta SafetyNet](mailto:dev@predictivesolutions.com) uzyskać te wartości. 
+    > Wartości te nie są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta SafetyNet](mailto:dev@predictivesolutions.com) uzyskać te wartości.
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
+
+    ![Łącze pobierania certyfikatu](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_certificate.png)
+
+6. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-safetynet-tutorial/tutorial_general_400.png)
 
-6. Aby wygenerować **adres URL metadanych**, wykonaj następujące czynności:
-
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpointicon.png)
-
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **SafetyNet** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-    
-7. Aby skonfigurować logowanie jednokrotne w **SafetyNet** stronie, musisz wysłać wygenerowany **adres URL metadanych** do [SafetyNet zespołem pomocy technicznej](mailto:dev@predictivesolutions.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
+7. Aby skonfigurować logowanie jednokrotne w **SafetyNet** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [SafetyNet zespołem pomocy technicznej](mailto:dev@predictivesolutions.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

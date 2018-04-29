@@ -1,13 +1,13 @@
 ---
-title: "Zestawy skalowania maszyny wirtualnej platformy Azure szyfrowania dysków | Dokumentacja firmy Microsoft"
-description: "Informacje o szyfrowaniu dysków dołączonych w zestawy skalowania maszyny wirtualnej."
+title: Zestawy skalowania maszyny wirtualnej platformy Azure szyfrowania dysków | Dokumentacja firmy Microsoft
+description: Informacje o szyfrowaniu dysków dołączonych w zestawy skalowania maszyny wirtualnej.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3263ed4d6325207f38656d741fa4a1f091d4fdea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570764ad5d657a8b1efa2425423a89ddc518451c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>Szyfrowanie systemu operacyjnego i dysków dołączonych danych w zestawie skalowania maszyn wirtualnych
 Azure [zestawy skalowania maszyny wirtualnej](/azure/virtual-machine-scale-sets/) szyfrowanie dysków Azure (ADE).  Można włączyć szyfrowanie dysków Azure dla systemu Windows i Linux zestawach skali maszyn wirtualnych do ochrony i skali w zabezpieczaniu ustawia dane przechowywane przy użyciu szyfrowania standardowe technologie. Aby uzyskać więcej informacji przeczytaj maszyny wirtualne Azure dysku szyfrowanie dla systemu Windows i Linux.
@@ -42,7 +42,7 @@ Zainstaluj najnowsze wersje [programu Azure Powershell](https://github.com/Azure
 Szyfrowania dysków Azure w celu Podgląd zestawów skali maszyny wirtualnej, należy zarejestrować się samodzielnie subskrypcji przy użyciu następujących poleceń programu PowerShell: 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 

@@ -1,348 +1,478 @@
 ---
 title: Schemat języka definicji przepływu pracy — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Zdefiniuj przepływów pracy opartych na schemat definicji przepływu pracy dla usługi Azure Logic Apps
+description: Zapisać definicji niestandardowego przepływu pracy dla usługi Azure Logic Apps język definicji przepływu pracy
 services: logic-apps
-author: jeffhollan
-manager: anneta
+author: ecfan
+manager: SyntaxC4
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: article
-ms.date: 03/21/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.topic: reference
+ms.date: 04/25/2018
+ms.author: estfan
+ms.openlocfilehash: 7c253fd83bcc1f1dde93ac6ef0c26da1fa1a9a4b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schemat języka definicji przepływu pracy dla usługi Azure Logic Apps
+# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definicji przepływu pracy aplikacji logiki ze schematem język definicji przepływu pracy
 
-Definicji przepływu pracy zawiera logikę rzeczywista, która wykonuje jako część aplikacji logiki. Ta definicja zawiera jeden lub więcej wyzwalaczy, które uruchamiają aplikację logiki i co najmniej jednej akcji dla aplikacji logiki do wykonania.  
+Po utworzeniu przepływu pracy aplikacji logiki z [Azure Logic Apps](../logic-apps/logic-apps-overview.md), rzeczywiste logiki uruchomionym aplikacji logiki zawiera opis podstawowej definicji do przepływu pracy. Ten opis następuje strukturą, która ma zdefiniowany i sprawdzone przez schemat język definicji przepływu pracy, który używa [JavaScript Object Notation (JSON)](https://www.json.org/) format. 
   
-## <a name="basic-workflow-definition-structure"></a>Struktura definicji podstawowy przepływ pracy
+## <a name="workflow-definition-structure"></a>Struktura definicji przepływu pracy
 
-Oto podstawowa struktura definicji przepływu pracy:  
+Definicji przepływu pracy ma przynajmniej jeden wyzwalacz, który tworzy aplikację logiki, a także co najmniej jednej akcji, które uruchamia aplikację logiki. 
+
+Oto ogólny struktura definicji przepływu pracy:  
   
 ```json
-{
-    "$schema": "<schema-of the-definition>",
-    "contentVersion": "<version-number-of-definition>",
-    "parameters": { <parameter-definitions-of-definition> },
-    "triggers": [ { <definition-of-flow-triggers> } ],
-    "actions": [ { <definition-of-flow-actions> } ],
-    "outputs": { <output-of-definition> }
+"definition": {
+  "$schema": "<workflow-definition-language-schema-version>",
+  "contentVersion": "<workflow-definition-version-number>",
+  "parameters": { "<workflow-parameter-definitions>" },
+  "triggers": { "<workflow-trigger-definitions>" },
+  "actions": { "<workflow-action-definitions>" },
+  "outputs": { "<workflow-output-definitions>" }
 }
 ```
   
-> [!NOTE]
-> [Interfejsu API REST zarządzania przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows) dokumentacja zawiera informacje na temat sposobu tworzenia i zarządzania nimi przepływów pracy aplikacji logiki.
-  
-|Nazwa elementu|Wymagane|Opis|  
-|------------------|--------------|-----------------|  
-|$schema|Nie|Określa lokalizację pliku schematu JSON, który zawiera opis wersji języka definicji. Tej lokalizacji jest wymagany, gdy odwołanie definicję zewnętrznie. Poniżej przedstawiono lokalizację, w tym dokumencie: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`|  
-|contentVersion|Nie|Określa wersję definicji. Podczas wdrażania przy użyciu definicji przepływu pracy tej wartości można użyć, aby upewnić się, czy prawy definicji jest używany.|  
-|parameters|Nie|Określa parametry używane do wprowadzania danych do definicji. Można określić maksymalnie 50 parametrów.|  
-|Wyzwalacze|Nie|Określa informacje o wyzwalacze, które inicjować przepływ pracy. Można określić maksymalnie 10 wyzwalaczy.|  
-|Akcje|Nie|Określa akcje, które są przyjmowane, gdy strumień jest wykonywana. Można zdefiniować maksymalnie 250 akcji.|  
-|wyjścia|Nie|Określa informacje dla wdrożonych zasobów. Można określić maksymalnie 10 danych wyjściowych.|  
-  
+| Element | Wymagane | Opis | 
+|---------|----------|-------------| 
+| definicja | Yes | Element początkowy definicji przepływu pracy | 
+| $schema | Tylko wtedy, gdy zewnętrznie odwołujące się do definicji przepływu pracy | Lokalizacja pliku schematu JSON, który zawiera opis wersji języka definicji przepływu pracy, który można znaleźć tutaj: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
+| contentVersion | Nie | Numer wersji definicji przepływu pracy, czyli "1.0.0.0" domyślnie. Do identyfikacji i Potwierdź prawidłowe definicji podczas wdrażania przepływu pracy, należy określić wartość do użycia. | 
+| parameters | Nie | Definicje dla jednego lub więcej parametrów, które przekazują dane do przepływu pracy <p><p>Parametry maksymalna: 50 | 
+| Wyzwalacze | Nie | Definicje dla jednego lub więcej wyzwalaczy, które wystąpienia przepływu pracy. Można zdefiniować więcej niż jeden wyzwalacz, ale tylko przy użyciu języka definicji przepływu pracy, nie będzie poprzez projektanta aplikacji logiki. <p><p>Wyzwalacze maksymalna: 10 | 
+| Akcje | Nie | Definicje dla co najmniej jednej akcji do wykonania w czasie wykonywania przepływu pracy <p><p>Osiągnięto maksymalną liczbę akcji: 250 | 
+| wyjścia | Nie | Definicje danych wyjściowych, które zwracają z przepływu pracy Uruchom <p><p>Wyniki maksymalna: 10 |  
+|||| 
+
 ## <a name="parameters"></a>Parametry
 
-Ta sekcja określa parametry, które są używane w definicji przepływu pracy w czasie wdrażania. Wszystkie parametry muszą być zadeklarowane w tej sekcji, przed ich użyciem w innych częściach definicji.  
-  
-W poniższym przykładzie przedstawiono struktura definicji parametru:  
+W `parameters` sekcji, zdefiniuj parametry, które akceptuje dane wejściowe dla przepływu pracy w czasie wykonywania. Przed użyciem tych parametrów w innych częściach przepływu pracy, upewnij się, że zadeklarować wszystkie parametry w tych sekcjach.
+
+Poniżej przedstawiono ogólną strukturę dla definicji parametru:  
 
 ```json
 "parameters": {
-    "<parameter-name>" : {
-        "type" : "<type-of-parameter-value>",
-        "defaultValue": <default-value-of-parameter>,
-        "allowedValues": [ <array-of-allowed-values> ],
-        "metadata" : { "key": { "name": "value"} }
+  "<parameter-name>": {
+    "type": "<parameter-type>",
+    "defaultValue": "<default-parameter-value>",
+    "allowedValues": [ <array-with-permitted-parameter-values> ],
+    "metadata": { 
+      "key": { 
+        "name": "<key-value>"
+      } 
     }
-}
+  }
+},
 ```
 
-|Nazwa elementu|Wymagane|Opis|  
-|------------------|--------------|-----------------|  
-|type|Yes|**Typ**: ciąg <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "string"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: securestring <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: int <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "int"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ**: wartość logiczna <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": true }}` <p> **Typ**: tablicy <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "array"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ**: obiekt <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ**: secureobject <p> **Deklaracja**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specyfikacja**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Uwaga:** `securestring` i `secureobject` typy nie są zwracane w `GET` operacji. Haseł, kluczy i kluczy tajnych należy użyć tego typu.|  
-|Wartość domyślna|Nie|Określa wartość domyślną dla parametru, gdy nie określono wartości w momencie utworzenia zasobu.|  
-|allowedValues|Nie|Określa tablicę dozwolonych wartości dla parametru.|  
-|metadane|Nie|Określa dodatkowe informacje na temat parametrów, takich jak czytelny opis lub danych czasu projektowania używana przez Visual Studio lub innych narzędzi.|  
-  
-Ten przykład przedstawia, jak można użyć parametru w sekcji body akcji:  
-  
-```json
-"body" :
-{
-  "property1": "@parameters('parameter1')"
-}
-```
-
- Można również użyć parametrów w danych wyjściowych.  
+| Element | Wymagane | Typ | Opis |  
+|---------|----------|------|-------------|  
+| type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON, secureobject <p><p>**Uwaga**: wszystkie hasła, klucze i klucze tajne, użyj `securestring` i `secureobject` typów, ponieważ `GET` operacji nie zwraca tych typów. | Typ parametru |
+| Wartość domyślna | Nie | Identyczny `type` | Wartość domyślna parametru, jeśli wartość nie zostanie określona, gdy tworzy wystąpienie przepływu pracy | 
+| allowedValues | Nie | Identyczny `type` | Tablica z wartościami, które może zaakceptować parametru |  
+| metadane | Nie | Obiekt JSON | Inne szczegóły parametrów, na przykład nazwę lub czytelny opis aplikacji logiki lub używane przez program Visual Studio lub innych narzędzi danych czasu projektowania |  
+||||
   
 ## <a name="triggers-and-actions"></a>Wyzwalacze i akcje  
 
-Wyzwalacze i akcje Określ wywołania, które mogą zostać użyte podczas wykonywania przepływu pracy. Aby uzyskać szczegółowe informacje o tej sekcji, zobacz [działania przepływu pracy i wyzwalaczy](logic-apps-workflow-actions-triggers.md).
+W definicji przepływu pracy `triggers` i `actions` sekcje definiują wywołania, które mają miejsce podczas wykonywania do przepływu pracy. Informacje o składni i więcej informacji na temat tych sekcji, zobacz [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md).
   
-## <a name="outputs"></a>Dane wyjściowe  
+## <a name="outputs"></a>Dane wyjściowe 
 
-Dane wyjściowe określ informacje, które mogą być zwracane z przepływu pracy Uruchom. Na przykład jeśli masz określonego stanu lub wartości, które mają być śledzone przy każdym uruchomieniu w wykonywania dane wyjściowe można uwzględnić te dane. Dane są wyświetlane w interfejsie API REST zarządzania dla tego uruchomienia i w pakiecie administracyjnym interfejsu użytkownika dla tego uruchomienia w portalu Azure. Te dane wyjściowe do innych systemów zewnętrznych, takich jak usługi Power BI może również przepływać do tworzenia pulpitów nawigacyjnych. Dane wyjściowe są *nie* umożliwia odpowiadanie na przychodzące żądania na interfejsie API REST usługi. Na odpowiadanie na przychodzące żądania przy użyciu `response` typ akcji, Oto przykład:
-  
+W `outputs` sekcji, zdefiniuj danych przepływu pracy mogą zwracać po zakończeniu uruchamiania. Na przykład aby śledzić stan określonego lub wartość z każdym uruchomieniu, należy określić zwracanych danych wyjściowych przepływu pracy. 
+
+Poniżej przedstawiono ogólną strukturę dla definicji danych wyjściowych: 
+
 ```json
-"outputs": {  
-  "key1": {  
-    "value": "value1",  
-    "type" : "<type-of-value>"  
-  }  
+"outputs": {
+  "<key-name>": {  
+    "type": "<key-type>",  
+    "value": "<key-value>"  
+  }
 } 
 ```
 
-|Nazwa elementu|Wymagane|Opis|  
-|------------------|--------------|-----------------|  
-|klucz1|Yes|Określa identyfikator klucza dla danych wyjściowych. Zastąp **klucz1** o nazwie, która ma być używany do identyfikowania dane wyjściowe.|  
-|wartość|Yes|Określa wartość w danych wyjściowych.|  
-|type|Yes|Określa typ wartości, która została określona. Typy możliwe wartości to: <ul><li>`string`</li><li>`securestring`</li><li>`int`</li><li>`bool`</li><li>`array`</li><li>`object`</li></ul>|
-  
-## <a name="expressions"></a>Wyrażenia  
+| Element | Wymagane | Typ | Opis | 
+|---------|----------|------|-------------| 
+| <*Nazwa klucza*> | Yes | Ciąg | Wartość zwracana nazwę klucza dla danych wyjściowych |  
+| type | Yes | int, float, string, securestring, bool, tablicę, obiekt JSON | Typ dla wartości zwracanej w danych wyjściowych | 
+| wartość | Yes | Identyczny `type` | Wartość zwracana danych wyjściowych |  
+||||| 
 
-Wartości JSON w definicji może być literałem lub można je wyrażeń, które są oceniane po definicji jest używany. Na przykład:  
-  
-```json
-"name": "value"
-```
-
- lub  
-  
-```json
-"name": "@parameters('password') "
-```
+Aby uzyskać dane wyjściowe z przepływu pracy, Przejrzyj historię wykonywania aplikacji logiki i szczegółowe informacje w portalu Azure lub użyj [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Można również przekazać dane wyjściowe z systemami zewnętrznymi, na przykład usługi Power BI, dzięki czemu można tworzyć pulpity nawigacyjne. 
 
 > [!NOTE]
-> Niektóre wyrażenia pobrać wartości z akcji środowiska uruchomieniowego, które może nie istnieć na początku wykonywania. Można użyć **funkcje** Aby pobrać niektóre z tych wartości.  
-  
-Wyrażenia mogą występować w dowolnym miejscu w wartości ciągu JSON i zawsze powoduje inną wartość JSON. Gdy wartość JSON został uznany za wyrażenie, treść wyrażenia jest wyodrębniany przez usunięcie znaku (@). Jeśli wymagane jest literałem, która rozpoczyna się od @, że ciąg musi być wpisywany z użyciem@. W poniższych przykładach pokazano, jak są analizowane wyrażenia.  
-  
-|Wartość JSON|Wynik|  
-|----------------|------------|  
-|"Parametry"|Znaki "parameters" są zwracane.|  
-|"parametry [1]"|Zwracane są znaki "parametry [1]".|  
-|"@@"|Ciąg 1 znaku, który zawiera "@" jest zwracany.|  
-|" @"|Ciąg znaków 2, który zawiera "@" jest zwracany.|  
-  
-Z *ciągu interpolacji*, wyrażenia może również zostać wyświetlony wewnątrz ciągów, których wyrażenia są ujęte w `@{ ... }`. Na przykład: <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
+> Gdy odpowiada na przychodzące żądania z interfejsu API REST usługi, nie używaj `outputs`. Zamiast tego należy użyć `Response` typ akcji. Aby uzyskać więcej informacji, zobacz [przepływu pracy wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-Wynik jest zawsze ciąg, co sprawia, że ta funkcja jest podobny do `concat` funkcji. Załóżmy, że określono `myNumber` jako `42` i `myString` jako `sampleString`:  
-  
-|Wartość JSON|Wynik|  
-|----------------|------------|  
-|"@parameters(mójCiąg)"|Zwraca `sampleString` jako ciąg.|  
-|"@{parameters('myString')}"|Zwraca `sampleString` jako ciąg.|  
-|"@parameters(myNumber)"|Zwraca `42` jako *numer*.|  
-|"@{parameters('myNumber')}"|Zwraca `42` jako *ciąg*.|  
-|"Odpowiedź brzmi: @{parameters('myNumber')}"|Zwraca ciąg `Answer is: 42`.|  
-|"@concat(" Odpowiedź brzmi: ", string(parameters('myNumber')))"|Zwraca ciąg `Answer is: 42`|  
-|"Odpowiedź brzmi: @@ {parameters('myNumber')}"|Zwraca ciąg `Answer is: @{parameters('myNumber')}`.|  
-  
-## <a name="operators"></a>Operatory  
+<a name="expressions"></a>
 
-Operatory są znaki, które można używać wewnątrz wyrażenia lub funkcji. 
-  
-|Operator|Opis|  
-|--------------|-----------------|  
-|.|Operator kropki umożliwia odwoływanie się do właściwości obiektu|  
-|?|Operator zapytania umożliwia odwołanie właściwości obiektu bez błędów czasu wykonywania o wartości null. Na przykład umożliwia to wyrażenie obsługi wyzwalania zerowy dane wyjściowe: <p>`@coalesce(trigger().outputs?.body?.property1, 'my default value')`|  
-|'|Znak pojedynczego cudzysłowu jest jedynym sposobem, aby zawijać literałów ciągów. Nie można użyć podwójnych cudzysłowów wewnątrz wyrażenia, ponieważ ta znaki interpunkcyjne powoduje konflikt z ofertą JSON, który opakowuje całego wyrażenia.|  
-|[]|Nawiasy kwadratowe umożliwia pobieranie wartości z tablicy o określonym indeksie. Na przykład, jeśli akcja, która przekazuje `range(0,10)`w celu `forEach` funkcji, można użyć tej funkcji można pobrać elementów poza tablice:  <p>`myArray[item()]`|  
-  
-## <a name="functions"></a>Funkcje  
+## <a name="expressions"></a>Wyrażenia
 
-Można także wywoływać funkcje w wyrażeniach. W poniższej tabeli przedstawiono funkcje, których można użyć w wyrażeniu.  
-  
-|Wyrażenie|Ocena|  
-|----------------|----------------|  
-|"@function("Witaj")"|Wywołuje funkcja członkowska definicji z ciągiem literału Hello jako pierwszym parametrem.|  
-|"@function(" On "chłodnej s!") "|Wywołuje funkcja członkowska definicji z ciągiem literału 'Jest chłodnej'! jako pierwszego parametru|  
-|"@function().prop1"|Zwraca wartość właściwości prop1 `myfunction` Członkowskie definicji.|  
-|"@function('Hello').prop1"|Wywołuje funkcja członkowska definicji z ciągiem literału "Hello" jako pierwszym parametrem i zwraca wartość właściwości prop1 obiektu.|  
-|"@function(parameters('Hello'))"|Wartość parametru Hello i przekazuje wartość do funkcji|  
-  
-### <a name="referencing-functions"></a>Odwołanie do funkcji  
+Z formatu JSON może mieć wartości literałów, które istnieją w czasie projektowania, na przykład:
 
-Te funkcje umożliwiają odwołania wyjścia z innych działań w aplikacji logiki lub wartości przekazane podczas tworzenia aplikacji logiki. Na przykład możesz odwoływać dane w jednym kroku, aby użyć go w innym.  
-  
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|parameters|Zwraca wartość parametru, który jest zdefiniowany w definicji. <p>`parameters('password')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: parametr <p> **Opis elementu**: wymagane. Nazwa parametru wartości, których chcesz.|  
-|action|Umożliwia wyrażenie ma być jego wartość z innej nazwy JSON i pary wartości lub dane wyjściowe bieżącej akcji środowiska wykonawczego. Właściwość reprezentowany przez propertyPath w poniższym przykładzie jest opcjonalna. Jeśli nie określono propertyPath, odwołanie jest obiekt całej akcji. Tej funkcji można używać tylko wewnątrz czy — do warunków akcji. <p>`action().outputs.body.propertyPath`|  
-|Akcje|Umożliwia wyrażenie ma być jego wartość z innej nazwy JSON i pary wartości lub dane wyjściowe działania środowiska wykonawczego. Wyrażenia te jawnie deklarować, że jedno działanie zależy od innej akcji. Właściwość reprezentowany przez propertyPath w poniższym przykładzie jest opcjonalna. Jeśli nie określono propertyPath, odwołanie jest obiekt całej akcji. Aby określić zależności można użyć tego elementu lub element warunków, ale nie trzeba używać obu zasobów zależnych. <p>`actions('myAction').outputs.body.propertyPath` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Nazwa akcji <p> **Opis elementu**: wymagane. Nazwa akcji, których wartości mają. <p> Dostępne właściwości w obiekcie akcji to: <ul><li>`name`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Zobacz [interfejsu API Rest](http://go.microsoft.com/fwlink/p/?LinkID=850646) szczegółowe informacje na temat tych właściwości.|
-|Wyzwalacz|Umożliwia wyrażenie ma być jego wartość z innej nazwy JSON i pary wartości lub dane wyjściowe wyzwalacza środowiska uruchomieniowego. Właściwość reprezentowany przez propertyPath w poniższym przykładzie jest opcjonalna. Jeśli nie określono propertyPath, odwołanie jest obiektem wyzwalacza całego. <p>`trigger().outputs.body.propertyPath` <p>Użyta wewnątrz elementu trigger dane wejściowe, funkcja zwraca dane wyjściowe poprzedniego wykonywania. Jednakże, gdy jest używany wewnątrz warunku wyzwalacza `trigger` funkcja zwraca dane wyjściowe wykonania bieżącej. <p> Dostępne właściwości w obiekcie wyzwalacza to: <ul><li>`name`</li><li>`scheduledTime`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Zobacz [interfejsu API Rest](http://go.microsoft.com/fwlink/p/?LinkID=850644) szczegółowe informacje na temat tych właściwości.|
-|actionOutputs|Ta funkcja jest skrócona forma funkcji `actions('actionName').outputs` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Nazwa akcji <p> **Opis elementu**: wymagane. Nazwa akcji, których wartości mają.|  
-|actionBody i treści|Te funkcje są skrócona forma funkcji `actions('actionName').outputs.body` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Nazwa akcji <p> **Opis elementu**: wymagane. Nazwa akcji, których wartości mają.|  
-|triggerOutputs|Ta funkcja jest skrócona forma funkcji `trigger().outputs`|  
-|triggerBody|Ta funkcja jest skrócona forma funkcji `trigger().outputs.body`|  
-|Element|Gdy jest używany wewnątrz powtarzających się akcja, ta funkcja zwraca element w tablicy dla tej iteracji akcji. Na przykład jeśli akcja, która jest uruchamiana dla każdego elementu tablicy wiadomości, należy użyć następującej składni: <p>`"input1" : "@item().subject"`| 
-  
-### <a name="collection-functions"></a>Kolekcja funkcji  
+```json
+"customerName": "Sophia Owen", 
+"rainbowColors": ["red", "orange", "yellow", "green", "blue", "indigo", "violet"], 
+"rainbowColorsCount": 7 
+```
 
-Funkcje te działają na kolekcje i zazwyczaj stosowane do tablic ciągów i czasami słowników.  
+Może także zawierać wartości, które nie znajdują się do czasu wykonywania. Do reprezentowania tych wartości, można użyć *wyrażenia*, które są oceniane w czasie wykonywania. Wyrażenie jest sekwencją, która może zawierać jeden lub więcej [funkcje](#functions), [operatory](#operators), zmienne, jawne wartości lub stałymi. W definicji przepływu pracy, można użyć wyrażenia dowolne miejsce w wartości ciągu JSON, prefiksu wyrażenia znaku (@). Podczas obliczania wyrażenia, który reprezentuje wartość JSON, treść wyrażenia jest wyodrębniany przez usunięcie @ znaków i zawsze powoduje inną wartość JSON. 
+
+Na przykład w uprzednio zdefiniowanej `customerName` właściwości, można pobrać wartości właściwości, za pomocą [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) funkcji w wyrażeniu i przypisać tę wartość do `accountName` właściwości:
+
+```json
+"customerName": "Sophia Owen", 
+"accountName": "@parameters('customerName')"
+```
+
+*Ciąg interpolacji* również pozwala używać wielu wyrażeń wewnątrz ciągów, które są kodowane przez @ znaków i nawiasy klamrowe ({}). Oto składnia:
+
+```json
+@{ "<expression1>", "<expression2>" }
+```
+
+Wynik jest zawsze typu string, co ta możliwość podobny do `concat()` funkcji, na przykład: 
+
+```json
+"customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
+```
+
+Jeśli masz literałem, który rozpoczyna się znakiem @, prefiks @-znak z inną @-znak jako znak ucieczki: @@
+
+Poniższe przykłady pokazują, jak są analizowane wyrażeń:
+
+| Wartość JSON | Wynik |
+|------------|--------| 
+| "Sophia Owen" | Zwraca następujące znaki: "Sophia Owen" |
+| "array [1]" | Zwraca następujące znaki: "array [1]" |
+| "@@" | Zwraca te znaki jako ciąg o jeden znak: "@" |   
+| " @" | Zwraca jako ciąg znaków dwóch następujących znaków: "@" |
+|||
+
+Te przykłady Załóżmy, że zdefiniujesz "myBirthMonth" równa się "Stycznia" i "myAge" równa liczbie 42:  
   
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|zawiera|Zwraca wartość PRAWDA, jeśli słownik zawiera listę kluczy, zawiera wartość lub ciąg zawiera podciąg. Na przykład, funkcja zwraca `true`: <p>`contains('abacaba','aca')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: W kolekcji <p> **Opis elementu**: wymagane. Kolekcja do przeszukania. <p> **Liczba parametrów**: 2 <p> **Nazwa**: obiekt Find <p> **Opis elementu**: wymagane. Obiekt, aby znaleźć wewnątrz **w kolekcji**.|  
-|długość|Zwraca liczbę elementów w tablicy lub ciągu. Na przykład, funkcja zwraca `3`:  <p>`length('abc')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji <p> **Opis elementu**: wymagane. Kolekcja, do których chcesz pobrać długości.|  
-|pusty|Zwraca wartość PRAWDA, jeśli obiekt, tablicy lub ciągu jest pusty. Na przykład, funkcja zwraca `true`: <p>`empty('')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji <p> **Opis elementu**: wymagane. Kolekcja, aby sprawdzić, czy jest pusta.|  
-|część wspólną|Zwraca pojedynczą tablicę lub obiekt, który zawiera wspólne elementy między tablicami lub obiektów przekazany. Na przykład, funkcja zwraca `[1, 2]`: <p>`intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])` <p>Parametry funkcji może być zestaw obiektów lub zestaw tablic (nie kombinację obu). Jeśli występują dwa obiekty o takiej samej nazwie, ostatni obiekt o tej nazwie pojawia się w końcowym obiektu. <p> **Liczba parametrów**: 1... *n* <p> **Nazwa**: kolekcja *n* <p> **Opis elementu**: wymagane. Kolekcje do oceny. Obiekt musi być we wszystkich zbiorach przekazany do są wyświetlane w wynikach.|  
-|Unii|Zwraca pojedynczą tablicę lub obiektu z wszystkich elementów, które są w tablicy lub obiekt przekazany do tej funkcji. Na przykład, funkcja zwraca `[1, 2, 3, 10, 101]`: <p>`union([1, 2, 3], [101, 2, 1, 10])` <p>Parametry funkcji może być zestaw obiektów lub zestaw tablic (nie kombinacja jego). Jeśli występują dwa obiekty o takiej samej nazwie w ostateczne dane wyjściowe, ostatni obiekt o tej nazwie pojawia się w końcowym obiektu. <p> **Liczba parametrów**: 1... *n* <p> **Nazwa**: kolekcja *n* <p> **Opis elementu**: wymagane. Kolekcje do oceny. Obiekt, który pojawia się w dowolnej kolekcji pojawia się również w wyniku.|  
-|pierwszy|Zwraca pierwszy element tablicy lub ciągu przekazany. Na przykład, funkcja zwraca `0`: <p>`first([0,2,3])` <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji <p> **Opis elementu**: wymagane. Podjęcie pierwszy obiekt z kolekcji.|  
-|ostatni|Zwraca ostatni element w tablicy lub ciągu przekazany. Na przykład, funkcja zwraca `3`: <p>`last('0123')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji <p> **Opis elementu**: wymagane. Kolekcja podjęcie ostatni obiekt z.|  
-|podejmij|Zwraca pierwszy **liczba** przekazano elementów z tablicy lub ciągu. Na przykład, funkcja zwraca `[1, 2]`:  <p>`take([1, 2, 3, 4], 2)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji <p> **Opis elementu**: wymagane. Kolekcja z, w którym można wykonać pierwsze **liczba** obiektów. <p> **Liczba parametrów**: 2 <p> **Nazwa**: liczba <p> **Opis elementu**: wymagane. Liczba obiektów z **kolekcji**. Musi być dodatnią liczbą całkowitą.|  
-|Pomiń|Zwraca elementy w tablicy, zaczynając od indeksu **liczba**. Na przykład, funkcja zwraca `[3, 4]`: <p>`skip([1, 2 ,3 ,4], 2)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji <p> **Opis elementu**: wymagane. Kolekcja, aby pominąć pierwszy **liczba** obiektów z. <p> **Liczba parametrów**: 2 <p> **Nazwa**: liczba <p> **Opis elementu**: wymagane. Liczba obiektów, aby usunąć z przodu **kolekcji**. Musi być dodatnią liczbą całkowitą.|  
-|join|Zwraca ciąg z każdym elementem tablicy przyłączone ogranicznikiem, na przykład zwraca `"1,2,3,4"`:<br /><br /> `join([1, 2, 3, 4], ',')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: kolekcji<br /><br /> **Opis elementu**: wymagane. Elementy z kolekcji.<br /><br /> **Liczba parametrów**: 2<br /><br /> **Nazwa**: ogranicznika<br /><br /> **Opis elementu**: wymagane. Ciąg do rozdzielenia elementy.|  
-  
+```json
+"myBirthMonth": "January",
+"myAge": 42
+```
+
+Poniższe przykłady pokazują, jak są analizowane następujących wyrażeń:
+
+| Wyrażenie JSON | Wynik |
+|-----------------|--------| 
+| "@parameters(myBirthMonth)" | Zwraca ciąg: "Stycznia" |  
+| "@{parameters('myBirthMonth')}" | Zwraca ciąg: "Stycznia" |  
+| "@parameters(myAge)" | Zwraca to liczba: 42 |  
+| "@{parameters('myAge')}" | Zwraca to liczba jako ciąg: "42" |  
+| "Mój wiek jest @{parameters('myAge')}" | Zwraca ciąg: "Mój wiek jest 42" |  
+| "@concat("Mój wiek jest", string(parameters('myAge')))" | Zwraca ciąg: "Mój wiek jest 42" |  
+| "Mój wiek jest @@ {parameters('myAge')}" | Ten ciąg, który zawiera wyrażenie zwraca: "Mój wiek jest @{parameters('myAge')}" | 
+||| 
+
+Podczas pracy wizualnie w Projektancie aplikacji logiki, na przykład można utworzyć wyrażenia za pośrednictwem Konstruktora wyrażeń: 
+
+![Projektant aplikacji logiki > Konstruktor wyrażeń](./media/logic-apps-workflow-definition-language/expression-builder.png)
+
+Gdy wszystko będzie gotowe, znajduje się wyrażenie dla odpowiadających im właściwości w definicji przepływu pracy, na przykład, `searchQuery` właściwości w tym miejscu:
+
+```json
+"Search_tweets": {
+  "inputs": {
+    "host": {
+      "connection": {
+       "name": "@parameters('$connections')['twitter']['connectionId']"
+      }
+    }
+  },
+  "method": "get",
+  "path": "/searchtweets",
+  "queries": {
+    "maxResults": 20,
+    "searchQuery": "Azure @{concat('firstName','', 'LastName')}"
+  }
+},
+```
+
+<a name="operators"></a>
+
+## <a name="operators"></a>Operatory
+
+W [wyrażenia](#expressions) i [funkcje](#functions), Operatorzy wykonywania określonych zadań, takich jak odwołanie do właściwości lub wartości w tablicy. 
+
+| Operator | Zadanie | 
+|----------|------|
+| ' | Aby użyć literału ciągu jako dane wejściowe lub wyrażeń i funkcji, zawijać ciąg tylko w pojedynczy cudzysłów, na przykład `'<myString>'`. Nie używaj podwójnego cudzysłowu (""), które powodują konflikt z formatowaniem JSON wokół całego wyrażenia. Na przykład: <p>**Tak**: length('Hello') </br>**Nie**: length("Hello") <p>Jeśli tablice lub liczb, nie trzeba zawijania znaków interpunkcyjnych. Na przykład: <p>**Tak**: długość ([1, 2, 3]) </br>**Nie**: długość ("[1, 2, 3]") | 
+| [] | Aby odwołać się do wartości w określonej pozycji (indeks) w tablicy, użyj nawiasy kwadratowe. Na przykład, aby uzyskać drugiego elementu w tablicy: <p>`myArray[1]` | 
+| . | Aby odwołać się do właściwości w obiekcie użycia kropki. Na przykład, aby pobrać `name` właściwość `customer` obiekt JSON: <p>`"@parameters('customer').name"` | 
+| ? | Aby odwołać właściwości w obiekcie bez błędów czasu wykonywania o wartości null, należy użyć operatora znaku zapytania. Na przykład do obsługi null wyników z wyzwalaczy, można użyć tego wyrażenia: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` | 
+||| 
+
+<a name="functions"></a>
+
+## <a name="functions"></a>Funkcje
+
+Niektóre wyrażenia pobrać wartości z akcji środowiska uruchomieniowego, które jeszcze nie istnieje podczas uruchamiania aplikacji logiki. Aby odwołać i pracować z tych wartości w wyrażeniach, można użyć *funkcji*. Na przykład możesz użyć matematyczne funkcji do obliczeń, takich jak [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkcji, która zwraca sumę liczb całkowitych lub elementów przestawnych. 
+
+Poniżej przedstawiono kilka przykład zadań, które można wykonywać za pomocą funkcji: 
+
+| Zadanie | Składnia funkcji | Wynik | 
+| ---- | --------------- | -------------- | 
+| Zwraca ciąg w formacie małe litery. | toLower ("<*tekst*>") <p>Na przykład: toLower('Hello') | tekst "hello" | 
+| Zwraca unikatowy identyfikator globalny (GUID). | GUID() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
+|||| 
+
+W tym przykładzie pokazano, jak można uzyskać wartości z `customerName` parametru i przypisz, że wartość do `accountName` właściwości przy użyciu [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) funkcja w wyrażeniu:
+
+```json
+"accountName": "@parameters('customerName')"
+```
+
+Oto kilka innych metod ogólnych użyć funkcji w wyrażeniach:
+
+| Zadanie | Funkcja składni w wyrażeniu | 
+| ---- | -------------------------------- | 
+| Wykonaj pracę z elementem przez przekazanie do funkcji tego elementu. | "@<*functionName*> (<*elementu*>)" | 
+| 1. Pobierz *parameterName*przez wartość przy użyciu zagnieżdżone `parameters()` funkcji. </br>2. Wykonaj pracę z wynikiem przekazując tę wartość do *functionName*. | "@<*functionName*> (parametry (" <*parameterName*>')) " | 
+| 1. Pobierz wynik z funkcji zagnieżdżonej wewnętrzny *functionName*. </br>2. Przekazać wynik do funkcji zewnętrznej *functionName2*. | "@<*functionName2*> (<*functionName*> (<*elementu*>))" | 
+| 1. Uzyskanie wyniku z *functionName*. </br>2. Biorąc pod uwagę, że wynik jest obiektu z właściwością *propertyName*, pobrać wartości tej właściwości. | "@<*functionName*>(<*item*>). <*propertyName*>" | 
+||| 
+
+Na przykład `concat()` funkcja może zająć dwie lub więcej wartości ciągu jako parametry. Ta funkcja scala te ciągi w jeden ciąg. Użytkownik może przekazać w literałach ciągu, na przykład "Sophia" i "Owen", aby uzyskać ciąg Scalonej "SophiaOwen":
+
+```json
+"customerName": "@concat('Sophia', 'Owen')"
+```
+
+Alternatywnie można pobrać wartości ciągu z parametrów. W tym przykładzie użyto `parameters()` funkcji w każdym `concat()` parametru i `firstName` i `lastName` parametrów. Przekazuj wynikowy ciągi do `concat()` funkcjonować tak, aby pobrać połączony ciąg, na przykład "SophiaOwen":
+
+```json
+"customerName": "@concat(parameters('firstName'), parameters('lastName'))"
+```
+
+W obu przypadkach zarówno przykłady Przypisz wynik do `customerName` właściwości. 
+
+Aby uzyskać szczegółowe informacje dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+Lub kontynuować zapoznawanie funkcje oparte na ich ogólnego przeznaczenia.
+
+<a name="string-functions"></a>
+
 ### <a name="string-functions"></a>Funkcje ciągów
 
-Następujące funkcje dotyczą tylko ciągi. Umożliwia także niektóre funkcje kolekcji ciągów.  
-  
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|concat|Łączy ze sobą dowolną liczbę ciągów. Na przykład, jeśli parametr 1 jest `p1`, funkcja zwraca `somevalue-p1-somevalue`: <p>`concat('somevalue-',parameters('parameter1'),'-somevalue')` <p> **Liczba parametrów**: 1... *n* <p> **Nazwa**: ciąg *n* <p> **Opis elementu**: wymagane. Ciągi są łączone w pojedynczy ciąg.|  
-|substring|Zwraca podzbiór znaków z ciągu. Na przykład, funkcja zwraca `abc`: <p>`substring('somevalue-abc-somevalue',10,3)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, z którego jest pobierany podciąg. <p> **Liczba parametrów**: 2 <p> **Nazwa**: indeks początkowy <p> **Opis elementu**: wymagane. Indeks, gdzie podciąg rozpoczyna się w parametrze 1. <p> **Liczba parametrów**: 3 <p> **Nazwa**: długość <p> **Opis elementu**: wymagane. Długość podciąg.|  
-|Zamień|Zamienia ciąg dany ciąg znaków. Na przykład, funkcja zwraca `the new string`: <p>`replace('the old string', 'old', 'new')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który jest przeszukiwany parametru 2 i aktualizowane z parametrem 3, gdy parametr 2 znajduje się w parametrze 1. <p> **Liczba parametrów**: 2 <p> **Nazwa**: stary ciąg <p> **Opis elementu**: wymagane. Ciąg, aby zastąpić parametr 3, po znalezieniu dopasowania w parametrze 1 <p> **Liczba parametrów**: 3 <p> **Nazwa**: nowe parametry <p> **Opis elementu**: wymagane. Ciąg, który jest używany do zastępowania ciągów w parametrze 2, po znalezieniu dopasowania w parametrze 1.|  
-|Identyfikator GUID|Ta funkcja generuje ciąg globalnie unikatowy (identyfikator globalny GUID). Na przykład ta funkcja może wygenerować tego identyfikatora GUID: `c2ecc88d-88c8-4096-912c-d6f2e2b138ce` <p>`guid()` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Format <p> **Opis elementu**: opcjonalne. Specyfikator formatu jednej, która wskazuje [sposób formatowania wartość tego identyfikatora Guid](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx). Format parametru może być "N", "D", "B", "P" lub "X". Jeśli format nie jest podany, "D" jest używany.|  
-|toLower|Konwertuje ciąg na małe litery. Na przykład, funkcja zwraca `two by two is four`: <p>`toLower('Two by Two is Four')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg do przekonwertowania na niższych wielkości liter. Jeśli znak w ciągu nie ma odpowiednika małe litery, znak jest dołączony bez zmian w zwracany ciąg.|  
-|toUpper|Konwertuje ciąg na wielkie litery. Na przykład, funkcja zwraca `TWO BY TWO IS FOUR`: <p>`toUpper('Two by Two is Four')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg do przekonwertowania na górnym wielkości liter. Jeśli znak w ciągu nie ma odpowiednika wielkie litery, znak jest dołączony bez zmian w zwracany ciąg.|  
-|indexof|Znajdź insensitively indeks wartości w przypadku ciągu. Na przykład, funkcja zwraca `7`: <p>`indexof('hello, world.', 'world')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który może zawierać wartości. <p> **Liczba parametrów**: 2 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Wartość do wyszukiwania indeksu.|  
-|lastindexof|Znajdź ostatni indeks wartości w przypadku ciągu insensitively. Na przykład, funkcja zwraca `3`: <p>`lastindexof('foofoo', 'foo')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który może zawierać wartości. <p> **Liczba parametrów**: 2 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Wartość do wyszukiwania indeksu.|  
-|StartsWith|Sprawdza, czy ciąg rozpoczyna się od liter wartość insensitively. Na przykład, funkcja zwraca `true`: <p>`startswith('hello, world', 'hello')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który może zawierać wartości. <p> **Liczba parametrów**: 2 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Mogą rozpoczynać się wartość ciągu.|  
-|EndsWith|Sprawdza, czy ciąg kończy się wyrazem przypadku wartość insensitively. Na przykład, funkcja zwraca `true`: <p>`endswith('hello, world', 'world')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który może zawierać wartości. <p> **Liczba parametrów**: 2 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Wartość ciągu mogą kończyć się.|  
-|split|Dzieli ciągu za pomocą separatora. Na przykład, funkcja zwraca `["a", "b", "c"]`: <p>`split('a;b;c',';')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który jest podzielona. <p> **Liczba parametrów**: 2 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Separator.|  
-  
-### <a name="logical-functions"></a>Funkcje logiczne  
+Aby pracować z ciągami, można używać tych funkcji ciąg, a także niektóre [kolekcji funkcji](#collection-functions). Funkcje ciągów działa tylko na ciągach. 
 
-Funkcje te są przydatne w warunkach i może służyć do oceny dowolnego typu logiki.  
-  
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|równa się|Zwraca wartość PRAWDA, jeśli dwie wartości są równe. Na przykład, jeśli parameter1 someValue, funkcja zwraca `true`: <p>`equals(parameters('parameter1'), 'someValue')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt o 1 <p> **Opis elementu**: wymagane. Obiekt do porównania z **2 obiektu**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: obiekt 2 <p> **Opis elementu**: wymagane. Obiekt do porównania z **1 obiektu**.|  
-|mniej|Zwraca wartość PRAWDA, jeśli pierwszy argument jest mniejszy od drugiego. Uwaga: wartości może być tylko typu integer, float lub ciąg. Na przykład, funkcja zwraca `true`: <p>`less(10,100)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt o 1 <p> **Opis elementu**: wymagane. Obiekt, aby sprawdzić, czy jest mniejsza niż **2 obiektu**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: obiekt 2 <p> **Opis elementu**: wymagane. Obiekt, aby sprawdzić, czy jest większa niż **1 obiektu**.|  
-|lessOrEquals|Zwraca wartość PRAWDA, jeśli pierwszy argument jest mniejsze niż lub równe drugiemu. Uwaga: wartości może być tylko typu integer, float lub ciąg. Na przykład, funkcja zwraca `true`: <p>`lessOrEquals(10,10)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt o 1 <p> **Opis elementu**: wymagane. Obiekt do Sprawdź, czy jest mniejsza lub równa **2 obiektu**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: obiekt 2 <p> **Opis elementu**: wymagane. Obiekt, aby sprawdzić, czy jest większa niż lub równa **1 obiektu**.|  
-|większa|Zwraca wartość PRAWDA, jeśli pierwszy argument jest większa od drugiej. Uwaga: wartości może być tylko typu integer, float lub ciąg. Na przykład, funkcja zwraca `false`:  <p>`greater(10,10)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt o 1 <p> **Opis elementu**: wymagane. Obiekt, aby sprawdzić, czy jest większa niż **2 obiektu**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: obiekt 2 <p> **Opis elementu**: wymagane. Obiekt, aby sprawdzić, czy jest mniejsza niż **1 obiektu**.|  
-|greaterOrEquals|Zwraca wartość PRAWDA, jeśli pierwszy argument jest większe lub równe drugiemu. Uwaga: wartości może być tylko typu integer, float lub ciąg. Na przykład, funkcja zwraca `false`: <p>`greaterOrEquals(10,100)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt o 1 <p> **Opis elementu**: wymagane. Obiekt, aby sprawdzić, czy jest większa niż lub równa **2 obiektu**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: obiekt 2 <p> **Opis elementu**: wymagane. Obiekt, aby sprawdzić, czy jest mniejsze niż lub równe **1 obiektu**.|  
-|i|Zwraca wartość true, jeśli oba parametry mają wartość true. Oba argumenty muszą być wartości logiczne. Na przykład, funkcja zwraca `false`: <p>`and(greater(1,10),equals(0,0))` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość logiczna 1 <p> **Opis elementu**: wymagane. Pierwszy argument, który musi być `true`. <p> **Liczba parametrów**: 2 <p> **Nazwa**: wartość logiczna 2 <p> **Opis elementu**: wymagane. Drugi argument musi być `true`.|  
-|lub|Zwraca wartość true, jeśli parametr ma wartość true. Oba argumenty muszą być wartości logiczne. Na przykład, funkcja zwraca `true`: <p>`or(greater(1,10),equals(0,0))` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość logiczna 1 <p> **Opis elementu**: wymagane. Pierwszy argument, który może być `true`. <p> **Liczba parametrów**: 2 <p> **Nazwa**: wartość logiczna 2 <p> **Opis elementu**: wymagane. Drugi argument może być `true`.|  
-|nie|Zwraca wartość PRAWDA, jeśli parametry są `false`. Oba argumenty muszą być wartości logiczne. Na przykład, funkcja zwraca `true`: <p>`not(contains('200 Success','Fail'))` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość logiczna <p> **Opis elementu**: zwraca wartość true, jeśli parametry są `false`. Oba argumenty muszą być wartości logiczne. Ta funkcja zwraca `true`:  `not(contains('200 Success','Fail'))`|  
-|if|Zwraca określoną wartość, według tego, czy wyrażenie spowodowało `true` lub `false`.  Na przykład, funkcja zwraca `"yes"`: <p>`if(equals(1, 1), 'yes', 'no')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wyrażenie <p> **Opis elementu**: wymagane. Wartość logiczna, która określa wartość, która powinna zwrócić wyrażenia. <p> **Liczba parametrów**: 2 <p> **Nazwa**: True <p> **Opis elementu**: wymagane. Wartość zwracana, gdy wyrażenie jest `true`. <p> **Liczba parametrów**: 3 <p> **Nazwa**: False <p> **Opis elementu**: wymagane. Wartość zwracana, gdy wyrażenie jest `false`.|  
-  
-### <a name="conversion-functions"></a>Funkcje konwersji  
+| String — funkcja | Zadanie | 
+| --------------- | ---- | 
+| [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Połącz co najmniej dwa ciągi i zwraca połączony ciąg. | 
+| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Sprawdź, czy ciąg kończy się wyrazem wskazany podciąg. | 
+| [Identyfikator GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Wygeneruj Unikatowy identyfikator globalny (GUID) jako ciąg. | 
+| [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Zwraca pozycję początkową podciąg. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwraca pozycję końcową dla podciąg. | 
+| [Zamień](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Zastąp podciągu określonego ciągu i zwraca ciąg zaktualizowane. | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Zwraca tablicę, która ma wszystkich znaków z ciągu i oddziela każdego znaku znakiem określonego ogranicznika. | 
+| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Sprawdź, czy ciąg rozpoczyna się od określonego podciąg. | 
+| [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Zwracanie znaków z ciągu, zaczynając od określonej pozycji. | 
+| [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Zwraca ciąg w formacie małe litery. | 
+| [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Zwraca ciąg w formacie wielkie litery. | 
+| [TRIM](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Usuń spacje wiodące i końcowe z ciągu i zwraca ciąg zaktualizowane. | 
+||| 
 
-Funkcje te służą do konwersji między każdego typu natywnego w języku:  
-  
-- ciąg  
-  
-- liczba całkowita  
-  
-- Float  
-  
-- wartość logiczna  
-  
-- Tablice  
-  
-- słowników  
+<a name="collection-functions"></a>
 
--   Formularze  
-  
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|int|Parametr należy przekonwertować na liczbę całkowitą. Na przykład funkcja zwraca 100 jako liczbę zamiast ciągu: <p>`int('100')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowana na liczbę całkowitą.|  
-|ciąg|Parametr jest skonwertowana do ciągu. Na przykład, funkcja zwraca `'10'`: <p>`string(10)` <p>Można również przeprowadzić konwersję obiektu na ciąg. Na przykład jeśli `myPar` parametr jest obiekt z jedną właściwość `abc : xyz`, a następnie ta funkcja zwraca `{"abc" : "xyz"}`: <p>`string(parameters('myPar'))` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowana na ciąg.|  
-|JSON|Konwertuj parametr na wartość typu JSON i jest przeciwieństwem `string()`. Na przykład, funkcja zwraca `[1,2,3]` jako tablica zamiast ciągu: <p>`json('[1,2,3]')` <p>Podobnie ciąg można przekonwertować na obiekt. Na przykład, funkcja zwraca `{ "abc" : "xyz" }`: <p>`json('{"abc" : "xyz"}')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który jest konwertowany na wartość typu macierzystego. <p>`json()` Funkcja obsługuje za dane wejściowe XML. Na przykład, wartość parametru: <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>jest konwertowana na dane JSON: <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
-|Float|Liczba zmiennoprzecinkowa przekonwertować argumentu parametru. Na przykład, funkcja zwraca `10.333`: <p>`float('10.333')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowana na liczba zmiennoprzecinkowa.|  
-|wartość logiczna|Konwersji parametru na wartość logiczną. Na przykład, funkcja zwraca `false`: <p>`bool(0)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowana na wartość logiczną.|  
-|base64|Zwraca reprezentację ciągu wejściowego base64. Na przykład, funkcja zwraca `c29tZSBzdHJpbmc=`: <p>`base64('some string')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: String 1 <p> **Opis elementu**: wymagane. Ciąg do zakodowania w reprezentację base64.|  
-|base64ToBinary|Zwraca wartość binarna reprezentacja ciągu w kodowaniu base64. Na przykład, ta funkcja zwraca reprezentacja binarna `some string`: <p>`base64ToBinary('c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg kodowany w formacie base64.|  
-|base64ToString|Zwraca reprezentację ciągu based64 zakodowany ciąg. Na przykład, funkcja zwraca `some string`: <p>`base64ToString('c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg kodowany w formacie base64.|  
-|Binarny|Zwraca wartość binarna reprezentacja wartości.  Na przykład, ta funkcja zwraca to binarna reprezentacja `some string`: <p>`binary('some string')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowana na format binarny.|  
-|dataUriToBinary|Zwraca wartość binarna reprezentacja identyfikatora URI danych. Na przykład, ta funkcja zwraca reprezentacja binarna `some string`: <p>`dataUriToBinary('data:;base64,c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Identyfikator URI do przekonwertowania na binarna reprezentacja danych.|  
-|dataUriToString|Zwraca reprezentację ciągu identyfikatora URI danych. Na przykład, funkcja zwraca `some string`: <p>`dataUriToString('data:;base64,c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg<p> **Opis elementu**: wymagane. Identyfikator URI do przekonwertowania na ciąg reprezentujący dane.|  
-|dataUri|Zwraca identyfikator URI wartości danych. Na przykład, funkcja zwraca identyfikator URI danych `text/plain;charset=utf8;base64,c29tZSBzdHJpbmc=`: <p>`dataUri('some string')` <p> **Liczba parametrów**: 1<p> **Nazwa**: wartość<p> **Opis elementu**: wymagane. Wartość można przekonwertować na identyfikator URI danych.|  
-|decodeBase64|Zwraca reprezentację ciągu wejściowego based64 w ciągu. Na przykład, funkcja zwraca `some string`: <p>`decodeBase64('c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: zwraca reprezentację ciągu wejściowego based64 w ciągu.|  
-|encodeuricomponent —|Adres URL specjalne ciąg, który jest przekazywany w. Na przykład, funkcja zwraca `You+Are%3ACool%2FAwesome`: <p>`encodeUriComponent('You Are:Cool/Awesome')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg niezabezpieczony adres URL znaki ucieczki.|  
-|decodeuricomponent —|NZ — adres URL-specjalne ciąg, który jest przekazywany w. Na przykład, funkcja zwraca `You Are:Cool/Awesome`: <p>`decodeUriComponent('You+Are%3ACool%2FAwesome')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg do zdekodowania niezabezpieczony adres URL znaki z.|  
-|decodeDataUri|Zwraca wartość binarna reprezentacja danych wejściowych w postaci ciągu identyfikatora URI. Na przykład, ta funkcja zwraca reprezentacja binarna `some string`: <p>`decodeDataUri('data:;base64,c29tZSBzdHJpbmc=')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. DataURI zdekodować do reprezentacja binarna.|  
-|uriComponent|Zwraca identyfikator URI zakodowany reprezentację wartości. Na przykład, funkcja zwraca `You+Are%3ACool%2FAwesome`: <p>`uriComponent('You Are:Cool/Awesome')` <p> **Liczba parametrów**: 1<p> **Nazwa**: ciąg <p> **Opis elementu**: wymagane. Ciąg, który jest kodowany identyfikator URI.|  
-|uriComponentToBinary|Zwraca ciąg kodowany w formacie to binarna reprezentacja identyfikatora URI. Na przykład, ta funkcja zwraca to binarna reprezentacja `You Are:Cool/Awesome`: <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: ciąg<p> **Opis elementu**: wymagane. Ciąg kodowany w formacie identyfikatora URI.|  
-|uriComponentToString|Zwraca ciąg kodowany w formacie reprezentację ciągu identyfikatora URI. Na przykład, funkcja zwraca `You Are:Cool/Awesome`: <p>`uriComponentToString('You+Are%3ACool%2FAwesome')` <p> **Liczba parametrów**: 1<p> **Nazwa**: ciąg<p> **Opis elementu**: wymagane. Ciąg kodowany w formacie identyfikatora URI.|  
-|xml|Zwraca reprezentację XML wartości. Na przykład, funkcja zwraca XML zawartości reprezentowany przez `'\<name>Alan\</name>'`: <p>`xml('\<name>Alan\</name>')` <p>`xml()` Funkcja obsługuje obiekt JSON za dane wejściowe. Na przykład parametr `{ "abc": "xyz" }` jest konwertowana na zawartość XML: `\<abc>xyz\</abc>` <p> **Liczba parametrów**: 1<p> **Nazwa**: wartość<p> **Opis elementu**: wymagane. Wartość do przekonwertowania na format XML.|  
-|tablica|Parametr można przekonwertować na typ tablicy. Na przykład, funkcja zwraca `["abc"]`: <p>`array('abc')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość, która jest konwertowany na tablicę.|
-|createArray|Tworzy tablicę z parametrów. Na przykład, funkcja zwraca `["a", "c"]`: <p>`createArray('a', 'c')` <p> **Liczba parametrów**: 1... *n* <p> **Nazwa**: wszystkie *n* <p> **Opis elementu**: wymagane. Wartości do łączenia w tablicy.|
-|triggerFormDataValue|Zwraca pojedynczą wartość zgodnego z nazwą klucza z danych formularza lub wyzwalacza postać zakodowanych danych wyjściowych.  Jeśli dostępnych jest wiele dopasowuje je spowoduje błąd.  Na przykład zwróci następujące `bar`: `triggerFormDataValue('foo')`<br /><br />**Liczba parametrów**: 1<br /><br />**Nazwa**: Nazwa klucza<br /><br />**Opis elementu**: wymagane. Nazwa klucza wartości formularza danych do zwrócenia.|
-|triggerFormDataMultiValues|Zwraca tablicę wartości zgodnego z nazwą klucza z danych formularza lub wyzwalacza postać zakodowanych danych wyjściowych.  Na przykład zwróci następujące `["bar"]`: `triggerFormDataValue('foo')`<br /><br />**Liczba parametrów**: 1<br /><br />**Nazwa**: Nazwa klucza<br /><br />**Opis elementu**: wymagane. Nazwa klucza zwracanych wartości danych formularza.|
-|triggerMultipartBody|Zwraca treść część wieloczęściowych danych wyjściowych wyzwalacza.<br /><br />**Liczba parametrów**: 1<br /><br />**Nazwa**: indeks<br /><br />**Opis elementu**: wymagane. Indeks części do pobrania.|
-|formDataValue|Zwraca pojedynczą wartość zgodnego z nazwą klucza z danych formularza lub wynik akcji zakodowane w formularzu.  Jeśli dostępnych jest wiele dopasowuje je spowoduje błąd.  Na przykład zwróci następujące `bar`: `formDataValue('someAction', 'foo')`<br /><br />**Liczba parametrów**: 1<br /><br />**Nazwa**: Nazwa akcji<br /><br />**Opis elementu**: wymagane. Nazwa akcji z danych formularza lub postać zakodowanych odpowiedzi.<br /><br />**Liczba parametrów**: 2<br /><br />**Nazwa**: Nazwa klucza<br /><br />**Opis elementu**: wymagane. Nazwa klucza wartości formularza danych do zwrócenia.|
-|formDataMultiValues|Zwraca tablicę zgodnego z nazwą klucza z danych formularza lub wynik akcji postać zakodowanych wartości.  Na przykład zwróci następujące `["bar"]`: `formDataMultiValues('someAction', 'foo')`<br /><br />**Liczba parametrów**: 1<br /><br />**Nazwa**: Nazwa akcji<br /><br />**Opis elementu**: wymagane. Nazwa akcji z danych formularza lub postać zakodowanych odpowiedzi.<br /><br />**Liczba parametrów**: 2<br /><br />**Nazwa**: Nazwa klucza<br /><br />**Opis elementu**: wymagane. Nazwa klucza zwracanych wartości danych formularza.|
-|multipartBody|Zwraca treść część wieloczęściowych danych wyjściowych akcji.<br /><br />**Liczba parametrów**: 1<br /><br />**Nazwa**: Nazwa akcji<br /><br />**Opis elementu**: wymagane. Nazwa akcji za pomocą wieloczęściowej wiadomości odpowiedzi.<br /><br />**Liczba parametrów**: 2<br /><br />**Nazwa**: indeks<br /><br />**Opis elementu**: wymagane. Indeks części do pobrania.|
+### <a name="collection-functions"></a>Kolekcja funkcji
 
-### <a name="manipulation-functions"></a>Funkcje manipulowania
- 
-Funkcje te dotyczą XML i obiektów.
- 
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------| 
-|połączenie|Zwraca pierwszy obiekt zerowy przekazanych argumentów. **Uwaga**: pusty ciąg nie jest zerowa. Na przykład, jeśli nie zdefiniowano parametrów 1 i 2, funkcja zwraca `fallback`:  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **Liczba parametrów**: 1... *n* <p> **Nazwa**: obiekt*n* <p> **Opis elementu**: wymagane. Obiekty do sprawdzenia wartości null.|
-|addProperty|Zwraca obiekt z dodatkowych właściwości. Jeśli właściwość już istnieje w czasie wykonywania, zostanie zgłoszony błąd. Na przykład, ta funkcja zwraca obiekt `{ "abc" : "xyz", "def": "uvw" }`: <p>`addProperty(json('{"abc" : "xyz"}'), 'def', 'uvw')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt <p> **Opis elementu**: wymagane. Obiekt do dodania do nowej właściwości. <p> **Liczba parametrów**: 2 <p> **Nazwa**: Nazwa właściwości <p> **Opis elementu**: wymagane. Nazwa nowej właściwości. <p> **Liczba parametrów**: 3 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość do przypisania do nowej właściwości.|
-|Metoda setProperty|Zwraca obiekt z dodatkowych właściwości lub istniejącego zestawu podanej wartości właściwości. Na przykład, ta funkcja zwraca obiekt `{ "abc" : "uvw" }`: <p>`setProperty(json('{"abc" : "xyz"}'), 'abc', 'uvw')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt <p> **Opis elementu**: wymagane. Obiekt, w którym można ustawić właściwości.<p> **Liczba parametrów**: 2 <p> **Nazwa**: Nazwa właściwości<p> **Opis elementu**: wymagane. Nazwa nowej lub istniejącej właściwości. <p> **Liczba parametrów**: 3 <p> **Nazwa**: wartość <p> **Opis elementu**: wymagane. Wartość do przypisania do właściwości.|
-|removeProperty|Zwraca obiekt z właściwością usunięte. Jeśli nie istnieje właściwość, aby usunąć oryginalny obiekt jest zwracany. Na przykład, ta funkcja zwraca obiekt `{ "abc" : "xyz" }`: <p>`removeProperty(json('{"abc" : "xyz", "def": "uvw"}'), 'def')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: obiekt <p> **Opis elementu**: wymagane. Obiekt do usunięcia z właściwości.<p> **Liczba parametrów**: 2 <p> **Nazwa**: Nazwa właściwości <p> **Opis elementu**: wymagane. Nazwa właściwości do usunięcia. <p>|
-|wyrażenie XPath|Zwraca tablicę węzłów XML odpowiadającym wyrażenie xpath wartości, która daje w wyniku wyrażenia xpath. <p> **Przykład 1** <p>Przyjmuje wartość parametru `p1` jest reprezentację ciągu tego kodu XML: <p>`<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>` <p>Ten kod: `xpath(xml(parameters('p1')), '/lab/robot/name')` <p>Zwraca <p>`[ <name>R1</name>, <name>R2</name> ]` <p>Podczas tego kodu: <p>`xpath(xml(parameters('p1')), ' sum(/lab/robot/parts)')` <p>Zwraca <p>`13` <p> <p> **Przykład 2** <p>Podane następującą zawartość XML: <p>`<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>` <p>Ten kod: `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')` <p>lub ten kod: <p>`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')` <p>Zwraca <p>`<Location xmlns="http://abc.com">xyz</Location>` <p>I ten kod: `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')` <p>Zwraca <p>``xyz`` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Xml <p> **Opis elementu**: wymagane. Kod XML, na którym można oszacować wyrażenia XPath. <p> **Liczba parametrów**: 2 <p> **Nazwa**: XPath <p> **Opis elementu**: wymagane. Wyrażenie XPath do oceny.|
+Aby pracować z kolekcji, zazwyczaj tablic ciągów i czasami słowników, możesz użyć tych funkcji kolekcji. 
 
-### <a name="math-functions"></a>Funkcje matematyczne  
+| Funkcja kolekcji | Zadanie | 
+| ------------------- | ---- | 
+| [zawiera](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Sprawdź, czy kolekcja zawiera konkretny element. |
+| [pusty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Sprawdź, czy kolekcja jest pusta. | 
+| [pierwszy](../logic-apps/workflow-definition-language-functions-reference.md#first) | Zwraca pierwszy element z kolekcji. | 
+| [część wspólną](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Zwraca kolekcję, która ma *tylko* wspólne elementy w określonej kolekcji. | 
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Zwraca ciąg, który ma *wszystkie* elementy z tablicy, oddzielonych określony znak. | 
+| [ostatni](../logic-apps/workflow-definition-language-functions-reference.md#last) | Zwraca ostatni element z kolekcji. | 
+| [długość](../logic-apps/workflow-definition-language-functions-reference.md#length) | Zwraca liczbę elementów w string lub array. | 
+| [Pomiń](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Usuwanie elementów z na początku kolekcji, a następnie wróć *wszystkie inne* elementów. | 
+| [podejmij](../logic-apps/workflow-definition-language-functions-reference.md#take) | Zwraca elementy z przodu kolekcji. | 
+| [Unii](../logic-apps/workflow-definition-language-functions-reference.md#union) | Zwraca kolekcję, która ma *wszystkie* elementy z określonymi kolekcjami. | 
+||| 
 
-Te funkcje mogą być używane dla obu typów liczb: **liczb całkowitych** i **przesunięty**.  
-  
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|dodaj|Zwraca wynik z dodanie dwóch liczb. Na przykład, funkcja zwraca `20.333`: <p>`add(10,10.333)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Summand 1 <p> **Opis elementu**: wymagane. Numer, aby dodać do **Summand 2**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: Summand 2 <p> **Opis elementu**: wymagane. Numer, aby dodać do **Summand 1**.|  
-|Sub|Zwraca wynik z odjęcie dwóch liczb. Na przykład, funkcja zwraca `-0.333`: <p>`sub(10,10.333)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Minuend <p> **Opis elementu**: wymagane. Liczba który **Subtrahend** zostanie usunięty z. <p> **Liczba parametrów**: 2 <p> **Nazwa**: Subtrahend <p> **Opis elementu**: wymagane. Numer do usunięcia z **Minuend**.|  
-|mul|Zwraca wynik z pomnożenie dwóch liczb. Na przykład, funkcja zwraca `103.33`: <p>`mul(10,10.333)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Multiplicand 1 <p> **Opis elementu**: wymagane. Liczbę Aby pomnożyć **Multiplicand 2** z. <p> **Liczba parametrów**: 2 <p> **Nazwa**: Multiplicand 2 <p> **Opis elementu**: wymagane. Liczbę Aby pomnożyć **Multiplicand 1** z.|  
-|div|Zwraca wynik dzielenia dwóch liczb. Na przykład, funkcja zwraca `1.0333`: <p>`div(10.333,10)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: dzielna <p> **Opis elementu**: wymagane. Numer do dzielenia przez **dzielnik**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: dzielnik. <p> **Opis elementu**: wymagane. Numer do dzielenia **dzielna** przez.|  
-|mod|Zwraca resztę po podzieleniu dwóch liczb (modulo). Na przykład, funkcja zwraca `2`: <p>`mod(10,4)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: dzielna <p> **Opis elementu**: wymagane. Numer do dzielenia przez **dzielnik**. <p> **Liczba parametrów**: 2 <p> **Nazwa**: dzielnik. <p> **Opis elementu**: wymagane. Numer do dzielenia **dzielna** przez. Po podziału pozostałe jest zajęta.|  
-|min.|Istnieją dwa różne wzorce wywoływania tej funkcji. <p>W tym miejscu `min` ma podjąć tablicy i funkcji zwraca `0`: <p>`min([0,1,2])` <p>Alternatywnie, może to trwać rozdzielaną przecinkami listę wartości, a także zwraca `0`: <p>`min(0,1,2)` <p> **Uwaga**: wszystkie wartości muszą być liczbami, więc jeśli parametr jest tablicą, tablica musi zawierać tylko cyfry. <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji lub wartość <p> **Opis elementu**: wymagane. Albo tablica wartości, aby znaleźć wartość minimalną lub wartość pierwszego zestawu. <p> **Liczba parametrów**: 2... *n* <p> **Nazwa**: wartość *n* <p> **Opis elementu**: opcjonalne. Jeśli pierwszy parametr ma wartość, można przekazać dodatkowe wartości, a zwracany jest minimum wszystkich wartości przekazany.|  
-|maks.|Istnieją dwa różne wzorce wywoływania tej funkcji. <p>W tym miejscu `max` ma podjąć tablicy i funkcji zwraca `2`: <p>`max([0,1,2])` <p>Alternatywnie, może to trwać rozdzielaną przecinkami listę wartości, a także zwraca `2`: <p>`max(0,1,2)` <p> **Uwaga**: wszystkie wartości muszą być liczbami, więc jeśli parametr jest tablicą, tablica musi zawierać tylko cyfry. <p> **Liczba parametrów**: 1 <p> **Nazwa**: kolekcji lub wartość <p> **Opis elementu**: wymagane. Albo tablica wartości, aby znaleźć wartość maksymalną lub wartość pierwszego zestawu. <p> **Liczba parametrów**: 2... *n* <p> **Nazwa**: wartość *n* <p> **Opis elementu**: opcjonalne. Jeśli wartość jest pierwszym parametrem, można przekazać dodatkowe wartości i maksimum wszystkich wartości przekazanych jest zwracany.|  
-|Zakres|Generuje tablicę liczby całkowite począwszy od pewną liczbę. Należy zdefiniować długość tablicy zwracane. <p>Na przykład, funkcja zwraca `[3,4,5,6]`: <p>`range(3,4)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: indeks początkowy <p> **Opis elementu**: wymagane. Pierwszej liczby całkowitej w tablicy. <p> **Liczba parametrów**: 2 <p> **Nazwa**: liczba <p> **Opis elementu**: wymagane. Ta wartość jest liczbę liczb całkowitych, która jest w tablicy.|  
-|RAND|Generuje losową liczbę całkowitą określonego zakresu (włącznie tylko na końcu pierwszego). Na przykład, ta funkcja może zwrócić albo `0` lub "1": <p>`rand(0,2)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: minimalna <p> **Opis elementu**: wymagane. Najniższa liczba całkowita, która może być zwracany. <p> **Liczba parametrów**: 2 <p> **Nazwa**: maksymalna <p> **Opis elementu**: wymagane. Ta wartość jest najbliższej liczby całkowitej po największa liczba całkowita, która może zostać zwrócone.|  
- 
-### <a name="date-functions"></a>Funkcje daty  
+<a name="comparison-functions"></a>
 
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|utcnow|Zwraca bieżącą sygnaturę czasową jako ciąg, na przykład: `2017-03-15T13:27:36Z`: <p>`utcnow()` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Format <p> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").|  
-|addSeconds|Dodaje całkowitą liczbę sekund do sygnatury czasowej ciągu przekazany. Liczba sekund może być liczbą dodatnią lub ujemną. Domyślnie wynik jest ciągiem w formacie ISO 8601 ("e"), ile specyfikator formatu. Na przykład: `2015-03-15T13:27:00Z`: <p>`addseconds('2015-03-15T13:27:36Z', -36)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: znacznik czasu <p> **Opis elementu**: wymagane. Ciąg, który zawiera godzinę. <p> **Liczba parametrów**: 2 <p> **Nazwa**: sekund <p> **Opis elementu**: wymagane. Liczba sekund do dodania. Może być ujemna do odjęcia sekund. <p> **Liczba parametrów**: 3 <p> **Nazwa**: Format <p> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").|  
-|addminutes|Dodaje całkowitą liczbę minut do sygnatury czasowej ciągu przekazany. Liczba minut, może być liczbą dodatnią lub ujemną. Domyślnie wynik jest ciągiem w formacie ISO 8601 ("e"), ile specyfikator formatu. Na przykład: `2015-03-15T14:00:36Z`: <p>`addminutes('2015-03-15T13:27:36Z', 33)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: znacznik czasu <p> **Opis elementu**: wymagane. Ciąg, który zawiera godzinę. <p> **Liczba parametrów**: 2 <p> **Nazwa**: minut <p> **Opis elementu**: wymagane. Liczba minut do dodania. Może być ujemna do odjęcia minut. <p> **Liczba parametrów**: 3 <p> **Nazwa**: Format <p> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").|  
-|addhours|Dodaje całkowitą liczbę godzin do sygnatury czasowej ciągu przekazany. Liczba godzin może być liczbą dodatnią lub ujemną. Domyślnie wynik jest ciągiem w formacie ISO 8601 ("e"), ile specyfikator formatu. Na przykład: `2015-03-16T01:27:36Z`: <p>`addhours('2015-03-15T13:27:36Z', 12)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: znacznik czasu <p> **Opis elementu**: wymagane. Ciąg, który zawiera godzinę. <p> **Liczba parametrów**: 2 <p> **Nazwa**: godziny <p> **Opis elementu**: wymagane. Liczba godzin do dodania. Może być ujemna do odjęcia godzin. <p> **Liczba parametrów**: 3 <p> **Nazwa**: Format <p> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").|  
-|addDays|Dodaje liczby całkowitej określającej liczbę dni do sygnatury czasowej ciągu przekazany. Liczba dni korzystania z może być liczbą dodatnią lub ujemną. Domyślnie wynik jest ciągiem w formacie ISO 8601 ("e"), ile specyfikator formatu. Na przykład: `2015-03-13T13:27:36Z`: <p>`adddays('2015-03-15T13:27:36Z', -2)` <p> **Liczba parametrów**: 1 <p> **Nazwa**: znacznik czasu <p> **Opis elementu**: wymagane. Ciąg, który zawiera godzinę. <p> **Liczba parametrów**: 2 <p> **Nazwa**: dni <p> **Opis elementu**: wymagane. Liczba dni do dodania. Może być ujemna do odjęcia dni. <p> **Liczba parametrów**: 3 <p> **Nazwa**: Format <p> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").|  
-|formatDateTime|Zwraca ciąg w formacie daty. Domyślnie wynik jest ciągiem w formacie ISO 8601 ("e"), ile specyfikator formatu. Na przykład: `2015-03-15T13:27:36Z`: <p>`formatDateTime('2015-03-15T13:27:36Z', 'o')` <p> **Liczba parametrów**: 1 <p> **Nazwa**: Data <p> **Opis elementu**: wymagane. Ciąg, który zawiera datę. <p> **Liczba parametrów**: 2 <p> **Nazwa**: Format <p> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").|  
-|startOfHour|Zwraca początek godziny do sygnatury czasowej ciągu przekazany. Na przykład `2017-03-15T13:00:00Z`:<br /><br /> `startOfHour('2017-03-15T13:27:36Z')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: znacznik czasu<br /><br /> **Opis elementu**: wymagane. Jest to ciąg, który zawiera godzinę.<br /><br />**Liczba parametrów**: 2<br /><br /> **Nazwa**: Format<br /><br /> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").|  
-|startOfDay|Zwraca początek dnia do sygnatury czasowej ciągu przekazany. Na przykład `2017-03-15T00:00:00Z`:<br /><br /> `startOfDay('2017-03-15T13:27:36Z')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: znacznik czasu<br /><br /> **Opis elementu**: wymagane. Jest to ciąg, który zawiera godzinę.<br /><br />**Liczba parametrów**: 2<br /><br /> **Nazwa**: Format<br /><br /> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").| 
-|startOfMonth|Zwraca początek miesiąca do sygnatury czasowej ciągu przekazany. Na przykład `2017-03-01T00:00:00Z`:<br /><br /> `startOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: znacznik czasu<br /><br /> **Opis elementu**: wymagane. Jest to ciąg, który zawiera godzinę.<br /><br />**Liczba parametrów**: 2<br /><br /> **Nazwa**: Format<br /><br /> **Opis elementu**: opcjonalne. Albo [pojedynczy znak specyfikator formatu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) lub [wzorzec formatu niestandardowego](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) wskazujący sposób formatowania wartości sygnatura czasowa. Jeśli format nie jest podany, jest używany w formacie ISO 8601 ("o").| 
-|DayOfWeek|Zwraca dzień tygodnia składnika sygnaturę czasową ciągu.  Niedziela wynosi 0, od poniedziałku 1 i tak dalej. Na przykład `3`:<br /><br /> `dayOfWeek('2017-03-15T13:27:36Z')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: znacznik czasu<br /><br /> **Opis elementu**: wymagane. Jest to ciąg, który zawiera godzinę.| 
-|DayOfMonth|Zwraca dzień miesiąca składnika sygnaturę czasową ciągu. Na przykład `15`:<br /><br /> `dayOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: znacznik czasu<br /><br /> **Opis elementu**: wymagane. Jest to ciąg, który zawiera godzinę.| 
-|Dzieńroku|Zwraca dzień roku składnika sygnaturę czasową ciągu. Na przykład `74`:<br /><br /> `dayOfYear('2017-03-15T13:27:36Z')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: znacznik czasu<br /><br /> **Opis elementu**: wymagane. Jest to ciąg, który zawiera godzinę.| 
-|znaczniki osi|Zwraca właściwości ciągu sygnatura czasowa to znaczniki osi. Na przykład `1489603019`:<br /><br /> `ticks('2017-03-15T18:36:59Z')`<br /><br /> **Liczba parametrów**: 1<br /><br /> **Nazwa**: znacznik czasu<br /><br /> **Opis elementu**: wymagane. Jest to ciąg, który zawiera godzinę.| 
-  
-### <a name="workflow-functions"></a>Funkcje przepływu pracy  
+### <a name="comparison-functions"></a>Porównanie funkcji
 
-Te funkcje pomocne w uzyskaniu informacji na temat sam przepływ pracy w czasie wykonywania.  
-  
-|Nazwa funkcji|Opis|  
-|-------------------|-----------------|  
-|listCallbackUrl|Zwraca ciąg, który umożliwia wywołanie invoke, trigger lub akcji. <p> **Uwaga**: tej funkcji można używać tylko w **httpWebhook** i **apiConnectionWebhook**nie w **ręczne**, **cyklu**, **http**, lub **apiConnection**. <p>Na przykład `listCallbackUrl()` funkcja zwraca: <p>`https://prod-01.westus.logic.azure.com:443/workflows/1235...ABCD/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xxx...xxx` |  
-|przepływ pracy|Ta funkcja udostępnia wszystkie szczegóły przepływu w czasie wykonywania. <p> Są dostępne właściwości w obiekcie przepływu pracy: <ul><li>`name`</li><li>`type`</li><li>`id`</li><li>`location`</li><li>`run`</li></ul> <p> Wartość `run` właściwość jest obiekt z następującymi właściwościami: <ul><li>`name`</li><li>`type`</li><li>`id`</li></ul> <p>Zobacz [interfejsu API Rest](http://go.microsoft.com/fwlink/p/?LinkID=525617) szczegółowe informacje na temat tych właściwości.<p> Na przykład, aby uzyskać nazwę bieżący element, należy użyć `"@workflow().run.name"` wyrażenia. |
+Do pracy z warunkami, porównać wartości i wyniki wyrażenia lub oceny różnego rodzaju logiki, możesz użyć tych funkcji porównania. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Porównanie funkcji | Zadanie | 
+| ------------------- | ---- | 
+| [I](../logic-apps/workflow-definition-language-functions-reference.md#and) | Sprawdź, czy wszystkie wyrażenia mają wartość true. | 
+| [równa się](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Sprawdź, czy obie wartości są równoważne. | 
+| [większa](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Sprawdź, czy pierwsza wartość jest większa od drugiej wartości. | 
+| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Sprawdź, czy pierwsza wartość jest większa niż lub równa drugiej wartości. | 
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Sprawdź, czy wyrażenie jest równa true lub false. Na podstawie wyniku, zwrócić określoną wartość. | 
+| [mniej](../logic-apps/workflow-definition-language-functions-reference.md#less) | Sprawdź, czy pierwsza wartość jest mniejsza niż wartość drugiej. | 
+| [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Sprawdź, czy pierwsza wartość jest mniejsza niż lub równa drugiej wartości. | 
+| [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Sprawdź, czy wyrażenie jest fałszywe. | 
+| [lub](../logic-apps/workflow-definition-language-functions-reference.md#or) | Sprawdź, czy co najmniej jedno wyrażenie ma wartość true. |
+||| 
+
+<a name="conversion-functions"></a>
+
+### <a name="conversion-functions"></a>Funkcje konwersji
+
+Aby zmienić typ lub format wartości, możesz użyć tych funkcji konwersji. Na przykład można zmienić wartości z wartością logiczną na liczbę całkowitą. Aby dowiedzieć się, jak aplikacje logiki obsługuje typy zawartości podczas konwersji, zobacz [obsługi typów zawartości](../logic-apps/logic-apps-content-type.md). Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Funkcja konwersji | Zadanie | 
+| ------------------- | ---- | 
+| [Tablica](../logic-apps/workflow-definition-language-functions-reference.md#array) | Zwraca tablicę z jednej z określonych danych wejściowych. Dla wielu danych wejściowych, zobacz [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). | 
+| [Base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Zwraca ciąg wersji algorytmem Base64. | 
+| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Zwróć binarnej wersji dla ciągu zakodowanego algorytmem base64. | 
+| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Zwraca ciąg wersji ciąg kodowany w formacie base64. | 
+| [Binarne](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Zwróć binarnej wersji dla wartości wejściowej. | 
+| [wartość logiczna](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Zwracany Boolean wersji wartości wejściowej. | 
+| [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Zwraca tablicę z wielu danych wejściowych. | 
+| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Zwraca identyfikator URI danych wartości wejściowej. | 
+| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Zwróć binarnej wersji danych identyfikatora URI. | 
+| [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Zwraca ciąg wersji danych identyfikatora URI. | 
+| [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Zwraca ciąg wersji ciąg kodowany w formacie base64. | 
+| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Zwróć binarnej wersji danych identyfikatora URI. | 
+| [decodeuricomponent —](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Zwracany ciąg czy zastępuje Usuń znaki dekodowane wersje. | 
+| [encodeuricomponent —](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Zwraca ciąg, który zastępuje znaki niezabezpieczony adres URL znaki specjalne. | 
+| [Float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Zwraca zmiennoprzecinkową punktu liczba wartości wejściowych. | 
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Zwraca ciąg wersji liczby całkowitej. | 
+| [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | Zwraca wartość typu JavaScript Object Notation (JSON) lub obiekt string lub XML. | 
+| [Ciąg](../logic-apps/workflow-definition-language-functions-reference.md#string) | Zwraca ciąg wersji wartości wejściowej. | 
+| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Zwróć wersja kodowany w formacie identyfikatora URI dla wartości wejściowej przez zamianę znaków niezabezpieczony adres URL znaki specjalne. | 
+| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Zwróć binarnej wersji na ciąg kodowany w formacie identyfikatora URI. | 
+| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Zwraca ciąg wersji ciąg kodowany w formacie identyfikatora URI. | 
+| [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Zwraca ciąg w wersji XML. | 
+||| 
+
+<a name="math-functions"></a>
+
+### <a name="math-functions"></a>Funkcje matematyczne
+
+Aby pracować z liczbami całkowitymi i elementów przestawnych, można użyć tych funkcje matematyczne. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Math — funkcja | Zadanie | 
+| ------------- | ---- | 
+| [Dodaj](../logic-apps/workflow-definition-language-functions-reference.md#add) | Zwraca wynik z dodanie dwóch liczb. | 
+| [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Zwraca wynik dzielenia dwóch liczb. | 
+| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Zwraca największą wartość ze zbioru liczb lub tablicy. | 
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Zwraca najmniejszą wartość z zestawu liczb lub tablicy. | 
+| [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Zwraca resztę z dzielenia liczby dwa. | 
+| [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Zwraca produktu z pomnożenie dwóch liczb. | 
+| [RAND](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Zwraca losową liczbę całkowitą z określonego zakresu. | 
+| [Zakres](../logic-apps/workflow-definition-language-functions-reference.md#range) | Zwraca tablicę liczba całkowita, która rozpoczyna się od określonej wartości całkowitej. | 
+| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Zwraca wynik z odjęcie druga liczba od pierwszej liczby. | 
+||| 
+
+<a name="date-time-functions"></a>
+
+### <a name="date-and-time-functions"></a>Funkcje daty i godziny
+
+Aby pracować z dat i godzin, można użyć tych funkcji daty i godziny.
+Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Funkcja daty lub godziny | Zadanie | 
+| --------------------- | ---- | 
+| [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Dodaj liczbę dni do sygnatury czasowej. | 
+| [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Dodaj liczbę godzin do sygnatury czasowej. | 
+| [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Dodaj liczbę minut do sygnatury czasowej. | 
+| [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Dodaj liczba sekund do sygnatury czasowej. |  
+| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Dodaj liczbę jednostek czasu do sygnatury czasowej. Zobacz też [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). | 
+| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Konwertuj sygnaturę czasową z uniwersalny czas koordynowany (UTC) zgodnie ze strefą czasową docelowej. | 
+| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Przekonwertować sygnatury czasowej ze źródłową strefą czasową zgodnie ze strefą czasową docelowej. | 
+| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Konwertuj sygnaturę czasową ze źródłową strefą czasową uniwersalny czas koordynowany (UTC). | 
+| [DayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Zwróć dzień składnik miesiąca z sygnatury czasowej. | 
+| [DayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Zwróć dzień tygodnia składnika z sygnatury czasowej. | 
+| [Dzieńroku](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Zwróć dzień składnik roku z sygnatury czasowej. | 
+| [FormatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Zwraca daty z sygnatury czasowej. | 
+| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Zwraca bieżącą sygnaturę czasową plus jednostki określonego czasu. Zobacz też [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). | 
+| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Zwraca bieżącą sygnaturę czasową minus jednostki określonego czasu. Zobacz też [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). | 
+| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Zwróć początek dnia dla sygnatury czasowej. | 
+| [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Zwróć początek godziny dla sygnatury czasowej. | 
+| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Zwraca początek miesiąca dla sygnatury czasowej. | 
+| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Odjęcie liczby jednostek czasu z sygnatury czasowej. Zobacz też [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). | 
+| [znaczniki osi](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Zwraca `ticks` wartości właściwości dla określonej sygnatury czasowej. | 
+| [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Zwraca bieżącą sygnaturę czasową jako ciąg. | 
+||| 
+
+<a name="workflow-functions"></a>
+
+### <a name="workflow-functions"></a>Funkcje przepływu pracy
+
+Te funkcje przepływu pracy można:
+
+* Uzyskiwanie szczegółowych informacji o wystąpienia przepływu pracy w czasie wykonywania. 
+* Współpraca z dane wejściowe, używane do tworzenia wystąpienia aplikacji logiki.
+* Odwołują się dane wyjściowe z wyzwalacze i akcje.
+
+Na przykład można odwoływać się dane wyjściowe z jedną akcję i użyć tych danych w późniejszym akcji. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Funkcja przepływ pracy | Zadanie | 
+| ----------------- | ---- | 
+| [Akcja](../logic-apps/workflow-definition-language-functions-reference.md#action) | Zwraca dane wyjściowe bieżącej akcji w czasie wykonywania lub wartości z innych pary nazwa wartość JSON. Zobacz też [akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Akcja zwrotu `body` danych wyjściowych w czasie wykonywania. Zobacz też [treści](../logic-apps/workflow-definition-language-functions-reference.md#body). | 
+| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Zwraca wynik akcji w czasie wykonywania. Zobacz [akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [Akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Zwraca wynik akcji w czasie wykonywania lub wartości z innych pary nazwa wartość JSON. Zobacz też [akcji](../logic-apps/workflow-definition-language-functions-reference.md#action).  | 
+| [body](#body) | Akcja zwrotu `body` danych wyjściowych w czasie wykonywania. Zobacz też [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). | 
+| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Utworzyć tablicy o wartości, które odpowiadają nazwy klucza w *dane formularza* lub *postać zakodowanych* wyniki akcji. | 
+| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Zwraca pojedynczą wartość, który odpowiada nazwie klucza w akcji *dane formularza* lub *wynik zakodowany w postaci*. | 
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gdy wewnątrz identycznych działania dotyczące tablicy, zwraca bieżący element w tablicy podczas akcji bieżącej iteracji. | 
+| [Elementy](../logic-apps/workflow-definition-language-functions-reference.md#items) | Gdy wewnątrz dla każdego lub czy do pętli, zwracany bieżący element z określonym pętli.| 
+| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Zwróć "wywołania zwrotnego adresu URL" wywołuje wyzwalacz lub akcji. | 
+| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Zwróć wynik akcji, który ma wiele części treści dla określonej części. | 
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Zwraca wartość dla parametru, który jest opisany w definicji aplikacji logiki. | 
+| [Wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Zwraca dane wyjściowe tego wyzwalacza, w czasie wykonywania, lub z innych pary nazwa wartość JSON. Zobacz też [triggerOutputs](#triggerOutputs) i [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). | 
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Zwraca wyzwalacza `body` danych wyjściowych w czasie wykonywania. Zobacz [wyzwalacza](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Zwraca pojedynczą wartość dopasowania nazwy klucza w *dane formularza* lub *postać zakodowanych* wyzwolenia danych wyjściowych. | 
+| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Zwróć dla określonej części treści wieloczęściowej dane wyjściowe tego wyzwalacza. | 
+| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Utworzenie tablicy, których wartości odpowiada nazwie klucza w *dane formularza* lub *postać zakodowanych* wyzwolenia danych wyjściowych. | 
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Zwraca dane wyjściowe tego wyzwalacza w czasie wykonywania lub wartości z innych pary nazwa wartość JSON. Zobacz [wyzwalacza](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [zmienne](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Zwraca wartość określonej zmiennej. | 
+| [przepływ pracy](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Zwróć wszystkie szczegółowe informacje o sam przepływ pracy w czasie wykonywania. | 
+||| 
+
+<a name="uri-parsing-functions"></a>
+
+### <a name="uri-parsing-functions"></a>Funkcje analizy identyfikatora URI
+
+Identyfikatory uniform resource identifier (URI) i uzyskać różne wartości właściwości dla tych identyfikatorów URI, można użyć tych analizy funkcji identyfikatora URI. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Funkcja analizy identyfikatora URI | Zadanie | 
+| -------------------- | ---- | 
+| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Zwraca `host` wartość Identyfikator uniform resource identifier (URI). | 
+| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Zwraca `path` wartość Identyfikator uniform resource identifier (URI). | 
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Zwraca `path` i `query` wartości Identyfikator uniform resource identifier (URI). | 
+| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Zwraca `port` wartość Identyfikator uniform resource identifier (URI). | 
+| [Właściwość uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Zwraca `query` wartość Identyfikator uniform resource identifier (URI). | 
+| [UriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Zwraca `scheme` wartość Identyfikator uniform resource identifier (URI). | 
+||| 
+
+<a name="manipulation-functions"></a>
+
+### <a name="json-and-xml-functions"></a>Funkcje JSON i XML
+
+Do pracy z obiektami JSON i XML węzłów, można użyć funkcji manipulowania. Aby uzyskać pełną dokumentację dotyczące każdej funkcji, zobacz [artykułu alfabetyczny spis](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Funkcję manipulowania | Zadanie | 
+| --------------------- | ---- | 
+| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Dodaj właściwość i jej wartość lub pary nazwa wartość do obiektu JSON, a następnie wróć zaktualizowany obiekt. | 
+| [połączenie](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Zwraca pierwszą wartość inną niż null z co najmniej jeden parametr. | 
+| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Usuń właściwość z obiektu JSON i zwracać zaktualizowany obiekt. | 
+| [Metoda setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Ustaw wartość właściwości obiektu JSON i zwróć zaktualizowany obiekt. | 
+| [wyrażenie XPath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Sprawdź, czy XML węzły lub wartości zgodne wyrażenie XPath (XML Path Language) i zwracają pasującego węzłów lub wartości. | 
+||| 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wyzwalacze i akcje przepływu pracy](logic-apps-workflow-actions-triggers.md)
+* Dowiedz się więcej o [akcje język definicji przepływu pracy i wyzwalaczy](../logic-apps/logic-apps-workflow-actions-triggers.md)
+* Dowiedz się więcej o programowe tworzenie i zarządzanie nimi logiki aplikacji za pomocą [interfejsu API REST przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows)

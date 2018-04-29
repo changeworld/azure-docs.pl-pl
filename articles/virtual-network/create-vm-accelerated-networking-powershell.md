@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: f3c8853331121fc1e267f6c569279f7d8df907b5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 995f40599c059434c419bea95019f8700f756ad8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Windows za pomocą przyspieszony sieci
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Maszyny wirtualne muszą być tworzone przyspieszony sieci włączone. Nie można włączyć tę funkcję w istniejących maszyn wirtualnych. Wykonaj poniższe kroki, aby włączyć przyspieszonego sieci:
 >   1. Usuń maszynę wirtualną
 >   2. Utwórz ponownie maszynę wirtualną z włączoną obsługą przyspieszonego sieci
@@ -52,7 +52,7 @@ Przyspieszone sieci jest obsługiwana w najbardziej ogólnego przeznaczenia i ro
 Aby uzyskać więcej informacji na wystąpień maszyn wirtualnych, zobacz [rozmiarów maszyn wirtualnych systemu Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="regions"></a>Regiony
-Dostępna we wszystkich publicznych regiony platformy Azure i chmury Azure dla instytucji rządowych. 
+Dostępna we wszystkich publicznych regiony platformy Azure i chmury Azure dla instytucji rządowych.
 
 ## <a name="limitations"></a>Ograniczenia
 Podczas przy użyciu tej możliwości istnieją następujące ograniczenia:
@@ -65,11 +65,11 @@ Chociaż ten artykuł zawiera kroki, aby utworzyć maszynę wirtualną z przyspi
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Zainstaluj [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) wersji 5.1.1 lub nowszym. Aby znaleźć obecnie zainstalowanej wersji, uruchom `Get-Module -ListAvailable AzureRM`. Aby zainstalować lub uaktualnić należy zainstalować najnowszą wersję modułu AzureRM z [galerii programu PowerShell](https://www.powershellgallery.com/packages/AzureRM). W sesji programu PowerShell, zaloguj się do konta platformy Azure przy użyciu [Add-AzureRmAccount](/powershell/module/AzureRM.Profile/Add-AzureRmAccount).
+Zainstaluj [programu Azure PowerShell](/powershell/azure/install-azurerm-ps) wersji 5.1.1 lub nowszym. Aby znaleźć obecnie zainstalowanej wersji, uruchom `Get-Module -ListAvailable AzureRM`. Aby zainstalować lub uaktualnić należy zainstalować najnowszą wersję modułu AzureRM z [galerii programu PowerShell](https://www.powershellgallery.com/packages/AzureRM). W sesji programu PowerShell, zaloguj się do konta platformy Azure przy użyciu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount).
 
 W poniższych przykładach Zastąp przykładowe nazwy parametrów własne wartości. Przykład nazwy parametrów uwzględnione *myResourceGroup*, *myNic*, i *myVM*.
 
-Utwórz nową grupę zasobów o [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *centralus* lokalizacji:
+Utwórz grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w *centralus* lokalizacji:
 
 ```powershell
 New-AzureRmResourceGroup -Name "myResourceGroup" -Location "centralus"
@@ -200,13 +200,13 @@ New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "cent
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>Upewnij się, że sterownik jest zainstalowany w systemie operacyjnym
 
-Po utworzeniu maszyny Wirtualnej na platformie Azure, połączenie z maszyną Wirtualną i upewnij się, że sterownik jest zainstalowany w systemie Windows. 
+Po utworzeniu maszyny Wirtualnej na platformie Azure, połączenie z maszyną Wirtualną i upewnij się, że sterownik jest zainstalowany w systemie Windows.
 
 1. Za pomocą przeglądarki internetowej, otwórz Azure [portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 2. W polu zawierająca tekst, który *wyszukiwania zasobów* w górnej części portalu Azure, wpisz *myVm*. Gdy **myVm** pojawia się w wynikach wyszukiwania kliknij ją. Jeśli **tworzenie** jest widoczna w obszarze **Connect** przycisku Azure nie została jeszcze ukończona tworzenia maszyny Wirtualnej. Kliknij przycisk **Connect** w lewym górnym rogu omówienie tylko po nie jest już wyświetlana **tworzenie** w obszarze **Connect** przycisku.
 3. Wprowadź nazwę użytkownika i hasła wprowadzonego w polu [Utwórz maszynę wirtualną](#create-the-virtual-machine). Jeśli nigdy nie podłączona do maszyny Wirtualnej systemu Windows na platformie Azure, zobacz [nawiązywanie połączenia z maszyną wirtualną](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 4. Kliknij prawym przyciskiem myszy przycisk Start systemu Windows, a następnie kliknij przycisk **Menedżera urządzeń**. Rozwiń węzeł **karty sieciowe** węzła. Upewnij się, że **Mellanox ConnectX 3 wirtualnej funkcja Ethernet karty** pojawia się, jak pokazano na poniższej ilustracji:
-   
+
     ![Menedżer urządzeń](./media/create-vm-accelerated-networking/device-manager.png)
 
 Przyspieszone sieci jest teraz włączony dla maszyny Wirtualnej.

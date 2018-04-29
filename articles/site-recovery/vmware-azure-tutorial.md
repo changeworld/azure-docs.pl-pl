@@ -1,19 +1,19 @@
 ---
-title: "Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware przy użyciu usługi Azure Site Recovery | Microsoft Docs"
-description: "Dowiedz się, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware przy użyciu usługi Azure Site Recovery."
+title: Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware przy użyciu usługi Azure Site Recovery | Microsoft Docs
+description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7580db2a2fd41c124443b26257f1b946adcc068c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6c86a98dd819b91608be04f1466dc1e6764ee4b9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
@@ -27,10 +27,10 @@ Z tego samouczka dowiesz się, jak skonfigurować odzyskiwanie po awarii na plat
 
 Jest to trzeci samouczek z tej serii. Założono w nim, że zostały już wykonane zadania z poprzednich samouczków:
 
-* [Przygotowywanie platformy Azure](tutorial-prepare-azure.md)
-* [Przygotowywanie lokalnego wdrożenia oprogramowania VMware](vmware-azure-tutorial-prepare-on-premises.md)
+* [Przygotowywanie platformy Azure](tutorial-prepare-azure.md). W tym samouczku opisano, w jaki sposób skonfigurować sieć i konto usługi Azure Storage, upewnić się, że Twoje konto platformy Azure ma odpowiednie uprawnienia, i utworzyć magazyn usługi Recovery Services.
+* [Przygotowywanie lokalnego wdrożenia oprogramowania VMware](vmware-azure-tutorial-prepare-on-premises.md). W tym samouczku opisano sposób przygotowania kont tak, aby usługa Site Recovery mogła uzyskać dostęp do serwerów VMware w celu odnajdywania maszyn wirtualnych i opcjonalnego wykonywania instalacji wypychanej składnika usługi Site Recovery Mobility po włączeniu replikacji dla maszyny wirtualnej. Pokazano również, w jaki sposób upewnić się, że serwery usługi VMware oraz maszyny wirtualne spełniają wymagania dotyczące usługi Site Recovery.
 
-Przed rozpoczęciem warto [zapoznać się z architekturą](vmware-azure-architecture.md) scenariuszów odzyskiwania po awarii.
+Przed rozpoczęciem warto [zapoznać się z architekturą](vmware-azure-architecture.md) scenariuszy odzyskiwania po awarii.
 
 
 ## <a name="select-a-replication-goal"></a>Wybieranie celu replikacji
@@ -43,8 +43,6 @@ Przed rozpoczęciem warto [zapoznać się z architekturą](vmware-azure-architec
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
 
-> [!TIP]
-> Zalecaną metodą wdrażania serwera konfiguracji w celu ochrony maszyny wirtualnej VMware jest użycie modelu wdrażania na podstawie formatu OVF zgodnie z sugestią podaną w tym artykule. Jeśli istnieją ograniczenia w organizacji, które uniemożliwiają wdrożenie szablonu OVF, można użyć pliku [UnifiedSetup.exe w celu zainstalowania serwera konfiguracji](physical-manage-configuration-server.md).
 
 Aby skonfigurować środowisko źródłowe, potrzebna jest jedna maszyna lokalna o wysokiej dostępności, na której hostowane będą składniki lokalne usługi Site Recovery. Obejmują one serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy:
 
@@ -53,6 +51,10 @@ Aby skonfigurować środowisko źródłowe, potrzebna jest jedna maszyna lokalna
 - Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
 
 Aby skonfigurować serwer konfiguracji jako maszynę wirtualną VMware o wysokiej dostępności, należy pobrać przygotowany szablon Open Virtualization Format (OVF) i zaimportować go do programu VMware w celu utworzenia maszyny wirtualnej. Po skonfigurowaniu serwera konfiguracji należy zarejestrować go w magazynie. Po rejestracji usługa Site Recovery odnajduje lokalne maszyny wirtualne VMware.
+
+> [!TIP]
+> Ten samouczek używa szablonu OVF do utworzenia maszyny wirtualnej serwera konfiguracji dla usługi VMware. Jeśli nie możesz tego zrobić, możesz uruchomić [instalację ręczną](physical-manage-configuration-server.md). 
+
 
 ### <a name="download-the-vm-template"></a>Pobieranie szablonu maszyny wirtualnej
 
@@ -103,7 +105,7 @@ Aby dodać kolejną kartę sieciową do serwera konfiguracji, zrób to przed zar
 7. Narzędzie wykonuje pewne zadania konfiguracyjne, a następnie wywołuje ponowne uruchomienie.
 8. Ponownie zaloguj się do maszyny. Zostanie automatycznie uruchomiony kreator zarządzania serwerem konfiguracji.
 
-### <a name="configure-settings-and-connect-to-vmware"></a>Konfigurowanie ustawień i nawiązywanie połączenia z programem VMware
+### <a name="configure-settings-and-add-the-vmware-server"></a>Konfiguracja ustawień i dodawanie serwera VMware
 
 1. W kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Konfiguracja łączności**, a następnie wybierz kartę sieciową, która ma odbierać ruch związany z replikacją. Następnie wybierz pozycję **Zapisz**. Po skonfigurowaniu tego ustawienia nie można go zmienić.
 2. Na stronie **Wybierz magazyn usługi Recovery Services** wybierz swoją subskrypcję platformy Azure, grupę zasobów i magazyn.

@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z Shmoop dla szkoły | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Shmoop dla szkoły."
+title: 'Samouczek: Integracji Azure Active Directory z Shmoop dla szkoły | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Shmoop dla szkoły.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 48db70834f96adbb7097457caca8489ea1a57da5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e824fe7a74c4adc619f7fa324aa6fa28dacecf24
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Samouczek: Integracji Azure Active Directory z Shmoop dla szkoły
 
@@ -37,7 +37,7 @@ Aby uzyskać więcej informacji o integracji aplikacji SaaS w usłudze Azure AD,
 Aby skonfigurować integrację usługi Azure AD z Shmoop dla szkoły, potrzebne są następujące elementy:
 
 - Subskrypcję usługi Azure AD
-- Shmoop dla szkoły pojedynczy znak z włączoną subskrypcji
+- Shmoop dla szkoły logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Nie zaleca się używanie środowiska produkcyjnego do testowania czynności w tym samouczku.
@@ -80,8 +80,6 @@ W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji
 
 Do rejestracji jednokrotnej do pracy usługi Azure AD musi wiedzieć, komu użytkownika odpowiednika w Shmoop dla szkoły jest użytkownikiem w usłudze Azure AD. Innymi słowy należy ustanowić powiązanie użytkownika usługi Azure AD i danemu użytkownikowi w Shmoop dla szkoły.
 
-W Shmoop dla szkoły **Username** wartość taką samą wartość **nazwy użytkownika** w usłudze Azure AD. Teraz ustanowieniu relacji łącza.
-
 Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z Shmoop dla szkoły, wykonaj poniższe bloki konstrukcyjne:
 
 1. [Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configure-azure-ad-single-sign-on) umożliwienie użytkownikom korzystać z tej funkcji.
@@ -108,9 +106,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
 
-    a. W **adres URL logowania** wpisz adres URL z następującego wzorca:`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a. W **adres URL logowania** wpisz adres URL z następującego wzorca: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
-    b. W **identyfikator** wpisz adres URL z następującego wzorca:`https://schools.shmoop.com/<uniqueid>`
+    b. W **identyfikator** wpisz adres URL z następującego wzorca: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE] 
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej Shmoop dla klienta szkoły](mailto:support@shmoop.com) uzyskać te wartości. 
@@ -146,31 +144,11 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Aby wygenerować **metadanych** adres URL, wykonaj następujące czynności:
+7. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
 
-    a. Wybierz **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appregistrations.png)
-   
-    b. Aby otworzyć **punkty końcowe** okno dialogowe, wybierz opcję **punkty końcowe**.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpointicon.png)
+    ![Łącze pobierania certyfikatu](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
-    c. Wybierz przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu URL i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpoint.png)
-     
-    d. Przejdź do strony właściwości **Shmoop dla szkoły**. Następnie skopiuj **identyfikator aplikacji** za pomocą **kopiowania** przycisku. Wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.   
-
-8. Aby skonfigurować logowanie jednokrotne w **Shmoop dla szkoły** stronie, musisz wysłać **adres URL metadanych** do [Shmoop dla szkoły obsługuje zespołu](mailto:support@shmoop.com).
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com) podczas konfigurowania aplikacji. Po dodaniu tej aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **rejestracji jednokrotnej** karcie i dostępu do osadzonego Dokumentacja za pośrednictwem **konfiguracji** sekcji u dołu. Możesz przeczytać dodatkowe informacje o funkcji dokumentacji osadzony w [usługi Azure AD osadzonych dokumentacji]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+8. Aby skonfigurować logowanie jednokrotne w **Shmoop dla szkoły** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [Shmoop dla szkoły obsługuje team](mailto:support@shmoop.com).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -249,7 +227,7 @@ Po wybraniu **Shmoop dla szkoły** kafelka w panelu dostępu użytkownik powinie
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobu integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

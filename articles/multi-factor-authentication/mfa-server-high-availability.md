@@ -1,12 +1,12 @@
 ---
-title: "Konfigurowanie serwera usługi Azure MFA wysokiej dostępności | Dokumentacja firmy Microsoft"
-description: "Wdrażanie wielu wystąpień serwera usługi Azure Multi-Factor Authentication w konfiguracji, które zapewniają wysoką dostępność."
+title: Konfigurowanie serwera usługi Azure MFA wysokiej dostępności | Dokumentacja firmy Microsoft
+description: Wdrażanie wielu wystąpień serwera usługi Azure Multi-Factor Authentication w konfiguracji, które zapewniają wysoką dostępność.
 services: multi-factor-authentication
-keywords: "Usługa Azure MFA"
-documentationcenter: 
+keywords: Usługa Azure MFA
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: c2f9a2422ea5a47edd80948073c7f7a6cb0d0945
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication wysokiej dostępności
 
@@ -73,6 +73,6 @@ Należy pamiętać, następujące elementy dla obszaru odpowiednio numerowane na
    ![Serwer usługi Azure MFA — portalem użytkowników a usługą aplikacji mobilnych wysokiej dostępności](./media/mfa-server-high-availability/mfaportal.png)
 3. Farma serwerów usług AD FS jest równoważeniu obciążenia i publikowany w Internecie przy użyciu równoważenia obciążenia serwerów proxy usług AD FS w sieci obwodowej. Każdy serwer usług AD FS używa agenta usług AD FS do komunikacji z serwerami usługi MFA Azure przy użyciu jednej z równoważeniem obciążenia adresu URL (mfaapp.contoso.com) za pośrednictwem portu TCP 443.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * [Instalowanie i konfigurowanie serwera usługi Azure MFA](multi-factor-authentication-get-started-server.md)

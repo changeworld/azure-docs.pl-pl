@@ -1,29 +1,91 @@
 ---
-title: Zarządzanie przyłączonych do domeny w usłudze hdinsight - Azure | Dokumentacja firmy Microsoft
+title: Zarządzanie przyłączonych do domeny w usłudze hdinsight - Azure
 description: Informacje o sposobie zarządzania klastrami HDInsight przyłączonych do domeny
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.assetid: 6ebc4d2f-2f6a-4e1e-ab6d-af4db6b4c87c
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/11/2018
-ms.author: bhanupr
-ms.openlocfilehash: 44202541557a7513e0068f52289a637f6e48f43f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 9875d9884f04d26ebfbd44e858beb272c2306958
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>Zarządzanie klastrami HDInsight przyłączonych do domeny
 Dowiedz się, użytkownicy i role w HDInsight przyłączonych do domeny oraz sposób zarządzania klastrami HDInsight przyłączonych do domeny.
+
+## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą programu VSCode
+
+Można połączyć normalne klastra przy użyciu Ambari zarządzane username, także połączyć zabezpieczeń klastra usługi hadoop przy użyciu nazwy użytkownika domeny (takich jak: user1@contoso.com).
+1. Otwórz palety polecenia, wybierając **CTRL + SHIFT + P**, a następnie wprowadź **HDInsight: Link klastra**.
+
+   ![polecenie klastra łącze](./media/apache-domain-joined-manage/link-cluster-command.png)
+
+2. Wprowadź HDInsight wprowadzania nazwy użytkownika -> -> adres URL klastra wprowadzania hasła -> Wybierz typ klastra -> go pokazuje Powodzenie informacji po weryfikacji.
+   
+   ![okno dialogowe klastra łącza](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   > [!NOTE]
+   > Nazwa połączonego użytkownika i hasło są używane, jeśli klaster rejestrowane w subskrypcji platformy Azure i połączone klastra. 
+   
+3. Widać klastra połączone za pomocą polecenia **klaster listą**. Teraz możesz przesłać skrypt do tego klastra połączony.
+
+   ![połączone klastra](./media/apache-domain-joined-manage/linked-cluster.png)
+
+4. Również można odłączyć klastra przez wprowadzanie **HDInsight: odłączyć klastra** z palety polecenia.
+
+## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą środowiska IntelliJ
+
+Można połączyć normalne klastra przy użyciu Ambari zarządzane username, także połączyć zabezpieczeń klastra usługi hadoop przy użyciu nazwy użytkownika domeny (takich jak: user1@contoso.com). 
+1. Kliknij przycisk **Link klastra** z **Eksploratora Azure**.
+
+   ![menu kontekstowe klastra łącza](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. Wprowadź **nazwy klastra**, **nazwy użytkownika** i **hasło**. Należy sprawdzić nazwę użytkownika i hasło, jeśli wystąpił błąd uwierzytelniania. Opcjonalnie dodaj konto magazynu, klucz magazynu, a następnie wybierz kontener z kontenera magazynu. Informacje o magazynu jest przeznaczony dla Eksploratora usługi storage w drzewie po lewej stronie
+   
+   ![okno dialogowe klastra łącza](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   > [!NOTE]
+   > Używamy klucza magazynu połączone, nazwę użytkownika i hasło, jeśli klaster rejestrowane w subskrypcji platformy Azure i połączone klastra.
+   > ![Eksplorator usługi Storage w IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+
+   
+3. Widać klastra połączone w **HDInsight** węzła, jeśli dane wejściowe są prawidłowe. Teraz można przesłać do tego klastra połączonych aplikacji.
+
+   ![połączone klastra](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. Możesz również odłączyć klastra z **Eksploratora Azure**.
+   
+   ![odłączyć klastra](./media/apache-domain-joined-manage/unlink.png)
+
+## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą programu Eclipse
+
+Można połączyć normalne klastra przy użyciu Ambari zarządzane username, także połączyć zabezpieczeń klastra usługi hadoop przy użyciu nazwy użytkownika domeny (takich jak: user1@contoso.com).
+1. Kliknij przycisk **Link klastra** z **Eksploratora Azure**.
+
+   ![menu kontekstowe klastra łącza](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. Wprowadź **nazwy klastra**, **nazwy użytkownika** i **hasło**, następnie kliknij przycisk OK, aby połączyć klastra. Opcjonalnie wprowadź konto magazynu, klucz magazynu, a następnie wybierz kontener magazynu do pracy w widoku drzewa po lewej stronie Eksploratora usługi storage
+   
+   ![okno dialogowe klastra łącza](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   
+   > [!NOTE]
+   > Używamy klucza magazynu połączone, nazwę użytkownika i hasło, jeśli klaster rejestrowane w subskrypcji platformy Azure i połączone klastra.
+   > ![Eksplorator usługi Storage w środowisku Eclipse](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+
+3. Widać klastra połączone w **HDInsight** węzeł po kliknięciu przycisku OK, jeśli dane wejściowe są prawidłowe. Teraz można przesłać do tego klastra połączonych aplikacji.
+
+   ![połączone klastra](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. Możesz również odłączyć klastra z **Eksploratora Azure**.
+   
+   ![odłączyć klastra](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Dostęp do klastrów z pakietu zabezpieczeń organizacji.
 
@@ -33,10 +95,10 @@ Izolacji zabezpieczeń i użytkowników są ważne w przypadku klastra HDInsight
 
 |Obciążenie|Scenariusz|Metody dostępu|
 |--------|--------|-------------|
-|Hadoop|Gałąź — interakcyjnych zadania/zapytań |<ul><li>[Beeline](#beeline)</li><li>[Widok gałęzi](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|platforma Spark|Zadania interakcyjnych/zapytań, PySpark interakcyjne|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin z Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Widok gałęzi](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Hadoop|Gałąź — interakcyjnych zadania/zapytań |<ul><li>[Beeline](#beeline)</li><li>[Widok gałęzi](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługi Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|platforma Spark|Zadania interakcyjnych/zapytań, PySpark interakcyjne|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin z Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Widok gałęzi](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługi Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |platforma Spark|Scenariusze partii — przesyłania Spark, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
-|Zapytanie interakcyjne (LLAP)|Interaktywne|<ul><li>[Beeline](#beeline)</li><li>[Widok gałęzi](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Zapytanie interakcyjne (LLAP)|Interaktywne|<ul><li>[Beeline](#beeline)</li><li>[Widok gałęzi](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC — usługi Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Dowolne|Instalowanie niestandardowych aplikacji|<ul><li>[Akcje skryptu](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
 

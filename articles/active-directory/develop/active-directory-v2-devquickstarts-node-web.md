@@ -1,39 +1,39 @@
 ---
 title: Azure Active Directory v2.0 logowanie aplikacji sieci web Node.js | Dokumentacja firmy Microsoft
-description: "Informacje o sposobie tworzenia aplikacji sieci web Node.js, który loguje się użytkownik, używając osobistego konta Microsoft i konta firmowego lub szkolnego."
+description: Informacje o sposobie tworzenia aplikacji sieci web Node.js, który loguje się użytkownik, używając osobistego konta Microsoft i konta firmowego lub szkolnego.
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1b889e72-f5c3-464a-af57-79abf5e2e147
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 05/13/2017
+ms.date: 04/20/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 230d8ad16dc62564f3c1149443dd59fbb9974db5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eb16502ca255bf99c3780ff3975b6ca7f5a79993
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-sign-in-to-a-nodejs-web-app"></a>Dodaj logowanie do aplikacji sieci web Node.js
 
 > [!NOTE]
 > Nie wszystkie usługi Azure Active Directory scenariusze i funkcje działają z punktem końcowym v2.0. Aby ustalić, czy należy używać punktu końcowego v2.0 lub punkt końcowy w wersji 1.0, przeczytaj o [ograniczenia v2.0](active-directory-v2-limitations.md).
-> 
+>
 
-W tym samouczku używamy Passport do wykonywania następujących zadań:
+W tym samouczku używamy [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) do wykonywania następujących zadań:
 
 * W aplikacji sieci web logowania użytkownika, przy użyciu usługi Azure Active Directory (Azure AD) i punktu końcowego v2.0.
 * Wyświetl informacje o użytkowniku.
 * Zaloguj użytkownika poza aplikacją.
 
-**Passport** to uwierzytelniające oprogramowanie pośredniczące dla środowiska Node.js. Elastyczne i moduły, usługa Passport można dyskretnie usunięty w każdym ekspresowe lub restify aplikacji sieci web. W usłudze Passport kompleksowy zestaw strategii obsługuje uwierzytelnianie przy użyciu nazwy użytkownika i hasła, Facebook, Twitter lub innych opcji. Opracowaliśmy strategię dla usługi Azure AD. W tym artykule, firma Microsoft opisano, jak zainstalować moduł, a następnie dodaj usługi Azure AD `passport-azure-ad` wtyczki.
+[Usługa Passport](http://passportjs.org/) to uwierzytelniające oprogramowanie pośredniczące dla środowiska Node.js. Elastyczne i moduły, usługa Passport można dyskretnie usunięty w każdym ekspresowe lub restify aplikacji sieci web. W usłudze Passport kompleksowy zestaw strategii obsługuje uwierzytelnianie przy użyciu nazwy użytkownika i hasła, Facebook, Twitter lub innych opcji. Opracowaliśmy strategię dla usługi Azure AD. W tym artykule, firma Microsoft opisano, jak zainstalować moduł, a następnie dodaj usługi Azure AD **passport-azure-ad** wtyczki.
 
 ## <a name="download"></a>Do pobrania
 Kod używany w tym samouczku jest przechowywany [ w serwisie GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). Aby użyć tego samouczka, możesz [pobrać szkielet aplikacji w pliku .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) lub sklonować szkielet:
@@ -47,40 +47,29 @@ Utwórz nową aplikację na [apps.dev.microsoft.com](https://apps.dev.microsoft.
 
 * Kopiuj **identyfikator aplikacji** przypisany do aplikacji. Należy go w tym samouczku.
 * Dodaj **Web** platformy aplikacji.
-* Kopiuj **identyfikator URI przekierowania** z portalu. Należy używać domyślnej wartości identyfikatora URI z `urn:ietf:wg:oauth:2.0:oob`.
+* Dodaj następujący adres URL skonfigurowany w próbce `http://localhost:3000/auth/openid/return` jako **identyfikator URI przekierowania**.
 
-## <a name="2-add-prerequisities-to-your-directory"></a>2: Dodawanie Konfigurator do katalogu
-W wierszu polecenia przejdź do przejdź do folderu głównego, jeśli nie masz już istnieje. Uruchom następujące polecenia:
+## <a name="2-prerequisities-to-run-the-sample"></a>2: wymagania wstępne, aby uruchomić przykładowy
 
-* `npm install express`
-* `npm install ejs`
-* `npm install ejs-locals`
-* `npm install restify`
-* `npm install mongoose`
-* `npm install bunyan`
-* `npm install assert-plus`
-* `npm install passport`
-* `npm install webfinger`
-* `npm install body-parser`
-* `npm install express-session`
-* `npm install cookie-parser`
+Konieczne będzie zainstalowana tak, aby skompilować i uruchomić ten przykład środowiska node.js. Można zainstalować środowisko Node.js z http://nodejs.org/.
 
-Ponadto możemy użyć `passport-azure-ad` w przewodniku Szybki Start:
+W wierszu polecenia przejdź do przejdź do folderu głównego, jeśli nie masz już istnieje.
+Uruchom następujące polecenie, aby zainstalować moduły wymagań wstępnych węzła na liście `package.json` pliku:
 
-* `npm install passport-azure-ad`
+`npm install`
 
-Spowoduje to zainstalowanie bibliotek który `passport-azure-ad` używa.
+Spowoduje również zainstalowanie biblioteki który `passport-azure-ad` używa.
 
-## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3: Konfigurowanie aplikacji do użycia strategii passport-node-js
+## <a name="3-set-up-your-app-to-use-passport-azure-ad"></a>3: Konfigurowanie aplikacji przy użyciu usługi passport-azure-usługi ad
 Konfigurowanie oprogramowania pośredniczącego Express do używania protokołu uwierzytelniania OpenID Connect. Możesz użyć programu Passport do wysyłania żądań zalogowania się i wylogowania, zarządzania sesji użytkownika i uzyskać informacje o użytkowniku, między innymi.
 
-1.  W katalogu głównym projektu otwórz plik Config.js. W `exports.creds` wprowadź wartości konfiguracji aplikacji.
-  
-  * `clientID`: **Identyfikator aplikacji** przypisany do aplikacji w portalu Azure.
+1.  W katalogu głównym projektu otwórz plik config.js. W `exports.creds` wprowadź wartości konfiguracji aplikacji.
+
+  * `clientID`: **Identyfikator aplikacji** przypisany do aplikacji w portalu.
   * `returnURL`: **Identyfikator URI przekierowania** wprowadzony w portalu.
   * `clientSecret`Klucz tajny, który wygenerował w portalu.
 
-2.  W katalogu głównym projektu otwórz plik App.js. Aby wywołać stratey OIDCStrategy, który jest dostarczany z `passport-azure-ad`, Dodaj następujące wywołanie:
+2.  W katalogu głównym projektu otwórz plik app.js. Aby wywołać OIDCStrategy, który jest dostarczany z `passport-azure-ad`, Dodaj następujące wywołanie:
 
   ```JavaScript
   var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -135,8 +124,8 @@ Usługa Passport używa podobnego wzorca do wszystkich swoich strategii (Twitter
 
   > [!IMPORTANT]
   > Poprzedni kod obejmuje każdy użytkownik, który może uwierzytelniać się z serwerem. Jest to nazywane rejestracji automatycznej. Na serwerze produkcyjnym nie mają mieć możliwość każda osoba, która bez konieczności ich przejść przez proces rejestracji, który można wybrać. Jest to zwykle wzorzec, który pojawi się w aplikacjach dla użytkowników indywidualnych. Aplikacja może pozwala zarejestrować się w serwisie Facebook, ale następnie prosi o podanie dodatkowych informacji. Jeśli nie korzystasz z wiersza polecenia programu w tym samouczku, można wyodrębnić wiadomości e-mail z obiektu tokena, który jest zwracany. Następnie może poprosić użytkownika o podanie dodatkowych informacji. Ponieważ jest to serwer testowy, możesz dodać użytkownika bezpośrednio do bazy danych w pamięci.
-  > 
-  > 
+  >
+  >
 
 4.  Dodaj metody, które służą do śledzenia użytkowników, którzy są podpisane, zgodnie z żądaniem usługi Passport. Obejmuje to serializację i deserializację informacji użytkownika:
 
@@ -234,7 +223,7 @@ Usługa Passport używa podobnego wzorca do wszystkich swoich strategii (Twitter
   // POST /auth/openid/return
   //   Use passport.authenticate() as route middleware to authenticate the
   //   request. If authentication fails, the user is redirected back to the
-  //   sign-in page. Otherwise, the primary route function is called. 
+  //   sign-in page. Otherwise, the primary route function is called.
   //   In this example, it redirects the user to the home page.
 
   app.post('/auth/openid/return',
@@ -245,10 +234,10 @@ Usługa Passport używa podobnego wzorca do wszystkich swoich strategii (Twitter
     });
   ```
 
-## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4: Użyj Passport do wysyłania żądań zalogowania się i wylogowania do usługi Azure AD
+## <a name="4-add-sign-in-and-sign-out-requests-to-azure-ad"></a>4: Dodaj żądań logowania się i wylogowania do usługi Azure AD
 Aplikacja jest teraz skonfigurowane do komunikacji z punktem końcowym v2.0 za pomocą protokołu uwierzytelniania OpenID Connect. `passport-azure-ad` Strategii zajmuje się wszystkie szczegóły obsługuje tworzenie komunikatów uwierzytelniania, sprawdzanie poprawności tokenów z usługi Azure AD i podtrzymywanie sesji użytkowników. Pozostało celu ma zapewnić użytkownikom taki sposób, aby zalogować się i wylogowywania oraz zebrać więcej informacji na temat użytkownika, który jest zalogowany.
 
-1.  Dodaj **domyślne**, **logowania**, **konta**, i **wylogowania** metod do pliku App.js:
+1.  Dodaj **domyślne**, **logowania**, **konta**, i **wylogowania** metod do pliku app.js:
 
   ```JavaScript
 
@@ -277,7 +266,7 @@ Aplikacja jest teraz skonfigurowane do komunikacji z punktem końcowym v2.0 za p
   ```
 
   Oto szczegóły:
-    
+
     * `/` Trasa przekierowuje do widoku index.ejs. Przekazuje użytkownika w żądaniu (jeśli istnieje).
     * `/account` Trasy najpierw *gwarantuje, że użytkownik jest uwierzytelniony* (zaimplementowaniem który w poniższym kodzie). Następnie przekazuje użytkownika w żądaniu. Jest to, aby uzyskać więcej informacji o użytkowniku.
     * `/login` Trasy wywołania z `azuread-openidconnect` uwierzytelniania z `passport-azuread`. Jeśli które się nie powiedzie, przekierowuje użytkownika do `/login`.
@@ -300,7 +289,7 @@ Aplikacja jest teraz skonfigurowane do komunikacji z punktem końcowym v2.0 za p
 
   ```
 
-3.  W App.js należy utworzyć serwer:
+3.  W app.js należy utworzyć serwer:
 
   ```JavaScript
 
@@ -309,7 +298,7 @@ Aplikacja jest teraz skonfigurowane do komunikacji z punktem końcowym v2.0 za p
   ```
 
 
-## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>5: tworzenie widoków i tras w Express przedstawia użytkownikowi w witrynie sieci Web
+## <a name="5-create-the-views-and-routes-in-express"></a>5: tworzenie widoków i tras w Express
 Dodaj trasy i widoki, które zawierają informacje dla użytkownika. Trasy i widoki również obsługiwać `/logout` i `/login` tras, które zostały utworzone.
 
 1. W katalogu głównym, należy utworzyć `/routes/index.js` trasy.
@@ -338,7 +327,7 @@ Dodaj trasy i widoki, które zawierają informacje dla użytkownika. Trasy i wid
   };
   ```
 
-  `/routes/index.js`i `/routes/user.js` są proste trasy przekazują żądania do widoków, w tym użytkownika, jeśli jest obecny.
+  `/routes/index.js` i `/routes/user.js` są proste trasy przekazują żądania do widoków, w tym użytkownika, jeśli jest obecny.
 
 3.  W katalogu głównym, należy utworzyć `/views/index.ejs` widoku. Ta strona wymaga programu **logowania** i **wylogowania** metody. Można również użyć `/views/index.ejs` widok, aby przechwycić informacje o koncie. Możesz użyć spójnika `if (!user)` jako użytkownik, są przekazywane w żądaniu. Jest dowód, że zalogowany użytkownik.
 
@@ -399,13 +388,19 @@ Dodaj trasy i widoki, które zawierają informacje dla użytkownika. Trasy i wid
   </html>
   ```
 
-6.  Aby skompilować i uruchomić aplikację, uruchom `node app.js`. Następnie przejdź do `http://localhost:3000`.
 
-7.  Zaloguj się za pomocą osobistego konta Microsoft lub konta służbowego. Należy pamiętać, że tożsamość użytkownika jest odzwierciedlone na liście /account. 
+  ## <a name="6-build-and-run-your-app"></a>6: tworzenie i uruchamianie aplikacji
+  1. Aby skompilować i uruchomić aplikację, uruchom następujące polecenie z katalogu głównego aplikacji.
+
+  `node app.js`
+
+   Następnie przejdź do `http://localhost:3000` w przeglądarce.
+
+  2. Zaloguj się za pomocą osobistego konta Microsoft lub konta służbowego. Należy pamiętać, że tożsamość użytkownika jest widoczny w `/account` trasy.
 
 Masz teraz aplikacji sieci web, który jest zabezpieczony za pomocą standardowych protokołach branżowych. Użytkownicy mogą uwierzytelniać w aplikacji za pomocą ich kont osobistych i służbowych.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Odwołania, ukończonych próbka (bez wartości konfiguracji) jest dostępna jako [plik zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Użytkownik może ją także sklonować z serwisu GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
@@ -421,4 +416,3 @@ Poniżej przedstawiono dodatkowe zasoby:
 
 ### <a name="get-security-updates-for-our-products"></a>Pobierz aktualizacje zabezpieczeń naszych produktów
 Firma Microsoft zachęca do Zarejestruj się, aby otrzymać powiadomienie, gdy występujących incydentach zabezpieczeń. Na [powiadomień o zabezpieczeniach technicznych Microsoft](https://technet.microsoft.com/security/dd252948) strony, należy subskrybować alerty klasyfikatory zabezpieczeń.
-

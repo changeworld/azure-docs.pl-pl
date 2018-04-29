@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Kontrola dostępu w usłudze Azure Data Lake Store
 
@@ -150,7 +150,7 @@ Na platformie Azure konto usługi Data Lake Store ma kilka ról platformy Azure,
 * Współautorzy
 * Czytelnicy
 
-Wszyscy użytkownicy w roli **Właściciele** dla konta usługi Data Lake Store są automatycznie administratorami dla tego konta. Aby dowiedzieć się więcej, zobacz [Kontrola dostępu oparta na rolach](../active-directory/role-based-access-control-configure.md).
+Wszyscy użytkownicy w roli **Właściciele** dla konta usługi Data Lake Store są automatycznie administratorami dla tego konta. Aby dowiedzieć się więcej, zobacz [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md).
 Jeśli chcesz utworzyć niestandardową rolę kontroli dostępu opartej na rolach (RBAC) z uprawnieniami administratora, musi ona mieć następujące uprawnienia:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -184,7 +184,7 @@ Grupę będącą właścicielem może zmienić:
 * użytkownik będący właścicielem, jeśli jest on również członkiem grupy docelowej.
 
 > [!NOTE]
-> Grupa będąca właścicielem *nie może* zmienić list kontroli dostępu do pliku lub folderu.
+> Grupa będąca właścicielem *nie może* zmienić list kontroli dostępu do pliku lub folderu.  Gdy grupa będąca właścicielem zostanie ustawiona na użytkownika, który utworzył konto w przypadku folderu głównego (**Przypadek 1** powyżej), jedno konto użytkownika nie może zapewnić uprawnień za pośrednictwem grupy będącej właścicielem.  Możesz przypisać te uprawnienia do prawidłowej grupy użytkowników, jeśli ma to zastosowanie.
 
 ## <a name="access-check-algorithm"></a>Algorytm kontroli dostępu
 

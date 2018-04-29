@@ -1,24 +1,18 @@
 ---
-title: "Aspekt filtrów w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Filtrowanie kryteria tożsamości zabezpieczeń użytkownika, języka, lokalizacji geograficznej lub wartości liczbowe, aby ograniczyć wyniki wyszukiwania na zapytania w usłudze Azure Search, Usługa wyszukiwania w chmurze hostowanej w systemie Microsoft Azure."
-services: search
-documentationcenter: 
+title: Aspekt filtrów w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Filtrowanie kryteria tożsamości zabezpieczeń użytkownika, języka, lokalizacji geograficznej lub wartości liczbowe, aby ograniczyć wyniki wyszukiwania na zapytania w usłudze Azure Search, Usługa wyszukiwania w chmurze hostowanej w systemie Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 02a027845e56407bc8cc95f54a46d9534cb6de92
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak utworzyć filtr aspektu w usłudze Azure Search 
 
@@ -113,7 +107,7 @@ Poniższy fragment kodu dodaje do filtr kategorii, jeśli użytkownik wybierze w
 if (categoryFacet != "")
   filter = "category eq '" + categoryFacet + "'";
 ```
-Przy użyciu interfejsu API REST, żądanie będzie przegubowe jako `$filter=category eq 'c1'`. Aby określić kategorię pola wielowartościowe, należy użyć następującej składni:`$filter=category/any(c: c eq 'c1')`
+Przy użyciu interfejsu API REST, żądanie będzie przegubowe jako `$filter=category eq 'c1'`. Aby określić kategorię pola wielowartościowe, należy użyć następującej składni: `$filter=category/any(c: c eq 'c1')`
 
 ## <a name="tips-and-workarounds"></a>Porady i rozwiązania
 

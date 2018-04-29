@@ -1,26 +1,26 @@
 ---
 title: Operacje SAP HANA na platformie Azure | Dokumentacja firmy Microsoft
-description: "Przewodnik obsługi programu SAP HANA systemów, które zostały wdrożone na maszynach wirtualnych Azure."
+description: Przewodnik obsługi programu SAP HANA systemów, które zostały wdrożone na maszynach wirtualnych Azure.
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: juergent
 manager: patfilot
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2017
+ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cb715960a516c6b2ca16376c12cb6f796e0b395
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 959a483d293caa45180c946e92ac824fc56db084
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA w podręczniku obsługi platformy Azure
 Ten dokument zawiera wskazówki dotyczące systemów SAP HANA, które zostały wdrożone na Azure macierzysty maszynach wirtualnych (VM). Ten dokument nie ma zastąpić dokumentacji SAP standardowe zawiera następującą zawartość:
@@ -70,7 +70,7 @@ Również można wdrożyć pełną zainstalowanej platformy SAP HANA na usługac
 Platforma Azure oferuje dwa typy magazynu, które są odpowiednie dla maszyn wirtualnych platformy Azure, które działają SAP HANA:
 
 - [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- [Magazyn w warstwie Premium systemu Azure](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
 
 System Azure oferuje dwie metody wdrażania dla dysków VHD na Azure Standard i Premium Storage. Jeśli zezwala na scenariusz ogólnej, skorzystać z [Azure zarządzanych dysku](https://azure.microsoft.com/services/managed-disks/) wdrożeń.
 
@@ -106,7 +106,7 @@ W poniższej tabeli przedstawiono konfigurację typach maszyn wirtualnych, któr
 
 
 
-| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z VM I/O<br /> Przepływność | / hana/danych i dziennika/hana /<br /> paski LVM lub MDADM | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
+| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z MASZYNA WIRTUALNA WE/WY<br /> Przepływność | / hana/danych i dziennika/hana /<br /> paski LVM lub MDADM | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
@@ -132,7 +132,7 @@ Jeśli chcesz korzystać z [maszyny wirtualnej platformy Azure z jednym umowy SL
 > [!NOTE]
 > W scenariuszach produkcji, sprawdź, czy określonego typu maszyny Wirtualnej jest obsługiwana dla SAP HANA przez SAP w [SAP dokumentacji IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
 
-| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z VM I/O<br /> Przepływność | / hana/danych i dziennika/hana /<br /> paski LVM lub MDADM | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
+| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z MASZYNA WIRTUALNA WE/WY<br /> Przepływność | / hana/danych i dziennika/hana /<br /> paski LVM lub MDADM | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
@@ -161,7 +161,7 @@ Azure akceleratora zapisu jest funkcje, które jest pierwsze wprowadzanie dla ma
 
 Zalecane konfiguracje następującą postać:
 
-| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z VM I/O<br /> Przepływność | / hana/danych | / hana/dziennika | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
+| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM | Maksymalnie z MASZYNA WIRTUALNA WE/WY<br /> Przepływność | / hana/danych | / hana/dziennika | / hana/udostępnionych | wolumin/root | / usr/sap | Hana lub tworzenia kopii zapasowej |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
@@ -177,7 +177,7 @@ Istnieją ograniczenia Azure Premium magazynu wirtualne dyski twarde dla maszyny
 - 16 dysków VHD dla M128xx maszyny Wirtualnej
 - 8 dysków VHD dla M64xx maszyny Wirtualnej
 
-Bardziej szczegółowe instrukcje dotyczące włączania akceleratora zapisu Azure można znaleźć w artykule [Azure zapisu akceleratora dla wdrożenia SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator).
+Bardziej szczegółowe instrukcje dotyczące włączania akceleratora zapisu Azure można znaleźć w artykule [zapisu akceleratora](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 Szczegółowe informacje i ograniczenia dotyczące akceleratora zapisu Azure znajdują się w tej samej dokumentacji.
 

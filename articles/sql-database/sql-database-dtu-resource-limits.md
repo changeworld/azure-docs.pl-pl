@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: c4c85395856756e8ec6a788aa958b479a297892d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fb5c2e16e696ba9eecf4346a0c4e7bc05aacf39f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Limity modelu zasobów na podstawie jednostek dtu w warstwie bazy danych SQL platformy Azure
 
@@ -32,31 +32,28 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 | Maksymalna liczba opcji magazynu (GB) | 2 |
 | Maksymalna pojemność magazynu OLTP w pamięci (GB) |ND |
 | Maksymalna liczba równoczesnych procesów roboczych (liczba żądań) | 30 |
-| Maksymalna liczba współbieżnych logowań | 30 |
 | Maksymalna liczba współbieżnych sesji | 300 |
 |||
 
 ### <a name="standard-service-tier"></a>Warstwa Standardowa usług
 | **Poziom wydajności** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|---:|
-| Maksymalna liczba jednostek Dtu ** | 10 | 20 | 50 | 100 |
+| Maksymalna liczba jednostek DTU | 10 | 20 | 50 | 100 |
 | Dołączony magazyn (GB) | 250 | 250 | 250 | 250 |
 | Maksymalna liczba opcji magazynu (GB) * | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | Maksymalna pojemność magazynu OLTP w pamięci (GB) | ND | ND | ND | ND |
 | Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)| 60 | 90 | 120 | 200 |
-| Maksymalna liczba współbieżnych logowań | 60 | 90 | 120 | 200 |
 | Maksymalna liczba współbieżnych sesji |600 | 900 | 1200 | 2400 |
 ||||||
 
 ### <a name="standard-service-tier-continued"></a>Standardowa usługa warstwy (kontynuacja)
 | **Poziom wydajności** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|---:|
-| Maksymalna liczba jednostek Dtu ** | 200 | 400 | 800 | 1600 | 3000 |
+| Maksymalna liczba jednostek DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Dołączony magazyn (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maksymalna liczba opcji magazynu (GB) * | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Maksymalna pojemność magazynu OLTP w pamięci (GB) | ND | ND | ND | ND |ND |
 | Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)| 400 | 800 | 1600 | 3200 |6000 |
-| Maksymalna liczba współbieżnych logowań | 400 | 800 | 1600 | 3200 |6000 |
 | Maksymalna liczba współbieżnych sesji |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
@@ -68,18 +65,15 @@ Dla pojedynczej bazy danych w poniższej tabeli przedstawiono dostępne zasoby d
 | Maksymalna liczba opcji magazynu (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 | 4096 |
 | Maksymalna pojemność magazynu OLTP w pamięci (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maksymalna liczba równoczesnych procesów roboczych (liczba żądań)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
-| Maksymalna liczba współbieżnych logowań | 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maksymalna liczba współbieżnych sesji | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
 
 > [!IMPORTANT]
-> \* Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+> - Wielkość magazynu jest większa niż ilość miejsca w magazynie uwzględnione są w wersji zapoznawczej i zastosowania dodatkowych kosztów. Szczegóły można znaleźć w [cenniku usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
->\* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Środkowe stany USA, Francja Środkowa, Niemcy Środkowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Wschodnie stany USA 2, Zachodnie stany USA, Administracja USA — Wirginia i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> - W warstwie Premium więcej niż 1 TB pamięci masowej jest obecnie dostępna w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada centralnej, Kanada Wschodnia, środkowe stany USA, Francja centralnej, Niemcy centralnej, Japonia Wschodnia, Japonia Zachodnia, centralnej Korei Północna środkowe stany USA, Europa Północna, Południowej środkowe stany USA, południowo Azja Wschodnia, Wielka Brytania Południowa, Wielka Brytania Zachodnia, East2 USA, zachodnie stany USA, Virginia wersji dla instytucji rządowych USA i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
->\*\* Maksymalna liczba Dtu na bazę danych, uruchamianie w 200 Dtu i wyższych w standardzie są w wersji zapoznawczej.
->
 
 
 ## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: zmiana rozmiaru magazynu
@@ -97,7 +91,7 @@ Poniższe wideo przedstawia dynamicznie zmieniające warstwę wydajności w celu
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
 
-Zmienienie warstwy usług i/lub poziomu wydajności bazy danych powoduje utworzenie repliki oryginalnej bazy danych na nowym poziomie wydajności, a następnie przełączenie połączeń do repliki. Podczas tego procesu nie zostaną utracone żadne dane, ale podczas przełączania do repliki połączenia do bazy danych są chwilowo wyłączane, dlatego niektóre bieżące transakcje mogą zostać wycofane. Czas na przejście jest różny, ale zazwyczaj w sekcji 4 sekundy jest mniej niż 30 sekund 99% czasu. W przypadku dużej liczby transakcji transmitowane w chwili połączenia są wyłączone, czas na przejście może trwać dłużej. 
+Zmienienie warstwy usług i/lub poziomu wydajności bazy danych powoduje utworzenie repliki oryginalnej bazy danych na nowym poziomie wydajności, a następnie przełączenie połączeń do repliki. Podczas tego procesu nie zostaną utracone żadne dane, ale podczas przełączania do repliki połączenia do bazy danych są chwilowo wyłączane, dlatego niektóre bieżące transakcje mogą zostać wycofane. Wydłużać czas przejścia zależy, ale mniej niż 30 sekund 99% czasu. W przypadku dużej liczby transakcji transmitowane w chwili połączenia są wyłączone, czas na przejście może trwać dłużej. 
 
 Czas trwania całego procesu skalowania w górę zależy zarówno od rozmiaru, jak i warstwy usług bazy danych przed zmianą oraz po niej. Na przykład bazę danych 250 GB, która zmienia do, z lub do warstwy standardowych usług, powinno zakończyć się w ciągu sześciu godzin. W bazie danych sam rozmiar, który jest zmiana poziomów wydajności w ramach warstwy usług Premium skalowanie w pionie powinno zakończyć się w ciągu trzech godzin.
 
@@ -142,7 +136,6 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 | Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | ND | ND | ND | ND | ND | ND | ND | ND |
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
-| Maksymalna liczba współbieżnych logowań na pulę | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
 | Min wyborów jednostek Edtu na bazę danych | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
@@ -158,7 +151,6 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 | Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | ND | ND | ND | ND | ND | ND | 
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 |
-| Maksymalna liczba współbieżnych logowań na pulę | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Min wyborów jednostek Edtu na bazę danych | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 | 
@@ -174,7 +166,6 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 | Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | ND | ND | ND | ND | ND | 
 | Maksymalna liczba baz danych na pulę | 500 | 500 | 500 | 500 | 500 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 2400 | 3200 | 4000 | 5000 | 6000 |
-| Maksymalna liczba współbieżnych logowań na pulę | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Min wyborów jednostek Edtu na bazę danych | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 | 
@@ -190,7 +181,6 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 | Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | 1 | 2 | 4 | 10 | 12 | 
 | Maksymalna liczba baz danych na pulę | 50 | 100 | 100 | 100 | 100 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 200 | 400 | 800 | 1600 | 2400 | 
-| Maksymalna liczba współbieżnych logowań na pulę | 200 | 400 | 800 | 1600 | 2400 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Minimalna liczba jednostek eDTU na bazę danych | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000, 1500 | 
 | Maksymalna liczba jednostek eDTU na bazę danych | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000, 1500 |
@@ -206,7 +196,6 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 | Maksymalna liczba OLTP w pamięci magazynu dla każdej puli (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maksymalna liczba baz danych na pulę | 100 | 100 | 100 | 100 | 100 | 
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 3200 | 4000 | 4800 | 5600 | 6400 |
-| Maksymalna liczba współbieżnych logowań na pulę | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Min wyborów jednostek Edtu na bazę danych | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
 | Maksymalna liczba opcji jednostek Edtu na bazę danych | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
@@ -214,9 +203,9 @@ Dla puli elastycznej bazy danych SQL w poniższych tabelach przedstawiono zasoby
 ||||||||
 
 > [!IMPORTANT]
-> \* Magazyn o rozmiarze większym niż ilość miejsca do magazynowania są dostępne w wersji zapoznawczej dodatkowych kosztów za dodatkową opłatą. Aby uzyskać więcej informacji, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/). Wielkość magazynu jest większa niż ilość miejsca w magazynie uwzględnione są w wersji zapoznawczej i zastosowania dodatkowych kosztów. Aby uzyskać więcej informacji, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/).
+> -  Wielkość magazynu jest większa niż ilość miejsca w magazynie uwzględnione są w wersji zapoznawczej i zastosowania dodatkowych kosztów. Aby uzyskać więcej informacji, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/). Wielkość magazynu jest większa niż ilość miejsca w magazynie uwzględnione są w wersji zapoznawczej i zastosowania dodatkowych kosztów. Aby uzyskać więcej informacji, zobacz [bazy danych SQL cennikiem](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> \* W warstwie Premium ponad 1 TB miejsca do magazynowania jest obecnie dostępny w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Środkowe stany USA, Francja Środkowa, Niemcy Środkowe, Japonia Wschodnia, Japonia Zachodnia, Korea Środkowa, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Wschodnie stany USA 2, Zachodnie stany USA, Administracja USA — Wirginia i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> -  W warstwie Premium więcej niż 1 TB pamięci masowej jest obecnie dostępna w następujących regionach: Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada centralnej, Kanada Wschodnia, środkowe stany USA, Francja centralnej, Niemcy centralnej, Japonia Wschodnia, Japonia Zachodnia, centralnej Korei Północna środkowe stany USA, Europa Północna, Południowej środkowe stany USA, południowo Azja Wschodnia, Wielka Brytania Południowa, Wielka Brytania Zachodnia, East2 USA, zachodnie stany USA, Virginia wersji dla instytucji rządowych USA i Europa Zachodnia. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 >
 
 Jeśli używane są wszystkie jednostki DTU puli elastycznej, każda baza danych w puli otrzymuje taką samą ilość zasobów do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Sprawiedliwe udostępnianie zasobów puli elastycznej jest wykonywane oprócz zapewniania dowolnej ilości zasobów w przeciwnym razie gwarantowanej dla każdej bazy danych, gdy minimalna liczba jednostek DTU na bazę danych jest ustawiona na wartość różną od zera.
@@ -229,7 +218,7 @@ W poniższej tabeli opisano właściwości puli baz danych.
 |:--- |:--- |
 | Maksymalna liczba jednostek eDTU na bazę danych |Maksymalna liczba jednostek eDTU, z których może korzystać dowolna baza danych w puli, jeśli są dostępne na podstawie użycia innych baz danych w puli. Maksymalna liczba jednostek eDTU na bazę danych nie jest gwarancją zasobów dla bazy danych. To ustawienie jest ustawieniem globalnym, które ma zastosowanie do wszystkich baz danych w puli. Należy ustawić odpowiednio wysoką maksymalną liczbę jednostek eDTU na bazę danych, aby obsłużyć szczytowe użycia baz danych. Oczekiwany jest pewien stopień nadmiernego przydzielania, ponieważ pula ogólnie zakłada wzorce gorącego i zimnego użycia dla baz danych, w których nie wszystkie bazy danych jednocześnie osiągają szczytowe użycie. Załóżmy na przykład, że użycie szczytowe na bazę danych wynosi 20 eDTU i tylko 20% ze 100 baz danych w puli osiąga szczytowe użycie w tym samym czasie. Jeśli maksymalna liczba jednostek eDTU na bazę danych wynosi 20 eDTU, zasadne jest nadmiarowe przydzielenie pięciokrotnie większej liczby eDTU dla puli i ustawienie liczby 400 jednostek eDTU na pulę. |
 | Minimalna liczba jednostek eDTU na bazę danych |Minimalna liczba jednostek eDTU gwarantowana dla każdej bazy danych w puli. To ustawienie jest ustawieniem globalnym, które ma zastosowanie do wszystkich baz danych w puli. Minimalna liczba jednostek eDTU na bazę danych może być ustawiona na 0 i jest to również wartość domyślna. Tę właściwość można ustawić na dowolną wartość między 0 a średnim użyciem jednostek eDTU na bazę danych. Iloczyn liczby baz danych w puli i minimalnej liczby jednostek eDTU na bazę danych nie może przekraczać liczby jednostek eDTU na pulę. Na przykład jeśli pula zawiera 20 baz danych, a minimalna liczba jednostek eDTU na bazę danych wynosi 10 eDTU, liczba jednostek eDTU na pulę musi wynosić co najmniej 200 eDTU. |
-| Maksymalna liczba magazyn na bazę danych |Maksymalny rozmiar bazy danych ustawiony przez użytkownika dla bazy danych w puli. Puli baz danych udostępnianie magazynu przydzielonego puli, dlatego rozmiar bazy danych może osiągnąć jest ograniczony do mniejsze pozostałej w puli magazynu i rozmiar bazy danych. Maksymalny rozmiar bazy danych odwołuje się do maksymalnego rozmiaru plików danych i nie obejmuje miejsca używane przez pliki dziennika. |
+| Maksymalna liczba magazyn na bazę danych |Maksymalny rozmiar bazy danych ustawiony przez użytkownika dla bazy danych w puli. Jednak puli baz danych udostępnianie przydzielone puli magazynu. Nawet jeśli maksymalna całkowita ilość miejsca **na bazę danych* jest ustawiona na większą niż całkowita ilość miejsca dostępne **miejsca puli*, całkowita ilość miejsca faktycznie używana przez wszystkie bazy danych nie będzie mogła przekroczyć limit dostępnej puli. Maksymalny rozmiar bazy danych odwołuje się do maksymalnego rozmiaru plików danych i nie obejmuje miejsca używane przez pliki dziennika. |
 |||
  
 ## <a name="elastic-pool-change-storage-size"></a>Pula elastyczna: zmiana rozmiaru magazynu

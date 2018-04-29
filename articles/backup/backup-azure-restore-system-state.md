@@ -1,12 +1,12 @@
 ---
 title: 'Kopii zapasowej systemu Azure: Stan systemu przywracania do systemu Windows Server | Dokumentacja firmy Microsoft'
-description: "Krok wyjaśnienie krok przywracania stanu systemu Windows Server z kopii zapasowej na platformie Azure."
+description: Krok wyjaśnienie krok przywracania stanu systemu Windows Server z kopii zapasowej na platformie Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c673cca6a35cfdc0edaecdc69a797f48772d847c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywracanie stanu systemu do systemu Windows Server
 
@@ -34,7 +34,7 @@ W tym artykule opisano sposób przywracania kopii zapasowych stanu systemu Windo
 ## <a name="recover-system-state-files-to-the-same-server"></a>Odzyskać stan systemu plików na tym samym serwerze
 Poniższe kroki objaśniają wycofywaniu konfiguracji systemu Windows Server do poprzedniego stanu. Wycofywanie konfiguracji serwera znanego stanu stabilny, może być bardzo istotne. Poniższe kroki przywrócić stan systemu serwera z magazynu usług odzyskiwania. 
 
-1. Otwórz **kopia zapasowa Microsoft Azure** przystawki. Jeśli nie wiadomo, w którym zainstalowano przystawkę, wyszukiwanie w komputerze lub serwerze dla **kopia zapasowa Microsoft Azure**.
+1. Otwórz przystawkę **Microsoft Azure Backup**. Jeśli nie wiadomo, w którym zainstalowano przystawkę, wyszukiwanie w komputerze lub serwerze dla **kopia zapasowa Microsoft Azure**.
 
     Aplikacja klasyczna powinny być wyświetlane w wynikach wyszukiwania.
 
@@ -171,7 +171,7 @@ Raz odzyskały stan systemu jako plików za pomocą agenta usług odzyskiwania A
 Kopia zapasowa stanu systemu zawiera danych usługi Active Directory. Następujące kroki umożliwiają przywracania usługi domenowe w usłudze Active Directory (AD DS) z jego bieżącym stanie do poprzedniego stanu.
 
 1. Uruchom ponownie kontroler domeny w trybie przywracania usług katalogowych (DSRM).
-2. Wykonaj kroki [tutaj](https://technet.microsoft.com/en-us/library/cc794755(v=ws.10).aspx) używania poleceń cmdlet narzędzia Kopia zapasowa systemu Windows Server do odzyskania usług AD DS.
+2. Wykonaj kroki [tutaj](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) używania poleceń cmdlet narzędzia Kopia zapasowa systemu Windows Server do odzyskania usług AD DS.
 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Rozwiązywanie problemów z niepowodzeniem Przywracanie stanu systemu

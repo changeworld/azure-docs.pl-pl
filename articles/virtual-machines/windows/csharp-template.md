@@ -3,7 +3,7 @@ title: Wdróż Maszynę wirtualną przy użyciu języka C# i szablonu usługi Re
 description: Dowiedz się, jak używać języka C# i szablonu usługi Resource Manager do wdrażania maszyny Wirtualnej platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: davidmu
-ms.openlocfilehash: f2c488a891d1037535f1782da54544ac6af9dd41
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: e57505b4bd89a79af076dc4cf132c844ae0abd1d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Wdróż maszynę wirtualną platformy Azure przy użyciu języka C# i szablonu usługi Resource Manager
 W tym artykule przedstawiono sposób wdrażania szablonu usługi Azure Resource Manager przy użyciu języka C#. Tworzony szablon wdraża jednej maszyny wirtualnej z systemem Windows Server w nowej sieci wirtualnej z pojedynczą podsiecią.

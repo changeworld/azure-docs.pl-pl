@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b288595ca06c3a3cccb72082658f1927f2ae558a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 17b24244180436c2d1f97433e13a530dae565a10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Zestaw deweloperski IoT MXChip połączyć się z pakiet IoT Azure zdalnego monitorowania
 
@@ -35,7 +35,7 @@ Zakończ [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/iot-hu
 
 Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za pomocą jednej z tych dwóch metod:
 
-* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/en-us/free/)
+* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/free/)
 * Oświadczenie użytkownika [Azure środki](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) w przypadku subskrybentów MSDN lub Visual Studio
 
 ## <a name="create-an-azure-iot-suite"></a>Utwórz pakiet Azure IoT
@@ -124,4 +124,4 @@ Jeśli wystąpią problemy, zapoznaj się [— często zadawane pytania](https:/
 Teraz, kiedy znasz jak zestaw deweloperski urządzenie podłączone do pakietu Azure IoT i wizualizować dane czujników, w tym miejscu są Sugerowane następne kroki:
 
 * [Omówienie pakiet IoT Azure](https://docs.microsoft.com/azure/iot-suite/)
-* [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Podłącz urządzenie z systemem zestaw deweloperski IoT MXChip do aplikacji Microsoft IoT centralnego](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

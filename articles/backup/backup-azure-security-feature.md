@@ -1,11 +1,11 @@
 ---
-title: "Funkcje zabezpieczeń w celu ochrony kopii zapasowych hybrydowych, korzystających z usługi Kopia zapasowa Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak za pomocą funkcji zabezpieczeń w usłudze Kopia zapasowa Azure można tworzyć kopie zapasowe są bardziej bezpieczne"
+title: Funkcje zabezpieczeń w celu ochrony kopii zapasowych hybrydowych, korzystających z usługi Kopia zapasowa Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak za pomocą funkcji zabezpieczeń w usłudze Kopia zapasowa Azure można tworzyć kopie zapasowe są bardziej bezpieczne
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: 47bc8423-0a08-4191-826d-3f52de0b4cb8
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
-ms.openlocfilehash: f856303d4abf05178eb11a242b87390ff1484e1b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 2529d19dbf0ca0fb59f5abe48be3e8b14e862e29
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkcje zabezpieczeń w celu ochrony kopii zapasowych hybrydowych, korzystających z usługi Kopia zapasowa Azure
 Coraz więcej problemów dotyczących problemów z zabezpieczeniami, takich jak złośliwego oprogramowania, ransomware i nieautoryzowanego dostępu. Te problemy zabezpieczeń może być kosztowne zarówno oszczędność pieniędzy i danych. Ochrona przed takimi atakami, kopia zapasowa Azure udostępnia funkcje zabezpieczeń w celu ochrony kopii zapasowych hybrydowego. W tym artykule omówiono sposobu włączania i używania tych funkcji, za pomocą agenta usług odzyskiwania Azure i serwer kopii zapasowej Azure. Te funkcje obejmują:
@@ -55,7 +55,7 @@ W przypadku tworzenia magazynu usług odzyskiwania, można użyć funkcji zabezp
     ![Zrzut ekranu usług odzyskiwania Magazyn właściwości](./media/backup-azure-security-feature/security-settings-update.png)
 
     Aktualizacja łącze powoduje otwarcie **ustawienia zabezpieczeń** bloku, który zawiera podsumowanie funkcji i można je włączyć.
-5. Z listy rozwijanej **zostały skonfigurowane uwierzytelnianie wieloskładnikowe Azure?**, wybierając odpowiednią wartość, aby upewnić się, jeśli włączono [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md). Jeśli jest włączona, zostanie wyświetlona prośba o uwierzytelniania za pomocą innego urządzenia (na przykład telefon komórkowy) podczas logowania do portalu Azure.
+5. Z listy rozwijanej **zostały skonfigurowane uwierzytelnianie wieloskładnikowe Azure?**, wybierając odpowiednią wartość, aby upewnić się, jeśli włączono [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Jeśli jest włączona, zostanie wyświetlona prośba o uwierzytelniania za pomocą innego urządzenia (na przykład telefon komórkowy) podczas logowania do portalu Azure.
 
    Podczas wykonywania krytycznej operacji w usłudze Kopia zapasowa, należy wprowadzić zabezpieczający numer PIN, dostępne w portalu Azure. Włączanie usługi Azure Multi-Factor Authentication dodaje warstwy zabezpieczeń. Tylko przez autoryzowanych użytkowników z prawidłowymi poświadczeniami Azure i uwierzytelniony z drugiego urządzenia, można uzyskać dostępu do portalu Azure.
 6. Aby zapisać ustawienia zabezpieczeń, wybierz **włączyć** i kliknij przycisk **zapisać**. Możesz wybrać **włączyć** tylko po wybraniu wartości od **zostały skonfigurowane uwierzytelnianie wieloskładnikowe Azure?** listy w poprzednim kroku.

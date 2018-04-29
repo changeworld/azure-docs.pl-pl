@@ -1,10 +1,10 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z ELF zgodności | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ELF zgodności."
+title: 'Samouczek: Integracji Azure Active Directory z ELF zgodności | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i ELF zgodności.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f05c43e2d8f6e777ae128e90040d8d5c270c212b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 32cb676393558079baad9bb0fc26d2c4daaa3519
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Samouczek: Integracji Azure Active Directory z ELF zgodności
 
@@ -101,52 +101,33 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_samlbase.png)
 
 3. Na **zgodności ELF domeny i adres URL** sekcji, wykonaj następujące kroki, aby skonfigurować aplikację w **IDP** inicjowane tryb:
 
     ![Adresy URL i zgodności ELF domeny pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_url.png)
 
-    W **identyfikator** tekstowym, wpisz adres URL jako:`https://sso.cordium.com`
+    W **identyfikator** tekstowym, wpisz adres URL jako: `https://sso.cordium.com`
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
 
     ![Zgodność ELF domeny i adres URL logowania jednokrotnego](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://<subdomain>.complianceelf.com`
+    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://<subdomain>.complianceelf.com`
     
     > [!NOTE] 
     > Ta wartość nie jest prawdziwe. Aktualizacja tej wartości z adresem URL logowania rzeczywistych. Skontaktuj się z [zespołem pomocy technicznej ELF zgodności](mailto:support@complianceelf.com) aby zyskać tę wartość.
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-complianceelf-tutorial/tutorial_metadataurl.png)
+     
+6. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-complianceelf-tutorial/tutorial_general_400.png)
 
-6. Aby wygenerować **metadanych** adres url, wykonaj następujące czynności:
-
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_endpointicon.png)
-
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **ELF zgodności** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Aby skonfigurować logowanie jednokrotne w **ELF zgodności** stronie, musisz wysłać **adres URL metadanych** do [ELF zgodności z pomocą techniczną](mailto:support@complianceelf.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. Aby skonfigurować logowanie jednokrotne w **ELF zgodności** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [ELF zgodności z pomocą techniczną](mailto:support@complianceelf.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -221,7 +202,7 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po kliknięciu kafelka ELF zgodności w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane ELF zgodności aplikacji.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

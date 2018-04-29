@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 78449a527f5ee1410530ded18a11cb8c6a5dded5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -104,11 +104,15 @@ ms.lasthandoff: 04/16/2018
 
         Pojawia się informacje o zasobach na pulpicie nawigacyjnym; jednak nie statystyki związane z przepływem są obecne. Dane mogą nie być obecny ze względu na nie przepływów komunikacji między zasobami. Poczekaj 60 min i ponownie sprawdzić stan. Jeśli wiesz, że przepływy komunikacji między zasobami istnieje, a następnie budzić zastrzeżenia co w [forum głos użytkownika](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-14.  Jak kosztuje analizy ruchu
+14. Można skonfigurować analytics ruchu przy użyciu programu PowerShell lub szablonu usługi Azure Resource Manager?
+
+    Nie, analizy ruchu może być konfigurowany tylko przy użyciu portalu Azure.
+
+15.  Jak kosztuje analizy ruchu
 
         Analizy ruchu taryfowych wzmocnienia zmniejszenie dzienniki i zapisywania rozszerzonych dzienniki w obszarze roboczym analizy dzienników. W wersji zapoznawczej, analizy ruchu jest nie rozliczane wzmocnienia zmniejszenie dzienniki, jednak przechowywania danych w obszarze roboczym podlega rozliczeń stawkami opublikowanych. Tej odpowiedzi zostanie zaktualizowany po udostępnieniu ceny analizy ruchu.
 
-15.  Jak można przejść za pomocą klawiatury w widoku mapy geograficznie?
+16.  Jak można przejść za pomocą klawiatury w widoku mapy geograficznie?
 
         Strona mapy geograficznie zawiera dwóch głównych sekcji:
     

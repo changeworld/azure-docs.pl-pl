@@ -1,24 +1,19 @@
 ---
-title: "Indeksowanie obiektów blob JSON z indeksatora obiektów blob Azure Search"
-description: "Indeksowanie obiektów blob JSON z indeksatora obiektów blob Azure Search"
-services: search
-documentationcenter: 
+title: Indeksowanie obiektów blob JSON z indeksatora obiektów blob Azure Search
+description: Indeksowanie obiektów blob JSON z indeksatora obiektów blob Azure Search
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 57e32e51-9286-46da-9d59-31884650ba99
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: eugenesh
-ms.openlocfilehash: 2dac2c5980970946a6b9c26ee6ee8ac0f0344144
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
-ms.translationtype: MT
+ms.openlocfilehash: aa0c26a722ecddabee70127bf4b4fd67855a1523
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indeksowanie obiektów blob JSON z indeksatora obiektów blob Azure Search
 W tym artykule przedstawiono sposób skonfigurować indeksator usługi Azure Search obiektu blob do wyodrębniania zawartości strukturalnych z obiektów blob JSON w magazynie obiektów Blob Azure.
@@ -216,9 +211,9 @@ Poniższy przykład jest ładunku pełni określonego indeksatora, łącznie z m
 ## <a name="help-us-make-azure-search-better"></a>Pomóż nam udoskonalić usługę Azure Search
 Jeśli masz żądania funkcji lub pomysły dotyczące ulepszeń dotrzeć do nas w naszej [witryny UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 + [Indeksatory w usłudze Azure Search](search-indexer-overview.md)
 + [Indeksowanie magazynu obiektów Blob Azure o usłudze Azure Search](search-howto-index-json-blobs.md)
 + [Indeksowanie obiektów blob CSV z indeksatora obiektów blob Azure Search](search-howto-index-csv-blobs.md)
-+ [Samouczek: Wyszukiwanie częściowo ustrukturyzowanych danych z magazynu obiektów Blob platformy Azure](search-semi-structured-data.md)
++ [Samouczek: Wyszukiwanie częściowo ustrukturyzowanych danych z magazynu obiektów Blob platformy Azure ](search-semi-structured-data.md)

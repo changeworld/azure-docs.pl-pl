@@ -1,41 +1,30 @@
 ---
-title: "Tworzenie kluczy dwuskładnikowego przy użyciu tożsamości | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie korzystania z tożsamości do tworzenia kluczy Surogat na tabelach."
+title: Do tworzenia kluczy Surogat - Azure SQL Data Warehouse przy użyciu tożsamości | Dokumentacja firmy Microsoft
+description: Zalecenia i przykłady dotyczące do tworzenia kluczy zastępczego w tabelach w usłudze Azure SQL Data Warehouse przy użyciu właściwości tożsamości.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e10b58743fad5f7c2c4f00b51f06d4ec9bcb6768
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: ab028705f5af7c37017d2e697240b7d3436f5f71
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-surrogate-keys-by-using-identity"></a>Tworzenie kluczy dwuskładnikowego przy użyciu tożsamości
-> [!div class="op_single_selector"]
-> * [Omówienie][Overview]
-> * [Typy danych][Data Types]
-> * [Dystrybuuj][Distribute]
-> * [Indeks][Index]
-> * [Partycji][Partition]
-> * [Statystyki][Statistics]
-> * [Tymczasowe][Temporary]
-> * [Tożsamości][Identity]
-> 
-> 
+# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Do tworzenia kluczy dwuskładnikowego w usłudze Azure SQL Data Warehouse przy użyciu tożsamości
+Zalecenia i przykłady dotyczące do tworzenia kluczy zastępczego w tabelach w usłudze Azure SQL Data Warehouse przy użyciu właściwości tożsamości.
 
-Do tworzenia kluczy Surogat na ich tabel, podczas projektowania modeli magazynu danych, takich jak wiele Modelarze danych. Właściwość IDENTITY można używać na osiągnięcie tego celu po prostu i efektywnie bez wpływu na wydajność obciążenia. 
+## <a name="what-is-a-surrogate-key"></a>Co to jest klucz Surogat?
+Zastępcza klucza w tabeli jest kolumna z unikatowym identyfikatorem dla każdego wiersza. Klucz nie jest generowana z danych tabeli. Do tworzenia kluczy Surogat na ich tabel, podczas projektowania modeli magazynu danych, takich jak Modelarze danych. Właściwość IDENTITY można używać na osiągnięcie tego celu po prostu i efektywnie bez wpływu na wydajność obciążenia.  
 
-## <a name="get-started-with-identity"></a>Rozpoczynanie pracy z tożsamości
+## <a name="creating-a-table-with-an-identity-column"></a>Tworzenie tabeli zawierającej kolumnę tożsamości
+Właściwość IDENTITY jest przeznaczona do skalują poza wszystkie dystrybucje w magazynie danych bez wpływu na wydajność obciążenia. W związku z tym implementacja tożsamości jest zorientowany osiągnięcie tych celów. 
+
 Można zdefiniować tabelę jako mający właściwość IDENTITY podczas tworzenia tabeli za pomocą składni, która jest podobna do następującej instrukcji:
 
 ```sql
@@ -52,8 +41,7 @@ WITH
 
 Następnie można użyć `INSERT..SELECT` do wypełnienia tabeli.
 
-## <a name="behavior"></a>Zachowanie
-Właściwość IDENTITY jest przeznaczona do skalują poza wszystkie dystrybucje w magazynie danych bez wpływu na wydajność obciążenia. W związku z tym implementacja tożsamości jest zorientowany osiągnięcie tych celów. W tej sekcji przedstawiono wszystkie szczegóły implementacji, aby ułatwić zrozumienie ich dokładniejszego.  
+Ta pozostałej części tej sekcji omówiono wszystkie szczegóły implementacji, aby ułatwić zrozumienie ich dokładniejszego.  
 
 ### <a name="allocation-of-values"></a>Alokacja wartości
 Właściwość IDENTITY nie gwarantuje kolejność, w którym są przydzielane wartości Surogat, odzwierciedla zachowanie programu SQL Server i bazy danych SQL Azure. Jednak w usłudze Azure SQL Data Warehouse, braku gwarancji jest większa. 
@@ -100,7 +88,7 @@ Jeśli jeden z tych warunków jest prawdziwy, kolumna jest tworzony NOT NULL zam
 ### <a name="create-table-as-select"></a>UTWÓRZ TABLE AS SELECT
 Tworzenie tabeli jako wybierz (CTAS) następuje tego samego zachowania programu SQL Server jest udokumentowany wybierz pozycję... DO. Jednak nie można określić właściwości tożsamości w definicji kolumny `CREATE TABLE` element instrukcji. Ponadto nie można używać funkcji IDENTITY w `SELECT` częścią CTAS. Aby wypełnić tabeli, należy użyć `CREATE TABLE` do definiowania tabeli, a następnie `INSERT..SELECT` aby wypełnić go.
 
-## <a name="explicitly-insert-values-into-an-identity-column"></a>Jawnie wstawić wartości w kolumnie tożsamości 
+## <a name="explicitly-inserting-values-into-an-identity-column"></a>Jawnie wstawianie wartości do kolumny tożsamości 
 Magazyn danych SQL obsługuje `SET IDENTITY_INSERT <your table> ON|OFF` składni. Ta składnia umożliwia jawnie wstawić wartości w kolumnie tożsamości.
 
 Aby użyć wstępnie zdefiniowanych wartości ujemnych dla niektórych wierszy wymiarami, takich jak wiele Modelarze danych. Przykładem jest wiersza "Nieznany element członkowski" lub wartość -1. 
@@ -124,11 +112,10 @@ FROM    dbo.T1
 ;
 ```    
 
-## <a name="load-data-into-a-table-with-identity"></a>Ładowanie danych do tabeli o tożsamości
+## <a name="loading-data"></a>Ładowanie danych
 
 Obecność właściwości tożsamości implikacje niektórych kodu ładowania danych. W tej sekcji opisano niektóre z wzorców podstawowych ładowania danych do tabel za pomocą tożsamości. 
 
-### <a name="load-data-with-polybase"></a>Ładowanie danych za pomocą usługi PolyBase
 Aby załadować dane do tabeli i generowanie klucza dwuskładnikowego przy użyciu tożsamości, należy utworzyć tabeli, a następnie użyć INSERT... Wybierz lub Wstaw... WARTOŚCI do wykonania obciążenia.
 
 Poniższy przykład prezentuje podstawowy wzorzec:
@@ -160,28 +147,16 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE] 
-> Nie jest możliwe użycie `CREATE TABLE AS SELECT` obecnie, podczas ładowania danych do tabeli z kolumną tożsamości.
+> Nie jest możliwe tworzenie tabeli WYBIER AS "obecnie, podczas ładowania danych do tabeli z kolumną tożsamości.
 > 
 
-Aby uzyskać więcej informacji na ładowanie danych przy użyciu narzędzia (BCP) programu kopiowania zbiorczego zobacz następujące artykuły:
+Aby uzyskać więcej informacji dotyczące ładowania danych, zobacz [projektowania wyodrębnić, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse](design-elt-data-loading.md) i [ładowanie najlepsze rozwiązania w zakresie](guidance-for-loading-data.md).
 
-- [Obciążenia przy użyciu programu PolyBase][]
-- [Najlepsze rozwiązania w zakresie programu PolyBase][]
 
-### <a name="load-data-with-bcp"></a>Ładowanie danych za pomocą narzędzia BCP
-BCP jest narzędziem wiersza polecenia, które umożliwia ładowanie danych do usługi SQL Data Warehouse. Jeden z jego parametrów (-E) steruje zachowaniem BCP podczas ładowania danych do tabeli z kolumną tożsamości. 
+## <a name="system-views"></a>Widoki systemowe
+Można użyć [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) widoku, aby określić kolumny, która ma właściwość IDENTITY w katalogu.
 
-W przypadku -E wartości przechowywane w pliku wejściowym dla kolumny o tożsamości są zachowywane. Jeśli jest -E *nie* określone wartości w tej kolumnie są ignorowane. Jeśli w kolumnie tożsamości nie jest dołączony, dane są ładowane normalnego. Wartości są generowane zgodnie z zasadami inkrementacji i inicjatora właściwości.
-
-Aby uzyskać więcej informacji na ładowanie danych przy użyciu narzędzia BCP zobacz następujące artykuły:
-
-- [Obciążenia za pomocą narzędzia BCP][]
-- [Narzędzie BCP w witrynie MSDN][]
-
-## <a name="catalog-views"></a>Widoków wykazu
-Magazyn danych SQL obsługuje `sys.identity_columns` widoku katalogu. W tym widoku można zidentyfikować kolumny, która ma właściwość IDENTITY.
-
-Aby lepiej zrozumieć schemat bazy danych, w tym przykładzie pokazano, jak zintegrować `sys.identity_columns` z innymi widokami katalog systemu:
+Aby lepiej zrozumieć schemat bazy danych, w tym przykładzie pokazano, jak zintegrować sys.identity_column "z innymi widokami katalog systemu:
 
 ```sql
 SELECT  sm.name
@@ -202,28 +177,27 @@ AND     tb.name = 'T1'
 ```
 
 ## <a name="limitations"></a>Ograniczenia
-Właściwość IDENTITY nie można użyć w następujących scenariuszach:
-- Gdy typ danych kolumny nie jest INT lub BIGINT
-- Gdzie kolumna jest również dystrybucji kluczy
-- Gdy tabela jest tabeli zewnętrznej 
+Nie można użyć właściwości tożsamości:
+- Jeśli typ danych kolumny nie jest INT lub BIGINT
+- Jeśli kolumna jest również dystrybucji kluczy
+- Jeśli tabela jest tabeli zewnętrznej 
 
 Następujące funkcje pokrewne nie są obsługiwane w usłudze SQL Data Warehouse:
 
-- [IDENTITY()][]
-- [@@IDENTITY][]
-- [SCOPE_IDENTITY][]
-- [ATRYBUTU IDENT_CURRENT][]
-- [IDENT_INCR][]
-- [IDENT_SEED][]
-- [POLECENIE DBCC CHECK_IDENT()][]
+- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
+- [ATRYBUTU IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
+- [POLECENIE DBCC CHECK_IDENT()](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
 
-## <a name="tasks"></a>Zadania
+## <a name="common-tasks"></a>Typowe zadania
 
-Ta sekcja zawiera niektóre przykładowy kod służący do wykonywania typowych zadań, podczas pracy z kolumn tożsamości.
+Ta sekcja zawiera niektóre przykładowy kod służący do wykonywania typowych zadań, podczas pracy z kolumn tożsamości. 
 
-> [!NOTE] 
-> Kolumna C1 jest tożsamość w następujące zadania.
-> 
+Kolumna C1 jest tożsamość w następujące zadania.
+ 
  
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Znajdź największa wartość przydzielonego dla tabeli
 Użyj `MAX()` funkcji, aby ustalić najwyższą wartość przydzielone dla tabeli rozproszonych:
@@ -254,39 +228,5 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat tworzenia tabel, zobacz [omówienie tabeli][Overview], [typów danych tabeli][Data Types], [dystrybucji tabeli] [ Distribute], [Indeksu tabeli][Index], [partycji tabeli][Partition], i [ Tabele tymczasowe][Temporary]. 
-* Aby uzyskać więcej informacji na temat najlepszych rozwiązań, zobacz [najlepsze rozwiązania w zakresie usługi SQL Data Warehouse][SQL Data Warehouse Best Practices].  
+* Aby dowiedzieć się więcej na temat tworzenia tabel, zobacz [omówienie tabeli] [omówienie].  
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Identity]: ./sql-data-warehouse-tables-identity.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-[Obciążenia za pomocą narzędzia bcp]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp/
-[Obciążenia przy użyciu programu PolyBase]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase/
-[Najlepsze rozwiązania w zakresie programu PolyBase]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-polybase-guide/
-
-
-<!--MSDN references-->
-[Identity property]: https://msdn.microsoft.com/library/ms186775.aspx
-[sys.identity_columns]: https://msdn.microsoft.com/library/ms187334.aspx
-[IDENTITY()]: https://msdn.microsoft.com/library/ms189838.aspx
-[@@IDENTITY]: https://msdn.microsoft.com/library/ms187342.aspx
-[SCOPE_IDENTITY]: https://msdn.microsoft.com/library/ms190315.aspx
-[ATRYBUTU IDENT_CURRENT]: https://msdn.microsoft.com/library/ms175098.aspx
-[IDENT_INCR]: https://msdn.microsoft.com/library/ms189795.aspx
-[IDENT_SEED]: https://msdn.microsoft.com/library/ms189834.aspx
-[POLECENIE DBCC CHECK_IDENT()]: https://msdn.microsoft.com/library/ms176057.aspx
-
-[Narzędzie bcp w witrynie MSDN]: https://msdn.microsoft.com/library/ms162802.aspx
-  
-
-<!--Other Web references-->  

@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4aad45559d167e6c046822200c9bbb98113d463b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5bb758637d7b23f206f78d1604f985c2985d4410
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Szybki start: wdrażanie klastra usługi Azure Container Service (AKS)
 
@@ -83,6 +83,11 @@ Otwórz usługę Cloud Shell za pomocą przycisku w prawym górnym rogu witryny 
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
 
+Określanie subskrypcji (jeśli nie wykonano tej czynności wcześniej)
+```azurecli-interactive
+az account set -s SUBSCRIPTION_NAME
+```
+
 Za pomocą polecenia [az aks get-credentials][az-aks-get-credentials] skonfiguruj narzędzie kubectl w celu nawiązania połączenia z klastrem Kubernetes.
 
 Skopiuj poniższe polecenie i wklej je w usłudze Cloud Shell. W razie potrzeby zmodyfikuj nazwę klastra i nazwę grupy zasobów.
@@ -110,7 +115,7 @@ aks-agentpool-14693408-2   Ready     agent     7m        v1.8.1
 
 Plik manifestu rozwiązania Kubernetes definiuje żądany stan klastra, w tym informacje o obrazach kontenerów, które powinny zostać uruchomione. W tym przykładzie manifest służy do tworzenia wszystkich obiektów potrzebnych do uruchomienia aplikacji Azure Vote.
 
-Utwórz plik o nazwie `azure-vote.yaml` i skopiuj go do poniższego kodu YAML. Jeśli pracujesz w usłudze Azure Cloud Shell, ten plik możesz utworzyć przy użyciu serwera vi lub Nano tak jak podczas pracy w systemie wirtualnym lub fizycznym.
+Utwórz plik o nazwie `azure-vote.yaml` i skopiuj go do poniższego kodu YAML. Jeśli pracujesz w usłudze Azure Cloud Shell, utwórz ten plik przy użyciu serwera vi lub Nano, tak jak podczas pracy w systemie wirtualnym lub fizycznym.
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -211,13 +216,13 @@ Po zmianie adresu *EXTERNAL-IP* z *oczekującego* na *adres IP*, zatrzymaj proce
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Teraz możesz przejść do zewnętrznego adresu IP, aby wyświetlić aplikację Azure Vote.
+Następnie przejdź do zewnętrznego adresu IP, aby wyświetlić aplikację Azure Vote.
 
 ![Obraz przedstawiający przechodzenie do aplikacji Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 ## <a name="delete-cluster"></a>Usuwanie klastra
 
-Gdy klaster nie jest już potrzebny, można usunąć grupę zasobów klastra, co spowoduje usunięcie wszystkich skojarzonych zasobów. Można to zrobić w witrynie Azure Portal, wybierając grupę zasobów, a następnie klikając przycisk Usuń. Ewentualnie można użyć polecenia [az group delete][az-group-delete] w usłudze Cloud Shell.
+Gdy klaster nie będzie już potrzebny, usuń grupę zasobów klastra, co spowoduje usunięcie wszystkich skojarzonych zasobów. Można to zrobić w witrynie Azure Portal, wybierając grupę zasobów, a następnie klikając przycisk Usuń. Ewentualnie można użyć polecenia [az group delete][az-group-delete] w usłudze Cloud Shell.
 
 ```azurecli-interactive
 az group delete --name myAKSCluster --no-wait

@@ -1,11 +1,11 @@
 ---
 title: Ustawienia bramy sieci VPN dla stosu Azure | Dokumentacja firmy Microsoft
-description: "Więcej informacji na temat ustawień dla bram sieci VPN, używanych w usłudze Azure stosu."
+description: Więcej informacji na temat ustawień dla bram sieci VPN, używanych w usłudze Azure stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: fa8d3adc-8f5a-4b4f-8227-4381cf952c56
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: 1eba5df93b461eb22ab8341b4498682957c9298a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: b732770b2eace07690d112e81c6916b16b2cb5b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN Azure stosu
 
@@ -160,7 +160,7 @@ W przeciwieństwie do usługi Azure, który obsługuje wielu ofert jako inicjato
 |Wersja IKE |IKEv2 |
 |Szyfrowania i tworzenia skrótów algorytmy (szyfrowanie)     | GCMAES256|
 |Szyfrowania i tworzenia skrótów algorytmy (uwierzytelnianie) | GCMAES256|
-|Okres istnienia skojarzeń zabezpieczeń (czas)  | 14 400 sekund |
+|Okres istnienia skojarzeń zabezpieczeń (czas)  | 27,700 sekund |
 |Okres istnienia skojarzeń zabezpieczeń (bajty) | 819,200       |
 |Doskonałe utajnienie przekazywania (PFS) |PFS2048 |
 |Wykrywanie nieaktywnych elementów równorzędnych | Obsługiwane|  

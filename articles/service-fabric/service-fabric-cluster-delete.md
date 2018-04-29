@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
 ms.author: aljo
-ms.openlocfilehash: 7da2277fef224ff7859cac1ad5a2290c9dc56a85
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1255574e6aae930b0e349ec8f36cc66ac2b7e49f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Usuwanie klastra sieci szkieletowej usług na platformie Azure i zasobów, które są używane
 Klastra usługi sieć szkieletowa składa się z wielu innych zasobów platformy Azure oprócz samego zasobu klastra. Dlatego też, aby całkowicie usunąć klaster usługi Service Fabric, musisz również usunąć wszystkie zasoby, z których się składa.
@@ -38,7 +38,7 @@ Możesz także usunąć grupy zasobów, uruchamiając następujące polecenia cm
 Otwórz okno programu PowerShell i uruchom następujące polecenia cmdlet PS:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 ```
@@ -82,7 +82,7 @@ Możesz usunąć zasoby po kolei, uruchamiając następujące polecenia cmdlet p
 Otwórz okno programu PowerShell i uruchom następujące polecenia cmdlet PS:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 Dla każdego z zasobów, które chcesz usunąć Uruchom następujący skrypt:
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure rozliczeń interfejsów API Enterprise | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat raportowania interfejsów API, które umożliwiają klientom Enterprise Azure programowo pobierać dane dotyczące zużycia."
-services: 
-documentationcenter: 
+title: Azure rozliczeń interfejsów API Enterprise | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat raportowania interfejsów API, które umożliwiają klientom Enterprise Azure programowo pobierać dane dotyczące zużycia.
+services: ''
+documentationcenter: ''
 author: anandedwin
 manager: aedwin
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: billing
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f7a480c77c93035e655606433aea2547a1c105cc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ae04c7c1fdddecf40583d14f7b08dcf41941c6f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Omówienie API raportowania dla przedsiębiorstw
 Interfejsy API raportowania umożliwiają klientom Enterprise Azure programowo ściągania danych rozliczeń i zużycia do narzędzia do analizy danych preferowany. 
 
 ## <a name="enabling-data-access-to-the-api"></a>Włączanie dostępu do interfejsu API danych
-* **Generowanie lub pobrać klucz interfejsu API** — logowanie w witrynie Enterprise portal i wykonaj samouczek w pomocy - API raportowania. Pierwsza sekcja, w tym artykule pomocy wyjaśniono, jak Generowanie lub pobrać klucz interfejsu API dla określonej rejestracji.
+* **Generowanie lub pobrać klucz interfejsu API** — Zaloguj się w witrynie Enterprise portal i przejdź do raportów > Pobierz dane użycia > klucz dostępu do interfejsu API do generowania lub pobrać klucz interfejsu API.
 * **Przekazywanie kluczy w interfejsie API** — klucz interfejsu API musi zostać przekazany dla każdego wywołania do uwierzytelniania i autoryzacji. Następująca właściwość musi być z nagłówkami HTTP
 
 |Klucz nagłówka żądania | Wartość|

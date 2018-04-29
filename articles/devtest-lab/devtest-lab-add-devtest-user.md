@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: d0fdd8441143e2d2eb49399a10dc12d38fbf6823
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 67da209718c3f3436be6ceaae68f61f416da6832
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Dodaj właścicieli i użytkowników w usłudze Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -88,7 +88,7 @@ Możesz pobrać `subscriptionId`, `labResourceGroup`, i `labName` wartości z bl
 
     # Add an external user in DevTest Labs user role to a lab
     # Ensure that guest users can be added to the Azure Active directory:
-    # https://azure.microsoft.com/en-us/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
+    # https://azure.microsoft.com/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
 
     # Values to change
     $subscriptionId = "<Enter Azure subscription ID here>"
@@ -97,7 +97,7 @@ Możesz pobrać `subscriptionId`, `labResourceGroup`, i `labName` wartości z bl
     $userDisplayName = "<Enter user's display name here>"
 
     # Log into your Azure account
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     # Select the Azure subscription that contains the lab. 
     # This step is optional if you have only one subscription.

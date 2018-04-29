@@ -1,26 +1,24 @@
 ---
-title: "Utwórz zadania przesyłania strumieniowego Spark wysokiej dostępności w YARN - Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Jak skonfigurować przesyłania strumieniowego Spark dla scenariusza wysokiej dostępności."
+title: Utwórz zadania przesyłania strumieniowego Spark wysokiej dostępności w YARN - Azure HDInsight | Dokumentacja firmy Microsoft
+description: Jak skonfigurować przesyłania strumieniowego Spark dla scenariusza wysokiej dostępności.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ramoha
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: ramoha
-ms.openlocfilehash: f916f9939ac9683a2ee162ba4d2105f66187b111
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0a738d7e26384523e9da9c8c79e12729330fe6f7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Tworzenie zadań przesyłania strumieniowego Spark wysokiej dostępności z YARN
 
@@ -117,7 +115,7 @@ Podsumowując, przy użyciu tworzenie punktów kontrolnych + odnowy niezawodnej 
 
 * Należy podzielić długotrwałe zadania.  Po przesłaniu do przesyłania strumieniowego Spark aplikacji do klastra musi być zdefiniowany kolejki YARN, gdy zadanie działa. Można użyć [YARN pojemności harmonogramu](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) do przesyłania zadań długotrwałe, aby oddzielić kolejek.
 
-* Bezpiecznie zamknąć przesyłania strumieniowego aplikacji. Jeśli wiadomo, że Twoje przesunięcia, a wszystkie stanu aplikacji są przechowywane zewnętrznie, można programowo zatrzymać przesyłania strumieniowego aplikacji w odpowiednim miejscu. Jeden technika jest użycie "wątku punkty zaczepienia" w łączniku Spark, sprawdzając zewnętrznych flagi co  *n*  sekund. Można również użyć *pliku znacznika* który jest utworzony w systemie plików HDFS podczas uruchamiania aplikacji, a następnie usuwane, gdy chcesz zatrzymać. Podejście znacznika pliku można użyć w oddzielnym wątku w aplikacji Spark, która wywołuje podobny do poniższego kodu:
+* Bezpiecznie zamknąć przesyłania strumieniowego aplikacji. Jeśli wiadomo, że Twoje przesunięcia, a wszystkie stanu aplikacji są przechowywane zewnętrznie, można programowo zatrzymać przesyłania strumieniowego aplikacji w odpowiednim miejscu. Jeden technika jest użycie "wątku punkty zaczepienia" w łączniku Spark, sprawdzając zewnętrznych flagi co *n* sekund. Można również użyć *pliku znacznika* który jest utworzony w systemie plików HDFS podczas uruchamiania aplikacji, a następnie usuwane, gdy chcesz zatrzymać. Podejście znacznika pliku można użyć w oddzielnym wątku w aplikacji Spark, która wywołuje podobny do poniższego kodu:
 
     ```scala
     streamingContext.stop(stopSparkContext = true, stopGracefully = true)

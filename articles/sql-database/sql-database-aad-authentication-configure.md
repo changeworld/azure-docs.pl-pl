@@ -1,6 +1,6 @@
 ---
-title: "Konfigurowanie uwierzytelniania usługi Azure Active Directory - SQL | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak nawiązać połączenie bazy danych SQL, zarządzane wystąpienia i SQL Data Warehouse przy użyciu usługi Azure uwierzytelnianie usługi Active Directory — po skonfigurowaniu usługi Azure AD."
+title: Konfigurowanie uwierzytelniania usługi Azure Active Directory - SQL | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak nawiązać połączenie bazy danych SQL, zarządzane wystąpienia i SQL Data Warehouse przy użyciu usługi Azure uwierzytelnianie usługi Active Directory — po skonfigurowaniu usługi Azure AD.
 services: sql-database
 author: GithubMirek
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: e8decbe2c8ed4bed6cfb71308510d031fc242faa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 1f5f4a4ece116503c8ddb5eaa4998b5b1a407bb1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure Active Directory z bazy danych SQL, zarządzane wystąpienia lub SQL Data Warehouse
 
@@ -100,7 +100,7 @@ Zarządzane wystąpienia wymaga uprawnień do odczytu do usługi Azure AD pomyś
 Poniższe dwie procedury pokazują, jak udostępnić administratorem serwera Azure SQL w portalu Azure i przy użyciu programu PowerShell usługi Azure Active Directory.
 
 ### <a name="azure-portal"></a>Azure Portal
-1. W [portalu Azure](https://portal.azure.com/), w prawym górnym rogu kliknij połączenie na liście rozwijanej listę możliwych usług Active Directory. Wybierz prawidłowe usługi Active Directory jako domyślnej usługi Azure AD. Ten krok łącza skojarzenia subskrypcji z usługi Active Directory z serwerem Azure SQL, upewniając się, że tej samej subskrypcji jest używana zarówno dla usługi Azure AD i programu SQL Server. (Serwer Azure SQL można obsługiwać, baza danych SQL Azure lub usługi Azure SQL Data Warehouse.)   
+1. W [portalu Azure](https://portal.azure.com/), w prawym górnym rogu kliknij połączenie na liście rozwijanej listę możliwych usług Active Directory. Wybierz prawidłowe usługi Active Directory jako domyślnej usługi Azure AD. Ten krok łączy skojarzone z subskrypcją usługi Active Directory z serwerem Azure SQL, upewniając się, że tej samej subskrypcji jest używana zarówno dla usługi Azure AD i programu SQL Server. (Serwer Azure SQL można obsługiwać, baza danych SQL Azure lub usługi Azure SQL Data Warehouse.)   
     ![choose-ad][8]   
     
 2. Na transparencie po lewej stronie wybierz **serwerów SQL**, wybierz pozycję z **programu SQL server**, a następnie w **programu SQL Server** kliknij przycisk **administratora usługi Active Directory**.   
@@ -127,7 +127,7 @@ Do uruchamiania poleceń cmdlet programu PowerShell, należy mieć programu Azur
 
 Aby udostępnić administrator usługi Azure AD, wykonaj następujące polecenia programu PowerShell systemu Azure:
 
-* Add-AzureRmAccount
+* Connect-AzureRmAccount
 * Select-AzureRmSubscription
 
 Polecenia cmdlet używane do udostępniania i zarządzania nimi administratora usługi Azure AD:
@@ -208,7 +208,7 @@ Można spełnienia tych wymagań:
 Uwierzytelnianie usługi Active Directory systemu Azure wymaga od użytkowników bazy danych zostanie utworzony jako użytkowników zawartej bazy danych. Użytkownik zawartej bazy danych na podstawie tożsamości usługi Azure AD jest użytkownika bazy danych, która nie ma nazwy logowania w bazie danych master, i który jest mapowany na tożsamość w katalogu usługi Azure AD, która jest skojarzona z bazą danych. Tożsamość usługi Azure AD może być indywidualne konto użytkownika lub grupę. Aby uzyskać więcej informacji dotyczących użytkowników zawartej bazy danych, zobacz [zawartych użytkowników bazy danych — wprowadzanie Your przenośne bazy danych](https://msdn.microsoft.com/library/ff929188.aspx).
 
 > [!NOTE]
-> Nie można utworzyć bazy danych użytkowników (z wyjątkiem administratorów) za pomocą portalu. Role RBAC nie są propagowane do programu SQL Server, SQL Database lub SQL Data Warehouse. Role RBAC Azure są używane do zarządzania zasobami Azure i nie dotyczą uprawnień do bazy danych. Na przykład **programu SQL Server współautora** roli nie powoduje przyznania dostępu do nawiązania połączenia z bazą danych SQL lub SQL Data Warehouse. Bezpośrednio w bazie danych przy użyciu instrukcji języka Transact-SQL, należy udzielić uprawnień dostępu.
+> Nie można utworzyć bazy danych użytkowników (z wyjątkiem administratorów) przy użyciu portalu Azure. Role RBAC nie są propagowane do programu SQL Server, SQL Database lub SQL Data Warehouse. Role RBAC Azure są używane do zarządzania zasobami Azure i nie dotyczą uprawnień do bazy danych. Na przykład **programu SQL Server współautora** roli nie powoduje przyznania dostępu do nawiązania połączenia z bazą danych SQL lub SQL Data Warehouse. Bezpośrednio w bazie danych przy użyciu instrukcji języka Transact-SQL, należy udzielić uprawnień dostępu.
 >
 
 Aby utworzyć użytkowników platformy Azure AD na podstawie zawarte bazy danych (innego niż administrator serwera, który jest właścicielem bazy danych), połączenie z bazą danych przy użyciu tożsamości usługi Azure AD jako użytkownik z co najmniej **ALTER dowolny użytkownik** uprawnienia. Następnie należy użyć następującej składni języka Transact-SQL:
@@ -279,12 +279,13 @@ Użyj tej metody, jeśli użytkownik jest zalogowany do systemu Windows przy uż
 
 ## <a name="active-directory-password-authentication"></a>Uwierzytelnianie za pomocą hasła w usłudze Active Directory
 
-Użyj tej metody, podczas nawiązywania połączenia z głównej nazwy usługi Azure AD przy użyciu usługi Azure AD zarządzanych domeny. Można również użyć do kontem federacyjnym bez dostępu do domeny, na przykład podczas pracy zdalnej.
+Użyj tej metody, podczas nawiązywania połączenia z głównej nazwy usługi Azure AD przy użyciu usługi Azure AD zarządzanych domeny. Można również użyć federacyjnych kont bez dostępu do domeny, na przykład podczas pracy zdalnej.
 
-Użyj tej metody, jeśli użytkownik jest zalogowany do systemu Windows przy użyciu poświadczeń z domeny, która nie jest zintegrowany z platformy Azure lub przy użyciu uwierzytelniania usługi Azure AD za pomocą usługi Azure AD na podstawie początkowej lub domeny klienta.
+Ta metoda służy do uwierzytelniania na SQL bazy danych/magazynu danych z usługą Azure AD dla natywnego programu Azure AD użytkownicy federacyjni.
+Macierzysty użytkownika jest jawnie utworzonej w usłudze Azure AD i uwierzytelnianie przy użyciu nazwy użytkownika i hasła, gdy użytkownik federacyjny jest użytkownikiem systemu Windows którego domena jest Sfederowane przy użyciu usługi Azure AD. Druga metoda (przy użyciu użytkownika i hasło) może służyć gdy użytkownik chce, aby użyć jego poświadczeń systemu windows, ale jego komputer lokalny nie jest dołączony z domeną (np. przy użyciu dostępu zdalnego). W takim przypadku użytkownika systemu Windows może wskazywać na jego konto domeny i hasło i może uwierzytelnić się SQL bazy danych/magazynu danych przy użyciu poświadczeń federacyjnych.
 
 1. Uruchom Management Studio lub narzędzia danych i w **Połącz z serwerem** (lub **nawiązywanie połączenia z aparatem bazy danych**) okna dialogowego, **uwierzytelniania** wybierz opcję  **Usługi Active Directory — hasło**.
-2. W **nazwy użytkownika** wpisz nazwę użytkownika usługi Azure Active Directory w formacie  **username@domain.com** . Musi to być konto w usłudze Azure Active Directory lub konta z domeny utworzenia federacji z usługą Azure Active Directory.
+2. W **nazwy użytkownika** wpisz nazwę użytkownika usługi Azure Active Directory w formacie **username@domain.com**. Musi to być konto w usłudze Azure Active Directory lub konta z domeny utworzenia federacji z usługą Azure Active Directory.
 3. W **hasło** wpisz hasło użytkownika dla konta usługi Azure Active Directory lub konta domeny federacyjnej.
 
     ![Wybierz uwierzytelnianie hasłem usługi AD][12]

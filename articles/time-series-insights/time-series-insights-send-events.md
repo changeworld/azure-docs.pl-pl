@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 04/09/2018
-ms.openlocfilehash: c29b90e703a66cbbc25227f9a4307c74d82b03b5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b418d1114cf6b906dcdee46bbf7e094cbc4a0521
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Wysyłanie zdarzeń do środowiska usługi Time Series Insights za pomocą centrum zdarzeń
 W tym artykule wyjaśniono, jak utworzyć i skonfigurować Centrum zdarzeń i uruchom przykładową aplikację do wypychania zdarzeń. Jeśli masz istniejące Centrum zdarzeń z zdarzenia w formacie JSON, Pomiń tego samouczka i wyświetlić środowiska w [Insights serii czas](https://insights.timeseries.azure.com).
@@ -59,7 +59,7 @@ Sprawdź, czy mają danych referencyjnych w miejscu przypadku zbiorczego przekaz
 
 Aby zarządzać danych referencyjnych, w Eksploratorze TSI jest interfejs użytkownika sieci web, a istnieje programowe API języka C#. TSI Eksploratora ma visual interfejs do przekazywania plików lub wklejania w istniejącej relacji zestawów danych w formacie JSON lub CSV użytkownika. Przy użyciu interfejsu API można tworzyć niestandardowych aplikacji w razie potrzeby.
 
-Aby uzyskać więcej informacji na temat zarządzania danych referencyjnych w czasie serii Insights, zobacz [danych artykule](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Aby uzyskać więcej informacji na temat zarządzania danych referencyjnych w czasie serii Insights, zobacz [danych artykule](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="create-time-series-insights-event-source"></a>Tworzenie źródła zdarzeń usługi Time Series Insights
 1. Jeśli nie utworzono źródła zdarzeń, postępuj zgodnie z [tymi instrukcjami](time-series-insights-how-to-add-an-event-source-eventhub.md), aby je utworzyć.
@@ -312,7 +312,7 @@ Jeśli naciśnięciu tej tablicy zdarzeń jako ładunek do TSI będą przechowyw
 
 chId miary jednostki 24 aparat wydobycie ropy naftowej wykorzystania PSI 25 obliczenia pompa szybkość bbl na minutę
 
-Aby uzyskać więcej informacji na temat zarządzania danych referencyjnych w czasie serii Insights, zobacz [danych artykule](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Aby uzyskać więcej informacji na temat zarządzania danych referencyjnych w czasie serii Insights, zobacz [danych artykule](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 Inny problem z pierwszego ładunku jest tego znacznika czasu w milisekundach. TSI akceptuje tylko sygnatur czasowych w formacie ISO. Jedynym rozwiązaniem jest pozostawienie domyślne zachowanie sygnatury czasowej w TSI, który jest użycie sygnatury czasowej umieszczonych w kolejce.
 

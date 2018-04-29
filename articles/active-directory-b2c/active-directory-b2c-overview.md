@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure AD B2C do zarządzania tożsamościami w chmurze dla aplikacji internetowych i mobilnych | Microsoft Docs
-description: Tworzenie aplikacji dla użytkowników za pomocą usługi Azure Active Directory B2C
+title: Co to jest Azure Active Directory B2C? | Microsoft Docs
+description: Więcej informacji dotyczących sposobu tworzenia i zarządzania logowania środowiska aplikacji przy użyciu usługi Azure Active Directory B2C.
 services: active-directory-b2c
 documentationcenter: ''
 author: davidmu1
@@ -9,71 +9,110 @@ editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 04/05/2018
 ms.author: davidmu
-ms.openlocfilehash: 6385a4e4b89cf889b71db6e09010dfe3a674336a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca9e45a214639da86cf8e0c4a39b3e3d6b6d6491
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: Skup się na swojej aplikacji — pozwól nam zająć się rejestrowaniem i logowaniem
+# <a name="what-is-azure-active-directory-b2c"></a>Co to jest Azure Active Directory B2C?
 
-Usługa Azure AD B2C to chmurowe rozwiązanie do zarządzania tożsamościami dla Twoich aplikacji sieci Web i aplikacji mobilnych. Stanowi globalną usługę o wysokiej dostępności, która może obsłużyć setki milionów tożsamości. Oparta na bezpiecznej platformie klasy korporacyjnej usługa Azure AD B2C chroni Twoje aplikacje, procesy biznesowe i użytkowników.
+Usługa Azure Active Directory (Azure AD) B2C jest usługą zarządzania tożsamościami, która pozwala na dostosowywanie i kontrolowanie sposobu, w jaki klienci tworzą konto, logują się i zarządzają swoimi profilami podczas korzystania z Twoich aplikacji. Obejmuje to aplikacje opracowane m.in. dla systemu iOS i Android oraz platformy .NET. Usługa Azure AD B2C umożliwia tych działań ochrony tożsamości klienta w tym samym czasie.
 
-Wymagając minimalnej konfiguracji, usługa Azure AD B2C umożliwia Twojej aplikacji uwierzytelnianie następujących obiektów:
+Można skonfigurować aplikacji zarejestrowanych w usłudze Azure AD B2C do wykonywania różnych akcji związanych z zarządzaniem tożsamościami. Przykłady to:
 
-* **Konta społecznościowe** (np. Facebook, Google i LinkedIn)
-* **Konta przedsiębiorstwa** (za pomocą standardowych protokołów uwierzytelniania OpenID Connect lub SAML)
-* **Konta lokalne** (adres e-mail i hasło lub nazwa użytkownika i hasło)
+- Włącz klienta, aby zarejestrować i korzystać z zarejestrowaną aplikację
+- Włącz klienta zarejestrowaniu zalogować się i rozpocząć korzystanie z aplikacji
+- Włącz zarejestrowaniu klienta, aby edytować swój profil
+- Włączanie uwierzytelniania wieloskładnikowego w aplikacji
+- Włącz zarejestrować się i zaloguj się przy użyciu dostawcy tożsamości określonego klienta
+- Udziel dostępu do interfejsów API, który możesz stworzyć aplikację
+- Dostosowywanie wyglądu i działania obsługi rejestracji i logowania
+- Zarządzanie sesjami pojedynczego logowania jednokrotnego dla aplikacji
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="what-do-i-need-to-think-about-before-using-azure-ad-b2c"></a>Co należy wziąć pod uwagę o przed rozpoczęciem korzystania z usługi Azure AD B2C
 
-W pierwszej kolejności utwórz własną dzierżawę, wykonując kroki opisane w temacie [Tworzenie dzierżawy usługi Azure AD B2C](active-directory-b2c-get-started.md).
+- Jak chcesz klienta do interakcji z mojej aplikacji?
+- Co to jest środowisko interfejsu użytkownika, I chcesz zapewnić klientom?
+- Dostawców tożsamości, które ma uświadomienie klientom, wybierz z we własnej aplikacji?
+- Proces logowania wymaga dodatkowych interfejsów API do uruchomienia?
 
-Następnie wybierz scenariusz tworzenia aplikacji:
+### <a name="customer-interaction"></a>Interakcji z klientem
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| <center>![Aplikacje mobilne i klasyczne](../active-directory/develop/media/active-directory-developers-guide/NativeApp_Icon.png)<br />Aplikacje mobilne i klasyczne</center> | [Omówienie](active-directory-b2c-reference-oauth-code.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /><br />[iOS](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)<br /><br />[Android](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)<br /><br />[Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) |  |
-| <center>![Aplikacje sieci Web](../active-directory/develop/media/active-directory-developers-guide/Web_app.png)<br />Aplikacje sieci Web</center> | [Omówienie](active-directory-b2c-reference-oidc.md)<br /><br />[ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)<br /><br />[ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | [Node.js](active-directory-b2c-devquickstarts-web-node.md) |  |
-| <center>![Aplikacje jednostronicowe](../active-directory/develop/media/active-directory-developers-guide/SPA.png)<br />Aplikacje jednostronicowe</center> | [Omówienie](active-directory-b2c-reference-spa.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)<br /><br /> |  |  |
-| <center>![Interfejsy API sieci Web](../active-directory/develop/media/active-directory-developers-guide/Web_API.png)<br />Interfejsy API sieci Web</center> | [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)<br /><br /> [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)<br /><br /> [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | [Wywoływanie interfejsu API sieci Web platformy .NET](active-directory-b2c-devquickstarts-web-api-dotnet.md) |
+Usługa Azure AD B2C obsługuje [OpenID Connect](https://openid.net/connect/) dla wszystkich klientów wykonywania. W implementacji usługi Azure AD B2C OpenID Connect aplikacji inicjuje przebieg tego użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD B2C. Wynikiem żądania jest token `id_token`. Ten token zabezpieczający reprezentuje tożsamość klienta.
 
-## <a name="whats-new"></a>Co nowego
+Każda aplikacja, która używa usługi Azure AD B2C musi być zarejestrowana w dzierżawie usługi Azure AD B2C, przy użyciu portalu Azure. Proces rejestracji zbiera i przypisuje wartości do tej aplikacji. Wartości te obejmują identyfikator aplikacji, który unikatowo identyfikuje i Przekierowanie URI, który może służyć do kierowania odpowiedzi z powrotem do aplikacji.
 
-Zaglądaj tu często, aby dowiadywać się o nadchodzących zmianach w usłudze Azure Active Directory B2C. Tweetujemy również o wszystkich aktualizacjach, używając konta @AzureAD.
+Interakcja każda aplikacja obejmuje podobnego wzorca wysokiego poziomu:
 
-* Oprócz „zasad wbudowanych” (ogólna dostępność) w publicznej wersji zapoznawczej jest teraz dostępna funkcja [„zasad niestandardowych”](active-directory-b2c-overview-custom.md).  Zasady niestandardowe są przeznaczone dla specjalistów ds. tożsamości, którzy potrzebują kontroli nad strukturą środowiska obsługi tożsamości.
-* Funkcja [tokenu dostępu](https://azure.microsoft.com/en-us/blog/azure-ad-b2c-access-tokens-now-in-public-preview) jest teraz dostępna w publicznej wersji zapoznawczej.
-* Ogłoszono [ogólną dostępność europejskich katalogów usługi Azure AD B2C](https://azure.microsoft.com/en-us/blog/azuread-b2c-ga-eu/).
-* Zapoznaj się z naszą rosnącą biblioteką [przykładów kodu w usłudze GitHub](https://github.com/Azure-Samples?q=b2c)!
+1. Aplikacja przekierowuje klienta do uruchamiania zasady.
+2. Klient wypełnia zasady zgodnie z definicją zasad.
+3. Aplikacja odbiera token zabezpieczający.
+4. Aplikacja używa tokenu zabezpieczającego, aby podjąć próbę uzyskania dostępu do chronionego zasobu.
+5. Serwer zasobów weryfikuje token zabezpieczający, aby sprawdzić możliwość przyznania dostępu.
+6. Aplikacja okresowo odświeża token zabezpieczający.
 
-## <a name="how-to-articles"></a>Instrukcje
+Te kroki mogą się nieznacznie różnić od typu aplikacji, które tworzysz.
 
-Informacje o sposobie korzystania z określonych funkcji usługi Azure Active Directory B2C:
+Usługa Azure AD B2C współdziała z dostawców tożsamości, klientów i innych systemach i z katalogu lokalnego w sekwencji, aby ukończyć zadanie tożsamości. Na przykład Zaloguj się klient, zarejestrować nowego klienta lub resetowania hasła. Platforma podstawowa, która ustanawia relację zaufania wieloosobową i wykonuje następujące czynności jest nazywany Framework obsługi tożsamości. Ta struktura i zasad (nazywanych również przebieg użytkownika lub zasady zaufania Framework) jawnie definiuje uczestników, działania protokołów i sekwencji kroki do wykonania.
 
-* Skonfiguruj swoje konta [Facebook](active-directory-b2c-setup-fb-app.md), [Google+](active-directory-b2c-setup-goog-app.md), [konto Microsoft](active-directory-b2c-setup-msa-app.md), [Amazon](active-directory-b2c-setup-amzn-app.md) i [LinkedIn](active-directory-b2c-setup-li-app.md) do użycia w aplikacjach użytkownika.
-* [Wykorzystaj niestandardowe atrybuty do zbierania informacji o użytkownikach](active-directory-b2c-reference-custom-attr.md).
-* [Włącz funkcję Multi-Factor Authentication platformy Azure w aplikacjach użytkownika](active-directory-b2c-reference-mfa.md).
-* [Skonfiguruj funkcję samodzielnego resetowania hasła przez użytkowników](active-directory-b2c-reference-sspr.md).
-* [Dostosuj wygląd i obsługę funkcji rejestrowania i logowania oraz innych stron dla użytkownika](active-directory-b2c-reference-ui-customization.md) obsługiwanych przez usługę Azure Active Directory B2C.
-* [Skorzystaj z interfejsu API Azure Active Directory programu Graph do programowego tworzenia, odczytywania, aktualizowania i usuwania użytkowników](active-directory-b2c-devquickstarts-graph-dotnet.md) w swojej dzierżawie usługi Azure Active Directory B2C.
+Usługa Azure AD B2C chroni przed typu "odmowa usługi" i hasło do ataków na aplikacji na wiele sposobów. Azure AD B2C używa wykrywanie i zapobieganie technik, takich jak pliki cookie SYN i limity szybkości i połączenia, aby chronić zasoby przed atakami typu "odmowa usługi". Środki zaradcze jest również uwzględniony ataków siłowych hasła i słownikowymi hasła.
+
+#### <a name="built-in-policies"></a>Wbudowane zasady
+
+Każde żądanie, które są wysyłane do usługi Azure AD B2C określa zasady. Zasada steruje zachowaniem współdziałania aplikacji z usługi Azure AD B2C. Wbudowane zasady są wstępnie zdefiniowane dla najbardziej typowych zadań tożsamości, takich jak rejestrację, logowanie i edytowanie profilu.  Na przykład zasad rejestracji umożliwia kontrolowanie zachowania, konfigurując następujące ustawienia:
+
+- Kont społecznościowych, które odbiorca może używać zalogowania się do aplikacji
+- Dane zbierane od klientów, takie jak imię lub kod pocztowy
+- Uwierzytelnianie wieloskładnikowe
+- Wygląd i działanie wszystkie strony
+- Informacje o zwrócony do aplikacji
+
+#### <a name="custom-policies"></a>Zasady niestandardowe 
+
+[Zasady niestandardowe](active-directory-b2c-overview-custom.md) są pliki konfiguracyjne, które definiują zachowanie Framework obsługi tożsamości w dzierżawie usługi Azure AD B2C. Zasady niestandardowe można edytować pełni wykonywanie wielu zadań. Zasady niestandardowe jest reprezentowany jako jeden lub kilka plików w formacie XML odwołujące się do siebie nawzajem w łańcuchu hierarchicznej. 
+
+Wiele niestandardowych zasad o różnych typach mogą być używane w dzierżawie usługi Azure AD B2C, zgodnie z potrzebami i mogą być ponownie używane w aplikacjach. Tego rodzaju elastyczności umożliwia definiowanie i modyfikowanie środowiska tożsamości klienta z minimalnym lub bez wprowadzania zmian w kodzie. Zasady mogą służyć przez dodanie parametru zapytania specjalne do żądania uwierzytelniania HTTP.
+
+Niestandardowe zasady mogą służyć do kontrolowania podróże użytkownika w następujący sposób:
+
+- Definiowanie interakcji z interfejsów API w celu przechwycenia dodatkowych informacji, sprawdź oświadczeń dostarczanych przez klienta, wyzwalacza lub procesów zewnętrznych.
+- Zmiana działania na podstawie oświadczeń z interfejsów API lub oświadczeń w katalogu takich jak *migrationStatus*.
+- Każdy przepływ pracy nie jest objęty przez wbudowane zasady. Na przykład zbieranie więcej informacji o klienta podczas logowania w usługach i autoryzację Sprawdź dostęp do zasobu.
+
+### <a name="identity-providers"></a>Dostawcy tożsamości
+
+Dostawca tożsamości to usługa, która służy do uwierzytelniania tożsamości klienta i wystawia tokeny zabezpieczające. W usłudze Azure AD B2C można skonfigurować w dzierżawie, takich jak konta Microsoft, Facebook lub Amazon między innymi wielu dostawców tożsamości. 
+
+Aby skonfigurować dostawcę tożsamości w dzierżawie usługi Azure AD B2C, należy zarejestrować identyfikator aplikacji lub identyfikator klienta i klucz tajny klienta lub hasła aplikacji dostawcy tożsamości, której można utworzyć. Ten identyfikator i hasło są następnie używane do konfigurowania aplikacji.
+
+### <a name="user-interface-experience"></a>Środowisko interfejsu użytkownika
+
+Większość zawartości HTML i CSS, które są prezentowane klientów można sterować. Za pomocą funkcji dostosowywania interfejsu użytkownika strony, można dostosować wygląd i działanie żadnych zasad. Można również utrzymać marki i wizualne spójności między aplikacji i usługi Azure AD B2C.
+
+Azure AD B2C kodu w przeglądarce klienta, korzysta z podejścia nowoczesnych o nazwie udostępniania zasobów między źródłami (CORS). Najpierw należy określić adres URL w zasadach z dostosowana zawartość HTML. Usługa Azure AD B2C scala elementy interfejsu użytkownika z zawartość HTML, który jest ładowany z danego adresu URL, a następnie wyświetla strony do klienta.
+
+Parametry można wysłać do usługi Azure AD B2C w ciągu zapytania. Przez przekazanie parametru do punktu końcowego HTML, można dynamicznie zmieniać zawartość strony. Na przykład można zmienić obraz tła w witrynie usługi Azure AD B2C zapisywania się lub zaloguj się na podstawie parametru, który jest przekazywany z sieci web lub aplikacji mobilnej.
+
+## <a name="how-do-i-get-started-with-azure-ad-b2c"></a>Jak rozpocząć pracę z usługą Azure AD B2C?
+
+W usłudze Azure AD B2C dzierżawca reprezentuje organizacji i jest katalogiem użytkowników. Poszczególni dzierżawcy usługi Azure AD B2C jest unikatowa i oddzielona od innych dzierżaw usługi Azure AD B2C. Dzierżawca zawiera informacje dotyczące klientów, którzy utworzyli konto korzystać z aplikacji. Na przykład hasła, dane profilu i uprawnień.
+
+Musisz połączyć dzierżawy usługi Azure AD B2C do subskrypcji platformy Azure, aby włączyć wszystkie funkcje i opłacać opłaty za użycie. Umożliwia klientom usługi Azure AD B2C, zaloguj się do aplikacji, należy zarejestrować aplikację w dzierżawie usługi Azure AD B2C.
+
+Aby skonfigurować aplikację do używania usługi Azure AD B2C, należy najpierw tworzenie dzierżawy usługi Azure AD B2C i zarejestrować aplikację. Aby zarejestrować aplikację, wykonaj czynności opisane w [samouczek: Rejestrowanie aplikacji umożliwia zapisywanie się i zaloguj się przy użyciu usługi Azure AD B2C](tutorial-register-applications.md).
+  
+Jeśli jesteś deweloperem aplikacji sieci web ASP.NET, skonfigurować aplikację do uwierzytelniania kont, korzystając z procedury w [samouczek: Włącz aplikacji sieci web do uwierzytelniania za pomocą konta przy użyciu usługi Azure AD B2C](active-directory-b2c-tutorials-web-app.md).
+
+Jeśli jesteś deweloperem aplikacji komputerowych, konfigurowanie aplikacji do uwierzytelniania kont, korzystając z procedury w [samouczek: Włącz aplikacja uwierzytelniania za pomocą konta przy użyciu usługi Azure AD B2C](active-directory-b2c-tutorials-desktop-app.md).
+
+Jeśli jesteś deweloperem aplikacji jednej strony przy użyciu środowiska Node.js, należy skonfigurować aplikację do uwierzytelniania kont, korzystając z procedury w [samouczek: Włącz aplikacji jednej strony, do uwierzytelniania za pomocą konta przy użyciu usługi Azure AD B2C](active-directory-b2c-tutorials-spa.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Poniższe linki pozwalają szczegółowo eksplorować usługę:
+Rozpocznij konfigurowanie aplikacji do obsługi rejestracji i logowania przy samouczka.
 
-* Zobacz [Informacje o cenach usługi Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
-* Przejrzyj nasze [przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c) dla usługi Azure Active Directory B2C. 
-* Uzyskaj pomoc na stronie Stack Overflow, korzystając z tagu [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c).
-* Przekazuj nam swoje przemyślenia za pomocą funkcji [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) — chcemy je poznać.
-* Zapoznaj się z [dokumentacją protokołu usługi Azure AD B2C](active-directory-b2c-reference-protocols.md).
-* Zapoznaj się z [dokumentacją tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md).
-* Przeczytaj temat [Azure Active Directory B2C — często zadawane pytania](active-directory-b2c-faqs.md).
-* [Żądania pomocy technicznej dotyczące plików dla usługi Azure Active Directory B2C](active-directory-b2c-support.md).
-
-## <a name="get-security-updates-for-our-products"></a>Pobierz aktualizacje zabezpieczeń naszych produktów
-
-Firma Microsoft zachęca do przekazywania powiadomień o występujących incydentach zabezpieczeń poprzez wizytę na [tej stronie](https://technet.microsoft.com/security/dd252948) i subskrybowanie Doradczych alertów zabezpieczeń.
-
+> [!div class="nextstepaction"]
+> [Samouczek: Rejestrowanie aplikacji umożliwia zapisywanie się i zaloguj się przy użyciu usługi Azure AD B2C](tutorial-register-applications.md)

@@ -1,25 +1,23 @@
 ---
-title: "Kognitywnych zestaw narzędzi firmy Microsoft z Azure HDInsight Spark dla głębokości learning | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak uczonego modelu uczenia głębokie kognitywnych zestaw narzędzi firmy Microsoft może odnosić się do zestawu danych za pomocą interfejsu API języka Python Spark w klastrze usługi Azure HDInsight Spark."
+title: Kognitywnych zestaw narzędzi firmy Microsoft z Azure HDInsight Spark dla głębokości learning | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uczonego modelu uczenia głębokie kognitywnych zestaw narzędzi firmy Microsoft może odnosić się do zestawu danych za pomocą interfejsu API języka Python Spark w klastrze usługi Azure HDInsight Spark.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: jgao
-ms.openlocfilehash: ebbbcd7a1d61ba0eac13a184aa48cacb800524e8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7afb891642e3e53da5eb1e17ee654fb5fb42c313
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Użyj głębokiego uczenie modelu z klastrem usługi Azure HDInsight Spark Toolkit kognitywnych firmy Microsoft
 
@@ -75,9 +73,9 @@ Aby uzyskać instrukcje na temat korzystania z portalu Azure do uruchomienia akc
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Przekaż notesu Jupyter do klastra Spark w usłudze HDInsight Azure
 
-Aby użyć kognitywnych zestaw narzędzi firmy Microsoft z klastrem usługi Azure HDInsight Spark, należy załadować notesu Jupyter **CNTK_model_scoring_on_Spark_walkthrough.ipynb** do klastra usługi Azure HDInsight Spark. Ten notes jest dostępna w witrynie GitHub pod [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
+Aby użyć kognitywnych zestaw narzędzi firmy Microsoft z klastrem usługi Azure HDInsight Spark, należy załadować notesu Jupyter **CNTK_model_scoring_on_Spark_walkthrough.ipynb** do klastra usługi Azure HDInsight Spark. Ten notes jest dostępna w witrynie GitHub pod [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
 
-1. Klonowanie repozytorium GitHub [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Aby uzyskać instrukcje dotyczące klonowania, zobacz [klonowanie repozytorium](https://help.github.com/articles/cloning-a-repository/).
+1. Klonowanie repozytorium GitHub [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Aby uzyskać instrukcje dotyczące klonowania, zobacz [klonowanie repozytorium](https://help.github.com/articles/cloning-a-repository/).
 
 2. Korzystając z portalu Azure Otwórz bloku klastra Spark, który już zainicjowano obsługę administracyjną, kliknij **pulpit nawigacyjny klastra**, a następnie kliknij przycisk **notesu Jupyter**.
 

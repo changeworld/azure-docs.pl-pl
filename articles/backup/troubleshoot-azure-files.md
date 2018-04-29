@@ -9,11 +9,11 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 225d11c8609c81ed7877283e8dc0fd920b14d838
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Rozwiązywanie problemów związanych z tworzeniem kopii zapasowej w usłudze Azure Files
 Korzystając z informacji znajdujących się w poniższych tabelach możesz rozwiązywać problemy i usuwać błędy napotkane podczas używania funkcji tworzenia kopii zapasowej w usłudze Azure Files.
@@ -59,6 +59,7 @@ Poniższa tabela dotyczy konfigurowania kopii zapasowej:
 | Przywracanie nie powiodło się, ponieważ jeden z plików w źródle nie istnieje. | <ul><li> Wybrane elementy nie istnieją w danych punktu odzyskiwania. Aby odzyskać pliki, udostępnij poprawną listę plików. <li> Migawka udziału plików odpowiadająca punktowi odzyskiwania została ręcznie usunięta. Wybierz inny punkt odzyskiwania, a następnie spróbuj ponownie wykonać operację przywracania. |
 | Zadanie odzyskiwania jest w trakcie przetwarzania do tego samego miejsca docelowego. | <ul><li>Kopia zapasowa udziału plików nie obsługuje odzyskiwania równoległego do tego samego docelowego udziału plików. <li>Poczekaj na zakończenie trwającej operacji odzyskiwania, a następnie spróbuj ponownie. Jeśli zadanie odzyskiwania nie zostanie odnalezione w magazynie usługi Recovery Services, wybierz inne magazyny usługi Recovery Services w ramach tej samej subskrypcji. |
 | Operacja przywracania nie powiodła się, ponieważ docelowy udział plików jest pełny. | Zwiększ limit przydziału rozmiaru docelowego udziału plików w celu pomieszczenia przywracanych danych, a następnie spróbuj ponownie wykonać operację. |
+| Operacja przywrócenia nie powiodła się, ponieważ wystąpił błąd podczas wykonywania operacji przywracania wstępnego dla zasobów usługi File Sync skojarzonych z docelowym udziałem plików. | Spróbuj ponownie za jakiś czas. Jeśli problem będzie nadal występować, skontaktuj się z pomocą techniczną firmy Microsoft. |
 | Odzyskanie co najmniej jednego pliku zakończyło się niepowodzeniem. Aby uzyskać więcej informacji, sprawdź listę plików zakończonych niepowodzeniem w ramach podanej powyżej ścieżki. | <ul> <li> Przyczyny niepowodzenia odzyskiwania są wymienione w pliku (ścieżka jest podana w szczegółach zadania). Usuń przyczyny niepowodzenia, a następnie spróbuj ponownie wykonać operację przywracania tylko dla plików zakończonych niepowodzeniem. <li> Typowe przyczyny błędów przywracania plików: <br/> - pliki zakończone niepowodzeniem są używane <br/> -w katalogu nadrzędnym istnieje katalog o tej samej nazwie, co plik zakończony niepowodzeniem |
 
 ## <a name="see-also"></a>Zobacz też

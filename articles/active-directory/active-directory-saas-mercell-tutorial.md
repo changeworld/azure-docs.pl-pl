@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d009e8bdf513b10198aac826236ff44376ed630
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 60432e18c9496ff6fc5431fcd7b73aa5f4c9696c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Samouczek: Integracji Azure Active Directory z Mercell
 
@@ -99,7 +99,7 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_samlbase.png)
 
 3. Na **Mercell domeny i adres URL** sekcji, wykonaj następujące czynności:
@@ -107,36 +107,16 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Adresy URL i domeny Mercell pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_url.png)
 
     W **identyfikator** tekstowym, wpisz adres URL: `https://my.mercell.com/`
- 
-4. Kliknij przycisk **zapisać** przycisku.
+
+4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-mercell-tutorial/tutorial_metadataurl.png)
+     
+5. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-mercell-tutorial/tutorial_general_400.png)
 
-5. Aby wygenerować **adres URL metadanych**, wykonaj następujące czynności:
-
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpointicon.png)
-
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **Mercell** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Aby skonfigurować logowanie jednokrotne w **Mercell** stronie, musisz wysłać wygenerowany **adres URL metadanych** do [Mercell zespołem pomocy technicznej](mailto:webmaster@mercell.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. Aby skonfigurować logowanie jednokrotne w **Mercell** stronie, musisz wysłać wygenerowany **adres Url metadanych Federacji aplikacji** do [Mercell zespołem pomocy technicznej](mailto:webmaster@mercell.com). To ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML one wartość.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

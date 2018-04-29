@@ -1,6 +1,6 @@
 ---
-title: "Umożliwia zarządzanie sieci Azure spisów dynamiczne Ansible"
-description: "Dowiedz się, jak użyć Ansible do zarządzania programu Azure spisów dynamiczne"
+title: Umożliwia zarządzanie sieci Azure spisów dynamiczne Ansible
+description: Dowiedz się, jak użyć Ansible do zarządzania programu Azure spisów dynamiczne
 ms.service: ansible
 keywords: ansible, azure, metodyki devops, bash, cloudshell, dynamiczne spisu
 author: tomarcher
@@ -8,11 +8,11 @@ manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f29f4ec64b79738cae2ad684610f4817739825a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Umożliwia zarządzanie sieci Azure spisów dynamiczne Ansible
 Ansible może służyć do pobierania informacji o spisie z różnych źródeł (w tym chmury źródeł, takich jak Azure) do *dynamiczne spisu*. W tym artykule używamy [powłoki chmury Azure](./ansible-run-playbook-in-cloudshell.md) Aby skonfigurować spis dynamiczne Ansible Azure w którym można utworzyć dwie maszyny wirtualne, tagów jednego z tych maszyn wirtualnych i zainstalować Nginx na oznakowanych maszyny wirtualnej.
@@ -27,7 +27,7 @@ Ansible może służyć do pobierania informacji o spisie z różnych źródeł 
 
 1. Zaloguj się w witrynie [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otwórz [chmury powłoki](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+1. Otwórz [chmury powłoki](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Utwórz grupę zasobów platformy Azure do przechowywania maszyn wirtualnych w tym samouczku.
 

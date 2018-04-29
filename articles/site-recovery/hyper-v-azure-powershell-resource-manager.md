@@ -1,6 +1,6 @@
 ---
-title: "Replikowanie maszyn wirtualnych funkcji Hyper-V z programu PowerShell i usługa Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "Automatyzowanie replikacji maszyn wirtualnych funkcji Hyper-V do platformy Azure z usługą Azure Site Recovery przy użyciu programu PowerShell i Menedżera zasobów Azure."
+title: Replikowanie maszyn wirtualnych funkcji Hyper-V z programu PowerShell i usługa Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Automatyzowanie replikacji maszyn wirtualnych funkcji Hyper-V do platformy Azure z usługą Azure Site Recovery przy użyciu programu PowerShell i Menedżera zasobów Azure.
 services: site-recovery
 author: bsiva
 manager: abhiag
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: bsiva
-ms.openlocfilehash: 4304cad9dc6aab7eb95885815a3ceb636ca6ff52
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 18ed9566cd265ef851f914a59e10f6973bdc0d86
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii do platformy Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i usługi Azure Resource Manager
 
@@ -45,9 +45,9 @@ Ponadto konkretnym przykładzie opisane w tym artykule ma następujące wymagani
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Zaloguj się do konta platformy Azure
 
-1. Otwórz konsolę programu PowerShell i uruchom to polecenie, aby zalogować się do konta platformy Azure. Polecenie cmdlet powoduje wyświetlenie strony sieci web wyświetla monit o podanie poświadczeń konta: **Login-AzureRmAccount**.
-    - Alternatywnie można uwzględnić poświadczeń konta jako parametru w **Login-AzureRmAccount** polecenia cmdlet, za pomocą **-Credential** parametru.
-    - W przypadku dostawcy usług Kryptograficznych partnera pracy imieniu dzierżawcy określenia klienta dzierżawcy, przy użyciu nazwy domeny głównej dla identyfikatora dzierżawcy lub dzierżawcy. Na przykład: **Login-AzureRmAccount-dzierżawy "fabrikam.com"**
+1. Otwórz konsolę programu PowerShell i uruchom to polecenie, aby zalogować się do konta platformy Azure. Polecenie cmdlet powoduje wyświetlenie strony sieci web wyświetla monit o podanie poświadczeń konta: **Connect-AzureRmAccount**.
+    - Alternatywnie można uwzględnić poświadczeń konta jako parametru w **Connect-AzureRmAccount** polecenia cmdlet, za pomocą **-Credential** parametru.
+    - W przypadku dostawcy usług Kryptograficznych partnera pracy imieniu dzierżawcy określenia klienta dzierżawcy, przy użyciu nazwy domeny głównej dla identyfikatora dzierżawcy lub dzierżawcy. Na przykład: **Connect-AzureRmAccount-dzierżawy "fabrikam.com"**
 2. Skojarz subskrypcji, który ma być używany z konto, ponieważ konto może zawierać kilka subskrypcji:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
@@ -132,7 +132,7 @@ Przed rozpoczęciem należy zwrócić uwagę na koncie magazynu określonym musi
         $protectionContainer = Get-AzureRmSiteRecoveryProtectionContainer
 3. Kojarzenie kontenera ochrony z zasadami replikacji w następujący sposób:
 
-     $Policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $PolicyName   $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $Policy -PrimaryProtectionContainer $protectionContainer
+     $Policy = get-AzureRmSiteRecoveryPolicy - FriendlyName $PolicyName $associationJob = Start AzureRmSiteRecoveryPolicyAssociationJob-$Policy zasad - PrimaryProtectionContainer $protectionContainer
 
 4. Poczekaj, aż zadanie skojarzenia zostało wykonane pomyślnie.
 

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Usługa Azure Active Directory B2C: Pomocnika narzędzie służące do prezentacja funkcji dostosowywania interfejsu użytkownika strony
 W tym artykule jest dodatek do [główny artykuł dostosowania interfejsu użytkownika](active-directory-b2c-reference-ui-customization.md) w usłudze Azure Active Directory (Azure AD) B2C. W poniższych krokach opisano sposób wykonywania przy użyciu zawartość HTML i CSS przykładową, która przygotowaliśmy dostosowywanie funkcji interfejsu użytkownika strony.
@@ -29,7 +29,7 @@ Przykłady przygotowaliśmy może służyć do customze dwóch stron w [zasad re
 ## <a name="register-an-application"></a>Rejestrowanie aplikacji
 Konieczne będzie [zarejestrować aplikację](active-directory-b2c-app-registration.md) w dzierżawie usługi B2C, który może służyć do wykonywania zasady. Po zarejestrowaniu aplikacji, masz kilka opcji, które służą do aktualnie ma uruchomiony zasadach rejestracji:
 
-* Tworzenie jednego z usługi Azure AD B2C aplikacji szybki start wymienionych w sekcji "Wprowadzenie" [podpisywania i logowanie użytkowników w twoich aplikacjach](active-directory-b2c-overview.md#get-started).
+* Tworzenie jednego z usługi Azure AD B2C aplikacji szybki start wymienionych w sekcji "Wprowadzenie" [podpisywania i logowanie użytkowników w twoich aplikacjach](active-directory-b2c-overview.md).
 * Użyj wstępnie przygotowanych [Plac zabaw dla usługi Azure AD B2C](https://aadb2cplayground.azurewebsites.net) aplikacji. Jeśli chcesz użyć Plac zabaw dla musi zarejestrować aplikację w dzierżawie usługi B2C przy użyciu **identyfikator URI przekierowania** `https://aadb2cplayground.azurewebsites.net/`.
 * Użyj **Uruchom teraz** przycisk na zasady w [portalu Azure](https://portal.azure.com/).
 
@@ -39,7 +39,7 @@ Aby dostosować wygląd i działanie zasad, musisz najpierw utworzyć pliki HTML
 Do celów tego samouczka opracowaliśmy już niektóre przykłady i hostowanej go w magazynie obiektów Blob Azure. Zawartość próbki jest bardzo proste dostosowania w motywie fikcyjnej firmy "Wingtip Toys". Aby wypróbować jej możliwości w własnych zasad, wykonaj następujące kroki:
 
 1. Zaloguj się do dzierżawy na [portalu Azure](https://portal.azure.com/) i przejdź do bloku funkcji B2C.
-2. Kliknij przycisk **zasad rejestracji i logowania** a następnie kliknij pozycję zasady (na przykład "b2c\_1\_znak\_się\_znak\_w").
+2. Kliknij przycisk **zasad rejestracji i logowania**, kliknij przycisk z zasadami i kliknij pozycję Edytuj (na przykład "b2c\_1\_znak\_się\_znak\_w").
 3. Kliknij przycisk **dostosowywania interfejsu użytkownika strony** , a następnie **stronę tworzenia konta lub logowanie Unified**.
 4. Przełącz **niestandardowe strony** przełączyć się do **tak**. W **strony niestandardowego identyfikatora URI** wprowadź `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/unified.html`. Kliknij przycisk **OK**.
 5. Kliknij przycisk **stronę tworzenia konta lokalnego konta**. Przełącz **Użyj niestandardowego szablonu** przełączyć się do **tak**. W **strony niestandardowego identyfikatora URI** wprowadź `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/selfasserted.html`.

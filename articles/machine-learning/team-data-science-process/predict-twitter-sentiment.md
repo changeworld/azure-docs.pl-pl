@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev
-ms.openlocfilehash: f22da892868a10ac18fdcd703249eaa172f8bf65
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 47c8b9c9d364a7959066132a873b93c2bb001e26
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>Przewidywanie Twitter wskaźniki nastrojów klientów z programu word osadzeń przy użyciu procesu nauki danych zespołu
 
-W tym artykule przedstawiono sposób współpracy przy użyciu _Word2Vec_ word osadzanie algorytmu i _osadzanie Word specyficzne dla wskaźniki nastrojów klientów (SSWE)_ algorytmu do prognozowania Twitter wskaźniki nastrojów klientów z [Uczenie maszynowe azure](../preview/index.yml). Aby uzyskać więcej informacji na Prognozowanie Twitter bieguna wskaźniki nastrojów klientów, zobacz [repozytorium MachineLearningSamples TwitterSentimentPrediction](https://github.com/Azure/MachineLearningSamples-TwitterSentimentPrediction) w witrynie GitHub. Kluczem do ułatwienia współpraca z zespołem efektywne w przypadku projektów analizy danych jest normalizacji struktury i dokumentacji projektów z cyklem nawiązane połączenie analiz danych. [Zespołu danych nauki procesu (TDSP)](overview.md) zawiera tego typu strukturalnego [cyklu życia](lifecycle.md). 
+W tym artykule przedstawiono sposób współpracy przy użyciu _Word2Vec_ word osadzanie algorytmu i _osadzanie Word specyficzne dla wskaźniki nastrojów klientów (SSWE)_ algorytmu do prognozowania Twitter wskaźniki nastrojów klientów z [Uczenie maszynowe azure](../service/index.yml). Aby uzyskać więcej informacji na Prognozowanie Twitter bieguna wskaźniki nastrojów klientów, zobacz [repozytorium MachineLearningSamples TwitterSentimentPrediction](https://github.com/Azure/MachineLearningSamples-TwitterSentimentPrediction) w witrynie GitHub. Kluczem do ułatwienia współpraca z zespołem efektywne w przypadku projektów analizy danych jest normalizacji struktury i dokumentacji projektów z cyklem nawiązane połączenie analiz danych. [Zespołu danych nauki procesu (TDSP)](overview.md) zawiera tego typu strukturalnego [cyklu życia](lifecycle.md). 
 
-Tworzenie projektów nauki danych z _szablonu TDSP_ zapewnia standardowych ramy dla projektów usługi Azure Machine Learning. Wcześniej wydane przez zespół TDSP [repozytorium GitHub TDSP struktury projektu i szablony](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Teraz projektów uczenia maszynowego, które zostały utworzone z [TDSP szablonów dla usługi Azure Machine Learning](https://github.com/amlsamples/tdsp) są włączone. Aby uzyskać instrukcje, zobacz temat jak korzystać [TDSP struktury projektów przy użyciu szablonu TDSP](../preview/how-to-use-tdsp-in-azure-ml.md) w usłudze Azure Machine Learning. 
+Tworzenie projektów nauki danych z _szablonu TDSP_ zapewnia standardowych ramy dla projektów usługi Azure Machine Learning. Wcześniej wydane przez zespół TDSP [repozytorium GitHub TDSP struktury projektu i szablony](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Teraz projektów uczenia maszynowego, które zostały utworzone z [TDSP szablonów dla usługi Azure Machine Learning](https://github.com/amlsamples/tdsp) są włączone. Aby uzyskać instrukcje, zobacz temat jak korzystać [TDSP struktury projektów przy użyciu szablonu TDSP](../desktop-workbench/how-to-use-tdsp-in-azure-ml.md) w usłudze Azure Machine Learning. 
 
 
 ## <a name="twitter-sentiment-polarity-sample"></a>Przykładowe bieguna wskaźniki nastrojów klientów w usłudze Twitter
@@ -131,7 +131,7 @@ Ostatnim krokiem jest wdrożenie modelu prognozowania przeszkolone wskaźniki na
 
 ![Pulpit nawigacyjny rozwiązania Kubernetes](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-Aby uzyskać więcej informacji na temat procesu operationalization, zobacz [wdrażanie usługi Azure Machine Learning model jako usługę sieci web](../preview/model-management-service-deploy.md).
+Aby uzyskać więcej informacji na temat procesu operationalization, zobacz [wdrażanie usługi Azure Machine Learning model jako usługę sieci web](../desktop-workbench/model-management-service-deploy.md).
 
 ## <a name="conclusion"></a>Podsumowanie
 
@@ -143,8 +143,8 @@ W tym artykule przedstawiono sposób uczenie modelu przy użyciu osadzanie word 
 * [Zespołowe przetwarzanie danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [Jak używać zespołu danych nauki procesu (TDSP) w usłudze Azure Machine Learning](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Szablony projektów TDSP dla usługi Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
-* [Środowisko robocze usługi Azure Machine Learning](../preview/index.yml)
+* [Środowisko robocze usługi Azure Machine Learning](../service/index.yml)
 * [USA przychody zestaw danych z repozytorium UCI ML](https://archive.ics.uci.edu/ml/datasets/adult)
-* [Rozpoznawanie jednostek biomedycznych przy użyciu szablonów TDSP](../preview/scenario-tdsp-biomedical-recognition.md)
-* [Mikolov, Tomas, et al. "Reprezentacje słów i wyrażeń oraz ich Compositionality rozproszonych. Zmienia informacje neuronowej systemów przetwarzania." 2013.](https://arxiv.org/abs/1310.4546)
-* [Tang, Duyu, et al. "Uczenia wskaźniki nastrojów klientów specyficzne dla programu Word osadzanie klasyfikacji wskaźniki nastrojów klientów usługi Twitter". ACL (1). 2014.](http://www.aclweb.org/anthology/P14-1146)
+* [Rozpoznawanie jednostek biomedycznych przy użyciu szablonów TDSP](../desktop-workbench/scenario-tdsp-biomedical-recognition.md)
+* [Mikolov, Tomasowi, i wsp. "Reprezentacje słów i wyrażeń oraz ich Compositionality rozproszonych. Zmienia informacje neuronowej systemów przetwarzania." 2013.](https://arxiv.org/abs/1310.4546)
+* [Tang, Duyu, et al. "Uczenia wskaźniki nastrojów klientów specyficzne dla programu Word osadzanie klasyfikacji wskaźniki nastrojów klientów usługi Twitter". LISTY KONTROLI DOSTĘPU (1). 2014.](http://www.aclweb.org/anthology/P14-1146)

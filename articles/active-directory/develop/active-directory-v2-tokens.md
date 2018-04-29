@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory v2.0 tokeny odwołania | Dokumentacja firmy Microsoft"
-description: "Typy tokenów i oświadczeń emitowane przez punktu końcowego v2.0 usługi Azure AD"
+title: Azure Active Directory v2.0 tokeny odwołania | Dokumentacja firmy Microsoft
+description: Typy tokenów i oświadczeń emitowane przez punktu końcowego v2.0 usługi Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4a408fb40c976c6e06f00d074504de6a3ec29bd1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory w wersji 2.0 tokeny odwołania
 Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczających w każdym [przepływ uwierzytelniania](active-directory-v2-flows.md). To odwołanie opisuje format właściwości zabezpieczeń i zawartości każdego typu tokenu.
@@ -49,7 +49,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 ```
 
 > [!TIP]
-> Praktyki, aby sprawdzić oświadczenia w tokenie identyfikator próbki, wklej przykładowy token identyfikator do [calebb.net](http://calebb.net/).
+> Praktyki, aby sprawdzić oświadczenia w tokenie identyfikator próbki, wklej przykładowy token identyfikator do [jwt.ms](http://jwt.ms/).
 >
 >
 
@@ -73,9 +73,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Identyfikator obiektu: |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Niezmienne identyfikator obiektu programu Microsoft identity system, w tym przypadku konta użytkownika.  Można go również używane do wykonywania sprawdzeń autoryzacji i bezpiecznie jako klucz w tabelach bazy danych. Ten identyfikator unikatowo identyfikuje użytkownika w aplikacjach — dwóch różnych aplikacji podpisywania w ten sam użytkownik otrzyma tę samą wartość w `oid` oświadczeń.  Oznacza to, że mogą być używane podczas wykonywania kwerend do usług online firmy Microsoft, takich jak Microsoft Graph.  Program Microsoft Graph, którą będzie zwracać ten identyfikator jako `id` właściwości dla danego konta użytkownika.  Ponieważ `oid` umożliwia wielu aplikacjom do skorelowania użytkowników, `profile` zakres jest wymagany w celu odbierania tego oświadczenia. Należy pamiętać, że jeden użytkownik istnieje w wielu dzierżawców, użytkownik będzie zawierać identyfikator inny obiekt, w każdej dzierżawy — są traktowane jako różne konta, nawet jeśli użytkownik loguje się do wszystkich kont z tymi samymi poświadczeniami. |
 
 ### <a name="access-tokens"></a>Tokeny dostępu
-Obecnie wystawiony przez punktu końcowego v2.0 tokenów dostępu mogą być używane tylko przez program Microsoft Services. Aplikacje nie powinny konieczne jest wykonanie weryfikacji ani kontroli tokenów dostępu dla każdego z aktualnie obsługiwanych scenariuszach. Tokeny dostępu można traktować jako całkowicie przezroczystości. Są one tylko ciągi, które aplikacji można przekazać do firmy Microsoft w żądaniach HTTP.
 
-W niedalekiej przyszłości punktu końcowego v2.0 przedstawiono możliwości aplikacji na odbieranie tokenów dostępu z innymi klientami. W tym czasie informacje w tym temacie będą aktualizowane z zawiera informacje dotyczące aplikacji do wykonywania sprawdzania poprawności tokenu dostępu i inne podobne zadania.
+Punktu końcowego v2.0 umożliwia aplikacji innych firm, które są zarejestrowane w usłudze Azure AD do wystawiania tokenów dostępu do zabezpieczonych zasobów, takich jak interfejsów API sieci Web. Aby uzyskać więcej informacji o konfigurowaniu aplikacji do wystawiania tokenów dostępu, zobacz [jak zarejestrować aplikację z punktem końcowym v2.0](active-directory-v2-app-registration.md). Podczas rejestracji aplikacji z punktem końcowym v2.0, deweloper można określić poziom dostępu o nazwie **zakresy**, do którego dostęp może być wystawiony tokenów. Na przykład **calendars.read** zakres zdefiniowany w interfejsu API programu Microsoft Graph przyznaje uprawnienia do odczytu kalendarza użytkownika. Gdy aplikacja odbiera token dostępu z punktem końcowym v2.0, należy sprawdzić podpisu tokenu, wystawcy, odbiorców, czas wygaśnięcia i inne roszczenia, w zależności od danego scenariusza. 
 
 W przypadku żądania tokenu dostępu z punktem końcowym v2.0, punktu końcowego v2.0 również zwraca metadane dotyczące tokenu dostępu dla aplikacji do użycia. Informacje te obejmują czas wygaśnięcia tokenu dostępu i zakresów, dla których jest prawidłowy. Aplikacja wykorzystuje te metadane, aby wykonać inteligentne buforowanie tokenów dostępu bez konieczności przeanalizować otwórz sam token dostępu.
 

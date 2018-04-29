@@ -1,26 +1,26 @@
 ---
-title: "Lokalizacja warunki dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak użyć warunku lokalizacji, aby kontrolować dostęp do aplikacji w chmurze na podstawie lokalizacji sieciowej użytkownika."
+title: Lokalizacja warunki dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć warunku lokalizacji, aby kontrolować dostęp do aplikacji w chmurze na podstawie lokalizacji sieciowej użytkownika.
 services: active-directory
-keywords: "dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego"
-documentationcenter: 
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2018
+ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 842fe8c194f1c88c7dabb073e0fa7b7806d92d44
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Lokalizacja warunki dostępu warunkowego w usłudze Azure Active Directory 
 
@@ -43,7 +43,14 @@ Lokalizacja jest etykietę dla lokalizacji sieciowej albo reprezentuje nazwanego
 
 Nazwane lokalizacje umożliwia tworzenie logiczne grupy zakresów adresów IP, innych krajów i regionów. 
 
- Nazwa lokalizacji zawiera następujące składniki:
+Są dostępne w lokalizacji o nazwie **Zarządzaj** sekcji strony dostępu warunkowego.
+
+![Lokalizacje](./media/active-directory-conditional-access-locations/02.png)
+
+ 
+
+
+Nazwane lokalizacji zawiera następujące składniki:
 
 ![Lokalizacje](./media/active-directory-conditional-access-locations/42.png)
 
@@ -68,13 +75,13 @@ Liczba nazwane lokalizacje, które można skonfigurować jest ograniczona przez 
 
 ## <a name="trusted-ips"></a>Zaufane adresy IP
 
-Można również skonfigurować zakresy adresów IP reprezentujący lokalny intranet organizacji w [ustawień usługi Multi-Factor authentication](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Ta funkcja umożliwia konfigurowanie zakresów adresów IP do 50. Zakresy adresów IP są w formacie CIDR. Aby uzyskać więcej informacji, zobacz [zaufanych adresów IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).  
+Można również skonfigurować zakresy adresów IP reprezentujący lokalny intranet organizacji w [ustawień usługi Multi-Factor authentication](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Ta funkcja umożliwia konfigurowanie zakresów adresów IP do 50. Zakresy adresów IP są w formacie CIDR. Aby uzyskać więcej informacji, zobacz [zaufanych adresów IP](authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
 Jeśli mają zaufany skonfigurowane adresy IP, są wyświetlane jako **listę zaufanych adresów IP MFA** na liście lokalizacji dla warunku lokalizacji.   
 
 ### <a name="skipping-multi-factor-authentication"></a>Pomijanie usługi Multi-Factor authentication
 
-Na stronie ustawień usługi uwierzytelniania wieloskładnikowego można określić użytkownicy intranetu, wybierając **Pomiń uwierzytelnianie Multi-Factor authentication dla żądań od użytkowników federacyjnych w moim intranecie**. To ustawienie wskazuje, że wewnątrz firmowych sieciowe oświadczeń, który jest wystawiany przez usługi AD FS, powinny być zaufane i używane do identyfikowania użytkownika jako znajdujące się w sieci firmowej. Aby uzyskać więcej informacji, zobacz [włączyć funkcję zaufanych adresów IP przy użyciu dostępu warunkowego](../multi-factor-authentication/multi-factor-authentication-whats-next.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+Na stronie ustawień usługi uwierzytelniania wieloskładnikowego można określić użytkownicy intranetu, wybierając **Pomiń uwierzytelnianie Multi-Factor authentication dla żądań od użytkowników federacyjnych w moim intranecie**. To ustawienie wskazuje, że wewnątrz firmowych sieciowe oświadczeń, który jest wystawiany przez usługi AD FS, powinny być zaufane i używane do identyfikowania użytkownika jako znajdujące się w sieci firmowej. Aby uzyskać więcej informacji, zobacz [włączyć funkcję zaufanych adresów IP przy użyciu dostępu warunkowego](authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
 Po zaznaczeniu tej opcji, w tym o nazwie lokalizacji **adresów IP z usługami MFA zaufane** będzie dotyczyć wszystkie zasady z tą wybrane.
 
@@ -100,7 +107,7 @@ Po skonfigurowaniu warunku lokalizacji, masz możliwość rozróżnienia:
 
 ### <a name="any-location"></a>Dowolna lokalizacja
 
-Domyślnie zaznaczenie **dowolnej lokalizacji** powoduje, że zasady do zastosowania dla wszystkich adresów IP, która oznacza każdy adres w Internecie. To ustawienie nie nie jest ograniczona do adresów IP, które zostały skonfigurowane jako lokalizacji o nazwie. Po wybraniu **dowolnej lokalizacji**, nadal można wykluczyć określone lokalizacje z zasad. Na przykład można zastosować zasady do wszystkich lokalizacji, z wyjątkiem zaufanych lokalizacji, aby ustawić zakres do wszystkich lokalizacji, z wyjątkiem sieci firmowej.
+Domyślnie zaznaczenie **dowolnej lokalizacji** powoduje, że zasady do zastosowania dla wszystkich adresów IP, która oznacza każdy adres w Internecie. To ustawienie nie jest ograniczona do adresów IP, które zostały skonfigurowane jako lokalizacji o nazwie. Po wybraniu **dowolnej lokalizacji**, nadal można wykluczyć określone lokalizacje z zasad. Na przykład można zastosować zasady do wszystkich lokalizacji, z wyjątkiem zaufanych lokalizacji, aby ustawić zakres do wszystkich lokalizacji, z wyjątkiem sieci firmowej.
 
 ### <a name="all-trusted-locations"></a>Wszystkie zaufane lokalizacje
 
@@ -112,7 +119,7 @@ Ta opcja ma zastosowanie do:
 
 ### <a name="selected-locations"></a>Wybrane lokalizacje
 
-Po wybraniu tej opcji można wybrać co najmniej jedna lokalizacja nazwanego. To ustawienie, aby zastosować zasady użytkownik musi połączyć za pomocą dowolnego z wybranej lokalizacji. Gdzie możesz kliknąć pozycję **wybierz** otwiera formant wyboru nazwanej sieci z listą o nazwie sieci. Lista zawiera, jeśli lokalizacja sieciowa została oznaczona jako zaufane. Nazwane lokalizacji o nazwie **adresów IP z usługami MFA zaufane** jest używana do włączenia ustawienia protokołu IP, które można skonfigurować na stronie Ustawienia usługi Multi-Factor authentication.
+Po wybraniu tej opcji można wybrać co najmniej jedna lokalizacja nazwanego. To ustawienie, aby zastosować zasady użytkownik musi połączyć za pomocą dowolnego z wybranej lokalizacji. Po kliknięciu **wybierz** otwiera formant wyboru nazwanej sieci z listą o nazwie sieci. Lista zawiera, jeśli lokalizacja sieciowa została oznaczona jako zaufane. Nazwane lokalizacji o nazwie **adresów IP z usługami MFA zaufane** jest używana do włączenia ustawienia protokołu IP, które można skonfigurować na stronie Ustawienia usługi Multi-Factor authentication.
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
 

@@ -3,8 +3,8 @@ title: Wprowadzenie do usługi Microsoft Power BI Embedded | Microsoft Docs
 description: Usługa Power BI Embedded w Twoich aplikacjach analizy biznesowej
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
-ms.author: asaxton
-ms.openlocfilehash: 3ea302d8cdd9a08d41f863917adeb4505552649d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: maghan
+ms.openlocfilehash: 7b604f9a26fc4c9a2c76a28ca01d066fe1640718
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Wprowadzenie do usługi Microsoft Power BI Embedded
 
@@ -27,7 +27,7 @@ Usługa **Power BI Embedded** pozwala niezależnym dostawcom oprogramowania (ISV
 
 ![Diagram przepływu osadzania](media/get-started/introduction.png)
 
-Usługa Power BI Embedded zapewnia korzyści niezależnym dostawcom oprogramowania, ich deweloperom i klientom. Na przykład niezależny dostawca oprogramowania może bezpłatnie rozpocząć tworzenie elementów wizualnych za pomocą aplikacji Power BI Desktop. Niezależni dostawcy oprogramowania mogą osiągnąć krótszy czas wprowadzenia na rynek, minimalizując nakłady pracy na rozwój analizy wizualnej, i wyróżnić się wśród konkurencji za pomocą zróżnicowanych danych. Niezależni dostawcy oprogramowania mogą również naliczać premie za wartość dodatkową utworzoną za pomocą osadzonej analizy.
+Usługa Power BI Embedded zapewnia korzyści niezależnym dostawcom oprogramowania, ich deweloperom i klientom. Na przykład niezależny dostawca oprogramowania może bezpłatnie rozpocząć tworzenie wizualizacji za pomocą aplikacji Power BI Desktop. Niezależni dostawcy oprogramowania mogą osiągnąć krótszy czas wprowadzenia na rynek, minimalizując nakłady pracy na rozwój analizy wizualnej, i wyróżnić się wśród konkurencji za pomocą zróżnicowanych danych. Niezależni dostawcy oprogramowania mogą również naliczać premie za wartość dodatkową utworzoną za pomocą osadzonej analizy.
 
 Deweloperzy mogą poświęcać czas na tworzenie podstawowych funkcji aplikacji, zamiast na tworzenie wizualizacji i analizy. Deweloperzy mogą szybko zaspokoić potrzeby klientów dotyczące raportów i pulpitów nawigacyjnych oraz mogą łatwo osadzać zawartość przy użyciu w pełni udokumentowanych interfejsów API i zestawów SDK. Wreszcie, włączając w swoich aplikacjach łatwą do nawigacji eksplorację danych, niezależni dostawcy oprogramowania pozwalają swoim klientom na podejmowanie szybkich, opartych na danych decyzji w określonym kontekście i bez obaw na dowolnym urządzeniu.
 

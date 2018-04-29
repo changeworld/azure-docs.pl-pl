@@ -1,10 +1,10 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Clever | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Clever."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Clever.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 04/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 1aad242ff1e9161ad5dfbecd01a44d8fb3c93cbb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Samouczek: Integracji Azure Active Directory z Clever
 
@@ -101,37 +101,37 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_clever_samlbase.png)
 
 3. Na **inteligentne domeny i adres URL** sekcji, wykonaj następujące czynności:
 
     ![Inteligentne domeny i adresów URL jednym informacje logowania jednokrotnego](./media/active-directory-saas-clever-tutorial/tutorial_clever_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca:`https://clever.com/in/<companyname>`
+    a. W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://clever.com/in/<companyname>`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca:`https://clever.com/<companyname>`
+    b. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://clever.com/<companyname>`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Wartości te nie są prawdziwe. Rzeczywisty adres URL logowania i identyfikator, należy zaktualizować te wartości. Skontaktuj się z [zespołem pomocy technicznej klienta inteligentne](https://clever.com/about/contact/) uzyskać te wartości.
 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
-
-    ![Łącze pobierania certyfikatu](./media/active-directory-saas-clever-tutorial/tutorial_clever_certificate.png)
+4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk Kopiuj, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go do Notatnika.
+    
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_metadataurl.png)
 
 5. Inteligentne aplikacji oczekuje potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do Twojej **atrybuty tokenu SAML** konfiguracji.
 
     Poniższy zrzut ekranu przedstawia przykład tego.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png) 
+    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png)
 
 6. W **atrybuty użytkownika** sekcji na **logowanie jednokrotne** okna dialogowego, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
     | Nazwa atrybutu  | Wartość atrybutu |
-    | --------------- | -------------------- |    
-    | clever.student.Credentials.District\_nazwy użytkownika  | User.userPrincipalName |
-    | Imię  | User.givenName |
-    | nazwisko  | User.surname |    
+    | --------------- | -------------------- |
+    | clever.student.Credentials.District\_nazwy użytkownika  | user.userprincipalname |
+    | Imię  | user.givenname |
+    | nazwisko  | user.surname |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -145,39 +145,19 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     d. Pozostaw **Namespace** puste pole tekstowe.
     
-    d. Kliknij przycisk **OK**.     
-
-5. Kliknij przycisk **zapisać** przycisku.
+    d. Kliknij przycisk **OK**.
+    
+7. Kliknij przycisk **zapisać** przycisku.
 
     ![Skonfiguruj przycisk pojedynczego logowania jednokrotnego Zapisz](./media/active-directory-saas-clever-tutorial/tutorial_general_400.png)
 
-8. Aby wygenerować **metadanych** adres url, wykonaj następujące czynności:
+8. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy inteligentne.
 
-    a. Kliknij przycisk **rejestracji aplikacji**.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_clever_appregistrations.png)
-   
-    b. Kliknij przycisk **punkty końcowe** otworzyć **punkty końcowe** okno dialogowe.  
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpointicon.png)
-
-    c. Kliknij przycisk Kopiuj, aby skopiować **dokument METADANYCH usług FEDERACYJNYCH** adresu url i wklej go do Notatnika.
-    
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpoint.png)
-     
-    d. Teraz przejdź do strony właściwości **Clever** i skopiuj **identyfikator aplikacji** przy użyciu **kopiowania** przycisk i wklej go do Notatnika.
- 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-clever-tutorial/tutorial_clever_appid.png)
-
-    e. Generowanie **adres URL metadanych** przy użyciu następującego wzorca:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-9. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy inteligentne.
-
-10. Na pasku narzędzi, kliknij przycisk **błyskawicznych logowania**.
+9. Na pasku narzędzi, kliknij przycisk **błyskawicznych logowania**.
 
     ![Logowania błyskawicznych](./media/active-directory-saas-clever-tutorial/ic798984.png "błyskawicznych logowania")
 
-11. Na **błyskawicznych logowania** wykonaj następujące czynności:
+10. Na **błyskawicznych logowania** wykonaj następujące czynności:
       
       ![Logowania błyskawicznych](./media/active-directory-saas-clever-tutorial/ic798985.png "błyskawicznych logowania")
       
@@ -188,13 +168,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
       
       b. Jako **systemu tożsamości**, wybierz pozycję **usług AD FS**.
 
-      c. Typ **adres URL metadanych** w **adres URL metadanych** pola tekstowego.
+      c. W **adres URL metadanych** pole tekstowe, Wklej **adres Url metadanych Federacji aplikacji** wartość, która została skopiowana z portalu Azure.
       
       d. Kliknij pozycję **Zapisz**.
-
-> [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -227,12 +203,12 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
- 
+
 ### <a name="create-a-clever-test-user"></a>Tworzenie użytkownika testowego inteligentne
 
 Aby umożliwić użytkownikom usługi Azure AD zalogować się do Clever, musi być przygotowana do Clever.
 
-W przypadku Clever, Praca z [zespołem pomocy technicznej klienta inteligentne](https://clever.com/about/contact/) Aby dodać użytkowników do platformy inteligentne. Użytkownicy muszą utworzyć i aktywowana, aby użyć rejestracji jednokrotnej. 
+W przypadku Clever, Praca z [zespołem pomocy technicznej klienta inteligentne](https://clever.com/about/contact/) Aby dodać użytkowników do platformy inteligentne. Użytkownicy muszą utworzyć i aktywowana, aby użyć rejestracji jednokrotnej.
 
 >[!NOTE]
 >Możesz użyć innych inteligentne użytkownika konta tworzenia narzędzi lub interfejsów API dostarczonych przez Clever do udostępnienia konta użytkownika usługi Azure AD.
@@ -241,17 +217,17 @@ W przypadku Clever, Praca z [zespołem pomocy technicznej klienta inteligentne](
 
 W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu Clever.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Simona Britta Clever, wykonaj następujące czynności:**
 
 1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. Na liście aplikacji zaznacz **Clever**.
 
-    ![Clever łącza na liście aplikacji](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)  
+    ![Clever łącza na liście aplikacji](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
@@ -266,15 +242,15 @@ W tej sekcji można włączyć Simona Britta do używania Azure logowania jednok
 6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Test rejestracji jednokrotnej
 
 W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.
 
 Po kliknięciu kafelka inteligentne w panelu dostępu użytkownik powinien pobrać automatycznie zalogowane inteligentne aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)

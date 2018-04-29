@@ -1,25 +1,25 @@
 ---
-title: "Typy przydziału w stosie Azure | Dokumentacja firmy Microsoft"
-description: "Przejrzyj typy różnych przydziału dostępne dla usług i zasobów w stosie Azure."
+title: Typy przydziału w stosie Azure | Dokumentacja firmy Microsoft
+description: Przejrzyj typy różnych przydziału dostępne dla usług i zasobów w stosie Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/23/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: xiaofmao
+ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy przydziału w stosie Azure
 
@@ -35,16 +35,18 @@ ms.lasthandoff: 02/21/2018
 | Maksymalna liczba zestawów dostępności | 10 | Maksymalna liczba zestawów dostępności, które mogą zostać utworzone w tej lokalizacji. |
 | Ustawia maksymalną liczbę skalowania maszyny wirtualnej | 20 | Maksymalna liczba zestawy skalowania maszyn wirtualnych, które mogą zostać utworzone w tej lokalizacji. |
 
-> [!NOTE]
-> Obliczeń przydziały nie są wymuszane w tej wersji technical preview.
-> 
-> 
+
 
 ## <a name="storage-quota-types"></a>Typy przydział magazynowania
 | **Element** | **Wartość domyślna** | **Opis** |
 | --- | --- | --- |
 | Maksymalna pojemność (GB) |500 |Pojemność pamięci masowej, które mogą być używane w ramach subskrypcji w tej lokalizacji. |
 | Całkowita liczba kont magazynu |20 |Maksymalna liczba kont magazynu, które subskrypcji można utworzyć w tej lokalizacji. |
+
+> [!NOTE]  
+> Może upłynąć do dwóch godzin, zanim nowy przydział magazynowania jest wymuszana. 
+> 
+> 
 
 ## <a name="network-quota-types"></a>Typy przydziałów sieci
 | **Element** | **Wartość domyślna** | **Opis** |

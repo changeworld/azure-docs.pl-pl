@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: e6b2b7f4c01a5280c2fb3a5c17158b8dcc2797d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Oparte na danych debugowanie przy użyciu diagramu zadania
 
@@ -76,11 +76,11 @@ Jeśli poprzedni krok zapytania procesora wprowadzania, użyj metryk wejściowyc
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Czy możemy objętych odczytywanie danych?
 
-*   **InputEventsSourcesBackloggedTotal** informuje, ile więcej wiadomości muszą być odczytane dane wejściowe centra zdarzeń i Centrum IoT Azure.
+*   **Dane wejściowe zdarzenia zaległości (razem)** informuje o tym, jak wiele więcej wiadomości powinny być analizowane dla wejścia piast zdarzeń i Centrum IoT Azure. Kiedy ta liczba jest większa niż 0, oznacza to, że zadanie nie może przetworzyć danych tak szybko, jak to w najbliższych. W takim przypadku konieczne może być zwiększenie liczby jednostek przesyłania strumieniowego i/lub upewnij się, że zadanie może odbywać się równolegle. Więcej informacji na ten temat można zobaczyć na [strona przetwarzanie równoległe kwerendy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dodatkową pomoc, spróbuj naszych [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi analiza strumienia](stream-analytics-introduction.md)

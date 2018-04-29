@@ -1,8 +1,8 @@
 ---
-title: "Podręcznik programowania U-SQL dla usługi Azure Data Lake | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat zbiór usług w usłudze Azure Data Lake, które umożliwiają tworzenie platformy danych big data oparte na chmurze."
+title: Podręcznik programowania U-SQL dla usługi Azure Data Lake | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zbiór usług w usłudze Azure Data Lake, które umożliwiają tworzenie platformy danych big data oparte na chmurze.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: a241199ff8441d76d48d297b69af05a604d2a423
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 400057b5ce79cdcf6c7651462e9f497bf647e930
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="u-sql-programmability-guide"></a>Podręcznik programowania U-SQL
 
@@ -37,7 +37,7 @@ Przyjrzyj się poniższy skrypt U-SQL:
     (VALUES
        ("Contoso",   1500.0, "2017-03-39"),
        ("Woodgrove", 2700.0, "2017-04-10")
-    ) AS D( customer, amount );
+    ) AS D( customer, amount, date );
 
 @results =
   SELECT
@@ -88,7 +88,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>Używanie wyrażeń C# dla bieżącej daty
 
-Możliwość ściągania dzisiaj, możemy użyć następującego wyrażenia języka C#:`DateTime.Now.ToString("M/d/yyyy")`
+Możliwość ściągania dzisiaj, możemy użyć następującego wyrażenia języka C#: `DateTime.Now.ToString("M/d/yyyy")`
 
 Poniżej przedstawiono przykład sposobu użycia tego wyrażenia w skrypcie:
 
@@ -536,9 +536,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **Serializować**: Serializuje obiekt lub grafu obiektów z danym elementem głównym do dostarczonego strumienia.
 
-`MyType`wystąpienie: wystąpienie typu.  
-`IColumnWriter`Moduł zapisujący / `IColumnReader` czytnika: zasadniczy strumień kolumny.  
-`ISerializationContext`kontekst: wyliczenia, który definiuje zestaw flagi Określa kontekst źródła lub miejsca docelowego dla tego strumienia podczas serializacji.
+`MyType` wystąpienie: wystąpienie typu.  
+`IColumnWriter` Moduł zapisujący / `IColumnReader` czytnika: zasadniczy strumień kolumny.  
+`ISerializationContext` kontekst: wyliczenia, który definiuje zestaw flagi Określa kontekst źródła lub miejsca docelowego dla tego strumienia podczas serializacji.
 
 * **Pośredni**: Określa, czy kontekst źródłowy lub docelowy nie jest utrwalonego magazynu.
 
@@ -1270,9 +1270,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`jest wywoływana dla każdego wiersza wejściowego. Zwraca `IUnstructuredWriter output` zestawu wierszy.
+* `Output` jest wywoływana dla każdego wiersza wejściowego. Zwraca `IUnstructuredWriter output` zestawu wierszy.
 * Konstruktor klasy jest używany do przekazania parametrów do outputter zdefiniowane przez użytkownika.
-* `Close`Służy do zastępowania opcjonalnie kosztowne stanu wersji lub określić, kiedy ostatni wiersz został zapisany.
+* `Close` Służy do zastępowania opcjonalnie kosztowne stanu wersji lub określić, kiedy ostatni wiersz został zapisany.
 
 **SqlUserDefinedOutputter** atrybut wskazuje, że typ powinien zostać zarejestrowany jako outputter zdefiniowane przez użytkownika. Ta klasa nie może być dziedziczona.
 

@@ -1,28 +1,26 @@
 ---
-title: "Phoenix wydajności w usłudze Azure HDInsight | Dokumentacja firmy Microsoft"
-description: "Najlepsze rozwiązania w celu optymalizacji wydajności Phoenix."
+title: Phoenix wydajności w usłudze Azure HDInsight | Dokumentacja firmy Microsoft
+description: Najlepsze rozwiązania w celu optymalizacji wydajności Phoenix.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 42b95d6b67f3449a2de2619f0a25b3b8f798950d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 58ecf22fa0f9349a767455fe3ab08fca058d02da
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="phoenix-performance-best-practices"></a>Phoenix wydajności najlepsze rozwiązania
+# <a name="phoenix-performance-best-practices"></a>Najlepsze rozwiązania w zakresie wydajności dla rozwiązania Phoenix
 
 Najważniejszym aspektem wydajności Phoenix jest zoptymalizować podstawowej bazy danych HBase. Phoenix tworzy model danych relacyjnych nad HBase, który konwertuje zapytań SQL na operacje bazy danych HBase, takie jak skanowanie. Projekt schemat tabeli, wybór i kolejność pól w primary key i korzystanie z wszystkich indeksów wpłynąć na wydajność Phoenix.
 
@@ -38,21 +36,21 @@ Klucz podstawowy, zdefiniowanego w tabeli Phoenix Określa, jak dane są przecho
 
 Na przykład tabela kontaktów ma imię, ostatnia nazwa, numer telefonu i adres, w tej samej rodziny kolumn. Można zdefiniować klucz podstawowy oparty na rosnący numer sekwencji:
 
-|rowkey|       Adres|   telefon| Imię| lastName|
+|rowkey|       Adres|   Telefon| Imię| Nazwisko|
 |------|--------------------|--------------|-------------|--------------|
 |  1000|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole|
 |  8396|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji|
 
 Jednak jeśli często zapytania według lastName to klucz podstawowy mogą nie działać, ponieważ każde zapytanie wymaga skanowania tabeli pełne można odczytać wartości co nazwisko. Zamiast tego można zdefiniować klucz podstawowy lastName, firstName i kolumny numer ubezpieczenia społecznego. Jest to ostatnia kolumna do odróżniania dwóch mieszkańców pod tym samym adresem o takiej samej nazwie, takie jak ojciec i syn.
 
-|rowkey|       Adres|   telefon| Imię| lastName| socialSecurityNum |
+|rowkey|       Adres|   Telefon| Imię| Nazwisko| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  1000|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole| 111 |
 |  8396|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji| 222 |
 
 Z tego nowego klucza podstawowego wiersz będzie klucze generowane przez Phoenix:
 
-|rowkey|       Adres|   telefon| Imię| lastName| socialSecurityNum |
+|rowkey|       Adres|   Telefon| Imię| Nazwisko| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji Calvina-222|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji| 222 |
@@ -62,9 +60,9 @@ W pierwszym wierszu powyżej dane rowkey odpowiada, jak pokazano:
 |rowkey|       key|   wartość| 
 |------|--------------------|---|
 |  Dole-John-111|Adres |1111 Dr Gabriel sieci San.|  
-|  Dole-John-111|telefon |1-425-000-0002|  
+|  Dole-John-111|Telefon |1-425-000-0002|  
 |  Dole-John-111|Imię |Jan|  
-|  Dole-John-111|lastName |Dole|  
+|  Dole-John-111|Nazwisko |Dole|  
 |  Dole-John-111|socialSecurityNum |111| 
 
 Ta rowkey teraz przechowuje kopię danych. Należy wziąć pod uwagę rozmiar i liczba kolumn, który zawiera klucz podstawowy, ponieważ ta wartość jest dołączana do każdej komórki w tabeli podstawowej bazy danych HBase.
@@ -120,7 +118,7 @@ Objęte usługą indeksy są indeksy, które zawierają dane z wiersza oprócz w
 
 Na przykład w tym przykładzie należy skontaktować się z tabeli, można utworzyć pomocniczego indeksu tylko kolumny socialSecurityNum. Pomocniczy indeks może przyspieszyć zapytań, które filtrować według wartości socialSecurityNum, ale pobieranie inne wartości pól będzie wymagać innego odczytu względem tabeli głównej.
 
-|rowkey|       Adres|   telefon| Imię| lastName| socialSecurityNum |
+|rowkey|       Adres|   Telefon| Imię| Nazwisko| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|1111 Dr Gabriel sieci San.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji Calvina-222|5415 Dr Gabriel sieci San.|1-230-555-0191|  Calvina|Raji| 222 |

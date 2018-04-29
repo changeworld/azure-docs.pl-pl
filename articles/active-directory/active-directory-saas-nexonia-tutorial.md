@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Integracji Azure Active Directory z Nexonia | Dokumentacja firmy Microsoft'
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Nexonia."
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i Nexonia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a71eb4de1723be1fd32a35bee848885738b029
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 027b7ae5b87cc8349670b2270124c18d68242a9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>Samouczek: Integracji Azure Active Directory z Nexonia
 
@@ -95,7 +95,7 @@ Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z N
 W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji Nexonia.
 
   > [!Note]
-   > Jeśli występują problemy w ramach integracji, zobacz to [łącze](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery) dla przewodnik rozwiązywania problemów. Jeśli nadal nie wykryto rozwiązania, następnie podnieść żądania obsługi z portalu Azure.
+   > Jeśli występują problemy w ramach integracji, zobacz to [łącze](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) dla przewodnik rozwiązywania problemów. Jeśli nadal nie wykryto rozwiązania, następnie podnieść żądania obsługi z portalu Azure.
 
 **Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z Nexonia, wykonaj następujące czynności:**
 
@@ -111,9 +111,9 @@ W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w porta
 
     ![Adresy URL i domeny Nexonia pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz wartość:`Nexonia`
+    a. W **identyfikator** tekstowym, wpisz wartość: `Nexonia`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca:`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
+    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
 
     > [!NOTE] 
     > Wartość adresu URL odpowiedzi nie jest prawdziwe. Zaktualizuj tę wartość do rzeczywistego adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej Nexonia](https://nexonia.zendesk.com/hc/requests/new) można uzyskać wartość.
@@ -163,7 +163,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
 
     b. W **nazwy użytkownika** wpisz adres e-mail użytkownika Simona Britta.
 
-    d. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
+    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij przycisk **Utwórz**.
   

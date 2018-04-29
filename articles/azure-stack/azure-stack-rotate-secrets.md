@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 509570dfe0e3d4be2e589ac1958dd377dc4e8e03
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a158da6fb397b864a439e067ca99d79814e2b8d2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć kluczy tajnych w stosie Azure
 
@@ -105,9 +105,9 @@ $PEPCreds = Get-Credential
 $PEPsession = New-PSSession -computername <IPofERCSMachine> -Credential $PEPCreds -ConfigurationName PrivilegedEndpoint 
 
 #Run Secret Rotation
-$CertPassword = "CertPasswordHere" | ConvertTo-SecureString
+$CertPassword = ConvertTo-SecureString "Certpasswordhere" -AsPlainText -Force
 $CertShareCred = Get-Credential 
-$CertSharePath = <NetworkPathofCertShare>   
+$CertSharePath = "<NetworkPathofCertShare>"
 Invoke-Command -session $PEPsession -ScriptBlock { 
 Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }
 Remove-PSSession -Session $PEPSession
@@ -139,7 +139,7 @@ Polecenie cmdlet Start-SecretRotation obraca kluczy tajnych infrastruktury syste
 
 | Parametr | Typ | Wymagane | Położenie | Domyślne | Opis |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Ciąg  | False  | o nazwie  | None  | Ścieżka udziału plików do **\Certificates** katalog zawierający wszystkie zewnętrzne sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku obracanie kluczy tajnych wewnętrznych i zewnętrznych. Katalog end musi być **\Certificates**. |
+| PfxFilesPath | Ciąg  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalog zawierający wszystkie zewnętrzne sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku obracanie kluczy tajnych wewnętrznych i zewnętrznych. Katalog end musi być **\Certificates**. |
 | CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniane po wewnętrznych i zewnętrznych kluczy tajnych są obracane. |
 |
 
@@ -170,7 +170,7 @@ Kontroler zarządzania płytą główną (BMC) monitoruje stan fizycznych serwer
 
 1. Zaktualizuj BMC na serwerach fizycznych stosu Azure zgodnie z instrukcjami producenta OEM. Hasło dla każdego kontrolera BMC w danym środowisku muszą być takie same.
 2. Otwórz uprzywilejowanych punktu końcowego w sesjach stosu Azure. Aby uzyskać instrukcje, zobacz [przy użyciu punktu końcowego uprzywilejowanych w stosie Azure](azure-stack-privileged-endpoint.md).
-3. Po programu PowerShell wiersz został zmieniony na **[adres IP lub wirtualna ERCS name]: PS >** lub **[azs ercs01]: PS >**w zależności od środowiska uruchamiania `Set-BmcPassword` uruchamiając `invoke-command`. Przekaż zmiennej sesji użytkownika uprzywilejowanego punktu końcowego jako parametr. Na przykład:
+3. Po programu PowerShell wiersz został zmieniony na **[adres IP lub wirtualna ERCS name]: PS >** lub **[azs ercs01]: PS >** w zależności od środowiska uruchamiania `Set-BmcPassword` uruchamiając `invoke-command`. Przekaż zmiennej sesji użytkownika uprzywilejowanego punktu końcowego jako parametr. Na przykład:
 
     ```powershell
     # Interactive Version

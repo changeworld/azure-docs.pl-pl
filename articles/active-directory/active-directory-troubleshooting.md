@@ -1,11 +1,11 @@
 ---
-title: "Rozwiązywanie problemów: Element usługi Active Directory jest lub jest ona niedostępna | Dokumentacja firmy Microsoft"
-description: "Co należy zrobić, gdy element menu usługi Active Directory nie jest wyświetlane w portalu zarządzania Azure."
+title: 'Rozwiązywanie problemów: Element usługi Active Directory jest lub jest ona niedostępna | Dokumentacja firmy Microsoft'
+description: Co należy zrobić, gdy element menu usługi Active Directory nie jest wyświetlane w portalu zarządzania Azure.
 services: active-directory
 documentationcenter: na
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3383020d-6397-43ea-b7aa-c6a9d6a1e3df
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-ms.openlocfilehash: 27a884b89224ed5765e9fcef134e711e3952ff72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6e8557ec66db51df0bb463a9511b0cdc94811d4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>Rozwiązywanie problemów: Element usługi Active Directory jest lub jest niedostępna
 Wiele instrukcje dotyczące korzystania z funkcji usługi Azure Active Directory i usług rozpoczynać się od "Przejdź do portalu zarządzania Azure i kliknij polecenie **usługi Active Directory**." Ale co zrobić, jeśli nie ma elementu menu lub rozszerzenie usługi Active Directory lub jest on oznaczony **nie jest dostępny**? W tym temacie jest przeznaczona do pomocy. Opisuje warunki, w którym **usługi Active Directory** nie pojawia się lub jest niedostępna i wyjaśniono sposób kontynuować.
@@ -39,7 +39,7 @@ Element usługi Active Directory jest wyświetlany w menu nawigacji po lewej str
 * Dzierżawy Azure ma co najmniej jedną przestrzeń nazw kontroli dostępu usługi Azure AD (ACS). Aby uzyskać więcej informacji, zobacz [Namespace kontroli dostępu](https://msdn.microsoft.com/library/azure/gg185908.aspx).
   
     LUB
-* Dzierżawy Azure ma co najmniej jednego dostawcę usługi Azure Multi-Factor Authentication. Aby uzyskać więcej informacji, zobacz [administrowanie dostawców uwierzytelniania wieloskładnikowego Azure](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+* Dzierżawy Azure ma co najmniej jednego dostawcę usługi Azure Multi-Factor Authentication. Aby uzyskać więcej informacji, zobacz [administrowanie dostawców uwierzytelniania wieloskładnikowego Azure](authentication/howto-mfa-getstarted.md).
 
 Aby utworzyć przestrzeń nazw kontroli dostępu lub dostawcy uwierzytelniania wieloskładnikowego, kliknij przycisk **+ nowy** > **usługi aplikacji** > **usługi Active Directory**.
 

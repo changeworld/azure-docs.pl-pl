@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 04/17/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: cf4fb7e82529388a030fd37da9469bf17c8dc343
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9e09961685ad688098970ae4ea73e1a90f6a95ca
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Rejestrowanie w programie partnerskim programu CSP i wyświetlanie danych kosztów
 
@@ -32,16 +32,16 @@ Aby uzyskać więcej informacji, zobacz [Nawiązywanie połączenia z interfejse
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-- Zaloguj się w witrynie Azure Portal pod adresem http://portal.azure.com.
+- Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
 
-## <a name="create-a-trial-registration"></a>Tworzenie rejestracji wersji próbnej
+## <a name="register-with-azure-cost-management"></a>Rejestrowanie w usłudze Azure Cost Management
 
 1. W witrynie Azure Portal kliknij pozycję **Zarządzanie kosztami i rozliczenia** na liście usług.
 2. W obszarze **Przegląd** kliknij pozycję **Zarządzanie kosztami**  
     ![Strona Zarządzanie kosztami](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. Na stronie **Zarządzanie kosztami** kliknij pozycję **Przejdź do zarządzania kosztami**, aby otworzyć stronę rejestracji rozwiązania Cloudyn w nowym oknie.
 4. Na stronie rejestracji wersji próbnej rozwiązania Cloudyn wpisz nazwę swojej firmy, wybierz pozycję **Microsoft CSP Partner Program Administrator** (Administrator programu partnerskiego programu Microsoft CSP), a następnie kliknij przycisk **Next** (Dalej).  
-5. Wypełnij pola **Application ID** (Identyfikator aplikacji), **Commerce ID** (Identyfikator handlowy) i **Application Secret key**(Klucz tajny aplikacji), a następnie wybierz pozycję **Default Pricing Plan** (Domyślny plan cenowy). Jeśli w tej chwili nie posiadasz tych informacji, zaloguj się do portalu Centrum partnerskiego na stronie [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) za pomocą swojego głównego konta administratora i wykonaj następujące czynności:
+5. Wypełnij pola **Application ID** (Identyfikator aplikacji), **Commerce ID** (Identyfikator handlowy) i **Application Secret key**(Klucz tajny aplikacji), a następnie wybierz pozycję **Default Pricing Plan** (Domyślny plan cenowy). Jeśli w tej chwili nie masz tych informacji, zaloguj się do portalu Centrum partnerskiego na stronie [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) za pomocą głównego konta administratora i wykonaj następujące czynności:
   1. Przejdź do pozycji **Pulpit nawigacyjny** > **Ustawienia konta** > **Zarządzanie aplikacjami**.
   2. Jeśli poprzednio utworzono aplikację internetową, pomiń ten krok. W przeciwnym razie kliknij pozycję **Dodaj nową aplikację internetową** w sekcji **Aplikacja internetowa**.
   3. Skopiuj identyfikator GUID **Identyfikator aplikacji** aplikacji internetowej.

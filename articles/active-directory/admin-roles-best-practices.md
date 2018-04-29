@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu w przypadku wdrożeń hybrydowymi i w chmurze w usłudze Azure AD
 
@@ -118,7 +118,7 @@ Ocena konta, które są przypisane lub kwalifikuje się do roli administratora g
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Włącz uwierzytelnianie wieloskładnikowe i Zarejestruj wszystkie inne konta administratora niefederacyjnych pojedynczego użytkownika uprawnieniach 
 
-Azure Multi-Factor Authentication (MFA) jest wymagany co logowania dla wszystkich poszczególnych użytkowników, którzy są trwale przypisana do co najmniej jednej z ról administratora usługi Azure AD: administrator globalny, administrator ról uprzywilejowanych, administrator usługi Exchange Online i SharePoint Administrator w trybie online. Aby włączyć za pomocą przewodnika [Multi-Factor Authentication (MFA) dla kont administratorów](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) i upewnij się, że zarejestrowano tych użytkowników, na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Więcej informacji można znaleźć w kroki 2 i 3 przewodnika [ochrony dostępu do danych i usług w usłudze Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Azure Multi-Factor Authentication (MFA) jest wymagany co logowania dla wszystkich poszczególnych użytkowników, którzy są trwale przypisana do co najmniej jednej z ról administratora usługi Azure AD: administrator globalny, administrator ról uprzywilejowanych, administrator usługi Exchange Online i SharePoint Administrator w trybie online. Aby włączyć za pomocą przewodnika [Multi-Factor Authentication (MFA) dla kont administratorów](authentication/howto-mfa-userstates.md) i upewnij się, że zarejestrowano tych użytkowników, na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Więcej informacji można znaleźć w kroki 2 i 3 przewodnika [ochrony dostępu do danych i usług w usłudze Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Etapu 2: Techniki najczęściej używanych ataku ograniczyć
 
@@ -164,8 +164,8 @@ Usługi Azure AD zaleca wymusić uwierzytelnianie wieloskładnikowe (MFA) dla ws
 
 Włącz funkcję:
 
-* [Uwierzytelnianie wieloskładnikowe dla kont narażenia wysokiej](../multi-factor-authentication/multi-factor-authentication-security-best-practices.md) takich jak konta dla biuro w organizacji 
-* [Uwierzytelnianie wieloskładnikowe dla każdego konta administratora skojarzonego z indywidualnego użytkownika](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) dla innych połączonych aplikacji SaaS 
+* [Uwierzytelnianie wieloskładnikowe dla kont narażenia wysokiej](authentication/multi-factor-authentication-security-best-practices.md) takich jak konta dla biuro w organizacji 
+* [Uwierzytelnianie wieloskładnikowe dla każdego konta administratora skojarzonego z indywidualnego użytkownika](authentication/howto-mfa-userstates.md) dla innych połączonych aplikacji SaaS 
 * Uwierzytelnianie wieloskładnikowe dla wszystkich administratorów dla aplikacji SaaS firmy Microsoft, w tym administratorów w rolach zarządzane w programie Exchange Online i portalu usługi Office
 
 Jeśli używasz usługi Windows Hello dla firm, wymaganie uwierzytelniania Wieloskładnikowego można spełnić przy użyciu konta usługi Windows Hello w środowisku. Aby uzyskać więcej informacji, zobacz [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 

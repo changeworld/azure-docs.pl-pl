@@ -2,24 +2,19 @@
 title: Migrowanie danych do usługi SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Wskazówki dotyczące migrowania danych Azure SQL Data Warehouse związane z opracowywaniem rozwiązań.
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: ''
-ms.assetid: d78f954a-f54c-4aa4-9040-919bc6414887
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 06/29/2017
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 4fbab223963989eab16cecea2facd9c15ba646d4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: ca467ae5fbe784399e4e046c47c920ff7dec638e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="migrate-your-data"></a>Migrowanie danych
 Można przenieść dane z różnych źródeł do magazynu danych SQL przy użyciu różnych narzędzi.  Kopiuj ADF, SSIS i bcp wszystkie umożliwia osiągnięcie tego celu. Jako ilość danych zwiększa należy traktować o podziału na etapy procesu migracji danych. Daje to możliwość optymalizacji każdy krok, wydajności i odporności zapewnić migrację danych smooth.
@@ -193,7 +188,7 @@ Aby uzyskać więcej porad programistycznych, zobacz [omówienie tworzenia][deve
 [migracji schemat]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
-[Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
+[Use bcp to load data into SQL Data Warehouse]: /sql/tools/bcp-utility
 [Use PolyBase to load data into SQL Data Warehouse]: load-data-wideworldimportersdw.md
 
 

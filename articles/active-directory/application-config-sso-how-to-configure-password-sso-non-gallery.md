@@ -1,11 +1,11 @@
 ---
-title: "Jak skonfigurować hasło rejestracji jednokrotnej dla applicationn z systemem innym niż galerii | Dokumentacja firmy Microsoft"
-description: "Konfigurowanie niestandardowych aplikacji z systemem innym niż galerii dla bezpiecznej opartego na hasłach rejestracji jednokrotnej, gdy nie znajduje się w galerii aplikacji usługi Azure AD"
+title: Jak skonfigurować hasło rejestracji jednokrotnej dla applicationn z systemem innym niż galerii | Dokumentacja firmy Microsoft
+description: Konfigurowanie niestandardowych aplikacji z systemem innym niż galerii dla bezpiecznej opartego na hasłach rejestracji jednokrotnej, gdy nie znajduje się w galerii aplikacji usługi Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fd93b3fa5b601a276047feab67758fe1a29d4e27
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b928d71fbff232ae93dbf3d24517e7efc4cf8bfd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować hasła logowanie jednokrotne dla aplikacji z systemem innym niż galerii
 
@@ -112,6 +112,8 @@ Aby skonfigurować logowanie jednokrotne dla aplikacji, wykonaj następujące kr
 10. Przypisywanie użytkowników do aplikacji.
 
 11. Ponadto można też podać poświadczenia w imieniu użytkownika, wybierając wierszy użytkowników i kliknięcie **poświadczenia aktualizacji** i wprowadzić nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy monit o podanie poświadczeń się po uruchomieniu.
+
+12. **Opcjonalnie:** dla określonych aplikacji mediów społecznościowych, takich jak Facebook i Twitter, istnieje również możliwość włączenia automatycznego przerzucania hasła dla aplikacji w wybranej częstotliwości. Aby włączyć ten wybierz **ma usługi Azure AD automatycznie zarządzać tego użytkownika lub hasło grupy** podczas wprowadzania poświadczeń w imieniu użytkownika lub grupy. Następnie wybierz **przerzucania częstotliwość (w tygodniach)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Bezpośrednio przypisać użytkownika do aplikacji
 

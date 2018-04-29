@@ -1,6 +1,6 @@
 ---
-title: "Samouczek: Integracji Azure Active Directory z chmurą Atlassian | Dokumentacja firmy Microsoft"
-description: "Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i w chmurze Atlassian."
+title: 'Samouczek: Integracji Azure Active Directory z chmurą Atlassian | Dokumentacja firmy Microsoft'
+description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i w chmurze Atlassian.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: db9e9c7ae8380612bac9d0aeaaaf6df78cba523f
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: a43d0a165d9da6267c6f9733420244ebf913e930
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Samouczek: Integracji Azure Active Directory z chmurą Atlassian
 
@@ -48,7 +48,8 @@ Aby przetestować kroki opisane w tym samouczku, wykonaj te zalecenia:
 - Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz [uzyskać miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisane w samouczku składa się z dwóch głównych elementów:
+W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisane w samouczku składa się z dwóch głównych elementów:
 
 * Dodawanie Atlassian chmury z galerii
 * Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
@@ -56,7 +57,7 @@ W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej 
 ## <a name="add-atlassian-cloud-from-the-gallery"></a>Dodaj Atlassian chmury z galerii
 Aby skonfigurować integrację Atlassian chmurze z usługą Azure AD, Dodaj Atlassian chmury z galerii do listy zarządzane aplikacje SaaS w następujący sposób:
 
-1. W [portalu Azure](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** przycisku. 
+1. W [portalu Azure](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** przycisku.
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -93,109 +94,55 @@ Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z chmurą Atlassian
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. W **logowanie jednokrotne** okna w **tryb rejestracji jednokrotnej** wybierz opcję **na języku SAML logowania jednokrotnego**.
- 
+
     ![Okno rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
 
 3. Aby skonfigurować aplikację w trybie inicjowanych przez dostawców tożsamości, w obszarze **adresy URL i domenę chmury Atlassian**, wykonaj następujące czynności:
 
     ![Adresy URL i domenę chmury Atlassian pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
     
-    a. W **identyfikator** wpisz  **`https://auth.atlassian.com/saml/<unique ID>`** .
+    a. W **identyfikator** wpisz **`https://auth.atlassian.com/saml/<unique ID>`**.
     
-    b. W **adres URL odpowiedzi** wpisz  **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`** .
+    b. W **adres URL odpowiedzi** wpisz **`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`**.
 
-    c. W **stan przekazywania** wpisz adres URL przy użyciu następującej składni:  **`https://<instancename>.atlassian.net`** .
+    c. W **stan przekazywania** wpisz adres URL przy użyciu następującej składni: **`https://<instancename>.atlassian.net`**.
 
-4. Aby skonfigurować aplikację w trybie zainicjował SP, wybierz **Pokaż zaawansowane ustawienia adresu URL** , a następnie w **Zaloguj się na adres URL** wpisz adres URL przy użyciu następującej składni:  **`https://<instancename>.atlassian.net`**  .
+4. Aby skonfigurować aplikację w trybie zainicjował SP, wybierz **Pokaż zaawansowane ustawienia adresu URL** , a następnie w **Zaloguj się na adres URL** wpisz adres URL przy użyciu następującej składni: **`https://<instancename>.atlassian.net`** .
 
     ![Adresy URL i domenę chmury Atlassian pojedynczy informacje logowania jednokrotnego](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
 
-    > [!NOTE] 
+    > [!NOTE]
     > Poprzednie wartości nie są prawdziwe. Zaktualizuj je z rzeczywisty identyfikator, adres URL odpowiedzi i logowania jednokrotnego wartości adresu URL. Na ekranie Konfiguracja SAML chmury Atlassian można uzyskać rzeczywiste wartości. Prezentujemy zasady wartości później w samouczku.
 
 5. W obszarze **certyfikat podpisywania SAML**, wybierz pozycję **Certificate(Base64)**, a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Łącze pobierania certyfikatu](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png) 
+    ![Łącze pobierania certyfikatu](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png)
 
 6. Aplikacja chmury Atlassian oczekuje można znaleźć potwierdzenia języka SAML w określonym formacie, musisz dodać mapowania atrybutu niestandardowego do konfiguracji atrybuty tokenu SAML. 
 
     Domyślnie **identyfikator użytkownika** wartość jest mapowany na user.userprincipalname. Zmień tę wartość do mapowania na user.mail. Możesz również inne odpowiednie wartości zgodnie z ustawieniami w Twojej organizacji, ale w większości przypadków, wiadomości e-mail powinny działać.
 
-    ![Łącze pobierania certyfikatu](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_attribute.png) 
+    ![Łącze pobierania certyfikatu](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_attribute.png)
 
 7. Wybierz pozycję **Zapisz**.
 
     ![Konfigurowanie rejestracji jednokrotnej przycisk zapisywania](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_400.png)
 
-8. Aby otworzyć **Konfigurowanie logowania jednokrotnego** okna w **konfiguracji chmury Atlassian** wybierz opcję **Konfigurowanie chmury Atlassian**. 
+8. Aby otworzyć **Konfigurowanie logowania jednokrotnego** okna w **konfiguracji chmury Atlassian** wybierz opcję **Konfigurowanie chmury Atlassian**.
 
-9. W **krótkimi opisami** sekcji, skopiuj **identyfikator jednostki SAML** i **SAML pojedynczy znak na adres URL usługi**. 
+9. W **krótkimi opisami** sekcji, skopiuj **identyfikator jednostki SAML** i **SAML pojedynczy znak na adres URL usługi**.
 
-    ![Konfiguracja chmury Atlassian](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_configure.png) 
+    ![Konfiguracja chmury Atlassian](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_configure.png)
 
 10. Aby uzyskać logowania jednokrotnego skonfigurowane dla aplikacji, zaloguj się do portalu Atlassian przy użyciu poświadczeń administratora.
 
-11. Przejdź do **administrowania lokacją Atlassian** > **organizacji i zabezpieczenia**. Jeśli jeszcze tego nie zrobiono, Utwórz i nazwę organizacji, a następnie w okienku po lewej stronie wybierz **domen**.
+11. Musisz zweryfikować domenę przed przejściem do konfigurowania rejestracji jednokrotnej. Aby uzyskać więcej informacji, zobacz [weryfikację domeny Atlassian](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) dokumentu.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_06.png)
-
-12. Wybierz sposób, że chcesz zweryfikować domenę: **DNS** lub **HTTPS**.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_17.png)
-
-13. W celu weryfikacji DNS w **domen** wybierz **DNS** karcie, a następnie wykonaj następujące czynności:
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_18.png)
-
-    a. Aby skopiować wartość z tekstu rekordu (TXT), zaznacz **kopiowania**.
-
-    b. Aby dodać rekord, przejdź do strony ustawień w systemie DNS.
-
-    c. Wybierz opcję dodawania nowego rekordu, a następnie wklej skopiowany w wartość **domen** okna **wartość** pola. Rekordu DNS może także odwołuje się do niego jako **odpowiedzi** lub **opis**.
-
-    d. Rekordu DNS może także zawierać następujące pola:
-    
-    * W **typu rekordu** wprowadź **TXT**.
-    * W **Alias-nazwy/hosta** pozostaw wartość domyślną (@ lub puste).
-    * W **czas wygaśnięcia (TTL)** wprowadź **86400**.
-    
-    e.  Zapisz rekord.
-
-14. Wróć do **domen** okna w organizacji administracji, a następnie wybierz **weryfikowanie domeny**. W **domeny** wpisz nazwę domeny, a następnie wybierz **weryfikowanie domeny**.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_19.png)  
-
-    > [!NOTE]
-    > Ponieważ może potrwać do 72 godzin rekordu TXT zmiany zaczęły obowiązywać, nie wiadomo, od razu czy weryfikację domeny zakończyła się powodzeniem. Aby wyświetlić stan weryfikacji użytkownika, sprawdź **domen** okna zaraz po zakończeniu tej procedury. Zaktualizowany stan będzie wyświetlany jako *zweryfikowano*, jak pokazano na poniższej ilustracji:
-    > 
-    > ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_20.png)
-    > 
-    > 
-
-15. W celu weryfikacji HTTPS w **domen** wybierz **HTTPS** karcie, a następnie wykonaj następujące czynności:
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_21.png)
-
-    a. Aby pobrać plik HTML, wybierz **pobierania pliku**.
-
-    b. Przekaż plik HTML do katalogu głównym domeny.
-
-16. Wróć do **domen** strony w witrynie Administracja organizacji, a następnie wybierz **weryfikowanie domeny**. W **weryfikowanie domeny** okna w **domeny** wpisz Twojej **nazwy domeny**, a następnie wybierz **weryfikowanie domeny**.
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_22.png)
-
-17. Jeśli proces weryfikacji można zlokalizować pliku, który został przekazany w katalogu głównym, stan domeny zostało zaktualizowane do *zweryfikowano*, jak pokazano poniżej:
-
-    ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_23.png)
-
-    > [!NOTE]
-    > Aby uzyskać więcej informacji, zobacz [weryfikację domeny Atlassian](https://confluence.atlassian.com/cloud/domain-verification-873871234.html).
-
-18. W okienku po lewej stronie wybierz **SAML logowania jednokrotnego**. Jeśli jeszcze tego nie zrobiono, subskrypcja do Atlassian Identity Manager.
+12. W okienku po lewej stronie wybierz **SAML logowania jednokrotnego**. Jeśli jeszcze tego nie zrobiono, subskrypcja do Atlassian Identity Manager.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
 
-19. W **Konfiguracja SAML dodać** okna, wykonaj następujące czynności:
+13. W **Konfiguracja SAML dodać** okna, wykonaj następujące czynności:
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
@@ -207,24 +154,20 @@ Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z chmurą Atlassian
     
     d. Wybierz **Zapisz konfigurację**.
      
-20. Aby upewnić się, że skonfigurowano poprawne adresy URL, należy zaktualizować ustawienia usługi Azure AD w następujący sposób:
-  
+14. Aby upewnić się, że skonfigurowano poprawne adresy URL, należy zaktualizować ustawienia usługi Azure AD w następujący sposób:
+
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
 
     a. W oknie SAML kopiować **Identyfikatora tożsamości SP** , a następnie, w portalu Azure w chmurze Atlassian **domeny i adres URL**, wklej go w **identyfikator** pole.
     
-    b. W oknie SAML kopiować **adres URL programu SP potwierdzenia klienta usługi** , a następnie, w portalu Azure w chmurze Atlassian **domeny i adres URL**, wklej go w **adres URL odpowiedzi** pole.  
-        Adres URL logowania jest adres URL dzierżawy Atlassian chmury. 
+    b. W oknie SAML kopiować **adres URL programu SP potwierdzenia klienta usługi** , a następnie, w portalu Azure w chmurze Atlassian **domeny i adres URL**, wklej go w **adres URL odpowiedzi** pole. Adres URL logowania jest adres URL dzierżawy Atlassian chmury.
 
     > [!NOTE]
-    > Jeśli masz istniejący klient, po zaktualizowaniu **Identyfikatora tożsamości SP** i **adres URL programu SP potwierdzenia klienta usługi** wartości w portalu Azure wybierz **tak, zaktualizuj konfigurację**. W przypadku nowego klienta, możesz pominąć ten krok. 
+    > Jeśli masz istniejący klient, po zaktualizowaniu **Identyfikatora tożsamości SP** i **adres URL programu SP potwierdzenia klienta usługi** wartości w portalu Azure wybierz **tak, zaktualizuj konfigurację**. W przypadku nowego klienta, możesz pominąć ten krok.
     
-21. W portalu Azure wybierz **zapisać**.
+15. W portalu Azure wybierz **zapisać**.
 
     ![Konfigurowanie rejestracji jednokrotnej](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_400.png)
-
-> [!TIP]
-> Jak podczas konfigurowania aplikacji, możesz przeczytać zwięzły wersji poprzednich instrukcji w [portalu Azure](https://portal.azure.com). Po dodaniu tej aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **rejestracji jednokrotnej** karcie i uzyskuje dostęp do osadzonego Dokumentacja w **konfiguracji** sekcji w dolnej części okna. Aby uzyskać więcej informacji, zobacz [usługi Azure AD osadzonych dokumentacji]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -255,42 +198,41 @@ W tej sekcji możesz tworzyć użytkownika testowego Simona Britta w portalu Azu
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj wartość, która jest wyświetlana w **hasło** pole.
 
     d. Wybierz pozycję **Utwórz**.
-  
+
 ### <a name="create-an-atlassian-cloud-test-user"></a>Tworzenie użytkownika testowego Atlassian chmury
 
 Aby umożliwić użytkownikom usługi Azure AD do logowania się w chmurze Atlassian, Zapewnij kont użytkowników ręcznie w chmurze Atlassian w następujący sposób:
 
 1. W **administracji** okienku wybierz **użytkowników**.
 
-    ![Łącze Atlassian użytkownicy w chmurze](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_14.png) 
+    ![Łącze Atlassian użytkownicy w chmurze](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_14.png)
 
 2. Aby utworzyć użytkownika w chmurze Atlassian, wybierz **użytkownika zaproszenia**.
 
-    ![Utwórz użytkownika Atlassian chmury](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_15.png) 
+    ![Utwórz użytkownika Atlassian chmury](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_15.png)
 
-3. W **adres E-mail** wprowadź adres e-mail użytkownika, a następnie przypisz dostęp do aplikacji. 
+3. W **adres E-mail** wprowadź adres e-mail użytkownika, a następnie przypisz dostęp do aplikacji.
 
     ![Utwórz użytkownika Atlassian chmury](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_16.png)
- 
-4. Aby wysłać zaproszenie wiadomości e-mail do użytkownika, zaznacz **zaprosić użytkowników**.  
-    Wiadomość e-mail z zaproszeniem są wysyłane do użytkownika, i po zaakceptowaniu zaproszenia, użytkownik jest aktywny w systemie. 
 
->[!NOTE] 
+4. Aby wysłać zaproszenie wiadomości e-mail do użytkownika, zaznacz **zaprosić użytkowników**. Wiadomość e-mail z zaproszeniem są wysyłane do użytkownika, i po zaakceptowaniu zaproszenia, użytkownik jest aktywny w systemie.
+
+>[!NOTE]
 >Można również zbiorcze — tworzenie użytkowników, wybierając **Tworzenie zbiorczego** przycisk **użytkowników** sekcji.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisz użytkownika testowego usługi Azure AD
 
 W tej sekcji możesz umożliwić użytkownikowi Simona Britta do użycia usługi Azure logowania jednokrotnego za udzielanie dostępu do chmury Atlassian. Aby to zrobić, wykonaj następujące czynności:
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 1. W portalu Azure Otwórz **aplikacji** wyświetlić, przejdź do widoku katalogu, a następnie wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
-    ![Przypisz użytkownika][201] 
+    ![Przypisz użytkownika][201]
 
 2. W **aplikacji** listy, wybierz **chmury Atlassian**.
 
-    ![Łącze Atlassian chmury na liście aplikacji](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_app.png)  
+    ![Łącze Atlassian chmury na liście aplikacji](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_app.png)
 
 3. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
@@ -313,12 +255,10 @@ W tej sekcji można przetestować konfiguracji usługi Azure AD pojedynczego log
 Po wybraniu **chmury Atlassian** kafelka w panelu dostępu użytkownik powinien zalogować się przy automatycznie do aplikacji Atlassian chmury.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących sposobów integracji aplikacji SaaS w usłudze Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 
@@ -333,4 +273,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_general_203.png
-

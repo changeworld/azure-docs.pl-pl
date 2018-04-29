@@ -1,8 +1,8 @@
 ---
-title: "Co to jest panel dostępu w usłudze Azure Active Directory? | Microsoft Docs"
-description: "Dowiedz się, jak używać różnych wersji panelu dostępu (przeglądarki sieci web, aplikacji systemu Android, aplikacji iPhone i iPad) dostępu do aplikacji SaaS."
+title: Co to jest panel dostępu w usłudze Azure Active Directory? | Microsoft Docs
+description: Dowiedz się, jak używać różnych wersji panelu dostępu (przeglądarki sieci web, aplikacji systemu Android, aplikacji iPhone i iPad) dostępu do aplikacji SaaS.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
@@ -15,11 +15,11 @@ ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3c8ea85a0906071d6b30f176de7509e5f346b513
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-the-access-panel"></a>Co to jest panel dostępu?
 
@@ -50,9 +50,7 @@ Dostęp do panelu dostępu, przechodząc do `http://myapps.microsoft.com`.
 
 Jeśli masz niestandardowe znakowanie skonfigurowana dla strony logowania, można załadować znakowania przez dołączenie do adresu URL domeny organizacji (na przykład `http://myapps.microsoft.com/<your domain>.com`).
 
-Można użyć dowolną nazwę domeny active lub zweryfikowane, skonfigurowanego w portalu Azure, jak pokazano poniżej:
-
-![Nazwa domeny Wingtip Toys][2]  
+Można użyć dowolnej nazwy aktywnych lub zweryfikowanej domeny, który został skonfigurowany w portalu usługi Azure, jak pokazano poniżej: ![Wingtip Toys nazwy domeny][2]  
 
 Dystrybuuj adresu URL dla wszystkich użytkowników, zaloguj się do aplikacji, które są zintegrowane z usługą Azure AD.
 
@@ -75,7 +73,7 @@ Rozszerzenie panelu dostępu jest obecnie dostępny dla:
 - **Krawędź**: w systemie Windows 10 Anniversary Edition lub nowszy. 
 - **Chrome**: w systemie Windows 7 lub nowszym i System MacOS x lub później.
 - **Firefox 26.0 lub nowsze**: w systemie Windows XP SP2 lub nowszy i Mac OS X 10.6 lub później.
-- **Internet Explorer 8, 9, 10, 11**: w systemie Windows 7 lub nowszy (obsługa ograniczona).
+- **Internet Explorer 11**: w systemie Windows 7 lub nowszy (obsługa ograniczona).
 
 ## <a name="my-apps-secure-sign-in-extension"></a>Rozszerzenie bezpiecznego logowania do moich aplikacji
 Aby zalogować się do opartego na hasłach logowanie jednokrotne, należy użyć rozszerzenia. Po zainstalowaniu rozszerzenia może logowania się do niego do włączyć dodatkowe funkcje, wybierając **Zaloguj się rozpocząć**. 

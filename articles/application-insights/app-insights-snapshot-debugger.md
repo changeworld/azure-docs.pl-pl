@@ -1,8 +1,8 @@
 ---
-title: "Usługa Azure Application Insights migawki debuger dla aplikacji .NET | Dokumentacja firmy Microsoft"
-description: "Debugowanie migawki są zbierane automatycznie, gdy wyjątki zostaną zgłoszone w aplikacjach .NET produkcji"
+title: Usługa Azure Application Insights migawki debuger dla aplikacji .NET | Dokumentacja firmy Microsoft
+description: Debugowanie migawki są zbierane automatycznie, gdy wyjątki zostaną zgłoszone w aplikacjach .NET produkcji
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: pharring
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a2b3dbce1d969eaa9937ad866fd055ae72e6529
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugowanie migawek na wyjątków w aplikacji .NET
 
@@ -42,7 +42,7 @@ Są obsługiwane w następujących środowiskach:
 
 1. [Włącz usługę Application Insights w aplikacji sieci web](app-insights-asp-net.md), jeśli nie jeszcze go jeszcze gotowe.
 
-2. Obejmują [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w aplikacji. 
+2. Obejmują [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) pakietu NuGet w aplikacji.
 
 3. Przejrzyj domyślne opcje dodane do pakietu [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
 
@@ -92,10 +92,18 @@ Są obsługiwane w następujących środowiskach:
 
 3. Modyfikowanie aplikacji `Startup` klasy, aby dodać i skonfigurować migawki modułu zbierającego dane telemetryczne procesora.
 
+    Dodaj następujące instrukcje using `Startup.cs`
+
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;
    using Microsoft.Extensions.Options;
-   ...
+   using Microsoft.ApplicationInsights.AspNetCore;
+   using Microsoft.ApplicationInsights.Extensibility;
+   ```
+
+   Dodaj następujące `SnapshotCollectorTelemetryProcessorFactory` klasy do `Startup` klasy.
+
+   ```csharp
    class Startup
    {
        private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
@@ -111,11 +119,11 @@ Są obsługiwane w następujących środowiskach:
                return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
            }
        }
+       ...
+    ```
+    Dodaj `SnapshotCollectorConfiguration` i `SnapshotCollectorTelemetryProcessorFactory` usług do potoku uruchamiania:
 
-       public Startup(IConfiguration configuration) => Configuration = configuration;
-
-       public IConfiguration Configuration { get; }
-
+    ```csharp
        // This method gets called by the runtime. Use this method to add services to the container.
        public void ConfigureServices(IServiceCollection services)
        {
@@ -178,7 +186,7 @@ Są obsługiwane w następujących środowiskach:
         }
    }
     ```
-    
+
 ## <a name="grant-permissions"></a>Udziel uprawnień
 
 Właściciele subskrypcji platformy Azure można sprawdzić migawki. Inni użytkownicy muszą mieć uprawnienie przez właściciela.
@@ -208,7 +216,7 @@ W widoku debugowania migawek Zobacz stosu wywołań i okienku zmiennych. Po wybr
 Migawki mogą zawierać poufne informacje, i domyślnie nie są widoczne. Aby wyświetlić migawki, musisz mieć `Application Insights Snapshot Debugger` rola przypisana użytkownikowi.
 
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Migawki z programu Visual Studio Enterprise 2017 debugowania
-1. Kliknij przycisk **pobrać migawki** przycisk, aby pobrać `.diagsession` pliku, który można otworzyć w programie Visual Studio Enterprise 2017 r. 
+1. Kliknij przycisk **pobrać migawki** przycisk, aby pobrać `.diagsession` pliku, który można otworzyć w programie Visual Studio Enterprise 2017 r.
 
 2. Aby otworzyć `.diagsession` pliku, należy najpierw [Pobierz i zainstaluj rozszerzenie migawki debugera programu Visual Studio](https://aka.ms/snapshotdebugger).
 
@@ -312,7 +320,7 @@ Zezwól na co najmniej dwóch jednoczesnych migawek.
 Na przykład jeśli aplikacja korzysta z 1 GB całkowita zestaw roboczy, należy się upewnić, że istnieje co najmniej 2 GB miejsca na dysku do przechowywania migawek.
 Wykonaj poniższe kroki konfigurowania roli użytkownika usługi w chmurze z dedykowanym zasobu lokalnego migawek.
 
-1. Dodaj nowego zasobu lokalnego do usługi w chmurze, edytując plik definicji (.csdf) usługa w chmurze. W poniższym przykładzie zdefiniowano zasób o nazwie `SnapshotStore` o rozmiarze 5 GB.
+1. Dodaj nowego zasobu lokalnego do usługi w chmurze, edytując plik definicji (csdef) usługa w chmurze. W poniższym przykładzie zdefiniowano zasób o nazwie `SnapshotStore` o rozmiarze 5 GB.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
@@ -379,5 +387,5 @@ Jeśli nadal nie widać Wystąpił wyjątek o takim identyfikatorze migawki, dan
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Ustaw snappoints w kodzie](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) można pobrać migawek bez oczekiwania na wyjątek.
-* [Diagnozowanie wyjątków w aplikacjach sieci web](app-insights-asp-net-exceptions.md) wyjaśniono, jak wyświetlić więcej wyjątków do usługi Application Insights. 
+* [Diagnozowanie wyjątków w aplikacjach sieci web](app-insights-asp-net-exceptions.md) wyjaśniono, jak wyświetlić więcej wyjątków do usługi Application Insights.
 * [Inteligentne wykrywania](app-insights-proactive-diagnostics.md) automatycznie odnajduje anomalii wydajności.

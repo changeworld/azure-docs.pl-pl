@@ -1,11 +1,11 @@
 ---
-title: "Jak kodowanie elementu zawartości platformy Azure przy użyciu standardu Media Encoder Standard | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać Media Encoder Standard do kodowania zawartości multimedialnej w usłudze Azure Media Services. Przykłady kodu za pomocą interfejsu API REST."
+title: Jak kodowanie elementu zawartości platformy Azure przy użyciu standardu Media Encoder Standard | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać Media Encoder Standard do kodowania zawartości multimedialnej w usłudze Azure Media Services. Przykłady kodu za pomocą interfejsu API REST.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: a58cf1402d31538cb4d9753a66846f683839810c
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: efd4df24baaaf40ba90dd171d5227f61d1c0b36e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Jak kodowanie elementu zawartości przy użyciu standardu Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/18/2017
 >
 >
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Aby dostarczyć wideo za pośrednictwem Internetu, trzeba skompresować nośniki. Pliki wideo cyfrowe są duże i może być zbyt duża, aby dostarczyć za pośrednictwem Internetu lub dla klientów urządzeń, aby wyświetlać się poprawnie. Kodowanie jest procesem kompresji audio i wideo, więc klienci mogą wyświetlać multimediów.
 
 Zadania kodowania są jednym z najbardziej typowych operacji w usłudze Azure Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, można użyć koder wbudowane usługi Media Services (Media Encoder Standard). Umożliwia także kodera świadczonych przez partnera usługi Media Services. Kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. Można określić szczegółów kodowania zadań za pomocą ciągi ustawień wstępnych zdefiniowane dla kodera lub za pomocą plików konfiguracji wstępnie zdefiniowane. Aby wyświetlić typy ustawień, które są dostępne, zobacz [ustawień wstępnych zadań dla standardu Media Encoder Standard](http://msdn.microsoft.com/library/mt269960).
@@ -72,9 +72,9 @@ Poniższy przykład przedstawia sposób tworzenia i post zadania z jednego zadan
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
-    Host: media.windows.net
+        Authorization: Bearer <ENCODED JWT TOKEN> 
+        x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+        Host: media.windows.net
 
     {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "Adaptive Streaming", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",  "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
 
@@ -114,7 +114,7 @@ W wielu scenariuszach aplikacji deweloperzy chcą tworzyć serie przetwarzania z
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {  
@@ -156,7 +156,7 @@ Poniższy przykład pokazuje, jak tworzyć zadania i zadania przy użyciu przetw
     Content-Type: multipart/mixed; boundary=batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
     Accept: multipart/mixed
     Accept-Charset: UTF-8
-    Authorization: Bearer <token>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
     Host: media.windows.net
@@ -176,7 +176,7 @@ Poniższy przykład pokazuje, jak tworzyć zadania i zadania przy użyciu przetw
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
-    Authorization: Bearer <token>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
@@ -193,7 +193,7 @@ Poniższy przykład pokazuje, jak tworzyć zadania i zadania przy użyciu przetw
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
-    Authorization: Bearer <token>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
@@ -219,7 +219,7 @@ Poniższy przykład pokazuje, jak utworzyć obiekt JobTemplate z TaskTemplate, k
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
 
@@ -246,7 +246,7 @@ Poniższy przykład przedstawia sposób tworzenia zadania, który odwołuje się
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
 
@@ -273,8 +273,8 @@ W przypadku powodzenia następującą odpowiedź jest zwracana:
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy wiesz, jak utworzyć zadanie kodowanie elementu zawartości, zobacz [sprawdzanie postępu zadania za pomocą usługi Media Services](media-services-rest-check-job-progress.md).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 [Pobierz procesory multimediów](media-services-rest-get-media-processor.md)

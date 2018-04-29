@@ -1,12 +1,12 @@
 ---
-title: "Sposób nawiązywania połączenia ze źródłami danych | Dokumentacja firmy Microsoft"
-description: "Artykule wyróżnianie sposób nawiązywania połączenia ze źródłami danych odnalezionymi w wykazie danych Azure."
+title: Sposób nawiązywania połączenia ze źródłami danych | Dokumentacja firmy Microsoft
+description: Artykule wyróżnianie sposób nawiązywania połączenia ze źródłami danych odnalezionymi w wykazie danych Azure.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: b5bed534d9fa1a64b0e90c268407281724185ce8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b4dfc7a900e42b348c416d2d8c05b73fb15847ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak nawiązywać połączenie ze źródłami danych
 ## <a name="introduction"></a>Wprowadzenie
@@ -48,7 +48,7 @@ Korzystając z "Otwórz w..." menu dla źródeł danych w portalu Azure Data Cat
 | Power Query |.xlsx |Zainstalowany program Excel 2016 lub Excel 2010 lub Excel 2013 z dodatku Power Query dla dodatek programu Excel |
 | Power BI Desktop |.pbix |Power BI Desktop lipca 2016 lub nowszy |
 | SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 lub nowszym z narzędzi programu SQL Server zainstalowana |
-| Menedżer raportów |http:// |Zobacz [wymagania przeglądarki do programu SQL Server Reporting Services](https://technet.microsoft.com/en-us/library/ms156511.aspx) |
+| Menedżer raportów |http:// |Zobacz [wymagania przeglądarki do programu SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
 
 ## <a name="your-data-your-tools"></a>Dane, narzędziami
 Opcje dostępne w menu uzależniony od typu wybranego zasobu danych. Oczywiście nie wszystkie możliwe narzędzia mają być uwzględnieni w "Otwórz w..." menu, ale jest nadal łatwo połączyć się ze źródłem danych przy użyciu dowolnego narzędzia klienta. Po wybraniu zasobu danych w **Azure Data Catalog** portalu, pełną lokalizacji jest wyświetlana w okienku właściwości.

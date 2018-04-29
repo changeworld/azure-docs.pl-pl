@@ -1,25 +1,20 @@
 ---
-title: "Magazyn danych Azure SQL — często zadawane pytania | Dokumentacja firmy Microsoft"
-description: "W tym artykule wymieniono się często zadawane pytania dotyczące usługi Azure SQL Data Warehouse z klientów i deweloperów"
+title: Magazyn danych Azure SQL — często zadawane pytania | Dokumentacja firmy Microsoft
+description: W tym artykule wymieniono się często zadawane pytania dotyczące usługi Azure SQL Data Warehouse z klientów i deweloperów
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: 812CA525-3BF3-49DF-8DF3-FB4342464F4F
+author: acomet
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 3/1/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/17/2018
+ms.author: acomet
+ms.reviewer: igorstan
+ms.openlocfilehash: 475dd2de05c2691d4698ae1112118ecea9bc2d2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse często zadawane pytania
 
@@ -102,7 +97,7 @@ Pytanie: czy można podłączyć do HDI?
 
 Odpowiedź: HDI służy ADLS lub WASB warstwy systemu plików HDFS. Jeśli masz jako warstwa systemu plików HDFS można załadować danych do magazynu danych SQL. Jednak nie można wygenerować obliczeń przekazywanie do wystąpienia HDI. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji na magazyn danych SQL jako całość, zobacz nasze [omówienie] strony.
 
 

@@ -1,9 +1,9 @@
 ---
-title: "Wprowadzenie do platformy Spark w usłudze Azure HDInsight | Microsoft Docs"
-description: "Ten artykuł przedstawia wprowadzenie do platformy Spark w usłudze HDInsight i różne scenariusze korzystania z klastra Spark w usłudze HDInsight."
-keywords: "co to jest apache spark,klaster spark,wprowadzenie do platformy spark,platforma spark w usłudze hdinsight"
+title: Wprowadzenie do platformy Spark w usłudze Azure HDInsight | Microsoft Docs
+description: Ten artykuł przedstawia wprowadzenie do platformy Spark w usłudze HDInsight i różne scenariusze korzystania z klastra Spark w usłudze HDInsight.
+keywords: co to jest apache spark,klaster spark,wprowadzenie do platformy spark,platforma spark w usłudze hdinsight
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -11,17 +11,15 @@ tags: azure-portal
 ms.assetid: 82334b9e-4629-4005-8147-19f875c8774e
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: nitinme
-ms.openlocfilehash: d2b2e33de25fc5b76b1df4a42fd25e4e0b374439
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.openlocfilehash: 783cbd673231694b09bd27942799c1fd92e09a46
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>Wprowadzenie do platformy Spark w usłudze HDInsight
 

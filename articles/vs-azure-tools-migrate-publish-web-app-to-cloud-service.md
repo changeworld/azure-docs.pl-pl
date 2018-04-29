@@ -2,23 +2,20 @@
 title: Jak migrować i publikowanie aplikacji sieci Web do usługi w chmurze platformy Azure w programie Visual Studio | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak migracji i publikowanie aplikacji sieci web do usługi w chmurze platformy Azure przy użyciu programu Visual Studio
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 9394adfd-a645-4664-9354-dd5df08e8c91
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ghogen
-ms.openlocfilehash: 682be267bbb1cf495d85af5786309a98f885fc23
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: aa09cd06a5ccea3f18459efb701aeaa8d9e59639
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>Porady: migracja i publikowanie aplikacji sieci Web do usługi w chmurze platformy Azure w programie Visual Studio
 
@@ -112,7 +109,7 @@ Aplikacje, które mogą być migrowane i publikowane w usługach w chmurze musi 
 | Sieć Web | Aplikacja sieci Web platformy ASP.NET (.NET Framework) |
 | Sieć Web | Aplikacja sieci Web platformy ASP.NET MVC 2 |
 | Sieć Web | Aplikacja sieci Web platformy ASP.NET MVC 3 |
-| Sieć Web | ASP.NET MVC4 Web Application |
+| Sieć Web | Aplikacja sieci Web platformy ASP.NET MVC 4 |
 | Sieć Web | Aplikacja sieci Web ASP.NET pusty (lub lokacji) |
 | Sieć Web | Aplikacja pusty sieci Web platformy ASP.NET MVC 2 |
 | Sieć Web | Aplikacja sieci Web ASP.NET Dynamic Data Entities |

@@ -1,7 +1,7 @@
 ---
 title: Monitorowanie aplikacji platformy Azure i zasobów | Dokumentacja firmy Microsoft
 description: Omówienie usługi i funkcje, składających się na pełną strategię monitorowania usług systemu Azure i aplikacji.
-author: robb
+author: rboucher
 manager: carmonm
 editor: ''
 services: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: c20e97e445dc79bdb65dcde40d323989005f5f5d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 16478d0223f59abb239d39fa27453e41b6980727
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Monitorowanie aplikacji platformy Azure i zasobów
 
@@ -63,9 +63,9 @@ Metryki są dostępne statystyki które zapewniają różne zasoby i nawet syste
 Można również wysyłać te metryki i analizy trendów i szczegółowe dzienniki usługi Analiza dzienników Azure lub tworzyć dodatkowe reguły alertów do aktywnego powiadomienia poważnych problemów, w wyniku tego analizy.  
 
 > [!NOTE]
-> Wysyłanie metryki wielowymiarowej do analizy dzienników przy użyciu ustawień diagnostycznych nie jest obecnie obsługiwane. Metryka z wymiarów są eksportowane jako spłaszczone pojedynczego metryki wymiarów, zagregowane WE wartości wymiaru.
+> Wysyłanie metryki wielowymiarowej do analizy dzienników przy użyciu ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: metryka "Komunikatów przychodzących" w Centrum zdarzeń można przedstawione i wykresie na na poziomie kolejki. Jednak podczas eksportowania do analizy dzienników Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
+> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak podczas eksportowania do analizy dzienników Metryka będą reprezentowane jako komunikaty przychodzące we wszystkich kolejek zdarzeń koncentratora.
 >
 >
 
@@ -161,6 +161,6 @@ Po awarii zgłoszone można użyć mapy usługi do wykonania przechowanie do ide
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o:
 
-* [Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/) rozpocząć pracę z podstawowej platformy monitorowania metryki i alerty.
+* [Azure Monitor](https://azure.microsoft.com/services/monitor/) rozpocząć pracę z podstawowej platformy monitorowania metryki i alerty.
 * [Usługa Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) Jeśli próbujesz diagnozować problemy w aplikacji sieci web usługi aplikacji.
 * [Zaloguj się Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) do analizowania dzienników i zebranych danych monitorowania.

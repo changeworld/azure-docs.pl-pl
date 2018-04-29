@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: warstwa magazynu gorącego, chłodnego i archiwalnego
+# <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob Storage: warstwy magazynowania Gorąca, Chłodna i Archiwum
 
 ## <a name="overview"></a>Omówienie
 
@@ -34,7 +34,7 @@ W przypadku każdego z tych scenariuszy dostępu do danych istnieją korzyści p
 
 Dane magazynu obiektów można dzielić między warstwy Gorąca, Chłodna lub Archiwum tylko na kontach usługi Blob Storage lub ogólnego przeznaczenia w wersji 2 (GPv2). Konta ogólnego przeznaczenia w wersji 1 (GPv1) nie obsługują warstw. Klienci mogą jednak łatwo przekształcać istniejące konta GPv1 lub konta usługi Blob Storage w konta GPv2 w ramach prostego procesu uruchamianego jednym kliknięciem w witrynie Azure Portal. Konto GPv2 oferuje nową strukturę cen obiektów blob, plików i kolejek oraz dostęp do różnych nowych funkcji magazynu. Co więcej, w przyszłości niektóre nowe funkcje i rabaty cenowe będą oferowane tylko w przypadku kont GPv2. W związku z tym klienci powinni zastanowić się nad korzystaniem z konta GPv2, ale podjąć taką decyzję mogą tylko po zapoznaniu się z cenami wszystkich usług, ponieważ niektóre obciążenia mogą być droższe na kontach GPv2 niż na kontach GPv1. Aby dowiedzieć się więcej, zobacz [Opcje kont usługi Azure Storage](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Kona usługi Blob Storage i GPv2 ujawniają atrybut **Warstwa dostępu** na poziomie konta, co pozwala na określanie domyślnej warstwy magazynowania jako Gorąca lub Chłodna dla dowolnego obiektu blob na koncie magazynu, które nie ma warstwy ustawionej na poziomie obiektu. W przypadku obiektów z warstwą ustawioną na poziomie obiektu warstwa konta nie będzie stosowana. Warstwę Archiwum można stosować tylko na poziomie obiektu. W dowolnym momencie można przełączać się między tymi warstwami magazynowania.
+Konta usługi Blob Storage i GPv2 ujawniają atrybut **Warstwa dostępu** na poziomie konta, co pozwala na określanie domyślnej warstwy magazynowania jako Gorąca lub Chłodna dla dowolnego obiektu blob na koncie magazynu, które nie ma warstwy ustawionej na poziomie obiektu. W przypadku obiektów z warstwą ustawioną na poziomie obiektu warstwa konta nie będzie stosowana. Warstwę Archiwum można stosować tylko na poziomie obiektu. W dowolnym momencie można przełączać się między tymi warstwami magazynowania.
 
 ## <a name="hot-access-tier"></a>Warstwa dostępu Gorąca
 
@@ -102,7 +102,7 @@ W poniższej tabeli przedstawiono porównanie warstw magazynowania Gorąca, Chł
 | **Cele dotyczące skalowalności i wydajności** | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia | Takie same jak w przypadku kont magazynu ogólnego przeznaczenia |
 
 > [!NOTE]
-> Konta usługi Blob Storage obsługują te same cele wydajności i skalowalności co konta magazynu ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Cele dotyczące skalowalności i wydajności usługi Magazyn Azure).
+> Konta Magazynu obiektów blob obsługują te same cele wydajności i skalowalności co konta magazynu ogólnego przeznaczenia. Aby uzyskać więcej informacji, zobacz [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Cele dotyczące skalowalności i wydajności usługi Magazyn Azure).
 
 ## <a name="quickstart-scenarios"></a>Scenariusze typu Szybki start
 
@@ -123,7 +123,7 @@ W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny
 
 5. Kliknij pozycję Zapisz w górnej części bloku.
 
-### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Zmienianie warstwy obiektu blob na koncie GPv2 lub usługi Blob Storage
+### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Zmień warstwę obiektu blob na koncie GPv2 lub usługi Blob Storage.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -135,7 +135,7 @@ W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**Czy używać konta usługi Blob Storage lub GPv2, jeśli chcę obsługiwać warstwy danych?**
+**Czy używać konta usługi Blob Storage, czy GPv2, jeśli chcę obsługiwać warstwy danych?**
 
 Zalecamy korzystanie z kont GPv2 zamiast kont usługi Blob Storage na potrzeby obsługi warstw. Konta GPv2 obsługują wszystkie funkcje, które obsługują konta usługi Blob Storage, i wiele innych. Ceny kont usługi Blob Storage i GPv2 są niemal identyczne, ale niektóre nowe funkcje i rabaty cenowe będą dostępne tylko na kontach GPv2. Konta GPv1 nie obsługują warstw.
 
@@ -159,7 +159,7 @@ Warstwy magazynowania Gorąca i Chłodna oraz obsługa warstw na poziomie obiekt
 
 **Czy obiekty blob w chłodnej warstwie magazynowania działają inaczej niż obiekty blob w gorącej warstwie magazynowania?**
 
-Obiekty blob w gorącej warstwie magazynowania mają takie samo opóźnienie jak obiekty blob na kontach GPv1, GPv2 i usługi Blob Storage. Obiekty blob w chłodnej warstwie magazynowania mają podobne opóźnienie (w milisekundach) jak obiekty blob na kontach GPv1, GPv2 i usługi Blob Storage. Obiekty blob w warstwie magazynowania Archiwum mają kilka godzin opóźnienia na kontach GPv1, GPv2 i usługi Blob Storage.
+Obiekty blob w warstwie magazynowania Gorąca mają takie samo opóźnienie jak obiekty blob na kontach GPv1, GPv2 i usługi Blob Storage. Obiekty blob w warstwie magazynowania Chłodna mają podobne opóźnienie (w milisekundach) jak obiekty blob na kontach GPv1, GPv2 i usługi Blob Storage. Obiekty blob w warstwie magazynowania Archiwum mają kilka godzin opóźnienia na kontach GPv1, GPv2 i usługi Blob Storage.
 
 Obiekty blob w chłodnej warstwie magazynowania będą miały nieco niższy poziom dostępności usług (umowa SLA) niż obiekty blob przechowywane w gorącej warstwie magazynowania. Aby uzyskać więcej szczegółów, zobacz [Magazyn — umowa SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
 

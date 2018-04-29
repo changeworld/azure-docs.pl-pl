@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ebbc31016417dd6fecb91f6cdc0bba3fcf0a3f50
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 50ae4d6e8c275db16f811a2a1a063eda441f150b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-portal"></a>Utwórz maszynę Wirtualną za pomocą statycznego publicznego adresu IP przy użyciu portalu Azure
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 04/16/2018
 > * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 > * [Program PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 > * [Interfejs wiersza polecenia platformy Azure](virtual-network-deploy-static-pip-arm-cli.md)
-> * [Szablon](virtual-network-deploy-static-pip-arm-template.md)
 > * [PowerShell (klasyczny)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]

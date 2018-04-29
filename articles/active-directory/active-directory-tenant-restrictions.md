@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dae4599db5127ac8fd266d5e0f299e1284fc9b9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Ograniczenia dzierżawy do zarządzania dostępem do SaaS aplikacji w chmurze
 
@@ -28,7 +28,7 @@ Rozwiązanie usługi Azure Active Directory dla tego wyzwania jest funkcję ogra
 
 Ograniczenia dzierżawy umożliwia organizacjom Określ listę dzierżawców ich użytkownicy mogą uzyskiwać dostęp. Następnie usługi Azure AD tylko udziela dostępu do tych dozwolone dzierżaw.
 
-Ten artykuł dotyczy ograniczenia dzierżawy dla usługi Office 365, ale funkcja powinien współpracować z dowolnej aplikacji w chmurze SaaS korzystający z protokołów nowoczesnego uwierzytelniania w usłudze Azure AD dla logowania jednokrotnego. Jeśli używasz SaaS aplikacji za pomocą innej usługi Azure AD dzierżawy dzierżawy używane przez usługi Office 365, upewnij się, czy wszystkie wymagane dzierżaw są dozwolone. Aby uzyskać więcej informacji o aplikacji SaaS w chmurze, zobacz [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/).
+Ten artykuł dotyczy ograniczenia dzierżawy dla usługi Office 365, ale funkcja powinien współpracować z dowolnej aplikacji w chmurze SaaS korzystający z protokołów nowoczesnego uwierzytelniania w usłudze Azure AD dla logowania jednokrotnego. Jeśli używasz SaaS aplikacji za pomocą innej usługi Azure AD dzierżawy dzierżawy używane przez usługi Office 365, upewnij się, czy wszystkie wymagane dzierżaw są dozwolone. Aby uzyskać więcej informacji o aplikacji SaaS w chmurze, zobacz [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
 ## <a name="how-it-works"></a>Jak to działa
 

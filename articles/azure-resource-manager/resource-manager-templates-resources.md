@@ -1,6 +1,6 @@
 ---
-title: "Strukturę szablonu usługi Azure Resource Manager i składni | Dokumentacja firmy Microsoft"
-description: "Opis struktury i właściwości szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON."
+title: Zasobów szablonu usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sekcji Zasoby szablonów usługi Azure Resource Manager za pomocą składni deklaratywnej JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: b5438080f71fa8f5c4f03006b75b826f1cfa576a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 74830a5220a75408398af2224204f8195ab27cc6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Sekcja zasobów szablonów usługi Azure Resource Manager
 
@@ -42,9 +42,9 @@ Można zdefiniować zasoby o następującej strukturze:
       "comments": "<your-reference-notes>",
       "copy": {
           "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>",
+          "count": <number-of-iterations>,
           "mode": "<serial-or-parallel>",
-          "batchSize": "<number-to-deploy-serially>"
+          "batchSize": <number-to-deploy-serially>
       },
       "dependsOn": [
           "<array-of-related-resource-names>"
@@ -58,6 +58,21 @@ Można zdefiniować zasoby o następującej strukturze:
                   "input": {}
               }
           ]
+      },
+      "sku": {
+          "name": "<sku-name>",
+          "tier": "<sku-tier>",
+          "size": "<sku-size>",
+          "family": "<sku-family>",
+          "capacity": <sku-capacity>
+      },
+      "kind": "<type-of-resource>",
+      "plan": {
+          "name": "<plan-name>",
+          "promotionCode": "<plan-promotion-code>",
+          "publisher": "<plan-publisher>",
+          "product": "<plan-product>",
+          "version": "<plan-version>"
       },
       "resources": [
           "<array-of-child-resources>"
@@ -78,11 +93,14 @@ Można zdefiniować zasoby o następującej strukturze:
 | kopiuj |Nie |Jeśli wymagane jest więcej niż jedno wystąpienie, liczba zasobów do utworzenia. Domyślnym trybem jest równoległe. Określ tryb serial gdy nie ma wszystkich lub zasoby w celu wdrożenia w tym samym czasie. Aby uzyskać więcej informacji, zobacz [utworzyć wiele wystąpień zasobów usługi Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nie |Zasoby, które należy wdrożyć przed wdrożeniem tego zasobu. Menedżer zasobów ocenia zależności między zasobami i wdraża je w odpowiedniej kolejności. Zasoby nie są zależne od siebie, są wdrożone równolegle. Wartość może być rozdzielaną przecinkami listą zasobu nazwy lub unikatowych identyfikatorów zasobów. Tylko listy zasobów, które są wdrażane w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie musi już istnieć. Unikaj Dodawanie zależności niepotrzebne, jak mogą spowalniać wdrożenia i utworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące zależności ustawienia, zobacz [Definiowanie zależności w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md). |
 | properties |Nie |Ustawienia konfiguracji określonych zasobów. Wartości właściwości są takie same jak wartości podane w treści żądania dla operacji interfejsu API REST (metody PUT) do utworzenia zasobu. Można również określić tablicy kopiowania, aby utworzyć wiele wystąpień właściwości. |
+| sku | Nie | Niektóre zasoby Zezwalaj wartości, które definiują SKU do wdrożenia. Na przykład można określić typ nadmiarowości dla konta magazynu. |
+| rodzaj | Nie | Niektóre zasoby Zezwalaj wartość definiującą typ zasobu, które można wdrożyć. Na przykład można określić typ DB rozwiązania Cosmos do utworzenia. |
+| plan | Nie | Zezwalaj na wartości, które definiują planujesz jej wdrożenie niektórych zasobów. Na przykład można określić obrazu witryny marketplace dla maszyny wirtualnej. | 
 | — zasoby |Nie |Zasoby podrzędne, które zależą od zasobu został określony. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. Pełny typ zasobu podrzędnych obejmuje nadrzędny typ zasobu, takich jak **Microsoft.Web/sites/extensions**. Zależność od zasobu nadrzędnego nie jest oznaczany. Jawnie zdefiniuj tej zależności. |
 
 ## <a name="resource-specific-values"></a>Wartości zasobów
 
-**ApiVersion**, **typu**, i **właściwości** są różne dla każdego typu zasobu. Aby określić wartości tych właściwości, zobacz [odwołania do szablonu](/azure/templates/).
+**ApiVersion**, **typu**, i **właściwości** elementy są różne dla każdego typu zasobu. **Sku**, **rodzaj**, i **planu** elementy są dostępne dla niektórych typów zasobów, ale nie wszystkich. Aby określić wartości tych właściwości, zobacz [odwołania do szablonu](/azure/templates/).
 
 ## <a name="resource-names"></a>Nazwy zasobów
 Ogólnie rzecz biorąc pracować z trzech rodzajów nazw zasobów w Menedżerze zasobów:

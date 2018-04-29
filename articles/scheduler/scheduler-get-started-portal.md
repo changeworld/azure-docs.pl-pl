@@ -1,11 +1,11 @@
 ---
-title: "Rozpoczynanie pracy z usługą Azure Scheduler w witrynie Azure Portal | Microsoft Docs"
-description: "Rozpoczynanie pracy z usługą Azure Scheduler w portalu Azure"
+title: Rozpoczynanie pracy z usługą Azure Scheduler w witrynie Azure Portal | Microsoft Docs
+description: Rozpoczynanie pracy z usługą Azure Scheduler w portalu Azure
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Rozpoczynanie pracy z usługą Azure Scheduler w portalu Azure
 Azure Scheduler umożliwia łatwe tworzenie zaplanowanych zadań. Niniejszy samouczek zawiera informacje na temat tworzenia zadania. Są w nim zawarte także informacje na temat możliwości monitorowania oraz zarządzania, jakie oferuje usługa Scheduler.
@@ -28,7 +28,7 @@ Azure Scheduler umożliwia łatwe tworzenie zaplanowanych zadań. Niniejszy samo
 2. Kliknij przycisk **+ Nowy** > wpisz w polu wyszukiwania *Harmonogram* > wybierz z wyników **Harmonogram** > kliknij **Utwórz**.
    
     ![][marketplace-create]
-3. Utwórzmy zadanie, które spowoduje przesłanie żądania GET do witryny http://www.microsoft.com/. Na ekranie **Zadanie usługi Scheduler** wprowadź następujące informacje:
+3. Utwórzmy zadanie, które po prostu przesyła żądanie GET do witryny http://www.microsoft.com/. Na ekranie **Zadanie usługi Scheduler** wprowadź następujące informacje:
    
    1. **Nazwa:** `getmicrosoft`  
    2. **Subskrypcja:** subskrypcja usługi Azure użytkownika   
@@ -105,10 +105,10 @@ Możesz kliknąć przebieg, aby wyświetlić odnoszące się do niego dane z sek
    ![][job-history-details]
 
 ### <a name="users"></a>Użytkownicy
-Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla usługi Azure Scheduler. Aby uzyskać informacje o sposobie korzystania z karty Użytkownicy, należy zapoznać się z tematem [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md) (Kontrola dostępu na podstawie ról na platformie Azure).
+Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla usługi Azure Scheduler. Aby uzyskać informacje o sposobie korzystania z karty Użytkownicy, należy zapoznać się z tematem [Azure Role-Based Access Control](../role-based-access-control/role-assignments-portal.md) (Kontrola dostępu na podstawie ról na platformie Azure).
 
 ## <a name="see-also"></a>Zobacz też
- [Co to jest usługa Scheduler?](scheduler-intro.md)
+ [Co to jest Scheduler?](scheduler-intro.md)
 
  [Pojęcia i terminologia dotyczące usługi Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
 

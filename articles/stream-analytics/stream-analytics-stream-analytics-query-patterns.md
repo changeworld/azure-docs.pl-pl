@@ -9,15 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b929eaf17255210a5c813e3e91478f9202941b64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Zapytanie przykłady typowych wzorców użycia usługi analiza strumienia
+
 ## <a name="introduction"></a>Wprowadzenie
-Zapytania w usłudze Azure Stream Analytics są wyrażone według języka przypominającego SQL zapytań. Te zapytania są udokumentowane w artykule [materiały referencyjne dotyczące języka zapytań usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx) przewodnik. W tym artykule przedstawiono rozwiązania kilka typowych wzorców zapytań, na podstawie w rzeczywistych scenariuszach. Jest pracy w toku i jest aktualizowany o nowe wzorce w sposób ciągły.
+Zapytania w usłudze Azure Stream Analytics są wyrażone według języka przypominającego SQL zapytań. Konstrukcji języka są udokumentowane w artykule [materiały referencyjne dotyczące języka zapytań usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx) przewodnik. 
+
+Projekt kwerendy można wyrazić proste logiki przekazywanego do przenoszenia danych zdarzenia ze strumienia wejściowego z jednego do innego magazynu danych wyjściowych. Lub go do sformatowanego wzorca dopasowania i danych czasowych analizy do obliczania wartości zagregowanych w różnych okien czasu, tak jak na przykład TollApp. Możesz także dołączyć do danych z wielu danych wejściowych w celu łączenia strumienia zdarzeń i wykonaj wyszukiwań przed statyczne dane referencyjne wzbogacić wartości zdarzenia. Możesz także zapisać dane do wielu wyjść.
+
+W tym artykule przedstawiono rozwiązania kilka typowych wzorców zapytań, na podstawie w rzeczywistych scenariuszach. Jest pracy w toku i jest aktualizowany o nowe wzorce w sposób ciągły.
 
 ## <a name="query-example-convert-data-types"></a>Przykład zapytania: konwersji typów danych
 **Opis elementu**: Definiowanie typów właściwości ze strumienia wejściowego.
@@ -527,7 +532,7 @@ Na przykład w scenariuszu IoT dla piekarników macierzystego, chcemy Zgłoś al
 
 **Dane wyjściowe**:
 
-| eventTime | deviceId | Temp | alertMessage | maxPowerDuringLast3mins |
+| eventTime | deviceId | Temp | komunikat alarmu | maxPowerDuringLast3mins |
 | --- | --- | --- | --- | --- | 
 | "2018-01-01T16:05:00" | "Oven1" |30 | "Obwód krótkiej elementy grzewcze" |15 |
 | "2018-01-01T16:06:00" | "Oven1" |20 | "Obwód krótkiej elementy grzewcze" |15 |
@@ -571,7 +576,7 @@ WHERE
     AND t2.maxPower > 10
 ````
 
-**Wyjaśnienie**: pierwsza kwerenda `max_power_during_last_3_mins`, używa [okna ruchomej](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) można znaleźć maksymalną wartość czujnika zasilania dla każdego urządzenia w ciągu ostatnich 3 minut. Drugiego zapytania jest dołączony do pierwszego zapytania, aby znaleźć wartość zasilania w oknie najnowszych odpowiednie dla bieżącego zdarzenia. A następnie, pod warunkiem warunki są spełnione, alert zostanie wygenerowany dla urządzenia.
+**Wyjaśnienie**: pierwsza kwerenda `max_power_during_last_3_mins`, używa [okna ruchomej](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) można znaleźć maksymalną wartość czujnika zasilania dla każdego urządzenia w ciągu ostatnich 3 minut. Drugiego zapytania jest dołączony do pierwszego zapytania, aby znaleźć wartość zasilania w oknie najnowszych odpowiednie dla bieżącego zdarzenia. A następnie, pod warunkiem warunki są spełnione, alert zostanie wygenerowany dla urządzenia.
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy

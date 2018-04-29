@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/25/2018
 ms.author: richrund
-ms.openlocfilehash: e51dab1543c9c5c1c762134b3e73d608bcd523ba
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Zarządzanie za pomocą szablonów usługi Azure Resource Manager analizy dzienników
 Można użyć [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania analizy dzienników obszarów roboczych. Zadania, które można wykonywać za pomocą szablonów należą:
@@ -124,7 +124,7 @@ Następujące parametry ustaw wartość domyślną:
 
 Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat o podobne do poniższych opcji obejmujących wynik:<br><br> ![Przykład wynik po zakończeniu wdrożenia](./media/log-analytics-template-workspace-configuration/template-output-01.png)
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Tworzenie i konfigurowanie obszaru roboczego analizy dzienników
+## <a name="configure-a-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego analizy dzienników
 Poniższy przykład szablonu ilustruje sposób:
 
 1. Dodawanie rozwiązania do obszaru roboczego
@@ -230,7 +230,7 @@ Poniższy przykład szablonu ilustruje sposób:
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
+            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },
@@ -506,10 +506,9 @@ Galerii szablonów Szybki Start Azure zawiera kilka szablonów dla analizy dzien
 * [Wdróż maszynę wirtualną z systemem Linux z rozszerzeniem wirtualna analizy dzienników](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Monitor usługi Azure Site Recovery przy użyciu istniejący obszar roboczy analizy dzienników](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Monitorowanie aplikacji sieci Web platformy Azure przy użyciu istniejący obszar roboczy analizy dzienników](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Monitor SQL Azure za pomocą istniejący obszar roboczy analizy dzienników](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-* [Wdrażanie klastra usługi sieć szkieletowa usług i monitorować je z istniejącym obszarem roboczym analizy dzienników](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [Wdrażanie klastra usługi sieć szkieletowa usług i utworzyć obszaru roboczego analizy dzienników, aby ją monitorować](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [Dodaj istniejące konto magazynu z usługą OMS](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Wdrażanie agentów w maszynach wirtualnych platformy Azure przy użyciu szablonów usługi Resource Manager](log-analytics-azure-vm-extension.md)
+* [Wdrażanie agenta systemu Windows na maszynach wirtualnych platformy Azure przy użyciu szablonu usługi Resource Manager](../virtual-machines/windows/extensions-oms.md).
+* [Wdrażanie agenta systemu Linux na maszynach wirtualnych platformy Azure przy użyciu szablonu usługi Resource Manager](../virtual-machines/linux/extensions-oms.md).
 

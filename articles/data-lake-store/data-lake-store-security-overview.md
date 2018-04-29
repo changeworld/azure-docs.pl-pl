@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4dc1b070f7933f23ee615501dfbc68551068210c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpieczeń w usłudze Azure Data Lake Store
 Wiele przedsiębiorstw są korzystanie z analizy danych big data szczegółowe informacje biznesowe ułatwić im podejmowanie decyzji inteligentne. Organizacja może mieć środowisko złożone i podlegającymi ochronie, z coraz większa liczba różnych użytkowników. Jest ważne dla organizacji upewnić się, że ważnych danych biznesowych jest bezpieczniejsza, przechowywane z odpowiedniego poziomu udzielono dostępu do poszczególnych użytkowników. Azure Data Lake Store ułatwia spełnia te wymagania dotyczące zabezpieczeń. W tym artykule, więcej informacji na temat funkcji zabezpieczeń w usłudze Data Lake Store, w tym:
@@ -35,7 +35,7 @@ Uwierzytelnianie to proces, za pomocą którego tożsamość użytkownika zosta�
 Każda subskrypcja platformy Azure może być skojarzony z wystąpieniem usługi Azure Active Directory. Tylko użytkownicy i tożsamości usługi, które są zdefiniowane w usłudze Azure Active Directory można uzyskać dostęp do konta usługi Data Lake Store za pomocą portalu Azure, narzędzia wiersza polecenia lub przez aplikacje klienckie organizacji tworzy się przy użyciu zestawu SDK usługi Azure Data Lake Store. Zalety klucza przy użyciu usługi Azure Active Directory jako mechanizmu kontroli dostępu scentralizowane są następujące:
 
 * Uproszczone zarządzanie cyklem życia tożsamości. Tożsamość użytkownika lub usługi (tożsamości głównej usługi) można szybko utworzyć i szybko odwołany przez po prostu usunięcie lub wyłączenie konta w katalogu.
-* Uwierzytelnianie wieloskładnikowe. [Uwierzytelnianie wieloskładnikowe](../multi-factor-authentication/multi-factor-authentication.md) zapewnia dodatkową warstwę zabezpieczeń logowania użytkowników i transakcji.
+* Uwierzytelnianie wieloskładnikowe. [Uwierzytelnianie wieloskładnikowe](../active-directory/authentication/multi-factor-authentication.md) zapewnia dodatkową warstwę zabezpieczeń logowania użytkowników i transakcji.
 * Uwierzytelnianie za pomocą dowolnego klienta przy użyciu standardowego protokołu open, takich jak uwierzytelniania OAuth lub OpenID.
 * Federacja z usługami katalogu przedsiębiorstwa i dostawcy tożsamości w chmurze.
 

@@ -3,18 +3,18 @@ title: Zamiast ETL, projektowanie ELT do usługi Azure SQL Data Warehouse | Doku
 description: Zamiast ETL zaprojektować wyodrębniania, obciążenia i przekształcenie (ELT) proces ładowania danych lub magazyn danych SQL Azure.
 services: sql-data-warehouse
 author: ckarst
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 04/11/2018
+ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 13189bfe2e2e6db6185c798065dc3bea1fd3d537
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Projektowanie wyodrębniania, obciążenia i przekształcenie (ELT) dla usługi Azure SQL Data Warehouse
 
@@ -56,7 +56,7 @@ Aby załadować dane przy użyciu programu PolyBase, można użyć dowolnej z ty
 Program PolyBase ładuje dane z UTF-8 i UTF-16 zakodowane rozdzielane pliki tekstowe. Oprócz plików tekstu rozdzielanego ładuje z formatów plików usługi Hadoop RC plików ORC i Parquet. Program PolyBase mogą ładować dane z Gzip i szałowe skompresowane pliki. Program PolyBase nie obsługuje obecnie rozszerzone ASCII, format stałej szerokości i zagnieżdżone formatów, takich jak WinZip, JSON i XML.
 
 ### <a name="non-polybase-loading-options"></a>Opcje ładowania non-PolyBase
-Jeśli dane nie jest zgodny z PolyBase, możesz użyć [bcp](sql-data-warehouse-load-with-bcp.md) lub [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP ładuje bezpośrednio do usługi SQL Data Warehouse bez pośrednictwa magazynu obiektów Blob platformy Azure i jest przeznaczona tylko w przypadku małych obciążeń. Uwaga: wydajność obciążenia tych opcji jest znacznie mniejsza niż PolyBase. 
+Jeśli dane nie jest zgodny z PolyBase, możesz użyć [bcp](/sql/tools/bcp-utility) lub [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP ładuje bezpośrednio do usługi SQL Data Warehouse bez pośrednictwa magazynu obiektów Blob platformy Azure i jest przeznaczona tylko w przypadku małych obciążeń. Uwaga: wydajność obciążenia tych opcji jest znacznie mniejsza niż PolyBase. 
 
 
 ## <a name="extract-source-data"></a>Wyodrębnianie danych źródłowych

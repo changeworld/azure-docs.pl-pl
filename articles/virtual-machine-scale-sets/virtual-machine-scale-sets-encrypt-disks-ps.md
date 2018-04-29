@@ -1,13 +1,13 @@
 ---
-title: "Szyfrowanie dysków zestawach skali maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak używać programu Azure PowerShell do szyfrowania wystąpień maszyn wirtualnych i dołączonych dysków w zestawy skalowania maszyny wirtualnej"
+title: Szyfrowanie dysków zestawach skali maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać programu Azure PowerShell do szyfrowania wystąpień maszyn wirtualnych i dołączonych dysków w zestawy skalowania maszyny wirtualnej
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 856d4bc7dd636b3a2f3d072a10989cafd7efd6a6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d24189e94cade36eca3349c1f46810ee6daa2a49
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>Szyfrowanie systemu operacyjnego i dysków dołączonych danych w zestawie skalowania maszyn wirtualnych
 Aby chronić pliki i ochrony danych magazynowanych przy użyciu technologii szyfrowania standardowego w branży, zestawy skalowania maszyny wirtualnej obsługuje szyfrowanie dysków Azure (ADE). Szyfrowanie można włączyć dla maszyny wirtualnej systemu Windows i Linux skalowanie zestawów. Aby uzyskać więcej informacji, zobacz [Azure dysku szyfrowanie dla systemu Windows i Linux](../security/azure-security-disk-encryption.md).
@@ -41,7 +41,7 @@ W tym artykule wymaga programu Azure PowerShell w wersji modułu 5.3.0 lub nowsz
 Ustawia sieci Azure subsription Podgląd szyfrowanie dysków skalowania maszyny wirtualnej z rejestru [AzureRmProviderFeature rejestru](/powershell/module/azurerm.resources/register-azurermproviderfeature): 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
@@ -80,13 +80,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
 
 
 ## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
-Najpierw ustaw administrator, nazwę użytkownika i hasło dla wystąpień maszyn wirtualnych z [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Najpierw ustaw nazwę użytkownika i hasło administratora wystąpień maszyn wirtualnych przy użyciu polecenia [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Teraz utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Aby rozpowszechnić ruch do poszczególnych wystąpień maszyn wirtualnych, tworzona jest również modułu równoważenia obciążenia. Moduł równoważenia obciążenia zawiera reguły Dystrybuuj ruch na porcie TCP 80, a także zezwolić zdalnego pulpitu ruch na porcie TCP 3389 i komunikacji zdalnej programu PowerShell na porcie TCP 5985:
+Teraz utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Musisz również utworzyć moduł równoważenia obciążenia, który umożliwia kierowanie ruchu do poszczególnych wystąpień maszyn wirtualnych. Moduł równoważenia obciążenia zawiera reguły, które pozwalają kierować ruchem na porcie TCP 80 oraz korzystać z ruchu pulpitu zdalnego na porcie TCP 3389 i komunikacji zdalnej programu PowerShell na porcie TCP 5985:
 
 ```powershell
 $vmssName="myScaleSet"

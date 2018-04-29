@@ -1,11 +1,11 @@
 ---
-title: "Wprowadzenie do usług Azure Cloud Services i programu ASP.NET | Microsoft Docs"
-description: "Dowiedz się, jak utworzyć aplikację wielowarstwową przy użyciu kontrolera ASP.NET MVC i platformy Azure. Aplikacja jest uruchamiana w usłudze w chmurze z rolą Sieć Web i Proces roboczy. Używa platformy Entity Framework, bazy danych SQL Database oraz obiektów blob i kolejek usługi Azure Storage."
+title: Wprowadzenie do usług Azure Cloud Services i programu ASP.NET | Microsoft Docs
+description: Dowiedz się, jak utworzyć aplikację wielowarstwową przy użyciu kontrolera ASP.NET MVC i platformy Azure. Aplikacja jest uruchamiana w usłudze w chmurze z rolą Sieć Web i Proces roboczy. Używa platformy Entity Framework, bazy danych SQL Database oraz obiektów blob i kolejek usługi Azure Storage.
 services: cloud-services, storage
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d7aa440d-af4a-4f80-b804-cc46178df4f9
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 704391a60b4ba777b8fd2b156db2ea5587498383
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d092f5f6c59351530941d47565ee2c4905ddd2e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
@@ -32,10 +32,10 @@ Ta aplikacja to reklamowa tablica ogłoszeń. Aby utworzyć reklamę, użytkowni
 
 ![Lista reklam](./media/cloud-services-dotnet-get-started/list.png)
 
-Aplikacja korzysta z [przetwarzania kolejkowego](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby przekazać obciążające procesor CPU zadania związane z tworzeniem miniatur do procesu zaplecza.
+Aplikacja korzysta z [przetwarzania kolejkowego](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby przekazać obciążające procesor zadania związane z tworzeniem miniatur do procesu zaplecza.
 
-## <a name="alternative-architecture-websites-and-webjobs"></a>Architektura alternatywna: witryny sieci Web i zadania WebJob
-Ten samouczek pokazuje, jak uruchamiać fronton i zaplecze w usłudze w chmurze Azure. Alternatywą jest uruchomienie frontonu w [witrynie Azure w sieci Web](/services/web-sites/) i używanie funkcji [zadań WebJob](http://go.microsoft.com/fwlink/?LinkId=390226) (obecnie w wersji zapoznawczej) dla zaplecza. Aby zapoznać się z samouczkiem korzystającym z zadań WebJob, zobacz artykuł [Wprowadzenie do zestawu SDK zadań WebJob na platformie Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informacje o wybieraniu usług najlepiej spełniających potrzeby scenariusza zawiera artykuł [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md).
+## <a name="alternative-architecture-web-apps-and-webjobs"></a>Architektura alternatywna: usługa Web Apps i zadania WebJob
+Ten samouczek pokazuje, jak uruchamiać fronton i zaplecze w usłudze w chmurze Azure. Alternatywą jest uruchomienie frontonu w [usłudze Azure Web Apps](/azure/app-service/) i używanie funkcji [zadań WebJob](http://go.microsoft.com/fwlink/?LinkId=390226) dla zaplecza. Aby zapoznać się z samouczkiem korzystającym z zadań WebJob, zobacz artykuł [Wprowadzenie do zestawu SDK zadań WebJob na platformie Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informacje o wybieraniu usług najlepiej spełniających potrzeby scenariusza zawiera artykuł [Porównanie usług Azure: Witryny sieci Web, Cloud Services i Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Zawartość
 * Jak umożliwić tworzenie aplikacji platformy Azure na komputerze przez zainstalowanie zestawu Azure SDK.

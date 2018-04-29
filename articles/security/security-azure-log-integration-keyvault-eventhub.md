@@ -1,21 +1,21 @@
 ---
-title: "Integracja dzienniki z usługi Azure Key Vault za pomocą usługi Event Hubs | Dokumentacja firmy Microsoft"
-description: "Samouczek, który zawiera kroki niezbędne do udostępnienia dzienników usługi Key Vault SIEM za pomocą integracji dziennika Azure"
+title: Integracja dzienniki z usługi Azure Key Vault za pomocą usługi Event Hubs | Dokumentacja firmy Microsoft
+description: Samouczek, który zawiera kroki niezbędne do udostępnienia dzienników usługi Key Vault SIEM za pomocą integracji dziennika Azure
 services: security
 author: barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: e5bd27c94569228693d1a9c80c6e5362b50c4a44
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 42c30a825e44c289c42d0fb0a40a442c4ac950d7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Samouczek usługi Azure integracji dziennika: zdarzeń procesu usługi Azure Key Vault za pomocą usługi Event Hubs
 
@@ -81,7 +81,7 @@ Aby móc zakończyć kroki opisane w tym artykule, potrzebne są następujące e
 
    ![Listę załadowanych modułów](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. Wprowadź `Login-AzureRmAccount` polecenia. W oknie logowania wprowadź informacji o poświadczeniach dla subskrypcji, która będzie używana w tym samouczku.
+3. Wprowadź `Connect-AzureRmAccount` polecenia. W oknie logowania wprowadź informacji o poświadczeniach dla subskrypcji, która będzie używana w tym samouczku.
 
    >[!NOTE]
    >Jeśli po raz pierwszy jest logowanie do platformy Azure z tego komputera, pojawi się komunikat o Microsoft do zbierania danych użycia programu PowerShell. Firma Microsoft zaleca włączyć tej kolekcji danych, ponieważ będzie służyć do poprawienia programu Azure PowerShell.

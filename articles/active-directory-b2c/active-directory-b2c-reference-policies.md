@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: c733f919189dadcf1181ddbe2a1057b2bcf66fc4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Usługi Azure Active Directory B2C: Wbudowane zasady
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Tworzenie zasad rejestracji lub logowania
 
-Ta zasada obsługuje zarówno konsumenta rejestracji i logowania, korzystając z pojedynczą konfiguracją. Konsumenci są doprowadziło do prawej ścieżki (rejestracji lub logowania), w zależności od kontekstu. Omówiono także zawartość tokenów, które otrzymają aplikacji po pomyślnej napędza rejestracje lub logowania.  Przykład kodu dla zasad rejestracji i logowania jest [dostępne tutaj](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Zaleca się użyć tych zasad w zasadach rejestracji i logowania zasad.  
+Ta zasada obsługuje zarówno konsumenta rejestracji i logowania, korzystając z pojedynczą konfiguracją. Konsumenci są doprowadziło do prawej ścieżki (rejestracji lub logowania), w zależności od kontekstu. Omówiono także zawartość tokenów, które otrzymają aplikacji po pomyślnej napędza rejestracje lub logowania.  Przykład kodu dla **rejestracji i logowania** zasad jest [dostępne tutaj](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Zaleca się używać tych zasad za pośrednictwem **rejestracji** zasad lub **logowania** zasad.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -85,16 +85,16 @@ Ta zasada obsługuje zarówno konsumenta rejestracji i logowania, korzystając z
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 ### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Jak połączyć zasady rejestracji lub logowania za pomocą zasad resetowania hasła
-Podczas tworzenia zasady rejestracji i logowania (za pomocą kont lokalnych), zobacz **nie pamiętam hasła?** łącza na pierwszej stronie środowisko. Kliknięcie tego łącza nie automatycznie wyzwalacza hasła zasady resetowania. 
+Po utworzeniu **rejestracji i logowania** zasad (za pomocą kont lokalnych), zobacz **nie pamiętam hasła?** łącza na pierwszej stronie środowisko. Kliknięcie tego łącza nie automatycznie wyzwalacza hasła zasady resetowania. 
 
 Zamiast tego kodu błędu **`AADB2C90118`** jest zwracana do aplikacji. Twoja aplikacja powinna obsługiwać tego kodu błędu za pomocą zasad resetowania hasła określone. Aby uzyskać więcej informacji, zobacz [przykład przedstawiający metodę łączenia zasad](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
 ### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Należy użyć zasad rejestracji i logowania lub zasad rejestracji i logowania zasady?
-Zalecane jest użycie zasad rejestracji lub logowania za pośrednictwem zasad rejestracji i logowania zasad.  
+Firma Microsoft zaleca użycie **rejestracji i logowania** zasady przez **rejestracji** zasad i **logowania** zasad.  
 
-Zasady rejestracji i logowania ma więcej możliwości niż zasad logowania. Również umożliwia dostosowywanie interfejsu użytkownika strony i ma lepszą obsługę lokalizacji. 
+**Rejestracji i logowania** zasad ma więcej możliwości niż **logowania** zasad. Również umożliwia dostosowywanie interfejsu użytkownika strony i ma lepszą obsługę lokalizacji. 
 
-Nie należy do zlokalizowania zasad tylko potrzeby znakowania możliwości personalizacji i mają hasła, zaleca się zasad logowania resetowania wbudowanych.
+**Logowania** zasad jest zalecane, nie należy do zlokalizowania zasad tylko potrzeby znakowania możliwości personalizacji i mają hasło resetowania wbudowanych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Token sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md)

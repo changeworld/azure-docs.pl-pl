@@ -3,7 +3,7 @@ title: Wydajność sieci szkieletowej Azure usługi monitorowania | Dokumentacja
 description: Więcej informacji na temat liczników wydajności dla monitorowania i diagnostyki klastrów sieci szkieletowej usług Azure.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 3784cb6f713c5ce476ab980122ee6ec9fa3ebc59
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/16/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 54837b2a43f93f43d089a2fdf35d8b74ecacfc3e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performance-metrics"></a>Metryki wydajności
 
@@ -75,7 +75,7 @@ Sieć szkieletowa usług generuje rozległe niestandardowe liczniki wydajności.
 
 W aplikacjach wdrażasz do klastra, jeśli używasz Reliable Actors, Dodaj countes z `Service Fabric Actor` i `Service Fabric Actor Method` kategorii (zobacz [usługi sieć szkieletowa niezawodnej podmiotów diagnostyki](service-fabric-reliable-actors-diagnostics.md)).
 
-Jeśli używasz Service Remoting, podobnie mamy `Service Fabric Service` i `Service Fabric Service Method` kategorii licznika, które należy zebrać liczników z. 
+Jeśli używasz usługi niezawodnego podobnie mamy `Service Fabric Service` i `Service Fabric Service Method` kategorii licznika, które należy zebrać liczników z. 
 
 Użycie niezawodnej kolekcje, zaleca się dodawania `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` zbierać opóźnienie zatwierdzania średni na Metryka transakcji.
 
@@ -83,4 +83,4 @@ Użycie niezawodnej kolekcje, zaleca się dodawania `Avg. Transaction ms/Commit`
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej o [generowania zdarzeń na poziomie platformy](service-fabric-diagnostics-event-generation-infra.md) w sieci szkieletowej usług
-* Zbieranie metryk wydajności za pośrednictwem [diagnostyki Azure](service-fabric-diagnostics-event-aggregation-wad.md)
+* Zbieranie metryk wydajności za pośrednictwem [Agent pakietu OMS](service-fabric-diagnostics-oms-agent.md)

@@ -1,36 +1,32 @@
 ---
-title: "Azure AD Connect, kondycję i rozporządzenia ochrony danych ogólne | Dokumentacja firmy Microsoft"
-description: "Ten dokument zawiera opis sposobu uzyskiwania GDPR zgodności z programem Azure AD Connect."
+title: Azure AD Connect Health i zasady zachowania poufności użytkownika | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano zasady zachowania poufności użytkownika z usługi Azure AD Connect Health.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bf26e91308cfec0dc8ede20e683919b5764a4868
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR zgodności i Azure AD Connect Health 
+# <a name="user-privacy-and-azure-ad-connect-health"></a>Zasady zachowania poufności użytkownika i Azure AD Connect Health 
 
-[Rozporządzenia ogólne ochrony danych (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) jest prawo ochrona i prywatność danych Unii Europejskiej (UE). GDPR nakłada nowe zasady dotyczące firmy, agencji rządowych, z systemem innym niż zysków i innych organizacji, które oferują towarów i usług do osób w UE, lub że zbieranie i analizowanie danych powiązane mieszkańców Unii Europejskiej. 
-
-Usług i produktów firmy Microsoft dostępnych dzisiaj ułatwić spełniają wymagania GDPR. Dowiedz się więcej o zasady Privacy firmy Microsoft pod adresem [Centrum zaufania](https://www.microsoft.com/trustcenter).
-
-Azure AD Connect Health monitoruje usługi infrastruktury i synchronizacji tożsamości lokalnych. Udostępnia również należy insights i powierzchni alerty. Firma Microsoft dba o zgodności GDPR przez usługi w chmurze podczas wymuszania rozpoczęcia 2018 maja oraz w celu zapewnienia związanych z GDPR gwarancji, w umownym zobowiązań. 
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
-> W tym artykule opisano zgodność GDPR w Azure AD Connect Health. Aby uzyskać informacje na temat zgodności GDPR w programie Azure AD Connect, zobacz [GDPR zgodności i Azure AD Connect](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
+>Ten artykuł dotyczy usługi Azure AD Connect Health i użytkownika prywatności.  Aby uzyskać informacje dotyczące usługi Azure AD Connect i użytkownika prywatności, zobacz artykuł [tutaj](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
 
-## <a name="gdpr-classification"></a>GDPR klasyfikacji
+## <a name="user-privacy-classification"></a>Klasyfikacja prywatności użytkownika
 Azure AD Connect Health należące do **procesora danych** Kategoria klasyfikacji GDPR. Jako potok procesor danych z usługi udostępnia usługi przetwarzania danych i klucza użytkowników końcowych. Azure AD Connect Health nie generuje danych użytkownika i nie ma niezależnego kontroli nad jakie dane osobiste są zbierane i sposobie ich użycia. Pobieranie danych, agregacji, analizy i raportowania w programie Azure AD Connect Health są oparte na istniejących danych lokalnych. 
 
 ## <a name="data-retention-policy"></a>Zasady przechowywania danych
@@ -67,5 +63,5 @@ Aby ponownie włączyć monitoring w programie Azure AD Connect Health do celów
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przejrzyj zasady Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect i GDPR](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
-* [Operacje w programie Azure AD Connect Health](active-directory-aadconnect-health-operations.md)
+* [Azure AD Connect i zasady zachowania poufności użytkownika](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
+

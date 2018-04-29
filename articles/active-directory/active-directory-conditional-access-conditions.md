@@ -1,26 +1,26 @@
 ---
-title: "Warunki dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak przypisania są używane w dostępu warunkowego w usłudze Azure Active Directory do wyzwalania zasad."
+title: Warunki dostępu warunkowego w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przypisania są używane w dostępu warunkowego w usłudze Azure Active Directory do wyzwalania zasad.
 services: active-directory
-keywords: "dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego"
-documentationcenter: 
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy przy użyciu usługi Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/27/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2415a2c2c0143b4abeb8ec1ecab379a204456874
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b3096fbec6a7cc30d1ae3452b6c8b872cf3aec8f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Warunki dostępu warunkowego w usłudze Azure Active Directory 
 
@@ -45,17 +45,23 @@ W tym artykule przedstawiono omówienie warunki i sposób ich użycia w zasadach
 
 Warunek użytkowników i grup jest obowiązkowa w zasadach dostępu warunkowego. W zasadach, można wybrać operator **wszyscy użytkownicy** lub wybierz konkretnych użytkowników i grup.
 
-![Kontrola](./media/active-directory-conditional-access-conditions/02.png)
+![Kontrola](./media/active-directory-conditional-access-conditions/111.png)
 
 Po wybraniu:
 
-- **Wszyscy użytkownicy**, zasady są stosowane do wszystkich użytkowników z w katalogu. W tym gości.
+- **Wszyscy użytkownicy**, zasady są stosowane do wszystkich użytkowników w katalogu. W tym gości.
 
-- **Wybierz użytkowników i grupy**, możesz zastosować zestawy określonych użytkowników. Na przykład można wybrać grupy, która zawiera wszystkie elementy członkowskie działu HR, jeśli masz aplikację HR wybrany jako aplikacji w chmurze. 
+- **Wybierz użytkowników i grupy**, można ustawić następujące opcje:
 
-- Grupy, może być dowolnego typu grupy w usłudze Azure AD, w tym dynamiczne lub przypisanych grup zabezpieczeń i dystrybucji.
+    - **Wszyscy użytkownicy gościa** — umożliwia kierowania zasad B2B reklamy. Ten warunek zgodny dowolnego konta użytkownika z *userType* ustawić atrybutu *gościa*. To ustawienie można użyć w sytuacjach, gdy zasady musi zastosować natychmiast po utworzeniu konta w strumieniu zaproszenia w usłudze Azure AD.
 
-Można również wykluczyć określonych użytkowników lub grup z zasad. Jeden przypadek użycia wspólnych są konta usług, jeśli uwierzytelnianie wieloskładnikowe wymusza zasady. 
+    - **Role katalogu** — umożliwia docelowy zasady oparte na przypisanie roli użytkownika. Ten warunek obsługuje katalogu role, takie jak *administratora globalnego* lub *hasło administratora*.
+
+    - **Użytkownicy i grupy** — umożliwia określonych zestawów użytkowników docelowych. Na przykład można wybrać grupy, która zawiera wszystkie elementy członkowskie działu HR, jeśli masz aplikację HR wybrany jako aplikacji w chmurze.
+
+Grupy, może być dowolnego typu grupy w usłudze Azure AD, w tym dynamiczne lub przypisanych grup zabezpieczeń i dystrybucji
+
+Można również wykluczyć określonych użytkowników lub grup z zasad. Jeden przypadek użycia wspólnych są konta usług, jeśli uwierzytelnianie wieloskładnikowe (MFA) wymusza zasady. 
 
 Przeznaczonych dla określonych zestawów użytkowników jest przydatne w przypadku wdrażania nowych zasad. W nowych zasad powinien wskazywać tylko początkowego zestawu użytkowników, aby sprawdzić poprawność zasad zachowania. 
 
@@ -71,7 +77,7 @@ Warunek aplikacji w chmurze jest obowiązkowa w zasadach dostępu warunkowego. W
 
 Możesz wybrać:
 
-- **Wszystkie aplikacje w chmurze** do linii bazowej zasady do zastosowania w całej organizacji. Przypadek użycia wspólnych dla tego zaznaczenia jest zasadę, która wymaga usługi Multi-Factor authentication po wykryciu zagrożenia logowania dla dowolnej aplikacji w chmurze.
+- **Wszystkie aplikacje w chmurze** do linii bazowej zasady do zastosowania w całej organizacji. Przypadek użycia wspólnych dla tego zaznaczenia jest zasadę, która wymaga usługi Multi-Factor authentication po wykryciu zagrożenia logowania dla dowolnej aplikacji w chmurze. Zasady stosowane do **wszystkich aplikacji w chmurze** ma zastosowanie do dostępu do wszystkich witryn sieci web i usług. To ustawienie nie jest ograniczona do aplikacji w chmurze, które znajdują się w **aplikacji w chmurze wybierz** listy.
 
 - Aplikacje w chmurze poszczególnych do określonych usług docelowych przez zasady. Na przykład można wymagać od użytkowników [zgodnego urządzenia](active-directory-conditional-access-policy-connected-applications.md) można uzyskać dostępu do usługi SharePoint Online. Ta zasada dotyczy również inne usługi przy uzyskiwaniu dostępu do zawartości programu SharePoint, na przykład Teams firmy Microsoft. 
 
@@ -105,6 +111,17 @@ Aby uzyskać pełną listę obsługiwanych platform urządzeń, zobacz [warunku 
 
 
 Typowy przypadek użycia dla tego warunku jest zasada, która ogranicza dostęp do aplikacji w chmurze do [zaufane urządzenia](active-directory-conditional-access-policy-connected-applications.md#trusted-devices). Aby uzyskać więcej scenariuszy, w tym warunku platformy urządzeń, zobacz [dostępu warunkowego na podstawie aplikacji usługi Azure Active Directory](active-directory-conditional-access-mam.md).
+
+
+
+## <a name="device-state"></a>Stan urządzenia
+
+Warunek stanu urządzeń umożliwia połączenia hybrydowe usługi Azure AD i oznaczone jako zgodne mają być wykluczone z zasad dostępu warunkowego urządzeń. Jest to przydatne, gdy zasady dotyczą tylko urządzeniu niezarządzanym, aby zapewnić dodatkową sesję zabezpieczeń. Na przykład tylko wymuszać kontroli sesji Microsoft Cloud App Security, gdy urządzenie jest niezarządzany. 
+
+
+![Warunki](./media/active-directory-conditional-access-conditions/112.png)
+
+Jeśli chcesz blokowały dostęp dla niezarządzanych urządzeń, należy zaimplementować [dostępu warunkowego opartego na urządzeniu](active-directory-conditional-access-policy-connected-applications.md).
 
 
 ## <a name="locations"></a>Lokalizacje

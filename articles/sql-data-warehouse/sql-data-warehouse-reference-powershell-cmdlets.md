@@ -1,25 +1,20 @@
 ---
-title: "Polecenia cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse"
-description: "Znajdź top poleceń cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse, łącznie ze sposobem wstrzymywanie i wznawianie bazy danych."
+title: Polecenia cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse
+description: Znajdź top poleceń cmdlet programu PowerShell dla usługi Azure SQL Data Warehouse, łącznie ze sposobem wstrzymywanie i wznawianie bazy danych.
 services: sql-data-warehouse
-documentationcenter: NA
 author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: 6f0d5772-f05f-4cc8-9749-4adb153dfd50
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: ce3e11587c2e0cb92923868a4f26d7f59c7ef4ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 43bf1bcb1ccbb82fc15cddde85e06cac0abfd9c7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST dla usługi SQL Data Warehouse
 Wiele zadań administracyjnych usługi SQL Data Warehouse można zarządzać za pomocą poleceń cmdlet programu Azure PowerShell lub interfejsów API REST.  Poniżej przedstawiono kilka przykładów sposobu użycia poleceń programu PowerShell do automatyzacji typowych zadań w magazynie danych SQL.  Dla niektórych dobre przykłady REST, zobacz artykuł [Zarządzanie skalowanie REST][Manage scalability with REST].
@@ -34,7 +29,7 @@ Wiele zadań administracyjnych usługi SQL Data Warehouse można zarządzać za 
 2. W wierszu polecenia programu PowerShell, uruchom następujące polecenia, aby zarejestrować się w usłudze Azure Resource Manager i wyboru subskrypcji.
    
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     Get-AzureRmSubscription
     Select-AzureRmSubscription -SubscriptionName "MySubscription"
     ```
@@ -86,7 +81,7 @@ Te polecenia cmdlet programu PowerShell są obsługiwane przez Magazyn danych SQ
 * [Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase]
 * [Wstrzymaj AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej przykładów programu PowerShell zobacz:
 
 * [Utwórz magazyn danych SQL przy użyciu programu PowerShell][Create a SQL Data Warehouse using PowerShell]
@@ -98,7 +93,7 @@ Inne zadania, których można zautomatyzować przy użyciu programu PowerShell, 
 
 <!--Article references-->
 [How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Create a SQL Data Warehouse using PowerShell]: ./sql-data-warehouse-get-started-provision-powershell.md
+[Create a SQL Data Warehouse using PowerShell]: ./create-data-warehouse-powershell.md
 [Database restore]: ./sql-data-warehouse-restore-database-powershell.md
 [Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 27c4a169a906f8e53a5548a38e3f680fd38155b3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 15c580a026495d11ffdeb161d4bf0793850040f5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostyki dla aplikacji sieci web w usłudze aplikacji Azure
 ## <a name="overview"></a>Przegląd
@@ -84,7 +84,7 @@ Podczas wszystkich trzech lokalizacji magazynu zapewniają te same informacje po
 > Informacje przechowywane w **tabeli magazynu** lub **magazynu obiektów blob** można uzyskać tylko za pomocą klienta magazynu lub aplikacji, która bezpośrednio może współpracować z tych systemów pamięci masowej. Na przykład Eksploratora magazynu, który może służyć do eksplorowania tabeli lub obiektu blob magazynu zawiera programu Visual Studio 2013 i usługi HDInsight można uzyskać dostępu do danych przechowywanych w magazynie obiektów blob. Możesz także zapisać aplikację, która uzyskuje dostęp do usługi Azure Storage za pomocą jednego z [zestawów SDK usługi Azure](/downloads/#).
 >
 > [!NOTE]
-> Można również włączyć diagnostyki z programu Azure PowerShell przy użyciu **AzureWebsite zestaw** polecenia cmdlet. Jeśli nie zainstalowano programu Azure PowerShell lub nie zostały skonfigurowane do korzystania z subskrypcji Azure, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+> Można również włączyć diagnostyki z programu Azure PowerShell przy użyciu **AzureWebsite zestaw** polecenia cmdlet. Jeśli nie zainstalowano programu Azure PowerShell lub nie zostały skonfigurowane do korzystania z subskrypcji Azure, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
@@ -113,7 +113,7 @@ Pobierz pliki dziennika i uruchomić nowe wystąpienie programu Azure PowerShell
 To polecenie zapisuje dzienniki dla aplikacji sieci web, określony przez **— nazwa** parametru w pliku o nazwie **logs.zip** w bieżącym katalogu.
 
 > [!NOTE]
-> Jeśli nie zainstalowano programu Azure PowerShell lub nie zostały skonfigurowane do korzystania z subskrypcji Azure, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+> Jeśli nie zainstalowano programu Azure PowerShell lub nie zostały skonfigurowane do korzystania z subskrypcji Azure, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
@@ -125,7 +125,7 @@ Aby pobrać pliki dziennika przy użyciu interfejsu wiersza polecenia Azure, otw
 To polecenie zapisuje dzienniki dla aplikacji sieci web o nazwie "webappname" w pliku o nazwie **diagnostics.zip** w bieżącym katalogu.
 
 > [!NOTE]
-> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure (Azure CLI) lub nie zostały skonfigurowane do korzystania z subskrypcji Azure, zobacz [sposób użycia interfejsu wiersza polecenia Azure](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure (Azure CLI) lub nie zostały skonfigurowane do korzystania z subskrypcji Azure, zobacz [sposób użycia interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 
@@ -222,7 +222,7 @@ Po zalogowaniu się do magazynu tabel, dodatkowe właściwości są używane do 
 | EventTickCount |Data i godzina wystąpienia zdarzenia, format znaczników (większą dokładność) |
 | ApplicationName |Nazwa aplikacji sieci web |
 | Poziom |Poziom zdarzenia (na przykład błąd, ostrzeżenie, informacje) |
-| EventId |Identyfikator zdarzenia to zdarzenie<p><p>Wartość domyślna to 0, jeśli nie określono żadnego |
+| Identyfikator zdarzenia |Identyfikator zdarzenia to zdarzenie<p><p>Wartość domyślna to 0, jeśli nie określono żadnego |
 | Identyfikator wystąpienia |Wystąpienie aplikacji sieci web, który wystąpił nawet na |
 | Identyfikator procesu |Identyfikator procesu |
 | TID |Identyfikator wątku wątku wytworzonego zdarzenia |
@@ -239,7 +239,7 @@ Po zalogowaniu się do magazynu obiektów blob, dane są przechowywane w formaci
 | ApplicationName |Nazwa aplikacji sieci web |
 | Identyfikator wystąpienia |Wystąpienie aplikacji sieci web, w którym wystąpiło zdarzenie w |
 | EventTickCount |Data i godzina wystąpienia zdarzenia, format znaczników (większą dokładność) |
-| EventId |Identyfikator zdarzenia to zdarzenie<p><p>Wartość domyślna to 0, jeśli nie określono żadnego |
+| Identyfikator zdarzenia |Identyfikator zdarzenia to zdarzenie<p><p>Wartość domyślna to 0, jeśli nie określono żadnego |
 | Identyfikator procesu |Identyfikator procesu |
 | TID |Identyfikator wątku wątku wytworzonego zdarzenia |
 | Komunikat |Szczegóły komunikatu o zdarzeniu |

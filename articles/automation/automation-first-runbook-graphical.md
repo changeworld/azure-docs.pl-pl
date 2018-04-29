@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ba721091c2eb0c67171a6d3106468a05f9be1f8f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="my-first-graphical-runbook"></a>Mój pierwszy graficzny element Runbook
 
@@ -137,7 +137,7 @@ Teraz masz zmienną służącą do przechowywania identyfikatora subskrypcji i m
 1. Umieść kursor nad pozycją **Zaloguj się do platformy Azure** i zaczekaj, aż w dolnej części kształtu pojawi się okrąg. Kliknij okrąg i przeciągnij strzałkę do pozycji **Określ identyfikator subskrypcji**.
 
 > [!IMPORTANT]
-> **Dodaj-AzureRmAccount** jest teraz aliasem **Connect-AzureRMAccount**. Podczas wyszukiwania biblioteki elementy, jeśli nie widzisz **Connect-AzureRMAccount**, można użyć **Add-AzureRMAccount**, lub zaktualizować moduły na Twoim koncie automatyzacji.
+> **Connect-AzureRmAccount** jest teraz aliasem **Connect-AzureRMAccount**. Podczas wyszukiwania biblioteki elementy, jeśli nie widzisz **Connect-AzureRMAccount**, można użyć **Connect-AzureRmAccount**, lub zaktualizować moduły na Twoim koncie automatyzacji.
 
 Element Runbook powinien na tym etapie wyglądać następująco: <br>![Konfiguracja uwierzytelniania elementu Runbook](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

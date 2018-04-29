@@ -1,12 +1,12 @@
 ---
-title: "Dodawanie elementu stosu Azure marketplace z lokalnego źródła | Dokumentacja firmy Microsoft"
-description: "Opisuje sposób dodawania obrazu systemu operacyjnego lokalnego w portalu Azure Marketplace stosu."
+title: Dodawanie elementu stosu Azure marketplace z lokalnego źródła | Dokumentacja firmy Microsoft
+description: Opisuje sposób dodawania obrazu systemu operacyjnego lokalnego w portalu Azure Marketplace stosu.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 03/16/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 296719ddd23fb9ee717455420906e9a634a71a8d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 676dcdea5912aed5504c386f01d6809eccf763d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-add-an-azure-stack-marketplace-item-from-a-local-source"></a>Samouczek: Dodawanie elementu stosu Azure marketplace z lokalnego źródła
 
@@ -84,7 +84,7 @@ Ta opcja została wdrożona stosu Azure w scenariuszu odłączonego ani w zastos
         -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
         -EnvironmentName AzureStackAdmin
 
-      Login-AzureRmAccount `
+      Add-AzureRmAccount `
         -EnvironmentName "AzureStackAdmin" `
         -TenantId $TenantID 
       ```
@@ -112,7 +112,7 @@ Ta opcja została wdrożona stosu Azure w scenariuszu odłączonego ani w zastos
       -ADFS `
       -EnvironmentName "AzureStackAdmin" 
 
-      Login-AzureRmAccount `
+      Add-AzureRmAccount `
         -EnvironmentName "AzureStackAdmin" `
         -TenantId $TenantID 
       ```

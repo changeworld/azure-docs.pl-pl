@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9fb928b7cb8e1a83734b64a8b9c19bc3cf3203ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Przy użyciu punktu końcowego uprzywilejowanych w stosie Azure
 
 *Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
 
-Jako operator stosu Azure należy użyć portalu administratora programu PowerShell lub interfejsów API usługi Azure Resource Manager dla najbardziej codziennych zadań zarządzania. Jednak w przypadku niektórych mniej typowych operacji, należy użyć *uprzywilejowanych punktu końcowego* (program ten). Program ten jest wstępnie skonfigurowane zdalnej konsoli programu PowerShell, która dostarcza wystarczającego możliwości, które ułatwiają wykonywanie wymaganych zadań. Punkt końcowy używa [JEA środowiska PowerShell (tylko tyle Administracja)](https://docs.microsoft.com/en-us/powershell/jea/overview) do udostępnienia tylko ograniczony zestaw poleceń cmdlet. Aby dostęp program ten i wywołać ograniczony zestaw poleceń cmdlet, należy użyć konta z niskimi uprawnieniami. Żadnych kont administratora są wymagane. Aby dodatkowo zwiększyć bezpieczeństwo skryptów jest niedozwolone.
+Jako operator stosu Azure należy użyć portalu administratora programu PowerShell lub interfejsów API usługi Azure Resource Manager dla najbardziej codziennych zadań zarządzania. Jednak w przypadku niektórych mniej typowych operacji, należy użyć *uprzywilejowanych punktu końcowego* (program ten). Program ten jest wstępnie skonfigurowane zdalnej konsoli programu PowerShell, która dostarcza wystarczającego możliwości, które ułatwiają wykonywanie wymaganych zadań. Punkt końcowy używa [JEA środowiska PowerShell (tylko tyle Administracja)](https://docs.microsoft.com/powershell/jea/overview) do udostępnienia tylko ograniczony zestaw poleceń cmdlet. Aby dostęp program ten i wywołać ograniczony zestaw poleceń cmdlet, należy użyć konta z niskimi uprawnieniami. Żadnych kont administratora są wymagane. Aby dodatkowo zwiększyć bezpieczeństwo skryptów jest niedozwolone.
 
 Program ten służy do wykonywania następujących zadań:
 
@@ -88,7 +88,7 @@ Przed rozpoczęciem tej procedury dla zintegrowany system, upewnij się, że mo�
     Wiele z tych poleceń cmdlet są przeznaczone tylko dla środowisk zintegrowany system (takich jak polecenia cmdlet związane z integracji centrum danych). W ASDK zostały zatwierdzone następujące polecenia cmdlet:
 
     - Wyczyść hosta
-    - Close-PrivilegedEndpoint
+    - Zamknij PrivilegedEndpoint
     - Zakończ PSSession
     - Get-AzureStackLog
     - Get-AzureStackStampInformation
@@ -108,7 +108,7 @@ Przed rozpoczęciem tej procedury dla zintegrowany system, upewnij się, że mo�
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>Porady dotyczące używania uprzywilejowanego punktu końcowego 
 
-Jak wspomniano powyżej, program ten jest [PowerShell JEA](https://docs.microsoft.com/en-us/powershell/jea/overview) punktu końcowego. Zapewniając warstwy silne zabezpieczenie punktu końcowego JEA zmniejsza niektórych podstawowych funkcji programu PowerShell, takie jak uzupełnianie skryptów lub na karcie. Jeśli spróbujesz dowolnego typu działania skryptu kończy się niepowodzeniem z powodu błędu **ScriptsNotAllowed**. Jest to oczekiwane zachowanie.
+Jak wspomniano powyżej, program ten jest [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) punktu końcowego. Zapewniając warstwy silne zabezpieczenie punktu końcowego JEA zmniejsza niektórych podstawowych funkcji programu PowerShell, takie jak uzupełnianie skryptów lub na karcie. Jeśli spróbujesz dowolnego typu działania skryptu kończy się niepowodzeniem z powodu błędu **ScriptsNotAllowed**. Jest to oczekiwane zachowanie.
 
 Tak na przykład, aby uzyskać listę parametrów dla danego polecenia cmdlet, możesz uruchom następujące polecenie:
 
@@ -116,7 +116,7 @@ Tak na przykład, aby uzyskać listę parametrów dla danego polecenia cmdlet, m
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Alternatywnie można użyć [Import-PSSession](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) polecenia cmdlet, aby zaimportować wszystkie polecenia cmdlet program ten do bieżącej sesji na komputerze lokalnym. W ten sposób wszystkie polecenia cmdlet i funkcje program ten są teraz dostępne na komputerze lokalnym, wraz z uzupełniania po naciśnięciu tabulatora i, inne ogólnie rzecz biorąc, wykonywanie skryptów. 
+Alternatywnie można użyć [Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) polecenia cmdlet, aby zaimportować wszystkie polecenia cmdlet program ten do bieżącej sesji na komputerze lokalnym. W ten sposób wszystkie polecenia cmdlet i funkcje program ten są teraz dostępne na komputerze lokalnym, wraz z uzupełniania po naciśnięciu tabulatora i, inne ogólnie rzecz biorąc, wykonywanie skryptów. 
 
 Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następujące czynności:
 

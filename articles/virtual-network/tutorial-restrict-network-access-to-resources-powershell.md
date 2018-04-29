@@ -17,32 +17,32 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 28c95e1333b4641e50284a869135a9608dd3242f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b3977e045751165947243c67291e81b998b5fcb5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Ograniczenie dostępu do sieci do PaaS zasobów z punktów końcowych usługi sieci wirtualnej przy użyciu programu PowerShell
 
-Punktów końcowych usługi sieci wirtualnej umożliwiają ograniczenie dostępu do sieci do niektórych zasobów usługi Azure z podsiecią sieci wirtualnej. Można również usunąć dostęp do zasobów Internetu. Punkty końcowe usługi zapewniają bezpośredniego połączenia z Twojej sieci wirtualnej do obsługiwanych usług platformy Azure, co umożliwia wykorzystanie wirtualnej sieci prywatnej przestrzeni adresowej do uzyskiwania dostępu do usług Azure. Ruch kierowany do zasobów platformy Azure za pomocą punktów końcowych usługi zawsze pozostaje w sieci Microsoft Azure w sieci szkieletowej. W tym artykule dowiesz się, jak:
+Punkty końcowe usługi sieci wirtualnej umożliwiają ograniczenie dostępu sieciowego do niektórych zasobów usługi platformy Azure do podsieci sieci wirtualnej. Możesz również uniemożliwić dostęp internetowy do zasobów. Punkty końcowe usługi zapewniają bezpośrednie połączenie z sieci wirtualnej z obsługiwanymi usługami platformy Azure, umożliwiając korzystanie z prywatnej przestrzeni adresowej sieci wirtualnej w celu uzyskiwania dostępu do usług platformy Azure. Ruch kierowany do zasobów platformy Azure za pośrednictwem punktów końcowych usługi zawsze pozostaje w sieci szkieletowej platformy Microsoft Azure. W tym artykule omówiono sposób wykonywania następujących zadań:
 
-* Utwórz sieć wirtualną z jedną podsiecią
-* Dodaj podsieć i włączyć punkt końcowy usługi
-* Tworzenie zasobów platformy Azure i zezwolić na dostęp do sieci z go z tylko podsieci
-* Wdróż maszynę wirtualną (VM) do każdej podsieci
-* Potwierdź dostęp do zasobu z podsieci
-* Upewnij się, że odmowa dostępu do zasobu z podsieci i z Internetu
+* Tworzenie sieci wirtualnej z jedną podsiecią
+* Dodawanie podsieci i włączanie punktu końcowego usługi
+* Tworzenie zasobów platformy Azure i zezwalanie na dostęp sieciowy do nich tylko z podsieci
+* Wdrażanie maszyny wirtualnej w każdej podsieci
+* Potwierdzanie dostępu do zasobu z podsieci
+* Potwierdzanie zablokowania dostępu do zasobu z podsieci i z Internetu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli użytkownik chce zainstalować i używać środowiska PowerShell lokalnie, w tym artykule wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli użytkownik chce zainstalować i używać środowiska PowerShell lokalnie, w tym artykule wymaga programu Azure PowerShell w wersji modułu 5.4.1 lub nowszym. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Przed utworzeniem sieci wirtualnej, należy utworzyć grupę zasobów dla sieci wirtualnej i innych zasobów utworzone w tym artykule. Utwórz nową grupę zasobów o [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup*: 
+Przed utworzeniem sieci wirtualnej, należy utworzyć grupę zasobów dla sieci wirtualnej i innych zasobów utworzone w tym artykule. Utwórz grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup*: 
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -58,7 +58,7 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Tworzenie konfiguracji podsieci z [AzureRmVirtualNetworkSubnetConfig nowy](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Poniższy przykład tworzy konfiguracji podsieci dla podsieci o nazwie *publicznego*:
+Utwórz konfigurację podsieci za pomocą polecenia [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Poniższy przykład tworzy konfiguracji podsieci dla podsieci o nazwie *publicznego*:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -73,7 +73,7 @@ Utwórz podsieć w sieci wirtualnej przez zapisywanie konfiguracji podsieci w si
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="enable-a-service-endpoint"></a>Włącz punkt końcowy usługi 
+## <a name="enable-a-service-endpoint"></a>Włączanie punktu końcowego usługi 
 
 Można włączyć punkty końcowe usługi tylko dla usług, które obsługują punkty końcowe usługi. Wyświetl usług korzystających z punktu końcowego usługi dostępne w lokalizacji platformy Azure z [Get-AzureRmVirtualNetworkAvailableEndpointService](/powershell/module/azurerm.network/get-azurermvirtualnetworkavailableendpointservice). Poniższy przykład zwraca listę usług włączony punkt końcowy usługi dostępne w *eastus* regionu. Na liście usług zwrócił będzie rosnąć wraz z upływem czasu zgodnie z usług Azure więcej stają się włączony punkt końcowy usługi.
 
@@ -93,7 +93,7 @@ $subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-for-a-subnet"></a>Ograniczenie dostępu do sieci dla podsieci
+## <a name="restrict-network-access-for-a-subnet"></a>Ograniczanie dostępu sieciowego dla podsieci
 
 Tworzenie reguł zabezpieczeń grupy z zabezpieczenia sieci [AzureRmNetworkSecurityRuleConfig nowy](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). Poniższa reguła umożliwia dostęp ruchu wychodzącego na publiczne adresy IP przypisane do usługi Azure Storage: 
 
@@ -140,7 +140,7 @@ $rule3 = New-AzureRmNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Utwórz grupę zabezpieczeń sieci z [AzureRmNetworkSecurityGroup nowy](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsgPrivate*.
+Utwórz sieciową grupę zabezpieczeń przy użyciu polecenia [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsgPrivate*.
 
 ```azurepowershell-interactive
 $nsg = New-AzureRmNetworkSecurityGroup `
@@ -163,9 +163,9 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-to-a-resource"></a>Ograniczenie dostępu do sieci do zasobu
+## <a name="restrict-network-access-to-a-resource"></a>Ograniczanie dostępu sieciowego do zasobu
 
-Kroki niezbędne do ograniczania dostępu do sieci do zasobów został utworzony za pomocą usług Azure włączone dla punktów końcowych usługi różni się w usługach. W dokumentacji dla poszczególnych usług, aby poznać konkretne kroki dla każdej usługi. W dalszej części tego artykułu zawiera kroki, aby ograniczyć dostęp do konta usługi Azure Storage, na przykład.
+Kroki niezbędne do ograniczenia dostępu sieciowego do zasobów utworzonych za pomocą usług platformy Azure obsługujących punkty końcowe usługi różnią się w zależności od usługi. Zobacz dokumentację poszczególnych usług, aby poznać konkretne kroki dla każdej usługi. W dalszej części tego artykułu zawiera kroki, aby ograniczyć dostęp do konta usługi Azure Storage, na przykład.
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -202,11 +202,11 @@ $storageContext = New-AzureStorageContext $storageAcctName $storageAcctKey
 
 Utwórz udział plików z [AzureStorageShare nowy](/powershell/module/azure.storage/new-azurestorageshare):
 
-$share = New-AzureStorageShare my-file-share -Context $storageContext
+$share = New-AzureStorageShare Moje pliku share - kontekstu $storageContext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>Odmowa dostępu do całej sieci na konto magazynu
 
-Domyślnie kont magazynu akceptować połączenia od klientów w dowolnej sieci. Aby ograniczyć dostęp do wybranej sieci, należy zmienić domyślną akcję do *Odmów* z [AzureRmStorageAccountNetworkRuleSet aktualizacji](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset). Po odmowa dostępu do sieci konto magazynu nie jest dostępny z żadną siecią.
+Domyślnie konta magazynu akceptują połączenia sieciowe od klientów w dowolnej sieci. Aby ograniczyć dostęp do wybranej sieci, należy zmienić domyślną akcję do *Odmów* z [AzureRmStorageAccountNetworkRuleSet aktualizacji](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset). Po odmowa dostępu do sieci konto magazynu nie jest dostępny z żadną siecią.
 
 ```azurepowershell-interactive
 Update-AzureRmStorageAccountNetworkRuleSet  `
@@ -215,7 +215,7 @@ Update-AzureRmStorageAccountNetworkRuleSet  `
   -DefaultAction Deny
 ```
 
-### <a name="enable-network-access-from-a-subnet"></a>Włączanie dostępu do sieci z podsiecią
+### <a name="enable-network-access-from-a-subnet"></a>Włączanie dostępu sieciowego z podsieci
 
 Pobrać sieci wirtualnej utworzonej z [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) a następnie pobrać obiektu prywatne podsieci do zmiennej o [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig):
 
@@ -238,11 +238,11 @@ Add-AzureRmStorageAccountNetworkRule `
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
-Aby przetestować dostępu do sieci na konto magazynu, należy wdrożyć maszynę Wirtualną do każdej podsieci.
+Aby przetestować dostęp sieciowy do konta magazynu, należy wdrożyć maszynę wirtualną w każdej podsieci.
 
 ### <a name="create-the-first-virtual-machine"></a>Tworzenie pierwszej maszyny wirtualnej
 
-Utwórz maszynę wirtualną w *publicznego* podsieć o [AzureRmVM nowy](/powershell/module/azurerm.compute/new-azurermvm). Po uruchomieniu polecenia znajdujący się zostanie wyświetlony monit o poświadczenia. Wartości, które należy wprowadzić są skonfigurowane jako nazwy użytkownika i hasła dla maszyny Wirtualnej. `-AsJob` Opcja tworzy maszynę Wirtualną w tle, dzięki czemu można kontynuować do następnego kroku.
+Utwórz maszynę wirtualną w *publicznego* podsieć o [AzureRmVM nowy](/powershell/module/azurerm.compute/new-azurermvm). Podczas wykonywania poniższego polecenia jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej. Opcja `-AsJob` tworzy maszynę wirtualną w tle, dzięki czemu można przejść do następnego kroku.
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -277,9 +277,9 @@ New-AzureRmVm `
 
 Trwa kilka minut, aż Azure w celu utworzenia maszyny Wirtualnej. Nie należy kontynuować do następnego kroku, dopóki Azure zakończy tworzenie maszyny Wirtualnej i zwraca dane wyjściowe do programu PowerShell. 
 
-## <a name="confirm-access-to-storage-account"></a>Potwierdź dostęp do konta magazynu
+## <a name="confirm-access-to-storage-account"></a>Potwierdzanie dostępu do konta magazynu
 
-Użyj [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) do zwrócenia publiczny adres IP maszyny wirtualnej. Poniższy przykład zwraca publicznego adresu IP *myVmPrivate* maszyny Wirtualnej:
+Użyj polecenia [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress), aby uzyskać publiczny adres IP maszyny wirtualnej. Poniższy przykład zwraca publicznego adresu IP *myVmPrivate* maszyny Wirtualnej:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress `
@@ -288,22 +288,22 @@ Get-AzureRmPublicIpAddress `
   | Select IpAddress
 ```
 
-Zastąp `<publicIpAddress>` w poniższym poleceniu z publicznego adresu IP adres zwrócony z poprzedniego polecenia, a następnie wprowadź następujące polecenie: 
+W poniższym poleceniu zastąp ciąg `<publicIpAddress>` publicznym adresem IP zwróconym w poprzednim poleceniu, a następnie wprowadź następujące polecenie: 
 
 ```powershell
 mstsc /v:<publicIpAddress>
 ```
 
-Plik protokołu Remote Desktop Protocol (RDP) jest utworzony i pobrana na komputer. Otwórz plik rdp pobranego. Po wyświetleniu monitu wybierz **Connect**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny Wirtualnej. Musisz wybrać **więcej opcji**, następnie **korzystała z innego konta**, aby określić poświadczenia zostały wprowadzone podczas tworzenia maszyny Wirtualnej. Kliknij przycisk **OK**. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz **tak** lub **Kontynuuj**, aby nawiązać połączenie.
+Zostanie utworzony i pobrany na komputer plik Remote Desktop Protocol (rdp). Otwórz pobrany plik rdp. Po wyświetleniu monitu wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może okazać się konieczne wybranie pozycji **Więcej opcji**, a następnie pozycji **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej. Kliknij przycisk **OK**. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 
-Na *myVmPrivate* maszyny Wirtualnej, mapowanie dysku przy użyciu programu PowerShell Z udziału plików na platformę Azure. Przed uruchomieniem polecenia, które należy wykonać, Zastąp `<storage-account-key>` i `<storage-account-name>` wartościami z dostarczonych lub pobrać w [Utwórz konto magazynu](#create-a-storage-account).
+Na maszynie wirtualnej *myVmPrivate* mapuj udział plików platformy Azure na dysk Z przy użyciu programu PowerShell. Przed uruchomieniem polecenia, które należy wykonać, Zastąp `<storage-account-key>` i `<storage-account-name>` wartościami z dostarczonych lub pobrać w [Utwórz konto magazynu](#create-a-storage-account).
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
-PowerShell zwraca dane wyjściowe podobne do następujących przykładowe dane wyjściowe:
+Program PowerShell zwraca dane wyjściowe podobne do następujących przykładowych danych wyjściowych:
 
 ```powershell
 Name           Used (GB)     Free (GB) Provider      Root
@@ -311,7 +311,7 @@ Name           Used (GB)     Free (GB) Provider      Root
 Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
 ```
 
-Pomyślnie zamapowany na dysk Z udziału plików na platformę Azure.
+Udział plików platformy Azure został pomyślnie mapowany na dysk Z.
 
 Upewnij się, że maszyna wirtualna nie ma wychodzącego łączności z innymi publicznych adresów IP:
 
@@ -319,11 +319,11 @@ Upewnij się, że maszyna wirtualna nie ma wychodzącego łączności z innymi p
 ping bing.com
 ```
 
-Nie odpowiedzi jest wyświetlany, ponieważ grupa zabezpieczeń sieci skojarzonych z *prywatnej* podsieci nie zezwala na dostęp ruchu wychodzącego do publicznych adresów IP innego niż adres przypisany do usługi Magazyn Azure.
+Nie otrzymasz żadnych odpowiedzi, ponieważ sieciowa grupa zabezpieczeń skojarzona z podsiecią *Private* nie zezwala na dostęp ruchu wychodzącego do publicznych adresów IP innych niż adresy przypisane do usługi Azure Storage.
 
-Zamykanie sesji usług pulpitu zdalnego do *myVmPrivate* maszyny Wirtualnej.
+Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPrivate*.
 
-## <a name="confirm-access-is-denied-to-storage-account"></a>Upewnij się, że odmowa dostępu do konta magazynu
+## <a name="confirm-access-is-denied-to-storage-account"></a>Potwierdzanie odmowy dostępu do konta magazynu
 
 Pobierz publiczny adres IP *myVmPublic* maszyny Wirtualnej:
 
@@ -334,7 +334,7 @@ Get-AzureRmPublicIpAddress `
   | Select IpAddress
 ```
 
-Zastąp `<publicIpAddress>` w poniższym poleceniu z publicznego adresu IP adres zwrócony z poprzedniego polecenia, a następnie wprowadź następujące polecenie: 
+W poniższym poleceniu zastąp ciąg `<publicIpAddress>` publicznym adresem IP zwróconym w poprzednim poleceniu, a następnie wprowadź następujące polecenie: 
 
 ```powershell
 mstsc /v:<publicIpAddress>
@@ -348,9 +348,9 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-Odmowa dostępu do udziału i pojawi się `New-PSDrive : Access is denied` błędu. Odmowa dostępu, ponieważ *myVmPublic* maszyna wirtualna jest wdrożona w *publicznego* podsieci. *Publicznego* podsieci nie ma punktu końcowego usługi włączone dla usługi Azure Storage i konta magazynu tylko zezwala na dostęp do sieci z *prywatnej* podsieci, nie *publicznego*podsieci.
+Odmowa dostępu do udziału i pojawi się `New-PSDrive : Access is denied` błędu. Odmowa dostępu nastąpi, ponieważ maszyna wirtualna *myVmPublic* jest wdrożona w podsieci *Public*. Podsieć *Public* nie ma punktu końcowego usługi obsługującego usługę Azure Storage, a konto magazynu zezwala tylko na dostęp sieciowy z podsieci *Private*, a nie z podsieci *Public*.
 
-Zamykanie sesji usług pulpitu zdalnego do *myVmPublic* maszyny Wirtualnej.
+Zamknij sesję pulpitu zdalnego dla maszyny wirtualnej *myVmPublic*.
 
 Z komputera Próba wyświetlenia udziałów plików w ramach konta magazynu przy użyciu następującego polecenia:
 
@@ -364,7 +364,7 @@ Odmowa dostępu i zostanie wyświetlony *polecenia Get-AzureStorageFile: serwer 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie są już potrzebne, można użyć [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) można usunąć grupy zasobów i wszystkie zasoby zawiera:
+Gdy grupa zasobów i wszystkie zawarte w niej zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup):
 
 ```azurepowershell-interactive 
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -372,6 +372,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule należy włączyć punkt końcowy usługi dla podsieci sieci wirtualnej. Wiesz, że punkty końcowe usługi można włączyć dla zasobów z wielu usług Azure. Utworzono konto magazynu Azure i ograniczania dostępu do sieci do konta magazynu, aby tylko zasoby w podsieci sieci wirtualnej. Aby dowiedzieć się więcej na temat punktów końcowych usług, zobacz [Omówienie punktów końcowych usługi](virtual-network-service-endpoints-overview.md) i [Zarządzanie podsieci](virtual-network-manage-subnet.md).
+W tym artykule należy włączyć punkt końcowy usługi dla podsieci sieci wirtualnej. Wiesz teraz, że punkty końcowe usługi można włączyć dla zasobów wdrożonych w wielu usługach platformy Azure. Zostało utworzone konto usługi Azure Storage i dostęp sieciowy do konta magazynu został ograniczony tylko do zasobów w podsieci sieci wirtualnej. Aby dowiedzieć się więcej na temat punktów końcowych usług, zobacz [Service endpoints overview (Omówienie punktów końcowych usługi)](virtual-network-service-endpoints-overview.md) i [Manage subnets (Zarządzanie podsieciami)](virtual-network-manage-subnet.md).
 
-Jeśli masz wiele sieci wirtualnych w ramach Twojego konta, możesz połączyć ze sobą dwie sieci wirtualne, więc zasoby w każdej sieci wirtualnej mogą komunikować się ze sobą. Aby dowiedzieć się więcej, zobacz temat [połączyć sieci wirtualnych](tutorial-connect-virtual-networks-powershell.md).
+Jeśli masz wiele sieci wirtualnych w ramach Twojego konta, możesz chcieć połączyć ze sobą dwie sieci wirtualne, aby zasoby w każdej sieci wirtualnej mogły komunikować się ze sobą. Aby dowiedzieć się więcej, zobacz temat [połączyć sieci wirtualnych](tutorial-connect-virtual-networks-powershell.md).

@@ -1,11 +1,11 @@
 ---
-title: "Publikowanie wersji interfejsu API przy użyciu usługi Azure API Management | Dokumentacja firmy Microsoft"
-description: "Wykonaj kroki tego samouczka, aby dowiedzieć się, jak opublikować wiele wersji w usłudze API Management."
+title: Publikowanie wersji interfejsu API przy użyciu usługi Azure API Management | Microsoft Docs
+description: Wykonaj kroki tego samouczka, aby dowiedzieć się, jak publikować wiele wersji w usłudze API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,98 +14,96 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: d63bdd3110f5c5db3e7bfec424644fdbc8d8d90c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: 7d61fa25f29f1380fe58069dbc25ed9ce1fff53c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikowanie wielu wersji interfejsu API 
 
-Istnieją w czasie gdy jest niemożliwe do ma wszystkie obiekty wywołujące do używania interfejsu API dokładnie takiej samej wersji. Czasami chcesz opublikować nowe lub inne funkcje interfejsu API w przypadku niektórych użytkowników, podczas gdy inne korzystać z interfejsu API, który jest obecnie obsługiwane dla nich. Podczas wywoływania konieczne jest uaktualnienie do nowszej wersji, chcą mieć możliwość zrobić to przy użyciu łatwy do zrozumienia podejście.  Firma Microsoft może to zrobić za pomocą **wersji** w usłudze Azure API Management. Aby uzyskać więcej informacji, zobacz [wersje & poprawki](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/).
+Istnieją sytuacje, w których używanie tej samej wersji przez wszystkich wywołujących interfejs API jest niepraktyczne. Kiedy wywołujący chcą przeprowadzić uaktualnienie do nowszej wersji, chcą mieć możliwość wykonania tej operacji w łatwy do zrozumienia sposób. Jest to możliwe do zrobienia przy użyciu **wersji** w usłudze Azure API Management. Aby uzyskać więcej informacji, zobacz [Wersje i poprawki](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Dodaj nową wersję istniejącego interfejsu API
-> * Wybieranie wersji schematu
-> * Dodaj wersję produktu
-> * Przeglądaj, aby wyświetlić wersję portalu dla deweloperów
+> * Dodawanie nowej wersji do istniejącego interfejsu API
+> * Wybieranie schematu wersji
+> * Dodawanie wersji do produktu
+> * Przeglądanie portalu dla deweloperów w celu wyświetlenia wersji
 
-![Wersja wyświetlane w portalu dla deweloperów](media/api-management-getstarted-publish-versions/azure_portal.PNG)
+![Wersja przedstawiona w portalu dla deweloperów](media/api-management-getstarted-publish-versions/azure_portal.PNG)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Ukończenie następujących Szybki Start: [utworzenia wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
-+ Ponadto Ukończ samouczek następujących: [Import i opublikować swój pierwszy interfejs API](import-and-publish.md).
+* Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
+* Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+## <a name="add-a-new-version"></a>Dodawanie nowej wersji
 
-## <a name="add-a-new-version"></a>Dodaj nową wersję
+![Menu kontekstowe interfejsu API — dodawanie wersji](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
-![Menu kontekstowe interfejsu API — Dodaj wersji](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
-
-1. Wybierz **API konferencji** z listy interfejsu API.
-2. Wybierz menu kontekstowe (**...** ) obok niej.
-3. Wybierz **+ Dodaj wersję**.
+1. Wybierz pozycję **Interfejs API konferencji** z listy interfejsów API.
+2. Wybierz menu kontekstowe (**...**) obok niego.
+3. Wybierz opcję **+ Dodaj wersję**.
 
     > [!TIP]
-    > Po utworzeniu nowego interfejsu API — można również włączyć wersji wybierz **wersji tego interfejsu API?** na **dodać interfejsu API** ekranu.
+    > Wersje można również włączyć podczas tworzenia nowego interfejsu API — wybierz opcję **Czy chcesz utworzyć wersję tego interfejsu API?** na ekranie **Dodawanie interfejsu API**.
 
-## <a name="choose-a-versioning-scheme"></a>Wybierz system kontroli wersji
+## <a name="choose-a-versioning-scheme"></a>Wybieranie schematu przechowywania wersji
 
-Zarządzanie interfejsami API Azure można wybrać sposób Zezwól wywołań określić, która wersja interfejsu API one. Można to zrobić, wybierając **schemat przechowywania wersji**. Ten program może być albo **ciągu kwerendy, nagłówek lub ścieżka**. W tym przykładzie używamy ścieżki.
+Usługa Azure API Management umożliwia wybranie sposobu określania przez wywołujących pożądanej wersji interfejsu API. Wersję interfejsu API do użycia określasz poprzez wybranie **schematu przechowywania wersji**. Ten schemat może być **ścieżką, nagłówkiem lub ciągiem zapytania**. W poniższym przykładzie użyto ścieżki do wybrania schematu przechowywania wersji.
 
-![Dodaj wersji ekranu](media/api-management-getstarted-publish-versions/AddVersion.PNG)
+![Ekran dodawania wersji](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
-1. Pozostaw **ścieżki** wybrany jako sieci **schemat przechowywania wersji**.
-2. Dodaj **v1** jako sieci **identyfikator wersji**.
+1. Zostaw **ścieżkę** wybraną jako **schemat przechowywania wersji**.
+2. Dodaj cyfrę **v1** jako **identyfikator wersji**.
 
     > [!TIP]
-    > W przypadku wybrania **nagłówka** lub **ciągu zapytania** schemat przechowywania wersji, należy podać wartość dodatkowe — nazwa nagłówka lub parametr ciągu zapytania.
+    > Jeśli wybierzesz **nagłówek** lub **ciąg zapytania** jako schemat przechowywania wersji, musisz podać dodatkową wartość — nazwę nagłówka lub parametr ciągu zapytania.
 
 3. Podaj opis, jeśli chcesz.
-4. Wybierz **Utwórz** do skonfigurowania nowej wersji.
-5. Underneath **Big API konferencji** na liście interfejsu API, pojawi się dwóch odrębnych interfejsów API - **oryginalnego**, i **v1**.
+4. Wybierz opcję **Utwórz**, aby skonfigurować nową wersję.
+5. W obszarze **Interfejs API dużej konferencji** na liście interfejsów API będą teraz widoczne dwa różne interfejsy API — **Oryginalny** i **v1**.
 
-    ![Wersje kategorii interfejsu API w portalu Azure](media/api-management-getstarted-publish-versions/VersionList.PNG)
+    ![Wersje wymienione na liście w sekcji interfejsów API w witrynie Azure Portal](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
-    > Jeśli dodasz wersji bez numerów wersji interfejsu API, zawsze utworzymy **oryginalnego** - Ci odpowiadać na domyślny adres URL. Daje to pewność, że wszystkie istniejące elementy wywołujące nie są dzielone przez proces dodawania wersji. Jeśli tworzysz nowy interfejs API z wersjami włączone na początku nie zostanie utworzony oryginalny.
+    > Jeśli dodasz wersję do niewersjonowanego interfejsu API, automatycznie zostanie utworzony **Oryginalny** interfejs API — odpowiadający pod domyślnym adresem URL. Dzięki temu zapewnia się, że nie wystąpią przerwy dla istniejących wywołujących spowodowane dodawaniem wersji. Jeśli tworzysz nowy interfejs API z wersjami włączonymi od początku, oryginalny interfejs API nie zostanie utworzony.
 
-6. Teraz możesz edytować i skonfigurować **v1** jako interfejs API, który różni się **oryginalnego**. Zmiany w jednej wersji nie wpływają na inny.
+6. Teraz możesz edytować i konfigurować interfejs API **v1** oddzielnie od interfejsu **Oryginalny**. Zmiany wprowadzane w jednej wersji nie wpływają na drugą.
 
-## <a name="add-the-version-to-a-product"></a>Dodaj wersję produktu
+## <a name="add-the-version-to-a-product"></a>Dodawanie wersji do produktu
 
-Dla wywołań zobaczyć nowej wersji, musi zostać dodany do **produktu** (produkty nie są dziedziczone z nadrzędnej wersji).
+Aby wywołujący mogli zobaczyć nową wersję, musi zostać ona dodana do **produktu**.
 
-1. Wybierz **produktów** na stronie usługi zarządzania.
-2. Wybierz **nieograniczone**.
-3. Wybierz **interfejsów API**.
+1. Wybierz pozycję **Produkty** na stronie klasycznego modelu wdrażania.
+2. Wybierz pozycję **Bez ograniczeń**.
+3. Wybierz pozycję **Interfejsy API**.
 4. Wybierz pozycję **Dodaj**.
-5. Wybierz **konferencji interfejsu API w wersji v1**.
-6. Wróć do strony usługi zarządzania i wybierz **interfejsów API**.
+5. Wybierz pozycję **Interfejs API konferencji, wersja v1**.
+6. Przejdź do strony zarządzania usługami i wybierz pozycję **Interfejsy API**.
 
-## <a name="browse-the-developer-portal-to-see-the-version"></a>Przeglądaj, aby wyświetlić wersję portalu dla deweloperów
+## <a name="browse-the-developer-portal-to-see-the-version"></a>Przeglądanie portalu dla deweloperów w celu wyświetlenia wersji
 
-1. Wybierz **portalu dla deweloperów** z górnego menu.
-2. Wybierz **interfejsów API**, zwróć uwagę, że **API konferencji** pokazuje **oryginalnego** i **v1** wersji.
-3. Wybierz **v1**.
-4. Powiadomienie **żądanie adresu URL** pierwszej operacji na liście. Pokazuje, że ścieżka URL interfejsu API zawiera **v1**.
+1. Wybierz opcję **Portal dla deweloperów** z górnego menu.
+2. Wybierz opcję **Interfejsy API**. Zauważ, że **Interfejs API konferencji** ma wersje **Oryginalny** i **v1**.
+3. Wybierz opcję **v1**.
+4. Zwróć uwagę na **Adres URL żądania** pierwszej operacji na liście. Pozycja pokazuje, że ścieżka adresu URL interfejsu API uwzględnia ciąg **v1**.
 
-    ![Menu kontekstowe interfejsu API — Dodaj wersji](media/api-management-getstarted-publish-versions/developer_portal.png)
+    ![Menu kontekstowe interfejsu API — dodawanie wersji](media/api-management-getstarted-publish-versions/developer_portal.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Dodaj nową wersję istniejącego interfejsu API
-> * Wybieranie wersji schematu 
-> * Dodaj wersję produktu
-> * Przeglądaj, aby wyświetlić wersję portalu dla deweloperów
+> * Dodawanie nowej wersji do istniejącego interfejsu API
+> * Wybieranie schematu wersji 
+> * Dodawanie wersji do produktu
+> * Przeglądanie portalu dla deweloperów w celu wyświetlenia wersji
 
-Przejdź do następnego samouczek:
+Przejdź do następnego samouczka:
 
 > [!div class="nextstepaction"]
 > [Uaktualnienie i skalowanie](upgrade-and-scale.md)

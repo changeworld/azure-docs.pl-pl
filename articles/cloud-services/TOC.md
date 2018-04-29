@@ -92,7 +92,7 @@
 #### [Często zadawane pytania dotyczące wdrażania](cloud-services-deployment-faq.md)
 
 # Dokumentacja
-## [Przykłady kodu](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
+## [Przykłady kodu](https://azure.microsoft.com/resources/samples/?service=cloud-services)
 ## [Schemat XML .csdef](schema-csdef-file.md)
 ### [LoadBalancerProbe — schemat](schema-csdef-loadbalancerprobe.md)
 ### [WebRole — schemat](schema-csdef-webrole.md)

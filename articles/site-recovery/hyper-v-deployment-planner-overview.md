@@ -1,6 +1,6 @@
 ---
-title: "Planista wdrażania usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure | Microsoft Docs"
-description: "Ten podręcznik użytkownika dotyczy planisty wdrażania usługi Azure Site Recovery na potrzeby scenariuszy funkcji Hyper-V na platformie Azure."
+title: Planista wdrażania usługi Azure Site Recovery dla funkcji Hyper-V na platformie Azure | Microsoft Docs
+description: Ten podręcznik użytkownika dotyczy planisty wdrażania usługi Azure Site Recovery na potrzeby scenariuszy funkcji Hyper-V na platformie Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -9,11 +9,11 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: nisoneji
-ms.openlocfilehash: dc504ee9def6b500eee640521b57dc48dac9cca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 17ff3ece76f854cd539172019f8d154742873bb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Planowanie wdrożenia odzyskiwania lokacji dla funkcji Hyper-V w systemie Azure
 
@@ -116,9 +116,9 @@ Zalecana konfiguracja maszyny wirtualnej: 8 wirtualnych procesorów CPU, 16 GB p
 3.  Wyodrębnij folder ZIP.
 Folder zawiera wiele plików i podfolderów. Plik wykonywalny nosi nazwę ASRDeploymentPlanner.exe i znajduje się w folderze nadrzędnym.
 
-Przykład: skopiuj plik zip na dysk E:\ i wyodrębnij go. E:\ASR Deployment Planner_v2.1.zip
+Przykład: skopiuj plik zip na dysk E:\ i wyodrębnij go. E:\ASR Planner_v2.2.zip wdrożenia
 
-E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
+E:\ASR Planner_v2.2\ASRDeploymentPlanner.exe wdrożenia
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualizowanie planisty wdrażania do najnowszej wersji
 Jeśli masz wcześniejszą wersję planisty wdrażania, wykonaj jedną z następujących czynności:
@@ -133,7 +133,7 @@ Jeśli masz wcześniejszą wersję planisty wdrażania, wykonaj jedną z następ
   >Każdy nowy planista wdrożenia jest aktualizacją zbiorczą pliku ZIP. Nie musisz kopiować najnowszych plików do poprzedniego folderu. Można utworzyć nowy folder i użyć go.
 
 ## <a name="version-history"></a>Historia wersji
-Najnowszą wersją narzędzia Planista wdrażania usługi ASR jest wersja 2.1.
+Najnowsza wersja narzędzia do automatycznego wdrożenia Planistę jest 2.2.
 Informacje na temat poprawek, które zostały dodane w poszczególnych aktualizacjach, możesz znaleźć na stronie [Historia wersji narzędzia Planista wdrażania usługi ASR](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx).
 
 

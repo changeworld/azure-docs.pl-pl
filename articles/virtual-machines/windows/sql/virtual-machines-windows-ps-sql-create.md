@@ -1,11 +1,11 @@
 ---
-title: "Inicjowanie obsługi administracyjnej przewodnik dla maszyn wirtualnych serwera SQL z programem Azure PowerShell | Dokumentacja firmy Microsoft"
-description: "Zapewnia kroków i poleceń programu PowerShell do tworzenia maszyny Wirtualnej platformy Azure z obrazów Galeria maszyny wirtualnej programu SQL Server."
+title: Inicjowanie obsługi administracyjnej przewodnik dla maszyn wirtualnych serwera SQL z programem Azure PowerShell | Dokumentacja firmy Microsoft
+description: Zapewnia kroków i poleceń programu PowerShell do tworzenia maszyny Wirtualnej platformy Azure z obrazów Galeria maszyny wirtualnej programu SQL Server.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Udostępnianie maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell
 
@@ -31,10 +31,10 @@ W tym artykule wymaga programu Azure PowerShell w wersji modułu 3,6 lub nowszej
 
 ## <a name="configure-your-subscription"></a>Skonfiguruj subskrypcję
 
-1. Otwórz program PowerShell i nawiąż połączenie z kontem platformy Azure, uruchamiając polecenie **Add-AzureRmAccount**.
+1. Otwórz program PowerShell i ustanowić dostępu do konta platformy Azure, uruchamiając **Connect-AzureRmAccount** polecenia.
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. Powinien zostać wyświetlony ekran logowania z monitem o podanie poświadczeń. Użyj tego samego adresu e-mail i hasła, którego używasz do logowania w witrynie Azure Portal.
@@ -142,7 +142,7 @@ $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupNam
 > [!TIP]
 > Tworzenie konta magazynu może potrwać kilka minut.
 
-## <a name="create-network-resources"></a>Utwórz zasoby sieciowe
+## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 Maszyna wirtualna wymaga liczba zasobów sieciowych do obsługi łączności sieciowej.
 
 * Każda maszyna wirtualna wymaga sieci wirtualnej.
@@ -327,7 +327,7 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 Możesz również trwale usunąć wszystkie zasoby skojarzone z maszyną wirtualną, korzystając z polecenia **Remove-AzureRmResourceGroup**. Spowoduje to również trwałe usunięcie maszyny wirtualnej, dlatego tego polecenia należy używać z rozwagą.
 
 ## <a name="example-script"></a>Przykładowy skrypt
-Poniższy skrypt zawiera pełną skrypt programu PowerShell na potrzeby tego samouczka. Przyjęto założenie, że masz już ustawienia subskrypcji platformy Azure do użycia z **Add-AzureRmAccount** i **Select-AzureRmSubscription** poleceń.
+Poniższy skrypt zawiera pełną skrypt programu PowerShell na potrzeby tego samouczka. Przyjęto założenie, że masz już ustawienia subskrypcji platformy Azure do użycia z **Connect-AzureRmAccount** i **Select-AzureRmSubscription** poleceń.
 
 ```PowerShell
 # Variables

@@ -1,11 +1,10 @@
 ---
-title: Obliczeniowych aplikacji Java na maszynie Wirtualnej | Dokumentacja firmy Microsoft
-description: "Dowiedz się, jak utworzyć maszynę wirtualną platformy Azure, która uruchomi aplikację Java obliczeniowych, które mogą być monitorowane przez inną aplikację Java."
+title: Obliczeniowych aplikacji Java na maszynie Wirtualnej
+description: Dowiedz się, jak utworzyć maszynę wirtualną platformy Azure, która uruchomi aplikację Java obliczeniowych, które mogą być monitorowane przez inną aplikację Java.
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
-manager: erikre
-editor: 
+manager: mbaldwin
 tags: azure-service-management,azure-resource-manager
 ms.assetid: ae6f2737-94c7-4569-9913-d871450c2827
 ms.service: virtual-machines-windows
@@ -13,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
-ms.openlocfilehash: ccccdf58fbb84605bc5dff29d870b373134f1f97
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e8da296c30f1d2be3c637e456e90d2f93da67548
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Jak uruchomić zadanie wymagające wielu obliczeń w środowisku Java na maszynie wirtualnej
 > [!IMPORTANT] 

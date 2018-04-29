@@ -1,25 +1,20 @@
 ---
-title: "Zarządzanie za pomocą skryptów środowiska Powershell usługi Azure Search | Dokumentacja firmy Microsoft"
-description: "Zarządzanie za pomocą skryptów środowiska PowerShell usługi Azure Search. Tworzenie lub aktualizowanie usługi Azure Search i zarządzania kluczami administratora usługi Azure Search"
-services: search
-documentationcenter: 
-author: seansaleh
-manager: mblythe
-editor: 
+title: Zarządzanie za pomocą skryptów środowiska Powershell usługi Azure Search | Dokumentacja firmy Microsoft
+description: Zarządzanie za pomocą skryptów środowiska PowerShell usługi Azure Search. Tworzenie lub aktualizowanie usługi Azure Search i zarządzania kluczami administratora usługi Azure Search
+author: HeidiSteen
+manager: cgronlun
 tags: azure-resource-manager
-ms.assetid: 9b3dc1f2-3619-4235-ba1f-d2d6f5c45dd5
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: powershell
+ms.devlang: powershell
+ms.topic: conceptual
 ms.date: 08/15/2016
-ms.author: seasa
-ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: heidist
+ms.openlocfilehash: 8f83f2652f7bd34f53dde1674c022f8792ae7658
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Zarządzanie usługą Azure Search przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -29,7 +24,7 @@ ms.lasthandoff: 12/21/2017
 > 
 
 W tym temacie opisano poleceń programu PowerShell do wykonywania wielu zadań zarządzania dla usługi Azure Search. Firma Microsoft przeprowadzi tworzenia usługi wyszukiwania, jej skalowania i zarządzania jego kluczy interfejsu API.
-Te polecenia równoległe opcji zarządzania dostępnych w [interfejsu API REST usługi Azure Search zarządzania](http://msdn.microsoft.com/library/dn832684.aspx).
+Te polecenia równoległe opcji zarządzania dostępnych w [interfejsu API REST usługi Azure Search zarządzania](https://docs.microsoft.com/rest/api/searchmanagement).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Musi mieć programu Azure PowerShell 1.0 lub nowszego. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
@@ -37,7 +32,7 @@ Te polecenia równoległe opcji zarządzania dostępnych w [interfejsu API REST 
 
 Po pierwsze, należy najpierw zaloguj się do platformy Azure za pomocą tego polecenia:
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Określ adres e-mail konta platformy Azure i jego hasło w oknie dialogowym logowania do programu Microsoft Azure.
 
@@ -135,6 +130,6 @@ Teraz, gdy usługa jest tworzona, należy wykonać kolejne kroki: tworzenie [ind
 * [Tworzenie indeksu usługi Azure Search w portalu Azure](search-create-index-portal.md)
 * [Zapytanie indeksu usługi Azure Search przy użyciu Eksploratora wyszukiwania w portalu Azure](search-explorer.md)
 * [Skonfiguruj indeksator do ładowania danych z innych usług](search-indexer-overview.md)
-* [Jak używać usługi Azure Search w .NET](search-howto-dotnet-sdk.md)
+* [Jak używać usługi Azure Search na platformie .NET](search-howto-dotnet-sdk.md)
 * [Analiza ruchu w sieci usługi Azure Search](search-traffic-analytics.md)
 

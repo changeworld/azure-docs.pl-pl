@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d9eaab359d76afce61cfcc72e3fa125b08856e32
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7e33d4ed7100287ef6b22aa4c90fd52671363902
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 Kroki dla tego zadania użyć sieci wirtualnej na podstawie wartości na poniższej liście odwołania konfiguracji. Nazwy i dodatkowe ustawienia są także opisane w tej listy. Nie używamy tej listy bezpośrednio w krokach, mimo że dodamy zmienne na podstawie wartości na tej liście. Możesz skopiować listę i użyj go jako odwołanie, zastąpionymi wartościami z własnego.
 
@@ -36,7 +36,7 @@ Kroki dla tego zadania użyć sieci wirtualnej na podstawie wartości na poniżs
 1. Połącz z subskrypcją platformy Azure.
 
   ```powershell 
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   Get-AzureRmSubscription 
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```

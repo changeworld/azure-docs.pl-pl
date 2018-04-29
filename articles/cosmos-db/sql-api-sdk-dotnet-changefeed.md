@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/19/2018
 ms.author: maquaran
-ms.openlocfilehash: fe6dd9545be17453be38ce9afd5836aa07882ce6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 72eb329c03893f801e112ad33bca0c57c5ee46a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Procesor kanału informacyjnego zmiany .NET SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -41,6 +41,11 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="release-notes"></a>Informacje o wersji
 
+### <a name="stable-builds"></a>Stabilna kompilacji
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* Poprawki oszacowania pracy oczekujących.
+
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Ulepszenia.
 * Obsługa ręczne tworzenie punktów kontrolnych.
@@ -63,6 +68,23 @@ ms.lasthandoff: 04/16/2018
 * GA SDK
 * Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.14.1 i poniżej.
 
+### <a name="pre-release-builds"></a>Kompilacje wydania wstępnego
+
+### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-Prerelease
+* Nowe v2 interfejsu API:
+  * Wzorzec konstruktora do konstrukcji elastyczne procesora: klasa ChangeFeedProcessorBuilder.
+    * Może być dowolną kombinacją parametrów.
+    * Możliwe jest wystąpienie DocumentClient dla kolekcji monitorowania i/lub dzierżawy (niedostępne w wersji 1).
+  * IChangeFeedObserver.ProcessChangesAsync ma teraz CancellationToken.
+  * IRemainingWorkEstimator — pozostałe narzędzia do szacowania pracy można osobno z procesora.
+  * Nowe punkty rozszerzeń:
+    * IParitionLoadBalancingStrategy — dla niestandardowych równoważenia obciążenia partycji między wystąpieniami procesora.
+    * ILease, ILeaseManager - zarządzania niestandardowe dzierżawy.
+    * IPartitionProcessor - niestandardowych przetwarzania zmian na partycji.
+* Rejestrowanie - używa [LibLog](https://github.com/damianh/LibLog) biblioteki.
+* 100% zgodności z wcześniejszymi wersjami API w wersji 1.
+* Zgodny z [zestawu .NET SDK SQL](sql-api-sdk-dotnet.md) wersji 1.21.1 lub nowszym.
+
 ## <a name="release--retirement-dates"></a>Wersja & wycofania dat
 Firma Microsoft udostępni powiadomienia co najmniej **12 miesięcy** klienta z wyprzedzeniem wycofanie SDK w celu złagodzenia przejścia do nowszej/nieobsługiwaną wersję.
 
@@ -74,6 +96,7 @@ Każde żądanie do rozwiązania Cosmos bazy danych przy użyciu wycofane zestaw
 
 | Wersja | Data wydania | Dacie wycofania |
 | --- | --- | --- |
+| [1.3.2](#1.3.2) |18 kwietnia 2018 |--- |
 | [1.3.1](#1.3.1) |13 marca 2018 r. |--- |
 | [1.2.0](#1.2.0) |31 października 2017 r. |--- |
 | [1.1.1](#1.1.1) |29 sierpnia 2017 r. |--- |

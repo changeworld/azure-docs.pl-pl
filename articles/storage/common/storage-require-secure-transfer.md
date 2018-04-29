@@ -1,12 +1,12 @@
 ---
-title: "Wymaga zapewnienia bezpiecznego transferu w usłudze Azure Storage | Dokumentacja firmy Microsoft"
-description: "Więcej informacji na temat funkcji \"Bezpieczny transfer wymagane\" dla usługi Azure Storage i jak je włączyć."
+title: Wymaga zapewnienia bezpiecznego transferu w usłudze Azure Storage | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat funkcji "Bezpieczny transfer wymagane" dla usługi Azure Storage i jak je włączyć.
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: Jason.Hogg
 editor: fhryo-msft
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: 797ac45a41cdf655e7465a01875a0394081c08a7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 0ec36864377d724795197851341cbb837f47c4c6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Wymaga zapewnienia bezpiecznego transferu w usłudze Azure Storage
 
@@ -66,7 +66,7 @@ Aby wymagać zapewnienia bezpiecznego transferu programowo, użyj ustawienia _su
 
 W tym przykładzie wymaga programu Azure PowerShell w wersji modułu 4.1 lub nowszą. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-Uruchom `Login-AzureRmAccount` można utworzyć połączenia z platformą Azure.
+Uruchom polecenie `Connect-AzureRmAccount`, aby utworzyć połączenia z platformą Azure.
 
  Aby sprawdzić ustawienia, należy użyć następującego polecenia:
 
@@ -122,5 +122,5 @@ Aby włączyć ustawienie, należy użyć następującego polecenia:
 
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Magazyn Azure oferuje rozbudowany zestaw funkcji zabezpieczeń, które razem umożliwiają deweloperom tworzenie bezpiecznych aplikacji. Aby uzyskać więcej informacji, przejdź do [przewodnik zabezpieczeń magazynu](storage-security-guide.md).

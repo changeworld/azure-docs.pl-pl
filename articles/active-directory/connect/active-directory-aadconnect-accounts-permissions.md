@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: ae8e9f46923928853c0c63e8c50f4e95b915e277
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: fa6a994f30c301fd6c7b431467aebc9d3489c6bc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
 Kreator instalacji Azure AD Connect oferuje dwa różne ścieżki:
@@ -90,7 +90,7 @@ Uprawnienia wymagane jest zależny od funkcji opcjonalnych można włączyć. Je
 | Synchronizacja haseł |<li>Replikować zmiany katalogu</li>  <li>Replikowanie katalogu zmienia wszystkie |
 | Wdrożenie hybrydowe programu Exchange |Uprawnienia do zapisu w atrybutach w [zapisywania zwrotnego hybrydowego programu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) dla użytkowników, grup i kontakty. |
 | Folder publiczny poczty programu Exchange |Uprawnienia odczytu do atrybutów w [folderu publicznego poczty programu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) dla folderów publicznych. | 
-| Zapisywanie zwrotne haseł |Uprawnienia do zapisu w atrybutach w [wprowadzenie do zarządzania hasłami](../active-directory-passwords-writeback.md) dla użytkowników. |
+| Zapisywanie zwrotne haseł |Uprawnienia do zapisu w atrybutach w [wprowadzenie do zarządzania hasłami](../authentication/howto-sspr-writeback.md) dla użytkowników. |
 | Zapisywanie zwrotne urządzeń |Uprawnienia przyznane przy użyciu skryptu programu PowerShell, zgodnie z opisem w [zapisu zwrotnego urządzeń](active-directory-aadconnect-feature-device-writeback.md). |
 | Zapisywanie zwrotne grup |Przeczytaj, tworzenia, aktualizowania lub usuwania grupy obiektów dla synchronizacji **grup usługi Office 365**.  Aby uzyskać więcej informacji, zobacz [zapisu zwrotnego grup](active-directory-aadconnect-feature-preview.md#group-writeback).|
 

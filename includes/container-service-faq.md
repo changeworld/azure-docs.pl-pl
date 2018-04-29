@@ -92,6 +92,16 @@ ssh userName@masterFQDN –A –p 22
 
 Aby uzyskać więcej informacji, zobacz [Łączenie z klastrem usługi Azure Container Service](../articles/container-service/kubernetes/container-service-connect.md).
 
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Rozpoznawanie nazw DNS nie działa w systemie Windows. Co mam zrobić?
+
+Istnieją znane problemy z usługą DNS w systemie Windows, dla których poprawki są nadal aktywnie wycofywane. Upewnij się, że używasz najaktualniejszego aparatu acs-engine i najaktualniejszej wersji systemu Windows (z zainstalowanymi aktualizacjami [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) i [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848)), aby środowisko mogło z tego skorzystać. W przeciwnym razie kroki zaradcze znajdziesz w tabeli poniżej:
+
+| Objaw w usłudze DNS | Obejście  |
+|-------------|-------------|
+|Gdy kontener obciążenia jest niestabilny i ulega awarii, czyszczona jest sieciowa przestrzeń nazw | Wdróż ponownie wszystkie usługi, których to dotyczy |
+| Dostęp do adresu VIP usługi nie działa | Skonfiguruj element [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) tak, aby zawsze był uruchomiony jeden normalny (nieuprzywilejowany) zasobnik |
+|Gdy węzeł, na którym działa kontener, staje się niedostępny, zapytania DNS mogą kończyć się niepowodzeniem dającym w efekcie „ujemny wpis pamięci podręcznej”. | Uruchom następujące polecenia wewnątrz kontenerów, których to dotyczy: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Jeśli to nie rozwiąże problemu, spróbuj całkowicie wyłączyć buforowanie DNS: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
+
 ## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się więcej](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) o usłudze Azure Container Service.

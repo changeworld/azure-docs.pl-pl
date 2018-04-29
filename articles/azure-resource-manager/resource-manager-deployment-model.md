@@ -1,6 +1,6 @@
 ---
-title: "Wdrożenie usługi Resource Manager i Model Klasyczny | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano różnice między modelu wdrażania usługi Resource Manager i model klasyczny (lub zarządzania usługami) modelu wdrażania."
+title: Wdrożenie usługi Resource Manager i Model Klasyczny | Dokumentacja firmy Microsoft
+description: W tym artykule opisano różnice między modelu wdrażania usługi Resource Manager i model klasyczny (lub zarządzania usługami) modelu wdrażania.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2144e3527b44e3cf508d23fedf7abb4cda595bbf
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 06da24babd470e81bed9c45a32c59ad9cfd153fe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Usługa Azure Resource Manager, a wdrożenie klasyczne: zrozumienie modele wdrażania i stan zasobów
 W tym artykule informacje o usłudze Azure Resource Manager i klasycznych modeli wdrażania. Resource Manager i klasycznych modeli wdrażania reprezentować dwie różne sposoby wdrażania i zarządzania nimi rozwiązań platformy Azure. Pracować z nimi za pomocą dwóch różnych zestawów interfejsu API i wdrożonych zasobów może zawierać istotnych różnic. Dwa modele nie są zgodne ze sobą. W tym artykule opisano różnic.
@@ -108,7 +108,7 @@ W poniższej tabeli opisano zmiany w interakcje dostawców zasobów obliczeniowy
 | Konta magazynu |Maszyna wirtualna wymaga konta magazynu przechowującym wirtualne dyski twarde dla systemu operacyjnego, dane tymczasowe i dodatkowych dysków. |Maszyna wirtualna wymaga konta magazynu do przechowywania jego dysków w magazynie obiektów blob. |
 | Zestawy dostępności |Dostępność dla platformy była wskazywana przez skonfigurowanie na maszynach wirtualnych takiego samego parametru „AvailabilitySetName”. Maksymalna liczba domen błędów wynosiła 2. |Zestaw dostępności to zasób udostępniany przez dostawcę Microsoft.Compute. Maszyny wirtualne wymagające wysokiej dostępności muszą należeć do zestawu dostępności. Maksymalna liczba domen błędów wynosi obecnie 3. |
 | Grupy koligacji |Grupy koligacji były wymagane do tworzenia sieci wirtualnych. Przestały być wymagane wraz z wprowadzeniem regionalnych sieci wirtualnych. |Dla uproszczenia pojęcie grup koligacji nie jest stosowane w interfejsach API udostępnianych za pośrednictwem usługi Azure Resource Manager. |
-| Równoważenie obciążenia |Utworzenie usługi w chmurze zapewnia niejawny moduł równoważenie obciążenia dla wdrożonych maszyn wirtualnych. |Usługa Load Balancer stanowi zasób udostępniany przez dostawcę Microsoft.Network. Podstawowy interfejs sieciowy maszyn wirtualnych wymagający równoważenia obciążenia powinien odwoływać się do modułu równoważenia obciążenia. Moduły równoważenia obciążenia mogą być wewnętrzne lub zewnętrzne. Wystąpienie usługi równoważenia obciążenia odwołuje się do puli adresów IP, które obejmują karty Sieciowej maszyny wirtualnej (opcjonalnie) i adres usługi równoważenia obciążenia publicznych lub prywatnych IP (opcjonalnie) odwołuje się do wewnętrznej bazy danych. [Dowiedz się więcej.](../virtual-network/resource-groups-networking.md) |
+| Równoważenie obciążenia |Utworzenie usługi w chmurze zapewnia niejawny moduł równoważenie obciążenia dla wdrożonych maszyn wirtualnych. |Usługa Load Balancer stanowi zasób udostępniany przez dostawcę Microsoft.Network. Podstawowy interfejs sieciowy maszyn wirtualnych wymagający równoważenia obciążenia powinien odwoływać się do modułu równoważenia obciążenia. Moduły równoważenia obciążenia mogą być wewnętrzne lub zewnętrzne. Wystąpienie usługi równoważenia obciążenia odwołuje się do puli adresów IP, które obejmują karty Sieciowej maszyny wirtualnej (opcjonalnie) i adres usługi równoważenia obciążenia publicznych lub prywatnych IP (opcjonalnie) odwołuje się do wewnętrznej bazy danych. |
 | Wirtualny adres IP |Usługi w chmurze pobiera domyślny adres VIP (wirtualny adres IP), gdy maszyna wirtualna zostanie dodany do usługi w chmurze. Wirtualny adres IP to adres skojarzony z niejawnym modułem równoważenia obciążenia. |Publiczny adres IP stanowi zasób udostępniany przez dostawcę Microsoft.Network. Publiczny adres IP może być statyczny (zastrzeżony) lub dynamiczny. Dynamiczne publiczne adresy IP można przypisać do modułu równoważenia obciążenia. Publiczne adresy IP mogą być chronione przy użyciu grup zabezpieczeń. |
 | Zastrzeżony adres IP |Istnieje możliwość zastrzeżenia adresu IP na platformie Azure i skojarzenia go z usługą w chmurze w celu zapewnienia jego umocowania. |Publiczny adres IP można tworzyć w trybie statycznym, oferuje same możliwości, co zastrzeżony adres IP. |
 | Publiczny adres IP (PIP) dla maszyny wirtualnej |Publiczne adresy IP można także skojarzone z maszyną wirtualną bezpośrednio. |Publiczny adres IP stanowi zasób udostępniany przez dostawcę Microsoft.Network. Publiczny adres IP może być statyczny (zastrzeżony) lub dynamiczny. |
@@ -147,7 +147,7 @@ Do automatyzacji oraz skrypty, które zostały utworzone nadal działa w przypad
 
 Kompleksowy zestaw szablonów startowych można znaleźć w [szablonów Szybki Start usługi Azure Resource Manager](https://azure.microsoft.com/documentation/templates/).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby zapoznać się z tworzenia szablonu, który definiuje maszyny wirtualnej, konta magazynu i sieci wirtualnej, zobacz [Przewodnik po szablonie usługi Resource Manager](resource-manager-template-walkthrough.md).
 * Aby wyświetlić polecenia do wdrożenia szablonu, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
 

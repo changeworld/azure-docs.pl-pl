@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący uwierzytelniania użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji internetowej platformy ASP.NET
+title: Samouczek — włączanie uwierzytelniania aplikacji internetowej przy użyciu kont w usłudze Azure Active Directory B2C | Microsoft Docs
 description: Samouczek dotyczący sposobu użycia usługi Azure Active Directory B2C w celu określenia nazwy logowania użytkownika na potrzeby aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
 author: davidmu1
@@ -8,13 +8,13 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 59e23344d235bac8f69bba76cfff2922bc41fd0f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Samouczek: Uwierzytelnianie użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji internetowej platformy ASP.NET
+# <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Samouczek — włączanie uwierzytelniania aplikacji internetowej przy użyciu kont w usłudze Azure Active Directory B2C
 
 W tym samouczku pokazano, jak używać usługi Azure Active Directory (Azure AD) B2C do logowania i rejestracji użytkowników w aplikacji internetowej platformy ASP.NET. Usługa Azure AD B2C umożliwia aplikacjom uwierzytelnianie się na kontach społecznościowych, kontach przedsiębiorstw i kontach usługi Azure Active Directory za pomocą otwartych standardowych protokołów.
 
@@ -40,22 +40,22 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administr
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Wybierz usługę **Azure AD B2C** z listy usług w witrynie Azure Portal.
+1. Wybierz usługę **Azure AD B2C** z listy usług w witrynie Azure Portal. 
 
-2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **Dodaj**.
+2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **Dodaj**. 
 
     Aby zarejestrować przykładową aplikację internetową w dzierżawie, użyj następujących ustawień:
 
     ![Dodawanie nowej aplikacji](media/active-directory-b2c-tutorials-web-app/web-app-registration.png)
-
+    
     | Ustawienie      | Sugerowana wartość  | Opis                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **Nazwa** | Moja przykładowa aplikacja internetowa | Wprowadź wartość **Nazwa** opisującą aplikację dla użytkowników. | 
     | **Uwzględnij aplikację internetową/internetowy interfejs API** | Yes | Wybierz pozycję **Tak** dla aplikacji internetowej. |
     | **Zezwalaj na niejawny przepływ** | Yes | Wybierz pozycję **Tak**, ponieważ aplikacja używa [logowania OpenID Connect](active-directory-b2c-reference-oidc.md). |
     | **Adres URL odpowiedzi** | `https://localhost:44316` | Adresy URL odpowiedzi to punkty końcowe, do których usługa Azure AD B2C zwraca wszelkie tokeny żądane przez aplikację. W tym samouczku przykład jest uruchamiany lokalnie (localhost) i nasłuchuje na porcie 44316. |
-    | **Natywny klient** | Nie | Ponieważ jest to aplikacja internetowa, a nie klient natywny, wybierz pozycję Nie. |
-
+    | **Dołącz klienta natywnego** | Nie | Ponieważ jest to aplikacja internetowa, a nie klient natywny, wybierz pozycję Nie. |
+    
 3. Kliknij pozycję **Utwórz**, aby zarejestrować aplikację.
 
 Zarejestrowane aplikacje są wyświetlane na liście aplikacji dla dzierżawy usługi Azure AD B2C. Wybierz swoją aplikację internetową z listy. Zostanie wyświetlone okienko właściwości aplikacji internetowej.
@@ -70,7 +70,7 @@ Usługa Azure AD B2C używa autoryzacji OAuth2 dla [aplikacji klienckich](../act
 
 1. Wybierz stronę Klucze dla rejestrowanej aplikacji internetowej i kliknij pozycję **Generuj klucz**.
 
-2. Kliknij pozycję **Zapisz**, aby wyświetlić klucz.
+2. Kliknij pozycję **Zapisz**, aby wyświetlić klucz aplikacji.
 
     ![strona aplikacji: ogólne — klucze](media/active-directory-b2c-tutorials-web-app/app-general-keys-page.png)
 
@@ -112,7 +112,7 @@ Aby umożliwić użytkownikom samodzielne resetowanie informacji w ich profilach
     | **Nazwa** | SiPe | Wprowadź wartość **Nazwa** dla zasad. Nazwa zasad jest poprzedzana prefiksem **b2c_1_**. W przykładowym kodzie jest używana pełna nazwa zasad **b2c_1_SiPe**. | 
     | **Dostawca tożsamości** | Logowanie za pomocą konta lokalnego | Dostawca tożsamości używany do unikatowego identyfikowania użytkownika. |
     | **Atrybuty profilu** | Nazwa wyświetlana i kod pocztowy | Wybierz atrybuty, które użytkownicy mogą modyfikować podczas edytowania profilu. |
-    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, użytkownik jest nowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
+    | **Oświadczenia aplikacji** | Nazwa wyświetlana, kod pocztowy, identyfikator obiektu użytkownika | Wybierz [oświadczenia](../active-directory/develop/active-directory-dev-glossary.md#claim), które mają być zawarte w [tokenie dostępu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po pomyślnym edytowaniu profilu. |
 
 2. Kliknij pozycję **Utwórz**, aby utworzyć zasady. 
 
@@ -134,7 +134,7 @@ Aby umożliwić resetowanie haseł w aplikacji, należy utworzyć **zasady reset
 
 ## <a name="update-web-app-code"></a>Aktualizowanie kodu aplikacji internetowej
 
-Po zarejestrowaniu aplikacji internetowej i utworzeniu zasad należy skonfigurować aplikację w celu korzystania z dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację internetową. 
+Po zarejestrowaniu aplikacji internetowej i utworzeniu zasad należy skonfigurować aplikację w celu korzystania z dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację internetową, którą można pobrać z witryny GitHub. 
 
 [Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
 
@@ -154,7 +154,7 @@ Należy zmienić aplikację w celu korzystania z rejestracji aplikacji w dzierż
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 
-2. W projekcie aplikacji internetowej **TaskWebApp** otwórz plik **Web.config** i wprowadź następujące aktualizacje:
+2. W projekcie aplikacji internetowej **TaskWebApp** otwórz plik **Web.config** i wprowadź następujące aktualizacje istniejących kluczy:
 
     ```C#
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
@@ -163,7 +163,7 @@ Należy zmienić aplikację w celu korzystania z rejestracji aplikacji w dzierż
     
     <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
-3. Zaktualizuj ustawienia zasad, używając nazwy wygenerowanej podczas tworzenia zasad.
+3. Zaktualizuj istniejące klucze przy użyciu wartości nazw zasad utworzonych w poprzednim kroku. Pamiętaj, aby uwzględnić prefiks *b2c_1_*.
 
     ```C#
     <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />

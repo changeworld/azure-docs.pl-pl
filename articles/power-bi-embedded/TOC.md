@@ -28,7 +28,7 @@
 # Dokumentacja
 ## Interfejsy API
 ### [Interfejsy API REST usługi Azure Resource Management](https://docs.microsoft.com/rest/api/power-bi-embedded/)
-### [Power BI REST APIs (Interfejsy API REST usługi Power BI)](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
+### [Power BI REST APIs (Interfejsy API REST usługi Power BI)](https://msdn.microsoft.com/library/mt147898.aspx)
 
 # Zasoby
 ## [Społeczność użytkowników usługi Power BI](http://community.powerbi.com/t5/Developer/bd-p/Developer)

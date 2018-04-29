@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b4e123475679cf1afce09630c157377ee67b5202
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7d7d3f6a773fad0b0d4ba0593230af5ff5a1e443
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Szybki start: skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse przy użyciu języka T-SQL
 
@@ -25,8 +25,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 Pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS).
-
-Założono, że wykonano czynności opisane w samouczku [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md). Po ukończeniu samouczka „Szybki start: tworzenie i łączenie” wiesz już, jak połączyć się z zainstalowanym nowo utworzonym magazynem danych o nazwie **mySampleDataWarehouse** oraz nowo utworzoną regułą zapory pozwalającą klientowi uzyskać dostęp do serwera.
  
 ## <a name="create-a-data-warehouse"></a>Tworzenie magazynu danych
 
@@ -45,7 +43,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
    | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **mynewserver-20171113.database.windows.net**. |
    | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-   | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
+   | Login | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
    | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
 
     ![łączenie z serwerem](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -91,11 +89,42 @@ Aby zmienić jednostki magazynu danych:
 1. Kliknij prawym przyciskiem myszy pozycję **master**, a następnie wybierz pozycję **Nowe zapytanie**.
 2. Użyj instrukcji języka T-SQL [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database), aby zmodyfikować cel usługi. Uruchom następujące zapytanie, aby zmienić celu usługi na wartość DW300. 
 
-```Sql
-ALTER DATABASE mySampleDataWarehouse
-MODIFY (SERVICE_OBJECTIVE = 'DW300')
-;
-```
+    ```Sql
+    ALTER DATABASE mySampleDataWarehouse
+    MODIFY (SERVICE_OBJECTIVE = 'DW300')
+    ;
+    ```
+
+## <a name="monitor-scale-change-request"></a>Monitorowanie żądania zmiany skali
+Aby wyświetlić postęp poprzedniego żądania zmiany, możesz użyć składni T-SQL `WAITFORDELAY` do sondowania dynamicznego widoku zarządzania (DMV, dynamic management view) sys.dm_operation_status.
+
+Aby sondować stan zmiany obiektu usługi:
+
+1. Kliknij prawym przyciskiem myszy pozycję **master**, a następnie wybierz pozycję **Nowe zapytanie**.
+2. Uruchom następujące zapytanie, aby sondować widok DMV sys.dm_operation_status.
+
+    ```sql
+    WHILE 
+    (
+        SELECT TOP 1 state_desc
+        FROM sys.dm_operation_status
+        WHERE 
+            1=1
+            AND resource_type_desc = 'Database'
+            AND major_resource_id = 'MySampleDataWarehouse'
+            AND operation = 'ALTER DATABASE'
+        ORDER BY
+            start_time DESC
+    ) = 'IN_PROGRESS'
+    BEGIN
+        RAISERROR('Scale operation in progress',0,0) WITH NOWAIT;
+        WAITFOR DELAY '00:00:05';
+    END
+    PRINT 'Complete';
+    ```
+3. Dane wyjściowe pokazują dziennik sondowania stanu.
+
+    ![Stan operacji](media/quickstart-scale-compute-tsql/polling-output.png)
 
 ## <a name="check-data-warehouse-state"></a>Sprawdzanie stanu magazynu danych
 
@@ -103,7 +132,7 @@ Gdy magazyn danych jest wstrzymany, nawiązanie z nim połączenia za pomocą j�
 
 ## <a name="check-operation-status"></a>Sprawdzanie stanu operacji
 
-Aby zostały zwrócone informacje na temat różnych operacji zarządzania w usłudze SQL Data Warehouse, uruchom następujące zapytanie w dynamicznym widoku zarządzania (DMV) [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). Na przykład zwraca operację i typ stanu operacji, który przyjmuje jedną z dwóch wartości: „W toku” lub „Ukończono”.
+Aby zostały zwrócone informacje na temat różnych operacji zarządzania w usłudze SQL Data Warehouse, uruchom następujące zapytanie w dynamicznym widoku zarządzania (DMV) [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). Na przykład zwraca operację i typ stanu operacji: IN_PROGRESS (W toku) lub COMPLETED (Ukończono).
 
 ```sql
 SELECT *
@@ -112,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySQLDW'
+    major_resource_id = 'MySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz wiesz już, jak skalować zasoby obliczeniowe na potrzeby magazynu danych. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
+Teraz już wiesz, jak skalować zasoby obliczeniowe na potrzeby magazynu danych. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
 
 > [!div class="nextstepaction"]
 >[Ładowanie danych do magazynu danych SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

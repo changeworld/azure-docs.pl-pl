@@ -1,11 +1,11 @@
 ---
-title: "Zarejestruj dzierżaw użycia śledzenia stosu Azure | Dokumentacja firmy Microsoft"
-description: "Szczegółowe informacje na temat operacji narzędzia używane do zarządzania rejestracji dzierżawcy i sposób śledzenia użycia przez dzierżawcę w stosie Azure."
+title: Zarejestruj dzierżaw użycia śledzenia stosu Azure | Dokumentacja firmy Microsoft
+description: Szczegółowe informacje na temat operacji narzędzia używane do zarządzania rejestracji dzierżawcy i sposób śledzenia użycia przez dzierżawcę w stosie Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: be15fbc5fad79f1079b901b3d6cb4948c45a0ab4
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: ef7ca59647a1f8c15d85c809609060a5945bedde
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Zarządzanie rejestracją dzierżawy Azure stosu
 
@@ -47,7 +47,7 @@ Należy pamiętać, że tylko jedną subskrypcją platformy Azure może być sko
 
 ### <a name="powershell"></a>PowerShell
 
-Użyj polecenia cmdlet New-AzureRmResource można zaktualizować zasobu rejestracji. Logowanie do platformy Azure (`Login-AzureRMAccount`) przy użyciu konta używanego do pierwszej rejestracji. Poniżej przedstawiono przykład sposobu dodawania dzierżawy:
+Użyj polecenia cmdlet New-AzureRmResource można zaktualizować zasobu rejestracji. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Poniżej przedstawiono przykład sposobu dodawania dzierżawy:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -78,7 +78,7 @@ Pobierz listę wszystkich dzierżawców, które zostały dodane do rejestracji.
 
 ### <a name="powershell"></a>PowerShell
 
-Aby wyświetlić listę wszystkich zarejestrowanych dzierżawcy, należy użyć polecenia cmdlet Get-AzureRmResovurce. Logowanie do platformy Azure (`Login-AzureRMAccount`) przy użyciu konta używanego do pierwszej rejestracji. Poniżej przedstawiono przykład sposobu dodawania dzierżawy:
+Aby wyświetlić listę wszystkich zarejestrowanych dzierżawcy, należy użyć polecenia cmdlet Get-AzureRmResovurce. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Poniżej przedstawiono przykład sposobu dodawania dzierżawy:
 
 ```powershell
   Get-AzureRmResovurce -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01

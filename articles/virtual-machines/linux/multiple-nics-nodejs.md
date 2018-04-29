@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 20e3a65c28e95849822d81076b6780e05a2aebbf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a4e19f232abce8701e6d2e12a876c55079b91a2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Utwórz maszynę wirtualną systemu Linux z wieloma kartami sieciowymi przy użyciu 1.0 interfejsu wiersza polecenia platformy Azure
 Można utworzyć maszynę wirtualną (VM) na platformie Azure, który ma wiele interfejsów sieci wirtualnej (NIC) do niego dołączony. Typowy scenariusz ma różne podsieci dla łączności frontonu i zaplecza lub sieć przeznaczona do monitorowania lub kopii zapasowej rozwiązanie. W tym artykule przedstawiono szybki poleceń, aby utworzyć Maszynę wirtualną z wieloma kartami sieciowymi, do niego dołączony. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługuje różną liczbę kart sieciowych, więc odpowiednio rozmiar maszyny Wirtualnej.
@@ -163,7 +163,7 @@ Można również użyć `copyIndex()` następnie dołączyć numer na nazwę zas
 "name": "[concat('myNic', copyIndex())]", 
 ```
 
-Pełny przykład można znaleźć [tworzenia wielu kart sieciowych przy użyciu szablonów usługi Resource Manager](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+Pełny przykład można znaleźć [tworzenia wielu kart sieciowych przy użyciu szablonów usługi Resource Manager](../../virtual-network/template-samples.md).
 
 Podczas dodawania wielu kart sieciowych do maszyny Wirtualnej systemu Linux, należy utworzyć reguły routingu. Te reguły zezwalają na maszynie Wirtualnej na wysyłanie i odbieranie ruchu, który należy do określonej karty sieciowej. W przeciwnym razie ruchu, który należy do eth1, na przykład nie może przetworzyć poprawnie trasy zdefiniowanej wartości domyślnej. Aby rozwiązać ten problem routingu, zobacz [Konfiguruj system operacyjny gościa dla wielu kart sieciowych](multiple-nics.md#configure-guest-os-for-multiple-nics).
 

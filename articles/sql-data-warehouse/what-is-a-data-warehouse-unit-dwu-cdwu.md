@@ -1,23 +1,23 @@
 ---
-title: Co to są jednostki magazynu danych (dwu, cDWUs) w usłudze Azure SQL Data Warehouse? | Microsoft Docs
-description: Wydajność skalowania możliwości w usłudze Azure SQL Data Warehouse. Skalowanie w poziomie przez dostosowanie wartości dwu, cDWUs, lub wstrzymywać i wznawiać zasobów obliczeniowych w celu ograniczenia kosztów.
+title: Jednostki magazynu danych (dwu, cDWUs) w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+description: Zalecenia dotyczące wybierania idealne numer jednostki magazynu danych (dwu, cDWUs), aby zoptymalizować cen i wydajności oraz jak zmienić liczbę jednostek.
 services: sql-data-warehouse
-author: sqlmojo
+author: ronortloff
 manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
-ms.date: 04/09/2018
-ms.author: joeyong
-ms.reviewer: jrj
-ms.openlocfilehash: 56d59be2074a3047ce19fde3e808354266040864
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a83a9f9332d81e02a83efc019ad56027316301ab
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
----
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (dwu) i zasobów obliczeniowych jednostki magazynu danych (cDWUs)
-Zawiera opis jednostki magazynu danych (dwu) oraz obliczeniowe jednostki magazynu danych (cDWUS) dla usługi Azure SQL Data Warehouse. Obejmują zalecenia dotyczące wybierania idealne numer jednostki magazynu danych oraz sposobu zmiany ich liczba. 
+Zalecenia dotyczące wybierania idealne numer jednostki magazynu danych (dwu, cDWUs), aby zoptymalizować cen i wydajności oraz jak zmienić liczbę jednostek. 
 
 ## <a name="what-are-data-warehouse-units"></a>Co to są jednostki magazynu danych?
 Z Procesora magazynu danych SQL, pamięci i we/wy są połączone w jednostki skali obliczeniowe o nazwie jednostki magazynu danych (dwu). Jednostka DWU reprezentuje abstrakcyjne znormalizowane miary zasoby obliczeniowe i wydajność. Zmieniając poziom obsługi można zmienić liczby jednostek dwu, które są przydzielone do systemu, który z kolei dostosowuje wydajności i kosztów, system. 
@@ -28,7 +28,7 @@ Wydajność w przypadku jednostki magazynu danych jest oparty na te metryki obci
 
 - Jak szybka może zapytania magazynowania danych standardowych skanowania dużej liczby wierszy i wykonaniu złożoną agregację? Ta operacja jest we/wy i Procesora CPU.
 - Szybkość magazynu danych można pozyskiwania danych z obiektów blob magazynu Azure lub usługi Azure Data Lake? Ta operacja jest sieci i Procesora CPU. 
-- Jak szybko można [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) polecenia T-SQL kopiowanie tabeli? Ta operacja obejmuje odczytywanie danych z magazynu, dystrybucję w węzłach urządzenia i zapisywania w magazynie ponownie. Ta operacja jest sieć znacznym, we/wy i procesora CPU.
+- Jak szybko można [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) polecenia T-SQL kopiowanie tabeli? Ta operacja obejmuje odczytywanie danych z magazynu, dystrybucję w węzłach urządzenia i zapisywania w magazynie ponownie. Ta operacja jest sieć znacznym, we/wy i procesora CPU.
 
 Zwiększa liczbę jednostek dwu:
 - Liniowo zmiany wydajności systemu pod kątem skanowania, agregacji i CTAS — instrukcje
@@ -85,11 +85,11 @@ Usługa SQL Data Warehouse to system skalowalnego w poziomie, który można udos
 
 > [!NOTE]
 >
-> Wydajność zapytań tylko zwiększa się wraz z paralelizacja więcej jeśli pracy może zostać podzielony między węzły obliczeń. Jeśli okaże się, że skalowanie nie zmienia się na wydajność, może być konieczne dostrojenie projektu tabeli i/lub zapytań. Dostrajanie wskazówki zapytania, można znaleźć w następujących [wydajności](sql-data-warehouse-overview-manage-user-queries.md) artykułów. 
+> Wydajność zapytań tylko zwiększa się wraz z paralelizacja więcej jeśli pracy może zostać podzielony między węzły obliczeń. Jeśli okaże się, że skalowanie nie zmienia się na wydajność, może być konieczne dostrojenie projektu tabeli i/lub zapytań. Dla zapytania dostrajanie wskazówki, zobacz [zarządzać zapytaniami użytkownika](sql-data-warehouse-overview-manage-user-queries.md). 
 
 ## <a name="permissions"></a>Uprawnienia
 
-Zmiana jednostki magazynu danych wymaga uprawnienia opisane w [ALTER DATABASE][ALTER DATABASE]. 
+Zmiana jednostki magazynu danych wymaga uprawnienia opisane w [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql). 
 
 ## <a name="view-current-dwu-settings"></a>Wyświetl bieżące ustawienia Jednostka DWU
 
@@ -120,11 +120,13 @@ Aby zmienić liczbę jednostek dwu lub cDWUs:
 3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat potwierdzenia. Kliknij przycisk **tak** o potwierdzenie lub **nie** do anulowania.
 
 ### <a name="powershell"></a>PowerShell
-Aby zmienić liczbę jednostek dwu lub cDWUs, użyj polecenia cmdlet programu PowerShell [Set-AzureRmSqlDatabase] [Set-AzureRmSqlDatabase]. Poniższy przykład ustawia cel poziomu usługi DW1000 MySQLDW, który znajduje się na serwerze MyServer bazy danych.
+Aby zmienić liczbę jednostek dwu lub cDWUs, użyj [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) polecenia cmdlet programu PowerShell. Poniższy przykład ustawia cel poziomu usługi DW1000 MySQLDW, który znajduje się na serwerze MyServer bazy danych.
 
 ```Powershell
 Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
+
+Aby uzyskać więcej informacji, zobacz [poleceń cmdlet programu PowerShell dla usługi SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 ### <a name="t-sql"></a>T-SQL
 W T-SQL można wyświetlać ustawienia bieżącej wartości DWU lub cDWU, Zmień ustawienia i sprawdzić postęp. 
@@ -132,7 +134,7 @@ W T-SQL można wyświetlać ustawienia bieżącej wartości DWU lub cDWU, Zmień
 Aby zmienić liczbę jednostek dwu lub cDWUs:
 
 1. Połączenia z bazą danych master, skojarzona z serwerem logicznym bazy danych SQL.
-2. Użyj [ALTER DATABASE] [ ALTER DATABASE] instrukcji TSQL. Poniższy przykład ustawia cel poziomu usługi DW1000 MySQLDW bazy danych. 
+2. Użyj [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) instrukcji TSQL. Poniższy przykład ustawia cel poziomu usługi DW1000 MySQLDW bazy danych. 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -142,7 +144,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ### <a name="rest-apis"></a>Interfejsy API REST
 
-Aby zmienić liczbę jednostek dwu, użyj [tworzenie lub aktualizacja bazy danych] [tworzenie lub aktualizacja bazy danych] interfejsu API REST. Poniższy przykład ustawia cel poziomu usługi DW1000 MySQLDW, która jest hostowana na serwerze MyServer bazy danych. Serwer jest w grupie zasobów platformy Azure o nazwie ResourceGroup1.
+Aby zmienić liczbę jednostek dwu, użyj [Tworzenie lub aktualizacja bazy danych](/rest/api/sql/databases/createorupdate) interfejsu API REST. Poniższy przykład ustawia cel poziomu usługi DW1000 MySQLDW, która jest hostowana na serwerze MyServer bazy danych. Serwer jest w grupie zasobów platformy Azure o nazwie ResourceGroup1.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -155,6 +157,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
+Aby uzyskać więcej przykładów interfejsu API REST, zobacz [interfejsów API REST dla usługi SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
 
 ## <a name="check-status-of-dwu-changes"></a>Sprawdź stan zmiany jednostka DWU
 
@@ -196,40 +199,7 @@ Po zainicjowaniu operacji skalowania systemu najpierw rozłącza wszystkie otwar
 - Dla operacji dół, niepotrzebnych węzłów z magazynu i przyłączając ponownie do pozostałych węzłów.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące artykuły, aby ułatwić zrozumienie pojęcia niektóre dodatkowe wydajności:
-
-* [Zarządzanie obciążenia i współbieżność][Workload and concurrency management]
-* [Omówienie projektowania tabeli][Table design overview]
-* [Dystrybucja tabeli][Table distribution]
-* [Indeksowanie tabeli][Table indexing]
-* [Partycjonowanie tabel][Table partitioning]
-* [Statystyk tabeli][Table statistics]
-* [Najlepsze praktyki][Best practices]
-
-<!--Image reference-->
-
-<!--Article references-->
-
-[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
+Aby dowiedzieć się więcej o zarządzaniu wydajności, zobacz [klasy zasobów do zarządzania obciążenia](resource-classes-for-workload-management.md) i [limity pamięci i](memory-and-concurrency-limits.md).
 
 
-[Check database state with T-SQL]: ./sql-data-warehouse-manage-compute-tsql.md#check-database-state-and-operation-progress
-[Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
-[Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
 
-[Workload and concurrency management]: ./resource-classes-for-workload-management.md
-[Table design overview]: ./sql-data-warehouse-tables-overview.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Table indexing]: ./sql-data-warehouse-tables-index.md
-[Table partitioning]: ./sql-data-warehouse-tables-partition.md
-[Table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Best practices]: ./sql-data-warehouse-best-practices.md
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-[SQL DB Contributor]:../role-based-access-control/built-in-roles.md#sql-db-contributor
-
-<!--MSDN references-->
-[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
-
-<!--Other Web references-->
-[Azure portal]: http://portal.azure.com/

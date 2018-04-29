@@ -12,30 +12,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 04/19/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: f73f6599f24c0748862ba3a2f1384246841e7e8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 4f0d07d2c64650091b5fc654a645785a12c3c3de
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Utwórz maszynę wirtualną z systemem Windows przy użyciu programu PowerShell w stosie Azure
+# <a name="quickstart-create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki Start: Utwórz maszynę wirtualną z systemem Windows przy użyciu programu PowerShell w stosie Azure
 
 *Dotyczy: Azure stosu zintegrowane systemy*
 
-Szczegóły tego przewodnika przy użyciu programu PowerShell, aby utworzyć maszynę wirtualną systemu Windows Server 2016 w stosie usługi Azure. Można wykonać kroki opisane w tym artykule z Development Kit stosu Azure lub z systemem Windows klienta zewnętrznych po nawiązaniu połączenia za pośrednictwem sieci VPN. 
+Szczegóły tego przewodnika przy użyciu programu PowerShell, aby utworzyć maszynę wirtualną systemu Windows Server 2016 w stosie usługi Azure. Można wykonać kroki opisane w tym artykule z Development Kit stosu Azure lub z systemem Windows klienta zewnętrznych po nawiązaniu połączenia za pośrednictwem sieci VPN.
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Upewnij się, operatorem Azure stos został dodany obrazu "Windows Server 2016" do stosu Azure marketplace.  
+* Upewnij się, operatorem Azure stos został dodany obrazu "Windows Server 2016" do stosu Azure marketplace.
 
-* Stos Azure wymaga określonej wersji programu Azure PowerShell do tworzenia i zarządzania zasobami. Jeśli nie jest skonfigurowany do stosu Azure PowerShell, wykonaj kroki, aby [zainstalować](azure-stack-powershell-install.md) i [skonfigurować](azure-stack-powershell-configure-user.md) środowiska PowerShell.    
+* Stos Azure wymaga określonej wersji programu Azure PowerShell do tworzenia i zarządzania zasobami. Jeśli nie jest skonfigurowany do stosu Azure PowerShell, wykonaj kroki, aby [zainstalować](azure-stack-powershell-install.md) i [skonfigurować](azure-stack-powershell-configure-user.md) środowiska PowerShell.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów jest kontenerem logicznym, do których stosu Azure wdrożone i zarządzane zasoby. W zestawie rozwoju lub system Azure stosu zintegrowane Uruchom następujący blok kodu, aby utworzyć grupę zasobów. Firma Microsoft zostały przypisane wartości wszystkich zmiennych w tym dokumencie, można używać ich jest lub przypisać inną wartość.  
+Grupa zasobów jest kontenerem logicznym, do których stosu Azure wdrożone i zarządzane zasoby. W zestawie rozwoju lub system Azure stosu zintegrowane Uruchom następujący blok kodu, aby utworzyć grupę zasobów. Wartości są przypisywane do wszystkich zmiennych w tym dokumencie, można użyć tych wartości lub przypisać nowe wartości.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -47,7 +47,7 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Utwórz zasoby magazynu 
+## <a name="create-storage-resources"></a>Utwórz zasoby magazynu
 
 Utwórz konto magazynu i kontener magazynu do przechowywania obrazu systemu Windows Server 2016.
 
@@ -76,7 +76,7 @@ $container = New-AzureStorageContainer `
 
 ## <a name="create-networking-resources"></a>Tworzenie zasobów sieciowych
 
-Utwórz sieć wirtualną, podsieć i publiczny adres IP. Te zasoby są używane do zapewniania łączności sieciowej do maszyny wirtualnej.  
+Utwórz sieć wirtualną, podsieć i publiczny adres IP. Te zasoby są używane do zapewniania łączności sieciowej do maszyny wirtualnej.
 
 ```powershell
 # Create a subnet configuration
@@ -135,9 +135,9 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -Name myNetworkSecurityGroup `
-  -SecurityRules $nsgRuleRDP,$nsgRuleWeb 
+  -SecurityRules $nsgRuleRDP,$nsgRuleWeb
 ```
- 
+
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Tworzenie karty sieciowej dla maszyny wirtualnej
 
 Karta sieciowa łączy maszynę wirtualną z podsiecią, sieciową grupą zabezpieczeń i publicznym adresem IP.
@@ -150,12 +150,12 @@ $nic = New-AzureRmNetworkInterface `
   -Location $location `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id `
-  -NetworkSecurityGroupId $nsg.Id 
+  -NetworkSecurityGroupId $nsg.Id
 ```
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz konfigurację maszyny wirtualnej. Konfiguracja obejmuje ustawienia, które są używane podczas wdrażania maszyny wirtualnej, takich jak obraz maszyny wirtualnej, rozmiar, poświadczenia.
+Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia używane podczas wdrażania maszyny wirtualnej. Na przykład: poświadczeń, rozmiar i obraz maszyny wirtualnej.
 
 ```powershell
 # Define a credential object to store the username and password for the virtual machine
@@ -168,13 +168,13 @@ $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_A1"
 $VirtualMachine = New-AzureRmVMConfig `
   -VMName $VmName `
-  -VMSize $VmSize 
+  -VMSize $VmSize
 
 $VirtualMachine = Set-AzureRmVMOperatingSystem `
   -VM $VirtualMachine `
   -Windows `
   -ComputerName "MainComputer" `
-  -Credential $Credential 
+  -Credential $Credential
 
 $VirtualMachine = Set-AzureRmVMSourceImage `
   -VM $VirtualMachine `
@@ -189,13 +189,13 @@ $osDiskUri = '{0}vhds/{1}-{2}.vhd' -f `
   $vmName.ToLower(), `
   $osDiskName
 
-# Sets the operating system disk properties on a virtual machine. 
+# Sets the operating system disk properties on a virtual machine.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -Name $osDiskName `
   -VhdUri $OsDiskUri `
   -CreateOption FromImage | `
-  Add-AzureRmVMNetworkInterface -Id $nic.Id 
+  Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 # Create the virtual machine.
 New-AzureRmVM `
@@ -206,13 +206,13 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-Aby zdalnego do maszyny wirtualnej, który został utworzony w poprzednim kroku musisz mieć publicznego adresu IP. Uruchom następujące polecenie, aby pobrać publicznego adresu IP maszyny wirtualnej: 
+Aby zdalnego do maszyny wirtualnej, który został utworzony w poprzednim kroku musisz mieć publicznego adresu IP. Uruchom następujące polecenie, aby pobrać publicznego adresu IP maszyny wirtualnej:
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
- 
+
 Użyj następującego polecenia, aby utworzyć sesję pulpitu zdalnego z maszyną wirtualną. Zamień adres IP na publiczny adres IP Twojej maszyny wirtualnej. Po wyświetleniu monitu wprowadź nazwę użytkownika i hasło użyte podczas tworzenia maszyny wirtualnej.
 
 ```powershell
@@ -229,10 +229,9 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>Wyświetlanie strony powitalnej usług IIS
 
-Po zainstalowaniu usług IIS i otwarciu portu 80 na maszynie wirtualnej z Internetu możesz użyć wybranej przeglądarki sieci Web, aby wyświetlić domyślną stronę powitalną przeglądarki usług IIS. Upewnij się, że w celu odwiedzenia strony domyślnej używasz udokumentowanego powyżej *publicznego adresu IP*. 
+Z zainstalowanymi usługami IIS oraz port 80 jest otwarty na maszynie Wirtualnej można użyć wybraną przeglądarkę sieci web, aby wyświetlić domyślna strona powitalna usług IIS. Użyj *publicznego adresu IP* opisane w poprzedniej sekcji, aby odwiedzić stronę domyślną.
 
-![Domyślna witryna usług IIS](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png) 
-
+![Domyślna witryna usług IIS](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
 ## <a name="delete-the-virtual-machine"></a>Usuń maszynę wirtualną
 
@@ -246,4 +245,3 @@ Remove-AzureRmResourceGroup `
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym szybkiego startu wdrożeniu prostą maszynę wirtualną systemu Windows. Aby dowiedzieć się więcej o maszynach wirtualnych Azure stosu, nadal [zagadnienia dotyczące maszyn wirtualnych w stosie Azure](azure-stack-vm-considerations.md).
-

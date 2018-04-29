@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 3bfedf940bd884fc8093f14236b6f3e4f7596839
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Zarządzanie magazynem w Azure niezależne chmur przy użyciu programu PowerShell
 
@@ -25,7 +25,7 @@ Większość użytkowników użyj chmury publicznej Azure globalne wdrożenia us
 
 * [Chmury Azure dla instytucji rządowych](https://azure.microsoft.com/features/gov/)
 * [Chmury Azure Chin przez 21Vianet w Chinach](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+* [Niemiecki chmury Azure](../../germany/germany-welcome.md)
 
 ## <a name="using-an-independent-cloud"></a>Przy użyciu niezależne chmury 
 
@@ -48,7 +48,7 @@ Get-AzureRmEnvironment
 Zaloguj się do swojego konta, które ma dostęp do chmury, do którego chcesz połączyć i ustaw środowiska. W tym przykładzie przedstawiono sposób logowania się do konta, które korzysta z chmury Azure dla instytucji rządowych.   
 
 ```powershell
-Login-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzureRmAccount –Environment AzureUSGovernment
 ```
 
 Aby uzyskać dostęp do chmury w Chinach, należy użyć środowiska **AzureChinaCloud**. Aby uzyskać dostęp do chmury niemiecki, należy użyć **AzureGermanCloud**.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: efb24f5e55d7ba0077797d3f7d0f2177020f92b3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7319fea96f0592b9a20a591ad603d575e440704d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Tworzenie, zmienianie lub usuwanie publicznego adresu IP
 
@@ -33,7 +33,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zarejestrować się w celu [bezpłatnego konta wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell do wykonywania zadań w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 5.2.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń Azure interfejsu wiersza polecenia (CLI), aby wykonać zadania w tym artykule, albo Uruchom polecenia w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. Ten samouczek wymaga wiersza polecenia platformy Azure w wersji 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` można utworzyć połączenia z platformą Azure.
 
 Publiczne adresy IP ma nominalnego opłat. Aby wyświetlić ceny, przeczytaj [cennik adres IP](https://azure.microsoft.com/pricing/details/ip-addresses) strony. 
@@ -58,7 +58,7 @@ Publiczne adresy IP ma nominalnego opłat. Aby wyświetlić ceny, przeczytaj [ce
     |Subskrypcja|Yes|Musi istnieć w tym samym [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako zasób, aby skojarzyć publiczny adres IP.|
     |Grupa zasobów|Yes|W tym samym lub różnych, może istnieć [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako zasób, aby skojarzyć publiczny adres IP.|
     |Lokalizacja|Yes|Musi istnieć w tym samym [lokalizacji](https://azure.microsoft.com/regions), również określone jako region, jako zasób, którą chcesz skojarzyć z publicznym adresem IP adres.|
-    |Dostępność strefy| Nie | To ustawienie jest wyświetlany tylko w przypadku wybrania obsługiwanych lokalizacji. Aby uzyskać listę obsługiwanych lokalizacji, zobacz [omówienie stref dostępności](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wybrania **podstawowe** jednostka SKU, *Brak* jest automatycznie wybrana. Jeśli wolisz zagwarantować dla określonej strefy, można wybrać określonej strefy. Wybór albo nie jest strefowo nadmiarowy. W przypadku wybrania **standardowe** SKU: Strefowo nadmiarowy jest automatycznie wybrana i sprawia, że ścieżki danych odporność na awarie strefy. Jeśli wolisz zagwarantować dla określonej strefy, który nie był odporny na awarie strefy, można wybrać określonej strefy.
+    |Strefa dostępności| Nie | To ustawienie jest wyświetlany tylko w przypadku wybrania obsługiwanych lokalizacji. Aby uzyskać listę obsługiwanych lokalizacji, zobacz [omówienie stref dostępności](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). W przypadku wybrania **podstawowe** jednostka SKU, *Brak* jest automatycznie wybrana. Jeśli wolisz zagwarantować dla określonej strefy, można wybrać określonej strefy. Wybór albo nie jest strefowo nadmiarowy. W przypadku wybrania **standardowe** SKU: Strefowo nadmiarowy jest automatycznie wybrana i sprawia, że ścieżki danych odporność na awarie strefy. Jeśli wolisz zagwarantować dla określonej strefy, który nie był odporny na awarie strefy, można wybrać określonej strefy.
   
 
 **Polecenia**
@@ -89,7 +89,7 @@ Chociaż portalu udostępnia opcję, aby utworzyć dwa zasoby publicznych adres�
 |Interfejs wiersza polecenia|[AZ sieci publicznego adresu ip listy](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_list) publiczne adresy IP, [az sieci publicznego adresu ip Pokazywanie](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_show) pokazanie ustawień; [az sieci ip publicznego aktualizacji](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_update) zaktualizować; [usunąć publicznej sieci az ip](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_delete) do usunięcia|
 |PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) można pobrać obiektu publiczny adres IP i wyświetlić jej ustawienia [AzureRmPublicIpAddress zestaw](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) można zaktualizować ustawień; [AzureRmPublicIpAddress Usuń](/powershell/module/azurerm.network/remove-azurermpublicipaddress) do usunięcia|
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Podczas tworzenia następujących zasobów platformy Azure, przypisz publicznych adresów IP:
 
 - [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny wirtualne

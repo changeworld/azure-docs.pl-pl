@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: a18d045815a65953aafd690674fb9b5ce129c825
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: d0182afbd1a6beaabadf68f08905316be4ba034f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager dla klastrów usługi HDInsight
 
@@ -93,7 +93,7 @@ Polecenia cmdlet programu Azure PowerShell Resource Manager można zainstalować
 
 Przed użyciem polecenia cmdlet usługi HDInsight, należy połączyć z kontem platformy Azure i Utwórz nową grupę zasobów:
 
-* Login-AzureRmAccount lub [AzureRmProfile wybierz](https://msdn.microsoft.com/library/mt619310.aspx). Zobacz [uwierzytelniania nazwy głównej usługi z usługą Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* Connect-AzureRmAccount lub [AzureRmProfile wybierz](https://msdn.microsoft.com/library/mt619310.aspx). Zobacz [uwierzytelniania nazwy głównej usługi z usługą Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>Zmieniono nazwę polecenia cmdlet

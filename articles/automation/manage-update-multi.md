@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ce3d0501900cf8b60daee9aff6eeeaf62fa29409
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -27,9 +27,9 @@ Przy użyciu rozwiązania Update Management można zarządzać aktualizacjami i 
 
 Do korzystania z rozwiązania Update Management są wymagane następujące elementy:
 
-* Konto Uruchom jako usługi Azure Automation. Aby uzyskać instrukcje tworzenia takiego konta, zobacz [Wprowadzenie do usługi Azure Automation](automation-offering-get-started.md).
+- Konto Uruchom jako usługi Azure Automation. Aby uzyskać instrukcje tworzenia takiego konta, zobacz [Wprowadzenie do usługi Azure Automation](automation-offering-get-started.md).
 
-* Maszyna wirtualna lub komputer z zainstalowanym obsługiwanym systemem operacyjnym.
+- Maszyna wirtualna lub komputer z zainstalowanym obsługiwanym systemem operacyjnym.
 
 ## <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
@@ -37,11 +37,11 @@ Rozwiązanie Update Management jest obsługiwane w następujących systemach ope
 
 ### <a name="windows"></a>Windows
 
-* Windows Server 2008 lub nowszy i wdrożenia aktualizacji dla systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszego. System Nano Server nie jest obsługiwany.
+- Windows Server 2008 lub nowszy i wdrożenia aktualizacji dla systemu Windows Server 2008 R2 z dodatkiem SP1 lub nowszego. System Nano Server nie jest obsługiwany.
 
   Obsługa wdrażania aktualizacji dla systemu Windows Server 2008 R2 z dodatkiem SP1 wymaga programu .NET Framework 4.5 i programu Windows Management Framework 5.0 lub nowszego.
 
-* Systemy operacyjne klienta systemu Windows nie są obsługiwane.
+- Systemy operacyjne klienta systemu Windows nie są obsługiwane.
 
 Agenci dla systemu Windows muszą być skonfigurowani do komunikowania się z serwerem Windows Server Update Services (WSUS) albo mieć dostęp do usługi Microsoft Update.
 
@@ -51,12 +51,15 @@ Agenci dla systemu Windows muszą być skonfigurowani do komunikowania się z se
 
 ### <a name="linux"></a>Linux
 
-* CentOS 6 (x86/x64) i 7 (x64)  
-* Red Hat Enterprise 6 (x86/x64) i 7 (x64)  
-* SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)  
-* Ubuntu 12.04 LTS i nowsze (x86/x64)   
+- CentOS 6 (x86/x64) i 7 (x64)
 
-> [!NOTE]  
+- Red Hat Enterprise 6 (x86/x64) i 7 (x64)
+
+- SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)
+
+- Ubuntu 12.04 LTS i nowsze (x86/x64)
+
+> [!NOTE]
 > Aby w przypadku systemu Ubuntu uniknąć stosowania aktualizacji poza oknem obsługi, zmień konfigurację pakietu Unattended-Upgrade tak, aby wyłączyć automatyczne aktualizacje. Aby uzyskać więcej informacji, zobacz [temat poświęcony aktualizacjom automatycznym w podręczniku systemu Ubuntu Server](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.
@@ -65,16 +68,15 @@ To rozwiązanie nie obsługuje agenta pakietu OMS Linux skonfigurowany pod kąte
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Włączanie rozwiązania Update Management dla maszyn wirtualnych platformy Azure
 
-1. W witrynie Azure Portal otwórz konto usługi Automation.
-2. W lewym okienku wybierz pozycję **Zarządzanie aktualizacjami**.
-3. W górnej części okna wybierz pozycję **Dodaj maszynę wirtualną Azure**.
-   ![Karta Dodaj maszynę wirtualną Azure](./media/manage-update-multi/update-onboard-vm.png)
-4. Wybierz maszynę wirtualną, którą chcesz dołączyć. Zostanie wyświetlone okno dialogowe **Włączanie rozwiązania Update Management**.
-5. Wybierz pozycję **Włącz**.
+W portalu Azure Otwórz Twoje konto usługi Automatyzacja i wybierz **zarządzanie aktualizacjami**.
 
-   ![Okno dialogowe Włączanie rozwiązania Update Management](./media/manage-update-multi/update-enable.png)
+W górnej części okna wybierz pozycję **Dodaj maszynę wirtualną Azure**.
 
-Rozwiązanie Update Management zostanie włączone dla maszyny wirtualnej.
+![Dodaj kartę maszyny Wirtualnej Azure](./media/manage-update-multi/update-onboard-vm.png)
+
+Wybierz maszynę wirtualną, którą chcesz dołączyć. Zostanie wyświetlone okno dialogowe **Włączanie rozwiązania Update Management**. Wybierz **włączyć** dołączyć maszyny wirtualnej. Po zakończeniu dołączania zarządzania aktualizacjami jest włączona dla maszyny wirtualnej.
+
+![Okno dialogowe Włączanie rozwiązania Update Management](./media/manage-update-multi/update-enable.png)
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Włączanie rozwiązania Update Management dla maszyn wirtualnych i komputerów spoza platformy Azure
 
@@ -83,14 +85,22 @@ Aby uzyskać instrukcje dotyczące włączania rozwiązania Update Management dl
 Aby uzyskać instrukcje dotyczące włączania rozwiązania Update Management dla maszyn wirtualnych i komputerów z systemem Linux spoza platformy Azure, zobacz [Łączenie komputerów z systemem Linux z usługą Log Analytics](../log-analytics/log-analytics-agent-linux.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Wyświetlanie komputerów dołączonych do konta usługi Automation
-Po włączeniu zarządzania aktualizacjami dla maszyn, informacje o maszynach można wyświetlić, klikając pozycję **Komputery**. Dostępne są takie informacje o komputerach, jak *Nazwa*, *Zgodność*, *Środowisko*, *Typ systemu operacyjnego*, *Aktualizacje krytyczne i aktualizacje zabezpieczeń* oraz *Inne aktualizacje*. 
+
+Po włączeniu zarządzania aktualizacjami dla maszyn, informacje o maszynach można wyświetlić, klikając pozycję **Komputery**. Informacje o komputerze, takich jak *nazwa*, *zgodności*, *środowiska*, *typ systemu operacyjnego*, *krytyczne i aktualizacje zabezpieczeń* , *Inne aktualizacje*, i *aktualizacji agenta gotowości* są dostępne.
 
   ![Karta z wyświetlonymi komputerami](./media/manage-update-multi/update-computers-tab.png)
 
 Komputery, dla których niedawno włączono zarządzanie aktualizacjami, mogą nie być jeszcze ocenione. Stan zgodności tych komputerów będzie mieć wartość *Nie oceniono*.  Oto lista wartości stanu zgodności:
-* Zgodne —komputery z wszystkimi aktualizacjami krytycznymi i aktualizacjami zabezpieczeń.
-* Niezgodne —komputery, na których brakuje co najmniej jednej aktualizacji krytycznej lub aktualizacji zabezpieczeń.
-* Nie oceniono — dane oceny aktualizacji nie zostały wysłane z komputera w oczekiwanym czasie.  W przypadku komputerów z systemem Linux okres ten obejmuje ostatnie trzy godziny, a w przypadku komputerów z systemem Windows — ostatnie 12 godzin.  
+
+- Zgodne —komputery z wszystkimi aktualizacjami krytycznymi i aktualizacjami zabezpieczeń.
+
+- Niezgodne —komputery, na których brakuje co najmniej jednej aktualizacji krytycznej lub aktualizacji zabezpieczeń.
+
+- Nie oceniono — dane oceny aktualizacji nie zostały wysłane z komputera w oczekiwanym czasie.  W przypadku komputerów z systemem Linux okres ten obejmuje ostatnie trzy godziny, a w przypadku komputerów z systemem Windows — ostatnie 12 godzin.
+
+Aby wyświetlić stan agenta, kliknij łącze w **aktualizacji AGENTA gotowości** kolumny. Spowoduje to otwarcie strony hybrydowy proces roboczy, który zawiera stan hybrydowy proces roboczy. Na poniższej ilustracji przedstawiono przykład agenta, która nie została podłączona do zarządzania aktualizacjami dla dużo czasu.
+
+![Karta z wyświetlonymi komputerami](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Wyświetlanie oceny aktualizacji
 
@@ -122,29 +132,30 @@ Wyświetlenie zaktualizowanych danych z zarządzanych komputerów na pulpicie na
 Aby zainstalować aktualizacje, zaplanuj wdrożenie zgodnie z harmonogramem wydawania i oknem obsługi.
 Możesz wybrać typy aktualizacji, które mają zostać uwzględnione we wdrożeniu. Możesz na przykład uwzględnić aktualizacje krytyczne lub aktualizacje zabezpieczeń i wykluczyć pakiety zbiorcze aktualizacji.
 
-Zaplanuj nowe wdrożenie aktualizacji dla co najmniej jednej maszyny wirtualnej, wybierając pozycję **Zaplanuj wdrażanie aktualizacji** w górnej części okna dialogowego **Update Management**. W okienku **Nowe wdrożenie aktualizacji** podaj następujące informacje:
+Zaplanuj nowe wdrożenie aktualizacji dla co najmniej jednej maszyny wirtualnej, wybierając pozycję **Zaplanuj wdrażanie aktualizacji** w górnej części okna dialogowego **Update Management**.
+W okienku **Nowe wdrożenie aktualizacji** podaj następujące informacje:
 
-* **Nazwa**: wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
-* **Typ systemu operacyjnego**: wybierz system Windows lub Linux.
-* **Komputery do zaktualizowania**: wybierz maszyny wirtualne, które chcesz zaktualizować.
+- **Nazwa**: wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
+- **Typ systemu operacyjnego**: wybierz system Windows lub Linux.
+- **Maszyny, aby zaktualizować**: Wybierz maszyny wirtualne, które chcesz zaktualizować. Gotowość maszyny jest wyświetlany w obszarze **aktualizacji AGENTA gotowości** kolumny. Dzięki temu można zobaczyć stan kondycji maszyny przed zaplanowaniem wdrożenia aktualizacji.
 
   ![Okienko „Nowe wdrożenie aktualizacji”](./media/manage-update-multi/update-select-computers.png)
 
-* **Klasyfikacja aktualizacji**: wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. Dostępne są następujące typy klasyfikacji:
-  * Aktualizacje krytyczne
-  * Aktualizacje zabezpieczeń
-  * Pakiety zbiorcze aktualizacji
-  * Pakiety funkcji
-  * Dodatki Service Pack
-  * Aktualizacje definicji
-  * Narzędzia
-  * Aktualizacje
-* **Ustawienia harmonogramu**: możesz zaakceptować domyślną datę i godzinę, czyli 30 minut po bieżącej godzinie. Możesz też określić inny czas.
+- **Klasyfikacja aktualizacji**: wybierz typy oprogramowania, które zostaną uwzględnione we wdrożeniu aktualizacji. Opis typów klasyfikacji, zobacz [klasyfikacje aktualizacji](automation-update-management.md#update-classifications). Dostępne są następujące typy klasyfikacji:
+  - Aktualizacje krytyczne
+  - Aktualizacje zabezpieczeń
+  - Pakiety zbiorcze aktualizacji
+  - Pakiety funkcji
+  - Dodatki Service Pack
+  - Aktualizacje definicji
+  - Narzędzia
+  - Aktualizacje
+- **Ustawienia harmonogramu**: możesz zaakceptować domyślną datę i godzinę, czyli 30 minut po bieżącej godzinie. Możesz też określić inny czas.
    Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z harmonogramem cyklicznym. Aby skonfigurować harmonogram cykliczny, wybierz opcję **Cyklicznie** w obszarze **Cykl**.
 
    ![Okno dialogowe Ustawienia harmonogramu](./media/manage-update-multi/update-set-schedule.png)
 
-* **Okno obsługi (minuty)**: podaj okres, w którym ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
+- **Okno obsługi (minuty)**: podaj okres, w którym ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
 
 Po ukończeniu konfigurowania harmonogramu wrócić do pulpitu nawigacyjnego stanu, wybierając przycisk **Utwórz**. Tabela **Zaplanowane** pokaże utworzony właśnie harmonogram wdrożenia.
 
@@ -164,9 +175,9 @@ Aby wyświetlić pulpit nawigacyjny wdrożenia aktualizacji, wybierz ukończone 
 Okienko **Wyniki aktualizacji** zawiera łączną liczbę aktualizacji i wyniki wdrożenia na maszynie wirtualnej.
 Tabela po prawej stronie zawiera szczegółowy podział każdej aktualizacji i wyniki instalacji. Wyniki instalacji mogą mieć jedną z następujących wartości:
 
-* Nie podjęto próby: nie zainstalowano aktualizacji z powodu niewystarczającego czasu w zdefiniowanym oknie konserwacji.
-* Powodzenie: aktualizacja powiodła się.
-* Niepowodzenie: aktualizacja nie powiodła się.
+- Nie podjęto próby: nie zainstalowano aktualizacji z powodu niewystarczającego czasu w zdefiniowanym oknie konserwacji.
+- Powodzenie: aktualizacja powiodła się.
+- Niepowodzenie: aktualizacja nie powiodła się.
 
 Aby wyświetlić wszystkie wpisy dziennika utworzone przez wdrożenie, wybierz pozycję **Wszystkie dzienniki**.
 
@@ -176,5 +187,4 @@ Aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem,
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat zarządzania aktualizacjami — takie jak dzienniki, dane wyjściowe i komunikaty o błędach, zobacz [rozwiązania do zarządzania aktualizacji w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).
-
+- Aby dowiedzieć się więcej na temat zarządzania aktualizacjami — takie jak dzienniki, dane wyjściowe i komunikaty o błędach, zobacz [rozwiązania do zarządzania aktualizacji w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).

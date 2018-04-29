@@ -1,35 +1,4 @@
-- name: Tożsamość usługi zarządzanej (przypisana przez użytkownika)
-  href: msi-overview.md
+- name: Uzyskiwanie dostępu do magazynu platformy Azure przy użyciu tożsamości usługi zarządzanej
   items:
-    - name: Konfigurowanie pliku MSI dla maszyny wirtualnej platformy Azure
-      items:
-        - name: Korzystanie z interfejsu wiersza polecenia platformy Azure
-          href: msi-qs-configure-cli-windows-vm.md
-        - name: Korzystanie z zestawu Azure SDK
-          href: msi-qs-configure-sdk-windows-vm.md
-    - name: Udzielanie tożsamości usługi zarządzanej dostępu do usługi Resource Manager
-      items:
-        - name: Korzystanie z interfejsu wiersza polecenia platformy Azure
-          href: msi-howto-assign-access-cli.md
-    - name: 'Jak korzystać z tożsamości usługi zarządzanej maszyny wirtualnej '
-      items:
-        - name: Uzyskiwanie tokenu dostępu
-          href: msi-how-to-use-vm-msi-token.md
-        - name: Logowanie do interfejsu wiersza polecenia platformy Azure
-          href: msi-how-to-use-vm-msi-sign-in.md
-        - name: Używanie z zestawami SDK platformy Azure
-          href: msi-how-to-use-vm-msi-sdk.md
-    - name: Uzyskiwanie dostępu do usługi Azure Resource Manager przy użyciu tożsamości usługi zarządzanej
-      items:
-        - name: Z maszyny wirtualnej z systemem Linux
-          href: msi-tutorial-linux-vm-access-arm.md
-    - name: Uzyskiwanie dostępu do usługi Azure Cosmos DB przy użyciu tożsamości usługi zarządzanej
-      items:
-        - name: Z maszyny wirtualnej z systemem Linux
-          href: msi-tutorial-linux-vm-access-cosmosdb.md
-    - name: Uzyskiwanie dostępu do magazynu platformy Azure przy użyciu tożsamości usługi zarządzanej
-      items:
-        - name: Z maszyny wirtualnej z systemem Linux przy użyciu klucza dostępu
-          href: msi-tutorial-linux-vm-access-storage.md
-    - name: Często zadawane pytania i znane problemy
-      href: msi-known-issues.md
+    - name: Z maszyny wirtualnej z systemem Linux przy użyciu klucza dostępu
+      href: msi-tutorial-linux-vm-access-storage.md

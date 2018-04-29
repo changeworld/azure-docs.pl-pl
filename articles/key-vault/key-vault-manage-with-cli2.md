@@ -1,24 +1,24 @@
 ---
-title: "Zarządzanie usługą Azure Key Vault przy użyciu interfejsu wiersza polecenia | Dokumentacja firmy Microsoft"
-description: "Użyj tego samouczka do automatyzacji typowych zadań w Key Vault za pomocą interfejsu wiersza polecenia 2.0"
+title: Zarządzanie usługą Azure Key Vault przy użyciu interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
+description: Użyj tego samouczka do automatyzacji typowych zadań w Key Vault za pomocą interfejsu wiersza polecenia 2.0
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 04/19/2018
 ms.author: barclayn
-ms.openlocfilehash: eaeb50ca8a83fcfee6689acf549f20ba5d44c51d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 95e35ed1f26a861ab934570fae613dda95fcb537
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="manage-key-vault-using-cli-20"></a>Zarządzanie za pomocą interfejsu wiersza polecenia 2.0 magazyn kluczy
 
@@ -65,25 +65,25 @@ Możesz przeczytać następujące samouczki, aby zapoznać się z usługą Azure
 ## <a name="connect-to-your-subscriptions"></a>Nawiązywanie połączenia z subskrypcjami
 Aby zalogować się przy użyciu konta organizacji, użyj następującego polecenia:
 
-```azurecli-interactive
+```azurecli
 az login -u username@domain.com -p password
 ```
 
 lub jeśli chcesz się zalogować, wpisując interakcyjnego
 
-```azurecli-interactive
+```azurecli
 az login
 ```
 
 Jeśli masz wiele subskrypcji i chcesz określić, która ma być używana przez usługę Azure Key Vault, wpisz następujące polecenie, aby zobaczyć subskrypcje przypisane do konta:
 
-```azurecli-interactive
+```azurecli
 az account list
 ```
 
 Aby określić subskrypcję, która ma być używana, wpisz polecenie:
 
-```azurecli-interactive
+```azurecli
 az account set --subscription <subscription name or ID>
 ```
 
@@ -92,26 +92,26 @@ Aby uzyskać więcej informacji o konfigurowaniu Azure Międzyplatformowego inte
 ## <a name="create-a-new-resource-group"></a>Utworzenie nowej grupy zasobów
 Podczas korzystania z usługi Azure Resource Manager, wszystkie powiązane zasoby są tworzone wewnątrz grupy zasobów. W tym samouczku utworzymy nową grupę zasobów "ContosoResourceGroup".
 
-```azurecli-interactive
+```azurecli
 az group create -n 'ContosoResourceGroup' -l 'East Asia'
 ```
 
 Pierwszym parametrem jest nazwa grupy zasobów, a drugi parametr jest lokalizacji. Aby uzyskać listę wszystkich możliwych wpisz lokalizacje:
 
-```azurecli-interactive
+```azurecli
 az account list-locations
 ``` 
 
 Aby uzyskać więcej informacji, wpisz: 
 
-```azurecli-interactive
+```azurecli
 az account list-locations -h
 ```
 
 ## <a name="register-the-key-vault-resource-provider"></a>Rejestrowanie dostawcy zasobów magazynu kluczy
 Podczas próby utworzenia nowego magazynu kluczy może zostać wyświetlony błąd "subskrypcji nie jest zarejestrowany do korzystania z przestrzeni nazw"Microsoft.KeyVault"". Jeśli ten komunikat zostanie wyświetlony, upewnij się, że dostawca zasobów usługi Key Vault jest zarejestrowany w ramach Twojej subskrypcji:
 
-```azurecli-interactive
+```azurecli
 az provider register -n Microsoft.KeyVault
 ```
 
@@ -119,6 +119,7 @@ az provider register -n Microsoft.KeyVault
 To tylko należy jednak wykonać jeden raz dla subskrypcji.
 
 ## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
+
 Użyj `az keyvault create` polecenie, aby utworzyć magazyn kluczy. Ten skrypt ma trzy obowiązkowe parametry: Nazwa grupy zasobów, nazwa magazynu kluczy i lokalizacji geograficznej.
 
 Na przykład:
@@ -129,7 +130,7 @@ Na przykład:
 
 należy wpisać:
 
-```azurecli-interactive
+```azurecli
 az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
 ```
 
@@ -143,12 +144,14 @@ Twoje konto platformy Azure ma teraz uprawnienia do wykonywania dowolnych operac
 ## <a name="add-a-key-or-secret-to-the-key-vault"></a>Dodawanie klucza lub klucza tajnego do magazynu kluczy
 
 Usługa Azure Key Vault utworzenie klucza chronionego przez oprogramowanie do, należy użyć `az key create` polecenia i wpisz następujące polecenie:
-```azurecli-interactive
+
+```azurecli
 az keyvault key create --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --protection software
 ```
+
 Jednak jeśli masz istniejący klucz w pliku PEM, zapisany jako plik lokalny w pliku o nazwie softkey.pem, który chcesz przekazać do usługi Azure Key Vault, wpisz następujące polecenie, aby zaimportować klucz z. Plik PEM, który chroni klucz przez oprogramowanie w usłudze Key Vault:
 
-```azurecli-interactive
+```azurecli
 az keyvault key import --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --pem-file './softkey.pem' --pem-password 'PaSSWORD' --protection software
 ```
 
@@ -156,23 +159,23 @@ Teraz możesz odwoływać się klucz, który został utworzony lub przekazany do
 
 Aby dodać klucza tajnego w magazynie, który jest hasłem o nazwie SQLPassword i ma wartość z Pa$ $w0rd do usługi Azure Key Vault, wpisz następujące polecenie:
 
-```azurecli-interactive
+```azurecli
 az keyvault secret set --vault-name 'ContosoKeyVault' --name 'SQLPassword' --value 'Pa$$w0rd'
 ```
 
-Teraz możesz odwoływać się do hasła dodanego do usługi Azure Key Vault za pomocą jego identyfikatora URI. Użyj adresu **https://ContosoVault.vault.azure.net/secrets/SQLPassword**, aby zawsze uzyskać bieżącą wersję, oraz adresu **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**, aby uzyskać tę konkretną wersję.
+Teraz możesz odwoływać się do hasła dodanego do usługi Azure Key Vault za pomocą jego identyfikatora URI. Użyj **https://ContosoVault.vault.azure.net/secrets/SQLPassword** aby zawsze uzyskać bieżącą wersję oraz **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** uzyskać tę konkretną wersję.
 
 Teraz wyświetlić klucz lub klucz tajny, który został właśnie utworzony:
 
 * Aby wyświetlić klucz, wpisz polecenie: 
 
-```azurecli-interactive
+```azurecli
 az keyvault key list --vault-name 'ContosoKeyVault'
 ```
 
 * Aby wyświetlić klucz tajny, wpisz polecenie: 
 
-```azurecli-interactive
+```azurecli
 az keyvault secret list --vault-name 'ContosoKeyVault'
 ```
 
@@ -198,7 +201,7 @@ Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji w usłu
 [!NOTE]
 Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure użytą do utworzenia magazynu kluczy. 
 3. Kliknij pozycję **Rejestrowanie nowej aplikacji**.
-4. W bloku **Tworzenie** podaj nazwę swojej aplikacji, a następnie wybierz pozycję **APLIKACJA SIECI WEB I/LUB INTERFEJS API SIECI WEB** (ustawienie domyślne) i określ **ADRES URL LOGOWANIA** dla aplikacji internetowej. Jeśli nie masz teraz tych informacji, możesz użyć fikcyjnych danych na potrzeby tego kroku (na przykład możesz określić adres http://test1.contoso.com). Nie ma znaczenia, czy takie witryny istnieją. 
+4. W bloku **Tworzenie** podaj nazwę swojej aplikacji, a następnie wybierz pozycję **APLIKACJA SIECI WEB I/LUB INTERFEJS API SIECI WEB** (ustawienie domyślne) i określ **ADRES URL LOGOWANIA** dla aplikacji internetowej. Jeśli nie masz tych informacji w tym momencie można tworzyć dla tego kroku (na przykład można określić http://test1.contoso.com ). Nie ma znaczenia, czy takie witryny istnieją. 
 
     ![Rejestrowanie nowej aplikacji](./media/key-vault-manage-with-cli2/new-application-registration.png)
     >[!WARNING]
@@ -214,95 +217,102 @@ Musisz wybrać ten sam katalog, który zawiera subskrypcję platformy Azure uży
 
 
 ## <a name="authorize-the-application-to-use-the-key-or-secret"></a>Zezwalanie aplikacji na używanie klucza lub klucza tajnego
+
 Aby zezwolić aplikacji na dostęp do klucza lub klucza tajnego w magazynie, użyj `az keyvault set-policy` polecenia.
 
 Na przykład jeśli nazwa Twojego magazynu to ContosoKeyVault i aplikacji, które chcesz autoryzować ma identyfikator klienta 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed i chcesz zezwolić aplikacji na odszyfrowywanie oraz logowanie z kluczy w magazynie, następnie uruchom następujące polecenie:
 
-```azurecli-interactive
+```azurecli
 az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --key-permissions decrypt sign
 ```
 
 Jeśli chcesz zezwolić tej samej aplikacji na odczyt kluczy tajnych w magazynie, uruchom następujące polecenie:
 
-```azurecli-interactive
+```azurecli
 az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
+
 ## <a name="if-you-want-to-use-a-hardware-security-module-hsm"></a>Użycie sprzętowego modułu zabezpieczeń (HSM, hardware security module)
+
 W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają granicy modułów HSM. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Jeżeli te wymagania nie odnoszą się do Ciebie, pomiń tę sekcję i przejdź do sekcji [Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych](#delete-the-key-vault-and-associated-keys-and-secrets).
 
 Aby utworzyć te klucze chronione przez moduł HSM, musi mieć subskrypcję magazynu obsługującą klucze chronione przez moduł HSM.
 
 Podczas tworzenia keyvault, Dodaj parametr "sku":
 
-```azurecli-interactive
+```azurecli
 az keyvault create --name 'ContosoKeyVaultHSM' --resource-group 'ContosoResourceGroup' --location 'East Asia' --sku 'Premium'
 ```
+
 Do tego magazynu możesz dodać klucze chronione oprogramowaniem (jak pokazano wcześniej) oraz klucze chronione modułem HSM. Aby utworzyć klucz chroniony przez moduł HSM, ustaw dla parametru docelowego "HSM":
 
-```azurecli-interactive
+```azurecli
 az keyvault key create --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --protection 'hsm'
 ```
 
 Następujące polecenie służy do importowania klucza z pliku PEM, na tym komputerze. To polecenie importuje klucz do modułu HSM w usłudze Key Vault:
 
-```azurecli-interactive
+```azurecli
 az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --protection 'hsm' --pem-password 'PaSSWORD'
 ```
 
 Następne polecenie importuje pakiet „Wprowadź własny klucz” (BYOK, bring your own key). Umożliwia to wygenerowanie własnego klucza w lokalnym module HSM i przeniesienie go do modułów HSM w usłudze Key Vault bez opuszczania przez klucz granic modułu HSM:
 
-```azurecli-interactive
+```azurecli
 az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --byok-file './ITByok.byok' --protection 'hsm'
 ```
+
 Aby uzyskać szczegółowe instrukcje na temat generowania pakietu BYOK, zobacz [sposobu korzystania z usługi Azure Key Vault HSM-Protected klucze](key-vault-hsm-protected-keys.md).
 
 ## <a name="delete-the-key-vault-and-associated-keys-and-secrets"></a>Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych
+
 Jeśli nie są już potrzebne magazynu kluczy oraz klucz lub klucz tajny, który zawiera magazyn kluczy można usunąć za pomocą `az keyvault delete` polecenia:
 
-```azurecli-interactive
+```azurecli
 az keyvault delete --name 'ContosoKeyVault'
 ```
 
 Możesz także usunąć całą grupę zasobów platformy Azure zawierającą magazyn kluczy oraz inne zasoby, które zostały dodane do tej grupy:
 
-```azurecli-interactive
+```azurecli
 az group delete --name 'ContosoResourceGroup'
 ```
 
 ## <a name="other-azure-cross-platform-command-line-interface-commands"></a>Inne polecenia interfejsu wiersza polecenia platformy Azure i Platform
+
 Inne polecenia użytkownik może przydatne do zarządzania usługą Azure Key Vault.
 
 To polecenie wyświetla tabelaryczny widok wszystkich kluczy i wybranych właściwości:
 
-```azurecli-interactive
+```azurecli
 az keyvault key list --vault-name 'ContosoKeyVault'
 ```
 
 To polecenie wyświetla pełną listę właściwości dla określonego klucza:
 
-```azurecli-interactive
+```azurecli
 az keyvault key show --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
 ```
 
 To polecenie wyświetla tabelaryczny widok wszystkich nazw kluczy tajnych i wybranych właściwości:
 
-```azurecli-interactive
+```azurecli
 az keyvault secret list --vault-name 'ContosoKeyVault'
 ```
 
 Poniżej przedstawiono przykładowy sposób usunięcia określonego klucza:
 
-```azurecli-interactive
+```azurecli
 az keyvault key delete --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
 ```
 
 Poniżej przedstawiono przykładowy sposób usunięcia określonego klucza tajnego:
 
-```azurecli-interactive
+```azurecli
 az keyvault secret delete --vault-name 'ContosoKeyVault' --name 'SQLPassword'
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać pełną dokumentację interfejsu wiersza polecenia Azure dla magazynu kluczy poleceń, zobacz [odwołanie klucza magazynu interfejsu wiersza polecenia](/cli/azure/keyvault).
 

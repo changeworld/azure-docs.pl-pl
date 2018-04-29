@@ -1,24 +1,18 @@
 ---
-title: "Wyszukaj analizy ruchu w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Włącz analizy ruchu wyszukiwania dla usługi wyszukiwanie Azure, Usługa wyszukiwania w chmurze, obsługiwanych w systemie Microsoft Azure, aby odblokować informacjami na temat użytkowników i danych."
+title: Wyszukaj analizy ruchu w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Włącz analizy ruchu wyszukiwania dla usługi wyszukiwanie Azure, Usługa wyszukiwania w chmurze, obsługiwanych w systemie Microsoft Azure, aby odblokować informacjami na temat użytkowników i danych.
+author: HeidiSteen
+manager: cgronlun
 services: search
-documentationcenter: 
-author: bernitorres
-manager: jlembicz
-editor: 
-ms.assetid: b31d79cf-5924-4522-9276-a1bb5d527b13
 ms.service: search
-ms.devlang: multiple
-ms.workload: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/05/2017
-ms.author: betorres
-ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: heidist
+ms.openlocfilehash: ca0a00d078cd63aa8736ba9f9822fd812823304f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-search-traffic-analytics"></a>Co to jest analiza ruchu wyszukiwania
 Analiza ruchu wyszukiwania to wzorzec wykonania sprzężenia zwrotnego dla usługi wyszukiwania. Ten wzorzec opisano niezbędnych danych i jak zbierać za pomocą usługi Application Insights, wiodące branży monitorowania usług w wielu platform.
@@ -139,7 +133,7 @@ Dla innych języków i platform, zobacz pełne [listy](https://docs.microsoft.co
 
 Zawsze użytkownik kliknie dokumentu, który jest sygnał, który musi być zalogowany na potrzeby analizy wyszukiwania. Niestandardowe zdarzenia usługi Application Insights umożliwia rejestrowanie zdarzeń z następującego schematu:
 
-**ServiceName**: Nazwa usługi wyszukiwania (ciąg) **SearchId**: Unikatowy identyfikator (globalny guid) zapytania wyszukiwania powiązanych **identyfikator**: identyfikator dokumentu (ciąg) **pozycji** : strona wyników rangę (int) dokumentu w wyszukiwaniu
+**ServiceName**: Nazwa usługi wyszukiwania (ciąg) **SearchId**: Unikatowy identyfikator (globalny guid) zapytania wyszukiwania powiązanych **identyfikator**: identyfikator dokumentu (ciąg) **pozycji**: strona wyników rangę (int) dokumentu w wyszukiwaniu
 
 > [!NOTE]
 > Pozycja odwołuje się do kardynalnej kolejności w aplikacji. Jesteś mogą określać ten numer, tak długo, jak jest zawsze taki sam, aby umożliwić do porównania.

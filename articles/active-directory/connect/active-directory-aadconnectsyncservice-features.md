@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 534e4e6d8b6ea2bfc059383e3e55c0352678ee04
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: eb2a670735db8a72163967d89d0359b4b89a3e2f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkcje usługi synchronizacji programu Azure AD Connect
 Funkcja synchronizacji programu Azure AD Connect zawiera dwa składniki:
@@ -56,7 +56,7 @@ Następujące ustawienia są skonfigurowane przy użyciu usługi Azure AD Connec
 | DeviceWriteback |[Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Synchronizacja programu Azure AD Connect: rozszerzenia katalogów](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Umożliwia atrybutu kwarantannie, gdy jest duplikatem innego obiektu, a nie awarii całego obiektu podczas eksportowania. |
-| PasswordSync |[Implementowanie synchronizacji haseł z synchronizacji Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| PasswordSync |[Implementowanie synchronizacji skrótów haseł z synchronizacji Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
 | UnifiedGroupWriteback |[Podglądu: Zapisywanie zwrotne grup](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Nie są obecnie obsługiwane. |
 
@@ -88,7 +88,7 @@ W przeszłości aktualizacje przy użyciu usługi synchronizacji z lokalnym atry
 
 Aby uzyskać więcej informacji, zobacz [nazwy użytkownika w usłudze Office 365, Azure lub Intune nie są zgodne lokalną nazwą UPN lub alternatywnym Identyfikatorem logowania](https://support.microsoft.com/kb/2523192).
 
-Włączenie tej funkcji umożliwia aparatu synchronizacji można zaktualizować właściwości userPrincipalName, gdy jest zmienione lokalnymi i użyciu synchronizacji haseł. Jeśli używasz federacyjnych, ta funkcja nie jest obsługiwana.
+Włączenie tej funkcji umożliwia aparatu synchronizacji można zaktualizować właściwości userPrincipalName, gdy jest zmienione na lokalnym i używasz synchronizacji skrótów haseł. Jeśli używasz federacyjnych, ta funkcja nie jest obsługiwana.
 
 Ta funkcja jest na domyślnie dla nowo utworzone katalogów usługi Azure AD. Możesz sprawdzić, czy ta funkcja jest włączona dla Ciebie, uruchamiając:  
 

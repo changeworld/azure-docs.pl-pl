@@ -1,3 +1,19 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: cosmos-db
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: sngun
+ms.custom: include file
+ms.openlocfilehash: cf77eaa07d45222cecf0450fb33fe62e556bcd9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/16/2018
+---
 Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby utworzyć bazę danych i kolekcję. 
 
 1. Kliknij przycisk **Eksplorator danych** > **Nowa kolekcja**. 
@@ -12,7 +28,7 @@ Teraz możesz użyć narzędzia Eksplorator danych w witrynie Azure Portal, aby 
     ---|---|---
     Identyfikator bazy danych|Zadania|Wprowadź *Zadania* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków /, \\, #, ? ani mieć spacji na końcu.
     Identyfikator kolekcji|Items|Wprowadź *Elementy* jako nazwę nowej kolekcji. W przypadku identyfikatorów kolekcji obowiązują takie same wymagania dotyczące znaków, jak dla nazw baz danych.
-    Pojemność magazynu| Stała (10 GB)|Zmień wartość na **Stała (10 GB)**. Ta wartość to pojemność magazynu bazy danych.
+    Pojemność magazynu| Stała (10 GB)|Użyj wartości domyślnej **Stała (10 GB)**. Ta wartość to pojemność magazynu bazy danych.
     Przepływność|400 RU|Zmień przepływność na 400 jednostek żądania na sekundę (RU/s). Pojemność magazynu musi być ustawiona na **Stałe (10 GB)**, aby możliwe było ustawienie przepływności na 400 RU/s. Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę. 
     
     Oprócz powyższych ustawień, można opcjonalnie dodać **unikatowe klucze** dla kolekcji. W tym przykładzie pozostawmy pole puste. Unikatowe klucze umożliwiają deweloperom dodanie warstwy integralności danych do bazy danych. Tworząc zasady unikatowych kluczy podczas tworzenia kolekcji, można zapewnić unikatowość co najmniej jednej wartości na każdy klucz partycji. Aby dowiedzieć się więcej, zapoznaj się z artykułem [Unique keys in Azure Cosmos DB (Unikatowe klucze w usłudze Azure Cosmos DB)](../articles/cosmos-db/unique-keys.md).

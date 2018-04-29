@@ -1,9 +1,9 @@
 ---
-title: "Program MVP zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft"
-description: "Artykuł zawiera omówienie zabezpieczeń usługi Azure obszaru udział w programie MVP."
+title: Program MVP zabezpieczeń platformy Azure | Dokumentacja firmy Microsoft
+description: Artykuł zawiera omówienie zabezpieczeń usługi Azure obszaru udział w programie MVP.
 services: security
 documentationcenter: na
-author: TomShinder
+author: barclayn
 manager: Mbaldwin
 editor: TomSh
 ms.assetid: 34f4bdf0-7332-4c4a-b186-05263da700cf
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: db42e80a93f2d0db737b63cab1a55af4f6dd05e4
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: ebe6a6ffec094d535ec38d471ff6036b7379fcb8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-mvp-program"></a>Program MVP zabezpieczeń platformy Azure
+
 Microsoft najważniejszymi pracownikami pomocy technicznej (MVP) są użytkownicy społeczności, którzy wykazały, że przykładowy zobowiązań ułatwienia innym pełne wykorzystanie ich obsługi technologii firmy Microsoft. Mają ich męczennicy, wykorzystaniu praktycznej wiedzy i wiedzy technicznej ze społecznością i z firmą Microsoft.
 
 Microsoft Azure rozpoznaje teraz społeczności ekspertów z specjalistyczną wiedzę w zabezpieczeń platformy Azure. MVPs Microsoft można przyznać MVP platformie Microsoft Azure w obszarze wkład zabezpieczeń Azure.

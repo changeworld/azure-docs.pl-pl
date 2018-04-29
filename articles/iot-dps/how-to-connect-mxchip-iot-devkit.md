@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: d60c5766b22e31c33d0dd4a743fa297470109ac6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7fe1cd003bd7e6b681989324a42a076f4fd2f7df
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Użyj obsługi automatycznego inicjowania obsługi usługi Azure IoT Hub urządzenia do zarejestrowania zestaw deweloperski IoT MXChip z Centrum IoT
 
@@ -54,7 +54,7 @@ Aby podłączyć zestaw deweloperski do inicjowania obsługi utworzone wystąpie
 4. Otwórz program Visual Studio Code, podłącz zestaw deweloperski do komputera, a następnie otwórz folder, który zawiera kod, który można sklonować.
 
 5. Otwórz **DevKitDPS.ino**. Znajdź i Zamień `[Global Device Endpoint]` i `[ID Scope]` z wartościami zapisany w dół.
-  ![Punkt końcowy punktu dystrybucji](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) można pozostawić **registrationId** puste. Aplikacja generuje go na podstawie wersji MAC adres i oprogramowania układowego. Jeśli chcesz dostosować identyfikator rejestracji, należy użyć tylko, alfanumeryczne, małe litery i łącznika kombinacji z maksymalnie 128 znaków. Aby uzyskać więcej informacji, zobacz [Zarządzanie rejestracji urządzenia z portalu Azure](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments).
+  ![Punkt końcowy punktu dystrybucji](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) można pozostawić **registrationId** puste. Aplikacja generuje go na podstawie wersji MAC adres i oprogramowania układowego. Jeśli chcesz dostosować identyfikator rejestracji, należy użyć tylko, alfanumeryczne, małe litery i łącznika kombinacji z maksymalnie 128 znaków. Aby uzyskać więcej informacji, zobacz [Zarządzanie rejestracji urządzenia z portalu Azure](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
 6. Użyj szybkiego otwarte w kodzie VS (Windows: `Ctrl+P`, macOS: `Cmd+P`) i typ *zadań przekazywania urządzenia* kompilacji i przekazać kod do zestaw deweloperski.
 

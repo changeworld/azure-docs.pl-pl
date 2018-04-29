@@ -13,22 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 04/19/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: b9ead9643cc7926be3bd69e947977fa40d45a722
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 24723f268e59103c712b98b4bd895472b034afc0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwala lub blokuje zaproszeń do użytkowników B2B z określonym organizacjom
 
 Listy dozwolonych lub listę odrzuconych służy do dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom. Na przykład jeśli chcesz zablokować domen adresów e-mail osobistych, można skonfigurować listę odmowy, która zawiera domen, takich jak Gmail.com i Outlook.com. Lub, jeśli firma ma powiązanie z innych firm, takich jak Contoso.com, Fabrikam.com i Litware.com, i chcesz ograniczyć zaproszenia tylko tych organizacji, możesz dodać Contoso.com, Fabrikam.com i Litware.com do Twojej listy dozwolonych.
   
-> [!NOTE]
-> Obecnie można tylko Użyj odmowy. Możliwość używania zezwala na listach jest bardzo wkrótce.
-
 ## <a name="important-considerations"></a>Ważne uwagi
 
 - Można utworzyć listy dozwolonych lub listę odrzuconych. Nie można skonfigurować obu typów list. Domyślnie, niezależnie od domeny nie są w na białej liście są na liście odmowy i na odwrót. 
@@ -50,22 +47,34 @@ Aby dodać listę odrzuconych:
 2. Wybierz **usługi Azure Active Directory** > **użytkowników** > **ustawienia użytkownika**.
 3. W obszarze **użytkowników zewnętrznych**, wybierz pozycję **Zarządzanie ustawieniami współpracy zewnętrznej**.
 4. W obszarze **ograniczenia współpracy**, wybierz pozycję **odmowy zaproszenia do określonych domen**.
-5. W obszarze **DOMEN**, wprowadź nazwę domeny, które chcesz zablokować. Dla wielu domen wprowadź każdej domeny w nowym wierszu.
+5. W obszarze **DOMEN**, wprowadź nazwę domeny, które chcesz zablokować. Dla wielu domen wprowadź każdej domeny w nowym wierszu. Na przykład:
 
    ![Pokazuje opcję Odmów domenom dodany](./media/active-directory-b2b-allow-deny-list/DenyListSettings.png)
  
 6. Gdy wszystko będzie gotowe, kliknij przycisk **zapisać**.
 
-Po ustawieniu zasad, Jeśli spróbujesz zaprosić użytkowników z zablokowanych domen, pojawi się komunikat z informacją, że użytkownik jest obecnie zablokowany przez zasady zaproszenia.
+Po ustawieniu zasad, Jeśli spróbujesz zaprosić użytkowników z zablokowanych domen, pojawi się komunikat z informacją, że domeny użytkownika jest obecnie zablokowany przez zasady zaproszenia.
  
 ### <a name="add-an-allow-list"></a>Dodaj do listy dozwolonych
 
-> [!NOTE]
-> Obecnie **Zezwalaj tylko na określonych domen zaproszeń (najbardziej restrykcyjne)** ustawienie jest niedostępne. Możliwość używania zezwala na listach jest bardzo wkrótce.
-
 Jest to bardziej restrykcyjne konfiguracji, których można ustawić określonych domen na liście dozwolonych i ograniczyć zaproszeń do skorzystania z innymi organizacjami lub domeny, które nie są wymienione. 
 
-Jeśli chcesz użyć listy dozwolonych, upewnij się, że poświęcić czas na pełni ocenę potrzeb firmy. Po wybraniu tych zasad zbyt restrykcyjne, użytkownicy mogą wybrać wysyłać dokumenty za pośrednictwem poczty e-mail lub Znajdź inne-IT oficjalnie zaakceptowanych sposoby współpraca.
+Jeśli chcesz użyć listy dozwolonych, upewnij się, że poświęcić czas na pełni ocenę potrzeb firmy są. Po wybraniu tych zasad zbyt restrykcyjne, użytkownicy mogą wybrać wysyłać dokumenty za pośrednictwem poczty e-mail lub Znajdź inne-IT oficjalnie zaakceptowanych sposoby współpraca.
+
+
+Aby dodać listy dozwolonych:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz **usługi Azure Active Directory** > **użytkowników** > **ustawienia użytkownika**.
+3. W obszarze **użytkowników zewnętrznych**, wybierz pozycję **Zarządzanie ustawieniami współpracy zewnętrznej**.
+4. W obszarze **ograniczenia współpracy**, wybierz pozycję **Zezwalaj tylko na określonych domen zaproszeń (najbardziej restrykcyjne)**.
+5. W obszarze **DOMEN**, wprowadź nazwę domeny, które chcesz zezwolić. Dla wielu domen wprowadź każdej domeny w nowym wierszu. Na przykład:
+
+   ![Pokazuje opcję Zezwalaj domenom dodany](./media/active-directory-b2b-allow-deny-list/AllowListSettings.png)
+ 
+6. Gdy wszystko będzie gotowe, kliknij przycisk **zapisać**.
+
+Po ustawieniu zasad, Jeśli spróbujesz zaprosić użytkowników z domeny, który nie znajduje się na liście dozwolonych, pojawi się komunikat z informacją, że domeny użytkownika jest obecnie zablokowany przez zasady zaproszenia.
 
 ### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>Zezwalaj na przejście z odrzucanie listy i na odwrót 
 
@@ -115,9 +124,6 @@ Jeśli moduł nie jest zainstalowany lub nie ma wymaganej wersji, wykonaj jedną
     ````
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Konfigurowanie zasad przy użyciu poleceń cmdlet AzureADPolicy
-
-> [!NOTE]
-> Obecnie można skonfigurować tylko odmowy. Możliwość używania zezwala na listach jest bardzo wkrótce.
 
 Aby utworzyć Zezwalaj lub Odmów listy, użyj [AzureADPolicy nowy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) polecenia cmdlet. Poniższy przykład pokazuje, jak ustawić listę Odmów, która blokuje domeny "live.com".
 

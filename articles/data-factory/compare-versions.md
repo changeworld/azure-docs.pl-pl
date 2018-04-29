@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2018
+ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Porównanie wersji 1 i 2 usługi Azure Data Factory
 W tym artykule porównano wersję 2 z wersją 1 usługi Azure Data Factory. Aby zapoznać się z opisem wersji 1, zobacz [Wprowadzenie do usługi Azure Data Factory](v1/data-factory-introduction.md). Aby zapoznać się z opisem wersji 2, zobacz [Wprowadzenie do usługi Data Factory (V2 — wersja zapoznawcza)](introduction.md).
@@ -139,11 +139,7 @@ Zestawy SDK, które zostały zaktualizowane w wersji 2, nie są zgodne wstecz z 
 
 ## <a name="roles-and-permissions"></a>Role i uprawnienia
 
-Aby utworzyć zasoby podrzędne dla usługi Data Factory w wersji 2 i zarządzać nimi:
-
--   Roli współautora usługi Data Factory wersji 1 nie można użyć do tworzenia zasobów wersji 2 i zarządzania nimi.
--   Standardowa rola współautora usługi ARM utworzona w zasobie usługi Data Factory jest wystarczająca do tworzenia zasobów podrzędnych dla usługi Data Factory w wersji 2 wdrożonych w programie PowerShell lub przy użyciu zestawów SDK i zarządzania nimi. Nie jest wystarczająca do tworzenia zasobów podrzędnych dla usługi Data Factory w wersji 2 wdrożonych przy użyciu witryny Azure Portal lub szablonu usługi ARM i zarządzania nimi.
--   Aby utworzyć zasoby podrzędne dla usługi Data Factory w wersji 2 wdrożone z poziomu witryny Azure Portal lub przy użyciu szablonu usługi ARM i zarządzać nimi, musisz być członkiem roli „Operator zadań automatyzacji” na poziomie grupy zasobów lub na poziomie subskrypcji. Organizacja może też utworzyć rolę niestandardową, która zawiera wartość „Microsoft.Resources/deployments/*” na liście „Akcje”, jak opisano w [Tworzenie ról niestandardowych dla kontroli dostępu opartej na rolach na platformie Azure](../active-directory/role-based-access-control-custom-roles.md).
+Roli współautora usługi Data Factory w wersji 1 nie można użyć do tworzenia zasobów usługi Data Factory w wersji 2 i zarządzania nimi.
 
 ## <a name="monitoring-experience"></a>Środowisko monitorowania
 W wersji 2 można także monitorować fabryki danych za pomocą usługi [Azure Monitor](monitor-using-azure-monitor.md). Nowe polecenia cmdlet programu PowerShell obsługują monitorowanie [środowisk Integration Runtime](monitor-integration-runtime.md). Zarówno wersja 1, jak i wersja 2, obsługują monitorowanie wizualne za pośrednictwem aplikacji monitorowania, którą można uruchamiać z witryny Azure Portal.

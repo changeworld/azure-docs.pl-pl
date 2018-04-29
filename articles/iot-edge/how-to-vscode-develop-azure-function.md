@@ -10,10 +10,10 @@ ms.date: 12/20/2017
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 47d420b4b283b390f67719233c4bea59495a589a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-and-deploy-azure-functions-to-azure-iot-edge"></a>Użyj programu Visual Studio Code do opracowywania i wdrażania usługi Azure Functions do krawędzi IoT Azure
 
@@ -136,7 +136,7 @@ Pokaż następujące kroki należy jak utworzyć moduł krawędzi IoT na podstaw
 
 8. Zapisz plik.
 
-### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Tworzenie obrazu Docker i publikowanie go do rejestru
+### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Tworzenie obrazu platformy Docker i publikowanie go w rejestrze
 
 1. W eksploratorze programu VS Code rozwiń folder **Docker**. Następnie rozwiń folder dla platformy kontenera — **linux-x64** lub **windows-nano**.
 2. Kliknij prawym przyciskiem myszy plik **Dockerfile**, a następnie kliknij pozycję **Zbuduj obraz platformy Docker modułu usługi IoT Edge**. 

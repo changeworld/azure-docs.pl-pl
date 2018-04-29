@@ -1,11 +1,11 @@
 ---
-title: "Tworzenie i modyfikowanie obwodu usługi ExpressRoute: środowiska PowerShell: usługi Azure Resource Manager | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób tworzenia, obsługi administracyjnej, sprawdź, aktualizacji, usuwania i anulowanie zastrzeżenia obwodu usługi ExpressRoute."
+title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute: środowiska PowerShell: usługi Azure Resource Manager | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano sposób tworzenia, obsługi administracyjnej, sprawdź, aktualizacji, usuwania i anulowanie zastrzeżenia obwodu usługi ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
 ms.service: expressroute
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: ef092a48994b68268109cb98bd6cd4526e259d5b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0d45e97cc42826375a99df16a73c9a7b0c359224
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute, przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ W tym artykule opisano sposób tworzenia obwodu usługi Azure ExpressRoute przy 
 Aby rozpocząć konfigurację, zaloguj się do konta platformy Azure. Użyj poniższych przykładach umożliwiające nawiązywanie połączeń:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Sprawdź subskrypcje dla konta:
@@ -245,7 +245,7 @@ Get-AzureRmExpressRouteCircuit
 ```
 
 
-Odpowiedź jest podobny do poniższego przykładu:
+Odpowiedź jest podobna do poniższego przykładu:
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup

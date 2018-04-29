@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fcdcc4cf948550467257fa6cbe9287cd26d49962
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4089fe636ad25f97fe78f0bd10553b93d768321d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopiowanie danych z platformy Spark przy użyciu fabryki danych Azure 
 
@@ -47,10 +47,10 @@ Spark połączone usługi, obsługiwane są następujące właściwości:
 |:--- |:--- |:--- |
 | type | Właściwość type musi mieć ustawioną: **Spark** | Yes |
 | host | IP adres lub nazwę hosta serwera Spark  | Yes |
-| port | Port TCP używany przez serwer Spark nasłuchiwanie dla połączeń klienta.  | Yes |
+| port | Port TCP używany przez serwer Spark nasłuchiwanie dla połączeń klienta. Jeśli łączysz się Azure HDInsights, należy określić port jako 443. | Yes |
 | Typ | Typ serwera Spark. <br/>Dozwolone wartości to: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nie |
-| thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, ** HTTP ** | Nie |
-| authenticationType | Metodę uwierzytelniania używaną do uzyskania dostępu do serwera Spark. <br/>Dozwolone wartości to: **anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
+| thriftTransportProtocol | Protokół transportu do użycia w warstwie Thrift. <br/>Dozwolone wartości to: **Binary**, **SASL**, **HTTP** | Nie |
+| Typ authenticationType | Metodę uwierzytelniania używaną do uzyskania dostępu do serwera Spark. <br/>Dozwolone wartości to: **anonimowe**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
 | nazwa użytkownika | Nazwa użytkownika, który umożliwia dostęp do serwera Spark.  | Nie |
 | hasło | Hasło przypisana użytkownikowi. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | httpPath | Adres URL częściowe odpowiadający serwera Spark.  | Nie |
@@ -76,8 +76,7 @@ Spark połączone usługi, obsługiwane są następujące właściwości:
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

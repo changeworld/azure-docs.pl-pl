@@ -6,19 +6,18 @@ services: application-gateway
 author: amsriva
 manager: rossort
 editor: amsriva
-ms.assetid: 04b362bc-6653-4765-86f6-55ee8ec2a0ff
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 4/16/2018
 ms.author: amsriva
-ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 35a7e60dc65b54cbddfcd85fa0e704823152889e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="web-application-firewall-waf"></a>Zapora aplikacji sieci Web
 
@@ -60,7 +59,7 @@ Zapora aplikacji sieci Web jest domyślnie wstępnie skonfigurowana przy użyciu
 * Ochrona przed naruszeniami protokołu HTTP
 * Ochrona przed nieprawidłowościami protokołu HTTP, takimi jak brakujące powiązania agenta i użytkownika hosta oraz akceptowanie nagłówków
 * Zapobieganie atakom z użyciem robotów, przeszukiwarek i skanerów
-* Wykrywanie typowych błędów konfiguracji aplikacji (np. Apache, usługi IIS itp.)
+* Wykrywanie typowych błędów konfiguracji aplikacji (na przykład Apache, usługi IIS itd.)
 
 Bardziej szczegółową listę reguł i metod ochrony przed nimi można znaleźć na następującej liście [podstawowych zestawów reguł](#core-rule-sets).
 
@@ -74,9 +73,7 @@ Udostępniony podstawowy zestaw reguł w wersji 3.0 zawiera 13 grup reguł, jak 
 
 |Grupa reguł|Opis|
 |---|---|
-|**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|Zawiera reguły ochrony przed znanymi nadawcami spamu i złośliwymi działaniami.|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Zawiera reguły blokowania metod (PUT, PATCH).|
-|**[REQUEST-912-DOS-PROTECTION](application-gateway-crs-rulegroups-rules.md#crs912)**| Zawiera reguły ochrony przed atakami typu „odmowa usługi” (DoS).|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| Zawiera reguły ochrony przed skanerami portów i środowiska.|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|Zawiera reguły ochrony przed problemami z protokołami i kodowaniem.|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|Zawiera reguły ochrony przed iniekcjami nagłówków, przemycaniem żądań i rozdzielaniem odpowiedzi|
@@ -166,7 +163,6 @@ Zapora aplikacji sieci Web w usłudze Application Gateway dostarcza szczegółow
 
 Zapora aplikacji sieci Web jest dostępna w ramach nowej jednostki SKU zapory aplikacji sieci Web. Ta jednostka SKU jest dostępna tylko w modelu aprowizacji usługi Azure Resource Manager, a nie w klasycznym modelu wdrażania. Ponadto jednostka SKU zapory aplikacji sieci Web jest oferowana tylko w średnich i dużych rozmiarach wystąpień usługi Application Gateway. Wszystkie limity dotyczące usługi Application Gateway dotyczą również jednostki SKU zapory aplikacji sieci Web. Ceny zależą od opłaty godzinnej za wystąpienie bramy i opłaty za przetwarzanie danych. Opłata godzinna za bramę w przypadku jednostki SKU zapory aplikacji sieci Web różni się od opłat za standardową jednostkę SKU. Ceny można znaleźć na stronie [szczegółowego cennika usługi Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Opłaty za przetwarzanie danych pozostają bez zmian. Nie ma opłat za regułę lub grupę reguł. Możesz chronić wiele aplikacji sieci Web za tą samą zaporą aplikacji sieci Web i nie ma dodatkowych opłat za obsługę wielu aplikacji. 
 
-Zapora aplikacji sieci Web zacznie być rozliczana 2017-05-05. Do tego czasu będą naliczane standardowe opłaty za bramy jednostki SKU zapory aplikacji sieci Web.
 
 ## <a name="next-steps"></a>Następne kroki
 

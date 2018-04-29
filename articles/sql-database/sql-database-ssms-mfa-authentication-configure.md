@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: bf09e4b7866a2320b1a26c7164565d5c2f9c4d0a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 47e05c5acbcd0c36efb7fcef2f0997aac4f46470
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Skonfiguruj usługę Multi-Factor authentication dla programu SQL Server Management Studio i Azure AD
 
@@ -24,7 +24,7 @@ Omówienie uwierzytelniania wieloskładnikowego bazy danych SQL Azure, zobacz [u
 ## <a name="configuration-steps"></a>Kroki konfiguracji
 
 1. **Konfigurowanie usługi Azure Active Directory** — Aby uzyskać więcej informacji, zobacz [administrowanie katalogiem usługi Azure AD](https://msdn.microsoft.com/library/azure/hh967611.aspx), [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../active-directory/active-directory-aadconnect.md), [ Dodaj własną nazwę domeny do usługi Azure AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure obsługuje teraz federacji z usługi Active Directory systemu Windows Server](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), i [Zarządzanie usługą Azure AD przy użyciu programu Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
-2. **Skonfigurowanie uwierzytelniania Wieloskładnikowego** — Aby uzyskać instrukcje, zobacz [co to jest usługa Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md), [warunkowego dostępu (MFA) z bazy danych SQL Azure i magazynem danych](sql-database-conditional-access.md). (Dostępu warunkowego pełnej wymaga Premium usługi Azure Active Directory (Azure AD). Ograniczone MFA jest dostępna z standardowe usługi Azure AD).
+2. **Skonfigurowanie uwierzytelniania Wieloskładnikowego** — Aby uzyskać instrukcje, zobacz [co to jest usługa Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md), [warunkowego dostępu (MFA) z bazy danych SQL Azure i magazynem danych](sql-database-conditional-access.md). (Dostępu warunkowego pełnej wymaga Premium usługi Azure Active Directory (Azure AD). Ograniczone MFA jest dostępna z standardowe usługi Azure AD).
 3. **Konfigurowanie bazy danych SQL lub magazynu danych SQL na potrzeby uwierzytelniania usługi Azure AD** — Aby uzyskać instrukcje, zobacz [połączenie z bazą danych SQL lub SQL danych magazynu przy użyciu Azure uwierzytelnianie usługi Active Directory](sql-database-aad-authentication.md).
 4. **Pobierz narzędzia SSMS** — na komputerze klienckim, aby pobrać najnowsze narzędzia SSMS, z [pobierania programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Dla wszystkich funkcji w tym temacie Użyj co najmniej 2017 lipca, wersja 17.2.  
 
@@ -38,7 +38,7 @@ Poniższe kroki pokazują, jak nawiązać połączenie SQL Database lub SQL Data
    ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. Jeśli łączysz się jako użytkownik-Gość, należy kliknąć opcję **opcje**i na **właściwości połączenia** okno dialogowe, pełną **Identyfikatora nazwy lub dzierżawy domeny AD** pole. Aby uzyskać więcej informacji, zobacz [uwierzytelnianiem uniwersalnym z bazy danych SQL i magazyn danych SQL (Obsługa SSMS MFA)](sql-database-ssms-mfa-authentication.md).
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
-4. W zwykły sposób dla bazy danych SQL i magazyn danych SQL, należy kliknąć opcję **opcje** i Określ bazę danych na **opcje** okno dialogowe. (Jeśli podłączonego użytkownika gościa (tj. joe@outlook.com), musisz zaznacz pole wyboru i dodać bieżącej nazwy domeny usługi AD lub Identyfikatorem dzierżawy jako część opcji. Zobacz [uwierzytelnianiem uniwersalnym z bazy danych SQL i magazyn danych SQL (Obsługa SSMS MFA)]()(sql — baza danych ssms-mfa-authentication.md. Następnie kliknij przycisk **Connect**.  
+4. W zwykły sposób dla bazy danych SQL i magazyn danych SQL, należy kliknąć opcję **opcje** i Określ bazę danych na **opcje** okno dialogowe. (Jeśli podłączonego użytkownika gościa (tj. joe@outlook.com), musisz zaznacz pole wyboru i dodać bieżącej nazwy domeny usługi AD lub Identyfikatorem dzierżawy jako część opcji. Zobacz [uwierzytelnianiem uniwersalnym z bazy danych SQL i magazyn danych SQL (Obsługa SSMS MFA)]()(sql — baza danych ssms-mfa-authentication.md. Następnie kliknij przycisk **Connect** (Połącz).  
 5. Gdy **Zaloguj się do swojego konta** zostanie wyświetlone okno dialogowe, podaj konto i hasło tożsamości usługi Azure Active Directory. Hasło nie jest wymagane, jeśli użytkownik należy do domeny Sfederowanych z usługą Azure AD.  
    ![2mfa-sign-in][2]  
 
@@ -49,7 +49,7 @@ Poniższe kroki pokazują, jak nawiązać połączenie SQL Database lub SQL Data
 6. Okna dialogowe dwa ustawienia usługi MFA może być wyświetlany. Jednorazowo operacja zależy od administratora MFA ustawienie i dlatego może być opcjonalny. Dla domeny włączone uwierzytelnianie MFA czasami jest wstępnie zdefiniowana w tym kroku (na przykład domeny wymaga od użytkowników przy użyciu karty inteligentnej i kod pin).  
    ![3mfa-setup][3]  
 7. Możliwe drugi raz przez okno dialogowe służy do wybierania szczegóły metody uwierzytelniania. Możliwe opcje są konfigurowane przez administratora.  
-   ![4mfa-verify-1][4]  
+   ![4mfa-Sprawdź-1][4]  
 8. Azure Active Directory wysyła informacje potwierdzające do Ciebie. Gdy otrzymasz kod weryfikacyjny, wprowadź go do **wprowadź kod weryfikacyjny** i kliknij **Zaloguj**.  
    ![5mfa-verify-2][5]  
 

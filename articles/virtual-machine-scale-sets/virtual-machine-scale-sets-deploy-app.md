@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: cadd0f4c07b7e8adec4956543f67313aa8442da3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji na zestawy skalowania maszyny wirtualnej
-Do uruchamiania aplikacji na wystąpień maszyn wirtualnych (VM) w zestawie skalowania, najpierw należy zainstalować składniki aplikacji i wymaganych plików. W tym artykule przedstawiono sposoby budowania niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skali ustawić lub automatycznego uruchamiania skryptów instalacji na istniejących wystąpień maszyny Wirtualnej. Możesz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego przez zestaw skali.
+Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby budowania niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skali ustawić lub automatycznego uruchamiania skryptów instalacji na istniejących wystąpień maszyny Wirtualnej. Możesz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego przez zestaw skali.
 
 
 ## <a name="build-a-custom-vm-image"></a>Tworzenie niestandardowego obrazu maszyny Wirtualnej
@@ -42,7 +42,7 @@ Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wi
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalowanie aplikacji do systemu Windows maszyny Wirtualnej przy użyciu programu PowerShell DSC
-[Konfiguracji żądanego stanu środowiska PowerShell (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) to platforma zarządzania, aby zdefiniować konfigurację komputerów docelowych. Konfiguracji DSC zdefiniować, co należy zainstalować na maszynie oraz sposób konfigurowania hosta. Aparat lokalnego Configuration Manager (LCM) działa na każdym węźle docelowym, który przetwarza żądane akcje wciśnięcia konfiguracji.
+[Konfiguracji żądanego stanu środowiska PowerShell (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) to platforma zarządzania, aby zdefiniować konfigurację komputerów docelowych. Konfiguracji DSC zdefiniować, co należy zainstalować na maszynie oraz sposób konfigurowania hosta. Aparat lokalnego Configuration Manager (LCM) działa na każdym węźle docelowym, który przetwarza żądane akcje wciśnięcia konfiguracji.
 
 Rozszerzenia DSC środowiska PowerShell umożliwia dostosowanie wystąpień maszyn wirtualnych w skali ustawić przy użyciu programu PowerShell. Poniższy przykład:
 

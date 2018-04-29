@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 46d4962040a78942adbad443d5cbde64755ddadf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 855cb159474836e4c015f84d7d57546b5e1a2e99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń dla ruchu danych w fabryce danych Azure
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ Niektóre dane są przechowywane Obsługa szyfrowania danych magazynowanych. Fir
 Przezroczysty danych szyfrowania (funkcji TDE) w magazynie danych SQL Azure chroni przed zagrożeniem złośliwych działań, wykonując w czasie rzeczywistym szyfrowania i odszyfrowywania danych przechowywanych. To zachowanie jest niewidoczny dla klienta. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie bazy danych w usłudze SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Baza danych SQL Azure obsługuje również przezroczystego szyfrowania danych (funkcji TDE), który pomaga chronić przed zagrożeniem złośliwych działań, wykonując w czasie rzeczywistym szyfrowania i odszyfrowywania danych, bez konieczności wprowadzania zmian w aplikacji. To zachowanie jest niewidoczny dla klienta. Aby uzyskać więcej informacji, zobacz [przezroczystego szyfrowania danych dla bazy danych SQL i magazyn danych](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Baza danych SQL Azure obsługuje również przezroczystego szyfrowania danych (funkcji TDE), który pomaga chronić przed zagrożeniem złośliwych działań, wykonując w czasie rzeczywistym szyfrowania i odszyfrowywania danych, bez konieczności wprowadzania zmian w aplikacji. To zachowanie jest niewidoczny dla klienta. Aby uzyskać więcej informacji, zobacz [przezroczystego szyfrowania danych dla bazy danych SQL i magazyn danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store zapewnia również szyfrowanie danych przechowywanych w ramach konta. Po włączeniu usługi Data Lake Store szyfruje dane przed wprowadzeniem trwałych i automatycznie odszyfrowuje przed pobierania, ustawiania przezroczystości klientowi, który uzyskuje dostęp do danych. Aby uzyskać więcej informacji, zobacz [zabezpieczeń w usłudze Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
@@ -86,7 +86,7 @@ Amazon Redshift obsługuje szyfrowanie klastra dla przechowywanych danych. Aby u
 SalesForce obsługuje szyfrowanie platformy osłony, który umożliwia szyfrowanie wszystkich plików, załączników i pola niestandardowe. Aby uzyskać więcej informacji, zobacz [opis przepływ uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Scenariuszy hybrydowych
-Scenariusze hybrydowe wymaga zainstalowanego w sieci lokalnej w sieci wirtualnej (Azure) lub wewnątrz wirtualnych chmury prywatnej (Amazon) środowiska uruchomieniowego integracji siebie. Hostowanie Samoobsługowe integrację środowiska uruchomieniowego musi mieć możliwość dostępu magazynów danych lokalnych. Aby uzyskać więcej informacji dotyczących środowiska uruchomieniowego integracji hostowanie samoobsługowe, zobacz [jak utworzyć i skonfigurować hosta samodzielnego środowiska uruchomieniowego integracji](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime). 
+Scenariusze hybrydowe wymaga zainstalowanego w sieci lokalnej w sieci wirtualnej (Azure) lub wewnątrz wirtualnych chmury prywatnej (Amazon) środowiska uruchomieniowego integracji siebie. Hostowanie Samoobsługowe integrację środowiska uruchomieniowego musi mieć możliwość dostępu magazynów danych lokalnych. Aby uzyskać więcej informacji dotyczących środowiska uruchomieniowego integracji hostowanie samoobsługowe, zobacz [jak utworzyć i skonfigurować hosta samodzielnego środowiska uruchomieniowego integracji](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime). 
 
 ![kanały środowiska uruchomieniowego integracji hostowanie Samoobsługowe](media/data-movement-security-considerations/data-management-gateway-channels.png)
 

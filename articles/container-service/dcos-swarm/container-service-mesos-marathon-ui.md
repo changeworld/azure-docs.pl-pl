@@ -1,19 +1,19 @@
 ---
-title: "Zarządzanie klastrem Azure DC/OS przy użyciu interfejsu użytkownika platformy Marathon"
-description: "Wdrażanie kontenerów do klastra usługi kontenera platformy Azure przy użyciu interfejsu użytkownika sieci Web Marathon."
+title: Zarządzanie klastrem Azure DC/OS przy użyciu interfejsu użytkownika platformy Marathon
+description: Wdrażanie kontenerów do klastra usługi kontenera platformy Azure przy użyciu interfejsu użytkownika sieci Web Marathon.
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b1c5fc223105b1dae0ce07f242a6b42b34fd2ab3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Zarządzanie klastrem DC/OS usługi Azure Container Service przy użyciu interfejsu użytkownika sieci Web platformy Marathon
 
@@ -33,7 +33,7 @@ Przed przystąpieniem do pracy nad tymi przykładami będziesz potrzebować klas
 >
 
 ## <a name="explore-the-dcos-ui"></a>Przegląd interfejsu użytkownika platformy DC/OS
-Korzystając z [ustanowionego](../container-service-connect.md) tunelu Secure Shell (SSH), przejdź do strony http://localhost/. Spowoduje to załadowanie interfejsu użytkownika sieci Web platformy DC/OS oraz wyświetlenie informacji o klastrze, w tym dotyczących używanych zasobów, aktywnych agentów i uruchomione usługi.
+Z tunel Secure Shell (SSH) [ustanowić](../container-service-connect.md), przejdź do http://localhost/. Spowoduje to załadowanie interfejsu użytkownika sieci Web platformy DC/OS oraz wyświetlenie informacji o klastrze, w tym dotyczących używanych zasobów, aktywnych agentów i uruchomione usługi.
 
 ![Interfejs użytkownika platformy DC/OS](./media/container-service-mesos-marathon-ui/dcos2.png)
 
@@ -82,7 +82,7 @@ Po powrocie do strony głównej platformy Marathon widoczny jest stan wdrożenia
 
 ![Strona główna interfejsu użytkownika platformy Marathon — stan wdrożenia kontenera](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Po przełączeniu się z powrotem do interfejsu użytkownika sieci Web platformy DC/OS (http://localhost/) widać, że zadanie (w tym przypadku kontener w formacie programu Docker) jest uruchomiony w klastrze DC/OS.
+Interfejs użytkownika sieci web po przełączeniu do DC/OS (http://localhost/), zobaczysz, że zadanie (w tym przypadku kontenera w formacie Docker) jest uruchomiona w klastrze DC/OS.
 
 ![Interfejs użytkownika sieci Web platformy DC/OS — zadanie uruchomione w klastrze](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -100,7 +100,7 @@ W tym przykładzie aplikacja jest uruchomiona w węźle agenta publicznego. Prze
     ![Nginx z Internetu](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Praca z platformą DC/OS i interfejsem API platformy Marathon](container-service-mesos-marathon-rest.md)
 
 * Pełne wykorzystanie usługi Azure Container Service dzięki rozwiązaniu Mesos

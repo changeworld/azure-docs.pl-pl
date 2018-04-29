@@ -1,4 +1,26 @@
-
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: d407b015699925a6a3ce6ef9108ace1e9900303f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="set-up-your-project"></a>Konfigurowanie projektu
 
 W tej sekcji Utwórz nowy projekt w celu zademonstrowania sposobu integracji aplikacji .NET pulpitu systemu Windows (XAML) z *logowania z firmą Microsoft* , dzięki czemu aplikacja może wysyłać zapytania interfejsów API sieci Web, które wymagają tokenu.
@@ -6,7 +28,7 @@ W tej sekcji Utwórz nowy projekt w celu zademonstrowania sposobu integracji apl
 Przycisk, które są używane do wywoływania wykresu, obszar, aby wyświetlić wyniki na ekranie, a przycisk wylogowania wyświetlane w aplikacji, utworzonej za pomocą tego przewodnika.
 
 > [!NOTE]
-> Preferowane jest zamiast tego Pobierz ten przykładowy projekt programu Visual Studio? [Pobieranie projektu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)i przejdź do [kroku konfiguracji](#create-an-application-express) do skonfigurowania przykładowy kod, przed jego wykonania.
+> Preferowane jest zamiast tego Pobierz ten przykładowy projekt programu Visual Studio? [Pobieranie projektu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)i przejdź do [kroku konfiguracji](#register-your-application) do skonfigurowania przykładowy kod, przed jego wykonania.
 >
 
 Aby utworzyć aplikację, wykonaj następujące czynności:
@@ -51,6 +73,7 @@ W tym kroku możesz utworzyć klasę do obsługi interakcji z MSAL, takie jak Ob
     ```
 
 ## <a name="create-the-application-ui"></a>Tworzenie aplikacji interfejsu użytkownika
+
 W tej sekcji przedstawiono, jak aplikacja może zapytać chronionego serwera zaplecza, takich jak Microsoft Graph. 
 
 A *MainWindow.xaml* automatycznie można utworzyć pliku w ramach szablonu projektu. Otwórz ten plik, a następnie zastąp aplikacji  *\<siatki >* węzła z następującym kodem:

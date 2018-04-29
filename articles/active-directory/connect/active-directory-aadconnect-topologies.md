@@ -1,11 +1,11 @@
 ---
-title: "Usługi Azure AD Connect: Topologie obsługiwane przez | Dokumentacja firmy Microsoft"
-description: "W tym temacie szczegółowo obsługiwane i nieobsługiwane topologie programu Azure AD Connect"
+title: 'Usługi Azure AD Connect: Topologie obsługiwane przez | Dokumentacja firmy Microsoft'
+description: W tym temacie szczegółowo obsługiwane i nieobsługiwane topologie programu Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: 8003951fb0c80bda56de4718cbe94526dc118b61
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2f72f2dd3dbaaf17494d09a36159afc464cc64d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie obsługiwane w programie Azure AD Connect
 W tym artykule opisano różne lokalnymi i topologii usługi Azure Active Directory (Azure AD), używające synchronizacja programu Azure AD Connect jako rozwiązanie integracji klucza. W tym artykule opisano zarówno obsługiwane i nieobsługiwane konfiguracje.
@@ -36,10 +36,15 @@ Oto legendy obrazów w artykule:
 | Azure AD |![Usługa Azure Active Directory](./media/active-directory-aadconnect-topologies/LegendAAD.png) |
 | Nieobsługiwany scenariusz |![Nieobsługiwany scenariusz](./media/active-directory-aadconnect-topologies/LegendUnsupported.png) |
 
+
+> [!IMPORTANT]
+> Microsoft nie obsługuje modyfikowania lub działania synchronizacji Azure AD Connect poza konfiguracje lub akcje, które są udokumentowane formalnie. Te konfiguracje lub akcje może spowodować niespójne lub nieobsługiwany stan synchronizacji Azure AD Connect. W związku z tym firma Microsoft nie może świadczyć pomocy technicznej w przypadku takich wdrożeń.
+
+
 ## <a name="single-forest-single-azure-ad-tenant"></a>Pojedynczy las, pojedynczy dzierżawy usługi Azure AD
 ![Topologia jednego lasu i pojedynczej dzierżawy](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-Najbardziej typowe topologia jest pojedynczego lokalnego lasu z jednym lub wielu domen i jednej usługi Azure AD dzierżawy. Do uwierzytelniania usługi Azure AD synchronizacja haseł jest używany. Instalacja ekspresowa programu Azure AD Connect obsługuje tylko tej topologii.
+Najbardziej typowe topologia jest pojedynczego lokalnego lasu z jednym lub wielu domen i jednej usługi Azure AD dzierżawy. W przypadku uwierzytelniania usługi Azure AD jest używana synchronizacji skrótu hasła. Instalacja ekspresowa programu Azure AD Connect obsługuje tylko tej topologii.
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Pojedynczy las, wiele serwerów synchronizacji do jednej dzierżawy usługi Azure AD
 ![Nieobsługiwany topologia filtrowane do jednego lasu](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
@@ -59,7 +64,7 @@ Popularne topologie omówiono w sekcji o [oddzielnych topologie](#multiple-fores
 
 Założono domyślnej konfiguracji synchronizacji Azure AD Connect:
 
-* Każdy użytkownik ma tylko jedno konto włączone i lesie, w którym znajduje się to konto jest używane do uwierzytelnienia użytkownika. Jest to założenie synchronizacji haseł i federacji. UserPrincipalName i sourceAnchor/nazwę immutableID pochodzą z tego lasu.
+* Każdy użytkownik ma tylko jedno konto włączone i lesie, w którym znajduje się to konto jest używane do uwierzytelnienia użytkownika. Jest to założenie dla synchronizacji skrótów haseł, uwierzytelnianie i federacji. UserPrincipalName i sourceAnchor/nazwę immutableID pochodzą z tego lasu.
 * Każdy użytkownik ma tylko jedną skrzynkę pocztową.
 * Las, który hostuje skrzynki pocztowej użytkownika ma najlepszą jakość danych dla atrybutów widoczne w globalnej listy adresów (GAL) programu Exchange. Jeśli nie ma żadnych skrzynki pocztowej użytkownika, dowolnym lesie może służyć do ich współtworzenia wartości tych atrybutów.
 * Jeśli masz połączoną skrzynkę pocztową, istnieje również konto w innym lesie używane do logowania.
@@ -152,7 +157,7 @@ Ta topologia ma następujące ograniczenia w inny sposób obsługiwane scenarius
 
 * Tylko jeden dzierżaw usługi Azure AD można włączyć hybrydowym programu Exchange z lokalnego wystąpienia usługi Active Directory.
 * Urządzenia z systemem Windows 10 można skojarzyć z tylko jedną dzierżawy usługi Azure AD.
-* Pojedynczy logowania jednokrotnego (SSO) opcja uwierzytelniania przekazywanego i synchronizacji haseł można z tylko jedną dzierżawy usługi Azure AD.
+* Pojedynczy logowania jednokrotnego (SSO) opcja uwierzytelniania przekazywanego i synchronizacji skrótu hasła może służyć z tylko jedną dzierżawy usługi Azure AD.
 
 Wymaganie wykluczają się wzajemnie zestaw obiektów ma również zastosowanie do zapisywania zwrotnego. Niektóre funkcje zapisywania zwrotnego nie są obsługiwane z tej topologii, ponieważ zakładają konfiguracji pojedynczym lokalnym. Te funkcje obejmują:
 

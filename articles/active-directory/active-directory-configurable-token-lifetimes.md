@@ -1,32 +1,32 @@
 ---
-title: "Można skonfigurować tokenu okresy istnienia w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Dowiedz się, jak ustawić okresy istnienia tokenów wystawionych przez usługę Azure AD."
+title: Można skonfigurować tokenu okresy istnienia w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak ustawić okresy istnienia tokenów wystawionych przez usługę Azure AD.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
-ms.author: billmath
+ms.date: 04/19/2018
+ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 553283f246b701b5084f0a3a9914d7ceb8826fe4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Można skonfigurować tokenu okresy istnienia w usłudze Azure Active Directory (publicznej wersji zapoznawczej)
 Można określić okres istnienia token wystawiony przez usługę Azure Active Directory (Azure AD). Można ustawić tokenu okresy istnienia dla wszystkich aplikacji w organizacji, dla wielodostępnych aplikacji (wielu organizacji) lub nazwy głównej usługi określonego w organizacji.
 
-> [!NOTE]
-> Ta funkcja jest obecnie w wersji zapoznawczej. Przygotuj się do przywrócenia lub Usuń wszystkie zmiany. Funkcja jest dostępna w żadnych subskrypcji usługi Azure Active Directory w publicznej wersji zapoznawczej. Gdy funkcja stanie się ogólnie dostępna, niektórych aspektów funkcji mogą jednak wymagać [Azure Active Directory Premium](active-directory-get-started-premium.md) subskrypcji.
+> [!IMPORTANT]
+> Po przesłuchaniu od klientów w wersji zapoznawczej, planowane jest możemy zastąpić tę funkcję z nową funkcją w usłudze Azure Active Directory dostępu warunkowego.  Po zakończeniu nowa funkcja ta funkcja po pewnym czasie zostaną wycofane po upływie powiadomień.  Jeśli używasz zasad można skonfigurować okres istnienia tokenu, można przygotować Aby przełączyć się do nowa funkcja dostępu warunkowego, gdy jest ona dostępna. 
 >
 >
 
@@ -45,19 +45,19 @@ Zasady można wyznaczyć jako domyślne zasady dla Twojej organizacji. Zasady s�
 Można ustawić zasady okres istnienia tokenu dla tokenów odświeżania, tokeny dostępu, tokeny sesji i tokeny Identyfikatora.
 
 ### <a name="access-tokens"></a>Tokeny dostępu
-Klienci używają tokenów dostępu do uzyskania dostępu do chronionego zasobu. Token dostępu może służyć tylko dla określonej kombinacji użytkownika, klienta i zasobów. Tokeny dostępu nie może zostać odwołany i są prawidłowe, aż do ich wygaśnięcia. Aktora złośliwy, który uzyskał token dostępu może być używany dla zakresu jego okres istnienia. Dostosowywanie okres istnienia tokenu dostępu jest zależność między poprawia wydajność systemu oraz zwiększyć ilość czasu, klient zachowuje dostępu po wyłączeniu konta użytkownika. Ulepszony system wydajność jest osiągana, zmniejszając liczbę razy, gdy klient musi uzyskać tokenu dostępu świeże.
+Klienci używają tokenów dostępu do uzyskania dostępu do chronionego zasobu. Token dostępu może służyć tylko dla określonej kombinacji użytkownika, klienta i zasobów. Tokeny dostępu nie może zostać odwołany i są prawidłowe, aż do ich wygaśnięcia. Aktora złośliwy, który uzyskał token dostępu może być używany dla zakresu jego okres istnienia. Dostosowywanie okres istnienia tokenu dostępu jest zależność między poprawia wydajność systemu oraz zwiększyć ilość czasu, klient zachowuje dostępu po wyłączeniu konta użytkownika. Ulepszony system wydajność jest osiągana, zmniejszając liczbę razy, gdy klient musi uzyskać tokenu dostępu świeże.  Wartość domyślna to 1 godzina — po godzinie, klient musi używać token odświeżania (zazwyczaj dyskretnie) uzyskać nowy token odświeżania i tokenu dostępu. 
 
 ### <a name="refresh-tokens"></a>Tokenów odświeżania
-Gdy klient uzyskuje token dostępu do uzyskania dostępu do chronionego zasobu, klient odbierze zarówno token odświeżania i tokenu dostępu. Token odświeżania służy do uzyskiwania dostępu do nowych/odświeżania pary tokenu, po wygaśnięciu tokenu dostępu bieżącego. Token odświeżania jest powiązany z kombinacją użytkownika i klienta. Mogą być odwoływane token odświeżania, a ważności tokenu jest sprawdzana za każdym razem, gdy jest używany.
+Gdy klient uzyskuje token dostępu do uzyskania dostępu do chronionego zasobu, klient również odbiera token odświeżania. Token odświeżania służy do uzyskiwania dostępu do nowych/odświeżania pary tokenu, po wygaśnięciu tokenu dostępu bieżącego. Token odświeżania jest powiązany z kombinacją użytkownika i klienta. Token odświeżania może być [odwołać w dowolnym momencie](develop/active-directory-token-and-claims.md#token-revocation), a ważności tokenu jest sprawdzana za każdym razem, gdy jest używany.  
 
-Należy rozróżnienie klienci poufne i publicznej. Aby uzyskać więcej informacji o różnych typach klientów, zobacz [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
+Jest ważne odróżnić klienci poufne i publicznych, ponieważ wpływa to na jak długo może służyć tokenów odświeżania. Aby uzyskać więcej informacji o różnych typach klientów, zobacz [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Token okresy istnienia z tokenów odświeżania poufne klienta
-Poufne klienci znajdują się aplikacje, które można bezpiecznie przechowywać hasła klienta (klucz tajny). One udowodnić, że żądań pochodzą z aplikacji klienta, a nie z złośliwego aktora. Na przykład aplikacja sieci web jest poufne klienta, ponieważ umożliwia przechowywanie klucza tajnego klienta na serwerze sieci web. Nie jest widoczne. Ponieważ te przepływy są bardziej bezpieczne, jest domyślną okresy istnienia tokenów odświeżania wystawiony dla tych przepływów `until-revoked`, nie można zmienić za pomocą zasad i nie zostanie odwołany na resetowanie haseł dobrowolny.
+Poufne klienci znajdują się aplikacje, które można bezpiecznie przechowywać hasła klienta (klucz tajny). One udowodnić, że żądania pochodzą z aplikacji zabezpieczonych klienta, a nie z złośliwego aktora. Na przykład aplikacja sieci web jest poufne klienta, ponieważ umożliwia przechowywanie klucza tajnego klienta na serwerze sieci web. Nie jest widoczne. Ponieważ te przepływy są bardziej bezpieczne, jest domyślną okresy istnienia tokenów odświeżania wystawiony dla tych przepływów `until-revoked`, nie można zmienić za pomocą zasad i nie zostanie odwołany na resetowanie haseł dobrowolny.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Token okresy istnienia z tokenów odświeżania publicznych klienta
 
-Klienci publiczny nie może bezpiecznie przechowywać hasła klienta (klucz tajny). Na przykład aplikację systemu iOS/Android nie zasłaniają klucz tajny od właściciela zasobu, jest on uznawany za publicznego klienta. Zasady można ustawić na zasoby, aby uniemożliwić uzyskanie nową parę tokenu dostępu/odświeżania tokenów odświeżania z klientów publicznych starsze niż w określonym przedziale czasu. (W tym celu należy użyć właściwości odświeżanie tokenu maksymalny czas nieaktywności). Również służy zasady można ustawić okres, po przekroczeniu którego już nie są akceptowane tokenów odświeżania. (W tym celu należy użyć właściwości odświeżanie tokenu maksymalny wiek). Okres istnienia token odświeżania, aby kontrolować, kiedy i jak często użytkownik musi ponownie wprowadzić poświadczenia, zamiast trwa dyskretnie ponownie uwierzytelnić, korzystając z aplikacji publicznych klienta można dostosować.
+Klienci publiczny nie może bezpiecznie przechowywać hasła klienta (klucz tajny). Na przykład aplikację systemu iOS/Android nie zasłaniają klucz tajny od właściciela zasobu, jest on uznawany za publicznego klienta. Zasady można ustawić na zasoby, aby uniemożliwić uzyskanie nową parę tokenu dostępu/odświeżania tokenów odświeżania z klientów publicznych starsze niż w określonym przedziale czasu. (Aby to zrobić, użyj właściwości odświeżanie tokenu maksymalny czas nieaktywności (`MaxInactiveTime`).) Również służy zasady można ustawić okres, po przekroczeniu którego już nie są akceptowane tokenów odświeżania. (W tym celu należy użyć właściwości odświeżanie tokenu maksymalny wiek). Okres istnienia token odświeżania, aby kontrolować, kiedy i jak często użytkownik musi ponownie wprowadzić poświadczenia, zamiast trwa dyskretnie ponownie uwierzytelnić, korzystając z aplikacji publicznych klienta można dostosować.
 
 ### <a name="id-tokens"></a>Tokeny Identyfikatora
 Identyfikator tokeny są przekazywane do witryn sieci Web i klientach natywnych. Tokeny Identyfikatora zawierają informacje profilu użytkownika. Identyfikator tokenu jest powiązany z kombinacją określonego użytkownika i klienta. Identyfikator tokeny są uznawane za prawidłowe aż do ich wygaśnięcia. Zwykle, aplikacji sieci web odpowiada użytkownik okres istnienia sesji w aplikacji na okres istnienia tokenu identyfikator wydanych dla użytkownika. Można dostosować okres istnienia tokenu identyfikator, aby kontrolować częstotliwość aplikacji sieci web wygaśnie sesja aplikacji i jak często wymaga użytkownikowi można ponownie uwierzytelnić z usługą Azure AD (dyskretnie lub interaktywnego).
@@ -108,6 +108,8 @@ Można utworzyć, a następnie przypisać zasady okres istnienia tokenu, z okre�
 Aby uzyskać więcej informacji na temat relacji między obiektami aplikacji i głównej usługi, zobacz [aplikacji i usług obiektów principal w usłudze Azure Active Directory](active-directory-application-objects.md).
 
 Ważność tokenu jest oceniane w czasie, który jest używany. Zasady o najwyższym priorytecie w aplikacji, która jest uzyskiwany obowiązuje.
+
+Wszystkie timespans używane w tym miejscu są sformatowane zgodnie z języka C# [TimeSpan](https://msdn.microsoft.com/library/system.timespan) obiekt - D.HH:MM:SS.  Dlatego będzie 80 dni i 30 minut `80.00:30:00`.  Wiodące można było porzucić D, jeśli zero, więc 90 minut będzie `00:90:00`.  
 
 > [!NOTE]
 > Oto przykładowy scenariusz.
@@ -177,7 +179,7 @@ Zmniejszenie maksymalny wiek wymuszającej uwierzytelnianie częściej. Poniewa�
 Zmniejszenie maksymalny wiek wymuszającej uwierzytelnianie częściej. Ponieważ przyjęto, że uwierzytelniania jednoskładnikowego jest mniej bezpieczne niż uwierzytelnianie wieloskładnikowe, firma Microsoft zaleca, ustaw tą właściwość na wartość, która jest równa lub mniejsza niż wartość właściwości wieloskładnikowego sesji tokenu maksymalny wiek.
 
 ### <a name="multi-factor-session-token-max-age"></a>Maksymalny wiek tokenu wieloskładnikowego sesji
-**String:** MaxAgeSessionMultiFactor
+**Ciąg:** MaxAgeSessionMultiFactor
 
 **Wpływ:** tokeny sesji (stałe i nietrwałe)
 

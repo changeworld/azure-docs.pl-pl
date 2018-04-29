@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 54ec12f24ddbad6227a306aeae86658807f85b4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Rozszerzanie alerty (Kopiuj) z portalu OMS na platformie Azure
 Portal Operations Management Suite (OMS) wyświetlane tylko alerty analizy dzienników.  Nowe środowisko alertów ma teraz zintegrowane środowisko alertów w różnych usług i części na platformie Microsoft Azure. Nowe środowisko dostępna jako **alerty** w obszarze Monitor Azure w usłudze Azure portalu zawiera alertów dotyczących działań w dzienniku, metryki alertów i dziennika alerty dla analizy dzienników i usługi Application Insights. 
@@ -43,7 +43,7 @@ Gdy alerty w obszarze roboczym analizy dzienników są planowane do rozszerzania
  ![Podczas okresu zaplanowanego Akcja użytkownika na alerty przekierowanie do usługi Azure](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> Rozszerzanie alerty z portalu OMS na platformie Azure nie jest pobierana i użycia usługi Azure alertów dla zapytania na podstawie analizy dzienników alerty będą nie naliczane, gdy jest używany w ramach limitów i warunki określone w [Monitor Azure cennik zasad](https://azure.microsoft.com/en-us/pricing/details/monitor/)  
+> Rozszerzanie alerty z portalu OMS na platformie Azure nie jest pobierana i użycia usługi Azure alertów dla zapytania na podstawie analizy dzienników alerty będą nie naliczane, gdy jest używany w ramach limitów i warunki określone w [Monitor Azure cennik zasad](https://azure.microsoft.com/pricing/details/monitor/)  
 
 Użytkownicy mogą korzystać z zalet rozszerzające alertach przed tą datą. przez dobrowolnie Rezygnacja w celu umożliwienia zarządzania na platformie Azure alerty.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 413485fc764000dadca1a2cccf9ee0de7e9046aa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure stosu
 
@@ -32,10 +32,10 @@ Zawsze, gdy są dostępne aktualizacje rozszerzenia maszyny wirtualnej (VM), kt�
 |  | Nazwa elementu | Opis | Wydawca | Typ systemu operacyjnego |
 | --- | --- | --- | --- | --- |
 |![Rozszerzenie IaaS SQL](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozszerzenie IaaS SQL ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>Pobierz to rozszerzenie do wdrożenia dowolnego programu SQL Server w elemencie Windows Marketplace — to rozszerzenie jest wymagane.</b> | Microsoft | Windows |
-|![Rozszerzenie niestandardowego skryptu](media/azure-stack-marketplace-azure-items/cse.png) | [ Niestandardowe rozszerzenie skryptu ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Pobierz aktualizację do wersji w pole niestandardowe skryptu rozszerzenia systemu Windows.</b> | Microsoft | Windows |
+|![Rozszerzenie niestandardowego skryptu](media/azure-stack-marketplace-azure-items/cse.png) | [ Niestandardowe rozszerzenie skryptu ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>Pobierz aktualizację do wersji w pole niestandardowe skryptu rozszerzenia systemu Windows.</b> | Microsoft | Windows |
 |![Rozszerzenia usługi Konfiguracja DSC środowiska PowerShell](media/azure-stack-marketplace-azure-items/dsc.png) | [ Rozszerzenia usługi Konfiguracja DSC środowiska PowerShell ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>Pobierz aktualizację do wersji w polu rozszerzenia usługi Konfiguracja DSC środowiska PowerShell. Zaktualizowano o obsługę protokołu TLS 1.2.</b> | Microsoft | Windows |
-| ![Rozszerzenie ochrony przed złośliwym oprogramowaniem firmy Microsoft](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozszerzenie ochrony przed złośliwym oprogramowaniem firmy Microsoft ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Antimalware Microsoft Azure to rozwiązanie jednego agenta dla aplikacji i dzierżawy w środowiskach, przeznaczony do pracy w tle bez udziału człowieka. | Microsoft | Windows |
-|![Rozszerzenie niestandardowego skryptu](media/azure-stack-marketplace-azure-items/cse.png) | [ Niestandardowe rozszerzenie skryptu ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Pobierz aktualizację do wersji w pole niestandardowe rozszerzenie skryptu dla systemu Linux. Istnieje wiele wersji tego rozszerzenia, a następnie należy pobrać zarówno 1.5.2.1 otrzymuje brzmienie: i 2.0.x. </b> | Microsoft | Linux |
+| ![Rozszerzenie ochrony przed złośliwym oprogramowaniem firmy Microsoft](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozszerzenie ochrony przed złośliwym oprogramowaniem firmy Microsoft ](https://docs.microsoft.com/azure/security/azure-security-antimalware)| Antimalware Microsoft Azure to rozwiązanie jednego agenta dla aplikacji i dzierżawy w środowiskach, przeznaczony do pracy w tle bez udziału człowieka. | Microsoft | Windows |
+|![Rozszerzenie niestandardowego skryptu](media/azure-stack-marketplace-azure-items/cse.png) | [ Niestandardowe rozszerzenie skryptu ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>Pobierz aktualizację do wersji w pole niestandardowe rozszerzenie skryptu dla systemu Linux. Istnieje wiele wersji tego rozszerzenia, a następnie należy pobrać zarówno 1.5.2.1 otrzymuje brzmienie: i 2.0.x. </b> | Microsoft | Linux |
 | ![Rozszerzenie docker](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | Rozszerzenie docker dla maszyn wirtualnych systemu Linux. | Microsoft | Linux |
 | ![Dostęp do maszyny Wirtualnej dla systemu Linux](media/azure-stack-marketplace-azure-items/cse.png) | [ Dostęp do maszyny Wirtualnej dla systemu Linux ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>Pobierz aktualizację do wersji w polu VMAccess dla rozszerzenia systemu Linux. Ta aktualizacja jest ważne, jeśli planujesz używać Debian maszyn wirtualnych systemu Linux.</b> | Microsoft | Linux |
 | ![Rozszerzenie usługi Acronis Backup dla systemu Linux](media/azure-stack-marketplace-azure-items/acronis.png) | [ Rozszerzenie usługi Acronis Backup dla systemu Linux ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Rozszerzenie Acronis kopia zapasowa Microsoft Azure jest częścią rodziny kopii zapasowej Acronis środków ochrony danych. | Acronis International GmbH. | Linux |

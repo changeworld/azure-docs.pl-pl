@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 3a581111587d0fe3cba04cd05272b3154374ce52
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ca0a1cd9766d3ad76d0fe5dd29a34ec40ea276
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń
 
@@ -50,8 +50,8 @@ Reguły sieciowych grup zabezpieczeń obejmują następujące właściwości:
 | **Protokół** |Protokół odpowiadający regule. |TCP, UDP lub * |Wstawienie znaku * oznacza protokół ICMP (tylko ruch wschód-zachód), a także protokoły UDP i TCP. W ten sposób można zmniejszyć liczbę potrzebnych reguł.<br/>Z drugiej strony użycie znaku * może okazać się rozwiązaniem zbyt ogólnym, dlatego zaleca się używanie znaku * tylko w razie konieczności. |
 | **Zakres portów źródłowych** |Zakres portów źródłowych odpowiadający regule. |Numer pojedynczego portu od 1 do 65535, zakres portów (np. 1–65535) lub * (dla wszystkich portów). |Porty źródłowe mogą być efemeryczne. Jeśli program kliencki nie korzysta z określonego portu, należy w większości przypadków użyć znaku *.<br/>Używaj zakresów portów możliwie często, aby uniknąć konieczności korzystania z wielu reguł.<br/>Wielu portów lub zakresów portów nie można oddzielać przecinkiem. |
 | **Zakres portów docelowych** |Zakres portów docelowych odpowiadający regule. |Numer pojedynczego portu od 1 do 65535, zakres portów (np. 1–65535) lub \* (dla wszystkich portów). |Używaj zakresów portów możliwie często, aby uniknąć konieczności korzystania z wielu reguł.<br/>Wielu portów lub zakresów portów nie można oddzielać przecinkiem. |
-| **Prefiks adresu źródłowego** |Prefiks adresu źródłowego lub znacznik odpowiadający regule. |Pojedynczy adres IP (np. 10.10.10.10), podsieć IP (np. 192.168.1.0/24), [znacznik domyślny](#default-tags) lub * (dla wszystkich adresów). |Należy rozważyć użycie zakresów, znaczników domyślnych i znaków * w celu zmniejszenia liczby reguł. |
-| **Prefiks adresu docelowego** |Prefiks adresu docelowego lub znacznik odpowiadający regule. | Pojedynczy adres IP (np. 10.10.10.10), podsieć IP (np. 192.168.1.0/24), [znacznik domyślny](#default-tags) lub * (dla wszystkich adresów). |Należy rozważyć użycie zakresów, znaczników domyślnych i znaków * w celu zmniejszenia liczby reguł. |
+| **Prefiks adresu źródłowego** |Prefiks adresu źródłowego lub znacznik odpowiadający regule. |Pojedynczy adres IP (np. 10.10.10.10), podsieć IP (np. 192.168.1.0/24), [tag usługi](#service-tags) lub * (dla wszystkich adresów). |Rozważ użycie zakresów, tagów usługi i znaków * w celu zmniejszenia liczby reguł. |
+| **Prefiks adresu docelowego** |Prefiks adresu docelowego lub znacznik odpowiadający regule. | Pojedynczy adres IP (np. 10.10.10.10), podsieć IP (np. 192.168.1.0/24), [znacznik domyślny](#service-tags) lub * (dla wszystkich adresów). |Rozważ użycie zakresów, tagów usługi i znaków * w celu zmniejszenia liczby reguł. |
 | **Kierunek** |Kierunek ruchu odpowiadający regule. |Ruch przychodzący lub wychodzący. |Reguły ruchu przychodzącego i wychodzącego są przetwarzane oddzielnie w zależności od kierunku. |
 | **Priorytet** |Reguły są sprawdzane według ważności. Gdy reguła ma zastosowanie, żadne inne reguły nie są sprawdzane pod kątem dopasowania. | Liczba z zakresu od 100 do 4096. | Należy rozważyć utworzenie reguł przez przeskoczenie priorytetów o 100 dla każdej reguły, aby zostawić miejsce na nowe reguły, które mogą zostać utworzone w przyszłości. |
 | **Dostęp** |Typ dostępu do zastosowania, jeśli reguła jest dopasowana. | Zezwolenie lub zablokowanie. | Pamiętaj, że jeśli dla pakietu nie zostanie odnaleziona reguła zezwalająca, zostanie on porzucony. |
@@ -62,36 +62,13 @@ Sieciowe grupy zabezpieczeń zawierają dwa zestawy reguł: zestaw reguł przych
 
 Na wcześniejszym rysunku przedstawiono, jak są przetwarzane reguły sieciowej grupy zabezpieczeń.
 
-### <a name="default-tags"></a>Znaczniki domyślne
-Znaczniki domyślne są dostarczanymi przez system identyfikatorami określającymi kategorię adresów IP. Można użyć znaczników domyślnych we właściwościach **prefiksu adresu źródłowego** i **prefiksu adresu docelowego** dowolnej reguły. Istnieją trzy znaczniki domyślne, których można użyć:
+### <a name="default-tags"></a>Tagi systemowe
 
-* **VirtualNetwork** (model usługi Resource Manager) (**VIRTUAL_NETWORK** — model klasyczny): ten znacznik obejmuje przestrzeń adresową sieci wirtualnej (zakresy CIDR określone na platformie Azure), wszystkie połączone lokalne przestrzenie adresowe i połączone sieci wirtualne Azure (sieci lokalne).
-* **AzureLoadBalancer** (model usługi Resource Manager) (**AZURE_LOADBALANCER** — model klasyczny): ten znacznik określa moduł równoważenia obciążenia infrastruktury platformy Azure. Ten znacznik przekłada się na adres IP centrum danych Azure, z którego pochodzą sondy kondycji usługi Azure Load Balancer.
-* **Internet** (model usługi Resource Manager) (**INTERNET** — model klasyczny): ten znacznik określa przestrzeń adresów IP, która znajduje się poza siecią wirtualną i do której można uzyskać dostęp w publicznym Internecie. Ten zakres obejmuje [publiczną przestrzeń adresów IP należącą do Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+Tagi usług są dostarczanymi przez system identyfikatorami określającymi kategorię adresów IP. Tagów usług można używać we właściwościach **prefiksu adresu źródłowego** i **prefiksu adresu docelowego** dowolnej reguły zabezpieczeń. Dowiedz się więcej na temat [tagów usług](security-overview.md#service-tags).
 
-### <a name="default-rules"></a>Reguły domyślne
-Wszystkie sieciowe grupy zabezpieczeń zawierają zestaw reguł domyślnych. Reguł domyślnych nie można usunąć, ale ponieważ mają przypisany najniższy priorytet, mogą być zastąpione przez tworzone zasady. 
+### <a name="default-rules"></a>Domyślne reguły zabezpieczeń
 
-Reguły domyślne zezwalają na ruch i blokują go w następujący sposób:
-- **Sieć wirtualna:** ruch pochodzący z sieci wirtualnej i kończący się w niej jest dozwolony zarówno w kierunku przychodzącym, jak i wychodzącym.
-- **Internet:** ruch wychodzący jest dozwolony, ale ruch przychodzący jest blokowany.
-- **Moduł równoważenia obciążenia:** umożliwia usłudze Azure Load Balancer badanie kondycji maszyn wirtualnych i wystąpień ról. Jeśli zastąpisz tę zasadę, działanie sond kondycji usługi Azure Load Balancer zakończy się niepowodzeniem, co może mieć wpływ na Twoją usługę.
-
-**Reguły domyślne ruchu przychodzącego**
-
-| Name (Nazwa) | Priorytet | Źródłowy adres IP | Port źródłowy | Docelowy adres IP | Port docelowy | Protokół | Dostęp |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | Zezwalaj |
-| AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | Zezwalaj |
-| DenyAllInBound |65500 | * | * | * | * | * | Zablokuj |
-
-**Domyślne reguły ruchu wychodzącego**
-
-| Name (Nazwa) | Priorytet | Źródłowy adres IP | Port źródłowy | Docelowy adres IP | Port docelowy | Protokół | Dostęp |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | Zezwalaj |
-| AllowInternetOutBound | 65001 | * | * | Internet | * | * | Zezwalaj |
-| DenyAllOutBound | 65500 | * | * | * | * | * | Zablokuj |
+Wszystkie sieciowe grupy zabezpieczeń zawierają zestaw domyślnych reguł zabezpieczeń. Reguł domyślnych nie można usunąć, ale ponieważ mają przypisany najniższy priorytet, mogą być zastąpione przez tworzone zasady. Dowiedz się więcej o [domyślnych regułach zabezpieczeń](security-overview.md#default-security-rules).
 
 ## <a name="associating-nsgs"></a>Kojarzenie sieciowych grup zabezpieczeń
 W zależności od używanego modelu wdrażania sieciową grupę zabezpieczeń można skojarzyć z maszynami wirtualnymi, kartami sieciowymi i podsieciami w następujący sposób:
@@ -127,7 +104,7 @@ Sieciowe grupy zabezpieczeń można wdrożyć w modelach wdrażania: usługi Res
 | PowerShell     | [Tak](virtual-networks-create-nsg-classic-ps.md) | [Tak](tutorial-filter-network-traffic.md) |
 | Interfejs wiersza polecenia platformy Azure **V1**   | [Tak](virtual-networks-create-nsg-classic-cli.md) | [Tak](tutorial-filter-network-traffic-cli.md) |
 | Interfejs wiersza polecenia platformy Azure **V2**   | Nie | [Tak](tutorial-filter-network-traffic-cli.md) |
-| Szablon usługi Azure Resource Manager   | Nie  | [Tak](virtual-networks-create-nsg-arm-template.md) |
+| Szablon usługi Azure Resource Manager   | Nie  | [Tak](template-samples.md) |
 
 ## <a name="planning"></a>Planowanie
 Przed wdrożeniem sieciowych grup zabezpieczeń należy odpowiedzieć na następujące pytania:

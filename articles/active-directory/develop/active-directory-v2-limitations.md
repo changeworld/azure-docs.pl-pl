@@ -1,11 +1,11 @@
 ---
-title: "Ograniczenia punktu końcowego v2.0 w usłudze Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Lista ograniczenia dla punktu końcowego v2.0 usługi Azure AD."
+title: Ograniczenia punktu końcowego v2.0 w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Lista ograniczenia dla punktu końcowego v2.0 usługi Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a81f505c189da31edb91d1b522d9f3140f821cb4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Należy użyć punktu końcowego v2.0?
 Podczas tworzenia aplikacji, które integrują się z usługą Azure Active Directory, należy zdecydować, czy protokołów uwierzytelniania i punktu końcowego v2.0 odpowiadają Twoim potrzebom. Oryginalny punktu końcowego usługi Azure Active Directory firmy jest nadal w pełni obsługiwane i pod pewnymi względami jest więcej zaawansowanej funkcji niż wersja 2.0. Jednak punktu końcowego v2.0 [wprowadzono znaczące korzyści](active-directory-v2-compare.md) dla deweloperów.
@@ -84,15 +84,6 @@ Ponieważ są one poddomen pierwszy przekierowania URI, można dodać tych dwóc
 Należy również zauważyć, może mieć tylko 20 adresy URL odpowiedzi dla określonej aplikacji.
 
 Aby dowiedzieć się, jak zarejestrować aplikację w portalu rejestracji aplikacji, zobacz [jak zarejestrować aplikację z punktem końcowym v2.0](active-directory-v2-app-registration.md).
-
-## <a name="restrictions-on-services-and-apis"></a>Ograniczenia dotyczące usług i interfejsów API
-Obecnie obsługuje punktu końcowego v2.0 logowania dla wszystkich aplikacji, która jest zarejestrowana w portalu rejestracji aplikacji i który znajduje się na liście [obsługiwane przepływów uwierzytelniania](active-directory-v2-flows.md). Jednak te aplikacje mogą uzyskać tokenów dostępu protokołu OAuth 2.0 dla bardzo ograniczony zestaw zasobów. Problemy z punktu końcowego v2.0 dostępu tokeny tylko dla:
-
-* Aplikację wymagającej tokenu. Aplikację można uzyskać tokenu dostępu dla siebie, jeśli aplikację logiczną składa się z kilku różnych składników lub warstwy. Aby wyświetlić ten scenariusz, w akcji, zobacz nasze [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) samouczki.
-* Poczta programu Outlook, kalendarza i kontaktów interfejsów API REST, które znajdują się w https://outlook.office.com. Aby dowiedzieć się, jak napisać aplikację, która uzyskuje dostęp do tych interfejsów API, zobacz [wprowadzenie Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) samouczki.
-* Interfejsy API programu Microsoft Graph. Użytkownik może dowiedzieć się więcej o [Microsoft Graph](https://graph.microsoft.io) i dane, które są dostępne.
-
-Żadne inne usługi są obsługiwane w tej chwili. Więcej usług Microsoft Online Services zostaną dodane w przyszłości, oprócz obsługę własnych niestandardowej interfejsów API sieci Web i usług.
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Ograniczenia dotyczące biblioteki i zestawy SDK
 Obecnie Obsługa bibliotek dla punktu końcowego v2.0 jest ograniczona. Jeśli chcesz używać punktu końcowego v2.0 w aplikacji produkcyjnej, masz następujące opcje:

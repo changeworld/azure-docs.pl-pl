@@ -12,26 +12,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 07/20/2017
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 440f7eba99e5fa02a597ae62d5d14329f5e50af7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f982e859892965379b7ffb08e15dd1cf51b9801f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji do wyliczenia węzłów za pomocą pakietów aplikacji partii
 
 Funkcja pakiety aplikacji partii zadań Azure umożliwia łatwe zarządzanie aplikacjami zadań i ich wdrożenia węzłów obliczeniowych w puli. Pakiety aplikacji możesz przekazać i zarządzanie wieloma wersjami aplikacji, których uruchamianie zadań, łącznie z ich pliki pomocnicze. Można następnie automatycznie wdrożyć co najmniej jeden z tych aplikacji, do węzłów obliczeniowych w puli.
 
-W tym artykule dowiesz się, jak przekazywać oraz zarządzać nimi pakietów aplikacji w portalu Azure. Następnie dowiesz się jak do zainstalowania go na węzłach obliczeń puli z [partiami platformy .NET] [ api_net] biblioteki.
+W tym artykule Dowiedz się jak przekazywać oraz zarządzać nimi pakietów aplikacji w portalu Azure. Następnie dowiesz się, jak do zainstalowania go na węzłach obliczeń puli z [partiami platformy .NET] [ api_net] biblioteki.
 
 > [!NOTE]
 > 
 > Pakiety aplikacji są obsługiwane we wszystkich pulach usługi Batch utworzonych po 5 lipca 2017 r. W pulach usługi Batch utworzonych między 10 marca 2016 r. a 5 lipca 2017 r. są one obsługiwane tylko w przypadku, gdy pula została utworzona za pomocą konfiguracji usługi w chmurze. Pule usługi Batch utworzone przed 10 marca 2016 r. nie obsługują pakietów aplikacji.
 >
-> Interfejsy API umożliwiające tworzenie i zarządzanie pakietów aplikacji należą [zarządzania partiami platformy .NET] [[api_net_mgmt]] biblioteki. Interfejsy API do instalowania pakietów aplikacji w węźle obliczeń są częścią [partiami platformy .NET] [ api_net] biblioteki.  
+> Interfejsy API umożliwiające tworzenie i zarządzanie pakiety aplikacji są częścią [zarządzania partiami platformy .NET] [ api_net_mgmt] biblioteki. Interfejsy API do instalowania pakietów aplikacji w węźle obliczeń są częścią [partiami platformy .NET] [ api_net] biblioteki. Porównywanie funkcje są dostępne interfejsy API partii dla innych języków. 
 >
 > Funkcja pakietów aplikacji, które są opisane w tym miejscu zastępuje funkcję partii aplikacje dostępne w poprzednich wersjach usługi.
 > 
@@ -39,13 +39,6 @@ W tym artykule dowiesz się, jak przekazywać oraz zarządzać nimi pakietów ap
 
 ## <a name="application-package-requirements"></a>Wymagania dotyczące pakietu aplikacji
 Aby użyć pakietów aplikacji, musisz [połączyć konto usługi Azure Storage](#link-a-storage-account) do konta partii zadań.
-
-Ta funkcja została wprowadzona w [interfejsu API REST partii] [ api_rest] wersji 2015-12-01.2.2 i odpowiadający mu [partiami platformy .NET] [ api_net] wersji biblioteki 3.1.0. Firma Microsoft zaleca zawsze używać najnowszej wersji interfejsu API podczas pracy z partii.
-
-> [!NOTE]
-> Pakiety aplikacji są obsługiwane we wszystkich pulach usługi Batch utworzonych po 5 lipca 2017 r. W pulach usługi Batch utworzonych między 10 marca 2016 r. a 5 lipca 2017 r. są one obsługiwane tylko w przypadku, gdy pula została utworzona za pomocą konfiguracji usługi w chmurze. Pule usługi Batch utworzone przed 10 marca 2016 r. nie obsługują pakietów aplikacji.
->
->
 
 ## <a name="about-applications-and-application-packages"></a>Aplikacje i pakiety aplikacji — informacje
 W partii zadań Azure *aplikacji* odwołuje się do zestawu określonej wersji plików binarnych, które mogą być automatycznie pobrane do węzłów obliczeniowych w puli. *Pakiet aplikacji* odwołuje się do *określonego zestawu* tych danych binarnych i reprezentuje danego *wersji* aplikacji.
@@ -85,50 +78,50 @@ Z pakietów aplikacji zadanie uruchamiania przez pulę nie trzeba określać dł
 >
 
 ## <a name="upload-and-manage-applications"></a>Przekazywanie aplikacji i zarządzanie nimi
-Można użyć [portalu Azure] [ portal] lub [zarządzania partiami platformy .NET](batch-management-dotnet.md) biblioteki w zakresie zarządzania pakietami aplikacji w ramach konta usługi partia zadań. W kolejnych sekcjach kilka możemy najpierw pokazują, jak połączyć konto magazynu, a następnie omówiono Dodawanie aplikacji i pakietów i zarządzania nimi przy użyciu portalu.
+Można użyć [portalu Azure] [ portal] lub interfejsów API zarządzania partii w zakresie zarządzania pakietami aplikacji w ramach konta usługi partia zadań. W kolejnych sekcjach kilka możemy najpierw pokazują, jak połączyć konto magazynu, a następnie omówiono Dodawanie aplikacji i pakietów i zarządzania nimi przy użyciu portalu.
 
 ### <a name="link-a-storage-account"></a>Połącz konto magazynu
-Aby użyć pakietów aplikacji, możesz połączyć konto magazynu Azure do konta partii zadań. Jeśli nie skonfigurowano jeszcze konta magazynu, portalu Azure wyświetli ostrzeżenie, po raz pierwszy kliknij **aplikacji** kafelka w **konto wsadowe** bloku.
+Aby użyć pakietów aplikacji, należy najpierw połączyć [konta magazynu Azure](batch-api-basics.md#azure-storage-account) do konta partii zadań. Jeśli nie skonfigurowano jeszcze konta magazynu, portalu Azure wyświetli ostrzeżenie, po raz pierwszy kliknij **aplikacji** na koncie usługi partia zadań.
 
-> [!IMPORTANT]
-> Obecnie partii obsługuje *tylko* **ogólnego przeznaczenia** typu konta magazynu, zgodnie z opisem w kroku 5, [Utwórz konto magazynu](../storage/common/storage-create-storage-account.md#create-a-storage-account)w [o Azure konta magazynu](../storage/common/storage-create-storage-account.md). Łącząc konta usługi Azure Storage do konta partii zadań, należy połączyć *tylko* **ogólnego przeznaczenia** konta magazynu.
-> 
-> 
+
 
 ![Ostrzeżenie "Nie skonfigurowano konta magazynu" w portalu Azure][9]
 
-Usługa partia zadań używa skojarzone konto magazynu do przechowywania pakietów aplikacji. Po połączeniu dwóch kont usługi partia zadań można automatycznie wdrażać pakietów przechowywanych w ramach połączonego konta magazynu do węzłów obliczeniowych. Aby połączyć konto magazynu do konta partii zadań, kliknij **ustawienia konta magazynu** na **ostrzeżenie** bloku, a następnie kliknij przycisk **konta magazynu** na  **Konto magazynu** bloku.
+Usługa partia zadań używa skojarzone konto magazynu do przechowywania pakietów aplikacji. Po połączeniu dwóch kont usługi partia zadań można automatycznie wdrażać pakietów przechowywanych w ramach połączonego konta magazynu do węzłów obliczeniowych. Aby połączyć konto magazynu do konta partii zadań, kliknij **konta magazynu** na **ostrzeżenie** okna, a następnie kliknij przycisk **konta magazynu** ponownie.
 
 ![Wybierz bloku konto magazynu w portalu Azure][10]
 
-Zaleca się utworzenie konta magazynu *w szczególności* do użytku z kontem usługi partia zadań i zaznacz je tutaj. Aby uzyskać więcej informacji o sposobie tworzenia konta magazynu, zobacz "Tworzenie konta magazynu" w [konta usługi Azure Storage](../storage/common/storage-create-storage-account.md). Po utworzeniu konta magazynu można następnie połączyć go do konta partii zadań za pomocą **konta magazynu** bloku.
+Zaleca się utworzenie konta magazynu *w szczególności* do użytku z kontem usługi partia zadań i zaznacz je tutaj. Po utworzeniu konta magazynu można następnie połączyć go do konta partii zadań za pomocą **konta magazynu** okna.
 
-> [!WARNING]
-> Usługa partia zadań używa usługi Azure Storage do przechowywania pakietów aplikacji jako blokowych obiektów blob. Jesteś [rozliczany jako normalne] [ storage_pricing] dla bloku danych obiektów blob. Należy wziąć pod uwagę rozmiar i liczbę pakietów aplikacji, a okresowe usuwanie przestarzałych pakietów, aby zminimalizować koszty.
+> [!NOTE] 
+> Obecnie nie można użyć pakietów aplikacji z kontem magazynu Azure, które skonfigurowano [reguły zapory](../storage/common/storage-network-security.md).
+> 
+
+Usługa partia zadań używa usługi Azure Storage do przechowywania pakietów aplikacji jako blokowych obiektów blob. Jesteś [rozliczany jako normalne] [ storage_pricing] dla bloku danych obiektów blob. Należy wziąć pod uwagę rozmiar i liczbę pakietów aplikacji, a okresowe usuwanie przestarzałych pakietów, aby zminimalizować koszty.
 > 
 > 
 
 ### <a name="view-current-applications"></a>Wyświetl bieżące aplikacje
-Aby wyświetlić aplikacje w ramach konta usługi partia zadań, kliknij przycisk **aplikacji** elementu menu w menu po lewej stronie podczas przeglądania **konto wsadowe** bloku.
+Aby wyświetlić aplikacje w ramach konta usługi partia zadań, kliknij przycisk **aplikacji** elementu menu w menu po lewej stronie podczas przeglądania sieci **konto usługi partia zadań**.
 
 ![Kafelek aplikacji][2]
 
-Wybranie tej opcji menu otwiera **aplikacji** bloku:
+Wybranie tej opcji menu otwiera **aplikacji** okno:
 
 ![Lista aplikacji][3]
 
-**Aplikacji** bloku Wyświetla identyfikator każdej aplikacji w Twoje konto oraz następujące właściwości:
+To okno wyświetla identyfikator każdej aplikacji w Twoje konto oraz następujące właściwości:
 
 * **Pakiety**: numer wersji skojarzonych z tą aplikacją.
 * **Wersja domyślna**: wersja aplikacji zainstalowane, jeśli nie wskazują wersji po określeniu dla puli aplikacji. To ustawienie jest opcjonalne.
 * **Zezwalaj na aktualizacje**: wartość, która określa, czy pakiet aktualizacji, usuwanie i dodatki są dozwolone. Jeśli ta wartość jest równa **nr**, pakiet aktualizacji i usunięć są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **Tak**.
 
 ### <a name="view-application-details"></a>Wyświetlanie szczegółów aplikacji
-Aby otworzyć blok, który zawiera szczegóły aplikacji, wybierz aplikację w **aplikacji** bloku.
+Aby wyświetlić szczegóły dotyczące aplikacji, wybierz aplikację w **aplikacji** okna.
 
 ![Szczegóły aplikacji][4]
 
-W bloku szczegóły aplikacji można skonfigurować następujące ustawienia dla aplikacji.
+Informacje dotyczące aplikacji można skonfigurować następujące ustawienia dla aplikacji.
 
 * **Zezwalaj na aktualizacje**: Określ, czy można zaktualizować lub usunąć jego pakietów aplikacji. Zobacz "Aktualizowanie lub usuwanie pakietu aplikacji" w dalszej części tego artykułu.
 * **Wersja domyślna**: Określ pakiet aplikacji domyślnej, aby wdrożyć węzły obliczeniowe.
@@ -137,11 +130,11 @@ W bloku szczegóły aplikacji można skonfigurować następujące ustawienia dla
 ### <a name="add-a-new-application"></a>Dodaj nową aplikację
 Aby utworzyć nową aplikację, należy dodać pakiet aplikacji i określ aplikacji nowy, unikatowy identyfikator. Pierwszy pakiet aplikacji, który możesz dodać nowy identyfikator aplikacji tworzy nową aplikację.
 
-Kliknij przycisk **Dodaj** na **aplikacji** bloku, aby otworzyć **nowej aplikacji** bloku.
+Kliknij pozycję **Aplikacje** > **Dodaj**.
 
 ![Nowy blok aplikacji w portalu Azure][5]
 
-**Nowej aplikacji** blok zawiera następujące pola, aby określić ustawienia nowej aplikacji i pakietu aplikacji.
+**Nowej aplikacji** okna zawiera następujące pola, aby określić ustawienia nowej aplikacji i pakietu aplikacji.
 
 **Identyfikator aplikacji**
 
@@ -165,28 +158,28 @@ To pole określa wersję pakietu aplikacji, które przekazujesz. Ciągi wersji o
 
 To pole określa plik zip, który zawiera pliki binarne aplikacji i plików pomocniczych, które są wymagane do wykonania aplikacji. Kliknij przycisk **wybierz plik** pola lub ikonę folderu Wyszukaj i wybierz plik zip, który zawiera pliki aplikacji.
 
-Po wybraniu pliku, kliknij przycisk **OK** można rozpocząć przekazywania do magazynu Azure. Po zakończeniu operacji wysyłania portal wyświetla powiadomienie i zamyka bloku. W zależności od rozmiaru pliku, czy przekazujesz i szybkość połączenia sieciowego ta operacja może potrwać pewien czas.
+Po wybraniu pliku, kliknij przycisk **OK** można rozpocząć przekazywania do magazynu Azure. Po zakończeniu operacji przekazywania, w portalu zostaną wyświetlone powiadomienie. W zależności od rozmiaru pliku, czy przekazujesz i szybkość połączenia sieciowego ta operacja może potrwać pewien czas.
 
 > [!WARNING]
-> Nie zamykaj **nowej aplikacji** bloku przed zakończeniem operacji przesyłania. W ten sposób zostanie zatrzymany procesu przekazywania.
+> Nie zamykaj **nowej aplikacji** okna przed zakończeniem operacji przesyłania. Dzięki temu zatrzymaniu procesu przekazywania.
 > 
 > 
 
 ### <a name="add-a-new-application-package"></a>Dodaj nowy pakiet aplikacji
-Aby dodać nową wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w **aplikacji** bloku, kliknij przycisk **pakiety**, następnie kliknij przycisk **Dodaj** otworzyć **Dodaj pakiet** bloku.
+Aby dodać wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w **aplikacji** systemu windows, a następnie kliknij przycisk **pakiety** > **Dodaj**.
 
 ![Dodawanie bloku pakietu aplikacji w portalu Azure][8]
 
-Jak widać, pól zgodnie z regułami **nowej aplikacji** bloku, ale **identyfikator aplikacji** pole jest wyłączone. Tak samo jak dla nowej aplikacji, określ **wersji** nowego pakietu, przejdź do Twojej **pakiet aplikacji** zip pliku, a następnie kliknij przycisk **OK** do przekazania pakietu.
+Jak widać, pól zgodnie z regułami **nowej aplikacji** okna, ale **identyfikator aplikacji** pole jest wyłączone. Tak samo jak dla nowej aplikacji, określ **wersji** nowego pakietu, przejdź do Twojej **pakiet aplikacji** zip pliku, a następnie kliknij przycisk **OK** do przekazania pakietu.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizowanie lub usuwanie pakietu aplikacji
-Aby zaktualizować lub usunąć istniejący pakiet aplikacji, Otwórz szczegóły blok dla aplikacji, kliknij przycisk **pakiety** otworzyć **pakiety** bloku, kliknij przycisk **wielokropka** w wiersz pakietu aplikacji, który chcesz zmodyfikować, a następnie wybierz akcję, którą chcesz wykonać.
+Aby zaktualizować lub usunąć istniejący pakiet aplikacji, Otwórz szczegóły aplikacji, kliknij przycisk **pakiety**, kliknij przycisk **wielokropka** w wierszu, który chcesz zmodyfikować, a następnie wybierz pakiet aplikacji Akcja, którą chcesz wykonać.
 
 ![Aktualizowanie lub usuwanie pakietu w portalu Azure][7]
 
 **Aktualizacja**
 
-Po kliknięciu **aktualizacji**, *pakiet aktualizacji* bloku jest wyświetlany. Ten blok jest podobny do *nowy pakiet aplikacji* bloku, jednak tylko pole wyboru pakietu jest włączona, co pozwoli określić nowy plik ZIP i przekazać.
+Po kliknięciu **aktualizacji**, **pakiet aktualizacji** systemu windows jest wyświetlana. To okno jest podobny do **nowy pakiet aplikacji** okna, jednak tylko pole wyboru pakietu jest włączona, co pozwoli określić nowy plik ZIP i przekazać.
 
 ![Blok pakietu aktualizacji w portalu Azure][11]
 
@@ -262,7 +255,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-W węzłach Linux format różni się nieznacznie. Kropki (.), łączniki (-) i znaki numeru (#) są jako spłaszczone podkreślenia w zmiennej środowiskowej. Zauważ również, czy zostaną zachowane w przypadku Identyfikatora aplikacji. Na przykład:
+W węzłach Linux format różni się nieznacznie. Kropki (.), łączniki (-) i znaki numeru (#) są jako spłaszczone do podkreślenia w zmiennej środowiskowej. Zauważ również, czy zostaną zachowane w przypadku Identyfikatora aplikacji. Na przykład:
 
 ```
 Linux:
@@ -283,7 +276,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
-Podczas przekazywania pakietu aplikacji, można określić domyślnej wersji do wdrożenia węzłów obliczeniowych. Jeśli określono domyślnej wersji aplikacji, sufiks wersji można pominąć w przypadku odwołania do aplikacji. Można określić domyślnej wersji aplikacji w portalu Azure, w bloku aplikacji, jak pokazano w [przekazywanie aplikacji i zarządzanie nimi](#upload-and-manage-applications).
+Podczas przekazywania pakietu aplikacji, można określić domyślnej wersji do wdrożenia węzłów obliczeniowych. Jeśli określono domyślnej wersji aplikacji, sufiks wersji można pominąć w przypadku odwołania do aplikacji. Można określić domyślnej wersji aplikacji w portalu Azure w **aplikacji** okna, jak pokazano w [przekazywanie aplikacji i zarządzanie nimi](#upload-and-manage-applications).
 
 Na przykład jeśli ustawisz "2.7", jako wersja domyślna dla aplikacji *mieszarce*i zadania odwołują się następujące zmiennej środowiskowej, a następnie węzły Windows wykona wersji 2.7:
 
@@ -348,7 +341,7 @@ Z pakietów aplikacji możesz pomóc klientom Wybierz aplikacje do ich zadań i 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Interfejsu API REST partii] [ api_rest] obsługuje również do pracy z pakietami aplikacji. Na przykład, zobacz [applicationPackageReferences] [ rest_add_pool_with_packages] element [Dodaj pulę, aby konto] [ rest_add_pool] informacji o sposobie określania pakiety do zainstalowania przy użyciu interfejsu API REST. Zobacz [aplikacji] [ rest_applications] szczegółowe informacje na temat sposobu uzyskiwania informacji o aplikacji przy użyciu interfejsu API REST partii.
-* Dowiedz się, jak programowo [Zarządzanie kontami partii zadań Azure i przydziały zarządzania partiami platformy .NET](batch-management-dotnet.md). [Zarządzania partiami platformy .NET][api_net_mgmt] biblioteki można włączyć funkcji Tworzenie i usuwanie konta wsadowego aplikacji lub usługi.
+* Dowiedz się, jak programowo [Zarządzanie kontami partii zadań Azure i przydziały zarządzania partiami platformy .NET](batch-management-dotnet.md). [Zarządzania partiami platformy .NET] [ api_net_mgmt] biblioteki można włączyć funkcji Tworzenie i usuwanie konta wsadowego aplikacji lub usługi.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
 [api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet

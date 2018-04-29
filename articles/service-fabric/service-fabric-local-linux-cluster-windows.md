@@ -1,11 +1,11 @@
 ---
-title: "Konfigurowanie usługi Azure Service Fabric Linux klastra w systemie Windows | Dokumentacja firmy Microsoft"
-description: "W tym artykule opisano sposób konfigurowania klastry z systemem Linux sieci szkieletowej usług uruchomionych na maszynach rozwoju systemu Windows. Jest to szczególnie przydatne dla wielu aplikacji na wiele platform."
+title: Konfigurowanie usługi Azure Service Fabric Linux klastra w systemie Windows | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania klastry z systemem Linux sieci szkieletowej usług uruchomionych na maszynach rozwoju systemu Windows. Jest to szczególnie przydatne dla wielu aplikacji na wiele platform.
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
 manager: mfussell
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 89c1cf36c3b92376dedb1cb29d190c4c6d8f619b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Konfigurowanie klastra sieci szkieletowej usług systemu Linux na komputerze dewelopera systemu Windows
 
@@ -36,7 +36,7 @@ Opartych na systemie Linux klastrów sieci szkieletowej usług nie należy uruch
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Tworzenie kontenera lokalnego i konfigurowanie usługi Service Fabric
-Aby skonfigurować lokalny kontener platformy Docker i uruchomić na nim klaster usługi Service Fabric, wykonaj następujące czynności:
+Konfigurowanie lokalnego kontenera Docker i klaster sieci szkieletowej usług na nim uruchomione, wykonaj następujące czynności w programie PowerShell:
 
 1. Ściągnij obraz z repozytorium platformy Docker:
 

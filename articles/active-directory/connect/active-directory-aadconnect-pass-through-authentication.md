@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 377a8255961a4c7fa55f8bbc5cb98ae4deff3205
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Logowanie użytkownika do uwierzytelniania przekazywanego Azure Active Directory
 
@@ -39,7 +39,7 @@ Możesz łączyć uwierzytelniania przekazywanego z [bezproblemowe logowanie jed
 - *Środowisko użytkowników*
   - Użytkownicy używać tego samego hasła do logowania się do zarówno lokalnie, jak i aplikacje oparte na chmurze.
   - Użytkownicy poświęcają mniej czasu rozmowie z pomocy technicznej rozpoznawania skojarzone z hasłem problemów IT.
-  - Użytkownicy mogą wykonać [zarządzania hasłami samoobsługi](../active-directory-passwords-overview.md) zadania w chmurze.
+  - Użytkownicy mogą wykonać [zarządzania hasłami samoobsługi](../authentication/active-directory-passwords-overview.md) zadania w chmurze.
 - *Łatwe wdrażanie i administrowanie*
   - Nie jest konieczne złożone lokalnego wdrożenia i konfiguracji sieci.
   - Należy po prostu lekkie agenta być zainstalowana na lokalnym.
@@ -56,7 +56,7 @@ Możesz łączyć uwierzytelniania przekazywanego z [bezproblemowe logowanie jed
 - Obsługuje logowanie użytkownika do wszystkich aplikacji opartej na przeglądarce sieci web i aplikacje klienckie Microsoft Office, które używają [nowoczesnego uwierzytelniania](https://aka.ms/modernauthga).
 - Nazwy logowania użytkowników może być albo lokalnymi domyślna nazwa użytkownika (`userPrincipalName`) lub inny atrybut skonfigurowane w programie Azure AD Connect (nazywane `Alternate ID`).
 - Funkcja bezproblemowo współdziała z [dostępu warunkowego](../active-directory-conditional-access-azure-portal.md) funkcje takie jak usługi Multi-Factor Authentication (MFA) do zabezpieczania użytkowników.
-- Zintegrowana z opartej na chmurze [zarządzania hasłami samoobsługi](../active-directory-passwords-overview.md), włączając funkcję zapisywania zwrotnego haseł do lokalnej usługi Active Directory i ochrona za pomocą hasła przy zakaz najczęściej używanych haseł.
+- Zintegrowana z opartej na chmurze [zarządzania hasłami samoobsługi](../authentication/active-directory-passwords-overview.md), włączając funkcję zapisywania zwrotnego haseł do lokalnej usługi Active Directory i ochrona za pomocą hasła przy zakaz najczęściej używanych haseł.
 - Środowiska z wieloma lasami są obsługiwane, jeśli istnieją relacje zaufania lasu między z lasów usługi AD i Jeśli routing sufiksów nazw jest poprawnie skonfigurowany.
 - Jest bezpłatna funkcji i nie wymagają żadnych wersji płatnej usługi Azure AD z niego korzystać.
 - Można ją włączyć za pomocą [Azure AD Connect](active-directory-aadconnect.md).

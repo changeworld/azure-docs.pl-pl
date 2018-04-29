@@ -1,8 +1,8 @@
 ---
-title: "Zabezpieczanie uprzywilejowanego dostępu w usłudze Azure AD | Dokumentacja firmy Microsoft"
-description: "Temat opisujący podejścia do zabezpieczania uprzywilejowanego dostępu na platformie Azure, Azure Active Directory i usług Microsoft Online Services."
+title: Zabezpieczanie uprzywilejowanego dostępu w usłudze Azure AD | Dokumentacja firmy Microsoft
+description: Temat opisujący podejścia do zabezpieczania uprzywilejowanego dostępu na platformie Azure, Azure Active Directory i usług Microsoft Online Services.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
 editor: mwahl
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f49d5a629b9643df81253c57ee8e3458b43b0c59
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu w usłudze Azure AD
 Zabezpieczanie uprzywilejowanego dostępu jest krytyczne pierwszy krok w celu ochrony zasobów biznesowych w organizacji modern. Uprzywilejowane konta są kontami, które Administruj i Zarządzaj systemów informatycznych. Osoby atakujące przez docelowe te konta do uzyskiwania dostępu do danych organizacji i systemów. Aby zabezpieczyć uprzywilejowanego dostępu, można odizolować kont i systemów ryzyka narażenia na złośliwy użytkownik.
@@ -63,7 +63,7 @@ Aby zmniejszyć czas ekspozycji uprawnień i zwiększyć Twojej wgląd w ich uż
 Z kontroli dostępu warunkowego usługi Azure Active Directory sprawdza określonych warunków, można wybrać podczas uwierzytelniania użytkownika, przed zezwoleniem na dostęp do aplikacji. Gdy te warunki są spełnione, użytkownik jest uwierzytelniony i zezwolenie na dostęp do aplikacji.
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* Włącz [uwierzytelnianie wieloskładnikowe platformy Azure](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
+* Włącz [uwierzytelnianie wieloskładnikowe platformy Azure](../authentication/howto-mfa-getstarted.md)
 * Włącz [Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md)
 * Włącz [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * Włącz [kontroli dostępu warunkowego](../active-directory-conditional-access-azure-portal.md)

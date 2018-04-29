@@ -1,4 +1,4 @@
-Aby włączyć rejestrowanie w swojej aplikacji, musisz utworzyć zasady rejestracji. Te zasady opisują procesy, przez które przejdą użytkownicy podczas rejestracji, i zawartość tokenów, które aplikacja otrzyma po pomyślnej rejestracji.
+Jeśli chcesz włączyć tylko rejestracji w aplikacji, możesz użyć **rejestracji** zasad. Ta zasada opisano procesy, które klientów podąża podczas tworzenia konta i zawartość tokeny, których aplikacja odbiera na pomyślne napędza rejestracje.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

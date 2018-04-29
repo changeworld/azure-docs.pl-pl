@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ac0b82c4683f5a1b09d7e6102a7b70361e1fbce2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Używaj AZ3166 zestaw deweloperski IoT z kognitywnych usług i funkcji platformy Azure umożliwia translatora języka
 
@@ -35,7 +35,7 @@ Zakończ [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/iot-hu
 
 Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za pomocą jednej z tych dwóch metod:
 
-* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/en-us/free/)
+* Aktywuj [bezpłatne 30-dniowej wersji próbnej konto Microsoft Azure](https://azure.microsoft.com/free/)
 * Oświadczenie użytkownika [Azure środki](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) w przypadku subskrybentów MSDN lub Visual Studio
 
 ## <a name="step-1-open-the-project-folder"></a>Krok 1. Otwórz folder projektu
@@ -46,17 +46,14 @@ Aktywna subskrypcja platformy Azure. Jeśli nie masz, możesz zarejestrować za 
 - Kod uruchomienia programu VS
 - Zestaw deweloperski można połączyć się z komputerem.
 
-Kod VS automatycznie wyszukuje zestaw deweloperski i spowoduje otwarcie strony wprowadzenie:
-
-![Strona wprowadzenia](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_start.png)
-
 ### <a name="b-open-the-arduino-examples-folder"></a>B. Otwórz folder Arduino przykłady
 
 Po lewej stronie rozwiń **przykłady ARDUINO > przykłady MXCHIP AZ3166 > AzureIoT**i wybierz **DevKitTranslator**. Otwiera nowe okno kodzie VS z folderu projektu DEVKITTRANSLATOR w nim.
 
 ![Przykłady zestaw deweloperski IoT](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 
-Jeśli wystąpi aby zamknąć okienko, zostanie ponownie otwarty. Użyj `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) do otwarcia palety polecenia, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
+> [!NOTE]
+> Przykład można również otworzyć z palety polecenia. Użyj `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) do otwarcia palety polecenia, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: przykłady**.
 
 ## <a name="step-2-provision-azure-services"></a>Krok 2. Udostępnianie usług platformy Azure
 
@@ -115,7 +112,7 @@ Na ekranie wyników tłumaczenia można:
 
 ## <a name="how-it-works"></a>Jak to działa
 
-![mini-solution-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
+![Mini-Solution-Voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
 Rejestruje szkicu Arduino głosu następnie zapisuje żądania HTTP do usługi Azure Functions wyzwalacza. Środowisko Azure Functions wywołuje translator mowy kognitywnych usługi interfejsu API w celu tłumaczenia. Po usługi Azure Functions pobiera tekst tłumaczenia, wysyła komunikat C2D na urządzeniu. Następnie tłumaczenia jest wyświetlany na ekranie.
 
@@ -143,4 +140,4 @@ Teraz należy zestaw deweloperski IoT jako translator przy użyciu funkcji platf
 Przejdź do innych samouczków, aby dowiedzieć się więcej:
 
 > [!div class="nextstepaction"]
-> [Nawiązać pakiet IoT Azure IoT zestaw deweloperski AZ3166 zdalnego monitorowania](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [Nawiązać pakiet IoT Azure IoT zestaw deweloperski AZ3166 zdalnego monitorowania](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)

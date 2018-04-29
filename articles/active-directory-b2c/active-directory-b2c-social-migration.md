@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: davidmu
-ms.openlocfilehash: 80889ac29b6d92f17fb9c9c693fa733085ce7f1c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a150d8255171c83334ac4c1f81cbcee39c1df70a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Usługa Azure Active Directory B2C: Migracja użytkowników z tożsamościami społecznościowych
 Podczas planowania migracji do usługi Azure AD B2C dostawcy tożsamości, konieczne może być migracja użytkowników z tożsamościami społecznościowych. W tym artykule opisano sposób migracji istniejących kont społecznościowych tożsamości, takich jak: usługi Facebook, LinkedIn firmy Microsoft i Google kont do usługi Azure AD B2C. Ten artykuł dotyczy również tożsamości federacyjnych, jednak te migracji są mniej typowe.
@@ -46,7 +46,7 @@ Ten artykuł stanowi kontynuację artykułu migracji użytkowników i koncentruj
 * W zależności od dostawcy tożsamości **identyfikator użytkownika społecznościowych** jest unikatową wartość dla danego użytkownika dla aplikacji lub tworzenia konta. Konfigurowanie zasad usługi Azure AD B2C mających taki sam identyfikator aplikacji, który został już wcześniej przypisany przez dostawcę społecznościowych. Lub innej aplikacji w ramach tego samego konta programowanie.
 
 ## <a name="use-graph-api-to-migrate-users"></a>Migracja użytkowników za pomocą interfejsu API Graph
-Tworzenie konta użytkownika usługi Azure AD B2C za pośrednictwem [interfejsu API programu Graph](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Do komunikacji z interfejsu API programu Graph, należy najpierw musi mieć konto usługi z uprawnieniami administracyjnymi. W usłudze Azure AD należy zarejestrować aplikację i uwierzytelniania do usługi Azure AD. Poświadczenia aplikacji są aplikacji identyfikator i klucz tajny aplikacji. Aplikacja działa jako sam nie jako użytkownik, do wywołania interfejsu API programu Graph. Postępuj zgodnie z instrukcjami w kroku 1 w [migracji użytkowników](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users) artykułu.
+Tworzenie konta użytkownika usługi Azure AD B2C za pośrednictwem [interfejsu API programu Graph](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Do komunikacji z interfejsu API programu Graph, należy najpierw musi mieć konto usługi z uprawnieniami administracyjnymi. W usłudze Azure AD należy zarejestrować aplikację i uwierzytelniania do usługi Azure AD. Poświadczenia aplikacji są aplikacji identyfikator i klucz tajny aplikacji. Aplikacja działa jako sam nie jako użytkownik, do wywołania interfejsu API programu Graph. Postępuj zgodnie z instrukcjami w kroku 1 w [migracji użytkowników](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users) artykułu.
 
 ## <a name="required-properties"></a>Wymagane właściwości
 Na poniższej liście przedstawiono właściwości, które są wymagane w przypadku tworzenia użytkownika.
@@ -139,7 +139,7 @@ Nazwa wystawcy lub nazwa dostawcy tożsamości, jest skonfigurowany w zasadach. 
 1. Zaloguj się przy użyciu jednego z kont społecznościowych
 2. JWT token, skopiuj `sub` wartość. `sub` Zwykle zawiera identyfikator obiektu użytkownika w usłudze Azure AD B2C. Lub z portalu Azure, otwórz właściwości użytkownika i skopiuj identyfikatora obiektu.
 3. Otwórz [Eksploratora usługi Azure AD Graph](https://graphexplorer.azurewebsites.net)
-4. Zaloguj się z administratorem. N
+4. Zaloguj się z administratorem. Nie
 5. Uruchom poniższe żądanie GET. Zastąp userObjectId identyfikator użytkownika został skopiowany. **POBIERZ** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 6. Zlokalizuj `userIdentities` element wewnątrz powrót JSON z usługi Azure AD B2C.
 7. [Opcjonalnie] Można również dekodowania `issuerUserId` wartość.

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: bradsev
-ms.openlocfilehash: da09ab7daba115e570bb8b97549cc5f01e7496b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f0e0c04e48a551db6d7d7cd221a35e267dc0a63f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonanie zadania nauki danych: eksploracji, modelowania i wdrażanie
 
 Zadania nauki typowych danych obejmują Eksploracja danych, modelowania i wdrożenia. W tym artykule przedstawiono sposób użycia **interakcyjne Eksploracja danych, analizy i raportowania (IDEAR)** i **automatycznego modelowania i Raportowanie (AMAR)** narzędzia wykonać kilka typowych zadań nauki danych przykład interakcyjną eksplorację, analizy danych raportowania i tworzenia modelu. Opisano także opcje wdrażania modelu w środowisku produkcyjnym za pomocą różnych platform zestaw narzędzi i dane, takie jak następujące:
 
-- [Azure Machine Learning](../preview/index.yml)
+- [Azure Machine Learning](../service/index.yml)
 - [Programu SQL Server z usługami ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -32,7 +32,7 @@ Zadania nauki typowych danych obejmują Eksploracja danych, modelowania i wdroż
 
 Naukowca danych można wykonać eksploracji i raportowania w różnych sposobów: za pomocą bibliotek i pakiety dostępne dla języka Python (matplotlib na przykład) lub z R (ggplot lub struktury, na przykład). Analityków danych, można dostosować takiego kodu do potrzeb Eksploracja danych w określonych scenariuszach. Wymagania dotyczące danych strukturalnych są różne dla danych niestrukturalnych, takich jak tekstu lub obrazów. 
 
-Produkty, takie jak Azure Machine Learning Workbench udostępniają [zaawansowane Przygotowanie danych](../preview/tutorial-bikeshare-dataprep.md) danych wrangling i eksploracja, w tym tworzenia funkcji. Użytkownik powinny zdecydować o narzędzia, biblioteki i pakiety, które najlepiej suite ich potrzeb. 
+Produkty, takie jak Azure Machine Learning Workbench udostępniają [zaawansowane Przygotowanie danych](../desktop-workbench/tutorial-bikeshare-dataprep.md) danych wrangling i eksploracja, w tym tworzenia funkcji. Użytkownik powinny zdecydować o narzędzia, biblioteki i pakiety, które najlepiej suite ich potrzeb. 
 
 Element dostarczany na końcu tego etapu jest raport Eksploracja danych. Raport powinien dostarczyć dość obszerne danych służący do modelowania i ocenę, czy dane są odpowiednie przejść do kroku modelowania. Narzędzia Team danych nauki procesu (TDSP) z opisem w poniższych sekcjach dla częściowo zautomatyzowanych eksploracji modelowania i raportowania udostępniają Eksploracja danych standardowych i modelowanie raportów. 
 
@@ -75,7 +75,7 @@ Aby uzyskać więcej informacji, zobacz [automatycznego modelowania i raportowan
 ### <a name="model-management"></a>Zarządzanie modelami
 Po wielu modeli są wbudowane, zwykle musi być system rejestracji i zarządzania modeli. Zazwyczaj należy kombinację skryptów lub interfejsów API i system bazy danych lub versioning wewnętrznej bazy danych. Kilka opcji, które warto uwzględnić te zadania zarządzania są:
 
-1. [Usługa Azure Machine Learning — model usługi zarządzania](../preview/index.yml)
+1. [Usługa Azure Machine Learning — model usługi zarządzania](../service/index.yml)
 2. [ModelDB z MIT](https://mitdbg.github.io/modeldb/) 
 3. [SQL-seerver jako system zarządzania modelu](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
@@ -88,7 +88,7 @@ Wdrożenia produkcyjnego umożliwia modelu do pełnienia roli active w firmie. P
 Istnieją różne podejścia i platformy, aby umieścić modeli w środowisku produkcyjnym. Poniżej przedstawiono kilka opcji:
 
 
-- [Model wdrażania w usłudze Azure Machine Learning](../preview/model-management-overview.md)
+- [Model wdrażania w usłudze Azure Machine Learning](../desktop-workbench/model-management-overview.md)
 - [Wdrażania modelu w programie SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

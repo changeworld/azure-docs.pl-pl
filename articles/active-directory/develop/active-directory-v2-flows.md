@@ -1,25 +1,25 @@
 ---
-title: "Typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory | Dokumentacja firmy Microsoft"
-description: "Typy aplikacji i scenariusze obsługiwane przez punktu końcowego v2.0 usługi Azure Active Directory."
+title: Typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Typy aplikacji i scenariusze obsługiwane przez punktu końcowego v2.0 usługi Azure Active Directory.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
-ms.author: dastrock
+ms.date: 04/17/2018
+ms.author: hpsin
 ms.custom: aaddev
-ms.openlocfilehash: b0344c1da626a8b4679a632db239fc9ded9d5ce6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 291cd1adaf36d7f02aae84f97b7f7b3e6bca2c9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikacji dla punktu końcowego v2.0 usługi Azure Active Directory
 Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) obsługuje uwierzytelnianie dla różnych architektur nowoczesnych aplikacji, wszystkie z nich oparte na standardowych protokołach [OAuth 2.0 lub OpenID Connect](active-directory-v2-protocols.md). W tym artykule opisano typy aplikacji, które można tworzyć przy użyciu usługi Azure AD w wersji 2.0, niezależnie od tego, czy z preferowanego języka lub platformy. Informacje przedstawione w tym artykule zaprojektowano w celu ułatwić zrozumienie ogólnych scenariuszy przed [rozpocząć pracę z kodem](active-directory-appmodel-v2-overview.md#getting-started).
@@ -120,4 +120,4 @@ W tym przepływie aplikacja współpracuje bezpośrednio z `/token` punktu końc
 
 ![Demon przebieg uwierzytelniania w aplikacji](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
-Aby utworzyć aplikację demona, zobacz dokumentację poświadczeń klienta w naszych [wprowadzenie](active-directory-appmodel-v2-overview.md#getting-started) sekcji lub spróbuj [.NET przykładowej aplikacji](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Aby utworzyć aplikację demona, zobacz [dokumentacji poświadczeń klienta](active-directory-v2-protocols-oauth-client-creds.md), lub spróbuj [.NET Przykładowa aplikacja](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

@@ -1,8 +1,8 @@
 ---
-title: "Eksport ciągły dane telemetryczne z usługi Application Insights | Dokumentacja firmy Microsoft"
-description: "Eksportuj dane diagnostyczne i użycia do magazynu w systemie Microsoft Azure i pobrać ją stamtąd."
+title: Eksport ciągły dane telemetryczne z usługi Application Insights | Dokumentacja firmy Microsoft
+description: Eksportuj dane diagnostyczne i użycia do magazynu w systemie Microsoft Azure i pobrać ją stamtąd.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7d1f648bc2c2a42cfbd668f180bce8f56ebd065b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 05d271eb7d046819bb8fc2be20623cba0000d8f4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportuj dane telemetryczne z usługi Application Insights
 Czy chcesz zachować telemetrii przez czas dłuższy niż okres przechowywania standardowe? Lub przetwarzać dane w jakiś sposób specjalne? Eksport ciągły jest idealna to. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. Z tego miejsca można pobrać danych i zapisu, niezależnie od kod należy go przetworzyć.  
@@ -31,10 +31,11 @@ Przed skonfigurowaniem Eksport ciągły istnieje kilka rozwiązań alternatywnyc
 * [Analiza](app-insights-analytics.md) zapewnia język kwerendy zaawansowanych telemetrii. Można także wyeksportować wyniki.
 * Jeśli szukasz do [eksplorować dane w usłudze Power BI](app-insights-export-power-bi.md), możesz to zrobić bez użycia eksportu ciągłego.
 * [Dostępu do danych interfejsu API REST](https://dev.applicationinsights.io/) pozwala uzyskiwać dostęp do telemetrii programowo.
+* Można także przejść do instalacji [eksportu ciągłego za pomocą programu Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 
 Po eksportu ciągłego kopiuje dane do magazynu (gdzie pozostawał dla tak długo, jak chcesz), jest on nadal dostępny w usłudze Application Insights dla zwykle [okres przechowywania](app-insights-data-retention-privacy.md).
 
-## <a name="setup"></a>Utwórz eksport ciągły
+## <a name="setup"></a> Utwórz eksport ciągły
 1. Zasób usługi Application Insights dla aplikacji, otwórz eksportu ciągłego i wybierz polecenie **Dodaj**:
 
     ![Przewiń w dół i kliknij przycisk eksportu ciągłego](./media/app-insights-export-telemetry/01-export.png)
@@ -71,7 +72,7 @@ Aby zatrzymać trwale eksportu, usuń go. Dzięki temu nie powoduje usunięcia d
 ### <a name="cant-add-or-change-an-export"></a>Nie można dodać lub zmienić eksportu?
 * Aby dodać lub zmienić eksportu, niezbędne są uprawnienia dostępu do właściciela, współautora lub współautora wgląd w aplikacji. [Dowiedz się więcej o rolach][roles].
 
-## <a name="analyze"></a>Jakie zdarzenia uzyskać?
+## <a name="analyze"></a> Jakie zdarzenia uzyskać?
 Wyeksportowane dane jest nieprzetworzone dane telemetryczne, otrzymywanych z aplikacji, ale dodamy danych lokalizacji, które firma Microsoft obliczenia z adresu IP klienta.
 
 Dane, które zostały odrzucone przez [próbkowania](app-insights-sampling.md) nie wchodzi w wyeksportowanych danych.
@@ -85,7 +86,7 @@ Dane obejmują także wyniki dowolnego [testów sieci web dostępności](app-ins
 >
 >
 
-## <a name="get"></a>Sprawdź dane
+## <a name="get"></a> Sprawdź dane
 Możesz sprawdzić magazynu bezpośrednio w portalu. Kliknij przycisk **Przeglądaj**, wybierz konto magazynu, a następnie otwórz **kontenery**.
 
 Aby sprawdzić magazynu Azure w programie Visual Studio, otwórz **widoku**, **Eksplorator chmury**. (Jeśli nie masz tego polecenia menu, należy zainstalować zestaw Azure SDK: Otwórz **nowy projekt** okna dialogowego, rozwiń węzeł Visual C# / w chmurze i wybierz polecenie **pobrać zestaw Microsoft Azure SDK dla platformy .NET**.)
@@ -100,19 +101,19 @@ Poniżej przedstawiono formularz ścieżki:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-gdzie
+Gdzie
 
-* `blobCreationTimeUtc`Godzina utworzenia obiektu blob w wewnętrznej jest przemieszczania magazynu
-* `blobDeliveryTimeUtc`to czas, kiedy obiekt blob jest kopiowany do magazynu docelowego eksportu
+* `blobCreationTimeUtc` Godzina utworzenia obiektu blob w wewnętrznej jest przemieszczania magazynu
+* `blobDeliveryTimeUtc` to czas, kiedy obiekt blob jest kopiowany do magazynu docelowego eksportu
 
-## <a name="format"></a>Format danych
+## <a name="format"></a> Format danych
 * Każdy obiekt blob jest to plik tekstowy, który zawiera wiele "\n'-separated wierszy. Zawiera on telemetrii przetwarzane w czasie około pół minuty.
 * Każdy wiersz reprezentuje punktu danych telemetrii, takich jak żądania lub strony widoku.
 * Każdy wiersz jest niesformatowany dokumentu JSON. Jeśli sit i stare jego, otwórz go w programie Visual Studio i wybierz pozycję Edytuj, zaawansowane, Format pliku:
 
 ![Wyświetl dane telemetryczne z narzędziem do odpowiedniego](./media/app-insights-export-telemetry/06-json.png)
 
-Okresach czasu są w taktach, gdzie znaczniki 10 000 = 1 MS. Na przykład te wartości pokazują czas 1 MS, aby wysłać żądanie z przeglądarki, 3ms do odbierania go i 1.8s do przetwarzania tej strony w przeglądarce:
+Okresach czasu są w taktach, gdzie znaczniki 10 000 = 1 ms. Na przykład, te wartości Pokaż czas 1 ms, aby wysłać żądania z przeglądarki, 3 ms odbierać i 1.8 s do przetwarzania tej strony w przeglądarce:
 
     "sendRequest": {"value": 10000.0},
     "receiveRequest": {"value": 30000.0},

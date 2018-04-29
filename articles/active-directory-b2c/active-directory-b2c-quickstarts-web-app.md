@@ -1,6 +1,6 @@
 ---
-title: Testowanie aplikacji internetowej z obsługą usługi Azure AD B2C
-description: Podręcznik Szybki start umożliwiający wypróbowanie przykładowej aplikacji internetowej platformy ASP.NET korzystającej z usługi Azure Active Directory B2C do udostępniania funkcji logowania użytkownika.
+title: Szybki start — konfigurowanie logowania dla aplikacji platformy ASP.NET przy użyciu usługi Azure Active Directory B2C | Microsoft Docs
+description: Uruchamianie przykładowej internetowej aplikacji platformy ASP.NET, która używa usługi Azure Active Directory B2C do udostępniania funkcji logowania do konta.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 7d6744fe7ef82a6a4f54291cedd15d5b3d4ee242
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4342e8c58c9bb20580d8428a6c9869f9a3b893cb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-web-app"></a>Szybki start: testowanie aplikacji internetowej z obsługą usługi Azure AD B2C
+# <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji platformy ASP.NET przy użyciu usługi Azure Active Directory B2C
 
 Usługa Azure Active Directory (Azure AD) B2C umożliwia zarządzanie tożsamościami w chmurze, chroniąc Twoją aplikację, firmę i klientów. Usługa Azure AD B2C umożliwia aplikacjom uwierzytelnianie względem kont społecznościowych i firmowych za pomocą protokołów zgodnych z otwartymi standardami.
 

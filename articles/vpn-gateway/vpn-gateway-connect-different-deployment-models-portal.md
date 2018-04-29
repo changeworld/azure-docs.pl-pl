@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 65cfbafbd5fbdd576f01b5cba638c1b5869f377b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5e51027455da1f8be34d99c79bc79bc37df57d14
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Nawiązywanie połączenia sieci wirtualnych z różne modele wdrażania przy użyciu portalu
 
@@ -232,7 +232,7 @@ W tych kroków Konfigurowanie połączenia z klasycznej sieci wirtualnej z Mened
 Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i logowania do konta platformy Azure. Po zalogowaniu ustawienia konta są pobierane, tak aby były dostępne dla programu Azure PowerShell. Następujące polecenie cmdlet monituje o poświadczenia logowania dla konta platformy Azure dla modelu wdrażania usługi Resource Manager:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Pobierz listę subskrypcji platformy Azure.

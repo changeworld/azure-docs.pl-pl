@@ -1,25 +1,20 @@
 ---
-title: "Monitorowanie użycia oraz statystyki w usłudze Azure Search | Dokumentacja firmy Microsoft"
-description: "Śledzenie rozmiar konsumenckich i indeksu zasobów dla usługi wyszukiwanie Azure, Usługa wyszukiwania w chmurze hostowanej w systemie Microsoft Azure."
-services: search
-documentationcenter: 
+title: Monitorowanie użycia oraz statystyki w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Śledzenie rozmiar konsumenckich i indeksu zasobów dla usługi wyszukiwanie Azure, Usługa wyszukiwania w chmurze hostowanej w systemie Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 
+services: search
 ms.service: search
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fe852afedfc1cce99d81b8ab53c6c80df34ac6d6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 286569eef8e17909ecab017b67b0ffc044a4bfe4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="monitoring-an-azure-search-service"></a>Monitorowanie usługi Azure Search
 
@@ -89,45 +84,45 @@ Po skopiowaniu danych na konto magazynu danych jest w formacie JSON i jego miejs
 
 Brak obiektu blob na godzinę na kontenera.
 
-Przykład ścieżki:`resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
+Przykład ścieżki: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
 
 #### <a name="log-schema"></a>Schemat dziennika
 Obiekty BLOB dzienników zawierają dzienniki ruchu usługi wyszukiwania.
 Każdy obiekt blob ma jeden obiekt głównego o nazwie **rekordów** zawiera tablicę obiektów dziennika.
 Każdy obiekt blob zawiera rekordy na działanie, które miało miejsce podczas tę samą godzinę.
 
-| Nazwa | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| time |Data i godzina |"2015-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
-| resourceId |Ciąg |"11111111-1111-1111-1111-111111111111/SUBSCRIPTIONS / /<br/>DOSTAWCÓW RESOURCEGROUPS/DOMYŚLNIE /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
-| operationName |Ciąg |"Query.Search" |Nazwa operacji |
-| operationVersion |Ciąg |"2015-02-28" |Używana wersja interfejsu api |
-| category |Ciąg |"OperationLogs" |Stała |
-| resultType |Ciąg |"Powodzenie" |Możliwe wartości: powodzenie lub niepowodzenie |
+| time |datetime |"2015-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
+| resourceId |ciąg |"11111111-1111-1111-1111-111111111111/SUBSCRIPTIONS / /<br/>DOSTAWCÓW RESOURCEGROUPS/DOMYŚLNIE /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
+| operationName |ciąg |"Query.Search" |Nazwa operacji |
+| operationVersion |ciąg |"2015-02-28" |Używana wersja interfejsu api |
+| category |ciąg |"OperationLogs" |Stała |
+| resultType |ciąg |"Powodzenie" |Możliwe wartości: powodzenie lub niepowodzenie |
 | resultSignature |int |200 |Kod wyniku protokołu HTTP |
 | durationMS |int |50 |Czas trwania działania w milisekundach |
-| properties |Obiekt |Zobacz poniższą tabelę |Obiekt zawierający dane specyficzne dla operacji |
+| properties |obiekt |Zobacz poniższą tabelę |Obiekt zawierający dane specyficzne dla operacji |
 
 **Schemat właściwości**
-| Nazwa | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| Opis |Ciąg |"GET /indexes('content')/docs" |Operacja punktu końcowego |
-| Zapytanie |Ciąg |"? wyszukiwania = AzureSearch & $count = true & api-version = 2015-02-28" |Parametry zapytań |
+| Opis |ciąg |"GET /indexes('content')/docs" |Operacja punktu końcowego |
+| Zapytanie |ciąg |"? wyszukiwania = AzureSearch & $count = true & api-version = 2015-02-28" |Parametry zapytań |
 | Dokumenty |int |42 |Liczba przetworzonych dokumentów |
-| indexName |Ciąg |"testindex" |Nazwa indeksu skojarzonych z operacją |
+| indexName |ciąg |"testindex" |Nazwa indeksu skojarzonych z operacją |
 
 #### <a name="metrics-schema"></a>Metryki schematu
-| Nazwa | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| resourceId |Ciąg |"11111111-1111-1111-1111-111111111111/SUBSCRIPTIONS / /<br/>DOSTAWCÓW RESOURCEGROUPS/DOMYŚLNIE /<br/>FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Identyfikator zasobu |
-| metricName |Ciąg |"Opóźnienie" |Nazwa metryki |
-| time |Data i godzina |"2015-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
-| Średnia |int |64 |Średnia wartość próbek pierwotnych w przedziale czasu metryki |
-| Minimalna |int |37 |Wartość minimalna pierwotnych próbek w przedziale czasu metryki |
-| Maksymalna |int |78 |Wartość maksymalna pierwotnych próbek w przedziale czasu metryki |
-| Całkowita liczba |int |258 |Łączna wartość Nieprzetworzona próbek w przedziale czasu metryki |
-| Liczba |int |4 |Liczba próbek pierwotnych służący do generowania metrykę |
-| ziarnem czasu |Ciąg |"PT1M" |Ziarnem czasu metryki w ISO 8601 |
+| resourceId |ciąg |"11111111-1111-1111-1111-111111111111/SUBSCRIPTIONS / /<br/>DOSTAWCÓW RESOURCEGROUPS/DOMYŚLNIE /<br/>FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Identyfikator zasobu |
+| metricName |ciąg |"Opóźnienie" |Nazwa metryki |
+| time |datetime |"2015-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
+| średnio |int |64 |Średnia wartość próbek pierwotnych w przedziale czasu metryki |
+| minimalnie |int |37 |Wartość minimalna pierwotnych próbek w przedziale czasu metryki |
+| maksymalnie |int |78 |Wartość maksymalna pierwotnych próbek w przedziale czasu metryki |
+| łącznie |int |258 |Łączna wartość Nieprzetworzona próbek w przedziale czasu metryki |
+| liczba |int |4 |Liczba próbek pierwotnych służący do generowania metrykę |
+| ziarnem czasu |ciąg |"PT1M" |Ziarnem czasu metryki w ISO 8601 |
 
 Wszystkie metryki są zgłaszane w odstępach jednej minuty. Każdy pomiar przedstawia minimalne, maksymalne i średnie wartości na minutę.
 
@@ -144,7 +139,7 @@ Usługa Azure Search udostępnia [pakiet zawartości Power BI](https://app.power
 
 ![Power BI, odwiedź pulpit nawigacyjny usługi Azure Search][4]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Przegląd [skalowania repliki i partycje](search-limits-quotas-capacity.md) wskazówki dotyczące sposobu równoważenia Alokacja partycji i replik dla istniejącej usługi.
 
 Odwiedź stronę [Zarządzanie usługą wyszukiwania w systemie Microsoft Azure](search-manage.md) uzyskać więcej informacji dotyczących administracji usługi lub [wydajności i optymalizacji](search-performance-optimization.md) dostrojenia wskazówki.

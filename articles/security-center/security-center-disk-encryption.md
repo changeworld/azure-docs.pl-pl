@@ -1,11 +1,11 @@
 ---
 title: Szyfrowanie maszyny wirtualnej platformy Azure | Microsoft Docs
-description: "Ten dokument zawiera informacje ułatwiające szyfrowanie maszyny wirtualnej platformy Azure po odebraniu alertu z Centrum zabezpieczeń Azure."
+description: Ten dokument zawiera informacje ułatwiające szyfrowanie maszyny wirtualnej platformy Azure po odebraniu alertu z Centrum zabezpieczeń Azure.
 services: security, security-center
 documentationcenter: na
 author: TomShinder
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a376eb63e7ba054a125666f95c05d5e7dfb5470
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Szyfrowanie maszyny wirtualnej platformy Azure
 Jeśli masz maszyny wirtualne, które nie są szyfrowane, w Centrum zabezpieczeń Azure zostanie wyświetlony alert. Te alerty będą widoczne jako alerty o wysokiej ważności. Zaleca się zaszyfrowanie tych maszyn wirtualnych.
@@ -92,7 +92,7 @@ Wykonaj poniższe kroki, aby zaszyfrować maszynę wirtualną platformy Azure:
 1. Jeśli program PowerShell ISE został zamknięty, otwórz wystąpienie programu PowerShell ISE z podwyższonym poziomem uprawnień. Jeśli program PowerShell ISE nie jest jeszcze otwarty, wykonaj instrukcje przedstawione wcześniej w tym artykule. Jeśli skrypt został zamknięty, otwórz plik **ADEPrereqScript.ps1**, klikając menu **File** (Plik) i polecenie **Open** (Otwórz), a następnie wybierając skrypt w folderze **c:\AzureADEScript**. W przypadku wykonywania instrukcji zawartych w artykule od początku przejdź po prostu do kolejnego kroku.
 2. W konsoli programu PowerShell ISE (w dolnym okienku programu PowerShell ISE) zmień fokus na fokus lokalny skryptu, wpisując ciąg **cd c:\AzureADEScript**, po czym naciśnij klawisz **ENTER**.
 3. Ustaw zasady wykonywania na komputerze, aby umożliwić uruchamianie skryptu. Wpisz w konsoli polecenie **Set-ExecutionPolicy Unrestricted**, a następnie naciśnij klawisz ENTER. Jeśli zostanie wyświetlone okno dialogowe z informacją o skutkach zmiany zasad wykonywania, kliknij opcję **Yes to all** (Tak dla wszystkich) lub **Yes** (Tak) (jeśli jest widoczna opcja **Yes to all**, wybierz tę opcję, jeśli opcja **Yes to all** nie jest wyświetlona, kliknij przycisk **Yes**).
-4. Zaloguj się do konta platformy Azure. W konsoli wpisz polecenie **Login-AzureRmAccount** i naciśnij klawisz **ENTER**. Zostanie wyświetlone okno dialogowe, w którym należy wprowadzić poświadczenia. (Upewnij się, że masz uprawnienia do zmiany maszyn wirtualnych — jeśli nie masz takich uprawnień, nie możesz zaszyfrować maszyn. Jeśli nie masz pewności, zapytaj właściciela subskrypcji lub administratora). Powinny być widoczne informacje dotyczące takich parametrów, jak **Environment**, **Account**, **TenantId**, **SubscriptionId** i **CurrentStorageAccount**. Skopiuj wartość parametru **SubscriptionId** do Notatnika. Będzie ona potrzebna w kroku 6.
+4. Zaloguj się do konta platformy Azure. W konsoli wpisz polecenie **Connect-AzureRmAccount** i naciśnij klawisz **ENTER**. Zostanie wyświetlone okno dialogowe, w którym należy wprowadzić poświadczenia. (Upewnij się, że masz uprawnienia do zmiany maszyn wirtualnych — jeśli nie masz takich uprawnień, nie możesz zaszyfrować maszyn. Jeśli nie masz pewności, zapytaj właściciela subskrypcji lub administratora). Powinny być widoczne informacje dotyczące takich parametrów, jak **Environment**, **Account**, **TenantId**, **SubscriptionId** i **CurrentStorageAccount**. Skopiuj wartość parametru **SubscriptionId** do Notatnika. Będzie ona potrzebna w kroku 6.
 5. Sprawdź subskrypcję, do której należy maszyna wirtualna, oraz jej lokalizację. Przejdź do witryny [https://portal.azure.com](ttps://portal.azure.com) i zaloguj się.  W lewej części strony kliknij pozycję **Virtual Machines**. Zobaczysz listę maszyn wirtualnych i subskrypcje, do których należą.
 
    ![Maszyny wirtualne](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)

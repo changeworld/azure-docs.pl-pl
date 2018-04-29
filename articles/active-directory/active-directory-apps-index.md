@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ffb8e822644ba8f0bccc3e81edc4da6085ff3ec7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: e5c99552b74861db6018093dccf736d08374204f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory
 Ta strona zawiera pełną listę wszystkich dokumentów zapisywane o różnych funkcjach związanych z aplikacji w usłudze Azure Active Directory (Azure AD).
@@ -43,7 +43,7 @@ Ta sekcja zawiera szybki dostęp do odpowiednie instrukcje dotyczące rozwiązyw
 | Federacyjne logowanie jednokrotne |[Rozwiązywanie problemów z systemem SAML logowania jednokrotnego](active-directory-saml-debugging.md) |
 | Oparte na hasłach rejestracji jednokrotnej |[Rozwiązywanie problemów z rozszerzeniem Panel dostępu dla programu Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
 | Serwer proxy aplikacji |[Przewodnik rozwiązywania problemów serwera Proxy aplikacji](active-directory-application-proxy-troubleshoot.md) |
-| Logowanie jednokrotne między lokalnej usługi AD i Azure AD |[Rozwiązywanie problemów z synchronizacji skrótu hasła](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Logowanie jednokrotne między lokalnej usługi AD i Azure AD |[Rozwiązywanie problemów z synchronizacji skrótu hasła](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Członkostwa w grupach dynamiczne |[Rozwiązywanie problemów z członkostwa w grupach dynamiczne](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>Logowanie jednokrotne
@@ -96,7 +96,7 @@ Jeśli organizacja ma Windows Server Active Directory lokalnie wraz z usługi Az
 | Omówienie jednej opcji logowania jednokrotnego oferowany Azure AD Connect, a także informacje na temat zarządzania środowisk hybrydowych |[Logowanie użytkownika na temat opcji w usłudze Azure AD Connect](active-directory-aadconnect-user-signin.md) |
 | Ogólne wskazówki dotyczące zarządzania środowisk zarówno lokalnej usługi Active Directory i Azure Active Directory |[Zagadnienia dotyczące projektowania tożsamości hybrydowej usługi Azure AD](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[Integrowanie tożsamości lokalnych z usługą Azure Active Directory](active-directory-aadconnect.md) |
 | Wskazówki dotyczące korzystania z synchronizacji haseł w celu włączenia funkcji logowania jednokrotnego |[Implementowanie synchronizacji haseł w usłudze Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Rozwiązywanie problemów z synchronizacją haseł](https://support.microsoft.com/en-us/kb/2855271) |
-| Wskazówki dotyczące używania funkcji zapisywania zwrotnego haseł do włączenia funkcji logowania jednokrotnego |[Wprowadzenie do zarządzania hasłami w usłudze Azure AD](active-directory-passwords-getting-started.md)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Wskazówki dotyczące używania funkcji zapisywania zwrotnego haseł do włączenia funkcji logowania jednokrotnego |[Wprowadzenie do zarządzania hasłami w usłudze Azure AD](authentication/quickstart-sspr.md)<br /><br />[Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Wskazówki dotyczące włączenia funkcji logowania jednokrotnego przy użyciu dostawcy tożsamości innych firm |[Lista dostawców zgodne tożsamości innych firm, które mogą służyć do Włącz rejestrację jednokrotną](https://aka.ms/ssoproviders) |
 | Jak użytkownicy systemu Windows 10 można korzystać z zalet logowania jednokrotnego za pośrednictwem usługi Azure AD Join |[Rozszerzanie możliwości chmury do systemu Windows 10 urządzeń za pomocą usługi Azure Active Directory Join](active-directory-azureadjoin-overview.md) |
 
@@ -210,4 +210,4 @@ Aby zobaczyć, które raporty są dołączone do różnych wersjach usługi Azur
 
 [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/)
 
-[Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
+[Uwierzytelnianie wieloskładnikowe platformy Azure](https://azure.microsoft.com/services/multi-factor-authentication/)

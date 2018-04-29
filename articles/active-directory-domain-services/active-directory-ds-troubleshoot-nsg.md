@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: ca3292f1b89fc461950a47116126b6f5338fb381
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ce03ee0e0936cea4b96e48fbc949f40ee0fe83a0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłową konfigurację sieci na potrzeby domeny zarządzanej
 Ten artykuł pomaga w rozwiązywaniu problemów oraz usuwaniu błędów konfiguracji związanych z siecią, które powodują powstanie następujący komunikat alertu:
@@ -61,7 +61,7 @@ Wykonaj następujące kroki, aby utworzyć nowa grupa NSG przy użyciu programu 
 
   ```PowerShell
   # Log in to your Azure subscription.
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
 2. Utwórz grupy NSG z trzech reguł. Poniższy skrypt definiuje trzy reguły NSG, który umożliwia dostępu do portów wymaganych do uruchomienia usług domenowych Azure AD. Następnie skrypt tworzy Nowa grupa NSG, który zawiera te reguły. Aby dodać dodatkowe reguły zezwalające na ruch przychodzący, jeśli jest to wymagane przez obciążeń wdrożonych w sieci wirtualnej, użyj tego samego formatu.
@@ -123,7 +123,7 @@ $VnetName = "exampleVnet"
 $SubnetName = "exampleSubnet"
 
 # Log in to your Azure subscription.
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Allow inbound HTTPS traffic to enable synchronization to your managed domain.
 $SyncRule = New-AzureRmNetworkSecurityRuleConfig -Name AllowSyncWithAzureAD -Description "Allow synchronization with Azure AD" `

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1fe8a52a946b7e70a845e26b80dec94176c346f0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: d56b27a040420d049f567ac0de9289b1e72f3ea9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Ruch przychodzący HTTPS w usłudze kontenera platformy Azure (AKS)
 
@@ -23,11 +23,11 @@ Ten dokument przeprowadzi Cię przez wdrożenie próbki [kontrolera wejściowych
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Instalowanie interfejsu wiersza polecenia Helm — Zobacz CLI Helm [dokumentacji] [helm-cli] Aby uzyskać instrukcje instalacji.
+Zainstaluj Helm interfejsu wiersza polecenia — Zobacz Helm CLI [dokumentacji] [ helm-cli] instrukcje instalacji.
 
 ## <a name="install-an-ingress-controller"></a>Instalowanie kontrolera wejściowych
 
-Należy zainstalować kontroler wejściowych NGINX Helm. Zobacz kontrolera wejściowych NGINX [dokumentacji] [ nginx-ingress] wdrożenia szczegółowych informacji. 
+Należy zainstalować kontroler wejściowych NGINX Helm. Zobacz kontrolera wejściowych NGINX [dokumentacji] [ nginx-ingress] wdrożenia szczegółowych informacji.
 
 Zaktualizuj repozytorium wykresu.
 
@@ -76,13 +76,7 @@ PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAdd
 az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
 ```
 
-W razie potrzeby, uruchom następujące polecenie, aby pobrać nazwę FQDN. Zaktualizuj wartość adresu IP z tym kontrolerem wejściowych.
-
-```azurecli
-az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
-```
-
-Transfer danych przychodzących kontrolera jest teraz dostępny za pomocą nazwy FQDN.
+Kontroler wejściowych powinno być teraz dostępne za pośrednictwem nazwę FQDN.
 
 ## <a name="install-kube-lego"></a>Zainstaluj — LEGO KUBE
 
@@ -181,13 +175,14 @@ Także zauważyć, że połączenie jest szyfrowane, oraz że jest używany cert
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat oprogramowania zostało to pokazane w tym dokumencie. 
+Dowiedz się więcej na temat oprogramowania zostało to pokazane w tym dokumencie.
 
+- [Helm interfejsu wiersza polecenia][helm-cli]
 - [NGINX wejściowych kontrolera][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
-[helm-client]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
