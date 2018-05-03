@@ -1,0 +1,2 @@
+W tym artykule jest częścią serii szersze dostarczają zagadnienia dotyczące projektowania oraz wskazówki podczas tworzenia infrastruktury aplikacji na platformie Azure. Możesz [wyświetlić dodatkowe tematy w tej serii](#next-steps). Chociaż można szybko tworzyć środowiska i testowania na platformie Azure, istnieją dodatkowe zagadnienia podczas implementowania gotowe do produkcji, wysokiej dostępności i bezpieczeństwo.
+

@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> Wyboru połączenia obserwator sieci jest obecnie w publicznej wersji zapoznawczej i nie może mieć taki sam poziom dostępności i niezawodności jako funkcje, które są zwykle dostępności wersji. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości i mogą nie być dostępne we wszystkich [lokalizacjach platformy Azure](https://azure.microsoft.com/regions/). Najbardziej aktualne powiadomień o dostępności i stan tej funkcji, sprawdź [aktualizuje obserwatora sieciowego Azure](https://azure.microsoft.com/updates/?product=network-watcher) strony. 
